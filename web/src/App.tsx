@@ -6,6 +6,7 @@ import releaseDetailRows from './data/releaseDetails.json'
 import releaseRows from './data/releases.json'
 import unresolvedRows from './data/unresolved.json'
 import upcomingCandidateRows from './data/upcomingCandidates.json'
+import releaseChangeLogRows from './data/releaseChangeLog.json'
 import watchlistRows from './data/watchlist.json'
 
 type ReleaseFact = {
@@ -138,6 +139,49 @@ type SourceTimelineItem = {
   sortValue: number
 }
 
+type ReleaseChangeType =
+  | 'scheduled_date_added'
+  | 'scheduled_date_changed'
+  | 'date_status_changed'
+  | 'headline_changed'
+  | 'verified_release_detected'
+
+type ReleaseChangeSnapshotState = {
+  scheduled_date: string
+  date_status: string
+  headline: string
+  source_type: string
+  source_url: string
+  published_at: string
+}
+
+type ReleaseChangeVerifiedRelease = {
+  title: string
+  date: string
+  release_kind: string
+  source: string
+}
+
+type ReleaseChangeLogRow = {
+  key: string
+  diff_key: string
+  group: string
+  change_type: ReleaseChangeType
+  occurred_at: string
+  summary: string
+  source_url: string
+  source_domain: string
+  previous_state_hash: string
+  next_state_hash: string
+  previous: ReleaseChangeSnapshotState | null
+  next: ReleaseChangeSnapshotState | null
+  verified_release: ReleaseChangeVerifiedRelease | null
+  snapshot: {
+    previous_ref: string
+    next_ref: string
+  }
+}
+
 type WatchlistRow = {
   group: string
   tier: string
@@ -211,6 +255,7 @@ type TeamProfile = {
   recentAlbums: VerifiedRelease[]
   upcomingSignals: UpcomingCandidateRow[]
   sourceTimeline: SourceTimelineItem[]
+  changeLog: ReleaseChangeLogRow[]
   nextUpcomingSignal: UpcomingCandidateRow | null
 }
 
@@ -338,6 +383,13 @@ const TRANSLATIONS = {
       medium: '보통',
       low: '낮음',
     },
+    changeTypeLabels: {
+      scheduled_date_added: '날짜 추가',
+      scheduled_date_changed: '날짜 변경',
+      date_status_changed: '상태 변경',
+      headline_changed: '헤드라인 변경',
+      verified_release_detected: '검증 발매 감지',
+    },
     timelineEventLabels: {
       first_signal: '첫 신호',
       official_announcement: '공식 공지',
@@ -453,6 +505,13 @@ const TRANSLATIONS = {
       medium: 'medium',
       low: 'low',
     },
+    changeTypeLabels: {
+      scheduled_date_added: 'Date added',
+      scheduled_date_changed: 'Date changed',
+      date_status_changed: 'Status changed',
+      headline_changed: 'Headline changed',
+      verified_release_detected: 'Verified release',
+    },
     timelineEventLabels: {
       first_signal: 'First signal',
       official_announcement: 'Official announcement',
@@ -502,6 +561,11 @@ const TEAM_COPY = {
     timelineIntro: '예정 신호와 검증된 발매를 같은 타임라인에서 봅니다.',
     timelineEmptyTitle: '타임라인 근거 없음',
     timelineEmpty: '예정 신호나 검증된 발매 출처가 아직 충분하지 않습니다.',
+    changeLogLabel: '변경 로그',
+    changeLogTitle: '최근 일정/상태 변동',
+    changeLogIntro: '스냅샷 비교로 감지한 최근 변경입니다.',
+    changeLogEmptyTitle: '최근 변동 없음',
+    changeLogEmpty: '기록된 일정/상태 변경이 아직 없습니다.',
     pagesPanelLabel: '팀 페이지',
     pagesPanelTitle: '추적 팀 열기',
     noTeamMatch: '이 검색어와 일치하는 추적 팀이 없습니다.',
@@ -559,6 +623,11 @@ const TEAM_COPY = {
     timelineIntro: 'Scheduled signals and verified releases share one evidence trail.',
     timelineEmptyTitle: 'No timeline evidence yet',
     timelineEmpty: 'There is not enough scheduled or verified source evidence for this team yet.',
+    changeLogLabel: 'Change log',
+    changeLogTitle: 'Recent schedule and state changes',
+    changeLogIntro: 'Detected from snapshot-to-snapshot comparisons.',
+    changeLogEmptyTitle: 'No recent changes',
+    changeLogEmpty: 'No schedule or state change has been recorded for this team yet.',
     pagesPanelLabel: 'Team pages',
     pagesPanelTitle: 'Open a tracked team',
     noTeamMatch: 'No tracked team matches this search.',
@@ -597,6 +666,7 @@ const releases = releaseCatalog
 const unresolved = unresolvedRows as UnresolvedRow[]
 const watchlist = watchlistRows as WatchlistRow[]
 const upcomingCandidates = upcomingCandidateRows as UpcomingCandidateRow[]
+const releaseChangeLog = releaseChangeLogRows as ReleaseChangeLogRow[]
 
 const dateFormatter = new Intl.DateTimeFormat('en-CA', {
   year: 'numeric',
@@ -621,6 +691,10 @@ const releaseDetailsByKey = new Map(
 const releaseGroups = groupReleasesByGroup(releases)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
 const upcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
+const releaseChangeLogByGroup = groupReleaseChangeLogByGroup(releaseChangeLog)
+const latestReleaseChangeByGroup = new Map(
+  Array.from(releaseChangeLogByGroup, ([group, changes]) => [group, changes[0] ?? null]),
+)
 const searchIndexByGroup = buildSearchIndexByGroup()
 const teamProfiles = buildTeamProfiles()
 const teamProfileMap = new Map(teamProfiles.map((team) => [team.group, team]))
@@ -961,6 +1035,7 @@ function App() {
                               >
                                 {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                               </span>
+                              <ReleaseChangeBadge group={item.group} language={language} />
                               <ReleaseClassificationBadges
                                 releaseFormat={item.release_format}
                                 contextTags={item.context_tags}
@@ -991,6 +1066,23 @@ function App() {
                     ))
                   ) : (
                     <p className="empty-copy">{teamCopy.upcomingEmpty}</p>
+                  )}
+                </div>
+
+                <div className="team-subsection">
+                  <div className="team-subsection-head">
+                    <p className="panel-label">{teamCopy.changeLogLabel}</p>
+                    <h3>{selectedTeam.changeLog.length ? teamCopy.changeLogTitle : teamCopy.changeLogEmptyTitle}</h3>
+                    <p className="team-subsection-copy">{teamCopy.changeLogIntro}</p>
+                  </div>
+                  {selectedTeam.changeLog.length ? (
+                    <ReleaseChangeLogList
+                      changes={selectedTeam.changeLog.slice(0, 3)}
+                      language={language}
+                      formatter={timelineDateFormatter}
+                    />
+                  ) : (
+                    <p className="empty-copy">{teamCopy.changeLogEmpty}</p>
                   )}
                 </div>
 
@@ -1386,6 +1478,7 @@ function App() {
                             >
                               {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                             </span>
+                            <ReleaseChangeBadge group={item.group} language={language} />
                             <ReleaseClassificationBadges
                               releaseFormat={item.release_format}
                               contextTags={item.context_tags}
@@ -1768,6 +1861,68 @@ function UpcomingCountdownBadge({
   )
 }
 
+function ReleaseChangeBadge({
+  group,
+  language,
+}: {
+  group: string
+  language: Language
+}) {
+  const latestChange = latestReleaseChangeByGroup.get(group)
+  if (!latestChange) {
+    return null
+  }
+
+  return (
+    <span className={`signal-badge signal-badge-change signal-badge-change-${latestChange.change_type}`}>
+      {formatReleaseChangeType(latestChange.change_type, language)}
+    </span>
+  )
+}
+
+function ReleaseChangeLogList({
+  changes,
+  language,
+  formatter,
+}: {
+  changes: ReleaseChangeLogRow[]
+  language: Language
+  formatter: Intl.DateTimeFormat
+}) {
+  const copy = TRANSLATIONS[language]
+
+  return (
+    <div className="change-log-list">
+      {changes.map((change) => (
+        <article key={change.key} className="change-log-item">
+          <div className="change-log-head">
+            <div>
+              <p className="change-log-date">
+                {formatSourceTimelineDate(change.occurred_at, formatter, copy.none)}
+              </p>
+              <h4>{formatReleaseChangeType(change.change_type, language)}</h4>
+            </div>
+            <span className={`signal-badge signal-badge-change signal-badge-change-${change.change_type}`}>
+              {change.snapshot.previous_ref} {'->'} {change.snapshot.next_ref}
+            </span>
+          </div>
+          <p className="signal-meta">{change.source_domain || copy.sourceTypeLabels.pending}</p>
+          <p className="change-log-summary">{change.summary}</p>
+          <div className="detail-links detail-links-stack">
+            {change.source_url ? (
+              <a href={change.source_url} target="_blank" rel="noreferrer">
+                {copy.sourceLink}
+              </a>
+            ) : (
+              <span className="signal-link-muted">{copy.noSourceLink}</span>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  )
+}
+
 function ReleaseClassificationBadges({
   releaseFormat,
   contextTags,
@@ -1891,6 +2046,7 @@ function SelectedDayPanel({
                         >
                           {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                         </span>
+                        <ReleaseChangeBadge group={item.group} language={language} />
                         <ReleaseClassificationBadges
                           releaseFormat={item.release_format}
                           contextTags={item.context_tags}
@@ -2080,6 +2236,10 @@ function formatTrackingStatus(status: string, language: Language) {
 
 function formatConfidenceTone(tone: ReturnType<typeof getConfidenceTone>, language: Language) {
   return TRANSLATIONS[language].confidenceToneLabels[tone]
+}
+
+function formatReleaseChangeType(changeType: ReleaseChangeType, language: Language) {
+  return TRANSLATIONS[language].changeTypeLabels[changeType]
 }
 
 function formatTimelineEventType(eventType: SourceTimelineEventType, language: Language) {
@@ -2294,6 +2454,7 @@ function buildTeamProfiles() {
       const artistProfile = artistProfileByGroup.get(group)
       const groupReleases = releaseGroups.get(group) ?? []
       const upcomingSignals = [...(upcomingByGroup.get(group) ?? [])].sort(compareUpcomingSignals)
+      const changeLog = releaseChangeLogByGroup.get(group) ?? []
       const sourceTimeline = buildSourceTimeline(group, upcomingByGroup.get(group) ?? [], groupReleases)
       const latestRelease = deriveLatestRelease(groupReleases, watchRow, releaseRow)
 
@@ -2316,6 +2477,7 @@ function buildTeamProfiles() {
         recentAlbums: groupReleases.filter((item) => item.stream === 'album'),
         upcomingSignals,
         sourceTimeline,
+        changeLog,
         nextUpcomingSignal: upcomingSignals[0] ?? null,
       }
     })
@@ -2451,6 +2613,16 @@ function compareUpcomingSignals(
   }
 
   return left.headline.localeCompare(right.headline)
+}
+
+function compareReleaseChanges(left: ReleaseChangeLogRow, right: ReleaseChangeLogRow) {
+  const leftValue = getSourceTimelineSortValue(left.occurred_at)
+  const rightValue = getSourceTimelineSortValue(right.occurred_at)
+  if (leftValue !== rightValue) {
+    return rightValue - leftValue
+  }
+
+  return left.group.localeCompare(right.group)
 }
 
 function buildSourceTimeline(
@@ -2682,6 +2854,16 @@ function groupUpcomingCandidatesByGroup(rows: UpcomingCandidateRow[]) {
   return rows.reduce<Map<string, UpcomingCandidateRow[]>>((map, row) => {
     const bucket = map.get(row.group) ?? []
     bucket.push(row)
+    map.set(row.group, bucket)
+    return map
+  }, new Map())
+}
+
+function groupReleaseChangeLogByGroup(rows: ReleaseChangeLogRow[]) {
+  return rows.reduce<Map<string, ReleaseChangeLogRow[]>>((map, row) => {
+    const bucket = map.get(row.group) ?? []
+    bucket.push(row)
+    bucket.sort(compareReleaseChanges)
     map.set(row.group, bucket)
     return map
   }, new Map())
