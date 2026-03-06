@@ -1,9 +1,50 @@
 [
   {
+    "group": "ALLDAY PROJECT",
+    "tier": "manual",
+    "watch_reason": "manual_watch",
+    "tracking_status": "watch_only",
+    "latest_release_title": "ALLDAY PROJECT",
+    "latest_release_date": "2025-12-08",
+    "latest_release_kind": "ep",
+    "search_terms": [
+      "\"ALLDAY PROJECT\" kpop comeback",
+      "\"ALLDAY PROJECT\" teaser",
+      "\"ALLDAY PROJECT\" 컴백"
+    ]
+  },
+  {
+    "group": "Weeekly",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Bliss",
+    "latest_release_date": "2024-07-09",
+    "latest_release_kind": "ep"
+  },
+  {
     "group": "WJSN",
     "tier": "manual",
+    "watch_reason": "manual_watch",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Bloom hour",
+    "latest_release_date": "2026-02-25",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/WJSN_Cosmic",
     "instagram_url": "https://www.instagram.com/wjsn_cosmic/",
-    "search_terms": ["WJSN kpop comeback", "\"Cosmic Girls\" comeback", "우주소녀 컴백"]
+    "search_terms": [
+      "WJSN kpop comeback",
+      "\"Cosmic Girls\" comeback",
+      "우주소녀 컴백"
+    ]
+  },
+  {
+    "group": "woo!ah!",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Shining on you",
+    "latest_release_date": "2024-07-16",
+    "latest_release_kind": "single"
   }
 ]
