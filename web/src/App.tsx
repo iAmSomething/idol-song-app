@@ -182,9 +182,12 @@ type ReleaseChangeLogRow = {
   }
 }
 
+type WatchReason = 'recent_release' | 'long_gap' | 'manual_watch'
+
 type WatchlistRow = {
   group: string
   tier: string
+  watch_reason: WatchReason
   tracking_status: string
   latest_release_title: string
   latest_release_date: string
@@ -257,6 +260,15 @@ type TeamProfile = {
   sourceTimeline: SourceTimelineItem[]
   changeLog: ReleaseChangeLogRow[]
   nextUpcomingSignal: UpcomingCandidateRow | null
+}
+
+type LongGapRadarEntry = {
+  group: string
+  watchReason: WatchReason
+  latestRelease: TeamLatestRelease
+  gapDays: number
+  hasUpcomingSignal: boolean
+  latestSignal: UpcomingCandidateRow | null
 }
 
 type Language = 'ko' | 'en'
@@ -397,6 +409,20 @@ const TRANSLATIONS = {
       date_update: '날짜 업데이트',
       release_verified: '검증된 발매',
     },
+    watchReasonLabels: {
+      recent_release: '최근 발매',
+      long_gap: '장기 공백',
+      manual_watch: '수동 관찰',
+    },
+    longGapRadar: '장기 공백 레이더',
+    longGapRadarTitle: '오래 비어 있던 팀을 따로 추적',
+    longGapRadarEmpty: '검색 조건에 맞는 장기 공백 대상이 없습니다.',
+    longGapLastRelease: '마지막 발매',
+    longGapElapsed: '경과',
+    longGapSignalPresent: '예정 신호 있음',
+    longGapSignalMissing: '예정 신호 없음',
+    longGapLatestSignal: '최근 신호',
+    longGapLatestSignalEmpty: '아직 표시할 신호가 없습니다.',
   },
   en: {
     locale: 'en-US',
@@ -519,6 +545,20 @@ const TRANSLATIONS = {
       date_update: 'Date update',
       release_verified: 'Release verified',
     },
+    watchReasonLabels: {
+      recent_release: 'Recent release',
+      long_gap: 'Long-gap',
+      manual_watch: 'Manual watch',
+    },
+    longGapRadar: 'Long-gap radar',
+    longGapRadarTitle: 'Track dormant teams in a separate view',
+    longGapRadarEmpty: 'No long-gap targets match the current search.',
+    longGapLastRelease: 'Last release',
+    longGapElapsed: 'Elapsed',
+    longGapSignalPresent: 'Upcoming signal',
+    longGapSignalMissing: 'No upcoming signal',
+    longGapLatestSignal: 'Latest signal',
+    longGapLatestSignalEmpty: 'No captured signal to show yet.',
   },
 } as const
 
@@ -654,6 +694,7 @@ const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
 const MUSIC_HANDOFF_SERVICES: MusicService[] = ['spotify', 'youtube_music']
 const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
+const LONG_GAP_THRESHOLD_DAYS = 365
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
@@ -698,6 +739,7 @@ const latestReleaseChangeByGroup = new Map(
 const searchIndexByGroup = buildSearchIndexByGroup()
 const teamProfiles = buildTeamProfiles()
 const teamProfileMap = new Map(teamProfiles.map((team) => [team.group, team]))
+const longGapRadarEntries = buildLongGapRadarEntries()
 
 function App() {
   const latestMonthKey = getLatestMonthKey(releases)
@@ -793,6 +835,9 @@ function App() {
     return matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
   })
   const filteredTeams = teamProfiles.filter((team) => matchesSearchIndex(searchIndexByGroup.get(team.group), searchNeedle))
+  const filteredLongGapRadar = longGapRadarEntries.filter((item) =>
+    matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle),
+  )
   const filteredUpcomingSignals = filteredUpcoming
     .flatMap((item) => expandUpcomingCandidate(item))
     .sort((left, right) => left.dateValue.getTime() - right.dateValue.getTime())
@@ -1518,85 +1563,100 @@ function App() {
               </div>
             </section>
 
-          <section className="panel">
-            <p className="panel-label">{copy.recentFeed}</p>
-            <h2>{copy.newestReleasesFirst}</h2>
-            <div className="feed-list">
-              {filteredReleases.slice(0, 10).map((item) => (
-                <article key={`${item.group}-${item.stream}-${item.title}`} className="feed-row">
-                  <div>
-                    <div className="signal-head">
-                      <TeamIdentity group={item.group} variant="list" />
-                      <span className="signal-badge">{describeRelease(item, language)}</span>
-                    </div>
-                    <h3>{item.title}</h3>
-                    <div className="row-actions">
-                      <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
-                        {teamCopy.action}
-                      </button>
-                    </div>
-                    <MusicHandoffRow
-                      group={item.group}
-                      title={item.title}
-                      canonicalUrls={item.music_handoffs}
-                      language={language}
-                      compact
-                    />
-                  </div>
-                  <time>{shortDateFormatter.format(item.dateValue)}</time>
-                </article>
-              ))}
-            </div>
-          </section>
+            <section className="panel">
+              <p className="panel-label">{copy.longGapRadar}</p>
+              <h2>{copy.longGapRadarTitle}</h2>
+              <LongGapRadarList
+                entries={filteredLongGapRadar}
+                language={language}
+                displayDateFormatter={displayDateFormatter}
+                onOpenTeamPage={openTeamPage}
+              />
+            </section>
 
-          <section className="panel">
-            <p className="panel-label">{teamCopy.pagesPanelLabel}</p>
-            <h2>{teamCopy.pagesPanelTitle}</h2>
-            <div className="team-directory">
-              {filteredTeams.length ? (
-                filteredTeams.slice(0, 12).map((team) => (
-                  <button
-                    type="button"
-                    key={team.group}
-                    className="team-directory-button"
-                    onClick={() => openTeamPage(team.group)}
-                  >
-                    <span>{team.displayName}</span>
-                    <strong>
-                      {team.nextUpcomingSignal
-                        ? describeUpcomingSignal(team.nextUpcomingSignal, language, displayDateFormatter, copy.none)
-                        : teamCopy.noSignal}
-                    </strong>
-                  </button>
-                ))
-              ) : (
-                <p className="empty-copy">{teamCopy.noTeamMatch}</p>
-              )}
-            </div>
-          </section>
+            <section className="panel">
+              <p className="panel-label">{copy.recentFeed}</p>
+              <h2>{copy.newestReleasesFirst}</h2>
+              <div className="feed-list">
+                {filteredReleases.slice(0, 10).map((item) => (
+                  <article key={`${item.group}-${item.stream}-${item.title}`} className="feed-row">
+                    <div>
+                      <div className="signal-head">
+                        <TeamIdentity group={item.group} variant="list" />
+                        <span className="signal-badge">{describeRelease(item, language)}</span>
+                      </div>
+                      <h3>{item.title}</h3>
+                      <div className="row-actions">
+                        <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
+                          {teamCopy.action}
+                        </button>
+                      </div>
+                      <MusicHandoffRow
+                        group={item.group}
+                        title={item.title}
+                        canonicalUrls={item.music_handoffs}
+                        language={language}
+                        compact
+                      />
+                    </div>
+                    <time>{shortDateFormatter.format(item.dateValue)}</time>
+                  </article>
+                ))}
+              </div>
+            </section>
 
-          <section className="panel">
-            <p className="panel-label">{copy.dataState}</p>
-            <h2>{copy.pipelineNotes}</h2>
-            <div className="meta-grid">
-              <MetaItem
-                label={copy.latestVerified}
-                value={
-                  latestRelease ? `${latestRelease.group} · ${formatDisplayDate(latestRelease.date, displayDateFormatter)}` : copy.none
-                }
-              />
-              <MetaItem
-                label={copy.earliestInRange}
-                value={
-                  earliestRelease ? `${earliestRelease.group} · ${formatDisplayDate(earliestRelease.date, displayDateFormatter)}` : copy.none
-                }
-              />
-              <MetaItem
-                label={copy.openQuestions}
-                value={unresolved.length ? unresolved.map((item) => item.group).join(', ') : copy.none}
-              />
-            </div>
-          </section>
+            <section className="panel">
+              <p className="panel-label">{teamCopy.pagesPanelLabel}</p>
+              <h2>{teamCopy.pagesPanelTitle}</h2>
+              <div className="team-directory">
+                {filteredTeams.length ? (
+                  filteredTeams.slice(0, 12).map((team) => (
+                    <button
+                      type="button"
+                      key={team.group}
+                      className="team-directory-button"
+                      onClick={() => openTeamPage(team.group)}
+                    >
+                      <span>{team.displayName}</span>
+                      <strong>
+                        {team.nextUpcomingSignal
+                          ? describeUpcomingSignal(team.nextUpcomingSignal, language, displayDateFormatter, copy.none)
+                          : teamCopy.noSignal}
+                      </strong>
+                    </button>
+                  ))
+                ) : (
+                  <p className="empty-copy">{teamCopy.noTeamMatch}</p>
+                )}
+              </div>
+            </section>
+
+            <section className="panel">
+              <p className="panel-label">{copy.dataState}</p>
+              <h2>{copy.pipelineNotes}</h2>
+              <div className="meta-grid">
+                <MetaItem
+                  label={copy.latestVerified}
+                  value={
+                    latestRelease
+                      ? `${latestRelease.group} · ${formatDisplayDate(latestRelease.date, displayDateFormatter)}`
+                      : copy.none
+                  }
+                />
+                <MetaItem
+                  label={copy.earliestInRange}
+                  value={
+                    earliestRelease
+                      ? `${earliestRelease.group} · ${formatDisplayDate(earliestRelease.date, displayDateFormatter)}`
+                      : copy.none
+                  }
+                />
+                <MetaItem
+                  label={copy.openQuestions}
+                  value={unresolved.length ? unresolved.map((item) => item.group).join(', ') : copy.none}
+                />
+              </div>
+            </section>
         </aside>
       </main>
       )}
@@ -1916,6 +1976,100 @@ function ReleaseChangeLogList({
             ) : (
               <span className="signal-link-muted">{copy.noSourceLink}</span>
             )}
+          </div>
+        </article>
+      ))}
+    </div>
+  )
+}
+
+function LongGapRadarList({
+  entries,
+  language,
+  displayDateFormatter,
+  onOpenTeamPage,
+}: {
+  entries: LongGapRadarEntry[]
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onOpenTeamPage: (group: string) => void
+}) {
+  const copy = TRANSLATIONS[language]
+  const teamCopy = TEAM_COPY[language]
+
+  if (!entries.length) {
+    return <p className="empty-copy">{copy.longGapRadarEmpty}</p>
+  }
+
+  return (
+    <div className="detail-list">
+      {entries.map((entry) => (
+        <article
+          key={entry.group}
+          className={[
+            'detail-card',
+            'detail-card-long-gap',
+            entry.hasUpcomingSignal ? 'detail-card-long-gap-signal' : 'detail-card-long-gap-idle',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        >
+          <div className="signal-head">
+            <TeamIdentity group={entry.group} variant="list" />
+            <div className="signal-tags">
+              <span className={`signal-badge signal-badge-watch-reason-${entry.watchReason}`}>
+                {formatWatchReason(entry.watchReason, language)}
+              </span>
+              <span
+                className={`signal-badge signal-badge-long-gap-${
+                  entry.hasUpcomingSignal ? 'signal' : 'idle'
+                }`}
+              >
+                {entry.hasUpcomingSignal ? copy.longGapSignalPresent : copy.longGapSignalMissing}
+              </span>
+            </div>
+          </div>
+          <h3>{entry.latestRelease.title}</h3>
+          <p className="signal-meta">
+            {copy.longGapLastRelease} · {formatOptionalDate(entry.latestRelease.date, displayDateFormatter, copy.none)} ·{' '}
+            {entry.latestRelease.verified ? teamCopy.verifiedRelease : teamCopy.watchlistFallback} ·{' '}
+            {copy.longGapElapsed} {formatGapDuration(entry.gapDays, language)}
+          </p>
+          {entry.latestSignal ? (
+            <div className="long-gap-signal">
+              <p className="long-gap-signal-label">{copy.longGapLatestSignal}</p>
+              <div className="signal-tags">
+                <span className={`signal-badge signal-badge-date-${entry.latestSignal.date_status}`}>
+                  {formatDateStatus(entry.latestSignal.date_status, language)}
+                </span>
+                <span
+                  className={`signal-badge signal-badge-confidence-${getConfidenceTone(entry.latestSignal.confidence)}`}
+                >
+                  {formatConfidenceTone(getConfidenceTone(entry.latestSignal.confidence), language)}
+                </span>
+                <ReleaseClassificationBadges
+                  releaseFormat={entry.latestSignal.release_format}
+                  contextTags={entry.latestSignal.context_tags}
+                  language={language}
+                />
+              </div>
+              <p className="long-gap-signal-headline">{entry.latestSignal.headline}</p>
+              <p className="signal-meta">
+                {formatSourceType(entry.latestSignal.source_type, language)} ·{' '}
+                {entry.latestSignal.source_domain || copy.sourceTypeLabels.pending} ·{' '}
+                {formatOptionalDate(entry.latestSignal.scheduled_date, displayDateFormatter, copy.none)}
+              </p>
+              {entry.latestSignal.evidence_summary ? (
+                <p className="signal-evidence">{entry.latestSignal.evidence_summary}</p>
+              ) : null}
+            </div>
+          ) : (
+            <p className="empty-copy">{copy.longGapLatestSignalEmpty}</p>
+          )}
+          <div className="detail-links">
+            <button type="button" className="inline-button" onClick={() => onOpenTeamPage(entry.group)}>
+              {teamCopy.action}
+            </button>
           </div>
         </article>
       ))}
@@ -2246,6 +2400,18 @@ function formatTimelineEventType(eventType: SourceTimelineEventType, language: L
   return TRANSLATIONS[language].timelineEventLabels[eventType]
 }
 
+function formatWatchReason(reason: WatchReason, language: Language) {
+  return TRANSLATIONS[language].watchReasonLabels[reason]
+}
+
+function formatGapDuration(days: number, language: Language) {
+  if (language === 'ko') {
+    return `${days}일`
+  }
+
+  return `${days} day${days === 1 ? '' : 's'}`
+}
+
 function getUpcomingCountdownState(item: UpcomingCandidateRow): CountdownState | null {
   if (
     !isExactDate(item.scheduled_date) ||
@@ -2482,6 +2648,83 @@ function buildTeamProfiles() {
       }
     })
     .sort(compareTeamProfiles)
+}
+
+function buildLongGapRadarEntries() {
+  return teamProfiles
+    .flatMap((team) => {
+      const watchRow = watchlistByGroup.get(team.group)
+      if (!watchRow || !isLongGapRadarWatchReason(watchRow.watch_reason)) {
+        return []
+      }
+
+      if (!team.latestRelease?.date || !isExactDate(team.latestRelease.date)) {
+        return []
+      }
+
+      const gapDays = getElapsedDaysSinceDate(team.latestRelease.date)
+      if (watchRow.watch_reason === 'long_gap' && gapDays < LONG_GAP_THRESHOLD_DAYS) {
+        return []
+      }
+
+      return [
+        {
+          group: team.group,
+          watchReason: watchRow.watch_reason,
+          latestRelease: team.latestRelease,
+          gapDays,
+          hasUpcomingSignal: team.upcomingSignals.length > 0,
+          latestSignal: pickLongGapRadarSignal(team.upcomingSignals),
+        },
+      ]
+    })
+    .sort(compareLongGapRadarEntries)
+}
+
+function pickLongGapRadarSignal(rows: UpcomingCandidateRow[]) {
+  return [...rows].sort(compareLongGapRadarSignals)[0] ?? null
+}
+
+function compareLongGapRadarEntries(left: LongGapRadarEntry, right: LongGapRadarEntry) {
+  if (left.hasUpcomingSignal !== right.hasUpcomingSignal) {
+    return left.hasUpcomingSignal ? -1 : 1
+  }
+
+  const leftConfidence = left.latestSignal?.confidence ?? -1
+  const rightConfidence = right.latestSignal?.confidence ?? -1
+  if (leftConfidence !== rightConfidence) {
+    return rightConfidence - leftConfidence
+  }
+
+  const leftOccurredAt = left.latestSignal ? getSourceTimelineSortValue(getSignalOccurredAt(left.latestSignal)) : -1
+  const rightOccurredAt = right.latestSignal ? getSourceTimelineSortValue(getSignalOccurredAt(right.latestSignal)) : -1
+  if (leftOccurredAt !== rightOccurredAt) {
+    return rightOccurredAt - leftOccurredAt
+  }
+
+  if (left.gapDays !== right.gapDays) {
+    return right.gapDays - left.gapDays
+  }
+
+  return left.group.localeCompare(right.group)
+}
+
+function compareLongGapRadarSignals(left: UpcomingCandidateRow, right: UpcomingCandidateRow) {
+  const leftOccurredAt = getSourceTimelineSortValue(getSignalOccurredAt(left))
+  const rightOccurredAt = getSourceTimelineSortValue(getSignalOccurredAt(right))
+  if (leftOccurredAt !== rightOccurredAt) {
+    return rightOccurredAt - leftOccurredAt
+  }
+
+  if (left.confidence !== right.confidence) {
+    return right.confidence - left.confidence
+  }
+
+  return compareUpcomingSignals(left, right)
+}
+
+function isLongGapRadarWatchReason(reason: WatchReason) {
+  return reason === 'long_gap' || reason === 'manual_watch'
 }
 
 function buildSearchIndexByGroup() {
@@ -2946,6 +3189,14 @@ function getCountdownDays(value: string) {
   const now = new Date()
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
   return Math.round((targetDate.getTime() - today.getTime()) / (24 * 60 * 60 * 1000))
+}
+
+function getElapsedDaysSinceDate(value: string) {
+  const [year, month, day] = value.split('-').map(Number)
+  const targetDate = new Date(year, month - 1, day)
+  const now = new Date()
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  return Math.max(0, Math.round((today.getTime() - targetDate.getTime()) / (24 * 60 * 60 * 1000)))
 }
 
 function getAlbumKey(item: VerifiedRelease) {
