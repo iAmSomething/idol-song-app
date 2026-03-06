@@ -10,6 +10,7 @@ type ReleaseFact = {
   date: string
   source: string
   release_kind: 'single' | 'album' | 'ep'
+  music_handoffs?: MusicHandoffUrls
 }
 
 type ReleaseRow = {
@@ -78,6 +79,18 @@ type CalendarDay = {
   inMonth: boolean
 }
 
+type MusicService = 'spotify' | 'youtube_music'
+
+type MusicHandoffMode = 'canonical' | 'search'
+
+type MusicHandoffUrls = Partial<Record<MusicService, string>>
+
+type MusicHandoffLink = {
+  service: MusicService
+  href: string
+  mode: MusicHandoffMode
+}
+
 type TeamLatestRelease = {
   title: string
   date: string
@@ -85,6 +98,7 @@ type TeamLatestRelease = {
   streamLabel: string
   source: string
   artistSource: string
+  musicHandoffs?: MusicHandoffUrls
   verified: boolean
 }
 
@@ -161,6 +175,15 @@ const TRANSLATIONS = {
     sourceLink: '출처 링크',
     noSourceLink: '출처 링크 없음',
     open: '열기',
+    musicServices: {
+      spotify: 'Spotify',
+      youtube_music: 'YouTube Music',
+    },
+    handoffModeLabels: {
+      canonical: '직접 링크',
+      search: '검색 열기',
+    },
+    handoffHint: '앱 안에서 직접 재생하지 않고 새 탭으로 외부 서비스로 이동합니다.',
     recentFeed: '최근 피드',
     newestReleasesFirst: '최신 발매 순',
     dataState: '데이터 상태',
@@ -247,6 +270,15 @@ const TRANSLATIONS = {
     sourceLink: 'Source link',
     noSourceLink: 'No source link',
     open: 'Open',
+    musicServices: {
+      spotify: 'Spotify',
+      youtube_music: 'YouTube Music',
+    },
+    handoffModeLabels: {
+      canonical: 'Direct link',
+      search: 'Search fallback',
+    },
+    handoffHint: 'Opens in a new tab without in-app playback.',
     recentFeed: 'Recent feed',
     newestReleasesFirst: 'Newest releases first',
     dataState: 'Data state',
@@ -391,6 +423,7 @@ const TEAM_COPY = {
 const releaseKindOptions = ['all', 'single', 'album', 'ep'] as const
 const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
+const MUSIC_HANDOFF_SERVICES: MusicService[] = ['spotify', 'youtube_music']
 
 const releaseCatalog = releaseRows as ReleaseRow[]
 const releases = releaseCatalog
@@ -680,7 +713,6 @@ function App() {
               ) : null}
             </div>
             <p className="team-footnote">{teamCopy.footnote}</p>
-            <p className="team-footnote">{teamCopy.footnote}</p>
           </section>
 
           <div className="team-page-body">
@@ -768,6 +800,13 @@ function App() {
                         </a>
                       ) : null}
                     </div>
+                    <MusicHandoffRow
+                      group={selectedTeam.group}
+                      title={selectedTeam.latestRelease.title}
+                      canonicalUrls={selectedTeam.latestRelease.musicHandoffs}
+                      language={language}
+                      showHint
+                    />
                   </article>
                 ) : (
                   <p className="empty-copy">{teamCopy.latestEmptyTitle}</p>
@@ -780,17 +819,25 @@ function App() {
                 {selectedTeam.recentAlbums.length ? (
                   <div className="album-grid">
                     {selectedTeam.recentAlbums.map((item) => (
-                      <button
-                        type="button"
-                        key={getAlbumKey(item)}
-                        className="album-card"
-                        onClick={() => setSelectedAlbumKey(getAlbumKey(item))}
-                      >
-                        <span className="album-card-kicker">{item.release_kind}</span>
-                        <strong>{item.title}</strong>
-                        <span>{formatOptionalDate(item.date, displayDateFormatter, copy.none)}</span>
-                        <span className="album-card-meta">{teamCopy.openAlbumDetail}</span>
-                      </button>
+                      <article key={getAlbumKey(item)} className="album-card-shell">
+                        <button
+                          type="button"
+                          className="album-card"
+                          onClick={() => setSelectedAlbumKey(getAlbumKey(item))}
+                        >
+                          <span className="album-card-kicker">{item.release_kind}</span>
+                          <strong>{item.title}</strong>
+                          <span>{formatOptionalDate(item.date, displayDateFormatter, copy.none)}</span>
+                          <span className="album-card-meta">{teamCopy.openAlbumDetail}</span>
+                        </button>
+                        <MusicHandoffRow
+                          group={selectedTeam.group}
+                          title={item.title}
+                          canonicalUrls={item.music_handoffs}
+                          language={language}
+                          compact
+                        />
+                      </article>
                     ))}
                   </div>
                 ) : (
@@ -1051,6 +1098,13 @@ function App() {
                         {teamCopy.action}
                       </button>
                     </div>
+                    <MusicHandoffRow
+                      group={item.group}
+                      title={item.title}
+                      canonicalUrls={item.music_handoffs}
+                      language={language}
+                      compact
+                    />
                   </article>
                   ) : (
                   <article
@@ -1117,6 +1171,13 @@ function App() {
                         {teamCopy.action}
                       </button>
                     </div>
+                    <MusicHandoffRow
+                      group={item.group}
+                      title={item.title}
+                      canonicalUrls={item.music_handoffs}
+                      language={language}
+                      compact
+                    />
                   </div>
                   <time>{shortDateFormatter.format(item.dateValue)}</time>
                 </article>
@@ -1262,6 +1323,7 @@ function AlbumDrawer({
           <p className="hero-text drawer-copy">{teamCopy.trackPreviewHint}</p>
         </section>
 
+        <p className="hero-text drawer-copy">{teamCopy.drawerCopy}</p>
         <div className="detail-links detail-links-stack">
           <a href={album.source} target="_blank" rel="noreferrer">
             {copy.releaseSource}
@@ -1271,16 +1333,55 @@ function AlbumDrawer({
           </a>
         </div>
 
-        <div className="handoff-row">
-          <button type="button" className="stub-button" disabled>
-            {teamCopy.appleMusicNext}
-          </button>
-          <button type="button" className="stub-button" disabled>
-            {teamCopy.spotifyNext}
-          </button>
-        </div>
+        <MusicHandoffRow
+          group={group}
+          title={album.title}
+          canonicalUrls={album.music_handoffs}
+          language={language}
+          showHint
+        />
       </aside>
     </div>
+  )
+}
+
+function MusicHandoffRow({
+  group,
+  title,
+  canonicalUrls,
+  language,
+  compact = false,
+  showHint = false,
+}: {
+  group: string
+  title: string
+  canonicalUrls?: MusicHandoffUrls
+  language: Language
+  compact?: boolean
+  showHint?: boolean
+}) {
+  const copy = TRANSLATIONS[language]
+  const links = buildMusicHandoffLinks(group, title, canonicalUrls)
+
+  return (
+    <>
+      <div className={`handoff-row ${compact ? 'handoff-row-compact' : ''}`}>
+        {links.map((link) => (
+          <a
+            key={`${group}-${title}-${link.service}`}
+            href={link.href}
+            target="_blank"
+            rel="noreferrer"
+            className={`handoff-link handoff-link-${link.mode}`}
+            aria-label={`${copy.musicServices[link.service]} · ${copy.handoffModeLabels[link.mode]}`}
+          >
+            <span>{copy.musicServices[link.service]}</span>
+            <strong>{copy.handoffModeLabels[link.mode]}</strong>
+          </a>
+        ))}
+      </div>
+      {showHint ? <p className="handoff-note">{copy.handoffHint}</p> : null}
+    </>
   )
 }
 
@@ -1433,6 +1534,29 @@ function formatConfidenceTone(tone: ReturnType<typeof getConfidenceTone>, langua
   return TRANSLATIONS[language].confidenceToneLabels[tone]
 }
 
+function buildMusicHandoffLinks(
+  group: string,
+  title: string,
+  canonicalUrls?: MusicHandoffUrls,
+): MusicHandoffLink[] {
+  const query = `${group} ${title}`.trim()
+
+  return MUSIC_HANDOFF_SERVICES.map((service) => ({
+    service,
+    href: canonicalUrls?.[service] || buildMusicSearchUrl(service, query),
+    mode: canonicalUrls?.[service] ? 'canonical' : 'search',
+  }))
+}
+
+function buildMusicSearchUrl(service: MusicService, query: string) {
+  const encodedQuery = encodeURIComponent(query)
+  if (service === 'spotify') {
+    return `https://open.spotify.com/search/${encodedQuery}`
+  }
+
+  return `https://music.youtube.com/search?q=${encodedQuery}`
+}
+
 function buildTeamProfiles() {
   return Array.from(
     new Set([
@@ -1480,6 +1604,7 @@ function deriveLatestRelease(
       streamLabel: latestVerified.stream,
       source: latestVerified.source,
       artistSource: latestVerified.artist_source,
+      musicHandoffs: latestVerified.music_handoffs,
       verified: true,
     }
   }
