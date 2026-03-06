@@ -5,17 +5,30 @@ import unresolvedRows from './data/unresolved.json'
 import upcomingCandidateRows from './data/upcomingCandidates.json'
 import watchlistRows from './data/watchlist.json'
 
+type ReleaseFact = {
+  title: string
+  date: string
+  source: string
+  release_kind: 'single' | 'album' | 'ep'
+}
+
 type ReleaseRow = {
   group: string
   artist_name_mb: string
   artist_mbid: string
-  latest_release_song: string
-  latest_release_date: string
-  latest_release_source: string
-  nearest_comeback_date: string
-  nearest_comeback_song: string
-  nearest_comeback_source: string
   artist_source: string
+  latest_song: ReleaseFact | null
+  latest_album: ReleaseFact | null
+}
+
+type VerifiedRelease = ReleaseFact & {
+  group: string
+  artist_name_mb: string
+  artist_mbid: string
+  artist_source: string
+  stream: 'song' | 'album'
+  dateValue: Date
+  isoDate: string
 }
 
 type UnresolvedRow = {
@@ -40,8 +53,9 @@ type WatchlistRow = {
   group: string
   tier: string
   tracking_status: string
-  latest_release_song: string
+  latest_release_title: string
   latest_release_date: string
+  latest_release_kind: string
   x_url: string
   instagram_url: string
   search_terms: string[]
@@ -53,10 +67,9 @@ type CalendarDay = {
   inMonth: boolean
 }
 
-const releases = (releaseRows as ReleaseRow[]).map((row) => ({
-  ...row,
-  date: new Date(`${row.latest_release_date}T00:00:00`),
-}))
+const releases = (releaseRows as ReleaseRow[])
+  .flatMap((row) => expandReleaseRow(row))
+  .sort((left, right) => right.dateValue.getTime() - left.dateValue.getTime())
 
 const unresolved = unresolvedRows as UnresolvedRow[]
 const watchlist = watchlistRows as WatchlistRow[]
@@ -87,12 +100,10 @@ const weekdays = Array.from({ length: 7 }, (_, index) => {
   return weekdayFormatter.format(reference)
 })
 
-const sortedReleases = [...releases].sort((left, right) => right.date.getTime() - left.date.getTime())
-
 const monthKeys = Array.from(
   new Set(
-    sortedReleases.map((item) => {
-      return getMonthKey(item.date)
+    releases.map((item) => {
+      return getMonthKey(item.dateValue)
     }),
   ),
 ).sort()
@@ -108,16 +119,13 @@ function App() {
   const [selectedDayIso, setSelectedDayIso] = useState('')
   const [search, setSearch] = useState('')
 
-  const filteredReleases = sortedReleases.filter((item) => {
+  const filteredReleases = releases.filter((item) => {
     const needle = search.trim().toLowerCase()
     if (!needle) {
       return true
     }
 
-    return (
-      item.group.toLowerCase().includes(needle) ||
-      item.latest_release_song.toLowerCase().includes(needle)
-    )
+    return item.group.toLowerCase().includes(needle) || item.title.toLowerCase().includes(needle)
   })
 
   const filteredUpcoming = upcomingCandidates.filter((item) => {
@@ -135,12 +143,12 @@ function App() {
   const selectedMonthDate = monthKeyToDate(selectedMonthKey)
   const monthDays = buildCalendarDays(selectedMonthDate)
   const releasesByDate = groupByDate(filteredReleases)
-  const monthReleases = filteredReleases.filter((item) => getMonthKey(item.date) === selectedMonthKey)
+  const monthReleases = filteredReleases.filter((item) => getMonthKey(item.dateValue) === selectedMonthKey)
 
   const effectiveSelectedDayIso =
     selectedDayIso && releasesByDate.has(selectedDayIso)
       ? selectedDayIso
-      : monthReleases[0]?.latest_release_date ?? filteredReleases[0]?.latest_release_date ?? ''
+      : monthReleases[0]?.isoDate ?? filteredReleases[0]?.isoDate ?? ''
 
   const selectedDayReleases = effectiveSelectedDayIso
     ? releasesByDate.get(effectiveSelectedDayIso) ?? []
@@ -203,16 +211,16 @@ function App() {
 
           <div className="toolbar">
             <label className="search-field">
-              <span>Search group or song</span>
+              <span>Search group, song, or album</span>
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
-                placeholder="BLACKPINK, Hearts2Hearts, RUDE!, WJSN..."
+                placeholder="BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!..."
               />
             </label>
             <div className="summary-pill">
               <span>{monthReleases.length}</span>
-              <span>releases in this month</span>
+              <span>verified events in this month</span>
             </div>
           </div>
 
@@ -254,7 +262,7 @@ function App() {
                     <span className="calendar-day-number">{day.date.getDate()}</span>
                     <div className="calendar-day-content">
                       {dayReleases.slice(0, 2).map((item) => (
-                        <span key={`${item.group}-${item.latest_release_song}`} className="release-chip">
+                        <span key={`${item.group}-${item.stream}-${item.title}`} className="release-chip">
                           {item.group}
                         </span>
                       ))}
@@ -305,13 +313,16 @@ function App() {
             <div className="detail-list">
               {selectedDayReleases.length ? (
                 selectedDayReleases.map((item) => (
-                  <article key={`${item.group}-${item.latest_release_song}`} className="detail-card">
+                  <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
                     <div>
-                      <p className="detail-group">{item.group}</p>
-                      <h3>{item.latest_release_song}</h3>
+                      <div className="signal-head">
+                        <p className="detail-group">{item.group}</p>
+                        <span className="signal-badge">{describeRelease(item)}</span>
+                      </div>
+                      <h3>{item.title}</h3>
                     </div>
                     <div className="detail-links">
-                      <a href={item.latest_release_source} target="_blank" rel="noreferrer">
+                      <a href={item.source} target="_blank" rel="noreferrer">
                         Release source
                       </a>
                       <a href={item.artist_source} target="_blank" rel="noreferrer">
@@ -331,12 +342,15 @@ function App() {
             <h2>Newest releases first</h2>
             <div className="feed-list">
               {filteredReleases.slice(0, 10).map((item) => (
-                <article key={`${item.group}-${item.latest_release_song}`} className="feed-row">
+                <article key={`${item.group}-${item.stream}-${item.title}`} className="feed-row">
                   <div>
-                    <p className="feed-group">{item.group}</p>
-                    <h3>{item.latest_release_song}</h3>
+                    <div className="signal-head">
+                      <p className="feed-group">{item.group}</p>
+                      <span className="signal-badge">{describeRelease(item)}</span>
+                    </div>
+                    <h3>{item.title}</h3>
                   </div>
-                  <time>{shortDateFormatter.format(item.date)}</time>
+                  <time>{shortDateFormatter.format(item.dateValue)}</time>
                 </article>
               ))}
             </div>
@@ -348,11 +362,11 @@ function App() {
             <div className="meta-grid">
               <MetaItem
                 label="Latest verified"
-                value={latestRelease ? `${latestRelease.group} · ${latestRelease.latest_release_date}` : 'n/a'}
+                value={latestRelease ? `${latestRelease.group} · ${latestRelease.date}` : 'n/a'}
               />
               <MetaItem
                 label="Earliest in range"
-                value={earliestRelease ? `${earliestRelease.group} · ${earliestRelease.latest_release_date}` : 'n/a'}
+                value={earliestRelease ? `${earliestRelease.group} · ${earliestRelease.date}` : 'n/a'}
               />
               <MetaItem label="Open questions" value={unresolved.map((item) => item.group).join(', ')} />
             </div>
@@ -398,6 +412,33 @@ function StatusPill({
   )
 }
 
+function expandReleaseRow(row: ReleaseRow): VerifiedRelease[] {
+  return (['latest_song', 'latest_album'] as const)
+    .flatMap((key) => {
+      const release = row[key]
+      if (!release) {
+        return []
+      }
+
+      return [
+        {
+          ...release,
+          group: row.group,
+          artist_name_mb: row.artist_name_mb,
+          artist_mbid: row.artist_mbid,
+          artist_source: row.artist_source,
+          stream: key === 'latest_song' ? 'song' : 'album',
+          dateValue: new Date(`${release.date}T00:00:00`),
+          isoDate: release.date,
+        },
+      ]
+    })
+}
+
+function describeRelease(item: VerifiedRelease) {
+  return `${item.stream} · ${item.release_kind}`
+}
+
 function getMonthKey(date: Date) {
   const year = date.getFullYear()
   const month = `${date.getMonth() + 1}`.padStart(2, '0')
@@ -434,11 +475,11 @@ function buildCalendarDays(date: Date): CalendarDay[] {
   return days
 }
 
-function groupByDate(rows: Array<ReleaseRow & { date: Date }>) {
-  return rows.reduce<Map<string, Array<ReleaseRow & { date: Date }>>>((map, row) => {
-    const bucket = map.get(row.latest_release_date) ?? []
+function groupByDate(rows: VerifiedRelease[]) {
+  return rows.reduce<Map<string, VerifiedRelease[]>>((map, row) => {
+    const bucket = map.get(row.isoDate) ?? []
     bucket.push(row)
-    map.set(row.latest_release_date, bucket)
+    map.set(row.isoDate, bucket)
     return map
   }, new Map())
 }
