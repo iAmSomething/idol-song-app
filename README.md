@@ -34,3 +34,12 @@ The workflow:
 - syncs refreshed JSON into the web app
 - runs a production build
 - commits data updates back to the repository if anything changed
+
+## GitHub Pages
+
+`.github/workflows/deploy-pages.yml` builds the React app in `web/` and deploys `web/dist` to GitHub Pages.
+
+It runs on:
+
+- manual dispatch
+- pushes to `main` that touch `web/**`
