@@ -413,6 +413,105 @@
   scroll-margin-top: 24px;
 }
 
+.monthly-dashboard,
+.monthly-dashboard-stack,
+.monthly-dashboard-section {
+  display: grid;
+  gap: 18px;
+}
+
+.monthly-dashboard-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.monthly-dashboard-month {
+  min-width: 180px;
+}
+
+.dashboard-table-shell {
+  display: block;
+  overflow-x: auto;
+  border: 1px solid rgba(27, 42, 65, 0.08);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.dashboard-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(27, 42, 65, 0.08);
+}
+
+.dashboard-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.dashboard-table th {
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  background: rgba(27, 42, 65, 0.04);
+}
+
+.dashboard-table td strong {
+  color: var(--text-strong);
+}
+
+.dashboard-source-link {
+  color: var(--accent-deep);
+}
+
+.dashboard-mobile-list {
+  display: none;
+  gap: 12px;
+}
+
+.dashboard-mobile-card {
+  display: grid;
+  gap: 10px;
+}
+
+.dashboard-mobile-actions {
+  margin-top: 4px;
+}
+
+.dashboard-service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dashboard-service-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(27, 42, 65, 0.1);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text-strong);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.dashboard-service-link-search {
+  border-style: dashed;
+  color: var(--text-soft);
+}
+
 .selected-day-panel-grid {
   display: grid;
   gap: 18px;
@@ -1489,6 +1588,10 @@
   .hero-topline {
     flex-direction: column;
   }
+
+  .monthly-dashboard-head {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1511,6 +1614,14 @@
   .toolbar {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .dashboard-table-shell {
+    display: none;
+  }
+
+  .dashboard-mobile-list {
+    display: grid;
   }
 
   .feed-row,
