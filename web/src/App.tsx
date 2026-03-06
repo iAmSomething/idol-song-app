@@ -845,6 +845,8 @@ function App() {
   const [selectedGroup, setSelectedGroup] = useState<string | null>(readSelectedGroupFromLocation)
   const [selectedAlbumKey, setSelectedAlbumKey] = useState<string | null>(null)
   const [selectedDayInteractionTick, setSelectedDayInteractionTick] = useState(0)
+  const [desktopUpcomingPanelHeight, setDesktopUpcomingPanelHeight] = useState<number | null>(null)
+  const calendarPanelRef = useRef<HTMLElement | null>(null)
   const selectedDayPanelRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
@@ -1040,6 +1042,44 @@ function App() {
       panelNode.classList.remove('selected-day-panel-highlight')
     }
   }, [selectedDayInteractionTick, effectiveSelectedDayIso])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || selectedGroup) {
+      return undefined
+    }
+
+    const calendarNode = calendarPanelRef.current
+    if (!calendarNode) {
+      return undefined
+    }
+
+    let frameId = 0
+    const syncUpcomingPanelHeight = () => {
+      cancelAnimationFrame(frameId)
+      frameId = window.requestAnimationFrame(() => {
+        if (window.innerWidth <= 1180) {
+          setDesktopUpcomingPanelHeight(null)
+          return
+        }
+
+        const nextHeight = Math.ceil(calendarNode.getBoundingClientRect().height)
+        setDesktopUpcomingPanelHeight((currentHeight) => (currentHeight === nextHeight ? currentHeight : nextHeight))
+      })
+    }
+
+    syncUpcomingPanelHeight()
+
+    const resizeObserver =
+      typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => syncUpcomingPanelHeight()) : null
+    resizeObserver?.observe(calendarNode)
+    window.addEventListener('resize', syncUpcomingPanelHeight)
+
+    return () => {
+      cancelAnimationFrame(frameId)
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', syncUpcomingPanelHeight)
+    }
+  }, [selectedGroup])
 
   function openTeamPage(group: string) {
     setSelectedGroup(group)
@@ -1458,7 +1498,7 @@ function App() {
       ) : (
         <main className="layout">
           <div className="layout-main-column">
-            <section className="panel panel-calendar">
+            <section ref={calendarPanelRef} className="panel panel-calendar">
               <div className="panel-top">
                 <div>
                   <p className="panel-label">{copy.monthlyGrid}</p>
@@ -1629,63 +1669,76 @@ function App() {
           </div>
 
           <aside className="sidebar">
-            <section className="panel">
-              <p className="panel-label">{copy.upcomingScan}</p>
-              <h2>{copy.upcomingTitle}</h2>
-              <div className="feed-list">
+            <section
+              className="panel sidebar-upcoming-panel"
+              style={desktopUpcomingPanelHeight ? { height: `${desktopUpcomingPanelHeight}px` } : undefined}
+            >
+              <div className="sidebar-upcoming-panel-head">
+                <div>
+                  <p className="panel-label">{copy.upcomingScan}</p>
+                  <h2>{copy.upcomingTitle}</h2>
+                </div>
+                <span className="sidebar-panel-count">{filteredUpcoming.length}</span>
+              </div>
+              <div className="sidebar-upcoming-panel-body">
                 {filteredUpcoming.length ? (
-                  filteredUpcoming.slice(0, 10).map((item) => (
-                    <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row">
-                      <div>
-                        <div className="signal-head">
-                          <TeamIdentity group={item.group} variant="list" />
-                          <div className="signal-tags">
-                            <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
-                            <span className={`signal-badge signal-badge-${item.tracking_status}`}>
-                              {formatTrackingStatus(item.tracking_status, language)}
-                            </span>
-                            <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
-                              {formatDateStatus(item.date_status, language)}
-                            </span>
-                            <span
-                              className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
-                            >
-                              {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
-                            </span>
-                            <ReleaseChangeBadge group={item.group} language={language} />
-                            <ReleaseClassificationBadges
-                              releaseFormat={item.release_format}
-                              contextTags={item.context_tags}
-                              language={language}
-                            />
+                  <div className="feed-list">
+                    {filteredUpcoming.map((item) => (
+                      <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row signal-row-compact">
+                        <div>
+                          <div className="signal-head">
+                            <TeamIdentity group={item.group} variant="list" />
+                            <div className="signal-tags">
+                              <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
+                              <span className={`signal-badge signal-badge-${item.tracking_status}`}>
+                                {formatTrackingStatus(item.tracking_status, language)}
+                              </span>
+                              <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
+                                {formatDateStatus(item.date_status, language)}
+                              </span>
+                              <span
+                                className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
+                              >
+                                {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
+                              </span>
+                              <ReleaseChangeBadge group={item.group} language={language} />
+                              <ReleaseClassificationBadges
+                                releaseFormat={item.release_format}
+                                contextTags={item.context_tags}
+                                language={language}
+                              />
+                            </div>
+                          </div>
+                          <h3>{item.headline}</h3>
+                          <p className="signal-meta">
+                            {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending} ·{' '}
+                            {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
+                          </p>
+                          {formatUpcomingEvidenceMeta(item, language) ? (
+                            <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
+                          ) : null}
+                          {item.evidence_summary ? (
+                            <p className="signal-evidence">{item.evidence_summary}</p>
+                          ) : null}
+                          <div className="row-actions">
+                            <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
+                              {teamCopy.action}
+                            </button>
                           </div>
                         </div>
-                        <h3>{item.headline}</h3>
-                        <p className="signal-meta">
-                          {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending} ·{' '}
-                          {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
-                        </p>
-                        {item.evidence_summary ? (
-                          <p className="signal-evidence">{item.evidence_summary}</p>
-                        ) : null}
-                        <div className="row-actions">
-                          <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
-                            {teamCopy.action}
-                          </button>
+                        <div className="signal-date-wrap">
+                          <time>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</time>
+                          {item.source_url ? (
+                            <a href={item.source_url} target="_blank" rel="noreferrer">
+                              {copy.open}
+                            </a>
+                          ) : (
+                            <span className="signal-link-muted">{copy.noSourceLink}</span>
+                          )}
                         </div>
-                      </div>
-                      <div className="signal-date-wrap">
-                        <time>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</time>
-                        {item.source_url ? (
-                          <a href={item.source_url} target="_blank" rel="noreferrer">
-                            {copy.open}
-                          </a>
-                        ) : (
-                          <span className="signal-link-muted">{copy.noSourceLink}</span>
-                        )}
-                      </div>
-                    </article>
-                  ))
+                      </article>
+                    ))}
+                  </div>
                 ) : (
                   <p className="empty-copy">{copy.noUpcomingCandidates}</p>
                 )}
