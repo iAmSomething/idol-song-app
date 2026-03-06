@@ -188,6 +188,8 @@ type AgencyMonthSection = {
 }
 
 const WEEKLY_DIGEST_MAX_ITEMS = 8
+const DAILY_SHARE_VERIFIED_LIMIT = 6
+const DAILY_SHARE_UPCOMING_LIMIT = 4
 
 type RelatedActsOverrideRow = {
   group: string
@@ -466,6 +468,20 @@ const TRANSLATIONS = {
     selectedDayScheduled: '예정 컴백',
     selectedDayVerifiedEmpty: '이 날짜에 검증된 발매가 없습니다.',
     selectedDayScheduledEmpty: '이 날짜에 예정 컴백이 없습니다.',
+    shareCardLabel: '공유 카드',
+    shareCardTitle: '원데이 스냅샷 공유',
+    shareCardHint: '브라우저 공유를 열거나 텍스트를 복사한 뒤, 아래 카드를 그대로 캡처해 보낼 수 있습니다.',
+    shareCardShare: '공유',
+    shareCardShareFallback: '공유 텍스트 복사',
+    shareCardCopySummary: '요약 복사',
+    shareCardCopySuccess: '공유 텍스트를 복사했습니다.',
+    shareCardSummaryCopied: '요약을 복사했습니다.',
+    shareCardUnavailable: '이 브라우저에서는 공유나 복사를 사용할 수 없습니다.',
+    shareCardBrand: 'Idol Song App',
+    shareCardBrandServices: 'Spotify · YouTube Music · YouTube MV',
+    shareCardCaptureHint: '아래 카드는 브라우저 공유나 캡처 전달을 기준으로 정리됩니다.',
+    shareCardVerifiedEmpty: '표시할 verified release 없음',
+    shareCardScheduledEmpty: '표시할 scheduled comeback 없음',
     noFilteredMatches: '현재 검색어와 필터 조합에 맞는 월간 항목이 없습니다.',
     releaseSource: '발매 출처',
     artistSource: '아티스트 출처',
@@ -658,6 +674,20 @@ const TRANSLATIONS = {
     selectedDayScheduled: 'Scheduled comebacks',
     selectedDayVerifiedEmpty: 'No verified releases on this date.',
     selectedDayScheduledEmpty: 'No scheduled comebacks on this date.',
+    shareCardLabel: 'Share card',
+    shareCardTitle: 'One-day share snapshot',
+    shareCardHint: 'Open native share, copy the summary text, or send the card below as a screenshot.',
+    shareCardShare: 'Share',
+    shareCardShareFallback: 'Copy share text',
+    shareCardCopySummary: 'Copy summary',
+    shareCardCopySuccess: 'Copied share text.',
+    shareCardSummaryCopied: 'Copied summary.',
+    shareCardUnavailable: 'Sharing and clipboard copy are unavailable in this browser.',
+    shareCardBrand: 'Idol Song App',
+    shareCardBrandServices: 'Spotify · YouTube Music · YouTube MV',
+    shareCardCaptureHint: 'This card is tuned for browser share or a quick screenshot.',
+    shareCardVerifiedEmpty: 'No verified releases to show',
+    shareCardScheduledEmpty: 'No scheduled comebacks to show',
     noFilteredMatches: 'No monthly items match this search and filter combination.',
     releaseSource: 'Release source',
     artistSource: 'Artist source',
@@ -3952,6 +3982,179 @@ function ReleaseClassificationBadges({
   )
 }
 
+function DailyShareCard({
+  dateLabel,
+  releases,
+  upcomingSignals,
+  language,
+}: {
+  dateLabel: string
+  releases: VerifiedRelease[]
+  upcomingSignals: DatedUpcomingSignal[]
+  language: Language
+}) {
+  const copy = TRANSLATIONS[language]
+  const shareReleases = releases.slice(0, DAILY_SHARE_VERIFIED_LIMIT)
+  const shareUpcomingSignals = upcomingSignals.slice(0, DAILY_SHARE_UPCOMING_LIMIT)
+  const hiddenReleaseCount = Math.max(releases.length - shareReleases.length, 0)
+  const hiddenUpcomingCount = Math.max(upcomingSignals.length - shareUpcomingSignals.length, 0)
+  const [shareFeedback, setShareFeedback] = useState<string | null>(null)
+  const canUseNativeShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function'
+  const canCopyText = typeof navigator !== 'undefined' && typeof navigator.clipboard?.writeText === 'function'
+
+  useEffect(() => {
+    if (!shareFeedback) {
+      return undefined
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setShareFeedback(null)
+    }, 2400)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [shareFeedback])
+
+  const shareText = buildDailyShareText({
+    dateLabel,
+    releases,
+    upcomingSignals,
+    language,
+  })
+
+  const handleCopyText = async (text: string, successMessage: string) => {
+    if (!canCopyText) {
+      setShareFeedback(copy.shareCardUnavailable)
+      return
+    }
+
+    try {
+      await navigator.clipboard.writeText(text)
+      setShareFeedback(successMessage)
+    } catch {
+      setShareFeedback(copy.shareCardUnavailable)
+    }
+  }
+
+  const handleShare = async () => {
+    if (canUseNativeShare) {
+      try {
+        await navigator.share({
+          title: `${dateLabel} | ${copy.shareCardBrand}`,
+          text: shareText,
+        })
+        return
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return
+        }
+      }
+    }
+
+    await handleCopyText(shareText, copy.shareCardCopySuccess)
+  }
+
+  return (
+    <section className="daily-share-shell">
+      <div className="daily-share-head">
+        <div>
+          <p className="panel-label">{copy.shareCardLabel}</p>
+          <h3>{copy.shareCardTitle}</h3>
+          <p className="hero-text daily-share-copy">{copy.shareCardHint}</p>
+        </div>
+        <div className="daily-share-actions">
+          <ActionButton variant="primary" onClick={() => void handleShare()}>
+            {canUseNativeShare ? copy.shareCardShare : copy.shareCardShareFallback}
+          </ActionButton>
+          <ActionButton variant="secondary" onClick={() => void handleCopyText(shareText, copy.shareCardSummaryCopied)}>
+            {copy.shareCardCopySummary}
+          </ActionButton>
+        </div>
+      </div>
+
+      {shareFeedback ? (
+        <p className="daily-share-feedback" role="status" aria-live="polite">
+          {shareFeedback}
+        </p>
+      ) : null}
+
+      <article className="daily-share-card">
+        <div className="daily-share-brand-row">
+          <span>{copy.shareCardBrand}</span>
+          <span>{copy.shareCardBrandServices}</span>
+        </div>
+
+        <div className="daily-share-date-row">
+          <div>
+            <p className="panel-label">{copy.selectedDay}</p>
+            <h3>{dateLabel}</h3>
+          </div>
+          <div className="daily-share-counts">
+            <span>
+              {copy.selectedDayVerified} {releases.length}
+            </span>
+            <span>
+              {copy.selectedDayScheduled} {upcomingSignals.length}
+            </span>
+          </div>
+        </div>
+
+        <div className="daily-share-grid">
+          <section className="daily-share-column">
+            <div className="selected-day-panel-head">
+              <h4>{copy.selectedDayVerified}</h4>
+              <span className="selected-day-panel-count">{shareReleases.length}</span>
+            </div>
+            <ul className="daily-share-list">
+              {shareReleases.length ? (
+                shareReleases.map((item) => (
+                  <li key={`${item.group}-${item.stream}-${item.title}`} className="daily-share-item">
+                    <strong>{getTeamDisplayName(item.group)}</strong>
+                    <span>{item.title}</span>
+                    <small>{describeRelease(item, language)}</small>
+                  </li>
+                ))
+              ) : (
+                <li className="daily-share-item daily-share-item-empty">{copy.shareCardVerifiedEmpty}</li>
+              )}
+            </ul>
+            {hiddenReleaseCount ? (
+              <p className="daily-share-overflow">{formatDailyShareOverflow(hiddenReleaseCount, language)}</p>
+            ) : null}
+          </section>
+
+          <section className="daily-share-column">
+            <div className="selected-day-panel-head">
+              <h4>{copy.selectedDayScheduled}</h4>
+              <span className="selected-day-panel-count">{shareUpcomingSignals.length}</span>
+            </div>
+            <ul className="daily-share-list">
+              {shareUpcomingSignals.length ? (
+                shareUpcomingSignals.map((item) => (
+                  <li key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="daily-share-item">
+                    <strong>{getTeamDisplayName(item.group)}</strong>
+                    <span>{item.headline}</span>
+                    <small>
+                      {formatDateStatus(item.date_status, language)}
+                      {item.release_format ? ` · ${formatReleaseFormat(item.release_format, language)}` : ''}
+                    </small>
+                  </li>
+                ))
+              ) : (
+                <li className="daily-share-item daily-share-item-empty">{copy.shareCardScheduledEmpty}</li>
+              )}
+            </ul>
+            {hiddenUpcomingCount ? (
+              <p className="daily-share-overflow">{formatDailyShareOverflow(hiddenUpcomingCount, language)}</p>
+            ) : null}
+          </section>
+        </div>
+
+        <p className="daily-share-footer">{copy.shareCardCaptureHint}</p>
+      </article>
+    </section>
+  )
+}
+
 function SelectedDayPanel({
   className,
   panelRef,
@@ -3980,6 +4183,7 @@ function SelectedDayPanel({
     <section ref={panelRef} className={['panel', 'selected-day-panel', className].filter(Boolean).join(' ')}>
       <p className="panel-label">{copy.selectedDay}</p>
       <h2>{dateLabel}</h2>
+      <DailyShareCard dateLabel={dateLabel} releases={releases} upcomingSignals={upcomingSignals} language={language} />
       <div className="selected-day-panel-grid">
         <div className="selected-day-panel-section">
           <div className="selected-day-panel-head">
@@ -4250,6 +4454,53 @@ function expandUpcomingCandidate(row: UpcomingCandidateRow): DatedUpcomingSignal
 function describeRelease(item: VerifiedRelease, language: Language) {
   const copy = TRANSLATIONS[language]
   return `${copy.streamLabels[item.stream]} · ${formatReleaseFormat(item.release_format, language)}`
+}
+
+function buildDailyShareText({
+  dateLabel,
+  releases,
+  upcomingSignals,
+  language,
+}: {
+  dateLabel: string
+  releases: VerifiedRelease[]
+  upcomingSignals: DatedUpcomingSignal[]
+  language: Language
+}) {
+  const copy = TRANSLATIONS[language]
+  const releaseLines = releases.slice(0, DAILY_SHARE_VERIFIED_LIMIT).map((item) => {
+    return `- ${getTeamDisplayName(item.group)} | ${item.title} | ${describeRelease(item, language)}`
+  })
+  const upcomingLines = upcomingSignals.slice(0, DAILY_SHARE_UPCOMING_LIMIT).map((item) => {
+    const releaseFormat = formatReleaseFormat(item.release_format, language)
+    return `- ${getTeamDisplayName(item.group)} | ${item.headline} | ${formatDateStatus(item.date_status, language)}${
+      releaseFormat ? ` | ${releaseFormat}` : ''
+    }`
+  })
+
+  const lines = [
+    `${copy.shareCardBrand} | ${dateLabel}`,
+    '',
+    `${copy.selectedDayVerified} (${releases.length})`,
+    ...(releaseLines.length ? releaseLines : [`- ${copy.shareCardVerifiedEmpty}`]),
+    ...(releases.length > DAILY_SHARE_VERIFIED_LIMIT
+      ? [formatDailyShareOverflow(releases.length - DAILY_SHARE_VERIFIED_LIMIT, language)]
+      : []),
+    '',
+    `${copy.selectedDayScheduled} (${upcomingSignals.length})`,
+    ...(upcomingLines.length ? upcomingLines : [`- ${copy.shareCardScheduledEmpty}`]),
+    ...(upcomingSignals.length > DAILY_SHARE_UPCOMING_LIMIT
+      ? [formatDailyShareOverflow(upcomingSignals.length - DAILY_SHARE_UPCOMING_LIMIT, language)]
+      : []),
+    '',
+    copy.shareCardBrandServices,
+  ]
+
+  return lines.join('\n')
+}
+
+function formatDailyShareOverflow(count: number, language: Language) {
+  return language === 'ko' ? `+${count}개 더` : `+${count} more`
 }
 
 function formatFilterOption(option: string, language: Language) {
