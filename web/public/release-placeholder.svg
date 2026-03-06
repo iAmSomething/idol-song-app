@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Release placeholder artwork</title>
+  <desc id="desc">Placeholder image used when release cover art is unavailable.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7d2a0" />
+      <stop offset="55%" stop-color="#c35831" />
+      <stop offset="100%" stop-color="#1b2a41" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)" rx="120" />
+  <circle cx="920" cy="260" r="210" fill="rgba(255,255,255,0.16)" />
+  <circle cx="220" cy="960" r="240" fill="rgba(255,255,255,0.12)" />
+  <g fill="#fffaf3" font-family="Georgia, serif">
+    <text x="120" y="420" font-size="84" letter-spacing="18">IDOL SONG APP</text>
+    <text x="120" y="585" font-size="230" font-weight="700">NO COVER</text>
+    <text x="120" y="700" font-size="72" letter-spacing="10">PLACEHOLDER ARTWORK</text>
+  </g>
+</svg>
