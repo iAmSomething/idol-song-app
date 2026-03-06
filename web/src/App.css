@@ -114,6 +114,118 @@
   line-height: 1;
 }
 
+.context-header {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.context-header-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 24px;
+  align-items: start;
+}
+
+.context-header-copy h1 {
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 0.96;
+}
+
+.context-header-controls {
+  display: grid;
+  gap: 12px;
+}
+
+.context-header-utility-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.context-filter-grid,
+.context-summary-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.context-filter-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.context-summary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.context-summary-card,
+.context-highlight-card {
+  border: 1px solid rgba(27, 42, 65, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.context-summary-card {
+  display: grid;
+  gap: 8px;
+  min-height: 112px;
+  border-radius: 20px;
+  padding: 16px 18px;
+}
+
+.context-summary-card span {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+.context-summary-card strong {
+  font-size: clamp(1.2rem, 2.8vw, 1.9rem);
+  line-height: 1.1;
+  color: var(--text-strong);
+}
+
+.context-summary-meta {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.context-highlight-card {
+  display: grid;
+  gap: 14px;
+  border-radius: 24px;
+  padding: 18px 20px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 170, 138, 0.18), transparent 40%),
+    rgba(255, 255, 255, 0.76);
+}
+
+.context-highlight-head,
+.context-highlight-body {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.context-highlight-head {
+  align-items: flex-start;
+}
+
+.context-highlight-body {
+  align-items: flex-end;
+}
+
+.context-highlight-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.context-highlight-card .team-identity-list {
+  max-width: none;
+}
+
 .layout {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.85fr);
@@ -1647,6 +1759,9 @@
 @media (max-width: 1180px) {
   .hero,
   .layout,
+  .context-header-top,
+  .context-filter-grid,
+  .context-summary-grid,
   .team-page-summary,
   .team-page-body {
     grid-template-columns: 1fr;
@@ -1656,12 +1771,20 @@
     max-width: none;
   }
 
+  .context-header-copy h1 {
+    max-width: none;
+  }
+
   .hero-topline {
     flex-direction: column;
   }
 
   .monthly-dashboard-head {
     flex-direction: column;
+  }
+
+  .context-header-utility-row {
+    justify-content: flex-start;
   }
 
   .sidebar-upcoming-panel {
@@ -1686,7 +1809,9 @@
   }
 
   .panel-top,
-  .toolbar {
+  .toolbar,
+  .context-highlight-head,
+  .context-highlight-body {
     flex-direction: column;
     align-items: stretch;
   }
@@ -1694,6 +1819,10 @@
   .sidebar-upcoming-panel-head {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .context-highlight-actions {
+    justify-content: flex-start;
   }
 
   .dashboard-table-shell {

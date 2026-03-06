@@ -315,6 +315,15 @@ const TRANSLATIONS = {
       '검증된 발매는 캘린더에 유지됩니다. 더 넓은 워치리스트는 필터에서 빠진 팀과 휴면 팀도 추적 대상으로 남겨두고, 주간 스캔은 뉴스와 공식 출처 단서를 바탕으로 다음 컴백 신호를 찾습니다.',
     languageLabel: '언어',
     languageNames: { ko: '한국어', en: 'English' },
+    monthlyContextLabel: '월간 탐색',
+    monthlySummaryLabels: {
+      verified: '이번 달 발매',
+      scheduled: '예정 컴백',
+      nearest: '가장 가까운 일정',
+    },
+    monthlyNearestEmpty: '일정 없음',
+    monthlyHighlightLabel: '가장 가까운 일정',
+    monthlyHighlightEmpty: '현재 월과 필터 기준으로 표시할 예정 컴백이 없습니다.',
     stats: {
       verifiedReleases: '검증된 발매',
       watchTargets: '추적 대상',
@@ -485,6 +494,15 @@ const TRANSLATIONS = {
       'Verified releases stay in the calendar. A wider watchlist keeps filtered and dormant teams in circulation, then a weekly scan looks for future comeback signals from news and official source trails.',
     languageLabel: 'Language',
     languageNames: { ko: 'Korean', en: 'English' },
+    monthlyContextLabel: 'Monthly context',
+    monthlySummaryLabels: {
+      verified: 'This month releases',
+      scheduled: 'Scheduled comebacks',
+      nearest: 'Closest schedule',
+    },
+    monthlyNearestEmpty: 'No schedule',
+    monthlyHighlightLabel: 'Closest schedule',
+    monthlyHighlightEmpty: 'No scheduled comebacks match this month and filter state.',
     stats: {
       verifiedReleases: 'Verified releases',
       watchTargets: 'Watch targets',
@@ -804,11 +822,6 @@ const dateFormatter = new Intl.DateTimeFormat('en-CA', {
   day: '2-digit',
 })
 
-const watchStatusCounts = watchlist.reduce<Record<string, number>>((counts, row) => {
-  counts[row.tracking_status] = (counts[row.tracking_status] ?? 0) + 1
-  return counts
-}, {})
-
 const releaseCatalogByGroup = new Map(releaseCatalog.map((row) => [row.group, row]))
 const artistProfileByGroup = new Map(artistProfiles.map((row) => [row.group, row]))
 const artistProfileBySlug = new Map(artistProfiles.map((row) => [row.slug, row]))
@@ -997,6 +1010,11 @@ function App() {
   const selectedDayLabel = effectiveSelectedDayIso
     ? formatDisplayDate(effectiveSelectedDayIso, displayDateFormatter)
     : copy.noReleaseSelected
+  const monthlyContextTitle =
+    language === 'ko'
+      ? `${selectedMonthDate.getFullYear()}년 ${selectedMonthDate.getMonth() + 1}월 컴백 캘린더`
+      : `${monthFormatter.format(selectedMonthDate)} comeback calendar`
+  const nearestMonthlySignal = monthScheduledDashboardRows[0] ?? null
   const selectedTeam = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
   const selectedAlbum =
     selectedTeam && selectedAlbumKey
@@ -1098,34 +1116,137 @@ function App() {
 
   return (
     <div className="shell">
-      <header className="hero">
-        <div className="hero-copy">
-          <div className="hero-topline">
-            <p className="eyebrow">{copy.eyebrow}</p>
-            <div className="language-switch" role="group" aria-label={copy.languageLabel}>
-              {LANGUAGE_OPTIONS.map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  className={['language-button', option === language ? 'language-button-active' : '']
-                    .filter(Boolean)
-                    .join(' ')}
-                  onClick={() => setLanguage(option)}
-                >
-                  {copy.languageNames[option]}
-                </button>
-              ))}
+      <header className="panel context-header">
+        <div className="context-header-top">
+          <div className="context-header-copy">
+            <p className="panel-label">{copy.monthlyContextLabel}</p>
+            <h1>{monthlyContextTitle}</h1>
+          </div>
+
+          <div className="context-header-controls">
+            <label className="search-field">
+              <span>{copy.searchLabel}</span>
+              <input
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder={copy.searchPlaceholder}
+              />
+            </label>
+            <div className="context-header-utility-row">
+              <div className="language-switch" role="group" aria-label={copy.languageLabel}>
+                {LANGUAGE_OPTIONS.map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    className={['language-button', option === language ? 'language-button-active' : '']
+                      .filter(Boolean)
+                      .join(' ')}
+                    onClick={() => setLanguage(option)}
+                  >
+                    {copy.languageNames[option]}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          <h1>{copy.heroTitle}</h1>
-          <p className="hero-text">{copy.heroText}</p>
         </div>
-        <div className="hero-stats">
-          <StatCard label={copy.stats.verifiedReleases} value={String(filteredReleases.length)} />
-          <StatCard label={copy.stats.watchTargets} value={String(watchlist.length)} />
-          <StatCard label={copy.stats.upcomingSignals} value={String(filteredUpcoming.length)} />
-          <StatCard label={copy.stats.needsReview} value={String(unresolved.length)} />
+
+        <div className="context-filter-grid">
+          <FilterGroup
+            label={copy.filterLabels.releaseKind}
+            options={releaseKindOptions}
+            selected={selectedReleaseKind}
+            language={language}
+            onSelect={(value) => setSelectedReleaseKind(value)}
+          />
+          <FilterGroup
+            label={copy.filterLabels.actType}
+            options={actTypeOptions}
+            selected={selectedActType}
+            language={language}
+            onSelect={(value) => setSelectedActType(value)}
+          />
+          <FilterGroup
+            label={copy.filterLabels.status}
+            options={dashboardStatusOptions}
+            selected={selectedDashboardStatus}
+            language={language}
+            onSelect={(value) => setSelectedDashboardStatus(value)}
+          />
         </div>
+
+        <div className="context-summary-grid">
+          <article className="context-summary-card">
+            <span>{copy.monthlySummaryLabels.verified}</span>
+            <strong>{monthReleases.length}</strong>
+          </article>
+          <article className="context-summary-card">
+            <span>{copy.monthlySummaryLabels.scheduled}</span>
+            <strong>{monthScheduledDashboardRows.length}</strong>
+          </article>
+          <article className="context-summary-card">
+            <span>{copy.monthlySummaryLabels.nearest}</span>
+            <strong>
+              {nearestMonthlySignal
+                ? formatOptionalDate(nearestMonthlySignal.scheduled_date, displayDateFormatter, copy.none)
+                : copy.monthlyNearestEmpty}
+            </strong>
+            <p className="context-summary-meta">
+              {nearestMonthlySignal ? getTeamDisplayName(nearestMonthlySignal.group) : copy.none}
+            </p>
+          </article>
+        </div>
+
+        <article className="context-highlight-card">
+          <div className="context-highlight-head">
+            <div>
+              <p className="panel-label">{copy.monthlyHighlightLabel}</p>
+              <h2>
+                {nearestMonthlySignal ? nearestMonthlySignal.headline : copy.monthlyNearestEmpty}
+              </h2>
+            </div>
+            {nearestMonthlySignal ? (
+              <div className="signal-tags">
+                <UpcomingCountdownBadge item={nearestMonthlySignal} formatter={shortDateFormatter} />
+                <span className={`signal-badge signal-badge-date-${nearestMonthlySignal.date_status}`}>
+                  {formatDateStatus(nearestMonthlySignal.date_status, language)}
+                </span>
+              </div>
+            ) : null}
+          </div>
+
+          {nearestMonthlySignal ? (
+            <>
+              <div className="context-highlight-body">
+                <div>
+                  <TeamIdentity group={nearestMonthlySignal.group} variant="list" />
+                  <p className="signal-meta">
+                    {formatOptionalDate(nearestMonthlySignal.scheduled_date, displayDateFormatter, copy.none)} ·{' '}
+                    {formatSourceType(nearestMonthlySignal.source_type, language)} ·{' '}
+                    {nearestMonthlySignal.source_domain || copy.sourceTypeLabels.pending}
+                  </p>
+                  {formatUpcomingEvidenceMeta(nearestMonthlySignal, language) ? (
+                    <p className="signal-meta">{formatUpcomingEvidenceMeta(nearestMonthlySignal, language)}</p>
+                  ) : null}
+                </div>
+                <div className="context-highlight-actions">
+                  <button type="button" className="inline-button" onClick={() => openTeamPage(nearestMonthlySignal.group)}>
+                    {teamCopy.action}
+                  </button>
+                  {nearestMonthlySignal.source_url ? (
+                    <a href={nearestMonthlySignal.source_url} target="_blank" rel="noreferrer">
+                      {copy.open}
+                    </a>
+                  ) : (
+                    <span className="signal-link-muted">{copy.noSourceLink}</span>
+                  )}
+                </div>
+              </div>
+            </>
+          ) : (
+            <p className="empty-copy">{copy.monthlyHighlightEmpty}</p>
+          )}
+        </article>
       </header>
 
       {selectedTeam ? (
@@ -1529,56 +1650,6 @@ function App() {
                     {copy.next}
                   </button>
                 </div>
-              </div>
-
-              <div className="toolbar">
-                <label className="search-field">
-                  <span>{copy.searchLabel}</span>
-                  <input
-                    value={search}
-                    onChange={(event) => setSearch(event.target.value)}
-                    placeholder={copy.searchPlaceholder}
-                  />
-                </label>
-                <div className="summary-pill">
-                  <span>
-                    {monthReleases.length} {copy.monthSummaryVerified}
-                  </span>
-                  <span>
-                    {monthUpcomingSignals.length} {copy.monthSummaryScheduled}
-                  </span>
-                </div>
-              </div>
-
-              <div className="filter-stack">
-                <FilterGroup
-                  label={copy.filterLabels.releaseKind}
-                  options={releaseKindOptions}
-                  selected={selectedReleaseKind}
-                  language={language}
-                  onSelect={(value) => setSelectedReleaseKind(value)}
-                />
-                <FilterGroup
-                  label={copy.filterLabels.actType}
-                  options={actTypeOptions}
-                  selected={selectedActType}
-                  language={language}
-                  onSelect={(value) => setSelectedActType(value)}
-                />
-                <FilterGroup
-                  label={copy.filterLabels.status}
-                  options={dashboardStatusOptions}
-                  selected={selectedDashboardStatus}
-                  language={language}
-                  onSelect={(value) => setSelectedDashboardStatus(value)}
-                />
-              </div>
-
-              <div className="coverage-strip">
-                <StatusPill label={copy.statusLabels.recent_release} value={watchStatusCounts.recent_release ?? 0} tone="fresh" />
-                <StatusPill label={copy.statusLabels.filtered_out} value={watchStatusCounts.filtered_out ?? 0} tone="muted" />
-                <StatusPill label={copy.statusLabels.needs_manual_review} value={watchStatusCounts.needs_manual_review ?? 0} tone="warn" />
-                <StatusPill label={copy.statusLabels.watch_only} value={watchStatusCounts.watch_only ?? 0} tone="accent" />
               </div>
 
               {hasNoReleaseMatches ? (
@@ -2812,37 +2883,11 @@ function SelectedDayPanel({
   )
 }
 
-function StatCard({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="stat-card">
-      <span>{label}</span>
-      <strong>{value}</strong>
-    </div>
-  )
-}
-
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="meta-item">
       <span>{label}</span>
       <strong>{value}</strong>
-    </div>
-  )
-}
-
-function StatusPill({
-  label,
-  value,
-  tone,
-}: {
-  label: string
-  value: number
-  tone: 'fresh' | 'muted' | 'warn' | 'accent'
-}) {
-  return (
-    <div className={`status-pill status-pill-${tone}`}>
-      <strong>{value}</strong>
-      <span>{label}</span>
     </div>
   )
 }
