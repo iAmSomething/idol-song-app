@@ -267,4 +267,7 @@
 - `wireframe-block-diagrams.md`
 - `design-token-spec.md`
 - `implementation-work-breakdown.md`
+- `component-api-contracts.md`
+- `view-state-models.md`
+- `user-journey-sequences.md`
 - `edge-case-catalog.md`

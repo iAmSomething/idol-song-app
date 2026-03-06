@@ -139,3 +139,8 @@ mobile/
 - 서비스 handoff는 canonical 또는 검색 fallback을 지원한다.
 - 접근성 기본 요건을 만족한다.
 - QA acceptance checklist를 통과한다.
+
+## 8. 구현 참고 문서
+- 공통 컴포넌트 API는 `component-api-contracts.md`를 따른다.
+- 화면 state 설계는 `view-state-models.md`를 따른다.
+- end-to-end 구현 순서는 `user-journey-sequences.md`를 참조한다.

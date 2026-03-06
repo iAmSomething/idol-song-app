@@ -40,13 +40,19 @@
    - semantic token naming과 역할 정의
 17. `implementation-work-breakdown.md`
    - Expo 앱 구현을 위한 모듈/작업 분해
+18. `component-api-contracts.md`
+   - 공통 컴포넌트의 props, 이벤트, fallback 계약
+19. `view-state-models.md`
+   - 화면별 상태 shape와 상태 전이 규칙
+20. `user-journey-sequences.md`
+   - end-to-end 사용자 흐름과 alternate flow
 
 ### Screen Specs
-18. `calendar-screen.md`
-19. `radar-screen.md`
-20. `search-screen.md`
-21. `team-detail-screen.md`
-22. `release-detail-screen.md`
+21. `calendar-screen.md`
+22. `radar-screen.md`
+23. `search-screen.md`
+24. `team-detail-screen.md`
+25. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -64,9 +70,12 @@
 13. `wireframe-block-diagrams.md`
 14. `design-token-spec.md`
 15. `implementation-work-breakdown.md`
-16. 각 화면 스펙
-17. `edge-case-catalog.md`
-18. `qa-acceptance-spec.md`
+16. `component-api-contracts.md`
+17. `view-state-models.md`
+18. `user-journey-sequences.md`
+19. 각 화면 스펙
+20. `edge-case-catalog.md`
+21. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.

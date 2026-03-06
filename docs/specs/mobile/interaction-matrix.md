@@ -78,3 +78,6 @@
 - sheet 내부 액션은 sheet close 없이 push/external이 가능하다.
 - external open 이후 앱 복귀 시 직전 화면 상태를 유지한다.
 - in-place 상태 변경은 불필요한 scroll jump를 일으키면 안 된다.
+
+## 9. 참조 문서
+- 다중 화면 흐름은 `user-journey-sequences.md`에서 end-to-end로 확인한다.

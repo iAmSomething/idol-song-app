@@ -256,3 +256,6 @@
 - 행 전체 tap target은 탐색 액션 우선
 - secondary service action은 release row에서만 허용
 - trailing accessory가 많아져도 tap 충돌이 없어야 함
+
+## 18. 참조 문서
+- 세부 props와 emitted event는 `component-api-contracts.md`를 따른다.
