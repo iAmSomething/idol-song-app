@@ -10,7 +10,7 @@
     "published_at": "Wed, 25 Feb 2026 09:38:15 GMT",
     "confidence": 0.82,
     "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
-    "tracking_status": "filtered_out",
+    "tracking_status": "recent_release",
     "search_term": "\"P1Harmony\" kpop comeback"
   },
   {
@@ -58,6 +58,20 @@
   {
     "group": "TOMORROW X TOGETHER",
     "scheduled_date": "2026-04-13",
+    "date_status": "confirmed",
+    "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
+    "source_type": "weverse_notice",
+    "source_url": "https://weverse.io/txt/notice/34002",
+    "source_domain": "weverse.io",
+    "published_at": "",
+    "confidence": 0.84,
+    "evidence_summary": "Future date reference: 2026-04-13. Hello. This is BIGHIT MUSIC. We are excited to announce an online and in-person comeback showcase scheduled for Monday, April 13, 2026 to celebrate the release...",
+    "tracking_status": "recent_release",
+    "search_term": "official_weverse_seed"
+  },
+  {
+    "group": "TOMORROW X TOGETHER",
+    "scheduled_date": "2026-04-13",
     "date_status": "scheduled",
     "headline": "TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz",
     "source_type": "news_rss",
@@ -80,7 +94,7 @@
     "published_at": "Wed, 11 Feb 2026 22:03:20 GMT",
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop",
-    "tracking_status": "filtered_out",
+    "tracking_status": "recent_release",
     "search_term": "\"&TEAM\" kpop comeback"
   },
   {
@@ -108,7 +122,7 @@
     "published_at": "Tue, 24 Feb 2026 17:04:01 GMT",
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-03. ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ hellokpop",
-    "tracking_status": "filtered_out",
+    "tracking_status": "recent_release",
     "search_term": "\"ALL(H)OURS\" kpop comeback"
   },
   {
@@ -178,7 +192,7 @@
     "published_at": "Tue, 24 Feb 2026 19:32:57 GMT",
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-03. P1Harmony announces March comeback with new trailer release Music Mundial",
-    "tracking_status": "filtered_out",
+    "tracking_status": "recent_release",
     "search_term": "\"P1Harmony\" kpop comeback"
   },
   {
@@ -234,7 +248,7 @@
     "published_at": "Mon, 05 Jan 2026 08:00:00 GMT",
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-04. KISS OF LIFE Teases April Comeback with 'COMING SOON' Video 조선일보",
-    "tracking_status": "filtered_out",
+    "tracking_status": "recent_release",
     "search_term": "\"KISS OF LIFE\" kpop comeback"
   },
   {
@@ -262,7 +276,7 @@
     "published_at": "Wed, 25 Feb 2026 03:16:35 GMT",
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-03. P1Harmony teases March comeback The Korea Herald",
-    "tracking_status": "filtered_out",
+    "tracking_status": "recent_release",
     "search_term": "\"P1Harmony\" kpop comeback"
   },
   {
@@ -276,7 +290,7 @@
     "published_at": "Tue, 20 Jan 2026 08:00:00 GMT",
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-03. P1Harmony to return in March: report The Korea Herald",
-    "tracking_status": "filtered_out",
+    "tracking_status": "recent_release",
     "search_term": "\"P1Harmony\" kpop comeback"
   },
   {
@@ -348,6 +362,90 @@
     "evidence_summary": "Future month reference: 2026-03. BTS Is Dropping New Music in March — and Heading Out on Tour au.rollingstone.com",
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback"
+  },
+  {
+    "group": "BABYMONSTER",
+    "scheduled_date": "",
+    "date_status": "rumor",
+    "headline": "BABYMONSTER’s B-Side Track From Two Years Ago Makes a Reverse Chart Run… Reappears on ‘M Countdown’ → Live Clip Released",
+    "source_type": "agency_notice",
+    "source_url": "https://www.ygfamily.com/en/news/report/7372",
+    "source_domain": "www.ygfamily.com",
+    "published_at": "Tue, 03 Feb 2026 00:00:00 GMT",
+    "confidence": 0.7,
+    "evidence_summary": "BABYMONSTER’s B-Side Track From Two Years Ago Makes a Reverse Chart Run… Reappears on ‘M Countdown’ → Live Clip Released BABYMONSTER surprised music fans by rel...",
+    "tracking_status": "recent_release",
+    "search_term": "official_yg_report"
+  },
+  {
+    "group": "BABYMONSTER",
+    "scheduled_date": "",
+    "date_status": "rumor",
+    "headline": "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed",
+    "source_type": "agency_notice",
+    "source_url": "https://www.ygfamily.com/en/news/report/7385",
+    "source_domain": "www.ygfamily.com",
+    "published_at": "Wed, 04 Mar 2026 00:00:00 GMT",
+    "confidence": 0.64,
+    "evidence_summary": "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed YG Entertainment has announced the return of one of its flagship IPs, BIGBANG, along with up...",
+    "tracking_status": "recent_release",
+    "search_term": "official_yg_report"
+  },
+  {
+    "group": "BABYMONSTER",
+    "scheduled_date": "",
+    "date_status": "rumor",
+    "headline": "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing",
+    "source_type": "agency_notice",
+    "source_url": "https://www.ygfamily.com/en/news/report/7389",
+    "source_domain": "www.ygfamily.com",
+    "published_at": "Wed, 04 Mar 2026 00:00:00 GMT",
+    "confidence": 0.64,
+    "evidence_summary": "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing YG has raised the expectations among global music fans...",
+    "tracking_status": "recent_release",
+    "search_term": "official_yg_report"
+  },
+  {
+    "group": "BLACKPINK",
+    "scheduled_date": "",
+    "date_status": "rumor",
+    "headline": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”",
+    "source_type": "agency_notice",
+    "source_url": "https://www.ygfamily.com/en/news/report/7378",
+    "source_domain": "www.ygfamily.com",
+    "published_at": "Fri, 06 Feb 2026 00:00:00 GMT",
+    "confidence": 0.64,
+    "evidence_summary": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care” BLACKPINK has unveiled the tracklist for their new release. According to YG Entertainment on...",
+    "tracking_status": "recent_release",
+    "search_term": "official_yg_report"
+  },
+  {
+    "group": "TREASURE",
+    "scheduled_date": "",
+    "date_status": "rumor",
+    "headline": "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed",
+    "source_type": "agency_notice",
+    "source_url": "https://www.ygfamily.com/en/news/report/7385",
+    "source_domain": "www.ygfamily.com",
+    "published_at": "Wed, 04 Mar 2026 00:00:00 GMT",
+    "confidence": 0.64,
+    "evidence_summary": "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed YG Entertainment has announced the return of one of its flagship IPs, BIGBANG, along with up...",
+    "tracking_status": "recent_release",
+    "search_term": "official_yg_report"
+  },
+  {
+    "group": "TREASURE",
+    "scheduled_date": "",
+    "date_status": "rumor",
+    "headline": "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing",
+    "source_type": "agency_notice",
+    "source_url": "https://www.ygfamily.com/en/news/report/7389",
+    "source_domain": "www.ygfamily.com",
+    "published_at": "Wed, 04 Mar 2026 00:00:00 GMT",
+    "confidence": 0.64,
+    "evidence_summary": "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing YG has raised the expectations among global music fans...",
+    "tracking_status": "recent_release",
+    "search_term": "official_yg_report"
   },
   {
     "group": "ATEEZ",
@@ -430,6 +528,20 @@
     "published_at": "Wed, 14 Jan 2026 08:00:00 GMT",
     "confidence": 0.68,
     "evidence_summary": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date TMZ",
+    "tracking_status": "recent_release",
+    "search_term": "\"BLACKPINK\" kpop comeback"
+  },
+  {
+    "group": "BLACKPINK",
+    "scheduled_date": "",
+    "date_status": "rumor",
+    "headline": "BLACKPINK announces comeback album ‘Deadline’ after three-year wait: Check release date and other details - The Economic Times",
+    "source_type": "news_rss",
+    "source_url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPa1JTRXk2aFFRNkIzQmVRUnZmREZSTWhWa3M2aTFGZ3RhNG5QTEo1WlNwM0NMM0dvUmZTaUNIRElQU3RVQWlzcmU2TXhHWUdNNE5VS3FKYjBFX2xZUWMtX0lQdDhKcjUyTEVSeVBtRWlXMXlaZ1RNQWdIQXRWQ2VmTkZkLS1SS2pQUWJ5WGljWGh1aVo3cXdFWUx0aUNxOTJJNFROUVY0SVNwcTdaLW05Ri00M0V1LU43TDRfMzJOQXl0eEQxS2o5M1BiSkhWVzd3am5XY0lVazJkWDQtQmdwNjRHb08tLTNaVFJWdGVvU1lFNkhyUTMyMkRIbzAxa1J0d1Z30gGIAkFVX3lxTE14NENWbEdYcmJhR192ZkIxdkdfTU5USmprN2ZJaGp2Z2VuRi10TTNOcWNLOEdqd1dleU5JbDg1NWV5cXJYclZDMTJkZ3VNVFY0T2MyeFRKZ05UQTVSRjBBYjQ4QzBoeHhEaGlZb0JLazRvOGkzaGdpQVVxUTc4dzlESzlpY1JzLXdycVJjZWlMSmxpRkJQQW1CUl9kQ2d0cnU5N2V0TW9XRFo5VngxY0N3Z0xsLXFOV0NGdGRqRHdKUC0zamFMVnduRzhsamwtRTd4S004TXM1QV85Ym5vR2hmSDQzQUh3VUExTUNFeDVkYTNSWGZ2aU91c1BUTjFwcE9nUTNBQTVBdg?oc=5",
+    "source_domain": "news.google.com",
+    "published_at": "Thu, 15 Jan 2026 08:00:00 GMT",
+    "confidence": 0.68,
+    "evidence_summary": "BLACKPINK announces comeback album ‘Deadline’ after three-year wait: Check release date and other details The Economic Times",
     "tracking_status": "recent_release",
     "search_term": "\"BLACKPINK\" kpop comeback"
   },
@@ -630,20 +742,6 @@
     "search_term": "\"KiiiKiii\" kpop comeback"
   },
   {
-    "group": "KiiiKiii",
-    "scheduled_date": "",
-    "date_status": "rumor",
-    "headline": "\"We Want to Perform at Overseas Festivals like IVE\" KiiiKiii Drops 'Delulu Pack' - SBS Star",
-    "source_type": "news_rss",
-    "source_url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNdENMc0RoNDhqWHhiYkRWRGdjbE5TdkliNVFXek02bUpFRjRVVEZLVGkxdW84TzNKYlFoS3c4a1U2RkZNYUdCNHdmSUtSZHVJbjV1ZFF2UlBrYjhUTUExMGlIVEhISUIzU2NHazFyTmZDMUh6Sm9JU3RLU2toYW9ySTNqTXl2ZUtUdGptN0VnQTFOZlgycWE1WXlpckVPY0MyZVVmNFpiZkl0RzBoWGNqMlRONURXRVk?oc=5",
-    "source_domain": "news.google.com",
-    "published_at": "Mon, 26 Jan 2026 08:00:00 GMT",
-    "confidence": 0.68,
-    "evidence_summary": "\"We Want to Perform at Overseas Festivals like IVE\" KiiiKiii Drops 'Delulu Pack' SBS Star",
-    "tracking_status": "recent_release",
-    "search_term": "\"KiiiKiii\" kpop comeback"
-  },
-  {
     "group": "POW",
     "scheduled_date": "",
     "date_status": "rumor",
@@ -724,6 +822,20 @@
     "published_at": "Fri, 09 Jan 2026 08:00:00 GMT",
     "confidence": 0.68,
     "evidence_summary": "YOUNG POSSE Drops 'LOSE YOUR SHXT' Collaboration 조선일보",
+    "tracking_status": "recent_release",
+    "search_term": "\"YOUNG POSSE\" kpop comeback"
+  },
+  {
+    "group": "YOUNG POSSE",
+    "scheduled_date": "",
+    "date_status": "rumor",
+    "headline": "Young Posse drops collaboration single with Chinese rapper Benzo - CHOSUNBIZ - Chosunbiz",
+    "source_type": "news_rss",
+    "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPTjdZMlpRNDV4M1Y4OXhoSnhCX0p0NG5TNllLZnBzVzY3RGxFNlBjLUdkZjlCYjhzWEs3YnNhM0t0SGRUOFJyUFFaVVl3TENmV3J3WEM3ekE3QWVrNDk1TS1meXQ4WmZ4NW04dGtQNEFneU9tYmVhRlFvZXplaGRfNUFfVmgxekZs0gGcAUFVX3lxTE8zU2UtTjdDdGxRd2Nua0hiN1gtWEx5YXZFa1FWcHNTcVpkbkJsTkJDVzBwSHJKa2tkZ3FFUjFzNmxFYlV5VDNoMlFuVHJFY085ZWc2Y21MZWxFVF9yU0FGSkhsdkpuQWhmRkpQSURKNlFNYzd4LTlBOVJxYmFTVXZQcjZlRmhUaXJ6QVlQRTExR0FFMm5maERLSFhESQ?oc=5",
+    "source_domain": "news.google.com",
+    "published_at": "Fri, 09 Jan 2026 08:00:00 GMT",
+    "confidence": 0.68,
+    "evidence_summary": "Young Posse drops collaboration single with Chinese rapper Benzo - CHOSUNBIZ Chosunbiz",
     "tracking_status": "recent_release",
     "search_term": "\"YOUNG POSSE\" kpop comeback"
   },
@@ -836,7 +948,7 @@
     "published_at": "Sun, 01 Mar 2026 15:13:14 GMT",
     "confidence": 0.56,
     "evidence_summary": "ITZY’s YUNA Announces Debut Solo Album ‘Ice Cream’ inmusicblog.com",
-    "tracking_status": "filtered_out",
+    "tracking_status": "recent_release",
     "search_term": "\"ITZY\" kpop comeback"
   },
   {
