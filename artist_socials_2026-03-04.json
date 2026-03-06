@@ -1,0 +1,2869 @@
+[
+  {
+    "artist": "&TEAM",
+    "tier": "core",
+    "query": "&TEAM",
+    "wikidata_id": "Q112834233",
+    "wikidata_label": "&TEAM",
+    "wikidata_description": "Japanese boy band",
+    "x_username": "andTEAMofficial",
+    "x_url": "https://x.com/andTEAMofficial",
+    "x_usernames_all": [
+      "andTEAMofficial",
+      "andTEAM_members"
+    ],
+    "instagram_username": "andteam_official",
+    "instagram_url": "https://www.instagram.com/andteam_official/",
+    "instagram_usernames_all": [
+      "andteam_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q112834233"
+  },
+  {
+    "artist": "(G)I-DLE",
+    "tier": "core",
+    "query": "(G)I-DLE",
+    "wikidata_id": "Q51885404",
+    "wikidata_label": "I-dle",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "official_i_dle",
+    "x_url": "https://x.com/official_i_dle",
+    "x_usernames_all": [
+      "official_i_dle",
+      "i_dle_JP"
+    ],
+    "instagram_username": "i_dle_official",
+    "instagram_url": "https://www.instagram.com/i_dle_official/",
+    "instagram_usernames_all": [
+      "i_dle_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q51885404"
+  },
+  {
+    "artist": "aespa",
+    "tier": "core",
+    "query": "aespa",
+    "wikidata_id": "Q100877982",
+    "wikidata_label": "Aespa",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "aespa_official",
+    "x_url": "https://x.com/aespa_official",
+    "x_usernames_all": [
+      "aespa_official"
+    ],
+    "instagram_username": "aespa_official",
+    "instagram_url": "https://www.instagram.com/aespa_official/",
+    "instagram_usernames_all": [
+      "aespa_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q100877982"
+  },
+  {
+    "artist": "ATEEZ",
+    "tier": "core",
+    "query": "ATEEZ",
+    "wikidata_id": "Q59793088",
+    "wikidata_label": "Ateez",
+    "wikidata_description": "South Korean boy group",
+    "x_username": "ATEEZofficial",
+    "x_url": "https://x.com/ATEEZofficial",
+    "x_usernames_all": [
+      "ATEEZofficial"
+    ],
+    "instagram_username": "ateez_official_",
+    "instagram_url": "https://www.instagram.com/ateez_official_/",
+    "instagram_usernames_all": [
+      "ateez_official_"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q59793088"
+  },
+  {
+    "artist": "AtHeart",
+    "tier": "core",
+    "query": "AtHeart k-pop group",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "BABYMONSTER",
+    "tier": "core",
+    "query": "BABYMONSTER",
+    "wikidata_id": "Q115967938",
+    "wikidata_label": "Babymonster",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "YGBABYMONSTER_",
+    "x_url": "https://x.com/YGBABYMONSTER_",
+    "x_usernames_all": [
+      "YGBABYMONSTER_"
+    ],
+    "instagram_username": "babymonster_ygofficial",
+    "instagram_url": "https://www.instagram.com/babymonster_ygofficial/",
+    "instagram_usernames_all": [
+      "babymonster_ygofficial"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q115967938"
+  },
+  {
+    "artist": "BLACKPINK",
+    "tier": "core",
+    "query": "BLACKPINK",
+    "wikidata_id": "Q25056945",
+    "wikidata_label": "Blackpink",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "ygofficialblink",
+    "x_url": "https://x.com/ygofficialblink",
+    "x_usernames_all": [
+      "ygofficialblink",
+      "blackpink"
+    ],
+    "instagram_username": "blackpinkofficial",
+    "instagram_url": "https://www.instagram.com/blackpinkofficial/",
+    "instagram_usernames_all": [
+      "blackpinkofficial",
+      "blackpinkofficial"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q25056945"
+  },
+  {
+    "artist": "BOYNEXTDOOR",
+    "tier": "core",
+    "query": "BOYNEXTDOOR",
+    "wikidata_id": "Q118178306",
+    "wikidata_label": "BoyNextDoor",
+    "wikidata_description": "South Korean k-pop group",
+    "x_username": "BOYNEXTDOOR_KOZ",
+    "x_url": "https://x.com/BOYNEXTDOOR_KOZ",
+    "x_usernames_all": [
+      "BOYNEXTDOOR_KOZ",
+      "BOYNEXTDOOR_twt"
+    ],
+    "instagram_username": "boynextdoor_official",
+    "instagram_url": "https://www.instagram.com/boynextdoor_official/",
+    "instagram_usernames_all": [
+      "boynextdoor_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q118178306"
+  },
+  {
+    "artist": "BTOB",
+    "tier": "core",
+    "query": "BTOB",
+    "wikidata_id": "Q491067",
+    "wikidata_label": "BtoB",
+    "wikidata_description": "South Korean musical group; boy band",
+    "x_username": "OFFICIALBTOB",
+    "x_url": "https://x.com/OFFICIALBTOB",
+    "x_usernames_all": [
+      "OFFICIALBTOB",
+      "BTOBOFFICIAL_JP"
+    ],
+    "instagram_username": "official_btob",
+    "instagram_url": "https://www.instagram.com/official_btob/",
+    "instagram_usernames_all": [
+      "official_btob"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q491067"
+  },
+  {
+    "artist": "BTS",
+    "tier": "core",
+    "query": "BTS",
+    "wikidata_id": "Q13580495",
+    "wikidata_label": "BTS",
+    "wikidata_description": "South Korean musical group; boy band",
+    "x_username": "BTS_twt",
+    "x_url": "https://x.com/BTS_twt",
+    "x_usernames_all": [
+      "bts_bighit",
+      "BTS_jp_official",
+      "BTS_twt"
+    ],
+    "instagram_username": "bts.bighitofficial",
+    "instagram_url": "https://www.instagram.com/bts.bighitofficial/",
+    "instagram_usernames_all": [
+      "bts.bighitofficial"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q13580495"
+  },
+  {
+    "artist": "CRAVITY",
+    "tier": "core",
+    "query": "CRAVITY",
+    "wikidata_id": "Q90628571",
+    "wikidata_label": "Cravity",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "CRAVITY_twt",
+    "x_url": "https://x.com/CRAVITY_twt",
+    "x_usernames_all": [
+      "CRAVITY_twt",
+      "CRAVITYstarship"
+    ],
+    "instagram_username": "cravity_official",
+    "instagram_url": "https://www.instagram.com/cravity_official/",
+    "instagram_usernames_all": [
+      "cravity_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q90628571"
+  },
+  {
+    "artist": "DAY6",
+    "tier": "core",
+    "query": "DAY6",
+    "wikidata_id": "Q20898046",
+    "wikidata_label": "Day6",
+    "wikidata_description": "South Korean musical group; pop-rock band",
+    "x_username": "day6official",
+    "x_url": "https://x.com/day6official",
+    "x_usernames_all": [
+      "day6official"
+    ],
+    "instagram_username": "day6kilogram",
+    "instagram_url": "https://www.instagram.com/day6kilogram/",
+    "instagram_usernames_all": [
+      "day6kilogram"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q20898046"
+  },
+  {
+    "artist": "Dreamcatcher",
+    "tier": "core",
+    "query": "Dreamcatcher",
+    "wikidata_id": "Q20684822",
+    "wikidata_label": "Dreamcatcher",
+    "wikidata_description": "South Korean musical group; girl band",
+    "x_username": "hf_dreamcatcher",
+    "x_url": "https://x.com/hf_dreamcatcher",
+    "x_usernames_all": [
+      "hf_dreamcatcher",
+      "jp_dreamcatcher"
+    ],
+    "instagram_username": "hf_dreamcatcher",
+    "instagram_url": "https://www.instagram.com/hf_dreamcatcher/",
+    "instagram_usernames_all": [
+      "hf_dreamcatcher",
+      "goodnight_dreamcatcher"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q20684822"
+  },
+  {
+    "artist": "ENHYPEN",
+    "tier": "core",
+    "query": "ENHYPEN",
+    "wikidata_id": "Q99479445",
+    "wikidata_label": "Enhypen",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "ENHYPEN",
+    "x_url": "https://x.com/ENHYPEN",
+    "x_usernames_all": [
+      "ENHYPEN",
+      "ENHYPEN_JP",
+      "ENHYPEN_members"
+    ],
+    "instagram_username": "enhypen",
+    "instagram_url": "https://www.instagram.com/enhypen/",
+    "instagram_usernames_all": [
+      "enhypen"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q99479445"
+  },
+  {
+    "artist": "EVNNE",
+    "tier": "core",
+    "query": "EVNNE",
+    "wikidata_id": "Q121493651",
+    "wikidata_label": "Evnne",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "EVNNE_official",
+    "x_url": "https://x.com/EVNNE_official",
+    "x_usernames_all": [
+      "EVNNE_official"
+    ],
+    "instagram_username": "evnne_official",
+    "instagram_url": "https://www.instagram.com/evnne_official/",
+    "instagram_usernames_all": [
+      "evnne_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q121493651"
+  },
+  {
+    "artist": "EXO",
+    "tier": "core",
+    "query": "EXO",
+    "wikidata_id": "Q494717",
+    "wikidata_label": "EXO",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "weareoneEXO",
+    "x_url": "https://x.com/weareoneEXO",
+    "x_usernames_all": [
+      "weareoneEXO",
+      "exo_news_jp",
+      "EXO_NEWS_JP"
+    ],
+    "instagram_username": "weareone.exo",
+    "instagram_url": "https://www.instagram.com/weareone.exo/",
+    "instagram_usernames_all": [
+      "weareone.exo"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q494717"
+  },
+  {
+    "artist": "FIFTY FIFTY",
+    "tier": "core",
+    "query": "FIFTY FIFTY",
+    "wikidata_id": "Q116731010",
+    "wikidata_label": "Fifty Fifty",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "we_fiftyfifty",
+    "x_url": "https://x.com/we_fiftyfifty",
+    "x_usernames_all": [
+      "we_fiftyfifty"
+    ],
+    "instagram_username": "we_fiftyfifty",
+    "instagram_url": "https://www.instagram.com/we_fiftyfifty/",
+    "instagram_usernames_all": [
+      "we_fiftyfifty"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q116731010"
+  },
+  {
+    "artist": "fromis_9",
+    "tier": "core",
+    "query": "fromis_9",
+    "wikidata_id": "Q41398331",
+    "wikidata_label": "Fromis 9",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "realfromis_9",
+    "x_url": "https://x.com/realfromis_9",
+    "x_usernames_all": [
+      "realfromis_9",
+      "fromis9_japan"
+    ],
+    "instagram_username": "officialfromis_9",
+    "instagram_url": "https://www.instagram.com/officialfromis_9/",
+    "instagram_usernames_all": [
+      "officialfromis_9"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q41398331"
+  },
+  {
+    "artist": "Hearts2Hearts",
+    "tier": "core",
+    "query": "Hearts2Hearts k-pop",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "ifeye",
+    "tier": "core",
+    "query": "ifeye k-pop",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "INFINITE",
+    "tier": "core",
+    "query": "INFINITE",
+    "wikidata_id": "Q50598",
+    "wikidata_label": "INFINITE",
+    "wikidata_description": "South Korean pop boy band",
+    "x_username": "INFINITE_UM",
+    "x_url": "https://x.com/INFINITE_UM",
+    "x_usernames_all": [
+      "INFINITE_UM"
+    ],
+    "instagram_username": "official_ifnt_",
+    "instagram_url": "https://www.instagram.com/official_ifnt_/",
+    "instagram_usernames_all": [
+      "official_ifnt_"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q50598"
+  },
+  {
+    "artist": "ITZY",
+    "tier": "core",
+    "query": "ITZY",
+    "wikidata_id": "Q60732823",
+    "wikidata_label": "Itzy",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "ITZYofficial",
+    "x_url": "https://x.com/ITZYofficial",
+    "x_usernames_all": [
+      "ITZYofficial",
+      "JYPEITZY_JP"
+    ],
+    "instagram_username": "itzy.all.in.us",
+    "instagram_url": "https://www.instagram.com/itzy.all.in.us/",
+    "instagram_usernames_all": [
+      "itzy.all.in.us",
+      "itzyofficial_jp"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q60732823"
+  },
+  {
+    "artist": "IVE",
+    "tier": "core",
+    "query": "IVE",
+    "wikidata_id": "Q109375061",
+    "wikidata_label": "Ive",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "IVE_twt",
+    "x_url": "https://x.com/IVE_twt",
+    "x_usernames_all": [
+      "IVE_twt",
+      "ivestarship",
+      "IVEstarship_jp"
+    ],
+    "instagram_username": "ivestarship",
+    "instagram_url": "https://www.instagram.com/ivestarship/",
+    "instagram_usernames_all": [
+      "ivestarship"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q109375061"
+  },
+  {
+    "artist": "KARD",
+    "tier": "core",
+    "query": "KARD",
+    "wikidata_id": "Q27989963",
+    "wikidata_label": "KARD",
+    "wikidata_description": "South Korean co-ed music group",
+    "x_username": "kard_official",
+    "x_url": "https://x.com/kard_official",
+    "x_usernames_all": [
+      "kard_official"
+    ],
+    "instagram_username": "official_kard",
+    "instagram_url": "https://www.instagram.com/official_kard/",
+    "instagram_usernames_all": [
+      "official_kard"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q27989963"
+  },
+  {
+    "artist": "Kep1er",
+    "tier": "core",
+    "query": "Kep1er",
+    "wikidata_id": "Q126946056",
+    "wikidata_label": "Kep1er discography",
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q126946056"
+  },
+  {
+    "artist": "KickFlip",
+    "tier": "core",
+    "query": "KickFlip k-pop",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "KiiiKiii",
+    "tier": "core",
+    "query": "KiiiKiii kpop",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "KISS OF LIFE",
+    "tier": "core",
+    "query": "KISS OF LIFE",
+    "wikidata_id": "Q118314702",
+    "wikidata_label": "Kiss of Life",
+    "wikidata_description": "South Korean female idol group",
+    "x_username": "KISSOFLIFE_S2",
+    "x_url": "https://x.com/KISSOFLIFE_S2",
+    "x_usernames_all": [
+      "KISSOFLIFE_S2"
+    ],
+    "instagram_username": "kissoflife_s2",
+    "instagram_url": "https://www.instagram.com/kissoflife_s2/",
+    "instagram_usernames_all": [
+      "kissoflife_s2"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q118314702"
+  },
+  {
+    "artist": "LE SSERAFIM",
+    "tier": "core",
+    "query": "LE SSERAFIM",
+    "wikidata_id": "Q111381707",
+    "wikidata_label": "Le Sserafim",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "le_sserafim",
+    "x_url": "https://x.com/le_sserafim",
+    "x_usernames_all": [
+      "le_sserafim",
+      "le_sserafim_jp"
+    ],
+    "instagram_username": "le_sserafim",
+    "instagram_url": "https://www.instagram.com/le_sserafim/",
+    "instagram_usernames_all": [
+      "le_sserafim"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q111381707"
+  },
+  {
+    "artist": "MAMAMOO",
+    "tier": "core",
+    "query": "MAMAMOO",
+    "wikidata_id": "Q17278068",
+    "wikidata_label": "Mamamoo",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "rbw_mamamoo",
+    "x_url": "https://x.com/rbw_mamamoo",
+    "x_usernames_all": [
+      "rbw_mamamoo",
+      "RBW_MAMAMOO"
+    ],
+    "instagram_username": "mamamoo_official",
+    "instagram_url": "https://www.instagram.com/mamamoo_official/",
+    "instagram_usernames_all": [
+      "mamamoo_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q17278068"
+  },
+  {
+    "artist": "MEOVV",
+    "tier": "core",
+    "query": "MEOVV",
+    "wikidata_id": "Q130084175",
+    "wikidata_label": "Meovv",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "OFFICIAL_MEOVV",
+    "x_url": "https://x.com/OFFICIAL_MEOVV",
+    "x_usernames_all": [
+      "OFFICIAL_MEOVV"
+    ],
+    "instagram_username": "meovv",
+    "instagram_url": "https://www.instagram.com/meovv/",
+    "instagram_usernames_all": [
+      "meovv"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q130084175"
+  },
+  {
+    "artist": "MONSTA X",
+    "tier": "core",
+    "query": "MONSTA X",
+    "wikidata_id": "Q19855151",
+    "wikidata_label": "Monsta X",
+    "wikidata_description": "South Korean musical group; boy band",
+    "x_username": "officialmonstax",
+    "x_url": "https://x.com/officialmonstax",
+    "x_usernames_all": [
+      "officialmonstax"
+    ],
+    "instagram_username": "official_monsta_x",
+    "instagram_url": "https://www.instagram.com/official_monsta_x/",
+    "instagram_usernames_all": [
+      "official_monsta_x"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q19855151"
+  },
+  {
+    "artist": "NCT 127",
+    "tier": "core",
+    "query": "NCT 127",
+    "wikidata_id": "Q55624444",
+    "wikidata_label": "NCT 127",
+    "wikidata_description": "sub-unit of the South Korean boy band NCT",
+    "x_username": "NCTsmtown_127",
+    "x_url": "https://x.com/NCTsmtown_127",
+    "x_usernames_all": [
+      "NCTsmtown_127"
+    ],
+    "instagram_username": "nct127",
+    "instagram_url": "https://www.instagram.com/nct127/",
+    "instagram_usernames_all": [
+      "nct127"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q55624444"
+  },
+  {
+    "artist": "NCT DREAM",
+    "tier": "core",
+    "query": "NCT DREAM",
+    "wikidata_id": "Q47002841",
+    "wikidata_label": "NCT Dream",
+    "wikidata_description": "South Korean musical group; sub-unit of boy band NCT",
+    "x_username": "nctsmtown_dream",
+    "x_url": "https://x.com/nctsmtown_dream",
+    "x_usernames_all": [
+      "nctsmtown_dream"
+    ],
+    "instagram_username": "nct_dream",
+    "instagram_url": "https://www.instagram.com/nct_dream/",
+    "instagram_usernames_all": [
+      "nct_dream",
+      "nctdream.chewinggum"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q47002841"
+  },
+  {
+    "artist": "NCT WISH",
+    "tier": "core",
+    "query": "NCT WISH",
+    "wikidata_id": "Q122575981",
+    "wikidata_label": "NCT WISH",
+    "wikidata_description": "Japanese subunit of South Korean music group NCT",
+    "x_username": "nctwishofficial",
+    "x_url": "https://x.com/nctwishofficial",
+    "x_usernames_all": [
+      "nctwishofficial"
+    ],
+    "instagram_username": "nctwish_official",
+    "instagram_url": "https://www.instagram.com/nctwish_official/",
+    "instagram_usernames_all": [
+      "nctwish_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q122575981"
+  },
+  {
+    "artist": "NewJeans",
+    "tier": "core",
+    "query": "NewJeans",
+    "wikidata_id": "Q113189277",
+    "wikidata_label": "NewJeans",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "NewJeans_twt",
+    "x_url": "https://x.com/NewJeans_twt",
+    "x_usernames_all": [
+      "NewJeans_ADOR",
+      "NewJeans_twt",
+      "NewJeans_jp"
+    ],
+    "instagram_username": "newjeans_official",
+    "instagram_url": "https://www.instagram.com/newjeans_official/",
+    "instagram_usernames_all": [
+      "newjeans_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q113189277"
+  },
+  {
+    "artist": "NEXZ",
+    "tier": "core",
+    "query": "NEXZ",
+    "wikidata_id": "Q123865358",
+    "wikidata_label": "Nexz",
+    "wikidata_description": "South Korean-Japanese boy group",
+    "x_username": "NEXZ_official",
+    "x_url": "https://x.com/NEXZ_official",
+    "x_usernames_all": [
+      "NEXZ_official"
+    ],
+    "instagram_username": "real_nexz",
+    "instagram_url": "https://www.instagram.com/real_nexz/",
+    "instagram_usernames_all": [
+      "real_nexz"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q123865358"
+  },
+  {
+    "artist": "NMIXX",
+    "tier": "core",
+    "query": "NMIXX",
+    "wikidata_id": "Q109307762",
+    "wikidata_label": "Nmixx",
+    "wikidata_description": "South Korean girl group from JYP Entertainment",
+    "x_username": "NMIXX_official",
+    "x_url": "https://x.com/NMIXX_official",
+    "x_usernames_all": [
+      "NMIXX_official"
+    ],
+    "instagram_username": "nmixx_official",
+    "instagram_url": "https://www.instagram.com/nmixx_official/",
+    "instagram_usernames_all": [
+      "nmixx_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q109307762"
+  },
+  {
+    "artist": "P1Harmony",
+    "tier": "core",
+    "query": "P1Harmony",
+    "wikidata_id": "Q101529383",
+    "wikidata_label": "P1Harmony",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "p1h_official",
+    "x_url": "https://x.com/p1h_official",
+    "x_usernames_all": [
+      "p1h_official"
+    ],
+    "instagram_username": "p1h_official",
+    "instagram_url": "https://www.instagram.com/p1h_official/",
+    "instagram_usernames_all": [
+      "p1h_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q101529383"
+  },
+  {
+    "artist": "PLAVE",
+    "tier": "core",
+    "query": "PLAVE",
+    "wikidata_id": "Q119025962",
+    "wikidata_label": "Plave",
+    "wikidata_description": "South Korean virtual boy band",
+    "x_username": "plave_official",
+    "x_url": "https://x.com/plave_official",
+    "x_usernames_all": [
+      "plave_official"
+    ],
+    "instagram_username": "plave_official",
+    "instagram_url": "https://www.instagram.com/plave_official/",
+    "instagram_usernames_all": [
+      "plave_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q119025962"
+  },
+  {
+    "artist": "QWER",
+    "tier": "core",
+    "query": "QWER",
+    "wikidata_id": "Q124412677",
+    "wikidata_label": "QWER",
+    "wikidata_description": "South Korean J-rock girl band",
+    "x_username": "official_QWER",
+    "x_url": "https://x.com/official_QWER",
+    "x_usernames_all": [
+      "official_QWER"
+    ],
+    "instagram_username": "qwerband_official",
+    "instagram_url": "https://www.instagram.com/qwerband_official/",
+    "instagram_usernames_all": [
+      "qwerband_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q124412677"
+  },
+  {
+    "artist": "Red Velvet",
+    "tier": "core",
+    "query": "Red Velvet",
+    "wikidata_id": "Q17466114",
+    "wikidata_label": "Red Velvet",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "RVsmtown",
+    "x_url": "https://x.com/RVsmtown",
+    "x_usernames_all": [
+      "RVsmtown"
+    ],
+    "instagram_username": "redvelvet.smtown",
+    "instagram_url": "https://www.instagram.com/redvelvet.smtown/",
+    "instagram_usernames_all": [
+      "redvelvet.smtown"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q17466114"
+  },
+  {
+    "artist": "RESCENE",
+    "tier": "core",
+    "query": "RESCENE k-pop",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "RIIZE",
+    "tier": "core",
+    "query": "RIIZE",
+    "wikidata_id": "Q121075203",
+    "wikidata_label": "Riize",
+    "wikidata_description": "South Korean musical group; boy band",
+    "x_username": "riize_official",
+    "x_url": "https://x.com/riize_official",
+    "x_usernames_all": [
+      "riize_official"
+    ],
+    "instagram_username": "riize_official",
+    "instagram_url": "https://www.instagram.com/riize_official/",
+    "instagram_usernames_all": [
+      "riize_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q121075203"
+  },
+  {
+    "artist": "SEVENTEEN",
+    "tier": "core",
+    "query": "SEVENTEEN",
+    "wikidata_id": "Q14524548",
+    "wikidata_label": "Seventeen",
+    "wikidata_description": "South Korean musical group; boy band",
+    "x_username": "pledis_17",
+    "x_url": "https://x.com/pledis_17",
+    "x_usernames_all": [
+      "pledis_17"
+    ],
+    "instagram_username": "saythename_17",
+    "instagram_url": "https://www.instagram.com/saythename_17/",
+    "instagram_usernames_all": [
+      "saythename_17"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q14524548"
+  },
+  {
+    "artist": "SHINee",
+    "tier": "core",
+    "query": "SHINee",
+    "wikidata_id": "Q269836",
+    "wikidata_label": "SHINee",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "shinee",
+    "x_url": "https://x.com/shinee",
+    "x_usernames_all": [
+      "shinetter",
+      "shinee"
+    ],
+    "instagram_username": "shinee",
+    "instagram_url": "https://www.instagram.com/shinee/",
+    "instagram_usernames_all": [
+      "shinee",
+      "shinee_jp_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q269836"
+  },
+  {
+    "artist": "STAYC",
+    "tier": "core",
+    "query": "STAYC",
+    "wikidata_id": "Q101541493",
+    "wikidata_label": "STAYC",
+    "wikidata_description": "South Korean musical girl group",
+    "x_username": "stayc_official",
+    "x_url": "https://x.com/stayc_official",
+    "x_usernames_all": [
+      "stayc_official"
+    ],
+    "instagram_username": "stayc_highup",
+    "instagram_url": "https://www.instagram.com/stayc_highup/",
+    "instagram_usernames_all": [
+      "stayc_highup"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q101541493"
+  },
+  {
+    "artist": "Stray Kids",
+    "tier": "core",
+    "query": "Stray Kids",
+    "wikidata_id": "Q46134670",
+    "wikidata_label": "Stray Kids",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "Stray_Kids",
+    "x_url": "https://x.com/Stray_Kids",
+    "x_usernames_all": [
+      "Stray_Kids",
+      "Stray_Kids_JP"
+    ],
+    "instagram_username": "realstraykids",
+    "instagram_url": "https://www.instagram.com/realstraykids/",
+    "instagram_usernames_all": [
+      "realstraykids",
+      "straykids_official_jp"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q46134670"
+  },
+  {
+    "artist": "THE BOYZ",
+    "tier": "core",
+    "query": "THE BOYZ",
+    "wikidata_id": "Q41949104",
+    "wikidata_label": "The Boyz",
+    "wikidata_description": "South Korean band",
+    "x_username": "IST_THEBOYZ",
+    "x_url": "https://x.com/IST_THEBOYZ",
+    "x_usernames_all": [
+      "IST_THEBOYZ",
+      "theboyzjapan",
+      "THEBOYZ_officl"
+    ],
+    "instagram_username": "official_theboyz",
+    "instagram_url": "https://www.instagram.com/official_theboyz/",
+    "instagram_usernames_all": [
+      "official_theboyz",
+      "theboyz_officl"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q41949104"
+  },
+  {
+    "artist": "TOMORROW X TOGETHER",
+    "tier": "core",
+    "query": "TOMORROW X TOGETHER",
+    "wikidata_id": "Q60550265",
+    "wikidata_label": "Tomorrow X Together",
+    "wikidata_description": "South Korean musical group; boy band",
+    "x_username": "TXT_bighit",
+    "x_url": "https://x.com/TXT_bighit",
+    "x_usernames_all": [
+      "TXT_members",
+      "TXT_bighit",
+      "TXT_bighit_jp"
+    ],
+    "instagram_username": "txt_bighit",
+    "instagram_url": "https://www.instagram.com/txt_bighit/",
+    "instagram_usernames_all": [
+      "txt_bighit"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q60550265"
+  },
+  {
+    "artist": "TREASURE",
+    "tier": "core",
+    "query": "TREASURE",
+    "wikidata_id": "Q61057550",
+    "wikidata_label": "Treasure",
+    "wikidata_description": "South Korean-Japanese boy band",
+    "x_username": "ygtreasuremaker",
+    "x_url": "https://x.com/ygtreasuremaker",
+    "x_usernames_all": [
+      "ygtreasuremaker",
+      "treasuremembers"
+    ],
+    "instagram_username": "yg_treasure_official",
+    "instagram_url": "https://www.instagram.com/yg_treasure_official/",
+    "instagram_usernames_all": [
+      "yg_treasure_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q61057550"
+  },
+  {
+    "artist": "tripleS",
+    "tier": "core",
+    "query": "tripleS",
+    "wikidata_id": "Q115099831",
+    "wikidata_label": "TripleS",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "triplescosmos",
+    "x_url": "https://x.com/triplescosmos",
+    "x_usernames_all": [
+      "triplescosmos"
+    ],
+    "instagram_username": "triplescosmos",
+    "instagram_url": "https://www.instagram.com/triplescosmos/",
+    "instagram_usernames_all": [
+      "triplescosmos"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q115099831"
+  },
+  {
+    "artist": "TWICE",
+    "tier": "core",
+    "query": "TWICE",
+    "wikidata_id": "Q20645861",
+    "wikidata_label": "Twice",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "JYPETWICE",
+    "x_url": "https://x.com/JYPETWICE",
+    "x_usernames_all": [
+      "JYPETWICE",
+      "JYPETWICE_JAPAN"
+    ],
+    "instagram_username": "twicetagram",
+    "instagram_url": "https://www.instagram.com/twicetagram/",
+    "instagram_usernames_all": [
+      "twicetagram",
+      "jypetwice_japan"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q20645861"
+  },
+  {
+    "artist": "TWS",
+    "tier": "core",
+    "query": "TWS",
+    "wikidata_id": "Q124091148",
+    "wikidata_label": "TWS",
+    "wikidata_description": "South Korean boy group",
+    "x_username": "tws_pledis",
+    "x_url": "https://x.com/tws_pledis",
+    "x_usernames_all": [
+      "tws_pledis"
+    ],
+    "instagram_username": "tws_pledis",
+    "instagram_url": "https://www.instagram.com/tws_pledis/",
+    "instagram_usernames_all": [
+      "tws_pledis"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q124091148"
+  },
+  {
+    "artist": "UNIS",
+    "tier": "core",
+    "query": "UNIS",
+    "wikidata_id": "Q124362218",
+    "wikidata_label": "Unis",
+    "wikidata_description": "2024 South Korean girl group",
+    "x_username": "UNIS_offcl",
+    "x_url": "https://x.com/UNIS_offcl",
+    "x_usernames_all": [
+      "UNIS_offcl"
+    ],
+    "instagram_username": "unis_offcl",
+    "instagram_url": "https://www.instagram.com/unis_offcl/",
+    "instagram_usernames_all": [
+      "unis_offcl"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q124362218"
+  },
+  {
+    "artist": "VIVIZ",
+    "tier": "core",
+    "query": "VIVIZ",
+    "wikidata_id": "Q108853211",
+    "wikidata_label": "Viviz",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "VIVIZ_official",
+    "x_url": "https://x.com/VIVIZ_official",
+    "x_usernames_all": [
+      "VIVIZ_official",
+      "VIVIZ_Japan"
+    ],
+    "instagram_username": "viviz_official",
+    "instagram_url": "https://www.instagram.com/viviz_official/",
+    "instagram_usernames_all": [
+      "viviz_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q108853211"
+  },
+  {
+    "artist": "WayV",
+    "tier": "core",
+    "query": "WayV",
+    "wikidata_id": "Q60062907",
+    "wikidata_label": "WayV",
+    "wikidata_description": "Chinese musical group; sub-unit of South Korean boy band NCT",
+    "x_username": "WayV_official",
+    "x_url": "https://x.com/WayV_official",
+    "x_usernames_all": [
+      "WayV_official"
+    ],
+    "instagram_username": "wayvofficial",
+    "instagram_url": "https://www.instagram.com/wayvofficial/",
+    "instagram_usernames_all": [
+      "wayvofficial"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q60062907"
+  },
+  {
+    "artist": "Xdinary Heroes",
+    "tier": "core",
+    "query": "Xdinary Heroes",
+    "wikidata_id": "Q109579414",
+    "wikidata_label": "Xdinary Heroes",
+    "wikidata_description": "South Korean band",
+    "x_username": "XH_official",
+    "x_url": "https://x.com/XH_official",
+    "x_usernames_all": [
+      "XH_official"
+    ],
+    "instagram_username": "xdinaryheroes_official",
+    "instagram_url": "https://www.instagram.com/xdinaryheroes_official/",
+    "instagram_usernames_all": [
+      "xdinaryheroes_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q109579414"
+  },
+  {
+    "artist": "xikers",
+    "tier": "core",
+    "query": "xikers",
+    "wikidata_id": "Q117191573",
+    "wikidata_label": "Xikers",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "xikers_official",
+    "x_url": "https://x.com/xikers_official",
+    "x_usernames_all": [
+      "xikers_official"
+    ],
+    "instagram_username": "xikers_official",
+    "instagram_url": "https://www.instagram.com/xikers_official/",
+    "instagram_usernames_all": [
+      "xikers_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q117191573"
+  },
+  {
+    "artist": "ZEROBASEONE",
+    "tier": "core",
+    "query": "ZEROBASEONE",
+    "wikidata_id": "Q117808633",
+    "wikidata_label": "Zerobaseone",
+    "wikidata_description": "Kpop group formed by the survival program Boys Planet",
+    "x_username": "ZB1_official",
+    "x_url": "https://x.com/ZB1_official",
+    "x_usernames_all": [
+      "ZB1_official"
+    ],
+    "instagram_username": "zb1official",
+    "instagram_url": "https://www.instagram.com/zb1official/",
+    "instagram_usernames_all": [
+      "zb1official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q117808633"
+  },
+  {
+    "artist": "82MAJOR",
+    "tier": "longtail",
+    "query": "82MAJOR",
+    "wikidata_id": "Q125200744",
+    "wikidata_label": "82Major",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "82Message",
+    "x_url": "https://x.com/82Message",
+    "x_usernames_all": [
+      "82MAJOR_231011",
+      "82Message",
+      "82MAJOR_JP"
+    ],
+    "instagram_username": "82major_official",
+    "instagram_url": "https://www.instagram.com/82major_official/",
+    "instagram_usernames_all": [
+      "82major_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q125200744"
+  },
+  {
+    "artist": "8TURN",
+    "tier": "longtail",
+    "query": "8TURN",
+    "wikidata_id": "Q116813012",
+    "wikidata_label": "8Turn",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "8TURN_official",
+    "x_url": "https://x.com/8TURN_official",
+    "x_usernames_all": [
+      "8TURN_official"
+    ],
+    "instagram_username": "8turn.official",
+    "instagram_url": "https://www.instagram.com/8turn.official/",
+    "instagram_usernames_all": [
+      "8turn.official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q116813012"
+  },
+  {
+    "artist": "AB6IX",
+    "tier": "longtail",
+    "query": "AB6IX",
+    "wikidata_id": "Q63852480",
+    "wikidata_label": "AB6IX",
+    "wikidata_description": "South Korean boy group",
+    "x_username": "AB6IX",
+    "x_url": "https://x.com/AB6IX",
+    "x_usernames_all": [
+      "AB6IX"
+    ],
+    "instagram_username": "ab6ix_official",
+    "instagram_url": "https://www.instagram.com/ab6ix_official/",
+    "instagram_usernames_all": [
+      "ab6ix_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q63852480"
+  },
+  {
+    "artist": "ALL(H)OURS",
+    "tier": "longtail",
+    "query": "ALL(H)OURS",
+    "wikidata_id": "Q125201025",
+    "wikidata_label": "All(H)Ours",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "ALL_H_OURS",
+    "x_url": "https://x.com/ALL_H_OURS",
+    "x_usernames_all": [
+      "ALL_H_OURS"
+    ],
+    "instagram_username": "all_h_ours",
+    "instagram_url": "https://www.instagram.com/all_h_ours/",
+    "instagram_usernames_all": [
+      "all_h_ours"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q125201025"
+  },
+  {
+    "artist": "AMPERS&ONE",
+    "tier": "longtail",
+    "query": "AMPERS&ONE",
+    "wikidata_id": "Q123458788",
+    "wikidata_label": "Ampers&One",
+    "wikidata_description": "South Korean boy group",
+    "x_username": "_AMPERSANDONE_",
+    "x_url": "https://x.com/_AMPERSANDONE_",
+    "x_usernames_all": [
+      "_AMPERSANDONE_"
+    ],
+    "instagram_username": "ampersandone_official",
+    "instagram_url": "https://www.instagram.com/ampersandone_official/",
+    "instagram_usernames_all": [
+      "ampersandone_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q123458788"
+  },
+  {
+    "artist": "ARTMS",
+    "tier": "longtail",
+    "query": "ARTMS",
+    "wikidata_id": "Q119692734",
+    "wikidata_label": "ARTMS",
+    "wikidata_description": "South Korean musical girl group",
+    "x_username": "official_artms",
+    "x_url": "https://x.com/official_artms",
+    "x_usernames_all": [
+      "official_artms"
+    ],
+    "instagram_username": "official_artms",
+    "instagram_url": "https://www.instagram.com/official_artms/",
+    "instagram_usernames_all": [
+      "official_artms"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q119692734"
+  },
+  {
+    "artist": "ATBO",
+    "tier": "longtail",
+    "query": "ATBO",
+    "wikidata_id": "Q112972232",
+    "wikidata_label": "ATBO",
+    "wikidata_description": "South Korean male idol group",
+    "x_username": "ATBO_ground",
+    "x_url": "https://x.com/ATBO_ground",
+    "x_usernames_all": [
+      "ATBO_ground"
+    ],
+    "instagram_username": "atboground",
+    "instagram_url": "https://www.instagram.com/atboground/",
+    "instagram_usernames_all": [
+      "atboground"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q112972232"
+  },
+  {
+    "artist": "BADVILLAIN",
+    "tier": "longtail",
+    "query": "BADVILLAIN",
+    "wikidata_id": "Q126365908",
+    "wikidata_label": "Badvillain",
+    "wikidata_description": "South Korean girl group",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "badvillain_bpm",
+    "instagram_url": "https://www.instagram.com/badvillain_bpm/",
+    "instagram_usernames_all": [
+      "badvillain_bpm"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q126365908"
+  },
+  {
+    "artist": "BAE173",
+    "tier": "longtail",
+    "query": "BAE173",
+    "wikidata_id": "Q99610002",
+    "wikidata_label": "BAE173",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "BAE173_official",
+    "x_url": "https://x.com/BAE173_official",
+    "x_usernames_all": [
+      "BAE173_official"
+    ],
+    "instagram_username": "official_pocketdolz",
+    "instagram_url": "https://www.instagram.com/official_pocketdolz/",
+    "instagram_usernames_all": [
+      "official_pocketdolz"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q99610002"
+  },
+  {
+    "artist": "BLITZERS",
+    "tier": "longtail",
+    "query": "BLITZERS",
+    "wikidata_id": "Q106945617",
+    "wikidata_label": "Blitzers",
+    "wikidata_description": "South Korean boy group",
+    "x_username": "WUZO_BLITZERS",
+    "x_url": "https://x.com/WUZO_BLITZERS",
+    "x_usernames_all": [
+      "WUZO_BLITZERS"
+    ],
+    "instagram_username": "official_blitzers",
+    "instagram_url": "https://www.instagram.com/official_blitzers/",
+    "instagram_usernames_all": [
+      "official_blitzers"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q106945617"
+  },
+  {
+    "artist": "cignature",
+    "tier": "longtail",
+    "query": "cignature",
+    "wikidata_id": "Q84311821",
+    "wikidata_label": "Cignature",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "cignature_J9",
+    "x_url": "https://x.com/cignature_J9",
+    "x_usernames_all": [
+      "cignature_J9"
+    ],
+    "instagram_username": "cignature_j9",
+    "instagram_url": "https://www.instagram.com/cignature_j9/",
+    "instagram_usernames_all": [
+      "cignature_j9"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q84311821"
+  },
+  {
+    "artist": "CIX",
+    "tier": "longtail",
+    "query": "CIX",
+    "wikidata_id": "Q63790991",
+    "wikidata_label": "CIX",
+    "wikidata_description": "South Korean musical group; boy band",
+    "x_username": "cix_official",
+    "x_url": "https://x.com/cix_official",
+    "x_usernames_all": [
+      "cix_twt",
+      "cix_official"
+    ],
+    "instagram_username": "cix.official",
+    "instagram_url": "https://www.instagram.com/cix.official/",
+    "instagram_usernames_all": [
+      "cix.official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q63790991"
+  },
+  {
+    "artist": "CLASS:y",
+    "tier": "longtail",
+    "query": "CLASS:y",
+    "wikidata_id": "Q111103138",
+    "wikidata_label": "CLASS:y",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "M25_CLASSy",
+    "x_url": "https://x.com/M25_CLASSy",
+    "x_usernames_all": [
+      "M25_CLASSy"
+    ],
+    "instagram_username": "m25_classy",
+    "instagram_url": "https://www.instagram.com/m25_classy/",
+    "instagram_usernames_all": [
+      "m25_classy"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q111103138"
+  },
+  {
+    "artist": "CSR",
+    "tier": "longtail",
+    "query": "CSR",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "DKB",
+    "tier": "longtail",
+    "query": "DKB",
+    "wikidata_id": "Q85825168",
+    "wikidata_label": "DKB",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "DKB_BRAVE",
+    "x_url": "https://x.com/DKB_BRAVE",
+    "x_usernames_all": [
+      "DKB_BRAVE"
+    ],
+    "instagram_username": "official.dkb",
+    "instagram_url": "https://www.instagram.com/official.dkb/",
+    "instagram_usernames_all": [
+      "official.dkb"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q85825168"
+  },
+  {
+    "artist": "DRIPPIN",
+    "tier": "longtail",
+    "query": "DRIPPIN",
+    "wikidata_id": "Q101529768",
+    "wikidata_label": "Drippin",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "drippin",
+    "x_url": "https://x.com/drippin",
+    "x_usernames_all": [
+      "drippin"
+    ],
+    "instagram_username": "wearedrippin",
+    "instagram_url": "https://www.instagram.com/wearedrippin/",
+    "instagram_usernames_all": [
+      "wearedrippin"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q101529768"
+  },
+  {
+    "artist": "DXMON",
+    "tier": "longtail",
+    "query": "DXMON",
+    "wikidata_id": "Q125200753",
+    "wikidata_label": "Dxmon",
+    "wikidata_description": "South Korean boy band",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q125200753"
+  },
+  {
+    "artist": "EPEX",
+    "tier": "longtail",
+    "query": "EPEX",
+    "wikidata_id": "Q107387899",
+    "wikidata_label": "Epex",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "the_EPEX",
+    "x_url": "https://x.com/the_EPEX",
+    "x_usernames_all": [
+      "the_EPEX"
+    ],
+    "instagram_username": "epex.official",
+    "instagram_url": "https://www.instagram.com/epex.official/",
+    "instagram_usernames_all": [
+      "epex.official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q107387899"
+  },
+  {
+    "artist": "GHOST9",
+    "tier": "longtail",
+    "query": "GHOST9",
+    "wikidata_id": "Q99902508",
+    "wikidata_label": "Ghost9",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "GHOST9OFFICIAL",
+    "x_url": "https://x.com/GHOST9OFFICIAL",
+    "x_usernames_all": [
+      "GHOST9OFFICIAL"
+    ],
+    "instagram_username": "official.ghost9",
+    "instagram_url": "https://www.instagram.com/official.ghost9/",
+    "instagram_usernames_all": [
+      "official.ghost9"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q99902508"
+  },
+  {
+    "artist": "H1-KEY",
+    "tier": "longtail",
+    "query": "H1-KEY",
+    "wikidata_id": "Q111864756",
+    "wikidata_label": "H1-Key",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "H1KEY_official",
+    "x_url": "https://x.com/H1KEY_official",
+    "x_usernames_all": [
+      "H1KEY_official"
+    ],
+    "instagram_username": "h1key_official",
+    "instagram_url": "https://www.instagram.com/h1key_official/",
+    "instagram_usernames_all": [
+      "h1key_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q111864756"
+  },
+  {
+    "artist": "izna",
+    "tier": "longtail",
+    "query": "izna",
+    "wikidata_id": "Q127162707",
+    "wikidata_label": "Izna",
+    "wikidata_description": "South Korean girl group",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "izna_offcl",
+    "instagram_url": "https://www.instagram.com/izna_offcl/",
+    "instagram_usernames_all": [
+      "izna_offcl"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q127162707"
+  },
+  {
+    "artist": "JUST B",
+    "tier": "longtail",
+    "query": "JUST B",
+    "wikidata_id": "Q107548399",
+    "wikidata_label": "JUST B",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "JUSTB_Official",
+    "x_url": "https://x.com/JUSTB_Official",
+    "x_usernames_all": [
+      "JUSTB_Official"
+    ],
+    "instagram_username": "justb_ig_official",
+    "instagram_url": "https://www.instagram.com/justb_ig_official/",
+    "instagram_usernames_all": [
+      "justb_ig_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q107548399"
+  },
+  {
+    "artist": "LIGHTSUM",
+    "tier": "longtail",
+    "query": "LIGHTSUM",
+    "wikidata_id": "Q107005985",
+    "wikidata_label": "Lightsum",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "cube_lightsum",
+    "x_url": "https://x.com/cube_lightsum",
+    "x_usernames_all": [
+      "cube_lightsum"
+    ],
+    "instagram_username": "cube_lightsum",
+    "instagram_url": "https://www.instagram.com/cube_lightsum/",
+    "instagram_usernames_all": [
+      "cube_lightsum"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q107005985"
+  },
+  {
+    "artist": "Loossemble",
+    "tier": "longtail",
+    "query": "Loossemble",
+    "wikidata_id": "Q121975741",
+    "wikidata_label": "Loossemble",
+    "wikidata_description": "South Korean girl group",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "loossemble.official",
+    "instagram_url": "https://www.instagram.com/loossemble.official/",
+    "instagram_usernames_all": [
+      "loossemble.official"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q121975741"
+  },
+  {
+    "artist": "LUN8",
+    "tier": "longtail",
+    "query": "LUN8",
+    "wikidata_id": "Q119521803",
+    "wikidata_label": "Lun8",
+    "wikidata_description": "South Korean boy group",
+    "x_username": "LUN8_official",
+    "x_url": "https://x.com/LUN8_official",
+    "x_usernames_all": [
+      "LUN8_official"
+    ],
+    "instagram_username": "lun8_official",
+    "instagram_url": "https://www.instagram.com/lun8_official/",
+    "instagram_usernames_all": [
+      "lun8_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q119521803"
+  },
+  {
+    "artist": "MCND",
+    "tier": "longtail",
+    "query": "MCND",
+    "wikidata_id": "Q85873198",
+    "wikidata_label": "MCND",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "mcndofficial_",
+    "x_url": "https://x.com/mcndofficial_",
+    "x_usernames_all": [
+      "mcndofficial_"
+    ],
+    "instagram_username": "mcnd_official",
+    "instagram_url": "https://www.instagram.com/mcnd_official/",
+    "instagram_usernames_all": [
+      "mcnd_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q85873198"
+  },
+  {
+    "artist": "NOMAD",
+    "tier": "longtail",
+    "query": "NOMAD",
+    "wikidata_id": "Q110205519",
+    "wikidata_label": "Nomad",
+    "wikidata_description": "Malaysian actor and singer",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "nomadaish88",
+    "instagram_url": "https://www.instagram.com/nomadaish88/",
+    "instagram_usernames_all": [
+      "nomadaish88"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q110205519"
+  },
+  {
+    "artist": "ONEUS",
+    "tier": "longtail",
+    "query": "ONEUS",
+    "wikidata_id": "Q60528927",
+    "wikidata_label": "Oneus",
+    "wikidata_description": "South Korean boy group",
+    "x_username": "official_oneus",
+    "x_url": "https://x.com/official_oneus",
+    "x_usernames_all": [
+      "official_oneus"
+    ],
+    "instagram_username": "official_oneus",
+    "instagram_url": "https://www.instagram.com/official_oneus/",
+    "instagram_usernames_all": [
+      "official_oneus"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q60528927"
+  },
+  {
+    "artist": "ONEWE",
+    "tier": "longtail",
+    "query": "ONEWE",
+    "wikidata_id": "Q42288986",
+    "wikidata_label": "Onewe",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "official_onewe",
+    "x_url": "https://x.com/official_onewe",
+    "x_usernames_all": [
+      "official_onewe"
+    ],
+    "instagram_username": "official_onewe",
+    "instagram_url": "https://www.instagram.com/official_onewe/",
+    "instagram_usernames_all": [
+      "official_onewe"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q42288986"
+  },
+  {
+    "artist": "ONF",
+    "tier": "longtail",
+    "query": "ONF",
+    "wikidata_id": "Q35101861",
+    "wikidata_label": "ONF",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "WM_ONOFF",
+    "x_url": "https://x.com/WM_ONOFF",
+    "x_usernames_all": [
+      "WM_ONOFF"
+    ],
+    "instagram_username": "wm_onoff",
+    "instagram_url": "https://www.instagram.com/wm_onoff/",
+    "instagram_usernames_all": [
+      "wm_onoff"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q35101861"
+  },
+  {
+    "artist": "POW",
+    "tier": "longtail",
+    "query": "POW",
+    "wikidata_id": "Q20727012",
+    "wikidata_label": "Pow",
+    "wikidata_description": "family name",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q20727012"
+  },
+  {
+    "artist": "Purple Kiss",
+    "tier": "longtail",
+    "query": "Purple Kiss",
+    "wikidata_id": "Q97780109",
+    "wikidata_label": "Purple Kiss",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "RBW_PURPLEKISS",
+    "x_url": "https://x.com/RBW_PURPLEKISS",
+    "x_usernames_all": [
+      "RBW_PURPLEKISS"
+    ],
+    "instagram_username": "purplekiss_official",
+    "instagram_url": "https://www.instagram.com/purplekiss_official/",
+    "instagram_usernames_all": [
+      "purplekiss_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q97780109"
+  },
+  {
+    "artist": "SAY MY NAME",
+    "tier": "longtail",
+    "query": "SAY MY NAME",
+    "wikidata_id": "Q130581752",
+    "wikidata_label": "Say My Name",
+    "wikidata_description": "South Korean musical group; girl group",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q130581752"
+  },
+  {
+    "artist": "TEMPEST",
+    "tier": "longtail",
+    "query": "TEMPEST",
+    "wikidata_id": "Q20998078",
+    "wikidata_label": "Tempest",
+    "wikidata_description": "family name",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q20998078"
+  },
+  {
+    "artist": "The KingDom",
+    "tier": "longtail",
+    "query": "The KingDom k-pop",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "TIOT",
+    "tier": "longtail",
+    "query": "TIOT",
+    "wikidata_id": "Q125200743",
+    "wikidata_label": "TIOT",
+    "wikidata_description": "South Korean boy band",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q125200743"
+  },
+  {
+    "artist": "TNX",
+    "tier": "longtail",
+    "query": "TNX",
+    "wikidata_id": "Q3512268",
+    "wikidata_label": "TNX",
+    "wikidata_description": "Japanese media company",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q3512268"
+  },
+  {
+    "artist": "TRENDZ",
+    "tier": "longtail",
+    "query": "TRENDZ",
+    "wikidata_id": "Q110920749",
+    "wikidata_label": "Trendz",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "trendz_offcl",
+    "x_url": "https://x.com/trendz_offcl",
+    "x_usernames_all": [
+      "trendz_offcl"
+    ],
+    "instagram_username": "trendz_offcl",
+    "instagram_url": "https://www.instagram.com/trendz_offcl/",
+    "instagram_usernames_all": [
+      "trendz_offcl"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q110920749"
+  },
+  {
+    "artist": "VERIVERY",
+    "tier": "longtail",
+    "query": "VERIVERY",
+    "wikidata_id": "Q60577989",
+    "wikidata_label": "VERIVERY",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "by_verivery",
+    "x_url": "https://x.com/by_verivery",
+    "x_usernames_all": [
+      "the_verivery",
+      "by_verivery"
+    ],
+    "instagram_username": "the_verivery",
+    "instagram_url": "https://www.instagram.com/the_verivery/",
+    "instagram_usernames_all": [
+      "the_verivery"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q60577989"
+  },
+  {
+    "artist": "Weeekly",
+    "tier": "longtail",
+    "query": "Weeekly",
+    "wikidata_id": "Q65046002",
+    "wikidata_label": "Weeekly",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "_Weeekly",
+    "x_url": "https://x.com/_Weeekly",
+    "x_usernames_all": [
+      "_Weeekly"
+    ],
+    "instagram_username": "_weeekly",
+    "instagram_url": "https://www.instagram.com/_weeekly/",
+    "instagram_usernames_all": [
+      "_weeekly"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q65046002"
+  },
+  {
+    "artist": "WEi",
+    "tier": "longtail",
+    "query": "WEi",
+    "wikidata_id": "Q7979726",
+    "wikidata_label": "Wei",
+    "wikidata_description": "given name",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q7979726"
+  },
+  {
+    "artist": "WHIB",
+    "tier": "longtail",
+    "query": "WHIB",
+    "wikidata_id": "Q123398518",
+    "wikidata_label": "WHIB",
+    "wikidata_description": "South Korean male idol group",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "whib_official",
+    "instagram_url": "https://www.instagram.com/whib_official/",
+    "instagram_usernames_all": [
+      "whib_official"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q123398518"
+  },
+  {
+    "artist": "woo!ah!",
+    "tier": "longtail",
+    "query": "woo!ah!",
+    "wikidata_id": "Q94615987",
+    "wikidata_label": "Wooah",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "wooah_nv",
+    "x_url": "https://x.com/wooah_nv",
+    "x_usernames_all": [
+      "wooah_nv"
+    ],
+    "instagram_username": "wooah_nv",
+    "instagram_url": "https://www.instagram.com/wooah_nv/",
+    "instagram_usernames_all": [
+      "wooah_nv"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q94615987"
+  },
+  {
+    "artist": "YOUNG POSSE",
+    "tier": "longtail",
+    "query": "YOUNG POSSE",
+    "wikidata_id": "Q123099728",
+    "wikidata_label": "Young Posse",
+    "wikidata_description": "South Korean girl group",
+    "x_username": "youngposseup",
+    "x_url": "https://x.com/youngposseup",
+    "x_usernames_all": [
+      "youngposseup"
+    ],
+    "instagram_username": "youngposseup",
+    "instagram_url": "https://www.instagram.com/youngposseup/",
+    "instagram_usernames_all": [
+      "youngposseup"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q123099728"
+  },
+  {
+    "artist": "YOUNITE",
+    "tier": "longtail",
+    "query": "YOUNITE",
+    "wikidata_id": "Q111199847",
+    "wikidata_label": "Younite",
+    "wikidata_description": "South Korean boy band",
+    "x_username": "younite_offcl",
+    "x_url": "https://x.com/younite_offcl",
+    "x_usernames_all": [
+      "younite_offcl"
+    ],
+    "instagram_username": "younite_bnm",
+    "instagram_url": "https://www.instagram.com/younite_bnm/",
+    "instagram_usernames_all": [
+      "younite_bnm"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q111199847"
+  },
+  {
+    "artist": "BAEKHYUN",
+    "tier": "solo",
+    "query": "BAEKHYUN",
+    "wikidata_id": "Q101442732",
+    "wikidata_label": "Baekhyun",
+    "wikidata_description": "2021 EP by Baekhyun",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q101442732"
+  },
+  {
+    "artist": "BIBI",
+    "tier": "solo",
+    "query": "BIBI",
+    "wikidata_id": "Q856260",
+    "wikidata_label": "Bibi",
+    "wikidata_description": "male given name",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q856260"
+  },
+  {
+    "artist": "CHANYEOL",
+    "tier": "solo",
+    "query": "Chanyeol EXO",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "CHEN",
+    "tier": "solo",
+    "query": "Chen EXO",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "CHUNG HA",
+    "tier": "solo",
+    "query": "Chungha",
+    "wikidata_id": "Q26214034",
+    "wikidata_label": "Chungha",
+    "wikidata_description": "South Korean singer",
+    "x_username": "CH_CHUN9HA",
+    "x_url": "https://x.com/CH_CHUN9HA",
+    "x_usernames_all": [
+      "CH_CHUN9HA"
+    ],
+    "instagram_username": "chungha_official",
+    "instagram_url": "https://www.instagram.com/chungha_official/",
+    "instagram_usernames_all": [
+      "chungha_official"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q26214034"
+  },
+  {
+    "artist": "D.O.",
+    "tier": "solo",
+    "query": "D.O. EXO",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "DAE SUNG",
+    "tier": "solo",
+    "query": "Daesung BigBang",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "DOYOUNG",
+    "tier": "solo",
+    "query": "DOYOUNG",
+    "wikidata_id": "Q26689987",
+    "wikidata_label": "Kim Doyoung",
+    "wikidata_description": "South Korean singer",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "do0_nct",
+    "instagram_url": "https://www.instagram.com/do0_nct/",
+    "instagram_usernames_all": [
+      "do0_nct"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q26689987"
+  },
+  {
+    "artist": "G-DRAGON",
+    "tier": "solo",
+    "query": "G-Dragon",
+    "wikidata_id": "Q495577",
+    "wikidata_label": "G-Dragon",
+    "wikidata_description": "South Korean rapper, singer, songwriter and record producer (born 1988)",
+    "x_username": "IBGDRGN",
+    "x_url": "https://x.com/IBGDRGN",
+    "x_usernames_all": [
+      "IBGDRGN"
+    ],
+    "instagram_username": "xxxibgdrgn",
+    "instagram_url": "https://www.instagram.com/xxxibgdrgn/",
+    "instagram_usernames_all": [
+      "xxxibgdrgn"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q495577"
+  },
+  {
+    "artist": "HWASA",
+    "tier": "solo",
+    "query": "HWASA",
+    "wikidata_id": "Q19603912",
+    "wikidata_label": "Hwasa",
+    "wikidata_description": "South Korean singer and rapper (born 1995)",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "_mariahwasa",
+    "instagram_url": "https://www.instagram.com/_mariahwasa/",
+    "instagram_usernames_all": [
+      "_mariahwasa",
+      "_mariahwasa"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q19603912"
+  },
+  {
+    "artist": "HYO",
+    "tier": "solo",
+    "query": "Hyoyeon",
+    "wikidata_id": "Q253619",
+    "wikidata_label": "Kim Hyo-yeon",
+    "wikidata_description": "South Korean singer, rapper and model",
+    "x_username": "Hyoyeon_djhyo",
+    "x_url": "https://x.com/Hyoyeon_djhyo",
+    "x_usernames_all": [
+      "Hyoyeon_djhyo"
+    ],
+    "instagram_username": "hyoyeon_x_x",
+    "instagram_url": "https://www.instagram.com/hyoyeon_x_x/",
+    "instagram_usernames_all": [
+      "hyoyeon_x_x",
+      "watasiwahyo"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q253619"
+  },
+  {
+    "artist": "IRENE",
+    "tier": "solo",
+    "query": "Irene Red Velvet",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "IU",
+    "tier": "solo",
+    "query": "IU",
+    "wikidata_id": "Q37549422",
+    "wikidata_label": "Iu",
+    "wikidata_description": "family name",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q37549422"
+  },
+  {
+    "artist": "j-hope",
+    "tier": "solo",
+    "query": "j-hope BTS",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "JENNIE",
+    "tier": "solo",
+    "query": "JENNIE",
+    "wikidata_id": "Q26262599",
+    "wikidata_label": "Jennie",
+    "wikidata_description": "South Korean singer and rapper (born 1996)",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "lesyeuxdenini",
+    "instagram_url": "https://www.instagram.com/lesyeuxdenini/",
+    "instagram_usernames_all": [
+      "jennierubyjane",
+      "lesyeuxdenini"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q26262599"
+  },
+  {
+    "artist": "JIHYO",
+    "tier": "solo",
+    "query": "JIHYO",
+    "wikidata_id": "Q69511930",
+    "wikidata_label": "Ji-hyo",
+    "wikidata_description": "Korean unisex given name (지효)",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q69511930"
+  },
+  {
+    "artist": "JIMIN",
+    "tier": "solo",
+    "query": "Jimin BTS",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "JIN",
+    "tier": "solo",
+    "query": "Jin BTS",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "JISOO",
+    "tier": "solo",
+    "query": "JISOO",
+    "wikidata_id": "Q27655361",
+    "wikidata_label": "Jisoo",
+    "wikidata_description": "South Korean singer, actress,dancer and rapper (born 1995)",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "sooyaaa__",
+    "instagram_url": "https://www.instagram.com/sooyaaa__/",
+    "instagram_usernames_all": [
+      "sooyaaa__"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q27655361"
+  },
+  {
+    "artist": "JOY",
+    "tier": "solo",
+    "query": "Joy Red Velvet",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "JUNG KOOK",
+    "tier": "solo",
+    "query": "Jungkook",
+    "wikidata_id": "Q22338877",
+    "wikidata_label": "Jungkook",
+    "wikidata_description": "South Korean singer",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "mnijungkook",
+    "instagram_url": "https://www.instagram.com/mnijungkook/",
+    "instagram_usernames_all": [
+      "mnijungkook"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q22338877"
+  },
+  {
+    "artist": "KAI",
+    "tier": "solo",
+    "query": "Kai EXO",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "KEY",
+    "tier": "solo",
+    "query": "Key SHINee",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "LISA",
+    "tier": "solo",
+    "query": "LISA",
+    "wikidata_id": "Q26707663",
+    "wikidata_label": "Lisa",
+    "wikidata_description": "Thai rapper, singer, model, dancer and actress",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "lalalalisa_m",
+    "instagram_url": "https://www.instagram.com/lalalalisa_m/",
+    "instagram_usernames_all": [
+      "lalalalisa_m"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q26707663"
+  },
+  {
+    "artist": "MARK",
+    "tier": "solo",
+    "query": "Mark NCT",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "MINHO",
+    "tier": "solo",
+    "query": "Minho SHINee",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "MISAMO",
+    "tier": "solo",
+    "query": "MISAMO Twice",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "MOONBYUL",
+    "tier": "solo",
+    "query": "MOONBYUL",
+    "wikidata_id": "Q19483782",
+    "wikidata_label": "Moonbyul",
+    "wikidata_description": "South Korean singer and rapper",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "mo_onbyul",
+    "instagram_url": "https://www.instagram.com/mo_onbyul/",
+    "instagram_usernames_all": [
+      "mo_onbyul"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q19483782"
+  },
+  {
+    "artist": "NAYEON",
+    "tier": "solo",
+    "query": "NAYEON",
+    "wikidata_id": "Q69507784",
+    "wikidata_label": "Na-yeon",
+    "wikidata_description": "Korean female given name (나연)",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q69507784"
+  },
+  {
+    "artist": "ONEW",
+    "tier": "solo",
+    "query": "Onew SHINee",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "RM",
+    "tier": "solo",
+    "query": "RM BTS",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "ROSÉ",
+    "tier": "solo",
+    "query": "ROSÉ",
+    "wikidata_id": "Q27655344",
+    "wikidata_label": "Rosé",
+    "wikidata_description": "South Korean-New Zealand singer",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "roses_are_rosie",
+    "instagram_url": "https://www.instagram.com/roses_are_rosie/",
+    "instagram_usernames_all": [
+      "roses_are_rosie"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q27655344"
+  },
+  {
+    "artist": "SEULGI",
+    "tier": "solo",
+    "query": "Seulgi Red Velvet",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "SOLAR",
+    "tier": "solo",
+    "query": "SOLAR",
+    "wikidata_id": "Q29441547",
+    "wikidata_label": "Solar",
+    "wikidata_description": "family name",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q29441547"
+  },
+  {
+    "artist": "SUGA",
+    "tier": "solo",
+    "query": "Suga BTS",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "SUHO",
+    "tier": "solo",
+    "query": "Suho EXO",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "SUNMI",
+    "tier": "solo",
+    "query": "SUNMI",
+    "wikidata_id": "Q624995",
+    "wikidata_label": "Sunmi",
+    "wikidata_description": "South Korean singer",
+    "x_username": "sunmi_official",
+    "x_url": "https://x.com/sunmi_official",
+    "x_usernames_all": [
+      "official_sunmi_",
+      "miyaohyeah",
+      "sunmi_official"
+    ],
+    "instagram_username": "miyayeah",
+    "instagram_url": "https://www.instagram.com/miyayeah/",
+    "instagram_usernames_all": [
+      "miyayeah"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q624995"
+  },
+  {
+    "artist": "TAEMIN",
+    "tier": "solo",
+    "query": "TAEMIN",
+    "wikidata_id": "Q58608457",
+    "wikidata_label": "Taemin",
+    "wikidata_description": "First Japanese-language studio album by Taemin",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q58608457"
+  },
+  {
+    "artist": "TAEYANG",
+    "tier": "solo",
+    "query": "TAEYANG",
+    "wikidata_id": "Q482991",
+    "wikidata_label": "Taeyang",
+    "wikidata_description": "South Korean singer, dancer, member of Big Bang",
+    "x_username": "Realtaeyang",
+    "x_url": "https://x.com/Realtaeyang",
+    "x_usernames_all": [
+      "Realtaeyang"
+    ],
+    "instagram_username": "__youngbae__",
+    "instagram_url": "https://www.instagram.com/__youngbae__/",
+    "instagram_usernames_all": [
+      "__youngbae__"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q482991"
+  },
+  {
+    "artist": "TAEYEON",
+    "tier": "solo",
+    "query": "Taeyeon Girls' Generation",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "TAEYONG",
+    "tier": "solo",
+    "query": "TAEYONG",
+    "wikidata_id": "Q18210467",
+    "wikidata_label": "Tae-yong",
+    "wikidata_description": "Korean male given name (태용)",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "no_social",
+    "source": "https://www.wikidata.org/wiki/Q18210467"
+  },
+  {
+    "artist": "TEN",
+    "tier": "solo",
+    "query": "Ten NCT",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "V",
+    "tier": "solo",
+    "query": "V BTS",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "WENDY",
+    "tier": "solo",
+    "query": "Wendy Red Velvet",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "WHEEIN",
+    "tier": "solo",
+    "query": "WHEEIN",
+    "wikidata_id": "Q19603930",
+    "wikidata_label": "Wheein",
+    "wikidata_description": "South Korean singer",
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": "whee_inthemood",
+    "instagram_url": "https://www.instagram.com/whee_inthemood/",
+    "instagram_usernames_all": [
+      "whee_inthemood"
+    ],
+    "status": "ok_ig_only",
+    "source": "https://www.wikidata.org/wiki/Q19603930"
+  },
+  {
+    "artist": "XIUMIN",
+    "tier": "solo",
+    "query": "Xiumin EXO",
+    "wikidata_id": null,
+    "wikidata_label": null,
+    "wikidata_description": null,
+    "x_username": null,
+    "x_url": null,
+    "x_usernames_all": [],
+    "instagram_username": null,
+    "instagram_url": null,
+    "instagram_usernames_all": [],
+    "status": "not_found",
+    "source": null
+  },
+  {
+    "artist": "ZICO",
+    "tier": "solo",
+    "query": "ZICO",
+    "wikidata_id": "Q7696122",
+    "wikidata_label": "Zico",
+    "wikidata_description": "South Korean rapper, singer and music producer",
+    "x_username": "ZICO92",
+    "x_url": "https://x.com/ZICO92",
+    "x_usernames_all": [
+      "ZICO92"
+    ],
+    "instagram_username": "woozico0914",
+    "instagram_url": "https://www.instagram.com/woozico0914/",
+    "instagram_usernames_all": [
+      "woozico0914"
+    ],
+    "status": "ok_both",
+    "source": "https://www.wikidata.org/wiki/Q7696122"
+  }
+]

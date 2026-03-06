@@ -1,0 +1,357 @@
+[
+  {
+    "group": "82MAJOR",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=82MAJOR&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "8TURN",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=8TURN&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "AB6IX",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=AB6IX&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "ALL(H)OURS",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=ALL%28H%29OURS&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "AMPERS&ONE",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=AMPERS%26ONE&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "ARTMS",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=ARTMS&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "ATBO",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=ATBO&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "BADVILLAIN",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=BADVILLAIN&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "BAE173",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=BAE173&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "BLITZERS",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=BLITZERS&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "cignature",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=cignature&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "CIX",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=CIX&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "CLASS:y",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=CLASS%3Ay&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "CSR",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=CSR%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "DKB",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=DKB&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "DRIPPIN",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=DRIPPIN&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "DXMON",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=DXMON&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "EPEX",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=EPEX&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "GHOST9",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=GHOST9&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "H1-KEY",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=H1-KEY&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "izna",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=izna%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "JUST B",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=JUST%20B&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "LIGHTSUM",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=LIGHTSUM&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "Loossemble",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=Loossemble&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "LUN8",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=LUN8&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "MCND",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=MCND&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "NCT 127",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=NCT%20127&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "NCT DREAM",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=NCT%20DREAM&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "NCT WISH",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=NCT%20WISH&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "NewJeans",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=NewJeans&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "NEXZ",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=NEXZ&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "NMIXX",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=NMIXX&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "NOMAD",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=NOMAD%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "ONEUS",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=ONEUS&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "ONEWE",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=ONEWE&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "ONF",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=ONF&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "P1Harmony",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=P1Harmony&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "PLAVE",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=PLAVE&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "POW",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=POW%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "Purple Kiss",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=Purple%20Kiss&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "QWER",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=QWER%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "Red Velvet",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=Red%20Velvet&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "RIIZE",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=RIIZE&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "SEVENTEEN",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=SEVENTEEN&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "SHINee",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=SHINee&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "STAYC",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=STAYC&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "Stray Kids",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=Stray%20Kids&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "TEMPEST",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=TEMPEST&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "THE BOYZ",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=THE%20BOYZ&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "The KingDom",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=The%20KingDom%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "TIOT",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=TIOT%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "TNX",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=TNX%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "TOMORROW X TOGETHER",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=TOMORROW%20X%20TOGETHER&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "TREASURE",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=TREASURE&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "TRENDZ",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=TRENDZ&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "tripleS",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=tripleS&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "TWICE",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=TWICE&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "TWS",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=TWS&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "UNIS",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=UNIS&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "VERIVERY",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=VERIVERY&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "VIVIZ",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=VIVIZ&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "WayV",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=WayV&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "Weeekly",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=Weeekly&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "WEi",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=WEi%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "WHIB",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=WHIB%20kpop&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "woo!ah!",
+    "reason": "ReadTimeout",
+    "query_url": "https://itunes.apple.com/search?term=woo%21ah%21&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "Xdinary Heroes",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=Xdinary%20Heroes&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "xikers",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=xikers&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "YOUNG POSSE",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=YOUNG%20POSSE&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "YOUNITE",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=YOUNITE&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  },
+  {
+    "group": "ZEROBASEONE",
+    "reason": "HTTPError",
+    "query_url": "https://itunes.apple.com/search?term=ZEROBASEONE&entity=musicArtist&attribute=artistTerm&limit=25&country=us"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "group": "CSR",
+    "reason": "no_latest_single",
+    "artist_mbid": "27cc84d3-4319-445f-a747-c4b4c7550dfb"
+  },
+  {
+    "group": "EVNNE",
+    "reason": "no_latest_single",
+    "artist_mbid": "bf081017-e5ec-44b8-a5e6-d0401d0b6828"
+  },
+  {
+    "group": "ifeye",
+    "reason": "no_latest_single",
+    "artist_mbid": "2fa469c4-a186-48d6-9d9f-d1d4bb716071"
+  },
+  {
+    "group": "JUST B",
+    "reason": "no_latest_single",
+    "artist_mbid": "23c5f399-a12e-4c7e-8066-b470e65d55a4"
+  },
+  {
+    "group": "Loossemble",
+    "reason": "no_latest_single",
+    "artist_mbid": "cded24f3-361e-4179-8f26-4209479f6187"
+  },
+  {
+    "group": "NOMAD",
+    "reason": "no_latest_single",
+    "artist_mbid": "cc2e5d30-48d4-49ca-865d-c426444557ac"
+  },
+  {
+    "group": "The KingDom",
+    "reason": "no_latest_single",
+    "artist_mbid": "aa6844e7-42a8-425b-bd67-3b3a8b43b9ec"
+  }
+]
