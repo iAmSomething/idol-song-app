@@ -265,3 +265,7 @@
 - `privacy-security-spec.md`
 - `accessibility-reading-order-spec.md`
 - `release-readiness-gate.md`
+- `route-param-contracts.md`
+- `configuration-environment-spec.md`
+- `observability-error-taxonomy.md`
+- `content-governance-spec.md`

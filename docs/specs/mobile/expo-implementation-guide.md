@@ -128,3 +128,8 @@ mobile/app/
 - adapter/selectors 규칙 명확
 - 필요한 sample payload 존재
 - QA acceptance 포인트 확인
+
+## 13. 환경/라우트 참조
+- route param과 deep-link 계약은 `route-param-contracts.md`를 따른다.
+- environment/data source/feature gate는 `configuration-environment-spec.md`를 따른다.
+- 오류 분류와 로깅 정책은 `observability-error-taxonomy.md`를 따른다.

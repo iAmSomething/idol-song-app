@@ -203,3 +203,7 @@
 ## 11. 참조 예시
 - 실제 payload 형상 예시는 `sample-data-contracts.md`를 따른다.
 - selector 구현 시 이 예시의 nullable field와 fallback 사례를 함께 고려한다.
+
+## 9. 콘텐츠 운영 참조
+- profile/artwork/detail/upcoming 운영 기준은 `content-governance-spec.md`를 따른다.
+- freshness/partial-data 기준은 `data-sync-freshness-spec.md`를 따른다.

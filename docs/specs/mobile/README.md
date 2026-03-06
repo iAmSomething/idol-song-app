@@ -72,13 +72,21 @@
    - VoiceOver/TalkBack 기준 읽기 순서와 라벨 정책
 33. `release-readiness-gate.md`
    - 모바일 MVP 출시 전 게이트와 차단 조건
+34. `route-param-contracts.md`
+   - 화면 path, param, deep-link, back behavior 계약
+35. `configuration-environment-spec.md`
+   - 환경 분리, 데이터 소스, feature gate, build 설정 원칙
+36. `observability-error-taxonomy.md`
+   - 오류 분류, 로깅 포인트, 사용자 피드백 규칙
+37. `content-governance-spec.md`
+   - 프로필/아트워크/상세 메타데이터 운영 원칙
 
 ### Screen Specs
-34. `calendar-screen.md`
-35. `radar-screen.md`
-36. `search-screen.md`
-37. `team-detail-screen.md`
-38. `release-detail-screen.md`
+38. `calendar-screen.md`
+39. `radar-screen.md`
+40. `search-screen.md`
+41. `team-detail-screen.md`
+42. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -112,9 +120,13 @@
 29. `privacy-security-spec.md`
 30. `accessibility-reading-order-spec.md`
 31. `release-readiness-gate.md`
-32. 각 화면 스펙
-33. `edge-case-catalog.md`
-34. `qa-acceptance-spec.md`
+32. `route-param-contracts.md`
+33. `configuration-environment-spec.md`
+34. `observability-error-taxonomy.md`
+35. `content-governance-spec.md`
+36. 각 화면 스펙
+37. `edge-case-catalog.md`
+38. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
