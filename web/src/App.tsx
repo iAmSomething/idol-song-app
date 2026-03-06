@@ -102,7 +102,7 @@ type UnresolvedRow = {
   artist_mbid?: string
 }
 
-type UpcomingCandidateRow = {
+type UpcomingSignalBase = {
   group: string
   scheduled_date: string
   date_status: 'confirmed' | 'scheduled' | 'rumor'
@@ -117,6 +117,13 @@ type UpcomingCandidateRow = {
   evidence_summary: string
   tracking_status: string
   search_term: string
+}
+
+type UpcomingCandidateRow = UpcomingSignalBase & {
+  event_key?: string
+  evidence_count?: number
+  hidden_source_count?: number
+  supporting_evidence?: UpcomingSignalBase[]
 }
 
 type DatedUpcomingSignal = UpcomingCandidateRow & {
@@ -813,7 +820,9 @@ const releaseDetailsByKey = new Map(
 )
 const releaseGroups = groupReleasesByGroup(releases)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
-const upcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
+const dedupedUpcomingCandidates = dedupeUpcomingCandidatesForDisplay(upcomingCandidates)
+const rawUpcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
+const upcomingByGroup = groupUpcomingCandidatesByGroup(dedupedUpcomingCandidates)
 const releaseChangeLogByGroup = groupReleaseChangeLogByGroup(releaseChangeLog)
 const latestReleaseChangeByGroup = new Map(
   Array.from(releaseChangeLogByGroup, ([group, changes]) => [group, changes[0] ?? null]),
@@ -917,7 +926,7 @@ function App() {
     return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus
   })
 
-  const filteredUpcoming = upcomingCandidates.filter((item) => {
+  const filteredUpcoming = dedupedUpcomingCandidates.filter((item) => {
     const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
     const matchesReleaseKind =
       selectedReleaseKind === 'all' || item.release_format === selectedReleaseKind
@@ -1194,6 +1203,9 @@ function App() {
                             {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending} ·{' '}
                             {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
                           </p>
+                          {formatUpcomingEvidenceMeta(item, language) ? (
+                            <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
+                          ) : null}
                           {item.evidence_summary ? (
                             <p className="signal-evidence">{item.evidence_summary}</p>
                           ) : null}
@@ -2458,6 +2470,9 @@ function MonthlyReleaseDashboard({
                         </td>
                         <td>
                           <strong>{item.headline}</strong>
+                          {formatUpcomingEvidenceMeta(item, language) ? (
+                            <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
+                          ) : null}
                         </td>
                         <td>
                           <span className={`signal-badge signal-badge-date-${item.date_status}`}>
@@ -2515,6 +2530,9 @@ function MonthlyReleaseDashboard({
                     <p className="signal-meta">
                       {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
                     </p>
+                    {formatUpcomingEvidenceMeta(item, language) ? (
+                      <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
+                    ) : null}
                     <div className="detail-links">
                       {item.source_url ? (
                         <a href={item.source_url} target="_blank" rel="noreferrer">
@@ -2710,6 +2728,9 @@ function SelectedDayPanel({
                     <p className="signal-meta">
                       {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
                     </p>
+                    {formatUpcomingEvidenceMeta(item, language) ? (
+                      <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
+                    ) : null}
                     {item.evidence_summary ? (
                       <p className="signal-evidence">{item.evidence_summary}</p>
                     ) : null}
@@ -3131,7 +3152,7 @@ function buildTeamProfiles() {
       const groupReleases = releaseGroups.get(group) ?? []
       const upcomingSignals = [...(upcomingByGroup.get(group) ?? [])].sort(compareUpcomingSignals)
       const changeLog = releaseChangeLogByGroup.get(group) ?? []
-      const sourceTimeline = buildSourceTimeline(group, upcomingByGroup.get(group) ?? [], groupReleases)
+      const sourceTimeline = buildSourceTimeline(group, rawUpcomingByGroup.get(group) ?? [], groupReleases)
       const latestRelease = deriveLatestRelease(groupReleases, watchRow, releaseRow)
 
       return {
@@ -3398,6 +3419,271 @@ function compareTeamProfiles(left: TeamProfile, right: TeamProfile) {
   }
 
   return left.group.localeCompare(right.group)
+}
+
+function getUpcomingSourceTier(sourceType: string) {
+  const tiers: Record<string, number> = {
+    agency_notice: 4,
+    weverse_notice: 3,
+    official_social: 2,
+    news_rss: 1,
+  }
+
+  return tiers[sourceType] ?? 0
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function stripUpcomingSourceSuffix(value: string) {
+  return value.replace(/\s+-\s+[^-]+$/u, ' ')
+}
+
+function normalizeUpcomingGroupingText(value: string, group: string) {
+  let normalized = stripUpcomingSourceSuffix(value)
+    .toLowerCase()
+    .replace(/[’‘]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/&/g, ' and ')
+    .replace(/\[[^\]]*]/g, ' ')
+    .replace(/\([^)]*\)/g, ' ')
+
+  for (const token of group.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean)) {
+    if (token.length < 2) {
+      continue
+    }
+    normalized = normalized.replace(new RegExp(`\\b${escapeRegExp(token)}\\b`, 'g'), ' ')
+  }
+
+  return normalized
+    .replace(
+      /\b(?:comeback|comebacks|announce|announces|announced|announcing|return|returns|returning|release|releases|released|releasing|drop|drops|dropped|dropping|set|scheduled|schedule|showcase|notice|official|teaser|teasers|trailer|trailers|report|reports|ahead|after|with|their|first|new|album|mini|single|ep|tracklist|title|track|tour|global|hosts|hosted|concert|celebrate|chapter)\b/g,
+      ' ',
+    )
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\b(?:a|an|the|and|for|of|to|in|on|at|this|that)\b/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function extractUpcomingReleaseLabel(item: UpcomingSignalBase) {
+  const text = `${item.headline} ${item.evidence_summary}`
+  const patterns = [
+    /(?:mini album|album|single|ep|title track|showcase(?:\s+for)?|trailer(?:\s+for)?|teaser(?:\s+for)?)\s*[“"'‘]?([^“”"'’]{2,80})[”"'’]/gi,
+    /[“"'‘]([^“”"'’]{2,80})[”"'’]/g,
+  ]
+
+  for (const pattern of patterns) {
+    for (const match of text.matchAll(pattern)) {
+      const normalized = normalizeUpcomingGroupingText(match[1] ?? '', item.group)
+      if (normalized) {
+        return normalized
+      }
+    }
+  }
+
+  return ''
+}
+
+function getUpcomingMonthKey(item: UpcomingSignalBase) {
+  if (isExactDate(item.scheduled_date)) {
+    return item.scheduled_date.slice(0, 7)
+  }
+
+  const monthMatch = item.evidence_summary.match(/Future month reference:\s*(\d{4}-\d{2})/i)
+  return monthMatch?.[1] ?? ''
+}
+
+function getUpcomingEventDescriptor(item: UpcomingSignalBase) {
+  const releaseLabel = extractUpcomingReleaseLabel(item)
+  if (releaseLabel) {
+    return releaseLabel
+  }
+
+  const headlineKey = normalizeUpcomingGroupingText(item.headline, item.group)
+  if (headlineKey) {
+    return headlineKey
+  }
+
+  const summaryKey = normalizeUpcomingGroupingText(item.evidence_summary, item.group)
+  return summaryKey || 'signal'
+}
+
+function getUpcomingStructuredMetadataScore(item: UpcomingSignalBase) {
+  let score = 0
+  if (item.release_format) {
+    score += 2
+  }
+  score += item.context_tags.length
+  if (extractUpcomingReleaseLabel(item)) {
+    score += 2
+  }
+  if (item.evidence_summary) {
+    score += 1
+  }
+  return score
+}
+
+function getUpcomingPublishedSortValue(item: UpcomingSignalBase) {
+  const timestamp = Date.parse(item.published_at)
+  return Number.isNaN(timestamp) ? 0 : timestamp
+}
+
+function compareUpcomingRepresentativeRows(left: UpcomingSignalBase, right: UpcomingSignalBase) {
+  const sourceCompare = getUpcomingSourceTier(right.source_type) - getUpcomingSourceTier(left.source_type)
+  if (sourceCompare !== 0) {
+    return sourceCompare
+  }
+
+  const exactDateCompare = Number(isExactDate(right.scheduled_date)) - Number(isExactDate(left.scheduled_date))
+  if (exactDateCompare !== 0) {
+    return exactDateCompare
+  }
+
+  const statusRank = {
+    confirmed: 0,
+    scheduled: 1,
+    rumor: 2,
+  }
+  if (statusRank[left.date_status] !== statusRank[right.date_status]) {
+    return statusRank[left.date_status] - statusRank[right.date_status]
+  }
+
+  if (left.confidence !== right.confidence) {
+    return right.confidence - left.confidence
+  }
+
+  const metadataCompare = getUpcomingStructuredMetadataScore(right) - getUpcomingStructuredMetadataScore(left)
+  if (metadataCompare !== 0) {
+    return metadataCompare
+  }
+
+  const publishedCompare = getUpcomingPublishedSortValue(right) - getUpcomingPublishedSortValue(left)
+  if (publishedCompare !== 0) {
+    return publishedCompare
+  }
+
+  return left.headline.localeCompare(right.headline)
+}
+
+function pickUpcomingRepresentative(rows: UpcomingSignalBase[]) {
+  return [...rows].sort(compareUpcomingRepresentativeRows)[0]
+}
+
+function pushUpcomingGroup<T>(map: Map<string, T[]>, key: string, value: T) {
+  const bucket = map.get(key) ?? []
+  bucket.push(value)
+  map.set(key, bucket)
+}
+
+function selectBestUpcomingGroup(groups?: UpcomingSignalBase[][]) {
+  if (!groups?.length) {
+    return null
+  }
+
+  return [...groups].sort((left, right) => {
+    const leftRepresentative = pickUpcomingRepresentative(left)
+    const rightRepresentative = pickUpcomingRepresentative(right)
+    return compareUpcomingRepresentativeRows(leftRepresentative, rightRepresentative)
+  })[0]
+}
+
+function buildUpcomingDisplayRow(rows: UpcomingSignalBase[]) {
+  const representative = pickUpcomingRepresentative(rows)
+  const monthKey = getUpcomingMonthKey(representative) || 'undated'
+  return {
+    ...representative,
+    event_key: [representative.group.toLowerCase(), representative.scheduled_date || monthKey, getUpcomingEventDescriptor(representative)].join(
+      '::',
+    ),
+    evidence_count: rows.length,
+    hidden_source_count: Math.max(rows.length - 1, 0),
+  }
+}
+
+function dedupeUpcomingCandidatesForDisplay(rows: UpcomingCandidateRow[]) {
+  const exactGroups = new Map<string, UpcomingSignalBase[]>()
+  const pendingGroups = new Map<string, UpcomingSignalBase[]>()
+
+  for (const row of rows) {
+    const descriptor = getUpcomingEventDescriptor(row)
+    if (isExactDate(row.scheduled_date)) {
+      pushUpcomingGroup(exactGroups, [row.group.toLowerCase(), row.scheduled_date, descriptor].join('::'), row)
+      continue
+    }
+
+    const pendingMonthKey = getUpcomingMonthKey(row) || 'undated'
+    pushUpcomingGroup(pendingGroups, [row.group.toLowerCase(), pendingMonthKey, descriptor].join('::'), row)
+  }
+
+  const exactGroupsByDate = new Map<string, UpcomingSignalBase[][]>()
+  for (const exactGroup of exactGroups.values()) {
+    const bucketKey = [exactGroup[0].group.toLowerCase(), exactGroup[0].scheduled_date].join('::')
+    pushUpcomingGroup(exactGroupsByDate, bucketKey, exactGroup)
+  }
+
+  const normalizedExactGroups: UpcomingSignalBase[][] = []
+  for (const dateBucket of exactGroupsByDate.values()) {
+    const bucketRows = dateBucket.flat()
+    const hasOfficialSource = bucketRows.some((item) => getUpcomingSourceTier(item.source_type) > getUpcomingSourceTier('news_rss'))
+    if (hasOfficialSource) {
+      normalizedExactGroups.push(bucketRows)
+      continue
+    }
+    normalizedExactGroups.push(...dateBucket)
+  }
+
+  const exactGroupsByTopic = new Map<string, UpcomingSignalBase[][]>()
+  const exactGroupsByMonth = new Map<string, UpcomingSignalBase[][]>()
+  for (const exactGroup of normalizedExactGroups) {
+    const representative = pickUpcomingRepresentative(exactGroup)
+    pushUpcomingGroup(exactGroupsByTopic, [representative.group.toLowerCase(), getUpcomingEventDescriptor(representative)].join('::'), exactGroup)
+
+    const exactMonthKey = getUpcomingMonthKey(representative)
+    if (exactMonthKey) {
+      pushUpcomingGroup(exactGroupsByMonth, [representative.group.toLowerCase(), exactMonthKey].join('::'), exactGroup)
+    }
+  }
+
+  const mergedGroups = [...normalizedExactGroups]
+  for (const pendingGroup of pendingGroups.values()) {
+    const representative = pickUpcomingRepresentative(pendingGroup)
+    const topicMatch = selectBestUpcomingGroup(
+      exactGroupsByTopic.get([representative.group.toLowerCase(), getUpcomingEventDescriptor(representative)].join('::')),
+    )
+    const monthKey = getUpcomingMonthKey(representative)
+    const monthMatch =
+      topicMatch || !monthKey
+        ? null
+        : selectBestUpcomingGroup(exactGroupsByMonth.get([representative.group.toLowerCase(), monthKey].join('::')))
+
+    if (topicMatch ?? monthMatch) {
+      ;(topicMatch ?? monthMatch)?.push(...pendingGroup)
+      continue
+    }
+
+    mergedGroups.push(pendingGroup)
+  }
+
+  return mergedGroups.map(buildUpcomingDisplayRow).sort(compareUpcomingSignals)
+}
+
+function formatUpcomingEvidenceMeta(item: UpcomingCandidateRow, language: Language) {
+  const evidenceCount = item.evidence_count ?? 1
+  const hiddenCount = item.hidden_source_count ?? Math.max(evidenceCount - 1, 0)
+
+  if (evidenceCount <= 1) {
+    return ''
+  }
+
+  if (language === 'ko') {
+    return hiddenCount > 0 ? `근거 ${evidenceCount}건 · 외 ${hiddenCount}건` : `근거 ${evidenceCount}건`
+  }
+
+  return hiddenCount > 0
+    ? `${evidenceCount} sources · ${hiddenCount} more`
+    : `${evidenceCount} source${evidenceCount === 1 ? '' : 's'}`
 }
 
 function compareUpcomingSignals(

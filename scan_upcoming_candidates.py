@@ -232,11 +232,32 @@ def sort_key(item: dict):
 
 def source_priority(source_type: str):
     priorities = {
+        "agency_notice": 4,
         "weverse_notice": 3,
-        "agency_notice": 2,
+        "official_social": 2,
         "news_rss": 1,
     }
     return priorities.get(source_type, 0)
+
+
+def exact_candidate_key(candidate: dict):
+    return (
+        candidate["group"].lower(),
+        candidate["scheduled_date"],
+        candidate["headline"].strip().lower(),
+        candidate["source_url"],
+        candidate["published_at"],
+    )
+
+
+def dedupe_exact_candidates(candidates: list[dict]):
+    deduped = {}
+    for candidate in candidates:
+        key = exact_candidate_key(candidate)
+        current = deduped.get(key)
+        if current is None or candidate["confidence"] > current["confidence"]:
+            deduped[key] = candidate
+    return list(deduped.values())
 
 
 def fetch_html(session: requests.Session, url: str, user_agent: str = ""):
@@ -391,22 +412,9 @@ def find_candidates_for_group(session: requests.Session, group_row: dict):
     candidates.extend(find_weverse_candidates_for_group(session, group_row))
     candidates.extend(find_yg_agency_candidates_for_group(session, group_row))
     candidates.extend(find_rss_candidates_for_group(session, group_row))
-
-    deduped = {}
-    for candidate in candidates:
-        key = (
-            candidate["group"],
-            candidate["scheduled_date"] or candidate["headline"],
-            candidate["source_type"],
-        )
-        current = deduped.get(key)
-        if current is None or (source_priority(candidate["source_type"]), candidate["confidence"]) > (
-            source_priority(current["source_type"]),
-            current["confidence"],
-        ):
-            deduped[key] = candidate
-
-    return sorted(deduped.values(), key=sort_key)
+    # Keep distinct articles and notices so the web layer can build one
+    # representative event card while still preserving full supporting evidence.
+    return sorted(dedupe_exact_candidates(candidates), key=sort_key)
 
 
 def main():
