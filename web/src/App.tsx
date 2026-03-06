@@ -5,6 +5,7 @@ import releaseArtworkRows from './data/releaseArtwork.json'
 import releaseDetailRows from './data/releaseDetails.json'
 import releaseEnrichmentRows from './data/releaseEnrichment.json'
 import releaseRows from './data/releases.json'
+import teamBadgeAssetRows from './data/teamBadgeAssets.json'
 import unresolvedRows from './data/unresolved.json'
 import upcomingCandidateRows from './data/upcomingCandidates.json'
 import releaseChangeLogRows from './data/releaseChangeLog.json'
@@ -62,6 +63,14 @@ type ReleaseArtworkRow = {
 
 type ResolvedReleaseArtwork = ReleaseArtworkRow & {
   isPlaceholder: boolean
+}
+
+type TeamBadgeAssetRow = {
+  group: string
+  badge_image_url: string
+  badge_source_url: string
+  badge_source_label: string
+  badge_kind: string
 }
 
 type ReleaseDetailTrack = {
@@ -357,6 +366,9 @@ type TeamProfile = {
   youtubeUrl: string
   hasOfficialYouTubeUrl: boolean
   agency: string
+  badgeImageUrl: string | null
+  badgeSourceUrl: string | null
+  badgeSourceLabel: string | null
   representativeImageUrl: string | null
   representativeImageSource: string | null
   latestRelease: TeamLatestRelease | null
@@ -831,11 +843,12 @@ const TEAM_COPY = {
     latestReleaseDate: '최근 발매일',
     comebackStatus: '컴백 상태',
     tier: '티어',
-    representativeImage: '대표 이미지',
-    generatedMark: '생성된 팀 마크',
+    representativeImage: '팀 마크 소스',
+    generatedMark: '모노그램 fallback',
+    badgeSourceLink: '배지 출처',
     youtubeSearch: '유튜브 검색',
     footnote:
-      '상단 이미지는 팀명 기반으로 생성한 마크이며, YouTube는 검증된 채널 URL이 없을 때 검색 결과로 연결됩니다.',
+      '공식 badge/avatar가 있으면 우선 사용하고, 없을 때만 대표 이미지나 모노그램 fallback으로 내려갑니다.',
     upcomingLabel: '예정 컴백',
     upcomingTitle: '예정 신호 우선 보기',
     upcomingEmptyTitle: '아직 컴백 신호 없음',
@@ -937,11 +950,12 @@ const TEAM_COPY = {
     latestReleaseDate: 'Latest release date',
     comebackStatus: 'Comeback status',
     tier: 'Tier',
-    representativeImage: 'Representative image',
-    generatedMark: 'Generated team mark',
+    representativeImage: 'Team mark source',
+    generatedMark: 'Monogram fallback',
+    badgeSourceLink: 'Badge source',
     youtubeSearch: 'YouTube search',
     footnote:
-      'The hero image is a generated team mark, and YouTube falls back to search until a verified channel URL is added.',
+      'Use an official badge/avatar first, then fall back to a representative image or monogram only when no sourced asset exists.',
     upcomingLabel: 'Upcoming comeback',
     upcomingTitle: 'Scheduled signals first',
     upcomingEmptyTitle: 'No comeback signal yet',
@@ -1046,6 +1060,7 @@ const ROOKIE_RECENT_YEAR_WINDOW = 2
 const AGENCY_UNKNOWN_FILTER = 'agency_unknown'
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
+const teamBadgeAssets = teamBadgeAssetRows as TeamBadgeAssetRow[]
 const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
 const releaseDetailsCatalog = releaseDetailRows as ReleaseDetailRow[]
 const releaseEnrichmentCatalog = releaseEnrichmentRows as ReleaseEnrichmentRow[]
@@ -1059,6 +1074,7 @@ const unresolved = unresolvedRows as UnresolvedRow[]
 const watchlist = watchlistRows as WatchlistRow[]
 const upcomingCandidates = upcomingCandidateRows as UpcomingCandidateRow[]
 const releaseChangeLog = releaseChangeLogRows as ReleaseChangeLogRow[]
+const teamBadgeAssetByGroup = new Map(teamBadgeAssets.map((row) => [row.group, row]))
 
 const dateFormatter = new Intl.DateTimeFormat('en-CA', {
   year: 'numeric',
@@ -1614,8 +1630,12 @@ function App() {
             <div className="team-page-summary">
               <div className="team-title-wrap">
                 <div className="team-avatar" aria-hidden="true">
-                  {selectedTeam.representativeImageUrl ? (
-                    <img className="team-avatar-image" src={selectedTeam.representativeImageUrl} alt="" />
+                  {selectedTeam.badgeImageUrl || selectedTeam.representativeImageUrl ? (
+                    <img
+                      className="team-avatar-image"
+                      src={selectedTeam.badgeImageUrl ?? selectedTeam.representativeImageUrl ?? ''}
+                      alt=""
+                    />
                   ) : (
                     getTeamMonogram(selectedTeam.group)
                   )}
@@ -1648,12 +1668,17 @@ function App() {
                 <TeamFact label={teamCopy.tier} value={selectedTeam.tier} />
                 <TeamFact
                   label={teamCopy.representativeImage}
-                  value={selectedTeam.representativeImageSource ?? teamCopy.generatedMark}
+                  value={selectedTeam.badgeSourceLabel ?? selectedTeam.representativeImageSource ?? teamCopy.generatedMark}
                 />
               </div>
             </div>
 
             <div className="team-links-row meta-links">
+              {selectedTeam.badgeSourceUrl ? (
+                <a href={selectedTeam.badgeSourceUrl} target="_blank" rel="noreferrer" className="meta-link">
+                  {teamCopy.badgeSourceLink}
+                </a>
+              ) : null}
               {selectedTeam.xUrl ? (
                 <a href={selectedTeam.xUrl} target="_blank" rel="noreferrer" className="meta-link">
                   X
@@ -5350,6 +5375,7 @@ function buildTeamProfiles() {
       const sourceTimeline = buildSourceTimeline(group, rawUpcomingByGroup.get(group) ?? [], groupReleases)
       const annualReleaseTimeline = buildAnnualReleaseTimelineSections(verifiedHistory, upcomingSignals)
       const latestRelease = deriveLatestRelease(groupReleases, watchRow, releaseRow)
+      const badgeSourceUrl = getTeamBadgeSourceUrl(group)
 
       return {
         group,
@@ -5361,9 +5387,12 @@ function buildTeamProfiles() {
         artistSource: releaseRow?.artist_source ?? latestRelease?.artistSource ?? '',
         xUrl: artistProfile?.official_x_url ?? '',
         instagramUrl: artistProfile?.official_instagram_url ?? '',
-        youtubeUrl: artistProfile?.official_youtube_url ?? getYouTubeSearchUrl(group),
-        hasOfficialYouTubeUrl: Boolean(artistProfile?.official_youtube_url),
+        youtubeUrl: artistProfile?.official_youtube_url ?? badgeSourceUrl ?? getYouTubeSearchUrl(group),
+        hasOfficialYouTubeUrl: Boolean(artistProfile?.official_youtube_url ?? badgeSourceUrl),
         agency: normalizeAgencyName(artistProfile?.agency),
+        badgeImageUrl: getTeamBadgeImageUrl(group),
+        badgeSourceUrl,
+        badgeSourceLabel: getTeamBadgeSourceLabel(group),
         representativeImageUrl: artistProfile?.representative_image_url ?? null,
         representativeImageSource: artistProfile?.representative_image_source ?? null,
         latestRelease,
@@ -6277,7 +6306,15 @@ function getYouTubeSearchUrl(group: string) {
 }
 
 function getTeamBadgeImageUrl(group: string) {
-  return artistProfileByGroup.get(group)?.representative_image_url ?? null
+  return teamBadgeAssetByGroup.get(group)?.badge_image_url ?? artistProfileByGroup.get(group)?.representative_image_url ?? null
+}
+
+function getTeamBadgeSourceUrl(group: string) {
+  return teamBadgeAssetByGroup.get(group)?.badge_source_url ?? null
+}
+
+function getTeamBadgeSourceLabel(group: string) {
+  return teamBadgeAssetByGroup.get(group)?.badge_source_label ?? null
 }
 
 function getTeamDisplayName(group: string) {
