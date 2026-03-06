@@ -324,6 +324,7 @@ const TRANSLATIONS = {
     filterLabels: {
       releaseKind: '발매 종류',
       actType: '액트 유형',
+      status: '표시 상태',
     },
     filterOptions: {
       all: '전체',
@@ -333,6 +334,10 @@ const TRANSLATIONS = {
       group: '그룹',
       solo: '솔로',
       unit: '유닛',
+      verified: '검증 발매',
+      confirmed: '확정',
+      scheduled: '예정',
+      rumor: '루머',
     },
     statusLabels: {
       recent_release: '최근 발매',
@@ -350,12 +355,31 @@ const TRANSLATIONS = {
     selectedDayScheduled: '예정 컴백',
     selectedDayVerifiedEmpty: '이 날짜에 검증된 발매가 없습니다.',
     selectedDayScheduledEmpty: '이 날짜에 예정 컴백이 없습니다.',
-    noFilteredMatches: '현재 검색어와 필터 조합에 맞는 검증 발매가 없습니다.',
+    noFilteredMatches: '현재 검색어와 필터 조합에 맞는 월간 항목이 없습니다.',
     releaseSource: '발매 출처',
     artistSource: '아티스트 출처',
     sourceLink: '출처 링크',
     noSourceLink: '출처 링크 없음',
     open: '열기',
+    monthlyDashboard: '월간 릴리즈 대시보드',
+    monthlyDashboardTitle: '선택한 월을 표 기반으로 훑어봅니다.',
+    monthlyDashboardMonth: '현재 월',
+    monthlyDashboardVerifiedTitle: 'Verified releases',
+    monthlyDashboardScheduledTitle: 'Scheduled comebacks',
+    monthlyDashboardVerifiedEmpty: '이 월에 표시할 검증 발매가 없습니다.',
+    monthlyDashboardScheduledEmpty: '이 월에 표시할 예정 컴백이 없습니다.',
+    dashboardTeam: '팀명',
+    dashboardRelease: '릴리즈명',
+    dashboardLeadTrack: '대표곡',
+    dashboardFormat: '형식',
+    dashboardDate: '날짜',
+    dashboardListen: '듣기 링크',
+    dashboardTeamPage: '팀 페이지',
+    dashboardScheduledTitle: '예정명',
+    dashboardStatus: '상태',
+    dashboardConfidence: '신뢰도',
+    dashboardSource: '출처',
+    mvShort: 'MV',
     musicServices: {
       spotify: 'Spotify',
       youtube_music: 'YouTube Music',
@@ -470,6 +494,7 @@ const TRANSLATIONS = {
     filterLabels: {
       releaseKind: 'Release kind',
       actType: 'Act type',
+      status: 'Status',
     },
     filterOptions: {
       all: 'All',
@@ -479,6 +504,10 @@ const TRANSLATIONS = {
       group: 'Group',
       solo: 'Solo',
       unit: 'Unit',
+      verified: 'Verified',
+      confirmed: 'Confirmed',
+      scheduled: 'Scheduled',
+      rumor: 'Rumor',
     },
     statusLabels: {
       recent_release: 'Recent release',
@@ -496,12 +525,31 @@ const TRANSLATIONS = {
     selectedDayScheduled: 'Scheduled comebacks',
     selectedDayVerifiedEmpty: 'No verified releases on this date.',
     selectedDayScheduledEmpty: 'No scheduled comebacks on this date.',
-    noFilteredMatches: 'No verified releases match this search and filter combination.',
+    noFilteredMatches: 'No monthly items match this search and filter combination.',
     releaseSource: 'Release source',
     artistSource: 'Artist source',
     sourceLink: 'Source link',
     noSourceLink: 'No source link',
     open: 'Open',
+    monthlyDashboard: 'Monthly release dashboard',
+    monthlyDashboardTitle: 'Scan the selected month in an index view.',
+    monthlyDashboardMonth: 'Current month',
+    monthlyDashboardVerifiedTitle: 'Verified releases',
+    monthlyDashboardScheduledTitle: 'Scheduled comebacks',
+    monthlyDashboardVerifiedEmpty: 'No verified releases to show for this month.',
+    monthlyDashboardScheduledEmpty: 'No scheduled comebacks to show for this month.',
+    dashboardTeam: 'Team',
+    dashboardRelease: 'Release',
+    dashboardLeadTrack: 'Lead track',
+    dashboardFormat: 'Format',
+    dashboardDate: 'Date',
+    dashboardListen: 'Listen',
+    dashboardTeamPage: 'Team page',
+    dashboardScheduledTitle: 'Scheduled title',
+    dashboardStatus: 'Status',
+    dashboardConfidence: 'Confidence',
+    dashboardSource: 'Source',
+    mvShort: 'MV',
     musicServices: {
       spotify: 'Spotify',
       youtube_music: 'YouTube Music',
@@ -723,6 +771,7 @@ const TEAM_COPY = {
 
 const releaseKindOptions = ['all', 'single', 'album', 'ep'] as const
 const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
+const dashboardStatusOptions = ['all', 'verified', 'confirmed', 'scheduled', 'rumor'] as const
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
 const MUSIC_HANDOFF_SERVICES: MusicService[] = ['spotify', 'youtube_music']
 const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
@@ -782,6 +831,7 @@ function App() {
   const [search, setSearch] = useState('')
   const [selectedReleaseKind, setSelectedReleaseKind] = useState<(typeof releaseKindOptions)[number]>('all')
   const [selectedActType, setSelectedActType] = useState<(typeof actTypeOptions)[number]>('all')
+  const [selectedDashboardStatus, setSelectedDashboardStatus] = useState<(typeof dashboardStatusOptions)[number]>('all')
   const [language, setLanguage] = useState<Language>(readInitialLanguage)
   const [selectedGroup, setSelectedGroup] = useState<string | null>(readSelectedGroupFromLocation)
   const [selectedAlbumKey, setSelectedAlbumKey] = useState<string | null>(null)
@@ -862,11 +912,23 @@ function App() {
     const matchesReleaseKind =
       selectedReleaseKind === 'all' || item.release_kind === selectedReleaseKind
     const matchesActType = selectedActType === 'all' || item.actType === selectedActType
-    return matchesSearch && matchesReleaseKind && matchesActType
+    const matchesStatus =
+      selectedDashboardStatus === 'all' || selectedDashboardStatus === 'verified'
+    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus
   })
 
   const filteredUpcoming = upcomingCandidates.filter((item) => {
-    return matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
+    const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
+    const matchesReleaseKind =
+      selectedReleaseKind === 'all' || item.release_format === selectedReleaseKind
+    const matchesActType = selectedActType === 'all' || getActType(item.group) === selectedActType
+    const matchesStatus =
+      selectedDashboardStatus === 'all'
+        ? true
+        : selectedDashboardStatus === 'verified'
+          ? false
+          : item.date_status === selectedDashboardStatus
+    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus
   })
   const filteredTeams = teamProfiles.filter((team) => matchesSearchIndex(searchIndexByGroup.get(team.group), searchNeedle))
   const filteredLongGapRadar = longGapRadarEntries.filter((item) =>
@@ -891,6 +953,8 @@ function App() {
   const monthUpcomingSignals = filteredUpcomingSignals.filter(
     (item) => getMonthKey(item.dateValue) === effectiveMonthKey,
   )
+  const monthVerifiedDashboardRows = [...monthReleases].sort(compareMonthlyDashboardVerified)
+  const monthScheduledDashboardRows = [...monthUpcomingSignals].sort(compareMonthlyDashboardUpcoming)
   const monthActiveDayIsos = Array.from(
     new Set([...monthReleases.map((item) => item.isoDate), ...monthUpcomingSignals.map((item) => item.isoDate)]),
   ).sort()
@@ -902,7 +966,7 @@ function App() {
   ).sort()
   const visibleDayIsos = new Set(monthDays.map((day) => day.iso))
   const isSelectedDayVisible = visibleDayIsos.has(selectedDayIso)
-  const hasNoReleaseMatches = filteredReleases.length === 0
+  const hasNoReleaseMatches = filteredReleases.length === 0 && filteredUpcomingSignals.length === 0
 
   const effectiveSelectedDayIso =
     isSelectedDayVisible
@@ -1449,6 +1513,13 @@ function App() {
                   language={language}
                   onSelect={(value) => setSelectedActType(value)}
                 />
+                <FilterGroup
+                  label={copy.filterLabels.status}
+                  options={dashboardStatusOptions}
+                  selected={selectedDashboardStatus}
+                  language={language}
+                  onSelect={(value) => setSelectedDashboardStatus(value)}
+                />
               </div>
 
               <div className="coverage-strip">
@@ -1524,6 +1595,15 @@ function App() {
                 </div>
               </div>
             </section>
+
+            <MonthlyReleaseDashboard
+              monthLabel={monthFormatter.format(selectedMonthDate)}
+              verifiedRows={monthVerifiedDashboardRows}
+              scheduledRows={monthScheduledDashboardRows}
+              language={language}
+              displayDateFormatter={displayDateFormatter}
+              onOpenTeamPage={openTeamPage}
+            />
 
             <SelectedDayPanel
               panelRef={selectedDayPanelRef}
@@ -2240,6 +2320,261 @@ function RookieRadarList({
   )
 }
 
+function MonthlyReleaseDashboard({
+  monthLabel,
+  verifiedRows,
+  scheduledRows,
+  language,
+  displayDateFormatter,
+  onOpenTeamPage,
+}: {
+  monthLabel: string
+  verifiedRows: VerifiedRelease[]
+  scheduledRows: DatedUpcomingSignal[]
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onOpenTeamPage: (group: string) => void
+}) {
+  const copy = TRANSLATIONS[language]
+
+  return (
+    <section className="panel monthly-dashboard">
+      <div className="monthly-dashboard-head">
+        <div>
+          <p className="panel-label">{copy.monthlyDashboard}</p>
+          <h2>{copy.monthlyDashboardTitle}</h2>
+        </div>
+        <div className="meta-item monthly-dashboard-month">
+          <span>{copy.monthlyDashboardMonth}</span>
+          <strong>{monthLabel}</strong>
+        </div>
+      </div>
+
+      <div className="monthly-dashboard-stack">
+        <section className="monthly-dashboard-section">
+          <div className="selected-day-panel-head">
+            <h3>{copy.monthlyDashboardVerifiedTitle}</h3>
+            <span className="selected-day-panel-count">{verifiedRows.length}</span>
+          </div>
+          {verifiedRows.length ? (
+            <>
+              <div className="dashboard-table-shell">
+                <table className="dashboard-table">
+                  <thead>
+                    <tr>
+                      <th>{copy.dashboardTeam}</th>
+                      <th>{copy.dashboardRelease}</th>
+                      <th>{copy.dashboardLeadTrack}</th>
+                      <th>{copy.dashboardFormat}</th>
+                      <th>{copy.dashboardDate}</th>
+                      <th>{copy.dashboardListen}</th>
+                      <th>{copy.dashboardTeamPage}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {verifiedRows.map((item) => (
+                      <tr key={getAlbumKey(item)}>
+                        <td>
+                          <TeamIdentity group={item.group} variant="list" />
+                        </td>
+                        <td>
+                          <strong>{item.title}</strong>
+                        </td>
+                        <td>{getVerifiedReleaseLeadTrack(item, language)}</td>
+                        <td>{formatReleaseFormat(item.release_format, language) || item.release_kind}</td>
+                        <td>{formatOptionalDate(item.date, displayDateFormatter, copy.none)}</td>
+                        <td>
+                          <DashboardServiceActions release={item} language={language} />
+                        </td>
+                        <td>
+                          <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
+                            {TEAM_COPY[language].action}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="dashboard-mobile-list">
+                {verifiedRows.map((item) => (
+                  <article key={`mobile-${getAlbumKey(item)}`} className="detail-card dashboard-mobile-card">
+                    <div className="signal-head">
+                      <TeamIdentity group={item.group} variant="list" />
+                      <span className="signal-badge">
+                        {formatReleaseFormat(item.release_format, language) || item.release_kind}
+                      </span>
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p className="signal-meta">
+                      {copy.dashboardLeadTrack} · {getVerifiedReleaseLeadTrack(item, language)}
+                    </p>
+                    <p className="signal-meta">
+                      {formatOptionalDate(item.date, displayDateFormatter, copy.none)}
+                    </p>
+                    <div className="dashboard-mobile-actions">
+                      <DashboardServiceActions release={item} language={language} />
+                    </div>
+                    <div className="detail-links">
+                      <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
+                        {TEAM_COPY[language].action}
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="empty-copy">{copy.monthlyDashboardVerifiedEmpty}</p>
+          )}
+        </section>
+
+        <section className="monthly-dashboard-section">
+          <div className="selected-day-panel-head">
+            <h3>{copy.monthlyDashboardScheduledTitle}</h3>
+            <span className="selected-day-panel-count">{scheduledRows.length}</span>
+          </div>
+          {scheduledRows.length ? (
+            <>
+              <div className="dashboard-table-shell">
+                <table className="dashboard-table">
+                  <thead>
+                    <tr>
+                      <th>{copy.dashboardTeam}</th>
+                      <th>{copy.dashboardScheduledTitle}</th>
+                      <th>{copy.dashboardStatus}</th>
+                      <th>{copy.dashboardFormat}</th>
+                      <th>{copy.dashboardDate}</th>
+                      <th>{copy.dashboardConfidence}</th>
+                      <th>{copy.dashboardSource}</th>
+                      <th>{copy.dashboardTeamPage}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {scheduledRows.map((item) => (
+                      <tr key={`${item.group}-${item.scheduled_date}-${item.headline}`}>
+                        <td>
+                          <TeamIdentity group={item.group} variant="list" />
+                        </td>
+                        <td>
+                          <strong>{item.headline}</strong>
+                        </td>
+                        <td>
+                          <span className={`signal-badge signal-badge-date-${item.date_status}`}>
+                            {formatDateStatus(item.date_status, language)}
+                          </span>
+                        </td>
+                        <td>{formatReleaseFormat(item.release_format, language) || copy.none}</td>
+                        <td>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</td>
+                        <td>
+                          <span className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}>
+                            {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
+                          </span>
+                        </td>
+                        <td>
+                          {item.source_url ? (
+                            <a href={item.source_url} target="_blank" rel="noreferrer" className="dashboard-source-link">
+                              {item.source_domain || copy.sourceLink}
+                            </a>
+                          ) : (
+                            <span className="signal-link-muted">{copy.noSourceLink}</span>
+                          )}
+                        </td>
+                        <td>
+                          <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
+                            {TEAM_COPY[language].action}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="dashboard-mobile-list">
+                {scheduledRows.map((item) => (
+                  <article
+                    key={`mobile-${item.group}-${item.scheduled_date}-${item.headline}`}
+                    className={`detail-card dashboard-mobile-card detail-card-signal detail-card-signal-${item.date_status}`}
+                  >
+                    <div className="signal-head">
+                      <TeamIdentity group={item.group} variant="list" />
+                      <div className="signal-tags">
+                        <span className={`signal-badge signal-badge-date-${item.date_status}`}>
+                          {formatDateStatus(item.date_status, language)}
+                        </span>
+                        <span className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}>
+                          {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
+                        </span>
+                      </div>
+                    </div>
+                    <h3>{item.headline}</h3>
+                    <p className="signal-meta">
+                      {formatReleaseFormat(item.release_format, language) || copy.none} ·{' '}
+                      {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
+                    </p>
+                    <p className="signal-meta">
+                      {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
+                    </p>
+                    <div className="detail-links">
+                      {item.source_url ? (
+                        <a href={item.source_url} target="_blank" rel="noreferrer">
+                          {copy.sourceLink}
+                        </a>
+                      ) : (
+                        <span className="signal-link-muted">{copy.noSourceLink}</span>
+                      )}
+                      <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
+                        {TEAM_COPY[language].action}
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="empty-copy">{copy.monthlyDashboardScheduledEmpty}</p>
+          )}
+        </section>
+      </div>
+    </section>
+  )
+}
+
+function DashboardServiceActions({
+  release,
+  language,
+}: {
+  release: VerifiedRelease
+  language: Language
+}) {
+  const copy = TRANSLATIONS[language]
+  const detail = getReleaseDetail(release.group, release.title, release.date, release.stream, release.release_kind)
+  const canonicalHandoffs = buildReleaseDetailHandoffs(detail, release.music_handoffs)
+  const links = buildMusicHandoffLinks(release.group, release.title, canonicalHandoffs)
+  const mvUrl = detail.youtube_video_id ? `https://www.youtube.com/watch?v=${detail.youtube_video_id}` : ''
+
+  return (
+    <div className="dashboard-service-actions">
+      {links.map((link) => (
+        <a
+          key={`${release.group}-${release.title}-${link.service}`}
+          href={link.href}
+          target="_blank"
+          rel="noreferrer"
+          className={`dashboard-service-link dashboard-service-link-${link.mode}`}
+        >
+          {copy.musicServices[link.service]}
+        </a>
+      ))}
+      {mvUrl ? (
+        <a href={mvUrl} target="_blank" rel="noreferrer" className="dashboard-service-link dashboard-service-link-canonical">
+          {copy.mvShort}
+        </a>
+      ) : null}
+    </div>
+  )
+}
+
 function ReleaseClassificationBadges({
   releaseFormat,
   contextTags,
@@ -2484,6 +2819,18 @@ function formatReleaseFormat(releaseFormat: ReleaseFormat | '', language: Langua
 
 function formatContextTag(contextTag: ContextTag, language: Language) {
   return TRANSLATIONS[language].contextTagLabels[contextTag]
+}
+
+function getVerifiedReleaseLeadTrack(item: VerifiedRelease, language: Language) {
+  if (item.stream === 'song') {
+    return item.title
+  }
+
+  const relatedSong = (releaseGroups.get(item.group) ?? []).find(
+    (candidate) => candidate.stream === 'song' && candidate.date === item.date,
+  )
+
+  return relatedSong?.title ?? TRANSLATIONS[language].none
 }
 
 function formatDateStatus(dateStatus: UpcomingCandidateRow['date_status'], language: Language) {
@@ -2888,6 +3235,26 @@ function compareLongGapRadarEntries(left: LongGapRadarEntry, right: LongGapRadar
 
   if (left.gapDays !== right.gapDays) {
     return right.gapDays - left.gapDays
+  }
+
+  return left.group.localeCompare(right.group)
+}
+
+function compareMonthlyDashboardVerified(left: VerifiedRelease, right: VerifiedRelease) {
+  if (left.dateValue.getTime() !== right.dateValue.getTime()) {
+    return left.dateValue.getTime() - right.dateValue.getTime()
+  }
+
+  return left.group.localeCompare(right.group)
+}
+
+function compareMonthlyDashboardUpcoming(left: DatedUpcomingSignal, right: DatedUpcomingSignal) {
+  if (left.dateValue.getTime() !== right.dateValue.getTime()) {
+    return left.dateValue.getTime() - right.dateValue.getTime()
+  }
+
+  if (left.confidence !== right.confidence) {
+    return right.confidence - left.confidence
   }
 
   return left.group.localeCompare(right.group)
