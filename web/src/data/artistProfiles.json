@@ -81,6 +81,23 @@
     "search_aliases": []
   },
   {
+    "slug": "allday-project",
+    "group": "ALLDAY PROJECT",
+    "display_name": "ALLDAY PROJECT",
+    "aliases": [],
+    "agency": null,
+    "official_youtube_url": null,
+    "official_x_url": null,
+    "official_instagram_url": null,
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [],
+    "debut_year": 2025,
+    "radar_tags": [
+      "rookie"
+    ]
+  },
+  {
     "slug": "ampers-and-one",
     "group": "AMPERS&ONE",
     "display_name": "AMPERS&ONE",
@@ -143,7 +160,8 @@
     "official_instagram_url": "https://www.instagram.com/atheart__official/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [],
+    "debut_year": 2025
   },
   {
     "slug": "babymonster",
@@ -471,7 +489,8 @@
     "official_instagram_url": "https://www.instagram.com/hearts2hearts/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [],
+    "debut_year": 2025
   },
   {
     "slug": "infinite",
@@ -575,7 +594,8 @@
     "official_instagram_url": "https://www.instagram.com/kickflip_jype/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [],
+    "debut_year": 2025
   },
   {
     "slug": "kiiikiii",
@@ -588,7 +608,8 @@
     "official_instagram_url": "https://www.instagram.com/we_kiiikiii/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [],
+    "debut_year": 2025
   },
   {
     "slug": "le-sserafim",
@@ -1342,7 +1363,8 @@
     "official_instagram_url": "https://www.instagram.com/ifeye.official/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [],
+    "debut_year": 2025
   },
   {
     "slug": "izna",

@@ -28,12 +28,16 @@ type ReleaseRow = {
   latest_album: ReleaseFact | null
 }
 
+type RadarTag = 'rookie'
+
 type ArtistProfileRow = {
   slug: string
   group: string
   display_name: string
   aliases: string[]
   search_aliases: string[]
+  debut_year?: number | null
+  radar_tags?: RadarTag[]
   agency: string | null
   official_youtube_url: string | null
   official_x_url: string | null
@@ -271,6 +275,14 @@ type LongGapRadarEntry = {
   latestSignal: UpcomingCandidateRow | null
 }
 
+type RookieRadarEntry = {
+  group: string
+  debutYear: number | null
+  latestRelease: TeamLatestRelease | null
+  hasUpcomingSignal: boolean
+  latestSignal: UpcomingCandidateRow | null
+}
+
 type Language = 'ko' | 'en'
 type CountdownState = 'd_day' | 'd_1' | 'd_3' | 'd_7' | 'date'
 
@@ -423,6 +435,16 @@ const TRANSLATIONS = {
     longGapSignalMissing: '예정 신호 없음',
     longGapLatestSignal: '최근 신호',
     longGapLatestSignalEmpty: '아직 표시할 신호가 없습니다.',
+    rookieRadar: '루키 레이더',
+    rookieRadarTitle: '신규·롱테일 팀을 따로 본다',
+    rookieRadarEmpty: '검색 조건에 맞는 루키 대상이 없습니다.',
+    rookieBadge: '루키',
+    rookieDebutYear: '데뷔 연도',
+    rookieLatestRelease: '최근 발매',
+    rookieSignalPresent: '예정 신호 있음',
+    rookieSignalMissing: '예정 신호 없음',
+    rookieLatestSignal: '최근 신호',
+    rookieLatestSignalEmpty: '아직 포착된 예정 신호가 없습니다.',
   },
   en: {
     locale: 'en-US',
@@ -559,6 +581,16 @@ const TRANSLATIONS = {
     longGapSignalMissing: 'No upcoming signal',
     longGapLatestSignal: 'Latest signal',
     longGapLatestSignalEmpty: 'No captured signal to show yet.',
+    rookieRadar: 'Rookie radar',
+    rookieRadarTitle: 'Pull new and long-tail acts into one view',
+    rookieRadarEmpty: 'No rookie targets match the current search.',
+    rookieBadge: 'Rookie',
+    rookieDebutYear: 'Debut year',
+    rookieLatestRelease: 'Latest release',
+    rookieSignalPresent: 'Upcoming signal',
+    rookieSignalMissing: 'No upcoming signal',
+    rookieLatestSignal: 'Latest signal',
+    rookieLatestSignalEmpty: 'No captured upcoming signal yet.',
   },
 } as const
 
@@ -695,6 +727,7 @@ const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
 const MUSIC_HANDOFF_SERVICES: MusicService[] = ['spotify', 'youtube_music']
 const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
 const LONG_GAP_THRESHOLD_DAYS = 365
+const ROOKIE_RECENT_YEAR_WINDOW = 2
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
@@ -740,6 +773,7 @@ const searchIndexByGroup = buildSearchIndexByGroup()
 const teamProfiles = buildTeamProfiles()
 const teamProfileMap = new Map(teamProfiles.map((team) => [team.group, team]))
 const longGapRadarEntries = buildLongGapRadarEntries()
+const rookieRadarEntries = buildRookieRadarEntries()
 
 function App() {
   const latestMonthKey = getLatestMonthKey(releases)
@@ -836,6 +870,9 @@ function App() {
   })
   const filteredTeams = teamProfiles.filter((team) => matchesSearchIndex(searchIndexByGroup.get(team.group), searchNeedle))
   const filteredLongGapRadar = longGapRadarEntries.filter((item) =>
+    matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle),
+  )
+  const filteredRookieRadar = rookieRadarEntries.filter((item) =>
     matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle),
   )
   const filteredUpcomingSignals = filteredUpcoming
@@ -1575,6 +1612,17 @@ function App() {
             </section>
 
             <section className="panel">
+              <p className="panel-label">{copy.rookieRadar}</p>
+              <h2>{copy.rookieRadarTitle}</h2>
+              <RookieRadarList
+                entries={filteredRookieRadar}
+                language={language}
+                displayDateFormatter={displayDateFormatter}
+                onOpenTeamPage={openTeamPage}
+              />
+            </section>
+
+            <section className="panel">
               <p className="panel-label">{copy.recentFeed}</p>
               <h2>{copy.newestReleasesFirst}</h2>
               <div className="feed-list">
@@ -2066,6 +2114,121 @@ function LongGapRadarList({
           ) : (
             <p className="empty-copy">{copy.longGapLatestSignalEmpty}</p>
           )}
+          <div className="detail-links">
+            <button type="button" className="inline-button" onClick={() => onOpenTeamPage(entry.group)}>
+              {teamCopy.action}
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+  )
+}
+
+function RookieRadarList({
+  entries,
+  language,
+  displayDateFormatter,
+  onOpenTeamPage,
+}: {
+  entries: RookieRadarEntry[]
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onOpenTeamPage: (group: string) => void
+}) {
+  const copy = TRANSLATIONS[language]
+  const teamCopy = TEAM_COPY[language]
+
+  if (!entries.length) {
+    return <p className="empty-copy">{copy.rookieRadarEmpty}</p>
+  }
+
+  return (
+    <div className="detail-list">
+      {entries.map((entry) => (
+        <article
+          key={entry.group}
+          className={[
+            'detail-card',
+            'detail-card-rookie',
+            entry.hasUpcomingSignal ? 'detail-card-rookie-signal' : 'detail-card-rookie-idle',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        >
+          <div className="signal-head">
+            <TeamIdentity group={entry.group} variant="list" />
+            <div className="signal-tags">
+              <span className="signal-badge signal-badge-rookie">{copy.rookieBadge}</span>
+              <span
+                className={`signal-badge signal-badge-rookie-${
+                  entry.hasUpcomingSignal ? 'signal' : 'idle'
+                }`}
+              >
+                {entry.hasUpcomingSignal ? copy.rookieSignalPresent : copy.rookieSignalMissing}
+              </span>
+            </div>
+          </div>
+
+          <div className="meta-grid rookie-fact-grid">
+            <MetaItem
+              label={copy.rookieDebutYear}
+              value={entry.debutYear ? String(entry.debutYear) : copy.none}
+            />
+            <MetaItem
+              label={copy.rookieLatestRelease}
+              value={
+                entry.latestRelease
+                  ? `${entry.latestRelease.title} · ${formatOptionalDate(
+                      entry.latestRelease.date,
+                      displayDateFormatter,
+                      copy.none,
+                    )}`
+                  : teamCopy.latestEmptyTitle
+              }
+            />
+          </div>
+
+          <p className="signal-meta">
+            {entry.latestRelease
+              ? entry.latestRelease.verified
+                ? teamCopy.verifiedRelease
+                : teamCopy.watchlistFallback
+              : teamCopy.latestEmptyTitle}
+          </p>
+
+          {entry.latestSignal ? (
+            <div className="rookie-signal">
+              <p className="rookie-signal-label">{copy.rookieLatestSignal}</p>
+              <div className="signal-tags">
+                <span className={`signal-badge signal-badge-date-${entry.latestSignal.date_status}`}>
+                  {formatDateStatus(entry.latestSignal.date_status, language)}
+                </span>
+                <span
+                  className={`signal-badge signal-badge-confidence-${getConfidenceTone(entry.latestSignal.confidence)}`}
+                >
+                  {formatConfidenceTone(getConfidenceTone(entry.latestSignal.confidence), language)}
+                </span>
+                <ReleaseClassificationBadges
+                  releaseFormat={entry.latestSignal.release_format}
+                  contextTags={entry.latestSignal.context_tags}
+                  language={language}
+                />
+              </div>
+              <p className="rookie-signal-headline">{entry.latestSignal.headline}</p>
+              <p className="signal-meta">
+                {formatSourceType(entry.latestSignal.source_type, language)} ·{' '}
+                {entry.latestSignal.source_domain || copy.sourceTypeLabels.pending} ·{' '}
+                {formatOptionalDate(entry.latestSignal.scheduled_date, displayDateFormatter, copy.none)}
+              </p>
+              {entry.latestSignal.evidence_summary ? (
+                <p className="signal-evidence">{entry.latestSignal.evidence_summary}</p>
+              ) : null}
+            </div>
+          ) : (
+            <p className="empty-copy">{copy.rookieLatestSignalEmpty}</p>
+          )}
+
           <div className="detail-links">
             <button type="button" className="inline-button" onClick={() => onOpenTeamPage(entry.group)}>
               {teamCopy.action}
@@ -2674,15 +2837,36 @@ function buildLongGapRadarEntries() {
           latestRelease: team.latestRelease,
           gapDays,
           hasUpcomingSignal: team.upcomingSignals.length > 0,
-          latestSignal: pickLongGapRadarSignal(team.upcomingSignals),
+          latestSignal: pickLatestRadarSignal(team.upcomingSignals),
         },
       ]
     })
     .sort(compareLongGapRadarEntries)
 }
 
-function pickLongGapRadarSignal(rows: UpcomingCandidateRow[]) {
-  return [...rows].sort(compareLongGapRadarSignals)[0] ?? null
+function buildRookieRadarEntries() {
+  return teamProfiles
+    .flatMap((team) => {
+      const artistProfile = artistProfileByGroup.get(team.group)
+      if (!artistProfile || !isRookieEligible(artistProfile)) {
+        return []
+      }
+
+      return [
+        {
+          group: team.group,
+          debutYear: artistProfile.debut_year ?? null,
+          latestRelease: team.latestRelease,
+          hasUpcomingSignal: team.upcomingSignals.length > 0,
+          latestSignal: pickLatestRadarSignal(team.upcomingSignals),
+        },
+      ]
+    })
+    .sort(compareRookieRadarEntries)
+}
+
+function pickLatestRadarSignal(rows: UpcomingCandidateRow[]) {
+  return [...rows].sort(compareLatestRadarSignals)[0] ?? null
 }
 
 function compareLongGapRadarEntries(left: LongGapRadarEntry, right: LongGapRadarEntry) {
@@ -2709,7 +2893,25 @@ function compareLongGapRadarEntries(left: LongGapRadarEntry, right: LongGapRadar
   return left.group.localeCompare(right.group)
 }
 
-function compareLongGapRadarSignals(left: UpcomingCandidateRow, right: UpcomingCandidateRow) {
+function compareRookieRadarEntries(left: RookieRadarEntry, right: RookieRadarEntry) {
+  if (left.hasUpcomingSignal !== right.hasUpcomingSignal) {
+    return left.hasUpcomingSignal ? -1 : 1
+  }
+
+  const leftReleaseDate = parseDateValue(left.latestRelease?.date)
+  const rightReleaseDate = parseDateValue(right.latestRelease?.date)
+  if (leftReleaseDate !== rightReleaseDate) {
+    return rightReleaseDate - leftReleaseDate
+  }
+
+  if ((left.debutYear ?? -1) !== (right.debutYear ?? -1)) {
+    return (right.debutYear ?? -1) - (left.debutYear ?? -1)
+  }
+
+  return left.group.localeCompare(right.group)
+}
+
+function compareLatestRadarSignals(left: UpcomingCandidateRow, right: UpcomingCandidateRow) {
   const leftOccurredAt = getSourceTimelineSortValue(getSignalOccurredAt(left))
   const rightOccurredAt = getSourceTimelineSortValue(getSignalOccurredAt(right))
   if (leftOccurredAt !== rightOccurredAt) {
@@ -2725,6 +2927,20 @@ function compareLongGapRadarSignals(left: UpcomingCandidateRow, right: UpcomingC
 
 function isLongGapRadarWatchReason(reason: WatchReason) {
   return reason === 'long_gap' || reason === 'manual_watch'
+}
+
+function isRookieEligible(profile: ArtistProfileRow) {
+  if (profile.radar_tags?.includes('rookie')) {
+    return true
+  }
+
+  if (typeof profile.debut_year !== 'number') {
+    return false
+  }
+
+  const currentYear = new Date().getFullYear()
+  const minimumYear = currentYear - (ROOKIE_RECENT_YEAR_WINDOW - 1)
+  return profile.debut_year >= minimumYear && profile.debut_year <= currentYear
 }
 
 function buildSearchIndexByGroup() {
