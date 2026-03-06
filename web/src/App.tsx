@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type RefObject } from 'react'
+import { useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
 import './App.css'
 import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
@@ -215,6 +215,7 @@ type CalendarDay = {
 }
 
 type MusicService = 'spotify' | 'youtube_music'
+type ServiceActionId = MusicService | 'youtube_mv'
 
 type ReleaseFormat = 'single' | 'album' | 'ep'
 
@@ -231,7 +232,7 @@ type MusicHandoffMode = 'canonical' | 'search'
 type MusicHandoffUrls = Partial<Record<MusicService, string>>
 
 type MusicHandoffLink = {
-  service: MusicService
+  service: ServiceActionId
   href: string
   mode: MusicHandoffMode
 }
@@ -390,7 +391,7 @@ const TRANSLATIONS = {
     dashboardFormat: '형식',
     dashboardDate: '날짜',
     dashboardListen: '듣기 링크',
-    dashboardTeamPage: '팀 페이지',
+    dashboardActions: '액션',
     dashboardScheduledTitle: '예정명',
     dashboardStatus: '상태',
     dashboardConfidence: '신뢰도',
@@ -399,10 +400,11 @@ const TRANSLATIONS = {
     musicServices: {
       spotify: 'Spotify',
       youtube_music: 'YouTube Music',
+      youtube_mv: 'YouTube MV',
     },
     handoffModeLabels: {
-      canonical: '직접 링크',
-      search: '검색 열기',
+      canonical: '바로 열기',
+      search: '검색 결과 열기',
     },
     handoffHint: '앱 안에서 직접 재생하지 않고 새 탭으로 외부 서비스로 이동합니다.',
     recentFeed: '최근 피드',
@@ -569,7 +571,7 @@ const TRANSLATIONS = {
     dashboardFormat: 'Format',
     dashboardDate: 'Date',
     dashboardListen: 'Listen',
-    dashboardTeamPage: 'Team page',
+    dashboardActions: 'Actions',
     dashboardScheduledTitle: 'Scheduled title',
     dashboardStatus: 'Status',
     dashboardConfidence: 'Confidence',
@@ -578,10 +580,11 @@ const TRANSLATIONS = {
     musicServices: {
       spotify: 'Spotify',
       youtube_music: 'YouTube Music',
+      youtube_mv: 'YouTube MV',
     },
     handoffModeLabels: {
-      canonical: 'Direct link',
-      search: 'Search fallback',
+      canonical: 'Open direct link',
+      search: 'Open search results',
     },
     handoffHint: 'Opens in a new tab without in-app playback.',
     recentFeed: 'Recent feed',
@@ -697,6 +700,7 @@ const TEAM_COPY = {
     recentAlbumsEmptyTitle: '앨범 카드 없음',
     recentAlbumsEmpty: '검증된 앨범 또는 EP가 아직 없습니다.',
     openAlbumDetail: '앨범 상세 열기',
+    releaseDetail: '릴리즈 상세',
     quickJumpLabel: '빠른 이동',
     quickJumpTitle: '다른 추적 팀',
     noOtherTeams: '다른 필터된 팀이 없습니다.',
@@ -759,6 +763,7 @@ const TEAM_COPY = {
     recentAlbumsEmptyTitle: 'No album card yet',
     recentAlbumsEmpty: 'No verified album or EP is available for this team yet.',
     openAlbumDetail: 'Open album detail',
+    releaseDetail: 'Release detail',
     quickJumpLabel: 'Quick jump',
     quickJumpTitle: 'Other tracked teams',
     noOtherTeams: 'No other filtered teams available.',
@@ -1018,7 +1023,17 @@ function App() {
   const selectedTeam = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
   const selectedAlbum =
     selectedTeam && selectedAlbumKey
-      ? selectedTeam.recentAlbums.find((item) => getAlbumKey(item) === selectedAlbumKey) ?? null
+      ? findVerifiedReleaseByKey(selectedTeam.group, selectedAlbumKey)
+      : null
+  const selectedTeamLatestRecord =
+    selectedTeam?.latestRelease?.verified
+      ? findVerifiedReleaseRecord(
+          selectedTeam.group,
+          selectedTeam.latestRelease.title,
+          selectedTeam.latestRelease.date,
+          selectedTeam.latestRelease.stream,
+          selectedTeam.latestRelease.releaseKind,
+        )
       : null
   const selectedTeamLatestDetail =
     selectedTeam?.latestRelease
@@ -1034,6 +1049,9 @@ function App() {
     selectedTeam?.latestRelease
       ? buildReleaseDetailHandoffs(selectedTeamLatestDetail, selectedTeam.latestRelease.musicHandoffs)
       : undefined
+  const selectedTeamLatestMvUrl = selectedTeamLatestDetail?.youtube_video_id
+    ? buildYouTubeMvCanonicalUrl(selectedTeamLatestDetail.youtube_video_id)
+    : ''
   const relatedTeams = filteredTeams.filter((team) => team.group !== selectedTeam?.group).slice(0, 8)
 
   useEffect(() => {
@@ -1102,6 +1120,11 @@ function App() {
   function openTeamPage(group: string) {
     setSelectedGroup(group)
     setSelectedAlbumKey(null)
+  }
+
+  function openReleaseDetail(release: VerifiedRelease) {
+    setSelectedGroup(release.group)
+    setSelectedAlbumKey(getAlbumKey(release))
   }
 
   function closeTeamPage() {
@@ -1303,22 +1326,22 @@ function App() {
               </div>
             </div>
 
-            <div className="team-links-row">
+            <div className="team-links-row meta-links">
               {selectedTeam.xUrl ? (
-                <a href={selectedTeam.xUrl} target="_blank" rel="noreferrer">
+                <a href={selectedTeam.xUrl} target="_blank" rel="noreferrer" className="meta-link">
                   X
                 </a>
               ) : null}
               {selectedTeam.instagramUrl ? (
-                <a href={selectedTeam.instagramUrl} target="_blank" rel="noreferrer">
+                <a href={selectedTeam.instagramUrl} target="_blank" rel="noreferrer" className="meta-link">
                   Instagram
                 </a>
               ) : null}
-              <a href={selectedTeam.youtubeUrl} target="_blank" rel="noreferrer">
+              <a href={selectedTeam.youtubeUrl} target="_blank" rel="noreferrer" className="meta-link">
                 {selectedTeam.hasOfficialYouTubeUrl ? 'YouTube' : teamCopy.youtubeSearch}
               </a>
               {selectedTeam.artistSource ? (
-                <a href={selectedTeam.artistSource} target="_blank" rel="noreferrer">
+                <a href={selectedTeam.artistSource} target="_blank" rel="noreferrer" className="meta-link">
                   {copy.artistSource}
                 </a>
               ) : null}
@@ -1502,27 +1525,42 @@ function App() {
                       {selectedTeamLatestDetail?.notes ? (
                         <p className="signal-evidence">{selectedTeamLatestDetail.notes}</p>
                       ) : null}
-                      <div className="detail-links detail-links-stack">
-                        {selectedTeam.latestRelease.source ? (
-                          <a href={selectedTeam.latestRelease.source} target="_blank" rel="noreferrer">
-                            {copy.releaseSource}
-                          </a>
-                        ) : (
-                          <span className="signal-link-muted">{teamCopy.releaseSourcePending}</span>
-                        )}
-                        {selectedTeam.latestRelease.artistSource ? (
-                          <a href={selectedTeam.latestRelease.artistSource} target="_blank" rel="noreferrer">
-                            {copy.artistSource}
-                          </a>
+                      <div className="action-stack">
+                        {selectedTeamLatestRecord ? (
+                          <div className="action-row">
+                            <ActionButton variant="primary" onClick={() => openReleaseDetail(selectedTeamLatestRecord)}>
+                              {getReleaseDetailActionLabel(selectedTeamLatestRecord.release_kind, language)}
+                            </ActionButton>
+                          </div>
                         ) : null}
+                        <MusicHandoffRow
+                          group={selectedTeam.group}
+                          title={selectedTeam.latestRelease.title}
+                          canonicalUrls={selectedTeamLatestHandoffs}
+                          mvUrl={selectedTeamLatestMvUrl}
+                          language={language}
+                          showHint
+                        />
+                        <div className="meta-links">
+                          {selectedTeam.latestRelease.source ? (
+                            <a href={selectedTeam.latestRelease.source} target="_blank" rel="noreferrer" className="meta-link">
+                              {copy.releaseSource}
+                            </a>
+                          ) : (
+                            <span className="signal-link-muted">{teamCopy.releaseSourcePending}</span>
+                          )}
+                          {selectedTeam.latestRelease.artistSource ? (
+                            <a
+                              href={selectedTeam.latestRelease.artistSource}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="meta-link"
+                            >
+                              {copy.artistSource}
+                            </a>
+                          ) : null}
+                        </div>
                       </div>
-                      <MusicHandoffRow
-                        group={selectedTeam.group}
-                        title={selectedTeam.latestRelease.title}
-                        canonicalUrls={selectedTeamLatestHandoffs}
-                        language={language}
-                        showHint
-                      />
                     </div>
                   </article>
                 ) : (
@@ -1574,6 +1612,7 @@ function App() {
                             group={selectedTeam.group}
                             title={item.title}
                             canonicalUrls={buildReleaseDetailHandoffs(detail, item.music_handoffs)}
+                            mvUrl={detail.youtube_video_id ? buildYouTubeMvCanonicalUrl(detail.youtube_video_id) : ''}
                             language={language}
                             compact
                           />
@@ -1726,6 +1765,7 @@ function App() {
               language={language}
               displayDateFormatter={displayDateFormatter}
               onOpenTeamPage={openTeamPage}
+              onOpenReleaseDetail={openReleaseDetail}
             />
 
             <SelectedDayPanel
@@ -1736,6 +1776,7 @@ function App() {
               language={language}
               shortDateFormatter={shortDateFormatter}
               onOpenTeamPage={openTeamPage}
+              onOpenReleaseDetail={openReleaseDetail}
             />
           </div>
 
@@ -1791,21 +1832,25 @@ function App() {
                           {item.evidence_summary ? (
                             <p className="signal-evidence">{item.evidence_summary}</p>
                           ) : null}
-                          <div className="row-actions">
-                            <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
-                              {teamCopy.action}
-                            </button>
+                          <div className="action-stack">
+                            <div className="action-row">
+                              <ActionButton variant="primary" onClick={() => openTeamPage(item.group)}>
+                                {teamCopy.action}
+                              </ActionButton>
+                            </div>
+                            <div className="meta-links">
+                              {item.source_url ? (
+                                <a href={item.source_url} target="_blank" rel="noreferrer" className="meta-link">
+                                  {copy.sourceLink}
+                                </a>
+                              ) : (
+                                <span className="signal-link-muted">{copy.noSourceLink}</span>
+                              )}
+                            </div>
                           </div>
                         </div>
                         <div className="signal-date-wrap">
                           <time>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</time>
-                          {item.source_url ? (
-                            <a href={item.source_url} target="_blank" rel="noreferrer">
-                              {copy.open}
-                            </a>
-                          ) : (
-                            <span className="signal-link-muted">{copy.noSourceLink}</span>
-                          )}
                         </div>
                       </article>
                     ))}
@@ -1966,6 +2011,7 @@ function AlbumDrawer({
     ? releaseDetail.tracks
     : buildAlbumPreviewTracks(album, group, language).map((title, index) => ({ order: index + 1, title }))
   const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail, album.music_handoffs)
+  const mvUrl = releaseDetail.youtube_video_id ? buildYouTubeMvCanonicalUrl(releaseDetail.youtube_video_id) : ''
 
   return (
     <div className="drawer-backdrop" onClick={onClose} role="presentation">
@@ -2020,8 +2066,11 @@ function AlbumDrawer({
           <div className="track-list">
             {previewTracks.map((track) => (
               <div key={`${album.title}-${track.title}-${track.order}`} className="track-row">
-                <span>{`${track.order}`.padStart(2, '0')}</span>
-                <strong>{track.title}</strong>
+                <div className="track-row-main">
+                  <span>{`${track.order}`.padStart(2, '0')}</span>
+                  <strong>{track.title}</strong>
+                </div>
+                <MusicHandoffRow group={group} title={track.title} language={language} compact includeMv={false} />
               </div>
             ))}
           </div>
@@ -2036,24 +2085,72 @@ function AlbumDrawer({
         ) : null}
 
         <p className="hero-text drawer-copy">{teamCopy.drawerCopy}</p>
-        <div className="detail-links detail-links-stack">
-          <a href={album.source} target="_blank" rel="noreferrer">
-            {copy.releaseSource}
-          </a>
-          <a href={album.artist_source} target="_blank" rel="noreferrer">
-            {copy.artistSource}
-          </a>
+        <div className="action-stack">
+          <MusicHandoffRow
+            group={group}
+            title={album.title}
+            canonicalUrls={canonicalHandoffs}
+            mvUrl={mvUrl}
+            language={language}
+            showHint
+          />
+          <div className="meta-links">
+            <a href={album.source} target="_blank" rel="noreferrer" className="meta-link">
+              {copy.releaseSource}
+            </a>
+            <a href={album.artist_source} target="_blank" rel="noreferrer" className="meta-link">
+              {copy.artistSource}
+            </a>
+          </div>
         </div>
-
-        <MusicHandoffRow
-          group={group}
-          title={album.title}
-          canonicalUrls={canonicalHandoffs}
-          language={language}
-          showHint
-        />
       </aside>
     </div>
+  )
+}
+
+function ActionButton({
+  children,
+  variant,
+  onClick,
+}: {
+  children: ReactNode
+  variant: 'primary' | 'secondary'
+  onClick: () => void
+}) {
+  return (
+    <button type="button" className={`action-button action-button-${variant}`} onClick={onClick}>
+      {children}
+    </button>
+  )
+}
+
+function ServiceMark({ service }: { service: ServiceActionId }) {
+  if (service === 'spotify') {
+    return (
+      <svg viewBox="0 0 24 24" className="service-mark-icon" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M7 10.2c3.4-1.1 6.5-.9 9.4.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M8 13c2.6-.7 5-.5 7.1.4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M9 15.6c1.8-.4 3.5-.3 5 .3" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
+    )
+  }
+
+  if (service === 'youtube_music') {
+    return (
+      <svg viewBox="0 0 24 24" className="service-mark-icon" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="12" cy="12" r="4.6" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <path d="M10.7 9.4v5.2l4.4-2.6-4.4-2.6Z" fill="currentColor" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" className="service-mark-icon" aria-hidden="true">
+      <rect x="4" y="6.3" width="16" height="11.4" rx="3.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M10.3 9.5v5l4.6-2.5-4.6-2.5Z" fill="currentColor" />
+    </svg>
   )
 }
 
@@ -2064,6 +2161,8 @@ function MusicHandoffRow({
   language,
   compact = false,
   showHint = false,
+  mvUrl = '',
+  includeMv = true,
 }: {
   group: string
   title: string
@@ -2071,9 +2170,17 @@ function MusicHandoffRow({
   language: Language
   compact?: boolean
   showHint?: boolean
+  mvUrl?: string
+  includeMv?: boolean
 }) {
   const copy = TRANSLATIONS[language]
-  const links = buildMusicHandoffLinks(group, title, canonicalUrls)
+  const links = buildServiceActionLinks({
+    group,
+    title,
+    canonicalUrls,
+    mvUrl,
+    includeMv,
+  })
 
   return (
     <>
@@ -2084,11 +2191,14 @@ function MusicHandoffRow({
             href={link.href}
             target="_blank"
             rel="noreferrer"
-            className={`handoff-link handoff-link-${link.mode}`}
+            className={`handoff-link handoff-link-${link.service}`}
             aria-label={`${copy.musicServices[link.service]} · ${copy.handoffModeLabels[link.mode]}`}
+            title={`${copy.musicServices[link.service]} · ${copy.handoffModeLabels[link.mode]}`}
           >
-            <span>{copy.musicServices[link.service]}</span>
-            <strong>{copy.handoffModeLabels[link.mode]}</strong>
+            <span className={`service-mark service-mark-${link.service}`} aria-hidden="true">
+              <ServiceMark service={link.service} />
+            </span>
+            <span className="handoff-link-label">{copy.musicServices[link.service]}</span>
           </a>
         ))}
       </div>
@@ -2463,6 +2573,7 @@ function MonthlyReleaseDashboard({
   language,
   displayDateFormatter,
   onOpenTeamPage,
+  onOpenReleaseDetail,
 }: {
   monthLabel: string
   verifiedRows: VerifiedRelease[]
@@ -2470,6 +2581,7 @@ function MonthlyReleaseDashboard({
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
   onOpenTeamPage: (group: string) => void
+  onOpenReleaseDetail: (release: VerifiedRelease) => void
 }) {
   const copy = TRANSLATIONS[language]
 
@@ -2504,7 +2616,7 @@ function MonthlyReleaseDashboard({
                       <th>{copy.dashboardFormat}</th>
                       <th>{copy.dashboardDate}</th>
                       <th>{copy.dashboardListen}</th>
-                      <th>{copy.dashboardTeamPage}</th>
+                      <th>{copy.dashboardActions}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -2523,9 +2635,14 @@ function MonthlyReleaseDashboard({
                           <DashboardServiceActions release={item} language={language} />
                         </td>
                         <td>
-                          <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
-                            {TEAM_COPY[language].action}
-                          </button>
+                          <div className="dashboard-table-actions">
+                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                              {TEAM_COPY[language].action}
+                            </ActionButton>
+                            <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
+                              {getReleaseDetailActionLabel(item.release_kind, language)}
+                            </ActionButton>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -2548,13 +2665,26 @@ function MonthlyReleaseDashboard({
                     <p className="signal-meta">
                       {formatOptionalDate(item.date, displayDateFormatter, copy.none)}
                     </p>
-                    <div className="dashboard-mobile-actions">
-                      <DashboardServiceActions release={item} language={language} />
-                    </div>
-                    <div className="detail-links">
-                      <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
-                        {TEAM_COPY[language].action}
-                      </button>
+                    <div className="action-stack">
+                      <div className="action-row">
+                        <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                          {TEAM_COPY[language].action}
+                        </ActionButton>
+                        <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
+                          {getReleaseDetailActionLabel(item.release_kind, language)}
+                        </ActionButton>
+                      </div>
+                      <div className="dashboard-mobile-actions">
+                        <DashboardServiceActions release={item} language={language} />
+                      </div>
+                      <div className="meta-links">
+                        <a href={item.source} target="_blank" rel="noreferrer" className="meta-link">
+                          {copy.releaseSource}
+                        </a>
+                        <a href={item.artist_source} target="_blank" rel="noreferrer" className="meta-link">
+                          {copy.artistSource}
+                        </a>
+                      </div>
                     </div>
                   </article>
                 ))}
@@ -2583,7 +2713,7 @@ function MonthlyReleaseDashboard({
                       <th>{copy.dashboardDate}</th>
                       <th>{copy.dashboardConfidence}</th>
                       <th>{copy.dashboardSource}</th>
-                      <th>{copy.dashboardTeamPage}</th>
+                      <th>{copy.dashboardActions}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -2620,9 +2750,11 @@ function MonthlyReleaseDashboard({
                           )}
                         </td>
                         <td>
-                          <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
-                            {TEAM_COPY[language].action}
-                          </button>
+                          <div className="dashboard-table-actions">
+                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                              {TEAM_COPY[language].action}
+                            </ActionButton>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -2657,17 +2789,21 @@ function MonthlyReleaseDashboard({
                     {formatUpcomingEvidenceMeta(item, language) ? (
                       <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
                     ) : null}
-                    <div className="detail-links">
-                      {item.source_url ? (
-                        <a href={item.source_url} target="_blank" rel="noreferrer">
-                          {copy.sourceLink}
-                        </a>
-                      ) : (
-                        <span className="signal-link-muted">{copy.noSourceLink}</span>
-                      )}
-                      <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
-                        {TEAM_COPY[language].action}
-                      </button>
+                    <div className="action-stack">
+                      <div className="action-row">
+                        <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                          {TEAM_COPY[language].action}
+                        </ActionButton>
+                      </div>
+                      <div className="meta-links">
+                        {item.source_url ? (
+                          <a href={item.source_url} target="_blank" rel="noreferrer" className="meta-link">
+                            {copy.sourceLink}
+                          </a>
+                        ) : (
+                          <span className="signal-link-muted">{copy.noSourceLink}</span>
+                        )}
+                      </div>
                     </div>
                   </article>
                 ))}
@@ -2689,31 +2825,19 @@ function DashboardServiceActions({
   release: VerifiedRelease
   language: Language
 }) {
-  const copy = TRANSLATIONS[language]
   const detail = getReleaseDetail(release.group, release.title, release.date, release.stream, release.release_kind)
   const canonicalHandoffs = buildReleaseDetailHandoffs(detail, release.music_handoffs)
-  const links = buildMusicHandoffLinks(release.group, release.title, canonicalHandoffs)
-  const mvUrl = detail.youtube_video_id ? `https://www.youtube.com/watch?v=${detail.youtube_video_id}` : ''
+  const mvUrl = detail.youtube_video_id ? buildYouTubeMvCanonicalUrl(detail.youtube_video_id) : ''
 
   return (
-    <div className="dashboard-service-actions">
-      {links.map((link) => (
-        <a
-          key={`${release.group}-${release.title}-${link.service}`}
-          href={link.href}
-          target="_blank"
-          rel="noreferrer"
-          className={`dashboard-service-link dashboard-service-link-${link.mode}`}
-        >
-          {copy.musicServices[link.service]}
-        </a>
-      ))}
-      {mvUrl ? (
-        <a href={mvUrl} target="_blank" rel="noreferrer" className="dashboard-service-link dashboard-service-link-canonical">
-          {copy.mvShort}
-        </a>
-      ) : null}
-    </div>
+    <MusicHandoffRow
+      group={release.group}
+      title={release.title}
+      canonicalUrls={canonicalHandoffs}
+      mvUrl={mvUrl}
+      language={language}
+      compact
+    />
   )
 }
 
@@ -2755,6 +2879,7 @@ function SelectedDayPanel({
   language,
   shortDateFormatter,
   onOpenTeamPage,
+  onOpenReleaseDetail,
 }: {
   className?: string
   panelRef?: RefObject<HTMLElement | null>
@@ -2764,6 +2889,7 @@ function SelectedDayPanel({
   language: Language
   shortDateFormatter: Intl.DateTimeFormat
   onOpenTeamPage: (group: string) => void
+  onOpenReleaseDetail: (release: VerifiedRelease) => void
 }) {
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -2780,35 +2906,48 @@ function SelectedDayPanel({
           </div>
           <div className="detail-list">
             {releases.length ? (
-              releases.map((item) => (
-                <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
-                  <div>
-                    <div className="signal-head">
-                      <TeamIdentity group={item.group} variant="list" />
-                      <span className="signal-badge">{describeRelease(item, language)}</span>
+              releases.map((item) => {
+                const detail = getReleaseDetail(item.group, item.title, item.date, item.stream, item.release_kind)
+                const canonicalHandoffs = buildReleaseDetailHandoffs(detail, item.music_handoffs)
+                const mvUrl = detail.youtube_video_id ? buildYouTubeMvCanonicalUrl(detail.youtube_video_id) : ''
+
+                return (
+                  <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
+                    <div>
+                      <div className="signal-head">
+                        <TeamIdentity group={item.group} variant="list" />
+                        <span className="signal-badge">{describeRelease(item, language)}</span>
+                      </div>
+                      <h3>{item.title}</h3>
                     </div>
-                    <h3>{item.title}</h3>
-                  </div>
-                  <div className="detail-links">
-                    <a href={item.source} target="_blank" rel="noreferrer">
-                      {copy.releaseSource}
-                    </a>
-                    <a href={item.artist_source} target="_blank" rel="noreferrer">
-                      {copy.artistSource}
-                    </a>
-                    <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
-                      {teamCopy.action}
-                    </button>
-                  </div>
-                  <MusicHandoffRow
-                    group={item.group}
-                    title={item.title}
-                    canonicalUrls={item.music_handoffs}
-                    language={language}
-                    compact
-                  />
-                </article>
-              ))
+                    <div className="action-stack">
+                      <div className="action-row">
+                        <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                          {teamCopy.action}
+                        </ActionButton>
+                        <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
+                          {getReleaseDetailActionLabel(item.release_kind, language)}
+                        </ActionButton>
+                      </div>
+                      <MusicHandoffRow
+                        group={item.group}
+                        title={item.title}
+                        canonicalUrls={canonicalHandoffs}
+                        mvUrl={mvUrl}
+                        language={language}
+                      />
+                      <div className="meta-links">
+                        <a href={item.source} target="_blank" rel="noreferrer" className="meta-link">
+                          {copy.releaseSource}
+                        </a>
+                        <a href={item.artist_source} target="_blank" rel="noreferrer" className="meta-link">
+                          {copy.artistSource}
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                )
+              })
             ) : (
               <p className="empty-copy">{copy.selectedDayVerifiedEmpty}</p>
             )}
@@ -2859,17 +2998,21 @@ function SelectedDayPanel({
                       <p className="signal-evidence">{item.evidence_summary}</p>
                     ) : null}
                   </div>
-                  <div className="detail-links">
-                    {item.source_url ? (
-                      <a href={item.source_url} target="_blank" rel="noreferrer">
-                        {copy.sourceLink}
-                      </a>
-                    ) : (
-                      <span className="signal-link-muted">{copy.noSourceLink}</span>
-                    )}
-                    <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
-                      {teamCopy.action}
-                    </button>
+                  <div className="action-stack">
+                    <div className="action-row">
+                      <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                        {teamCopy.action}
+                      </ActionButton>
+                    </div>
+                    <div className="meta-links">
+                      {item.source_url ? (
+                        <a href={item.source_url} target="_blank" rel="noreferrer" className="meta-link">
+                          {copy.sourceLink}
+                        </a>
+                      ) : (
+                        <span className="signal-link-muted">{copy.noSourceLink}</span>
+                      )}
+                    </div>
                   </div>
                 </article>
               ))
@@ -3088,18 +3231,35 @@ function formatUpcomingCountdownLabel(
   return formatDisplayDate(scheduledDate, formatter)
 }
 
-function buildMusicHandoffLinks(
-  group: string,
-  title: string,
-  canonicalUrls?: MusicHandoffUrls,
-): MusicHandoffLink[] {
+function buildServiceActionLinks({
+  group,
+  title,
+  canonicalUrls,
+  mvUrl,
+  includeMv = true,
+}: {
+  group: string
+  title: string
+  canonicalUrls?: MusicHandoffUrls
+  mvUrl?: string
+  includeMv?: boolean
+}): MusicHandoffLink[] {
   const query = `${group} ${title}`.trim()
-
-  return MUSIC_HANDOFF_SERVICES.map((service) => ({
+  const links: MusicHandoffLink[] = MUSIC_HANDOFF_SERVICES.map((service) => ({
     service,
     href: canonicalUrls?.[service] || buildMusicSearchUrl(service, query),
     mode: canonicalUrls?.[service] ? 'canonical' : 'search',
   }))
+
+  if (includeMv) {
+    links.push({
+      service: 'youtube_mv',
+      href: mvUrl || buildYouTubeMvSearchUrl(query),
+      mode: mvUrl ? 'canonical' : 'search',
+    })
+  }
+
+  return links
 }
 
 function buildMusicSearchUrl(service: MusicService, query: string) {
@@ -3109,6 +3269,14 @@ function buildMusicSearchUrl(service: MusicService, query: string) {
   }
 
   return `https://music.youtube.com/search?q=${encodedQuery}`
+}
+
+function buildYouTubeMvSearchUrl(query: string) {
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(`${query} official mv`)}`
+}
+
+function buildYouTubeMvCanonicalUrl(videoId: string) {
+  return `https://www.youtube.com/watch?v=${videoId}`
 }
 
 function getReleaseLookupKey(
@@ -4168,6 +4336,30 @@ function getElapsedDaysSinceDate(value: string) {
 
 function getAlbumKey(item: VerifiedRelease) {
   return `${item.group}-${item.stream}-${item.title}-${item.date}`
+}
+
+function findVerifiedReleaseByKey(group: string, albumKey: string) {
+  return (releaseGroups.get(group) ?? []).find((item) => getAlbumKey(item) === albumKey) ?? null
+}
+
+function findVerifiedReleaseRecord(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
+  releaseKind?: string,
+) {
+  const normalizedStream = normalizeReleaseStream(stream, releaseKind)
+  return (
+    (releaseGroups.get(group) ?? []).find(
+      (item) => item.title === releaseTitle && item.date === releaseDate && item.stream === normalizedStream,
+    ) ?? null
+  )
+}
+
+function getReleaseDetailActionLabel(releaseKind: ReleaseFact['release_kind'], language: Language) {
+  const teamCopy = TEAM_COPY[language]
+  return releaseKind === 'single' ? teamCopy.releaseDetail : teamCopy.albumDetail
 }
 
 function buildAlbumPreviewTracks(album: VerifiedRelease, group: string, language: Language) {
