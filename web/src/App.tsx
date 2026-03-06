@@ -155,6 +155,7 @@ type TeamProfile = {
 }
 
 type Language = 'ko' | 'en'
+type CountdownState = 'd_day' | 'd_1' | 'd_3' | 'd_7' | 'date'
 
 const LANGUAGE_STORAGE_KEY = 'idol-song-app-language'
 const LANGUAGE_OPTIONS: Language[] = ['ko', 'en']
@@ -780,6 +781,7 @@ function App() {
                           <div className="signal-head">
                             <TeamIdentity group={item.group} variant="list" />
                             <div className="signal-tags">
+                              <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
                               <span className={`signal-badge signal-badge-${item.tracking_status}`}>
                                 {formatTrackingStatus(item.tracking_status, language)}
                               </span>
@@ -1103,13 +1105,14 @@ function App() {
               {filteredUpcoming.length ? (
                 filteredUpcoming.slice(0, 10).map((item) => (
                   <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row">
-                    <div>
-                      <div className="signal-head">
-                        <TeamIdentity group={item.group} variant="list" />
-                        <div className="signal-tags">
-                          <span className={`signal-badge signal-badge-${item.tracking_status}`}>
-                            {formatTrackingStatus(item.tracking_status, language)}
-                          </span>
+                        <div>
+                          <div className="signal-head">
+                            <TeamIdentity group={item.group} variant="list" />
+                            <div className="signal-tags">
+                              <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
+                              <span className={`signal-badge signal-badge-${item.tracking_status}`}>
+                                {formatTrackingStatus(item.tracking_status, language)}
+                              </span>
                           <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
                             {formatDateStatus(item.date_status, language)}
                           </span>
@@ -1195,6 +1198,7 @@ function App() {
                       <div className="signal-head">
                         <TeamIdentity group={item.group} variant="list" />
                         <div className="signal-tags">
+                          <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
                           <span className={`signal-badge signal-badge-date-${item.date_status}`}>
                             {formatDateStatus(item.date_status, language)}
                           </span>
@@ -1538,6 +1542,25 @@ function ReleaseArtworkFigure({
   )
 }
 
+function UpcomingCountdownBadge({
+  item,
+  formatter,
+}: {
+  item: UpcomingCandidateRow
+  formatter: Intl.DateTimeFormat
+}) {
+  const countdownState = getUpcomingCountdownState(item)
+  if (!countdownState) {
+    return null
+  }
+
+  return (
+    <span className={`signal-badge signal-badge-countdown signal-badge-countdown-${countdownState}`}>
+      {formatUpcomingCountdownLabel(countdownState, item.scheduled_date, formatter)}
+    </span>
+  )
+}
+
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="stat-card">
@@ -1676,6 +1699,53 @@ function formatTrackingStatus(status: string, language: Language) {
 
 function formatConfidenceTone(tone: ReturnType<typeof getConfidenceTone>, language: Language) {
   return TRANSLATIONS[language].confidenceToneLabels[tone]
+}
+
+function getUpcomingCountdownState(item: UpcomingCandidateRow): CountdownState | null {
+  if (
+    !isExactDate(item.scheduled_date) ||
+    (item.date_status !== 'confirmed' && item.date_status !== 'scheduled')
+  ) {
+    return null
+  }
+
+  const countdownDays = getCountdownDays(item.scheduled_date)
+  if (countdownDays < 0) {
+    return 'date'
+  }
+  if (countdownDays === 0) {
+    return 'd_day'
+  }
+  if (countdownDays === 1) {
+    return 'd_1'
+  }
+  if (countdownDays <= 3) {
+    return 'd_3'
+  }
+  if (countdownDays <= 7) {
+    return 'd_7'
+  }
+  return 'date'
+}
+
+function formatUpcomingCountdownLabel(
+  countdownState: CountdownState,
+  scheduledDate: string,
+  formatter: Intl.DateTimeFormat,
+) {
+  if (countdownState === 'd_day') {
+    return 'D-DAY'
+  }
+  if (countdownState === 'd_1') {
+    return 'D-1'
+  }
+  if (countdownState === 'd_3') {
+    return 'D-3'
+  }
+  if (countdownState === 'd_7') {
+    return 'D-7'
+  }
+  return formatDisplayDate(scheduledDate, formatter)
 }
 
 function buildMusicHandoffLinks(
@@ -1998,6 +2068,14 @@ function parseDateValue(value?: string) {
     return -1
   }
   return new Date(`${value}T00:00:00`).getTime()
+}
+
+function getCountdownDays(value: string) {
+  const [year, month, day] = value.split('-').map(Number)
+  const targetDate = new Date(year, month - 1, day)
+  const now = new Date()
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  return Math.round((targetDate.getTime() - today.getTime()) / (24 * 60 * 60 * 1000))
 }
 
 function getAlbumKey(item: VerifiedRelease) {
