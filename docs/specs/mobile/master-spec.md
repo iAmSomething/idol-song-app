@@ -262,4 +262,6 @@
 - `state-feedback-spec.md`
 - `copy-localization-spec.md`
 - `accessibility-platform-spec.md`
+- `interaction-matrix.md`
+- `sample-data-contracts.md`
 - `edge-case-catalog.md`

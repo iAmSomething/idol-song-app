@@ -199,3 +199,7 @@
 - 각 화면의 필수 데이터와 fallback 우선순위가 문서화되어야 한다.
 - 구현자가 JSON 필드와 UI 컴포넌트 사이의 매핑을 추정하지 않아도 된다.
 - 같은 데이터 파생 규칙이 화면마다 다르게 구현되면 안 된다.
+
+## 11. 참조 예시
+- 실제 payload 형상 예시는 `sample-data-contracts.md`를 따른다.
+- selector 구현 시 이 예시의 nullable field와 fallback 사례를 함께 고려한다.

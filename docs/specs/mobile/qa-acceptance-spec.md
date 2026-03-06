@@ -148,3 +148,7 @@
 - Primary / Service / Meta 위계가 모든 화면에서 일관되어야 한다.
 - partial data 상태에서 레이아웃이 깨지지 않아야 한다.
 - 접근성 핵심 항목이 차단 이슈 없이 통과해야 한다.
+
+## 8. 참조 문서
+- 인터랙션 검증은 `interaction-matrix.md` 기준으로 수행한다.
+- 데이터 예시 확인은 `sample-data-contracts.md` 기준으로 수행한다.

@@ -30,13 +30,17 @@
    - 예외 데이터, 긴 텍스트, 누락 메타, 다중 기사, 링크 누락 처리
 12. `qa-acceptance-spec.md`
    - 화면별 QA 체크리스트, 핵심 시나리오, 회귀 포인트
+13. `interaction-matrix.md`
+   - 화면별 모든 주요 탭/시트/외부 이동 매트릭스
+14. `sample-data-contracts.md`
+   - UI 관점의 최소 JSON payload 예시
 
 ### Screen Specs
-13. `calendar-screen.md`
-14. `radar-screen.md`
-15. `search-screen.md`
-16. `team-detail-screen.md`
-17. `release-detail-screen.md`
+15. `calendar-screen.md`
+16. `radar-screen.md`
+17. `search-screen.md`
+18. `team-detail-screen.md`
+19. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -49,9 +53,11 @@
 8. `navigation-motion-spec.md`
 9. `data-binding-spec.md`
 10. `accessibility-platform-spec.md`
-11. 각 화면 스펙
-12. `edge-case-catalog.md`
-13. `qa-acceptance-spec.md`
+11. `interaction-matrix.md`
+12. `sample-data-contracts.md`
+13. 각 화면 스펙
+14. `edge-case-catalog.md`
+15. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
