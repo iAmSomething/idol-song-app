@@ -1,650 +1,1211 @@
 [
   {
+    "group": "&TEAM",
+    "artist_name_mb": "&TEAM",
+    "artist_mbid": "bba737dc-7ec8-482d-b79f-68d949ef2c7f",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Back to Life",
+      "date": "2025-10-28",
+      "source": "https://musicbrainz.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
+  },
+  {
     "group": "(G)I-DLE",
     "artist_name_mb": "i‐dle",
     "artist_mbid": "0068ae6c-7156-40f9-a81f-39294af6a549",
-    "latest_release_song": "Mono",
-    "latest_release_date": "2026-01-27",
-    "latest_release_source": "https://musicbrainz.org/release-group/c669f230-9b65-46c3-808c-99a26d44b464",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Mono",
+      "date": "2026-01-27",
+      "source": "https://musicbrainz.org/release-group/c669f230-9b65-46c3-808c-99a26d44b464",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "i‐dle",
+      "date": "2025-10-03",
+      "source": "https://musicbrainz.org/release-group/91518b35-2567-4b2d-95f9-135361183fe5",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/0068ae6c-7156-40f9-a81f-39294af6a549"
+  },
+  {
+    "group": "82MAJOR",
+    "artist_name_mb": "82MAJOR",
+    "artist_mbid": "1cb80c2a-3f2e-4fdd-ab0f-9ae886dee032",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Trophy",
+      "date": "2025-10-30",
+      "source": "https://musicbrainz.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/1cb80c2a-3f2e-4fdd-ab0f-9ae886dee032"
   },
   {
     "group": "8TURN",
     "artist_name_mb": "8TURN",
     "artist_mbid": "08bc1626-aa7b-4daa-9a2a-caeb87987712",
-    "latest_release_song": "BRUISE",
-    "latest_release_date": "2026-01-28",
-    "latest_release_source": "https://musicbrainz.org/release-group/7ede4c86-fc66-46fd-86ac-90062118583d",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "BRUISE",
+      "date": "2026-01-28",
+      "source": "https://musicbrainz.org/release-group/7ede4c86-fc66-46fd-86ac-90062118583d",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/08bc1626-aa7b-4daa-9a2a-caeb87987712"
   },
   {
     "group": "aespa",
     "artist_name_mb": "aespa",
     "artist_mbid": "b51c672b-85e0-48fe-8648-470a2422229f",
-    "latest_release_song": "SYNK : aeXIS LINE",
-    "latest_release_date": "2025-11-17",
-    "latest_release_source": "https://musicbrainz.org/release-group/71d978c6-775d-4327-aca5-517a62cc4626",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "SYNK : aeXIS LINE",
+      "date": "2025-11-17",
+      "source": "https://musicbrainz.org/release-group/71d978c6-775d-4327-aca5-517a62cc4626",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "Rich Man",
+      "date": "2025-09-05",
+      "source": "https://musicbrainz.org/release-group/f014b273-c609-4f05-9c72-f3ff93a4c25b",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/b51c672b-85e0-48fe-8648-470a2422229f"
+  },
+  {
+    "group": "ALL(H)OURS",
+    "artist_name_mb": "ALL(H)OURS",
+    "artist_mbid": "ce06dad7-098e-467c-a875-1e6525b29c02",
+    "latest_song": null,
+    "latest_album": {
+      "title": "VCF",
+      "date": "2025-09-09",
+      "source": "https://musicbrainz.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/ce06dad7-098e-467c-a875-1e6525b29c02"
+  },
+  {
+    "group": "AMPERS&ONE",
+    "artist_name_mb": "AMPERS&ONE",
+    "artist_mbid": "354c2a04-7379-49cb-9553-97be5c82ca77",
+    "latest_song": null,
+    "latest_album": {
+      "title": "LOUD & PROUD",
+      "date": "2025-08-12",
+      "source": "https://musicbrainz.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/354c2a04-7379-49cb-9553-97be5c82ca77"
+  },
+  {
+    "group": "ARTMS",
+    "artist_name_mb": "ARTMS",
+    "artist_mbid": "ae98b8c4-d8fc-4ff9-9b4e-4bc1fd8575d1",
+    "latest_song": null,
+    "latest_album": {
+      "title": "<Club Icarus>",
+      "date": "2025-06-13",
+      "source": "https://musicbrainz.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/ae98b8c4-d8fc-4ff9-9b4e-4bc1fd8575d1"
   },
   {
     "group": "ATEEZ",
     "artist_name_mb": "ATEEZ",
     "artist_mbid": "cf0dbc16-4e24-4957-b5b4-955c8978f690",
-    "latest_release_song": "Choose",
-    "latest_release_date": "2025-11-17",
-    "latest_release_source": "https://musicbrainz.org/release-group/c193acdc-c046-4e77-98e5-986edc72ba12",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Choose",
+      "date": "2025-11-17",
+      "source": "https://musicbrainz.org/release-group/c193acdc-c046-4e77-98e5-986edc72ba12",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "GOLDEN HOUR : Part.4",
+      "date": "2026-02-06",
+      "source": "https://musicbrainz.org/release-group/8072d29d-f779-404e-b5cc-0cc01e442444",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/cf0dbc16-4e24-4957-b5b4-955c8978f690"
   },
   {
     "group": "AtHeart",
     "artist_name_mb": "AtHeart",
     "artist_mbid": "8a3f4979-23ca-48c8-9d01-5baffee9ea5f",
-    "latest_release_song": "Shut Up",
-    "latest_release_date": "2026-02-26",
-    "latest_release_source": "https://musicbrainz.org/release-group/16cf36c1-5330-4078-bb8d-4be324d27250",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Shut Up",
+      "date": "2026-02-26",
+      "source": "https://musicbrainz.org/release-group/16cf36c1-5330-4078-bb8d-4be324d27250",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "Plot Twist",
+      "date": "2025-08-13",
+      "source": "https://musicbrainz.org/release-group/546efe73-cb05-49af-a513-e3fc116b2df3",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/8a3f4979-23ca-48c8-9d01-5baffee9ea5f"
   },
   {
     "group": "BABYMONSTER",
     "artist_name_mb": "BABYMONSTER",
     "artist_mbid": "5829cd4f-e693-4b03-abe5-1226243c23d6",
-    "latest_release_song": "HOT SAUCE",
-    "latest_release_date": "2025-07-01",
-    "latest_release_source": "https://musicbrainz.org/release-group/29d2346a-b87d-4fe7-886a-77021f945abf",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "HOT SAUCE",
+      "date": "2025-07-01",
+      "source": "https://musicbrainz.org/release-group/29d2346a-b87d-4fe7-886a-77021f945abf",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "WE GO UP",
+      "date": "2025-10-10",
+      "source": "https://musicbrainz.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/5829cd4f-e693-4b03-abe5-1226243c23d6"
   },
   {
     "group": "BADVILLAIN",
     "artist_name_mb": "BADVILLAIN",
     "artist_mbid": "0f0ce763-6a74-4714-9c02-7cdc8bdea5e3",
-    "latest_release_song": "THRILLER",
-    "latest_release_date": "2025-09-15",
-    "latest_release_source": "https://musicbrainz.org/release-group/d739e8f9-6575-41ae-910e-ddc45cad2bd9",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "THRILLER",
+      "date": "2025-09-15",
+      "source": "https://musicbrainz.org/release-group/d739e8f9-6575-41ae-910e-ddc45cad2bd9",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/0f0ce763-6a74-4714-9c02-7cdc8bdea5e3"
   },
   {
     "group": "BAE173",
     "artist_name_mb": "BAE173",
     "artist_mbid": "ada066dc-bd71-41df-8eb0-799635b6176e",
-    "latest_release_song": "What’s wrong?",
-    "latest_release_date": "2025-10-03",
-    "latest_release_source": "https://musicbrainz.org/release-group/c33d7fab-bcc5-4bc2-bd1b-f2a880b1504b",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "What’s wrong?",
+      "date": "2025-10-03",
+      "source": "https://musicbrainz.org/release-group/c33d7fab-bcc5-4bc2-bd1b-f2a880b1504b",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "NEW CHAPTER : DESEAR",
+      "date": "2025-10-14",
+      "source": "https://musicbrainz.org/release-group/77b28a76-cd4c-4a58-b4be-ec10e6fedd7b",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/ada066dc-bd71-41df-8eb0-799635b6176e"
   },
   {
     "group": "BLACKPINK",
     "artist_name_mb": "BLACKPINK",
     "artist_mbid": "48646387-1664-4c9a-9139-9bfd091b823c",
-    "latest_release_song": "뛰어 (JUMP)",
-    "latest_release_date": "2025-07-11",
-    "latest_release_source": "https://musicbrainz.org/release-group/173ec0cf-52e9-4ca6-bf30-408ccafd61d7",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "뛰어 (JUMP)",
+      "date": "2025-07-11",
+      "source": "https://musicbrainz.org/release-group/173ec0cf-52e9-4ca6-bf30-408ccafd61d7",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "DEADLINE",
+      "date": "2026-02-26",
+      "source": "https://musicbrainz.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
   },
   {
     "group": "BOYNEXTDOOR",
     "artist_name_mb": "BOYNEXTDOOR",
     "artist_mbid": "656d0024-7b5f-4089-9d3e-ce383f15f1b7",
-    "latest_release_song": "BOYLIFE",
-    "latest_release_date": "2025-08-20",
-    "latest_release_source": "https://musicbrainz.org/release-group/7f3e5d77-9ad8-4de6-8dcc-3ea29c6208ae",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "BOYLIFE",
+      "date": "2025-08-20",
+      "source": "https://musicbrainz.org/release-group/7f3e5d77-9ad8-4de6-8dcc-3ea29c6208ae",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "The Action",
+      "date": "2025-10-20",
+      "source": "https://musicbrainz.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/656d0024-7b5f-4089-9d3e-ce383f15f1b7"
+  },
+  {
+    "group": "CIX",
+    "artist_name_mb": "CIX",
+    "artist_mbid": "03e53482-a069-4e65-aa7a-117ede967ffe",
+    "latest_song": null,
+    "latest_album": {
+      "title": "GO Chapter 1: GO Together",
+      "date": "2025-09-08",
+      "source": "https://musicbrainz.org/release-group/fa27cf7c-9d03-4857-87b4-c7be5ffcfd2f",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/03e53482-a069-4e65-aa7a-117ede967ffe"
+  },
+  {
+    "group": "CRAVITY",
+    "artist_name_mb": "CRAVITY",
+    "artist_mbid": "035e63b4-a34d-4f8e-a61f-6c2527eed16e",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Dare to Crave",
+      "date": "2025-06-23",
+      "source": "https://musicbrainz.org/release-group/44e36813-a852-401d-ad33-a23e11357a06",
+      "release_kind": "album"
+    },
+    "artist_source": "https://musicbrainz.org/artist/035e63b4-a34d-4f8e-a61f-6c2527eed16e"
+  },
+  {
+    "group": "DAY6",
+    "artist_name_mb": "DAY6",
+    "artist_mbid": "77191d5f-1045-4b3b-ad7f-12ea398db929",
+    "latest_song": null,
+    "latest_album": {
+      "title": "The DECADE",
+      "date": "2025-09-05",
+      "source": "https://musicbrainz.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08",
+      "release_kind": "album"
+    },
+    "artist_source": "https://musicbrainz.org/artist/77191d5f-1045-4b3b-ad7f-12ea398db929"
+  },
+  {
+    "group": "DKB",
+    "artist_name_mb": "DKB",
+    "artist_mbid": "a88863ae-4744-44aa-b15c-54363cedf9d2",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Emotion",
+      "date": "2025-10-23",
+      "source": "https://musicbrainz.org/release-group/18922c4e-7b46-429f-a5b7-c1087a796663",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/a88863ae-4744-44aa-b15c-54363cedf9d2"
   },
   {
     "group": "ENHYPEN",
     "artist_name_mb": "ENHYPEN",
     "artist_mbid": "95663592-1447-4579-90f7-c94733476667",
-    "latest_release_song": "宵 -YOI-",
-    "latest_release_date": "2025-07-27",
-    "latest_release_source": "https://musicbrainz.org/release-group/79df3384-8d5c-45fa-b53d-8f173e4a5171",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "宵 -YOI-",
+      "date": "2025-07-27",
+      "source": "https://musicbrainz.org/release-group/79df3384-8d5c-45fa-b53d-8f173e4a5171",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "THE SIN : VANISH",
+      "date": "2026-01-16",
+      "source": "https://musicbrainz.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/95663592-1447-4579-90f7-c94733476667"
+  },
+  {
+    "group": "EPEX",
+    "artist_name_mb": "EPEX",
+    "artist_mbid": "dab563b4-21b2-44be-b8d7-9527c4e530c1",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Youth Chapter 3 : ROMANTIC YOUTH",
+      "date": "2025-07-28",
+      "source": "https://musicbrainz.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e",
+      "release_kind": "album"
+    },
+    "artist_source": "https://musicbrainz.org/artist/dab563b4-21b2-44be-b8d7-9527c4e530c1"
+  },
+  {
+    "group": "EVNNE",
+    "artist_name_mb": "EVNNE",
+    "artist_mbid": "bf081017-e5ec-44b8-a5e6-d0401d0b6828",
+    "latest_song": null,
+    "latest_album": {
+      "title": "LOVE ANECDOTE(S)",
+      "date": "2025-08-04",
+      "source": "https://musicbrainz.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/bf081017-e5ec-44b8-a5e6-d0401d0b6828"
   },
   {
     "group": "EXO",
     "artist_name_mb": "EXO",
     "artist_mbid": "b3785a55-2cf6-497d-b8e3-cfa21a36f997",
-    "latest_release_song": "I'm Home",
-    "latest_release_date": "2025-12-13",
-    "latest_release_source": "https://musicbrainz.org/release-group/32188b10-a0bf-4174-8618-9049d3a035e5",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "I'm Home",
+      "date": "2025-12-13",
+      "source": "https://musicbrainz.org/release-group/32188b10-a0bf-4174-8618-9049d3a035e5",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "REVERXE",
+      "date": "2026-01-19",
+      "source": "https://musicbrainz.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1",
+      "release_kind": "album"
+    },
     "artist_source": "https://musicbrainz.org/artist/b3785a55-2cf6-497d-b8e3-cfa21a36f997"
   },
   {
     "group": "FIFTY FIFTY",
     "artist_name_mb": "FIFTY FIFTY",
     "artist_mbid": "5c6b4031-c0e6-468f-ada5-28c33b7d4e0e",
-    "latest_release_song": "TAKE MY HAND",
-    "latest_release_date": "2025-08-22",
-    "latest_release_source": "https://musicbrainz.org/release-group/ec762b26-8c09-4bcb-bafc-dd205ca59f55",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "TAKE MY HAND",
+      "date": "2025-08-22",
+      "source": "https://musicbrainz.org/release-group/ec762b26-8c09-4bcb-bafc-dd205ca59f55",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "Too Much Part 1",
+      "date": "2025-11-04",
+      "source": "https://musicbrainz.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/5c6b4031-c0e6-468f-ada5-28c33b7d4e0e"
   },
   {
     "group": "fromis_9",
     "artist_name_mb": "fromis_9",
     "artist_mbid": "705f04e2-fc5b-41ab-b837-1d850d44084a",
-    "latest_release_song": "White Memories",
-    "latest_release_date": "2025-12-02",
-    "latest_release_source": "https://musicbrainz.org/release-group/8ceecddf-94b4-40a4-b77a-592fae34fc65",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "White Memories",
+      "date": "2025-12-02",
+      "source": "https://musicbrainz.org/release-group/8ceecddf-94b4-40a4-b77a-592fae34fc65",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "From Our 20’s",
+      "date": "2025-06-25",
+      "source": "https://musicbrainz.org/release-group/8b4a8c41-9c53-4930-8c90-512bf8e56eee",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/705f04e2-fc5b-41ab-b837-1d850d44084a"
   },
   {
     "group": "H1-KEY",
     "artist_name_mb": "H1-KEY",
     "artist_mbid": "6d9dc445-463c-4c98-a554-429afe985f2b",
-    "latest_release_song": "세상은 영화 같지 않더라",
-    "latest_release_date": "2026-01-05",
-    "latest_release_source": "https://musicbrainz.org/release-group/4e4e27fa-97fe-42ac-9c4d-801d31d7de6a",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "세상은 영화 같지 않더라",
+      "date": "2026-01-05",
+      "source": "https://musicbrainz.org/release-group/4e4e27fa-97fe-42ac-9c4d-801d31d7de6a",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "Lovestruck",
+      "date": "2025-06-26",
+      "source": "https://musicbrainz.org/release-group/a9d2d1a0-f332-41be-b45a-5555d937a892",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/6d9dc445-463c-4c98-a554-429afe985f2b"
   },
   {
     "group": "Hearts2Hearts",
     "artist_name_mb": "Hearts2Hearts",
     "artist_mbid": "066080a4-84c7-46c6-91d3-dc10d572749b",
-    "latest_release_song": "RUDE!",
-    "latest_release_date": "2026-02-20",
-    "latest_release_source": "https://musicbrainz.org/release-group/5209edba-458a-4f37-8863-ec663b51fc6b",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "RUDE!",
+      "date": "2026-02-20",
+      "source": "https://musicbrainz.org/release-group/5209edba-458a-4f37-8863-ec663b51fc6b",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "FOCUS",
+      "date": "2025-10-20",
+      "source": "https://musicbrainz.org/release-group/158311ee-7ed5-46a3-89e5-0e2ed6416a5c",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/066080a4-84c7-46c6-91d3-dc10d572749b"
+  },
+  {
+    "group": "ifeye",
+    "artist_name_mb": "ifeye",
+    "artist_mbid": "2fa469c4-a186-48d6-9d9f-d1d4bb716071",
+    "latest_song": null,
+    "latest_album": {
+      "title": "sweet tang",
+      "date": "2025-07-16",
+      "source": "https://musicbrainz.org/release-group/e00021e9-f5fb-4a4a-8332-498ebaa2da76",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/2fa469c4-a186-48d6-9d9f-d1d4bb716071"
+  },
+  {
+    "group": "ITZY",
+    "artist_name_mb": "ITZY",
+    "artist_mbid": "bce172fc-51bb-43f7-9a25-b406a0a581d5",
+    "latest_song": null,
+    "latest_album": {
+      "title": "TUNNEL VISION",
+      "date": "2025-11-10",
+      "source": "https://musicbrainz.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/bce172fc-51bb-43f7-9a25-b406a0a581d5"
   },
   {
     "group": "IVE",
     "artist_name_mb": "IVE",
     "artist_mbid": "b2f2216a-d7a9-4ce0-8b8f-f494d9a8c196",
-    "latest_release_song": "BANG BANG",
-    "latest_release_date": "2026-02-09",
-    "latest_release_source": "https://musicbrainz.org/release-group/af154a09-c742-4dc1-86ec-af8a25b24c6a",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "BANG BANG",
+      "date": "2026-02-09",
+      "source": "https://musicbrainz.org/release-group/af154a09-c742-4dc1-86ec-af8a25b24c6a",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "REVIVE+",
+      "date": "2026-02-23",
+      "source": "https://musicbrainz.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca",
+      "release_kind": "album"
+    },
     "artist_source": "https://musicbrainz.org/artist/b2f2216a-d7a9-4ce0-8b8f-f494d9a8c196"
   },
   {
     "group": "izna",
     "artist_name_mb": "izna",
     "artist_mbid": "c3d9b981-0420-45ae-93ca-21d78f0fb14f",
-    "latest_release_song": "BEEP",
-    "latest_release_date": "2025-06-09",
-    "latest_release_source": "https://musicbrainz.org/release-group/9f1d1ec9-da05-4b38-9c16-545347ecc169",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "BEEP",
+      "date": "2025-06-09",
+      "source": "https://musicbrainz.org/release-group/9f1d1ec9-da05-4b38-9c16-545347ecc169",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "Not Just Pretty",
+      "date": "2025-09-30",
+      "source": "https://musicbrainz.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/c3d9b981-0420-45ae-93ca-21d78f0fb14f"
+  },
+  {
+    "group": "KARD",
+    "artist_name_mb": "KARD",
+    "artist_mbid": "ad4e8332-861d-4a49-8235-b72888714be4",
+    "latest_song": null,
+    "latest_album": {
+      "title": "DRIFT",
+      "date": "2025-07-02",
+      "source": "https://musicbrainz.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/ad4e8332-861d-4a49-8235-b72888714be4"
+  },
+  {
+    "group": "Kep1er",
+    "artist_name_mb": "Kep1er",
+    "artist_mbid": "187da628-d21a-4e0f-a93c-456c97a2c032",
+    "latest_song": null,
+    "latest_album": {
+      "title": "BUBBLE GUM",
+      "date": "2025-08-19",
+      "source": "https://musicbrainz.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/187da628-d21a-4e0f-a93c-456c97a2c032"
   },
   {
     "group": "KickFlip",
     "artist_name_mb": "KickFlip",
     "artist_mbid": "fa8afe53-9f95-4523-b064-004990c2d7c5",
-    "latest_release_song": "From KickFlip, To WeFlip",
-    "latest_release_date": "2026-01-20",
-    "latest_release_source": "https://musicbrainz.org/release-group/41e161d0-e355-479c-849f-b2a63f68fb00",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "From KickFlip, To WeFlip",
+      "date": "2026-01-20",
+      "source": "https://musicbrainz.org/release-group/41e161d0-e355-479c-849f-b2a63f68fb00",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "My First Flip",
+      "date": "2025-09-22",
+      "source": "https://musicbrainz.org/release-group/d834a7cf-efa3-4a5d-bcf8-d40cbcc2a434",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/fa8afe53-9f95-4523-b064-004990c2d7c5"
   },
   {
     "group": "KiiiKiii",
     "artist_name_mb": "KiiiKiii",
     "artist_mbid": "bdbc7927-6ff5-4a64-a2dd-9756323008e1",
-    "latest_release_song": "To Me From Me",
-    "latest_release_date": "2025-11-04",
-    "latest_release_source": "https://musicbrainz.org/release-group/3964ffdb-8ba8-4b39-bc6a-b09d4d40d26d",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "To Me From Me",
+      "date": "2025-11-04",
+      "source": "https://musicbrainz.org/release-group/3964ffdb-8ba8-4b39-bc6a-b09d4d40d26d",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "Delulu Pack",
+      "date": "2026-01-25",
+      "source": "https://musicbrainz.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/bdbc7927-6ff5-4a64-a2dd-9756323008e1"
+  },
+  {
+    "group": "KISS OF LIFE",
+    "artist_name_mb": "KISS OF LIFE",
+    "artist_mbid": "cbe629e3-fbbd-4071-9e12-4c5074c2231b",
+    "latest_song": null,
+    "latest_album": {
+      "title": "TOKYO MISSION START",
+      "date": "2025-11-05",
+      "source": "https://musicbrainz.org/release-group/78752bd0-8be7-4be8-9973-9ed52f054743",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/cbe629e3-fbbd-4071-9e12-4c5074c2231b"
   },
   {
     "group": "LE SSERAFIM",
     "artist_name_mb": "LE SSERAFIM",
     "artist_mbid": "1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
-    "latest_release_song": "SPAGHETTI",
-    "latest_release_date": "2025-10-24",
-    "latest_release_source": "https://musicbrainz.org/release-group/8fecf07e-3715-4df4-9f47-1f7204f71b94",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "SPAGHETTI",
+      "date": "2025-10-24",
+      "source": "https://musicbrainz.org/release-group/8fecf07e-3715-4df4-9f47-1f7204f71b94",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/1ee37742-1e3d-4e61-84d2-bc85f4c1459a"
   },
   {
     "group": "LIGHTSUM",
     "artist_name_mb": "LIGHTSUM",
     "artist_mbid": "6bfa076d-881b-442f-adc9-c8c17c6c87d3",
-    "latest_release_song": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
-    "latest_release_date": "2026-01-15",
-    "latest_release_source": "https://musicbrainz.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+      "date": "2026-01-15",
+      "source": "https://musicbrainz.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/6bfa076d-881b-442f-adc9-c8c17c6c87d3"
   },
   {
     "group": "LUN8",
     "artist_name_mb": "LUN8",
     "artist_mbid": "1689d50f-cd03-43ce-a275-ce7616dafa7f",
-    "latest_release_song": "LOST",
-    "latest_release_date": "2025-09-17",
-    "latest_release_source": "https://musicbrainz.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "LOST",
+      "date": "2025-09-17",
+      "source": "https://musicbrainz.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/1689d50f-cd03-43ce-a275-ce7616dafa7f"
   },
   {
     "group": "MEOVV",
     "artist_name_mb": "MEOVV",
     "artist_mbid": "f2435d8b-8a29-453d-9d7e-03c61c4b6fc4",
-    "latest_release_song": "BURNING UP",
-    "latest_release_date": "2025-10-14",
-    "latest_release_source": "https://musicbrainz.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "BURNING UP",
+      "date": "2025-10-14",
+      "source": "https://musicbrainz.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/f2435d8b-8a29-453d-9d7e-03c61c4b6fc4"
   },
   {
     "group": "MONSTA X",
     "artist_name_mb": "MONSTA X",
     "artist_mbid": "b6b21b0c-a706-4b46-a929-bd4d21b06cad",
-    "latest_release_song": "growing pains",
-    "latest_release_date": "2026-02-06",
-    "latest_release_source": "https://musicbrainz.org/release-group/d77e44ee-aa20-498d-8606-db1f4ac5d481",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "growing pains",
+      "date": "2026-02-06",
+      "source": "https://musicbrainz.org/release-group/d77e44ee-aa20-498d-8606-db1f4ac5d481",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "THE X",
+      "date": "2025-09-01",
+      "source": "https://musicbrainz.org/release-group/ca8e0811-5f61-4cd5-b9d8-354f4f9b5f28",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/b6b21b0c-a706-4b46-a929-bd4d21b06cad"
+  },
+  {
+    "group": "NCT DREAM",
+    "artist_name_mb": "NCT DREAM",
+    "artist_mbid": "dc7c8277-d4b6-4bca-bdfe-50eee42536ac",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Beat It Up",
+      "date": "2025-11-17",
+      "source": "https://musicbrainz.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/dc7c8277-d4b6-4bca-bdfe-50eee42536ac"
   },
   {
     "group": "NCT WISH",
     "artist_name_mb": "NCT WISH",
     "artist_mbid": "fb175979-152f-4f32-bf8b-08aa86c24fe3",
-    "latest_release_song": "Same Sky",
-    "latest_release_date": "2026-02-27",
-    "latest_release_source": "https://musicbrainz.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Same Sky",
+      "date": "2026-02-27",
+      "source": "https://musicbrainz.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "WISHLIST",
+      "date": "2026-01-14",
+      "source": "https://musicbrainz.org/release-group/aa6bead7-4507-41db-8d27-0a8a46d5db75",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/fb175979-152f-4f32-bf8b-08aa86c24fe3"
+  },
+  {
+    "group": "NEXZ",
+    "artist_name_mb": "NEXZ",
+    "artist_mbid": "c870eef2-a1f9-407c-95f2-1448ad56474a",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Beat‐Boxer",
+      "date": "2025-10-27",
+      "source": "https://musicbrainz.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/c870eef2-a1f9-407c-95f2-1448ad56474a"
   },
   {
     "group": "NMIXX",
     "artist_name_mb": "NMIXX",
     "artist_mbid": "2d623e82-73e2-4179-9c44-e963980f2d58",
-    "latest_release_song": "TIC TAC",
-    "latest_release_date": "2026-02-26",
-    "latest_release_source": "https://musicbrainz.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "TIC TIC",
+      "date": "2026-02-26",
+      "source": "https://musicbrainz.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "Blue Valentine",
+      "date": "2025-10-13",
+      "source": "https://musicbrainz.org/release-group/fbdd1a42-b8fe-47a6-8bf4-927b61e567f0",
+      "release_kind": "album"
+    },
     "artist_source": "https://musicbrainz.org/artist/2d623e82-73e2-4179-9c44-e963980f2d58"
   },
   {
     "group": "ONEUS",
     "artist_name_mb": "ONEUS",
     "artist_mbid": "c010eb84-2de1-40b2-b267-40de6002daab",
-    "latest_release_song": "原",
-    "latest_release_date": "2026-01-20",
-    "latest_release_source": "https://musicbrainz.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "原",
+      "date": "2026-01-20",
+      "source": "https://musicbrainz.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "5x",
+      "date": "2025-06-30",
+      "source": "https://musicbrainz.org/release-group/bf41a2c3-75ef-4c6b-aab6-0c8874163e8a",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/c010eb84-2de1-40b2-b267-40de6002daab"
+  },
+  {
+    "group": "ONEWE",
+    "artist_name_mb": "ONEWE",
+    "artist_mbid": "720f9030-9b10-4cfa-9a1b-16f80c774cc9",
+    "latest_song": null,
+    "latest_album": {
+      "title": "MAZE : AD ASTRA",
+      "date": "2025-10-07",
+      "source": "https://musicbrainz.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/720f9030-9b10-4cfa-9a1b-16f80c774cc9"
   },
   {
     "group": "ONF",
     "artist_name_mb": "ONF",
     "artist_mbid": "407edcfa-cc74-40ca-bece-8e98f8fb0deb",
-    "latest_release_song": "Summer Light",
-    "latest_release_date": "2025-08-03",
-    "latest_release_source": "https://musicbrainz.org/release-group/017dac05-b448-4199-93a0-0d4415f90936",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Summer Light",
+      "date": "2025-08-03",
+      "source": "https://musicbrainz.org/release-group/017dac05-b448-4199-93a0-0d4415f90936",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/407edcfa-cc74-40ca-bece-8e98f8fb0deb"
+  },
+  {
+    "group": "P1Harmony",
+    "artist_name_mb": "P1Harmony",
+    "artist_mbid": "d03d8ba8-065c-41d9-a804-d6c05a949194",
+    "latest_song": null,
+    "latest_album": {
+      "title": "EX",
+      "date": "2025-09-26",
+      "source": "https://musicbrainz.org/release-group/a32e5d1a-a665-4cca-beeb-ccd5e2424a91",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/d03d8ba8-065c-41d9-a804-d6c05a949194"
   },
   {
     "group": "PLAVE",
     "artist_name_mb": "PLAVE",
     "artist_mbid": "aab90af9-fde7-4988-b26b-b2c3c8e2d8e6",
-    "latest_release_song": "이 밤을 빌려 말해요 (오늘 밤, 세계에서 이 사랑이 사라진다 해도 X PLAVE)",
-    "latest_release_date": "2025-12-29",
-    "latest_release_source": "https://musicbrainz.org/release-group/ed47b574-6321-4b7c-a533-abec3003c94a",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "PLBBUU",
+      "date": "2025-11-10",
+      "source": "https://musicbrainz.org/release-group/e33697d4-87e8-4aab-8af7-f9b058a8cd98",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/aab90af9-fde7-4988-b26b-b2c3c8e2d8e6"
   },
   {
     "group": "POW",
     "artist_name_mb": "POW",
     "artist_mbid": "fa1ab450-4f04-44f7-9f5c-574b99683098",
-    "latest_release_song": "Wall Flowers",
-    "latest_release_date": "2025-09-29",
-    "latest_release_source": "https://musicbrainz.org/release-group/a77ad515-51b9-4bef-a0dc-786a8b55f783",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Wall Flowers",
+      "date": "2025-09-29",
+      "source": "https://musicbrainz.org/release-group/a77ad515-51b9-4bef-a0dc-786a8b55f783",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/fa1ab450-4f04-44f7-9f5c-574b99683098"
   },
   {
     "group": "Purple Kiss",
     "artist_name_mb": "PURPLE KISS",
     "artist_mbid": "0a7ef947-cb11-4bf0-89e3-23b9a950f04d",
-    "latest_release_song": "A Violet to Remember",
-    "latest_release_date": "2025-11-16",
-    "latest_release_source": "https://musicbrainz.org/release-group/90a2d86d-ad0e-42db-bf20-fdf6cc5d915d",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "A Violet to Remember",
+      "date": "2025-11-16",
+      "source": "https://musicbrainz.org/release-group/90a2d86d-ad0e-42db-bf20-fdf6cc5d915d",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "OUR NOW",
+      "date": "2025-08-31",
+      "source": "https://musicbrainz.org/release-group/8c6eab4a-ea6f-45db-ab2f-cadeb9f3b31d",
+      "release_kind": "album"
+    },
     "artist_source": "https://musicbrainz.org/artist/0a7ef947-cb11-4bf0-89e3-23b9a950f04d"
   },
   {
     "group": "QWER",
     "artist_name_mb": "QWER",
     "artist_mbid": "86bfda70-ad8c-4db4-9041-e4843d918269",
-    "latest_release_song": "흰수염고래",
-    "latest_release_date": "2025-10-06",
-    "latest_release_source": "https://musicbrainz.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "흰수염고래",
+      "date": "2025-10-06",
+      "source": "https://musicbrainz.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "In a million noises, I’ll be your harmony",
+      "date": "2025-06-09",
+      "source": "https://musicbrainz.org/release-group/3d34baf6-f1f9-4dac-879d-4b37d58c9958",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/86bfda70-ad8c-4db4-9041-e4843d918269"
   },
   {
     "group": "RESCENE",
     "artist_name_mb": "RESCENE",
     "artist_mbid": "a54fd8e2-d319-44a6-aa60-21adf17751bf",
-    "latest_release_song": "[RESCENE X ???]",
-    "latest_release_date": "2026-02-27",
-    "latest_release_source": "https://musicbrainz.org/release-group/4f3f5594-e38f-4e46-bef1-2d2cfc28182e",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "[RESCENE X ???]",
+      "date": "2026-02-27",
+      "source": "https://musicbrainz.org/release-group/4f3f5594-e38f-4e46-bef1-2d2cfc28182e",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "lip bomb",
+      "date": "2025-11-25",
+      "source": "https://musicbrainz.org/release-group/0854eb50-8966-441c-80be-74b10eb11c6f",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/a54fd8e2-d319-44a6-aa60-21adf17751bf"
   },
   {
     "group": "RIIZE",
     "artist_name_mb": "RIIZE",
     "artist_mbid": "f3eaa943-71b3-44b6-8b66-74c787742aae",
-    "latest_release_song": "All of You",
-    "latest_release_date": "2026-02-09",
-    "latest_release_source": "https://musicbrainz.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "All of You",
+      "date": "2026-02-09",
+      "source": "https://musicbrainz.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/f3eaa943-71b3-44b6-8b66-74c787742aae"
   },
   {
     "group": "SAY MY NAME",
     "artist_name_mb": "SAY MY NAME",
     "artist_mbid": "61cc7260-0bed-4811-822f-8d30ceae7722",
-    "latest_release_song": "iLy",
-    "latest_release_date": "2025-08-01",
-    "latest_release_source": "https://musicbrainz.org/release-group/440ca3df-b629-4455-b67d-d44cf488a6e3",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "iLy",
+      "date": "2025-08-01",
+      "source": "https://musicbrainz.org/release-group/440ca3df-b629-4455-b67d-d44cf488a6e3",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "&Our Vibe",
+      "date": "2025-12-29",
+      "source": "https://musicbrainz.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/61cc7260-0bed-4811-822f-8d30ceae7722"
   },
   {
     "group": "SEVENTEEN",
     "artist_name_mb": "SEVENTEEN",
     "artist_mbid": "e04d239e-9fa8-49b3-b9b7-9e439c3cb1d1",
-    "latest_release_song": "Illegal",
-    "latest_release_date": "2025-10-10",
-    "latest_release_source": "https://musicbrainz.org/release-group/a833465a-c693-46e8-aa04-66a8e6ddaf9f",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Where love passed",
+      "date": "2025-07-14",
+      "source": "https://musicbrainz.org/release-group/bc14070e-4c6f-44c9-bf30-ae20b6d44b96",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/e04d239e-9fa8-49b3-b9b7-9e439c3cb1d1"
   },
   {
     "group": "STAYC",
     "artist_name_mb": "STAYC",
     "artist_mbid": "06bb5fcc-f2b3-428d-b8e7-079060311b6d",
-    "latest_release_song": "I WANT IT",
-    "latest_release_date": "2025-07-23",
-    "latest_release_source": "https://musicbrainz.org/release-group/0eaf3023-4c83-45ea-94fe-25efd4c61830",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "I WANT IT",
+      "date": "2025-07-23",
+      "source": "https://musicbrainz.org/release-group/0eaf3023-4c83-45ea-94fe-25efd4c61830",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "STAY ALIVE",
+      "date": "2026-02-11",
+      "source": "https://musicbrainz.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76",
+      "release_kind": "album"
+    },
     "artist_source": "https://musicbrainz.org/artist/06bb5fcc-f2b3-428d-b8e7-079060311b6d"
   },
   {
     "group": "Stray Kids",
     "artist_name_mb": "Stray Kids",
     "artist_mbid": "142b343d-bf5a-428c-a64f-6d1a7566bbe9",
-    "latest_release_song": "In The Dark",
-    "latest_release_date": "2025-11-06",
-    "latest_release_source": "https://musicbrainz.org/release-group/6fc9a1f5-709d-4180-a01a-aa75c35558d4",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "In The Dark",
+      "date": "2025-11-06",
+      "source": "https://musicbrainz.org/release-group/6fc9a1f5-709d-4180-a01a-aa75c35558d4",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "DO IT",
+      "date": "2025-11-21",
+      "source": "https://musicbrainz.org/release-group/ce29b685-a98d-411e-b68f-78c6b4e963c6",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/142b343d-bf5a-428c-a64f-6d1a7566bbe9"
   },
   {
     "group": "TEMPEST",
     "artist_name_mb": "TEMPEST",
     "artist_mbid": "63307cfb-a65f-4001-b322-fd961b34788b",
-    "latest_release_song": "In the Dark (暮色独白)",
-    "latest_release_date": "2025-11-03",
-    "latest_release_source": "https://musicbrainz.org/release-group/cc31d9d5-c80d-4984-9b7a-599594c81fad",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "In the Dark (暮色独白)",
+      "date": "2025-11-03",
+      "source": "https://musicbrainz.org/release-group/cc31d9d5-c80d-4984-9b7a-599594c81fad",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "As I am",
+      "date": "2025-10-27",
+      "source": "https://musicbrainz.org/release-group/2e01370d-bfb6-4ddc-838f-db1447399533",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/63307cfb-a65f-4001-b322-fd961b34788b"
   },
   {
     "group": "THE BOYZ",
     "artist_name_mb": "THE BOYZ",
     "artist_mbid": "527973c7-9a9f-40bf-a52c-8cc2a7115c1a",
-    "latest_release_song": "Still Love You",
-    "latest_release_date": "2025-12-06",
-    "latest_release_source": "https://musicbrainz.org/release-group/01e6d59b-8166-40b7-bb26-881c033deb14",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Still Love You",
+      "date": "2025-12-06",
+      "source": "https://musicbrainz.org/release-group/01e6d59b-8166-40b7-bb26-881c033deb14",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "a;effect",
+      "date": "2025-07-28",
+      "source": "https://musicbrainz.org/release-group/ad2aabda-8449-449b-ab23-76e57f7857ee",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/527973c7-9a9f-40bf-a52c-8cc2a7115c1a"
+  },
+  {
+    "group": "The KingDom",
+    "artist_name_mb": "The KingDom",
+    "artist_mbid": "aa6844e7-42a8-425b-bd67-3b3a8b43b9ec",
+    "latest_song": null,
+    "latest_album": {
+      "title": "the flower of the moon",
+      "date": "2025-09-23",
+      "source": "https://musicbrainz.org/release-group/326d8498-e340-4cad-a02f-5ea369e6ec49",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/aa6844e7-42a8-425b-bd67-3b3a8b43b9ec"
   },
   {
     "group": "TIOT",
     "artist_name_mb": "TIOT",
     "artist_mbid": "c0113855-feb6-4c2b-b86a-6ec87b310f5d",
-    "latest_release_song": "Run Run Barefoot",
-    "latest_release_date": "2025-07-07",
-    "latest_release_source": "https://musicbrainz.org/release-group/8d092aa5-b63e-4892-8dbd-b29ab089b040",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Run Run Barefoot",
+      "date": "2025-07-07",
+      "source": "https://musicbrainz.org/release-group/8d092aa5-b63e-4892-8dbd-b29ab089b040",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "MY PRIDE",
+      "date": "2025-09-23",
+      "source": "https://musicbrainz.org/release-group/25a28c0e-f4b4-420c-b80f-bcca8c7d5fc4",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/c0113855-feb6-4c2b-b86a-6ec87b310f5d"
   },
   {
     "group": "TNX",
     "artist_name_mb": "TNX",
     "artist_mbid": "136c0dc4-4690-4fb4-bc79-3968700f4eaf",
-    "latest_release_song": "CALL ME BACK",
-    "latest_release_date": "2026-01-22",
-    "latest_release_source": "https://musicbrainz.org/release-group/284125ec-d04c-4023-9977-666ca826b284",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "CALL ME BACK",
+      "date": "2026-01-22",
+      "source": "https://musicbrainz.org/release-group/284125ec-d04c-4023-9977-666ca826b284",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/136c0dc4-4690-4fb4-bc79-3968700f4eaf"
   },
   {
     "group": "TOMORROW X TOGETHER",
     "artist_name_mb": "TOMORROW X TOGETHER",
     "artist_mbid": "9d027d72-790e-40ec-bbb7-61aa613457de",
-    "latest_release_song": "butterflies",
-    "latest_release_date": "2025-07-10",
-    "latest_release_source": "https://musicbrainz.org/release-group/ffca8aaa-b0bd-49f5-9800-9d273f4735a7",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "butterflies",
+      "date": "2025-07-10",
+      "source": "https://musicbrainz.org/release-group/ffca8aaa-b0bd-49f5-9800-9d273f4735a7",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "Starkissed",
+      "date": "2025-10-19",
+      "source": "https://musicbrainz.org/release-group/f7ce84d1-8d9e-4674-98e5-8987db78cb86",
+      "release_kind": "album"
+    },
     "artist_source": "https://musicbrainz.org/artist/9d027d72-790e-40ec-bbb7-61aa613457de"
+  },
+  {
+    "group": "TREASURE",
+    "artist_name_mb": "TREASURE",
+    "artist_mbid": "6a64307a-1806-428c-9bee-4afb13b27042",
+    "latest_song": null,
+    "latest_album": {
+      "title": "LOVE PULSE",
+      "date": "2025-09-01",
+      "source": "https://musicbrainz.org/release-group/a33fa122-f703-4e2d-8cf9-93f93c506dc5",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/6a64307a-1806-428c-9bee-4afb13b27042"
   },
   {
     "group": "TRENDZ",
     "artist_name_mb": "TRENDZ",
     "artist_mbid": "3d612dbf-32fc-4198-a2d0-2d04a99a6adf",
-    "latest_release_song": "Kart Racer",
-    "latest_release_date": "2026-02-13",
-    "latest_release_source": "https://musicbrainz.org/release-group/d44c9809-e64b-4038-8993-a0ff75f67986",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Kart Racer",
+      "date": "2026-02-13",
+      "source": "https://musicbrainz.org/release-group/d44c9809-e64b-4038-8993-a0ff75f67986",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/3d612dbf-32fc-4198-a2d0-2d04a99a6adf"
   },
   {
     "group": "tripleS",
     "artist_name_mb": "tripleS",
     "artist_mbid": "40017bd7-139b-4998-8688-9b2478ad3325",
-    "latest_release_song": "トキメティック",
-    "latest_release_date": "2026-02-05",
-    "latest_release_source": "https://musicbrainz.org/release-group/e55e3345-ef7c-44f3-9b99-a25b06df7cf8",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "トキメティック",
+      "date": "2026-02-05",
+      "source": "https://musicbrainz.org/release-group/e55e3345-ef7c-44f3-9b99-a25b06df7cf8",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "msnz <Beyond Beauty>",
+      "date": "2025-11-24",
+      "source": "https://musicbrainz.org/release-group/3c02e3dc-a991-4721-9252-c9b3cb2c9290",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/40017bd7-139b-4998-8688-9b2478ad3325"
   },
   {
     "group": "TWICE",
     "artist_name_mb": "TWICE",
     "artist_mbid": "8da127cc-c432-418f-b356-ef36210d82ac",
-    "latest_release_song": "Like 1",
-    "latest_release_date": "2025-08-20",
-    "latest_release_source": "https://musicbrainz.org/release-group/ec115903-eb42-4437-925e-ad64f0a2d818",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Like 1",
+      "date": "2025-08-20",
+      "source": "https://musicbrainz.org/release-group/ec115903-eb42-4437-925e-ad64f0a2d818",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "TEN: The Story Goes On",
+      "date": "2025-10-10",
+      "source": "https://musicbrainz.org/release-group/3670fec6-643a-4a88-a623-900ff5fdd43b",
+      "release_kind": "album"
+    },
     "artist_source": "https://musicbrainz.org/artist/8da127cc-c432-418f-b356-ef36210d82ac"
   },
   {
     "group": "TWS",
     "artist_name_mb": "TWS",
     "artist_mbid": "f68e8675-5ad8-47eb-b7ec-da9cc210e0b4",
-    "latest_release_song": "Head Shoulders Knees Toes",
-    "latest_release_date": "2025-09-22",
-    "latest_release_source": "https://musicbrainz.org/release-group/2ebe300e-b96c-4678-8bb8-03a0e3a32262",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Head Shoulders Knees Toes",
+      "date": "2025-09-22",
+      "source": "https://musicbrainz.org/release-group/2ebe300e-b96c-4678-8bb8-03a0e3a32262",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "play hard",
+      "date": "2025-10-13",
+      "source": "https://musicbrainz.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/f68e8675-5ad8-47eb-b7ec-da9cc210e0b4"
   },
   {
     "group": "UNIS",
     "artist_name_mb": "UNIS",
     "artist_mbid": "ddea2b8e-f772-4c39-ab90-e1983b74a149",
-    "latest_release_song": "幸せになんかならないでね",
-    "latest_release_date": "2025-12-17",
-    "latest_release_source": "https://musicbrainz.org/release-group/6c4f751d-053e-4d6e-970c-24bd12985f3b",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "幸せになんかならないでね",
+      "date": "2025-12-17",
+      "source": "https://musicbrainz.org/release-group/6c4f751d-053e-4d6e-970c-24bd12985f3b",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/ddea2b8e-f772-4c39-ab90-e1983b74a149"
   },
   {
     "group": "VERIVERY",
     "artist_name_mb": "VERIVERY",
     "artist_mbid": "497ad8ff-0d35-4570-8a46-3f6b344b30b4",
-    "latest_release_song": "Lost and Found",
-    "latest_release_date": "2025-12-01",
-    "latest_release_source": "https://musicbrainz.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "Lost and Found",
+      "date": "2025-12-01",
+      "source": "https://musicbrainz.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c",
+      "release_kind": "single"
+    },
+    "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/497ad8ff-0d35-4570-8a46-3f6b344b30b4"
+  },
+  {
+    "group": "VIVIZ",
+    "artist_name_mb": "VIVIZ",
+    "artist_mbid": "4142301a-8bd8-4ea0-b509-0baf84fe6906",
+    "latest_song": null,
+    "latest_album": {
+      "title": "A Montage of ( )",
+      "date": "2025-07-08",
+      "source": "https://musicbrainz.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d",
+      "release_kind": "album"
+    },
+    "artist_source": "https://musicbrainz.org/artist/4142301a-8bd8-4ea0-b509-0baf84fe6906"
+  },
+  {
+    "group": "WEi",
+    "artist_name_mb": "WEi",
+    "artist_mbid": "a8599fd2-3682-4f6c-a580-f28c4ae97a0b",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Wonderland",
+      "date": "2025-10-29",
+      "source": "https://musicbrainz.org/release-group/252b4761-926f-479f-86bc-a0999710321b",
+      "release_kind": "ep"
+    },
+    "artist_source": "https://musicbrainz.org/artist/a8599fd2-3682-4f6c-a580-f28c4ae97a0b"
   },
   {
     "group": "Xdinary Heroes",
     "artist_name_mb": "Xdinary Heroes",
     "artist_mbid": "d95a463f-e7d3-4c97-98ba-57f75cb4fda2",
-    "latest_release_song": "FiRE (My Sweet Misery)",
-    "latest_release_date": "2025-07-07",
-    "latest_release_source": "https://musicbrainz.org/release-group/a59a689a-c57f-4691-8ef0-c87e5fd2b418",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "FiRE (My Sweet Misery)",
+      "date": "2025-07-07",
+      "source": "https://musicbrainz.org/release-group/a59a689a-c57f-4691-8ef0-c87e5fd2b418",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "LXVE to DEATH",
+      "date": "2025-10-24",
+      "source": "https://musicbrainz.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/d95a463f-e7d3-4c97-98ba-57f75cb4fda2"
   },
   {
     "group": "xikers",
     "artist_name_mb": "xikers",
     "artist_mbid": "9b779913-3d52-4ab7-bf38-889c2dcabbd1",
-    "latest_release_song": "ICONIC",
-    "latest_release_date": "2025-08-01",
-    "latest_release_source": "https://musicbrainz.org/release-group/d53e958d-4e4e-44cf-8942-75f793e187c6",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "ICONIC",
+      "date": "2025-08-01",
+      "source": "https://musicbrainz.org/release-group/d53e958d-4e4e-44cf-8942-75f793e187c6",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "HOUSE OF TRICKY : WRECKING THE HOUSE",
+      "date": "2025-10-31",
+      "source": "https://musicbrainz.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/9b779913-3d52-4ab7-bf38-889c2dcabbd1"
   },
   {
     "group": "YOUNG POSSE",
     "artist_name_mb": "YOUNG POSSE",
     "artist_mbid": "427150d2-674f-47b2-a1a1-7bb4a9e0d070",
-    "latest_release_song": "VISA / Pilot3",
-    "latest_release_date": "2026-01-27",
-    "latest_release_source": "https://musicbrainz.org/release-group/a3dca638-6256-40be-b501-692f3e371ba4",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "VISA / Pilot3",
+      "date": "2026-01-27",
+      "source": "https://musicbrainz.org/release-group/a3dca638-6256-40be-b501-692f3e371ba4",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "Growing Pain pt.1 : FREE",
+      "date": "2025-08-14",
+      "source": "https://musicbrainz.org/release-group/f894d3a6-0225-4269-bb58-8947719d2f5d",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/427150d2-674f-47b2-a1a1-7bb4a9e0d070"
   },
   {
     "group": "ZEROBASEONE",
     "artist_name_mb": "ZEROBASEONE",
     "artist_mbid": "fe038151-1099-4de8-901b-39be66d6e493",
-    "latest_release_song": "ROSES",
-    "latest_release_date": "2026-01-23",
-    "latest_release_source": "https://musicbrainz.org/release-group/6656b493-ef15-4aee-a142-4fc2656294d3",
-    "nearest_comeback_date": "",
-    "nearest_comeback_song": "",
-    "nearest_comeback_source": "",
+    "latest_song": {
+      "title": "ROSES",
+      "date": "2026-01-23",
+      "source": "https://musicbrainz.org/release-group/6656b493-ef15-4aee-a142-4fc2656294d3",
+      "release_kind": "single"
+    },
+    "latest_album": {
+      "title": "RE-FLOW",
+      "date": "2026-02-02",
+      "source": "https://musicbrainz.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b",
+      "release_kind": "ep"
+    },
     "artist_source": "https://musicbrainz.org/artist/fe038151-1099-4de8-901b-39be66d6e493"
   }
 ]
