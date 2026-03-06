@@ -868,6 +868,137 @@
   align-items: start;
 }
 
+.team-subsection {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(27, 42, 65, 0.08);
+}
+
+.team-subsection-head {
+  display: grid;
+  gap: 6px;
+}
+
+.team-subsection-head h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.team-subsection-copy,
+.source-timeline-date {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.source-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.source-timeline-item {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.source-timeline-rail {
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 16px minmax(0, 1fr);
+}
+
+.source-timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(27, 42, 65, 0.16);
+  box-shadow: 0 0 0 4px rgba(27, 42, 65, 0.08);
+}
+
+.source-timeline-dot-first_signal {
+  background: #244c88;
+  box-shadow: 0 0 0 4px rgba(215, 229, 252, 0.86);
+}
+
+.source-timeline-dot-official_announcement {
+  background: #27543a;
+  box-shadow: 0 0 0 4px rgba(195, 224, 204, 0.82);
+}
+
+.source-timeline-dot-tracklist_reveal {
+  background: #7d3115;
+  box-shadow: 0 0 0 4px rgba(255, 214, 153, 0.88);
+}
+
+.source-timeline-dot-date_update {
+  background: #60428f;
+  box-shadow: 0 0 0 4px rgba(236, 221, 255, 0.9);
+}
+
+.source-timeline-dot-release_verified {
+  background: #4b5a17;
+  box-shadow: 0 0 0 4px rgba(217, 233, 179, 0.88);
+}
+
+.source-timeline-line {
+  width: 2px;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(27, 42, 65, 0.18), rgba(27, 42, 65, 0.06));
+}
+
+.source-timeline-card {
+  border: 1px solid rgba(27, 42, 65, 0.08);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.78)),
+    rgba(255, 255, 255, 0.86);
+  padding: 16px;
+}
+
+.source-timeline-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.source-timeline-head h3 {
+  margin: 8px 0 0;
+  font-size: 1rem;
+}
+
+.signal-badge-event-first_signal {
+  background: rgba(215, 229, 252, 0.96);
+  color: #244c88;
+}
+
+.signal-badge-event-official_announcement {
+  background: rgba(195, 224, 204, 0.92);
+  color: #27543a;
+}
+
+.signal-badge-event-tracklist_reveal {
+  background: rgba(255, 214, 153, 0.94);
+  color: #7a4d13;
+}
+
+.signal-badge-event-date_update {
+  background: rgba(236, 221, 255, 0.94);
+  color: #60428f;
+}
+
+.signal-badge-event-release_verified {
+  background: rgba(217, 233, 179, 0.9);
+  color: #4b5a17;
+}
+
 .detail-card-feature {
   display: grid;
   grid-template-columns: 132px minmax(0, 1fr);
@@ -1219,6 +1350,18 @@
 
   .signal-tags {
     justify-content: flex-start;
+  }
+
+  .source-timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .source-timeline-rail {
+    display: none;
+  }
+
+  .source-timeline-head {
+    flex-direction: column;
   }
 
   .calendar-grid {
