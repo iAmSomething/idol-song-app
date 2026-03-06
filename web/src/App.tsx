@@ -40,11 +40,14 @@ type UnresolvedRow = {
 type UpcomingCandidateRow = {
   group: string
   scheduled_date: string
+  date_status: 'confirmed' | 'scheduled' | 'rumor'
   headline: string
+  source_type: string
   source_url: string
   source_domain: string
   published_at: string
   confidence: number
+  evidence_summary: string
   tracking_status: string
   search_term: string
 }
@@ -282,28 +285,50 @@ function App() {
             <p className="panel-label">Upcoming scan</p>
             <h2>Future comeback signals</h2>
             <div className="feed-list">
-              {filteredUpcoming.slice(0, 10).map((item) => (
-                <article key={`${item.group}-${item.scheduled_date}`} className="signal-row">
-                  <div>
-                    <div className="signal-head">
-                      <p className="feed-group">{item.group}</p>
-                      <span className={`signal-badge signal-badge-${item.tracking_status}`}>
-                        {item.tracking_status.replaceAll('_', ' ')}
-                      </span>
+              {filteredUpcoming.length ? (
+                filteredUpcoming.slice(0, 10).map((item) => (
+                  <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row">
+                    <div>
+                      <div className="signal-head">
+                        <p className="feed-group">{item.group}</p>
+                        <div className="signal-tags">
+                          <span className={`signal-badge signal-badge-${item.tracking_status}`}>
+                            {item.tracking_status.replaceAll('_', ' ')}
+                          </span>
+                          <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
+                            {formatDateStatus(item.date_status)}
+                          </span>
+                          <span
+                            className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
+                          >
+                            {getConfidenceTone(item.confidence)} confidence
+                          </span>
+                        </div>
+                      </div>
+                      <h3>{item.headline}</h3>
+                      <p className="signal-meta">
+                        {formatSourceType(item.source_type)} · {item.source_domain || 'source pending'} ·{' '}
+                        {item.scheduled_date || 'TBD'}
+                      </p>
+                      {item.evidence_summary ? (
+                        <p className="signal-evidence">{item.evidence_summary}</p>
+                      ) : null}
                     </div>
-                    <h3>{item.headline}</h3>
-                    <p className="signal-meta">
-                      {item.source_domain} · confidence {item.confidence.toFixed(2)}
-                    </p>
-                  </div>
-                  <div className="signal-date-wrap">
-                    <time>{item.scheduled_date}</time>
-                    <a href={item.source_url} target="_blank" rel="noreferrer">
-                      Open
-                    </a>
-                  </div>
-                </article>
-              ))}
+                    <div className="signal-date-wrap">
+                      <time>{item.scheduled_date || 'TBD'}</time>
+                      {item.source_url ? (
+                        <a href={item.source_url} target="_blank" rel="noreferrer">
+                          Open
+                        </a>
+                      ) : (
+                        <span className="signal-link-muted">No source link</span>
+                      )}
+                    </div>
+                  </article>
+                ))
+              ) : (
+                <p className="empty-copy">No upcoming candidates captured yet.</p>
+              )}
             </div>
           </section>
 
@@ -410,6 +435,40 @@ function StatusPill({
       <span>{label}</span>
     </div>
   )
+}
+
+function formatSourceType(sourceType: string) {
+  switch (sourceType) {
+    case 'agency_notice':
+      return 'Agency notice'
+    case 'weverse_notice':
+      return 'Weverse notice'
+    case 'news_rss':
+      return 'News RSS'
+    default:
+      return 'Source pending'
+  }
+}
+
+function formatDateStatus(dateStatus: UpcomingCandidateRow['date_status']) {
+  switch (dateStatus) {
+    case 'confirmed':
+      return 'confirmed'
+    case 'scheduled':
+      return 'scheduled'
+    default:
+      return 'rumor'
+  }
+}
+
+function getConfidenceTone(confidence: number) {
+  if (confidence >= 0.8) {
+    return 'high'
+  }
+  if (confidence >= 0.6) {
+    return 'medium'
+  }
+  return 'low'
 }
 
 function expandReleaseRow(row: ReleaseRow): VerifiedRelease[] {
