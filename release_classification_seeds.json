@@ -1,0 +1,96 @@
+{
+  "release_seeds": [
+    {
+      "group": "&TEAM",
+      "title": "Back to Life",
+      "date": "2025-10-28",
+      "release_format": "ep",
+      "context_tags": ["japanese_release"]
+    },
+    {
+      "group": "BLACKPINK",
+      "title": "뛰어 (JUMP)",
+      "date": "2025-07-11",
+      "release_format": "single",
+      "context_tags": ["title_track"]
+    },
+    {
+      "group": "ENHYPEN",
+      "title": "宵 -YOI-",
+      "date": "2025-07-27",
+      "release_format": "single",
+      "context_tags": ["japanese_release"]
+    },
+    {
+      "group": "LIGHTSUM",
+      "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+      "date": "2026-01-15",
+      "release_format": "single",
+      "context_tags": ["special_project"]
+    },
+    {
+      "group": "RESCENE",
+      "title": "[RESCENE X ???]",
+      "date": "2026-02-27",
+      "release_format": "single",
+      "context_tags": ["special_project"]
+    },
+    {
+      "group": "tripleS",
+      "title": "トキメティック",
+      "date": "2026-02-05",
+      "release_format": "single",
+      "context_tags": ["japanese_release"]
+    }
+  ],
+  "upcoming_seeds": [
+    {
+      "group": "&TEAM",
+      "headline_contains": "Japanese mini album",
+      "release_format": "ep",
+      "context_tags": ["japanese_release"]
+    },
+    {
+      "group": "AB6IX",
+      "headline_contains": "full album",
+      "release_format": "album",
+      "context_tags": []
+    },
+    {
+      "group": "ALL(H)OURS",
+      "headline_contains": "Mini-Album",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    {
+      "group": "BLACKPINK",
+      "headline_contains": "Title Track",
+      "release_format": "single",
+      "context_tags": ["title_track"]
+    },
+    {
+      "group": "KISS OF LIFE",
+      "headline_contains": "COMING SOON",
+      "release_format": "",
+      "context_tags": ["pre_release"]
+    },
+    {
+      "group": "P1Harmony",
+      "headline_contains": "Mini-Album",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    {
+      "group": "TOMORROW X TOGETHER",
+      "headline_contains": "mini album",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    {
+      "group": "YOUNG POSSE",
+      "headline_contains": "digital single",
+      "release_format": "single",
+      "context_tags": []
+    }
+  ]
+}

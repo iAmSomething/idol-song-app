@@ -12,6 +12,8 @@ from xml.etree import ElementTree
 
 import requests
 
+from release_classification import classify_upcoming_candidate
+
 
 ROOT = Path(__file__).resolve().parent
 KST = ZoneInfo("Asia/Seoul")
@@ -287,6 +289,13 @@ def build_candidate(
         "tracking_status": group_row["tracking_status"],
         "search_term": search_term,
     }
+    candidate.update(
+        classify_upcoming_candidate(
+            group=group_row["group"],
+            headline=title,
+            evidence_summary=candidate["evidence_summary"],
+        )
+    )
     if not should_keep_candidate(candidate, published_at):
         return None
     return candidate
@@ -439,6 +448,8 @@ def main():
                 "scheduled_date",
                 "date_status",
                 "headline",
+                "release_format",
+                "context_tags",
                 "source_type",
                 "source_url",
                 "source_domain",
@@ -450,7 +461,10 @@ def main():
             ],
         )
         writer.writeheader()
-        writer.writerows(results)
+        for row in results:
+            output = dict(row)
+            output["context_tags"] = " ; ".join(output["context_tags"])
+            writer.writerow(output)
 
     print(
         json.dumps(
