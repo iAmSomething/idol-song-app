@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 서비스 페이지
+    url: https://iamsomething.github.io/idol-song-app/
+    about: 배포된 캘린더 화면과 현재 데이터를 확인합니다.
+  - name: 저장소
+    url: https://github.com/iAmSomething/idol-song-app
+    about: 코드, 워크플로, 이슈/PR 상태를 확인합니다.
