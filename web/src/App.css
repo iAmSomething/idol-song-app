@@ -849,6 +849,82 @@
   color: var(--text-soft);
 }
 
+.source-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border: 1px solid rgba(27, 42, 65, 0.08);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.source-badge-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+}
+
+.source-badge-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.source-badge-agency_notice {
+  border-color: rgba(39, 84, 58, 0.14);
+  background: rgba(195, 224, 204, 0.92);
+  color: #27543a;
+}
+
+.source-badge-agency_notice .source-badge-icon {
+  background: rgba(39, 84, 58, 0.12);
+}
+
+.source-badge-weverse_notice {
+  border-color: rgba(36, 76, 136, 0.14);
+  background: rgba(215, 229, 252, 0.96);
+  color: #244c88;
+}
+
+.source-badge-weverse_notice .source-badge-icon {
+  background: rgba(36, 76, 136, 0.12);
+}
+
+.source-badge-news_rss {
+  border-color: rgba(122, 77, 19, 0.14);
+  background: rgba(255, 214, 153, 0.94);
+  color: #7a4d13;
+}
+
+.source-badge-news_rss .source-badge-icon {
+  background: rgba(122, 77, 19, 0.12);
+}
+
+.source-badge-database {
+  border-color: rgba(75, 90, 23, 0.14);
+  background: rgba(217, 233, 179, 0.92);
+  color: #4b5a17;
+}
+
+.source-badge-database .source-badge-icon {
+  background: rgba(75, 90, 23, 0.12);
+}
+
+.source-badge-pending {
+  border-color: rgba(68, 83, 98, 0.12);
+  background: rgba(204, 214, 223, 0.92);
+  color: #445362;
+}
+
+.source-badge-pending .source-badge-icon {
+  background: rgba(68, 83, 98, 0.1);
+}
+
 .signal-badge-recent_release {
   background: rgba(217, 233, 179, 0.75);
   color: #4b5a17;

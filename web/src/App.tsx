@@ -227,6 +227,8 @@ type ContextTag =
   | 'japanese_release'
   | 'special_project'
 
+type SourceBadgeType = 'agency_notice' | 'weverse_notice' | 'news_rss' | 'database' | 'pending'
+
 type MusicHandoffMode = 'canonical' | 'search'
 
 type MusicHandoffUrls = Partial<Record<MusicService, string>>
@@ -436,7 +438,7 @@ const TRANSLATIONS = {
       agency_notice: '기획사 공지',
       weverse_notice: '위버스 공지',
       news_rss: '기사 RSS',
-      release_catalog: '검증 발매 카탈로그',
+      database: '데이터베이스',
       pending: '출처 확인 중',
     },
     dateStatusLabels: {
@@ -616,7 +618,7 @@ const TRANSLATIONS = {
       agency_notice: 'Agency notice',
       weverse_notice: 'Weverse notice',
       news_rss: 'News RSS',
-      release_catalog: 'Verified release catalog',
+      database: 'Database',
       pending: 'Source pending',
     },
     dateStatusLabels: {
@@ -1374,6 +1376,7 @@ function App() {
                               >
                                 {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                               </span>
+                              <SourceBadge sourceType={item.source_type} language={language} />
                               <ReleaseChangeBadge group={item.group} language={language} />
                               <ReleaseClassificationBadges
                                 releaseFormat={item.release_format}
@@ -1384,7 +1387,7 @@ function App() {
                           </div>
                           <h3>{item.headline}</h3>
                           <p className="signal-meta">
-                            {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending} ·{' '}
+                            {formatSourceDomain(item.source_domain, language)} ·{' '}
                             {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
                           </p>
                           {formatUpcomingEvidenceMeta(item, language) ? (
@@ -1459,12 +1462,10 @@ function App() {
                                 <span className={`signal-badge signal-badge-event-${item.event_type}`}>
                                   {formatTimelineEventType(item.event_type, language)}
                                 </span>
+                                <SourceBadge sourceType={item.source_type} language={language} />
                               </div>
                             </div>
-                            <p className="signal-meta">
-                              {formatSourceType(item.source_type, language)} ·{' '}
-                              {item.source_domain || copy.sourceTypeLabels.pending}
-                            </p>
+                            <p className="signal-meta">{formatSourceDomain(item.source_domain, language)}</p>
                             {item.summary ? <p className="signal-evidence">{item.summary}</p> : null}
                             <div className="detail-links detail-links-stack">
                               {item.source_url ? (
@@ -1813,6 +1814,7 @@ function App() {
                               >
                                 {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                               </span>
+                              <SourceBadge sourceType={item.source_type} language={language} />
                               <ReleaseChangeBadge group={item.group} language={language} />
                               <ReleaseClassificationBadges
                                 releaseFormat={item.release_format}
@@ -1823,7 +1825,7 @@ function App() {
                           </div>
                           <h3>{item.headline}</h3>
                           <p className="signal-meta">
-                            {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending} ·{' '}
+                            {formatSourceDomain(item.source_domain, language)} ·{' '}
                             {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
                           </p>
                           {formatUpcomingEvidenceMeta(item, language) ? (
@@ -2244,6 +2246,72 @@ function TeamIdentity({
       <span className="team-label">{label}</span>
     </span>
   )
+}
+
+function SourceBadge({
+  sourceType,
+  language,
+}: {
+  sourceType: string
+  language: Language
+}) {
+  const normalizedSourceType = normalizeSourceType(sourceType)
+  const label = formatSourceType(normalizedSourceType, language)
+
+  return (
+    <span className={`source-badge source-badge-${normalizedSourceType}`} title={label} aria-label={label}>
+      <span className="source-badge-icon" aria-hidden="true">
+        <SourceTypeIcon sourceType={normalizedSourceType} />
+      </span>
+      <span className="source-badge-label">{label}</span>
+    </span>
+  )
+}
+
+function SourceTypeIcon({ sourceType }: { sourceType: SourceBadgeType }) {
+  switch (sourceType) {
+    case 'agency_notice':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 11v2" />
+          <path d="M6 10h4l7-4v12l-7-4H6z" />
+          <path d="M10 15.5 11.8 20" />
+        </svg>
+      )
+    case 'weverse_notice':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M5 6.5h9a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H11l-4 3v-3H5a3 3 0 0 1-3-3v-4a3 3 0 0 1 3-3Z" />
+          <path d="M8 10.5h6" />
+          <path d="M8 13.5h4" />
+        </svg>
+      )
+    case 'news_rss':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M5 6h14v12H5z" />
+          <path d="M8 10h8" />
+          <path d="M8 13h5" />
+          <path d="M8 16h8" />
+        </svg>
+      )
+    case 'database':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <ellipse cx="12" cy="7" rx="6.5" ry="2.5" />
+          <path d="M5.5 7v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5V7" />
+          <path d="M5.5 12v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5" />
+        </svg>
+      )
+    case 'pending':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="8" />
+          <path d="M9.6 9.2a2.6 2.6 0 1 1 4.5 1.7c-.7.7-1.4 1.1-1.7 1.8" />
+          <path d="M12 16.8h.01" />
+        </svg>
+      )
+  }
 }
 
 function ReleaseArtworkFigure({
@@ -2979,6 +3047,7 @@ function SelectedDayPanel({
                         >
                           {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                         </span>
+                        <SourceBadge sourceType={item.source_type} language={language} />
                         <ReleaseChangeBadge group={item.group} language={language} />
                         <ReleaseClassificationBadges
                           releaseFormat={item.release_format}
@@ -2988,9 +3057,7 @@ function SelectedDayPanel({
                       </div>
                     </div>
                     <h3>{item.headline}</h3>
-                    <p className="signal-meta">
-                      {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
-                    </p>
+                    <p className="signal-meta">{formatSourceDomain(item.source_domain, language)}</p>
                     {formatUpcomingEvidenceMeta(item, language) ? (
                       <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
                     ) : null}
@@ -3068,7 +3135,26 @@ function FilterGroup<T extends string>({
 }
 
 function formatSourceType(sourceType: string, language: Language) {
-  return TRANSLATIONS[language].sourceTypeLabels[sourceType as keyof typeof TRANSLATIONS.ko.sourceTypeLabels] ?? TRANSLATIONS[language].sourceTypeLabels.pending
+  return TRANSLATIONS[language].sourceTypeLabels[normalizeSourceType(sourceType)]
+}
+
+function normalizeSourceType(sourceType: string): SourceBadgeType {
+  switch (sourceType) {
+    case 'agency_notice':
+    case 'weverse_notice':
+    case 'news_rss':
+    case 'database':
+    case 'pending':
+      return sourceType
+    case 'release_catalog':
+      return 'database'
+    default:
+      return 'pending'
+  }
+}
+
+function formatSourceDomain(sourceDomain: string, language: Language) {
+  return sourceDomain || TRANSLATIONS[language].sourceTypeLabels.pending
 }
 
 function formatReleaseFormat(releaseFormat: ReleaseFormat | '', language: Language) {
