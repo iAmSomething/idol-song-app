@@ -1369,6 +1369,21 @@
     "artist_source": "https://musicbrainz.org/artist/a8599fd2-3682-4f6c-a580-f28c4ae97a0b"
   },
   {
+    "group": "WJSN",
+    "artist_name_mb": "우주소녀",
+    "artist_mbid": "99689c05-4f6d-4bff-9b00-06731277fe42",
+    "latest_song": {
+      "title": "Bloom hour",
+      "date": "2026-02-25",
+      "source": "https://musicbrainz.org/release-group/da99b14f-57c5-4a1f-952e-9c915ba13b4b",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": null,
+    "artist_source": "https://musicbrainz.org/artist/99689c05-4f6d-4bff-9b00-06731277fe42"
+  },
+  {
     "group": "Xdinary Heroes",
     "artist_name_mb": "Xdinary Heroes",
     "artist_mbid": "d95a463f-e7d3-4c97-98ba-57f75cb4fda2",
