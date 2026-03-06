@@ -55,6 +55,16 @@ OFFICIAL_DOMAINS = (
     "jype.com",
     "starship-ent.com",
 )
+GOOGLEBOT_UA = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+WEVERSE_NOTICE_SEEDS = {
+    "TOMORROW X TOGETHER": ["https://weverse.io/txt/notice/34002"],
+}
+YG_GROUP_ALIASES = {
+    "BABYMONSTER": ("BABYMONSTER",),
+    "BLACKPINK": ("BLACKPINK",),
+    "TREASURE": ("TREASURE",),
+}
+YG_REPORT_LINKS_CACHE = None
 
 
 def strip_markup(text: str) -> str:
@@ -105,7 +115,8 @@ def parse_date_candidate(text: str, fallback_year: int):
         month_name, day, year = match.groups()
         parsed_year = int(year) if year else fallback_year
         month = datetime.strptime(month_name.title(), "%B").month
-        return datetime(parsed_year, month, int(day), tzinfo=KST)
+        candidate = datetime(parsed_year, month, int(day), tzinfo=KST)
+        return candidate
 
     return None
 
@@ -152,7 +163,8 @@ def summarize_evidence(title: str, description: str, scheduled_at, month_referen
     elif month_reference is not None:
         summary_parts.append(f"Future month reference: {month_reference.strftime('%Y-%m')}.")
 
-    evidence_body = strip_markup(description or title)
+    evidence_body = description or title
+    evidence_body = strip_markup(evidence_body)
     if evidence_body:
         trimmed = evidence_body[:160].rstrip()
         if len(evidence_body) > 160:
@@ -171,6 +183,7 @@ def classify_date_status(title: str, description: str, link: str, scheduled_at, 
         return "scheduled"
     if month_reference is not None:
         return "scheduled"
+
     if any(word in haystack for word in RUMOR_SIGNAL_WORDS) or any(keyword in haystack for keyword in KEYWORDS):
         return "rumor"
     return "rumor"
@@ -195,15 +208,23 @@ def score_item(title: str, description: str, link: str, scheduled_at, month_refe
 
 
 def should_keep_candidate(candidate: dict, published_at):
+    if candidate["source_type"] != "news_rss" and candidate["confidence"] >= 0.55:
+        return True
     if candidate["scheduled_date"]:
         return True
     if candidate["date_status"] == "scheduled":
         return True
     if published_at is None:
-        return candidate["confidence"] >= 0.65 and bool(candidate["evidence_summary"])
-    if candidate["source_type"] == "news_rss" and published_at < TODAY - timedelta(days=60):
+        return False
+    if source_type_for(candidate["source_url"]) == "news_rss" and published_at < TODAY - timedelta(days=60):
         return False
     return candidate["confidence"] >= 0.55 or candidate["source_type"] != "news_rss"
+
+
+def sort_key(item: dict):
+    date_key = item["scheduled_date"] or "9999-12-31"
+    rumor_rank = 1 if item["date_status"] == "rumor" and not item["scheduled_date"] else 0
+    return (rumor_rank, date_key, -source_priority(item["source_type"]), -item["confidence"], item["group"].lower())
 
 
 def source_priority(source_type: str):
@@ -215,19 +236,38 @@ def source_priority(source_type: str):
     return priorities.get(source_type, 0)
 
 
-def sort_key(item: dict):
-    date_key = item["scheduled_date"] or "9999-12-31"
-    rumor_rank = 1 if item["date_status"] == "rumor" and not item["scheduled_date"] else 0
-    return (rumor_rank, date_key, -source_priority(item["source_type"]), -item["confidence"], item["group"].lower())
+def fetch_html(session: requests.Session, url: str, user_agent: str = ""):
+    headers = {"User-Agent": user_agent} if user_agent else None
+    response = session.get(url, headers=headers, timeout=20)
+    response.raise_for_status()
+    return response.text
 
 
-def build_candidate(group_row: dict, title: str, description: str, source_url: str, pub_date: str, search_term: str):
+def text_between(pattern: str, text: str):
+    match = re.search(pattern, text, flags=re.I | re.S)
+    if not match:
+        return ""
+    return strip_markup(match.group(1))
+
+
+def format_pub_date(dt: datetime):
+    return dt.strftime("%a, %d %b %Y 00:00:00 GMT")
+
+
+def build_candidate(
+    group_row: dict,
+    title: str,
+    description: str,
+    source_url: str,
+    pub_date: str,
+    search_term: str,
+    allow_month_reference: bool = True,
+):
     published_at = parse_published_at(pub_date)
     fallback_year = published_at.year if published_at is not None else TODAY.year
     combined = f"{title}. {description}"
     scheduled_at = parse_date_candidate(combined, fallback_year)
-    month_reference = parse_month_reference(combined, fallback_year)
-
+    month_reference = parse_month_reference(combined, fallback_year) if allow_month_reference else None
     if scheduled_at is not None and scheduled_at <= TODAY:
         return None
     if month_reference is not None and (month_reference.year, month_reference.month) < (TODAY.year, TODAY.month):
@@ -247,13 +287,12 @@ def build_candidate(group_row: dict, title: str, description: str, source_url: s
         "tracking_status": group_row["tracking_status"],
         "search_term": search_term,
     }
-
     if not should_keep_candidate(candidate, published_at):
         return None
     return candidate
 
 
-def find_candidates_for_group(session: requests.Session, group_row: dict):
+def find_rss_candidates_for_group(session: requests.Session, group_row: dict):
     group = group_row["group"]
     candidates = []
 
@@ -270,9 +309,78 @@ def find_candidates_for_group(session: requests.Session, group_row: dict):
                 continue
 
             candidate = build_candidate(group_row, title, description, link, pub_date, term)
-            if candidate is not None:
+            if candidate:
                 candidates.append(candidate)
         time.sleep(0.35)
+
+    return candidates
+
+
+def find_weverse_candidates_for_group(session: requests.Session, group_row: dict):
+    candidates = []
+    for url in WEVERSE_NOTICE_SEEDS.get(group_row["group"], []):
+        html_text = fetch_html(session, url, user_agent=GOOGLEBOT_UA)
+        title = text_between(r"<title>(.*?)</title>", html_text)
+        description = text_between(r'<meta name="description" content="(.*?)"', html_text)
+        candidate = build_candidate(group_row, title, description, url, "", "official_weverse_seed")
+        if candidate:
+            candidates.append(candidate)
+    return candidates
+
+
+def fetch_yg_report_links(session: requests.Session):
+    global YG_REPORT_LINKS_CACHE
+    if YG_REPORT_LINKS_CACHE is not None:
+        return YG_REPORT_LINKS_CACHE
+
+    html_text = fetch_html(session, "https://www.ygfamily.com/en/news/report")
+    links = sorted(set(re.findall(r"/en/news/report/\d+", html_text)))
+    YG_REPORT_LINKS_CACHE = [f"https://www.ygfamily.com{link}" for link in links]
+    return YG_REPORT_LINKS_CACHE
+
+
+def find_yg_agency_candidates_for_group(session: requests.Session, group_row: dict):
+    aliases = YG_GROUP_ALIASES.get(group_row["group"])
+    if not aliases:
+        return []
+
+    candidates = []
+    for url in fetch_yg_report_links(session):
+        html_text = fetch_html(session, url)
+        title = text_between(r'<h2 class="f28">(.*?)</h2>', html_text)
+        report_date = text_between(r'<span class="date">(.*?)</span>', html_text)
+        body = text_between(r'<div class="ql-editor">(.*?)</div>', html_text)
+        haystack = f"{title} {body}".lower()
+        if not any(alias.lower() in haystack for alias in aliases):
+            continue
+
+        pub_date = ""
+        if report_date:
+            try:
+                report_dt = datetime.strptime(report_date, "%Y.%m.%d").replace(tzinfo=KST)
+                pub_date = format_pub_date(report_dt)
+            except ValueError:
+                pub_date = ""
+
+        candidate = build_candidate(
+            group_row,
+            title,
+            body,
+            url,
+            pub_date,
+            "official_yg_report",
+            allow_month_reference=False,
+        )
+        if candidate:
+            candidates.append(candidate)
+    return candidates
+
+
+def find_candidates_for_group(session: requests.Session, group_row: dict):
+    candidates = []
+    candidates.extend(find_weverse_candidates_for_group(session, group_row))
+    candidates.extend(find_yg_agency_candidates_for_group(session, group_row))
+    candidates.extend(find_rss_candidates_for_group(session, group_row))
 
     deduped = {}
     for candidate in candidates:
