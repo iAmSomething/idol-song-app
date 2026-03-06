@@ -27,6 +27,18 @@
   padding: 28px;
 }
 
+.hero-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.hero-topline .eyebrow {
+  margin-bottom: 0;
+}
+
 .eyebrow,
 .panel-label {
   margin: 0 0 12px;
@@ -34,6 +46,30 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-soft);
+}
+
+.language-switch {
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid rgba(27, 42, 65, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.language-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+}
+
+.language-button-active {
+  background: rgba(27, 42, 65, 0.08);
+  color: var(--text-strong);
+  font-weight: 700;
 }
 
 .hero h1,
@@ -554,6 +590,10 @@
 
   .hero h1 {
     max-width: none;
+  }
+
+  .hero-topline {
+    flex-direction: column;
   }
 }
 

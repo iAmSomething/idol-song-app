@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import releaseRows from './data/releases.json'
 import unresolvedRows from './data/unresolved.json'
@@ -78,6 +78,186 @@ type CalendarDay = {
   inMonth: boolean
 }
 
+type Language = 'ko' | 'en'
+
+const LANGUAGE_STORAGE_KEY = 'idol-song-app-language'
+const LANGUAGE_OPTIONS: Language[] = ['ko', 'en']
+
+const TRANSLATIONS = {
+  ko: {
+    locale: 'ko-KR',
+    eyebrow: '케이팝 발매 캘린더',
+    heroTitle: '캘린더 UI와 주간 컴백 인텔리전스 사이클.',
+    heroText:
+      '검증된 발매는 캘린더에 유지됩니다. 더 넓은 워치리스트는 필터에서 빠진 팀과 휴면 팀도 추적 대상으로 남겨두고, 주간 스캔은 뉴스와 공식 출처 단서를 바탕으로 다음 컴백 신호를 찾습니다.',
+    languageLabel: '언어',
+    languageNames: { ko: '한국어', en: 'English' },
+    stats: {
+      verifiedReleases: '검증된 발매',
+      watchTargets: '추적 대상',
+      upcomingSignals: '예정 신호',
+      needsReview: '검토 필요',
+    },
+    monthlyGrid: '월간 캘린더',
+    prev: '이전',
+    next: '다음',
+    searchLabel: '그룹, 곡, 앨범 검색',
+    searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
+    monthSummaryVerified: '검증됨',
+    monthSummaryScheduled: '예정',
+    filterLabels: {
+      releaseKind: '발매 종류',
+      actType: '액트 유형',
+    },
+    filterOptions: {
+      all: '전체',
+      single: '싱글',
+      album: '앨범',
+      ep: 'EP',
+      group: '그룹',
+      solo: '솔로',
+      unit: '유닛',
+    },
+    statusLabels: {
+      recent_release: '최근 발매',
+      filtered_out: '필터 제외, 계속 추적',
+      needs_manual_review: '수동 검토 필요',
+      watch_only: '수동 추적만',
+    },
+    upcomingScan: '예정 스캔',
+    upcomingTitle: '다가오는 컴백 신호',
+    noUpcomingCandidates: '아직 수집된 예정 후보가 없습니다.',
+    selectedDay: '선택한 날짜',
+    noReleaseSelected: '선택된 날짜가 없습니다.',
+    noVerifiedRelease: '이 날짜에 검증된 발매나 예정 신호가 없습니다.',
+    noFilteredMatches: '현재 검색어와 필터 조합에 맞는 검증 발매가 없습니다.',
+    releaseSource: '발매 출처',
+    artistSource: '아티스트 출처',
+    sourceLink: '출처 링크',
+    noSourceLink: '출처 링크 없음',
+    open: '열기',
+    recentFeed: '최근 피드',
+    newestReleasesFirst: '최신 발매 순',
+    dataState: '데이터 상태',
+    pipelineNotes: '파이프라인 메모',
+    latestVerified: '가장 최근 검증',
+    earliestInRange: '범위 내 가장 이른 날짜',
+    openQuestions: '추가 확인 필요',
+    none: '없음',
+    streamLabels: {
+      song: '곡',
+      album: '앨범',
+    },
+    releaseKindLabels: {
+      single: '싱글',
+      album: '앨범',
+      ep: 'EP',
+    },
+    sourceTypeLabels: {
+      agency_notice: '기획사 공지',
+      weverse_notice: '위버스 공지',
+      news_rss: '기사 RSS',
+      pending: '출처 확인 중',
+    },
+    dateStatusLabels: {
+      confirmed: '확정',
+      scheduled: '예정',
+      rumor: '루머',
+    },
+    confidenceToneLabels: {
+      high: '높음',
+      medium: '보통',
+      low: '낮음',
+    },
+  },
+  en: {
+    locale: 'en-US',
+    eyebrow: 'K-pop Release Calendar',
+    heroTitle: 'Calendar UI plus a weekly comeback-intelligence cycle.',
+    heroText:
+      'Verified releases stay in the calendar. A wider watchlist keeps filtered and dormant teams in circulation, then a weekly scan looks for future comeback signals from news and official source trails.',
+    languageLabel: 'Language',
+    languageNames: { ko: 'Korean', en: 'English' },
+    stats: {
+      verifiedReleases: 'Verified releases',
+      watchTargets: 'Watch targets',
+      upcomingSignals: 'Upcoming signals',
+      needsReview: 'Needs review',
+    },
+    monthlyGrid: 'Monthly grid',
+    prev: 'Prev',
+    next: 'Next',
+    searchLabel: 'Search group, song, or album',
+    searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
+    monthSummaryVerified: 'verified',
+    monthSummaryScheduled: 'scheduled',
+    filterLabels: {
+      releaseKind: 'Release kind',
+      actType: 'Act type',
+    },
+    filterOptions: {
+      all: 'All',
+      single: 'Single',
+      album: 'Album',
+      ep: 'EP',
+      group: 'Group',
+      solo: 'Solo',
+      unit: 'Unit',
+    },
+    statusLabels: {
+      recent_release: 'Recent release',
+      filtered_out: 'Filtered but watched',
+      needs_manual_review: 'Needs manual review',
+      watch_only: 'Manual watch-only',
+    },
+    upcomingScan: 'Upcoming scan',
+    upcomingTitle: 'Future comeback signals',
+    noUpcomingCandidates: 'No upcoming candidates captured yet.',
+    selectedDay: 'Selected day',
+    noReleaseSelected: 'No date selected',
+    noVerifiedRelease: 'No verified release or scheduled signal on this date.',
+    noFilteredMatches: 'No verified releases match this search and filter combination.',
+    releaseSource: 'Release source',
+    artistSource: 'Artist source',
+    sourceLink: 'Source link',
+    noSourceLink: 'No source link',
+    open: 'Open',
+    recentFeed: 'Recent feed',
+    newestReleasesFirst: 'Newest releases first',
+    dataState: 'Data state',
+    pipelineNotes: 'Pipeline notes',
+    latestVerified: 'Latest verified',
+    earliestInRange: 'Earliest in range',
+    openQuestions: 'Open questions',
+    none: 'n/a',
+    streamLabels: {
+      song: 'song',
+      album: 'album',
+    },
+    releaseKindLabels: {
+      single: 'single',
+      album: 'album',
+      ep: 'ep',
+    },
+    sourceTypeLabels: {
+      agency_notice: 'Agency notice',
+      weverse_notice: 'Weverse notice',
+      news_rss: 'News RSS',
+      pending: 'Source pending',
+    },
+    dateStatusLabels: {
+      confirmed: 'confirmed',
+      scheduled: 'scheduled',
+      rumor: 'rumor',
+    },
+    confidenceToneLabels: {
+      high: 'high',
+      medium: 'medium',
+      low: 'low',
+    },
+  },
+} as const
+
 const releaseKindOptions = ['all', 'single', 'album', 'ep'] as const
 const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
@@ -90,29 +270,10 @@ const unresolved = unresolvedRows as UnresolvedRow[]
 const watchlist = watchlistRows as WatchlistRow[]
 const upcomingCandidates = upcomingCandidateRows as UpcomingCandidateRow[]
 
-const monthFormatter = new Intl.DateTimeFormat('en-US', {
-  month: 'long',
-  year: 'numeric',
-})
-
 const dateFormatter = new Intl.DateTimeFormat('en-CA', {
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
-})
-
-const shortDateFormatter = new Intl.DateTimeFormat('en-US', {
-  month: 'short',
-  day: 'numeric',
-})
-
-const weekdayFormatter = new Intl.DateTimeFormat('en-US', {
-  weekday: 'short',
-})
-
-const weekdays = Array.from({ length: 7 }, (_, index) => {
-  const reference = new Date(Date.UTC(2026, 0, 4 + index))
-  return weekdayFormatter.format(reference)
 })
 
 const watchStatusCounts = watchlist.reduce<Record<string, number>>((counts, row) => {
@@ -127,6 +288,38 @@ function App() {
   const [search, setSearch] = useState('')
   const [selectedReleaseKind, setSelectedReleaseKind] = useState<(typeof releaseKindOptions)[number]>('all')
   const [selectedActType, setSelectedActType] = useState<(typeof actTypeOptions)[number]>('all')
+  const [language, setLanguage] = useState<Language>(readInitialLanguage)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+    }
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = language
+    }
+  }, [language])
+
+  const copy = TRANSLATIONS[language]
+  const monthFormatter = new Intl.DateTimeFormat(copy.locale, {
+    month: 'long',
+    year: 'numeric',
+  })
+  const shortDateFormatter = new Intl.DateTimeFormat(copy.locale, {
+    month: 'short',
+    day: 'numeric',
+  })
+  const displayDateFormatter = new Intl.DateTimeFormat(copy.locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+  const weekdayFormatter = new Intl.DateTimeFormat(copy.locale, {
+    weekday: 'short',
+  })
+  const weekdays = Array.from({ length: 7 }, (_, index) => {
+    const reference = new Date(Date.UTC(2026, 0, 4 + index))
+    return weekdayFormatter.format(reference)
+  })
 
   const filteredReleases = releases.filter((item) => {
     const needle = search.trim().toLowerCase()
@@ -194,24 +387,39 @@ function App() {
   const latestRelease = filteredReleases[0]
   const earliestRelease = filteredReleases.at(-1)
   const monthIndex = visibleMonthKeys.indexOf(effectiveMonthKey)
+  const selectedDayLabel = effectiveSelectedDayIso
+    ? formatDisplayDate(effectiveSelectedDayIso, displayDateFormatter)
+    : copy.noReleaseSelected
 
   return (
     <div className="shell">
       <header className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">K-pop Release Calendar</p>
-          <h1>Calendar UI plus a weekly comeback-intelligence cycle.</h1>
-          <p className="hero-text">
-            Verified releases stay in the calendar. A wider watchlist keeps filtered
-            and dormant teams in circulation, then a weekly scan looks for future
-            comeback signals from news and official source trails.
-          </p>
+          <div className="hero-topline">
+            <p className="eyebrow">{copy.eyebrow}</p>
+            <div className="language-switch" role="group" aria-label={copy.languageLabel}>
+              {LANGUAGE_OPTIONS.map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  className={['language-button', option === language ? 'language-button-active' : '']
+                    .filter(Boolean)
+                    .join(' ')}
+                  onClick={() => setLanguage(option)}
+                >
+                  {copy.languageNames[option]}
+                </button>
+              ))}
+            </div>
+          </div>
+          <h1>{copy.heroTitle}</h1>
+          <p className="hero-text">{copy.heroText}</p>
         </div>
         <div className="hero-stats">
-          <StatCard label="Verified releases" value={String(filteredReleases.length)} />
-          <StatCard label="Watch targets" value={String(watchlist.length)} />
-          <StatCard label="Upcoming signals" value={String(filteredUpcoming.length)} />
-          <StatCard label="Needs review" value={String(unresolved.length)} />
+          <StatCard label={copy.stats.verifiedReleases} value={String(filteredReleases.length)} />
+          <StatCard label={copy.stats.watchTargets} value={String(watchlist.length)} />
+          <StatCard label={copy.stats.upcomingSignals} value={String(filteredUpcoming.length)} />
+          <StatCard label={copy.stats.needsReview} value={String(unresolved.length)} />
         </div>
       </header>
 
@@ -219,7 +427,7 @@ function App() {
         <section className="panel panel-calendar">
           <div className="panel-top">
             <div>
-              <p className="panel-label">Monthly grid</p>
+              <p className="panel-label">{copy.monthlyGrid}</p>
               <h2>{monthFormatter.format(selectedMonthDate)}</h2>
             </div>
             <div className="calendar-controls">
@@ -231,7 +439,7 @@ function App() {
                 }
                 disabled={monthIndex <= 0}
               >
-                Prev
+                {copy.prev}
               </button>
               <button
                 type="button"
@@ -244,51 +452,53 @@ function App() {
                 }
                 disabled={monthIndex === -1 || monthIndex >= visibleMonthKeys.length - 1}
               >
-                Next
+                {copy.next}
               </button>
             </div>
           </div>
 
           <div className="toolbar">
             <label className="search-field">
-              <span>Search group, song, or album</span>
+              <span>{copy.searchLabel}</span>
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
-                placeholder="BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!..."
+                placeholder={copy.searchPlaceholder}
               />
             </label>
             <div className="summary-pill">
-              <span>{monthReleases.length} verified</span>
-              <span>{monthUpcomingSignals.length} scheduled</span>
+              <span>{monthReleases.length} {copy.monthSummaryVerified}</span>
+              <span>{monthUpcomingSignals.length} {copy.monthSummaryScheduled}</span>
             </div>
           </div>
 
           <div className="filter-stack">
             <FilterGroup
-              label="Release kind"
+              label={copy.filterLabels.releaseKind}
               options={releaseKindOptions}
               selected={selectedReleaseKind}
+              language={language}
               onSelect={(value) => setSelectedReleaseKind(value)}
             />
             <FilterGroup
-              label="Act type"
+              label={copy.filterLabels.actType}
               options={actTypeOptions}
               selected={selectedActType}
+              language={language}
               onSelect={(value) => setSelectedActType(value)}
             />
           </div>
 
           <div className="coverage-strip">
-            <StatusPill label="Recent release" value={watchStatusCounts.recent_release ?? 0} tone="fresh" />
-            <StatusPill label="Filtered but watched" value={watchStatusCounts.filtered_out ?? 0} tone="muted" />
-            <StatusPill label="Needs manual review" value={watchStatusCounts.needs_manual_review ?? 0} tone="warn" />
-            <StatusPill label="Manual watch-only" value={watchStatusCounts.watch_only ?? 0} tone="accent" />
+            <StatusPill label={copy.statusLabels.recent_release} value={watchStatusCounts.recent_release ?? 0} tone="fresh" />
+            <StatusPill label={copy.statusLabels.filtered_out} value={watchStatusCounts.filtered_out ?? 0} tone="muted" />
+            <StatusPill label={copy.statusLabels.needs_manual_review} value={watchStatusCounts.needs_manual_review ?? 0} tone="warn" />
+            <StatusPill label={copy.statusLabels.watch_only} value={watchStatusCounts.watch_only ?? 0} tone="accent" />
           </div>
 
           {hasNoReleaseMatches ? (
             <div className="empty-state">
-              No verified releases match this search and filter combination.
+              {copy.noFilteredMatches}
             </div>
           ) : null}
 
@@ -354,8 +564,8 @@ function App() {
 
         <aside className="sidebar">
           <section className="panel">
-            <p className="panel-label">Upcoming scan</p>
-            <h2>Future comeback signals</h2>
+            <p className="panel-label">{copy.upcomingScan}</p>
+            <h2>{copy.upcomingTitle}</h2>
             <div className="feed-list">
               {filteredUpcoming.length ? (
                 filteredUpcoming.slice(0, 10).map((item) => (
@@ -365,48 +575,48 @@ function App() {
                         <p className="feed-group">{item.group}</p>
                         <div className="signal-tags">
                           <span className={`signal-badge signal-badge-${item.tracking_status}`}>
-                            {item.tracking_status.replaceAll('_', ' ')}
+                            {formatTrackingStatus(item.tracking_status, language)}
                           </span>
                           <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
-                            {formatDateStatus(item.date_status)}
+                            {formatDateStatus(item.date_status, language)}
                           </span>
                           <span
                             className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
                           >
-                            {getConfidenceTone(item.confidence)} confidence
+                            {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                           </span>
                         </div>
                       </div>
                       <h3>{item.headline}</h3>
                       <p className="signal-meta">
-                        {formatSourceType(item.source_type)} · {item.source_domain || 'source pending'} ·{' '}
-                        {item.scheduled_date || 'TBD'}
+                        {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending} ·{' '}
+                        {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
                       </p>
                       {item.evidence_summary ? (
                         <p className="signal-evidence">{item.evidence_summary}</p>
                       ) : null}
                     </div>
                     <div className="signal-date-wrap">
-                      <time>{item.scheduled_date || 'TBD'}</time>
+                      <time>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</time>
                       {item.source_url ? (
                         <a href={item.source_url} target="_blank" rel="noreferrer">
-                          Open
+                          {copy.open}
                         </a>
                       ) : (
-                        <span className="signal-link-muted">No source link</span>
+                        <span className="signal-link-muted">{copy.noSourceLink}</span>
                       )}
                     </div>
                   </article>
                 ))
               ) : (
-                <p className="empty-copy">No upcoming candidates captured yet.</p>
+                <p className="empty-copy">{copy.noUpcomingCandidates}</p>
               )}
             </div>
           </section>
 
           <section className="panel">
-            <p className="panel-label">Selected day</p>
-            <h2>{effectiveSelectedDayIso || 'No release selected'}</h2>
+            <p className="panel-label">{copy.selectedDay}</p>
+            <h2>{selectedDayLabel}</h2>
             <div className="detail-list">
               {selectedDayReleases.length || selectedDayUpcomingSignals.length ? (
                 [...selectedDayReleases, ...selectedDayUpcomingSignals].map((item) =>
@@ -415,16 +625,16 @@ function App() {
                     <div>
                       <div className="signal-head">
                         <p className="detail-group">{item.group}</p>
-                        <span className="signal-badge">{describeRelease(item)}</span>
+                        <span className="signal-badge">{describeRelease(item, language)}</span>
                       </div>
                       <h3>{item.title}</h3>
                     </div>
                     <div className="detail-links">
                       <a href={item.source} target="_blank" rel="noreferrer">
-                        Release source
+                        {copy.releaseSource}
                       </a>
                       <a href={item.artist_source} target="_blank" rel="noreferrer">
-                        Artist source
+                        {copy.artistSource}
                       </a>
                     </div>
                   </article>
@@ -438,18 +648,18 @@ function App() {
                         <p className="detail-group">{item.group}</p>
                         <div className="signal-tags">
                           <span className={`signal-badge signal-badge-date-${item.date_status}`}>
-                            {formatDateStatus(item.date_status)}
+                            {formatDateStatus(item.date_status, language)}
                           </span>
                           <span
                             className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
                           >
-                            {getConfidenceTone(item.confidence)} confidence
+                            {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                           </span>
                         </div>
                       </div>
                       <h3>{item.headline}</h3>
                       <p className="signal-meta">
-                        {formatSourceType(item.source_type)} · {item.source_domain || 'source pending'}
+                        {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
                       </p>
                       {item.evidence_summary ? (
                         <p className="signal-evidence">{item.evidence_summary}</p>
@@ -458,31 +668,31 @@ function App() {
                     <div className="detail-links">
                       {item.source_url ? (
                         <a href={item.source_url} target="_blank" rel="noreferrer">
-                          Source link
+                          {copy.sourceLink}
                         </a>
                       ) : (
-                        <span className="signal-link-muted">No source link</span>
+                        <span className="signal-link-muted">{copy.noSourceLink}</span>
                       )}
                     </div>
                   </article>
                   ),
                 )
               ) : (
-                <p className="empty-copy">No verified release or scheduled signal on this date.</p>
+                <p className="empty-copy">{copy.noVerifiedRelease}</p>
               )}
             </div>
           </section>
 
           <section className="panel">
-            <p className="panel-label">Recent feed</p>
-            <h2>Newest releases first</h2>
+            <p className="panel-label">{copy.recentFeed}</p>
+            <h2>{copy.newestReleasesFirst}</h2>
             <div className="feed-list">
               {filteredReleases.slice(0, 10).map((item) => (
                 <article key={`${item.group}-${item.stream}-${item.title}`} className="feed-row">
                   <div>
                     <div className="signal-head">
                       <p className="feed-group">{item.group}</p>
-                      <span className="signal-badge">{describeRelease(item)}</span>
+                      <span className="signal-badge">{describeRelease(item, language)}</span>
                     </div>
                     <h3>{item.title}</h3>
                   </div>
@@ -493,18 +703,25 @@ function App() {
           </section>
 
           <section className="panel">
-            <p className="panel-label">Data state</p>
-            <h2>Pipeline notes</h2>
+            <p className="panel-label">{copy.dataState}</p>
+            <h2>{copy.pipelineNotes}</h2>
             <div className="meta-grid">
               <MetaItem
-                label="Latest verified"
-                value={latestRelease ? `${latestRelease.group} · ${latestRelease.date}` : 'n/a'}
+                label={copy.latestVerified}
+                value={
+                  latestRelease ? `${latestRelease.group} · ${formatDisplayDate(latestRelease.date, displayDateFormatter)}` : copy.none
+                }
               />
               <MetaItem
-                label="Earliest in range"
-                value={earliestRelease ? `${earliestRelease.group} · ${earliestRelease.date}` : 'n/a'}
+                label={copy.earliestInRange}
+                value={
+                  earliestRelease ? `${earliestRelease.group} · ${formatDisplayDate(earliestRelease.date, displayDateFormatter)}` : copy.none
+                }
               />
-              <MetaItem label="Open questions" value={unresolved.map((item) => item.group).join(', ')} />
+              <MetaItem
+                label={copy.openQuestions}
+                value={unresolved.length ? unresolved.map((item) => item.group).join(', ') : copy.none}
+              />
             </div>
           </section>
         </aside>
@@ -552,11 +769,13 @@ function FilterGroup<T extends string>({
   label,
   options,
   selected,
+  language,
   onSelect,
 }: {
   label: string
   options: readonly T[]
   selected: T
+  language: Language
   onSelect: (value: T) => void
 }) {
   return (
@@ -570,7 +789,7 @@ function FilterGroup<T extends string>({
             className={`filter-chip ${selected === option ? 'filter-chip-active' : ''}`}
             onClick={() => onSelect(option)}
           >
-            {formatFilterOption(option)}
+            {formatFilterOption(option, language)}
           </button>
         ))}
       </div>
@@ -578,28 +797,12 @@ function FilterGroup<T extends string>({
   )
 }
 
-function formatSourceType(sourceType: string) {
-  switch (sourceType) {
-    case 'agency_notice':
-      return 'Agency notice'
-    case 'weverse_notice':
-      return 'Weverse notice'
-    case 'news_rss':
-      return 'News RSS'
-    default:
-      return 'Source pending'
-  }
+function formatSourceType(sourceType: string, language: Language) {
+  return TRANSLATIONS[language].sourceTypeLabels[sourceType as keyof typeof TRANSLATIONS.ko.sourceTypeLabels] ?? TRANSLATIONS[language].sourceTypeLabels.pending
 }
 
-function formatDateStatus(dateStatus: UpcomingCandidateRow['date_status']) {
-  switch (dateStatus) {
-    case 'confirmed':
-      return 'confirmed'
-    case 'scheduled':
-      return 'scheduled'
-    default:
-      return 'rumor'
-  }
+function formatDateStatus(dateStatus: UpcomingCandidateRow['date_status'], language: Language) {
+  return TRANSLATIONS[language].dateStatusLabels[dateStatus]
 }
 
 function getConfidenceTone(confidence: number) {
@@ -650,18 +853,21 @@ function expandUpcomingCandidate(row: UpcomingCandidateRow): DatedUpcomingSignal
   ]
 }
 
-function describeRelease(item: VerifiedRelease) {
-  return `${item.stream} · ${item.release_kind}`
+function describeRelease(item: VerifiedRelease, language: Language) {
+  const copy = TRANSLATIONS[language]
+  return `${copy.streamLabels[item.stream]} · ${copy.releaseKindLabels[item.release_kind]}`
 }
 
-function formatFilterOption(option: string) {
-  if (option === 'all') {
-    return 'All'
-  }
-  if (option === 'ep') {
-    return 'EP'
-  }
-  return option.charAt(0).toUpperCase() + option.slice(1)
+function formatFilterOption(option: string, language: Language) {
+  return TRANSLATIONS[language].filterOptions[option as keyof typeof TRANSLATIONS.ko.filterOptions] ?? option
+}
+
+function formatTrackingStatus(status: string, language: Language) {
+  return TRANSLATIONS[language].statusLabels[status as keyof typeof TRANSLATIONS.ko.statusLabels] ?? status
+}
+
+function formatConfidenceTone(tone: ReturnType<typeof getConfidenceTone>, language: Language) {
+  return TRANSLATIONS[language].confidenceToneLabels[tone]
 }
 
 function getActType(group: string): ActType {
@@ -686,8 +892,41 @@ function getVisibleMonthKeys(releaseRows: VerifiedRelease[], upcomingRows: Dated
   return getMonthKeys([...releaseRows, ...upcomingRows])
 }
 
+function readInitialLanguage(): Language {
+  if (typeof window === 'undefined') {
+    return 'ko'
+  }
+
+  const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
+  if (stored === 'ko' || stored === 'en') {
+    return stored
+  }
+
+  return 'ko'
+}
+
 function isExactDate(value: string) {
   return /^\d{4}-\d{2}-\d{2}$/.test(value)
+}
+
+function formatDisplayDate(isoDate: string, formatter: Intl.DateTimeFormat) {
+  if (!isExactDate(isoDate)) {
+    return isoDate
+  }
+
+  return formatter.format(new Date(`${isoDate}T00:00:00`))
+}
+
+function formatOptionalDate(
+  isoDate: string,
+  formatter: Intl.DateTimeFormat,
+  fallback: string,
+) {
+  if (!isoDate) {
+    return fallback
+  }
+
+  return formatDisplayDate(isoDate, formatter)
 }
 
 function getMonthKey(date: Date) {
