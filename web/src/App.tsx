@@ -273,6 +273,15 @@ type AnnualReleaseTimelineSection = {
   items: AnnualReleaseTimelineItem[]
 }
 
+type TeamCompareSnapshot = {
+  group: string
+  latestVerifiedRelease: VerifiedRelease | null
+  latestAlbum: VerifiedRelease | null
+  latestSong: VerifiedRelease | null
+  nextUpcomingSignal: UpcomingCandidateRow | null
+  recentYearReleaseCount: number
+}
+
 type WatchReason = 'recent_release' | 'long_gap' | 'manual_watch'
 
 type WatchlistRow = {
@@ -818,6 +827,23 @@ const TEAM_COPY = {
     relatedActsReasonAgency: '같은 소속사',
     relatedActsReasonRadarTag: '같은 레이더 태그',
     relatedActsReasonManual: '수동 추천',
+    compareAction: '비교',
+    compareHelperLabel: '2팀 비교',
+    compareHelperTitle: 'compare with',
+    compareHelperHint: '다른 팀 하나를 고르면 query 기반 비교 화면을 바로 엽니다.',
+    compareSelectLabel: '비교할 팀',
+    compareSelectPlaceholder: '팀 선택',
+    compareClear: '비교 닫기',
+    compareViewLabel: '2팀 비교',
+    compareViewTitle: '핵심 릴리즈와 예정 신호를 나란히 봅니다.',
+    compareMetricLatestVerified: '최근 verified release',
+    compareMetricLatestAlbumSong: '최신 album vs latest song',
+    compareMetricUpcoming: '예정 comeback signal',
+    compareMetricYearCount: '최근 1년 release count',
+    compareNoRelease: 'verified release 없음',
+    compareNoAlbum: 'album 없음',
+    compareNoSong: 'song 없음',
+    compareNoUpcoming: '예정 신호 없음',
     timelineLabel: '소스 타임라인',
     timelineTitle: '컴백 근거가 쌓인 순서',
     timelineIntro: '예정 신호와 검증된 발매를 같은 타임라인에서 봅니다.',
@@ -906,6 +932,23 @@ const TEAM_COPY = {
     relatedActsReasonAgency: 'Same agency',
     relatedActsReasonRadarTag: 'Same radar tag',
     relatedActsReasonManual: 'Manual pick',
+    compareAction: 'Compare',
+    compareHelperLabel: '2-team compare',
+    compareHelperTitle: 'Compare with',
+    compareHelperHint: 'Pick one other team to open the query-based compare view.',
+    compareSelectLabel: 'Team to compare',
+    compareSelectPlaceholder: 'Select a team',
+    compareClear: 'Close compare',
+    compareViewLabel: '2-team compare',
+    compareViewTitle: 'See key release and upcoming signal blocks side by side.',
+    compareMetricLatestVerified: 'Latest verified release',
+    compareMetricLatestAlbumSong: 'Latest album vs latest song',
+    compareMetricUpcoming: 'Upcoming comeback signal',
+    compareMetricYearCount: 'Recent 1-year release count',
+    compareNoRelease: 'No verified release',
+    compareNoAlbum: 'No album yet',
+    compareNoSong: 'No song yet',
+    compareNoUpcoming: 'No upcoming signal',
     timelineLabel: 'Source timeline',
     timelineTitle: 'How the comeback evidence built up',
     timelineIntro: 'Scheduled signals and verified releases share one evidence trail.',
@@ -1033,11 +1076,16 @@ function App() {
   const [selectedAgency, setSelectedAgency] = useState<string>('all')
   const [language, setLanguage] = useState<Language>(readInitialLanguage)
   const [selectedGroup, setSelectedGroup] = useState<string | null>(readSelectedGroupFromLocation)
+  const [selectedCompareGroup, setSelectedCompareGroup] = useState<string | null>(readSelectedCompareGroupFromLocation)
   const [selectedAlbumKey, setSelectedAlbumKey] = useState<string | null>(null)
   const [selectedDayInteractionTick, setSelectedDayInteractionTick] = useState(0)
   const [desktopUpcomingPanelHeight, setDesktopUpcomingPanelHeight] = useState<number | null>(null)
   const calendarPanelRef = useRef<HTMLElement | null>(null)
   const selectedDayPanelRef = useRef<HTMLElement | null>(null)
+  const activeCompareGroup =
+    selectedGroup && selectedCompareGroup && selectedCompareGroup !== selectedGroup && teamProfileMap.has(selectedCompareGroup)
+      ? selectedCompareGroup
+      : null
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -1050,9 +1098,13 @@ function App() {
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      document.title = selectedGroup ? `${selectedGroup} | Idol Song App` : 'Idol Song App'
+      document.title = selectedGroup
+        ? activeCompareGroup
+          ? `${selectedGroup} vs ${activeCompareGroup} | Idol Song App`
+          : `${selectedGroup} | Idol Song App`
+        : 'Idol Song App'
     }
-  }, [selectedGroup])
+  }, [activeCompareGroup, selectedGroup])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -1061,6 +1113,7 @@ function App() {
 
     const handlePopState = () => {
       setSelectedGroup(readSelectedGroupFromLocation())
+      setSelectedCompareGroup(readSelectedCompareGroupFromLocation())
       setSelectedAlbumKey(null)
     }
 
@@ -1073,11 +1126,12 @@ function App() {
       return
     }
 
-    const nextPath = selectedGroup ? getArtistPath(selectedGroup) : '/'
-    if (window.location.pathname !== nextPath) {
-      window.history.pushState({ group: selectedGroup }, '', nextPath)
+    const nextPath = selectedGroup ? getArtistPath(selectedGroup, activeCompareGroup) : '/'
+    const currentLocation = `${window.location.pathname}${window.location.search}`
+    if (currentLocation !== nextPath) {
+      window.history.pushState({ group: selectedGroup, compare: activeCompareGroup }, '', nextPath)
     }
-  }, [selectedGroup])
+  }, [activeCompareGroup, selectedGroup])
 
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -1214,6 +1268,10 @@ function App() {
       : `${monthFormatter.format(selectedMonthDate)} comeback calendar`
   const nearestMonthlySignal = monthScheduledDashboardRows[0] ?? null
   const selectedTeam = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
+  const compareTeam = activeCompareGroup ? teamProfileMap.get(activeCompareGroup) ?? null : null
+  const compareTeamOptions = selectedTeam ? teamProfiles.filter((team) => team.group !== selectedTeam.group) : []
+  const selectedTeamCompareSnapshot = selectedTeam ? buildTeamCompareSnapshot(selectedTeam.group) : null
+  const compareTeamSnapshot = compareTeam ? buildTeamCompareSnapshot(compareTeam.group) : null
   const selectedAlbum =
     selectedTeam && selectedAlbumKey
       ? findVerifiedReleaseByKey(selectedTeam.group, selectedAlbumKey)
@@ -1312,16 +1370,19 @@ function App() {
 
   function openTeamPage(group: string) {
     setSelectedGroup(group)
+    setSelectedCompareGroup(null)
     setSelectedAlbumKey(null)
   }
 
   function openReleaseDetail(release: VerifiedRelease) {
     setSelectedGroup(release.group)
+    setSelectedCompareGroup(null)
     setSelectedAlbumKey(getAlbumKey(release))
   }
 
   function closeTeamPage() {
     setSelectedGroup(null)
+    setSelectedCompareGroup(null)
     setSelectedAlbumKey(null)
   }
 
@@ -1548,6 +1609,21 @@ function App() {
             </div>
             <p className="team-footnote">{teamCopy.footnote}</p>
           </section>
+
+          <CompareTeamView
+            primaryTeam={selectedTeam}
+            secondaryTeam={compareTeam}
+            primarySnapshot={selectedTeamCompareSnapshot}
+            secondarySnapshot={compareTeamSnapshot}
+            compareOptions={compareTeamOptions}
+            selectedCompareGroup={activeCompareGroup}
+            language={language}
+            displayDateFormatter={displayDateFormatter}
+            onSelectCompareGroup={setSelectedCompareGroup}
+            onOpenTeamPage={openTeamPage}
+            onOpenReleaseDetail={openReleaseDetail}
+            onClearCompare={() => setSelectedCompareGroup(null)}
+          />
 
           <div className="team-page-body">
             <div className="team-section-stack">
@@ -1856,6 +1932,9 @@ function App() {
                           <div className="action-row">
                             <ActionButton variant="primary" onClick={() => openTeamPage(team.group)}>
                               {teamCopy.action}
+                            </ActionButton>
+                            <ActionButton variant="secondary" onClick={() => setSelectedCompareGroup(team.group)}>
+                              {teamCopy.compareAction}
                             </ActionButton>
                           </div>
                         </article>
@@ -3165,6 +3244,290 @@ function AnnualReleaseTimeline({
         <p className="empty-copy">{teamCopy.annualTimelineEmpty}</p>
       )}
     </section>
+  )
+}
+
+function CompareTeamView({
+  primaryTeam,
+  secondaryTeam,
+  primarySnapshot,
+  secondarySnapshot,
+  compareOptions,
+  selectedCompareGroup,
+  language,
+  displayDateFormatter,
+  onSelectCompareGroup,
+  onOpenTeamPage,
+  onOpenReleaseDetail,
+  onClearCompare,
+}: {
+  primaryTeam: TeamProfile
+  secondaryTeam: TeamProfile | null
+  primarySnapshot: TeamCompareSnapshot | null
+  secondarySnapshot: TeamCompareSnapshot | null
+  compareOptions: TeamProfile[]
+  selectedCompareGroup: string | null
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onSelectCompareGroup: (group: string | null) => void
+  onOpenTeamPage: (group: string) => void
+  onOpenReleaseDetail: (release: VerifiedRelease) => void
+  onClearCompare: () => void
+}) {
+  const teamCopy = TEAM_COPY[language]
+
+  return (
+    <section className="panel compare-view">
+      <div className="compare-view-head">
+        <div>
+          <p className="panel-label">{teamCopy.compareHelperLabel}</p>
+          <h2>{teamCopy.compareViewTitle}</h2>
+        </div>
+        {secondaryTeam ? (
+          <ActionButton variant="secondary" onClick={onClearCompare}>
+            {teamCopy.compareClear}
+          </ActionButton>
+        ) : null}
+      </div>
+
+      <div className="compare-helper">
+        <label className="compare-select-field">
+          <span>{teamCopy.compareSelectLabel}</span>
+          <select value={selectedCompareGroup ?? ''} onChange={(event) => onSelectCompareGroup(event.target.value || null)}>
+            <option value="">{teamCopy.compareSelectPlaceholder}</option>
+            {compareOptions.map((team) => (
+              <option key={team.group} value={team.group}>
+                {team.displayName}
+              </option>
+            ))}
+          </select>
+        </label>
+        <p className="hero-text compare-helper-copy">{teamCopy.compareHelperHint}</p>
+      </div>
+
+      {secondaryTeam && primarySnapshot && secondarySnapshot ? (
+        <>
+          <div className="compare-summary-grid">
+            <article className="compare-summary-card">
+              <TeamIdentity group={primaryTeam.group} variant="list" />
+              <div className="action-row">
+                <ActionButton variant="secondary" onClick={() => onOpenTeamPage(primaryTeam.group)}>
+                  {teamCopy.action}
+                </ActionButton>
+              </div>
+            </article>
+            <article className="compare-summary-card">
+              <TeamIdentity group={secondaryTeam.group} variant="list" />
+              <div className="action-row">
+                <ActionButton variant="secondary" onClick={() => onOpenTeamPage(secondaryTeam.group)}>
+                  {teamCopy.action}
+                </ActionButton>
+              </div>
+            </article>
+          </div>
+
+          <div className="compare-metric-stack">
+            <CompareMetricRow label={teamCopy.compareMetricLatestVerified}>
+              <CompareReleaseCard
+                release={primarySnapshot.latestVerifiedRelease}
+                emptyLabel={teamCopy.compareNoRelease}
+                language={language}
+                displayDateFormatter={displayDateFormatter}
+                onOpenReleaseDetail={onOpenReleaseDetail}
+              />
+              <CompareReleaseCard
+                release={secondarySnapshot.latestVerifiedRelease}
+                emptyLabel={teamCopy.compareNoRelease}
+                language={language}
+                displayDateFormatter={displayDateFormatter}
+                onOpenReleaseDetail={onOpenReleaseDetail}
+              />
+            </CompareMetricRow>
+
+            <CompareMetricRow label={teamCopy.compareMetricLatestAlbumSong}>
+              <CompareAlbumSongCard
+                snapshot={primarySnapshot}
+                language={language}
+                displayDateFormatter={displayDateFormatter}
+                onOpenReleaseDetail={onOpenReleaseDetail}
+              />
+              <CompareAlbumSongCard
+                snapshot={secondarySnapshot}
+                language={language}
+                displayDateFormatter={displayDateFormatter}
+                onOpenReleaseDetail={onOpenReleaseDetail}
+              />
+            </CompareMetricRow>
+
+            <CompareMetricRow label={teamCopy.compareMetricUpcoming}>
+              <CompareUpcomingCard
+                signal={primarySnapshot.nextUpcomingSignal}
+                language={language}
+                displayDateFormatter={displayDateFormatter}
+              />
+              <CompareUpcomingCard
+                signal={secondarySnapshot.nextUpcomingSignal}
+                language={language}
+                displayDateFormatter={displayDateFormatter}
+              />
+            </CompareMetricRow>
+
+            <CompareMetricRow label={teamCopy.compareMetricYearCount}>
+              <CompareCountCard count={primarySnapshot.recentYearReleaseCount} />
+              <CompareCountCard count={secondarySnapshot.recentYearReleaseCount} />
+            </CompareMetricRow>
+          </div>
+        </>
+      ) : null}
+    </section>
+  )
+}
+
+function CompareMetricRow({
+  label,
+  children,
+}: {
+  label: string
+  children: ReactNode
+}) {
+  return (
+    <section className="compare-metric-row">
+      <p className="compare-metric-label">{label}</p>
+      <div className="compare-metric-grid">{children}</div>
+    </section>
+  )
+}
+
+function CompareReleaseCard({
+  release,
+  emptyLabel,
+  language,
+  displayDateFormatter,
+  onOpenReleaseDetail,
+}: {
+  release: VerifiedRelease | null
+  emptyLabel: string
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onOpenReleaseDetail: (release: VerifiedRelease) => void
+}) {
+  if (!release) {
+    return <p className="empty-copy compare-card-empty">{emptyLabel}</p>
+  }
+
+  return (
+    <article className="compare-card">
+      <div className="signal-tags">
+        <ReleaseClassificationBadges
+          releaseFormat={release.release_format}
+          contextTags={release.context_tags}
+          language={language}
+        />
+      </div>
+      <h3>{release.title}</h3>
+      <p className="signal-meta">{formatOptionalDate(release.date, displayDateFormatter, TRANSLATIONS[language].none)}</p>
+      <div className="action-row">
+        <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(release)}>
+          {getReleaseDetailActionLabel(release.release_kind, language)}
+        </ActionButton>
+      </div>
+    </article>
+  )
+}
+
+function CompareAlbumSongCard({
+  snapshot,
+  language,
+  displayDateFormatter,
+  onOpenReleaseDetail,
+}: {
+  snapshot: TeamCompareSnapshot
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onOpenReleaseDetail: (release: VerifiedRelease) => void
+}) {
+  const teamCopy = TEAM_COPY[language]
+
+  return (
+    <article className="compare-card compare-card-double">
+      <div className="compare-subcard">
+        <span className="panel-label">{TRANSLATIONS[language].streamLabels.album}</span>
+        {snapshot.latestAlbum ? (
+          <>
+            <h3>{snapshot.latestAlbum.title}</h3>
+            <p className="signal-meta">
+              {formatOptionalDate(snapshot.latestAlbum.date, displayDateFormatter, TRANSLATIONS[language].none)}
+            </p>
+            <div className="action-row">
+              <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(snapshot.latestAlbum as VerifiedRelease)}>
+                {getReleaseDetailActionLabel(snapshot.latestAlbum.release_kind, language)}
+              </ActionButton>
+            </div>
+          </>
+        ) : (
+          <p className="empty-copy compare-card-empty">{teamCopy.compareNoAlbum}</p>
+        )}
+      </div>
+      <div className="compare-subcard">
+        <span className="panel-label">{TRANSLATIONS[language].streamLabels.song}</span>
+        {snapshot.latestSong ? (
+          <>
+            <h3>{snapshot.latestSong.title}</h3>
+            <p className="signal-meta">
+              {formatOptionalDate(snapshot.latestSong.date, displayDateFormatter, TRANSLATIONS[language].none)}
+            </p>
+            <div className="action-row">
+              <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(snapshot.latestSong as VerifiedRelease)}>
+                {getReleaseDetailActionLabel(snapshot.latestSong.release_kind, language)}
+              </ActionButton>
+            </div>
+          </>
+        ) : (
+          <p className="empty-copy compare-card-empty">{teamCopy.compareNoSong}</p>
+        )}
+      </div>
+    </article>
+  )
+}
+
+function CompareUpcomingCard({
+  signal,
+  language,
+  displayDateFormatter,
+}: {
+  signal: UpcomingCandidateRow | null
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+}) {
+  const teamCopy = TEAM_COPY[language]
+  const copy = TRANSLATIONS[language]
+
+  if (!signal) {
+    return <p className="empty-copy compare-card-empty">{teamCopy.compareNoUpcoming}</p>
+  }
+
+  return (
+    <article className="compare-card">
+      <div className="signal-tags">
+        <span className={`signal-badge signal-badge-date-${signal.date_status}`}>
+          {formatDateStatus(signal.date_status, language)}
+        </span>
+        <SourceBadge sourceType={signal.source_type} language={language} />
+      </div>
+      <h3>{signal.headline}</h3>
+      <p className="signal-meta">
+        {formatOptionalDate(signal.scheduled_date, displayDateFormatter, copy.none)} ·{' '}
+        {signal.source_domain || copy.sourceTypeLabels.pending}
+      </p>
+    </article>
+  )
+}
+
+function CompareCountCard({ count }: { count: number }) {
+  return (
+    <article className="compare-card compare-count-card">
+      <strong>{count}</strong>
+    </article>
   )
 }
 
@@ -4747,6 +5110,21 @@ function buildRelatedActsByGroup() {
   }, new Map())
 }
 
+function buildTeamCompareSnapshot(group: string): TeamCompareSnapshot {
+  const verifiedRows = verifiedReleaseHistoryByGroup.get(group) ?? []
+  const upcomingSignals = [...(upcomingByGroup.get(group) ?? [])].sort(compareUpcomingSignals)
+  const recentYearThreshold = getDateDaysBefore(new Date(), 365)
+
+  return {
+    group,
+    latestVerifiedRelease: verifiedRows[0] ?? null,
+    latestAlbum: verifiedRows.find((item) => item.stream === 'album') ?? null,
+    latestSong: verifiedRows.find((item) => item.stream === 'song') ?? null,
+    nextUpcomingSignal: upcomingSignals[0] ?? null,
+    recentYearReleaseCount: verifiedRows.filter((item) => item.dateValue.getTime() >= recentYearThreshold.getTime()).length,
+  }
+}
+
 function buildLongGapRadarEntries() {
   return teamProfiles
     .flatMap((team) => {
@@ -5692,6 +6070,29 @@ function readSelectedGroupFromLocation() {
   return getGroupFromPath(window.location.pathname)
 }
 
+function readSelectedCompareGroupFromLocation() {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
+  const primaryGroup = getGroupFromPath(window.location.pathname)
+  if (!primaryGroup) {
+    return null
+  }
+
+  const compareValue = new URLSearchParams(window.location.search).get('compare')
+  if (!compareValue) {
+    return null
+  }
+
+  const resolvedGroup = resolveGroupReference(compareValue)
+  if (!resolvedGroup || resolvedGroup === primaryGroup) {
+    return null
+  }
+
+  return resolvedGroup
+}
+
 function getGroupFromPath(pathname: string) {
   const match = pathname.match(/^\/artists\/([^/]+)\/?$/)
   if (!match) {
@@ -5702,8 +6103,28 @@ function getGroupFromPath(pathname: string) {
   return artistProfileBySlug.get(slug)?.group ?? teamProfiles.find((team) => team.slug === slug)?.group ?? null
 }
 
-function getArtistPath(group: string) {
-  return `/artists/${artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)}`
+function resolveGroupReference(value: string) {
+  const normalized = decodeURIComponent(value).trim().toLowerCase()
+  if (!normalized) {
+    return null
+  }
+
+  return (
+    artistProfileBySlug.get(normalized)?.group ??
+    teamProfiles.find((team) => team.slug === normalized || team.group.toLowerCase() === normalized)?.group ??
+    null
+  )
+}
+
+function getArtistPath(group: string, compareGroup?: string | null) {
+  const pathname = `/artists/${artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)}`
+  if (!compareGroup || compareGroup === group) {
+    return pathname
+  }
+
+  const params = new URLSearchParams()
+  params.set('compare', artistProfileByGroup.get(compareGroup)?.slug ?? slugifyGroup(compareGroup))
+  return `${pathname}?${params.toString()}`
 }
 
 function createSearchNeedle(value: string): SearchNeedle | null {

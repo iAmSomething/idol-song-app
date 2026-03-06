@@ -1422,6 +1422,115 @@
   align-items: start;
 }
 
+.compare-view,
+.compare-helper,
+.compare-metric-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.compare-view-head,
+.compare-summary-grid,
+.compare-metric-grid,
+.compare-card-double {
+  display: grid;
+  gap: 14px;
+}
+
+.compare-view-head {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+}
+
+.compare-select-field {
+  display: grid;
+  gap: 8px;
+}
+
+.compare-select-field span {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+
+.compare-select-field select {
+  width: 100%;
+  border: 1px solid rgba(27, 42, 65, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 14px 16px;
+  font: inherit;
+  color: var(--text-strong);
+}
+
+.compare-helper-copy {
+  margin: 0;
+}
+
+.compare-summary-grid,
+.compare-metric-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.compare-summary-card,
+.compare-card {
+  display: grid;
+  gap: 12px;
+  border: 1px solid rgba(27, 42, 65, 0.08);
+  border-radius: 20px;
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.8)),
+    rgba(255, 255, 255, 0.86);
+}
+
+.compare-summary-card .action-row,
+.compare-card .action-row {
+  margin-top: 4px;
+}
+
+.compare-metric-row {
+  display: grid;
+  gap: 12px;
+}
+
+.compare-metric-label {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.compare-subcard {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(27, 42, 65, 0.04);
+}
+
+.compare-card h3,
+.compare-subcard h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.compare-card-empty {
+  margin: 0;
+}
+
+.compare-count-card {
+  place-items: center;
+  min-height: 112px;
+}
+
+.compare-count-card strong {
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--accent-deep);
+}
+
 .team-subsection {
   display: grid;
   gap: 16px;
@@ -2344,6 +2453,12 @@
 
   .context-highlight-actions {
     justify-content: flex-start;
+  }
+
+  .compare-view-head,
+  .compare-summary-grid,
+  .compare-metric-grid {
+    grid-template-columns: 1fr;
   }
 
   .dashboard-table-shell {
