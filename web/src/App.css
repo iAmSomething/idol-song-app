@@ -745,7 +745,16 @@
 
 .detail-card-feature {
   display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  align-items: start;
   gap: 16px;
+}
+
+.detail-card-feature-body,
+.album-card-copy {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
 }
 
 .handoff-row {
@@ -839,13 +848,13 @@
 .album-card {
   border: 1px solid rgba(27, 42, 65, 0.08);
   border-radius: 22px;
-  padding: 18px;
+  padding: 14px;
   background:
     radial-gradient(circle at top right, rgba(255, 214, 153, 0.34), transparent 38%),
     rgba(255, 255, 255, 0.82);
   text-align: left;
   display: grid;
-  gap: 8px;
+  gap: 12px;
 }
 
 .album-card strong {
@@ -891,6 +900,44 @@
   gap: 18px;
   align-items: center;
   margin: 22px 0;
+}
+
+.release-artwork {
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(255, 214, 153, 0.9), transparent 34%),
+    linear-gradient(160deg, rgba(195, 88, 49, 0.9), rgba(27, 42, 65, 0.96));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.release-artwork-feature {
+  width: 132px;
+  aspect-ratio: 1;
+}
+
+.release-artwork-card {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 20px;
+}
+
+.release-artwork-drawer {
+  width: 112px;
+  aspect-ratio: 1;
+  border-radius: 28px;
+}
+
+.release-artwork-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.release-artwork-placeholder .release-artwork-image {
+  object-fit: cover;
 }
 
 .album-drawer-art {
@@ -1041,6 +1088,10 @@
     align-items: stretch;
   }
 
+  .detail-card-feature {
+    grid-template-columns: 1fr;
+  }
+
   .signal-tags {
     justify-content: flex-start;
   }
@@ -1088,5 +1139,11 @@
     height: 88px;
     border-radius: 22px;
     font-size: 1.4rem;
+  }
+
+  .release-artwork-feature,
+  .release-artwork-drawer {
+    width: 88px;
+    border-radius: 22px;
   }
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import artistProfileRows from './data/artistProfiles.json'
+import releaseArtworkRows from './data/releaseArtwork.json'
 import releaseRows from './data/releases.json'
 import unresolvedRows from './data/unresolved.json'
 import upcomingCandidateRows from './data/upcomingCandidates.json'
@@ -34,6 +35,21 @@ type ArtistProfileRow = {
   official_instagram_url: string | null
   representative_image_url: string | null
   representative_image_source: string | null
+}
+
+type ReleaseArtworkRow = {
+  group: string
+  release_title: string
+  release_date: string
+  stream: 'song' | 'album'
+  cover_image_url: string
+  thumbnail_image_url: string
+  artwork_source_type: string
+  artwork_source_url: string
+}
+
+type ResolvedReleaseArtwork = ReleaseArtworkRow & {
+  isPlaceholder: boolean
 }
 
 type ActType = 'group' | 'solo' | 'unit'
@@ -110,6 +126,7 @@ type TeamLatestRelease = {
   date: string
   releaseKind: string
   streamLabel: string
+  stream: 'song' | 'album' | 'watchlist'
   source: string
   artistSource: string
   musicHandoffs?: MusicHandoffUrls
@@ -380,7 +397,7 @@ const TEAM_COPY = {
     stream: '스트림',
     trackPreview: '트랙 프리뷰',
     trackPreviewHint: '트랙 정보는 v1 placeholder입니다. 전체 디스코그래피 파이프라인에서 실제 트랙 데이터로 대체됩니다.',
-    placeholderCover: '임시 커버',
+    placeholderCover: '릴리즈 아트워크',
     drawerCopy:
       '앨범 상세는 팀 페이지 안 슬라이드오버로 유지해서 컴백 맥락을 잃지 않고 바로 돌아올 수 있습니다.',
     appleMusicNext: 'Apple Music 다음 이슈',
@@ -431,7 +448,7 @@ const TEAM_COPY = {
     stream: 'Stream',
     trackPreview: 'Track preview',
     trackPreviewHint: 'Track info is a v1 placeholder and will be replaced when the full discography pipeline lands.',
-    placeholderCover: 'Placeholder cover',
+    placeholderCover: 'Release artwork',
     drawerCopy:
       'Album detail stays inside the team page so users can inspect the release and return to comeback context immediately.',
     appleMusicNext: 'Apple Music next',
@@ -444,8 +461,10 @@ const releaseKindOptions = ['all', 'single', 'album', 'ep'] as const
 const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
 const MUSIC_HANDOFF_SERVICES: MusicService[] = ['spotify', 'youtube_music']
+const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
+const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
 const releaseCatalog = releaseRows as ReleaseRow[]
 const releases = releaseCatalog
   .flatMap((row) => expandReleaseRow(row))
@@ -469,6 +488,9 @@ const watchStatusCounts = watchlist.reduce<Record<string, number>>((counts, row)
 const releaseCatalogByGroup = new Map(releaseCatalog.map((row) => [row.group, row]))
 const artistProfileByGroup = new Map(artistProfiles.map((row) => [row.group, row]))
 const artistProfileBySlug = new Map(artistProfiles.map((row) => [row.slug, row]))
+const releaseArtworkByKey = new Map(
+  releaseArtworkCatalog.map((row) => [getReleaseArtworkKey(row.group, row.release_title, row.release_date, row.stream), row]),
+)
 const releaseGroups = groupReleasesByGroup(releases)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
 const upcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
@@ -803,7 +825,18 @@ function App() {
                 <h2>{selectedTeam.latestRelease?.title ?? teamCopy.latestEmptyTitle}</h2>
                 {selectedTeam.latestRelease ? (
                   <article className="detail-card detail-card-feature">
-                    <div>
+                    <ReleaseArtworkFigure
+                      artwork={getReleaseArtwork(
+                        selectedTeam.group,
+                        selectedTeam.latestRelease.title,
+                        selectedTeam.latestRelease.date,
+                        selectedTeam.latestRelease.stream,
+                        selectedTeam.latestRelease.releaseKind,
+                      )}
+                      alt={`${selectedTeam.displayName} ${selectedTeam.latestRelease.title} cover artwork`}
+                      variant="feature"
+                    />
+                    <div className="detail-card-feature-body">
                       <div className="signal-head">
                         <TeamIdentity group={selectedTeam.group} variant="list" />
                         <span className="signal-badge">
@@ -815,28 +848,28 @@ function App() {
                         {selectedTeam.latestRelease.verified ? teamCopy.verifiedRelease : teamCopy.watchlistFallback} ·{' '}
                         {formatOptionalDate(selectedTeam.latestRelease.date, displayDateFormatter, copy.none)}
                       </p>
+                      <div className="detail-links detail-links-stack">
+                        {selectedTeam.latestRelease.source ? (
+                          <a href={selectedTeam.latestRelease.source} target="_blank" rel="noreferrer">
+                            {copy.releaseSource}
+                          </a>
+                        ) : (
+                          <span className="signal-link-muted">{teamCopy.releaseSourcePending}</span>
+                        )}
+                        {selectedTeam.latestRelease.artistSource ? (
+                          <a href={selectedTeam.latestRelease.artistSource} target="_blank" rel="noreferrer">
+                            {copy.artistSource}
+                          </a>
+                        ) : null}
+                      </div>
+                      <MusicHandoffRow
+                        group={selectedTeam.group}
+                        title={selectedTeam.latestRelease.title}
+                        canonicalUrls={selectedTeam.latestRelease.musicHandoffs}
+                        language={language}
+                        showHint
+                      />
                     </div>
-                    <div className="detail-links detail-links-stack">
-                      {selectedTeam.latestRelease.source ? (
-                        <a href={selectedTeam.latestRelease.source} target="_blank" rel="noreferrer">
-                          {copy.releaseSource}
-                        </a>
-                      ) : (
-                        <span className="signal-link-muted">{teamCopy.releaseSourcePending}</span>
-                      )}
-                      {selectedTeam.latestRelease.artistSource ? (
-                        <a href={selectedTeam.latestRelease.artistSource} target="_blank" rel="noreferrer">
-                          {copy.artistSource}
-                        </a>
-                      ) : null}
-                    </div>
-                    <MusicHandoffRow
-                      group={selectedTeam.group}
-                      title={selectedTeam.latestRelease.title}
-                      canonicalUrls={selectedTeam.latestRelease.musicHandoffs}
-                      language={language}
-                      showHint
-                    />
                   </article>
                 ) : (
                   <p className="empty-copy">{teamCopy.latestEmptyTitle}</p>
@@ -848,27 +881,44 @@ function App() {
                 <h2>{selectedTeam.recentAlbums.length ? teamCopy.recentAlbumsTitle : teamCopy.recentAlbumsEmptyTitle}</h2>
                 {selectedTeam.recentAlbums.length ? (
                   <div className="album-grid">
-                    {selectedTeam.recentAlbums.map((item) => (
-                      <article key={getAlbumKey(item)} className="album-card-shell">
-                        <button
-                          type="button"
-                          className="album-card"
-                          onClick={() => setSelectedAlbumKey(getAlbumKey(item))}
-                        >
-                          <span className="album-card-kicker">{item.release_kind}</span>
-                          <strong>{item.title}</strong>
-                          <span>{formatOptionalDate(item.date, displayDateFormatter, copy.none)}</span>
-                          <span className="album-card-meta">{teamCopy.openAlbumDetail}</span>
-                        </button>
-                        <MusicHandoffRow
-                          group={selectedTeam.group}
-                          title={item.title}
-                          canonicalUrls={item.music_handoffs}
-                          language={language}
-                          compact
-                        />
-                      </article>
-                    ))}
+                    {selectedTeam.recentAlbums.map((item) => {
+                      const artwork = getReleaseArtwork(
+                        item.group,
+                        item.title,
+                        item.date,
+                        item.stream,
+                        item.release_kind,
+                      )
+
+                      return (
+                        <article key={getAlbumKey(item)} className="album-card-shell">
+                          <button
+                            type="button"
+                            className="album-card"
+                            onClick={() => setSelectedAlbumKey(getAlbumKey(item))}
+                          >
+                            <ReleaseArtworkFigure
+                              artwork={artwork}
+                              alt={`${selectedTeam.displayName} ${item.title} cover artwork`}
+                              variant="card"
+                            />
+                            <div className="album-card-copy">
+                              <span className="album-card-kicker">{item.release_kind}</span>
+                              <strong>{item.title}</strong>
+                              <span>{formatOptionalDate(item.date, displayDateFormatter, copy.none)}</span>
+                              <span className="album-card-meta">{teamCopy.openAlbumDetail}</span>
+                            </div>
+                          </button>
+                          <MusicHandoffRow
+                            group={selectedTeam.group}
+                            title={item.title}
+                            canonicalUrls={item.music_handoffs}
+                            language={language}
+                            compact
+                          />
+                        </article>
+                      )
+                    })}
                   </div>
                 ) : (
                   <p className="empty-copy">{teamCopy.recentAlbumsEmpty}</p>
@@ -1303,6 +1353,7 @@ function AlbumDrawer({
   const teamCopy = TEAM_COPY[language]
   const previewTracks = buildAlbumPreviewTracks(album, group, language)
   const displayName = getTeamDisplayName(group)
+  const artwork = getReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind)
 
   return (
     <div className="drawer-backdrop" onClick={onClose} role="presentation">
@@ -1318,9 +1369,11 @@ function AlbumDrawer({
         </div>
 
         <div className="album-drawer-cover">
-          <div className="album-drawer-art" aria-hidden="true">
-            {getTeamMonogram(group)}
-          </div>
+          <ReleaseArtworkFigure
+            artwork={artwork}
+            alt={`${displayName} ${album.title} cover artwork`}
+            variant="drawer"
+          />
           <div>
             <p className="panel-label">{teamCopy.placeholderCover}</p>
             <h3>{displayName}</h3>
@@ -1452,6 +1505,36 @@ function TeamIdentity({
       </span>
       <span className="team-label">{label}</span>
     </span>
+  )
+}
+
+function ReleaseArtworkFigure({
+  artwork,
+  alt,
+  variant,
+}: {
+  artwork: ResolvedReleaseArtwork
+  alt: string
+  variant: 'feature' | 'card' | 'drawer'
+}) {
+  return (
+    <div
+      className={[
+        'release-artwork',
+        `release-artwork-${variant}`,
+        artwork.isPlaceholder ? 'release-artwork-placeholder' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      <img
+        className="release-artwork-image"
+        src={variant === 'drawer' ? artwork.cover_image_url : artwork.thumbnail_image_url}
+        alt={alt}
+        loading={variant === 'drawer' ? 'eager' : 'lazy'}
+        decoding="async"
+      />
+    </div>
   )
 }
 
@@ -1618,6 +1701,70 @@ function buildMusicSearchUrl(service: MusicService, query: string) {
   return `https://music.youtube.com/search?q=${encodedQuery}`
 }
 
+function getReleaseArtworkKey(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: ReleaseArtworkRow['stream'],
+) {
+  return [group, releaseTitle, releaseDate, stream].join('::')
+}
+
+function normalizeArtworkStream(
+  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
+  releaseKind?: string,
+): ReleaseArtworkRow['stream'] {
+  if (stream === 'album') {
+    return 'album'
+  }
+  if (stream === 'song') {
+    return 'song'
+  }
+  return releaseKind === 'album' || releaseKind === 'ep' ? 'album' : 'song'
+}
+
+function buildPlaceholderReleaseArtwork(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
+  releaseKind?: string,
+): ResolvedReleaseArtwork {
+  return {
+    group,
+    release_title: releaseTitle,
+    release_date: releaseDate,
+    stream: normalizeArtworkStream(stream, releaseKind),
+    cover_image_url: RELEASE_ARTWORK_PLACEHOLDER_URL,
+    thumbnail_image_url: RELEASE_ARTWORK_PLACEHOLDER_URL,
+    artwork_source_type: 'placeholder',
+    artwork_source_url: RELEASE_ARTWORK_PLACEHOLDER_URL,
+    isPlaceholder: true,
+  }
+}
+
+function getReleaseArtwork(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
+  releaseKind?: string,
+): ResolvedReleaseArtwork {
+  const normalizedStream = normalizeArtworkStream(stream, releaseKind)
+  const artwork = releaseArtworkByKey.get(
+    getReleaseArtworkKey(group, releaseTitle, releaseDate, normalizedStream),
+  )
+
+  if (!artwork) {
+    return buildPlaceholderReleaseArtwork(group, releaseTitle, releaseDate, stream, releaseKind)
+  }
+
+  return {
+    ...artwork,
+    isPlaceholder: artwork.artwork_source_type === 'placeholder',
+  }
+}
+
 function buildTeamProfiles() {
   return Array.from(
     new Set([
@@ -1670,6 +1817,7 @@ function deriveLatestRelease(
       date: latestVerified.date,
       releaseKind: latestVerified.release_kind,
       streamLabel: latestVerified.stream,
+      stream: latestVerified.stream,
       source: latestVerified.source,
       artistSource: latestVerified.artist_source,
       musicHandoffs: latestVerified.music_handoffs,
@@ -1686,6 +1834,7 @@ function deriveLatestRelease(
     date: watchRow.latest_release_date || '',
     releaseKind: watchRow.latest_release_kind || 'unknown',
     streamLabel: 'watchlist',
+    stream: 'watchlist',
     source: '',
     artistSource: releaseRow?.artist_source ?? '',
     verified: false,
