@@ -1,5 +1,6 @@
 import csv
 import json
+from datetime import date
 from pathlib import Path
 
 
@@ -9,6 +10,7 @@ ROOT = Path(__file__).resolve().parent
 SEARCH_QUERY_OVERRIDE = {
     "(G)I-DLE": ['"i-dle" kpop comeback'],
     "&TEAM": ['"&TEAM" kpop comeback'],
+    "ALLDAY PROJECT": ['"ALLDAY PROJECT" kpop comeback', '"ALLDAY_PROJECT" comeback'],
     "AtHeart": ['"AtHeart" kpop comeback'],
     "Hearts2Hearts": ['"Hearts2Hearts" kpop comeback'],
     "KiiiKiii": ['"KiiiKiii" kpop comeback'],
@@ -19,11 +21,14 @@ SEARCH_QUERY_OVERRIDE = {
     "TOMORROW X TOGETHER": ['"TOMORROW X TOGETHER" comeback', '"TXT" comeback kpop'],
     "UNIS": ['"UNIS" kpop comeback'],
     "WJSN": ['"WJSN" kpop comeback', '"Cosmic Girls" comeback'],
+    "Weeekly": ['"Weeekly" comeback'],
     "ifeye": ['"ifeye" kpop comeback'],
     "izna": ['"izna" kpop comeback'],
     "woo!ah!": ['"woo!ah!" comeback'],
     "xikers": ['"xikers" comeback'],
 }
+
+LONG_GAP_DAYS = 365
 
 
 def load_json(name: str):
@@ -44,6 +49,74 @@ def newest_release(row: dict):
     return sorted(releases, key=lambda release: release["date"], reverse=True)[0]
 
 
+def parse_release_date(value: str | None):
+    if not value:
+        return None
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def is_long_gap(value: str | None, reference_date: date):
+    release_date = parse_release_date(value)
+    if release_date is None:
+        return False
+    return (reference_date - release_date).days >= LONG_GAP_DAYS
+
+
+def manual_release(row: dict):
+    if not row:
+        return None
+
+    release_date = row.get("latest_release_date", "")
+    if not release_date:
+        return None
+
+    return {
+        "title": row.get("latest_release_title", ""),
+        "date": release_date,
+        "release_kind": row.get("latest_release_kind", ""),
+    }
+
+
+def resolve_watch_reason(
+    latest_release: dict | None,
+    has_recent_release: bool,
+    manual_row: dict | None,
+    reference_date: date,
+):
+    if has_recent_release:
+        return "recent_release"
+
+    manual_reason = (manual_row or {}).get("watch_reason")
+    if latest_release and is_long_gap(latest_release.get("date"), reference_date):
+        return "long_gap"
+
+    if manual_reason in {"manual_watch", "long_gap"}:
+        return "manual_watch"
+
+    return ""
+
+
+def resolve_tracking_status(
+    group: str,
+    has_recent_release: bool,
+    watch_reason: str,
+    manual_row: dict | None,
+    unresolved_by_group: dict[str, dict],
+):
+    if has_recent_release:
+        return "recent_release"
+    if group in unresolved_by_group:
+        return "needs_manual_review"
+    if manual_row and manual_row.get("tracking_status") and watch_reason:
+        return manual_row["tracking_status"]
+    if watch_reason in {"long_gap", "manual_watch"}:
+        return "watch_only"
+    return "filtered_out"
+
+
 def main():
     social_rows = load_json("artist_socials_structured_2026-03-04.json")
     recent_rows = load_json("group_latest_release_since_2025-06-01_mb.json")
@@ -52,6 +125,8 @@ def main():
 
     recent_by_group = {row["group"]: row for row in recent_rows}
     unresolved_by_group = {row["group"]: row for row in unresolved_rows}
+    manual_by_group = {row["group"]: row for row in manual_rows}
+    reference_date = date.today()
 
     watchlist = {}
     for row in social_rows:
@@ -59,23 +134,34 @@ def main():
             continue
 
         group = row["artist"]
-        latest_release = newest_release(recent_by_group.get(group, {}))
-        status = "filtered_out"
-        if group in recent_by_group:
-            status = "recent_release"
-        elif group in unresolved_by_group:
-            status = "needs_manual_review"
+        manual_row = manual_by_group.get(group)
+        latest_release = newest_release(recent_by_group.get(group, {})) or manual_release(manual_row or {})
+        has_recent_release = group in recent_by_group
+        watch_reason = resolve_watch_reason(
+            latest_release=latest_release,
+            has_recent_release=has_recent_release,
+            manual_row=manual_row,
+            reference_date=reference_date,
+        )
+        status = resolve_tracking_status(
+            group=group,
+            has_recent_release=has_recent_release,
+            watch_reason=watch_reason,
+            manual_row=manual_row,
+            unresolved_by_group=unresolved_by_group,
+        )
 
         watchlist[group] = {
             "group": group,
             "tier": row["tier"],
+            "watch_reason": watch_reason,
             "tracking_status": status,
             "latest_release_title": latest_release["title"] if latest_release else "",
             "latest_release_date": latest_release["date"] if latest_release else "",
             "latest_release_kind": latest_release["release_kind"] if latest_release else "",
             "x_url": row.get("x_url", ""),
             "instagram_url": row.get("instagram_url", ""),
-            "search_terms": default_search_terms(group),
+            "search_terms": (manual_row or {}).get("search_terms") or default_search_terms(group),
         }
 
     for row in manual_rows:
@@ -85,6 +171,7 @@ def main():
             {
                 "group": group,
                 "tier": row.get("tier", "manual"),
+                "watch_reason": row.get("watch_reason", "manual_watch"),
                 "tracking_status": "watch_only",
                 "latest_release_title": "",
                 "latest_release_date": "",
@@ -94,8 +181,26 @@ def main():
                 "search_terms": [],
             },
         )
+        latest_release = manual_release(row)
+        watch_reason = resolve_watch_reason(
+            latest_release=latest_release,
+            has_recent_release=group in recent_by_group,
+            manual_row=row,
+            reference_date=reference_date,
+        )
         current["tier"] = row.get("tier", current["tier"])
-        current["tracking_status"] = current.get("tracking_status") or "watch_only"
+        current["watch_reason"] = watch_reason
+        current["tracking_status"] = resolve_tracking_status(
+            group=group,
+            has_recent_release=group in recent_by_group,
+            watch_reason=watch_reason,
+            manual_row=row,
+            unresolved_by_group=unresolved_by_group,
+        )
+        if latest_release:
+            current["latest_release_title"] = latest_release["title"]
+            current["latest_release_date"] = latest_release["date"]
+            current["latest_release_kind"] = latest_release["release_kind"]
         current["x_url"] = row.get("x_url", current["x_url"])
         current["instagram_url"] = row.get("instagram_url", current["instagram_url"])
         current["search_terms"] = row.get("search_terms", current["search_terms"]) or default_search_terms(group)
@@ -114,6 +219,7 @@ def main():
             fieldnames=[
                 "group",
                 "tier",
+                "watch_reason",
                 "tracking_status",
                 "latest_release_title",
                 "latest_release_date",
@@ -132,7 +238,11 @@ def main():
     print(
         json.dumps(
             {
+                "reference_date": reference_date.isoformat(),
                 "watch_targets": len(rows),
+                "recent_release_reason": sum(1 for row in rows if row["watch_reason"] == "recent_release"),
+                "long_gap_reason": sum(1 for row in rows if row["watch_reason"] == "long_gap"),
+                "manual_watch_reason": sum(1 for row in rows if row["watch_reason"] == "manual_watch"),
                 "recent_release": sum(1 for row in rows if row["tracking_status"] == "recent_release"),
                 "filtered_out": sum(1 for row in rows if row["tracking_status"] == "filtered_out"),
                 "needs_manual_review": sum(
