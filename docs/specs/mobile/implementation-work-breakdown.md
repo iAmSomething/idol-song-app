@@ -149,3 +149,7 @@ mobile/
 - Expo 라우팅/상태/asset/성능 가이드는 `expo-implementation-guide.md`를 따른다.
 - 화면 완료 기준은 `screen-delivery-checklists.md`를 따른다.
 - 테스트 레벨과 최소 합격선은 `testing-strategy-spec.md`를 따른다.
+
+## 10. 이슈 분해 참조
+- 실제 GitHub 이슈 생성 순서와 묶음은 `github-issue-breakdown-plan.md`를 따른다.
+- TypeScript 모델 예시는 `typescript-interface-examples.md`를 참조한다.

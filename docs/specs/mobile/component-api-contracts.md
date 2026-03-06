@@ -235,3 +235,6 @@
 ### Rules
 - apply 이전에는 임시 상태 유지 가능
 - background close 시 폐기/유지 정책은 screen-level spec을 따른다.
+
+## 19. 참조 예시
+- 실제 interface 네이밍 예시는 `typescript-interface-examples.md`를 참조한다.

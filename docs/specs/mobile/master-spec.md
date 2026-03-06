@@ -273,4 +273,6 @@
 - `expo-implementation-guide.md`
 - `screen-delivery-checklists.md`
 - `testing-strategy-spec.md`
+- `typescript-interface-examples.md`
+- `github-issue-breakdown-plan.md`
 - `edge-case-catalog.md`

@@ -52,13 +52,17 @@
    - 화면별 완료 체크리스트
 23. `testing-strategy-spec.md`
    - unit/component/smoke/manual 테스트 전략
+24. `typescript-interface-examples.md`
+   - display model, props, screen state의 TS 예시
+25. `github-issue-breakdown-plan.md`
+   - 모바일 구현을 위한 GitHub issue 분해 계획
 
 ### Screen Specs
-24. `calendar-screen.md`
-25. `radar-screen.md`
-26. `search-screen.md`
-27. `team-detail-screen.md`
-28. `release-detail-screen.md`
+26. `calendar-screen.md`
+27. `radar-screen.md`
+28. `search-screen.md`
+29. `team-detail-screen.md`
+30. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -82,9 +86,11 @@
 19. `expo-implementation-guide.md`
 20. `screen-delivery-checklists.md`
 21. `testing-strategy-spec.md`
-22. 각 화면 스펙
-23. `edge-case-catalog.md`
-24. `qa-acceptance-spec.md`
+22. `typescript-interface-examples.md`
+23. `github-issue-breakdown-plan.md`
+24. 각 화면 스펙
+25. `edge-case-catalog.md`
+26. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
