@@ -264,4 +264,7 @@
 - `accessibility-platform-spec.md`
 - `interaction-matrix.md`
 - `sample-data-contracts.md`
+- `wireframe-block-diagrams.md`
+- `design-token-spec.md`
+- `implementation-work-breakdown.md`
 - `edge-case-catalog.md`

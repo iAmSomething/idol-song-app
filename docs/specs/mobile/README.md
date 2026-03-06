@@ -34,13 +34,19 @@
    - 화면별 모든 주요 탭/시트/외부 이동 매트릭스
 14. `sample-data-contracts.md`
    - UI 관점의 최소 JSON payload 예시
+15. `wireframe-block-diagrams.md`
+   - 핵심 화면의 블록 수준 구조 다이어그램
+16. `design-token-spec.md`
+   - semantic token naming과 역할 정의
+17. `implementation-work-breakdown.md`
+   - Expo 앱 구현을 위한 모듈/작업 분해
 
 ### Screen Specs
-15. `calendar-screen.md`
-16. `radar-screen.md`
-17. `search-screen.md`
-18. `team-detail-screen.md`
-19. `release-detail-screen.md`
+18. `calendar-screen.md`
+19. `radar-screen.md`
+20. `search-screen.md`
+21. `team-detail-screen.md`
+22. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -55,9 +61,12 @@
 10. `accessibility-platform-spec.md`
 11. `interaction-matrix.md`
 12. `sample-data-contracts.md`
-13. 각 화면 스펙
-14. `edge-case-catalog.md`
-15. `qa-acceptance-spec.md`
+13. `wireframe-block-diagrams.md`
+14. `design-token-spec.md`
+15. `implementation-work-breakdown.md`
+16. 각 화면 스펙
+17. `edge-case-catalog.md`
+18. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.

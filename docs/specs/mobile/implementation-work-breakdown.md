@@ -1,0 +1,141 @@
+# Implementation Work Breakdown
+
+## 1. 목적
+이 문서는 모바일 앱을 실제 개발 작업으로 분해한다.
+구현자는 이 문서를 기준으로 에픽, 모듈, 컴포넌트, selector, 화면 작업을 순차적으로 진행할 수 있어야 한다.
+
+## 2. 권장 저장소 구조
+```text
+mobile/
+  app/
+    (tabs)/
+      calendar.tsx
+      radar.tsx
+      search.tsx
+    artists/[slug].tsx
+    releases/[id].tsx
+  src/
+    components/
+      app-bar/
+      buttons/
+      cards/
+      chips/
+      rows/
+      sheets/
+    features/
+      calendar/
+      radar/
+      search/
+      artist/
+      release/
+    selectors/
+    services/
+    tokens/
+    types/
+    utils/
+```
+
+## 3. 선행 구현 순서
+1. Token / Theme layer
+2. Navigation shell
+3. Shared selectors and adapters
+4. Shared components
+5. Calendar screen
+6. Team Detail
+7. Release Detail
+8. Search screen
+9. Radar screen
+10. QA and polish
+
+## 4. Module Breakdown
+
+### 4.1 tokens/
+- design token constants
+- semantic color mapping
+- spacing/radius/type scale
+
+### 4.2 types/
+- TeamSummaryModel
+- ReleaseSummaryModel
+- UpcomingEventModel
+- ReleaseDetailModel
+
+### 4.3 selectors/
+- `selectMonthReleases`
+- `selectMonthUpcoming`
+- `selectNearestComeback`
+- `selectTeamDetail`
+- `selectReleaseDetail`
+- `selectSearchResults`
+
+### 4.4 services/
+- external handoff builder
+- search fallback URL builder
+- source classifier helper
+
+### 4.5 components/
+- AppBar
+- SummaryStrip
+- SegmentedControl
+- ServiceButton
+- PrimaryButton
+- MetaLinkRow
+- TeamIdentityRow
+- ReleaseSummaryRow
+- UpcomingEventRow
+- AlbumCard
+- TrackRow
+- EmptyStateBlock
+- ErrorStateBlock
+- DateDetailSheet
+- FilterSheet
+
+## 5. Screen Task Breakdown
+
+### 5.1 Calendar
+1. AppBar + Month navigation
+2. SummaryStrip
+3. Calendar grid + DayCell
+4. Date Detail Sheet
+5. List mode
+6. Filter integration
+
+### 5.2 Team Detail
+1. Hero block
+2. Next Comeback card
+3. Latest Release card
+4. Recent Album carousel
+
+### 5.3 Release Detail
+1. Header + cover/meta
+2. Album service action group
+3. Track list
+4. MV block
+5. Notes/credits/source
+
+### 5.4 Search
+1. Search input + persistence
+2. Segmented results
+3. Team rows
+4. Release rows
+5. Upcoming rows
+
+### 5.5 Radar
+1. Featured card
+2. Weekly list
+3. Change feed cards
+4. Long-gap cards
+5. Rookie cards
+
+## 6. Delivery Order Recommendation
+- Milestone A: Calendar + Team + Release
+- Milestone B: Search
+- Milestone C: Radar
+- Milestone D: accessibility/polish/offline/error hardening
+
+## 7. Definition of Done
+- 화면이 스펙 문서의 버튼 위치/이동 규칙을 충족한다.
+- selector 레이어가 raw JSON fallback을 캡슐화한다.
+- 서비스 handoff는 canonical 또는 검색 fallback을 지원한다.
+- 접근성 기본 요건을 만족한다.
+- QA acceptance checklist를 통과한다.
