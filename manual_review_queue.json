@@ -333,13 +333,13 @@
   },
   {
     "group": "BTS",
-    "headline": "BTS Reveals 14-Song Tracklist for Upcoming \"Arirang\" Album - Tempo.co",
+    "headline": "BTS Reveals 14-Song Tracklist for Upcoming \"Arirang\" Album - Tempo.co English",
     "scheduled_date": "",
     "date_status": "rumor",
     "confidence": 0.56,
     "source_type": "news_rss",
     "source_url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNWXFTZTFic0o2TTA5R1FOeXRMcklVWFYyZGl2aEYzWU53NHMyVDYzdVBSSVp1S09XVVFYSXN3dWtiSkJuZldFOGwwalZ4Y21rakgtM2hvbWNUQlN4TndjUVE1ZFk4dkswamNVZ1RGYzdxRlpCNTdDTTU3NnVEUlN6M1VieERleDhsaFI2ZmhJWXVCemM?oc=5",
-    "evidence_summary": "BTS Reveals 14-Song Tracklist for Upcoming \"Arirang\" Album Tempo.co",
+    "evidence_summary": "BTS Reveals 14-Song Tracklist for Upcoming \"Arirang\" Album Tempo.co English",
     "tracking_status": "filtered_out",
     "review_reason": [
       "low_confidence",
@@ -357,22 +357,6 @@
     "source_type": "news_rss",
     "source_url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOR3N4UWhOY3IzQXk4SlFCVnRVTDdrdEkyUkI4bGpUOFNpb2xYczF5SUhOX0RNQ21pcTFWYzl4bTFPZEk3ZU04bFVnXzBWTUNLT3lqR0JsZTItN2xacTNQVnpOZHRxbnl2d1FPczZXeFBDbTJjdGpOQjhPVFh4cHZ6VDlZZmUzNjduR2l2WGZyV0ljb0poY1ViRGF2QTRuLTNUQng3VDFrbDJmVmtzNXdsRHFsbS1OSllfMGpJcjN3cGt1UQ?oc=5",
     "evidence_summary": "Future month reference: 2026-03. BTS Confirm 2026 Comeback with New Album and World Tour Set for March L'Officiel Singapore",
-    "tracking_status": "filtered_out",
-    "review_reason": [
-      "low_confidence",
-      "inexact_date"
-    ],
-    "recommended_action": "Review the evidence and confidence score manually."
-  },
-  {
-    "group": "BTS",
-    "headline": "Netflix Will Livestream The BTS Comeback Concert This March - AugustMan Singapore",
-    "scheduled_date": "",
-    "date_status": "scheduled",
-    "confidence": 0.58,
-    "source_type": "news_rss",
-    "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQcEh4M2dBTVVpTkE3R3k5VVZycmVyXzZQZzFLVmttbE9RdjZ5cFV5cEtLVHVucWZkd2ZrWDBpZWYzakRWQ0ktb0drYmx0NnpPOFA4djhRcUtwMkx1WmxRVnkwRjRIWll0cTJMWmJoTjk4SkRGSkR1bFo4UEFkbGZzaUxrQ2ZRTDJ0TXRhc2dwVC05azNnNEIzNFpvOXJJU0N5S3ZCY0I2ZDRXVWRsSktMMFNrNmxsY3ZUNWR30gHAAUFVX3lxTFA1TXdOZThUb2JmSnc4Y2toR3hHWVJnMTlYSlVpVzZ2RjU0OENncHFQTmdocks3Q3dzVjJlQmtkMzhKUDlWeDhNMzJtRGthdTRSajBieVNnaWxfQWFlZ3BRVjJHTE5EcWZGQjRYNUZJN1lESUl5WmJnXzcxUWpwdE5qQUFuWTFTRDk0RDhaYUQ3TmJhLWx2Zi1lM051SWk2MTQwQ3RaaHhiaklxVVA1NnFOSnNGdzc2dDhkckJNdW9Vdg?oc=5",
-    "evidence_summary": "Future month reference: 2026-03. Netflix Will Livestream The BTS Comeback Concert This March AugustMan Singapore",
     "tracking_status": "filtered_out",
     "review_reason": [
       "low_confidence",
@@ -742,6 +726,23 @@
       "unresolved_group"
     ],
     "recommended_action": "Verify the group's latest release mapping and artist source manually."
+  },
+  {
+    "group": "ONEUS",
+    "headline": "ONEUS reveals the tracks for their upcoming single album ‘原 (Won)’ - allkpop",
+    "scheduled_date": "",
+    "date_status": "rumor",
+    "confidence": 0.56,
+    "source_type": "news_rss",
+    "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOeHlXTUR3OFozMFR2U0xuZWVaNUtPWmc2Y1ZkTFFYZFh6OHN5ekZfRWxGWXduYjAzbDZBYXh5NS0tZjJOSWdYdnRwc0NjQXhCSV9hYV9JRDJnWUJ6ekNXWGVBTUtiUDNGZFR5QnVoYTMybi04Y3ByMC00eHRZZlI3c2RFSHVPRS1ULS1YblplQjVCeWROanBETlJyMlo?oc=5",
+    "evidence_summary": "ONEUS reveals the tracks for their upcoming single album ‘原 (Won)’ allkpop",
+    "tracking_status": "recent_release",
+    "review_reason": [
+      "low_confidence",
+      "inexact_date",
+      "missing_source_link"
+    ],
+    "recommended_action": "Confirm an official source and exact date before promoting the candidate."
   },
   {
     "group": "P1Harmony",
