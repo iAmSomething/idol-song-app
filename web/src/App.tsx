@@ -230,6 +230,23 @@ type ReleaseChangeLogRow = {
   }
 }
 
+type AnnualReleaseTimelineItem =
+  | {
+      kind: 'release'
+      occurredAt: string
+      release: VerifiedRelease
+    }
+  | {
+      kind: 'scheduled'
+      occurredAt: string
+      signal: UpcomingCandidateRow
+    }
+
+type AnnualReleaseTimelineSection = {
+  year: number
+  items: AnnualReleaseTimelineItem[]
+}
+
 type WatchReason = 'recent_release' | 'long_gap' | 'manual_watch'
 
 type WatchlistRow = {
@@ -309,6 +326,7 @@ type TeamProfile = {
   recentAlbums: VerifiedRelease[]
   upcomingSignals: UpcomingCandidateRow[]
   sourceTimeline: SourceTimelineItem[]
+  annualReleaseTimeline: AnnualReleaseTimelineSection[]
   changeLog: ReleaseChangeLogRow[]
   nextUpcomingSignal: UpcomingCandidateRow | null
 }
@@ -773,6 +791,13 @@ const TEAM_COPY = {
     timelineIntro: '예정 신호와 검증된 발매를 같은 타임라인에서 봅니다.',
     timelineEmptyTitle: '타임라인 근거 없음',
     timelineEmpty: '예정 신호나 검증된 발매 출처가 아직 충분하지 않습니다.',
+    annualTimelineLabel: '연간 릴리즈 타임라인',
+    annualTimelineTitle: '연도별 verified release 흐름',
+    annualTimelineIntro: 'verified release를 연도 기준으로 묶고, 현재 연도의 예정 컴백은 보조 marker로 덧붙입니다.',
+    annualTimelineEmptyTitle: '연간 릴리즈 타임라인 없음',
+    annualTimelineEmpty: '표시할 verified release 히스토리가 아직 충분하지 않습니다.',
+    annualTimelineReleaseMarker: '릴리즈',
+    annualTimelineScheduledMarker: '예정 마커',
     changeLogLabel: '변경 로그',
     changeLogTitle: '최근 일정/상태 변동',
     changeLogIntro: '스냅샷 비교로 감지한 최근 변경입니다.',
@@ -848,6 +873,13 @@ const TEAM_COPY = {
     timelineIntro: 'Scheduled signals and verified releases share one evidence trail.',
     timelineEmptyTitle: 'No timeline evidence yet',
     timelineEmpty: 'There is not enough scheduled or verified source evidence for this team yet.',
+    annualTimelineLabel: 'Annual release timeline',
+    annualTimelineTitle: 'Verified release flow by year',
+    annualTimelineIntro: 'Group verified releases by year and add the current-year scheduled comeback as an optional marker.',
+    annualTimelineEmptyTitle: 'No annual release timeline yet',
+    annualTimelineEmpty: 'There is not enough verified release history to show a yearly timeline yet.',
+    annualTimelineReleaseMarker: 'Release',
+    annualTimelineScheduledMarker: 'Scheduled marker',
     changeLogLabel: 'Change log',
     changeLogTitle: 'Recent schedule and state changes',
     changeLogIntro: 'Detected from snapshot-to-snapshot comparisons.',
@@ -932,6 +964,8 @@ const releaseEnrichmentByKey = new Map(
   ]),
 )
 const releaseGroups = groupReleasesByGroup(releases)
+const verifiedReleaseHistory = buildVerifiedReleaseHistory()
+const verifiedReleaseHistoryByGroup = groupReleasesByGroup(verifiedReleaseHistory)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
 const dedupedUpcomingCandidates = dedupeUpcomingCandidatesForDisplay(upcomingCandidates)
 const rawUpcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
@@ -1691,6 +1725,13 @@ function App() {
                   <p className="empty-copy">{teamCopy.latestEmptyTitle}</p>
                 )}
               </section>
+
+              <AnnualReleaseTimeline
+                sections={selectedTeam.annualReleaseTimeline}
+                language={language}
+                displayDateFormatter={displayDateFormatter}
+                onOpenReleaseDetail={openReleaseDetail}
+              />
 
               <section className="panel">
                 <p className="panel-label">{teamCopy.recentAlbumsLabel}</p>
@@ -2962,6 +3003,122 @@ function WeeklyMustListenDigest({
   )
 }
 
+function AnnualReleaseTimeline({
+  sections,
+  language,
+  displayDateFormatter,
+  onOpenReleaseDetail,
+}: {
+  sections: AnnualReleaseTimelineSection[]
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onOpenReleaseDetail: (release: VerifiedRelease) => void
+}) {
+  const teamCopy = TEAM_COPY[language]
+  const copy = TRANSLATIONS[language]
+
+  return (
+    <section className="panel annual-release-timeline">
+      <div className="team-subsection-head">
+        <p className="panel-label">{teamCopy.annualTimelineLabel}</p>
+        <h2>{sections.length ? teamCopy.annualTimelineTitle : teamCopy.annualTimelineEmptyTitle}</h2>
+        <p className="team-subsection-copy">{teamCopy.annualTimelineIntro}</p>
+      </div>
+
+      {sections.length ? (
+        <div className="annual-release-year-stack">
+          {sections.map((section) => (
+            <section key={section.year} className="annual-release-year-section">
+              <div className="annual-release-year-head">
+                <h3>{section.year}</h3>
+                <span className="selected-day-panel-count">{section.items.length}</span>
+              </div>
+              <ol className="annual-release-list">
+                {section.items.map((item, index) => (
+                  <li
+                    key={`${item.kind}-${item.occurredAt}-${item.kind === 'release' ? getAlbumKey(item.release) : item.signal.headline}`}
+                    className="annual-release-item"
+                  >
+                    <div className="annual-release-rail" aria-hidden="true">
+                      <span
+                        className={`annual-release-dot annual-release-dot-${item.kind === 'release' ? 'release' : 'scheduled'}`}
+                      />
+                      {index < section.items.length - 1 ? <span className="annual-release-line" /> : null}
+                    </div>
+                    {item.kind === 'release' ? (
+                      <article className="annual-release-card">
+                        <div className="annual-release-card-head">
+                          <div className="signal-tags">
+                            <span className="signal-badge signal-badge-annual-release">
+                              {teamCopy.annualTimelineReleaseMarker}
+                            </span>
+                            <ReleaseClassificationBadges
+                              releaseFormat={item.release.release_format}
+                              contextTags={item.release.context_tags}
+                              language={language}
+                            />
+                          </div>
+                          <p className="source-timeline-date">
+                            {formatOptionalDate(item.release.date, displayDateFormatter, copy.none)}
+                          </p>
+                        </div>
+                        <h3>{item.release.title}</h3>
+                        <p className="signal-meta">
+                          {formatReleaseFormat(item.release.release_format, language) || item.release.release_kind}
+                        </p>
+                        <div className="action-stack">
+                          <div className="action-row">
+                            <ActionButton variant="primary" onClick={() => onOpenReleaseDetail(item.release)}>
+                              {getReleaseDetailActionLabel(item.release.release_kind, language)}
+                            </ActionButton>
+                          </div>
+                          <DashboardServiceActions release={item.release} language={language} />
+                        </div>
+                      </article>
+                    ) : (
+                      <article className="annual-release-card annual-release-card-scheduled">
+                        <div className="annual-release-card-head">
+                          <div className="signal-tags">
+                            <span className="signal-badge signal-badge-annual-scheduled">
+                              {teamCopy.annualTimelineScheduledMarker}
+                            </span>
+                            <span className={`signal-badge signal-badge-date-${item.signal.date_status}`}>
+                              {formatDateStatus(item.signal.date_status, language)}
+                            </span>
+                          </div>
+                          <p className="source-timeline-date">
+                            {formatOptionalDate(item.signal.scheduled_date, displayDateFormatter, copy.none)}
+                          </p>
+                        </div>
+                        <h3>{item.signal.headline}</h3>
+                        <p className="signal-meta">
+                          {formatSourceType(item.signal.source_type, language)} ·{' '}
+                          {item.signal.source_domain || copy.sourceTypeLabels.pending}
+                        </p>
+                        <div className="meta-links">
+                          {item.signal.source_url ? (
+                            <a href={item.signal.source_url} target="_blank" rel="noreferrer" className="meta-link">
+                              {copy.sourceLink}
+                            </a>
+                          ) : (
+                            <span className="signal-link-muted">{copy.noSourceLink}</span>
+                          )}
+                        </div>
+                      </article>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <p className="empty-copy">{teamCopy.annualTimelineEmpty}</p>
+      )}
+    </section>
+  )
+}
+
 function MonthlyReleaseDashboard({
   monthLabel,
   verifiedRows,
@@ -3872,6 +4029,140 @@ function getWeeklyDigestDiversityScore(candidate: VerifiedRelease, selected: Ver
   return score
 }
 
+function buildVerifiedReleaseHistory() {
+  const historyByKey = new Map<string, VerifiedRelease>()
+
+  for (const detail of releaseDetailsCatalog) {
+    const releaseRow = releaseCatalogByGroup.get(detail.group)
+    const matchedRelease =
+      (releaseRow
+        ? [releaseRow.latest_song, releaseRow.latest_album].find((release, index) => {
+            if (!release) {
+              return false
+            }
+
+            const stream = index === 0 ? 'song' : 'album'
+            return (
+              release.title === detail.release_title &&
+              release.date === detail.release_date &&
+              normalizeReleaseStream(stream, release.release_kind) === detail.stream
+            )
+          })
+        : null) ?? null
+
+    historyByKey.set(getReleaseLookupKey(detail.group, detail.release_title, detail.release_date, detail.stream), {
+      title: detail.release_title,
+      date: detail.release_date,
+      source: matchedRelease?.source ?? '',
+      release_kind: detail.release_kind,
+      release_format: matchedRelease?.release_format ?? detail.release_kind,
+      context_tags: matchedRelease?.context_tags ?? [],
+      music_handoffs: matchedRelease?.music_handoffs,
+      group: detail.group,
+      artist_name_mb: releaseRow?.artist_name_mb ?? detail.group,
+      artist_mbid: releaseRow?.artist_mbid ?? '',
+      artist_source: releaseRow?.artist_source ?? '',
+      actType: getActType(detail.group),
+      stream: detail.stream,
+      dateValue: new Date(`${detail.release_date}T00:00:00`),
+      isoDate: detail.release_date,
+    })
+  }
+
+  for (const release of releases) {
+    const key = getReleaseLookupKey(release.group, release.title, release.date, release.stream)
+    if (!historyByKey.has(key)) {
+      historyByKey.set(key, release)
+    }
+  }
+
+  return [...historyByKey.values()].sort((left, right) => {
+    if (left.dateValue.getTime() !== right.dateValue.getTime()) {
+      return right.dateValue.getTime() - left.dateValue.getTime()
+    }
+
+    if (left.stream !== right.stream) {
+      return left.stream.localeCompare(right.stream)
+    }
+
+    return left.title.localeCompare(right.title)
+  })
+}
+
+function buildAnnualReleaseTimelineSections(
+  releases: VerifiedRelease[],
+  upcomingSignals: UpcomingCandidateRow[],
+) {
+  if (!releases.length) {
+    return []
+  }
+
+  const sections = new Map<number, AnnualReleaseTimelineSection>()
+
+  for (const release of releases) {
+    const year = Number.parseInt(release.date.slice(0, 4), 10)
+    if (!Number.isFinite(year)) {
+      continue
+    }
+
+    const current = sections.get(year) ?? { year, items: [] }
+    current.items.push({
+      kind: 'release',
+      occurredAt: release.date,
+      release,
+    })
+    sections.set(year, current)
+  }
+
+  const currentYear = new Date().getFullYear()
+  const scheduledMarker =
+    upcomingSignals.find(
+      (item) => isExactDate(item.scheduled_date) && Number.parseInt(item.scheduled_date.slice(0, 4), 10) === currentYear,
+    ) ?? null
+
+  if (scheduledMarker) {
+    const current = sections.get(currentYear) ?? { year: currentYear, items: [] }
+    current.items.push({
+      kind: 'scheduled',
+      occurredAt: scheduledMarker.scheduled_date,
+      signal: scheduledMarker,
+    })
+    sections.set(currentYear, current)
+  }
+
+  return [...sections.values()]
+    .map((section) => ({
+      ...section,
+      items: [...section.items].sort(compareAnnualReleaseTimelineItems),
+    }))
+    .sort((left, right) => right.year - left.year)
+}
+
+function compareAnnualReleaseTimelineItems(left: AnnualReleaseTimelineItem, right: AnnualReleaseTimelineItem) {
+  const dateCompare = parseDateValue(right.occurredAt) - parseDateValue(left.occurredAt)
+  if (dateCompare !== 0) {
+    return dateCompare
+  }
+
+  if (left.kind !== right.kind) {
+    return left.kind === 'scheduled' ? -1 : 1
+  }
+
+  if (left.kind === 'release' && right.kind === 'release') {
+    if (left.release.stream !== right.release.stream) {
+      return left.release.stream.localeCompare(right.release.stream)
+    }
+
+    return left.release.title.localeCompare(right.release.title)
+  }
+
+  if (left.kind === 'scheduled' && right.kind === 'scheduled') {
+    return left.signal.headline.localeCompare(right.signal.headline)
+  }
+
+  return 0
+}
+
 function formatTrackingStatus(status: string, language: Language) {
   return TRANSLATIONS[language].statusLabels[status as keyof typeof TRANSLATIONS.ko.statusLabels] ?? status
 }
@@ -4224,9 +4515,11 @@ function buildTeamProfiles() {
       const releaseRow = releaseCatalogByGroup.get(group)
       const artistProfile = artistProfileByGroup.get(group)
       const groupReleases = releaseGroups.get(group) ?? []
+      const verifiedHistory = verifiedReleaseHistoryByGroup.get(group) ?? []
       const upcomingSignals = [...(upcomingByGroup.get(group) ?? [])].sort(compareUpcomingSignals)
       const changeLog = releaseChangeLogByGroup.get(group) ?? []
       const sourceTimeline = buildSourceTimeline(group, rawUpcomingByGroup.get(group) ?? [], groupReleases)
+      const annualReleaseTimeline = buildAnnualReleaseTimelineSections(verifiedHistory, upcomingSignals)
       const latestRelease = deriveLatestRelease(groupReleases, watchRow, releaseRow)
 
       return {
@@ -4248,6 +4541,7 @@ function buildTeamProfiles() {
         recentAlbums: groupReleases.filter((item) => item.stream === 'album'),
         upcomingSignals,
         sourceTimeline,
+        annualReleaseTimeline,
         changeLog,
         nextUpcomingSignal: upcomingSignals[0] ?? null,
       }
@@ -5153,7 +5447,7 @@ function getAlbumKey(item: VerifiedRelease) {
 }
 
 function findVerifiedReleaseByKey(group: string, albumKey: string) {
-  return (releaseGroups.get(group) ?? []).find((item) => getAlbumKey(item) === albumKey) ?? null
+  return (verifiedReleaseHistoryByGroup.get(group) ?? []).find((item) => getAlbumKey(item) === albumKey) ?? null
 }
 
 function findVerifiedReleaseRecord(
