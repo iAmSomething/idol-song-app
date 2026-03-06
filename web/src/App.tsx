@@ -52,6 +52,11 @@ type UpcomingCandidateRow = {
   search_term: string
 }
 
+type DatedUpcomingSignal = UpcomingCandidateRow & {
+  dateValue: Date
+  isoDate: string
+}
+
 type WatchlistRow = {
   group: string
   tier: string
@@ -77,6 +82,9 @@ const releases = (releaseRows as ReleaseRow[])
 const unresolved = unresolvedRows as UnresolvedRow[]
 const watchlist = watchlistRows as WatchlistRow[]
 const upcomingCandidates = upcomingCandidateRows as UpcomingCandidateRow[]
+const datedUpcomingSignals = upcomingCandidates
+  .flatMap((row) => expandUpcomingCandidate(row))
+  .sort((left, right) => left.dateValue.getTime() - right.dateValue.getTime())
 
 const monthFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
@@ -105,7 +113,7 @@ const weekdays = Array.from({ length: 7 }, (_, index) => {
 
 const monthKeys = Array.from(
   new Set(
-    releases.map((item) => {
+    [...releases, ...datedUpcomingSignals].map((item) => {
       return getMonthKey(item.dateValue)
     }),
   ),
@@ -142,19 +150,41 @@ function App() {
       item.headline.toLowerCase().includes(needle)
     )
   })
+  const filteredUpcomingSignals = filteredUpcoming
+    .flatMap((item) => expandUpcomingCandidate(item))
+    .sort((left, right) => left.dateValue.getTime() - right.dateValue.getTime())
 
   const selectedMonthDate = monthKeyToDate(selectedMonthKey)
   const monthDays = buildCalendarDays(selectedMonthDate)
   const releasesByDate = groupByDate(filteredReleases)
+  const upcomingByDate = groupUpcomingByDate(filteredUpcomingSignals)
   const monthReleases = filteredReleases.filter((item) => getMonthKey(item.dateValue) === selectedMonthKey)
+  const monthUpcomingSignals = filteredUpcomingSignals.filter(
+    (item) => getMonthKey(item.dateValue) === selectedMonthKey,
+  )
+  const monthActiveDayIsos = Array.from(
+    new Set([...monthReleases.map((item) => item.isoDate), ...monthUpcomingSignals.map((item) => item.isoDate)]),
+  ).sort()
+  const filteredActiveDayIsos = Array.from(
+    new Set([
+      ...filteredReleases.map((item) => item.isoDate),
+      ...filteredUpcomingSignals.map((item) => item.isoDate),
+    ]),
+  ).sort()
+  const isSelectedDayInMonth =
+    selectedDayIso.slice(0, 7) === selectedMonthKey &&
+    (releasesByDate.has(selectedDayIso) || upcomingByDate.has(selectedDayIso))
 
   const effectiveSelectedDayIso =
-    selectedDayIso && releasesByDate.has(selectedDayIso)
+    isSelectedDayInMonth
       ? selectedDayIso
-      : monthReleases[0]?.isoDate ?? filteredReleases[0]?.isoDate ?? ''
+      : monthActiveDayIsos[0] ?? filteredActiveDayIsos[0] ?? ''
 
   const selectedDayReleases = effectiveSelectedDayIso
     ? releasesByDate.get(effectiveSelectedDayIso) ?? []
+    : []
+  const selectedDayUpcomingSignals = effectiveSelectedDayIso
+    ? upcomingByDate.get(effectiveSelectedDayIso) ?? []
     : []
 
   const latestRelease = filteredReleases[0]
@@ -222,8 +252,8 @@ function App() {
               />
             </label>
             <div className="summary-pill">
-              <span>{monthReleases.length}</span>
-              <span>verified events in this month</span>
+              <span>{monthReleases.length} verified</span>
+              <span>{monthUpcomingSignals.length} scheduled</span>
             </div>
           </div>
 
@@ -246,6 +276,8 @@ function App() {
             <div className="calendar-grid">
               {monthDays.map((day) => {
                 const dayReleases = releasesByDate.get(day.iso) ?? []
+                const dayUpcomingSignals = upcomingByDate.get(day.iso) ?? []
+                const hasCalendarItems = dayReleases.length > 0 || dayUpcomingSignals.length > 0
                 const isSelected = day.iso === effectiveSelectedDayIso
 
                 return (
@@ -255,7 +287,7 @@ function App() {
                     className={[
                       'calendar-cell',
                       day.inMonth ? '' : 'calendar-cell-muted',
-                      dayReleases.length ? 'calendar-cell-active' : '',
+                      hasCalendarItems ? 'calendar-cell-active' : '',
                       isSelected ? 'calendar-cell-selected' : '',
                     ]
                       .filter(Boolean)
@@ -269,8 +301,20 @@ function App() {
                           {item.group}
                         </span>
                       ))}
-                      {dayReleases.length > 2 ? (
-                        <span className="release-chip release-chip-more">+{dayReleases.length - 2}</span>
+                      {dayUpcomingSignals
+                        .slice(0, Math.max(0, 2 - dayReleases.length))
+                        .map((item) => (
+                          <span
+                            key={`${item.group}-${item.scheduled_date}-${item.headline}`}
+                            className={`release-chip release-chip-upcoming-${item.date_status}`}
+                          >
+                            {item.group}
+                          </span>
+                        ))}
+                      {dayReleases.length + dayUpcomingSignals.length > 2 ? (
+                        <span className="release-chip release-chip-more">
+                          +{dayReleases.length + dayUpcomingSignals.length - 2}
+                        </span>
                       ) : null}
                     </div>
                   </button>
@@ -336,8 +380,9 @@ function App() {
             <p className="panel-label">Selected day</p>
             <h2>{effectiveSelectedDayIso || 'No release selected'}</h2>
             <div className="detail-list">
-              {selectedDayReleases.length ? (
-                selectedDayReleases.map((item) => (
+              {selectedDayReleases.length || selectedDayUpcomingSignals.length ? (
+                [...selectedDayReleases, ...selectedDayUpcomingSignals].map((item) =>
+                  'stream' in item ? (
                   <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
                     <div>
                       <div className="signal-head">
@@ -355,9 +400,47 @@ function App() {
                       </a>
                     </div>
                   </article>
-                ))
+                  ) : (
+                  <article
+                    key={`${item.group}-${item.scheduled_date}-${item.headline}`}
+                    className={`detail-card detail-card-signal detail-card-signal-${item.date_status}`}
+                  >
+                    <div>
+                      <div className="signal-head">
+                        <p className="detail-group">{item.group}</p>
+                        <div className="signal-tags">
+                          <span className={`signal-badge signal-badge-date-${item.date_status}`}>
+                            {formatDateStatus(item.date_status)}
+                          </span>
+                          <span
+                            className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
+                          >
+                            {getConfidenceTone(item.confidence)} confidence
+                          </span>
+                        </div>
+                      </div>
+                      <h3>{item.headline}</h3>
+                      <p className="signal-meta">
+                        {formatSourceType(item.source_type)} · {item.source_domain || 'source pending'}
+                      </p>
+                      {item.evidence_summary ? (
+                        <p className="signal-evidence">{item.evidence_summary}</p>
+                      ) : null}
+                    </div>
+                    <div className="detail-links">
+                      {item.source_url ? (
+                        <a href={item.source_url} target="_blank" rel="noreferrer">
+                          Source link
+                        </a>
+                      ) : (
+                        <span className="signal-link-muted">No source link</span>
+                      )}
+                    </div>
+                  </article>
+                  ),
+                )
               ) : (
-                <p className="empty-copy">No verified release on this date.</p>
+                <p className="empty-copy">No verified release or scheduled signal on this date.</p>
               )}
             </div>
           </section>
@@ -494,8 +577,26 @@ function expandReleaseRow(row: ReleaseRow): VerifiedRelease[] {
     })
 }
 
+function expandUpcomingCandidate(row: UpcomingCandidateRow): DatedUpcomingSignal[] {
+  if (!isExactDate(row.scheduled_date)) {
+    return []
+  }
+
+  return [
+    {
+      ...row,
+      dateValue: new Date(`${row.scheduled_date}T00:00:00`),
+      isoDate: row.scheduled_date,
+    },
+  ]
+}
+
 function describeRelease(item: VerifiedRelease) {
   return `${item.stream} · ${item.release_kind}`
+}
+
+function isExactDate(value: string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value)
 }
 
 function getMonthKey(date: Date) {
@@ -536,6 +637,15 @@ function buildCalendarDays(date: Date): CalendarDay[] {
 
 function groupByDate(rows: VerifiedRelease[]) {
   return rows.reduce<Map<string, VerifiedRelease[]>>((map, row) => {
+    const bucket = map.get(row.isoDate) ?? []
+    bucket.push(row)
+    map.set(row.isoDate, bucket)
+    return map
+  }, new Map())
+}
+
+function groupUpcomingByDate(rows: DatedUpcomingSignal[]) {
+  return rows.reduce<Map<string, DatedUpcomingSignal[]>>((map, row) => {
     const bucket = map.get(row.isoDate) ?? []
     bucket.push(row)
     map.set(row.isoDate, bucket)
