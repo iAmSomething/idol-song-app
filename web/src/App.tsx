@@ -5489,7 +5489,7 @@ function buildLongGapRadarEntries() {
   return teamProfiles
     .flatMap((team) => {
       const watchRow = watchlistByGroup.get(team.group)
-      if (!watchRow || !isLongGapRadarWatchReason(watchRow.watch_reason)) {
+      if (!watchRow || watchRow.watch_reason !== 'long_gap') {
         return []
       }
 
@@ -5498,7 +5498,7 @@ function buildLongGapRadarEntries() {
       }
 
       const gapDays = getElapsedDaysSinceDate(team.latestRelease.date)
-      if (watchRow.watch_reason === 'long_gap' && gapDays < LONG_GAP_THRESHOLD_DAYS) {
+      if (gapDays < LONG_GAP_THRESHOLD_DAYS) {
         return []
       }
 
@@ -5615,10 +5615,6 @@ function compareLatestRadarSignals(left: UpcomingCandidateRow, right: UpcomingCa
   }
 
   return compareUpcomingSignals(left, right)
-}
-
-function isLongGapRadarWatchReason(reason: WatchReason) {
-  return reason === 'long_gap' || reason === 'manual_watch'
 }
 
 function isRookieEligible(profile: ArtistProfileRow) {
