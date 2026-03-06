@@ -2239,6 +2239,33 @@
   color: var(--accent-deep);
 }
 
+.release-detail-page {
+  display: grid;
+}
+
+.release-detail-shell {
+  width: min(960px, 100%);
+  margin: 0 auto;
+}
+
+.release-detail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.release-detail-head h2 {
+  margin: 0;
+}
+
+.release-detail-head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 .drawer-backdrop {
   position: fixed;
   inset: 0;
@@ -2268,6 +2295,11 @@
   gap: 18px;
   align-items: center;
   margin: 22px 0;
+}
+
+.release-detail-cover {
+  grid-template-columns: 132px minmax(0, 1fr);
+  align-items: flex-start;
 }
 
 .release-artwork {
@@ -2632,6 +2664,8 @@
   .toolbar,
   .context-highlight-head,
   .context-highlight-body,
+  .release-detail-head,
+  .release-detail-head-actions,
   .filter-group-head,
   .daily-share-head,
   .daily-share-brand-row,
@@ -2693,6 +2727,10 @@
   }
 
   .detail-card-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .release-detail-cover {
     grid-template-columns: 1fr;
   }
 

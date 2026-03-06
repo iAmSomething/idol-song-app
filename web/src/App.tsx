@@ -846,11 +846,12 @@ const TEAM_COPY = {
     watchlistFallback: '워치리스트 기준',
     releaseSourcePending: '발매 출처 준비 중',
     recentAlbumsLabel: '최근 앨범',
-    recentAlbumsTitle: '앨범 카드는 페이지 안에서 상세를 엽니다.',
+    recentAlbumsTitle: '앨범 카드는 전용 상세 페이지로 이동합니다.',
     recentAlbumsEmptyTitle: '앨범 카드 없음',
     recentAlbumsEmpty: '검증된 앨범 또는 EP가 아직 없습니다.',
-    openAlbumDetail: '앨범 상세 열기',
+    openAlbumDetail: '앨범 상세 페이지 열기',
     releaseDetail: '릴리즈 상세',
+    releasePageBack: '이전으로',
     quickJumpLabel: '빠른 이동',
     quickJumpTitle: '다른 추적 팀',
     noOtherTeams: '다른 필터된 팀이 없습니다.',
@@ -917,11 +918,11 @@ const TEAM_COPY = {
     metadataNotes: '메타데이터 노트',
     officialMv: '공식 MV',
     officialMvHint: '보조 영상 콘텐츠입니다. 앱 안 직접 재생 기능이 아니라 공식 YouTube MV를 임베드합니다.',
-    officialMvLinkOnly: '임베드가 준비되지 않은 경우 YouTube 링크만 노출합니다.',
+    officialMvLinkOnly: '임베드가 준비되지 않으면 YouTube 링크만 노출합니다.',
     watchOnYouTube: 'YouTube에서 보기',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
-      '앨범 상세는 팀 페이지 안 슬라이드오버로 유지해서 컴백 맥락을 잃지 않고 바로 돌아올 수 있습니다.',
+      '릴리즈 상세는 전용 페이지로 열려 팀 페이지, 캘린더, 대시보드 어느 진입점에서도 같은 경로를 사용합니다.',
     appleMusicNext: 'Apple Music 다음 이슈',
     spotifyNext: 'Spotify 다음 이슈',
     latestNow: '현재 가장 최근 검증 발매',
@@ -951,11 +952,12 @@ const TEAM_COPY = {
     watchlistFallback: 'Watchlist fallback',
     releaseSourcePending: 'Release source pending',
     recentAlbumsLabel: 'Recent albums',
-    recentAlbumsTitle: 'Album cards open detail inside the page.',
+    recentAlbumsTitle: 'Album cards open a dedicated detail page.',
     recentAlbumsEmptyTitle: 'No album card yet',
     recentAlbumsEmpty: 'No verified album or EP is available for this team yet.',
-    openAlbumDetail: 'Open album detail',
+    openAlbumDetail: 'Open album detail page',
     releaseDetail: 'Release detail',
+    releasePageBack: 'Back',
     quickJumpLabel: 'Quick jump',
     quickJumpTitle: 'Other tracked teams',
     noOtherTeams: 'No other filtered teams available.',
@@ -1022,11 +1024,11 @@ const TEAM_COPY = {
     metadataNotes: 'Metadata notes',
     officialMv: 'Official MV',
     officialMvHint: 'This is supporting video content, not in-app audio playback. It embeds the official YouTube MV only when metadata is explicit.',
-    officialMvLinkOnly: 'If embedding is unavailable, the drawer falls back to a YouTube link only.',
+    officialMvLinkOnly: 'If embedding is unavailable, the page falls back to a YouTube link only.',
     watchOnYouTube: 'Watch on YouTube',
     placeholderCover: 'Release artwork',
     drawerCopy:
-      'Album detail stays inside the team page so users can inspect the release and return to comeback context immediately.',
+      'Release detail now uses a dedicated page route so the same path works from team pages, the calendar, and dashboard entries.',
     appleMusicNext: 'Apple Music next',
     spotifyNext: 'Spotify next',
     latestNow: 'Latest verified release right now',
@@ -1111,7 +1113,7 @@ function App() {
   const [language, setLanguage] = useState<Language>(readInitialLanguage)
   const [selectedGroup, setSelectedGroup] = useState<string | null>(readSelectedGroupFromLocation)
   const [selectedCompareGroup, setSelectedCompareGroup] = useState<string | null>(readSelectedCompareGroupFromLocation)
-  const [selectedAlbumKey, setSelectedAlbumKey] = useState<string | null>(null)
+  const [selectedAlbumKey, setSelectedAlbumKey] = useState<string | null>(readSelectedReleaseKeyFromLocation)
   const [selectedDayInteractionTick, setSelectedDayInteractionTick] = useState(0)
   const [desktopUpcomingPanelHeight, setDesktopUpcomingPanelHeight] = useState<number | null>(null)
   const calendarPanelRef = useRef<HTMLElement | null>(null)
@@ -1119,6 +1121,10 @@ function App() {
   const activeCompareGroup =
     selectedGroup && selectedCompareGroup && selectedCompareGroup !== selectedGroup && teamProfileMap.has(selectedCompareGroup)
       ? selectedCompareGroup
+      : null
+  const selectedReleaseRoute =
+    selectedGroup && selectedAlbumKey
+      ? findVerifiedReleaseByKey(selectedGroup, selectedAlbumKey)
       : null
 
   useEffect(() => {
@@ -1132,13 +1138,18 @@ function App() {
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
+      if (selectedReleaseRoute) {
+        document.title = `${selectedReleaseRoute.title} | ${selectedReleaseRoute.group} | Idol Song App`
+        return
+      }
+
       document.title = selectedGroup
         ? activeCompareGroup
           ? `${selectedGroup} vs ${activeCompareGroup} | Idol Song App`
           : `${selectedGroup} | Idol Song App`
         : 'Idol Song App'
     }
-  }, [activeCompareGroup, selectedGroup])
+  }, [activeCompareGroup, selectedGroup, selectedReleaseRoute])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -1148,7 +1159,7 @@ function App() {
     const handlePopState = () => {
       setSelectedGroup(readSelectedGroupFromLocation())
       setSelectedCompareGroup(readSelectedCompareGroupFromLocation())
-      setSelectedAlbumKey(null)
+      setSelectedAlbumKey(readSelectedReleaseKeyFromLocation())
     }
 
     window.addEventListener('popstate', handlePopState)
@@ -1160,12 +1171,20 @@ function App() {
       return
     }
 
-    const nextPath = selectedGroup ? getArtistPath(selectedGroup, activeCompareGroup) : '/'
+    const nextPath = selectedReleaseRoute
+      ? getReleasePath(selectedReleaseRoute)
+      : selectedGroup
+        ? getArtistPath(selectedGroup, activeCompareGroup)
+        : '/'
     const currentLocation = `${window.location.pathname}${window.location.search}`
     if (currentLocation !== nextPath) {
-      window.history.pushState({ group: selectedGroup, compare: activeCompareGroup }, '', nextPath)
+      window.history.pushState(
+        { group: selectedGroup, compare: activeCompareGroup, releaseKey: selectedAlbumKey },
+        '',
+        nextPath,
+      )
     }
-  }, [activeCompareGroup, selectedGroup])
+  }, [activeCompareGroup, selectedAlbumKey, selectedGroup, selectedReleaseRoute])
 
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -1306,10 +1325,7 @@ function App() {
   const compareTeamOptions = selectedTeam ? teamProfiles.filter((team) => team.group !== selectedTeam.group) : []
   const selectedTeamCompareSnapshot = selectedTeam ? buildTeamCompareSnapshot(selectedTeam.group) : null
   const compareTeamSnapshot = compareTeam ? buildTeamCompareSnapshot(compareTeam.group) : null
-  const selectedAlbum =
-    selectedTeam && selectedAlbumKey
-      ? findVerifiedReleaseByKey(selectedTeam.group, selectedAlbumKey)
-      : null
+  const selectedAlbum = selectedReleaseRoute
   const selectedTeamLatestRecord =
     selectedTeam?.latestRelease?.verified
       ? findVerifiedReleaseRecord(
@@ -1412,6 +1428,15 @@ function App() {
     setSelectedGroup(release.group)
     setSelectedCompareGroup(null)
     setSelectedAlbumKey(getAlbumKey(release))
+  }
+
+  function closeReleaseDetail() {
+    if (typeof window !== 'undefined' && window.history.state?.releaseKey) {
+      window.history.back()
+      return
+    }
+
+    setSelectedAlbumKey(null)
   }
 
   function closeTeamPage() {
@@ -1565,7 +1590,16 @@ function App() {
         </div>
       </header>
 
-      {selectedTeam ? (
+      {selectedAlbum && selectedTeam ? (
+        <ReleaseDetailPage
+          album={selectedAlbum}
+          group={selectedTeam.group}
+          language={language}
+          displayDateFormatter={displayDateFormatter}
+          onBack={closeReleaseDetail}
+          onOpenTeamPage={openTeamPage}
+        />
+      ) : selectedTeam ? (
         <main className="team-page">
           <section className="panel team-page-hero">
             <div className="team-page-head">
@@ -1908,7 +1942,7 @@ function App() {
                           <button
                             type="button"
                             className="album-card"
-                            onClick={() => setSelectedAlbumKey(getAlbumKey(item))}
+                            onClick={() => openReleaseDetail(item)}
                           >
                             <ReleaseArtworkFigure
                               artwork={artwork}
@@ -2313,16 +2347,6 @@ function App() {
       </main>
       )}
 
-      {selectedTeam && selectedAlbum ? (
-        <AlbumDrawer
-          album={selectedAlbum}
-          group={selectedTeam.group}
-          language={language}
-          displayDateFormatter={displayDateFormatter}
-          onClose={() => setSelectedAlbumKey(null)}
-        />
-      ) : null}
-
       {!selectedTeam && latestRelease ? (
         <footer className="inline-note">
           {teamCopy.latestNow}: {latestRelease.group} · {latestRelease.title}
@@ -2332,18 +2356,20 @@ function App() {
   )
 }
 
-function AlbumDrawer({
+function ReleaseDetailPage({
   album,
   group,
   language,
   displayDateFormatter,
-  onClose,
+  onBack,
+  onOpenTeamPage,
 }: {
   album: VerifiedRelease
   group: string
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
-  onClose: () => void
+  onBack: () => void
+  onOpenTeamPage: (group: string) => void
 }) {
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -2358,23 +2384,31 @@ function AlbumDrawer({
   const mv = getReleaseDetailMvUrls(releaseDetail)
 
   return (
-    <div className="drawer-backdrop" onClick={onClose} role="presentation">
-      <aside className="album-drawer" onClick={(event) => event.stopPropagation()}>
-        <div className="team-page-head">
+    <main className="release-detail-page">
+      <section className="panel release-detail-shell">
+        <div className="release-detail-head">
           <div>
-            <p className="panel-label">{teamCopy.albumDetail}</p>
+            <p className="panel-label">{album.release_kind === 'single' ? teamCopy.releaseDetail : teamCopy.albumDetail}</p>
             <h2>{album.title}</h2>
+            <p className="hero-text drawer-copy">
+              {displayName} · {formatOptionalDate(album.date, displayDateFormatter, copy.none)}
+            </p>
           </div>
-          <button type="button" className="ghost-button" onClick={onClose}>
-            {teamCopy.close}
-          </button>
+          <div className="release-detail-head-actions">
+            <button type="button" className="ghost-button" onClick={onBack}>
+              {teamCopy.releasePageBack}
+            </button>
+            <ActionButton variant="secondary" onClick={() => onOpenTeamPage(group)}>
+              {teamCopy.action}
+            </ActionButton>
+          </div>
         </div>
 
-        <div className="album-drawer-cover">
+        <div className="album-drawer-cover release-detail-cover">
           <ReleaseArtworkFigure
             artwork={artwork}
             alt={`${displayName} ${album.title} cover artwork`}
-            variant="drawer"
+            variant="feature"
           />
           <div>
             <p className="panel-label">{teamCopy.placeholderCover}</p>
@@ -2480,8 +2514,8 @@ function AlbumDrawer({
             </a>
           </div>
         </div>
-      </aside>
-    </div>
+      </section>
+    </main>
   )
 }
 
@@ -6391,8 +6425,16 @@ function readSelectedCompareGroupFromLocation() {
   return resolvedGroup
 }
 
+function readSelectedReleaseKeyFromLocation() {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
+  return getReleaseRouteFromPath(window.location.pathname, window.location.search)?.releaseKey ?? null
+}
+
 function getGroupFromPath(pathname: string) {
-  const match = pathname.match(/^\/artists\/([^/]+)\/?$/)
+  const match = pathname.match(/^\/artists\/([^/]+)(?:\/releases\/[^/]+)?\/?$/)
   if (!match) {
     return null
   }
@@ -6422,6 +6464,58 @@ function getArtistPath(group: string, compareGroup?: string | null) {
 
   const params = new URLSearchParams()
   params.set('compare', artistProfileByGroup.get(compareGroup)?.slug ?? slugifyGroup(compareGroup))
+  return `${pathname}?${params.toString()}`
+}
+
+function getReleaseRouteFromPath(pathname: string, search = '') {
+  const match = pathname.match(/^\/artists\/([^/]+)\/releases\/([^/]+)\/?$/)
+  if (!match) {
+    return null
+  }
+
+  const group = getGroupFromPath(pathname)
+  if (!group) {
+    return null
+  }
+
+  const releaseSlug = decodeURIComponent(match[2]).trim().toLowerCase()
+  const params = new URLSearchParams(search)
+  const releaseDate = params.get('date')
+  const releaseStream = params.get('stream')
+
+  const release =
+    (verifiedReleaseHistoryByGroup.get(group) ?? []).find((item) => {
+      if (releaseSlug !== 'release' && slugifyPathSegment(item.title) !== releaseSlug) {
+        return false
+      }
+
+      if (releaseDate && item.date !== releaseDate) {
+        return false
+      }
+
+      if (releaseStream && item.stream !== releaseStream) {
+        return false
+      }
+
+      return true
+    }) ?? null
+
+  if (!release) {
+    return null
+  }
+
+  return {
+    group,
+    releaseKey: getAlbumKey(release),
+  }
+}
+
+function getReleasePath(release: VerifiedRelease) {
+  const releaseSlug = slugifyPathSegment(release.title) || 'release'
+  const pathname = `/artists/${artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)}/releases/${releaseSlug}`
+  const params = new URLSearchParams()
+  params.set('date', release.date)
+  params.set('stream', release.stream)
   return `${pathname}?${params.toString()}`
 }
 
@@ -6490,6 +6584,18 @@ function normalizeSearchText(value: string) {
 
 function collapseSearchText(value: string) {
   return value.replace(/\s+/g, '')
+}
+
+function slugifyPathSegment(value: string) {
+  return value
+    .normalize('NFKC')
+    .replace(/[×✕]/g, 'x')
+    .replace(/&/g, ' and ')
+    .toLowerCase()
+    .replace(/['’`]/g, '')
+    .replace(/[^a-z0-9\u3131-\u318e\uac00-\ud7a3]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '')
 }
 
 function slugifyGroup(group: string) {
