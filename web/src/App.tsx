@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import artistProfileRows from './data/artistProfiles.json'
 import releaseRows from './data/releases.json'
 import unresolvedRows from './data/unresolved.json'
 import upcomingCandidateRows from './data/upcomingCandidates.json'
@@ -20,6 +21,19 @@ type ReleaseRow = {
   artist_source: string
   latest_song: ReleaseFact | null
   latest_album: ReleaseFact | null
+}
+
+type ArtistProfileRow = {
+  slug: string
+  group: string
+  display_name: string
+  aliases: string[]
+  agency: string | null
+  official_youtube_url: string | null
+  official_x_url: string | null
+  official_instagram_url: string | null
+  representative_image_url: string | null
+  representative_image_source: string | null
 }
 
 type ActType = 'group' | 'solo' | 'unit'
@@ -104,13 +118,19 @@ type TeamLatestRelease = {
 
 type TeamProfile = {
   group: string
+  slug: string
+  displayName: string
+  aliases: string[]
   tier: string
   trackingStatus: string
   artistSource: string
   xUrl: string
   instagramUrl: string
   youtubeUrl: string
+  hasOfficialYouTubeUrl: boolean
   agency: string
+  representativeImageUrl: string | null
+  representativeImageSource: string | null
   latestRelease: TeamLatestRelease | null
   recentAlbums: VerifiedRelease[]
   upcomingSignals: UpcomingCandidateRow[]
@@ -424,8 +444,8 @@ const releaseKindOptions = ['all', 'single', 'album', 'ep'] as const
 const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
 const MUSIC_HANDOFF_SERVICES: MusicService[] = ['spotify', 'youtube_music']
-const TEAM_BADGE_IMAGE_URLS: Partial<Record<string, string>> = {}
 
+const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const releaseCatalog = releaseRows as ReleaseRow[]
 const releases = releaseCatalog
   .flatMap((row) => expandReleaseRow(row))
@@ -447,6 +467,8 @@ const watchStatusCounts = watchlist.reduce<Record<string, number>>((counts, row)
 }, {})
 
 const releaseCatalogByGroup = new Map(releaseCatalog.map((row) => [row.group, row]))
+const artistProfileByGroup = new Map(artistProfiles.map((row) => [row.group, row]))
+const artistProfileBySlug = new Map(artistProfiles.map((row) => [row.slug, row]))
 const releaseGroups = groupReleasesByGroup(releases)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
 const upcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
@@ -661,17 +683,21 @@ function App() {
             <div className="team-page-summary">
               <div className="team-title-wrap">
                 <div className="team-avatar" aria-hidden="true">
-                  {getTeamMonogram(selectedTeam.group)}
+                  {selectedTeam.representativeImageUrl ? (
+                    <img className="team-avatar-image" src={selectedTeam.representativeImageUrl} alt="" />
+                  ) : (
+                    getTeamMonogram(selectedTeam.group)
+                  )}
                 </div>
                 <div>
                   <p className="panel-label">{teamCopy.panelLabel}</p>
-                  <h2>{selectedTeam.group}</h2>
+                  <h2>{selectedTeam.displayName}</h2>
                   <p className="hero-text team-summary-copy">{teamCopy.intro}</p>
                 </div>
               </div>
 
               <div className="team-facts-grid">
-                <TeamFact label={teamCopy.agencyHint} value={selectedTeam.agency} />
+                <TeamFact label={teamCopy.agencyHint} value={selectedTeam.agency || copy.none} />
                 <TeamFact
                   label={teamCopy.latestReleaseDate}
                   value={
@@ -689,7 +715,10 @@ function App() {
                   }
                 />
                 <TeamFact label={teamCopy.tier} value={selectedTeam.tier} />
-                <TeamFact label={teamCopy.representativeImage} value={teamCopy.generatedMark} />
+                <TeamFact
+                  label={teamCopy.representativeImage}
+                  value={selectedTeam.representativeImageSource ?? teamCopy.generatedMark}
+                />
               </div>
             </div>
 
@@ -705,7 +734,7 @@ function App() {
                 </a>
               ) : null}
               <a href={selectedTeam.youtubeUrl} target="_blank" rel="noreferrer">
-                {teamCopy.youtubeSearch}
+                {selectedTeam.hasOfficialYouTubeUrl ? 'YouTube' : teamCopy.youtubeSearch}
               </a>
               {selectedTeam.artistSource ? (
                 <a href={selectedTeam.artistSource} target="_blank" rel="noreferrer">
@@ -860,7 +889,7 @@ function App() {
                         className="team-directory-button"
                         onClick={() => openTeamPage(team.group)}
                       >
-                        <span>{team.group}</span>
+                        <span>{team.displayName}</span>
                         <strong>
                           {team.nextUpcomingSignal
                             ? describeUpcomingSignal(team.nextUpcomingSignal, language, displayDateFormatter, copy.none)
@@ -1198,7 +1227,7 @@ function App() {
                     className="team-directory-button"
                     onClick={() => openTeamPage(team.group)}
                   >
-                    <span>{team.group}</span>
+                    <span>{team.displayName}</span>
                     <strong>
                       {team.nextUpcomingSignal
                         ? describeUpcomingSignal(team.nextUpcomingSignal, language, displayDateFormatter, copy.none)
@@ -1273,6 +1302,7 @@ function AlbumDrawer({
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
   const previewTracks = buildAlbumPreviewTracks(album, group, language)
+  const displayName = getTeamDisplayName(group)
 
   return (
     <div className="drawer-backdrop" onClick={onClose} role="presentation">
@@ -1293,7 +1323,7 @@ function AlbumDrawer({
           </div>
           <div>
             <p className="panel-label">{teamCopy.placeholderCover}</p>
-            <h3>{group}</h3>
+            <h3>{displayName}</h3>
             <p className="signal-meta">
               {copy.releaseKindLabels[album.release_kind]} ·{' '}
               {formatOptionalDate(album.date, displayDateFormatter, copy.none)}
@@ -1302,7 +1332,7 @@ function AlbumDrawer({
         </div>
 
         <div className="meta-grid">
-          <MetaItem label={teamCopy.team} value={group} />
+          <MetaItem label={teamCopy.team} value={displayName} />
           <MetaItem label={teamCopy.releaseKind} value={copy.releaseKindLabels[album.release_kind]} />
           <MetaItem
             label={teamCopy.releaseDate}
@@ -1404,13 +1434,14 @@ function TeamIdentity({
 }) {
   const badgeImageUrl = getTeamBadgeImageUrl(group)
   const badgeStyle = getTeamBadgeStyle(group)
-  const label = variant === 'chip' ? getCompactTeamLabel(group) : group
+  const displayName = getTeamDisplayName(group)
+  const label = variant === 'chip' ? getCompactTeamLabel(displayName) : displayName
 
   return (
     <span
       className={`team-identity team-identity-${variant}`}
-      title={group}
-      aria-label={group}
+      title={displayName}
+      aria-label={displayName}
     >
       <span className="team-badge" style={badgeStyle} aria-hidden="true">
         {badgeImageUrl ? (
@@ -1598,19 +1629,26 @@ function buildTeamProfiles() {
     .map((group) => {
       const watchRow = watchlistByGroup.get(group)
       const releaseRow = releaseCatalogByGroup.get(group)
+      const artistProfile = artistProfileByGroup.get(group)
       const groupReleases = releaseGroups.get(group) ?? []
       const upcomingSignals = [...(upcomingByGroup.get(group) ?? [])].sort(compareUpcomingSignals)
       const latestRelease = deriveLatestRelease(groupReleases, watchRow, releaseRow)
 
       return {
         group,
+        slug: artistProfile?.slug ?? slugifyGroup(group),
+        displayName: artistProfile?.display_name ?? group,
+        aliases: artistProfile?.aliases ?? [],
         tier: watchRow?.tier ?? 'tracked',
         trackingStatus: watchRow?.tracking_status ?? 'watch_only',
         artistSource: releaseRow?.artist_source ?? latestRelease?.artistSource ?? '',
-        xUrl: watchRow?.x_url ?? '',
-        instagramUrl: watchRow?.instagram_url ?? '',
-        youtubeUrl: getYouTubeSearchUrl(group),
-        agency: inferAgency(group, watchRow?.x_url ?? '', watchRow?.instagram_url ?? ''),
+        xUrl: artistProfile?.official_x_url ?? '',
+        instagramUrl: artistProfile?.official_instagram_url ?? '',
+        youtubeUrl: artistProfile?.official_youtube_url ?? getYouTubeSearchUrl(group),
+        hasOfficialYouTubeUrl: Boolean(artistProfile?.official_youtube_url),
+        agency: artistProfile?.agency ?? '',
+        representativeImageUrl: artistProfile?.representative_image_url ?? null,
+        representativeImageSource: artistProfile?.representative_image_source ?? null,
         latestRelease,
         recentAlbums: groupReleases.filter((item) => item.stream === 'album'),
         upcomingSignals,
@@ -1661,6 +1699,8 @@ function matchesTeamSearch(team: TeamProfile, needle: string) {
 
   return (
     team.group.toLowerCase().includes(needle) ||
+    team.displayName.toLowerCase().includes(needle) ||
+    team.aliases.some((alias) => alias.toLowerCase().includes(needle)) ||
     team.latestRelease?.title.toLowerCase().includes(needle) ||
     team.upcomingSignals.some((item) => item.headline.toLowerCase().includes(needle))
   )
@@ -1760,7 +1800,11 @@ function getYouTubeSearchUrl(group: string) {
 }
 
 function getTeamBadgeImageUrl(group: string) {
-  return TEAM_BADGE_IMAGE_URLS[group] ?? null
+  return artistProfileByGroup.get(group)?.representative_image_url ?? null
+}
+
+function getTeamDisplayName(group: string) {
+  return artistProfileByGroup.get(group)?.display_name ?? group
 }
 
 function getCompactTeamLabel(group: string) {
@@ -1789,59 +1833,6 @@ function getTeamBadgeStyle(group: string) {
 
 function getTeamHue(group: string) {
   return Array.from(group).reduce((total, char) => total + char.charCodeAt(0), 0) % 360
-}
-
-function inferAgency(group: string, xUrl: string, instagramUrl: string) {
-  const source = `${xUrl} ${instagramUrl} ${group}`.toLowerCase()
-
-  if (
-    source.includes('yg') ||
-    ['blackpink', 'babymonster', 'treasure', 'meovv'].includes(group.toLowerCase())
-  ) {
-    return 'YG-linked act'
-  }
-  if (
-    source.includes('jype') ||
-    ['twice', 'itzy', 'nmixx', 'stray kids', 'day6', 'nexz', 'kickflip'].includes(
-      group.toLowerCase(),
-    )
-  ) {
-    return 'JYP-linked act'
-  }
-  if (
-    source.includes('smtown') ||
-    [
-      'aespa',
-      'red velvet',
-      'exo',
-      'shinee',
-      'nct 127',
-      'nct dream',
-      'wayv',
-      'riize',
-      'hearts2hearts',
-    ].includes(group.toLowerCase())
-  ) {
-    return 'SM-linked act'
-  }
-  if (
-    source.includes('bighit') ||
-    source.includes('pledis') ||
-    source.includes('koz') ||
-    [
-      'bts',
-      'seventeen',
-      'tws',
-      'tomorrow x together',
-      '&team',
-      'le sserafim',
-      'boynextdoor',
-    ].includes(group.toLowerCase())
-  ) {
-    return 'HYBE-linked act'
-  }
-
-  return 'Agency data pending'
 }
 
 function describeUpcomingSignal(
@@ -1895,11 +1886,11 @@ function getGroupFromPath(pathname: string) {
   }
 
   const slug = decodeURIComponent(match[1]).toLowerCase()
-  return teamProfiles.find((team) => slugifyGroup(team.group) === slug)?.group ?? null
+  return artistProfileBySlug.get(slug)?.group ?? teamProfiles.find((team) => team.slug === slug)?.group ?? null
 }
 
 function getArtistPath(group: string) {
-  return `/artists/${slugifyGroup(group)}`
+  return `/artists/${artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)}`
 }
 
 function slugifyGroup(group: string) {
