@@ -37,6 +37,13 @@ def default_search_terms(group: str):
     return [f'"{group}" kpop comeback']
 
 
+def newest_release(row: dict):
+    releases = [release for release in [row.get("latest_song"), row.get("latest_album")] if release]
+    if not releases:
+        return None
+    return sorted(releases, key=lambda release: release["date"], reverse=True)[0]
+
+
 def main():
     social_rows = load_json("artist_socials_structured_2026-03-04.json")
     recent_rows = load_json("group_latest_release_since_2025-06-01_mb.json")
@@ -52,6 +59,7 @@ def main():
             continue
 
         group = row["artist"]
+        latest_release = newest_release(recent_by_group.get(group, {}))
         status = "filtered_out"
         if group in recent_by_group:
             status = "recent_release"
@@ -62,8 +70,9 @@ def main():
             "group": group,
             "tier": row["tier"],
             "tracking_status": status,
-            "latest_release_song": recent_by_group.get(group, {}).get("latest_release_song", ""),
-            "latest_release_date": recent_by_group.get(group, {}).get("latest_release_date", ""),
+            "latest_release_title": latest_release["title"] if latest_release else "",
+            "latest_release_date": latest_release["date"] if latest_release else "",
+            "latest_release_kind": latest_release["release_kind"] if latest_release else "",
             "x_url": row.get("x_url", ""),
             "instagram_url": row.get("instagram_url", ""),
             "search_terms": default_search_terms(group),
@@ -77,8 +86,9 @@ def main():
                 "group": group,
                 "tier": row.get("tier", "manual"),
                 "tracking_status": "watch_only",
-                "latest_release_song": "",
+                "latest_release_title": "",
                 "latest_release_date": "",
+                "latest_release_kind": "",
                 "x_url": "",
                 "instagram_url": "",
                 "search_terms": [],
@@ -105,8 +115,9 @@ def main():
                 "group",
                 "tier",
                 "tracking_status",
-                "latest_release_song",
+                "latest_release_title",
                 "latest_release_date",
+                "latest_release_kind",
                 "x_url",
                 "instagram_url",
                 "search_terms",

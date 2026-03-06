@@ -48,6 +48,12 @@ BANNED_PATTERN = re.compile(
     r"\b(live|instrumental|remix|remixes|sped up|slowed|acoustic|karaoke|radio edit|commentary|demo|ver\.?|version|mixed|ost|soundtrack|original soundtrack)\b",
     re.IGNORECASE,
 )
+BANNED_SECONDARY_TYPES = {"Compilation", "Live", "Remix", "Soundtrack"}
+RELEASE_KIND_BY_PRIMARY = {
+    "Single": ("song", "single"),
+    "Album": ("album", "album"),
+    "EP": ("album", "ep"),
+}
 
 
 def norm(s: str) -> str:
@@ -74,9 +80,9 @@ def parse_mb_date(s: str) -> Optional[datetime]:
 def get_json(session: requests.Session, url: str, params: Dict[str, object], retries: int = 3) -> Dict:
     for attempt in range(retries):
         try:
-            r = session.get(url, params=params, timeout=15)
-            r.raise_for_status()
-            return r.json()
+            response = session.get(url, params=params, timeout=15)
+            response.raise_for_status()
+            return response.json()
         except Exception:
             if attempt == retries - 1:
                 raise
@@ -86,7 +92,7 @@ def get_json(session: requests.Session, url: str, params: Dict[str, object], ret
 
 def build_name_set(group: str) -> set:
     names = [group] + ALIASES.get(group, [])
-    return {norm(n) for n in names if n}
+    return {norm(name) for name in names if name}
 
 
 def search_best_artist(session: requests.Session, group: str) -> Optional[dict]:
@@ -100,7 +106,6 @@ def search_best_artist(session: requests.Session, group: str) -> Optional[dict]:
     )
     artists = data.get("artists", [])
 
-    # fallback without country filter
     if not artists:
         data = get_json(
             session,
@@ -113,24 +118,24 @@ def search_best_artist(session: requests.Session, group: str) -> Optional[dict]:
         return None
 
     name_set = build_name_set(group)
-    g = norm(group)
+    group_name = norm(group)
 
-    def score(a: dict) -> float:
-        an = norm(a.get("name", ""))
-        s = 0.0
-        if an in name_set:
-            s += 120
-        if g and (g in an or an in g):
-            s += 20
-        if a.get("type") == "Group":
-            s += 25
-        if a.get("country") == "KR":
-            s += 20
+    def score(artist: dict) -> float:
+        artist_name = norm(artist.get("name", ""))
+        score_value = 0.0
+        if artist_name in name_set:
+            score_value += 120
+        if group_name and (group_name in artist_name or artist_name in group_name):
+            score_value += 20
+        if artist.get("type") == "Group":
+            score_value += 25
+        if artist.get("country") == "KR":
+            score_value += 20
         try:
-            s += float(a.get("score", 0)) * 0.2
+            score_value += float(artist.get("score", 0)) * 0.2
         except Exception:
             pass
-        return s
+        return score_value
 
     ranked = sorted(artists, key=score, reverse=True)
     best = ranked[0]
@@ -149,7 +154,6 @@ def fetch_release_groups(session: requests.Session, artist_mbid: str) -> List[di
             "https://musicbrainz.org/ws/2/release-group",
             {
                 "artist": artist_mbid,
-                "type": "single",
                 "fmt": "json",
                 "limit": limit,
                 "offset": offset,
@@ -160,123 +164,190 @@ def fetch_release_groups(session: requests.Session, artist_mbid: str) -> List[di
         if len(rows) < limit:
             break
         offset += limit
-        if offset >= 300:
+        if offset >= 400:
             break
     return all_rows
 
 
-def pick_latest_and_comeback(rows: List[dict]) -> Tuple[Optional[dict], Optional[dict]]:
-    clean = []
-    for r in rows:
-        title = r.get("title", "")
-        tl = title.lower()
-        if not title or BANNED_PATTERN.search(title):
-            continue
-        if "(from" in tl or " feat." in tl or "(feat." in tl or " featuring " in tl:
-            continue
-        dt = parse_mb_date(r.get("first-release-date"))
-        if not dt:
-            continue
-        clean.append((dt, r))
+def normalize_release(row: dict) -> Optional[dict]:
+    primary_type = row.get("primary-type")
+    release_bucket = RELEASE_KIND_BY_PRIMARY.get(primary_type)
+    if release_bucket is None:
+        return None
 
-    past = [x for x in clean if x[0] <= TODAY]
-    future = [x for x in clean if x[0] > TODAY]
-    latest = sorted(past, key=lambda t: t[0], reverse=True)[0][1] if past else None
-    comeback = sorted(future, key=lambda t: t[0])[0][1] if future else None
-    return latest, comeback
+    title = row.get("title", "")
+    title_lower = title.lower()
+    if not title or BANNED_PATTERN.search(title):
+        return None
+    if "(from" in title_lower or " feat." in title_lower or "(feat." in title_lower or " featuring " in title_lower:
+        return None
+
+    secondary_types = set(row.get("secondary-types") or [])
+    if secondary_types & BANNED_SECONDARY_TYPES:
+        return None
+
+    release_date = parse_mb_date(row.get("first-release-date"))
+    if not release_date:
+        return None
+
+    bucket, release_kind = release_bucket
+    return {
+        "bucket": bucket,
+        "release_kind": release_kind,
+        "title": title,
+        "date": release_date,
+        "source": f"https://musicbrainz.org/release-group/{row.get('id')}",
+    }
+
+
+def pick_latest_pair(rows: List[dict]) -> Tuple[Optional[dict], Optional[dict]]:
+    normalized = [entry for row in rows if (entry := normalize_release(row))]
+    latest: Dict[str, Optional[dict]] = {"song": None, "album": None}
+
+    for bucket in ("song", "album"):
+        candidates = [entry for entry in normalized if entry["bucket"] == bucket and entry["date"] <= TODAY]
+        if candidates:
+            latest[bucket] = sorted(candidates, key=lambda entry: entry["date"], reverse=True)[0]
+
+    return latest["song"], latest["album"]
+
+
+def serialize_release(entry: Optional[dict]) -> Optional[dict]:
+    if entry is None:
+        return None
+    return {
+        "title": entry["title"],
+        "date": entry["date"].date().isoformat(),
+        "source": entry["source"],
+        "release_kind": entry["release_kind"],
+    }
+
+
+def release_after_cutoff(entry: Optional[dict]) -> Optional[dict]:
+    if entry is None:
+        return None
+    if parse_mb_date(entry["date"]) <= CUTOFF:
+        return None
+    return entry
+
+
+def newest_release(row: dict) -> Optional[dict]:
+    releases = [release for release in [row.get("latest_song"), row.get("latest_album")] if release]
+    if not releases:
+        return None
+    return sorted(releases, key=lambda release: release["date"], reverse=True)[0]
 
 
 def main() -> None:
     src = Path("artist_socials_structured_2026-03-04.json")
     rows = json.loads(src.read_text(encoding="utf-8"))
-    groups = [r["artist"] for r in rows if r.get("tier") in {"core", "longtail"}]
+    groups = [row["artist"] for row in rows if row.get("tier") in {"core", "longtail"}]
 
     session = requests.Session()
-    session.headers.update({"User-Agent": "CodexReleaseMapper/2.0 (contact: local-tool)"})
+    session.headers.update({"User-Agent": "CodexReleaseMapper/3.0 (contact: local-tool)"})
 
     out = []
     unresolved = []
 
-    for i, group in enumerate(groups, start=1):
+    for index, group in enumerate(groups, start=1):
         try:
             artist = search_best_artist(session, group)
             if not artist:
                 unresolved.append({"group": group, "reason": "artist_not_found"})
                 continue
 
-            mbid = artist.get("id")
-            rg = fetch_release_groups(session, mbid)
-            latest, comeback = pick_latest_and_comeback(rg)
+            artist_mbid = artist.get("id")
+            release_groups = fetch_release_groups(session, artist_mbid)
+            latest_song, latest_album = pick_latest_pair(release_groups)
+            latest_song_row = serialize_release(latest_song)
+            latest_album_row = serialize_release(latest_album)
+            recent_song_row = release_after_cutoff(latest_song_row)
+            recent_album_row = release_after_cutoff(latest_album_row)
 
-            if not latest:
-                unresolved.append({"group": group, "reason": "no_latest_single", "artist_mbid": mbid})
+            if not latest_song_row and not latest_album_row:
+                unresolved.append({"group": group, "reason": "no_release_match", "artist_mbid": artist_mbid})
+                continue
+            if not recent_song_row and not recent_album_row:
                 continue
 
-            latest_dt = parse_mb_date(latest.get("first-release-date"))
-            if not latest_dt or latest_dt <= CUTOFF:
+            row = {
+                "group": group,
+                "artist_name_mb": artist.get("name"),
+                "artist_mbid": artist_mbid,
+                "latest_song": recent_song_row,
+                "latest_album": recent_album_row,
+                "artist_source": f"https://musicbrainz.org/artist/{artist_mbid}",
+            }
+
+            newest = newest_release(row)
+            if not newest:
                 continue
 
-            comeback_dt = parse_mb_date(comeback.get("first-release-date")) if comeback else None
+            out.append(row)
+        except Exception as error:
+            unresolved.append({"group": group, "reason": type(error).__name__})
 
-            out.append(
-                {
-                    "group": group,
-                    "artist_name_mb": artist.get("name"),
-                    "artist_mbid": mbid,
-                    "latest_release_song": latest.get("title"),
-                    "latest_release_date": latest_dt.date().isoformat(),
-                    "latest_release_source": f"https://musicbrainz.org/release-group/{latest.get('id')}",
-                    "nearest_comeback_date": comeback_dt.date().isoformat() if comeback_dt else "",
-                    "nearest_comeback_song": comeback.get("title") if comeback else "",
-                    "nearest_comeback_source": f"https://musicbrainz.org/release-group/{comeback.get('id')}" if comeback else "",
-                    "artist_source": f"https://musicbrainz.org/artist/{mbid}",
-                }
-            )
-        except Exception as e:
-            unresolved.append({"group": group, "reason": type(e).__name__})
+        if index % 10 == 0 or index == len(groups):
+            print(f"processed {index}/{len(groups)}")
 
-        if i % 10 == 0 or i == len(groups):
-            print(f"processed {i}/{len(groups)}")
-
-        # polite delay for MusicBrainz rate limits
         time.sleep(0.8)
 
-    out.sort(key=lambda x: x["group"].lower())
-    unresolved.sort(key=lambda x: x["group"].lower())
+    out.sort(key=lambda row: row["group"].lower())
+    unresolved.sort(key=lambda row: row["group"].lower())
 
-    Path("group_latest_release_since_2025-06-01_mb.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    Path("group_latest_release_since_2025-06-01_mb.json").write_text(
+        json.dumps(out, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
     Path("group_latest_release_since_2025-06-01_mb_unresolved.json").write_text(
-        json.dumps(unresolved, ensure_ascii=False, indent=2), encoding="utf-8"
+        json.dumps(unresolved, ensure_ascii=False, indent=2),
+        encoding="utf-8",
     )
 
-    with open("group_latest_release_since_2025-06-01_mb.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(
-            f,
+    with Path("group_latest_release_since_2025-06-01_mb.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
             fieldnames=[
                 "group",
                 "artist_name_mb",
                 "artist_mbid",
-                "latest_release_song",
-                "latest_release_date",
-                "latest_release_source",
-                "nearest_comeback_date",
-                "nearest_comeback_song",
-                "nearest_comeback_source",
+                "latest_song_title",
+                "latest_song_date",
+                "latest_song_source",
+                "latest_song_kind",
+                "latest_album_title",
+                "latest_album_date",
+                "latest_album_source",
+                "latest_album_kind",
                 "artist_source",
             ],
         )
-        w.writeheader()
-        w.writerows(out)
+        writer.writeheader()
+        for row in out:
+            writer.writerow(
+                {
+                    "group": row["group"],
+                    "artist_name_mb": row["artist_name_mb"],
+                    "artist_mbid": row["artist_mbid"],
+                    "latest_song_title": row["latest_song"]["title"] if row["latest_song"] else "",
+                    "latest_song_date": row["latest_song"]["date"] if row["latest_song"] else "",
+                    "latest_song_source": row["latest_song"]["source"] if row["latest_song"] else "",
+                    "latest_song_kind": row["latest_song"]["release_kind"] if row["latest_song"] else "",
+                    "latest_album_title": row["latest_album"]["title"] if row["latest_album"] else "",
+                    "latest_album_date": row["latest_album"]["date"] if row["latest_album"] else "",
+                    "latest_album_source": row["latest_album"]["source"] if row["latest_album"] else "",
+                    "latest_album_kind": row["latest_album"]["release_kind"] if row["latest_album"] else "",
+                    "artist_source": row["artist_source"],
+                }
+            )
 
     print(
         json.dumps(
             {
-                "groups_input": len(groups),
-                "groups_output": len(out),
-                "unresolved": len(unresolved),
-                "output_csv": "group_latest_release_since_2025-06-01_mb.csv",
+                "groups_with_release_data": len(out),
+                "groups_unresolved": len(unresolved),
                 "output_json": "group_latest_release_since_2025-06-01_mb.json",
-                "unresolved_json": "group_latest_release_since_2025-06-01_mb_unresolved.json",
+                "output_csv": "group_latest_release_since_2025-06-01_mb.csv",
             },
             ensure_ascii=False,
         )
