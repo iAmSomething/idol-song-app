@@ -424,6 +424,7 @@ const releaseKindOptions = ['all', 'single', 'album', 'ep'] as const
 const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
 const MUSIC_HANDOFF_SERVICES: MusicService[] = ['spotify', 'youtube_music']
+const TEAM_BADGE_IMAGE_URLS: Partial<Record<string, string>> = {}
 
 const releaseCatalog = releaseRows as ReleaseRow[]
 const releases = releaseCatalog
@@ -726,7 +727,7 @@ function App() {
                       <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row">
                         <div>
                           <div className="signal-head">
-                            <p className="feed-group">{item.group}</p>
+                            <TeamIdentity group={item.group} variant="list" />
                             <div className="signal-tags">
                               <span className={`signal-badge signal-badge-${item.tracking_status}`}>
                                 {formatTrackingStatus(item.tracking_status, language)}
@@ -775,7 +776,7 @@ function App() {
                   <article className="detail-card detail-card-feature">
                     <div>
                       <div className="signal-head">
-                        <p className="detail-group">{selectedTeam.group}</p>
+                        <TeamIdentity group={selectedTeam.group} variant="list" />
                         <span className="signal-badge">
                           {selectedTeam.latestRelease.streamLabel} · {selectedTeam.latestRelease.releaseKind}
                         </span>
@@ -989,7 +990,7 @@ function App() {
                     <div className="calendar-day-content">
                       {dayReleases.slice(0, 2).map((item) => (
                         <span key={`${item.group}-${item.stream}-${item.title}`} className="release-chip">
-                          {item.group}
+                          <TeamIdentity group={item.group} variant="chip" />
                         </span>
                       ))}
                       {dayUpcomingSignals
@@ -999,7 +1000,7 @@ function App() {
                             key={`${item.group}-${item.scheduled_date}-${item.headline}`}
                             className={`release-chip release-chip-upcoming-${item.date_status}`}
                           >
-                            {item.group}
+                            <TeamIdentity group={item.group} variant="chip" />
                           </span>
                         ))}
                       {dayReleases.length + dayUpcomingSignals.length > 2 ? (
@@ -1025,7 +1026,7 @@ function App() {
                   <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row">
                     <div>
                       <div className="signal-head">
-                        <p className="feed-group">{item.group}</p>
+                        <TeamIdentity group={item.group} variant="list" />
                         <div className="signal-tags">
                           <span className={`signal-badge signal-badge-${item.tracking_status}`}>
                             {formatTrackingStatus(item.tracking_status, language)}
@@ -1082,7 +1083,7 @@ function App() {
                   <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
                     <div>
                       <div className="signal-head">
-                        <p className="detail-group">{item.group}</p>
+                        <TeamIdentity group={item.group} variant="list" />
                         <span className="signal-badge">{describeRelease(item, language)}</span>
                       </div>
                       <h3>{item.title}</h3>
@@ -1113,7 +1114,7 @@ function App() {
                   >
                     <div>
                       <div className="signal-head">
-                        <p className="detail-group">{item.group}</p>
+                        <TeamIdentity group={item.group} variant="list" />
                         <div className="signal-tags">
                           <span className={`signal-badge signal-badge-date-${item.date_status}`}>
                             {formatDateStatus(item.date_status, language)}
@@ -1162,7 +1163,7 @@ function App() {
                 <article key={`${item.group}-${item.stream}-${item.title}`} className="feed-row">
                   <div>
                     <div className="signal-head">
-                      <p className="feed-group">{item.group}</p>
+                      <TeamIdentity group={item.group} variant="list" />
                       <span className="signal-badge">{describeRelease(item, language)}</span>
                     </div>
                     <h3>{item.title}</h3>
@@ -1391,6 +1392,35 @@ function TeamFact({ label, value }: { label: string; value: string }) {
       <span>{label}</span>
       <strong>{value}</strong>
     </div>
+  )
+}
+
+function TeamIdentity({
+  group,
+  variant,
+}: {
+  group: string
+  variant: 'chip' | 'list'
+}) {
+  const badgeImageUrl = getTeamBadgeImageUrl(group)
+  const badgeStyle = getTeamBadgeStyle(group)
+  const label = variant === 'chip' ? getCompactTeamLabel(group) : group
+
+  return (
+    <span
+      className={`team-identity team-identity-${variant}`}
+      title={group}
+      aria-label={group}
+    >
+      <span className="team-badge" style={badgeStyle} aria-hidden="true">
+        {badgeImageUrl ? (
+          <img className="team-badge-image" src={badgeImageUrl} alt="" />
+        ) : (
+          <span className="team-badge-fallback">{getTeamMonogram(group)}</span>
+        )}
+      </span>
+      <span className="team-label">{label}</span>
+    </span>
   )
 }
 
@@ -1727,6 +1757,38 @@ function getTeamMonogram(group: string) {
 
 function getYouTubeSearchUrl(group: string) {
   return `https://www.youtube.com/results?search_query=${encodeURIComponent(`${group} official channel`)}`
+}
+
+function getTeamBadgeImageUrl(group: string) {
+  return TEAM_BADGE_IMAGE_URLS[group] ?? null
+}
+
+function getCompactTeamLabel(group: string) {
+  if (group.length <= 12) {
+    return group
+  }
+
+  const cleaned = group.replace(/[^A-Za-z0-9 ]/g, ' ').trim()
+  const words = cleaned.split(/\s+/).filter(Boolean)
+  if (words.length > 1) {
+    const monogram = getTeamMonogram(group)
+    if (monogram.length >= 2 && monogram.length <= 4) {
+      return monogram
+    }
+  }
+
+  return `${group.slice(0, 10).trim()}…`
+}
+
+function getTeamBadgeStyle(group: string) {
+  const hue = getTeamHue(group)
+  return {
+    background: `linear-gradient(155deg, hsl(${hue} 72% 64%), hsl(${(hue + 38) % 360} 52% 28%))`,
+  }
+}
+
+function getTeamHue(group: string) {
+  return Array.from(group).reduce((total, char) => total + char.charCodeAt(0), 0) % 360
 }
 
 function inferAgency(group: string, xUrl: string, instagramUrl: string) {
