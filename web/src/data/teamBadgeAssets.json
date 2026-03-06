@@ -1,0 +1,541 @@
+[
+  {
+    "group": "&TEAM",
+    "badge_image_url": "https://yt3.googleusercontent.com/xqtV6QEH8rfsXXZ1sZZRjn2X7ZCxKB0_eoWN6z5gnqtN8TnC-XQN8-OlMzDVvxrKKnwDDvRxQA=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "(G)I-DLE",
+    "badge_image_url": "https://yt3.googleusercontent.com/Z0pYcm-PI6zo0J3iS1Y-M4fNyKUji4D_DYehrB3icbtmCrwJy-e1Tm3FZ3Nm0cagcKaTAJymxg=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "82MAJOR",
+    "badge_image_url": "https://yt3.googleusercontent.com/U41adlHFVKEP2-a-xxziFRYlqf5XtDYtSHj7t7pY-avDcoAfr3wlLWIazYBU5TvLkzlesGXB_R0=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "8TURN",
+    "badge_image_url": "https://yt3.googleusercontent.com/qVkXlYDaAyD0IwAh3Qa5ZyU8Kqt80KQ0ZcqvfZB3iBlUXfeF05-svjg4pEB_SGYdHdQjP5iBzQ=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "AB6IX",
+    "badge_image_url": "https://yt3.googleusercontent.com/wnRwBbs83-MSysfbRm9tUb7sqGS15cAWIjAnobHMaoH9_W2s_ro92PKH2IM8bukY5ZseC-O4Uqk=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCwytna6i1rFCt13a3Qvuk-A",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "aespa",
+    "badge_image_url": "https://yt3.googleusercontent.com/Cy9-BxGLTVCL0E0z1C053ENsa3532qIckGAIAnWPPIqujjqxu5_r3joFJVUuZAsDykRw666upro=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "AMPERS&ONE",
+    "badge_image_url": "https://yt3.googleusercontent.com/Cld-X1XWG6BlhzwN7ZejO4rKQZChyNKY8hpDjc95sneeFlf8zH9yCm3sTCjtiBfsc2FywqnLzw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "ATBO",
+    "badge_image_url": "https://yt3.googleusercontent.com/gh8cXcQr1jNvmm2GjTOvFyYBwiPZSOeP7rqHsfMWppu2LEDdd4y-N1ctmBmMkqhoKMEr25Q7dQ=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "ATEEZ",
+    "badge_image_url": "https://yt3.googleusercontent.com/8ezdlFHvBROs5xd-scO3nP9j6LmmZnPYlKzuD7SFkpwDV1gKG8u-_3uIliiT8RzNzZ0u9DvR85I=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "BABYMONSTER",
+    "badge_image_url": "https://yt3.googleusercontent.com/guzIoEyd9IyKWaD7Jfnlp1rD7k9SiEOV7go0ItyJ3O9V-j8ez6Jvs4Yj3LfrCu3Z7rFcdIqYLTI=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "BADVILLAIN",
+    "badge_image_url": "https://yt3.googleusercontent.com/0v8DWfYv0zE3V-nsL65ljoqK34P-G-1cz2xVK7Hc5urcNxBtGm67nLvXYYFMLh4TCaUsd925vas=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCh0KpQuSJ9m0DaENZmnYwzw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "BAE173",
+    "badge_image_url": "https://yt3.googleusercontent.com/M9nEH0AlowUE0vJSH9j4r-uMllBGbbaxWl4alNRPrEZXTarERKwLgrKZFBKdHfDJ60ONI1HpeQ=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCWRNGyk9Nk9yu9ClmlZ6Hww",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "BLACKPINK",
+    "badge_image_url": "https://yt3.googleusercontent.com/U3VrCkKjzTpQ3VYv4SCPjNfDHeJV-swGNnhLYhr0nV4lZz_GVUNzK4EB-HFRfKv9S5VNh14uAg=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "BOYNEXTDOOR",
+    "badge_image_url": "https://yt3.googleusercontent.com/QhBJg2Djg9obHEAmP7-_BceJFY4KG0iaYWfuDGhjiURG-5CdhS_0npiZpCWvyN3Pfj9DkO8MSw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UChhKBlh_wvspTh5n4mL0b5g",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "BTOB",
+    "badge_image_url": "https://yt3.googleusercontent.com/ytc/AIdro_lRZlsGii0S7kA-gUquyU_I_K3OXKpVwfXwdF0vAivz6-U=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCgB7A457ULlgm5c3948vr-w",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "BTS",
+    "badge_image_url": "https://yt3.googleusercontent.com/AXxjT9r1AoLxyny3L5lquEVIP6Qa5gJnQUtf94De2QydHrse6OCkkLpHOsTiQ37_t7wQ22G3pA=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "cignature",
+    "badge_image_url": "https://yt3.googleusercontent.com/30LF8En041JD6CCoCC9Lq-1lz3VdkCetMNwxkXuzRkTPpVEHJ2nycy-MHps8Vo0dygGYedqa=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCaRdmTJgO6w0esJPZUOzXrw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "CIX",
+    "badge_image_url": "https://yt3.googleusercontent.com/BjgwGDlG91ANs1sgZSKcEqV2g66QytfOh4ZdPQgl1BKs7kRtleuD5Njww4RMrgbpGBB9MvHUJw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCuaslC77K-NmCy8Xwk7x0hA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "CLASS:y",
+    "badge_image_url": "https://yt3.googleusercontent.com/eN-lkd7e-dcCBiO790LI_w1qPY38HnkdDK61dr9Jg6eNHE9x6gri-wPHbOmw5FqxFoRBhwoKsA=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCbCyYn2M_1ccicwj-KU7t0Q",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "CRAVITY",
+    "badge_image_url": "https://yt3.googleusercontent.com/BpAMpLIF3t9XJQ1FLgdO4jQwMxoWrfVLfqjs-ac5Ou-d1VLbgrq5q1EIXQvA2xzccgu_UrG1VRY=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "DAY6",
+    "badge_image_url": "https://yt3.googleusercontent.com/V1pNQjnS31WUTRZUMKaiJwajsN68Bie_SAiAepR4h5HHNk9Sw91uJm6ubXYS6OC5nZd5rDBt1dE=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCp-pqXsizklX3ZHvLxXyhxw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "DKB",
+    "badge_image_url": "https://yt3.googleusercontent.com/ytc/AIdro_lEUVvfJcT59eXZy4XmtbCA4TI0Za6tipdv_ytCWEpjmQ=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCCwfiPqSomsqZkkmbjPK5wg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "Dreamcatcher",
+    "badge_image_url": "https://yt3.googleusercontent.com/_5TAoFPpNGwmXAI-VLvbvlnZlB150H6OEgy2QsH7J24n5oZ1OE3w2CWLOAtgokxHO5iK8nvC9Q=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCijULR2sXLutCRBtW3_WEfA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "ENHYPEN",
+    "badge_image_url": "https://yt3.googleusercontent.com/gKp9WExdyzEEBpHM7WgVEgIhl7-yVhIAzOe1U5jJEYSYi17AbvUXyW4dGRk2KykXeCsgUhqD4A=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "EPEX",
+    "badge_image_url": "https://yt3.googleusercontent.com/i8q4Jrq13aFin04gXOZDgXI6bdPllOak0bG1xzlC52QKBBaTAe9njUayZ6-1oEHOHA6qxaPpJw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "EXO",
+    "badge_image_url": "https://yt3.googleusercontent.com/ujB2n35HjiBrD1UHWY6aLdZJ4-g01agipoXe2NFQaAbuEhnIPnJHbrfi9ScdgawZWSuKZkPGhg=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCzCedBCSSltI1TFd3bKyN6g",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "FIFTY FIFTY",
+    "badge_image_url": "https://yt3.googleusercontent.com/UUxHs8Cskz1374PkiR3xxxyIMChi1aCj-x4an2-yb5W0gz7k2Z3Kmui6EX_TnHtzcmve-2cO=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "fromis_9",
+    "badge_image_url": "https://yt3.googleusercontent.com/sXoQP7vkQ_ATX88iiH56ntKPNM_ntHHwmgltcP7aNfDNbHBU9rwGVuRfjhXI1Eas_D-Uz25yrA=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC8qO5racajmy4YgPgNJkVXg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "GHOST9",
+    "badge_image_url": "https://yt3.googleusercontent.com/j_zpAi_rr7ZalQ2oEanTQ90vNpKlS7KtL1OwOgo4win2Ad4jvINL5leaaHQ1ONcm9FcvM7M3=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCwBsVtDcTVG4QCorkVNJ5Sg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "H1-KEY",
+    "badge_image_url": "https://yt3.googleusercontent.com/LDsqhcM6lWgBNPSpJNIvZ5RbpzU6SCM_5ahIfc91i3rc65zLPDraSlhRfkZRybZ9y7jmUy-x5g=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC-6L6QIx3M6O_ROf7CP-pJg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "INFINITE",
+    "badge_image_url": "https://yt3.googleusercontent.com/LJoGTgVSlHOmc9gC1qULrAGl0q0YYBv2UD77ck2g4M_dS7_RSS4oW_T9dL9C59oHrk2PnhA_Fw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCdzXSux7OnRD1Cml-DQ416Q",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "ITZY",
+    "badge_image_url": "https://yt3.googleusercontent.com/K_YJ1Lr0UBrtIZCAqbF3gmB258wrHQthumrWkHVgr7b32_ChoixS4LAKnMT8lw432MsnX5XODCU=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "IVE",
+    "badge_image_url": "https://yt3.googleusercontent.com/_CyiM1Ob0gRzu4d3Y4-l1vJTyZSRld8OR7oJ9PmtLNdDMtN0koRRs_asLpIEsSGmKAwEKK_CTqs=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "izna",
+    "badge_image_url": "https://yt3.googleusercontent.com/riFlXG_mF7Nvrpbn64hUqlLx7h1j3MwpWBPRDgJ5oLnTYDPJfqUNDdwXJa4wH8p5EQ2FaWSv=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "KARD",
+    "badge_image_url": "https://yt3.googleusercontent.com/nAeia3ldQiBtEhYxEQAb7Y84TyYFsKg6DvypKoF4BYuOLIWAZVXRowHYzfJdFYkk0J2HdIraGQ=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC5OwlwvsVmf_lXHguB6OYFw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "KISS OF LIFE",
+    "badge_image_url": "https://yt3.googleusercontent.com/UZhdOaXGbF6NKRV4TSHPyr6uiLpj5gGpd1sEqjcnmCW2zKDzo64MpbJh2wKbLoKaymRfauLA=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCvEEeBssb4XxIfWWIB8IjMw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "LE SSERAFIM",
+    "badge_image_url": "https://yt3.googleusercontent.com/cp_K2YxbIzM1LeY-MxbBbfiBwGVynuZXmnoulzqChU9kQcjEGrLKkiDFvVW5ozY_IH_Lyb0AHRU=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCs-QBT4qkj_YiQw1ZntDO3g",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "LIGHTSUM",
+    "badge_image_url": "https://yt3.googleusercontent.com/7a2ALs4EWUYWKT3vhwP2CsaGzOVxYia2o-ndW6I_zhOqCSwMIfHCDPvhLiuXLH5Eh-lEMvW4Jg=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCeQlMQ-4cedE7SNmF5JsdsA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "LUN8",
+    "badge_image_url": "https://yt3.googleusercontent.com/yCivIheXFwZbhhUmKf_B_YSlQxRG_PshqNjCJwhLXVLprAxya66y7z8f4y-1zGRM1QetxJifng=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCHx0MD2c0DTNGAtc0Yq6YPQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "MAMAMOO",
+    "badge_image_url": "https://yt3.googleusercontent.com/bTFet94zsLubbm3rXcTvd-ClSRpVtFiD9bm2eSv_TvVozcmQGWXK5j-2OSp7J0jHiTxloXnc92A=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCuhAUMLzJxlP1W7mEk0_6lA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "MCND",
+    "badge_image_url": "https://yt3.googleusercontent.com/WLlffb-azl7cN07Qjs6HIIzpwhNaP1gYJpiTbrIb-umUAAfob6NJzG7oWomqdtrFWko8fEMBQw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCNC_wxtoMCuvRVQzpbHPaZw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "MEOVV",
+    "badge_image_url": "https://yt3.googleusercontent.com/EGc4207D8JJEMC3jn_SIV_wRRbB2k4wMpuS8FvLgXUs3s8ICMRmTHh8-VdntYLqkcqaDdB3ibg=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCowiwt93gqGlNG4k5VDxO-w",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "MONSTA X",
+    "badge_image_url": "https://yt3.googleusercontent.com/Ubx6dkmebSRAWWjNek0cYSPJn6duhZ9Z76hEzmRWK4nfYAb2Nrl2ZlqhGEBsh5iH0IJVq7re=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCZvCP6sWj75MwpUP4LVtpNw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "NCT 127",
+    "badge_image_url": "https://yt3.googleusercontent.com/e8K-7Yu4rcqxSFJwqQrIvwYF14oEgUJ5X510R5rDz8EUe6BC7pPVSA5tG4F1ZTAjXvFl2jMGzg=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCk2E0dbAyEJWnrN2bbQOcbg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "NCT DREAM",
+    "badge_image_url": "https://yt3.googleusercontent.com/zueBt4nWmanBgh4z4W1-S5wbiOIESaXVad_TKTbeHlx97T8fKcbjyX-0iwGaPvZ8BQA1Esyybw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "NewJeans",
+    "badge_image_url": "https://yt3.googleusercontent.com/LJXS4gAz-_rkoqcgixJplCAwOLQXRNTYnGhyZQoJMZ2Uyp_akqREktZnvxbmmbES_UDp9hTT9y8=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCMki_UkHb4qSc0qyEcOHHJw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "NEXZ",
+    "badge_image_url": "https://yt3.googleusercontent.com/ETdrX25Wh1uWhJy_x-51-7lvSkUd2Txy2egswaVpk9-i9KQNHhtxMdNoZ9CtIDy9ya2rZWTHFw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "NMIXX",
+    "badge_image_url": "https://yt3.googleusercontent.com/UkZJRmpoFVOe3qfAT5GEB5DTNJQSVUAIkHdj5A-QtfB8kSZS8LMkYJIP8e5-gIx8D0HyhGD9mw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "ONEUS",
+    "badge_image_url": "https://yt3.googleusercontent.com/nEjipWuky3xIyWJ5X9mTF1rDKpftxbqAqLqJ8Y9PQj2Ts7o_fqBCu7bB_LwTuL_HojNbXvN_bA=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "ONEWE",
+    "badge_image_url": "https://yt3.googleusercontent.com/Wh9AAzEZZSS2Nq15i8MRoW-5zChrA_CFVDPN_yoZdlQvclg81yW9IBZ8eeWq5fVplTvLOR2oYOE=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "ONF",
+    "badge_image_url": "https://yt3.googleusercontent.com/aP9jeXiZ6oluX9RPVtGIPmxaYfUnkA-bBfRUcyfuKHkr47-3NyuTdjtcdNlK5SYenWXqvHmXqg=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "P1Harmony",
+    "badge_image_url": "https://yt3.googleusercontent.com/VwUA1yXC-RrrtLQ3GoOFt9V3DUFkjb3gpTx-fa0qmzVkUZRCrlRUMu2qaRFRJSvI9c0iWnoTxg=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "PLAVE",
+    "badge_image_url": "https://yt3.googleusercontent.com/pD_AGB5N1COKX5aRgJSGT0n8mJVFDIB13UW-V1xo28E0E8ZyUBRH9iTrRFYO1-ch8EkFNXTYvQ=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCPZIPuQPrfrUG9Xe_okEmQA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "Purple Kiss",
+    "badge_image_url": "https://yt3.googleusercontent.com/AzAIT8v0YppNs7JQk4DryqX8fijJos5EVy7L9z7e9GXW1aUfoUNNNVxex4y5OECwo5BLW9iTig=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCor8nQnEdMs4eBcU-uVBQ8g",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "QWER",
+    "badge_image_url": "https://yt3.googleusercontent.com/P7488ns2ybBumRGU-AzmFY1_hDSuLE9UJ18oMCSaW6btTVUoYi982ENOqs-jjcILla198Nllhw=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCgD0APk2x9uBlLM0UsmhQjw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "Red Velvet",
+    "badge_image_url": "https://yt3.googleusercontent.com/8-pUU8kJ1sXmDY9OVaglW5UO-t9vmnOt9SKZd0OvEEpULpOUhhcOvgoTaOgZVi-H7FukRNL2Zg=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "RIIZE",
+    "badge_image_url": "https://yt3.googleusercontent.com/W_0y6cSRgfBNVuen8N-dlCjyUl0ty5bTSJwob0IMb9L2P-9PKhTBRDS6-_tdqlvY2mLKVHX9=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "SEVENTEEN",
+    "badge_image_url": "https://yt3.googleusercontent.com/8fqbFMfIjAMs6TuRGii5MEsXIdn5ZTliSbCPPfbZ8R07Pt15ht0n0OjexUCG8t4_q-c3YO2KXQ=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "SHINee",
+    "badge_image_url": "https://yt3.googleusercontent.com/p0GgJrPRxQ3qaR7WL1u4p7MY3sZXQ01dMNPwZ0_94JLtW8-RXdenE_a2aocAMnuOm68sO0yX=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "STAYC",
+    "badge_image_url": "https://yt3.googleusercontent.com/7aQGtpAf_oekxI4ecqCUGUKm0ONbSk4UU2SAiRa4jg9reUo-siOJSm594o3pEBXCRxpg9g2H=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCod5V2dpnpJLklGvVOv5FcQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "Stray Kids",
+    "badge_image_url": "https://yt3.googleusercontent.com/rKpjNGv_TGpBsNXsm46VAxZqy7_uf6wWCnw-ZLnFHV7jOzbUvF9tNMlZMKl_djtzaNCDyLQ0VQ=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "THE BOYZ",
+    "badge_image_url": "https://yt3.googleusercontent.com/WZvqZ_0AtJF8BuIAU341OunWSPqZHO9JaNGC3vZaawekNBkFYLhIWXzuzMKr92IXNJ8FqfzFju0=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCkJ1rbOrsyPfBuHNfnLPm-Q",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "TOMORROW X TOGETHER",
+    "badge_image_url": "https://yt3.googleusercontent.com/RRRNWsQbSqBaW8YB750AZo2Ad3f_YnRVDV5BFn54PrxM606rxcHLICm1rs_6EsxlC_4w9JN23Q=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "TREASURE",
+    "badge_image_url": "https://yt3.googleusercontent.com/aUvewrJGTcI4ANkUkWnnwkDr0esbtIrWntgvCb1GWGnRAEKHePNCirzbC2YdoIdKSA0_c63XBQ=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCx9hXYOCvUYwrprEqe4ZQHA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "TRENDZ",
+    "badge_image_url": "https://yt3.googleusercontent.com/pvDIiMTgeRWSFoz0HnPBUKFJoEGe-bFLg88-ZrcN_snZ_PW5fXgzMTFhCl4E9imUVceO5gLLbA=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCvc55IOOCI165H3raqcjjrg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "tripleS",
+    "badge_image_url": "https://yt3.googleusercontent.com/31W7xhMWM227BR_zVRAQj5OMOdEjB1edRhI2-5dmFwrzXSYXdnqYh8WMB1MoIBAqRg5DkMIoYPk=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCJnL-TBcsYrF2SLs7tmiC8Q",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "TWICE",
+    "badge_image_url": "https://yt3.googleusercontent.com/rj-m7CQIV8hIHx_lB8cjs0NxrDFJaUkVwZ5tCnZTNSVEr2IqXGF-2e7nr7og1IGeRXtHikce=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "TWS",
+    "badge_image_url": "https://yt3.googleusercontent.com/1tZiC0UZY3WFchtfc4-7GtwcglB1poRinYmIyaXZ5G_0CqTzyCtocVlVHDkMXDuEiOlwrA-z=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC8C6QOPDVYwmuaSBZksefdg",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "UNIS",
+    "badge_image_url": "https://yt3.googleusercontent.com/hHBWqpC3udEDwHa0Z6tT5Qq0k5fTPJ6ow08zJpmk4womarCfE8YroBY0uCvJTozNtcc2nRah=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "VERIVERY",
+    "badge_image_url": "https://yt3.googleusercontent.com/ZaW5GhH5WhcILBMql8LhXTkM_kq0DO2lr4ehe8vvL8gZbrrj2Y2oUa2R1Ex8hh6Bk_O1Cwn9=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "VIVIZ",
+    "badge_image_url": "https://yt3.googleusercontent.com/vdXffhOPbYfW-U45rtMFqUh5aLC9a9GQ8FPUat9cj6FY_M9yLiu0iwrC0UxNWOrXKR_0OLOW=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCWFMjDuWKlct0jy89k2kkRA",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "WayV",
+    "badge_image_url": "https://yt3.googleusercontent.com/4D3N23DJRKZdbyoiZresEmQLayrWyad-3DGKhK3rO0_7IrUVDv3zh-MF0uZEAIB-ee7UKAK6k8c=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC-ZHt5Zgadfx-B1CM63Lqew",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "Weeekly",
+    "badge_image_url": "https://yt3.googleusercontent.com/hdALl9p5Xorp-GnogJe-U8BiIScrDx54jOvxPjZ3uv03DrfCg0YyEcEb8Txj4xQlgZXxbguyrxs=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UC5rp2rDRSpyKNj-QLytC-tw",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "woo!ah!",
+    "badge_image_url": "https://yt3.googleusercontent.com/EuT8DXp42k4-8G1Tv8EJ0UrbtNFnGkbrp01fuAqLVN69Jc1Ou34AfeYti8utR7oYFh7DMuLg1w=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCNeLbWtlJzTsavMC70zY0dQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "Xdinary Heroes",
+    "badge_image_url": "https://yt3.googleusercontent.com/1sLQZ659XNIyNVYWpOV4XKXou_y6IinWQJ8HMJahluRpxyxNZ7vxFds1XYSz1i-bMrud-FQv=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "xikers",
+    "badge_image_url": "https://yt3.googleusercontent.com/guibzVeJuX_WUD1iyTVdOtkD8qCjMvcq1k4JsngjLgeZP086YIXZ4oDvcmojQWo0KgRY9blI=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  },
+  {
+    "group": "ZEROBASEONE",
+    "badge_image_url": "https://yt3.googleusercontent.com/_ZYPa-Cy7H63Xybby-5Os-EiJTU4OdZK_thtkDyql1mSGBdbPhFPKHW6-gHwFdjhdH69PTHk=s900-c-k-c0x00ffffff-no-rj",
+    "badge_source_url": "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ",
+    "badge_source_label": "Official YouTube channel avatar",
+    "badge_kind": "official_channel_avatar"
+  }
+]
