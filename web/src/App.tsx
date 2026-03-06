@@ -438,6 +438,8 @@ const TRANSLATIONS = {
       status: '표시 상태',
       agency: '소속사',
     },
+    agencyFilterExpand: '전체 소속사 보기',
+    agencyFilterCollapse: '접기',
     filterOptions: {
       all: '전체',
       single: '싱글',
@@ -644,6 +646,8 @@ const TRANSLATIONS = {
       status: 'Status',
       agency: 'Agency',
     },
+    agencyFilterExpand: 'Browse all agencies',
+    agencyFilterCollapse: 'Collapse',
     filterOptions: {
       all: 'All',
       single: 'Single',
@@ -1428,18 +1432,39 @@ function App() {
           <div className="context-header-copy">
             <p className="panel-label">{copy.monthlyContextLabel}</p>
             <h1>{monthlyContextTitle}</h1>
+            <div className="context-summary-grid">
+              <article className="context-summary-card">
+                <span>{copy.monthlySummaryLabels.verified}</span>
+                <strong>{monthReleases.length}</strong>
+              </article>
+              <article className="context-summary-card">
+                <span>{copy.monthlySummaryLabels.scheduled}</span>
+                <strong>{monthScheduledDashboardRows.length}</strong>
+              </article>
+              <article className="context-summary-card">
+                <span>{copy.monthlySummaryLabels.nearest}</span>
+                <strong>
+                  {nearestMonthlySignal
+                    ? formatOptionalDate(nearestMonthlySignal.scheduled_date, displayDateFormatter, copy.none)
+                    : copy.monthlyNearestEmpty}
+                </strong>
+                <p className="context-summary-meta">
+                  {nearestMonthlySignal ? getTeamDisplayName(nearestMonthlySignal.group) : copy.none}
+                </p>
+              </article>
+            </div>
           </div>
 
           <div className="context-header-controls">
-            <label className="search-field">
-              <span>{copy.searchLabel}</span>
-              <input
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder={copy.searchPlaceholder}
-              />
-            </label>
-            <div className="context-header-utility-row">
+            <div className="context-header-search-row">
+              <label className="search-field">
+                <span>{copy.searchLabel}</span>
+                <input
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  placeholder={copy.searchPlaceholder}
+                />
+              </label>
               <div className="language-switch" role="group" aria-label={copy.languageLabel}>
                 {LANGUAGE_OPTIONS.map((option) => (
                   <button
@@ -1455,32 +1480,82 @@ function App() {
                 ))}
               </div>
             </div>
+
+            <article className="context-highlight-card">
+              <div className="context-highlight-head">
+                <div>
+                  <p className="panel-label">{copy.monthlyHighlightLabel}</p>
+                  <h2>{nearestMonthlySignal ? nearestMonthlySignal.headline : copy.monthlyNearestEmpty}</h2>
+                </div>
+                {nearestMonthlySignal ? (
+                  <div className="signal-tags">
+                    <UpcomingCountdownBadge item={nearestMonthlySignal} formatter={shortDateFormatter} />
+                    <span className={`signal-badge signal-badge-date-${nearestMonthlySignal.date_status}`}>
+                      {formatDateStatus(nearestMonthlySignal.date_status, language)}
+                    </span>
+                  </div>
+                ) : null}
+              </div>
+
+              {nearestMonthlySignal ? (
+                <div className="context-highlight-body">
+                  <div>
+                    <TeamIdentity group={nearestMonthlySignal.group} variant="list" />
+                    <p className="signal-meta">
+                      {formatOptionalDate(nearestMonthlySignal.scheduled_date, displayDateFormatter, copy.none)} ·{' '}
+                      {formatSourceType(nearestMonthlySignal.source_type, language)} ·{' '}
+                      {nearestMonthlySignal.source_domain || copy.sourceTypeLabels.pending}
+                    </p>
+                    {formatUpcomingEvidenceMeta(nearestMonthlySignal, language) ? (
+                      <p className="signal-meta">{formatUpcomingEvidenceMeta(nearestMonthlySignal, language)}</p>
+                    ) : null}
+                  </div>
+                  <div className="context-highlight-actions">
+                    <button type="button" className="inline-button" onClick={() => openTeamPage(nearestMonthlySignal.group)}>
+                      {teamCopy.action}
+                    </button>
+                    {nearestMonthlySignal.source_url ? (
+                      <a href={nearestMonthlySignal.source_url} target="_blank" rel="noreferrer">
+                        {copy.open}
+                      </a>
+                    ) : (
+                      <span className="signal-link-muted">{copy.noSourceLink}</span>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <p className="empty-copy">{copy.monthlyHighlightEmpty}</p>
+              )}
+            </article>
           </div>
         </div>
 
-        <div className="context-filter-grid">
-          <FilterGroup
-            label={copy.filterLabels.releaseKind}
-            options={releaseKindOptions}
-            selected={selectedReleaseKind}
-            language={language}
-            onSelect={(value) => setSelectedReleaseKind(value)}
-          />
-          <FilterGroup
-            label={copy.filterLabels.actType}
-            options={actTypeOptions}
-            selected={selectedActType}
-            language={language}
-            onSelect={(value) => setSelectedActType(value)}
-          />
-          <FilterGroup
-            label={copy.filterLabels.status}
-            options={dashboardStatusOptions}
-            selected={selectedDashboardStatus}
-            language={language}
-            onSelect={(value) => setSelectedDashboardStatus(value)}
-          />
-          <FilterGroup
+        <div className="context-filter-stack">
+          <div className="context-filter-grid context-filter-grid-primary">
+            <FilterGroup
+              label={copy.filterLabels.releaseKind}
+              options={releaseKindOptions}
+              selected={selectedReleaseKind}
+              language={language}
+              onSelect={(value) => setSelectedReleaseKind(value)}
+            />
+            <FilterGroup
+              label={copy.filterLabels.actType}
+              options={actTypeOptions}
+              selected={selectedActType}
+              language={language}
+              onSelect={(value) => setSelectedActType(value)}
+            />
+            <FilterGroup
+              label={copy.filterLabels.status}
+              options={dashboardStatusOptions}
+              selected={selectedDashboardStatus}
+              language={language}
+              onSelect={(value) => setSelectedDashboardStatus(value)}
+            />
+          </div>
+
+          <AgencyFilterGroup
             label={copy.filterLabels.agency}
             options={agencyFilterOptions}
             selected={selectedAgency}
@@ -1488,79 +1563,6 @@ function App() {
             onSelect={setSelectedAgency}
           />
         </div>
-
-        <div className="context-summary-grid">
-          <article className="context-summary-card">
-            <span>{copy.monthlySummaryLabels.verified}</span>
-            <strong>{monthReleases.length}</strong>
-          </article>
-          <article className="context-summary-card">
-            <span>{copy.monthlySummaryLabels.scheduled}</span>
-            <strong>{monthScheduledDashboardRows.length}</strong>
-          </article>
-          <article className="context-summary-card">
-            <span>{copy.monthlySummaryLabels.nearest}</span>
-            <strong>
-              {nearestMonthlySignal
-                ? formatOptionalDate(nearestMonthlySignal.scheduled_date, displayDateFormatter, copy.none)
-                : copy.monthlyNearestEmpty}
-            </strong>
-            <p className="context-summary-meta">
-              {nearestMonthlySignal ? getTeamDisplayName(nearestMonthlySignal.group) : copy.none}
-            </p>
-          </article>
-        </div>
-
-        <article className="context-highlight-card">
-          <div className="context-highlight-head">
-            <div>
-              <p className="panel-label">{copy.monthlyHighlightLabel}</p>
-              <h2>
-                {nearestMonthlySignal ? nearestMonthlySignal.headline : copy.monthlyNearestEmpty}
-              </h2>
-            </div>
-            {nearestMonthlySignal ? (
-              <div className="signal-tags">
-                <UpcomingCountdownBadge item={nearestMonthlySignal} formatter={shortDateFormatter} />
-                <span className={`signal-badge signal-badge-date-${nearestMonthlySignal.date_status}`}>
-                  {formatDateStatus(nearestMonthlySignal.date_status, language)}
-                </span>
-              </div>
-            ) : null}
-          </div>
-
-          {nearestMonthlySignal ? (
-            <>
-              <div className="context-highlight-body">
-                <div>
-                  <TeamIdentity group={nearestMonthlySignal.group} variant="list" />
-                  <p className="signal-meta">
-                    {formatOptionalDate(nearestMonthlySignal.scheduled_date, displayDateFormatter, copy.none)} ·{' '}
-                    {formatSourceType(nearestMonthlySignal.source_type, language)} ·{' '}
-                    {nearestMonthlySignal.source_domain || copy.sourceTypeLabels.pending}
-                  </p>
-                  {formatUpcomingEvidenceMeta(nearestMonthlySignal, language) ? (
-                    <p className="signal-meta">{formatUpcomingEvidenceMeta(nearestMonthlySignal, language)}</p>
-                  ) : null}
-                </div>
-                <div className="context-highlight-actions">
-                  <button type="button" className="inline-button" onClick={() => openTeamPage(nearestMonthlySignal.group)}>
-                    {teamCopy.action}
-                  </button>
-                  {nearestMonthlySignal.source_url ? (
-                    <a href={nearestMonthlySignal.source_url} target="_blank" rel="noreferrer">
-                      {copy.open}
-                    </a>
-                  ) : (
-                    <span className="signal-link-muted">{copy.noSourceLink}</span>
-                  )}
-                </div>
-              </div>
-            </>
-          ) : (
-            <p className="empty-copy">{copy.monthlyHighlightEmpty}</p>
-          )}
-        </article>
       </header>
 
       {selectedTeam ? (
@@ -4338,6 +4340,50 @@ function FilterGroup<T extends string>({
       <span>{label}</span>
       <div className="filter-row">
         {options.map((option) => (
+          <button
+            type="button"
+            key={option}
+            className={`filter-chip ${selected === option ? 'filter-chip-active' : ''}`}
+            onClick={() => onSelect(option)}
+          >
+            {formatFilterOption(option, language)}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function AgencyFilterGroup<T extends string>({
+  label,
+  options,
+  selected,
+  language,
+  onSelect,
+}: {
+  label: string
+  options: readonly T[]
+  selected: T
+  language: Language
+  onSelect: (value: T) => void
+}) {
+  const copy = TRANSLATIONS[language]
+  const [expanded, setExpanded] = useState(selected !== 'all')
+  const collapsedOptions = Array.from(
+    new Set([options[0], selected, ...options.filter((option) => option !== options[0]).slice(0, 4)]),
+  ).filter(Boolean) as T[]
+  const visibleOptions = expanded ? options : collapsedOptions
+
+  return (
+    <div className="filter-group filter-group-agency">
+      <div className="filter-group-head">
+        <span>{label}</span>
+        <button type="button" className="inline-button" onClick={() => setExpanded((value) => !value)}>
+          {expanded ? copy.agencyFilterCollapse : copy.agencyFilterExpand}
+        </button>
+      </div>
+      <div className={`filter-row filter-row-agency ${expanded ? 'filter-row-agency-expanded' : ''}`}>
+        {visibleOptions.map((option) => (
           <button
             type="button"
             key={option}
