@@ -243,7 +243,33 @@
 - 앱 내 스트리밍 재생
 - 웹 UI를 RN으로 그대로 치환
 
-## 15. 수용 기준
+## 15. 비기능 요구사항
+- 화면 첫 진입 후 핵심 정보는 긴 소개문 없이 바로 보여야 한다.
+- 서비스 버튼과 출처 링크는 시각적으로 명확히 구분되어야 한다.
+- 탭/시트/상세 전환은 상태를 보존해야 한다.
+- 긴 텍스트, 누락 이미지, 누락 링크, 모호한 날짜를 정상 상태로 처리해야 한다.
+- 접근성, localization, visual token 규칙은 각 개별 화면보다 상위 계약으로 취급한다.
+- 데이터 신선도, 외부 링크 보안, 분석 이벤트 규칙은 별도 하위 문서를 따른다.
+
+## 16. 수용 기준
 - 이 문서만 읽고 모바일 앱의 최상위 구조를 이해할 수 있어야 한다.
 - 하단 탭, 상세 흐름, 데이터 재사용 전략, 구현 단계가 명확해야 한다.
 - 후속 화면 문서를 작성하거나 개발 이슈로 분해할 수 있어야 한다.
+
+## 17. 참조 문서
+- `domain-glossary.md`
+- `non-functional-requirements-spec.md`
+- `decision-log.md`
+- `analytics-event-spec.md`
+- `data-sync-freshness-spec.md`
+- `privacy-security-spec.md`
+- `accessibility-reading-order-spec.md`
+- `release-readiness-gate.md`
+- `route-param-contracts.md`
+- `configuration-environment-spec.md`
+- `observability-error-taxonomy.md`
+- `content-governance-spec.md`
+- `performance-budget-spec.md`
+- `state-restoration-spec.md`
+- `feature-gate-matrix.md`
+- `external-dependency-risk-spec.md`

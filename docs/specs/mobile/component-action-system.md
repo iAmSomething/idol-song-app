@@ -211,3 +211,8 @@
 - 어떤 화면이든 Primary / Service / Meta / Chip이 섞여 보이지 않아야 한다.
 - 사용자는 버튼과 태그를 쉽게 구분할 수 있어야 한다.
 - 서비스 액션은 로고/아이콘만 보고도 구분 가능해야 한다.
+
+## 11. 구현자 참고 문서
+- 구조와 공통 블록은 `component-catalog.md`를 따른다.
+- 간격/크기/비율은 `visual-design-spec.md`, `layout-constraint-spec.md`를 따른다.
+- loading/empty/partial/error 처리는 `state-feedback-spec.md`를 따른다.
