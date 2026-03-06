@@ -8,6 +8,7 @@ import releaseRows from './data/releases.json'
 import unresolvedRows from './data/unresolved.json'
 import upcomingCandidateRows from './data/upcomingCandidates.json'
 import releaseChangeLogRows from './data/releaseChangeLog.json'
+import relatedActOverrideRows from './data/relatedActsOverrides.json'
 import watchlistRows from './data/watchlist.json'
 
 type ReleaseFact = {
@@ -30,6 +31,7 @@ type ReleaseRow = {
 }
 
 type RadarTag = 'rookie'
+type RelatedRadarTag = RadarTag | 'long_gap' | 'manual_watch'
 
 type ArtistProfileRow = {
   slug: string
@@ -186,6 +188,30 @@ type AgencyMonthSection = {
 }
 
 const WEEKLY_DIGEST_MAX_ITEMS = 8
+
+type RelatedActsOverrideRow = {
+  group: string
+  related_groups: string[]
+}
+
+type RelatedActReason =
+  | {
+      kind: 'agency'
+      agency: string
+    }
+  | {
+      kind: 'radar_tag'
+      radarTag: RelatedRadarTag
+    }
+  | {
+      kind: 'manual_override'
+    }
+
+type RelatedActRecommendation = {
+  group: string
+  reason: RelatedActReason
+  score: number
+}
 
 type ReleaseChangeType =
   | 'scheduled_date_added'
@@ -786,6 +812,12 @@ const TEAM_COPY = {
     quickJumpTitle: '다른 추적 팀',
     noOtherTeams: '다른 필터된 팀이 없습니다.',
     noSignal: '신호 없음',
+    relatedActsLabel: '관련 팀 추천',
+    relatedActsTitle: '비슷한 결로 바로 이동',
+    relatedActsEmpty: '추천할 관련 팀 데이터가 아직 충분하지 않습니다.',
+    relatedActsReasonAgency: '같은 소속사',
+    relatedActsReasonRadarTag: '같은 레이더 태그',
+    relatedActsReasonManual: '수동 추천',
     timelineLabel: '소스 타임라인',
     timelineTitle: '컴백 근거가 쌓인 순서',
     timelineIntro: '예정 신호와 검증된 발매를 같은 타임라인에서 봅니다.',
@@ -868,6 +900,12 @@ const TEAM_COPY = {
     quickJumpTitle: 'Other tracked teams',
     noOtherTeams: 'No other filtered teams available.',
     noSignal: 'No signal',
+    relatedActsLabel: 'Related acts',
+    relatedActsTitle: 'Jump into adjacent acts',
+    relatedActsEmpty: 'There is not enough related-act data to recommend another team yet.',
+    relatedActsReasonAgency: 'Same agency',
+    relatedActsReasonRadarTag: 'Same radar tag',
+    relatedActsReasonManual: 'Manual pick',
     timelineLabel: 'Source timeline',
     timelineTitle: 'How the comeback evidence built up',
     timelineIntro: 'Scheduled signals and verified releases share one evidence trail.',
@@ -933,6 +971,7 @@ const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
 const releaseDetailsCatalog = releaseDetailRows as ReleaseDetailRow[]
 const releaseEnrichmentCatalog = releaseEnrichmentRows as ReleaseEnrichmentRow[]
 const releaseCatalog = releaseRows as ReleaseRow[]
+const relatedActOverrides = relatedActOverrideRows as RelatedActsOverrideRow[]
 const releases = releaseCatalog
   .flatMap((row) => expandReleaseRow(row))
   .sort((left, right) => right.dateValue.getTime() - left.dateValue.getTime())
@@ -967,6 +1006,7 @@ const releaseGroups = groupReleasesByGroup(releases)
 const verifiedReleaseHistory = buildVerifiedReleaseHistory()
 const verifiedReleaseHistoryByGroup = groupReleasesByGroup(verifiedReleaseHistory)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
+const relatedActOverrideMap = new Map(relatedActOverrides.map((row) => [row.group, row.related_groups]))
 const dedupedUpcomingCandidates = dedupeUpcomingCandidatesForDisplay(upcomingCandidates)
 const rawUpcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
 const upcomingByGroup = groupUpcomingCandidatesByGroup(dedupedUpcomingCandidates)
@@ -977,6 +1017,7 @@ const latestReleaseChangeByGroup = new Map(
 const searchIndexByGroup = buildSearchIndexByGroup()
 const teamProfiles = buildTeamProfiles()
 const teamProfileMap = new Map(teamProfiles.map((team) => [team.group, team]))
+const relatedActsByGroup = buildRelatedActsByGroup()
 const agencyFilterOptions = ['all', ...buildAgencyFilterOptions()]
 const longGapRadarEntries = buildLongGapRadarEntries()
 const rookieRadarEntries = buildRookieRadarEntries()
@@ -1204,7 +1245,7 @@ function App() {
   const selectedTeamLatestMvUrl = selectedTeamLatestDetail
     ? getReleaseDetailMvUrls(selectedTeamLatestDetail).canonicalUrl
     : ''
-  const relatedTeams = filteredTeams.filter((team) => team.group !== selectedTeam?.group).slice(0, 8)
+  const relatedActs = selectedTeam ? relatedActsByGroup.get(selectedTeam.group) ?? [] : []
 
   useEffect(() => {
     if (!selectedDayInteractionTick || !selectedDayPanelRef.current || !effectiveSelectedDayIso) {
@@ -1793,27 +1834,35 @@ function App() {
 
             <aside className="sidebar team-aside">
               <section className="panel">
-                <p className="panel-label">{teamCopy.quickJumpLabel}</p>
-                <h2>{teamCopy.quickJumpTitle}</h2>
-                <div className="team-directory">
-                  {relatedTeams.length ? (
-                    relatedTeams.map((team) => (
-                      <button
-                        type="button"
-                        key={team.group}
-                        className="team-directory-button"
-                        onClick={() => openTeamPage(team.group)}
-                      >
-                        <span>{team.displayName}</span>
-                        <strong>
-                          {team.nextUpcomingSignal
-                            ? describeUpcomingSignal(team.nextUpcomingSignal, language, displayDateFormatter, copy.none)
-                            : teamCopy.noSignal}
-                        </strong>
-                      </button>
-                    ))
+                <p className="panel-label">{teamCopy.relatedActsLabel}</p>
+                <h2>{teamCopy.relatedActsTitle}</h2>
+                <div className="team-directory related-acts-list">
+                  {relatedActs.length ? (
+                    relatedActs.map((item) => {
+                      const team = teamProfileMap.get(item.group)
+                      if (!team) {
+                        return null
+                      }
+
+                      return (
+                        <article key={team.group} className="related-acts-card">
+                          <div className="related-acts-head">
+                            <TeamIdentity group={team.group} variant="list" />
+                            <span className={`signal-badge signal-badge-related-${item.reason.kind}`}>
+                              {formatRelatedActReasonLabel(item.reason, language)}
+                            </span>
+                          </div>
+                          <p className="related-acts-reason">{formatRelatedActReasonDetail(item.reason, language)}</p>
+                          <div className="action-row">
+                            <ActionButton variant="primary" onClick={() => openTeamPage(team.group)}>
+                              {teamCopy.action}
+                            </ActionButton>
+                          </div>
+                        </article>
+                      )
+                    })
                   ) : (
-                    <p className="empty-copy">{teamCopy.noOtherTeams}</p>
+                    <p className="empty-copy">{teamCopy.relatedActsEmpty}</p>
                   )}
                 </div>
               </section>
@@ -4163,8 +4212,94 @@ function compareAnnualReleaseTimelineItems(left: AnnualReleaseTimelineItem, righ
   return 0
 }
 
+function getTeamRelatedRadarTags(group: string) {
+  const tags = new Set<RelatedRadarTag>()
+  const profile = artistProfileByGroup.get(group)
+  const watchRow = watchlistByGroup.get(group)
+
+  if (profile?.radar_tags?.includes('rookie')) {
+    tags.add('rookie')
+  }
+
+  if (watchRow?.watch_reason === 'long_gap') {
+    tags.add('long_gap')
+  }
+
+  if (watchRow?.watch_reason === 'manual_watch') {
+    tags.add('manual_watch')
+  }
+
+  return tags
+}
+
+function pickSharedRadarTag(left: Set<RelatedRadarTag>, right: Set<RelatedRadarTag>) {
+  const priority: RelatedRadarTag[] = ['rookie', 'long_gap', 'manual_watch']
+  return priority.find((tag) => left.has(tag) && right.has(tag)) ?? null
+}
+
+function hasManualOverridePair(group: string, candidateGroup: string) {
+  const groupOverrides = relatedActOverrideMap.get(group) ?? []
+  const candidateOverrides = relatedActOverrideMap.get(candidateGroup) ?? []
+  return groupOverrides.includes(candidateGroup) || candidateOverrides.includes(group)
+}
+
+function compareRelatedActRecommendations(left: RelatedActRecommendation, right: RelatedActRecommendation) {
+  if (left.score !== right.score) {
+    return right.score - left.score
+  }
+
+  const leftLatestRelease = teamProfileMap.get(left.group)?.latestRelease
+  const rightLatestRelease = teamProfileMap.get(right.group)?.latestRelease
+  const leftDate = parseDateValue(leftLatestRelease?.date)
+  const rightDate = parseDateValue(rightLatestRelease?.date)
+  if (leftDate !== rightDate) {
+    return rightDate - leftDate
+  }
+
+  return left.group.localeCompare(right.group)
+}
+
 function formatTrackingStatus(status: string, language: Language) {
   return TRANSLATIONS[language].statusLabels[status as keyof typeof TRANSLATIONS.ko.statusLabels] ?? status
+}
+
+function formatRelatedActReasonLabel(reason: RelatedActReason, language: Language) {
+  const teamCopy = TEAM_COPY[language]
+
+  switch (reason.kind) {
+    case 'agency':
+      return teamCopy.relatedActsReasonAgency
+    case 'radar_tag':
+      return teamCopy.relatedActsReasonRadarTag
+    case 'manual_override':
+      return teamCopy.relatedActsReasonManual
+  }
+}
+
+function formatRelatedActReasonDetail(reason: RelatedActReason, language: Language) {
+  const teamCopy = TEAM_COPY[language]
+
+  switch (reason.kind) {
+    case 'agency':
+      return `${teamCopy.relatedActsReasonAgency} · ${reason.agency}`
+    case 'radar_tag':
+      return `${teamCopy.relatedActsReasonRadarTag} · ${formatRelatedRadarTag(reason.radarTag, language)}`
+    case 'manual_override':
+      return teamCopy.relatedActsReasonManual
+  }
+}
+
+function formatRelatedRadarTag(tag: RelatedRadarTag, language: Language) {
+  const copy = TRANSLATIONS[language]
+
+  switch (tag) {
+    case 'rookie':
+      return copy.rookieBadge
+    case 'long_gap':
+      return copy.watchReasonLabels.long_gap
+    case 'manual_watch':
+      return copy.watchReasonLabels.manual_watch
+  }
 }
 
 function formatConfidenceTone(tone: ReturnType<typeof getConfidenceTone>, language: Language) {
@@ -4547,6 +4682,69 @@ function buildTeamProfiles() {
       }
     })
     .sort(compareTeamProfiles)
+}
+
+function buildRelatedActsByGroup() {
+  return teamProfiles.reduce<Map<string, RelatedActRecommendation[]>>((map, team) => {
+    const teamRadarTags = getTeamRelatedRadarTags(team.group)
+    const recommendations = teamProfiles
+      .flatMap((candidate) => {
+        if (candidate.group === team.group) {
+          return []
+        }
+
+        const agencyMatch =
+          team.agency && candidate.agency && team.agency === candidate.agency && team.agency !== AGENCY_UNKNOWN_FILTER
+        const sharedRadarTag = pickSharedRadarTag(teamRadarTags, getTeamRelatedRadarTags(candidate.group))
+        const manualOverrideMatch = hasManualOverridePair(team.group, candidate.group)
+
+        let reason: RelatedActReason | null = null
+        let score = 0
+
+        if (agencyMatch) {
+          reason = {
+            kind: 'agency',
+            agency: team.agency,
+          }
+          score = 300
+        } else if (sharedRadarTag) {
+          reason = {
+            kind: 'radar_tag',
+            radarTag: sharedRadarTag,
+          }
+          score = 200
+        } else if (manualOverrideMatch) {
+          reason = {
+            kind: 'manual_override',
+          }
+          score = 100
+        }
+
+        if (!reason) {
+          return []
+        }
+
+        if (agencyMatch && sharedRadarTag) {
+          score += 20
+        }
+        if (agencyMatch && manualOverrideMatch) {
+          score += 10
+        }
+
+        return [
+          {
+            group: candidate.group,
+            reason,
+            score,
+          },
+        ]
+      })
+      .sort(compareRelatedActRecommendations)
+      .slice(0, 6)
+
+    map.set(team.group, recommendations)
+    return map
+  }, new Map())
 }
 
 function buildLongGapRadarEntries() {

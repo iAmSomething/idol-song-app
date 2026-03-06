@@ -1,0 +1,26 @@
+[
+  {
+    "group": "ALLDAY PROJECT",
+    "related_groups": ["Hearts2Hearts", "KiiiKiii", "MEOVV"]
+  },
+  {
+    "group": "QWER",
+    "related_groups": ["DAY6", "Xdinary Heroes"]
+  },
+  {
+    "group": "RESCENE",
+    "related_groups": ["H1-KEY", "STAYC"]
+  },
+  {
+    "group": "WJSN",
+    "related_groups": ["VIVIZ", "fromis_9", "Kep1er"]
+  },
+  {
+    "group": "Weeekly",
+    "related_groups": ["woo!ah!", "WJSN"]
+  },
+  {
+    "group": "woo!ah!",
+    "related_groups": ["Weeekly", "STAYC"]
+  }
+]
