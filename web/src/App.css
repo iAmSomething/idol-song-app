@@ -556,11 +556,32 @@
   scroll-margin-top: 24px;
 }
 
+.weekly-digest,
 .monthly-dashboard,
 .monthly-dashboard-stack,
 .monthly-dashboard-section {
   display: grid;
   gap: 18px;
+}
+
+.weekly-digest-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.weekly-digest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.weekly-digest-card {
+  gap: 12px;
+}
+
+.weekly-digest-card .handoff-row {
+  margin-top: 4px;
 }
 
 .agency-view {

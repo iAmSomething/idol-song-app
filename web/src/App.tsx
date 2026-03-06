@@ -185,6 +185,8 @@ type AgencyMonthSection = {
   scheduledRows: DatedUpcomingSignal[]
 }
 
+const WEEKLY_DIGEST_MAX_ITEMS = 8
+
 type ReleaseChangeType =
   | 'scheduled_date_added'
   | 'scheduled_date_changed'
@@ -429,6 +431,11 @@ const TRANSLATIONS = {
     agencyViewEmpty: '선택한 월과 필터 조합에 맞는 소속사 항목이 없습니다.',
     agencyViewVerifiedCount: '검증',
     agencyViewScheduledCount: '예정',
+    weeklyDigest: '이번 주 꼭 들을 것',
+    weeklyDigestTitle: '최근 7일 verified release만 얇게 큐레이션합니다.',
+    weeklyDigestEmpty: '현재 필터 기준으로 최근 7일 digest에 들어갈 verified release가 없습니다.',
+    weeklyDigestWindow: '집계 기간',
+    weeklyDigestCards: '카드 수',
     dashboardTeam: '팀명',
     dashboardRelease: '릴리즈명',
     dashboardLeadTrack: '대표곡',
@@ -616,6 +623,11 @@ const TRANSLATIONS = {
     agencyViewEmpty: 'No agency sections match the current month and filter state.',
     agencyViewVerifiedCount: 'Verified',
     agencyViewScheduledCount: 'Scheduled',
+    weeklyDigest: 'This week must-listen',
+    weeklyDigestTitle: 'A thin queue built from verified releases in the latest 7-day window.',
+    weeklyDigestEmpty: 'No verified releases match the current filters inside the latest 7-day digest window.',
+    weeklyDigestWindow: 'Window',
+    weeklyDigestCards: 'Cards',
     dashboardTeam: 'Team',
     dashboardRelease: 'Release',
     dashboardLeadTrack: 'Lead track',
@@ -1087,6 +1099,18 @@ function App() {
       ...filteredUpcomingSignals.map((item) => item.isoDate),
     ]),
   ).sort()
+  const weeklyDigestReferenceDate = filteredReleases[0]?.dateValue ?? null
+  const weeklyDigestWindowStart = weeklyDigestReferenceDate ? getDateDaysBefore(weeklyDigestReferenceDate, 6) : null
+  const weeklyDigestRows =
+    weeklyDigestReferenceDate && weeklyDigestWindowStart
+      ? buildWeeklyDigestRows(
+          filteredReleases.filter((item) => {
+            const time = item.dateValue.getTime()
+            return time >= weeklyDigestWindowStart.getTime() && time <= weeklyDigestReferenceDate.getTime()
+          }),
+          WEEKLY_DIGEST_MAX_ITEMS,
+        )
+      : []
   const visibleDayIsos = new Set(monthDays.map((day) => day.iso))
   const isSelectedDayVisible = visibleDayIsos.has(selectedDayIso)
   const hasNoReleaseMatches = filteredReleases.length === 0 && filteredUpcomingSignals.length === 0
@@ -1758,6 +1782,15 @@ function App() {
       ) : (
         <main className="layout">
           <div className="layout-main-column">
+            <WeeklyMustListenDigest
+              rows={weeklyDigestRows}
+              windowStartDate={weeklyDigestWindowStart}
+              windowEndDate={weeklyDigestReferenceDate}
+              language={language}
+              displayDateFormatter={displayDateFormatter}
+              onOpenReleaseDetail={openReleaseDetail}
+            />
+
             <section ref={calendarPanelRef} className="panel panel-calendar">
               <div className="panel-top">
                 <div>
@@ -2851,6 +2884,84 @@ function RookieRadarList({
   )
 }
 
+function WeeklyMustListenDigest({
+  rows,
+  windowStartDate,
+  windowEndDate,
+  language,
+  displayDateFormatter,
+  onOpenReleaseDetail,
+}: {
+  rows: VerifiedRelease[]
+  windowStartDate: Date | null
+  windowEndDate: Date | null
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onOpenReleaseDetail: (release: VerifiedRelease) => void
+}) {
+  const copy = TRANSLATIONS[language]
+  const windowLabel =
+    windowStartDate && windowEndDate
+      ? `${displayDateFormatter.format(windowStartDate)} - ${displayDateFormatter.format(windowEndDate)}`
+      : copy.none
+
+  return (
+    <section className="panel weekly-digest">
+      <div className="monthly-dashboard-head">
+        <div>
+          <p className="panel-label">{copy.weeklyDigest}</p>
+          <h2>{copy.weeklyDigestTitle}</h2>
+        </div>
+        <span className="sidebar-panel-count">{rows.length}</span>
+      </div>
+
+      <div className="weekly-digest-meta">
+        <div className="meta-item">
+          <span>{copy.weeklyDigestWindow}</span>
+          <strong>{windowLabel}</strong>
+        </div>
+        <div className="meta-item">
+          <span>{copy.weeklyDigestCards}</span>
+          <strong>
+            {rows.length} / {WEEKLY_DIGEST_MAX_ITEMS}
+          </strong>
+        </div>
+      </div>
+
+      {rows.length ? (
+        <div className="weekly-digest-grid">
+          {rows.map((item) => (
+            <article key={`weekly-digest-${getAlbumKey(item)}`} className="detail-card weekly-digest-card">
+              <div className="signal-head">
+                <TeamIdentity group={item.group} variant="list" />
+                <div className="signal-tags">
+                  <ReleaseClassificationBadges
+                    releaseFormat={item.release_format}
+                    contextTags={item.context_tags}
+                    language={language}
+                  />
+                </div>
+              </div>
+              <h3>{item.title}</h3>
+              <p className="signal-meta">{formatOptionalDate(item.date, displayDateFormatter, copy.none)}</p>
+              <div className="action-stack">
+                <div className="action-row">
+                  <ActionButton variant="primary" onClick={() => onOpenReleaseDetail(item)}>
+                    {getReleaseDetailActionLabel(item.release_kind, language)}
+                  </ActionButton>
+                </div>
+                <DashboardServiceActions release={item} language={language} />
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p className="empty-copy">{copy.weeklyDigestEmpty}</p>
+      )}
+    </section>
+  )
+}
+
 function MonthlyReleaseDashboard({
   monthLabel,
   verifiedRows,
@@ -3685,6 +3796,80 @@ function buildAgencyMonthSections(
 
     return compareAgencyFilterOptions(left.agency, right.agency)
   })
+}
+
+function buildWeeklyDigestRows(rows: VerifiedRelease[], maxItems: number) {
+  if (!rows.length) {
+    return []
+  }
+
+  const groupedByDate = rows.reduce<Map<string, VerifiedRelease[]>>((map, row) => {
+    const bucket = map.get(row.isoDate)
+    if (bucket) {
+      bucket.push(row)
+    } else {
+      map.set(row.isoDate, [row])
+    }
+    return map
+  }, new Map())
+
+  const selected: VerifiedRelease[] = []
+  const sortedDates = [...groupedByDate.keys()].sort((left, right) => parseDateValue(right) - parseDateValue(left))
+
+  for (const isoDate of sortedDates) {
+    const remaining = [...(groupedByDate.get(isoDate) ?? [])]
+    while (remaining.length && selected.length < maxItems) {
+      remaining.sort((left, right) => compareWeeklyDigestCandidates(left, right, selected))
+      selected.push(remaining.shift() as VerifiedRelease)
+    }
+
+    if (selected.length >= maxItems) {
+      break
+    }
+  }
+
+  return selected
+}
+
+function compareWeeklyDigestCandidates(left: VerifiedRelease, right: VerifiedRelease, selected: VerifiedRelease[]) {
+  if (left.dateValue.getTime() !== right.dateValue.getTime()) {
+    return right.dateValue.getTime() - left.dateValue.getTime()
+  }
+
+  const diversityCompare =
+    getWeeklyDigestDiversityScore(right, selected) - getWeeklyDigestDiversityScore(left, selected)
+  if (diversityCompare !== 0) {
+    return diversityCompare
+  }
+
+  if (left.context_tags.length !== right.context_tags.length) {
+    return right.context_tags.length - left.context_tags.length
+  }
+
+  if (left.release_format !== right.release_format) {
+    return left.release_format.localeCompare(right.release_format)
+  }
+
+  const groupCompare = left.group.localeCompare(right.group)
+  if (groupCompare !== 0) {
+    return groupCompare
+  }
+
+  return left.title.localeCompare(right.title)
+}
+
+function getWeeklyDigestDiversityScore(candidate: VerifiedRelease, selected: VerifiedRelease[]) {
+  const seenFormats = new Set(selected.map((item) => item.release_format))
+  const seenContextTags = new Set(selected.flatMap((item) => item.context_tags))
+  let score = seenFormats.has(candidate.release_format) ? 0 : 4
+
+  for (const contextTag of candidate.context_tags) {
+    if (!seenContextTags.has(contextTag)) {
+      score += 1
+    }
+  }
+
+  return score
 }
 
 function formatTrackingStatus(status: string, language: Language) {
@@ -4939,6 +5124,12 @@ function parseDateValue(value?: string) {
     return -1
   }
   return new Date(`${value}T00:00:00`).getTime()
+}
+
+function getDateDaysBefore(referenceDate: Date, days: number) {
+  const nextDate = new Date(referenceDate)
+  nextDate.setDate(nextDate.getDate() - days)
+  return nextDate
 }
 
 function getCountdownDays(value: string) {
