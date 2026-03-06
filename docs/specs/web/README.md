@@ -10,10 +10,16 @@
    - `Primary` / `Secondary` / `Service` / `Meta` / `Informational chip` 정의
    - 카드/섹션/화면별 CTA 배치 원칙
    - 후속 이슈 `#58`, `#59` 구현 기준
+2. `service-button-system-v1.md`
+   - Spotify / YouTube Music / YouTube MV 전용 서비스 버튼 시스템
+   - 아이콘 mark + 짧은 라벨 규칙
+   - canonical / fallback 상태 표기 원칙
+   - 후속 구현 이슈 `#13`, `#18`, `#59` 연결 기준
 
 ## 읽는 순서
 
 1. `ui-action-system-v1.md`
+2. `service-button-system-v1.md`
 
 ## 운영 원칙
 
