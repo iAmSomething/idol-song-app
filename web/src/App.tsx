@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, type RefObject } from 'react'
 import './App.css'
 import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
@@ -230,6 +230,10 @@ const TRANSLATIONS = {
     selectedDay: '선택한 날짜',
     noReleaseSelected: '선택된 날짜가 없습니다.',
     noVerifiedRelease: '이 날짜에 검증된 발매나 예정 신호가 없습니다.',
+    selectedDayVerified: '검증된 발매',
+    selectedDayScheduled: '예정 컴백',
+    selectedDayVerifiedEmpty: '이 날짜에 검증된 발매가 없습니다.',
+    selectedDayScheduledEmpty: '이 날짜에 예정 컴백이 없습니다.',
     noFilteredMatches: '현재 검색어와 필터 조합에 맞는 검증 발매가 없습니다.',
     releaseSource: '발매 출처',
     artistSource: '아티스트 출처',
@@ -325,6 +329,10 @@ const TRANSLATIONS = {
     selectedDay: 'Selected day',
     noReleaseSelected: 'No date selected',
     noVerifiedRelease: 'No verified release or scheduled signal on this date.',
+    selectedDayVerified: 'Verified releases',
+    selectedDayScheduled: 'Scheduled comebacks',
+    selectedDayVerifiedEmpty: 'No verified releases on this date.',
+    selectedDayScheduledEmpty: 'No scheduled comebacks on this date.',
     noFilteredMatches: 'No verified releases match this search and filter combination.',
     releaseSource: 'Release source',
     artistSource: 'Artist source',
@@ -537,6 +545,8 @@ function App() {
   const [language, setLanguage] = useState<Language>(readInitialLanguage)
   const [selectedGroup, setSelectedGroup] = useState<string | null>(readSelectedGroupFromLocation)
   const [selectedAlbumKey, setSelectedAlbumKey] = useState<string | null>(null)
+  const [selectedDayInteractionTick, setSelectedDayInteractionTick] = useState(0)
+  const selectedDayPanelRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -648,15 +658,14 @@ function App() {
       ...filteredUpcomingSignals.map((item) => item.isoDate),
     ]),
   ).sort()
-  const isSelectedDayInMonth =
-    selectedDayIso.slice(0, 7) === effectiveMonthKey &&
-    (releasesByDate.has(selectedDayIso) || upcomingByDate.has(selectedDayIso))
+  const visibleDayIsos = new Set(monthDays.map((day) => day.iso))
+  const isSelectedDayVisible = visibleDayIsos.has(selectedDayIso)
   const hasNoReleaseMatches = filteredReleases.length === 0
 
   const effectiveSelectedDayIso =
-    isSelectedDayInMonth
+    isSelectedDayVisible
       ? selectedDayIso
-      : monthActiveDayIsos[0] ?? filteredActiveDayIsos[0] ?? ''
+      : monthActiveDayIsos[0] ?? monthDays.find((day) => day.inMonth)?.iso ?? filteredActiveDayIsos[0] ?? ''
 
   const selectedDayReleases = effectiveSelectedDayIso
     ? releasesByDate.get(effectiveSelectedDayIso) ?? []
@@ -692,6 +701,31 @@ function App() {
       : undefined
   const relatedTeams = filteredTeams.filter((team) => team.group !== selectedTeam?.group).slice(0, 8)
 
+  useEffect(() => {
+    if (!selectedDayInteractionTick || !selectedDayPanelRef.current || !effectiveSelectedDayIso) {
+      return undefined
+    }
+
+    const panelNode = selectedDayPanelRef.current
+
+    panelNode.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+    panelNode.classList.remove('selected-day-panel-highlight')
+    void panelNode.offsetWidth
+    panelNode.classList.add('selected-day-panel-highlight')
+
+    const timeoutId = window.setTimeout(() => {
+      panelNode.classList.remove('selected-day-panel-highlight')
+    }, 900)
+
+    return () => {
+      window.clearTimeout(timeoutId)
+      panelNode.classList.remove('selected-day-panel-highlight')
+    }
+  }, [selectedDayInteractionTick, effectiveSelectedDayIso])
+
   function openTeamPage(group: string) {
     setSelectedGroup(group)
     setSelectedAlbumKey(null)
@@ -700,6 +734,11 @@ function App() {
   function closeTeamPage() {
     setSelectedGroup(null)
     setSelectedAlbumKey(null)
+  }
+
+  function handleSelectDay(dayIso: string) {
+    setSelectedDayIso(dayIso)
+    setSelectedDayInteractionTick((tick) => tick + 1)
   }
 
   return (
@@ -1012,284 +1051,218 @@ function App() {
         </main>
       ) : (
         <main className="layout">
-        <section className="panel panel-calendar">
-          <div className="panel-top">
-            <div>
-              <p className="panel-label">{copy.monthlyGrid}</p>
-              <h2>{monthFormatter.format(selectedMonthDate)}</h2>
-            </div>
-            <div className="calendar-controls">
-              <button
-                type="button"
-                className="ghost-button"
-                onClick={() =>
-                  setSelectedMonthKey(visibleMonthKeys[Math.max(monthIndex - 1, 0)] ?? effectiveMonthKey)
-                }
-                disabled={monthIndex <= 0}
-              >
-                {copy.prev}
-              </button>
-              <button
-                type="button"
-                className="ghost-button"
-                onClick={() =>
-                  setSelectedMonthKey(
-                    visibleMonthKeys[Math.min(monthIndex + 1, visibleMonthKeys.length - 1)] ??
-                      effectiveMonthKey,
-                  )
-                }
-                disabled={monthIndex === -1 || monthIndex >= visibleMonthKeys.length - 1}
-              >
-                {copy.next}
-              </button>
-            </div>
-          </div>
-
-          <div className="toolbar">
-            <label className="search-field">
-              <span>{copy.searchLabel}</span>
-              <input
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder={copy.searchPlaceholder}
-              />
-            </label>
-            <div className="summary-pill">
-              <span>{monthReleases.length} {copy.monthSummaryVerified}</span>
-              <span>{monthUpcomingSignals.length} {copy.monthSummaryScheduled}</span>
-            </div>
-          </div>
-
-          <div className="filter-stack">
-            <FilterGroup
-              label={copy.filterLabels.releaseKind}
-              options={releaseKindOptions}
-              selected={selectedReleaseKind}
-              language={language}
-              onSelect={(value) => setSelectedReleaseKind(value)}
-            />
-            <FilterGroup
-              label={copy.filterLabels.actType}
-              options={actTypeOptions}
-              selected={selectedActType}
-              language={language}
-              onSelect={(value) => setSelectedActType(value)}
-            />
-          </div>
-
-          <div className="coverage-strip">
-            <StatusPill label={copy.statusLabels.recent_release} value={watchStatusCounts.recent_release ?? 0} tone="fresh" />
-            <StatusPill label={copy.statusLabels.filtered_out} value={watchStatusCounts.filtered_out ?? 0} tone="muted" />
-            <StatusPill label={copy.statusLabels.needs_manual_review} value={watchStatusCounts.needs_manual_review ?? 0} tone="warn" />
-            <StatusPill label={copy.statusLabels.watch_only} value={watchStatusCounts.watch_only ?? 0} tone="accent" />
-          </div>
-
-          {hasNoReleaseMatches ? (
-            <div className="empty-state">
-              {copy.noFilteredMatches}
-            </div>
-          ) : null}
-
-          <div className="calendar">
-            <div className="calendar-weekdays">
-              {weekdays.map((weekday) => (
-                <div key={weekday} className="weekday">
-                  {weekday}
+          <div className="layout-main-column">
+            <section className="panel panel-calendar">
+              <div className="panel-top">
+                <div>
+                  <p className="panel-label">{copy.monthlyGrid}</p>
+                  <h2>{monthFormatter.format(selectedMonthDate)}</h2>
                 </div>
-              ))}
-            </div>
-
-            <div className="calendar-grid">
-              {monthDays.map((day) => {
-                const dayReleases = releasesByDate.get(day.iso) ?? []
-                const dayUpcomingSignals = upcomingByDate.get(day.iso) ?? []
-                const hasCalendarItems = dayReleases.length > 0 || dayUpcomingSignals.length > 0
-                const isSelected = day.iso === effectiveSelectedDayIso
-
-                return (
+                <div className="calendar-controls">
                   <button
                     type="button"
-                    key={day.iso}
-                    className={[
-                      'calendar-cell',
-                      day.inMonth ? '' : 'calendar-cell-muted',
-                      hasCalendarItems ? 'calendar-cell-active' : '',
-                      isSelected ? 'calendar-cell-selected' : '',
-                    ]
-                      .filter(Boolean)
-                      .join(' ')}
-                    onClick={() => setSelectedDayIso(day.iso)}
+                    className="ghost-button"
+                    onClick={() =>
+                      setSelectedMonthKey(visibleMonthKeys[Math.max(monthIndex - 1, 0)] ?? effectiveMonthKey)
+                    }
+                    disabled={monthIndex <= 0}
                   >
-                    <span className="calendar-day-number">{day.date.getDate()}</span>
-                    <div className="calendar-day-content">
-                      {dayReleases.slice(0, 2).map((item) => (
-                        <span key={`${item.group}-${item.stream}-${item.title}`} className="release-chip">
-                          <TeamIdentity group={item.group} variant="chip" />
-                        </span>
-                      ))}
-                      {dayUpcomingSignals
-                        .slice(0, Math.max(0, 2 - dayReleases.length))
-                        .map((item) => (
-                          <span
-                            key={`${item.group}-${item.scheduled_date}-${item.headline}`}
-                            className={`release-chip release-chip-upcoming-${item.date_status}`}
-                          >
-                            <TeamIdentity group={item.group} variant="chip" />
-                          </span>
-                        ))}
-                      {dayReleases.length + dayUpcomingSignals.length > 2 ? (
-                        <span className="release-chip release-chip-more">
-                          +{dayReleases.length + dayUpcomingSignals.length - 2}
-                        </span>
-                      ) : null}
-                    </div>
+                    {copy.prev}
                   </button>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        <aside className="sidebar">
-          <section className="panel">
-            <p className="panel-label">{copy.upcomingScan}</p>
-            <h2>{copy.upcomingTitle}</h2>
-            <div className="feed-list">
-              {filteredUpcoming.length ? (
-                filteredUpcoming.slice(0, 10).map((item) => (
-                  <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row">
-                        <div>
-                          <div className="signal-head">
-                            <TeamIdentity group={item.group} variant="list" />
-                            <div className="signal-tags">
-                              <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
-                              <span className={`signal-badge signal-badge-${item.tracking_status}`}>
-                                {formatTrackingStatus(item.tracking_status, language)}
-                              </span>
-                          <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
-                            {formatDateStatus(item.date_status, language)}
-                          </span>
-                          <span
-                            className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
-                          >
-                            {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
-                          </span>
-                        </div>
-                      </div>
-                      <h3>{item.headline}</h3>
-                      <p className="signal-meta">
-                        {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending} ·{' '}
-                        {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
-                      </p>
-                      {item.evidence_summary ? (
-                        <p className="signal-evidence">{item.evidence_summary}</p>
-                      ) : null}
-                      <div className="row-actions">
-                        <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
-                          {teamCopy.action}
-                        </button>
-                      </div>
-                    </div>
-                    <div className="signal-date-wrap">
-                      <time>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</time>
-                      {item.source_url ? (
-                        <a href={item.source_url} target="_blank" rel="noreferrer">
-                          {copy.open}
-                        </a>
-                      ) : (
-                        <span className="signal-link-muted">{copy.noSourceLink}</span>
-                      )}
-                    </div>
-                  </article>
-                ))
-              ) : (
-                <p className="empty-copy">{copy.noUpcomingCandidates}</p>
-              )}
-            </div>
-          </section>
-
-          <section className="panel">
-            <p className="panel-label">{copy.selectedDay}</p>
-            <h2>{selectedDayLabel}</h2>
-            <div className="detail-list">
-              {selectedDayReleases.length || selectedDayUpcomingSignals.length ? (
-                [...selectedDayReleases, ...selectedDayUpcomingSignals].map((item) =>
-                  'stream' in item ? (
-                  <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
-                    <div>
-                      <div className="signal-head">
-                        <TeamIdentity group={item.group} variant="list" />
-                        <span className="signal-badge">{describeRelease(item, language)}</span>
-                      </div>
-                      <h3>{item.title}</h3>
-                    </div>
-                    <div className="detail-links">
-                      <a href={item.source} target="_blank" rel="noreferrer">
-                        {copy.releaseSource}
-                      </a>
-                      <a href={item.artist_source} target="_blank" rel="noreferrer">
-                        {copy.artistSource}
-                      </a>
-                      <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
-                        {teamCopy.action}
-                      </button>
-                    </div>
-                    <MusicHandoffRow
-                      group={item.group}
-                      title={item.title}
-                      canonicalUrls={item.music_handoffs}
-                      language={language}
-                      compact
-                    />
-                  </article>
-                  ) : (
-                  <article
-                    key={`${item.group}-${item.scheduled_date}-${item.headline}`}
-                    className={`detail-card detail-card-signal detail-card-signal-${item.date_status}`}
+                  <button
+                    type="button"
+                    className="ghost-button"
+                    onClick={() =>
+                      setSelectedMonthKey(
+                        visibleMonthKeys[Math.min(monthIndex + 1, visibleMonthKeys.length - 1)] ??
+                          effectiveMonthKey,
+                      )
+                    }
+                    disabled={monthIndex === -1 || monthIndex >= visibleMonthKeys.length - 1}
                   >
-                    <div>
-                      <div className="signal-head">
-                        <TeamIdentity group={item.group} variant="list" />
-                        <div className="signal-tags">
-                          <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
-                          <span className={`signal-badge signal-badge-date-${item.date_status}`}>
-                            {formatDateStatus(item.date_status, language)}
-                          </span>
-                          <span
-                            className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
-                          >
-                            {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
-                          </span>
+                    {copy.next}
+                  </button>
+                </div>
+              </div>
+
+              <div className="toolbar">
+                <label className="search-field">
+                  <span>{copy.searchLabel}</span>
+                  <input
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                    placeholder={copy.searchPlaceholder}
+                  />
+                </label>
+                <div className="summary-pill">
+                  <span>
+                    {monthReleases.length} {copy.monthSummaryVerified}
+                  </span>
+                  <span>
+                    {monthUpcomingSignals.length} {copy.monthSummaryScheduled}
+                  </span>
+                </div>
+              </div>
+
+              <div className="filter-stack">
+                <FilterGroup
+                  label={copy.filterLabels.releaseKind}
+                  options={releaseKindOptions}
+                  selected={selectedReleaseKind}
+                  language={language}
+                  onSelect={(value) => setSelectedReleaseKind(value)}
+                />
+                <FilterGroup
+                  label={copy.filterLabels.actType}
+                  options={actTypeOptions}
+                  selected={selectedActType}
+                  language={language}
+                  onSelect={(value) => setSelectedActType(value)}
+                />
+              </div>
+
+              <div className="coverage-strip">
+                <StatusPill label={copy.statusLabels.recent_release} value={watchStatusCounts.recent_release ?? 0} tone="fresh" />
+                <StatusPill label={copy.statusLabels.filtered_out} value={watchStatusCounts.filtered_out ?? 0} tone="muted" />
+                <StatusPill label={copy.statusLabels.needs_manual_review} value={watchStatusCounts.needs_manual_review ?? 0} tone="warn" />
+                <StatusPill label={copy.statusLabels.watch_only} value={watchStatusCounts.watch_only ?? 0} tone="accent" />
+              </div>
+
+              {hasNoReleaseMatches ? (
+                <div className="empty-state">
+                  {copy.noFilteredMatches}
+                </div>
+              ) : null}
+
+              <div className="calendar">
+                <div className="calendar-weekdays">
+                  {weekdays.map((weekday) => (
+                    <div key={weekday} className="weekday">
+                      {weekday}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="calendar-grid">
+                  {monthDays.map((day) => {
+                    const dayReleases = releasesByDate.get(day.iso) ?? []
+                    const dayUpcomingSignals = upcomingByDate.get(day.iso) ?? []
+                    const hasCalendarItems = dayReleases.length > 0 || dayUpcomingSignals.length > 0
+                    const isSelected = day.iso === effectiveSelectedDayIso
+
+                    return (
+                      <button
+                        type="button"
+                        key={day.iso}
+                        aria-pressed={isSelected}
+                        className={[
+                          'calendar-cell',
+                          day.inMonth ? '' : 'calendar-cell-muted',
+                          hasCalendarItems ? 'calendar-cell-active' : '',
+                          isSelected ? 'calendar-cell-selected' : '',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')}
+                        onClick={() => handleSelectDay(day.iso)}
+                      >
+                        <span className="calendar-day-number">{day.date.getDate()}</span>
+                        <div className="calendar-day-content">
+                          {dayReleases.slice(0, 2).map((item) => (
+                            <span key={`${item.group}-${item.stream}-${item.title}`} className="release-chip">
+                              <TeamIdentity group={item.group} variant="chip" />
+                            </span>
+                          ))}
+                          {dayUpcomingSignals
+                            .slice(0, Math.max(0, 2 - dayReleases.length))
+                            .map((item) => (
+                              <span
+                                key={`${item.group}-${item.scheduled_date}-${item.headline}`}
+                                className={`release-chip release-chip-upcoming-${item.date_status}`}
+                              >
+                                <TeamIdentity group={item.group} variant="chip" />
+                              </span>
+                            ))}
+                          {dayReleases.length + dayUpcomingSignals.length > 2 ? (
+                            <span className="release-chip release-chip-more">
+                              +{dayReleases.length + dayUpcomingSignals.length - 2}
+                            </span>
+                          ) : null}
+                        </div>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            </section>
+
+            <SelectedDayPanel
+              panelRef={selectedDayPanelRef}
+              dateLabel={selectedDayLabel}
+              releases={selectedDayReleases}
+              upcomingSignals={selectedDayUpcomingSignals}
+              language={language}
+              shortDateFormatter={shortDateFormatter}
+              onOpenTeamPage={openTeamPage}
+            />
+          </div>
+
+          <aside className="sidebar">
+            <section className="panel">
+              <p className="panel-label">{copy.upcomingScan}</p>
+              <h2>{copy.upcomingTitle}</h2>
+              <div className="feed-list">
+                {filteredUpcoming.length ? (
+                  filteredUpcoming.slice(0, 10).map((item) => (
+                    <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row">
+                      <div>
+                        <div className="signal-head">
+                          <TeamIdentity group={item.group} variant="list" />
+                          <div className="signal-tags">
+                            <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
+                            <span className={`signal-badge signal-badge-${item.tracking_status}`}>
+                              {formatTrackingStatus(item.tracking_status, language)}
+                            </span>
+                            <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
+                              {formatDateStatus(item.date_status, language)}
+                            </span>
+                            <span
+                              className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
+                            >
+                              {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
+                            </span>
+                          </div>
+                        </div>
+                        <h3>{item.headline}</h3>
+                        <p className="signal-meta">
+                          {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending} ·{' '}
+                          {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
+                        </p>
+                        {item.evidence_summary ? (
+                          <p className="signal-evidence">{item.evidence_summary}</p>
+                        ) : null}
+                        <div className="row-actions">
+                          <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
+                            {teamCopy.action}
+                          </button>
                         </div>
                       </div>
-                      <h3>{item.headline}</h3>
-                      <p className="signal-meta">
-                        {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
-                      </p>
-                      {item.evidence_summary ? (
-                        <p className="signal-evidence">{item.evidence_summary}</p>
-                      ) : null}
-                    </div>
-                    <div className="detail-links">
-                      {item.source_url ? (
-                        <a href={item.source_url} target="_blank" rel="noreferrer">
-                          {copy.sourceLink}
-                        </a>
-                      ) : (
-                        <span className="signal-link-muted">{copy.noSourceLink}</span>
-                      )}
-                      <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
-                        {teamCopy.action}
-                      </button>
-                    </div>
-                  </article>
-                  ),
-                )
-              ) : (
-                <p className="empty-copy">{copy.noVerifiedRelease}</p>
-              )}
-            </div>
-          </section>
+                      <div className="signal-date-wrap">
+                        <time>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</time>
+                        {item.source_url ? (
+                          <a href={item.source_url} target="_blank" rel="noreferrer">
+                            {copy.open}
+                          </a>
+                        ) : (
+                          <span className="signal-link-muted">{copy.noSourceLink}</span>
+                        )}
+                      </div>
+                    </article>
+                  ))
+                ) : (
+                  <p className="empty-copy">{copy.noUpcomingCandidates}</p>
+                )}
+              </div>
+            </section>
 
           <section className="panel">
             <p className="panel-label">{copy.recentFeed}</p>
@@ -1622,6 +1595,134 @@ function UpcomingCountdownBadge({
     <span className={`signal-badge signal-badge-countdown signal-badge-countdown-${countdownState}`}>
       {formatUpcomingCountdownLabel(countdownState, item.scheduled_date, formatter)}
     </span>
+  )
+}
+
+function SelectedDayPanel({
+  className,
+  panelRef,
+  dateLabel,
+  releases,
+  upcomingSignals,
+  language,
+  shortDateFormatter,
+  onOpenTeamPage,
+}: {
+  className?: string
+  panelRef?: RefObject<HTMLElement | null>
+  dateLabel: string
+  releases: VerifiedRelease[]
+  upcomingSignals: DatedUpcomingSignal[]
+  language: Language
+  shortDateFormatter: Intl.DateTimeFormat
+  onOpenTeamPage: (group: string) => void
+}) {
+  const copy = TRANSLATIONS[language]
+  const teamCopy = TEAM_COPY[language]
+
+  return (
+    <section ref={panelRef} className={['panel', 'selected-day-panel', className].filter(Boolean).join(' ')}>
+      <p className="panel-label">{copy.selectedDay}</p>
+      <h2>{dateLabel}</h2>
+      <div className="selected-day-panel-grid">
+        <div className="selected-day-panel-section">
+          <div className="selected-day-panel-head">
+            <h3>{copy.selectedDayVerified}</h3>
+            <span className="selected-day-panel-count">{releases.length}</span>
+          </div>
+          <div className="detail-list">
+            {releases.length ? (
+              releases.map((item) => (
+                <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
+                  <div>
+                    <div className="signal-head">
+                      <TeamIdentity group={item.group} variant="list" />
+                      <span className="signal-badge">{describeRelease(item, language)}</span>
+                    </div>
+                    <h3>{item.title}</h3>
+                  </div>
+                  <div className="detail-links">
+                    <a href={item.source} target="_blank" rel="noreferrer">
+                      {copy.releaseSource}
+                    </a>
+                    <a href={item.artist_source} target="_blank" rel="noreferrer">
+                      {copy.artistSource}
+                    </a>
+                    <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
+                      {teamCopy.action}
+                    </button>
+                  </div>
+                  <MusicHandoffRow
+                    group={item.group}
+                    title={item.title}
+                    canonicalUrls={item.music_handoffs}
+                    language={language}
+                    compact
+                  />
+                </article>
+              ))
+            ) : (
+              <p className="empty-copy">{copy.selectedDayVerifiedEmpty}</p>
+            )}
+          </div>
+        </div>
+
+        <div className="selected-day-panel-section">
+          <div className="selected-day-panel-head">
+            <h3>{copy.selectedDayScheduled}</h3>
+            <span className="selected-day-panel-count">{upcomingSignals.length}</span>
+          </div>
+          <div className="detail-list">
+            {upcomingSignals.length ? (
+              upcomingSignals.map((item) => (
+                <article
+                  key={`${item.group}-${item.scheduled_date}-${item.headline}`}
+                  className={`detail-card detail-card-signal detail-card-signal-${item.date_status}`}
+                >
+                  <div>
+                    <div className="signal-head">
+                      <TeamIdentity group={item.group} variant="list" />
+                      <div className="signal-tags">
+                        <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
+                        <span className={`signal-badge signal-badge-date-${item.date_status}`}>
+                          {formatDateStatus(item.date_status, language)}
+                        </span>
+                        <span
+                          className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
+                        >
+                          {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
+                        </span>
+                      </div>
+                    </div>
+                    <h3>{item.headline}</h3>
+                    <p className="signal-meta">
+                      {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
+                    </p>
+                    {item.evidence_summary ? (
+                      <p className="signal-evidence">{item.evidence_summary}</p>
+                    ) : null}
+                  </div>
+                  <div className="detail-links">
+                    {item.source_url ? (
+                      <a href={item.source_url} target="_blank" rel="noreferrer">
+                        {copy.sourceLink}
+                      </a>
+                    ) : (
+                      <span className="signal-link-muted">{copy.noSourceLink}</span>
+                    )}
+                    <button type="button" className="inline-button" onClick={() => onOpenTeamPage(item.group)}>
+                      {teamCopy.action}
+                    </button>
+                  </div>
+                </article>
+              ))
+            ) : (
+              <p className="empty-copy">{copy.selectedDayScheduledEmpty}</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 
