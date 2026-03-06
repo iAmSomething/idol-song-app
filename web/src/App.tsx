@@ -3,6 +3,7 @@ import './App.css'
 import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
 import releaseDetailRows from './data/releaseDetails.json'
+import releaseEnrichmentRows from './data/releaseEnrichment.json'
 import releaseRows from './data/releases.json'
 import unresolvedRows from './data/unresolved.json'
 import upcomingCandidateRows from './data/upcomingCandidates.json'
@@ -80,6 +81,33 @@ type ReleaseDetailRow = {
 }
 
 type ResolvedReleaseDetail = ReleaseDetailRow & {
+  isFallback: boolean
+}
+
+type ReleaseEnrichmentCredits = {
+  lyrics: string[]
+  composition: string[]
+  arrangement: string[]
+}
+
+type ReleaseEnrichmentChart = {
+  source: string
+  label: string
+  peak: string
+  dated_at: string
+}
+
+type ReleaseEnrichmentRow = {
+  group: string
+  release_title: string
+  release_date: string
+  stream: 'song' | 'album'
+  credits: ReleaseEnrichmentCredits
+  charts: ReleaseEnrichmentChart[]
+  notes: string
+}
+
+type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
   isFallback: boolean
 }
 
@@ -729,6 +757,14 @@ const TEAM_COPY = {
     trackPreview: '트랙 프리뷰',
     trackPreviewHint: '시드 데이터가 있으면 실제 트랙을, 없으면 placeholder 프리뷰를 표시합니다.',
     releaseNotes: '릴리즈 메모',
+    releaseEnrichment: '보조 메타데이터',
+    releaseEnrichmentHint: 'v1은 수동 seed 기반 크레딧, 차트, 메모를 연결합니다.',
+    releaseEnrichmentEmpty: '이 릴리즈에 연결된 보조 메타데이터가 아직 없습니다.',
+    lyricsCredits: '작사',
+    compositionCredits: '작곡',
+    arrangementCredits: '편곡',
+    chartHighlights: '차트',
+    metadataNotes: '메타데이터 노트',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
       '앨범 상세는 팀 페이지 안 슬라이드오버로 유지해서 컴백 맥락을 잃지 않고 바로 돌아올 수 있습니다.',
@@ -792,6 +828,14 @@ const TEAM_COPY = {
     trackPreview: 'Track preview',
     trackPreviewHint: 'Uses seeded track data when available and falls back to placeholder preview rows otherwise.',
     releaseNotes: 'Release notes',
+    releaseEnrichment: 'Release enrichment',
+    releaseEnrichmentHint: 'v1 connects manual seed credits, charts, and notes.',
+    releaseEnrichmentEmpty: 'No seeded enrichment is attached to this release yet.',
+    lyricsCredits: 'Lyrics',
+    compositionCredits: 'Composition',
+    arrangementCredits: 'Arrangement',
+    chartHighlights: 'Charts',
+    metadataNotes: 'Metadata notes',
     placeholderCover: 'Release artwork',
     drawerCopy:
       'Album detail stays inside the team page so users can inspect the release and return to comeback context immediately.',
@@ -813,6 +857,7 @@ const ROOKIE_RECENT_YEAR_WINDOW = 2
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
 const releaseDetailsCatalog = releaseDetailRows as ReleaseDetailRow[]
+const releaseEnrichmentCatalog = releaseEnrichmentRows as ReleaseEnrichmentRow[]
 const releaseCatalog = releaseRows as ReleaseRow[]
 const releases = releaseCatalog
   .flatMap((row) => expandReleaseRow(row))
@@ -837,6 +882,12 @@ const releaseArtworkByKey = new Map(
 )
 const releaseDetailsByKey = new Map(
   releaseDetailsCatalog.map((row) => [getReleaseLookupKey(row.group, row.release_title, row.release_date, row.stream), row]),
+)
+const releaseEnrichmentByKey = new Map(
+  releaseEnrichmentCatalog.map((row) => [
+    getReleaseLookupKey(row.group, row.release_title, row.release_date, row.stream),
+    row,
+  ]),
 )
 const releaseGroups = groupReleasesByGroup(releases)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
@@ -2009,6 +2060,7 @@ function AlbumDrawer({
   const displayName = getTeamDisplayName(group)
   const artwork = getReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind)
   const releaseDetail = getReleaseDetail(group, album.title, album.date, album.stream, album.release_kind)
+  const releaseEnrichment = getReleaseEnrichment(group, album.title, album.date, album.stream, album.release_kind)
   const previewTracks = releaseDetail.tracks.length
     ? releaseDetail.tracks
     : buildAlbumPreviewTracks(album, group, language).map((title, index) => ({ order: index + 1, title }))
@@ -2085,6 +2137,12 @@ function AlbumDrawer({
             <p className="hero-text drawer-copy">{releaseDetail.notes}</p>
           </section>
         ) : null}
+
+        <ReleaseEnrichmentSection
+          enrichment={releaseEnrichment}
+          language={language}
+          displayDateFormatter={displayDateFormatter}
+        />
 
         <p className="hero-text drawer-copy">{teamCopy.drawerCopy}</p>
         <div className="action-stack">
@@ -2206,6 +2264,82 @@ function MusicHandoffRow({
       </div>
       {showHint ? <p className="handoff-note">{copy.handoffHint}</p> : null}
     </>
+  )
+}
+
+function ReleaseEnrichmentSection({
+  enrichment,
+  language,
+  displayDateFormatter,
+}: {
+  enrichment: ResolvedReleaseEnrichment
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+}) {
+  const teamCopy = TEAM_COPY[language]
+  const creditBlocks = [
+    {
+      label: teamCopy.lyricsCredits,
+      values: enrichment.credits.lyrics,
+    },
+    {
+      label: teamCopy.compositionCredits,
+      values: enrichment.credits.composition,
+    },
+    {
+      label: teamCopy.arrangementCredits,
+      values: enrichment.credits.arrangement,
+    },
+  ].filter((block) => block.values.length)
+  const hasContent = creditBlocks.length || enrichment.charts.length || enrichment.notes
+
+  return (
+    <section className="release-enrichment">
+      <p className="panel-label">{teamCopy.releaseEnrichment}</p>
+      <p className="hero-text drawer-copy">{teamCopy.releaseEnrichmentHint}</p>
+      {enrichment.isFallback || !hasContent ? (
+        <p className="hero-text drawer-copy">{teamCopy.releaseEnrichmentEmpty}</p>
+      ) : (
+        <div className="release-enrichment-grid">
+          {creditBlocks.map((block) => (
+            <section key={block.label} className="release-enrichment-block">
+              <h4>{block.label}</h4>
+              <ul className="release-enrichment-list">
+                {block.values.map((value) => (
+                  <li key={`${block.label}-${value}`}>{value}</li>
+                ))}
+              </ul>
+            </section>
+          ))}
+
+          {enrichment.charts.length ? (
+            <section className="release-enrichment-block">
+              <h4>{teamCopy.chartHighlights}</h4>
+              <ul className="release-enrichment-list release-enrichment-chart-list">
+                {enrichment.charts.map((chart) => (
+                  <li
+                    key={`${chart.source}-${chart.label}-${chart.peak}-${chart.dated_at}`}
+                    className="release-enrichment-chart-item"
+                  >
+                    <strong>{`${chart.label} · ${chart.peak}`}</strong>
+                    <span>
+                      {chart.source} · {formatOptionalDate(chart.dated_at, displayDateFormatter, chart.dated_at)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
+          {enrichment.notes ? (
+            <section className="release-enrichment-block">
+              <h4>{teamCopy.metadataNotes}</h4>
+              <p className="hero-text drawer-copy">{enrichment.notes}</p>
+            </section>
+          ) : null}
+        </div>
+      )}
+    </section>
   )
 }
 
@@ -3451,6 +3585,29 @@ function buildFallbackReleaseDetail(
   }
 }
 
+function buildFallbackReleaseEnrichment(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
+  releaseKind?: string,
+): ResolvedReleaseEnrichment {
+  return {
+    group,
+    release_title: releaseTitle,
+    release_date: releaseDate,
+    stream: normalizeReleaseStream(stream, releaseKind),
+    credits: {
+      lyrics: [],
+      composition: [],
+      arrangement: [],
+    },
+    charts: [],
+    notes: '',
+    isFallback: true,
+  }
+}
+
 function getReleaseDetail(
   group: string,
   releaseTitle: string,
@@ -3469,6 +3626,28 @@ function getReleaseDetail(
 
   return {
     ...detail,
+    isFallback: false,
+  }
+}
+
+function getReleaseEnrichment(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
+  releaseKind?: string,
+): ResolvedReleaseEnrichment {
+  const normalizedStream = normalizeReleaseStream(stream, releaseKind)
+  const enrichment = releaseEnrichmentByKey.get(
+    getReleaseLookupKey(group, releaseTitle, releaseDate, normalizedStream),
+  )
+
+  if (!enrichment) {
+    return buildFallbackReleaseEnrichment(group, releaseTitle, releaseDate, stream, releaseKind)
+  }
+
+  return {
+    ...enrichment,
     isFallback: false,
   }
 }
