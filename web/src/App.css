@@ -677,6 +677,45 @@
   margin-top: 20px;
 }
 
+.handoff-row-compact {
+  margin-top: 0;
+}
+
+.handoff-link {
+  display: inline-grid;
+  gap: 3px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(27, 42, 65, 0.1);
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--text-strong);
+}
+
+.handoff-link span {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+.handoff-link strong {
+  font-size: 0.9rem;
+}
+
+.handoff-link-canonical {
+  background: rgba(217, 233, 179, 0.4);
+  border-color: rgba(75, 90, 23, 0.18);
+}
+
+.handoff-link-search {
+  background: rgba(215, 229, 252, 0.42);
+  border-color: rgba(36, 76, 136, 0.14);
+}
+
+.handoff-note {
+  margin: 10px 0 0;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
 .stub-button {
   border: 1px dashed rgba(27, 42, 65, 0.18);
   border-radius: 999px;
@@ -713,6 +752,11 @@
 .album-grid {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
+}
+
+.album-card-shell {
+  display: grid;
+  gap: 10px;
 }
 
 .album-card {
