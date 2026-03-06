@@ -1,1 +1,495 @@
-[]
+[
+  {
+    "key": "TOMORROW X TOGETHER:af0eca0adba7:3f5265bb8f47:headline_changed",
+    "diff_key": "TOMORROW X TOGETHER:af0eca0adba7:3f5265bb8f47",
+    "group": "TOMORROW X TOGETHER",
+    "change_type": "headline_changed",
+    "occurred_at": "2026-04-13",
+    "summary": "Primary tracked headline changed from \"TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz\" to \"[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”\".",
+    "source_url": "https://weverse.io/txt/notice/34002",
+    "source_domain": "weverse.io",
+    "previous_state_hash": "af0eca0adba7",
+    "next_state_hash": "3f5265bb8f47",
+    "previous": {
+      "scheduled_date": "2026-04-13",
+      "date_status": "scheduled",
+      "headline": "TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNSmltcVJ1REJzQTE5Rm9fV3JmSl9RRWdRdk1Yb2Jwc2UtYTNaOFhWbGRfS0dXTVk3LTUyRG5YWmVaVkNjWTNMMHIzaDVUX0ZBcW5OTGx0QWRJM2dKRGpQTTVrUnB6ZDdGLUpxZnljcFBPaW9nRE5qT1d2dnpmLTJhRi04LUNHM24tRktoSDVORzdfenF0VS1uSnU0T0bSAZwBQVVfeXFMTUppbXFSdURCc0ExOUZvX1dyZkpfUUVnUXZNWG9icHNlLWEzWjhYVmxkX0tHV01ZNy01MkRuWFplWlZDY1kzTDByM2g1VF9GQXFuTkxsdEFkSTNnSkRqUE01a1JwemQ3Ri1KcWZ5Y3BQT2lvZ0ROak9XdnZ6Zi0yYUYtOC1DRzNuLUZLaEg1Tkc3X3pxdFUtbkp1NE9G?oc=5",
+      "published_at": "Wed, 04 Mar 2026 03:29:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "2026-04-13",
+      "date_status": "confirmed",
+      "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
+      "source_type": "weverse_notice",
+      "source_url": "https://weverse.io/txt/notice/34002",
+      "published_at": ""
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "78d3b91",
+      "next_ref": "95f5db3"
+    }
+  },
+  {
+    "key": "TOMORROW X TOGETHER:af0eca0adba7:3f5265bb8f47:date_status_changed",
+    "diff_key": "TOMORROW X TOGETHER:af0eca0adba7:3f5265bb8f47",
+    "group": "TOMORROW X TOGETHER",
+    "change_type": "date_status_changed",
+    "occurred_at": "2026-04-13",
+    "summary": "Signal status changed from scheduled to confirmed.",
+    "source_url": "https://weverse.io/txt/notice/34002",
+    "source_domain": "weverse.io",
+    "previous_state_hash": "af0eca0adba7",
+    "next_state_hash": "3f5265bb8f47",
+    "previous": {
+      "scheduled_date": "2026-04-13",
+      "date_status": "scheduled",
+      "headline": "TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNSmltcVJ1REJzQTE5Rm9fV3JmSl9RRWdRdk1Yb2Jwc2UtYTNaOFhWbGRfS0dXTVk3LTUyRG5YWmVaVkNjWTNMMHIzaDVUX0ZBcW5OTGx0QWRJM2dKRGpQTTVrUnB6ZDdGLUpxZnljcFBPaW9nRE5qT1d2dnpmLTJhRi04LUNHM24tRktoSDVORzdfenF0VS1uSnU0T0bSAZwBQVVfeXFMTUppbXFSdURCc0ExOUZvX1dyZkpfUUVnUXZNWG9icHNlLWEzWjhYVmxkX0tHV01ZNy01MkRuWFplWlZDY1kzTDByM2g1VF9GQXFuTkxsdEFkSTNnSkRqUE01a1JwemQ3Ri1KcWZ5Y3BQT2lvZ0ROak9XdnZ6Zi0yYUYtOC1DRzNuLUZLaEg1Tkc3X3pxdFUtbkp1NE9G?oc=5",
+      "published_at": "Wed, 04 Mar 2026 03:29:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "2026-04-13",
+      "date_status": "confirmed",
+      "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
+      "source_type": "weverse_notice",
+      "source_url": "https://weverse.io/txt/notice/34002",
+      "published_at": ""
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "78d3b91",
+      "next_ref": "95f5db3"
+    }
+  },
+  {
+    "key": "TWS:eea81a76964e:ed272a7287bd:headline_changed",
+    "diff_key": "TWS:eea81a76964e:ed272a7287bd",
+    "group": "TWS",
+    "change_type": "headline_changed",
+    "occurred_at": "Fri, 06 Mar 2026 06:15:24 GMT",
+    "summary": "Primary tracked headline changed from \"TWS Unveils Comeback Schedule Ahead of April 21 Release - K-en News\" to \"TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart\".",
+    "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZzJ5VkxoOGhGVS1GUEVVV0dMUnR1RkJHQlBqR2tGOGpWNUh2SXEwUzJ0czNVVHdlb1h3SzBMZnhPNXJHSWdaNlk5ajlOYy1wYTZYNDE2UUJmX3NpXzlhc1BXR0Q4SWR0ZXZqb2xja0lFYzhmQ2FKSS05cWZ0ZEkzZmJzMlFJRmstYVhfcA?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "eea81a76964e",
+    "next_state_hash": "ed272a7287bd",
+    "previous": {
+      "scheduled_date": "2026-04-21",
+      "date_status": "",
+      "headline": "TWS Unveils Comeback Schedule Ahead of April 21 Release - K-en News",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE12eDU4MUN4NmFIRXNQekVySDVQbUZ2bmdweU1PYnNVRDZ4M3VGS2VYQUh2QVFEcUgwQm1EUFB6dEJJTE9KWGNUcG5PT25VZHZYRXBFeGU0cXF3LWd6V0dZNG1OM1JGOUJy0gFsQVVfeXFMTUhmdkZkQTJzUW1oZF9WQks3RGFFQXIxWHhoNl9IWHE5TEN0d0EwVGliZ2Q2blVmRUtaMjZlSk1ubTRYQW10Y2hCYXdSVzJ6dU5qWlhMcERPSjRpUm9Lai0tTC02WkNGSDNDd2N3?oc=5",
+      "published_at": "Tue, 25 Mar 2025 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "scheduled",
+      "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZzJ5VkxoOGhGVS1GUEVVV0dMUnR1RkJHQlBqR2tGOGpWNUh2SXEwUzJ0czNVVHdlb1h3SzBMZnhPNXJHSWdaNlk5ajlOYy1wYTZYNDE2UUJmX3NpXzlhc1BXR0Q4SWR0ZXZqb2xja0lFYzhmQ2FKSS05cWZ0ZEkzZmJzMlFJRmstYVhfcA?oc=5",
+      "published_at": "Fri, 06 Mar 2026 06:15:24 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "LE SSERAFIM:1268e7f24760:7060b5ac157c:headline_changed",
+    "diff_key": "LE SSERAFIM:1268e7f24760:7060b5ac157c",
+    "group": "LE SSERAFIM",
+    "change_type": "headline_changed",
+    "occurred_at": "Fri, 06 Mar 2026 01:00:00 GMT",
+    "summary": "Primary tracked headline changed from \"Le Sserafim announces return with new single 'Spaghetti' set for October 24 release - The Times of India\" to \"LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR\".",
+    "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "1268e7f24760",
+    "next_state_hash": "7060b5ac157c",
+    "previous": {
+      "scheduled_date": "2026-10-24",
+      "date_status": "",
+      "headline": "Le Sserafim announces return with new single 'Spaghetti' set for October 24 release - The Times of India",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxNTy1kelMyaUFONUhFdW14RXpkajRLbC1sMHVNNnJ1MjExaXo1bHBuRENvSS10WWduYWN2T1h4RXNMemRVZnVJS1ZsSE94TGFiRUhtQnhheGhoLUtHVGY5NjlyRlNCekJkamxEamVjU3BvSDlLUUdyTjJDY2JvdTBjQ3VFbTg4eDhueUpDV1JKRUtHTUJVUnZOb1FsQkk0YmZWbUlPb1k1NVdGQkFlWmhaQ09BaWFwY3B5bFp4dW5KV2V4Z2FPcW5vVjFadDZxbVJhbk5uSnl4ZGpQVkVMLUllLV9YWVVTUzNva2ZwWkdrSjJQUnFSbnZrLUNPV3NZLXowdWdTYdIBigJBVV95cUxNNGNLYzV3ZjdpZFlEYkNTbWkyY005cG50TVdCWDFlaEtaSWJBd0t4eVZBY0QweGp4ZmdPdDNRRlJwSGJ2RGFXcU8zdmRBRmtvUTFXTzZrUFpaaWh3N1E0Rlpzd3dYc21oaldDb0FiVnNBLW9NWE1JX2NQYnREQl9SVDhSNkpIbV9OelNnVDN3V0hEay1TOHduRVd5SkxHcDhaQy1wQXdKRlRZLUFaVjItZTg4TkhOejRiaDl3T0N6WlNUd0h5N2NoQWJtWVJKZzlpcUxwUktmbEhRUkxIcGZzQ0JhUzM0RXRrR0xGamdXTm5Hc2hXM29Vekc1WlNQc053QTU2UTBmOVF1Zw?oc=5",
+      "published_at": "Mon, 29 Sep 2025 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "scheduled",
+      "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+      "published_at": "Fri, 06 Mar 2026 01:00:00 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "BABYMONSTER:671881e4f2b8:5eb7d69c1523:headline_changed",
+    "diff_key": "BABYMONSTER:671881e4f2b8:5eb7d69c1523",
+    "group": "BABYMONSTER",
+    "change_type": "headline_changed",
+    "occurred_at": "Wed, 04 Mar 2026 04:00:00 GMT",
+    "summary": "Primary tracked headline changed from \"BABYMONSTER to Host Global Comeback Live on October 10 with ‘WE GO UP’ - KbizoOm\" to \"YG Entertainment confirms BABYMONSTER World Tour & BIGBANG's Global - bandwagon.asia\".",
+    "source_url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOZWI5YWpSUmd6bk1rYS1VM1o3bXU4aFNhaTRfLUhvYjBKSUN5S1ZSc0NPalNBZVlMaDI0UE9EVVktaWlPZ0RHWEd1SFN4MVcwM1IzaEY2VkpxcUViUDZEQVFaV3BSbmFHbXhmejZFTXpLQ2hMV3BzS1Foc0ZoNHdJZ0xkaGJnZXZYczNrY3d2b3dJb2EzNVROZy1DRlIyUFBPTU9UU2FKVTlvVVV5cTIyRjZfdl9WSFNCWXo2dUwzQzE5ZnluSGQ5X29BVGRZZXZVTUE4N1U3a29nQQ?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "671881e4f2b8",
+    "next_state_hash": "5eb7d69c1523",
+    "previous": {
+      "scheduled_date": "2026-10-10",
+      "date_status": "",
+      "headline": "BABYMONSTER to Host Global Comeback Live on October 10 with ‘WE GO UP’ - KbizoOm",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE01VlNTME1iczI3YTQwYVplVXdzQVlpeFBHdTBRTVpGVkVQZUFqUkg0UlZTNGdacUtXQk0xZHNVTWx5eDR6bkQ0TnFsbjhxejRjRGVabTF1U2Q0ck1waXIwX010MDFMdWROTFFhcQ?oc=5",
+      "published_at": "Fri, 03 Oct 2025 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "YG Entertainment confirms BABYMONSTER World Tour & BIGBANG's Global - bandwagon.asia",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOZWI5YWpSUmd6bk1rYS1VM1o3bXU4aFNhaTRfLUhvYjBKSUN5S1ZSc0NPalNBZVlMaDI0UE9EVVktaWlPZ0RHWEd1SFN4MVcwM1IzaEY2VkpxcUViUDZEQVFaV3BSbmFHbXhmejZFTXpLQ2hMV3BzS1Foc0ZoNHdJZ0xkaGJnZXZYczNrY3d2b3dJb2EzNVROZy1DRlIyUFBPTU9UU2FKVTlvVVV5cTIyRjZfdl9WSFNCWXo2dUwzQzE5ZnluSGQ5X29BVGRZZXZVTUE4N1U3a29nQQ?oc=5",
+      "published_at": "Wed, 04 Mar 2026 04:00:00 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "KickFlip:38fc5dc10088:b6fb18f801c4:headline_changed",
+    "diff_key": "KickFlip:38fc5dc10088:b6fb18f801c4",
+    "group": "KickFlip",
+    "change_type": "headline_changed",
+    "occurred_at": "Mon, 02 Mar 2026 18:54:14 GMT",
+    "summary": "Primary tracked headline changed from \"KickFlip announces first comeback with 'Kick Out, Flip Now!' on May 26 - CHOSUNBIZ - Chosunbiz\" to \"KickFlip announces April comeback - Music Mundial\".",
+    "source_url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1vRVlPU0xVRUlFSlN6SU1oNWQ1VWQxYWNpYUpXaDl6MFVHZWtVSElyTVFIZGZKaU51OFZDRlVTX2R4VmdVZWVzbmVpeEtxb3BrYXkwV3VWb282SVd6dDdlakdaczlVcmtpbWFxWTdOY2NqRS1Z0gF6QVVfeXFMTU5XU1lfWnpuclpnWTlfZm9aVGxocmVnYXN1bzhNenRBUlF2VnJQMzBsZVk5M2RmbklQdnRvUzZneW9qclJ4c29qcTUtSDFPMlNwbk1qUERuVDUtOGpMMldaU25hdVo5MHR3ZnRYYmlSeGNOdnVlOFliUlE?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "38fc5dc10088",
+    "next_state_hash": "b6fb18f801c4",
+    "previous": {
+      "scheduled_date": "2026-05-26",
+      "date_status": "",
+      "headline": "KickFlip announces first comeback with 'Kick Out, Flip Now!' on May 26 - CHOSUNBIZ - Chosunbiz",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNSkVXeVB3R295ckVZMmg1WHo1TFU3Qm5wTmNnN2pvcWRPS0hFcEhwYVhQVjRTQW5Rek9pdFh2QjM0WHN5N1VqV0FFSzNTMUNZeWpsdnZUNkZKejhScmR4MGNhZTIxeGV6X3o1bTZsUmpOX2o1VUYtZDU3M1Q5WXIwek1iWl9neXBy0gGcAUFVX3lxTFBuam1XYkJHRG1ibWx1Zi1MTWVyeC1xSTNWa2I4OE94dkFYZFdoR3E1bnZXRGszUm5RdTR6dDRPOGoyMmg2Y3hUMkJFZFAyNjBrdTZTSFlnLTlZd2wyQzQwU2d4WFRZQ2prZGliTVhZNjJHUEFndVVXS1ZWckZQTTFmOWVXd200OFdzS3E1U1NwZ0xQei1Ccy1ZX1ZSYg?oc=5",
+      "published_at": "Fri, 02 May 2025 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "scheduled",
+      "headline": "KickFlip announces April comeback - Music Mundial",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1vRVlPU0xVRUlFSlN6SU1oNWQ1VWQxYWNpYUpXaDl6MFVHZWtVSElyTVFIZGZKaU51OFZDRlVTX2R4VmdVZWVzbmVpeEtxb3BrYXkwV3VWb282SVd6dDdlakdaczlVcmtpbWFxWTdOY2NqRS1Z0gF6QVVfeXFMTU5XU1lfWnpuclpnWTlfZm9aVGxocmVnYXN1bzhNenRBUlF2VnJQMzBsZVk5M2RmbklQdnRvUzZneW9qclJ4c29qcTUtSDFPMlNwbk1qUERuVDUtOGpMMldaU25hdVo5MHR3ZnRYYmlSeGNOdnVlOFliUlE?oc=5",
+      "published_at": "Mon, 02 Mar 2026 18:54:14 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "ITZY:ecc1633d5f57:f0a672c666d8:headline_changed",
+    "diff_key": "ITZY:ecc1633d5f57:f0a672c666d8",
+    "group": "ITZY",
+    "change_type": "headline_changed",
+    "occurred_at": "Sun, 01 Mar 2026 15:13:14 GMT",
+    "summary": "Primary tracked headline changed from \"ITZY Announces Comeback with Mini Album 'TUNNEL VISION' Dropping November 10 - K-en News\" to \"ITZY’s YUNA Announces Debut Solo Album ‘Ice Cream’ - inmusicblog.com\".",
+    "source_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBXZmRPV244dzlYNDlKZGhGZ1h4QmxOTTBkUU0zN1BlYng0NlQ3QzVfTEdDOVRXWlNEeVRrYXBHdXRQYjBDOWVHVTdGMVBqU0NPcUxKTW1aUWZHQk52M2RNYlNEaG9HV2N2TkZPTzJsLTFrZzUxY0E?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "ecc1633d5f57",
+    "next_state_hash": "f0a672c666d8",
+    "previous": {
+      "scheduled_date": "2026-11-10",
+      "date_status": "",
+      "headline": "ITZY Announces Comeback with Mini Album 'TUNNEL VISION' Dropping November 10 - K-en News",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE43bDVkTXJ5Q0g2QzZVUjRUVFA3Zll1dU5MM1JVc3lfMWZWd0Y1N0JGYkZtOG9oZ1EtR0ZQcHJCaHBrcTh0UjlvalUza19nMVdNRnF0ZjdfOXFkbU5SVF92YWQ1Y2FtZGZlbmfSAW5BVV95cUxNdXpXUkdwOERzNnR2NmRVS1hpc0xyUWZqTG51MWh2eUpvbm45cTNfM25YUGpyQ2lhRXRBLUtpTTdmZjZISjY1QS1jYkdfTGdZdGhTQTkzdV8zbHE4Z3c0eEhwMDAwRERQdUp6cWt1QQ?oc=5",
+      "published_at": "Fri, 17 Oct 2025 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "ITZY’s YUNA Announces Debut Solo Album ‘Ice Cream’ - inmusicblog.com",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBXZmRPV244dzlYNDlKZGhGZ1h4QmxOTTBkUU0zN1BlYng0NlQ3QzVfTEdDOVRXWlNEeVRrYXBHdXRQYjBDOWVHVTdGMVBqU0NPcUxKTW1aUWZHQk52M2RNYlNEaG9HV2N2TkZPTzJsLTFrZzUxY0E?oc=5",
+      "published_at": "Sun, 01 Mar 2026 15:13:14 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "NMIXX:b8dec1896121:7dfc4b694e07:verified_release_detected",
+    "diff_key": "NMIXX:b8dec1896121:7dfc4b694e07",
+    "group": "NMIXX",
+    "change_type": "verified_release_detected",
+    "occurred_at": "2026-02-26",
+    "summary": "Verified release \"TIC TIC\" landed on 2026-02-26.",
+    "source_url": "https://musicbrainz.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f",
+    "source_domain": "musicbrainz.org",
+    "previous_state_hash": "b8dec1896121",
+    "next_state_hash": "7dfc4b694e07",
+    "previous": {
+      "scheduled_date": "2026-03-17",
+      "date_status": "",
+      "headline": "NMIXX confirms March 17 comeback with ‘Fe3O4: FORWARD’—final chapter in trilogy - allkpop",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQSzJjVE83NU5CRVBnYzQyQTYtWHI2dk90dnlsMGE4enRualhXNjMydmJ1djhXQ2Rsd01mOEpabzhUS2xXZ3UxSHZsRUFGVUtrcERXRmh3VUVYd0Y4aTRMaXhJalpvdFNQdW9sQ0h0UTR1bnZiUjdNallMLURhMVU4ZzNrT19uRjkzVFF1d010clZNek8ydGxuWGVMSm1GVDBNV1hUa2lXRC1JWG5OYkNVSnF1VTk3UQ?oc=5",
+      "published_at": "Tue, 18 Feb 2025 08:00:00 GMT"
+    },
+    "next": null,
+    "verified_release": {
+      "title": "TIC TIC",
+      "date": "2026-02-26",
+      "release_kind": "single",
+      "source": "https://musicbrainz.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f"
+    },
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "H1-KEY:d23f9c941edf:3af0c3d72b42:headline_changed",
+    "diff_key": "H1-KEY:d23f9c941edf:3af0c3d72b42",
+    "group": "H1-KEY",
+    "change_type": "headline_changed",
+    "occurred_at": "Mon, 16 Feb 2026 07:01:55 GMT",
+    "summary": "Primary tracked headline changed from \"Girl group H1-KEY to release new album on June 26 - Korea JoongAng Daily\" to \"H1-KEY announces a comeback with their 5th mini album 'LOVE CHAPTER' - allkpop\".",
+    "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNXzdveG1oNkJmUXlwOUdGZGttWXdGNVBiVUJtcnB0MVJ1MmJPaHloLXVFQXc4S0pfU1NQRnVqZlF4ODY3OGFxbDNfQU9HbGVwZndGOWluRmtpTU9SMV9pME1BdnJJcWduNm9VbFVkTzBuWmdzelFmNV9CQnhORUt5U0dySmtSMV9Iak1Ebk1aemNDOW9qUzNKV1ppZXZ1eDVUZG1iWGFvdUNQQQ?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "d23f9c941edf",
+    "next_state_hash": "3af0c3d72b42",
+    "previous": {
+      "scheduled_date": "2026-06-26",
+      "date_status": "",
+      "headline": "Girl group H1-KEY to release new album on June 26 - Korea JoongAng Daily",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNU3FKdE9VZTE3azRmV2toSjlCbVNsNWd1RmNVaXN0b2FRNGFzMG1wRTI4SnhFNmt0cTBhOVppcWxQcGFCSl9ibTVRQzZFSS1XdVN4R2I2WDNWQmhQV2xyNTFTWmRQYTNfeURCdlBCY3d3QzJxd1AySTc3SnNPaVJSV3VFUUJwS05sTU1CMlZMQlFHa2ZkTkRnalRZY1A2N1pNNlBmQlFmVFlEQXpya0RXUzNUTVRKTFRtb3V5Vzg4ZkVtS3hhZ0RJ?oc=5",
+      "published_at": "Mon, 02 Jun 2025 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "H1-KEY announces a comeback with their 5th mini album 'LOVE CHAPTER' - allkpop",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNXzdveG1oNkJmUXlwOUdGZGttWXdGNVBiVUJtcnB0MVJ1MmJPaHloLXVFQXc4S0pfU1NQRnVqZlF4ODY3OGFxbDNfQU9HbGVwZndGOWluRmtpTU9SMV9pME1BdnJJcWduNm9VbFVkTzBuWmdzelFmNV9CQnhORUt5U0dySmtSMV9Iak1Ebk1aemNDOW9qUzNKV1ppZXZ1eDVUZG1iWGFvdUNQQQ?oc=5",
+      "published_at": "Mon, 16 Feb 2026 07:01:55 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "BLACKPINK:314a54142779:acdf98c3adc8:headline_changed",
+    "diff_key": "BLACKPINK:314a54142779:acdf98c3adc8",
+    "group": "BLACKPINK",
+    "change_type": "headline_changed",
+    "occurred_at": "Fri, 06 Feb 2026 00:00:00 GMT",
+    "summary": "Primary tracked headline changed from \"Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record - The Korea Economic Daily Global Edition\" to \"BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”\".",
+    "source_url": "https://www.ygfamily.com/en/news/report/7378",
+    "source_domain": "www.ygfamily.com",
+    "previous_state_hash": "314a54142779",
+    "next_state_hash": "acdf98c3adc8",
+    "previous": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record - The Korea Economic Daily Global Edition",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE94bmhvU2RuMVBXTGNpS1VMaExLUXN6c0lCekxVbm1KTy1McTNvTkUycE1KNUl1c0U3b2c5ajh3cE9WSEs0TGJwNlgyZU9LX3JHam55VVhGX3h2SDBoaUdtcGYwWmdGdHc?oc=5",
+      "published_at": "Sun, 01 Mar 2026 17:47:48 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”",
+      "source_type": "agency_notice",
+      "source_url": "https://www.ygfamily.com/en/news/report/7378",
+      "published_at": "Fri, 06 Feb 2026 00:00:00 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "78d3b91",
+      "next_ref": "95f5db3"
+    }
+  },
+  {
+    "key": "BABYMONSTER:5eb7d69c1523:3c768cd8c88a:headline_changed",
+    "diff_key": "BABYMONSTER:5eb7d69c1523:3c768cd8c88a",
+    "group": "BABYMONSTER",
+    "change_type": "headline_changed",
+    "occurred_at": "Tue, 03 Feb 2026 00:00:00 GMT",
+    "summary": "Primary tracked headline changed from \"YG Entertainment confirms BABYMONSTER World Tour & BIGBANG's Global - bandwagon.asia\" to \"BABYMONSTER’s B-Side Track From Two Years Ago Makes a Reverse Chart Run… Reappears on ‘M Countdown’ → Live Clip Released\".",
+    "source_url": "https://www.ygfamily.com/en/news/report/7372",
+    "source_domain": "www.ygfamily.com",
+    "previous_state_hash": "5eb7d69c1523",
+    "next_state_hash": "3c768cd8c88a",
+    "previous": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "YG Entertainment confirms BABYMONSTER World Tour & BIGBANG's Global - bandwagon.asia",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOZWI5YWpSUmd6bk1rYS1VM1o3bXU4aFNhaTRfLUhvYjBKSUN5S1ZSc0NPalNBZVlMaDI0UE9EVVktaWlPZ0RHWEd1SFN4MVcwM1IzaEY2VkpxcUViUDZEQVFaV3BSbmFHbXhmejZFTXpLQ2hMV3BzS1Foc0ZoNHdJZ0xkaGJnZXZYczNrY3d2b3dJb2EzNVROZy1DRlIyUFBPTU9UU2FKVTlvVVV5cTIyRjZfdl9WSFNCWXo2dUwzQzE5ZnluSGQ5X29BVGRZZXZVTUE4N1U3a29nQQ?oc=5",
+      "published_at": "Wed, 04 Mar 2026 04:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "BABYMONSTER’s B-Side Track From Two Years Ago Makes a Reverse Chart Run… Reappears on ‘M Countdown’ → Live Clip Released",
+      "source_type": "agency_notice",
+      "source_url": "https://www.ygfamily.com/en/news/report/7372",
+      "published_at": "Tue, 03 Feb 2026 00:00:00 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "78d3b91",
+      "next_ref": "95f5db3"
+    }
+  },
+  {
+    "key": "ATEEZ:e71be4c334b3:53436cf75180:headline_changed",
+    "diff_key": "ATEEZ:e71be4c334b3:53436cf75180",
+    "group": "ATEEZ",
+    "change_type": "headline_changed",
+    "occurred_at": "Mon, 12 Jan 2026 08:00:00 GMT",
+    "summary": "Primary tracked headline changed from \"ATEEZ to make a comeback with 'Golden Hour: Part.2' on November 15 - DIPE.CO.KR\" to \"ATEEZ’s ‘GOLDEN HOUR: Part 4’ Drops Feb. 6 - 조선일보\".",
+    "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOZ1QwQUN0VU5HMU51RFhteEs0eXpiTTV3QzRsQXozM01IbGNRb3ZOdFkyTVUzRGxYdmlWVGtkZ2hyekhyYVJMb3ZadlpoQXpscWFwVG1STGlQeGdDZTc0elNEMzFCQk54MENBNnJ4Z0hsS2FjcnZCZjZFbTZoZkhkOGNtVGRwU0x1cVotN3F3?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "e71be4c334b3",
+    "next_state_hash": "53436cf75180",
+    "previous": {
+      "scheduled_date": "2026-11-15",
+      "date_status": "",
+      "headline": "ATEEZ to make a comeback with 'Golden Hour: Part.2' on November 15 - DIPE.CO.KR",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9UVzdIZV9rUmYwZ0dzc2RTaXBnRTktZmFIRFBYRGJTTERxeUlqZkFUMjlUSWFnanpNb2t1dGFNQzdVSmxh?oc=5",
+      "published_at": "Thu, 24 Oct 2024 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "ATEEZ’s ‘GOLDEN HOUR: Part 4’ Drops Feb. 6 - 조선일보",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOZ1QwQUN0VU5HMU51RFhteEs0eXpiTTV3QzRsQXozM01IbGNRb3ZOdFkyTVUzRGxYdmlWVGtkZ2hyekhyYVJMb3ZadlpoQXpscWFwVG1STGlQeGdDZTc0elNEMzFCQk54MENBNnJ4Z0hsS2FjcnZCZjZFbTZoZkhkOGNtVGRwU0x1cVotN3F3?oc=5",
+      "published_at": "Mon, 12 Jan 2026 08:00:00 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "ENHYPEN:fc4fac186f56:2a871faa1f26:headline_changed",
+    "diff_key": "ENHYPEN:fc4fac186f56:2a871faa1f26",
+    "group": "ENHYPEN",
+    "change_type": "headline_changed",
+    "occurred_at": "Fri, 09 Jan 2026 08:00:00 GMT",
+    "summary": "Primary tracked headline changed from \"ENHYPEN Announces June 5 Comeback — Coachella + 6th Mini Album Combo! - DIPE.CO.KR\" to \"ENHYPEN's 'Knife' Reveals Sharp-Fanged Vampires - 조선일보\".",
+    "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPblZfVHkyVDBQVmZPY0pJaGFqNEd3RTVrQUtXejJEOEE0d0RlaXRteml5TEJuYm44Y0tSb2paeXBHeXI1MlpISTJPUkJld01oWFduVTlIVERpRXpIRWdaeklOWS1nSXpSQTNYZWdCU1d5am9TWFRxV1U4X3BDRWJTcDNoekUxYnNrVXlZYWpR?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "fc4fac186f56",
+    "next_state_hash": "2a871faa1f26",
+    "previous": {
+      "scheduled_date": "2026-06-05",
+      "date_status": "",
+      "headline": "ENHYPEN Announces June 5 Comeback — Coachella + 6th Mini Album Combo! - DIPE.CO.KR",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1paTFuVUdaZEQtTERYX0JEWW04VUFEZGlERDFmS1VUVDRiOUdPcFhhTUhPdW9ZMTh4Rkd3NUtsbXdpMWJK?oc=5",
+      "published_at": "Mon, 14 Apr 2025 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "ENHYPEN's 'Knife' Reveals Sharp-Fanged Vampires - 조선일보",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPblZfVHkyVDBQVmZPY0pJaGFqNEd3RTVrQUtXejJEOEE0d0RlaXRteml5TEJuYm44Y0tSb2paeXBHeXI1MlpISTJPUkJld01oWFduVTlIVERpRXpIRWdaeklOWS1nSXpSQTNYZWdCU1d5am9TWFRxV1U4X3BDRWJTcDNoekUxYnNrVXlZYWpR?oc=5",
+      "published_at": "Fri, 09 Jan 2026 08:00:00 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "ONEUS:0742c5492bab:ac6dca984aae:headline_changed",
+    "diff_key": "ONEUS:0742c5492bab:ac6dca984aae",
+    "group": "ONEUS",
+    "change_type": "headline_changed",
+    "occurred_at": "Wed, 07 Jan 2026 08:00:00 GMT",
+    "summary": "Primary tracked headline changed from \"ONEUS to return on June 30 with 11th mini album ‘5x’ - allkpop\" to \"ONEUS reveals the tracks for their upcoming single album ‘原 (Won)’ - allkpop\".",
+    "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOeHlXTUR3OFozMFR2U0xuZWVaNUtPWmc2Y1ZkTFFYZFh6OHN5ekZfRWxGWXduYjAzbDZBYXh5NS0tZjJOSWdYdnRwc0NjQXhCSV9hYV9JRDJnWUJ6ekNXWGVBTUtiUDNGZFR5QnVoYTMybi04Y3ByMC00eHRZZlI3c2RFSHVPRS1ULS1YblplQjVCeWROanBETlJyMlo?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "0742c5492bab",
+    "next_state_hash": "ac6dca984aae",
+    "previous": {
+      "scheduled_date": "2026-06-30",
+      "date_status": "",
+      "headline": "ONEUS to return on June 30 with 11th mini album ‘5x’ - allkpop",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNbS1BYXFxVE1sT1c5QlNqWnE2ZXV2Y1A5N01uT2NrWlZmNEt4eGVqUVlCbTBPbXZCUkktUVF3eGNyOW4zTy1XZDFSaVg4czFyMEhWd1o5VmV4X0tMWTRqNll6MDZOakE4OWE1NGVZcjdsZ014WUl4ckNRbDZLODFyTWxhbHI4REFGZ0Rta1hHRzQ2MVZN?oc=5",
+      "published_at": "Mon, 09 Jun 2025 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "ONEUS reveals the tracks for their upcoming single album ‘原 (Won)’ - allkpop",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOeHlXTUR3OFozMFR2U0xuZWVaNUtPWmc2Y1ZkTFFYZFh6OHN5ekZfRWxGWXduYjAzbDZBYXh5NS0tZjJOSWdYdnRwc0NjQXhCSV9hYV9JRDJnWUJ6ekNXWGVBTUtiUDNGZFR5QnVoYTMybi04Y3ByMC00eHRZZlI3c2RFSHVPRS1ULS1YblplQjVCeWROanBETlJyMlo?oc=5",
+      "published_at": "Wed, 07 Jan 2026 08:00:00 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  },
+  {
+    "key": "ZEROBASEONE:6610213246bf:1463cb22d3c2:headline_changed",
+    "diff_key": "ZEROBASEONE:6610213246bf:1463cb22d3c2",
+    "group": "ZEROBASEONE",
+    "change_type": "headline_changed",
+    "occurred_at": "Tue, 06 Jan 2026 08:00:00 GMT",
+    "summary": "Primary tracked headline changed from \"ZEROBASEONE announces global comeback show 'WHO MADE THIS!' for September 1 - CHOSUNBIZ - Chosunbiz\" to \"ZEROBASEONE Drops Track Poster for ‘Running To Future’ Ahead of Comeback - K-en News\".",
+    "source_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9BeUhpZUhiSnN5QkdyX0s2WG83X0htbHdlNkl3UXdYcmlDbHA2eUNOQjhoeUFHWDN0R2E3YUhjejRtdkk2NUFjVHUzYnhwWm5mOHRob3RKZGZCMnVSZXVkdlk3T2pvVmQ4QWfSAW5BVV95cUxOMmFwRWhrTkE3QS1ORkR2X01fVHdTU0I1dU1fMmxMTlpiRFFENnVOMnBSRHJjdEQ2dDAxV2pKY3dSb2NHdF9jSEN6ZW51SW8wV1hEU191WXBIZ1BwdXZEQWg4S0lpai1aNV9Gbi1RZw?oc=5",
+    "source_domain": "news.google.com",
+    "previous_state_hash": "6610213246bf",
+    "next_state_hash": "1463cb22d3c2",
+    "previous": {
+      "scheduled_date": "2026-09-01",
+      "date_status": "",
+      "headline": "ZEROBASEONE announces global comeback show 'WHO MADE THIS!' for September 1 - CHOSUNBIZ - Chosunbiz",
+      "source_type": "",
+      "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMG0yVGJZcUNUZWp2ME5MWGJaMWlseFNCTnRDX09KTVRXamlCTnNjU1luMzFhX1QtcXAwektpcmN4UThXZF9WeGpyd3R3NkdiUXN3QjNDVG9YRlROUHFfOWZ6by1SelBvb05hNHBmV1NuYWxJb0ZJRkZWbUM0aEMycHhVUjNoZEQx0gGcAUFVX3lxTE11a0hYTVhoZnpFa1pDMjRYcW5CM0dabFNVNDVmREN2LUU2Y3JDa0o2MDZDREVlUWxsV21JWHNHTm9Kb1VLWFFUUVV4N21PWVNyejdvckR0ek5pZHRTNDVpQlhqWVVkWDkwM2xRSmNQUVRRWDZUSVBpa0otd180UWVuampuYTVqeG1JdFQwOU95RTNPaDRUZU1GM28ycA?oc=5",
+      "published_at": "Wed, 06 Aug 2025 07:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "",
+      "date_status": "rumor",
+      "headline": "ZEROBASEONE Drops Track Poster for ‘Running To Future’ Ahead of Comeback - K-en News",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9BeUhpZUhiSnN5QkdyX0s2WG83X0htbHdlNkl3UXdYcmlDbHA2eUNOQjhoeUFHWDN0R2E3YUhjejRtdkk2NUFjVHUzYnhwWm5mOHRob3RKZGZCMnVSZXVkdlk3T2pvVmQ4QWfSAW5BVV95cUxOMmFwRWhrTkE3QS1ORkR2X01fVHdTU0I1dU1fMmxMTlpiRFFENnVOMnBSRHJjdEQ2dDAxV2pKY3dSb2NHdF9jSEN6ZW51SW8wV1hEU191WXBIZ1BwdXZEQWg4S0lpai1aNV9Gbi1RZw?oc=5",
+      "published_at": "Tue, 06 Jan 2026 08:00:00 GMT"
+    },
+    "verified_release": null,
+    "snapshot": {
+      "previous_ref": "6bf3920",
+      "next_ref": "78d3b91"
+    }
+  }
+]
