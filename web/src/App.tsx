@@ -179,6 +179,12 @@ type SourceTimelineItem = {
   sortValue: number
 }
 
+type AgencyMonthSection = {
+  agency: string
+  verifiedRows: VerifiedRelease[]
+  scheduledRows: DatedUpcomingSignal[]
+}
+
 type ReleaseChangeType =
   | 'scheduled_date_added'
   | 'scheduled_date_changed'
@@ -373,6 +379,7 @@ const TRANSLATIONS = {
       releaseKind: '발매 종류',
       actType: '액트 유형',
       status: '표시 상태',
+      agency: '소속사',
     },
     filterOptions: {
       all: '전체',
@@ -386,6 +393,7 @@ const TRANSLATIONS = {
       confirmed: '확정',
       scheduled: '예정',
       rumor: '루머',
+      agency_unknown: '소속사 미상',
     },
     statusLabels: {
       recent_release: '최근 발매',
@@ -416,6 +424,11 @@ const TRANSLATIONS = {
     monthlyDashboardScheduledTitle: 'Scheduled comebacks',
     monthlyDashboardVerifiedEmpty: '이 월에 표시할 검증 발매가 없습니다.',
     monthlyDashboardScheduledEmpty: '이 월에 표시할 예정 컴백이 없습니다.',
+    agencyView: '소속사 뷰',
+    agencyViewTitle: '선택한 월을 소속사 기준으로 다시 묶어 봅니다.',
+    agencyViewEmpty: '선택한 월과 필터 조합에 맞는 소속사 항목이 없습니다.',
+    agencyViewVerifiedCount: '검증',
+    agencyViewScheduledCount: '예정',
     dashboardTeam: '팀명',
     dashboardRelease: '릴리즈명',
     dashboardLeadTrack: '대표곡',
@@ -553,6 +566,7 @@ const TRANSLATIONS = {
       releaseKind: 'Release kind',
       actType: 'Act type',
       status: 'Status',
+      agency: 'Agency',
     },
     filterOptions: {
       all: 'All',
@@ -566,6 +580,7 @@ const TRANSLATIONS = {
       confirmed: 'Confirmed',
       scheduled: 'Scheduled',
       rumor: 'Rumor',
+      agency_unknown: 'Unknown agency',
     },
     statusLabels: {
       recent_release: 'Recent release',
@@ -596,6 +611,11 @@ const TRANSLATIONS = {
     monthlyDashboardScheduledTitle: 'Scheduled comebacks',
     monthlyDashboardVerifiedEmpty: 'No verified releases to show for this month.',
     monthlyDashboardScheduledEmpty: 'No scheduled comebacks to show for this month.',
+    agencyView: 'Agency view',
+    agencyViewTitle: 'Regroup the current month by agency.',
+    agencyViewEmpty: 'No agency sections match the current month and filter state.',
+    agencyViewVerifiedCount: 'Verified',
+    agencyViewScheduledCount: 'Scheduled',
     dashboardTeam: 'Team',
     dashboardRelease: 'Release',
     dashboardLeadTrack: 'Lead track',
@@ -862,6 +882,7 @@ const MUSIC_HANDOFF_SERVICES: MusicService[] = ['spotify', 'youtube_music']
 const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
 const LONG_GAP_THRESHOLD_DAYS = 365
 const ROOKIE_RECENT_YEAR_WINDOW = 2
+const AGENCY_UNKNOWN_FILTER = 'agency_unknown'
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
@@ -910,6 +931,7 @@ const latestReleaseChangeByGroup = new Map(
 const searchIndexByGroup = buildSearchIndexByGroup()
 const teamProfiles = buildTeamProfiles()
 const teamProfileMap = new Map(teamProfiles.map((team) => [team.group, team]))
+const agencyFilterOptions = ['all', ...buildAgencyFilterOptions()]
 const longGapRadarEntries = buildLongGapRadarEntries()
 const rookieRadarEntries = buildRookieRadarEntries()
 
@@ -921,6 +943,7 @@ function App() {
   const [selectedReleaseKind, setSelectedReleaseKind] = useState<(typeof releaseKindOptions)[number]>('all')
   const [selectedActType, setSelectedActType] = useState<(typeof actTypeOptions)[number]>('all')
   const [selectedDashboardStatus, setSelectedDashboardStatus] = useState<(typeof dashboardStatusOptions)[number]>('all')
+  const [selectedAgency, setSelectedAgency] = useState<string>('all')
   const [language, setLanguage] = useState<Language>(readInitialLanguage)
   const [selectedGroup, setSelectedGroup] = useState<string | null>(readSelectedGroupFromLocation)
   const [selectedAlbumKey, setSelectedAlbumKey] = useState<string | null>(null)
@@ -1005,7 +1028,8 @@ function App() {
     const matchesActType = selectedActType === 'all' || item.actType === selectedActType
     const matchesStatus =
       selectedDashboardStatus === 'all' || selectedDashboardStatus === 'verified'
-    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus
+    const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
+    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency
   })
 
   const filteredUpcoming = dedupedUpcomingCandidates.filter((item) => {
@@ -1019,14 +1043,21 @@ function App() {
         : selectedDashboardStatus === 'verified'
           ? false
           : item.date_status === selectedDashboardStatus
-    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus
+    const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
+    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency
   })
-  const filteredTeams = teamProfiles.filter((team) => matchesSearchIndex(searchIndexByGroup.get(team.group), searchNeedle))
+  const filteredTeams = teamProfiles.filter(
+    (team) =>
+      matchesSearchIndex(searchIndexByGroup.get(team.group), searchNeedle) &&
+      matchesAgencyFilter(team.group, selectedAgency),
+  )
   const filteredLongGapRadar = longGapRadarEntries.filter((item) =>
-    matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle),
+    matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle) &&
+      matchesAgencyFilter(item.group, selectedAgency),
   )
   const filteredRookieRadar = rookieRadarEntries.filter((item) =>
-    matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle),
+    matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle) &&
+      matchesAgencyFilter(item.group, selectedAgency),
   )
   const filteredUpcomingSignals = filteredUpcoming
     .flatMap((item) => expandUpcomingCandidate(item))
@@ -1046,6 +1077,7 @@ function App() {
   )
   const monthVerifiedDashboardRows = [...monthReleases].sort(compareMonthlyDashboardVerified)
   const monthScheduledDashboardRows = [...monthUpcomingSignals].sort(compareMonthlyDashboardUpcoming)
+  const monthAgencySections = buildAgencyMonthSections(monthVerifiedDashboardRows, monthScheduledDashboardRows)
   const monthActiveDayIsos = Array.from(
     new Set([...monthReleases.map((item) => item.isoDate), ...monthUpcomingSignals.map((item) => item.isoDate)]),
   ).sort()
@@ -1257,6 +1289,13 @@ function App() {
             selected={selectedDashboardStatus}
             language={language}
             onSelect={(value) => setSelectedDashboardStatus(value)}
+          />
+          <FilterGroup
+            label={copy.filterLabels.agency}
+            options={agencyFilterOptions}
+            selected={selectedAgency}
+            language={language}
+            onSelect={setSelectedAgency}
           />
         </div>
 
@@ -1823,6 +1862,14 @@ function App() {
               monthLabel={monthFormatter.format(selectedMonthDate)}
               verifiedRows={monthVerifiedDashboardRows}
               scheduledRows={monthScheduledDashboardRows}
+              language={language}
+              displayDateFormatter={displayDateFormatter}
+              onOpenTeamPage={openTeamPage}
+              onOpenReleaseDetail={openReleaseDetail}
+            />
+
+            <AgencyCalendarView
+              sections={monthAgencySections}
               language={language}
               displayDateFormatter={displayDateFormatter}
               onOpenTeamPage={openTeamPage}
@@ -3056,6 +3103,123 @@ function MonthlyReleaseDashboard({
   )
 }
 
+function AgencyCalendarView({
+  sections,
+  language,
+  displayDateFormatter,
+  onOpenTeamPage,
+  onOpenReleaseDetail,
+}: {
+  sections: AgencyMonthSection[]
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onOpenTeamPage: (group: string) => void
+  onOpenReleaseDetail: (release: VerifiedRelease) => void
+}) {
+  const copy = TRANSLATIONS[language]
+
+  return (
+    <section className="panel agency-view">
+      <div className="monthly-dashboard-head">
+        <div>
+          <p className="panel-label">{copy.agencyView}</p>
+          <h2>{copy.agencyViewTitle}</h2>
+        </div>
+        <span className="sidebar-panel-count">{sections.length}</span>
+      </div>
+
+      {sections.length ? (
+        <div className="agency-view-stack">
+          {sections.map((section) => (
+            <article key={section.agency} className="agency-view-card">
+              <div className="agency-view-head">
+                <div>
+                  <h3>{formatFilterOption(section.agency, language)}</h3>
+                  <p className="signal-meta">
+                    {copy.agencyViewVerifiedCount} {section.verifiedRows.length} · {copy.agencyViewScheduledCount}{' '}
+                    {section.scheduledRows.length}
+                  </p>
+                </div>
+                <span className="selected-day-panel-count">
+                  {section.verifiedRows.length + section.scheduledRows.length}
+                </span>
+              </div>
+
+              <div className="agency-view-columns">
+                <section className="agency-view-column">
+                  <p className="panel-label">{copy.selectedDayVerified}</p>
+                  {section.verifiedRows.length ? (
+                    <div className="feed-list">
+                      {section.verifiedRows.slice(0, 3).map((item) => (
+                        <article key={`agency-verified-${getAlbumKey(item)}`} className="detail-card agency-view-item">
+                          <div className="signal-head">
+                            <TeamIdentity group={item.group} variant="list" />
+                            <span className="signal-badge">
+                              {formatReleaseFormat(item.release_format, language) || item.release_kind}
+                            </span>
+                          </div>
+                          <h3>{item.title}</h3>
+                          <p className="signal-meta">
+                            {formatOptionalDate(item.date, displayDateFormatter, copy.none)}
+                          </p>
+                          <div className="action-row">
+                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                              {TEAM_COPY[language].action}
+                            </ActionButton>
+                            <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
+                              {getReleaseDetailActionLabel(item.release_kind, language)}
+                            </ActionButton>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="empty-copy">{copy.selectedDayVerifiedEmpty}</p>
+                  )}
+                </section>
+
+                <section className="agency-view-column">
+                  <p className="panel-label">{copy.selectedDayScheduled}</p>
+                  {section.scheduledRows.length ? (
+                    <div className="feed-list">
+                      {section.scheduledRows.slice(0, 3).map((item) => (
+                        <article
+                          key={`agency-scheduled-${item.group}-${item.scheduled_date}-${item.headline}`}
+                          className="detail-card detail-card-signal agency-view-item"
+                        >
+                          <div className="signal-head">
+                            <TeamIdentity group={item.group} variant="list" />
+                            <span className={`signal-badge signal-badge-date-${item.date_status}`}>
+                              {formatDateStatus(item.date_status, language)}
+                            </span>
+                          </div>
+                          <h3>{item.headline}</h3>
+                          <p className="signal-meta">
+                            {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
+                          </p>
+                          <div className="action-row">
+                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                              {TEAM_COPY[language].action}
+                            </ActionButton>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="empty-copy">{copy.selectedDayScheduledEmpty}</p>
+                  )}
+                </section>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p className="empty-copy">{copy.agencyViewEmpty}</p>
+      )}
+    </section>
+  )
+}
+
 function DashboardServiceActions({
   release,
   language,
@@ -3410,6 +3574,117 @@ function describeRelease(item: VerifiedRelease, language: Language) {
 
 function formatFilterOption(option: string, language: Language) {
   return TRANSLATIONS[language].filterOptions[option as keyof typeof TRANSLATIONS.ko.filterOptions] ?? option
+}
+
+function buildAgencyFilterOptions() {
+  const agencies = new Set<string>()
+
+  for (const team of teamProfiles) {
+    agencies.add(getAgencyFilterValue(team.agency))
+  }
+
+  return [...agencies].sort(compareAgencyFilterOptions)
+}
+
+function compareAgencyFilterOptions(left: string, right: string) {
+  if (left === AGENCY_UNKNOWN_FILTER) {
+    return 1
+  }
+  if (right === AGENCY_UNKNOWN_FILTER) {
+    return -1
+  }
+
+  return left.localeCompare(right)
+}
+
+function normalizeAgencyName(agency: string | null | undefined) {
+  if (!agency) {
+    return ''
+  }
+
+  const normalized = agency.trim().replace(/\s+/g, ' ')
+  const canonicalMap: Record<string, string> = {
+    'brand new music': 'Brand New Music',
+    'c9 entertainment': 'C9 Entertainment',
+    'cube entertainment': 'Cube Entertainment',
+    'fnc entertainment': 'FNC Entertainment',
+    glg: 'GLG',
+    'hybe labels': 'HYBE Labels',
+    'ist entertainment': 'IST Entertainment',
+    'jellyfish entertainment': 'Jellyfish Entertainment',
+    'jyp entertainment': 'JYP Entertainment',
+    'kq entertainment': 'KQ Entertainment',
+    modhaus: 'MODHAUS',
+    rbw: 'RBW',
+    's2 entertainment': 'S2 Entertainment',
+    'sm entertainment': 'SM Entertainment',
+    'starship entertainment': 'Starship Entertainment',
+    vlast: 'VLAST',
+    wakeone: 'WAKEONE',
+    'wm entertainment': 'WM Entertainment',
+    'woollim entertainment': 'Woollim Entertainment',
+    'yg entertainment': 'YG Entertainment',
+    'yuehua entertainment': 'Yuehua Entertainment',
+  }
+
+  return canonicalMap[normalized.toLowerCase()] ?? normalized
+}
+
+function getAgencyFilterValue(agency: string) {
+  return normalizeAgencyName(agency) || AGENCY_UNKNOWN_FILTER
+}
+
+function getGroupAgency(group: string) {
+  return normalizeAgencyName(artistProfileByGroup.get(group)?.agency)
+}
+
+function matchesAgencyFilter(group: string, selectedAgency: string) {
+  if (selectedAgency === 'all') {
+    return true
+  }
+
+  return getAgencyFilterValue(getGroupAgency(group)) === selectedAgency
+}
+
+function buildAgencyMonthSections(
+  verifiedRows: VerifiedRelease[],
+  scheduledRows: DatedUpcomingSignal[],
+) {
+  const sections = new Map<string, AgencyMonthSection>()
+
+  for (const item of verifiedRows) {
+    const agency = getAgencyFilterValue(getGroupAgency(item.group))
+    const current = sections.get(agency) ?? {
+      agency,
+      verifiedRows: [],
+      scheduledRows: [],
+    }
+    current.verifiedRows.push(item)
+    sections.set(agency, current)
+  }
+
+  for (const item of scheduledRows) {
+    const agency = getAgencyFilterValue(getGroupAgency(item.group))
+    const current = sections.get(agency) ?? {
+      agency,
+      verifiedRows: [],
+      scheduledRows: [],
+    }
+    current.scheduledRows.push(item)
+    sections.set(agency, current)
+  }
+
+  return [...sections.values()].sort((left, right) => {
+    const countCompare =
+      right.verifiedRows.length +
+      right.scheduledRows.length -
+      (left.verifiedRows.length + left.scheduledRows.length)
+    if (countCompare !== 0) {
+      return countCompare
+    }
+
+    return compareAgencyFilterOptions(left.agency, right.agency)
+  })
 }
 
 function formatTrackingStatus(status: string, language: Language) {
@@ -3781,7 +4056,7 @@ function buildTeamProfiles() {
         instagramUrl: artistProfile?.official_instagram_url ?? '',
         youtubeUrl: artistProfile?.official_youtube_url ?? getYouTubeSearchUrl(group),
         hasOfficialYouTubeUrl: Boolean(artistProfile?.official_youtube_url),
-        agency: artistProfile?.agency ?? '',
+        agency: normalizeAgencyName(artistProfile?.agency),
         representativeImageUrl: artistProfile?.representative_image_url ?? null,
         representativeImageSource: artistProfile?.representative_image_source ?? null,
         latestRelease,
