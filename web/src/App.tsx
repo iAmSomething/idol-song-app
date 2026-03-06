@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
+import releaseDetailRows from './data/releaseDetails.json'
 import releaseRows from './data/releases.json'
 import unresolvedRows from './data/unresolved.json'
 import upcomingCandidateRows from './data/upcomingCandidates.json'
@@ -50,6 +51,28 @@ type ReleaseArtworkRow = {
 
 type ResolvedReleaseArtwork = ReleaseArtworkRow & {
   isPlaceholder: boolean
+}
+
+type ReleaseDetailTrack = {
+  order: number
+  title: string
+}
+
+type ReleaseDetailRow = {
+  group: string
+  release_title: string
+  release_date: string
+  stream: 'song' | 'album'
+  release_kind: ReleaseFact['release_kind']
+  tracks: ReleaseDetailTrack[]
+  spotify_url: string | null
+  youtube_music_url: string | null
+  youtube_video_id: string | null
+  notes: string
+}
+
+type ResolvedReleaseDetail = ReleaseDetailRow & {
+  isFallback: boolean
 }
 
 type ActType = 'group' | 'solo' | 'unit'
@@ -396,7 +419,8 @@ const TEAM_COPY = {
     releaseDate: '발매일',
     stream: '스트림',
     trackPreview: '트랙 프리뷰',
-    trackPreviewHint: '트랙 정보는 v1 placeholder입니다. 전체 디스코그래피 파이프라인에서 실제 트랙 데이터로 대체됩니다.',
+    trackPreviewHint: '시드 데이터가 있으면 실제 트랙을, 없으면 placeholder 프리뷰를 표시합니다.',
+    releaseNotes: '릴리즈 메모',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
       '앨범 상세는 팀 페이지 안 슬라이드오버로 유지해서 컴백 맥락을 잃지 않고 바로 돌아올 수 있습니다.',
@@ -447,7 +471,8 @@ const TEAM_COPY = {
     releaseDate: 'Release date',
     stream: 'Stream',
     trackPreview: 'Track preview',
-    trackPreviewHint: 'Track info is a v1 placeholder and will be replaced when the full discography pipeline lands.',
+    trackPreviewHint: 'Uses seeded track data when available and falls back to placeholder preview rows otherwise.',
+    releaseNotes: 'Release notes',
     placeholderCover: 'Release artwork',
     drawerCopy:
       'Album detail stays inside the team page so users can inspect the release and return to comeback context immediately.',
@@ -465,6 +490,7 @@ const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
+const releaseDetailsCatalog = releaseDetailRows as ReleaseDetailRow[]
 const releaseCatalog = releaseRows as ReleaseRow[]
 const releases = releaseCatalog
   .flatMap((row) => expandReleaseRow(row))
@@ -489,7 +515,10 @@ const releaseCatalogByGroup = new Map(releaseCatalog.map((row) => [row.group, ro
 const artistProfileByGroup = new Map(artistProfiles.map((row) => [row.group, row]))
 const artistProfileBySlug = new Map(artistProfiles.map((row) => [row.slug, row]))
 const releaseArtworkByKey = new Map(
-  releaseArtworkCatalog.map((row) => [getReleaseArtworkKey(row.group, row.release_title, row.release_date, row.stream), row]),
+  releaseArtworkCatalog.map((row) => [getReleaseLookupKey(row.group, row.release_title, row.release_date, row.stream), row]),
+)
+const releaseDetailsByKey = new Map(
+  releaseDetailsCatalog.map((row) => [getReleaseLookupKey(row.group, row.release_title, row.release_date, row.stream), row]),
 )
 const releaseGroups = groupReleasesByGroup(releases)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
@@ -646,6 +675,20 @@ function App() {
     selectedTeam && selectedAlbumKey
       ? selectedTeam.recentAlbums.find((item) => getAlbumKey(item) === selectedAlbumKey) ?? null
       : null
+  const selectedTeamLatestDetail =
+    selectedTeam?.latestRelease
+      ? getReleaseDetail(
+          selectedTeam.group,
+          selectedTeam.latestRelease.title,
+          selectedTeam.latestRelease.date,
+          selectedTeam.latestRelease.stream,
+          selectedTeam.latestRelease.releaseKind,
+        )
+      : null
+  const selectedTeamLatestHandoffs =
+    selectedTeam?.latestRelease
+      ? buildReleaseDetailHandoffs(selectedTeamLatestDetail, selectedTeam.latestRelease.musicHandoffs)
+      : undefined
   const relatedTeams = filteredTeams.filter((team) => team.group !== selectedTeam?.group).slice(0, 8)
 
   function openTeamPage(group: string) {
@@ -848,6 +891,9 @@ function App() {
                         {selectedTeam.latestRelease.verified ? teamCopy.verifiedRelease : teamCopy.watchlistFallback} ·{' '}
                         {formatOptionalDate(selectedTeam.latestRelease.date, displayDateFormatter, copy.none)}
                       </p>
+                      {selectedTeamLatestDetail?.notes ? (
+                        <p className="signal-evidence">{selectedTeamLatestDetail.notes}</p>
+                      ) : null}
                       <div className="detail-links detail-links-stack">
                         {selectedTeam.latestRelease.source ? (
                           <a href={selectedTeam.latestRelease.source} target="_blank" rel="noreferrer">
@@ -865,7 +911,7 @@ function App() {
                       <MusicHandoffRow
                         group={selectedTeam.group}
                         title={selectedTeam.latestRelease.title}
-                        canonicalUrls={selectedTeam.latestRelease.musicHandoffs}
+                        canonicalUrls={selectedTeamLatestHandoffs}
                         language={language}
                         showHint
                       />
@@ -883,6 +929,13 @@ function App() {
                   <div className="album-grid">
                     {selectedTeam.recentAlbums.map((item) => {
                       const artwork = getReleaseArtwork(
+                        item.group,
+                        item.title,
+                        item.date,
+                        item.stream,
+                        item.release_kind,
+                      )
+                      const detail = getReleaseDetail(
                         item.group,
                         item.title,
                         item.date,
@@ -912,7 +965,7 @@ function App() {
                           <MusicHandoffRow
                             group={selectedTeam.group}
                             title={item.title}
-                            canonicalUrls={item.music_handoffs}
+                            canonicalUrls={buildReleaseDetailHandoffs(detail, item.music_handoffs)}
                             language={language}
                             compact
                           />
@@ -1351,9 +1404,13 @@ function AlbumDrawer({
 }) {
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
-  const previewTracks = buildAlbumPreviewTracks(album, group, language)
   const displayName = getTeamDisplayName(group)
   const artwork = getReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind)
+  const releaseDetail = getReleaseDetail(group, album.title, album.date, album.stream, album.release_kind)
+  const previewTracks = releaseDetail.tracks.length
+    ? releaseDetail.tracks
+    : buildAlbumPreviewTracks(album, group, language).map((title, index) => ({ order: index + 1, title }))
+  const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail, album.music_handoffs)
 
   return (
     <div className="drawer-backdrop" onClick={onClose} role="presentation">
@@ -1397,15 +1454,22 @@ function AlbumDrawer({
         <section className="track-preview">
           <p className="panel-label">{teamCopy.trackPreview}</p>
           <div className="track-list">
-            {previewTracks.map((track, index) => (
-              <div key={`${album.title}-${track}-${index + 1}`} className="track-row">
-                <span>{`${index + 1}`.padStart(2, '0')}</span>
-                <strong>{track}</strong>
+            {previewTracks.map((track) => (
+              <div key={`${album.title}-${track.title}-${track.order}`} className="track-row">
+                <span>{`${track.order}`.padStart(2, '0')}</span>
+                <strong>{track.title}</strong>
               </div>
             ))}
           </div>
           <p className="hero-text drawer-copy">{teamCopy.trackPreviewHint}</p>
         </section>
+
+        {releaseDetail.notes ? (
+          <section className="track-preview">
+            <p className="panel-label">{teamCopy.releaseNotes}</p>
+            <p className="hero-text drawer-copy">{releaseDetail.notes}</p>
+          </section>
+        ) : null}
 
         <p className="hero-text drawer-copy">{teamCopy.drawerCopy}</p>
         <div className="detail-links detail-links-stack">
@@ -1420,7 +1484,7 @@ function AlbumDrawer({
         <MusicHandoffRow
           group={group}
           title={album.title}
-          canonicalUrls={album.music_handoffs}
+          canonicalUrls={canonicalHandoffs}
           language={language}
           showHint
         />
@@ -1701,16 +1765,16 @@ function buildMusicSearchUrl(service: MusicService, query: string) {
   return `https://music.youtube.com/search?q=${encodedQuery}`
 }
 
-function getReleaseArtworkKey(
+function getReleaseLookupKey(
   group: string,
   releaseTitle: string,
   releaseDate: string,
-  stream: ReleaseArtworkRow['stream'],
+  stream: ReleaseArtworkRow['stream'] | ReleaseDetailRow['stream'],
 ) {
   return [group, releaseTitle, releaseDate, stream].join('::')
 }
 
-function normalizeArtworkStream(
+function normalizeReleaseStream(
   stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
   releaseKind?: string,
 ): ReleaseArtworkRow['stream'] {
@@ -1734,7 +1798,7 @@ function buildPlaceholderReleaseArtwork(
     group,
     release_title: releaseTitle,
     release_date: releaseDate,
-    stream: normalizeArtworkStream(stream, releaseKind),
+    stream: normalizeReleaseStream(stream, releaseKind),
     cover_image_url: RELEASE_ARTWORK_PLACEHOLDER_URL,
     thumbnail_image_url: RELEASE_ARTWORK_PLACEHOLDER_URL,
     artwork_source_type: 'placeholder',
@@ -1750,9 +1814,9 @@ function getReleaseArtwork(
   stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
   releaseKind?: string,
 ): ResolvedReleaseArtwork {
-  const normalizedStream = normalizeArtworkStream(stream, releaseKind)
+  const normalizedStream = normalizeReleaseStream(stream, releaseKind)
   const artwork = releaseArtworkByKey.get(
-    getReleaseArtworkKey(group, releaseTitle, releaseDate, normalizedStream),
+    getReleaseLookupKey(group, releaseTitle, releaseDate, normalizedStream),
   )
 
   if (!artwork) {
@@ -1763,6 +1827,66 @@ function getReleaseArtwork(
     ...artwork,
     isPlaceholder: artwork.artwork_source_type === 'placeholder',
   }
+}
+
+function buildFallbackReleaseDetail(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
+  releaseKind?: string,
+): ResolvedReleaseDetail {
+  return {
+    group,
+    release_title: releaseTitle,
+    release_date: releaseDate,
+    stream: normalizeReleaseStream(stream, releaseKind),
+    release_kind: releaseKind === 'album' || releaseKind === 'ep' ? releaseKind : 'single',
+    tracks: [],
+    spotify_url: null,
+    youtube_music_url: null,
+    youtube_video_id: null,
+    notes: '',
+    isFallback: true,
+  }
+}
+
+function getReleaseDetail(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
+  releaseKind?: string,
+): ResolvedReleaseDetail {
+  const normalizedStream = normalizeReleaseStream(stream, releaseKind)
+  const detail = releaseDetailsByKey.get(
+    getReleaseLookupKey(group, releaseTitle, releaseDate, normalizedStream),
+  )
+
+  if (!detail) {
+    return buildFallbackReleaseDetail(group, releaseTitle, releaseDate, stream, releaseKind)
+  }
+
+  return {
+    ...detail,
+    isFallback: false,
+  }
+}
+
+function buildReleaseDetailHandoffs(
+  detail: ResolvedReleaseDetail | null,
+  canonicalUrls?: MusicHandoffUrls,
+): MusicHandoffUrls | undefined {
+  const merged = {
+    spotify: detail?.spotify_url ?? canonicalUrls?.spotify,
+    youtube_music: detail?.youtube_music_url ?? canonicalUrls?.youtube_music,
+  }
+
+  if (!merged.spotify && !merged.youtube_music) {
+    return canonicalUrls
+  }
+
+  return merged
 }
 
 function buildTeamProfiles() {
