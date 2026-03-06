@@ -56,13 +56,29 @@
    - display model, props, screen state의 TS 예시
 25. `github-issue-breakdown-plan.md`
    - 모바일 구현을 위한 GitHub issue 분해 계획
+26. `domain-glossary.md`
+   - 팀, 릴리즈, upcoming, handoff 등 핵심 용어 정의
+27. `non-functional-requirements-spec.md`
+   - 성능, 상태 보존, 접근성, 테스트성 요구사항
+28. `decision-log.md`
+   - 제품/UX 핵심 결정 기록
+29. `analytics-event-spec.md`
+   - 화면/CTA/외부 이동 중심 분석 이벤트 정의
+30. `data-sync-freshness-spec.md`
+   - JSON 산출물 신선도, 갱신 기대치, 캐싱/partial-data 정책
+31. `privacy-security-spec.md`
+   - 외부 링크, analytics, 로컬 저장, 보안 가드 규칙
+32. `accessibility-reading-order-spec.md`
+   - VoiceOver/TalkBack 기준 읽기 순서와 라벨 정책
+33. `release-readiness-gate.md`
+   - 모바일 MVP 출시 전 게이트와 차단 조건
 
 ### Screen Specs
-26. `calendar-screen.md`
-27. `radar-screen.md`
-28. `search-screen.md`
-29. `team-detail-screen.md`
-30. `release-detail-screen.md`
+34. `calendar-screen.md`
+35. `radar-screen.md`
+36. `search-screen.md`
+37. `team-detail-screen.md`
+38. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -88,9 +104,17 @@
 21. `testing-strategy-spec.md`
 22. `typescript-interface-examples.md`
 23. `github-issue-breakdown-plan.md`
-24. 각 화면 스펙
-25. `edge-case-catalog.md`
-26. `qa-acceptance-spec.md`
+24. `domain-glossary.md`
+25. `non-functional-requirements-spec.md`
+26. `decision-log.md`
+27. `analytics-event-spec.md`
+28. `data-sync-freshness-spec.md`
+29. `privacy-security-spec.md`
+30. `accessibility-reading-order-spec.md`
+31. `release-readiness-gate.md`
+32. 각 화면 스펙
+33. `edge-case-catalog.md`
+34. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.

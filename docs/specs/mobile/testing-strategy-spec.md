@@ -81,3 +81,12 @@
 - bottom sheet close/open gesture
 - search alias regression
 - Team Detail -> Release Detail -> Back scroll restoration
+
+## 7. 분석 이벤트 참조
+- 핵심 사용자 흐름 측정을 원할 경우 `analytics-event-spec.md`를 참조해 이벤트를 심는다.
+
+## 8. 접근성 읽기 순서 참조
+- VoiceOver/TalkBack 읽기 순서와 라벨 정책은 `accessibility-reading-order-spec.md`를 따른다.
+
+## 9. 출시 게이트 참조
+- 최종 배포 차단/통과 기준은 `release-readiness-gate.md`를 따른다.

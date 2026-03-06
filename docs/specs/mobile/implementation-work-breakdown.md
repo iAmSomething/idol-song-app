@@ -153,3 +153,13 @@ mobile/
 ## 10. 이슈 분해 참조
 - 실제 GitHub 이슈 생성 순서와 묶음은 `github-issue-breakdown-plan.md`를 따른다.
 - TypeScript 모델 예시는 `typescript-interface-examples.md`를 참조한다.
+
+## 11. 운영/결정 참조
+- 용어 정의는 `domain-glossary.md`를 따른다.
+- 완료 기준 외 비기능 요구는 `non-functional-requirements-spec.md`를 따른다.
+- 구현 중 핵심 판단은 `decision-log.md`를 참조한다.
+
+## 12. 출시/운영 게이트 참조
+- 데이터 신선도 규칙은 `data-sync-freshness-spec.md`를 따른다.
+- 외부 링크/analytics 보안 규칙은 `privacy-security-spec.md`를 따른다.
+- MVP 출시 직전 차단 조건은 `release-readiness-gate.md`를 따른다.
