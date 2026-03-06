@@ -270,6 +270,21 @@
   background: rgba(195, 88, 49, 0.14);
 }
 
+.release-chip-upcoming-confirmed {
+  background: rgba(195, 224, 204, 0.9);
+  color: #27543a;
+}
+
+.release-chip-upcoming-scheduled {
+  background: rgba(215, 229, 252, 0.92);
+  color: #244c88;
+}
+
+.release-chip-upcoming-rumor {
+  background: rgba(236, 221, 255, 0.92);
+  color: #60428f;
+}
+
 .ghost-button {
   border: 1px solid rgba(27, 42, 65, 0.12);
   border-radius: 999px;
@@ -434,6 +449,28 @@
   gap: 14px;
   flex-wrap: wrap;
   margin-top: 14px;
+}
+
+.detail-card-signal {
+  border-color: rgba(27, 42, 65, 0.1);
+}
+
+.detail-card-signal-confirmed {
+  background:
+    radial-gradient(circle at top right, rgba(195, 224, 204, 0.38), transparent 42%),
+    rgba(255, 255, 255, 0.84);
+}
+
+.detail-card-signal-scheduled {
+  background:
+    radial-gradient(circle at top right, rgba(215, 229, 252, 0.46), transparent 44%),
+    rgba(255, 255, 255, 0.84);
+}
+
+.detail-card-signal-rumor {
+  background:
+    radial-gradient(circle at top right, rgba(236, 221, 255, 0.42), transparent 44%),
+    rgba(255, 255, 255, 0.84);
 }
 
 .meta-grid {
