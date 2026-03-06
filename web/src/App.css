@@ -115,6 +115,42 @@
   margin-top: 20px;
 }
 
+.filter-stack {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.filter-group {
+  display: grid;
+  gap: 8px;
+}
+
+.filter-group span {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-chip {
+  border: 1px solid rgba(27, 42, 65, 0.12);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--text-soft);
+}
+
+.filter-chip-active {
+  border-color: rgba(195, 88, 49, 0.35);
+  background: rgba(195, 88, 49, 0.12);
+  color: var(--accent-deep);
+}
+
 .search-field {
   display: flex;
   flex: 1;
@@ -160,6 +196,15 @@
   flex-wrap: wrap;
   gap: 10px;
   margin: 18px 0 22px;
+}
+
+.empty-state {
+  border: 1px dashed rgba(27, 42, 65, 0.16);
+  border-radius: 22px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--text-soft);
 }
 
 .status-pill {
@@ -529,7 +574,11 @@
   }
 
   .panel-top,
-  .toolbar,
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .feed-row,
   .signal-row {
     grid-template-columns: 1fr;
