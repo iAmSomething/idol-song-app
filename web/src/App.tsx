@@ -30,6 +30,7 @@ type ArtistProfileRow = {
   group: string
   display_name: string
   aliases: string[]
+  search_aliases: string[]
   agency: string | null
   official_youtube_url: string | null
   official_x_url: string | null
@@ -179,6 +180,16 @@ type TeamProfile = {
 
 type Language = 'ko' | 'en'
 type CountdownState = 'd_day' | 'd_1' | 'd_3' | 'd_7' | 'date'
+
+type SearchNeedle = {
+  normalized: string
+  compact: string
+}
+
+type SearchIndex = {
+  normalizedTerms: string[]
+  compactTerms: string[]
+}
 
 const LANGUAGE_STORAGE_KEY = 'idol-song-app-language'
 const LANGUAGE_OPTIONS: Language[] = ['ko', 'en']
@@ -532,6 +543,7 @@ const releaseDetailsByKey = new Map(
 const releaseGroups = groupReleasesByGroup(releases)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
 const upcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
+const searchIndexByGroup = buildSearchIndexByGroup()
 const teamProfiles = buildTeamProfiles()
 const teamProfileMap = new Map(teamProfiles.map((team) => [team.group, team]))
 
@@ -610,11 +622,10 @@ function App() {
     const reference = new Date(Date.UTC(2026, 0, 4 + index))
     return weekdayFormatter.format(reference)
   })
+  const searchNeedle = createSearchNeedle(search)
 
   const filteredReleases = releases.filter((item) => {
-    const needle = search.trim().toLowerCase()
-    const matchesSearch =
-      !needle || item.group.toLowerCase().includes(needle) || item.title.toLowerCase().includes(needle)
+    const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
     const matchesReleaseKind =
       selectedReleaseKind === 'all' || item.release_kind === selectedReleaseKind
     const matchesActType = selectedActType === 'all' || item.actType === selectedActType
@@ -622,17 +633,9 @@ function App() {
   })
 
   const filteredUpcoming = upcomingCandidates.filter((item) => {
-    const needle = search.trim().toLowerCase()
-    if (!needle) {
-      return true
-    }
-
-    return (
-      item.group.toLowerCase().includes(needle) ||
-      item.headline.toLowerCase().includes(needle)
-    )
+    return matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
   })
-  const filteredTeams = teamProfiles.filter((team) => matchesTeamSearch(team, search.trim().toLowerCase()))
+  const filteredTeams = teamProfiles.filter((team) => matchesSearchIndex(searchIndexByGroup.get(team.group), searchNeedle))
   const filteredUpcomingSignals = filteredUpcoming
     .flatMap((item) => expandUpcomingCandidate(item))
     .sort((left, right) => left.dateValue.getTime() - right.dateValue.getTime())
@@ -2100,6 +2103,36 @@ function buildTeamProfiles() {
     .sort(compareTeamProfiles)
 }
 
+function buildSearchIndexByGroup() {
+  const groups = new Set([
+    ...artistProfiles.map((row) => row.group),
+    ...watchlist.map((row) => row.group),
+    ...releaseCatalog.map((row) => row.group),
+    ...upcomingCandidates.map((row) => row.group),
+  ])
+
+  return new Map(
+    Array.from(groups, (group) => {
+      const artistProfile = artistProfileByGroup.get(group)
+      const releaseRow = releaseCatalogByGroup.get(group)
+      const upcomingSignals = upcomingByGroup.get(group) ?? []
+
+      return [
+        group,
+        buildSearchIndex([
+          group,
+          artistProfile?.display_name,
+          ...(artistProfile?.aliases ?? []),
+          ...(artistProfile?.search_aliases ?? []),
+          releaseRow?.latest_song?.title,
+          releaseRow?.latest_album?.title,
+          ...upcomingSignals.map((item) => item.headline),
+        ]),
+      ]
+    }),
+  )
+}
+
 function deriveLatestRelease(
   groupReleases: VerifiedRelease[],
   watchRow?: WatchlistRow,
@@ -2134,20 +2167,6 @@ function deriveLatestRelease(
     artistSource: releaseRow?.artist_source ?? '',
     verified: false,
   }
-}
-
-function matchesTeamSearch(team: TeamProfile, needle: string) {
-  if (!needle) {
-    return true
-  }
-
-  return (
-    team.group.toLowerCase().includes(needle) ||
-    team.displayName.toLowerCase().includes(needle) ||
-    team.aliases.some((alias) => alias.toLowerCase().includes(needle)) ||
-    team.latestRelease?.title.toLowerCase().includes(needle) ||
-    team.upcomingSignals.some((item) => item.headline.toLowerCase().includes(needle))
-  )
 }
 
 function compareTeamProfiles(left: TeamProfile, right: TeamProfile) {
@@ -2343,6 +2362,73 @@ function getGroupFromPath(pathname: string) {
 
 function getArtistPath(group: string) {
   return `/artists/${artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)}`
+}
+
+function createSearchNeedle(value: string): SearchNeedle | null {
+  const normalized = normalizeSearchText(value)
+  if (!normalized) {
+    return null
+  }
+
+  return {
+    normalized,
+    compact: collapseSearchText(normalized),
+  }
+}
+
+function buildSearchIndex(values: Array<string | null | undefined>): SearchIndex {
+  const normalizedTerms = new Set<string>()
+  const compactTerms = new Set<string>()
+
+  values.forEach((value) => {
+    if (!value) {
+      return
+    }
+
+    const normalized = normalizeSearchText(value)
+    if (!normalized) {
+      return
+    }
+
+    normalizedTerms.add(normalized)
+    compactTerms.add(collapseSearchText(normalized))
+  })
+
+  return {
+    normalizedTerms: Array.from(normalizedTerms),
+    compactTerms: Array.from(compactTerms),
+  }
+}
+
+function matchesSearchIndex(index: SearchIndex | undefined, needle: SearchNeedle | null) {
+  if (!needle) {
+    return true
+  }
+
+  if (!index) {
+    return false
+  }
+
+  return (
+    index.normalizedTerms.some((term) => term.includes(needle.normalized)) ||
+    index.compactTerms.some((term) => term.includes(needle.compact))
+  )
+}
+
+function normalizeSearchText(value: string) {
+  return value
+    .normalize('NFKC')
+    .replace(/[×✕]/g, 'x')
+    .replace(/&/g, ' and ')
+    .toLowerCase()
+    .replace(/['’`]/g, '')
+    .replace(/[^a-z0-9\u3131-\u318e\uac00-\ud7a3]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function collapseSearchText(value: string) {
+  return value.replace(/\s+/g, '')
 }
 
 function slugifyGroup(group: string) {

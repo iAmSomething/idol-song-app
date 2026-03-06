@@ -9,7 +9,8 @@
     "official_x_url": "https://x.com/andTEAMofficial",
     "official_instagram_url": "https://www.instagram.com/andteam_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "g-i-dle",
@@ -24,7 +25,8 @@
     "official_x_url": "https://x.com/official_i_dle",
     "official_instagram_url": "https://www.instagram.com/i_dle_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "82major",
@@ -36,7 +38,8 @@
     "official_x_url": "https://x.com/82MAJOR_231011",
     "official_instagram_url": "https://www.instagram.com/82major_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "8turn",
@@ -48,7 +51,8 @@
     "official_x_url": "https://x.com/8TURN_official",
     "official_instagram_url": "https://www.instagram.com/8turn.official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "ab6ix",
@@ -60,7 +64,8 @@
     "official_x_url": "https://x.com/AB6IX",
     "official_instagram_url": "https://www.instagram.com/ab6ix_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "all-h-ours",
@@ -72,7 +77,8 @@
     "official_x_url": "https://x.com/ALL_H_OURS",
     "official_instagram_url": "https://www.instagram.com/all_h_ours/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "ampers-and-one",
@@ -84,7 +90,8 @@
     "official_x_url": "https://x.com/_AMPERSANDONE_",
     "official_instagram_url": "https://www.instagram.com/ampersandone_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "artms",
@@ -96,7 +103,8 @@
     "official_x_url": "https://x.com/official_artms",
     "official_instagram_url": "https://www.instagram.com/official_artms/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "atbo",
@@ -108,7 +116,8 @@
     "official_x_url": "https://x.com/ATBO_ground",
     "official_instagram_url": "https://www.instagram.com/atboground/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "ateez",
@@ -120,7 +129,8 @@
     "official_x_url": "https://x.com/ATEEZofficial",
     "official_instagram_url": "https://www.instagram.com/ateez_official_/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "atheart",
@@ -132,7 +142,8 @@
     "official_x_url": "https://x.com/atheartofficial",
     "official_instagram_url": "https://www.instagram.com/atheart__official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "babymonster",
@@ -144,7 +155,8 @@
     "official_x_url": "https://x.com/YGBABYMONSTER_",
     "official_instagram_url": "https://www.instagram.com/babymonster_ygofficial/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "badvillain",
@@ -156,7 +168,8 @@
     "official_x_url": "https://x.com/BADVILLAIN_BPM",
     "official_instagram_url": "https://www.instagram.com/badvillain_bpm/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "bae173",
@@ -168,7 +181,8 @@
     "official_x_url": "https://x.com/BAE173_official",
     "official_instagram_url": "https://www.instagram.com/official_pocketdolz/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "blackpink",
@@ -180,7 +194,11 @@
     "official_x_url": "https://x.com/blackpink",
     "official_instagram_url": "https://www.instagram.com/blackpinkofficial/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": [
+      "블랙핑크",
+      "블핑"
+    ]
   },
   {
     "slug": "blitzers",
@@ -192,7 +210,8 @@
     "official_x_url": "https://x.com/WUZO_BLITZERS",
     "official_instagram_url": "https://www.instagram.com/official_blitzers/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "boynextdoor",
@@ -204,7 +223,8 @@
     "official_x_url": "https://x.com/BOYNEXTDOOR_KOZ",
     "official_instagram_url": "https://www.instagram.com/boynextdoor_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "btob",
@@ -216,7 +236,8 @@
     "official_x_url": "https://x.com/OFFICIALBTOB",
     "official_instagram_url": "https://www.instagram.com/official_btob/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "bts",
@@ -228,7 +249,8 @@
     "official_x_url": "https://x.com/BTS_twt",
     "official_instagram_url": "https://www.instagram.com/bts.bighitofficial/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "cix",
@@ -240,7 +262,8 @@
     "official_x_url": "https://x.com/cix_official",
     "official_instagram_url": "https://www.instagram.com/cix.official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "class-y",
@@ -252,7 +275,8 @@
     "official_x_url": "https://x.com/M25_CLASSy",
     "official_instagram_url": "https://www.instagram.com/m25_classy/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "cravity",
@@ -264,7 +288,8 @@
     "official_x_url": "https://x.com/CRAVITY_twt",
     "official_instagram_url": "https://www.instagram.com/cravity_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "csr",
@@ -276,7 +301,8 @@
     "official_x_url": "https://x.com/CSR_offcl",
     "official_instagram_url": "https://www.instagram.com/csr.offcl/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "day6",
@@ -288,7 +314,8 @@
     "official_x_url": "https://x.com/day6official",
     "official_instagram_url": "https://www.instagram.com/day6kilogram/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "dkb",
@@ -300,7 +327,8 @@
     "official_x_url": "https://x.com/DKB_BRAVE",
     "official_instagram_url": "https://www.instagram.com/official.dkb/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "drippin",
@@ -312,7 +340,8 @@
     "official_x_url": "https://x.com/drippin",
     "official_instagram_url": "https://www.instagram.com/wearedrippin/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "dxmon",
@@ -324,7 +353,8 @@
     "official_x_url": "https://x.com/DXMON_HM",
     "official_instagram_url": "https://www.instagram.com/dxmon_hm/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "dreamcatcher",
@@ -336,7 +366,8 @@
     "official_x_url": "https://x.com/hf_dreamcatcher",
     "official_instagram_url": "https://www.instagram.com/hf_dreamcatcher/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "enhypen",
@@ -348,7 +379,8 @@
     "official_x_url": "https://x.com/ENHYPEN",
     "official_instagram_url": "https://www.instagram.com/enhypen/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "epex",
@@ -360,7 +392,8 @@
     "official_x_url": "https://x.com/the_EPEX",
     "official_instagram_url": "https://www.instagram.com/epex.official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "evnne",
@@ -372,7 +405,8 @@
     "official_x_url": "https://x.com/EVNNE_official",
     "official_instagram_url": "https://www.instagram.com/evnne_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "exo",
@@ -384,7 +418,8 @@
     "official_x_url": "https://x.com/weareoneEXO",
     "official_instagram_url": "https://www.instagram.com/weareone.exo/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "fifty-fifty",
@@ -396,7 +431,8 @@
     "official_x_url": "https://x.com/we_fiftyfifty",
     "official_instagram_url": "https://www.instagram.com/we_fiftyfifty/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "ghost9",
@@ -408,7 +444,8 @@
     "official_x_url": "https://x.com/GHOST9OFFICIAL",
     "official_instagram_url": "https://www.instagram.com/official.ghost9/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "h1-key",
@@ -420,7 +457,8 @@
     "official_x_url": "https://x.com/H1KEY_official",
     "official_instagram_url": "https://www.instagram.com/h1key_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "hearts2hearts",
@@ -432,7 +470,8 @@
     "official_x_url": "https://x.com/Hearts2Hearts",
     "official_instagram_url": "https://www.instagram.com/hearts2hearts/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "infinite",
@@ -444,7 +483,8 @@
     "official_x_url": "https://x.com/INFINITE_UM",
     "official_instagram_url": "https://www.instagram.com/official_ifnt_/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "itzy",
@@ -456,7 +496,8 @@
     "official_x_url": "https://x.com/ITZYofficial",
     "official_instagram_url": "https://www.instagram.com/itzy.all.in.us/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "ive",
@@ -468,7 +509,8 @@
     "official_x_url": "https://x.com/IVE_twt",
     "official_instagram_url": "https://www.instagram.com/ivestarship/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "just-b",
@@ -480,7 +522,8 @@
     "official_x_url": "https://x.com/JUSTB_Official",
     "official_instagram_url": "https://www.instagram.com/justb_ig_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "kard",
@@ -492,7 +535,8 @@
     "official_x_url": "https://x.com/kard_official",
     "official_instagram_url": "https://www.instagram.com/official_kard/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "kiss-of-life",
@@ -504,7 +548,8 @@
     "official_x_url": "https://x.com/KISSOFLIFE_S2",
     "official_instagram_url": "https://www.instagram.com/kissoflife_s2/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "kep1er",
@@ -516,7 +561,8 @@
     "official_x_url": "https://x.com/official_kep1er",
     "official_instagram_url": "https://www.instagram.com/official.kep1er/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "kickflip",
@@ -528,7 +574,8 @@
     "official_x_url": "https://x.com/KickFlip_jype",
     "official_instagram_url": "https://www.instagram.com/kickflip_jype/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "kiiikiii",
@@ -540,7 +587,8 @@
     "official_x_url": "https://x.com/We_KiiiKiii",
     "official_instagram_url": "https://www.instagram.com/we_kiiikiii/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "le-sserafim",
@@ -552,7 +600,8 @@
     "official_x_url": "https://x.com/le_sserafim",
     "official_instagram_url": "https://www.instagram.com/le_sserafim/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "lightsum",
@@ -564,7 +613,8 @@
     "official_x_url": "https://x.com/cube_lightsum",
     "official_instagram_url": "https://www.instagram.com/cube_lightsum/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "lun8",
@@ -576,7 +626,8 @@
     "official_x_url": "https://x.com/LUN8_official",
     "official_instagram_url": "https://www.instagram.com/lun8_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "loossemble",
@@ -588,7 +639,8 @@
     "official_x_url": "https://x.com/Loossemble_twt",
     "official_instagram_url": "https://www.instagram.com/loossemble.official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "mamamoo",
@@ -600,7 +652,8 @@
     "official_x_url": "https://x.com/rbw_mamamoo",
     "official_instagram_url": "https://www.instagram.com/mamamoo_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "mcnd",
@@ -612,7 +665,8 @@
     "official_x_url": "https://x.com/mcndofficial_",
     "official_instagram_url": "https://www.instagram.com/mcnd_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "meovv",
@@ -624,7 +678,8 @@
     "official_x_url": "https://x.com/OFFICIAL_MEOVV",
     "official_instagram_url": "https://www.instagram.com/meovv/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "monsta-x",
@@ -636,7 +691,8 @@
     "official_x_url": "https://x.com/officialmonstax",
     "official_instagram_url": "https://www.instagram.com/official_monsta_x/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "nct-127",
@@ -648,7 +704,8 @@
     "official_x_url": "https://x.com/NCTsmtown_127",
     "official_instagram_url": "https://www.instagram.com/nct127/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "nct-dream",
@@ -660,7 +717,8 @@
     "official_x_url": "https://x.com/nctsmtown_dream",
     "official_instagram_url": "https://www.instagram.com/nct_dream/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "nct-wish",
@@ -672,7 +730,8 @@
     "official_x_url": "https://x.com/nctwishofficial",
     "official_instagram_url": "https://www.instagram.com/nctwish_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "nexz",
@@ -684,7 +743,8 @@
     "official_x_url": "https://x.com/NEXZ_official",
     "official_instagram_url": "https://www.instagram.com/real_nexz/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "nmixx",
@@ -696,7 +756,8 @@
     "official_x_url": "https://x.com/NMIXX_official",
     "official_instagram_url": "https://www.instagram.com/nmixx_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "nomad",
@@ -708,7 +769,8 @@
     "official_x_url": "https://x.com/nomad_is_here",
     "official_instagram_url": "https://www.instagram.com/nomadaish88/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "newjeans",
@@ -720,7 +782,8 @@
     "official_x_url": "https://x.com/NewJeans_twt",
     "official_instagram_url": "https://www.instagram.com/newjeans_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "oneus",
@@ -732,7 +795,8 @@
     "official_x_url": "https://x.com/official_oneus",
     "official_instagram_url": "https://www.instagram.com/official_oneus/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "onewe",
@@ -744,7 +808,8 @@
     "official_x_url": "https://x.com/official_onewe",
     "official_instagram_url": "https://www.instagram.com/official_onewe/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "onf",
@@ -756,7 +821,8 @@
     "official_x_url": "https://x.com/WM_ONOFF",
     "official_instagram_url": "https://www.instagram.com/wm_onoff/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "p1harmony",
@@ -768,7 +834,8 @@
     "official_x_url": "https://x.com/p1h_official",
     "official_instagram_url": "https://www.instagram.com/p1h_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "plave",
@@ -780,7 +847,8 @@
     "official_x_url": "https://x.com/plave_official",
     "official_instagram_url": "https://www.instagram.com/plave_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "pow",
@@ -792,7 +860,8 @@
     "official_x_url": "https://x.com/POW_grid",
     "official_instagram_url": "https://www.instagram.com/pow_grid/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "purple-kiss",
@@ -804,7 +873,8 @@
     "official_x_url": "https://x.com/RBW_PURPLEKISS",
     "official_instagram_url": "https://www.instagram.com/purplekiss_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "qwer",
@@ -816,7 +886,8 @@
     "official_x_url": "https://x.com/official_QWER",
     "official_instagram_url": "https://www.instagram.com/qwerband_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "rescene",
@@ -828,7 +899,8 @@
     "official_x_url": "https://x.com/RESCENEofficial",
     "official_instagram_url": "https://www.instagram.com/rescene.official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "riize",
@@ -840,7 +912,8 @@
     "official_x_url": "https://x.com/riize_official",
     "official_instagram_url": "https://www.instagram.com/riize_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "red-velvet",
@@ -852,7 +925,8 @@
     "official_x_url": "https://x.com/RVsmtown",
     "official_instagram_url": "https://www.instagram.com/redvelvet.smtown/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "say-my-name",
@@ -864,7 +938,8 @@
     "official_x_url": "https://x.com/sa2m2nam3",
     "official_instagram_url": "https://www.instagram.com/sa2m2nam3/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "seventeen",
@@ -876,7 +951,8 @@
     "official_x_url": "https://x.com/pledis_17",
     "official_instagram_url": "https://www.instagram.com/saythename_17/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "shinee",
@@ -888,7 +964,8 @@
     "official_x_url": "https://x.com/shinee",
     "official_instagram_url": "https://www.instagram.com/shinee/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "stayc",
@@ -900,7 +977,8 @@
     "official_x_url": "https://x.com/stayc_official",
     "official_instagram_url": "https://www.instagram.com/stayc_highup/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "stray-kids",
@@ -912,7 +990,8 @@
     "official_x_url": "https://x.com/Stray_Kids",
     "official_instagram_url": "https://www.instagram.com/realstraykids/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "tempest",
@@ -924,7 +1003,8 @@
     "official_x_url": "https://x.com/TPST__official",
     "official_instagram_url": "https://www.instagram.com/tpst__official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "the-boyz",
@@ -936,7 +1016,8 @@
     "official_x_url": "https://x.com/IST_THEBOYZ",
     "official_instagram_url": "https://www.instagram.com/official_theboyz/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "tiot",
@@ -948,7 +1029,8 @@
     "official_x_url": "https://x.com/TIOT_NOW",
     "official_instagram_url": "https://www.instagram.com/tiot_now/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "tnx",
@@ -960,7 +1042,8 @@
     "official_x_url": "https://x.com/TNX_Official",
     "official_instagram_url": "https://www.instagram.com/official.tnx/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "tomorrow-x-together",
@@ -974,7 +1057,12 @@
     "official_x_url": "https://x.com/TXT_members",
     "official_instagram_url": "https://www.instagram.com/txt_bighit/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": [
+      "투바투",
+      "투모로우바이투게더",
+      "투모로우엑스투게더"
+    ]
   },
   {
     "slug": "treasure",
@@ -986,7 +1074,8 @@
     "official_x_url": "https://x.com/ygtreasuremaker",
     "official_instagram_url": "https://www.instagram.com/yg_treasure_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "trendz",
@@ -998,7 +1087,8 @@
     "official_x_url": "https://x.com/trendz_offcl",
     "official_instagram_url": "https://www.instagram.com/trendz_offcl/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "twice",
@@ -1010,7 +1100,10 @@
     "official_x_url": "https://x.com/JYPETWICE",
     "official_instagram_url": "https://www.instagram.com/twicetagram/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": [
+      "트와이스"
+    ]
   },
   {
     "slug": "tws",
@@ -1022,7 +1115,8 @@
     "official_x_url": "https://x.com/tws_pledis",
     "official_instagram_url": "https://www.instagram.com/tws_pledis/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "the-kingdom",
@@ -1036,7 +1130,8 @@
     "official_x_url": "https://x.com/TheKingDom_GF",
     "official_instagram_url": "https://www.instagram.com/kingdom_gfent/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "unis",
@@ -1048,7 +1143,8 @@
     "official_x_url": "https://x.com/UNIS_offcl",
     "official_instagram_url": "https://www.instagram.com/unis_offcl/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "verivery",
@@ -1060,7 +1156,8 @@
     "official_x_url": "https://x.com/by_verivery",
     "official_instagram_url": "https://www.instagram.com/the_verivery/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "viviz",
@@ -1072,7 +1169,8 @@
     "official_x_url": "https://x.com/VIVIZ_official",
     "official_instagram_url": "https://www.instagram.com/viviz_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "wei",
@@ -1084,7 +1182,8 @@
     "official_x_url": "https://x.com/WEi_Official",
     "official_instagram_url": "https://www.instagram.com/wei_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "whib",
@@ -1096,7 +1195,8 @@
     "official_x_url": "https://x.com/whib_official",
     "official_instagram_url": "https://www.instagram.com/whib_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "wjsn",
@@ -1111,7 +1211,8 @@
     "official_x_url": "https://x.com/WJSN_Cosmic",
     "official_instagram_url": "https://www.instagram.com/wjsn_cosmic/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "wayv",
@@ -1123,7 +1224,8 @@
     "official_x_url": "https://x.com/WayV_official",
     "official_instagram_url": "https://www.instagram.com/wayvofficial/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "weeekly",
@@ -1135,7 +1237,8 @@
     "official_x_url": "https://x.com/_Weeekly",
     "official_instagram_url": "https://www.instagram.com/_weeekly/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "xdinary-heroes",
@@ -1147,7 +1250,8 @@
     "official_x_url": "https://x.com/XH_official",
     "official_instagram_url": "https://www.instagram.com/xdinaryheroes_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "young-posse",
@@ -1159,7 +1263,8 @@
     "official_x_url": "https://x.com/youngposseup",
     "official_instagram_url": "https://www.instagram.com/youngposseup/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "younite",
@@ -1171,7 +1276,8 @@
     "official_x_url": "https://x.com/younite_offcl",
     "official_instagram_url": "https://www.instagram.com/younite_bnm/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "zerobaseone",
@@ -1183,7 +1289,8 @@
     "official_x_url": "https://x.com/ZB1_official",
     "official_instagram_url": "https://www.instagram.com/zb1official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "aespa",
@@ -1195,7 +1302,8 @@
     "official_x_url": "https://x.com/aespa_official",
     "official_instagram_url": "https://www.instagram.com/aespa_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "cignature",
@@ -1207,7 +1315,8 @@
     "official_x_url": "https://x.com/cignature_J9",
     "official_instagram_url": "https://www.instagram.com/cignature_j9/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "fromis-9",
@@ -1219,7 +1328,8 @@
     "official_x_url": "https://x.com/realfromis_9",
     "official_instagram_url": "https://www.instagram.com/officialfromis_9/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "ifeye",
@@ -1231,7 +1341,8 @@
     "official_x_url": "https://x.com/ifeye_official",
     "official_instagram_url": "https://www.instagram.com/ifeye.official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "izna",
@@ -1243,7 +1354,8 @@
     "official_x_url": "https://x.com/izna_offcl",
     "official_instagram_url": "https://www.instagram.com/izna_offcl/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "triples",
@@ -1255,7 +1367,8 @@
     "official_x_url": "https://x.com/triplescosmos",
     "official_instagram_url": "https://www.instagram.com/triplescosmos/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "woo-ah",
@@ -1267,7 +1380,8 @@
     "official_x_url": "https://x.com/wooah_nv",
     "official_instagram_url": "https://www.instagram.com/wooah_nv/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   },
   {
     "slug": "xikers",
@@ -1279,6 +1393,7 @@
     "official_x_url": "https://x.com/xikers_official",
     "official_instagram_url": "https://www.instagram.com/xikers_official/",
     "representative_image_url": null,
-    "representative_image_source": null
+    "representative_image_source": null,
+    "search_aliases": []
   }
 ]
