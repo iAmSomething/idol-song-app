@@ -77,6 +77,7 @@ type ReleaseDetailRow = {
   spotify_url: string | null
   youtube_music_url: string | null
   youtube_video_id: string | null
+  youtube_video_url?: string | null
   notes: string
 }
 
@@ -765,6 +766,10 @@ const TEAM_COPY = {
     arrangementCredits: '편곡',
     chartHighlights: '차트',
     metadataNotes: '메타데이터 노트',
+    officialMv: '공식 MV',
+    officialMvHint: '보조 영상 콘텐츠입니다. 앱 안 직접 재생 기능이 아니라 공식 YouTube MV를 임베드합니다.',
+    officialMvLinkOnly: '임베드가 준비되지 않은 경우 YouTube 링크만 노출합니다.',
+    watchOnYouTube: 'YouTube에서 보기',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
       '앨범 상세는 팀 페이지 안 슬라이드오버로 유지해서 컴백 맥락을 잃지 않고 바로 돌아올 수 있습니다.',
@@ -836,6 +841,10 @@ const TEAM_COPY = {
     arrangementCredits: 'Arrangement',
     chartHighlights: 'Charts',
     metadataNotes: 'Metadata notes',
+    officialMv: 'Official MV',
+    officialMvHint: 'This is supporting video content, not in-app audio playback. It embeds the official YouTube MV only when metadata is explicit.',
+    officialMvLinkOnly: 'If embedding is unavailable, the drawer falls back to a YouTube link only.',
+    watchOnYouTube: 'Watch on YouTube',
     placeholderCover: 'Release artwork',
     drawerCopy:
       'Album detail stays inside the team page so users can inspect the release and return to comeback context immediately.',
@@ -1102,8 +1111,8 @@ function App() {
     selectedTeam?.latestRelease
       ? buildReleaseDetailHandoffs(selectedTeamLatestDetail, selectedTeam.latestRelease.musicHandoffs)
       : undefined
-  const selectedTeamLatestMvUrl = selectedTeamLatestDetail?.youtube_video_id
-    ? buildYouTubeMvCanonicalUrl(selectedTeamLatestDetail.youtube_video_id)
+  const selectedTeamLatestMvUrl = selectedTeamLatestDetail
+    ? getReleaseDetailMvUrls(selectedTeamLatestDetail).canonicalUrl
     : ''
   const relatedTeams = filteredTeams.filter((team) => team.group !== selectedTeam?.group).slice(0, 8)
 
@@ -1664,7 +1673,7 @@ function App() {
                             group={selectedTeam.group}
                             title={item.title}
                             canonicalUrls={buildReleaseDetailHandoffs(detail, item.music_handoffs)}
-                            mvUrl={detail.youtube_video_id ? buildYouTubeMvCanonicalUrl(detail.youtube_video_id) : ''}
+                            mvUrl={getReleaseDetailMvUrls(detail).canonicalUrl}
                             language={language}
                             compact
                           />
@@ -2065,7 +2074,7 @@ function AlbumDrawer({
     ? releaseDetail.tracks
     : buildAlbumPreviewTracks(album, group, language).map((title, index) => ({ order: index + 1, title }))
   const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail, album.music_handoffs)
-  const mvUrl = releaseDetail.youtube_video_id ? buildYouTubeMvCanonicalUrl(releaseDetail.youtube_video_id) : ''
+  const mv = getReleaseDetailMvUrls(releaseDetail)
 
   return (
     <div className="drawer-backdrop" onClick={onClose} role="presentation">
@@ -2138,6 +2147,33 @@ function AlbumDrawer({
           </section>
         ) : null}
 
+        {mv.canonicalUrl ? (
+          <section className="official-mv-section">
+            <p className="panel-label">{teamCopy.officialMv}</p>
+            <p className="hero-text drawer-copy">{teamCopy.officialMvHint}</p>
+            {mv.embedUrl ? (
+              <div className="official-mv-frame-shell">
+                <iframe
+                  className="official-mv-frame"
+                  src={mv.embedUrl}
+                  title={`${displayName} ${album.title} official MV`}
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            ) : (
+              <p className="hero-text drawer-copy">{teamCopy.officialMvLinkOnly}</p>
+            )}
+            <div className="meta-links">
+              <a href={mv.canonicalUrl} target="_blank" rel="noreferrer" className="meta-link">
+                {teamCopy.watchOnYouTube}
+              </a>
+            </div>
+          </section>
+        ) : null}
+
         <ReleaseEnrichmentSection
           enrichment={releaseEnrichment}
           language={language}
@@ -2150,7 +2186,7 @@ function AlbumDrawer({
             group={group}
             title={album.title}
             canonicalUrls={canonicalHandoffs}
-            mvUrl={mvUrl}
+            mvUrl={mv.canonicalUrl}
             language={language}
             showHint
           />
@@ -3029,7 +3065,7 @@ function DashboardServiceActions({
 }) {
   const detail = getReleaseDetail(release.group, release.title, release.date, release.stream, release.release_kind)
   const canonicalHandoffs = buildReleaseDetailHandoffs(detail, release.music_handoffs)
-  const mvUrl = detail.youtube_video_id ? buildYouTubeMvCanonicalUrl(detail.youtube_video_id) : ''
+  const mvUrl = getReleaseDetailMvUrls(detail).canonicalUrl
 
   return (
     <MusicHandoffRow
@@ -3111,7 +3147,7 @@ function SelectedDayPanel({
               releases.map((item) => {
                 const detail = getReleaseDetail(item.group, item.title, item.date, item.stream, item.release_kind)
                 const canonicalHandoffs = buildReleaseDetailHandoffs(detail, item.music_handoffs)
-                const mvUrl = detail.youtube_video_id ? buildYouTubeMvCanonicalUrl(detail.youtube_video_id) : ''
+                const mvUrl = getReleaseDetailMvUrls(detail).canonicalUrl
 
                 return (
                   <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
@@ -3499,6 +3535,52 @@ function buildYouTubeMvCanonicalUrl(videoId: string) {
   return `https://www.youtube.com/watch?v=${videoId}`
 }
 
+function buildYouTubeNoCookieEmbedUrl(videoId: string) {
+  return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`
+}
+
+function extractYouTubeVideoId(value: string | null | undefined) {
+  if (!value) {
+    return ''
+  }
+
+  if (/^[a-zA-Z0-9_-]{11}$/.test(value)) {
+    return value
+  }
+
+  try {
+    const url = new URL(value)
+
+    if (url.hostname.includes('youtu.be')) {
+      return url.pathname.replace(/^\//, '')
+    }
+
+    const watchId = url.searchParams.get('v')
+    if (watchId) {
+      return watchId
+    }
+
+    const segments = url.pathname.split('/').filter(Boolean)
+    const embedIndex = segments.findIndex((segment) => segment === 'embed' || segment === 'shorts')
+    if (embedIndex >= 0) {
+      return segments[embedIndex + 1] ?? ''
+    }
+  } catch {
+    return ''
+  }
+
+  return ''
+}
+
+function getReleaseDetailMvUrls(detail: Pick<ReleaseDetailRow, 'youtube_video_id' | 'youtube_video_url'>) {
+  const videoId = extractYouTubeVideoId(detail.youtube_video_id) || extractYouTubeVideoId(detail.youtube_video_url)
+
+  return {
+    canonicalUrl: videoId ? buildYouTubeMvCanonicalUrl(videoId) : detail.youtube_video_url || '',
+    embedUrl: videoId ? buildYouTubeNoCookieEmbedUrl(videoId) : '',
+  }
+}
+
 function getReleaseLookupKey(
   group: string,
   releaseTitle: string,
@@ -3580,6 +3662,7 @@ function buildFallbackReleaseDetail(
     spotify_url: null,
     youtube_music_url: null,
     youtube_video_id: null,
+    youtube_video_url: null,
     notes: '',
     isFallback: true,
   }
