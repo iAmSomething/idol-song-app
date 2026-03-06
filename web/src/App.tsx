@@ -680,6 +680,7 @@ function App() {
               ) : null}
             </div>
             <p className="team-footnote">{teamCopy.footnote}</p>
+            <p className="team-footnote">{teamCopy.footnote}</p>
           </section>
 
           <div className="team-page-body">
