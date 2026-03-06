@@ -1,15 +1,15 @@
-name: Weekly K-pop Scan
+name: Upcoming Comeback Scan
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 0 * * 1,3,5"
 
 permissions:
   contents: write
 
 concurrency:
-  group: weekly-kpop-scan
+  group: upcoming-kpop-scan
   cancel-in-progress: false
 
 jobs:
@@ -34,8 +34,10 @@ jobs:
         run: |
           python build_tracking_watchlist.py
           python scan_upcoming_candidates.py
+          python build_manual_review_queue.py
           cp tracking_watchlist.json web/src/data/watchlist.json
           cp upcoming_release_candidates.json web/src/data/upcomingCandidates.json
+          python build_release_change_log.py
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -60,6 +62,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tracking_watchlist.json tracking_watchlist.csv upcoming_release_candidates.json upcoming_release_candidates.csv web/src/data/watchlist.json web/src/data/upcomingCandidates.json
-          git commit -m "chore: refresh weekly kpop scan data"
+          git add tracking_watchlist.json tracking_watchlist.csv upcoming_release_candidates.json upcoming_release_candidates.csv manual_review_queue.json manual_review_queue.csv web/src/data/watchlist.json web/src/data/upcomingCandidates.json web/src/data/releaseChangeLog.json
+          git commit -m "chore: refresh upcoming scan data"
           git push

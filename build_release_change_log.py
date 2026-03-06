@@ -54,6 +54,10 @@ def load_json_at_ref(ref: str, path: str) -> Any:
     return json.loads(run_git("show", f"{ref}:{path}"))
 
 
+def load_current_json(path: str) -> Any:
+    return json.loads((ROOT / path).read_text(encoding="utf-8"))
+
+
 def get_history_refs(path: str) -> list[str]:
     refs = [line.strip() for line in run_git("log", "--format=%H", "--follow", "--", path).splitlines()]
     refs.reverse()
@@ -284,10 +288,16 @@ def build_event(
         "next": next_payload,
         "verified_release": normalize_release(next_release) if change_type == "verified_release_detected" else None,
         "snapshot": {
-            "previous_ref": previous_ref[:7],
-            "next_ref": next_ref[:7],
+            "previous_ref": shorten_ref(previous_ref),
+            "next_ref": shorten_ref(next_ref),
         },
     }
+
+
+def shorten_ref(ref: str) -> str:
+    if ref == "WORKTREE":
+        return "worktree"
+    return ref.lower() if len(ref) <= 7 else ref[:7].lower()
 
 
 def compare_snapshots(
@@ -406,8 +416,8 @@ def occurred_sort_value(value: str) -> tuple[int, str]:
 
 def main() -> None:
     refs = get_history_refs(UPCOMING_PATH)
-    if len(refs) < 2:
-        raise SystemExit("Need at least two snapshot revisions to build release change log.")
+    if not refs:
+        raise SystemExit("Need at least one snapshot revision to build release change log.")
 
     snapshots: list[dict[str, Any]] = []
     for ref in refs:
@@ -422,6 +432,25 @@ def main() -> None:
                 "releases": latest_release_states(load_json_at_ref(ref, RELEASES_PATH)),
             }
         )
+
+    head_ref = refs[-1]
+    current_upcoming = load_current_json(UPCOMING_PATH)
+    current_releases = load_current_json(RELEASES_PATH)
+    head_upcoming = load_json_at_ref(head_ref, UPCOMING_PATH)
+    head_releases = load_json_at_ref(head_ref, RELEASES_PATH)
+
+    if current_upcoming != head_upcoming or current_releases != head_releases:
+        snapshots.append(
+            {
+                "ref": "WORKTREE",
+                "commit_date": datetime.now().astimezone().isoformat(),
+                "states": select_group_states(current_upcoming),
+                "releases": latest_release_states(current_releases),
+            }
+        )
+
+    if len(snapshots) < 2:
+        raise SystemExit("Need at least two snapshot revisions to build release change log.")
 
     events: list[dict[str, Any]] = []
     for previous_snapshot, next_snapshot in zip(snapshots, snapshots[1:]):

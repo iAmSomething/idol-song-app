@@ -5,6 +5,7 @@ import json
 import re
 import time
 import urllib.parse
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -424,11 +425,13 @@ def main():
     session.headers.update({"User-Agent": "CodexKpopScanner/2.0"})
 
     results = []
+    errors = []
     for index, group_row in enumerate(watchlist, start=1):
         try:
             results.extend(find_candidates_for_group(session, group_row))
         except Exception as error:
             print(f"scan_failed {group_row['group']}: {type(error).__name__}")
+            errors.append({"group": group_row["group"], "error": type(error).__name__})
 
         if index % 15 == 0 or index == len(watchlist):
             print(f"scanned {index}/{len(watchlist)}")
@@ -470,6 +473,7 @@ def main():
         json.dumps(
             {
                 "groups_scanned": len(watchlist),
+                "groups_failed": len(errors),
                 "candidates_found": len(results),
                 "output_json": "upcoming_release_candidates.json",
                 "output_csv": "upcoming_release_candidates.csv",
@@ -477,6 +481,18 @@ def main():
             ensure_ascii=False,
         )
     )
+
+    if errors:
+        print(
+            json.dumps(
+                {
+                    "scan_errors": errors,
+                },
+                ensure_ascii=False,
+            ),
+            file=sys.stderr,
+        )
+        raise SystemExit(f"Upcoming scan failed for {len(errors)} group(s).")
 
 
 if __name__ == "__main__":
