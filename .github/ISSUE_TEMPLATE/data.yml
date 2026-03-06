@@ -1,0 +1,69 @@
+name: Data / Source Update
+description: 데이터 누락, 매핑 보정, 소스 반영 작업을 등록합니다.
+title: "[Data] "
+labels:
+  - data
+body:
+  - type: markdown
+    attributes:
+      value: |
+        데이터 이슈는 대상 그룹/아티스트, 근거 링크, 기대 출력 형식을 명확히 적습니다.
+  - type: textarea
+    id: target
+    attributes:
+      label: 대상
+      description: 그룹, 아티스트, 파일, 수집 소스를 적습니다.
+      placeholder: |
+        - 대상 그룹: WJSN
+        - 대상 파일: tracking_watchlist.json
+        - 대상 소스: agency notice / Weverse / Google News RSS
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 현재 문제
+      description: 누락, 오탐, 오매핑 내용을 적습니다.
+      placeholder: 예) 장기 공백 그룹이 watchlist에서 빠져 주간 스캔 대상에 포함되지 않는다.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 근거 링크
+      description: 공식 SNS, 기획사 공지, 기사, 데이터 소스 링크를 적습니다.
+      placeholder: |
+        - https://...
+        - https://...
+    validations:
+      required: true
+  - type: textarea
+    id: expected_output
+    attributes:
+      label: 기대 결과
+      description: 수정 후 데이터가 어떤 형태여야 하는지 적습니다.
+      placeholder: 예) watch_status=watch_only, search_terms에 우주소녀/ Cosmic Girls 조합이 포함된다.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: 검증 방법
+      description: 스크립트 실행이나 샘플 확인 방법을 적습니다.
+      placeholder: |
+        - python build_tracking_watchlist.py
+        - 산출 JSON에서 대상 팀 확인
+    validations:
+      required: true
+  - type: dropdown
+    id: source_type
+    attributes:
+      label: 주요 소스 유형
+      options:
+        - official notice
+        - official sns
+        - news article
+        - api / database
+        - manual review
+    validations:
+      required: true

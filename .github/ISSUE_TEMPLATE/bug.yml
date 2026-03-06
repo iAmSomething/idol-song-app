@@ -1,0 +1,72 @@
+name: Bug Report
+description: 버그, 회귀, 오작동 문제를 등록합니다.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        추측 대신 재현 정보를 남깁니다.
+        심각도와 영향 범위가 크면 `p0` 라벨을 추가합니다.
+  - type: textarea
+    id: summary
+    attributes:
+      label: 문제 요약
+      description: 무엇이 잘못됐는지 한두 문장으로 적습니다.
+      placeholder: 예) BLACKPINK 최신 컴백이 싱글 기준으로만 노출되고 앨범 발매가 반영되지 않는다.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 절차
+      description: QA가 그대로 따라 할 수 있게 적습니다.
+      placeholder: |
+        1. 웹 앱을 연다.
+        2. BLACKPINK 카드를 확인한다.
+        3. 최신 발매 제목과 날짜를 본다.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대 결과
+      placeholder: 예) 최신 앨범과 타이틀곡 정보가 분리되어 표시된다.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 실제 결과
+      placeholder: 예) 선공개 싱글만 최신값으로 남아 있어 컴백 전체 정보가 보이지 않는다.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: 영향 범위
+      description: 사용자 영향, 데이터 오류 범위, 회귀 가능성을 적습니다.
+      placeholder: 예) 최신 컴백 노출 정확도에 직접 영향. 여러 팀에 동일 패턴이 있을 수 있음.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 증거 / 링크
+      description: 스크린샷, 기사, 공식 공지, 로그 등을 적습니다.
+      placeholder: 예) https://...
+    validations:
+      required: false
+  - type: dropdown
+    id: area
+    attributes:
+      label: 주 영향 영역
+      options:
+        - web
+        - pipeline
+        - automation
+        - docs
+        - infra
+    validations:
+      required: true

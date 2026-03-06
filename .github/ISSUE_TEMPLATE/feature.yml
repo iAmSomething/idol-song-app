@@ -1,0 +1,89 @@
+name: Feature / Task
+description: 기능 추가, 개선, 구현 작업을 등록합니다.
+title: "[Feature] "
+labels:
+  - feature
+body:
+  - type: markdown
+    attributes:
+      value: |
+        작업은 체크 가능한 문장으로 적습니다.
+        우선순위(`p0/p1/p2`)와 영역(`web/pipeline/automation/docs/infra`)은 생성 후 라벨로 맞춥니다.
+  - type: textarea
+    id: background
+    attributes:
+      label: 배경
+      description: 왜 이 작업이 필요한지 적습니다.
+      placeholder: 예) 캘린더에서 발매 종류를 구분할 수 없어 사용자가 원하는 목록만 보기 어렵다.
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: 목표
+      description: 이 이슈가 끝났을 때 달라져야 하는 결과를 적습니다.
+      placeholder: 예) release kind 필터를 추가해 싱글/앨범/선공개곡을 구분해서 볼 수 있게 한다.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 범위
+      description: 수정 대상 파일, 화면, 스크립트, 데이터 구조를 적습니다.
+      placeholder: |
+        - web/src/App.tsx
+        - web/src/App.css
+        - web/src/data/releases.json
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: 제외 범위
+      description: 이번 작업에 포함하지 않을 항목을 적습니다.
+      placeholder: 예) 서버 API 추가, 알림 기능 구현
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 수용 기준
+      description: QA가 그대로 확인할 수 있는 조건을 적습니다.
+      placeholder: |
+        - 사용자가 release kind를 1개 이상 선택할 수 있다.
+        - 모바일과 데스크톱에서 모두 동작한다.
+        - 선택 결과가 빈 경우 empty state가 보인다.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: 검증 방법
+      description: 개발자 self-check와 QA 검증 기준을 적습니다.
+      placeholder: |
+        - npm run build
+        - 주요 필터 조합 수동 확인
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 주 작업 영역
+      options:
+        - web
+        - pipeline
+        - automation
+        - docs
+        - infra
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 우선순위
+      options:
+        - p1
+        - p0
+        - p2
+    validations:
+      required: true
