@@ -33,6 +33,7 @@ ALIASES = {
     "NCT WISH": ["NCT WISH"],
     "QWER": ["QWER"],
     "IVE": ["IVE"],
+    "WJSN": ["WJSN", "Cosmic Girls", "우주소녀"],
 }
 
 QUERY_OVERRIDE = {
@@ -44,6 +45,7 @@ QUERY_OVERRIDE = {
     "The KingDom": 'artist:"The KingDom"',
     "SAY MY NAME": 'artist:"SAY MY NAME"',
     "IVE": 'artist:"IVE"',
+    "WJSN": 'alias:"WJSN"',
 }
 
 BANNED_PATTERN = re.compile(

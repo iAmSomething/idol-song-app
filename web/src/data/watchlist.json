@@ -1406,8 +1406,8 @@
   {
     "group": "WJSN",
     "tier": "manual",
-    "watch_reason": "manual_watch",
-    "tracking_status": "watch_only",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
     "latest_release_title": "Bloom hour",
     "latest_release_date": "2026-02-25",
     "latest_release_kind": "single",
