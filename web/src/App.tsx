@@ -5590,6 +5590,7 @@ function buildSearchIndexByGroup() {
         group,
         buildSearchIndex([
           group,
+          artistProfile?.slug,
           artistProfile?.display_name,
           ...(artistProfile?.aliases ?? []),
           ...(artistProfile?.search_aliases ?? []),

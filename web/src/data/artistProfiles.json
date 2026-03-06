@@ -91,7 +91,10 @@
     "official_instagram_url": null,
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": [],
+    "search_aliases": [
+      "올데이 프로젝트",
+      "올데프"
+    ],
     "debut_year": 2025,
     "radar_tags": [
       "rookie"
@@ -167,14 +170,19 @@
     "slug": "babymonster",
     "group": "BABYMONSTER",
     "display_name": "BABYMONSTER",
-    "aliases": [],
+    "aliases": [
+      "BAEMON"
+    ],
     "agency": "YG Entertainment",
     "official_youtube_url": null,
     "official_x_url": "https://x.com/YGBABYMONSTER_",
     "official_instagram_url": "https://www.instagram.com/babymonster_ygofficial/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "베이비몬스터",
+      "베몬"
+    ]
   },
   {
     "slug": "badvillain",
@@ -235,14 +243,19 @@
     "slug": "boynextdoor",
     "group": "BOYNEXTDOOR",
     "display_name": "BOYNEXTDOOR",
-    "aliases": [],
+    "aliases": [
+      "BND"
+    ],
     "agency": "HYBE Labels",
     "official_youtube_url": null,
     "official_x_url": "https://x.com/BOYNEXTDOOR_KOZ",
     "official_instagram_url": "https://www.instagram.com/boynextdoor_official/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "보이넥스트도어",
+      "보넥도"
+    ]
   },
   {
     "slug": "btob",
@@ -261,14 +274,19 @@
     "slug": "bts",
     "group": "BTS",
     "display_name": "BTS",
-    "aliases": [],
+    "aliases": [
+      "Bangtan Sonyeondan"
+    ],
     "agency": "HYBE Labels",
     "official_youtube_url": null,
     "official_x_url": "https://x.com/BTS_twt",
     "official_instagram_url": "https://www.instagram.com/bts.bighitofficial/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "방탄소년단",
+      "방탄"
+    ]
   },
   {
     "slug": "cix",
@@ -398,7 +416,10 @@
     "official_instagram_url": "https://www.instagram.com/enhypen/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "엔하이픈",
+      "엔하"
+    ]
   },
   {
     "slug": "epex",
@@ -437,7 +458,9 @@
     "official_instagram_url": "https://www.instagram.com/weareone.exo/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "엑소"
+    ]
   },
   {
     "slug": "fifty-fifty",
@@ -482,14 +505,20 @@
     "slug": "hearts2hearts",
     "group": "Hearts2Hearts",
     "display_name": "Hearts2Hearts",
-    "aliases": [],
+    "aliases": [
+      "Hearts 2 Hearts",
+      "Hearts Two Hearts"
+    ],
     "agency": "SM Entertainment",
     "official_youtube_url": null,
     "official_x_url": "https://x.com/Hearts2Hearts",
     "official_instagram_url": "https://www.instagram.com/hearts2hearts/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": [],
+    "search_aliases": [
+      "하츠투하츠",
+      "하투하"
+    ],
     "debut_year": 2025
   },
   {
@@ -529,7 +558,9 @@
     "official_instagram_url": "https://www.instagram.com/ivestarship/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "아이브"
+    ]
   },
   {
     "slug": "just-b",
@@ -561,14 +592,19 @@
     "slug": "kiss-of-life",
     "group": "KISS OF LIFE",
     "display_name": "KISS OF LIFE",
-    "aliases": [],
+    "aliases": [
+      "KIOF"
+    ],
     "agency": "S2 Entertainment",
     "official_youtube_url": null,
     "official_x_url": "https://x.com/KISSOFLIFE_S2",
     "official_instagram_url": "https://www.instagram.com/kissoflife_s2/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "키스오브라이프",
+      "키오프"
+    ]
   },
   {
     "slug": "kep1er",
@@ -622,7 +658,10 @@
     "official_instagram_url": "https://www.instagram.com/le_sserafim/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "르세라핌",
+      "르세라"
+    ]
   },
   {
     "slug": "lightsum",
@@ -726,7 +765,11 @@
     "official_instagram_url": "https://www.instagram.com/nct127/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "엔시티 127",
+      "엔시티일이칠",
+      "일이칠"
+    ]
   },
   {
     "slug": "nct-dream",
@@ -739,7 +782,10 @@
     "official_instagram_url": "https://www.instagram.com/nct_dream/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "엔시티 드림",
+      "엔드림"
+    ]
   },
   {
     "slug": "nct-wish",
@@ -752,7 +798,10 @@
     "official_instagram_url": "https://www.instagram.com/nctwish_official/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "엔시티 위시",
+      "엔위시"
+    ]
   },
   {
     "slug": "nexz",
@@ -856,7 +905,10 @@
     "official_instagram_url": "https://www.instagram.com/p1h_official/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "피원하모니",
+      "피원하"
+    ]
   },
   {
     "slug": "plave",
@@ -934,7 +986,9 @@
     "official_instagram_url": "https://www.instagram.com/riize_official/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "라이즈"
+    ]
   },
   {
     "slug": "red-velvet",
@@ -947,7 +1001,10 @@
     "official_instagram_url": "https://www.instagram.com/redvelvet.smtown/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "레드벨벳",
+      "레벨"
+    ]
   },
   {
     "slug": "say-my-name",
@@ -966,14 +1023,19 @@
     "slug": "seventeen",
     "group": "SEVENTEEN",
     "display_name": "SEVENTEEN",
-    "aliases": [],
+    "aliases": [
+      "SVT"
+    ],
     "agency": "HYBE Labels",
     "official_youtube_url": null,
     "official_x_url": "https://x.com/pledis_17",
     "official_instagram_url": "https://www.instagram.com/saythename_17/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "세븐틴",
+      "셉틴"
+    ]
   },
   {
     "slug": "shinee",
@@ -1123,7 +1185,8 @@
     "representative_image_url": null,
     "representative_image_source": null,
     "search_aliases": [
-      "트와이스"
+      "트와이스",
+      "트와"
     ]
   },
   {
@@ -1137,7 +1200,9 @@
     "official_instagram_url": "https://www.instagram.com/tws_pledis/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "투어스"
+    ]
   },
   {
     "slug": "the-kingdom",
@@ -1233,7 +1298,9 @@
     "official_instagram_url": "https://www.instagram.com/wjsn_cosmic/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "우소"
+    ]
   },
   {
     "slug": "wayv",
@@ -1304,14 +1371,19 @@
     "slug": "zerobaseone",
     "group": "ZEROBASEONE",
     "display_name": "ZEROBASEONE",
-    "aliases": [],
+    "aliases": [
+      "ZB1"
+    ],
     "agency": "WAKEONE",
     "official_youtube_url": null,
     "official_x_url": "https://x.com/ZB1_official",
     "official_instagram_url": "https://www.instagram.com/zb1official/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "제로베이스원",
+      "제베원"
+    ]
   },
   {
     "slug": "aespa",
@@ -1324,7 +1396,9 @@
     "official_instagram_url": "https://www.instagram.com/aespa_official/",
     "representative_image_url": null,
     "representative_image_source": null,
-    "search_aliases": []
+    "search_aliases": [
+      "에스파"
+    ]
   },
   {
     "slug": "cignature",
