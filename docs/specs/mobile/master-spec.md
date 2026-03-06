@@ -257,6 +257,9 @@
 
 ## 14. 참조 문서
 - `visual-design-spec.md`
+- `component-catalog.md`
+- `layout-constraint-spec.md`
+- `state-feedback-spec.md`
 - `copy-localization-spec.md`
 - `accessibility-platform-spec.md`
 - `edge-case-catalog.md`

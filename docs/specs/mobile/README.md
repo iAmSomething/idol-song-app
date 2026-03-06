@@ -16,33 +16,42 @@
    - 화면별 주요 데이터 소스, 필드 매핑, fallback 우선순위
 5. `visual-design-spec.md`
    - spacing, radius, elevation, icon size, chip/button 규칙
-6. `copy-localization-spec.md`
+6. `component-catalog.md`
+   - 공통 UI 컴포넌트 해부도, props 성격, 상태, 접근성
+7. `layout-constraint-spec.md`
+   - 화면/블록별 최소 높이, 줄 수, sticky 범위, 비율
+8. `state-feedback-spec.md`
+   - loading, empty, partial, error, external-open 실패 피드백
+9. `copy-localization-spec.md`
    - 버튼 라벨, empty/error 문구, 날짜/언어 정책
-7. `accessibility-platform-spec.md`
+10. `accessibility-platform-spec.md`
    - 접근성, 플랫폼 차이, 외부 앱 handoff, dynamic type 규칙
-8. `edge-case-catalog.md`
+11. `edge-case-catalog.md`
    - 예외 데이터, 긴 텍스트, 누락 메타, 다중 기사, 링크 누락 처리
-9. `qa-acceptance-spec.md`
+12. `qa-acceptance-spec.md`
    - 화면별 QA 체크리스트, 핵심 시나리오, 회귀 포인트
 
 ### Screen Specs
-10. `calendar-screen.md`
-11. `radar-screen.md`
-12. `search-screen.md`
-13. `team-detail-screen.md`
-14. `release-detail-screen.md`
+13. `calendar-screen.md`
+14. `radar-screen.md`
+15. `search-screen.md`
+16. `team-detail-screen.md`
+17. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
 2. `component-action-system.md`
 3. `visual-design-spec.md`
-4. `copy-localization-spec.md`
-5. `navigation-motion-spec.md`
-6. `data-binding-spec.md`
-7. `accessibility-platform-spec.md`
-8. 각 화면 스펙
-9. `edge-case-catalog.md`
-10. `qa-acceptance-spec.md`
+4. `component-catalog.md`
+5. `layout-constraint-spec.md`
+6. `state-feedback-spec.md`
+7. `copy-localization-spec.md`
+8. `navigation-motion-spec.md`
+9. `data-binding-spec.md`
+10. `accessibility-platform-spec.md`
+11. 각 화면 스펙
+12. `edge-case-catalog.md`
+13. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
