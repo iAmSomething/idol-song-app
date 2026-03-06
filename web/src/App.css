@@ -686,6 +686,27 @@
   color: var(--accent-deep);
 }
 
+.signal-badge-change-scheduled_date_added,
+.signal-badge-change-scheduled_date_changed {
+  background: rgba(215, 229, 252, 0.96);
+  color: #244c88;
+}
+
+.signal-badge-change-date_status_changed {
+  background: rgba(195, 224, 204, 0.92);
+  color: #27543a;
+}
+
+.signal-badge-change-headline_changed {
+  background: rgba(236, 221, 255, 0.94);
+  color: #60428f;
+}
+
+.signal-badge-change-verified_release_detected {
+  background: rgba(217, 233, 179, 0.9);
+  color: #4b5a17;
+}
+
 .signal-meta {
   margin: 8px 0 0;
   font-size: 0.82rem;
@@ -891,6 +912,48 @@
   margin: 0;
   font-size: 0.82rem;
   color: var(--text-soft);
+}
+
+.change-log-list {
+  display: grid;
+  gap: 12px;
+}
+
+.change-log-item {
+  border: 1px solid rgba(27, 42, 65, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  padding: 16px;
+}
+
+.change-log-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.change-log-head h4,
+.change-log-summary {
+  margin: 0;
+}
+
+.change-log-head h4 {
+  margin-top: 6px;
+  font-size: 0.98rem;
+  color: var(--text-strong);
+}
+
+.change-log-date {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+
+.change-log-summary {
+  margin-top: 10px;
+  font-size: 0.86rem;
+  color: var(--text-strong);
 }
 
 .source-timeline {
@@ -1361,6 +1424,10 @@
   }
 
   .source-timeline-head {
+    flex-direction: column;
+  }
+
+  .change-log-head {
     flex-direction: column;
   }
 
