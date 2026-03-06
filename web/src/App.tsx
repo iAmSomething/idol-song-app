@@ -21,11 +21,14 @@ type ReleaseRow = {
   latest_album: ReleaseFact | null
 }
 
+type ActType = 'group' | 'solo' | 'unit'
+
 type VerifiedRelease = ReleaseFact & {
   group: string
   artist_name_mb: string
   artist_mbid: string
   artist_source: string
+  actType: ActType
   stream: 'song' | 'album'
   dateValue: Date
   isoDate: string
@@ -70,6 +73,10 @@ type CalendarDay = {
   inMonth: boolean
 }
 
+const releaseKindOptions = ['all', 'single', 'album', 'ep'] as const
+const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
+const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
+
 const releases = (releaseRows as ReleaseRow[])
   .flatMap((row) => expandReleaseRow(row))
   .sort((left, right) => right.dateValue.getTime() - left.dateValue.getTime())
@@ -103,32 +110,27 @@ const weekdays = Array.from({ length: 7 }, (_, index) => {
   return weekdayFormatter.format(reference)
 })
 
-const monthKeys = Array.from(
-  new Set(
-    releases.map((item) => {
-      return getMonthKey(item.dateValue)
-    }),
-  ),
-).sort()
-
 const watchStatusCounts = watchlist.reduce<Record<string, number>>((counts, row) => {
   counts[row.tracking_status] = (counts[row.tracking_status] ?? 0) + 1
   return counts
 }, {})
 
 function App() {
-  const latestMonthKey = monthKeys.at(-1) ?? getMonthKey(new Date())
+  const latestMonthKey = getLatestMonthKey(releases)
   const [selectedMonthKey, setSelectedMonthKey] = useState(latestMonthKey)
   const [selectedDayIso, setSelectedDayIso] = useState('')
   const [search, setSearch] = useState('')
+  const [selectedReleaseKind, setSelectedReleaseKind] = useState<(typeof releaseKindOptions)[number]>('all')
+  const [selectedActType, setSelectedActType] = useState<(typeof actTypeOptions)[number]>('all')
 
   const filteredReleases = releases.filter((item) => {
     const needle = search.trim().toLowerCase()
-    if (!needle) {
-      return true
-    }
-
-    return item.group.toLowerCase().includes(needle) || item.title.toLowerCase().includes(needle)
+    const matchesSearch =
+      !needle || item.group.toLowerCase().includes(needle) || item.title.toLowerCase().includes(needle)
+    const matchesReleaseKind =
+      selectedReleaseKind === 'all' || item.release_kind === selectedReleaseKind
+    const matchesActType = selectedActType === 'all' || item.actType === selectedActType
+    return matchesSearch && matchesReleaseKind && matchesActType
   })
 
   const filteredUpcoming = upcomingCandidates.filter((item) => {
@@ -143,10 +145,15 @@ function App() {
     )
   })
 
-  const selectedMonthDate = monthKeyToDate(selectedMonthKey)
+  const visibleMonthKeys = getMonthKeys(filteredReleases)
+  const effectiveMonthKey = visibleMonthKeys.includes(selectedMonthKey)
+    ? selectedMonthKey
+    : visibleMonthKeys.at(-1) ?? selectedMonthKey
+  const selectedMonthDate = monthKeyToDate(effectiveMonthKey)
   const monthDays = buildCalendarDays(selectedMonthDate)
   const releasesByDate = groupByDate(filteredReleases)
-  const monthReleases = filteredReleases.filter((item) => getMonthKey(item.dateValue) === selectedMonthKey)
+  const monthReleases = filteredReleases.filter((item) => getMonthKey(item.dateValue) === effectiveMonthKey)
+  const hasNoReleaseMatches = filteredReleases.length === 0
 
   const effectiveSelectedDayIso =
     selectedDayIso && releasesByDate.has(selectedDayIso)
@@ -159,7 +166,7 @@ function App() {
 
   const latestRelease = filteredReleases[0]
   const earliestRelease = filteredReleases.at(-1)
-  const monthIndex = monthKeys.indexOf(selectedMonthKey)
+  const monthIndex = visibleMonthKeys.indexOf(effectiveMonthKey)
 
   return (
     <div className="shell">
@@ -192,7 +199,9 @@ function App() {
               <button
                 type="button"
                 className="ghost-button"
-                onClick={() => setSelectedMonthKey(monthKeys[Math.max(monthIndex - 1, 0)] ?? selectedMonthKey)}
+                onClick={() =>
+                  setSelectedMonthKey(visibleMonthKeys[Math.max(monthIndex - 1, 0)] ?? effectiveMonthKey)
+                }
                 disabled={monthIndex <= 0}
               >
                 Prev
@@ -202,10 +211,11 @@ function App() {
                 className="ghost-button"
                 onClick={() =>
                   setSelectedMonthKey(
-                    monthKeys[Math.min(monthIndex + 1, monthKeys.length - 1)] ?? selectedMonthKey,
+                    visibleMonthKeys[Math.min(monthIndex + 1, visibleMonthKeys.length - 1)] ??
+                      effectiveMonthKey,
                   )
                 }
-                disabled={monthIndex === -1 || monthIndex >= monthKeys.length - 1}
+                disabled={monthIndex === -1 || monthIndex >= visibleMonthKeys.length - 1}
               >
                 Next
               </button>
@@ -227,12 +237,33 @@ function App() {
             </div>
           </div>
 
+          <div className="filter-stack">
+            <FilterGroup
+              label="Release kind"
+              options={releaseKindOptions}
+              selected={selectedReleaseKind}
+              onSelect={(value) => setSelectedReleaseKind(value)}
+            />
+            <FilterGroup
+              label="Act type"
+              options={actTypeOptions}
+              selected={selectedActType}
+              onSelect={(value) => setSelectedActType(value)}
+            />
+          </div>
+
           <div className="coverage-strip">
             <StatusPill label="Recent release" value={watchStatusCounts.recent_release ?? 0} tone="fresh" />
             <StatusPill label="Filtered but watched" value={watchStatusCounts.filtered_out ?? 0} tone="muted" />
             <StatusPill label="Needs manual review" value={watchStatusCounts.needs_manual_review ?? 0} tone="warn" />
             <StatusPill label="Manual watch-only" value={watchStatusCounts.watch_only ?? 0} tone="accent" />
           </div>
+
+          {hasNoReleaseMatches ? (
+            <div className="empty-state">
+              No verified releases match this search and filter combination.
+            </div>
+          ) : null}
 
           <div className="calendar">
             <div className="calendar-weekdays">
@@ -437,6 +468,36 @@ function StatusPill({
   )
 }
 
+function FilterGroup<T extends string>({
+  label,
+  options,
+  selected,
+  onSelect,
+}: {
+  label: string
+  options: readonly T[]
+  selected: T
+  onSelect: (value: T) => void
+}) {
+  return (
+    <div className="filter-group">
+      <span>{label}</span>
+      <div className="filter-row">
+        {options.map((option) => (
+          <button
+            type="button"
+            key={option}
+            className={`filter-chip ${selected === option ? 'filter-chip-active' : ''}`}
+            onClick={() => onSelect(option)}
+          >
+            {formatFilterOption(option)}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function formatSourceType(sourceType: string) {
   switch (sourceType) {
     case 'agency_notice':
@@ -486,6 +547,7 @@ function expandReleaseRow(row: ReleaseRow): VerifiedRelease[] {
           artist_name_mb: row.artist_name_mb,
           artist_mbid: row.artist_mbid,
           artist_source: row.artist_source,
+          actType: getActType(row.group),
           stream: key === 'latest_song' ? 'song' : 'album',
           dateValue: new Date(`${release.date}T00:00:00`),
           isoDate: release.date,
@@ -495,7 +557,35 @@ function expandReleaseRow(row: ReleaseRow): VerifiedRelease[] {
 }
 
 function describeRelease(item: VerifiedRelease) {
-  return `${item.stream} · ${item.release_kind}`
+  return `${item.actType} · ${item.release_kind}`
+}
+
+function formatFilterOption(option: string) {
+  if (option === 'all') {
+    return 'All'
+  }
+  if (option === 'ep') {
+    return 'EP'
+  }
+  return option.charAt(0).toUpperCase() + option.slice(1)
+}
+
+function getActType(group: string): ActType {
+  return unitGroups.has(group) ? 'unit' : 'group'
+}
+
+function getMonthKeys(rows: VerifiedRelease[]) {
+  return Array.from(
+    new Set(
+      rows.map((item) => {
+        return getMonthKey(item.dateValue)
+      }),
+    ),
+  ).sort()
+}
+
+function getLatestMonthKey(rows: VerifiedRelease[]) {
+  return getMonthKeys(rows).at(-1) ?? getMonthKey(new Date())
 }
 
 function getMonthKey(date: Date) {
