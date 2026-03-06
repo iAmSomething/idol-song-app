@@ -144,3 +144,8 @@ mobile/
 - 공통 컴포넌트 API는 `component-api-contracts.md`를 따른다.
 - 화면 state 설계는 `view-state-models.md`를 따른다.
 - end-to-end 구현 순서는 `user-journey-sequences.md`를 참조한다.
+
+## 9. 플랫폼 구현 참조
+- Expo 라우팅/상태/asset/성능 가이드는 `expo-implementation-guide.md`를 따른다.
+- 화면 완료 기준은 `screen-delivery-checklists.md`를 따른다.
+- 테스트 레벨과 최소 합격선은 `testing-strategy-spec.md`를 따른다.

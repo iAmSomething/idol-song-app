@@ -270,4 +270,7 @@
 - `component-api-contracts.md`
 - `view-state-models.md`
 - `user-journey-sequences.md`
+- `expo-implementation-guide.md`
+- `screen-delivery-checklists.md`
+- `testing-strategy-spec.md`
 - `edge-case-catalog.md`

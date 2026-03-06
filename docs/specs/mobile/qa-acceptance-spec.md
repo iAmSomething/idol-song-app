@@ -152,3 +152,7 @@
 ## 8. 참조 문서
 - 인터랙션 검증은 `interaction-matrix.md` 기준으로 수행한다.
 - 데이터 예시 확인은 `sample-data-contracts.md` 기준으로 수행한다.
+
+## 9. 테스트 전략 참조
+- 자동화/수동 테스트 범위는 `testing-strategy-spec.md`를 따른다.
+- 화면별 구현 완료 self-check는 `screen-delivery-checklists.md`를 참조한다.

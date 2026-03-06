@@ -46,13 +46,19 @@
    - 화면별 상태 shape와 상태 전이 규칙
 20. `user-journey-sequences.md`
    - end-to-end 사용자 흐름과 alternate flow
+21. `expo-implementation-guide.md`
+   - Expo Router, 상태, handoff, asset, 성능 가이드
+22. `screen-delivery-checklists.md`
+   - 화면별 완료 체크리스트
+23. `testing-strategy-spec.md`
+   - unit/component/smoke/manual 테스트 전략
 
 ### Screen Specs
-21. `calendar-screen.md`
-22. `radar-screen.md`
-23. `search-screen.md`
-24. `team-detail-screen.md`
-25. `release-detail-screen.md`
+24. `calendar-screen.md`
+25. `radar-screen.md`
+26. `search-screen.md`
+27. `team-detail-screen.md`
+28. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -73,9 +79,12 @@
 16. `component-api-contracts.md`
 17. `view-state-models.md`
 18. `user-journey-sequences.md`
-19. 각 화면 스펙
-20. `edge-case-catalog.md`
-21. `qa-acceptance-spec.md`
+19. `expo-implementation-guide.md`
+20. `screen-delivery-checklists.md`
+21. `testing-strategy-spec.md`
+22. 각 화면 스펙
+23. `edge-case-catalog.md`
+24. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
