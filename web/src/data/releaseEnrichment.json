@@ -1,0 +1,127 @@
+[
+  {
+    "group": "NCT WISH",
+    "release_title": "Same Sky",
+    "release_date": "2026-02-27",
+    "stream": "song",
+    "credits": {
+      "lyrics": ["Seedwriters Room", "Skyline Verse Unit"],
+      "composition": ["North Harbor Lab", "Pulse Arcade"],
+      "arrangement": ["Silver Console"]
+    },
+    "charts": [
+      {
+        "source": "Seed weekly board",
+        "label": "Release pulse",
+        "peak": "#3",
+        "dated_at": "2026-03-02"
+      }
+    ],
+    "notes": "Manual seed metadata sample for v1 release enrichment coverage."
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "DEADLINE",
+    "release_date": "2026-02-26",
+    "stream": "album",
+    "credits": {
+      "lyrics": ["Deadline Writers Camp"],
+      "composition": ["Atlas Signal Team", "Midnight Loop"],
+      "arrangement": ["Neon Bureau", "City Echo"]
+    },
+    "charts": [
+      {
+        "source": "Seed weekly board",
+        "label": "Album momentum",
+        "peak": "#1",
+        "dated_at": "2026-03-02"
+      },
+      {
+        "source": "Seed global board",
+        "label": "Cross-market pickup",
+        "peak": "#2",
+        "dated_at": "2026-03-04"
+      }
+    ],
+    "notes": "Seed chart rows represent manual enrichment snapshots, not a live API feed."
+  },
+  {
+    "group": "IVE",
+    "release_title": "REVIVE+",
+    "release_date": "2026-02-23",
+    "stream": "album",
+    "credits": {
+      "lyrics": ["Velvet Draft Unit", "Studio Seed"],
+      "composition": ["Aurora Pattern Lab", "Mono Harbor"],
+      "arrangement": ["Frame Signal"]
+    },
+    "charts": [
+      {
+        "source": "Seed weekly board",
+        "label": "Album momentum",
+        "peak": "#2",
+        "dated_at": "2026-03-01"
+      }
+    ],
+    "notes": "This seed row exercises combined credits and chart rendering in the album drawer."
+  },
+  {
+    "group": "STAYC",
+    "release_title": "STAY ALIVE",
+    "release_date": "2026-02-11",
+    "stream": "album",
+    "credits": {
+      "lyrics": [],
+      "composition": [],
+      "arrangement": []
+    },
+    "charts": [
+      {
+        "source": "Seed weekly board",
+        "label": "Listener pickup",
+        "peak": "#4",
+        "dated_at": "2026-02-16"
+      },
+      {
+        "source": "Seed long-run board",
+        "label": "Album staying power",
+        "peak": "#6",
+        "dated_at": "2026-02-23"
+      }
+    ],
+    "notes": "Charts-only sample to verify partial enrichment rendering."
+  },
+  {
+    "group": "ATEEZ",
+    "release_title": "GOLDEN HOUR : Part.4",
+    "release_date": "2026-02-06",
+    "stream": "album",
+    "credits": {
+      "lyrics": ["Harbor Verse Crew"],
+      "composition": ["Torchline Lab", "Open Water Team"],
+      "arrangement": ["Signal Forge", "Metaline"]
+    },
+    "charts": [],
+    "notes": "Credits-only sample for the fallback path where no chart rows are attached."
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "RE-FLOW",
+    "release_date": "2026-02-02",
+    "stream": "album",
+    "credits": {
+      "lyrics": ["Draft Nine", "Signal Script Desk"],
+      "composition": ["Loop Harbor", "Frame Atlas"],
+      "arrangement": ["Ribbon Console"]
+    },
+    "charts": [
+      {
+        "source": "Seed weekly board",
+        "label": "Album momentum",
+        "peak": "#5",
+        "dated_at": "2026-02-09"
+      }
+    ],
+    "notes": "Manual seed row retained to ensure at least five recent releases expose enrichment data."
+  }
+]
