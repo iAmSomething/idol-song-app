@@ -329,6 +329,14 @@
 .signal-head {
   justify-content: space-between;
   gap: 10px;
+  align-items: flex-start;
+}
+
+.signal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 .signal-badge {
@@ -357,10 +365,46 @@
   color: #7d3115;
 }
 
+.signal-badge-date-confirmed {
+  background: rgba(195, 224, 204, 0.9);
+  color: #27543a;
+}
+
+.signal-badge-date-scheduled {
+  background: rgba(215, 229, 252, 0.92);
+  color: #244c88;
+}
+
+.signal-badge-date-rumor {
+  background: rgba(236, 221, 255, 0.92);
+  color: #60428f;
+}
+
+.signal-badge-confidence-high {
+  background: rgba(217, 233, 179, 0.82);
+  color: #445018;
+}
+
+.signal-badge-confidence-medium {
+  background: rgba(255, 214, 153, 0.86);
+  color: #7a4d13;
+}
+
+.signal-badge-confidence-low {
+  background: rgba(204, 214, 223, 0.92);
+  color: #445362;
+}
+
 .signal-meta {
   margin: 8px 0 0;
   font-size: 0.82rem;
   color: var(--text-soft);
+}
+
+.signal-evidence {
+  margin: 10px 0 0;
+  font-size: 0.86rem;
+  color: var(--text-strong);
 }
 
 .signal-date-wrap {
@@ -379,6 +423,11 @@
 .signal-date-wrap a,
 .detail-links a {
   color: var(--accent-deep);
+}
+
+.signal-link-muted {
+  font-size: 0.82rem;
+  color: var(--text-soft);
 }
 
 .detail-links {
@@ -449,6 +498,10 @@
     grid-template-columns: 1fr;
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .signal-tags {
+    justify-content: flex-start;
   }
 
   .calendar-grid {

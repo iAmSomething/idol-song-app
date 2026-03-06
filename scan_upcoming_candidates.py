@@ -5,7 +5,7 @@ import json
 import re
 import time
 import urllib.parse
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from xml.etree import ElementTree
@@ -24,6 +24,13 @@ MONTH_DAY_PATTERN = re.compile(
     r")\s+(\d{1,2})(?:,\s*(20\d{2}))?\b",
     re.IGNORECASE,
 )
+MONTH_ONLY_PATTERN = re.compile(
+    r"\b(?:early|mid|late)?\s*("
+    r"january|february|march|april|may|june|july|august|september|october|november|december"
+    r")(?:\s+(20\d{2}))?\b",
+    re.IGNORECASE,
+)
+WHITESPACE_PATTERN = re.compile(r"\s+")
 
 KEYWORDS = (
     "comeback",
@@ -38,10 +45,11 @@ KEYWORDS = (
     "teaser",
     "schedule",
 )
-
 HIGH_SIGNAL_WORDS = ("confirms", "announces", "sets", "reveals", "shares", "drops")
+RUMOR_SIGNAL_WORDS = ("reportedly", "expected", "rumor", "rumoured", "may", "might", "could")
 OFFICIAL_DOMAINS = (
     "weverse.io",
+    "weverse.com",
     "ygfamily.com",
     "smentertainment.com",
     "jype.com",
@@ -51,7 +59,8 @@ OFFICIAL_DOMAINS = (
 
 def strip_markup(text: str) -> str:
     text = html.unescape(text or "")
-    return re.sub(r"<[^>]+>", " ", text).strip()
+    text = re.sub(r"<[^>]+>", " ", text)
+    return WHITESPACE_PATTERN.sub(" ", text).strip()
 
 
 def load_watchlist():
@@ -83,26 +92,43 @@ def parse_items(xml_bytes: bytes):
     return channel.findall("item")
 
 
-def parse_date_candidate(text: str):
+def parse_date_candidate(text: str, fallback_year: int):
     text = strip_markup(text)
 
     match = DATE_ISO_PATTERN.search(text)
     if match:
         year, month, day = map(int, match.groups())
-        return datetime(year, month, day)
+        return datetime(year, month, day, tzinfo=KST)
 
     match = MONTH_DAY_PATTERN.search(text)
     if match:
         month_name, day, year = match.groups()
-        parsed_year = int(year) if year else TODAY.year
+        parsed_year = int(year) if year else fallback_year
         month = datetime.strptime(month_name.title(), "%B").month
-        candidate = datetime(parsed_year, month, int(day))
-        if not year and candidate < TODAY.replace(hour=0, minute=0, second=0, microsecond=0):
-            # Ignore vague past mentions without a year.
-            return None
-        return candidate
+        return datetime(parsed_year, month, int(day), tzinfo=KST)
 
     return None
+
+
+def parse_month_reference(text: str, fallback_year: int):
+    text = strip_markup(text)
+    match = MONTH_ONLY_PATTERN.search(text)
+    if not match:
+        return None
+
+    month_name, year = match.groups()
+    parsed_year = int(year) if year else fallback_year
+    month = datetime.strptime(month_name.title(), "%B").month
+    return datetime(parsed_year, month, 1, tzinfo=KST)
+
+
+def parse_published_at(pub_date: str):
+    if not pub_date:
+        return None
+    try:
+        return datetime.strptime(pub_date, "%a, %d %b %Y %H:%M:%S %Z").replace(tzinfo=KST)
+    except ValueError:
+        return None
 
 
 def domain_for(link: str):
@@ -110,16 +136,121 @@ def domain_for(link: str):
     return parsed.netloc.lower()
 
 
-def score_item(title: str, description: str, link: str):
+def source_type_for(link: str):
+    domain = domain_for(link)
+    if "weverse" in domain:
+        return "weverse_notice"
+    if any(official_domain in domain for official_domain in OFFICIAL_DOMAINS):
+        return "agency_notice"
+    return "news_rss"
+
+
+def summarize_evidence(title: str, description: str, scheduled_at, month_reference):
+    summary_parts = []
+    if scheduled_at is not None:
+        summary_parts.append(f"Future date reference: {scheduled_at.strftime('%Y-%m-%d')}.")
+    elif month_reference is not None:
+        summary_parts.append(f"Future month reference: {month_reference.strftime('%Y-%m')}.")
+
+    evidence_body = strip_markup(description or title)
+    if evidence_body:
+        trimmed = evidence_body[:160].rstrip()
+        if len(evidence_body) > 160:
+            trimmed = f"{trimmed}..."
+        summary_parts.append(trimmed)
+
+    return " ".join(summary_parts).strip()
+
+
+def classify_date_status(title: str, description: str, link: str, scheduled_at, month_reference):
     haystack = f"{title} {description}".lower()
-    score = 0.45
+    source_type = source_type_for(link)
+    if scheduled_at is not None:
+        if source_type != "news_rss" or any(word in haystack for word in HIGH_SIGNAL_WORDS):
+            return "confirmed"
+        return "scheduled"
+    if month_reference is not None:
+        return "scheduled"
+    if any(word in haystack for word in RUMOR_SIGNAL_WORDS) or any(keyword in haystack for keyword in KEYWORDS):
+        return "rumor"
+    return "rumor"
+
+
+def score_item(title: str, description: str, link: str, scheduled_at, month_reference):
+    haystack = f"{title} {description}".lower()
+    score = 0.38
     if any(word in haystack for word in HIGH_SIGNAL_WORDS):
-        score += 0.2
+        score += 0.18
     if any(keyword in haystack for keyword in KEYWORDS):
-        score += 0.15
-    if domain_for(link) in OFFICIAL_DOMAINS:
+        score += 0.12
+    if scheduled_at is not None:
+        score += 0.14
+    elif month_reference is not None:
+        score += 0.08
+    if source_type_for(link) != "news_rss":
         score += 0.2
-    return round(min(score, 0.95), 2)
+    if any(word in haystack for word in RUMOR_SIGNAL_WORDS):
+        score -= 0.06
+    return round(max(0.2, min(score, 0.97)), 2)
+
+
+def should_keep_candidate(candidate: dict, published_at):
+    if candidate["scheduled_date"]:
+        return True
+    if candidate["date_status"] == "scheduled":
+        return True
+    if published_at is None:
+        return candidate["confidence"] >= 0.65 and bool(candidate["evidence_summary"])
+    if candidate["source_type"] == "news_rss" and published_at < TODAY - timedelta(days=60):
+        return False
+    return candidate["confidence"] >= 0.55 or candidate["source_type"] != "news_rss"
+
+
+def source_priority(source_type: str):
+    priorities = {
+        "weverse_notice": 3,
+        "agency_notice": 2,
+        "news_rss": 1,
+    }
+    return priorities.get(source_type, 0)
+
+
+def sort_key(item: dict):
+    date_key = item["scheduled_date"] or "9999-12-31"
+    rumor_rank = 1 if item["date_status"] == "rumor" and not item["scheduled_date"] else 0
+    return (rumor_rank, date_key, -source_priority(item["source_type"]), -item["confidence"], item["group"].lower())
+
+
+def build_candidate(group_row: dict, title: str, description: str, source_url: str, pub_date: str, search_term: str):
+    published_at = parse_published_at(pub_date)
+    fallback_year = published_at.year if published_at is not None else TODAY.year
+    combined = f"{title}. {description}"
+    scheduled_at = parse_date_candidate(combined, fallback_year)
+    month_reference = parse_month_reference(combined, fallback_year)
+
+    if scheduled_at is not None and scheduled_at <= TODAY:
+        return None
+    if month_reference is not None and (month_reference.year, month_reference.month) < (TODAY.year, TODAY.month):
+        return None
+
+    candidate = {
+        "group": group_row["group"],
+        "scheduled_date": scheduled_at.strftime("%Y-%m-%d") if scheduled_at is not None else "",
+        "date_status": classify_date_status(title, description, source_url, scheduled_at, month_reference),
+        "headline": title,
+        "source_type": source_type_for(source_url),
+        "source_url": source_url,
+        "source_domain": domain_for(source_url),
+        "published_at": pub_date,
+        "confidence": score_item(title, description, source_url, scheduled_at, month_reference),
+        "evidence_summary": summarize_evidence(title, description, scheduled_at, month_reference),
+        "tracking_status": group_row["tracking_status"],
+        "search_term": search_term,
+    }
+
+    if not should_keep_candidate(candidate, published_at):
+        return None
+    return candidate
 
 
 def find_candidates_for_group(session: requests.Session, group_row: dict):
@@ -138,37 +269,26 @@ def find_candidates_for_group(session: requests.Session, group_row: dict):
             if not title or group.lower() not in f"{title} {description}".lower():
                 continue
 
-            combined = f"{title}. {description}"
-            scheduled_at = parse_date_candidate(combined)
-            if scheduled_at is None or scheduled_at <= TODAY:
-                continue
-
-            candidates.append(
-                {
-                    "group": group,
-                    "scheduled_date": scheduled_at.strftime("%Y-%m-%d"),
-                    "headline": title,
-                    "source_url": link,
-                    "source_domain": domain_for(link),
-                    "published_at": pub_date,
-                    "confidence": score_item(title, description, link),
-                    "tracking_status": group_row["tracking_status"],
-                    "search_term": term,
-                }
-            )
+            candidate = build_candidate(group_row, title, description, link, pub_date, term)
+            if candidate is not None:
+                candidates.append(candidate)
         time.sleep(0.35)
 
     deduped = {}
     for candidate in candidates:
-        key = (candidate["group"], candidate["scheduled_date"])
+        key = (
+            candidate["group"],
+            candidate["scheduled_date"] or candidate["headline"],
+            candidate["source_type"],
+        )
         current = deduped.get(key)
-        if current is None or candidate["confidence"] > current["confidence"]:
+        if current is None or (source_priority(candidate["source_type"]), candidate["confidence"]) > (
+            source_priority(current["source_type"]),
+            current["confidence"],
+        ):
             deduped[key] = candidate
 
-    return sorted(
-        deduped.values(),
-        key=lambda item: (item["scheduled_date"], -item["confidence"], item["group"].lower()),
-    )
+    return sorted(deduped.values(), key=sort_key)
 
 
 def main():
@@ -184,35 +304,22 @@ def main():
         watchlist = watchlist[: args.limit]
 
     session = requests.Session()
-    session.headers.update({"User-Agent": "CodexKpopScanner/1.0"})
+    session.headers.update({"User-Agent": "CodexKpopScanner/2.0"})
 
     results = []
     for index, group_row in enumerate(watchlist, start=1):
         try:
             results.extend(find_candidates_for_group(session, group_row))
         except Exception as error:
-            results.append(
-                {
-                    "group": group_row["group"],
-                    "scheduled_date": "",
-                    "headline": f"scan_failed: {type(error).__name__}",
-                    "source_url": "",
-                    "source_domain": "",
-                    "published_at": "",
-                    "confidence": 0.0,
-                    "tracking_status": group_row["tracking_status"],
-                    "search_term": group_row["search_terms"][0],
-                }
-            )
+            print(f"scan_failed {group_row['group']}: {type(error).__name__}")
 
         if index % 15 == 0 or index == len(watchlist):
             print(f"scanned {index}/{len(watchlist)}")
 
-    valid_results = [row for row in results if row["scheduled_date"]]
-    valid_results.sort(key=lambda item: (item["scheduled_date"], -item["confidence"], item["group"].lower()))
+    results.sort(key=sort_key)
 
     (ROOT / "upcoming_release_candidates.json").write_text(
-        json.dumps(valid_results, ensure_ascii=False, indent=2),
+        json.dumps(results, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
 
@@ -222,23 +329,26 @@ def main():
             fieldnames=[
                 "group",
                 "scheduled_date",
+                "date_status",
                 "headline",
+                "source_type",
                 "source_url",
                 "source_domain",
                 "published_at",
                 "confidence",
+                "evidence_summary",
                 "tracking_status",
                 "search_term",
             ],
         )
         writer.writeheader()
-        writer.writerows(valid_results)
+        writer.writerows(results)
 
     print(
         json.dumps(
             {
                 "groups_scanned": len(watchlist),
-                "candidates_found": len(valid_results),
+                "candidates_found": len(results),
                 "output_json": "upcoming_release_candidates.json",
                 "output_csv": "upcoming_release_candidates.csv",
             },
