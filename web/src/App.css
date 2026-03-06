@@ -583,6 +583,13 @@
   gap: 8px;
 }
 
+.classification-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
 .signal-badge {
   padding: 5px 10px;
   background: rgba(27, 42, 65, 0.08);
@@ -667,6 +674,16 @@
 .signal-badge-countdown-date {
   background: rgba(27, 42, 65, 0.08);
   color: var(--text-strong);
+}
+
+.signal-badge-classification-format {
+  background: rgba(27, 42, 65, 0.12);
+  color: var(--text-strong);
+}
+
+.signal-badge-classification-tag {
+  background: rgba(195, 88, 49, 0.14);
+  color: var(--accent-deep);
 }
 
 .signal-meta {

@@ -11,7 +11,9 @@
     "confidence": 0.82,
     "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
     "tracking_status": "recent_release",
-    "search_term": "\"P1Harmony\" kpop comeback"
+    "search_term": "\"P1Harmony\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -25,7 +27,9 @@
     "confidence": 0.82,
     "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -39,7 +43,9 @@
     "confidence": 0.64,
     "evidence_summary": "Future date reference: 2026-03-21. Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans artthreat.net",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "PLAVE",
@@ -53,7 +59,9 @@
     "confidence": 0.82,
     "evidence_summary": "Future date reference: 2026-04-07. PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn Outlook Respawn",
     "tracking_status": "recent_release",
-    "search_term": "\"PLAVE\" kpop comeback"
+    "search_term": "\"PLAVE\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -67,7 +75,9 @@
     "confidence": 0.84,
     "evidence_summary": "Future date reference: 2026-04-13. Hello. This is BIGHIT MUSIC. We are excited to announce an online and in-person comeback showcase scheduled for Monday, April 13, 2026 to celebrate the release...",
     "tracking_status": "recent_release",
-    "search_term": "official_weverse_seed"
+    "search_term": "official_weverse_seed",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -81,7 +91,9 @@
     "confidence": 0.64,
     "evidence_summary": "Future date reference: 2026-04-13. TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ Chosunbiz",
     "tracking_status": "recent_release",
-    "search_term": "\"TOMORROW X TOGETHER\" comeback"
+    "search_term": "\"TOMORROW X TOGETHER\" comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "&TEAM",
@@ -95,7 +107,11 @@
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"&TEAM\" kpop comeback"
+    "search_term": "\"&TEAM\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": [
+      "japanese_release"
+    ]
   },
   {
     "group": "AB6IX",
@@ -109,7 +125,9 @@
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-03. AB6IX announces March comeback with their first full album in 5 years allkpop",
     "tracking_status": "filtered_out",
-    "search_term": "\"AB6IX\" kpop comeback"
+    "search_term": "\"AB6IX\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "ALL(H)OURS",
@@ -123,7 +141,9 @@
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-03. ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ hellokpop",
     "tracking_status": "recent_release",
-    "search_term": "\"ALL(H)OURS\" kpop comeback"
+    "search_term": "\"ALL(H)OURS\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -137,7 +157,9 @@
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-03. BTS announces March comeback date, putting an end to a nearly 4-year hiatus ABC7 Los Angeles",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "KickFlip",
@@ -151,7 +173,9 @@
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback Music Mundial",
     "tracking_status": "recent_release",
-    "search_term": "\"KickFlip\" kpop comeback"
+    "search_term": "\"KickFlip\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "KickFlip",
@@ -165,7 +189,9 @@
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback with their 4th mini-album allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"KickFlip\" kpop comeback"
+    "search_term": "\"KickFlip\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "KickFlip",
@@ -179,7 +205,9 @@
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-04. KickFlip wraps first nationwide fan-con tour and announces April comeback allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"KickFlip\" kpop comeback"
+    "search_term": "\"KickFlip\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "P1Harmony",
@@ -193,7 +221,9 @@
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-03. P1Harmony announces March comeback with new trailer release Music Mundial",
     "tracking_status": "recent_release",
-    "search_term": "\"P1Harmony\" kpop comeback"
+    "search_term": "\"P1Harmony\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "YOUNG POSSE",
@@ -207,7 +237,9 @@
     "confidence": 0.76,
     "evidence_summary": "Future month reference: 2026-04. YOUNG POSSE announces April comeback with new digital single allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"YOUNG POSSE\" kpop comeback"
+    "search_term": "\"YOUNG POSSE\" kpop comeback",
+    "release_format": "single",
+    "context_tags": []
   },
   {
     "group": "AB6IX",
@@ -221,7 +253,9 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-03. AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ allkpop",
     "tracking_status": "filtered_out",
-    "search_term": "\"AB6IX\" kpop comeback"
+    "search_term": "\"AB6IX\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -235,7 +269,9 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-03. K-pop’s BTS announce a live comeback concert to air on Netflix in March Orange County Register",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "KISS OF LIFE",
@@ -249,7 +285,11 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-04. KISS OF LIFE Teases April Comeback with 'COMING SOON' Video 조선일보",
     "tracking_status": "recent_release",
-    "search_term": "\"KISS OF LIFE\" kpop comeback"
+    "search_term": "\"KISS OF LIFE\" kpop comeback",
+    "release_format": "",
+    "context_tags": [
+      "pre_release"
+    ]
   },
   {
     "group": "LE SSERAFIM",
@@ -263,7 +303,9 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
     "tracking_status": "recent_release",
-    "search_term": "\"LE SSERAFIM\" kpop comeback"
+    "search_term": "\"LE SSERAFIM\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "P1Harmony",
@@ -277,7 +319,9 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-03. P1Harmony teases March comeback The Korea Herald",
     "tracking_status": "recent_release",
-    "search_term": "\"P1Harmony\" kpop comeback"
+    "search_term": "\"P1Harmony\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "P1Harmony",
@@ -291,7 +335,9 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-03. P1Harmony to return in March: report The Korea Herald",
     "tracking_status": "recent_release",
-    "search_term": "\"P1Harmony\" kpop comeback"
+    "search_term": "\"P1Harmony\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -305,7 +351,9 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-04. TOMORROW X TOGETHER made their first comeback after renewing their contract..8th mini album released on April 13th starnewskorea.com",
     "tracking_status": "recent_release",
-    "search_term": "\"TOMORROW X TOGETHER\" comeback"
+    "search_term": "\"TOMORROW X TOGETHER\" comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "TWS",
@@ -319,7 +367,9 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
     "tracking_status": "recent_release",
-    "search_term": "\"TWS\" kpop comeback"
+    "search_term": "\"TWS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "TWS",
@@ -333,7 +383,9 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS join April comeback lineup allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"TWS\" kpop comeback"
+    "search_term": "\"TWS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "TWS",
@@ -347,7 +399,9 @@
     "confidence": 0.58,
     "evidence_summary": "Future month reference: 2026-04. TWS Set for a High-Energy Spring Comeback Confirmed for April OtakuKart",
     "tracking_status": "recent_release",
-    "search_term": "\"TWS\" kpop comeback"
+    "search_term": "\"TWS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -361,7 +415,9 @@
     "confidence": 0.46,
     "evidence_summary": "Future month reference: 2026-03. BTS Is Dropping New Music in March — and Heading Out on Tour au.rollingstone.com",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BABYMONSTER",
@@ -375,7 +431,9 @@
     "confidence": 0.7,
     "evidence_summary": "BABYMONSTER’s B-Side Track From Two Years Ago Makes a Reverse Chart Run… Reappears on ‘M Countdown’ → Live Clip Released BABYMONSTER surprised music fans by rel...",
     "tracking_status": "recent_release",
-    "search_term": "official_yg_report"
+    "search_term": "official_yg_report",
+    "release_format": "single",
+    "context_tags": []
   },
   {
     "group": "BABYMONSTER",
@@ -389,7 +447,11 @@
     "confidence": 0.64,
     "evidence_summary": "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed YG Entertainment has announced the return of one of its flagship IPs, BIGBANG, along with up...",
     "tracking_status": "recent_release",
-    "search_term": "official_yg_report"
+    "search_term": "official_yg_report",
+    "release_format": "",
+    "context_tags": [
+      "special_project"
+    ]
   },
   {
     "group": "BABYMONSTER",
@@ -403,7 +465,11 @@
     "confidence": 0.64,
     "evidence_summary": "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing YG has raised the expectations among global music fans...",
     "tracking_status": "recent_release",
-    "search_term": "official_yg_report"
+    "search_term": "official_yg_report",
+    "release_format": "",
+    "context_tags": [
+      "special_project"
+    ]
   },
   {
     "group": "BLACKPINK",
@@ -417,7 +483,11 @@
     "confidence": 0.64,
     "evidence_summary": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care” BLACKPINK has unveiled the tracklist for their new release. According to YG Entertainment on...",
     "tracking_status": "recent_release",
-    "search_term": "official_yg_report"
+    "search_term": "official_yg_report",
+    "release_format": "single",
+    "context_tags": [
+      "title_track"
+    ]
   },
   {
     "group": "TREASURE",
@@ -431,7 +501,11 @@
     "confidence": 0.64,
     "evidence_summary": "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed YG Entertainment has announced the return of one of its flagship IPs, BIGBANG, along with up...",
     "tracking_status": "recent_release",
-    "search_term": "official_yg_report"
+    "search_term": "official_yg_report",
+    "release_format": "",
+    "context_tags": [
+      "special_project"
+    ]
   },
   {
     "group": "TREASURE",
@@ -445,7 +519,11 @@
     "confidence": 0.64,
     "evidence_summary": "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing YG has raised the expectations among global music fans...",
     "tracking_status": "recent_release",
-    "search_term": "official_yg_report"
+    "search_term": "official_yg_report",
+    "release_format": "",
+    "context_tags": [
+      "special_project"
+    ]
   },
   {
     "group": "ATEEZ",
@@ -459,7 +537,9 @@
     "confidence": 0.68,
     "evidence_summary": "ATEEZ’s ‘GOLDEN HOUR: Part 4’ Drops Feb. 6 조선일보",
     "tracking_status": "recent_release",
-    "search_term": "\"ATEEZ\" kpop comeback"
+    "search_term": "\"ATEEZ\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "AtHeart",
@@ -473,7 +553,9 @@
     "confidence": 0.68,
     "evidence_summary": "Rookie group AtHeart drops bold new teaser photos for 'The New Black' allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"AtHeart\" kpop comeback"
+    "search_term": "\"AtHeart\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BLACKPINK",
@@ -487,7 +569,9 @@
     "confidence": 0.68,
     "evidence_summary": "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record The Korea Economic Daily Global Edition",
     "tracking_status": "recent_release",
-    "search_term": "\"BLACKPINK\" kpop comeback"
+    "search_term": "\"BLACKPINK\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BLACKPINK",
@@ -501,7 +585,9 @@
     "confidence": 0.68,
     "evidence_summary": "K-Pop girl group Blackpink drops their third mini album Deadline Indulgexpress",
     "tracking_status": "recent_release",
-    "search_term": "\"BLACKPINK\" kpop comeback"
+    "search_term": "\"BLACKPINK\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "BLACKPINK",
@@ -515,7 +601,9 @@
     "confidence": 0.68,
     "evidence_summary": "Blackpink Sets Release Date for Comeback Album Pitchfork",
     "tracking_status": "recent_release",
-    "search_term": "\"BLACKPINK\" kpop comeback"
+    "search_term": "\"BLACKPINK\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "BLACKPINK",
@@ -529,7 +617,9 @@
     "confidence": 0.68,
     "evidence_summary": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date TMZ",
     "tracking_status": "recent_release",
-    "search_term": "\"BLACKPINK\" kpop comeback"
+    "search_term": "\"BLACKPINK\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "BLACKPINK",
@@ -543,7 +633,9 @@
     "confidence": 0.68,
     "evidence_summary": "BLACKPINK announces comeback album ‘Deadline’ after three-year wait: Check release date and other details The Economic Times",
     "tracking_status": "recent_release",
-    "search_term": "\"BLACKPINK\" kpop comeback"
+    "search_term": "\"BLACKPINK\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "BLACKPINK",
@@ -557,7 +649,9 @@
     "confidence": 0.68,
     "evidence_summary": "K-pop group Blackpink announces new mini album Deadline, out Feb 27 CNA Lifestyle",
     "tracking_status": "recent_release",
-    "search_term": "\"BLACKPINK\" kpop comeback"
+    "search_term": "\"BLACKPINK\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "BLACKPINK",
@@ -571,7 +665,9 @@
     "confidence": 0.68,
     "evidence_summary": "The Wait Is Over: BLACKPINK Announces New Album After 3 Years News18",
     "tracking_status": "recent_release",
-    "search_term": "\"BLACKPINK\" kpop comeback"
+    "search_term": "\"BLACKPINK\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -585,7 +681,9 @@
     "confidence": 0.68,
     "evidence_summary": "“Seven Together, We Can Do Anything”: Netflix Drops Trailer for BTS Comeback Concert Live Stream The Hollywood Reporter",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -599,7 +697,9 @@
     "confidence": 0.68,
     "evidence_summary": "BTS Drops Netflix Trailer For ‘The Comeback Live Arirang’ Livestream weareresonate.com",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -613,7 +713,9 @@
     "confidence": 0.68,
     "evidence_summary": "BTS The Comeback Live: Netflix drops first official trailer, here’s when ARIRANG celebration will stream live in India The Indian Express",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -627,7 +729,9 @@
     "confidence": 0.68,
     "evidence_summary": "BTS drops full ARIRANG tracklist comeback album features 14 songs including lead single SWIM Moneycontrol.com",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -641,7 +745,9 @@
     "confidence": 0.68,
     "evidence_summary": "BTS Comeback 2026: Netflix Announces Global Livestream for ‘ARIRANG’ Album Celebration, Releases First Official Trailer pragativadi.com",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -655,7 +761,9 @@
     "confidence": 0.68,
     "evidence_summary": "BTS drops ‘The Comeback Live | Arirang’ trailer: ‘Seven together, we can do anything’ Telegraph India",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -669,7 +777,9 @@
     "confidence": 0.68,
     "evidence_summary": "BTS Announces The Title Of Their New Album: 'Arirang' — What Does Arirang Mean? BTS Album L'OFFICIEL USA",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "H1-KEY",
@@ -683,7 +793,11 @@
     "confidence": 0.68,
     "evidence_summary": "H1-KEY Drops 'The World Isn’t Like a Movie' for 4th Anniversary 조선일보",
     "tracking_status": "recent_release",
-    "search_term": "\"H1-KEY\" kpop comeback"
+    "search_term": "\"H1-KEY\" kpop comeback",
+    "release_format": "",
+    "context_tags": [
+      "special_project"
+    ]
   },
   {
     "group": "H1-KEY",
@@ -697,7 +811,9 @@
     "confidence": 0.68,
     "evidence_summary": "H1-KEY announces a comeback with their 5th mini album 'LOVE CHAPTER' allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"H1-KEY\" kpop comeback"
+    "search_term": "\"H1-KEY\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "Hearts2Hearts",
@@ -711,7 +827,9 @@
     "confidence": 0.68,
     "evidence_summary": "Hearts2Hearts Announce Comeback Single “RUDE!”: Here’s When It Drops inmusicblog.com",
     "tracking_status": "recent_release",
-    "search_term": "\"Hearts2Hearts\" kpop comeback"
+    "search_term": "\"Hearts2Hearts\" kpop comeback",
+    "release_format": "single",
+    "context_tags": []
   },
   {
     "group": "KiiiKiii",
@@ -725,7 +843,9 @@
     "confidence": 0.68,
     "evidence_summary": "\"Like Ive! Onto a Bigger Stage!\" Starship Rookie KiiiKiii Sets Out Their Comeback Ambitions [On-site LIVE] 매일경제",
     "tracking_status": "recent_release",
-    "search_term": "\"KiiiKiii\" kpop comeback"
+    "search_term": "\"KiiiKiii\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "KiiiKiii",
@@ -739,7 +859,9 @@
     "confidence": 0.68,
     "evidence_summary": "KiiiKiii drops whimsical teasers for their comeback with EP 'Delulu Pack' this month allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"KiiiKiii\" kpop comeback"
+    "search_term": "\"KiiiKiii\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "POW",
@@ -753,7 +875,9 @@
     "confidence": 0.68,
     "evidence_summary": "Rookie Group POW Drops Debut Single 'COME TRUE' Today! K-en News",
     "tracking_status": "recent_release",
-    "search_term": "\"POW\" kpop comeback"
+    "search_term": "\"POW\" kpop comeback",
+    "release_format": "single",
+    "context_tags": []
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -767,7 +891,9 @@
     "confidence": 0.68,
     "evidence_summary": "Tomorrow X Together Announces First Comeback Post-Contract Renewal 조선일보",
     "tracking_status": "recent_release",
-    "search_term": "\"TOMORROW X TOGETHER\" comeback"
+    "search_term": "\"TOMORROW X TOGETHER\" comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -781,7 +907,9 @@
     "confidence": 0.68,
     "evidence_summary": "TOMORROW X TOGETHER Announces Comeback Showcase for New Chapter with MOA DIPE.CO.KR",
     "tracking_status": "recent_release",
-    "search_term": "\"TOMORROW X TOGETHER\" comeback"
+    "search_term": "\"TOMORROW X TOGETHER\" comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "WHIB",
@@ -795,7 +923,11 @@
     "confidence": 0.68,
     "evidence_summary": "WHIB reunites as seven-member group, drops mini album and title track \"ROCK THE NATION\" on 29th - CHOSUNBIZ Chosunbiz",
     "tracking_status": "filtered_out",
-    "search_term": "\"WHIB\" kpop comeback"
+    "search_term": "\"WHIB\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": [
+      "title_track"
+    ]
   },
   {
     "group": "WHIB",
@@ -809,7 +941,9 @@
     "confidence": 0.68,
     "evidence_summary": "WHIB announces comeback with first mini album ‘ROCK THE NATION’ allkpop",
     "tracking_status": "filtered_out",
-    "search_term": "\"WHIB\" kpop comeback"
+    "search_term": "\"WHIB\" kpop comeback",
+    "release_format": "ep",
+    "context_tags": []
   },
   {
     "group": "YOUNG POSSE",
@@ -823,7 +957,11 @@
     "confidence": 0.68,
     "evidence_summary": "YOUNG POSSE Drops 'LOSE YOUR SHXT' Collaboration 조선일보",
     "tracking_status": "recent_release",
-    "search_term": "\"YOUNG POSSE\" kpop comeback"
+    "search_term": "\"YOUNG POSSE\" kpop comeback",
+    "release_format": "",
+    "context_tags": [
+      "collab"
+    ]
   },
   {
     "group": "YOUNG POSSE",
@@ -837,7 +975,11 @@
     "confidence": 0.68,
     "evidence_summary": "Young Posse drops collaboration single with Chinese rapper Benzo - CHOSUNBIZ Chosunbiz",
     "tracking_status": "recent_release",
-    "search_term": "\"YOUNG POSSE\" kpop comeback"
+    "search_term": "\"YOUNG POSSE\" kpop comeback",
+    "release_format": "single",
+    "context_tags": [
+      "collab"
+    ]
   },
   {
     "group": "ZEROBASEONE",
@@ -851,7 +993,9 @@
     "confidence": 0.68,
     "evidence_summary": "ZEROBASEONE Drops Track Poster for ‘Running To Future’ Ahead of Comeback K-en News",
     "tracking_status": "recent_release",
-    "search_term": "\"ZEROBASEONE\" kpop comeback"
+    "search_term": "\"ZEROBASEONE\" kpop comeback",
+    "release_format": "single",
+    "context_tags": []
   },
   {
     "group": "BABYMONSTER",
@@ -865,7 +1009,9 @@
     "confidence": 0.56,
     "evidence_summary": "YG Entertainment confirms BABYMONSTER World Tour & BIGBANG's Global bandwagon.asia",
     "tracking_status": "recent_release",
-    "search_term": "\"BABYMONSTER\" kpop comeback"
+    "search_term": "\"BABYMONSTER\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BLACKPINK",
@@ -879,7 +1025,9 @@
     "confidence": 0.56,
     "evidence_summary": "Blackpink Sets New Record As ‘Deadline’ Tops First-Day Sales Among K-Pop Girl Groups Outlook Luxe",
     "tracking_status": "recent_release",
-    "search_term": "\"BLACKPINK\" kpop comeback"
+    "search_term": "\"BLACKPINK\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -893,7 +1041,9 @@
     "confidence": 0.56,
     "evidence_summary": "BTS Reveals 14-Song Tracklist for Upcoming \"Arirang\" Album Tempo.co",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -907,7 +1057,9 @@
     "confidence": 0.56,
     "evidence_summary": "BTS announces 14-song tracklist for Arirang – Check full list here The Financial Express",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "BTS",
@@ -921,7 +1073,9 @@
     "confidence": 0.56,
     "evidence_summary": "BTS announces return with new world tour in 2026 and 2027 The Guardian",
     "tracking_status": "filtered_out",
-    "search_term": "\"BTS\" kpop comeback"
+    "search_term": "\"BTS\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "ENHYPEN",
@@ -935,7 +1089,9 @@
     "confidence": 0.56,
     "evidence_summary": "ENHYPEN's 'Knife' Reveals Sharp-Fanged Vampires 조선일보",
     "tracking_status": "recent_release",
-    "search_term": "\"ENHYPEN\" kpop comeback"
+    "search_term": "\"ENHYPEN\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "ITZY",
@@ -949,7 +1105,9 @@
     "confidence": 0.56,
     "evidence_summary": "ITZY’s YUNA Announces Debut Solo Album ‘Ice Cream’ inmusicblog.com",
     "tracking_status": "recent_release",
-    "search_term": "\"ITZY\" kpop comeback"
+    "search_term": "\"ITZY\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "KiiiKiii",
@@ -963,7 +1121,9 @@
     "confidence": 0.56,
     "evidence_summary": "Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"KiiiKiii\" kpop comeback"
+    "search_term": "\"KiiiKiii\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   },
   {
     "group": "ONEUS",
@@ -977,7 +1137,9 @@
     "confidence": 0.56,
     "evidence_summary": "ONEUS reveals the tracks for their upcoming single album ‘原 (Won)’ allkpop",
     "tracking_status": "recent_release",
-    "search_term": "\"ONEUS\" kpop comeback"
+    "search_term": "\"ONEUS\" kpop comeback",
+    "release_format": "album",
+    "context_tags": []
   },
   {
     "group": "ZEROBASEONE",
@@ -991,6 +1153,8 @@
     "confidence": 0.56,
     "evidence_summary": "ZEROBASEONE Announces New Chapter as Five-Member Group hellokpop",
     "tracking_status": "recent_release",
-    "search_term": "\"ZEROBASEONE\" kpop comeback"
+    "search_term": "\"ZEROBASEONE\" kpop comeback",
+    "release_format": "",
+    "context_tags": []
   }
 ]

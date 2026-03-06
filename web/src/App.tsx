@@ -13,6 +13,8 @@ type ReleaseFact = {
   date: string
   source: string
   release_kind: 'single' | 'album' | 'ep'
+  release_format: ReleaseFormat
+  context_tags: ContextTag[]
   music_handoffs?: MusicHandoffUrls
 }
 
@@ -100,6 +102,8 @@ type UpcomingCandidateRow = {
   scheduled_date: string
   date_status: 'confirmed' | 'scheduled' | 'rumor'
   headline: string
+  release_format: ReleaseFormat | ''
+  context_tags: ContextTag[]
   source_type: string
   source_url: string
   source_domain: string
@@ -135,6 +139,16 @@ type CalendarDay = {
 
 type MusicService = 'spotify' | 'youtube_music'
 
+type ReleaseFormat = 'single' | 'album' | 'ep'
+
+type ContextTag =
+  | 'pre_release'
+  | 'title_track'
+  | 'ost'
+  | 'collab'
+  | 'japanese_release'
+  | 'special_project'
+
 type MusicHandoffMode = 'canonical' | 'search'
 
 type MusicHandoffUrls = Partial<Record<MusicService, string>>
@@ -149,6 +163,8 @@ type TeamLatestRelease = {
   title: string
   date: string
   releaseKind: string
+  releaseFormat: ReleaseFormat | ''
+  contextTags: ContextTag[]
   streamLabel: string
   stream: 'song' | 'album' | 'watchlist'
   source: string
@@ -277,6 +293,14 @@ const TRANSLATIONS = {
       album: '앨범',
       ep: 'EP',
     },
+    contextTagLabels: {
+      pre_release: '선공개',
+      title_track: '타이틀',
+      ost: 'OST',
+      collab: '콜라보',
+      japanese_release: '일본 발매',
+      special_project: '스페셜',
+    },
     sourceTypeLabels: {
       agency_notice: '기획사 공지',
       weverse_notice: '위버스 공지',
@@ -375,6 +399,14 @@ const TRANSLATIONS = {
       single: 'single',
       album: 'album',
       ep: 'ep',
+    },
+    contextTagLabels: {
+      pre_release: 'pre-release',
+      title_track: 'title track',
+      ost: 'OST',
+      collab: 'collab',
+      japanese_release: 'Japanese release',
+      special_project: 'special project',
     },
     sourceTypeLabels: {
       agency_notice: 'Agency notice',
@@ -878,6 +910,11 @@ function App() {
                               >
                                 {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                               </span>
+                              <ReleaseClassificationBadges
+                                releaseFormat={item.release_format}
+                                contextTags={item.context_tags}
+                                language={language}
+                              />
                             </div>
                           </div>
                           <h3>{item.headline}</h3>
@@ -926,9 +963,18 @@ function App() {
                     <div className="detail-card-feature-body">
                       <div className="signal-head">
                         <TeamIdentity group={selectedTeam.group} variant="list" />
-                        <span className="signal-badge">
-                          {selectedTeam.latestRelease.streamLabel} · {selectedTeam.latestRelease.releaseKind}
-                        </span>
+                        <div className="signal-tags">
+                          <span className="signal-badge">
+                            {selectedTeam.latestRelease.streamLabel} ·{' '}
+                            {formatReleaseFormat(selectedTeam.latestRelease.releaseFormat, language) ||
+                              selectedTeam.latestRelease.releaseKind}
+                          </span>
+                          <ReleaseClassificationBadges
+                            releaseFormat=""
+                            contextTags={selectedTeam.latestRelease.contextTags}
+                            language={language}
+                          />
+                        </div>
                       </div>
                       <h3>{selectedTeam.latestRelease.title}</h3>
                       <p className="signal-meta">
@@ -1233,6 +1279,11 @@ function App() {
                             >
                               {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                             </span>
+                            <ReleaseClassificationBadges
+                              releaseFormat={item.release_format}
+                              contextTags={item.context_tags}
+                              language={language}
+                            />
                           </div>
                         </div>
                         <h3>{item.headline}</h3>
@@ -1415,15 +1466,24 @@ function AlbumDrawer({
             <p className="panel-label">{teamCopy.placeholderCover}</p>
             <h3>{displayName}</h3>
             <p className="signal-meta">
-              {copy.releaseKindLabels[album.release_kind]} ·{' '}
+              {formatReleaseFormat(album.release_format, language)} ·{' '}
               {formatOptionalDate(album.date, displayDateFormatter, copy.none)}
             </p>
+            {album.context_tags.length ? (
+              <div className="classification-row">
+                <ReleaseClassificationBadges
+                  releaseFormat=""
+                  contextTags={album.context_tags}
+                  language={language}
+                />
+              </div>
+            ) : null}
           </div>
         </div>
 
         <div className="meta-grid">
           <MetaItem label={teamCopy.team} value={displayName} />
-          <MetaItem label={teamCopy.releaseKind} value={copy.releaseKindLabels[album.release_kind]} />
+          <MetaItem label={teamCopy.releaseKind} value={formatReleaseFormat(album.release_format, language)} />
           <MetaItem
             label={teamCopy.releaseDate}
             value={formatOptionalDate(album.date, displayDateFormatter, copy.none)}
@@ -1601,6 +1661,35 @@ function UpcomingCountdownBadge({
   )
 }
 
+function ReleaseClassificationBadges({
+  releaseFormat,
+  contextTags,
+  language,
+}: {
+  releaseFormat: ReleaseFormat | ''
+  contextTags: ContextTag[]
+  language: Language
+}) {
+  if (!releaseFormat && contextTags.length === 0) {
+    return null
+  }
+
+  return (
+    <>
+      {releaseFormat ? (
+        <span className="signal-badge signal-badge-classification-format">
+          {formatReleaseFormat(releaseFormat, language)}
+        </span>
+      ) : null}
+      {contextTags.map((contextTag) => (
+        <span key={contextTag} className="signal-badge signal-badge-classification-tag">
+          {formatContextTag(contextTag, language)}
+        </span>
+      ))}
+    </>
+  )
+}
+
 function SelectedDayPanel({
   className,
   panelRef,
@@ -1695,6 +1784,11 @@ function SelectedDayPanel({
                         >
                           {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
                         </span>
+                        <ReleaseClassificationBadges
+                          releaseFormat={item.release_format}
+                          contextTags={item.context_tags}
+                          language={language}
+                        />
                       </div>
                     </div>
                     <h3>{item.headline}</h3>
@@ -1800,6 +1894,18 @@ function formatSourceType(sourceType: string, language: Language) {
   return TRANSLATIONS[language].sourceTypeLabels[sourceType as keyof typeof TRANSLATIONS.ko.sourceTypeLabels] ?? TRANSLATIONS[language].sourceTypeLabels.pending
 }
 
+function formatReleaseFormat(releaseFormat: ReleaseFormat | '', language: Language) {
+  if (!releaseFormat) {
+    return ''
+  }
+
+  return TRANSLATIONS[language].releaseKindLabels[releaseFormat]
+}
+
+function formatContextTag(contextTag: ContextTag, language: Language) {
+  return TRANSLATIONS[language].contextTagLabels[contextTag]
+}
+
 function formatDateStatus(dateStatus: UpcomingCandidateRow['date_status'], language: Language) {
   return TRANSLATIONS[language].dateStatusLabels[dateStatus]
 }
@@ -1854,7 +1960,7 @@ function expandUpcomingCandidate(row: UpcomingCandidateRow): DatedUpcomingSignal
 
 function describeRelease(item: VerifiedRelease, language: Language) {
   const copy = TRANSLATIONS[language]
-  return `${copy.streamLabels[item.stream]} · ${copy.releaseKindLabels[item.release_kind]}`
+  return `${copy.streamLabels[item.stream]} · ${formatReleaseFormat(item.release_format, language)}`
 }
 
 function formatFilterOption(option: string, language: Language) {
@@ -2144,6 +2250,8 @@ function deriveLatestRelease(
       title: latestVerified.title,
       date: latestVerified.date,
       releaseKind: latestVerified.release_kind,
+      releaseFormat: latestVerified.release_format,
+      contextTags: latestVerified.context_tags,
       streamLabel: latestVerified.stream,
       stream: latestVerified.stream,
       source: latestVerified.source,
@@ -2161,6 +2269,13 @@ function deriveLatestRelease(
     title: watchRow.latest_release_title || 'Tracked release pending',
     date: watchRow.latest_release_date || '',
     releaseKind: watchRow.latest_release_kind || 'unknown',
+    releaseFormat:
+      watchRow.latest_release_kind === 'single' ||
+      watchRow.latest_release_kind === 'album' ||
+      watchRow.latest_release_kind === 'ep'
+        ? watchRow.latest_release_kind
+        : '',
+    contextTags: [],
     streamLabel: 'watchlist',
     stream: 'watchlist',
     source: '',

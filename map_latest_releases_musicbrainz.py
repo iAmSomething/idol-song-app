@@ -8,6 +8,8 @@ from typing import Dict, List, Optional, Tuple
 
 import requests
 
+from release_classification import classify_release
+
 CUTOFF = datetime(2025, 6, 1, tzinfo=timezone.utc)
 TODAY = datetime(2026, 3, 4, tzinfo=timezone.utc)
 
@@ -194,6 +196,7 @@ def normalize_release(row: dict) -> Optional[dict]:
     return {
         "bucket": bucket,
         "release_kind": release_kind,
+        "group": row.get("group", ""),
         "title": title,
         "date": release_date,
         "source": f"https://musicbrainz.org/release-group/{row.get('id')}",
@@ -215,11 +218,19 @@ def pick_latest_pair(rows: List[dict]) -> Tuple[Optional[dict], Optional[dict]]:
 def serialize_release(entry: Optional[dict]) -> Optional[dict]:
     if entry is None:
         return None
+    classification = classify_release(
+        group=entry["group"],
+        title=entry["title"],
+        date=entry["date"].date().isoformat(),
+        release_kind=entry["release_kind"],
+    )
     return {
         "title": entry["title"],
         "date": entry["date"].date().isoformat(),
         "source": entry["source"],
         "release_kind": entry["release_kind"],
+        "release_format": classification["release_format"],
+        "context_tags": classification["context_tags"],
     }
 
 
@@ -258,6 +269,8 @@ def main() -> None:
 
             artist_mbid = artist.get("id")
             release_groups = fetch_release_groups(session, artist_mbid)
+            for release_group in release_groups:
+                release_group["group"] = group
             latest_song, latest_album = pick_latest_pair(release_groups)
             latest_song_row = serialize_release(latest_song)
             latest_album_row = serialize_release(latest_album)
@@ -315,10 +328,14 @@ def main() -> None:
                 "latest_song_date",
                 "latest_song_source",
                 "latest_song_kind",
+                "latest_song_format",
+                "latest_song_context_tags",
                 "latest_album_title",
                 "latest_album_date",
                 "latest_album_source",
                 "latest_album_kind",
+                "latest_album_format",
+                "latest_album_context_tags",
                 "artist_source",
             ],
         )
@@ -333,10 +350,14 @@ def main() -> None:
                     "latest_song_date": row["latest_song"]["date"] if row["latest_song"] else "",
                     "latest_song_source": row["latest_song"]["source"] if row["latest_song"] else "",
                     "latest_song_kind": row["latest_song"]["release_kind"] if row["latest_song"] else "",
+                    "latest_song_format": row["latest_song"]["release_format"] if row["latest_song"] else "",
+                    "latest_song_context_tags": " ; ".join(row["latest_song"]["context_tags"]) if row["latest_song"] else "",
                     "latest_album_title": row["latest_album"]["title"] if row["latest_album"] else "",
                     "latest_album_date": row["latest_album"]["date"] if row["latest_album"] else "",
                     "latest_album_source": row["latest_album"]["source"] if row["latest_album"] else "",
                     "latest_album_kind": row["latest_album"]["release_kind"] if row["latest_album"] else "",
+                    "latest_album_format": row["latest_album"]["release_format"] if row["latest_album"] else "",
+                    "latest_album_context_tags": " ; ".join(row["latest_album"]["context_tags"]) if row["latest_album"] else "",
                     "artist_source": row["artist_source"],
                 }
             )
