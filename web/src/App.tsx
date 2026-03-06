@@ -119,6 +119,25 @@ type DatedUpcomingSignal = UpcomingCandidateRow & {
   isoDate: string
 }
 
+type SourceTimelineEventType =
+  | 'first_signal'
+  | 'official_announcement'
+  | 'tracklist_reveal'
+  | 'date_update'
+  | 'release_verified'
+
+type SourceTimelineItem = {
+  group: string
+  occurred_at: string
+  event_type: SourceTimelineEventType
+  source_type: string
+  headline: string
+  source_url: string
+  summary: string
+  source_domain: string
+  sortValue: number
+}
+
 type WatchlistRow = {
   group: string
   tier: string
@@ -191,6 +210,7 @@ type TeamProfile = {
   latestRelease: TeamLatestRelease | null
   recentAlbums: VerifiedRelease[]
   upcomingSignals: UpcomingCandidateRow[]
+  sourceTimeline: SourceTimelineItem[]
   nextUpcomingSignal: UpcomingCandidateRow | null
 }
 
@@ -305,6 +325,7 @@ const TRANSLATIONS = {
       agency_notice: '기획사 공지',
       weverse_notice: '위버스 공지',
       news_rss: '기사 RSS',
+      release_catalog: '검증 발매 카탈로그',
       pending: '출처 확인 중',
     },
     dateStatusLabels: {
@@ -316,6 +337,13 @@ const TRANSLATIONS = {
       high: '높음',
       medium: '보통',
       low: '낮음',
+    },
+    timelineEventLabels: {
+      first_signal: '첫 신호',
+      official_announcement: '공식 공지',
+      tracklist_reveal: '트랙리스트 공개',
+      date_update: '날짜 업데이트',
+      release_verified: '검증된 발매',
     },
   },
   en: {
@@ -412,6 +440,7 @@ const TRANSLATIONS = {
       agency_notice: 'Agency notice',
       weverse_notice: 'Weverse notice',
       news_rss: 'News RSS',
+      release_catalog: 'Verified release catalog',
       pending: 'Source pending',
     },
     dateStatusLabels: {
@@ -423,6 +452,13 @@ const TRANSLATIONS = {
       high: 'high',
       medium: 'medium',
       low: 'low',
+    },
+    timelineEventLabels: {
+      first_signal: 'First signal',
+      official_announcement: 'Official announcement',
+      tracklist_reveal: 'Tracklist reveal',
+      date_update: 'Date update',
+      release_verified: 'Release verified',
     },
   },
 } as const
@@ -461,6 +497,11 @@ const TEAM_COPY = {
     quickJumpTitle: '다른 추적 팀',
     noOtherTeams: '다른 필터된 팀이 없습니다.',
     noSignal: '신호 없음',
+    timelineLabel: '소스 타임라인',
+    timelineTitle: '컴백 근거가 쌓인 순서',
+    timelineIntro: '예정 신호와 검증된 발매를 같은 타임라인에서 봅니다.',
+    timelineEmptyTitle: '타임라인 근거 없음',
+    timelineEmpty: '예정 신호나 검증된 발매 출처가 아직 충분하지 않습니다.',
     pagesPanelLabel: '팀 페이지',
     pagesPanelTitle: '추적 팀 열기',
     noTeamMatch: '이 검색어와 일치하는 추적 팀이 없습니다.',
@@ -513,6 +554,11 @@ const TEAM_COPY = {
     quickJumpTitle: 'Other tracked teams',
     noOtherTeams: 'No other filtered teams available.',
     noSignal: 'No signal',
+    timelineLabel: 'Source timeline',
+    timelineTitle: 'How the comeback evidence built up',
+    timelineIntro: 'Scheduled signals and verified releases share one evidence trail.',
+    timelineEmptyTitle: 'No timeline evidence yet',
+    timelineEmpty: 'There is not enough scheduled or verified source evidence for this team yet.',
     pagesPanelLabel: 'Team pages',
     pagesPanelTitle: 'Open a tracked team',
     noTeamMatch: 'No tracked team matches this search.',
@@ -639,6 +685,11 @@ function App() {
     year: 'numeric',
   })
   const shortDateFormatter = new Intl.DateTimeFormat(copy.locale, {
+    month: 'short',
+    day: 'numeric',
+  })
+  const timelineDateFormatter = new Intl.DateTimeFormat(copy.locale, {
+    year: 'numeric',
     month: 'short',
     day: 'numeric',
   })
@@ -940,6 +991,62 @@ function App() {
                     ))
                   ) : (
                     <p className="empty-copy">{teamCopy.upcomingEmpty}</p>
+                  )}
+                </div>
+
+                <div className="team-subsection">
+                  <div className="team-subsection-head">
+                    <p className="panel-label">{teamCopy.timelineLabel}</p>
+                    <h3>{selectedTeam.sourceTimeline.length ? teamCopy.timelineTitle : teamCopy.timelineEmptyTitle}</h3>
+                    <p className="team-subsection-copy">{teamCopy.timelineIntro}</p>
+                  </div>
+                  {selectedTeam.sourceTimeline.length ? (
+                    <ol className="source-timeline">
+                      {selectedTeam.sourceTimeline.map((item, index) => (
+                        <li
+                          key={`${item.group}-${item.event_type}-${item.occurred_at}-${item.headline}`}
+                          className="source-timeline-item"
+                        >
+                          <div className="source-timeline-rail" aria-hidden="true">
+                            <span className={`source-timeline-dot source-timeline-dot-${item.event_type}`} />
+                            {index < selectedTeam.sourceTimeline.length - 1 ? (
+                              <span className="source-timeline-line" />
+                            ) : null}
+                          </div>
+                          <article className="source-timeline-card">
+                            <div className="source-timeline-head">
+                              <div>
+                                <p className="source-timeline-date">
+                                  {formatSourceTimelineDate(item.occurred_at, timelineDateFormatter, copy.none)}
+                                </p>
+                                <h3>{item.headline}</h3>
+                              </div>
+                              <div className="signal-tags">
+                                <span className={`signal-badge signal-badge-event-${item.event_type}`}>
+                                  {formatTimelineEventType(item.event_type, language)}
+                                </span>
+                              </div>
+                            </div>
+                            <p className="signal-meta">
+                              {formatSourceType(item.source_type, language)} ·{' '}
+                              {item.source_domain || copy.sourceTypeLabels.pending}
+                            </p>
+                            {item.summary ? <p className="signal-evidence">{item.summary}</p> : null}
+                            <div className="detail-links detail-links-stack">
+                              {item.source_url ? (
+                                <a href={item.source_url} target="_blank" rel="noreferrer">
+                                  {copy.sourceLink}
+                                </a>
+                              ) : (
+                                <span className="signal-link-muted">{copy.noSourceLink}</span>
+                              )}
+                            </div>
+                          </article>
+                        </li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <p className="empty-copy">{teamCopy.timelineEmpty}</p>
                   )}
                 </div>
               </section>
@@ -1975,6 +2082,10 @@ function formatConfidenceTone(tone: ReturnType<typeof getConfidenceTone>, langua
   return TRANSLATIONS[language].confidenceToneLabels[tone]
 }
 
+function formatTimelineEventType(eventType: SourceTimelineEventType, language: Language) {
+  return TRANSLATIONS[language].timelineEventLabels[eventType]
+}
+
 function getUpcomingCountdownState(item: UpcomingCandidateRow): CountdownState | null {
   if (
     !isExactDate(item.scheduled_date) ||
@@ -2183,6 +2294,7 @@ function buildTeamProfiles() {
       const artistProfile = artistProfileByGroup.get(group)
       const groupReleases = releaseGroups.get(group) ?? []
       const upcomingSignals = [...(upcomingByGroup.get(group) ?? [])].sort(compareUpcomingSignals)
+      const sourceTimeline = buildSourceTimeline(group, upcomingByGroup.get(group) ?? [], groupReleases)
       const latestRelease = deriveLatestRelease(groupReleases, watchRow, releaseRow)
 
       return {
@@ -2203,6 +2315,7 @@ function buildTeamProfiles() {
         latestRelease,
         recentAlbums: groupReleases.filter((item) => item.stream === 'album'),
         upcomingSignals,
+        sourceTimeline,
         nextUpcomingSignal: upcomingSignals[0] ?? null,
       }
     })
@@ -2338,6 +2451,222 @@ function compareUpcomingSignals(
   }
 
   return left.headline.localeCompare(right.headline)
+}
+
+function buildSourceTimeline(
+  group: string,
+  upcomingSignals: UpcomingCandidateRow[],
+  groupReleases: VerifiedRelease[],
+) {
+  const timelineItems: SourceTimelineItem[] = []
+  const usedSignalKeys = new Set<string>()
+  const timelineSignals = [...upcomingSignals].sort(compareTimelineSignals)
+  const firstSignal = timelineSignals[0]
+
+  if (firstSignal) {
+    timelineItems.push(buildUpcomingTimelineItem(group, firstSignal, 'first_signal'))
+    usedSignalKeys.add(getSourceTimelineSignalKey(firstSignal))
+  }
+
+  const officialAnnouncement = timelineSignals.find(
+    (item) => !usedSignalKeys.has(getSourceTimelineSignalKey(item)) && isOfficialAnnouncementSignal(item),
+  )
+  if (officialAnnouncement) {
+    timelineItems.push(buildUpcomingTimelineItem(group, officialAnnouncement, 'official_announcement'))
+    usedSignalKeys.add(getSourceTimelineSignalKey(officialAnnouncement))
+  }
+
+  const tracklistReveal = timelineSignals.find(
+    (item) => !usedSignalKeys.has(getSourceTimelineSignalKey(item)) && isTracklistRevealSignal(item),
+  )
+  if (tracklistReveal) {
+    timelineItems.push(buildUpcomingTimelineItem(group, tracklistReveal, 'tracklist_reveal'))
+    usedSignalKeys.add(getSourceTimelineSignalKey(tracklistReveal))
+  }
+
+  const dateUpdate = findDateUpdateSignal(timelineSignals, usedSignalKeys)
+  if (dateUpdate) {
+    timelineItems.push(buildUpcomingTimelineItem(group, dateUpdate, 'date_update'))
+    usedSignalKeys.add(getSourceTimelineSignalKey(dateUpdate))
+  }
+
+  const latestVerifiedRelease = groupReleases[0]
+  if (latestVerifiedRelease?.source) {
+    timelineItems.push(buildReleaseTimelineItem(group, latestVerifiedRelease))
+  }
+
+  return timelineItems
+    .sort(compareSourceTimelineItems)
+    .filter((item, index, items) => {
+      const previous = items[index - 1]
+      return !previous || getSourceTimelineItemKey(previous) !== getSourceTimelineItemKey(item)
+    })
+}
+
+function buildUpcomingTimelineItem(
+  group: string,
+  item: UpcomingCandidateRow,
+  eventType: SourceTimelineEventType,
+): SourceTimelineItem {
+  const occurredAt = getSignalOccurredAt(item)
+  return {
+    group,
+    occurred_at: occurredAt,
+    event_type: eventType,
+    source_type: item.source_type || 'pending',
+    headline: item.headline,
+    source_url: item.source_url,
+    summary: buildUpcomingTimelineSummary(item, eventType),
+    source_domain: item.source_domain || getSourceDomain(item.source_url),
+    sortValue: getSourceTimelineSortValue(occurredAt),
+  }
+}
+
+function buildReleaseTimelineItem(group: string, release: VerifiedRelease): SourceTimelineItem {
+  return {
+    group,
+    occurred_at: release.date,
+    event_type: 'release_verified',
+    source_type: 'release_catalog',
+    headline: `${release.title}`,
+    source_url: release.source,
+    summary: truncateTimelineSummary(
+      `Latest verified ${release.stream} record in the dataset for ${group}, captured from the release catalog.`,
+    ),
+    source_domain: getSourceDomain(release.source),
+    sortValue: getSourceTimelineSortValue(release.date),
+  }
+}
+
+function buildUpcomingTimelineSummary(
+  item: UpcomingCandidateRow,
+  eventType: SourceTimelineEventType,
+) {
+  if (eventType === 'date_update' && item.scheduled_date) {
+    return truncateTimelineSummary(
+      item.evidence_summary || `The strongest captured date signal currently points to ${item.scheduled_date}.`,
+    )
+  }
+
+  if (eventType === 'official_announcement') {
+    return truncateTimelineSummary(
+      item.evidence_summary || 'An official channel or agency notice confirmed the comeback context.',
+    )
+  }
+
+  if (eventType === 'tracklist_reveal') {
+    return truncateTimelineSummary(
+      item.evidence_summary || 'A tracklist or title-track clue was captured for this comeback cycle.',
+    )
+  }
+
+  if (eventType === 'first_signal') {
+    return truncateTimelineSummary(item.evidence_summary || 'This was the earliest captured comeback signal.')
+  }
+
+  return truncateTimelineSummary(item.evidence_summary)
+}
+
+function truncateTimelineSummary(value: string, maxLength = 180) {
+  if (!value) {
+    return ''
+  }
+
+  const normalized = value.replace(/\s+/g, ' ').trim()
+  if (normalized.length <= maxLength) {
+    return normalized
+  }
+
+  return `${normalized.slice(0, maxLength - 1).trimEnd()}…`
+}
+
+function compareTimelineSignals(left: UpcomingCandidateRow, right: UpcomingCandidateRow) {
+  const leftValue = getSourceTimelineSortValue(getSignalOccurredAt(left))
+  const rightValue = getSourceTimelineSortValue(getSignalOccurredAt(right))
+  if (leftValue !== rightValue) {
+    return leftValue - rightValue
+  }
+
+  if (left.confidence !== right.confidence) {
+    return right.confidence - left.confidence
+  }
+
+  return left.headline.localeCompare(right.headline)
+}
+
+function compareSourceTimelineItems(left: SourceTimelineItem, right: SourceTimelineItem) {
+  if (left.sortValue !== right.sortValue) {
+    return left.sortValue - right.sortValue
+  }
+
+  return left.headline.localeCompare(right.headline)
+}
+
+function getSignalOccurredAt(item: UpcomingCandidateRow) {
+  if (item.published_at && !Number.isNaN(Date.parse(item.published_at))) {
+    return new Date(Date.parse(item.published_at)).toISOString()
+  }
+
+  return item.scheduled_date
+}
+
+function getSourceTimelineSortValue(value: string) {
+  if (!value) {
+    return Number.MAX_SAFE_INTEGER
+  }
+
+  const timestamp = Date.parse(value)
+  if (!Number.isNaN(timestamp)) {
+    return timestamp
+  }
+
+  if (isExactDate(value)) {
+    return new Date(`${value}T00:00:00`).getTime()
+  }
+
+  return Number.MAX_SAFE_INTEGER
+}
+
+function getSourceTimelineSignalKey(item: UpcomingCandidateRow) {
+  return [item.group, item.source_url, item.headline, item.published_at, item.scheduled_date].join('::')
+}
+
+function getSourceTimelineItemKey(item: SourceTimelineItem) {
+  return [item.event_type, item.headline, item.occurred_at, item.source_url].join('::')
+}
+
+function isOfficialAnnouncementSignal(item: UpcomingCandidateRow) {
+  if (item.source_type === 'agency_notice' || item.source_type === 'weverse_notice') {
+    return true
+  }
+
+  return item.search_term.startsWith('official_')
+}
+
+function isTracklistRevealSignal(item: UpcomingCandidateRow) {
+  const text = `${item.headline} ${item.evidence_summary}`.toLowerCase()
+  return /track\s*list|tracklist|title track/.test(text)
+}
+
+function findDateUpdateSignal(rows: UpcomingCandidateRow[], usedSignalKeys: Set<string>) {
+  const datedRows = rows.filter((item) => isExactDate(item.scheduled_date))
+  if (!datedRows.length) {
+    return null
+  }
+
+  for (let index = datedRows.length - 1; index >= 0; index -= 1) {
+    const row = datedRows[index]
+    if (usedSignalKeys.has(getSourceTimelineSignalKey(row))) {
+      continue
+    }
+
+    const previousDate = datedRows[index - 1]?.scheduled_date ?? ''
+    if (!previousDate || previousDate !== row.scheduled_date || index === 0) {
+      return row
+    }
+  }
+
+  return null
 }
 
 function groupReleasesByGroup(rows: VerifiedRelease[]) {
@@ -2603,6 +2932,27 @@ function formatDisplayDate(isoDate: string, formatter: Intl.DateTimeFormat) {
   return formatter.format(new Date(`${isoDate}T00:00:00`))
 }
 
+function formatSourceTimelineDate(
+  value: string,
+  formatter: Intl.DateTimeFormat,
+  fallback: string,
+) {
+  if (!value) {
+    return fallback
+  }
+
+  const timestamp = Date.parse(value)
+  if (!Number.isNaN(timestamp)) {
+    return formatter.format(new Date(timestamp))
+  }
+
+  if (isExactDate(value)) {
+    return formatter.format(new Date(`${value}T00:00:00`))
+  }
+
+  return value
+}
+
 function formatOptionalDate(
   isoDate: string,
   formatter: Intl.DateTimeFormat,
@@ -2619,6 +2969,18 @@ function getMonthKey(date: Date) {
   const year = date.getFullYear()
   const month = `${date.getMonth() + 1}`.padStart(2, '0')
   return `${year}-${month}`
+}
+
+function getSourceDomain(sourceUrl: string) {
+  if (!sourceUrl) {
+    return ''
+  }
+
+  try {
+    return new URL(sourceUrl).hostname
+  } catch {
+    return ''
+  }
 }
 
 function monthKeyToDate(monthKey: string) {
