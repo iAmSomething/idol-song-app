@@ -138,3 +138,7 @@
 - 뒤로 가기 시 사용자가 보고 있던 월/검색 상태가 유지된다.
 - 외부 앱 이동 전후로 앱 상태가 불필요하게 초기화되지 않는다.
 - 모션이 정보 탐색을 방해하지 않는다.
+
+## 10. 상태 복원/라우트 참조
+- 상세 back, 외부 복귀, 시트 재진입은 `state-restoration-spec.md`를 따른다.
+- route param과 direct entry 계약은 `route-param-contracts.md`를 따른다.

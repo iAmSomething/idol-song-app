@@ -80,13 +80,21 @@
    - 오류 분류, 로깅 포인트, 사용자 피드백 규칙
 37. `content-governance-spec.md`
    - 프로필/아트워크/상세 메타데이터 운영 원칙
+38. `performance-budget-spec.md`
+   - 화면별 체감 성능 예산과 금지 패턴
+39. `state-restoration-spec.md`
+   - 탭/시트/뒤로가기/복귀 시 상태 복원 규칙
+40. `feature-gate-matrix.md`
+   - Radar, MV, analytics 등 기능 게이트와 fallback 규칙
+41. `external-dependency-risk-spec.md`
+   - 외부 서비스/데이터 의존 리스크와 완화 전략
 
 ### Screen Specs
-38. `calendar-screen.md`
-39. `radar-screen.md`
-40. `search-screen.md`
-41. `team-detail-screen.md`
-42. `release-detail-screen.md`
+42. `calendar-screen.md`
+43. `radar-screen.md`
+44. `search-screen.md`
+45. `team-detail-screen.md`
+46. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -124,9 +132,13 @@
 33. `configuration-environment-spec.md`
 34. `observability-error-taxonomy.md`
 35. `content-governance-spec.md`
-36. 각 화면 스펙
-37. `edge-case-catalog.md`
-38. `qa-acceptance-spec.md`
+36. `performance-budget-spec.md`
+37. `state-restoration-spec.md`
+38. `feature-gate-matrix.md`
+39. `external-dependency-risk-spec.md`
+40. 각 화면 스펙
+41. `edge-case-catalog.md`
+42. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.

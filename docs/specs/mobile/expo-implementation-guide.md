@@ -133,3 +133,8 @@ mobile/app/
 - route param과 deep-link 계약은 `route-param-contracts.md`를 따른다.
 - environment/data source/feature gate는 `configuration-environment-spec.md`를 따른다.
 - 오류 분류와 로깅 정책은 `observability-error-taxonomy.md`를 따른다.
+
+## 14. 성능/feature gate/외부 의존 참조
+- 체감 성능 기준은 `performance-budget-spec.md`를 따른다.
+- feature gate 설계는 `feature-gate-matrix.md`를 따른다.
+- 외부 서비스/데이터 리스크는 `external-dependency-risk-spec.md`를 따른다.

@@ -269,3 +269,7 @@
 - `configuration-environment-spec.md`
 - `observability-error-taxonomy.md`
 - `content-governance-spec.md`
+- `performance-budget-spec.md`
+- `state-restoration-spec.md`
+- `feature-gate-matrix.md`
+- `external-dependency-risk-spec.md`

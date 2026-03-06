@@ -103,3 +103,7 @@
 
 ## 13. 참조 토큰 문서
 - semantic naming과 구현용 token 이름은 `design-token-spec.md`를 따른다.
+
+## 9. 성능/상태 복원 참조
+- 체감 성능 예산은 `performance-budget-spec.md`를 따른다.
+- 탭/시트/복귀 상태 보존은 `state-restoration-spec.md`를 따른다.
