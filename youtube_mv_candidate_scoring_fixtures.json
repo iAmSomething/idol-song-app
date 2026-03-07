@@ -1,0 +1,168 @@
+[
+  {
+    "case_id": "blackpink_official_mv_beats_stage",
+    "release": {
+      "group": "BLACKPINK",
+      "release_title": "GO",
+      "title_tracks": [
+        "GO"
+      ],
+      "release_date": "2026-02-26",
+      "mv_allowlist_match_keys": [
+        "@blackpink",
+        "@ygentertainment"
+      ]
+    },
+    "candidates": [
+      {
+        "video_id": "go-official-mv",
+        "title": "BLACKPINK - GO (Official MV)",
+        "channel_url": "https://www.youtube.com/@BLACKPINK",
+        "published_at": "2026-02-26T09:00:00Z",
+        "view_count": 12000000
+      },
+      {
+        "video_id": "go-performance-video",
+        "title": "BLACKPINK - GO Performance Video",
+        "channel_url": "https://www.youtube.com/@BLACKPINK",
+        "published_at": "2026-02-26T20:00:00Z",
+        "view_count": 6500000
+      },
+      {
+        "video_id": "go-fancam",
+        "title": "BLACKPINK GO Fancam",
+        "channel_url": "https://www.youtube.com/@MCOUNTDOWN",
+        "published_at": "2026-02-27T11:00:00Z",
+        "view_count": 1400000
+      }
+    ],
+    "expected": {
+      "status": "accepted",
+      "accepted_video_id": "go-official-mv"
+    }
+  },
+  {
+    "case_id": "hearts2hearts_label_owned_mv_wins",
+    "release": {
+      "group": "Hearts2Hearts",
+      "release_title": "RUDE!",
+      "title_tracks": [
+        "RUDE!"
+      ],
+      "release_date": "2026-02-20",
+      "mv_allowlist_match_keys": [
+        "@smtown"
+      ]
+    },
+    "candidates": [
+      {
+        "video_id": "rude-official-mv",
+        "title": "Hearts2Hearts 'RUDE!' MV",
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "published_at": "2026-02-20T09:00:00Z",
+        "view_count": 5600000
+      },
+      {
+        "video_id": "rude-track-video",
+        "title": "Hearts2Hearts 'RUDE!' Track Video",
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "published_at": "2026-02-18T09:00:00Z",
+        "view_count": 2300000
+      },
+      {
+        "video_id": "rude-lyric-video",
+        "title": "Hearts2Hearts RUDE lyric video",
+        "channel_url": "https://www.youtube.com/@KpopLyricsHub",
+        "published_at": "2026-02-20T12:00:00Z",
+        "view_count": 800000
+      }
+    ],
+    "expected": {
+      "status": "accepted",
+      "accepted_video_id": "rude-official-mv"
+    }
+  },
+  {
+    "case_id": "nct_wish_ambiguous_official_uploads_stay_in_review",
+    "release": {
+      "group": "NCT WISH",
+      "release_title": "Same Sky",
+      "title_tracks": [
+        "Same Sky"
+      ],
+      "release_date": "2026-02-27",
+      "mv_allowlist_match_keys": [
+        "@smtown"
+      ]
+    },
+    "candidates": [
+      {
+        "video_id": "same-sky-track-video",
+        "title": "NCT WISH 'Same Sky' Track Video",
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "published_at": "2026-02-26T09:00:00Z",
+        "view_count": 2100000
+      },
+      {
+        "video_id": "same-sky-official-audio",
+        "title": "NCT WISH 'Same Sky' Official Audio",
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "published_at": "2026-02-27T09:00:00Z",
+        "view_count": 2600000
+      },
+      {
+        "video_id": "same-sky-live-clip",
+        "title": "NCT WISH 'Same Sky' Live Clip",
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "published_at": "2026-02-27T13:00:00Z",
+        "view_count": 2400000
+      }
+    ],
+    "expected": {
+      "status": "needs_review",
+      "accepted_video_id": null
+    }
+  },
+  {
+    "case_id": "badvillain_official_mv_beats_stage_noise",
+    "release": {
+      "group": "BADVILLAIN",
+      "release_title": "THRILLER",
+      "title_tracks": [
+        "THRILLER"
+      ],
+      "release_date": "2025-09-15",
+      "mv_allowlist_match_keys": [
+        "@badvillain_bpm",
+        "@bpmentertainment-official"
+      ]
+    },
+    "candidates": [
+      {
+        "video_id": "thriller-official-mv",
+        "title": "BADVILLAIN - THRILLER (Official MV)",
+        "channel_url": "https://www.youtube.com/@BPMEntertainment-official",
+        "published_at": "2025-09-15T09:00:00Z",
+        "view_count": 3100000
+      },
+      {
+        "video_id": "thriller-stage",
+        "title": "BADVILLAIN - THRILLER Stage Mix",
+        "channel_url": "https://www.youtube.com/@M2",
+        "published_at": "2025-09-16T07:00:00Z",
+        "view_count": 1800000
+      },
+      {
+        "video_id": "thriller-shorts",
+        "title": "BADVILLAIN - THRILLER Shorts",
+        "channel_url": "https://www.youtube.com/@BPMEntertainment-official",
+        "published_at": "2025-09-15T16:00:00Z",
+        "view_count": 900000
+      }
+    ],
+    "expected": {
+      "status": "accepted",
+      "accepted_video_id": "thriller-official-mv"
+    }
+  }
+]
