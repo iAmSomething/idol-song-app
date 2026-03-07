@@ -90,6 +90,8 @@ type ReleaseDetailRow = {
   youtube_music_url: string | null
   youtube_video_id: string | null
   youtube_video_url?: string | null
+  youtube_video_status?: 'relation_match' | 'manual_override' | 'needs_review' | 'no_mv' | 'unresolved'
+  youtube_video_provenance?: string | null
   notes: string
 }
 

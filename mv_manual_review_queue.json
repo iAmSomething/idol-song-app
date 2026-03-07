@@ -1,0 +1,831 @@
+[
+  {
+    "group": "NCT WISH",
+    "release_title": "Same Sky",
+    "release_date": "2026-02-27",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Same Sky"
+    ],
+    "youtube_video_status": "needs_review",
+    "official_youtube_url": "",
+    "review_reason": "Current YouTube results surface audio and lyric uploads ahead of any clearly canonical MV object.",
+    "recommended_action": "Backfill the official YouTube channel first, then review the suggested query before adding an override.",
+    "suggested_search_query": "NCT WISH Same Sky official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NCT+WISH+Same+Sky+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "Current YouTube results surface audio and lyric uploads ahead of any clearly canonical MV object."
+  },
+  {
+    "group": "QWER",
+    "release_title": "흰수염고래",
+    "release_date": "2025-10-06",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "흰수염고래"
+    ],
+    "youtube_video_status": "needs_review",
+    "official_youtube_url": "https://www.youtube.com/channel/UCgD0APk2x9uBlLM0UsmhQjw",
+    "review_reason": "Official YouTube search currently surfaces a special clip instead of a clearly canonical MV object.",
+    "recommended_action": "Review the suggested query on the official channel and either add a manual override or keep the release in review.",
+    "suggested_search_query": "QWER 흰수염고래 official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=QWER+%ED%9D%B0%EC%88%98%EC%97%BC%EA%B3%A0%EB%9E%98+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "Official YouTube search currently surfaces a special clip instead of a clearly canonical MV object."
+  },
+  {
+    "group": "&TEAM",
+    "release_title": "Back to Life",
+    "release_date": "2025-10-28",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Back to Life"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "&TEAM Back to Life official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=%26TEAM+Back+to+Life+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "(G)I-DLE",
+    "release_title": "Mono",
+    "release_date": "2026-01-27",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Mono"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "(G)I-DLE Mono official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=%28G%29I-DLE+Mono+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "aespa",
+    "release_title": "Rich Man",
+    "release_date": "2025-09-05",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Rich Man"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "aespa Rich Man official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=aespa+Rich+Man+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "ALL(H)OURS",
+    "release_title": "VCF",
+    "release_date": "2025-09-09",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "VCF"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the official YouTube channel first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "ALL(H)OURS VCF official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ALL%28H%29OURS+VCF+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "ATEEZ",
+    "release_title": "Choose",
+    "release_date": "2025-11-17",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Choose"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "ATEEZ Choose official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ATEEZ+Choose+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "AtHeart",
+    "release_title": "Plot Twist",
+    "release_date": "2025-08-13",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Plot Twist"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the official YouTube channel first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "AtHeart Plot Twist official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=AtHeart+Plot+Twist+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "BABYMONSTER",
+    "release_title": "WE GO UP",
+    "release_date": "2025-10-10",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "WE GO UP"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "BABYMONSTER WE GO UP official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=BABYMONSTER+WE+GO+UP+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "뛰어 (JUMP)",
+    "release_date": "2025-07-11",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "뛰어 (JUMP)"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "BLACKPINK 뛰어 (JUMP) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=BLACKPINK+%EB%9B%B0%EC%96%B4+%28JUMP%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "FIFTY FIFTY",
+    "release_title": "TAKE MY HAND",
+    "release_date": "2025-08-22",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "TAKE MY HAND"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "FIFTY FIFTY TAKE MY HAND official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=FIFTY+FIFTY+TAKE+MY+HAND+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "Hearts2Hearts",
+    "release_title": "FOCUS",
+    "release_date": "2025-10-20",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "FOCUS"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the official YouTube channel first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "Hearts2Hearts FOCUS official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=Hearts2Hearts+FOCUS+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "ITZY",
+    "release_title": "TUNNEL VISION",
+    "release_date": "2025-11-10",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "TUNNEL VISION"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "ITZY TUNNEL VISION official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ITZY+TUNNEL+VISION+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "IVE",
+    "release_title": "BANG BANG",
+    "release_date": "2026-02-09",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "BANG BANG"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "IVE BANG BANG official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=IVE+BANG+BANG+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "IVE",
+    "release_title": "REVIVE+",
+    "release_date": "2026-02-23",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [
+      "BLACKHOLE",
+      "BANG BANG"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "IVE BLACKHOLE official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=IVE+BLACKHOLE+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "izna",
+    "release_title": "BEEP",
+    "release_date": "2025-06-09",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "BEEP"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "izna BEEP official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=izna+BEEP+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "Kep1er",
+    "release_title": "BUBBLE GUM",
+    "release_date": "2025-08-19",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "BUBBLE GUM"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the official YouTube channel first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "Kep1er BUBBLE GUM official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=Kep1er+BUBBLE+GUM+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "KiiiKiii",
+    "release_title": "To Me From Me",
+    "release_date": "2025-11-04",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "To Me From Me"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the official YouTube channel first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "KiiiKiii To Me From Me official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=KiiiKiii+To+Me+From+Me+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+    "release_date": "2026-01-15",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Beautiful Pain (SANGAH, CHOWON, JUHYEON)"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCeQlMQ-4cedE7SNmF5JsdsA",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "LIGHTSUM Beautiful Pain (SANGAH, CHOWON, JUHYEON) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=LIGHTSUM+Beautiful+Pain+%28SANGAH%2C+CHOWON%2C+JUHYEON%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "LUN8",
+    "release_title": "LOST",
+    "release_date": "2025-09-17",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Lost"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCHx0MD2c0DTNGAtc0Yq6YPQ",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "LUN8 Lost official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=LUN8+Lost+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "MEOVV",
+    "release_title": "BURNING UP",
+    "release_date": "2025-10-14",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "BURNING UP"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCowiwt93gqGlNG4k5VDxO-w",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "MEOVV BURNING UP official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=MEOVV+BURNING+UP+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "MONSTA X",
+    "release_title": "growing pains",
+    "release_date": "2026-02-06",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "growing pains"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCZvCP6sWj75MwpUP4LVtpNw",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "MONSTA X growing pains official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=MONSTA+X+growing+pains+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "NCT DREAM",
+    "release_title": "Beat It Up",
+    "release_date": "2025-11-17",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Beat It Up"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "NCT DREAM Beat It Up official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NCT+DREAM+Beat+It+Up+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "NEXZ",
+    "release_title": "Beat‐Boxer",
+    "release_date": "2025-10-27",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Beat‐Boxer"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "NEXZ Beat‐Boxer official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NEXZ+Beat%E2%80%90Boxer+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "NMIXX",
+    "release_title": "Blue Valentine",
+    "release_date": "2025-10-13",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [
+      "Blue Valentine"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "NMIXX Blue Valentine official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NMIXX+Blue+Valentine+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "NMIXX",
+    "release_title": "TIC TIC",
+    "release_date": "2026-02-26",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "TIC TIC"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "NMIXX TIC TIC official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NMIXX+TIC+TIC+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "ONF",
+    "release_title": "Summer Light",
+    "release_date": "2025-08-03",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Summer Light"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "ONF Summer Light official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ONF+Summer+Light+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "P1Harmony",
+    "release_title": "EX",
+    "release_date": "2025-09-26",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "EX"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "P1Harmony EX official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=P1Harmony+EX+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "POW",
+    "release_title": "Wall Flowers",
+    "release_date": "2025-09-29",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Wall Flowers"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the official YouTube channel first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "POW Wall Flowers official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=POW+Wall+Flowers+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "RIIZE",
+    "release_title": "All of You",
+    "release_date": "2026-02-09",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "All of You"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "RIIZE All of You official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=RIIZE+All+of+You+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "SEVENTEEN",
+    "release_title": "Where love passed",
+    "release_date": "2025-07-14",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Where love passed"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "SEVENTEEN Where love passed official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=SEVENTEEN+Where+love+passed+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "Stray Kids",
+    "release_title": "In The Dark",
+    "release_date": "2025-11-06",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "In The Dark"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "Stray Kids In The Dark official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=Stray+Kids+In+The+Dark+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "Stray Kids",
+    "release_title": "DO IT",
+    "release_date": "2025-11-21",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Do It"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "Stray Kids Do It official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=Stray+Kids+Do+It+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "TEMPEST",
+    "release_title": "In the Dark (暮色独白)",
+    "release_date": "2025-11-03",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "In the Dark (暮色独白)"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the official YouTube channel first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "TEMPEST In the Dark (暮色独白) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TEMPEST+In+the+Dark+%28%E6%9A%AE%E8%89%B2%E7%8B%AC%E7%99%BD%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "THE BOYZ",
+    "release_title": "Still Love You",
+    "release_date": "2025-12-06",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Still Love You"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCkJ1rbOrsyPfBuHNfnLPm-Q",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "THE BOYZ Still Love You official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=THE+BOYZ+Still+Love+You+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "TIOT",
+    "release_title": "Run Run Barefoot",
+    "release_date": "2025-07-07",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Run Run Barefoot"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the official YouTube channel first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "TIOT Run Run Barefoot official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TIOT+Run+Run+Barefoot+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "TNX",
+    "release_title": "CALL ME BACK",
+    "release_date": "2026-01-22",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "CALL ME BACK"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the official YouTube channel first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "TNX CALL ME BACK official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TNX+CALL+ME+BACK+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "TOMORROW X TOGETHER",
+    "release_title": "butterflies",
+    "release_date": "2025-07-10",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "butterflies"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "TOMORROW X TOGETHER butterflies official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TOMORROW+X+TOGETHER+butterflies+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "TRENDZ",
+    "release_title": "Kart Racer",
+    "release_date": "2026-02-13",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Kart Racer"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCvc55IOOCI165H3raqcjjrg",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "TRENDZ Kart Racer official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TRENDZ+Kart+Racer+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "tripleS",
+    "release_title": "トキメティック",
+    "release_date": "2026-02-05",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "トキメティック"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCJnL-TBcsYrF2SLs7tmiC8Q",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "tripleS トキメティック official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=tripleS+%E3%83%88%E3%82%AD%E3%83%A1%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "TWICE",
+    "release_title": "Like 1",
+    "release_date": "2025-08-20",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Like 1"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "TWICE Like 1 official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+Like+1+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "TWS",
+    "release_title": "Head Shoulders Knees Toes",
+    "release_date": "2025-09-22",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Head Shoulders Knees Toes"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC8C6QOPDVYwmuaSBZksefdg",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "TWS Head Shoulders Knees Toes official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TWS+Head+Shoulders+Knees+Toes+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "UNIS",
+    "release_title": "幸せになんかならないでね",
+    "release_date": "2025-12-17",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "幸せになんかならないでね"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "UNIS 幸せになんかならないでね official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=UNIS+%E5%B9%B8%E3%81%9B%E3%81%AB%E3%81%AA%E3%82%93%E3%81%8B%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84%E3%81%A7%E3%81%AD+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "Xdinary Heroes",
+    "release_title": "FiRE (My Sweet Misery)",
+    "release_date": "2025-07-07",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "FiRE (My Sweet Misery)"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "Xdinary Heroes FiRE (My Sweet Misery) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=Xdinary+Heroes+FiRE+%28My+Sweet+Misery%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "xikers",
+    "release_title": "ICONIC",
+    "release_date": "2025-08-01",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "ICONIC"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "xikers ICONIC official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=xikers+ICONIC+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "ROSES",
+    "release_date": "2026-01-23",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "ROSES"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ",
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search the official channel for a defensible MV object and add a manual override only when the match is explicit.",
+    "suggested_search_query": "ZEROBASEONE ROSES official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ZEROBASEONE+ROSES+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  }
+]

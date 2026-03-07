@@ -1,18 +1,18 @@
 [
   {
-    "group": "&TEAM",
-    "release_title": "Back to Life",
-    "release_date": "2025-10-28",
-    "stream": "album",
-    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4",
-    "provenance": "ytmusicapi exact album search match"
-  },
-  {
     "group": "(G)I-DLE",
     "release_title": "i‐dle",
     "release_date": "2025-10-03",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kAyRRZgPd8_-z3-o-FoAVuoTe4zq0OfBU",
+    "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "&TEAM",
+    "release_title": "Back to Life",
+    "release_date": "2025-10-28",
+    "stream": "album",
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4",
     "provenance": "ytmusicapi exact album search match"
   },
   {
@@ -317,6 +317,15 @@
     "provenance": "ytmusicapi exact album search match"
   },
   {
+    "group": "NCT WISH",
+    "release_title": "Same Sky",
+    "release_date": "2026-02-27",
+    "stream": "song",
+    "youtube_video_status": "needs_review",
+    "youtube_video_review_reason": "Current YouTube results surface audio and lyric uploads ahead of any clearly canonical MV object.",
+    "youtube_video_provenance": "manual review seed"
+  },
+  {
     "group": "NEXZ",
     "release_title": "Beat‐Boxer",
     "release_date": "2025-10-27",
@@ -363,6 +372,15 @@
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nRipfFZ8M6FMPQ8Ax7d_mT3oQjTOCyiq8",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "QWER",
+    "release_title": "흰수염고래",
+    "release_date": "2025-10-06",
+    "stream": "song",
+    "youtube_video_status": "needs_review",
+    "youtube_video_review_reason": "Official YouTube search currently surfaces a special clip instead of a clearly canonical MV object.",
+    "youtube_video_provenance": "manual review seed"
   },
   {
     "group": "RESCENE",

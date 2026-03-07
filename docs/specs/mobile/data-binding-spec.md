@@ -56,6 +56,8 @@
 - `tracks[]`
 - `youtube_video_id?`
 - `youtube_video_url?`
+- `youtube_video_status?`
+- `youtube_video_provenance?`
 - `notes?`
 - `credits?`
 
@@ -130,6 +132,7 @@
 - 커버: `releaseArtwork.json`
 - 트랙 리스트: `releaseDetails.tracks`
 - MV: `releaseDetails.youtube_video_id` 또는 `releaseDetails.youtube_video_url`
+- 상태: `releaseDetails.youtube_video_status` (`relation_match` / `manual_override` / `needs_review` / `no_mv` / `unresolved`)
 
 ## 6. Derived Rules
 
