@@ -167,6 +167,14 @@ function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig
     throw new Error('EXPO_PUBLIC_REMOTE_DATASET_URL is required when EXPO_PUBLIC_ENABLE_REMOTE_REFRESH is enabled.');
   }
 
+  if (profile !== 'preview' && featureGates.remoteRefresh) {
+    throw new Error('EXPO_PUBLIC_ENABLE_REMOTE_REFRESH is only supported for APP_ENV=preview.');
+  }
+
+  if (profile !== 'preview' && remoteDatasetUrl) {
+    throw new Error('EXPO_PUBLIC_REMOTE_DATASET_URL is only supported for APP_ENV=preview.');
+  }
+
   if (featureGates.analytics && !analyticsWriteKey) {
     throw new Error('EXPO_PUBLIC_ANALYTICS_WRITE_KEY is required when EXPO_PUBLIC_ENABLE_ANALYTICS is enabled.');
   }

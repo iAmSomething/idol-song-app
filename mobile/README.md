@@ -28,6 +28,8 @@
   - 앱 런타임에서 쓰는 validated config accessor
 - `src/config/featureGates.ts`
   - gate registry / helper / off fallback definition
+- `src/services/datasetSource.ts`
+  - bundled static data vs preview remote data selection layer
 - `src/utils/assetRegistry.ts`
   - local bundled asset lookup entrypoint
 - `eas.json`
@@ -119,8 +121,11 @@ profile 차이는 아래 범위로만 제한한다.
   - `development`, `preview`, `production`만 허용한다.
 - `EXPO_PUBLIC_API_BASE_URL`, `EXPO_PUBLIC_REMOTE_DATASET_URL`
   - 값이 있으면 absolute `http(s)` URL이어야 한다.
+- `EXPO_PUBLIC_REMOTE_DATASET_URL`
+  - `APP_ENV=preview`에서만 허용한다.
 - `EXPO_PUBLIC_ENABLE_REMOTE_REFRESH=true`
   - 이 경우 `EXPO_PUBLIC_REMOTE_DATASET_URL`이 필수다.
+  - preview profile에서만 허용한다.
 - `EXPO_PUBLIC_ENABLE_ANALYTICS=true`
   - 이 경우 `EXPO_PUBLIC_ANALYTICS_WRITE_KEY`가 필수다.
 - `EXPO_PUBLIC_ENABLE_SHARE_ACTIONS`
@@ -128,6 +133,23 @@ profile 차이는 아래 범위로만 제한한다.
 - invalid config
   - `app.config.ts` 단계와 `src/config/runtime.ts` 단계에서 둘 다 명시적으로 실패시킨다.
   - silent fallback으로 숨기지 않는다.
+
+## dataset-source baseline
+
+- selector entrypoint는 `src/services/datasetSource.ts`에 둔다.
+- single-source rule
+  - 한 build/runtime 조합은 하나의 dataset source만 고른다.
+  - bundled static과 preview remote를 동시에 섞지 않는다.
+- bundled source
+  - 기본값이다.
+  - v1 계약 경로는 `mobile/assets/datasets/v1/` 기준으로 잡는다.
+- preview remote source
+  - `APP_ENV=preview`
+  - `EXPO_PUBLIC_ENABLE_REMOTE_REFRESH=true`
+  - `EXPO_PUBLIC_REMOTE_DATASET_URL` provided
+  - 위 3조건이 모두 맞을 때만 선택된다.
+- field contract
+  - bundled source와 preview remote source는 같은 artifact id / field contract를 유지해야 한다.
 
 ## feature-gate baseline
 
@@ -161,6 +183,8 @@ profile 차이는 아래 범위로만 제한한다.
   - Spotify / YouTube Music / YouTube MV icon baseline
 - `mobile/assets/badges/`
   - group / solo / label fallback
+- `mobile/assets/datasets/`
+  - bundled dataset path contract 문서
 - later screen work는 raw asset path 대신 `src/utils/assetRegistry.ts`를 우선 사용한다.
 
 ## verification baseline

@@ -103,4 +103,34 @@ describe('parseRuntimeConfig', () => {
       }),
     ).toThrow('remoteDatasetUrl');
   });
+
+  test('rejects remote dataset settings outside preview profile', () => {
+    expect(() =>
+      parseRuntimeConfig({
+        profile: 'production',
+        dataSource: {
+          mode: 'production-static',
+          remoteDatasetUrl: 'https://example.com/dataset.json',
+          datasetVersion: 'preview-v1',
+        },
+        services: {
+          apiBaseUrl: null,
+          analyticsWriteKey: null,
+        },
+        logging: {
+          level: 'error',
+        },
+        featureGates: {
+          radar: true,
+          analytics: false,
+          remoteRefresh: false,
+          mvEmbed: true,
+          shareActions: true,
+        },
+        build: {
+          commitSha: null,
+        },
+      }),
+    ).toThrow('remoteDatasetUrl');
+  });
 });

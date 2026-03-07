@@ -4,6 +4,12 @@ export type MobileProfile = 'development' | 'preview' | 'production';
 export type LoggingLevel = 'verbose' | 'debug' | 'error';
 export type DataSourceMode = 'bundled-static' | 'preview-static' | 'production-static';
 
+const EXPECTED_MODE_BY_PROFILE: Record<MobileProfile, DataSourceMode> = {
+  development: 'bundled-static',
+  preview: 'preview-static',
+  production: 'production-static',
+};
+
 export type MobileRuntimeConfig = {
   profile: MobileProfile;
   dataSource: {
@@ -159,6 +165,18 @@ export function parseRuntimeConfig(input: unknown): MobileRuntimeConfig {
 
   if (config.featureGates.remoteRefresh && !config.dataSource.remoteDatasetUrl) {
     throw new Error('Runtime config requires dataSource.remoteDatasetUrl when remoteRefresh is enabled.');
+  }
+
+  if (config.dataSource.mode !== EXPECTED_MODE_BY_PROFILE[config.profile]) {
+    throw new Error('Runtime config dataSource.mode does not match the active mobile profile.');
+  }
+
+  if (config.profile !== 'preview' && config.featureGates.remoteRefresh) {
+    throw new Error('Runtime config only allows remoteRefresh in the preview profile.');
+  }
+
+  if (config.profile !== 'preview' && config.dataSource.remoteDatasetUrl) {
+    throw new Error('Runtime config only allows dataSource.remoteDatasetUrl in the preview profile.');
   }
 
   if (config.featureGates.analytics && !config.services.analyticsWriteKey) {

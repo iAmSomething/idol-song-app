@@ -5,12 +5,14 @@
 - `components/`: 표시 컴포넌트
 - `config/`: validated runtime config accessor
   - `featureGates.ts`: gate registry / fallback metadata / helper
+  - `runtime.ts`: mobile profile / env validation
 - `features/`: 화면 composition / binding
 - `selectors/`: display model selector / adapter
-- `services/`: external handoff / helper
+- `services/`: data source / external handoff / helper
+  - `datasetSource.ts`: bundled-static vs preview-remote source selector
 - `tokens/`: design token / theme
 - `types/`: shared TypeScript model
 - `utils/`: framework-agnostic helper
   - `assetRegistry.ts`: bundled placeholder/service/badge asset entrypoint
 
-현재는 bootstrap 단계라 placeholder directory만 둔다.
+현재는 bootstrap 단계지만 config/service foundation은 실제 모듈로 열어둔다.
