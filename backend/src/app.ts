@@ -31,7 +31,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   registerCalendarRoutes(app, config);
   registerSearchRoutes(app, config);
   registerEntityRoutes(app, config);
-  registerReleaseRoutes(app, config);
+  registerReleaseRoutes(app, { config, db });
   registerRadarRoutes(app, { config, db });
 
   return app;
