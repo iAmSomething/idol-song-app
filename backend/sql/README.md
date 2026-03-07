@@ -24,6 +24,9 @@ cd backend
 npm install
 npm run migrate:apply
 npm run schema:verify
+cd ..
+python3 -m pip install -r backend/requirements-import.txt
+python3 import_json_to_neon.py
 ```
 
 ## 규칙
@@ -32,3 +35,4 @@ npm run schema:verify
 - apply helper는 `schema_migrations` 메타 테이블로 재적용을 막는다.
 - direct connection string인 `DATABASE_URL`을 우선 사용한다.
 - pooler URL은 migration보다 read traffic 용도에 가깝다.
+- first JSON baseline import summary는 `backend/reports/json_to_neon_import_summary.json`에 남긴다.

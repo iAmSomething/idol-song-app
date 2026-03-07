@@ -1,0 +1,165 @@
+{
+  "generated_at": "2026-03-07T07:30:27.929305+00:00",
+  "source_counts": {
+    "artist_profiles": 116,
+    "youtube_allowlists": 108,
+    "release_details": 117,
+    "release_history_groups": 115,
+    "release_history_rows": 1767,
+    "release_artwork": 117,
+    "upcoming_candidates": 71,
+    "watchlist": 116,
+    "release_detail_overrides": 67,
+    "manual_review_queue": 67,
+    "mv_manual_review_queue": 34,
+    "releases_rollup": 80
+  },
+  "source_duplicates": {
+    "entity_aliases": 1,
+    "youtube_channels": 25
+  },
+  "dropped_records": {},
+  "dropped_missing_fk_samples": {},
+  "unresolved_release_mappings": [],
+  "unresolved_review_links": [],
+  "entity_type_counts": {
+    "group": 104,
+    "project": 1,
+    "unit": 4,
+    "solo": 7
+  },
+  "samples": {
+    "entities": [
+      "and-team",
+      "g-i-dle",
+      "82major",
+      "8turn",
+      "ab6ix"
+    ],
+    "releases": [
+      "&TEAM | 2022-11-21 | song | Under the skin",
+      "&TEAM | 2022-12-06 | album | First Howling : ME",
+      "&TEAM | 2023-05-07 | song | Blind Love",
+      "&TEAM | 2023-06-14 | album | First Howling : WE",
+      "&TEAM | 2023-11-15 | album | First Howling : NOW"
+    ],
+    "upcoming_signals": [
+      "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
+      "AB6IX announces March comeback with their first full album in 5 years - allkpop",
+      "AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop",
+      "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
+      "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop"
+    ],
+    "review_tasks": [
+      "upcoming_signal",
+      "upcoming_signal",
+      "upcoming_signal",
+      "upcoming_signal",
+      "upcoming_signal"
+    ]
+  },
+  "stale_pruned": {
+    "review_tasks": 0
+  },
+  "operation_counts": {
+    "entities": {
+      "updated": 116
+    },
+    "entity_aliases": {
+      "updated": 166
+    },
+    "entity_official_links": {
+      "updated": 425
+    },
+    "youtube_channels": {
+      "updated": 86
+    },
+    "entity_youtube_channels": {
+      "updated": 111
+    },
+    "releases": {
+      "updated": 1768
+    },
+    "release_artwork": {
+      "updated": 117
+    },
+    "tracks": {
+      "updated": 497
+    },
+    "release_service_links": {
+      "updated": 351
+    },
+    "track_service_links": {},
+    "upcoming_signals": {
+      "updated": 71
+    },
+    "upcoming_signal_sources": {
+      "updated": 71
+    },
+    "entity_tracking_state": {
+      "updated": 116
+    },
+    "review_tasks": {
+      "updated": 101
+    },
+    "release_link_overrides": {
+      "updated": 75
+    }
+  },
+  "db_row_counts": {
+    "entities": 116,
+    "entity_aliases": 166,
+    "entity_official_links": 425,
+    "youtube_channels": 86,
+    "entity_youtube_channels": 111,
+    "releases": 1768,
+    "release_artwork": 117,
+    "tracks": 497,
+    "release_service_links": 351,
+    "track_service_links": 0,
+    "upcoming_signals": 71,
+    "upcoming_signal_sources": 71,
+    "entity_tracking_state": 116,
+    "review_tasks": 101,
+    "release_link_overrides": 75
+  },
+  "critical_checks": {
+    "entity_type_counts": {
+      "group": 104,
+      "project": 1,
+      "solo": 7,
+      "unit": 4
+    },
+    "upcoming_date_precision_counts": {
+      "exact": 7,
+      "month_only": 21,
+      "unknown": 43
+    },
+    "youtube_mv_status_counts": {
+      "manual_override": 25,
+      "needs_review": 2,
+      "relation_match": 1,
+      "unresolved": 89
+    },
+    "title_track_rows": 61,
+    "hangul_alias_rows": 152
+  },
+  "summary_path": "backend/reports/json_to_neon_import_summary.json",
+  "table_source_counts": {
+    "entities": 116,
+    "entity_aliases": 166,
+    "entity_official_links": 425,
+    "youtube_channels": 86,
+    "entity_youtube_channels": 111,
+    "releases": 1768,
+    "release_artwork": 117,
+    "tracks": 497,
+    "release_service_links": 351,
+    "track_service_links": 0,
+    "upcoming_signals": 71,
+    "upcoming_signal_sources": 71,
+    "entity_tracking_state": 116,
+    "review_tasks": 101,
+    "release_link_overrides": 75
+  }
+}
