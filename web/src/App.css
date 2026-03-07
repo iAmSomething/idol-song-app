@@ -256,6 +256,11 @@
   min-height: 760px;
 }
 
+.calendar-drilldown-stack {
+  display: grid;
+  gap: 14px;
+}
+
 .panel-top,
 .toolbar,
 .calendar-controls,
@@ -589,6 +594,20 @@
   display: grid;
   gap: 18px;
   scroll-margin-top: 24px;
+}
+
+.selected-day-panel-context {
+  background:
+    linear-gradient(180deg, rgba(255, 247, 240, 0.9), rgba(255, 255, 255, 0.96)),
+    rgba(255, 255, 255, 0.9);
+}
+
+.selected-day-panel-context::before {
+  content: '';
+  width: 72px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(195, 88, 49, 0.3);
 }
 
 .daily-share-shell,
