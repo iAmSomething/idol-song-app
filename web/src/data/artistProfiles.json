@@ -337,6 +337,26 @@
     ]
   },
   {
+    "slug": "close-your-eyes",
+    "group": "CLOSE YOUR EYES",
+    "display_name": "CLOSE YOUR EYES",
+    "aliases": [
+      "CYE"
+    ],
+    "agency": "UNCORE",
+    "official_youtube_url": null,
+    "official_x_url": null,
+    "official_instagram_url": "https://www.instagram.com/close.your.eyes.official/",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "클로즈 유어 아이즈",
+      "클로즈유어아이즈",
+      "클유아"
+    ],
+    "debut_year": 2025
+  },
+  {
     "slug": "class-y",
     "group": "CLASS:y",
     "display_name": "CLASS:y",

@@ -51,6 +51,14 @@
 - 사용자 체감 검색 실패를 유발하는 케이스는 큐레이션 우선순위가 높다.
 - alias는 장르 판정 라벨이 아니라 검색 편의 자산이다.
 
+## 6.a Missing Entity Triage
+- 검색 실패 제보가 들어오면 먼저 `artistProfiles.json`, `watchlist.json`, `releases.json`, `upcomingCandidates.json`에 엔티티가 아예 없는지 확인한다.
+- 엔티티 부재가 원인이면 alias 이슈로 우회하지 않고 onboarding 이슈로 분리한다.
+- in-scope 팀으로 판단되면 최소 아래 세트를 같은 턴에 넣는다.
+  - `artistProfiles.json`의 canonical name, slug, Korean-searchable alias
+  - `tracking_watchlist.json`과 `web/src/data/watchlist.json`의 최소 watchlist row
+- verified release나 upcoming fact가 아직 없어도, team search와 team navigation이 되도록 profile/watchlist 기준 엔트리를 우선 연다.
+
 ## 7. 브랜드 자산 운영 원칙
 - 공식 배지/대표 이미지가 있으면 우선 사용
 - 없으면 representative image
