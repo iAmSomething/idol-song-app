@@ -21,13 +21,16 @@
 5. `migration-runtime-gates.md`
    - latency / error / freshness / cadence gate 정의
    - cutover go/no-go에 쓰는 combined runtime report 규칙
-6. `json-snapshot-demotion.md`
+6. `migration-operations-runbook.md`
+   - schema/import/dual-write/projection/verification/fallback 운영 절차
+   - high-risk cutover / rollback checklist
+7. `json-snapshot-demotion.md`
    - cut-over surface에서 JSON을 fallback/debug/export로 강등하는 runtime / delivery 규칙
    - Pages build, query override, emergency fallback window 운영 기준
-7. `shared-read-api-contracts.md`
+8. `shared-read-api-contracts.md`
    - calendar, search, entity detail, release detail, radar용 shared read contract
    - server-side derived field와 client-side allowed logic 구분
-8. `backend-migration-epic.md`
+9. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
 
@@ -36,11 +39,12 @@
 1. `canonical-backend-data-model.md`
 2. `runtime-and-service-boundaries.md`
 3. `preview-staging-backend-path.md`
-4. `migration-runtime-gates.md`
-5. `json-snapshot-demotion.md`
-6. `shared-read-api-contracts.md`
-7. `phased-rollout-plan.md`
-8. `backend-migration-epic.md`
+4. `migration-operations-runbook.md`
+5. `migration-runtime-gates.md`
+6. `json-snapshot-demotion.md`
+7. `shared-read-api-contracts.md`
+8. `phased-rollout-plan.md`
+9. `backend-migration-epic.md`
 
 ## 원칙
 

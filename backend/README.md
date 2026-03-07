@@ -5,6 +5,10 @@
 backend-backed web cutover가 열린 이후에는 committed JSON snapshot을 production truth로 보지 않는다.
 cut-over surface의 primary read path는 API이고, committed JSON은 transitional fallback / debug / export 역할만 가진다.
 
+운영 runbook:
+
+- `docs/specs/backend/migration-operations-runbook.md`
+
 현재 포함 범위:
 
 - `src/`
