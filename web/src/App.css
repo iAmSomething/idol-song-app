@@ -247,6 +247,87 @@
   align-content: start;
 }
 
+.scroll-anchor-section {
+  scroll-margin-top: 96px;
+}
+
+.sidebar-radar-stack {
+  display: grid;
+  gap: 20px;
+}
+
+.section-navigator {
+  position: fixed;
+  right: 20px;
+  bottom: 22px;
+  z-index: 30;
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+}
+
+.section-navigator-panel {
+  width: min(240px, calc(100vw - 32px));
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid rgba(27, 42, 65, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 40px rgba(27, 42, 65, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.section-navigator-head,
+.section-navigator-list {
+  display: grid;
+  gap: 8px;
+}
+
+.section-navigator-head p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.section-navigator-item,
+.section-navigator-toggle {
+  border: 1px solid rgba(27, 42, 65, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text-soft);
+  font: inherit;
+}
+
+.section-navigator-item {
+  width: 100%;
+  padding: 9px 12px;
+  text-align: left;
+}
+
+.section-navigator-item-active {
+  border-color: rgba(195, 88, 49, 0.28);
+  background: rgba(195, 88, 49, 0.12);
+  color: var(--accent-deep);
+}
+
+.section-navigator-toggle {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 14px 28px rgba(27, 42, 65, 0.12);
+}
+
+.section-navigator-toggle span {
+  font-size: 0.78rem;
+}
+
+.section-navigator-toggle strong {
+  color: var(--text-strong);
+  font-size: 0.82rem;
+}
+
 .panel {
   border-radius: 28px;
   padding: 24px;
@@ -2711,6 +2792,11 @@
   .sidebar-upcoming-panel {
     height: auto !important;
   }
+
+  .section-navigator {
+    right: 16px;
+    bottom: 18px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -2727,6 +2813,18 @@
 
   .hero-stats {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .section-navigator-panel {
+    display: none;
+  }
+
+  .section-navigator-toggle {
+    display: inline-flex;
+  }
+
+  .section-navigator-expanded .section-navigator-panel {
+    display: grid;
   }
 
   .panel-top,

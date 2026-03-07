@@ -401,6 +401,22 @@ type RookieRadarEntry = {
   latestSignal: UpcomingCandidateRow | null
 }
 
+type DashboardSectionNavigatorItem = {
+  id: string
+  label: string
+  shortLabel: string
+}
+
+const DASHBOARD_SECTION_NAV_IDS = [
+  'dashboard-weekly-digest',
+  'dashboard-calendar',
+  'dashboard-monthly-view',
+  'dashboard-agency-view',
+  'dashboard-upcoming-scan',
+  'dashboard-radar',
+  'dashboard-recent-feed',
+] as const
+
 type Language = 'ko' | 'en'
 type CountdownState = 'd_day' | 'd_1' | 'd_3' | 'd_7' | 'date'
 
@@ -629,6 +645,16 @@ const TRANSLATIONS = {
     rookieSignalMissing: '예정 신호 없음',
     rookieLatestSignal: '최근 신호',
     rookieLatestSignalEmpty: '아직 포착된 예정 신호가 없습니다.',
+    sectionNavigator: '섹션 이동',
+    sectionNavigatorHint: '긴 페이지에서 원하는 블록으로 바로 이동합니다.',
+    sectionNavigatorToggle: '목차',
+    sectionNavigatorWeekly: '이번 주',
+    sectionNavigatorCalendar: '캘린더',
+    sectionNavigatorDashboard: '대시보드',
+    sectionNavigatorAgency: '소속사',
+    sectionNavigatorUpcoming: '예정 스캔',
+    sectionNavigatorRadar: '레이더',
+    sectionNavigatorFeed: '최근 피드',
   },
   en: {
     locale: 'en-US',
@@ -841,6 +867,16 @@ const TRANSLATIONS = {
     rookieSignalMissing: 'No upcoming signal',
     rookieLatestSignal: 'Latest signal',
     rookieLatestSignalEmpty: 'No captured upcoming signal yet.',
+    sectionNavigator: 'Jump to sections',
+    sectionNavigatorHint: 'Use a lightweight navigator to jump between major blocks.',
+    sectionNavigatorToggle: 'Sections',
+    sectionNavigatorWeekly: 'This week',
+    sectionNavigatorCalendar: 'Calendar',
+    sectionNavigatorDashboard: 'Dashboard',
+    sectionNavigatorAgency: 'Agency',
+    sectionNavigatorUpcoming: 'Upcoming',
+    sectionNavigatorRadar: 'Radar',
+    sectionNavigatorFeed: 'Feed',
   },
 } as const
 
@@ -1392,6 +1428,45 @@ function App() {
     ? getReleaseDetailMvUrls(selectedTeamLatestDetail).canonicalUrl
     : ''
   const relatedActs = selectedTeam ? relatedActsByGroup.get(selectedTeam.group) ?? [] : []
+  const dashboardSectionNavigatorItems: DashboardSectionNavigatorItem[] = [
+    {
+      id: DASHBOARD_SECTION_NAV_IDS[0],
+      label: copy.sectionNavigatorWeekly,
+      shortLabel: copy.sectionNavigatorWeekly,
+    },
+    {
+      id: DASHBOARD_SECTION_NAV_IDS[1],
+      label: copy.sectionNavigatorCalendar,
+      shortLabel: copy.sectionNavigatorCalendar,
+    },
+    {
+      id: DASHBOARD_SECTION_NAV_IDS[2],
+      label: copy.sectionNavigatorDashboard,
+      shortLabel: copy.sectionNavigatorDashboard,
+    },
+    {
+      id: DASHBOARD_SECTION_NAV_IDS[3],
+      label: copy.sectionNavigatorAgency,
+      shortLabel: copy.sectionNavigatorAgency,
+    },
+    {
+      id: DASHBOARD_SECTION_NAV_IDS[4],
+      label: copy.sectionNavigatorUpcoming,
+      shortLabel: copy.sectionNavigatorUpcoming,
+    },
+    {
+      id: DASHBOARD_SECTION_NAV_IDS[5],
+      label: copy.sectionNavigatorRadar,
+      shortLabel: copy.sectionNavigatorRadar,
+    },
+    {
+      id: DASHBOARD_SECTION_NAV_IDS[6],
+      label: copy.sectionNavigatorFeed,
+      shortLabel: copy.sectionNavigatorFeed,
+    },
+  ]
+  const [activeDashboardSectionId, setActiveDashboardSectionId] = useState(DASHBOARD_SECTION_NAV_IDS[1])
+  const [isSectionNavigatorExpanded, setIsSectionNavigatorExpanded] = useState(false)
 
   useEffect(() => {
     if (!selectedDayInteractionTick || !selectedDayPanelRef.current || !effectiveSelectedDayIso) {
@@ -1425,6 +1500,42 @@ function App() {
       panelNode.classList.remove('selected-day-panel-highlight')
     }
   }, [selectedDayInteractionTick, effectiveSelectedDayIso])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || selectedGroup || selectedAlbumKey) {
+      return undefined
+    }
+
+    const sectionNodes = DASHBOARD_SECTION_NAV_IDS
+      .map((id) => document.getElementById(id))
+      .filter((node): node is HTMLElement => Boolean(node))
+
+    if (!sectionNodes.length) {
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((left, right) => right.intersectionRatio - left.intersectionRatio)
+
+        if (visibleEntries[0]) {
+          setActiveDashboardSectionId(visibleEntries[0].target.id)
+        }
+      },
+      {
+        rootMargin: '-18% 0px -55% 0px',
+        threshold: [0.1, 0.35, 0.6],
+      },
+    )
+
+    sectionNodes.forEach((node) => observer.observe(node))
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [selectedAlbumKey, selectedGroup])
 
   useEffect(() => {
     if (typeof window === 'undefined' || selectedGroup) {
@@ -1494,6 +1605,24 @@ function App() {
   function handleSelectDay(dayIso: string) {
     setSelectedDayIso(dayIso)
     setSelectedDayInteractionTick((tick) => tick + 1)
+  }
+
+  function handleJumpToDashboardSection(sectionId: string) {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const sectionNode = document.getElementById(sectionId)
+    if (!sectionNode) {
+      return
+    }
+
+    setActiveDashboardSectionId(sectionId)
+    setIsSectionNavigatorExpanded(false)
+    sectionNode.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
   }
 
   return (
@@ -2073,6 +2202,7 @@ function App() {
         <main className="layout">
           <div className="layout-main-column">
             <WeeklyMustListenDigest
+              sectionId="dashboard-weekly-digest"
               rows={weeklyDigestRows}
               windowStartDate={weeklyDigestWindowStart}
               windowEndDate={weeklyDigestReferenceDate}
@@ -2081,7 +2211,7 @@ function App() {
               onOpenReleaseDetail={openReleaseDetail}
             />
 
-            <div className="calendar-drilldown-stack">
+            <div id="dashboard-calendar" className="calendar-drilldown-stack scroll-anchor-section">
               <section ref={calendarPanelRef} className="panel panel-calendar">
                 <div className="panel-top">
                   <div>
@@ -2196,6 +2326,7 @@ function App() {
             </div>
 
             <MonthlyReleaseDashboard
+              sectionId="dashboard-monthly-view"
               monthLabel={monthFormatter.format(selectedMonthDate)}
               verifiedRows={monthVerifiedDashboardRows}
               scheduledRows={monthScheduledDashboardRows}
@@ -2207,6 +2338,7 @@ function App() {
             />
 
             <AgencyCalendarView
+              sectionId="dashboard-agency-view"
               sections={monthAgencySections}
               language={language}
               displayDateFormatter={displayDateFormatter}
@@ -2218,7 +2350,8 @@ function App() {
 
           <aside className="sidebar">
             <section
-              className="panel sidebar-upcoming-panel"
+              id="dashboard-upcoming-scan"
+              className="panel sidebar-upcoming-panel scroll-anchor-section"
               style={desktopUpcomingPanelHeight ? { height: `${desktopUpcomingPanelHeight}px` } : undefined}
             >
               <div className="sidebar-upcoming-panel-head">
@@ -2298,29 +2431,31 @@ function App() {
               </div>
             </section>
 
-            <section className="panel">
-              <p className="panel-label">{copy.longGapRadar}</p>
-              <h2>{copy.longGapRadarTitle}</h2>
-              <LongGapRadarList
-                entries={filteredLongGapRadar}
-                language={language}
-                displayDateFormatter={displayDateFormatter}
-                onOpenTeamPage={openTeamPage}
-              />
-            </section>
+            <div id="dashboard-radar" className="sidebar-radar-stack scroll-anchor-section">
+              <section className="panel">
+                <p className="panel-label">{copy.longGapRadar}</p>
+                <h2>{copy.longGapRadarTitle}</h2>
+                <LongGapRadarList
+                  entries={filteredLongGapRadar}
+                  language={language}
+                  displayDateFormatter={displayDateFormatter}
+                  onOpenTeamPage={openTeamPage}
+                />
+              </section>
 
-            <section className="panel">
-              <p className="panel-label">{copy.rookieRadar}</p>
-              <h2>{copy.rookieRadarTitle}</h2>
-              <RookieRadarList
-                entries={filteredRookieRadar}
-                language={language}
-                displayDateFormatter={displayDateFormatter}
-                onOpenTeamPage={openTeamPage}
-              />
-            </section>
+              <section className="panel">
+                <p className="panel-label">{copy.rookieRadar}</p>
+                <h2>{copy.rookieRadarTitle}</h2>
+                <RookieRadarList
+                  entries={filteredRookieRadar}
+                  language={language}
+                  displayDateFormatter={displayDateFormatter}
+                  onOpenTeamPage={openTeamPage}
+                />
+              </section>
+            </div>
 
-            <section className="panel">
+            <section id="dashboard-recent-feed" className="panel scroll-anchor-section">
               <p className="panel-label">{copy.recentFeed}</p>
               <h2>{copy.newestReleasesFirst}</h2>
               <div className="feed-list">
@@ -2406,6 +2541,17 @@ function App() {
         </aside>
       </main>
       )}
+
+      {!selectedTeam && !selectedAlbum ? (
+        <FloatingSectionNavigator
+          items={dashboardSectionNavigatorItems}
+          activeSectionId={activeDashboardSectionId}
+          expanded={isSectionNavigatorExpanded}
+          language={language}
+          onToggle={() => setIsSectionNavigatorExpanded((current) => !current)}
+          onSelectSection={handleJumpToDashboardSection}
+        />
+      ) : null}
 
       {!selectedTeam && latestRelease ? (
         <footer className="inline-note">
@@ -3180,6 +3326,7 @@ function RookieRadarList({
 }
 
 function WeeklyMustListenDigest({
+  sectionId,
   rows,
   windowStartDate,
   windowEndDate,
@@ -3187,6 +3334,7 @@ function WeeklyMustListenDigest({
   displayDateFormatter,
   onOpenReleaseDetail,
 }: {
+  sectionId?: string
   rows: VerifiedRelease[]
   windowStartDate: Date | null
   windowEndDate: Date | null
@@ -3201,7 +3349,7 @@ function WeeklyMustListenDigest({
       : copy.none
 
   return (
-    <section className="panel weekly-digest">
+    <section id={sectionId} className="panel weekly-digest scroll-anchor-section">
       <div className="monthly-dashboard-head">
         <div>
           <p className="panel-label">{copy.weeklyDigest}</p>
@@ -3658,6 +3806,7 @@ function CompareCountCard({ count }: { count: number }) {
 }
 
 function MonthlyReleaseDashboard({
+  sectionId,
   monthLabel,
   verifiedRows,
   scheduledRows,
@@ -3667,6 +3816,7 @@ function MonthlyReleaseDashboard({
   onOpenTeamPage,
   onOpenReleaseDetail,
 }: {
+  sectionId?: string
   monthLabel: string
   verifiedRows: VerifiedRelease[]
   scheduledRows: DatedUpcomingSignal[]
@@ -3715,7 +3865,7 @@ function MonthlyReleaseDashboard({
   }
 
   return (
-    <section className="panel monthly-dashboard">
+    <section id={sectionId} className="panel monthly-dashboard scroll-anchor-section">
       <div className="monthly-dashboard-head">
         <div>
           <p className="panel-label">{copy.monthlyDashboard}</p>
@@ -4011,12 +4161,14 @@ function MonthlyReleaseDashboard({
 }
 
 function AgencyCalendarView({
+  sectionId,
   sections,
   language,
   displayDateFormatter,
   onOpenTeamPage,
   onOpenReleaseDetail,
 }: {
+  sectionId?: string
   sections: AgencyMonthSection[]
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
@@ -4026,7 +4178,7 @@ function AgencyCalendarView({
   const copy = TRANSLATIONS[language]
 
   return (
-    <section className="panel agency-view">
+    <section id={sectionId} className="panel agency-view scroll-anchor-section">
       <div className="monthly-dashboard-head">
         <div>
           <p className="panel-label">{copy.agencyView}</p>
@@ -4505,6 +4657,55 @@ function SelectedDayPanel({
         </div>
       </div>
     </section>
+  )
+}
+
+function FloatingSectionNavigator({
+  items,
+  activeSectionId,
+  expanded,
+  language,
+  onToggle,
+  onSelectSection,
+}: {
+  items: DashboardSectionNavigatorItem[]
+  activeSectionId: string
+  expanded: boolean
+  language: Language
+  onToggle: () => void
+  onSelectSection: (sectionId: string) => void
+}) {
+  const copy = TRANSLATIONS[language]
+  const activeItem = items.find((item) => item.id === activeSectionId) ?? items[0]
+
+  return (
+    <nav
+      className={`section-navigator ${expanded ? 'section-navigator-expanded' : ''}`}
+      aria-label={copy.sectionNavigator}
+    >
+      <button type="button" className="section-navigator-toggle" onClick={onToggle}>
+        <span>{copy.sectionNavigatorToggle}</span>
+        <strong>{activeItem.shortLabel}</strong>
+      </button>
+      <div className="section-navigator-panel">
+        <div className="section-navigator-head">
+          <span className="panel-label">{copy.sectionNavigator}</span>
+          <p>{copy.sectionNavigatorHint}</p>
+        </div>
+        <div className="section-navigator-list">
+          {items.map((item) => (
+            <button
+              type="button"
+              key={item.id}
+              className={`section-navigator-item ${item.id === activeSectionId ? 'section-navigator-item-active' : ''}`}
+              onClick={() => onSelectSection(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </nav>
   )
 }
 
