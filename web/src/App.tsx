@@ -380,6 +380,10 @@ type TeamProfile = {
   nextUpcomingSignal: UpcomingCandidateRow | null
 }
 
+type DashboardSortDirection = 'asc' | 'desc'
+type VerifiedDashboardSortKey = 'date' | 'team'
+type ScheduledDashboardSortKey = 'date' | 'team' | 'status' | 'confidence'
+
 type LongGapRadarEntry = {
   group: string
   watchReason: WatchReason
@@ -441,6 +445,7 @@ const TRANSLATIONS = {
     prev: '이전',
     next: '다음',
     searchLabel: '그룹, 곡, 앨범 검색',
+    searchShort: '검색',
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
     monthSummaryVerified: '검증됨',
     monthSummaryScheduled: '예정',
@@ -505,6 +510,9 @@ const TRANSLATIONS = {
     monthlyDashboard: '월간 릴리즈 대시보드',
     monthlyDashboardTitle: '선택한 월을 표 기반으로 훑어봅니다.',
     monthlyDashboardMonth: '현재 월',
+    monthlyDashboardFilters: '적용 필터',
+    monthlyDashboardFiltersDefault: '헤더 기본 필터 그대로',
+    monthlyDashboardSort: '정렬',
     monthlyDashboardVerifiedTitle: 'Verified releases',
     monthlyDashboardScheduledTitle: 'Scheduled comebacks',
     monthlyDashboardVerifiedEmpty: '이 월에 표시할 검증 발매가 없습니다.',
@@ -649,6 +657,7 @@ const TRANSLATIONS = {
     prev: 'Prev',
     next: 'Next',
     searchLabel: 'Search group, song, or album',
+    searchShort: 'Search',
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
     monthSummaryVerified: 'verified',
     monthSummaryScheduled: 'scheduled',
@@ -713,6 +722,9 @@ const TRANSLATIONS = {
     monthlyDashboard: 'Monthly release dashboard',
     monthlyDashboardTitle: 'Scan the selected month in an index view.',
     monthlyDashboardMonth: 'Current month',
+    monthlyDashboardFilters: 'Active filters',
+    monthlyDashboardFiltersDefault: 'Using the header defaults',
+    monthlyDashboardSort: 'Sort',
     monthlyDashboardVerifiedTitle: 'Verified releases',
     monthlyDashboardScheduledTitle: 'Scheduled comebacks',
     monthlyDashboardVerifiedEmpty: 'No verified releases to show for this month.',
@@ -1287,6 +1299,16 @@ function App() {
   )
   const monthVerifiedDashboardRows = [...monthReleases].sort(compareMonthlyDashboardVerified)
   const monthScheduledDashboardRows = [...monthUpcomingSignals].sort(compareMonthlyDashboardUpcoming)
+  const dashboardFilterSummary = buildMonthlyDashboardFilterSummary(
+    {
+      search,
+      selectedReleaseKind,
+      selectedActType,
+      selectedDashboardStatus,
+      selectedAgency,
+    },
+    language,
+  )
   const monthAgencySections = buildAgencyMonthSections(monthVerifiedDashboardRows, monthScheduledDashboardRows)
   const monthActiveDayIsos = Array.from(
     new Set([...monthReleases.map((item) => item.isoDate), ...monthUpcomingSignals.map((item) => item.isoDate)]),
@@ -2155,6 +2177,7 @@ function App() {
               monthLabel={monthFormatter.format(selectedMonthDate)}
               verifiedRows={monthVerifiedDashboardRows}
               scheduledRows={monthScheduledDashboardRows}
+              activeFilters={dashboardFilterSummary}
               language={language}
               displayDateFormatter={displayDateFormatter}
               onOpenTeamPage={openTeamPage}
@@ -3626,6 +3649,7 @@ function MonthlyReleaseDashboard({
   monthLabel,
   verifiedRows,
   scheduledRows,
+  activeFilters,
   language,
   displayDateFormatter,
   onOpenTeamPage,
@@ -3634,12 +3658,49 @@ function MonthlyReleaseDashboard({
   monthLabel: string
   verifiedRows: VerifiedRelease[]
   scheduledRows: DatedUpcomingSignal[]
+  activeFilters: string[]
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
   onOpenTeamPage: (group: string) => void
   onOpenReleaseDetail: (release: VerifiedRelease) => void
 }) {
   const copy = TRANSLATIONS[language]
+  const [verifiedSortKey, setVerifiedSortKey] = useState<VerifiedDashboardSortKey>('date')
+  const [verifiedSortDirection, setVerifiedSortDirection] = useState<DashboardSortDirection>('asc')
+  const [scheduledSortKey, setScheduledSortKey] = useState<ScheduledDashboardSortKey>('date')
+  const [scheduledSortDirection, setScheduledSortDirection] = useState<DashboardSortDirection>('asc')
+  const verifiedSortOptions: Array<{ key: VerifiedDashboardSortKey; label: string }> = [
+    { key: 'date', label: copy.dashboardDate },
+    { key: 'team', label: copy.dashboardTeam },
+  ]
+  const scheduledSortOptions: Array<{ key: ScheduledDashboardSortKey; label: string }> = [
+    { key: 'date', label: copy.dashboardDate },
+    { key: 'team', label: copy.dashboardTeam },
+    { key: 'status', label: copy.dashboardStatus },
+    { key: 'confidence', label: copy.dashboardConfidence },
+  ]
+  const sortedVerifiedRows = sortVerifiedDashboardRows(verifiedRows, verifiedSortKey, verifiedSortDirection)
+  const sortedScheduledRows = sortScheduledDashboardRows(scheduledRows, scheduledSortKey, scheduledSortDirection)
+
+  function handleVerifiedSortChange(key: VerifiedDashboardSortKey) {
+    if (verifiedSortKey === key) {
+      setVerifiedSortDirection((current) => (current === 'asc' ? 'desc' : 'asc'))
+      return
+    }
+
+    setVerifiedSortKey(key)
+    setVerifiedSortDirection(getVerifiedDashboardDefaultSortDirection())
+  }
+
+  function handleScheduledSortChange(key: ScheduledDashboardSortKey) {
+    if (scheduledSortKey === key) {
+      setScheduledSortDirection((current) => (current === 'asc' ? 'desc' : 'asc'))
+      return
+    }
+
+    setScheduledSortKey(key)
+    setScheduledSortDirection(getScheduledDashboardDefaultSortDirection(key))
+  }
 
   return (
     <section className="panel monthly-dashboard">
@@ -3654,13 +3715,54 @@ function MonthlyReleaseDashboard({
         </div>
       </div>
 
+      <div className="monthly-dashboard-toolbar">
+        <div className="dashboard-filter-summary">
+          <span className="dashboard-toolbar-label">{copy.monthlyDashboardFilters}</span>
+          <div className="dashboard-toolbar-chip-row">
+            {activeFilters.length ? (
+              activeFilters.map((item) => (
+                <span key={item} className="filter-chip dashboard-filter-pill">
+                  {item}
+                </span>
+              ))
+            ) : (
+              <span className="filter-chip dashboard-filter-pill dashboard-filter-pill-muted">
+                {copy.monthlyDashboardFiltersDefault}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+
       <div className="monthly-dashboard-stack">
         <section className="monthly-dashboard-section">
           <div className="selected-day-panel-head">
             <h3>{copy.monthlyDashboardVerifiedTitle}</h3>
-            <span className="selected-day-panel-count">{verifiedRows.length}</span>
+            <span className="selected-day-panel-count">{sortedVerifiedRows.length}</span>
           </div>
-          {verifiedRows.length ? (
+          <div className="dashboard-section-toolbar">
+            <span className="dashboard-toolbar-label">{copy.monthlyDashboardSort}</span>
+            <div className="dashboard-sort-chip-row">
+              {verifiedSortOptions.map((option) => (
+                <button
+                  type="button"
+                  key={option.key}
+                  className={`filter-chip dashboard-sort-button ${
+                    verifiedSortKey === option.key ? 'filter-chip-active dashboard-sort-button-active' : ''
+                  }`}
+                  onClick={() => handleVerifiedSortChange(option.key)}
+                >
+                  <span>{option.label}</span>
+                  {verifiedSortKey === option.key ? (
+                    <span className="dashboard-sort-indicator" aria-hidden="true">
+                      {formatDashboardSortIndicator(verifiedSortDirection)}
+                    </span>
+                  ) : null}
+                </button>
+              ))}
+            </div>
+          </div>
+          {sortedVerifiedRows.length ? (
             <>
               <div className="dashboard-table-shell">
                 <table className="dashboard-table">
@@ -3676,7 +3778,7 @@ function MonthlyReleaseDashboard({
                     </tr>
                   </thead>
                   <tbody>
-                    {verifiedRows.map((item) => (
+                    {sortedVerifiedRows.map((item) => (
                       <tr key={getAlbumKey(item)}>
                         <td>
                           <TeamIdentity group={item.group} variant="list" />
@@ -3706,7 +3808,7 @@ function MonthlyReleaseDashboard({
                 </table>
               </div>
               <div className="dashboard-mobile-list">
-                {verifiedRows.map((item) => (
+                {sortedVerifiedRows.map((item) => (
                   <article key={`mobile-${getAlbumKey(item)}`} className="detail-card dashboard-mobile-card">
                     <div className="signal-head">
                       <TeamIdentity group={item.group} variant="list" />
@@ -3754,9 +3856,31 @@ function MonthlyReleaseDashboard({
         <section className="monthly-dashboard-section">
           <div className="selected-day-panel-head">
             <h3>{copy.monthlyDashboardScheduledTitle}</h3>
-            <span className="selected-day-panel-count">{scheduledRows.length}</span>
+            <span className="selected-day-panel-count">{sortedScheduledRows.length}</span>
           </div>
-          {scheduledRows.length ? (
+          <div className="dashboard-section-toolbar">
+            <span className="dashboard-toolbar-label">{copy.monthlyDashboardSort}</span>
+            <div className="dashboard-sort-chip-row">
+              {scheduledSortOptions.map((option) => (
+                <button
+                  type="button"
+                  key={option.key}
+                  className={`filter-chip dashboard-sort-button ${
+                    scheduledSortKey === option.key ? 'filter-chip-active dashboard-sort-button-active' : ''
+                  }`}
+                  onClick={() => handleScheduledSortChange(option.key)}
+                >
+                  <span>{option.label}</span>
+                  {scheduledSortKey === option.key ? (
+                    <span className="dashboard-sort-indicator" aria-hidden="true">
+                      {formatDashboardSortIndicator(scheduledSortDirection)}
+                    </span>
+                  ) : null}
+                </button>
+              ))}
+            </div>
+          </div>
+          {sortedScheduledRows.length ? (
             <>
               <div className="dashboard-table-shell">
                 <table className="dashboard-table">
@@ -3773,7 +3897,7 @@ function MonthlyReleaseDashboard({
                     </tr>
                   </thead>
                   <tbody>
-                    {scheduledRows.map((item) => (
+                    {sortedScheduledRows.map((item) => (
                       <tr key={`${item.group}-${item.scheduled_date}-${item.headline}`}>
                         <td>
                           <TeamIdentity group={item.group} variant="list" />
@@ -3818,7 +3942,7 @@ function MonthlyReleaseDashboard({
                 </table>
               </div>
               <div className="dashboard-mobile-list">
-                {scheduledRows.map((item) => (
+                {sortedScheduledRows.map((item) => (
                   <article
                     key={`mobile-${item.group}-${item.scheduled_date}-${item.headline}`}
                     className={`detail-card dashboard-mobile-card detail-card-signal detail-card-signal-${item.date_status}`}
@@ -4610,6 +4734,48 @@ function formatDailyShareOverflow(count: number, language: Language) {
 
 function formatFilterOption(option: string, language: Language) {
   return TRANSLATIONS[language].filterOptions[option as keyof typeof TRANSLATIONS.ko.filterOptions] ?? option
+}
+
+function buildMonthlyDashboardFilterSummary(
+  {
+    search,
+    selectedReleaseKind,
+    selectedActType,
+    selectedDashboardStatus,
+    selectedAgency,
+  }: {
+    search: string
+    selectedReleaseKind: (typeof releaseKindOptions)[number]
+    selectedActType: (typeof actTypeOptions)[number]
+    selectedDashboardStatus: (typeof dashboardStatusOptions)[number]
+    selectedAgency: string
+  },
+  language: Language,
+) {
+  const copy = TRANSLATIONS[language]
+  const filters: string[] = []
+
+  if (search.trim()) {
+    filters.push(`${copy.searchShort}: ${search.trim()}`)
+  }
+  if (selectedReleaseKind !== 'all') {
+    filters.push(`${copy.filterLabels.releaseKind}: ${formatFilterOption(selectedReleaseKind, language)}`)
+  }
+  if (selectedActType !== 'all') {
+    filters.push(`${copy.filterLabels.actType}: ${formatFilterOption(selectedActType, language)}`)
+  }
+  if (selectedDashboardStatus !== 'all') {
+    filters.push(`${copy.filterLabels.status}: ${formatFilterOption(selectedDashboardStatus, language)}`)
+  }
+  if (selectedAgency !== 'all') {
+    filters.push(
+      `${copy.filterLabels.agency}: ${
+        selectedAgency === AGENCY_UNKNOWN_FILTER ? formatFilterOption(AGENCY_UNKNOWN_FILTER, language) : selectedAgency
+      }`,
+    )
+  }
+
+  return filters
 }
 
 function buildAgencyFilterOptions() {
@@ -5583,6 +5749,87 @@ function compareMonthlyDashboardUpcoming(left: DatedUpcomingSignal, right: Dated
   }
 
   return left.group.localeCompare(right.group)
+}
+
+function getVerifiedDashboardDefaultSortDirection(): DashboardSortDirection {
+  return 'asc'
+}
+
+function getScheduledDashboardDefaultSortDirection(key: ScheduledDashboardSortKey): DashboardSortDirection {
+  return key === 'confidence' ? 'desc' : 'asc'
+}
+
+function sortVerifiedDashboardRows(
+  rows: VerifiedRelease[],
+  sortKey: VerifiedDashboardSortKey,
+  direction: DashboardSortDirection,
+) {
+  const multiplier = direction === 'asc' ? 1 : -1
+  return [...rows].sort((left, right) => {
+    let comparison = 0
+
+    if (sortKey === 'team') {
+      comparison = getTeamDisplayName(left.group).localeCompare(getTeamDisplayName(right.group))
+      if (comparison === 0) {
+        comparison = left.dateValue.getTime() - right.dateValue.getTime()
+      }
+    } else {
+      comparison = left.dateValue.getTime() - right.dateValue.getTime()
+      if (comparison === 0) {
+        comparison = getTeamDisplayName(left.group).localeCompare(getTeamDisplayName(right.group))
+      }
+    }
+
+    if (comparison === 0) {
+      comparison = left.title.localeCompare(right.title)
+    }
+
+    return comparison * multiplier
+  })
+}
+
+function sortScheduledDashboardRows(
+  rows: DatedUpcomingSignal[],
+  sortKey: ScheduledDashboardSortKey,
+  direction: DashboardSortDirection,
+) {
+  const multiplier = direction === 'asc' ? 1 : -1
+  return [...rows].sort((left, right) => {
+    let comparison = 0
+
+    if (sortKey === 'team') {
+      comparison = getTeamDisplayName(left.group).localeCompare(getTeamDisplayName(right.group))
+    } else if (sortKey === 'status') {
+      comparison = compareDashboardStatus(left.date_status, right.date_status)
+    } else if (sortKey === 'confidence') {
+      comparison = left.confidence - right.confidence
+    } else {
+      comparison = left.dateValue.getTime() - right.dateValue.getTime()
+    }
+
+    if (comparison === 0) {
+      comparison = left.dateValue.getTime() - right.dateValue.getTime()
+    }
+
+    if (comparison === 0) {
+      comparison = getTeamDisplayName(left.group).localeCompare(getTeamDisplayName(right.group))
+    }
+
+    if (comparison === 0) {
+      comparison = left.headline.localeCompare(right.headline)
+    }
+
+    return comparison * multiplier
+  })
+}
+
+function compareDashboardStatus(left: DatedUpcomingSignal['date_status'], right: DatedUpcomingSignal['date_status']) {
+  const rank = { confirmed: 0, scheduled: 1, rumor: 2 }
+  return rank[left] - rank[right]
+}
+
+function formatDashboardSortIndicator(direction: DashboardSortDirection) {
+  return direction === 'asc' ? '↑' : '↓'
 }
 
 function compareRookieRadarEntries(left: RookieRadarEntry, right: RookieRadarEntry) {
