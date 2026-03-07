@@ -156,7 +156,9 @@ npm run dev
 - release-detail surface만 backend로 붙여보려면 `VITE_API_BASE_URL=http://localhost:3213 VITE_RELEASE_DETAIL_SOURCE=api npm run dev`
 - entity-detail surface만 backend로 붙여보려면 `VITE_API_BASE_URL=http://localhost:3213 VITE_ENTITY_DETAIL_SOURCE=api npm run dev`
 - search surface만 backend로 붙여보려면 `VITE_API_BASE_URL=http://localhost:3213 VITE_SEARCH_SOURCE=api npm run dev`
-- coexistence window 동안 상세 페이지 URL에 `?releaseDetailSource=api` 또는 `?releaseDetailSource=json`을 붙여 local override 가능
+- calendar/month surface source switch만 열어보려면 `VITE_API_BASE_URL=http://localhost:3213 VITE_CALENDAR_MONTH_SOURCE=api npm run dev`
+- radar surface source switch만 열어보려면 `VITE_API_BASE_URL=http://localhost:3213 VITE_RADAR_SOURCE=api npm run dev`
+- coexistence window 동안 `?searchSource=api`, `?entityDetailSource=api`, `?releaseDetailSource=api`, `?calendarMonthSource=api`, `?radarSource=api` 같은 query override를 붙여 local source 선택을 강제로 바꿀 수 있음
 
 ### 프로덕션 빌드
 

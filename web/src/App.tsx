@@ -159,6 +159,8 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
 }
 
 type SurfaceSourceMode = 'json' | 'api'
+type SurfaceSourceKey = 'search' | 'entityDetail' | 'releaseDetail' | 'calendarMonth' | 'radar'
+type SurfaceSourceOverrides = Partial<Record<SurfaceSourceKey, SurfaceSourceMode>>
 type ReleaseDetailSourceMode = SurfaceSourceMode
 type ReleaseDetailSourceState = 'json' | 'api' | 'json_fallback'
 
@@ -726,6 +728,10 @@ const TRANSLATIONS = {
     searchBackendLoading: 'backend /v1/search 결과를 확인하는 중입니다. 현재는 local JSON 결과를 먼저 표시합니다.',
     searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 우선 사용 중입니다.',
     searchBackendFallback: 'backend 검색 응답을 불러오지 못해 local JSON 결과로 fallback 중입니다.',
+    calendarBackendFallback:
+      'calendar/month source switch는 열려 있지만, 이 surface는 아직 local JSON fallback을 계속 사용합니다.',
+    radarBackendFallback:
+      'radar source switch는 열려 있지만, 이 surface는 아직 local JSON fallback을 계속 사용합니다.',
     monthSummaryVerified: '검증됨',
     monthSummaryScheduled: '예정',
     filterLabels: {
@@ -971,6 +977,10 @@ const TRANSLATIONS = {
     searchBackendActive: 'Search results are currently coming from the backend /v1/search response.',
     searchBackendFallback:
       'The backend search response was unavailable, so the UI is falling back to local JSON-backed results.',
+    calendarBackendFallback:
+      'The calendar/month source switch is available, but this surface is still using the local JSON fallback for now.',
+    radarBackendFallback:
+      'The radar source switch is available, but this surface is still using the local JSON fallback for now.',
     monthSummaryVerified: 'verified',
     monthSummaryScheduled: 'scheduled',
     filterLabels: {
@@ -1434,7 +1444,6 @@ const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
 const LONG_GAP_THRESHOLD_DAYS = 365
 const ROOKIE_RECENT_YEAR_WINDOW = 2
 const AGENCY_UNKNOWN_FILTER = 'agency_unknown'
-const RELEASE_DETAIL_SOURCE_QUERY_PARAM = 'releaseDetailSource'
 const BACKEND_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '')
 const releaseDetailApiIdCache = new Map<string, string>()
 const releaseDetailApiSnapshotCache = new Map<string, ReleaseDetailApiSnapshot>()
@@ -1444,7 +1453,16 @@ const SURFACE_SOURCE_MODES = {
   search: normalizeSurfaceSourceMode(import.meta.env.VITE_SEARCH_SOURCE),
   entityDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_ENTITY_DETAIL_SOURCE),
   releaseDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_RELEASE_DETAIL_SOURCE),
-} satisfies Record<'search' | 'entityDetail' | 'releaseDetail', SurfaceSourceMode>
+  calendarMonth: normalizeSurfaceSourceMode(import.meta.env.VITE_CALENDAR_MONTH_SOURCE),
+  radar: normalizeSurfaceSourceMode(import.meta.env.VITE_RADAR_SOURCE),
+} satisfies Record<SurfaceSourceKey, SurfaceSourceMode>
+const SURFACE_SOURCE_QUERY_PARAMS = {
+  search: 'searchSource',
+  entityDetail: 'entityDetailSource',
+  releaseDetail: 'releaseDetailSource',
+  calendarMonth: 'calendarMonthSource',
+  radar: 'radarSource',
+} satisfies Record<SurfaceSourceKey, string>
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const teamBadgeAssets = teamBadgeAssetRows as TeamBadgeAssetRow[]
@@ -1527,13 +1545,15 @@ function App() {
   const [desktopUpcomingPanelHeight, setDesktopUpcomingPanelHeight] = useState<number | null>(null)
   const calendarPanelRef = useRef<HTMLElement | null>(null)
   const selectedDayPanelRef = useRef<HTMLElement | null>(null)
+  const sourceOverrides = readSurfaceSourceOverridesFromLocation()
   const activeCompareGroup =
     selectedGroup && selectedCompareGroup && selectedCompareGroup !== selectedGroup && teamProfileMap.has(selectedCompareGroup)
       ? selectedCompareGroup
       : null
-  const selectedReleaseSourceOverride = readReleaseDetailSourceOverrideFromLocation()
-  const releaseDetailSourceMode = getSurfaceSourceMode('releaseDetail', selectedReleaseSourceOverride)
-  const entityDetailSourceMode = getSurfaceSourceMode('entityDetail')
+  const releaseDetailSourceMode = getSurfaceSourceMode('releaseDetail', sourceOverrides.releaseDetail)
+  const entityDetailSourceMode = getSurfaceSourceMode('entityDetail', sourceOverrides.entityDetail)
+  const calendarMonthSourceMode = getSurfaceSourceMode('calendarMonth', sourceOverrides.calendarMonth)
+  const radarSourceMode = getSurfaceSourceMode('radar', sourceOverrides.radar)
   const selectedReleaseRoute =
     selectedGroup && selectedAlbumKey
       ? findVerifiedReleaseByKey(selectedGroup, selectedAlbumKey)
@@ -1592,10 +1612,10 @@ function App() {
     }
 
     const nextPath = selectedReleaseRoute
-      ? getReleasePath(selectedReleaseRoute, selectedReleaseSourceOverride)
+      ? getReleasePath(selectedReleaseRoute, sourceOverrides)
       : selectedGroup
-        ? getArtistPath(selectedGroup, activeCompareGroup)
-        : '/'
+        ? getArtistPath(selectedGroup, activeCompareGroup, sourceOverrides)
+        : getHomePath(sourceOverrides)
     const currentLocation = `${window.location.pathname}${window.location.search}`
     if (currentLocation !== nextPath) {
       window.history.pushState(
@@ -1604,7 +1624,7 @@ function App() {
         nextPath,
       )
     }
-  }, [activeCompareGroup, selectedAlbumKey, selectedGroup, selectedReleaseRoute, selectedReleaseSourceOverride])
+  }, [activeCompareGroup, selectedAlbumKey, selectedGroup, selectedReleaseRoute, sourceOverrides])
 
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -1687,7 +1707,7 @@ function App() {
     releases: filteredReleases.slice(0, 10),
     upcoming: filteredUpcoming,
   }
-  const searchSourceMode = getSurfaceSourceMode('search')
+  const searchSourceMode = getSurfaceSourceMode('search', sourceOverrides.search)
   const searchSurfaceResource = useSearchSurfaceResource({
     search: deferredSearch,
     sourceMode: searchSourceMode,
@@ -2816,6 +2836,10 @@ function App() {
                   </div>
                 ) : null}
 
+                {calendarMonthSourceMode === 'api' ? (
+                  <p className="signal-meta">{copy.calendarBackendFallback}</p>
+                ) : null}
+
                 <div className="calendar">
                   <div className="calendar-weekdays">
                     {weekdays.map((weekday) => (
@@ -2998,6 +3022,7 @@ function App() {
             </section>
 
             <div id="dashboard-radar" className="sidebar-radar-stack scroll-anchor-section">
+              {radarSourceMode === 'api' ? <p className="signal-meta">{copy.radarBackendFallback}</p> : null}
               <section className="panel">
                 <p className="panel-label">{copy.longGapRadar}</p>
                 <h2>{copy.longGapRadarTitle}</h2>
@@ -8716,13 +8741,23 @@ function readSelectedReleaseKeyFromLocation() {
   return getReleaseRouteFromPath(window.location.pathname, window.location.search)?.releaseKey ?? null
 }
 
-function readReleaseDetailSourceOverrideFromLocation(): ReleaseDetailSourceMode | null {
+function readSurfaceSourceOverrideFromLocation(key: SurfaceSourceKey): SurfaceSourceMode | null {
   if (typeof window === 'undefined') {
     return null
   }
 
-  const value = new URLSearchParams(window.location.search).get(RELEASE_DETAIL_SOURCE_QUERY_PARAM)
+  const value = new URLSearchParams(window.location.search).get(SURFACE_SOURCE_QUERY_PARAMS[key])
   return value === 'api' || value === 'json' ? value : null
+}
+
+function readSurfaceSourceOverridesFromLocation(): SurfaceSourceOverrides {
+  return {
+    search: readSurfaceSourceOverrideFromLocation('search') ?? undefined,
+    entityDetail: readSurfaceSourceOverrideFromLocation('entityDetail') ?? undefined,
+    releaseDetail: readSurfaceSourceOverrideFromLocation('releaseDetail') ?? undefined,
+    calendarMonth: readSurfaceSourceOverrideFromLocation('calendarMonth') ?? undefined,
+    radar: readSurfaceSourceOverrideFromLocation('radar') ?? undefined,
+  }
 }
 
 function normalizeSurfaceSourceMode(value: unknown): SurfaceSourceMode {
@@ -8730,10 +8765,25 @@ function normalizeSurfaceSourceMode(value: unknown): SurfaceSourceMode {
 }
 
 function getSurfaceSourceMode(
-  key: keyof typeof SURFACE_SOURCE_MODES,
+  key: SurfaceSourceKey,
   override?: SurfaceSourceMode | null,
 ): SurfaceSourceMode {
   return override ?? SURFACE_SOURCE_MODES[key]
+}
+
+function appendSurfaceSourceOverrides(params: URLSearchParams, overrides?: SurfaceSourceOverrides) {
+  if (!overrides) {
+    return params
+  }
+
+  ;(Object.keys(SURFACE_SOURCE_QUERY_PARAMS) as SurfaceSourceKey[]).forEach((key) => {
+    const value = overrides[key]
+    if (value) {
+      params.set(SURFACE_SOURCE_QUERY_PARAMS[key], value)
+    }
+  })
+
+  return params
 }
 
 function getGroupFromPath(pathname: string) {
@@ -8759,15 +8809,20 @@ function resolveGroupReference(value: string) {
   )
 }
 
-function getArtistPath(group: string, compareGroup?: string | null) {
-  const pathname = `/artists/${artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)}`
-  if (!compareGroup || compareGroup === group) {
-    return pathname
-  }
+function getHomePath(sourceOverrides?: SurfaceSourceOverrides) {
+  const params = appendSurfaceSourceOverrides(new URLSearchParams(), sourceOverrides)
+  const query = params.toString()
+  return query ? `/?${query}` : '/'
+}
 
-  const params = new URLSearchParams()
-  params.set('compare', artistProfileByGroup.get(compareGroup)?.slug ?? slugifyGroup(compareGroup))
-  return `${pathname}?${params.toString()}`
+function getArtistPath(group: string, compareGroup?: string | null, sourceOverrides?: SurfaceSourceOverrides) {
+  const pathname = `/artists/${artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)}`
+  const params = appendSurfaceSourceOverrides(new URLSearchParams(), sourceOverrides)
+  if (compareGroup && compareGroup !== group) {
+    params.set('compare', artistProfileByGroup.get(compareGroup)?.slug ?? slugifyGroup(compareGroup))
+  }
+  const query = params.toString()
+  return query ? `${pathname}?${query}` : pathname
 }
 
 function getReleaseRouteFromPath(pathname: string, search = '') {
@@ -8813,15 +8868,12 @@ function getReleaseRouteFromPath(pathname: string, search = '') {
   }
 }
 
-function getReleasePath(release: VerifiedRelease, sourceOverride?: ReleaseDetailSourceMode | null) {
+function getReleasePath(release: VerifiedRelease, sourceOverrides?: SurfaceSourceOverrides) {
   const releaseSlug = slugifyPathSegment(release.title) || 'release'
   const pathname = `/artists/${artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)}/releases/${releaseSlug}`
-  const params = new URLSearchParams()
+  const params = appendSurfaceSourceOverrides(new URLSearchParams(), sourceOverrides)
   params.set('date', release.date)
   params.set('stream', release.stream)
-  if (sourceOverride) {
-    params.set(RELEASE_DETAIL_SOURCE_QUERY_PARAM, sourceOverride)
-  }
   return `${pathname}?${params.toString()}`
 }
 
