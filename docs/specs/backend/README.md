@@ -9,10 +9,14 @@
    - canonical write model / projection read model 구분
    - entity, release, upcoming, official link, review, override 저장 모델
    - 현재 JSON 산출물과 백엔드 모델 사이의 매핑
+2. `phased-rollout-plan.md`
+   - JSON-first 파이프라인에서 backend-backed persistence / read로 넘어가는 단계별 전환 계획
+   - phase별 gate, rollback, parity metric, ownership split
 
 ## 읽는 순서
 
 1. `canonical-backend-data-model.md`
+2. `phased-rollout-plan.md`
 
 ## 원칙
 
