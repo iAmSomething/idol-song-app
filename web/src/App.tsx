@@ -158,7 +158,8 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
   isFallback: boolean
 }
 
-type ReleaseDetailSourceMode = 'json' | 'api'
+type SurfaceSourceMode = 'json' | 'api'
+type ReleaseDetailSourceMode = SurfaceSourceMode
 type ReleaseDetailSourceState = 'json' | 'api' | 'json_fallback'
 
 type ReleaseDetailLookupApiResponse = {
@@ -227,8 +228,11 @@ type ReleaseDetailApiRequest = {
   release_kind: VerifiedRelease['release_kind']
 }
 
-type SearchSourceMode = 'json' | 'api'
+type SearchSourceMode = SurfaceSourceMode
 type SearchSourceState = 'json' | 'api' | 'json_fallback'
+
+type EntityDetailSourceMode = SurfaceSourceMode
+type EntityDetailSourceState = 'json' | 'api' | 'json_fallback'
 
 type SearchApiEntityMatch = {
   entity_slug?: string
@@ -279,6 +283,81 @@ type SearchSurfaceResource = SearchSurfaceSnapshot & {
   loading: boolean
   errorCode: string | null
 }
+
+type EntityDetailApiResponse = {
+  data?: {
+    identity?: {
+      entity_slug?: string
+      display_name?: string
+      agency_name?: string | null
+      badge_image_url?: string | null
+      representative_image_url?: string | null
+    }
+    official_links?: {
+      youtube?: string | null
+      x?: string | null
+      instagram?: string | null
+    } | null
+    youtube_channels?: {
+      primary_team_channel_url?: string | null
+      mv_allowlist_urls?: string[]
+    } | null
+    tracking_state?: {
+      tier?: string | null
+      tracking_status?: string | null
+    } | null
+    next_upcoming?: {
+      upcoming_signal_id?: string
+      headline?: string
+      scheduled_date?: string | null
+      scheduled_month?: string | null
+      date_precision?: string
+      date_status?: string
+      release_format?: string | null
+      confidence_score?: number | null
+    } | null
+    latest_release?: {
+      release_id?: string
+      release_title?: string
+      release_date?: string
+      stream?: string
+      release_kind?: string | null
+    } | null
+    recent_albums?: Array<{
+      release_id?: string
+      release_title?: string
+      release_date?: string
+      stream?: string
+      release_kind?: string | null
+    }>
+    source_timeline?: Array<{
+      headline?: string
+      source_url?: string | null
+      source_type?: string | null
+      source_domain?: string | null
+      published_at?: string | null
+      scheduled_date?: string | null
+      scheduled_month?: string | null
+      date_precision?: string | null
+      date_status?: string | null
+      release_format?: string | null
+      confidence_score?: number | null
+    }>
+    artist_source_url?: string | null
+  }
+  error?: {
+    code?: string
+  }
+}
+
+type EntityDetailSurfaceResource = {
+  team: TeamProfile | null
+  source: EntityDetailSourceState
+  loading: boolean
+  errorCode: string | null
+}
+
+type EntityDetailTimelineEntry = NonNullable<NonNullable<EntityDetailApiResponse['data']>['source_timeline']>[number]
 
 type ActType = 'group' | 'solo' | 'unit'
 type UpcomingDatePrecision = 'exact' | 'month_only' | 'unknown'
@@ -1114,6 +1193,9 @@ const TEAM_COPY = {
     badgeSourceLink: '배지 출처',
     footnote:
       '공식 badge/avatar가 있으면 우선 사용하고, 없을 때만 대표 이미지나 모노그램 fallback으로 내려갑니다.',
+    backendLoading: 'backend /v1/entities 응답을 확인하는 중입니다. 현재는 local JSON 팀 페이지를 먼저 표시합니다.',
+    backendActive: '이 팀 페이지는 backend /v1/entities 응답을 우선 사용 중입니다.',
+    backendFallback: 'backend 팀 페이지 응답을 불러오지 못해 local JSON 팀 페이지로 fallback 중입니다.',
     upcomingLabel: '예정 컴백',
     upcomingTitle: '예정 신호 우선 보기',
     upcomingEmptyTitle: '아직 컴백 신호 없음',
@@ -1228,6 +1310,11 @@ const TEAM_COPY = {
     badgeSourceLink: 'Badge source',
     footnote:
       'Use an official badge/avatar first, then fall back to a representative image or monogram only when no sourced asset exists.',
+    backendLoading:
+      'Checking the backend /v1/entities response now. The page keeps the local JSON-backed team detail visible first.',
+    backendActive: 'This team page is currently using the backend /v1/entities response.',
+    backendFallback:
+      'The backend team-detail response was unavailable, so this page is falling back to the local JSON-backed detail.',
     upcomingLabel: 'Upcoming comeback',
     upcomingTitle: 'Scheduled signals first',
     upcomingEmptyTitle: 'No comeback signal yet',
@@ -1349,13 +1436,15 @@ const ROOKIE_RECENT_YEAR_WINDOW = 2
 const AGENCY_UNKNOWN_FILTER = 'agency_unknown'
 const RELEASE_DETAIL_SOURCE_QUERY_PARAM = 'releaseDetailSource'
 const BACKEND_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '')
-const DEFAULT_RELEASE_DETAIL_SOURCE: ReleaseDetailSourceMode =
-  (import.meta.env.VITE_RELEASE_DETAIL_SOURCE ?? '').trim().toLowerCase() === 'api' ? 'api' : 'json'
-const DEFAULT_SEARCH_SOURCE: SearchSourceMode =
-  (import.meta.env.VITE_SEARCH_SOURCE ?? '').trim().toLowerCase() === 'api' ? 'api' : 'json'
 const releaseDetailApiIdCache = new Map<string, string>()
 const releaseDetailApiSnapshotCache = new Map<string, ReleaseDetailApiSnapshot>()
 const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
+const entityDetailApiSnapshotCache = new Map<string, TeamProfile>()
+const SURFACE_SOURCE_MODES = {
+  search: normalizeSurfaceSourceMode(import.meta.env.VITE_SEARCH_SOURCE),
+  entityDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_ENTITY_DETAIL_SOURCE),
+  releaseDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_RELEASE_DETAIL_SOURCE),
+} satisfies Record<'search' | 'entityDetail' | 'releaseDetail', SurfaceSourceMode>
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const teamBadgeAssets = teamBadgeAssetRows as TeamBadgeAssetRow[]
@@ -1443,7 +1532,8 @@ function App() {
       ? selectedCompareGroup
       : null
   const selectedReleaseSourceOverride = readReleaseDetailSourceOverrideFromLocation()
-  const releaseDetailSourceMode = getReleaseDetailSourceMode(selectedReleaseSourceOverride)
+  const releaseDetailSourceMode = getSurfaceSourceMode('releaseDetail', selectedReleaseSourceOverride)
+  const entityDetailSourceMode = getSurfaceSourceMode('entityDetail')
   const selectedReleaseRoute =
     selectedGroup && selectedAlbumKey
       ? findVerifiedReleaseByKey(selectedGroup, selectedAlbumKey)
@@ -1597,7 +1687,7 @@ function App() {
     releases: filteredReleases.slice(0, 10),
     upcoming: filteredUpcoming,
   }
-  const searchSourceMode = DEFAULT_SEARCH_SOURCE
+  const searchSourceMode = getSurfaceSourceMode('search')
   const searchSurfaceResource = useSearchSurfaceResource({
     search: deferredSearch,
     sourceMode: searchSourceMode,
@@ -1750,7 +1840,13 @@ function App() {
     : copy.calendarQuickJumpUnavailable
   const monthlyHighlightEmptyCopy =
     monthMonthOnlyUpcomingRows.length > 0 ? copy.monthlyHighlightUndatedOnly : copy.monthlyHighlightEmpty
-  const selectedTeam = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
+  const selectedTeamFallback = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
+  const selectedTeamResource = useEntityDetailResource({
+    group: selectedGroup,
+    fallbackTeam: selectedTeamFallback,
+    sourceMode: entityDetailSourceMode,
+  })
+  const selectedTeam = selectedTeamResource.team
   const selectedTeamIsPinned = selectedTeam ? myTeamsSet.has(selectedTeam.group) : false
   const myTeamsLimitReached = myTeams.length >= MY_TEAMS_LIMIT
   const compareTeam = activeCompareGroup ? teamProfileMap.get(activeCompareGroup) ?? null : null
@@ -2197,6 +2293,15 @@ function App() {
             </div>
             {myTeamsLimitReached && !selectedTeamIsPinned ? (
               <p className="team-focus-note">{teamCopy.pinLimitReached}</p>
+            ) : null}
+            {entityDetailSourceMode === 'api' ? (
+              <p className="team-focus-note">
+                {selectedTeamResource.loading
+                  ? teamCopy.backendLoading
+                  : selectedTeamResource.source === 'api'
+                    ? teamCopy.backendActive
+                    : teamCopy.backendFallback}
+              </p>
             ) : null}
 
             <div className="team-page-summary">
@@ -6973,6 +7078,374 @@ function useSearchSurfaceResource({
   }
 }
 
+function buildVerifiedTeamLatestRelease(release: VerifiedRelease): TeamLatestRelease {
+  return {
+    title: release.title,
+    date: release.date,
+    releaseKind: release.release_kind,
+    releaseFormat: release.release_format,
+    contextTags: release.context_tags,
+    streamLabel: release.stream,
+    stream: release.stream,
+    source: release.source,
+    artistSource: release.artist_source,
+    musicHandoffs: release.music_handoffs,
+    verified: true,
+  }
+}
+
+function buildEntityDetailUpcomingRow(
+  group: string,
+  fallbackTeam: TeamProfile,
+  summary: NonNullable<EntityDetailApiResponse['data']>['next_upcoming'],
+): UpcomingCandidateRow | null {
+  if (!summary || !readNonEmptyString(summary.headline)) {
+    return null
+  }
+
+  const headline = readNonEmptyString(summary.headline) ?? ''
+  const scheduledDate = readNonEmptyString(summary.scheduled_date) ?? ''
+  const scheduledMonth = readNonEmptyString(summary.scheduled_month) ?? ''
+  const datePrecision =
+    summary.date_precision === 'exact' || summary.date_precision === 'month_only' || summary.date_precision === 'unknown'
+      ? summary.date_precision
+      : 'unknown'
+  const dateStatus =
+    summary.date_status === 'confirmed' || summary.date_status === 'scheduled' || summary.date_status === 'rumor'
+      ? summary.date_status
+      : 'rumor'
+  const matchedLocal =
+    fallbackTeam.upcomingSignals.find(
+      (item) =>
+        item.headline === headline &&
+        item.date_precision === datePrecision &&
+        (scheduledDate ? item.scheduled_date === scheduledDate : item.scheduled_month === scheduledMonth),
+    ) ?? null
+
+  if (matchedLocal) {
+    return {
+      ...matchedLocal,
+      scheduled_date: scheduledDate || matchedLocal.scheduled_date,
+      scheduled_month: scheduledMonth || matchedLocal.scheduled_month,
+      date_precision: datePrecision,
+      date_status: dateStatus,
+      release_format: normalizeReleaseFormatValue(summary.release_format) || matchedLocal.release_format,
+      confidence:
+        typeof summary.confidence_score === 'number' && Number.isFinite(summary.confidence_score)
+          ? summary.confidence_score
+          : matchedLocal.confidence,
+      event_key: readNonEmptyString(summary.upcoming_signal_id) ?? matchedLocal.event_key,
+    }
+  }
+
+  return {
+    group,
+    scheduled_date: scheduledDate,
+    scheduled_month: scheduledMonth,
+    date_precision: datePrecision,
+    date_status: dateStatus,
+    headline,
+    release_format: normalizeReleaseFormatValue(summary.release_format),
+    context_tags: [],
+    source_type: 'pending',
+    source_url: '',
+    source_domain: '',
+    published_at: '',
+    confidence:
+      typeof summary.confidence_score === 'number' && Number.isFinite(summary.confidence_score)
+        ? summary.confidence_score
+        : 0,
+    evidence_summary: '',
+    tracking_status: fallbackTeam.trackingStatus,
+    search_term: '',
+    event_key: readNonEmptyString(summary.upcoming_signal_id) ?? undefined,
+  }
+}
+
+function inferEntityTimelineEventType(item: EntityDetailTimelineEntry): SourceTimelineEventType {
+  const headline = (readNonEmptyString(item.headline) ?? '').toLowerCase()
+
+  if (headline.includes('tracklist')) {
+    return 'tracklist_reveal'
+  }
+  if (readNonEmptyString(item.scheduled_date)) {
+    return item.date_status === 'confirmed' ? 'official_announcement' : 'date_update'
+  }
+  if (readNonEmptyString(item.scheduled_month)) {
+    return 'date_update'
+  }
+
+  return 'first_signal'
+}
+
+function buildEntityTimelineSummary(item: EntityDetailTimelineEntry) {
+  const parts = [
+    normalizeReleaseFormatValue(item.release_format),
+    readNonEmptyString(item.date_status),
+    readNonEmptyString(item.scheduled_date) ?? readNonEmptyString(item.scheduled_month),
+  ].filter((value): value is string => Boolean(value))
+
+  return parts.join(' · ')
+}
+
+function buildEntityDetailSourceTimeline(
+  group: string,
+  items: NonNullable<EntityDetailApiResponse['data']>['source_timeline'],
+): SourceTimelineItem[] {
+  if (!Array.isArray(items)) {
+    return []
+  }
+
+  return items
+    .map((item, index) => {
+      const headline = readNonEmptyString(item.headline)
+      if (!headline) {
+        return null
+      }
+
+      const occurredAt =
+        readNonEmptyString(item.published_at) ??
+        readNonEmptyString(item.scheduled_date) ??
+        readNonEmptyString(item.scheduled_month) ??
+        ''
+
+      return {
+        group,
+        occurred_at: occurredAt,
+        event_type: inferEntityTimelineEventType(item),
+        source_type: readNonEmptyString(item.source_type) ?? 'pending',
+        headline,
+        source_url: readNonEmptyString(item.source_url) ?? '',
+        summary: buildEntityTimelineSummary(item),
+        source_domain: readNonEmptyString(item.source_domain) ?? getSourceDomain(readNonEmptyString(item.source_url) ?? ''),
+        sortValue: Date.parse(occurredAt) || index,
+      } satisfies SourceTimelineItem
+    })
+    .filter((item): item is SourceTimelineItem => item !== null)
+}
+
+function buildEntityDetailTeamProfile(
+  group: string,
+  fallbackTeam: TeamProfile,
+  data: NonNullable<EntityDetailApiResponse['data']>,
+): TeamProfile {
+  const latestReleaseSummary = data.latest_release
+  const latestReleaseTitle = readNonEmptyString(latestReleaseSummary?.release_title)
+  const latestReleaseDate = readNonEmptyString(latestReleaseSummary?.release_date)
+  const latestReleaseRecord =
+    latestReleaseSummary && latestReleaseTitle && latestReleaseDate
+      ? findVerifiedReleaseRecord(
+          group,
+          latestReleaseTitle,
+          latestReleaseDate,
+          latestReleaseSummary.stream === 'album' || latestReleaseSummary.stream === 'song'
+            ? latestReleaseSummary.stream
+            : 'song',
+          latestReleaseSummary.release_kind ?? undefined,
+        )
+      : null
+  const latestRelease = latestReleaseRecord ? buildVerifiedTeamLatestRelease(latestReleaseRecord) : fallbackTeam.latestRelease
+  const recentAlbums = Array.isArray(data.recent_albums)
+    ? data.recent_albums
+        .map((item) => {
+          const releaseTitle = readNonEmptyString(item.release_title)
+          const releaseDate = readNonEmptyString(item.release_date)
+          const stream = item.stream === 'album' || item.stream === 'song' ? item.stream : null
+          if (!releaseTitle || !releaseDate || !stream) {
+            return null
+          }
+          return findVerifiedReleaseRecord(group, releaseTitle, releaseDate, stream, item.release_kind ?? undefined)
+        })
+        .filter((item): item is VerifiedRelease => item !== null && item.stream === 'album')
+    : []
+  const nextUpcomingSignal = buildEntityDetailUpcomingRow(group, fallbackTeam, data.next_upcoming)
+  const upcomingSignals = nextUpcomingSignal
+    ? [
+        nextUpcomingSignal,
+        ...fallbackTeam.upcomingSignals.filter(
+          (item) => getUpcomingDashboardRowKey(item) !== getUpcomingDashboardRowKey(nextUpcomingSignal),
+        ),
+      ].sort(compareUpcomingSignals)
+    : fallbackTeam.upcomingSignals
+  const primaryTeamChannelUrl =
+    readNonEmptyString(data.youtube_channels?.primary_team_channel_url) ??
+    readNonEmptyString(data.official_links?.youtube) ??
+    fallbackTeam.youtubeUrl
+  const sourceTimeline = buildEntityDetailSourceTimeline(group, data.source_timeline)
+
+  return {
+    ...fallbackTeam,
+    slug: readNonEmptyString(data.identity?.entity_slug) ?? fallbackTeam.slug,
+    displayName: readNonEmptyString(data.identity?.display_name) ?? fallbackTeam.displayName,
+    tier: readNonEmptyString(data.tracking_state?.tier) ?? fallbackTeam.tier,
+    trackingStatus: readNonEmptyString(data.tracking_state?.tracking_status) ?? fallbackTeam.trackingStatus,
+    artistSource: readNonEmptyString(data.artist_source_url) ?? fallbackTeam.artistSource,
+    xUrl: readNonEmptyString(data.official_links?.x) ?? fallbackTeam.xUrl,
+    instagramUrl: readNonEmptyString(data.official_links?.instagram) ?? fallbackTeam.instagramUrl,
+    youtubeUrl: primaryTeamChannelUrl,
+    hasOfficialYouTubeUrl: Boolean(primaryTeamChannelUrl),
+    agency: normalizeAgencyName(readNonEmptyString(data.identity?.agency_name) ?? fallbackTeam.agency),
+    badgeImageUrl: readNonEmptyString(data.identity?.badge_image_url) ?? fallbackTeam.badgeImageUrl,
+    representativeImageUrl: readNonEmptyString(data.identity?.representative_image_url) ?? fallbackTeam.representativeImageUrl,
+    latestRelease,
+    recentAlbums: recentAlbums.length ? recentAlbums : fallbackTeam.recentAlbums,
+    upcomingSignals,
+    sourceTimeline: sourceTimeline.length ? sourceTimeline : fallbackTeam.sourceTimeline,
+    nextUpcomingSignal,
+  }
+}
+
+async function fetchEntityDetailApiSnapshot(
+  fallbackTeam: TeamProfile,
+  signal: AbortSignal,
+): Promise<{ team: TeamProfile | null; errorCode: string | null }> {
+  const cacheKey = fallbackTeam.group
+  const cachedSnapshot = entityDetailApiSnapshotCache.get(cacheKey)
+  if (cachedSnapshot) {
+    return {
+      team: cachedSnapshot,
+      errorCode: null,
+    }
+  }
+
+  const result = await fetchApiJson<EntityDetailApiResponse>(`/v1/entities/${encodeURIComponent(fallbackTeam.slug)}`, signal)
+  if (!result.ok || !result.body?.data) {
+    return {
+      team: null,
+      errorCode: result.body?.error?.code ?? `entity_${result.status}`,
+    }
+  }
+
+  const team = buildEntityDetailTeamProfile(fallbackTeam.group, fallbackTeam, result.body.data)
+  entityDetailApiSnapshotCache.set(cacheKey, team)
+  return {
+    team,
+    errorCode: null,
+  }
+}
+
+function useEntityDetailResource({
+  group,
+  fallbackTeam,
+  sourceMode,
+}: {
+  group: string | null
+  fallbackTeam: TeamProfile | null
+  sourceMode: EntityDetailSourceMode
+}): EntityDetailSurfaceResource {
+  const cacheKey = fallbackTeam?.group ?? group ?? ''
+  const cachedSnapshot = cacheKey && sourceMode === 'api' ? entityDetailApiSnapshotCache.get(cacheKey) ?? null : null
+  const [remoteState, setRemoteState] = useState<{
+    cacheKey: string
+    team: TeamProfile | null
+    loading: boolean
+    errorCode: string | null
+  }>(() => ({
+    cacheKey,
+    team: cachedSnapshot,
+    loading: false,
+    errorCode: null,
+  }))
+
+  useEffect(() => {
+    if (sourceMode !== 'api' || !fallbackTeam || !cacheKey) {
+      return
+    }
+
+    if (cachedSnapshot) {
+      Promise.resolve().then(() => {
+        setRemoteState({
+          cacheKey,
+          team: cachedSnapshot,
+          loading: false,
+          errorCode: null,
+        })
+      })
+      return
+    }
+
+    const controller = new AbortController()
+    let cancelled = false
+
+    Promise.resolve().then(() => {
+      if (cancelled) {
+        return
+      }
+
+      setRemoteState({
+        cacheKey,
+        team: null,
+        loading: true,
+        errorCode: null,
+      })
+    })
+
+    void fetchEntityDetailApiSnapshot(fallbackTeam, controller.signal)
+      .then(({ team, errorCode }) => {
+        if (cancelled) {
+          return
+        }
+
+        setRemoteState({
+          cacheKey,
+          team,
+          loading: false,
+          errorCode,
+        })
+      })
+      .catch((error: unknown) => {
+        if (cancelled) {
+          return
+        }
+
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return
+        }
+
+        setRemoteState({
+          cacheKey,
+          team: null,
+          loading: false,
+          errorCode: 'network_error',
+        })
+      })
+
+    return () => {
+      cancelled = true
+      controller.abort()
+    }
+  }, [cacheKey, cachedSnapshot, fallbackTeam, sourceMode])
+
+  const activeTeam =
+    sourceMode === 'api' && cacheKey
+      ? remoteState.cacheKey === cacheKey
+        ? remoteState.team ?? cachedSnapshot ?? fallbackTeam
+        : cachedSnapshot ?? fallbackTeam
+      : fallbackTeam
+  const loading =
+    sourceMode === 'api' &&
+    !!cacheKey &&
+    remoteState.cacheKey === cacheKey &&
+    remoteState.team === null &&
+    remoteState.loading
+  const errorCode = sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
+  const source: EntityDetailSourceState =
+    sourceMode !== 'api' || !cacheKey
+      ? 'json'
+      : activeTeam && activeTeam !== fallbackTeam
+        ? 'api'
+        : errorCode
+          ? 'json_fallback'
+          : 'json'
+
+  return {
+    team: activeTeam,
+    source,
+    loading,
+    errorCode,
+  }
+}
+
 function buildReleaseDetailHandoffs(
   detail: ResolvedReleaseDetail | null,
   canonicalUrls?: MusicHandoffUrls,
@@ -8252,8 +8725,15 @@ function readReleaseDetailSourceOverrideFromLocation(): ReleaseDetailSourceMode 
   return value === 'api' || value === 'json' ? value : null
 }
 
-function getReleaseDetailSourceMode(override: ReleaseDetailSourceMode | null): ReleaseDetailSourceMode {
-  return override ?? DEFAULT_RELEASE_DETAIL_SOURCE
+function normalizeSurfaceSourceMode(value: unknown): SurfaceSourceMode {
+  return typeof value === 'string' && value.trim().toLowerCase() === 'api' ? 'api' : 'json'
+}
+
+function getSurfaceSourceMode(
+  key: keyof typeof SURFACE_SOURCE_MODES,
+  override?: SurfaceSourceMode | null,
+): SurfaceSourceMode {
+  return override ?? SURFACE_SOURCE_MODES[key]
 }
 
 function getGroupFromPath(pathname: string) {
