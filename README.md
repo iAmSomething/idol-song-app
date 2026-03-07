@@ -145,6 +145,7 @@ python3 sync_release_pipeline_to_neon.py
 - Expo Router route scaffold: `mobile/app/`
 - shared module scaffold: `mobile/src/`
 - package/runtime baseline: `mobile/package.json`, `mobile/app.config.ts`, `mobile/eas.json`, `mobile/tsconfig.json`
+- env/runtime config layer: `mobile/.env.example`, `mobile/src/config/runtime.ts`
 - implementation guide: `docs/specs/mobile/expo-implementation-guide.md`
 
 Hydration dry-run 예시:
