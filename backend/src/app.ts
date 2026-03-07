@@ -29,7 +29,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
 
   registerHealthRoute(app);
   registerReadyRoute(app, { config, db });
-  registerCalendarRoutes(app, config);
+  registerCalendarRoutes(app, { config, db });
   registerSearchRoutes(app, { config, db });
   registerEntityRoutes(app, { config, db });
   registerReleaseRoutes(app, { config, db });
