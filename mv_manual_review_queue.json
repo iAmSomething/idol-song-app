@@ -42,71 +42,6 @@
     "current_youtube_video_provenance": "Official YouTube search currently surfaces a special clip instead of a clearly canonical MV object."
   },
   {
-    "group": "&TEAM",
-    "release_title": "Back to Life",
-    "release_date": "2025-10-28",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "Back to Life"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "&TEAM Back to Life official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=%26TEAM+Back+to+Life+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
-    "group": "(G)I-DLE",
-    "release_title": "Mono",
-    "release_date": "2026-01-27",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Mono"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "(G)I-DLE Mono official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=%28G%29I-DLE+Mono+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
-    "group": "aespa",
-    "release_title": "Rich Man",
-    "release_date": "2025-09-05",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "Rich Man"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
-      "https://www.youtube.com/@SMTOWN"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "aespa Rich Man official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=aespa+Rich+Man+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
     "group": "ALL(H)OURS",
     "release_title": "VCF",
     "release_date": "2025-09-09",
@@ -168,50 +103,6 @@
     "current_youtube_video_provenance": ""
   },
   {
-    "group": "BABYMONSTER",
-    "release_title": "WE GO UP",
-    "release_date": "2025-10-10",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "WE GO UP"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
-      "https://www.youtube.com/@YGEntertainment"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "BABYMONSTER WE GO UP official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=BABYMONSTER+WE+GO+UP+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
-    "group": "BLACKPINK",
-    "release_title": "뛰어 (JUMP)",
-    "release_date": "2025-07-11",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "뛰어 (JUMP)"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
-      "https://www.youtube.com/@YGEntertainment"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "BLACKPINK 뛰어 (JUMP) official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=BLACKPINK+%EB%9B%B0%EC%96%B4+%28JUMP%29+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
     "group": "FIFTY FIFTY",
     "release_title": "TAKE MY HAND",
     "release_date": "2025-08-22",
@@ -250,28 +141,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "Hearts2Hearts FOCUS official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=Hearts2Hearts+FOCUS+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
-    "group": "ITZY",
-    "release_title": "TUNNEL VISION",
-    "release_date": "2025-11-10",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "TUNNEL VISION"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "ITZY TUNNEL VISION official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=ITZY+TUNNEL+VISION+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": ""
   },
@@ -317,27 +186,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "IVE BLACKHOLE official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=IVE+BLACKHOLE+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
-    "group": "izna",
-    "release_title": "BEEP",
-    "release_date": "2025-06-09",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "BEEP"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "izna BEEP official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=izna+BEEP+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": ""
   },
@@ -487,50 +335,6 @@
     "current_youtube_video_provenance": ""
   },
   {
-    "group": "NEXZ",
-    "release_title": "Beat‐Boxer",
-    "release_date": "2025-10-27",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "Beat‐Boxer"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "NEXZ Beat‐Boxer official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=NEXZ+Beat%E2%80%90Boxer+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
-    "group": "NMIXX",
-    "release_title": "Blue Valentine",
-    "release_date": "2025-10-13",
-    "stream": "album",
-    "release_kind": "album",
-    "title_tracks": [
-      "Blue Valentine"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "NMIXX Blue Valentine official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=NMIXX+Blue+Valentine+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
     "group": "NMIXX",
     "release_title": "TIC TIC",
     "release_date": "2026-02-26",
@@ -570,27 +374,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "ONF Summer Light official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=ONF+Summer+Light+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
-    "group": "P1Harmony",
-    "release_title": "EX",
-    "release_date": "2025-09-26",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "EX"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "P1Harmony EX official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=P1Harmony+EX+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": ""
   },
@@ -676,28 +459,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "Stray Kids In The Dark official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=Stray+Kids+In+The+Dark+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
-    "group": "Stray Kids",
-    "release_title": "DO IT",
-    "release_date": "2025-11-21",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "Do It"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "Stray Kids Do It official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=Stray+Kids+Do+It+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": ""
   },
@@ -949,27 +710,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "xikers ICONIC official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=xikers+ICONIC+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": ""
-  },
-  {
-    "group": "ZEROBASEONE",
-    "release_title": "ROSES",
-    "release_date": "2026-01-23",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "ROSES"
-    ],
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ"
-    ],
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "ZEROBASEONE ROSES official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=ZEROBASEONE+ROSES+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": ""
   }
