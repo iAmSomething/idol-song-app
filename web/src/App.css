@@ -2676,6 +2676,13 @@
   align-items: center;
 }
 
+.track-row-title-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
 .track-row .handoff-row {
   margin-top: 0;
 }
@@ -2687,6 +2694,18 @@
 
 .track-row strong {
   font-size: 0.95rem;
+}
+
+.title-track-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(211, 63, 11, 0.12);
+  color: #9a3512;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .drawer-copy {

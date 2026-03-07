@@ -8,27 +8,33 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Back to Life"
+        "title": "Back to Life",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Lunatic"
+        "title": "Lunatic",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "MISMATCH"
+        "title": "MISMATCH",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Rush"
+        "title": "Rush",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Heartbreak Time Machine"
+        "title": "Heartbreak Time Machine",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Who am I"
+        "title": "Who am I",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/7g35iam7Zn7Kwc1ZpkWD8c",
@@ -78,7 +84,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Mono"
+        "title": "Mono",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4FbuxAECa56oJs71RE9acG",
@@ -95,19 +102,23 @@
     "tracks": [
       {
         "order": 1,
-        "title": "TROPHY"
+        "title": "TROPHY",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Say more"
+        "title": "Say more",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Suspicious"
+        "title": "Suspicious",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Need That Bass"
+        "title": "Need That Bass",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6oTUrlTjn5yEohEoQrXVTf",
@@ -124,7 +135,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "BRUISE"
+        "title": "BRUISE",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0Hnt6Uo4wPdBvh0Yb4oSrI",
@@ -141,27 +153,33 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Rich Man"
+        "title": "Rich Man",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Drift"
+        "title": "Drift",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Bubble"
+        "title": "Bubble",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Count on Me"
+        "title": "Count on Me",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Angel #48"
+        "title": "Angel #48",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "To the Girls"
+        "title": "To the Girls",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -207,23 +225,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "VCF"
+        "title": "VCF",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "READY 2 RUMBLE"
+        "title": "READY 2 RUMBLE",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "DO IT"
+        "title": "DO IT",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "GOOD JOB (KUNHO, XAYDEN, MASAMI, HYUNBIN)"
+        "title": "GOOD JOB (KUNHO, XAYDEN, MASAMI, HYUNBIN)",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "La Vida Loca (YOUMIN, MINJE, ON:N, KUNHO)"
+        "title": "La Vida Loca (YOUMIN, MINJE, ON:N, KUNHO)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3mNJ0XCdr6TbY3TPN0k0tn",
@@ -314,7 +337,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Choose"
+        "title": "Choose",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -364,23 +388,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Plot Twist"
+        "title": "Plot Twist",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Push Back"
+        "title": "Push Back",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Dot Dot Dot..."
+        "title": "Dot Dot Dot...",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Knew Me"
+        "title": "Knew Me",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Good Girl (AtHeart)"
+        "title": "Good Girl (AtHeart)",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -397,7 +426,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Shut Up"
+        "title": "Shut Up",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/13N8MLxKX3V8AiIRYVZC2q",
@@ -414,7 +444,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "HOT SAUCE"
+        "title": "HOT SAUCE",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5kTDyVVuvyPJZX1MlXiBvW",
@@ -431,19 +462,23 @@
     "tracks": [
       {
         "order": 1,
-        "title": "WE GO UP"
+        "title": "WE GO UP",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "PSYCHO"
+        "title": "PSYCHO",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "SUPA DUPA LUV"
+        "title": "SUPA DUPA LUV",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "WILD"
+        "title": "WILD",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -460,7 +495,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "THRILLER"
+        "title": "THRILLER",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3WDzrUo4IO2A3ScJh6LWTW",
@@ -477,7 +513,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "What’s wrong?"
+        "title": "What’s wrong?",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -531,7 +568,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "뛰어 (JUMP)"
+        "title": "뛰어 (JUMP)",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -548,23 +586,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "JUMP"
+        "title": "JUMP",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "GO"
+        "title": "GO",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "Me and my"
+        "title": "Me and my",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Champion"
+        "title": "Champion",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Fxxxboy"
+        "title": "Fxxxboy",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
@@ -983,7 +1026,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "I'm Home"
+        "title": "I'm Home",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -1050,11 +1094,13 @@
     "tracks": [
       {
         "order": 1,
-        "title": "TAKE MY HAND"
+        "title": "TAKE MY HAND",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "TAKE MY HAND (instrumental)"
+        "title": "TAKE MY HAND (instrumental)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/03AsWUHNl2Hh9JPF3Y66ds",
@@ -1133,7 +1179,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "White Memories"
+        "title": "White Memories",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4vnA4ZWgxrhxy5doVCGv9u",
@@ -1183,7 +1230,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "세상은 영화 같지 않더라"
+        "title": "세상은 영화 같지 않더라",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -1200,23 +1248,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "FOCUS"
+        "title": "FOCUS",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Apple Pie"
+        "title": "Apple Pie",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Pretty Please"
+        "title": "Pretty Please",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Flutter"
+        "title": "Flutter",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Blue Moon"
+        "title": "Blue Moon",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0SVlu6q116wFO1m4EZ088b",
@@ -1233,7 +1286,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "RUDE!"
+        "title": "RUDE!",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3053E9tumiU5rqbAPWF06s",
@@ -1291,27 +1345,33 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Focus"
+        "title": "Focus",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "TUNNEL VISION"
+        "title": "TUNNEL VISION",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "DYT"
+        "title": "DYT",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Flicker"
+        "title": "Flicker",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Nocturne"
+        "title": "Nocturne",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "8‐BIT HEART"
+        "title": "8‐BIT HEART",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/7CD7NdEDOMY5Owl9MEzgRw",
@@ -1328,7 +1388,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "BANG BANG"
+        "title": "BANG BANG",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -1345,51 +1406,63 @@
     "tracks": [
       {
         "order": 1,
-        "title": "BLACKHOLE"
+        "title": "BLACKHOLE",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "BANG BANG"
+        "title": "BANG BANG",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "숨바꼭질 (Hush)"
+        "title": "숨바꼭질 (Hush)",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "악성코드 (Stuck in Your Head)"
+        "title": "악성코드 (Stuck in Your Head)",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Fireworks"
+        "title": "Fireworks",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "HOT COFFEE"
+        "title": "HOT COFFEE",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "8"
+        "title": "8",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "Odd"
+        "title": "Odd",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "Super ICY"
+        "title": "Super ICY",
+        "is_title_track": false
       },
       {
         "order": 10,
-        "title": "Unreal"
+        "title": "Unreal",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "In Your Heart"
+        "title": "In Your Heart",
+        "is_title_track": false
       },
       {
         "order": 12,
-        "title": "Force"
+        "title": "Force",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -1406,11 +1479,13 @@
     "tracks": [
       {
         "order": 1,
-        "title": "BEEP"
+        "title": "BEEP",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "BEEP (Japan Edition)"
+        "title": "BEEP (Japan Edition)",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -1501,23 +1576,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Taste Better"
+        "title": "Taste Better",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "BUBBLE GUM"
+        "title": "BUBBLE GUM",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "Don′t Be Dumb"
+        "title": "Don′t Be Dumb",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Ice Tea"
+        "title": "Ice Tea",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Yum (KOR ver.)"
+        "title": "Yum (KOR ver.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3pKcgDJmV3GZwgElcupVrg",
@@ -1596,7 +1676,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "To Me From Me"
+        "title": "To Me From Me",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -1732,7 +1813,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)"
+        "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5pPLGQ9xQA7PvD6RTLxOef",
@@ -1749,15 +1831,18 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Bad Girl"
+        "title": "Bad Girl",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Lost"
+        "title": "Lost",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "Nauty"
+        "title": "Nauty",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -1774,7 +1859,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "BURNING UP"
+        "title": "BURNING UP",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -1828,7 +1914,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "growing pains"
+        "title": "growing pains",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6eH7d6D70X0IbAGHBFP9yj",
@@ -1845,27 +1932,33 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Beat It Up"
+        "title": "Beat It Up",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Rush"
+        "title": "Rush",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Cold Coffee"
+        "title": "Cold Coffee",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Butterflies"
+        "title": "Butterflies",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Tempo"
+        "title": "Tempo",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "TRICKY"
+        "title": "TRICKY",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/7jd5hUsxFPUsM0dqfpRjmp",
@@ -1923,7 +2016,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Same Sky"
+        "title": "Same Sky",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5w10bOkr3HsPSp0nl1R0ff",
@@ -1940,23 +2034,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Legacy"
+        "title": "Legacy",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Beat‐Boxer"
+        "title": "Beat‐Boxer",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "I’m Him"
+        "title": "I’m Him",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Co‐Star"
+        "title": "Co‐Star",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Next to Me"
+        "title": "Next to Me",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/2iI33V0gbSII6iuEfq65fE",
@@ -1973,51 +2072,63 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Blue Valentine"
+        "title": "Blue Valentine",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "SPINNIN’ ON IT"
+        "title": "SPINNIN’ ON IT",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Phoenix"
+        "title": "Phoenix",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Reality Hurts"
+        "title": "Reality Hurts",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "RICO"
+        "title": "RICO",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Game Face"
+        "title": "Game Face",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "PODIUM"
+        "title": "PODIUM",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "Crush on You"
+        "title": "Crush on You",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "ADORE U"
+        "title": "ADORE U",
+        "is_title_track": false
       },
       {
         "order": 10,
-        "title": "Shape of Love"
+        "title": "Shape of Love",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "O.O, Part 1 (Baila)"
+        "title": "O.O, Part 1 (Baila)",
+        "is_title_track": false
       },
       {
         "order": 12,
-        "title": "O.O, Part 2 (Superhero)"
+        "title": "O.O, Part 2 (Superhero)",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -2034,7 +2145,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "TIC TIC"
+        "title": "TIC TIC",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -2150,11 +2262,13 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Summer Light"
+        "title": "Summer Light",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Summer Light (Inst.)"
+        "title": "Summer Light (Inst.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -2171,23 +2285,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "EX"
+        "title": "EX",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Dancing Queen"
+        "title": "Dancing Queen",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Stupid Brain"
+        "title": "Stupid Brain",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Night of My Life"
+        "title": "Night of My Life",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "EX (Spanish version)"
+        "title": "EX (Spanish version)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4fUrVp1xhJvcJfxYLlJiNm",
@@ -2229,7 +2348,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Wall Flowers"
+        "title": "Wall Flowers",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -2349,7 +2469,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "흰수염고래"
+        "title": "흰수염고래",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -2420,7 +2541,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "All of You"
+        "title": "All of You",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/2BOIZjVSfiQDntgqzE94PI",
@@ -2437,7 +2559,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "iLy"
+        "title": "iLy",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3fbsZjl86xqxaDmuXCDmV0",
@@ -2487,7 +2610,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Where love passed"
+        "title": "Where love passed",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -2504,15 +2628,18 @@
     "tracks": [
       {
         "order": 1,
-        "title": "I WANT IT"
+        "title": "I WANT IT",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "BOY"
+        "title": "BOY",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "반칙(Honestly)"
+        "title": "반칙(Honestly)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/252AHBq3W65lTnnELHIi4y",
@@ -2610,7 +2737,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "In The Dark"
+        "title": "In The Dark",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -2627,23 +2755,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Do It"
+        "title": "Do It",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "DIVINE"
+        "title": "DIVINE",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Holiday"
+        "title": "Holiday",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Photobook"
+        "title": "Photobook",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Do It (festival version)"
+        "title": "Do It (festival version)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4lkJ6i3LDK8HvcU2tPWX9k",
@@ -2693,7 +2826,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "In the Dark (暮色独白)"
+        "title": "In the Dark (暮色独白)",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3lBfxuIUiLqa03MhYXpr6m",
@@ -2743,15 +2877,18 @@
     "tracks": [
       {
         "order": 1,
-        "title": "The Season"
+        "title": "The Season",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Still Love You"
+        "title": "Still Love You",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "Together Forever"
+        "title": "Together Forever",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5NJHeBJzOo41F03PAdSBiP",
@@ -2797,15 +2934,18 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Run Run Barefoot"
+        "title": "Run Run Barefoot",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Run Run Barefoot (Instrumental)"
+        "title": "Run Run Barefoot (Instrumental)",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Run Run Barefoot (Fast Ver.)"
+        "title": "Run Run Barefoot (Fast Ver.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -2822,19 +2962,23 @@
     "tracks": [
       {
         "order": 1,
-        "title": "I’m the One"
+        "title": "I’m the One",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "MY PRIDE"
+        "title": "MY PRIDE",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "I Don’t Wanna Wait (IDWW)"
+        "title": "I Don’t Wanna Wait (IDWW)",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Every Ten Minutes"
+        "title": "Every Ten Minutes",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -2851,11 +2995,13 @@
     "tracks": [
       {
         "order": 1,
-        "title": "CALL ME BACK"
+        "title": "CALL ME BACK",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Love letter"
+        "title": "Love letter",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4x65qm15EE2YTLUIJLX4b5",
@@ -2872,7 +3018,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "butterflies"
+        "title": "butterflies",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/1Ct91vpCofv1WLTmhNeFK7",
@@ -2979,7 +3126,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Kart Racer"
+        "title": "Kart Racer",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/1p3Mq5paEBsbHmv1DT55Kx",
@@ -3033,15 +3181,18 @@
     "tracks": [
       {
         "order": 1,
-        "title": "トキメティック"
+        "title": "トキメティック",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "トキメティック Shin Sakiura Remix"
+        "title": "トキメティック Shin Sakiura Remix",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "トキメティック TV Edit"
+        "title": "トキメティック TV Edit",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -3058,7 +3209,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Like 1"
+        "title": "Like 1",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6m1tTBNtQtBtNeDLhVm3bO",
@@ -3128,7 +3280,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Head Shoulders Knees Toes"
+        "title": "Head Shoulders Knees Toes",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3D8vj2pQwvS2tIzgmgAuZN",
@@ -3182,7 +3335,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "幸せになんかならないでね"
+        "title": "幸せになんかならないでね",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -3306,7 +3460,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "FiRE (My Sweet Misery)"
+        "title": "FiRE (My Sweet Misery)",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6ZqZFhhTiwscyLwyoEq8ku",
@@ -3364,7 +3519,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "ICONIC"
+        "title": "ICONIC",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5Boa7YknUbdFy87sIxQ2vG",
@@ -3476,7 +3632,8 @@
     "tracks": [
       {
         "order": 1,
-        "title": "ROSES"
+        "title": "ROSES",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3bIZ5FREocfX2tLIUnnOdr",

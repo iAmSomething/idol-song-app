@@ -1,5 +1,6 @@
 import json
 import time
+import unicodedata
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
@@ -104,6 +105,57 @@ def extract_tracks(release: Dict) -> List[Dict]:
     return tracks
 
 
+def normalize_title(value: str) -> str:
+    normalized = unicodedata.normalize("NFKC", value.casefold())
+    return "".join(character for character in normalized if character.isalnum())
+
+
+def infer_title_track_titles(detail: Dict) -> List[str]:
+    tracks = detail.get("tracks", [])
+    if not tracks:
+        return []
+    if len(tracks) == 1:
+        return [tracks[0]["title"]]
+
+    normalized_release_title = normalize_title(detail.get("release_title", ""))
+    if not normalized_release_title:
+        return []
+
+    exact_matches = [
+        track["title"]
+        for track in tracks
+        if normalize_title(track.get("title", "")) == normalized_release_title
+    ]
+    if len(exact_matches) == 1:
+        return exact_matches
+    return []
+
+
+def mark_title_tracks(tracks: List[Dict], title_track_titles: List[str]) -> List[Dict]:
+    if not tracks:
+        return tracks
+
+    normalized_titles = {normalize_title(title) for title in title_track_titles if title}
+    if not normalized_titles:
+        return tracks
+
+    matched_titles = {
+        normalize_title(track.get("title", ""))
+        for track in tracks
+        if normalize_title(track.get("title", "")) in normalized_titles
+    }
+    if not matched_titles:
+        return tracks
+
+    return [
+        {
+            **track,
+            "is_title_track": normalize_title(track.get("title", "")) in matched_titles,
+        }
+        for track in tracks
+    ]
+
+
 def extract_youtube_video_id(resource: str) -> Optional[str]:
     parsed = urlparse(resource)
     host = parsed.netloc.lower()
@@ -176,18 +228,21 @@ def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tup
     override = override_by_key.get(
         get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"])
     )
-    if not override:
-        return detail, False
+    if override:
+        youtube_music_url = override.get("youtube_music_url")
+        if youtube_music_url:
+            detail["youtube_music_url"] = youtube_music_url
 
-    youtube_music_url = override.get("youtube_music_url")
-    if youtube_music_url:
-        detail["youtube_music_url"] = youtube_music_url
+        provenance = override.get("provenance")
+        if provenance and provenance not in detail["notes"]:
+            detail["notes"] += f" Canonical YouTube Music URL preserved from release_detail_overrides.json ({provenance})."
 
-    provenance = override.get("provenance")
-    if provenance and provenance not in detail["notes"]:
-        detail["notes"] += f" Canonical YouTube Music URL preserved from release_detail_overrides.json ({provenance})."
+    title_track_titles = override.get("title_tracks") if override else None
+    if not title_track_titles:
+        title_track_titles = infer_title_track_titles(detail)
+    detail["tracks"] = mark_title_tracks(detail.get("tracks", []), title_track_titles)
 
-    return detail, True
+    return detail, bool(override)
 
 
 def build_detail_row(session: requests.Session, item: Dict) -> Dict:
