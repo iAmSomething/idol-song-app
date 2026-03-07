@@ -24,8 +24,9 @@ REPORT_PATH = ROOT / "mv_coverage_report.json"
 USER_AGENT = "Mozilla/5.0"
 REQUEST_DELAY_SECONDS = 0.35
 MAX_RESULTS_PER_QUERY = 8
-MAX_QUERIES_PER_RELEASE = 4
+MAX_QUERIES_PER_RELEASE = 8
 QUERY_SUFFIXES = ("official mv", "mv")
+HANGUL_PATTERN = re.compile(r"[가-힣]")
 
 
 def load_json(path: Path) -> Any:
@@ -128,28 +129,94 @@ def fetch_query_candidates(query: str, reference: datetime) -> list[dict[str, An
     return candidates
 
 
+def contains_hangul(value: str) -> bool:
+    return bool(HANGUL_PATTERN.search(value))
+
+
+def append_unique(values: list[str], seen: set[str], value: str | None) -> None:
+    if not value:
+        return
+    normalized = " ".join(str(value).split()).strip()
+    if not normalized:
+        return
+    key = normalized.casefold()
+    if key in seen:
+        return
+    seen.add(key)
+    values.append(normalized)
+
+
+def pick_name_variants(detail: dict[str, Any], profile: dict[str, Any] | None) -> list[str]:
+    raw_candidates = [
+        detail.get("group", ""),
+        profile.get("display_name") if profile else "",
+        *((profile.get("aliases") or []) if profile else []),
+        *((profile.get("search_aliases") or []) if profile else []),
+    ]
+
+    primary = detail.get("group", "")
+    romanized_alt = ""
+    korean_alt = ""
+    for candidate in raw_candidates:
+        normalized = " ".join(str(candidate).split()).strip()
+        if not normalized or normalized.casefold() == primary.casefold():
+            continue
+        if contains_hangul(normalized):
+            if not korean_alt:
+                korean_alt = normalized
+        elif not romanized_alt:
+            romanized_alt = normalized
+        if romanized_alt and korean_alt:
+            break
+
+    variants: list[str] = []
+    seen: set[str] = set()
+    append_unique(variants, seen, primary)
+    append_unique(variants, seen, korean_alt)
+    append_unique(variants, seen, romanized_alt)
+    return variants
+
+
+def pick_title_variants(detail: dict[str, Any]) -> list[str]:
+    title_tracks = [track["title"] for track in detail.get("tracks", []) if track.get("is_title_track") and track.get("title")]
+
+    variants: list[str] = []
+    seen: set[str] = set()
+    append_unique(variants, seen, title_tracks[0] if title_tracks else detail.get("release_title"))
+    release_title = detail.get("release_title", "")
+    primary_title = variants[0] if variants else ""
+    if release_title and release_title.casefold() != primary_title.casefold():
+        append_unique(variants, seen, release_title)
+    return variants
+
+
 def build_queries(detail: dict[str, Any], profile: dict[str, Any] | None) -> list[str]:
-    names = [detail["group"]]
-    if profile and (profile.get("aliases") or []):
-        names.append(profile["aliases"][0])
-    title_tracks = [track["title"] for track in detail.get("tracks", []) if track.get("is_title_track")]
-    titles = (title_tracks[:1] or [detail["release_title"]])[:1]
+    names = pick_name_variants(detail, profile)
+    titles = pick_title_variants(detail)
+    if not names or not titles:
+        return []
 
     queries: list[str] = []
     seen: set[str] = set()
+
+    primary_title = titles[0]
+    fallback_title = titles[1] if len(titles) > 1 else ""
+    query_plan: list[tuple[str, str, str]] = []
+
     for name in names:
-        if not name:
+        query_plan.extend((name, primary_title, suffix) for suffix in QUERY_SUFFIXES)
+    if fallback_title:
+        query_plan.extend((names[0], fallback_title, suffix) for suffix in QUERY_SUFFIXES)
+
+    for name, title, suffix in query_plan:
+        query = " ".join(part for part in [name, title, suffix] if part).strip()
+        key = query.casefold()
+        if key in seen:
             continue
-        for title in titles:
-            for suffix in QUERY_SUFFIXES:
-                query = " ".join(part for part in [name, title, suffix] if part).strip()
-                key = query.casefold()
-                if key in seen:
-                    continue
-                seen.add(key)
-                queries.append(query)
-                if len(queries) >= MAX_QUERIES_PER_RELEASE:
-                    return queries
+        seen.add(key)
+        queries.append(query)
+        if len(queries) >= MAX_QUERIES_PER_RELEASE:
+            break
     return queries
 
 
