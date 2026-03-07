@@ -1,11 +1,12 @@
 # SQL Migration Run Note
 
-이 디렉터리는 Neon canonical schema baseline migration을 둔다.
+이 디렉터리는 Neon canonical schema migration과 backend projection read-model migration을 둔다.
 
 ## 위치
 
 - migration folder: `backend/sql/migrations/`
-- current baseline: `backend/sql/migrations/0001_canonical_schema.sql`
+- canonical baseline: `backend/sql/migrations/0001_canonical_schema.sql`
+- projection read model: `backend/sql/migrations/0002_projection_read_models.sql`
 
 ## 요구사항
 
@@ -24,10 +25,14 @@ cd backend
 npm install
 npm run migrate:apply
 npm run schema:verify
+npm run projection:refresh
 cd ..
 python3 -m pip install -r backend/requirements-import.txt
 python3 import_json_to_neon.py
 python3 sync_release_pipeline_to_neon.py
+cd backend
+npm run projection:refresh
+cd ..
 python3 build_backend_json_parity_report.py
 ```
 
@@ -39,4 +44,5 @@ python3 build_backend_json_parity_report.py
 - pooler URL은 migration보다 read traffic 용도에 가깝다.
 - first JSON baseline import summary는 `backend/reports/json_to_neon_import_summary.json`에 남긴다.
 - release pipeline dual-write summary는 `backend/reports/release_pipeline_db_sync_summary.json`에 남긴다.
+- projection refresh summary는 `backend/reports/projection_refresh_summary.json`에 남긴다.
 - backend-vs-JSON parity report는 `backend/reports/backend_json_parity_report.json`에 남긴다.

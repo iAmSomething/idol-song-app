@@ -7,13 +7,13 @@
 - `src/`
   - Fastify read API skeleton
 - `reports/`
-  - JSON-to-Neon import summary artifact
+  - import / dual-write / projection refresh / parity summary artifact
 - `sql/migrations/`
-  - Neon baseline schema migration
+  - Neon canonical schema + projection read-model migration
 - `sql/README.md`
   - migration apply / verify run note
 - `scripts/`
-  - plain SQL migration apply / schema verify helper
+  - plain SQL migration apply / schema verify / projection refresh helper
 - `requirements-import.txt`
   - Python importer dependency note
 
@@ -92,6 +92,33 @@ python3 sync_release_pipeline_to_neon.py
 - `web/src/data/youtubeChannelAllowlists.json`
 - `release_detail_overrides.json`
 - `mv_manual_review_queue.json`
+
+## Projection Refresh
+
+canonical table import 또는 dual-write 이후 product-facing read model projection을 다시 만들려면 아래 명령을 사용한다.
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+cd backend
+npm run migrate:apply
+npm run schema:verify
+npm run projection:refresh
+```
+
+기본 보고서 출력:
+
+- `backend/reports/projection_refresh_summary.json`
+
+현재 refresh 대상:
+
+- `entity_search_documents`
+- `calendar_month_projection`
+- `entity_detail_projection`
+- `release_detail_projection`
+- `radar_projection`
 
 ## Backend vs JSON Parity Report
 
