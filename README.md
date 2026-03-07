@@ -146,8 +146,9 @@ python3 sync_release_pipeline_to_neon.py
 - shared module scaffold: `mobile/src/`
 - package/runtime baseline: `mobile/package.json`, `mobile/app.config.ts`, `mobile/eas.json`, `mobile/tsconfig.json`
 - env/runtime config layer: `mobile/.env.example`, `mobile/src/config/runtime.ts`
-- quality baseline: `mobile/eslint.config.js`, `mobile/jest.config.js`, `mobile/app/route-shell.smoke.test.tsx`, `mobile/src/config/runtime.test.ts`
+- quality baseline: `mobile/eslint.config.js`, `mobile/jest.config.js`, `mobile/src/features/route-shell.smoke.test.tsx`, `mobile/src/config/runtime.test.ts`
 - CI gate: `.github/workflows/mobile-quality.yml`
+- bundled asset baseline: `mobile/assets/`, `mobile/assets/README.md`, `mobile/src/utils/assetRegistry.ts`
 - implementation guide: `docs/specs/mobile/expo-implementation-guide.md`
 
 Hydration dry-run 예시:
