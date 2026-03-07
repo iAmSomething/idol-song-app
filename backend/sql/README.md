@@ -35,6 +35,8 @@ cd backend
 npm run projection:refresh
 cd ..
 python3 build_backend_json_parity_report.py
+cd backend
+npm run shadow:verify
 ```
 
 ## 규칙
@@ -48,3 +50,4 @@ python3 build_backend_json_parity_report.py
 - release pipeline dual-write summary는 `backend/reports/release_pipeline_db_sync_summary.json`에 남긴다.
 - projection refresh summary는 `backend/reports/projection_refresh_summary.json`에 남긴다.
 - backend-vs-JSON parity report는 `backend/reports/backend_json_parity_report.json`에 남긴다.
+- endpoint shadow-read report는 `backend/reports/backend_shadow_read_report.json`에 남긴다.

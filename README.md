@@ -135,6 +135,7 @@ python3 sync_release_pipeline_to_neon.py
 - run note: `backend/sql/README.md`
 - upcoming dual-write report: `backend/reports/upcoming_pipeline_db_sync_summary.json`
 - projection refresh report: `backend/reports/projection_refresh_summary.json`
+- endpoint shadow-read report: `backend/reports/backend_shadow_read_report.json`
 
 Hydration dry-run 예시:
 
