@@ -6,6 +6,7 @@
 
 현재 문서는 "지금 앱이 읽는 JSON 계약"을 다루며, 장기 canonical source-of-truth는
 `../backend/canonical-backend-data-model.md`에서 별도로 정의한다.
+장기 shared read payload contract는 `../backend/shared-read-api-contracts.md`를 따른다.
 
 ## 2. 주요 데이터 소스
 1. `releases.json`
