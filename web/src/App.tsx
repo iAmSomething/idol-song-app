@@ -1399,11 +1399,19 @@ function App() {
     }
 
     const panelNode = selectedDayPanelRef.current
+    const panelRect = panelNode.getBoundingClientRect()
+    const viewportTopOffset = 24
+    const shouldScrollToPanel =
+      panelRect.top < viewportTopOffset || panelRect.top > window.innerHeight * 0.72
 
-    panelNode.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
+    if (shouldScrollToPanel) {
+      const nextTop = Math.max(0, window.scrollY + panelRect.top - viewportTopOffset)
+      window.scrollTo({
+        top: nextTop,
+        behavior: 'smooth',
+      })
+    }
+
     panelNode.classList.remove('selected-day-panel-highlight')
     void panelNode.offsetWidth
     panelNode.classList.add('selected-day-panel-highlight')
@@ -2073,105 +2081,119 @@ function App() {
               onOpenReleaseDetail={openReleaseDetail}
             />
 
-            <section ref={calendarPanelRef} className="panel panel-calendar">
-              <div className="panel-top">
-                <div>
-                  <p className="panel-label">{copy.monthlyGrid}</p>
-                  <h2>{monthFormatter.format(selectedMonthDate)}</h2>
-                </div>
-                <div className="calendar-controls">
-                  <button
-                    type="button"
-                    className="ghost-button"
-                    onClick={() =>
-                      setSelectedMonthKey(visibleMonthKeys[Math.max(monthIndex - 1, 0)] ?? effectiveMonthKey)
-                    }
-                    disabled={monthIndex <= 0}
-                  >
-                    {copy.prev}
-                  </button>
-                  <button
-                    type="button"
-                    className="ghost-button"
-                    onClick={() =>
-                      setSelectedMonthKey(
-                        visibleMonthKeys[Math.min(monthIndex + 1, visibleMonthKeys.length - 1)] ??
-                          effectiveMonthKey,
-                      )
-                    }
-                    disabled={monthIndex === -1 || monthIndex >= visibleMonthKeys.length - 1}
-                  >
-                    {copy.next}
-                  </button>
-                </div>
-              </div>
-
-              {hasNoReleaseMatches ? (
-                <div className="empty-state">
-                  {copy.noFilteredMatches}
-                </div>
-              ) : null}
-
-              <div className="calendar">
-                <div className="calendar-weekdays">
-                  {weekdays.map((weekday) => (
-                    <div key={weekday} className="weekday">
-                      {weekday}
-                    </div>
-                  ))}
+            <div className="calendar-drilldown-stack">
+              <section ref={calendarPanelRef} className="panel panel-calendar">
+                <div className="panel-top">
+                  <div>
+                    <p className="panel-label">{copy.monthlyGrid}</p>
+                    <h2>{monthFormatter.format(selectedMonthDate)}</h2>
+                  </div>
+                  <div className="calendar-controls">
+                    <button
+                      type="button"
+                      className="ghost-button"
+                      onClick={() =>
+                        setSelectedMonthKey(visibleMonthKeys[Math.max(monthIndex - 1, 0)] ?? effectiveMonthKey)
+                      }
+                      disabled={monthIndex <= 0}
+                    >
+                      {copy.prev}
+                    </button>
+                    <button
+                      type="button"
+                      className="ghost-button"
+                      onClick={() =>
+                        setSelectedMonthKey(
+                          visibleMonthKeys[Math.min(monthIndex + 1, visibleMonthKeys.length - 1)] ??
+                            effectiveMonthKey,
+                        )
+                      }
+                      disabled={monthIndex === -1 || monthIndex >= visibleMonthKeys.length - 1}
+                    >
+                      {copy.next}
+                    </button>
+                  </div>
                 </div>
 
-                <div className="calendar-grid">
-                  {monthDays.map((day) => {
-                    const dayReleases = releasesByDate.get(day.iso) ?? []
-                    const dayUpcomingSignals = upcomingByDate.get(day.iso) ?? []
-                    const hasCalendarItems = dayReleases.length > 0 || dayUpcomingSignals.length > 0
-                    const isSelected = day.iso === effectiveSelectedDayIso
+                {hasNoReleaseMatches ? (
+                  <div className="empty-state">
+                    {copy.noFilteredMatches}
+                  </div>
+                ) : null}
 
-                    return (
-                      <button
-                        type="button"
-                        key={day.iso}
-                        aria-pressed={isSelected}
-                        className={[
-                          'calendar-cell',
-                          day.inMonth ? '' : 'calendar-cell-muted',
-                          hasCalendarItems ? 'calendar-cell-active' : '',
-                          isSelected ? 'calendar-cell-selected' : '',
-                        ]
-                          .filter(Boolean)
-                          .join(' ')}
-                        onClick={() => handleSelectDay(day.iso)}
-                      >
-                        <span className="calendar-day-number">{day.date.getDate()}</span>
-                        <div className="calendar-day-content">
-                          {dayReleases.slice(0, 2).map((item) => (
-                            <span key={`${item.group}-${item.stream}-${item.title}`} className="release-chip">
-                              <TeamIdentity group={item.group} variant="chip" />
-                            </span>
-                          ))}
-                          {dayUpcomingSignals
-                            .slice(0, Math.max(0, 2 - dayReleases.length))
-                            .map((item) => (
-                              <span
-                                key={`${item.group}-${item.scheduled_date}-${item.headline}`}
-                                className={`release-chip release-chip-upcoming-${item.date_status}`}
-                              >
+                <div className="calendar">
+                  <div className="calendar-weekdays">
+                    {weekdays.map((weekday) => (
+                      <div key={weekday} className="weekday">
+                        {weekday}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="calendar-grid">
+                    {monthDays.map((day) => {
+                      const dayReleases = releasesByDate.get(day.iso) ?? []
+                      const dayUpcomingSignals = upcomingByDate.get(day.iso) ?? []
+                      const hasCalendarItems = dayReleases.length > 0 || dayUpcomingSignals.length > 0
+                      const isSelected = day.iso === effectiveSelectedDayIso
+
+                      return (
+                        <button
+                          type="button"
+                          key={day.iso}
+                          aria-pressed={isSelected}
+                          className={[
+                            'calendar-cell',
+                            day.inMonth ? '' : 'calendar-cell-muted',
+                            hasCalendarItems ? 'calendar-cell-active' : '',
+                            isSelected ? 'calendar-cell-selected' : '',
+                          ]
+                            .filter(Boolean)
+                            .join(' ')}
+                          onClick={() => handleSelectDay(day.iso)}
+                        >
+                          <span className="calendar-day-number">{day.date.getDate()}</span>
+                          <div className="calendar-day-content">
+                            {dayReleases.slice(0, 2).map((item) => (
+                              <span key={`${item.group}-${item.stream}-${item.title}`} className="release-chip">
                                 <TeamIdentity group={item.group} variant="chip" />
                               </span>
                             ))}
-                          {dayReleases.length + dayUpcomingSignals.length > 2 ? (
-                            <span className="release-chip release-chip-more">
-                              +{dayReleases.length + dayUpcomingSignals.length - 2}
-                            </span>
-                          ) : null}
-                        </div>
-                      </button>
-                    )
-                  })}
+                            {dayUpcomingSignals
+                              .slice(0, Math.max(0, 2 - dayReleases.length))
+                              .map((item) => (
+                                <span
+                                  key={`${item.group}-${item.scheduled_date}-${item.headline}`}
+                                  className={`release-chip release-chip-upcoming-${item.date_status}`}
+                                >
+                                  <TeamIdentity group={item.group} variant="chip" />
+                                </span>
+                              ))}
+                            {dayReleases.length + dayUpcomingSignals.length > 2 ? (
+                              <span className="release-chip release-chip-more">
+                                +{dayReleases.length + dayUpcomingSignals.length - 2}
+                              </span>
+                            ) : null}
+                          </div>
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
+
+              <SelectedDayPanel
+                className="selected-day-panel-context"
+                panelRef={selectedDayPanelRef}
+                dateLabel={selectedDayLabel}
+                releases={selectedDayReleases}
+                upcomingSignals={selectedDayUpcomingSignals}
+                language={language}
+                shortDateFormatter={shortDateFormatter}
+                onOpenTeamPage={openTeamPage}
+                onOpenReleaseDetail={openReleaseDetail}
+              />
+            </div>
 
             <MonthlyReleaseDashboard
               monthLabel={monthFormatter.format(selectedMonthDate)}
@@ -2192,16 +2214,6 @@ function App() {
               onOpenReleaseDetail={openReleaseDetail}
             />
 
-            <SelectedDayPanel
-              panelRef={selectedDayPanelRef}
-              dateLabel={selectedDayLabel}
-              releases={selectedDayReleases}
-              upcomingSignals={selectedDayUpcomingSignals}
-              language={language}
-              shortDateFormatter={shortDateFormatter}
-              onOpenTeamPage={openTeamPage}
-              onOpenReleaseDetail={openReleaseDetail}
-            />
           </div>
 
           <aside className="sidebar">
