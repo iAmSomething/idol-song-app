@@ -70,6 +70,8 @@
   - 예정일
   - 상태
   - 대표 source
+- 제외:
+  - `month_only`, `unknown` 예정 신호는 이 카드 후보에 넣지 않는다.
 - 액션 순서:
   1. `팀 페이지`(Primary)
   2. source(Meta)
@@ -84,6 +86,8 @@
   - 예정일
   - 상태
   - confidence
+- 제외:
+  - `month_only`, `unknown` 예정 신호는 주간 카드 후보에 넣지 않는다.
 - 액션 순서:
   1. `팀 페이지`(Primary)
   2. source(Meta)
@@ -133,11 +137,12 @@
 
 ## 9. 데이터 바인딩
 - Featured Comeback: `upcomingCandidates.json`에서 exact/future date 기준 가장 가까운 항목
-- Weekly Events: 현재 주 범위 필터된 upcoming
+- Weekly Events: 현재 주 범위의 exact-date upcoming
 - Change Feed: `change-tracked` 데이터 또는 derived diff feed
 - Long-gap: `watchlist.json` + latest release recency
 - Rookie: `artistProfiles.json`의 debut_year 또는 manual rookie tags
 - Team badge/image: `artistProfiles.json` 우선, 없으면 fallback
+- `month_only` 신호는 Radar의 featured/weekly date slot이 아니라 Calendar 월 컨텍스트에서 소비한다.
 
 ## 10. 상태 매트릭스
 | 상태 | Featured | Weekly | Change | Long-gap/Rookie |
@@ -152,6 +157,7 @@
 - 섹션 제목은 `가장 가까운 컴백`, `이번 주 예정`, `일정 변경`, `장기 공백 레이더`, `루키 레이더`로 고정한다.
 - D-day 표기는 `D-3`, `오늘`, `내일` 규칙을 따른다.
 - source 라벨은 `기사 원문`, `공식 공지`, `소스 보기`만 사용한다.
+- 날짜가 없는 월 단위 신호는 이 화면에서 날짜 카드처럼 보이면 안 된다.
 
 ## 12. 제스처 및 전환
 - Featured/Weekly/Change/Long-gap/Rookie 카드 탭은 기본적으로 Team Detail push다.

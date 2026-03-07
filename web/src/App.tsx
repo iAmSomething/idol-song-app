@@ -459,9 +459,10 @@ const TRANSLATIONS = {
       scheduled: '예정 컴백',
       nearest: '가장 가까운 일정',
     },
-    monthlyNearestEmpty: '일정 없음',
+    monthlyNearestEmpty: '정확한 날짜 없음',
     monthlyHighlightLabel: '가장 가까운 일정',
-    monthlyHighlightEmpty: '현재 월과 필터 기준으로 표시할 예정 컴백이 없습니다.',
+    monthlyHighlightEmpty: '현재 월과 필터 기준으로 정확한 날짜가 있는 예정 컴백이 없습니다.',
+    monthlyHighlightUndatedOnly: '현재 월에는 날짜 미정 월 단위 신호만 있습니다. 아래 월간 목록에서 확인하세요.',
     stats: {
       verifiedReleases: '검증된 발매',
       watchTargets: '추적 대상',
@@ -552,6 +553,9 @@ const TRANSLATIONS = {
     monthlyDashboardSort: '정렬',
     monthlyDashboardVerifiedTitle: 'Verified releases',
     monthlyDashboardScheduledTitle: 'Scheduled comebacks',
+    monthlyDashboardScheduledExactTitle: '날짜가 잡힌 예정',
+    monthlyDashboardScheduledMonthOnlyTitle: '월 단위 신호 · 날짜 미정',
+    monthlyDashboardDatePending: '날짜 미정',
     monthlyDashboardVerifiedEmpty: '이 월에 표시할 검증 발매가 없습니다.',
     monthlyDashboardScheduledEmpty: '이 월에 표시할 예정 컴백이 없습니다.',
     agencyView: '소속사 뷰',
@@ -691,9 +695,10 @@ const TRANSLATIONS = {
       scheduled: 'Scheduled comebacks',
       nearest: 'Closest schedule',
     },
-    monthlyNearestEmpty: 'No schedule',
+    monthlyNearestEmpty: 'No exact date',
     monthlyHighlightLabel: 'Closest schedule',
-    monthlyHighlightEmpty: 'No scheduled comebacks match this month and filter state.',
+    monthlyHighlightEmpty: 'No exact-date scheduled comebacks match this month and filter state.',
+    monthlyHighlightUndatedOnly: 'Only month-level undated signals remain for this month. Check the monthly list below.',
     stats: {
       verifiedReleases: 'Verified releases',
       watchTargets: 'Watch targets',
@@ -784,6 +789,9 @@ const TRANSLATIONS = {
     monthlyDashboardSort: 'Sort',
     monthlyDashboardVerifiedTitle: 'Verified releases',
     monthlyDashboardScheduledTitle: 'Scheduled comebacks',
+    monthlyDashboardScheduledExactTitle: 'Exact-date comebacks',
+    monthlyDashboardScheduledMonthOnlyTitle: 'Month-only signals',
+    monthlyDashboardDatePending: 'Date TBA',
     monthlyDashboardVerifiedEmpty: 'No verified releases to show for this month.',
     monthlyDashboardScheduledEmpty: 'No scheduled comebacks to show for this month.',
     agencyView: 'Agency view',
@@ -1365,7 +1373,13 @@ function App() {
 
   const todayIso = dateFormatter.format(new Date())
   const todayMonthKey = todayIso.slice(0, 7)
-  const visibleMonthKeys = getVisibleMonthKeys(filteredReleases, filteredUpcomingSignals, [todayMonthKey])
+  const filteredUpcomingMonthKeys = Array.from(
+    new Set(filteredUpcoming.map((item) => getUpcomingMonthKey(item)).filter(Boolean)),
+  ).sort()
+  const visibleMonthKeys = getVisibleMonthKeys(filteredReleases, filteredUpcomingSignals, [
+    todayMonthKey,
+    ...filteredUpcomingMonthKeys,
+  ])
   const effectiveMonthKey = visibleMonthKeys.includes(selectedMonthKey)
     ? selectedMonthKey
     : visibleMonthKeys.at(-1) ?? selectedMonthKey
@@ -1377,8 +1391,15 @@ function App() {
   const monthUpcomingSignals = filteredUpcomingSignals.filter(
     (item) => getMonthKey(item.dateValue) === effectiveMonthKey,
   )
+  const monthMonthOnlyUpcomingRows = filteredUpcoming
+    .filter(
+      (item) =>
+        getUpcomingDatePrecisionValue(item) === 'month_only' && getUpcomingMonthKey(item) === effectiveMonthKey,
+    )
+    .sort(compareUpcomingSignals)
   const monthVerifiedDashboardRows = [...monthReleases].sort(compareMonthlyDashboardVerified)
   const monthScheduledDashboardRows = [...monthUpcomingSignals].sort(compareMonthlyDashboardUpcoming)
+  const monthScheduledCount = monthScheduledDashboardRows.length + monthMonthOnlyUpcomingRows.length
   const dashboardFilterSummary = buildMonthlyDashboardFilterSummary(
     {
       search,
@@ -1413,7 +1434,8 @@ function App() {
       : []
   const visibleDayIsos = new Set(monthDays.map((day) => day.iso))
   const isSelectedDayVisible = visibleDayIsos.has(selectedDayIso)
-  const hasNoReleaseMatches = filteredReleases.length === 0 && filteredUpcomingSignals.length === 0
+  const hasNoMonthMatches =
+    monthReleases.length === 0 && monthUpcomingSignals.length === 0 && monthMonthOnlyUpcomingRows.length === 0
 
   const effectiveSelectedDayIso =
     isSelectedDayVisible
@@ -1473,6 +1495,8 @@ function App() {
   const nearestJumpSourceLabel = nearestCalendarJumpTarget
     ? copy.calendarQuickJumpSourceLabels[nearestCalendarJumpTarget.source]
     : copy.calendarQuickJumpUnavailable
+  const monthlyHighlightEmptyCopy =
+    monthMonthOnlyUpcomingRows.length > 0 ? copy.monthlyHighlightUndatedOnly : copy.monthlyHighlightEmpty
   const selectedTeam = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
   const compareTeam = activeCompareGroup ? teamProfileMap.get(activeCompareGroup) ?? null : null
   const compareTeamOptions = selectedTeam ? teamProfiles.filter((team) => team.group !== selectedTeam.group) : []
@@ -1728,7 +1752,7 @@ function App() {
               </article>
               <article className="context-summary-card">
                 <span>{copy.monthlySummaryLabels.scheduled}</span>
-                <strong>{monthScheduledDashboardRows.length}</strong>
+                <strong>{monthScheduledCount}</strong>
               </article>
               <article className="context-summary-card">
                 <span>{copy.monthlySummaryLabels.nearest}</span>
@@ -1813,7 +1837,7 @@ function App() {
                   </div>
                 </div>
               ) : (
-                <p className="empty-copy">{copy.monthlyHighlightEmpty}</p>
+                <p className="empty-copy">{monthlyHighlightEmptyCopy}</p>
               )}
             </article>
           </div>
@@ -2379,7 +2403,7 @@ function App() {
                   </div>
                 </div>
 
-                {hasNoReleaseMatches ? (
+                {hasNoMonthMatches ? (
                   <div className="empty-state">
                     {copy.noFilteredMatches}
                   </div>
@@ -2464,6 +2488,7 @@ function App() {
               monthLabel={monthFormatter.format(selectedMonthDate)}
               verifiedRows={monthVerifiedDashboardRows}
               scheduledRows={monthScheduledDashboardRows}
+              monthOnlyRows={monthMonthOnlyUpcomingRows}
               activeFilters={dashboardFilterSummary}
               language={language}
               displayDateFormatter={displayDateFormatter}
@@ -3939,11 +3964,143 @@ function CompareCountCard({ count }: { count: number }) {
   )
 }
 
+function DashboardScheduledBucket({
+  title,
+  rows,
+  language,
+  displayDateFormatter,
+  onOpenTeamPage,
+}: {
+  title: string
+  rows: UpcomingCandidateRow[]
+  language: Language
+  displayDateFormatter: Intl.DateTimeFormat
+  onOpenTeamPage: (group: string) => void
+}) {
+  const copy = TRANSLATIONS[language]
+
+  return (
+    <section className="dashboard-subsection">
+      <div className="selected-day-panel-head dashboard-subsection-head">
+        <h4>{title}</h4>
+        <span className="selected-day-panel-count">{rows.length}</span>
+      </div>
+      <div className="dashboard-table-shell">
+        <table className="dashboard-table">
+          <thead>
+            <tr>
+              <th>{copy.dashboardTeam}</th>
+              <th>{copy.dashboardScheduledTitle}</th>
+              <th>{copy.dashboardStatus}</th>
+              <th>{copy.dashboardFormat}</th>
+              <th>{copy.dashboardDate}</th>
+              <th>{copy.dashboardConfidence}</th>
+              <th>{copy.dashboardSource}</th>
+              <th>{copy.dashboardActions}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((item) => (
+              <tr key={getUpcomingDashboardRowKey(item)}>
+                <td>
+                  <TeamIdentity group={item.group} variant="list" />
+                </td>
+                <td>
+                  <strong>{item.headline}</strong>
+                  {formatUpcomingEvidenceMeta(item, language) ? (
+                    <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
+                  ) : null}
+                </td>
+                <td>
+                  <span className={`signal-badge signal-badge-date-${item.date_status}`}>
+                    {formatDateStatus(item.date_status, language)}
+                  </span>
+                </td>
+                <td>{formatReleaseFormat(item.release_format, language) || copy.none}</td>
+                <td>{formatScheduledDashboardTimingLabel(item, language, displayDateFormatter, copy.none)}</td>
+                <td>
+                  <span className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}>
+                    {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
+                  </span>
+                </td>
+                <td>
+                  {item.source_url ? (
+                    <a href={item.source_url} target="_blank" rel="noreferrer" className="dashboard-source-link">
+                      {item.source_domain || copy.sourceLink}
+                    </a>
+                  ) : (
+                    <span className="signal-link-muted">{copy.noSourceLink}</span>
+                  )}
+                </td>
+                <td>
+                  <div className="dashboard-table-actions">
+                    <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                      {TEAM_COPY[language].action}
+                    </ActionButton>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="dashboard-mobile-list">
+        {rows.map((item) => (
+          <article
+            key={`mobile-${getUpcomingDashboardRowKey(item)}`}
+            className={`detail-card dashboard-mobile-card detail-card-signal detail-card-signal-${item.date_status}`}
+          >
+            <div className="signal-head">
+              <TeamIdentity group={item.group} variant="list" />
+              <div className="signal-tags">
+                <span className={`signal-badge signal-badge-date-${item.date_status}`}>
+                  {formatDateStatus(item.date_status, language)}
+                </span>
+                <span className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}>
+                  {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
+                </span>
+              </div>
+            </div>
+            <h3>{item.headline}</h3>
+            <p className="signal-meta">
+              {formatReleaseFormat(item.release_format, language) || copy.none} ·{' '}
+              {formatScheduledDashboardTimingLabel(item, language, displayDateFormatter, copy.none)}
+            </p>
+            <p className="signal-meta">
+              {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
+            </p>
+            {formatUpcomingEvidenceMeta(item, language) ? (
+              <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
+            ) : null}
+            <div className="action-stack">
+              <div className="action-row">
+                <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                  {TEAM_COPY[language].action}
+                </ActionButton>
+              </div>
+              <div className="meta-links">
+                {item.source_url ? (
+                  <a href={item.source_url} target="_blank" rel="noreferrer" className="meta-link">
+                    {copy.sourceLink}
+                  </a>
+                ) : (
+                  <span className="signal-link-muted">{copy.noSourceLink}</span>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function MonthlyReleaseDashboard({
   sectionId,
   monthLabel,
   verifiedRows,
   scheduledRows,
+  monthOnlyRows,
   activeFilters,
   language,
   displayDateFormatter,
@@ -3954,6 +4111,7 @@ function MonthlyReleaseDashboard({
   monthLabel: string
   verifiedRows: VerifiedRelease[]
   scheduledRows: DatedUpcomingSignal[]
+  monthOnlyRows: UpcomingCandidateRow[]
   activeFilters: string[]
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
@@ -3977,6 +4135,8 @@ function MonthlyReleaseDashboard({
   ]
   const sortedVerifiedRows = sortVerifiedDashboardRows(verifiedRows, verifiedSortKey, verifiedSortDirection)
   const sortedScheduledRows = sortScheduledDashboardRows(scheduledRows, scheduledSortKey, scheduledSortDirection)
+  const sortedMonthOnlyRows = sortScheduledDashboardRows(monthOnlyRows, scheduledSortKey, scheduledSortDirection)
+  const totalScheduledRows = sortedScheduledRows.length + sortedMonthOnlyRows.length
 
   function handleVerifiedSortChange(key: VerifiedDashboardSortKey) {
     if (verifiedSortKey === key) {
@@ -4152,7 +4312,7 @@ function MonthlyReleaseDashboard({
         <section className="monthly-dashboard-section">
           <div className="selected-day-panel-head">
             <h3>{copy.monthlyDashboardScheduledTitle}</h3>
-            <span className="selected-day-panel-count">{sortedScheduledRows.length}</span>
+            <span className="selected-day-panel-count">{totalScheduledRows}</span>
           </div>
           <div className="dashboard-section-toolbar">
             <span className="dashboard-toolbar-label">{copy.monthlyDashboardSort}</span>
@@ -4176,115 +4336,27 @@ function MonthlyReleaseDashboard({
               ))}
             </div>
           </div>
-          {sortedScheduledRows.length ? (
-            <>
-              <div className="dashboard-table-shell">
-                <table className="dashboard-table">
-                  <thead>
-                    <tr>
-                      <th>{copy.dashboardTeam}</th>
-                      <th>{copy.dashboardScheduledTitle}</th>
-                      <th>{copy.dashboardStatus}</th>
-                      <th>{copy.dashboardFormat}</th>
-                      <th>{copy.dashboardDate}</th>
-                      <th>{copy.dashboardConfidence}</th>
-                      <th>{copy.dashboardSource}</th>
-                      <th>{copy.dashboardActions}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {sortedScheduledRows.map((item) => (
-                      <tr key={`${item.group}-${item.scheduled_date}-${item.headline}`}>
-                        <td>
-                          <TeamIdentity group={item.group} variant="list" />
-                        </td>
-                        <td>
-                          <strong>{item.headline}</strong>
-                          {formatUpcomingEvidenceMeta(item, language) ? (
-                            <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
-                          ) : null}
-                        </td>
-                        <td>
-                          <span className={`signal-badge signal-badge-date-${item.date_status}`}>
-                            {formatDateStatus(item.date_status, language)}
-                          </span>
-                        </td>
-                        <td>{formatReleaseFormat(item.release_format, language) || copy.none}</td>
-                        <td>{formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}</td>
-                        <td>
-                          <span className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}>
-                            {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
-                          </span>
-                        </td>
-                        <td>
-                          {item.source_url ? (
-                            <a href={item.source_url} target="_blank" rel="noreferrer" className="dashboard-source-link">
-                              {item.source_domain || copy.sourceLink}
-                            </a>
-                          ) : (
-                            <span className="signal-link-muted">{copy.noSourceLink}</span>
-                          )}
-                        </td>
-                        <td>
-                          <div className="dashboard-table-actions">
-                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
-                              {TEAM_COPY[language].action}
-                            </ActionButton>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div className="dashboard-mobile-list">
-                {sortedScheduledRows.map((item) => (
-                  <article
-                    key={`mobile-${item.group}-${item.scheduled_date}-${item.headline}`}
-                    className={`detail-card dashboard-mobile-card detail-card-signal detail-card-signal-${item.date_status}`}
-                  >
-                    <div className="signal-head">
-                      <TeamIdentity group={item.group} variant="list" />
-                      <div className="signal-tags">
-                        <span className={`signal-badge signal-badge-date-${item.date_status}`}>
-                          {formatDateStatus(item.date_status, language)}
-                        </span>
-                        <span className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}>
-                          {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
-                        </span>
-                      </div>
-                    </div>
-                    <h3>{item.headline}</h3>
-                    <p className="signal-meta">
-                      {formatReleaseFormat(item.release_format, language) || copy.none} ·{' '}
-                      {formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}
-                    </p>
-                    <p className="signal-meta">
-                      {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
-                    </p>
-                    {formatUpcomingEvidenceMeta(item, language) ? (
-                      <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
-                    ) : null}
-                    <div className="action-stack">
-                      <div className="action-row">
-                        <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
-                          {TEAM_COPY[language].action}
-                        </ActionButton>
-                      </div>
-                      <div className="meta-links">
-                        {item.source_url ? (
-                          <a href={item.source_url} target="_blank" rel="noreferrer" className="meta-link">
-                            {copy.sourceLink}
-                          </a>
-                        ) : (
-                          <span className="signal-link-muted">{copy.noSourceLink}</span>
-                        )}
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </>
+          {totalScheduledRows ? (
+            <div className="dashboard-subsection-stack">
+              {sortedScheduledRows.length ? (
+                <DashboardScheduledBucket
+                  title={copy.monthlyDashboardScheduledExactTitle}
+                  rows={sortedScheduledRows}
+                  language={language}
+                  displayDateFormatter={displayDateFormatter}
+                  onOpenTeamPage={onOpenTeamPage}
+                />
+              ) : null}
+              {sortedMonthOnlyRows.length ? (
+                <DashboardScheduledBucket
+                  title={copy.monthlyDashboardScheduledMonthOnlyTitle}
+                  rows={sortedMonthOnlyRows}
+                  language={language}
+                  displayDateFormatter={displayDateFormatter}
+                  onOpenTeamPage={onOpenTeamPage}
+                />
+              ) : null}
+            </div>
           ) : (
             <p className="empty-copy">{copy.monthlyDashboardScheduledEmpty}</p>
           )}
@@ -6135,8 +6207,8 @@ function sortVerifiedDashboardRows(
   })
 }
 
-function sortScheduledDashboardRows(
-  rows: DatedUpcomingSignal[],
+function sortScheduledDashboardRows<T extends UpcomingSignalBase>(
+  rows: T[],
   sortKey: ScheduledDashboardSortKey,
   direction: DashboardSortDirection,
 ) {
@@ -6151,11 +6223,11 @@ function sortScheduledDashboardRows(
     } else if (sortKey === 'confidence') {
       comparison = left.confidence - right.confidence
     } else {
-      comparison = left.dateValue.getTime() - right.dateValue.getTime()
+      comparison = compareScheduledDashboardDate(left, right)
     }
 
     if (comparison === 0) {
-      comparison = left.dateValue.getTime() - right.dateValue.getTime()
+      comparison = compareScheduledDashboardDate(left, right)
     }
 
     if (comparison === 0) {
@@ -6170,7 +6242,28 @@ function sortScheduledDashboardRows(
   })
 }
 
-function compareDashboardStatus(left: DatedUpcomingSignal['date_status'], right: DatedUpcomingSignal['date_status']) {
+function compareScheduledDashboardDate(left: UpcomingSignalBase, right: UpcomingSignalBase) {
+  const leftHasDate = hasExactUpcomingDate(left)
+  const rightHasDate = hasExactUpcomingDate(right)
+  if (leftHasDate && rightHasDate) {
+    const dateCompare = parseDateValue(left.scheduled_date) - parseDateValue(right.scheduled_date)
+    if (dateCompare !== 0) {
+      return dateCompare
+    }
+  } else if (leftHasDate !== rightHasDate) {
+    return leftHasDate ? -1 : 1
+  }
+
+  const leftMonthKey = getUpcomingMonthKey(left)
+  const rightMonthKey = getUpcomingMonthKey(right)
+  if (leftMonthKey && rightMonthKey && leftMonthKey !== rightMonthKey) {
+    return leftMonthKey.localeCompare(rightMonthKey)
+  }
+
+  return 0
+}
+
+function compareDashboardStatus(left: UpcomingSignalBase['date_status'], right: UpcomingSignalBase['date_status']) {
   const rank = { confirmed: 0, scheduled: 1, rumor: 2 }
   return rank[left] - rank[right]
 }
@@ -7014,6 +7107,10 @@ function getAlbumKey(item: VerifiedRelease) {
   return `${item.group}-${item.stream}-${item.title}-${item.date}`
 }
 
+function getUpcomingDashboardRowKey(item: UpcomingCandidateRow) {
+  return item.event_key ?? [item.group, item.scheduled_date || item.scheduled_month || 'undated', item.headline].join('::')
+}
+
 function findVerifiedReleaseByKey(group: string, albumKey: string) {
   return (verifiedReleaseHistoryByGroup.get(group) ?? []).find((item) => getAlbumKey(item) === albumKey) ?? null
 }
@@ -7391,6 +7488,21 @@ function formatUpcomingTimingLabel(
   }
 
   return fallback
+}
+
+function formatScheduledDashboardTimingLabel(
+  item: Pick<UpcomingSignalBase, 'scheduled_date' | 'scheduled_month' | 'date_precision'>,
+  language: Language,
+  formatter: Intl.DateTimeFormat,
+  fallback: string,
+) {
+  const copy = TRANSLATIONS[language]
+  const timingLabel = formatUpcomingTimingLabel(item, language, formatter, fallback)
+  if (getUpcomingDatePrecisionValue(item) !== 'month_only') {
+    return timingLabel
+  }
+
+  return timingLabel === fallback ? copy.monthlyDashboardDatePending : `${timingLabel} · ${copy.monthlyDashboardDatePending}`
 }
 
 function getMonthKey(date: Date) {
