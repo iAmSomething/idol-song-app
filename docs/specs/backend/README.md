@@ -12,15 +12,19 @@
 2. `phased-rollout-plan.md`
    - JSON-first 파이프라인에서 backend-backed persistence / read로 넘어가는 단계별 전환 계획
    - phase별 gate, rollback, parity metric, ownership split
-3. `backend-migration-epic.md`
+3. `runtime-and-service-boundaries.md`
+   - Neon / Fastify / Railway worker / GitHub Pages 기준의 runtime baseline
+   - database, read API, worker, transitional GitHub delivery의 boundary
+4. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
 
 ## 읽는 순서
 
 1. `canonical-backend-data-model.md`
-2. `phased-rollout-plan.md`
-3. `backend-migration-epic.md`
+2. `runtime-and-service-boundaries.md`
+3. `phased-rollout-plan.md`
+4. `backend-migration-epic.md`
 
 ## 원칙
 
