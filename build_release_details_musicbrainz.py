@@ -9,6 +9,7 @@ import requests
 ROOT = Path(__file__).resolve().parent
 RELEASES_PATH = ROOT / "web/src/data/releases.json"
 OUTPUT_PATH = ROOT / "web/src/data/releaseDetails.json"
+OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 USER_AGENT = "idol-song-app/1.0 (https://github.com/iAmSomething/idol-song-app)"
 REQUEST_DELAY_SECONDS = 0.35
 MAX_RETRIES = 4
@@ -46,6 +47,23 @@ def iter_release_items(rows: List[Dict]) -> List[Dict]:
                 }
             )
     return items
+
+
+def get_detail_key(group: str, release_title: str, release_date: str, stream: str) -> str:
+    return "::".join([group, release_title, release_date, stream]).lower()
+
+
+def load_detail_overrides() -> Dict[str, Dict]:
+    if not OVERRIDES_PATH.exists():
+        return {}
+
+    with OVERRIDES_PATH.open() as handle:
+        rows = json.load(handle)
+
+    return {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in rows
+    }
 
 
 def score_release(release: Dict, title: str, release_date: str) -> int:
@@ -154,6 +172,24 @@ def build_empty_detail(item: Dict) -> Dict:
     }
 
 
+def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tuple[Dict, bool]:
+    override = override_by_key.get(
+        get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"])
+    )
+    if not override:
+        return detail, False
+
+    youtube_music_url = override.get("youtube_music_url")
+    if youtube_music_url:
+        detail["youtube_music_url"] = youtube_music_url
+
+    provenance = override.get("provenance")
+    if provenance and provenance not in detail["notes"]:
+        detail["notes"] += f" Canonical YouTube Music URL preserved from release_detail_overrides.json ({provenance})."
+
+    return detail, True
+
+
 def build_detail_row(session: requests.Session, item: Dict) -> Dict:
     release_group = get_json(
         session,
@@ -205,6 +241,8 @@ def main() -> None:
 
     items = iter_release_items(release_rows)
     details: List[Dict] = []
+    override_by_key = load_detail_overrides()
+    applied_overrides = 0
 
     session = requests.Session()
     session.headers["User-Agent"] = USER_AGENT
@@ -214,7 +252,9 @@ def main() -> None:
             f"[{index}/{len(items)}] {item['group']} · {item['release_title']} · {item['stream']}",
             flush=True,
         )
-        details.append(build_detail_row(session, item))
+        detail, was_overridden = apply_detail_override(build_detail_row(session, item), override_by_key)
+        applied_overrides += int(was_overridden)
+        details.append(detail)
 
     details.sort(
         key=lambda row: (
@@ -240,6 +280,7 @@ def main() -> None:
                 "with_spotify": with_spotify,
                 "with_youtube_music": with_youtube_music,
                 "with_video": with_video,
+                "youtube_music_overrides": applied_overrides,
             },
             ensure_ascii=False,
             indent=2,

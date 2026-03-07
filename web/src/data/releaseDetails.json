@@ -32,9 +32,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/7g35iam7Zn7Kwc1ZpkWD8c",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "(G)I-DLE",
@@ -65,9 +65,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/prerelease/6dwb5r26FV8QM1q2VNfin6",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kAyRRZgPd8_-z3-o-FoAVuoTe4zq0OfBU",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "(G)I-DLE",
@@ -111,9 +111,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6oTUrlTjn5yEohEoQrXVTf",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_n26tMK3m2CEt3tFoD2YUR5c9WUBUUp5cA",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "8TURN",
@@ -227,9 +227,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3mNJ0XCdr6TbY3TPN0k0tn",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mJBwjYFfSF9-YOrEnw0sKqCC1GHL4-of8",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "AMPERS&ONE",
@@ -264,9 +264,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4s6H9i2JkMF58sij9Xa26W",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mzU4hGn0UZvpekp3z86by6MXEHLbTmiJo",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "ARTMS",
@@ -301,9 +301,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nygYEX8EJbqY076z29zCDqErM48SqFmAo",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "ATEEZ",
@@ -384,9 +384,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kbkZQcpCun1GMI03ym_nVHzcA28bYfojc",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "AtHeart",
@@ -447,9 +447,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_ki16_Lh3p19WqZ8SgTPuGd3Vl96qmbBfE",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 4 tracks."
+    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "BADVILLAIN",
@@ -518,9 +518,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kv6ea-C6wkZm4_oKaDuet9iZlOSlccR7Y",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "BLACKPINK",
@@ -568,9 +568,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "BOYNEXTDOOR",
@@ -597,9 +597,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3X8Y5tDqydu-BEI19CvS1kLm1u7GR8Yk",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz SINGLE seed with 4 tracks."
+    "notes": "Representative MusicBrainz SINGLE seed with 4 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "BOYNEXTDOOR",
@@ -630,9 +630,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6NKAKKTVPPE85NIDY9u6QD",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nlFdyL6NGSDWRNc8FOo6bodDyqEavQTIQ",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "CIX",
@@ -720,9 +720,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5dsLiHjDY0eNIN8iEhNuy5",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nXFWGVBWOJwQakSJ46H7Y4pSgSxwLsuJQ",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz ALBUM seed with 12 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz ALBUM seed with 12 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "DAY6",
@@ -773,9 +773,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_llmEuUBbQC0ecOvO88e98YZ7j-P3-PbTI",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz ALBUM seed with 10 tracks."
+    "notes": "Representative MusicBrainz ALBUM seed with 10 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "DKB",
@@ -806,9 +806,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mfeS1WJS4UT0_x-TUGk7EZrZ3bqf7nYJo",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "ENHYPEN",
@@ -888,9 +888,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4h3umvQDxwVMlZ7Adtc8Ad",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_njsgSSx9YXXGmw3r9acFuNqIU6UYzm0sQ",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 11 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 11 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "EPEX",
@@ -970,9 +970,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0hffupnkBt5Q4tP7kf2713",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mrB7hh-Hh7QeHPFJ6MkL33GqDj3Kp66C4",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "EXO",
@@ -1120,9 +1120,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3jGURiEnUi4OoN879bBz0V",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_n6eo2k-wLicG711lFzFVY_XZPCzV07UJI",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "fromis_9",
@@ -1278,9 +1278,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/464og3a6TdySFWC2hEq1TW",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nwbFxdWNwCwZ6gz6YC2R70gIG_U9wdNIY",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "ITZY",
@@ -1315,9 +1315,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/7CD7NdEDOMY5Owl9MEzgRw",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nAwplpKBLvrFvJQUrR89jEkhA6EoNW8SA",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "IVE",
@@ -1393,9 +1393,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nO8Pcb0tAIwvqIb6on8b1QXJ1VhnHHgdE",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz ALBUM seed with 12 tracks."
+    "notes": "Representative MusicBrainz ALBUM seed with 12 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "izna",
@@ -1447,9 +1447,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5GbFWsdf0iAbLvg2nMwxHG",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kPUZKFaV6hNIaH5ubVEzqS6KDhOetivOE",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "KARD",
@@ -1521,9 +1521,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3pKcgDJmV3GZwgElcupVrg",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l8YRn3qytjiaPGW33To9luTNVb0_H8SCY",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "KickFlip",
@@ -1562,9 +1562,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/2oPgsxzvXORR8pnYv9mYdz",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lpMgo38Z6iSDLvzyV5O2BwsYmtBVqrPz8",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "KickFlip",
@@ -1637,9 +1637,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/09YZd8EhjQjGDJbc8EUuKq",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_niDXY6ppq697_xZEdJ9B7ltpp9iy5LhoM",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "KISS OF LIFE",
@@ -1674,9 +1674,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3isrBYAYBxBerWHVtjD8gE",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_koNfZeY9f5ktUS_AATILpBkxMKFGHxjto",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "LE SSERAFIM",
@@ -1719,9 +1719,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/2yUrwTLHDWBrW74Ewuw6RX",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lxCP144fHdRRfP4oo-UCdSWmax9sP58Pk",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz SINGLE seed with 8 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz SINGLE seed with 8 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "LIGHTSUM",
@@ -1815,9 +1815,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3BUEab50RO1tf709W4EMcL",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l8XMeULHqaMdI2JGJ_ai0aq8g5JQhQvlA",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "MONSTA X",
@@ -1869,9 +1869,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/7jd5hUsxFPUsM0dqfpRjmp",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kmoOC0j8PL4v7z-W8wwq64_jv29sWPCmE",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "NCT WISH",
@@ -1910,9 +1910,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0AbenVXd5ypXotWe1z0ytw",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kgqZHEZo8MitXcPTMyxI-qZIK6MRPDysQ",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "NCT WISH",
@@ -1960,9 +1960,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/2iI33V0gbSII6iuEfq65fE",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lTkc-Tu6iCFIcrXDYdLPXWsflGY9Pd6gA",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "NMIXX",
@@ -2021,9 +2021,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nvsmIZ4mfs1TwPX_-aM4mxw_SV_EytZ8U",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz ALBUM seed with 12 tracks."
+    "notes": "Representative MusicBrainz ALBUM seed with 12 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "NMIXX",
@@ -2071,9 +2071,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/549FaK4UMSSCdbxKVLWaYL",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kqyRUs_1gDVt_BII8bpPiS4egipKtyWG4",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "ONEUS",
@@ -2137,9 +2137,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lWqLPlxJLMnYXeuhba-DKq1WnxY_BnVPc",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 7 tracks."
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "ONF",
@@ -2191,9 +2191,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4fUrVp1xhJvcJfxYLlJiNm",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_njC3t9wzGwFgXmAei9ywrKL_2z5TSouAU",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "PLAVE",
@@ -2278,9 +2278,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nRipfFZ8M6FMPQ8Ax7d_mT3oQjTOCyiq8",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz ALBUM seed with 8 tracks."
+    "notes": "Representative MusicBrainz ALBUM seed with 8 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "Purple Kiss",
@@ -2386,9 +2386,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kZrQiqGr_bgCcTLvKpgOzIebfJRBHdFqU",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "RESCENE",
@@ -2474,9 +2474,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/52f4wYBg1SDSaMMwZ5u3OF",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kApCbh2UikWb1bBXrhTDc_dCDo9alRZRg",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "SEVENTEEN",
@@ -2597,9 +2597,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lfT3AHgKiMtF9kQmQOrjHl_q0Of_k4oyw",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz ALBUM seed with 17 tracks."
+    "notes": "Representative MusicBrainz ALBUM seed with 17 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "Stray Kids",
@@ -2647,9 +2647,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4lkJ6i3LDK8HvcU2tPWX9k",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nYozrF8dvixMpZLFrbNMngS1EYCfNjes0",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "TEMPEST",
@@ -2680,9 +2680,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/173YgSJe4F1sZG6pABL2zm",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lL7LMofqXC6sI9U8ok3K-iED9Ps2dFVVY",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "TEMPEST",
@@ -2784,9 +2784,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lmAdIKzD4R2257L9YPwCZtXYSR3NGJa7s",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 4 tracks."
+    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "TIOT",
@@ -2838,9 +2838,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mfvCWYWL7GIQxnSAYpBttmP0exDSznA48",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 4 tracks."
+    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "TNX",
@@ -2937,9 +2937,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6iPNWX9dibeWPMaVuhRKEw",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3UOq52gI30GZD8VmY_2IvLCWdOtltHuE",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz ALBUM seed with 12 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz ALBUM seed with 12 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "TREASURE",
@@ -3020,9 +3020,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/281B8RLDzA7mufE1ccVxrM",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lqPet88T7Vp2TgI7_A6pRAlQg9OamXC5A",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "tripleS",
@@ -3115,9 +3115,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/7zyibWit2LeHvy5h9utbfg",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nEqNynotuYAzV4vnXZjwrrRNdGurwqMZ8",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz ALBUM seed with 10 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz ALBUM seed with 10 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "TWS",
@@ -3293,9 +3293,9 @@
       }
     ],
     "spotify_url": null,
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lzTVFnoEu2q0cAabgW-h-o3VHC_6C0Q9M",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "Xdinary Heroes",
@@ -3351,9 +3351,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/04WcDHoLelHf9ajNp6HXkD",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nVfDacYSJ_k4WewXrsD5MOIa991x2JUfQ",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "xikers",
@@ -3401,9 +3401,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0BWWwBPmMDLnhvi2SJX8CV",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lNYqHpRfe-SlB-Kur4JaeXXJ3sYhltCvU",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "YOUNG POSSE",
@@ -3442,9 +3442,9 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5Nfxo1U4jKI13JB4nPimOJ",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nboKa9DtcS0FWNllBthpaoUaHl0dHr_oU",
     "youtube_video_id": null,
-    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
     "group": "YOUNG POSSE",
