@@ -848,18 +848,19 @@ const TRANSLATIONS = {
     searchLabel: '그룹, 곡, 앨범 검색',
     searchShort: '검색',
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
-    searchBackendLoading: 'backend /v1/search 결과를 확인하는 중입니다. 현재는 local JSON 결과를 먼저 표시합니다.',
+    searchBackendLoading: 'backend /v1/search 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 결과를 먼저 표시합니다.',
     searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 우선 사용 중입니다.',
-    searchBackendFallback: 'backend 검색 응답을 불러오지 못해 local JSON 결과로 fallback 중입니다.',
+    searchBackendFallback: 'backend 검색 응답을 불러오지 못해 transitional JSON fallback 결과로 표시 중입니다.',
     calendarBackendLoading:
-      'backend /v1/calendar/month 결과를 확인하는 중입니다. 현재는 local JSON 월 데이터를 먼저 표시합니다.',
+      'backend /v1/calendar/month 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 월 데이터를 먼저 표시합니다.',
     calendarBackendActive: '현재 월간 캘린더와 대시보드는 backend /v1/calendar/month 응답을 우선 사용 중입니다.',
     calendarBackendFallback:
-      'calendar/month source switch는 열려 있지만, 이 surface는 아직 local JSON fallback을 계속 사용합니다.',
-    radarBackendLoading: 'backend /v1/radar 결과를 확인하는 중입니다. 현재는 local JSON 레이더 데이터를 먼저 표시합니다.',
+      'backend 월간 캘린더 응답을 불러오지 못해 transitional JSON fallback으로 표시 중입니다.',
+    radarBackendLoading:
+      'backend /v1/radar 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 레이더 데이터를 먼저 표시합니다.',
     radarBackendActive: '현재 레이더 섹션은 backend /v1/radar 응답을 우선 사용 중입니다.',
     radarBackendFallback:
-      'radar source switch는 열려 있지만, 이 surface는 아직 local JSON fallback을 계속 사용합니다.',
+      'backend 레이더 응답을 불러오지 못해 transitional JSON fallback으로 표시 중입니다.',
     monthSummaryVerified: '검증됨',
     monthSummaryScheduled: '예정',
     filterLabels: {
@@ -1101,21 +1102,21 @@ const TRANSLATIONS = {
     searchShort: 'Search',
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
     searchBackendLoading:
-      'Checking backend /v1/search results now. The UI keeps the local JSON-backed results visible first.',
+      'Checking backend /v1/search results now. The UI keeps the transitional JSON fallback visible first.',
     searchBackendActive: 'Search results are currently coming from the backend /v1/search response.',
     searchBackendFallback:
-      'The backend search response was unavailable, so the UI is falling back to local JSON-backed results.',
+      'The backend search response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
     calendarBackendLoading:
-      'Checking backend /v1/calendar/month now. The UI keeps the local JSON-backed month data visible first.',
+      'Checking backend /v1/calendar/month now. The UI keeps the transitional JSON fallback month data visible first.',
     calendarBackendActive:
       'The monthly calendar and dashboard are currently using the backend /v1/calendar/month response.',
     calendarBackendFallback:
-      'The calendar/month source switch is available, but this surface is still using the local JSON fallback for now.',
+      'The backend calendar/month response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
     radarBackendLoading:
-      'Checking backend /v1/radar now. The UI keeps the local JSON-backed radar data visible first.',
+      'Checking backend /v1/radar now. The UI keeps the transitional JSON fallback radar data visible first.',
     radarBackendActive: 'The radar sections are currently using the backend /v1/radar response.',
     radarBackendFallback:
-      'The radar source switch is available, but this surface is still using the local JSON fallback for now.',
+      'The backend radar response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
     monthSummaryVerified: 'verified',
     monthSummaryScheduled: 'scheduled',
     filterLabels: {
@@ -1338,9 +1339,9 @@ const TEAM_COPY = {
     badgeSourceLink: '배지 출처',
     footnote:
       '공식 badge/avatar가 있으면 우선 사용하고, 없을 때만 대표 이미지나 모노그램 fallback으로 내려갑니다.',
-    backendLoading: 'backend /v1/entities 응답을 확인하는 중입니다. 현재는 local JSON 팀 페이지를 먼저 표시합니다.',
+    backendLoading: 'backend /v1/entities 응답을 확인하는 중입니다. 현재는 transitional JSON 팀 페이지를 먼저 표시합니다.',
     backendActive: '이 팀 페이지는 backend /v1/entities 응답을 우선 사용 중입니다.',
-    backendFallback: 'backend 팀 페이지 응답을 불러오지 못해 local JSON 팀 페이지로 fallback 중입니다.',
+    backendFallback: 'backend 팀 페이지 응답을 불러오지 못해 transitional JSON 팀 페이지로 fallback 중입니다.',
     upcomingLabel: '예정 컴백',
     upcomingTitle: '예정 신호 우선 보기',
     upcomingEmptyTitle: '아직 컴백 신호 없음',
@@ -1425,9 +1426,11 @@ const TEAM_COPY = {
     officialMvHint: '보조 영상 콘텐츠입니다. 앱 안 직접 재생 기능이 아니라 공식 YouTube MV를 임베드합니다.',
     officialMvLinkOnly: '임베드가 준비되지 않으면 YouTube 링크만 노출합니다.',
     officialMvUnavailable: '신뢰 가능한 공식 YouTube MV target이 아직 없어 임베드를 표시하지 않습니다.',
-    releaseDetailBackendLoading: '백엔드 release-detail 응답을 확인하는 중입니다. 현재는 JSON fallback을 먼저 표시합니다.',
+    releaseDetailBackendLoading:
+      '백엔드 release-detail 응답을 확인하는 중입니다. 현재는 transitional JSON fallback을 먼저 표시합니다.',
     releaseDetailBackendActive: '이 상세 페이지는 backend release-detail 응답을 우선 사용 중입니다.',
-    releaseDetailBackendFallback: '백엔드 응답을 불러오지 못해 release-detail JSON fallback으로 표시 중입니다.',
+    releaseDetailBackendFallback:
+      '백엔드 응답을 불러오지 못해 transitional release-detail JSON fallback으로 표시 중입니다.',
     watchOnYouTube: 'YouTube에서 보기',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
@@ -1456,10 +1459,10 @@ const TEAM_COPY = {
     footnote:
       'Use an official badge/avatar first, then fall back to a representative image or monogram only when no sourced asset exists.',
     backendLoading:
-      'Checking the backend /v1/entities response now. The page keeps the local JSON-backed team detail visible first.',
+      'Checking the backend /v1/entities response now. The page keeps the transitional JSON-backed team detail visible first.',
     backendActive: 'This team page is currently using the backend /v1/entities response.',
     backendFallback:
-      'The backend team-detail response was unavailable, so this page is falling back to the local JSON-backed detail.',
+      'The backend team-detail response was unavailable, so this page is falling back to the transitional JSON snapshot.',
     upcomingLabel: 'Upcoming comeback',
     upcomingTitle: 'Scheduled signals first',
     upcomingEmptyTitle: 'No comeback signal yet',
@@ -1545,10 +1548,10 @@ const TEAM_COPY = {
     officialMvLinkOnly: 'If embedding is unavailable, the page falls back to a YouTube link only.',
     officialMvUnavailable: 'No reliable official YouTube MV target is attached yet, so this page does not render an embed.',
     releaseDetailBackendLoading:
-      'Checking the backend release-detail response now. The page keeps the JSON fallback visible until it resolves.',
+      'Checking the backend release-detail response now. The page keeps the transitional JSON fallback visible until it resolves.',
     releaseDetailBackendActive: 'This detail page is currently using the backend release-detail response.',
     releaseDetailBackendFallback:
-      'The backend response was unavailable, so this detail page is falling back to the shipped JSON snapshot.',
+      'The backend response was unavailable, so this detail page is falling back to the transitional JSON snapshot.',
     watchOnYouTube: 'Watch on YouTube',
     placeholderCover: 'Release artwork',
     drawerCopy:
@@ -1586,12 +1589,13 @@ const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
 const entityDetailApiSnapshotCache = new Map<string, TeamProfile>()
 const calendarMonthApiSnapshotCache = new Map<string, CalendarMonthApiSnapshot>()
 const radarApiSnapshotCache = new Map<string, RadarApiSnapshot>()
+const DEFAULT_PRIMARY_SURFACE_SOURCE_MODE = normalizeSurfaceSourceMode(import.meta.env.VITE_PRIMARY_SURFACE_SOURCE, 'json')
 const SURFACE_SOURCE_MODES = {
-  search: normalizeSurfaceSourceMode(import.meta.env.VITE_SEARCH_SOURCE),
-  entityDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_ENTITY_DETAIL_SOURCE),
-  releaseDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_RELEASE_DETAIL_SOURCE),
-  calendarMonth: normalizeSurfaceSourceMode(import.meta.env.VITE_CALENDAR_MONTH_SOURCE),
-  radar: normalizeSurfaceSourceMode(import.meta.env.VITE_RADAR_SOURCE),
+  search: normalizeSurfaceSourceMode(import.meta.env.VITE_SEARCH_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
+  entityDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_ENTITY_DETAIL_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
+  releaseDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_RELEASE_DETAIL_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
+  calendarMonth: normalizeSurfaceSourceMode(import.meta.env.VITE_CALENDAR_MONTH_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
+  radar: normalizeSurfaceSourceMode(import.meta.env.VITE_RADAR_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
 } satisfies Record<SurfaceSourceKey, SurfaceSourceMode>
 const SURFACE_SOURCE_QUERY_PARAMS = {
   search: 'searchSource',
@@ -9625,8 +9629,20 @@ function readSurfaceSourceOverridesFromLocation(): SurfaceSourceOverrides {
   }
 }
 
-function normalizeSurfaceSourceMode(value: unknown): SurfaceSourceMode {
-  return typeof value === 'string' && value.trim().toLowerCase() === 'api' ? 'api' : 'json'
+function normalizeSurfaceSourceMode(
+  value: unknown,
+  fallback: SurfaceSourceMode = 'json',
+): SurfaceSourceMode {
+  if (typeof value !== 'string') {
+    return fallback
+  }
+
+  const normalizedValue = value.trim().toLowerCase()
+  if (normalizedValue === 'api' || normalizedValue === 'json') {
+    return normalizedValue
+  }
+
+  return fallback
 }
 
 function getSurfaceSourceMode(

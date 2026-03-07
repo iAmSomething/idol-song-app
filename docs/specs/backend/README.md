@@ -21,10 +21,13 @@
 5. `migration-runtime-gates.md`
    - latency / error / freshness / cadence gate 정의
    - cutover go/no-go에 쓰는 combined runtime report 규칙
-6. `shared-read-api-contracts.md`
+6. `json-snapshot-demotion.md`
+   - cut-over surface에서 JSON을 fallback/debug/export로 강등하는 runtime / delivery 규칙
+   - Pages build, query override, emergency fallback window 운영 기준
+7. `shared-read-api-contracts.md`
    - calendar, search, entity detail, release detail, radar용 shared read contract
    - server-side derived field와 client-side allowed logic 구분
-7. `backend-migration-epic.md`
+8. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
 
@@ -34,13 +37,14 @@
 2. `runtime-and-service-boundaries.md`
 3. `preview-staging-backend-path.md`
 4. `migration-runtime-gates.md`
-5. `shared-read-api-contracts.md`
-6. `phased-rollout-plan.md`
-7. `backend-migration-epic.md`
+5. `json-snapshot-demotion.md`
+6. `shared-read-api-contracts.md`
+7. `phased-rollout-plan.md`
+8. `backend-migration-epic.md`
 
 ## 원칙
 
-- 현재 웹은 계속 정적 JSON을 읽지만, 장기 정본은 백엔드 canonical model로 옮긴다.
+- cut-over된 웹 surface는 backend-primary로 운영하고, committed JSON은 transitional fallback/debug artifact로 강등한다.
 - `releases.json`, `watchlist.json`, `releaseDetails.json` 같은 파일은 읽기용 projection으로 본다.
 - alias, official link, date precision, MV override, review state는 모두 durable storage를 가진다.
 - 제품 날짜 의미론은 `Asia/Seoul`을 유지하고, DB timestamp는 UTC 저장을 기본으로 한다.

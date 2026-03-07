@@ -45,6 +45,14 @@ jobs:
 
       - name: Build site
         working-directory: web
+        env:
+          VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+          VITE_PRIMARY_SURFACE_SOURCE: ${{ vars.VITE_PRIMARY_SURFACE_SOURCE }}
+          VITE_SEARCH_SOURCE: ${{ vars.VITE_SEARCH_SOURCE }}
+          VITE_ENTITY_DETAIL_SOURCE: ${{ vars.VITE_ENTITY_DETAIL_SOURCE }}
+          VITE_RELEASE_DETAIL_SOURCE: ${{ vars.VITE_RELEASE_DETAIL_SOURCE }}
+          VITE_CALENDAR_MONTH_SOURCE: ${{ vars.VITE_CALENDAR_MONTH_SOURCE }}
+          VITE_RADAR_SOURCE: ${{ vars.VITE_RADAR_SOURCE }}
         run: npm run build
 
       - name: Upload artifact
