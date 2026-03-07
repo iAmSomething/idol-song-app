@@ -5,10 +5,16 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
+    "start:development": "cross-env APP_ENV=development expo start",
+    "start:preview": "cross-env APP_ENV=preview expo start",
+    "start:production": "cross-env APP_ENV=production expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "config:development": "cross-env APP_ENV=development expo config --json",
+    "config:preview": "cross-env APP_ENV=preview expo config --json",
+    "config:production": "cross-env APP_ENV=production expo config --json"
   },
   "dependencies": {
     "@react-navigation/native": "^7.1.28",
@@ -29,6 +35,7 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
+    "cross-env": "^10.1.0",
     "typescript": "~5.9.2"
   }
 }
