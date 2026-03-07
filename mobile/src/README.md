@@ -11,6 +11,8 @@
 - `services/`: data source / external handoff / helper
   - `datasetSource.ts`: bundled-static vs preview-remote source selector
 - `tokens/`: design token / theme
+  - `theme.tsx`: theme provider + `useAppTheme()` access convention
+  - `colors.ts`, `spacing.ts`, `radii.ts`, `typography.ts`, `sizes.ts`, `elevation.ts`, `motion.ts`
 - `types/`: shared TypeScript model
 - `utils/`: framework-agnostic helper
   - `assetRegistry.ts`: bundled placeholder/service/badge asset entrypoint

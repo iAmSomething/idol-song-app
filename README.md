@@ -148,6 +148,7 @@ python3 sync_release_pipeline_to_neon.py
 - env/runtime config layer: `mobile/.env.example`, `mobile/src/config/runtime.ts`
 - feature-gate layer: `mobile/src/config/featureGates.ts`
 - dataset-source layer: `mobile/src/services/datasetSource.ts`, `mobile/assets/datasets/README.md`
+- token/theme layer: `mobile/src/tokens/`, `mobile/src/tokens/theme.tsx`
 - quality baseline: `mobile/eslint.config.js`, `mobile/jest.config.js`, `mobile/src/features/route-shell.smoke.test.tsx`, `mobile/src/config/runtime.test.ts`
 - CI gate: `.github/workflows/mobile-quality.yml`
 - bundled asset baseline: `mobile/assets/`, `mobile/assets/README.md`, `mobile/src/utils/assetRegistry.ts`
