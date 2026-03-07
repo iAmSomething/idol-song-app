@@ -192,14 +192,55 @@
       {
         "entity_slug": "triples",
         "display_name": "tripleS",
+        "canonical_name": "tripleS",
         "entity_type": "group",
-        "match_reason": "alias",
+        "agency_name": "MODHAUS",
+        "match_reason": "alias_exact",
         "matched_alias": "트리플에스",
-        "agency_name": "MODHAUS"
+        "latest_release": {
+          "release_id": "uuid",
+          "release_title": "Are You Alive",
+          "release_date": "2026-02-04",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "next_upcoming": null
       }
     ],
-    "releases": [],
-    "upcoming": []
+    "releases": [
+      {
+        "release_id": "uuid",
+        "canonical_path": "/v1/releases/uuid",
+        "entity_slug": "ive",
+        "display_name": "IVE",
+        "release_title": "REVIVE+",
+        "release_date": "2026-02-23",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "match_reason": "release_title_exact",
+        "matched_alias": "REVIVE+"
+      }
+    ],
+    "upcoming": [
+      {
+        "upcoming_signal_id": "uuid",
+        "entity_slug": "yena",
+        "display_name": "YENA",
+        "headline": "YENA confirms March comeback",
+        "scheduled_date": "2026-03-11",
+        "scheduled_month": null,
+        "date_precision": "exact",
+        "date_status": "confirmed",
+        "release_format": "single album",
+        "confidence_score": 0.93,
+        "source_type": "news_rss",
+        "source_url": "https://...",
+        "evidence_summary": "YENA confirmed...",
+        "match_reason": "entity_exact",
+        "matched_alias": "최예나"
+      }
+    ]
   }
 }
 ```
