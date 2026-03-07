@@ -7,6 +7,7 @@ import { registerEntityRoutes } from './routes/entities.js';
 import { registerHealthRoute } from './routes/health.js';
 import { registerRadarRoutes } from './routes/radar.js';
 import { registerReadyRoute } from './routes/ready.js';
+import { registerReviewRoutes } from './routes/review.js';
 import { registerReleaseRoutes } from './routes/releases.js';
 import { registerSearchRoutes } from './routes/search.js';
 
@@ -30,9 +31,10 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   registerReadyRoute(app, { config, db });
   registerCalendarRoutes(app, config);
   registerSearchRoutes(app, config);
-  registerEntityRoutes(app, config);
+  registerEntityRoutes(app, { config, db });
   registerReleaseRoutes(app, { config, db });
   registerRadarRoutes(app, { config, db });
+  registerReviewRoutes(app, { config, db });
 
   return app;
 }

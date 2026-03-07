@@ -463,6 +463,52 @@ lookup helper response:
 - evidence payload
 - entity / upcoming linkage
 
+응답 shape:
+
+```json
+{
+  "meta": {
+    "generated_at": "2026-03-07T12:00:00.000Z",
+    "timezone": "Asia/Seoul",
+    "total_items": 42
+  },
+  "data": {
+    "items": [
+      {
+        "review_task": {
+          "review_task_id": "uuid",
+          "review_type": "upcoming_signal",
+          "status": "open",
+          "created_at": "2026-03-07T12:00:00.000Z"
+        },
+        "entity": {
+          "entity_id": "uuid",
+          "slug": "yena",
+          "display_name": "YENA",
+          "entity_type": "solo"
+        },
+        "upcoming_signal": {
+          "upcoming_signal_id": "uuid",
+          "headline": "YENA confirms March comeback",
+          "scheduled_date": "2026-03-11",
+          "scheduled_month": null,
+          "date_precision": "exact",
+          "date_status": "confirmed",
+          "release_format": "single album",
+          "confidence_score": 0.93,
+          "tracking_status": "manual_watch",
+          "is_active": true,
+          "sources": []
+        },
+        "review_reason": ["inexact_date"],
+        "recommended_action": "Keep the candidate in review until an exact date appears.",
+        "evidence_payload": {}
+      }
+    ]
+  }
+}
+```
+
 ### 10.2 `GET /v1/review/mv`
 
 대체 대상:
@@ -476,12 +522,69 @@ lookup helper response:
 - allowlist hint
 - candidate payload
 
+응답 shape:
+
+```json
+{
+  "meta": {
+    "generated_at": "2026-03-07T12:00:00.000Z",
+    "timezone": "Asia/Seoul",
+    "total_items": 34
+  },
+  "data": {
+    "items": [
+      {
+        "review_task": {
+          "review_task_id": "uuid",
+          "review_type": "mv_candidate",
+          "status": "open",
+          "created_at": "2026-03-07T12:00:00.000Z"
+        },
+        "entity": {
+          "entity_id": "uuid",
+          "slug": "qwer",
+          "display_name": "QWER",
+          "entity_type": "group"
+        },
+        "release": {
+          "release_id": "uuid",
+          "release_title": "흰수염고래",
+          "release_date": "2025-10-06",
+          "stream": "song",
+          "release_kind": "single",
+          "release_format": "digital single",
+          "youtube_mv": {
+            "url": null,
+            "status": "needs_review",
+            "provenance": null
+          }
+        },
+        "review_reason": ["Official YouTube search currently surfaces a special clip instead of a clearly canonical MV object."],
+        "recommended_action": "Review the suggested query against the allowlisted official channels and either add a manual override or keep the release in review.",
+        "allowlist": {
+          "official_youtube_url": "https://www.youtube.com/channel/...",
+          "mv_allowlist_urls": ["https://www.youtube.com/channel/..."],
+          "channels": []
+        },
+        "candidate_payload": {}
+      }
+    ]
+  }
+}
+```
+
 ### 10.3 `GET /v1/entities/:slug/channels`
 
 용도:
 
 - channel / allowlist debug surface
 - product main flow보다는 operator / debug support
+
+응답 책임:
+
+- canonical channel row visibility
+- team-link primary channel summary
+- MV allowlist URL summary
 
 ## 11. Freshness And Caching
 
