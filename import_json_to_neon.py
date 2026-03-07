@@ -66,6 +66,16 @@ RELEASE_PIPELINE_TABLES = [
     "release_link_overrides",
 ]
 RELEASE_PIPELINE_REVIEW_SOURCE_DATASETS = {"mv_manual_review_queue"}
+UPCOMING_PIPELINE_TABLES = [
+    "entities",
+    "entity_aliases",
+    "entity_official_links",
+    "upcoming_signals",
+    "upcoming_signal_sources",
+    "entity_tracking_state",
+    "review_tasks",
+]
+UPCOMING_PIPELINE_REVIEW_SOURCE_DATASETS = {"manual_review_queue"}
 
 NAMESPACE = uuid.uuid5(uuid.NAMESPACE_URL, "https://github.com/iAmSomething/idol-song-app/import-json-to-neon/v1")
 SOLO_SLUGS = {
@@ -81,6 +91,29 @@ UNIT_GROUPS = {"ARTMS", "NCT DREAM", "NCT WISH", "VIVIZ"}
 PROJECT_SLUGS = {"allday-project"}
 MUSICBRAINZ_ARTIST_PATTERN = re.compile(r"/artist/([0-9a-f-]{36})/?$", re.IGNORECASE)
 MUSICBRAINZ_RELEASE_GROUP_PATTERN = re.compile(r"/release-group/([0-9a-f-]{36})/?$", re.IGNORECASE)
+UPCOMING_QUOTED_LABEL_PATTERNS = (
+    re.compile(
+        r"(?:mini album|album|single|ep|title track|showcase(?:\s+for)?|trailer(?:\s+for)?|teaser(?:\s+for)?)\s*[“\"'‘]?([^“”\"'’]{2,80})[”\"'’]",
+        re.IGNORECASE,
+    ),
+    re.compile(r"[“\"'‘]([^“”\"'’]{2,80})[”\"'’]"),
+)
+UPCOMING_STOP_WORD_PATTERN = re.compile(
+    r"\b(?:comeback|comebacks|announce|announces|announced|announcing|return|returns|returning|release|releases|released|releasing|drop|drops|dropped|dropping|set|scheduled|schedule|showcase|notice|official|teaser|teasers|trailer|trailers|report|reports|ahead|after|with|their|first|new|album|mini|single|ep|tracklist|title|track|tour|global|hosts|hosted|concert|celebrate|chapter)\b",
+    re.IGNORECASE,
+)
+UPCOMING_ARTICLE_PATTERN = re.compile(r"\b(?:a|an|the|and|for|of|to|in|on|at|this|that)\b", re.IGNORECASE)
+UPCOMING_SOURCE_TIERS = {
+    "agency_notice": 4,
+    "weverse_notice": 3,
+    "official_social": 2,
+    "news_rss": 1,
+}
+UPCOMING_STATUS_RANK = {
+    "confirmed": 0,
+    "scheduled": 1,
+    "rumor": 2,
+}
 
 
 def load_json(path: Path) -> List[Dict[str, Any]]:
@@ -234,6 +267,213 @@ def make_signal_dedupe_key(row: Dict[str, Any]) -> str:
             normalize_url(row.get("source_url")) or "",
         ]
     )
+
+
+def _upcoming_context_tags(row: Dict[str, Any]) -> List[str]:
+    tags = row.get("context_tags") or []
+    if isinstance(tags, list):
+        return [str(tag) for tag in tags]
+    return []
+
+
+def get_upcoming_source_tier(source_type: Optional[str]) -> int:
+    return UPCOMING_SOURCE_TIERS.get(optional_text(source_type) or "", 0)
+
+
+def strip_upcoming_source_suffix(value: str) -> str:
+    return re.sub(r"\s+-\s+[^-]+$", " ", value)
+
+
+def normalize_upcoming_grouping_text(value: str, group: str) -> str:
+    normalized = (
+        strip_upcoming_source_suffix(value)
+        .lower()
+        .replace("’", "'")
+        .replace("‘", "'")
+        .replace("“", '"')
+        .replace("”", '"')
+        .replace("&", " and ")
+    )
+    normalized = re.sub(r"\[[^\]]*\]", " ", normalized)
+    normalized = re.sub(r"\([^)]*\)", " ", normalized)
+
+    for token in re.split(r"[^a-z0-9]+", group.lower()):
+        if len(token) < 2:
+            continue
+        normalized = re.sub(rf"\b{re.escape(token)}\b", " ", normalized)
+
+    normalized = UPCOMING_STOP_WORD_PATTERN.sub(" ", normalized)
+    normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
+    normalized = UPCOMING_ARTICLE_PATTERN.sub(" ", normalized)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    return normalized
+
+
+def extract_upcoming_release_label(row: Dict[str, Any]) -> str:
+    text = f"{optional_text(row.get('headline')) or ''} {optional_text(row.get('evidence_summary')) or ''}"
+    for pattern in UPCOMING_QUOTED_LABEL_PATTERNS:
+        for match in pattern.finditer(text):
+            candidate = normalize_upcoming_grouping_text(match.group(1) or "", row["group"])
+            if candidate:
+                return candidate
+    return ""
+
+
+def get_upcoming_date_precision_value(row: Dict[str, Any]) -> str:
+    precision = optional_text(row.get("date_precision")) or ""
+    if precision in {"exact", "month_only", "unknown"}:
+        return precision
+    if optional_text(row.get("scheduled_date")):
+        return "exact"
+    if optional_text(row.get("scheduled_month")):
+        return "month_only"
+    return "unknown"
+
+
+def has_exact_upcoming_date(row: Dict[str, Any]) -> bool:
+    return get_upcoming_date_precision_value(row) == "exact" and optional_text(row.get("scheduled_date")) is not None
+
+
+def get_upcoming_month_key(row: Dict[str, Any]) -> str:
+    if has_exact_upcoming_date(row):
+        return str(row["scheduled_date"])[:7]
+    if get_upcoming_date_precision_value(row) == "month_only":
+        return optional_text(row.get("scheduled_month")) or ""
+    return ""
+
+
+def get_upcoming_event_descriptor(row: Dict[str, Any]) -> str:
+    release_label = extract_upcoming_release_label(row)
+    if release_label:
+        return release_label
+
+    headline_key = normalize_upcoming_grouping_text(optional_text(row.get("headline")) or "", row["group"])
+    if headline_key:
+        return headline_key
+
+    summary_key = normalize_upcoming_grouping_text(optional_text(row.get("evidence_summary")) or "", row["group"])
+    return summary_key or "signal"
+
+
+def get_upcoming_structured_metadata_score(row: Dict[str, Any]) -> int:
+    score = 0
+    if optional_text(row.get("release_format")):
+        score += 2
+    score += len(_upcoming_context_tags(row))
+    if extract_upcoming_release_label(row):
+        score += 2
+    if optional_text(row.get("evidence_summary")):
+        score += 1
+    return score
+
+
+def get_upcoming_published_sort_value(row: Dict[str, Any]) -> float:
+    published_at = parse_timestamp(row.get("published_at"))
+    return published_at.timestamp() if published_at is not None else 0.0
+
+
+def upcoming_representative_sort_key(row: Dict[str, Any]) -> Tuple[Any, ...]:
+    precision_rank = {
+        "exact": 0,
+        "month_only": 1,
+        "unknown": 2,
+    }
+    precision = get_upcoming_date_precision_value(row)
+    return (
+        -get_upcoming_source_tier(optional_text(row.get("source_type"))),
+        precision_rank.get(precision, 2),
+        get_upcoming_month_key(row) or "9999-12",
+        UPCOMING_STATUS_RANK.get(optional_text(row.get("date_status")) or "", 9),
+        -(float(row.get("confidence", 0) or 0)),
+        -get_upcoming_structured_metadata_score(row),
+        -get_upcoming_published_sort_value(row),
+        (optional_text(row.get("headline")) or "").casefold(),
+    )
+
+
+def pick_upcoming_representative(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
+    return min(rows, key=upcoming_representative_sort_key)
+
+
+def select_best_upcoming_group(groups: Optional[Sequence[Dict[str, Any]]]) -> Optional[Dict[str, Any]]:
+    if not groups:
+        return None
+    return min(groups, key=lambda group: upcoming_representative_sort_key(pick_upcoming_representative(group["rows"])))
+
+
+def build_canonical_upcoming_signal_groups(upcoming_rows: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    exact_groups: Dict[Tuple[str, str, str], List[Dict[str, Any]]] = {}
+    pending_groups: Dict[Tuple[str, str, str], List[Dict[str, Any]]] = {}
+
+    for row in upcoming_rows:
+        descriptor = get_upcoming_event_descriptor(row)
+        group_key = row["group"].lower()
+        if has_exact_upcoming_date(row):
+            key = (group_key, optional_text(row.get("scheduled_date")) or "", descriptor)
+            exact_groups.setdefault(key, []).append(row)
+        else:
+            pending_month_key = get_upcoming_month_key(row) or "undated"
+            key = (group_key, pending_month_key, descriptor)
+            pending_groups.setdefault(key, []).append(row)
+
+    exact_groups_by_date: Dict[Tuple[str, str], List[Tuple[Tuple[str, str, str], List[Dict[str, Any]]]]] = {}
+    for key, rows in exact_groups.items():
+        date_key = (key[0], key[1])
+        exact_groups_by_date.setdefault(date_key, []).append((key, rows))
+
+    normalized_exact_groups: List[Dict[str, Any]] = []
+    for (group_key, scheduled_date), date_groups in exact_groups_by_date.items():
+        bucket_rows = [row for _, rows in date_groups for row in rows]
+        has_official_source = any(get_upcoming_source_tier(optional_text(row.get("source_type"))) > get_upcoming_source_tier("news_rss") for row in bucket_rows)
+        if has_official_source:
+            normalized_exact_groups.append(
+                {
+                    "signal_key": "|".join([group_key, "exact", scheduled_date, "official"]),
+                    "rows": bucket_rows,
+                }
+            )
+            continue
+
+        for (original_group_key, original_date, descriptor), rows in date_groups:
+            normalized_exact_groups.append(
+                {
+                    "signal_key": "|".join([original_group_key, "exact", original_date, descriptor]),
+                    "rows": rows,
+                }
+            )
+
+    exact_groups_by_topic: Dict[Tuple[str, str], List[Dict[str, Any]]] = {}
+    exact_groups_by_month: Dict[Tuple[str, str], List[Dict[str, Any]]] = {}
+    for group in normalized_exact_groups:
+        representative = pick_upcoming_representative(group["rows"])
+        topic_key = (representative["group"].lower(), get_upcoming_event_descriptor(representative))
+        exact_groups_by_topic.setdefault(topic_key, []).append(group)
+
+        month_key = get_upcoming_month_key(representative)
+        if month_key:
+            exact_groups_by_month.setdefault((representative["group"].lower(), month_key), []).append(group)
+
+    merged_groups = list(normalized_exact_groups)
+    for (group_key, pending_month_key, descriptor), rows in pending_groups.items():
+        representative = pick_upcoming_representative(rows)
+        topic_match = select_best_upcoming_group(exact_groups_by_topic.get((group_key, get_upcoming_event_descriptor(representative))))
+        month_match = None
+        if topic_match is None and pending_month_key != "undated":
+            month_match = select_best_upcoming_group(exact_groups_by_month.get((group_key, pending_month_key)))
+
+        target_group = topic_match or month_match
+        if target_group is not None:
+            target_group["rows"].extend(rows)
+            continue
+
+        merged_groups.append(
+            {
+                "signal_key": "|".join([group_key, get_upcoming_date_precision_value(representative), pending_month_key, descriptor]),
+                "rows": rows,
+            }
+        )
+
+    return merged_groups
 
 
 def ensure_directory(path: Path) -> None:
@@ -800,9 +1040,8 @@ def build_upcoming_rows(
     signal_rows: List[Dict[str, Any]] = []
     source_rows: List[Dict[str, Any]] = []
     signal_ids_by_dedupe: Dict[str, uuid.UUID] = {}
-    seen_dedupe_keys = set()
 
-    for row in sorted(
+    candidate_rows = sorted(
         upcoming_rows,
         key=lambda item: (
             item["group"].casefold(),
@@ -810,70 +1049,87 @@ def build_upcoming_rows(
             item["headline"].casefold(),
             normalize_url(item.get("source_url")) or "",
         ),
+    )
+    canonical_groups = build_canonical_upcoming_signal_groups(candidate_rows)
+
+    for group in sorted(
+        canonical_groups,
+        key=lambda item: upcoming_representative_sort_key(pick_upcoming_representative(item["rows"])),
     ):
-        entity_id = entity_ids.get(row["group"])
+        representative = pick_upcoming_representative(group["rows"])
+        entity_id = entity_ids.get(representative["group"])
         if entity_id is None:
-            summary["dropped_records"]["upcoming_signals"] += 1
+            summary["dropped_records"]["upcoming_signals"] += len(group["rows"])
             record_drop(
                 summary["dropped_missing_fk_samples"],
                 "upcoming_signals",
-                {"reason": "entity_not_found", "group": row["group"], "headline": row["headline"]},
+                {
+                    "reason": "entity_not_found",
+                    "group": representative["group"],
+                    "headline": representative["headline"],
+                },
             )
             continue
 
-        dedupe_key = make_signal_dedupe_key(row)
-        if dedupe_key in seen_dedupe_keys:
-            summary["source_duplicates"]["upcoming_signals"] += 1
-            continue
-        seen_dedupe_keys.add(dedupe_key)
+        signal_id = stable_uuid("upcoming-signal", group["signal_key"])
+        for row in group["rows"]:
+            signal_ids_by_dedupe[make_signal_dedupe_key(row)] = signal_id
 
-        signal_id = stable_uuid("upcoming-signal", dedupe_key)
-        signal_ids_by_dedupe[dedupe_key] = signal_id
-        date_precision = row["date_precision"]
-        scheduled_date = parse_exact_date(row.get("scheduled_date")) if date_precision == "exact" else None
-        scheduled_month = parse_month_start(row.get("scheduled_month")) if date_precision == "month_only" else None
-        published_at = parse_timestamp(row.get("published_at"))
+        precision = get_upcoming_date_precision_value(representative)
+        published_values = [parse_timestamp(row.get("published_at")) for row in group["rows"]]
+        published_values = [value for value in published_values if value is not None]
         signal_rows.append(
             {
                 "id": signal_id,
                 "entity_id": entity_id,
-                "headline": row["headline"],
-                "normalized_headline": normalize_text(row["headline"]),
-                "scheduled_date": scheduled_date,
-                "scheduled_month": scheduled_month,
-                "date_precision": date_precision,
-                "date_status": row["date_status"],
-                "release_format": optional_text(row.get("release_format")),
-                "confidence_score": round(float(row["confidence"]), 2) if row.get("confidence") is not None else None,
-                "tracking_status": optional_text(row.get("tracking_status")),
-                "first_seen_at": published_at,
-                "latest_seen_at": published_at,
+                "headline": representative["headline"],
+                "normalized_headline": normalize_text(representative["headline"]),
+                "scheduled_date": parse_exact_date(representative.get("scheduled_date")) if precision == "exact" else None,
+                "scheduled_month": parse_month_start(representative.get("scheduled_month")) if precision == "month_only" else None,
+                "date_precision": precision,
+                "date_status": representative["date_status"],
+                "release_format": optional_text(representative.get("release_format")),
+                "confidence_score": round(float(representative["confidence"]), 2) if representative.get("confidence") is not None else None,
+                "tracking_status": optional_text(representative.get("tracking_status")),
+                "first_seen_at": min(published_values) if published_values else None,
+                "latest_seen_at": max(published_values) if published_values else None,
                 "is_active": True,
-                "dedupe_key": dedupe_key,
+                "dedupe_key": group["signal_key"],
             }
         )
-        source_url = normalize_url(row.get("source_url"))
-        if source_url is None:
-            summary["dropped_records"]["upcoming_signal_sources"] += 1
-            record_drop(
-                summary["dropped_missing_fk_samples"],
-                "upcoming_signal_sources",
-                {"reason": "missing_source_url", "headline": row["headline"]},
-            )
-            continue
 
-        source_rows.append(
-            {
-                "id": stable_uuid("upcoming-signal-source", signal_id, source_url),
-                "upcoming_signal_id": signal_id,
-                "source_type": row["source_type"],
-                "source_url": source_url,
-                "source_domain": optional_text(row.get("source_domain")),
-                "published_at": published_at,
-                "search_term": optional_text(row.get("search_term")),
-                "evidence_summary": optional_text(row.get("evidence_summary")),
-            }
-        )
+        grouped_source_rows: Dict[str, List[Dict[str, Any]]] = {}
+        for row in group["rows"]:
+            source_url = normalize_url(row.get("source_url"))
+            if source_url is None:
+                summary["dropped_records"]["upcoming_signal_sources"] += 1
+                record_drop(
+                    summary["dropped_missing_fk_samples"],
+                    "upcoming_signal_sources",
+                    {"reason": "missing_source_url", "headline": row["headline"]},
+                )
+                continue
+            grouped_source_rows.setdefault(source_url, []).append(row)
+
+        hidden_source_count = max(0, len(group["rows"]) - 1)
+        if hidden_source_count:
+            summary["source_duplicates"]["upcoming_signals"] += hidden_source_count
+
+        for source_url, rows_for_source in sorted(grouped_source_rows.items(), key=lambda item: item[0]):
+            source_representative = pick_upcoming_representative(rows_for_source)
+            published_at = parse_timestamp(source_representative.get("published_at"))
+            source_rows.append(
+                {
+                    "id": stable_uuid("upcoming-signal-source", signal_id, source_url),
+                    "upcoming_signal_id": signal_id,
+                    "source_type": source_representative["source_type"],
+                    "source_url": source_url,
+                    "source_domain": optional_text(source_representative.get("source_domain")),
+                    "published_at": published_at,
+                    "search_term": optional_text(source_representative.get("search_term")),
+                    "evidence_summary": optional_text(source_representative.get("evidence_summary")),
+                }
+            )
 
     return signal_rows, source_rows, signal_ids_by_dedupe
 
@@ -1211,6 +1467,23 @@ def build_release_pipeline_payload() -> Dict[str, Any]:
     ]
     payload["summary"]["scope"] = "release_pipeline"
     payload["tables"] = release_scope_tables
+    return payload
+
+
+def build_upcoming_pipeline_payload() -> Dict[str, Any]:
+    payload = build_import_payload()
+    upcoming_scope_tables = {
+        table: payload["tables"][table]
+        for table in UPCOMING_PIPELINE_TABLES
+    }
+    upcoming_scope_tables["review_tasks"] = [
+        row
+        for row in upcoming_scope_tables["review_tasks"]
+        if isinstance(row.get("payload"), dict)
+        and row["payload"].get("source_dataset") in UPCOMING_PIPELINE_REVIEW_SOURCE_DATASETS
+    ]
+    payload["summary"]["scope"] = "upcoming_pipeline"
+    payload["tables"] = upcoming_scope_tables
     return payload
 
 

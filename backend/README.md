@@ -93,6 +93,31 @@ python3 sync_release_pipeline_to_neon.py
 - `release_detail_overrides.json`
 - `mv_manual_review_queue.json`
 
+## Upcoming Pipeline Dual-Write
+
+기존 upcoming scan JSON export를 유지한 채 canonical DB에 `upcoming_signals`, `upcoming_signal_sources`, manual-review task, tracking state를 같이 쓰려면 아래 명령을 사용한다.
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+python3 -m pip install -r backend/requirements-import.txt
+python3 sync_upcoming_pipeline_to_neon.py
+```
+
+기본 보고서 출력:
+
+- `backend/reports/upcoming_pipeline_db_sync_summary.json`
+
+이 명령은 아래 산출물을 source-of-export로 유지한 채 upcoming-side canonical table을 idempotent upsert 하고, 누락된 기존 signal은 inactive로 내린다.
+
+- `tracking_watchlist.json`
+- `upcoming_release_candidates.json`
+- `manual_review_queue.json`
+- `web/src/data/watchlist.json`
+- `web/src/data/upcomingCandidates.json`
+
 ## Projection Refresh
 
 canonical table import 또는 dual-write 이후 product-facing read model projection을 다시 만들려면 아래 명령을 사용한다.

@@ -49,9 +49,10 @@ jobs:
           python hydrate_release_windows.py
           python build_mv_manual_review_queue.py
           if [ -n "${DATABASE_URL:-}" ]; then
+            python sync_upcoming_pipeline_to_neon.py --summary-path /tmp/upcoming-pipeline-db-sync-summary.json
             python sync_release_pipeline_to_neon.py --summary-path /tmp/release-pipeline-db-sync-summary.json
           else
-            echo "DATABASE_URL not configured; skipping release pipeline DB sync."
+            echo "DATABASE_URL not configured; skipping upcoming/release pipeline DB sync."
           fi
           python build_release_change_log.py
 
