@@ -13,7 +13,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"P1Harmony\" kpop comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "exact",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "BTS",
@@ -29,7 +31,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "exact",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "BTS",
@@ -45,7 +49,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "exact",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "PLAVE",
@@ -61,7 +67,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"PLAVE\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "exact",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -77,7 +85,9 @@
     "tracking_status": "recent_release",
     "search_term": "official_weverse_seed",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "exact",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -93,7 +103,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"TOMORROW X TOGETHER\" comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "exact",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "&TEAM",
@@ -111,7 +123,9 @@
     "release_format": "ep",
     "context_tags": [
       "japanese_release"
-    ]
+    ],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "AB6IX",
@@ -127,7 +141,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"AB6IX\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "ALL(H)OURS",
@@ -143,7 +159,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"ALL(H)OURS\" kpop comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "BTS",
@@ -159,7 +177,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "KickFlip",
@@ -175,7 +195,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"KickFlip\" kpop comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "KickFlip",
@@ -191,7 +213,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"KickFlip\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "KickFlip",
@@ -207,7 +231,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"KickFlip\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "P1Harmony",
@@ -223,7 +249,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"P1Harmony\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "YOUNG POSSE",
@@ -239,7 +267,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"YOUNG POSSE\" kpop comeback",
     "release_format": "single",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "AB6IX",
@@ -255,7 +285,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"AB6IX\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "BTS",
@@ -271,7 +303,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "KISS OF LIFE",
@@ -289,7 +323,9 @@
     "release_format": "",
     "context_tags": [
       "pre_release"
-    ]
+    ],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "LE SSERAFIM",
@@ -305,7 +341,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"LE SSERAFIM\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "P1Harmony",
@@ -321,7 +359,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"P1Harmony\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "P1Harmony",
@@ -337,7 +377,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"P1Harmony\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -353,7 +395,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"TOMORROW X TOGETHER\" comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "TWS",
@@ -369,7 +413,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"TWS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "TWS",
@@ -385,7 +431,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"TWS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "TWS",
@@ -401,7 +449,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"TWS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-04"
   },
   {
     "group": "AB6IX",
@@ -417,7 +467,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"AB6IX\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "BTS",
@@ -433,7 +485,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "month_only",
+    "scheduled_month": "2026-03"
   },
   {
     "group": "BABYMONSTER",
@@ -449,7 +503,9 @@
     "tracking_status": "recent_release",
     "search_term": "official_yg_report",
     "release_format": "single",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BABYMONSTER",
@@ -467,7 +523,9 @@
     "release_format": "",
     "context_tags": [
       "special_project"
-    ]
+    ],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BABYMONSTER",
@@ -485,7 +543,9 @@
     "release_format": "",
     "context_tags": [
       "special_project"
-    ]
+    ],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BLACKPINK",
@@ -503,7 +563,9 @@
     "release_format": "single",
     "context_tags": [
       "title_track"
-    ]
+    ],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "TREASURE",
@@ -521,7 +583,9 @@
     "release_format": "",
     "context_tags": [
       "special_project"
-    ]
+    ],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "TREASURE",
@@ -539,7 +603,9 @@
     "release_format": "",
     "context_tags": [
       "special_project"
-    ]
+    ],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "ATEEZ",
@@ -555,7 +621,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"ATEEZ\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "AtHeart",
@@ -571,7 +639,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"AtHeart\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BLACKPINK",
@@ -587,7 +657,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"BLACKPINK\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BLACKPINK",
@@ -603,7 +675,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"BLACKPINK\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BLACKPINK",
@@ -619,7 +693,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"BLACKPINK\" kpop comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BLACKPINK",
@@ -635,7 +711,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"BLACKPINK\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BLACKPINK",
@@ -651,7 +729,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"BLACKPINK\" kpop comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BLACKPINK",
@@ -667,7 +747,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"BLACKPINK\" kpop comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -683,7 +765,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -699,7 +783,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -715,7 +801,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -731,7 +819,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -747,7 +837,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -763,7 +855,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -779,7 +873,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -795,7 +891,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -811,7 +909,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "H1-KEY",
@@ -827,7 +927,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"H1-KEY\" kpop comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "Hearts2Hearts",
@@ -843,7 +945,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"Hearts2Hearts\" kpop comeback",
     "release_format": "single",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "KiiiKiii",
@@ -859,7 +963,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"KiiiKiii\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "P1Harmony",
@@ -875,7 +981,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"P1Harmony\" kpop comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "POW",
@@ -891,7 +999,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"POW\" kpop comeback",
     "release_format": "single",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -907,7 +1017,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"TOMORROW X TOGETHER\" comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -923,7 +1035,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"TOMORROW X TOGETHER\" comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "WHIB",
@@ -941,7 +1055,9 @@
     "release_format": "ep",
     "context_tags": [
       "title_track"
-    ]
+    ],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "WHIB",
@@ -957,7 +1073,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"WHIB\" kpop comeback",
     "release_format": "ep",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "YOUNG POSSE",
@@ -975,7 +1093,9 @@
     "release_format": "",
     "context_tags": [
       "collab"
-    ]
+    ],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "YOUNG POSSE",
@@ -993,7 +1113,9 @@
     "release_format": "single",
     "context_tags": [
       "collab"
-    ]
+    ],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "ZEROBASEONE",
@@ -1009,7 +1131,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"ZEROBASEONE\" kpop comeback",
     "release_format": "single",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BABYMONSTER",
@@ -1025,7 +1149,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"BABYMONSTER\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BLACKPINK",
@@ -1041,7 +1167,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"BLACKPINK\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -1057,7 +1185,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "BTS",
@@ -1073,7 +1203,9 @@
     "tracking_status": "filtered_out",
     "search_term": "\"BTS\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "ENHYPEN",
@@ -1089,7 +1221,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"ENHYPEN\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "KiiiKiii",
@@ -1105,7 +1239,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"KiiiKiii\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "ONEUS",
@@ -1121,7 +1257,9 @@
     "tracking_status": "recent_release",
     "search_term": "\"ONEUS\" kpop comeback",
     "release_format": "album",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   },
   {
     "group": "ZEROBASEONE",
@@ -1137,6 +1275,8 @@
     "tracking_status": "recent_release",
     "search_term": "\"ZEROBASEONE\" kpop comeback",
     "release_format": "",
-    "context_tags": []
+    "context_tags": [],
+    "date_precision": "unknown",
+    "scheduled_month": ""
   }
 ]

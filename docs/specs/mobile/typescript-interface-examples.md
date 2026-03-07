@@ -43,7 +43,8 @@ export interface UpcomingEventModel {
   group: string;
   displayGroup: string;
   scheduledDate?: string;
-  dateStatus?: 'exact' | 'month_only' | 'unknown';
+  scheduledMonth?: string;
+  datePrecision: 'exact' | 'month_only' | 'unknown';
   headline: string;
   releaseLabel?: string;
   status?: 'scheduled' | 'confirmed' | 'rumor';

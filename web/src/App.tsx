@@ -124,6 +124,7 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
 }
 
 type ActType = 'group' | 'solo' | 'unit'
+type UpcomingDatePrecision = 'exact' | 'month_only' | 'unknown'
 
 type VerifiedRelease = ReleaseFact & {
   group: string
@@ -145,6 +146,8 @@ type UnresolvedRow = {
 type UpcomingSignalBase = {
   group: string
   scheduled_date: string
+  scheduled_month: string
+  date_precision: UpcomingDatePrecision
   date_status: 'confirmed' | 'scheduled' | 'rumor'
   headline: string
   release_format: ReleaseFormat | ''
@@ -1125,6 +1128,17 @@ const TEAM_COPY = {
   },
 } as const
 
+const UPCOMING_MONTH_FORMATTERS: Record<Language, Intl.DateTimeFormat> = {
+  ko: new Intl.DateTimeFormat(TRANSLATIONS.ko.locale, {
+    year: 'numeric',
+    month: 'long',
+  }),
+  en: new Intl.DateTimeFormat(TRANSLATIONS.en.locale, {
+    year: 'numeric',
+    month: 'long',
+  }),
+}
+
 const releaseKindOptions = ['all', 'single', 'album', 'ep'] as const
 const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
 const dashboardStatusOptions = ['all', 'verified', 'confirmed', 'scheduled', 'rumor'] as const
@@ -1720,7 +1734,7 @@ function App() {
                 <span>{copy.monthlySummaryLabels.nearest}</span>
                 <strong>
                   {nearestMonthlySignal
-                    ? formatOptionalDate(nearestMonthlySignal.scheduled_date, displayDateFormatter, copy.none)
+                    ? formatUpcomingTimingLabel(nearestMonthlySignal, language, displayDateFormatter, copy.none)
                     : copy.monthlyNearestEmpty}
                 </strong>
                 <p className="context-summary-meta">
@@ -1777,7 +1791,7 @@ function App() {
                   <div>
                     <TeamIdentity group={nearestMonthlySignal.group} variant="list" />
                     <p className="signal-meta">
-                      {formatOptionalDate(nearestMonthlySignal.scheduled_date, displayDateFormatter, copy.none)} ·{' '}
+                      {formatUpcomingTimingLabel(nearestMonthlySignal, language, displayDateFormatter, copy.none)} ·{' '}
                       {formatSourceType(nearestMonthlySignal.source_type, language)} ·{' '}
                       {nearestMonthlySignal.source_domain || copy.sourceTypeLabels.pending}
                     </p>
@@ -1987,7 +2001,7 @@ function App() {
                           <h3>{item.headline}</h3>
                           <p className="signal-meta">
                             {formatSourceDomain(item.source_domain, language)} ·{' '}
-                            {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
+                            {formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}
                           </p>
                           {formatUpcomingEvidenceMeta(item, language) ? (
                             <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
@@ -1997,7 +2011,7 @@ function App() {
                           ) : null}
                         </div>
                         <div className="signal-date-wrap">
-                          <time>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</time>
+                          <time>{formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}</time>
                           {item.source_url ? (
                             <a href={item.source_url} target="_blank" rel="noreferrer">
                               {copy.open}
@@ -2514,7 +2528,7 @@ function App() {
                           <h3>{item.headline}</h3>
                           <p className="signal-meta">
                             {formatSourceDomain(item.source_domain, language)} ·{' '}
-                            {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
+                            {formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}
                           </p>
                           {formatUpcomingEvidenceMeta(item, language) ? (
                             <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
@@ -2540,7 +2554,7 @@ function App() {
                           </div>
                         </div>
                         <div className="signal-date-wrap">
-                          <time>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</time>
+                          <time>{formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}</time>
                         </div>
                       </article>
                     ))}
@@ -3310,7 +3324,7 @@ function LongGapRadarList({
               <p className="signal-meta">
                 {formatSourceType(entry.latestSignal.source_type, language)} ·{' '}
                 {entry.latestSignal.source_domain || copy.sourceTypeLabels.pending} ·{' '}
-                {formatOptionalDate(entry.latestSignal.scheduled_date, displayDateFormatter, copy.none)}
+                {formatUpcomingTimingLabel(entry.latestSignal, language, displayDateFormatter, copy.none)}
               </p>
               {entry.latestSignal.evidence_summary ? (
                 <p className="signal-evidence">{entry.latestSignal.evidence_summary}</p>
@@ -3424,7 +3438,7 @@ function RookieRadarList({
               <p className="signal-meta">
                 {formatSourceType(entry.latestSignal.source_type, language)} ·{' '}
                 {entry.latestSignal.source_domain || copy.sourceTypeLabels.pending} ·{' '}
-                {formatOptionalDate(entry.latestSignal.scheduled_date, displayDateFormatter, copy.none)}
+                {formatUpcomingTimingLabel(entry.latestSignal, language, displayDateFormatter, copy.none)}
               </p>
               {entry.latestSignal.evidence_summary ? (
                 <p className="signal-evidence">{entry.latestSignal.evidence_summary}</p>
@@ -3609,7 +3623,7 @@ function AnnualReleaseTimeline({
                             </span>
                           </div>
                           <p className="source-timeline-date">
-                            {formatOptionalDate(item.signal.scheduled_date, displayDateFormatter, copy.none)}
+                            {formatUpcomingTimingLabel(item.signal, language, displayDateFormatter, copy.none)}
                           </p>
                         </div>
                         <h3>{item.signal.headline}</h3>
@@ -3910,7 +3924,7 @@ function CompareUpcomingCard({
       </div>
       <h3>{signal.headline}</h3>
       <p className="signal-meta">
-        {formatOptionalDate(signal.scheduled_date, displayDateFormatter, copy.none)} ·{' '}
+        {formatUpcomingTimingLabel(signal, language, displayDateFormatter, copy.none)} ·{' '}
         {signal.source_domain || copy.sourceTypeLabels.pending}
       </p>
     </article>
@@ -4196,7 +4210,7 @@ function MonthlyReleaseDashboard({
                           </span>
                         </td>
                         <td>{formatReleaseFormat(item.release_format, language) || copy.none}</td>
-                        <td>{formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}</td>
+                        <td>{formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}</td>
                         <td>
                           <span className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}>
                             {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
@@ -4243,7 +4257,7 @@ function MonthlyReleaseDashboard({
                     <h3>{item.headline}</h3>
                     <p className="signal-meta">
                       {formatReleaseFormat(item.release_format, language) || copy.none} ·{' '}
-                      {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
+                      {formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}
                     </p>
                     <p className="signal-meta">
                       {formatSourceType(item.source_type, language)} · {item.source_domain || copy.sourceTypeLabels.pending}
@@ -4374,7 +4388,7 @@ function AgencyCalendarView({
                           </div>
                           <h3>{item.headline}</h3>
                           <p className="signal-meta">
-                            {formatOptionalDate(item.scheduled_date, displayDateFormatter, copy.none)}
+                            {formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}
                           </p>
                           <div className="action-row">
                             <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
@@ -5000,7 +5014,7 @@ function expandReleaseRow(row: ReleaseRow): VerifiedRelease[] {
 }
 
 function expandUpcomingCandidate(row: UpcomingCandidateRow): DatedUpcomingSignal[] {
-  if (!isExactDate(row.scheduled_date)) {
+  if (!hasExactUpcomingDate(row)) {
     return []
   }
 
@@ -5384,7 +5398,7 @@ function buildAnnualReleaseTimelineSections(
   const currentYear = new Date().getFullYear()
   const scheduledMarker =
     upcomingSignals.find(
-      (item) => isExactDate(item.scheduled_date) && Number.parseInt(item.scheduled_date.slice(0, 4), 10) === currentYear,
+      (item) => hasExactUpcomingDate(item) && Number.parseInt(item.scheduled_date.slice(0, 4), 10) === currentYear,
     ) ?? null
 
   if (scheduledMarker) {
@@ -5546,7 +5560,7 @@ function formatGapDuration(days: number, language: Language) {
 
 function getUpcomingCountdownState(item: UpcomingCandidateRow): CountdownState | null {
   if (
-    !isExactDate(item.scheduled_date) ||
+    !hasExactUpcomingDate(item) ||
     (item.date_status !== 'confirmed' && item.date_status !== 'scheduled')
   ) {
     return null
@@ -6368,12 +6382,13 @@ function extractUpcomingReleaseLabel(item: UpcomingSignalBase) {
 }
 
 function getUpcomingMonthKey(item: UpcomingSignalBase) {
-  if (isExactDate(item.scheduled_date)) {
+  if (hasExactUpcomingDate(item)) {
     return item.scheduled_date.slice(0, 7)
   }
-
-  const monthMatch = item.evidence_summary.match(/Future month reference:\s*(\d{4}-\d{2})/i)
-  return monthMatch?.[1] ?? ''
+  if (getUpcomingDatePrecisionValue(item) === 'month_only' && isMonthKey(item.scheduled_month)) {
+    return item.scheduled_month
+  }
+  return ''
 }
 
 function getUpcomingEventDescriptor(item: UpcomingSignalBase) {
@@ -6417,9 +6432,25 @@ function compareUpcomingRepresentativeRows(left: UpcomingSignalBase, right: Upco
     return sourceCompare
   }
 
-  const exactDateCompare = Number(isExactDate(right.scheduled_date)) - Number(isExactDate(left.scheduled_date))
+  const exactDateCompare = Number(hasExactUpcomingDate(right)) - Number(hasExactUpcomingDate(left))
+  const rightPrecision = getUpcomingDatePrecisionValue(right)
+  const leftPrecision = getUpcomingDatePrecisionValue(left)
+  const precisionRank = {
+    exact: 0,
+    month_only: 1,
+    unknown: 2,
+  }
+  if (precisionRank[leftPrecision] !== precisionRank[rightPrecision]) {
+    return precisionRank[leftPrecision] - precisionRank[rightPrecision]
+  }
   if (exactDateCompare !== 0) {
     return exactDateCompare
+  }
+
+  const leftMonthKey = getUpcomingMonthKey(left)
+  const rightMonthKey = getUpcomingMonthKey(right)
+  if (leftMonthKey && rightMonthKey && leftMonthKey !== rightMonthKey) {
+    return leftMonthKey.localeCompare(rightMonthKey)
   }
 
   const statusRank = {
@@ -6489,7 +6520,7 @@ function dedupeUpcomingCandidatesForDisplay(rows: UpcomingCandidateRow[]) {
 
   for (const row of rows) {
     const descriptor = getUpcomingEventDescriptor(row)
-    if (isExactDate(row.scheduled_date)) {
+    if (hasExactUpcomingDate(row)) {
       pushUpcomingGroup(exactGroups, [row.group.toLowerCase(), row.scheduled_date, descriptor].join('::'), row)
       continue
     }
@@ -6581,8 +6612,18 @@ function compareUpcomingSignals(
     return -1
   }
 
-  const leftHasDate = isExactDate(left.scheduled_date)
-  const rightHasDate = isExactDate(right.scheduled_date)
+  const leftHasDate = hasExactUpcomingDate(left)
+  const rightHasDate = hasExactUpcomingDate(right)
+  const leftPrecision = getUpcomingDatePrecisionValue(left)
+  const rightPrecision = getUpcomingDatePrecisionValue(right)
+  const precisionRank = {
+    exact: 0,
+    month_only: 1,
+    unknown: 2,
+  }
+  if (precisionRank[leftPrecision] !== precisionRank[rightPrecision]) {
+    return precisionRank[leftPrecision] - precisionRank[rightPrecision]
+  }
   if (leftHasDate && rightHasDate) {
     const dateCompare = parseDateValue(left.scheduled_date) - parseDateValue(right.scheduled_date)
     if (dateCompare !== 0) {
@@ -6590,6 +6631,12 @@ function compareUpcomingSignals(
     }
   } else if (leftHasDate !== rightHasDate) {
     return leftHasDate ? -1 : 1
+  }
+
+  const leftMonthKey = getUpcomingMonthKey(left)
+  const rightMonthKey = getUpcomingMonthKey(right)
+  if (leftMonthKey && rightMonthKey && leftMonthKey !== rightMonthKey) {
+    return leftMonthKey.localeCompare(rightMonthKey)
   }
 
   const statusRank = {
@@ -6793,7 +6840,7 @@ function getSourceTimelineSortValue(value: string) {
 }
 
 function getSourceTimelineSignalKey(item: UpcomingCandidateRow) {
-  return [item.group, item.source_url, item.headline, item.published_at, item.scheduled_date].join('::')
+  return [item.group, item.source_url, item.headline, item.published_at, item.scheduled_date, item.scheduled_month].join('::')
 }
 
 function getSourceTimelineItemKey(item: SourceTimelineItem) {
@@ -6814,7 +6861,7 @@ function isTracklistRevealSignal(item: UpcomingCandidateRow) {
 }
 
 function findDateUpdateSignal(rows: UpcomingCandidateRow[], usedSignalKeys: Set<string>) {
-  const datedRows = rows.filter((item) => isExactDate(item.scheduled_date))
+  const datedRows = rows.filter((item) => hasExactUpcomingDate(item))
   if (!datedRows.length) {
     return null
   }
@@ -6931,7 +6978,7 @@ function describeUpcomingSignal(
   formatter: Intl.DateTimeFormat,
   fallback: string,
 ) {
-  return `${formatDateStatus(item.date_status, language)} · ${formatOptionalDate(item.scheduled_date, formatter, fallback)}`
+  return `${formatDateStatus(item.date_status, language)} · ${formatUpcomingTimingLabel(item, language, formatter, fallback)}`
 }
 
 function parseDateValue(value?: string) {
@@ -7264,6 +7311,30 @@ function isExactDate(value: string) {
   return /^\d{4}-\d{2}-\d{2}$/.test(value)
 }
 
+function isMonthKey(value: string) {
+  return /^\d{4}-\d{2}$/.test(value)
+}
+
+function getUpcomingDatePrecisionValue(item: Pick<UpcomingSignalBase, 'date_precision' | 'scheduled_date' | 'scheduled_month'>) {
+  if (item.date_precision === 'exact' || item.date_precision === 'month_only' || item.date_precision === 'unknown') {
+    return item.date_precision
+  }
+
+  if (isExactDate(item.scheduled_date)) {
+    return 'exact'
+  }
+
+  if (isMonthKey(item.scheduled_month)) {
+    return 'month_only'
+  }
+
+  return 'unknown'
+}
+
+function hasExactUpcomingDate(item: Pick<UpcomingSignalBase, 'date_precision' | 'scheduled_date' | 'scheduled_month'>) {
+  return getUpcomingDatePrecisionValue(item) === 'exact' && isExactDate(item.scheduled_date)
+}
+
 function formatDisplayDate(isoDate: string, formatter: Intl.DateTimeFormat) {
   if (!isExactDate(isoDate)) {
     return isoDate
@@ -7303,6 +7374,23 @@ function formatOptionalDate(
   }
 
   return formatDisplayDate(isoDate, formatter)
+}
+
+function formatUpcomingTimingLabel(
+  item: Pick<UpcomingSignalBase, 'scheduled_date' | 'scheduled_month' | 'date_precision'>,
+  language: Language,
+  formatter: Intl.DateTimeFormat,
+  fallback: string,
+) {
+  if (hasExactUpcomingDate(item)) {
+    return formatDisplayDate(item.scheduled_date, formatter)
+  }
+
+  if (getUpcomingDatePrecisionValue(item) === 'month_only' && isMonthKey(item.scheduled_month)) {
+    return UPCOMING_MONTH_FORMATTERS[language].format(monthKeyToDate(item.scheduled_month))
+  }
+
+  return fallback
 }
 
 function getMonthKey(date: Date) {
