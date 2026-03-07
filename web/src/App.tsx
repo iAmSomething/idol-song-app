@@ -464,6 +464,8 @@ type SearchIndex = {
 }
 
 const LANGUAGE_STORAGE_KEY = 'idol-song-app-language'
+const MY_TEAMS_STORAGE_KEY = 'idol-song-app-my-teams'
+const MY_TEAMS_LIMIT = 20
 const LANGUAGE_OPTIONS: Language[] = ['ko', 'en']
 
 const TRANSLATIONS = {
@@ -514,7 +516,11 @@ const TRANSLATIONS = {
       actType: '액트 유형',
       status: '표시 상태',
       agency: '소속사',
+      myTeams: '관심 팀',
     },
+    myTeamsOnlyToggle: '관심 팀만 보기',
+    myTeamsOnlyHint: '캘린더, 예정 리스트, 레이더, 월간 대시보드를 저장한 팀 기준으로만 좁힙니다.',
+    myTeamsEmpty: '관심 팀이 아직 없습니다. 팀 페이지에서 먼저 추가하세요.',
     agencyFilterExpand: '전체 소속사 보기',
     agencyFilterCollapse: '접기',
     filterOptions: {
@@ -750,7 +756,11 @@ const TRANSLATIONS = {
       actType: 'Act type',
       status: 'Status',
       agency: 'Agency',
+      myTeams: 'My Teams',
     },
+    myTeamsOnlyToggle: 'Only my teams',
+    myTeamsOnlyHint: 'Narrow the calendar, upcoming lists, radar, and monthly dashboard to saved teams only.',
+    myTeamsEmpty: 'No saved teams yet. Add them from a team page first.',
     agencyFilterExpand: 'Browse all agencies',
     agencyFilterCollapse: 'Collapse',
     filterOptions: {
@@ -945,6 +955,10 @@ const TEAM_COPY = {
   ko: {
     action: '팀 페이지',
     back: '대시보드로',
+    pinAction: '관심 팀 추가',
+    unpinAction: '관심 팀 해제',
+    pinnedLabel: '관심 팀',
+    pinLimitReached: '관심 팀은 최대 20개까지 저장할 수 있습니다.',
     panelLabel: '팀 페이지',
     intro:
       '해당 팀의 컴백 신호를 먼저 보고, 최신 발매와 앨범 상세를 같은 화면에서 바로 확인할 수 있습니다.',
@@ -1052,6 +1066,10 @@ const TEAM_COPY = {
   en: {
     action: 'Team page',
     back: 'Back to dashboard',
+    pinAction: 'Add to My Teams',
+    unpinAction: 'Remove from My Teams',
+    pinnedLabel: 'My Team',
+    pinLimitReached: 'You can save up to 20 teams.',
     panelLabel: 'Team page',
     intro:
       'See comeback signals first, then move into the latest release and album detail without leaving the same view.',
@@ -1248,6 +1266,8 @@ function App() {
   const [selectedActType, setSelectedActType] = useState<(typeof actTypeOptions)[number]>('all')
   const [selectedDashboardStatus, setSelectedDashboardStatus] = useState<(typeof dashboardStatusOptions)[number]>('all')
   const [selectedAgency, setSelectedAgency] = useState<string>('all')
+  const [myTeams, setMyTeams] = useState<string[]>(readInitialMyTeams)
+  const [selectedMyTeamsOnly, setSelectedMyTeamsOnly] = useState(false)
   const [language, setLanguage] = useState<Language>(readInitialLanguage)
   const [selectedGroup, setSelectedGroup] = useState<string | null>(readSelectedGroupFromLocation)
   const [selectedCompareGroup, setSelectedCompareGroup] = useState<string | null>(readSelectedCompareGroupFromLocation)
@@ -1273,6 +1293,14 @@ function App() {
       document.documentElement.lang = language
     }
   }, [language])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    window.localStorage.setItem(MY_TEAMS_STORAGE_KEY, JSON.stringify(myTeams))
+  }, [myTeams])
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -1352,6 +1380,9 @@ function App() {
     return weekdayFormatter.format(reference)
   })
   const searchNeedle = createSearchNeedle(search)
+  const myTeamsSet = new Set(myTeams)
+  const myTeamsCountLabel = formatMyTeamsCount(myTeams.length, MY_TEAMS_LIMIT, language)
+  const myTeamsHelperText = myTeams.length > 0 ? copy.myTeamsOnlyHint : copy.myTeamsEmpty
 
   const filteredReleases = releases.filter((item) => {
     const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
@@ -1361,7 +1392,8 @@ function App() {
     const matchesStatus =
       selectedDashboardStatus === 'all' || selectedDashboardStatus === 'verified'
     const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
-    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency
+    const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
+    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
   })
 
   const filteredUpcoming = dedupedUpcomingCandidates.filter((item) => {
@@ -1376,20 +1408,24 @@ function App() {
           ? false
           : item.date_status === selectedDashboardStatus
     const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
-    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency
+    const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
+    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
   })
   const filteredTeams = teamProfiles.filter(
     (team) =>
       matchesSearchIndex(searchIndexByGroup.get(team.group), searchNeedle) &&
-      matchesAgencyFilter(team.group, selectedAgency),
+      matchesAgencyFilter(team.group, selectedAgency) &&
+      matchesMyTeamsFilter(team.group, myTeamsSet, selectedMyTeamsOnly),
   )
   const filteredLongGapRadar = longGapRadarEntries.filter((item) =>
     matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle) &&
-      matchesAgencyFilter(item.group, selectedAgency),
+      matchesAgencyFilter(item.group, selectedAgency) &&
+      matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly),
   )
   const filteredRookieRadar = rookieRadarEntries.filter((item) =>
     matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle) &&
-      matchesAgencyFilter(item.group, selectedAgency),
+      matchesAgencyFilter(item.group, selectedAgency) &&
+      matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly),
   )
   const filteredUpcomingSignals = filteredUpcoming
     .flatMap((item) => expandUpcomingCandidate(item))
@@ -1431,6 +1467,7 @@ function App() {
       selectedActType,
       selectedDashboardStatus,
       selectedAgency,
+      selectedMyTeamsOnly,
     },
     language,
   )
@@ -1522,6 +1559,8 @@ function App() {
   const monthlyHighlightEmptyCopy =
     monthMonthOnlyUpcomingRows.length > 0 ? copy.monthlyHighlightUndatedOnly : copy.monthlyHighlightEmpty
   const selectedTeam = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
+  const selectedTeamIsPinned = selectedTeam ? myTeamsSet.has(selectedTeam.group) : false
+  const myTeamsLimitReached = myTeams.length >= MY_TEAMS_LIMIT
   const compareTeam = activeCompareGroup ? teamProfileMap.get(activeCompareGroup) ?? null : null
   const compareTeamOptions = selectedTeam ? teamProfiles.filter((team) => team.group !== selectedTeam.group) : []
   const selectedTeamCompareSnapshot = selectedTeam ? buildTeamCompareSnapshot(selectedTeam.group) : null
@@ -1729,6 +1768,23 @@ function App() {
     setSelectedAlbumKey(null)
   }
 
+  function toggleMyTeam(group: string) {
+    if (myTeamsSet.has(group)) {
+      const nextMyTeams = myTeams.filter((item) => item !== group)
+      setMyTeams(nextMyTeams)
+      if (nextMyTeams.length === 0) {
+        setSelectedMyTeamsOnly(false)
+      }
+      return
+    }
+
+    if (myTeams.length >= MY_TEAMS_LIMIT) {
+      return
+    }
+
+    setMyTeams([...myTeams, group])
+  }
+
   function handleSelectDay(dayIso: string) {
     setSelectedDayIso(dayIso)
     setSelectedDayInteractionTick((tick) => tick + 1)
@@ -1899,6 +1955,16 @@ function App() {
             language={language}
             onSelect={setSelectedAgency}
           />
+
+          <MyTeamsFilterGroup
+            label={copy.filterLabels.myTeams}
+            summary={myTeamsCountLabel}
+            toggleLabel={copy.myTeamsOnlyToggle}
+            helperText={myTeamsHelperText}
+            selected={selectedMyTeamsOnly}
+            disabled={myTeams.length === 0}
+            onToggle={() => setSelectedMyTeamsOnly((value) => !value)}
+          />
         </div>
       </header>
 
@@ -1915,13 +1981,29 @@ function App() {
         <main className="team-page">
           <section className="panel team-page-hero">
             <div className="team-page-head">
-              <button type="button" className="ghost-button" onClick={closeTeamPage}>
-                {teamCopy.back}
-              </button>
-              <span className={`signal-badge signal-badge-${selectedTeam.trackingStatus}`}>
-                {formatTrackingStatus(selectedTeam.trackingStatus, language)}
-              </span>
+              <div className="team-page-head-actions">
+                <button type="button" className="ghost-button" onClick={closeTeamPage}>
+                  {teamCopy.back}
+                </button>
+                <button
+                  type="button"
+                  className={`ghost-button ghost-button-subtle ${selectedTeamIsPinned ? 'my-team-button-active' : ''}`}
+                  onClick={() => toggleMyTeam(selectedTeam.group)}
+                  disabled={myTeamsLimitReached && !selectedTeamIsPinned}
+                >
+                  {selectedTeamIsPinned ? teamCopy.unpinAction : teamCopy.pinAction}
+                </button>
+              </div>
+              <div className="team-page-head-meta">
+                {selectedTeamIsPinned ? <span className="team-focus-badge">{teamCopy.pinnedLabel}</span> : null}
+                <span className={`signal-badge signal-badge-${selectedTeam.trackingStatus}`}>
+                  {formatTrackingStatus(selectedTeam.trackingStatus, language)}
+                </span>
+              </div>
             </div>
+            {myTeamsLimitReached && !selectedTeamIsPinned ? (
+              <p className="team-focus-note">{teamCopy.pinLimitReached}</p>
+            ) : null}
 
             <div className="team-page-summary">
               <div className="team-title-wrap">
@@ -5037,6 +5119,45 @@ function AgencyFilterGroup<T extends string>({
   )
 }
 
+function MyTeamsFilterGroup({
+  label,
+  summary,
+  toggleLabel,
+  helperText,
+  selected,
+  disabled,
+  onToggle,
+}: {
+  label: string
+  summary: string
+  toggleLabel: string
+  helperText: string
+  selected: boolean
+  disabled: boolean
+  onToggle: () => void
+}) {
+  return (
+    <div className="filter-group filter-group-my-teams">
+      <div className="filter-group-head">
+        <span>{label}</span>
+        <strong className="filter-group-meta">{summary}</strong>
+      </div>
+      <div className="filter-row">
+        <button
+          type="button"
+          className={`filter-chip ${selected ? 'filter-chip-active' : ''}`}
+          onClick={onToggle}
+          disabled={disabled}
+          aria-pressed={selected}
+        >
+          {toggleLabel}
+        </button>
+      </div>
+      <p className="filter-helper">{helperText}</p>
+    </div>
+  )
+}
+
 function formatSourceType(sourceType: string, language: Language) {
   return TRANSLATIONS[language].sourceTypeLabels[normalizeSourceType(sourceType)]
 }
@@ -5199,12 +5320,14 @@ function buildMonthlyDashboardFilterSummary(
     selectedActType,
     selectedDashboardStatus,
     selectedAgency,
+    selectedMyTeamsOnly,
   }: {
     search: string
     selectedReleaseKind: (typeof releaseKindOptions)[number]
     selectedActType: (typeof actTypeOptions)[number]
     selectedDashboardStatus: (typeof dashboardStatusOptions)[number]
     selectedAgency: string
+    selectedMyTeamsOnly: boolean
   },
   language: Language,
 ) {
@@ -5229,6 +5352,9 @@ function buildMonthlyDashboardFilterSummary(
         selectedAgency === AGENCY_UNKNOWN_FILTER ? formatFilterOption(AGENCY_UNKNOWN_FILTER, language) : selectedAgency
       }`,
     )
+  }
+  if (selectedMyTeamsOnly) {
+    filters.push(`${copy.filterLabels.myTeams}: ${copy.myTeamsOnlyToggle}`)
   }
 
   return filters
@@ -7446,6 +7572,63 @@ function readInitialLanguage(): Language {
   }
 
   return 'ko'
+}
+
+function sanitizeStoredMyTeams(value: unknown) {
+  if (!Array.isArray(value)) {
+    return []
+  }
+
+  const savedGroups: string[] = []
+  const seen = new Set<string>()
+  for (const item of value) {
+    if (typeof item !== 'string') {
+      continue
+    }
+
+    const normalized = item.trim()
+    if (!normalized || seen.has(normalized) || !teamProfileMap.has(normalized)) {
+      continue
+    }
+
+    savedGroups.push(normalized)
+    seen.add(normalized)
+
+    if (savedGroups.length >= MY_TEAMS_LIMIT) {
+      break
+    }
+  }
+
+  return savedGroups
+}
+
+function readInitialMyTeams() {
+  if (typeof window === 'undefined') {
+    return []
+  }
+
+  try {
+    const stored = window.localStorage.getItem(MY_TEAMS_STORAGE_KEY)
+    if (!stored) {
+      return []
+    }
+
+    return sanitizeStoredMyTeams(JSON.parse(stored))
+  } catch {
+    return []
+  }
+}
+
+function matchesMyTeamsFilter(group: string, myTeamsSet: Set<string>, selectedMyTeamsOnly: boolean) {
+  if (!selectedMyTeamsOnly || myTeamsSet.size === 0) {
+    return true
+  }
+
+  return myTeamsSet.has(group)
+}
+
+function formatMyTeamsCount(count: number, limit: number, language: Language) {
+  return language === 'ko' ? `${count}/${limit} 저장` : `${count}/${limit} saved`
 }
 
 function isExactDate(value: string) {

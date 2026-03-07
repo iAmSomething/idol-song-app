@@ -406,6 +406,12 @@
   gap: 12px;
 }
 
+.filter-group-meta {
+  font-size: 0.76rem;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
 .filter-row {
   display: flex;
   flex-wrap: wrap;
@@ -421,8 +427,24 @@
   font-size: 0.82rem;
 }
 
+.filter-chip:disabled {
+  opacity: 0.48;
+  cursor: default;
+}
+
 .filter-group-agency {
   gap: 10px;
+}
+
+.filter-group-my-teams {
+  gap: 10px;
+}
+
+.filter-helper {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  line-height: 1.5;
 }
 
 .filter-row-agency {
@@ -1751,6 +1773,36 @@
 .team-page-head {
   justify-content: space-between;
   gap: 16px;
+  flex-wrap: wrap;
+}
+
+.team-page-head-actions,
+.team-page-head-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.my-team-button-active,
+.team-focus-badge {
+  border-color: rgba(195, 88, 49, 0.28);
+  background: rgba(195, 88, 49, 0.12);
+  color: var(--accent-deep);
+}
+
+.team-focus-badge {
+  border: 1px solid rgba(195, 88, 49, 0.28);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.team-focus-note {
+  margin: 14px 0 0;
+  color: var(--accent-deep);
+  font-size: 0.82rem;
 }
 
 .team-page-summary,
