@@ -2601,6 +2601,14 @@
   display: block;
 }
 
+.official-mv-empty {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px dashed rgba(27, 42, 65, 0.14);
+  border-radius: 18px;
+  background: rgba(27, 42, 65, 0.04);
+}
+
 .release-enrichment-grid {
   display: grid;
   gap: 12px;

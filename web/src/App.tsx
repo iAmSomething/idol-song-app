@@ -1019,6 +1019,7 @@ const TEAM_COPY = {
     officialMv: '공식 MV',
     officialMvHint: '보조 영상 콘텐츠입니다. 앱 안 직접 재생 기능이 아니라 공식 YouTube MV를 임베드합니다.',
     officialMvLinkOnly: '임베드가 준비되지 않으면 YouTube 링크만 노출합니다.',
+    officialMvUnavailable: '신뢰 가능한 공식 YouTube MV target이 아직 없어 임베드를 표시하지 않습니다.',
     watchOnYouTube: 'YouTube에서 보기',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
@@ -1126,6 +1127,7 @@ const TEAM_COPY = {
     officialMv: 'Official MV',
     officialMvHint: 'This is supporting video content, not in-app audio playback. It embeds the official YouTube MV only when metadata is explicit.',
     officialMvLinkOnly: 'If embedding is unavailable, the page falls back to a YouTube link only.',
+    officialMvUnavailable: 'No reliable official YouTube MV target is attached yet, so this page does not render an embed.',
     watchOnYouTube: 'Watch on YouTube',
     placeholderCover: 'Release artwork',
     drawerCopy:
@@ -2827,11 +2829,11 @@ function ReleaseDetailPage({
           </section>
         ) : null}
 
-        {mv.canonicalUrl ? (
-          <section className="official-mv-section">
-            <p className="panel-label">{teamCopy.officialMv}</p>
-            <p className="hero-text drawer-copy">{teamCopy.officialMvHint}</p>
-            {mv.embedUrl ? (
+        <section className="official-mv-section">
+          <p className="panel-label">{teamCopy.officialMv}</p>
+          <p className="hero-text drawer-copy">{teamCopy.officialMvHint}</p>
+          {mv.canonicalUrl && mv.embedUrl ? (
+            <>
               <div className="official-mv-frame-shell">
                 <iframe
                   className="official-mv-frame"
@@ -2843,16 +2845,18 @@ function ReleaseDetailPage({
                   allowFullScreen
                 />
               </div>
-            ) : (
-              <p className="hero-text drawer-copy">{teamCopy.officialMvLinkOnly}</p>
-            )}
-            <div className="meta-links">
-              <a href={mv.canonicalUrl} target="_blank" rel="noreferrer" className="meta-link">
-                {teamCopy.watchOnYouTube}
-              </a>
+              <div className="meta-links">
+                <a href={mv.canonicalUrl} target="_blank" rel="noreferrer" className="meta-link">
+                  {teamCopy.watchOnYouTube}
+                </a>
+              </div>
+            </>
+          ) : (
+            <div className="official-mv-empty">
+              <p className="hero-text drawer-copy">{teamCopy.officialMvUnavailable}</p>
             </div>
-          </section>
-        ) : null}
+          )}
+        </section>
 
         <ReleaseEnrichmentSection
           enrichment={releaseEnrichment}
@@ -2869,6 +2873,7 @@ function ReleaseDetailPage({
             mvUrl={mv.canonicalUrl}
             language={language}
             showHint
+            allowMvSearchFallback={false}
           />
           <div className="meta-links">
             <a href={album.source} target="_blank" rel="noreferrer" className="meta-link">
@@ -2939,6 +2944,7 @@ function MusicHandoffRow({
   showHint = false,
   mvUrl = '',
   includeMv = true,
+  allowMvSearchFallback = true,
 }: {
   group: string
   title: string
@@ -2948,6 +2954,7 @@ function MusicHandoffRow({
   showHint?: boolean
   mvUrl?: string
   includeMv?: boolean
+  allowMvSearchFallback?: boolean
 }) {
   const copy = TRANSLATIONS[language]
   const links = buildServiceActionLinks({
@@ -2956,6 +2963,7 @@ function MusicHandoffRow({
     canonicalUrls,
     mvUrl,
     includeMv,
+    allowMvSearchFallback,
   })
 
   return (
@@ -5683,12 +5691,14 @@ function buildServiceActionLinks({
   canonicalUrls,
   mvUrl,
   includeMv = true,
+  allowMvSearchFallback = true,
 }: {
   group: string
   title: string
   canonicalUrls?: MusicHandoffUrls
   mvUrl?: string
   includeMv?: boolean
+  allowMvSearchFallback?: boolean
 }): MusicHandoffLink[] {
   const query = `${group} ${title}`.trim()
   const links: MusicHandoffLink[] = MUSIC_HANDOFF_SERVICES.map((service) => ({
@@ -5697,7 +5707,7 @@ function buildServiceActionLinks({
     mode: canonicalUrls?.[service] ? 'canonical' : 'search',
   }))
 
-  if (includeMv) {
+  if (includeMv && (mvUrl || allowMvSearchFallback)) {
     links.push({
       service: 'youtube_mv',
       href: mvUrl || buildYouTubeMvSearchUrl(query),
@@ -5766,7 +5776,7 @@ function getReleaseDetailMvUrls(detail: Pick<ReleaseDetailRow, 'youtube_video_id
   const videoId = extractYouTubeVideoId(detail.youtube_video_id) || extractYouTubeVideoId(detail.youtube_video_url)
 
   return {
-    canonicalUrl: videoId ? buildYouTubeMvCanonicalUrl(videoId) : detail.youtube_video_url || '',
+    canonicalUrl: videoId ? buildYouTubeMvCanonicalUrl(videoId) : '',
     embedUrl: videoId ? buildYouTubeNoCookieEmbedUrl(videoId) : '',
   }
 }
