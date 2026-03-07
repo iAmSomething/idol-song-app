@@ -1,19 +1,24 @@
 # App Routes
 
-이 디렉터리는 Expo Router route 파일이 들어갈 위치다.
+이 디렉터리는 Expo Router route 파일이 들어가는 위치다.
 
-예정 구조:
+현재 포함 범위:
 
-```text
-app/
-  _layout.tsx
-  (tabs)/
-    _layout.tsx
-    calendar.tsx
-    radar.tsx
-    search.tsx
-  artists/[slug].tsx
-  releases/[id].tsx
-```
+- `_layout.tsx`
+  - root stack shell
+- `index.tsx`
+  - 기본 진입 시 `calendar` 탭으로 redirect
+- `(tabs)/_layout.tsx`
+  - `calendar`, `radar`, `search` 탭 shell
+- `(tabs)/calendar.tsx`
+- `(tabs)/radar.tsx`
+- `(tabs)/search.tsx`
+  - 탭 placeholder screen
+- `artists/[slug].tsx`
+- `releases/[id].tsx`
+  - push detail placeholder screen
 
-현재는 workspace bootstrap 단계라 route 파일은 아직 만들지 않는다.
+경로 계약은 아래 문서를 따른다.
+
+- `docs/specs/mobile/expo-implementation-guide.md`
+- `docs/specs/mobile/route-param-contracts.md`

@@ -2,7 +2,7 @@
 
 이 디렉터리는 `Expo + React Native + Expo Router` 기반 모바일 앱 워크스페이스다.
 
-현재 단계는 workspace bootstrap만 포함한다.
+현재 단계는 workspace bootstrap과 router shell까지만 포함한다.
 
 - route/layout expectations는 `docs/specs/mobile/expo-implementation-guide.md`를 따른다.
 - route/param 계약은 `docs/specs/mobile/route-param-contracts.md`를 따른다.
@@ -11,7 +11,7 @@
 ## 현재 포함 범위
 
 - `app/`
-  - Expo Router 기준 route shell 위치
+  - Expo Router root layout / tab shell / detail placeholder route
 - `src/`
   - components / features / selectors / services / tokens / types / utils 구역
 - `.env.example`
@@ -109,6 +109,7 @@ profile 차이는 아래 범위로만 제한한다.
 ## 아직 없는 것
 
 - 실제 screen/layout 구현
+- selector/adapter binding
 - backend integration
 
 위 항목은 후속 모바일 foundation 이슈에서 추가한다.
