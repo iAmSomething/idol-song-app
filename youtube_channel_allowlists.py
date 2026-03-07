@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 
 ROOT = Path(__file__).resolve().parent
@@ -91,6 +92,37 @@ def write_json(path: Path, rows: Any) -> bool:
     return True
 
 
+def extract_youtube_channel_match_keys(channel_url: str) -> list[str]:
+    parsed = urlparse(channel_url)
+    path = parsed.path.strip("/")
+    if not path:
+        return []
+
+    keys: list[str] = []
+    segments = [segment for segment in path.split("/") if segment]
+    if not segments:
+        return []
+
+    first = segments[0]
+    if first.startswith("@"):
+        keys.append(first.casefold())
+    elif first == "channel" and len(segments) > 1:
+        keys.append(f"channel:{segments[1].casefold()}")
+    else:
+        keys.append("/".join(segment.casefold() for segment in segments))
+
+    keys.append(channel_url.rstrip("/").casefold())
+
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for key in keys:
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(key)
+    return deduped
+
+
 def build_source(
     channel_url: str,
     channel_label: str,
@@ -105,6 +137,7 @@ def build_source(
         "allow_mv_uploads": True,
         "display_in_team_links": display_in_team_links,
         "provenance": provenance,
+        "match_keys": extract_youtube_channel_match_keys(channel_url),
     }
 
 
@@ -117,6 +150,17 @@ def dedupe_sources(sources: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
         seen.add(key)
         deduped.append(source)
+    return deduped
+
+
+def dedupe_strings(values: list[str]) -> list[str]:
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        if value in seen:
+            continue
+        seen.add(value)
+        deduped.append(value)
     return deduped
 
 
@@ -159,6 +203,14 @@ def build_allowlist_row(profile: dict[str, Any]) -> dict[str, Any]:
         "group": profile["group"],
         "primary_team_channel_url": resolved_primary_team_url,
         "mv_allowlist_urls": [source["channel_url"] for source in sources if source.get("allow_mv_uploads")],
+        "mv_allowlist_match_keys": dedupe_strings(
+            [
+                match_key
+                for source in sources
+                if source.get("allow_mv_uploads")
+                for match_key in source.get("match_keys", [])
+            ]
+        ),
         "channels": sources,
     }
 
