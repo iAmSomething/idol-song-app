@@ -16,6 +16,7 @@
 ### 3.2 preview 환경
 - 실험용 dataset version 지정이 가능해야 한다.
 - 단, preview에서도 field contract는 production과 동일해야 한다.
+- backend migration 동안 preview API / DB / worker rehearsal 경로는 `docs/specs/backend/preview-staging-backend-path.md`를 따른다.
 
 ### 3.3 production 환경
 - known-good dataset만 소비한다.
