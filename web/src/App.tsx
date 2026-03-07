@@ -407,6 +407,14 @@ type DashboardSectionNavigatorItem = {
   shortLabel: string
 }
 
+type CalendarQuickJumpSource = 'today' | 'upcoming' | 'current_month' | 'verified'
+
+type CalendarQuickJumpTarget = {
+  isoDate: string
+  monthKey: string
+  source: CalendarQuickJumpSource
+}
+
 const DASHBOARD_SECTION_NAV_IDS = [
   'dashboard-weekly-digest',
   'dashboard-calendar',
@@ -458,6 +466,16 @@ const TRANSLATIONS = {
       needsReview: '검토 필요',
     },
     monthlyGrid: '월간 캘린더',
+    calendarQuickJumpLabel: '빠른 이동',
+    calendarQuickJumpToday: '오늘',
+    calendarQuickJumpNearest: '가장 가까운 일정',
+    calendarQuickJumpUnavailable: '이동할 날짜 없음',
+    calendarQuickJumpSourceLabels: {
+      today: '현재 실제 날짜',
+      upcoming: '향후 exact date 우선',
+      current_month: '현재 월 fallback',
+      verified: '최근 verified fallback',
+    },
     prev: '이전',
     next: '다음',
     searchLabel: '그룹, 곡, 앨범 검색',
@@ -680,6 +698,16 @@ const TRANSLATIONS = {
       needsReview: 'Needs review',
     },
     monthlyGrid: 'Monthly grid',
+    calendarQuickJumpLabel: 'Quick jump',
+    calendarQuickJumpToday: 'Today',
+    calendarQuickJumpNearest: 'Closest schedule',
+    calendarQuickJumpUnavailable: 'No jump target',
+    calendarQuickJumpSourceLabels: {
+      today: 'Current real date',
+      upcoming: 'Future exact date first',
+      current_month: 'Current month fallback',
+      verified: 'Latest verified fallback',
+    },
     prev: 'Prev',
     next: 'Next',
     searchLabel: 'Search group, song, or album',
@@ -1321,7 +1349,9 @@ function App() {
     .flatMap((item) => expandUpcomingCandidate(item))
     .sort((left, right) => left.dateValue.getTime() - right.dateValue.getTime())
 
-  const visibleMonthKeys = getVisibleMonthKeys(filteredReleases, filteredUpcomingSignals)
+  const todayIso = dateFormatter.format(new Date())
+  const todayMonthKey = todayIso.slice(0, 7)
+  const visibleMonthKeys = getVisibleMonthKeys(filteredReleases, filteredUpcomingSignals, [todayMonthKey])
   const effectiveMonthKey = visibleMonthKeys.includes(selectedMonthKey)
     ? selectedMonthKey
     : visibleMonthKeys.at(-1) ?? selectedMonthKey
@@ -1394,6 +1424,41 @@ function App() {
       ? `${selectedMonthDate.getFullYear()}년 ${selectedMonthDate.getMonth() + 1}월 컴백 캘린더`
       : `${monthFormatter.format(selectedMonthDate)} comeback calendar`
   const nearestMonthlySignal = monthScheduledDashboardRows[0] ?? null
+  const todayJumpTarget: CalendarQuickJumpTarget = {
+    isoDate: todayIso,
+    monthKey: todayMonthKey,
+    source: 'today',
+  }
+  const nearestUpcomingJumpSignal = filteredUpcomingSignals.find((item) => item.isoDate >= todayIso) ?? null
+  const currentMonthFallbackIso = pickClosestIsoDate(monthActiveDayIsos, todayIso)
+  const latestVerifiedFallbackIso = filteredReleases[0]?.isoDate ?? ''
+  const nearestCalendarJumpTarget: CalendarQuickJumpTarget | null =
+    nearestUpcomingJumpSignal
+      ? {
+          isoDate: nearestUpcomingJumpSignal.isoDate,
+          monthKey: getMonthKey(nearestUpcomingJumpSignal.dateValue),
+          source: 'upcoming',
+        }
+      : currentMonthFallbackIso
+        ? {
+            isoDate: currentMonthFallbackIso,
+            monthKey: currentMonthFallbackIso.slice(0, 7),
+            source: 'current_month',
+          }
+        : latestVerifiedFallbackIso
+          ? {
+              isoDate: latestVerifiedFallbackIso,
+              monthKey: latestVerifiedFallbackIso.slice(0, 7),
+              source: 'verified',
+            }
+          : null
+  const todayJumpLabel = formatDisplayDate(todayJumpTarget.isoDate, displayDateFormatter)
+  const nearestJumpLabel = nearestCalendarJumpTarget
+    ? formatDisplayDate(nearestCalendarJumpTarget.isoDate, displayDateFormatter)
+    : copy.calendarQuickJumpUnavailable
+  const nearestJumpSourceLabel = nearestCalendarJumpTarget
+    ? copy.calendarQuickJumpSourceLabels[nearestCalendarJumpTarget.source]
+    : copy.calendarQuickJumpUnavailable
   const selectedTeam = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
   const compareTeam = activeCompareGroup ? teamProfileMap.get(activeCompareGroup) ?? null : null
   const compareTeamOptions = selectedTeam ? teamProfiles.filter((team) => team.group !== selectedTeam.group) : []
@@ -1465,7 +1530,7 @@ function App() {
       shortLabel: copy.sectionNavigatorFeed,
     },
   ]
-  const [activeDashboardSectionId, setActiveDashboardSectionId] = useState(DASHBOARD_SECTION_NAV_IDS[1])
+  const [activeDashboardSectionId, setActiveDashboardSectionId] = useState<string>(DASHBOARD_SECTION_NAV_IDS[1])
   const [isSectionNavigatorExpanded, setIsSectionNavigatorExpanded] = useState(false)
 
   useEffect(() => {
@@ -1604,6 +1669,16 @@ function App() {
 
   function handleSelectDay(dayIso: string) {
     setSelectedDayIso(dayIso)
+    setSelectedDayInteractionTick((tick) => tick + 1)
+  }
+
+  function handleQuickJump(target: CalendarQuickJumpTarget | null) {
+    if (!target) {
+      return
+    }
+
+    setSelectedMonthKey(target.monthKey)
+    setSelectedDayIso(target.isoDate)
     setSelectedDayInteractionTick((tick) => tick + 1)
   }
 
@@ -2214,34 +2289,79 @@ function App() {
             <div id="dashboard-calendar" className="calendar-drilldown-stack scroll-anchor-section">
               <section ref={calendarPanelRef} className="panel panel-calendar">
                 <div className="panel-top">
-                  <div>
+                  <div className="calendar-panel-head">
                     <p className="panel-label">{copy.monthlyGrid}</p>
                     <h2>{monthFormatter.format(selectedMonthDate)}</h2>
                   </div>
-                  <div className="calendar-controls">
-                    <button
-                      type="button"
-                      className="ghost-button"
-                      onClick={() =>
-                        setSelectedMonthKey(visibleMonthKeys[Math.max(monthIndex - 1, 0)] ?? effectiveMonthKey)
-                      }
-                      disabled={monthIndex <= 0}
-                    >
-                      {copy.prev}
-                    </button>
-                    <button
-                      type="button"
-                      className="ghost-button"
-                      onClick={() =>
-                        setSelectedMonthKey(
-                          visibleMonthKeys[Math.min(monthIndex + 1, visibleMonthKeys.length - 1)] ??
-                            effectiveMonthKey,
-                        )
-                      }
-                      disabled={monthIndex === -1 || monthIndex >= visibleMonthKeys.length - 1}
-                    >
-                      {copy.next}
-                    </button>
+                  <div className="calendar-top-actions">
+                    <div className="calendar-quick-jumps" role="group" aria-label={copy.calendarQuickJumpLabel}>
+                      <button
+                        type="button"
+                        className={[
+                          'ghost-button',
+                          'ghost-button-subtle',
+                          'calendar-jump-button',
+                          effectiveMonthKey === todayJumpTarget.monthKey && effectiveSelectedDayIso === todayJumpTarget.isoDate
+                            ? 'calendar-jump-button-active'
+                            : '',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')}
+                        onClick={() => handleQuickJump(todayJumpTarget)}
+                        aria-label={`${copy.calendarQuickJumpToday} · ${todayJumpLabel}`}
+                      >
+                        <span>{copy.calendarQuickJumpToday}</span>
+                        <strong>{todayJumpLabel}</strong>
+                        <small>{copy.calendarQuickJumpSourceLabels.today}</small>
+                      </button>
+                      <button
+                        type="button"
+                        className={[
+                          'ghost-button',
+                          'ghost-button-subtle',
+                          'calendar-jump-button',
+                          nearestCalendarJumpTarget &&
+                          effectiveMonthKey === nearestCalendarJumpTarget.monthKey &&
+                          effectiveSelectedDayIso === nearestCalendarJumpTarget.isoDate
+                            ? 'calendar-jump-button-active'
+                            : '',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')}
+                        onClick={() => handleQuickJump(nearestCalendarJumpTarget)}
+                        disabled={!nearestCalendarJumpTarget}
+                        aria-label={`${copy.calendarQuickJumpNearest} · ${nearestJumpLabel}`}
+                      >
+                        <span>{copy.calendarQuickJumpNearest}</span>
+                        <strong>{nearestJumpLabel}</strong>
+                        <small>{nearestJumpSourceLabel}</small>
+                      </button>
+                    </div>
+                    <div className="calendar-controls">
+                      <button
+                        type="button"
+                        className="ghost-button"
+                        onClick={() =>
+                          setSelectedMonthKey(visibleMonthKeys[Math.max(monthIndex - 1, 0)] ?? effectiveMonthKey)
+                        }
+                        disabled={monthIndex <= 0}
+                      >
+                        {copy.prev}
+                      </button>
+                      <button
+                        type="button"
+                        className="ghost-button"
+                        onClick={() =>
+                          setSelectedMonthKey(
+                            visibleMonthKeys[Math.min(monthIndex + 1, visibleMonthKeys.length - 1)] ??
+                              effectiveMonthKey,
+                          )
+                        }
+                        disabled={monthIndex === -1 || monthIndex >= visibleMonthKeys.length - 1}
+                      >
+                        {copy.next}
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -7119,8 +7239,12 @@ function getLatestMonthKey(rows: VerifiedRelease[]) {
   return getMonthKeys(rows).at(-1) ?? getMonthKey(new Date())
 }
 
-function getVisibleMonthKeys(releaseRows: VerifiedRelease[], upcomingRows: DatedUpcomingSignal[]) {
-  return getMonthKeys([...releaseRows, ...upcomingRows])
+function getVisibleMonthKeys(
+  releaseRows: VerifiedRelease[],
+  upcomingRows: DatedUpcomingSignal[],
+  extraMonthKeys: string[] = [],
+) {
+  return Array.from(new Set([...getMonthKeys([...releaseRows, ...upcomingRows]), ...extraMonthKeys])).sort()
 }
 
 function readInitialLanguage(): Language {
@@ -7185,6 +7309,22 @@ function getMonthKey(date: Date) {
   const year = date.getFullYear()
   const month = `${date.getMonth() + 1}`.padStart(2, '0')
   return `${year}-${month}`
+}
+
+function pickClosestIsoDate(isoDates: string[], referenceIso: string) {
+  if (!isoDates.length || !isExactDate(referenceIso)) {
+    return ''
+  }
+
+  const referenceValue = parseDateValue(referenceIso)
+  return [...isoDates].sort((left, right) => {
+    const distanceCompare = Math.abs(parseDateValue(left) - referenceValue) - Math.abs(parseDateValue(right) - referenceValue)
+    if (distanceCompare !== 0) {
+      return distanceCompare
+    }
+
+    return parseDateValue(left) - parseDateValue(right)
+  })[0]
 }
 
 function getSourceDomain(sourceUrl: string) {
