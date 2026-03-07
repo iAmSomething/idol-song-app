@@ -24,13 +24,16 @@
 6. `migration-operations-runbook.md`
    - schema/import/dual-write/projection/verification/fallback 운영 절차
    - high-risk cutover / rollback checklist
-7. `json-snapshot-demotion.md`
+7. `web-cutover-rollback-drills.md`
+   - search/entity/release/calendar/radar surface별 rollback drill 계획
+   - representative drill timing과 user-facing effect 요약
+8. `json-snapshot-demotion.md`
    - cut-over surface에서 JSON을 fallback/debug/export로 강등하는 runtime / delivery 규칙
    - Pages build, query override, emergency fallback window 운영 기준
-8. `shared-read-api-contracts.md`
+9. `shared-read-api-contracts.md`
    - calendar, search, entity detail, release detail, radar용 shared read contract
    - server-side derived field와 client-side allowed logic 구분
-9. `backend-migration-epic.md`
+10. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
 
@@ -41,10 +44,11 @@
 3. `preview-staging-backend-path.md`
 4. `migration-operations-runbook.md`
 5. `migration-runtime-gates.md`
-6. `json-snapshot-demotion.md`
-7. `shared-read-api-contracts.md`
-8. `phased-rollout-plan.md`
-9. `backend-migration-epic.md`
+6. `web-cutover-rollback-drills.md`
+7. `json-snapshot-demotion.md`
+8. `shared-read-api-contracts.md`
+9. `phased-rollout-plan.md`
+10. `backend-migration-epic.md`
 
 ## 원칙
 
