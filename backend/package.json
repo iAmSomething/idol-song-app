@@ -1,0 +1,12 @@
+{
+  "name": "idol-song-app-backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "migrate:apply": "node ./scripts/apply-migration.mjs ./sql/migrations/0001_canonical_schema.sql",
+    "schema:verify": "node ./scripts/verify-canonical-schema.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.13.3"
+  }
+}

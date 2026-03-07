@@ -117,6 +117,11 @@ python build_release_change_log.py
 python -m unittest test_youtube_mv_candidate_scoring.py
 ```
 
+### 백엔드 migration baseline
+
+- migration location: `backend/sql/migrations/`
+- run note: `backend/sql/README.md`
+
 Hydration dry-run 예시:
 
 ```bash

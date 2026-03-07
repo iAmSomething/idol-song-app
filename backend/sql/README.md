@@ -1,0 +1,34 @@
+# SQL Migration Run Note
+
+이 디렉터리는 Neon canonical schema baseline migration을 둔다.
+
+## 위치
+
+- migration folder: `backend/sql/migrations/`
+- current baseline: `backend/sql/migrations/0001_canonical_schema.sql`
+
+## 요구사항
+
+- `DATABASE_URL` 환경 변수
+- Node.js
+- `backend/package.json`에 정의된 `pg` dependency
+
+## 권장 실행 순서
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+cd backend
+npm install
+npm run migrate:apply
+npm run schema:verify
+```
+
+## 규칙
+
+- migration은 plain SQL 파일을 추가 번호로 누적한다.
+- apply helper는 `schema_migrations` 메타 테이블로 재적용을 막는다.
+- direct connection string인 `DATABASE_URL`을 우선 사용한다.
+- pooler URL은 migration보다 read traffic 용도에 가깝다.
