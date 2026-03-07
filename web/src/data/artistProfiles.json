@@ -1691,5 +1691,20 @@
     "search_aliases": [
       "싸이커스"
     ]
+  },
+  {
+    "slug": "yena",
+    "group": "YENA",
+    "display_name": "YENA",
+    "aliases": [],
+    "agency": null,
+    "official_youtube_url": "https://www.youtube.com/@yena_official",
+    "official_x_url": "https://x.com/YENA_OFFICIAL",
+    "official_instagram_url": "https://www.instagram.com/yena.jigumina/",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "최예나"
+    ]
   }
 ]
