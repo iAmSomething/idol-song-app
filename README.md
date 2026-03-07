@@ -125,6 +125,7 @@ source ~/.config/idol-song-app/neon.env
 set +a
 
 python3 -m pip install -r backend/requirements-import.txt
+python3 sync_upcoming_pipeline_to_neon.py
 python3 sync_release_pipeline_to_neon.py
 ```
 
@@ -132,6 +133,7 @@ python3 sync_release_pipeline_to_neon.py
 
 - migration location: `backend/sql/migrations/`
 - run note: `backend/sql/README.md`
+- upcoming dual-write report: `backend/reports/upcoming_pipeline_db_sync_summary.json`
 - projection refresh report: `backend/reports/projection_refresh_summary.json`
 
 Hydration dry-run 예시:

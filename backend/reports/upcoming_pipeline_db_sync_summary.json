@@ -1,0 +1,118 @@
+{
+  "generated_at": "2026-03-07T08:21:49.354868+00:00",
+  "source_counts": {
+    "artist_profiles": 116,
+    "youtube_allowlists": 108,
+    "release_details": 117,
+    "release_history_groups": 115,
+    "release_history_rows": 1767,
+    "release_artwork": 117,
+    "upcoming_candidates": 71,
+    "watchlist": 116,
+    "release_detail_overrides": 67,
+    "manual_review_queue": 67,
+    "mv_manual_review_queue": 34,
+    "releases_rollup": 80
+  },
+  "source_duplicates": {
+    "entity_aliases": 1,
+    "youtube_channels": 25,
+    "upcoming_signals": 12
+  },
+  "dropped_records": {},
+  "dropped_missing_fk_samples": {},
+  "unresolved_release_mappings": [],
+  "unresolved_review_links": [],
+  "entity_type_counts": {
+    "group": 104,
+    "project": 1,
+    "unit": 4,
+    "solo": 7
+  },
+  "samples": {
+    "entities": [
+      "and-team",
+      "g-i-dle",
+      "82major",
+      "8turn",
+      "ab6ix"
+    ],
+    "releases": [
+      "&TEAM | 2022-11-21 | song | Under the skin",
+      "&TEAM | 2022-12-06 | album | First Howling : ME",
+      "&TEAM | 2023-05-07 | song | Blind Love",
+      "&TEAM | 2023-06-14 | album | First Howling : WE",
+      "&TEAM | 2023-11-15 | album | First Howling : NOW"
+    ],
+    "upcoming_signals": [
+      "BABYMONSTER’s B-Side Track From Two Years Ago Makes a Reverse Chart Run… Reappears on ‘M Countdown’ → Live Clip Released",
+      "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”",
+      "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed",
+      "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed",
+      "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing"
+    ],
+    "review_tasks": [
+      "upcoming_signal",
+      "upcoming_signal",
+      "upcoming_signal",
+      "upcoming_signal",
+      "upcoming_signal"
+    ]
+  },
+  "scope": "upcoming_pipeline",
+  "stale_pruned": {
+    "review_tasks": 0,
+    "upcoming_signals_deactivated": 71,
+    "upcoming_signal_sources_deleted": 71
+  },
+  "operation_counts": {
+    "entities": {
+      "updated": 116
+    },
+    "entity_aliases": {
+      "updated": 166
+    },
+    "entity_official_links": {
+      "updated": 425
+    },
+    "upcoming_signals": {
+      "inserted": 59
+    },
+    "upcoming_signal_sources": {
+      "inserted": 71
+    },
+    "entity_tracking_state": {
+      "updated": 116
+    },
+    "review_tasks": {
+      "updated": 67
+    }
+  },
+  "db_row_counts": {
+    "upcoming_signals": 130,
+    "upcoming_signal_sources": 71,
+    "entity_tracking_state": 116,
+    "review_tasks": 101
+  },
+  "critical_checks": {
+    "active_upcoming_by_precision": {
+      "exact": 6,
+      "month_only": 14,
+      "unknown": 39
+    },
+    "manual_review_task_types": {
+      "entity_onboarding": 3,
+      "upcoming_signal": 64
+    }
+  },
+  "summary_path": "backend/reports/upcoming_pipeline_db_sync_summary.json",
+  "table_source_counts": {
+    "entities": 116,
+    "entity_aliases": 166,
+    "entity_official_links": 425,
+    "upcoming_signals": 59,
+    "upcoming_signal_sources": 71,
+    "entity_tracking_state": 116,
+    "review_tasks": 67
+  }
+}

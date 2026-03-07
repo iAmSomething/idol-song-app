@@ -25,12 +25,13 @@ from import_json_to_neon import (
     UPCOMING_CANDIDATES_PATH,
     WATCHLIST_PATH,
     YOUTUBE_ALLOWLISTS_PATH,
+    build_upcoming_rows,
     load_json,
-    make_signal_dedupe_key,
     normalize_text,
     normalize_url,
     optional_text,
     parse_exact_date,
+    stable_uuid,
 )
 
 
@@ -155,15 +156,25 @@ def build_source_latest_release_maps(group_to_slug: Dict[str, str]) -> Tuple[Dic
 
 def build_source_upcoming_summary(group_to_slug: Dict[str, str]) -> Dict[str, Any]:
     rows = load_json(UPCOMING_CANDIDATES_PATH)
+    entity_ids = {group: stable_uuid("entity", slug) for group, slug in group_to_slug.items()}
+    entity_id_to_slug = {entity_id: slug for group, slug in group_to_slug.items() for entity_id in [entity_ids[group]]}
+    import_summary = {
+        "source_duplicates": Counter(),
+        "dropped_records": Counter(),
+        "dropped_missing_fk_samples": {},
+        "unresolved_release_mappings": [],
+        "unresolved_review_links": [],
+    }
+    signal_rows, _, _ = build_upcoming_rows(rows, entity_ids, import_summary)
     precision_counts = Counter()
     future_exact = []
     month_buckets = {"exact": Counter(), "month_only": Counter()}
 
-    for row in rows:
+    for row in signal_rows:
         precision = row["date_precision"]
         precision_counts[precision] += 1
-        scheduled_date = optional_text(row.get("scheduled_date"))
-        scheduled_month = optional_text(row.get("scheduled_month"))
+        scheduled_date = row.get("scheduled_date").isoformat() if row.get("scheduled_date") is not None else None
+        scheduled_month = row.get("scheduled_month").isoformat()[:7] if row.get("scheduled_month") is not None else None
 
         if precision == "exact" and scheduled_date:
             month_buckets["exact"][scheduled_date[:7]] += 1
@@ -171,20 +182,21 @@ def build_source_upcoming_summary(group_to_slug: Dict[str, str]) -> Dict[str, An
             if parsed and parsed >= TODAY:
                 future_exact.append(
                     {
-                        "slug": group_to_slug[row["group"]],
+                        "slug": entity_id_to_slug.get(row["entity_id"]),
                         "scheduled_date": scheduled_date,
                         "headline": row["headline"],
-                        "confidence": row.get("confidence") or 0,
+                        "confidence": row.get("confidence_score") or 0,
                     }
                 )
         elif precision == "month_only" and scheduled_month:
-            month_buckets["month_only"][scheduled_month[:7]] += 1
+            month_buckets["month_only"][scheduled_month] += 1
 
+    future_exact = [item for item in future_exact if item["slug"] is not None]
     future_exact.sort(key=lambda item: (item["scheduled_date"], -item["confidence"], item["slug"]))
     nearest = future_exact[0] if future_exact else None
 
     return {
-        "total": len(rows),
+        "total": len(signal_rows),
         "precision_counts": dict(precision_counts),
         "future_exact_count": len(future_exact),
         "nearest_exact": nearest,
@@ -378,6 +390,7 @@ def fetch_db_snapshot() -> Dict[str, Any]:
                 select e.slug, us.headline, us.scheduled_date::text, us.scheduled_month::text, us.date_precision, us.confidence_score
                 from upcoming_signals us
                 join entities e on e.id = us.entity_id
+                where us.is_active = true
                 order by e.slug, us.headline
                 """
             )
