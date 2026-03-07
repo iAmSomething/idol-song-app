@@ -66,3 +66,30 @@ python3 import_json_to_neon.py
   - `release_detail_overrides.json`
   - `manual_review_queue.json`
   - `mv_manual_review_queue.json`
+
+## Backend vs JSON Parity Report
+
+import 이후 또는 projection refresh 이후 현재 backend state와 shipped JSON baseline을 비교하려면 아래 명령을 사용한다.
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+python3 -m pip install -r backend/requirements-import.txt
+python3 build_backend_json_parity_report.py
+```
+
+기본 보고서 출력:
+
+- `backend/reports/backend_json_parity_report.json`
+
+현재 parity scope:
+
+- alias / search coverage
+- official links / YouTube allowlist coverage
+- latest verified release selection
+- upcoming counts / nearest upcoming / exact vs month-only separation
+- title-track / double-title 표현
+- YouTube Music / YouTube MV service-link state
+- review-required counts

@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-03-07T07:38:47.525631+00:00",
+  "clean": false,
+  "summary_lines": [
+    "entity alias/search coverage: clean (mismatched entities=0)",
+    "official links: clean (mismatched entities=0)",
+    "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
+    "latest verified release selection: drift (tracking mismatches=0, stream mismatches=3)",
+    "upcoming counts / nearest: clean (month bucket mismatches=0)",
+    "title-track / double-title: clean (mismatched releases=0)",
+    "YouTube Music / MV service-link state: clean (mismatched releases=0)",
+    "review-required counts: clean (review_type_counts_match=True, youtube_mv_status_counts_match=True)"
+  ],
+  "source_snapshot_counts": {
+    "artist_profiles": 116,
+    "youtube_allowlists": 108,
+    "release_details": 117,
+    "upcoming_candidates": 71,
+    "watchlist": 116,
+    "manual_review_queue": 67,
+    "mv_manual_review_queue": 34
+  },
+  "checks": {
+    "entity_alias_search_coverage": {
+      "source_entity_count": 116,
+      "db_entity_count": 116,
+      "mismatched_entities_count": 0,
+      "mismatches": [],
+      "clean": true
+    },
+    "official_links": {
+      "mismatched_entities_count": 0,
+      "mismatches": [],
+      "clean": true
+    },
+    "youtube_allowlists": {
+      "role_mismatches_count": 0,
+      "metadata_mismatches_count": 0,
+      "role_mismatches": [],
+      "metadata_mismatches": [],
+      "clean": true
+    },
+    "latest_verified_release_selection": {
+      "tracking_mismatches_count": 0,
+      "tracking_mismatches": [],
+      "stream_mismatches_count": 3,
+      "stream_mismatches": [
+        {
+          "entity_slug": "blackpink",
+          "stream": "album",
+          "source": "blackpink|deadline|2026-02-26|album",
+          "db": "blackpink|deadline|2026-02-27|album"
+        },
+        {
+          "entity_slug": "h1-key",
+          "stream": "album",
+          "source": "h1-key|lovestruck|2025-06-26|album",
+          "db": "h1-key|lovechapter|2026-03-05|album"
+        },
+        {
+          "entity_slug": "le-sserafim",
+          "stream": "song",
+          "source": "le-sserafim|spaghetti|2025-10-24|song",
+          "db": "le-sserafim|pearlies my oyster is the world|2025-10-24|song"
+        }
+      ],
+      "clean": false
+    },
+    "upcoming_counts_and_nearest": {
+      "source": {
+        "total": 71,
+        "precision_counts": {
+          "exact": 7,
+          "month_only": 21,
+          "unknown": 43
+        },
+        "future_exact_count": 7,
+        "nearest_exact": {
+          "slug": "yena",
+          "scheduled_date": "2026-03-11",
+          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+          "confidence": 0.84
+        },
+        "month_buckets": {
+          "exact": {
+            "2026-03": 4,
+            "2026-04": 3
+          },
+          "month_only": {
+            "2026-03": 10,
+            "2026-04": 11
+          }
+        }
+      },
+      "db": {
+        "total": 71,
+        "precision_counts": {
+          "month_only": 21,
+          "unknown": 43,
+          "exact": 7
+        },
+        "future_exact_count": 7,
+        "nearest_exact": {
+          "slug": "yena",
+          "scheduled_date": "2026-03-11",
+          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+          "confidence": 0.84
+        },
+        "month_buckets": {
+          "exact": {
+            "2026-03": 4,
+            "2026-04": 3
+          },
+          "month_only": {
+            "2026-03": 10,
+            "2026-04": 11
+          }
+        }
+      },
+      "total_matches": true,
+      "precision_matches": true,
+      "future_exact_matches": true,
+      "nearest_exact_matches": true,
+      "month_bucket_mismatches_count": 0,
+      "month_bucket_mismatches": [],
+      "clean": true
+    },
+    "title_tracks_and_double_title": {
+      "mismatched_releases_count": 0,
+      "source_double_title_releases": 1,
+      "db_double_title_releases": 1,
+      "mismatches": [],
+      "clean": true
+    },
+    "release_service_links": {
+      "mismatched_release_services_count": 0,
+      "mismatches": [],
+      "clean": true
+    },
+    "review_required_counts": {
+      "source_review_type_counts": {
+        "upcoming_signal": 64,
+        "entity_onboarding": 3,
+        "mv_candidate": 34
+      },
+      "db_review_type_counts": {
+        "entity_onboarding": 3,
+        "mv_candidate": 34,
+        "upcoming_signal": 64
+      },
+      "source_youtube_mv_status_counts": {
+        "manual_override": 25,
+        "unresolved": 89,
+        "relation_match": 1,
+        "needs_review": 2
+      },
+      "db_youtube_mv_status_counts": {
+        "manual_override": 25,
+        "unresolved": 89,
+        "relation_match": 1,
+        "needs_review": 2
+      },
+      "review_type_counts_match": true,
+      "youtube_mv_status_counts_match": true,
+      "clean": true
+    }
+  }
+}
