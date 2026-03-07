@@ -235,3 +235,44 @@ npm run shadow:verify
 - title-track / MV-state drift
 - radar eligibility drift
 - field-shape mismatches
+
+## Runtime Gate Evidence
+
+cutover go/no-go에 필요한 runtime evidence는 아래 세 단계로 만든다.
+
+1. read API latency / error sample
+
+```bash
+cd backend
+npm run runtime:measure -- --base-url http://127.0.0.1:3213 --iterations 5
+```
+
+기본 보고서 출력:
+
+- `backend/reports/read_api_runtime_measurements.json`
+
+2. worker cadence sample
+
+```bash
+cd backend
+npm run worker:cadence -- --workflow weekly-kpop-scan.yml --limit 12
+```
+
+기본 보고서 출력:
+
+- `backend/reports/worker_cadence_report.json`
+
+3. combined runtime gate report
+
+```bash
+cd backend
+npm run runtime:gate
+```
+
+기본 보고서 출력:
+
+- `backend/reports/runtime_gate_report.json`
+
+gate 정의와 stage mapping은 아래 문서를 따른다.
+
+- `docs/specs/backend/migration-runtime-gates.md`

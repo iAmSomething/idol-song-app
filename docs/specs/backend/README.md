@@ -18,10 +18,13 @@
 4. `preview-staging-backend-path.md`
    - preview Neon / API / worker rehearsal 경로
    - preview와 production에서 달라도 되는 것과 안 되는 것
-5. `shared-read-api-contracts.md`
+5. `migration-runtime-gates.md`
+   - latency / error / freshness / cadence gate 정의
+   - cutover go/no-go에 쓰는 combined runtime report 규칙
+6. `shared-read-api-contracts.md`
    - calendar, search, entity detail, release detail, radar용 shared read contract
    - server-side derived field와 client-side allowed logic 구분
-6. `backend-migration-epic.md`
+7. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
 
@@ -30,9 +33,10 @@
 1. `canonical-backend-data-model.md`
 2. `runtime-and-service-boundaries.md`
 3. `preview-staging-backend-path.md`
-4. `shared-read-api-contracts.md`
-5. `phased-rollout-plan.md`
-6. `backend-migration-epic.md`
+4. `migration-runtime-gates.md`
+5. `shared-read-api-contracts.md`
+6. `phased-rollout-plan.md`
+7. `backend-migration-epic.md`
 
 ## 원칙
 

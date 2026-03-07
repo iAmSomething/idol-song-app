@@ -180,6 +180,7 @@ rollback:
 - calendar/search/entity/release/radar shadow endpoint 제공
 - 현재 웹 selector 결과와 API payload 비교
 - latency, error rate, freshness baseline 수집
+- runtime gate report로 cutover 증거를 남긴다
 
 운영 규칙:
 
@@ -191,6 +192,7 @@ rollback:
 - major surface parity가 허용 범위 안에 있다.
 - p95 latency와 error rate가 기본 목표를 충족한다.
 - refresh 이후 projection lag가 허용 범위 안에 있다.
+- runtime gate report가 `shadow -> web cutover` 기준에서 `pass` 또는 허용된 `needs_review`다
 
 rollback:
 
@@ -228,6 +230,7 @@ surface별 종료 게이트:
 - accepted parity gap 문서화
 - latency와 freshness가 허용 범위 안
 - error fallback이 실제 동작
+- runtime gate report가 해당 surface 기준으로 허용 범위 안
 
 rollback:
 
@@ -250,6 +253,7 @@ rollback:
 - web이 안정적으로 API primary read를 사용한다.
 - backend refresh pipeline과 projection refresh가 일상 운영 수준으로 안정적이다.
 - emergency fallback 외에는 JSON snapshot이 운영에 필요하지 않다.
+- runtime gate report가 `web cutover -> JSON demotion` 기준을 충족한다
 
 rollback:
 
