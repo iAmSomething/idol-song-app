@@ -194,6 +194,12 @@ v1에서는 dedicated blob storage를 도입하지 않는다.
 - shadow endpoint check
 - parity / freshness rehearsal
 
+운영 baseline:
+
+- preview env template는 `backend/.env.preview.example`
+- production env template는 `backend/.env.production.example`
+- rehearsal runbook은 `preview-staging-backend-path.md`
+
 ### 6.3 Production
 
 - production Neon branch or database

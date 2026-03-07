@@ -15,10 +15,13 @@
 3. `runtime-and-service-boundaries.md`
    - Neon / Fastify / Railway worker / GitHub Pages 기준의 runtime baseline
    - database, read API, worker, transitional GitHub delivery의 boundary
-4. `shared-read-api-contracts.md`
+4. `preview-staging-backend-path.md`
+   - preview Neon / API / worker rehearsal 경로
+   - preview와 production에서 달라도 되는 것과 안 되는 것
+5. `shared-read-api-contracts.md`
    - calendar, search, entity detail, release detail, radar용 shared read contract
    - server-side derived field와 client-side allowed logic 구분
-5. `backend-migration-epic.md`
+6. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
 
@@ -26,9 +29,10 @@
 
 1. `canonical-backend-data-model.md`
 2. `runtime-and-service-boundaries.md`
-3. `shared-read-api-contracts.md`
-4. `phased-rollout-plan.md`
-5. `backend-migration-epic.md`
+3. `preview-staging-backend-path.md`
+4. `shared-read-api-contracts.md`
+5. `phased-rollout-plan.md`
+6. `backend-migration-epic.md`
 
 ## 원칙
 

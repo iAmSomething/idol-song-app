@@ -6,6 +6,8 @@
 
 - `src/`
   - Fastify read API skeleton
+- `.env.preview.example`, `.env.production.example`
+  - preview / production runtime config baseline
 - `reports/`
   - import / dual-write / projection refresh / parity summary artifact
 - `sql/migrations/`
@@ -35,6 +37,33 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 - ORM이나 무거운 migration framework는 도입하지 않는다.
 - 정본 schema는 plain SQL로 관리한다.
 - apply / verify 도구는 SQL 실행 보조에만 사용한다.
+
+## Preview / Staging Baseline
+
+preview rehearsal은 production과 분리된 DB / API / worker 경로를 기준으로 진행한다.
+
+- env template:
+  - `backend/.env.preview.example`
+  - `backend/.env.production.example`
+- topology / rehearsal runbook:
+  - `docs/specs/backend/preview-staging-backend-path.md`
+
+권장 secret 파일:
+
+- preview: `~/.config/idol-song-app/neon.preview.env`
+- production: `~/.config/idol-song-app/neon.env`
+
+preview에서 달라져도 되는 것:
+
+- dataset size
+- worker cadence
+- log level
+
+preview에서 달라지면 안 되는 것:
+
+- endpoint shape
+- field type / enum domain
+- date precision / MV / service-link semantics
 
 ## JSON Baseline Import
 
