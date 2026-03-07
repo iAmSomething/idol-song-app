@@ -9,8 +9,9 @@
 2. `watchlist.json`
 3. `upcomingCandidates.json`
 4. `artistProfiles.json`
-5. `releaseArtwork.json`
-6. `releaseDetails.json`
+5. `youtubeChannelAllowlists.json`
+6. `releaseArtwork.json`
+7. `releaseDetails.json`
 
 ## 3. 공통 파생 모델
 
@@ -22,6 +23,7 @@
 - `representative_image_url?`
 - `agency?`
 - `official_youtube_url?`
+- `youtube_channel_allowlist?`
 - `official_x_url?`
 - `official_instagram_url?`
 
@@ -80,17 +82,22 @@
 2. placeholder
 
 ### 4.4 팀 공식 링크
-- YouTube: `official_youtube_url`
+- YouTube: `youtubeChannelAllowlists.primary_team_channel_url` -> fallback `official_youtube_url`
 - X: `official_x_url`
 - Instagram: `official_instagram_url`
 - 없으면 해당 버튼 숨김
 
-### 4.5 릴리즈 커버
+### 4.5 MV official-source 경계
+- `youtubeChannelAllowlists.mv_allowlist_urls`를 canonical MV uploader allowlist로 사용한다.
+- 팀 channel과 label-owned channel을 함께 표현할 수 있어야 한다.
+- `channels[].display_in_team_links`는 팀 상세의 first-class YouTube 링크 여부를 결정한다.
+
+### 4.6 릴리즈 커버
 우선순위:
 1. `releaseArtwork.image_url` 또는 equivalent field
 2. placeholder asset
 
-### 4.6 릴리즈 상세
+### 4.7 릴리즈 상세
 우선순위:
 1. `releaseDetails` exact match
 2. fallback generated detail
@@ -122,6 +129,7 @@
 
 ### 5.4 Team Detail Screen
 - 헤더: `artistProfiles.json`
+- YouTube 링크: `youtubeChannelAllowlists.json`
 - 다음 컴백: group 기준 earliest upcoming
 - 최신 발매: `releases.json` 또는 `watchlist.json` 기반 latest release
 - 최근 앨범: group releases filtered by album stream
