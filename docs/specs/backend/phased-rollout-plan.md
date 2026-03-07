@@ -53,7 +53,7 @@
 
 1. [canonical-backend-data-model.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/canonical-backend-data-model.md)
 2. [runtime-and-service-boundaries.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/runtime-and-service-boundaries.md)
-3. `shared read API contracts` 스펙
+3. [shared-read-api-contracts.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/shared-read-api-contracts.md)
 
 이 중 하나라도 잠겨 있지 않으면 rollout phase는 설계만 가능하고 구현 시작은 보류한다.
 

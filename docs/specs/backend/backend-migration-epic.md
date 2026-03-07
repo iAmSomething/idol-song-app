@@ -120,7 +120,8 @@ shared backend platform 방향을 고정하는 것이다.
 - `#144` 완료
 - `#145` 완료
 - `#147` 완료
-- `#148`, `#155`, `#156`, `#157` 진행 전
+- `#148` 완료
+- `#155`, `#156`, `#157` 진행 전
 
 ## 8. Dependency Order
 
@@ -193,5 +194,6 @@ parent epic 검증은 아래 기준으로 본다.
 
 - Canonical model: [canonical-backend-data-model.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/canonical-backend-data-model.md)
 - Runtime baseline: [runtime-and-service-boundaries.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/runtime-and-service-boundaries.md)
+- Shared read contract: [shared-read-api-contracts.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/shared-read-api-contracts.md)
 - Rollout plan: [phased-rollout-plan.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/phased-rollout-plan.md)
 - Existing mobile docs umbrella: `#61`
