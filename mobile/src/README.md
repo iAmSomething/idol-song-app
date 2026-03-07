@@ -8,12 +8,17 @@
   - `runtime.ts`: mobile profile / env validation
 - `features/`: 화면 composition / binding
 - `selectors/`: display model selector / adapter
+  - `context.ts`: dataset -> indexed selector context
+  - `adapters.ts`: raw JSON -> display model 변환 규칙
+  - `index.ts`: shared selectors entrypoint
 - `services/`: data source / external handoff / helper
   - `datasetSource.ts`: bundled-static vs preview-remote source selector
 - `tokens/`: design token / theme
   - `theme.tsx`: theme provider + `useAppTheme()` access convention
   - `colors.ts`, `spacing.ts`, `radii.ts`, `typography.ts`, `sizes.ts`, `elevation.ts`, `motion.ts`
 - `types/`: shared TypeScript model
+  - `displayModels.ts`: screen-facing display model types
+  - `rawData.ts`: current static dataset contract types
 - `utils/`: framework-agnostic helper
   - `assetRegistry.ts`: bundled placeholder/service/badge asset entrypoint
 

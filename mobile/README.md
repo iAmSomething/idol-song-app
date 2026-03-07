@@ -32,6 +32,10 @@
   - bundled static data vs preview remote data selection layer
 - `src/tokens/`
   - semantic token constants + theme provider + `useAppTheme()` access convention
+- `src/selectors/`
+  - raw dataset -> display model selector/adapter scaffold
+- `src/types/`
+  - raw dataset contract type + display model type baseline
 - `src/utils/assetRegistry.ts`
   - local bundled asset lookup entrypoint
 - `eas.json`
@@ -139,6 +143,31 @@ profile 차이는 아래 범위로만 제한한다.
     - `MobileThemeProvider`
     - `useAppTheme()`
 - later components/screens는 raw visual constant 대신 `useAppTheme()` 또는 token module을 통해 값에 접근한다.
+
+## selector / adapter baseline
+
+- entrypoint는 `src/selectors/index.ts`에 둔다.
+- 역할 분리
+  - `src/types/rawData.ts`
+    - 현재 static JSON contract type
+  - `src/types/displayModels.ts`
+    - 화면이 직접 받는 display model type
+  - `src/selectors/context.ts`
+    - raw dataset index/context 생성
+  - `src/selectors/adapters.ts`
+    - nullable field, fallback, derived rule을 display model로 변환
+  - `src/selectors/index.ts`
+    - later screen이 재사용할 shared selector 함수
+- 현재 scaffold selector
+  - `selectTeamSummaryBySlug`
+  - `selectLatestReleaseSummaryBySlug`
+  - `selectRecentReleaseSummariesBySlug`
+  - `selectUpcomingEventsBySlug`
+  - `selectReleaseDetailById`
+- 규칙
+  - 화면은 raw JSON shape를 직접 읽지 않는다.
+  - selector는 fallback을 포함한 최종 display model만 반환한다.
+  - 공통 normalize/id 생성 규칙은 `src/selectors/normalize.ts`에서 공유한다.
 
 ## env / validation 규칙
 
