@@ -44,7 +44,8 @@
 - 출처(optional)
 
 ### 4.6 MV Block
-- `youtube_video_id` 있으면 임베드 또는 바로가기
+- `youtube_video_id` 또는 canonical `youtube_video_url`이 있으면 임베드 또는 바로가기
+- 허용 URL: `youtube.com/watch?v=...`, `youtu.be/...`, `youtube.com/shorts/...`
 - 없으면 블록 전체 숨김
 
 ## 5. 액션 배치 계약
@@ -86,7 +87,7 @@
 - 릴리즈 메타: `releaseDetails.json`
 - 커버: `releaseArtwork.json`
 - 트랙 리스트: `releaseDetails.tracks`
-- MV: `releaseDetails.youtube_video_id`
+- MV: `releaseDetails.youtube_video_id` 또는 `releaseDetails.youtube_video_url`
 - 팀 표기 fallback: `artistProfiles.display_name`
 
 ## 9. 상태 매트릭스
@@ -99,7 +100,7 @@
 | Error | back + retry | 숨김 가능 | 숨김 | 숨김 |
 
 ## 10. MV 규칙
-- `youtube_video_id`가 있으면 MV 블록을 노출한다.
+- `youtube_video_id` 또는 canonical `youtube_video_url`이 있으면 MV 블록을 노출한다.
 - autoplay는 금지한다.
 - MV가 없으면 빈 placeholder를 두지 않고 블록 전체를 숨긴다.
 

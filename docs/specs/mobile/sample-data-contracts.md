@@ -77,6 +77,7 @@
   "release_kind": "album",
   "spotify_url": "https://open.spotify.com/album/...",
   "youtube_music_url": "https://music.youtube.com/browse/...",
+  "youtube_video_url": "https://www.youtube.com/watch?v=abc123xyz",
   "youtube_video_id": "abc123xyz",
   "tracks": [
     {
