@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T08:10:44.002Z",
+  "generated_at": "2026-03-07T10:26:49.197Z",
   "row_counts": {
     "entity_search_documents": 116,
     "calendar_month_projection": 216,
@@ -42,7 +42,7 @@
       "summary": {
         "verified_count": 2,
         "exact_upcoming_count": 4,
-        "month_only_upcoming_count": 10
+        "month_only_upcoming_count": 4
       },
       "nearest_upcoming": {
         "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
@@ -52,7 +52,7 @@
         "date_precision": "exact",
         "scheduled_date": "2026-03-11",
         "confidence_score": 0.84,
-        "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434"
+        "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
       }
     },
     "entity_detail": {
@@ -75,7 +75,7 @@
         "scheduled_date": "2026-03-11",
         "scheduled_month": null,
         "confidence_score": 0.84,
-        "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434"
+        "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
       },
       "recent_albums": [
         {
@@ -173,7 +173,7 @@
         "release_format": "ep",
         "scheduled_date": "2026-03-11",
         "confidence_score": 0.84,
-        "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434"
+        "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
       },
       "weekly_upcoming_count": 2,
       "change_feed_count": 20,

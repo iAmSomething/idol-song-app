@@ -1,0 +1,161 @@
+{
+  "generated_at": "2026-03-07T10:28:30.558Z",
+  "base_url": "http://127.0.0.1:3216",
+  "iterations_per_case": 5,
+  "timeout_ms": 3000,
+  "cases": [
+    {
+      "surface": "health",
+      "label": "health",
+      "request_count": 5,
+      "success_count": 5,
+      "error_count": 0,
+      "error_rate": 0,
+      "status_counts": {
+        "200": 5
+      },
+      "latency_ms": {
+        "avg": 10.26,
+        "p50": 0.65,
+        "p95": 48.03,
+        "max": 48.03
+      },
+      "sample_errors": []
+    },
+    {
+      "surface": "ready",
+      "label": "ready",
+      "request_count": 5,
+      "success_count": 5,
+      "error_count": 0,
+      "error_rate": 0,
+      "status_counts": {
+        "200": 5
+      },
+      "latency_ms": {
+        "avg": 166.04,
+        "p50": 72.77,
+        "p95": 538.77,
+        "max": 538.77
+      },
+      "sample_errors": []
+    },
+    {
+      "surface": "search",
+      "label": "search-yena",
+      "request_count": 5,
+      "success_count": 5,
+      "error_count": 0,
+      "error_rate": 0,
+      "status_counts": {
+        "200": 5
+      },
+      "latency_ms": {
+        "avg": 366.51,
+        "p50": 365.89,
+        "p95": 368.66,
+        "max": 368.66
+      },
+      "sample_errors": []
+    },
+    {
+      "surface": "entity_detail",
+      "label": "entity-yena",
+      "request_count": 5,
+      "success_count": 5,
+      "error_count": 0,
+      "error_rate": 0,
+      "status_counts": {
+        "200": 5
+      },
+      "latency_ms": {
+        "avg": 72.47,
+        "p50": 72.88,
+        "p95": 74.11,
+        "max": 74.11
+      },
+      "sample_errors": []
+    },
+    {
+      "surface": "release_lookup",
+      "label": "release-lookup-blackpink-deadline",
+      "request_count": 5,
+      "success_count": 5,
+      "error_count": 0,
+      "error_rate": 0,
+      "status_counts": {
+        "200": 5
+      },
+      "latency_ms": {
+        "avg": 73.28,
+        "p50": 73.18,
+        "p95": 74.7,
+        "max": 74.7
+      },
+      "sample_errors": []
+    },
+    {
+      "surface": "release_detail",
+      "label": "release-detail-blackpink-deadline",
+      "request_count": 5,
+      "success_count": 5,
+      "error_count": 0,
+      "error_rate": 0,
+      "status_counts": {
+        "200": 5
+      },
+      "latency_ms": {
+        "avg": 72.41,
+        "p50": 72.14,
+        "p95": 74.11,
+        "max": 74.11
+      },
+      "sample_errors": []
+    },
+    {
+      "surface": "calendar_month",
+      "label": "calendar-2026-03",
+      "request_count": 5,
+      "success_count": 5,
+      "error_count": 0,
+      "error_rate": 0,
+      "status_counts": {
+        "200": 5
+      },
+      "latency_ms": {
+        "avg": 73,
+        "p50": 72.21,
+        "p95": 75.94,
+        "max": 75.94
+      },
+      "sample_errors": []
+    },
+    {
+      "surface": "radar",
+      "label": "radar-default",
+      "request_count": 5,
+      "success_count": 5,
+      "error_count": 0,
+      "error_rate": 0,
+      "status_counts": {
+        "200": 5
+      },
+      "latency_ms": {
+        "avg": 72.18,
+        "p50": 71.68,
+        "p95": 73.58,
+        "max": 73.58
+      },
+      "sample_errors": []
+    }
+  ],
+  "overall": {
+    "request_count": 40,
+    "success_count": 40,
+    "error_count": 0,
+    "error_rate": 0,
+    "status_counts": {
+      "200": 40
+    }
+  }
+}
