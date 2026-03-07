@@ -132,6 +132,7 @@ python3 sync_release_pipeline_to_neon.py
 
 - migration location: `backend/sql/migrations/`
 - run note: `backend/sql/README.md`
+- projection refresh report: `backend/reports/projection_refresh_summary.json`
 
 Hydration dry-run 예시:
 

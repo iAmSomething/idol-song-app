@@ -19,6 +19,13 @@ const REQUIRED_TABLES = [
   'review_tasks',
   'release_link_overrides',
 ];
+const REQUIRED_MATERIALIZED_VIEWS = [
+  'entity_search_documents',
+  'calendar_month_projection',
+  'entity_detail_projection',
+  'release_detail_projection',
+  'radar_projection',
+];
 
 const REQUIRED_CONSTRAINTS = [
   ['entities', 'entities_slug_key'],
@@ -70,6 +77,23 @@ async function main() {
       throw new Error(`missing tables: ${missingTables.join(', ')}`);
     }
 
+    const viewRows = await client.query(
+      `
+        select matviewname
+        from pg_matviews
+        where schemaname = 'public'
+          and matviewname = any($1::text[])
+      `,
+      [REQUIRED_MATERIALIZED_VIEWS]
+    );
+
+    const existingViews = new Set(viewRows.rows.map((row) => row.matviewname));
+    const missingViews = REQUIRED_MATERIALIZED_VIEWS.filter((name) => !existingViews.has(name));
+
+    if (missingViews.length > 0) {
+      throw new Error(`missing materialized views: ${missingViews.join(', ')}`);
+    }
+
     const constraintRows = await client.query(
       `
         select table_name, constraint_name
@@ -93,6 +117,7 @@ async function main() {
     }
 
     console.log(`verified tables: ${REQUIRED_TABLES.length}`);
+    console.log(`verified materialized views: ${REQUIRED_MATERIALIZED_VIEWS.length}`);
     console.log(`verified constraints: ${REQUIRED_CONSTRAINTS.length}`);
   } finally {
     await client.end();

@@ -1,0 +1,184 @@
+{
+  "generated_at": "2026-03-07T08:10:44.002Z",
+  "row_counts": {
+    "entity_search_documents": 116,
+    "calendar_month_projection": 216,
+    "entity_detail_projection": 116,
+    "release_detail_projection": 1768,
+    "radar_projection": 1
+  },
+  "samples": {
+    "search": {
+      "aliases": [
+        "YENA",
+        "최예나"
+      ],
+      "agency_name": null,
+      "entity_slug": "yena",
+      "entity_type": "solo",
+      "display_name": "YENA",
+      "next_upcoming": {
+        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+        "date_status": "confirmed",
+        "date_precision": "exact",
+        "scheduled_date": "2026-03-11",
+        "confidence_score": 0.84
+      },
+      "canonical_name": "YENA",
+      "latest_release": {
+        "stream": "song",
+        "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
+        "release_date": "2025-11-26",
+        "release_kind": "single",
+        "release_title": "STAR!"
+      },
+      "normalized_terms": [
+        "yena",
+        "최예나"
+      ]
+    },
+    "calendar": {
+      "month_key": "2026-03",
+      "summary": {
+        "verified_count": 2,
+        "exact_upcoming_count": 4,
+        "month_only_upcoming_count": 10
+      },
+      "nearest_upcoming": {
+        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+        "date_status": "confirmed",
+        "entity_slug": "yena",
+        "display_name": "YENA",
+        "date_precision": "exact",
+        "scheduled_date": "2026-03-11",
+        "confidence_score": 0.84,
+        "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434"
+      }
+    },
+    "entity_detail": {
+      "identity": {
+        "debut_year": null,
+        "agency_name": null,
+        "entity_slug": "yena",
+        "entity_type": "solo",
+        "display_name": "YENA",
+        "canonical_name": "YENA",
+        "badge_image_url": null,
+        "representative_image_url": null
+      },
+      "next_upcoming": {
+        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+        "date_status": "confirmed",
+        "date_precision": "exact",
+        "latest_seen_at": "2026-02-23T05:58:00+00:00",
+        "release_format": "ep",
+        "scheduled_date": "2026-03-11",
+        "scheduled_month": null,
+        "confidence_score": 0.84,
+        "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434"
+      },
+      "recent_albums": [
+        {
+          "stream": "album",
+          "release_id": "801052f3-72e8-5b48-b401-1b0aec55a955",
+          "release_date": "2025-07-29",
+          "release_kind": "ep",
+          "release_title": "Blooming Wings"
+        },
+        {
+          "stream": "album",
+          "release_id": "b18e824c-d318-5848-9b08-7341982cca31",
+          "release_date": "2024-01-15",
+          "release_kind": "ep",
+          "release_title": "GOOD MORNING"
+        },
+        {
+          "stream": "album",
+          "release_id": "6f634529-e1db-506a-b4fc-f5565b54beb3",
+          "release_date": "2022-08-03",
+          "release_kind": "ep",
+          "release_title": "SMARTPHONE"
+        },
+        {
+          "stream": "album",
+          "release_id": "cc26984b-ed23-5e96-9bbd-8364ce7c037b",
+          "release_date": "2022-01-17",
+          "release_kind": "ep",
+          "release_title": "ˣ‿ˣ (SMiLEY)"
+        }
+      ],
+      "latest_release": {
+        "stream": "song",
+        "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
+        "release_date": "2025-11-26",
+        "release_kind": "single",
+        "release_title": "STAR!"
+      },
+      "official_links": {
+        "x": "https://x.com/YENA_OFFICIAL",
+        "youtube": "https://www.youtube.com/@yena_official",
+        "instagram": "https://www.instagram.com/yena.jigumina"
+      },
+      "tracking_state": {
+        "tier": "longtail",
+        "watch_reason": "manual_watch",
+        "tracking_status": "watch_only"
+      },
+      "source_timeline": [
+        {
+          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "date_status": "confirmed",
+          "source_type": "news_rss",
+          "published_at": "2026-02-23T05:58:00+00:00",
+          "source_domain": "starnewskorea.com",
+          "date_precision": "exact",
+          "release_format": "ep",
+          "scheduled_date": "2026-03-11",
+          "scheduled_month": null,
+          "confidence_score": 0.84
+        }
+      ],
+      "youtube_channels": {
+        "mv_allowlist_urls": [],
+        "primary_team_channel_url": null
+      },
+      "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
+    },
+    "release_detail": {
+      "release": {
+        "stream": "album",
+        "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
+        "entity_slug": "blackpink",
+        "display_name": "BLACKPINK",
+        "release_date": "2026-02-26",
+        "release_kind": "ep",
+        "release_title": "DEADLINE"
+      },
+      "mv": {
+        "url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
+        "status": "manual_override",
+        "video_id": "2GJfWMYCWY0",
+        "provenance": "official artist channel watch URL"
+      },
+      "title_track_count": 1
+    },
+    "radar": {
+      "featured_upcoming": {
+        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+        "date_status": "confirmed",
+        "entity_slug": "yena",
+        "display_name": "YENA",
+        "date_precision": "exact",
+        "release_format": "ep",
+        "scheduled_date": "2026-03-11",
+        "confidence_score": 0.84,
+        "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434"
+      },
+      "weekly_upcoming_count": 2,
+      "change_feed_count": 20,
+      "long_gap_count": 2,
+      "rookie_count": 7
+    }
+  }
+}
