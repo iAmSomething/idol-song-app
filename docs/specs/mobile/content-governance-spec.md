@@ -59,6 +59,19 @@
   - `tracking_watchlist.json`과 `web/src/data/watchlist.json`의 최소 watchlist row
 - verified release나 upcoming fact가 아직 없어도, team search와 team navigation이 되도록 profile/watchlist 기준 엔트리를 우선 연다.
 
+## 6.b Solo Artist Inclusion
+- 솔로 아티스트도 K-pop release/upcoming 탐색 대상이면 group/unit와 같은 tracked entity로 취급한다.
+- 우선 포함 기준은 아래를 모두 만족하는 경우다.
+  - K-pop idol ecosystem 안에서 활동하는 명확한 stage name이 있다.
+  - 국내 사용자가 실제로 검색할 영어명 또는 한글명이 있다.
+  - onboarding 시점에 방어 가능한 official link를 최소 1개 이상 붙일 수 있다.
+- 아래 케이스는 기본 포함 대상에서 제외한다.
+  - 배우/예능인 중심으로만 소비되고 music-tracking 목적이 약한 케이스
+  - OST/feature 중심으로만 드문드문 등장해 독립 comeback tracking 가치가 낮은 케이스
+  - official identity link가 전혀 없어 name-only placeholder밖에 만들 수 없는 케이스
+- 솔로 아티스트 onboarding 최소 세트는 team missing triage와 동일하되, `search_aliases`에는 Korean-searchable 표기를 반드시 1개 이상 넣는다.
+- 2026-03-07 초기 pass 기준 tracked solo set은 `YENA`, `CHUU`, `Yves`, `JEON SOMI`, `KWON EUNBI`, `CHUNG HA`, `YUJU`를 포함한다.
+
 ## 7. 브랜드 자산 운영 원칙
 - 공식 배지/대표 이미지가 있으면 우선 사용
 - 없으면 representative image

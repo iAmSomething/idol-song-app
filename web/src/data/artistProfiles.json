@@ -80,6 +80,96 @@
     ]
   },
   {
+    "slug": "chung-ha",
+    "group": "CHUNG HA",
+    "display_name": "CHUNG HA",
+    "aliases": [],
+    "agency": null,
+    "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
+    "official_x_url": null,
+    "official_instagram_url": "https://www.instagram.com/chungha.art/",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "청하"
+    ]
+  },
+  {
+    "slug": "chuu",
+    "group": "CHUU",
+    "display_name": "CHUU",
+    "aliases": [],
+    "agency": null,
+    "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
+    "official_x_url": null,
+    "official_instagram_url": "https://www.instagram.com/chuuo3o/",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "츄"
+    ]
+  },
+  {
+    "slug": "jeon-somi",
+    "group": "JEON SOMI",
+    "display_name": "JEON SOMI",
+    "aliases": [],
+    "agency": null,
+    "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
+    "official_x_url": null,
+    "official_instagram_url": "https://www.instagram.com/somsomi0309/",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "전소미"
+    ]
+  },
+  {
+    "slug": "kwon-eunbi",
+    "group": "KWON EUNBI",
+    "display_name": "KWON EUNBI",
+    "aliases": [],
+    "agency": null,
+    "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
+    "official_x_url": null,
+    "official_instagram_url": "https://www.instagram.com/silver_rain.__/",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "권은비"
+    ]
+  },
+  {
+    "slug": "yuju",
+    "group": "YUJU",
+    "display_name": "YUJU",
+    "aliases": [],
+    "agency": null,
+    "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
+    "official_x_url": null,
+    "official_instagram_url": "https://www.instagram.com/yuuzth/",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "유주"
+    ]
+  },
+  {
+    "slug": "yves",
+    "group": "Yves",
+    "display_name": "Yves",
+    "aliases": [],
+    "agency": null,
+    "official_youtube_url": "https://www.youtube.com/@YVES_OFFICIAL",
+    "official_x_url": null,
+    "official_instagram_url": "https://www.instagram.com/yvesntual/",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "이브"
+    ]
+  },
+  {
     "slug": "all-h-ours",
     "group": "ALL(H)OURS",
     "display_name": "ALL(H)OURS",

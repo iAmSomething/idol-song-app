@@ -70,6 +70,102 @@
     ]
   },
   {
+    "group": "CHUNG HA",
+    "tier": "longtail",
+    "watch_reason": "manual_watch",
+    "tracking_status": "watch_only",
+    "latest_release_title": "",
+    "latest_release_date": "",
+    "latest_release_kind": "",
+    "x_url": "",
+    "instagram_url": "https://www.instagram.com/chungha.art/",
+    "search_terms": [
+      "\"CHUNG HA\" kpop comeback",
+      "\"청하\" 컴백",
+      "\"CHUNG HA\" teaser"
+    ]
+  },
+  {
+    "group": "CHUU",
+    "tier": "longtail",
+    "watch_reason": "manual_watch",
+    "tracking_status": "watch_only",
+    "latest_release_title": "",
+    "latest_release_date": "",
+    "latest_release_kind": "",
+    "x_url": "",
+    "instagram_url": "https://www.instagram.com/chuuo3o/",
+    "search_terms": [
+      "\"CHUU\" kpop comeback",
+      "\"츄\" 컴백",
+      "\"CHUU\" teaser"
+    ]
+  },
+  {
+    "group": "JEON SOMI",
+    "tier": "longtail",
+    "watch_reason": "manual_watch",
+    "tracking_status": "watch_only",
+    "latest_release_title": "",
+    "latest_release_date": "",
+    "latest_release_kind": "",
+    "x_url": "",
+    "instagram_url": "https://www.instagram.com/somsomi0309/",
+    "search_terms": [
+      "\"JEON SOMI\" kpop comeback",
+      "\"전소미\" 컴백",
+      "\"JEON SOMI\" teaser"
+    ]
+  },
+  {
+    "group": "KWON EUNBI",
+    "tier": "longtail",
+    "watch_reason": "manual_watch",
+    "tracking_status": "watch_only",
+    "latest_release_title": "",
+    "latest_release_date": "",
+    "latest_release_kind": "",
+    "x_url": "",
+    "instagram_url": "https://www.instagram.com/silver_rain.__/",
+    "search_terms": [
+      "\"KWON EUNBI\" kpop comeback",
+      "\"권은비\" 컴백",
+      "\"KWON EUNBI\" teaser"
+    ]
+  },
+  {
+    "group": "YUJU",
+    "tier": "longtail",
+    "watch_reason": "manual_watch",
+    "tracking_status": "watch_only",
+    "latest_release_title": "",
+    "latest_release_date": "",
+    "latest_release_kind": "",
+    "x_url": "",
+    "instagram_url": "https://www.instagram.com/yuuzth/",
+    "search_terms": [
+      "\"YUJU\" kpop comeback",
+      "\"유주\" 컴백",
+      "\"YUJU\" teaser"
+    ]
+  },
+  {
+    "group": "Yves",
+    "tier": "longtail",
+    "watch_reason": "manual_watch",
+    "tracking_status": "watch_only",
+    "latest_release_title": "",
+    "latest_release_date": "",
+    "latest_release_kind": "",
+    "x_url": "",
+    "instagram_url": "https://www.instagram.com/yvesntual/",
+    "search_terms": [
+      "\"Yves\" kpop comeback",
+      "\"이브\" 컴백",
+      "\"Yves\" teaser"
+    ]
+  },
+  {
     "group": "aespa",
     "tier": "core",
     "watch_reason": "recent_release",
