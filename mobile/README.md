@@ -30,6 +30,8 @@
   - gate registry / helper / off fallback definition
 - `src/services/datasetSource.ts`
   - bundled static data vs preview remote data selection layer
+- `src/tokens/`
+  - semantic token constants + theme provider + `useAppTheme()` access convention
 - `src/utils/assetRegistry.ts`
   - local bundled asset lookup entrypoint
 - `eas.json`
@@ -114,6 +116,29 @@ profile 차이는 아래 범위로만 제한한다.
 - logging intensity
 - feature gate metadata
 - app identity 구분용 name / slug / scheme
+
+## token / theme baseline
+
+- token source of truth는 `src/tokens/` 아래에 둔다.
+- 현재 baseline
+  - `colors.ts`
+    - `surface`, `text`, `border`, `status`, `service`
+  - `spacing.ts`
+    - `space/4` ~ `space/32`
+  - `radii.ts`
+    - `chip`, `button`, `card`, `sheet`
+  - `typography.ts`
+    - `screenTitle`, `sectionTitle`, `cardTitle`, `body`, `meta`, `chip`, `buttonPrimary`, `buttonService`
+  - `sizes.ts`
+    - icon / button / row size baseline
+  - `elevation.ts`
+    - `card`, `cardProminent`, `sheet`, `floating`
+  - `motion.ts`
+    - press / fade / sheet / navigation duration baseline
+  - `theme.tsx`
+    - `MobileThemeProvider`
+    - `useAppTheme()`
+- later components/screens는 raw visual constant 대신 `useAppTheme()` 또는 token module을 통해 값에 접근한다.
 
 ## env / validation 규칙
 
