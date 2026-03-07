@@ -15,6 +15,7 @@ UPCOMING_PATH = ROOT / "upcoming_release_candidates.json"
 OUTPUT_JSON = ROOT / "manual_review_queue.json"
 OUTPUT_CSV = ROOT / "manual_review_queue.csv"
 EXACT_DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+MONTH_PATTERN = re.compile(r"^\d{4}-\d{2}$")
 
 
 def load_json(path: Path):
@@ -23,6 +24,21 @@ def load_json(path: Path):
 
 def is_exact_date(value: str) -> bool:
     return bool(value and EXACT_DATE_PATTERN.match(value))
+
+
+def is_month_key(value: str) -> bool:
+    return bool(value and MONTH_PATTERN.match(value))
+
+
+def get_date_precision(row: dict) -> str:
+    precision = row.get("date_precision", "") or ""
+    if precision in {"exact", "month_only", "unknown"}:
+        return precision
+    if is_exact_date(row.get("scheduled_date", "") or ""):
+        return "exact"
+    if is_month_key(row.get("scheduled_month", "") or ""):
+        return "month_only"
+    return "unknown"
 
 
 def has_weak_source_provenance(row: dict) -> bool:
@@ -47,7 +63,7 @@ def build_candidate_reasons(row: dict) -> list[str]:
     reasons: list[str] = []
     if float(row.get("confidence", 0) or 0) < 0.6:
         reasons.append("low_confidence")
-    if not is_exact_date(row.get("scheduled_date", "") or ""):
+    if get_date_precision(row) != "exact":
         reasons.append("inexact_date")
     if not row.get("source_url") or has_weak_source_provenance(row):
         reasons.append("missing_source_link")
@@ -65,6 +81,8 @@ def build_unresolved_queue_rows(unresolved_rows: list[dict], watchlist_by_group:
                 "group": group,
                 "headline": "Unresolved latest release mapping",
                 "scheduled_date": "",
+                "scheduled_month": "",
+                "date_precision": "unknown",
                 "date_status": "",
                 "confidence": 0,
                 "source_type": "unresolved",
@@ -89,6 +107,8 @@ def build_upcoming_queue_rows(upcoming_rows: list[dict]) -> list[dict]:
                 "group": row.get("group", ""),
                 "headline": row.get("headline", ""),
                 "scheduled_date": row.get("scheduled_date", ""),
+                "scheduled_month": row.get("scheduled_month", ""),
+                "date_precision": get_date_precision(row),
                 "date_status": row.get("date_status", ""),
                 "confidence": float(row.get("confidence", 0) or 0),
                 "source_type": row.get("source_type", ""),
@@ -103,12 +123,17 @@ def build_upcoming_queue_rows(upcoming_rows: list[dict]) -> list[dict]:
 
 
 def sort_key(row: dict):
-    exact_date_rank = 0 if is_exact_date(row.get("scheduled_date", "")) else 1
+    precision_rank = {
+        "exact": 0,
+        "month_only": 1,
+        "unknown": 2,
+    }
+    precision = get_date_precision(row)
     confidence = float(row.get("confidence", 0) or 0)
     return (
         row.get("group", "").lower(),
-        exact_date_rank,
-        row.get("scheduled_date", "") or "9999-12-31",
+        precision_rank.get(precision, 2),
+        row.get("scheduled_date", "") or row.get("scheduled_month", "") or "9999-12-31",
         confidence,
         row.get("headline", "").lower(),
     )
@@ -135,6 +160,8 @@ def main():
                 "group",
                 "headline",
                 "scheduled_date",
+                "scheduled_month",
+                "date_precision",
                 "date_status",
                 "confidence",
                 "source_type",
@@ -144,6 +171,7 @@ def main():
                 "review_reason",
                 "recommended_action",
             ],
+            lineterminator="\n",
         )
         writer.writeheader()
         for row in queue_rows:

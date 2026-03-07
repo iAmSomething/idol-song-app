@@ -192,6 +192,14 @@ def classify_date_status(title: str, description: str, link: str, scheduled_at, 
     return "rumor"
 
 
+def classify_date_precision(scheduled_at, month_reference):
+    if scheduled_at is not None:
+        return "exact"
+    if month_reference is not None:
+        return "month_only"
+    return "unknown"
+
+
 def score_item(title: str, description: str, link: str, scheduled_at, month_reference):
     haystack = f"{title} {description}".lower()
     score = 0.38
@@ -213,7 +221,7 @@ def score_item(title: str, description: str, link: str, scheduled_at, month_refe
 def should_keep_candidate(candidate: dict, published_at):
     if candidate["source_type"] != "news_rss" and candidate["confidence"] >= 0.55:
         return True
-    if candidate["scheduled_date"]:
+    if candidate["date_precision"] != "unknown":
         return True
     if candidate["date_status"] == "scheduled":
         return True
@@ -225,9 +233,21 @@ def should_keep_candidate(candidate: dict, published_at):
 
 
 def sort_key(item: dict):
-    date_key = item["scheduled_date"] or "9999-12-31"
-    rumor_rank = 1 if item["date_status"] == "rumor" and not item["scheduled_date"] else 0
-    return (rumor_rank, date_key, -source_priority(item["source_type"]), -item["confidence"], item["group"].lower())
+    precision_rank = {
+        "exact": 0,
+        "month_only": 1,
+        "unknown": 2,
+    }
+    timing_key = item["scheduled_date"] or item.get("scheduled_month") or "9999-12"
+    rumor_rank = 1 if item["date_status"] == "rumor" and item.get("date_precision") == "unknown" else 0
+    return (
+        rumor_rank,
+        precision_rank.get(item.get("date_precision", "unknown"), 2),
+        timing_key,
+        -source_priority(item["source_type"]),
+        -item["confidence"],
+        item["group"].lower(),
+    )
 
 
 def source_priority(source_type: str):
@@ -300,6 +320,12 @@ def build_candidate(
     candidate = {
         "group": group_row["group"],
         "scheduled_date": scheduled_at.strftime("%Y-%m-%d") if scheduled_at is not None else "",
+        "scheduled_month": (
+            scheduled_at.strftime("%Y-%m")
+            if scheduled_at is not None
+            else month_reference.strftime("%Y-%m") if month_reference is not None else ""
+        ),
+        "date_precision": classify_date_precision(scheduled_at, month_reference),
         "date_status": classify_date_status(title, description, source_url, scheduled_at, month_reference),
         "headline": title,
         "source_type": source_type_for(source_url),
@@ -457,6 +483,8 @@ def main():
             fieldnames=[
                 "group",
                 "scheduled_date",
+                "scheduled_month",
+                "date_precision",
                 "date_status",
                 "headline",
                 "release_format",
@@ -470,6 +498,7 @@ def main():
                 "tracking_status",
                 "search_term",
             ],
+            lineterminator="\n",
         )
         writer.writeheader()
         for row in results:

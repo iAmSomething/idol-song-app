@@ -42,38 +42,44 @@
 - 예정 정보에 대한 신뢰도 요약
 - low / medium / high 정도로 표현한다.
 
-### 2.10 Date Status
-- 예정 날짜 정밀도
-- exact / month_only / unknown
+### 2.10 Date Precision
+- 예정 시점의 정밀도
+- `exact`, `month_only`, `unknown` 중 하나로 표현한다.
+- `scheduled_date`는 `exact`일 때만 day-level ISO date를 가진다.
+- `scheduled_month`는 `exact` 또는 `month_only`일 때 month context(`YYYY-MM`)를 가진다.
 
-### 2.11 Handoff
+### 2.11 Date Status
+- 예정 정보의 상태/톤
+- `confirmed`, `scheduled`, `rumor`처럼 정밀도와 별개로 관리한다.
+
+### 2.12 Handoff
 - 앱에서 Spotify, YouTube Music, YouTube MV 또는 source 원문으로 외부 이동하는 행위
 
-### 2.12 Service Action
+### 2.13 Service Action
 - Spotify, YouTube Music, YouTube MV로 이동하는 CTA
 
-### 2.13 Meta Action
+### 2.14 Meta Action
 - 기사 원문, 공식 공지, 소스 보기처럼 근거 확인용 CTA
 
-### 2.14 Primary Action
+### 2.15 Primary Action
 - 팀 페이지 진입, 릴리즈 상세 보기처럼 다음 맥락으로 들어가는 핵심 CTA
 
-### 2.15 Chip
+### 2.16 Chip
 - 상태/형식/타이틀 여부 같은 정보성 라벨
 - 액션이 아니다.
 
-### 2.16 Date Detail Sheet
+### 2.17 Date Detail Sheet
 - 캘린더 날짜 탭 시 열리는 bottom sheet drill-in
 
-### 2.17 Radar
+### 2.18 Radar
 - 다가오는 컴백, 일정 변경, 장기 공백, 루키 같은 탐지 중심 요약 화면
 
-### 2.18 Long-gap Team
+### 2.19 Long-gap Team
 - 마지막 verified release 이후 장기 공백 상태로 보는 팀
 - 기준 일수는 운영 정책에서 정의한다.
 
-### 2.19 Rookie
+### 2.20 Rookie
 - 데뷔 연도 또는 수동 seed 기준으로 rookie로 분류된 팀
 
-### 2.20 Search Alias
+### 2.21 Search Alias
 - 공식명 외 별칭/약칭/한글명 검색을 위해 유지하는 검색 전용 alias
