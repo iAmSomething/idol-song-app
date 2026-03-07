@@ -1,5 +1,23 @@
 [
   {
+    "group": "YENA",
+    "scheduled_date": "2026-03-11",
+    "date_status": "confirmed",
+    "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+    "source_type": "news_rss",
+    "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+    "source_domain": "starnewskorea.com",
+    "published_at": "Mon, 23 Feb 2026 14:58:00 +0900",
+    "confidence": 0.84,
+    "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+    "tracking_status": "watch_only",
+    "search_term": "\"최예나\" 컴백",
+    "release_format": "ep",
+    "context_tags": [],
+    "date_precision": "exact",
+    "scheduled_month": "2026-03"
+  },
+  {
     "group": "P1Harmony",
     "scheduled_date": "2026-03-12",
     "date_status": "confirmed",

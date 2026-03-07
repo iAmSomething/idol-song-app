@@ -1440,6 +1440,21 @@
     ]
   },
   {
+    "slug": "tunexx",
+    "group": "TUNEXX",
+    "display_name": "TUNEXX",
+    "aliases": [],
+    "agency": "IST Entertainment",
+    "official_youtube_url": "https://www.youtube.com/@official_TUNEXX",
+    "official_x_url": "https://x.com/TUNEXX_official",
+    "official_instagram_url": "https://www.instagram.com/tunexx_official",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "튜넥스"
+    ]
+  },
+  {
     "slug": "tws",
     "group": "TWS",
     "display_name": "TWS",
