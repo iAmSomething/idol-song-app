@@ -30,7 +30,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   registerHealthRoute(app);
   registerReadyRoute(app, { config, db });
   registerCalendarRoutes(app, config);
-  registerSearchRoutes(app, config);
+  registerSearchRoutes(app, { config, db });
   registerEntityRoutes(app, { config, db });
   registerReleaseRoutes(app, { config, db });
   registerRadarRoutes(app, { config, db });
