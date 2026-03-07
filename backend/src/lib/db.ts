@@ -4,7 +4,10 @@ import type { AppConfig } from '../config.js';
 
 const { Pool } = pg;
 
-export function createDbPool(config: AppConfig): pg.Pool {
+export type DbPool = pg.Pool;
+export type DbQueryable = Pick<pg.Pool, 'query'>;
+
+export function createDbPool(config: AppConfig): DbPool {
   return new Pool({
     connectionString: config.databaseUrl,
     application_name: 'idol-song-app-fastify',
@@ -13,6 +16,6 @@ export function createDbPool(config: AppConfig): pg.Pool {
   });
 }
 
-export async function pingDatabase(pool: pg.Pool): Promise<void> {
+export async function pingDatabase(pool: DbQueryable): Promise<void> {
   await pool.query('select 1');
 }

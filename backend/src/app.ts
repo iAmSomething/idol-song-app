@@ -1,8 +1,7 @@
 import Fastify, { type FastifyInstance } from 'fastify';
-import type pg from 'pg';
 
 import { loadConfig, type AppConfig } from './config.js';
-import { createDbPool } from './lib/db.js';
+import { createDbPool, type DbPool } from './lib/db.js';
 import { registerCalendarRoutes } from './routes/calendar.js';
 import { registerEntityRoutes } from './routes/entities.js';
 import { registerHealthRoute } from './routes/health.js';
@@ -13,7 +12,7 @@ import { registerSearchRoutes } from './routes/search.js';
 
 export type BuildAppOptions = {
   config?: AppConfig;
-  db?: pg.Pool;
+  db?: DbPool;
 };
 
 export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
@@ -33,7 +32,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   registerSearchRoutes(app, config);
   registerEntityRoutes(app, config);
   registerReleaseRoutes(app, config);
-  registerRadarRoutes(app, config);
+  registerRadarRoutes(app, { config, db });
 
   return app;
 }
