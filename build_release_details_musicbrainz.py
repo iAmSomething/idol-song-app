@@ -159,17 +159,29 @@ def mark_title_tracks(tracks: List[Dict], title_track_titles: List[str]) -> List
 def extract_youtube_video_id(resource: str) -> Optional[str]:
     parsed = urlparse(resource)
     host = parsed.netloc.lower()
+    segments = [segment for segment in parsed.path.split("/") if segment]
 
     if "youtu.be" in host:
         return parsed.path.strip("/") or None
-    if "youtube.com" in host:
-        return parse_qs(parsed.query).get("v", [None])[0]
+    if "youtube.com" in host and "music.youtube.com" not in host:
+        watch_id = parse_qs(parsed.query).get("v", [None])[0]
+        if watch_id:
+            return watch_id
+        if "shorts" in segments or "embed" in segments:
+            for index, segment in enumerate(segments):
+                if segment in {"shorts", "embed"} and index + 1 < len(segments):
+                    return segments[index + 1]
     return None
 
 
-def extract_urls(relations: List[Dict]) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+def build_youtube_video_url(video_id: str) -> str:
+    return f"https://www.youtube.com/watch?v={video_id}"
+
+
+def extract_urls(relations: List[Dict]) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
     spotify_url = None
     youtube_music_url = None
+    youtube_video_url = None
     youtube_video_id = None
 
     for relation in relations:
@@ -182,13 +194,22 @@ def extract_urls(relations: List[Dict]) -> Tuple[Optional[str], Optional[str], O
             spotify_url = resource
         if youtube_music_url is None and "music.youtube.com/" in lowered:
             youtube_music_url = resource
-        if youtube_video_id is None:
-            youtube_video_id = extract_youtube_video_id(resource)
+        if youtube_video_url is None:
+            candidate_video_id = extract_youtube_video_id(resource)
+            if candidate_video_id:
+                youtube_video_url = resource
+                youtube_video_id = candidate_video_id
 
-    return spotify_url, youtube_music_url, youtube_video_id
+    return spotify_url, youtube_music_url, youtube_video_url, youtube_video_id
 
 
-def build_notes(track_count: int, release_kind: str, spotify_url: Optional[str], youtube_music_url: Optional[str]) -> str:
+def build_notes(
+    track_count: int,
+    release_kind: str,
+    spotify_url: Optional[str],
+    youtube_music_url: Optional[str],
+    youtube_video_url: Optional[str],
+) -> str:
     kind_label = release_kind.upper()
     if track_count:
         note = f"Representative MusicBrainz {kind_label} seed with {track_count} track"
@@ -203,6 +224,8 @@ def build_notes(track_count: int, release_kind: str, spotify_url: Optional[str],
         linked_services.append("Spotify")
     if youtube_music_url:
         linked_services.append("YouTube Music")
+    if youtube_video_url:
+        linked_services.append("YouTube MV")
     if linked_services:
         note += f" Canonical links: {', '.join(linked_services)}."
 
@@ -219,6 +242,7 @@ def build_empty_detail(item: Dict) -> Dict:
         "tracks": [],
         "spotify_url": None,
         "youtube_music_url": None,
+        "youtube_video_url": None,
         "youtube_video_id": None,
         "notes": "Release detail seed unavailable in MusicBrainz; UI fallback applies.",
     }
@@ -236,6 +260,18 @@ def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tup
         provenance = override.get("provenance")
         if provenance and provenance not in detail["notes"]:
             detail["notes"] += f" Canonical YouTube Music URL preserved from release_detail_overrides.json ({provenance})."
+
+        youtube_video_url = override.get("youtube_video_url")
+        youtube_video_id = override.get("youtube_video_id")
+        if youtube_video_url or youtube_video_id:
+            resolved_video_id = youtube_video_id or extract_youtube_video_id(youtube_video_url or "")
+            if resolved_video_id:
+                detail["youtube_video_id"] = resolved_video_id
+                detail["youtube_video_url"] = youtube_video_url or build_youtube_video_url(resolved_video_id)
+                video_provenance = override.get("youtube_video_provenance") or "curated official YouTube watch URL"
+                video_note = f" Canonical YouTube MV preserved from release_detail_overrides.json ({video_provenance})."
+                if video_note not in detail["notes"]:
+                    detail["notes"] += video_note
 
     title_track_titles = override.get("title_tracks") if override else None
     if not title_track_titles:
@@ -269,9 +305,9 @@ def build_detail_row(session: requests.Session, item: Dict) -> Dict:
             {"inc": "recordings+url-rels"},
         )
         tracks = extract_tracks(release)
-        spotify_url, youtube_music_url, youtube_video_id = extract_urls(release.get("relations", []))
+        spotify_url, youtube_music_url, youtube_video_url, youtube_video_id = extract_urls(release.get("relations", []))
 
-        if not tracks and not spotify_url and not youtube_music_url and not youtube_video_id:
+        if not tracks and not spotify_url and not youtube_music_url and not youtube_video_url and not youtube_video_id:
             continue
 
         return {
@@ -283,8 +319,9 @@ def build_detail_row(session: requests.Session, item: Dict) -> Dict:
             "tracks": tracks,
             "spotify_url": spotify_url,
             "youtube_music_url": youtube_music_url,
+            "youtube_video_url": youtube_video_url,
             "youtube_video_id": youtube_video_id,
-            "notes": build_notes(len(tracks), item["release_kind"], spotify_url, youtube_music_url),
+            "notes": build_notes(len(tracks), item["release_kind"], spotify_url, youtube_music_url, youtube_video_url),
         }
 
     return fallback_row
@@ -325,7 +362,7 @@ def main() -> None:
     with_tracks = sum(1 for row in details if row["tracks"])
     with_spotify = sum(1 for row in details if row["spotify_url"])
     with_youtube_music = sum(1 for row in details if row["youtube_music_url"])
-    with_video = sum(1 for row in details if row["youtube_video_id"])
+    with_video = sum(1 for row in details if row["youtube_video_id"] or row.get("youtube_video_url"))
 
     print(
         json.dumps(

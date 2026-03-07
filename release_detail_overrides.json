@@ -21,7 +21,17 @@
     "release_date": "2025-10-30",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_n26tMK3m2CEt3tFoD2YUR5c9WUBUUp5cA",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_url": "https://www.youtube.com/watch?v=lROE6G2DwFY",
+    "youtube_video_provenance": "official artist channel watch URL"
+  },
+  {
+    "group": "8TURN",
+    "release_title": "BRUISE",
+    "release_date": "2026-01-28",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=WxL5cNNelLk",
+    "youtube_video_provenance": "official artist channel watch URL"
   },
   {
     "group": "ALL(H)OURS",
@@ -56,12 +66,44 @@
     "provenance": "ytmusicapi exact album search match"
   },
   {
+    "group": "AtHeart",
+    "release_title": "Shut Up",
+    "release_date": "2026-02-26",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=LD6jMlUC18k",
+    "youtube_video_provenance": "official artist channel watch URL"
+  },
+  {
+    "group": "BABYMONSTER",
+    "release_title": "HOT SAUCE",
+    "release_date": "2025-07-01",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=xn8mQqz2xmM",
+    "youtube_video_provenance": "official artist channel watch URL"
+  },
+  {
     "group": "BABYMONSTER",
     "release_title": "WE GO UP",
     "release_date": "2025-10-10",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_ki16_Lh3p19WqZ8SgTPuGd3Vl96qmbBfE",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "BADVILLAIN",
+    "release_title": "THRILLER",
+    "release_date": "2025-09-15",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=s-KjDJFOh5s",
+    "youtube_video_provenance": "official label channel watch URL"
+  },
+  {
+    "group": "BAE173",
+    "release_title": "What’s wrong?",
+    "release_date": "2025-10-03",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=BtXk4dg7juw",
+    "youtube_video_provenance": "official artist channel watch URL"
   },
   {
     "group": "BAE173",
@@ -81,7 +123,9 @@
     "title_tracks": [
       "GO"
     ],
-    "title_track_provenance": "https://yg-life.com/archives/203186"
+    "title_track_provenance": "https://yg-life.com/archives/203186",
+    "youtube_video_url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
+    "youtube_video_provenance": "official artist channel watch URL"
   },
   {
     "group": "BOYNEXTDOOR",
@@ -146,6 +190,30 @@
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_n6eo2k-wLicG711lFzFVY_XZPCzV07UJI",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "fromis_9",
+    "release_title": "White Memories",
+    "release_date": "2025-12-02",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=5ZB9JLfIw_Q",
+    "youtube_video_provenance": "official artist channel watch URL"
+  },
+  {
+    "group": "H1-KEY",
+    "release_title": "세상은 영화 같지 않더라",
+    "release_date": "2026-01-05",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=izGJjwhCEaI",
+    "youtube_video_provenance": "official artist channel watch URL"
+  },
+  {
+    "group": "Hearts2Hearts",
+    "release_title": "RUDE!",
+    "release_date": "2026-02-20",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=F7sGJVUrkjQ",
+    "youtube_video_provenance": "official label or artist merged channel watch URL"
   },
   {
     "group": "ifeye",
@@ -306,11 +374,27 @@
   },
   {
     "group": "SAY MY NAME",
+    "release_title": "iLy",
+    "release_date": "2025-08-01",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=XceS5vnJvUg",
+    "youtube_video_provenance": "official label channel watch URL"
+  },
+  {
+    "group": "SAY MY NAME",
     "release_title": "&Our Vibe",
     "release_date": "2025-12-29",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kApCbh2UikWb1bBXrhTDc_dCDo9alRZRg",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "STAYC",
+    "release_title": "I WANT IT",
+    "release_date": "2025-07-23",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=W8ml4ryPwic",
+    "youtube_video_provenance": "official artist channel watch URL"
   },
   {
     "group": "STAYC",
@@ -350,7 +434,9 @@
     "release_date": "2025-09-23",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mfvCWYWL7GIQxnSAYpBttmP0exDSznA48",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_url": "https://www.youtube.com/watch?v=KvPyf4K3zdo",
+    "youtube_video_provenance": "official artist channel watch URL"
   },
   {
     "group": "TOMORROW X TOGETHER",
