@@ -1,0 +1,1815 @@
+[
+  {
+    "group": "&TEAM",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+        "channel_label": "&TEAM",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "(G)I-DLE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow",
+        "channel_label": "(G)I-DLE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "82MAJOR",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw",
+        "channel_label": "82MAJOR",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "8TURN",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw",
+        "channel_label": "8TURN",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "AB6IX",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCwytna6i1rFCt13a3Qvuk-A",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCwytna6i1rFCt13a3Qvuk-A"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCwytna6i1rFCt13a3Qvuk-A",
+        "channel_label": "AB6IX",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "ALL(H)OURS",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "ALLDAY PROJECT",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "AMPERS&ONE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA",
+        "channel_label": "AMPERS&ONE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "ARTMS",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "ATBO",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg",
+        "channel_label": "ATBO",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "ATEEZ",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
+        "channel_label": "ATEEZ",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "AtHeart",
+    "primary_team_channel_url": "https://www.youtube.com/@AtHeart_TITAN",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@AtHeart_TITAN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@AtHeart_TITAN",
+        "channel_label": "AtHeart",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "manual_override_uploader"
+      }
+    ]
+  },
+  {
+    "group": "BABYMONSTER",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
+      "https://www.youtube.com/@YGEntertainment"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
+        "channel_label": "BABYMONSTER",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@YGEntertainment",
+        "channel_label": "YG ENTERTAINMENT",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "BADVILLAIN",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCh0KpQuSJ9m0DaENZmnYwzw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCh0KpQuSJ9m0DaENZmnYwzw",
+      "https://www.youtube.com/@BPMEntertainment-official"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCh0KpQuSJ9m0DaENZmnYwzw",
+        "channel_label": "BADVILLAIN",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@BPMEntertainment-official",
+        "channel_label": "BPM Entertainment",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "manual_override_uploader"
+      }
+    ]
+  },
+  {
+    "group": "BAE173",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCWRNGyk9Nk9yu9ClmlZ6Hww",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCWRNGyk9Nk9yu9ClmlZ6Hww"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCWRNGyk9Nk9yu9ClmlZ6Hww",
+        "channel_label": "BAE173",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "BLACKPINK",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+      "https://www.youtube.com/@YGEntertainment"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+        "channel_label": "BLACKPINK",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@YGEntertainment",
+        "channel_label": "YG ENTERTAINMENT",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "BLITZERS",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "BOYNEXTDOOR",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UChhKBlh_wvspTh5n4mL0b5g",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UChhKBlh_wvspTh5n4mL0b5g",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UChhKBlh_wvspTh5n4mL0b5g",
+        "channel_label": "BOYNEXTDOOR",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "BTOB",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCgB7A457ULlgm5c3948vr-w",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCgB7A457ULlgm5c3948vr-w"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCgB7A457ULlgm5c3948vr-w",
+        "channel_label": "BTOB",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "BTS",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
+        "channel_label": "BTS",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "CIX",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCuaslC77K-NmCy8Xwk7x0hA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCuaslC77K-NmCy8Xwk7x0hA"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCuaslC77K-NmCy8Xwk7x0hA",
+        "channel_label": "CIX",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "CLOSE YOUR EYES",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "CLASS:y",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCbCyYn2M_1ccicwj-KU7t0Q",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCbCyYn2M_1ccicwj-KU7t0Q"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCbCyYn2M_1ccicwj-KU7t0Q",
+        "channel_label": "CLASS:y",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "CRAVITY",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@officialstarship"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_label": "CRAVITY",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@officialstarship",
+        "channel_label": "STARSHIP",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "CSR",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "DAY6",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCp-pqXsizklX3ZHvLxXyhxw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCp-pqXsizklX3ZHvLxXyhxw",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCp-pqXsizklX3ZHvLxXyhxw",
+        "channel_label": "DAY6",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "DKB",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCCwfiPqSomsqZkkmbjPK5wg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCCwfiPqSomsqZkkmbjPK5wg"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCCwfiPqSomsqZkkmbjPK5wg",
+        "channel_label": "DKB",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "DRIPPIN",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "DXMON",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "Dreamcatcher",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCijULR2sXLutCRBtW3_WEfA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCijULR2sXLutCRBtW3_WEfA"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCijULR2sXLutCRBtW3_WEfA",
+        "channel_label": "Dreamcatcher",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "ENHYPEN",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+        "channel_label": "ENHYPEN",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "EPEX",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A",
+        "channel_label": "EPEX",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "EVNNE",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "EXO",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCzCedBCSSltI1TFd3bKyN6g",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCzCedBCSSltI1TFd3bKyN6g",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCzCedBCSSltI1TFd3bKyN6g",
+        "channel_label": "EXO",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "FIFTY FIFTY",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw",
+        "channel_label": "FIFTY FIFTY",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "GHOST9",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCwBsVtDcTVG4QCorkVNJ5Sg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCwBsVtDcTVG4QCorkVNJ5Sg"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCwBsVtDcTVG4QCorkVNJ5Sg",
+        "channel_label": "GHOST9",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "H1-KEY",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC-6L6QIx3M6O_ROf7CP-pJg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC-6L6QIx3M6O_ROf7CP-pJg"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC-6L6QIx3M6O_ROf7CP-pJg",
+        "channel_label": "H1-KEY",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "Hearts2Hearts",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "INFINITE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCdzXSux7OnRD1Cml-DQ416Q",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCdzXSux7OnRD1Cml-DQ416Q"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCdzXSux7OnRD1Cml-DQ416Q",
+        "channel_label": "INFINITE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "ITZY",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
+        "channel_label": "ITZY",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "IVE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
+      "https://www.youtube.com/@officialstarship"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
+        "channel_label": "IVE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@officialstarship",
+        "channel_label": "STARSHIP",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "JUST B",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "KARD",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC5OwlwvsVmf_lXHguB6OYFw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC5OwlwvsVmf_lXHguB6OYFw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC5OwlwvsVmf_lXHguB6OYFw",
+        "channel_label": "KARD",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "KISS OF LIFE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCvEEeBssb4XxIfWWIB8IjMw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCvEEeBssb4XxIfWWIB8IjMw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCvEEeBssb4XxIfWWIB8IjMw",
+        "channel_label": "KISS OF LIFE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "Kep1er",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "KickFlip",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "KiiiKiii",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "LE SSERAFIM",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCs-QBT4qkj_YiQw1ZntDO3g",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCs-QBT4qkj_YiQw1ZntDO3g",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCs-QBT4qkj_YiQw1ZntDO3g",
+        "channel_label": "LE SSERAFIM",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "LIGHTSUM",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCeQlMQ-4cedE7SNmF5JsdsA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCeQlMQ-4cedE7SNmF5JsdsA"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCeQlMQ-4cedE7SNmF5JsdsA",
+        "channel_label": "LIGHTSUM",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "LUN8",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCHx0MD2c0DTNGAtc0Yq6YPQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCHx0MD2c0DTNGAtc0Yq6YPQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCHx0MD2c0DTNGAtc0Yq6YPQ",
+        "channel_label": "LUN8",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "Loossemble",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "MAMAMOO",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCuhAUMLzJxlP1W7mEk0_6lA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCuhAUMLzJxlP1W7mEk0_6lA"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCuhAUMLzJxlP1W7mEk0_6lA",
+        "channel_label": "MAMAMOO",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "MCND",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCNC_wxtoMCuvRVQzpbHPaZw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCNC_wxtoMCuvRVQzpbHPaZw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCNC_wxtoMCuvRVQzpbHPaZw",
+        "channel_label": "MCND",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "MEOVV",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCowiwt93gqGlNG4k5VDxO-w",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCowiwt93gqGlNG4k5VDxO-w"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCowiwt93gqGlNG4k5VDxO-w",
+        "channel_label": "MEOVV",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "MONSTA X",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCZvCP6sWj75MwpUP4LVtpNw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCZvCP6sWj75MwpUP4LVtpNw",
+      "https://www.youtube.com/@officialstarship"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCZvCP6sWj75MwpUP4LVtpNw",
+        "channel_label": "MONSTA X",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@officialstarship",
+        "channel_label": "STARSHIP",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "NCT 127",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCk2E0dbAyEJWnrN2bbQOcbg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCk2E0dbAyEJWnrN2bbQOcbg",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCk2E0dbAyEJWnrN2bbQOcbg",
+        "channel_label": "NCT 127",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "NCT DREAM",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
+        "channel_label": "NCT DREAM",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "NCT WISH",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "NEXZ",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
+        "channel_label": "NEXZ",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "NMIXX",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+        "channel_label": "NMIXX",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "NOMAD",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "NewJeans",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCMki_UkHb4qSc0qyEcOHHJw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCMki_UkHb4qSc0qyEcOHHJw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCMki_UkHb4qSc0qyEcOHHJw",
+        "channel_label": "NewJeans",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "ONEUS",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
+        "channel_label": "ONEUS",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "ONEWE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+        "channel_label": "ONEWE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "ONF",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw",
+        "channel_label": "ONF",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "P1Harmony",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
+        "channel_label": "P1Harmony",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "PLAVE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCPZIPuQPrfrUG9Xe_okEmQA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCPZIPuQPrfrUG9Xe_okEmQA"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCPZIPuQPrfrUG9Xe_okEmQA",
+        "channel_label": "PLAVE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "POW",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "Purple Kiss",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCor8nQnEdMs4eBcU-uVBQ8g",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCor8nQnEdMs4eBcU-uVBQ8g"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCor8nQnEdMs4eBcU-uVBQ8g",
+        "channel_label": "Purple Kiss",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "QWER",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCgD0APk2x9uBlLM0UsmhQjw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCgD0APk2x9uBlLM0UsmhQjw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCgD0APk2x9uBlLM0UsmhQjw",
+        "channel_label": "QWER",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "RESCENE",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "RIIZE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+        "channel_label": "RIIZE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "Red Velvet",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
+        "channel_label": "Red Velvet",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "SAY MY NAME",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@inkodeofficial"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@inkodeofficial",
+        "channel_label": "iNKODE Official",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "manual_override_uploader"
+      }
+    ]
+  },
+  {
+    "group": "SEVENTEEN",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
+        "channel_label": "SEVENTEEN",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "SHINee",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
+        "channel_label": "SHINee",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "STAYC",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCod5V2dpnpJLklGvVOv5FcQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCod5V2dpnpJLklGvVOv5FcQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCod5V2dpnpJLklGvVOv5FcQ",
+        "channel_label": "STAYC",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "Stray Kids",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
+        "channel_label": "Stray Kids",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "TEMPEST",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "THE BOYZ",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCkJ1rbOrsyPfBuHNfnLPm-Q",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCkJ1rbOrsyPfBuHNfnLPm-Q"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCkJ1rbOrsyPfBuHNfnLPm-Q",
+        "channel_label": "THE BOYZ",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "TIOT",
+    "primary_team_channel_url": "https://www.youtube.com/@TIOT_NOW",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@TIOT_NOW"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@TIOT_NOW",
+        "channel_label": "TIOT",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "manual_override_uploader"
+      }
+    ]
+  },
+  {
+    "group": "TNX",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "TOMORROW X TOGETHER",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
+        "channel_label": "TOMORROW X TOGETHER",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "TREASURE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCx9hXYOCvUYwrprEqe4ZQHA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCx9hXYOCvUYwrprEqe4ZQHA",
+      "https://www.youtube.com/@YGEntertainment"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCx9hXYOCvUYwrprEqe4ZQHA",
+        "channel_label": "TREASURE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@YGEntertainment",
+        "channel_label": "YG ENTERTAINMENT",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "TRENDZ",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCvc55IOOCI165H3raqcjjrg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCvc55IOOCI165H3raqcjjrg"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCvc55IOOCI165H3raqcjjrg",
+        "channel_label": "TRENDZ",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "TWICE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
+        "channel_label": "TWICE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "TWS",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC8C6QOPDVYwmuaSBZksefdg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC8C6QOPDVYwmuaSBZksefdg",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC8C6QOPDVYwmuaSBZksefdg",
+        "channel_label": "TWS",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "The KingDom",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "UNIS",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw",
+        "channel_label": "UNIS",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "VERIVERY",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q",
+        "channel_label": "VERIVERY",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "VIVIZ",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCWFMjDuWKlct0jy89k2kkRA",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCWFMjDuWKlct0jy89k2kkRA"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCWFMjDuWKlct0jy89k2kkRA",
+        "channel_label": "VIVIZ",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "WEi",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "WHIB",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "WJSN",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@officialstarship"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@officialstarship",
+        "channel_label": "STARSHIP",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "WayV",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC-ZHt5Zgadfx-B1CM63Lqew",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC-ZHt5Zgadfx-B1CM63Lqew",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC-ZHt5Zgadfx-B1CM63Lqew",
+        "channel_label": "WayV",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "Weeekly",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC5rp2rDRSpyKNj-QLytC-tw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC5rp2rDRSpyKNj-QLytC-tw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC5rp2rDRSpyKNj-QLytC-tw",
+        "channel_label": "Weeekly",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "Xdinary Heroes",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ",
+        "channel_label": "Xdinary Heroes",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "YOUNG POSSE",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "YOUNITE",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "ZEROBASEONE",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ",
+        "channel_label": "ZEROBASEONE",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "aespa",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
+        "channel_label": "aespa",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "curated_agency_allowlist"
+      }
+    ]
+  },
+  {
+    "group": "cignature",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCaRdmTJgO6w0esJPZUOzXrw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCaRdmTJgO6w0esJPZUOzXrw"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCaRdmTJgO6w0esJPZUOzXrw",
+        "channel_label": "cignature",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "fromis_9",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UC8qO5racajmy4YgPgNJkVXg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC8qO5racajmy4YgPgNJkVXg"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UC8qO5racajmy4YgPgNJkVXg",
+        "channel_label": "fromis_9",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "ifeye",
+    "primary_team_channel_url": null,
+    "mv_allowlist_urls": [],
+    "channels": []
+  },
+  {
+    "group": "izna",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ",
+        "channel_label": "izna",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "tripleS",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCJnL-TBcsYrF2SLs7tmiC8Q",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCJnL-TBcsYrF2SLs7tmiC8Q"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCJnL-TBcsYrF2SLs7tmiC8Q",
+        "channel_label": "tripleS",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "woo!ah!",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCNeLbWtlJzTsavMC70zY0dQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCNeLbWtlJzTsavMC70zY0dQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCNeLbWtlJzTsavMC70zY0dQ",
+        "channel_label": "woo!ah!",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  },
+  {
+    "group": "xikers",
+    "primary_team_channel_url": "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ",
+        "channel_label": "xikers",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url"
+      }
+    ]
+  }
+]

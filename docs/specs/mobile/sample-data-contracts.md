@@ -21,7 +21,37 @@
 }
 ```
 
-## 3. Release Summary Example
+## 3. YouTube Channel Allowlist Example
+```json
+{
+  "group": "TOMORROW X TOGETHER",
+  "primary_team_channel_url": "https://youtube.com/@TXT_bighit",
+  "mv_allowlist_urls": [
+    "https://youtube.com/@TXT_bighit",
+    "https://www.youtube.com/@HYBELABELS"
+  ],
+  "channels": [
+    {
+      "channel_url": "https://youtube.com/@TXT_bighit",
+      "channel_label": "TOMORROW X TOGETHER",
+      "owner_type": "team",
+      "allow_mv_uploads": true,
+      "display_in_team_links": true,
+      "provenance": "artistProfiles.official_youtube_url"
+    },
+    {
+      "channel_url": "https://www.youtube.com/@HYBELABELS",
+      "channel_label": "HYBE LABELS",
+      "owner_type": "label",
+      "allow_mv_uploads": true,
+      "display_in_team_links": false,
+      "provenance": "curated_agency_allowlist"
+    }
+  ]
+}
+```
+
+## 4. Release Summary Example
 ```json
 {
   "group": "BLACKPINK",
@@ -42,7 +72,7 @@
 }
 ```
 
-## 4. Upcoming Event Example
+## 5. Upcoming Event Example
 ```json
 {
   "group": "TOMORROW X TOGETHER",
@@ -57,7 +87,7 @@
 }
 ```
 
-## 5. Release Artwork Example
+## 6. Release Artwork Example
 ```json
 {
   "group": "STAYC",
@@ -68,7 +98,7 @@
 }
 ```
 
-## 6. Release Detail Example
+## 7. Release Detail Example
 ```json
 {
   "group": "STAYC",
@@ -107,7 +137,7 @@
 }
 ```
 
-## 7. UI Fallback Example
+## 8. UI Fallback Example
 
 ### 7.1 Release Detail with Missing Track Links
 ```json

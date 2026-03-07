@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import quote_plus
 
 import build_release_details_musicbrainz as release_detail_builder
+import youtube_channel_allowlists
 
 
 ROOT = Path(__file__).resolve().parent
@@ -45,14 +46,18 @@ def build_search_query(detail: dict, title_tracks: list[str]) -> str:
     return f"{detail['group']} {query_title} official mv"
 
 
-def build_recommended_action(status: str, has_official_youtube_url: bool) -> str:
+def build_recommended_action(status: str, has_official_youtube_url: bool, has_mv_allowlist: bool) -> str:
     if status == release_detail_builder.YOUTUBE_VIDEO_STATUS_REVIEW:
+        if has_mv_allowlist:
+            return "Review the suggested query against the allowlisted official channels and either add a manual override or keep the release in review."
         if has_official_youtube_url:
-            return "Review the suggested query on the official channel and either add a manual override or keep the release in review."
-        return "Backfill the official YouTube channel first, then review the suggested query before adding an override."
+            return "Backfill label-owned MV sources if needed, then review the suggested query before adding an override."
+        return "Backfill the team or label YouTube allowlist first, then review the suggested query before adding an override."
+    if has_mv_allowlist:
+        return "Search only the allowlisted official channels and add a manual override only when the MV match is explicit."
     if has_official_youtube_url:
-        return "Search the official channel for a defensible MV object and add a manual override only when the match is explicit."
-    return "Backfill the official YouTube channel first or leave the release unresolved for later follow-up."
+        return "Backfill label-owned MV sources if needed, then search the official team channel before adding an override."
+    return "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up."
 
 
 def build_review_rows(details: list[dict], profiles: list[dict], overrides: dict[str, dict]) -> list[dict]:
@@ -60,6 +65,7 @@ def build_review_rows(details: list[dict], profiles: list[dict], overrides: dict
         row["group"]: row.get("official_youtube_url")
         for row in profiles
     }
+    allowlists_by_group = youtube_channel_allowlists.load_allowlists_by_group()
 
     review_rows: list[dict] = []
     for detail in details:
@@ -77,6 +83,8 @@ def build_review_rows(details: list[dict], profiles: list[dict], overrides: dict
         key = build_lookup_key(detail)
         override = overrides.get(key, {})
         official_youtube_url = official_youtube_by_group.get(detail["group"]) or ""
+        allowlist = allowlists_by_group.get(detail["group"], {})
+        mv_allowlist_urls = allowlist.get("mv_allowlist_urls", [])
         search_query = build_search_query(detail, title_tracks)
         review_reason = override.get("youtube_video_review_reason")
         if not review_reason:
@@ -95,8 +103,13 @@ def build_review_rows(details: list[dict], profiles: list[dict], overrides: dict
                 "title_tracks": title_tracks,
                 "youtube_video_status": status,
                 "official_youtube_url": official_youtube_url,
+                "mv_allowlist_urls": mv_allowlist_urls,
                 "review_reason": review_reason,
-                "recommended_action": build_recommended_action(status, bool(official_youtube_url)),
+                "recommended_action": build_recommended_action(
+                    status,
+                    bool(official_youtube_url),
+                    bool(mv_allowlist_urls),
+                ),
                 "suggested_search_query": search_query,
                 "suggested_search_url": f"https://www.youtube.com/results?search_query={quote_plus(search_query)}",
                 "current_youtube_video_url": detail.get("youtube_video_url") or "",
@@ -135,6 +148,7 @@ def main() -> None:
                 "title_tracks",
                 "youtube_video_status",
                 "official_youtube_url",
+                "mv_allowlist_urls",
                 "review_reason",
                 "recommended_action",
                 "suggested_search_query",
@@ -148,6 +162,7 @@ def main() -> None:
         for row in review_rows:
             output = dict(row)
             output["title_tracks"] = " ; ".join(output["title_tracks"])
+            output["mv_allowlist_urls"] = " ; ".join(output["mv_allowlist_urls"])
             writer.writerow(output)
 
     status_counts: dict[str, int] = {}

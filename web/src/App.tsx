@@ -11,6 +11,7 @@ import upcomingCandidateRows from './data/upcomingCandidates.json'
 import releaseChangeLogRows from './data/releaseChangeLog.json'
 import relatedActOverrideRows from './data/relatedActsOverrides.json'
 import watchlistRows from './data/watchlist.json'
+import youtubeChannelAllowlistRows from './data/youtubeChannelAllowlists.json'
 
 type ReleaseFact = {
   title: string
@@ -48,6 +49,24 @@ type ArtistProfileRow = {
   official_instagram_url: string | null
   representative_image_url: string | null
   representative_image_source: string | null
+}
+
+type YouTubeChannelOwnerType = 'team' | 'label'
+
+type YouTubeChannelSourceRow = {
+  channel_url: string
+  channel_label: string
+  owner_type: YouTubeChannelOwnerType
+  allow_mv_uploads: boolean
+  display_in_team_links: boolean
+  provenance: string
+}
+
+type YouTubeChannelAllowlistRow = {
+  group: string
+  primary_team_channel_url: string | null
+  mv_allowlist_urls: string[]
+  channels: YouTubeChannelSourceRow[]
 }
 
 type ReleaseArtworkRow = {
@@ -1175,6 +1194,7 @@ const unresolved = unresolvedRows as UnresolvedRow[]
 const watchlist = watchlistRows as WatchlistRow[]
 const upcomingCandidates = upcomingCandidateRows as UpcomingCandidateRow[]
 const releaseChangeLog = releaseChangeLogRows as ReleaseChangeLogRow[]
+const youtubeChannelAllowlists = youtubeChannelAllowlistRows as YouTubeChannelAllowlistRow[]
 const teamBadgeAssetByGroup = new Map(teamBadgeAssets.map((row) => [row.group, row]))
 
 const dateFormatter = new Intl.DateTimeFormat('en-CA', {
@@ -1186,6 +1206,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-CA', {
 const releaseCatalogByGroup = new Map(releaseCatalog.map((row) => [row.group, row]))
 const artistProfileByGroup = new Map(artistProfiles.map((row) => [row.group, row]))
 const artistProfileBySlug = new Map(artistProfiles.map((row) => [row.slug, row]))
+const youtubeChannelAllowlistByGroup = new Map(youtubeChannelAllowlists.map((row) => [row.group, row]))
 const releaseArtworkByKey = new Map(
   releaseArtworkCatalog.map((row) => [getReleaseLookupKey(row.group, row.release_title, row.release_date, row.stream), row]),
 )
@@ -5979,6 +6000,7 @@ function buildTeamProfiles() {
       const annualReleaseTimeline = buildAnnualReleaseTimelineSections(verifiedHistory, upcomingSignals)
       const latestRelease = deriveLatestRelease(groupReleases, watchRow, releaseRow)
       const badgeSourceUrl = getTeamBadgeSourceUrl(group)
+      const primaryYouTubeUrl = getPrimaryTeamYouTubeUrl(group)
 
       return {
         group,
@@ -5990,8 +6012,8 @@ function buildTeamProfiles() {
         artistSource: releaseRow?.artist_source ?? latestRelease?.artistSource ?? '',
         xUrl: artistProfile?.official_x_url ?? '',
         instagramUrl: artistProfile?.official_instagram_url ?? '',
-        youtubeUrl: artistProfile?.official_youtube_url ?? null,
-        hasOfficialYouTubeUrl: Boolean(artistProfile?.official_youtube_url),
+        youtubeUrl: primaryYouTubeUrl,
+        hasOfficialYouTubeUrl: Boolean(primaryYouTubeUrl),
         agency: normalizeAgencyName(artistProfile?.agency),
         badgeImageUrl: getTeamBadgeImageUrl(group),
         badgeSourceUrl,
@@ -7045,6 +7067,14 @@ function getTeamBadgeSourceUrl(group: string) {
 
 function getTeamBadgeSourceLabel(group: string) {
   return teamBadgeAssetByGroup.get(group)?.badge_source_label ?? null
+}
+
+function getPrimaryTeamYouTubeUrl(group: string) {
+  return (
+    youtubeChannelAllowlistByGroup.get(group)?.primary_team_channel_url ??
+    artistProfileByGroup.get(group)?.official_youtube_url ??
+    null
+  )
 }
 
 function getTeamDisplayName(group: string) {
