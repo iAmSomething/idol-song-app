@@ -1443,6 +1443,28 @@
     "artist_source": "https://musicbrainz.org/artist/9b779913-3d52-4ab7-bf38-889c2dcabbd1"
   },
   {
+    "group": "XLOV",
+    "artist_name_mb": "XLOV",
+    "artist_mbid": "92449998-96fa-45b5-8a67-abb5ff975aa1",
+    "latest_song": {
+      "title": "I ONE",
+      "date": "2025-06-13",
+      "source": "https://musicbrainz.org/release-group/f4743ab2-e6d6-41f7-bf09-6c5090cf4cf0",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": {
+      "title": "UXLXVE",
+      "date": "2025-11-05",
+      "source": "https://musicbrainz.org/release-group/01b29180-b871-4122-bf4c-1758800d6333",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/92449998-96fa-45b5-8a67-abb5ff975aa1"
+  },
+  {
     "group": "YOUNG POSSE",
     "artist_name_mb": "YOUNG POSSE",
     "artist_mbid": "427150d2-674f-47b2-a1a1-7bb4a9e0d070",

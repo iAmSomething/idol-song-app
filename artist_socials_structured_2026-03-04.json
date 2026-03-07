@@ -826,6 +826,20 @@
     "note": ""
   },
   {
+    "artist": "XLOV",
+    "tier": "longtail",
+    "parent_group": null,
+    "x_url": "https://x.com/XLOV_official",
+    "x_source": "manual_verified",
+    "instagram_url": "https://www.instagram.com/xlov_official/",
+    "instagram_source": "manual_verified",
+    "completeness": "both",
+    "original_status": "manual_seed",
+    "wikidata_id": null,
+    "wikidata_source": null,
+    "note": "manual_seed_2026_03_07"
+  },
+  {
     "artist": "ZEROBASEONE",
     "tier": "core",
     "parent_group": null,
