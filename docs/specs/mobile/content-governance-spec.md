@@ -42,6 +42,12 @@
 
 ## 6. Alias 운영 원칙
 - 공식명, 한글명, 약칭, 표기 변형을 search alias로 유지한다.
+- tracked team 신규 추가 시 `search_aliases`에는 최소 1개의 Korean-searchable alias를 같이 넣는다.
+- 공식 한글명이 없으면 아래 우선순위로 fallback을 정한다.
+  1. 국내 기사/커뮤니티에서 널리 쓰는 한글 표기
+  2. 발음 기반 Hangul rendering
+  3. 제품 내에서 일관되게 쓰는 보수적 transcription
+- 약칭/닉네임은 널리 쓰이고 다른 팀과 충돌 위험이 낮을 때만 추가한다.
 - 사용자 체감 검색 실패를 유발하는 케이스는 큐레이션 우선순위가 높다.
 - alias는 장르 판정 라벨이 아니라 검색 편의 자산이다.
 
