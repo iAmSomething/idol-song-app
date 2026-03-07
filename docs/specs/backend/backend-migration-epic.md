@@ -119,7 +119,8 @@ shared backend platform 방향을 고정하는 것이다.
 
 - `#144` 완료
 - `#145` 완료
-- `#147`, `#148`, `#155`, `#156`, `#157` 진행 전
+- `#147` 완료
+- `#148`, `#155`, `#156`, `#157` 진행 전
 
 ## 8. Dependency Order
 
@@ -145,29 +146,22 @@ shared backend platform 방향을 고정하는 것이다.
 
 실구현 시작 순서는 아래로 고정한다.
 
-### Step 1. `#147`
-
-- target backend runtime
-- service boundaries
-- worker / API / projection refresh 책임 분리
-- Neon / Fastify / scheduled worker shape 확정
-
-### Step 2. `#148`
+### Step 1. `#148`
 
 - shared read contract
 - surface별 payload와 parity target 확정
 
-### Step 3. `#155`
+### Step 2. `#155`
 
 - first schema migration skeleton
 - canonical table creation baseline
 
-### Step 4. `#157`
+### Step 3. `#157`
 
 - baseline import/backfill
 - import audit report
 
-### Step 5. `#156`
+### Step 4. `#156`
 
 - Fastify read API skeleton
 - shadow endpoint base
@@ -198,5 +192,6 @@ parent epic 검증은 아래 기준으로 본다.
 ## 13. References
 
 - Canonical model: [canonical-backend-data-model.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/canonical-backend-data-model.md)
+- Runtime baseline: [runtime-and-service-boundaries.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/runtime-and-service-boundaries.md)
 - Rollout plan: [phased-rollout-plan.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/phased-rollout-plan.md)
 - Existing mobile docs umbrella: `#61`
