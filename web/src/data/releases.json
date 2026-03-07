@@ -1285,6 +1285,21 @@
     "artist_source": "https://musicbrainz.org/artist/8da127cc-c432-418f-b356-ef36210d82ac"
   },
   {
+    "group": "TUNEXX",
+    "artist_name_mb": "TUNEXX",
+    "artist_mbid": "45745bcc-c6bf-46cc-9e18-9e2e98ad4358",
+    "latest_song": null,
+    "latest_album": {
+      "title": "SET BY US ONLY",
+      "date": "2026-03-03",
+      "source": "https://musicbrainz.org/release-group/f38e3d81-341e-4828-8a18-1f34d3ce4cb5",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/45745bcc-c6bf-46cc-9e18-9e2e98ad4358"
+  },
+  {
     "group": "TWS",
     "artist_name_mb": "TWS",
     "artist_mbid": "f68e8675-5ad8-47eb-b7ec-da9cc210e0b4",
