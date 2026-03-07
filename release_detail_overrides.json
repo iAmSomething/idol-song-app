@@ -77,7 +77,11 @@
     "release_date": "2026-02-26",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "title_tracks": [
+      "GO"
+    ],
+    "title_track_provenance": "https://yg-life.com/archives/203186"
   },
   {
     "group": "BOYNEXTDOOR",
@@ -165,7 +169,12 @@
     "release_date": "2026-02-23",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nO8Pcb0tAIwvqIb6on8b1QXJ1VhnHHgdE",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "title_tracks": [
+      "BLACKHOLE",
+      "BANG BANG"
+    ],
+    "title_track_provenance": "https://enews.imbc.com/News/RetrieveNewsInfo/452862"
   },
   {
     "group": "izna",

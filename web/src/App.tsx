@@ -76,6 +76,7 @@ type TeamBadgeAssetRow = {
 type ReleaseDetailTrack = {
   order: number
   title: string
+  is_title_track?: boolean
 }
 
 type ReleaseDetailRow = {
@@ -2744,7 +2745,7 @@ function ReleaseDetailPage({
   const artwork = getReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind)
   const releaseDetail = getReleaseDetail(group, album.title, album.date, album.stream, album.release_kind)
   const releaseEnrichment = getReleaseEnrichment(group, album.title, album.date, album.stream, album.release_kind)
-  const previewTracks = releaseDetail.tracks.length
+  const previewTracks: ReleaseDetailTrack[] = releaseDetail.tracks.length
     ? releaseDetail.tracks
     : buildAlbumPreviewTracks(album, group, language).map((title, index) => ({ order: index + 1, title }))
   const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail, album.music_handoffs)
@@ -2813,7 +2814,12 @@ function ReleaseDetailPage({
               <div key={`${album.title}-${track.title}-${track.order}`} className="track-row">
                 <div className="track-row-main">
                   <span>{`${track.order}`.padStart(2, '0')}</span>
-                  <strong>{track.title}</strong>
+                  <div className="track-row-title-group">
+                    <strong>{track.title}</strong>
+                    {track.is_title_track ? (
+                      <span className="title-track-badge">{`★ ${copy.contextTagLabels.title_track}`}</span>
+                    ) : null}
+                  </div>
                 </div>
                 <MusicHandoffRow group={group} title={track.title} language={language} compact includeMv={false} />
               </div>
