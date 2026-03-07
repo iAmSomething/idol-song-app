@@ -4,12 +4,27 @@
 
 현재 포함 범위:
 
+- `src/`
+  - Fastify read API skeleton
 - `sql/migrations/`
   - Neon baseline schema migration
 - `sql/README.md`
   - migration apply / verify run note
 - `scripts/`
   - plain SQL migration apply / schema verify helper
+
+## 로컬 실행
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+cd backend
+npm install
+npm run build
+PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
+```
 
 원칙:
 
