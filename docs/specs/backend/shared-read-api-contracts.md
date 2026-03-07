@@ -310,6 +310,36 @@ lookup helper:
 
 - legacy JSON exact key에서 API `release_id`로 넘어가는 migration helper
 
+lookup helper response:
+
+```json
+{
+  "meta": {
+    "generated_at": "2026-03-07T09:00:00Z",
+    "timezone": "Asia/Seoul",
+    "lookup": {
+      "entity_slug": "blackpink",
+      "title": "DEADLINE",
+      "date": "2026-02-27",
+      "stream": "album"
+    }
+  },
+  "data": {
+    "release_id": "rel_blackpink_deadline_2026_02_27_album",
+    "canonical_path": "/v1/releases/rel_blackpink_deadline_2026_02_27_album",
+    "release": {
+      "release_id": "rel_blackpink_deadline_2026_02_27_album",
+      "entity_slug": "blackpink",
+      "display_name": "BLACKPINK",
+      "release_title": "DEADLINE",
+      "release_date": "2026-02-27",
+      "stream": "album",
+      "release_kind": "mini"
+    }
+  }
+}
+```
+
 ### 8.4 Response Responsibility
 
 - release meta
