@@ -1,6 +1,7 @@
 import json
 import time
 import unicodedata
+from collections import Counter
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
@@ -14,6 +15,11 @@ OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 USER_AGENT = "idol-song-app/1.0 (https://github.com/iAmSomething/idol-song-app)"
 REQUEST_DELAY_SECONDS = 0.35
 MAX_RETRIES = 4
+YOUTUBE_VIDEO_STATUS_RELATION = "relation_match"
+YOUTUBE_VIDEO_STATUS_MANUAL = "manual_override"
+YOUTUBE_VIDEO_STATUS_REVIEW = "needs_review"
+YOUTUBE_VIDEO_STATUS_NO_MV = "no_mv"
+YOUTUBE_VIDEO_STATUS_UNRESOLVED = "unresolved"
 
 
 def get_json(session: requests.Session, url: str, params: Dict[str, object]) -> Dict:
@@ -244,6 +250,8 @@ def build_empty_detail(item: Dict) -> Dict:
         "youtube_music_url": None,
         "youtube_video_url": None,
         "youtube_video_id": None,
+        "youtube_video_status": YOUTUBE_VIDEO_STATUS_UNRESOLVED,
+        "youtube_video_provenance": None,
         "notes": "Release detail seed unavailable in MusicBrainz; UI fallback applies.",
     }
 
@@ -263,15 +271,29 @@ def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tup
 
         youtube_video_url = override.get("youtube_video_url")
         youtube_video_id = override.get("youtube_video_id")
+        override_video_status = override.get("youtube_video_status")
+        override_review_reason = override.get("youtube_video_review_reason")
         if youtube_video_url or youtube_video_id:
             resolved_video_id = youtube_video_id or extract_youtube_video_id(youtube_video_url or "")
             if resolved_video_id:
                 detail["youtube_video_id"] = resolved_video_id
                 detail["youtube_video_url"] = youtube_video_url or build_youtube_video_url(resolved_video_id)
                 video_provenance = override.get("youtube_video_provenance") or "curated official YouTube watch URL"
+                detail["youtube_video_status"] = YOUTUBE_VIDEO_STATUS_MANUAL
+                detail["youtube_video_provenance"] = video_provenance
                 video_note = f" Canonical YouTube MV preserved from release_detail_overrides.json ({video_provenance})."
                 if video_note not in detail["notes"]:
                     detail["notes"] += video_note
+        elif override_video_status == YOUTUBE_VIDEO_STATUS_NO_MV:
+            detail["youtube_video_id"] = None
+            detail["youtube_video_url"] = None
+            detail["youtube_video_status"] = YOUTUBE_VIDEO_STATUS_NO_MV
+            detail["youtube_video_provenance"] = override.get("youtube_video_provenance")
+        elif override_video_status == YOUTUBE_VIDEO_STATUS_REVIEW:
+            detail["youtube_video_id"] = None
+            detail["youtube_video_url"] = None
+            detail["youtube_video_status"] = YOUTUBE_VIDEO_STATUS_REVIEW
+            detail["youtube_video_provenance"] = override_review_reason or override.get("youtube_video_provenance")
 
     title_track_titles = override.get("title_tracks") if override else None
     if not title_track_titles:
@@ -321,6 +343,12 @@ def build_detail_row(session: requests.Session, item: Dict) -> Dict:
             "youtube_music_url": youtube_music_url,
             "youtube_video_url": youtube_video_url,
             "youtube_video_id": youtube_video_id,
+            "youtube_video_status": (
+                YOUTUBE_VIDEO_STATUS_RELATION if youtube_video_url or youtube_video_id else YOUTUBE_VIDEO_STATUS_UNRESOLVED
+            ),
+            "youtube_video_provenance": (
+                "musicbrainz relation url-rels" if youtube_video_url or youtube_video_id else None
+            ),
             "notes": build_notes(len(tracks), item["release_kind"], spotify_url, youtube_music_url, youtube_video_url),
         }
 
@@ -363,6 +391,7 @@ def main() -> None:
     with_spotify = sum(1 for row in details if row["spotify_url"])
     with_youtube_music = sum(1 for row in details if row["youtube_music_url"])
     with_video = sum(1 for row in details if row["youtube_video_id"] or row.get("youtube_video_url"))
+    video_status_counts = Counter(row.get("youtube_video_status", YOUTUBE_VIDEO_STATUS_UNRESOLVED) for row in details)
 
     print(
         json.dumps(
@@ -373,6 +402,7 @@ def main() -> None:
                 "with_youtube_music": with_youtube_music,
                 "with_video": with_video,
                 "youtube_music_overrides": applied_overrides,
+                "youtube_video_status_counts": dict(video_status_counts),
             },
             ensure_ascii=False,
             indent=2,

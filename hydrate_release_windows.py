@@ -14,6 +14,7 @@ from urllib.parse import parse_qs, urlparse
 from zoneinfo import ZoneInfo
 
 import requests
+import build_release_details_musicbrainz as release_detail_builder
 
 
 ROOT = Path(__file__).resolve().parent
@@ -33,6 +34,7 @@ WINDOW_PHASES = {
     1: "d_plus_1",
 }
 WINDOW_PHASE_ORDER = {"d_minus_1": 0, "d_day": 1, "d_plus_1": 2}
+DETAIL_OVERRIDE_BY_KEY = release_detail_builder.load_detail_overrides()
 
 ALIASES = {
     "(G)I-DLE": ["(G)I-DLE", "GIDLE", "i-dle", "(여자)아이들"],
@@ -465,18 +467,13 @@ def extract_tracks(release: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def extract_youtube_video_id(resource: str) -> Optional[str]:
-    parsed = urlparse(resource)
-    host = parsed.netloc.lower()
-    if "youtu.be" in host:
-        return parsed.path.strip("/") or None
-    if "youtube.com" in host:
-        return parse_qs(parsed.query).get("v", [None])[0]
-    return None
+    return release_detail_builder.extract_youtube_video_id(resource)
 
 
-def extract_urls(relations: list[dict[str, Any]]) -> tuple[Optional[str], Optional[str], Optional[str]]:
+def extract_urls(relations: list[dict[str, Any]]) -> tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
     spotify_url = None
     youtube_music_url = None
+    youtube_video_url = None
     youtube_video_id = None
     for relation in relations:
         resource = relation.get("url", {}).get("resource")
@@ -487,12 +484,21 @@ def extract_urls(relations: list[dict[str, Any]]) -> tuple[Optional[str], Option
             spotify_url = resource
         if youtube_music_url is None and "music.youtube.com/" in lowered:
             youtube_music_url = resource
-        if youtube_video_id is None:
-            youtube_video_id = extract_youtube_video_id(resource)
-    return spotify_url, youtube_music_url, youtube_video_id
+        if youtube_video_url is None:
+            candidate_video_id = extract_youtube_video_id(resource)
+            if candidate_video_id:
+                youtube_video_url = resource
+                youtube_video_id = candidate_video_id
+    return spotify_url, youtube_music_url, youtube_video_url, youtube_video_id
 
 
-def build_notes(track_count: int, release_kind: str, spotify_url: Optional[str], youtube_music_url: Optional[str]) -> str:
+def build_notes(
+    track_count: int,
+    release_kind: str,
+    spotify_url: Optional[str],
+    youtube_music_url: Optional[str],
+    youtube_video_url: Optional[str],
+) -> str:
     kind_label = release_kind.upper()
     if track_count:
         note = f"Representative MusicBrainz {kind_label} seed with {track_count} track"
@@ -507,6 +513,8 @@ def build_notes(track_count: int, release_kind: str, spotify_url: Optional[str],
         linked_services.append("Spotify")
     if youtube_music_url:
         linked_services.append("YouTube Music")
+    if youtube_video_url:
+        linked_services.append("YouTube MV")
     if linked_services:
         note += f" Canonical links: {', '.join(linked_services)}."
     return note
@@ -522,7 +530,10 @@ def build_empty_detail(item: dict[str, Any]) -> dict[str, Any]:
         "tracks": [],
         "spotify_url": None,
         "youtube_music_url": None,
+        "youtube_video_url": None,
         "youtube_video_id": None,
+        "youtube_video_status": release_detail_builder.YOUTUBE_VIDEO_STATUS_UNRESOLVED,
+        "youtube_video_provenance": None,
         "notes": "Release detail seed unavailable in MusicBrainz; UI fallback applies.",
     }
 
@@ -567,8 +578,8 @@ def build_detail_row(session: requests.Session, item: dict[str, Any]) -> dict[st
             {"inc": "recordings+url-rels"},
         )
         tracks = extract_tracks(release)
-        spotify_url, youtube_music_url, youtube_video_id = extract_urls(release.get("relations", []))
-        if not tracks and not spotify_url and not youtube_music_url and not youtube_video_id:
+        spotify_url, youtube_music_url, youtube_video_url, youtube_video_id = extract_urls(release.get("relations", []))
+        if not tracks and not spotify_url and not youtube_music_url and not youtube_video_url and not youtube_video_id:
             continue
 
         return {
@@ -580,8 +591,17 @@ def build_detail_row(session: requests.Session, item: dict[str, Any]) -> dict[st
             "tracks": tracks,
             "spotify_url": spotify_url,
             "youtube_music_url": youtube_music_url,
+            "youtube_video_url": youtube_video_url,
             "youtube_video_id": youtube_video_id,
-            "notes": build_notes(len(tracks), item["release_kind"], spotify_url, youtube_music_url),
+            "youtube_video_status": (
+                release_detail_builder.YOUTUBE_VIDEO_STATUS_RELATION
+                if youtube_video_url or youtube_video_id
+                else release_detail_builder.YOUTUBE_VIDEO_STATUS_UNRESOLVED
+            ),
+            "youtube_video_provenance": (
+                "musicbrainz relation url-rels" if youtube_video_url or youtube_video_id else None
+            ),
+            "notes": build_notes(len(tracks), item["release_kind"], spotify_url, youtube_music_url, youtube_video_url),
         }
     return fallback
 
@@ -711,9 +731,9 @@ def hydrate_group(
     detail_rows: list[dict[str, Any]] = []
     for item in build_release_items(release_row):
         try:
-            detail_rows.append(build_detail_row(session, item))
+            detail_rows.append(release_detail_builder.apply_detail_override(build_detail_row(session, item), DETAIL_OVERRIDE_BY_KEY)[0])
         except Exception:
-            detail_rows.append(build_empty_detail(item))
+            detail_rows.append(release_detail_builder.apply_detail_override(build_empty_detail(item), DETAIL_OVERRIDE_BY_KEY)[0])
 
     artwork_rows: list[dict[str, Any]] = []
     if release_row["latest_song"]:

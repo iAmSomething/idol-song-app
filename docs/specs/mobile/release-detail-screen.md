@@ -47,6 +47,7 @@
 - `youtube_video_id` 또는 canonical `youtube_video_url`이 있으면 임베드 또는 바로가기
 - 허용 URL: `youtube.com/watch?v=...`, `youtu.be/...`, `youtube.com/shorts/...`
 - 없으면 블록 전체 숨김
+- `youtube_video_status`가 `needs_review`, `no_mv`, `unresolved`인 경우 MV 블록은 숨기고 misleading fallback을 만들지 않는다
 
 ## 5. 액션 배치 계약
 - 앨범 레벨 서비스 버튼은 cover/meta 아래 첫 액션 블록이다.
@@ -88,6 +89,7 @@
 - 커버: `releaseArtwork.json`
 - 트랙 리스트: `releaseDetails.tracks`
 - MV: `releaseDetails.youtube_video_id` 또는 `releaseDetails.youtube_video_url`
+- MV 상태: `releaseDetails.youtube_video_status`
 - 팀 표기 fallback: `artistProfiles.display_name`
 
 ## 9. 상태 매트릭스

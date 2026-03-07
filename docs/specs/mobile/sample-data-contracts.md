@@ -79,6 +79,8 @@
   "youtube_music_url": "https://music.youtube.com/browse/...",
   "youtube_video_url": "https://www.youtube.com/watch?v=abc123xyz",
   "youtube_video_id": "abc123xyz",
+  "youtube_video_status": "manual_override",
+  "youtube_video_provenance": "official artist channel watch URL",
   "tracks": [
     {
       "order": 1,
