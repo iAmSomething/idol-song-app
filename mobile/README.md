@@ -26,6 +26,8 @@
   - env 로딩 + runtime config validation entrypoint
 - `src/config/runtime.ts`
   - 앱 런타임에서 쓰는 validated config accessor
+- `src/config/featureGates.ts`
+  - gate registry / helper / off fallback definition
 - `src/utils/assetRegistry.ts`
   - local bundled asset lookup entrypoint
 - `eas.json`
@@ -121,9 +123,27 @@ profile 차이는 아래 범위로만 제한한다.
   - 이 경우 `EXPO_PUBLIC_REMOTE_DATASET_URL`이 필수다.
 - `EXPO_PUBLIC_ENABLE_ANALYTICS=true`
   - 이 경우 `EXPO_PUBLIC_ANALYTICS_WRITE_KEY`가 필수다.
+- `EXPO_PUBLIC_ENABLE_SHARE_ACTIONS`
+  - share CTA 노출 여부를 제어한다.
 - invalid config
   - `app.config.ts` 단계와 `src/config/runtime.ts` 단계에서 둘 다 명시적으로 실패시킨다.
   - silent fallback으로 숨기지 않는다.
+
+## feature-gate baseline
+
+- gate registry는 `src/config/featureGates.ts`에 둔다.
+- 현재 지원 gate
+  - `radar_enabled`
+  - `analytics_enabled`
+  - `remote_dataset_enabled`
+  - `mv_embed_enabled`
+  - `share_actions_enabled`
+- off fallback
+  - radar: 탭 숨김 또는 read-only placeholder
+  - analytics: 이벤트 미발행, UI 변화 없음
+  - remote dataset: bundled dataset only
+  - MV embed: embed 숨김, external watch CTA 유지
+  - share actions: 공유 버튼 비노출
 
 라우팅 구조, 화면 contract, field shape는 profile에 따라 달라지지 않는다.
 

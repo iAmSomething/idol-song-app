@@ -23,6 +23,7 @@ export type MobileRuntimeConfig = {
     analytics: boolean;
     remoteRefresh: boolean;
     mvEmbed: boolean;
+    shareActions: boolean;
   };
   build: {
     commitSha: string | null;
@@ -149,6 +150,7 @@ export function parseRuntimeConfig(input: unknown): MobileRuntimeConfig {
       analytics: readBoolean(featureGates.analytics, 'featureGates.analytics'),
       remoteRefresh: readBoolean(featureGates.remoteRefresh, 'featureGates.remoteRefresh'),
       mvEmbed: readBoolean(featureGates.mvEmbed, 'featureGates.mvEmbed'),
+      shareActions: readBoolean(featureGates.shareActions, 'featureGates.shareActions'),
     },
     build: {
       commitSha: readString(build.commitSha, 'build.commitSha', false),

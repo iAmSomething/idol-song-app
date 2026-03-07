@@ -4,6 +4,7 @@
 
 - `components/`: 표시 컴포넌트
 - `config/`: validated runtime config accessor
+  - `featureGates.ts`: gate registry / fallback metadata / helper
 - `features/`: 화면 composition / binding
 - `selectors/`: display model selector / adapter
 - `services/`: external handoff / helper

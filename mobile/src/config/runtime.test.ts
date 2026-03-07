@@ -30,6 +30,7 @@ describe('parseRuntimeConfig', () => {
         analytics: false,
         remoteRefresh: false,
         mvEmbed: true,
+        shareActions: true,
       },
       build: {
         commitSha: {},
@@ -64,6 +65,7 @@ describe('parseRuntimeConfig', () => {
           analytics: true,
           remoteRefresh: false,
           mvEmbed: true,
+          shareActions: true,
         },
         build: {
           commitSha: null,
@@ -93,6 +95,7 @@ describe('parseRuntimeConfig', () => {
           analytics: false,
           remoteRefresh: true,
           mvEmbed: true,
+          shareActions: true,
         },
         build: {
           commitSha: null,
