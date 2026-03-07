@@ -16263,6 +16263,41 @@
     ]
   },
   {
+    "group": "XLOV",
+    "artist_name_mb": "XLOV",
+    "artist_mbid": "92449998-96fa-45b5-8a67-abb5ff975aa1",
+    "artist_source": "https://musicbrainz.org/artist/92449998-96fa-45b5-8a67-abb5ff975aa1",
+    "releases": [
+      {
+        "title": "UXLXVE",
+        "date": "2025-11-05",
+        "source": "https://musicbrainz.org/release-group/01b29180-b871-4122-bf4c-1758800d6333",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "I ONE",
+        "date": "2025-06-13",
+        "source": "https://musicbrainz.org/release-group/f4743ab2-e6d6-41f7-bf09-6c5090cf4cf0",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "I’mma Be",
+        "date": "2025-01-07",
+        "source": "https://musicbrainz.org/release-group/f52cc6b6-7f92-4acc-8e28-501e81081fc8",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      }
+    ]
+  },
+  {
     "group": "YENA",
     "artist_name_mb": "YENA",
     "artist_mbid": "745c5b92-325f-451d-bd52-e6b95229c776",

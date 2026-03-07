@@ -1798,6 +1798,23 @@
     ]
   },
   {
+    "slug": "xlov",
+    "group": "XLOV",
+    "display_name": "XLOV",
+    "aliases": [],
+    "agency": "257 Entertainment",
+    "official_youtube_url": "https://www.youtube.com/@XLOV_official",
+    "official_x_url": "https://x.com/XLOV_official",
+    "official_instagram_url": "https://www.instagram.com/xlov_official/",
+    "representative_image_url": null,
+    "representative_image_source": null,
+    "search_aliases": [
+      "엑스러브",
+      "xluv"
+    ],
+    "debut_year": 2025
+  },
+  {
     "slug": "yena",
     "group": "YENA",
     "display_name": "YENA",

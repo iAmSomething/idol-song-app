@@ -31,6 +31,7 @@ ALIASES = {
     "NCT 127": ["NCT 127"],
     "NCT DREAM": ["NCT DREAM"],
     "NCT WISH": ["NCT WISH"],
+    "XLOV": ["XLOV", "엑스러브", "xluv"],
     "QWER": ["QWER"],
     "IVE": ["IVE"],
     "WJSN": ["WJSN", "Cosmic Girls", "우주소녀"],
@@ -44,6 +45,7 @@ QUERY_OVERRIDE = {
     "woo!ah!": 'artist:"wooah"',
     "The KingDom": 'artist:"The KingDom"',
     "SAY MY NAME": 'artist:"SAY MY NAME"',
+    "XLOV": 'artist:"XLOV"',
     "IVE": 'artist:"IVE"',
     "WJSN": 'alias:"WJSN"',
 }

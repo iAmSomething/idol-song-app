@@ -26,6 +26,7 @@ SEARCH_QUERY_OVERRIDE = {
     "izna": ['"izna" kpop comeback'],
     "woo!ah!": ['"woo!ah!" comeback'],
     "xikers": ['"xikers" comeback'],
+    "XLOV": ['"XLOV" kpop comeback', '"엑스러브" 컴백', '"xluv" comeback kpop'],
 }
 
 LONG_GAP_DAYS = 365
