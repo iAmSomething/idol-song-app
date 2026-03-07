@@ -4,6 +4,9 @@
 이 문서는 모바일 UI와 현재 웹 데이터 산출물 사이의 계약을 정의한다.
 핵심은 각 화면/컴포넌트가 어떤 JSON 필드를 읽고, 값이 없을 때 어떤 fallback을 쓰는지 명확히 하는 것이다.
 
+현재 문서는 "지금 앱이 읽는 JSON 계약"을 다루며, 장기 canonical source-of-truth는
+`../backend/canonical-backend-data-model.md`에서 별도로 정의한다.
+
 ## 2. 주요 데이터 소스
 1. `releases.json`
 2. `watchlist.json`
