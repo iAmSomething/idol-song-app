@@ -28,6 +28,8 @@
   - Expo build profile baseline
 - `tsconfig.json`
   - TypeScript baseline
+- `.github/workflows/mobile-quality.yml`
+  - mobile lint / typecheck / test CI gate
 
 ## 로컬 시작 기준
 
@@ -135,6 +137,8 @@ profile 차이는 아래 범위로만 제한한다.
   - strict TypeScript gate
 - `npm run test`
   - runtime config unit test + route shell smoke test baseline
+- `.github/workflows/mobile-quality.yml`
+  - `mobile/**` 변경과 workflow 변경에만 반응하는 CI gate
 
 현재 test 범위는 얇게 시작한다.
 
