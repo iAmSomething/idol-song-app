@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
+import { useDeferredValue, useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
 import './App.css'
 import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
@@ -225,6 +225,59 @@ type ReleaseDetailApiRequest = {
   date: string
   stream: VerifiedRelease['stream']
   release_kind: VerifiedRelease['release_kind']
+}
+
+type SearchSourceMode = 'json' | 'api'
+type SearchSourceState = 'json' | 'api' | 'json_fallback'
+
+type SearchApiEntityMatch = {
+  entity_slug?: string
+}
+
+type SearchApiReleaseMatch = {
+  entity_slug?: string
+  release_title?: string
+  release_date?: string
+  stream?: string
+  release_kind?: string | null
+}
+
+type SearchApiUpcomingMatch = {
+  upcoming_signal_id?: string
+  entity_slug?: string
+  headline?: string
+  scheduled_date?: string | null
+  scheduled_month?: string | null
+  date_precision?: string
+  date_status?: string
+  release_format?: string | null
+  confidence_score?: number | null
+  source_type?: string | null
+  source_url?: string | null
+  evidence_summary?: string | null
+}
+
+type SearchApiResponse = {
+  data?: {
+    entities?: SearchApiEntityMatch[]
+    releases?: SearchApiReleaseMatch[]
+    upcoming?: SearchApiUpcomingMatch[]
+  }
+  error?: {
+    code?: string
+  }
+}
+
+type SearchSurfaceSnapshot = {
+  entities: TeamProfile[]
+  releases: VerifiedRelease[]
+  upcoming: UpcomingCandidateRow[]
+}
+
+type SearchSurfaceResource = SearchSurfaceSnapshot & {
+  source: SearchSourceState
+  loading: boolean
+  errorCode: string | null
 }
 
 type ActType = 'group' | 'solo' | 'unit'
@@ -591,6 +644,9 @@ const TRANSLATIONS = {
     searchLabel: '그룹, 곡, 앨범 검색',
     searchShort: '검색',
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
+    searchBackendLoading: 'backend /v1/search 결과를 확인하는 중입니다. 현재는 local JSON 결과를 먼저 표시합니다.',
+    searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 우선 사용 중입니다.',
+    searchBackendFallback: 'backend 검색 응답을 불러오지 못해 local JSON 결과로 fallback 중입니다.',
     monthSummaryVerified: '검증됨',
     monthSummaryScheduled: '예정',
     filterLabels: {
@@ -831,6 +887,11 @@ const TRANSLATIONS = {
     searchLabel: 'Search group, song, or album',
     searchShort: 'Search',
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
+    searchBackendLoading:
+      'Checking backend /v1/search results now. The UI keeps the local JSON-backed results visible first.',
+    searchBackendActive: 'Search results are currently coming from the backend /v1/search response.',
+    searchBackendFallback:
+      'The backend search response was unavailable, so the UI is falling back to local JSON-backed results.',
     monthSummaryVerified: 'verified',
     monthSummaryScheduled: 'scheduled',
     filterLabels: {
@@ -1287,11 +1348,14 @@ const LONG_GAP_THRESHOLD_DAYS = 365
 const ROOKIE_RECENT_YEAR_WINDOW = 2
 const AGENCY_UNKNOWN_FILTER = 'agency_unknown'
 const RELEASE_DETAIL_SOURCE_QUERY_PARAM = 'releaseDetailSource'
-const RELEASE_DETAIL_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '')
+const BACKEND_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '')
 const DEFAULT_RELEASE_DETAIL_SOURCE: ReleaseDetailSourceMode =
   (import.meta.env.VITE_RELEASE_DETAIL_SOURCE ?? '').trim().toLowerCase() === 'api' ? 'api' : 'json'
+const DEFAULT_SEARCH_SOURCE: SearchSourceMode =
+  (import.meta.env.VITE_SEARCH_SOURCE ?? '').trim().toLowerCase() === 'api' ? 'api' : 'json'
 const releaseDetailApiIdCache = new Map<string, string>()
 const releaseDetailApiSnapshotCache = new Map<string, ReleaseDetailApiSnapshot>()
+const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const teamBadgeAssets = teamBadgeAssetRows as TeamBadgeAssetRow[]
@@ -1472,6 +1536,7 @@ function App() {
     month: 'long',
     day: 'numeric',
   })
+  const deferredSearch = useDeferredValue(search)
   const weekdayFormatter = new Intl.DateTimeFormat(copy.locale, {
     weekday: 'short',
   })
@@ -1527,6 +1592,33 @@ function App() {
       matchesAgencyFilter(item.group, selectedAgency) &&
       matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly),
   )
+  const searchSurfaceFallbackSnapshot: SearchSurfaceSnapshot = {
+    entities: filteredTeams.slice(0, 12),
+    releases: filteredReleases.slice(0, 10),
+    upcoming: filteredUpcoming,
+  }
+  const searchSourceMode = DEFAULT_SEARCH_SOURCE
+  const searchSurfaceResource = useSearchSurfaceResource({
+    search: deferredSearch,
+    sourceMode: searchSourceMode,
+    fallbackSnapshot: searchSurfaceFallbackSnapshot,
+  })
+  const isSearchCutoverActive = search.trim().length > 0 && searchSourceMode === 'api'
+  const visibleSearchTeams = isSearchCutoverActive ? searchSurfaceResource.entities : searchSurfaceFallbackSnapshot.entities
+  const visibleSearchReleases = isSearchCutoverActive
+    ? searchSurfaceResource.releases
+    : searchSurfaceFallbackSnapshot.releases
+  const visibleSearchUpcoming = isSearchCutoverActive ? searchSurfaceResource.upcoming : searchSurfaceFallbackSnapshot.upcoming
+  const searchSurfaceMessage =
+    isSearchCutoverActive
+      ? searchSurfaceResource.source === 'api'
+        ? copy.searchBackendActive
+        : searchSurfaceResource.loading
+          ? copy.searchBackendLoading
+          : searchSurfaceResource.source === 'json_fallback'
+            ? copy.searchBackendFallback
+            : null
+      : null
   const filteredUpcomingSignals = filteredUpcoming
     .flatMap((item) => expandUpcomingCandidate(item))
     .sort((left, right) => left.dateValue.getTime() - right.dateValue.getTime())
@@ -1948,11 +2040,11 @@ function App() {
             </div>
           </div>
 
-          <div className="context-header-controls">
-            <div className="context-header-search-row">
-              <label className="search-field">
-                <span>{copy.searchLabel}</span>
-                <input
+            <div className="context-header-controls">
+              <div className="context-header-search-row">
+                <label className="search-field">
+                  <span>{copy.searchLabel}</span>
+                  <input
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder={copy.searchPlaceholder}
@@ -1970,13 +2062,14 @@ function App() {
                   >
                     {copy.languageNames[option]}
                   </button>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+              {searchSurfaceMessage ? <p className="inline-note">{searchSurfaceMessage}</p> : null}
 
-            <article className="context-highlight-card">
-              <div className="context-highlight-head">
-                <div>
+              <article className="context-highlight-card">
+                <div className="context-highlight-head">
+                  <div>
                   <p className="panel-label">{copy.monthlyHighlightLabel}</p>
                   <h2>{nearestMonthlySignal ? nearestMonthlySignal.headline : copy.monthlyNearestEmpty}</h2>
                 </div>
@@ -2727,12 +2820,12 @@ function App() {
                   <p className="panel-label">{copy.upcomingScan}</p>
                   <h2>{copy.upcomingTitle}</h2>
                 </div>
-                <span className="sidebar-panel-count">{filteredUpcoming.length}</span>
+                <span className="sidebar-panel-count">{visibleSearchUpcoming.length}</span>
               </div>
               <div className="sidebar-upcoming-panel-body">
-                {filteredUpcoming.length ? (
+                {visibleSearchUpcoming.length ? (
                   <div className="feed-list">
-                    {filteredUpcoming.map((item) => (
+                    {visibleSearchUpcoming.map((item) => (
                       <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row signal-row-compact">
                         <div>
                           <div className="signal-head">
@@ -2827,7 +2920,7 @@ function App() {
               <p className="panel-label">{copy.recentFeed}</p>
               <h2>{copy.newestReleasesFirst}</h2>
               <div className="feed-list">
-                {filteredReleases.slice(0, 10).map((item) => (
+                {visibleSearchReleases.map((item) => (
                   <article key={`${item.group}-${item.stream}-${item.title}`} className="feed-row">
                     <div>
                       <div className="signal-head">
@@ -2858,8 +2951,8 @@ function App() {
               <p className="panel-label">{teamCopy.pagesPanelLabel}</p>
               <h2>{teamCopy.pagesPanelTitle}</h2>
               <div className="team-directory">
-                {filteredTeams.length ? (
-                  filteredTeams.slice(0, 12).map((team) => (
+                {visibleSearchTeams.length ? (
+                  visibleSearchTeams.map((team) => (
                     <button
                       type="button"
                       key={team.group}
@@ -6279,7 +6372,7 @@ function buildReleaseDetailLookupUrl(album: ReleaseDetailApiRequest, group: stri
 }
 
 function buildBackendApiUrl(path: string) {
-  return RELEASE_DETAIL_API_BASE_URL ? `${RELEASE_DETAIL_API_BASE_URL}${path}` : path
+  return BACKEND_API_BASE_URL ? `${BACKEND_API_BASE_URL}${path}` : path
 }
 
 async function fetchApiJson<T>(path: string, signal: AbortSignal): Promise<{ ok: boolean; status: number; body: T | null }> {
@@ -6596,6 +6689,284 @@ function useReleaseDetailResource({
 
   return {
     ...activeSnapshot,
+    source,
+    loading,
+    errorCode,
+  }
+}
+
+function normalizeReleaseFormatValue(value: string | null | undefined): ReleaseFormat | '' {
+  return value === 'single' || value === 'album' || value === 'ep' ? value : ''
+}
+
+function buildSearchSurfaceApiSnapshot(data: SearchApiResponse['data']): SearchSurfaceSnapshot {
+  const teamResults: TeamProfile[] = []
+  const releaseResults: VerifiedRelease[] = []
+  const upcomingResults: UpcomingCandidateRow[] = []
+  const seenTeams = new Set<string>()
+  const seenReleases = new Set<string>()
+  const seenUpcoming = new Set<string>()
+
+  for (const item of data?.entities ?? []) {
+    const entitySlug = readNonEmptyString(item.entity_slug)
+    const group = entitySlug ? resolveGroupReference(entitySlug) : null
+    const team = group ? teamProfileMap.get(group) ?? null : null
+    if (!team || seenTeams.has(team.group)) {
+      continue
+    }
+
+    seenTeams.add(team.group)
+    teamResults.push(team)
+  }
+
+  for (const item of data?.releases ?? []) {
+    const entitySlug = readNonEmptyString(item.entity_slug)
+    const releaseTitle = readNonEmptyString(item.release_title)
+    const releaseDate = readNonEmptyString(item.release_date)
+    const stream = item.stream === 'album' || item.stream === 'song' ? item.stream : null
+    const group = entitySlug ? resolveGroupReference(entitySlug) : null
+    if (!group || !releaseTitle || !releaseDate || !stream) {
+      continue
+    }
+
+    const release = findVerifiedReleaseRecord(group, releaseTitle, releaseDate, stream, item.release_kind ?? undefined)
+    if (!release || seenReleases.has(getAlbumKey(release))) {
+      continue
+    }
+
+    seenReleases.add(getAlbumKey(release))
+    releaseResults.push(release)
+  }
+
+  for (const item of data?.upcoming ?? []) {
+    const entitySlug = readNonEmptyString(item.entity_slug)
+    const headline = readNonEmptyString(item.headline)
+    const group = entitySlug ? resolveGroupReference(entitySlug) : null
+    if (!group || !headline) {
+      continue
+    }
+
+    const scheduledDate = readNonEmptyString(item.scheduled_date) ?? ''
+    const scheduledMonth = readNonEmptyString(item.scheduled_month) ?? ''
+    const datePrecision =
+      item.date_precision === 'exact' || item.date_precision === 'month_only' || item.date_precision === 'unknown'
+        ? item.date_precision
+        : 'unknown'
+    const dateStatus =
+      item.date_status === 'confirmed' || item.date_status === 'scheduled' || item.date_status === 'rumor'
+        ? item.date_status
+        : 'rumor'
+    const localMatch =
+      dedupedUpcomingCandidates.find(
+        (candidate) =>
+          candidate.group === group &&
+          candidate.headline === headline &&
+          getUpcomingDatePrecisionValue(candidate) === datePrecision &&
+          (scheduledDate ? candidate.scheduled_date === scheduledDate : candidate.scheduled_month === scheduledMonth),
+      ) ?? null
+    const nextRow: UpcomingCandidateRow = localMatch
+      ? {
+          ...localMatch,
+          scheduled_date: scheduledDate || localMatch.scheduled_date,
+          scheduled_month: scheduledMonth || localMatch.scheduled_month,
+          date_precision: datePrecision,
+          date_status: dateStatus,
+          release_format: normalizeReleaseFormatValue(item.release_format) || localMatch.release_format,
+          source_type: readNonEmptyString(item.source_type) ?? localMatch.source_type,
+          source_url: readNonEmptyString(item.source_url) ?? localMatch.source_url,
+          source_domain: getSourceDomain(readNonEmptyString(item.source_url) ?? localMatch.source_url),
+          confidence:
+            typeof item.confidence_score === 'number' && Number.isFinite(item.confidence_score)
+              ? item.confidence_score
+              : localMatch.confidence,
+          evidence_summary: readNonEmptyString(item.evidence_summary) ?? localMatch.evidence_summary,
+          event_key: localMatch.event_key ?? readNonEmptyString(item.upcoming_signal_id) ?? undefined,
+        }
+      : {
+          group,
+          scheduled_date: scheduledDate,
+          scheduled_month: scheduledMonth,
+          date_precision: datePrecision,
+          date_status: dateStatus,
+          headline,
+          release_format: normalizeReleaseFormatValue(item.release_format),
+          context_tags: [],
+          source_type: readNonEmptyString(item.source_type) ?? 'pending',
+          source_url: readNonEmptyString(item.source_url) ?? '',
+          source_domain: getSourceDomain(readNonEmptyString(item.source_url) ?? ''),
+          published_at: '',
+          confidence:
+            typeof item.confidence_score === 'number' && Number.isFinite(item.confidence_score)
+              ? item.confidence_score
+              : 0,
+          evidence_summary: readNonEmptyString(item.evidence_summary) ?? '',
+          tracking_status: watchlistByGroup.get(group)?.tracking_status ?? 'watch_only',
+          search_term: '',
+          event_key: readNonEmptyString(item.upcoming_signal_id) ?? undefined,
+        }
+    const rowKey = getUpcomingDashboardRowKey(nextRow)
+    if (seenUpcoming.has(rowKey)) {
+      continue
+    }
+
+    seenUpcoming.add(rowKey)
+    upcomingResults.push(nextRow)
+  }
+
+  return {
+    entities: teamResults,
+    releases: releaseResults,
+    upcoming: upcomingResults,
+  }
+}
+
+async function fetchSearchSurfaceApiSnapshot(
+  search: string,
+  signal: AbortSignal,
+): Promise<{ snapshot: SearchSurfaceSnapshot | null; errorCode: string | null }> {
+  const cacheKey = search.trim()
+  const cachedSnapshot = searchSurfaceApiSnapshotCache.get(cacheKey)
+  if (cachedSnapshot) {
+    return {
+      snapshot: cachedSnapshot,
+      errorCode: null,
+    }
+  }
+
+  const params = new URLSearchParams()
+  params.set('q', search)
+  params.set('limit', '20')
+
+  const result = await fetchApiJson<SearchApiResponse>(`/v1/search?${params.toString()}`, signal)
+  if (!result.ok || !result.body?.data) {
+    return {
+      snapshot: null,
+      errorCode: result.body?.error?.code ?? `search_${result.status}`,
+    }
+  }
+
+  const snapshot = buildSearchSurfaceApiSnapshot(result.body.data)
+  searchSurfaceApiSnapshotCache.set(cacheKey, snapshot)
+  return {
+    snapshot,
+    errorCode: null,
+  }
+}
+
+function useSearchSurfaceResource({
+  search,
+  sourceMode,
+  fallbackSnapshot,
+}: {
+  search: string
+  sourceMode: SearchSourceMode
+  fallbackSnapshot: SearchSurfaceSnapshot
+}): SearchSurfaceResource {
+  const cacheKey = search.trim()
+  const cachedSnapshot = sourceMode === 'api' && cacheKey ? searchSurfaceApiSnapshotCache.get(cacheKey) ?? null : null
+  const [remoteState, setRemoteState] = useState<{
+    cacheKey: string
+    snapshot: SearchSurfaceSnapshot | null
+    loading: boolean
+    errorCode: string | null
+  }>(() => {
+    return {
+      cacheKey,
+      snapshot: cachedSnapshot,
+      loading: false,
+      errorCode: null,
+    }
+  })
+
+  useEffect(() => {
+    if (sourceMode !== 'api' || !cacheKey) {
+      return
+    }
+
+    if (cachedSnapshot) {
+      Promise.resolve().then(() => {
+        setRemoteState({
+          cacheKey,
+          snapshot: cachedSnapshot,
+          loading: false,
+          errorCode: null,
+        })
+      })
+      return
+    }
+
+    const controller = new AbortController()
+    let cancelled = false
+
+    Promise.resolve().then(() => {
+      if (cancelled) {
+        return
+      }
+
+      setRemoteState({
+        cacheKey,
+        snapshot: null,
+        loading: true,
+        errorCode: null,
+      })
+    })
+
+    void fetchSearchSurfaceApiSnapshot(search, controller.signal)
+      .then(({ snapshot, errorCode }) => {
+        if (cancelled) {
+          return
+        }
+
+        setRemoteState({
+          cacheKey,
+          snapshot,
+          loading: false,
+          errorCode,
+        })
+      })
+      .catch((error: unknown) => {
+        if (cancelled) {
+          return
+        }
+
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return
+        }
+
+        setRemoteState({
+          cacheKey,
+          snapshot: null,
+          loading: false,
+          errorCode: 'network_error',
+        })
+      })
+
+    return () => {
+      cancelled = true
+      controller.abort()
+    }
+  }, [cacheKey, cachedSnapshot, search, sourceMode])
+
+  const activeSnapshot =
+    sourceMode === 'api' && cacheKey
+      ? remoteState.cacheKey === cacheKey
+        ? remoteState.snapshot ?? cachedSnapshot ?? null
+        : cachedSnapshot
+      : null
+  const loading =
+    sourceMode === 'api' && !!cacheKey && remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
+  const errorCode = sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
+  const source: SearchSourceState =
+    sourceMode !== 'api' || !cacheKey
+      ? 'json'
+      : activeSnapshot
+        ? 'api'
+        : errorCode
+          ? 'json_fallback'
+          : 'json'
+
+  return {
+    ...(activeSnapshot ?? fallbackSnapshot),
     source,
     loading,
     errorCode,
