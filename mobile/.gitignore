@@ -23,6 +23,8 @@ expo-env.d.ts
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+coverage/
+.jest/
 
 # macOS
 .DS_Store
