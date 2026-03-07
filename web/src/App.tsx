@@ -4,6 +4,7 @@ import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
 import releaseDetailRows from './data/releaseDetails.json'
 import releaseEnrichmentRows from './data/releaseEnrichment.json'
+import releaseHistoryRows from './data/releaseHistory.json'
 import releaseRows from './data/releases.json'
 import teamBadgeAssetRows from './data/teamBadgeAssets.json'
 import unresolvedRows from './data/unresolved.json'
@@ -30,6 +31,18 @@ type ReleaseRow = {
   artist_source: string
   latest_song: ReleaseFact | null
   latest_album: ReleaseFact | null
+}
+
+type ReleaseHistorySeedRow = {
+  group: string
+  artist_name_mb: string
+  artist_mbid: string
+  artist_source: string
+  releases: Array<
+    ReleaseFact & {
+      stream: 'song' | 'album'
+    }
+  >
 }
 
 type RadarTag = 'rookie'
@@ -1202,6 +1215,7 @@ const teamBadgeAssets = teamBadgeAssetRows as TeamBadgeAssetRow[]
 const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
 const releaseDetailsCatalog = releaseDetailRows as ReleaseDetailRow[]
 const releaseEnrichmentCatalog = releaseEnrichmentRows as ReleaseEnrichmentRow[]
+const releaseHistoryCatalog = releaseHistoryRows as ReleaseHistorySeedRow[]
 const releaseCatalog = releaseRows as ReleaseRow[]
 const relatedActOverrides = relatedActOverrideRows as RelatedActsOverrideRow[]
 const releases = releaseCatalog
@@ -1238,7 +1252,8 @@ const releaseEnrichmentByKey = new Map(
   ]),
 )
 const releaseGroups = groupReleasesByGroup(releases)
-const verifiedReleaseHistory = buildVerifiedReleaseHistory()
+const seededVerifiedReleaseHistory = buildSeededVerifiedReleaseHistory(releaseHistoryCatalog)
+const verifiedReleaseHistory = buildVerifiedReleaseHistory(seededVerifiedReleaseHistory)
 const verifiedReleaseHistoryByGroup = groupReleasesByGroup(verifiedReleaseHistory)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
 const relatedActOverrideMap = new Map(relatedActOverrides.map((row) => [row.group, row.related_groups]))
@@ -5545,8 +5560,39 @@ function getWeeklyDigestDiversityScore(candidate: VerifiedRelease, selected: Ver
   return score
 }
 
-function buildVerifiedReleaseHistory() {
+function buildSeededVerifiedReleaseHistory(rows: ReleaseHistorySeedRow[]) {
+  return rows
+    .flatMap((row) =>
+      row.releases.map((release) => ({
+        ...release,
+        group: row.group,
+        artist_name_mb: row.artist_name_mb,
+        artist_mbid: row.artist_mbid,
+        artist_source: row.artist_source,
+        actType: getActType(row.group),
+        dateValue: new Date(`${release.date}T00:00:00`),
+        isoDate: release.date,
+      })),
+    )
+    .sort((left, right) => {
+      if (left.dateValue.getTime() !== right.dateValue.getTime()) {
+        return right.dateValue.getTime() - left.dateValue.getTime()
+      }
+
+      if (left.stream !== right.stream) {
+        return left.stream.localeCompare(right.stream)
+      }
+
+      return left.title.localeCompare(right.title)
+    })
+}
+
+function buildVerifiedReleaseHistory(seedReleases: VerifiedRelease[]) {
   const historyByKey = new Map<string, VerifiedRelease>()
+
+  for (const release of seedReleases) {
+    historyByKey.set(getReleaseLookupKey(release.group, release.title, release.date, release.stream), release)
+  }
 
   for (const detail of releaseDetailsCatalog) {
     const releaseRow = releaseCatalogByGroup.get(detail.group)
@@ -6147,7 +6193,7 @@ function buildTeamProfiles() {
         representativeImageUrl: artistProfile?.representative_image_url ?? null,
         representativeImageSource: artistProfile?.representative_image_source ?? null,
         latestRelease,
-        recentAlbums: groupReleases.filter((item) => item.stream === 'album'),
+        recentAlbums: verifiedHistory.filter((item) => item.stream === 'album'),
         upcomingSignals,
         sourceTimeline,
         annualReleaseTimeline,
