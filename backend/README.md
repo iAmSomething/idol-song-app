@@ -8,6 +8,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 운영 runbook:
 
 - `docs/specs/backend/migration-operations-runbook.md`
+- `docs/specs/backend/web-cutover-rollback-drills.md`
 
 현재 포함 범위:
 
@@ -283,3 +284,10 @@ npm run runtime:gate
 gate 정의와 stage mapping은 아래 문서를 따른다.
 
 - `docs/specs/backend/migration-runtime-gates.md`
+
+## Web Cutover Rollback Drill Evidence
+
+surface-local rollback rehearsal과 timing 기록은 아래 문서를 기준으로 본다.
+
+- plan: `docs/specs/backend/web-cutover-rollback-drills.md`
+- local evidence: `backend/reports/web_cutover_rollback_drill_2026-03-08.md`
