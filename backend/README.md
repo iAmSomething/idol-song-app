@@ -67,6 +67,32 @@ python3 import_json_to_neon.py
   - `manual_review_queue.json`
   - `mv_manual_review_queue.json`
 
+## Release Pipeline Dual-Write
+
+기존 JSON export를 유지한 채 release hydration / service-link / MV review 흐름만 canonical DB에 다시 쓰려면 아래 명령을 사용한다.
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+python3 -m pip install -r backend/requirements-import.txt
+python3 sync_release_pipeline_to_neon.py
+```
+
+기본 보고서 출력:
+
+- `backend/reports/release_pipeline_db_sync_summary.json`
+
+이 명령은 아래 JSON 산출물을 source-of-export로 유지한 채 canonical release-side table만 idempotent upsert 한다.
+
+- `web/src/data/releaseDetails.json`
+- `web/src/data/releaseHistory.json`
+- `web/src/data/releaseArtwork.json`
+- `web/src/data/youtubeChannelAllowlists.json`
+- `release_detail_overrides.json`
+- `mv_manual_review_queue.json`
+
 ## Backend vs JSON Parity Report
 
 import 이후 또는 projection refresh 이후 현재 backend state와 shipped JSON baseline을 비교하려면 아래 명령을 사용한다.
