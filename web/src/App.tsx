@@ -158,6 +158,75 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
   isFallback: boolean
 }
 
+type ReleaseDetailSourceMode = 'json' | 'api'
+type ReleaseDetailSourceState = 'json' | 'api' | 'json_fallback'
+
+type ReleaseDetailLookupApiResponse = {
+  data?: {
+    release_id?: string
+    canonical_path?: string
+  }
+  error?: {
+    code?: string
+  }
+}
+
+type ReleaseDetailApiResponse = {
+  data?: {
+    release?: {
+      release_id?: string
+      release_title?: string
+      release_date?: string
+      stream?: string
+      release_kind?: string | null
+    }
+    artwork?: Record<string, unknown> | null
+    service_links?: {
+      spotify?: {
+        url?: string | null
+      } | null
+      youtube_music?: {
+        url?: string | null
+      } | null
+    } | null
+    tracks?: Array<{
+      order?: number
+      title?: string
+      is_title_track?: boolean
+    }>
+    mv?: {
+      url?: string | null
+      video_id?: string | null
+      status?: string | null
+      provenance?: string | null
+    } | null
+    notes?: unknown
+  }
+  error?: {
+    code?: string
+  }
+}
+
+type ReleaseDetailApiSnapshot = {
+  detail: ResolvedReleaseDetail
+  artwork: ResolvedReleaseArtwork
+  releaseId: string | null
+  canonicalPath: string | null
+}
+
+type ReleaseDetailApiResource = ReleaseDetailApiSnapshot & {
+  source: ReleaseDetailSourceState
+  loading: boolean
+  errorCode: string | null
+}
+
+type ReleaseDetailApiRequest = {
+  title: string
+  date: string
+  stream: VerifiedRelease['stream']
+  release_kind: VerifiedRelease['release_kind']
+}
+
 type ActType = 'group' | 'solo' | 'unit'
 type UpcomingDatePrecision = 'exact' | 'month_only' | 'unknown'
 
@@ -1068,6 +1137,9 @@ const TEAM_COPY = {
     officialMvHint: '보조 영상 콘텐츠입니다. 앱 안 직접 재생 기능이 아니라 공식 YouTube MV를 임베드합니다.',
     officialMvLinkOnly: '임베드가 준비되지 않으면 YouTube 링크만 노출합니다.',
     officialMvUnavailable: '신뢰 가능한 공식 YouTube MV target이 아직 없어 임베드를 표시하지 않습니다.',
+    releaseDetailBackendLoading: '백엔드 release-detail 응답을 확인하는 중입니다. 현재는 JSON fallback을 먼저 표시합니다.',
+    releaseDetailBackendActive: '이 상세 페이지는 backend release-detail 응답을 우선 사용 중입니다.',
+    releaseDetailBackendFallback: '백엔드 응답을 불러오지 못해 release-detail JSON fallback으로 표시 중입니다.',
     watchOnYouTube: 'YouTube에서 보기',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
@@ -1179,6 +1251,11 @@ const TEAM_COPY = {
     officialMvHint: 'This is supporting video content, not in-app audio playback. It embeds the official YouTube MV only when metadata is explicit.',
     officialMvLinkOnly: 'If embedding is unavailable, the page falls back to a YouTube link only.',
     officialMvUnavailable: 'No reliable official YouTube MV target is attached yet, so this page does not render an embed.',
+    releaseDetailBackendLoading:
+      'Checking the backend release-detail response now. The page keeps the JSON fallback visible until it resolves.',
+    releaseDetailBackendActive: 'This detail page is currently using the backend release-detail response.',
+    releaseDetailBackendFallback:
+      'The backend response was unavailable, so this detail page is falling back to the shipped JSON snapshot.',
     watchOnYouTube: 'Watch on YouTube',
     placeholderCover: 'Release artwork',
     drawerCopy:
@@ -1209,6 +1286,12 @@ const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
 const LONG_GAP_THRESHOLD_DAYS = 365
 const ROOKIE_RECENT_YEAR_WINDOW = 2
 const AGENCY_UNKNOWN_FILTER = 'agency_unknown'
+const RELEASE_DETAIL_SOURCE_QUERY_PARAM = 'releaseDetailSource'
+const RELEASE_DETAIL_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '')
+const DEFAULT_RELEASE_DETAIL_SOURCE: ReleaseDetailSourceMode =
+  (import.meta.env.VITE_RELEASE_DETAIL_SOURCE ?? '').trim().toLowerCase() === 'api' ? 'api' : 'json'
+const releaseDetailApiIdCache = new Map<string, string>()
+const releaseDetailApiSnapshotCache = new Map<string, ReleaseDetailApiSnapshot>()
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const teamBadgeAssets = teamBadgeAssetRows as TeamBadgeAssetRow[]
@@ -1295,6 +1378,8 @@ function App() {
     selectedGroup && selectedCompareGroup && selectedCompareGroup !== selectedGroup && teamProfileMap.has(selectedCompareGroup)
       ? selectedCompareGroup
       : null
+  const selectedReleaseSourceOverride = readReleaseDetailSourceOverrideFromLocation()
+  const releaseDetailSourceMode = getReleaseDetailSourceMode(selectedReleaseSourceOverride)
   const selectedReleaseRoute =
     selectedGroup && selectedAlbumKey
       ? findVerifiedReleaseByKey(selectedGroup, selectedAlbumKey)
@@ -1353,7 +1438,7 @@ function App() {
     }
 
     const nextPath = selectedReleaseRoute
-      ? getReleasePath(selectedReleaseRoute)
+      ? getReleasePath(selectedReleaseRoute, selectedReleaseSourceOverride)
       : selectedGroup
         ? getArtistPath(selectedGroup, activeCompareGroup)
         : '/'
@@ -1365,7 +1450,7 @@ function App() {
         nextPath,
       )
     }
-  }, [activeCompareGroup, selectedAlbumKey, selectedGroup, selectedReleaseRoute])
+  }, [activeCompareGroup, selectedAlbumKey, selectedGroup, selectedReleaseRoute, selectedReleaseSourceOverride])
 
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -1988,6 +2073,7 @@ function App() {
           album={selectedAlbum}
           group={selectedTeam.group}
           language={language}
+          sourceMode={releaseDetailSourceMode}
           displayDateFormatter={displayDateFormatter}
           onBack={closeReleaseDetail}
           onOpenTeamPage={openTeamPage}
@@ -2848,6 +2934,7 @@ function ReleaseDetailPage({
   album,
   group,
   language,
+  sourceMode,
   displayDateFormatter,
   onBack,
   onOpenTeamPage,
@@ -2855,6 +2942,7 @@ function ReleaseDetailPage({
   album: VerifiedRelease
   group: string
   language: Language
+  sourceMode: ReleaseDetailSourceMode
   displayDateFormatter: Intl.DateTimeFormat
   onBack: () => void
   onOpenTeamPage: (group: string) => void
@@ -2862,14 +2950,27 @@ function ReleaseDetailPage({
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
   const displayName = getTeamDisplayName(group)
-  const artwork = getReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind)
-  const releaseDetail = getReleaseDetail(group, album.title, album.date, album.stream, album.release_kind)
+  const releaseDetailResource = useReleaseDetailResource({
+    album,
+    group,
+    sourceMode,
+  })
+  const artwork = releaseDetailResource.artwork
+  const releaseDetail = releaseDetailResource.detail
   const releaseEnrichment = getReleaseEnrichment(group, album.title, album.date, album.stream, album.release_kind)
   const previewTracks: ReleaseDetailTrack[] = releaseDetail.tracks.length
     ? releaseDetail.tracks
     : buildAlbumPreviewTracks(album, group, language).map((title, index) => ({ order: index + 1, title }))
   const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail, album.music_handoffs)
   const mv = getReleaseDetailMvUrls(releaseDetail)
+  const releaseDetailSourceMessage =
+    sourceMode === 'api'
+      ? releaseDetailResource.source === 'api'
+        ? teamCopy.releaseDetailBackendActive
+        : releaseDetailResource.loading
+          ? teamCopy.releaseDetailBackendLoading
+          : teamCopy.releaseDetailBackendFallback
+      : null
 
   return (
     <main className="release-detail-page">
@@ -2891,6 +2992,8 @@ function ReleaseDetailPage({
             </ActionButton>
           </div>
         </div>
+
+        {releaseDetailSourceMessage ? <p className="inline-note">{releaseDetailSourceMessage}</p> : null}
 
         <div className="album-drawer-cover release-detail-cover">
           <ReleaseArtworkFigure
@@ -6136,6 +6239,369 @@ function getReleaseEnrichment(
   }
 }
 
+function isUnknownRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
+function readNonEmptyString(value: unknown): string | null {
+  return typeof value === 'string' && value.trim().length > 0 ? value : null
+}
+
+function normalizeApiReleaseKind(
+  releaseKind: string | null | undefined,
+  fallbackReleaseKind: VerifiedRelease['release_kind'],
+): ReleaseFact['release_kind'] {
+  if (releaseKind === 'album' || releaseKind === 'ep') {
+    return releaseKind
+  }
+
+  return fallbackReleaseKind === 'album' || fallbackReleaseKind === 'ep' ? fallbackReleaseKind : 'single'
+}
+
+function buildLocalReleaseDetailSnapshot(album: ReleaseDetailApiRequest, group: string): ReleaseDetailApiSnapshot {
+  return {
+    detail: getReleaseDetail(group, album.title, album.date, album.stream, album.release_kind),
+    artwork: getReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind),
+    releaseId: releaseDetailApiIdCache.get(
+      getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind)),
+    ) ?? null,
+    canonicalPath: null,
+  }
+}
+
+function buildReleaseDetailLookupUrl(album: ReleaseDetailApiRequest, group: string) {
+  const params = new URLSearchParams()
+  params.set('entity_slug', artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group))
+  params.set('title', album.title)
+  params.set('date', album.date)
+  params.set('stream', normalizeReleaseStream(album.stream, album.release_kind))
+  return `/v1/releases/lookup?${params.toString()}`
+}
+
+function buildBackendApiUrl(path: string) {
+  return RELEASE_DETAIL_API_BASE_URL ? `${RELEASE_DETAIL_API_BASE_URL}${path}` : path
+}
+
+async function fetchApiJson<T>(path: string, signal: AbortSignal): Promise<{ ok: boolean; status: number; body: T | null }> {
+  const response = await fetch(buildBackendApiUrl(path), {
+    headers: {
+      Accept: 'application/json',
+    },
+    signal,
+  })
+
+  let body: T | null = null
+  try {
+    body = (await response.json()) as T
+  } catch {
+    body = null
+  }
+
+  return {
+    ok: response.ok,
+    status: response.status,
+    body,
+  }
+}
+
+function normalizeApiReleaseDetailSnapshot(
+  album: ReleaseDetailApiRequest,
+  group: string,
+  payload: ReleaseDetailApiResponse['data'],
+  releaseId: string,
+  canonicalPath: string | null,
+  fallbackSnapshot: ReleaseDetailApiSnapshot,
+): ReleaseDetailApiSnapshot | null {
+  if (!payload?.release) {
+    return null
+  }
+
+  const normalizedStream = normalizeReleaseStream(
+    payload.release.stream === 'album' || payload.release.stream === 'song' ? payload.release.stream : album.stream,
+    payload.release.release_kind ?? album.release_kind,
+  )
+  const normalizedTracks = Array.isArray(payload.tracks)
+    ? payload.tracks.reduce<ReleaseDetailTrack[]>((tracks, track, index) => {
+        const title = readNonEmptyString(track?.title)
+        const order = typeof track?.order === 'number' && Number.isFinite(track.order) ? track.order : index + 1
+        if (!title) {
+          return tracks
+        }
+
+        tracks.push({
+          order,
+          title,
+          is_title_track: track?.is_title_track === true,
+        })
+        return tracks
+      }, [])
+    : []
+
+  const artworkPayload = isUnknownRecord(payload.artwork) ? payload.artwork : null
+  const coverImageUrl = readNonEmptyString(artworkPayload?.cover_image_url)
+  const thumbnailImageUrl = readNonEmptyString(artworkPayload?.thumbnail_image_url) ?? coverImageUrl
+  const artworkSourceUrl = readNonEmptyString(artworkPayload?.artwork_source_url) ?? coverImageUrl
+  const artworkSourceType = readNonEmptyString(artworkPayload?.artwork_source_type) ?? 'backend_api'
+  const mvPayload = isUnknownRecord(payload.mv) ? payload.mv : null
+  const spotifyLink = isUnknownRecord(payload.service_links?.spotify) ? payload.service_links?.spotify : null
+  const youtubeMusicLink = isUnknownRecord(payload.service_links?.youtube_music) ? payload.service_links?.youtube_music : null
+  const youtubeVideoStatus = readNonEmptyString(mvPayload?.status)
+  const normalizedVideoStatus =
+    youtubeVideoStatus === 'relation_match' ||
+    youtubeVideoStatus === 'manual_override' ||
+    youtubeVideoStatus === 'needs_review' ||
+    youtubeVideoStatus === 'no_mv' ||
+    youtubeVideoStatus === 'unresolved'
+      ? youtubeVideoStatus
+      : fallbackSnapshot.detail.youtube_video_status
+
+  return {
+    detail: {
+      ...fallbackSnapshot.detail,
+      group,
+      release_title: readNonEmptyString(payload.release.release_title) ?? album.title,
+      release_date: readNonEmptyString(payload.release.release_date) ?? album.date,
+      stream: normalizedStream,
+      release_kind: normalizeApiReleaseKind(payload.release.release_kind, album.release_kind),
+      tracks: normalizedTracks.length ? normalizedTracks : fallbackSnapshot.detail.tracks,
+      spotify_url: readNonEmptyString(spotifyLink?.url) ?? fallbackSnapshot.detail.spotify_url,
+      youtube_music_url: readNonEmptyString(youtubeMusicLink?.url) ?? fallbackSnapshot.detail.youtube_music_url,
+      youtube_video_id: readNonEmptyString(mvPayload?.video_id) ?? fallbackSnapshot.detail.youtube_video_id,
+      youtube_video_url: readNonEmptyString(mvPayload?.url) ?? fallbackSnapshot.detail.youtube_video_url,
+      youtube_video_status: normalizedVideoStatus,
+      youtube_video_provenance:
+        readNonEmptyString(mvPayload?.provenance) ?? fallbackSnapshot.detail.youtube_video_provenance ?? null,
+      notes: readNonEmptyString(payload.notes) ?? fallbackSnapshot.detail.notes,
+      isFallback: false,
+    },
+    artwork: coverImageUrl && thumbnailImageUrl && artworkSourceUrl
+      ? {
+          group,
+          release_title: readNonEmptyString(payload.release.release_title) ?? album.title,
+          release_date: readNonEmptyString(payload.release.release_date) ?? album.date,
+          stream: normalizedStream,
+          cover_image_url: coverImageUrl,
+          thumbnail_image_url: thumbnailImageUrl,
+          artwork_source_type: artworkSourceType,
+          artwork_source_url: artworkSourceUrl,
+          isPlaceholder: false,
+        }
+      : fallbackSnapshot.artwork,
+    releaseId,
+    canonicalPath,
+  }
+}
+
+async function fetchReleaseDetailApiSnapshot(
+  album: ReleaseDetailApiRequest,
+  group: string,
+  fallbackSnapshot: ReleaseDetailApiSnapshot,
+  signal: AbortSignal,
+): Promise<{ snapshot: ReleaseDetailApiSnapshot | null; errorCode: string | null }> {
+  const cacheKey = getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind))
+  const cachedSnapshot = releaseDetailApiSnapshotCache.get(cacheKey)
+  if (cachedSnapshot) {
+    return {
+      snapshot: cachedSnapshot,
+      errorCode: null,
+    }
+  }
+
+  let releaseId = releaseDetailApiIdCache.get(cacheKey) ?? null
+  let canonicalPath: string | null = null
+
+  if (!releaseId) {
+    const lookupResult = await fetchApiJson<ReleaseDetailLookupApiResponse>(buildReleaseDetailLookupUrl(album, group), signal)
+    if (!lookupResult.ok || !lookupResult.body?.data?.release_id) {
+      return {
+        snapshot: null,
+        errorCode: lookupResult.body?.error?.code ?? `lookup_${lookupResult.status}`,
+      }
+    }
+
+    releaseId = lookupResult.body.data.release_id
+    canonicalPath = lookupResult.body.data.canonical_path ?? null
+    releaseDetailApiIdCache.set(cacheKey, releaseId)
+  }
+
+  const detailResult = await fetchApiJson<ReleaseDetailApiResponse>(`/v1/releases/${releaseId}`, signal)
+  if (!detailResult.ok || !detailResult.body?.data) {
+    return {
+      snapshot: null,
+      errorCode: detailResult.body?.error?.code ?? `detail_${detailResult.status}`,
+    }
+  }
+
+  const snapshot = normalizeApiReleaseDetailSnapshot(
+    album,
+    group,
+    detailResult.body.data,
+    releaseId,
+    canonicalPath,
+    fallbackSnapshot,
+  )
+
+  if (!snapshot) {
+    return {
+      snapshot: null,
+      errorCode: 'invalid_projection_payload',
+    }
+  }
+
+  releaseDetailApiSnapshotCache.set(cacheKey, snapshot)
+  return {
+    snapshot,
+    errorCode: null,
+  }
+}
+
+function useReleaseDetailResource({
+  album,
+  group,
+  sourceMode,
+}: {
+  album: VerifiedRelease
+  group: string
+  sourceMode: ReleaseDetailSourceMode
+}): ReleaseDetailApiResource {
+  const requestAlbum: ReleaseDetailApiRequest = {
+    title: album.title,
+    date: album.date,
+    stream: album.stream,
+    release_kind: album.release_kind,
+  }
+  const cacheKey = getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind))
+  const fallbackSnapshot = buildLocalReleaseDetailSnapshot(requestAlbum, group)
+  const cachedSnapshot = sourceMode === 'api' ? releaseDetailApiSnapshotCache.get(cacheKey) ?? null : null
+  const [remoteState, setRemoteState] = useState<{
+    cacheKey: string
+    snapshot: ReleaseDetailApiSnapshot | null
+    loading: boolean
+    errorCode: string | null
+  }>(() => {
+    return {
+      cacheKey,
+      snapshot: cachedSnapshot,
+      loading: false,
+      errorCode: null,
+    }
+  })
+
+  useEffect(() => {
+    if (sourceMode !== 'api') {
+      return
+    }
+
+    const effectFallbackSnapshot = buildLocalReleaseDetailSnapshot(
+      {
+        title: album.title,
+        date: album.date,
+        stream: album.stream,
+        release_kind: album.release_kind,
+      },
+      group,
+    )
+
+    if (cachedSnapshot) {
+      Promise.resolve().then(() => {
+        setRemoteState({
+          cacheKey,
+          snapshot: cachedSnapshot,
+          loading: false,
+          errorCode: null,
+        })
+      })
+      return
+    }
+
+    const controller = new AbortController()
+    let cancelled = false
+    const effectRequestAlbum: ReleaseDetailApiRequest = {
+      title: album.title,
+      date: album.date,
+      stream: album.stream,
+      release_kind: album.release_kind,
+    }
+
+    Promise.resolve().then(() => {
+      if (cancelled) {
+        return
+      }
+
+      setRemoteState({
+        cacheKey,
+        snapshot: null,
+        loading: true,
+        errorCode: null,
+      })
+    })
+
+    void fetchReleaseDetailApiSnapshot(effectRequestAlbum, group, effectFallbackSnapshot, controller.signal)
+      .then(({ snapshot, errorCode }) => {
+        if (cancelled) {
+          return
+        }
+
+        if (snapshot) {
+          setRemoteState({
+            cacheKey,
+            snapshot,
+            loading: false,
+            errorCode: null,
+          })
+          return
+        }
+
+        setRemoteState({
+          cacheKey,
+          snapshot: null,
+          loading: false,
+          errorCode,
+        })
+      })
+      .catch((error: unknown) => {
+        if (cancelled) {
+          return
+        }
+
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return
+        }
+
+        setRemoteState({
+          cacheKey,
+          snapshot: null,
+          loading: false,
+          errorCode: 'network_error',
+        })
+      })
+
+    return () => {
+      cancelled = true
+      controller.abort()
+    }
+  }, [album.date, album.release_kind, album.stream, album.title, cacheKey, cachedSnapshot, group, sourceMode])
+
+  const activeSnapshot =
+    sourceMode === 'api'
+      ? remoteState.cacheKey === cacheKey
+        ? remoteState.snapshot ?? cachedSnapshot ?? fallbackSnapshot
+        : cachedSnapshot ?? fallbackSnapshot
+      : fallbackSnapshot
+  const loading =
+    sourceMode === 'api' && remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
+  const errorCode = sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
+  const source: ReleaseDetailSourceState =
+    sourceMode !== 'api' ? 'json' : activeSnapshot === fallbackSnapshot ? (errorCode ? 'json_fallback' : 'json') : 'api'
+
+  return {
+    ...activeSnapshot,
+    source,
+    loading,
+    errorCode,
+  }
+}
+
 function buildReleaseDetailHandoffs(
   detail: ResolvedReleaseDetail | null,
   canonicalUrls?: MusicHandoffUrls,
@@ -7406,6 +7872,19 @@ function readSelectedReleaseKeyFromLocation() {
   return getReleaseRouteFromPath(window.location.pathname, window.location.search)?.releaseKey ?? null
 }
 
+function readReleaseDetailSourceOverrideFromLocation(): ReleaseDetailSourceMode | null {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
+  const value = new URLSearchParams(window.location.search).get(RELEASE_DETAIL_SOURCE_QUERY_PARAM)
+  return value === 'api' || value === 'json' ? value : null
+}
+
+function getReleaseDetailSourceMode(override: ReleaseDetailSourceMode | null): ReleaseDetailSourceMode {
+  return override ?? DEFAULT_RELEASE_DETAIL_SOURCE
+}
+
 function getGroupFromPath(pathname: string) {
   const match = pathname.match(/^\/artists\/([^/]+)(?:\/releases\/[^/]+)?\/?$/)
   if (!match) {
@@ -7483,12 +7962,15 @@ function getReleaseRouteFromPath(pathname: string, search = '') {
   }
 }
 
-function getReleasePath(release: VerifiedRelease) {
+function getReleasePath(release: VerifiedRelease, sourceOverride?: ReleaseDetailSourceMode | null) {
   const releaseSlug = slugifyPathSegment(release.title) || 'release'
   const pathname = `/artists/${artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)}/releases/${releaseSlug}`
   const params = new URLSearchParams()
   params.set('date', release.date)
   params.set('stream', release.stream)
+  if (sourceOverride) {
+    params.set(RELEASE_DETAIL_SOURCE_QUERY_PARAM, sourceOverride)
+  }
   return `${pathname}?${params.toString()}`
 }
 
