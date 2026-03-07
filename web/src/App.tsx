@@ -235,6 +235,8 @@ type SearchSourceState = 'json' | 'api' | 'json_fallback'
 
 type EntityDetailSourceMode = SurfaceSourceMode
 type EntityDetailSourceState = 'json' | 'api' | 'json_fallback'
+type CalendarMonthSourceMode = SurfaceSourceMode
+type CalendarMonthSourceState = 'json' | 'api' | 'json_fallback'
 
 type SearchApiEntityMatch = {
   entity_slug?: string
@@ -360,6 +362,64 @@ type EntityDetailSurfaceResource = {
 }
 
 type EntityDetailTimelineEntry = NonNullable<NonNullable<EntityDetailApiResponse['data']>['source_timeline']>[number]
+
+type CalendarMonthApiVerifiedRelease = {
+  release_id?: string
+  entity_slug?: string
+  display_name?: string
+  release_title?: string
+  stream?: string
+  release_kind?: string | null
+  release_date?: string
+}
+
+type CalendarMonthApiUpcomingItem = {
+  upcoming_signal_id?: string
+  entity_slug?: string
+  display_name?: string
+  headline?: string
+  scheduled_date?: string | null
+  scheduled_month?: string | null
+  date_precision?: string
+  date_status?: string
+  confidence_score?: number | null
+  release_format?: string | null
+}
+
+type CalendarMonthApiResponse = {
+  data?: {
+    summary?: {
+      verified_count?: number
+      exact_upcoming_count?: number
+      month_only_upcoming_count?: number
+    }
+    nearest_upcoming?: CalendarMonthApiUpcomingItem | null
+    days?: Array<{
+      date?: string
+      verified_releases?: CalendarMonthApiVerifiedRelease[]
+      exact_upcoming?: CalendarMonthApiUpcomingItem[]
+    }>
+    month_only_upcoming?: CalendarMonthApiUpcomingItem[]
+    verified_list?: CalendarMonthApiVerifiedRelease[]
+    scheduled_list?: CalendarMonthApiUpcomingItem[]
+  }
+  error?: {
+    code?: string
+  }
+}
+
+type CalendarMonthApiSnapshot = {
+  verifiedRows: VerifiedRelease[]
+  scheduledRows: DatedUpcomingSignal[]
+  monthOnlyRows: UpcomingCandidateRow[]
+}
+
+type CalendarMonthSurfaceResource = {
+  snapshot: CalendarMonthApiSnapshot | null
+  source: CalendarMonthSourceState
+  loading: boolean
+  errorCode: string | null
+}
 
 type ActType = 'group' | 'solo' | 'unit'
 type UpcomingDatePrecision = 'exact' | 'month_only' | 'unknown'
@@ -728,6 +788,9 @@ const TRANSLATIONS = {
     searchBackendLoading: 'backend /v1/search 결과를 확인하는 중입니다. 현재는 local JSON 결과를 먼저 표시합니다.',
     searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 우선 사용 중입니다.',
     searchBackendFallback: 'backend 검색 응답을 불러오지 못해 local JSON 결과로 fallback 중입니다.',
+    calendarBackendLoading:
+      'backend /v1/calendar/month 결과를 확인하는 중입니다. 현재는 local JSON 월 데이터를 먼저 표시합니다.',
+    calendarBackendActive: '현재 월간 캘린더와 대시보드는 backend /v1/calendar/month 응답을 우선 사용 중입니다.',
     calendarBackendFallback:
       'calendar/month source switch는 열려 있지만, 이 surface는 아직 local JSON fallback을 계속 사용합니다.',
     radarBackendFallback:
@@ -977,6 +1040,10 @@ const TRANSLATIONS = {
     searchBackendActive: 'Search results are currently coming from the backend /v1/search response.',
     searchBackendFallback:
       'The backend search response was unavailable, so the UI is falling back to local JSON-backed results.',
+    calendarBackendLoading:
+      'Checking backend /v1/calendar/month now. The UI keeps the local JSON-backed month data visible first.',
+    calendarBackendActive:
+      'The monthly calendar and dashboard are currently using the backend /v1/calendar/month response.',
     calendarBackendFallback:
       'The calendar/month source switch is available, but this surface is still using the local JSON fallback for now.',
     radarBackendFallback:
@@ -1449,6 +1516,7 @@ const releaseDetailApiIdCache = new Map<string, string>()
 const releaseDetailApiSnapshotCache = new Map<string, ReleaseDetailApiSnapshot>()
 const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
 const entityDetailApiSnapshotCache = new Map<string, TeamProfile>()
+const calendarMonthApiSnapshotCache = new Map<string, CalendarMonthApiSnapshot>()
 const SURFACE_SOURCE_MODES = {
   search: normalizeSurfaceSourceMode(import.meta.env.VITE_SEARCH_SOURCE),
   entityDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_ENTITY_DETAIL_SOURCE),
@@ -1659,33 +1727,29 @@ function App() {
   const myTeamsCountLabel = formatMyTeamsCount(myTeams.length, MY_TEAMS_LIMIT, language)
   const myTeamsHelperText = myTeams.length > 0 ? copy.myTeamsOnlyHint : copy.myTeamsEmpty
 
-  const filteredReleases = releases.filter((item) => {
-    const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
-    const matchesReleaseKind =
-      selectedReleaseKind === 'all' || item.release_kind === selectedReleaseKind
-    const matchesActType = selectedActType === 'all' || item.actType === selectedActType
-    const matchesStatus =
-      selectedDashboardStatus === 'all' || selectedDashboardStatus === 'verified'
-    const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
-    const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
-    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
-  })
+  const filteredReleases = releases.filter((item) =>
+    matchesReleaseFilters(item, {
+      searchNeedle,
+      selectedReleaseKind,
+      selectedActType,
+      selectedDashboardStatus,
+      selectedAgency,
+      myTeamsSet,
+      selectedMyTeamsOnly,
+    }),
+  )
 
-  const filteredUpcoming = dedupedUpcomingCandidates.filter((item) => {
-    const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
-    const matchesReleaseKind =
-      selectedReleaseKind === 'all' || item.release_format === selectedReleaseKind
-    const matchesActType = selectedActType === 'all' || getActType(item.group) === selectedActType
-    const matchesStatus =
-      selectedDashboardStatus === 'all'
-        ? true
-        : selectedDashboardStatus === 'verified'
-          ? false
-          : item.date_status === selectedDashboardStatus
-    const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
-    const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
-    return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
-  })
+  const filteredUpcoming = dedupedUpcomingCandidates.filter((item) =>
+    matchesUpcomingFilters(item, {
+      searchNeedle,
+      selectedReleaseKind,
+      selectedActType,
+      selectedDashboardStatus,
+      selectedAgency,
+      myTeamsSet,
+      selectedMyTeamsOnly,
+    }),
+  )
   const filteredTeams = teamProfiles.filter(
     (team) =>
       matchesSearchIndex(searchIndexByGroup.get(team.group), searchNeedle) &&
@@ -1747,8 +1811,6 @@ function App() {
     : visibleMonthKeys.at(-1) ?? selectedMonthKey
   const selectedMonthDate = monthKeyToDate(effectiveMonthKey)
   const monthDays = buildCalendarDays(selectedMonthDate)
-  const releasesByDate = groupByDate(filteredReleases)
-  const upcomingByDate = groupUpcomingByDate(filteredUpcomingSignals)
   const monthReleases = filteredReleases.filter((item) => getMonthKey(item.dateValue) === effectiveMonthKey)
   const monthUpcomingSignals = filteredUpcomingSignals.filter(
     (item) => getMonthKey(item.dateValue) === effectiveMonthKey,
@@ -1759,9 +1821,36 @@ function App() {
         getUpcomingDatePrecisionValue(item) === 'month_only' && getUpcomingMonthKey(item) === effectiveMonthKey,
     )
     .sort(compareUpcomingSignals)
-  const monthVerifiedDashboardRows = [...monthReleases].sort(compareMonthlyDashboardVerified)
-  const monthScheduledDashboardRows = [...monthUpcomingSignals].sort(compareMonthlyDashboardUpcoming)
-  const monthScheduledCount = monthScheduledDashboardRows.length + monthMonthOnlyUpcomingRows.length
+  const calendarMonthFallbackSnapshot: CalendarMonthApiSnapshot = {
+    verifiedRows: monthReleases,
+    scheduledRows: monthUpcomingSignals,
+    monthOnlyRows: monthMonthOnlyUpcomingRows,
+  }
+  const calendarMonthResource = useCalendarMonthResource({
+    monthKey: effectiveMonthKey,
+    sourceMode: calendarMonthSourceMode,
+  })
+  const filteredCalendarMonthApiSnapshot = calendarMonthResource.snapshot
+    ? filterCalendarMonthApiSnapshot(calendarMonthResource.snapshot, {
+        searchNeedle,
+        selectedReleaseKind,
+        selectedActType,
+        selectedDashboardStatus,
+        selectedAgency,
+        myTeamsSet,
+        selectedMyTeamsOnly,
+      })
+    : null
+  const activeCalendarMonthSnapshot =
+    calendarMonthSourceMode === 'api' && calendarMonthResource.source === 'api' && filteredCalendarMonthApiSnapshot
+      ? filteredCalendarMonthApiSnapshot
+      : calendarMonthFallbackSnapshot
+  const visibleMonthVerifiedRows = [...activeCalendarMonthSnapshot.verifiedRows].sort(compareMonthlyDashboardVerified)
+  const visibleMonthScheduledRows = [...activeCalendarMonthSnapshot.scheduledRows].sort(compareMonthlyDashboardUpcoming)
+  const visibleMonthMonthOnlyRows = [...activeCalendarMonthSnapshot.monthOnlyRows].sort(compareUpcomingSignals)
+  const releasesByDate = groupByDate(visibleMonthVerifiedRows)
+  const upcomingByDate = groupUpcomingByDate(visibleMonthScheduledRows)
+  const monthScheduledCount = visibleMonthScheduledRows.length + visibleMonthMonthOnlyRows.length
   const dashboardFilterSummary = buildMonthlyDashboardFilterSummary(
     {
       search,
@@ -1773,9 +1862,12 @@ function App() {
     },
     language,
   )
-  const monthAgencySections = buildAgencyMonthSections(monthVerifiedDashboardRows, monthScheduledDashboardRows)
+  const monthAgencySections = buildAgencyMonthSections(visibleMonthVerifiedRows, visibleMonthScheduledRows)
   const monthActiveDayIsos = Array.from(
-    new Set([...monthReleases.map((item) => item.isoDate), ...monthUpcomingSignals.map((item) => item.isoDate)]),
+    new Set([
+      ...visibleMonthVerifiedRows.map((item) => item.isoDate),
+      ...visibleMonthScheduledRows.map((item) => item.isoDate),
+    ]),
   ).sort()
   const filteredActiveDayIsos = Array.from(
     new Set([
@@ -1798,7 +1890,9 @@ function App() {
   const visibleDayIsos = new Set(monthDays.map((day) => day.iso))
   const isSelectedDayVisible = visibleDayIsos.has(selectedDayIso)
   const hasNoMonthMatches =
-    monthReleases.length === 0 && monthUpcomingSignals.length === 0 && monthMonthOnlyUpcomingRows.length === 0
+    visibleMonthVerifiedRows.length === 0 &&
+    visibleMonthScheduledRows.length === 0 &&
+    visibleMonthMonthOnlyRows.length === 0
 
   const effectiveSelectedDayIso =
     isSelectedDayVisible
@@ -1822,7 +1916,7 @@ function App() {
     language === 'ko'
       ? `${selectedMonthDate.getFullYear()}년 ${selectedMonthDate.getMonth() + 1}월 컴백 캘린더`
       : `${monthFormatter.format(selectedMonthDate)} comeback calendar`
-  const nearestMonthlySignal = monthScheduledDashboardRows[0] ?? null
+  const nearestMonthlySignal = visibleMonthScheduledRows[0] ?? null
   const todayJumpTarget: CalendarQuickJumpTarget = {
     isoDate: todayIso,
     monthKey: todayMonthKey,
@@ -1859,7 +1953,17 @@ function App() {
     ? copy.calendarQuickJumpSourceLabels[nearestCalendarJumpTarget.source]
     : copy.calendarQuickJumpUnavailable
   const monthlyHighlightEmptyCopy =
-    monthMonthOnlyUpcomingRows.length > 0 ? copy.monthlyHighlightUndatedOnly : copy.monthlyHighlightEmpty
+    visibleMonthMonthOnlyRows.length > 0 ? copy.monthlyHighlightUndatedOnly : copy.monthlyHighlightEmpty
+  const calendarSurfaceMessage =
+    calendarMonthSourceMode === 'api'
+      ? calendarMonthResource.source === 'api'
+        ? copy.calendarBackendActive
+        : calendarMonthResource.loading
+          ? copy.calendarBackendLoading
+          : calendarMonthResource.source === 'json_fallback'
+            ? copy.calendarBackendFallback
+            : null
+      : null
   const selectedTeamFallback = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
   const selectedTeamResource = useEntityDetailResource({
     group: selectedGroup,
@@ -2136,7 +2240,7 @@ function App() {
             <div className="context-summary-grid">
               <article className="context-summary-card">
                 <span>{copy.monthlySummaryLabels.verified}</span>
-                <strong>{monthReleases.length}</strong>
+                <strong>{visibleMonthVerifiedRows.length}</strong>
               </article>
               <article className="context-summary-card">
                 <span>{copy.monthlySummaryLabels.scheduled}</span>
@@ -2836,9 +2940,7 @@ function App() {
                   </div>
                 ) : null}
 
-                {calendarMonthSourceMode === 'api' ? (
-                  <p className="signal-meta">{copy.calendarBackendFallback}</p>
-                ) : null}
+                {calendarSurfaceMessage ? <p className="signal-meta">{calendarSurfaceMessage}</p> : null}
 
                 <div className="calendar">
                   <div className="calendar-weekdays">
@@ -2917,9 +3019,9 @@ function App() {
             <MonthlyReleaseDashboard
               sectionId="dashboard-monthly-view"
               monthLabel={monthFormatter.format(selectedMonthDate)}
-              verifiedRows={monthVerifiedDashboardRows}
-              scheduledRows={monthScheduledDashboardRows}
-              monthOnlyRows={monthMonthOnlyUpcomingRows}
+              verifiedRows={visibleMonthVerifiedRows}
+              scheduledRows={visibleMonthScheduledRows}
+              monthOnlyRows={visibleMonthMonthOnlyRows}
               activeFilters={dashboardFilterSummary}
               language={language}
               displayDateFormatter={displayDateFormatter}
@@ -7103,6 +7205,346 @@ function useSearchSurfaceResource({
   }
 }
 
+function resolveCalendarApiGroupReference(entitySlug: string | null, displayName: string | null) {
+  return (
+    (entitySlug ? resolveGroupReference(entitySlug) : null) ??
+    (displayName ? resolveGroupReference(displayName) : null) ??
+    null
+  )
+}
+
+function buildSyntheticCalendarVerifiedRelease(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: VerifiedRelease['stream'],
+  releaseKind: string | null | undefined,
+): VerifiedRelease {
+  const releaseRow = releaseCatalogByGroup.get(group)
+  const team = teamProfileMap.get(group)
+  const normalizedReleaseKind =
+    releaseKind === 'album' || releaseKind === 'ep' || releaseKind === 'single'
+      ? releaseKind
+      : stream === 'album'
+        ? 'album'
+        : 'single'
+  const releaseFormat: ReleaseFormat =
+    normalizedReleaseKind === 'album' || normalizedReleaseKind === 'ep' || normalizedReleaseKind === 'single'
+      ? normalizedReleaseKind
+      : stream === 'album'
+        ? 'album'
+        : 'single'
+
+  return {
+    group,
+    artist_name_mb: releaseRow?.artist_name_mb ?? group,
+    artist_mbid: releaseRow?.artist_mbid ?? '',
+    artist_source: releaseRow?.artist_source ?? team?.artistSource ?? '',
+    actType: getActType(group),
+    stream,
+    title: releaseTitle,
+    date: releaseDate,
+    source: releaseRow?.artist_source ?? team?.artistSource ?? '',
+    release_kind: normalizedReleaseKind,
+    release_format: releaseFormat,
+    context_tags: [],
+    dateValue: new Date(`${releaseDate}T00:00:00`),
+    isoDate: releaseDate,
+  }
+}
+
+function buildCalendarApiVerifiedRelease(item: CalendarMonthApiVerifiedRelease): VerifiedRelease | null {
+  const entitySlug = readNonEmptyString(item.entity_slug)
+  const displayName = readNonEmptyString(item.display_name)
+  const releaseTitle = readNonEmptyString(item.release_title)
+  const releaseDate = readNonEmptyString(item.release_date)
+  const stream = item.stream === 'album' || item.stream === 'song' ? item.stream : null
+  const group = resolveCalendarApiGroupReference(entitySlug, displayName)
+
+  if (!group || !releaseTitle || !releaseDate || !stream) {
+    return null
+  }
+
+  return (
+    findVerifiedReleaseRecord(group, releaseTitle, releaseDate, stream, item.release_kind ?? undefined) ??
+    buildSyntheticCalendarVerifiedRelease(group, releaseTitle, releaseDate, stream, item.release_kind)
+  )
+}
+
+function buildCalendarApiUpcomingRow(item: CalendarMonthApiUpcomingItem): UpcomingCandidateRow | null {
+  const entitySlug = readNonEmptyString(item.entity_slug)
+  const displayName = readNonEmptyString(item.display_name)
+  const headline = readNonEmptyString(item.headline)
+  const group = resolveCalendarApiGroupReference(entitySlug, displayName)
+  if (!group || !headline) {
+    return null
+  }
+
+  const scheduledDate = readNonEmptyString(item.scheduled_date) ?? ''
+  const scheduledMonth = readNonEmptyString(item.scheduled_month) ?? ''
+  const datePrecision =
+    item.date_precision === 'exact' || item.date_precision === 'month_only' || item.date_precision === 'unknown'
+      ? item.date_precision
+      : 'unknown'
+  const dateStatus =
+    item.date_status === 'confirmed' || item.date_status === 'scheduled' || item.date_status === 'rumor'
+      ? item.date_status
+      : 'rumor'
+  const localMatch =
+    dedupedUpcomingCandidates.find(
+      (candidate) =>
+        candidate.group === group &&
+        candidate.headline === headline &&
+        getUpcomingDatePrecisionValue(candidate) === datePrecision &&
+        (scheduledDate ? candidate.scheduled_date === scheduledDate : candidate.scheduled_month === scheduledMonth),
+    ) ?? null
+
+  if (localMatch) {
+    return {
+      ...localMatch,
+      scheduled_date: scheduledDate || localMatch.scheduled_date,
+      scheduled_month: scheduledMonth || localMatch.scheduled_month,
+      date_precision: datePrecision,
+      date_status: dateStatus,
+      release_format: normalizeReleaseFormatValue(item.release_format) || localMatch.release_format,
+      confidence:
+        typeof item.confidence_score === 'number' && Number.isFinite(item.confidence_score)
+          ? item.confidence_score
+          : localMatch.confidence,
+      event_key: readNonEmptyString(item.upcoming_signal_id) ?? localMatch.event_key,
+    }
+  }
+
+  return {
+    group,
+    scheduled_date: scheduledDate,
+    scheduled_month: scheduledMonth,
+    date_precision: datePrecision,
+    date_status: dateStatus,
+    headline,
+    release_format: normalizeReleaseFormatValue(item.release_format),
+    context_tags: [],
+    source_type: 'pending',
+    source_url: '',
+    source_domain: '',
+    published_at: '',
+    confidence:
+      typeof item.confidence_score === 'number' && Number.isFinite(item.confidence_score)
+        ? item.confidence_score
+        : 0,
+    evidence_summary: '',
+    tracking_status: watchlistByGroup.get(group)?.tracking_status ?? teamProfileMap.get(group)?.trackingStatus ?? 'watch_only',
+    search_term: '',
+    event_key: readNonEmptyString(item.upcoming_signal_id) ?? undefined,
+  }
+}
+
+function buildCalendarApiDatedUpcomingSignal(item: CalendarMonthApiUpcomingItem): DatedUpcomingSignal | null {
+  const row = buildCalendarApiUpcomingRow(item)
+  if (!row || !hasExactUpcomingDate(row)) {
+    return null
+  }
+
+  return expandUpcomingCandidate(row)[0] ?? null
+}
+
+function dedupeCalendarVerifiedRows(rows: VerifiedRelease[]) {
+  const seen = new Set<string>()
+  return rows.filter((item) => {
+    const key = getAlbumKey(item)
+    if (seen.has(key)) {
+      return false
+    }
+
+    seen.add(key)
+    return true
+  })
+}
+
+function dedupeCalendarUpcomingRows<T extends UpcomingCandidateRow>(rows: T[]) {
+  const seen = new Set<string>()
+  return rows.filter((item) => {
+    const key = getUpcomingDashboardRowKey(item)
+    if (seen.has(key)) {
+      return false
+    }
+
+    seen.add(key)
+    return true
+  })
+}
+
+function buildCalendarMonthApiSnapshot(data: CalendarMonthApiResponse['data']): CalendarMonthApiSnapshot {
+  const dayRows = Array.isArray(data?.days) ? data.days : []
+  const verifiedRows = dedupeCalendarVerifiedRows(
+    dayRows.flatMap((day) =>
+      Array.isArray(day?.verified_releases) ? day.verified_releases.map(buildCalendarApiVerifiedRelease).filter(Boolean) : [],
+    ) as VerifiedRelease[],
+  )
+  const scheduledRows = dedupeCalendarUpcomingRows(
+    dayRows.flatMap((day) =>
+      Array.isArray(day?.exact_upcoming) ? day.exact_upcoming.map(buildCalendarApiDatedUpcomingSignal).filter(Boolean) : [],
+    ) as DatedUpcomingSignal[],
+  )
+  const monthOnlyRows = dedupeCalendarUpcomingRows(
+    (Array.isArray(data?.month_only_upcoming) ? data.month_only_upcoming : [])
+      .map(buildCalendarApiUpcomingRow)
+      .filter((item): item is UpcomingCandidateRow => item !== null && getUpcomingDatePrecisionValue(item) === 'month_only'),
+  )
+
+  return {
+    verifiedRows,
+    scheduledRows,
+    monthOnlyRows,
+  }
+}
+
+async function fetchCalendarMonthApiSnapshot(
+  monthKey: string,
+  signal: AbortSignal,
+): Promise<{ snapshot: CalendarMonthApiSnapshot | null; errorCode: string | null }> {
+  const cachedSnapshot = calendarMonthApiSnapshotCache.get(monthKey)
+  if (cachedSnapshot) {
+    return {
+      snapshot: cachedSnapshot,
+      errorCode: null,
+    }
+  }
+
+  const result = await fetchApiJson<CalendarMonthApiResponse>(
+    `/v1/calendar/month?month=${encodeURIComponent(monthKey)}`,
+    signal,
+  )
+  if (!result.ok || !result.body?.data) {
+    return {
+      snapshot: null,
+      errorCode: result.body?.error?.code ?? `calendar_month_${result.status}`,
+    }
+  }
+
+  const snapshot = buildCalendarMonthApiSnapshot(result.body.data)
+  calendarMonthApiSnapshotCache.set(monthKey, snapshot)
+  return {
+    snapshot,
+    errorCode: null,
+  }
+}
+
+function useCalendarMonthResource({
+  monthKey,
+  sourceMode,
+}: {
+  monthKey: string
+  sourceMode: CalendarMonthSourceMode
+}): CalendarMonthSurfaceResource {
+  const cachedSnapshot = sourceMode === 'api' ? calendarMonthApiSnapshotCache.get(monthKey) ?? null : null
+  const [remoteState, setRemoteState] = useState<{
+    monthKey: string
+    snapshot: CalendarMonthApiSnapshot | null
+    loading: boolean
+    errorCode: string | null
+  }>(() => ({
+    monthKey,
+    snapshot: cachedSnapshot,
+    loading: false,
+    errorCode: null,
+  }))
+
+  useEffect(() => {
+    if (sourceMode !== 'api' || !monthKey) {
+      return
+    }
+
+    if (cachedSnapshot) {
+      Promise.resolve().then(() => {
+        setRemoteState({
+          monthKey,
+          snapshot: cachedSnapshot,
+          loading: false,
+          errorCode: null,
+        })
+      })
+      return
+    }
+
+    const controller = new AbortController()
+    let cancelled = false
+
+    Promise.resolve().then(() => {
+      if (cancelled) {
+        return
+      }
+
+      setRemoteState({
+        monthKey,
+        snapshot: null,
+        loading: true,
+        errorCode: null,
+      })
+    })
+
+    void fetchCalendarMonthApiSnapshot(monthKey, controller.signal)
+      .then(({ snapshot, errorCode }) => {
+        if (cancelled) {
+          return
+        }
+
+        setRemoteState({
+          monthKey,
+          snapshot,
+          loading: false,
+          errorCode,
+        })
+      })
+      .catch((error: unknown) => {
+        if (cancelled) {
+          return
+        }
+
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return
+        }
+
+        setRemoteState({
+          monthKey,
+          snapshot: null,
+          loading: false,
+          errorCode: 'network_error',
+        })
+      })
+
+    return () => {
+      cancelled = true
+      controller.abort()
+    }
+  }, [cachedSnapshot, monthKey, sourceMode])
+
+  const activeSnapshot =
+    sourceMode === 'api'
+      ? remoteState.monthKey === monthKey
+        ? remoteState.snapshot ?? cachedSnapshot ?? null
+        : cachedSnapshot
+      : null
+  const loading =
+    sourceMode === 'api' && remoteState.monthKey === monthKey && remoteState.snapshot === null && remoteState.loading
+  const errorCode = sourceMode === 'api' && remoteState.monthKey === monthKey ? remoteState.errorCode : null
+  const source: CalendarMonthSourceState =
+    sourceMode !== 'api'
+      ? 'json'
+      : activeSnapshot
+        ? 'api'
+        : errorCode
+          ? 'json_fallback'
+          : 'json'
+
+  return {
+    snapshot: activeSnapshot,
+    source,
+    loading,
+    errorCode,
+  }
+}
+
 function buildVerifiedTeamLatestRelease(release: VerifiedRelease): TeamLatestRelease {
   return {
     title: release.title,
@@ -9056,6 +9498,88 @@ function matchesMyTeamsFilter(group: string, myTeamsSet: Set<string>, selectedMy
   }
 
   return myTeamsSet.has(group)
+}
+
+function matchesReleaseFilters(
+  item: VerifiedRelease,
+  {
+    searchNeedle,
+    selectedReleaseKind,
+    selectedActType,
+    selectedDashboardStatus,
+    selectedAgency,
+    myTeamsSet,
+    selectedMyTeamsOnly,
+  }: {
+    searchNeedle: SearchNeedle | null
+    selectedReleaseKind: (typeof releaseKindOptions)[number]
+    selectedActType: (typeof actTypeOptions)[number]
+    selectedDashboardStatus: (typeof dashboardStatusOptions)[number]
+    selectedAgency: string
+    myTeamsSet: Set<string>
+    selectedMyTeamsOnly: boolean
+  },
+) {
+  const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
+  const matchesReleaseKind = selectedReleaseKind === 'all' || item.release_kind === selectedReleaseKind
+  const matchesActType = selectedActType === 'all' || item.actType === selectedActType
+  const matchesStatus = selectedDashboardStatus === 'all' || selectedDashboardStatus === 'verified'
+  const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
+  const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
+  return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
+}
+
+function matchesUpcomingFilters(
+  item: UpcomingCandidateRow,
+  {
+    searchNeedle,
+    selectedReleaseKind,
+    selectedActType,
+    selectedDashboardStatus,
+    selectedAgency,
+    myTeamsSet,
+    selectedMyTeamsOnly,
+  }: {
+    searchNeedle: SearchNeedle | null
+    selectedReleaseKind: (typeof releaseKindOptions)[number]
+    selectedActType: (typeof actTypeOptions)[number]
+    selectedDashboardStatus: (typeof dashboardStatusOptions)[number]
+    selectedAgency: string
+    myTeamsSet: Set<string>
+    selectedMyTeamsOnly: boolean
+  },
+) {
+  const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
+  const matchesReleaseKind = selectedReleaseKind === 'all' || item.release_format === selectedReleaseKind
+  const matchesActType = selectedActType === 'all' || getActType(item.group) === selectedActType
+  const matchesStatus =
+    selectedDashboardStatus === 'all'
+      ? true
+      : selectedDashboardStatus === 'verified'
+        ? false
+        : item.date_status === selectedDashboardStatus
+  const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
+  const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
+  return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
+}
+
+function filterCalendarMonthApiSnapshot(
+  snapshot: CalendarMonthApiSnapshot,
+  filters: {
+    searchNeedle: SearchNeedle | null
+    selectedReleaseKind: (typeof releaseKindOptions)[number]
+    selectedActType: (typeof actTypeOptions)[number]
+    selectedDashboardStatus: (typeof dashboardStatusOptions)[number]
+    selectedAgency: string
+    myTeamsSet: Set<string>
+    selectedMyTeamsOnly: boolean
+  },
+): CalendarMonthApiSnapshot {
+  return {
+    verifiedRows: snapshot.verifiedRows.filter((item) => matchesReleaseFilters(item, filters)),
+    scheduledRows: snapshot.scheduledRows.filter((item) => matchesUpcomingFilters(item, filters)),
+    monthOnlyRows: snapshot.monthOnlyRows.filter((item) => matchesUpcomingFilters(item, filters)),
+  }
 }
 
 function formatMyTeamsCount(count: number, limit: number, language: Language) {
