@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer, { act } from 'react-test-renderer';
-import TabsLayout from './(tabs)/_layout';
-import CalendarTabScreen from './(tabs)/calendar';
-import RadarTabScreen from './(tabs)/radar';
-import SearchTabScreen from './(tabs)/search';
-import RootLayout from './_layout';
-import ArtistDetailPlaceholderScreen from './artists/[slug]';
-import IndexRoute from './index';
-import ReleaseDetailPlaceholderScreen from './releases/[id]';
+import TabsLayout from '../../app/(tabs)/_layout';
+import CalendarTabScreen from '../../app/(tabs)/calendar';
+import RadarTabScreen from '../../app/(tabs)/radar';
+import SearchTabScreen from '../../app/(tabs)/search';
+import RootLayout from '../../app/_layout';
+import ArtistDetailPlaceholderScreen from '../../app/artists/[slug]';
+import IndexRoute from '../../app/index';
+import ReleaseDetailPlaceholderScreen from '../../app/releases/[id]';
 
 jest.mock('expo-router', () => {
   const React = jest.requireActual<typeof import('react')>('react');

@@ -10,5 +10,6 @@
 - `tokens/`: design token / theme
 - `types/`: shared TypeScript model
 - `utils/`: framework-agnostic helper
+  - `assetRegistry.ts`: bundled placeholder/service/badge asset entrypoint
 
 현재는 bootstrap 단계라 placeholder directory만 둔다.

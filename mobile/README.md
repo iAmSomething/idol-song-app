@@ -12,6 +12,8 @@
 
 - `app/`
   - Expo Router root layout / tab shell / detail placeholder route
+- `assets/`
+  - placeholder / service icon / badge fallback asset inventory
 - `src/`
   - components / features / selectors / services / tokens / types / utils 구역
 - `.env.example`
@@ -24,6 +26,8 @@
   - env 로딩 + runtime config validation entrypoint
 - `src/config/runtime.ts`
   - 앱 런타임에서 쓰는 validated config accessor
+- `src/utils/assetRegistry.ts`
+  - local bundled asset lookup entrypoint
 - `eas.json`
   - Expo build profile baseline
 - `tsconfig.json`
@@ -128,6 +132,16 @@ profile 차이는 아래 범위로만 제한한다.
 - 실제 screen/layout 구현
 - selector/adapter binding
 - backend integration
+
+## asset baseline
+
+- `mobile/assets/placeholders/`
+  - cover/team/empty-state fallback
+- `mobile/assets/services/`
+  - Spotify / YouTube Music / YouTube MV icon baseline
+- `mobile/assets/badges/`
+  - group / solo / label fallback
+- later screen work는 raw asset path 대신 `src/utils/assetRegistry.ts`를 우선 사용한다.
 
 ## verification baseline
 
