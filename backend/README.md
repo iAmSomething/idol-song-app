@@ -171,3 +171,38 @@ python3 build_backend_json_parity_report.py
 - title-track / double-title 표현
 - YouTube Music / YouTube MV service-link state
 - review-required counts
+
+## Endpoint Shadow Read Report
+
+projection-backed read route를 current shipped web semantics와 직접 비교하려면 아래 명령을 사용한다.
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+cd backend
+npm run shadow:verify
+```
+
+기본 보고서 출력:
+
+- `backend/reports/backend_shadow_read_report.json`
+
+현재 shadow-read scope:
+
+- `/v1/search`
+- `/v1/entities/:slug`
+- `/v1/releases/lookup` + `/v1/releases/:id`
+- `/v1/calendar/month`
+- `/v1/radar`
+
+리포트는 clean 여부와 함께 다음 drift category를 surface 한다.
+
+- missing rows or segments
+- alias-match differences
+- exact-vs-month-only drift
+- latest-release or next-upcoming drift
+- title-track / MV-state drift
+- radar eligibility drift
+- field-shape mismatches
