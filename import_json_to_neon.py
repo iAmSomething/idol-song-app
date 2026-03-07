@@ -52,6 +52,20 @@ TARGET_TABLES = [
     "review_tasks",
     "release_link_overrides",
 ]
+RELEASE_PIPELINE_TABLES = [
+    "entities",
+    "youtube_channels",
+    "entity_youtube_channels",
+    "releases",
+    "release_artwork",
+    "tracks",
+    "release_service_links",
+    "track_service_links",
+    "entity_tracking_state",
+    "review_tasks",
+    "release_link_overrides",
+]
+RELEASE_PIPELINE_REVIEW_SOURCE_DATASETS = {"mv_manual_review_queue"}
 
 NAMESPACE = uuid.uuid5(uuid.NAMESPACE_URL, "https://github.com/iAmSomething/idol-song-app/import-json-to-neon/v1")
 SOLO_SLUGS = {
@@ -1181,6 +1195,23 @@ def build_import_payload() -> Dict[str, Any]:
             "release_link_overrides": release_link_override_rows,
         },
     }
+
+
+def build_release_pipeline_payload() -> Dict[str, Any]:
+    payload = build_import_payload()
+    release_scope_tables = {
+        table: payload["tables"][table]
+        for table in RELEASE_PIPELINE_TABLES
+    }
+    release_scope_tables["review_tasks"] = [
+        row
+        for row in release_scope_tables["review_tasks"]
+        if isinstance(row.get("payload"), dict)
+        and row["payload"].get("source_dataset") in RELEASE_PIPELINE_REVIEW_SOURCE_DATASETS
+    ]
+    payload["summary"]["scope"] = "release_pipeline"
+    payload["tables"] = release_scope_tables
+    return payload
 
 
 def fetch_existing_state(connection: "psycopg.Connection[Any]") -> Dict[str, Any]:

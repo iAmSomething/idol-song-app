@@ -117,6 +117,17 @@ python build_release_change_log.py
 python -m unittest test_youtube_mv_candidate_scoring.py
 ```
 
+Neon canonical DB까지 같이 최신화하려면 아래를 이어서 실행한다.
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+python3 -m pip install -r backend/requirements-import.txt
+python3 sync_release_pipeline_to_neon.py
+```
+
 ### 백엔드 migration baseline
 
 - migration location: `backend/sql/migrations/`
