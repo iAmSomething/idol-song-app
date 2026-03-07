@@ -18,6 +18,7 @@
   - env/runtime config 예시값
 - `package.json`
   - Expo / Expo Router dependency baseline
+  - lint / typecheck / test script baseline
 - `app.config.ts`
   - development / preview / production profile split
   - env 로딩 + runtime config validation entrypoint
@@ -50,6 +51,20 @@ npm run start:production
 ```bash
 cd mobile
 npm run typecheck
+```
+
+lint:
+
+```bash
+cd mobile
+npm run lint
+```
+
+test:
+
+```bash
+cd mobile
+npm run test
 ```
 
 profile config 확인:
@@ -111,6 +126,26 @@ profile 차이는 아래 범위로만 제한한다.
 - 실제 screen/layout 구현
 - selector/adapter binding
 - backend integration
+
+## verification baseline
+
+- `npm run lint`
+  - Expo workspace 기준 ESLint baseline
+- `npm run typecheck`
+  - strict TypeScript gate
+- `npm run test`
+  - runtime config unit test + route shell smoke test baseline
+
+현재 test 범위는 얇게 시작한다.
+
+- unit
+  - runtime config validation / normalization
+- smoke
+  - root redirect
+  - tab shell render
+  - artist/release detail placeholder render
+
+device/e2e automation은 아직 포함하지 않는다.
 
 위 항목은 후속 모바일 foundation 이슈에서 추가한다.
 
