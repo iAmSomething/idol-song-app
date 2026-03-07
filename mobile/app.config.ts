@@ -15,6 +15,7 @@ type ProfileConfig = {
     analytics: boolean;
     remoteRefresh: boolean;
     mvEmbed: boolean;
+    shareActions: boolean;
   };
 };
 
@@ -37,6 +38,7 @@ type RuntimeConfig = {
     analytics: boolean;
     remoteRefresh: boolean;
     mvEmbed: boolean;
+    shareActions: boolean;
   };
   build: {
     commitSha: string | null;
@@ -57,6 +59,7 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
       analytics: false,
       remoteRefresh: false,
       mvEmbed: true,
+      shareActions: true,
     },
   },
   preview: {
@@ -70,6 +73,7 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
       analytics: false,
       remoteRefresh: false,
       mvEmbed: true,
+      shareActions: true,
     },
   },
   production: {
@@ -83,6 +87,7 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
       analytics: false,
       remoteRefresh: false,
       mvEmbed: true,
+      shareActions: true,
     },
   },
 };
@@ -155,6 +160,7 @@ function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig
     analytics: parseBooleanOverride(env.EXPO_PUBLIC_ENABLE_ANALYTICS, profileConfig.featureGates.analytics),
     remoteRefresh: parseBooleanOverride(env.EXPO_PUBLIC_ENABLE_REMOTE_REFRESH, profileConfig.featureGates.remoteRefresh),
     mvEmbed: parseBooleanOverride(env.EXPO_PUBLIC_ENABLE_MV_EMBED, profileConfig.featureGates.mvEmbed),
+    shareActions: parseBooleanOverride(env.EXPO_PUBLIC_ENABLE_SHARE_ACTIONS, profileConfig.featureGates.shareActions),
   };
 
   if (featureGates.remoteRefresh && !remoteDatasetUrl) {
