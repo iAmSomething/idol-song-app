@@ -367,7 +367,7 @@ type TeamProfile = {
   artistSource: string
   xUrl: string
   instagramUrl: string
-  youtubeUrl: string
+  youtubeUrl: string | null
   hasOfficialYouTubeUrl: boolean
   agency: string
   badgeImageUrl: string | null
@@ -934,7 +934,6 @@ const TEAM_COPY = {
     representativeImage: '팀 마크 소스',
     generatedMark: '모노그램 fallback',
     badgeSourceLink: '배지 출처',
-    youtubeSearch: '유튜브 검색',
     footnote:
       '공식 badge/avatar가 있으면 우선 사용하고, 없을 때만 대표 이미지나 모노그램 fallback으로 내려갑니다.',
     upcomingLabel: '예정 컴백',
@@ -1042,7 +1041,6 @@ const TEAM_COPY = {
     representativeImage: 'Team mark source',
     generatedMark: 'Monogram fallback',
     badgeSourceLink: 'Badge source',
-    youtubeSearch: 'YouTube search',
     footnote:
       'Use an official badge/avatar first, then fall back to a representative image or monogram only when no sourced asset exists.',
     upcomingLabel: 'Upcoming comeback',
@@ -1949,7 +1947,7 @@ function App() {
             </div>
 
             <div className="team-links-row meta-links">
-              {selectedTeam.badgeSourceUrl ? (
+              {selectedTeam.badgeSourceUrl && selectedTeam.badgeSourceUrl !== selectedTeam.youtubeUrl ? (
                 <a href={selectedTeam.badgeSourceUrl} target="_blank" rel="noreferrer" className="meta-link">
                   {teamCopy.badgeSourceLink}
                 </a>
@@ -1964,9 +1962,11 @@ function App() {
                   Instagram
                 </a>
               ) : null}
-              <a href={selectedTeam.youtubeUrl} target="_blank" rel="noreferrer" className="meta-link">
-                {selectedTeam.hasOfficialYouTubeUrl ? 'YouTube' : teamCopy.youtubeSearch}
-              </a>
+              {selectedTeam.hasOfficialYouTubeUrl && selectedTeam.youtubeUrl ? (
+                <a href={selectedTeam.youtubeUrl} target="_blank" rel="noreferrer" className="meta-link">
+                  YouTube
+                </a>
+              ) : null}
               {selectedTeam.artistSource ? (
                 <a href={selectedTeam.artistSource} target="_blank" rel="noreferrer" className="meta-link">
                   {copy.artistSource}
@@ -5988,8 +5988,8 @@ function buildTeamProfiles() {
         artistSource: releaseRow?.artist_source ?? latestRelease?.artistSource ?? '',
         xUrl: artistProfile?.official_x_url ?? '',
         instagramUrl: artistProfile?.official_instagram_url ?? '',
-        youtubeUrl: artistProfile?.official_youtube_url ?? badgeSourceUrl ?? getYouTubeSearchUrl(group),
-        hasOfficialYouTubeUrl: Boolean(artistProfile?.official_youtube_url ?? badgeSourceUrl),
+        youtubeUrl: artistProfile?.official_youtube_url ?? null,
+        hasOfficialYouTubeUrl: Boolean(artistProfile?.official_youtube_url),
         agency: normalizeAgencyName(artistProfile?.agency),
         badgeImageUrl: getTeamBadgeImageUrl(group),
         badgeSourceUrl,
@@ -7031,10 +7031,6 @@ function getTeamMonogram(group: string) {
     .slice(0, 3)
     .map((word) => word[0]?.toUpperCase() ?? '')
     .join('')
-}
-
-function getYouTubeSearchUrl(group: string) {
-  return `https://www.youtube.com/results?search_query=${encodeURIComponent(`${group} official channel`)}`
 }
 
 function getTeamBadgeImageUrl(group: string) {
