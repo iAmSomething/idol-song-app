@@ -139,6 +139,13 @@ python3 sync_release_pipeline_to_neon.py
 - projection refresh report: `backend/reports/projection_refresh_summary.json`
 - endpoint shadow-read report: `backend/reports/backend_shadow_read_report.json`
 
+### 모바일 워크스페이스 baseline
+
+- workspace entry: `mobile/README.md`
+- Expo Router route scaffold: `mobile/app/`
+- shared module scaffold: `mobile/src/`
+- implementation guide: `docs/specs/mobile/expo-implementation-guide.md`
+
 Hydration dry-run 예시:
 
 ```bash
