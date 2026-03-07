@@ -1098,6 +1098,27 @@
   margin-top: 4px;
 }
 
+.dashboard-subsection-stack,
+.dashboard-subsection {
+  display: grid;
+  gap: 14px;
+}
+
+.dashboard-subsection {
+  padding-top: 6px;
+  border-top: 1px solid rgba(27, 42, 65, 0.08);
+}
+
+.dashboard-subsection:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.dashboard-subsection-head h4 {
+  margin: 0;
+  font-size: 0.96rem;
+}
+
 .dashboard-table-actions {
   display: grid;
   gap: 8px;

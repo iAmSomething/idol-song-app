@@ -44,11 +44,25 @@
   - 상단 좌측: 날짜 숫자
   - 하단 영역: 팀 배지 최대 2개
   - 초과 시 마지막 줄에 `+N`
+- 날짜 셀에 들어가는 예정 컴백은 `exact date`가 있는 항목만 허용한다.
 - 선택 셀은 같은 월 안에서 1개만 활성
 
-### 4.5 List Mode
+### 4.5 Month-only Bucket
+- 캘린더 그리드 바로 아래 월 컨텍스트 섹션
+- 대상: `scheduled_month`는 있지만 `scheduled_date`는 없는 예정 신호
+- 표현:
+  - 팀 배지/팀명
+  - headline
+  - 상태 칩
+  - `2026년 4월 · 날짜 미정` 같은 월 단위 라벨
+  - Primary `팀 페이지`
+  - Meta `기사/공식 공지`
+- day cell이나 date detail sheet 안의 날짜별 row로 밀어 넣지 않는다.
+
+### 4.6 List Mode
 - 캘린더 그리드 위치를 카드 리스트가 대체
 - 상단 월/필터/요약 컨텍스트는 유지
+- `예정` 리스트는 `exact date`와 `month_only`를 분리해 보여주고, `month_only`에는 항상 `날짜 미정` 라벨을 붙인다.
 
 ## 5. 컴포넌트 인벤토리
 | 영역 | 컴포넌트 | 위치 | 필수 여부 | 탭 동작 |
@@ -61,6 +75,7 @@
 | Summary | Monthly Summary Strip | App Bar 아래 | 필수 | 없음 |
 | Segment | View Toggle | Summary 아래 | 필수 | 캘린더/리스트 전환 |
 | Calendar | Day Cell | 그리드 본문 | 필수 | Date Detail Sheet 오픈 |
+| Monthly Context | Month-only Bucket | Calendar 아래 | 조건부 | 각 행 액션 처리 |
 | Sheet | Verified Section | Sheet 상단 | 조건부 | 각 행 액션 처리 |
 | Sheet | Scheduled Section | Verified 아래 | 조건부 | 각 행 액션 처리 |
 
@@ -77,6 +92,7 @@
 - 발매/예정 없는 날짜는 숫자만 표시
 - 발매/예정 있는 날짜는 배지 노출
 - 배지는 `공식 배지 -> 대표 이미지 크롭 -> 모노그램` 순서의 fallback 허용
+- `month_only` 또는 `unknown` 예정 신호는 날짜 셀 배지 대상이 아니다.
 
 ### 7.2 선택 상태
 - border + background + ring 중 최소 2개 이상 변화
@@ -106,6 +122,10 @@
 1. `Verified releases`
 2. `Scheduled comebacks`
 
+### 8.4.a 제외 규칙
+- Date Detail Sheet의 `Scheduled comebacks`에는 `exact date` 항목만 넣는다.
+- `month_only` 항목은 sheet가 아니라 월 컨텍스트의 Month-only Bucket으로 보낸다.
+
 ### 8.5 Verified Release Row
 - 좌측: 팀 배지 + 팀명
 - 본문: 릴리즈명, 형식 칩, 발매일
@@ -134,12 +154,14 @@
 ### 9.3 카드 규칙
 - 발매 카드: 팀명, 릴리즈명, 대표곡(optional), 형식, 발매일, 상세/서비스 액션
 - 예정 카드: 팀명, 예정명, 상태, 예정일, confidence, 팀 페이지, 출처
+- `month_only` 예정 카드는 예정일 대신 `월 라벨 + 날짜 미정`을 표시한다.
 
 ## 10. 데이터 바인딩
 - 월간 발매 수: `releases.json` month filter
 - 예정 컴백 수: `upcomingCandidates.json` month filter
-- 가장 가까운 일정: filtered upcoming 중 earliest
-- 날짜 셀 배지: releases/upcoming grouped by iso day
+- 가장 가까운 일정: filtered upcoming 중 earliest `exact date`
+- 날짜 셀 배지: releases + exact-date upcoming grouped by iso day
+- month-only bucket: `upcomingCandidates.json` 중 `date_precision = month_only` and `scheduled_month = active month`
 - verified row artwork: optional `releaseArtwork.json`
 
 ## 11. 상태 매트릭스
@@ -156,6 +178,7 @@
 - 월 제목은 `2026년 4월` 형식을 우선한다.
 - Summary 라벨은 `이번 달 발매`, `예정 컴백`, `가장 가까운 일정`으로 고정한다.
 - Empty Day 시트 문구는 `이 날짜에는 등록된 일정이 없습니다.`로 고정한다.
+- `month_only` 라벨은 `2026년 4월 · 날짜 미정` 형식을 우선한다.
 
 ## 13. 제스처 계약
 - 날짜 셀 탭은 sheet open만 수행한다.
@@ -178,5 +201,6 @@
 ## 16. QA 핵심 포인트
 - 날짜 탭 -> sheet 오픈 -> 팀 상세 이동 흐름 확인
 - empty day, multi-item day, partial-data day 확인
+- month-only만 있는 월에서 날짜 셀은 비어 있고, 별도 월 버킷에는 항목이 보이는지 확인
 - `캘린더/리스트` 전환 시 월 상태 유지 확인
 - 서비스 버튼과 Meta 링크가 시각적으로 구분되는지 확인
