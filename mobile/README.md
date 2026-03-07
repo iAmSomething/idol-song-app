@@ -14,11 +14,30 @@
   - Expo Router 기준 route shell 위치
 - `src/`
   - components / features / selectors / services / tokens / types / utils 구역
+- `package.json`
+  - Expo / Expo Router dependency baseline
+- `app.json`
+  - Expo runtime baseline
+- `tsconfig.json`
+  - TypeScript baseline
+
+## 로컬 시작 기준
+
+```bash
+cd mobile
+npm install
+npm run start
+```
+
+타입 체크:
+
+```bash
+cd mobile
+npm run typecheck
+```
 
 ## 아직 없는 것
 
-- Expo package manifest
-- TypeScript baseline
 - 실제 screen/layout 구현
 - backend integration
 
