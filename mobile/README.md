@@ -14,10 +14,15 @@
   - Expo Router 기준 route shell 위치
 - `src/`
   - components / features / selectors / services / tokens / types / utils 구역
+- `.env.example`
+  - env/runtime config 예시값
 - `package.json`
   - Expo / Expo Router dependency baseline
 - `app.config.ts`
   - development / preview / production profile split
+  - env 로딩 + runtime config validation entrypoint
+- `src/config/runtime.ts`
+  - 앱 런타임에서 쓰는 validated config accessor
 - `eas.json`
   - Expo build profile baseline
 - `tsconfig.json`
@@ -56,6 +61,13 @@ npm run config:preview
 npm run config:production
 ```
 
+env 예시는 아래 파일을 기준으로 잡는다.
+
+```bash
+cd mobile
+cp .env.example .env
+```
+
 ## profile split 원칙
 
 - `development`
@@ -78,6 +90,20 @@ profile 차이는 아래 범위로만 제한한다.
 - feature gate metadata
 - app identity 구분용 name / slug / scheme
 
+## env / validation 규칙
+
+- `APP_ENV`
+  - `development`, `preview`, `production`만 허용한다.
+- `EXPO_PUBLIC_API_BASE_URL`, `EXPO_PUBLIC_REMOTE_DATASET_URL`
+  - 값이 있으면 absolute `http(s)` URL이어야 한다.
+- `EXPO_PUBLIC_ENABLE_REMOTE_REFRESH=true`
+  - 이 경우 `EXPO_PUBLIC_REMOTE_DATASET_URL`이 필수다.
+- `EXPO_PUBLIC_ENABLE_ANALYTICS=true`
+  - 이 경우 `EXPO_PUBLIC_ANALYTICS_WRITE_KEY`가 필수다.
+- invalid config
+  - `app.config.ts` 단계와 `src/config/runtime.ts` 단계에서 둘 다 명시적으로 실패시킨다.
+  - silent fallback으로 숨기지 않는다.
+
 라우팅 구조, 화면 contract, field shape는 profile에 따라 달라지지 않는다.
 
 ## 아직 없는 것
@@ -97,6 +123,7 @@ mobile/
     releases/
   src/
     components/
+    config/
     features/
     selectors/
     services/
