@@ -37,6 +37,52 @@ class YouTubeMvCandidateScoringTests(unittest.TestCase):
         self.assertEqual(outcome["status"], "no_match")
         self.assertEqual(outcome["candidates"][0]["decision"], "rejected")
 
+    def test_making_film_is_rejected_even_with_mv_marker(self) -> None:
+        case = {
+            "group": "Xdinary Heroes",
+            "release_title": "FiRE (My Sweet Misery)",
+            "title_tracks": ["FiRE (My Sweet Misery)"],
+            "release_date": "2025-07-07",
+            "mv_allowlist_match_keys": ["@xdinaryheroes"],
+        }
+        outcome = scoring.score_candidates(
+            case,
+            [
+                {
+                    "video_id": "making-film",
+                    "title": "Xdinary Heroes 〈FiRE (My Sweet Misery)〉 M/V Making Film",
+                    "channel_url": "https://www.youtube.com/@XdinaryHeroes",
+                    "published_at": "2025-07-07T09:00:00Z",
+                    "view_count": 1200000,
+                }
+            ],
+        )
+        self.assertEqual(outcome["status"], "no_match")
+        self.assertEqual(outcome["candidates"][0]["decision"], "rejected")
+
+    def test_mv_bts_label_is_rejected_even_on_allowlisted_channel(self) -> None:
+        case = {
+            "group": "LUN8",
+            "release_title": "LOST",
+            "title_tracks": ["LOST"],
+            "release_date": "2025-09-17",
+            "mv_allowlist_match_keys": ["@lun8_official"],
+        }
+        outcome = scoring.score_candidates(
+            case,
+            [
+                {
+                    "video_id": "lost-mv-bts",
+                    "title": "Lost M/V BTS #루네이트 #LUN8 #LOST #로스트",
+                    "channel_url": "https://www.youtube.com/@LUN8_official",
+                    "published_at": "2025-09-17T09:00:00Z",
+                    "view_count": 1800000,
+                }
+            ],
+        )
+        self.assertEqual(outcome["status"], "no_match")
+        self.assertEqual(outcome["candidates"][0]["decision"], "rejected")
+
 
 if __name__ == "__main__":
     unittest.main()

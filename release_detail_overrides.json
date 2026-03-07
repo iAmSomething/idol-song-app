@@ -1,5 +1,16 @@
 [
   {
+    "group": "&TEAM",
+    "release_title": "Back to Life",
+    "release_date": "2025-10-28",
+    "stream": "album",
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4",
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_id": "KqE0P1qMtQg",
+    "youtube_video_url": "https://www.youtube.com/watch?v=KqE0P1qMtQg",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
     "group": "(G)I-DLE",
     "release_title": "i‐dle",
     "release_date": "2025-10-03",
@@ -8,12 +19,13 @@
     "provenance": "ytmusicapi exact album search match"
   },
   {
-    "group": "&TEAM",
-    "release_title": "Back to Life",
-    "release_date": "2025-10-28",
-    "stream": "album",
-    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4",
-    "provenance": "ytmusicapi exact album search match"
+    "group": "(G)I-DLE",
+    "release_title": "Mono",
+    "release_date": "2026-01-27",
+    "stream": "song",
+    "youtube_video_id": "DYgE3SGPEqk",
+    "youtube_video_url": "https://www.youtube.com/watch?v=DYgE3SGPEqk",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "82MAJOR",
@@ -32,6 +44,15 @@
     "stream": "song",
     "youtube_video_url": "https://www.youtube.com/watch?v=WxL5cNNelLk",
     "youtube_video_provenance": "official artist channel watch URL"
+  },
+  {
+    "group": "aespa",
+    "release_title": "Rich Man",
+    "release_date": "2025-09-05",
+    "stream": "album",
+    "youtube_video_id": "5oQVTnq-UKk",
+    "youtube_video_url": "https://www.youtube.com/watch?v=5oQVTnq-UKk",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "ALL(H)OURS",
@@ -87,7 +108,10 @@
     "release_date": "2025-10-10",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_ki16_Lh3p19WqZ8SgTPuGd3Vl96qmbBfE",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_id": "wlHwjkYpSr0",
+    "youtube_video_url": "https://www.youtube.com/watch?v=wlHwjkYpSr0",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "BADVILLAIN",
@@ -112,6 +136,15 @@
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kv6ea-C6wkZm4_oKaDuet9iZlOSlccR7Y",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "뛰어 (JUMP)",
+    "release_date": "2025-07-11",
+    "stream": "song",
+    "youtube_video_id": "CgCVZdcKcqY",
+    "youtube_video_url": "https://www.youtube.com/watch?v=CgCVZdcKcqY",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "BLACKPINK",
@@ -229,7 +262,10 @@
     "release_date": "2025-11-10",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nAwplpKBLvrFvJQUrR89jEkhA6EoNW8SA",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_id": "piSq8IioghU",
+    "youtube_video_url": "https://www.youtube.com/watch?v=piSq8IioghU",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "IVE",
@@ -243,6 +279,15 @@
       "BANG BANG"
     ],
     "title_track_provenance": "https://enews.imbc.com/News/RetrieveNewsInfo/452862"
+  },
+  {
+    "group": "izna",
+    "release_title": "BEEP",
+    "release_date": "2025-06-09",
+    "stream": "song",
+    "youtube_video_id": "wLKpQpC3-Sw",
+    "youtube_video_url": "https://www.youtube.com/watch?v=wLKpQpC3-Sw",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "izna",
@@ -331,7 +376,10 @@
     "release_date": "2025-10-27",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lTkc-Tu6iCFIcrXDYdLPXWsflGY9Pd6gA",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_id": "d4tHKtG9xFo",
+    "youtube_video_url": "https://www.youtube.com/watch?v=d4tHKtG9xFo",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "NMIXX",
@@ -339,7 +387,10 @@
     "release_date": "2025-10-13",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nvsmIZ4mfs1TwPX_-aM4mxw_SV_EytZ8U",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_id": "EmeW6li6bbo",
+    "youtube_video_url": "https://www.youtube.com/watch?v=EmeW6li6bbo",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "ONEUS",
@@ -363,7 +414,10 @@
     "release_date": "2025-09-26",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_njC3t9wzGwFgXmAei9ywrKL_2z5TSouAU",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_id": "1EKcXRcGE_I",
+    "youtube_video_url": "https://www.youtube.com/watch?v=1EKcXRcGE_I",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "Purple Kiss",
@@ -428,7 +482,10 @@
     "release_date": "2025-11-21",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nYozrF8dvixMpZLFrbNMngS1EYCfNjes0",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_id": "NED7nev2ywQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=NED7nev2ywQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "TEMPEST",
@@ -511,5 +568,14 @@
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nboKa9DtcS0FWNllBthpaoUaHl0dHr_oU",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "ROSES",
+    "release_date": "2026-01-23",
+    "stream": "song",
+    "youtube_video_id": "JUeZL0TyT3I",
+    "youtube_video_url": "https://www.youtube.com/watch?v=JUeZL0TyT3I",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   }
 ]

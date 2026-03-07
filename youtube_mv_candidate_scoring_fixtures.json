@@ -164,5 +164,61 @@
       "status": "accepted",
       "accepted_video_id": "thriller-official-mv"
     }
+  },
+  {
+    "case_id": "tws_mv_shoot_sketch_is_rejected",
+    "release": {
+      "group": "TWS",
+      "release_title": "Head Shoulders Knees Toes",
+      "title_tracks": [
+        "Head Shoulders Knees Toes"
+      ],
+      "release_date": "2025-09-22",
+      "mv_allowlist_match_keys": [
+        "@tws_pledis",
+        "@hybelabels"
+      ]
+    },
+    "candidates": [
+      {
+        "video_id": "head-shoulders-sketch",
+        "title": "[TWS:ERIES] TWS (투어스) ‘Head Shoulders Knees Toes’ MV Shoot Sketch",
+        "channel_url": "https://www.youtube.com/@TWS_PLEDIS",
+        "published_at": "2025-09-22T12:00:00Z",
+        "view_count": 4200000
+      }
+    ],
+    "expected": {
+      "status": "no_match",
+      "accepted_video_id": null
+    }
+  },
+  {
+    "case_id": "mv_coming_soon_is_rejected",
+    "release": {
+      "group": "NMIXX",
+      "release_title": "TIC TIC",
+      "title_tracks": [
+        "TIC TIC"
+      ],
+      "release_date": "2026-02-26",
+      "mv_allowlist_match_keys": [
+        "@nmixxofficial",
+        "@jypentertainment"
+      ]
+    },
+    "candidates": [
+      {
+        "video_id": "tic-tic-coming-soon",
+        "title": "“TIC TIC” MV Coming soon #NMIXX #엔믹스 #PablloVittar #TICTIC #TIC_TIC",
+        "channel_url": "https://www.youtube.com/@NMIXXOfficial",
+        "published_at": "2026-02-26T09:00:00Z",
+        "view_count": 5100000
+      }
+    ],
+    "expected": {
+      "status": "no_match",
+      "accepted_video_id": null
+    }
   }
 ]

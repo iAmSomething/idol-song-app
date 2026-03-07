@@ -26,6 +26,18 @@ HARD_REJECT_PATTERNS = {
     "teaser": re.compile(r"\bteaser\b", re.IGNORECASE),
     "highlight_medley": re.compile(r"\bhighlight medley\b", re.IGNORECASE),
     "shorts": re.compile(r"\bshorts?\b", re.IGNORECASE),
+    "special_clip": re.compile(r"\bspecial clip\b", re.IGNORECASE),
+    "reaction": re.compile(r"\breaction\b", re.IGNORECASE),
+    "visualizer": re.compile(r"\bvisualizer\b", re.IGNORECASE),
+    "behind": re.compile(r"\bbehind\b|\bbehind the scenes\b", re.IGNORECASE),
+    "concept_film": re.compile(r"\bconcept film\b", re.IGNORECASE),
+    "medley": re.compile(r"\bmedley\b", re.IGNORECASE),
+    "making_film": re.compile(r"\bmaking film\b|\bmv making\b|\bmaking of\b", re.IGNORECASE),
+    "shoot_sketch": re.compile(r"\bshoot sketch\b|\bmv shoot sketch\b|\bsketch\b", re.IGNORECASE),
+    "coming_soon": re.compile(r"\bcoming soon\b", re.IGNORECASE),
+    "self_cam": re.compile(r"\bself-?cam\b", re.IGNORECASE),
+    "special_video": re.compile(r"\bspecial video\b", re.IGNORECASE),
+    "mv_bts": re.compile(r"\b(?:m\/v|mv)\s+bts\b", re.IGNORECASE),
 }
 
 SOFT_NEGATIVE_PATTERNS = {
@@ -219,7 +231,7 @@ def score_candidates(context: dict[str, Any], candidates: list[dict[str, Any]]) 
         ):
             status = "accepted"
             accepted_video_id = top_candidate.get("video_id")
-        elif top_candidate["score"] >= REVIEW_SCORE:
+        elif has_title_match and top_candidate["score"] >= REVIEW_SCORE:
             status = "needs_review"
 
     for index, candidate in enumerate(ranked):
