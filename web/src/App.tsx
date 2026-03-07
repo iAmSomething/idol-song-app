@@ -237,6 +237,8 @@ type EntityDetailSourceMode = SurfaceSourceMode
 type EntityDetailSourceState = 'json' | 'api' | 'json_fallback'
 type CalendarMonthSourceMode = SurfaceSourceMode
 type CalendarMonthSourceState = 'json' | 'api' | 'json_fallback'
+type RadarSourceMode = SurfaceSourceMode
+type RadarSourceState = 'json' | 'api' | 'json_fallback'
 
 type SearchApiEntityMatch = {
   entity_slug?: string
@@ -417,6 +419,67 @@ type CalendarMonthApiSnapshot = {
 type CalendarMonthSurfaceResource = {
   snapshot: CalendarMonthApiSnapshot | null
   source: CalendarMonthSourceState
+  loading: boolean
+  errorCode: string | null
+}
+
+type RadarApiReleaseSummary = {
+  release_title?: string
+  release_date?: string | null
+  stream?: string | null
+  release_kind?: string | null
+}
+
+type RadarApiUpcomingSummary = {
+  upcoming_signal_id?: string
+  entity_slug?: string
+  display_name?: string
+  headline?: string
+  scheduled_date?: string | null
+  scheduled_month?: string | null
+  date_precision?: string
+  date_status?: string
+  confidence_score?: number | null
+  release_format?: string | null
+}
+
+type RadarApiLongGapItem = {
+  entity_slug?: string
+  display_name?: string
+  watch_reason?: string | null
+  latest_release?: RadarApiReleaseSummary | null
+  gap_days?: number | null
+  has_upcoming_signal?: boolean
+  latest_signal?: RadarApiUpcomingSummary | null
+}
+
+type RadarApiRookieItem = {
+  entity_slug?: string
+  display_name?: string
+  debut_year?: number | null
+  latest_release?: RadarApiReleaseSummary | null
+  has_upcoming_signal?: boolean
+  latest_signal?: RadarApiUpcomingSummary | null
+}
+
+type RadarApiResponse = {
+  data?: {
+    long_gap?: RadarApiLongGapItem[]
+    rookie?: RadarApiRookieItem[]
+  }
+  error?: {
+    code?: string
+  }
+}
+
+type RadarApiSnapshot = {
+  longGapEntries: LongGapRadarEntry[]
+  rookieEntries: RookieRadarEntry[]
+}
+
+type RadarSurfaceResource = {
+  snapshot: RadarApiSnapshot | null
+  source: RadarSourceState
   loading: boolean
   errorCode: string | null
 }
@@ -793,6 +856,8 @@ const TRANSLATIONS = {
     calendarBackendActive: '현재 월간 캘린더와 대시보드는 backend /v1/calendar/month 응답을 우선 사용 중입니다.',
     calendarBackendFallback:
       'calendar/month source switch는 열려 있지만, 이 surface는 아직 local JSON fallback을 계속 사용합니다.',
+    radarBackendLoading: 'backend /v1/radar 결과를 확인하는 중입니다. 현재는 local JSON 레이더 데이터를 먼저 표시합니다.',
+    radarBackendActive: '현재 레이더 섹션은 backend /v1/radar 응답을 우선 사용 중입니다.',
     radarBackendFallback:
       'radar source switch는 열려 있지만, 이 surface는 아직 local JSON fallback을 계속 사용합니다.',
     monthSummaryVerified: '검증됨',
@@ -1046,6 +1111,9 @@ const TRANSLATIONS = {
       'The monthly calendar and dashboard are currently using the backend /v1/calendar/month response.',
     calendarBackendFallback:
       'The calendar/month source switch is available, but this surface is still using the local JSON fallback for now.',
+    radarBackendLoading:
+      'Checking backend /v1/radar now. The UI keeps the local JSON-backed radar data visible first.',
+    radarBackendActive: 'The radar sections are currently using the backend /v1/radar response.',
     radarBackendFallback:
       'The radar source switch is available, but this surface is still using the local JSON fallback for now.',
     monthSummaryVerified: 'verified',
@@ -1517,6 +1585,7 @@ const releaseDetailApiSnapshotCache = new Map<string, ReleaseDetailApiSnapshot>(
 const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
 const entityDetailApiSnapshotCache = new Map<string, TeamProfile>()
 const calendarMonthApiSnapshotCache = new Map<string, CalendarMonthApiSnapshot>()
+const radarApiSnapshotCache = new Map<string, RadarApiSnapshot>()
 const SURFACE_SOURCE_MODES = {
   search: normalizeSurfaceSourceMode(import.meta.env.VITE_SEARCH_SOURCE),
   entityDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_ENTITY_DETAIL_SOURCE),
@@ -1766,6 +1835,27 @@ function App() {
       matchesAgencyFilter(item.group, selectedAgency) &&
       matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly),
   )
+  const radarFallbackSnapshot: RadarApiSnapshot = {
+    longGapEntries: filteredLongGapRadar,
+    rookieEntries: filteredRookieRadar,
+  }
+  const radarResource = useRadarSurfaceResource({
+    sourceMode: radarSourceMode,
+  })
+  const filteredRadarApiSnapshot = radarResource.snapshot
+    ? filterRadarApiSnapshot(radarResource.snapshot, {
+        searchNeedle,
+        selectedAgency,
+        myTeamsSet,
+        selectedMyTeamsOnly,
+      })
+    : null
+  const activeRadarSnapshot =
+    radarSourceMode === 'api' && radarResource.source === 'api' && filteredRadarApiSnapshot
+      ? filteredRadarApiSnapshot
+      : radarFallbackSnapshot
+  const visibleLongGapRadar = activeRadarSnapshot.longGapEntries
+  const visibleRookieRadar = activeRadarSnapshot.rookieEntries
   const searchSurfaceFallbackSnapshot: SearchSurfaceSnapshot = {
     entities: filteredTeams.slice(0, 12),
     releases: filteredReleases.slice(0, 10),
@@ -1962,6 +2052,16 @@ function App() {
           ? copy.calendarBackendLoading
           : calendarMonthResource.source === 'json_fallback'
             ? copy.calendarBackendFallback
+            : null
+      : null
+  const radarSurfaceMessage =
+    radarSourceMode === 'api'
+      ? radarResource.source === 'api'
+        ? copy.radarBackendActive
+        : radarResource.loading
+          ? copy.radarBackendLoading
+          : radarResource.source === 'json_fallback'
+            ? copy.radarBackendFallback
             : null
       : null
   const selectedTeamFallback = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
@@ -3124,12 +3224,12 @@ function App() {
             </section>
 
             <div id="dashboard-radar" className="sidebar-radar-stack scroll-anchor-section">
-              {radarSourceMode === 'api' ? <p className="signal-meta">{copy.radarBackendFallback}</p> : null}
+              {radarSurfaceMessage ? <p className="signal-meta">{radarSurfaceMessage}</p> : null}
               <section className="panel">
                 <p className="panel-label">{copy.longGapRadar}</p>
                 <h2>{copy.longGapRadarTitle}</h2>
                 <LongGapRadarList
-                  entries={filteredLongGapRadar}
+                  entries={visibleLongGapRadar}
                   language={language}
                   displayDateFormatter={displayDateFormatter}
                   onOpenTeamPage={openTeamPage}
@@ -3140,7 +3240,7 @@ function App() {
                 <p className="panel-label">{copy.rookieRadar}</p>
                 <h2>{copy.rookieRadarTitle}</h2>
                 <RookieRadarList
-                  entries={filteredRookieRadar}
+                  entries={visibleRookieRadar}
                   language={language}
                   displayDateFormatter={displayDateFormatter}
                   onOpenTeamPage={openTeamPage}
@@ -7545,6 +7645,329 @@ function useCalendarMonthResource({
   }
 }
 
+function resolveRadarGroupReference(entitySlug: string | null, displayName: string | null) {
+  return (
+    (entitySlug ? resolveGroupReference(entitySlug) : null) ??
+    (displayName ? resolveGroupReference(displayName) : null) ??
+    null
+  )
+}
+
+function buildRadarLatestRelease(
+  group: string,
+  summary: RadarApiReleaseSummary | null | undefined,
+  fallbackTeam: TeamProfile,
+): TeamLatestRelease | null {
+  if (!summary) {
+    return fallbackTeam.latestRelease
+  }
+
+  const releaseTitle = readNonEmptyString(summary.release_title)
+  const releaseDate = readNonEmptyString(summary.release_date)
+  const stream = summary.stream === 'album' || summary.stream === 'song' ? summary.stream : null
+  if (!releaseTitle || !releaseDate || !stream) {
+    return fallbackTeam.latestRelease
+  }
+
+  const verifiedRelease = findVerifiedReleaseRecord(group, releaseTitle, releaseDate, stream, summary.release_kind ?? undefined)
+  if (verifiedRelease) {
+    return buildVerifiedTeamLatestRelease(verifiedRelease)
+  }
+
+  if (
+    fallbackTeam.latestRelease &&
+    fallbackTeam.latestRelease.title === releaseTitle &&
+    fallbackTeam.latestRelease.date === releaseDate &&
+    fallbackTeam.latestRelease.stream === stream
+  ) {
+    return fallbackTeam.latestRelease
+  }
+
+  const releaseKind = normalizeApiReleaseKind(summary.release_kind, stream === 'album' ? 'album' : 'single')
+  return {
+    title: releaseTitle,
+    date: releaseDate,
+    releaseKind,
+    releaseFormat: normalizeReleaseFormatValue(releaseKind),
+    contextTags: [],
+    streamLabel: stream,
+    stream,
+    source: fallbackTeam.artistSource,
+    artistSource: fallbackTeam.artistSource,
+    verified: false,
+  }
+}
+
+function buildRadarUpcomingSignal(
+  group: string,
+  summary: RadarApiUpcomingSummary | null | undefined,
+  fallbackTeam: TeamProfile,
+): UpcomingCandidateRow | null {
+  if (!summary || !readNonEmptyString(summary.headline)) {
+    return null
+  }
+
+  const headline = readNonEmptyString(summary.headline) ?? ''
+  const scheduledDate = readNonEmptyString(summary.scheduled_date) ?? ''
+  const scheduledMonth = readNonEmptyString(summary.scheduled_month) ?? ''
+  const datePrecision =
+    summary.date_precision === 'exact' || summary.date_precision === 'month_only' || summary.date_precision === 'unknown'
+      ? summary.date_precision
+      : 'unknown'
+  const dateStatus =
+    summary.date_status === 'confirmed' || summary.date_status === 'scheduled' || summary.date_status === 'rumor'
+      ? summary.date_status
+      : 'rumor'
+  const localMatch =
+    fallbackTeam.upcomingSignals.find(
+      (item) =>
+        item.headline === headline &&
+        item.date_precision === datePrecision &&
+        (scheduledDate ? item.scheduled_date === scheduledDate : item.scheduled_month === scheduledMonth),
+    ) ??
+    dedupedUpcomingCandidates.find(
+      (candidate) =>
+        candidate.group === group &&
+        candidate.headline === headline &&
+        getUpcomingDatePrecisionValue(candidate) === datePrecision &&
+        (scheduledDate ? candidate.scheduled_date === scheduledDate : candidate.scheduled_month === scheduledMonth),
+    ) ??
+    null
+
+  if (localMatch) {
+    return {
+      ...localMatch,
+      scheduled_date: scheduledDate || localMatch.scheduled_date,
+      scheduled_month: scheduledMonth || localMatch.scheduled_month,
+      date_precision: datePrecision,
+      date_status: dateStatus,
+      release_format: normalizeReleaseFormatValue(summary.release_format) || localMatch.release_format,
+      confidence:
+        typeof summary.confidence_score === 'number' && Number.isFinite(summary.confidence_score)
+          ? summary.confidence_score
+          : localMatch.confidence,
+      event_key: readNonEmptyString(summary.upcoming_signal_id) ?? localMatch.event_key,
+    }
+  }
+
+  return {
+    group,
+    scheduled_date: scheduledDate,
+    scheduled_month: scheduledMonth,
+    date_precision: datePrecision,
+    date_status: dateStatus,
+    headline,
+    release_format: normalizeReleaseFormatValue(summary.release_format),
+    context_tags: [],
+    source_type: 'pending',
+    source_url: '',
+    source_domain: '',
+    published_at: '',
+    confidence:
+      typeof summary.confidence_score === 'number' && Number.isFinite(summary.confidence_score)
+        ? summary.confidence_score
+        : 0,
+    evidence_summary: '',
+    tracking_status: fallbackTeam.trackingStatus,
+    search_term: '',
+    event_key: readNonEmptyString(summary.upcoming_signal_id) ?? undefined,
+  }
+}
+
+function buildRadarLongGapEntry(item: RadarApiLongGapItem): LongGapRadarEntry | null {
+  const group = resolveRadarGroupReference(readNonEmptyString(item.entity_slug), readNonEmptyString(item.display_name))
+  if (!group) {
+    return null
+  }
+
+  const fallbackTeam = teamProfileMap.get(group)
+  if (!fallbackTeam) {
+    return null
+  }
+
+  const latestRelease = buildRadarLatestRelease(group, item.latest_release ?? null, fallbackTeam)
+  if (!latestRelease) {
+    return null
+  }
+
+  const latestSignal = buildRadarUpcomingSignal(group, item.latest_signal ?? null, fallbackTeam)
+  const gapDays =
+    typeof item.gap_days === 'number' && Number.isFinite(item.gap_days)
+      ? item.gap_days
+      : latestRelease.date && isExactDate(latestRelease.date)
+        ? getElapsedDaysSinceDate(latestRelease.date)
+        : 0
+
+  return {
+    group,
+    watchReason: item.watch_reason === 'long_gap' ? 'long_gap' : 'long_gap',
+    latestRelease,
+    gapDays,
+    hasUpcomingSignal: Boolean(item.has_upcoming_signal ?? latestSignal),
+    latestSignal,
+  }
+}
+
+function buildRadarRookieEntry(item: RadarApiRookieItem): RookieRadarEntry | null {
+  const group = resolveRadarGroupReference(readNonEmptyString(item.entity_slug), readNonEmptyString(item.display_name))
+  if (!group) {
+    return null
+  }
+
+  const fallbackTeam = teamProfileMap.get(group)
+  if (!fallbackTeam) {
+    return null
+  }
+
+  return {
+    group,
+    debutYear: typeof item.debut_year === 'number' && Number.isFinite(item.debut_year) ? item.debut_year : null,
+    latestRelease: buildRadarLatestRelease(group, item.latest_release ?? null, fallbackTeam),
+    hasUpcomingSignal: Boolean(item.has_upcoming_signal ?? item.latest_signal),
+    latestSignal: buildRadarUpcomingSignal(group, item.latest_signal ?? null, fallbackTeam),
+  }
+}
+
+function buildRadarApiSnapshot(data: RadarApiResponse['data']): RadarApiSnapshot {
+  return {
+    longGapEntries: (Array.isArray(data?.long_gap) ? data.long_gap : [])
+      .map(buildRadarLongGapEntry)
+      .filter((item): item is LongGapRadarEntry => item !== null)
+      .sort(compareLongGapRadarEntries),
+    rookieEntries: (Array.isArray(data?.rookie) ? data.rookie : [])
+      .map(buildRadarRookieEntry)
+      .filter((item): item is RookieRadarEntry => item !== null)
+      .sort(compareRookieRadarEntries),
+  }
+}
+
+async function fetchRadarApiSnapshot(
+  signal: AbortSignal,
+): Promise<{ snapshot: RadarApiSnapshot | null; errorCode: string | null }> {
+  const cacheKey = 'default'
+  const cachedSnapshot = radarApiSnapshotCache.get(cacheKey)
+  if (cachedSnapshot) {
+    return {
+      snapshot: cachedSnapshot,
+      errorCode: null,
+    }
+  }
+
+  const result = await fetchApiJson<RadarApiResponse>('/v1/radar', signal)
+  if (!result.ok || !result.body?.data) {
+    return {
+      snapshot: null,
+      errorCode: result.body?.error?.code ?? `radar_${result.status}`,
+    }
+  }
+
+  const snapshot = buildRadarApiSnapshot(result.body.data)
+  radarApiSnapshotCache.set(cacheKey, snapshot)
+  return {
+    snapshot,
+    errorCode: null,
+  }
+}
+
+function useRadarSurfaceResource({
+  sourceMode,
+}: {
+  sourceMode: RadarSourceMode
+}): RadarSurfaceResource {
+  const cacheKey = 'default'
+  const cachedSnapshot = sourceMode === 'api' ? radarApiSnapshotCache.get(cacheKey) ?? null : null
+  const [remoteState, setRemoteState] = useState<{
+    snapshot: RadarApiSnapshot | null
+    loading: boolean
+    errorCode: string | null
+  }>(() => ({
+    snapshot: cachedSnapshot,
+    loading: false,
+    errorCode: null,
+  }))
+
+  useEffect(() => {
+    if (sourceMode !== 'api') {
+      return
+    }
+
+    if (cachedSnapshot) {
+      Promise.resolve().then(() => {
+        setRemoteState({
+          snapshot: cachedSnapshot,
+          loading: false,
+          errorCode: null,
+        })
+      })
+      return
+    }
+
+    const controller = new AbortController()
+    let cancelled = false
+
+    Promise.resolve().then(() => {
+      if (cancelled) {
+        return
+      }
+
+      setRemoteState({
+        snapshot: null,
+        loading: true,
+        errorCode: null,
+      })
+    })
+
+    void fetchRadarApiSnapshot(controller.signal)
+      .then(({ snapshot, errorCode }) => {
+        if (cancelled) {
+          return
+        }
+
+        setRemoteState({
+          snapshot,
+          loading: false,
+          errorCode,
+        })
+      })
+      .catch((error: unknown) => {
+        if (cancelled) {
+          return
+        }
+
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return
+        }
+
+        setRemoteState({
+          snapshot: null,
+          loading: false,
+          errorCode: 'network_error',
+        })
+      })
+
+    return () => {
+      cancelled = true
+      controller.abort()
+    }
+  }, [cachedSnapshot, sourceMode])
+
+  const source: RadarSourceState =
+    sourceMode !== 'api'
+      ? 'json'
+      : remoteState.snapshot
+        ? 'api'
+        : remoteState.errorCode
+          ? 'json_fallback'
+          : 'json'
+
+  return {
+    snapshot: remoteState.snapshot ?? cachedSnapshot ?? null,
+    source,
+    loading: sourceMode === 'api' && remoteState.snapshot === null && remoteState.loading,
+    errorCode: sourceMode === 'api' ? remoteState.errorCode : null,
+  }
+}
+
 function buildVerifiedTeamLatestRelease(release: VerifiedRelease): TeamLatestRelease {
   return {
     title: release.title,
@@ -9579,6 +10002,42 @@ function filterCalendarMonthApiSnapshot(
     verifiedRows: snapshot.verifiedRows.filter((item) => matchesReleaseFilters(item, filters)),
     scheduledRows: snapshot.scheduledRows.filter((item) => matchesUpcomingFilters(item, filters)),
     monthOnlyRows: snapshot.monthOnlyRows.filter((item) => matchesUpcomingFilters(item, filters)),
+  }
+}
+
+function matchesRadarEntryFilters(
+  group: string,
+  {
+    searchNeedle,
+    selectedAgency,
+    myTeamsSet,
+    selectedMyTeamsOnly,
+  }: {
+    searchNeedle: SearchNeedle | null
+    selectedAgency: string
+    myTeamsSet: Set<string>
+    selectedMyTeamsOnly: boolean
+  },
+) {
+  return (
+    matchesSearchIndex(searchIndexByGroup.get(group), searchNeedle) &&
+    matchesAgencyFilter(group, selectedAgency) &&
+    matchesMyTeamsFilter(group, myTeamsSet, selectedMyTeamsOnly)
+  )
+}
+
+function filterRadarApiSnapshot(
+  snapshot: RadarApiSnapshot,
+  filters: {
+    searchNeedle: SearchNeedle | null
+    selectedAgency: string
+    myTeamsSet: Set<string>
+    selectedMyTeamsOnly: boolean
+  },
+): RadarApiSnapshot {
+  return {
+    longGapEntries: snapshot.longGapEntries.filter((item) => matchesRadarEntryFilters(item.group, filters)),
+    rookieEntries: snapshot.rookieEntries.filter((item) => matchesRadarEntryFilters(item.group, filters)),
   }
 }
 
