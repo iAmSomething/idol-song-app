@@ -214,6 +214,18 @@ PORT=3213 npm run start
 - `/v1/review/upcoming`
 - `/v1/review/mv`
 
+deploy workflow rehearsal에서는 위 subset을 live public URL에 다시 확인한다.
+
+```bash
+cd backend
+npm run smoke:live -- --target preview --base-url https://preview.example.com --report-path ./reports/live_backend_smoke_preview.json
+```
+
+preview / production은 같은 smoke contract를 사용하고, artifact만 분리한다.
+
+- preview: `backend/reports/live_backend_smoke_preview.json`
+- production: `backend/reports/live_backend_smoke_production.json`
+
 `/ready` 해석 규칙:
 
 - `ready`
