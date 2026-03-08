@@ -5,6 +5,7 @@ import {
   createSelectorContext,
   selectLatestReleaseSummaryBySlug,
   selectMonthReleaseSummaries,
+  selectSearchResults,
   selectMonthUpcomingEvents,
   selectRecentReleaseSummariesBySlug,
   selectReleaseDetailById,
@@ -168,8 +169,8 @@ describe('mobile selector/adapters scaffold', () => {
     const release = selectLatestReleaseSummaryBySlug(dataset, 'yena');
 
     expect(release).not.toBeNull();
-    expect(release?.releaseTitle).toBe('Drama Queen');
-    expect(release?.stream).toBe('song');
+    expect(release?.releaseTitle).toBe('LOVE CATCHER');
+    expect(release?.stream).toBe('album');
   });
 
   test('returns recent release history rows as normalized summary models', () => {
@@ -214,6 +215,24 @@ describe('mobile selector/adapters scaffold', () => {
     expect(snapshot.nearestUpcoming?.headline).toContain('3월 11일');
     expect(snapshot.exactUpcoming).toHaveLength(1);
     expect(snapshot.monthOnlyUpcoming).toHaveLength(1);
+  });
+
+  test('returns sectioned search results for Korean alias and exact upcoming coverage', () => {
+    const results = selectSearchResults(dataset, '최예나');
+
+    expect(results.entities[0]?.team.slug).toBe('yena');
+    expect(results.entities[0]?.matchKind).toBe('alias_exact');
+    expect(results.releases[0]?.release.releaseTitle).toBe('LOVE CATCHER');
+    expect(results.releases[0]?.matchKind).toBe('entity_exact_latest_release');
+    expect(results.upcoming[0]?.upcoming.group).toBe('YENA');
+    expect(results.upcoming[0]?.matchKind).toBe('entity_exact');
+  });
+
+  test('returns release-title exact search matches ahead of partial matches', () => {
+    const results = selectSearchResults(dataset, 'LOVE CATCHER');
+
+    expect(results.releases[0]?.release.releaseTitle).toBe('LOVE CATCHER');
+    expect(results.releases[0]?.matchKind).toBe('release_title_exact');
   });
 
   test('resolves a release detail model by normalized release id', () => {

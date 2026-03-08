@@ -86,6 +86,46 @@ export interface ReleaseDetailModel {
   tracks: TrackModel[];
 }
 
+export type SearchTeamMatchKind =
+  | 'display_name_exact'
+  | 'search_alias_exact'
+  | 'alias_exact'
+  | 'alias_partial'
+  | 'partial';
+
+export type SearchReleaseMatchKind =
+  | 'release_title_exact'
+  | 'entity_exact_latest_release'
+  | 'partial';
+
+export type SearchUpcomingMatchKind =
+  | 'entity_exact'
+  | 'headline_exact'
+  | 'partial';
+
+export interface SearchTeamResultModel {
+  team: TeamSummaryModel;
+  latestRelease: ReleaseSummaryModel | null;
+  matchKind: SearchTeamMatchKind;
+}
+
+export interface SearchReleaseResultModel {
+  release: ReleaseSummaryModel;
+  matchKind: SearchReleaseMatchKind;
+}
+
+export interface SearchUpcomingResultModel {
+  upcoming: UpcomingEventModel;
+  matchKind: SearchUpcomingMatchKind;
+}
+
+export interface SearchResultsModel {
+  query: string;
+  entities: SearchTeamResultModel[];
+  releases: SearchReleaseResultModel[];
+  upcoming: SearchUpcomingResultModel[];
+}
+
 export interface CalendarMonthSnapshotModel {
   month: string;
   releaseCount: number;

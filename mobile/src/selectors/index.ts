@@ -3,6 +3,10 @@ import type {
   MobileRawDataset,
   ReleaseDetailModel,
   ReleaseSummaryModel,
+  SearchReleaseResultModel,
+  SearchResultsModel,
+  SearchTeamResultModel,
+  SearchUpcomingResultModel,
   TeamSummaryModel,
   UpcomingEventModel,
 } from '../types';
@@ -15,7 +19,7 @@ import {
   adaptUpcomingEvent,
 } from './adapters';
 import { createSelectorContext, type MobileSelectorContext } from './context';
-import { buildReleaseId, compareIsoDateDescending, compareUpcomingDate } from './normalize';
+import { buildReleaseId, compareIsoDateDescending, compareUpcomingDate, normalizeSearchToken } from './normalize';
 
 export { createSelectorContext } from './context';
 export * from './adapters';
@@ -61,7 +65,18 @@ export function selectLatestReleaseSummaryBySlug(
     releaseCollection,
     context.artworkByReleaseId,
     context.detailByReleaseId,
-  ).sort((left, right) => compareIsoDateDescending(left.releaseDate, right.releaseDate));
+  ).sort((left, right) => {
+    const dateDelta = compareIsoDateDescending(left.releaseDate, right.releaseDate);
+    if (dateDelta !== 0) {
+      return dateDelta;
+    }
+
+    if (left.stream !== right.stream) {
+      return left.stream === 'album' ? -1 : 1;
+    }
+
+    return left.releaseTitle.localeCompare(right.releaseTitle);
+  });
 
   return candidates[0] ?? null;
 }
@@ -224,6 +239,224 @@ export function selectNearestExactUpcomingEvent(
   }
 
   return events.sort(compareUpcomingDate)[0] ?? null;
+}
+
+function includesPartialMatch(tokens: string[], query: string): boolean {
+  return tokens.some((token) => token.includes(query));
+}
+
+function findSearchTeamResults(
+  context: MobileSelectorContext,
+  normalizedQuery: string,
+): SearchTeamResultModel[] {
+  const results: SearchTeamResultModel[] = [];
+
+  for (const profile of context.dataset.artistProfiles) {
+    const team = adaptTeamSummary(profile, context.allowlistsByGroup.get(profile.group));
+    const displayTokens = [profile.group, profile.display_name]
+      .filter((value): value is string => Boolean(value?.trim()))
+      .map(normalizeSearchToken);
+    const searchAliasTokens = (profile.search_aliases ?? []).map(normalizeSearchToken);
+    const aliasTokens = (profile.aliases ?? []).map(normalizeSearchToken);
+    const allTokens = Array.from(new Set([...displayTokens, ...searchAliasTokens, ...aliasTokens]));
+
+    let matchKind: SearchTeamResultModel['matchKind'] | null = null;
+
+    if (displayTokens.includes(normalizedQuery)) {
+      matchKind = 'display_name_exact';
+    } else if (searchAliasTokens.includes(normalizedQuery)) {
+      matchKind = 'search_alias_exact';
+    } else if (aliasTokens.includes(normalizedQuery)) {
+      matchKind = 'alias_exact';
+    } else if (includesPartialMatch([...searchAliasTokens, ...aliasTokens], normalizedQuery)) {
+      matchKind = 'alias_partial';
+    } else if (includesPartialMatch(allTokens, normalizedQuery)) {
+      matchKind = 'partial';
+    }
+
+    if (!matchKind) {
+      continue;
+    }
+
+    results.push({
+      team,
+      latestRelease: selectLatestReleaseSummaryBySlug(context, team.slug),
+      matchKind,
+    });
+  }
+
+  const rank: Record<SearchTeamResultModel['matchKind'], number> = {
+    display_name_exact: 0,
+    search_alias_exact: 1,
+    alias_exact: 2,
+    alias_partial: 3,
+    partial: 4,
+  };
+
+  return results.sort((left, right) => {
+    const rankDelta = rank[left.matchKind] - rank[right.matchKind];
+    if (rankDelta !== 0) {
+      return rankDelta;
+    }
+
+    return left.team.displayName.localeCompare(right.team.displayName);
+  });
+}
+
+function findSearchReleaseResults(
+  context: MobileSelectorContext,
+  normalizedQuery: string,
+): SearchReleaseResultModel[] {
+  const latestReleaseIdsByGroup = new Map<string, string>();
+
+  for (const profile of context.dataset.artistProfiles) {
+    const latestRelease = selectLatestReleaseSummaryBySlug(context, profile.slug);
+    if (latestRelease) {
+      latestReleaseIdsByGroup.set(profile.group, latestRelease.id);
+    }
+  }
+
+  const results: SearchReleaseResultModel[] = [];
+
+  for (const [group, history] of context.releaseHistoryByGroup.entries()) {
+    const profile = context.profilesByGroup.get(group);
+    const displayGroup = profile?.display_name?.trim() || group;
+    const teamTokens = [group, profile?.display_name, ...(profile?.aliases ?? []), ...(profile?.search_aliases ?? [])]
+      .filter((value): value is string => Boolean(value?.trim()))
+      .map(normalizeSearchToken);
+
+    for (const release of history.releases) {
+      const releaseId = buildReleaseId(group, release.title, release.date, release.stream ?? 'album');
+      const releaseTitleToken = normalizeSearchToken(release.title);
+
+      let matchKind: SearchReleaseResultModel['matchKind'] | null = null;
+
+      if (releaseTitleToken === normalizedQuery) {
+        matchKind = 'release_title_exact';
+      } else if (
+        teamTokens.includes(normalizedQuery) &&
+        latestReleaseIdsByGroup.get(group) === releaseId
+      ) {
+        matchKind = 'entity_exact_latest_release';
+      } else if (releaseTitleToken.includes(normalizedQuery) || teamTokens.some((token) => token.includes(normalizedQuery))) {
+        matchKind = 'partial';
+      }
+
+      if (!matchKind) {
+        continue;
+      }
+
+      results.push({
+        release: adaptReleaseHistoryEntry(
+          group,
+          displayGroup,
+          release,
+          context.artworkByReleaseId.get(releaseId),
+          context.detailByReleaseId.get(releaseId),
+        ),
+        matchKind,
+      });
+    }
+  }
+
+  const rank: Record<SearchReleaseResultModel['matchKind'], number> = {
+    release_title_exact: 0,
+    entity_exact_latest_release: 1,
+    partial: 2,
+  };
+
+  return results
+    .sort((left, right) => {
+      const rankDelta = rank[left.matchKind] - rank[right.matchKind];
+      if (rankDelta !== 0) {
+        return rankDelta;
+      }
+
+      return compareIsoDateDescending(left.release.releaseDate, right.release.releaseDate);
+    })
+    .slice(0, 20);
+}
+
+function findSearchUpcomingResults(
+  context: MobileSelectorContext,
+  normalizedQuery: string,
+): SearchUpcomingResultModel[] {
+  const results: SearchUpcomingResultModel[] = [];
+
+  for (const upcoming of context.dataset.upcomingCandidates) {
+    const displayGroup = context.profilesByGroup.get(upcoming.group)?.display_name?.trim() || upcoming.group;
+    const teamProfile = context.profilesByGroup.get(upcoming.group);
+    const teamTokens = [upcoming.group, teamProfile?.display_name, ...(teamProfile?.aliases ?? []), ...(teamProfile?.search_aliases ?? [])]
+      .filter((value): value is string => Boolean(value?.trim()))
+      .map(normalizeSearchToken);
+    const headlineToken = normalizeSearchToken(upcoming.headline);
+    const releaseLabelToken = normalizeSearchToken(upcoming.release_label ?? '');
+    const headlineWords = headlineToken.split(' ').filter(Boolean);
+
+    let matchKind: SearchUpcomingResultModel['matchKind'] | null = null;
+
+    if (teamTokens.includes(normalizedQuery)) {
+      matchKind = 'entity_exact';
+    } else if (headlineWords.includes(normalizedQuery) || releaseLabelToken === normalizedQuery) {
+      matchKind = 'headline_exact';
+    } else if (
+      headlineToken.includes(normalizedQuery) ||
+      releaseLabelToken.includes(normalizedQuery) ||
+      teamTokens.some((token) => token.includes(normalizedQuery))
+    ) {
+      matchKind = 'partial';
+    }
+
+    if (!matchKind) {
+      continue;
+    }
+
+    results.push({
+      upcoming: adaptUpcomingEvent(upcoming.group, displayGroup, upcoming),
+      matchKind,
+    });
+  }
+
+  const rank: Record<SearchUpcomingResultModel['matchKind'], number> = {
+    entity_exact: 0,
+    headline_exact: 1,
+    partial: 2,
+  };
+
+  return results
+    .sort((left, right) => {
+      const rankDelta = rank[left.matchKind] - rank[right.matchKind];
+      if (rankDelta !== 0) {
+        return rankDelta;
+      }
+
+      return compareUpcomingDate(left.upcoming, right.upcoming);
+    })
+    .slice(0, 20);
+}
+
+export function selectSearchResults(
+  input: MobileSelectorContext | MobileRawDataset,
+  query: string,
+): SearchResultsModel {
+  const context = resolveContext(input);
+  const normalizedQuery = normalizeSearchToken(query);
+
+  if (!normalizedQuery) {
+    return {
+      query,
+      entities: [],
+      releases: [],
+      upcoming: [],
+    };
+  }
+
+  return {
+    query,
+    entities: findSearchTeamResults(context, normalizedQuery),
+    releases: findSearchReleaseResults(context, normalizedQuery),
+    upcoming: findSearchUpcomingResults(context, normalizedQuery),
+  };
 }
 
 export function selectCalendarMonthSnapshot(
