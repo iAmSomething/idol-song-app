@@ -47,6 +47,13 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 - 정본 schema는 plain SQL로 관리한다.
 - apply / verify 도구는 SQL 실행 보조에만 사용한다.
 
+## DB Lifecycle
+
+- API runtime은 `backend/src/lib/db.ts`의 `createDbPool()`을 공용 entrypoint로 사용한다.
+- `buildApp()`가 pool을 직접 만들었든 주입받았든, shutdown은 `app.close()` 한 곳으로 수렴시키고 내부에서 `closeDbPool()`까지 처리한다.
+- `backend/src/server.ts`는 `SIGINT`, `SIGTERM`에서 `app.close()`를 호출해 Fastify와 DB pool을 함께 정리한다.
+- later worker / one-off script / test가 pool을 직접 만들면 종료 시 `closeDbPool()` 또는 `pool.end()`를 명시적으로 호출해야 한다.
+
 ## Preview / Staging Baseline
 
 preview rehearsal은 production과 분리된 DB / API / worker 경로를 기준으로 진행한다.

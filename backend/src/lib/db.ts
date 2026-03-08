@@ -16,6 +16,10 @@ export function createDbPool(config: AppConfig): DbPool {
   });
 }
 
+export async function closeDbPool(pool: DbPool): Promise<void> {
+  await pool.end();
+}
+
 export async function pingDatabase(pool: DbQueryable): Promise<void> {
   await pool.query('select 1');
 }
