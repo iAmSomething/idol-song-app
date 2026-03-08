@@ -39,6 +39,7 @@ function buildRuntimeConfig(
       ...featureGateOverrides,
     },
     build: {
+      version: '0.1.0',
       commitSha: 'test-sha',
       ...overrides.build,
     },

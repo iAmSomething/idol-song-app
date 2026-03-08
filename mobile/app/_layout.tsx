@@ -10,6 +10,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="artists/[slug]" options={{ title: 'Artist Detail' }} />
         <Stack.Screen name="releases/[id]" options={{ title: 'Release Detail' }} />
+        <Stack.Screen name="debug/metadata" options={{ title: 'Debug Metadata' }} />
       </Stack>
     </MobileThemeProvider>
   );

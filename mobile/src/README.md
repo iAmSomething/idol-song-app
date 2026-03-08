@@ -6,6 +6,7 @@
 - `config/`: validated runtime config accessor
   - `featureGates.ts`: gate registry / fallback metadata / helper
   - `runtime.ts`: mobile profile / env validation
+  - `debugMetadata.ts`: debug-only build/dataset/commit metadata helper
 - `features/`: 화면 composition / binding
 - `selectors/`: display model selector / adapter
   - `context.ts`: dataset -> indexed selector context
