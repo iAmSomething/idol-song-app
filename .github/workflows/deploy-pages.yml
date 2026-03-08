@@ -50,7 +50,6 @@ jobs:
           VITE_PRIMARY_SURFACE_SOURCE: ${{ vars.VITE_PRIMARY_SURFACE_SOURCE }}
           VITE_ENTITY_DETAIL_SOURCE: ${{ vars.VITE_ENTITY_DETAIL_SOURCE }}
           VITE_RELEASE_DETAIL_SOURCE: ${{ vars.VITE_RELEASE_DETAIL_SOURCE }}
-          VITE_RADAR_SOURCE: ${{ vars.VITE_RADAR_SOURCE }}
         run: npm run build
 
       - name: Upload artifact

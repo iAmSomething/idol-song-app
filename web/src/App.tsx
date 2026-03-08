@@ -184,7 +184,7 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
 }
 
 type SurfaceSourceMode = 'json' | 'api'
-type SurfaceSourceKey = 'entityDetail' | 'releaseDetail' | 'radar'
+type SurfaceSourceKey = 'entityDetail' | 'releaseDetail'
 type SurfaceSourceOverrides = Partial<Record<SurfaceSourceKey, SurfaceSourceMode>>
 type ReleaseDetailSourceMode = SurfaceSourceMode
 type ReleaseDetailSourceState = 'json' | 'api' | 'json_fallback'
@@ -261,8 +261,7 @@ type SearchSourceState = 'api' | 'api_error'
 type EntityDetailSourceMode = SurfaceSourceMode
 type EntityDetailSourceState = 'json' | 'api' | 'json_fallback'
 type CalendarMonthSourceState = 'api' | 'api_error'
-type RadarSourceMode = SurfaceSourceMode
-type RadarSourceState = 'json' | 'api' | 'json_fallback'
+type RadarSourceState = 'api' | 'api_error'
 
 type SearchApiEntityMatch = {
   entity_slug?: string
@@ -873,14 +872,12 @@ const TRANSLATIONS = {
       'backend 월간 캘린더 응답을 불러오지 못했습니다. runtime JSON fallback은 비활성화되어 있습니다.',
     calendarBackendTimeout:
       'backend /v1/calendar/month 응답 시간이 초과되었습니다. runtime JSON fallback은 비활성화되어 있습니다.',
-    radarBackendLoading:
-      'backend /v1/radar 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 레이더 데이터를 먼저 표시합니다.',
+    radarBackendLoading: 'backend /v1/radar 결과를 확인하는 중입니다.',
     radarBackendActive: '현재 레이더 섹션은 backend /v1/radar 응답을 우선 사용 중입니다.',
     radarBackendFallback:
-      'backend 레이더 응답을 불러오지 못해 transitional JSON fallback으로 표시 중입니다.',
+      'backend 레이더 응답을 불러오지 못했습니다. runtime JSON fallback은 비활성화되어 있습니다.',
     radarBackendTimeout:
-      'backend /v1/radar 응답 시간이 초과되어 transitional JSON fallback 레이더 데이터로 표시 중입니다.',
-    radarJsonPrimary: '현재 레이더 섹션은 transitional JSON 기본 경로를 사용 중입니다.',
+      'backend /v1/radar 응답 시간이 초과되었습니다. runtime JSON fallback은 비활성화되어 있습니다.',
     surfaceSourceLabel: '소스',
     surfaceReasonLabel: '이유',
     surfaceTraceLabel: '요청 ID',
@@ -1152,14 +1149,12 @@ const TRANSLATIONS = {
       'The backend calendar/month response was unavailable. Runtime JSON fallback is disabled.',
     calendarBackendTimeout:
       'The backend /v1/calendar/month request timed out. Runtime JSON fallback is disabled.',
-    radarBackendLoading:
-      'Checking backend /v1/radar now. The UI keeps the transitional JSON fallback radar data visible first.',
+    radarBackendLoading: 'Checking backend /v1/radar now.',
     radarBackendActive: 'The radar sections are currently using the backend /v1/radar response.',
     radarBackendFallback:
-      'The backend radar response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
+      'The backend radar response was unavailable. Runtime JSON fallback is disabled.',
     radarBackendTimeout:
-      'The backend /v1/radar request timed out, so the UI is falling back to the transitional JSON snapshot.',
-    radarJsonPrimary: 'The radar sections are currently using the transitional JSON primary path.',
+      'The backend /v1/radar request timed out. Runtime JSON fallback is disabled.',
     surfaceSourceLabel: 'Source',
     surfaceReasonLabel: 'Reason',
     surfaceTraceLabel: 'Request ID',
@@ -1685,8 +1680,6 @@ const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
 const dashboardStatusOptions = ['all', 'verified', 'confirmed', 'scheduled', 'rumor'] as const
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
 const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
-const LONG_GAP_THRESHOLD_DAYS = 365
-const ROOKIE_RECENT_YEAR_WINDOW = 2
 const AGENCY_UNKNOWN_FILTER = 'agency_unknown'
 const BACKEND_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '')
 const releaseDetailApiIdCache = new Map<string, string>()
@@ -1699,12 +1692,10 @@ const DEFAULT_PRIMARY_SURFACE_SOURCE_MODE = normalizeSurfaceSourceMode(import.me
 const SURFACE_SOURCE_MODES = {
   entityDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_ENTITY_DETAIL_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
   releaseDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_RELEASE_DETAIL_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
-  radar: normalizeSurfaceSourceMode(import.meta.env.VITE_RADAR_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
 } satisfies Record<SurfaceSourceKey, SurfaceSourceMode>
 const SURFACE_SOURCE_QUERY_PARAMS = {
   entityDetail: 'entityDetailSource',
   releaseDetail: 'releaseDetailSource',
-  radar: 'radarSource',
 } satisfies Record<SurfaceSourceKey, string>
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
@@ -1766,9 +1757,6 @@ const teamProfiles = buildTeamProfiles()
 const teamProfileMap = new Map(teamProfiles.map((team) => [team.group, team]))
 const relatedActsByGroup = buildRelatedActsByGroup()
 const agencyFilterOptions = ['all', ...buildAgencyFilterOptions()]
-const longGapRadarEntries = buildLongGapRadarEntries()
-const rookieRadarEntries = buildRookieRadarEntries()
-
 function App() {
   const latestMonthKey = getLatestMonthKey(releases)
   const [selectedMonthKey, setSelectedMonthKey] = useState(latestMonthKey)
@@ -1795,7 +1783,6 @@ function App() {
       : null
   const releaseDetailSourceMode = getSurfaceSourceMode('releaseDetail', sourceOverrides.releaseDetail)
   const entityDetailSourceMode = getSurfaceSourceMode('entityDetail', sourceOverrides.entityDetail)
-  const radarSourceMode = getSurfaceSourceMode('radar', sourceOverrides.radar)
   const selectedReleaseRoute =
     selectedGroup && selectedAlbumKey
       ? findVerifiedReleaseByKey(selectedGroup, selectedAlbumKey)
@@ -1931,23 +1918,7 @@ function App() {
       matchesAgencyFilter(team.group, selectedAgency) &&
       matchesMyTeamsFilter(team.group, myTeamsSet, selectedMyTeamsOnly),
   )
-  const filteredLongGapRadar = longGapRadarEntries.filter((item) =>
-    matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle) &&
-      matchesAgencyFilter(item.group, selectedAgency) &&
-      matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly),
-  )
-  const filteredRookieRadar = rookieRadarEntries.filter((item) =>
-    matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle) &&
-      matchesAgencyFilter(item.group, selectedAgency) &&
-      matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly),
-  )
-  const radarFallbackSnapshot: RadarApiSnapshot = {
-    longGapEntries: filteredLongGapRadar,
-    rookieEntries: filteredRookieRadar,
-  }
-  const radarResource = useRadarSurfaceResource({
-    sourceMode: radarSourceMode,
-  })
+  const radarResource = useRadarSurfaceResource()
   const filteredRadarApiSnapshot = radarResource.snapshot
     ? filterRadarApiSnapshot(radarResource.snapshot, {
         searchNeedle,
@@ -1956,10 +1927,10 @@ function App() {
         selectedMyTeamsOnly,
       })
     : null
-  const activeRadarSnapshot =
-    radarSourceMode === 'api' && radarResource.source === 'api' && filteredRadarApiSnapshot
-      ? filteredRadarApiSnapshot
-      : radarFallbackSnapshot
+  const activeRadarSnapshot = filteredRadarApiSnapshot ?? {
+    longGapEntries: [],
+    rookieEntries: [],
+  }
   const visibleLongGapRadar = activeRadarSnapshot.longGapEntries
   const visibleRookieRadar = activeRadarSnapshot.rookieEntries
   const searchSurfaceFallbackSnapshot: SearchSurfaceSnapshot = {
@@ -2163,44 +2134,20 @@ function App() {
             calendarMonthResource.errorCode === 'timeout' ? copy.calendarBackendTimeout : copy.calendarBackendFallback,
         })
   const radarSurfaceMessage =
-    radarSourceMode === 'api'
-      ? radarResource.source === 'api'
-        ? buildSurfaceStatusMessage({
-            language,
-            source: 'api',
-            errorCode: null,
-            traceId: radarResource.traceId,
-            baseMessage: copy.radarBackendActive,
-          })
-        : radarResource.loading
-          ? buildSurfaceStatusMessage({
-              language,
-              source: 'json',
-              errorCode: null,
-              baseMessage: copy.radarBackendLoading,
-            })
-          : radarResource.source === 'json_fallback'
-            ? buildSurfaceStatusMessage({
-                language,
-                source: 'json_fallback',
-                errorCode: radarResource.errorCode,
-                traceId: radarResource.traceId,
-                baseMessage:
-                  radarResource.errorCode === 'timeout'
-                    ? copy.radarBackendTimeout
-                    : copy.radarBackendFallback,
-              })
-            : buildSurfaceStatusMessage({
-                language,
-                source: 'json',
-                errorCode: null,
-                baseMessage: copy.radarJsonPrimary,
-              })
+    radarResource.source === 'api'
+      ? buildSurfaceStatusMessage({
+          language,
+          source: 'api',
+          errorCode: null,
+          traceId: radarResource.traceId,
+          baseMessage: radarResource.loading ? copy.radarBackendLoading : copy.radarBackendActive,
+        })
       : buildSurfaceStatusMessage({
           language,
-          source: 'json',
-          errorCode: null,
-          baseMessage: copy.radarJsonPrimary,
+          source: 'api_error',
+          errorCode: radarResource.errorCode,
+          traceId: radarResource.traceId,
+          baseMessage: radarResource.errorCode === 'timeout' ? copy.radarBackendTimeout : copy.radarBackendFallback,
         })
   const selectedTeamFallback = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
   const selectedTeamResource = useEntityDetailResource({
@@ -8071,13 +8018,9 @@ async function fetchRadarApiSnapshot(
   }
 }
 
-function useRadarSurfaceResource({
-  sourceMode,
-}: {
-  sourceMode: RadarSourceMode
-}): RadarSurfaceResource {
+function useRadarSurfaceResource(): RadarSurfaceResource {
   const cacheKey = 'default'
-  const cachedSnapshot = sourceMode === 'api' ? radarApiSnapshotCache.get(cacheKey) ?? null : null
+  const cachedSnapshot = radarApiSnapshotCache.get(cacheKey) ?? null
   const [remoteState, setRemoteState] = useState<{
     snapshot: RadarApiSnapshot | null
     loading: boolean
@@ -8091,10 +8034,6 @@ function useRadarSurfaceResource({
   }))
 
   useEffect(() => {
-    if (sourceMode !== 'api') {
-      return
-    }
-
     if (cachedSnapshot) {
       Promise.resolve().then(() => {
         setRemoteState({
@@ -8158,23 +8097,16 @@ function useRadarSurfaceResource({
       cancelled = true
       controller.abort()
     }
-  }, [cachedSnapshot, sourceMode])
+  }, [cachedSnapshot])
 
-  const source: RadarSourceState =
-    sourceMode !== 'api'
-      ? 'json'
-      : remoteState.snapshot
-        ? 'api'
-        : remoteState.errorCode
-          ? 'json_fallback'
-          : 'json'
+  const source: RadarSourceState = remoteState.errorCode ? 'api_error' : 'api'
 
   return {
     snapshot: remoteState.snapshot ?? cachedSnapshot ?? null,
     source,
-    loading: sourceMode === 'api' && remoteState.snapshot === null && remoteState.loading,
-    errorCode: sourceMode === 'api' ? remoteState.errorCode : null,
-    traceId: sourceMode === 'api' ? remoteState.traceId : null,
+    loading: remoteState.snapshot === null && remoteState.loading,
+    errorCode: remoteState.errorCode,
+    traceId: remoteState.traceId,
   }
 }
 
@@ -8708,62 +8640,6 @@ function buildTeamCompareSnapshot(group: string): TeamCompareSnapshot {
   }
 }
 
-function buildLongGapRadarEntries() {
-  return teamProfiles
-    .flatMap((team) => {
-      const watchRow = watchlistByGroup.get(team.group)
-      if (!watchRow || watchRow.watch_reason !== 'long_gap') {
-        return []
-      }
-
-      if (!team.latestRelease?.date || !isExactDate(team.latestRelease.date)) {
-        return []
-      }
-
-      const gapDays = getElapsedDaysSinceDate(team.latestRelease.date)
-      if (gapDays < LONG_GAP_THRESHOLD_DAYS) {
-        return []
-      }
-
-      return [
-        {
-          group: team.group,
-          watchReason: watchRow.watch_reason,
-          latestRelease: team.latestRelease,
-          gapDays,
-          hasUpcomingSignal: team.upcomingSignals.length > 0,
-          latestSignal: pickLatestRadarSignal(team.upcomingSignals),
-        },
-      ]
-    })
-    .sort(compareLongGapRadarEntries)
-}
-
-function buildRookieRadarEntries() {
-  return teamProfiles
-    .flatMap((team) => {
-      const artistProfile = artistProfileByGroup.get(team.group)
-      if (!artistProfile || !isRookieEligible(artistProfile)) {
-        return []
-      }
-
-      return [
-        {
-          group: team.group,
-          debutYear: artistProfile.debut_year ?? null,
-          latestRelease: team.latestRelease,
-          hasUpcomingSignal: team.upcomingSignals.length > 0,
-          latestSignal: pickLatestRadarSignal(team.upcomingSignals),
-        },
-      ]
-    })
-    .sort(compareRookieRadarEntries)
-}
-
-function pickLatestRadarSignal(rows: UpcomingCandidateRow[]) {
-  return [...rows].sort(compareLatestRadarSignals)[0] ?? null
-}
-
 function compareLongGapRadarEntries(left: LongGapRadarEntry, right: LongGapRadarEntry) {
   if (left.hasUpcomingSignal !== right.hasUpcomingSignal) {
     return left.hasUpcomingSignal ? -1 : 1
@@ -8926,34 +8802,6 @@ function compareRookieRadarEntries(left: RookieRadarEntry, right: RookieRadarEnt
   }
 
   return left.group.localeCompare(right.group)
-}
-
-function compareLatestRadarSignals(left: UpcomingCandidateRow, right: UpcomingCandidateRow) {
-  const leftOccurredAt = getSourceTimelineSortValue(getSignalOccurredAt(left))
-  const rightOccurredAt = getSourceTimelineSortValue(getSignalOccurredAt(right))
-  if (leftOccurredAt !== rightOccurredAt) {
-    return rightOccurredAt - leftOccurredAt
-  }
-
-  if (left.confidence !== right.confidence) {
-    return right.confidence - left.confidence
-  }
-
-  return compareUpcomingSignals(left, right)
-}
-
-function isRookieEligible(profile: ArtistProfileRow) {
-  if (profile.radar_tags?.includes('rookie')) {
-    return true
-  }
-
-  if (typeof profile.debut_year !== 'number') {
-    return false
-  }
-
-  const currentYear = new Date().getFullYear()
-  const minimumYear = currentYear - (ROOKIE_RECENT_YEAR_WINDOW - 1)
-  return profile.debut_year >= minimumYear && profile.debut_year <= currentYear
 }
 
 function buildSearchIndexByGroup() {
@@ -9845,7 +9693,6 @@ function readSurfaceSourceOverridesFromLocation(): SurfaceSourceOverrides {
   return {
     entityDetail: readSurfaceSourceOverrideFromLocation('entityDetail') ?? undefined,
     releaseDetail: readSurfaceSourceOverrideFromLocation('releaseDetail') ?? undefined,
-    radar: readSurfaceSourceOverrideFromLocation('radar') ?? undefined,
   }
 }
 
