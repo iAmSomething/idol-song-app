@@ -68,6 +68,17 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 - `backend/src/server.ts`는 `SIGINT`, `SIGTERM`에서 `app.close()`를 호출해 Fastify와 DB pool을 함께 정리한다.
 - later worker / one-off script / test가 pool을 직접 만들면 종료 시 `closeDbPool()` 또는 `pool.end()`를 명시적으로 호출해야 한다.
 
+## Runtime-Fatal Failure Policy
+
+- request-scoped read API error와 process-level fatal failure는 구분한다.
+- request-scoped failure는 `backend/src/app.ts`의 error envelope를 따른다.
+- process-level fatal failure는 `backend/src/runtime-failures.ts`가 담당한다.
+- `uncaughtException`과 `unhandledRejection`은 recoverable 상태로 취급하지 않는다.
+- 위 두 failure class는 structured fatal log를 먼저 남긴 뒤 같은 graceful shutdown 경로로 들어간다.
+- runtime-fatal path의 종료 코드는 항상 `1`이다.
+- shutdown이 `5초` 안에 끝나지 않으면 `Graceful shutdown timed out; forcing process exit`를 남기고 강제 종료한다.
+- verification은 `backend/src/runtime-failures.test.ts`에서 `uncaughtException`, `unhandledRejection`, forced-timeout path를 각각 spawn 기반으로 확인한다.
+
 ## Preview / Staging Baseline
 
 preview rehearsal은 production과 분리된 DB / API / worker 경로를 기준으로 진행한다.
