@@ -214,6 +214,7 @@ const bundledDatasetFixture: MobileRawDataset = {
       release_kind: 'ep',
       spotify_url: 'https://open.spotify.com/album/example-love-catcher',
       youtube_music_url: 'https://music.youtube.com/playlist?list=example-love-catcher',
+      youtube_video_url: 'https://www.youtube.com/watch?v=LoVeCaTcHr1',
       youtube_video_status: 'manual_override',
       notes: 'Representative EP detail.',
       tracks: [
@@ -273,15 +274,9 @@ const bundledDatasetFixture: MobileRawDataset = {
       release_kind: 'single',
       spotify_url: 'https://open.spotify.com/track/example-glow-up',
       youtube_music_url: 'https://music.youtube.com/watch?v=example-glow-up',
-      youtube_video_status: 'manual_override',
-      notes: 'Representative rookie detail.',
-      tracks: [
-        {
-          order: 1,
-          title: 'Glow Up',
-          is_title_track: true,
-        },
-      ],
+      youtube_video_status: 'no_mv',
+      notes: 'Representative rookie detail with incomplete catalog metadata.',
+      tracks: [],
     },
   ],
   releaseHistory: [
