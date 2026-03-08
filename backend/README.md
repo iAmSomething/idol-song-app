@@ -10,6 +10,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 - `docs/specs/backend/migration-operations-runbook.md`
 - `docs/specs/backend/web-cutover-rollback-drills.md`
 - `docs/specs/backend/mobile-adoption-readiness-review.md`
+- `docs/specs/backend/backend-secret-inventory-and-rotation.md`
 
 현재 포함 범위:
 
@@ -20,6 +21,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 - `reports/`
   - import / dual-write / projection refresh / parity summary artifact
   - backup / restore recovery drill artifact
+  - secret rotation tabletop artifact
 - `sql/migrations/`
   - Neon canonical schema + projection read-model migration
 - `sql/README.md`
@@ -57,6 +59,16 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 - caller가 `X-Request-Id`를 보내면 backend는 같은 값을 `meta.request_id`와 `X-Request-Id` response header에 그대로 되돌린다.
 - caller가 보내지 않으면 backend가 `api-<uuid>` request id를 생성한다.
 - runtime 측정 / shadow report도 각 request의 sent/received request id를 artifact에 함께 남긴다.
+
+## Secret Inventory And Rotation Ownership
+
+- canonical inventory:
+  - `docs/specs/backend/backend-secret-inventory-and-rotation.md`
+- tabletop artifact:
+  - `backend/reports/backend_secret_rotation_tabletop_2026-03-08.md`
+
+이 문서는 GitHub / Railway / Neon 기준의 backend secret / variable name contract,
+owner role, rotation trigger, rollback baseline, current audit snapshot을 같이 관리한다.
 
 ## Public Read Rate Limits
 
