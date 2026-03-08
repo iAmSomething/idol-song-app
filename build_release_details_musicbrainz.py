@@ -1,4 +1,6 @@
+import csv
 import json
+import re
 import unicodedata
 from datetime import date
 from pathlib import Path
@@ -11,12 +13,21 @@ RELEASE_HISTORY_PATH = ROOT / "web/src/data/releaseHistory.json"
 OUTPUT_PATH = ROOT / "web/src/data/releaseDetails.json"
 OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 AUDIT_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_report.json"
+TITLE_TRACK_REVIEW_JSON_PATH = ROOT / "title_track_manual_review_queue.json"
+TITLE_TRACK_REVIEW_CSV_PATH = ROOT / "title_track_manual_review_queue.csv"
 
 YOUTUBE_VIDEO_STATUS_RELATION = "relation_match"
 YOUTUBE_VIDEO_STATUS_MANUAL = "manual_override"
 YOUTUBE_VIDEO_STATUS_REVIEW = "needs_review"
 YOUTUBE_VIDEO_STATUS_NO_MV = "no_mv"
 YOUTUBE_VIDEO_STATUS_UNRESOLVED = "unresolved"
+TITLE_TRACK_STATUS_NO_TRACKS = "no_tracks"
+TITLE_TRACK_STATUS_MANUAL = "manual_override"
+TITLE_TRACK_STATUS_EXISTING = "preserved_existing"
+TITLE_TRACK_STATUS_AUTO_SINGLE = "auto_single"
+TITLE_TRACK_STATUS_AUTO_DOUBLE = "auto_double"
+TITLE_TRACK_STATUS_REVIEW = "review"
+TITLE_TRACK_STATUS_UNRESOLVED = "unresolved"
 
 
 def optional_text(value: object) -> Optional[str]:
@@ -209,6 +220,256 @@ def parse_iso_date(value: str) -> Optional[date]:
         return None
 
 
+def strip_track_variant_metadata(value: str) -> str:
+    without_groups = re.sub(r"\([^)]*\)|\[[^\]]*\]", " ", value)
+    without_markers = re.sub(
+        r"(?i)\b(inst\.?|instrumental|english ver\.?|japanese ver\.?|korean ver\.?|member ver\.?|remix|ver\.?|version)\b",
+        " ",
+        without_groups,
+    )
+    without_separators = re.sub(r"[-–—/:]+", " ", without_markers)
+    return " ".join(without_separators.split()).strip()
+
+
+def normalize_base_title(value: str) -> str:
+    return normalize_title(strip_track_variant_metadata(value))
+
+
+def select_preferred_track_title(tracks: List[Dict], normalized_base_title: str) -> Optional[str]:
+    if not normalized_base_title:
+        return None
+
+    for track in tracks:
+        title = optional_text(track.get("title"))
+        if title and normalize_title(title) == normalized_base_title:
+            return title
+
+    for track in tracks:
+        title = optional_text(track.get("title"))
+        if title and normalize_base_title(title) == normalized_base_title:
+            return title
+
+    return None
+
+
+def build_song_release_index(items: List[Dict]) -> Dict[str, List[Dict]]:
+    index: Dict[str, List[Dict]] = {}
+    for item in items:
+        if item["stream"] != "song":
+            continue
+
+        release_date = parse_iso_date(item["release_date"])
+        base_title = normalize_base_title(item["release_title"])
+        if release_date is None or not base_title:
+            continue
+
+        index.setdefault(item["group"], []).append(
+            {
+                "title": item["release_title"],
+                "release_date": release_date,
+                "base_title": base_title,
+            }
+        )
+
+    return index
+
+
+def append_title_track_candidate(
+    candidates: Dict[str, Dict],
+    tracks: List[Dict],
+    title: str,
+    source: str,
+) -> None:
+    normalized_base_title = normalize_base_title(title)
+    if not normalized_base_title:
+        return
+
+    preferred_title = select_preferred_track_title(tracks, normalized_base_title)
+    if preferred_title is None:
+        return
+
+    candidate = candidates.setdefault(
+        normalized_base_title,
+        {"title": preferred_title, "sources": []},
+    )
+    if source not in candidate["sources"]:
+        candidate["sources"].append(source)
+
+
+def infer_title_track_resolution(detail: Dict, song_release_index: Dict[str, List[Dict]]) -> Dict:
+    tracks = detail.get("tracks", [])
+    if not tracks:
+        return {
+            "status": TITLE_TRACK_STATUS_NO_TRACKS,
+            "selected_titles": [],
+            "candidates": [],
+            "reason": "No tracklist is attached to this release detail row.",
+        }
+
+    candidates: Dict[str, Dict] = {}
+    review_reasons: List[str] = []
+
+    if len(tracks) == 1:
+        append_title_track_candidate(candidates, tracks, tracks[0]["title"], "single_track_release")
+
+    normalized_release_title = normalize_title(detail.get("release_title", ""))
+    exact_matches = [
+        track["title"]
+        for track in tracks
+        if normalize_title(track.get("title", "")) == normalized_release_title
+    ]
+    if len(exact_matches) == 1:
+        append_title_track_candidate(candidates, tracks, exact_matches[0], "release_title_exact")
+
+    if detail.get("stream") == "song":
+        base_title_groups: Dict[str, List[str]] = {}
+        for track in tracks:
+            title = optional_text(track.get("title"))
+            if not title:
+                continue
+
+            base_title = normalize_base_title(title)
+            if not base_title:
+                continue
+
+            base_title_groups.setdefault(base_title, []).append(title)
+
+        if len(base_title_groups) == 1:
+            only_base_title = next(iter(base_title_groups))
+            preferred_title = select_preferred_track_title(tracks, only_base_title)
+            if preferred_title:
+                append_title_track_candidate(candidates, tracks, preferred_title, "song_variant_collapse")
+
+    normalized_release_base_title = normalize_base_title(detail.get("release_title", ""))
+    substring_candidates: List[str] = []
+    if len(normalized_release_base_title) >= 5:
+        seen_substring_keys = set()
+        for track in tracks:
+            title = optional_text(track.get("title"))
+            if not title:
+                continue
+
+            base_title = normalize_base_title(title)
+            if (
+                len(base_title) >= 4
+                and base_title not in seen_substring_keys
+                and (base_title in normalized_release_base_title or normalized_release_base_title in base_title)
+            ):
+                seen_substring_keys.add(base_title)
+                substring_candidates.append(title)
+
+        if len(substring_candidates) == 1:
+            append_title_track_candidate(candidates, tracks, substring_candidates[0], "release_title_substring")
+        elif len(substring_candidates) == 2 and "/" in (detail.get("release_title") or ""):
+            for title in substring_candidates:
+                append_title_track_candidate(candidates, tracks, title, "release_title_substring")
+        elif len(substring_candidates) > 2:
+            review_reasons.append("More than two substring-based title-track candidates were found.")
+
+    detail_release_date = parse_iso_date(detail.get("release_date", ""))
+    if detail_release_date is not None:
+        track_title_by_base_title = {
+            normalize_base_title(track.get("title", "")): track["title"]
+            for track in tracks
+            if normalize_base_title(track.get("title", ""))
+        }
+        nearby_song_matches: List[Tuple[int, str, str]] = []
+        for song_release in song_release_index.get(detail["group"], []):
+            delta_days = (detail_release_date - song_release["release_date"]).days
+            if not 0 <= delta_days <= 180:
+                continue
+
+            candidate_track_title = track_title_by_base_title.get(song_release["base_title"])
+            if candidate_track_title is None:
+                continue
+
+            nearby_song_matches.append(
+                (
+                    delta_days,
+                    candidate_track_title,
+                    song_release["release_date"].isoformat(),
+                )
+            )
+
+        nearby_song_matches.sort()
+        unique_nearby_matches: List[Tuple[str, str]] = []
+        seen_nearby_keys = set()
+        for _, title, release_date_text in nearby_song_matches:
+            base_title = normalize_base_title(title)
+            if base_title in seen_nearby_keys:
+                continue
+            seen_nearby_keys.add(base_title)
+            unique_nearby_matches.append((title, release_date_text))
+
+        if 1 <= len(unique_nearby_matches) <= 2:
+            for title, release_date_text in unique_nearby_matches:
+                append_title_track_candidate(
+                    candidates,
+                    tracks,
+                    title,
+                    f"nearby_song_release:{release_date_text}",
+                )
+        elif len(unique_nearby_matches) > 2:
+            review_reasons.append("More than two nearby song-release title-track candidates were found.")
+
+    candidate_rows = sorted(candidates.values(), key=lambda row: row["title"].casefold())
+    if not candidate_rows:
+        if review_reasons:
+            return {
+                "status": TITLE_TRACK_STATUS_REVIEW,
+                "selected_titles": [],
+                "candidates": [],
+                "reason": " ".join(review_reasons),
+            }
+
+        return {
+            "status": TITLE_TRACK_STATUS_UNRESOLVED,
+            "selected_titles": [],
+            "candidates": [],
+            "reason": "No dependable title-track signal was found for this release detail row.",
+        }
+
+    if len(candidate_rows) == 1:
+        return {
+            "status": TITLE_TRACK_STATUS_AUTO_SINGLE,
+            "selected_titles": [candidate_rows[0]["title"]],
+            "candidates": candidate_rows,
+            "reason": "A single dependable title-track candidate was inferred automatically.",
+        }
+
+    if len(candidate_rows) == 2:
+        all_nearby_song_resolved = all(
+            candidate["sources"]
+            and all(source.startswith("nearby_song_release:") for source in candidate["sources"])
+            for candidate in candidate_rows
+        )
+        slash_title_pair = "/" in (detail.get("release_title") or "") and all(
+            "release_title_substring" in candidate["sources"]
+            for candidate in candidate_rows
+        )
+        if all_nearby_song_resolved or slash_title_pair:
+            return {
+                "status": TITLE_TRACK_STATUS_AUTO_DOUBLE,
+                "selected_titles": [candidate["title"] for candidate in candidate_rows],
+                "candidates": candidate_rows,
+                "reason": "Two title tracks were inferred automatically from dependable paired evidence.",
+            }
+
+        return {
+            "status": TITLE_TRACK_STATUS_REVIEW,
+            "selected_titles": [],
+            "candidates": candidate_rows,
+            "reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
+        }
+
+    return {
+        "status": TITLE_TRACK_STATUS_REVIEW,
+        "selected_titles": [],
+        "candidates": candidate_rows,
+        "reason": "More than two title-track candidates were found, so the row must stay in manual review.",
+    }
+
+
 def select_relaxed_existing_detail(item: Dict, candidates: List[Dict]) -> Optional[Dict]:
     item_date = parse_iso_date(item["release_date"])
     if item_date is None:
@@ -262,53 +523,47 @@ def normalize_existing_detail(item: Dict, existing: Dict) -> Dict:
     }
 
 
-def infer_title_track_titles(detail: Dict) -> List[str]:
-    tracks = detail.get("tracks", [])
-    if not tracks:
-        return []
-    if len(tracks) == 1:
-        return [tracks[0]["title"]]
-
-    normalized_release_title = normalize_title(detail.get("release_title", ""))
-    if not normalized_release_title:
-        return []
-
-    exact_matches = [
-        track["title"]
-        for track in tracks
-        if normalize_title(track.get("title", "")) == normalized_release_title
-    ]
-    if len(exact_matches) == 1:
-        return exact_matches
-    return []
-
-
 def mark_title_tracks(tracks: List[Dict], title_track_titles: List[str]) -> List[Dict]:
     if not tracks:
         return tracks
 
-    normalized_titles = {normalize_title(title) for title in title_track_titles if title}
-    if not normalized_titles:
+    normalized_titles = [normalize_title(title) for title in title_track_titles if title]
+    wanted_titles = {title for title in normalized_titles if title}
+    if not wanted_titles:
         return tracks
 
     matched_titles = {
         normalize_title(track.get("title", ""))
         for track in tracks
-        if normalize_title(track.get("title", "")) in normalized_titles
+        if normalize_title(track.get("title", "")) in wanted_titles
     }
     if not matched_titles:
         return tracks
 
-    return [
-        {
-            **track,
-            "is_title_track": normalize_title(track.get("title", "")) in matched_titles,
-        }
-        for track in tracks
-    ]
+    seen_titles: set[str] = set()
+    flagged_tracks: List[Dict] = []
+    for track in tracks:
+        normalized_track_title = normalize_title(track.get("title", ""))
+        is_title_track = False
+        if normalized_track_title in matched_titles and normalized_track_title not in seen_titles:
+            is_title_track = True
+            seen_titles.add(normalized_track_title)
+
+        flagged_tracks.append(
+            {
+                **track,
+                "is_title_track": is_title_track,
+            }
+        )
+
+    return flagged_tracks
 
 
-def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tuple[Dict, bool]:
+def apply_detail_override(
+    detail: Dict,
+    override_by_key: Dict[str, Dict],
+    song_release_index: Dict[str, List[Dict]],
+) -> Tuple[Dict, bool, Dict]:
     override = override_by_key.get(
         get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"])
     )
@@ -350,11 +605,221 @@ def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tup
             )
 
     title_track_titles = override.get("title_tracks") if override else None
-    if not title_track_titles:
-        title_track_titles = infer_title_track_titles(detail)
-    detail["tracks"] = mark_title_tracks(detail.get("tracks", []), title_track_titles)
+    existing_title_tracks = [track["title"] for track in detail.get("tracks", []) if track.get("is_title_track")]
+    unique_existing_title_tracks = list(dict.fromkeys(existing_title_tracks))
+    existing_title_tracks_are_ambiguous = (
+        len(existing_title_tracks) != len(unique_existing_title_tracks)
+        or len(unique_existing_title_tracks) > 2
+    )
+    if existing_title_tracks_are_ambiguous:
+        detail["tracks"] = [
+            {
+                **track,
+                "is_title_track": False,
+            }
+            for track in detail.get("tracks", [])
+        ]
+    if title_track_titles:
+        detail["tracks"] = mark_title_tracks(detail.get("tracks", []), title_track_titles)
+        title_track_resolution = {
+            "status": TITLE_TRACK_STATUS_MANUAL,
+            "selected_titles": title_track_titles,
+            "candidates": [
+                {"title": title, "sources": ["release_detail_overrides.json"]}
+                for title in title_track_titles
+            ],
+            "reason": "Title-track metadata was supplied explicitly from release_detail_overrides.json.",
+        }
+    elif existing_title_tracks and not existing_title_tracks_are_ambiguous:
+        title_track_resolution = {
+            "status": TITLE_TRACK_STATUS_EXISTING,
+            "selected_titles": unique_existing_title_tracks,
+            "candidates": [],
+            "reason": "Existing release-detail row already contained title-track flags.",
+        }
+    else:
+        title_track_resolution = infer_title_track_resolution(detail, song_release_index)
+        if title_track_resolution["selected_titles"]:
+            detail["tracks"] = mark_title_tracks(detail.get("tracks", []), title_track_resolution["selected_titles"])
 
-    return detail, bool(override)
+    return detail, bool(override), title_track_resolution
+
+
+def build_title_track_review_rows(details_after: List[Dict], title_track_resolutions: List[Dict]) -> List[Dict]:
+    details_by_key = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in details_after
+    }
+    review_rows: List[Dict] = []
+    for resolution in title_track_resolutions:
+        if resolution["status"] not in {TITLE_TRACK_STATUS_REVIEW, TITLE_TRACK_STATUS_UNRESOLVED}:
+            continue
+
+        detail = details_by_key[resolution["key"]]
+        review_rows.append(
+            {
+                "group": detail["group"],
+                "release_title": detail["release_title"],
+                "release_date": detail["release_date"],
+                "stream": detail["stream"],
+                "release_kind": detail["release_kind"],
+                "track_titles": [track["title"] for track in detail.get("tracks", [])],
+                "candidate_titles": [candidate["title"] for candidate in resolution["candidates"]],
+                "candidate_sources": [
+                    f"{candidate['title']}: {' | '.join(candidate['sources'])}"
+                    for candidate in resolution["candidates"]
+                ],
+                "review_reason": resolution["reason"],
+                "recommended_action": (
+                    "Confirm the promoted track(s) from a dependable source, then add explicit "
+                    "title_tracks to release_detail_overrides.json."
+                ),
+            }
+        )
+
+    review_rows.sort(
+        key=lambda row: (
+            row["group"].casefold(),
+            row["release_date"],
+            row["stream"],
+            row["release_title"].casefold(),
+        )
+    )
+    return review_rows
+
+
+def write_title_track_review_queue(review_rows: List[Dict]) -> None:
+    TITLE_TRACK_REVIEW_JSON_PATH.write_text(
+        json.dumps(review_rows, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    with TITLE_TRACK_REVIEW_CSV_PATH.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "group",
+                "release_title",
+                "release_date",
+                "stream",
+                "release_kind",
+                "track_titles",
+                "candidate_titles",
+                "candidate_sources",
+                "review_reason",
+                "recommended_action",
+            ],
+            lineterminator="\n",
+        )
+        writer.writeheader()
+        for row in review_rows:
+            output = dict(row)
+            output["track_titles"] = " ; ".join(output["track_titles"])
+            output["candidate_titles"] = " ; ".join(output["candidate_titles"])
+            output["candidate_sources"] = " ; ".join(output["candidate_sources"])
+            writer.writerow(output)
+
+
+def build_title_track_spot_checks(details_after: List[Dict], title_track_resolutions: List[Dict]) -> List[Dict]:
+    details_by_key = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in details_after
+    }
+
+    buckets = {
+        "auto_double": [],
+        "auto_single": [],
+        "review": [],
+        "unresolved": [],
+        "existing_older": [],
+        "manual": [],
+    }
+    for resolution in title_track_resolutions:
+        detail = details_by_key[resolution["key"]]
+        sample = {
+            "group": detail["group"],
+            "release_title": detail["release_title"],
+            "release_date": detail["release_date"],
+            "stream": detail["stream"],
+            "release_kind": detail["release_kind"],
+            "status": resolution["status"],
+            "title_tracks": [
+                track["title"] for track in detail.get("tracks", []) if track.get("is_title_track")
+            ],
+            "candidate_titles": [candidate["title"] for candidate in resolution["candidates"]],
+        }
+        if resolution["status"] == TITLE_TRACK_STATUS_AUTO_DOUBLE:
+            buckets["auto_double"].append(sample)
+        elif resolution["status"] == TITLE_TRACK_STATUS_AUTO_SINGLE:
+            buckets["auto_single"].append(sample)
+        elif resolution["status"] == TITLE_TRACK_STATUS_REVIEW:
+            buckets["review"].append(sample)
+        elif resolution["status"] == TITLE_TRACK_STATUS_UNRESOLVED:
+            buckets["unresolved"].append(sample)
+        elif resolution["status"] == TITLE_TRACK_STATUS_MANUAL:
+            buckets["manual"].append(sample)
+        elif resolution["status"] == TITLE_TRACK_STATUS_EXISTING and detail["release_date"] <= "2024-12-31":
+            buckets["existing_older"].append(sample)
+
+    ordered_samples: List[Dict] = []
+    for key, limit in (
+        ("auto_double", 5),
+        ("auto_single", 10),
+        ("review", 5),
+        ("unresolved", 5),
+        ("existing_older", 8),
+        ("manual", 4),
+    ):
+        ordered_samples.extend(buckets[key][:limit])
+
+    unique_samples: List[Dict] = []
+    seen_keys = set()
+    for sample in ordered_samples:
+        sample_key = get_detail_key(
+            sample["group"],
+            sample["release_title"],
+            sample["release_date"],
+            sample["stream"],
+        )
+        if sample_key in seen_keys:
+            continue
+        seen_keys.add(sample_key)
+        unique_samples.append(sample)
+        if len(unique_samples) >= 25:
+            break
+
+    if len(unique_samples) < 25:
+        for resolution in title_track_resolutions:
+            detail = details_by_key[resolution["key"]]
+            if not detail.get("tracks"):
+                continue
+
+            sample = {
+                "group": detail["group"],
+                "release_title": detail["release_title"],
+                "release_date": detail["release_date"],
+                "stream": detail["stream"],
+                "release_kind": detail["release_kind"],
+                "status": resolution["status"],
+                "title_tracks": [
+                    track["title"] for track in detail.get("tracks", []) if track.get("is_title_track")
+                ],
+                "candidate_titles": [candidate["title"] for candidate in resolution["candidates"]],
+            }
+            sample_key = get_detail_key(
+                sample["group"],
+                sample["release_title"],
+                sample["release_date"],
+                sample["stream"],
+            )
+            if sample_key in seen_keys:
+                continue
+            seen_keys.add(sample_key)
+            unique_samples.append(sample)
+            if len(unique_samples) >= 25:
+                break
+
+    return unique_samples
 
 
 def build_coverage_report(
@@ -364,6 +829,8 @@ def build_coverage_report(
     details_after: List[Dict],
     applied_overrides: int,
     relaxed_match_count: int,
+    title_track_resolutions: List[Dict],
+    title_track_review_rows: List[Dict],
 ) -> Dict:
     history_keys = {
         get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
@@ -452,6 +919,30 @@ def build_coverage_report(
             }
         )
 
+    rows_with_tracks_before = sum(1 for row in details_before if row.get("tracks"))
+    rows_with_title_track_before = sum(
+        1
+        for row in details_before
+        if any(track.get("is_title_track") for track in row.get("tracks", []))
+    )
+    rows_with_tracks_after = sum(1 for row in details_after if row.get("tracks"))
+    rows_with_title_track_after = sum(
+        1
+        for row in details_after
+        if any(track.get("is_title_track") for track in row.get("tracks", []))
+    )
+    details_by_key = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in details_after
+    }
+    title_track_status_counts: Dict[str, int] = {}
+    for resolution in title_track_resolutions:
+        detail = details_by_key.get(resolution["key"])
+        if not detail or not detail.get("tracks"):
+            continue
+        title_track_status_counts[resolution["status"]] = title_track_status_counts.get(resolution["status"], 0) + 1
+    title_track_spot_checks = build_title_track_spot_checks(details_after, title_track_resolutions)
+
     return {
         "latest_snapshot_input_rows": len(latest_snapshot_items),
         "latest_snapshot_unique_keys": len(latest_snapshot_keys),
@@ -471,12 +962,19 @@ def build_coverage_report(
         "pre_2024_missing_after": len(missing_after_older),
         "preserved_exact_key_rows": exact_preserved,
         "seeded_placeholder_rows": len(seeded_rows),
-        "rows_with_tracks_after": sum(1 for row in details_after if row.get("tracks")),
-        "rows_with_title_track_after": sum(
-            1
-            for row in details_after
-            if any(track.get("is_title_track") for track in row.get("tracks", []))
-        ),
+        "rows_with_tracks_before": rows_with_tracks_before,
+        "rows_with_tracks_after": rows_with_tracks_after,
+        "rows_with_title_track_before": rows_with_title_track_before,
+        "rows_with_title_track_after": rows_with_title_track_after,
+        "rows_without_title_track_before": rows_with_tracks_before - rows_with_title_track_before,
+        "rows_without_title_track_after": rows_with_tracks_after - rows_with_title_track_after,
+        "title_track_status_counts": title_track_status_counts,
+        "title_track_auto_resolved_rows": title_track_status_counts.get(TITLE_TRACK_STATUS_AUTO_SINGLE, 0)
+        + title_track_status_counts.get(TITLE_TRACK_STATUS_AUTO_DOUBLE, 0),
+        "title_track_auto_double_rows": title_track_status_counts.get(TITLE_TRACK_STATUS_AUTO_DOUBLE, 0),
+        "title_track_review_queue_rows": len(title_track_review_rows),
+        "title_track_review_queue_sample": title_track_review_rows[:10],
+        "title_track_spot_checks": title_track_spot_checks,
         "rows_with_youtube_music_after": sum(1 for row in details_after if optional_text(row.get("youtube_music_url"))),
         "rows_with_youtube_mv_after": sum(
             1
@@ -509,6 +1007,7 @@ def main() -> None:
     details_before = load_rows(OUTPUT_PATH) if OUTPUT_PATH.exists() else []
     latest_snapshot_items = iter_latest_snapshot_items(latest_snapshot_rows)
     items = iter_release_items(history_rows)
+    song_release_index = build_song_release_index(items)
     existing_details = {
         get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
         for row in details_before
@@ -523,6 +1022,7 @@ def main() -> None:
     override_by_key = load_detail_overrides()
 
     details_after: List[Dict] = []
+    title_track_resolutions: List[Dict] = []
     applied_overrides = 0
     relaxed_match_count = 0
 
@@ -541,9 +1041,19 @@ def main() -> None:
             if existing is not None:
                 relaxed_match_count += 1
         detail = normalize_existing_detail(item, existing) if existing else build_empty_detail(item)
-        detail, was_overridden = apply_detail_override(detail, override_by_key)
+        detail, was_overridden, title_track_resolution = apply_detail_override(
+            detail,
+            override_by_key,
+            song_release_index,
+        )
         applied_overrides += int(was_overridden)
         details_after.append(detail)
+        title_track_resolutions.append(
+            {
+                "key": get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"]),
+                **title_track_resolution,
+            }
+        )
 
     details_after.sort(
         key=lambda row: (
@@ -555,6 +1065,8 @@ def main() -> None:
     )
 
     OUTPUT_PATH.write_text(json.dumps(details_after, ensure_ascii=False, indent=2) + "\n")
+    title_track_review_rows = build_title_track_review_rows(details_after, title_track_resolutions)
+    write_title_track_review_queue(title_track_review_rows)
 
     report = build_coverage_report(
         latest_snapshot_items,
@@ -563,6 +1075,8 @@ def main() -> None:
         details_after,
         applied_overrides,
         relaxed_match_count,
+        title_track_resolutions,
+        title_track_review_rows,
     )
     AUDIT_OUTPUT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
 

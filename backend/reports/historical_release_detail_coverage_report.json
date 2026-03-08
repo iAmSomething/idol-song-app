@@ -58,8 +58,521 @@
   "pre_2024_missing_after": 0,
   "preserved_exact_key_rows": 1770,
   "seeded_placeholder_rows": 1653,
+  "rows_with_tracks_before": 117,
   "rows_with_tracks_after": 117,
-  "rows_with_title_track_after": 60,
+  "rows_with_title_track_before": 77,
+  "rows_with_title_track_after": 76,
+  "rows_without_title_track_before": 40,
+  "rows_without_title_track_after": 41,
+  "title_track_status_counts": {
+    "preserved_existing": 75,
+    "unresolved": 37,
+    "review": 4,
+    "manual_override": 1
+  },
+  "title_track_auto_resolved_rows": 0,
+  "title_track_auto_double_rows": 0,
+  "title_track_review_queue_rows": 41,
+  "title_track_review_queue_sample": [
+    {
+      "group": "aespa",
+      "release_title": "SYNK : aeXIS LINE",
+      "release_date": "2025-11-17",
+      "stream": "song",
+      "release_kind": "single",
+      "track_titles": [
+        "BLUE",
+        "Ketchup and Lemonade",
+        "Tornado",
+        "GOOD STUFF"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "AMPERS&ONE",
+      "release_title": "LOUD & PROUD",
+      "release_date": "2025-08-12",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "That’s That",
+        "Seesaw",
+        "Get Famous",
+        "Move Out",
+        "Did It",
+        "I’m Down"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "ARTMS",
+      "release_title": "<Club Icarus>",
+      "release_date": "2025-06-13",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "Club for the Broken",
+        "Icarus",
+        "Obsessed",
+        "Goddess",
+        "Verified Beauty",
+        "BURN"
+      ],
+      "candidate_titles": [
+        "BURN",
+        "Icarus"
+      ],
+      "candidate_sources": [
+        "BURN: nearby_song_release:2025-04-04",
+        "Icarus: release_title_substring"
+      ],
+      "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "BAE173",
+      "release_title": "NEW CHAPTER : DESEAR",
+      "release_date": "2025-10-14",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "Turned Up",
+        "Snap",
+        "BLACKOUT",
+        "WHAT",
+        "NOBODY",
+        "BAE (Before Anyone Else)"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "BOYNEXTDOOR",
+      "release_title": "BOYLIFE",
+      "release_date": "2025-08-20",
+      "stream": "song",
+      "release_kind": "single",
+      "track_titles": [
+        "Count To Love",
+        "I Feel Good (Japanese Ver.)",
+        "Nice Guy (Japanese Ver.)",
+        "Dangerous (Japanese Ver.)"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "BOYNEXTDOOR",
+      "release_title": "The Action",
+      "release_date": "2025-10-20",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "Live In Paris",
+        "Hollywood Action",
+        "JAM!",
+        "Bathroom",
+        "As Time Goes By"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "CIX",
+      "release_title": "GO Chapter 1: GO Together",
+      "release_date": "2025-09-08",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "S.O.S",
+        "WONDER YOU",
+        "UPSTANDER",
+        "IN MY DREAMS"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "CRAVITY",
+      "release_title": "Dare to Crave",
+      "release_date": "2025-06-23",
+      "stream": "album",
+      "release_kind": "album",
+      "track_titles": [
+        "On My Way",
+        "SWISH",
+        "SET NET G0?!",
+        "Rendez‐vous",
+        "PARANOIA",
+        "Straight Up to Heaven (Sung by JUNGMO, WOOBIN, SEONGMIN)",
+        "Stadium (Sung by ALLEN, WONJIN, HYEONGJUN)",
+        "Marionette (Sung by SERIM, MINHEE, TAEYOUNG)",
+        "Underdog",
+        "Click, Flash, Pow",
+        "Love Me Again",
+        "Wish Upon a Star"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "DAY6",
+      "release_title": "The DECADE",
+      "release_date": "2025-09-05",
+      "stream": "album",
+      "release_kind": "album",
+      "track_titles": [
+        "꿈의 버스",
+        "INSIDE OUT",
+        "해야 뜨지 말아 줘",
+        "Disco Day",
+        "My Way",
+        "별들 앞에서",
+        "Take All My Heart",
+        "날아라! 드림라이더",
+        "드디어 끝나갑니다",
+        "우리의 계절"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "DKB",
+      "release_title": "Emotion",
+      "release_date": "2025-10-23",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "Irony",
+        "Snake",
+        "Weekend",
+        "Cinderella",
+        "Hello, Goodbye (Rollercoaster)"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    }
+  ],
+  "title_track_spot_checks": [
+    {
+      "group": "ARTMS",
+      "release_title": "<Club Icarus>",
+      "release_date": "2025-06-13",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "review",
+      "title_tracks": [],
+      "candidate_titles": [
+        "BURN",
+        "Icarus"
+      ]
+    },
+    {
+      "group": "KiiiKiii",
+      "release_title": "Delulu Pack",
+      "release_date": "2026-01-25",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "review",
+      "title_tracks": [],
+      "candidate_titles": [
+        "Delulu",
+        "To Me From Me"
+      ]
+    },
+    {
+      "group": "LE SSERAFIM",
+      "release_title": "SPAGHETTI",
+      "release_date": "2025-10-24",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "review",
+      "title_tracks": [],
+      "candidate_titles": [
+        "Pearlies (My oyster is the world)",
+        "SPAGHETTI"
+      ]
+    },
+    {
+      "group": "PLAVE",
+      "release_title": "PLBBUU",
+      "release_date": "2025-11-10",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "review",
+      "title_tracks": [],
+      "candidate_titles": [
+        "BBUU!",
+        "숨바꼭질 (Hide and Seek)"
+      ]
+    },
+    {
+      "group": "aespa",
+      "release_title": "SYNK : aeXIS LINE",
+      "release_date": "2025-11-17",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "unresolved",
+      "title_tracks": [],
+      "candidate_titles": []
+    },
+    {
+      "group": "AMPERS&ONE",
+      "release_title": "LOUD & PROUD",
+      "release_date": "2025-08-12",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "unresolved",
+      "title_tracks": [],
+      "candidate_titles": []
+    },
+    {
+      "group": "BAE173",
+      "release_title": "NEW CHAPTER : DESEAR",
+      "release_date": "2025-10-14",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "unresolved",
+      "title_tracks": [],
+      "candidate_titles": []
+    },
+    {
+      "group": "BOYNEXTDOOR",
+      "release_title": "BOYLIFE",
+      "release_date": "2025-08-20",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "unresolved",
+      "title_tracks": [],
+      "candidate_titles": []
+    },
+    {
+      "group": "BOYNEXTDOOR",
+      "release_title": "The Action",
+      "release_date": "2025-10-20",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "unresolved",
+      "title_tracks": [],
+      "candidate_titles": []
+    },
+    {
+      "group": "IVE",
+      "release_title": "REVIVE+",
+      "release_date": "2026-02-23",
+      "stream": "album",
+      "release_kind": "album",
+      "status": "manual_override",
+      "title_tracks": [
+        "BLACKHOLE",
+        "BANG BANG"
+      ],
+      "candidate_titles": [
+        "BLACKHOLE",
+        "BANG BANG"
+      ]
+    },
+    {
+      "group": "&TEAM",
+      "release_title": "Back to Life",
+      "release_date": "2025-10-28",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Back to Life"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "i‐dle",
+      "release_date": "2025-10-03",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "傷つくのは嫌いだから"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "Mono",
+      "release_date": "2026-01-27",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Mono"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "82MAJOR",
+      "release_title": "Trophy",
+      "release_date": "2025-10-30",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "TROPHY"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "8TURN",
+      "release_title": "BRUISE",
+      "release_date": "2026-01-28",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "BRUISE"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "aespa",
+      "release_title": "Rich Man",
+      "release_date": "2025-09-05",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Rich Man"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ALL(H)OURS",
+      "release_title": "VCF",
+      "release_date": "2025-09-09",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "VCF"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ATEEZ",
+      "release_title": "Choose",
+      "release_date": "2025-11-17",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Choose"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ATEEZ",
+      "release_title": "GOLDEN HOUR : Part.4",
+      "release_date": "2026-02-06",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Choose"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "AtHeart",
+      "release_title": "Plot Twist",
+      "release_date": "2025-08-13",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Plot Twist"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "AtHeart",
+      "release_title": "Shut Up",
+      "release_date": "2026-02-26",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Shut Up"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "BABYMONSTER",
+      "release_title": "HOT SAUCE",
+      "release_date": "2025-07-01",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "HOT SAUCE"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "BABYMONSTER",
+      "release_title": "WE GO UP",
+      "release_date": "2025-10-10",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "WE GO UP"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "BADVILLAIN",
+      "release_title": "THRILLER",
+      "release_date": "2025-09-15",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "THRILLER"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "BAE173",
+      "release_title": "What’s wrong?",
+      "release_date": "2025-10-03",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "What’s wrong?"
+      ],
+      "candidate_titles": []
+    }
+  ],
   "rows_with_youtube_music_after": 52,
   "rows_with_youtube_mv_after": 26,
   "override_rows_total": 67,
