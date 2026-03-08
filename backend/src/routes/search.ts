@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 
+import { buildReadDataEnvelope, routeError } from '../lib/api.js';
 import type { AppConfig } from '../config.js';
 import type { DbQueryable } from '../lib/db.js';
 
@@ -367,35 +368,19 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
     const { q, limit: limitQuery } = request.query as SearchQuery;
 
     if (!q) {
-      return reply.code(400).send({
-        meta: {
-          route: '/v1/search',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-        },
-        error: {
-          code: 'invalid_request',
-          message: 'q query parameter is required.',
-        },
-      });
+      throw routeError(400, 'invalid_request', 'q query parameter is required.');
     }
 
     const needle = buildSearchNeedle(q);
     const limit = parseSearchLimit(limitQuery);
 
     if (!needle || limit === null) {
-      return reply.code(400).send({
-        meta: {
-          route: '/v1/search',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          query: q,
-        },
-        error: {
-          code: 'invalid_request',
-          message: 'q must contain searchable text and limit must be a positive integer when supplied.',
-        },
-      });
+      throw routeError(
+        400,
+        'invalid_request',
+        'q must contain searchable text and limit must be a positive integer when supplied.',
+        { query: q },
+      );
     }
 
     reply.header('Cache-Control', 'no-store');
@@ -711,15 +696,10 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
     const generatedAt = entityResult.rows[0]?.generated_at;
     const upcomingMatches = Array.from(upcomingMatchMap.values()).sort(compareUpcomingMatches).slice(0, limit);
 
-    return {
-      meta: {
-        generated_at: toIsoString(generatedAt),
-        timezone: context.config.appTimezone,
-        query: q,
-        normalized_query: needle.normalized,
-        limit,
-      },
-      data: {
+    return buildReadDataEnvelope(
+      request,
+      context.config.appTimezone,
+      {
         entities: entityMatches.map((item) => ({
           entity_slug: item.entity_slug,
           display_name: item.display_name,
@@ -762,6 +742,12 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
           matched_alias: item.matched_alias,
         })),
       },
-    };
+      {
+        query: q,
+        normalized_query: needle.normalized,
+        limit,
+      },
+      toIsoString(generatedAt),
+    );
   });
 }

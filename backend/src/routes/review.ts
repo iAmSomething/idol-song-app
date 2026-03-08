@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 
+import { buildReadDataEnvelope } from '../lib/api.js';
 import type { AppConfig } from '../config.js';
 import type { DbQueryable } from '../lib/db.js';
 
@@ -267,7 +268,7 @@ function buildMvItem(row: MvReviewRow) {
 }
 
 export function registerReviewRoutes(app: FastifyInstance, context: ReviewRouteContext): void {
-  app.get('/v1/review/upcoming', async (_request, reply) => {
+  app.get('/v1/review/upcoming', async (request, reply) => {
     reply.header('Cache-Control', 'no-store');
 
     const result = await context.db.query<UpcomingReviewRow>(
@@ -321,19 +322,14 @@ export function registerReviewRoutes(app: FastifyInstance, context: ReviewRouteC
       `
     );
 
-    return {
-      meta: {
-        generated_at: new Date().toISOString(),
-        timezone: context.config.appTimezone,
-        total_items: result.rows.length,
-      },
-      data: {
+    return buildReadDataEnvelope(request, context.config.appTimezone, {
         items: result.rows.map(buildUpcomingItem),
       },
-    };
+      { total_items: result.rows.length },
+    );
   });
 
-  app.get('/v1/review/mv', async (_request, reply) => {
+  app.get('/v1/review/mv', async (request, reply) => {
     reply.header('Cache-Control', 'no-store');
 
     const result = await context.db.query<MvReviewRow>(
@@ -395,15 +391,10 @@ export function registerReviewRoutes(app: FastifyInstance, context: ReviewRouteC
       `
     );
 
-    return {
-      meta: {
-        generated_at: new Date().toISOString(),
-        timezone: context.config.appTimezone,
-        total_items: result.rows.length,
-      },
-      data: {
+    return buildReadDataEnvelope(request, context.config.appTimezone, {
         items: result.rows.map(buildMvItem),
       },
-    };
+      { total_items: result.rows.length },
+    );
   });
 }

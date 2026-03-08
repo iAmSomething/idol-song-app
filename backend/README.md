@@ -47,6 +47,13 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 - 정본 schema는 plain SQL로 관리한다.
 - apply / verify 도구는 SQL 실행 보조에만 사용한다.
 
+## Read API Envelope
+
+- `/v1/*` read endpoint는 공통 success envelope `meta + data`를 사용한다.
+- success `meta`에는 최소 `request_id`, `generated_at`, `timezone`, `route`, `source`가 포함된다.
+- error는 공통 `meta + error` shape로 내려가고 code는 `invalid_request`, `not_found`, `stale_projection`, `internal_error`를 기본으로 쓴다.
+- helper entrypoint는 `backend/src/lib/api.ts`다.
+
 ## DB Lifecycle
 
 - API runtime은 `backend/src/lib/db.ts`의 `createDbPool()`을 공용 entrypoint로 사용한다.

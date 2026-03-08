@@ -1,6 +1,7 @@
 import Fastify, { type FastifyInstance } from 'fastify';
 
 import { loadConfig, type AppConfig } from './config.js';
+import { ReadApiError, buildReadErrorEnvelope } from './lib/api.js';
 import { closeDbPool, createDbPool, type DbPool } from './lib/db.js';
 import { registerCalendarRoutes } from './routes/calendar.js';
 import { registerEntityRoutes } from './routes/entities.js';
@@ -21,6 +22,31 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   const db = options.db ?? createDbPool(config);
   const app = Fastify({
     logger: true,
+  });
+
+  app.setErrorHandler((error, request, reply) => {
+    if (error instanceof ReadApiError) {
+      return reply
+        .code(error.statusCode)
+        .send(buildReadErrorEnvelope(request, config.appTimezone, error.code, error.message, error.meta));
+    }
+
+    request.log.error({ err: error }, 'Unhandled request error');
+    return reply
+      .code(500)
+      .send(buildReadErrorEnvelope(request, config.appTimezone, 'internal_error', 'Unexpected server error.'));
+  });
+
+  app.setNotFoundHandler((request, reply) => {
+    if (request.url.startsWith('/v1/')) {
+      return reply
+        .code(404)
+        .send(buildReadErrorEnvelope(request, config.appTimezone, 'not_found', 'Route not found.'));
+    }
+
+    return reply.code(404).send({
+      error: 'Not Found',
+    });
   });
 
   app.addHook('onClose', async () => {

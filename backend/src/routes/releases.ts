@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 
+import { buildReadDataEnvelope, routeError } from '../lib/api.js';
 import type { AppConfig } from '../config.js';
 import type { DbQueryable } from '../lib/db.js';
 
@@ -247,30 +248,20 @@ function normalizeLegacyReleaseTitle(value: string): string {
 }
 
 export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRouteContext): void {
-  app.get('/v1/releases/lookup', async (request, reply) => {
+  app.get('/v1/releases/lookup', async (request) => {
     const { entity_slug, title, date, stream } = request.query as ReleaseLookupQuery;
 
     if (!entity_slug || !title || !date || !stream) {
-      return reply.code(400).send({
-        meta: {
-          route: '/v1/releases/lookup',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-        },
-        error: {
-          code: 'invalid_request',
-          message: 'entity_slug, title, date, and stream query parameters are required.',
-        },
-      });
+      throw routeError(400, 'invalid_request', 'entity_slug, title, date, and stream query parameters are required.');
     }
 
     const normalizedTitle = normalizeLegacyReleaseTitle(title);
     if (!ISO_DATE_PATTERN.test(date) || !VALID_STREAMS.has(stream) || normalizedTitle.length === 0) {
-      return reply.code(400).send({
-        meta: {
-          route: '/v1/releases/lookup',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
+      throw routeError(
+        400,
+        'invalid_request',
+        'lookup requires a non-empty title, YYYY-MM-DD date, and stream of album or song.',
+        {
           lookup: {
             entity_slug,
             title,
@@ -278,11 +269,7 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
             stream,
           },
         },
-        error: {
-          code: 'invalid_request',
-          message: 'lookup requires a non-empty title, YYYY-MM-DD date, and stream of album or song.',
-        },
-      });
+      );
     }
 
     const result = await context.db.query<ReleaseDetailProjectionRow>(
@@ -307,44 +294,26 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
 
     const row = result.rows[0];
     if (!row) {
-      return reply.code(404).send({
-        meta: {
-          route: '/v1/releases/lookup',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          lookup: {
-            entity_slug,
-            title,
-            date,
-            stream,
-          },
-        },
-        error: {
-          code: 'release_not_found',
-          message: 'No release matched the supplied legacy lookup key.',
+      throw routeError(404, 'not_found', 'No release matched the supplied legacy lookup key.', {
+        lookup: {
+          entity_slug,
+          title,
+          date,
+          stream,
         },
       });
     }
 
     const data = buildLookupData(row);
     if (data === null) {
-      return reply.code(500).send({
-        meta: {
-          route: '/v1/releases/lookup',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-        },
-        error: {
-          code: 'invalid_projection_payload',
-          message: 'release_detail_projection returned an unexpected payload shape.',
-        },
-      });
+      throw routeError(500, 'stale_projection', 'release_detail_projection returned an unexpected payload shape.');
     }
 
-    return {
-      meta: {
-        generated_at: toIsoString(row.generated_at),
-        timezone: context.config.appTimezone,
+    return buildReadDataEnvelope(
+      request,
+      context.config.appTimezone,
+      data,
+      {
         lookup: {
           entity_slug,
           title,
@@ -352,26 +321,15 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
           stream,
         },
       },
-      data,
-    };
+      toIsoString(row.generated_at),
+    );
   });
 
-  app.get('/v1/releases/:id', async (request, reply) => {
+  app.get('/v1/releases/:id', async (request) => {
     const { id } = request.params as ReleaseParams;
 
     if (!UUID_PATTERN.test(id)) {
-      return reply.code(400).send({
-        meta: {
-          route: '/v1/releases/:id',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          release_id: id,
-        },
-        error: {
-          code: 'invalid_request',
-          message: 'release_id must be a UUID.',
-        },
-      });
+      throw routeError(400, 'invalid_request', 'release_id must be a UUID.', { release_id: id });
     }
 
     const result = await context.db.query<ReleaseDetailProjectionRow>(
@@ -393,43 +351,22 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
 
     const row = result.rows[0];
     if (!row) {
-      return reply.code(404).send({
-        meta: {
-          route: '/v1/releases/:id',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          release_id: id,
-        },
-        error: {
-          code: 'release_not_found',
-          message: 'No release detail matched the supplied release_id.',
-        },
-      });
+      throw routeError(404, 'not_found', 'No release detail matched the supplied release_id.', { release_id: id });
     }
 
     const data = normalizeReleaseDetailPayload(row.payload, row.release_id);
     if (data === null) {
-      return reply.code(500).send({
-        meta: {
-          route: '/v1/releases/:id',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          release_id: row.release_id,
-        },
-        error: {
-          code: 'invalid_projection_payload',
-          message: 'release_detail_projection returned an unexpected payload shape.',
-        },
+      throw routeError(500, 'stale_projection', 'release_detail_projection returned an unexpected payload shape.', {
+        release_id: row.release_id,
       });
     }
 
-    return {
-      meta: {
-        generated_at: toIsoString(row.generated_at),
-        timezone: context.config.appTimezone,
-        release_id: row.release_id,
-      },
+    return buildReadDataEnvelope(
+      request,
+      context.config.appTimezone,
       data,
-    };
+      { release_id: row.release_id },
+      toIsoString(row.generated_at),
+    );
   });
 }
