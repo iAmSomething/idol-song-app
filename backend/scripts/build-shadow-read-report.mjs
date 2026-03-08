@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import assert from 'node:assert/strict';
+import { randomUUID } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -3380,8 +3381,29 @@ function limitSnapshot(value, depth = 0) {
   return value;
 }
 
+function createShadowRequestId(url) {
+  const normalizedUrl = String(url).replace(/[^a-z0-9_-]+/gi, '-').toLowerCase();
+  return `shadow-${normalizedUrl}-${randomUUID()}`;
+}
+
+function readInjectedResponseRequestId(body, response) {
+  if (body && typeof body === 'object' && body.meta && typeof body.meta.request_id === 'string') {
+    return body.meta.request_id;
+  }
+
+  const headerValue = response.headers['x-request-id'];
+  return typeof headerValue === 'string' && headerValue.trim().length > 0 ? headerValue.trim() : null;
+}
+
 async function injectJson(app, url) {
-  const response = await app.inject({ method: 'GET', url });
+  const requestId = createShadowRequestId(url);
+  const response = await app.inject({
+    method: 'GET',
+    url,
+    headers: {
+      'x-request-id': requestId,
+    },
+  });
   let body = null;
   try {
     body = response.json();
@@ -3392,6 +3414,8 @@ async function injectJson(app, url) {
   return {
     statusCode: response.statusCode,
     body,
+    requestIdSent: requestId,
+    responseRequestId: readInjectedResponseRequestId(body, response),
   };
 }
 
@@ -3617,6 +3641,8 @@ async function buildSearchCaseReport(app, state, query) {
 
   return buildCaseReport('search', { q: query }, expected, actualData, comparison, {
     actual_status_code: actualResponse.statusCode,
+    request_id_sent: actualResponse.requestIdSent,
+    response_request_id: actualResponse.responseRequestId,
   });
 }
 
@@ -3634,6 +3660,8 @@ async function buildEntityCaseReport(app, state, slug) {
 
   return buildCaseReport('entity_detail', { slug }, expected, actualData, comparison, {
     actual_status_code: actualResponse.statusCode,
+    request_id_sent: actualResponse.requestIdSent,
+    response_request_id: actualResponse.responseRequestId,
   });
 }
 
@@ -3645,7 +3673,7 @@ async function buildReleaseCaseReport(app, state, definition) {
   const lookupResponse = await injectJson(app, lookupUrl);
   const lookupData = lookupResponse.body?.data ?? null;
 
-  let detailResponse = { statusCode: 0, body: null };
+  let detailResponse = { statusCode: 0, body: null, requestIdSent: null, responseRequestId: null };
   if (lookupResponse.statusCode === 200 && lookupData?.canonical_path) {
     detailResponse = await injectJson(app, lookupData.canonical_path);
   }
@@ -3679,6 +3707,10 @@ async function buildReleaseCaseReport(app, state, definition) {
   return buildCaseReport('release_detail', definition, expected, actual, comparison, {
     lookup_status_code: lookupResponse.statusCode,
     detail_status_code: detailResponse.statusCode,
+    lookup_request_id_sent: lookupResponse.requestIdSent,
+    lookup_response_request_id: lookupResponse.responseRequestId,
+    detail_request_id_sent: detailResponse.requestIdSent,
+    detail_response_request_id: detailResponse.responseRequestId,
   });
 }
 
@@ -3696,6 +3728,8 @@ async function buildCalendarCaseReport(app, state, month) {
 
   return buildCaseReport('calendar_month', { month }, expected, actualData, comparison, {
     actual_status_code: actualResponse.statusCode,
+    request_id_sent: actualResponse.requestIdSent,
+    response_request_id: actualResponse.responseRequestId,
   });
 }
 
@@ -3713,6 +3747,8 @@ async function buildRadarCaseReport(app, state) {
 
   return buildCaseReport('radar', { surface: 'default' }, expected, actualData, comparison, {
     actual_status_code: actualResponse.statusCode,
+    request_id_sent: actualResponse.requestIdSent,
+    response_request_id: actualResponse.responseRequestId,
   });
 }
 

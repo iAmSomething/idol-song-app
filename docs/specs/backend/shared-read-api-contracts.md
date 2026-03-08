@@ -58,6 +58,9 @@
 - `generated_at`은 projection freshness 판단용이다
 - `timezone`은 제품 의미론 기준을 명시한다
 - payload business data는 `data` 아래에 둔다
+- caller가 `X-Request-Id`를 보내면 backend는 같은 값을 `meta.request_id`와 `X-Request-Id` response header에 그대로 반영한다
+- caller가 보내지 않으면 backend가 `api-<uuid>` 형태 request id를 생성한다
+- preview와 production은 같은 request-id policy를 사용한다
 
 ## 4. Endpoint Summary
 

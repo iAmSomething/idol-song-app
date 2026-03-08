@@ -1,3 +1,5 @@
+import { randomUUID } from 'node:crypto';
+
 import Fastify, { type FastifyInstance, type FastifyReply } from 'fastify';
 
 import { loadConfig, type AppConfig } from './config.js';
@@ -18,7 +20,13 @@ export type BuildAppOptions = {
 };
 
 const ACCESS_CONTROL_ALLOW_METHODS = 'GET,OPTIONS';
-const DEFAULT_ACCESS_CONTROL_ALLOW_HEADERS = 'Content-Type';
+const DEFAULT_ACCESS_CONTROL_ALLOW_HEADERS = 'Content-Type, X-Request-Id';
+const ACCESS_CONTROL_EXPOSE_HEADERS = 'X-Request-Id';
+const REQUEST_ID_HEADER = 'x-request-id';
+
+function createRequestId(): string {
+  return `api-${randomUUID()}`;
+}
 
 function appendVaryHeader(reply: FastifyReply, value: string): void {
   const current = reply.getHeader('Vary');
@@ -67,6 +75,7 @@ function applyCorsHeaders(reply: FastifyReply, origin: string, requestedHeaders:
   reply.header('Access-Control-Allow-Origin', origin);
   reply.header('Access-Control-Allow-Methods', ACCESS_CONTROL_ALLOW_METHODS);
   reply.header('Access-Control-Allow-Headers', requestedHeaders);
+  reply.header('Access-Control-Expose-Headers', ACCESS_CONTROL_EXPOSE_HEADERS);
   reply.header('Access-Control-Max-Age', '600');
   appendVaryHeader(reply, 'Origin');
   appendVaryHeader(reply, 'Access-Control-Request-Headers');
@@ -76,7 +85,9 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   const config = options.config ?? loadConfig();
   const db = withFailFastReadTimeouts(options.db ?? createDbPool(config));
   const app = Fastify({
+    genReqId: createRequestId,
     logger: true,
+    requestIdHeader: REQUEST_ID_HEADER,
   });
 
   app.addHook('onRequest', async (request, reply) => {
@@ -113,7 +124,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
         .send(buildReadErrorEnvelope(request, config.appTimezone, error.code, error.message, error.meta));
     }
 
-    request.log.error({ err: error }, 'Unhandled request error');
+    request.log.error({ err: error, request_id: request.id }, 'Unhandled request error');
     return reply
       .code(500)
       .send(buildReadErrorEnvelope(request, config.appTimezone, 'internal_error', 'Unexpected server error.'));
@@ -133,6 +144,11 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
 
   app.addHook('onClose', async () => {
     await closeDbPool(db);
+  });
+
+  app.addHook('onSend', async (request, reply, payload) => {
+    reply.header('X-Request-Id', request.id);
+    return payload;
   });
 
   registerHealthRoute(app);

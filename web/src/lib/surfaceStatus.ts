@@ -11,6 +11,7 @@ export type SurfaceFallbackReasonKey =
 type SurfaceStatusLabels = {
   sourceLabel: string
   reasonLabel: string
+  traceLabel: string
   sourceStateLabels: Record<SurfaceStatusSource, string>
   fallbackReasonLabels: Record<SurfaceFallbackReasonKey, string>
 }
@@ -54,10 +55,12 @@ export function getSurfaceFallbackReasonKey(errorCode: string | null): SurfaceFa
 export function buildSurfaceStatusMeta({
   source,
   errorCode,
+  traceId,
   labels,
 }: {
   source: SurfaceStatusSource
   errorCode: string | null
+  traceId?: string | null
   labels: SurfaceStatusLabels
 }) {
   const parts = [`${labels.sourceLabel}: ${labels.sourceStateLabels[source]}`]
@@ -65,6 +68,10 @@ export function buildSurfaceStatusMeta({
 
   if (reason) {
     parts.push(`${labels.reasonLabel}: ${labels.fallbackReasonLabels[reason]}`)
+  }
+
+  if (traceId) {
+    parts.push(`${labels.traceLabel}: ${traceId}`)
   }
 
   return parts.join(' · ')

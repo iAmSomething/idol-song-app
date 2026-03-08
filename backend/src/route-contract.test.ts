@@ -14,6 +14,7 @@ const UPCOMING_SIGNAL_ID = '55555555-5555-4555-8555-555555555555';
 const UPCOMING_REVIEW_ID = '66666666-6666-4666-8666-666666666666';
 const MV_REVIEW_ID = '77777777-7777-4777-8777-777777777777';
 const IVE_ENTITY_ID = '88888888-8888-4888-8888-888888888888';
+const CALLER_REQUEST_ID = 'web-search-trace-yena-001';
 
 const TEST_CONFIG: AppConfig = {
   appEnv: 'development',
@@ -721,6 +722,25 @@ function assertErrorEnvelope(body: Record<string, any>, code: string, route: str
   assert.equal(typeof body.meta.request_id, 'string');
 }
 
+test('caller-provided x-request-id is echoed in success envelope and response headers', async (t) => {
+  const app = createTestApp(t);
+  const response = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: '최예나',
+    },
+    headers: {
+      'x-request-id': CALLER_REQUEST_ID,
+    },
+  });
+
+  assert.equal(response.statusCode, 200);
+  assert.equal(response.headers['x-request-id'], CALLER_REQUEST_ID);
+  const body = parseJson(response);
+  assert.equal(body.meta.request_id, CALLER_REQUEST_ID);
+});
+
 test('GET /health returns plain health status', async (t) => {
   const app = createTestApp(t);
   const response = await app.inject({
@@ -936,9 +956,15 @@ test('error envelopes cover invalid request, not found, and stale projection cas
   const invalidReleaseId = await standardApp.inject({
     method: 'GET',
     url: '/v1/releases/not-a-uuid',
+    headers: {
+      'x-request-id': CALLER_REQUEST_ID,
+    },
   });
   assert.equal(invalidReleaseId.statusCode, 400);
-  assertErrorEnvelope(parseJson(invalidReleaseId), 'invalid_request', '/v1/releases/:id');
+  assert.equal(invalidReleaseId.headers['x-request-id'], CALLER_REQUEST_ID);
+  const invalidReleaseIdBody = parseJson(invalidReleaseId);
+  assertErrorEnvelope(invalidReleaseIdBody, 'invalid_request', '/v1/releases/:id');
+  assert.equal(invalidReleaseIdBody.meta.request_id, CALLER_REQUEST_ID);
 
   const invalidCalendarMonth = await standardApp.inject({
     method: 'GET',

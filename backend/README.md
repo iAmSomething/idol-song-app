@@ -53,6 +53,9 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 - success `meta`에는 최소 `request_id`, `generated_at`, `timezone`, `route`, `source`가 포함된다.
 - error는 공통 `meta + error` shape로 내려가고 code는 `invalid_request`, `not_found`, `disallowed_origin`, `stale_projection`, `internal_error`를 기본으로 쓴다.
 - helper entrypoint는 `backend/src/lib/api.ts`다.
+- caller가 `X-Request-Id`를 보내면 backend는 같은 값을 `meta.request_id`와 `X-Request-Id` response header에 그대로 되돌린다.
+- caller가 보내지 않으면 backend가 `api-<uuid>` request id를 생성한다.
+- runtime 측정 / shadow report도 각 request의 sent/received request id를 artifact에 함께 남긴다.
 
 ## Normalization Helpers
 

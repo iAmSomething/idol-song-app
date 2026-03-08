@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { randomUUID } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
@@ -23,6 +24,21 @@ function average(values) {
     return null;
   }
   return Number((values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(2));
+}
+
+function createRequestId(surface, label, iteration) {
+  const normalizedSurface = String(surface).replace(/[^a-z0-9_-]+/gi, '-').toLowerCase();
+  const normalizedLabel = String(label).replace(/[^a-z0-9_-]+/gi, '-').toLowerCase();
+  return `runtime-${normalizedSurface}-${normalizedLabel}-${iteration}-${randomUUID()}`;
+}
+
+function readResponseRequestId(body, response) {
+  if (body && typeof body === 'object' && body.meta && typeof body.meta.request_id === 'string') {
+    return body.meta.request_id;
+  }
+
+  const headerValue = response.headers.get('x-request-id');
+  return typeof headerValue === 'string' && headerValue.trim().length > 0 ? headerValue.trim() : null;
 }
 
 function parseArgs(argv) {
@@ -148,7 +164,7 @@ function createRuntimeCases(baseUrl) {
   ];
 }
 
-async function measureRequest({ url, expectedStatus, timeoutMs }) {
+async function measureRequest({ url, expectedStatus, timeoutMs, requestId }) {
   const startedAt = performance.now();
 
   try {
@@ -156,14 +172,23 @@ async function measureRequest({ url, expectedStatus, timeoutMs }) {
       signal: AbortSignal.timeout(timeoutMs),
       headers: {
         accept: 'application/json',
+        'x-request-id': requestId,
       },
     });
+    let body = null;
+    try {
+      body = await response.json();
+    } catch {
+      body = null;
+    }
     const durationMs = Number((performance.now() - startedAt).toFixed(2));
     return {
       ok: response.status === expectedStatus,
       status: response.status,
       durationMs,
       error: null,
+      request_id_sent: requestId,
+      response_request_id: readResponseRequestId(body, response),
     };
   } catch (error) {
     const durationMs = Number((performance.now() - startedAt).toFixed(2));
@@ -172,6 +197,8 @@ async function measureRequest({ url, expectedStatus, timeoutMs }) {
       status: null,
       durationMs,
       error: error instanceof Error ? error.message : String(error),
+      request_id_sent: requestId,
+      response_request_id: null,
     };
   }
 }
@@ -211,6 +238,13 @@ function summarizeMeasurements(caseConfig, measurements) {
       max: durations.length ? Number(Math.max(...durations).toFixed(2)) : null,
     },
     sample_errors: sampleErrors,
+    measurements: measurements.map((measurement) => ({
+      status: measurement.status,
+      duration_ms: measurement.durationMs,
+      request_id_sent: measurement.request_id_sent,
+      response_request_id: measurement.response_request_id,
+      error: measurement.error,
+    })),
   };
 }
 
@@ -249,11 +283,13 @@ async function main() {
     const measurements = [];
     for (let index = 0; index < iterations; index += 1) {
       const request = await runtimeCase.createRequest();
+      const requestId = createRequestId(runtimeCase.surface, runtimeCase.label, index + 1);
       measurements.push(
         await measureRequest({
           url: request.url,
           expectedStatus: request.expectedStatus,
           timeoutMs,
+          requestId,
         }),
       );
     }
