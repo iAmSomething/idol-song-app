@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T07:38:47.525631+00:00",
+  "generated_at": "2026-03-08T06:56:34.451182+00:00",
   "clean": false,
   "summary_lines": [
     "entity alias/search coverage: clean (mismatched entities=0)",
@@ -12,18 +12,18 @@
     "review-required counts: clean (review_type_counts_match=True, youtube_mv_status_counts_match=True)"
   ],
   "source_snapshot_counts": {
-    "artist_profiles": 116,
+    "artist_profiles": 117,
     "youtube_allowlists": 108,
     "release_details": 117,
     "upcoming_candidates": 71,
-    "watchlist": 116,
+    "watchlist": 117,
     "manual_review_queue": 67,
     "mv_manual_review_queue": 34
   },
   "checks": {
     "entity_alias_search_coverage": {
-      "source_entity_count": 116,
-      "db_entity_count": 116,
+      "source_entity_count": 117,
+      "db_entity_count": 117,
       "mismatched_entities_count": 0,
       "mismatches": [],
       "clean": true
@@ -68,13 +68,13 @@
     },
     "upcoming_counts_and_nearest": {
       "source": {
-        "total": 71,
+        "total": 59,
         "precision_counts": {
-          "exact": 7,
-          "month_only": 21,
-          "unknown": 43
+          "unknown": 39,
+          "exact": 6,
+          "month_only": 14
         },
-        "future_exact_count": 7,
+        "future_exact_count": 6,
         "nearest_exact": {
           "slug": "yena",
           "scheduled_date": "2026-03-11",
@@ -84,22 +84,22 @@
         "month_buckets": {
           "exact": {
             "2026-03": 4,
-            "2026-04": 3
+            "2026-04": 2
           },
           "month_only": {
-            "2026-03": 10,
-            "2026-04": 11
+            "2026-03": 4,
+            "2026-04": 10
           }
         }
       },
       "db": {
-        "total": 71,
+        "total": 59,
         "precision_counts": {
-          "month_only": 21,
-          "unknown": 43,
-          "exact": 7
+          "month_only": 14,
+          "unknown": 39,
+          "exact": 6
         },
-        "future_exact_count": 7,
+        "future_exact_count": 6,
         "nearest_exact": {
           "slug": "yena",
           "scheduled_date": "2026-03-11",
@@ -109,11 +109,11 @@
         "month_buckets": {
           "exact": {
             "2026-03": 4,
-            "2026-04": 3
+            "2026-04": 2
           },
           "month_only": {
-            "2026-03": 10,
-            "2026-04": 11
+            "2026-03": 4,
+            "2026-04": 10
           }
         }
       },
