@@ -10,6 +10,14 @@ import {
 import './App.css'
 import { classifyBackendFetchError, fetchJsonWithTimeout } from './lib/backendFetch'
 import {
+  buildServiceActionLinks,
+  openMusicHandoff,
+  shouldBypassManagedHandoff,
+  type MusicHandoffLink,
+  type MusicHandoffUrls,
+  type ServiceActionId,
+} from './lib/mobileWebHandoff'
+import {
   buildSurfaceStatusMeta,
   type SurfaceStatusSource,
 } from './lib/surfaceStatus'
@@ -691,9 +699,6 @@ type CalendarDay = {
   inMonth: boolean
 }
 
-type MusicService = 'spotify' | 'youtube_music'
-type ServiceActionId = MusicService | 'youtube_mv'
-
 type ReleaseFormat = 'single' | 'album' | 'ep'
 
 type ContextTag =
@@ -705,18 +710,6 @@ type ContextTag =
   | 'special_project'
 
 type SourceBadgeType = 'agency_notice' | 'weverse_notice' | 'news_rss' | 'database' | 'pending'
-
-type MusicHandoffMode = 'canonical' | 'search'
-
-type MusicHandoffUrls = Partial<Record<MusicService, string>>
-
-type MusicHandoffLink = {
-  service: ServiceActionId
-  href: string
-  mode: MusicHandoffMode
-}
-
-type MobileHandoffPlatform = 'android' | 'ios' | 'other'
 
 type TeamLatestRelease = {
   title: string
@@ -1683,7 +1676,6 @@ const releaseKindOptions = ['all', 'single', 'album', 'ep'] as const
 const actTypeOptions = ['all', 'group', 'solo', 'unit'] as const
 const dashboardStatusOptions = ['all', 'verified', 'confirmed', 'scheduled', 'rumor'] as const
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
-const MUSIC_HANDOFF_SERVICES: MusicService[] = ['spotify', 'youtube_music']
 const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
 const LONG_GAP_THRESHOLD_DAYS = 365
 const ROOKIE_RECENT_YEAR_WINDOW = 2
@@ -6657,230 +6649,6 @@ function formatUpcomingCountdownLabel(
   return formatDisplayDate(scheduledDate, formatter)
 }
 
-function buildServiceActionLinks({
-  group,
-  title,
-  canonicalUrls,
-  mvUrl,
-  includeMv = true,
-  allowMvSearchFallback = true,
-}: {
-  group: string
-  title: string
-  canonicalUrls?: MusicHandoffUrls
-  mvUrl?: string
-  includeMv?: boolean
-  allowMvSearchFallback?: boolean
-}): MusicHandoffLink[] {
-  const query = `${group} ${title}`.trim()
-  const links: MusicHandoffLink[] = MUSIC_HANDOFF_SERVICES.map((service) => ({
-    service,
-    href: canonicalUrls?.[service] || buildMusicSearchUrl(service, query),
-    mode: canonicalUrls?.[service] ? 'canonical' : 'search',
-  }))
-
-  if (includeMv && (mvUrl || allowMvSearchFallback)) {
-    links.push({
-      service: 'youtube_mv',
-      href: mvUrl || buildYouTubeMvSearchUrl(query),
-      mode: mvUrl ? 'canonical' : 'search',
-    })
-  }
-
-  return links
-}
-
-function getMobileHandoffPlatform(): MobileHandoffPlatform {
-  if (typeof navigator === 'undefined') {
-    return 'other'
-  }
-
-  const userAgent = navigator.userAgent
-  if (/android/i.test(userAgent)) {
-    return 'android'
-  }
-
-  if (/iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
-    return 'ios'
-  }
-
-  return 'other'
-}
-
-function extractSearchQueryFromPath(pathname: string) {
-  if (!pathname.startsWith('/search/')) {
-    return ''
-  }
-
-  return decodeURIComponent(pathname.slice('/search/'.length))
-}
-
-function buildAndroidIntentUrl(webHref: string, packageName: string) {
-  try {
-    const url = new URL(webHref)
-    const authorityPath = `${url.host}${url.pathname}${url.search}${url.hash}`
-    return `intent://${authorityPath}#Intent;scheme=${url.protocol.replace(':', '')};package=${packageName};end`
-  } catch {
-    return ''
-  }
-}
-
-function buildSpotifyAppHref(webHref: string) {
-  if (webHref.startsWith('spotify:')) {
-    return webHref
-  }
-
-  try {
-    const url = new URL(webHref)
-    if (!url.hostname.includes('spotify.com')) {
-      return ''
-    }
-
-    const searchQuery = extractSearchQueryFromPath(url.pathname)
-    if (searchQuery) {
-      return `spotify:search:${searchQuery}`
-    }
-
-    const segments = url.pathname.split('/').filter(Boolean)
-    const [resourceType, resourceId] = segments
-    if (!resourceType || !resourceId) {
-      return ''
-    }
-
-    if (!['album', 'track', 'artist', 'playlist', 'show', 'episode'].includes(resourceType)) {
-      return ''
-    }
-
-    return `spotify:${resourceType}:${resourceId}`
-  } catch {
-    return ''
-  }
-}
-
-function buildYouTubeAppHref(webHref: string, platform: MobileHandoffPlatform) {
-  if (platform === 'android') {
-    return buildAndroidIntentUrl(webHref, 'com.google.android.youtube')
-  }
-
-  if (platform !== 'ios') {
-    return ''
-  }
-
-  try {
-    const url = new URL(webHref)
-    const videoId = extractYouTubeVideoId(webHref)
-    if (videoId) {
-      return `vnd.youtube://watch?v=${videoId}`
-    }
-
-    const searchQuery = url.searchParams.get('search_query')
-    if (searchQuery) {
-      return `vnd.youtube://results?search_query=${encodeURIComponent(searchQuery)}`
-    }
-  } catch {
-    return ''
-  }
-
-  return ''
-}
-
-function buildYouTubeMusicAppHref(webHref: string, platform: MobileHandoffPlatform) {
-  if (platform !== 'android') {
-    return ''
-  }
-
-  return buildAndroidIntentUrl(webHref, 'com.google.android.apps.youtube.music')
-}
-
-function buildAppAwareHandoffHref(link: MusicHandoffLink, platform: MobileHandoffPlatform) {
-  if (platform === 'other') {
-    return ''
-  }
-
-  if (link.service === 'spotify') {
-    return buildSpotifyAppHref(link.href)
-  }
-
-  if (link.service === 'youtube_music') {
-    return buildYouTubeMusicAppHref(link.href, platform)
-  }
-
-  return buildYouTubeAppHref(link.href, platform)
-}
-
-function openWebHandoff(href: string, platform: MobileHandoffPlatform) {
-  if (typeof window === 'undefined') {
-    return
-  }
-
-  if (platform !== 'other') {
-    window.location.assign(href)
-    return
-  }
-
-  const openedWindow = window.open(href, '_blank', 'noopener,noreferrer')
-  if (!openedWindow) {
-    window.location.assign(href)
-  }
-}
-
-function attemptMobileAppFirstHandoff(appHref: string, webHref: string) {
-  if (typeof window === 'undefined' || typeof document === 'undefined') {
-    return
-  }
-
-  let handled = false
-  let fallbackTimer = 0
-  const cleanup = () => {
-    if (handled) {
-      return
-    }
-
-    handled = true
-    document.removeEventListener('visibilitychange', handleVisibilityChange)
-    if (fallbackTimer) {
-      window.clearTimeout(fallbackTimer)
-    }
-  }
-
-  const handleVisibilityChange = () => {
-    if (document.visibilityState === 'hidden') {
-      cleanup()
-    }
-  }
-
-  document.addEventListener('visibilitychange', handleVisibilityChange)
-  fallbackTimer = window.setTimeout(() => {
-    if (document.visibilityState === 'visible') {
-      cleanup()
-      window.location.assign(webHref)
-    }
-  }, 900)
-
-  try {
-    window.location.assign(appHref)
-  } catch {
-    cleanup()
-    window.location.assign(webHref)
-  }
-}
-
-function openMusicHandoff(link: MusicHandoffLink) {
-  const platform = getMobileHandoffPlatform()
-  const appHref = buildAppAwareHandoffHref(link, platform)
-
-  if (!appHref) {
-    openWebHandoff(link.href, platform)
-    return
-  }
-
-  attemptMobileAppFirstHandoff(appHref, link.href)
-}
-
-function shouldBypassManagedHandoff(event: ReactMouseEvent<HTMLAnchorElement>) {
-  return event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
-}
-
 function handleMusicHandoffClick(event: ReactMouseEvent<HTMLAnchorElement>, link: MusicHandoffLink) {
   if (shouldBypassManagedHandoff(event)) {
     return
@@ -6888,19 +6656,6 @@ function handleMusicHandoffClick(event: ReactMouseEvent<HTMLAnchorElement>, link
 
   event.preventDefault()
   openMusicHandoff(link)
-}
-
-function buildMusicSearchUrl(service: MusicService, query: string) {
-  const encodedQuery = encodeURIComponent(query)
-  if (service === 'spotify') {
-    return `https://open.spotify.com/search/${encodedQuery}`
-  }
-
-  return `https://music.youtube.com/search?q=${encodedQuery}`
-}
-
-function buildYouTubeMvSearchUrl(query: string) {
-  return `https://www.youtube.com/results?search_query=${encodeURIComponent(`${query} official mv`)}`
 }
 
 function buildYouTubeMvCanonicalUrl(videoId: string) {

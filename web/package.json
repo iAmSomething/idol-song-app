@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "verify:timeout": "tsx ./scripts/verify-backend-timeout.ts",
-    "verify:fallback-reasons": "tsx ./scripts/verify-fallback-reasons.ts"
+    "verify:fallback-reasons": "tsx ./scripts/verify-fallback-reasons.ts",
+    "verify:mobile-web-handoff-qa": "tsx ./scripts/build-mobile-web-handoff-qa-matrix.ts"
   },
   "dependencies": {
     "react": "^19.2.0",
