@@ -15,11 +15,17 @@
    - 아이콘 mark + 짧은 라벨 규칙
    - canonical / fallback 상태 표기 원칙
    - 후속 구현 이슈 `#13`, `#18`, `#59` 연결 기준
+3. `mobile-web-handoff-qa-matrix.md`
+   - 모바일 브라우저 handoff QA matrix
+   - Android Chrome / iOS Safari / representative in-app browser 기준
+   - app installed / not installed, canonical / search fallback 차이
+   - 후속 QA 이슈 `#291` 재검증 기준
 
 ## 읽는 순서
 
 1. `ui-action-system-v1.md`
 2. `service-button-system-v1.md`
+3. `mobile-web-handoff-qa-matrix.md`
 
 ## 운영 원칙
 
