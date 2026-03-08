@@ -184,7 +184,7 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
 }
 
 type SurfaceSourceMode = 'json' | 'api'
-type SurfaceSourceKey = 'entityDetail' | 'releaseDetail' | 'calendarMonth' | 'radar'
+type SurfaceSourceKey = 'entityDetail' | 'releaseDetail' | 'radar'
 type SurfaceSourceOverrides = Partial<Record<SurfaceSourceKey, SurfaceSourceMode>>
 type ReleaseDetailSourceMode = SurfaceSourceMode
 type ReleaseDetailSourceState = 'json' | 'api' | 'json_fallback'
@@ -260,8 +260,7 @@ type SearchSourceState = 'api' | 'api_error'
 
 type EntityDetailSourceMode = SurfaceSourceMode
 type EntityDetailSourceState = 'json' | 'api' | 'json_fallback'
-type CalendarMonthSourceMode = SurfaceSourceMode
-type CalendarMonthSourceState = 'json' | 'api' | 'json_fallback'
+type CalendarMonthSourceState = 'api' | 'api_error'
 type RadarSourceMode = SurfaceSourceMode
 type RadarSourceState = 'json' | 'api' | 'json_fallback'
 
@@ -868,14 +867,12 @@ const TRANSLATIONS = {
     searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 사용 중입니다.',
     searchBackendFallback: 'backend 검색 응답을 불러오지 못했습니다. 검색 결과 fallback은 비활성화되어 있습니다.',
     searchBackendTimeout: 'backend /v1/search 응답 시간이 초과되었습니다. 검색 결과 fallback은 비활성화되어 있습니다.',
-    calendarBackendLoading:
-      'backend /v1/calendar/month 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 월 데이터를 먼저 표시합니다.',
+    calendarBackendLoading: 'backend /v1/calendar/month 결과를 확인하는 중입니다.',
     calendarBackendActive: '현재 월간 캘린더와 대시보드는 backend /v1/calendar/month 응답을 우선 사용 중입니다.',
     calendarBackendFallback:
-      'backend 월간 캘린더 응답을 불러오지 못해 transitional JSON fallback으로 표시 중입니다.',
+      'backend 월간 캘린더 응답을 불러오지 못했습니다. runtime JSON fallback은 비활성화되어 있습니다.',
     calendarBackendTimeout:
-      'backend /v1/calendar/month 응답 시간이 초과되어 transitional JSON fallback 월 데이터로 표시 중입니다.',
-    calendarJsonPrimary: '현재 월간 캘린더와 대시보드는 transitional JSON 기본 경로를 사용 중입니다.',
+      'backend /v1/calendar/month 응답 시간이 초과되었습니다. runtime JSON fallback은 비활성화되어 있습니다.',
     radarBackendLoading:
       'backend /v1/radar 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 레이더 데이터를 먼저 표시합니다.',
     radarBackendActive: '현재 레이더 섹션은 backend /v1/radar 응답을 우선 사용 중입니다.',
@@ -1148,15 +1145,13 @@ const TRANSLATIONS = {
       'The backend search response was unavailable. Runtime search fallback is disabled.',
     searchBackendTimeout:
       'The backend /v1/search request timed out. Runtime search fallback is disabled.',
-    calendarBackendLoading:
-      'Checking backend /v1/calendar/month now. The UI keeps the transitional JSON fallback month data visible first.',
+    calendarBackendLoading: 'Checking backend /v1/calendar/month now.',
     calendarBackendActive:
       'The monthly calendar and dashboard are currently using the backend /v1/calendar/month response.',
     calendarBackendFallback:
-      'The backend calendar/month response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
+      'The backend calendar/month response was unavailable. Runtime JSON fallback is disabled.',
     calendarBackendTimeout:
-      'The backend /v1/calendar/month request timed out, so the UI is falling back to the transitional JSON snapshot.',
-    calendarJsonPrimary: 'The monthly calendar and dashboard are currently using the transitional JSON primary path.',
+      'The backend /v1/calendar/month request timed out. Runtime JSON fallback is disabled.',
     radarBackendLoading:
       'Checking backend /v1/radar now. The UI keeps the transitional JSON fallback radar data visible first.',
     radarBackendActive: 'The radar sections are currently using the backend /v1/radar response.',
@@ -1704,13 +1699,11 @@ const DEFAULT_PRIMARY_SURFACE_SOURCE_MODE = normalizeSurfaceSourceMode(import.me
 const SURFACE_SOURCE_MODES = {
   entityDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_ENTITY_DETAIL_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
   releaseDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_RELEASE_DETAIL_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
-  calendarMonth: normalizeSurfaceSourceMode(import.meta.env.VITE_CALENDAR_MONTH_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
   radar: normalizeSurfaceSourceMode(import.meta.env.VITE_RADAR_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
 } satisfies Record<SurfaceSourceKey, SurfaceSourceMode>
 const SURFACE_SOURCE_QUERY_PARAMS = {
   entityDetail: 'entityDetailSource',
   releaseDetail: 'releaseDetailSource',
-  calendarMonth: 'calendarMonthSource',
   radar: 'radarSource',
 } satisfies Record<SurfaceSourceKey, string>
 
@@ -1802,7 +1795,6 @@ function App() {
       : null
   const releaseDetailSourceMode = getSurfaceSourceMode('releaseDetail', sourceOverrides.releaseDetail)
   const entityDetailSourceMode = getSurfaceSourceMode('entityDetail', sourceOverrides.entityDetail)
-  const calendarMonthSourceMode = getSurfaceSourceMode('calendarMonth', sourceOverrides.calendarMonth)
   const radarSourceMode = getSurfaceSourceMode('radar', sourceOverrides.radar)
   const selectedReleaseRoute =
     selectedGroup && selectedAlbumKey
@@ -2026,24 +2018,8 @@ function App() {
     : visibleMonthKeys.at(-1) ?? selectedMonthKey
   const selectedMonthDate = monthKeyToDate(effectiveMonthKey)
   const monthDays = buildCalendarDays(selectedMonthDate)
-  const monthReleases = filteredReleases.filter((item) => getMonthKey(item.dateValue) === effectiveMonthKey)
-  const monthUpcomingSignals = filteredUpcomingSignals.filter(
-    (item) => getMonthKey(item.dateValue) === effectiveMonthKey,
-  )
-  const monthMonthOnlyUpcomingRows = filteredUpcoming
-    .filter(
-      (item) =>
-        getUpcomingDatePrecisionValue(item) === 'month_only' && getUpcomingMonthKey(item) === effectiveMonthKey,
-    )
-    .sort(compareUpcomingSignals)
-  const calendarMonthFallbackSnapshot: CalendarMonthApiSnapshot = {
-    verifiedRows: monthReleases,
-    scheduledRows: monthUpcomingSignals,
-    monthOnlyRows: monthMonthOnlyUpcomingRows,
-  }
   const calendarMonthResource = useCalendarMonthResource({
     monthKey: effectiveMonthKey,
-    sourceMode: calendarMonthSourceMode,
   })
   const filteredCalendarMonthApiSnapshot = calendarMonthResource.snapshot
     ? filterCalendarMonthApiSnapshot(calendarMonthResource.snapshot, {
@@ -2056,10 +2032,11 @@ function App() {
         selectedMyTeamsOnly,
       })
     : null
-  const activeCalendarMonthSnapshot =
-    calendarMonthSourceMode === 'api' && calendarMonthResource.source === 'api' && filteredCalendarMonthApiSnapshot
-      ? filteredCalendarMonthApiSnapshot
-      : calendarMonthFallbackSnapshot
+  const activeCalendarMonthSnapshot = filteredCalendarMonthApiSnapshot ?? {
+    verifiedRows: [],
+    scheduledRows: [],
+    monthOnlyRows: [],
+  }
   const visibleMonthVerifiedRows = [...activeCalendarMonthSnapshot.verifiedRows].sort(compareMonthlyDashboardVerified)
   const visibleMonthScheduledRows = [...activeCalendarMonthSnapshot.scheduledRows].sort(compareMonthlyDashboardUpcoming)
   const visibleMonthMonthOnlyRows = [...activeCalendarMonthSnapshot.monthOnlyRows].sort(compareUpcomingSignals)
@@ -2169,45 +2146,21 @@ function App() {
     : copy.calendarQuickJumpUnavailable
   const monthlyHighlightEmptyCopy =
     visibleMonthMonthOnlyRows.length > 0 ? copy.monthlyHighlightUndatedOnly : copy.monthlyHighlightEmpty
-  const calendarSurfaceMessage =
-    calendarMonthSourceMode === 'api'
-      ? calendarMonthResource.source === 'api'
-        ? buildSurfaceStatusMessage({
-            language,
-            source: 'api',
-            errorCode: null,
-            traceId: calendarMonthResource.traceId,
-            baseMessage: copy.calendarBackendActive,
-          })
-        : calendarMonthResource.loading
-          ? buildSurfaceStatusMessage({
-              language,
-              source: 'json',
-              errorCode: null,
-              baseMessage: copy.calendarBackendLoading,
-            })
-          : calendarMonthResource.source === 'json_fallback'
-            ? buildSurfaceStatusMessage({
-                language,
-                source: 'json_fallback',
-                errorCode: calendarMonthResource.errorCode,
-                traceId: calendarMonthResource.traceId,
-                baseMessage:
-                  calendarMonthResource.errorCode === 'timeout'
-                    ? copy.calendarBackendTimeout
-                    : copy.calendarBackendFallback,
-              })
-            : buildSurfaceStatusMessage({
-                language,
-                source: 'json',
-                errorCode: null,
-                baseMessage: copy.calendarJsonPrimary,
-              })
-      : buildSurfaceStatusMessage({
+  const calendarSurfaceMessage = calendarMonthResource.source === 'api'
+    ? buildSurfaceStatusMessage({
+        language,
+        source: 'api',
+        errorCode: null,
+        traceId: calendarMonthResource.traceId,
+        baseMessage: calendarMonthResource.loading ? copy.calendarBackendLoading : copy.calendarBackendActive,
+      })
+    : buildSurfaceStatusMessage({
           language,
-          source: 'json',
-          errorCode: null,
-          baseMessage: copy.calendarJsonPrimary,
+          source: 'api_error',
+          errorCode: calendarMonthResource.errorCode,
+          traceId: calendarMonthResource.traceId,
+          baseMessage:
+            calendarMonthResource.errorCode === 'timeout' ? copy.calendarBackendTimeout : copy.calendarBackendFallback,
         })
   const radarSurfaceMessage =
     radarSourceMode === 'api'
@@ -7784,12 +7737,10 @@ async function fetchCalendarMonthApiSnapshot(
 
 function useCalendarMonthResource({
   monthKey,
-  sourceMode,
 }: {
   monthKey: string
-  sourceMode: CalendarMonthSourceMode
 }): CalendarMonthSurfaceResource {
-  const cachedSnapshot = sourceMode === 'api' ? calendarMonthApiSnapshotCache.get(monthKey) ?? null : null
+  const cachedSnapshot = calendarMonthApiSnapshotCache.get(monthKey) ?? null
   const [remoteState, setRemoteState] = useState<{
     monthKey: string
     snapshot: CalendarMonthApiSnapshot | null
@@ -7805,7 +7756,7 @@ function useCalendarMonthResource({
   }))
 
   useEffect(() => {
-    if (sourceMode !== 'api' || !monthKey) {
+    if (!monthKey) {
       return
     }
 
@@ -7876,32 +7827,20 @@ function useCalendarMonthResource({
       cancelled = true
       controller.abort()
     }
-  }, [cachedSnapshot, monthKey, sourceMode])
+  }, [cachedSnapshot, monthKey])
 
   const activeSnapshot =
-    sourceMode === 'api'
-      ? remoteState.monthKey === monthKey
-        ? remoteState.snapshot ?? cachedSnapshot ?? null
-        : cachedSnapshot
-      : null
-  const loading =
-    sourceMode === 'api' && remoteState.monthKey === monthKey && remoteState.snapshot === null && remoteState.loading
-  const errorCode = sourceMode === 'api' && remoteState.monthKey === monthKey ? remoteState.errorCode : null
-  const source: CalendarMonthSourceState =
-    sourceMode !== 'api'
-      ? 'json'
-      : activeSnapshot
-        ? 'api'
-        : errorCode
-          ? 'json_fallback'
-          : 'json'
+    remoteState.monthKey === monthKey ? remoteState.snapshot ?? cachedSnapshot ?? null : cachedSnapshot
+  const loading = remoteState.monthKey === monthKey && remoteState.snapshot === null && remoteState.loading
+  const errorCode = remoteState.monthKey === monthKey ? remoteState.errorCode : null
+  const source: CalendarMonthSourceState = errorCode ? 'api_error' : 'api'
 
   return {
     snapshot: activeSnapshot,
     source,
     loading,
     errorCode,
-    traceId: sourceMode === 'api' && remoteState.monthKey === monthKey ? remoteState.traceId : null,
+    traceId: remoteState.monthKey === monthKey ? remoteState.traceId : null,
   }
 }
 
@@ -9906,7 +9845,6 @@ function readSurfaceSourceOverridesFromLocation(): SurfaceSourceOverrides {
   return {
     entityDetail: readSurfaceSourceOverrideFromLocation('entityDetail') ?? undefined,
     releaseDetail: readSurfaceSourceOverrideFromLocation('releaseDetail') ?? undefined,
-    calendarMonth: readSurfaceSourceOverrideFromLocation('calendarMonth') ?? undefined,
     radar: readSurfaceSourceOverrideFromLocation('radar') ?? undefined,
   }
 }
