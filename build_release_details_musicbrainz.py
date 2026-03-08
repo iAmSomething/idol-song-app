@@ -6,6 +6,7 @@ from typing import Dict, List, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
 
 ROOT = Path(__file__).resolve().parent
+RELEASES_SNAPSHOT_PATH = ROOT / "web/src/data/releases.json"
 RELEASE_HISTORY_PATH = ROOT / "web/src/data/releaseHistory.json"
 OUTPUT_PATH = ROOT / "web/src/data/releaseDetails.json"
 OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
@@ -97,6 +98,42 @@ def iter_release_items(history_rows: List[Dict]) -> List[Dict]:
             stream = optional_text(release.get("stream"))
             release_kind = optional_text(release.get("release_kind"))
             if not title or not release_date or stream not in {"song", "album"} or release_kind not in {"single", "album", "ep"}:
+                continue
+
+            items.append(
+                {
+                    "group": row["group"],
+                    "release_title": title,
+                    "release_date": release_date,
+                    "stream": stream,
+                    "release_kind": release_kind,
+                    "release_group_id": extract_release_group_id(release.get("source")),
+                }
+            )
+
+    items.sort(
+        key=lambda item: (
+            item["group"].casefold(),
+            item["release_date"],
+            item["stream"],
+            item["release_title"].casefold(),
+        )
+    )
+    return items
+
+
+def iter_latest_snapshot_items(rows: List[Dict]) -> List[Dict]:
+    items: List[Dict] = []
+    for row in rows:
+        for key, stream in (("latest_song", "song"), ("latest_album", "album")):
+            release = row.get(key)
+            if not isinstance(release, dict):
+                continue
+
+            title = optional_text(release.get("title"))
+            release_date = optional_text(release.get("date"))
+            release_kind = optional_text(release.get("release_kind"))
+            if not title or not release_date or release_kind not in {"single", "album", "ep"}:
                 continue
 
             items.append(
@@ -320,10 +357,21 @@ def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tup
     return detail, bool(override)
 
 
-def build_coverage_report(items: List[Dict], details_before: List[Dict], details_after: List[Dict]) -> Dict:
+def build_coverage_report(
+    latest_snapshot_items: List[Dict],
+    full_catalog_items: List[Dict],
+    details_before: List[Dict],
+    details_after: List[Dict],
+    applied_overrides: int,
+    relaxed_match_count: int,
+) -> Dict:
     history_keys = {
         get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
-        for item in items
+        for item in full_catalog_items
+    }
+    latest_snapshot_keys = {
+        get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
+        for item in latest_snapshot_items
     }
     before_keys = {
         get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"])
@@ -334,9 +382,9 @@ def build_coverage_report(items: List[Dict], details_before: List[Dict], details
         for row in details_after
     }
 
-    older_items = [item for item in items if item["release_date"] <= "2023-12-31"]
-    missing_before = [item for item in items if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) not in before_keys]
-    missing_after = [item for item in items if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) not in after_keys]
+    older_items = [item for item in full_catalog_items if item["release_date"] <= "2023-12-31"]
+    missing_before = [item for item in full_catalog_items if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) not in before_keys]
+    missing_after = [item for item in full_catalog_items if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) not in after_keys]
     missing_before_older = [
         item
         for item in older_items
@@ -357,10 +405,34 @@ def build_coverage_report(items: List[Dict], details_before: List[Dict], details
     exact_preserved = len(
         [
             item
-            for item in items
+            for item in full_catalog_items
             if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) in before_keys
         ]
     )
+    grouped_input_counts: Dict[str, int] = {}
+    for item in full_catalog_items:
+        grouped_input_counts[item["group"]] = grouped_input_counts.get(item["group"], 0) + 1
+    sample_multi_release_entities = [
+        {"group": group, "release_rows": count}
+        for group, count in sorted(
+            grouped_input_counts.items(),
+            key=lambda entry: (-entry[1], entry[0].casefold()),
+        )[:10]
+    ]
+    applied_override_rows = [
+        row
+        for row in details_after
+        if "release_detail_overrides.json" in row.get("notes", "")
+    ]
+    override_sample_matches = [
+        {
+            "group": row["group"],
+            "release_title": row["release_title"],
+            "release_date": row["release_date"],
+            "stream": row["stream"],
+        }
+        for row in applied_override_rows[:10]
+    ]
     legacy_spot_check_groups = ["EXO", "BTS", "BLACKPINK", "TWICE", "WJSN", "YUJU"]
     legacy_spot_checks: List[Dict] = []
     for group in legacy_spot_check_groups:
@@ -381,7 +453,14 @@ def build_coverage_report(items: List[Dict], details_before: List[Dict], details
         )
 
     return {
-        "history_flattened_rows": len(items),
+        "latest_snapshot_input_rows": len(latest_snapshot_items),
+        "latest_snapshot_unique_keys": len(latest_snapshot_keys),
+        "full_catalog_input_rows": len(full_catalog_items),
+        "full_catalog_unique_keys": len(history_keys),
+        "historical_input_gain_rows": len(full_catalog_items) - len(latest_snapshot_items),
+        "entities_with_multiple_releases_in_input": sum(1 for count in grouped_input_counts.values() if count > 1),
+        "sample_multi_release_entities": sample_multi_release_entities,
+        "history_flattened_rows": len(full_catalog_items),
         "detail_rows_before": len(details_before),
         "detail_rows_after": len(details_after),
         "history_keys": len(history_keys),
@@ -404,6 +483,9 @@ def build_coverage_report(items: List[Dict], details_before: List[Dict], details
             for row in details_after
             if optional_text(row.get("youtube_video_url")) or optional_text(row.get("youtube_video_id"))
         ),
+        "override_rows_total": len(load_detail_overrides()),
+        "applied_overrides": applied_overrides,
+        "override_sample_matches": override_sample_matches,
         "remaining_no_detail_rows": missing_after,
         "seed_only_rows": [
             {
@@ -416,12 +498,16 @@ def build_coverage_report(items: List[Dict], details_before: List[Dict], details
             for row in seeded_rows
         ],
         "legacy_spot_checks": legacy_spot_checks,
+        "relaxed_existing_matches": relaxed_match_count,
+        "preserved_existing_detail_rows_total": exact_preserved + relaxed_match_count,
     }
 
 
 def main() -> None:
+    latest_snapshot_rows = load_rows(RELEASES_SNAPSHOT_PATH)
     history_rows = load_rows(RELEASE_HISTORY_PATH)
     details_before = load_rows(OUTPUT_PATH) if OUTPUT_PATH.exists() else []
+    latest_snapshot_items = iter_latest_snapshot_items(latest_snapshot_rows)
     items = iter_release_items(history_rows)
     existing_details = {
         get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
@@ -470,11 +556,13 @@ def main() -> None:
 
     OUTPUT_PATH.write_text(json.dumps(details_after, ensure_ascii=False, indent=2) + "\n")
 
-    report = build_coverage_report(items, details_before, details_after)
-    report["applied_overrides"] = applied_overrides
-    report["relaxed_existing_matches"] = relaxed_match_count
-    report["preserved_existing_detail_rows_total"] = (
-        report["preserved_exact_key_rows"] + report["relaxed_existing_matches"]
+    report = build_coverage_report(
+        latest_snapshot_items,
+        items,
+        details_before,
+        details_after,
+        applied_overrides,
+        relaxed_match_count,
     )
     AUDIT_OUTPUT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
 
