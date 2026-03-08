@@ -51,11 +51,42 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 
 - `/v1/*` read endpoint는 공통 success envelope `meta + data`를 사용한다.
 - success `meta`에는 최소 `request_id`, `generated_at`, `timezone`, `route`, `source`가 포함된다.
-- error는 공통 `meta + error` shape로 내려가고 code는 `invalid_request`, `not_found`, `disallowed_origin`, `stale_projection`, `internal_error`를 기본으로 쓴다.
+- error는 공통 `meta + error` shape로 내려가고 code는 `invalid_request`, `not_found`, `disallowed_origin`, `rate_limited`, `stale_projection`, `internal_error`를 기본으로 쓴다.
 - helper entrypoint는 `backend/src/lib/api.ts`다.
 - caller가 `X-Request-Id`를 보내면 backend는 같은 값을 `meta.request_id`와 `X-Request-Id` response header에 그대로 되돌린다.
 - caller가 보내지 않으면 backend가 `api-<uuid>` request id를 생성한다.
 - runtime 측정 / shadow report도 각 request의 sent/received request id를 artifact에 함께 남긴다.
+
+## Public Read Rate Limits
+
+정책 문서는 아래를 기준으로 본다.
+
+- `docs/specs/backend/public-read-rate-limit-policy.md`
+
+현재 runtime은 public read endpoint에 in-memory fixed-window limiter를 붙인다.
+
+- `search`
+- `calendarMonth`
+- `entityDetail`
+- `releaseDetail`
+- `radar`
+
+기본 window는 `60초`다.
+
+- development
+  - `search 600`, `calendarMonth 300`, `entityDetail 300`, `releaseDetail 300`, `radar 120`
+- preview
+  - `search 240`, `calendarMonth 180`, `entityDetail 240`, `releaseDetail 240`, `radar 90`
+- production
+  - `search 180`, `calendarMonth 120`, `entityDetail 180`, `releaseDetail 180`, `radar 60`
+
+over-limit response는 `429 rate_limited`이며 아래 header를 같이 반환한다.
+
+- `RateLimit-Limit`
+- `RateLimit-Remaining`
+- `RateLimit-Reset`
+- `Retry-After`
+- `X-RateLimit-Bucket`
 
 ## Normalization Helpers
 

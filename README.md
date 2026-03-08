@@ -232,7 +232,7 @@ npm run build
 - 두 경로 모두 backend `npm ci`, `npm run build`, `npm run test`를 선행한 뒤 Railway CLI deploy를 실행
 - GitHub Environment `preview`, `production`에 `RAILWAY_TOKEN`, `RAILWAY_PROJECT_ID`, `RAILWAY_ENVIRONMENT_ID`, `RAILWAY_SERVICE_ID`, `BACKEND_PUBLIC_URL`를 설정해야 함
 
-backend deploy topology와 rehearsal 규칙은 `docs/specs/backend/preview-staging-backend-path.md`, 운영 entrypoint는 `backend/README.md`에 정리돼 있습니다.
+backend deploy topology와 rehearsal 규칙은 `docs/specs/backend/preview-staging-backend-path.md`, public read rate-limit 정책은 `docs/specs/backend/public-read-rate-limit-policy.md`, 운영 entrypoint는 `backend/README.md`에 정리돼 있습니다.
 
 ## 현재 방향
 

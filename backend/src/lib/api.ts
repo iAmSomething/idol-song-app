@@ -4,6 +4,7 @@ export type ReadApiErrorCode =
   | 'invalid_request'
   | 'not_found'
   | 'disallowed_origin'
+  | 'rate_limited'
   | 'timeout'
   | 'stale_projection'
   | 'internal_error'

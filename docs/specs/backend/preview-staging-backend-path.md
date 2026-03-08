@@ -98,6 +98,7 @@ preview에서 달라져도 되는 것:
 - 실험용 entity / release seed 일부
 - worker cadence
 - log verbosity
+- rate-limit threshold
 - alert threshold
 - deploy frequency
 
@@ -111,6 +112,7 @@ preview에서 달라지면 안 되는 것:
 - date precision semantics
 - title-track / MV / service-link meaning
 - request-id propagation policy (`X-Request-Id` echo)
+- `429 rate_limited` envelope / header contract
 - fallback / error contract
 
 즉 preview는 데이터 품질이나 시점은 production보다 느슨할 수 있지만, payload shape와 제품 의미론은 production과 동일해야 한다.

@@ -5,6 +5,13 @@ import Fastify, { type FastifyInstance, type FastifyReply } from 'fastify';
 import { loadConfig, type AppConfig } from './config.js';
 import { ReadApiError, buildReadErrorEnvelope } from './lib/api.js';
 import { closeDbPool, createDbPool, type DbPool, withFailFastReadTimeouts } from './lib/db.js';
+import {
+  InMemoryFixedWindowRateLimiter,
+  applyRateLimitHeaders,
+  buildRateLimitMeta,
+  resolveRateLimitIdentifier,
+  resolveReadRateLimitBucket,
+} from './lib/rateLimit.js';
 import { registerCalendarRoutes } from './routes/calendar.js';
 import { registerEntityRoutes } from './routes/entities.js';
 import { registerHealthRoute } from './routes/health.js';
@@ -21,7 +28,8 @@ export type BuildAppOptions = {
 
 const ACCESS_CONTROL_ALLOW_METHODS = 'GET,OPTIONS';
 const DEFAULT_ACCESS_CONTROL_ALLOW_HEADERS = 'Content-Type, X-Request-Id';
-const ACCESS_CONTROL_EXPOSE_HEADERS = 'X-Request-Id';
+const ACCESS_CONTROL_EXPOSE_HEADERS =
+  'X-Request-Id, RateLimit-Limit, RateLimit-Remaining, RateLimit-Reset, Retry-After, X-RateLimit-Bucket';
 const REQUEST_ID_HEADER = 'x-request-id';
 
 function createRequestId(): string {
@@ -84,6 +92,7 @@ function applyCorsHeaders(reply: FastifyReply, origin: string, requestedHeaders:
 export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   const config = options.config ?? loadConfig();
   const db = withFailFastReadTimeouts(options.db ?? createDbPool(config));
+  const rateLimiter = new InMemoryFixedWindowRateLimiter();
   const app = Fastify({
     genReqId: createRequestId,
     logger: true,
@@ -93,27 +102,58 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   app.addHook('onRequest', async (request, reply) => {
     const origin = getRequestOrigin(request);
 
-    if (!origin) {
+    if (origin) {
+      appendVaryHeader(reply, 'Origin');
+
+      if (!config.allowedWebOrigins.includes(origin)) {
+        return reply
+          .code(403)
+          .send(
+            buildReadErrorEnvelope(request, config.appTimezone, 'disallowed_origin', 'Origin is not allowed.', {
+              app_env: config.appEnv,
+              origin,
+            }),
+          );
+      }
+
+      applyCorsHeaders(reply, origin, getRequestedAccessControlHeaders(request));
+
+      if (request.method === 'OPTIONS') {
+        return reply.code(204).send();
+      }
+    }
+
+    if (request.method !== 'GET') {
       return;
     }
 
-    appendVaryHeader(reply, 'Origin');
+    const bucketName = resolveReadRateLimitBucket(request.raw.url ?? request.url);
 
-    if (!config.allowedWebOrigins.includes(origin)) {
-      return reply
-        .code(403)
-        .send(
-          buildReadErrorEnvelope(request, config.appTimezone, 'disallowed_origin', 'Origin is not allowed.', {
-            app_env: config.appEnv,
-            origin,
-          }),
-        );
+    if (!bucketName) {
+      return;
     }
 
-    applyCorsHeaders(reply, origin, getRequestedAccessControlHeaders(request));
+    const identifier = resolveRateLimitIdentifier(request);
+    const decision = rateLimiter.consume(bucketName, identifier.identifier, config.readRateLimits[bucketName]);
 
-    if (request.method === 'OPTIONS') {
-      return reply.code(204).send();
+    applyRateLimitHeaders(reply, decision);
+
+    if (!decision.allowed) {
+      request.log.warn(
+        {
+          request_id: request.id,
+          rate_limit_bucket: decision.bucketName,
+          rate_limit_identifier_kind: decision.identifierKind,
+          rate_limit_limit: decision.limit,
+          rate_limit_retry_after_seconds: decision.retryAfterSeconds,
+        },
+        'Public read endpoint rate limit exceeded',
+      );
+      return reply
+        .code(429)
+        .send(
+          buildReadErrorEnvelope(request, config.appTimezone, 'rate_limited', 'Rate limit exceeded.', buildRateLimitMeta(decision)),
+        );
     }
   });
 
