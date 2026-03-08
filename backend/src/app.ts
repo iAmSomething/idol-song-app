@@ -1,4 +1,4 @@
-import Fastify, { type FastifyInstance } from 'fastify';
+import Fastify, { type FastifyInstance, type FastifyReply } from 'fastify';
 
 import { loadConfig, type AppConfig } from './config.js';
 import { ReadApiError, buildReadErrorEnvelope } from './lib/api.js';
@@ -17,11 +17,93 @@ export type BuildAppOptions = {
   db?: DbPool;
 };
 
+const ACCESS_CONTROL_ALLOW_METHODS = 'GET,OPTIONS';
+const DEFAULT_ACCESS_CONTROL_ALLOW_HEADERS = 'Content-Type';
+
+function appendVaryHeader(reply: FastifyReply, value: string): void {
+  const current = reply.getHeader('Vary');
+
+  if (typeof current !== 'string' || current.length === 0) {
+    reply.header('Vary', value);
+    return;
+  }
+
+  const tokens = current
+    .split(',')
+    .map((token) => token.trim())
+    .filter((token) => token.length > 0);
+
+  if (!tokens.includes(value)) {
+    reply.header('Vary', [...tokens, value].join(', '));
+  }
+}
+
+function getRequestOrigin(request: { headers: Record<string, unknown> }): string | null {
+  const raw = request.headers.origin;
+
+  if (typeof raw !== 'string') {
+    return null;
+  }
+
+  const normalized = raw.trim();
+  return normalized.length > 0 ? normalized : null;
+}
+
+function getRequestedAccessControlHeaders(request: { headers: Record<string, unknown> }): string {
+  const raw = request.headers['access-control-request-headers'];
+
+  if (Array.isArray(raw)) {
+    return raw.join(', ');
+  }
+
+  if (typeof raw === 'string' && raw.trim().length > 0) {
+    return raw.trim();
+  }
+
+  return DEFAULT_ACCESS_CONTROL_ALLOW_HEADERS;
+}
+
+function applyCorsHeaders(reply: FastifyReply, origin: string, requestedHeaders: string): void {
+  reply.header('Access-Control-Allow-Origin', origin);
+  reply.header('Access-Control-Allow-Methods', ACCESS_CONTROL_ALLOW_METHODS);
+  reply.header('Access-Control-Allow-Headers', requestedHeaders);
+  reply.header('Access-Control-Max-Age', '600');
+  appendVaryHeader(reply, 'Origin');
+  appendVaryHeader(reply, 'Access-Control-Request-Headers');
+}
+
 export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   const config = options.config ?? loadConfig();
   const db = options.db ?? createDbPool(config);
   const app = Fastify({
     logger: true,
+  });
+
+  app.addHook('onRequest', async (request, reply) => {
+    const origin = getRequestOrigin(request);
+
+    if (!origin) {
+      return;
+    }
+
+    appendVaryHeader(reply, 'Origin');
+
+    if (!config.allowedWebOrigins.includes(origin)) {
+      return reply
+        .code(403)
+        .send(
+          buildReadErrorEnvelope(request, config.appTimezone, 'disallowed_origin', 'Origin is not allowed.', {
+            app_env: config.appEnv,
+            origin,
+          }),
+        );
+    }
+
+    applyCorsHeaders(reply, origin, getRequestedAccessControlHeaders(request));
+
+    if (request.method === 'OPTIONS') {
+      return reply.code(204).send();
+    }
   });
 
   app.setErrorHandler((error, request, reply) => {

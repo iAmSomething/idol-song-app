@@ -3,6 +3,7 @@ import type { FastifyRequest } from 'fastify';
 export type ReadApiErrorCode =
   | 'invalid_request'
   | 'not_found'
+  | 'disallowed_origin'
   | 'stale_projection'
   | 'internal_error'
   | 'not_implemented';

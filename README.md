@@ -186,6 +186,7 @@ npm run dev
 - search surface만 backend로 붙여보려면 `VITE_API_BASE_URL=http://localhost:3213 VITE_SEARCH_SOURCE=api npm run dev`
 - calendar/month surface source switch만 열어보려면 `VITE_API_BASE_URL=http://localhost:3213 VITE_CALENDAR_MONTH_SOURCE=api npm run dev`
 - radar surface source switch만 열어보려면 `VITE_API_BASE_URL=http://localhost:3213 VITE_RADAR_SOURCE=api npm run dev`
+- browser에서 separate API base URL을 쓸 때 backend는 `APP_ENV`와 `WEB_ALLOWED_ORIGINS`를 같이 맞춰야 한다. production 기본 origin은 `https://iamsomething.github.io`다.
 - coexistence window 동안 `?searchSource=api`, `?entityDetailSource=api`, `?releaseDetailSource=api`, `?calendarMonthSource=api`, `?radarSource=api` 같은 query override를 붙여 local source 선택을 강제로 바꿀 수 있음
 - `VITE_PRIMARY_SURFACE_SOURCE=api`를 켜면 cut-over surface의 기본 read path는 backend가 되고, committed JSON은 fallback으로만 남는다.
 - `web/.env.example`에는 Pages / preview rehearsal에서 쓰는 source env baseline이 들어 있다.

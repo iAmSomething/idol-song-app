@@ -51,7 +51,7 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 
 - `/v1/*` read endpoint는 공통 success envelope `meta + data`를 사용한다.
 - success `meta`에는 최소 `request_id`, `generated_at`, `timezone`, `route`, `source`가 포함된다.
-- error는 공통 `meta + error` shape로 내려가고 code는 `invalid_request`, `not_found`, `stale_projection`, `internal_error`를 기본으로 쓴다.
+- error는 공통 `meta + error` shape로 내려가고 code는 `invalid_request`, `not_found`, `disallowed_origin`, `stale_projection`, `internal_error`를 기본으로 쓴다.
 - helper entrypoint는 `backend/src/lib/api.ts`다.
 
 ## Normalization Helpers
@@ -94,6 +94,17 @@ preview에서 달라지면 안 되는 것:
 - endpoint shape
 - field type / enum domain
 - date precision / MV / service-link semantics
+
+## Web CORS / Allowed Origins
+
+- backend는 browser cross-origin read를 명시적으로 허용한다.
+- 기본 production web origin은 `https://iamsomething.github.io`다.
+- `APP_ENV=development`에서는 위 origin에 더해 `localhost/127.0.0.1`의 Vite 기본 포트(`4173`, `5173`)를 허용한다.
+- `APP_ENV=preview`와 `APP_ENV=production`에서는 기본적으로 `https://iamsomething.github.io`만 허용하고, 추가 web consumer가 있으면 `WEB_ALLOWED_ORIGINS`에 comma-separated origin list로 넣는다.
+- `WEB_ALLOWED_ORIGINS`에는 full page URL이 아니라 origin을 넣는 것이 원칙이지만, 실수로 path가 붙어도 loader가 origin만 추출한다.
+- `Origin` 헤더가 없는 서버-사이드/CLI 요청은 그대로 허용한다.
+- 허용되지 않은 browser origin은 `403 disallowed_origin`으로 명시적으로 거절한다.
+- allowed origin request는 `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods`, `Access-Control-Allow-Headers`, `Access-Control-Max-Age`, `Vary: Origin`을 명시적으로 반환한다.
 
 ## JSON Baseline Import
 
