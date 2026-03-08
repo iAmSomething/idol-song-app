@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-  ActivityIndicator,
   Modal,
   Pressable,
   ScrollView,
@@ -9,6 +8,10 @@ import {
   View,
 } from 'react-native';
 
+import {
+  InlineFeedbackNotice,
+  ScreenFeedbackState,
+} from '../../src/components/feedback/FeedbackState';
 import {
   buildCalendarMonthGrid,
   resolveInitialCalendarSelection,
@@ -274,25 +277,27 @@ export default function CalendarTabScreen() {
 
   if (state.kind === 'loading') {
     return (
-      <View style={styles.stateContainer}>
-        <ActivityIndicator color={theme.colors.text.brand} />
-        <Text style={styles.eyebrow}>DATASET LOADING</Text>
-        <Text style={styles.title}>Calendar</Text>
-        <Text style={styles.body}>현재 월 데이터와 예정 신호를 불러오는 중입니다.</Text>
-      </View>
+      <ScreenFeedbackState
+        body="현재 월 데이터와 예정 신호를 불러오는 중입니다."
+        eyebrow="DATASET LOADING"
+        title="Calendar"
+        variant="loading"
+      />
     );
   }
 
   if (state.kind === 'error') {
     return (
-      <View style={styles.stateContainer}>
-        <Text style={styles.eyebrow}>LOAD ERROR</Text>
-        <Text style={styles.title}>Calendar</Text>
-        <Text style={styles.body}>{state.message}</Text>
-        <Pressable style={styles.retryButton} onPress={() => setReloadCount((count) => count + 1)}>
-          <Text style={styles.retryButtonLabel}>다시 시도</Text>
-        </Pressable>
-      </View>
+      <ScreenFeedbackState
+        action={{
+          label: '다시 시도',
+          onPress: () => setReloadCount((count) => count + 1),
+        }}
+        body={state.message}
+        eyebrow="LOAD ERROR"
+        title="Calendar"
+        variant="error"
+      />
     );
   }
 
@@ -538,9 +543,9 @@ export default function CalendarTabScreen() {
             </View>
 
             {state.kind === 'empty' ? (
-              <Text style={styles.body}>
-                현재 dataset source에는 {formatMonthLabel(filteredSnapshot.month)} 기준 발매나 예정 컴백이 없습니다.
-              </Text>
+              <InlineFeedbackNotice
+                body={`현재 dataset source에는 ${formatMonthLabel(filteredSnapshot.month)} 기준 발매나 예정 컴백이 없습니다.`}
+              />
             ) : null}
           </View>
         ) : null}
@@ -554,7 +559,7 @@ export default function CalendarTabScreen() {
             month-only 예정 신호는 날짜 셀에 넣지 않고 월 컨텍스트 버킷으로 유지합니다.
           </Text>
           {filterMode === 'releases' ? (
-            <Text style={styles.body}>현재 필터에서는 month-only 예정 신호를 숨깁니다.</Text>
+            <InlineFeedbackNotice body="현재 필터에서는 month-only 예정 신호를 숨깁니다." />
           ) : filteredSnapshot.monthOnlyUpcoming.length ? (
             filteredSnapshot.monthOnlyUpcoming.map((event) => (
               <View key={event.id} style={styles.row}>
@@ -564,7 +569,7 @@ export default function CalendarTabScreen() {
               </View>
             ))
           ) : (
-            <Text style={styles.body}>현재 월에 month-only 예정 신호가 없습니다.</Text>
+            <InlineFeedbackNotice body="현재 월에 month-only 예정 신호가 없습니다." />
           )}
         </View>
       </ScrollView>
@@ -612,7 +617,7 @@ export default function CalendarTabScreen() {
                 bounces={false}
               >
                 {selectedDay.isEmpty ? (
-                  <Text style={styles.body}>이 날짜에는 등록된 일정이 없습니다.</Text>
+                  <InlineFeedbackNotice body="이 날짜에는 등록된 일정이 없습니다." />
                 ) : (
                   <>
                     {selectedDay.releases.length ? (

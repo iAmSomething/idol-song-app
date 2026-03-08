@@ -1,7 +1,6 @@
 import { useRouter } from 'expo-router';
 import React, { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import {
-  ActivityIndicator,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -10,6 +9,10 @@ import {
   View,
 } from 'react-native';
 
+import {
+  InlineFeedbackNotice,
+  ScreenFeedbackState,
+} from '../../src/components/feedback/FeedbackState';
 import {
   createSelectorContext,
   selectSearchResults,
@@ -189,25 +192,27 @@ export default function SearchTabScreen() {
 
   if (state.kind === 'loading') {
     return (
-      <View style={styles.stateContainer}>
-        <ActivityIndicator color={theme.colors.text.brand} />
-        <Text style={styles.eyebrow}>DATASET LOADING</Text>
-        <Text style={styles.title}>Search</Text>
-        <Text style={styles.body}>검색 대상 팀, 발매, 예정 데이터를 불러오는 중입니다.</Text>
-      </View>
+      <ScreenFeedbackState
+        body="검색 대상 팀, 발매, 예정 데이터를 불러오는 중입니다."
+        eyebrow="DATASET LOADING"
+        title="Search"
+        variant="loading"
+      />
     );
   }
 
   if (state.kind === 'error') {
     return (
-      <View style={styles.stateContainer}>
-        <Text style={styles.eyebrow}>LOAD ERROR</Text>
-        <Text style={styles.title}>Search</Text>
-        <Text style={styles.body}>{state.message}</Text>
-        <Pressable style={styles.retryButton} onPress={() => setReloadCount((count) => count + 1)}>
-          <Text style={styles.retryButtonLabel}>다시 시도</Text>
-        </Pressable>
-      </View>
+      <ScreenFeedbackState
+        action={{
+          label: '다시 시도',
+          onPress: () => setReloadCount((count) => count + 1),
+        }}
+        body={state.message}
+        eyebrow="LOAD ERROR"
+        title="Search"
+        variant="error"
+      />
     );
   }
 
@@ -321,7 +326,7 @@ export default function SearchTabScreen() {
                 ))}
               </View>
             ) : (
-              <Text style={styles.body}>최근 검색이 없습니다.</Text>
+              <InlineFeedbackNotice body="최근 검색이 없습니다." />
             )}
           </View>
 
@@ -354,7 +359,7 @@ export default function SearchTabScreen() {
           </View>
 
           {activeRows.length === 0 ? (
-            <Text style={styles.body}>검색 결과가 없습니다.</Text>
+            <InlineFeedbackNotice body="검색 결과가 없습니다." />
           ) : null}
 
           {activeSegment === 'entities'
