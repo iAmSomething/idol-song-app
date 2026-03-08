@@ -1,20 +1,16 @@
 import json
-import time
 import unicodedata
-from collections import Counter
+from datetime import date
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
 
-import requests
-
 ROOT = Path(__file__).resolve().parent
-RELEASES_PATH = ROOT / "web/src/data/releases.json"
+RELEASE_HISTORY_PATH = ROOT / "web/src/data/releaseHistory.json"
 OUTPUT_PATH = ROOT / "web/src/data/releaseDetails.json"
 OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
-USER_AGENT = "idol-song-app/1.0 (https://github.com/iAmSomething/idol-song-app)"
-REQUEST_DELAY_SECONDS = 0.35
-MAX_RETRIES = 4
+AUDIT_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_report.json"
+
 YOUTUBE_VIDEO_STATUS_RELATION = "relation_match"
 YOUTUBE_VIDEO_STATUS_MANUAL = "manual_override"
 YOUTUBE_VIDEO_STATUS_REVIEW = "needs_review"
@@ -22,98 +18,211 @@ YOUTUBE_VIDEO_STATUS_NO_MV = "no_mv"
 YOUTUBE_VIDEO_STATUS_UNRESOLVED = "unresolved"
 
 
-def get_json(session: requests.Session, url: str, params: Dict[str, object]) -> Dict:
-    for attempt in range(MAX_RETRIES):
-        try:
-            response = session.get(url, params={**params, "fmt": "json"}, timeout=20)
-            response.raise_for_status()
-            time.sleep(REQUEST_DELAY_SECONDS)
-            return response.json()
-        except Exception:
-            if attempt == MAX_RETRIES - 1:
-                raise
-            time.sleep((attempt + 1) * 1.2)
-    raise RuntimeError("unreachable")
+def optional_text(value: object) -> Optional[str]:
+    if not isinstance(value, str):
+        return None
+
+    stripped = value.strip()
+    return stripped or None
 
 
-def iter_release_items(rows: List[Dict]) -> List[Dict]:
-    items: List[Dict] = []
-    for row in rows:
-        for key, stream in (("latest_song", "song"), ("latest_album", "album")):
-            release = row.get(key)
-            if not release:
-                continue
-            items.append(
-                {
-                    "group": row["group"],
-                    "release_title": release["title"],
-                    "release_date": release["date"],
-                    "stream": stream,
-                    "release_kind": release["release_kind"],
-                    "release_group_id": release["source"].rsplit("/", 1)[-1],
-                }
-            )
-    return items
+def normalize_title(value: str) -> str:
+    normalized = unicodedata.normalize("NFKC", value.casefold())
+    return "".join(character for character in normalized if character.isalnum())
+
+
+def extract_youtube_video_id(resource: str) -> Optional[str]:
+    parsed = urlparse(resource)
+    host = parsed.netloc.lower()
+    segments = [segment for segment in parsed.path.split("/") if segment]
+
+    if "youtu.be" in host:
+        return parsed.path.strip("/") or None
+    if "youtube.com" in host and "music.youtube.com" not in host:
+        watch_id = parse_qs(parsed.query).get("v", [None])[0]
+        if watch_id:
+            return watch_id
+        if "shorts" in segments or "embed" in segments:
+            for index, segment in enumerate(segments):
+                if segment in {"shorts", "embed"} and index + 1 < len(segments):
+                    return segments[index + 1]
+    return None
+
+
+def build_youtube_video_url(video_id: str) -> str:
+    return f"https://www.youtube.com/watch?v={video_id}"
+
+
+def extract_release_group_id(resource: Optional[str]) -> Optional[str]:
+    resource_text = optional_text(resource)
+    if not resource_text:
+        return None
+
+    parsed = urlparse(resource_text)
+    segments = [segment for segment in parsed.path.split("/") if segment]
+    if len(segments) >= 2 and segments[-2] == "release-group":
+        return segments[-1]
+    return None
 
 
 def get_detail_key(group: str, release_title: str, release_date: str, stream: str) -> str:
     return "::".join([group, release_title, release_date, stream]).lower()
 
 
+def get_relaxed_detail_key(group: str, release_title: str, stream: str) -> str:
+    return "::".join([group, normalize_title(release_title), stream]).lower()
+
+
+def load_rows(path: Path) -> List[Dict]:
+    with path.open() as handle:
+        return json.load(handle)
+
+
 def load_detail_overrides() -> Dict[str, Dict]:
     if not OVERRIDES_PATH.exists():
         return {}
 
-    with OVERRIDES_PATH.open() as handle:
-        rows = json.load(handle)
-
     return {
         get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
-        for row in rows
+        for row in load_rows(OVERRIDES_PATH)
     }
 
 
-def score_release(release: Dict, title: str, release_date: str) -> int:
-    score = 0
-    if release.get("title") == title:
-        score += 40
-    if release.get("date") == release_date:
-        score += 30
-    if release.get("status") == "Official":
-        score += 20
-    if release.get("country") == "XW":
-        score += 10
-    elif release.get("country") == "KR":
-        score += 6
-    if release.get("packaging") == "None":
-        score += 2
-    return score
+def iter_release_items(history_rows: List[Dict]) -> List[Dict]:
+    items: List[Dict] = []
+    for row in history_rows:
+        for release in row.get("releases", []):
+            title = optional_text(release.get("title"))
+            release_date = optional_text(release.get("date"))
+            stream = optional_text(release.get("stream"))
+            release_kind = optional_text(release.get("release_kind"))
+            if not title or not release_date or stream not in {"song", "album"} or release_kind not in {"single", "album", "ep"}:
+                continue
+
+            items.append(
+                {
+                    "group": row["group"],
+                    "release_title": title,
+                    "release_date": release_date,
+                    "stream": stream,
+                    "release_kind": release_kind,
+                    "release_group_id": extract_release_group_id(release.get("source")),
+                }
+            )
+
+    items.sort(
+        key=lambda item: (
+            item["group"].casefold(),
+            item["release_date"],
+            item["stream"],
+            item["release_title"].casefold(),
+        )
+    )
+    return items
 
 
-def select_candidate_releases(releases: List[Dict], title: str, release_date: str) -> List[Dict]:
-    return sorted(
-        releases,
-        key=lambda release: score_release(release, title, release_date),
-        reverse=True,
+def normalize_tracks(tracks: object) -> List[Dict]:
+    normalized_tracks: List[Dict] = []
+    for track in tracks or []:
+        if not isinstance(track, dict):
+            continue
+
+        order = track.get("order")
+        title = optional_text(track.get("title"))
+        if not isinstance(order, int) or order <= 0 or not title:
+            continue
+
+        normalized_track = {"order": order, "title": title}
+        if isinstance(track.get("is_title_track"), bool):
+            normalized_track["is_title_track"] = track["is_title_track"]
+        normalized_tracks.append(normalized_track)
+
+    return normalized_tracks
+
+
+def build_placeholder_note(item: Dict) -> str:
+    return (
+        "Historical release-detail seed generated from releaseHistory.json. "
+        "Detailed track and service metadata remain unresolved."
     )
 
 
-def extract_tracks(release: Dict) -> List[Dict]:
-    tracks: List[Dict] = []
-    order = 1
-    for medium in release.get("media", []):
-        for track in medium.get("tracks", []):
-            title = track.get("title") or track.get("recording", {}).get("title")
-            if not title:
-                continue
-            tracks.append({"order": order, "title": title})
-            order += 1
-    return tracks
+def build_empty_detail(item: Dict) -> Dict:
+    return {
+        "group": item["group"],
+        "release_title": item["release_title"],
+        "release_date": item["release_date"],
+        "stream": item["stream"],
+        "release_kind": item["release_kind"],
+        "tracks": [],
+        "spotify_url": None,
+        "youtube_music_url": None,
+        "youtube_video_url": None,
+        "youtube_video_id": None,
+        "youtube_video_status": YOUTUBE_VIDEO_STATUS_UNRESOLVED,
+        "youtube_video_provenance": None,
+        "notes": build_placeholder_note(item),
+    }
 
 
-def normalize_title(value: str) -> str:
-    normalized = unicodedata.normalize("NFKC", value.casefold())
-    return "".join(character for character in normalized if character.isalnum())
+def parse_iso_date(value: str) -> Optional[date]:
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def select_relaxed_existing_detail(item: Dict, candidates: List[Dict]) -> Optional[Dict]:
+    item_date = parse_iso_date(item["release_date"])
+    if item_date is None:
+        return None
+
+    best_match: Optional[Dict] = None
+    best_distance: Optional[int] = None
+    for candidate in candidates:
+        candidate_date = parse_iso_date(candidate["release_date"])
+        if candidate_date is None:
+            continue
+
+        distance = abs((item_date - candidate_date).days)
+        if best_distance is None or distance < best_distance:
+            best_match = candidate
+            best_distance = distance
+
+    if best_distance is None or best_distance > 7:
+        return None
+    return best_match
+
+
+def normalize_existing_detail(item: Dict, existing: Dict) -> Dict:
+    youtube_video_url = optional_text(existing.get("youtube_video_url"))
+    youtube_video_id = optional_text(existing.get("youtube_video_id"))
+    if youtube_video_id is None and youtube_video_url:
+        youtube_video_id = extract_youtube_video_id(youtube_video_url)
+    if youtube_video_url is None and youtube_video_id:
+        youtube_video_url = build_youtube_video_url(youtube_video_id)
+
+    youtube_video_status = optional_text(existing.get("youtube_video_status"))
+    if youtube_video_status is None:
+        youtube_video_status = (
+            YOUTUBE_VIDEO_STATUS_RELATION if youtube_video_url or youtube_video_id else YOUTUBE_VIDEO_STATUS_UNRESOLVED
+        )
+
+    return {
+        "group": item["group"],
+        "release_title": item["release_title"],
+        "release_date": item["release_date"],
+        "stream": item["stream"],
+        "release_kind": item["release_kind"],
+        "tracks": normalize_tracks(existing.get("tracks")),
+        "spotify_url": optional_text(existing.get("spotify_url")),
+        "youtube_music_url": optional_text(existing.get("youtube_music_url")),
+        "youtube_video_url": youtube_video_url,
+        "youtube_video_id": youtube_video_id,
+        "youtube_video_status": youtube_video_status,
+        "youtube_video_provenance": optional_text(existing.get("youtube_video_provenance")),
+        "notes": optional_text(existing.get("notes")) or build_placeholder_note(item),
+    }
 
 
 def infer_title_track_titles(detail: Dict) -> List[str]:
@@ -162,123 +271,29 @@ def mark_title_tracks(tracks: List[Dict], title_track_titles: List[str]) -> List
     ]
 
 
-def extract_youtube_video_id(resource: str) -> Optional[str]:
-    parsed = urlparse(resource)
-    host = parsed.netloc.lower()
-    segments = [segment for segment in parsed.path.split("/") if segment]
-
-    if "youtu.be" in host:
-        return parsed.path.strip("/") or None
-    if "youtube.com" in host and "music.youtube.com" not in host:
-        watch_id = parse_qs(parsed.query).get("v", [None])[0]
-        if watch_id:
-            return watch_id
-        if "shorts" in segments or "embed" in segments:
-            for index, segment in enumerate(segments):
-                if segment in {"shorts", "embed"} and index + 1 < len(segments):
-                    return segments[index + 1]
-    return None
-
-
-def build_youtube_video_url(video_id: str) -> str:
-    return f"https://www.youtube.com/watch?v={video_id}"
-
-
-def extract_urls(relations: List[Dict]) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
-    spotify_url = None
-    youtube_music_url = None
-    youtube_video_url = None
-    youtube_video_id = None
-
-    for relation in relations:
-        resource = relation.get("url", {}).get("resource")
-        if not resource:
-            continue
-
-        lowered = resource.lower()
-        if spotify_url is None and "open.spotify.com/" in lowered:
-            spotify_url = resource
-        if youtube_music_url is None and "music.youtube.com/" in lowered:
-            youtube_music_url = resource
-        if youtube_video_url is None:
-            candidate_video_id = extract_youtube_video_id(resource)
-            if candidate_video_id:
-                youtube_video_url = resource
-                youtube_video_id = candidate_video_id
-
-    return spotify_url, youtube_music_url, youtube_video_url, youtube_video_id
-
-
-def build_notes(
-    track_count: int,
-    release_kind: str,
-    spotify_url: Optional[str],
-    youtube_music_url: Optional[str],
-    youtube_video_url: Optional[str],
-) -> str:
-    kind_label = release_kind.upper()
-    if track_count:
-        note = f"Representative MusicBrainz {kind_label} seed with {track_count} track"
-        if track_count != 1:
-            note += "s"
-        note += "."
-    else:
-        note = "Representative MusicBrainz seed without track rows."
-
-    linked_services = []
-    if spotify_url:
-        linked_services.append("Spotify")
-    if youtube_music_url:
-        linked_services.append("YouTube Music")
-    if youtube_video_url:
-        linked_services.append("YouTube MV")
-    if linked_services:
-        note += f" Canonical links: {', '.join(linked_services)}."
-
-    return note
-
-
-def build_empty_detail(item: Dict) -> Dict:
-    return {
-        "group": item["group"],
-        "release_title": item["release_title"],
-        "release_date": item["release_date"],
-        "stream": item["stream"],
-        "release_kind": item["release_kind"],
-        "tracks": [],
-        "spotify_url": None,
-        "youtube_music_url": None,
-        "youtube_video_url": None,
-        "youtube_video_id": None,
-        "youtube_video_status": YOUTUBE_VIDEO_STATUS_UNRESOLVED,
-        "youtube_video_provenance": None,
-        "notes": "Release detail seed unavailable in MusicBrainz; UI fallback applies.",
-    }
-
-
 def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tuple[Dict, bool]:
     override = override_by_key.get(
         get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"])
     )
     if override:
-        youtube_music_url = override.get("youtube_music_url")
+        youtube_music_url = optional_text(override.get("youtube_music_url"))
         if youtube_music_url:
             detail["youtube_music_url"] = youtube_music_url
 
-        provenance = override.get("provenance")
+        provenance = optional_text(override.get("provenance"))
         if provenance and provenance not in detail["notes"]:
             detail["notes"] += f" Canonical YouTube Music URL preserved from release_detail_overrides.json ({provenance})."
 
-        youtube_video_url = override.get("youtube_video_url")
-        youtube_video_id = override.get("youtube_video_id")
-        override_video_status = override.get("youtube_video_status")
-        override_review_reason = override.get("youtube_video_review_reason")
+        youtube_video_url = optional_text(override.get("youtube_video_url"))
+        youtube_video_id = optional_text(override.get("youtube_video_id"))
+        override_video_status = optional_text(override.get("youtube_video_status"))
+        override_review_reason = optional_text(override.get("youtube_video_review_reason"))
         if youtube_video_url or youtube_video_id:
             resolved_video_id = youtube_video_id or extract_youtube_video_id(youtube_video_url or "")
             if resolved_video_id:
                 detail["youtube_video_id"] = resolved_video_id
                 detail["youtube_video_url"] = youtube_video_url or build_youtube_video_url(resolved_video_id)
-                video_provenance = override.get("youtube_video_provenance") or "curated official YouTube watch URL"
+                video_provenance = optional_text(override.get("youtube_video_provenance")) or "curated official YouTube watch URL"
                 detail["youtube_video_status"] = YOUTUBE_VIDEO_STATUS_MANUAL
                 detail["youtube_video_provenance"] = video_provenance
                 video_note = f" Canonical YouTube MV preserved from release_detail_overrides.json ({video_provenance})."
@@ -288,12 +303,14 @@ def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tup
             detail["youtube_video_id"] = None
             detail["youtube_video_url"] = None
             detail["youtube_video_status"] = YOUTUBE_VIDEO_STATUS_NO_MV
-            detail["youtube_video_provenance"] = override.get("youtube_video_provenance")
+            detail["youtube_video_provenance"] = optional_text(override.get("youtube_video_provenance"))
         elif override_video_status == YOUTUBE_VIDEO_STATUS_REVIEW:
             detail["youtube_video_id"] = None
             detail["youtube_video_url"] = None
             detail["youtube_video_status"] = YOUTUBE_VIDEO_STATUS_REVIEW
-            detail["youtube_video_provenance"] = override_review_reason or override.get("youtube_video_provenance")
+            detail["youtube_video_provenance"] = override_review_reason or optional_text(
+                override.get("youtube_video_provenance")
+            )
 
     title_track_titles = override.get("title_tracks") if override else None
     if not title_track_titles:
@@ -303,111 +320,165 @@ def apply_detail_override(detail: Dict, override_by_key: Dict[str, Dict]) -> Tup
     return detail, bool(override)
 
 
-def build_detail_row(session: requests.Session, item: Dict) -> Dict:
-    release_group = get_json(
-        session,
-        f"https://musicbrainz.org/ws/2/release-group/{item['release_group_id']}",
-        {"inc": "releases+url-rels"},
+def build_coverage_report(items: List[Dict], details_before: List[Dict], details_after: List[Dict]) -> Dict:
+    history_keys = {
+        get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
+        for item in items
+    }
+    before_keys = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"])
+        for row in details_before
+    }
+    after_keys = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"])
+        for row in details_after
+    }
+
+    older_items = [item for item in items if item["release_date"] <= "2023-12-31"]
+    missing_before = [item for item in items if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) not in before_keys]
+    missing_after = [item for item in items if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) not in after_keys]
+    missing_before_older = [
+        item
+        for item in older_items
+        if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) not in before_keys
+    ]
+    missing_after_older = [
+        item
+        for item in older_items
+        if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) not in after_keys
+    ]
+
+    seeded_rows = [
+        row
+        for row in details_after
+        if row.get("notes") == build_placeholder_note(row)
+    ]
+
+    exact_preserved = len(
+        [
+            item
+            for item in items
+            if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) in before_keys
+        ]
     )
-    candidate_releases = select_candidate_releases(
-        release_group.get("releases", []),
-        item["release_title"],
-        item["release_date"],
-    )
-
-    if not candidate_releases:
-        return build_empty_detail(item)
-
-    fallback_row = build_empty_detail(item)
-
-    for candidate in candidate_releases[:4]:
-        release = get_json(
-            session,
-            f"https://musicbrainz.org/ws/2/release/{candidate['id']}",
-            {"inc": "recordings+url-rels"},
+    legacy_spot_check_groups = ["EXO", "BTS", "BLACKPINK", "TWICE", "WJSN", "YUJU"]
+    legacy_spot_checks: List[Dict] = []
+    for group in legacy_spot_check_groups:
+        matches = [
+            row
+            for row in details_after
+            if row["group"] == group and row["release_date"] <= "2023-12-31"
+        ]
+        sample = matches[0] if matches else None
+        legacy_spot_checks.append(
+            {
+                "group": group,
+                "detail_rows_pre_2024_after": len(matches),
+                "sample_release_title": sample["release_title"] if sample else None,
+                "sample_release_date": sample["release_date"] if sample else None,
+                "sample_has_tracks": bool(sample.get("tracks")) if sample else False,
+            }
         )
-        tracks = extract_tracks(release)
-        spotify_url, youtube_music_url, youtube_video_url, youtube_video_id = extract_urls(release.get("relations", []))
 
-        if not tracks and not spotify_url and not youtube_music_url and not youtube_video_url and not youtube_video_id:
-            continue
-
-        return {
-            "group": item["group"],
-            "release_title": item["release_title"],
-            "release_date": item["release_date"],
-            "stream": item["stream"],
-            "release_kind": item["release_kind"],
-            "tracks": tracks,
-            "spotify_url": spotify_url,
-            "youtube_music_url": youtube_music_url,
-            "youtube_video_url": youtube_video_url,
-            "youtube_video_id": youtube_video_id,
-            "youtube_video_status": (
-                YOUTUBE_VIDEO_STATUS_RELATION if youtube_video_url or youtube_video_id else YOUTUBE_VIDEO_STATUS_UNRESOLVED
-            ),
-            "youtube_video_provenance": (
-                "musicbrainz relation url-rels" if youtube_video_url or youtube_video_id else None
-            ),
-            "notes": build_notes(len(tracks), item["release_kind"], spotify_url, youtube_music_url, youtube_video_url),
-        }
-
-    return fallback_row
+    return {
+        "history_flattened_rows": len(items),
+        "detail_rows_before": len(details_before),
+        "detail_rows_after": len(details_after),
+        "history_keys": len(history_keys),
+        "missing_detail_rows_before": len(missing_before),
+        "missing_detail_rows_after": len(missing_after),
+        "pre_2024_history_rows": len(older_items),
+        "pre_2024_missing_before": len(missing_before_older),
+        "pre_2024_missing_after": len(missing_after_older),
+        "preserved_exact_key_rows": exact_preserved,
+        "seeded_placeholder_rows": len(seeded_rows),
+        "rows_with_tracks_after": sum(1 for row in details_after if row.get("tracks")),
+        "rows_with_title_track_after": sum(
+            1
+            for row in details_after
+            if any(track.get("is_title_track") for track in row.get("tracks", []))
+        ),
+        "rows_with_youtube_music_after": sum(1 for row in details_after if optional_text(row.get("youtube_music_url"))),
+        "rows_with_youtube_mv_after": sum(
+            1
+            for row in details_after
+            if optional_text(row.get("youtube_video_url")) or optional_text(row.get("youtube_video_id"))
+        ),
+        "remaining_no_detail_rows": missing_after,
+        "seed_only_rows": [
+            {
+                "group": row["group"],
+                "release_title": row["release_title"],
+                "release_date": row["release_date"],
+                "stream": row["stream"],
+                "release_kind": row["release_kind"],
+            }
+            for row in seeded_rows
+        ],
+        "legacy_spot_checks": legacy_spot_checks,
+    }
 
 
 def main() -> None:
-    with RELEASES_PATH.open() as handle:
-        release_rows = json.load(handle)
+    history_rows = load_rows(RELEASE_HISTORY_PATH)
+    details_before = load_rows(OUTPUT_PATH) if OUTPUT_PATH.exists() else []
+    items = iter_release_items(history_rows)
+    existing_details = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in details_before
+    }
+    relaxed_existing_details: Dict[str, List[Dict]] = {}
+    for row in details_before:
+        relaxed_existing_details.setdefault(
+            get_relaxed_detail_key(row["group"], row["release_title"], row["stream"]),
+            [],
+        ).append(row)
 
-    items = iter_release_items(release_rows)
-    details: List[Dict] = []
     override_by_key = load_detail_overrides()
+
+    details_after: List[Dict] = []
     applied_overrides = 0
+    relaxed_match_count = 0
 
-    session = requests.Session()
-    session.headers["User-Agent"] = USER_AGENT
-
-    for index, item in enumerate(items, start=1):
-        print(
-            f"[{index}/{len(items)}] {item['group']} · {item['release_title']} · {item['stream']}",
-            flush=True,
+    for item in items:
+        existing = existing_details.get(
+            get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
         )
-        detail, was_overridden = apply_detail_override(build_detail_row(session, item), override_by_key)
+        if existing is None:
+            existing = select_relaxed_existing_detail(
+                item,
+                relaxed_existing_details.get(
+                    get_relaxed_detail_key(item["group"], item["release_title"], item["stream"]),
+                    [],
+                ),
+            )
+            if existing is not None:
+                relaxed_match_count += 1
+        detail = normalize_existing_detail(item, existing) if existing else build_empty_detail(item)
+        detail, was_overridden = apply_detail_override(detail, override_by_key)
         applied_overrides += int(was_overridden)
-        details.append(detail)
+        details_after.append(detail)
 
-    details.sort(
+    details_after.sort(
         key=lambda row: (
-            row["group"].lower(),
+            row["group"].casefold(),
             row["release_date"],
             row["stream"],
-            row["release_title"].lower(),
+            row["release_title"].casefold(),
         )
     )
 
-    OUTPUT_PATH.write_text(json.dumps(details, ensure_ascii=False, indent=2) + "\n")
+    OUTPUT_PATH.write_text(json.dumps(details_after, ensure_ascii=False, indent=2) + "\n")
 
-    with_tracks = sum(1 for row in details if row["tracks"])
-    with_spotify = sum(1 for row in details if row["spotify_url"])
-    with_youtube_music = sum(1 for row in details if row["youtube_music_url"])
-    with_video = sum(1 for row in details if row["youtube_video_id"] or row.get("youtube_video_url"))
-    video_status_counts = Counter(row.get("youtube_video_status", YOUTUBE_VIDEO_STATUS_UNRESOLVED) for row in details)
-
-    print(
-        json.dumps(
-            {
-                "count": len(details),
-                "with_tracks": with_tracks,
-                "with_spotify": with_spotify,
-                "with_youtube_music": with_youtube_music,
-                "with_video": with_video,
-                "youtube_music_overrides": applied_overrides,
-                "youtube_video_status_counts": dict(video_status_counts),
-            },
-            ensure_ascii=False,
-            indent=2,
-        )
+    report = build_coverage_report(items, details_before, details_after)
+    report["applied_overrides"] = applied_overrides
+    report["relaxed_existing_matches"] = relaxed_match_count
+    report["preserved_existing_detail_rows_total"] = (
+        report["preserved_exact_key_rows"] + report["relaxed_existing_matches"]
     )
+    AUDIT_OUTPUT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
+
+    print(json.dumps(report, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
