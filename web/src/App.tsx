@@ -28,7 +28,6 @@ import {
 import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
 import releaseDetailRows from './data/releaseDetails.json'
-import releaseEnrichmentRows from './data/releaseEnrichment.json'
 import releaseHistoryRows from './data/releaseHistory.json'
 import releaseRows from './data/releases.json'
 import teamBadgeAssetRows from './data/teamBadgeAssets.json'
@@ -183,11 +182,7 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
   isFallback: boolean
 }
 
-type SurfaceSourceMode = 'json' | 'api'
-type SurfaceSourceKey = 'releaseDetail'
-type SurfaceSourceOverrides = Partial<Record<SurfaceSourceKey, SurfaceSourceMode>>
-type ReleaseDetailSourceMode = SurfaceSourceMode
-type ReleaseDetailSourceState = 'json' | 'api' | 'json_fallback'
+type ReleaseDetailSourceState = 'api' | 'api_error'
 
 type ReleaseDetailLookupApiResponse = {
   data?: {
@@ -1493,14 +1488,14 @@ const TEAM_COPY = {
     officialMvLinkOnly: '임베드가 준비되지 않으면 YouTube 링크만 노출합니다.',
     officialMvUnavailable: '신뢰 가능한 공식 YouTube MV target이 아직 없어 임베드를 표시하지 않습니다.',
     releaseDetailBackendLoading:
-      '백엔드 release-detail 응답을 확인하는 중입니다. 현재는 transitional JSON fallback을 먼저 표시합니다.',
+      '백엔드 release-detail 응답을 불러오는 중입니다.',
     releaseDetailBackendActive: '이 상세 페이지는 backend release-detail 응답을 우선 사용 중입니다.',
-    releaseDetailBackendFallback:
-      '백엔드 응답을 불러오지 못해 transitional release-detail JSON fallback으로 표시 중입니다.',
+    releaseDetailBackendUnavailable:
+      '백엔드 release-detail 응답을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.',
     releaseDetailBackendTimeout:
-      '백엔드 release-detail 응답 시간이 초과되어 transitional release-detail JSON fallback으로 표시 중입니다.',
-    releaseDetailBackendJsonPrimary:
-      '이 상세 페이지는 transitional release-detail JSON 기본 경로를 사용 중입니다.',
+      '백엔드 release-detail 응답 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.',
+    releaseDetailBackendNotFound:
+      '백엔드에 이 릴리즈의 detail payload가 아직 없습니다.',
     watchOnYouTube: 'YouTube에서 보기',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
@@ -1621,14 +1616,14 @@ const TEAM_COPY = {
     officialMvLinkOnly: 'If embedding is unavailable, the page falls back to a YouTube link only.',
     officialMvUnavailable: 'No reliable official YouTube MV target is attached yet, so this page does not render an embed.',
     releaseDetailBackendLoading:
-      'Checking the backend release-detail response now. The page keeps the transitional JSON fallback visible until it resolves.',
+      'Loading the backend release-detail response now.',
     releaseDetailBackendActive: 'This detail page is currently using the backend release-detail response.',
-    releaseDetailBackendFallback:
-      'The backend response was unavailable, so this detail page is falling back to the transitional JSON snapshot.',
+    releaseDetailBackendUnavailable:
+      'The backend release-detail response is unavailable right now. Please try again shortly.',
     releaseDetailBackendTimeout:
-      'The backend release-detail request timed out, so this detail page is falling back to the transitional JSON snapshot.',
-    releaseDetailBackendJsonPrimary:
-      'This detail page is currently using the transitional release-detail JSON primary path.',
+      'The backend release-detail request timed out. Please try again shortly.',
+    releaseDetailBackendNotFound:
+      'The backend does not have a detail payload for this release yet.',
     watchOnYouTube: 'Watch on YouTube',
     placeholderCover: 'Release artwork',
     drawerCopy:
@@ -1696,19 +1691,11 @@ const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
 const entityDetailApiSnapshotCache = new Map<string, TeamProfile>()
 const calendarMonthApiSnapshotCache = new Map<string, CalendarMonthApiSnapshot>()
 const radarApiSnapshotCache = new Map<string, RadarApiSnapshot>()
-const DEFAULT_PRIMARY_SURFACE_SOURCE_MODE = normalizeSurfaceSourceMode(import.meta.env.VITE_PRIMARY_SURFACE_SOURCE, 'json')
-const SURFACE_SOURCE_MODES = {
-  releaseDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_RELEASE_DETAIL_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
-} satisfies Record<SurfaceSourceKey, SurfaceSourceMode>
-const SURFACE_SOURCE_QUERY_PARAMS = {
-  releaseDetail: 'releaseDetailSource',
-} satisfies Record<SurfaceSourceKey, string>
 
 const artistProfiles = artistProfileRows as ArtistProfileRow[]
 const teamBadgeAssets = teamBadgeAssetRows as TeamBadgeAssetRow[]
 const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
 const releaseDetailsCatalog = releaseDetailRows as ReleaseDetailRow[]
-const releaseEnrichmentCatalog = releaseEnrichmentRows as ReleaseEnrichmentRow[]
 const releaseHistoryCatalog = releaseHistoryRows as ReleaseHistorySeedRow[]
 const releaseCatalog = releaseRows as ReleaseRow[]
 const relatedActOverrides = relatedActOverrideRows as RelatedActsOverrideRow[]
@@ -1738,12 +1725,6 @@ const releaseArtworkByKey = new Map(
 )
 const releaseDetailsByKey = new Map(
   releaseDetailsCatalog.map((row) => [getReleaseLookupKey(row.group, row.release_title, row.release_date, row.stream), row]),
-)
-const releaseEnrichmentByKey = new Map(
-  releaseEnrichmentCatalog.map((row) => [
-    getReleaseLookupKey(row.group, row.release_title, row.release_date, row.stream),
-    row,
-  ]),
 )
 const releaseGroups = groupReleasesByGroup(releases)
 const seededVerifiedReleaseHistory = buildSeededVerifiedReleaseHistory(releaseHistoryCatalog)
@@ -1782,12 +1763,10 @@ function App() {
   const [desktopUpcomingPanelHeight, setDesktopUpcomingPanelHeight] = useState<number | null>(null)
   const calendarPanelRef = useRef<HTMLElement | null>(null)
   const selectedDayPanelRef = useRef<HTMLElement | null>(null)
-  const sourceOverrides = readSurfaceSourceOverridesFromLocation()
   const activeCompareGroup =
     selectedGroup && selectedCompareGroup && selectedCompareGroup !== selectedGroup && teamProfileMap.has(selectedCompareGroup)
       ? selectedCompareGroup
       : null
-  const releaseDetailSourceMode = getSurfaceSourceMode('releaseDetail', sourceOverrides.releaseDetail)
   const selectedReleaseRoute =
     selectedGroup && selectedAlbumKey
       ? findVerifiedReleaseByKey(selectedGroup, selectedAlbumKey)
@@ -1846,10 +1825,10 @@ function App() {
     }
 
     const nextPath = selectedReleaseRoute
-      ? getReleasePath(selectedReleaseRoute, sourceOverrides)
+      ? getReleasePath(selectedReleaseRoute)
       : selectedGroup
-        ? getArtistPath(selectedGroup, activeCompareGroup, sourceOverrides)
-        : getHomePath(sourceOverrides)
+        ? getArtistPath(selectedGroup, activeCompareGroup)
+        : getHomePath()
     const currentLocation = `${window.location.pathname}${window.location.search}`
     if (currentLocation !== nextPath) {
       window.history.pushState(
@@ -1858,7 +1837,7 @@ function App() {
         nextPath,
       )
     }
-  }, [activeCompareGroup, selectedAlbumKey, selectedGroup, selectedReleaseRoute, sourceOverrides])
+  }, [activeCompareGroup, selectedAlbumKey, selectedGroup, selectedReleaseRoute])
 
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -2604,7 +2583,6 @@ function App() {
           album={selectedAlbum}
           group={selectedGroup}
           language={language}
-          sourceMode={releaseDetailSourceMode}
           displayDateFormatter={displayDateFormatter}
           onBack={closeReleaseDetail}
           onOpenTeamPage={openTeamPage}
@@ -3523,7 +3501,6 @@ function ReleaseDetailPage({
   album,
   group,
   language,
-  sourceMode,
   displayDateFormatter,
   onBack,
   onOpenTeamPage,
@@ -3531,7 +3508,6 @@ function ReleaseDetailPage({
   album: VerifiedRelease
   group: string
   language: Language
-  sourceMode: ReleaseDetailSourceMode
   displayDateFormatter: Intl.DateTimeFormat
   onBack: () => void
   onOpenTeamPage: (group: string) => void
@@ -3539,22 +3515,24 @@ function ReleaseDetailPage({
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
   const displayName = getTeamDisplayName(group)
-  const releaseDetailResource = useReleaseDetailResource({
-    album,
-    group,
-    sourceMode,
-  })
+  const releaseDetailResource = useReleaseDetailResource({ album, group })
   const artwork = releaseDetailResource.artwork
   const releaseDetail = releaseDetailResource.detail
-  const releaseEnrichment = getReleaseEnrichment(group, album.title, album.date, album.stream, album.release_kind)
+  const releaseEnrichment = buildFallbackReleaseEnrichment(group, album.title, album.date, album.stream, album.release_kind)
   const previewTracks: ReleaseDetailTrack[] = releaseDetail.tracks.length
     ? releaseDetail.tracks
     : buildAlbumPreviewTracks(album, group, language).map((title, index) => ({ order: index + 1, title }))
-  const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail, album.music_handoffs)
+  const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail)
   const mv = getReleaseDetailMvUrls(releaseDetail)
   const releaseDetailSourceMessage =
-    sourceMode === 'api'
-      ? releaseDetailResource.source === 'api'
+    releaseDetailResource.loading
+      ? buildSurfaceStatusMessage({
+          language,
+          source: 'api',
+          errorCode: null,
+          baseMessage: teamCopy.releaseDetailBackendLoading,
+        })
+      : releaseDetailResource.source === 'api'
         ? buildSurfaceStatusMessage({
             language,
             source: 'api',
@@ -3562,28 +3540,17 @@ function ReleaseDetailPage({
             traceId: releaseDetailResource.traceId,
             baseMessage: teamCopy.releaseDetailBackendActive,
           })
-        : releaseDetailResource.loading
-          ? buildSurfaceStatusMessage({
-              language,
-              source: 'json',
-              errorCode: null,
-              baseMessage: teamCopy.releaseDetailBackendLoading,
-            })
-          : buildSurfaceStatusMessage({
-              language,
-              source: 'json_fallback',
-              errorCode: releaseDetailResource.errorCode,
-              traceId: releaseDetailResource.traceId,
-              baseMessage:
-                releaseDetailResource.errorCode === 'timeout'
-                  ? teamCopy.releaseDetailBackendTimeout
-                  : teamCopy.releaseDetailBackendFallback,
-            })
-      : buildSurfaceStatusMessage({
-          language,
-          source: 'json',
-          errorCode: null,
-          baseMessage: teamCopy.releaseDetailBackendJsonPrimary,
+        : buildSurfaceStatusMessage({
+            language,
+            source: 'api_error',
+            errorCode: releaseDetailResource.errorCode,
+            traceId: releaseDetailResource.traceId,
+            baseMessage:
+              releaseDetailResource.errorCode === 'timeout'
+                ? teamCopy.releaseDetailBackendTimeout
+                : releaseDetailResource.errorCode === 'not_found' || releaseDetailResource.errorCode === 'lookup_404'
+                  ? teamCopy.releaseDetailBackendNotFound
+                  : teamCopy.releaseDetailBackendUnavailable,
         })
 
   return (
@@ -6795,28 +6762,6 @@ function getReleaseDetail(
   }
 }
 
-function getReleaseEnrichment(
-  group: string,
-  releaseTitle: string,
-  releaseDate: string,
-  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
-  releaseKind?: string,
-): ResolvedReleaseEnrichment {
-  const normalizedStream = normalizeReleaseStream(stream, releaseKind)
-  const enrichment = releaseEnrichmentByKey.get(
-    getReleaseLookupKey(group, releaseTitle, releaseDate, normalizedStream),
-  )
-
-  if (!enrichment) {
-    return buildFallbackReleaseEnrichment(group, releaseTitle, releaseDate, stream, releaseKind)
-  }
-
-  return {
-    ...enrichment,
-    isFallback: false,
-  }
-}
-
 function isUnknownRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
@@ -6838,8 +6783,8 @@ function normalizeApiReleaseKind(
 
 function buildLocalReleaseDetailSnapshot(album: ReleaseDetailApiRequest, group: string): ReleaseDetailApiSnapshot {
   return {
-    detail: getReleaseDetail(group, album.title, album.date, album.stream, album.release_kind),
-    artwork: getReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind),
+    detail: buildFallbackReleaseDetail(group, album.title, album.date, album.stream, album.release_kind),
+    artwork: buildPlaceholderReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind),
     releaseId: releaseDetailApiIdCache.get(
       getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind)),
     ) ?? null,
@@ -7071,11 +7016,9 @@ async function fetchReleaseDetailApiSnapshot(
 function useReleaseDetailResource({
   album,
   group,
-  sourceMode,
 }: {
   album: VerifiedRelease
   group: string
-  sourceMode: ReleaseDetailSourceMode
 }): ReleaseDetailApiResource {
   const requestAlbum: ReleaseDetailApiRequest = {
     title: album.title,
@@ -7085,7 +7028,7 @@ function useReleaseDetailResource({
   }
   const cacheKey = getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind))
   const fallbackSnapshot = buildLocalReleaseDetailSnapshot(requestAlbum, group)
-  const cachedSnapshot = sourceMode === 'api' ? releaseDetailApiSnapshotCache.get(cacheKey) ?? null : null
+  const cachedSnapshot = releaseDetailApiSnapshotCache.get(cacheKey) ?? null
   const [remoteState, setRemoteState] = useState<{
     cacheKey: string
     snapshot: ReleaseDetailApiSnapshot | null
@@ -7096,17 +7039,13 @@ function useReleaseDetailResource({
     return {
       cacheKey,
       snapshot: cachedSnapshot,
-      loading: false,
+      loading: cachedSnapshot === null,
       errorCode: null,
       traceId: null,
     }
   })
 
   useEffect(() => {
-    if (sourceMode !== 'api') {
-      return
-    }
-
     const effectFallbackSnapshot = buildLocalReleaseDetailSnapshot(
       {
         title: album.title,
@@ -7116,9 +7055,14 @@ function useReleaseDetailResource({
       },
       group,
     )
+    let cancelled = false
 
     if (cachedSnapshot) {
       Promise.resolve().then(() => {
+        if (cancelled) {
+          return
+        }
+
         setRemoteState({
           cacheKey,
           snapshot: cachedSnapshot,
@@ -7127,11 +7071,13 @@ function useReleaseDetailResource({
           traceId: null,
         })
       })
-      return
+
+      return () => {
+        cancelled = true
+      }
     }
 
     const controller = new AbortController()
-    let cancelled = false
     const effectRequestAlbum: ReleaseDetailApiRequest = {
       title: album.title,
       date: album.date,
@@ -7201,26 +7147,22 @@ function useReleaseDetailResource({
       cancelled = true
       controller.abort()
     }
-  }, [album.date, album.release_kind, album.stream, album.title, cacheKey, cachedSnapshot, group, sourceMode])
+  }, [album.date, album.release_kind, album.stream, album.title, cacheKey, cachedSnapshot, group])
 
   const activeSnapshot =
-    sourceMode === 'api'
-      ? remoteState.cacheKey === cacheKey
-        ? remoteState.snapshot ?? cachedSnapshot ?? fallbackSnapshot
-        : cachedSnapshot ?? fallbackSnapshot
-      : fallbackSnapshot
-  const loading =
-    sourceMode === 'api' && remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
-  const errorCode = sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
-  const source: ReleaseDetailSourceState =
-    sourceMode !== 'api' ? 'json' : activeSnapshot === fallbackSnapshot ? (errorCode ? 'json_fallback' : 'json') : 'api'
+    remoteState.cacheKey === cacheKey
+      ? remoteState.snapshot ?? cachedSnapshot ?? fallbackSnapshot
+      : cachedSnapshot ?? fallbackSnapshot
+  const loading = remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
+  const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
+  const source: ReleaseDetailSourceState = activeSnapshot === fallbackSnapshot && errorCode ? 'api_error' : 'api'
 
   return {
     ...activeSnapshot,
     source,
     loading,
     errorCode,
-    traceId: sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.traceId : null,
+    traceId: remoteState.cacheKey === cacheKey ? remoteState.traceId : null,
   }
 }
 
@@ -9691,59 +9633,6 @@ function readSelectedReleaseKeyFromLocation() {
   return getReleaseRouteFromPath(window.location.pathname, window.location.search)?.releaseKey ?? null
 }
 
-function readSurfaceSourceOverrideFromLocation(key: SurfaceSourceKey): SurfaceSourceMode | null {
-  if (typeof window === 'undefined') {
-    return null
-  }
-
-  const value = new URLSearchParams(window.location.search).get(SURFACE_SOURCE_QUERY_PARAMS[key])
-  return value === 'api' || value === 'json' ? value : null
-}
-
-function readSurfaceSourceOverridesFromLocation(): SurfaceSourceOverrides {
-  return {
-    releaseDetail: readSurfaceSourceOverrideFromLocation('releaseDetail') ?? undefined,
-  }
-}
-
-function normalizeSurfaceSourceMode(
-  value: unknown,
-  fallback: SurfaceSourceMode = 'json',
-): SurfaceSourceMode {
-  if (typeof value !== 'string') {
-    return fallback
-  }
-
-  const normalizedValue = value.trim().toLowerCase()
-  if (normalizedValue === 'api' || normalizedValue === 'json') {
-    return normalizedValue
-  }
-
-  return fallback
-}
-
-function getSurfaceSourceMode(
-  key: SurfaceSourceKey,
-  override?: SurfaceSourceMode | null,
-): SurfaceSourceMode {
-  return override ?? SURFACE_SOURCE_MODES[key]
-}
-
-function appendSurfaceSourceOverrides(params: URLSearchParams, overrides?: SurfaceSourceOverrides) {
-  if (!overrides) {
-    return params
-  }
-
-  ;(Object.keys(SURFACE_SOURCE_QUERY_PARAMS) as SurfaceSourceKey[]).forEach((key) => {
-    const value = overrides[key]
-    if (value) {
-      params.set(SURFACE_SOURCE_QUERY_PARAMS[key], value)
-    }
-  })
-
-  return params
-}
-
 function getGroupFromPath(pathname: string) {
   const match = pathname.match(/^\/artists\/([^/]+)(?:\/releases\/[^/]+)?\/?$/)
   if (!match) {
@@ -9767,15 +9656,13 @@ function resolveGroupReference(value: string) {
   )
 }
 
-function getHomePath(sourceOverrides?: SurfaceSourceOverrides) {
-  const params = appendSurfaceSourceOverrides(new URLSearchParams(), sourceOverrides)
-  const query = params.toString()
-  return query ? `/?${query}` : '/'
+function getHomePath() {
+  return '/'
 }
 
-function getArtistPath(group: string, compareGroup?: string | null, sourceOverrides?: SurfaceSourceOverrides) {
+function getArtistPath(group: string, compareGroup?: string | null) {
   const pathname = `/artists/${artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)}`
-  const params = appendSurfaceSourceOverrides(new URLSearchParams(), sourceOverrides)
+  const params = new URLSearchParams()
   if (compareGroup && compareGroup !== group) {
     params.set('compare', artistProfileByGroup.get(compareGroup)?.slug ?? slugifyGroup(compareGroup))
   }
@@ -9826,10 +9713,10 @@ function getReleaseRouteFromPath(pathname: string, search = '') {
   }
 }
 
-function getReleasePath(release: VerifiedRelease, sourceOverrides?: SurfaceSourceOverrides) {
+function getReleasePath(release: VerifiedRelease) {
   const releaseSlug = slugifyPathSegment(release.title) || 'release'
   const pathname = `/artists/${artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)}/releases/${releaseSlug}`
-  const params = appendSurfaceSourceOverrides(new URLSearchParams(), sourceOverrides)
+  const params = new URLSearchParams()
   params.set('date', release.date)
   params.set('stream', release.stream)
   return `${pathname}?${params.toString()}`

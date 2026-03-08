@@ -7,7 +7,6 @@
 
 - search
 - entity detail
-- release detail
 - calendar/month
 - radar
 
@@ -32,8 +31,6 @@ web runtime은 아래 우선순위로 source를 결정한다.
 
 | surface | representative trigger | fastest rollback | deploy-time rollback | expected user-facing effect | manual cleanup |
 | --- | --- | --- | --- | --- | --- |
-| release detail | `/v1/releases/:id` lookup/detail mismatch, MV/title-track drift | `?releaseDetailSource=json` | `VITE_RELEASE_DETAIL_SOURCE=json` | release detail만 shipped JSON snapshot으로 복귀 | lookup/detail contract 회복 후 override 제거 |
-
 Global fallback이 필요하면 마지막 수단으로 `VITE_PRIMARY_SURFACE_SOURCE=json`을 사용한다.
 
 ## 4. Drill Checklist
@@ -103,10 +100,6 @@ cd web
 ## 6. Runtime Query Rollback
 
 env rollback은 deploy/build 단위 drill에 적합하고, query rollback은 즉시 재현/우회에 적합하다.
-
-대표 예시:
-
-- `?releaseDetailSource=json`
 
 query rollback은 operator가 특정 incident를 빠르게 재현하거나 임시 우회할 때 쓴다.
 지속 운영에는 env rollback을 우선한다.
