@@ -60,6 +60,17 @@ function renderTree(element: React.ReactElement) {
   return tree!;
 }
 
+async function renderTreeAsync(element: React.ReactElement) {
+  let tree: renderer.ReactTestRenderer;
+
+  await act(async () => {
+    tree = renderer.create(element);
+    await Promise.resolve();
+  });
+
+  return tree!;
+}
+
 describe('mobile route shell smoke', () => {
   test('root index redirects to calendar tab', () => {
     const tree = renderTree(<IndexRoute />).toJSON() as renderer.ReactTestRendererJSON;
@@ -71,8 +82,8 @@ describe('mobile route shell smoke', () => {
     expect(() => renderTree(<TabsLayout />)).not.toThrow();
   });
 
-  test('tab placeholder screens render without crashing', () => {
-    expect(() => renderTree(<CalendarTabScreen />)).not.toThrow();
+  test('tab placeholder screens render without crashing', async () => {
+    await expect(renderTreeAsync(<CalendarTabScreen />)).resolves.toBeDefined();
     expect(() => renderTree(<RadarTabScreen />)).not.toThrow();
     expect(() => renderTree(<SearchTabScreen />)).not.toThrow();
   });

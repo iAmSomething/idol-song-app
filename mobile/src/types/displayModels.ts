@@ -85,3 +85,13 @@ export interface ReleaseDetailModel {
   notes?: string;
   tracks: TrackModel[];
 }
+
+export interface CalendarMonthSnapshotModel {
+  month: string;
+  releaseCount: number;
+  upcomingCount: number;
+  nearestUpcoming: UpcomingEventModel | null;
+  releases: ReleaseSummaryModel[];
+  exactUpcoming: UpcomingEventModel[];
+  monthOnlyUpcoming: UpcomingEventModel[];
+}
