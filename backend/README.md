@@ -19,6 +19,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
   - preview / production runtime config baseline
 - `reports/`
   - import / dual-write / projection refresh / parity summary artifact
+  - backup / restore recovery drill artifact
 - `sql/migrations/`
   - Neon canonical schema + projection read-model migration
 - `sql/README.md`
@@ -312,6 +313,33 @@ dry-run에서는 DB write를 commit하지 않고, summary에 아래 필드를 �
   - `samples`: missing-FK sample, unresolved mapping, unresolved review link 샘플
 - `dry_run_review`
   - dry-run이 보장하는 것과 보장하지 않는 것, 먼저 볼 review 순서
+
+## Backup / Restore Recovery Drill
+
+recovery rehearsal 기준 문서는 아래를 본다.
+
+- `docs/specs/backend/neon-backup-restore-recovery-drill.md`
+
+현재 baseline drill command:
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+cd backend
+npm run build
+npm run recovery:drill -- --report-path ./reports/neon_backup_restore_drill_2026-03-08.json
+```
+
+이 drill은 current Neon database 안에 isolated `recovery_backup_*`, `recovery_restore_*` schema를 만들고,
+restored schema search path로 backend를 한 번 띄운 뒤 representative read smoke를 수행한다.
+`/ready`는 restored schema에서 별도 projection/parity/shadow artifact를 다시 만들지 않는 한 `not_ready`일 수 있으므로,
+이 drill에서는 success gate가 아니라 diagnostic snapshot으로만 기록한다.
+
+artifact:
+
+- `backend/reports/neon_backup_restore_drill_2026-03-08.json`
 
 입력 우선순위:
 

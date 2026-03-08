@@ -52,3 +52,5 @@ npm run shadow:verify
 - projection refresh summary는 `backend/reports/projection_refresh_summary.json`에 남긴다.
 - backend-vs-JSON parity report는 `backend/reports/backend_json_parity_report.json`에 남긴다.
 - endpoint shadow-read report는 `backend/reports/backend_shadow_read_report.json`에 남긴다.
+- backup / restore drill artifact는 `backend/reports/neon_backup_restore_drill_<date>.json`에 남긴다.
+- recovery rehearsal 절차는 `docs/specs/backend/neon-backup-restore-recovery-drill.md`를 기준으로 본다.
