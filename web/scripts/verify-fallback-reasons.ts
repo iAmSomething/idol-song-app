@@ -7,8 +7,6 @@ const labels = {
   reasonLabel: 'Reason',
   sourceStateLabels: {
     api: 'backend API',
-    json: 'transitional JSON',
-    json_fallback: 'transitional JSON fallback',
     api_error: 'backend API unavailable',
   },
   fallbackReasonLabels: {
@@ -39,24 +37,6 @@ assert.equal(
     labels,
   }),
   'Source: backend API',
-)
-
-assert.equal(
-  buildSurfaceStatusMeta({
-    source: 'json_fallback',
-    errorCode: 'timeout',
-    labels,
-  }),
-  'Source: transitional JSON fallback · Reason: timeout',
-)
-
-assert.equal(
-  buildSurfaceStatusMeta({
-    source: 'json_fallback',
-    errorCode: 'entity_404',
-    labels,
-  }),
-  'Source: transitional JSON fallback · Reason: not found',
 )
 
 assert.equal(

@@ -145,7 +145,7 @@ GitHub가 계속 맡는 것:
 
 - repository-hosted source code
 - current Pages delivery
-- transitional JSON artifact shipping
+- import/parity/debug artifact shipping
 
 GitHub가 점진적으로 내려놓는 것:
 

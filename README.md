@@ -186,12 +186,11 @@ npm install
 npm run dev
 ```
 
-- 기본 로컬 실행은 `bundled JSON primary` 상태로 뜬다.
-- backend-primary rehearsal로 띄우려면 `VITE_API_BASE_URL=http://localhost:3213 VITE_PRIMARY_SURFACE_SOURCE=api npm run dev`
+- backend 연결로 띄우려면 `VITE_API_BASE_URL=http://localhost:3213 npm run dev`
 - browser에서 separate API base URL을 쓸 때 backend는 `APP_ENV`와 `WEB_ALLOWED_ORIGINS`를 같이 맞춰야 한다. production 기본 origin은 `https://iamsomething.github.io`다.
-- `VITE_PRIMARY_SURFACE_SOURCE=api`를 켜면 cut-over surface의 기본 read path는 backend가 되고, committed JSON은 fallback으로만 남는다.
-- `web/.env.example`에는 Pages / preview rehearsal에서 쓰는 source env baseline이 들어 있다.
-- `.github/workflows/deploy-pages.yml`은 GitHub repository variables `VITE_API_BASE_URL`, `VITE_PRIMARY_SURFACE_SOURCE`를 읽을 수 있게 열려 있다.
+- committed JSON snapshot은 import/parity/debug artifact로 유지되지만, shipped web cut-over surface의 runtime source switch로는 더 이상 사용하지 않는다.
+- `web/.env.example`에는 Pages / preview rehearsal에서 쓰는 API base env baseline이 들어 있다.
+- `.github/workflows/deploy-pages.yml`은 GitHub repository variable `VITE_API_BASE_URL`을 읽을 수 있게 열려 있다.
 
 ### 프로덕션 빌드
 

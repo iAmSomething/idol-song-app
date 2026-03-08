@@ -139,31 +139,32 @@ runbook을 따라 한 번 실제로 걷는 최소 경로는 아래다.
 - [ ] `backend_shadow_read_report.json`이 target surface 기준 clean 또는 승인된 drift만 가진다.
 - [ ] `runtime_gate_report.json`에서 해당 stage gate가 `pass` 또는 승인된 `needs_review`다.
 - [ ] Pages / local build에 `VITE_API_BASE_URL`이 올바르게 들어간다.
-- [ ] cut-over 기본값은 `VITE_PRIMARY_SURFACE_SOURCE=api`로 명시된다.
-- [ ] operator가 env override로 `json` rollback path를 즉시 열 수 있다.
+- [ ] shipped web cut-over surface가 API-only runtime으로 동작한다.
+- [ ] operator가 JSON rollback이 아니라 deploy rollback / backend repair 절차를 알고 있다.
 
 실행 메모:
 
-- global cutover baseline: `VITE_PRIMARY_SURFACE_SOURCE=api`
+- global cutover baseline: web cut-over surface는 API-only runtime
 
 ## 8. Fallback / Rollback Checklist
 
-fallback은 "API 오류 시 JSON으로 임시 하강"이고, rollback은 "운영 source 기본값 자체를 JSON 쪽으로 되돌림"이다.
+현재 shipped web cut-over surface에는 runtime JSON fallback이 없다.
+따라서 fallback은 "명시적 오류 표시"이고, rollback은 "이전 정상 Pages/preview build로 되돌리거나 backend를 수리"하는 것이다.
 
 - [ ] incident 범위가 global인지 surface-specific인지 분류했다.
 - [ ] parity / shadow / runtime 중 어떤 gate가 깨졌는지 확인했다.
-- [ ] per-surface query override로 즉시 우회 가능한지 먼저 확인했다.
-- [ ] 장기 문제면 Pages build env 또는 local env를 `json` 쪽으로 되돌렸다.
-- [ ] fallback 후에도 committed JSON snapshot freshness가 허용 범위인지 확인했다.
+- [ ] query override로 재현 가능한 debug path만 남았는지 확인했다.
+- [ ] 장기 문제면 이전 정상 Pages build 또는 preview deployment로 되돌릴지 결정했다.
+- [ ] committed JSON artifact는 import/parity/debug 용도로만 유지된다는 점을 다시 확인했다.
 - [ ] issue / report / PR에 rollback 원인과 다시 advance하기 위한 조건을 남겼다.
 
 권장 순서:
 
-1. query override로 현상 재현 / 우회
-2. per-surface env rollback
-3. global `VITE_PRIMARY_SURFACE_SOURCE=json`
-4. parity / projection / worker repair
-5. backend-primary 재시도
+1. query override로 현상 재현
+2. backend parity / projection / worker repair
+3. 필요 시 이전 정상 deployment로 rollback
+4. runtime gate 재측정
+5. 최신 build 재배포
 
 ## 9. Review / Debug Touchpoints
 
