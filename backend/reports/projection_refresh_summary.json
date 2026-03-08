@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T09:28:50.524Z",
+  "generated_at": "2026-03-08T23:52:59.908Z",
   "row_counts": {
     "entity_search_documents": 117,
     "calendar_month_projection": 216,
@@ -183,7 +183,7 @@
         "entity_slug": "blackpink",
         "display_name": "BLACKPINK",
         "release_date": "2026-02-26",
-        "release_kind": "ep",
+        "release_kind": null,
         "release_title": "DEADLINE"
       },
       "mv": {

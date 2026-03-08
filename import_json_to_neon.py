@@ -807,10 +807,15 @@ def merge_release_candidates(
 
 def build_release_rows(
     release_candidates: Dict[Tuple[str, str, str, str], Dict[str, Any]],
+    release_detail_rows: Sequence[Dict[str, Any]],
     entity_ids: Dict[str, uuid.UUID],
 ) -> Tuple[List[Dict[str, Any]], Dict[Tuple[str, str, str, str], uuid.UUID]]:
     release_rows: List[Dict[str, Any]] = []
     release_ids: Dict[Tuple[str, str, str, str], uuid.UUID] = {}
+    release_details_by_key = {
+        release_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in release_detail_rows
+    }
 
     sorted_keys = sorted(
         release_candidates.keys(),
@@ -824,6 +829,7 @@ def build_release_rows(
 
     for key in sorted_keys:
         candidate = release_candidates[key]
+        detail = release_details_by_key.get(key, {})
         entity_id = entity_ids[candidate["group"]]
         release_id = stable_uuid("release", entity_id, key[1], key[2], key[3])
         release_ids[key] = release_id
@@ -841,6 +847,11 @@ def build_release_rows(
                 "artist_source_url": candidate["artist_source_url"],
                 "musicbrainz_artist_id": candidate["musicbrainz_artist_id"],
                 "musicbrainz_release_group_id": candidate["musicbrainz_release_group_id"],
+                "detail_status": optional_text(detail.get("detail_status")) or "unresolved",
+                "detail_provenance": optional_text(detail.get("detail_provenance")) or "releaseDetails.missing_row",
+                "title_track_status": optional_text(detail.get("title_track_status")) or "unresolved",
+                "title_track_provenance": optional_text(detail.get("title_track_provenance"))
+                or "releaseDetails.missing_row",
                 "notes": candidate["notes"],
             }
         )
@@ -1403,7 +1414,7 @@ def build_import_payload() -> Dict[str, Any]:
         group_metadata,
         summary,
     )
-    release_rows, release_ids = build_release_rows(release_candidates, entity_ids)
+    release_rows, release_ids = build_release_rows(release_candidates, release_details, entity_ids)
     release_artwork_rows = build_release_artwork_rows(release_artwork, release_ids, summary)
     track_rows, _ = build_track_rows(release_details, release_ids, summary)
     release_service_rows = build_release_service_rows(release_details, release_detail_overrides, release_ids, summary)
@@ -1791,9 +1802,10 @@ def upsert_table_rows(
             insert into releases (
               id, entity_id, release_title, normalized_release_title, release_date, stream, release_kind,
               release_format, source_url, artist_source_url, musicbrainz_artist_id,
-              musicbrainz_release_group_id, notes
+              musicbrainz_release_group_id, detail_status, detail_provenance,
+              title_track_status, title_track_provenance, notes
             )
-            values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             on conflict (id) do update set
               entity_id = excluded.entity_id,
               release_title = excluded.release_title,
@@ -1806,6 +1818,10 @@ def upsert_table_rows(
               artist_source_url = excluded.artist_source_url,
               musicbrainz_artist_id = excluded.musicbrainz_artist_id,
               musicbrainz_release_group_id = excluded.musicbrainz_release_group_id,
+              detail_status = excluded.detail_status,
+              detail_provenance = excluded.detail_provenance,
+              title_track_status = excluded.title_track_status,
+              title_track_provenance = excluded.title_track_provenance,
               notes = excluded.notes,
               updated_at = now()
             """,
@@ -1823,6 +1839,10 @@ def upsert_table_rows(
                     row["artist_source_url"],
                     row["musicbrainz_artist_id"],
                     row["musicbrainz_release_group_id"],
+                    row["detail_status"],
+                    row["detail_provenance"],
+                    row["title_track_status"],
+                    row["title_track_provenance"],
                     row["notes"],
                 )
                 for row in release_rows

@@ -209,6 +209,14 @@ function buildReleaseDetailPayload(releaseId: string) {
       stream: 'album',
       release_kind: 'ep',
     },
+    detail_metadata: {
+      status: 'verified',
+      provenance: 'releaseDetails.existing_row',
+    },
+    title_track_metadata: {
+      status: 'manual_override',
+      provenance: 'release_detail_overrides.title_tracks',
+    },
     artwork: {
       image_url: 'https://cdn.example.com/revive-plus.jpg',
       source_url: 'https://artwork.example.com/revive-plus',
@@ -1071,6 +1079,10 @@ test('GET /v1/releases/:id returns release detail payload with title tracks', as
   const body = parseJson(response);
   assertReadMeta(body.meta, '/v1/releases/:id');
   assert.equal(body.data.release.release_id, IVE_RELEASE_ID);
+  assert.equal(body.data.detail_metadata.status, 'verified');
+  assert.equal(body.data.detail_metadata.provenance, 'releaseDetails.existing_row');
+  assert.equal(body.data.title_track_metadata.status, 'manual_override');
+  assert.equal(body.data.title_track_metadata.provenance, 'release_detail_overrides.title_tracks');
   assert.equal(body.data.tracks.length, 2);
   assert.equal(body.data.tracks.filter((track: { is_title_track: boolean }) => track.is_title_track).length, 2);
   assert.equal(body.data.service_links.youtube_music.status, 'manual_override');
