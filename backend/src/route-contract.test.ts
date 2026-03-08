@@ -20,6 +20,8 @@ const TEST_CONFIG: AppConfig = {
   appTimezone: 'Asia/Seoul',
   databaseUrl: 'postgresql://test:test@localhost/test',
   databaseMode: 'pooled',
+  databaseConnectionTimeoutMs: 3_000,
+  databaseReadTimeoutMs: 5_000,
   allowedWebOrigins: ['https://iamsomething.github.io'],
 };
 
@@ -30,6 +32,7 @@ type QueryResult<Row> = {
 
 type FakeDbOptions = {
   malformedReleaseIds?: string[];
+  timeoutEntitySearch?: boolean;
 };
 
 function buildEntitySearchPayload() {
@@ -334,9 +337,11 @@ function buildRadarPayload() {
 
 class FakeDb {
   private readonly malformedReleaseIds: Set<string>;
+  private readonly timeoutEntitySearch: boolean;
 
   constructor(options: FakeDbOptions = {}) {
     this.malformedReleaseIds = new Set(options.malformedReleaseIds ?? []);
+    this.timeoutEntitySearch = options.timeoutEntitySearch === true;
   }
 
   async query<Row extends Record<string, unknown>>(sql: string, params: unknown[] = []): Promise<QueryResult<Row>> {
@@ -347,6 +352,12 @@ class FakeDb {
     }
 
     if (normalizedSql.includes('from entity_search_documents')) {
+      if (this.timeoutEntitySearch) {
+        const error = new Error('canceling statement due to statement timeout') as Error & { code?: string };
+        error.code = '57014';
+        throw error;
+      }
+
       return this.result<Row>([
         {
           entity_id: ENTITY_ID,
@@ -826,4 +837,22 @@ test('error envelopes cover invalid request, not found, and stale projection cas
   });
   assert.equal(staleProjection.statusCode, 500);
   assertErrorEnvelope(parseJson(staleProjection), 'stale_projection', '/v1/releases/:id');
+});
+
+test('database timeout is classified as a timeout error envelope', async (t) => {
+  const app = createTestApp(t, {
+    timeoutEntitySearch: true,
+  });
+
+  const response = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: '최예나',
+    },
+  });
+
+  assert.equal(response.statusCode, 504);
+  const body = parseJson(response);
+  assertErrorEnvelope(body, 'timeout', '/v1/search');
 });

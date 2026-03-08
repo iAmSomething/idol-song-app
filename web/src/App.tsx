@@ -8,6 +8,7 @@ import {
   type RefObject,
 } from 'react'
 import './App.css'
+import { classifyBackendFetchError, fetchJsonWithTimeout } from './lib/backendFetch'
 import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
 import releaseDetailRows from './data/releaseDetails.json'
@@ -861,16 +862,21 @@ const TRANSLATIONS = {
     searchBackendLoading: 'backend /v1/search 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 결과를 먼저 표시합니다.',
     searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 우선 사용 중입니다.',
     searchBackendFallback: 'backend 검색 응답을 불러오지 못해 transitional JSON fallback 결과로 표시 중입니다.',
+    searchBackendTimeout: 'backend /v1/search 응답 시간이 초과되어 transitional JSON fallback 결과로 표시 중입니다.',
     calendarBackendLoading:
       'backend /v1/calendar/month 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 월 데이터를 먼저 표시합니다.',
     calendarBackendActive: '현재 월간 캘린더와 대시보드는 backend /v1/calendar/month 응답을 우선 사용 중입니다.',
     calendarBackendFallback:
       'backend 월간 캘린더 응답을 불러오지 못해 transitional JSON fallback으로 표시 중입니다.',
+    calendarBackendTimeout:
+      'backend /v1/calendar/month 응답 시간이 초과되어 transitional JSON fallback 월 데이터로 표시 중입니다.',
     radarBackendLoading:
       'backend /v1/radar 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 레이더 데이터를 먼저 표시합니다.',
     radarBackendActive: '현재 레이더 섹션은 backend /v1/radar 응답을 우선 사용 중입니다.',
     radarBackendFallback:
       'backend 레이더 응답을 불러오지 못해 transitional JSON fallback으로 표시 중입니다.',
+    radarBackendTimeout:
+      'backend /v1/radar 응답 시간이 초과되어 transitional JSON fallback 레이더 데이터로 표시 중입니다.',
     monthSummaryVerified: '검증됨',
     monthSummaryScheduled: '예정',
     filterLabels: {
@@ -1116,17 +1122,23 @@ const TRANSLATIONS = {
     searchBackendActive: 'Search results are currently coming from the backend /v1/search response.',
     searchBackendFallback:
       'The backend search response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
+    searchBackendTimeout:
+      'The backend /v1/search request timed out, so the UI is falling back to the transitional JSON snapshot.',
     calendarBackendLoading:
       'Checking backend /v1/calendar/month now. The UI keeps the transitional JSON fallback month data visible first.',
     calendarBackendActive:
       'The monthly calendar and dashboard are currently using the backend /v1/calendar/month response.',
     calendarBackendFallback:
       'The backend calendar/month response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
+    calendarBackendTimeout:
+      'The backend /v1/calendar/month request timed out, so the UI is falling back to the transitional JSON snapshot.',
     radarBackendLoading:
       'Checking backend /v1/radar now. The UI keeps the transitional JSON fallback radar data visible first.',
     radarBackendActive: 'The radar sections are currently using the backend /v1/radar response.',
     radarBackendFallback:
       'The backend radar response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
+    radarBackendTimeout:
+      'The backend /v1/radar request timed out, so the UI is falling back to the transitional JSON snapshot.',
     monthSummaryVerified: 'verified',
     monthSummaryScheduled: 'scheduled',
     filterLabels: {
@@ -1352,6 +1364,7 @@ const TEAM_COPY = {
     backendLoading: 'backend /v1/entities 응답을 확인하는 중입니다. 현재는 transitional JSON 팀 페이지를 먼저 표시합니다.',
     backendActive: '이 팀 페이지는 backend /v1/entities 응답을 우선 사용 중입니다.',
     backendFallback: 'backend 팀 페이지 응답을 불러오지 못해 transitional JSON 팀 페이지로 fallback 중입니다.',
+    backendTimeout: 'backend 팀 페이지 응답 시간이 초과되어 transitional JSON 팀 페이지로 fallback 중입니다.',
     upcomingLabel: '예정 컴백',
     upcomingTitle: '예정 신호 우선 보기',
     upcomingEmptyTitle: '아직 컴백 신호 없음',
@@ -1441,6 +1454,8 @@ const TEAM_COPY = {
     releaseDetailBackendActive: '이 상세 페이지는 backend release-detail 응답을 우선 사용 중입니다.',
     releaseDetailBackendFallback:
       '백엔드 응답을 불러오지 못해 transitional release-detail JSON fallback으로 표시 중입니다.',
+    releaseDetailBackendTimeout:
+      '백엔드 release-detail 응답 시간이 초과되어 transitional release-detail JSON fallback으로 표시 중입니다.',
     watchOnYouTube: 'YouTube에서 보기',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
@@ -1473,6 +1488,8 @@ const TEAM_COPY = {
     backendActive: 'This team page is currently using the backend /v1/entities response.',
     backendFallback:
       'The backend team-detail response was unavailable, so this page is falling back to the transitional JSON snapshot.',
+    backendTimeout:
+      'The backend team-detail request timed out, so this page is falling back to the transitional JSON snapshot.',
     upcomingLabel: 'Upcoming comeback',
     upcomingTitle: 'Scheduled signals first',
     upcomingEmptyTitle: 'No comeback signal yet',
@@ -1562,6 +1579,8 @@ const TEAM_COPY = {
     releaseDetailBackendActive: 'This detail page is currently using the backend release-detail response.',
     releaseDetailBackendFallback:
       'The backend response was unavailable, so this detail page is falling back to the transitional JSON snapshot.',
+    releaseDetailBackendTimeout:
+      'The backend release-detail request timed out, so this detail page is falling back to the transitional JSON snapshot.',
     watchOnYouTube: 'Watch on YouTube',
     placeholderCover: 'Release artwork',
     drawerCopy:
@@ -1894,7 +1913,9 @@ function App() {
         : searchSurfaceResource.loading
           ? copy.searchBackendLoading
           : searchSurfaceResource.source === 'json_fallback'
-            ? copy.searchBackendFallback
+            ? searchSurfaceResource.errorCode === 'timeout'
+              ? copy.searchBackendTimeout
+              : copy.searchBackendFallback
             : null
       : null
   const filteredUpcomingSignals = filteredUpcoming
@@ -2065,7 +2086,9 @@ function App() {
         : calendarMonthResource.loading
           ? copy.calendarBackendLoading
           : calendarMonthResource.source === 'json_fallback'
-            ? copy.calendarBackendFallback
+            ? calendarMonthResource.errorCode === 'timeout'
+              ? copy.calendarBackendTimeout
+              : copy.calendarBackendFallback
             : null
       : null
   const radarSurfaceMessage =
@@ -2075,7 +2098,9 @@ function App() {
         : radarResource.loading
           ? copy.radarBackendLoading
           : radarResource.source === 'json_fallback'
-            ? copy.radarBackendFallback
+            ? radarResource.errorCode === 'timeout'
+              ? copy.radarBackendTimeout
+              : copy.radarBackendFallback
             : null
       : null
   const selectedTeamFallback = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
@@ -2538,7 +2563,9 @@ function App() {
                   ? teamCopy.backendLoading
                   : selectedTeamResource.source === 'api'
                     ? teamCopy.backendActive
-                    : teamCopy.backendFallback}
+                    : selectedTeamResource.errorCode === 'timeout'
+                      ? teamCopy.backendTimeout
+                      : teamCopy.backendFallback}
               </p>
             ) : null}
 
@@ -3408,7 +3435,9 @@ function ReleaseDetailPage({
         ? teamCopy.releaseDetailBackendActive
         : releaseDetailResource.loading
           ? teamCopy.releaseDetailBackendLoading
-          : teamCopy.releaseDetailBackendFallback
+          : releaseDetailResource.errorCode === 'timeout'
+            ? teamCopy.releaseDetailBackendTimeout
+            : teamCopy.releaseDetailBackendFallback
       : null
 
   return (
@@ -6922,26 +6951,25 @@ function buildBackendApiUrl(path: string) {
   return BACKEND_API_BASE_URL ? `${BACKEND_API_BASE_URL}${path}` : path
 }
 
-async function fetchApiJson<T>(path: string, signal: AbortSignal): Promise<{ ok: boolean; status: number; body: T | null }> {
-  const response = await fetch(buildBackendApiUrl(path), {
+const SEARCH_SURFACE_TIMEOUT_MS = 4_000
+const RELEASE_DETAIL_LOOKUP_TIMEOUT_MS = 4_000
+const RELEASE_DETAIL_FETCH_TIMEOUT_MS = 4_500
+const ENTITY_DETAIL_FETCH_TIMEOUT_MS = 4_500
+const CALENDAR_MONTH_FETCH_TIMEOUT_MS = 4_500
+const RADAR_FETCH_TIMEOUT_MS = 4_000
+
+async function fetchApiJson<T>(
+  path: string,
+  signal: AbortSignal,
+  timeoutMs: number,
+): Promise<{ ok: boolean; status: number; body: T | null }> {
+  return fetchJsonWithTimeout<T>(buildBackendApiUrl(path), {
     headers: {
       Accept: 'application/json',
     },
     signal,
+    timeoutMs,
   })
-
-  let body: T | null = null
-  try {
-    body = (await response.json()) as T
-  } catch {
-    body = null
-  }
-
-  return {
-    ok: response.ok,
-    status: response.status,
-    body,
-  }
 }
 
 function normalizeApiReleaseDetailSnapshot(
@@ -7051,7 +7079,11 @@ async function fetchReleaseDetailApiSnapshot(
   let canonicalPath: string | null = null
 
   if (!releaseId) {
-    const lookupResult = await fetchApiJson<ReleaseDetailLookupApiResponse>(buildReleaseDetailLookupUrl(album, group), signal)
+    const lookupResult = await fetchApiJson<ReleaseDetailLookupApiResponse>(
+      buildReleaseDetailLookupUrl(album, group),
+      signal,
+      RELEASE_DETAIL_LOOKUP_TIMEOUT_MS,
+    )
     if (!lookupResult.ok || !lookupResult.body?.data?.release_id) {
       return {
         snapshot: null,
@@ -7064,7 +7096,11 @@ async function fetchReleaseDetailApiSnapshot(
     releaseDetailApiIdCache.set(cacheKey, releaseId)
   }
 
-  const detailResult = await fetchApiJson<ReleaseDetailApiResponse>(`/v1/releases/${releaseId}`, signal)
+  const detailResult = await fetchApiJson<ReleaseDetailApiResponse>(
+    `/v1/releases/${releaseId}`,
+    signal,
+    RELEASE_DETAIL_FETCH_TIMEOUT_MS,
+  )
   if (!detailResult.ok || !detailResult.body?.data) {
     return {
       snapshot: null,
@@ -7204,7 +7240,8 @@ function useReleaseDetailResource({
           return
         }
 
-        if (error instanceof DOMException && error.name === 'AbortError') {
+        const classifiedError = classifyBackendFetchError(error)
+        if (classifiedError === null) {
           return
         }
 
@@ -7212,7 +7249,7 @@ function useReleaseDetailResource({
           cacheKey,
           snapshot: null,
           loading: false,
-          errorCode: 'network_error',
+          errorCode: classifiedError,
         })
       })
 
@@ -7384,7 +7421,11 @@ async function fetchSearchSurfaceApiSnapshot(
   params.set('q', search)
   params.set('limit', '20')
 
-  const result = await fetchApiJson<SearchApiResponse>(`/v1/search?${params.toString()}`, signal)
+  const result = await fetchApiJson<SearchApiResponse>(
+    `/v1/search?${params.toString()}`,
+    signal,
+    SEARCH_SURFACE_TIMEOUT_MS,
+  )
   if (!result.ok || !result.body?.data) {
     return {
       snapshot: null,
@@ -7476,7 +7517,8 @@ function useSearchSurfaceResource({
           return
         }
 
-        if (error instanceof DOMException && error.name === 'AbortError') {
+        const classifiedError = classifyBackendFetchError(error)
+        if (classifiedError === null) {
           return
         }
 
@@ -7484,7 +7526,7 @@ function useSearchSurfaceResource({
           cacheKey,
           snapshot: null,
           loading: false,
-          errorCode: 'network_error',
+          errorCode: classifiedError,
         })
       })
 
@@ -7729,6 +7771,7 @@ async function fetchCalendarMonthApiSnapshot(
   const result = await fetchApiJson<CalendarMonthApiResponse>(
     `/v1/calendar/month?month=${encodeURIComponent(monthKey)}`,
     signal,
+    CALENDAR_MONTH_FETCH_TIMEOUT_MS,
   )
   if (!result.ok || !result.body?.data) {
     return {
@@ -7816,7 +7859,8 @@ function useCalendarMonthResource({
           return
         }
 
-        if (error instanceof DOMException && error.name === 'AbortError') {
+        const classifiedError = classifyBackendFetchError(error)
+        if (classifiedError === null) {
           return
         }
 
@@ -7824,7 +7868,7 @@ function useCalendarMonthResource({
           monthKey,
           snapshot: null,
           loading: false,
-          errorCode: 'network_error',
+          errorCode: classifiedError,
         })
       })
 
@@ -8068,7 +8112,7 @@ async function fetchRadarApiSnapshot(
     }
   }
 
-  const result = await fetchApiJson<RadarApiResponse>('/v1/radar', signal)
+  const result = await fetchApiJson<RadarApiResponse>('/v1/radar', signal, RADAR_FETCH_TIMEOUT_MS)
   if (!result.ok || !result.body?.data) {
     return {
       snapshot: null,
@@ -8149,14 +8193,15 @@ function useRadarSurfaceResource({
           return
         }
 
-        if (error instanceof DOMException && error.name === 'AbortError') {
+        const classifiedError = classifyBackendFetchError(error)
+        if (classifiedError === null) {
           return
         }
 
         setRemoteState({
           snapshot: null,
           loading: false,
-          errorCode: 'network_error',
+          errorCode: classifiedError,
         })
       })
 
@@ -8413,7 +8458,11 @@ async function fetchEntityDetailApiSnapshot(
     }
   }
 
-  const result = await fetchApiJson<EntityDetailApiResponse>(`/v1/entities/${encodeURIComponent(fallbackTeam.slug)}`, signal)
+  const result = await fetchApiJson<EntityDetailApiResponse>(
+    `/v1/entities/${encodeURIComponent(fallbackTeam.slug)}`,
+    signal,
+    ENTITY_DETAIL_FETCH_TIMEOUT_MS,
+  )
   if (!result.ok || !result.body?.data) {
     return {
       team: null,
@@ -8503,7 +8552,8 @@ function useEntityDetailResource({
           return
         }
 
-        if (error instanceof DOMException && error.name === 'AbortError') {
+        const classifiedError = classifyBackendFetchError(error)
+        if (classifiedError === null) {
           return
         }
 
@@ -8511,7 +8561,7 @@ function useEntityDetailResource({
           cacheKey,
           team: null,
           loading: false,
-          errorCode: 'network_error',
+          errorCode: classifiedError,
         })
       })
 

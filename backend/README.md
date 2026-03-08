@@ -155,6 +155,19 @@ web API origin guidance:
 - 허용되지 않은 browser origin은 `403 disallowed_origin`으로 명시적으로 거절한다.
 - allowed origin request는 `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods`, `Access-Control-Allow-Headers`, `Access-Control-Max-Age`, `Vary: Origin`을 명시적으로 반환한다.
 
+## Read Timeout Policy
+
+backend runtime은 DB read를 indefinite wait로 두지 않는다.
+
+- `DB_CONNECTION_TIMEOUT_MS`
+  - pooled/direct DB 연결 확보 budget
+  - 기본값: `3000`
+- `DB_READ_TIMEOUT_MS`
+  - read query / statement / lock wait budget
+  - 기본값: `5000`
+
+timeout으로 분류되는 DB read 오류는 read API에서 `504 timeout`으로 surface된다.
+
 ## JSON Baseline Import
 
 schema baseline이 적용된 뒤 current JSON snapshot을 canonical table로 backfill하려면 아래 순서를 사용한다.
