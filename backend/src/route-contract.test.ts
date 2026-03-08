@@ -4,6 +4,7 @@ import test, { type TestContext } from 'node:test';
 import { buildApp } from './app.js';
 import type { AppConfig } from './config.js';
 import type { DbPool } from './lib/db.js';
+import type { ReadyStatusSnapshot } from './lib/readiness.js';
 
 const NOW = '2026-03-08T06:00:00.000Z';
 const ENTITY_ID = '11111111-1111-4111-8111-111111111111';
@@ -42,6 +43,11 @@ type QueryResult<Row> = {
 type FakeDbOptions = {
   malformedReleaseIds?: string[];
   timeoutEntitySearch?: boolean;
+  pingFails?: boolean;
+};
+
+type TestAppOptions = FakeDbOptions & {
+  readyStatusSnapshot?: ReadyStatusSnapshot;
 };
 
 function buildEntitySearchPayload() {
@@ -398,12 +404,18 @@ class FakeDb {
   constructor(options: FakeDbOptions = {}) {
     this.malformedReleaseIds = new Set(options.malformedReleaseIds ?? []);
     this.timeoutEntitySearch = options.timeoutEntitySearch === true;
+    this.pingFails = options.pingFails === true;
   }
+
+  private readonly pingFails: boolean;
 
   async query<Row extends Record<string, unknown>>(sql: string, params: unknown[] = []): Promise<QueryResult<Row>> {
     const normalizedSql = sql.replace(/\s+/g, ' ').trim().toLowerCase();
 
     if (normalizedSql === 'select 1') {
+      if (this.pingFails) {
+        throw new Error('database unreachable');
+      }
       return this.result<Row>([{ '?column?': 1 } as unknown as Row]);
     }
 
@@ -696,11 +708,64 @@ class FakeDb {
   }
 }
 
-function createTestApp(t: TestContext, options: FakeDbOptions = {}) {
+function buildReadyStatusSnapshot(status: ReadyStatusSnapshot['status']): ReadyStatusSnapshot {
+  return {
+    status,
+    reasons:
+      status === 'ready'
+        ? []
+        : status === 'degraded'
+          ? ['parity_report_unclean']
+          : ['projection_freshness_not_ready'],
+    projections: {
+      status: status === 'not_ready' ? 'not_ready' : status === 'degraded' ? 'degraded' : 'healthy',
+      generated_at: NOW,
+      summary_lines: [],
+      lag_minutes: status === 'ready' ? 5 : status === 'degraded' ? 30 : 90,
+      thresholds: {
+        pass_lag_minutes: 20,
+        degraded_lag_minutes: 60,
+      },
+      row_counts: {
+        entity_search_documents: 117,
+        calendar_month_projection: 216,
+        entity_detail_projection: 117,
+        release_detail_projection: 1771,
+        radar_projection: 1,
+      },
+    },
+    dependencies: {
+      parity_report: {
+        status: status === 'ready' ? 'healthy' : 'degraded',
+        generated_at: NOW,
+        summary_lines: status === 'ready' ? ['parity clean'] : ['parity drift'],
+        clean: status === 'ready',
+      },
+      shadow_report: {
+        status: status === 'ready' ? 'healthy' : 'degraded',
+        generated_at: NOW,
+        summary_lines: status === 'ready' ? ['shadow clean'] : ['shadow drift'],
+        clean: status === 'ready',
+      },
+      runtime_gate_report: {
+        status: status === 'ready' ? 'healthy' : 'degraded',
+        generated_at: NOW,
+        summary_lines: status === 'ready' ? ['gate pass'] : ['gate degraded'],
+        stage_gates: {
+          shadow_to_web_cutover: status === 'ready' ? 'pass' : 'fail',
+          web_cutover_to_json_demotion: status === 'ready' ? 'pass' : 'fail',
+        },
+      },
+    },
+  };
+}
+
+function createTestApp(t: TestContext, options: TestAppOptions = {}) {
   const db = new FakeDb(options) as unknown as DbPool;
   const app = buildApp({
     config: TEST_CONFIG,
     db,
+    readyStatusProvider: async () => options.readyStatusSnapshot ?? buildReadyStatusSnapshot('ready'),
   });
 
   t.after(async () => {
@@ -763,7 +828,9 @@ test('GET /health returns plain health status', async (t) => {
 });
 
 test('GET /ready returns ready status and database mode', async (t) => {
-  const app = createTestApp(t);
+  const app = createTestApp(t, {
+    readyStatusSnapshot: buildReadyStatusSnapshot('ready'),
+  });
   const response = await app.inject({
     method: 'GET',
     url: '/ready',
@@ -771,9 +838,51 @@ test('GET /ready returns ready status and database mode', async (t) => {
 
   assert.equal(response.statusCode, 200);
   const body = parseJson(response);
+  assert.equal(response.headers['cache-control'], 'no-store');
   assert.equal(body.status, 'ready');
   assert.equal(body.database.mode, TEST_CONFIG.databaseMode);
+  assert.equal(body.database.status, 'ready');
+  assert.equal(body.projections.status, 'healthy');
+  assert.equal(body.dependencies.parity_report.status, 'healthy');
+  assert.equal(body.dependencies.runtime_gate_report.stage_gates.shadow_to_web_cutover, 'pass');
+  assert.deepEqual(body.reasons, []);
   assert.equal(body.timezone, TEST_CONFIG.appTimezone);
+});
+
+test('GET /ready returns degraded status when projection or dependency health is degraded', async (t) => {
+  const app = createTestApp(t, {
+    readyStatusSnapshot: buildReadyStatusSnapshot('degraded'),
+  });
+  const response = await app.inject({
+    method: 'GET',
+    url: '/ready',
+  });
+
+  assert.equal(response.statusCode, 200);
+  const body = parseJson(response);
+  assert.equal(body.status, 'degraded');
+  assert.equal(body.database.status, 'ready');
+  assert.equal(body.projections.status, 'degraded');
+  assert.equal(body.dependencies.parity_report.status, 'degraded');
+  assert.equal(body.dependencies.runtime_gate_report.stage_gates.shadow_to_web_cutover, 'fail');
+  assert.ok(body.reasons.includes('parity_report_unclean'));
+});
+
+test('GET /ready returns 503 not_ready when database is unreachable', async (t) => {
+  const app = createTestApp(t, {
+    pingFails: true,
+    readyStatusSnapshot: buildReadyStatusSnapshot('ready'),
+  });
+  const response = await app.inject({
+    method: 'GET',
+    url: '/ready',
+  });
+
+  assert.equal(response.statusCode, 503);
+  const body = parseJson(response);
+  assert.equal(body.status, 'not_ready');
+  assert.equal(body.database.status, 'not_ready');
+  assert.ok(body.reasons.includes('database_unreachable'));
 });
 
 test('GET /v1/search returns envelope with entity, release, and upcoming matches', async (t) => {
