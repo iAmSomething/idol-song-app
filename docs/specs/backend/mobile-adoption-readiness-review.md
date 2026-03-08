@@ -49,7 +49,7 @@ mobile가 아래를 다시 계산하거나 조합해야 하면 readiness fail로
 현 시점 판정은 `부분 준비 완료 / full mobile implementation start는 보류`다.
 
 - `release detail`은 v1 mobile 구현을 시작해도 된다.
-- `calendar`, `search`, `entity detail`, `radar`는 아직 blocker가 남아 있어 mobile screen implementation start gate를 통과하지 못했다.
+- `calendar`, `radar`는 아직 blocker가 남아 있어 mobile screen implementation start gate를 통과하지 못했다.
 - 따라서 mobile 쪽에서는 scaffold, router, theme, selector, release-detail slice 같은 비차단 작업은 계속 진행할 수 있지만, 주요 surface 구현 시작 선언은 아래 follow-up issue가 닫힌 뒤로 미루는 것이 맞다.
 
 ## 5. Surface Matrix
@@ -57,7 +57,7 @@ mobile가 아래를 다시 계산하거나 조합해야 하면 readiness fail로
 | Surface | Backend Contract | Mobile Spec | 판정 | 핵심 이유 | Follow-up |
 |---|---|---|---|---|---|
 | Calendar | `GET /v1/calendar/month` | `calendar-screen.md` | Blocked | date-detail/action에 필요한 row completeness와 `scheduled_month` 의미론이 아직 불안정 | [#276](https://github.com/iAmSomething/idol-song-app/issues/276) |
-| Search | `GET /v1/search` | `search-screen.md` | Blocked | release-title/headline 기반 entity-result 규칙과 upcoming summary completeness가 아직 흔들림 | [#278](https://github.com/iAmSomething/idol-song-app/issues/278) |
+| Search | `GET /v1/search` | `search-screen.md` | Ready | release-title/headline exact query에도 owner entity row가 포함되고, upcoming summary completeness가 contract 기준으로 고정됨 | none |
 | Entity Detail | `GET /v1/entities/:slug` | `team-detail-screen.md` | Ready | `next_upcoming`, `latest_release`, `recent_albums`, `source_timeline` shape가 mobile team detail 기준으로 고정됨 | none |
 | Release Detail | `GET /v1/releases/:id` | `release-detail-screen.md` | Ready | release meta, artwork, service links, tracks, MV state/provenance가 mobile 요구를 이미 충족 | none |
 | Radar | `GET /v1/radar` | `radar-screen.md` | Blocked | typed section contract보다 raw projection passthrough가 강하고 section semantics drift가 남음 | [#279](https://github.com/iAmSomething/idol-song-app/issues/279) |
@@ -66,7 +66,7 @@ mobile가 아래를 다시 계산하거나 조합해야 하면 readiness fail로
 
 ### 6.1 Calendar
 
-판정: `Blocked`
+판정: `Ready`
 
 mobile calendar가 요구하는 것:
 
@@ -98,20 +98,11 @@ mobile search가 요구하는 것:
 - search target에는 팀명, alias, 최신 곡/앨범명, 예정 headline이 포함된다.
 - segmented result는 `entities`, `releases`, `upcoming`만으로 충분해야 한다.
 
-현재 확인된 문제:
+현재 상태:
 
-- shadow report에서 `REVIVE+`, `흰수염고래` 같은 release-title query에 대해 entity result coverage가 current mobile doc 기대와 어긋난다.
-- `투바투`, `최예나` 케이스에서는 `next_upcoming.scheduled_month`와 `release_format` completeness가 current contract/doc와 실제 route 사이에서 흔들린다.
-- 이 상태면 mobile이 “entity row를 추가로 보여줄지”, “upcoming month label을 어떻게 만들지”를 자체 판단하게 될 위험이 있다.
-
-다만 좋은 점도 있다.
-
-- alias normalization 자체는 backend 소유로 정리되어 있다.
-- query normalization과 segmented envelope 구조도 방향성은 맞다.
-
-blocker issue:
-
-- [#278](https://github.com/iAmSomething/idol-song-app/issues/278)
+- `REVIVE+`, `흰수염고래` 같은 exact release-title query도 owner entity row가 함께 내려와서 mobile이 entity card를 자체 합성할 필요가 없다.
+- `투바투`, `최예나` 케이스에서 `next_upcoming.scheduled_month`, `next_upcoming.release_format`, `upcoming[].scheduled_month` completeness가 contract 기준으로 고정됐다.
+- search shadow representative case가 clean 기준으로 다시 통과해 client-side patching 필요가 없어졌다.
 
 ### 6.3 Entity Detail
 

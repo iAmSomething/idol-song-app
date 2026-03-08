@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T09:39:51.143Z",
+  "generated_at": "2026-03-08T10:13:21.659Z",
   "clean": false,
   "linked_parity_report": {
     "exists": true,
@@ -64,15 +64,13 @@
     ]
   },
   "summary_lines": [
-    "search: clean 1/5, drift 4/5",
+    "search: clean 5/5, drift 0/5",
     "entity_detail: clean 4/4, drift 0/4",
     "release_detail: clean 0/3, drift 3/3",
     "calendar_month: clean 3/3, drift 0/3",
     "radar: clean 0/1, drift 1/1",
-    "missing rows or segments: 7 case(s)",
-    "field-shape mismatches: 6 case(s)",
-    "latest-release or next-upcoming drift: 4 case(s)",
-    "alias-match differences: 3 case(s)",
+    "field-shape mismatches: 4 case(s)",
+    "missing rows or segments: 3 case(s)",
     "radar eligibility drift: 1 case(s)"
   ],
   "cases": [
@@ -161,88 +159,9 @@
       "input": {
         "q": "투바투"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "latest-release or next-upcoming drift",
-        "missing rows or segments"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.entities[0].next_upcoming.scheduled_month",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.entities[0].next_upcoming.release_format",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.upcoming[0].scheduled_month",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
-            {
-              "path": "data.upcoming[0].release_format",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            }
-          ]
-        },
-        {
-          "category": "latest-release or next-upcoming drift",
-          "path": "data.entities[0].next_upcoming",
-          "expected": {
-            "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
-            "scheduled_date": "2026-04-13",
-            "scheduled_month": "2026-04",
-            "date_precision": "exact",
-            "date_status": "confirmed"
-          },
-          "actual": {
-            "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
-            "scheduled_date": "2026-04-13",
-            "scheduled_month": null,
-            "date_precision": "exact",
-            "date_status": "confirmed"
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.upcoming[0]",
-          "expected": {
-            "entity_slug": "tomorrow-x-together",
-            "display_name": "TOMORROW X TOGETHER",
-            "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
-            "scheduled_date": "2026-04-13",
-            "scheduled_month": "2026-04",
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "match_reason": "entity_exact",
-            "matched_alias": "투바투"
-          },
-          "actual": {
-            "entity_slug": "tomorrow-x-together",
-            "display_name": "TOMORROW X TOGETHER",
-            "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
-            "scheduled_date": "2026-04-13",
-            "scheduled_month": null,
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "match_reason": "entity_exact",
-            "matched_alias": "투바투"
-          }
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "entities": [
           {
@@ -321,8 +240,10 @@
             "next_upcoming": {
               "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
               "scheduled_date": "2026-04-13",
+              "scheduled_month": "2026-04",
               "date_precision": "exact",
               "date_status": "confirmed",
+              "release_format": null,
               "confidence_score": 0.84
             }
           }
@@ -349,7 +270,7 @@
             "display_name": "TOMORROW X TOGETHER",
             "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
             "scheduled_date": "2026-04-13",
-            "scheduled_month": null,
+            "scheduled_month": "2026-04",
             "date_precision": "exact",
             "date_status": "confirmed",
             "release_format": null,
@@ -369,114 +290,9 @@
       "input": {
         "q": "최예나"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments",
-        "latest-release or next-upcoming drift",
-        "alias-match differences"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.entities[0].next_upcoming.scheduled_month",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.entities[0].next_upcoming.release_format",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.upcoming[0].scheduled_month",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.releases",
-          "expected_count": 0,
-          "actual_count": 1
-        },
-        {
-          "category": "latest-release or next-upcoming drift",
-          "path": "data.entities[0].latest_release",
-          "expected": null,
-          "actual": {
-            "release_title": "STAR!",
-            "release_date": "2025-11-26",
-            "stream": "song"
-          }
-        },
-        {
-          "category": "latest-release or next-upcoming drift",
-          "path": "data.entities[0].next_upcoming",
-          "expected": {
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "scheduled_month": "2026-03",
-            "date_precision": "exact",
-            "date_status": "confirmed"
-          },
-          "actual": {
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "scheduled_month": null,
-            "date_precision": "exact",
-            "date_status": "confirmed"
-          }
-        },
-        {
-          "category": "alias-match differences",
-          "path": "data.releases[0]",
-          "expected": null,
-          "actual": {
-            "entity_slug": "yena",
-            "display_name": "YENA",
-            "release_title": "STAR!",
-            "release_date": "2025-11-26",
-            "stream": "song",
-            "match_reason": "entity_exact_latest_release",
-            "matched_alias": "최예나"
-          },
-          "query": "최예나"
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.upcoming[0]",
-          "expected": {
-            "entity_slug": "yena",
-            "display_name": "YENA",
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "scheduled_month": "2026-03",
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "match_reason": "entity_exact",
-            "matched_alias": "최예나"
-          },
-          "actual": {
-            "entity_slug": "yena",
-            "display_name": "YENA",
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "scheduled_month": null,
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "match_reason": "entity_exact",
-            "matched_alias": "최예나"
-          }
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "entities": [
           {
@@ -486,7 +302,12 @@
             "agency_name": null,
             "match_reason": "alias_exact",
             "matched_alias": "최예나",
-            "latest_release": null,
+            "latest_release": {
+              "release_title": "STAR!",
+              "release_date": "2025-11-26",
+              "stream": "song",
+              "release_kind": "single"
+            },
             "next_upcoming": {
               "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
               "scheduled_date": "2026-03-11",
@@ -498,7 +319,19 @@
             }
           }
         ],
-        "releases": [],
+        "releases": [
+          {
+            "entity_slug": "yena",
+            "display_name": "YENA",
+            "release_title": "STAR!",
+            "release_date": "2025-11-26",
+            "stream": "song",
+            "release_kind": "single",
+            "release_format": "single",
+            "match_reason": "entity_exact_latest_release",
+            "matched_alias": "최예나"
+          }
+        ],
         "upcoming": [
           {
             "entity_slug": "yena",
@@ -538,8 +371,10 @@
             "next_upcoming": {
               "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
               "scheduled_date": "2026-03-11",
+              "scheduled_month": "2026-03",
               "date_precision": "exact",
               "date_status": "confirmed",
+              "release_format": "ep",
               "confidence_score": 0.84
             }
           }
@@ -566,7 +401,7 @@
             "display_name": "YENA",
             "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
             "scheduled_date": "2026-03-11",
-            "scheduled_month": null,
+            "scheduled_month": "2026-03",
             "date_precision": "exact",
             "date_status": "confirmed",
             "release_format": "ep",
@@ -586,48 +421,9 @@
       "input": {
         "q": "REVIVE+"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "missing rows or segments",
-        "alias-match differences",
-        "latest-release or next-upcoming drift"
-      ],
-      "mismatches": [
-        {
-          "category": "missing rows or segments",
-          "path": "data.entities",
-          "expected_count": 1,
-          "actual_count": 0
-        },
-        {
-          "category": "alias-match differences",
-          "path": "data.entities[0]",
-          "expected": {
-            "entity_slug": "ive",
-            "display_name": "IVE",
-            "match_reason": "partial",
-            "matched_alias": null,
-            "latest_release": {
-              "release_title": "REVIVE+",
-              "release_date": "2026-02-23",
-              "stream": "album"
-            },
-            "next_upcoming": null
-          },
-          "actual": null,
-          "query": "REVIVE+"
-        },
-        {
-          "category": "latest-release or next-upcoming drift",
-          "path": "data.entities[0].latest_release",
-          "expected": {
-            "release_title": "REVIVE+",
-            "release_date": "2026-02-23",
-            "stream": "album"
-          },
-          "actual": null
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "entities": [
           {
@@ -662,7 +458,25 @@
         "upcoming": []
       },
       "actual_snapshot": {
-        "entities": [],
+        "entities": [
+          {
+            "entity_slug": "ive",
+            "display_name": "IVE",
+            "canonical_name": "IVE",
+            "entity_type": "group",
+            "agency_name": "Starship Entertainment",
+            "match_reason": "partial",
+            "matched_alias": null,
+            "latest_release": {
+              "release_id": "c339f501-52fe-599d-8d2d-bf5694ae4de4",
+              "release_title": "REVIVE+",
+              "release_date": "2026-02-23",
+              "stream": "album",
+              "release_kind": "album"
+            },
+            "next_upcoming": null
+          }
+        ],
         "releases": [
           {
             "release_id": "c339f501-52fe-599d-8d2d-bf5694ae4de4",
@@ -687,48 +501,9 @@
       "input": {
         "q": "흰수염고래"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "missing rows or segments",
-        "alias-match differences",
-        "latest-release or next-upcoming drift"
-      ],
-      "mismatches": [
-        {
-          "category": "missing rows or segments",
-          "path": "data.entities",
-          "expected_count": 1,
-          "actual_count": 0
-        },
-        {
-          "category": "alias-match differences",
-          "path": "data.entities[0]",
-          "expected": {
-            "entity_slug": "qwer",
-            "display_name": "QWER",
-            "match_reason": "partial",
-            "matched_alias": null,
-            "latest_release": {
-              "release_title": "흰수염고래",
-              "release_date": "2025-10-06",
-              "stream": "song"
-            },
-            "next_upcoming": null
-          },
-          "actual": null,
-          "query": "흰수염고래"
-        },
-        {
-          "category": "latest-release or next-upcoming drift",
-          "path": "data.entities[0].latest_release",
-          "expected": {
-            "release_title": "흰수염고래",
-            "release_date": "2025-10-06",
-            "stream": "song"
-          },
-          "actual": null
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "entities": [
           {
@@ -763,7 +538,25 @@
         "upcoming": []
       },
       "actual_snapshot": {
-        "entities": [],
+        "entities": [
+          {
+            "entity_slug": "qwer",
+            "display_name": "QWER",
+            "canonical_name": "QWER",
+            "entity_type": "group",
+            "agency_name": null,
+            "match_reason": "partial",
+            "matched_alias": null,
+            "latest_release": {
+              "release_id": "d9a85b3d-ed19-51bb-a6c4-e5e538401b50",
+              "release_title": "흰수염고래",
+              "release_date": "2025-10-06",
+              "stream": "song",
+              "release_kind": "single"
+            },
+            "next_upcoming": null
+          }
+        ],
         "releases": [
           {
             "release_id": "d9a85b3d-ed19-51bb-a6c4-e5e538401b50",
