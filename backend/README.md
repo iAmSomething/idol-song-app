@@ -206,7 +206,18 @@ set +a
 python3 import_json_to_neon.py --dry-run --summary-path /tmp/idol-song-app-import-dry-run.json
 ```
 
-dry-run에서는 DB write를 commit하지 않고, summary에 `mode=dry_run`, `dry_run`, `db_row_counts_before`, `db_row_counts_after`, `db_unchanged`, `operation_counts`를 함께 남긴다.
+dry-run에서는 DB write를 commit하지 않고, summary에 아래 필드를 함께 남긴다.
+
+- `mode=dry_run`, `dry_run`, `db_row_counts_before`, `db_row_counts_after`, `db_unchanged`
+- `operation_counts`
+- `table_counts`
+  - table별 `payload_rows`, `db_rows_before`, `db_rows_after`, `projected_db_rows_after`, `insert_candidates`, `update_candidates`
+- `anomalies`
+  - `counts`: duplicate / dropped / missing-FK / unresolved / stale review task count
+  - `by_table`: table별 duplicate / dropped / missing-FK sample count
+  - `samples`: missing-FK sample, unresolved mapping, unresolved review link 샘플
+- `dry_run_review`
+  - dry-run이 보장하는 것과 보장하지 않는 것, 먼저 볼 review 순서
 
 입력 우선순위:
 
