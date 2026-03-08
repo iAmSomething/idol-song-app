@@ -12,6 +12,9 @@ import ReleaseDetailPlaceholderScreen from '../../app/releases/[id]';
 jest.mock('expo-router', () => {
   const React = jest.requireActual<typeof import('react')>('react');
   const useLocalSearchParams = jest.fn(() => ({}));
+  const useRouter = jest.fn(() => ({
+    push: jest.fn(),
+  }));
 
   function Redirect({ href }: { href: string }) {
     return React.createElement('redirect', { href });
@@ -35,8 +38,10 @@ jest.mock('expo-router', () => {
     Redirect,
     Stack,
     Tabs,
+    useRouter,
     useLocalSearchParams,
     __mock: {
+      useRouter,
       useLocalSearchParams,
     },
   };
@@ -44,10 +49,12 @@ jest.mock('expo-router', () => {
 
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
+    useRouter: jest.Mock;
     useLocalSearchParams: jest.Mock;
   };
 };
 
+const mockUseRouter = __mock.useRouter;
 const mockUseLocalSearchParams = __mock.useLocalSearchParams;
 
 function renderTree(element: React.ReactElement) {
@@ -66,12 +73,19 @@ async function renderTreeAsync(element: React.ReactElement) {
   await act(async () => {
     tree = renderer.create(element);
     await Promise.resolve();
+    await Promise.resolve();
   });
 
   return tree!;
 }
 
 describe('mobile route shell smoke', () => {
+  beforeEach(() => {
+    mockUseRouter.mockReturnValue({
+      push: jest.fn(),
+    });
+  });
+
   test('root index redirects to calendar tab', () => {
     const tree = renderTree(<IndexRoute />).toJSON() as renderer.ReactTestRendererJSON;
     expect(tree.props.href).toBe('/(tabs)/calendar');
@@ -85,7 +99,7 @@ describe('mobile route shell smoke', () => {
   test('tab placeholder screens render without crashing', async () => {
     await expect(renderTreeAsync(<CalendarTabScreen />)).resolves.toBeDefined();
     expect(() => renderTree(<RadarTabScreen />)).not.toThrow();
-    expect(() => renderTree(<SearchTabScreen />)).not.toThrow();
+    await expect(renderTreeAsync(<SearchTabScreen />)).resolves.toBeDefined();
   });
 
   test('artist detail placeholder handles valid and missing slug safely', () => {
