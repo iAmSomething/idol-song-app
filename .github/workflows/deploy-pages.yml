@@ -47,7 +47,6 @@ jobs:
         working-directory: web
         env:
           VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
-          VITE_PRIMARY_SURFACE_SOURCE: ${{ vars.VITE_PRIMARY_SURFACE_SOURCE }}
         run: npm run build
 
       - name: Upload artifact

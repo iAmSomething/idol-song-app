@@ -869,22 +869,20 @@ const TRANSLATIONS = {
     calendarBackendLoading: 'backend /v1/calendar/month 결과를 확인하는 중입니다.',
     calendarBackendActive: '현재 월간 캘린더와 대시보드는 backend /v1/calendar/month 응답을 우선 사용 중입니다.',
     calendarBackendFallback:
-      'backend 월간 캘린더 응답을 불러오지 못했습니다. runtime JSON fallback은 비활성화되어 있습니다.',
+      'backend 월간 캘린더 응답을 불러오지 못했습니다. 월간 캘린더는 이제 backend-only runtime으로 동작합니다.',
     calendarBackendTimeout:
-      'backend /v1/calendar/month 응답 시간이 초과되었습니다. runtime JSON fallback은 비활성화되어 있습니다.',
+      'backend /v1/calendar/month 응답 시간이 초과되었습니다. 월간 캘린더는 이제 backend-only runtime으로 동작합니다.',
     radarBackendLoading: 'backend /v1/radar 결과를 확인하는 중입니다.',
     radarBackendActive: '현재 레이더 섹션은 backend /v1/radar 응답을 우선 사용 중입니다.',
     radarBackendFallback:
-      'backend 레이더 응답을 불러오지 못했습니다. runtime JSON fallback은 비활성화되어 있습니다.',
+      'backend 레이더 응답을 불러오지 못했습니다. 레이더 섹션은 이제 backend-only runtime으로 동작합니다.',
     radarBackendTimeout:
-      'backend /v1/radar 응답 시간이 초과되었습니다. runtime JSON fallback은 비활성화되어 있습니다.',
+      'backend /v1/radar 응답 시간이 초과되었습니다. 레이더 섹션은 이제 backend-only runtime으로 동작합니다.',
     surfaceSourceLabel: '소스',
     surfaceReasonLabel: '이유',
     surfaceTraceLabel: '요청 ID',
     surfaceSourceModeLabels: {
       api: 'backend API',
-      json: 'transitional JSON',
-      json_fallback: 'transitional JSON fallback',
       api_error: 'backend API unavailable',
     },
     surfaceFallbackReasonLabels: {
@@ -1146,22 +1144,20 @@ const TRANSLATIONS = {
     calendarBackendActive:
       'The monthly calendar and dashboard are currently using the backend /v1/calendar/month response.',
     calendarBackendFallback:
-      'The backend calendar/month response was unavailable. Runtime JSON fallback is disabled.',
+      'The backend calendar/month response was unavailable. The monthly calendar now runs backend-only.',
     calendarBackendTimeout:
-      'The backend /v1/calendar/month request timed out. Runtime JSON fallback is disabled.',
+      'The backend /v1/calendar/month request timed out. The monthly calendar now runs backend-only.',
     radarBackendLoading: 'Checking backend /v1/radar now.',
     radarBackendActive: 'The radar sections are currently using the backend /v1/radar response.',
     radarBackendFallback:
-      'The backend radar response was unavailable. Runtime JSON fallback is disabled.',
+      'The backend radar response was unavailable. The radar sections now run backend-only.',
     radarBackendTimeout:
-      'The backend /v1/radar request timed out. Runtime JSON fallback is disabled.',
+      'The backend /v1/radar request timed out. The radar sections now run backend-only.',
     surfaceSourceLabel: 'Source',
     surfaceReasonLabel: 'Reason',
     surfaceTraceLabel: 'Request ID',
     surfaceSourceModeLabels: {
       api: 'backend API',
-      json: 'transitional JSON',
-      json_fallback: 'transitional JSON fallback',
       api_error: 'backend API unavailable',
     },
     surfaceFallbackReasonLabels: {

@@ -1,4 +1,4 @@
-export type SurfaceStatusSource = 'json' | 'api' | 'json_fallback' | 'api_error'
+export type SurfaceStatusSource = 'api' | 'api_error'
 export type SurfaceFallbackReasonKey =
   | 'timeout'
   | 'network_error'
@@ -64,7 +64,7 @@ export function buildSurfaceStatusMeta({
   labels: SurfaceStatusLabels
 }) {
   const parts = [`${labels.sourceLabel}: ${labels.sourceStateLabels[source]}`]
-  const reason = source === 'json_fallback' || source === 'api_error' ? getSurfaceFallbackReasonKey(errorCode) : null
+  const reason = source === 'api_error' ? getSurfaceFallbackReasonKey(errorCode) : null
 
   if (reason) {
     parts.push(`${labels.reasonLabel}: ${labels.fallbackReasonLabels[reason]}`)
