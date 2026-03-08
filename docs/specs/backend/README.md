@@ -36,6 +36,9 @@
 10. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
+11. `mobile-adoption-readiness-review.md`
+   - backend contract가 mobile screen 구현을 바로 받을 수 있는지 surface별 readiness 검토
+   - blocker / non-blocker / follow-up issue 기준의 gate decision
 
 ## 읽는 순서
 
@@ -47,8 +50,9 @@
 6. `web-cutover-rollback-drills.md`
 7. `json-snapshot-demotion.md`
 8. `shared-read-api-contracts.md`
-9. `phased-rollout-plan.md`
-10. `backend-migration-epic.md`
+9. `mobile-adoption-readiness-review.md`
+10. `phased-rollout-plan.md`
+11. `backend-migration-epic.md`
 
 ## 원칙
 
