@@ -125,6 +125,7 @@ preview와 production은 최소 아래 구성을 분리한다.
 | `DATABASE_URL_POOLED` | preview pooled URL | production pooled URL |
 | `PORT` | preview service port | production service port |
 | `APP_TIMEZONE` | `Asia/Seoul` | `Asia/Seoul` |
+| `WEB_ALLOWED_ORIGINS` | preview web consumer origin list | production extra web consumer origin list |
 | `LOG_LEVEL` | `debug` 또는 `info` | `info` 또는 `warn` |
 | `WORKER_CADENCE_LABEL` | preview cadence label | production cadence label |
 
@@ -134,6 +135,7 @@ preview와 production은 최소 아래 구성을 분리한다.
 - preview API는 production DB URL을 읽지 않는다.
 - preview worker는 production cron과 다른 cadence를 가져도 된다.
 - timezone rule은 preview/production 모두 `Asia/Seoul`로 고정한다.
+- production 기본 web origin은 `https://iamsomething.github.io`이고, preview/prod에서 추가 origin이 필요하면 `WEB_ALLOWED_ORIGINS`로만 연다.
 
 ## 7. Rehearsal Sequence
 
