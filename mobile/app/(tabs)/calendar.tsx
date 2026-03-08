@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
+  Modal,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -95,6 +96,7 @@ export default function CalendarTabScreen() {
   const theme = useAppTheme();
   const [reloadCount, setReloadCount] = useState(0);
   const [selectedDayIso, setSelectedDayIso] = useState<string | null>(null);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [state, setState] = useState<CalendarScreenState>({ kind: 'loading' });
   const today = useMemo(() => new Date(), []);
   const activeMonth = useMemo(() => buildMonthKey(today), [today]);
@@ -165,6 +167,19 @@ export default function CalendarTabScreen() {
     return buildCalendarMonthGrid(snapshot, selectedDayIso, todayIsoDate);
   }, [selectedDayIso, snapshot, todayIsoDate]);
 
+  const selectedDay = monthGrid?.selectedDay ?? null;
+
+  function openDaySheet(isoDate: string) {
+    setSelectedDayIso((current) =>
+      resolveNextCalendarSelection(current ?? isoDate, isoDate, snapshot?.month ?? isoDate.slice(0, 7)),
+    );
+    setIsSheetOpen(true);
+  }
+
+  function closeDaySheet() {
+    setIsSheetOpen(false);
+  }
+
   if (state.kind === 'loading') {
     return (
       <View style={styles.stateContainer}>
@@ -194,198 +209,242 @@ export default function CalendarTabScreen() {
   }
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      <View style={styles.header}>
-        <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
-        <Text style={styles.title}>{formatMonthLabel(snapshot.month)}</Text>
-        <Text style={styles.body}>
-          현재 월 grid, day badge, selected-day state를 shared selector와 dataset source 위에서 렌더링합니다.
-        </Text>
-      </View>
-
-      <View style={styles.sourceCard}>
-        <Text style={styles.sourceLabel}>Active source</Text>
-        <Text style={styles.sourceValue}>{source.sourceLabel}</Text>
-        {source.issues.length ? (
-          <Text style={styles.sourceIssue}>{source.issues.join(' / ')}</Text>
-        ) : null}
-      </View>
-
-      <View style={styles.summaryGrid}>
-        <View style={styles.summaryCard}>
-          <Text style={styles.summaryLabel}>이번 달 발매</Text>
-          <Text style={styles.summaryValue}>{snapshot.releaseCount}</Text>
-        </View>
-        <View style={styles.summaryCard}>
-          <Text style={styles.summaryLabel}>예정 컴백</Text>
-          <Text style={styles.summaryValue}>{snapshot.upcomingCount}</Text>
-        </View>
-        <View style={styles.summaryCard}>
-          <Text style={styles.summaryLabel}>가장 가까운 일정</Text>
-          <Text style={styles.summaryValueSmall}>
-            {snapshot.nearestUpcoming?.displayGroup ?? '없음'}
-          </Text>
-          <Text style={styles.summaryMeta}>
-            {snapshot.nearestUpcoming
-              ? formatUpcomingLabel(snapshot.nearestUpcoming)
-              : 'exact 일정 없음'}
+    <>
+      <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+        <View style={styles.header}>
+          <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
+          <Text style={styles.title}>{formatMonthLabel(snapshot.month)}</Text>
+          <Text style={styles.body}>
+            현재 월 grid, day badge, selected-day state를 shared selector와 dataset source 위에서 렌더링합니다.
           </Text>
         </View>
-      </View>
 
-      {monthGrid ? (
-        <View style={styles.sectionCard}>
-          <View style={styles.calendarHeader}>
-            <Text style={styles.sectionTitle}>Calendar grid</Text>
-            <Text style={styles.sectionMeta}>
-              {monthGrid.selectedDay ? monthGrid.selectedDay.label : formatMonthLabel(snapshot.month)}
-            </Text>
-          </View>
-
-          <View style={styles.weekdayRow}>
-            {monthGrid.weekdayLabels.map((label) => (
-              <Text key={label} style={styles.weekdayLabel}>
-                {label}
-              </Text>
-            ))}
-          </View>
-
-          <View style={styles.calendarGrid}>
-            {monthGrid.weeks.map((week, weekIndex) => (
-              <View key={`${monthGrid.month}-week-${weekIndex}`} style={styles.weekRow}>
-                {week.map((cell, cellIndex) => {
-                  if (!cell) {
-                    return <View key={`${monthGrid.month}-empty-${weekIndex}-${cellIndex}`} style={styles.emptyCell} />;
-                  }
-
-                  return (
-                    <Pressable
-                      key={cell.isoDate}
-                      accessibilityRole="button"
-                      accessibilityState={{ selected: cell.isSelected }}
-                      onPress={() =>
-                        setSelectedDayIso((current) =>
-                          resolveNextCalendarSelection(current ?? cell.isoDate, cell.isoDate, snapshot.month),
-                        )
-                      }
-                      style={({ pressed }) => [
-                        styles.dayCell,
-                        cell.isToday ? styles.dayCellToday : null,
-                        cell.isSelected ? styles.dayCellSelected : null,
-                        pressed ? styles.dayCellPressed : null,
-                      ]}
-                    >
-                      <View style={styles.dayCellHeader}>
-                        <Text
-                          style={[
-                            styles.dayNumber,
-                            cell.isSelected ? styles.dayNumberSelected : null,
-                          ]}
-                        >
-                          {cell.dayNumber}
-                        </Text>
-                        {cell.releaseCount > 0 || cell.upcomingCount > 0 ? (
-                          <Text style={styles.dayCounts}>
-                            {cell.releaseCount}/{cell.upcomingCount}
-                          </Text>
-                        ) : null}
-                      </View>
-
-                      <View style={styles.badgeStack}>
-                        {cell.badges.map((badge) => {
-                          const palette = getBadgePalette(theme, badge.kind);
-                          return (
-                            <View
-                              key={badge.id}
-                              style={[
-                                styles.badgePill,
-                                {
-                                  backgroundColor: palette.backgroundColor,
-                                },
-                              ]}
-                            >
-                              <Text style={[styles.badgeText, { color: palette.color }]}>
-                                {badge.monogram}
-                              </Text>
-                            </View>
-                          );
-                        })}
-                        {cell.overflowCount > 0 ? (
-                          <Text style={styles.overflowLabel}>+{cell.overflowCount}</Text>
-                        ) : null}
-                      </View>
-                    </Pressable>
-                  );
-                })}
-              </View>
-            ))}
-          </View>
-
-          {state.kind === 'empty' ? (
-            <Text style={styles.body}>
-              현재 dataset source에는 {formatMonthLabel(snapshot.month)} 기준 발매나 예정 컴백이 없습니다.
-            </Text>
+        <View style={styles.sourceCard}>
+          <Text style={styles.sourceLabel}>Active source</Text>
+          <Text style={styles.sourceValue}>{source.sourceLabel}</Text>
+          {source.issues.length ? (
+            <Text style={styles.sourceIssue}>{source.issues.join(' / ')}</Text>
           ) : null}
         </View>
-      ) : null}
 
-      {monthGrid?.selectedDay ? (
+        <View style={styles.summaryGrid}>
+          <View style={styles.summaryCard}>
+            <Text style={styles.summaryLabel}>이번 달 발매</Text>
+            <Text style={styles.summaryValue}>{snapshot.releaseCount}</Text>
+          </View>
+          <View style={styles.summaryCard}>
+            <Text style={styles.summaryLabel}>예정 컴백</Text>
+            <Text style={styles.summaryValue}>{snapshot.upcomingCount}</Text>
+          </View>
+          <View style={styles.summaryCard}>
+            <Text style={styles.summaryLabel}>가장 가까운 일정</Text>
+            <Text style={styles.summaryValueSmall}>
+              {snapshot.nearestUpcoming?.displayGroup ?? '없음'}
+            </Text>
+            <Text style={styles.summaryMeta}>
+              {snapshot.nearestUpcoming
+                ? formatUpcomingLabel(snapshot.nearestUpcoming)
+                : 'exact 일정 없음'}
+            </Text>
+          </View>
+        </View>
+
+        {monthGrid ? (
+          <View style={styles.sectionCard}>
+            <View style={styles.calendarHeader}>
+              <Text style={styles.sectionTitle}>Calendar grid</Text>
+              <Text style={styles.sectionMeta}>
+                {selectedDay ? selectedDay.label : formatMonthLabel(snapshot.month)}
+              </Text>
+            </View>
+
+            <View style={styles.weekdayRow}>
+              {monthGrid.weekdayLabels.map((label) => (
+                <Text key={label} style={styles.weekdayLabel}>
+                  {label}
+                </Text>
+              ))}
+            </View>
+
+            <View style={styles.calendarGrid}>
+              {monthGrid.weeks.map((week, weekIndex) => (
+                <View key={`${monthGrid.month}-week-${weekIndex}`} style={styles.weekRow}>
+                  {week.map((cell, cellIndex) => {
+                    if (!cell) {
+                      return (
+                        <View
+                          key={`${monthGrid.month}-empty-${weekIndex}-${cellIndex}`}
+                          style={styles.emptyCell}
+                        />
+                      );
+                    }
+
+                    return (
+                      <Pressable
+                        key={cell.isoDate}
+                        testID={`calendar-day-${cell.isoDate}`}
+                        accessibilityRole="button"
+                        accessibilityState={{ selected: cell.isSelected }}
+                        onPress={() => openDaySheet(cell.isoDate)}
+                        style={({ pressed }) => [
+                          styles.dayCell,
+                          cell.isToday ? styles.dayCellToday : null,
+                          cell.isSelected ? styles.dayCellSelected : null,
+                          pressed ? styles.dayCellPressed : null,
+                        ]}
+                      >
+                        <View style={styles.dayCellHeader}>
+                          <Text
+                            style={[
+                              styles.dayNumber,
+                              cell.isSelected ? styles.dayNumberSelected : null,
+                            ]}
+                          >
+                            {cell.dayNumber}
+                          </Text>
+                          {cell.releaseCount > 0 || cell.upcomingCount > 0 ? (
+                            <Text style={styles.dayCounts}>
+                              {cell.releaseCount}/{cell.upcomingCount}
+                            </Text>
+                          ) : null}
+                        </View>
+
+                        <View style={styles.badgeStack}>
+                          {cell.badges.map((badge) => {
+                            const palette = getBadgePalette(theme, badge.kind);
+                            return (
+                              <View
+                                key={badge.id}
+                                style={[
+                                  styles.badgePill,
+                                  {
+                                    backgroundColor: palette.backgroundColor,
+                                  },
+                                ]}
+                              >
+                                <Text style={[styles.badgeText, { color: palette.color }]}>
+                                  {badge.monogram}
+                                </Text>
+                              </View>
+                            );
+                          })}
+                          {cell.overflowCount > 0 ? (
+                            <Text style={styles.overflowLabel}>+{cell.overflowCount}</Text>
+                          ) : null}
+                        </View>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              ))}
+            </View>
+
+            {state.kind === 'empty' ? (
+              <Text style={styles.body}>
+                현재 dataset source에는 {formatMonthLabel(snapshot.month)} 기준 발매나 예정 컴백이 없습니다.
+              </Text>
+            ) : null}
+          </View>
+        ) : null}
+
         <View style={styles.sectionCard}>
-          <Text style={styles.sectionTitle}>{monthGrid.selectedDay.label}</Text>
-          <Text style={styles.sectionMeta}>{formatSelectedDaySummary(monthGrid.selectedDay)}</Text>
-
-          {monthGrid.selectedDay.isEmpty ? (
-            <Text style={styles.body}>이 날짜에는 등록된 일정이 없습니다.</Text>
+          <Text style={styles.sectionTitle}>Month-only signals</Text>
+          <Text style={styles.body}>
+            month-only 예정 신호는 날짜 셀에 넣지 않고 월 컨텍스트 버킷으로 유지합니다.
+          </Text>
+          {snapshot.monthOnlyUpcoming.length ? (
+            snapshot.monthOnlyUpcoming.map((event) => (
+              <View key={event.id} style={styles.row}>
+                <Text style={styles.rowTitle}>{event.displayGroup}</Text>
+                <Text style={styles.rowBody}>{event.headline}</Text>
+                <Text style={styles.rowMeta}>{formatUpcomingLabel(event)}</Text>
+              </View>
+            ))
           ) : (
-            <>
-              {monthGrid.selectedDay.releases.length ? (
-                <View style={styles.subsection}>
-                  <Text style={styles.subsectionTitle}>Verified releases</Text>
-                  {monthGrid.selectedDay.releases.map((release) => (
-                    <View key={release.id} style={styles.row}>
-                      <Text style={styles.rowTitle}>{release.displayGroup}</Text>
-                      <Text style={styles.rowBody}>{release.releaseTitle}</Text>
-                      <Text style={styles.rowMeta}>{formatReleaseRowMeta(release)}</Text>
-                    </View>
-                  ))}
-                </View>
-              ) : null}
-
-              {monthGrid.selectedDay.exactUpcoming.length ? (
-                <View style={styles.subsection}>
-                  <Text style={styles.subsectionTitle}>Scheduled comebacks</Text>
-                  {monthGrid.selectedDay.exactUpcoming.map((event) => (
-                    <View key={event.id} style={styles.row}>
-                      <Text style={styles.rowTitle}>{event.displayGroup}</Text>
-                      <Text style={styles.rowBody}>{event.releaseLabel ?? event.headline}</Text>
-                      <Text style={styles.rowMeta}>{formatUpcomingLabel(event)}</Text>
-                    </View>
-                  ))}
-                </View>
-              ) : null}
-            </>
+            <Text style={styles.body}>현재 월에 month-only 예정 신호가 없습니다.</Text>
           )}
         </View>
-      ) : null}
+      </ScrollView>
 
-      <View style={styles.sectionCard}>
-        <Text style={styles.sectionTitle}>Month-only signals</Text>
-        <Text style={styles.body}>
-          month-only 예정 신호는 날짜 셀에 넣지 않고 월 컨텍스트 버킷으로 유지합니다.
-        </Text>
-        {snapshot.monthOnlyUpcoming.length ? (
-          snapshot.monthOnlyUpcoming.map((event) => (
-            <View key={event.id} style={styles.row}>
-              <Text style={styles.rowTitle}>{event.displayGroup}</Text>
-              <Text style={styles.rowBody}>{event.headline}</Text>
-              <Text style={styles.rowMeta}>{formatUpcomingLabel(event)}</Text>
+      {selectedDay ? (
+        <Modal
+          transparent
+          animationType="slide"
+          visible={isSheetOpen}
+          onRequestClose={closeDaySheet}
+        >
+          <View style={styles.sheetOverlay}>
+            <Pressable
+              testID="calendar-sheet-backdrop"
+              accessibilityRole="button"
+              style={styles.sheetBackdrop}
+              onPress={closeDaySheet}
+            />
+            <View
+              testID="calendar-bottom-sheet"
+              style={[
+                styles.sheetPanel,
+                selectedDay.isEmpty ? styles.sheetPanelEmpty : null,
+              ]}
+            >
+              <View style={styles.sheetHandle} />
+              <View style={styles.sheetHeader}>
+                <View style={styles.sheetHeaderCopy}>
+                  <Text style={styles.sectionTitle}>{selectedDay.label}</Text>
+                  <Text style={styles.sectionMeta}>{formatSelectedDaySummary(selectedDay)}</Text>
+                </View>
+                <Pressable
+                  testID="calendar-sheet-close"
+                  accessibilityRole="button"
+                  onPress={closeDaySheet}
+                  style={styles.sheetCloseButton}
+                >
+                  <Text style={styles.sheetCloseLabel}>닫기</Text>
+                </Pressable>
+              </View>
+
+              <ScrollView
+                style={styles.sheetScroll}
+                contentContainerStyle={styles.sheetContent}
+                bounces={false}
+              >
+                {selectedDay.isEmpty ? (
+                  <Text style={styles.body}>이 날짜에는 등록된 일정이 없습니다.</Text>
+                ) : (
+                  <>
+                    {selectedDay.releases.length ? (
+                      <View style={styles.subsection}>
+                        <Text style={styles.subsectionTitle}>Verified releases</Text>
+                        {selectedDay.releases.map((release) => (
+                          <View key={release.id} style={styles.row}>
+                            <Text style={styles.rowTitle}>{release.displayGroup}</Text>
+                            <Text style={styles.rowBody}>{release.releaseTitle}</Text>
+                            <Text style={styles.rowMeta}>{formatReleaseRowMeta(release)}</Text>
+                          </View>
+                        ))}
+                      </View>
+                    ) : null}
+
+                    {selectedDay.exactUpcoming.length ? (
+                      <View style={styles.subsection}>
+                        <Text style={styles.subsectionTitle}>Scheduled comebacks</Text>
+                        {selectedDay.exactUpcoming.map((event) => (
+                          <View key={event.id} style={styles.row}>
+                            <Text style={styles.rowTitle}>{event.displayGroup}</Text>
+                            <Text style={styles.rowBody}>{event.releaseLabel ?? event.headline}</Text>
+                            <Text style={styles.rowMeta}>{formatUpcomingLabel(event)}</Text>
+                          </View>
+                        ))}
+                      </View>
+                    ) : null}
+                  </>
+                )}
+              </ScrollView>
             </View>
-          ))
-        ) : (
-          <Text style={styles.body}>현재 월에 month-only 예정 신호가 없습니다.</Text>
-        )}
-      </View>
-    </ScrollView>
+          </View>
+        </Modal>
+      ) : null}
+    </>
   );
 }
 
@@ -602,6 +661,65 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.meta.fontSize,
       lineHeight: theme.typography.meta.lineHeight,
       fontWeight: theme.typography.meta.fontWeight,
+    },
+    sheetOverlay: {
+      flex: 1,
+      justifyContent: 'flex-end',
+      backgroundColor: theme.colors.surface.overlay,
+    },
+    sheetBackdrop: {
+      flex: 1,
+    },
+    sheetPanel: {
+      height: '78%',
+      backgroundColor: theme.colors.surface.elevated,
+      borderTopLeftRadius: theme.radius.sheet,
+      borderTopRightRadius: theme.radius.sheet,
+      paddingHorizontal: theme.space[20],
+      paddingTop: theme.space[12],
+      paddingBottom: theme.space[20],
+      gap: theme.space[12],
+    },
+    sheetPanelEmpty: {
+      height: '45%',
+    },
+    sheetHandle: {
+      alignSelf: 'center',
+      width: 56,
+      height: 4,
+      borderRadius: theme.radius.chip,
+      backgroundColor: theme.colors.border.strong,
+    },
+    sheetHeader: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      gap: theme.space[12],
+    },
+    sheetHeaderCopy: {
+      flex: 1,
+      gap: theme.space[4],
+    },
+    sheetCloseButton: {
+      paddingHorizontal: theme.space[12],
+      paddingVertical: theme.space[8],
+      borderRadius: theme.radius.button,
+      backgroundColor: theme.colors.surface.interactive,
+      borderWidth: 1,
+      borderColor: theme.colors.border.subtle,
+    },
+    sheetCloseLabel: {
+      color: theme.colors.text.primary,
+      fontSize: theme.typography.buttonService.fontSize,
+      lineHeight: theme.typography.buttonService.lineHeight,
+      fontWeight: theme.typography.buttonService.fontWeight,
+    },
+    sheetScroll: {
+      flex: 1,
+    },
+    sheetContent: {
+      gap: theme.space[12],
+      paddingBottom: theme.space[24],
     },
     subsection: {
       gap: theme.space[8],
