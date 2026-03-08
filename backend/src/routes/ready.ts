@@ -2,6 +2,7 @@ import type { FastifyInstance } from 'fastify';
 
 import type { AppConfig } from '../config.js';
 import { pingDatabase, type DbQueryable } from '../lib/db.js';
+import { buildReadyStatusLogPayload } from '../lib/logging.js';
 import type { ReadyStatusProvider } from '../lib/readiness.js';
 
 type ReadyContext = {
@@ -11,7 +12,7 @@ type ReadyContext = {
 };
 
 export function registerReadyRoute(app: FastifyInstance, context: ReadyContext): void {
-  app.get('/ready', async (_request, reply) => {
+  app.get('/ready', async (request, reply) => {
     reply.header('Cache-Control', 'no-store');
 
     const readiness = await context.readyStatusProvider();
@@ -40,6 +41,10 @@ export function registerReadyRoute(app: FastifyInstance, context: ReadyContext):
       timezone: context.config.appTimezone,
       now: new Date().toISOString(),
     };
+
+    if (status !== 'ready') {
+      request.log.warn(buildReadyStatusLogPayload(request, response), 'Service readiness is degraded');
+    }
 
     if (status === 'not_ready') {
       return reply.code(503).send(response);
