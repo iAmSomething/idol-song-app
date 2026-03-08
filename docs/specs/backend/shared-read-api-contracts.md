@@ -291,7 +291,11 @@
       "agency_name": "BIGHIT MUSIC",
       "debut_year": 2019,
       "badge_image_url": "https://...",
-      "representative_image_url": "https://..."
+      "badge_source_url": "https://www.youtube.com/@TXT_bighit",
+      "badge_source_label": "Official YouTube channel avatar",
+      "badge_kind": "official_channel_avatar",
+      "representative_image_url": "https://...",
+      "representative_image_source": "artistProfiles.representative_image_url"
     },
     "official_links": {
       "youtube": "https://www.youtube.com/@TXT_bighit",
