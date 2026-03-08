@@ -200,6 +200,14 @@ python3 sync_upcoming_pipeline_to_neon.py
 - `web/src/data/watchlist.json`
 - `web/src/data/upcomingCandidates.json`
 
+scheduled workflow `weekly-kpop-scan.yml`에서 `DATABASE_URL`이 설정돼 있으면, release/upcoming dual-write 뒤에 아래 체인이 같은 run 안에서 이어진다.
+
+- `npm run projection:refresh`
+- `python build_backend_json_parity_report.py`
+- `npm run shadow:verify`
+
+그래서 canonical write가 끝난 뒤 projection과 backend-vs-JSON evidence도 같은 자동화 체인에서 같이 최신화된다.
+
 ## Projection Refresh
 
 canonical table import 또는 dual-write 이후 product-facing read model projection을 다시 만들려면 아래 명령을 사용한다.
