@@ -29,11 +29,18 @@ type CalendarNearestUpcoming = {
   upcoming_signal_id: string;
   entity_slug: string;
   display_name: string;
+  headline: string;
   scheduled_date: string;
+  scheduled_month: string;
   date_precision: string;
   date_status: string;
-  headline: string;
   confidence_score: number | null;
+  release_format: string | null;
+  source_url: string | null;
+  source_type: string | null;
+  source_domain: string | null;
+  evidence_summary: string | null;
+  source_count: number | null;
 };
 
 type CalendarVerifiedRelease = {
@@ -52,11 +59,16 @@ type CalendarUpcomingItem = {
   display_name: string;
   headline: string;
   scheduled_date: string | null;
-  scheduled_month: string | null;
+  scheduled_month: string;
   date_precision: string;
   date_status: string;
   confidence_score: number | null;
   release_format: string | null;
+  source_url: string | null;
+  source_type: string | null;
+  source_domain: string | null;
+  evidence_summary: string | null;
+  source_count: number | null;
 };
 
 type CalendarDay = {
@@ -92,6 +104,25 @@ function asNumber(value: unknown): number | null {
   if (typeof value === 'string' && value.length > 0) {
     const parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  return null;
+}
+
+function asYearMonth(value: unknown): string | null {
+  if (typeof value === 'string' && value.length > 0) {
+    if (/^\d{4}-\d{2}$/.test(value)) {
+      return value;
+    }
+
+    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+      return value.slice(0, 7);
+    }
+
+    const parsed = new Date(value);
+    if (!Number.isNaN(parsed.getTime())) {
+      return parsed.toISOString().slice(0, 7);
+    }
   }
 
   return null;
@@ -147,10 +178,20 @@ function normalizeUpcomingItem(value: unknown): CalendarUpcomingItem | null {
   const entitySlug = asNullableString(value.entity_slug);
   const displayName = asNullableString(value.display_name);
   const headline = asNullableString(value.headline);
+  const scheduledDate = asNullableString(value.scheduled_date);
+  const scheduledMonth = asYearMonth(value.scheduled_month) ?? (scheduledDate ? scheduledDate.slice(0, 7) : null);
   const datePrecision = asNullableString(value.date_precision);
   const dateStatus = asNullableString(value.date_status);
 
-  if (!upcomingSignalId || !entitySlug || !displayName || !headline || !datePrecision || !dateStatus) {
+  if (
+    !upcomingSignalId ||
+    !entitySlug ||
+    !displayName ||
+    !headline ||
+    !scheduledMonth ||
+    !datePrecision ||
+    !dateStatus
+  ) {
     return null;
   }
 
@@ -159,12 +200,17 @@ function normalizeUpcomingItem(value: unknown): CalendarUpcomingItem | null {
     entity_slug: entitySlug,
     display_name: displayName,
     headline,
-    scheduled_date: asNullableString(value.scheduled_date),
-    scheduled_month: asNullableString(value.scheduled_month),
+    scheduled_date: scheduledDate,
+    scheduled_month: scheduledMonth,
     date_precision: datePrecision,
     date_status: dateStatus,
     confidence_score: asNumber(value.confidence_score),
     release_format: asNullableString(value.release_format),
+    source_url: asNullableString(value.source_url),
+    source_type: asNullableString(value.source_type),
+    source_domain: asNullableString(value.source_domain),
+    evidence_summary: asNullableString(value.evidence_summary),
+    source_count: asNumber(value.source_count),
   };
 }
 
@@ -235,11 +281,18 @@ function normalizeCalendarMonthPayload(payload: unknown): CalendarMonthData | nu
             upcoming_signal_id: nearestUpcoming.upcoming_signal_id,
             entity_slug: nearestUpcoming.entity_slug,
             display_name: nearestUpcoming.display_name,
+            headline: nearestUpcoming.headline,
             scheduled_date: nearestUpcoming.scheduled_date,
+            scheduled_month: nearestUpcoming.scheduled_month,
             date_precision: nearestUpcoming.date_precision,
             date_status: nearestUpcoming.date_status,
-            headline: nearestUpcoming.headline,
             confidence_score: nearestUpcoming.confidence_score,
+            release_format: nearestUpcoming.release_format,
+            source_url: nearestUpcoming.source_url,
+            source_type: nearestUpcoming.source_type,
+            source_domain: nearestUpcoming.source_domain,
+            evidence_summary: nearestUpcoming.evidence_summary,
+            source_count: nearestUpcoming.source_count,
           }
         : null,
     days,

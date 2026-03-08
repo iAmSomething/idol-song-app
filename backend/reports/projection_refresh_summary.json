@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-07T10:26:49.197Z",
+  "generated_at": "2026-03-08T06:24:39.705Z",
   "row_counts": {
-    "entity_search_documents": 116,
+    "entity_search_documents": 117,
     "calendar_month_projection": 216,
-    "entity_detail_projection": 116,
-    "release_detail_projection": 1768,
+    "entity_detail_projection": 117,
+    "release_detail_projection": 1771,
     "radar_projection": 1
   },
   "samples": {
@@ -46,17 +46,25 @@
       },
       "nearest_upcoming": {
         "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+        "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
         "date_status": "confirmed",
         "entity_slug": "yena",
+        "source_type": "news_rss",
         "display_name": "YENA",
+        "source_count": 1,
+        "source_domain": "starnewskorea.com",
         "date_precision": "exact",
+        "release_format": "ep",
         "scheduled_date": "2026-03-11",
+        "scheduled_month": "2026-03",
         "confidence_score": 0.84,
+        "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
         "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
       }
     },
     "entity_detail": {
       "identity": {
+        "badge_kind": null,
         "debut_year": null,
         "agency_name": null,
         "entity_slug": "yena",
@@ -64,7 +72,10 @@
         "display_name": "YENA",
         "canonical_name": "YENA",
         "badge_image_url": null,
-        "representative_image_url": null
+        "badge_source_url": null,
+        "badge_source_label": null,
+        "representative_image_url": null,
+        "representative_image_source": null
       },
       "next_upcoming": {
         "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
@@ -178,7 +189,7 @@
       "weekly_upcoming_count": 2,
       "change_feed_count": 20,
       "long_gap_count": 2,
-      "rookie_count": 7
+      "rookie_count": 8
     }
   }
 }

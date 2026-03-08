@@ -2052,12 +2052,67 @@ function buildReleaseExpected(definition, state) {
 }
 
 function buildCalendarExpected(monthKey, state) {
+  const getUpcomingDisplayName = (item) => state.artistProfileByGroup.get(item.group)?.display_name ?? item.group;
+  const getUpcomingSortTime = (item) => {
+    if (hasExactUpcomingDate(item)) {
+      return item.dateValue.getTime();
+    }
+
+    const month = getUpcomingMonthKey(item);
+    return month ? new Date(`${month}-01T00:00:00`).getTime() : Number.MAX_SAFE_INTEGER;
+  };
+  const compareProjectionUpcoming = (left, right) => {
+    const leftPrecisionRank = hasExactUpcomingDate(left) ? 0 : getUpcomingDatePrecisionValue(left) === 'month_only' ? 1 : 2;
+    const rightPrecisionRank = hasExactUpcomingDate(right) ? 0 : getUpcomingDatePrecisionValue(right) === 'month_only' ? 1 : 2;
+    if (leftPrecisionRank !== rightPrecisionRank) {
+      return leftPrecisionRank - rightPrecisionRank;
+    }
+
+    const leftTime = getUpcomingSortTime(left);
+    const rightTime = getUpcomingSortTime(right);
+    if (leftTime !== rightTime) {
+      return leftTime - rightTime;
+    }
+
+    const leftStatusRank = left.date_status === 'confirmed' ? 0 : left.date_status === 'scheduled' ? 1 : 2;
+    const rightStatusRank = right.date_status === 'confirmed' ? 0 : right.date_status === 'scheduled' ? 1 : 2;
+    if (leftStatusRank !== rightStatusRank) {
+      return leftStatusRank - rightStatusRank;
+    }
+
+    if ((left.confidence ?? 0) !== (right.confidence ?? 0)) {
+      return (right.confidence ?? 0) - (left.confidence ?? 0);
+    }
+
+    const displayCompare = getUpcomingDisplayName(left).localeCompare(getUpcomingDisplayName(right));
+    if (displayCompare !== 0) {
+      return displayCompare;
+    }
+
+    if (left.headline < right.headline) {
+      return -1;
+    }
+
+    if (left.headline > right.headline) {
+      return 1;
+    }
+
+    return 0;
+  };
+  const getNormalizedReleaseFormat = (item) => item.release_format || null;
   const selectedMonthDate = monthKeyToDate(monthKey);
-  const monthReleases = state.filteredReleases.filter((item) => getMonthKey(item.dateValue) === monthKey);
+  const monthReleases = state.verifiedReleaseHistory.filter((item) => getMonthKey(item.dateValue) === monthKey);
   const monthUpcomingSignals = state.filteredUpcomingSignals.filter((item) => getMonthKey(item.dateValue) === monthKey);
   const monthMonthOnlyUpcomingRows = state.filteredUpcoming
     .filter((item) => getUpcomingDatePrecisionValue(item) === 'month_only' && getUpcomingMonthKey(item) === monthKey)
-    .sort(compareUpcomingSignals);
+    .sort(compareProjectionUpcoming);
+  const monthScheduledRows = [
+    ...monthUpcomingSignals,
+    ...monthMonthOnlyUpcomingRows.map((item) => ({
+      ...item,
+      dateValue: new Date(`${item.scheduled_month}-01T00:00:00`),
+    })),
+  ].sort(compareProjectionUpcoming);
 
   const releasesByDate = groupByDate(monthReleases);
   const upcomingByDate = groupUpcomingByDate(monthUpcomingSignals);
@@ -2065,6 +2120,7 @@ function buildCalendarExpected(monthKey, state) {
   const nearestUpcoming = state.filteredUpcomingSignals.find((item) => item.isoDate >= state.todayIso) ?? null;
 
   const verifiedList = [...monthReleases].sort(compareMonthlyDashboardVerified).map((item) => ({
+    release_id: getReleaseLookupKey(item.group, item.title, item.date, item.stream),
     entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
     display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
     release_title: item.title,
@@ -2073,16 +2129,22 @@ function buildCalendarExpected(monthKey, state) {
     release_kind: item.release_kind ?? null,
   }));
 
-  const scheduledList = [...monthUpcomingSignals].sort(compareMonthlyDashboardUpcoming).map((item) => ({
+  const scheduledList = monthScheduledRows.map((item) => ({
+    upcoming_signal_id: item.event_key ?? [item.group.toLowerCase(), item.scheduled_date ?? item.scheduled_month ?? 'undated', item.headline].join('::'),
     entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
     display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
     headline: item.headline,
     scheduled_date: item.scheduled_date ?? null,
-    scheduled_month: item.scheduled_month ?? null,
+    scheduled_month: getUpcomingMonthKey(item),
     date_precision: getUpcomingDatePrecisionValue(item),
     date_status: item.date_status,
     confidence_score: item.confidence ?? null,
-    release_format: item.release_format ?? null,
+    release_format: getNormalizedReleaseFormat(item),
+    source_url: item.source_url ?? null,
+    source_type: item.source_type ?? null,
+    source_domain: item.source_domain ?? (getSourceDomain(item.source_url) || null),
+    evidence_summary: item.evidence_summary ?? null,
+    source_count: item.evidence_count ?? null,
   }));
 
   return {
@@ -2093,13 +2155,27 @@ function buildCalendarExpected(monthKey, state) {
     },
     nearest_upcoming: nearestUpcoming
       ? {
+          upcoming_signal_id:
+            nearestUpcoming.event_key ??
+            [
+              nearestUpcoming.group.toLowerCase(),
+              nearestUpcoming.scheduled_date ?? nearestUpcoming.scheduled_month ?? 'undated',
+              nearestUpcoming.headline,
+            ].join('::'),
           entity_slug: state.artistProfileByGroup.get(nearestUpcoming.group)?.slug ?? slugifyGroup(nearestUpcoming.group),
           display_name: state.artistProfileByGroup.get(nearestUpcoming.group)?.display_name ?? nearestUpcoming.group,
           headline: nearestUpcoming.headline,
           scheduled_date: nearestUpcoming.scheduled_date,
+          scheduled_month: getUpcomingMonthKey(nearestUpcoming),
           date_precision: getUpcomingDatePrecisionValue(nearestUpcoming),
           date_status: nearestUpcoming.date_status,
           confidence_score: nearestUpcoming.confidence ?? null,
+          release_format: getNormalizedReleaseFormat(nearestUpcoming),
+          source_url: nearestUpcoming.source_url ?? null,
+          source_type: nearestUpcoming.source_type ?? null,
+          source_domain: nearestUpcoming.source_domain ?? (getSourceDomain(nearestUpcoming.source_url) || null),
+          evidence_summary: nearestUpcoming.evidence_summary ?? null,
+          source_count: nearestUpcoming.evidence_count ?? null,
         }
       : null,
     days: activeDayIsos.map((iso) => ({
@@ -2115,6 +2191,7 @@ function buildCalendarExpected(monthKey, state) {
           return left.title.localeCompare(right.title);
         })
         .map((item) => ({
+          release_id: getReleaseLookupKey(item.group, item.title, item.date, item.stream),
           entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
           display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
           release_title: item.title,
@@ -2123,27 +2200,41 @@ function buildCalendarExpected(monthKey, state) {
           release_date: item.date,
         })),
       exact_upcoming: [...(upcomingByDate.get(iso) ?? [])]
-        .sort(compareMonthlyDashboardUpcoming)
+        .sort(compareProjectionUpcoming)
         .map((item) => ({
+          upcoming_signal_id: item.event_key ?? [item.group.toLowerCase(), item.scheduled_date ?? iso, item.headline].join('::'),
           entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
           display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
           headline: item.headline,
           scheduled_date: item.scheduled_date ?? null,
+          scheduled_month: getUpcomingMonthKey(item),
           date_precision: getUpcomingDatePrecisionValue(item),
           date_status: item.date_status,
           confidence_score: item.confidence ?? null,
-          release_format: item.release_format ?? null,
+          release_format: getNormalizedReleaseFormat(item),
+          source_url: item.source_url ?? null,
+          source_type: item.source_type ?? null,
+          source_domain: item.source_domain ?? (getSourceDomain(item.source_url) || null),
+          evidence_summary: item.evidence_summary ?? null,
+          source_count: item.evidence_count ?? null,
         })),
     })),
     month_only_upcoming: monthMonthOnlyUpcomingRows.map((item) => ({
+      upcoming_signal_id:
+        item.event_key ?? [item.group.toLowerCase(), item.scheduled_month ?? 'undated', item.headline].join('::'),
       entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
       display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
       headline: item.headline,
-      scheduled_month: item.scheduled_month ?? null,
+      scheduled_month: getUpcomingMonthKey(item),
       date_precision: getUpcomingDatePrecisionValue(item),
       date_status: item.date_status,
       confidence_score: item.confidence ?? null,
-      release_format: item.release_format ?? null,
+      release_format: getNormalizedReleaseFormat(item),
+      source_url: item.source_url ?? null,
+      source_type: item.source_type ?? null,
+      source_domain: item.source_domain ?? (getSourceDomain(item.source_url) || null),
+      evidence_summary: item.evidence_summary ?? null,
+      source_count: item.evidence_count ?? null,
     })),
     verified_list: verifiedList,
     scheduled_list: scheduledList,
@@ -2658,7 +2749,19 @@ function calendarReleaseSignature(item) {
 }
 
 function calendarUpcomingSignature(item) {
-  return `${item.entity_slug}|${item.headline}|${item.scheduled_date ?? ''}|${item.scheduled_month ?? ''}|${item.date_precision}|${item.date_status}`;
+  return [
+    item.entity_slug,
+    item.headline,
+    item.scheduled_date ?? '',
+    item.scheduled_month ?? '',
+    item.date_precision,
+    item.date_status,
+    item.release_format ?? '',
+    item.source_type ?? '',
+    item.source_url ?? '',
+    item.source_domain ?? '',
+    item.source_count ?? '',
+  ].join('|');
 }
 
 function compareCalendarCase(expected, actual) {
