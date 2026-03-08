@@ -7,7 +7,7 @@ import SearchTabScreen from '../../app/(tabs)/search';
 import RootLayout from '../../app/_layout';
 import ArtistDetailScreen from '../../app/artists/[slug]';
 import IndexRoute from '../../app/index';
-import ReleaseDetailPlaceholderScreen from '../../app/releases/[id]';
+import ReleaseDetailScreen from '../../app/releases/[id]';
 
 jest.mock('expo-router', () => {
   const React = jest.requireActual<typeof import('react')>('react');
@@ -110,11 +110,11 @@ describe('mobile route shell smoke', () => {
     expect(() => renderTree(<ArtistDetailScreen />)).not.toThrow();
   });
 
-  test('release detail placeholder handles valid and missing id safely', () => {
+  test('release detail screen handles valid and missing id safely', () => {
     mockUseLocalSearchParams.mockReturnValueOnce({ id: 'blackpink-deadline-2026-02-26' });
-    expect(() => renderTree(<ReleaseDetailPlaceholderScreen />)).not.toThrow();
+    expect(() => renderTree(<ReleaseDetailScreen />)).not.toThrow();
 
     mockUseLocalSearchParams.mockReturnValueOnce({});
-    expect(() => renderTree(<ReleaseDetailPlaceholderScreen />)).not.toThrow();
+    expect(() => renderTree(<ReleaseDetailScreen />)).not.toThrow();
   });
 });

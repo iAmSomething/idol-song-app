@@ -8,7 +8,7 @@
   - `runtime.ts`: mobile profile / env validation + safe degraded runtime state
   - `debugMetadata.ts`: debug-only build/dataset/commit/runtime-state metadata helper
 - `features/`: 화면 composition / binding
-- `selectors/`: display model selector / adapter
+  - `selectors/`: display model selector / adapter
   - `context.ts`: dataset -> indexed selector context
   - `adapters.ts`: raw JSON -> display model 변환 규칙
   - `index.ts`: shared selectors entrypoint
