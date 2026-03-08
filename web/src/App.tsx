@@ -1472,8 +1472,10 @@ const TEAM_COPY = {
     releaseKind: '발매 종류',
     releaseDate: '발매일',
     stream: '스트림',
-    trackPreview: '트랙 프리뷰',
-    trackPreviewHint: '시드 데이터가 있으면 실제 트랙을, 없으면 placeholder 프리뷰를 표시합니다.',
+    trackPreview: '트랙리스트',
+    trackPreviewHint: '실제 canonical track 데이터가 있을 때만 트랙리스트를 표시합니다.',
+    trackDataIncompleteTitle: '트랙 메타데이터 미완료',
+    trackDataIncomplete: '이 릴리즈에는 신뢰 가능한 canonical tracklist가 아직 연결되지 않았습니다. placeholder 트랙은 표시하지 않습니다.',
     releaseNotes: '릴리즈 메모',
     releaseEnrichment: '보조 메타데이터',
     releaseEnrichmentHint: 'v1은 수동 seed 기반 크레딧, 차트, 메모를 연결합니다.',
@@ -1600,8 +1602,10 @@ const TEAM_COPY = {
     releaseKind: 'Release kind',
     releaseDate: 'Release date',
     stream: 'Stream',
-    trackPreview: 'Track preview',
-    trackPreviewHint: 'Uses seeded track data when available and falls back to placeholder preview rows otherwise.',
+    trackPreview: 'Tracklist',
+    trackPreviewHint: 'Show the tracklist only when canonical track data exists.',
+    trackDataIncompleteTitle: 'Track metadata incomplete',
+    trackDataIncomplete: 'No reliable canonical tracklist is attached to this release yet, so this page does not fabricate placeholder tracks.',
     releaseNotes: 'Release notes',
     releaseEnrichment: 'Release enrichment',
     releaseEnrichmentHint: 'v1 connects manual seed credits, charts, and notes.',
@@ -3519,9 +3523,7 @@ function ReleaseDetailPage({
   const artwork = releaseDetailResource.artwork
   const releaseDetail = releaseDetailResource.detail
   const releaseEnrichment = buildFallbackReleaseEnrichment(group, album.title, album.date, album.stream, album.release_kind)
-  const previewTracks: ReleaseDetailTrack[] = releaseDetail.tracks.length
-    ? releaseDetail.tracks
-    : buildAlbumPreviewTracks(album, group, language).map((title, index) => ({ order: index + 1, title }))
+  const hasCanonicalTracks = releaseDetail.tracks.length > 0
   const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail)
   const mv = getReleaseDetailMvUrls(releaseDetail)
   const releaseDetailSourceMessage =
@@ -3613,23 +3615,32 @@ function ReleaseDetailPage({
 
         <section className="track-preview">
           <p className="panel-label">{teamCopy.trackPreview}</p>
-          <div className="track-list">
-            {previewTracks.map((track) => (
-              <div key={`${album.title}-${track.title}-${track.order}`} className="track-row">
-                <div className="track-row-main">
-                  <span>{`${track.order}`.padStart(2, '0')}</span>
-                  <div className="track-row-title-group">
-                    <strong>{track.title}</strong>
-                    {track.is_title_track ? (
-                      <span className="title-track-badge">{`★ ${copy.contextTagLabels.title_track}`}</span>
-                    ) : null}
+          {hasCanonicalTracks ? (
+            <>
+              <div className="track-list">
+                {releaseDetail.tracks.map((track) => (
+                  <div key={`${album.title}-${track.title}-${track.order}`} className="track-row">
+                    <div className="track-row-main">
+                      <span>{`${track.order}`.padStart(2, '0')}</span>
+                      <div className="track-row-title-group">
+                        <strong>{track.title}</strong>
+                        {track.is_title_track ? (
+                          <span className="title-track-badge">{`★ ${copy.contextTagLabels.title_track}`}</span>
+                        ) : null}
+                      </div>
+                    </div>
+                    <MusicHandoffRow group={group} title={track.title} language={language} compact includeMv={false} />
                   </div>
-                </div>
-                <MusicHandoffRow group={group} title={track.title} language={language} compact includeMv={false} />
+                ))}
               </div>
-            ))}
-          </div>
-          <p className="hero-text drawer-copy">{teamCopy.trackPreviewHint}</p>
+              <p className="hero-text drawer-copy">{teamCopy.trackPreviewHint}</p>
+            </>
+          ) : (
+            <div className="tracklist-incomplete">
+              <strong>{teamCopy.trackDataIncompleteTitle}</strong>
+              <p>{teamCopy.trackDataIncomplete}</p>
+            </div>
+          )}
         </section>
 
         {releaseDetail.notes ? (
@@ -9576,22 +9587,6 @@ function findVerifiedReleaseRecord(
 function getReleaseDetailActionLabel(releaseKind: ReleaseFact['release_kind'], language: Language) {
   const teamCopy = TEAM_COPY[language]
   return releaseKind === 'single' ? teamCopy.releaseDetail : teamCopy.albumDetail
-}
-
-function buildAlbumPreviewTracks(album: VerifiedRelease, group: string, language: Language) {
-  if (language === 'ko') {
-    if (album.release_kind === 'single') {
-      return [album.title, `${group} Instrumental placeholder`]
-    }
-
-    return [`${group} Intro`, album.title, `${album.release_kind.toUpperCase()} B-side placeholder`]
-  }
-
-  if (album.release_kind === 'single') {
-    return [album.title, `${group} instrumental placeholder`]
-  }
-
-  return [`${group} intro`, album.title, `${album.release_kind.toUpperCase()} B-side placeholder`]
 }
 
 function readSelectedGroupFromLocation() {

@@ -2713,6 +2713,28 @@
   gap: 10px;
 }
 
+.tracklist-incomplete {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px dashed rgba(27, 42, 65, 0.14);
+  border-radius: 18px;
+  background: rgba(27, 42, 65, 0.04);
+}
+
+.tracklist-incomplete strong {
+  font-size: 0.92rem;
+  color: var(--text-strong);
+}
+
+.tracklist-incomplete p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
 .track-row {
   display: grid;
   gap: 10px;
