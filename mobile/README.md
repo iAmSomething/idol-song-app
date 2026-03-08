@@ -39,6 +39,8 @@
   - static dataset artifact reuse용 cache entry helper
 - `src/services/recentQueries.ts`
   - search recent-query persistence helper
+- `src/services/handoff.ts`
+  - canonical-open / search-fallback / browser-fallback handoff service layer
 - `src/tokens/`
   - semantic token constants + theme provider + `useAppTheme()` access convention
 - `src/selectors/`
@@ -205,6 +207,20 @@ profile 차이는 아래 범위로만 제한한다.
 - build version / dataset version / commit hash는 `src/config/debugMetadata.ts`를 통해 읽는다.
 - main tab이나 user-facing surface에는 진입 링크를 두지 않는다.
 - production profile에서는 route가 열려도 debug-only 안내만 보여준다.
+
+## external handoff baseline
+
+- shared handoff entrypoint는 `src/services/handoff.ts`에 둔다.
+- 지원 서비스
+  - `spotify`
+  - `youtubeMusic`
+  - `youtubeMv`
+- 규칙
+  - canonical URL이 안전하고 지원되는 경우 `mode = canonical`
+  - canonical URL이 없거나 지원되지 않으면 `mode = searchFallback`
+  - browser-safe fallback이 있으면 `browserFallback` target을 같이 유지한다.
+  - handoff 실패는 silent drop이 아니라 retryable failure result로 반환한다.
+  - later service button / detail screen은 `Linking.openURL`을 직접 호출하지 않고 이 service layer를 통해 연다.
 
 ## dataset-source baseline
 

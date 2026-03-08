@@ -17,6 +17,7 @@
   - `storage.ts`: `AsyncStorage` adapter + namespaced key/value helper
   - `datasetCache.ts`: static dataset artifact cache entry helper
   - `recentQueries.ts`: recent-query persistence helper
+  - `handoff.ts`: canonical-open / search-fallback / browser-fallback resolver + opener
 - `tokens/`: design token / theme
   - `theme.tsx`: theme provider + `useAppTheme()` access convention
   - `colors.ts`, `spacing.ts`, `radii.ts`, `typography.ts`, `sizes.ts`, `elevation.ts`, `motion.ts`
@@ -33,3 +34,9 @@ storage 관련 규칙:
 - `AsyncStorage`를 직접 화면에서 호출하지 않는다.
 - dataset cache와 recent query는 모두 `services/storage.ts` namespace 규칙을 공유한다.
 - later feature는 raw storage key를 직접 만들지 않고 service helper를 통해 접근한다.
+
+handoff 관련 규칙:
+
+- later UI는 raw `Linking.openURL`을 직접 호출하지 않는다.
+- canonical URL validation, search fallback URL builder, browser fallback choice는 `services/handoff.ts`에서 중앙화한다.
+- 실패는 explicit result object로 돌려서 UI가 toast/inline feedback을 붙일 수 있게 한다.
