@@ -1525,9 +1525,45 @@ def prune_stale_review_tasks(connection: "psycopg.Connection[Any]", review_task_
     return deleted
 
 
-def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, Any], summary: Dict[str, Any]) -> None:
+def count_stale_review_tasks(connection: "psycopg.Connection[Any]", review_task_rows: Sequence[Dict[str, Any]]) -> int:
+    desired_ids = [row["id"] for row in review_task_rows]
+    with connection.cursor() as cursor:
+        if desired_ids:
+            placeholders = ", ".join(["%s"] * len(desired_ids))
+            cursor.execute(
+                f"""
+                select count(*)
+                from review_tasks
+                where payload->>'source_dataset' in ('manual_review_queue', 'mv_manual_review_queue')
+                  and id not in ({placeholders})
+                """,
+                desired_ids,
+            )
+        else:
+            cursor.execute(
+                """
+                select count(*)
+                from review_tasks
+                where payload->>'source_dataset' in ('manual_review_queue', 'mv_manual_review_queue')
+                """
+            )
+        return cursor.fetchone()[0]
+
+
+def upsert_table_rows(
+    connection: "psycopg.Connection[Any]",
+    payload: Dict[str, Any],
+    summary: Dict[str, Any],
+    *,
+    dry_run: bool = False,
+) -> None:
+    stale_review_tasks = (
+        count_stale_review_tasks(connection, payload["tables"]["review_tasks"])
+        if dry_run
+        else prune_stale_review_tasks(connection, payload["tables"]["review_tasks"])
+    )
     summary["stale_pruned"] = {
-        "review_tasks": prune_stale_review_tasks(connection, payload["tables"]["review_tasks"])
+        "review_tasks": stale_review_tasks
     }
     existing = fetch_existing_state(connection)
     operations = {table: Counter() for table in TARGET_TABLES}
@@ -1537,9 +1573,72 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             key = key_builder(row)
             operations[table]["updated" if key in current_keys else "inserted"] += 1
 
+    entity_rows = payload["tables"]["entities"]
+    count_operations("entities", entity_rows, lambda row: str(row["id"]))
+
+    alias_rows = payload["tables"]["entity_aliases"]
+    count_operations("entity_aliases", alias_rows, lambda row: str(row["id"]))
+
+    official_link_rows = payload["tables"]["entity_official_links"]
+    count_operations("entity_official_links", official_link_rows, lambda row: str(row["id"]))
+
+    youtube_channel_rows = payload["tables"]["youtube_channels"]
+    count_operations("youtube_channels", youtube_channel_rows, lambda row: str(row["id"]))
+
+    entity_channel_rows = payload["tables"]["entity_youtube_channels"]
+    count_operations(
+        "entity_youtube_channels",
+        entity_channel_rows,
+        lambda row: (str(row["entity_id"]), str(row["youtube_channel_id"])),
+    )
+
+    release_rows = payload["tables"]["releases"]
+    count_operations("releases", release_rows, lambda row: str(row["id"]))
+
+    release_artwork_rows = payload["tables"]["release_artwork"]
+    count_operations("release_artwork", release_artwork_rows, lambda row: str(row["release_id"]))
+
+    track_rows = payload["tables"]["tracks"]
+    count_operations("tracks", track_rows, lambda row: str(row["id"]))
+
+    release_service_rows = payload["tables"]["release_service_links"]
+    count_operations("release_service_links", release_service_rows, lambda row: str(row["id"]))
+
+    track_service_rows = payload["tables"]["track_service_links"]
+    count_operations(
+        "track_service_links",
+        track_service_rows,
+        lambda row: (str(row["track_id"]), row["service_type"]),
+    )
+
+    upcoming_signal_rows = payload["tables"]["upcoming_signals"]
+    count_operations("upcoming_signals", upcoming_signal_rows, lambda row: str(row["id"]))
+
+    upcoming_source_rows = payload["tables"]["upcoming_signal_sources"]
+    count_operations("upcoming_signal_sources", upcoming_source_rows, lambda row: str(row["id"]))
+
+    tracking_state_rows = payload["tables"]["entity_tracking_state"]
+    count_operations("entity_tracking_state", tracking_state_rows, lambda row: str(row["entity_id"]))
+
+    review_task_rows = payload["tables"]["review_tasks"]
+    count_operations("review_tasks", review_task_rows, lambda row: str(row["id"]))
+
+    release_override_rows = payload["tables"]["release_link_overrides"]
+    count_operations("release_link_overrides", release_override_rows, lambda row: str(row["id"]))
+
+    summary["operation_counts"] = {table: dict(counter) for table, counter in operations.items()}
+
+    if dry_run:
+        summary["dry_run"] = {
+            "enabled": True,
+            "writes_committed": False,
+            "stale_pruned_preview": {
+                "review_tasks": stale_review_tasks,
+            },
+        }
+        return
+
     with connection.pipeline(), connection.cursor() as cursor:
-        entity_rows = payload["tables"]["entities"]
-        count_operations("entities", entity_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into entities (
@@ -1574,8 +1673,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        alias_rows = payload["tables"]["entity_aliases"]
-        count_operations("entity_aliases", alias_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into entity_aliases (
@@ -1602,8 +1699,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        official_link_rows = payload["tables"]["entity_official_links"]
-        count_operations("entity_official_links", official_link_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into entity_official_links (
@@ -1630,8 +1725,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        youtube_channel_rows = payload["tables"]["youtube_channels"]
-        count_operations("youtube_channels", youtube_channel_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into youtube_channels (
@@ -1662,12 +1755,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        entity_channel_rows = payload["tables"]["entity_youtube_channels"]
-        count_operations(
-            "entity_youtube_channels",
-            entity_channel_rows,
-            lambda row: (str(row["entity_id"]), str(row["youtube_channel_id"])),
-        )
         cursor.executemany(
             """
             insert into entity_youtube_channels (
@@ -1680,8 +1767,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             [(row["entity_id"], row["youtube_channel_id"], row["channel_role"]) for row in entity_channel_rows],
         )
 
-        release_rows = payload["tables"]["releases"]
-        count_operations("releases", release_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into releases (
@@ -1725,8 +1810,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        release_artwork_rows = payload["tables"]["release_artwork"]
-        count_operations("release_artwork", release_artwork_rows, lambda row: str(row["release_id"]))
         cursor.executemany(
             """
             insert into release_artwork (
@@ -1752,8 +1835,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        track_rows = payload["tables"]["tracks"]
-        count_operations("tracks", track_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into tracks (
@@ -1781,8 +1862,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        release_service_rows = payload["tables"]["release_service_links"]
-        count_operations("release_service_links", release_service_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into release_service_links (
@@ -1810,12 +1889,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        track_service_rows = payload["tables"]["track_service_links"]
-        count_operations(
-            "track_service_links",
-            track_service_rows,
-            lambda row: (str(row["track_id"]), row["service_type"]),
-        )
         if track_service_rows:
             cursor.executemany(
                 """
@@ -1844,8 +1917,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
                 ],
             )
 
-        upcoming_signal_rows = payload["tables"]["upcoming_signals"]
-        count_operations("upcoming_signals", upcoming_signal_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into upcoming_signals (
@@ -1893,8 +1964,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        upcoming_source_rows = payload["tables"]["upcoming_signal_sources"]
-        count_operations("upcoming_signal_sources", upcoming_source_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into upcoming_signal_sources (
@@ -1925,8 +1994,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        tracking_state_rows = payload["tables"]["entity_tracking_state"]
-        count_operations("entity_tracking_state", tracking_state_rows, lambda row: str(row["entity_id"]))
         cursor.executemany(
             """
             insert into entity_tracking_state (
@@ -1952,8 +2019,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        review_task_rows = payload["tables"]["review_tasks"]
-        count_operations("review_tasks", review_task_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into review_tasks (
@@ -1987,8 +2052,6 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
             ],
         )
 
-        release_override_rows = payload["tables"]["release_link_overrides"]
-        count_operations("release_link_overrides", release_override_rows, lambda row: str(row["id"]))
         cursor.executemany(
             """
             insert into release_link_overrides (
@@ -2017,7 +2080,10 @@ def upsert_table_rows(connection: "psycopg.Connection[Any]", payload: Dict[str, 
         )
 
     connection.commit()
-    summary["operation_counts"] = {table: dict(counter) for table, counter in operations.items()}
+    summary["dry_run"] = {
+        "enabled": False,
+        "writes_committed": True,
+    }
 
 
 def fetch_table_counts(connection: "psycopg.Connection[Any]") -> Dict[str, int]:
@@ -2088,6 +2154,11 @@ def parse_args() -> argparse.Namespace:
         default="DATABASE_URL",
         help="Environment variable name that contains the direct Neon connection string.",
     )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Build payloads and compare them against the current DB state without committing writes.",
+    )
     return parser.parse_args()
 
 
@@ -2101,10 +2172,17 @@ def main() -> None:
     summary = payload["summary"]
 
     with psycopg.connect(database_url) as connection:
-        upsert_table_rows(connection, payload, summary)
-        summary["db_row_counts"] = fetch_table_counts(connection)
+        before_counts = fetch_table_counts(connection)
+        upsert_table_rows(connection, payload, summary, dry_run=args.dry_run)
+        after_counts = fetch_table_counts(connection)
+        summary["db_row_counts"] = after_counts
+        if args.dry_run:
+            summary["db_row_counts_before"] = before_counts
+            summary["db_row_counts_after"] = after_counts
+            summary["db_unchanged"] = before_counts == after_counts
         summary["critical_checks"] = fetch_critical_counts(connection)
 
+    summary["mode"] = "dry_run" if args.dry_run else "apply"
     summary["summary_path"] = display_path(Path(args.summary_path))
     summary["table_source_counts"] = {table: len(rows) for table, rows in payload["tables"].items()}
     write_summary(Path(args.summary_path), sanitize_summary(summary))
@@ -2112,6 +2190,8 @@ def main() -> None:
     print(
         json.dumps(
             {
+                "mode": summary["mode"],
+                "dry_run": args.dry_run,
                 "summary_path": summary["summary_path"],
                 "entity_rows": summary["db_row_counts"]["entities"],
                 "release_rows": summary["db_row_counts"]["releases"],
