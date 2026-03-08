@@ -20,6 +20,7 @@
     "config:production": "cross-env APP_ENV=production expo config --json"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/native": "^7.1.28",
     "expo": "~55.0.5",
     "expo-constants": "~55.0.7",

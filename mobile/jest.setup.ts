@@ -1,2 +1,5 @@
-// Reserved for future global test setup. Keep this file explicit so later mobile work
-// has one place to register shared mocks and custom matchers.
+import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
+
+// Register shared native mocks once so service/config tests can stay focused on
+// app behavior instead of per-file native module setup.
+jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
