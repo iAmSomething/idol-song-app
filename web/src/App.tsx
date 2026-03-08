@@ -9,6 +9,10 @@ import {
 } from 'react'
 import './App.css'
 import { classifyBackendFetchError, fetchJsonWithTimeout } from './lib/backendFetch'
+import {
+  buildSurfaceStatusMeta,
+  type SurfaceStatusSource,
+} from './lib/surfaceStatus'
 import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
 import releaseDetailRows from './data/releaseDetails.json'
@@ -863,6 +867,7 @@ const TRANSLATIONS = {
     searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 우선 사용 중입니다.',
     searchBackendFallback: 'backend 검색 응답을 불러오지 못해 transitional JSON fallback 결과로 표시 중입니다.',
     searchBackendTimeout: 'backend /v1/search 응답 시간이 초과되어 transitional JSON fallback 결과로 표시 중입니다.',
+    searchJsonPrimary: '현재 검색 결과는 transitional JSON 기본 경로를 사용 중입니다.',
     calendarBackendLoading:
       'backend /v1/calendar/month 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 월 데이터를 먼저 표시합니다.',
     calendarBackendActive: '현재 월간 캘린더와 대시보드는 backend /v1/calendar/month 응답을 우선 사용 중입니다.',
@@ -870,6 +875,7 @@ const TRANSLATIONS = {
       'backend 월간 캘린더 응답을 불러오지 못해 transitional JSON fallback으로 표시 중입니다.',
     calendarBackendTimeout:
       'backend /v1/calendar/month 응답 시간이 초과되어 transitional JSON fallback 월 데이터로 표시 중입니다.',
+    calendarJsonPrimary: '현재 월간 캘린더와 대시보드는 transitional JSON 기본 경로를 사용 중입니다.',
     radarBackendLoading:
       'backend /v1/radar 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 레이더 데이터를 먼저 표시합니다.',
     radarBackendActive: '현재 레이더 섹션은 backend /v1/radar 응답을 우선 사용 중입니다.',
@@ -877,6 +883,23 @@ const TRANSLATIONS = {
       'backend 레이더 응답을 불러오지 못해 transitional JSON fallback으로 표시 중입니다.',
     radarBackendTimeout:
       'backend /v1/radar 응답 시간이 초과되어 transitional JSON fallback 레이더 데이터로 표시 중입니다.',
+    radarJsonPrimary: '현재 레이더 섹션은 transitional JSON 기본 경로를 사용 중입니다.',
+    surfaceSourceLabel: '소스',
+    surfaceReasonLabel: '이유',
+    surfaceSourceModeLabels: {
+      api: 'backend API',
+      json: 'transitional JSON',
+      json_fallback: 'transitional JSON fallback',
+    },
+    surfaceFallbackReasonLabels: {
+      timeout: '응답 시간 초과',
+      network_error: '네트워크 오류',
+      not_found: 'not_found / 404',
+      stale_projection: 'stale projection',
+      disallowed_origin: '허용되지 않은 origin',
+      invalid_request: '잘못된 요청',
+      unknown: '기타 backend 오류',
+    },
     monthSummaryVerified: '검증됨',
     monthSummaryScheduled: '예정',
     filterLabels: {
@@ -1124,6 +1147,7 @@ const TRANSLATIONS = {
       'The backend search response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
     searchBackendTimeout:
       'The backend /v1/search request timed out, so the UI is falling back to the transitional JSON snapshot.',
+    searchJsonPrimary: 'Search results are currently using the transitional JSON primary path.',
     calendarBackendLoading:
       'Checking backend /v1/calendar/month now. The UI keeps the transitional JSON fallback month data visible first.',
     calendarBackendActive:
@@ -1132,6 +1156,7 @@ const TRANSLATIONS = {
       'The backend calendar/month response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
     calendarBackendTimeout:
       'The backend /v1/calendar/month request timed out, so the UI is falling back to the transitional JSON snapshot.',
+    calendarJsonPrimary: 'The monthly calendar and dashboard are currently using the transitional JSON primary path.',
     radarBackendLoading:
       'Checking backend /v1/radar now. The UI keeps the transitional JSON fallback radar data visible first.',
     radarBackendActive: 'The radar sections are currently using the backend /v1/radar response.',
@@ -1139,6 +1164,23 @@ const TRANSLATIONS = {
       'The backend radar response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
     radarBackendTimeout:
       'The backend /v1/radar request timed out, so the UI is falling back to the transitional JSON snapshot.',
+    radarJsonPrimary: 'The radar sections are currently using the transitional JSON primary path.',
+    surfaceSourceLabel: 'Source',
+    surfaceReasonLabel: 'Reason',
+    surfaceSourceModeLabels: {
+      api: 'backend API',
+      json: 'transitional JSON',
+      json_fallback: 'transitional JSON fallback',
+    },
+    surfaceFallbackReasonLabels: {
+      timeout: 'timeout',
+      network_error: 'network failure',
+      not_found: 'not found / 404',
+      stale_projection: 'stale projection',
+      disallowed_origin: 'disallowed origin',
+      invalid_request: 'invalid request',
+      unknown: 'other backend error',
+    },
     monthSummaryVerified: 'verified',
     monthSummaryScheduled: 'scheduled',
     filterLabels: {
@@ -1365,6 +1407,7 @@ const TEAM_COPY = {
     backendActive: '이 팀 페이지는 backend /v1/entities 응답을 우선 사용 중입니다.',
     backendFallback: 'backend 팀 페이지 응답을 불러오지 못해 transitional JSON 팀 페이지로 fallback 중입니다.',
     backendTimeout: 'backend 팀 페이지 응답 시간이 초과되어 transitional JSON 팀 페이지로 fallback 중입니다.',
+    backendJsonPrimary: '이 팀 페이지는 transitional JSON 기본 경로를 사용 중입니다.',
     upcomingLabel: '예정 컴백',
     upcomingTitle: '예정 신호 우선 보기',
     upcomingEmptyTitle: '아직 컴백 신호 없음',
@@ -1456,6 +1499,8 @@ const TEAM_COPY = {
       '백엔드 응답을 불러오지 못해 transitional release-detail JSON fallback으로 표시 중입니다.',
     releaseDetailBackendTimeout:
       '백엔드 release-detail 응답 시간이 초과되어 transitional release-detail JSON fallback으로 표시 중입니다.',
+    releaseDetailBackendJsonPrimary:
+      '이 상세 페이지는 transitional release-detail JSON 기본 경로를 사용 중입니다.',
     watchOnYouTube: 'YouTube에서 보기',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
@@ -1490,6 +1535,7 @@ const TEAM_COPY = {
       'The backend team-detail response was unavailable, so this page is falling back to the transitional JSON snapshot.',
     backendTimeout:
       'The backend team-detail request timed out, so this page is falling back to the transitional JSON snapshot.',
+    backendJsonPrimary: 'This team page is currently using the transitional JSON primary path.',
     upcomingLabel: 'Upcoming comeback',
     upcomingTitle: 'Scheduled signals first',
     upcomingEmptyTitle: 'No comeback signal yet',
@@ -1581,6 +1627,8 @@ const TEAM_COPY = {
       'The backend response was unavailable, so this detail page is falling back to the transitional JSON snapshot.',
     releaseDetailBackendTimeout:
       'The backend release-detail request timed out, so this detail page is falling back to the transitional JSON snapshot.',
+    releaseDetailBackendJsonPrimary:
+      'This detail page is currently using the transitional release-detail JSON primary path.',
     watchOnYouTube: 'Watch on YouTube',
     placeholderCover: 'Release artwork',
     drawerCopy:
@@ -1590,6 +1638,35 @@ const TEAM_COPY = {
     latestNow: 'Latest verified release right now',
   },
 } as const
+
+function getSurfaceStatusLabels(language: Language) {
+  const copy = TRANSLATIONS[language]
+  return {
+    sourceLabel: copy.surfaceSourceLabel,
+    reasonLabel: copy.surfaceReasonLabel,
+    sourceStateLabels: copy.surfaceSourceModeLabels,
+    fallbackReasonLabels: copy.surfaceFallbackReasonLabels,
+  }
+}
+
+function buildSurfaceStatusMessage({
+  language,
+  source,
+  errorCode,
+  baseMessage,
+}: {
+  language: Language
+  source: SurfaceStatusSource
+  errorCode: string | null
+  baseMessage: string
+}) {
+  const metadata = buildSurfaceStatusMeta({
+    source,
+    errorCode,
+    labels: getSurfaceStatusLabels(language),
+  })
+  return `${baseMessage} ${metadata}`
+}
 
 const UPCOMING_MONTH_FORMATTERS: Record<Language, Intl.DateTimeFormat> = {
   ko: new Intl.DateTimeFormat(TRANSLATIONS.ko.locale, {
@@ -1907,16 +1984,44 @@ function App() {
     : searchSurfaceFallbackSnapshot.releases
   const visibleSearchUpcoming = isSearchCutoverActive ? searchSurfaceResource.upcoming : searchSurfaceFallbackSnapshot.upcoming
   const searchSurfaceMessage =
-    isSearchCutoverActive
-      ? searchSurfaceResource.source === 'api'
-        ? copy.searchBackendActive
-        : searchSurfaceResource.loading
-          ? copy.searchBackendLoading
-          : searchSurfaceResource.source === 'json_fallback'
-            ? searchSurfaceResource.errorCode === 'timeout'
-              ? copy.searchBackendTimeout
-              : copy.searchBackendFallback
-            : null
+    search.trim().length > 0
+      ? searchSourceMode === 'api'
+        ? searchSurfaceResource.source === 'api'
+          ? buildSurfaceStatusMessage({
+              language,
+              source: 'api',
+              errorCode: null,
+              baseMessage: copy.searchBackendActive,
+            })
+          : searchSurfaceResource.loading
+            ? buildSurfaceStatusMessage({
+                language,
+                source: 'json',
+                errorCode: null,
+                baseMessage: copy.searchBackendLoading,
+              })
+            : searchSurfaceResource.source === 'json_fallback'
+              ? buildSurfaceStatusMessage({
+                  language,
+                  source: 'json_fallback',
+                  errorCode: searchSurfaceResource.errorCode,
+                  baseMessage:
+                    searchSurfaceResource.errorCode === 'timeout'
+                      ? copy.searchBackendTimeout
+                      : copy.searchBackendFallback,
+                })
+              : buildSurfaceStatusMessage({
+                  language,
+                  source: 'json',
+                  errorCode: null,
+                  baseMessage: copy.searchJsonPrimary,
+                })
+        : buildSurfaceStatusMessage({
+            language,
+            source: 'json',
+            errorCode: null,
+            baseMessage: copy.searchJsonPrimary,
+          })
       : null
   const filteredUpcomingSignals = filteredUpcoming
     .flatMap((item) => expandUpcomingCandidate(item))
@@ -2082,27 +2187,79 @@ function App() {
   const calendarSurfaceMessage =
     calendarMonthSourceMode === 'api'
       ? calendarMonthResource.source === 'api'
-        ? copy.calendarBackendActive
+        ? buildSurfaceStatusMessage({
+            language,
+            source: 'api',
+            errorCode: null,
+            baseMessage: copy.calendarBackendActive,
+          })
         : calendarMonthResource.loading
-          ? copy.calendarBackendLoading
+          ? buildSurfaceStatusMessage({
+              language,
+              source: 'json',
+              errorCode: null,
+              baseMessage: copy.calendarBackendLoading,
+            })
           : calendarMonthResource.source === 'json_fallback'
-            ? calendarMonthResource.errorCode === 'timeout'
-              ? copy.calendarBackendTimeout
-              : copy.calendarBackendFallback
-            : null
-      : null
+            ? buildSurfaceStatusMessage({
+                language,
+                source: 'json_fallback',
+                errorCode: calendarMonthResource.errorCode,
+                baseMessage:
+                  calendarMonthResource.errorCode === 'timeout'
+                    ? copy.calendarBackendTimeout
+                    : copy.calendarBackendFallback,
+              })
+            : buildSurfaceStatusMessage({
+                language,
+                source: 'json',
+                errorCode: null,
+                baseMessage: copy.calendarJsonPrimary,
+              })
+      : buildSurfaceStatusMessage({
+          language,
+          source: 'json',
+          errorCode: null,
+          baseMessage: copy.calendarJsonPrimary,
+        })
   const radarSurfaceMessage =
     radarSourceMode === 'api'
       ? radarResource.source === 'api'
-        ? copy.radarBackendActive
+        ? buildSurfaceStatusMessage({
+            language,
+            source: 'api',
+            errorCode: null,
+            baseMessage: copy.radarBackendActive,
+          })
         : radarResource.loading
-          ? copy.radarBackendLoading
+          ? buildSurfaceStatusMessage({
+              language,
+              source: 'json',
+              errorCode: null,
+              baseMessage: copy.radarBackendLoading,
+            })
           : radarResource.source === 'json_fallback'
-            ? radarResource.errorCode === 'timeout'
-              ? copy.radarBackendTimeout
-              : copy.radarBackendFallback
-            : null
-      : null
+            ? buildSurfaceStatusMessage({
+                language,
+                source: 'json_fallback',
+                errorCode: radarResource.errorCode,
+                baseMessage:
+                  radarResource.errorCode === 'timeout'
+                    ? copy.radarBackendTimeout
+                    : copy.radarBackendFallback,
+              })
+            : buildSurfaceStatusMessage({
+                language,
+                source: 'json',
+                errorCode: null,
+                baseMessage: copy.radarJsonPrimary,
+              })
+      : buildSurfaceStatusMessage({
+          language,
+          source: 'json',
+          errorCode: null,
+          baseMessage: copy.radarJsonPrimary,
+        })
   const selectedTeamFallback = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
   const selectedTeamResource = useEntityDetailResource({
     group: selectedGroup,
@@ -2557,17 +2714,38 @@ function App() {
             {myTeamsLimitReached && !selectedTeamIsPinned ? (
               <p className="team-focus-note">{teamCopy.pinLimitReached}</p>
             ) : null}
-            {entityDetailSourceMode === 'api' ? (
-              <p className="team-focus-note">
-                {selectedTeamResource.loading
-                  ? teamCopy.backendLoading
+            <p className="team-focus-note">
+              {entityDetailSourceMode === 'api'
+                ? selectedTeamResource.loading
+                  ? buildSurfaceStatusMessage({
+                      language,
+                      source: 'json',
+                      errorCode: null,
+                      baseMessage: teamCopy.backendLoading,
+                    })
                   : selectedTeamResource.source === 'api'
-                    ? teamCopy.backendActive
-                    : selectedTeamResource.errorCode === 'timeout'
-                      ? teamCopy.backendTimeout
-                      : teamCopy.backendFallback}
-              </p>
-            ) : null}
+                    ? buildSurfaceStatusMessage({
+                        language,
+                        source: 'api',
+                        errorCode: null,
+                        baseMessage: teamCopy.backendActive,
+                      })
+                    : buildSurfaceStatusMessage({
+                        language,
+                        source: 'json_fallback',
+                        errorCode: selectedTeamResource.errorCode,
+                        baseMessage:
+                          selectedTeamResource.errorCode === 'timeout'
+                            ? teamCopy.backendTimeout
+                            : teamCopy.backendFallback,
+                      })
+                : buildSurfaceStatusMessage({
+                    language,
+                    source: 'json',
+                    errorCode: null,
+                    baseMessage: teamCopy.backendJsonPrimary,
+                  })}
+            </p>
 
             <div className="team-page-summary">
               <div className="team-title-wrap">
@@ -3432,13 +3610,34 @@ function ReleaseDetailPage({
   const releaseDetailSourceMessage =
     sourceMode === 'api'
       ? releaseDetailResource.source === 'api'
-        ? teamCopy.releaseDetailBackendActive
+        ? buildSurfaceStatusMessage({
+            language,
+            source: 'api',
+            errorCode: null,
+            baseMessage: teamCopy.releaseDetailBackendActive,
+          })
         : releaseDetailResource.loading
-          ? teamCopy.releaseDetailBackendLoading
-          : releaseDetailResource.errorCode === 'timeout'
-            ? teamCopy.releaseDetailBackendTimeout
-            : teamCopy.releaseDetailBackendFallback
-      : null
+          ? buildSurfaceStatusMessage({
+              language,
+              source: 'json',
+              errorCode: null,
+              baseMessage: teamCopy.releaseDetailBackendLoading,
+            })
+          : buildSurfaceStatusMessage({
+              language,
+              source: 'json_fallback',
+              errorCode: releaseDetailResource.errorCode,
+              baseMessage:
+                releaseDetailResource.errorCode === 'timeout'
+                  ? teamCopy.releaseDetailBackendTimeout
+                  : teamCopy.releaseDetailBackendFallback,
+            })
+      : buildSurfaceStatusMessage({
+          language,
+          source: 'json',
+          errorCode: null,
+          baseMessage: teamCopy.releaseDetailBackendJsonPrimary,
+        })
 
   return (
     <main className="release-detail-page">

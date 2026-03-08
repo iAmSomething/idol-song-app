@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "verify:timeout": "tsx ./scripts/verify-backend-timeout.ts"
+    "verify:timeout": "tsx ./scripts/verify-backend-timeout.ts",
+    "verify:fallback-reasons": "tsx ./scripts/verify-fallback-reasons.ts"
   },
   "dependencies": {
     "react": "^19.2.0",
