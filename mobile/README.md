@@ -12,9 +12,12 @@
 
 - `app/`
   - Expo Router root layout / tab shell / detail route scaffold
-  - `calendar` tab은 active dataset + shared selector 기반 container까지 연결됨
-  - `radar` tab은 shared radar snapshot 기반 section stack까지 연결됨
-  - `search` tab은 query state + recent query persistence + segmented result container까지 연결됨
+- `calendar` tab은 active dataset + shared selector 기반 container까지 연결됨
+  - optional `month/date/filter/sheet` query로 state restoration 지원
+- `radar` tab은 shared radar snapshot 기반 section stack까지 연결됨
+  - optional `hideEmpty=1` query로 tab state restoration 지원
+- `search` tab은 query state + recent query persistence + segmented result container까지 연결됨
+  - optional `q/segment` query로 state restoration 지원
   - `artists/[slug]` route는 shared entity detail snapshot 기반 detail screen까지 연결됨
   - `releases/[id]` route는 shared release detail model 기반 detail screen까지 연결됨
   - hidden `debug/metadata` route for internal metadata inspection

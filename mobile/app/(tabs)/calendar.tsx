@@ -1,3 +1,4 @@
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   Modal,
@@ -17,6 +18,12 @@ import {
   resolveInitialCalendarSelection,
   resolveNextCalendarSelection,
 } from '../../src/features/calendarGrid';
+import {
+  areRouteParamsEqual,
+  buildCalendarRouteParams,
+  resolveCalendarRouteState,
+  type CalendarFilterMode,
+} from '../../src/features/routeState';
 import {
   selectCalendarMonthSnapshot,
   selectNearestExactUpcomingEvent,
@@ -47,8 +54,6 @@ type CalendarScreenState =
       source: ActiveMobileDataset;
       snapshot: CalendarMonthSnapshotModel;
     };
-
-type CalendarFilterMode = 'all' | 'releases' | 'upcoming';
 
 function buildMonthKey(date: Date): string {
   const year = date.getFullYear();
@@ -144,17 +149,40 @@ function getBadgePalette(
 }
 
 export default function CalendarTabScreen() {
+  const router = useRouter();
+  const params = useLocalSearchParams<{
+    date?: string | string[];
+    filter?: string | string[];
+    month?: string | string[];
+    sheet?: string | string[];
+  }>();
   const theme = useAppTheme();
   const [reloadCount, setReloadCount] = useState(0);
-  const [activeMonth, setActiveMonth] = useState(buildMonthKey(new Date()));
-  const [filterMode, setFilterMode] = useState<CalendarFilterMode>('all');
-  const [selectedDayIso, setSelectedDayIso] = useState<string | null>(null);
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [state, setState] = useState<CalendarScreenState>({ kind: 'loading' });
   const today = useMemo(() => new Date(), []);
   const currentMonth = useMemo(() => buildMonthKey(today), [today]);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
+  const routeState = useMemo(
+    () => resolveCalendarRouteState(params, currentMonth),
+    [currentMonth, params],
+  );
+  const [activeMonth, setActiveMonth] = useState(routeState.activeMonth);
+  const [filterMode, setFilterMode] = useState<CalendarFilterMode>(routeState.filterMode);
+  const [selectedDayIso, setSelectedDayIso] = useState<string | null>(routeState.selectedDayIso);
+  const [isSheetOpen, setIsSheetOpen] = useState(routeState.isSheetOpen);
   const styles = useMemo(() => createStyles(theme), [theme]);
+
+  useEffect(() => {
+    setActiveMonth(routeState.activeMonth);
+    setFilterMode(routeState.filterMode);
+    setSelectedDayIso(routeState.selectedDayIso);
+    setIsSheetOpen(routeState.isSheetOpen);
+  }, [
+    routeState.activeMonth,
+    routeState.filterMode,
+    routeState.isSheetOpen,
+    routeState.selectedDayIso,
+  ]);
 
   useEffect(() => {
     let cancelled = false;
@@ -232,6 +260,40 @@ export default function CalendarTabScreen() {
   }, [filteredSnapshot, selectedDayIso, todayIsoDate]);
 
   const selectedDay = monthGrid?.selectedDay ?? null;
+
+  useEffect(() => {
+    const currentRouteParams = buildCalendarRouteParams({
+      activeMonth: routeState.activeMonth,
+      currentMonth,
+      filterMode: routeState.filterMode,
+      isSheetOpen: routeState.isSheetOpen,
+      selectedDayIso: routeState.selectedDayIso,
+    });
+    const nextRouteParams = buildCalendarRouteParams({
+      activeMonth,
+      currentMonth,
+      filterMode,
+      isSheetOpen,
+      selectedDayIso,
+    });
+
+    if (areRouteParamsEqual(currentRouteParams, nextRouteParams)) {
+      return;
+    }
+
+    router.setParams(nextRouteParams);
+  }, [
+    activeMonth,
+    currentMonth,
+    filterMode,
+    isSheetOpen,
+    routeState.activeMonth,
+    routeState.filterMode,
+    routeState.isSheetOpen,
+    routeState.selectedDayIso,
+    router,
+    selectedDayIso,
+  ]);
 
   function jumpToMonth(month: string, isoDate: string) {
     setActiveMonth(month);

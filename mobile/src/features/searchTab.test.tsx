@@ -23,12 +23,23 @@ function createMemoryStorage(): KeyValueStorageAdapter {
 
 jest.mock('expo-router', () => {
   const push = jest.fn();
+  const setParams = jest.fn();
+  const useLocalSearchParams = jest.fn(() => ({}));
 
   return {
-    useRouter: () => ({ push }),
-    __mock: { push },
+    useRouter: () => ({ push, setParams }),
+    useLocalSearchParams,
+    __mock: { push, setParams, useLocalSearchParams },
   };
 });
+
+const { __mock } = jest.requireMock('expo-router') as {
+  __mock: {
+    push: jest.Mock;
+    setParams: jest.Mock;
+    useLocalSearchParams: jest.Mock;
+  };
+};
 
 async function renderSearchScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -49,6 +60,8 @@ function hasText(tree: renderer.ReactTestRenderer, value: string): boolean {
 describe('mobile search tab', () => {
   beforeEach(() => {
     setStorageAdapter(createMemoryStorage());
+    __mock.useLocalSearchParams.mockReturnValue({});
+    __mock.setParams.mockClear();
   });
 
   afterEach(() => {
@@ -100,5 +113,24 @@ describe('mobile search tab', () => {
 
     expect(await readRecentQueries()).toEqual([]);
     expect(hasText(tree, '최근 검색이 없습니다.')).toBe(true);
+  });
+
+  test('restores query and segment state from route params', async () => {
+    __mock.useLocalSearchParams.mockReturnValue({
+      q: '최예나',
+      segment: 'upcoming',
+    });
+
+    const tree = await renderSearchScreen();
+
+    expect(tree.root.findByProps({ testID: 'search-input' }).props.value).toBe('최예나');
+    expect(
+      tree.root.findByProps({ testID: 'search-segment-upcoming' }).props.accessibilityState.selected,
+    ).toBe(true);
+    expect(
+      tree.root.findByProps({
+        testID: 'search-upcoming-result-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
+      }),
+    ).toBeDefined();
   });
 });

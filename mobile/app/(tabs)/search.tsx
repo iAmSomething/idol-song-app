@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import {
   Pressable,
@@ -13,6 +13,12 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import {
+  areRouteParamsEqual,
+  buildSearchRouteParams,
+  resolveSearchRouteState,
+  type SearchSegment,
+} from '../../src/features/routeState';
 import {
   createSelectorContext,
   selectSearchResults,
@@ -32,8 +38,6 @@ type SearchScreenState =
   | { kind: 'loading' }
   | { kind: 'error'; message: string }
   | { kind: 'ready'; source: ActiveMobileDataset };
-
-type SearchSegment = 'entities' | 'releases' | 'upcoming';
 
 function formatReleaseMeta(release: ReleaseSummaryModel): string {
   const releaseKind = release.releaseKind ?? 'release';
@@ -65,15 +69,25 @@ function formatSuggestedLabel(team: TeamSummaryModel): string {
 
 export default function SearchTabScreen() {
   const router = useRouter();
+  const params = useLocalSearchParams<{
+    q?: string | string[];
+    segment?: string | string[];
+  }>();
   const theme = useAppTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const routeState = useMemo(() => resolveSearchRouteState(params), [params]);
 
   const [reloadCount, setReloadCount] = useState(0);
   const [state, setState] = useState<SearchScreenState>({ kind: 'loading' });
-  const [query, setQuery] = useState('');
-  const [activeSegment, setActiveSegment] = useState<SearchSegment>('entities');
+  const [query, setQuery] = useState(routeState.query);
+  const [activeSegment, setActiveSegment] = useState<SearchSegment>(routeState.activeSegment);
   const [recentQueries, setRecentQueries] = useState<string[]>([]);
   const deferredQuery = useDeferredValue(query);
+
+  useEffect(() => {
+    setQuery(routeState.query);
+    setActiveSegment(routeState.activeSegment);
+  }, [routeState.activeSegment, routeState.query]);
 
   useEffect(() => {
     let cancelled = false;
@@ -151,6 +165,23 @@ export default function SearchTabScreen() {
 
     return entries;
   }, [selectorContext]);
+
+  useEffect(() => {
+    const currentRouteParams = buildSearchRouteParams({
+      activeSegment: routeState.activeSegment,
+      query: routeState.query,
+    });
+    const nextRouteParams = buildSearchRouteParams({
+      activeSegment,
+      query,
+    });
+
+    if (areRouteParamsEqual(currentRouteParams, nextRouteParams)) {
+      return;
+    }
+
+    router.setParams(nextRouteParams);
+  }, [activeSegment, query, routeState.activeSegment, routeState.query, router]);
 
   async function rememberQuery(nextQuery: string) {
     const history = await persistRecentQuery(nextQuery);

@@ -38,13 +38,26 @@ Path: `/releases/[id]`
 - example: `blackpink-deadline-2026-02-27`
 
 ### 4.3 Calendar month state
-- route param으로 강제하지 않는다.
-- v1은 in-memory state 또는 persisted screen state로 유지한다.
-- optional future extension: `?month=2026-04`
+- 기본 진입 경로는 `/(tabs)/calendar`다.
+- state restoration용 optional query param:
+  - `month=2026-04`
+  - `date=2026-04-18`
+  - `filter=all|releases|upcoming`
+  - `sheet=open`
+- `sheet=open`은 valid `date`가 있을 때만 유효하다.
+- invalid month/date/filter는 안전하게 무시하고 현재 월 기본 상태로 복구한다.
 
 ### 4.4 Search state
-- v1은 query를 permanent route param으로 노출하지 않는다.
-- optional future extension: `?q=투바투&segment=team`
+- 기본 진입 경로는 `/(tabs)/search`다.
+- state restoration용 optional query param:
+  - `q=투바투`
+  - `segment=entities|releases|upcoming`
+- `segment`는 non-empty `q`가 있을 때만 적용한다.
+
+### 4.5 Radar state
+- 기본 진입 경로는 `/(tabs)/radar`다.
+- state restoration용 optional query param:
+  - `hideEmpty=1`
 
 ## 5. Param validation
 - missing slug/id는 screen crash 원인이 되어서는 안 된다.
@@ -52,8 +65,8 @@ Path: `/releases/[id]`
 - selector가 데이터를 찾지 못하면 404-style empty/error state를 보여준다.
 
 ## 6. Deep-link 정책
-- internal deep-link는 team detail, release detail 두 종류만 우선 지원한다.
-- bottom sheet나 filter state deep-link는 v1 비범위다.
+- internal deep-link는 team detail, release detail, tab restoration query까지 지원한다.
+- calendar date-detail sheet는 dedicated route 대신 tab query state 복원으로만 다룬다.
 - external handoff 복귀 시 기존 route stack을 유지해야 한다.
 
 ## 7. Back behavior
