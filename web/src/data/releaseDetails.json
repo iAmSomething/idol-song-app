@@ -684,23 +684,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "どうしよっかな"
+        "title": "どうしよっかな",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Invincible"
+        "title": "Invincible",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "愛せなかった世界へ永遠にじゃあね"
+        "title": "愛せなかった世界へ永遠にじゃあね",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "傷つくのは嫌いだから"
+        "title": "傷つくのは嫌いだから",
+        "is_title_track": true
       },
       {
         "order": 5,
-        "title": "Queencard (Japanese ver.)"
+        "title": "Queencard (Japanese ver.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/prerelease/6dwb5r26FV8QM1q2VNfin6",
@@ -2803,23 +2808,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Ghost"
+        "title": "Ghost",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Adrenaline"
+        "title": "Adrenaline",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "NASA"
+        "title": "NASA",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "On the Road"
+        "title": "On the Road",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Choose"
+        "title": "Choose",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/1FBxW4I6azDVjGallQ4wQk",
@@ -8383,15 +8393,18 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Shine on Me"
+        "title": "Shine on Me",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Echoes"
+        "title": "Echoes",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Bad Desire (With or Without You) (Japanese Ver.)"
+        "title": "Bad Desire (With or Without You) (Japanese Ver.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3SbFks7Ke2crP3O0RpfDEF",
@@ -9165,39 +9178,48 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Crown"
+        "title": "Crown",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Back It Up"
+        "title": "Back It Up",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Crazy"
+        "title": "Crazy",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Suffocate"
+        "title": "Suffocate",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Moonlight Shadows"
+        "title": "Moonlight Shadows",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Back Pocket"
+        "title": "Back Pocket",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "Touch & Go"
+        "title": "Touch & Go",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "Flatline"
+        "title": "Flatline",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "I’m Home"
+        "title": "I’m Home",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4ZXDMoZKLnkxFyqRGmCLnB",
@@ -13344,35 +13366,43 @@
     "tracks": [
       {
         "order": 1,
-        "title": "SPAGHETTI"
+        "title": "SPAGHETTI",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Pearlies (My oyster is the world)"
+        "title": "Pearlies (My oyster is the world)",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "SPAGHETTI (Member ver.)"
+        "title": "SPAGHETTI (Member ver.)",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "SPAGHETTI (English ver.)"
+        "title": "SPAGHETTI (English ver.)",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "SPAGHETTI"
+        "title": "SPAGHETTI",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Pearlies (My oyster is the world)"
+        "title": "Pearlies (My oyster is the world)",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "SPAGHETTI (Member ver.)"
+        "title": "SPAGHETTI (Member ver.)",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "SPAGHETTI (English ver.)"
+        "title": "SPAGHETTI (English ver.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/2yUrwTLHDWBrW74Ewuw6RX",
@@ -16197,31 +16227,38 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Hello Mellow"
+        "title": "Hello Mellow",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "ZONE"
+        "title": "ZONE",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "BUBBLE GUM"
+        "title": "BUBBLE GUM",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Dreamcatcher"
+        "title": "Dreamcatcher",
+        "is_title_track": true
       },
       {
         "order": 5,
-        "title": "SOMEDAY"
+        "title": "SOMEDAY",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Good Morning"
+        "title": "Good Morning",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "poppop (Japanese ver.)"
+        "title": "poppop (Japanese ver.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0AbenVXd5ypXotWe1z0ytw",
@@ -17330,23 +17367,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "X"
+        "title": "X",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "LOVE ME or LOSER"
+        "title": "LOVE ME or LOSER",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "RELOAD"
+        "title": "RELOAD",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "BAD"
+        "title": "BAD",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "TIME MACHINE (Korean ver.)"
+        "title": "TIME MACHINE (Korean ver.)",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/549FaK4UMSSCdbxKVLWaYL",
@@ -17769,31 +17811,38 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Lucky 12"
+        "title": "Lucky 12",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "MAZE"
+        "title": "MAZE",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "UFO"
+        "title": "UFO",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Hide & Seek"
+        "title": "Hide & Seek",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Trace"
+        "title": "Trace",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Diary"
+        "title": "Diary",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "Beyond the Storm"
+        "title": "Beyond the Storm",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -18802,11 +18851,13 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Breath"
+        "title": "Breath",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Breath (inst.)"
+        "title": "Breath (inst.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -19532,23 +19583,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Heart Drop"
+        "title": "Heart Drop",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Bloom"
+        "title": "Bloom",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Love Echo"
+        "title": "Love Echo",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Hello XO"
+        "title": "Hello XO",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "MVP"
+        "title": "MVP",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -19568,11 +19624,13 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Busy boy"
+        "title": "Busy boy",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Busy boy - inst."
+        "title": "Busy boy - inst.",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0dbuXh0XcMsrgQsVep3jAk",
@@ -23948,51 +24006,63 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Intro : SPARK"
+        "title": "Intro : SPARK",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Can’t Stop"
+        "title": "Can’t Stop",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Beautiful Strangers - Japanese Ver."
+        "title": "Beautiful Strangers - Japanese Ver.",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Where Do You Go?"
+        "title": "Where Do You Go?",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Deja Vu - Japanese Ver."
+        "title": "Deja Vu - Japanese Ver.",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "ひとつの誓い (We’ll Never Change)"
+        "title": "ひとつの誓い (We’ll Never Change)",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "SSS (Sending Secret Signals)"
+        "title": "SSS (Sending Secret Signals)",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "きっとずっと (Kitto Zutto)"
+        "title": "きっとずっと (Kitto Zutto)",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "Step by Step"
+        "title": "Step by Step",
+        "is_title_track": true
       },
       {
         "order": 10,
-        "title": "Rise"
+        "title": "Rise",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "星の詩 - Japanese Ver."
+        "title": "星の詩 - Japanese Ver.",
+        "is_title_track": false
       },
       {
         "order": 12,
-        "title": "Outro : GLOW"
+        "title": "Outro : GLOW",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6iPNWX9dibeWPMaVuhRKEw",
@@ -25884,27 +25954,33 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Head Shoulders Knees Toes"
+        "title": "Head Shoulders Knees Toes",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "OVERDRIVE"
+        "title": "OVERDRIVE",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "HOT BLUE SHOES"
+        "title": "HOT BLUE SHOES",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Caffeine Rush"
+        "title": "Caffeine Rush",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "overthinking"
+        "title": "overthinking",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Here for You"
+        "title": "Here for You",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6RBnUYZIGKGDdgEnf3ta1U",
@@ -27507,31 +27583,38 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Lost and Found"
+        "title": "Lost and Found",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "ICU"
+        "title": "ICU",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Fire (My Sweet Misery)"
+        "title": "Fire (My Sweet Misery)",
+        "is_title_track": true
       },
       {
         "order": 4,
-        "title": "Ashes to Ashes"
+        "title": "Ashes to Ashes",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Spoiler!!!"
+        "title": "Spoiler!!!",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Love Tug of War"
+        "title": "Love Tug of War",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "LOVE ME 2 DEATH"
+        "title": "LOVE ME 2 DEATH",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/04WcDHoLelHf9ajNp6HXkD",
@@ -27692,23 +27775,28 @@
     "tracks": [
       {
         "order": 1,
-        "title": "ICONIC"
+        "title": "ICONIC",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "See You Play (S’il vous plaît)"
+        "title": "See You Play (S’il vous plaît)",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "SUPERPOWER (Peak)"
+        "title": "SUPERPOWER (Peak)",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Blurry"
+        "title": "Blurry",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Right in"
+        "title": "Right in",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0BWWwBPmMDLnhvi2SJX8CV",
@@ -28087,11 +28175,13 @@
     "tracks": [
       {
         "order": 1,
-        "title": "VISA"
+        "title": "VISA",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Pilot3"
+        "title": "Pilot3",
+        "is_title_track": true
       }
     ],
     "spotify_url": "https://open.spotify.com/album/7BYBKfbZxXgJkZ82GYp3MI",
@@ -28792,15 +28882,18 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Running to Future"
+        "title": "Running to Future",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "ROSES"
+        "title": "ROSES",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "LOVEPOCALYPSE"
+        "title": "LOVEPOCALYPSE",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/2IhQYBuoaZmcXRQJqwFGQg",

@@ -42,6 +42,27 @@
     "current_youtube_video_provenance": "Official YouTube search currently surfaces a special clip instead of a clearly canonical MV object."
   },
   {
+    "group": "(G)I-DLE",
+    "release_title": "i‐dle",
+    "release_date": "2025-10-03",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "傷つくのは嫌いだから"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "(G)I-DLE 傷つくのは嫌いだから official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=%28G%29I-DLE+%E5%82%B7%E3%81%A4%E3%81%8F%E3%81%AE%E3%81%AF%E5%AB%8C%E3%81%84%E3%81%A0%E3%81%8B%E3%82%89+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
     "group": "ALL(H)OURS",
     "release_title": "VCF",
     "release_date": "2025-09-09",
@@ -82,6 +103,27 @@
     "current_youtube_video_provenance": ""
   },
   {
+    "group": "ATEEZ",
+    "release_title": "GOLDEN HOUR : Part.4",
+    "release_date": "2026-02-06",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Choose"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "ATEEZ Choose official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ATEEZ+Choose+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
     "group": "AtHeart",
     "release_title": "Plot Twist",
     "release_date": "2025-08-13",
@@ -99,6 +141,50 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "AtHeart Plot Twist official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=AtHeart+Plot+Twist+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "ENHYPEN",
+    "release_title": "宵 -YOI-",
+    "release_date": "2025-07-27",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Shine on Me"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "ENHYPEN Shine on Me official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ENHYPEN+Shine+on+Me+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "EXO",
+    "release_title": "REVERXE",
+    "release_date": "2026-01-19",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [
+      "I’m Home"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCzCedBCSSltI1TFd3bKyN6g",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCzCedBCSSltI1TFd3bKyN6g",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "EXO I’m Home official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=EXO+I%E2%80%99m+Home+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": ""
   },
@@ -335,6 +421,27 @@
     "current_youtube_video_provenance": ""
   },
   {
+    "group": "NCT WISH",
+    "release_title": "WISHLIST",
+    "release_date": "2026-01-14",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Dreamcatcher"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "NCT WISH Dreamcatcher official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NCT+WISH+Dreamcatcher+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
     "group": "NMIXX",
     "release_title": "TIC TIC",
     "release_date": "2026-02-26",
@@ -353,6 +460,48 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "NMIXX TIC TIC official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=NMIXX+TIC+TIC+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "ONEUS",
+    "release_title": "5x",
+    "release_date": "2025-06-30",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "TIME MACHINE (Korean ver.)"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "ONEUS TIME MACHINE (Korean ver.) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ONEUS+TIME+MACHINE+%28Korean+ver.%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "ONEWE",
+    "release_title": "MAZE : AD ASTRA",
+    "release_date": "2025-10-07",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "MAZE"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "ONEWE MAZE official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ONEWE+MAZE+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": ""
   },
@@ -393,6 +542,65 @@
     "recommended_action": "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up.",
     "suggested_search_query": "POW Wall Flowers official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=POW+Wall+Flowers+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "Purple Kiss",
+    "release_title": "A Violet to Remember",
+    "release_date": "2025-11-16",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Breath"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCor8nQnEdMs4eBcU-uVBQ8g",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCor8nQnEdMs4eBcU-uVBQ8g"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "Purple Kiss Breath official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=Purple+Kiss+Breath+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "RESCENE",
+    "release_title": "lip bomb",
+    "release_date": "2025-11-25",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Heart Drop"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "mv_allowlist_urls": [],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "RESCENE Heart Drop official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=RESCENE+Heart+Drop+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "RESCENE",
+    "release_title": "[RESCENE X ???]",
+    "release_date": "2026-02-27",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Busy boy"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "mv_allowlist_urls": [],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "RESCENE Busy boy official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=RESCENE+Busy+boy+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": ""
   },
@@ -565,6 +773,28 @@
     "current_youtube_video_provenance": ""
   },
   {
+    "group": "TOMORROW X TOGETHER",
+    "release_title": "Starkissed",
+    "release_date": "2025-10-19",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [
+      "Step by Step"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "TOMORROW X TOGETHER Step by Step official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TOMORROW+X+TOGETHER+Step+by+Step+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
     "group": "TRENDZ",
     "release_title": "Kart Racer",
     "release_date": "2026-02-13",
@@ -651,6 +881,28 @@
     "current_youtube_video_provenance": ""
   },
   {
+    "group": "TWS",
+    "release_title": "play hard",
+    "release_date": "2025-10-13",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Head Shoulders Knees Toes"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UC8C6QOPDVYwmuaSBZksefdg",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UC8C6QOPDVYwmuaSBZksefdg",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "TWS Head Shoulders Knees Toes official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TWS+Head+Shoulders+Knees+Toes+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
     "group": "UNIS",
     "release_title": "幸せになんかならないでね",
     "release_date": "2025-12-17",
@@ -693,6 +945,27 @@
     "current_youtube_video_provenance": ""
   },
   {
+    "group": "Xdinary Heroes",
+    "release_title": "LXVE to DEATH",
+    "release_date": "2025-10-24",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Fire (My Sweet Misery)"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "Xdinary Heroes Fire (My Sweet Misery) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=Xdinary+Heroes+Fire+%28My+Sweet+Misery%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
     "group": "xikers",
     "release_title": "ICONIC",
     "release_date": "2025-08-01",
@@ -710,6 +983,69 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "xikers ICONIC official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=xikers+ICONIC+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "xikers",
+    "release_title": "HOUSE OF TRICKY : WRECKING THE HOUSE",
+    "release_date": "2025-10-31",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "ICONIC"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "xikers ICONIC official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=xikers+ICONIC+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "YOUNG POSSE",
+    "release_title": "VISA / Pilot3",
+    "release_date": "2026-01-27",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "VISA",
+      "Pilot3"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "",
+    "mv_allowlist_urls": [],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up.",
+    "suggested_search_query": "YOUNG POSSE VISA official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=YOUNG+POSSE+VISA+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": ""
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "RE-FLOW",
+    "release_date": "2026-02-02",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Running to Future",
+      "ROSES"
+    ],
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ"
+    ],
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "ZEROBASEONE Running to Future official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ZEROBASEONE+Running+to+Future+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": ""
   }
