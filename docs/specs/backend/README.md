@@ -51,6 +51,9 @@
 15. `neon-backup-restore-recovery-drill.md`
    - isolated schema clone 기준 backup / restore / recovery rehearsal 절차
    - representative read-path usable state 판정 기준
+16. `projection-query-plan-regression-check.md`
+   - projection-backed lookup query의 required index / explain probe gate
+   - controlled degraded scenario로 failure detection을 증명하는 방법
 
 ## 읽는 순서
 
@@ -69,6 +72,7 @@
 13. `public-read-rate-limit-policy.md`
 14. `structured-backend-logging-policy.md`
 15. `neon-backup-restore-recovery-drill.md`
+16. `projection-query-plan-regression-check.md`
 
 ## 원칙
 

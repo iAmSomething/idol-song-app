@@ -1,0 +1,568 @@
+{
+  "generated_at": "2026-03-08T11:46:22.102Z",
+  "clean": true,
+  "strategy": {
+    "baseline": "required projection indexes present + EXPLAIN JSON with enable_seqscan=off must still find an expected index path",
+    "controlled_degraded_scenario": "run degraded predicate variants that intentionally bypass supporting indexes while keeping enable_seqscan=off"
+  },
+  "representative_samples": {
+    "entitySlug": "82major",
+    "releaseId": "6a1db562-83b4-5e9d-a00f-6ea0ebfb6680",
+    "releaseLookupEntitySlug": "h1-key",
+    "releaseLookupTitle": "lovechapter",
+    "releaseLookupDate": "2026-03-05",
+    "releaseLookupStream": "album",
+    "calendarMonth": "2026-04"
+  },
+  "projection_index_inventory": {
+    "expected": {
+      "entity_search_documents": [
+        "idx_entity_search_documents_entity_id",
+        "idx_entity_search_documents_slug",
+        "idx_entity_search_documents_normalized_terms"
+      ],
+      "release_detail_projection": [
+        "idx_release_detail_projection_release_id",
+        "idx_release_detail_projection_legacy_lookup"
+      ],
+      "entity_detail_projection": [
+        "idx_entity_detail_projection_entity_id",
+        "idx_entity_detail_projection_slug"
+      ],
+      "calendar_month_projection": [
+        "idx_calendar_month_projection_month_start",
+        "idx_calendar_month_projection_month_key"
+      ],
+      "radar_projection": [
+        "idx_radar_projection_key"
+      ]
+    },
+    "missing": []
+  },
+  "summary_lines": [
+    "search_context_entity_by_slug: baseline pass, degraded detected, expected indexes=idx_entity_search_documents_slug",
+    "entity_detail_by_slug: baseline pass, degraded detected, expected indexes=idx_entity_detail_projection_slug",
+    "release_detail_by_id: baseline pass, degraded detected, expected indexes=idx_release_detail_projection_release_id",
+    "release_lookup_by_legacy_key: baseline pass, degraded detected, expected indexes=idx_release_detail_projection_legacy_lookup",
+    "calendar_month_by_key: baseline pass, degraded detected, expected indexes=idx_calendar_month_projection_month_key",
+    "radar_default_projection: baseline pass, degraded detected, expected indexes=idx_radar_projection_key",
+    "baseline: pass (6/6)",
+    "controlled degraded scenario: detected (6/6)",
+    "projection index inventory: pass"
+  ],
+  "summary": {
+    "total_queries": 6,
+    "baseline_passed_queries": 6,
+    "degraded_detected_queries": 6,
+    "missing_projection_indexes": 0,
+    "baseline_passed": true,
+    "controlled_degraded_scenario_detected": true
+  },
+  "queries": [
+    {
+      "query_id": "search_context_entity_by_slug",
+      "description": "Search endpoint context hydration by exact entity slug list",
+      "target_relation": "entity_search_documents",
+      "expected_indexes": [
+        "idx_entity_search_documents_slug"
+      ],
+      "representative_lookup": {
+        "entity_slug": "82major"
+      },
+      "default_plan": {
+        "planner_settings": "default",
+        "root_node_type": "Index Scan",
+        "relation_scans": [
+          {
+            "node_type": "Index Scan",
+            "relation_name": "entity_search_documents"
+          }
+        ],
+        "index_names": [
+          "idx_entity_search_documents_slug"
+        ],
+        "node_types": [
+          "Index Scan"
+        ]
+      },
+      "baseline": {
+        "used_expected_indexes": [
+          "idx_entity_search_documents_slug"
+        ],
+        "has_seq_scan_on_target_relation": false,
+        "ok": true,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Index Scan",
+          "relation_scans": [
+            {
+              "node_type": "Index Scan",
+              "relation_name": "entity_search_documents"
+            }
+          ],
+          "index_names": [
+            "idx_entity_search_documents_slug"
+          ],
+          "node_types": [
+            "Index Scan"
+          ]
+        }
+      },
+      "degraded": {
+        "used_expected_indexes": [],
+        "has_seq_scan_on_target_relation": true,
+        "ok": false,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Hash Join",
+          "relation_scans": [
+            {
+              "node_type": "Hash Join",
+              "relation_name": null
+            },
+            {
+              "node_type": "Seq Scan",
+              "relation_name": "entity_search_documents"
+            },
+            {
+              "node_type": "Hash",
+              "relation_name": null
+            },
+            {
+              "node_type": "Function Scan",
+              "relation_name": null
+            }
+          ],
+          "index_names": [],
+          "node_types": [
+            "Hash Join",
+            "Seq Scan",
+            "Hash",
+            "Function Scan"
+          ]
+        }
+      }
+    },
+    {
+      "query_id": "entity_detail_by_slug",
+      "description": "Entity detail projection lookup by stable slug",
+      "target_relation": "entity_detail_projection",
+      "expected_indexes": [
+        "idx_entity_detail_projection_slug"
+      ],
+      "representative_lookup": {
+        "entity_slug": "82major"
+      },
+      "default_plan": {
+        "planner_settings": "default",
+        "root_node_type": "Limit",
+        "relation_scans": [
+          {
+            "node_type": "Limit",
+            "relation_name": null
+          },
+          {
+            "node_type": "Index Scan",
+            "relation_name": "entity_detail_projection"
+          }
+        ],
+        "index_names": [
+          "idx_entity_detail_projection_slug"
+        ],
+        "node_types": [
+          "Limit",
+          "Index Scan"
+        ]
+      },
+      "baseline": {
+        "used_expected_indexes": [
+          "idx_entity_detail_projection_slug"
+        ],
+        "has_seq_scan_on_target_relation": false,
+        "ok": true,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Index Scan",
+              "relation_name": "entity_detail_projection"
+            }
+          ],
+          "index_names": [
+            "idx_entity_detail_projection_slug"
+          ],
+          "node_types": [
+            "Limit",
+            "Index Scan"
+          ]
+        }
+      },
+      "degraded": {
+        "used_expected_indexes": [],
+        "has_seq_scan_on_target_relation": true,
+        "ok": false,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Seq Scan",
+              "relation_name": "entity_detail_projection"
+            }
+          ],
+          "index_names": [],
+          "node_types": [
+            "Limit",
+            "Seq Scan"
+          ]
+        }
+      }
+    },
+    {
+      "query_id": "release_detail_by_id",
+      "description": "Release detail projection lookup by UUID",
+      "target_relation": "release_detail_projection",
+      "expected_indexes": [
+        "idx_release_detail_projection_release_id"
+      ],
+      "representative_lookup": {
+        "release_id": "6a1db562-83b4-5e9d-a00f-6ea0ebfb6680"
+      },
+      "default_plan": {
+        "planner_settings": "default",
+        "root_node_type": "Limit",
+        "relation_scans": [
+          {
+            "node_type": "Limit",
+            "relation_name": null
+          },
+          {
+            "node_type": "Index Scan",
+            "relation_name": "release_detail_projection"
+          }
+        ],
+        "index_names": [
+          "idx_release_detail_projection_release_id"
+        ],
+        "node_types": [
+          "Limit",
+          "Index Scan"
+        ]
+      },
+      "baseline": {
+        "used_expected_indexes": [
+          "idx_release_detail_projection_release_id"
+        ],
+        "has_seq_scan_on_target_relation": false,
+        "ok": true,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Index Scan",
+              "relation_name": "release_detail_projection"
+            }
+          ],
+          "index_names": [
+            "idx_release_detail_projection_release_id"
+          ],
+          "node_types": [
+            "Limit",
+            "Index Scan"
+          ]
+        }
+      },
+      "degraded": {
+        "used_expected_indexes": [],
+        "has_seq_scan_on_target_relation": true,
+        "ok": false,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Seq Scan",
+              "relation_name": "release_detail_projection"
+            }
+          ],
+          "index_names": [],
+          "node_types": [
+            "Limit",
+            "Seq Scan"
+          ]
+        }
+      }
+    },
+    {
+      "query_id": "release_lookup_by_legacy_key",
+      "description": "Legacy release lookup by entity slug, normalized title, date, and stream",
+      "target_relation": "release_detail_projection",
+      "expected_indexes": [
+        "idx_release_detail_projection_legacy_lookup"
+      ],
+      "representative_lookup": {
+        "entity_slug": "h1-key",
+        "title": "lovechapter",
+        "date": "2026-03-05",
+        "stream": "album"
+      },
+      "default_plan": {
+        "planner_settings": "default",
+        "root_node_type": "Limit",
+        "relation_scans": [
+          {
+            "node_type": "Limit",
+            "relation_name": null
+          },
+          {
+            "node_type": "Index Scan",
+            "relation_name": "release_detail_projection"
+          }
+        ],
+        "index_names": [
+          "idx_release_detail_projection_legacy_lookup"
+        ],
+        "node_types": [
+          "Limit",
+          "Index Scan"
+        ]
+      },
+      "baseline": {
+        "used_expected_indexes": [
+          "idx_release_detail_projection_legacy_lookup"
+        ],
+        "has_seq_scan_on_target_relation": false,
+        "ok": true,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Index Scan",
+              "relation_name": "release_detail_projection"
+            }
+          ],
+          "index_names": [
+            "idx_release_detail_projection_legacy_lookup"
+          ],
+          "node_types": [
+            "Limit",
+            "Index Scan"
+          ]
+        }
+      },
+      "degraded": {
+        "used_expected_indexes": [],
+        "has_seq_scan_on_target_relation": true,
+        "ok": false,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Seq Scan",
+              "relation_name": "release_detail_projection"
+            }
+          ],
+          "index_names": [],
+          "node_types": [
+            "Limit",
+            "Seq Scan"
+          ]
+        }
+      }
+    },
+    {
+      "query_id": "calendar_month_by_key",
+      "description": "Calendar month projection lookup by month_key",
+      "target_relation": "calendar_month_projection",
+      "expected_indexes": [
+        "idx_calendar_month_projection_month_key"
+      ],
+      "representative_lookup": {
+        "month_key": "2026-04"
+      },
+      "default_plan": {
+        "planner_settings": "default",
+        "root_node_type": "Limit",
+        "relation_scans": [
+          {
+            "node_type": "Limit",
+            "relation_name": null
+          },
+          {
+            "node_type": "Index Scan",
+            "relation_name": "calendar_month_projection"
+          }
+        ],
+        "index_names": [
+          "idx_calendar_month_projection_month_key"
+        ],
+        "node_types": [
+          "Limit",
+          "Index Scan"
+        ]
+      },
+      "baseline": {
+        "used_expected_indexes": [
+          "idx_calendar_month_projection_month_key"
+        ],
+        "has_seq_scan_on_target_relation": false,
+        "ok": true,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Index Scan",
+              "relation_name": "calendar_month_projection"
+            }
+          ],
+          "index_names": [
+            "idx_calendar_month_projection_month_key"
+          ],
+          "node_types": [
+            "Limit",
+            "Index Scan"
+          ]
+        }
+      },
+      "degraded": {
+        "used_expected_indexes": [],
+        "has_seq_scan_on_target_relation": true,
+        "ok": false,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Seq Scan",
+              "relation_name": "calendar_month_projection"
+            }
+          ],
+          "index_names": [],
+          "node_types": [
+            "Limit",
+            "Seq Scan"
+          ]
+        }
+      }
+    },
+    {
+      "query_id": "radar_default_projection",
+      "description": "Radar projection lookup by singleton projection_key",
+      "target_relation": "radar_projection",
+      "expected_indexes": [
+        "idx_radar_projection_key"
+      ],
+      "representative_lookup": {
+        "projection_key": "default"
+      },
+      "default_plan": {
+        "planner_settings": "default",
+        "root_node_type": "Limit",
+        "relation_scans": [
+          {
+            "node_type": "Limit",
+            "relation_name": null
+          },
+          {
+            "node_type": "Seq Scan",
+            "relation_name": "radar_projection"
+          }
+        ],
+        "index_names": [],
+        "node_types": [
+          "Limit",
+          "Seq Scan"
+        ]
+      },
+      "baseline": {
+        "used_expected_indexes": [
+          "idx_radar_projection_key"
+        ],
+        "has_seq_scan_on_target_relation": false,
+        "ok": true,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Index Scan",
+              "relation_name": "radar_projection"
+            }
+          ],
+          "index_names": [
+            "idx_radar_projection_key"
+          ],
+          "node_types": [
+            "Limit",
+            "Index Scan"
+          ]
+        }
+      },
+      "degraded": {
+        "used_expected_indexes": [],
+        "has_seq_scan_on_target_relation": true,
+        "ok": false,
+        "plan": {
+          "planner_settings": "enable_seqscan=off",
+          "root_node_type": "Limit",
+          "relation_scans": [
+            {
+              "node_type": "Limit",
+              "relation_name": null
+            },
+            {
+              "node_type": "Seq Scan",
+              "relation_name": "radar_projection"
+            }
+          ],
+          "index_names": [],
+          "node_types": [
+            "Limit",
+            "Seq Scan"
+          ]
+        }
+      }
+    }
+  ]
+}
