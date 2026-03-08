@@ -1,8 +1,11 @@
 import type { MobileRawDataset } from '../types';
 
 import {
+  selectCalendarMonthSnapshot,
   createSelectorContext,
   selectLatestReleaseSummaryBySlug,
+  selectMonthReleaseSummaries,
+  selectMonthUpcomingEvents,
   selectRecentReleaseSummariesBySlug,
   selectReleaseDetailById,
   selectTeamSummaryBySlug,
@@ -70,7 +73,7 @@ const dataset: MobileRawDataset = {
     },
     {
       group: 'YENA',
-      scheduled_month: '2026-04',
+      scheduled_month: '2026-03',
       date_precision: 'month_only',
       date_status: 'scheduled',
       headline: 'YENA spring follow-up rumored',
@@ -185,6 +188,32 @@ describe('mobile selector/adapters scaffold', () => {
     expect(upcoming[0]?.confidence).toBe('high');
     expect(upcoming[1]?.datePrecision).toBe('month_only');
     expect(upcoming[1]?.confidence).toBe('low');
+  });
+
+  test('builds month release summaries from release history rows', () => {
+    const releases = selectMonthReleaseSummaries(dataset, '2026-03');
+
+    expect(releases).toHaveLength(1);
+    expect(releases[0]?.releaseTitle).toBe('LOVE CATCHER');
+    expect(releases[0]?.coverImageUrl).toBe('https://example.com/love-catcher.jpg');
+  });
+
+  test('builds month upcoming rows with exact before month-only ordering', () => {
+    const upcoming = selectMonthUpcomingEvents(dataset, '2026-03');
+
+    expect(upcoming).toHaveLength(2);
+    expect(upcoming[0]?.datePrecision).toBe('exact');
+    expect(upcoming[1]?.datePrecision).toBe('month_only');
+  });
+
+  test('builds a calendar month snapshot with nearest exact upcoming', () => {
+    const snapshot = selectCalendarMonthSnapshot(dataset, '2026-03', '2026-03-08');
+
+    expect(snapshot.releaseCount).toBe(1);
+    expect(snapshot.upcomingCount).toBe(2);
+    expect(snapshot.nearestUpcoming?.headline).toContain('3월 11일');
+    expect(snapshot.exactUpcoming).toHaveLength(1);
+    expect(snapshot.monthOnlyUpcoming).toHaveLength(1);
   });
 
   test('resolves a release detail model by normalized release id', () => {

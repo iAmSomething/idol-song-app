@@ -1,4 +1,5 @@
 import type {
+  CalendarMonthSnapshotModel,
   MobileRawDataset,
   ReleaseDetailModel,
   ReleaseSummaryModel,
@@ -97,6 +98,51 @@ export function selectRecentReleaseSummariesBySlug(
     });
 }
 
+function isIsoDateInMonth(value: string | undefined, month: string): boolean {
+  return Boolean(value && value.slice(0, 7) === month);
+}
+
+function resolveUpcomingMonth(
+  upcoming: MobileRawDataset['upcomingCandidates'][number],
+): string | undefined {
+  return upcoming.scheduled_month ?? upcoming.scheduled_date?.slice(0, 7);
+}
+
+export function selectMonthReleaseSummaries(
+  input: MobileSelectorContext | MobileRawDataset,
+  month: string,
+  limit = Number.POSITIVE_INFINITY,
+): ReleaseSummaryModel[] {
+  const context = resolveContext(input);
+  const summaries: ReleaseSummaryModel[] = [];
+
+  for (const [group, history] of context.releaseHistoryByGroup.entries()) {
+    const profile = context.profilesByGroup.get(group);
+    const displayGroup = profile?.display_name?.trim() || group;
+
+    for (const release of history.releases) {
+      if (!isIsoDateInMonth(release.date, month)) {
+        continue;
+      }
+
+      const releaseId = buildReleaseId(group, release.title, release.date, release.stream ?? 'album');
+      summaries.push(
+        adaptReleaseHistoryEntry(
+          group,
+          displayGroup,
+          release,
+          context.artworkByReleaseId.get(releaseId),
+          context.detailByReleaseId.get(releaseId),
+        ),
+      );
+    }
+  }
+
+  return summaries
+    .sort((left, right) => compareIsoDateDescending(left.releaseDate, right.releaseDate))
+    .slice(0, limit);
+}
+
 export function selectUpcomingEventsBySlug(
   input: MobileSelectorContext | MobileRawDataset,
   slug: string,
@@ -111,6 +157,48 @@ export function selectUpcomingEventsBySlug(
   return (context.upcomingByGroup.get(team.group) ?? [])
     .map((upcoming) => adaptUpcomingEvent(team.group, team.displayName, upcoming))
     .sort(compareUpcomingDate);
+}
+
+export function selectMonthUpcomingEvents(
+  input: MobileSelectorContext | MobileRawDataset,
+  month: string,
+): UpcomingEventModel[] {
+  const context = resolveContext(input);
+  const events: UpcomingEventModel[] = [];
+
+  for (const upcoming of context.dataset.upcomingCandidates) {
+    if (resolveUpcomingMonth(upcoming) !== month) {
+      continue;
+    }
+
+    const displayGroup = context.profilesByGroup.get(upcoming.group)?.display_name?.trim() || upcoming.group;
+    events.push(adaptUpcomingEvent(upcoming.group, displayGroup, upcoming));
+  }
+
+  return events.sort(compareUpcomingDate);
+}
+
+export function selectCalendarMonthSnapshot(
+  input: MobileSelectorContext | MobileRawDataset,
+  month: string,
+  todayIsoDate: string,
+): CalendarMonthSnapshotModel {
+  const releases = selectMonthReleaseSummaries(input, month);
+  const upcoming = selectMonthUpcomingEvents(input, month);
+  const exactUpcoming = upcoming.filter((event) => event.datePrecision === 'exact');
+  const monthOnlyUpcoming = upcoming.filter((event) => event.datePrecision === 'month_only');
+  const nearestUpcoming =
+    exactUpcoming.find((event) => event.scheduledDate && event.scheduledDate >= todayIsoDate) ?? null;
+
+  return {
+    month,
+    releaseCount: releases.length,
+    upcomingCount: upcoming.length,
+    nearestUpcoming,
+    releases,
+    exactUpcoming,
+    monthOnlyUpcoming,
+  };
 }
 
 export function selectReleaseDetailById(

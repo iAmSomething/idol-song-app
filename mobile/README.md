@@ -2,7 +2,7 @@
 
 이 디렉터리는 `Expo + React Native + Expo Router` 기반 모바일 앱 워크스페이스다.
 
-현재 단계는 workspace bootstrap과 router shell까지만 포함한다.
+현재 단계는 workspace bootstrap과 router shell, 그리고 calendar tab의 data-backed container까지 포함한다.
 
 - route/layout expectations는 `docs/specs/mobile/expo-implementation-guide.md`를 따른다.
 - route/param 계약은 `docs/specs/mobile/route-param-contracts.md`를 따른다.
@@ -12,6 +12,7 @@
 
 - `app/`
   - Expo Router root layout / tab shell / detail placeholder route
+  - `calendar` tab은 active dataset + shared selector 기반 container까지 연결됨
   - hidden `debug/metadata` route for internal metadata inspection
 - `assets/`
   - placeholder / service icon / badge fallback asset inventory
@@ -33,6 +34,8 @@
   - gate registry / helper / off fallback definition
 - `src/services/datasetSource.ts`
   - bundled static data vs preview remote data selection layer
+- `src/services/activeDataset.ts`
+  - active dataset source resolution + dataset load entrypoint
 - `src/services/datasetFailurePolicy.ts`
   - runtime misconfiguration / remote dataset unavailable fallback policy
 - `src/services/storage.ts`
@@ -177,6 +180,9 @@ profile 차이는 아래 범위로만 제한한다.
   - `selectRecentReleaseSummariesBySlug`
   - `selectUpcomingEventsBySlug`
   - `selectReleaseDetailById`
+  - `selectMonthReleaseSummaries`
+  - `selectMonthUpcomingEvents`
+  - `selectCalendarMonthSnapshot`
 - 규칙
   - 화면은 raw JSON shape를 직접 읽지 않는다.
   - selector는 fallback을 포함한 최종 display model만 반환한다.
