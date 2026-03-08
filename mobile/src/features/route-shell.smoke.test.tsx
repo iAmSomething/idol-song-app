@@ -98,7 +98,7 @@ describe('mobile route shell smoke', () => {
 
   test('tab placeholder screens render without crashing', async () => {
     await expect(renderTreeAsync(<CalendarTabScreen />)).resolves.toBeDefined();
-    expect(() => renderTree(<RadarTabScreen />)).not.toThrow();
+    await expect(renderTreeAsync(<RadarTabScreen />)).resolves.toBeDefined();
     await expect(renderTreeAsync(<SearchTabScreen />)).resolves.toBeDefined();
   });
 
