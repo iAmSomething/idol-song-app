@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "tsx watch ./src/server.ts",
     "build": "tsc -p ./tsconfig.json",
+    "test": "tsx --test ./src/**/*.test.ts",
     "start": "node ./dist/server.js",
     "migrate:apply": "node ./scripts/apply-migration.mjs ./sql/migrations",
     "schema:verify": "node ./scripts/verify-canonical-schema.mjs",
