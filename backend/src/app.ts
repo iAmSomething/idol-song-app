@@ -2,7 +2,7 @@ import Fastify, { type FastifyInstance, type FastifyReply } from 'fastify';
 
 import { loadConfig, type AppConfig } from './config.js';
 import { ReadApiError, buildReadErrorEnvelope } from './lib/api.js';
-import { closeDbPool, createDbPool, type DbPool } from './lib/db.js';
+import { closeDbPool, createDbPool, type DbPool, withFailFastReadTimeouts } from './lib/db.js';
 import { registerCalendarRoutes } from './routes/calendar.js';
 import { registerEntityRoutes } from './routes/entities.js';
 import { registerHealthRoute } from './routes/health.js';
@@ -74,7 +74,7 @@ function applyCorsHeaders(reply: FastifyReply, origin: string, requestedHeaders:
 
 export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   const config = options.config ?? loadConfig();
-  const db = options.db ?? createDbPool(config);
+  const db = withFailFastReadTimeouts(options.db ?? createDbPool(config));
   const app = Fastify({
     logger: true,
   });

@@ -7,6 +7,8 @@ export type AppConfig = {
   appTimezone: string;
   databaseUrl: string;
   databaseMode: DatabaseMode;
+  databaseConnectionTimeoutMs: number;
+  databaseReadTimeoutMs: number;
   allowedWebOrigins: string[];
 };
 
@@ -27,6 +29,20 @@ function parsePort(raw: string | undefined): number {
 
   if (!Number.isInteger(parsed) || parsed <= 0) {
     throw new Error(`Invalid PORT: ${raw}`);
+  }
+
+  return parsed;
+}
+
+function parsePositiveInteger(raw: string | undefined, fallback: number, name: string): number {
+  if (!raw) {
+    return fallback;
+  }
+
+  const parsed = Number.parseInt(raw, 10);
+
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    throw new Error(`Invalid ${name}: ${raw}`);
   }
 
   return parsed;
@@ -102,6 +118,8 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
     appTimezone: env.APP_TIMEZONE?.trim() || 'Asia/Seoul',
     databaseUrl,
     databaseMode: pooledUrl ? 'pooled' : 'direct',
+    databaseConnectionTimeoutMs: parsePositiveInteger(env.DB_CONNECTION_TIMEOUT_MS, 3_000, 'DB_CONNECTION_TIMEOUT_MS'),
+    databaseReadTimeoutMs: parsePositiveInteger(env.DB_READ_TIMEOUT_MS, 5_000, 'DB_READ_TIMEOUT_MS'),
     allowedWebOrigins: dedupeOrigins([
       ...buildDefaultAllowedWebOrigins(appEnv),
       ...parseAllowedWebOrigins(env.WEB_ALLOWED_ORIGINS),
