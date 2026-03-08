@@ -258,6 +258,37 @@ preview cadence는 production보다 짧거나 수동 위주여도 된다.
 
 ## 10. Non-goals
 
+preview deploy automation 자체는 `.github/workflows/backend-deploy.yml`에서 맡고, 이 문서는 rehearsal topology와 운영 규칙만 다룬다.
+
+## 11. Repository Deploy Path
+
+repo-level deploy path는 아래로 고정한다.
+
+- preview backend deploy:
+  - trigger: `main`의 backend 관련 변경 push 또는 manual dispatch
+  - workflow: `.github/workflows/backend-deploy.yml`
+  - GitHub Environment: `preview`
+- production backend deploy:
+  - trigger: manual dispatch only
+  - workflow: `.github/workflows/backend-deploy.yml`
+  - GitHub Environment: `production`
+
+GitHub Environment baseline:
+
+- secret: `RAILWAY_TOKEN`
+- variable: `RAILWAY_PROJECT_ID`
+- variable: `RAILWAY_ENVIRONMENT_ID`
+- variable: `RAILWAY_SERVICE_ID`
+- variable: `BACKEND_PUBLIC_URL`
+
+배포 helper는 `backend/scripts/deploy-backend.mjs`를 사용한다.
+
+web API origin 연결 규칙:
+
+- preview rehearsal은 preview backend public URL을 web/local `VITE_API_BASE_URL`에 넣는다.
+- production Pages는 production backend public URL을 repository variable `VITE_API_BASE_URL`에 넣는다.
+- backend browser allowlist는 `WEB_ALLOWED_ORIGINS`에서 별도로 관리한다.
+
 - preview를 production과 완전히 동일한 traffic 복제로 만드는 것
 - full infra-as-code hardening
 - mobile preview build 구현

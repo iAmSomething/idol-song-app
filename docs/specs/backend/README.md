@@ -18,25 +18,28 @@
 4. `preview-staging-backend-path.md`
    - preview Neon / API / worker rehearsal 경로
    - preview와 production에서 달라도 되는 것과 안 되는 것
-5. `migration-runtime-gates.md`
+5. `backend-deploy.yml` + `backend/scripts/deploy-backend.mjs`
+   - preview 자동 deploy / production 수동 deploy 경로
+   - GitHub Environment와 Railway target ID baseline
+6. `migration-runtime-gates.md`
    - latency / error / freshness / cadence gate 정의
    - cutover go/no-go에 쓰는 combined runtime report 규칙
-6. `migration-operations-runbook.md`
+7. `migration-operations-runbook.md`
    - schema/import/dual-write/projection/verification/fallback 운영 절차
    - high-risk cutover / rollback checklist
-7. `web-cutover-rollback-drills.md`
+8. `web-cutover-rollback-drills.md`
    - search/entity/release/calendar/radar surface별 rollback drill 계획
    - representative drill timing과 user-facing effect 요약
-8. `json-snapshot-demotion.md`
+9. `json-snapshot-demotion.md`
    - cut-over surface에서 JSON을 fallback/debug/export로 강등하는 runtime / delivery 규칙
    - Pages build, query override, emergency fallback window 운영 기준
-9. `shared-read-api-contracts.md`
+10. `shared-read-api-contracts.md`
    - calendar, search, entity detail, release detail, radar용 shared read contract
    - server-side derived field와 client-side allowed logic 구분
-10. `backend-migration-epic.md`
+11. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
-11. `mobile-adoption-readiness-review.md`
+12. `mobile-adoption-readiness-review.md`
    - backend contract가 mobile screen 구현을 바로 받을 수 있는지 surface별 readiness 검토
    - blocker / non-blocker / follow-up issue 기준의 gate decision
 
@@ -45,14 +48,15 @@
 1. `canonical-backend-data-model.md`
 2. `runtime-and-service-boundaries.md`
 3. `preview-staging-backend-path.md`
-4. `migration-operations-runbook.md`
-5. `migration-runtime-gates.md`
-6. `web-cutover-rollback-drills.md`
-7. `json-snapshot-demotion.md`
-8. `shared-read-api-contracts.md`
-9. `mobile-adoption-readiness-review.md`
-10. `phased-rollout-plan.md`
-11. `backend-migration-epic.md`
+4. `.github/workflows/backend-deploy.yml`
+5. `migration-operations-runbook.md`
+6. `migration-runtime-gates.md`
+7. `web-cutover-rollback-drills.md`
+8. `json-snapshot-demotion.md`
+9. `shared-read-api-contracts.md`
+10. `mobile-adoption-readiness-review.md`
+11. `phased-rollout-plan.md`
+12. `backend-migration-epic.md`
 
 ## 원칙
 

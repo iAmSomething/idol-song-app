@@ -1,0 +1,107 @@
+name: Backend Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Deploy target
+        required: true
+        type: choice
+        options:
+          - preview
+          - production
+        default: preview
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-deploy.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-preview:
+    if: github.event_name == 'push' || github.event.inputs.target == 'preview'
+    runs-on: ubuntu-latest
+    environment:
+      name: preview
+      url: ${{ vars.BACKEND_PUBLIC_URL }}
+    concurrency:
+      group: backend-deploy-preview
+      cancel-in-progress: false
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Build backend
+        working-directory: backend
+        run: npm run build
+
+      - name: Run backend tests
+        working-directory: backend
+        run: npm run test
+
+      - name: Deploy preview backend
+        env:
+          BACKEND_DEPLOY_TARGET: preview
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
+          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID }}
+          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
+        run: node ./backend/scripts/deploy-backend.mjs
+
+  deploy-production:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'production'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ vars.BACKEND_PUBLIC_URL }}
+    concurrency:
+      group: backend-deploy-production
+      cancel-in-progress: false
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Build backend
+        working-directory: backend
+        run: npm run build
+
+      - name: Run backend tests
+        working-directory: backend
+        run: npm run test
+
+      - name: Deploy production backend
+        env:
+          BACKEND_DEPLOY_TARGET: production
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
+          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID }}
+          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
+        run: node ./backend/scripts/deploy-backend.mjs

@@ -222,6 +222,17 @@ npm run build
 - `web/dist`를 GitHub Pages에 배포
 - `main` 브랜치의 웹 변경 사항을 자동 반영
 
+### Deploy Backend
+
+파일: `.github/workflows/backend-deploy.yml`
+
+- preview backend는 `main`의 backend 관련 변경 시 자동 deploy
+- production backend는 `workflow_dispatch`에서 수동 승격
+- 두 경로 모두 backend `npm ci`, `npm run build`, `npm run test`를 선행한 뒤 Railway CLI deploy를 실행
+- GitHub Environment `preview`, `production`에 `RAILWAY_TOKEN`, `RAILWAY_PROJECT_ID`, `RAILWAY_ENVIRONMENT_ID`, `RAILWAY_SERVICE_ID`, `BACKEND_PUBLIC_URL`를 설정해야 함
+
+backend deploy topology와 rehearsal 규칙은 `docs/specs/backend/preview-staging-backend-path.md`, 운영 entrypoint는 `backend/README.md`에 정리돼 있습니다.
+
 ## 현재 방향
 
 이 저장소는 `K-pop 발매 캘린더`에서 끝나는 프로젝트가 아니라, 앞으로 아래 방향으로 확장할 수 있습니다.
