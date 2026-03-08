@@ -63,6 +63,18 @@ function resolveBadgeLabel(team: TeamSummaryModel): string {
   return team.badge?.monogram ?? team.displayName.slice(0, 2).toUpperCase();
 }
 
+function buildUpcomingCardAccessibilityLabel(item: RadarUpcomingCardModel): string {
+  return `${item.team.displayName} 팀 열기, ${item.upcoming.releaseLabel ?? item.upcoming.headline}, ${item.dayLabel}, ${formatUpcomingMeta(item)}`;
+}
+
+function buildLongGapAccessibilityLabel(item: RadarLongGapItemModel): string {
+  return `${item.team.displayName} 팀 열기, ${formatLongGapMeta(item)}`;
+}
+
+function buildRookieAccessibilityLabel(item: RadarRookieItemModel): string {
+  return `${item.team.displayName} 팀 열기, ${formatRookieMeta(item)}`;
+}
+
 export default function RadarTabScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{
@@ -175,12 +187,13 @@ export default function RadarTabScreen() {
       <View style={styles.appBar}>
         <View style={styles.appBarCopy}>
           <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
-          <Text style={styles.title}>레이더</Text>
+          <Text accessibilityRole="header" style={styles.title}>레이더</Text>
           <Text style={styles.body}>{source.sourceLabel}</Text>
         </View>
         <View style={styles.appBarActions}>
           <Pressable
             testID="radar-search-button"
+            accessibilityLabel="검색 탭으로 이동"
             accessibilityRole="button"
             onPress={openSearchTab}
             style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
@@ -189,6 +202,8 @@ export default function RadarTabScreen() {
           </Pressable>
           <Pressable
             testID="radar-filter-button"
+            accessibilityHint="빈 레이더 섹션 숨김 여부를 전환합니다."
+            accessibilityLabel="빈 섹션 숨김"
             accessibilityRole="button"
             accessibilityState={{ selected: hideEmptySections }}
             onPress={() => setHideEmptySections((value) => !value)}
@@ -236,6 +251,7 @@ export default function RadarTabScreen() {
           <Pressable
             key={item.id}
             testID={`radar-weekly-card-${item.team.slug}`}
+            accessibilityLabel={buildUpcomingCardAccessibilityLabel(item)}
             accessibilityRole="button"
             onPress={() => openTeamDetail(item.team.slug)}
             style={({ pressed }) => [styles.card, pressed ? styles.buttonPressed : null]}
@@ -277,6 +293,7 @@ export default function RadarTabScreen() {
           <Pressable
             key={item.id}
             testID={`radar-long-gap-card-${item.team.slug}`}
+            accessibilityLabel={buildLongGapAccessibilityLabel(item)}
             accessibilityRole="button"
             onPress={() => openTeamDetail(item.team.slug)}
             style={({ pressed }) => [styles.card, pressed ? styles.buttonPressed : null]}
@@ -302,6 +319,7 @@ export default function RadarTabScreen() {
           <Pressable
             key={item.id}
             testID={`radar-rookie-card-${item.team.slug}`}
+            accessibilityLabel={buildRookieAccessibilityLabel(item)}
             accessibilityRole="button"
             onPress={() => openTeamDetail(item.team.slug)}
             style={({ pressed }) => [styles.card, pressed ? styles.buttonPressed : null]}
@@ -332,11 +350,12 @@ function RadarFeaturedSection({
   return (
     <View style={styles.sectionCard}>
       <View style={styles.sectionHeader}>
-        <Text style={styles.sectionTitle}>가장 가까운 컴백</Text>
+        <Text accessibilityRole="header" style={styles.sectionTitle}>가장 가까운 컴백</Text>
       </View>
       {item ? (
         <Pressable
           testID="radar-featured-card"
+          accessibilityLabel={buildUpcomingCardAccessibilityLabel(item)}
           accessibilityRole="button"
           onPress={() => onPressTeam(item.team.slug)}
           style={({ pressed }) => [styles.featuredCard, pressed ? styles.buttonPressed : null]}
@@ -375,7 +394,7 @@ function RadarSection<T>({
   return (
     <View style={styles.sectionCard}>
       <View style={styles.sectionHeader}>
-        <Text style={styles.sectionTitle}>{title}</Text>
+        <Text accessibilityRole="header" style={styles.sectionTitle}>{title}</Text>
       </View>
       {items.length === 0 ? <InlineFeedbackNotice body={emptyCopy} /> : null}
       {items.map(renderItem)}
@@ -417,6 +436,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
       backgroundColor: theme.colors.surface.elevated,
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
     },
@@ -429,12 +449,16 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     appBarButtonLabelActive: {
       color: theme.colors.surface.base,
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     eyebrow: {
       color: theme.colors.text.brand,

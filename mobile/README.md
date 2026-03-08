@@ -7,6 +7,7 @@
 - route/layout expectations는 `docs/specs/mobile/expo-implementation-guide.md`를 따른다.
 - route/param 계약은 `docs/specs/mobile/route-param-contracts.md`를 따른다.
 - 세부 모듈 구조는 `docs/specs/mobile/implementation-work-breakdown.md`를 따른다.
+- 접근성 점검 기록은 `docs/specs/mobile/accessibility-audit-2026-03-09.md`를 따른다.
 
 ## 현재 포함 범위
 

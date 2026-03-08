@@ -43,10 +43,13 @@ export function ScreenFeedbackState({
     <View style={styles.screenContainer} testID={testID}>
       {variant === 'loading' ? <ActivityIndicator color={theme.colors.text.brand} /> : null}
       <Text style={styles.eyebrow}>{eyebrow}</Text>
-      <Text style={styles.screenTitle}>{title}</Text>
+      <Text accessibilityRole="header" style={styles.screenTitle}>
+        {title}
+      </Text>
       <Text style={styles.body}>{body}</Text>
       {action ? (
         <Pressable
+          accessibilityLabel={action.label}
           accessibilityRole="button"
           onPress={action.onPress}
           style={({ pressed }) => [
@@ -77,7 +80,11 @@ export function InlineFeedbackNotice({
       style={[styles.inlineCard, tone === 'error' ? styles.inlineCardError : null]}
       testID={testID}
     >
-      {title ? <Text style={styles.inlineTitle}>{title}</Text> : null}
+      {title ? (
+        <Text accessibilityRole="header" style={styles.inlineTitle}>
+          {title}
+        </Text>
+      ) : null}
       <Text
         style={[styles.body, tone === 'error' ? styles.inlineBodyError : null]}
       >
@@ -85,6 +92,7 @@ export function InlineFeedbackNotice({
       </Text>
       {action ? (
         <Pressable
+          accessibilityLabel={action.label}
           accessibilityRole="button"
           onPress={action.onPress}
           style={({ pressed }) => [

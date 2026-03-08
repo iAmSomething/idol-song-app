@@ -87,6 +87,11 @@ function formatSelectedDaySummary(selectedDay: CalendarSelectedDayModel): string
   return `발매 ${selectedDay.releases.length} · 예정 ${selectedDay.exactUpcoming.length}`;
 }
 
+function formatAccessibleDateLabel(isoDate: string): string {
+  const [year, month, day] = isoDate.split('-');
+  return `${year}년 ${Number(month)}월 ${Number(day)}일`;
+}
+
 function formatFilterLabel(filterMode: CalendarFilterMode): string {
   switch (filterMode) {
     case 'releases':
@@ -122,6 +127,38 @@ function applyCalendarFilter(
   }
 
   return snapshot;
+}
+
+function buildCalendarDayAccessibilityLabel(args: {
+  isoDate: string;
+  isSelected: boolean;
+  releaseCount: number;
+  upcomingCount: number;
+  overflowCount: number;
+}): string {
+  const segments = [formatAccessibleDateLabel(args.isoDate)];
+
+  if (args.releaseCount > 0) {
+    segments.push(`검증된 발매 ${args.releaseCount}건`);
+  }
+
+  if (args.upcomingCount > 0) {
+    segments.push(`예정 컴백 ${args.upcomingCount}건`);
+  }
+
+  if (args.overflowCount > 0) {
+    segments.push(`추가 ${args.overflowCount}건`);
+  }
+
+  if (args.releaseCount === 0 && args.upcomingCount === 0) {
+    segments.push('등록된 일정 없음');
+  }
+
+  if (args.isSelected) {
+    segments.push('선택됨');
+  }
+
+  return segments.join(', ');
 }
 
 function moveMonthKey(month: string, offset: number): string {
@@ -373,6 +410,8 @@ export default function CalendarTabScreen() {
         <View style={styles.appBar}>
           <Pressable
             testID="calendar-month-prev"
+            accessibilityHint="이전 달 일정을 봅니다."
+            accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, -1))}로 이동`}
             accessibilityRole="button"
             onPress={() => moveToRelativeMonth(-1)}
             style={({ pressed }) => [
@@ -385,13 +424,15 @@ export default function CalendarTabScreen() {
 
           <View style={styles.monthTitleWrap}>
             <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
-            <Text testID="calendar-month-title" style={styles.title}>
+            <Text accessibilityRole="header" testID="calendar-month-title" style={styles.title}>
               {formatMonthLabel(filteredSnapshot.month)}
             </Text>
           </View>
 
           <Pressable
             testID="calendar-month-next"
+            accessibilityHint="다음 달 일정을 봅니다."
+            accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, 1))}로 이동`}
             accessibilityRole="button"
             onPress={() => moveToRelativeMonth(1)}
             style={({ pressed }) => [
@@ -420,7 +461,7 @@ export default function CalendarTabScreen() {
 
         <View style={styles.sectionCard}>
           <View style={styles.calendarHeader}>
-            <Text style={styles.sectionTitle}>Quick jumps</Text>
+            <Text accessibilityRole="header" style={styles.sectionTitle}>Quick jumps</Text>
             <Text style={styles.sectionMeta}>
               {globalNearestUpcoming?.scheduledDate
                 ? `${globalNearestUpcoming.displayGroup} · ${globalNearestUpcoming.scheduledDate}`
@@ -431,6 +472,8 @@ export default function CalendarTabScreen() {
           <View style={styles.controlRow}>
             <Pressable
               testID="calendar-jump-today"
+              accessibilityHint="현재 월과 오늘 날짜로 이동합니다."
+              accessibilityLabel="오늘로 이동"
               accessibilityRole="button"
               onPress={jumpToToday}
               style={({ pressed }) => [
@@ -444,6 +487,16 @@ export default function CalendarTabScreen() {
 
             <Pressable
               testID="calendar-jump-nearest"
+              accessibilityHint={
+                globalNearestUpcoming?.scheduledDate
+                  ? '가장 가까운 exact 일정 날짜를 열어 상세 시트를 표시합니다.'
+                  : undefined
+              }
+              accessibilityLabel={
+                globalNearestUpcoming?.scheduledDate
+                  ? `${globalNearestUpcoming.displayGroup} 가장 가까운 일정 열기`
+                  : '가장 가까운 일정 없음'
+              }
               accessibilityRole="button"
               disabled={!globalNearestUpcoming?.scheduledDate}
               onPress={jumpToNearestUpcoming}
@@ -460,7 +513,7 @@ export default function CalendarTabScreen() {
 
         <View style={styles.sectionCard}>
           <View style={styles.calendarHeader}>
-            <Text style={styles.sectionTitle}>Filters</Text>
+            <Text accessibilityRole="header" style={styles.sectionTitle}>Filters</Text>
             <Text style={styles.sectionMeta}>{formatFilterLabel(filterMode)}</Text>
           </View>
 
@@ -473,6 +526,8 @@ export default function CalendarTabScreen() {
               <Pressable
                 key={mode}
                 testID={`calendar-filter-${mode}`}
+                accessibilityHint="월간 캘린더 표시 범위를 바꿉니다."
+                accessibilityLabel={`${label} 필터`}
                 accessibilityRole="button"
                 accessibilityState={{ selected: filterMode === mode }}
                 onPress={() => setFilterMode(mode)}
@@ -517,7 +572,7 @@ export default function CalendarTabScreen() {
         {monthGrid ? (
           <View style={styles.sectionCard}>
             <View style={styles.calendarHeader}>
-              <Text style={styles.sectionTitle}>Calendar grid</Text>
+              <Text accessibilityRole="header" style={styles.sectionTitle}>Calendar grid</Text>
               <Text style={styles.sectionMeta}>
                 {selectedDay ? selectedDay.label : formatMonthLabel(filteredSnapshot.month)}
               </Text>
@@ -548,6 +603,14 @@ export default function CalendarTabScreen() {
                       <Pressable
                         key={cell.isoDate}
                         testID={`calendar-day-${cell.isoDate}`}
+                        accessibilityHint="날짜 상세 시트를 엽니다."
+                        accessibilityLabel={buildCalendarDayAccessibilityLabel({
+                          isoDate: cell.isoDate,
+                          isSelected: cell.isSelected,
+                          releaseCount: cell.releaseCount,
+                          upcomingCount: cell.upcomingCount,
+                          overflowCount: cell.overflowCount,
+                        })}
                         accessibilityRole="button"
                         accessibilityState={{ selected: cell.isSelected }}
                         onPress={() => openDaySheet(cell.isoDate)}
@@ -614,7 +677,7 @@ export default function CalendarTabScreen() {
 
         <View style={styles.sectionCard}>
           <View style={styles.calendarHeader}>
-            <Text style={styles.sectionTitle}>Month-only signals</Text>
+            <Text accessibilityRole="header" style={styles.sectionTitle}>Month-only signals</Text>
             <Text style={styles.sectionMeta}>{filteredSnapshot.monthOnlyUpcoming.length}건</Text>
           </View>
           <Text style={styles.body}>
@@ -645,12 +708,15 @@ export default function CalendarTabScreen() {
         >
           <View style={styles.sheetOverlay}>
             <Pressable
+              accessible={false}
               testID="calendar-sheet-backdrop"
-              accessibilityRole="button"
               style={styles.sheetBackdrop}
               onPress={closeDaySheet}
             />
             <View
+              accessibilityLabel={`${selectedDay.label} 일정 상세`}
+              accessibilityViewIsModal
+              accessible
               testID="calendar-bottom-sheet"
               style={[
                 styles.sheetPanel,
@@ -660,11 +726,12 @@ export default function CalendarTabScreen() {
               <View style={styles.sheetHandle} />
               <View style={styles.sheetHeader}>
                 <View style={styles.sheetHeaderCopy}>
-                  <Text style={styles.sectionTitle}>{selectedDay.label}</Text>
+                  <Text accessibilityRole="header" style={styles.sectionTitle}>{selectedDay.label}</Text>
                   <Text style={styles.sectionMeta}>{formatSelectedDaySummary(selectedDay)}</Text>
                 </View>
                 <Pressable
                   testID="calendar-sheet-close"
+                  accessibilityLabel="날짜 상세 닫기"
                   accessibilityRole="button"
                   onPress={closeDaySheet}
                   style={styles.sheetCloseButton}
@@ -684,7 +751,7 @@ export default function CalendarTabScreen() {
                   <>
                     {selectedDay.releases.length ? (
                       <View style={styles.subsection}>
-                        <Text style={styles.subsectionTitle}>Verified releases</Text>
+                        <Text accessibilityRole="header" style={styles.subsectionTitle}>Verified releases</Text>
                         {selectedDay.releases.map((release) => (
                           <View key={release.id} style={styles.row}>
                             <Text style={styles.rowTitle}>{release.displayGroup}</Text>
@@ -697,7 +764,7 @@ export default function CalendarTabScreen() {
 
                     {selectedDay.exactUpcoming.length ? (
                       <View style={styles.subsection}>
-                        <Text style={styles.subsectionTitle}>Scheduled comebacks</Text>
+                        <Text accessibilityRole="header" style={styles.subsectionTitle}>Scheduled comebacks</Text>
                         {selectedDay.exactUpcoming.map((event) => (
                           <View key={event.id} style={styles.row}>
                             <Text style={styles.rowTitle}>{event.displayGroup}</Text>
@@ -756,6 +823,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
       backgroundColor: theme.colors.surface.elevated,
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
     },
@@ -767,6 +835,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     eyebrow: {
       color: theme.colors.text.brand,
@@ -861,6 +931,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
       backgroundColor: theme.colors.surface.base,
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
     },
@@ -880,18 +951,24 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     controlChipStrongLabel: {
       color: theme.colors.surface.base,
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     controlChipActiveLabel: {
       color: theme.colors.text.brand,
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     sectionCard: {
       borderRadius: theme.radius.card,
@@ -1044,6 +1121,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       gap: theme.space[4],
     },
     sheetCloseButton: {
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.button,
@@ -1056,6 +1134,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     sheetScroll: {
       flex: 1,

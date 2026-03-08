@@ -37,6 +37,8 @@ type ReleaseDetailScreenState =
   | { kind: 'ready'; source: ActiveMobileDataset; detail: ReleaseDetailModel };
 
 type ServiceButtonSpec = {
+  accessibilityHint?: string;
+  accessibilityLabel: string;
   key: MusicService;
   label: string;
   handoff: ServiceHandoffResolution | ServiceHandoffFailure;
@@ -116,18 +118,21 @@ function buildAlbumServiceButtons(detail: ReleaseDetailModel): ServiceButtonSpec
 
   const buttons: ServiceButtonSpec[] = [
     {
+      accessibilityLabel: `Spotify에서 ${detail.releaseTitle} 열기`,
       key: 'spotify',
       label: 'Spotify',
       handoff: handoffs.spotify,
       testID: 'release-service-spotify',
     },
     {
+      accessibilityLabel: `YouTube Music에서 ${detail.releaseTitle} 열기`,
       key: 'youtubeMusic',
       label: 'YouTube Music',
       handoff: handoffs.youtubeMusic,
       testID: 'release-service-youtube-music',
     },
     {
+      accessibilityLabel: `YouTube에서 ${detail.releaseTitle} 공식 MV 열기`,
       key: 'youtubeMv',
       label: 'YouTube MV',
       handoff: handoffs.youtubeMv,
@@ -143,6 +148,7 @@ function buildTrackServiceButtons(detail: ReleaseDetailModel, track: TrackModel)
 
   return [
     {
+      accessibilityLabel: `Spotify에서 ${track.title} 트랙 열기`,
       key: 'spotify',
       label: 'Spotify',
       handoff: resolveServiceHandoff({
@@ -153,6 +159,7 @@ function buildTrackServiceButtons(detail: ReleaseDetailModel, track: TrackModel)
       testID: `release-track-${track.order}-spotify`,
     },
     {
+      accessibilityLabel: `YouTube Music에서 ${track.title} 트랙 열기`,
       key: 'youtubeMusic',
       label: 'YT Music',
       handoff: resolveServiceHandoff({
@@ -184,12 +191,16 @@ function ReleaseCover({
 }
 
 function ServiceButton({
+  accessibilityHint,
+  accessibilityLabel,
   label,
   onPress,
   styles,
   tone,
   testID,
 }: {
+  accessibilityHint?: string;
+  accessibilityLabel: string;
   label: string;
   onPress: () => void;
   styles: ReturnType<typeof createStyles>;
@@ -198,6 +209,8 @@ function ServiceButton({
 }) {
   return (
     <Pressable
+      accessibilityHint={accessibilityHint}
+      accessibilityLabel={accessibilityLabel}
       accessibilityRole="button"
       onPress={onPress}
       style={[styles.serviceButton, styles[`${tone}Button`]]}
@@ -354,7 +367,13 @@ export default function ReleaseDetailScreen() {
     >
       <Stack.Screen options={{ title: detail.releaseTitle }} />
 
-      <Pressable style={styles.backButton} onPress={() => router.back()}>
+      <Pressable
+        accessibilityHint="이전 화면으로 돌아갑니다."
+        accessibilityLabel="뒤로 가기"
+        accessibilityRole="button"
+        style={styles.backButton}
+        onPress={() => router.back()}
+      >
         <Text style={styles.backButtonLabel}>뒤로</Text>
       </Pressable>
 
@@ -363,7 +382,7 @@ export default function ReleaseDetailScreen() {
       <View style={styles.heroCard}>
         <ReleaseCover detail={detail} styles={styles} />
         <View style={styles.heroCopy}>
-          <Text style={styles.releaseTitle} testID="release-detail-title">
+          <Text accessibilityRole="header" style={styles.releaseTitle} testID="release-detail-title">
             {detail.releaseTitle}
           </Text>
           <Text style={styles.releaseMeta}>{formatReleaseMeta(detail)}</Text>
@@ -377,10 +396,11 @@ export default function ReleaseDetailScreen() {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>앨범 액션</Text>
+        <Text accessibilityRole="header" style={styles.sectionTitle}>앨범 액션</Text>
         <View style={styles.serviceButtonRow}>
           {albumServiceButtons.map((button) => (
             <ServiceButton
+              accessibilityLabel={button.accessibilityLabel}
               key={button.key}
               label={button.label}
               onPress={() => void handleHandoff(button.handoff)}
@@ -397,7 +417,7 @@ export default function ReleaseDetailScreen() {
       ) : null}
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>트랙 리스트</Text>
+        <Text accessibilityRole="header" style={styles.sectionTitle}>트랙 리스트</Text>
         {detail.tracks.length > 0 ? (
           <View style={styles.trackList}>
             {detail.tracks.map((track) => (
@@ -423,6 +443,7 @@ export default function ReleaseDetailScreen() {
                 <View style={styles.trackServiceButtons}>
                   {buildTrackServiceButtons(detail, track).map((button) => (
                     <ServiceButton
+                      accessibilityLabel={button.accessibilityLabel}
                       key={`${track.order}-${button.key}`}
                       label={button.label}
                       onPress={() => void handleHandoff(button.handoff)}
@@ -445,7 +466,7 @@ export default function ReleaseDetailScreen() {
 
       {detail.notes ? (
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>메모</Text>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>메모</Text>
           <View style={styles.metaCard}>
             <Text style={styles.metaBody}>{detail.notes}</Text>
           </View>
@@ -454,10 +475,11 @@ export default function ReleaseDetailScreen() {
 
       {mvUrl ? (
         <View style={styles.section} testID="release-mv-card">
-          <Text style={styles.sectionTitle}>공식 MV</Text>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>공식 MV</Text>
           <View style={styles.metaCard}>
             {mvStatusCopy ? <Text style={styles.metaBody}>{mvStatusCopy}</Text> : null}
             <ServiceButton
+              accessibilityLabel={`YouTube에서 ${detail.releaseTitle} 공식 MV 열기`}
               label="YouTube MV"
               onPress={() =>
                 void handleHandoff(
@@ -476,7 +498,7 @@ export default function ReleaseDetailScreen() {
         </View>
       ) : detail.youtubeVideoStatus ? (
         <View style={styles.section} testID="release-mv-state">
-          <Text style={styles.sectionTitle}>MV 상태</Text>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>MV 상태</Text>
           <InlineFeedbackNotice
             body={mvStatusCopy ?? '공식 MV 정보가 아직 정리되지 않았습니다.'}
             title={detail.youtubeVideoProvenance}
@@ -534,6 +556,7 @@ function createStyles(theme: MobileTheme) {
     },
     backButton: {
       alignSelf: 'flex-start',
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.button,
@@ -542,9 +565,12 @@ function createStyles(theme: MobileTheme) {
     backButtonLabel: {
       ...theme.typography.buttonService,
       color: theme.colors.text.primary,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     heroCard: {
       flexDirection: 'row',
+      flexWrap: 'wrap',
       gap: theme.space[16],
       padding: theme.space[16],
       borderRadius: theme.radius.card,
@@ -618,7 +644,7 @@ function createStyles(theme: MobileTheme) {
       gap: theme.space[8],
     },
     serviceButton: {
-      minHeight: 40,
+      minHeight: 48,
       minWidth: 104,
       alignItems: 'center',
       justifyContent: 'center',
@@ -637,6 +663,8 @@ function createStyles(theme: MobileTheme) {
     },
     serviceButtonLabel: {
       ...theme.typography.buttonService,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     spotifyButtonLabel: {
       color: theme.colors.service.spotify.icon,
@@ -663,6 +691,7 @@ function createStyles(theme: MobileTheme) {
     },
     trackRow: {
       flexDirection: 'row',
+      flexWrap: 'wrap',
       gap: theme.space[12],
       alignItems: 'flex-start',
       padding: theme.space[12],
@@ -678,6 +707,7 @@ function createStyles(theme: MobileTheme) {
     },
     trackCopy: {
       flex: 1,
+      minWidth: 0,
       gap: theme.space[4],
     },
     trackTitleRow: {
@@ -702,7 +732,11 @@ function createStyles(theme: MobileTheme) {
       color: theme.colors.status.title.text,
     },
     trackServiceButtons: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
       gap: theme.space[8],
+      paddingLeft: 30,
+      width: '100%',
     },
     emptyCard: {
       padding: theme.space[16],

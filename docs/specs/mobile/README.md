@@ -88,13 +88,15 @@
    - Radar, MV, analytics 등 기능 게이트와 fallback 규칙
 41. `external-dependency-risk-spec.md`
    - 외부 서비스/데이터 의존 리스크와 완화 전략
+42. `accessibility-audit-2026-03-09.md`
+   - 구현된 모바일 화면에 대한 접근성/동적 글자 크기 점검 기록
 
 ### Screen Specs
-42. `calendar-screen.md`
-43. `radar-screen.md`
-44. `search-screen.md`
-45. `team-detail-screen.md`
-46. `release-detail-screen.md`
+43. `calendar-screen.md`
+44. `radar-screen.md`
+45. `search-screen.md`
+46. `team-detail-screen.md`
+47. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
