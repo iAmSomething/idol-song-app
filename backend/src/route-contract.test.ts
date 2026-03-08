@@ -25,6 +25,13 @@ const TEST_CONFIG: AppConfig = {
   databaseConnectionTimeoutMs: 3_000,
   databaseReadTimeoutMs: 5_000,
   allowedWebOrigins: ['https://iamsomething.github.io'],
+  readRateLimits: {
+    search: { max: 600, windowMs: 60_000 },
+    calendarMonth: { max: 300, windowMs: 60_000 },
+    entityDetail: { max: 300, windowMs: 60_000 },
+    releaseDetail: { max: 300, windowMs: 60_000 },
+    radar: { max: 120, windowMs: 60_000 },
+  },
 };
 
 type QueryResult<Row> = {
@@ -812,6 +819,91 @@ test('GET /v1/search includes owner entity for exact release-title queries witho
   assert.equal(body.data.entities[0].matched_alias, null);
   assert.equal(body.data.releases[0].release_id, IVE_RELEASE_ID);
   assert.equal(body.data.releases[0].match_reason, 'release_title_exact');
+});
+
+test('public read endpoints return deterministic 429 envelopes when rate limited', async (t) => {
+  const app = buildApp({
+    config: {
+      ...TEST_CONFIG,
+      readRateLimits: {
+        ...TEST_CONFIG.readRateLimits,
+        search: {
+          max: 2,
+          windowMs: 60_000,
+        },
+      },
+    },
+    db: new FakeDb() as unknown as DbPool,
+  });
+
+  t.after(async () => {
+    await app.close();
+  });
+
+  const first = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: '최예나',
+    },
+    headers: {
+      'x-forwarded-for': '203.0.113.42',
+    },
+  });
+  const second = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: '최예나',
+    },
+    headers: {
+      'x-forwarded-for': '203.0.113.42',
+    },
+  });
+  const third = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: '최예나',
+    },
+    headers: {
+      'x-forwarded-for': '203.0.113.42',
+    },
+  });
+  const otherClient = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: '최예나',
+    },
+    headers: {
+      'x-forwarded-for': '203.0.113.99',
+    },
+  });
+
+  assert.equal(first.statusCode, 200);
+  assert.equal(first.headers['ratelimit-limit'], '2');
+  assert.equal(first.headers['ratelimit-remaining'], '1');
+  assert.equal(first.headers['x-ratelimit-bucket'], 'search');
+
+  assert.equal(second.statusCode, 200);
+  assert.equal(second.headers['ratelimit-remaining'], '0');
+
+  assert.equal(third.statusCode, 429);
+  assert.equal(third.headers['ratelimit-limit'], '2');
+  assert.equal(third.headers['ratelimit-remaining'], '0');
+  assert.equal(third.headers['x-ratelimit-bucket'], 'search');
+  assert.ok(Number(third.headers['retry-after']) >= 1);
+
+  const thirdBody = parseJson(third);
+  assert.equal(thirdBody.error.code, 'rate_limited');
+  assert.equal(thirdBody.meta.rate_limit_bucket, 'search');
+  assert.equal(thirdBody.meta.rate_limit_limit, 2);
+  assert.equal(thirdBody.meta.rate_limit_identifier_kind, 'ip');
+  assert.ok(typeof thirdBody.meta.rate_limit_reset_at === 'string');
+
+  assert.equal(otherClient.statusCode, 200);
+  assert.equal(otherClient.headers['ratelimit-remaining'], '1');
 });
 
 test('GET /v1/entities/:slug returns entity detail projection payload', async (t) => {

@@ -1,5 +1,13 @@
 export type DatabaseMode = 'pooled' | 'direct';
 export type AppEnv = 'development' | 'preview' | 'production';
+export type RateLimitBucketName = 'search' | 'calendarMonth' | 'entityDetail' | 'releaseDetail' | 'radar';
+
+export type RateLimitPolicy = {
+  max: number;
+  windowMs: number;
+};
+
+export type ReadRateLimitConfig = Record<RateLimitBucketName, RateLimitPolicy>;
 
 export type AppConfig = {
   appEnv: AppEnv;
@@ -10,9 +18,11 @@ export type AppConfig = {
   databaseConnectionTimeoutMs: number;
   databaseReadTimeoutMs: number;
   allowedWebOrigins: string[];
+  readRateLimits: ReadRateLimitConfig;
 };
 
 const PRODUCTION_WEB_ORIGIN = 'https://iamsomething.github.io';
+const ONE_MINUTE_MS = 60_000;
 const DEVELOPMENT_WEB_ORIGINS = [
   'http://localhost:4173',
   'http://127.0.0.1:4173',
@@ -102,6 +112,36 @@ function dedupeOrigins(origins: string[]): string[] {
   return [...new Set(origins)];
 }
 
+function buildDefaultReadRateLimits(appEnv: AppEnv): ReadRateLimitConfig {
+  if (appEnv === 'production') {
+    return {
+      search: { max: 180, windowMs: ONE_MINUTE_MS },
+      calendarMonth: { max: 120, windowMs: ONE_MINUTE_MS },
+      entityDetail: { max: 180, windowMs: ONE_MINUTE_MS },
+      releaseDetail: { max: 180, windowMs: ONE_MINUTE_MS },
+      radar: { max: 60, windowMs: ONE_MINUTE_MS },
+    };
+  }
+
+  if (appEnv === 'preview') {
+    return {
+      search: { max: 240, windowMs: ONE_MINUTE_MS },
+      calendarMonth: { max: 180, windowMs: ONE_MINUTE_MS },
+      entityDetail: { max: 240, windowMs: ONE_MINUTE_MS },
+      releaseDetail: { max: 240, windowMs: ONE_MINUTE_MS },
+      radar: { max: 90, windowMs: ONE_MINUTE_MS },
+    };
+  }
+
+  return {
+    search: { max: 600, windowMs: ONE_MINUTE_MS },
+    calendarMonth: { max: 300, windowMs: ONE_MINUTE_MS },
+    entityDetail: { max: 300, windowMs: ONE_MINUTE_MS },
+    releaseDetail: { max: 300, windowMs: ONE_MINUTE_MS },
+    radar: { max: 120, windowMs: ONE_MINUTE_MS },
+  };
+}
+
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
   const appEnv = parseAppEnv(env.APP_ENV);
   const pooledUrl = env.DATABASE_URL_POOLED?.trim();
@@ -124,5 +164,6 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
       ...buildDefaultAllowedWebOrigins(appEnv),
       ...parseAllowedWebOrigins(env.WEB_ALLOWED_ORIGINS),
     ]),
+    readRateLimits: buildDefaultReadRateLimits(appEnv),
   };
 }

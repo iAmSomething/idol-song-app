@@ -776,8 +776,26 @@ v1 read endpoint는 아래 error shape를 따른다.
 
 - `invalid_request`
 - `not_found`
+- `rate_limited`
 - `stale_projection`
 - `internal_error`
+
+`rate_limited`일 때는 아래 meta/header를 같이 쓴다.
+
+- meta
+  - `rate_limit_bucket`
+  - `rate_limit_limit`
+  - `rate_limit_remaining`
+  - `rate_limit_reset_at`
+  - `rate_limit_retry_after_seconds`
+  - `rate_limit_window_seconds`
+  - `rate_limit_identifier_kind`
+- headers
+  - `RateLimit-Limit`
+  - `RateLimit-Remaining`
+  - `RateLimit-Reset`
+  - `Retry-After`
+  - `X-RateLimit-Bucket`
 
 ## 14. Acceptance Checklist
 

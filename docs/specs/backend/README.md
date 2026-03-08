@@ -42,6 +42,9 @@
 12. `mobile-adoption-readiness-review.md`
    - backend contract가 mobile screen 구현을 바로 받을 수 있는지 surface별 readiness 검토
    - blocker / non-blocker / follow-up issue 기준의 gate decision
+13. `public-read-rate-limit-policy.md`
+   - public read endpoint의 bucket별 rate-limit 기준
+   - preview / production 기대치와 `429 rate_limited` contract
 
 ## 읽는 순서
 
@@ -57,6 +60,7 @@
 10. `mobile-adoption-readiness-review.md`
 11. `phased-rollout-plan.md`
 12. `backend-migration-epic.md`
+13. `public-read-rate-limit-policy.md`
 
 ## 원칙
 
