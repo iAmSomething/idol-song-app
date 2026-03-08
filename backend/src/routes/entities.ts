@@ -42,7 +42,11 @@ type IdentityBlock = {
   agency_name: string | null;
   debut_year: number | null;
   badge_image_url: string | null;
+  badge_source_url: string | null;
+  badge_source_label: string | null;
+  badge_kind: string | null;
   representative_image_url: string | null;
+  representative_image_source: string | null;
 };
 
 type TrackingStateBlock = {
@@ -250,7 +254,11 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string): EntityDet
       agency_name: asNullableString(identityValue.agency_name),
       debut_year: asNullableNumber(identityValue.debut_year),
       badge_image_url: asNullableString(identityValue.badge_image_url),
+      badge_source_url: asNullableString(identityValue.badge_source_url),
+      badge_source_label: asNullableString(identityValue.badge_source_label),
+      badge_kind: asNullableString(identityValue.badge_kind),
       representative_image_url: asNullableString(identityValue.representative_image_url),
+      representative_image_source: asNullableString(identityValue.representative_image_source),
     },
     official_links: {
       youtube: asNullableString(officialLinks.youtube),

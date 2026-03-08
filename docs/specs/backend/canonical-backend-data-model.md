@@ -94,6 +94,10 @@
 | `entity_type` | `text` | `group | solo | unit | project` |
 | `agency_name` | `text null` | text first, agency table later |
 | `debut_year` | `int null` | optional seed |
+| `badge_image_url` | `text null` | canonical badge/avatar asset URL when available |
+| `badge_source_url` | `text null` | source page/channel for badge asset provenance |
+| `badge_source_label` | `text null` | human-readable provenance label |
+| `badge_kind` | `text null` | current seed kind, e.g. `official_channel_avatar` |
 | `representative_image_url` | `text null` | team hero / badge fallback |
 | `representative_image_source` | `text null` | provenance |
 | `created_at` | `timestamptz` | audit |

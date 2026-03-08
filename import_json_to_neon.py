@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parent
 BACKEND_REPORTS_DIR = ROOT / "backend" / "reports"
 DEFAULT_SUMMARY_PATH = BACKEND_REPORTS_DIR / "json_to_neon_import_summary.json"
 ARTIST_PROFILES_PATH = ROOT / "web" / "src" / "data" / "artistProfiles.json"
+TEAM_BADGE_ASSETS_PATH = ROOT / "web" / "src" / "data" / "teamBadgeAssets.json"
 YOUTUBE_ALLOWLISTS_PATH = ROOT / "web" / "src" / "data" / "youtubeChannelAllowlists.json"
 RELEASE_DETAILS_PATH = ROOT / "web" / "src" / "data" / "releaseDetails.json"
 RELEASE_HISTORY_PATH = ROOT / "web" / "src" / "data" / "releaseHistory.json"
@@ -501,6 +502,7 @@ def build_group_metadata(
 
 def build_entity_rows(
     artist_profiles: Sequence[Dict[str, Any]],
+    team_badge_assets_by_group: Dict[str, Dict[str, Any]],
     watchlist_by_group: Dict[str, Dict[str, Any]],
     group_metadata: Dict[str, Dict[str, Optional[str]]],
 ) -> Tuple[List[Dict[str, Any]], Dict[str, uuid.UUID]]:
@@ -512,6 +514,7 @@ def build_entity_rows(
         entity_id = stable_uuid("entity", normalized_slug)
         watchlist_row = watchlist_by_group.get(profile["group"], {})
         metadata = group_metadata.get(profile["group"], {})
+        badge_asset = team_badge_assets_by_group.get(profile["group"], {})
 
         entity_ids[profile["group"]] = entity_id
         entity_rows.append(
@@ -523,6 +526,10 @@ def build_entity_rows(
                 "entity_type": infer_entity_type(profile),
                 "agency_name": optional_text(profile.get("agency")),
                 "debut_year": profile.get("debut_year"),
+                "badge_image_url": normalize_url(badge_asset.get("badge_image_url")),
+                "badge_source_url": normalize_url(badge_asset.get("badge_source_url")),
+                "badge_source_label": optional_text(badge_asset.get("badge_source_label")),
+                "badge_kind": optional_text(badge_asset.get("badge_kind")),
                 "representative_image_url": normalize_url(profile.get("representative_image_url")),
                 "representative_image_source": optional_text(profile.get("representative_image_source")),
                 "x_url": normalize_url(profile.get("official_x_url") or watchlist_row.get("x_url")),
@@ -1343,6 +1350,7 @@ def compare_rollup_release_refs(
 
 def build_import_payload() -> Dict[str, Any]:
     artist_profiles = load_json(ARTIST_PROFILES_PATH)
+    team_badge_assets = load_json(TEAM_BADGE_ASSETS_PATH)
     youtube_allowlists = load_json(YOUTUBE_ALLOWLISTS_PATH)
     release_details = load_json(RELEASE_DETAILS_PATH)
     release_history = load_json(RELEASE_HISTORY_PATH)
@@ -1355,6 +1363,7 @@ def build_import_payload() -> Dict[str, Any]:
     releases_rollup = load_json(RELEASES_ROLLUP_PATH)
 
     watchlist_by_group = {row["group"]: row for row in watchlist}
+    team_badge_assets_by_group = {row["group"]: row for row in team_badge_assets if optional_text(row.get("group"))}
     youtube_allowlists_by_group = {row["group"]: row for row in youtube_allowlists}
     group_metadata = build_group_metadata(release_history, releases_rollup)
 
@@ -1362,6 +1371,7 @@ def build_import_payload() -> Dict[str, Any]:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source_counts": {
             "artist_profiles": len(artist_profiles),
+            "team_badge_assets": len(team_badge_assets),
             "youtube_allowlists": len(youtube_allowlists),
             "release_details": len(release_details),
             "release_history_groups": len(release_history),
@@ -1381,7 +1391,7 @@ def build_import_payload() -> Dict[str, Any]:
         "unresolved_review_links": [],
     }
 
-    entity_rows, entity_ids = build_entity_rows(artist_profiles, watchlist_by_group, group_metadata)
+    entity_rows, entity_ids = build_entity_rows(artist_profiles, team_badge_assets_by_group, watchlist_by_group, group_metadata)
     alias_rows = build_alias_rows(artist_profiles, entity_ids, summary)
     official_link_rows = build_official_link_rows(entity_rows, watchlist_by_group, youtube_allowlists_by_group, summary)
     youtube_channel_rows, entity_channel_rows = build_youtube_channel_rows(youtube_allowlists, entity_ids, summary)
@@ -1643,9 +1653,10 @@ def upsert_table_rows(
             """
             insert into entities (
               id, slug, canonical_name, display_name, entity_type, agency_name, debut_year,
+              badge_image_url, badge_source_url, badge_source_label, badge_kind,
               representative_image_url, representative_image_source
             )
-            values (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             on conflict (id) do update set
               slug = excluded.slug,
               canonical_name = excluded.canonical_name,
@@ -1653,6 +1664,10 @@ def upsert_table_rows(
               entity_type = excluded.entity_type,
               agency_name = excluded.agency_name,
               debut_year = excluded.debut_year,
+              badge_image_url = excluded.badge_image_url,
+              badge_source_url = excluded.badge_source_url,
+              badge_source_label = excluded.badge_source_label,
+              badge_kind = excluded.badge_kind,
               representative_image_url = excluded.representative_image_url,
               representative_image_source = excluded.representative_image_source,
               updated_at = now()
@@ -1666,6 +1681,10 @@ def upsert_table_rows(
                     row["entity_type"],
                     row["agency_name"],
                     row["debut_year"],
+                    row["badge_image_url"],
+                    row["badge_source_url"],
+                    row["badge_source_label"],
+                    row["badge_kind"],
                     row["representative_image_url"],
                     row["representative_image_source"],
                 )
