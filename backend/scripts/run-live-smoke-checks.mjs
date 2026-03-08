@@ -17,6 +17,7 @@ function parseArgs(argv) {
     timeoutMs: DEFAULT_TIMEOUT_MS,
     reportPath: DEFAULT_REPORT_PATH,
     allowReadyStatuses: [...DEFAULT_READY_STATUSES],
+    skipReady: false,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -53,6 +54,11 @@ function parseArgs(argv) {
         .map((entry) => entry.trim())
         .filter((entry) => entry.length > 0);
       index += 1;
+      continue;
+    }
+
+    if (value === '--skip-ready') {
+      options.skipReady = true;
       continue;
     }
 
@@ -188,8 +194,8 @@ async function runCheck(check, options) {
   }
 }
 
-function buildChecks() {
-  return [
+function buildChecks(options) {
+  const checks = [
     {
       label: 'health',
       createRequest(baseUrl, requestId) {
@@ -209,7 +215,10 @@ function buildChecks() {
         return { ok: true, error: null };
       },
     },
-    {
+  ];
+
+  if (!options.skipReady) {
+    checks.push({
       label: 'ready',
       createRequest(baseUrl, requestId) {
         return {
@@ -251,7 +260,10 @@ function buildChecks() {
 
         return { ok: true, error: null };
       },
-    },
+    });
+  }
+
+  checks.push(
     {
       label: 'search-yena',
       createRequest(baseUrl, requestId) {
@@ -339,7 +351,9 @@ function buildChecks() {
         return { ok: true, error: null };
       },
     },
-  ];
+  );
+
+  return checks;
 }
 
 function buildSummary(checks) {
@@ -362,7 +376,7 @@ async function writeReport(reportPath, report) {
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   const startedAt = new Date().toISOString();
-  const checks = buildChecks();
+  const checks = buildChecks(options);
   const results = [];
 
   for (const check of checks) {
@@ -376,6 +390,7 @@ async function main() {
     base_url: options.baseUrl,
     timeout_ms: options.timeoutMs,
     ready_statuses_allowed: options.allowReadyStatuses,
+    ready_check_skipped: options.skipReady,
     summary: buildSummary(results),
     checks: results,
   };

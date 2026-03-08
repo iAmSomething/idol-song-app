@@ -48,6 +48,9 @@
 14. `structured-backend-logging-policy.md`
    - request/error/runtime-fatal log field shape와 redaction 규칙
    - env별 verbosity와 routine-noise budget
+15. `neon-backup-restore-recovery-drill.md`
+   - isolated schema clone 기준 backup / restore / recovery rehearsal 절차
+   - representative read-path usable state 판정 기준
 
 ## 읽는 순서
 
@@ -65,6 +68,7 @@
 12. `backend-migration-epic.md`
 13. `public-read-rate-limit-policy.md`
 14. `structured-backend-logging-policy.md`
+15. `neon-backup-restore-recovery-drill.md`
 
 ## 원칙
 
