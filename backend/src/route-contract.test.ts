@@ -13,6 +13,7 @@ const MALFORMED_RELEASE_ID = '44444444-4444-4444-8444-444444444444';
 const UPCOMING_SIGNAL_ID = '55555555-5555-4555-8555-555555555555';
 const UPCOMING_REVIEW_ID = '66666666-6666-4666-8666-666666666666';
 const MV_REVIEW_ID = '77777777-7777-4777-8777-777777777777';
+const IVE_ENTITY_ID = '88888888-8888-4888-8888-888888888888';
 
 const TEST_CONFIG: AppConfig = {
   appEnv: 'development',
@@ -53,10 +54,31 @@ function buildEntitySearchPayload() {
     next_upcoming: {
       headline: '최예나, 3월 11일 컴백 확정',
       scheduled_date: '2026-03-11',
+      scheduled_month: '2026-03',
       date_precision: 'exact',
       date_status: 'confirmed',
+      release_format: 'ep',
       confidence_score: 0.84,
     },
+  };
+}
+
+function buildIveEntitySearchPayload() {
+  return {
+    entity_slug: 'ive',
+    display_name: 'IVE',
+    canonical_name: 'IVE',
+    entity_type: 'group',
+    agency_name: 'Starship Entertainment',
+    aliases: ['아이브'],
+    latest_release: {
+      release_id: IVE_RELEASE_ID,
+      release_title: 'REVIVE+',
+      release_date: '2026-02-23',
+      stream: 'album',
+      release_kind: 'ep',
+    },
+    next_upcoming: null,
   };
 }
 
@@ -384,18 +406,60 @@ class FakeDb {
         throw error;
       }
 
-      return this.result<Row>([
-        {
-          entity_id: ENTITY_ID,
-          entity_slug: 'yena',
-          aliases: ['최예나'],
-          payload: buildEntitySearchPayload(),
-          generated_at: NOW,
-        } as unknown as Row,
-      ]);
+      if (normalizedSql.includes('where entity_slug = any($1::text[])')) {
+        const slugs = Array.isArray(params[0]) ? params[0] : [];
+        const rows: Row[] = [];
+        if (slugs.includes('ive')) {
+          rows.push({
+            entity_id: IVE_ENTITY_ID,
+            entity_slug: 'ive',
+            aliases: ['아이브'],
+            payload: buildIveEntitySearchPayload(),
+            generated_at: NOW,
+          } as unknown as Row);
+        }
+        if (slugs.includes('yena')) {
+          rows.push({
+            entity_id: ENTITY_ID,
+            entity_slug: 'yena',
+            aliases: ['최예나'],
+            payload: buildEntitySearchPayload(),
+            generated_at: NOW,
+          } as unknown as Row);
+        }
+        return this.result<Row>(rows);
+      }
+
+      if (params[0] === '최예나' || params[0] === 'yena') {
+        return this.result<Row>([
+          {
+            entity_id: ENTITY_ID,
+            entity_slug: 'yena',
+            aliases: ['최예나'],
+            payload: buildEntitySearchPayload(),
+            generated_at: NOW,
+          } as unknown as Row,
+        ]);
+      }
+
+      return this.result<Row>([]);
     }
 
     if (normalizedSql.includes('from releases r') && normalizedSql.includes('projection_normalize_text(r.release_title)')) {
+      if (params[0] === 'revive') {
+        return this.result<Row>([
+          {
+            release_id: IVE_RELEASE_ID,
+            entity_slug: 'ive',
+            display_name: 'IVE',
+            release_title: 'REVIVE+',
+            release_date: '2026-02-23',
+            stream: 'album',
+            release_kind: 'ep',
+            release_format: 'ep',
+          } as unknown as Row,
+        ]);
+      }
       return this.result<Row>([]);
     }
 
@@ -700,10 +764,34 @@ test('GET /v1/search returns envelope with entity, release, and upcoming matches
   assertReadMeta(body.meta, '/v1/search');
   assert.equal(body.data.entities[0].entity_slug, 'yena');
   assert.equal(body.data.entities[0].match_reason, 'alias_exact');
+  assert.equal(body.data.entities[0].next_upcoming.scheduled_month, '2026-03');
+  assert.equal(body.data.entities[0].next_upcoming.release_format, 'ep');
   assert.equal(body.data.releases[0].release_id, YENA_RELEASE_ID);
   assert.equal(body.data.releases[0].match_reason, 'entity_exact_latest_release');
   assert.equal(body.data.upcoming[0].upcoming_signal_id, UPCOMING_SIGNAL_ID);
   assert.equal(body.data.upcoming[0].match_reason, 'entity_exact');
+  assert.equal(body.data.upcoming[0].scheduled_month, '2026-03');
+  assert.equal(body.data.upcoming[0].release_format, 'ep');
+});
+
+test('GET /v1/search includes owner entity for exact release-title queries without client patching', async (t) => {
+  const app = createTestApp(t);
+  const response = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: 'REVIVE+',
+    },
+  });
+
+  assert.equal(response.statusCode, 200);
+  const body = parseJson(response);
+  assertReadMeta(body.meta, '/v1/search');
+  assert.equal(body.data.entities[0].entity_slug, 'ive');
+  assert.equal(body.data.entities[0].match_reason, 'partial');
+  assert.equal(body.data.entities[0].matched_alias, null);
+  assert.equal(body.data.releases[0].release_id, IVE_RELEASE_ID);
+  assert.equal(body.data.releases[0].match_reason, 'release_title_exact');
 });
 
 test('GET /v1/entities/:slug returns entity detail projection payload', async (t) => {

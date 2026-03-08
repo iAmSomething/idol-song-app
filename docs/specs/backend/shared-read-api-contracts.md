@@ -250,7 +250,7 @@
         "display_name": "YENA",
         "headline": "YENA confirms March comeback",
         "scheduled_date": "2026-03-11",
-        "scheduled_month": null,
+        "scheduled_month": "2026-03",
         "date_precision": "exact",
         "date_status": "confirmed",
         "release_format": "single album",
@@ -271,6 +271,11 @@
 - alias normalization은 API가 책임진다
 - client는 matched alias 계산을 재구현하지 않는다
 - segmented empty state는 빈 배열로 표현한다
+- exact `entity/alias` query는 companion `releases` / `upcoming` row를 같이 반환할 수 있다
+- exact `release_title` 또는 exact upcoming `headline` query가 잡히면 owner entity card를 `entities`에 같이 포함한다
+- 위 owner entity card는 `match_reason = partial`, `matched_alias = null`로 고정한다
+- `next_upcoming.scheduled_month`는 `scheduled_date`가 exact date일 때도 항상 month label까지 채워 반환한다
+- `next_upcoming.release_format`, `upcoming[].release_format`은 nullable metadata다. canonical upcoming signal에 값이 있으면 그대로 보존하고, 값이 없을 때 client가 별도 backfill 하지 않는다
 
 ## 7. `GET /v1/entities/:slug`
 

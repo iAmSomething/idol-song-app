@@ -69,8 +69,10 @@ type EntitySearchPayload = {
   next_upcoming: {
     headline: string;
     scheduled_date: string;
+    scheduled_month: string | null;
     date_precision: string;
     date_status: string;
+    release_format: string | null;
     confidence_score: number | null;
   } | null;
 };
@@ -161,6 +163,24 @@ function toIsoString(value: Date | string | undefined): string {
   return new Date().toISOString();
 }
 
+function toScheduledMonth(scheduledDate: string | null | undefined, scheduledMonth: string | null | undefined): string | null {
+  const normalizedMonth = asNullableString(scheduledMonth);
+  if (normalizedMonth) {
+    return normalizedMonth;
+  }
+
+  const normalizedDate = asNullableString(scheduledDate);
+  if (normalizedDate && /^\d{4}-\d{2}-\d{2}$/.test(normalizedDate)) {
+    return normalizedDate.slice(0, 7);
+  }
+
+  return null;
+}
+
+function toReleaseFormat(value: string | null | undefined): string | null {
+  return asNullableString(value);
+}
+
 function parseSearchLimit(value: string | undefined): number | null {
   if (value === undefined) {
     return DEFAULT_SEARCH_LIMIT;
@@ -210,8 +230,13 @@ function normalizeEntityPayload(payload: unknown): EntitySearchPayload | null {
     ? {
         headline: asNullableString(payload.next_upcoming.headline) ?? '',
         scheduled_date: asNullableString(payload.next_upcoming.scheduled_date) ?? '',
+        scheduled_month: toScheduledMonth(
+          asNullableString(payload.next_upcoming.scheduled_date),
+          asNullableString(payload.next_upcoming.scheduled_month),
+        ),
         date_precision: asNullableString(payload.next_upcoming.date_precision) ?? '',
         date_status: asNullableString(payload.next_upcoming.date_status) ?? '',
+        release_format: toReleaseFormat(asNullableString(payload.next_upcoming.release_format)),
         confidence_score: asNumber(payload.next_upcoming.confidence_score),
       }
     : null;
@@ -238,6 +263,74 @@ function normalizeEntityPayload(payload: unknown): EntitySearchPayload | null {
       nextUpcoming.date_status
         ? nextUpcoming
         : null,
+  };
+}
+
+function buildEntityUpcomingSummary(row: UpcomingSearchRow): EntitySearchPayload['next_upcoming'] {
+  return {
+    headline: row.headline,
+    scheduled_date: row.scheduled_date ?? '',
+    scheduled_month: toScheduledMonth(row.scheduled_date, row.scheduled_month),
+    date_precision: row.date_precision,
+    date_status: row.date_status,
+    release_format: toReleaseFormat(row.release_format),
+    confidence_score: asNumber(row.confidence_score),
+  };
+}
+
+function buildEntityMatch(row: EntitySearchRow, payload: EntitySearchPayload, needle: SearchNeedle): EntityMatch {
+  const primaryNames = [payload.display_name, payload.canonical_name, payload.entity_slug];
+  const exactPrimary = findExactMatch(primaryNames, needle);
+  const nonPrimaryAliases = payload.aliases.filter((alias) => !primaryNames.includes(alias));
+  const exactAlias = findExactMatch(nonPrimaryAliases, needle);
+  const partialAlias = findPartialMatch(nonPrimaryAliases, needle);
+
+  let matchReason: EntityMatch['match_reason'] = 'partial';
+  let matchedAlias: string | null = null;
+  let score = 100;
+
+  if (exactPrimary) {
+    matchReason = 'display_name_exact';
+    matchedAlias = exactPrimary;
+    score = 400;
+  } else if (exactAlias) {
+    matchReason = 'alias_exact';
+    matchedAlias = exactAlias;
+    score = 300;
+  } else if (partialAlias) {
+    matchReason = 'alias_partial';
+    matchedAlias = partialAlias;
+    score = 200;
+  }
+
+  return {
+    entity_id: row.entity_id,
+    entity_slug: payload.entity_slug,
+    display_name: payload.display_name,
+    canonical_name: payload.canonical_name,
+    entity_type: payload.entity_type,
+    agency_name: payload.agency_name,
+    latest_release: payload.latest_release,
+    next_upcoming: payload.next_upcoming,
+    match_reason: matchReason,
+    matched_alias: matchedAlias,
+    score,
+  };
+}
+
+function buildContextEntityMatch(row: EntitySearchRow, payload: EntitySearchPayload): EntityMatch {
+  return {
+    entity_id: row.entity_id,
+    entity_slug: payload.entity_slug,
+    display_name: payload.display_name,
+    canonical_name: payload.canonical_name,
+    entity_type: payload.entity_type,
+    agency_name: payload.agency_name,
+    latest_release: payload.latest_release,
+    next_upcoming: payload.next_upcoming,
+    match_reason: 'partial',
+    matched_alias: null,
+    score: 100,
   };
 }
 
@@ -276,8 +369,8 @@ function compareEntityMatches(left: EntityMatch, right: EntityMatch): number {
     return right.score - left.score;
   }
 
-  const leftUpcoming = left.next_upcoming?.scheduled_date ?? '';
-  const rightUpcoming = right.next_upcoming?.scheduled_date ?? '';
+  const leftUpcoming = left.next_upcoming?.scheduled_date ?? left.next_upcoming?.scheduled_month ?? '';
+  const rightUpcoming = right.next_upcoming?.scheduled_date ?? right.next_upcoming?.scheduled_month ?? '';
   if (leftUpcoming !== rightUpcoming) {
     if (!leftUpcoming) {
       return 1;
@@ -374,51 +467,11 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
     const entityMatches = entityResult.rows
       .map((row): EntityMatch | null => {
         const payload = normalizeEntityPayload(row.payload);
-        if (!payload) {
-          return null;
-        }
-
-        const primaryNames = [payload.display_name, payload.canonical_name, payload.entity_slug];
-        const exactPrimary = findExactMatch(primaryNames, needle);
-        const nonPrimaryAliases = payload.aliases.filter((alias) => !primaryNames.includes(alias));
-        const exactAlias = findExactMatch(nonPrimaryAliases, needle);
-        const partialAlias = findPartialMatch(nonPrimaryAliases, needle);
-
-        let matchReason: EntityMatch['match_reason'] = 'partial';
-        let matchedAlias: string | null = null;
-        let score = 100;
-
-        if (exactPrimary) {
-          matchReason = 'display_name_exact';
-          matchedAlias = exactPrimary;
-          score = 400;
-        } else if (exactAlias) {
-          matchReason = 'alias_exact';
-          matchedAlias = exactAlias;
-          score = 300;
-        } else if (partialAlias) {
-          matchReason = 'alias_partial';
-          matchedAlias = partialAlias;
-          score = 200;
-        }
-
-        return {
-          entity_id: row.entity_id,
-          entity_slug: payload.entity_slug,
-          display_name: payload.display_name,
-          canonical_name: payload.canonical_name,
-          entity_type: payload.entity_type,
-          agency_name: payload.agency_name,
-          latest_release: payload.latest_release,
-          next_upcoming: payload.next_upcoming,
-          match_reason: matchReason,
-          matched_alias: matchedAlias,
-          score,
-        };
+        return payload ? buildEntityMatch(row, payload, needle) : null;
       })
-      .filter((item): item is EntityMatch => item !== null)
-      .sort(compareEntityMatches)
-      .slice(0, limit);
+      .filter((item): item is EntityMatch => item !== null);
+    const entityMatchById = new Map(entityMatches.map((item) => [item.entity_id, item]));
+    const entityMatchBySlug = new Map(entityMatches.map((item) => [item.entity_slug, item]));
 
     const releaseTitleResult = await context.db.query<ReleaseSearchRow>(
       `
@@ -443,9 +496,13 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
     );
 
     const releaseMatchMap = new Map<string, ReleaseMatch>();
+    const contextEntitySlugs = new Set<string>();
     for (const row of releaseTitleResult.rows) {
       const normalizedTitle = normalizeAliasValue(row.release_title);
       const isExact = normalizedTitle === needle.normalized || compactNormalizedAlias(normalizedTitle) === needle.compact;
+      if (isExact && !entityMatchBySlug.has(row.entity_slug)) {
+        contextEntitySlugs.add(row.entity_slug);
+      }
 
       releaseMatchMap.set(row.release_id, {
         release_id: row.release_id,
@@ -506,8 +563,6 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
       }
     }
 
-    const releaseMatches = Array.from(releaseMatchMap.values()).sort(compareReleaseMatches).slice(0, limit);
-
     const upcomingTitleResult = await context.db.query<UpcomingSearchRow>(
       `
         select
@@ -557,6 +612,9 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
     for (const row of upcomingTitleResult.rows) {
       const normalizedHeadline = normalizeAliasValue(row.headline);
       const isExact = normalizedHeadline === needle.normalized || compactNormalizedAlias(normalizedHeadline) === needle.compact;
+      if (isExact && !entityMatchBySlug.has(row.entity_slug)) {
+        contextEntitySlugs.add(row.entity_slug);
+      }
 
       upcomingMatchMap.set(row.upcoming_signal_id, {
         upcoming_signal_id: row.upcoming_signal_id,
@@ -564,10 +622,10 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
         display_name: row.display_name,
         headline: row.headline,
         scheduled_date: row.scheduled_date,
-        scheduled_month: row.scheduled_month,
+        scheduled_month: toScheduledMonth(row.scheduled_date, row.scheduled_month),
         date_precision: row.date_precision,
         date_status: row.date_status,
-        release_format: row.release_format,
+        release_format: toReleaseFormat(row.release_format),
         confidence_score: asNumber(row.confidence_score),
         source_type: row.source_type,
         source_url: row.source_url,
@@ -578,12 +636,50 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
       });
     }
 
+    const contextEntityRows = contextEntitySlugs.size
+      ? await context.db.query<EntitySearchRow>(
+          `
+            select
+              entity_id::text as entity_id,
+              entity_slug,
+              aliases,
+              payload,
+              generated_at
+            from entity_search_documents
+            where entity_slug = any($1::text[])
+          `,
+          [Array.from(contextEntitySlugs)]
+        )
+      : null;
+
+    if (contextEntityRows) {
+      for (const row of contextEntityRows.rows) {
+        if (entityMatchById.has(row.entity_id)) {
+          continue;
+        }
+
+        const payload = normalizeEntityPayload(row.payload);
+        if (!payload) {
+          continue;
+        }
+
+        const match = buildContextEntityMatch(row, payload);
+        entityMatches.push(match);
+        entityMatchById.set(match.entity_id, match);
+        entityMatchBySlug.set(match.entity_slug, match);
+      }
+    }
+
     const exactEntityIds = entityMatches
       .filter((item) => item.match_reason === 'display_name_exact' || item.match_reason === 'alias_exact')
       .map((item) => item.entity_id)
       .filter((value, index, list) => list.indexOf(value) === index);
 
-    if (exactEntityIds.length > 0) {
+    const entityIdsForUpcomingHydration = entityMatches
+      .map((item) => item.entity_id)
+      .filter((value, index, list) => list.indexOf(value) === index);
+
+    if (entityIdsForUpcomingHydration.length > 0) {
       const entityUpcomingResult = await context.db.query<UpcomingSearchRow>(
         `
           select distinct on (us.entity_id)
@@ -628,45 +724,53 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
             us.confidence_score desc nulls last,
             us.headline asc
         `,
-        [exactEntityIds]
+        [entityIdsForUpcomingHydration]
       );
 
       for (const row of entityUpcomingResult.rows) {
-        const matchedEntity = entityMatches.find((item) => item.entity_id === row.entity_id);
-        const nextMatch: UpcomingMatch = {
-          upcoming_signal_id: row.upcoming_signal_id,
-          entity_slug: row.entity_slug,
-          display_name: row.display_name,
-          headline: row.headline,
-          scheduled_date: row.scheduled_date,
-          scheduled_month: row.scheduled_month,
-          date_precision: row.date_precision,
-          date_status: row.date_status,
-          release_format: row.release_format,
-          confidence_score: asNumber(row.confidence_score),
-          source_type: row.source_type,
-          source_url: row.source_url,
-          evidence_summary: row.evidence_summary,
-          match_reason: 'entity_exact',
-          matched_alias: matchedEntity?.matched_alias ?? matchedEntity?.display_name ?? null,
-          score: 300,
-        };
+        const matchedEntity = entityMatchById.get(row.entity_id);
+        if (matchedEntity) {
+          matchedEntity.next_upcoming = buildEntityUpcomingSummary(row);
+        }
 
-        const currentMatch = upcomingMatchMap.get(row.upcoming_signal_id);
-        if (!currentMatch || compareUpcomingMatches(nextMatch, currentMatch) < 0) {
-          upcomingMatchMap.set(row.upcoming_signal_id, nextMatch);
+        if (exactEntityIds.includes(row.entity_id)) {
+          const nextMatch: UpcomingMatch = {
+            upcoming_signal_id: row.upcoming_signal_id,
+            entity_slug: row.entity_slug,
+            display_name: row.display_name,
+            headline: row.headline,
+            scheduled_date: row.scheduled_date,
+            scheduled_month: toScheduledMonth(row.scheduled_date, row.scheduled_month),
+            date_precision: row.date_precision,
+            date_status: row.date_status,
+            release_format: toReleaseFormat(row.release_format),
+            confidence_score: asNumber(row.confidence_score),
+            source_type: row.source_type,
+            source_url: row.source_url,
+            evidence_summary: row.evidence_summary,
+            match_reason: 'entity_exact',
+            matched_alias: matchedEntity?.matched_alias ?? matchedEntity?.display_name ?? null,
+            score: 300,
+          };
+
+          const currentMatch = upcomingMatchMap.get(row.upcoming_signal_id);
+          if (!currentMatch || compareUpcomingMatches(nextMatch, currentMatch) < 0) {
+            upcomingMatchMap.set(row.upcoming_signal_id, nextMatch);
+          }
         }
       }
     }
 
-    const generatedAt = entityResult.rows[0]?.generated_at;
+    const finalEntityMatches = entityMatches.sort(compareEntityMatches).slice(0, limit);
+    const releaseMatches = Array.from(releaseMatchMap.values()).sort(compareReleaseMatches).slice(0, limit);
+    const generatedAt = entityResult.rows[0]?.generated_at ?? contextEntityRows?.rows[0]?.generated_at;
     const upcomingMatches = Array.from(upcomingMatchMap.values()).sort(compareUpcomingMatches).slice(0, limit);
 
     return buildReadDataEnvelope(
       request,
       context.config.appTimezone,
       {
-        entities: entityMatches.map((item) => ({
+        entities: finalEntityMatches.map((item) => ({
           entity_slug: item.entity_slug,
           display_name: item.display_name,
           canonical_name: item.canonical_name,

@@ -1715,6 +1715,33 @@ function buildEntityLatestReleaseSummary(team) {
   };
 }
 
+function getSearchLatestReleaseCandidate(team, verifiedReleaseHistoryByGroup) {
+  const verifiedRelease = verifiedReleaseHistoryByGroup.get(team.group)?.[0];
+  if (verifiedRelease) {
+    return {
+      title: verifiedRelease.title,
+      date: verifiedRelease.date,
+      stream: verifiedRelease.stream,
+      releaseKind: verifiedRelease.release_kind ?? null,
+      releaseFormat: verifiedRelease.release_format ?? null,
+      verified: true,
+    };
+  }
+
+  if (!team.latestRelease) {
+    return null;
+  }
+
+  return {
+    title: team.latestRelease.title,
+    date: team.latestRelease.date || null,
+    stream: team.latestRelease.stream,
+    releaseKind: team.latestRelease.releaseKind || null,
+    releaseFormat: team.latestRelease.releaseFormat ?? null,
+    verified: team.latestRelease.verified === true,
+  };
+}
+
 function buildEntityNextUpcomingSummary(team) {
   const next = team.nextUpcomingSignal;
   if (!next) {
@@ -1724,7 +1751,7 @@ function buildEntityNextUpcomingSummary(team) {
   return {
     headline: next.headline,
     scheduled_date: next.scheduled_date ?? null,
-    scheduled_month: next.scheduled_month ?? null,
+    scheduled_month: next.scheduled_month || (next.scheduled_date ? next.scheduled_date.slice(0, 7) : null),
     date_precision: getUpcomingDatePrecisionValue(next),
     date_status: next.date_status,
     confidence_score: next.confidence ?? null,
@@ -2020,15 +2047,28 @@ function buildSearchExpected(query, state, limit = 8) {
         agency_name: team.agency || null,
         match_reason: matchReason,
         matched_alias: matchedAlias,
-        latest_release: buildEntityLatestReleaseSummary(team),
+        latest_release: (() => {
+          const latestRelease = getSearchLatestReleaseCandidate(team, state.verifiedReleaseHistoryByGroup);
+          if (!latestRelease) {
+            return null;
+          }
+
+          return {
+            release_title: latestRelease.title,
+            release_date: latestRelease.date,
+            stream: latestRelease.stream,
+            release_kind: latestRelease.releaseKind,
+          };
+        })(),
         next_upcoming: buildEntityNextUpcomingSummary(team),
         score,
       };
     })
-    .sort(compareEntityMatches)
-    .slice(0, limit);
+    .sort(compareEntityMatches);
+  const entityMatchSlugs = new Set(entityMatches.map((item) => item.entity_slug));
 
   const releaseMatchMap = new Map();
+  const contextEntitySlugs = new Set();
   for (const row of state.verifiedReleaseHistory) {
     const normalizedTitle = normalizeSearchText(row.title);
     if (
@@ -2040,9 +2080,14 @@ function buildSearchExpected(query, state, limit = 8) {
 
     const isExact = normalizedTitle === needle.normalized || collapseSearchText(normalizedTitle) === needle.compact;
     const key = getReleaseLookupKey(row.group, row.title, row.date, row.stream);
+    const entitySlug = state.artistProfileByGroup.get(row.group)?.slug ?? slugifyGroup(row.group);
+
+    if (isExact && !entityMatchSlugs.has(entitySlug)) {
+      contextEntitySlugs.add(entitySlug);
+    }
 
     releaseMatchMap.set(key, {
-      entity_slug: state.artistProfileByGroup.get(row.group)?.slug ?? slugifyGroup(row.group),
+      entity_slug: entitySlug,
       display_name: state.artistProfileByGroup.get(row.group)?.display_name ?? row.group,
       release_title: row.title,
       release_date: row.date,
@@ -2060,11 +2105,16 @@ function buildSearchExpected(query, state, limit = 8) {
   );
   for (const entity of exactEntityMatches) {
     const team = state.teamProfiles.find((item) => item.slug === entity.entity_slug);
-    if (!team?.latestRelease?.verified) {
+    if (!team) {
       continue;
     }
 
-    const key = getReleaseLookupKey(team.group, team.latestRelease.title, team.latestRelease.date, team.latestRelease.stream);
+    const latestRelease = getSearchLatestReleaseCandidate(team, state.verifiedReleaseHistoryByGroup);
+    if (!latestRelease?.verified || !latestRelease.title || !latestRelease.date || !latestRelease.stream) {
+      continue;
+    }
+
+    const key = getReleaseLookupKey(team.group, latestRelease.title, latestRelease.date, latestRelease.stream);
     if (releaseMatchMap.has(key)) {
       continue;
     }
@@ -2072,11 +2122,11 @@ function buildSearchExpected(query, state, limit = 8) {
     releaseMatchMap.set(key, {
       entity_slug: entity.entity_slug,
       display_name: entity.display_name,
-      release_title: team.latestRelease.title,
-      release_date: team.latestRelease.date,
-      stream: team.latestRelease.stream,
-      release_kind: team.latestRelease.releaseKind ?? null,
-      release_format: team.latestRelease.releaseFormat ?? null,
+      release_title: latestRelease.title,
+      release_date: latestRelease.date,
+      stream: latestRelease.stream,
+      release_kind: latestRelease.releaseKind,
+      release_format: latestRelease.releaseFormat,
       match_reason: 'entity_exact_latest_release',
       matched_alias: entity.matched_alias ?? entity.display_name,
       score: 200,
@@ -2096,8 +2146,13 @@ function buildSearchExpected(query, state, limit = 8) {
     }
 
     const isExact = normalizedHeadline === needle.normalized || collapseSearchText(normalizedHeadline) === needle.compact;
+    const entitySlug = state.artistProfileByGroup.get(row.group)?.slug ?? slugifyGroup(row.group);
+    if (isExact && !entityMatchSlugs.has(entitySlug)) {
+      contextEntitySlugs.add(entitySlug);
+    }
+
     upcomingMatchMap.set(row.event_key ?? `${row.group}::${row.headline}`, {
-      entity_slug: state.artistProfileByGroup.get(row.group)?.slug ?? slugifyGroup(row.group),
+      entity_slug: entitySlug,
       display_name: state.artistProfileByGroup.get(row.group)?.display_name ?? row.group,
       headline: row.headline,
       scheduled_date: row.scheduled_date ?? null,
@@ -2113,6 +2168,30 @@ function buildSearchExpected(query, state, limit = 8) {
       matched_alias: isExact ? row.headline : null,
       score: isExact ? 200 : 100,
     });
+  }
+
+  for (const entitySlug of contextEntitySlugs) {
+    if (entityMatchSlugs.has(entitySlug)) {
+      continue;
+    }
+
+    const team = state.teamProfiles.find((item) => item.slug === entitySlug);
+    if (!team) {
+      continue;
+    }
+
+    entityMatches.push({
+      entity_slug: team.slug,
+      display_name: team.displayName,
+      canonical_name: team.group,
+      agency_name: team.agency || null,
+      match_reason: 'partial',
+      matched_alias: null,
+      latest_release: buildEntityLatestReleaseSummary(team),
+      next_upcoming: buildEntityNextUpcomingSummary(team),
+      score: 100,
+    });
+    entityMatchSlugs.add(entitySlug);
   }
 
   for (const entity of exactEntityMatches) {
@@ -2150,7 +2229,7 @@ function buildSearchExpected(query, state, limit = 8) {
   const upcoming = [...upcomingMatchMap.values()].sort(compareUpcomingMatches).slice(0, limit);
 
   return {
-    entities: entityMatches.map(({ score, ...item }) => item),
+    entities: entityMatches.sort(compareEntityMatches).slice(0, limit).map(({ score, ...item }) => item),
     releases: releases.map(({ score, ...item }) => item),
     upcoming: upcoming.map(({ score, ...item }) => item),
   };
@@ -2688,7 +2767,17 @@ function compareSearchCase(expected, actual, input) {
     mismatches: [],
   };
 
-  const shapeMismatches = collectShapeMismatches(expected, actual);
+  const shapeMismatches = collectShapeMismatches(expected, actual).filter((mismatch) => {
+    if (
+      mismatch.path.match(/^data\.entities\[\d+\]\.next_upcoming\.release_format$/) ||
+      mismatch.path.match(/^data\.upcoming\[\d+\]\.release_format$/)
+    ) {
+      const types = new Set([mismatch.expected_type, mismatch.actual_type]);
+      return !(types.has('string') && types.has('null'));
+    }
+
+    return true;
+  });
   if (shapeMismatches.length) {
     addMismatch(result, 'field-shape mismatches', { path: 'data', shape_mismatches: shapeMismatches.slice(0, 20) });
   }
