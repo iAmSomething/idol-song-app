@@ -9,6 +9,7 @@ const labels = {
     api: 'backend API',
     json: 'transitional JSON',
     json_fallback: 'transitional JSON fallback',
+    api_error: 'backend API unavailable',
   },
   fallbackReasonLabels: {
     timeout: 'timeout',
@@ -56,6 +57,15 @@ assert.equal(
     labels,
   }),
   'Source: transitional JSON fallback · Reason: not found',
+)
+
+assert.equal(
+  buildSurfaceStatusMeta({
+    source: 'api_error',
+    errorCode: 'timeout',
+    labels,
+  }),
+  'Source: backend API unavailable · Reason: timeout',
 )
 
 console.log('fallback reason verification passed')

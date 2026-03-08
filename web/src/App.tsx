@@ -184,7 +184,7 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
 }
 
 type SurfaceSourceMode = 'json' | 'api'
-type SurfaceSourceKey = 'search' | 'entityDetail' | 'releaseDetail' | 'calendarMonth' | 'radar'
+type SurfaceSourceKey = 'entityDetail' | 'releaseDetail' | 'calendarMonth' | 'radar'
 type SurfaceSourceOverrides = Partial<Record<SurfaceSourceKey, SurfaceSourceMode>>
 type ReleaseDetailSourceMode = SurfaceSourceMode
 type ReleaseDetailSourceState = 'json' | 'api' | 'json_fallback'
@@ -256,8 +256,7 @@ type ReleaseDetailApiRequest = {
   release_kind: VerifiedRelease['release_kind']
 }
 
-type SearchSourceMode = SurfaceSourceMode
-type SearchSourceState = 'json' | 'api' | 'json_fallback'
+type SearchSourceState = 'api' | 'api_error'
 
 type EntityDetailSourceMode = SurfaceSourceMode
 type EntityDetailSourceState = 'json' | 'api' | 'json_fallback'
@@ -865,11 +864,10 @@ const TRANSLATIONS = {
     searchLabel: '그룹, 곡, 앨범 검색',
     searchShort: '검색',
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
-    searchBackendLoading: 'backend /v1/search 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 결과를 먼저 표시합니다.',
-    searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 우선 사용 중입니다.',
-    searchBackendFallback: 'backend 검색 응답을 불러오지 못해 transitional JSON fallback 결과로 표시 중입니다.',
-    searchBackendTimeout: 'backend /v1/search 응답 시간이 초과되어 transitional JSON fallback 결과로 표시 중입니다.',
-    searchJsonPrimary: '현재 검색 결과는 transitional JSON 기본 경로를 사용 중입니다.',
+    searchBackendLoading: 'backend /v1/search 결과를 확인하는 중입니다.',
+    searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 사용 중입니다.',
+    searchBackendFallback: 'backend 검색 응답을 불러오지 못했습니다. 검색 결과 fallback은 비활성화되어 있습니다.',
+    searchBackendTimeout: 'backend /v1/search 응답 시간이 초과되었습니다. 검색 결과 fallback은 비활성화되어 있습니다.',
     calendarBackendLoading:
       'backend /v1/calendar/month 결과를 확인하는 중입니다. 현재는 transitional JSON fallback 월 데이터를 먼저 표시합니다.',
     calendarBackendActive: '현재 월간 캘린더와 대시보드는 backend /v1/calendar/month 응답을 우선 사용 중입니다.',
@@ -893,6 +891,7 @@ const TRANSLATIONS = {
       api: 'backend API',
       json: 'transitional JSON',
       json_fallback: 'transitional JSON fallback',
+      api_error: 'backend API unavailable',
     },
     surfaceFallbackReasonLabels: {
       timeout: '응답 시간 초과',
@@ -1143,14 +1142,12 @@ const TRANSLATIONS = {
     searchLabel: 'Search group, song, or album',
     searchShort: 'Search',
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
-    searchBackendLoading:
-      'Checking backend /v1/search results now. The UI keeps the transitional JSON fallback visible first.',
+    searchBackendLoading: 'Checking backend /v1/search results now.',
     searchBackendActive: 'Search results are currently coming from the backend /v1/search response.',
     searchBackendFallback:
-      'The backend search response was unavailable, so the UI is falling back to the transitional JSON snapshot.',
+      'The backend search response was unavailable. Runtime search fallback is disabled.',
     searchBackendTimeout:
-      'The backend /v1/search request timed out, so the UI is falling back to the transitional JSON snapshot.',
-    searchJsonPrimary: 'Search results are currently using the transitional JSON primary path.',
+      'The backend /v1/search request timed out. Runtime search fallback is disabled.',
     calendarBackendLoading:
       'Checking backend /v1/calendar/month now. The UI keeps the transitional JSON fallback month data visible first.',
     calendarBackendActive:
@@ -1175,6 +1172,7 @@ const TRANSLATIONS = {
       api: 'backend API',
       json: 'transitional JSON',
       json_fallback: 'transitional JSON fallback',
+      api_error: 'backend API unavailable',
     },
     surfaceFallbackReasonLabels: {
       timeout: 'timeout',
@@ -1704,14 +1702,12 @@ const calendarMonthApiSnapshotCache = new Map<string, CalendarMonthApiSnapshot>(
 const radarApiSnapshotCache = new Map<string, RadarApiSnapshot>()
 const DEFAULT_PRIMARY_SURFACE_SOURCE_MODE = normalizeSurfaceSourceMode(import.meta.env.VITE_PRIMARY_SURFACE_SOURCE, 'json')
 const SURFACE_SOURCE_MODES = {
-  search: normalizeSurfaceSourceMode(import.meta.env.VITE_SEARCH_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
   entityDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_ENTITY_DETAIL_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
   releaseDetail: normalizeSurfaceSourceMode(import.meta.env.VITE_RELEASE_DETAIL_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
   calendarMonth: normalizeSurfaceSourceMode(import.meta.env.VITE_CALENDAR_MONTH_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
   radar: normalizeSurfaceSourceMode(import.meta.env.VITE_RADAR_SOURCE, DEFAULT_PRIMARY_SURFACE_SOURCE_MODE),
 } satisfies Record<SurfaceSourceKey, SurfaceSourceMode>
 const SURFACE_SOURCE_QUERY_PARAMS = {
-  search: 'searchSource',
   entityDetail: 'entityDetailSource',
   releaseDetail: 'releaseDetailSource',
   calendarMonth: 'calendarMonthSource',
@@ -1901,6 +1897,7 @@ function App() {
     day: 'numeric',
   })
   const deferredSearch = useDeferredValue(search)
+  const hasSearchQuery = deferredSearch.trim().length > 0
   const weekdayFormatter = new Intl.DateTimeFormat(copy.locale, {
     weekday: 'short',
   })
@@ -1978,58 +1975,37 @@ function App() {
     releases: filteredReleases.slice(0, 10),
     upcoming: filteredUpcoming,
   }
-  const searchSourceMode = getSurfaceSourceMode('search', sourceOverrides.search)
   const searchSurfaceResource = useSearchSurfaceResource({
     search: deferredSearch,
-    sourceMode: searchSourceMode,
-    fallbackSnapshot: searchSurfaceFallbackSnapshot,
   })
-  const isSearchCutoverActive = search.trim().length > 0 && searchSourceMode === 'api'
-  const visibleSearchTeams = isSearchCutoverActive ? searchSurfaceResource.entities : searchSurfaceFallbackSnapshot.entities
-  const visibleSearchReleases = isSearchCutoverActive
-    ? searchSurfaceResource.releases
-    : searchSurfaceFallbackSnapshot.releases
-  const visibleSearchUpcoming = isSearchCutoverActive ? searchSurfaceResource.upcoming : searchSurfaceFallbackSnapshot.upcoming
+  const visibleSearchTeams = hasSearchQuery ? searchSurfaceResource.entities : searchSurfaceFallbackSnapshot.entities
+  const visibleSearchReleases = hasSearchQuery ? searchSurfaceResource.releases : searchSurfaceFallbackSnapshot.releases
+  const visibleSearchUpcoming = hasSearchQuery ? searchSurfaceResource.upcoming : searchSurfaceFallbackSnapshot.upcoming
   const searchSurfaceMessage =
     search.trim().length > 0
-      ? searchSourceMode === 'api'
-        ? searchSurfaceResource.source === 'api'
+      ? searchSurfaceResource.source === 'api'
+        ? buildSurfaceStatusMessage({
+            language,
+            source: 'api',
+            errorCode: null,
+            traceId: searchSurfaceResource.traceId,
+            baseMessage: searchSurfaceResource.loading ? copy.searchBackendLoading : copy.searchBackendActive,
+          })
+        : searchSurfaceResource.loading
           ? buildSurfaceStatusMessage({
               language,
               source: 'api',
               errorCode: null,
               traceId: searchSurfaceResource.traceId,
-              baseMessage: copy.searchBackendActive,
+              baseMessage: copy.searchBackendLoading,
             })
-          : searchSurfaceResource.loading
-            ? buildSurfaceStatusMessage({
-                language,
-                source: 'json',
-                errorCode: null,
-                baseMessage: copy.searchBackendLoading,
-              })
-            : searchSurfaceResource.source === 'json_fallback'
-              ? buildSurfaceStatusMessage({
-                  language,
-                  source: 'json_fallback',
-                  errorCode: searchSurfaceResource.errorCode,
-                  traceId: searchSurfaceResource.traceId,
-                  baseMessage:
-                    searchSurfaceResource.errorCode === 'timeout'
-                      ? copy.searchBackendTimeout
-                      : copy.searchBackendFallback,
-                })
-              : buildSurfaceStatusMessage({
-                  language,
-                  source: 'json',
-                  errorCode: null,
-                  baseMessage: copy.searchJsonPrimary,
-                })
-        : buildSurfaceStatusMessage({
-            language,
-            source: 'json',
-            errorCode: null,
-            baseMessage: copy.searchJsonPrimary,
+          : buildSurfaceStatusMessage({
+              language,
+              source: 'api_error',
+              errorCode: searchSurfaceResource.errorCode,
+              traceId: searchSurfaceResource.traceId,
+              baseMessage:
+                searchSurfaceResource.errorCode === 'timeout' ? copy.searchBackendTimeout : copy.searchBackendFallback,
           })
       : null
   const filteredUpcomingSignals = filteredUpcoming
@@ -7460,17 +7436,9 @@ async function fetchSearchSurfaceApiSnapshot(
   }
 }
 
-function useSearchSurfaceResource({
-  search,
-  sourceMode,
-  fallbackSnapshot,
-}: {
-  search: string
-  sourceMode: SearchSourceMode
-  fallbackSnapshot: SearchSurfaceSnapshot
-}): SearchSurfaceResource {
+function useSearchSurfaceResource({ search }: { search: string }): SearchSurfaceResource {
   const cacheKey = search.trim()
-  const cachedSnapshot = sourceMode === 'api' && cacheKey ? searchSurfaceApiSnapshotCache.get(cacheKey) ?? null : null
+  const cachedSnapshot = cacheKey ? searchSurfaceApiSnapshotCache.get(cacheKey) ?? null : null
   const [remoteState, setRemoteState] = useState<{
     cacheKey: string
     snapshot: SearchSurfaceSnapshot | null
@@ -7488,7 +7456,7 @@ function useSearchSurfaceResource({
   })
 
   useEffect(() => {
-    if (sourceMode !== 'api' || !cacheKey) {
+    if (!cacheKey) {
       return
     }
 
@@ -7559,32 +7527,28 @@ function useSearchSurfaceResource({
       cancelled = true
       controller.abort()
     }
-  }, [cacheKey, cachedSnapshot, search, sourceMode])
+  }, [cacheKey, cachedSnapshot, search])
 
-  const activeSnapshot =
-    sourceMode === 'api' && cacheKey
-      ? remoteState.cacheKey === cacheKey
-        ? remoteState.snapshot ?? cachedSnapshot ?? null
-        : cachedSnapshot
-      : null
-  const loading =
-    sourceMode === 'api' && !!cacheKey && remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
-  const errorCode = sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
+  const activeSnapshot = cacheKey
+    ? remoteState.cacheKey === cacheKey
+      ? remoteState.snapshot ?? cachedSnapshot ?? null
+      : cachedSnapshot
+    : null
+  const loading = !!cacheKey && remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
+  const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
   const source: SearchSourceState =
-    sourceMode !== 'api' || !cacheKey
-      ? 'json'
-      : activeSnapshot
-        ? 'api'
-        : errorCode
-          ? 'json_fallback'
-          : 'json'
+    activeSnapshot || loading ? 'api' : 'api_error'
 
   return {
-    ...(activeSnapshot ?? fallbackSnapshot),
+    ...(activeSnapshot ?? {
+      entities: [],
+      releases: [],
+      upcoming: [],
+    }),
     source,
     loading,
     errorCode,
-    traceId: sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.traceId : null,
+    traceId: remoteState.cacheKey === cacheKey ? remoteState.traceId : null,
   }
 }
 
@@ -9940,7 +9904,6 @@ function readSurfaceSourceOverrideFromLocation(key: SurfaceSourceKey): SurfaceSo
 
 function readSurfaceSourceOverridesFromLocation(): SurfaceSourceOverrides {
   return {
-    search: readSurfaceSourceOverrideFromLocation('search') ?? undefined,
     entityDetail: readSurfaceSourceOverrideFromLocation('entityDetail') ?? undefined,
     releaseDetail: readSurfaceSourceOverrideFromLocation('releaseDetail') ?? undefined,
     calendarMonth: readSurfaceSourceOverrideFromLocation('calendarMonth') ?? undefined,
