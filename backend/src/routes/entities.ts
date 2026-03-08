@@ -55,6 +55,14 @@ type TrackingStateBlock = {
   tracking_status: string | null;
 };
 
+type ArtworkSummary = {
+  cover_image_url: string | null;
+  thumbnail_image_url: string | null;
+  artwork_source_type: string | null;
+  artwork_source_url: string | null;
+  is_placeholder: boolean;
+};
+
 type UpcomingSummary = {
   upcoming_signal_id: string;
   headline: string;
@@ -65,6 +73,11 @@ type UpcomingSummary = {
   release_format: string | null;
   confidence_score: number | null;
   latest_seen_at: string | null;
+  source_type: string | null;
+  source_url: string | null;
+  source_domain: string | null;
+  evidence_summary: string | null;
+  source_count: number | null;
 };
 
 type ReleaseSummary = {
@@ -73,10 +86,15 @@ type ReleaseSummary = {
   release_date: string;
   stream: string;
   release_kind: string | null;
+  release_format: string | null;
+  artwork: ArtworkSummary | null;
 };
 
 type SourceTimelineItem = {
+  event_type: string;
   headline: string;
+  occurred_at: string;
+  summary: string | null;
   source_url: string | null;
   source_type: string | null;
   source_domain: string | null;
@@ -87,6 +105,8 @@ type SourceTimelineItem = {
   date_status: string | null;
   release_format: string | null;
   confidence_score: number | null;
+  evidence_summary: string | null;
+  source_count: number | null;
 };
 
 type EntityDetailPayload = {
@@ -116,8 +136,24 @@ function asNullableNumber(value: unknown): number | null {
   return typeof value === 'number' && Number.isFinite(value) ? value : null;
 }
 
+function asNullableBoolean(value: unknown): boolean | null {
+  return typeof value === 'boolean' ? value : null;
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function deriveScheduledMonth(scheduledDate: string | null, scheduledMonth: string | null): string | null {
+  if (scheduledMonth) {
+    return scheduledMonth;
+  }
+
+  if (scheduledDate && /^\d{4}-\d{2}-\d{2}$/.test(scheduledDate)) {
+    return scheduledDate.slice(0, 7);
+  }
+
+  return null;
 }
 
 function toIsoString(value: Date | string | undefined): string {
@@ -133,6 +169,30 @@ function toIsoString(value: Date | string | undefined): string {
   }
 
   return new Date().toISOString();
+}
+
+function normalizeArtworkSummary(value: unknown): ArtworkSummary | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  const coverImageUrl = asNullableString(value.cover_image_url);
+  const thumbnailImageUrl = asNullableString(value.thumbnail_image_url);
+  const artworkSourceType = asNullableString(value.artwork_source_type);
+  const artworkSourceUrl = asNullableString(value.artwork_source_url);
+  const isPlaceholder = asNullableBoolean(value.is_placeholder) === true;
+
+  if (!coverImageUrl && !thumbnailImageUrl && !artworkSourceType && !artworkSourceUrl && !isPlaceholder) {
+    return null;
+  }
+
+  return {
+    cover_image_url: coverImageUrl,
+    thumbnail_image_url: thumbnailImageUrl,
+    artwork_source_type: artworkSourceType,
+    artwork_source_url: artworkSourceUrl,
+    is_placeholder: isPlaceholder,
+  };
 }
 
 function normalizeReleaseSummary(value: unknown): ReleaseSummary | null {
@@ -155,6 +215,8 @@ function normalizeReleaseSummary(value: unknown): ReleaseSummary | null {
     release_date: releaseDate,
     stream,
     release_kind: asNullableString(value.release_kind),
+    release_format: asNullableString(value.release_format),
+    artwork: normalizeArtworkSummary(value.artwork),
   };
 }
 
@@ -175,19 +237,49 @@ function normalizeSourceTimeline(value: unknown): SourceTimelineItem[] {
 
   return value
     .filter(isRecord)
-    .map((item) => ({
-      headline: asNullableString(item.headline) ?? '',
-      source_url: asNullableString(item.source_url),
-      source_type: asNullableString(item.source_type),
-      source_domain: asNullableString(item.source_domain),
-      published_at: asNullableString(item.published_at),
-      scheduled_date: asNullableString(item.scheduled_date),
-      scheduled_month: asNullableString(item.scheduled_month),
-      date_precision: asNullableString(item.date_precision),
-      date_status: asNullableString(item.date_status),
-      release_format: asNullableString(item.release_format),
-      confidence_score: asNullableNumber(item.confidence_score),
-    }))
+    .map((item) => {
+      const headline = asNullableString(item.headline) ?? '';
+      const scheduledDate = asNullableString(item.scheduled_date);
+      const scheduledMonth = deriveScheduledMonth(scheduledDate, asNullableString(item.scheduled_month));
+      const publishedAt = asNullableString(item.published_at);
+      const occurredAt = asNullableString(item.occurred_at) ?? publishedAt ?? scheduledDate ?? scheduledMonth ?? '';
+      const releaseFormat = asNullableString(item.release_format);
+      const dateStatus = asNullableString(item.date_status);
+      const eventType =
+        asNullableString(item.event_type) ??
+        (headline.toLowerCase().includes('tracklist')
+          ? 'tracklist_reveal'
+          : scheduledDate
+            ? dateStatus === 'confirmed'
+              ? 'official_announcement'
+              : 'date_update'
+            : scheduledMonth
+              ? 'date_update'
+              : 'first_signal');
+      const fallbackSummary = [releaseFormat, dateStatus, scheduledDate ?? scheduledMonth]
+        .filter((part): part is string => Boolean(part))
+        .join(' · ');
+      const summary = asNullableString(item.summary) ?? (fallbackSummary || null);
+
+      return {
+        event_type: eventType,
+        headline,
+        occurred_at: occurredAt,
+        summary,
+        source_url: asNullableString(item.source_url),
+        source_type: asNullableString(item.source_type),
+        source_domain: asNullableString(item.source_domain),
+        published_at: publishedAt ?? occurredAt,
+        scheduled_date: scheduledDate,
+        scheduled_month: scheduledMonth,
+        date_precision: asNullableString(item.date_precision),
+        date_status: dateStatus,
+        release_format: releaseFormat,
+        confidence_score: asNullableNumber(item.confidence_score),
+        evidence_summary: asNullableString(item.evidence_summary),
+        source_count: asNullableNumber(item.source_count),
+      };
+    })
     .filter((item) => item.headline.length > 0);
 }
 
@@ -209,12 +301,17 @@ function normalizeUpcomingSummary(value: unknown): UpcomingSummary | null {
     upcoming_signal_id: upcomingSignalId,
     headline,
     scheduled_date: asNullableString(value.scheduled_date),
-    scheduled_month: asNullableString(value.scheduled_month),
+    scheduled_month: deriveScheduledMonth(asNullableString(value.scheduled_date), asNullableString(value.scheduled_month)),
     date_precision: datePrecision,
     date_status: dateStatus,
     release_format: asNullableString(value.release_format),
     confidence_score: asNullableNumber(value.confidence_score),
     latest_seen_at: asNullableString(value.latest_seen_at),
+    source_type: asNullableString(value.source_type),
+    source_url: asNullableString(value.source_url),
+    source_domain: asNullableString(value.source_domain),
+    evidence_summary: asNullableString(value.evidence_summary),
+    source_count: asNullableNumber(value.source_count),
   };
 }
 

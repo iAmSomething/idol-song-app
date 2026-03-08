@@ -100,6 +100,11 @@ function buildEntityDetailPayload() {
       release_format: 'ep',
       confidence_score: 0.84,
       latest_seen_at: NOW,
+      source_type: 'news_rss',
+      source_url: 'https://starnews.example/yena-love-catcher',
+      source_domain: 'starnews.example',
+      evidence_summary: 'StarNews confirmed the March 11 comeback timing.',
+      source_count: 2,
     },
     latest_release: {
       release_id: YENA_RELEASE_ID,
@@ -107,6 +112,14 @@ function buildEntityDetailPayload() {
       release_date: '2025-06-29',
       stream: 'song',
       release_kind: 'single',
+      release_format: 'single',
+      artwork: {
+        cover_image_url: 'https://cdn.example.com/hate-rodrigo-cover.jpg',
+        thumbnail_image_url: 'https://cdn.example.com/hate-rodrigo-thumb.jpg',
+        artwork_source_type: 'releaseArtwork.cover_image_url',
+        artwork_source_url: 'https://artwork.example.com/hate-rodrigo',
+        is_placeholder: false,
+      },
     },
     recent_albums: [
       {
@@ -115,11 +128,22 @@ function buildEntityDetailPayload() {
         release_date: '2026-03-11',
         stream: 'album',
         release_kind: 'ep',
+        release_format: 'ep',
+        artwork: {
+          cover_image_url: 'https://cdn.example.com/love-catcher-cover.jpg',
+          thumbnail_image_url: 'https://cdn.example.com/love-catcher-thumb.jpg',
+          artwork_source_type: 'releaseArtwork.cover_image_url',
+          artwork_source_url: 'https://artwork.example.com/love-catcher',
+          is_placeholder: false,
+        },
       },
     ],
     source_timeline: [
       {
+        event_type: 'official_announcement',
         headline: '최예나, 3월 11일 컴백 확정',
+        occurred_at: NOW,
+        summary: 'ep · confirmed · 2026-03-11',
         source_url: 'https://starnews.example/yena-love-catcher',
         source_type: 'news_rss',
         source_domain: 'starnews.example',
@@ -130,6 +154,8 @@ function buildEntityDetailPayload() {
         date_status: 'confirmed',
         release_format: 'ep',
         confidence_score: 0.84,
+        evidence_summary: 'StarNews confirmed the March 11 comeback timing.',
+        source_count: 2,
       },
     ],
     artist_source_url: 'https://www.youtube.com/@YENA_OFFICIAL',
@@ -693,7 +719,15 @@ test('GET /v1/entities/:slug returns entity detail projection payload', async (t
   assert.equal(body.data.identity.entity_slug, 'yena');
   assert.equal(body.data.official_links.youtube, 'https://www.youtube.com/@YENA_OFFICIAL');
   assert.equal(body.data.next_upcoming.upcoming_signal_id, UPCOMING_SIGNAL_ID);
+  assert.equal(body.data.next_upcoming.source_url, 'https://starnews.example/yena-love-catcher');
+  assert.equal(body.data.next_upcoming.source_count, 2);
+  assert.equal(body.data.latest_release.release_format, 'single');
+  assert.equal(body.data.latest_release.artwork.cover_image_url, 'https://cdn.example.com/hate-rodrigo-cover.jpg');
   assert.equal(body.data.recent_albums.length, 1);
+  assert.equal(body.data.recent_albums[0].release_format, 'ep');
+  assert.equal(body.data.recent_albums[0].artwork.thumbnail_image_url, 'https://cdn.example.com/love-catcher-thumb.jpg');
+  assert.equal(body.data.source_timeline[0].event_type, 'official_announcement');
+  assert.equal(body.data.source_timeline[0].summary, 'ep · confirmed · 2026-03-11');
 });
 
 test('GET /v1/releases/lookup resolves legacy key to release id', async (t) => {

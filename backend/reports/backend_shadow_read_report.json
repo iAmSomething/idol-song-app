@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-08T06:56:37.284Z",
+  "generated_at": "2026-03-08T09:39:51.143Z",
   "clean": false,
   "linked_parity_report": {
     "exists": true,
     "path": "backend/reports/backend_json_parity_report.json",
     "clean": false,
-    "generated_at": "2026-03-07T07:38:47.525631+00:00",
+    "generated_at": "2026-03-08T06:56:34.451182+00:00",
     "summary_lines": [
       "entity alias/search coverage: clean (mismatched entities=0)",
       "official links: clean (mismatched entities=0)",
@@ -65,15 +65,14 @@
   },
   "summary_lines": [
     "search: clean 1/5, drift 4/5",
-    "entity_detail: clean 0/4, drift 4/4",
+    "entity_detail: clean 4/4, drift 0/4",
     "release_detail: clean 0/3, drift 3/3",
     "calendar_month: clean 3/3, drift 0/3",
     "radar: clean 0/1, drift 1/1",
-    "missing rows or segments: 11 case(s)",
-    "field-shape mismatches: 9 case(s)",
-    "latest-release or next-upcoming drift: 7 case(s)",
+    "missing rows or segments: 7 case(s)",
+    "field-shape mismatches: 6 case(s)",
+    "latest-release or next-upcoming drift: 4 case(s)",
     "alias-match differences: 3 case(s)",
-    "exact-vs-month-only drift: 2 case(s)",
     "radar eligibility drift: 1 case(s)"
   ],
   "cases": [
@@ -789,97 +788,9 @@
       "input": {
         "slug": "yena"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments",
-        "latest-release or next-upcoming drift"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.next_upcoming.scheduled_month",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
-            {
-              "path": "data.source_timeline[0].event_type",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.source_timeline[0].occurred_at",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.source_timeline[0].summary",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.official_links.instagram",
-          "expected": "https://www.instagram.com/yena.jigumina/",
-          "actual": "https://www.instagram.com/yena.jigumina"
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.artist_source_url",
-          "expected": null,
-          "actual": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
-        },
-        {
-          "category": "latest-release or next-upcoming drift",
-          "path": "data.latest_release",
-          "expected": null,
-          "actual": {
-            "release_title": "STAR!",
-            "release_date": "2025-11-26",
-            "stream": "song",
-            "release_kind": "single"
-          }
-        },
-        {
-          "category": "latest-release or next-upcoming drift",
-          "path": "data.next_upcoming",
-          "expected": {
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "scheduled_month": "2026-03",
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "release_format": "ep"
-          },
-          "actual": {
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "scheduled_month": null,
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "release_format": "ep"
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.source_timeline",
-          "expected": [
-            "first_signal|최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스|news_rss|https://www.starnewskorea.com/music/2026/02/23/2026022315005262396"
-          ],
-          "actual": [
-            "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스|news_rss|https://www.starnewskorea.com/music/2026/02/23/2026022315005262396"
-          ]
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "yena",
@@ -905,53 +816,89 @@
           "tracking_status": "watch_only"
         },
         "next_upcoming": {
+          "upcoming_signal_id": "yena::2026-03-11::love catcher",
           "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
           "scheduled_date": "2026-03-11",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
+          "release_format": "ep",
           "confidence_score": 0.84,
-          "release_format": "ep"
+          "latest_seen_at": "Mon, 23 Feb 2026 14:58:00 +0900",
+          "source_type": "news_rss",
+          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_domain": "starnewskorea.com",
+          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+          "source_count": 1
         },
-        "latest_release": null,
+        "latest_release": {
+          "release_id": "YENA::STAR!::2025-11-26::song",
+          "release_title": "STAR!",
+          "release_date": "2025-11-26",
+          "stream": "song",
+          "release_kind": "single",
+          "release_format": "single",
+          "artwork": null
+        },
         "recent_albums": [
           {
+            "release_id": "YENA::Blooming Wings::2025-07-29::album",
             "release_title": "Blooming Wings",
             "release_date": "2025-07-29",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
+            "release_id": "YENA::GOOD MORNING::2024-01-15::album",
             "release_title": "GOOD MORNING",
             "release_date": "2024-01-15",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
+            "release_id": "YENA::SMARTPHONE::2022-08-03::album",
             "release_title": "SMARTPHONE",
             "release_date": "2022-08-03",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
+            "release_id": "YENA::ˣ‿ˣ (SMiLEY)::2022-01-17::album",
             "release_title": "ˣ‿ˣ (SMiLEY)",
             "release_date": "2022-01-17",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           }
         ],
         "source_timeline": [
           {
-            "event_type": "first_signal",
-            "source_type": "news_rss",
+            "event_type": "official_announcement",
             "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+            "occurred_at": "Mon, 23 Feb 2026 14:58:00 +0900",
+            "summary": "ep · confirmed · 2026-03-11",
             "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+            "source_type": "news_rss",
             "source_domain": "starnewskorea.com",
-            "occurred_at": "2026-02-23T05:58:00.000Z",
-            "summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST."
+            "published_at": "Mon, 23 Feb 2026 14:58:00 +0900",
+            "scheduled_date": "2026-03-11",
+            "scheduled_month": "2026-03",
+            "date_precision": "exact",
+            "date_status": "confirmed",
+            "release_format": "ep",
+            "confidence_score": 0.84,
+            "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+            "source_count": 1
           }
         ],
-        "artist_source_url": null
+        "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_snapshot": {
         "identity": {
@@ -986,19 +933,26 @@
           "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
           "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
           "scheduled_date": "2026-03-11",
-          "scheduled_month": null,
+          "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
           "release_format": "ep",
           "confidence_score": 0.84,
-          "latest_seen_at": "2026-02-23T05:58:00+00:00"
+          "latest_seen_at": "2026-02-23T05:58:00+00:00",
+          "source_type": "news_rss",
+          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_domain": "starnewskorea.com",
+          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+          "source_count": 1
         },
         "latest_release": {
           "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
           "release_title": "STAR!",
           "release_date": "2025-11-26",
           "stream": "song",
-          "release_kind": "single"
+          "release_kind": "single",
+          "release_format": "single",
+          "artwork": null
         },
         "recent_albums": [
           {
@@ -1006,43 +960,56 @@
             "release_title": "Blooming Wings",
             "release_date": "2025-07-29",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
             "release_id": "b18e824c-d318-5848-9b08-7341982cca31",
             "release_title": "GOOD MORNING",
             "release_date": "2024-01-15",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
             "release_id": "6f634529-e1db-506a-b4fc-f5565b54beb3",
             "release_title": "SMARTPHONE",
             "release_date": "2022-08-03",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
             "release_id": "cc26984b-ed23-5e96-9bbd-8364ce7c037b",
             "release_title": "ˣ‿ˣ (SMiLEY)",
             "release_date": "2022-01-17",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           }
         ],
         "source_timeline": [
           {
+            "event_type": "official_announcement",
             "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+            "occurred_at": "2026-02-23T05:58:00+00:00",
+            "summary": "ep · confirmed · 2026-03-11",
             "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
             "source_type": "news_rss",
             "source_domain": "starnewskorea.com",
             "published_at": "2026-02-23T05:58:00+00:00",
             "scheduled_date": "2026-03-11",
-            "scheduled_month": null,
+            "scheduled_month": "2026-03",
             "date_precision": "exact",
             "date_status": "confirmed",
             "release_format": "ep",
-            "confidence_score": 0.84
+            "confidence_score": 0.84,
+            "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+            "source_count": 1
           }
         ],
         "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
@@ -1054,99 +1021,9 @@
       "input": {
         "slug": "blackpink"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments",
-        "latest-release or next-upcoming drift",
-        "exact-vs-month-only drift"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.next_upcoming",
-              "expected_type": "object",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
-            {
-              "path": "data.source_timeline[0].event_type",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.source_timeline[0].occurred_at",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.source_timeline[0].summary",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.official_links.instagram",
-          "expected": "https://www.instagram.com/blackpinkofficial/",
-          "actual": "https://www.instagram.com/blackpinkofficial"
-        },
-        {
-          "category": "latest-release or next-upcoming drift",
-          "path": "data.latest_release",
-          "expected": {
-            "release_title": "DEADLINE",
-            "release_date": "2026-02-26",
-            "stream": "album",
-            "release_kind": "ep"
-          },
-          "actual": {
-            "release_title": "DEADLINE",
-            "release_date": "2026-02-27",
-            "stream": "album",
-            "release_kind": "ep"
-          }
-        },
-        {
-          "category": "exact-vs-month-only drift",
-          "path": "data.next_upcoming",
-          "expected": {
-            "headline": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ",
-            "scheduled_date": "",
-            "scheduled_month": "",
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "release_format": "ep"
-          },
-          "actual": null
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.source_timeline",
-          "expected": [
-            "first_signal|BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ|news_rss|https://news.google.com/rss/articles/CBMicEFVX3lxTE4waE5xc2U4eWNJaFhldTl2aGZEdGRxYl9DTVRRYnQ2Sk5rRGMtX2JHVVhiWFV3VTZJdUc1b1VoWWdmM25vcXhDb0dKSlBlanpHSlh2NDlHQ1hEMEtCalpvdkFudzNKZDJ0Y1VnVlpwOTA?oc=5",
-            "official_announcement|BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”|agency_notice|https://www.ygfamily.com/en/news/report/7378",
-            "release_verified|DEADLINE|release_catalog|https://musicbrainz.org/release-group/38204997-b295-4d09-a946-f7e119725031"
-          ],
-          "actual": [
-            "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter|news_rss|https://news.google.com/rss/articles/CBMiqwFBVV95cUxOcldhb1d6S2hhMDQxTDZndUlEa0VqLXROcEJucWkxLTZxdFNha25nckc0LWxVZ2I3MHhnVk0zX0xfM3NnRlpnaW9MemF5U3VnaTRyZWlYRVI0YmxtN1Y0T0U0WmxuZmNqVWRxeDNsaVFOeXpzNGJrSVVsSjEtMHlnMGRBT3hpNDl2RW1IelNpVzdYWTBrNXlZUFNZZHN0VHFkVG1RZERvT3k3SlE?oc=5",
-            "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record - The Korea Economic Daily Global Edition|news_rss|https://news.google.com/rss/articles/CBMiZ0FVX3lxTE94bmhvU2RuMVBXTGNpS1VMaExLUXN6c0lCekxVbm1KTy1McTNvTkUycE1KNUl1c0U3b2c5ajh3cE9WSEs0TGJwNlgyZU9LX3JHam55VVhGX3h2SDBoaUdtcGYwWmdGdHc?oc=5",
-            "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter|news_rss|https://news.google.com/rss/articles/CBMiuwFBVV95cUxQREV5ZV9pTDZyVFVyS0JqTDJEbWJGMzh0UDhwcnFKLVFFbDhmVW5rcmVrdGt5cTFkR1BHSzQ4Z0dBZG9RNFBXQVN5UlRKcGF0V1Bycm1KT2ZObWRpS0FBZll0N2RrWjlYWTZlQ3M4Nk8zc2o4dzFMcnlmTzFVMk4zcGZKUms3eFNMQzlLSzN2UERxVmZOOGVyWm90Tzh2b0tHVlJUMHdVZjU5Z0QzWWFibGhEYWtRbzRuNHBZ0gHIAUFVX3lxTFA5LVQ4Uk41RERaWnk5UXh0eC1MTEppZWVTd05yVGlNeEs0UHVKRnExQ3hBcFVsX2wyUmp3Z1U3Z0Q2R3hWcFdBU09hVHV1blJ6VHIyTEgxTnNUc0V5VmxWOUt1S2hwcm11QmRZdUY5c3dfTGZPWE5MT1IzQndIdkUzVHF6NDhCaE9ZeWc5T1JBVlg3MURjV2hrVVVuRDV5ek1LdlRTS1lSTFNCemJxa0t6VlN2bURxM3Uxb0tMRXl0dkJSU3FQbm9l?oc=5",
-            "K-Pop girl group Blackpink drops their third mini album Deadline - Indulgexpress|news_rss|https://news.google.com/rss/articles/CBMivAFBVV95cUxQVG9PNFdjS19QUkVoYU95M21Rb2l5em5EQUVZSzZrcU9qa1hYMWRQSGRnc3dJZDFUYWtBcWstQVREcEw5c3BKc2M5WHJETHB0LUlFTGI3dmFKbXdBbWRtOEZRVTVzZ29UWTRaLVJ5RnhDc25IS2ZsRVNTTXVTWnEtZENIdTVDeUVmM0ZGTXlBSnNBek1aSEs0TFJ4UndGTjVYMDdZWVhmV2tPc092MDN5WnZWYlBiNkJ5M09nbNIBygFBVV95cUxOWlFldno4Y0RLNjhoRFkxN29BT2J3WHdBaFN6THNuYk1HbEZUdzAwSzA5T0U5V3QwVWg1WDZCQUs1S0ZVdDVnSXo3TGpCeTNsZm5tS1VsRDZoVlhyR3doOFNEcVVTVEJubVJTLXNIVG5RX21xN3BEc3preXJVREU0MUVlU2JMalh1Q0QxamJhZ0xIcHFKcTNDV3V4RHFKeV9qZ0dnS2IySkJNaXBVU3lvRDA0eXhYbS1BZFdEbVZBclJQcU9UeFRhUlBB?oc=5",
-            "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”|agency_notice|https://www.ygfamily.com/en/news/report/7378",
-            "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ|news_rss|https://news.google.com/rss/articles/CBMicEFVX3lxTE4waE5xc2U4eWNJaFhldTl2aGZEdGRxYl9DTVRRYnQ2Sk5rRGMtX2JHVVhiWFV3VTZJdUc1b1VoWWdmM25vcXhDb0dKSlBlanpHSlh2NDlHQ1hEMEtCalpvdkFudzNKZDJ0Y1VnVlpwOTA?oc=5",
-            "Blackpink Sets Release Date for Comeback Album - Pitchfork|news_rss|https://news.google.com/rss/articles/CBMiekFVX3lxTE9Ucm80bHB0cUYwcHNhZkJxaWM1MnA5SnJUVzk0ZkdyQmg3b0Q2SXFudk41aXVRN1RjLURta0tvemNPdl8yaE10cVdHbkc2d3dnM3VxSDhtNWhlSGZtM3RYNzJFVThxRzhqWlFjSzR4ekNGM04tLWdWWW9n?oc=5",
-            "K-pop group Blackpink announces new mini album Deadline, out Feb 27 - CNA Lifestyle|news_rss|https://news.google.com/rss/articles/CBMirgFBVV95cUxOUFhWaFpuYnA5UDVRQmR0bHhuS2NIS2pfa255aDEzNGlFMHUzQ0p4MVRRLVVGUm13czJyclV5d3Rhd2xCakNqSmNaaDRtdkZhSWxqbk1VbWc0RzdMX3FjZ1RQTEY5RTV1czR6a3pXQmR4RS0wVVZNSHo3QllWLTBidzlESGpVNGwybzZ1Ti1Wc2VuLXE5WWk1U1Y2QlBtY1JWWXp6cjF3VGZwblhfclE?oc=5"
-          ]
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "blackpink",
@@ -1174,92 +1051,231 @@
           "watch_reason": "recent_release",
           "tracking_status": "recent_release"
         },
-        "next_upcoming": {
-          "headline": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ",
-          "scheduled_date": "",
-          "scheduled_month": "",
-          "date_precision": "unknown",
-          "date_status": "rumor",
-          "confidence_score": 0.68,
-          "release_format": "ep"
-        },
+        "next_upcoming": null,
         "latest_release": {
+          "release_id": "BLACKPINK::DEADLINE::2026-02-27::album",
           "release_title": "DEADLINE",
-          "release_date": "2026-02-26",
+          "release_date": "2026-02-27",
           "stream": "album",
-          "release_kind": "ep"
+          "release_kind": "ep",
+          "release_format": "ep",
+          "artwork": null
         },
         "recent_albums": [
           {
+            "release_id": "BLACKPINK::DEADLINE::2026-02-27::album",
             "release_title": "DEADLINE",
             "release_date": "2026-02-27",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
+            "release_id": "BLACKPINK::DEADLINE::2026-02-26::album",
             "release_title": "DEADLINE",
             "release_date": "2026-02-26",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+              "is_placeholder": false
+            }
           },
           {
+            "release_id": "BLACKPINK::BORN PINK::2022-09-16::album",
             "release_title": "BORN PINK",
             "release_date": "2022-09-16",
             "stream": "album",
-            "release_kind": "album"
+            "release_kind": "album",
+            "release_format": "album",
+            "artwork": null
           },
           {
+            "release_id": "BLACKPINK::THE ALBUM::2020-10-02::album",
             "release_title": "THE ALBUM",
             "release_date": "2020-10-02",
             "stream": "album",
-            "release_kind": "album"
+            "release_kind": "album",
+            "release_format": "album",
+            "artwork": null
           },
           {
+            "release_id": "BLACKPINK::KILL THIS LOVE::2019-04-05::album",
             "release_title": "KILL THIS LOVE",
             "release_date": "2019-04-05",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
+            "release_id": "BLACKPINK::SQUARE UP::2018-06-15::album",
             "release_title": "SQUARE UP",
             "release_date": "2018-06-15",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
+            "release_id": "BLACKPINK::BLACKPINK::2017-08-29::album",
             "release_title": "BLACKPINK",
             "release_date": "2017-08-29",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           }
         ],
         "source_timeline": [
           {
             "event_type": "first_signal",
+            "headline": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter",
+            "occurred_at": "Mon, 02 Mar 2026 15:11:07 GMT",
+            "summary": "album · rumor",
+            "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOcldhb1d6S2hhMDQxTDZndUlEa0VqLXROcEJucWkxLTZxdFNha25nckc0LWxVZ2I3MHhnVk0zX0xfM3NnRlpnaW9MemF5U3VnaTRyZWlYRVI0YmxtN1Y0T0U0WmxuZmNqVWRxeDNsaVFOeXpzNGJrSVVsSjEtMHlnMGRBT3hpNDl2RW1IelNpVzdYWTBrNXlZUFNZZHN0VHFkVG1RZERvT3k3SlE?oc=5",
             "source_type": "news_rss",
-            "headline": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ",
-            "source_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4waE5xc2U4eWNJaFhldTl2aGZEdGRxYl9DTVRRYnQ2Sk5rRGMtX2JHVVhiWFV3VTZJdUc1b1VoWWdmM25vcXhDb0dKSlBlanpHSlh2NDlHQ1hEMEtCalpvdkFudzNKZDJ0Y1VnVlpwOTA?oc=5",
             "source_domain": "news.google.com",
-            "occurred_at": "2026-01-14T08:00:00.000Z",
-            "summary": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date TMZ"
+            "published_at": "Mon, 02 Mar 2026 15:11:07 GMT",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "release_format": "album",
+            "confidence_score": 0.68,
+            "evidence_summary": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” The Hollywood Reporter",
+            "source_count": 2
           },
           {
-            "event_type": "official_announcement",
-            "source_type": "agency_notice",
+            "event_type": "first_signal",
+            "headline": "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record - The Korea Economic Daily Global Edition",
+            "occurred_at": "Sun, 01 Mar 2026 17:47:48 GMT",
+            "summary": "rumor",
+            "source_url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE94bmhvU2RuMVBXTGNpS1VMaExLUXN6c0lCekxVbm1KTy1McTNvTkUycE1KNUl1c0U3b2c5ajh3cE9WSEs0TGJwNlgyZU9LX3JHam55VVhGX3h2SDBoaUdtcGYwWmdGdHc?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "published_at": "Sun, 01 Mar 2026 17:47:48 GMT",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "release_format": "",
+            "confidence_score": 0.68,
+            "evidence_summary": "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record The Korea Economic Daily Global Edition",
+            "source_count": 1
+          },
+          {
+            "event_type": "first_signal",
+            "headline": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter",
+            "occurred_at": "Sat, 28 Feb 2026 10:50:00 GMT",
+            "summary": "album · rumor",
+            "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQREV5ZV9pTDZyVFVyS0JqTDJEbWJGMzh0UDhwcnFKLVFFbDhmVW5rcmVrdGt5cTFkR1BHSzQ4Z0dBZG9RNFBXQVN5UlRKcGF0V1Bycm1KT2ZObWRpS0FBZll0N2RrWjlYWTZlQ3M4Nk8zc2o4dzFMcnlmTzFVMk4zcGZKUms3eFNMQzlLSzN2UERxVmZOOGVyWm90Tzh2b0tHVlJUMHdVZjU5Z0QzWWFibGhEYWtRbzRuNHBZ0gHIAUFVX3lxTFA5LVQ4Uk41RERaWnk5UXh0eC1MTEppZWVTd05yVGlNeEs0UHVKRnExQ3hBcFVsX2wyUmp3Z1U3Z0Q2R3hWcFdBU09hVHV1blJ6VHIyTEgxTnNUc0V5VmxWOUt1S2hwcm11QmRZdUY5c3dfTGZPWE5MT1IzQndIdkUzVHF6NDhCaE9ZeWc5T1JBVlg3MURjV2hrVVVuRDV5ek1LdlRTS1lSTFNCemJxa0t6VlN2bURxM3Uxb0tMRXl0dkJSU3FQbm9l?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "published_at": "Sat, 28 Feb 2026 10:50:00 GMT",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "release_format": "album",
+            "confidence_score": 0.68,
+            "evidence_summary": "Blackpink Sets New Record As ‘Deadline’ Tops First-Day Sales Among K-Pop Girl Groups Outlook Luxe",
+            "source_count": 2
+          },
+          {
+            "event_type": "first_signal",
+            "headline": "K-Pop girl group Blackpink drops their third mini album Deadline - Indulgexpress",
+            "occurred_at": "Sat, 28 Feb 2026 06:59:53 GMT",
+            "summary": "ep · rumor",
+            "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQVG9PNFdjS19QUkVoYU95M21Rb2l5em5EQUVZSzZrcU9qa1hYMWRQSGRnc3dJZDFUYWtBcWstQVREcEw5c3BKc2M5WHJETHB0LUlFTGI3dmFKbXdBbWRtOEZRVTVzZ29UWTRaLVJ5RnhDc25IS2ZsRVNTTXVTWnEtZENIdTVDeUVmM0ZGTXlBSnNBek1aSEs0TFJ4UndGTjVYMDdZWVhmV2tPc092MDN5WnZWYlBiNkJ5M09nbNIBygFBVV95cUxOWlFldno4Y0RLNjhoRFkxN29BT2J3WHdBaFN6THNuYk1HbEZUdzAwSzA5T0U5V3QwVWg1WDZCQUs1S0ZVdDVnSXo3TGpCeTNsZm5tS1VsRDZoVlhyR3doOFNEcVVTVEJubVJTLXNIVG5RX21xN3BEc3preXJVREU0MUVlU2JMalh1Q0QxamJhZ0xIcHFKcTNDV3V4RHFKeV9qZ0dnS2IySkJNaXBVU3lvRDA0eXhYbS1BZFdEbVZBclJQcU9UeFRhUlBB?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "published_at": "Sat, 28 Feb 2026 06:59:53 GMT",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "release_format": "ep",
+            "confidence_score": 0.68,
+            "evidence_summary": "K-Pop girl group Blackpink drops their third mini album Deadline Indulgexpress",
+            "source_count": 1
+          },
+          {
+            "event_type": "first_signal",
             "headline": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”",
+            "occurred_at": "Fri, 06 Feb 2026 00:00:00 GMT",
+            "summary": "single · rumor",
             "source_url": "https://www.ygfamily.com/en/news/report/7378",
+            "source_type": "agency_notice",
             "source_domain": "www.ygfamily.com",
-            "occurred_at": "2026-02-06T00:00:00.000Z",
-            "summary": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care” BLACKPINK has unveiled the tracklist for their new release. According to YG Entertainment on..."
+            "published_at": "Fri, 06 Feb 2026 00:00:00 GMT",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "release_format": "single",
+            "confidence_score": 0.64,
+            "evidence_summary": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care” BLACKPINK has unveiled the tracklist for their new release. According to YG Entertainment on...",
+            "source_count": 1
           },
           {
-            "event_type": "release_verified",
-            "source_type": "release_catalog",
-            "headline": "DEADLINE",
-            "source_url": "https://musicbrainz.org/release-group/38204997-b295-4d09-a946-f7e119725031",
-            "source_domain": "musicbrainz.org",
-            "occurred_at": "2026-02-26",
-            "summary": "Latest verified album record in the dataset for BLACKPINK, captured from the release catalog."
+            "event_type": "first_signal",
+            "headline": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ",
+            "occurred_at": "Wed, 14 Jan 2026 08:00:00 GMT",
+            "summary": "ep · rumor",
+            "source_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4waE5xc2U4eWNJaFhldTl2aGZEdGRxYl9DTVRRYnQ2Sk5rRGMtX2JHVVhiWFV3VTZJdUc1b1VoWWdmM25vcXhDb0dKSlBlanpHSlh2NDlHQ1hEMEtCalpvdkFudzNKZDJ0Y1VnVlpwOTA?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "published_at": "Wed, 14 Jan 2026 08:00:00 GMT",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "release_format": "ep",
+            "confidence_score": 0.68,
+            "evidence_summary": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date TMZ",
+            "source_count": 1
+          },
+          {
+            "event_type": "first_signal",
+            "headline": "Blackpink Sets Release Date for Comeback Album - Pitchfork",
+            "occurred_at": "Wed, 14 Jan 2026 08:00:00 GMT",
+            "summary": "album · rumor",
+            "source_url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9Ucm80bHB0cUYwcHNhZkJxaWM1MnA5SnJUVzk0ZkdyQmg3b0Q2SXFudk41aXVRN1RjLURta0tvemNPdl8yaE10cVdHbkc2d3dnM3VxSDhtNWhlSGZtM3RYNzJFVThxRzhqWlFjSzR4ekNGM04tLWdWWW9n?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "published_at": "Wed, 14 Jan 2026 08:00:00 GMT",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "release_format": "album",
+            "confidence_score": 0.68,
+            "evidence_summary": "Blackpink Sets Release Date for Comeback Album Pitchfork",
+            "source_count": 1
+          },
+          {
+            "event_type": "first_signal",
+            "headline": "K-pop group Blackpink announces new mini album Deadline, out Feb 27 - CNA Lifestyle",
+            "occurred_at": "Wed, 14 Jan 2026 08:00:00 GMT",
+            "summary": "ep · rumor",
+            "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUFhWaFpuYnA5UDVRQmR0bHhuS2NIS2pfa255aDEzNGlFMHUzQ0p4MVRRLVVGUm13czJyclV5d3Rhd2xCakNqSmNaaDRtdkZhSWxqbk1VbWc0RzdMX3FjZ1RQTEY5RTV1czR6a3pXQmR4RS0wVVZNSHo3QllWLTBidzlESGpVNGwybzZ1Ti1Wc2VuLXE5WWk1U1Y2QlBtY1JWWXp6cjF3VGZwblhfclE?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "published_at": "Wed, 14 Jan 2026 08:00:00 GMT",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "release_format": "ep",
+            "confidence_score": 0.68,
+            "evidence_summary": "K-pop group Blackpink announces new mini album Deadline, out Feb 27 CNA Lifestyle",
+            "source_count": 1
           }
         ],
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
@@ -1302,7 +1318,9 @@
           "release_title": "DEADLINE",
           "release_date": "2026-02-27",
           "stream": "album",
-          "release_kind": "ep"
+          "release_kind": "ep",
+          "release_format": "ep",
+          "artwork": null
         },
         "recent_albums": [
           {
@@ -1310,54 +1328,77 @@
             "release_title": "DEADLINE",
             "release_date": "2026-02-27",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
             "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
             "release_title": "DEADLINE",
             "release_date": "2026-02-26",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "0571a361-1b4e-58ab-a628-ff715c81bada",
             "release_title": "BORN PINK",
             "release_date": "2022-09-16",
             "stream": "album",
-            "release_kind": "album"
+            "release_kind": "album",
+            "release_format": "album",
+            "artwork": null
           },
           {
             "release_id": "e0a1b8e5-7e83-515e-8cad-bf1916aeb8dd",
             "release_title": "THE ALBUM",
             "release_date": "2020-10-02",
             "stream": "album",
-            "release_kind": "album"
+            "release_kind": "album",
+            "release_format": "album",
+            "artwork": null
           },
           {
             "release_id": "6476d409-4ef3-5050-b581-a72e973ed65f",
             "release_title": "KILL THIS LOVE",
             "release_date": "2019-04-05",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
             "release_id": "fbca20e6-f7a3-5b69-9abd-d27a36dd11d9",
             "release_title": "SQUARE UP",
             "release_date": "2018-06-15",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
             "release_id": "756b10bf-d09a-525f-ba50-0879d91f228e",
             "release_title": "BLACKPINK",
             "release_date": "2017-08-29",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           }
         ],
         "source_timeline": [
           {
+            "event_type": "first_signal",
             "headline": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter",
+            "occurred_at": "2026-03-02T15:11:07+00:00",
+            "summary": "album · rumor",
             "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOcldhb1d6S2hhMDQxTDZndUlEa0VqLXROcEJucWkxLTZxdFNha25nckc0LWxVZ2I3MHhnVk0zX0xfM3NnRlpnaW9MemF5U3VnaTRyZWlYRVI0YmxtN1Y0T0U0WmxuZmNqVWRxeDNsaVFOeXpzNGJrSVVsSjEtMHlnMGRBT3hpNDl2RW1IelNpVzdYWTBrNXlZUFNZZHN0VHFkVG1RZERvT3k3SlE?oc=5",
             "source_type": "news_rss",
             "source_domain": "news.google.com",
@@ -1367,10 +1408,15 @@
             "date_precision": "unknown",
             "date_status": "rumor",
             "release_format": "album",
-            "confidence_score": 0.68
+            "confidence_score": 0.68,
+            "evidence_summary": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” The Hollywood Reporter",
+            "source_count": 2
           },
           {
+            "event_type": "first_signal",
             "headline": "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record - The Korea Economic Daily Global Edition",
+            "occurred_at": "2026-03-01T17:47:48+00:00",
+            "summary": "rumor",
             "source_url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE94bmhvU2RuMVBXTGNpS1VMaExLUXN6c0lCekxVbm1KTy1McTNvTkUycE1KNUl1c0U3b2c5ajh3cE9WSEs0TGJwNlgyZU9LX3JHam55VVhGX3h2SDBoaUdtcGYwWmdGdHc?oc=5",
             "source_type": "news_rss",
             "source_domain": "news.google.com",
@@ -1380,10 +1426,15 @@
             "date_precision": "unknown",
             "date_status": "rumor",
             "release_format": null,
-            "confidence_score": 0.68
+            "confidence_score": 0.68,
+            "evidence_summary": "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record The Korea Economic Daily Global Edition",
+            "source_count": 1
           },
           {
+            "event_type": "first_signal",
             "headline": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter",
+            "occurred_at": "2026-02-28T10:50:00+00:00",
+            "summary": "album · rumor",
             "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQREV5ZV9pTDZyVFVyS0JqTDJEbWJGMzh0UDhwcnFKLVFFbDhmVW5rcmVrdGt5cTFkR1BHSzQ4Z0dBZG9RNFBXQVN5UlRKcGF0V1Bycm1KT2ZObWRpS0FBZll0N2RrWjlYWTZlQ3M4Nk8zc2o4dzFMcnlmTzFVMk4zcGZKUms3eFNMQzlLSzN2UERxVmZOOGVyWm90Tzh2b0tHVlJUMHdVZjU5Z0QzWWFibGhEYWtRbzRuNHBZ0gHIAUFVX3lxTFA5LVQ4Uk41RERaWnk5UXh0eC1MTEppZWVTd05yVGlNeEs0UHVKRnExQ3hBcFVsX2wyUmp3Z1U3Z0Q2R3hWcFdBU09hVHV1blJ6VHIyTEgxTnNUc0V5VmxWOUt1S2hwcm11QmRZdUY5c3dfTGZPWE5MT1IzQndIdkUzVHF6NDhCaE9ZeWc5T1JBVlg3MURjV2hrVVVuRDV5ek1LdlRTS1lSTFNCemJxa0t6VlN2bURxM3Uxb0tMRXl0dkJSU3FQbm9l?oc=5",
             "source_type": "news_rss",
             "source_domain": "news.google.com",
@@ -1393,10 +1444,15 @@
             "date_precision": "unknown",
             "date_status": "rumor",
             "release_format": "album",
-            "confidence_score": 0.68
+            "confidence_score": 0.68,
+            "evidence_summary": "Blackpink Sets New Record As ‘Deadline’ Tops First-Day Sales Among K-Pop Girl Groups Outlook Luxe",
+            "source_count": 2
           },
           {
+            "event_type": "first_signal",
             "headline": "K-Pop girl group Blackpink drops their third mini album Deadline - Indulgexpress",
+            "occurred_at": "2026-02-28T06:59:53+00:00",
+            "summary": "ep · rumor",
             "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQVG9PNFdjS19QUkVoYU95M21Rb2l5em5EQUVZSzZrcU9qa1hYMWRQSGRnc3dJZDFUYWtBcWstQVREcEw5c3BKc2M5WHJETHB0LUlFTGI3dmFKbXdBbWRtOEZRVTVzZ29UWTRaLVJ5RnhDc25IS2ZsRVNTTXVTWnEtZENIdTVDeUVmM0ZGTXlBSnNBek1aSEs0TFJ4UndGTjVYMDdZWVhmV2tPc092MDN5WnZWYlBiNkJ5M09nbNIBygFBVV95cUxOWlFldno4Y0RLNjhoRFkxN29BT2J3WHdBaFN6THNuYk1HbEZUdzAwSzA5T0U5V3QwVWg1WDZCQUs1S0ZVdDVnSXo3TGpCeTNsZm5tS1VsRDZoVlhyR3doOFNEcVVTVEJubVJTLXNIVG5RX21xN3BEc3preXJVREU0MUVlU2JMalh1Q0QxamJhZ0xIcHFKcTNDV3V4RHFKeV9qZ0dnS2IySkJNaXBVU3lvRDA0eXhYbS1BZFdEbVZBclJQcU9UeFRhUlBB?oc=5",
             "source_type": "news_rss",
             "source_domain": "news.google.com",
@@ -1406,10 +1462,15 @@
             "date_precision": "unknown",
             "date_status": "rumor",
             "release_format": "ep",
-            "confidence_score": 0.68
+            "confidence_score": 0.68,
+            "evidence_summary": "K-Pop girl group Blackpink drops their third mini album Deadline Indulgexpress",
+            "source_count": 1
           },
           {
+            "event_type": "first_signal",
             "headline": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”",
+            "occurred_at": "2026-02-06T00:00:00+00:00",
+            "summary": "single · rumor",
             "source_url": "https://www.ygfamily.com/en/news/report/7378",
             "source_type": "agency_notice",
             "source_domain": "www.ygfamily.com",
@@ -1419,10 +1480,15 @@
             "date_precision": "unknown",
             "date_status": "rumor",
             "release_format": "single",
-            "confidence_score": 0.64
+            "confidence_score": 0.64,
+            "evidence_summary": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care” BLACKPINK has unveiled the tracklist for their new release. According to YG Entertainment on...",
+            "source_count": 1
           },
           {
+            "event_type": "first_signal",
             "headline": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ",
+            "occurred_at": "2026-01-14T08:00:00+00:00",
+            "summary": "ep · rumor",
             "source_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4waE5xc2U4eWNJaFhldTl2aGZEdGRxYl9DTVRRYnQ2Sk5rRGMtX2JHVVhiWFV3VTZJdUc1b1VoWWdmM25vcXhDb0dKSlBlanpHSlh2NDlHQ1hEMEtCalpvdkFudzNKZDJ0Y1VnVlpwOTA?oc=5",
             "source_type": "news_rss",
             "source_domain": "news.google.com",
@@ -1432,10 +1498,15 @@
             "date_precision": "unknown",
             "date_status": "rumor",
             "release_format": "ep",
-            "confidence_score": 0.68
+            "confidence_score": 0.68,
+            "evidence_summary": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date TMZ",
+            "source_count": 1
           },
           {
+            "event_type": "first_signal",
             "headline": "Blackpink Sets Release Date for Comeback Album - Pitchfork",
+            "occurred_at": "2026-01-14T08:00:00+00:00",
+            "summary": "album · rumor",
             "source_url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9Ucm80bHB0cUYwcHNhZkJxaWM1MnA5SnJUVzk0ZkdyQmg3b0Q2SXFudk41aXVRN1RjLURta0tvemNPdl8yaE10cVdHbkc2d3dnM3VxSDhtNWhlSGZtM3RYNzJFVThxRzhqWlFjSzR4ekNGM04tLWdWWW9n?oc=5",
             "source_type": "news_rss",
             "source_domain": "news.google.com",
@@ -1445,10 +1516,15 @@
             "date_precision": "unknown",
             "date_status": "rumor",
             "release_format": "album",
-            "confidence_score": 0.68
+            "confidence_score": 0.68,
+            "evidence_summary": "Blackpink Sets Release Date for Comeback Album Pitchfork",
+            "source_count": 1
           },
           {
+            "event_type": "first_signal",
             "headline": "K-pop group Blackpink announces new mini album Deadline, out Feb 27 - CNA Lifestyle",
+            "occurred_at": "2026-01-14T08:00:00+00:00",
+            "summary": "ep · rumor",
             "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUFhWaFpuYnA5UDVRQmR0bHhuS2NIS2pfa255aDEzNGlFMHUzQ0p4MVRRLVVGUm13czJyclV5d3Rhd2xCakNqSmNaaDRtdkZhSWxqbk1VbWc0RzdMX3FjZ1RQTEY5RTV1czR6a3pXQmR4RS0wVVZNSHo3QllWLTBidzlESGpVNGwybzZ1Ti1Wc2VuLXE5WWk1U1Y2QlBtY1JWWXp6cjF3VGZwblhfclE?oc=5",
             "source_type": "news_rss",
             "source_domain": "news.google.com",
@@ -1458,7 +1534,9 @@
             "date_precision": "unknown",
             "date_status": "rumor",
             "release_format": "ep",
-            "confidence_score": 0.68
+            "confidence_score": 0.68,
+            "evidence_summary": "K-pop group Blackpink announces new mini album Deadline, out Feb 27 CNA Lifestyle",
+            "source_count": 1
           }
         ],
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
@@ -1470,74 +1548,9 @@
       "input": {
         "slug": "and-team"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments",
-        "exact-vs-month-only drift"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.next_upcoming",
-              "expected_type": "object",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
-            {
-              "path": "data.source_timeline[0].event_type",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.source_timeline[0].occurred_at",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.source_timeline[0].summary",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.official_links.instagram",
-          "expected": "https://www.instagram.com/andteam_official/",
-          "actual": "https://www.instagram.com/andteam_official"
-        },
-        {
-          "category": "exact-vs-month-only drift",
-          "path": "data.next_upcoming",
-          "expected": {
-            "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
-            "scheduled_date": "",
-            "scheduled_month": "2026-04",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "release_format": "ep"
-          },
-          "actual": null
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.source_timeline",
-          "expected": [
-            "release_verified|Back to Life|release_catalog|https://musicbrainz.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
-            "first_signal|&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop|news_rss|https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5"
-          ],
-          "actual": [
-            "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop|news_rss|https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5"
-          ]
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "and-team",
@@ -1565,77 +1578,102 @@
           "watch_reason": "recent_release",
           "tracking_status": "recent_release"
         },
-        "next_upcoming": {
-          "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
-          "scheduled_date": "",
-          "scheduled_month": "2026-04",
-          "date_precision": "month_only",
-          "date_status": "scheduled",
-          "confidence_score": 0.76,
-          "release_format": "ep"
-        },
+        "next_upcoming": null,
         "latest_release": {
+          "release_id": "&TEAM::Back to Life::2025-10-28::album",
           "release_title": "Back to Life",
           "release_date": "2025-10-28",
           "stream": "album",
-          "release_kind": "ep"
+          "release_kind": "ep",
+          "release_format": "ep",
+          "artwork": {
+            "cover_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
+            "artwork_source_type": "cover_art_archive",
+            "artwork_source_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+            "is_placeholder": false
+          }
         },
         "recent_albums": [
           {
+            "release_id": "&TEAM::Back to Life::2025-10-28::album",
             "release_title": "Back to Life",
             "release_date": "2025-10-28",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+              "is_placeholder": false
+            }
           },
           {
+            "release_id": "&TEAM::Go in Blind (月狼)::2025-04-20::album",
             "release_title": "Go in Blind (月狼)",
             "release_date": "2025-04-20",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
+            "release_id": "&TEAM::雪明かり (Yukiakari)::2024-12-17::album",
             "release_title": "雪明かり (Yukiakari)",
             "release_date": "2024-12-17",
             "stream": "album",
-            "release_kind": "album"
+            "release_kind": "album",
+            "release_format": "album",
+            "artwork": null
           },
           {
+            "release_id": "&TEAM::First Howling : NOW::2023-11-15::album",
             "release_title": "First Howling : NOW",
             "release_date": "2023-11-15",
             "stream": "album",
-            "release_kind": "album"
+            "release_kind": "album",
+            "release_format": "album",
+            "artwork": null
           },
           {
+            "release_id": "&TEAM::First Howling : WE::2023-06-14::album",
             "release_title": "First Howling : WE",
             "release_date": "2023-06-14",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
+            "release_id": "&TEAM::First Howling : ME::2022-12-06::album",
             "release_title": "First Howling : ME",
             "release_date": "2022-12-06",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           }
         ],
         "source_timeline": [
           {
-            "event_type": "release_verified",
-            "source_type": "release_catalog",
-            "headline": "Back to Life",
-            "source_url": "https://musicbrainz.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
-            "source_domain": "musicbrainz.org",
-            "occurred_at": "2025-10-28",
-            "summary": "Latest verified album record in the dataset for &TEAM, captured from the release catalog."
-          },
-          {
-            "event_type": "first_signal",
-            "source_type": "news_rss",
+            "event_type": "date_update",
             "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
+            "occurred_at": "Thu, 12 Feb 2026 09:38:51 GMT",
+            "summary": "ep · scheduled · 2026-04",
             "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5",
+            "source_type": "news_rss",
             "source_domain": "news.google.com",
-            "occurred_at": "2026-02-12T09:38:51.000Z",
-            "summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop"
+            "published_at": "Thu, 12 Feb 2026 09:38:51 GMT",
+            "scheduled_date": null,
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "release_format": "ep",
+            "confidence_score": 0.76,
+            "evidence_summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop",
+            "source_count": 1
           }
         ],
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
@@ -1678,7 +1716,15 @@
           "release_title": "Back to Life",
           "release_date": "2025-10-28",
           "stream": "album",
-          "release_kind": "ep"
+          "release_kind": "ep",
+          "release_format": "ep",
+          "artwork": {
+            "cover_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
+            "artwork_source_type": "cover_art_archive",
+            "artwork_source_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+            "is_placeholder": false
+          }
         },
         "recent_albums": [
           {
@@ -1686,57 +1732,80 @@
             "release_title": "Back to Life",
             "release_date": "2025-10-28",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "1752455a-9838-5209-8c3e-14e7ddba6595",
             "release_title": "Go in Blind (月狼)",
             "release_date": "2025-04-20",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
             "release_id": "4953a8e4-60a7-5eb2-95ad-9108f883211c",
             "release_title": "雪明かり (Yukiakari)",
             "release_date": "2024-12-17",
             "stream": "album",
-            "release_kind": "album"
+            "release_kind": "album",
+            "release_format": "album",
+            "artwork": null
           },
           {
             "release_id": "60649bc4-3862-5435-b11e-74efc4cd6c41",
             "release_title": "First Howling : NOW",
             "release_date": "2023-11-15",
             "stream": "album",
-            "release_kind": "album"
+            "release_kind": "album",
+            "release_format": "album",
+            "artwork": null
           },
           {
             "release_id": "1e32ea5c-2ccc-5a27-807c-d1e1b24cc39f",
             "release_title": "First Howling : WE",
             "release_date": "2023-06-14",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           },
           {
             "release_id": "e0f26669-7cae-59e0-aed7-ce93b60a1df3",
             "release_title": "First Howling : ME",
             "release_date": "2022-12-06",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           }
         ],
         "source_timeline": [
           {
+            "event_type": "date_update",
             "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
+            "occurred_at": "2026-02-12T09:38:51+00:00",
+            "summary": "ep · scheduled · 2026-04",
             "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5",
             "source_type": "news_rss",
             "source_domain": "news.google.com",
             "published_at": "2026-02-12T09:38:51+00:00",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "release_format": "ep",
-            "confidence_score": 0.76
+            "confidence_score": 0.76,
+            "evidence_summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop",
+            "source_count": 1
           }
         ],
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
@@ -1748,35 +1817,9 @@
       "input": {
         "slug": "allday-project"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "missing rows or segments",
-        "latest-release or next-upcoming drift"
-      ],
-      "mismatches": [
-        {
-          "category": "missing rows or segments",
-          "path": "data.artist_source_url",
-          "expected": null,
-          "actual": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
-        },
-        {
-          "category": "latest-release or next-upcoming drift",
-          "path": "data.latest_release",
-          "expected": {
-            "release_title": "ALLDAY PROJECT",
-            "release_date": "2025-12-08",
-            "stream": "watchlist",
-            "release_kind": "ep"
-          },
-          "actual": {
-            "release_title": "ALLDAY PROJECT",
-            "release_date": "2025-12-08",
-            "stream": "album",
-            "release_kind": "ep"
-          }
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "allday-project",
@@ -1803,21 +1846,27 @@
         },
         "next_upcoming": null,
         "latest_release": {
+          "release_id": "ALLDAY PROJECT::ALLDAY PROJECT::2025-12-08::album",
           "release_title": "ALLDAY PROJECT",
           "release_date": "2025-12-08",
-          "stream": "watchlist",
-          "release_kind": "ep"
+          "stream": "album",
+          "release_kind": "ep",
+          "release_format": "ep",
+          "artwork": null
         },
         "recent_albums": [
           {
+            "release_id": "ALLDAY PROJECT::ALLDAY PROJECT::2025-12-08::album",
             "release_title": "ALLDAY PROJECT",
             "release_date": "2025-12-08",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           }
         ],
         "source_timeline": [],
-        "artist_source_url": null
+        "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_snapshot": {
         "identity": {
@@ -1854,7 +1903,9 @@
           "release_title": "ALLDAY PROJECT",
           "release_date": "2025-12-08",
           "stream": "album",
-          "release_kind": "ep"
+          "release_kind": "ep",
+          "release_format": "ep",
+          "artwork": null
         },
         "recent_albums": [
           {
@@ -1862,7 +1913,9 @@
             "release_title": "ALLDAY PROJECT",
             "release_date": "2025-12-08",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
           }
         ],
         "source_timeline": [],

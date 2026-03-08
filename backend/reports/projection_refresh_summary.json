@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T06:55:30.704Z",
+  "generated_at": "2026-03-08T09:28:50.524Z",
   "row_counts": {
     "entity_search_documents": 117,
     "calendar_month_projection": 216,
@@ -79,51 +79,66 @@
       },
       "next_upcoming": {
         "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+        "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
         "date_status": "confirmed",
+        "source_type": "news_rss",
+        "source_count": 1,
+        "source_domain": "starnewskorea.com",
         "date_precision": "exact",
         "latest_seen_at": "2026-02-23T05:58:00+00:00",
         "release_format": "ep",
         "scheduled_date": "2026-03-11",
-        "scheduled_month": null,
+        "scheduled_month": "2026-03",
         "confidence_score": 0.84,
+        "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
         "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
       },
       "recent_albums": [
         {
           "stream": "album",
+          "artwork": null,
           "release_id": "801052f3-72e8-5b48-b401-1b0aec55a955",
           "release_date": "2025-07-29",
           "release_kind": "ep",
-          "release_title": "Blooming Wings"
+          "release_title": "Blooming Wings",
+          "release_format": "ep"
         },
         {
           "stream": "album",
+          "artwork": null,
           "release_id": "b18e824c-d318-5848-9b08-7341982cca31",
           "release_date": "2024-01-15",
           "release_kind": "ep",
-          "release_title": "GOOD MORNING"
+          "release_title": "GOOD MORNING",
+          "release_format": "ep"
         },
         {
           "stream": "album",
+          "artwork": null,
           "release_id": "6f634529-e1db-506a-b4fc-f5565b54beb3",
           "release_date": "2022-08-03",
           "release_kind": "ep",
-          "release_title": "SMARTPHONE"
+          "release_title": "SMARTPHONE",
+          "release_format": "ep"
         },
         {
           "stream": "album",
+          "artwork": null,
           "release_id": "cc26984b-ed23-5e96-9bbd-8364ce7c037b",
           "release_date": "2022-01-17",
           "release_kind": "ep",
-          "release_title": "ˣ‿ˣ (SMiLEY)"
+          "release_title": "ˣ‿ˣ (SMiLEY)",
+          "release_format": "ep"
         }
       ],
       "latest_release": {
         "stream": "song",
+        "artwork": null,
         "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
         "release_date": "2025-11-26",
         "release_kind": "single",
-        "release_title": "STAR!"
+        "release_title": "STAR!",
+        "release_format": "single"
       },
       "official_links": {
         "x": "https://x.com/YENA_OFFICIAL",
@@ -137,17 +152,22 @@
       },
       "source_timeline": [
         {
+          "summary": "ep · confirmed · 2026-03-11",
           "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+          "event_type": "official_announcement",
           "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
           "date_status": "confirmed",
+          "occurred_at": "2026-02-23T05:58:00+00:00",
           "source_type": "news_rss",
           "published_at": "2026-02-23T05:58:00+00:00",
+          "source_count": 1,
           "source_domain": "starnewskorea.com",
           "date_precision": "exact",
           "release_format": "ep",
           "scheduled_date": "2026-03-11",
-          "scheduled_month": null,
-          "confidence_score": 0.84
+          "scheduled_month": "2026-03",
+          "confidence_score": 0.84,
+          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST."
         }
       ],
       "youtube_channels": {

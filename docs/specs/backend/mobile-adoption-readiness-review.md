@@ -58,7 +58,7 @@ mobile가 아래를 다시 계산하거나 조합해야 하면 readiness fail로
 |---|---|---|---|---|---|
 | Calendar | `GET /v1/calendar/month` | `calendar-screen.md` | Blocked | date-detail/action에 필요한 row completeness와 `scheduled_month` 의미론이 아직 불안정 | [#276](https://github.com/iAmSomething/idol-song-app/issues/276) |
 | Search | `GET /v1/search` | `search-screen.md` | Blocked | release-title/headline 기반 entity-result 규칙과 upcoming summary completeness가 아직 흔들림 | [#278](https://github.com/iAmSomething/idol-song-app/issues/278) |
-| Entity Detail | `GET /v1/entities/:slug` | `team-detail-screen.md` | Blocked | `next_upcoming` source/meta와 `recent_albums` card payload가 mobile-ready shape로 아직 고정되지 않음 | [#277](https://github.com/iAmSomething/idol-song-app/issues/277) |
+| Entity Detail | `GET /v1/entities/:slug` | `team-detail-screen.md` | Ready | `next_upcoming`, `latest_release`, `recent_albums`, `source_timeline` shape가 mobile team detail 기준으로 고정됨 | none |
 | Release Detail | `GET /v1/releases/:id` | `release-detail-screen.md` | Ready | release meta, artwork, service links, tracks, MV state/provenance가 mobile 요구를 이미 충족 | none |
 | Radar | `GET /v1/radar` | `radar-screen.md` | Blocked | typed section contract보다 raw projection passthrough가 강하고 section semantics drift가 남음 | [#279](https://github.com/iAmSomething/idol-song-app/issues/279) |
 
@@ -115,7 +115,7 @@ blocker issue:
 
 ### 6.3 Entity Detail
 
-판정: `Blocked`
+판정: `Ready`
 
 mobile team detail이 요구하는 것:
 
@@ -123,18 +123,14 @@ mobile team detail이 요구하는 것:
 - `최신 발매` 카드에 cover, release meta, action 진입점이 있어야 한다.
 - `최근 앨범 캐러셀`은 cover와 release summary만으로 바로 렌더돼야 한다.
 
-현재 확인된 문제:
+현재 상태:
 
-- current contract sample은 `recent_albums`를 빈 배열로만 보여주고, item shape를 명시하지 않는다.
-- runtime `recent_albums`는 release summary 중심이라 mobile carousel card에 필요한 cover/artwork contract가 없다.
-- `next_upcoming`는 headline/date/status는 있지만 source/meta action을 고정하는 shared shape가 아직 충분히 명시돼 있지 않다.
-- `source_timeline`를 shared contract에 계속 둘 거라면 item shape도 freeze가 필요하다.
+- `next_upcoming`가 source/meta action(`source_type`, `source_url`, `source_domain`, `evidence_summary`, `source_count`)을 포함한다.
+- `latest_release`와 `recent_albums`는 `release_format + artwork`를 가진 card payload로 고정됐다.
+- `source_timeline`도 `event_type`, `occurred_at`, `summary`를 포함한 shared item shape로 고정됐다.
+- representative shadow coverage도 `yena`, `blackpink`, `and-team`, `allday-project` 기준으로 clean까지 확인했다.
 
-즉, team detail 화면은 지금 붙이면 album card payload와 next-upcoming meta action을 client에서 다시 조합할 가능성이 높다.
-
-blocker issue:
-
-- [#277](https://github.com/iAmSomething/idol-song-app/issues/277)
+따라서 mobile team detail은 이제 client-side selector reconstruction 없이 backend contract를 직접 소비해도 된다.
 
 ### 6.4 Release Detail
 
@@ -205,13 +201,11 @@ blocker issue:
 
 - calendar screen implementation
 - search screen implementation
-- team detail screen implementation
 - radar screen implementation
 
 보류 해제 조건:
 
 - [#276](https://github.com/iAmSomething/idol-song-app/issues/276)
-- [#277](https://github.com/iAmSomething/idol-song-app/issues/277)
 - [#278](https://github.com/iAmSomething/idol-song-app/issues/278)
 - [#279](https://github.com/iAmSomething/idol-song-app/issues/279)
 

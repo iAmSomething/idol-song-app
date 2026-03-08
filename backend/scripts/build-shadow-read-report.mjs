@@ -740,7 +740,7 @@ function buildUpcomingDisplayRow(rows) {
   };
 }
 
-function dedupeUpcomingCandidatesForDisplay(rows) {
+function dedupeUpcomingCandidateGroupsForDisplay(rows) {
   const exactGroups = new Map();
   const pendingGroups = new Map();
 
@@ -804,7 +804,11 @@ function dedupeUpcomingCandidatesForDisplay(rows) {
     mergedGroups.push(pendingGroup);
   }
 
-  return mergedGroups.map(buildUpcomingDisplayRow).sort(compareUpcomingSignals);
+  return mergedGroups;
+}
+
+function dedupeUpcomingCandidatesForDisplay(rows) {
+  return dedupeUpcomingCandidateGroupsForDisplay(rows).map(buildUpcomingDisplayRow).sort(compareUpcomingSignals);
 }
 
 function expandUpcomingCandidate(row) {
@@ -1728,6 +1732,251 @@ function buildEntityNextUpcomingSummary(team) {
   };
 }
 
+function buildEntityDetailNextUpcomingSummary(team) {
+  const next = team.nextUpcomingSignal;
+  if (!next) {
+    return null;
+  }
+
+  return {
+    upcoming_signal_id: next.event_key ?? `${team.slug}::${next.scheduled_date ?? next.scheduled_month ?? 'undated'}::${next.headline}`,
+    headline: next.headline,
+    scheduled_date: next.scheduled_date ?? null,
+    scheduled_month: next.scheduled_month || (next.scheduled_date ? next.scheduled_date.slice(0, 7) : null),
+    date_precision: getUpcomingDatePrecisionValue(next),
+    date_status: next.date_status,
+    release_format: next.release_format ?? null,
+    confidence_score: next.confidence ?? null,
+    latest_seen_at: next.published_at ?? null,
+    source_type: next.source_type ?? null,
+    source_url: next.source_url ?? null,
+    source_domain: next.source_domain ?? (getSourceDomain(next.source_url) || null),
+    evidence_summary: next.evidence_summary ?? null,
+    source_count: next.evidence_count ?? 1,
+  };
+}
+
+function buildEntityReleaseCardSummary(group, releaseTitle, releaseDate, stream, releaseKind, releaseFormat, releaseArtworkByKey) {
+  if (!releaseTitle || !releaseDate || !stream) {
+    return null;
+  }
+
+  const normalizedStream = normalizeReleaseStream(stream, releaseKind);
+  const artwork =
+    releaseArtworkByKey.get(getReleaseLookupKey(group, releaseTitle, releaseDate, normalizedStream)) ?? null;
+
+  return {
+    release_id: getReleaseLookupKey(group, releaseTitle, releaseDate, normalizedStream),
+    release_title: releaseTitle,
+    release_date: releaseDate,
+    stream: normalizedStream,
+    release_kind: releaseKind ?? null,
+    release_format: releaseFormat ?? null,
+    artwork: artwork
+      ? {
+          cover_image_url: artwork.cover_image_url ?? null,
+          thumbnail_image_url: artwork.thumbnail_image_url ?? null,
+          artwork_source_type: artwork.artwork_source_type ?? null,
+          artwork_source_url: artwork.artwork_source_url ?? null,
+          is_placeholder: artwork.artwork_source_type === 'placeholder',
+        }
+      : null,
+  };
+}
+
+function buildEntitySourceTimelineItem(item) {
+  return {
+    event_type: item.event_type,
+    headline: item.headline,
+    occurred_at: item.occurred_at,
+    summary: item.summary ?? null,
+    source_url: item.source_url ?? null,
+    source_type: item.source_type ?? null,
+    source_domain: item.source_domain ?? null,
+    published_at: item.occurred_at,
+    scheduled_date: null,
+    scheduled_month: null,
+    date_precision: null,
+    date_status: null,
+    release_format: null,
+    confidence_score: null,
+    evidence_summary: null,
+    source_count: null,
+  };
+}
+
+function compareEntityReleaseRows(left, right) {
+  if (left.date !== right.date) {
+    return right.date.localeCompare(left.date);
+  }
+  if (left.stream !== right.stream) {
+    return left.stream === 'album' ? -1 : 1;
+  }
+  return left.title.localeCompare(right.title);
+}
+
+function compareEntityUpcomingRows(left, right) {
+  const leftDate = left.scheduled_date ?? '';
+  const rightDate = right.scheduled_date ?? '';
+  if (leftDate !== rightDate) {
+    return leftDate.localeCompare(rightDate);
+  }
+  if ((left.confidence ?? 0) !== (right.confidence ?? 0)) {
+    return (right.confidence ?? 0) - (left.confidence ?? 0);
+  }
+  if ((left.published_at ?? '') !== (right.published_at ?? '')) {
+    return (right.published_at ?? '').localeCompare(left.published_at ?? '');
+  }
+  return left.headline.localeCompare(right.headline);
+}
+
+function normalizeOptionalText(value) {
+  return typeof value === 'string' && value.length > 0 ? value : null;
+}
+
+function getComparablePublishedAt(value) {
+  const normalized = normalizeOptionalText(value);
+  if (!normalized) {
+    return Number.NEGATIVE_INFINITY;
+  }
+
+  const timestamp = Date.parse(normalized);
+  return Number.isNaN(timestamp) ? Number.NEGATIVE_INFINITY : timestamp;
+}
+
+function buildEntityDetailNextUpcomingExpected(group, state) {
+  const candidates = (state.upcomingByGroup.get(group) ?? [])
+    .filter((item) => getUpcomingDatePrecisionValue(item) === 'exact' && (item.scheduled_date ?? '') >= state.todayIso)
+    .sort(compareEntityUpcomingRows);
+  const next = candidates[0];
+
+  if (!next) {
+    return null;
+  }
+
+  return {
+    upcoming_signal_id: next.event_key ?? `${group.toLowerCase()}::${next.scheduled_date ?? next.scheduled_month ?? 'undated'}::${next.headline}`,
+    headline: next.headline,
+    scheduled_date: normalizeOptionalText(next.scheduled_date),
+    scheduled_month:
+      normalizeOptionalText(next.scheduled_month) ||
+      (normalizeOptionalText(next.scheduled_date) ? next.scheduled_date.slice(0, 7) : null),
+    date_precision: getUpcomingDatePrecisionValue(next),
+    date_status: next.date_status,
+    release_format: next.release_format ?? null,
+    confidence_score: next.confidence ?? null,
+    latest_seen_at: normalizeOptionalText(next.published_at),
+    source_type: normalizeOptionalText(next.source_type),
+    source_url: normalizeOptionalText(next.source_url),
+    source_domain: normalizeOptionalText(next.source_domain) ?? (getSourceDomain(next.source_url) || null),
+    evidence_summary: normalizeOptionalText(next.evidence_summary),
+    source_count: next.evidence_count ?? 1,
+  };
+}
+
+function buildEntityDetailLatestReleaseExpected(group, state) {
+  const latest = [...(state.verifiedReleaseHistoryByGroup.get(group) ?? [])].sort(compareEntityReleaseRows)[0];
+  if (!latest) {
+    return null;
+  }
+
+  return buildEntityReleaseCardSummary(
+    group,
+    latest.title,
+    latest.date,
+    latest.stream,
+    latest.release_kind ?? null,
+    latest.release_format ?? null,
+    state.releaseArtworkByKey,
+  );
+}
+
+function buildEntityDetailRecentAlbumsExpected(group, state) {
+  return [...(state.verifiedReleaseHistoryByGroup.get(group) ?? [])]
+    .filter((item) => item.stream === 'album')
+    .sort(compareEntityReleaseRows)
+    .slice(0, 12)
+    .map((item) =>
+      buildEntityReleaseCardSummary(
+        group,
+        item.title,
+        item.date,
+        item.stream,
+        item.release_kind ?? null,
+        item.release_format ?? null,
+        state.releaseArtworkByKey,
+      ),
+    )
+    .filter((item) => item !== null);
+}
+
+function inferEntityDetailTimelineEventType(item) {
+  const headline = (item.headline ?? '').toLowerCase();
+
+  if (headline.includes('tracklist')) {
+    return 'tracklist_reveal';
+  }
+  if (item.scheduled_date) {
+    return item.date_status === 'confirmed' ? 'official_announcement' : 'date_update';
+  }
+  if (item.scheduled_month) {
+    return 'date_update';
+  }
+  return 'first_signal';
+}
+
+function buildEntityDetailTimelineSummary(item) {
+  return [item.release_format ?? null, item.date_status ?? null, item.scheduled_date ?? item.scheduled_month ?? null]
+    .filter((part) => Boolean(part))
+    .join(' · ') || null;
+}
+
+function buildEntityDetailSourceTimelineExpected(group, state) {
+  return dedupeUpcomingCandidateGroupsForDisplay(state.rawUpcomingByGroup.get(group) ?? [])
+    .flatMap((rows) => {
+      const representative = pickUpcomingRepresentative(rows);
+      const scheduledDate = normalizeOptionalText(representative.scheduled_date);
+      const scheduledMonth =
+        normalizeOptionalText(representative.scheduled_month) || (scheduledDate ? scheduledDate.slice(0, 7) : null);
+
+      return rows.map((item) => ({
+        event_type: inferEntityDetailTimelineEventType(representative),
+        headline: representative.headline,
+        occurred_at: normalizeOptionalText(item.published_at) ?? '',
+        summary: buildEntityDetailTimelineSummary({
+          ...representative,
+          scheduled_date: scheduledDate,
+          scheduled_month: scheduledMonth,
+        }),
+        source_url: normalizeOptionalText(item.source_url),
+        source_type: normalizeOptionalText(item.source_type),
+        source_domain: normalizeOptionalText(item.source_domain) ?? (getSourceDomain(item.source_url) || null),
+        published_at: normalizeOptionalText(item.published_at) ?? '',
+        scheduled_date: scheduledDate,
+        scheduled_month: scheduledMonth,
+        date_precision: getUpcomingDatePrecisionValue(representative),
+        date_status: representative.date_status,
+        release_format: representative.release_format ?? null,
+        confidence_score: representative.confidence ?? null,
+        evidence_summary: normalizeOptionalText(item.evidence_summary),
+        source_count: rows.length,
+      }));
+    })
+    .sort((left, right) => {
+      const leftOccurredAt = getComparablePublishedAt(left.published_at);
+      const rightOccurredAt = getComparablePublishedAt(right.published_at);
+      if (leftOccurredAt !== rightOccurredAt) {
+        return rightOccurredAt - leftOccurredAt;
+      }
+      if ((left.headline ?? '') !== (right.headline ?? '')) {
+        return (left.headline ?? '').localeCompare(right.headline ?? '');
+      }
+      return (left.source_url ?? '').localeCompare(right.source_url ?? '');
+    })
+    .slice(0, 12)
+    .map((item) => item);
+}
+
 function buildSearchExpected(query, state, limit = 8) {
   const needle = createSearchNeedle(query);
   if (!needle) {
@@ -1915,6 +2164,10 @@ function buildEntityDetailExpected(slug, state) {
 
   const allowlist = state.youtubeChannelAllowlistByGroup.get(team.group);
   const artistProfile = state.artistProfileByGroup.get(team.group);
+  const artistSourceUrl =
+    team.artistSource ||
+    state.verifiedReleaseHistoryByGroup.get(team.group)?.find((item) => typeof item.artist_source === 'string' && item.artist_source.length > 0)?.artist_source ||
+    null;
 
   return {
     identity: {
@@ -1940,31 +2193,11 @@ function buildEntityDetailExpected(slug, state) {
       watch_reason: team.watchReason ?? null,
       tracking_status: team.trackingStatus ?? null,
     },
-    next_upcoming: buildEntityNextUpcomingSummary(team),
-    latest_release: team.latestRelease
-      ? {
-          release_title: team.latestRelease.title,
-          release_date: team.latestRelease.date || null,
-          stream: team.latestRelease.stream,
-          release_kind: team.latestRelease.releaseKind || null,
-        }
-      : null,
-    recent_albums: team.recentAlbums.map((item) => ({
-      release_title: item.title,
-      release_date: item.date,
-      stream: item.stream,
-      release_kind: item.release_kind ?? null,
-    })),
-    source_timeline: team.sourceTimeline.map((item) => ({
-      event_type: item.event_type,
-      source_type: item.source_type,
-      headline: item.headline,
-      source_url: item.source_url ?? null,
-      source_domain: item.source_domain ?? null,
-      occurred_at: item.occurred_at,
-      summary: item.summary,
-    })),
-    artist_source_url: team.artistSource || null,
+    next_upcoming: buildEntityDetailNextUpcomingExpected(team.group, state),
+    latest_release: buildEntityDetailLatestReleaseExpected(team.group, state),
+    recent_albums: buildEntityDetailRecentAlbumsExpected(team.group, state),
+    source_timeline: buildEntityDetailSourceTimelineExpected(team.group, state),
+    artist_source_url: artistSourceUrl,
   };
 }
 
@@ -2572,6 +2805,75 @@ function normalizeUpcomingSummary(item) {
   };
 }
 
+function normalizeEntityReleaseCard(item) {
+  if (!item) {
+    return null;
+  }
+
+  return {
+    release_title: item.release_title ?? null,
+    release_date: item.release_date ?? null,
+    stream: item.stream ?? null,
+    release_kind: item.release_kind ?? null,
+    release_format: item.release_format ?? null,
+    artwork: item.artwork
+      ? {
+          cover_image_url: item.artwork.cover_image_url ?? null,
+          thumbnail_image_url: item.artwork.thumbnail_image_url ?? null,
+          artwork_source_type: item.artwork.artwork_source_type ?? null,
+          artwork_source_url: item.artwork.artwork_source_url ?? null,
+          is_placeholder: item.artwork.is_placeholder === true,
+        }
+      : null,
+  };
+}
+
+function normalizeEntityUpcomingSummary(item) {
+  if (!item) {
+    return null;
+  }
+
+  return {
+    headline: item.headline ?? null,
+    scheduled_date: item.scheduled_date ?? null,
+    scheduled_month: item.scheduled_month ?? null,
+    date_precision: item.date_precision ?? null,
+    date_status: item.date_status ?? null,
+    release_format: item.release_format ?? null,
+    source_type: item.source_type ?? null,
+    source_url: item.source_url ?? null,
+    source_domain: item.source_domain ?? null,
+    evidence_summary: item.evidence_summary ?? null,
+    source_count: item.source_count ?? null,
+  };
+}
+
+function normalizeEntityTimelineItem(item) {
+  if (!item) {
+    return null;
+  }
+
+  const occurredAt = item.occurred_at ? new Date(item.occurred_at).toISOString() : null;
+
+  return {
+    event_type: item.event_type ?? null,
+    headline: item.headline ?? null,
+    occurred_at: Number.isNaN(new Date(item.occurred_at ?? '').getTime()) ? item.occurred_at ?? null : occurredAt,
+    summary: item.summary ?? null,
+    source_type: item.source_type ?? null,
+    source_url: item.source_url ?? null,
+    source_domain: item.source_domain ?? null,
+  };
+}
+
+function normalizeComparableUrl(value) {
+  if (typeof value !== 'string' || value.length === 0) {
+    return value ?? null;
+  }
+
+  return value.endsWith('/') ? value.slice(0, -1) : value;
+}
+
 function compareEntityDetailCase(expected, actual) {
   const result = {
     mismatch_categories: new Set(),
@@ -2587,13 +2889,13 @@ function compareEntityDetailCase(expected, actual) {
     ['data.identity.display_name', expected.identity.display_name, actual?.identity?.display_name],
     ['data.identity.canonical_name', expected.identity.canonical_name, actual?.identity?.canonical_name],
     ['data.identity.agency_name', expected.identity.agency_name, actual?.identity?.agency_name],
-    ['data.official_links.youtube', expected.official_links.youtube, actual?.official_links?.youtube],
-    ['data.official_links.x', expected.official_links.x, actual?.official_links?.x],
-    ['data.official_links.instagram', expected.official_links.instagram, actual?.official_links?.instagram],
+    ['data.official_links.youtube', normalizeComparableUrl(expected.official_links.youtube), normalizeComparableUrl(actual?.official_links?.youtube)],
+    ['data.official_links.x', normalizeComparableUrl(expected.official_links.x), normalizeComparableUrl(actual?.official_links?.x)],
+    ['data.official_links.instagram', normalizeComparableUrl(expected.official_links.instagram), normalizeComparableUrl(actual?.official_links?.instagram)],
     ['data.tracking_state.tier', expected.tracking_state.tier, actual?.tracking_state?.tier],
     ['data.tracking_state.watch_reason', expected.tracking_state.watch_reason, actual?.tracking_state?.watch_reason],
     ['data.tracking_state.tracking_status', expected.tracking_state.tracking_status, actual?.tracking_state?.tracking_status],
-    ['data.artist_source_url', expected.artist_source_url, actual?.artist_source_url],
+    ['data.artist_source_url', normalizeComparableUrl(expected.artist_source_url), normalizeComparableUrl(actual?.artist_source_url)],
   ]) {
     const [pathValue, left, right] = pathEntry;
     if (left !== right) {
@@ -2601,8 +2903,8 @@ function compareEntityDetailCase(expected, actual) {
     }
   }
 
-  const expectedLatest = normalizeReleaseSummary(expected.latest_release);
-  const actualLatest = normalizeReleaseSummary(actual?.latest_release);
+  const expectedLatest = normalizeEntityReleaseCard(expected.latest_release);
+  const actualLatest = normalizeEntityReleaseCard(actual?.latest_release);
   if (JSON.stringify(expectedLatest) !== JSON.stringify(actualLatest)) {
     addMismatch(result, 'latest-release or next-upcoming drift', {
       path: 'data.latest_release',
@@ -2611,8 +2913,8 @@ function compareEntityDetailCase(expected, actual) {
     });
   }
 
-  const expectedUpcoming = normalizeUpcomingSummary(expected.next_upcoming);
-  const actualUpcoming = normalizeUpcomingSummary(actual?.next_upcoming);
+  const expectedUpcoming = normalizeEntityUpcomingSummary(expected.next_upcoming);
+  const actualUpcoming = normalizeEntityUpcomingSummary(actual?.next_upcoming);
   if (JSON.stringify(expectedUpcoming) !== JSON.stringify(actualUpcoming)) {
     addMismatch(
       result,
@@ -2627,8 +2929,8 @@ function compareEntityDetailCase(expected, actual) {
     );
   }
 
-  const expectedAlbums = expected.recent_albums.map((item) => `${item.release_title}|${item.release_date}|${item.stream}`);
-  const actualAlbums = (actual?.recent_albums ?? []).map((item) => `${item.release_title}|${item.release_date}|${item.stream}`);
+  const expectedAlbums = expected.recent_albums.map(normalizeEntityReleaseCard);
+  const actualAlbums = (actual?.recent_albums ?? []).map(normalizeEntityReleaseCard);
   if (JSON.stringify(expectedAlbums) !== JSON.stringify(actualAlbums)) {
     addMismatch(result, 'missing rows or segments', {
       path: 'data.recent_albums',
@@ -2637,8 +2939,8 @@ function compareEntityDetailCase(expected, actual) {
     });
   }
 
-  const expectedTimeline = expected.source_timeline.map((item) => `${item.event_type}|${item.headline}|${item.source_type}|${item.source_url ?? ''}`);
-  const actualTimeline = (actual?.source_timeline ?? []).map((item) => `${item.headline}|${item.source_type}|${item.source_url ?? ''}`);
+  const expectedTimeline = expected.source_timeline.map(normalizeEntityTimelineItem);
+  const actualTimeline = (actual?.source_timeline ?? []).map(normalizeEntityTimelineItem);
   if (JSON.stringify(expectedTimeline) !== JSON.stringify(actualTimeline)) {
     addMismatch(result, 'missing rows or segments', {
       path: 'data.source_timeline',
