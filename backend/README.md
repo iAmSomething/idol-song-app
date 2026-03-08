@@ -54,6 +54,13 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 - error는 공통 `meta + error` shape로 내려가고 code는 `invalid_request`, `not_found`, `stale_projection`, `internal_error`를 기본으로 쓴다.
 - helper entrypoint는 `backend/src/lib/api.ts`다.
 
+## Normalization Helpers
+
+- import / dual-write Python 경로는 `canonical_normalization.py`를 공통 entrypoint로 사용한다.
+- backend read route는 `backend/src/lib/normalization.ts`를 공통 entrypoint로 사용한다.
+- release lookup, slug path, search-alias normalization은 ad hoc trim/lower 구현을 새로 만들지 않는다.
+- SQL projection의 `projection_normalize_text()`는 위 helper들과 같은 의미론을 유지해야 한다.
+
 ## DB Lifecycle
 
 - API runtime은 `backend/src/lib/db.ts`의 `createDbPool()`을 공용 entrypoint로 사용한다.

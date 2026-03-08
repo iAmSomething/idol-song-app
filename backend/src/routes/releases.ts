@@ -3,6 +3,7 @@ import type { FastifyInstance } from 'fastify';
 import { buildReadDataEnvelope, routeError } from '../lib/api.js';
 import type { AppConfig } from '../config.js';
 import type { DbQueryable } from '../lib/db.js';
+import { buildReleaseLookupKey } from '../lib/normalization.js';
 
 type ReleaseRouteContext = {
   config: AppConfig;
@@ -243,10 +244,6 @@ function buildLookupData(row: ReleaseDetailProjectionRow): ReleaseLookupData | n
   };
 }
 
-function normalizeLegacyReleaseTitle(value: string): string {
-  return value.trim();
-}
-
 export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRouteContext): void {
   app.get('/v1/releases/lookup', async (request) => {
     const { entity_slug, title, date, stream } = request.query as ReleaseLookupQuery;
@@ -255,8 +252,8 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
       throw routeError(400, 'invalid_request', 'entity_slug, title, date, and stream query parameters are required.');
     }
 
-    const normalizedTitle = normalizeLegacyReleaseTitle(title);
-    if (!ISO_DATE_PATTERN.test(date) || !VALID_STREAMS.has(stream) || normalizedTitle.length === 0) {
+    const lookup = buildReleaseLookupKey(entity_slug, title, date, stream);
+    if (!ISO_DATE_PATTERN.test(lookup.release_date) || !VALID_STREAMS.has(lookup.stream) || lookup.entity_slug.length === 0 || lookup.normalized_release_title.length === 0) {
       throw routeError(
         400,
         'invalid_request',
@@ -289,7 +286,7 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
           and stream = $4
         limit 1
       `,
-      [entity_slug, normalizedTitle, date, stream]
+      [lookup.entity_slug, lookup.normalized_release_title, lookup.release_date, lookup.stream]
     );
 
     const row = result.rows[0];
