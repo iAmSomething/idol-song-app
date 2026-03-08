@@ -1,5 +1,7 @@
 import type {
   CalendarMonthSnapshotModel,
+  EntityDetailSnapshotModel,
+  EntityTimelineItemModel,
   MobileRawDataset,
   RadarLongGapItemModel,
   RadarRookieItemModel,
@@ -501,6 +503,116 @@ export function selectReleaseDetailById(
   const displayGroup = team?.display_name?.trim() || detail.group;
 
   return adaptReleaseDetail(detail.group, displayGroup, detail, context.artworkByReleaseId.get(releaseId));
+}
+
+function resolveTimelineSortKey(item: EntityTimelineItemModel): string {
+  if (item.kind === 'artist_source') {
+    return '';
+  }
+
+  const match = item.meta.match(/\d{4}-\d{2}(?:-\d{2})?/);
+  return match?.[0] ?? '';
+}
+
+function resolveTimelineRank(item: EntityTimelineItemModel): number {
+  switch (item.kind) {
+    case 'upcoming_source':
+      return 0;
+    case 'release_source':
+      return 1;
+    case 'artist_source':
+    default:
+      return 2;
+  }
+}
+
+export function selectEntityDetailSnapshot(
+  input: MobileSelectorContext | MobileRawDataset,
+  slug: string,
+): EntityDetailSnapshotModel | null {
+  const context = resolveContext(input);
+  const team = selectTeamSummaryBySlug(context, slug);
+
+  if (!team) {
+    return null;
+  }
+
+  const upcomingEvents = selectUpcomingEventsBySlug(context, slug);
+  const nextUpcoming = upcomingEvents[0] ?? null;
+  const latestRelease = selectLatestReleaseSummaryBySlug(context, slug);
+  const recentAlbums = selectRecentReleaseSummariesBySlug(context, slug).filter(
+    (release) => release.stream === 'album',
+  );
+
+  const sourceTimeline: EntityTimelineItemModel[] = [];
+
+  if (team.artistSourceUrl) {
+    sourceTimeline.push({
+      id: `${team.slug}-artist-source`,
+      kind: 'artist_source',
+      title: '아티스트 기준 소스',
+      meta: '대표 엔티티 소스',
+      sourceUrl: team.artistSourceUrl,
+    });
+  }
+
+  for (const upcoming of upcomingEvents) {
+    if (!upcoming.sourceUrl) {
+      continue;
+    }
+
+    const dateLabel =
+      upcoming.datePrecision === 'exact'
+        ? upcoming.scheduledDate ?? '날짜 미정'
+        : `${upcoming.scheduledMonth ?? '날짜 미정'} · 날짜 미정`;
+
+    sourceTimeline.push({
+      id: `${upcoming.id}-source`,
+      kind: 'upcoming_source',
+      title: upcoming.releaseLabel ?? upcoming.headline,
+      meta: `${dateLabel} · ${upcoming.status ?? '예정'}`,
+      sourceUrl: upcoming.sourceUrl,
+    });
+  }
+
+  for (const release of selectRecentReleaseSummariesBySlug(context, slug)) {
+    if (!release.sourceUrl) {
+      continue;
+    }
+
+    sourceTimeline.push({
+      id: `${release.id}-source`,
+      kind: 'release_source',
+      title: release.releaseTitle,
+      meta: `${release.releaseDate} · ${release.releaseKind ?? 'release'}`,
+      sourceUrl: release.sourceUrl,
+    });
+  }
+
+  sourceTimeline.sort((left, right) => {
+    const dateDelta = compareIsoDateDescending(
+      resolveTimelineSortKey(left),
+      resolveTimelineSortKey(right),
+    );
+    if (dateDelta !== 0) {
+      return dateDelta;
+    }
+
+    const rankDelta = resolveTimelineRank(left) - resolveTimelineRank(right);
+    if (rankDelta !== 0) {
+      return rankDelta;
+    }
+
+    return left.title.localeCompare(right.title);
+  });
+
+  return {
+    team,
+    nextUpcoming,
+    latestRelease,
+    recentAlbums,
+    sourceTimeline,
+  };
 }
 
 function parseIsoDate(value: string | undefined): number | null {

@@ -210,3 +210,21 @@ export interface RadarSnapshotModel {
   longGap: RadarLongGapItemModel[];
   rookie: RadarRookieItemModel[];
 }
+
+export type EntityTimelineItemKind = 'artist_source' | 'upcoming_source' | 'release_source';
+
+export interface EntityTimelineItemModel {
+  id: string;
+  kind: EntityTimelineItemKind;
+  title: string;
+  meta: string;
+  sourceUrl?: string;
+}
+
+export interface EntityDetailSnapshotModel {
+  team: TeamSummaryModel;
+  nextUpcoming: UpcomingEventModel | null;
+  latestRelease: ReleaseSummaryModel | null;
+  recentAlbums: ReleaseSummaryModel[];
+  sourceTimeline: EntityTimelineItemModel[];
+}
