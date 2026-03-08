@@ -12,6 +12,7 @@
 
 - `app/`
   - Expo Router root layout / tab shell / detail placeholder route
+  - hidden `debug/metadata` route for internal metadata inspection
 - `assets/`
   - placeholder / service icon / badge fallback asset inventory
 - `src/`
@@ -26,6 +27,8 @@
   - env 로딩 + runtime config validation entrypoint
 - `src/config/runtime.ts`
   - 앱 런타임에서 쓰는 validated config accessor
+- `src/config/debugMetadata.ts`
+  - debug-only build version / dataset version / commit hash helper
 - `src/config/featureGates.ts`
   - gate registry / helper / off fallback definition
 - `src/services/datasetSource.ts`
@@ -190,9 +193,18 @@ profile 차이는 아래 범위로만 제한한다.
   - 이 경우 `EXPO_PUBLIC_ANALYTICS_WRITE_KEY`가 필수다.
 - `EXPO_PUBLIC_ENABLE_SHARE_ACTIONS`
   - share CTA 노출 여부를 제어한다.
+- `EXPO_PUBLIC_BUILD_VERSION`
+  - debug metadata와 Expo config version에 쓰는 explicit build version override다.
 - invalid config
   - `app.config.ts` 단계와 `src/config/runtime.ts` 단계에서 둘 다 명시적으로 실패시킨다.
   - silent fallback으로 숨기지 않는다.
+
+## debug metadata surface
+
+- internal metadata route는 `app/debug/metadata.tsx`에 둔다.
+- build version / dataset version / commit hash는 `src/config/debugMetadata.ts`를 통해 읽는다.
+- main tab이나 user-facing surface에는 진입 링크를 두지 않는다.
+- production profile에서는 route가 열려도 debug-only 안내만 보여준다.
 
 ## dataset-source baseline
 

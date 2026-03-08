@@ -33,6 +33,7 @@ describe('parseRuntimeConfig', () => {
         shareActions: true,
       },
       build: {
+        version: '0.1.0',
         commitSha: {},
       },
     });
@@ -41,6 +42,7 @@ describe('parseRuntimeConfig', () => {
     expect(parsed.dataSource.datasetVersion).toBeNull();
     expect(parsed.services.apiBaseUrl).toBeNull();
     expect(parsed.services.analyticsWriteKey).toBeNull();
+    expect(parsed.build.version).toBe('0.1.0');
     expect(parsed.build.commitSha).toBeNull();
   });
 
@@ -68,6 +70,7 @@ describe('parseRuntimeConfig', () => {
           shareActions: true,
         },
         build: {
+          version: '0.1.0',
           commitSha: null,
         },
       }),
@@ -98,6 +101,7 @@ describe('parseRuntimeConfig', () => {
           shareActions: true,
         },
         build: {
+          version: '0.1.0',
           commitSha: null,
         },
       }),
@@ -128,9 +132,40 @@ describe('parseRuntimeConfig', () => {
           shareActions: true,
         },
         build: {
+          version: '0.1.0',
           commitSha: null,
         },
       }),
     ).toThrow('remoteDatasetUrl');
+  });
+
+  test('requires build version to be present', () => {
+    expect(() =>
+      parseRuntimeConfig({
+        profile: 'development',
+        dataSource: {
+          mode: 'bundled-static',
+          remoteDatasetUrl: null,
+          datasetVersion: null,
+        },
+        services: {
+          apiBaseUrl: null,
+          analyticsWriteKey: null,
+        },
+        logging: {
+          level: 'verbose',
+        },
+        featureGates: {
+          radar: true,
+          analytics: false,
+          remoteRefresh: false,
+          mvEmbed: true,
+          shareActions: true,
+        },
+        build: {
+          commitSha: null,
+        },
+      }),
+    ).toThrow('build.version');
   });
 });

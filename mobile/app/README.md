@@ -17,6 +17,8 @@
 - `artists/[slug].tsx`
 - `releases/[id].tsx`
   - push detail placeholder screen
+- `debug/metadata.tsx`
+  - internal build/dataset/commit metadata inspection route
 
 경로 계약은 아래 문서를 따른다.
 

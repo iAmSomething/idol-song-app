@@ -32,6 +32,7 @@ export type MobileRuntimeConfig = {
     shareActions: boolean;
   };
   build: {
+    version: string;
     commitSha: string | null;
   };
 };
@@ -159,6 +160,7 @@ export function parseRuntimeConfig(input: unknown): MobileRuntimeConfig {
       shareActions: readBoolean(featureGates.shareActions, 'featureGates.shareActions'),
     },
     build: {
+      version: readString(build.version, 'build.version') ?? '0.1.0',
       commitSha: readString(build.commitSha, 'build.commitSha', false),
     },
   };

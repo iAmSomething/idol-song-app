@@ -41,6 +41,7 @@ type RuntimeConfig = {
     shareActions: boolean;
   };
   build: {
+    version: string;
     commitSha: string | null;
   };
 };
@@ -153,6 +154,7 @@ function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig
   const remoteDatasetUrl = assertHttpUrl(optionalString(env.EXPO_PUBLIC_REMOTE_DATASET_URL), 'EXPO_PUBLIC_REMOTE_DATASET_URL');
   const analyticsWriteKey = optionalString(env.EXPO_PUBLIC_ANALYTICS_WRITE_KEY);
   const datasetVersion = optionalString(env.EXPO_PUBLIC_DATASET_VERSION);
+  const buildVersion = optionalString(env.EXPO_PUBLIC_BUILD_VERSION) ?? '0.1.0';
   const commitSha = optionalString(env.EXPO_PUBLIC_COMMIT_SHA);
 
   const featureGates = {
@@ -195,6 +197,7 @@ function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig
     },
     featureGates,
     build: {
+      version: buildVersion,
       commitSha,
     },
   };
@@ -209,7 +212,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ...config,
     name: profileConfig.name,
     slug: profileConfig.slug,
-    version: '0.1.0',
+    version: runtimeConfig.build.version,
     scheme: profileConfig.scheme,
     orientation: 'portrait',
     userInterfaceStyle: 'automatic',
