@@ -3,6 +3,7 @@ import type { FastifyInstance } from 'fastify';
 import { buildReadDataEnvelope, routeError } from '../lib/api.js';
 import type { AppConfig } from '../config.js';
 import type { DbQueryable } from '../lib/db.js';
+import { normalizeSlugValue } from '../lib/normalization.js';
 
 type EntityRouteContext = {
   config: AppConfig;
@@ -275,7 +276,14 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string): EntityDet
 
 export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteContext): void {
   app.get('/v1/entities/:slug/channels', async (request) => {
-    const { slug } = request.params as EntitySlugParams;
+    const { slug: rawSlug } = request.params as EntitySlugParams;
+    const slug = normalizeSlugValue(rawSlug);
+
+    if (!slug) {
+      throw routeError(400, 'invalid_request', 'slug path parameter must contain a valid entity slug.', {
+        slug: rawSlug,
+      });
+    }
 
     const result = await context.db.query<EntityChannelRow>(
       `
@@ -344,7 +352,14 @@ export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteC
   });
 
   app.get('/v1/entities/:slug', async (request) => {
-    const { slug } = request.params as EntitySlugParams;
+    const { slug: rawSlug } = request.params as EntitySlugParams;
+    const slug = normalizeSlugValue(rawSlug);
+
+    if (!slug) {
+      throw routeError(400, 'invalid_request', 'slug path parameter must contain a valid entity slug.', {
+        slug: rawSlug,
+      });
+    }
 
     const result = await context.db.query<EntityDetailProjectionRow>(
       `

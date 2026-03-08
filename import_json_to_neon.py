@@ -2,7 +2,6 @@ import argparse
 import json
 import os
 import re
-import unicodedata
 import uuid
 from collections import Counter
 from datetime import date, datetime, timezone
@@ -10,6 +9,8 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 from urllib.parse import urlsplit, urlunsplit
+
+import canonical_normalization
 
 try:
     import psycopg
@@ -138,26 +139,15 @@ def normalize_url(value: Any) -> Optional[str]:
 
 
 def normalize_search_text(value: str) -> str:
-    return (
-        unicodedata.normalize("NFKC", value)
-        .replace("×", "x")
-        .replace("✕", "x")
-        .replace("&", " and ")
-        .lower()
-        .replace("'", "")
-        .replace("’", "")
-        .replace("`", "")
-    )
+    return canonical_normalization.normalize_lookup_text(value)
 
 
 def collapse_normalized_text(value: str) -> str:
-    collapsed = re.sub(r"[^a-z0-9\u3131-\u318e\uac00-\ud7a3]+", " ", value)
-    collapsed = re.sub(r"\s+", " ", collapsed).strip()
-    return collapsed
+    return canonical_normalization.collapse_normalized_text(value)
 
 
 def normalize_text(value: str) -> str:
-    return collapse_normalized_text(normalize_search_text(value))
+    return canonical_normalization.normalize_alias_value(value)
 
 
 def stable_uuid(kind: str, *parts: Any) -> uuid.UUID:
@@ -249,7 +239,7 @@ def classify_alias_type(alias: str, source: str) -> str:
 
 
 def release_key(group: str, release_title: str, release_date: str, stream: str) -> Tuple[str, str, str, str]:
-    return (group, normalize_text(release_title), release_date, stream)
+    return canonical_normalization.build_release_lookup_key(group, release_title, release_date, stream)
 
 
 def pretty_release_key(group: str, release_title: str, release_date: str, stream: str) -> str:
@@ -518,7 +508,8 @@ def build_entity_rows(
     entity_ids: Dict[str, uuid.UUID] = {}
 
     for profile in sorted(artist_profiles, key=lambda row: row["group"].casefold()):
-        entity_id = stable_uuid("entity", profile["slug"])
+        normalized_slug = canonical_normalization.normalize_slug_value(profile["slug"])
+        entity_id = stable_uuid("entity", normalized_slug)
         watchlist_row = watchlist_by_group.get(profile["group"], {})
         metadata = group_metadata.get(profile["group"], {})
 
@@ -526,7 +517,7 @@ def build_entity_rows(
         entity_rows.append(
             {
                 "id": entity_id,
-                "slug": profile["slug"],
+                "slug": normalized_slug,
                 "canonical_name": profile["group"],
                 "display_name": profile.get("display_name") or profile["group"],
                 "entity_type": infer_entity_type(profile),

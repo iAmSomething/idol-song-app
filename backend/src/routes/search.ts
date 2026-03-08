@@ -3,6 +3,7 @@ import type { FastifyInstance } from 'fastify';
 import { buildReadDataEnvelope, routeError } from '../lib/api.js';
 import type { AppConfig } from '../config.js';
 import type { DbQueryable } from '../lib/db.js';
+import { buildSearchNeedle, compactNormalizedAlias, normalizeAliasValue, type SearchNeedle } from '../lib/normalization.js';
 
 type SearchRouteContext = {
   config: AppConfig;
@@ -74,12 +75,6 @@ type EntitySearchPayload = {
   } | null;
 };
 
-type SearchNeedle = {
-  raw: string;
-  normalized: string;
-  compact: string;
-};
-
 type EntityMatch = {
   entity_id: string;
   entity_slug: string;
@@ -149,35 +144,6 @@ function asNumber(value: unknown): number | null {
   }
 
   return null;
-}
-
-function normalizeSearchText(value: string): string {
-  return value
-    .normalize('NFKC')
-    .replace(/[×✕]/g, 'x')
-    .replace(/&/g, ' and ')
-    .toLowerCase()
-    .replace(/['’`]/g, '')
-    .replace(/[^a-z0-9ㄱ-ㅎㅏ-ㅣ가-힣]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function collapseSearchText(value: string): string {
-  return value.replace(/\s+/g, '');
-}
-
-function buildSearchNeedle(raw: string): SearchNeedle | null {
-  const normalized = normalizeSearchText(raw);
-  if (!normalized) {
-    return null;
-  }
-
-  return {
-    raw,
-    normalized,
-    compact: collapseSearchText(normalized),
-  };
 }
 
 function toIsoString(value: Date | string | undefined): string {
@@ -277,12 +243,12 @@ function normalizeEntityPayload(payload: unknown): EntitySearchPayload | null {
 
 function findExactMatch(values: string[], needle: SearchNeedle): string | null {
   for (const value of values) {
-    const normalized = normalizeSearchText(value);
+    const normalized = normalizeAliasValue(value);
     if (!normalized) {
       continue;
     }
 
-    if (normalized === needle.normalized || collapseSearchText(normalized) === needle.compact) {
+    if (normalized === needle.normalized || compactNormalizedAlias(normalized) === needle.compact) {
       return value;
     }
   }
@@ -292,12 +258,12 @@ function findExactMatch(values: string[], needle: SearchNeedle): string | null {
 
 function findPartialMatch(values: string[], needle: SearchNeedle): string | null {
   for (const value of values) {
-    const normalized = normalizeSearchText(value);
+    const normalized = normalizeAliasValue(value);
     if (!normalized) {
       continue;
     }
 
-    if (normalized.includes(needle.normalized) || collapseSearchText(normalized).includes(needle.compact)) {
+    if (normalized.includes(needle.normalized) || compactNormalizedAlias(normalized).includes(needle.compact)) {
       return value;
     }
   }
@@ -478,8 +444,8 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
 
     const releaseMatchMap = new Map<string, ReleaseMatch>();
     for (const row of releaseTitleResult.rows) {
-      const normalizedTitle = normalizeSearchText(row.release_title);
-      const isExact = normalizedTitle === needle.normalized || collapseSearchText(normalizedTitle) === needle.compact;
+      const normalizedTitle = normalizeAliasValue(row.release_title);
+      const isExact = normalizedTitle === needle.normalized || compactNormalizedAlias(normalizedTitle) === needle.compact;
 
       releaseMatchMap.set(row.release_id, {
         release_id: row.release_id,
@@ -589,8 +555,8 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
 
     const upcomingMatchMap = new Map<string, UpcomingMatch>();
     for (const row of upcomingTitleResult.rows) {
-      const normalizedHeadline = normalizeSearchText(row.headline);
-      const isExact = normalizedHeadline === needle.normalized || collapseSearchText(normalizedHeadline) === needle.compact;
+      const normalizedHeadline = normalizeAliasValue(row.headline);
+      const isExact = normalizedHeadline === needle.normalized || compactNormalizedAlias(normalizedHeadline) === needle.compact;
 
       upcomingMatchMap.set(row.upcoming_signal_id, {
         upcoming_signal_id: row.upcoming_signal_id,
