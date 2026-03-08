@@ -8,7 +8,11 @@ import {
   type RefObject,
 } from 'react'
 import './App.css'
-import { classifyBackendFetchError, fetchJsonWithTimeout } from './lib/backendFetch'
+import {
+  classifyBackendFetchError,
+  extractBackendFetchRequestId,
+  fetchJsonWithTimeout,
+} from './lib/backendFetch'
 import {
   buildServiceActionLinks,
   openMusicHandoff,
@@ -242,6 +246,7 @@ type ReleaseDetailApiResource = ReleaseDetailApiSnapshot & {
   source: ReleaseDetailSourceState
   loading: boolean
   errorCode: string | null
+  traceId: string | null
 }
 
 type ReleaseDetailApiRequest = {
@@ -309,6 +314,7 @@ type SearchSurfaceResource = SearchSurfaceSnapshot & {
   source: SearchSourceState
   loading: boolean
   errorCode: string | null
+  traceId: string | null
 }
 
 type EntityDetailApiResponse = {
@@ -382,6 +388,7 @@ type EntityDetailSurfaceResource = {
   source: EntityDetailSourceState
   loading: boolean
   errorCode: string | null
+  traceId: string | null
 }
 
 type EntityDetailTimelineEntry = NonNullable<NonNullable<EntityDetailApiResponse['data']>['source_timeline']>[number]
@@ -442,6 +449,7 @@ type CalendarMonthSurfaceResource = {
   source: CalendarMonthSourceState
   loading: boolean
   errorCode: string | null
+  traceId: string | null
 }
 
 type RadarApiReleaseSummary = {
@@ -503,6 +511,7 @@ type RadarSurfaceResource = {
   source: RadarSourceState
   loading: boolean
   errorCode: string | null
+  traceId: string | null
 }
 
 type ActType = 'group' | 'solo' | 'unit'
@@ -879,6 +888,7 @@ const TRANSLATIONS = {
     radarJsonPrimary: '현재 레이더 섹션은 transitional JSON 기본 경로를 사용 중입니다.',
     surfaceSourceLabel: '소스',
     surfaceReasonLabel: '이유',
+    surfaceTraceLabel: '요청 ID',
     surfaceSourceModeLabels: {
       api: 'backend API',
       json: 'transitional JSON',
@@ -1160,6 +1170,7 @@ const TRANSLATIONS = {
     radarJsonPrimary: 'The radar sections are currently using the transitional JSON primary path.',
     surfaceSourceLabel: 'Source',
     surfaceReasonLabel: 'Reason',
+    surfaceTraceLabel: 'Request ID',
     surfaceSourceModeLabels: {
       api: 'backend API',
       json: 'transitional JSON',
@@ -1637,6 +1648,7 @@ function getSurfaceStatusLabels(language: Language) {
   return {
     sourceLabel: copy.surfaceSourceLabel,
     reasonLabel: copy.surfaceReasonLabel,
+    traceLabel: copy.surfaceTraceLabel,
     sourceStateLabels: copy.surfaceSourceModeLabels,
     fallbackReasonLabels: copy.surfaceFallbackReasonLabels,
   }
@@ -1646,16 +1658,19 @@ function buildSurfaceStatusMessage({
   language,
   source,
   errorCode,
+  traceId,
   baseMessage,
 }: {
   language: Language
   source: SurfaceStatusSource
   errorCode: string | null
+  traceId?: string | null
   baseMessage: string
 }) {
   const metadata = buildSurfaceStatusMeta({
     source,
     errorCode,
+    traceId,
     labels: getSurfaceStatusLabels(language),
   })
   return `${baseMessage} ${metadata}`
@@ -1983,6 +1998,7 @@ function App() {
               language,
               source: 'api',
               errorCode: null,
+              traceId: searchSurfaceResource.traceId,
               baseMessage: copy.searchBackendActive,
             })
           : searchSurfaceResource.loading
@@ -1997,6 +2013,7 @@ function App() {
                   language,
                   source: 'json_fallback',
                   errorCode: searchSurfaceResource.errorCode,
+                  traceId: searchSurfaceResource.traceId,
                   baseMessage:
                     searchSurfaceResource.errorCode === 'timeout'
                       ? copy.searchBackendTimeout
@@ -2183,6 +2200,7 @@ function App() {
             language,
             source: 'api',
             errorCode: null,
+            traceId: calendarMonthResource.traceId,
             baseMessage: copy.calendarBackendActive,
           })
         : calendarMonthResource.loading
@@ -2197,6 +2215,7 @@ function App() {
                 language,
                 source: 'json_fallback',
                 errorCode: calendarMonthResource.errorCode,
+                traceId: calendarMonthResource.traceId,
                 baseMessage:
                   calendarMonthResource.errorCode === 'timeout'
                     ? copy.calendarBackendTimeout
@@ -2221,6 +2240,7 @@ function App() {
             language,
             source: 'api',
             errorCode: null,
+            traceId: radarResource.traceId,
             baseMessage: copy.radarBackendActive,
           })
         : radarResource.loading
@@ -2235,6 +2255,7 @@ function App() {
                 language,
                 source: 'json_fallback',
                 errorCode: radarResource.errorCode,
+                traceId: radarResource.traceId,
                 baseMessage:
                   radarResource.errorCode === 'timeout'
                     ? copy.radarBackendTimeout
@@ -2720,12 +2741,14 @@ function App() {
                         language,
                         source: 'api',
                         errorCode: null,
+                        traceId: selectedTeamResource.traceId,
                         baseMessage: teamCopy.backendActive,
                       })
                     : buildSurfaceStatusMessage({
                         language,
                         source: 'json_fallback',
                         errorCode: selectedTeamResource.errorCode,
+                        traceId: selectedTeamResource.traceId,
                         baseMessage:
                           selectedTeamResource.errorCode === 'timeout'
                             ? teamCopy.backendTimeout
@@ -3606,6 +3629,7 @@ function ReleaseDetailPage({
             language,
             source: 'api',
             errorCode: null,
+            traceId: releaseDetailResource.traceId,
             baseMessage: teamCopy.releaseDetailBackendActive,
           })
         : releaseDetailResource.loading
@@ -3619,6 +3643,7 @@ function ReleaseDetailPage({
               language,
               source: 'json_fallback',
               errorCode: releaseDetailResource.errorCode,
+              traceId: releaseDetailResource.traceId,
               baseMessage:
                 releaseDetailResource.errorCode === 'timeout'
                   ? teamCopy.releaseDetailBackendTimeout
@@ -6916,14 +6941,32 @@ async function fetchApiJson<T>(
   path: string,
   signal: AbortSignal,
   timeoutMs: number,
-): Promise<{ ok: boolean; status: number; body: T | null }> {
-  return fetchJsonWithTimeout<T>(buildBackendApiUrl(path), {
+  requestIdPrefix: string,
+): Promise<{ ok: boolean; status: number; body: T | null; traceId: string | null }> {
+  const result = await fetchJsonWithTimeout<T>(buildBackendApiUrl(path), {
     headers: {
       Accept: 'application/json',
     },
+    requestIdPrefix,
     signal,
     timeoutMs,
   })
+
+  return {
+    ...result,
+    traceId: result.responseRequestId ?? result.requestId,
+  }
+}
+
+function getBackendTraceIdFromError(error: unknown): string | null {
+  return extractBackendFetchRequestId(error)
+}
+
+function buildFetchFailureState(error: unknown) {
+  return {
+    errorCode: classifyBackendFetchError(error),
+    traceId: getBackendTraceIdFromError(error),
+  }
 }
 
 function normalizeApiReleaseDetailSnapshot(
@@ -7019,29 +7062,34 @@ async function fetchReleaseDetailApiSnapshot(
   group: string,
   fallbackSnapshot: ReleaseDetailApiSnapshot,
   signal: AbortSignal,
-): Promise<{ snapshot: ReleaseDetailApiSnapshot | null; errorCode: string | null }> {
+): Promise<{ snapshot: ReleaseDetailApiSnapshot | null; errorCode: string | null; traceId: string | null }> {
   const cacheKey = getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind))
   const cachedSnapshot = releaseDetailApiSnapshotCache.get(cacheKey)
   if (cachedSnapshot) {
     return {
       snapshot: cachedSnapshot,
       errorCode: null,
+      traceId: null,
     }
   }
 
   let releaseId = releaseDetailApiIdCache.get(cacheKey) ?? null
   let canonicalPath: string | null = null
+  let traceId: string | null = null
 
   if (!releaseId) {
     const lookupResult = await fetchApiJson<ReleaseDetailLookupApiResponse>(
       buildReleaseDetailLookupUrl(album, group),
       signal,
       RELEASE_DETAIL_LOOKUP_TIMEOUT_MS,
+      `web-release-lookup-${group}`,
     )
+    traceId = lookupResult.traceId
     if (!lookupResult.ok || !lookupResult.body?.data?.release_id) {
       return {
         snapshot: null,
         errorCode: lookupResult.body?.error?.code ?? `lookup_${lookupResult.status}`,
+        traceId,
       }
     }
 
@@ -7054,11 +7102,14 @@ async function fetchReleaseDetailApiSnapshot(
     `/v1/releases/${releaseId}`,
     signal,
     RELEASE_DETAIL_FETCH_TIMEOUT_MS,
+    `web-release-detail-${group}`,
   )
+  traceId = detailResult.traceId ?? traceId
   if (!detailResult.ok || !detailResult.body?.data) {
     return {
       snapshot: null,
       errorCode: detailResult.body?.error?.code ?? `detail_${detailResult.status}`,
+      traceId,
     }
   }
 
@@ -7075,6 +7126,7 @@ async function fetchReleaseDetailApiSnapshot(
     return {
       snapshot: null,
       errorCode: 'invalid_projection_payload',
+      traceId,
     }
   }
 
@@ -7082,6 +7134,7 @@ async function fetchReleaseDetailApiSnapshot(
   return {
     snapshot,
     errorCode: null,
+    traceId,
   }
 }
 
@@ -7108,12 +7161,14 @@ function useReleaseDetailResource({
     snapshot: ReleaseDetailApiSnapshot | null
     loading: boolean
     errorCode: string | null
+    traceId: string | null
   }>(() => {
     return {
       cacheKey,
       snapshot: cachedSnapshot,
       loading: false,
       errorCode: null,
+      traceId: null,
     }
   })
 
@@ -7139,6 +7194,7 @@ function useReleaseDetailResource({
           snapshot: cachedSnapshot,
           loading: false,
           errorCode: null,
+          traceId: null,
         })
       })
       return
@@ -7163,11 +7219,12 @@ function useReleaseDetailResource({
         snapshot: null,
         loading: true,
         errorCode: null,
+        traceId: null,
       })
     })
 
     void fetchReleaseDetailApiSnapshot(effectRequestAlbum, group, effectFallbackSnapshot, controller.signal)
-      .then(({ snapshot, errorCode }) => {
+      .then(({ snapshot, errorCode, traceId }) => {
         if (cancelled) {
           return
         }
@@ -7178,6 +7235,7 @@ function useReleaseDetailResource({
             snapshot,
             loading: false,
             errorCode: null,
+            traceId,
           })
           return
         }
@@ -7187,6 +7245,7 @@ function useReleaseDetailResource({
           snapshot: null,
           loading: false,
           errorCode,
+          traceId,
         })
       })
       .catch((error: unknown) => {
@@ -7194,8 +7253,8 @@ function useReleaseDetailResource({
           return
         }
 
-        const classifiedError = classifyBackendFetchError(error)
-        if (classifiedError === null) {
+        const failureState = buildFetchFailureState(error)
+        if (failureState.errorCode === null) {
           return
         }
 
@@ -7203,7 +7262,8 @@ function useReleaseDetailResource({
           cacheKey,
           snapshot: null,
           loading: false,
-          errorCode: classifiedError,
+          errorCode: failureState.errorCode,
+          traceId: failureState.traceId,
         })
       })
 
@@ -7230,6 +7290,7 @@ function useReleaseDetailResource({
     source,
     loading,
     errorCode,
+    traceId: sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.traceId : null,
   }
 }
 
@@ -7361,13 +7422,14 @@ function buildSearchSurfaceApiSnapshot(data: SearchApiResponse['data']): SearchS
 async function fetchSearchSurfaceApiSnapshot(
   search: string,
   signal: AbortSignal,
-): Promise<{ snapshot: SearchSurfaceSnapshot | null; errorCode: string | null }> {
+): Promise<{ snapshot: SearchSurfaceSnapshot | null; errorCode: string | null; traceId: string | null }> {
   const cacheKey = search.trim()
   const cachedSnapshot = searchSurfaceApiSnapshotCache.get(cacheKey)
   if (cachedSnapshot) {
     return {
       snapshot: cachedSnapshot,
       errorCode: null,
+      traceId: null,
     }
   }
 
@@ -7379,11 +7441,13 @@ async function fetchSearchSurfaceApiSnapshot(
     `/v1/search?${params.toString()}`,
     signal,
     SEARCH_SURFACE_TIMEOUT_MS,
+    'web-search',
   )
   if (!result.ok || !result.body?.data) {
     return {
       snapshot: null,
       errorCode: result.body?.error?.code ?? `search_${result.status}`,
+      traceId: result.traceId,
     }
   }
 
@@ -7392,6 +7456,7 @@ async function fetchSearchSurfaceApiSnapshot(
   return {
     snapshot,
     errorCode: null,
+    traceId: result.traceId,
   }
 }
 
@@ -7411,12 +7476,14 @@ function useSearchSurfaceResource({
     snapshot: SearchSurfaceSnapshot | null
     loading: boolean
     errorCode: string | null
+    traceId: string | null
   }>(() => {
     return {
       cacheKey,
       snapshot: cachedSnapshot,
       loading: false,
       errorCode: null,
+      traceId: null,
     }
   })
 
@@ -7432,6 +7499,7 @@ function useSearchSurfaceResource({
           snapshot: cachedSnapshot,
           loading: false,
           errorCode: null,
+          traceId: null,
         })
       })
       return
@@ -7450,11 +7518,12 @@ function useSearchSurfaceResource({
         snapshot: null,
         loading: true,
         errorCode: null,
+        traceId: null,
       })
     })
 
     void fetchSearchSurfaceApiSnapshot(search, controller.signal)
-      .then(({ snapshot, errorCode }) => {
+      .then(({ snapshot, errorCode, traceId }) => {
         if (cancelled) {
           return
         }
@@ -7464,6 +7533,7 @@ function useSearchSurfaceResource({
           snapshot,
           loading: false,
           errorCode,
+          traceId,
         })
       })
       .catch((error: unknown) => {
@@ -7471,8 +7541,8 @@ function useSearchSurfaceResource({
           return
         }
 
-        const classifiedError = classifyBackendFetchError(error)
-        if (classifiedError === null) {
+        const failureState = buildFetchFailureState(error)
+        if (failureState.errorCode === null) {
           return
         }
 
@@ -7480,7 +7550,8 @@ function useSearchSurfaceResource({
           cacheKey,
           snapshot: null,
           loading: false,
-          errorCode: classifiedError,
+          errorCode: failureState.errorCode,
+          traceId: failureState.traceId,
         })
       })
 
@@ -7513,6 +7584,7 @@ function useSearchSurfaceResource({
     source,
     loading,
     errorCode,
+    traceId: sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.traceId : null,
   }
 }
 
@@ -7713,12 +7785,13 @@ function buildCalendarMonthApiSnapshot(data: CalendarMonthApiResponse['data']): 
 async function fetchCalendarMonthApiSnapshot(
   monthKey: string,
   signal: AbortSignal,
-): Promise<{ snapshot: CalendarMonthApiSnapshot | null; errorCode: string | null }> {
+): Promise<{ snapshot: CalendarMonthApiSnapshot | null; errorCode: string | null; traceId: string | null }> {
   const cachedSnapshot = calendarMonthApiSnapshotCache.get(monthKey)
   if (cachedSnapshot) {
     return {
       snapshot: cachedSnapshot,
       errorCode: null,
+      traceId: null,
     }
   }
 
@@ -7726,11 +7799,13 @@ async function fetchCalendarMonthApiSnapshot(
     `/v1/calendar/month?month=${encodeURIComponent(monthKey)}`,
     signal,
     CALENDAR_MONTH_FETCH_TIMEOUT_MS,
+    `web-calendar-${monthKey}`,
   )
   if (!result.ok || !result.body?.data) {
     return {
       snapshot: null,
       errorCode: result.body?.error?.code ?? `calendar_month_${result.status}`,
+      traceId: result.traceId,
     }
   }
 
@@ -7739,6 +7814,7 @@ async function fetchCalendarMonthApiSnapshot(
   return {
     snapshot,
     errorCode: null,
+    traceId: result.traceId,
   }
 }
 
@@ -7755,11 +7831,13 @@ function useCalendarMonthResource({
     snapshot: CalendarMonthApiSnapshot | null
     loading: boolean
     errorCode: string | null
+    traceId: string | null
   }>(() => ({
     monthKey,
     snapshot: cachedSnapshot,
     loading: false,
     errorCode: null,
+    traceId: null,
   }))
 
   useEffect(() => {
@@ -7774,6 +7852,7 @@ function useCalendarMonthResource({
           snapshot: cachedSnapshot,
           loading: false,
           errorCode: null,
+          traceId: null,
         })
       })
       return
@@ -7792,11 +7871,12 @@ function useCalendarMonthResource({
         snapshot: null,
         loading: true,
         errorCode: null,
+        traceId: null,
       })
     })
 
     void fetchCalendarMonthApiSnapshot(monthKey, controller.signal)
-      .then(({ snapshot, errorCode }) => {
+      .then(({ snapshot, errorCode, traceId }) => {
         if (cancelled) {
           return
         }
@@ -7806,6 +7886,7 @@ function useCalendarMonthResource({
           snapshot,
           loading: false,
           errorCode,
+          traceId,
         })
       })
       .catch((error: unknown) => {
@@ -7813,8 +7894,8 @@ function useCalendarMonthResource({
           return
         }
 
-        const classifiedError = classifyBackendFetchError(error)
-        if (classifiedError === null) {
+        const failureState = buildFetchFailureState(error)
+        if (failureState.errorCode === null) {
           return
         }
 
@@ -7822,7 +7903,8 @@ function useCalendarMonthResource({
           monthKey,
           snapshot: null,
           loading: false,
-          errorCode: classifiedError,
+          errorCode: failureState.errorCode,
+          traceId: failureState.traceId,
         })
       })
 
@@ -7855,6 +7937,7 @@ function useCalendarMonthResource({
     source,
     loading,
     errorCode,
+    traceId: sourceMode === 'api' && remoteState.monthKey === monthKey ? remoteState.traceId : null,
   }
 }
 
@@ -8056,21 +8139,23 @@ function buildRadarApiSnapshot(data: RadarApiResponse['data']): RadarApiSnapshot
 
 async function fetchRadarApiSnapshot(
   signal: AbortSignal,
-): Promise<{ snapshot: RadarApiSnapshot | null; errorCode: string | null }> {
+): Promise<{ snapshot: RadarApiSnapshot | null; errorCode: string | null; traceId: string | null }> {
   const cacheKey = 'default'
   const cachedSnapshot = radarApiSnapshotCache.get(cacheKey)
   if (cachedSnapshot) {
     return {
       snapshot: cachedSnapshot,
       errorCode: null,
+      traceId: null,
     }
   }
 
-  const result = await fetchApiJson<RadarApiResponse>('/v1/radar', signal, RADAR_FETCH_TIMEOUT_MS)
+  const result = await fetchApiJson<RadarApiResponse>('/v1/radar', signal, RADAR_FETCH_TIMEOUT_MS, 'web-radar')
   if (!result.ok || !result.body?.data) {
     return {
       snapshot: null,
       errorCode: result.body?.error?.code ?? `radar_${result.status}`,
+      traceId: result.traceId,
     }
   }
 
@@ -8079,6 +8164,7 @@ async function fetchRadarApiSnapshot(
   return {
     snapshot,
     errorCode: null,
+    traceId: result.traceId,
   }
 }
 
@@ -8093,10 +8179,12 @@ function useRadarSurfaceResource({
     snapshot: RadarApiSnapshot | null
     loading: boolean
     errorCode: string | null
+    traceId: string | null
   }>(() => ({
     snapshot: cachedSnapshot,
     loading: false,
     errorCode: null,
+    traceId: null,
   }))
 
   useEffect(() => {
@@ -8110,6 +8198,7 @@ function useRadarSurfaceResource({
           snapshot: cachedSnapshot,
           loading: false,
           errorCode: null,
+          traceId: null,
         })
       })
       return
@@ -8127,11 +8216,12 @@ function useRadarSurfaceResource({
         snapshot: null,
         loading: true,
         errorCode: null,
+        traceId: null,
       })
     })
 
     void fetchRadarApiSnapshot(controller.signal)
-      .then(({ snapshot, errorCode }) => {
+      .then(({ snapshot, errorCode, traceId }) => {
         if (cancelled) {
           return
         }
@@ -8140,6 +8230,7 @@ function useRadarSurfaceResource({
           snapshot,
           loading: false,
           errorCode,
+          traceId,
         })
       })
       .catch((error: unknown) => {
@@ -8147,15 +8238,16 @@ function useRadarSurfaceResource({
           return
         }
 
-        const classifiedError = classifyBackendFetchError(error)
-        if (classifiedError === null) {
+        const failureState = buildFetchFailureState(error)
+        if (failureState.errorCode === null) {
           return
         }
 
         setRemoteState({
           snapshot: null,
           loading: false,
-          errorCode: classifiedError,
+          errorCode: failureState.errorCode,
+          traceId: failureState.traceId,
         })
       })
 
@@ -8179,6 +8271,7 @@ function useRadarSurfaceResource({
     source,
     loading: sourceMode === 'api' && remoteState.snapshot === null && remoteState.loading,
     errorCode: sourceMode === 'api' ? remoteState.errorCode : null,
+    traceId: sourceMode === 'api' ? remoteState.traceId : null,
   }
 }
 
@@ -8402,13 +8495,14 @@ function buildEntityDetailTeamProfile(
 async function fetchEntityDetailApiSnapshot(
   fallbackTeam: TeamProfile,
   signal: AbortSignal,
-): Promise<{ team: TeamProfile | null; errorCode: string | null }> {
+): Promise<{ team: TeamProfile | null; errorCode: string | null; traceId: string | null }> {
   const cacheKey = fallbackTeam.group
   const cachedSnapshot = entityDetailApiSnapshotCache.get(cacheKey)
   if (cachedSnapshot) {
     return {
       team: cachedSnapshot,
       errorCode: null,
+      traceId: null,
     }
   }
 
@@ -8416,11 +8510,13 @@ async function fetchEntityDetailApiSnapshot(
     `/v1/entities/${encodeURIComponent(fallbackTeam.slug)}`,
     signal,
     ENTITY_DETAIL_FETCH_TIMEOUT_MS,
+    `web-entity-${fallbackTeam.slug}`,
   )
   if (!result.ok || !result.body?.data) {
     return {
       team: null,
       errorCode: result.body?.error?.code ?? `entity_${result.status}`,
+      traceId: result.traceId,
     }
   }
 
@@ -8429,6 +8525,7 @@ async function fetchEntityDetailApiSnapshot(
   return {
     team,
     errorCode: null,
+    traceId: result.traceId,
   }
 }
 
@@ -8448,11 +8545,13 @@ function useEntityDetailResource({
     team: TeamProfile | null
     loading: boolean
     errorCode: string | null
+    traceId: string | null
   }>(() => ({
     cacheKey,
     team: cachedSnapshot,
     loading: false,
     errorCode: null,
+    traceId: null,
   }))
 
   useEffect(() => {
@@ -8467,6 +8566,7 @@ function useEntityDetailResource({
           team: cachedSnapshot,
           loading: false,
           errorCode: null,
+          traceId: null,
         })
       })
       return
@@ -8485,11 +8585,12 @@ function useEntityDetailResource({
         team: null,
         loading: true,
         errorCode: null,
+        traceId: null,
       })
     })
 
     void fetchEntityDetailApiSnapshot(fallbackTeam, controller.signal)
-      .then(({ team, errorCode }) => {
+      .then(({ team, errorCode, traceId }) => {
         if (cancelled) {
           return
         }
@@ -8499,6 +8600,7 @@ function useEntityDetailResource({
           team,
           loading: false,
           errorCode,
+          traceId,
         })
       })
       .catch((error: unknown) => {
@@ -8506,8 +8608,8 @@ function useEntityDetailResource({
           return
         }
 
-        const classifiedError = classifyBackendFetchError(error)
-        if (classifiedError === null) {
+        const failureState = buildFetchFailureState(error)
+        if (failureState.errorCode === null) {
           return
         }
 
@@ -8515,7 +8617,8 @@ function useEntityDetailResource({
           cacheKey,
           team: null,
           loading: false,
-          errorCode: classifiedError,
+          errorCode: failureState.errorCode,
+          traceId: failureState.traceId,
         })
       })
 
@@ -8552,6 +8655,7 @@ function useEntityDetailResource({
     source,
     loading,
     errorCode,
+    traceId: sourceMode === 'api' && remoteState.cacheKey === cacheKey ? remoteState.traceId : null,
   }
 }
 

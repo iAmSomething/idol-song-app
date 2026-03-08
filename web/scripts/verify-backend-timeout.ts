@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict'
 
 import {
+  BackendFetchNetworkError,
   BackendFetchTimeoutError,
   classifyBackendFetchError,
+  extractBackendFetchRequestId,
   fetchJsonWithTimeout,
 } from '../src/lib/backendFetch'
 
@@ -58,6 +60,8 @@ async function run() {
     (error: unknown) => {
       assert.ok(error instanceof BackendFetchTimeoutError)
       assert.equal(classifyBackendFetchError(error), 'timeout')
+      assert.equal(typeof error.requestId, 'string')
+      assert.equal(extractBackendFetchRequestId(error), error.requestId)
       return true
     },
   )
@@ -79,6 +83,9 @@ async function run() {
   })
 
   assert.equal(classifyBackendFetchError(new Error('socket hang up')), 'network_error')
+  const networkError = new BackendFetchNetworkError('web-search-123', new Error('socket hang up'))
+  assert.equal(classifyBackendFetchError(networkError), 'network_error')
+  assert.equal(extractBackendFetchRequestId(networkError), 'web-search-123')
 
   const success = await fetchJsonWithTimeout<{ ok: true }>('https://success.example/test', {
     signal: new AbortController().signal,
@@ -89,6 +96,8 @@ async function run() {
   assert.equal(success.ok, true)
   assert.equal(success.status, 200)
   assert.deepEqual(success.body, { ok: true })
+  assert.equal(typeof success.requestId, 'string')
+  assert.equal(success.responseRequestId, null)
 
   console.log('backend timeout verification passed')
 }
