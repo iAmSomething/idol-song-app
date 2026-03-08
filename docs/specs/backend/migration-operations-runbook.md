@@ -139,14 +139,14 @@ runbook을 따라 한 번 실제로 걷는 최소 경로는 아래다.
 - [ ] `backend_shadow_read_report.json`이 target surface 기준 clean 또는 승인된 drift만 가진다.
 - [ ] `runtime_gate_report.json`에서 해당 stage gate가 `pass` 또는 승인된 `needs_review`다.
 - [ ] Pages / local build에 `VITE_API_BASE_URL`이 올바르게 들어간다.
-- [ ] cut-over 기본값은 `VITE_PRIMARY_SURFACE_SOURCE=api` 또는 surface별 `VITE_*_SOURCE=api`로 명시된다.
+- [ ] cut-over 기본값은 `VITE_PRIMARY_SURFACE_SOURCE=api` 또는 필요한 경우 `VITE_RELEASE_DETAIL_SOURCE=api`로 명시된다.
 - [ ] operator가 query override 또는 env override로 `json` rollback path를 즉시 열 수 있다.
 
 실행 메모:
 
 - global cutover baseline: `VITE_PRIMARY_SURFACE_SOURCE=api`
-- surface 강제: `VITE_SEARCH_SOURCE=api`, `VITE_ENTITY_DETAIL_SOURCE=api`, `VITE_RELEASE_DETAIL_SOURCE=api`, `VITE_CALENDAR_MONTH_SOURCE=api`, `VITE_RADAR_SOURCE=api`
-- query rollback: `?searchSource=json`, `?entityDetailSource=json`, `?releaseDetailSource=json`, `?calendarMonthSource=json`, `?radarSource=json`
+- remaining surface 강제: `VITE_RELEASE_DETAIL_SOURCE=api`
+- remaining query rollback: `?releaseDetailSource=json`
 
 ## 8. Fallback / Rollback Checklist
 
