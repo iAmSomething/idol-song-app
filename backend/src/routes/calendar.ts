@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 
+import { buildReadDataEnvelope, routeError } from '../lib/api.js';
 import type { AppConfig } from '../config.js';
 import type { DbQueryable } from '../lib/db.js';
 
@@ -251,36 +252,15 @@ function normalizeCalendarMonthPayload(payload: unknown): CalendarMonthData | nu
 }
 
 export function registerCalendarRoutes(app: FastifyInstance, context: CalendarRouteContext): void {
-  app.get('/v1/calendar/month', async (request, reply) => {
+  app.get('/v1/calendar/month', async (request) => {
     const { month } = request.query as CalendarMonthQuery;
 
     if (!month) {
-      return reply.code(400).send({
-        meta: {
-          route: '/v1/calendar/month',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-        },
-        error: {
-          code: 'invalid_request',
-          message: 'month query parameter is required (YYYY-MM).',
-        },
-      });
+      throw routeError(400, 'invalid_request', 'month query parameter is required (YYYY-MM).');
     }
 
     if (!MONTH_KEY_PATTERN.test(month)) {
-      return reply.code(400).send({
-        meta: {
-          route: '/v1/calendar/month',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          month,
-        },
-        error: {
-          code: 'invalid_request',
-          message: 'month query parameter must use YYYY-MM format.',
-        },
-      });
+      throw routeError(400, 'invalid_request', 'month query parameter must use YYYY-MM format.', { month });
     }
 
     const result = await context.db.query<CalendarMonthProjectionRow>(
@@ -295,43 +275,16 @@ export function registerCalendarRoutes(app: FastifyInstance, context: CalendarRo
 
     const row = result.rows[0];
     if (!row) {
-      return reply.code(404).send({
-        meta: {
-          route: '/v1/calendar/month',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          month,
-        },
-        error: {
-          code: 'calendar_month_not_found',
-          message: 'No calendar projection matched the supplied month.',
-        },
-      });
+      throw routeError(404, 'not_found', 'No calendar projection matched the supplied month.', { month });
     }
 
     const data = normalizeCalendarMonthPayload(row.payload);
     if (!data) {
-      return reply.code(500).send({
-        meta: {
-          route: '/v1/calendar/month',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          month,
-        },
-        error: {
-          code: 'invalid_projection_payload',
-          message: 'calendar_month_projection returned an unexpected payload shape.',
-        },
+      throw routeError(500, 'stale_projection', 'calendar_month_projection returned an unexpected payload shape.', {
+        month,
       });
     }
 
-    return {
-      meta: {
-        generated_at: toIsoString(row.generated_at),
-        timezone: context.config.appTimezone,
-        month: row.month_key,
-      },
-      data,
-    };
+    return buildReadDataEnvelope(request, context.config.appTimezone, data, { month: row.month_key }, toIsoString(row.generated_at));
   });
 }

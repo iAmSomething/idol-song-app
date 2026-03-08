@@ -1,8 +1,8 @@
 import type { FastifyInstance } from 'fastify';
 
+import { buildReadDataEnvelope, routeError } from '../lib/api.js';
 import type { AppConfig } from '../config.js';
 import type { DbQueryable } from '../lib/db.js';
-import { buildNotImplementedEnvelope } from '../lib/not-implemented.js';
 
 type EntityRouteContext = {
   config: AppConfig;
@@ -274,7 +274,7 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string): EntityDet
 }
 
 export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteContext): void {
-  app.get('/v1/entities/:slug/channels', async (request, reply) => {
+  app.get('/v1/entities/:slug/channels', async (request) => {
     const { slug } = request.params as EntitySlugParams;
 
     const result = await context.db.query<EntityChannelRow>(
@@ -309,27 +309,10 @@ export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteC
 
     const entity = result.rows[0];
     if (!entity) {
-      return reply.code(404).send({
-        meta: {
-          route: '/v1/entities/:slug/channels',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          slug,
-        },
-        error: {
-          code: 'entity_not_found',
-          message: 'No entity matched the supplied slug.',
-        },
-      });
+      throw routeError(404, 'not_found', 'No entity matched the supplied slug.', { slug });
     }
 
-    return {
-      meta: {
-        generated_at: new Date().toISOString(),
-        timezone: context.config.appTimezone,
-        slug,
-      },
-      data: {
+    return buildReadDataEnvelope(request, context.config.appTimezone, {
         entity: {
           entity_id: entity.entity_id,
           slug: entity.slug,
@@ -356,10 +339,11 @@ export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteC
             .filter((url): url is string => url !== null),
         },
       },
-    };
+      { slug },
+    );
   });
 
-  app.get('/v1/entities/:slug', async (request, reply) => {
+  app.get('/v1/entities/:slug', async (request) => {
     const { slug } = request.params as EntitySlugParams;
 
     const result = await context.db.query<EntityDetailProjectionRow>(
@@ -374,43 +358,22 @@ export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteC
 
     const row = result.rows[0];
     if (!row) {
-      return reply.code(404).send({
-        meta: {
-          route: '/v1/entities/:slug',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          entity_slug: slug,
-        },
-        error: {
-          code: 'entity_not_found',
-          message: 'No entity matched the supplied slug.',
-        },
-      });
+      throw routeError(404, 'not_found', 'No entity matched the supplied slug.', { entity_slug: slug });
     }
 
     const data = normalizeEntityDetailPayload(row.payload, slug);
     if (!data) {
-      return reply.code(500).send({
-        meta: {
-          route: '/v1/entities/:slug',
-          generated_at: new Date().toISOString(),
-          timezone: context.config.appTimezone,
-          entity_slug: slug,
-        },
-        error: {
-          code: 'invalid_projection_payload',
-          message: 'entity_detail_projection returned an unexpected payload shape.',
-        },
+      throw routeError(500, 'stale_projection', 'entity_detail_projection returned an unexpected payload shape.', {
+        entity_slug: slug,
       });
     }
 
-    return {
-      meta: {
-        generated_at: toIsoString(row.generated_at),
-        timezone: context.config.appTimezone,
-        entity_slug: slug,
-      },
+    return buildReadDataEnvelope(
+      request,
+      context.config.appTimezone,
       data,
-    };
+      { entity_slug: slug },
+      toIsoString(row.generated_at),
+    );
   });
 }

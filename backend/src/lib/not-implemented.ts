@@ -1,13 +1,12 @@
-export function buildNotImplementedEnvelope(route: string, timezone: string) {
-  return {
-    meta: {
-      route,
-      generated_at: new Date().toISOString(),
-      timezone,
-    },
-    error: {
-      code: 'not_implemented',
-      message: 'Route shell is registered but not implemented yet.',
-    },
-  };
+import type { FastifyRequest } from 'fastify';
+
+import { buildReadErrorEnvelope } from './api.js';
+
+export function buildNotImplementedEnvelope(request: FastifyRequest, timezone: string) {
+  return buildReadErrorEnvelope(
+    request,
+    timezone,
+    'not_implemented',
+    'Route shell is registered but not implemented yet.',
+  );
 }

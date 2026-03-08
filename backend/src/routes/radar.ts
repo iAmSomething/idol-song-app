@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 
+import { buildReadDataEnvelope } from '../lib/api.js';
 import type { AppConfig } from '../config.js';
 import type { DbQueryable } from '../lib/db.js';
 
@@ -68,7 +69,7 @@ function toIsoString(value: Date | string | undefined): string {
 }
 
 export function registerRadarRoutes(app: FastifyInstance, context: RadarRouteContext): void {
-  app.get('/v1/radar', async () => {
+  app.get('/v1/radar', async (request) => {
     const result = await context.db.query<RadarProjectionRow>(
       `
         select payload, generated_at
@@ -81,12 +82,12 @@ export function registerRadarRoutes(app: FastifyInstance, context: RadarRouteCon
 
     const row = result.rows[0];
 
-    return {
-      meta: {
-        generated_at: toIsoString(row?.generated_at),
-        timezone: context.config.appTimezone,
-      },
-      data: normalizeRadarPayload(row?.payload),
-    };
+    return buildReadDataEnvelope(
+      request,
+      context.config.appTimezone,
+      normalizeRadarPayload(row?.payload),
+      {},
+      toIsoString(row?.generated_at),
+    );
   });
 }
