@@ -30,6 +30,12 @@
   - gate registry / helper / off fallback definition
 - `src/services/datasetSource.ts`
   - bundled static data vs preview remote data selection layer
+- `src/services/storage.ts`
+  - `AsyncStorage` 기반 key-value storage adapter / namespace / shared key convention
+- `src/services/datasetCache.ts`
+  - static dataset artifact reuse용 cache entry helper
+- `src/services/recentQueries.ts`
+  - search recent-query persistence helper
 - `src/tokens/`
   - semantic token constants + theme provider + `useAppTheme()` access convention
 - `src/selectors/`
@@ -204,6 +210,26 @@ profile 차이는 아래 범위로만 제한한다.
   - 위 3조건이 모두 맞을 때만 선택된다.
 - field contract
   - bundled source와 preview remote source는 같은 artifact id / field contract를 유지해야 한다.
+
+## storage / cache baseline
+
+- lightweight storage choice는 `@react-native-async-storage/async-storage`로 고정한다.
+- 공통 namespace는 `idol-song-app/mobile/v1`이다.
+- shared foundation entrypoint
+  - `src/services/storage.ts`
+    - storage adapter binding
+    - namespaced key builder
+    - JSON read/write/remove helper
+  - `src/services/datasetCache.ts`
+    - dataset artifact cache entry
+    - source kind / dataset version 분리 key
+  - `src/services/recentQueries.ts`
+    - recent query read/write/clear
+- 규칙
+  - 화면은 `AsyncStorage`를 직접 호출하지 않는다.
+  - static dataset reuse cache는 dataset contract id + source kind + dataset version + artifact id 기준으로 분리한다.
+  - recent query persistence는 같은 namespace/key 규칙을 재사용한다.
+  - later search/calendar/entity screen은 ad hoc local-storage key를 새로 만들지 않는다.
 
 ## feature-gate baseline
 
