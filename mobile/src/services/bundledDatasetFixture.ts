@@ -50,6 +50,30 @@ const bundledDatasetFixture: MobileRawDataset = {
       official_instagram_url: 'https://www.instagram.com/le_sserafim/',
       artist_source_url: 'https://musicbrainz.org/artist/example-le-sserafim',
     },
+    {
+      slug: 'weeekly',
+      group: 'Weeekly',
+      display_name: 'Weeekly',
+      aliases: ['위클리'],
+      search_aliases: ['위클리'],
+      agency: 'IST Entertainment',
+      official_youtube_url: 'https://www.youtube.com/@Weeekly',
+      official_x_url: 'https://x.com/_Weeekly',
+      official_instagram_url: 'https://www.instagram.com/_weeekly/',
+      artist_source_url: 'https://musicbrainz.org/artist/example-weeekly',
+    },
+    {
+      slug: 'atheart',
+      group: 'AtHeart',
+      display_name: 'AtHeart',
+      aliases: ['앳하트'],
+      search_aliases: ['앳하트'],
+      agency: 'Titan Content',
+      official_youtube_url: 'https://www.youtube.com/@AtHeartOfficial',
+      official_x_url: 'https://x.com/AtHeartOfficial',
+      official_instagram_url: 'https://www.instagram.com/atheart_official/',
+      artist_source_url: 'https://musicbrainz.org/artist/example-atheart',
+    },
   ],
   releases: [
     {
@@ -75,6 +99,28 @@ const bundledDatasetFixture: MobileRawDataset = {
         title: 'Signal Fire',
         date: '2026-03-21',
         source: 'https://musicbrainz.org/release-group/example-signal-fire',
+        release_kind: 'single',
+        context_tags: ['title_track'],
+      },
+      latest_album: null,
+    },
+    {
+      group: 'Weeekly',
+      latest_song: {
+        title: 'Lights On',
+        date: '2024-01-15',
+        source: 'https://musicbrainz.org/release-group/example-lights-on',
+        release_kind: 'single',
+        context_tags: ['title_track'],
+      },
+      latest_album: null,
+    },
+    {
+      group: 'AtHeart',
+      latest_song: {
+        title: 'Glow Up',
+        date: '2025-11-18',
+        source: 'https://musicbrainz.org/release-group/example-glow-up',
         release_kind: 'single',
         context_tags: ['title_track'],
       },
@@ -117,6 +163,17 @@ const bundledDatasetFixture: MobileRawDataset = {
       source_url: 'https://example.com/lesserafim-rumor',
       confidence: 0.44,
     },
+    {
+      group: 'AtHeart',
+      scheduled_month: '2026-04',
+      date_precision: 'month_only',
+      date_status: 'scheduled',
+      headline: 'AtHeart plans an April follow-up release',
+      release_label: 'Spring chapter',
+      source_type: 'official_social',
+      source_url: 'https://example.com/atheart-april',
+      confidence: 0.68,
+    },
   ],
   releaseArtwork: [
     {
@@ -132,6 +189,20 @@ const bundledDatasetFixture: MobileRawDataset = {
       release_date: '2026-03-21',
       stream: 'song',
       cover_image_url: 'https://example.com/signal-fire.jpg',
+    },
+    {
+      group: 'Weeekly',
+      release_title: 'Lights On',
+      release_date: '2024-01-15',
+      stream: 'song',
+      cover_image_url: 'https://example.com/lights-on.jpg',
+    },
+    {
+      group: 'AtHeart',
+      release_title: 'Glow Up',
+      release_date: '2025-11-18',
+      stream: 'song',
+      cover_image_url: 'https://example.com/glow-up.jpg',
     },
   ],
   releaseDetails: [
@@ -176,6 +247,42 @@ const bundledDatasetFixture: MobileRawDataset = {
         },
       ],
     },
+    {
+      group: 'Weeekly',
+      release_title: 'Lights On',
+      release_date: '2024-01-15',
+      stream: 'song',
+      release_kind: 'single',
+      spotify_url: 'https://open.spotify.com/track/example-lights-on',
+      youtube_music_url: 'https://music.youtube.com/watch?v=example-lights-on',
+      youtube_video_status: 'manual_override',
+      notes: 'Representative dormant-group detail.',
+      tracks: [
+        {
+          order: 1,
+          title: 'Lights On',
+          is_title_track: true,
+        },
+      ],
+    },
+    {
+      group: 'AtHeart',
+      release_title: 'Glow Up',
+      release_date: '2025-11-18',
+      stream: 'song',
+      release_kind: 'single',
+      spotify_url: 'https://open.spotify.com/track/example-glow-up',
+      youtube_music_url: 'https://music.youtube.com/watch?v=example-glow-up',
+      youtube_video_status: 'manual_override',
+      notes: 'Representative rookie detail.',
+      tracks: [
+        {
+          order: 1,
+          title: 'Glow Up',
+          is_title_track: true,
+        },
+      ],
+    },
   ],
   releaseHistory: [
     {
@@ -191,7 +298,7 @@ const bundledDatasetFixture: MobileRawDataset = {
         },
         {
           title: 'NEMONEMO',
-          date: '2025-09-01',
+          date: '2024-09-01',
           source: 'https://musicbrainz.org/release-group/example-nemonemo',
           release_kind: 'single',
           stream: 'song',
@@ -206,6 +313,32 @@ const bundledDatasetFixture: MobileRawDataset = {
           title: 'Signal Fire',
           date: '2026-03-21',
           source: 'https://musicbrainz.org/release-group/example-signal-fire',
+          release_kind: 'single',
+          stream: 'song',
+          context_tags: ['title_track'],
+        },
+      ],
+    },
+    {
+      group: 'Weeekly',
+      releases: [
+        {
+          title: 'Lights On',
+          date: '2024-01-15',
+          source: 'https://musicbrainz.org/release-group/example-lights-on',
+          release_kind: 'single',
+          stream: 'song',
+          context_tags: ['title_track'],
+        },
+      ],
+    },
+    {
+      group: 'AtHeart',
+      releases: [
+        {
+          title: 'Glow Up',
+          date: '2025-11-18',
+          source: 'https://musicbrainz.org/release-group/example-glow-up',
           release_kind: 'single',
           stream: 'song',
           context_tags: ['title_track'],
@@ -230,6 +363,26 @@ const bundledDatasetFixture: MobileRawDataset = {
       channels: [
         {
           channel_url: 'https://www.youtube.com/@BTS',
+          display_in_team_links: true,
+        },
+      ],
+    },
+    {
+      group: 'Weeekly',
+      primary_team_channel_url: 'https://www.youtube.com/@Weeekly',
+      channels: [
+        {
+          channel_url: 'https://www.youtube.com/@Weeekly',
+          display_in_team_links: true,
+        },
+      ],
+    },
+    {
+      group: 'AtHeart',
+      primary_team_channel_url: 'https://www.youtube.com/@AtHeartOfficial',
+      channels: [
+        {
+          channel_url: 'https://www.youtube.com/@AtHeartOfficial',
           display_in_team_links: true,
         },
       ],

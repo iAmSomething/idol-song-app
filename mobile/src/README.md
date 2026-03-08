@@ -12,7 +12,7 @@
   - `context.ts`: dataset -> indexed selector context
   - `adapters.ts`: raw JSON -> display model 변환 규칙
   - `index.ts`: shared selectors entrypoint
-    - team / release detail selector 외에 calendar month snapshot / search result selector 포함
+    - team / release detail selector 외에 calendar month snapshot / radar snapshot / search result selector 포함
 - `services/`: data source / external handoff / helper
   - `datasetSource.ts`: bundled-static vs preview-remote source selector
   - `activeDataset.ts`: runtime selection을 실제 dataset payload로 로드하는 entrypoint

@@ -1,6 +1,10 @@
 import type {
   CalendarMonthSnapshotModel,
   MobileRawDataset,
+  RadarLongGapItemModel,
+  RadarRookieItemModel,
+  RadarSnapshotModel,
+  RadarUpcomingCardModel,
   ReleaseDetailModel,
   ReleaseSummaryModel,
   SearchReleaseResultModel,
@@ -497,4 +501,222 @@ export function selectReleaseDetailById(
   const displayGroup = team?.display_name?.trim() || detail.group;
 
   return adaptReleaseDetail(detail.group, displayGroup, detail, context.artworkByReleaseId.get(releaseId));
+}
+
+function parseIsoDate(value: string | undefined): number | null {
+  if (!value) {
+    return null;
+  }
+
+  const parsed = Date.parse(value);
+  return Number.isNaN(parsed) ? null : parsed;
+}
+
+function resolveDayLabel(todayIsoDate: string, scheduledDate?: string): string {
+  if (!scheduledDate) {
+    return '날짜 미정';
+  }
+
+  const todayTime = parseIsoDate(todayIsoDate);
+  const scheduledTime = parseIsoDate(scheduledDate);
+
+  if (todayTime == null || scheduledTime == null) {
+    return scheduledDate;
+  }
+
+  const dayDelta = Math.round((scheduledTime - todayTime) / 86_400_000);
+
+  if (dayDelta === 0) {
+    return '오늘';
+  }
+
+  if (dayDelta === 1) {
+    return '내일';
+  }
+
+  if (dayDelta > 1) {
+    return `D-${dayDelta}`;
+  }
+
+  return `D+${Math.abs(dayDelta)}`;
+}
+
+function buildRadarUpcomingCard(
+  context: MobileSelectorContext,
+  upcoming: UpcomingEventModel,
+  todayIsoDate: string,
+): RadarUpcomingCardModel | null {
+  const team = selectTeamSummaryBySlug(context, context.profilesByGroup.get(upcoming.group)?.slug ?? '');
+  if (!team) {
+    return null;
+  }
+
+  return {
+    id: upcoming.id,
+    team,
+    upcoming,
+    dayLabel: resolveDayLabel(todayIsoDate, upcoming.scheduledDate),
+  };
+}
+
+function isWithinWeeklyWindow(todayIsoDate: string, scheduledDate?: string): boolean {
+  const todayTime = parseIsoDate(todayIsoDate);
+  const scheduledTime = parseIsoDate(scheduledDate);
+
+  if (todayTime == null || scheduledTime == null) {
+    return false;
+  }
+
+  const dayDelta = Math.round((scheduledTime - todayTime) / 86_400_000);
+  return dayDelta >= 0 && dayDelta <= 6;
+}
+
+function resolveLatestReleaseSummaryByGroup(
+  context: MobileSelectorContext,
+  group: string,
+): ReleaseSummaryModel | null {
+  const slug = context.profilesByGroup.get(group)?.slug;
+  if (!slug) {
+    return null;
+  }
+
+  return selectLatestReleaseSummaryBySlug(context, slug);
+}
+
+function resolveEarliestReleaseYear(context: MobileSelectorContext, group: string): number | null {
+  const history = context.releaseHistoryByGroup.get(group);
+  if (!history || history.releases.length === 0) {
+    return null;
+  }
+
+  const years = history.releases
+    .map((release) => Number(release.date.slice(0, 4)))
+    .filter((value) => Number.isFinite(value));
+
+  if (years.length === 0) {
+    return null;
+  }
+
+  return Math.min(...years);
+}
+
+function buildLongGapItems(
+  context: MobileSelectorContext,
+  todayIsoDate: string,
+): RadarLongGapItemModel[] {
+  const todayTime = parseIsoDate(todayIsoDate);
+  if (todayTime == null) {
+    return [];
+  }
+
+  const thresholdDays = 365;
+  const items: RadarLongGapItemModel[] = [];
+
+  for (const profile of context.dataset.artistProfiles) {
+    const team = adaptTeamSummary(profile, context.allowlistsByGroup.get(profile.group));
+    const latestRelease = resolveLatestReleaseSummaryByGroup(context, profile.group);
+
+    if (!latestRelease) {
+      continue;
+    }
+
+    const latestReleaseTime = parseIsoDate(latestRelease.releaseDate);
+    if (latestReleaseTime == null) {
+      continue;
+    }
+
+    const gapDays = Math.floor((todayTime - latestReleaseTime) / 86_400_000);
+    if (gapDays < thresholdDays) {
+      continue;
+    }
+
+    const debutYear = resolveEarliestReleaseYear(context, profile.group);
+    if (debutYear != null && debutYear >= Number(todayIsoDate.slice(0, 4)) - 1) {
+      continue;
+    }
+
+    items.push({
+      id: team.slug,
+      team,
+      latestRelease,
+      gapDays,
+      gapLabel: `${gapDays}일 공백`,
+      hasUpcomingSignal: (context.upcomingByGroup.get(profile.group) ?? []).length > 0,
+    });
+  }
+
+  return items.sort((left, right) => right.gapDays - left.gapDays);
+}
+
+function buildRookieItems(
+  context: MobileSelectorContext,
+  todayIsoDate: string,
+): RadarRookieItemModel[] {
+  const currentYear = Number(todayIsoDate.slice(0, 4));
+  const items: RadarRookieItemModel[] = [];
+
+  for (const profile of context.dataset.artistProfiles) {
+    const debutYear = resolveEarliestReleaseYear(context, profile.group);
+    if (debutYear == null || debutYear < currentYear - 1) {
+      continue;
+    }
+
+    const team = adaptTeamSummary(profile, context.allowlistsByGroup.get(profile.group));
+    items.push({
+      id: team.slug,
+      team,
+      debutYear,
+      latestRelease: resolveLatestReleaseSummaryByGroup(context, profile.group),
+      hasUpcomingSignal: (context.upcomingByGroup.get(profile.group) ?? []).length > 0,
+    });
+  }
+
+  return items.sort((left, right) => {
+    if (left.debutYear !== right.debutYear) {
+      return right.debutYear - left.debutYear;
+    }
+
+    const latestReleaseDelta = compareIsoDateDescending(
+      left.latestRelease?.releaseDate,
+      right.latestRelease?.releaseDate,
+    );
+    if (latestReleaseDelta !== 0) {
+      return latestReleaseDelta;
+    }
+
+    return left.team.displayName.localeCompare(right.team.displayName);
+  });
+}
+
+export function selectRadarSnapshot(
+  input: MobileSelectorContext | MobileRawDataset,
+  todayIsoDate: string,
+): RadarSnapshotModel {
+  const context = resolveContext(input);
+  const upcomingEvents = context.dataset.upcomingCandidates
+    .map((upcoming) => {
+      const displayGroup = context.profilesByGroup.get(upcoming.group)?.display_name?.trim() || upcoming.group;
+      return adaptUpcomingEvent(upcoming.group, displayGroup, upcoming);
+    })
+    .filter((event) => event.datePrecision === 'exact')
+    .sort(compareUpcomingDate);
+
+  const featuredUpcoming =
+    upcomingEvents
+      .filter((event) => event.scheduledDate && event.scheduledDate >= todayIsoDate)
+      .map((event) => buildRadarUpcomingCard(context, event, todayIsoDate))
+      .find((value): value is RadarUpcomingCardModel => value !== null) ?? null;
+
+  const weeklyUpcoming = upcomingEvents
+    .filter((event) => isWithinWeeklyWindow(todayIsoDate, event.scheduledDate))
+    .map((event) => buildRadarUpcomingCard(context, event, todayIsoDate))
+    .filter((value): value is RadarUpcomingCardModel => value !== null);
+
+  return {
+    featuredUpcoming,
+    weeklyUpcoming,
+    changeFeed: [],
+    longGap: buildLongGapItems(context, todayIsoDate),
+    rookie: buildRookieItems(context, todayIsoDate),
+  };
 }

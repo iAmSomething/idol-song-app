@@ -172,3 +172,41 @@ export interface CalendarMonthGridModel {
   weeks: (CalendarDayCellModel | null)[][];
   selectedDay: CalendarSelectedDayModel | null;
 }
+
+export interface RadarUpcomingCardModel {
+  id: string;
+  team: TeamSummaryModel;
+  upcoming: UpcomingEventModel;
+  dayLabel: string;
+}
+
+export interface RadarChangeFeedItemModel {
+  id: string;
+  label: string;
+  sourceUrl?: string;
+}
+
+export interface RadarLongGapItemModel {
+  id: string;
+  team: TeamSummaryModel;
+  latestRelease: ReleaseSummaryModel | null;
+  gapDays: number;
+  gapLabel: string;
+  hasUpcomingSignal: boolean;
+}
+
+export interface RadarRookieItemModel {
+  id: string;
+  team: TeamSummaryModel;
+  debutYear: number;
+  latestRelease: ReleaseSummaryModel | null;
+  hasUpcomingSignal: boolean;
+}
+
+export interface RadarSnapshotModel {
+  featuredUpcoming: RadarUpcomingCardModel | null;
+  weeklyUpcoming: RadarUpcomingCardModel[];
+  changeFeed: RadarChangeFeedItemModel[];
+  longGap: RadarLongGapItemModel[];
+  rookie: RadarRookieItemModel[];
+}

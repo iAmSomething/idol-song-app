@@ -5,6 +5,7 @@ import {
   createSelectorContext,
   selectLatestReleaseSummaryBySlug,
   selectMonthReleaseSummaries,
+  selectRadarSnapshot,
   selectSearchResults,
   selectMonthUpcomingEvents,
   selectRecentReleaseSummariesBySlug,
@@ -39,6 +40,26 @@ const dataset: MobileRawDataset = {
       official_youtube_url: 'https://www.youtube.com/@BLACKPINK',
       representative_image_url: 'https://example.com/blackpink.jpg',
     },
+    {
+      slug: 'weeekly',
+      group: 'Weeekly',
+      display_name: 'Weeekly',
+      aliases: ['위클리'],
+      search_aliases: ['위클리'],
+      agency: 'IST Entertainment',
+      official_youtube_url: 'https://www.youtube.com/@Weeekly',
+      artist_source_url: 'https://musicbrainz.org/artist/example-weeekly',
+    },
+    {
+      slug: 'atheart',
+      group: 'AtHeart',
+      display_name: 'AtHeart',
+      aliases: ['앳하트'],
+      search_aliases: ['앳하트'],
+      agency: 'Titan Content',
+      official_youtube_url: 'https://www.youtube.com/@AtHeartOfficial',
+      artist_source_url: 'https://musicbrainz.org/artist/example-atheart',
+    },
   ],
   releases: [
     {
@@ -56,6 +77,26 @@ const dataset: MobileRawDataset = {
         source: 'https://musicbrainz.org/release-group/love-catcher',
         release_kind: 'ep',
         context_tags: [],
+      },
+    },
+    {
+      group: 'Weeekly',
+      latest_song: {
+        title: 'Lights On',
+        date: '2024-01-15',
+        source: 'https://musicbrainz.org/release-group/lights-on',
+        release_kind: 'single',
+        context_tags: ['title_track'],
+      },
+    },
+    {
+      group: 'AtHeart',
+      latest_song: {
+        title: 'Glow Up',
+        date: '2025-11-18',
+        source: 'https://musicbrainz.org/release-group/glow-up',
+        release_kind: 'single',
+        context_tags: ['title_track'],
       },
     },
   ],
@@ -82,6 +123,17 @@ const dataset: MobileRawDataset = {
       source_url: 'https://example.com/yena-social',
       confidence: 0.41,
     },
+    {
+      group: 'AtHeart',
+      scheduled_month: '2026-04',
+      date_precision: 'month_only',
+      date_status: 'scheduled',
+      headline: 'AtHeart schedules an April follow-up',
+      release_label: 'Spring chapter',
+      source_type: 'official_social',
+      source_url: 'https://example.com/atheart-social',
+      confidence: 0.62,
+    },
   ],
   releaseArtwork: [
     {
@@ -90,6 +142,20 @@ const dataset: MobileRawDataset = {
       release_date: '2026-03-11',
       stream: 'album',
       cover_image_url: 'https://example.com/love-catcher.jpg',
+    },
+    {
+      group: 'Weeekly',
+      release_title: 'Lights On',
+      release_date: '2024-01-15',
+      stream: 'song',
+      cover_image_url: 'https://example.com/lights-on.jpg',
+    },
+    {
+      group: 'AtHeart',
+      release_title: 'Glow Up',
+      release_date: '2025-11-18',
+      stream: 'song',
+      cover_image_url: 'https://example.com/glow-up.jpg',
     },
   ],
   releaseDetails: [
@@ -116,6 +182,34 @@ const dataset: MobileRawDataset = {
         },
       ],
     },
+    {
+      group: 'Weeekly',
+      release_title: 'Lights On',
+      release_date: '2024-01-15',
+      stream: 'song',
+      release_kind: 'single',
+      tracks: [
+        {
+          order: 1,
+          title: 'Lights On',
+          is_title_track: true,
+        },
+      ],
+    },
+    {
+      group: 'AtHeart',
+      release_title: 'Glow Up',
+      release_date: '2025-11-18',
+      stream: 'song',
+      release_kind: 'single',
+      tracks: [
+        {
+          order: 1,
+          title: 'Glow Up',
+          is_title_track: true,
+        },
+      ],
+    },
   ],
   releaseHistory: [
     {
@@ -131,11 +225,37 @@ const dataset: MobileRawDataset = {
         },
         {
           title: 'NEMONEMO',
-          date: '2025-09-01',
+          date: '2024-09-01',
           source: 'https://musicbrainz.org/release-group/nemonemo',
           release_kind: 'single',
           stream: 'song',
           context_tags: [],
+        },
+      ],
+    },
+    {
+      group: 'Weeekly',
+      releases: [
+        {
+          title: 'Lights On',
+          date: '2024-01-15',
+          source: 'https://musicbrainz.org/release-group/lights-on',
+          release_kind: 'single',
+          stream: 'song',
+          context_tags: ['title_track'],
+        },
+      ],
+    },
+    {
+      group: 'AtHeart',
+      releases: [
+        {
+          title: 'Glow Up',
+          date: '2025-11-18',
+          source: 'https://musicbrainz.org/release-group/glow-up',
+          release_kind: 'single',
+          stream: 'song',
+          context_tags: ['title_track'],
         },
       ],
     },
@@ -233,6 +353,17 @@ describe('mobile selector/adapters scaffold', () => {
 
     expect(results.releases[0]?.release.releaseTitle).toBe('LOVE CATCHER');
     expect(results.releases[0]?.matchKind).toBe('release_title_exact');
+  });
+
+  test('builds a radar snapshot with featured, weekly, long-gap, and rookie sections', () => {
+    const snapshot = selectRadarSnapshot(dataset, '2026-03-08');
+
+    expect(snapshot.featuredUpcoming?.team.slug).toBe('yena');
+    expect(snapshot.featuredUpcoming?.dayLabel).toBe('D-3');
+    expect(snapshot.weeklyUpcoming).toHaveLength(1);
+    expect(snapshot.changeFeed).toHaveLength(0);
+    expect(snapshot.longGap[0]?.team.slug).toBe('weeekly');
+    expect(snapshot.rookie[0]?.team.slug).toBe('atheart');
   });
 
   test('resolves a release detail model by normalized release id', () => {
