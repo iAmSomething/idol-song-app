@@ -50,6 +50,8 @@
   - search recent-query persistence helper
 - `src/services/handoff.ts`
   - canonical-open / search-fallback / browser-fallback handoff service layer
+- `src/components/feedback/FeedbackState.tsx`
+  - shared loading / empty / error / retry state components
 - `src/tokens/`
   - semantic token constants + theme provider + `useAppTheme()` access convention
 - `src/selectors/`

@@ -1,7 +1,6 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-  ActivityIndicator,
   Image,
   Pressable,
   ScrollView,
@@ -10,6 +9,10 @@ import {
   View,
 } from 'react-native';
 
+import {
+  InlineFeedbackNotice,
+  ScreenFeedbackState,
+} from '../../src/components/feedback/FeedbackState';
 import { selectReleaseDetailById } from '../../src/selectors';
 import {
   loadActiveMobileDataset,
@@ -289,41 +292,52 @@ export default function ReleaseDetailScreen() {
 
   if (state.kind === 'loading') {
     return (
-      <View style={styles.stateContainer}>
+      <>
         <Stack.Screen options={{ title: screenTitle }} />
-        <ActivityIndicator color={theme.colors.text.brand} />
-        <Text style={styles.eyebrow}>DETAIL LOADING</Text>
-        <Text style={styles.stateTitle}>Release Detail</Text>
-        <Text style={styles.stateBody}>앨범 액션, 트랙 리스트, MV 상태를 불러오는 중입니다.</Text>
-      </View>
+        <ScreenFeedbackState
+          body="앨범 액션, 트랙 리스트, MV 상태를 불러오는 중입니다."
+          eyebrow="DETAIL LOADING"
+          title="Release Detail"
+          variant="loading"
+        />
+      </>
     );
   }
 
   if (state.kind === 'error') {
     return (
-      <View style={styles.stateContainer}>
+      <>
         <Stack.Screen options={{ title: screenTitle }} />
-        <Text style={styles.eyebrow}>LOAD ERROR</Text>
-        <Text style={styles.stateTitle}>Release Detail</Text>
-        <Text style={styles.stateBody}>{state.message}</Text>
-        <Pressable style={styles.retryButton} onPress={() => setReloadCount((count) => count + 1)}>
-          <Text style={styles.retryButtonLabel}>다시 시도</Text>
-        </Pressable>
-      </View>
+        <ScreenFeedbackState
+          action={{
+            label: '다시 시도',
+            onPress: () => setReloadCount((count) => count + 1),
+          }}
+          body={state.message}
+          eyebrow="LOAD ERROR"
+          title="Release Detail"
+          variant="error"
+        />
+      </>
     );
   }
 
   if (state.kind === 'missing') {
     return (
-      <View style={styles.stateContainer} testID="release-missing-state">
+      <>
         <Stack.Screen options={{ title: screenTitle }} />
-        <Text style={styles.eyebrow}>MISSING DETAIL</Text>
-        <Text style={styles.stateTitle}>Release Detail</Text>
-        <Text style={styles.stateBody}>{state.reason}</Text>
-        <Pressable style={styles.retryButton} onPress={() => router.back()}>
-          <Text style={styles.retryButtonLabel}>이전 화면으로</Text>
-        </Pressable>
-      </View>
+        <ScreenFeedbackState
+          action={{
+            label: '이전 화면으로',
+            onPress: () => router.back(),
+          }}
+          body={state.reason}
+          eyebrow="MISSING DETAIL"
+          testID="release-missing-state"
+          title="Release Detail"
+          variant="empty"
+        />
+      </>
     );
   }
 
@@ -379,9 +393,7 @@ export default function ReleaseDetailScreen() {
       </View>
 
       {handoffFeedback ? (
-        <View style={styles.feedbackCard}>
-          <Text style={styles.feedbackText}>{handoffFeedback}</Text>
-        </View>
+        <InlineFeedbackNotice body={handoffFeedback} testID="release-handoff-feedback" tone="error" />
       ) : null}
 
       <View style={styles.section}>
@@ -424,9 +436,10 @@ export default function ReleaseDetailScreen() {
             ))}
           </View>
         ) : (
-          <View style={styles.emptyCard} testID="release-empty-tracks">
-            <Text style={styles.emptyCardText}>트랙 정보가 아직 정리되지 않았습니다.</Text>
-          </View>
+          <InlineFeedbackNotice
+            body="트랙 정보가 아직 정리되지 않았습니다."
+            testID="release-empty-tracks"
+          />
         )}
       </View>
 
@@ -464,12 +477,10 @@ export default function ReleaseDetailScreen() {
       ) : detail.youtubeVideoStatus ? (
         <View style={styles.section} testID="release-mv-state">
           <Text style={styles.sectionTitle}>MV 상태</Text>
-          <View style={styles.metaCard}>
-            <Text style={styles.metaBody}>{mvStatusCopy ?? '공식 MV 정보가 아직 정리되지 않았습니다.'}</Text>
-            {detail.youtubeVideoProvenance ? (
-              <Text style={styles.metaSubtle}>{detail.youtubeVideoProvenance}</Text>
-            ) : null}
-          </View>
+          <InlineFeedbackNotice
+            body={mvStatusCopy ?? '공식 MV 정보가 아직 정리되지 않았습니다.'}
+            title={detail.youtubeVideoProvenance}
+          />
         </View>
       ) : null}
     </ScrollView>

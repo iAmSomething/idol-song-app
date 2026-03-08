@@ -3,6 +3,7 @@
 이 디렉터리는 화면 구현과 분리된 재사용 모듈 구역이다.
 
 - `components/`: 표시 컴포넌트
+  - `feedback/`: screen-level loading/empty/error/retry + inline notice 공용 컴포넌트
 - `config/`: validated runtime config accessor
   - `featureGates.ts`: gate registry / fallback metadata / helper
   - `runtime.ts`: mobile profile / env validation + safe degraded runtime state
@@ -43,6 +44,12 @@ handoff 관련 규칙:
 - later UI는 raw `Linking.openURL`을 직접 호출하지 않는다.
 - canonical URL validation, search fallback URL builder, browser fallback choice는 `services/handoff.ts`에서 중앙화한다.
 - 실패는 explicit result object로 돌려서 UI가 toast/inline feedback을 붙일 수 있게 한다.
+
+feedback state 관련 규칙:
+
+- screen-level loading / empty / error / retry는 `components/feedback/FeedbackState.tsx`를 우선 사용한다.
+- section 안의 empty / warning / retry copy도 가능하면 `InlineFeedbackNotice`로 통일한다.
+- 화면이 직접 `ActivityIndicator + 문구 + retry button` 조합을 반복해서 만들지 않는다.
 
 failure-policy 관련 규칙:
 

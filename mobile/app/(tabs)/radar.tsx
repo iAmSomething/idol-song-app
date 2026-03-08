@@ -1,7 +1,6 @@
 import { useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-  ActivityIndicator,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -9,6 +8,10 @@ import {
   View,
 } from 'react-native';
 
+import {
+  InlineFeedbackNotice,
+  ScreenFeedbackState,
+} from '../../src/components/feedback/FeedbackState';
 import { selectRadarSnapshot } from '../../src/selectors';
 import {
   loadActiveMobileDataset,
@@ -113,25 +116,27 @@ export default function RadarTabScreen() {
 
   if (state.kind === 'loading') {
     return (
-      <View style={styles.stateContainer}>
-        <ActivityIndicator color={theme.colors.text.brand} />
-        <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
-        <Text style={styles.title}>레이더</Text>
-        <Text style={styles.body}>가장 가까운 컴백과 레이더 요약을 불러오는 중입니다.</Text>
-      </View>
+      <ScreenFeedbackState
+        body="가장 가까운 컴백과 레이더 요약을 불러오는 중입니다."
+        eyebrow="DATA-BACKED TAB"
+        title="레이더"
+        variant="loading"
+      />
     );
   }
 
   if (state.kind === 'error') {
     return (
-      <View style={styles.stateContainer}>
-        <Text style={styles.eyebrow}>LOAD ERROR</Text>
-        <Text style={styles.title}>레이더</Text>
-        <Text style={styles.body}>{state.message}</Text>
-        <Pressable style={styles.retryButton} onPress={() => setReloadCount((count) => count + 1)}>
-          <Text style={styles.retryButtonLabel}>다시 시도</Text>
-        </Pressable>
-      </View>
+      <ScreenFeedbackState
+        action={{
+          label: '다시 시도',
+          onPress: () => setReloadCount((count) => count + 1),
+        }}
+        body={state.message}
+        eyebrow="LOAD ERROR"
+        title="레이더"
+        variant="error"
+      />
     );
   }
 
@@ -313,7 +318,7 @@ function RadarFeaturedSection({
           <Text style={styles.featuredMeta}>{formatUpcomingMeta(item)}</Text>
         </Pressable>
       ) : (
-        <Text style={styles.emptyCopy}>가까운 컴백 일정이 없습니다.</Text>
+        <InlineFeedbackNotice body="가까운 컴백 일정이 없습니다." />
       )}
     </View>
   );
@@ -343,7 +348,7 @@ function RadarSection<T>({
       <View style={styles.sectionHeader}>
         <Text style={styles.sectionTitle}>{title}</Text>
       </View>
-      {items.length === 0 ? <Text style={styles.emptyCopy}>{emptyCopy}</Text> : null}
+      {items.length === 0 ? <InlineFeedbackNotice body={emptyCopy} /> : null}
       {items.map(renderItem)}
     </View>
   );

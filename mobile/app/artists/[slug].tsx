@@ -1,7 +1,6 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-  ActivityIndicator,
   Image,
   Linking,
   Pressable,
@@ -11,6 +10,10 @@ import {
   View,
 } from 'react-native';
 
+import {
+  InlineFeedbackNotice,
+  ScreenFeedbackState,
+} from '../../src/components/feedback/FeedbackState';
 import { selectEntityDetailSnapshot } from '../../src/selectors';
 import {
   loadActiveMobileDataset,
@@ -190,43 +193,52 @@ export default function ArtistDetailScreen() {
 
   if (state.kind === 'loading') {
     return (
-      <View style={styles.stateContainer}>
+      <>
         <Stack.Screen options={{ title: screenTitle }} />
-        <ActivityIndicator color={theme.colors.text.brand} />
-        <Text style={styles.eyebrow}>DETAIL LOADING</Text>
-        <Text style={styles.title}>팀 상세</Text>
-        <Text style={styles.body}>팀 요약, 다음 컴백, 최근 앨범을 불러오는 중입니다.</Text>
-      </View>
+        <ScreenFeedbackState
+          body="팀 요약, 다음 컴백, 최근 앨범을 불러오는 중입니다."
+          eyebrow="DETAIL LOADING"
+          title="팀 상세"
+          variant="loading"
+        />
+      </>
     );
   }
 
   if (state.kind === 'error') {
     return (
-      <View style={styles.stateContainer}>
+      <>
         <Stack.Screen options={{ title: screenTitle }} />
-        <Text style={styles.eyebrow}>LOAD ERROR</Text>
-        <Text style={styles.title}>팀 상세</Text>
-        <Text style={styles.body}>{state.message}</Text>
-        <Pressable style={styles.retryButton} onPress={() => setReloadCount((count) => count + 1)}>
-          <Text style={styles.retryButtonLabel}>다시 시도</Text>
-        </Pressable>
-      </View>
+        <ScreenFeedbackState
+          action={{
+            label: '다시 시도',
+            onPress: () => setReloadCount((count) => count + 1),
+          }}
+          body={state.message}
+          eyebrow="LOAD ERROR"
+          title="팀 상세"
+          variant="error"
+        />
+      </>
     );
   }
 
   if (state.kind === 'missing') {
     return (
-      <View style={styles.stateContainer}>
+      <>
         <Stack.Screen options={{ title: screenTitle }} />
-        <Text testID="entity-missing-state" style={styles.eyebrow}>
-          SAFE RECOVERY
-        </Text>
-        <Text style={styles.title}>팀 상세</Text>
-        <Text style={styles.body}>{state.reason}</Text>
-        <Pressable style={styles.retryButton} onPress={() => router.push('/(tabs)/search')}>
-          <Text style={styles.retryButtonLabel}>검색으로 이동</Text>
-        </Pressable>
-      </View>
+        <ScreenFeedbackState
+          action={{
+            label: '검색으로 이동',
+            onPress: () => router.push('/(tabs)/search'),
+          }}
+          body={state.reason}
+          eyebrow="SAFE RECOVERY"
+          testID="entity-missing-state"
+          title="팀 상세"
+          variant="empty"
+        />
+      </>
     );
   }
 
@@ -331,7 +343,7 @@ export default function ArtistDetailScreen() {
             </View>
           </Pressable>
         ) : (
-          <Text style={styles.emptyCopy}>최신 발매 정보가 없습니다.</Text>
+          <InlineFeedbackNotice body="최신 발매 정보가 없습니다." />
         )}
       </SectionCard>
 
@@ -366,7 +378,7 @@ export default function ArtistDetailScreen() {
             ))}
           </ScrollView>
         ) : (
-          <Text style={styles.emptyCopy}>등록된 최근 앨범이 없습니다.</Text>
+          <InlineFeedbackNotice body="등록된 최근 앨범이 없습니다." />
         )}
       </SectionCard>
 
@@ -393,7 +405,7 @@ export default function ArtistDetailScreen() {
             ))}
           </View>
         ) : (
-          <Text style={styles.emptyCopy}>표시할 소스 타임라인이 없습니다.</Text>
+          <InlineFeedbackNotice body="표시할 소스 타임라인이 없습니다." />
         )}
       </SectionCard>
     </ScrollView>
