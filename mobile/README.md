@@ -33,6 +33,8 @@
   - gate registry / helper / off fallback definition
 - `src/services/datasetSource.ts`
   - bundled static data vs preview remote data selection layer
+- `src/services/datasetFailurePolicy.ts`
+  - runtime misconfiguration / remote dataset unavailable fallback policy
 - `src/services/storage.ts`
   - `AsyncStorage` 기반 key-value storage adapter / namespace / shared key convention
 - `src/services/datasetCache.ts`
@@ -198,13 +200,28 @@ profile 차이는 아래 범위로만 제한한다.
 - `EXPO_PUBLIC_BUILD_VERSION`
   - debug metadata와 Expo config version에 쓰는 explicit build version override다.
 - invalid config
-  - `app.config.ts` 단계와 `src/config/runtime.ts` 단계에서 둘 다 명시적으로 실패시킨다.
-  - silent fallback으로 숨기지 않는다.
+  - `app.config.ts` 단계에서는 invalid env를 명시적으로 fail-fast 시킨다.
+  - 앱 runtime에서는 `src/config/runtime.ts`의 safe degraded mode로 내려가서 bundled-only config를 쓴다.
+  - later UI는 degraded state와 issue message를 표시할 수 있어야 한다.
+
+## mobile failure policy baseline
+
+- entrypoint는 `src/config/runtime.ts`와 `src/services/datasetFailurePolicy.ts`다.
+- runtime config payload가 없거나 invalid면:
+  - app crash 대신 `mode = degraded`
+  - `remoteRefresh = false`
+  - `analytics = false`
+  - bundled/static dataset path만 허용
+- preview remote dataset이 unavailable/invalid면:
+  - 가능한 경우 `last-known-good` cache로 fallback
+  - cache가 불완전하면 bundled dataset으로 fallback
+- later UI는 `normal`과 `degraded`를 명시적으로 구분해 badge/banner/toast를 붙일 수 있어야 한다.
 
 ## debug metadata surface
 
 - internal metadata route는 `app/debug/metadata.tsx`에 둔다.
 - build version / dataset version / commit hash는 `src/config/debugMetadata.ts`를 통해 읽는다.
+- runtime degraded 여부와 runtime issue message도 같은 route에서 확인 가능해야 한다.
 - main tab이나 user-facing surface에는 진입 링크를 두지 않는다.
 - production profile에서는 route가 열려도 debug-only 안내만 보여준다.
 

@@ -1,4 +1,4 @@
-import type { MobileRuntimeConfig } from './runtime';
+import type { MobileRuntimeConfig, RuntimeConfigState } from './runtime';
 import { getDebugMetadata, isDebugMetadataAvailable } from './debugMetadata';
 
 const previewRuntimeConfig: MobileRuntimeConfig = {
@@ -28,10 +28,18 @@ const previewRuntimeConfig: MobileRuntimeConfig = {
   },
 };
 
+const previewRuntimeState: RuntimeConfigState = {
+  mode: 'normal',
+  config: previewRuntimeConfig,
+  issues: [],
+};
+
 describe('debug metadata helpers', () => {
   test('returns the stable debug metadata fields for preview builds', () => {
-    expect(getDebugMetadata(previewRuntimeConfig)).toEqual({
+    expect(getDebugMetadata(previewRuntimeState)).toEqual({
       profile: 'preview',
+      runtimeMode: 'normal',
+      runtimeIssues: [],
       buildVersion: '0.1.0',
       datasetVersion: 'preview-v1',
       commitSha: 'abc123',

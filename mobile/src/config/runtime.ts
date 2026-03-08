@@ -37,6 +37,19 @@ export type MobileRuntimeConfig = {
   };
 };
 
+export type RuntimeConfigIssueKind = 'missing_runtime_config' | 'invalid_runtime_config';
+
+export type RuntimeConfigIssue = {
+  kind: RuntimeConfigIssueKind;
+  message: string;
+};
+
+export type RuntimeConfigState = {
+  mode: 'normal' | 'degraded';
+  config: MobileRuntimeConfig;
+  issues: RuntimeConfigIssue[];
+};
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null;
 }
@@ -100,6 +113,14 @@ function readDataSourceMode(value: unknown): DataSourceMode {
   }
 
   throw new Error('Invalid runtime config field: dataSource.mode has an unsupported value.');
+}
+
+function readProfileHint(value: unknown): MobileProfile | null {
+  if (value === 'development' || value === 'preview' || value === 'production') {
+    return value;
+  }
+
+  return null;
 }
 
 function readOptionalUrl(value: unknown, fieldName: string): string | null {
@@ -188,15 +209,93 @@ export function parseRuntimeConfig(input: unknown): MobileRuntimeConfig {
   return config;
 }
 
-let cachedConfig: MobileRuntimeConfig | null = null;
-
-export function getRuntimeConfig(): MobileRuntimeConfig {
-  if (cachedConfig) {
-    return cachedConfig;
+function getDefaultLoggingLevel(profile: MobileProfile): LoggingLevel {
+  if (profile === 'production') {
+    return 'error';
   }
 
-  const extra = Constants.expoConfig?.extra;
+  return profile === 'preview' ? 'debug' : 'verbose';
+}
+
+function buildDegradedRuntimeConfig(
+  profile: MobileProfile,
+  buildVersion: string | null,
+): MobileRuntimeConfig {
+  return {
+    profile,
+    dataSource: {
+      mode: EXPECTED_MODE_BY_PROFILE[profile],
+      remoteDatasetUrl: null,
+      datasetVersion: null,
+    },
+    services: {
+      apiBaseUrl: null,
+      analyticsWriteKey: null,
+    },
+    logging: {
+      level: getDefaultLoggingLevel(profile),
+    },
+    featureGates: {
+      radar: true,
+      analytics: false,
+      remoteRefresh: false,
+      mvEmbed: true,
+      shareActions: true,
+    },
+    build: {
+      version: buildVersion ?? '0.1.0',
+      commitSha: null,
+    },
+  };
+}
+
+export function resolveRuntimeConfigState(
+  input: unknown,
+  profileHint: MobileProfile | null = null,
+  buildVersion: string | null = null,
+): RuntimeConfigState {
+  try {
+    return {
+      mode: 'normal',
+      config: parseRuntimeConfig(input),
+      issues: [],
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown runtime config failure.';
+
+    return {
+      mode: 'degraded',
+      config: buildDegradedRuntimeConfig(profileHint ?? 'production', buildVersion),
+      issues: [
+        {
+          kind: input == null ? 'missing_runtime_config' : 'invalid_runtime_config',
+          message,
+        },
+      ],
+    };
+  }
+}
+
+let cachedState: RuntimeConfigState | null = null;
+
+export function resetRuntimeConfigState(): void {
+  cachedState = null;
+}
+
+export function getRuntimeConfigState(): RuntimeConfigState {
+  if (cachedState) {
+    return cachedState;
+  }
+
+  const expoConfig = Constants.expoConfig;
+  const extra = expoConfig?.extra;
+  const profileHint = isRecord(extra) ? readProfileHint(extra.mobileProfile) : null;
   const runtimeConfig = isRecord(extra) ? extra.runtimeConfig : null;
-  cachedConfig = parseRuntimeConfig(runtimeConfig);
-  return cachedConfig;
+
+  cachedState = resolveRuntimeConfigState(runtimeConfig, profileHint, expoConfig?.version ?? null);
+  return cachedState;
+}
+
+export function getRuntimeConfig(): MobileRuntimeConfig {
+  return getRuntimeConfigState().config;
 }

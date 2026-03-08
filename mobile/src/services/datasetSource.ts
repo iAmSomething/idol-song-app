@@ -29,7 +29,7 @@ type DatasetSelectionBase = {
 
 export type BundledDatasetSelection = DatasetSelectionBase & {
   kind: 'bundled-static';
-  reason: 'profile_default' | 'preview_remote_disabled';
+  reason: 'profile_default' | 'preview_remote_disabled' | 'runtime_degraded' | 'remote_unavailable';
   bundledBasePath: string;
 };
 
@@ -87,7 +87,7 @@ export const DATASET_ARTIFACTS: DatasetArtifactDescriptor[] = [
   },
 ];
 
-function toBundledSelection(
+export function createBundledDatasetSelection(
   datasetVersion: string | null,
   reason: BundledDatasetSelection['reason'],
 ): BundledDatasetSelection {
@@ -128,7 +128,7 @@ export function selectDatasetSource(
     };
   }
 
-  return toBundledSelection(
+  return createBundledDatasetSelection(
     runtimeConfig.dataSource.datasetVersion,
     runtimeConfig.profile === 'preview' ? 'preview_remote_disabled' : 'profile_default',
   );

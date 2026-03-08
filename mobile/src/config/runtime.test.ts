@@ -1,4 +1,4 @@
-import { parseRuntimeConfig } from './runtime';
+import { parseRuntimeConfig, resolveRuntimeConfigState } from './runtime';
 
 jest.mock('expo-constants', () => ({
   __esModule: true,
@@ -167,5 +167,66 @@ describe('parseRuntimeConfig', () => {
         },
       }),
     ).toThrow('build.version');
+  });
+
+  test('degrades safely when runtime config payload is missing', () => {
+    const state = resolveRuntimeConfigState(null, 'preview', '0.3.0');
+
+    expect(state.mode).toBe('degraded');
+    expect(state.config.profile).toBe('preview');
+    expect(state.config.dataSource.mode).toBe('preview-static');
+    expect(state.config.featureGates.remoteRefresh).toBe(false);
+    expect(state.config.services.analyticsWriteKey).toBeNull();
+    expect(state.config.build.version).toBe('0.3.0');
+    expect(state.issues).toEqual([
+      expect.objectContaining({
+        kind: 'missing_runtime_config',
+      }),
+    ]);
+  });
+
+  test('degrades safely when runtime config payload is invalid', () => {
+    const state = resolveRuntimeConfigState(
+      {
+        profile: 'preview',
+        dataSource: {
+          mode: 'preview-static',
+          remoteDatasetUrl: null,
+          datasetVersion: null,
+        },
+        services: {
+          apiBaseUrl: null,
+          analyticsWriteKey: null,
+        },
+        logging: {
+          level: 'debug',
+        },
+        featureGates: {
+          radar: true,
+          analytics: true,
+          remoteRefresh: true,
+          mvEmbed: true,
+          shareActions: true,
+        },
+        build: {
+          version: '0.1.0',
+          commitSha: null,
+        },
+      },
+      'preview',
+      '0.1.0',
+    );
+
+    expect(state.mode).toBe('degraded');
+    expect(state.config.profile).toBe('preview');
+    expect(state.config.dataSource.remoteDatasetUrl).toBeNull();
+    expect(state.config.featureGates.analytics).toBe(false);
+    expect(state.config.featureGates.remoteRefresh).toBe(false);
+    expect(state.issues).toEqual([
+      expect.objectContaining({
+        kind: 'invalid_runtime_config',
+        message: expect.stringContaining('remoteDatasetUrl'),
+      }),
+    ]);
   });
 });
