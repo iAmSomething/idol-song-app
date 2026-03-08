@@ -95,6 +95,55 @@ preview에서 달라지면 안 되는 것:
 - field type / enum domain
 - date precision / MV / service-link semantics
 
+## Backend Deploy Path
+
+repo-level backend deploy entrypoint는 아래 workflow다.
+
+- `.github/workflows/backend-deploy.yml`
+
+역할 분리:
+
+- `preview`
+  - `main`에 backend 관련 변경이 들어오면 자동 deploy
+  - 같은 workflow를 `workflow_dispatch`로 수동 재실행할 수도 있음
+- `production`
+  - `workflow_dispatch`에서 `target=production`일 때만 deploy
+  - preview rehearsal이 끝난 뒤 명시적으로 승격하는 용도
+
+GitHub Environment baseline:
+
+- `preview`
+- `production`
+
+각 GitHub Environment에 아래 값을 같은 이름으로 넣는다.
+
+- secret: `RAILWAY_TOKEN`
+- variable: `RAILWAY_PROJECT_ID`
+- variable: `RAILWAY_ENVIRONMENT_ID`
+- variable: `RAILWAY_SERVICE_ID`
+- variable: `BACKEND_PUBLIC_URL`
+
+deploy helper는 아래 스크립트다.
+
+- `backend/scripts/deploy-backend.mjs`
+
+manual dry-run 예시:
+
+```bash
+BACKEND_DEPLOY_TARGET=preview \
+RAILWAY_TOKEN=dummy \
+RAILWAY_PROJECT_ID=project-id \
+RAILWAY_ENVIRONMENT_ID=environment-id \
+RAILWAY_SERVICE_ID=service-id \
+node backend/scripts/deploy-backend.mjs --dry-run
+```
+
+web API origin guidance:
+
+- preview rehearsal web/local build는 preview backend public URL을 `VITE_API_BASE_URL`에 넣는다.
+- production Pages build는 production backend public URL을 repo variable `VITE_API_BASE_URL`에 넣는다.
+- browser access를 열려면 backend 쪽 `WEB_ALLOWED_ORIGINS`도 해당 consumer origin과 같이 맞춰야 한다.
+
 ## Web CORS / Allowed Origins
 
 - backend는 browser cross-origin read를 명시적으로 허용한다.
