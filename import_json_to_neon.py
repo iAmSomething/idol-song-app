@@ -2139,6 +2139,86 @@ def fetch_critical_counts(connection: "psycopg.Connection[Any]") -> Dict[str, An
     return critical
 
 
+def build_table_count_summary(
+    payload: Dict[str, Any],
+    summary: Dict[str, Any],
+    before_counts: Dict[str, int],
+    after_counts: Dict[str, int],
+) -> Dict[str, Dict[str, Any]]:
+    stale_review_task_preview = int(summary.get("stale_pruned", {}).get("review_tasks", 0))
+    table_counts: Dict[str, Dict[str, Any]] = {}
+
+    for table in TARGET_TABLES:
+        operation_counts = summary["operation_counts"].get(table, {})
+        inserted = int(operation_counts.get("inserted", 0))
+        updated = int(operation_counts.get("updated", 0))
+        projected_after = before_counts.get(table, 0) + inserted
+        if table == "review_tasks":
+            projected_after = max(0, projected_after - stale_review_task_preview)
+
+        table_counts[table] = {
+            "payload_rows": len(payload["tables"][table]),
+            "db_rows_before": before_counts.get(table, 0),
+            "db_rows_after": after_counts.get(table, 0),
+            "projected_db_rows_after": projected_after,
+            "insert_candidates": inserted,
+            "update_candidates": updated,
+        }
+
+    return table_counts
+
+
+def build_anomaly_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
+    source_duplicates = {table: int(summary["source_duplicates"].get(table, 0)) for table in TARGET_TABLES}
+    dropped_records = {table: int(summary["dropped_records"].get(table, 0)) for table in TARGET_TABLES}
+    missing_fk_sample_counts = {
+        table: len(summary["dropped_missing_fk_samples"].get(table, []))
+        for table in TARGET_TABLES
+    }
+
+    return {
+        "counts": {
+            "source_duplicates_total": sum(source_duplicates.values()),
+            "dropped_records_total": sum(dropped_records.values()),
+            "missing_fk_tables": sum(1 for count in missing_fk_sample_counts.values() if count > 0),
+            "missing_fk_sample_total": sum(missing_fk_sample_counts.values()),
+            "unresolved_release_mappings": len(summary["unresolved_release_mappings"]),
+            "unresolved_review_links": len(summary["unresolved_review_links"]),
+            "stale_review_tasks": int(summary.get("stale_pruned", {}).get("review_tasks", 0)),
+        },
+        "by_table": {
+            "source_duplicates": source_duplicates,
+            "dropped_records": dropped_records,
+            "missing_fk_sample_counts": missing_fk_sample_counts,
+        },
+        "samples": {
+            "dropped_missing_fk_samples": {
+                table: rows[:5]
+                for table, rows in summary["dropped_missing_fk_samples"].items()
+            },
+            "unresolved_release_mappings": summary["unresolved_release_mappings"][:25],
+            "unresolved_review_links": summary["unresolved_review_links"][:25],
+        },
+    }
+
+
+def build_dry_run_review_summary() -> Dict[str, List[str]]:
+    return {
+        "guarantees": [
+            "payload rows, insert candidates, update candidates, projected post-import row counts, and anomaly buckets are computed without committing writes",
+            "db_rows_before and db_rows_after reflect the live database state around the dry run and should remain unchanged",
+        ],
+        "limitations": [
+            "dry-run does not commit writes or refresh downstream projections",
+            "projected_db_rows_after is an import estimate based on insert candidates and stale review-task pruning, not a committed post-run fact",
+        ],
+        "recommended_checks": [
+            "review anomalies.counts first, then inspect anomalies.by_table for concentrated problem buckets",
+            "compare table_counts.projected_db_rows_after against payload_rows to spot unexpected insert volume",
+        ],
+    }
+
+
 def sanitize_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
     sanitized = dict(summary)
     sanitized["source_duplicates"] = dict(summary["source_duplicates"])
@@ -2204,6 +2284,10 @@ def main() -> None:
     summary["mode"] = "dry_run" if args.dry_run else "apply"
     summary["summary_path"] = display_path(Path(args.summary_path))
     summary["table_source_counts"] = {table: len(rows) for table, rows in payload["tables"].items()}
+    summary["table_counts"] = build_table_count_summary(payload, summary, before_counts, after_counts)
+    summary["anomalies"] = build_anomaly_summary(summary)
+    if args.dry_run:
+        summary["dry_run_review"] = build_dry_run_review_summary()
     write_summary(Path(args.summary_path), sanitize_summary(summary))
 
     print(
