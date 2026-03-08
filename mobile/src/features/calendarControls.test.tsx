@@ -4,6 +4,20 @@ import { Text } from 'react-native';
 
 import CalendarTabScreen from '../../app/(tabs)/calendar';
 
+jest.mock('expo-router', () => {
+  const useLocalSearchParams = jest.fn(() => ({}));
+
+  return {
+    useLocalSearchParams,
+    useRouter: () => ({
+      setParams: jest.fn(),
+    }),
+    __mock: {
+      useLocalSearchParams,
+    },
+  };
+});
+
 jest.mock('react-native/Libraries/Modal/Modal', () => {
   const React = jest.requireActual<typeof import('react')>('react');
 
@@ -13,6 +27,12 @@ jest.mock('react-native/Libraries/Modal/Modal', () => {
       visible ? React.createElement(React.Fragment, null, children) : null,
   };
 });
+
+const { __mock } = jest.requireMock('expo-router') as {
+  __mock: {
+    useLocalSearchParams: jest.Mock;
+  };
+};
 
 async function renderCalendarScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -33,6 +53,7 @@ describe('calendar controls', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-03-07T09:00:00.000Z'));
+    __mock.useLocalSearchParams.mockReturnValue({});
   });
 
   afterEach(() => {

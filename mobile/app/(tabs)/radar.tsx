@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   Pressable,
@@ -12,6 +12,11 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import {
+  areRouteParamsEqual,
+  buildRadarRouteParams,
+  resolveRadarRouteState,
+} from '../../src/features/routeState';
 import { selectRadarSnapshot } from '../../src/selectors';
 import {
   loadActiveMobileDataset,
@@ -60,13 +65,21 @@ function resolveBadgeLabel(team: TeamSummaryModel): string {
 
 export default function RadarTabScreen() {
   const router = useRouter();
+  const params = useLocalSearchParams<{
+    hideEmpty?: string | string[];
+  }>();
   const theme = useAppTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const [reloadCount, setReloadCount] = useState(0);
-  const [hideEmptySections, setHideEmptySections] = useState(false);
+  const routeState = useMemo(() => resolveRadarRouteState(params), [params]);
+  const [hideEmptySections, setHideEmptySections] = useState(routeState.hideEmptySections);
   const [state, setState] = useState<RadarScreenState>({ kind: 'loading' });
   const today = useMemo(() => new Date(), []);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
+
+  useEffect(() => {
+    setHideEmptySections(routeState.hideEmptySections);
+  }, [routeState.hideEmptySections]);
 
   useEffect(() => {
     let cancelled = false;
@@ -102,6 +115,21 @@ export default function RadarTabScreen() {
       cancelled = true;
     };
   }, [reloadCount, todayIsoDate]);
+
+  useEffect(() => {
+    const currentRouteParams = buildRadarRouteParams({
+      hideEmptySections: routeState.hideEmptySections,
+    });
+    const nextRouteParams = buildRadarRouteParams({
+      hideEmptySections,
+    });
+
+    if (areRouteParamsEqual(currentRouteParams, nextRouteParams)) {
+      return;
+    }
+
+    router.setParams(nextRouteParams);
+  }, [hideEmptySections, routeState.hideEmptySections, router]);
 
   function openSearchTab() {
     router.push('/(tabs)/search');
@@ -162,6 +190,7 @@ export default function RadarTabScreen() {
           <Pressable
             testID="radar-filter-button"
             accessibilityRole="button"
+            accessibilityState={{ selected: hideEmptySections }}
             onPress={() => setHideEmptySections((value) => !value)}
             style={({ pressed }) => [
               styles.appBarButton,

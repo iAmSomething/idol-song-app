@@ -14,6 +14,7 @@ jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({}));
   const useRouter = jest.fn(() => ({
     push: jest.fn(),
+    setParams: jest.fn(),
   }));
 
   function Redirect({ href }: { href: string }) {
@@ -83,6 +84,7 @@ describe('mobile route shell smoke', () => {
   beforeEach(() => {
     mockUseRouter.mockReturnValue({
       push: jest.fn(),
+      setParams: jest.fn(),
     });
   });
 

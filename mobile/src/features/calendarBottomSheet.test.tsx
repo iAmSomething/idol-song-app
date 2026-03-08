@@ -4,6 +4,20 @@ import { Text } from 'react-native';
 
 import CalendarTabScreen from '../../app/(tabs)/calendar';
 
+jest.mock('expo-router', () => {
+  const useLocalSearchParams = jest.fn(() => ({}));
+
+  return {
+    useLocalSearchParams,
+    useRouter: () => ({
+      setParams: jest.fn(),
+    }),
+    __mock: {
+      useLocalSearchParams,
+    },
+  };
+});
+
 jest.mock('react-native/Libraries/Modal/Modal', () => {
   const React = jest.requireActual<typeof import('react')>('react');
 
@@ -13,6 +27,12 @@ jest.mock('react-native/Libraries/Modal/Modal', () => {
       visible ? React.createElement(React.Fragment, null, children) : null,
   };
 });
+
+const { __mock } = jest.requireMock('expo-router') as {
+  __mock: {
+    useLocalSearchParams: jest.Mock;
+  };
+};
 
 async function renderCalendarScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -29,6 +49,7 @@ describe('calendar selected-day bottom sheet', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-03-07T09:00:00.000Z'));
+    __mock.useLocalSearchParams.mockReturnValue({});
   });
 
   afterEach(() => {
@@ -77,5 +98,22 @@ describe('calendar selected-day bottom sheet', () => {
     });
 
     expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
+  });
+
+  test('restores month, selected date, filter, and sheet state from route params', async () => {
+    __mock.useLocalSearchParams.mockReturnValue({
+      month: '2026-03',
+      date: '2026-03-11',
+      filter: 'upcoming',
+      sheet: 'open',
+    });
+
+    const tree = await renderCalendarScreen();
+
+    expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 3월');
+    expect(tree.root.findByProps({ testID: 'calendar-filter-upcoming' }).props.accessibilityState.selected).toBe(
+      true,
+    );
   });
 });
