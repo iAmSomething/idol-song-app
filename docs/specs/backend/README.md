@@ -54,6 +54,9 @@
 16. `projection-query-plan-regression-check.md`
    - projection-backed lookup query의 required index / explain probe gate
    - controlled degraded scenario로 failure detection을 증명하는 방법
+17. `backend-secret-inventory-and-rotation.md`
+   - GitHub / Railway / Neon 기준 backend secret / variable inventory
+   - owner role, rotation trigger, rollback baseline, current audit snapshot
 
 ## 읽는 순서
 
@@ -73,6 +76,7 @@
 14. `structured-backend-logging-policy.md`
 15. `neon-backup-restore-recovery-drill.md`
 16. `projection-query-plan-regression-check.md`
+17. `backend-secret-inventory-and-rotation.md`
 
 ## 원칙
 
