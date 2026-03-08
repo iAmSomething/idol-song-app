@@ -1,19 +1,131 @@
 {
+  "latest_snapshot_input_rows": 121,
+  "latest_snapshot_unique_keys": 121,
+  "full_catalog_input_rows": 1770,
+  "full_catalog_unique_keys": 1770,
+  "historical_input_gain_rows": 1649,
+  "entities_with_multiple_releases_in_input": 113,
+  "sample_multi_release_entities": [
+    {
+      "group": "MONSTA X",
+      "release_rows": 60
+    },
+    {
+      "group": "TWICE",
+      "release_rows": 54
+    },
+    {
+      "group": "SHINee",
+      "release_rows": 48
+    },
+    {
+      "group": "ATEEZ",
+      "release_rows": 42
+    },
+    {
+      "group": "BTS",
+      "release_rows": 42
+    },
+    {
+      "group": "Stray Kids",
+      "release_rows": 42
+    },
+    {
+      "group": "BTOB",
+      "release_rows": 40
+    },
+    {
+      "group": "THE BOYZ",
+      "release_rows": 40
+    },
+    {
+      "group": "SEVENTEEN",
+      "release_rows": 38
+    },
+    {
+      "group": "TOMORROW X TOGETHER",
+      "release_rows": 34
+    }
+  ],
   "history_flattened_rows": 1770,
-  "detail_rows_before": 117,
+  "detail_rows_before": 1770,
   "detail_rows_after": 1770,
   "history_keys": 1770,
-  "missing_detail_rows_before": 1654,
+  "missing_detail_rows_before": 0,
   "missing_detail_rows_after": 0,
   "pre_2024_history_rows": 1153,
-  "pre_2024_missing_before": 1153,
+  "pre_2024_missing_before": 0,
   "pre_2024_missing_after": 0,
-  "preserved_exact_key_rows": 116,
+  "preserved_exact_key_rows": 1770,
   "seeded_placeholder_rows": 1653,
   "rows_with_tracks_after": 117,
   "rows_with_title_track_after": 60,
   "rows_with_youtube_music_after": 52,
   "rows_with_youtube_mv_after": 26,
+  "override_rows_total": 67,
+  "applied_overrides": 66,
+  "override_sample_matches": [
+    {
+      "group": "&TEAM",
+      "release_title": "Back to Life",
+      "release_date": "2025-10-28",
+      "stream": "album"
+    },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "i‐dle",
+      "release_date": "2025-10-03",
+      "stream": "album"
+    },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "Mono",
+      "release_date": "2026-01-27",
+      "stream": "song"
+    },
+    {
+      "group": "82MAJOR",
+      "release_title": "Trophy",
+      "release_date": "2025-10-30",
+      "stream": "album"
+    },
+    {
+      "group": "8TURN",
+      "release_title": "BRUISE",
+      "release_date": "2026-01-28",
+      "stream": "song"
+    },
+    {
+      "group": "aespa",
+      "release_title": "Rich Man",
+      "release_date": "2025-09-05",
+      "stream": "album"
+    },
+    {
+      "group": "ALL(H)OURS",
+      "release_title": "VCF",
+      "release_date": "2025-09-09",
+      "stream": "album"
+    },
+    {
+      "group": "AMPERS&ONE",
+      "release_title": "LOUD & PROUD",
+      "release_date": "2025-08-12",
+      "stream": "album"
+    },
+    {
+      "group": "ARTMS",
+      "release_title": "<Club Icarus>",
+      "release_date": "2025-06-13",
+      "stream": "album"
+    },
+    {
+      "group": "AtHeart",
+      "release_title": "Plot Twist",
+      "release_date": "2025-08-13",
+      "stream": "album"
+    }
+  ],
   "remaining_no_detail_rows": [],
   "seed_only_rows": [
     {
@@ -11632,7 +11744,6 @@
       "sample_has_tracks": false
     }
   ],
-  "applied_overrides": 66,
-  "relaxed_existing_matches": 1,
-  "preserved_existing_detail_rows_total": 117
+  "relaxed_existing_matches": 0,
+  "preserved_existing_detail_rows_total": 1770
 }
