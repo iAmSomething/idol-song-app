@@ -214,6 +214,19 @@ PORT=3213 npm run start
 - `/v1/review/upcoming`
 - `/v1/review/mv`
 
+`/ready` 해석 규칙:
+
+- `ready`
+  - preview DB reachable
+  - projection freshness healthy
+  - parity / shadow / runtime gate artifact healthy
+- `degraded`
+  - preview DB는 reachable
+  - 하지만 freshness가 degraded이거나 dependency artifact가 missing / unclean
+- `not_ready`
+  - preview DB unreachable
+  - 또는 projection freshness가 not-ready 구간
+
 ### 7.6 Shadow / Parity
 
 ```bash

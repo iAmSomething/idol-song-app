@@ -5,6 +5,7 @@ import Fastify, { type FastifyInstance, type FastifyReply } from 'fastify';
 import { loadConfig, type AppConfig } from './config.js';
 import { ReadApiError, buildReadErrorEnvelope } from './lib/api.js';
 import { closeDbPool, createDbPool, type DbPool, withFailFastReadTimeouts } from './lib/db.js';
+import { createReadyStatusProvider, type ReadyStatusProvider } from './lib/readiness.js';
 import {
   InMemoryFixedWindowRateLimiter,
   applyRateLimitHeaders,
@@ -24,6 +25,7 @@ import { registerSearchRoutes } from './routes/search.js';
 export type BuildAppOptions = {
   config?: AppConfig;
   db?: DbPool;
+  readyStatusProvider?: ReadyStatusProvider;
 };
 
 const ACCESS_CONTROL_ALLOW_METHODS = 'GET,OPTIONS';
@@ -93,6 +95,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   const config = options.config ?? loadConfig();
   const db = withFailFastReadTimeouts(options.db ?? createDbPool(config));
   const rateLimiter = new InMemoryFixedWindowRateLimiter();
+  const readyStatusProvider = options.readyStatusProvider ?? createReadyStatusProvider();
   const app = Fastify({
     genReqId: createRequestId,
     logger: true,
@@ -192,7 +195,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   });
 
   registerHealthRoute(app);
-  registerReadyRoute(app, { config, db });
+  registerReadyRoute(app, { config, db, readyStatusProvider });
   registerCalendarRoutes(app, { config, db });
   registerSearchRoutes(app, { config, db });
   registerEntityRoutes(app, { config, db });
