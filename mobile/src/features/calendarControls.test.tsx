@@ -64,6 +64,9 @@ describe('calendar controls', () => {
     const tree = await renderCalendarScreen();
 
     expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 3월');
+    expect(tree.root.findByProps({ testID: 'calendar-month-next' }).props.accessibilityLabel).toBe(
+      '2026년 4월로 이동',
+    );
 
     await act(async () => {
       tree.root.findByProps({ testID: 'calendar-month-next' }).props.onPress();
@@ -80,6 +83,10 @@ describe('calendar controls', () => {
 
   test('opens the nearest upcoming day from the quick-jump action', async () => {
     const tree = await renderCalendarScreen();
+
+    expect(tree.root.findByProps({ testID: 'calendar-jump-nearest' }).props.accessibilityLabel).toContain(
+      '가장 가까운 일정',
+    );
 
     await act(async () => {
       tree.root.findByProps({ testID: 'calendar-month-next' }).props.onPress();

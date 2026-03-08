@@ -44,6 +44,7 @@ describe('mobile radar tab', () => {
     const tree = await renderRadarScreen();
 
     expect(tree.root.findByProps({ testID: 'radar-featured-card' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'radar-featured-card' }).props.accessibilityLabel).toContain('YENA');
     expect(tree.root.findByProps({ testID: 'radar-weekly-card-yena' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-long-gap-card-weeekly' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-rookie-card-atheart' })).toBeDefined();

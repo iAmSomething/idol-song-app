@@ -66,6 +66,9 @@ describe('mobile entity detail screen', () => {
     const tree = await renderArtistDetail();
 
     expect(tree.root.findByProps({ testID: 'entity-detail-title' }).props.children).toBe('YENA');
+    expect(tree.root.findByProps({ testID: 'entity-official-link-youtube' }).props.accessibilityLabel).toBe(
+      'YENA 공식 YouTube 열기',
+    );
     expect(tree.root.findByProps({ testID: 'entity-next-upcoming-card' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-latest-release-card' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-source-timeline' })).toBeDefined();

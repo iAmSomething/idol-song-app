@@ -124,6 +124,9 @@ describe('mobile search tab', () => {
     const tree = await renderSearchScreen();
 
     expect(tree.root.findByProps({ testID: 'search-input' }).props.value).toBe('최예나');
+    expect(tree.root.findByProps({ testID: 'search-input' }).props.accessibilityLabel).toBe(
+      '팀, 앨범, 곡, 별칭 검색',
+    );
     expect(
       tree.root.findByProps({ testID: 'search-segment-upcoming' }).props.accessibilityState.selected,
     ).toBe(true);

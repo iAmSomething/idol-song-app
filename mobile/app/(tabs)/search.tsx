@@ -67,6 +67,18 @@ function formatSuggestedLabel(team: TeamSummaryModel): string {
   return team.badge?.monogram ?? team.displayName.slice(0, 2).toUpperCase();
 }
 
+function buildTeamResultAccessibilityLabel(result: SearchTeamResultModel): string {
+  return `${result.team.displayName} 팀 열기, ${formatTeamMeta(result)}, ${result.matchKind}`;
+}
+
+function buildReleaseResultAccessibilityLabel(release: ReleaseSummaryModel, matchKind: string): string {
+  return `${release.releaseTitle} 릴리즈 상세 열기, ${release.displayGroup}, ${formatReleaseMeta(release)}, ${matchKind}`;
+}
+
+function buildUpcomingResultAccessibilityLabel(result: SearchUpcomingResultModel): string {
+  return `${result.upcoming.displayGroup} 예정 정보 열기, ${result.upcoming.releaseLabel ?? result.upcoming.headline}, ${formatUpcomingMeta(result)}, ${result.matchKind}`;
+}
+
 export default function SearchTabScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{
@@ -268,12 +280,14 @@ export default function SearchTabScreen() {
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <View style={styles.header}>
         <Text style={styles.eyebrow}>SEARCH TAB</Text>
-        <Text style={styles.title}>Search</Text>
+        <Text accessibilityRole="header" style={styles.title}>Search</Text>
         <Text style={styles.body}>한글 별칭, 영문 그룹명, 릴리즈명, 예정 headline까지 같은 selector semantics로 찾습니다.</Text>
       </View>
 
       <View style={styles.searchCard}>
         <TextInput
+          accessibilityHint="팀, 릴리즈, 예정 키워드를 입력해 검색합니다."
+          accessibilityLabel="팀, 앨범, 곡, 별칭 검색"
           testID="search-input"
           value={query}
           onChangeText={setQuery}
@@ -288,6 +302,7 @@ export default function SearchTabScreen() {
         {query.trim() ? (
           <Pressable
             testID="search-clear-button"
+            accessibilityLabel="검색어 지우기"
             accessibilityRole="button"
             onPress={() => setQuery('')}
             style={styles.inlineButton}
@@ -306,6 +321,8 @@ export default function SearchTabScreen() {
           <Pressable
             key={segment}
             testID={`search-segment-${segment}`}
+            accessibilityLabel={`${label} 결과 ${segmentCounts[segment]}건`}
+            accessibilityHint="검색 결과 구간을 바꿉니다."
             accessibilityRole="button"
             accessibilityState={{ selected: activeSegment === segment }}
             onPress={() => setActiveSegment(segment)}
@@ -329,10 +346,11 @@ export default function SearchTabScreen() {
         <>
           <View style={styles.sectionCard}>
             <View style={styles.sectionHeader}>
-              <Text style={styles.sectionTitle}>최근 검색</Text>
+              <Text accessibilityRole="header" style={styles.sectionTitle}>최근 검색</Text>
               {recentQueries.length ? (
                 <Pressable
                   testID="search-clear-history"
+                  accessibilityLabel="최근 검색 전체 삭제"
                   accessibilityRole="button"
                   onPress={() => void handleClearHistory()}
                   style={styles.inlineButton}
@@ -348,6 +366,7 @@ export default function SearchTabScreen() {
                   <Pressable
                     key={recentQuery}
                     testID={`recent-query-${recentQuery}`}
+                    accessibilityLabel={`${recentQuery} 다시 검색`}
                     accessibilityRole="button"
                     onPress={() => void handleRecentQueryPress(recentQuery)}
                     style={({ pressed }) => [styles.historyChip, pressed ? styles.segmentButtonPressed : null]}
@@ -362,12 +381,13 @@ export default function SearchTabScreen() {
           </View>
 
           <View style={styles.sectionCard}>
-            <Text style={styles.sectionTitle}>추천 팀</Text>
+            <Text accessibilityRole="header" style={styles.sectionTitle}>추천 팀</Text>
             <View style={styles.suggestedGrid}>
               {suggestedTeams.map((team) => (
                 <Pressable
                   key={team.slug}
                   testID={`suggested-team-${team.slug}`}
+                  accessibilityLabel={`${team.displayName} 팀 열기`}
                   accessibilityRole="button"
                   onPress={() => openTeamDetail(team.slug)}
                   style={({ pressed }) => [styles.suggestedCard, pressed ? styles.segmentButtonPressed : null]}
@@ -385,7 +405,7 @@ export default function SearchTabScreen() {
       ) : (
         <View style={styles.sectionCard}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>검색 결과</Text>
+            <Text accessibilityRole="header" style={styles.sectionTitle}>검색 결과</Text>
             <Text style={styles.sectionMeta}>{segmentCounts[activeSegment]}건</Text>
           </View>
 
@@ -397,6 +417,7 @@ export default function SearchTabScreen() {
             ? results.entities.map((result) => (
                 <Pressable
                   key={result.team.slug}
+                  accessibilityLabel={buildTeamResultAccessibilityLabel(result)}
                   accessibilityRole="button"
                   onPress={() => openTeamDetail(result.team.slug)}
                   style={({ pressed }) => [styles.resultRow, pressed ? styles.segmentButtonPressed : null]}
@@ -419,6 +440,7 @@ export default function SearchTabScreen() {
             ? results.releases.map((result) => (
                 <Pressable
                   key={result.release.id}
+                  accessibilityLabel={buildReleaseResultAccessibilityLabel(result.release, result.matchKind)}
                   accessibilityRole="button"
                   onPress={() => openReleaseDetail(result.release.id)}
                   style={({ pressed }) => [styles.resultRow, pressed ? styles.segmentButtonPressed : null]}
@@ -441,14 +463,21 @@ export default function SearchTabScreen() {
             ? results.upcoming.map((result) => (
                 <Pressable
                   key={result.upcoming.id}
+                  accessibilityLabel={buildUpcomingResultAccessibilityLabel(result)}
                   accessibilityRole="button"
+                  accessibilityState={{ disabled: !teamSlugByGroup.get(result.upcoming.group) }}
+                  disabled={!teamSlugByGroup.get(result.upcoming.group)}
                   onPress={() => {
                     const slug = teamSlugByGroup.get(result.upcoming.group);
                     if (slug) {
                       openTeamDetail(slug);
                     }
                   }}
-                  style={({ pressed }) => [styles.resultRow, pressed ? styles.segmentButtonPressed : null]}
+                  style={({ pressed }) => [
+                    styles.resultRow,
+                    !teamSlugByGroup.get(result.upcoming.group) ? styles.disabledButton : null,
+                    pressed ? styles.segmentButtonPressed : null,
+                  ]}
                 >
                   <View style={styles.resultLeadingBadge}>
                     <Text style={styles.resultLeadingBadgeLabel}>
@@ -531,6 +560,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     inlineButton: {
       alignSelf: 'flex-start',
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.button,
@@ -543,6 +573,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     segmentRow: {
       flexDirection: 'row',
@@ -550,6 +582,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     segmentButton: {
       flex: 1,
+      minHeight: 48,
       borderRadius: theme.radius.button,
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
@@ -571,12 +604,16 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     segmentLabelActive: {
       color: theme.colors.text.brand,
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     segmentCount: {
       color: theme.colors.text.tertiary,
@@ -626,6 +663,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
       backgroundColor: theme.colors.surface.base,
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
     },
@@ -634,6 +672,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.buttonService.fontSize,
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: theme.typography.buttonService.fontWeight,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     suggestedGrid: {
       gap: theme.space[8],
@@ -679,6 +719,9 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       paddingTop: theme.space[12],
       borderTopWidth: 1,
       borderTopColor: theme.colors.border.subtle,
+    },
+    disabledButton: {
+      opacity: 0.5,
     },
     resultLeadingBadge: {
       width: 44,

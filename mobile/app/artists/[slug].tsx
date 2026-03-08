@@ -96,6 +96,10 @@ function buildOfficialLinks(team: TeamSummaryModel): OfficialLinkItem[] {
   ].filter((item): item is OfficialLinkItem => item !== null);
 }
 
+function buildOfficialLinkAccessibilityLabel(team: TeamSummaryModel, link: OfficialLinkItem): string {
+  return `${team.displayName} 공식 ${link.label} 열기`;
+}
+
 async function openExternalUrl(url: string) {
   try {
     await Linking.openURL(url);
@@ -251,6 +255,8 @@ export default function ArtistDetailScreen() {
 
       <View style={styles.appBar}>
         <Pressable
+          accessibilityHint="이전 화면으로 돌아갑니다."
+          accessibilityLabel="뒤로 가기"
           accessibilityRole="button"
           onPress={() => router.back()}
           style={({ pressed }) => [styles.backButton, pressed ? styles.buttonPressed : null]}
@@ -263,7 +269,7 @@ export default function ArtistDetailScreen() {
       <View style={styles.heroCard}>
         <EntityBadge team={snapshot.team} styles={styles} />
         <View style={styles.heroCopy}>
-          <Text testID="entity-detail-title" style={styles.heroTitle}>
+          <Text accessibilityRole="header" testID="entity-detail-title" style={styles.heroTitle}>
             {snapshot.team.displayName}
           </Text>
           <Text style={styles.heroMeta}>{snapshot.team.agency ?? '소속사 정보 없음'}</Text>
@@ -279,6 +285,8 @@ export default function ArtistDetailScreen() {
             <Pressable
               key={link.key}
               testID={`entity-official-link-${link.key}`}
+              accessibilityLabel={buildOfficialLinkAccessibilityLabel(snapshot.team, link)}
+              accessibilityHint="외부 공식 페이지를 엽니다."
               accessibilityRole="button"
               onPress={() => void openExternalUrl(link.url)}
               style={({ pressed }) => [styles.linkChip, pressed ? styles.buttonPressed : null]}
@@ -299,6 +307,7 @@ export default function ArtistDetailScreen() {
             <Text style={styles.primaryCardBody}>{snapshot.nextUpcoming.headline}</Text>
             {snapshot.nextUpcoming.sourceUrl ? (
               <Pressable
+                accessibilityLabel={`${snapshot.team.displayName} 다음 컴백 출처 열기`}
                 accessibilityRole="button"
                 onPress={() => void openExternalUrl(snapshot.nextUpcoming!.sourceUrl!)}
                 style={({ pressed }) => [styles.metaButton, pressed ? styles.buttonPressed : null]}
@@ -316,6 +325,7 @@ export default function ArtistDetailScreen() {
         {snapshot.latestRelease ? (
           <Pressable
             testID="entity-latest-release-card"
+            accessibilityLabel={`${snapshot.latestRelease.releaseTitle} 릴리즈 상세 열기`}
             accessibilityRole="button"
             onPress={() =>
               router.push({
@@ -354,6 +364,7 @@ export default function ArtistDetailScreen() {
               <Pressable
                 key={release.id}
                 testID={`entity-recent-album-card-${release.id}`}
+                accessibilityLabel={`${release.releaseTitle} 릴리즈 상세 열기`}
                 accessibilityRole="button"
                 onPress={() =>
                   router.push({
@@ -394,6 +405,7 @@ export default function ArtistDetailScreen() {
                 </View>
                 {item.sourceUrl ? (
                   <Pressable
+                    accessibilityLabel={`${item.title} 소스 링크 열기`}
                     accessibilityRole="button"
                     onPress={() => void openExternalUrl(item.sourceUrl!)}
                     style={({ pressed }) => [styles.metaButton, pressed ? styles.buttonPressed : null]}
@@ -423,7 +435,7 @@ function SectionCard({
 }) {
   return (
     <View style={styles.sectionCard}>
-      <Text style={styles.sectionTitle}>{title}</Text>
+      <Text accessibilityRole="header" style={styles.sectionTitle}>{title}</Text>
       {children}
     </View>
   );
@@ -452,6 +464,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       color: theme.colors.text.tertiary,
     },
     backButton: {
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.button,
@@ -464,9 +477,13 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: '600',
       color: theme.colors.text.primary,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     heroCard: {
       flexDirection: 'row',
+      flexWrap: 'wrap',
+      alignItems: 'flex-start',
       gap: theme.space[16],
       padding: theme.space[16],
       borderRadius: theme.radius.card,
@@ -520,6 +537,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       gap: theme.space[8],
     },
     linkChip: {
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.chip,
@@ -532,6 +550,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       lineHeight: theme.typography.chip.lineHeight,
       fontWeight: '600',
       color: theme.colors.text.secondary,
+      flexShrink: 1,
+      textAlign: 'center',
     },
     sectionCard: {
       gap: theme.space[12],
@@ -669,6 +689,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       color: theme.colors.text.secondary,
     },
     metaButton: {
+      minHeight: 44,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.chip,
@@ -681,6 +702,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       lineHeight: theme.typography.meta.lineHeight,
       color: theme.colors.text.secondary,
       fontWeight: '600',
+      flexShrink: 1,
+      textAlign: 'center',
     },
     emptyCopy: {
       fontSize: theme.typography.body.fontSize,

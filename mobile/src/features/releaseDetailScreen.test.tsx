@@ -95,6 +95,9 @@ describe('mobile release detail screen', () => {
     const tree = await renderReleaseDetail();
 
     expect(tree.root.findByProps({ testID: 'release-detail-title' }).props.children).toBe('LOVE CATCHER');
+    expect(tree.root.findByProps({ testID: 'release-service-spotify' }).props.accessibilityLabel).toBe(
+      'Spotify에서 LOVE CATCHER 열기',
+    );
     expect(tree.root.findByProps({ testID: 'release-service-spotify' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-service-youtube-music' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-service-youtube-mv' })).toBeDefined();

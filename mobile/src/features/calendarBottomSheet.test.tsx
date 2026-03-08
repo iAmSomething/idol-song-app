@@ -111,6 +111,7 @@ describe('calendar selected-day bottom sheet', () => {
     const tree = await renderCalendarScreen();
 
     expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' }).props.accessibilityViewIsModal).toBe(true);
     expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 3월');
     expect(tree.root.findByProps({ testID: 'calendar-filter-upcoming' }).props.accessibilityState.selected).toBe(
       true,
