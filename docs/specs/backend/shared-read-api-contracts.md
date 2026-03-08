@@ -335,15 +335,74 @@
       "watch_reason": "recent_release",
       "tracking_status": "recent_release"
     },
-    "next_upcoming": null,
+    "next_upcoming": {
+      "upcoming_signal_id": "upcoming_txt_example",
+      "headline": "TXT, 3월 12일 컴백 확정",
+      "scheduled_date": "2026-03-12",
+      "scheduled_month": "2026-03",
+      "date_precision": "exact",
+      "date_status": "confirmed",
+      "release_format": "mini",
+      "confidence_score": 0.91,
+      "latest_seen_at": "2026-03-06T03:00:00Z",
+      "source_type": "agency_notice",
+      "source_url": "https://ibighit.com/txt/example",
+      "source_domain": "ibighit.com",
+      "evidence_summary": "BIGHIT MUSIC confirmed the March 12 comeback date.",
+      "source_count": 2
+    },
     "latest_release": {
       "release_id": "rel_txt_example",
       "release_title": "Example",
       "release_date": "2026-02-27",
-      "stream": "album"
+      "stream": "album",
+      "release_kind": "mini",
+      "release_format": "mini",
+      "artwork": {
+        "cover_image_url": "https://cdn.example.com/txt-example-cover.jpg",
+        "thumbnail_image_url": "https://cdn.example.com/txt-example-thumb.jpg",
+        "artwork_source_type": "releaseArtwork.cover_image_url",
+        "artwork_source_url": "https://artwork.example.com/txt-example",
+        "is_placeholder": false
+      }
     },
-    "recent_albums": [],
-    "source_timeline": []
+    "recent_albums": [
+      {
+        "release_id": "rel_txt_example",
+        "release_title": "Example",
+        "release_date": "2026-02-27",
+        "stream": "album",
+        "release_kind": "mini",
+        "release_format": "mini",
+        "artwork": {
+          "cover_image_url": "https://cdn.example.com/txt-example-cover.jpg",
+          "thumbnail_image_url": "https://cdn.example.com/txt-example-thumb.jpg",
+          "artwork_source_type": "releaseArtwork.cover_image_url",
+          "artwork_source_url": "https://artwork.example.com/txt-example",
+          "is_placeholder": false
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "event_type": "official_announcement",
+        "headline": "TXT, 3월 12일 컴백 확정",
+        "occurred_at": "2026-03-06T03:00:00Z",
+        "summary": "mini · confirmed · 2026-03-12",
+        "source_url": "https://ibighit.com/txt/example",
+        "source_type": "agency_notice",
+        "source_domain": "ibighit.com",
+        "published_at": "2026-03-06T03:00:00Z",
+        "scheduled_date": "2026-03-12",
+        "scheduled_month": "2026-03",
+        "date_precision": "exact",
+        "date_status": "confirmed",
+        "release_format": "mini",
+        "confidence_score": 0.91,
+        "evidence_summary": "BIGHIT MUSIC confirmed the March 12 comeback date.",
+        "source_count": 2
+      }
+    ]
   }
 }
 ```
@@ -351,8 +410,11 @@
 ### 7.5 Server-side Rules
 
 - `next_upcoming`은 exact future date 우선이며 없으면 `null`
+- `next_upcoming`은 mobile next-comeback card가 바로 렌더되도록 source/meta(`source_type`, `source_url`, `source_domain`, `evidence_summary`, `source_count`)를 포함한다
 - official links는 deduped canonical URL만 준다
-- recent album selection rule은 서버가 고정한다
+- latest release와 recent album card는 `release_format`과 nested `artwork` shape를 항상 포함한다
+- recent album selection rule은 서버가 고정하며 `album` stream 기준 최신순 최대 `12`개다
+- `source_timeline`를 shared contract로 유지하는 동안 item shape는 `event_type`, `occurred_at`, `summary`, source/date meta까지 포함한 구조로 고정한다
 
 ## 8. `GET /v1/releases/:id`
 
