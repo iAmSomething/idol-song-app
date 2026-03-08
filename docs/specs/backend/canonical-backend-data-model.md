@@ -169,6 +169,10 @@ Constraint:
 | `artist_source_url` | `text null` | artist-specific source |
 | `musicbrainz_artist_id` | `text null` | external source key |
 | `musicbrainz_release_group_id` | `text null` | external source key |
+| `detail_status` | `text` | `verified | inferred | manual_override | review_needed | unresolved` |
+| `detail_provenance` | `text` | explicit release-detail source note |
+| `title_track_status` | `text` | release-level title-track verification state |
+| `title_track_provenance` | `text` | explicit title-track source note |
 | `notes` | `text null` | import note |
 | `created_at` | `timestamptz` | audit |
 | `updated_at` | `timestamptz` | audit |
@@ -196,7 +200,7 @@ Constraint:
 | `track_order` | `int` | sequence order |
 | `track_title` | `text` | raw title |
 | `normalized_track_title` | `text` | compare/search key |
-| `is_title_track` | `boolean null` | supports double-title |
+| `is_title_track` | `boolean null` | final per-track flag; release-level provenance lives on `releases.title_track_*` |
 
 Constraint:
 
@@ -496,8 +500,8 @@ Constraint:
 
 - history import creates or upserts `releases`
 - artwork enrichment updates `release_artwork`
-- detail enrichment writes `tracks`, `release_service_links`, `track_service_links`
-- title-track tagging updates `tracks.is_title_track`
+- detail enrichment writes `releases.detail_*`, `releases.title_track_*`, `tracks`, `release_service_links`, `track_service_links`
+- title-track tagging updates both `tracks.is_title_track` and release-level provenance columns
 
 ### 9.3 Upcoming ingestion
 

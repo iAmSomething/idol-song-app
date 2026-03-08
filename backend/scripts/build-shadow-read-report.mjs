@@ -1504,6 +1504,10 @@ function getReleaseDetail(group, releaseTitle, releaseDate, stream, releaseKind,
       release_date: releaseDate,
       stream: normalizedStream,
       release_kind: releaseKind === 'album' || releaseKind === 'ep' ? releaseKind : 'single',
+      detail_status: 'unresolved',
+      detail_provenance: 'releaseDetails.missing_row',
+      title_track_status: 'unresolved',
+      title_track_provenance: 'releaseDetails.missing_row',
       tracks: [],
       spotify_url: null,
       youtube_music_url: null,
@@ -2330,6 +2334,14 @@ function buildReleaseExpected(definition, state) {
         stream: release.stream,
         release_kind: release.release_kind ?? null,
       },
+      detail_metadata: {
+        status: detail.detail_status ?? 'unresolved',
+        provenance: detail.detail_provenance ?? 'releaseDetails.missing_row',
+      },
+      title_track_metadata: {
+        status: detail.title_track_status ?? 'unresolved',
+        provenance: detail.title_track_provenance ?? 'releaseDetails.missing_row',
+      },
       artwork: {
         cover_image_url: artwork.cover_image_url ?? null,
         thumbnail_image_url: artwork.thumbnail_image_url ?? null,
@@ -3065,6 +3077,25 @@ function compareReleaseDetailCase(expected, actual) {
     });
   }
 
+  if (JSON.stringify(expected.detail.detail_metadata ?? null) !== JSON.stringify(actual?.detail?.detail_metadata ?? null)) {
+    addMismatch(result, 'title-track / MV-state drift', {
+      path: 'data.detail.detail_metadata',
+      expected: expected.detail.detail_metadata ?? null,
+      actual: actual?.detail?.detail_metadata ?? null,
+    });
+  }
+
+  if (
+    JSON.stringify(expected.detail.title_track_metadata ?? null) !==
+    JSON.stringify(actual?.detail?.title_track_metadata ?? null)
+  ) {
+    addMismatch(result, 'title-track / MV-state drift', {
+      path: 'data.detail.title_track_metadata',
+      expected: expected.detail.title_track_metadata ?? null,
+      actual: actual?.detail?.title_track_metadata ?? null,
+    });
+  }
+
   const expectedArtwork = expected.detail.artwork;
   const actualArtwork = actual?.detail?.artwork ?? null;
   if (JSON.stringify(expectedArtwork) !== JSON.stringify(actualArtwork)) {
@@ -3557,6 +3588,8 @@ function runSelfCheck() {
           stream: 'album',
           release_kind: 'ep',
         },
+        detail_metadata: { status: 'verified', provenance: 'releaseDetails.existing_row' },
+        title_track_metadata: { status: 'inferred', provenance: 'release_title_substring' },
         artwork: {},
         service_links: {
           spotify: { url: null, status: 'no_link' },
@@ -3589,6 +3622,8 @@ function runSelfCheck() {
           stream: 'album',
           release_kind: 'ep',
         },
+        detail_metadata: { status: 'verified', provenance: 'releaseDetails.existing_row' },
+        title_track_metadata: { status: 'manual_override', provenance: 'release_detail_overrides.title_tracks' },
         artwork: {},
         service_links: {
           spotify: { url: null, status: 'no_link' },

@@ -2,6 +2,7 @@ import csv
 import json
 import re
 import unicodedata
+from collections import Counter
 from datetime import date
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -15,6 +16,12 @@ OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 AUDIT_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_report.json"
 TITLE_TRACK_REVIEW_JSON_PATH = ROOT / "title_track_manual_review_queue.json"
 TITLE_TRACK_REVIEW_CSV_PATH = ROOT / "title_track_manual_review_queue.csv"
+
+DETAIL_STATUS_VERIFIED = "verified"
+DETAIL_STATUS_INFERRED = "inferred"
+DETAIL_STATUS_MANUAL = "manual_override"
+DETAIL_STATUS_REVIEW = "review_needed"
+DETAIL_STATUS_UNRESOLVED = "unresolved"
 
 YOUTUBE_VIDEO_STATUS_RELATION = "relation_match"
 YOUTUBE_VIDEO_STATUS_MANUAL = "manual_override"
@@ -195,6 +202,88 @@ def build_placeholder_note(item: Dict) -> str:
     )
 
 
+def is_placeholder_like_detail(detail: Dict, item: Dict) -> bool:
+    return (
+        not normalize_tracks(detail.get("tracks"))
+        and optional_text(detail.get("spotify_url")) is None
+        and optional_text(detail.get("youtube_music_url")) is None
+        and optional_text(detail.get("youtube_video_url")) is None
+        and optional_text(detail.get("youtube_video_id")) is None
+        and (optional_text(detail.get("notes")) or "") == build_placeholder_note(item)
+    )
+
+
+def serialize_candidate_sources(candidates: List[Dict]) -> Optional[str]:
+    flattened_sources: List[str] = []
+    for candidate in candidates:
+        for source in candidate.get("sources", []):
+            if source and source not in flattened_sources:
+                flattened_sources.append(source)
+
+    if not flattened_sources:
+        return None
+    return " | ".join(flattened_sources)
+
+
+def derive_existing_detail_metadata(item: Dict, existing: Dict, is_relaxed_match: bool) -> Tuple[str, Optional[str]]:
+    explicit_status = optional_text(existing.get("detail_status"))
+    explicit_provenance = optional_text(existing.get("detail_provenance"))
+    if explicit_status:
+        if (
+            explicit_status == DETAIL_STATUS_UNRESOLVED
+            and explicit_provenance == "releaseHistory.placeholder_seed"
+            and is_placeholder_like_detail(existing, item)
+        ):
+            return DETAIL_STATUS_INFERRED, "releaseHistory.placeholder_seed"
+        return explicit_status, explicit_provenance
+
+    if is_relaxed_match:
+        return DETAIL_STATUS_INFERRED, "releaseDetails.relaxed_date_match"
+
+    if is_placeholder_like_detail(existing, item):
+        return DETAIL_STATUS_INFERRED, "releaseHistory.placeholder_seed"
+
+    return DETAIL_STATUS_VERIFIED, "releaseDetails.existing_row"
+
+
+def derive_existing_mv_provenance(item: Dict, existing: Dict, youtube_video_status: str) -> Optional[str]:
+    explicit_provenance = optional_text(existing.get("youtube_video_provenance"))
+    if explicit_provenance:
+        return explicit_provenance
+
+    if youtube_video_status == YOUTUBE_VIDEO_STATUS_RELATION and (
+        optional_text(existing.get("youtube_video_url")) or optional_text(existing.get("youtube_video_id"))
+    ):
+        return "releaseDetails.youtube_video_url"
+
+    if youtube_video_status == YOUTUBE_VIDEO_STATUS_UNRESOLVED and is_placeholder_like_detail(existing, item):
+        return "releaseHistory.placeholder_seed"
+
+    if youtube_video_status == YOUTUBE_VIDEO_STATUS_UNRESOLVED:
+        return "releaseDetails.no_mv_signal"
+
+    return None
+
+
+def derive_title_track_metadata(status: str, selected_titles: List[str], candidates: List[Dict]) -> Tuple[str, Optional[str]]:
+    if status == TITLE_TRACK_STATUS_MANUAL:
+        return DETAIL_STATUS_MANUAL, "release_detail_overrides.title_tracks"
+    if status == TITLE_TRACK_STATUS_EXISTING:
+        return DETAIL_STATUS_VERIFIED, "releaseDetails.existing_title_flags"
+    if status in {TITLE_TRACK_STATUS_AUTO_SINGLE, TITLE_TRACK_STATUS_AUTO_DOUBLE}:
+        return DETAIL_STATUS_INFERRED, serialize_candidate_sources(candidates) or "title_track_inference"
+    if status == TITLE_TRACK_STATUS_REVIEW:
+        return DETAIL_STATUS_REVIEW, serialize_candidate_sources(candidates) or "mixed_title_track_candidates"
+    if status == TITLE_TRACK_STATUS_NO_TRACKS:
+        return DETAIL_STATUS_UNRESOLVED, "no_tracklist"
+    if status == TITLE_TRACK_STATUS_UNRESOLVED:
+        return DETAIL_STATUS_UNRESOLVED, "no_dependable_title_track_signal"
+
+    if selected_titles:
+        return DETAIL_STATUS_VERIFIED, None
+    return DETAIL_STATUS_UNRESOLVED, None
+
+
 def build_empty_detail(item: Dict) -> Dict:
     return {
         "group": item["group"],
@@ -202,13 +291,17 @@ def build_empty_detail(item: Dict) -> Dict:
         "release_date": item["release_date"],
         "stream": item["stream"],
         "release_kind": item["release_kind"],
+        "detail_status": DETAIL_STATUS_INFERRED,
+        "detail_provenance": "releaseHistory.placeholder_seed",
+        "title_track_status": DETAIL_STATUS_UNRESOLVED,
+        "title_track_provenance": "no_tracklist",
         "tracks": [],
         "spotify_url": None,
         "youtube_music_url": None,
         "youtube_video_url": None,
         "youtube_video_id": None,
         "youtube_video_status": YOUTUBE_VIDEO_STATUS_UNRESOLVED,
-        "youtube_video_provenance": None,
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
         "notes": build_placeholder_note(item),
     }
 
@@ -492,7 +585,7 @@ def select_relaxed_existing_detail(item: Dict, candidates: List[Dict]) -> Option
     return best_match
 
 
-def normalize_existing_detail(item: Dict, existing: Dict) -> Dict:
+def normalize_existing_detail(item: Dict, existing: Dict, is_relaxed_match: bool) -> Dict:
     youtube_video_url = optional_text(existing.get("youtube_video_url"))
     youtube_video_id = optional_text(existing.get("youtube_video_id"))
     if youtube_video_id is None and youtube_video_url:
@@ -505,6 +598,7 @@ def normalize_existing_detail(item: Dict, existing: Dict) -> Dict:
         youtube_video_status = (
             YOUTUBE_VIDEO_STATUS_RELATION if youtube_video_url or youtube_video_id else YOUTUBE_VIDEO_STATUS_UNRESOLVED
         )
+    detail_status, detail_provenance = derive_existing_detail_metadata(item, existing, is_relaxed_match)
 
     return {
         "group": item["group"],
@@ -512,13 +606,17 @@ def normalize_existing_detail(item: Dict, existing: Dict) -> Dict:
         "release_date": item["release_date"],
         "stream": item["stream"],
         "release_kind": item["release_kind"],
+        "detail_status": detail_status,
+        "detail_provenance": detail_provenance,
+        "title_track_status": optional_text(existing.get("title_track_status")),
+        "title_track_provenance": optional_text(existing.get("title_track_provenance")),
         "tracks": normalize_tracks(existing.get("tracks")),
         "spotify_url": optional_text(existing.get("spotify_url")),
         "youtube_music_url": optional_text(existing.get("youtube_music_url")),
         "youtube_video_url": youtube_video_url,
         "youtube_video_id": youtube_video_id,
         "youtube_video_status": youtube_video_status,
-        "youtube_video_provenance": optional_text(existing.get("youtube_video_provenance")),
+        "youtube_video_provenance": derive_existing_mv_provenance(item, existing, youtube_video_status),
         "notes": optional_text(existing.get("notes")) or build_placeholder_note(item),
     }
 
@@ -641,6 +739,14 @@ def apply_detail_override(
         title_track_resolution = infer_title_track_resolution(detail, song_release_index)
         if title_track_resolution["selected_titles"]:
             detail["tracks"] = mark_title_tracks(detail.get("tracks", []), title_track_resolution["selected_titles"])
+
+    title_track_status, title_track_provenance = derive_title_track_metadata(
+        title_track_resolution["status"],
+        title_track_resolution["selected_titles"],
+        title_track_resolution["candidates"],
+    )
+    detail["title_track_status"] = title_track_status
+    detail["title_track_provenance"] = title_track_provenance
 
     return detail, bool(override), title_track_resolution
 
@@ -822,6 +928,50 @@ def build_title_track_spot_checks(details_after: List[Dict], title_track_resolut
     return unique_samples
 
 
+def build_verification_state_samples(details_after: List[Dict]) -> Dict[str, Optional[Dict]]:
+    def build_sample(row: Dict) -> Dict:
+        return {
+            "group": row["group"],
+            "release_title": row["release_title"],
+            "release_date": row["release_date"],
+            "stream": row["stream"],
+            "detail_status": row.get("detail_status"),
+            "detail_provenance": row.get("detail_provenance"),
+            "title_track_status": row.get("title_track_status"),
+            "title_track_provenance": row.get("title_track_provenance"),
+            "youtube_video_status": row.get("youtube_video_status"),
+            "youtube_video_provenance": row.get("youtube_video_provenance"),
+            "title_tracks": [track["title"] for track in row.get("tracks", []) if track.get("is_title_track")],
+            "track_count": len(row.get("tracks", [])),
+        }
+
+    def first_match(predicate) -> Optional[Dict]:
+        for row in details_after:
+            if predicate(row):
+                return build_sample(row)
+        return None
+
+    return {
+        "verified": first_match(lambda row: row.get("detail_status") == DETAIL_STATUS_VERIFIED),
+        "inferred": first_match(
+            lambda row: row.get("detail_status") == DETAIL_STATUS_INFERRED
+            or row.get("title_track_status") == DETAIL_STATUS_INFERRED
+        ),
+        "manual_override": first_match(lambda row: row.get("title_track_status") == DETAIL_STATUS_MANUAL)
+        or first_match(lambda row: row.get("youtube_video_status") == YOUTUBE_VIDEO_STATUS_MANUAL),
+        "relation_derived_mv": first_match(lambda row: row.get("youtube_video_status") == YOUTUBE_VIDEO_STATUS_RELATION),
+        "review_needed": first_match(
+            lambda row: row.get("title_track_status") == DETAIL_STATUS_REVIEW
+            or row.get("youtube_video_status") == YOUTUBE_VIDEO_STATUS_REVIEW
+        ),
+        "unresolved": first_match(
+            lambda row: row.get("detail_status") == DETAIL_STATUS_UNRESOLVED
+            or row.get("title_track_status") == DETAIL_STATUS_UNRESOLVED
+            or row.get("youtube_video_status") == YOUTUBE_VIDEO_STATUS_UNRESOLVED
+        ),
+    }
+
+
 def build_coverage_report(
     latest_snapshot_items: List[Dict],
     full_catalog_items: List[Dict],
@@ -942,6 +1092,16 @@ def build_coverage_report(
             continue
         title_track_status_counts[resolution["status"]] = title_track_status_counts.get(resolution["status"], 0) + 1
     title_track_spot_checks = build_title_track_spot_checks(details_after, title_track_resolutions)
+    detail_status_counts = dict(
+        Counter(optional_text(row.get("detail_status")) or DETAIL_STATUS_UNRESOLVED for row in details_after)
+    )
+    release_level_title_track_status_counts = dict(
+        Counter(optional_text(row.get("title_track_status")) or DETAIL_STATUS_UNRESOLVED for row in details_after)
+    )
+    youtube_video_status_counts = dict(
+        Counter(optional_text(row.get("youtube_video_status")) or YOUTUBE_VIDEO_STATUS_UNRESOLVED for row in details_after)
+    )
+    verification_state_samples = build_verification_state_samples(details_after)
 
     return {
         "latest_snapshot_input_rows": len(latest_snapshot_items),
@@ -968,13 +1128,17 @@ def build_coverage_report(
         "rows_with_title_track_after": rows_with_title_track_after,
         "rows_without_title_track_before": rows_with_tracks_before - rows_with_title_track_before,
         "rows_without_title_track_after": rows_with_tracks_after - rows_with_title_track_after,
+        "detail_status_counts": detail_status_counts,
         "title_track_status_counts": title_track_status_counts,
+        "release_level_title_track_status_counts": release_level_title_track_status_counts,
+        "youtube_video_status_counts": youtube_video_status_counts,
         "title_track_auto_resolved_rows": title_track_status_counts.get(TITLE_TRACK_STATUS_AUTO_SINGLE, 0)
         + title_track_status_counts.get(TITLE_TRACK_STATUS_AUTO_DOUBLE, 0),
         "title_track_auto_double_rows": title_track_status_counts.get(TITLE_TRACK_STATUS_AUTO_DOUBLE, 0),
         "title_track_review_queue_rows": len(title_track_review_rows),
         "title_track_review_queue_sample": title_track_review_rows[:10],
         "title_track_spot_checks": title_track_spot_checks,
+        "verification_state_samples": verification_state_samples,
         "rows_with_youtube_music_after": sum(1 for row in details_after if optional_text(row.get("youtube_music_url"))),
         "rows_with_youtube_mv_after": sum(
             1
@@ -1027,6 +1191,7 @@ def main() -> None:
     relaxed_match_count = 0
 
     for item in items:
+        used_relaxed_match = False
         existing = existing_details.get(
             get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
         )
@@ -1040,7 +1205,8 @@ def main() -> None:
             )
             if existing is not None:
                 relaxed_match_count += 1
-        detail = normalize_existing_detail(item, existing) if existing else build_empty_detail(item)
+                used_relaxed_match = True
+        detail = normalize_existing_detail(item, existing, used_relaxed_match) if existing else build_empty_detail(item)
         detail, was_overridden, title_track_resolution = apply_detail_override(
             detail,
             override_by_key,

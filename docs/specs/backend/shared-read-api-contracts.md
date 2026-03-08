@@ -479,6 +479,8 @@ lookup helper response:
 ### 8.4 Response Responsibility
 
 - release meta
+- release-detail verification metadata
+- title-track verification metadata
 - artwork
 - release-level service links
 - tracks with `is_title_track`
@@ -503,6 +505,14 @@ lookup helper response:
       "release_date": "2026-02-27",
       "stream": "album",
       "release_kind": "mini"
+    },
+    "detail_metadata": {
+      "status": "verified",
+      "provenance": "releaseDetails.existing_row"
+    },
+    "title_track_metadata": {
+      "status": "manual_override",
+      "provenance": "release_detail_overrides.title_tracks"
     },
     "artwork": {
       "cover_image_url": "https://..."
@@ -542,8 +552,10 @@ lookup helper response:
 
 ### 8.6 Server-side Rules
 
-- title-track tagging은 API가 final state만 내려준다
-- MV object는 canonical / unresolved / needs_review 의미론을 그대로 노출한다
+- `detail_metadata.status`와 `title_track_metadata.status`는 `verified | inferred | manual_override | review_needed | unresolved` 중 하나다
+- `detail_metadata.provenance`와 `title_track_metadata.provenance`는 null 대신 명시적 source string을 유지한다
+- title-track tagging은 API가 final state와 그 provenance를 함께 내려준다
+- MV object는 `relation_match | manual_override | needs_review | unresolved | no_link` 의미론을 그대로 노출한다
 - client는 `watch`, `shorts`, `youtu.be` parser를 재구현하지 않는다
 
 ## 9. `GET /v1/radar`

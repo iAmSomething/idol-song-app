@@ -60,15 +60,31 @@
   "seeded_placeholder_rows": 1653,
   "rows_with_tracks_before": 117,
   "rows_with_tracks_after": 117,
-  "rows_with_title_track_before": 77,
+  "rows_with_title_track_before": 76,
   "rows_with_title_track_after": 76,
-  "rows_without_title_track_before": 40,
+  "rows_without_title_track_before": 41,
   "rows_without_title_track_after": 41,
+  "detail_status_counts": {
+    "inferred": 1653,
+    "verified": 117
+  },
   "title_track_status_counts": {
     "preserved_existing": 75,
     "unresolved": 37,
     "review": 4,
     "manual_override": 1
+  },
+  "release_level_title_track_status_counts": {
+    "unresolved": 1690,
+    "verified": 75,
+    "review_needed": 4,
+    "manual_override": 1
+  },
+  "youtube_video_status_counts": {
+    "unresolved": 1742,
+    "manual_override": 25,
+    "relation_match": 1,
+    "needs_review": 2
   },
   "title_track_auto_resolved_rows": 0,
   "title_track_auto_double_rows": 0,
@@ -573,6 +589,99 @@
       "candidate_titles": []
     }
   ],
+  "verification_state_samples": {
+    "verified": {
+      "group": "&TEAM",
+      "release_title": "Back to Life",
+      "release_date": "2025-10-28",
+      "stream": "album",
+      "detail_status": "verified",
+      "detail_provenance": "releaseDetails.existing_row",
+      "title_track_status": "verified",
+      "title_track_provenance": "releaseDetails.existing_title_flags",
+      "youtube_video_status": "manual_override",
+      "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+      "title_tracks": [
+        "Back to Life"
+      ],
+      "track_count": 6
+    },
+    "inferred": {
+      "group": "&TEAM",
+      "release_title": "Under the skin",
+      "release_date": "2022-11-21",
+      "stream": "song",
+      "detail_status": "inferred",
+      "detail_provenance": "releaseHistory.placeholder_seed",
+      "title_track_status": "unresolved",
+      "title_track_provenance": "no_tracklist",
+      "youtube_video_status": "unresolved",
+      "youtube_video_provenance": "releaseHistory.placeholder_seed",
+      "title_tracks": [],
+      "track_count": 0
+    },
+    "manual_override": {
+      "group": "IVE",
+      "release_title": "REVIVE+",
+      "release_date": "2026-02-23",
+      "stream": "album",
+      "detail_status": "verified",
+      "detail_provenance": "releaseDetails.existing_row",
+      "title_track_status": "manual_override",
+      "title_track_provenance": "release_detail_overrides.title_tracks",
+      "youtube_video_status": "unresolved",
+      "youtube_video_provenance": "releaseDetails.no_mv_signal",
+      "title_tracks": [
+        "BLACKHOLE",
+        "BANG BANG"
+      ],
+      "track_count": 12
+    },
+    "relation_derived_mv": {
+      "group": "EXO",
+      "release_title": "I'm Home",
+      "release_date": "2025-12-13",
+      "stream": "song",
+      "detail_status": "verified",
+      "detail_provenance": "releaseDetails.existing_row",
+      "title_track_status": "verified",
+      "title_track_provenance": "releaseDetails.existing_title_flags",
+      "youtube_video_status": "relation_match",
+      "youtube_video_provenance": "musicbrainz relation url-rels",
+      "title_tracks": [
+        "I'm Home"
+      ],
+      "track_count": 1
+    },
+    "review_needed": {
+      "group": "ARTMS",
+      "release_title": "<Club Icarus>",
+      "release_date": "2025-06-13",
+      "stream": "album",
+      "detail_status": "verified",
+      "detail_provenance": "releaseDetails.existing_row",
+      "title_track_status": "review_needed",
+      "title_track_provenance": "nearby_song_release:2025-04-04 | release_title_substring",
+      "youtube_video_status": "unresolved",
+      "youtube_video_provenance": "releaseDetails.no_mv_signal",
+      "title_tracks": [],
+      "track_count": 6
+    },
+    "unresolved": {
+      "group": "&TEAM",
+      "release_title": "Under the skin",
+      "release_date": "2022-11-21",
+      "stream": "song",
+      "detail_status": "inferred",
+      "detail_provenance": "releaseHistory.placeholder_seed",
+      "title_track_status": "unresolved",
+      "title_track_provenance": "no_tracklist",
+      "youtube_video_status": "unresolved",
+      "youtube_video_provenance": "releaseHistory.placeholder_seed",
+      "title_tracks": [],
+      "track_count": 0
+    }
+  },
   "rows_with_youtube_music_after": 52,
   "rows_with_youtube_mv_after": 26,
   "override_rows_total": 67,

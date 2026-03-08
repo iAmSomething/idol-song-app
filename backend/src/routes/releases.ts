@@ -62,8 +62,15 @@ type ReleaseTrack = {
   youtube_music: TrackServiceLink | null;
 };
 
+type VerificationMetadata = {
+  status: string | null;
+  provenance: string | null;
+};
+
 type ReleaseDetailData = {
   release: ReleaseCore;
+  detail_metadata: VerificationMetadata;
+  title_track_metadata: VerificationMetadata;
   artwork: Record<string, unknown> | null;
   service_links: {
     spotify: ServiceLink | null;
@@ -125,6 +132,20 @@ function normalizeServiceLink(value: unknown): ServiceLink | null {
 
   return {
     url: asNullableString(value.url),
+    status: asNullableString(value.status),
+    provenance: asNullableString(value.provenance),
+  };
+}
+
+function normalizeVerificationMetadata(value: unknown): VerificationMetadata {
+  if (!isRecord(value)) {
+    return {
+      status: null,
+      provenance: null,
+    };
+  }
+
+  return {
     status: asNullableString(value.status),
     provenance: asNullableString(value.provenance),
   };
@@ -213,6 +234,8 @@ function normalizeReleaseDetailPayload(payload: unknown, releaseId: string): Rel
 
   return {
     release,
+    detail_metadata: normalizeVerificationMetadata(payload.detail_metadata),
+    title_track_metadata: normalizeVerificationMetadata(payload.title_track_metadata),
     artwork: isRecord(payload.artwork) ? payload.artwork : null,
     service_links: {
       spotify: normalizeServiceLink(isRecord(payload.service_links) ? payload.service_links.spotify : null),

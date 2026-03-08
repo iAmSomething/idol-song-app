@@ -1,29 +1,31 @@
 {
-  "generated_at": "2026-03-07T07:30:27.929305+00:00",
+  "generated_at": "2026-03-08T23:52:50.767543+00:00",
   "source_counts": {
-    "artist_profiles": 116,
+    "artist_profiles": 117,
+    "team_badge_assets": 77,
     "youtube_allowlists": 108,
-    "release_details": 117,
-    "release_history_groups": 115,
-    "release_history_rows": 1767,
+    "release_details": 1770,
+    "release_history_groups": 116,
+    "release_history_rows": 1770,
     "release_artwork": 117,
     "upcoming_candidates": 71,
-    "watchlist": 116,
+    "watchlist": 117,
     "release_detail_overrides": 67,
     "manual_review_queue": 67,
-    "mv_manual_review_queue": 34,
-    "releases_rollup": 80
+    "mv_manual_review_queue": 50,
+    "releases_rollup": 81
   },
   "source_duplicates": {
     "entity_aliases": 1,
-    "youtube_channels": 25
+    "youtube_channels": 25,
+    "upcoming_signals": 12
   },
   "dropped_records": {},
   "dropped_missing_fk_samples": {},
   "unresolved_release_mappings": [],
   "unresolved_review_links": [],
   "entity_type_counts": {
-    "group": 104,
+    "group": 105,
     "project": 1,
     "unit": 4,
     "solo": 7
@@ -44,11 +46,11 @@
       "&TEAM | 2023-11-15 | album | First Howling : NOW"
     ],
     "upcoming_signals": [
-      "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
-      "AB6IX announces March comeback with their first full album in 5 years - allkpop",
-      "AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop",
-      "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
-      "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop"
+      "BABYMONSTER’s B-Side Track From Two Years Ago Makes a Reverse Chart Run… Reappears on ‘M Countdown’ → Live Clip Released",
+      "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”",
+      "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed",
+      "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed",
+      "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing"
     ],
     "review_tasks": [
       "upcoming_signal",
@@ -63,13 +65,13 @@
   },
   "operation_counts": {
     "entities": {
-      "updated": 116
+      "updated": 117
     },
     "entity_aliases": {
-      "updated": 166
+      "updated": 168
     },
     "entity_official_links": {
-      "updated": 425
+      "updated": 429
     },
     "youtube_channels": {
       "updated": 86
@@ -78,88 +80,287 @@
       "updated": 111
     },
     "releases": {
-      "updated": 1768
+      "updated": 1771
     },
     "release_artwork": {
       "updated": 117
     },
     "tracks": {
-      "updated": 497
+      "updated": 492,
+      "inserted": 5
     },
     "release_service_links": {
-      "updated": 351
+      "inserted": 4962,
+      "updated": 350
     },
     "track_service_links": {},
     "upcoming_signals": {
-      "updated": 71
+      "updated": 59
     },
     "upcoming_signal_sources": {
       "updated": 71
     },
     "entity_tracking_state": {
-      "updated": 116
+      "updated": 117
     },
     "review_tasks": {
-      "updated": 101
+      "updated": 101,
+      "inserted": 16
     },
     "release_link_overrides": {
       "updated": 75
     }
   },
+  "dry_run": {
+    "enabled": false,
+    "writes_committed": true
+  },
   "db_row_counts": {
-    "entities": 116,
-    "entity_aliases": 166,
-    "entity_official_links": 425,
+    "entities": 117,
+    "entity_aliases": 168,
+    "entity_official_links": 429,
     "youtube_channels": 86,
     "entity_youtube_channels": 111,
-    "releases": 1768,
+    "releases": 1771,
     "release_artwork": 117,
-    "tracks": 497,
-    "release_service_links": 351,
+    "tracks": 502,
+    "release_service_links": 5313,
     "track_service_links": 0,
-    "upcoming_signals": 71,
+    "upcoming_signals": 130,
     "upcoming_signal_sources": 71,
-    "entity_tracking_state": 116,
-    "review_tasks": 101,
+    "entity_tracking_state": 117,
+    "review_tasks": 117,
     "release_link_overrides": 75
   },
   "critical_checks": {
     "entity_type_counts": {
-      "group": 104,
+      "group": 105,
       "project": 1,
       "solo": 7,
       "unit": 4
     },
     "upcoming_date_precision_counts": {
-      "exact": 7,
-      "month_only": 21,
-      "unknown": 43
+      "exact": 13,
+      "month_only": 35,
+      "unknown": 82
     },
     "youtube_mv_status_counts": {
-      "manual_override": 25,
+      "manual_override": 26,
       "needs_review": 2,
       "relation_match": 1,
-      "unresolved": 89
+      "unresolved": 1742
     },
-    "title_track_rows": 61,
-    "hangul_alias_rows": 152
+    "title_track_rows": 80,
+    "hangul_alias_rows": 153
   },
+  "mode": "apply",
   "summary_path": "backend/reports/json_to_neon_import_summary.json",
   "table_source_counts": {
-    "entities": 116,
-    "entity_aliases": 166,
-    "entity_official_links": 425,
+    "entities": 117,
+    "entity_aliases": 168,
+    "entity_official_links": 429,
     "youtube_channels": 86,
     "entity_youtube_channels": 111,
-    "releases": 1768,
+    "releases": 1771,
     "release_artwork": 117,
     "tracks": 497,
-    "release_service_links": 351,
+    "release_service_links": 5312,
     "track_service_links": 0,
-    "upcoming_signals": 71,
+    "upcoming_signals": 59,
     "upcoming_signal_sources": 71,
-    "entity_tracking_state": 116,
-    "review_tasks": 101,
+    "entity_tracking_state": 117,
+    "review_tasks": 117,
     "release_link_overrides": 75
+  },
+  "table_counts": {
+    "entities": {
+      "payload_rows": 117,
+      "db_rows_before": 117,
+      "db_rows_after": 117,
+      "projected_db_rows_after": 117,
+      "insert_candidates": 0,
+      "update_candidates": 117
+    },
+    "entity_aliases": {
+      "payload_rows": 168,
+      "db_rows_before": 168,
+      "db_rows_after": 168,
+      "projected_db_rows_after": 168,
+      "insert_candidates": 0,
+      "update_candidates": 168
+    },
+    "entity_official_links": {
+      "payload_rows": 429,
+      "db_rows_before": 429,
+      "db_rows_after": 429,
+      "projected_db_rows_after": 429,
+      "insert_candidates": 0,
+      "update_candidates": 429
+    },
+    "youtube_channels": {
+      "payload_rows": 86,
+      "db_rows_before": 86,
+      "db_rows_after": 86,
+      "projected_db_rows_after": 86,
+      "insert_candidates": 0,
+      "update_candidates": 86
+    },
+    "entity_youtube_channels": {
+      "payload_rows": 111,
+      "db_rows_before": 111,
+      "db_rows_after": 111,
+      "projected_db_rows_after": 111,
+      "insert_candidates": 0,
+      "update_candidates": 111
+    },
+    "releases": {
+      "payload_rows": 1771,
+      "db_rows_before": 1771,
+      "db_rows_after": 1771,
+      "projected_db_rows_after": 1771,
+      "insert_candidates": 0,
+      "update_candidates": 1771
+    },
+    "release_artwork": {
+      "payload_rows": 117,
+      "db_rows_before": 117,
+      "db_rows_after": 117,
+      "projected_db_rows_after": 117,
+      "insert_candidates": 0,
+      "update_candidates": 117
+    },
+    "tracks": {
+      "payload_rows": 497,
+      "db_rows_before": 497,
+      "db_rows_after": 502,
+      "projected_db_rows_after": 502,
+      "insert_candidates": 5,
+      "update_candidates": 492
+    },
+    "release_service_links": {
+      "payload_rows": 5312,
+      "db_rows_before": 351,
+      "db_rows_after": 5313,
+      "projected_db_rows_after": 5313,
+      "insert_candidates": 4962,
+      "update_candidates": 350
+    },
+    "track_service_links": {
+      "payload_rows": 0,
+      "db_rows_before": 0,
+      "db_rows_after": 0,
+      "projected_db_rows_after": 0,
+      "insert_candidates": 0,
+      "update_candidates": 0
+    },
+    "upcoming_signals": {
+      "payload_rows": 59,
+      "db_rows_before": 130,
+      "db_rows_after": 130,
+      "projected_db_rows_after": 130,
+      "insert_candidates": 0,
+      "update_candidates": 59
+    },
+    "upcoming_signal_sources": {
+      "payload_rows": 71,
+      "db_rows_before": 71,
+      "db_rows_after": 71,
+      "projected_db_rows_after": 71,
+      "insert_candidates": 0,
+      "update_candidates": 71
+    },
+    "entity_tracking_state": {
+      "payload_rows": 117,
+      "db_rows_before": 117,
+      "db_rows_after": 117,
+      "projected_db_rows_after": 117,
+      "insert_candidates": 0,
+      "update_candidates": 117
+    },
+    "review_tasks": {
+      "payload_rows": 117,
+      "db_rows_before": 101,
+      "db_rows_after": 117,
+      "projected_db_rows_after": 117,
+      "insert_candidates": 16,
+      "update_candidates": 101
+    },
+    "release_link_overrides": {
+      "payload_rows": 75,
+      "db_rows_before": 75,
+      "db_rows_after": 75,
+      "projected_db_rows_after": 75,
+      "insert_candidates": 0,
+      "update_candidates": 75
+    }
+  },
+  "anomalies": {
+    "counts": {
+      "source_duplicates_total": 38,
+      "dropped_records_total": 0,
+      "missing_fk_tables": 0,
+      "missing_fk_sample_total": 0,
+      "unresolved_release_mappings": 0,
+      "unresolved_review_links": 0,
+      "stale_review_tasks": 0
+    },
+    "by_table": {
+      "source_duplicates": {
+        "entities": 0,
+        "entity_aliases": 1,
+        "entity_official_links": 0,
+        "youtube_channels": 25,
+        "entity_youtube_channels": 0,
+        "releases": 0,
+        "release_artwork": 0,
+        "tracks": 0,
+        "release_service_links": 0,
+        "track_service_links": 0,
+        "upcoming_signals": 12,
+        "upcoming_signal_sources": 0,
+        "entity_tracking_state": 0,
+        "review_tasks": 0,
+        "release_link_overrides": 0
+      },
+      "dropped_records": {
+        "entities": 0,
+        "entity_aliases": 0,
+        "entity_official_links": 0,
+        "youtube_channels": 0,
+        "entity_youtube_channels": 0,
+        "releases": 0,
+        "release_artwork": 0,
+        "tracks": 0,
+        "release_service_links": 0,
+        "track_service_links": 0,
+        "upcoming_signals": 0,
+        "upcoming_signal_sources": 0,
+        "entity_tracking_state": 0,
+        "review_tasks": 0,
+        "release_link_overrides": 0
+      },
+      "missing_fk_sample_counts": {
+        "entities": 0,
+        "entity_aliases": 0,
+        "entity_official_links": 0,
+        "youtube_channels": 0,
+        "entity_youtube_channels": 0,
+        "releases": 0,
+        "release_artwork": 0,
+        "tracks": 0,
+        "release_service_links": 0,
+        "track_service_links": 0,
+        "upcoming_signals": 0,
+        "upcoming_signal_sources": 0,
+        "entity_tracking_state": 0,
+        "review_tasks": 0,
+        "release_link_overrides": 0
+      }
+    },
+    "samples": {
+      "dropped_missing_fk_samples": {},
+      "unresolved_release_mappings": [],
+      "unresolved_review_links": []
+    }
   }
 }
