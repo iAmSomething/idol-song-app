@@ -14,7 +14,10 @@ import {
   resolveInitialCalendarSelection,
   resolveNextCalendarSelection,
 } from '../../src/features/calendarGrid';
-import { selectCalendarMonthSnapshot } from '../../src/selectors';
+import {
+  selectCalendarMonthSnapshot,
+  selectNearestExactUpcomingEvent,
+} from '../../src/selectors';
 import {
   loadActiveMobileDataset,
   type ActiveMobileDataset,
@@ -41,6 +44,8 @@ type CalendarScreenState =
       source: ActiveMobileDataset;
       snapshot: CalendarMonthSnapshotModel;
     };
+
+type CalendarFilterMode = 'all' | 'releases' | 'upcoming';
 
 function buildMonthKey(date: Date): string {
   const year = date.getFullYear();
@@ -74,6 +79,49 @@ function formatSelectedDaySummary(selectedDay: CalendarSelectedDayModel): string
   return `발매 ${selectedDay.releases.length} · 예정 ${selectedDay.exactUpcoming.length}`;
 }
 
+function formatFilterLabel(filterMode: CalendarFilterMode): string {
+  switch (filterMode) {
+    case 'releases':
+      return '발매만';
+    case 'upcoming':
+      return '예정만';
+    default:
+      return '전체';
+  }
+}
+
+function applyCalendarFilter(
+  snapshot: CalendarMonthSnapshotModel,
+  filterMode: CalendarFilterMode,
+): CalendarMonthSnapshotModel {
+  if (filterMode === 'releases') {
+    return {
+      ...snapshot,
+      upcomingCount: 0,
+      nearestUpcoming: null,
+      exactUpcoming: [],
+      monthOnlyUpcoming: [],
+    };
+  }
+
+  if (filterMode === 'upcoming') {
+    return {
+      ...snapshot,
+      releaseCount: 0,
+      releases: [],
+      upcomingCount: snapshot.exactUpcoming.length + snapshot.monthOnlyUpcoming.length,
+    };
+  }
+
+  return snapshot;
+}
+
+function moveMonthKey(month: string, offset: number): string {
+  const [year, monthValue] = month.split('-').map(Number);
+  const next = new Date(year, monthValue - 1 + offset, 1);
+  return buildMonthKey(next);
+}
+
 function getBadgePalette(
   theme: ReturnType<typeof useAppTheme>,
   kind: CalendarDayBadgeKind,
@@ -95,11 +143,13 @@ function getBadgePalette(
 export default function CalendarTabScreen() {
   const theme = useAppTheme();
   const [reloadCount, setReloadCount] = useState(0);
+  const [activeMonth, setActiveMonth] = useState(buildMonthKey(new Date()));
+  const [filterMode, setFilterMode] = useState<CalendarFilterMode>('all');
   const [selectedDayIso, setSelectedDayIso] = useState<string | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [state, setState] = useState<CalendarScreenState>({ kind: 'loading' });
   const today = useMemo(() => new Date(), []);
-  const activeMonth = useMemo(() => buildMonthKey(today), [today]);
+  const currentMonth = useMemo(() => buildMonthKey(today), [today]);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
   const styles = useMemo(() => createStyles(theme), [theme]);
 
@@ -144,34 +194,76 @@ export default function CalendarTabScreen() {
 
   const snapshot = state.kind === 'ready' || state.kind === 'empty' ? state.snapshot : null;
   const source = state.kind === 'ready' || state.kind === 'empty' ? state.source : null;
+  const globalNearestUpcoming = useMemo(() => {
+    if (!source) {
+      return null;
+    }
+
+    return selectNearestExactUpcomingEvent(source.dataset, todayIsoDate);
+  }, [source, todayIsoDate]);
+  const filteredSnapshot = useMemo(
+    () => (snapshot ? applyCalendarFilter(snapshot, filterMode) : null),
+    [filterMode, snapshot],
+  );
 
   useEffect(() => {
-    if (!snapshot) {
+    if (!filteredSnapshot) {
       return;
     }
 
     setSelectedDayIso((current) => {
-      if (current && current.slice(0, 7) === snapshot.month) {
+      if (current && current.slice(0, 7) === filteredSnapshot.month) {
         return current;
       }
 
-      return resolveInitialCalendarSelection(snapshot.month, todayIsoDate);
+      return resolveInitialCalendarSelection(filteredSnapshot.month, todayIsoDate);
     });
-  }, [snapshot, todayIsoDate]);
+  }, [filteredSnapshot, todayIsoDate]);
 
   const monthGrid = useMemo(() => {
-    if (!snapshot || !selectedDayIso) {
+    if (!filteredSnapshot || !selectedDayIso) {
       return null;
     }
 
-    return buildCalendarMonthGrid(snapshot, selectedDayIso, todayIsoDate);
-  }, [selectedDayIso, snapshot, todayIsoDate]);
+    return buildCalendarMonthGrid(filteredSnapshot, selectedDayIso, todayIsoDate);
+  }, [filteredSnapshot, selectedDayIso, todayIsoDate]);
 
   const selectedDay = monthGrid?.selectedDay ?? null;
 
+  function jumpToMonth(month: string, isoDate: string) {
+    setActiveMonth(month);
+    setSelectedDayIso(isoDate);
+    setIsSheetOpen(false);
+  }
+
+  function moveToRelativeMonth(offset: -1 | 1) {
+    const nextMonth = moveMonthKey(activeMonth, offset);
+    jumpToMonth(nextMonth, resolveInitialCalendarSelection(nextMonth, todayIsoDate));
+  }
+
+  function jumpToToday() {
+    setFilterMode('all');
+    jumpToMonth(currentMonth, todayIsoDate);
+  }
+
+  function jumpToNearestUpcoming() {
+    if (!globalNearestUpcoming?.scheduledDate) {
+      return;
+    }
+
+    setFilterMode('all');
+    setActiveMonth(globalNearestUpcoming.scheduledDate.slice(0, 7));
+    setSelectedDayIso(globalNearestUpcoming.scheduledDate);
+    setIsSheetOpen(true);
+  }
+
   function openDaySheet(isoDate: string) {
     setSelectedDayIso((current) =>
-      resolveNextCalendarSelection(current ?? isoDate, isoDate, snapshot?.month ?? isoDate.slice(0, 7)),
+      resolveNextCalendarSelection(
+        current ?? isoDate,
+        isoDate,
+        filteredSnapshot?.month ?? isoDate.slice(0, 7),
+      ),
     );
     setIsSheetOpen(true);
   }
@@ -204,18 +296,50 @@ export default function CalendarTabScreen() {
     );
   }
 
-  if (!snapshot || !source) {
+  if (!filteredSnapshot || !source) {
     return null;
   }
 
   return (
     <>
       <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+        <View style={styles.appBar}>
+          <Pressable
+            testID="calendar-month-prev"
+            accessibilityRole="button"
+            onPress={() => moveToRelativeMonth(-1)}
+            style={({ pressed }) => [
+              styles.monthButton,
+              pressed ? styles.monthButtonPressed : null,
+            ]}
+          >
+            <Text style={styles.monthButtonLabel}>이전</Text>
+          </Pressable>
+
+          <View style={styles.monthTitleWrap}>
+            <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
+            <Text testID="calendar-month-title" style={styles.title}>
+              {formatMonthLabel(filteredSnapshot.month)}
+            </Text>
+          </View>
+
+          <Pressable
+            testID="calendar-month-next"
+            accessibilityRole="button"
+            onPress={() => moveToRelativeMonth(1)}
+            style={({ pressed }) => [
+              styles.monthButton,
+              pressed ? styles.monthButtonPressed : null,
+            ]}
+          >
+            <Text style={styles.monthButtonLabel}>다음</Text>
+          </Pressable>
+        </View>
+
         <View style={styles.header}>
           <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
-          <Text style={styles.title}>{formatMonthLabel(snapshot.month)}</Text>
           <Text style={styles.body}>
-            현재 월 grid, day badge, selected-day state를 shared selector와 dataset source 위에서 렌더링합니다.
+            현재 월 grid, compact filter, quick jump, month-only bucket을 shared selector와 dataset source 위에서 렌더링합니다.
           </Text>
         </View>
 
@@ -227,23 +351,97 @@ export default function CalendarTabScreen() {
           ) : null}
         </View>
 
+        <View style={styles.sectionCard}>
+          <View style={styles.calendarHeader}>
+            <Text style={styles.sectionTitle}>Quick jumps</Text>
+            <Text style={styles.sectionMeta}>
+              {globalNearestUpcoming?.scheduledDate
+                ? `${globalNearestUpcoming.displayGroup} · ${globalNearestUpcoming.scheduledDate}`
+                : '다가오는 exact 일정 없음'}
+            </Text>
+          </View>
+
+          <View style={styles.controlRow}>
+            <Pressable
+              testID="calendar-jump-today"
+              accessibilityRole="button"
+              onPress={jumpToToday}
+              style={({ pressed }) => [
+                styles.controlChip,
+                styles.controlChipStrong,
+                pressed ? styles.controlChipPressed : null,
+              ]}
+            >
+              <Text style={styles.controlChipStrongLabel}>오늘</Text>
+            </Pressable>
+
+            <Pressable
+              testID="calendar-jump-nearest"
+              accessibilityRole="button"
+              disabled={!globalNearestUpcoming?.scheduledDate}
+              onPress={jumpToNearestUpcoming}
+              style={({ pressed }) => [
+                styles.controlChip,
+                !globalNearestUpcoming?.scheduledDate ? styles.buttonDisabled : null,
+                pressed && globalNearestUpcoming?.scheduledDate ? styles.controlChipPressed : null,
+              ]}
+            >
+              <Text style={styles.controlChipLabel}>가장 가까운 일정</Text>
+            </Pressable>
+          </View>
+        </View>
+
+        <View style={styles.sectionCard}>
+          <View style={styles.calendarHeader}>
+            <Text style={styles.sectionTitle}>Filters</Text>
+            <Text style={styles.sectionMeta}>{formatFilterLabel(filterMode)}</Text>
+          </View>
+
+          <View style={styles.controlRow}>
+            {([
+              ['all', '전체'],
+              ['releases', '발매'],
+              ['upcoming', '예정'],
+            ] as const).map(([mode, label]) => (
+              <Pressable
+                key={mode}
+                testID={`calendar-filter-${mode}`}
+                accessibilityRole="button"
+                accessibilityState={{ selected: filterMode === mode }}
+                onPress={() => setFilterMode(mode)}
+                style={({ pressed }) => [
+                  styles.controlChip,
+                  filterMode === mode ? styles.controlChipActive : null,
+                  pressed ? styles.controlChipPressed : null,
+                ]}
+              >
+                <Text
+                  style={filterMode === mode ? styles.controlChipActiveLabel : styles.controlChipLabel}
+                >
+                  {label}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
+        </View>
+
         <View style={styles.summaryGrid}>
           <View style={styles.summaryCard}>
             <Text style={styles.summaryLabel}>이번 달 발매</Text>
-            <Text style={styles.summaryValue}>{snapshot.releaseCount}</Text>
+            <Text style={styles.summaryValue}>{filteredSnapshot.releaseCount}</Text>
           </View>
           <View style={styles.summaryCard}>
             <Text style={styles.summaryLabel}>예정 컴백</Text>
-            <Text style={styles.summaryValue}>{snapshot.upcomingCount}</Text>
+            <Text style={styles.summaryValue}>{filteredSnapshot.upcomingCount}</Text>
           </View>
           <View style={styles.summaryCard}>
             <Text style={styles.summaryLabel}>가장 가까운 일정</Text>
             <Text style={styles.summaryValueSmall}>
-              {snapshot.nearestUpcoming?.displayGroup ?? '없음'}
+              {filteredSnapshot.nearestUpcoming?.displayGroup ?? '없음'}
             </Text>
             <Text style={styles.summaryMeta}>
-              {snapshot.nearestUpcoming
-                ? formatUpcomingLabel(snapshot.nearestUpcoming)
+              {filteredSnapshot.nearestUpcoming
+                ? formatUpcomingLabel(filteredSnapshot.nearestUpcoming)
                 : 'exact 일정 없음'}
             </Text>
           </View>
@@ -254,7 +452,7 @@ export default function CalendarTabScreen() {
             <View style={styles.calendarHeader}>
               <Text style={styles.sectionTitle}>Calendar grid</Text>
               <Text style={styles.sectionMeta}>
-                {selectedDay ? selectedDay.label : formatMonthLabel(snapshot.month)}
+                {selectedDay ? selectedDay.label : formatMonthLabel(filteredSnapshot.month)}
               </Text>
             </View>
 
@@ -341,19 +539,24 @@ export default function CalendarTabScreen() {
 
             {state.kind === 'empty' ? (
               <Text style={styles.body}>
-                현재 dataset source에는 {formatMonthLabel(snapshot.month)} 기준 발매나 예정 컴백이 없습니다.
+                현재 dataset source에는 {formatMonthLabel(filteredSnapshot.month)} 기준 발매나 예정 컴백이 없습니다.
               </Text>
             ) : null}
           </View>
         ) : null}
 
         <View style={styles.sectionCard}>
-          <Text style={styles.sectionTitle}>Month-only signals</Text>
+          <View style={styles.calendarHeader}>
+            <Text style={styles.sectionTitle}>Month-only signals</Text>
+            <Text style={styles.sectionMeta}>{filteredSnapshot.monthOnlyUpcoming.length}건</Text>
+          </View>
           <Text style={styles.body}>
             month-only 예정 신호는 날짜 셀에 넣지 않고 월 컨텍스트 버킷으로 유지합니다.
           </Text>
-          {snapshot.monthOnlyUpcoming.length ? (
-            snapshot.monthOnlyUpcoming.map((event) => (
+          {filterMode === 'releases' ? (
+            <Text style={styles.body}>현재 필터에서는 month-only 예정 신호를 숨깁니다.</Text>
+          ) : filteredSnapshot.monthOnlyUpcoming.length ? (
+            filteredSnapshot.monthOnlyUpcoming.map((event) => (
               <View key={event.id} style={styles.row}>
                 <Text style={styles.rowTitle}>{event.displayGroup}</Text>
                 <Text style={styles.rowBody}>{event.headline}</Text>
@@ -467,8 +670,36 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       gap: theme.space[12],
       backgroundColor: theme.colors.surface.base,
     },
+    appBar: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: theme.space[12],
+    },
     header: {
       gap: theme.space[8],
+    },
+    monthTitleWrap: {
+      flex: 1,
+      alignItems: 'center',
+      gap: theme.space[4],
+    },
+    monthButton: {
+      borderRadius: theme.radius.button,
+      borderWidth: 1,
+      borderColor: theme.colors.border.subtle,
+      backgroundColor: theme.colors.surface.elevated,
+      paddingHorizontal: theme.space[12],
+      paddingVertical: theme.space[8],
+    },
+    monthButtonPressed: {
+      backgroundColor: theme.colors.surface.interactive,
+    },
+    monthButtonLabel: {
+      color: theme.colors.text.primary,
+      fontSize: theme.typography.buttonService.fontSize,
+      lineHeight: theme.typography.buttonService.lineHeight,
+      fontWeight: theme.typography.buttonService.fontWeight,
     },
     eyebrow: {
       color: theme.colors.text.brand,
@@ -552,6 +783,48 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.body.fontSize,
       lineHeight: theme.typography.body.lineHeight,
       fontWeight: theme.typography.body.fontWeight,
+    },
+    controlRow: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: theme.space[8],
+    },
+    controlChip: {
+      borderRadius: theme.radius.chip,
+      borderWidth: 1,
+      borderColor: theme.colors.border.subtle,
+      backgroundColor: theme.colors.surface.base,
+      paddingHorizontal: theme.space[12],
+      paddingVertical: theme.space[8],
+    },
+    controlChipStrong: {
+      backgroundColor: theme.colors.text.brand,
+      borderColor: theme.colors.text.brand,
+    },
+    controlChipActive: {
+      backgroundColor: theme.colors.surface.interactive,
+      borderColor: theme.colors.border.focus,
+    },
+    controlChipPressed: {
+      backgroundColor: theme.colors.surface.interactive,
+    },
+    controlChipLabel: {
+      color: theme.colors.text.primary,
+      fontSize: theme.typography.buttonService.fontSize,
+      lineHeight: theme.typography.buttonService.lineHeight,
+      fontWeight: theme.typography.buttonService.fontWeight,
+    },
+    controlChipStrongLabel: {
+      color: theme.colors.surface.base,
+      fontSize: theme.typography.buttonService.fontSize,
+      lineHeight: theme.typography.buttonService.lineHeight,
+      fontWeight: theme.typography.buttonService.fontWeight,
+    },
+    controlChipActiveLabel: {
+      color: theme.colors.text.brand,
+      fontSize: theme.typography.buttonService.fontSize,
+      lineHeight: theme.typography.buttonService.lineHeight,
+      fontWeight: theme.typography.buttonService.fontWeight,
     },
     sectionCard: {
       borderRadius: theme.radius.card,
@@ -661,6 +934,9 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.meta.fontSize,
       lineHeight: theme.typography.meta.lineHeight,
       fontWeight: theme.typography.meta.fontWeight,
+    },
+    buttonDisabled: {
+      opacity: 0.4,
     },
     sheetOverlay: {
       flex: 1,

@@ -178,6 +178,54 @@ export function selectMonthUpcomingEvents(
   return events.sort(compareUpcomingDate);
 }
 
+export function selectAvailableCalendarMonths(
+  input: MobileSelectorContext | MobileRawDataset,
+  todayMonth: string,
+): string[] {
+  const context = resolveContext(input);
+  const months = new Set<string>([todayMonth]);
+
+  for (const history of context.releaseHistoryByGroup.values()) {
+    for (const release of history.releases) {
+      if (release.date) {
+        months.add(release.date.slice(0, 7));
+      }
+    }
+  }
+
+  for (const upcoming of context.dataset.upcomingCandidates) {
+    const month = resolveUpcomingMonth(upcoming);
+    if (month) {
+      months.add(month);
+    }
+  }
+
+  return [...months].sort((left, right) => left.localeCompare(right));
+}
+
+export function selectNearestExactUpcomingEvent(
+  input: MobileSelectorContext | MobileRawDataset,
+  todayIsoDate: string,
+): UpcomingEventModel | null {
+  const context = resolveContext(input);
+  const events: UpcomingEventModel[] = [];
+
+  for (const upcoming of context.dataset.upcomingCandidates) {
+    if (!upcoming.scheduled_date || upcoming.date_precision !== 'exact') {
+      continue;
+    }
+
+    if (upcoming.scheduled_date < todayIsoDate) {
+      continue;
+    }
+
+    const displayGroup = context.profilesByGroup.get(upcoming.group)?.display_name?.trim() || upcoming.group;
+    events.push(adaptUpcomingEvent(upcoming.group, displayGroup, upcoming));
+  }
+
+  return events.sort(compareUpcomingDate)[0] ?? null;
+}
+
 export function selectCalendarMonthSnapshot(
   input: MobileSelectorContext | MobileRawDataset,
   month: string,
