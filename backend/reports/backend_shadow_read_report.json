@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T09:25:27.296Z",
+  "generated_at": "2026-03-08T06:33:50.930Z",
   "clean": false,
   "linked_parity_report": {
     "exists": true,
@@ -67,13 +67,13 @@
     "search: clean 1/5, drift 4/5",
     "entity_detail: clean 0/4, drift 4/4",
     "release_detail: clean 0/3, drift 3/3",
-    "calendar_month: clean 0/3, drift 3/3",
+    "calendar_month: clean 3/3, drift 0/3",
     "radar: clean 0/1, drift 1/1",
-    "missing rows or segments: 14 case(s)",
-    "field-shape mismatches: 12 case(s)",
+    "missing rows or segments: 11 case(s)",
+    "field-shape mismatches: 9 case(s)",
     "latest-release or next-upcoming drift: 7 case(s)",
-    "exact-vs-month-only drift: 4 case(s)",
     "alias-match differences: 3 case(s)",
+    "exact-vs-month-only drift: 2 case(s)",
     "radar eligibility drift: 1 case(s)"
   ],
   "cases": [
@@ -962,7 +962,11 @@
           "agency_name": null,
           "debut_year": null,
           "badge_image_url": null,
-          "representative_image_url": null
+          "badge_source_url": null,
+          "badge_source_label": null,
+          "badge_kind": null,
+          "representative_image_url": null,
+          "representative_image_source": null
         },
         "official_links": {
           "youtube": "https://www.youtube.com/@yena_official",
@@ -979,7 +983,7 @@
           "tracking_status": "watch_only"
         },
         "next_upcoming": {
-          "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434",
+          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
           "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
           "scheduled_date": "2026-03-11",
           "scheduled_month": null,
@@ -1063,12 +1067,6 @@
           "path": "data",
           "shape_mismatches": [
             {
-              "path": "data.identity.badge_image_url",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
-            {
               "path": "data.next_upcoming",
               "expected_type": "object",
               "actual_type": "null",
@@ -1140,7 +1138,7 @@
           "actual": [
             "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter|news_rss|https://news.google.com/rss/articles/CBMiqwFBVV95cUxOcldhb1d6S2hhMDQxTDZndUlEa0VqLXROcEJucWkxLTZxdFNha25nckc0LWxVZ2I3MHhnVk0zX0xfM3NnRlpnaW9MemF5U3VnaTRyZWlYRVI0YmxtN1Y0T0U0WmxuZmNqVWRxeDNsaVFOeXpzNGJrSVVsSjEtMHlnMGRBT3hpNDl2RW1IelNpVzdYWTBrNXlZUFNZZHN0VHFkVG1RZERvT3k3SlE?oc=5",
             "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record - The Korea Economic Daily Global Edition|news_rss|https://news.google.com/rss/articles/CBMiZ0FVX3lxTE94bmhvU2RuMVBXTGNpS1VMaExLUXN6c0lCekxVbm1KTy1McTNvTkUycE1KNUl1c0U3b2c5ajh3cE9WSEs0TGJwNlgyZU9LX3JHam55VVhGX3h2SDBoaUdtcGYwWmdGdHc?oc=5",
-            "Blackpink Sets New Record As ‘Deadline’ Tops First-Day Sales Among K-Pop Girl Groups - Outlook Luxe|news_rss|https://news.google.com/rss/articles/CBMiuwFBVV95cUxQREV5ZV9pTDZyVFVyS0JqTDJEbWJGMzh0UDhwcnFKLVFFbDhmVW5rcmVrdGt5cTFkR1BHSzQ4Z0dBZG9RNFBXQVN5UlRKcGF0V1Bycm1KT2ZObWRpS0FBZll0N2RrWjlYWTZlQ3M4Nk8zc2o4dzFMcnlmTzFVMk4zcGZKUms3eFNMQzlLSzN2UERxVmZOOGVyWm90Tzh2b0tHVlJUMHdVZjU5Z0QzWWFibGhEYWtRbzRuNHBZ0gHIAUFVX3lxTFA5LVQ4Uk41RERaWnk5UXh0eC1MTEppZWVTd05yVGlNeEs0UHVKRnExQ3hBcFVsX2wyUmp3Z1U3Z0Q2R3hWcFdBU09hVHV1blJ6VHIyTEgxTnNUc0V5VmxWOUt1S2hwcm11QmRZdUY5c3dfTGZPWE5MT1IzQndIdkUzVHF6NDhCaE9ZeWc5T1JBVlg3MURjV2hrVVVuRDV5ek1LdlRTS1lSTFNCemJxa0t6VlN2bURxM3Uxb0tMRXl0dkJSU3FQbm9l?oc=5",
+            "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter|news_rss|https://news.google.com/rss/articles/CBMiuwFBVV95cUxQREV5ZV9pTDZyVFVyS0JqTDJEbWJGMzh0UDhwcnFKLVFFbDhmVW5rcmVrdGt5cTFkR1BHSzQ4Z0dBZG9RNFBXQVN5UlRKcGF0V1Bycm1KT2ZObWRpS0FBZll0N2RrWjlYWTZlQ3M4Nk8zc2o4dzFMcnlmTzFVMk4zcGZKUms3eFNMQzlLSzN2UERxVmZOOGVyWm90Tzh2b0tHVlJUMHdVZjU5Z0QzWWFibGhEYWtRbzRuNHBZ0gHIAUFVX3lxTFA5LVQ4Uk41RERaWnk5UXh0eC1MTEppZWVTd05yVGlNeEs0UHVKRnExQ3hBcFVsX2wyUmp3Z1U3Z0Q2R3hWcFdBU09hVHV1blJ6VHIyTEgxTnNUc0V5VmxWOUt1S2hwcm11QmRZdUY5c3dfTGZPWE5MT1IzQndIdkUzVHF6NDhCaE9ZeWc5T1JBVlg3MURjV2hrVVVuRDV5ek1LdlRTS1lSTFNCemJxa0t6VlN2bURxM3Uxb0tMRXl0dkJSU3FQbm9l?oc=5",
             "K-Pop girl group Blackpink drops their third mini album Deadline - Indulgexpress|news_rss|https://news.google.com/rss/articles/CBMivAFBVV95cUxQVG9PNFdjS19QUkVoYU95M21Rb2l5em5EQUVZSzZrcU9qa1hYMWRQSGRnc3dJZDFUYWtBcWstQVREcEw5c3BKc2M5WHJETHB0LUlFTGI3dmFKbXdBbWRtOEZRVTVzZ29UWTRaLVJ5RnhDc25IS2ZsRVNTTXVTWnEtZENIdTVDeUVmM0ZGTXlBSnNBek1aSEs0TFJ4UndGTjVYMDdZWVhmV2tPc092MDN5WnZWYlBiNkJ5M09nbNIBygFBVV95cUxOWlFldno4Y0RLNjhoRFkxN29BT2J3WHdBaFN6THNuYk1HbEZUdzAwSzA5T0U5V3QwVWg1WDZCQUs1S0ZVdDVnSXo3TGpCeTNsZm5tS1VsRDZoVlhyR3doOFNEcVVTVEJubVJTLXNIVG5RX21xN3BEc3preXJVREU0MUVlU2JMalh1Q0QxamJhZ0xIcHFKcTNDV3V4RHFKeV9qZ0dnS2IySkJNaXBVU3lvRDA0eXhYbS1BZFdEbVZBclJQcU9UeFRhUlBB?oc=5",
             "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”|agency_notice|https://www.ygfamily.com/en/news/report/7378",
             "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ|news_rss|https://news.google.com/rss/articles/CBMicEFVX3lxTE4waE5xc2U4eWNJaFhldTl2aGZEdGRxYl9DTVRRYnQ2Sk5rRGMtX2JHVVhiWFV3VTZJdUc1b1VoWWdmM25vcXhDb0dKSlBlanpHSlh2NDlHQ1hEMEtCalpvdkFudzNKZDJ0Y1VnVlpwOTA?oc=5",
@@ -1274,8 +1272,12 @@
           "entity_type": "group",
           "agency_name": "YG Entertainment",
           "debut_year": null,
-          "badge_image_url": null,
-          "representative_image_url": null
+          "badge_image_url": "https://yt3.googleusercontent.com/U3VrCkKjzTpQ3VYv4SCPjNfDHeJV-swGNnhLYhr0nV4lZz_GVUNzK4EB-HFRfKv9S5VNh14uAg=s900-c-k-c0x00ffffff-no-rj",
+          "badge_source_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+          "badge_source_label": "Official YouTube channel avatar",
+          "badge_kind": "official_channel_avatar",
+          "representative_image_url": null,
+          "representative_image_source": null
         },
         "official_links": {
           "youtube": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
@@ -1381,7 +1383,7 @@
             "confidence_score": 0.68
           },
           {
-            "headline": "Blackpink Sets New Record As ‘Deadline’ Tops First-Day Sales Among K-Pop Girl Groups - Outlook Luxe",
+            "headline": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter",
             "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQREV5ZV9pTDZyVFVyS0JqTDJEbWJGMzh0UDhwcnFKLVFFbDhmVW5rcmVrdGt5cTFkR1BHSzQ4Z0dBZG9RNFBXQVN5UlRKcGF0V1Bycm1KT2ZObWRpS0FBZll0N2RrWjlYWTZlQ3M4Nk8zc2o4dzFMcnlmTzFVMk4zcGZKUms3eFNMQzlLSzN2UERxVmZOOGVyWm90Tzh2b0tHVlJUMHdVZjU5Z0QzWWFibGhEYWtRbzRuNHBZ0gHIAUFVX3lxTFA5LVQ4Uk41RERaWnk5UXh0eC1MTEppZWVTd05yVGlNeEs0UHVKRnExQ3hBcFVsX2wyUmp3Z1U3Z0Q2R3hWcFdBU09hVHV1blJ6VHIyTEgxTnNUc0V5VmxWOUt1S2hwcm11QmRZdUY5c3dfTGZPWE5MT1IzQndIdkUzVHF6NDhCaE9ZeWc5T1JBVlg3MURjV2hrVVVuRDV5ek1LdlRTS1lSTFNCemJxa0t6VlN2bURxM3Uxb0tMRXl0dkJSU3FQbm9l?oc=5",
             "source_type": "news_rss",
             "source_domain": "news.google.com",
@@ -1390,8 +1392,8 @@
             "scheduled_month": null,
             "date_precision": "unknown",
             "date_status": "rumor",
-            "release_format": null,
-            "confidence_score": 0.56
+            "release_format": "album",
+            "confidence_score": 0.68
           },
           {
             "headline": "K-Pop girl group Blackpink drops their third mini album Deadline - Indulgexpress",
@@ -1479,12 +1481,6 @@
           "category": "field-shape mismatches",
           "path": "data",
           "shape_mismatches": [
-            {
-              "path": "data.identity.badge_image_url",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
             {
               "path": "data.next_upcoming",
               "expected_type": "object",
@@ -1652,8 +1648,12 @@
           "entity_type": "group",
           "agency_name": "HYBE Labels",
           "debut_year": null,
-          "badge_image_url": null,
-          "representative_image_url": null
+          "badge_image_url": "https://yt3.googleusercontent.com/xqtV6QEH8rfsXXZ1sZZRjn2X7ZCxKB0_eoWN6z5gnqtN8TnC-XQN8-OlMzDVvxrKKnwDDvRxQA=s900-c-k-c0x00ffffff-no-rj",
+          "badge_source_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+          "badge_source_label": "Official YouTube channel avatar",
+          "badge_kind": "official_channel_avatar",
+          "representative_image_url": null,
+          "representative_image_source": null
         },
         "official_links": {
           "youtube": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
@@ -1828,7 +1828,11 @@
           "agency_name": null,
           "debut_year": 2025,
           "badge_image_url": null,
-          "representative_image_url": null
+          "badge_source_url": null,
+          "badge_source_label": null,
+          "badge_kind": null,
+          "representative_image_url": null,
+          "representative_image_source": null
         },
         "official_links": {
           "youtube": null,
@@ -2865,210 +2869,53 @@
       "input": {
         "month": "2026-03"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments",
-        "exact-vs-month-only drift"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.days[0].verified_releases[0].release_date",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.scheduled_list[0].scheduled_month",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.summary",
-          "expected": {
-            "verified_count": 1,
-            "exact_upcoming_count": 4,
-            "month_only_upcoming_count": 4
-          },
-          "actual": {
-            "verified_count": 2,
-            "exact_upcoming_count": 4,
-            "month_only_upcoming_count": 10
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.days",
-          "expected": [
-            {
-              "date": "2026-03-03",
-              "verified_releases": [
-                "tunexx|SET BY US ONLY|2026-03-03|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2026-03-11",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "yena|최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스|2026-03-11||exact|confirmed"
-              ]
-            },
-            {
-              "date": "2026-03-12",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12||exact|confirmed"
-              ]
-            },
-            {
-              "date": "2026-03-20",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "bts|Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net|2026-03-20||exact|confirmed"
-              ]
-            },
-            {
-              "date": "2026-03-21",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "bts|Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net|2026-03-21||exact|scheduled"
-              ]
-            }
-          ],
-          "actual": [
-            {
-              "date": "2026-03-03",
-              "verified_releases": [
-                "tunexx|SET BY US ONLY||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2026-03-05",
-              "verified_releases": [
-                "h1-key|LOVECHAPTER||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2026-03-11",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "yena|최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스|2026-03-11||exact|confirmed"
-              ]
-            },
-            {
-              "date": "2026-03-12",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12||exact|confirmed"
-              ]
-            },
-            {
-              "date": "2026-03-20",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "bts|Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net|2026-03-20||exact|confirmed"
-              ]
-            },
-            {
-              "date": "2026-03-21",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "bts|Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net|2026-03-21||exact|scheduled"
-              ]
-            }
-          ]
-        },
-        {
-          "category": "exact-vs-month-only drift",
-          "path": "data.month_only_upcoming",
-          "expected": [
-            "ab6ix|AB6IX announces March comeback with their first full album in 5 years - allkpop||2026-03|month_only|scheduled",
-            "all-h-ours|ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop||2026-03|month_only|scheduled",
-            "ab6ix|AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop||2026-03|month_only|scheduled",
-            "ab6ix|AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보||2026-03|month_only|scheduled"
-          ],
-          "actual": [
-            "ab6ix|AB6IX announces March comeback with their first full album in 5 years - allkpop||2026-03-01|month_only|scheduled",
-            "all-h-ours|ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop||2026-03-01|month_only|scheduled",
-            "bts|BTS announces March comeback date, putting an end to a nearly 4-year hiatus - ABC7 Los Angeles||2026-03-01|month_only|scheduled",
-            "p1harmony|P1Harmony announces March comeback with new trailer release - Music Mundial||2026-03-01|month_only|scheduled",
-            "ab6ix|AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop||2026-03-01|month_only|scheduled",
-            "bts|BTS Confirm 2026 Comeback with New Album and World Tour Set for March - L'Officiel Singapore||2026-03-01|month_only|scheduled",
-            "p1harmony|P1Harmony teases March comeback - The Korea Herald||2026-03-01|month_only|scheduled",
-            "p1harmony|P1Harmony to return in March: report - The Korea Herald||2026-03-01|month_only|scheduled",
-            "ab6ix|AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보||2026-03-01|month_only|scheduled",
-            "bts|BTS Is Dropping New Music in March — and Heading Out on Tour - Rolling Stone||2026-03-01|month_only|scheduled"
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.verified_list",
-          "expected": [
-            "tunexx|SET BY US ONLY|2026-03-03|album"
-          ],
-          "actual": [
-            "tunexx|SET BY US ONLY|2026-03-03|album",
-            "h1-key|LOVECHAPTER|2026-03-05|album"
-          ]
-        },
-        {
-          "category": "exact-vs-month-only drift",
-          "path": "data.scheduled_list",
-          "expected": [
-            "yena|최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스|2026-03-11|2026-03|exact|confirmed",
-            "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12|2026-03|exact|confirmed",
-            "bts|Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net|2026-03-20|2026-03|exact|confirmed",
-            "bts|Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net|2026-03-21|2026-03|exact|scheduled"
-          ],
-          "actual": [
-            "yena|최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스|2026-03-11||exact|confirmed",
-            "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12||exact|confirmed",
-            "bts|Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net|2026-03-20||exact|confirmed",
-            "bts|Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net|2026-03-21||exact|scheduled",
-            "ab6ix|AB6IX announces March comeback with their first full album in 5 years - allkpop||2026-03-01|month_only|scheduled",
-            "all-h-ours|ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop||2026-03-01|month_only|scheduled",
-            "bts|BTS announces March comeback date, putting an end to a nearly 4-year hiatus - ABC7 Los Angeles||2026-03-01|month_only|scheduled",
-            "p1harmony|P1Harmony announces March comeback with new trailer release - Music Mundial||2026-03-01|month_only|scheduled",
-            "ab6ix|AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop||2026-03-01|month_only|scheduled",
-            "bts|BTS Confirm 2026 Comeback with New Album and World Tour Set for March - L'Officiel Singapore||2026-03-01|month_only|scheduled",
-            "p1harmony|P1Harmony teases March comeback - The Korea Herald||2026-03-01|month_only|scheduled",
-            "p1harmony|P1Harmony to return in March: report - The Korea Herald||2026-03-01|month_only|scheduled",
-            "ab6ix|AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보||2026-03-01|month_only|scheduled",
-            "bts|BTS Is Dropping New Music in March — and Heading Out on Tour - Rolling Stone||2026-03-01|month_only|scheduled"
-          ]
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "summary": {
-          "verified_count": 1,
+          "verified_count": 2,
           "exact_upcoming_count": 4,
           "month_only_upcoming_count": 4
         },
         "nearest_upcoming": {
+          "upcoming_signal_id": "yena::2026-03-11::love catcher",
           "entity_slug": "yena",
           "display_name": "YENA",
           "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
           "scheduled_date": "2026-03-11",
+          "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84
+          "confidence_score": 0.84,
+          "release_format": "ep",
+          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_type": "news_rss",
+          "source_domain": "starnewskorea.com",
+          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+          "source_count": 1
         },
         "days": [
           {
             "date": "2026-03-03",
             "verified_releases": [
               {
+                "release_id": "[truncated]",
+                "entity_slug": "[truncated]",
+                "display_name": "[truncated]",
+                "release_title": "[truncated]",
+                "stream": "[truncated]",
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
+              }
+            ],
+            "exact_upcoming": []
+          },
+          {
+            "date": "2026-03-05",
+            "verified_releases": [
+              {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -3084,14 +2931,21 @@
             "verified_releases": [],
             "exact_upcoming": [
               {
+                "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
+                "scheduled_month": "[truncated]",
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           },
@@ -3100,14 +2954,21 @@
             "verified_releases": [],
             "exact_upcoming": [
               {
+                "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
+                "scheduled_month": "[truncated]",
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           },
@@ -3116,14 +2977,21 @@
             "verified_releases": [],
             "exact_upcoming": [
               {
+                "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
+                "scheduled_month": "[truncated]",
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           },
@@ -3132,20 +3000,28 @@
             "verified_releases": [],
             "exact_upcoming": [
               {
+                "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
+                "scheduled_month": "[truncated]",
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           }
         ],
         "month_only_upcoming": [
           {
+            "upcoming_signal_id": "ab6ix::2026-03::march full 5 years",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "headline": "AB6IX announces March comeback with their first full album in 5 years - allkpop",
@@ -3153,9 +3029,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "album"
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNTTRFb2pHMTZWckFqWVRGMTVDTm51S2xhRGhZY3F6UXhzbXJaQUMzVTFMM094SGphU0I1VWd5VGVtbTZYeHVMRGx0QVRJU01xS2Y3ZUp4UmUtandjVk1LaUJGSWxWTnZVSExjRUY2eFJLeVZFSjZGNGdvVnpWZFNmVEw3MFZxMXh2cHNkeURSRWliMHNfMnlQTHk4bGhZNkx6ajdFYXBGejV5R2dHbkE?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX announces March comeback with their first full album in 5 years allkpop",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "all(h)ours::2026-03::no doubt",
             "entity_slug": "all-h-ours",
             "display_name": "ALL(H)OURS",
             "headline": "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop",
@@ -3163,9 +3045,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOSE5EeC1kOFlYeXdfbjBKQkpEejdVY0xacGVqYjJmc3JLNFhIUVN1SEVhQWNXellSRnZxX2RGMGZ1N0ZPaXVuZm9XaVZhRk1tb2lQMndGUjJGQ3lxMGVkTTdHdnZVcWZKWlF5NTJjcXJaZjVRUkxVRWhLSlQ3NGFsSk5PSHNiNTZDMlctZ2RxTlV2WjQ?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ hellokpop",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "ab6ix::2026-03::seven crimson horizon",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "headline": "AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop",
@@ -3173,9 +3061,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": "album"
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPVmxkNlRtVUNEN2NvXzlKemx1eks1MmpKM1pYWHhXN0FOU0FzVUk4eEJBYkJ6bURfcVdhTktZcVZETVpsUWk5WVI5enBTbWhxdHYwMzdWLWp4aWQzaElURkxfSkZfSzNseERlcHU1eXA0Tm1IdzB4VUtCZVF1ZlRDNllGanktbXduODgzY3czb083djJrM2l2TzBoTjhfcVVteUxtTlFDS3BZMU40amVRaTRLOTY1Zy10eXljcVd1OURINmxNVHk3dE1GeWI2dw?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ allkpop",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "ab6ix::2026-03::future month reference 2026 03 unveils",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
@@ -3183,21 +3077,37 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.46,
-            "release_format": "album"
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNbHNMekRwTExfSmdJZlZ5ZXJwSkhsUFZObjJzZFREVjFHWG1TNHFWNmt4aVhqV1lvNVo5MVI4cXF5Z3FPWGtVUkxBUHNMQ05RWUhwYzl2R2FzWFZTcFZJQ0czOTI0MFVQZ2RLUFZaVkgtUnVITlZFMjZyakdNcjBUT0o1ZzJRVUFXVXdmZGdR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX Unveils 'So Sweet' Ahead of March Album 조선일보",
+            "source_count": 1
           }
         ],
         "verified_list": [
           {
+            "release_id": "TUNEXX::SET BY US ONLY::2026-03-03::album",
             "entity_slug": "tunexx",
             "display_name": "TUNEXX",
             "release_title": "SET BY US ONLY",
             "release_date": "2026-03-03",
             "stream": "album",
             "release_kind": "ep"
+          },
+          {
+            "release_id": "H1-KEY::LOVECHAPTER::2026-03-05::album",
+            "entity_slug": "h1-key",
+            "display_name": "H1-KEY",
+            "release_title": "LOVECHAPTER",
+            "release_date": "2026-03-05",
+            "stream": "album",
+            "release_kind": "ep"
           }
         ],
         "scheduled_list": [
           {
+            "upcoming_signal_id": "yena::2026-03-11::love catcher",
             "entity_slug": "yena",
             "display_name": "YENA",
             "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
@@ -3206,9 +3116,15 @@
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.84,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+            "source_type": "news_rss",
+            "source_domain": "starnewskorea.com",
+            "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
             "entity_slug": "p1harmony",
             "display_name": "P1Harmony",
             "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
@@ -3217,9 +3133,15 @@
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.82,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+            "source_count": 4
           },
           {
+            "upcoming_signal_id": "bts::2026-03-20::arirang highly anticipated march 20 3 year hiatus",
             "entity_slug": "bts",
             "display_name": "BTS",
             "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
@@ -3228,9 +3150,15 @@
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.82,
-            "release_format": "album"
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
+            "source_count": 4
           },
           {
+            "upcoming_signal_id": "bts::2026-03-21::gwanghwamun square march 21 expecting 260k fans",
             "entity_slug": "bts",
             "display_name": "BTS",
             "headline": "Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net",
@@ -3239,7 +3167,80 @@
             "date_precision": "exact",
             "date_status": "scheduled",
             "confidence_score": 0.64,
-            "release_format": ""
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNbUJYMndMdVRDQTZGRGVzT3dUMlpiWFc1b2NrZUpIUVpZWkFia2xiU0xXN3pHdXRJbzRsRHRpc01pTGEzSlNOSXJhdGVqRWkwX1I0R05FRkpXNk0zUkh4WjZ6R251T3diRURZQ3BDOUViMk5TVFByUnZzRC1GS2RFbWJHRFdCRk94ZFFqanR4MXRmaGZVVWh6RGFGbFE4aGd2ZktQVEZOdjV5VVAx?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future date reference: 2026-03-21. Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans artthreat.net",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "ab6ix::2026-03::march full 5 years",
+            "entity_slug": "ab6ix",
+            "display_name": "AB6IX",
+            "headline": "AB6IX announces March comeback with their first full album in 5 years - allkpop",
+            "scheduled_date": "",
+            "scheduled_month": "2026-03",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.76,
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNTTRFb2pHMTZWckFqWVRGMTVDTm51S2xhRGhZY3F6UXhzbXJaQUMzVTFMM094SGphU0I1VWd5VGVtbTZYeHVMRGx0QVRJU01xS2Y3ZUp4UmUtandjVk1LaUJGSWxWTnZVSExjRUY2eFJLeVZFSjZGNGdvVnpWZFNmVEw3MFZxMXh2cHNkeURSRWliMHNfMnlQTHk4bGhZNkx6ajdFYXBGejV5R2dHbkE?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX announces March comeback with their first full album in 5 years allkpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "all(h)ours::2026-03::no doubt",
+            "entity_slug": "all-h-ours",
+            "display_name": "ALL(H)OURS",
+            "headline": "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop",
+            "scheduled_date": "",
+            "scheduled_month": "2026-03",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.76,
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOSE5EeC1kOFlYeXdfbjBKQkpEejdVY0xacGVqYjJmc3JLNFhIUVN1SEVhQWNXellSRnZxX2RGMGZ1N0ZPaXVuZm9XaVZhRk1tb2lQMndGUjJGQ3lxMGVkTTdHdnZVcWZKWlF5NTJjcXJaZjVRUkxVRWhLSlQ3NGFsSk5PSHNiNTZDMlctZ2RxTlV2WjQ?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ hellokpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "ab6ix::2026-03::seven crimson horizon",
+            "entity_slug": "ab6ix",
+            "display_name": "AB6IX",
+            "headline": "AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop",
+            "scheduled_date": "",
+            "scheduled_month": "2026-03",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPVmxkNlRtVUNEN2NvXzlKemx1eks1MmpKM1pYWHhXN0FOU0FzVUk4eEJBYkJ6bURfcVdhTktZcVZETVpsUWk5WVI5enBTbWhxdHYwMzdWLWp4aWQzaElURkxfSkZfSzNseERlcHU1eXA0Tm1IdzB4VUtCZVF1ZlRDNllGanktbXduODgzY3czb083djJrM2l2TzBoTjhfcVVteUxtTlFDS3BZMU40amVRaTRLOTY1Zy10eXljcVd1OURINmxNVHk3dE1GeWI2dw?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ allkpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "ab6ix::2026-03::future month reference 2026 03 unveils",
+            "entity_slug": "ab6ix",
+            "display_name": "AB6IX",
+            "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
+            "scheduled_date": "",
+            "scheduled_month": "2026-03",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.46,
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNbHNMekRwTExfSmdJZlZ5ZXJwSkhsUFZObjJzZFREVjFHWG1TNHFWNmt4aVhqV1lvNVo5MVI4cXF5Z3FPWGtVUkxBUHNMQ05RWUhwYzl2R2FzWFZTcFZJQ0czOTI0MFVQZ2RLUFZaVkgtUnVITlZFMjZyakdNcjBUT0o1ZzJRVUFXVXdmZGdR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX Unveils 'So Sweet' Ahead of March Album 조선일보",
+            "source_count": 1
           }
         ]
       },
@@ -3247,17 +3248,24 @@
         "summary": {
           "verified_count": 2,
           "exact_upcoming_count": 4,
-          "month_only_upcoming_count": 10
+          "month_only_upcoming_count": 4
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434",
+          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
           "entity_slug": "yena",
           "display_name": "YENA",
+          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
           "scheduled_date": "2026-03-11",
+          "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "confidence_score": 0.84
+          "confidence_score": 0.84,
+          "release_format": "ep",
+          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_type": "news_rss",
+          "source_domain": "starnewskorea.com",
+          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+          "source_count": 1
         },
         "days": [
           {
@@ -3269,7 +3277,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -3283,7 +3292,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -3302,7 +3312,12 @@
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           },
@@ -3320,7 +3335,12 @@
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           },
@@ -3338,7 +3358,12 @@
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           },
@@ -3356,131 +3381,84 @@
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           }
         ],
         "month_only_upcoming": [
           {
-            "upcoming_signal_id": "4c35431e-9bd9-5eb6-aa3b-8b1ec8de4291",
+            "upcoming_signal_id": "b349b515-3866-513b-89db-6c4325fa2853",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "headline": "AB6IX announces March comeback with their first full album in 5 years - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
+            "scheduled_month": "2026-03",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "album"
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNTTRFb2pHMTZWckFqWVRGMTVDTm51S2xhRGhZY3F6UXhzbXJaQUMzVTFMM094SGphU0I1VWd5VGVtbTZYeHVMRGx0QVRJU01xS2Y3ZUp4UmUtandjVk1LaUJGSWxWTnZVSExjRUY2eFJLeVZFSjZGNGdvVnpWZFNmVEw3MFZxMXh2cHNkeURSRWliMHNfMnlQTHk4bGhZNkx6ajdFYXBGejV5R2dHbkE?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX announces March comeback with their first full album in 5 years allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "9ead3b72-3595-5cbd-a04e-412458eeb8c5",
+            "upcoming_signal_id": "40b00178-7b92-5b5a-9581-7795f8676c98",
             "entity_slug": "all-h-ours",
             "display_name": "ALL(H)OURS",
             "headline": "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
+            "scheduled_month": "2026-03",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOSE5EeC1kOFlYeXdfbjBKQkpEejdVY0xacGVqYjJmc3JLNFhIUVN1SEVhQWNXellSRnZxX2RGMGZ1N0ZPaXVuZm9XaVZhRk1tb2lQMndGUjJGQ3lxMGVkTTdHdnZVcWZKWlF5NTJjcXJaZjVRUkxVRWhLSlQ3NGFsSk5PSHNiNTZDMlctZ2RxTlV2WjQ?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ hellokpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "c2749f79-ff25-50b2-8fa4-c0dd784e71d2",
-            "entity_slug": "bts",
-            "display_name": "BTS",
-            "headline": "BTS announces March comeback date, putting an end to a nearly 4-year hiatus - ABC7 Los Angeles",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.76,
-            "release_format": null
-          },
-          {
-            "upcoming_signal_id": "1842569e-5f24-54ac-a9a8-61806d565da0",
-            "entity_slug": "p1harmony",
-            "display_name": "P1Harmony",
-            "headline": "P1Harmony announces March comeback with new trailer release - Music Mundial",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.76,
-            "release_format": null
-          },
-          {
-            "upcoming_signal_id": "800fe9b2-9acd-5bd6-982c-d5182aabedda",
+            "upcoming_signal_id": "0dc840bb-7287-5cf6-bf60-229beee35d38",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "headline": "AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
+            "scheduled_month": "2026-03",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": "album"
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPVmxkNlRtVUNEN2NvXzlKemx1eks1MmpKM1pYWHhXN0FOU0FzVUk4eEJBYkJ6bURfcVdhTktZcVZETVpsUWk5WVI5enBTbWhxdHYwMzdWLWp4aWQzaElURkxfSkZfSzNseERlcHU1eXA0Tm1IdzB4VUtCZVF1ZlRDNllGanktbXduODgzY3czb083djJrM2l2TzBoTjhfcVVteUxtTlFDS3BZMU40amVRaTRLOTY1Zy10eXljcVd1OURINmxNVHk3dE1GeWI2dw?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "23a31cb6-336c-5108-bd54-f904fce89758",
-            "entity_slug": "bts",
-            "display_name": "BTS",
-            "headline": "BTS Confirm 2026 Comeback with New Album and World Tour Set for March - L'Officiel Singapore",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.58,
-            "release_format": "album"
-          },
-          {
-            "upcoming_signal_id": "0c229747-5459-5279-899f-db88db4d9a11",
-            "entity_slug": "p1harmony",
-            "display_name": "P1Harmony",
-            "headline": "P1Harmony teases March comeback - The Korea Herald",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.58,
-            "release_format": null
-          },
-          {
-            "upcoming_signal_id": "5017fc94-4bc0-5bd3-aed9-ca45040b9542",
-            "entity_slug": "p1harmony",
-            "display_name": "P1Harmony",
-            "headline": "P1Harmony to return in March: report - The Korea Herald",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.58,
-            "release_format": null
-          },
-          {
-            "upcoming_signal_id": "4029aa3d-c7f9-5183-95cf-3989a337c05d",
+            "upcoming_signal_id": "6ea3a5db-e83f-51fc-b33e-bf701cef4c24",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
             "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
+            "scheduled_month": "2026-03",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.46,
-            "release_format": "album"
-          },
-          {
-            "upcoming_signal_id": "266b8df2-f19c-50f2-a271-4145920969b2",
-            "entity_slug": "bts",
-            "display_name": "BTS",
-            "headline": "BTS Is Dropping New Music in March — and Heading Out on Tour - Rolling Stone",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.46,
-            "release_format": null
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNbHNMekRwTExfSmdJZlZ5ZXJwSkhsUFZObjJzZFREVjFHWG1TNHFWNmt4aVhqV1lvNVo5MVI4cXF5Z3FPWGtVUkxBUHNMQ05RWUhwYzl2R2FzWFZTcFZJQ0czOTI0MFVQZ2RLUFZaVkgtUnVITlZFMjZyakdNcjBUT0o1ZzJRVUFXVXdmZGdR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX Unveils 'So Sweet' Ahead of March Album 조선일보",
+            "source_count": 1
           }
         ],
         "verified_list": [
@@ -3505,148 +3483,140 @@
         ],
         "scheduled_list": [
           {
-            "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434",
+            "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
             "entity_slug": "yena",
             "display_name": "YENA",
             "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
             "scheduled_date": "2026-03-11",
-            "scheduled_month": null,
+            "scheduled_month": "2026-03",
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.84,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+            "source_type": "news_rss",
+            "source_domain": "starnewskorea.com",
+            "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "7150643f-66ad-5e29-b2b4-fadcfcd96eac",
+            "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
             "entity_slug": "p1harmony",
             "display_name": "P1Harmony",
             "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
             "scheduled_date": "2026-03-12",
-            "scheduled_month": null,
+            "scheduled_month": "2026-03",
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.82,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+            "source_count": 4
           },
           {
-            "upcoming_signal_id": "270ed092-e246-5415-9233-99694320e11c",
+            "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742",
             "entity_slug": "bts",
             "display_name": "BTS",
             "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
             "scheduled_date": "2026-03-20",
-            "scheduled_month": null,
+            "scheduled_month": "2026-03",
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.82,
-            "release_format": "album"
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
+            "source_count": 4
           },
           {
-            "upcoming_signal_id": "69b11442-62aa-5a4c-9110-2f674acffc3b",
+            "upcoming_signal_id": "e35fd84c-870e-5b22-998d-4bf66de28a16",
             "entity_slug": "bts",
             "display_name": "BTS",
             "headline": "Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net",
             "scheduled_date": "2026-03-21",
-            "scheduled_month": null,
+            "scheduled_month": "2026-03",
             "date_precision": "exact",
             "date_status": "scheduled",
             "confidence_score": 0.64,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNbUJYMndMdVRDQTZGRGVzT3dUMlpiWFc1b2NrZUpIUVpZWkFia2xiU0xXN3pHdXRJbzRsRHRpc01pTGEzSlNOSXJhdGVqRWkwX1I0R05FRkpXNk0zUkh4WjZ6R251T3diRURZQ3BDOUViMk5TVFByUnZzRC1GS2RFbWJHRFdCRk94ZFFqanR4MXRmaGZVVWh6RGFGbFE4aGd2ZktQVEZOdjV5VVAx?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future date reference: 2026-03-21. Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans artthreat.net",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "4c35431e-9bd9-5eb6-aa3b-8b1ec8de4291",
+            "upcoming_signal_id": "b349b515-3866-513b-89db-6c4325fa2853",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "headline": "AB6IX announces March comeback with their first full album in 5 years - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
+            "scheduled_month": "2026-03",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "album"
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNTTRFb2pHMTZWckFqWVRGMTVDTm51S2xhRGhZY3F6UXhzbXJaQUMzVTFMM094SGphU0I1VWd5VGVtbTZYeHVMRGx0QVRJU01xS2Y3ZUp4UmUtandjVk1LaUJGSWxWTnZVSExjRUY2eFJLeVZFSjZGNGdvVnpWZFNmVEw3MFZxMXh2cHNkeURSRWliMHNfMnlQTHk4bGhZNkx6ajdFYXBGejV5R2dHbkE?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX announces March comeback with their first full album in 5 years allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "9ead3b72-3595-5cbd-a04e-412458eeb8c5",
+            "upcoming_signal_id": "40b00178-7b92-5b5a-9581-7795f8676c98",
             "entity_slug": "all-h-ours",
             "display_name": "ALL(H)OURS",
             "headline": "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
+            "scheduled_month": "2026-03",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOSE5EeC1kOFlYeXdfbjBKQkpEejdVY0xacGVqYjJmc3JLNFhIUVN1SEVhQWNXellSRnZxX2RGMGZ1N0ZPaXVuZm9XaVZhRk1tb2lQMndGUjJGQ3lxMGVkTTdHdnZVcWZKWlF5NTJjcXJaZjVRUkxVRWhLSlQ3NGFsSk5PSHNiNTZDMlctZ2RxTlV2WjQ?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ hellokpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "c2749f79-ff25-50b2-8fa4-c0dd784e71d2",
-            "entity_slug": "bts",
-            "display_name": "BTS",
-            "headline": "BTS announces March comeback date, putting an end to a nearly 4-year hiatus - ABC7 Los Angeles",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.76,
-            "release_format": null
-          },
-          {
-            "upcoming_signal_id": "1842569e-5f24-54ac-a9a8-61806d565da0",
-            "entity_slug": "p1harmony",
-            "display_name": "P1Harmony",
-            "headline": "P1Harmony announces March comeback with new trailer release - Music Mundial",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.76,
-            "release_format": null
-          },
-          {
-            "upcoming_signal_id": "800fe9b2-9acd-5bd6-982c-d5182aabedda",
+            "upcoming_signal_id": "0dc840bb-7287-5cf6-bf60-229beee35d38",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "headline": "AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
+            "scheduled_month": "2026-03",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": "album"
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPVmxkNlRtVUNEN2NvXzlKemx1eks1MmpKM1pYWHhXN0FOU0FzVUk4eEJBYkJ6bURfcVdhTktZcVZETVpsUWk5WVI5enBTbWhxdHYwMzdWLWp4aWQzaElURkxfSkZfSzNseERlcHU1eXA0Tm1IdzB4VUtCZVF1ZlRDNllGanktbXduODgzY3czb083djJrM2l2TzBoTjhfcVVteUxtTlFDS3BZMU40amVRaTRLOTY1Zy10eXljcVd1OURINmxNVHk3dE1GeWI2dw?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "23a31cb6-336c-5108-bd54-f904fce89758",
-            "entity_slug": "bts",
-            "display_name": "BTS",
-            "headline": "BTS Confirm 2026 Comeback with New Album and World Tour Set for March - L'Officiel Singapore",
+            "upcoming_signal_id": "6ea3a5db-e83f-51fc-b33e-bf701cef4c24",
+            "entity_slug": "ab6ix",
+            "display_name": "AB6IX",
+            "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
             "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
+            "scheduled_month": "2026-03",
             "date_precision": "month_only",
             "date_status": "scheduled",
-            "confidence_score": 0.58,
-            "release_format": "album"
-          },
-          {
-            "upcoming_signal_id": "0c229747-5459-5279-899f-db88db4d9a11",
-            "entity_slug": "p1harmony",
-            "display_name": "P1Harmony",
-            "headline": "P1Harmony teases March comeback - The Korea Herald",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.58,
-            "release_format": null
-          },
-          {
-            "upcoming_signal_id": "5017fc94-4bc0-5bd3-aed9-ca45040b9542",
-            "entity_slug": "p1harmony",
-            "display_name": "P1Harmony",
-            "headline": "P1Harmony to return in March: report - The Korea Herald",
-            "scheduled_date": null,
-            "scheduled_month": "2026-03-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.58,
-            "release_format": null
+            "confidence_score": 0.46,
+            "release_format": "album",
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNbHNMekRwTExfSmdJZlZ5ZXJwSkhsUFZObjJzZFREVjFHWG1TNHFWNmt4aVhqV1lvNVo5MVI4cXF5Z3FPWGtVUkxBUHNMQ05RWUhwYzl2R2FzWFZTcFZJQ0czOTI0MFVQZ2RLUFZaVkgtUnVITlZFMjZyakdNcjBUT0o1ZzJRVUFXVXdmZGdR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-03. AB6IX Unveils 'So Sweet' Ahead of March Album 조선일보",
+            "source_count": 1
           }
         ]
       },
@@ -3657,142 +3627,9 @@
       "input": {
         "month": "2026-04"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments",
-        "exact-vs-month-only drift"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.days[0].exact_upcoming[0].release_format",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
-            {
-              "path": "data.scheduled_list[0].scheduled_month",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
-            {
-              "path": "data.scheduled_list[0].release_format",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.summary",
-          "expected": {
-            "verified_count": 0,
-            "exact_upcoming_count": 2,
-            "month_only_upcoming_count": 10
-          },
-          "actual": {
-            "verified_count": 0,
-            "exact_upcoming_count": 3,
-            "month_only_upcoming_count": 11
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.days",
-          "expected": [
-            {
-              "date": "2026-04-07",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "plave|PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn|2026-04-07||exact|confirmed"
-              ]
-            },
-            {
-              "date": "2026-04-13",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "tomorrow-x-together|[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”|2026-04-13||exact|confirmed"
-              ]
-            }
-          ],
-          "actual": [
-            {
-              "date": "2026-04-07",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "plave|PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn|2026-04-07||exact|confirmed"
-              ]
-            },
-            {
-              "date": "2026-04-13",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "tomorrow-x-together|[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”|2026-04-13||exact|confirmed",
-                "tomorrow-x-together|TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz|2026-04-13||exact|scheduled"
-              ]
-            }
-          ]
-        },
-        {
-          "category": "exact-vs-month-only drift",
-          "path": "data.month_only_upcoming",
-          "expected": [
-            "and-team|&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop||2026-04|month_only|scheduled",
-            "kickflip|KickFlip announces April comeback - Music Mundial||2026-04|month_only|scheduled",
-            "kickflip|KickFlip announces April comeback with their 4th mini-album - allkpop||2026-04|month_only|scheduled",
-            "kickflip|KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop||2026-04|month_only|scheduled",
-            "young-posse|YOUNG POSSE announces April comeback with new digital single - allkpop||2026-04|month_only|scheduled",
-            "kiss-of-life|KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보||2026-04|month_only|scheduled",
-            "tws|LE SSERAFIM and TWS join April comeback lineup - allkpop||2026-04|month_only|scheduled",
-            "le-sserafim|LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR||2026-04|month_only|scheduled",
-            "tws|LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR||2026-04|month_only|scheduled",
-            "tws|TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart||2026-04|month_only|scheduled"
-          ],
-          "actual": [
-            "and-team|&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop||2026-04-01|month_only|scheduled",
-            "kickflip|KickFlip announces April comeback - Music Mundial||2026-04-01|month_only|scheduled",
-            "kickflip|KickFlip announces April comeback with their 4th mini-album - allkpop||2026-04-01|month_only|scheduled",
-            "kickflip|KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop||2026-04-01|month_only|scheduled",
-            "young-posse|YOUNG POSSE announces April comeback with new digital single - allkpop||2026-04-01|month_only|scheduled",
-            "kiss-of-life|KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보||2026-04-01|month_only|scheduled",
-            "le-sserafim|LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR||2026-04-01|month_only|scheduled",
-            "tomorrow-x-together|TOMORROW X TOGETHER made their first comeback after renewing their contract..8th mini album released on April 13th - starnewskorea.com||2026-04-01|month_only|scheduled",
-            "tws|LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR||2026-04-01|month_only|scheduled",
-            "tws|LE SSERAFIM and TWS join April comeback lineup - allkpop||2026-04-01|month_only|scheduled",
-            "tws|TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart||2026-04-01|month_only|scheduled"
-          ]
-        },
-        {
-          "category": "exact-vs-month-only drift",
-          "path": "data.scheduled_list",
-          "expected": [
-            "plave|PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn|2026-04-07|2026-04|exact|confirmed",
-            "tomorrow-x-together|[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”|2026-04-13|2026-04|exact|confirmed"
-          ],
-          "actual": [
-            "plave|PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn|2026-04-07||exact|confirmed",
-            "tomorrow-x-together|[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”|2026-04-13||exact|confirmed",
-            "tomorrow-x-together|TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz|2026-04-13||exact|scheduled",
-            "and-team|&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop||2026-04-01|month_only|scheduled",
-            "kickflip|KickFlip announces April comeback - Music Mundial||2026-04-01|month_only|scheduled",
-            "kickflip|KickFlip announces April comeback with their 4th mini-album - allkpop||2026-04-01|month_only|scheduled",
-            "kickflip|KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop||2026-04-01|month_only|scheduled",
-            "young-posse|YOUNG POSSE announces April comeback with new digital single - allkpop||2026-04-01|month_only|scheduled",
-            "kiss-of-life|KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보||2026-04-01|month_only|scheduled",
-            "le-sserafim|LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR||2026-04-01|month_only|scheduled",
-            "tomorrow-x-together|TOMORROW X TOGETHER made their first comeback after renewing their contract..8th mini album released on April 13th - starnewskorea.com||2026-04-01|month_only|scheduled",
-            "tws|LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR||2026-04-01|month_only|scheduled",
-            "tws|LE SSERAFIM and TWS join April comeback lineup - allkpop||2026-04-01|month_only|scheduled",
-            "tws|TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart||2026-04-01|month_only|scheduled"
-          ]
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "summary": {
           "verified_count": 0,
@@ -3800,13 +3637,21 @@
           "month_only_upcoming_count": 10
         },
         "nearest_upcoming": {
+          "upcoming_signal_id": "yena::2026-03-11::love catcher",
           "entity_slug": "yena",
           "display_name": "YENA",
           "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
           "scheduled_date": "2026-03-11",
+          "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84
+          "confidence_score": 0.84,
+          "release_format": "ep",
+          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_type": "news_rss",
+          "source_domain": "starnewskorea.com",
+          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+          "source_count": 1
         },
         "days": [
           {
@@ -3814,14 +3659,21 @@
             "verified_releases": [],
             "exact_upcoming": [
               {
+                "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
+                "scheduled_month": "[truncated]",
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           },
@@ -3830,20 +3682,28 @@
             "verified_releases": [],
             "exact_upcoming": [
               {
+                "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
+                "scheduled_month": "[truncated]",
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           }
         ],
         "month_only_upcoming": [
           {
+            "upcoming_signal_id": "&team::2026-04::we fire",
             "entity_slug": "and-team",
             "display_name": "&TEAM",
             "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
@@ -3851,9 +3711,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "kickflip::2026-04::april",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
             "headline": "KickFlip announces April comeback - Music Mundial",
@@ -3861,9 +3727,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": ""
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1vRVlPU0xVRUlFSlN6SU1oNWQ1VWQxYWNpYUpXaDl6MFVHZWtVSElyTVFIZGZKaU51OFZDRlVTX2R4VmdVZWVzbmVpeEtxb3BrYXkwV3VWb282SVd6dDdlakdaczlVcmtpbWFxWTdOY2NqRS1Z0gF6QVVfeXFMTU5XU1lfWnpuclpnWTlfZm9aVGxocmVnYXN1bzhNenRBUlF2VnJQMzBsZVk5M2RmbklQdnRvUzZneW9qclJ4c29qcTUtSDFPMlNwbk1qUERuVDUtOGpMMldaU25hdVo5MHR3ZnRYYmlSeGNOdnVlOFliUlE?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback Music Mundial",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "kickflip::2026-04::april 4th",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
             "headline": "KickFlip announces April comeback with their 4th mini-album - allkpop",
@@ -3871,9 +3743,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSHllVlA3LVVFQ1pKcGltd3UxLWhSVEpfUHNqall5X2pkZ0ozWlNzazlKS29BYzZUZHA0UFNVQnNNd0JORU9yRFFQelFzeU5jM05kV0k0TVBZZE1iQklwbGZvR2ZSajhTaDFBRDR0dk05aHFNcmNoUWs1MXFVWGRmYXRhQTlWeDU1TE5TRUxpaTJFZ3d1ZlNaRGhVWXh2Z3pR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback with their 4th mini-album allkpop",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "kickflip::2026-04::wraps nationwide fan con april",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
             "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
@@ -3881,9 +3759,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": ""
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPd2t2VzJkdFQ0Mm5Ld0JzcWVlZHZvb0dHQ2RWSC1IVWI5bmR4bEJQQ2NuWjdGMUZKQnNnU0J1STBld0VOd0xmTnBXaHJyUzFLb0g4RUhEblhvR1M5eGZtdWhCUTBGN2FGMkNpUjk4dlJwZGZyZUM2cE95cHAta3JrektqM2stTWxGQXZxYWxfdGtTNm1OQWpDY3FDd0xOcENLVGl2Rzh1RjZKUE1HMkRwVG5aSQ?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip wraps first nationwide fan-con tour and announces April comeback allkpop",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "young posse::2026-04::april digital",
             "entity_slug": "young-posse",
             "display_name": "YOUNG POSSE",
             "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
@@ -3891,9 +3775,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "single"
+            "release_format": "single",
+            "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSEJNTnpUWHJkWGRHUlhvWnFId3BYTEJ4ZHVkZWppbktscmtYLThzRzkzek45UmVrTGd5di0wSmRUN2VjZ0M2YU1MLU9EbU8xTzY0Q3AzUHRzbHFXcDN6V2tYYjlXWGMtT3hlQUxhMFlKVVE4aU9RbDl0NGZfNU54S1NOdXJUSG9MUW5oaEd2VlEtd3dBUm1pV3RqSjJNcmIxR0E?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. YOUNG POSSE announces April comeback with new digital single allkpop",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "kiss of life::2026-04::coming soon",
             "entity_slug": "kiss-of-life",
             "display_name": "KISS OF LIFE",
             "headline": "KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보",
@@ -3901,19 +3791,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": ""
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOejZONEFWdXZ0SzlCTTNJNWRHUExLdHVSZ3ltOGR4c2RnS3V5dmtyTUItaVJGajc1NWI0c3FxbE5rWnpkcmFCekhZUEZQaEVPSUxVMEtYajFyQ0M3ZXNrSVhabVZpZnBac09VNl80YzVfVjBGNU5tODZnU2VoTTh5UkJ0Z1BCWXRyU01CZDJR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KISS OF LIFE Teases April Comeback with 'COMING SOON' Video 조선일보",
+            "source_count": 1
           },
           {
-            "entity_slug": "tws",
-            "display_name": "TWS",
-            "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
-            "scheduled_month": "2026-04",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.58,
-            "release_format": ""
-          },
-          {
+            "upcoming_signal_id": "le sserafim::2026-04::tws april as k pop rush intensifies",
             "entity_slug": "le-sserafim",
             "display_name": "LE SSERAFIM",
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
@@ -3921,9 +3807,15 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": ""
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "tws::2026-04::le sserafim april as k pop rush intensifies",
             "entity_slug": "tws",
             "display_name": "TWS",
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
@@ -3931,9 +3823,31 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": ""
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "tws::2026-04::le sserafim join april lineup",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPOW9KYnhjSUlXYTZXUDN5MXFtTGdwZklGc3lCd3NuTDJlOTVxd0FTTmhRVzNNejdBdjZDQVRySkJzSzFJT1BwakRaV1hsaF95SWpsczZHNnRicGNCM2ozOHJzOTZUamkwTW9SZExmSEFSYlFvX2g0QmNERW5KUnJNMWlRbE5vRWVXTTVPTW83Yw?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS join April comeback lineup allkpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "tws::2026-04::high energy spring confirmed april",
             "entity_slug": "tws",
             "display_name": "TWS",
             "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
@@ -3941,12 +3855,18 @@
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": ""
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZzJ5VkxoOGhGVS1GUEVVV0dMUnR1RkJHQlBqR2tGOGpWNUh2SXEwUzJ0czNVVHdlb1h3SzBMZnhPNXJHSWdaNlk5ajlOYy1wYTZYNDE2UUJmX3NpXzlhc1BXR0Q4SWR0ZXZqb2xja0lFYzhmQ2FKSS05cWZ0ZEkzZmJzMlFJRmstYVhfcA?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. TWS Set for a High-Energy Spring Comeback Confirmed for April OtakuKart",
+            "source_count": 1
           }
         ],
         "verified_list": [],
         "scheduled_list": [
           {
+            "upcoming_signal_id": "plave::2026-04-07::sets april 7 million seller run outlook respawn",
             "entity_slug": "plave",
             "display_name": "PLAVE",
             "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
@@ -3955,9 +3875,15 @@
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.82,
-            "release_format": ""
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPRXBEUU5pY3EtWkIyVGVoN3A1dVVyNGtuR2NxaTMtaFVZNmU4UXRQM3RqRWliMEk2SzAwbEllOEFSeHlTUVdIaXNtUzBfZ1plbVNId0NnbEdLX3l6dlJJOGY2aWRYc19lV1FkTEdkV25SM1ZZUlRlaWE4M19LcTVVMVlQVUFXQmQ5TkE0TzhnWnk5ZXVPc1BqY0FnLU5odGdEUXR1YkdjTHYzdVVwczVhaWVkUy3SAcIBQVVfeXFMT0htWFBPejdmaWNOcXRxS1o1VjlMWlVBYzlTTGlmMFRCR0ItSkdjY1U4QVNiSnlLSVprM0dmUE9YRE8xTnA1VXlfNDFhTTRTcGlUUWh2NS15a2VVSTdiYUpSeDZqS0ludXR1TlhKR3BhdHNFSUVpb1lmemgzTWUwcDExOEE0X01Ueml5TEVFeHNLSVhLZ3hHcEhwMjlfS2I2REFUbFduS3A4NHd0bDFrSTZlZkRfeXFIek9NM3l4Rm8tS2c?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future date reference: 2026-04-07. PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn Outlook Respawn",
+            "source_count": 1
           },
           {
+            "upcoming_signal_id": "tomorrow x together::2026-04-13::7th year moment stillness thorns",
             "entity_slug": "tomorrow-x-together",
             "display_name": "TOMORROW X TOGETHER",
             "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
@@ -3966,25 +3892,207 @@
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.84,
-            "release_format": ""
+            "release_format": null,
+            "source_url": "https://weverse.io/txt/notice/34002",
+            "source_type": "weverse_notice",
+            "source_domain": "weverse.io",
+            "evidence_summary": "Future date reference: 2026-04-13. Hello. This is BIGHIT MUSIC. We are excited to announce an online and in-person comeback showcase scheduled for Monday, April 13, 2026 to celebrate the release...",
+            "source_count": 3
+          },
+          {
+            "upcoming_signal_id": "&team::2026-04::we fire",
+            "entity_slug": "and-team",
+            "display_name": "&TEAM",
+            "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.76,
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "kickflip::2026-04::april",
+            "entity_slug": "kickflip",
+            "display_name": "KickFlip",
+            "headline": "KickFlip announces April comeback - Music Mundial",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.76,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1vRVlPU0xVRUlFSlN6SU1oNWQ1VWQxYWNpYUpXaDl6MFVHZWtVSElyTVFIZGZKaU51OFZDRlVTX2R4VmdVZWVzbmVpeEtxb3BrYXkwV3VWb282SVd6dDdlakdaczlVcmtpbWFxWTdOY2NqRS1Z0gF6QVVfeXFMTU5XU1lfWnpuclpnWTlfZm9aVGxocmVnYXN1bzhNenRBUlF2VnJQMzBsZVk5M2RmbklQdnRvUzZneW9qclJ4c29qcTUtSDFPMlNwbk1qUERuVDUtOGpMMldaU25hdVo5MHR3ZnRYYmlSeGNOdnVlOFliUlE?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback Music Mundial",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "kickflip::2026-04::april 4th",
+            "entity_slug": "kickflip",
+            "display_name": "KickFlip",
+            "headline": "KickFlip announces April comeback with their 4th mini-album - allkpop",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.76,
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSHllVlA3LVVFQ1pKcGltd3UxLWhSVEpfUHNqall5X2pkZ0ozWlNzazlKS29BYzZUZHA0UFNVQnNNd0JORU9yRFFQelFzeU5jM05kV0k0TVBZZE1iQklwbGZvR2ZSajhTaDFBRDR0dk05aHFNcmNoUWs1MXFVWGRmYXRhQTlWeDU1TE5TRUxpaTJFZ3d1ZlNaRGhVWXh2Z3pR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback with their 4th mini-album allkpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "kickflip::2026-04::wraps nationwide fan con april",
+            "entity_slug": "kickflip",
+            "display_name": "KickFlip",
+            "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.76,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPd2t2VzJkdFQ0Mm5Ld0JzcWVlZHZvb0dHQ2RWSC1IVWI5bmR4bEJQQ2NuWjdGMUZKQnNnU0J1STBld0VOd0xmTnBXaHJyUzFLb0g4RUhEblhvR1M5eGZtdWhCUTBGN2FGMkNpUjk4dlJwZGZyZUM2cE95cHAta3JrektqM2stTWxGQXZxYWxfdGtTNm1OQWpDY3FDd0xOcENLVGl2Rzh1RjZKUE1HMkRwVG5aSQ?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip wraps first nationwide fan-con tour and announces April comeback allkpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "young posse::2026-04::april digital",
+            "entity_slug": "young-posse",
+            "display_name": "YOUNG POSSE",
+            "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.76,
+            "release_format": "single",
+            "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSEJNTnpUWHJkWGRHUlhvWnFId3BYTEJ4ZHVkZWppbktscmtYLThzRzkzek45UmVrTGd5di0wSmRUN2VjZ0M2YU1MLU9EbU8xTzY0Q3AzUHRzbHFXcDN6V2tYYjlXWGMtT3hlQUxhMFlKVVE4aU9RbDl0NGZfNU54S1NOdXJUSG9MUW5oaEd2VlEtd3dBUm1pV3RqSjJNcmIxR0E?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. YOUNG POSSE announces April comeback with new digital single allkpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "kiss of life::2026-04::coming soon",
+            "entity_slug": "kiss-of-life",
+            "display_name": "KISS OF LIFE",
+            "headline": "KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOejZONEFWdXZ0SzlCTTNJNWRHUExLdHVSZ3ltOGR4c2RnS3V5dmtyTUItaVJGajc1NWI0c3FxbE5rWnpkcmFCekhZUEZQaEVPSUxVMEtYajFyQ0M3ZXNrSVhabVZpZnBac09VNl80YzVfVjBGNU5tODZnU2VoTTh5UkJ0Z1BCWXRyU01CZDJR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KISS OF LIFE Teases April Comeback with 'COMING SOON' Video 조선일보",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "le sserafim::2026-04::tws april as k pop rush intensifies",
+            "entity_slug": "le-sserafim",
+            "display_name": "LE SSERAFIM",
+            "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "tws::2026-04::le sserafim april as k pop rush intensifies",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "tws::2026-04::le sserafim join april lineup",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPOW9KYnhjSUlXYTZXUDN5MXFtTGdwZklGc3lCd3NuTDJlOTVxd0FTTmhRVzNNejdBdjZDQVRySkJzSzFJT1BwakRaV1hsaF95SWpsczZHNnRicGNCM2ozOHJzOTZUamkwTW9SZExmSEFSYlFvX2g0QmNERW5KUnJNMWlRbE5vRWVXTTVPTW83Yw?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS join April comeback lineup allkpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "tws::2026-04::high energy spring confirmed april",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
+            "scheduled_date": "",
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZzJ5VkxoOGhGVS1GUEVVV0dMUnR1RkJHQlBqR2tGOGpWNUh2SXEwUzJ0czNVVHdlb1h3SzBMZnhPNXJHSWdaNlk5ajlOYy1wYTZYNDE2UUJmX3NpXzlhc1BXR0Q4SWR0ZXZqb2xja0lFYzhmQ2FKSS05cWZ0ZEkzZmJzMlFJRmstYVhfcA?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. TWS Set for a High-Energy Spring Comeback Confirmed for April OtakuKart",
+            "source_count": 1
           }
         ]
       },
       "actual_snapshot": {
         "summary": {
           "verified_count": 0,
-          "exact_upcoming_count": 3,
-          "month_only_upcoming_count": 11
+          "exact_upcoming_count": 2,
+          "month_only_upcoming_count": 10
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434",
+          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
           "entity_slug": "yena",
           "display_name": "YENA",
+          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
           "scheduled_date": "2026-03-11",
+          "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "confidence_score": 0.84
+          "confidence_score": 0.84,
+          "release_format": "ep",
+          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_type": "news_rss",
+          "source_domain": "starnewskorea.com",
+          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+          "source_count": 1
         },
         "days": [
           {
@@ -4001,7 +4109,12 @@
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           },
@@ -4019,302 +4132,393 @@
                 "date_precision": "[truncated]",
                 "date_status": "[truncated]",
                 "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
-              },
-              {
-                "upcoming_signal_id": "[truncated]",
-                "entity_slug": "[truncated]",
-                "display_name": "[truncated]",
-                "headline": "[truncated]",
-                "scheduled_date": "[truncated]",
-                "scheduled_month": "[truncated]",
-                "date_precision": "[truncated]",
-                "date_status": "[truncated]",
-                "confidence_score": "[truncated]",
-                "release_format": "[truncated]"
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "source_type": "[truncated]",
+                "source_domain": "[truncated]",
+                "evidence_summary": "[truncated]",
+                "source_count": "[truncated]"
               }
             ]
           }
         ],
         "month_only_upcoming": [
           {
-            "upcoming_signal_id": "dc34b46b-b234-56de-8c78-2e11af56c992",
+            "upcoming_signal_id": "b2ce87e3-5912-5b58-aa78-e4366e3e13ba",
             "entity_slug": "and-team",
             "display_name": "&TEAM",
             "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "a2225095-7ab3-554d-84c1-0ea9614d71e9",
+            "upcoming_signal_id": "5b6fc554-bccf-5dea-906d-4c5cebb58b96",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
             "headline": "KickFlip announces April comeback - Music Mundial",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1vRVlPU0xVRUlFSlN6SU1oNWQ1VWQxYWNpYUpXaDl6MFVHZWtVSElyTVFIZGZKaU51OFZDRlVTX2R4VmdVZWVzbmVpeEtxb3BrYXkwV3VWb282SVd6dDdlakdaczlVcmtpbWFxWTdOY2NqRS1Z0gF6QVVfeXFMTU5XU1lfWnpuclpnWTlfZm9aVGxocmVnYXN1bzhNenRBUlF2VnJQMzBsZVk5M2RmbklQdnRvUzZneW9qclJ4c29qcTUtSDFPMlNwbk1qUERuVDUtOGpMMldaU25hdVo5MHR3ZnRYYmlSeGNOdnVlOFliUlE?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback Music Mundial",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "2cb3cce3-a756-5c1b-aad6-6df398c63111",
+            "upcoming_signal_id": "2d6a22f6-f4ec-5b46-aba0-fccfc75e3df9",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
             "headline": "KickFlip announces April comeback with their 4th mini-album - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSHllVlA3LVVFQ1pKcGltd3UxLWhSVEpfUHNqall5X2pkZ0ozWlNzazlKS29BYzZUZHA0UFNVQnNNd0JORU9yRFFQelFzeU5jM05kV0k0TVBZZE1iQklwbGZvR2ZSajhTaDFBRDR0dk05aHFNcmNoUWs1MXFVWGRmYXRhQTlWeDU1TE5TRUxpaTJFZ3d1ZlNaRGhVWXh2Z3pR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback with their 4th mini-album allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "6c740ff3-389f-5023-bf15-c5b671f16402",
+            "upcoming_signal_id": "40e933d3-cd90-5fed-ab51-b94953ab2132",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
             "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPd2t2VzJkdFQ0Mm5Ld0JzcWVlZHZvb0dHQ2RWSC1IVWI5bmR4bEJQQ2NuWjdGMUZKQnNnU0J1STBld0VOd0xmTnBXaHJyUzFLb0g4RUhEblhvR1M5eGZtdWhCUTBGN2FGMkNpUjk4dlJwZGZyZUM2cE95cHAta3JrektqM2stTWxGQXZxYWxfdGtTNm1OQWpDY3FDd0xOcENLVGl2Rzh1RjZKUE1HMkRwVG5aSQ?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip wraps first nationwide fan-con tour and announces April comeback allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "dd6851f2-eb97-55d8-bf44-0cdf53aceb6d",
+            "upcoming_signal_id": "daea5bae-dfed-53cf-ad37-05f6f469621d",
             "entity_slug": "young-posse",
             "display_name": "YOUNG POSSE",
             "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "single"
+            "release_format": "single",
+            "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSEJNTnpUWHJkWGRHUlhvWnFId3BYTEJ4ZHVkZWppbktscmtYLThzRzkzek45UmVrTGd5di0wSmRUN2VjZ0M2YU1MLU9EbU8xTzY0Q3AzUHRzbHFXcDN6V2tYYjlXWGMtT3hlQUxhMFlKVVE4aU9RbDl0NGZfNU54S1NOdXJUSG9MUW5oaEd2VlEtd3dBUm1pV3RqSjJNcmIxR0E?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. YOUNG POSSE announces April comeback with new digital single allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "3c2245e3-3f6f-5bf1-95f9-18c18ba31382",
+            "upcoming_signal_id": "b09afdd8-a6b8-55cf-b938-f05e57f2162a",
             "entity_slug": "kiss-of-life",
             "display_name": "KISS OF LIFE",
             "headline": "KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOejZONEFWdXZ0SzlCTTNJNWRHUExLdHVSZ3ltOGR4c2RnS3V5dmtyTUItaVJGajc1NWI0c3FxbE5rWnpkcmFCekhZUEZQaEVPSUxVMEtYajFyQ0M3ZXNrSVhabVZpZnBac09VNl80YzVfVjBGNU5tODZnU2VoTTh5UkJ0Z1BCWXRyU01CZDJR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KISS OF LIFE Teases April Comeback with 'COMING SOON' Video 조선일보",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "6af4aaee-ebbc-565b-a88a-c178bdd6e75f",
+            "upcoming_signal_id": "e9edf786-686c-5b65-aee4-f28df14d1016",
             "entity_slug": "le-sserafim",
             "display_name": "LE SSERAFIM",
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "149767f1-b5e8-5eb9-a549-878da539607d",
-            "entity_slug": "tomorrow-x-together",
-            "display_name": "TOMORROW X TOGETHER",
-            "headline": "TOMORROW X TOGETHER made their first comeback after renewing their contract..8th mini album released on April 13th - starnewskorea.com",
-            "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.58,
-            "release_format": "ep"
-          },
-          {
-            "upcoming_signal_id": "65bc2cfa-bdf4-5237-9fa9-855d1569fb31",
+            "upcoming_signal_id": "8b7be2bc-53e3-5b0f-b090-71d79518f967",
             "entity_slug": "tws",
             "display_name": "TWS",
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "03ccbf77-3a65-517d-960b-7b0b44d70594",
+            "upcoming_signal_id": "9e39b332-708c-5b76-a9c6-82102bae2e2e",
             "entity_slug": "tws",
             "display_name": "TWS",
             "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPOW9KYnhjSUlXYTZXUDN5MXFtTGdwZklGc3lCd3NuTDJlOTVxd0FTTmhRVzNNejdBdjZDQVRySkJzSzFJT1BwakRaV1hsaF95SWpsczZHNnRicGNCM2ozOHJzOTZUamkwTW9SZExmSEFSYlFvX2g0QmNERW5KUnJNMWlRbE5vRWVXTTVPTW83Yw?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS join April comeback lineup allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "cfac3159-28cc-5ef3-b615-0fdff89fb626",
+            "upcoming_signal_id": "d0cf2b3a-95a2-5bcf-b184-d47dc3a2739b",
             "entity_slug": "tws",
             "display_name": "TWS",
             "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZzJ5VkxoOGhGVS1GUEVVV0dMUnR1RkJHQlBqR2tGOGpWNUh2SXEwUzJ0czNVVHdlb1h3SzBMZnhPNXJHSWdaNlk5ajlOYy1wYTZYNDE2UUJmX3NpXzlhc1BXR0Q4SWR0ZXZqb2xja0lFYzhmQ2FKSS05cWZ0ZEkzZmJzMlFJRmstYVhfcA?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. TWS Set for a High-Energy Spring Comeback Confirmed for April OtakuKart",
+            "source_count": 1
           }
         ],
         "verified_list": [],
         "scheduled_list": [
           {
-            "upcoming_signal_id": "8ed515cd-7571-5dd1-ac84-2286986b2149",
+            "upcoming_signal_id": "035200de-6d2f-5866-97b4-e76b78528077",
             "entity_slug": "plave",
             "display_name": "PLAVE",
             "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
             "scheduled_date": "2026-04-07",
-            "scheduled_month": null,
+            "scheduled_month": "2026-04",
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.82,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPRXBEUU5pY3EtWkIyVGVoN3A1dVVyNGtuR2NxaTMtaFVZNmU4UXRQM3RqRWliMEk2SzAwbEllOEFSeHlTUVdIaXNtUzBfZ1plbVNId0NnbEdLX3l6dlJJOGY2aWRYc19lV1FkTEdkV25SM1ZZUlRlaWE4M19LcTVVMVlQVUFXQmQ5TkE0TzhnWnk5ZXVPc1BqY0FnLU5odGdEUXR1YkdjTHYzdVVwczVhaWVkUy3SAcIBQVVfeXFMT0htWFBPejdmaWNOcXRxS1o1VjlMWlVBYzlTTGlmMFRCR0ItSkdjY1U4QVNiSnlLSVprM0dmUE9YRE8xTnA1VXlfNDFhTTRTcGlUUWh2NS15a2VVSTdiYUpSeDZqS0ludXR1TlhKR3BhdHNFSUVpb1lmemgzTWUwcDExOEE0X01Ueml5TEVFeHNLSVhLZ3hHcEhwMjlfS2I2REFUbFduS3A4NHd0bDFrSTZlZkRfeXFIek9NM3l4Rm8tS2c?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future date reference: 2026-04-07. PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn Outlook Respawn",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "5299f667-d0b0-52f8-a437-02e0ccc557da",
+            "upcoming_signal_id": "085d1cb7-4a4c-5232-abb0-a982534217b2",
             "entity_slug": "tomorrow-x-together",
             "display_name": "TOMORROW X TOGETHER",
             "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
             "scheduled_date": "2026-04-13",
-            "scheduled_month": null,
+            "scheduled_month": "2026-04",
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.84,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://weverse.io/txt/notice/34002",
+            "source_type": "weverse_notice",
+            "source_domain": "weverse.io",
+            "evidence_summary": "Future date reference: 2026-04-13. Hello. This is BIGHIT MUSIC. We are excited to announce an online and in-person comeback showcase scheduled for Monday, April 13, 2026 to celebrate the release...",
+            "source_count": 3
           },
           {
-            "upcoming_signal_id": "409f62f3-6726-5b73-bf2a-e0abba1b1e45",
-            "entity_slug": "tomorrow-x-together",
-            "display_name": "TOMORROW X TOGETHER",
-            "headline": "TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz",
-            "scheduled_date": "2026-04-13",
-            "scheduled_month": null,
-            "date_precision": "exact",
-            "date_status": "scheduled",
-            "confidence_score": 0.64,
-            "release_format": null
-          },
-          {
-            "upcoming_signal_id": "dc34b46b-b234-56de-8c78-2e11af56c992",
+            "upcoming_signal_id": "b2ce87e3-5912-5b58-aa78-e4366e3e13ba",
             "entity_slug": "and-team",
             "display_name": "&TEAM",
             "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "a2225095-7ab3-554d-84c1-0ea9614d71e9",
+            "upcoming_signal_id": "5b6fc554-bccf-5dea-906d-4c5cebb58b96",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
             "headline": "KickFlip announces April comeback - Music Mundial",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1vRVlPU0xVRUlFSlN6SU1oNWQ1VWQxYWNpYUpXaDl6MFVHZWtVSElyTVFIZGZKaU51OFZDRlVTX2R4VmdVZWVzbmVpeEtxb3BrYXkwV3VWb282SVd6dDdlakdaczlVcmtpbWFxWTdOY2NqRS1Z0gF6QVVfeXFMTU5XU1lfWnpuclpnWTlfZm9aVGxocmVnYXN1bzhNenRBUlF2VnJQMzBsZVk5M2RmbklQdnRvUzZneW9qclJ4c29qcTUtSDFPMlNwbk1qUERuVDUtOGpMMldaU25hdVo5MHR3ZnRYYmlSeGNOdnVlOFliUlE?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback Music Mundial",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "2cb3cce3-a756-5c1b-aad6-6df398c63111",
+            "upcoming_signal_id": "2d6a22f6-f4ec-5b46-aba0-fccfc75e3df9",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
             "headline": "KickFlip announces April comeback with their 4th mini-album - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "ep"
+            "release_format": "ep",
+            "source_url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSHllVlA3LVVFQ1pKcGltd3UxLWhSVEpfUHNqall5X2pkZ0ozWlNzazlKS29BYzZUZHA0UFNVQnNNd0JORU9yRFFQelFzeU5jM05kV0k0TVBZZE1iQklwbGZvR2ZSajhTaDFBRDR0dk05aHFNcmNoUWs1MXFVWGRmYXRhQTlWeDU1TE5TRUxpaTJFZ3d1ZlNaRGhVWXh2Z3pR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip announces April comeback with their 4th mini-album allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "6c740ff3-389f-5023-bf15-c5b671f16402",
+            "upcoming_signal_id": "40e933d3-cd90-5fed-ab51-b94953ab2132",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
             "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPd2t2VzJkdFQ0Mm5Ld0JzcWVlZHZvb0dHQ2RWSC1IVWI5bmR4bEJQQ2NuWjdGMUZKQnNnU0J1STBld0VOd0xmTnBXaHJyUzFLb0g4RUhEblhvR1M5eGZtdWhCUTBGN2FGMkNpUjk4dlJwZGZyZUM2cE95cHAta3JrektqM2stTWxGQXZxYWxfdGtTNm1OQWpDY3FDd0xOcENLVGl2Rzh1RjZKUE1HMkRwVG5aSQ?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KickFlip wraps first nationwide fan-con tour and announces April comeback allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "dd6851f2-eb97-55d8-bf44-0cdf53aceb6d",
+            "upcoming_signal_id": "daea5bae-dfed-53cf-ad37-05f6f469621d",
             "entity_slug": "young-posse",
             "display_name": "YOUNG POSSE",
             "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.76,
-            "release_format": "single"
+            "release_format": "single",
+            "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSEJNTnpUWHJkWGRHUlhvWnFId3BYTEJ4ZHVkZWppbktscmtYLThzRzkzek45UmVrTGd5di0wSmRUN2VjZ0M2YU1MLU9EbU8xTzY0Q3AzUHRzbHFXcDN6V2tYYjlXWGMtT3hlQUxhMFlKVVE4aU9RbDl0NGZfNU54S1NOdXJUSG9MUW5oaEd2VlEtd3dBUm1pV3RqSjJNcmIxR0E?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. YOUNG POSSE announces April comeback with new digital single allkpop",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "3c2245e3-3f6f-5bf1-95f9-18c18ba31382",
+            "upcoming_signal_id": "b09afdd8-a6b8-55cf-b938-f05e57f2162a",
             "entity_slug": "kiss-of-life",
             "display_name": "KISS OF LIFE",
             "headline": "KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOejZONEFWdXZ0SzlCTTNJNWRHUExLdHVSZ3ltOGR4c2RnS3V5dmtyTUItaVJGajc1NWI0c3FxbE5rWnpkcmFCekhZUEZQaEVPSUxVMEtYajFyQ0M3ZXNrSVhabVZpZnBac09VNl80YzVfVjBGNU5tODZnU2VoTTh5UkJ0Z1BCWXRyU01CZDJR?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. KISS OF LIFE Teases April Comeback with 'COMING SOON' Video 조선일보",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "6af4aaee-ebbc-565b-a88a-c178bdd6e75f",
+            "upcoming_signal_id": "e9edf786-686c-5b65-aee4-f28df14d1016",
             "entity_slug": "le-sserafim",
             "display_name": "LE SSERAFIM",
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
+            "source_count": 1
           },
           {
-            "upcoming_signal_id": "149767f1-b5e8-5eb9-a549-878da539607d",
-            "entity_slug": "tomorrow-x-together",
-            "display_name": "TOMORROW X TOGETHER",
-            "headline": "TOMORROW X TOGETHER made their first comeback after renewing their contract..8th mini album released on April 13th - starnewskorea.com",
-            "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
-            "date_precision": "month_only",
-            "date_status": "scheduled",
-            "confidence_score": 0.58,
-            "release_format": "ep"
-          },
-          {
-            "upcoming_signal_id": "65bc2cfa-bdf4-5237-9fa9-855d1569fb31",
+            "upcoming_signal_id": "8b7be2bc-53e3-5b0f-b090-71d79518f967",
             "entity_slug": "tws",
             "display_name": "TWS",
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
             "scheduled_date": null,
-            "scheduled_month": "2026-04-01",
+            "scheduled_month": "2026-04",
             "date_precision": "month_only",
             "date_status": "scheduled",
             "confidence_score": 0.58,
-            "release_format": null
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies DIPE.CO.KR",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "9e39b332-708c-5b76-a9c6-82102bae2e2e",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
+            "scheduled_date": null,
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPOW9KYnhjSUlXYTZXUDN5MXFtTGdwZklGc3lCd3NuTDJlOTVxd0FTTmhRVzNNejdBdjZDQVRySkJzSzFJT1BwakRaV1hsaF95SWpsczZHNnRicGNCM2ozOHJzOTZUamkwTW9SZExmSEFSYlFvX2g0QmNERW5KUnJNMWlRbE5vRWVXTTVPTW83Yw?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. LE SSERAFIM and TWS join April comeback lineup allkpop",
+            "source_count": 1
+          },
+          {
+            "upcoming_signal_id": "d0cf2b3a-95a2-5bcf-b184-d47dc3a2739b",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
+            "scheduled_date": null,
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "release_format": null,
+            "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZzJ5VkxoOGhGVS1GUEVVV0dMUnR1RkJHQlBqR2tGOGpWNUh2SXEwUzJ0czNVVHdlb1h3SzBMZnhPNXJHSWdaNlk5ajlOYy1wYTZYNDE2UUJmX3NpXzlhc1BXR0Q4SWR0ZXZqb2xja0lFYzhmQ2FKSS05cWZ0ZEkzZmJzMlFJRmstYVhfcA?oc=5",
+            "source_type": "news_rss",
+            "source_domain": "news.google.com",
+            "evidence_summary": "Future month reference: 2026-04. TWS Set for a High-Energy Spring Comeback Confirmed for April OtakuKart",
+            "source_count": 1
           }
         ]
       },
@@ -4325,375 +4529,68 @@
       "input": {
         "month": "2025-10"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.days[0].verified_releases[0].release_date",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.summary",
-          "expected": {
-            "verified_count": 22,
-            "exact_upcoming_count": 0,
-            "month_only_upcoming_count": 0
-          },
-          "actual": {
-            "verified_count": 29,
-            "exact_upcoming_count": 0,
-            "month_only_upcoming_count": 0
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.days",
-          "expected": [
-            {
-              "date": "2025-10-03",
-              "verified_releases": [
-                "g-i-dle|i‐dle|2025-10-03|album",
-                "bae173|What’s wrong?|2025-10-03|song"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-06",
-              "verified_releases": [
-                "qwer|흰수염고래|2025-10-06|song"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-07",
-              "verified_releases": [
-                "onewe|MAZE : AD ASTRA|2025-10-07|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-10",
-              "verified_releases": [
-                "babymonster|WE GO UP|2025-10-10|album",
-                "twice|TEN: The Story Goes On|2025-10-10|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-13",
-              "verified_releases": [
-                "nmixx|Blue Valentine|2025-10-13|album",
-                "tws|play hard|2025-10-13|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-14",
-              "verified_releases": [
-                "bae173|NEW CHAPTER : DESEAR|2025-10-14|album",
-                "meovv|BURNING UP|2025-10-14|song"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-19",
-              "verified_releases": [
-                "tomorrow-x-together|Starkissed|2025-10-19|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-20",
-              "verified_releases": [
-                "boynextdoor|The Action|2025-10-20|album",
-                "hearts2hearts|FOCUS|2025-10-20|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-23",
-              "verified_releases": [
-                "dkb|Emotion|2025-10-23|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-24",
-              "verified_releases": [
-                "le-sserafim|SPAGHETTI|2025-10-24|song",
-                "xdinary-heroes|LXVE to DEATH|2025-10-24|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-27",
-              "verified_releases": [
-                "nexz|Beat‐Boxer|2025-10-27|album",
-                "tempest|As I am|2025-10-27|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-28",
-              "verified_releases": [
-                "and-team|Back to Life|2025-10-28|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-29",
-              "verified_releases": [
-                "wei|Wonderland|2025-10-29|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-30",
-              "verified_releases": [
-                "82major|Trophy|2025-10-30|album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-31",
-              "verified_releases": [
-                "xikers|HOUSE OF TRICKY : WRECKING THE HOUSE|2025-10-31|album"
-              ],
-              "exact_upcoming": []
-            }
-          ],
-          "actual": [
-            {
-              "date": "2025-10-01",
-              "verified_releases": [
-                "triples|tripleS ∞! < SecretHimitsuBimil >||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-02",
-              "verified_releases": [
-                "bae173|One day||song"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-03",
-              "verified_releases": [
-                "g-i-dle|i‐dle||album",
-                "bae173|What’s wrong?||song"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-06",
-              "verified_releases": [
-                "qwer|흰수염고래||song"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-07",
-              "verified_releases": [
-                "onewe|MAZE : AD ASTRA||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-08",
-              "verified_releases": [
-                "itzy|Collector||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-10",
-              "verified_releases": [
-                "babymonster|WE GO UP||album",
-                "twice|TEN: The Story Goes On||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-13",
-              "verified_releases": [
-                "nmixx|Blue Valentine||album",
-                "tws|play hard||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-14",
-              "verified_releases": [
-                "bae173|NEW CHAPTER : DESEAR||album",
-                "meovv|BURNING UP||song"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-19",
-              "verified_releases": [
-                "tomorrow-x-together|Starkissed||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-20",
-              "verified_releases": [
-                "boynextdoor|The Action||album",
-                "hearts2hearts|FOCUS||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-23",
-              "verified_releases": [
-                "dkb|Emotion||album",
-                "yuju|내향남녀 X 유주||song"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-24",
-              "verified_releases": [
-                "ateez|From (2018)||song",
-                "le-sserafim|Pearlies (My oyster is the world)||song",
-                "le-sserafim|SPAGHETTI||song",
-                "xdinary-heroes|LXVE to DEATH||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-27",
-              "verified_releases": [
-                "nexz|Beat‐Boxer||album",
-                "tempest|As I am||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-28",
-              "verified_releases": [
-                "and-team|Back to Life||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-29",
-              "verified_releases": [
-                "trendz|Crime||song",
-                "wei|Wonderland||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-30",
-              "verified_releases": [
-                "82major|Trophy||album"
-              ],
-              "exact_upcoming": []
-            },
-            {
-              "date": "2025-10-31",
-              "verified_releases": [
-                "xikers|HOUSE OF TRICKY : WRECKING THE HOUSE||album"
-              ],
-              "exact_upcoming": []
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.verified_list",
-          "expected": [
-            "g-i-dle|i‐dle|2025-10-03|album",
-            "bae173|What’s wrong?|2025-10-03|song",
-            "qwer|흰수염고래|2025-10-06|song",
-            "onewe|MAZE : AD ASTRA|2025-10-07|album",
-            "babymonster|WE GO UP|2025-10-10|album",
-            "twice|TEN: The Story Goes On|2025-10-10|album",
-            "nmixx|Blue Valentine|2025-10-13|album",
-            "tws|play hard|2025-10-13|album",
-            "bae173|NEW CHAPTER : DESEAR|2025-10-14|album",
-            "meovv|BURNING UP|2025-10-14|song",
-            "tomorrow-x-together|Starkissed|2025-10-19|album",
-            "boynextdoor|The Action|2025-10-20|album",
-            "hearts2hearts|FOCUS|2025-10-20|album",
-            "dkb|Emotion|2025-10-23|album",
-            "le-sserafim|SPAGHETTI|2025-10-24|song",
-            "xdinary-heroes|LXVE to DEATH|2025-10-24|album",
-            "nexz|Beat‐Boxer|2025-10-27|album",
-            "tempest|As I am|2025-10-27|album",
-            "and-team|Back to Life|2025-10-28|album",
-            "wei|Wonderland|2025-10-29|album",
-            "82major|Trophy|2025-10-30|album",
-            "xikers|HOUSE OF TRICKY : WRECKING THE HOUSE|2025-10-31|album"
-          ],
-          "actual": [
-            "triples|tripleS ∞! < SecretHimitsuBimil >|2025-10-01|album",
-            "bae173|One day|2025-10-02|song",
-            "g-i-dle|i‐dle|2025-10-03|album",
-            "bae173|What’s wrong?|2025-10-03|song",
-            "qwer|흰수염고래|2025-10-06|song",
-            "onewe|MAZE : AD ASTRA|2025-10-07|album",
-            "itzy|Collector|2025-10-08|album",
-            "babymonster|WE GO UP|2025-10-10|album",
-            "twice|TEN: The Story Goes On|2025-10-10|album",
-            "nmixx|Blue Valentine|2025-10-13|album",
-            "tws|play hard|2025-10-13|album",
-            "bae173|NEW CHAPTER : DESEAR|2025-10-14|album",
-            "meovv|BURNING UP|2025-10-14|song",
-            "tomorrow-x-together|Starkissed|2025-10-19|album",
-            "boynextdoor|The Action|2025-10-20|album",
-            "hearts2hearts|FOCUS|2025-10-20|album",
-            "dkb|Emotion|2025-10-23|album",
-            "yuju|내향남녀 X 유주|2025-10-23|song",
-            "ateez|From (2018)|2025-10-24|song",
-            "le-sserafim|Pearlies (My oyster is the world)|2025-10-24|song",
-            "le-sserafim|SPAGHETTI|2025-10-24|song",
-            "xdinary-heroes|LXVE to DEATH|2025-10-24|album",
-            "nexz|Beat‐Boxer|2025-10-27|album",
-            "tempest|As I am|2025-10-27|album",
-            "and-team|Back to Life|2025-10-28|album",
-            "trendz|Crime|2025-10-29|song",
-            "wei|Wonderland|2025-10-29|album",
-            "82major|Trophy|2025-10-30|album",
-            "xikers|HOUSE OF TRICKY : WRECKING THE HOUSE|2025-10-31|album"
-          ]
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "summary": {
-          "verified_count": 22,
+          "verified_count": 29,
           "exact_upcoming_count": 0,
           "month_only_upcoming_count": 0
         },
         "nearest_upcoming": {
+          "upcoming_signal_id": "yena::2026-03-11::love catcher",
           "entity_slug": "yena",
           "display_name": "YENA",
           "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
           "scheduled_date": "2026-03-11",
+          "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84
+          "confidence_score": 0.84,
+          "release_format": "ep",
+          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_type": "news_rss",
+          "source_domain": "starnewskorea.com",
+          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+          "source_count": 1
         },
         "days": [
+          {
+            "date": "2025-10-01",
+            "verified_releases": [
+              {
+                "release_id": "[truncated]",
+                "entity_slug": "[truncated]",
+                "display_name": "[truncated]",
+                "release_title": "[truncated]",
+                "stream": "[truncated]",
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
+              }
+            ],
+            "exact_upcoming": []
+          },
+          {
+            "date": "2025-10-02",
+            "verified_releases": [
+              {
+                "release_id": "[truncated]",
+                "entity_slug": "[truncated]",
+                "display_name": "[truncated]",
+                "release_title": "[truncated]",
+                "stream": "[truncated]",
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
+              }
+            ],
+            "exact_upcoming": []
+          },
           {
             "date": "2025-10-03",
             "verified_releases": [
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4702,6 +4599,7 @@
                 "release_date": "[truncated]"
               },
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4716,6 +4614,7 @@
             "date": "2025-10-06",
             "verified_releases": [
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4730,6 +4629,22 @@
             "date": "2025-10-07",
             "verified_releases": [
               {
+                "release_id": "[truncated]",
+                "entity_slug": "[truncated]",
+                "display_name": "[truncated]",
+                "release_title": "[truncated]",
+                "stream": "[truncated]",
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
+              }
+            ],
+            "exact_upcoming": []
+          },
+          {
+            "date": "2025-10-08",
+            "verified_releases": [
+              {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4744,6 +4659,7 @@
             "date": "2025-10-10",
             "verified_releases": [
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4752,6 +4668,7 @@
                 "release_date": "[truncated]"
               },
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4766,6 +4683,7 @@
             "date": "2025-10-13",
             "verified_releases": [
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4774,6 +4692,7 @@
                 "release_date": "[truncated]"
               },
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4788,6 +4707,7 @@
             "date": "2025-10-14",
             "verified_releases": [
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4796,6 +4716,7 @@
                 "release_date": "[truncated]"
               },
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4810,6 +4731,7 @@
             "date": "2025-10-19",
             "verified_releases": [
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4824,6 +4746,7 @@
             "date": "2025-10-20",
             "verified_releases": [
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4832,6 +4755,7 @@
                 "release_date": "[truncated]"
               },
               {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4846,20 +4770,7 @@
             "date": "2025-10-23",
             "verified_releases": [
               {
-                "entity_slug": "[truncated]",
-                "display_name": "[truncated]",
-                "release_title": "[truncated]",
-                "stream": "[truncated]",
-                "release_kind": "[truncated]",
-                "release_date": "[truncated]"
-              }
-            ],
-            "exact_upcoming": []
-          },
-          {
-            "date": "2025-10-24",
-            "verified_releases": [
-              {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4868,42 +4779,7 @@
                 "release_date": "[truncated]"
               },
               {
-                "entity_slug": "[truncated]",
-                "display_name": "[truncated]",
-                "release_title": "[truncated]",
-                "stream": "[truncated]",
-                "release_kind": "[truncated]",
-                "release_date": "[truncated]"
-              }
-            ],
-            "exact_upcoming": []
-          },
-          {
-            "date": "2025-10-27",
-            "verified_releases": [
-              {
-                "entity_slug": "[truncated]",
-                "display_name": "[truncated]",
-                "release_title": "[truncated]",
-                "stream": "[truncated]",
-                "release_kind": "[truncated]",
-                "release_date": "[truncated]"
-              },
-              {
-                "entity_slug": "[truncated]",
-                "display_name": "[truncated]",
-                "release_title": "[truncated]",
-                "stream": "[truncated]",
-                "release_kind": "[truncated]",
-                "release_date": "[truncated]"
-              }
-            ],
-            "exact_upcoming": []
-          },
-          {
-            "date": "2025-10-28",
-            "verified_releases": [
-              {
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
@@ -4918,6 +4794,25 @@
         "month_only_upcoming": [],
         "verified_list": [
           {
+            "release_id": "tripleS::tripleS ∞! < SecretHimitsuBimil >::2025-10-01::album",
+            "entity_slug": "triples",
+            "display_name": "tripleS",
+            "release_title": "tripleS ∞! < SecretHimitsuBimil >",
+            "release_date": "2025-10-01",
+            "stream": "album",
+            "release_kind": "album"
+          },
+          {
+            "release_id": "BAE173::One day::2025-10-02::song",
+            "entity_slug": "bae173",
+            "display_name": "BAE173",
+            "release_title": "One day",
+            "release_date": "2025-10-02",
+            "stream": "song",
+            "release_kind": "single"
+          },
+          {
+            "release_id": "(G)I-DLE::i‐dle::2025-10-03::album",
             "entity_slug": "g-i-dle",
             "display_name": "(G)I-DLE",
             "release_title": "i‐dle",
@@ -4926,6 +4821,7 @@
             "release_kind": "ep"
           },
           {
+            "release_id": "BAE173::What’s wrong?::2025-10-03::song",
             "entity_slug": "bae173",
             "display_name": "BAE173",
             "release_title": "What’s wrong?",
@@ -4934,6 +4830,7 @@
             "release_kind": "single"
           },
           {
+            "release_id": "QWER::흰수염고래::2025-10-06::song",
             "entity_slug": "qwer",
             "display_name": "QWER",
             "release_title": "흰수염고래",
@@ -4942,6 +4839,7 @@
             "release_kind": "single"
           },
           {
+            "release_id": "ONEWE::MAZE : AD ASTRA::2025-10-07::album",
             "entity_slug": "onewe",
             "display_name": "ONEWE",
             "release_title": "MAZE : AD ASTRA",
@@ -4950,6 +4848,16 @@
             "release_kind": "ep"
           },
           {
+            "release_id": "ITZY::Collector::2025-10-08::album",
+            "entity_slug": "itzy",
+            "display_name": "ITZY",
+            "release_title": "Collector",
+            "release_date": "2025-10-08",
+            "stream": "album",
+            "release_kind": "album"
+          },
+          {
+            "release_id": "BABYMONSTER::WE GO UP::2025-10-10::album",
             "entity_slug": "babymonster",
             "display_name": "BABYMONSTER",
             "release_title": "WE GO UP",
@@ -4958,6 +4866,7 @@
             "release_kind": "ep"
           },
           {
+            "release_id": "TWICE::TEN: The Story Goes On::2025-10-10::album",
             "entity_slug": "twice",
             "display_name": "TWICE",
             "release_title": "TEN: The Story Goes On",
@@ -4966,6 +4875,7 @@
             "release_kind": "album"
           },
           {
+            "release_id": "NMIXX::Blue Valentine::2025-10-13::album",
             "entity_slug": "nmixx",
             "display_name": "NMIXX",
             "release_title": "Blue Valentine",
@@ -4974,6 +4884,7 @@
             "release_kind": "album"
           },
           {
+            "release_id": "TWS::play hard::2025-10-13::album",
             "entity_slug": "tws",
             "display_name": "TWS",
             "release_title": "play hard",
@@ -4982,34 +4893,11 @@
             "release_kind": "ep"
           },
           {
+            "release_id": "BAE173::NEW CHAPTER : DESEAR::2025-10-14::album",
             "entity_slug": "bae173",
             "display_name": "BAE173",
             "release_title": "NEW CHAPTER : DESEAR",
             "release_date": "2025-10-14",
-            "stream": "album",
-            "release_kind": "ep"
-          },
-          {
-            "entity_slug": "meovv",
-            "display_name": "MEOVV",
-            "release_title": "BURNING UP",
-            "release_date": "2025-10-14",
-            "stream": "song",
-            "release_kind": "single"
-          },
-          {
-            "entity_slug": "tomorrow-x-together",
-            "display_name": "TOMORROW X TOGETHER",
-            "release_title": "Starkissed",
-            "release_date": "2025-10-19",
-            "stream": "album",
-            "release_kind": "album"
-          },
-          {
-            "entity_slug": "boynextdoor",
-            "display_name": "BOYNEXTDOOR",
-            "release_title": "The Action",
-            "release_date": "2025-10-20",
             "stream": "album",
             "release_kind": "ep"
           }
@@ -5023,14 +4911,21 @@
           "month_only_upcoming_count": 0
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434",
+          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
           "entity_slug": "yena",
           "display_name": "YENA",
+          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
           "scheduled_date": "2026-03-11",
+          "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "confidence_score": 0.84
+          "confidence_score": 0.84,
+          "release_format": "ep",
+          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_type": "news_rss",
+          "source_domain": "starnewskorea.com",
+          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+          "source_count": 1
         },
         "days": [
           {
@@ -5042,7 +4937,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5056,7 +4952,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5070,7 +4967,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
@@ -5078,7 +4976,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5092,7 +4991,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5106,7 +5006,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5120,7 +5021,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5134,7 +5036,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
@@ -5142,7 +5045,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5156,7 +5060,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
@@ -5164,7 +5069,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5178,7 +5084,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
@@ -5186,7 +5093,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5200,7 +5108,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5214,7 +5123,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
@@ -5222,7 +5132,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5236,7 +5147,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
@@ -5244,7 +5156,8 @@
                 "display_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
-                "release_kind": "[truncated]"
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
             ],
             "exact_upcoming": []
@@ -5506,19 +5419,19 @@
             "trendz|Kart Racer|2026-02-13|song",
             "tunexx|SET BY US ONLY|2026-03-03|album",
             "wjsn|Bloom hour|2026-02-25|song",
-            "triples|トキメティック|2026-02-05|song"
+            "upcoming_signal|tws|TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart|"
           ]
         },
         {
           "category": "radar eligibility drift",
           "path": "data.long_gap",
           "expected": [
-            "weeekly|long_gap|Bliss|2024-07-09|watchlist|606|false|null",
-            "woo-ah|long_gap|Shining on you|2024-07-16|watchlist|599|false|null"
+            "weeekly|long_gap|Bliss|2024-07-09|watchlist|607|false|null",
+            "woo-ah|long_gap|Shining on you|2024-07-16|watchlist|600|false|null"
           ],
           "actual": [
-            "weeekly|long_gap|Bliss|2024-07-09|album|606|false|null",
-            "woo-ah|long_gap|Shining on you|2024-07-16|song|599|false|null"
+            "weeekly|long_gap|Bliss|2024-07-09|album|607|false|null",
+            "woo-ah|long_gap|Shining on you|2024-07-16|song|600|false|null"
           ]
         },
         {
@@ -5530,6 +5443,7 @@
             "kiiikiii|2025|Delulu Pack|2026-01-25|album|true|undefined|Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop|||unknown|rumor",
             "kickflip|2025|From KickFlip, To WeFlip|2026-01-20|song|true|undefined|KickFlip announces April comeback - Music Mundial||2026-04|month_only|scheduled",
             "allday-project|2025|ALLDAY PROJECT|2025-12-08|watchlist|false|null",
+            "xlov|2025|UXLXVE|2025-11-05|album|false|null",
             "ifeye|2025|sweet tang|2025-07-16|album|false|null",
             "close-your-eyes|2025|ETERNALT|2025-04-02|watchlist|false|null"
           ],
@@ -5540,6 +5454,7 @@
             "kickflip|2025|From KickFlip, To WeFlip|2026-01-20|song|true|undefined|KickFlip announces April comeback - Music Mundial||2026-04-01|month_only|scheduled",
             "allday-project|2025|ALLDAY PROJECT|2025-12-08|album|false|null",
             "close-your-eyes|2025|blackout|2025-11-11|album|false|null",
+            "xlov|2025|UXLXVE|2025-11-05|album|false|null",
             "ifeye|2025|sweet tang|2025-07-16|album|false|null"
           ]
         }
@@ -5723,7 +5638,7 @@
               "stream": "watchlist",
               "release_kind": "ep"
             },
-            "gap_days": 606,
+            "gap_days": 607,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5737,7 +5652,7 @@
               "stream": "watchlist",
               "release_kind": "single"
             },
-            "gap_days": 599,
+            "gap_days": 600,
             "has_upcoming_signal": false,
             "latest_signal": null
           }
@@ -5841,6 +5756,19 @@
             "latest_signal": null
           },
           {
+            "entity_slug": "xlov",
+            "display_name": "XLOV",
+            "debut_year": 2025,
+            "latest_release": {
+              "release_title": "UXLXVE",
+              "release_date": "2025-11-05",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
             "entity_slug": "ifeye",
             "display_name": "ifeye",
             "debut_year": 2025,
@@ -5878,7 +5806,7 @@
           "release_format": "ep",
           "scheduled_date": "2026-03-11",
           "confidence_score": 0.84,
-          "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434"
+          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
         },
         "weekly_upcoming": [
           {
@@ -5890,7 +5818,7 @@
             "release_format": "ep",
             "scheduled_date": "2026-03-11",
             "confidence_score": 0.84,
-            "upcoming_signal_id": "cd35b091-7589-514c-8277-154da992b434"
+            "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
           },
           {
             "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
@@ -5901,7 +5829,7 @@
             "release_format": "ep",
             "scheduled_date": "2026-03-12",
             "confidence_score": 0.82,
-            "upcoming_signal_id": "7150643f-66ad-5e29-b2b4-fadcfcd96eac"
+            "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735"
           }
         ],
         "change_feed": [
@@ -5923,7 +5851,7 @@
             "stream": "album",
             "release_id": "6a97ac23-629a-5468-9fd1-996c434052b2",
             "entity_slug": "ateez",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "ATEEZ",
             "release_date": "2026-02-06",
             "release_kind": "ep",
@@ -5934,7 +5862,7 @@
             "stream": "song",
             "release_id": "e5976e68-a795-52dd-b40e-a72493038dd3",
             "entity_slug": "atheart",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "AtHeart",
             "release_date": "2026-02-26",
             "release_kind": "single",
@@ -5945,7 +5873,7 @@
             "stream": "album",
             "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
             "entity_slug": "blackpink",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "BLACKPINK",
             "release_date": "2026-02-27",
             "release_kind": "ep",
@@ -5956,7 +5884,7 @@
             "stream": "album",
             "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
             "entity_slug": "blackpink",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "BLACKPINK",
             "release_date": "2026-02-26",
             "release_kind": "ep",
@@ -5967,7 +5895,7 @@
             "stream": "song",
             "release_id": "6e323520-f064-5ba5-bf87-d56898edb48e",
             "entity_slug": "chung-ha",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "CHUNG HA",
             "release_date": "2026-02-09",
             "release_kind": "single",
@@ -5978,7 +5906,7 @@
             "stream": "album",
             "release_id": "6a1db562-83b4-5e9d-a00f-6ea0ebfb6680",
             "entity_slug": "h1-key",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "H1-KEY",
             "release_date": "2026-03-05",
             "release_kind": "ep",
@@ -5989,7 +5917,7 @@
             "stream": "song",
             "release_id": "06aa603b-b554-52a8-b9e4-47c6a6764e53",
             "entity_slug": "hearts2hearts",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "Hearts2Hearts",
             "release_date": "2026-02-20",
             "release_kind": "single",
@@ -6000,7 +5928,7 @@
             "stream": "album",
             "release_id": "c339f501-52fe-599d-8d2d-bf5694ae4de4",
             "entity_slug": "ive",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "IVE",
             "release_date": "2026-02-23",
             "release_kind": "album",
@@ -6011,7 +5939,7 @@
             "stream": "song",
             "release_id": "78bb2629-2cd8-5f57-aaf1-a029b271ae8f",
             "entity_slug": "ive",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "IVE",
             "release_date": "2026-02-09",
             "release_kind": "single",
@@ -6022,7 +5950,7 @@
             "stream": "song",
             "release_id": "48080244-9689-5f33-9e44-f5e854a5f0e8",
             "entity_slug": "monsta-x",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "MONSTA X",
             "release_date": "2026-02-06",
             "release_kind": "single",
@@ -6033,7 +5961,7 @@
             "stream": "song",
             "release_id": "179b842f-9bd1-56ca-aaf6-b33e3f87159b",
             "entity_slug": "nct-wish",
-            "occurred_at": "2026-03-07T07:51:07.368683+00:00",
+            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
             "display_name": "NCT WISH",
             "release_date": "2026-02-27",
             "release_kind": "single",
@@ -6042,7 +5970,7 @@
         ],
         "long_gap": [
           {
-            "gap_days": 606,
+            "gap_days": 607,
             "entity_slug": "weeekly",
             "display_name": "Weeekly",
             "watch_reason": "long_gap",
@@ -6057,7 +5985,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 599,
+            "gap_days": 600,
             "entity_slug": "woo-ah",
             "display_name": "woo!ah!",
             "watch_reason": "long_gap",
@@ -6086,7 +6014,7 @@
               "scheduled_date": null,
               "scheduled_month": null,
               "confidence_score": 0.68,
-              "upcoming_signal_id": "fdd6dcf8-8d58-5136-897c-b9fecec90e2f"
+              "upcoming_signal_id": "d81d7432-3d57-5f0c-b049-c11807aace85"
             },
             "latest_release": {
               "stream": "song",
@@ -6110,7 +6038,7 @@
               "scheduled_date": null,
               "scheduled_month": null,
               "confidence_score": 0.68,
-              "upcoming_signal_id": "b2539788-c088-51e8-bf8f-4679db90c10d"
+              "upcoming_signal_id": "113ba3c1-a52d-56c0-a58d-d3b204addf15"
             },
             "latest_release": {
               "stream": "song",
@@ -6134,7 +6062,7 @@
               "scheduled_date": null,
               "scheduled_month": null,
               "confidence_score": 0.56,
-              "upcoming_signal_id": "078dbbc6-7ede-504a-a66f-e4384ec2a542"
+              "upcoming_signal_id": "aeed763b-0ed9-50c7-8045-f1273a07df45"
             },
             "latest_release": {
               "stream": "album",
@@ -6158,7 +6086,7 @@
               "scheduled_date": null,
               "scheduled_month": "2026-04-01",
               "confidence_score": 0.76,
-              "upcoming_signal_id": "a2225095-7ab3-554d-84c1-0ea9614d71e9"
+              "upcoming_signal_id": "5b6fc554-bccf-5dea-906d-4c5cebb58b96"
             },
             "latest_release": {
               "stream": "song",
@@ -6194,6 +6122,20 @@
               "release_date": "2025-11-11",
               "release_kind": "ep",
               "release_title": "blackout"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "debut_year": 2025,
+            "entity_slug": "xlov",
+            "display_name": "XLOV",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "album",
+              "release_id": "52e2b10d-b9bf-55d0-ae7c-0aae46a013dc",
+              "release_date": "2025-11-05",
+              "release_kind": "ep",
+              "release_title": "UXLXVE"
             },
             "has_upcoming_signal": false
           },

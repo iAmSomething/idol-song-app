@@ -138,6 +138,8 @@
 ### 8.6 Scheduled Comeback Row
 - 좌측: 팀 배지 + 팀명
 - 본문: 예정명 또는 headline 요약, 상태 칩, 예정일, confidence(optional)
+- meta action은 backend payload의 `source_url`을 그대로 사용한다.
+- `scheduled_month`는 `YYYY-MM` month context만 신뢰하고, month-only row는 `월 라벨 + 날짜 미정`으로 렌더링한다.
 - 하단 액션 순서:
   1. `팀 페이지`(Primary)
   2. 기사/공식 공지(Meta)

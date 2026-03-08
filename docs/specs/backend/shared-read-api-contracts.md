@@ -94,6 +94,8 @@
 - monthly verified list
 - monthly scheduled list
 - nearest upcoming calculated from exact future date only
+- scheduled row action-ready source summary (`source_url`, `source_type`, `source_domain`, `evidence_summary`, `source_count`)
+- stable `scheduled_month` in `YYYY-MM` format for both `exact` and `month_only` rows
 
 ### 5.4 Response Shape
 
@@ -111,13 +113,21 @@
       "month_only_upcoming_count": 10
     },
     "nearest_upcoming": {
+      "upcoming_signal_id": "upc_yena_2026_03_11",
       "entity_slug": "yena",
       "display_name": "YENA",
+      "headline": "YENA 4th Mini Album",
       "scheduled_date": "2026-03-11",
+      "scheduled_month": "2026-03",
       "date_precision": "exact",
       "date_status": "confirmed",
-      "headline": "YENA 4th Mini Album",
-      "confidence_score": 0.98
+      "confidence_score": 0.98,
+      "release_format": "mini_album",
+      "source_url": "https://starnewskorea.com/...",
+      "source_type": "news_rss",
+      "source_domain": "starnewskorea.com",
+      "evidence_summary": "YENA will release a new mini album on March 11.",
+      "source_count": 2
     },
     "days": [
       {
@@ -128,6 +138,7 @@
             "entity_slug": "tunexx",
             "display_name": "TUNEXX",
             "release_title": "SET BY US ONLY",
+            "release_date": "2026-03-03",
             "stream": "album",
             "release_kind": "ep"
           }
@@ -139,11 +150,18 @@
       {
         "entity_slug": "tomorrow-x-together",
         "display_name": "TOMORROW X TOGETHER",
-        "scheduled_month": "2026-03-01",
+        "headline": "March comeback",
+        "scheduled_date": null,
+        "scheduled_month": "2026-03",
         "date_precision": "month_only",
         "date_status": "scheduled",
-        "headline": "March comeback",
-        "confidence_score": 0.74
+        "confidence_score": 0.74,
+        "release_format": "album",
+        "source_url": "https://www.weverse.io/...",
+        "source_type": "weverse_notice",
+        "source_domain": "weverse.io",
+        "evidence_summary": "March comeback teaser posted on Weverse.",
+        "source_count": 1
       }
     ],
     "verified_list": [],
@@ -157,6 +175,9 @@
 - `days[].exact_upcoming`에는 `date_precision = exact`만 들어간다
 - `month_only_upcoming`은 day cell에 섞지 않는다
 - `nearest_upcoming`은 exact future date만 대상으로 계산한다
+- `scheduled_month`는 항상 `YYYY-MM` 형식이다
+- `scheduled_month`는 `exact` row에서도 month context를 유지하기 위해 채워진다
+- source summary는 `agency_notice -> weverse_notice -> official_social -> news_rss -> manual` 우선순위의 대표 source를 사용한다
 
 ## 6. `GET /v1/search`
 
