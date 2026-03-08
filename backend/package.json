@@ -9,6 +9,7 @@
     "start": "node ./dist/server.js",
     "migrate:apply": "node ./scripts/apply-migration.mjs ./sql/migrations",
     "schema:verify": "node ./scripts/verify-canonical-schema.mjs",
+    "plan:verify": "node ./scripts/build-query-plan-regression-report.mjs",
     "projection:refresh": "node ./scripts/refresh-projections.mjs",
     "shadow:verify": "npm run build && node ./scripts/build-shadow-read-report.mjs",
     "smoke:live": "node ./scripts/run-live-smoke-checks.mjs",

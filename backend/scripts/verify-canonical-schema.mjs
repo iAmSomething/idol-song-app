@@ -53,6 +53,16 @@ const REQUIRED_INDEXES = [
   ['entity_tracking_state', 'idx_entity_tracking_state_tracking_status'],
   ['review_tasks', 'idx_review_tasks_status_review_type'],
   ['release_service_links', 'idx_release_service_links_status'],
+  ['entity_search_documents', 'idx_entity_search_documents_entity_id'],
+  ['entity_search_documents', 'idx_entity_search_documents_slug'],
+  ['entity_search_documents', 'idx_entity_search_documents_normalized_terms'],
+  ['release_detail_projection', 'idx_release_detail_projection_release_id'],
+  ['release_detail_projection', 'idx_release_detail_projection_legacy_lookup'],
+  ['entity_detail_projection', 'idx_entity_detail_projection_entity_id'],
+  ['entity_detail_projection', 'idx_entity_detail_projection_slug'],
+  ['calendar_month_projection', 'idx_calendar_month_projection_month_start'],
+  ['calendar_month_projection', 'idx_calendar_month_projection_month_key'],
+  ['radar_projection', 'idx_radar_projection_key'],
 ];
 
 function requiredEnv(name) {

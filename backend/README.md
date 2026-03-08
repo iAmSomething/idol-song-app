@@ -341,6 +341,28 @@ artifact:
 
 - `backend/reports/neon_backup_restore_drill_2026-03-08.json`
 
+## Query Plan Regression Check
+
+projection-backed exact lookup query의 index path regression은 아래 command로 확인한다.
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+cd backend
+npm run plan:verify
+```
+
+artifact:
+
+- `backend/reports/query_plan_regression_report.json`
+
+이 check는 required projection index inventory와 `enable_seqscan=off` baseline probe를 함께 본다.
+또한 planner에서 index path를 의도적으로 끈 controlled degraded scenario를 같이 실행해서,
+checker가 degraded 상태를 실제로 감지하는지도 증명한다.
+preview / production backend deploy workflow도 deploy 전에 같은 check를 실행하고 artifact를 업로드한다.
+
 입력 우선순위:
 
 - entity / alias / official link: `web/src/data/artistProfiles.json`

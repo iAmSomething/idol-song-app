@@ -55,6 +55,20 @@ jobs:
         working-directory: backend
         run: npm run test
 
+      - name: Run preview query-plan regression check
+        working-directory: backend
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: npm run plan:verify
+
+      - name: Upload preview query-plan regression report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-query-plan-preview
+          path: backend/reports/query_plan_regression_report.json
+          if-no-files-found: warn
+
       - name: Deploy preview backend
         env:
           BACKEND_DEPLOY_TARGET: preview
@@ -110,6 +124,20 @@ jobs:
       - name: Run backend tests
         working-directory: backend
         run: npm run test
+
+      - name: Run production query-plan regression check
+        working-directory: backend
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: npm run plan:verify
+
+      - name: Upload production query-plan regression report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-query-plan-production
+          path: backend/reports/query_plan_regression_report.json
+          if-no-files-found: warn
 
       - name: Deploy production backend
         env:
