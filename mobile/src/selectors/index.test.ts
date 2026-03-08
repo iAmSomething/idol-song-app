@@ -3,6 +3,7 @@ import type { MobileRawDataset } from '../types';
 import {
   selectCalendarMonthSnapshot,
   createSelectorContext,
+  selectEntityDetailSnapshot,
   selectLatestReleaseSummaryBySlug,
   selectMonthReleaseSummaries,
   selectRadarSnapshot,
@@ -364,6 +365,18 @@ describe('mobile selector/adapters scaffold', () => {
     expect(snapshot.changeFeed).toHaveLength(0);
     expect(snapshot.longGap[0]?.team.slug).toBe('weeekly');
     expect(snapshot.rookie[0]?.team.slug).toBe('atheart');
+  });
+
+  test('builds an entity detail snapshot with upcoming, albums, and ordered timeline rows', () => {
+    const snapshot = selectEntityDetailSnapshot(dataset, 'yena');
+
+    expect(snapshot).not.toBeNull();
+    expect(snapshot?.team.slug).toBe('yena');
+    expect(snapshot?.nextUpcoming?.headline).toContain('3월 11일');
+    expect(snapshot?.latestRelease?.releaseTitle).toBe('LOVE CATCHER');
+    expect(snapshot?.recentAlbums[0]?.releaseTitle).toBe('LOVE CATCHER');
+    expect(snapshot?.sourceTimeline[0]?.kind).toBe('upcoming_source');
+    expect(snapshot?.sourceTimeline.at(-1)?.kind).toBe('artist_source');
   });
 
   test('resolves a release detail model by normalized release id', () => {

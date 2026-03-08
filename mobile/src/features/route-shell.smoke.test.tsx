@@ -5,7 +5,7 @@ import CalendarTabScreen from '../../app/(tabs)/calendar';
 import RadarTabScreen from '../../app/(tabs)/radar';
 import SearchTabScreen from '../../app/(tabs)/search';
 import RootLayout from '../../app/_layout';
-import ArtistDetailPlaceholderScreen from '../../app/artists/[slug]';
+import ArtistDetailScreen from '../../app/artists/[slug]';
 import IndexRoute from '../../app/index';
 import ReleaseDetailPlaceholderScreen from '../../app/releases/[id]';
 
@@ -104,10 +104,10 @@ describe('mobile route shell smoke', () => {
 
   test('artist detail placeholder handles valid and missing slug safely', () => {
     mockUseLocalSearchParams.mockReturnValueOnce({ slug: 'blackpink' });
-    expect(() => renderTree(<ArtistDetailPlaceholderScreen />)).not.toThrow();
+    expect(() => renderTree(<ArtistDetailScreen />)).not.toThrow();
 
     mockUseLocalSearchParams.mockReturnValueOnce({});
-    expect(() => renderTree(<ArtistDetailPlaceholderScreen />)).not.toThrow();
+    expect(() => renderTree(<ArtistDetailScreen />)).not.toThrow();
   });
 
   test('release detail placeholder handles valid and missing id safely', () => {

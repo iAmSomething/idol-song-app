@@ -2,7 +2,7 @@
 
 이 디렉터리는 `Expo + React Native + Expo Router` 기반 모바일 앱 워크스페이스다.
 
-현재 단계는 workspace bootstrap과 router shell, 그리고 calendar / search / radar tab의 data-backed container까지 포함한다.
+현재 단계는 workspace bootstrap과 router shell, 그리고 calendar / search / radar tab, entity detail route의 data-backed container까지 포함한다.
 
 - route/layout expectations는 `docs/specs/mobile/expo-implementation-guide.md`를 따른다.
 - route/param 계약은 `docs/specs/mobile/route-param-contracts.md`를 따른다.
@@ -11,10 +11,11 @@
 ## 현재 포함 범위
 
 - `app/`
-  - Expo Router root layout / tab shell / detail placeholder route
+  - Expo Router root layout / tab shell / detail route scaffold
   - `calendar` tab은 active dataset + shared selector 기반 container까지 연결됨
   - `radar` tab은 shared radar snapshot 기반 section stack까지 연결됨
   - `search` tab은 query state + recent query persistence + segmented result container까지 연결됨
+  - `artists/[slug]` route는 shared entity detail snapshot 기반 detail screen까지 연결됨
   - hidden `debug/metadata` route for internal metadata inspection
 - `assets/`
   - placeholder / service icon / badge fallback asset inventory
@@ -186,6 +187,7 @@ profile 차이는 아래 범위로만 제한한다.
   - `selectMonthUpcomingEvents`
   - `selectCalendarMonthSnapshot`
   - `selectRadarSnapshot`
+  - `selectEntityDetailSnapshot`
   - `selectSearchResults`
 - 규칙
   - 화면은 raw JSON shape를 직접 읽지 않는다.
