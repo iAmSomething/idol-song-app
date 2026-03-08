@@ -112,6 +112,18 @@ python3 import_json_to_neon.py
 
 - `backend/reports/json_to_neon_import_summary.json`
 
+dry-run 예시:
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+python3 import_json_to_neon.py --dry-run --summary-path /tmp/idol-song-app-import-dry-run.json
+```
+
+dry-run에서는 DB write를 commit하지 않고, summary에 `mode=dry_run`, `dry_run`, `db_row_counts_before`, `db_row_counts_after`, `db_unchanged`, `operation_counts`를 함께 남긴다.
+
 입력 우선순위:
 
 - entity / alias / official link: `web/src/data/artistProfiles.json`
