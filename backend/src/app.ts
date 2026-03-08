@@ -1,7 +1,7 @@
 import Fastify, { type FastifyInstance } from 'fastify';
 
 import { loadConfig, type AppConfig } from './config.js';
-import { createDbPool, type DbPool } from './lib/db.js';
+import { closeDbPool, createDbPool, type DbPool } from './lib/db.js';
 import { registerCalendarRoutes } from './routes/calendar.js';
 import { registerEntityRoutes } from './routes/entities.js';
 import { registerHealthRoute } from './routes/health.js';
@@ -24,7 +24,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   });
 
   app.addHook('onClose', async () => {
-    await db.end();
+    await closeDbPool(db);
   });
 
   registerHealthRoute(app);
