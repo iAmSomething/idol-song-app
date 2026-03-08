@@ -45,6 +45,9 @@
 13. `public-read-rate-limit-policy.md`
    - public read endpoint의 bucket별 rate-limit 기준
    - preview / production 기대치와 `429 rate_limited` contract
+14. `structured-backend-logging-policy.md`
+   - request/error/runtime-fatal log field shape와 redaction 규칙
+   - env별 verbosity와 routine-noise budget
 
 ## 읽는 순서
 
@@ -61,6 +64,7 @@
 11. `phased-rollout-plan.md`
 12. `backend-migration-epic.md`
 13. `public-read-rate-limit-policy.md`
+14. `structured-backend-logging-policy.md`
 
 ## 원칙
 

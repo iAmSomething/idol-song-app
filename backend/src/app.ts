@@ -5,6 +5,12 @@ import Fastify, { type FastifyInstance, type FastifyReply } from 'fastify';
 import { loadConfig, type AppConfig } from './config.js';
 import { ReadApiError, buildReadErrorEnvelope } from './lib/api.js';
 import { closeDbPool, createDbPool, type DbPool, withFailFastReadTimeouts } from './lib/db.js';
+import {
+  buildBackendLoggerOptions,
+  buildRequestSummaryPayload,
+  resolveRequestSummaryLevel,
+  shouldLogRequestSummary,
+} from './lib/logging.js';
 import { createReadyStatusProvider, type ReadyStatusProvider } from './lib/readiness.js';
 import {
   InMemoryFixedWindowRateLimiter,
@@ -97,9 +103,11 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   const rateLimiter = new InMemoryFixedWindowRateLimiter();
   const readyStatusProvider = options.readyStatusProvider ?? createReadyStatusProvider();
   const app = Fastify({
+    disableRequestLogging: true,
     genReqId: createRequestId,
-    logger: true,
+    logger: buildBackendLoggerOptions(config.appEnv),
     requestIdHeader: REQUEST_ID_HEADER,
+    requestIdLogLabel: 'request_id',
   });
 
   app.addHook('onRequest', async (request, reply) => {
@@ -144,7 +152,6 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
     if (!decision.allowed) {
       request.log.warn(
         {
-          request_id: request.id,
           rate_limit_bucket: decision.bucketName,
           rate_limit_identifier_kind: decision.identifierKind,
           rate_limit_limit: decision.limit,
@@ -167,7 +174,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
         .send(buildReadErrorEnvelope(request, config.appTimezone, error.code, error.message, error.meta));
     }
 
-    request.log.error({ err: error, request_id: request.id }, 'Unhandled request error');
+    request.log.error({ err: error }, 'Unhandled request error');
     return reply
       .code(500)
       .send(buildReadErrorEnvelope(request, config.appTimezone, 'internal_error', 'Unexpected server error.'));
@@ -192,6 +199,27 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   app.addHook('onSend', async (request, reply, payload) => {
     reply.header('X-Request-Id', request.id);
     return payload;
+  });
+
+  app.addHook('onResponse', async (request, reply) => {
+    if (!shouldLogRequestSummary(request)) {
+      return;
+    }
+
+    const payload = buildRequestSummaryPayload(request, reply);
+    const level = resolveRequestSummaryLevel(reply.statusCode);
+
+    if (level === 'error') {
+      request.log.error(payload, 'Request completed with server error');
+      return;
+    }
+
+    if (level === 'warn') {
+      request.log.warn(payload, 'Request completed with client or policy error');
+      return;
+    }
+
+    request.log.info(payload, 'Request completed');
   });
 
   registerHealthRoute(app);

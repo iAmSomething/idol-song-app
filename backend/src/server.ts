@@ -12,8 +12,22 @@ async function main(): Promise<void> {
       host: '0.0.0.0',
       port: config.port,
     });
+    app.log.info(
+      {
+        host: '0.0.0.0',
+        port: config.port,
+      },
+      'Backend listening',
+    );
   } catch (error) {
-    app.log.error(error);
+    app.log.fatal(
+      {
+        failure_class: 'bootstrap',
+        exit_code: 1,
+        err: error,
+      },
+      'Backend failed to start',
+    );
     await app.close().catch(() => undefined);
     process.exit(1);
   }
