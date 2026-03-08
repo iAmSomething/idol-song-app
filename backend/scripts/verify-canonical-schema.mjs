@@ -40,6 +40,20 @@ const REQUIRED_CONSTRAINTS = [
   ['upcoming_signal_sources', 'upcoming_signal_sources_upcoming_signal_id_source_url_key'],
   ['release_link_overrides', 'release_link_overrides_release_id_service_type_key'],
 ];
+const REQUIRED_INDEXES = [
+  ['entity_aliases', 'idx_entity_aliases_normalized_alias'],
+  ['entity_official_links', 'idx_entity_official_links_entity_id'],
+  ['releases', 'idx_releases_entity_id_release_date'],
+  ['releases', 'idx_releases_release_date'],
+  ['releases', 'idx_releases_musicbrainz_release_group_id'],
+  ['upcoming_signals', 'idx_upcoming_signals_entity_id'],
+  ['upcoming_signals', 'idx_upcoming_signals_scheduled_date'],
+  ['upcoming_signals', 'idx_upcoming_signals_scheduled_month'],
+  ['upcoming_signals', 'idx_upcoming_signals_dedupe_key'],
+  ['entity_tracking_state', 'idx_entity_tracking_state_tracking_status'],
+  ['review_tasks', 'idx_review_tasks_status_review_type'],
+  ['release_service_links', 'idx_release_service_links_status'],
+];
 
 function requiredEnv(name) {
   const value = process.env[name];
@@ -116,9 +130,32 @@ async function main() {
       throw new Error(`missing constraints: ${missingConstraints.join(', ')}`);
     }
 
+    const indexRows = await client.query(
+      `
+        select tablename, indexname
+        from pg_indexes
+        where schemaname = 'public'
+          and indexname = any($1::text[])
+      `,
+      [REQUIRED_INDEXES.map(([, index]) => index)]
+    );
+
+    const existingIndexes = new Set(
+      indexRows.rows.map((row) => `${row.tablename}.${row.indexname}`)
+    );
+
+    const missingIndexes = REQUIRED_INDEXES
+      .map(([table, index]) => `${table}.${index}`)
+      .filter((entry) => !existingIndexes.has(entry));
+
+    if (missingIndexes.length > 0) {
+      throw new Error(`missing indexes: ${missingIndexes.join(', ')}`);
+    }
+
     console.log(`verified tables: ${REQUIRED_TABLES.length}`);
     console.log(`verified materialized views: ${REQUIRED_MATERIALIZED_VIEWS.length}`);
     console.log(`verified constraints: ${REQUIRED_CONSTRAINTS.length}`);
+    console.log(`verified indexes: ${REQUIRED_INDEXES.length}`);
   } finally {
     await client.end();
   }

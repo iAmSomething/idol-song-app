@@ -45,6 +45,7 @@ npm run shadow:verify
 - apply helper는 `schema_migrations` 메타 테이블로 재적용을 막는다.
 - direct connection string인 `DATABASE_URL`을 우선 사용한다.
 - pooler URL은 migration보다 read traffic 용도에 가깝다.
+- `schema:verify`는 canonical uniqueness constraint뿐 아니라 slug / alias / release / upcoming lookup에 필요한 required index도 같이 확인한다.
 - first JSON baseline import summary는 `backend/reports/json_to_neon_import_summary.json`에 남긴다.
 - upcoming pipeline dual-write summary는 `backend/reports/upcoming_pipeline_db_sync_summary.json`에 남긴다.
 - release pipeline dual-write summary는 `backend/reports/release_pipeline_db_sync_summary.json`에 남긴다.
