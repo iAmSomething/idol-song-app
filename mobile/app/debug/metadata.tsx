@@ -6,6 +6,8 @@ import { getDebugMetadata, isDebugMetadataAvailable } from '../../src/config/deb
 const metadata = getDebugMetadata();
 const rows = [
   ['Profile', metadata.profile],
+  ['Runtime mode', metadata.runtimeMode],
+  ['Runtime issues', metadata.runtimeIssues.length > 0 ? metadata.runtimeIssues.join(' | ') : 'None'],
   ['Build version', metadata.buildVersion],
   ['Dataset version', metadata.datasetVersion ?? 'Unavailable'],
   ['Commit hash', metadata.commitSha ?? 'Unavailable'],

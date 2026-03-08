@@ -5,8 +5,8 @@
 - `components/`: 표시 컴포넌트
 - `config/`: validated runtime config accessor
   - `featureGates.ts`: gate registry / fallback metadata / helper
-  - `runtime.ts`: mobile profile / env validation
-  - `debugMetadata.ts`: debug-only build/dataset/commit metadata helper
+  - `runtime.ts`: mobile profile / env validation + safe degraded runtime state
+  - `debugMetadata.ts`: debug-only build/dataset/commit/runtime-state metadata helper
 - `features/`: 화면 composition / binding
 - `selectors/`: display model selector / adapter
   - `context.ts`: dataset -> indexed selector context
@@ -14,6 +14,7 @@
   - `index.ts`: shared selectors entrypoint
 - `services/`: data source / external handoff / helper
   - `datasetSource.ts`: bundled-static vs preview-remote source selector
+  - `datasetFailurePolicy.ts`: remote unavailable / misconfig degraded-mode fallback policy
   - `storage.ts`: `AsyncStorage` adapter + namespaced key/value helper
   - `datasetCache.ts`: static dataset artifact cache entry helper
   - `recentQueries.ts`: recent-query persistence helper
@@ -40,3 +41,9 @@ handoff 관련 규칙:
 - later UI는 raw `Linking.openURL`을 직접 호출하지 않는다.
 - canonical URL validation, search fallback URL builder, browser fallback choice는 `services/handoff.ts`에서 중앙화한다.
 - 실패는 explicit result object로 돌려서 UI가 toast/inline feedback을 붙일 수 있게 한다.
+
+failure-policy 관련 규칙:
+
+- runtime config parse failure는 crash 대신 degraded state로 내려간다.
+- preview remote dataset failure는 `datasetFailurePolicy.ts`에서 `preview-remote-cache` 또는 `bundled-static` fallback으로 resolve한다.
+- later UI는 `mode = normal | degraded`와 issue list를 직접 소비할 수 있어야 한다.

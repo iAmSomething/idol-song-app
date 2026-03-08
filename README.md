@@ -150,6 +150,7 @@ python3 sync_release_pipeline_to_neon.py
 - shared module scaffold: `mobile/src/`
 - package/runtime baseline: `mobile/package.json`, `mobile/app.config.ts`, `mobile/eas.json`, `mobile/tsconfig.json`
 - env/runtime config layer: `mobile/.env.example`, `mobile/src/config/runtime.ts`
+- failure-policy layer: `mobile/src/services/datasetFailurePolicy.ts`
 - debug metadata helper/surface: `mobile/src/config/debugMetadata.ts`, `mobile/app/debug/metadata.tsx`
 - feature-gate layer: `mobile/src/config/featureGates.ts`
 - dataset-source layer: `mobile/src/services/datasetSource.ts`, `mobile/assets/datasets/README.md`
