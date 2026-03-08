@@ -11,6 +11,7 @@
     "schema:verify": "node ./scripts/verify-canonical-schema.mjs",
     "projection:refresh": "node ./scripts/refresh-projections.mjs",
     "shadow:verify": "npm run build && node ./scripts/build-shadow-read-report.mjs",
+    "smoke:live": "node ./scripts/run-live-smoke-checks.mjs",
     "runtime:measure": "node ./scripts/measure-read-api-runtime.mjs",
     "worker:cadence": "node ./scripts/build-worker-cadence-report.mjs",
     "runtime:gate": "node ./scripts/build-runtime-gate-report.mjs"

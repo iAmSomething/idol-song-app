@@ -207,6 +207,30 @@ GitHub Environment baseline:
 deploy helper는 아래 스크립트다.
 
 - `backend/scripts/deploy-backend.mjs`
+- `backend/scripts/run-live-smoke-checks.mjs`
+
+deploy workflow는 Railway deploy 직후 같은 live smoke contract를 preview / production 모두에 적용한다.
+
+- `/health`
+- `/ready`
+- `/v1/search?q=최예나`
+- `/v1/entities/yena`
+- `/v1/releases/lookup?entity_slug=ive&title=REVIVE%2B&date=2026-02-23&stream=album`
+- `/v1/radar`
+
+`/ready`는 현재 deploy smoke 기준으로 `ready` 또는 `degraded`를 허용하고, `database.status=ready`는 필수로 본다. smoke 실패 시 job은 non-zero로 끝나고 deploy workflow도 실패한다.
+
+artifact:
+
+- preview: `backend/reports/live_backend_smoke_preview.json`
+- production: `backend/reports/live_backend_smoke_production.json`
+
+manual smoke 예시:
+
+```bash
+cd backend
+npm run smoke:live -- --target preview --base-url https://preview.example.com --report-path ./reports/live_backend_smoke_preview.json
+```
 
 manual dry-run 예시:
 
