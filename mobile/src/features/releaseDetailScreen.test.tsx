@@ -3,6 +3,11 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import ReleaseDetailScreen from '../../app/releases/[id]';
+import {
+  openServiceHandoff,
+  type ServiceHandoffFailure,
+  type ServiceHandoffResolution,
+} from '../services/handoff';
 
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({ id: 'yena--love-catcher--2026-03-11--album' }));
@@ -30,12 +35,35 @@ jest.mock('expo-router', () => {
   };
 });
 
+jest.mock('../services/handoff', () => {
+  const actual = jest.requireActual('../services/handoff');
+
+  return {
+    ...actual,
+    openServiceHandoff: jest.fn(async (handoff: ServiceHandoffResolution | ServiceHandoffFailure) => {
+      if ('ok' in handoff) {
+        return handoff;
+      }
+
+      return {
+        ok: true,
+        service: handoff.service,
+        mode: handoff.mode,
+        target: 'primary',
+        openedUrl: handoff.primaryUrl,
+      };
+    }),
+  };
+});
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     useLocalSearchParams: jest.Mock;
     useRouter: jest.Mock;
   };
 };
+
+const mockOpenServiceHandoff = openServiceHandoff as jest.MockedFunction<typeof openServiceHandoff>;
 
 async function renderReleaseDetail() {
   let tree: renderer.ReactTestRenderer;
@@ -59,6 +87,7 @@ describe('mobile release detail screen', () => {
       back: jest.fn(),
       push: jest.fn(),
     });
+    mockOpenServiceHandoff.mockClear();
   });
 
   test('renders populated release detail sections for a canonical release', async () => {
@@ -90,5 +119,57 @@ describe('mobile release detail screen', () => {
 
     expect(tree.root.findByProps({ testID: 'release-missing-state' })).toBeDefined();
     expect(hasText(tree, '해당 릴리즈 상세 데이터를 찾지 못했습니다.')).toBe(true);
+  });
+
+  test('wires album-level and track-level service buttons to the shared handoff service', async () => {
+    __mock.useLocalSearchParams.mockReturnValue({ id: 'yena--love-catcher--2026-03-11--album' });
+    const tree = await renderReleaseDetail();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'release-service-spotify' }).props.onPress();
+    });
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'release-track-1-spotify' }).props.onPress();
+    });
+
+    expect(mockOpenServiceHandoff).toHaveBeenCalledTimes(2);
+    expect(mockOpenServiceHandoff.mock.calls[0]?.[0]).toMatchObject({
+      service: 'spotify',
+      mode: 'canonical',
+    });
+    expect(mockOpenServiceHandoff.mock.calls[1]?.[0]).toMatchObject({
+      service: 'spotify',
+      mode: 'searchFallback',
+    });
+  });
+
+  test('keeps the route stable and shows retryable feedback when handoff fails', async () => {
+    __mock.useLocalSearchParams.mockReturnValue({ id: 'yena--love-catcher--2026-03-11--album' });
+    mockOpenServiceHandoff.mockResolvedValueOnce({
+      ok: false,
+      code: 'handoff_open_failed',
+      service: 'spotify',
+      mode: 'canonical',
+      target: 'primary',
+      attemptedUrl: 'https://open.spotify.com/album/example-love-catcher',
+      feedback: {
+        level: 'warning',
+        retryable: true,
+        message: 'External handoff failed. Keep the current route stack and show retry feedback.',
+      },
+    });
+
+    const tree = await renderReleaseDetail();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'release-service-spotify' }).props.onPress();
+      await Promise.resolve();
+    });
+
+    expect(hasText(tree, 'External handoff failed. Keep the current route stack and show retry feedback.')).toBe(
+      true,
+    );
+    expect(tree.root.findByProps({ testID: 'release-detail-title' }).props.children).toBe('LOVE CATCHER');
   });
 });
