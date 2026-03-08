@@ -1,4 +1,12 @@
-import { useDeferredValue, useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
+import {
+  useDeferredValue,
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+  type ReactNode,
+  type RefObject,
+} from 'react'
 import './App.css'
 import artistProfileRows from './data/artistProfiles.json'
 import releaseArtworkRows from './data/releaseArtwork.json'
@@ -703,6 +711,8 @@ type MusicHandoffLink = {
   mode: MusicHandoffMode
 }
 
+type MobileHandoffPlatform = 'android' | 'ios' | 'other'
+
 type TeamLatestRelease = {
   title: string
   date: string
@@ -969,7 +979,7 @@ const TRANSLATIONS = {
       canonical: '바로 열기',
       search: '검색 결과 열기',
     },
-    handoffHint: '앱 안에서 직접 재생하지 않고 새 탭으로 외부 서비스로 이동합니다.',
+    handoffHint: '모바일에서는 설치된 앱 열기를 먼저 시도하고, 불가능하면 같은 서비스의 웹 페이지로 안전하게 이동합니다.',
     recentFeed: '최근 피드',
     newestReleasesFirst: '최신 발매 순',
     dataState: '데이터 상태',
@@ -1225,7 +1235,7 @@ const TRANSLATIONS = {
       canonical: 'Open direct link',
       search: 'Open search results',
     },
-    handoffHint: 'Opens in a new tab without in-app playback.',
+    handoffHint: 'On mobile, the app tries the installed service first and safely falls back to the web page when it cannot open it.',
     recentFeed: 'Recent feed',
     newestReleasesFirst: 'Newest releases first',
     dataState: 'Data state',
@@ -3633,6 +3643,7 @@ function MusicHandoffRow({
             href={link.href}
             target="_blank"
             rel="noreferrer"
+            onClick={(event) => handleMusicHandoffClick(event, link)}
             className={`handoff-link handoff-link-${link.service}`}
             aria-label={`${copy.musicServices[link.service]} · ${copy.handoffModeLabels[link.mode]}`}
             title={`${copy.musicServices[link.service]} · ${copy.handoffModeLabels[link.mode]}`}
@@ -6449,6 +6460,206 @@ function buildServiceActionLinks({
   }
 
   return links
+}
+
+function getMobileHandoffPlatform(): MobileHandoffPlatform {
+  if (typeof navigator === 'undefined') {
+    return 'other'
+  }
+
+  const userAgent = navigator.userAgent
+  if (/android/i.test(userAgent)) {
+    return 'android'
+  }
+
+  if (/iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+    return 'ios'
+  }
+
+  return 'other'
+}
+
+function extractSearchQueryFromPath(pathname: string) {
+  if (!pathname.startsWith('/search/')) {
+    return ''
+  }
+
+  return decodeURIComponent(pathname.slice('/search/'.length))
+}
+
+function buildAndroidIntentUrl(webHref: string, packageName: string) {
+  try {
+    const url = new URL(webHref)
+    const authorityPath = `${url.host}${url.pathname}${url.search}${url.hash}`
+    return `intent://${authorityPath}#Intent;scheme=${url.protocol.replace(':', '')};package=${packageName};end`
+  } catch {
+    return ''
+  }
+}
+
+function buildSpotifyAppHref(webHref: string) {
+  if (webHref.startsWith('spotify:')) {
+    return webHref
+  }
+
+  try {
+    const url = new URL(webHref)
+    if (!url.hostname.includes('spotify.com')) {
+      return ''
+    }
+
+    const searchQuery = extractSearchQueryFromPath(url.pathname)
+    if (searchQuery) {
+      return `spotify:search:${searchQuery}`
+    }
+
+    const segments = url.pathname.split('/').filter(Boolean)
+    const [resourceType, resourceId] = segments
+    if (!resourceType || !resourceId) {
+      return ''
+    }
+
+    if (!['album', 'track', 'artist', 'playlist', 'show', 'episode'].includes(resourceType)) {
+      return ''
+    }
+
+    return `spotify:${resourceType}:${resourceId}`
+  } catch {
+    return ''
+  }
+}
+
+function buildYouTubeAppHref(webHref: string, platform: MobileHandoffPlatform) {
+  if (platform === 'android') {
+    return buildAndroidIntentUrl(webHref, 'com.google.android.youtube')
+  }
+
+  if (platform !== 'ios') {
+    return ''
+  }
+
+  try {
+    const url = new URL(webHref)
+    const videoId = extractYouTubeVideoId(webHref)
+    if (videoId) {
+      return `vnd.youtube://watch?v=${videoId}`
+    }
+
+    const searchQuery = url.searchParams.get('search_query')
+    if (searchQuery) {
+      return `vnd.youtube://results?search_query=${encodeURIComponent(searchQuery)}`
+    }
+  } catch {
+    return ''
+  }
+
+  return ''
+}
+
+function buildYouTubeMusicAppHref(webHref: string, platform: MobileHandoffPlatform) {
+  if (platform !== 'android') {
+    return ''
+  }
+
+  return buildAndroidIntentUrl(webHref, 'com.google.android.apps.youtube.music')
+}
+
+function buildAppAwareHandoffHref(link: MusicHandoffLink, platform: MobileHandoffPlatform) {
+  if (platform === 'other') {
+    return ''
+  }
+
+  if (link.service === 'spotify') {
+    return buildSpotifyAppHref(link.href)
+  }
+
+  if (link.service === 'youtube_music') {
+    return buildYouTubeMusicAppHref(link.href, platform)
+  }
+
+  return buildYouTubeAppHref(link.href, platform)
+}
+
+function openWebHandoff(href: string, platform: MobileHandoffPlatform) {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  if (platform !== 'other') {
+    window.location.assign(href)
+    return
+  }
+
+  const openedWindow = window.open(href, '_blank', 'noopener,noreferrer')
+  if (!openedWindow) {
+    window.location.assign(href)
+  }
+}
+
+function attemptMobileAppFirstHandoff(appHref: string, webHref: string) {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return
+  }
+
+  let handled = false
+  let fallbackTimer = 0
+  const cleanup = () => {
+    if (handled) {
+      return
+    }
+
+    handled = true
+    document.removeEventListener('visibilitychange', handleVisibilityChange)
+    if (fallbackTimer) {
+      window.clearTimeout(fallbackTimer)
+    }
+  }
+
+  const handleVisibilityChange = () => {
+    if (document.visibilityState === 'hidden') {
+      cleanup()
+    }
+  }
+
+  document.addEventListener('visibilitychange', handleVisibilityChange)
+  fallbackTimer = window.setTimeout(() => {
+    if (document.visibilityState === 'visible') {
+      cleanup()
+      window.location.assign(webHref)
+    }
+  }, 900)
+
+  try {
+    window.location.assign(appHref)
+  } catch {
+    cleanup()
+    window.location.assign(webHref)
+  }
+}
+
+function openMusicHandoff(link: MusicHandoffLink) {
+  const platform = getMobileHandoffPlatform()
+  const appHref = buildAppAwareHandoffHref(link, platform)
+
+  if (!appHref) {
+    openWebHandoff(link.href, platform)
+    return
+  }
+
+  attemptMobileAppFirstHandoff(appHref, link.href)
+}
+
+function shouldBypassManagedHandoff(event: ReactMouseEvent<HTMLAnchorElement>) {
+  return event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
+}
+
+function handleMusicHandoffClick(event: ReactMouseEvent<HTMLAnchorElement>, link: MusicHandoffLink) {
+  if (shouldBypassManagedHandoff(event)) {
+    return
+  }
+
+  event.preventDefault()
+  openMusicHandoff(link)
 }
 
 function buildMusicSearchUrl(service: MusicService, query: string) {
