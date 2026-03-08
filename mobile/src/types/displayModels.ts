@@ -95,3 +95,40 @@ export interface CalendarMonthSnapshotModel {
   exactUpcoming: UpcomingEventModel[];
   monthOnlyUpcoming: UpcomingEventModel[];
 }
+
+export type CalendarDayBadgeKind = 'release' | UpcomingStatus;
+
+export interface CalendarDayBadgeModel {
+  id: string;
+  group: string;
+  label: string;
+  monogram: string;
+  kind: CalendarDayBadgeKind;
+}
+
+export interface CalendarDayCellModel {
+  isoDate: string;
+  dayNumber: number;
+  isCurrentMonth: boolean;
+  isToday: boolean;
+  isSelected: boolean;
+  badges: CalendarDayBadgeModel[];
+  overflowCount: number;
+  releaseCount: number;
+  upcomingCount: number;
+}
+
+export interface CalendarSelectedDayModel {
+  isoDate: string;
+  label: string;
+  releases: ReleaseSummaryModel[];
+  exactUpcoming: UpcomingEventModel[];
+  isEmpty: boolean;
+}
+
+export interface CalendarMonthGridModel {
+  month: string;
+  weekdayLabels: string[];
+  weeks: (CalendarDayCellModel | null)[][];
+  selectedDay: CalendarSelectedDayModel | null;
+}
