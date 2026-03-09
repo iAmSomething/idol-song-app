@@ -32881,29 +32881,6 @@
   },
   {
     "group": "TWICE",
-    "release_title": "One More Time",
-    "release_date": "2017-10-13",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE One More Time official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+One+More+Time+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
     "release_title": "twicetagram",
     "release_date": "2017-10-30",
     "stream": "album",
@@ -32922,29 +32899,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "TWICE twicetagram official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+twicetagram+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
-    "release_title": "Candy Pop",
-    "release_date": "2018-01-12",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE Candy Pop official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+Candy+Pop+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -32973,52 +32927,6 @@
   },
   {
     "group": "TWICE",
-    "release_title": "Wake Me Up",
-    "release_date": "2018-04-25",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE Wake Me Up official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+Wake+Me+Up+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
-    "release_title": "BDZ",
-    "release_date": "2018-08-17",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE BDZ official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+BDZ+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
     "release_title": "BDZ",
     "release_date": "2018-09-12",
     "stream": "album",
@@ -33037,29 +32945,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "TWICE BDZ official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+BDZ+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
-    "release_title": "STAY BY MY SIDE",
-    "release_date": "2018-10-22",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE STAY BY MY SIDE official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+STAY+BY+MY+SIDE+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
