@@ -15,6 +15,8 @@ const UPCOMING_SIGNAL_ID = '55555555-5555-4555-8555-555555555555';
 const UPCOMING_REVIEW_ID = '66666666-6666-4666-8666-666666666666';
 const MV_REVIEW_ID = '77777777-7777-4777-8777-777777777777';
 const IVE_ENTITY_ID = '88888888-8888-4888-8888-888888888888';
+const BLACKPINK_DEADLINE_UNRESOLVED_RELEASE_ID = '99999999-9999-4999-8999-999999999991';
+const BLACKPINK_DEADLINE_VERIFIED_RELEASE_ID = '99999999-9999-4999-8999-999999999992';
 const CALLER_REQUEST_ID = 'web-search-trace-yena-001';
 
 const TEST_CONFIG: AppConfig = {
@@ -275,6 +277,76 @@ function buildReleaseDetailPayload(releaseId: string) {
     notes: {
       summary: 'double title track',
     },
+  };
+}
+
+function buildBlackpinkDeadlinePayload(releaseId: string, releaseDate: string, detailStatus: string, titleStatus: string, youtubeMusicStatus: string) {
+  return {
+    release: {
+      release_id: releaseId,
+      entity_slug: 'blackpink',
+      display_name: 'BLACKPINK',
+      release_title: 'DEADLINE',
+      release_date: releaseDate,
+      stream: 'album',
+      release_kind: 'ep',
+    },
+    detail_metadata: {
+      status: detailStatus,
+      provenance: detailStatus === 'verified' ? 'releaseDetails.existing_row' : 'releaseDetails.missing_row',
+    },
+    title_track_metadata: {
+      status: titleStatus,
+      provenance: titleStatus === 'verified' ? 'releaseDetails.existing_title_flags' : 'releaseDetails.missing_row',
+    },
+    artwork: {
+      image_url: 'https://cdn.example.com/deadline.jpg',
+      source_url: 'https://artwork.example.com/deadline',
+      is_placeholder: false,
+    },
+    service_links: {
+      spotify: {
+        url: 'https://open.spotify.com/album/deadline',
+        status: 'canonical',
+        provenance: 'releaseDetails.spotify_url',
+      },
+      youtube_music: {
+        url: 'https://music.youtube.com/playlist?list=PLBLACKPINK',
+        status: youtubeMusicStatus,
+        provenance: youtubeMusicStatus === 'canonical' ? 'releaseDetails.youtube_music_url' : 'ytmusicapi exact album search match',
+      },
+    },
+    tracks: [
+      {
+        track_id: 'bp-track-1',
+        order: 1,
+        title: 'JUMP',
+        is_title_track: true,
+        spotify: {
+          url: 'https://open.spotify.com/track/bp-jump',
+          status: 'canonical',
+          provenance: 'releaseDetails.spotify_url',
+        },
+        youtube_music: null,
+      },
+      {
+        track_id: 'bp-track-2',
+        order: 2,
+        title: 'Ready For Love',
+        is_title_track: false,
+        spotify: null,
+        youtube_music: null,
+      },
+    ],
+    mv: {
+      url: 'https://www.youtube.com/watch?v=2GJfWMYCWY0',
+      video_id: '2GJfWMYCWY0',
+      status: 'manual_override',
+      provenance: 'official artist channel watch URL',
+    },
+    credits: [],
+    charts: [],
+    notes: null,
   };
 }
 
@@ -560,6 +632,41 @@ class FakeDb {
         ]);
       }
 
+      if (params[0] === 'blackpink' && params[3] === 'album') {
+        return this.result<Row>([
+          {
+            release_id: BLACKPINK_DEADLINE_UNRESOLVED_RELEASE_ID,
+            entity_slug: 'blackpink',
+            normalized_release_title: 'deadline',
+            release_date: '2026-02-26',
+            stream: 'album',
+            payload: buildBlackpinkDeadlinePayload(
+              BLACKPINK_DEADLINE_UNRESOLVED_RELEASE_ID,
+              '2026-02-26',
+              'unresolved',
+              'unresolved',
+              'manual_override',
+            ),
+            generated_at: NOW,
+          } as unknown as Row,
+          {
+            release_id: BLACKPINK_DEADLINE_VERIFIED_RELEASE_ID,
+            entity_slug: 'blackpink',
+            normalized_release_title: 'deadline',
+            release_date: '2026-02-27',
+            stream: 'album',
+            payload: buildBlackpinkDeadlinePayload(
+              BLACKPINK_DEADLINE_VERIFIED_RELEASE_ID,
+              '2026-02-27',
+              'verified',
+              'verified',
+              'canonical',
+            ),
+            generated_at: NOW,
+          } as unknown as Row,
+        ]);
+      }
+
       return this.result<Row>([]);
     }
 
@@ -574,6 +681,26 @@ class FakeDb {
             release_date: '2026-02-23',
             stream: 'album',
             payload: buildReleaseDetailPayload(IVE_RELEASE_ID),
+            generated_at: NOW,
+          } as unknown as Row,
+        ]);
+      }
+
+      if (releaseId === BLACKPINK_DEADLINE_VERIFIED_RELEASE_ID) {
+        return this.result<Row>([
+          {
+            release_id: BLACKPINK_DEADLINE_VERIFIED_RELEASE_ID,
+            entity_slug: 'blackpink',
+            normalized_release_title: 'deadline',
+            release_date: '2026-02-27',
+            stream: 'album',
+            payload: buildBlackpinkDeadlinePayload(
+              BLACKPINK_DEADLINE_VERIFIED_RELEASE_ID,
+              '2026-02-27',
+              'verified',
+              'verified',
+              'canonical',
+            ),
             generated_at: NOW,
           } as unknown as Row,
         ]);
@@ -1066,6 +1193,28 @@ test('GET /v1/releases/lookup resolves legacy key to release id', async (t) => {
   assert.equal(body.data.release_id, IVE_RELEASE_ID);
   assert.equal(body.data.canonical_path, `/v1/releases/${IVE_RELEASE_ID}`);
   assert.equal(body.data.release.release_title, 'REVIVE+');
+});
+
+test('GET /v1/releases/lookup prefers adjacent verified candidate over sparse exact duplicate', async (t) => {
+  const app = createTestApp(t);
+  const response = await app.inject({
+    method: 'GET',
+    url: '/v1/releases/lookup',
+    query: {
+      entity_slug: 'BLACKPINK',
+      title: 'DEADLINE',
+      date: '2026-02-26',
+      stream: 'album',
+    },
+  });
+
+  assert.equal(response.statusCode, 200);
+  const body = parseJson(response);
+  assertReadMeta(body.meta, '/v1/releases/lookup');
+  assert.equal(body.data.release_id, BLACKPINK_DEADLINE_VERIFIED_RELEASE_ID);
+  assert.equal(body.data.canonical_path, `/v1/releases/${BLACKPINK_DEADLINE_VERIFIED_RELEASE_ID}`);
+  assert.equal(body.data.release.release_date, '2026-02-27');
+  assert.equal(body.data.release.release_title, 'DEADLINE');
 });
 
 test('GET /v1/releases/:id returns release detail payload with title tracks', async (t) => {

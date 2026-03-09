@@ -94,6 +94,19 @@ type ReleaseLookupData = {
   release: ReleaseCore;
 };
 
+type ReleaseLookupResolution = {
+  row: ReleaseDetailProjectionRow;
+  data: ReleaseLookupData;
+};
+
+type ScoredReleaseLookupCandidate = {
+  row: ReleaseDetailProjectionRow;
+  data: ReleaseLookupData;
+  detail: ReleaseDetailData;
+  score: number;
+  dayDistance: number;
+};
+
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const VALID_STREAMS = new Set(['album', 'song']);
@@ -267,6 +280,96 @@ function buildLookupData(row: ReleaseDetailProjectionRow): ReleaseLookupData | n
   };
 }
 
+function getVerificationRank(status: string | null): number {
+  switch (status) {
+    case 'verified':
+      return 4;
+    case 'manual_override':
+      return 3;
+    case 'relation_match':
+      return 2;
+    case 'inferred':
+    case 'needs_review':
+      return 1;
+    default:
+      return 0;
+  }
+}
+
+function getServiceLinkRank(link: ServiceLink | null): number {
+  if (link === null) {
+    return 0;
+  }
+  return getVerificationRank(link.status ?? null);
+}
+
+function getDayDistance(lookupDate: string, candidateDate: string): number {
+  const lookupTime = Date.parse(`${lookupDate}T00:00:00Z`);
+  const candidateTime = Date.parse(`${candidateDate}T00:00:00Z`);
+  if (!Number.isFinite(lookupTime) || !Number.isFinite(candidateTime)) {
+    return Number.POSITIVE_INFINITY;
+  }
+  return Math.abs(candidateTime - lookupTime) / 86_400_000;
+}
+
+function scoreReleaseLookupCandidate(candidate: ReleaseDetailData, lookupDate: string): number {
+  const detailRank = getVerificationRank(candidate.detail_metadata.status);
+  const titleRank = getVerificationRank(candidate.title_track_metadata.status);
+  const mvRank = getVerificationRank(candidate.mv.status);
+  const spotifyRank = getServiceLinkRank(candidate.service_links.spotify);
+  const youtubeMusicRank = getServiceLinkRank(candidate.service_links.youtube_music);
+  const trackCountBonus = Math.min(candidate.tracks.length, 12);
+  const exactDateBonus = candidate.release.release_date === lookupDate ? 5 : 0;
+
+  return detailRank * 100 + titleRank * 40 + mvRank * 15 + spotifyRank * 6 + youtubeMusicRank * 6 + trackCountBonus + exactDateBonus;
+}
+
+function resolveReleaseLookupCandidate(
+  rows: ReleaseDetailProjectionRow[],
+  lookupDate: string,
+): ReleaseLookupResolution | null {
+  const candidates = rows
+    .map((row) => {
+      const detail = normalizeReleaseDetailPayload(row.payload, row.release_id);
+      if (detail === null) {
+        return null;
+      }
+
+      const lookupData: ReleaseLookupData = {
+        release_id: row.release_id,
+        canonical_path: `/v1/releases/${row.release_id}`,
+        release: detail.release,
+      };
+
+      return {
+        row,
+        data: lookupData,
+        detail,
+        score: scoreReleaseLookupCandidate(detail, lookupDate),
+        dayDistance: getDayDistance(lookupDate, detail.release.release_date),
+      };
+    })
+    .filter((candidate): candidate is ScoredReleaseLookupCandidate => candidate !== null)
+    .sort((left, right) => {
+      if (left.score !== right.score) {
+        return right.score - left.score;
+      }
+      if (left.dayDistance !== right.dayDistance) {
+        return left.dayDistance - right.dayDistance;
+      }
+      return right.data.release.release_date.localeCompare(left.data.release.release_date);
+    });
+
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  return {
+    row: candidates[0].row,
+    data: candidates[0].data,
+  };
+}
+
 export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRouteContext): void {
   app.get('/v1/releases/lookup', async (request) => {
     const { entity_slug, title, date, stream } = request.query as ReleaseLookupQuery;
@@ -305,15 +408,16 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
         from release_detail_projection
         where entity_slug = $1
           and normalized_release_title = projection_normalize_text($2)
-          and release_date = $3::date
           and stream = $4
-        limit 1
+          and release_date between ($3::date - interval '1 day') and ($3::date + interval '1 day')
+        order by release_date desc
+        limit 5
       `,
       [lookup.entity_slug, lookup.normalized_release_title, lookup.release_date, lookup.stream]
     );
 
-    const row = result.rows[0];
-    if (!row) {
+    const resolution = resolveReleaseLookupCandidate(result.rows, lookup.release_date);
+    if (!resolution) {
       throw routeError(404, 'not_found', 'No release matched the supplied legacy lookup key.', {
         lookup: {
           entity_slug,
@@ -324,15 +428,10 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
       });
     }
 
-    const data = buildLookupData(row);
-    if (data === null) {
-      throw routeError(500, 'stale_projection', 'release_detail_projection returned an unexpected payload shape.');
-    }
-
     return buildReadDataEnvelope(
       request,
       context.config.appTimezone,
-      data,
+      resolution.data,
       {
         lookup: {
           entity_slug,
@@ -341,7 +440,7 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
           stream,
         },
       },
-      toIsoString(row.generated_at),
+      toIsoString(resolution.row.generated_at),
     );
   });
 
