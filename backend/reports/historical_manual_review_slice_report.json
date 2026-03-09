@@ -1,0 +1,151 @@
+{
+  "reviewed_slice_name": "TWICE pre-2019 Japanese singles",
+  "reviewed_slice_total": 5,
+  "rows": [
+    {
+      "group": "TWICE",
+      "release_title": "One More Time",
+      "release_date": "2017-10-13",
+      "stream": "song",
+      "before": {
+        "detail_status": "inferred",
+        "title_track_status": "unresolved",
+        "youtube_video_status": "unresolved",
+        "track_count": 0
+      },
+      "after": {
+        "detail_status": "manual_override",
+        "detail_provenance": "manual review priority slice: official TWICE JAPAN single release",
+        "title_track_status": "manual_override",
+        "title_track_provenance": "release_detail_overrides.title_tracks",
+        "youtube_video_status": "manual_override",
+        "youtube_video_provenance": "manual review priority slice: official TWICE JAPAN Music Video",
+        "track_count": 1,
+        "tracks": [
+          {
+            "order": 1,
+            "title": "One More Time",
+            "is_title_track": true
+          }
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=HuoOEry-Yc4"
+      }
+    },
+    {
+      "group": "TWICE",
+      "release_title": "Candy Pop",
+      "release_date": "2018-01-12",
+      "stream": "song",
+      "before": {
+        "detail_status": "inferred",
+        "title_track_status": "unresolved",
+        "youtube_video_status": "unresolved",
+        "track_count": 0
+      },
+      "after": {
+        "detail_status": "manual_override",
+        "detail_provenance": "manual review priority slice: official TWICE JAPAN single release",
+        "title_track_status": "manual_override",
+        "title_track_provenance": "release_detail_overrides.title_tracks",
+        "youtube_video_status": "manual_override",
+        "youtube_video_provenance": "manual review priority slice: official TWICE JAPAN Music Video",
+        "track_count": 1,
+        "tracks": [
+          {
+            "order": 1,
+            "title": "Candy Pop",
+            "is_title_track": true
+          }
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=wQ_POfToaVY"
+      }
+    },
+    {
+      "group": "TWICE",
+      "release_title": "Wake Me Up",
+      "release_date": "2018-04-25",
+      "stream": "song",
+      "before": {
+        "detail_status": "inferred",
+        "title_track_status": "unresolved",
+        "youtube_video_status": "unresolved",
+        "track_count": 0
+      },
+      "after": {
+        "detail_status": "manual_override",
+        "detail_provenance": "manual review priority slice: official TWICE JAPAN single release",
+        "title_track_status": "manual_override",
+        "title_track_provenance": "release_detail_overrides.title_tracks",
+        "youtube_video_status": "manual_override",
+        "youtube_video_provenance": "manual review priority slice: official TWICE JAPAN Music Video",
+        "track_count": 1,
+        "tracks": [
+          {
+            "order": 1,
+            "title": "Wake Me Up",
+            "is_title_track": true
+          }
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=DdLYSziSXII"
+      }
+    },
+    {
+      "group": "TWICE",
+      "release_title": "BDZ",
+      "release_date": "2018-08-17",
+      "stream": "song",
+      "before": {
+        "detail_status": "inferred",
+        "title_track_status": "unresolved",
+        "youtube_video_status": "unresolved",
+        "track_count": 0
+      },
+      "after": {
+        "detail_status": "manual_override",
+        "detail_provenance": "manual review priority slice: official TWICE JAPAN single release",
+        "title_track_status": "manual_override",
+        "title_track_provenance": "release_detail_overrides.title_tracks",
+        "youtube_video_status": "manual_override",
+        "youtube_video_provenance": "manual review priority slice: official TWICE JAPAN Music Video",
+        "track_count": 1,
+        "tracks": [
+          {
+            "order": 1,
+            "title": "BDZ",
+            "is_title_track": true
+          }
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=CMNahhgR_ss"
+      }
+    },
+    {
+      "group": "TWICE",
+      "release_title": "STAY BY MY SIDE",
+      "release_date": "2018-10-22",
+      "stream": "song",
+      "before": {
+        "detail_status": "inferred",
+        "title_track_status": "unresolved",
+        "youtube_video_status": "unresolved",
+        "track_count": 0
+      },
+      "after": {
+        "detail_status": "manual_override",
+        "detail_provenance": "manual review priority slice: official TWICE JAPAN single release",
+        "title_track_status": "manual_override",
+        "title_track_provenance": "release_detail_overrides.title_tracks",
+        "youtube_video_status": "no_mv",
+        "youtube_video_provenance": "manual review priority slice: official TWICE JAPAN channel only exposes a making video, no canonical MV target was found",
+        "track_count": 1,
+        "tracks": [
+          {
+            "order": 1,
+            "title": "STAY BY MY SIDE",
+            "is_title_track": true
+          }
+        ],
+        "youtube_video_url": null
+      }
+    }
+  ]
+}

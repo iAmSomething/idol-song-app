@@ -682,6 +682,26 @@ def apply_detail_override(
         get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"])
     )
     if override:
+        override_tracks = normalize_tracks(override.get("tracks"))
+        override_detail_status = optional_text(override.get("detail_status"))
+        override_detail_provenance = optional_text(override.get("detail_provenance"))
+        if override_tracks:
+            detail["tracks"] = override_tracks
+            if not override_detail_status:
+                override_detail_status = DETAIL_STATUS_MANUAL
+            if not override_detail_provenance:
+                override_detail_provenance = "release_detail_overrides.tracks"
+
+        if override_detail_status:
+            detail["detail_status"] = override_detail_status
+            detail["detail_provenance"] = override_detail_provenance
+            detail_note = (
+                f" Release detail metadata was supplied explicitly from release_detail_overrides.json"
+                f" ({override_detail_provenance or override_detail_status})."
+            )
+            if detail_note not in detail["notes"]:
+                detail["notes"] += detail_note
+
         youtube_music_url = optional_text(override.get("youtube_music_url"))
         if youtube_music_url:
             detail["youtube_music_url"] = youtube_music_url
