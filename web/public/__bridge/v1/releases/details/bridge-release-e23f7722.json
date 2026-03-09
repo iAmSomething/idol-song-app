@@ -19,13 +19,39 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "夏色 MY GIRL",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Blowin’",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Evidence",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "サヨナラを繰り返して",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "夏色 MY GIRL (Instrumental)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

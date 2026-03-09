@@ -19,13 +19,44 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "DEBUT SONG",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "GROUNDWORK",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "I DO ME",
+        "is_title_track": true
+      },
+      {
+        "order": 4,
+        "title": "THERE THEY GO",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "BTG",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "한 개뿐인 (ONE OFF)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

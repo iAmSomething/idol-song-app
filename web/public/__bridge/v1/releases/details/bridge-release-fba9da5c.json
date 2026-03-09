@@ -13,19 +13,35 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/3gWIe0cTPYqrI8xIYHjten"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Intro; Love is over",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Wash Away",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Love War",
+        "is_title_track": true
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

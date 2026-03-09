@@ -604,6 +604,25 @@
     "provenance": "ytmusicapi exact album search match"
   },
   {
+    "group": "MCND",
+    "release_title": "아뜨뜨뜨",
+    "release_date": "2024-08-08",
+    "stream": "song",
+    "detail_status": "manual_override",
+    "detail_provenance": "manual review single-track verification via Apple Music release listing",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "아뜨뜨뜨",
+        "is_title_track": true
+      }
+    ],
+    "title_tracks": [
+      "아뜨뜨뜨"
+    ],
+    "title_track_provenance": "manual review single-track verification via Apple Music release listing"
+  },
+  {
     "group": "SAY MY NAME",
     "release_title": "iLy",
     "release_date": "2025-08-01",

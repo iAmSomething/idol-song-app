@@ -13,19 +13,55 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/1QDAlRAOgIMPBQpMQ4LZ0E"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Paranoia",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Sugarcoat",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Weightless",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Complicated",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Resonance",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Crow",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "CHANCE (Korean ver.)",
+        "is_title_track": true
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

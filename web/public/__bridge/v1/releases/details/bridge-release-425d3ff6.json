@@ -19,13 +19,29 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "하나둘셋 어이! (1,2,3 Eoi!)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "ILLELLA (일낼라)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "L.I.E.C",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

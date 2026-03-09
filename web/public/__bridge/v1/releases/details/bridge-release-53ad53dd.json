@@ -19,13 +19,49 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Intro : 창 (窓 : Window)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "월하미인 (月下美人 : LUNA)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "사랑의 결말은 모 아니면 도",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Life is Beautiful",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Shut Up 받고 Crazy Hot!",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "헤엄쳐",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Who You Are",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

@@ -13,19 +13,70 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/4MGXby5GGnly4aVwdZuwak"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "@% (Alpha Percent)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "깨어 (Are You Alive)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "추리소설 (Detective Soseol)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "어제 우리 불꽃놀이 (Firework Diary)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Love Child",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Persona",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Too Hot",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Diablo",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Friend Zone",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Love2Love",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

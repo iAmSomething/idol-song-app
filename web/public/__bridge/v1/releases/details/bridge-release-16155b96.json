@@ -13,19 +13,40 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/5s15PlkjUUIUFt0n3KMHIC"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Message from NMIXX: JIWOO",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Message from NMIXX: LILY & KYUJIN",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Message from NMIXX: HAEWON & SULLYOON",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Message from NMIXX: JINNI & BAE",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

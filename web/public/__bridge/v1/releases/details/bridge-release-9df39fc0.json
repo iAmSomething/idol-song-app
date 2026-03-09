@@ -13,19 +13,65 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/0rvrbZvaDX5S9ZBhwOwFfH"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Peek‐a‐Boo",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Look",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "I Just",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Kingdom Come",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "My Second Date",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Attaboy",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Perfect 10",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "About Love",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Moonlight Melody",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

@@ -13,19 +13,70 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/4nnyYQGOKRU090FK7sfunL"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "HAPPY",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Miracle",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Mr. BADBOY",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "SUGAR",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Babyface",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Plop Plop",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Follow Me",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "B.B.B.Boo",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Geeminy",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Closer to you",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

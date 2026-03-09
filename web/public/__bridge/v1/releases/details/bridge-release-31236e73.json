@@ -13,19 +13,85 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/4Oz7K9DRwwGMN49i4NbVDT"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "The World Is My Oyster (2023 ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "FEARLESS (2023 ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Blue Flame (2023 ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "The Hydra",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "ANTIFRAGILE",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Impurities",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Burn the Bridge",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "UNFORGIVEN",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "No‐Return (Into the unknown)",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Eve, Psyche & the Bluebeard’s wife",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "FEARNOT (Between you, me and the lamppost)",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Flash Forward",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "Fire in the belly",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

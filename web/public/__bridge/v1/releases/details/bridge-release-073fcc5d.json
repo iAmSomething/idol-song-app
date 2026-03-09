@@ -13,19 +13,55 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/73wDhd3LnOIhvkYkuVeebF"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "INTRO: APOCALYPSE",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "COUP D’ETAT",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "LOVE SONG",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "X‐GAME",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "ON MY WAY",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "SANDCASTLE",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "COUP D’ETAT (inst.)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

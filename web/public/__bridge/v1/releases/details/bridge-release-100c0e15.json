@@ -13,19 +13,75 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/3uejTFamPCZuTD1HvYLqw2"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Hearts Awakened, Live Alive (Expression Revisited)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "HALA HALA (Traditional Treatment mix)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Pirate King (Overload mix)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Treasure (Smoothing Harmonies mix)",
+        "is_title_track": true
+      },
+      {
+        "order": 5,
+        "title": "Utopia (Japanese version)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Say My Name (Flavor of Latin with Juwon Park)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Illusion (Chillin’ with BUDDY mix)",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Wave (Ollounder’s Bold Dynamics mix)",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Aurora (Japanese version)",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Twilight (Classic BUDDY mix)",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "Promise (Notation from Senor Juwon Park)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

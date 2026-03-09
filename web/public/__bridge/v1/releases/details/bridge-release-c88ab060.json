@@ -19,13 +19,79 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "WOW (JPN ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Hello Mello (JPN ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Guess Who’s Back",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Ha-Na-Bi",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "未来 (あした)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "二度目の告白 (JPN ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "今すぐここでKISSを交わそうよ",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Snow Light Road",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Beyond the Time",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "レモネード",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "See you again",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "クリスマス・イブ",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "Christmas Time ～君だけを～",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

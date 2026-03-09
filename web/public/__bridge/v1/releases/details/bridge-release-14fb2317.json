@@ -19,13 +19,44 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "마.피.아. In the morning",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Sorry Not Sorry",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "KIDDING ME",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Wild Wild West",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "SHOOT!",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "TENNIS (0:0)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

@@ -19,13 +19,64 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "No Matter",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "어리고 부끄럽고 바보 같은",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "UNDEFINED",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Paint It",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Money On My Mind",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "꿈을 꾸는 소녀",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "until the end of time",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Walking to the Moon",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "MONEYBALL",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "불꽃놀이의 밤",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

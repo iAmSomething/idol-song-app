@@ -13,19 +13,75 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/5HlxNTQpJb7buoWIRS4M7T"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "HIT",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Lie Again",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Fear",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Let me hear you say",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "247",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Second Life",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Network Love",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Back it up",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Lucky",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Snap Shoot",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "Happy Ending (Korean ver.)",
+        "is_title_track": true
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

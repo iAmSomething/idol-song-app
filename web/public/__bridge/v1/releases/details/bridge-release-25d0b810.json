@@ -19,13 +19,44 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Highway to Heaven",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "SUPERHUMAN",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "아 깜짝이야 (FOOL)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "시차 (Jet Lag)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "종이비행기 (Paper Plane)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "OUTRO : WE ARE 127",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

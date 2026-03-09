@@ -19,13 +19,79 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Season 2",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Last Romeo",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Follow Me",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "로시난테 Rocinante",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "숨 좀 쉬자 Suffocate",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Light [Solo Version]",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Alone",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Memories",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "나란 사람 Till I…",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Reflex",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "미치겠어 Crazy",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "눈을 감으면 Close My Eyes [Solo Version]",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "소나기 (I Need U Back)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

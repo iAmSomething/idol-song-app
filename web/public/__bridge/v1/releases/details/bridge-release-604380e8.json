@@ -13,19 +13,45 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/00ezJ1c3fzgwPCkA3bKq7Z"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Peep My Show",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "24/7",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Autumn",
+        "is_title_track": true
+      },
+      {
+        "order": 4,
+        "title": "Bubble",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "24/7 (Instrumental)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

@@ -19,13 +19,44 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "너+나=7942",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "내가 S면 넌 나의 N이 되어줘",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "hey! hey!",
+        "is_title_track": true
+      },
+      {
+        "order": 4,
+        "title": "Double Take",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "내가 태양이라면",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Fire Confetti",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

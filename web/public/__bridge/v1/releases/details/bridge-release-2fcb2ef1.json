@@ -19,13 +19,34 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Party O’Clock",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Roller Coaster",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "Party O’Clock (inst.)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Roller Coaster (inst.)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

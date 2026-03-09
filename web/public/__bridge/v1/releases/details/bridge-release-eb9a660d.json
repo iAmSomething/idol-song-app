@@ -13,7 +13,7 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/2F7xpLoOrO1LzYO95ZNq62"
       },
       "youtube_music": {
         "url": null
@@ -32,6 +32,6 @@
       "status": "manual_override",
       "provenance": "manual review priority slice: official TWICE JAPAN Music Video"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Release detail metadata was supplied explicitly from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN single release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN Music Video)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Release detail metadata was supplied explicitly from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN single release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN Music Video). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
   }
 }

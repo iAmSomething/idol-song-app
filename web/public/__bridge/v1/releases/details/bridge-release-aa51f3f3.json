@@ -13,19 +13,60 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/3SZZriuBZnmKfQ7LqEH6It"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Super Lady",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Revenge",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Doll",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Vision",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "7Days",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "나는 아픈 건 딱 질색이니까",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Rollie",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Wife",
+        "is_title_track": true
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_search_release)."
   }
 }

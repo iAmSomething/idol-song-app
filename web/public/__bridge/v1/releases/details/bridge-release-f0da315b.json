@@ -19,13 +19,44 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "나에게로 오는 길 (intro.)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "To Heart",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "환상속의 그대",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "피노키오",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Be With You",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "유리구두 (MAMA ver.)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

@@ -13,19 +13,25 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/1kwwLBsJff3a6d8gJGzzpe"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "TIME MACHINE",
+        "is_title_track": true
+      }
+    ],
     "mv": {
       "url": "https://www.youtube.com/watch?v=TLlYFfZKOV4",
       "video_id": "TLlYFfZKOV4",
       "status": "manual_override",
       "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring). MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

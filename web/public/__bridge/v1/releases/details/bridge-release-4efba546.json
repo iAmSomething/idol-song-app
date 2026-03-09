@@ -13,19 +13,55 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/3SexPtGPRSuzvjawaByl2G"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Intro : Who Got the Joker?",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Bring it on",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Skydivin’",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Firebomb",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Fragile",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Mr. Wolf",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Bring it on (English ver.)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseHistory.placeholder_seed"
+      "url": "https://www.youtube.com/watch?v=TuSZrgo0Y_Q",
+      "video_id": "TuSZrgo0Y_Q",
+      "status": "relation_match",
+      "provenance": "musicbrainz.release_group_release.url_relation"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url, youtube_video (musicbrainz.release_group_release)."
   }
 }

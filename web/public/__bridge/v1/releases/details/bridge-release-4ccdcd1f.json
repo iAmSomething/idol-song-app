@@ -13,19 +13,25 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/2bCF7O4JPKcxtlOw7AtphB"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "STYLE",
+        "is_title_track": true
+      }
+    ],
     "mv": {
       "url": "https://www.youtube.com/watch?v=n7kFRxFIPrI",
       "video_id": "n7kFRxFIPrI",
       "status": "manual_override",
       "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring). MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

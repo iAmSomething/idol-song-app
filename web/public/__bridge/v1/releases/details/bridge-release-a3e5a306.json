@@ -19,13 +19,124 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Lucky One",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Monster",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Artificial Love",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Cloud 9",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Heaven",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "백색소음 (White Noise)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "유리어항 (One and Only)",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "They Never Know",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Stronger",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Lucky One (Instrumental)",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "Monster (Instrumental)",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Lucky One (Chinese Version)",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "Monster (Chinese Version)",
+        "is_title_track": false
+      },
+      {
+        "order": 14,
+        "title": "Artificial Love (Chinese Version)",
+        "is_title_track": false
+      },
+      {
+        "order": 15,
+        "title": "Cloud 9 (Chinese Version)",
+        "is_title_track": false
+      },
+      {
+        "order": 16,
+        "title": "Heaven (Chinese Version)",
+        "is_title_track": false
+      },
+      {
+        "order": 17,
+        "title": "白色噪音 (White Noise) (Chinese Version)",
+        "is_title_track": false
+      },
+      {
+        "order": 18,
+        "title": "玻璃鱼缸 (One and Only) (Chinese Version)",
+        "is_title_track": false
+      },
+      {
+        "order": 19,
+        "title": "They Never Know (Chinese Version)",
+        "is_title_track": false
+      },
+      {
+        "order": 20,
+        "title": "Stronger (Chinese Version)",
+        "is_title_track": false
+      },
+      {
+        "order": 21,
+        "title": "Lucky One (Chinese Version) (Instrumental)",
+        "is_title_track": false
+      },
+      {
+        "order": 22,
+        "title": "Monster (Chinese Version) (Instrumental)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

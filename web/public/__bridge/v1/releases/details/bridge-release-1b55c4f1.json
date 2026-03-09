@@ -19,13 +19,79 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Better Better",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "좋아합니다",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "좋은걸 뭐 어떡해",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "남겨둘게",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "놀래!",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Be Lazy",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Hi Hello",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "I Loved You",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "그렇더라고요",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "혼자야",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "쏟아진다",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "누군가 필요해",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "노력해볼게요",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

@@ -18,7 +18,7 @@
     },
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/2RNBslHPjuQ1SSjmevJCiO"
       },
       "youtube_music": {
         "url": null
@@ -47,6 +47,6 @@
       "status": "manual_override",
       "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
     },
-    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
   }
 }

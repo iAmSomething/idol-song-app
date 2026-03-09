@@ -19,13 +19,39 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "ICY",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "CHERRY",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "IT’z SUMMER",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "달라달라 (DallasK remix)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "WANT IT? (Imad Royal remix)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }
