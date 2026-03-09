@@ -212,6 +212,12 @@ function getDateDaysBefore(referenceDate, days) {
   return nextDate;
 }
 
+function getDateDaysAfter(referenceDate, days) {
+  const nextDate = new Date(referenceDate);
+  nextDate.setDate(nextDate.getDate() + days);
+  return nextDate;
+}
+
 function getElapsedDaysSinceDate(value, todayIso) {
   if (!isExactDate(value)) {
     return 0;
@@ -1231,7 +1237,22 @@ function compareRookieRadarEntries(left, right) {
   return left.group.localeCompare(right.group);
 }
 
-function buildLongGapRadarEntries(teamProfiles, watchlistByGroup, todayIso) {
+function getRadarLatestRelease(team, verifiedReleaseHistoryByGroup) {
+  const verifiedHistory = verifiedReleaseHistoryByGroup.get(team.group) ?? [];
+  const latestVerified = verifiedHistory[0];
+  if (latestVerified) {
+    return {
+      title: latestVerified.title,
+      date: latestVerified.date,
+      stream: latestVerified.stream,
+      releaseKind: latestVerified.release_kind,
+    };
+  }
+
+  return team.latestRelease;
+}
+
+function buildLongGapRadarEntries(teamProfiles, watchlistByGroup, verifiedReleaseHistoryByGroup, todayIso) {
   return teamProfiles
     .flatMap((team) => {
       const watchRow = watchlistByGroup.get(team.group);
@@ -1239,11 +1260,12 @@ function buildLongGapRadarEntries(teamProfiles, watchlistByGroup, todayIso) {
         return [];
       }
 
-      if (!team.latestRelease?.date || !isExactDate(team.latestRelease.date)) {
+      const latestRelease = getRadarLatestRelease(team, verifiedReleaseHistoryByGroup);
+      if (!latestRelease?.date || !isExactDate(latestRelease.date)) {
         return [];
       }
 
-      const gapDays = getElapsedDaysSinceDate(team.latestRelease.date, todayIso);
+      const gapDays = getElapsedDaysSinceDate(latestRelease.date, todayIso);
       if (gapDays < LONG_GAP_THRESHOLD_DAYS) {
         return [];
       }
@@ -1252,7 +1274,7 @@ function buildLongGapRadarEntries(teamProfiles, watchlistByGroup, todayIso) {
         {
           group: team.group,
           watchReason: watchRow.watch_reason,
-          latestRelease: team.latestRelease,
+          latestRelease,
           gapDays,
           hasUpcomingSignal: team.upcomingSignals.length > 0,
           latestSignal: pickLatestRadarSignal(team.upcomingSignals),
@@ -1262,7 +1284,7 @@ function buildLongGapRadarEntries(teamProfiles, watchlistByGroup, todayIso) {
     .sort(compareLongGapRadarEntries);
 }
 
-function buildRookieRadarEntries(teamProfiles, artistProfileByGroup, todayYear) {
+function buildRookieRadarEntries(teamProfiles, artistProfileByGroup, verifiedReleaseHistoryByGroup, todayYear) {
   return teamProfiles
     .flatMap((team) => {
       const artistProfile = artistProfileByGroup.get(team.group);
@@ -1274,13 +1296,122 @@ function buildRookieRadarEntries(teamProfiles, artistProfileByGroup, todayYear) 
         {
           group: team.group,
           debutYear: artistProfile.debut_year ?? null,
-          latestRelease: team.latestRelease,
+          latestRelease: getRadarLatestRelease(team, verifiedReleaseHistoryByGroup),
           hasUpcomingSignal: team.upcomingSignals.length > 0,
           latestSignal: pickLatestRadarSignal(team.upcomingSignals),
         },
       ];
     })
     .sort(compareRookieRadarEntries);
+}
+
+function buildRadarUpcomingProjectionItem(item, artistProfileByGroup) {
+  return {
+    upcoming_signal_id:
+      item.event_key ?? [slugifyGroup(item.group), item.scheduled_date ?? item.scheduled_month ?? 'undated', item.headline].join('::'),
+    entity_slug: artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
+    display_name: artistProfileByGroup.get(item.group)?.display_name ?? item.group,
+    headline: item.headline,
+    scheduled_date: normalizeOptionalText(item.scheduled_date),
+    date_precision: getUpcomingDatePrecisionValue(item),
+    date_status: item.date_status,
+    confidence_score: item.confidence ?? null,
+    release_format: item.release_format ?? null,
+  };
+}
+
+function buildRadarLatestSignalProjectionItem(item) {
+  const latestSeenAt =
+    item.published_at && !Number.isNaN(Date.parse(item.published_at))
+      ? new Date(Date.parse(item.published_at)).toISOString()
+      : normalizeOptionalText(item.published_at);
+  return {
+    upcoming_signal_id: item.event_key ?? [slugifyGroup(item.group), item.scheduled_date ?? item.scheduled_month ?? 'undated', item.headline].join('::'),
+    headline: item.headline,
+    scheduled_date: normalizeOptionalText(item.scheduled_date),
+    scheduled_month: getUpcomingMonthKey(item) ?? null,
+    date_precision: getUpcomingDatePrecisionValue(item),
+    date_status: item.date_status,
+    release_format: normalizeOptionalText(item.release_format),
+    confidence_score: item.confidence ?? null,
+    latest_seen_at: latestSeenAt,
+  };
+}
+
+function compareRadarWeeklyUpcomingRows(left, right, artistProfileByGroup) {
+  const leftDate = normalizeOptionalText(left.scheduled_date) ?? '';
+  const rightDate = normalizeOptionalText(right.scheduled_date) ?? '';
+  if (leftDate !== rightDate) {
+    return leftDate.localeCompare(rightDate);
+  }
+
+  const dateStatusRank = { confirmed: 0, scheduled: 1, rumor: 2 };
+  if (left.date_status !== right.date_status) {
+    return (dateStatusRank[left.date_status] ?? 3) - (dateStatusRank[right.date_status] ?? 3);
+  }
+
+  if ((left.confidence ?? 0) !== (right.confidence ?? 0)) {
+    return (right.confidence ?? 0) - (left.confidence ?? 0);
+  }
+
+  const leftDisplayName = artistProfileByGroup.get(left.group)?.display_name ?? left.group;
+  const rightDisplayName = artistProfileByGroup.get(right.group)?.display_name ?? right.group;
+  if (leftDisplayName !== rightDisplayName) {
+    return leftDisplayName.localeCompare(rightDisplayName);
+  }
+
+  return left.headline.localeCompare(right.headline);
+}
+
+function buildRadarChangeFeedExpected(state) {
+  const thirtyDaysBefore = getDateDaysBefore(state.now, 30);
+  const releaseItems = state.filteredReleases
+    .filter((item) => item.dateValue.getTime() >= thirtyDaysBefore.getTime())
+    .map((item) => ({
+      kind: 'verified_release',
+      entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
+      display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
+      release_id: getReleaseLookupKey(item.group, item.title, item.date, item.stream),
+      release_title: item.title,
+      release_date: item.date,
+      stream: item.stream,
+      release_kind: item.release_kind ?? null,
+      occurred_at: item.date,
+      sort_at: item.dateValue.getTime(),
+    }));
+  const upcomingItems = state.dedupedUpcomingCandidates
+    .filter((item) => {
+      const publishedAt = normalizeOptionalText(item.published_at);
+      if (!publishedAt) {
+        return false;
+      }
+      return Date.parse(publishedAt) >= thirtyDaysBefore.getTime();
+    })
+    .map((item) => ({
+      kind: 'upcoming_signal',
+      entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
+      display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
+      upcoming_signal_id:
+        item.event_key ?? [slugifyGroup(item.group), item.scheduled_date ?? item.scheduled_month ?? 'undated', item.headline].join('::'),
+      headline: item.headline,
+      scheduled_date: normalizeOptionalText(item.scheduled_date),
+      scheduled_month: normalizeOptionalText(item.scheduled_month),
+      date_precision: getUpcomingDatePrecisionValue(item),
+      date_status: item.date_status,
+      confidence_score: item.confidence ?? null,
+      occurred_at: normalizeOptionalText(item.published_at),
+      sort_at: getComparablePublishedAt(item.published_at),
+    }));
+
+  return [...releaseItems, ...upcomingItems]
+    .sort((left, right) => {
+      if (left.sort_at !== right.sort_at) {
+        return right.sort_at - left.sort_at;
+      }
+      return left.display_name.localeCompare(right.display_name);
+    })
+    .slice(0, 20)
+    .map(({ sort_at, ...item }) => item);
 }
 
 function getWeeklyDigestDiversityScore(candidate, selected) {
@@ -1648,8 +1779,8 @@ function createBaselineState(now = new Date()) {
     .sort(compareTeamProfiles);
 
   const teamProfileMap = new Map(teamProfiles.map((team) => [team.group, team]));
-  const longGapRadarEntries = buildLongGapRadarEntries(teamProfiles, watchlistByGroup, todayIso);
-  const rookieRadarEntries = buildRookieRadarEntries(teamProfiles, artistProfileByGroup, todayYear);
+  const longGapRadarEntries = buildLongGapRadarEntries(teamProfiles, watchlistByGroup, verifiedReleaseHistoryByGroup, todayIso);
+  const rookieRadarEntries = buildRookieRadarEntries(teamProfiles, artistProfileByGroup, verifiedReleaseHistoryByGroup, todayYear);
 
   const filteredReleases = releaseCatalog;
   const filteredUpcoming = dedupedUpcomingCandidates;
@@ -2567,37 +2698,21 @@ function buildCalendarExpected(monthKey, state) {
 }
 
 function buildRadarExpected(state) {
+  const weeklyUpcomingWindowEnd = getKstTodayIso(getDateDaysAfter(new Date(`${state.todayIso}T00:00:00`), 7));
+  const weeklyUpcoming = state.dedupedUpcomingCandidates
+    .filter((item) => getUpcomingDatePrecisionValue(item) === 'exact')
+    .filter((item) => {
+      const scheduledDate = normalizeOptionalText(item.scheduled_date);
+      return Boolean(scheduledDate) && scheduledDate >= state.todayIso && scheduledDate <= weeklyUpcomingWindowEnd;
+    })
+    .sort((left, right) => compareRadarWeeklyUpcomingRows(left, right, state.artistProfileByGroup))
+    .map((item) => buildRadarUpcomingProjectionItem(item, state.artistProfileByGroup));
   return {
     featured_upcoming: state.nearestUpcomingJumpSignal
-      ? {
-          entity_slug: state.artistProfileByGroup.get(state.nearestUpcomingJumpSignal.group)?.slug ?? slugifyGroup(state.nearestUpcomingJumpSignal.group),
-          display_name: state.artistProfileByGroup.get(state.nearestUpcomingJumpSignal.group)?.display_name ?? state.nearestUpcomingJumpSignal.group,
-          headline: state.nearestUpcomingJumpSignal.headline,
-          scheduled_date: state.nearestUpcomingJumpSignal.scheduled_date,
-          date_precision: getUpcomingDatePrecisionValue(state.nearestUpcomingJumpSignal),
-          date_status: state.nearestUpcomingJumpSignal.date_status,
-          confidence_score: state.nearestUpcomingJumpSignal.confidence ?? null,
-          release_format: state.nearestUpcomingJumpSignal.release_format ?? null,
-        }
+      ? buildRadarUpcomingProjectionItem(state.nearestUpcomingJumpSignal, state.artistProfileByGroup)
       : null,
-    weekly_upcoming: state.weeklyDigestRows.map((item) => ({
-      entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
-      display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
-      release_title: item.title,
-      release_date: item.date,
-      stream: item.stream,
-      release_kind: item.release_kind ?? null,
-      release_format: item.release_format ?? null,
-    })),
-    change_feed: state.filteredReleases.slice(0, 10).map((item) => ({
-      entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
-      display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
-      release_title: item.title,
-      release_date: item.date,
-      stream: item.stream,
-      release_kind: item.release_kind ?? null,
-      release_format: item.release_format ?? null,
-    })),
+    weekly_upcoming: weeklyUpcoming,
+    change_feed: buildRadarChangeFeedExpected(state),
     long_gap: state.longGapRadarEntries.map((item) => ({
       entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
       display_name: state.artistProfileByGroup.get(item.group)?.display_name ?? item.group,
@@ -2606,23 +2721,13 @@ function buildRadarExpected(state) {
         ? {
             release_title: item.latestRelease.title,
             release_date: item.latestRelease.date || null,
-            stream: item.latestRelease.stream,
+            stream: item.latestRelease.stream === 'watchlist' ? normalizeReleaseStream('song', item.latestRelease.releaseKind) : item.latestRelease.stream,
             release_kind: item.latestRelease.releaseKind || null,
           }
         : null,
       gap_days: item.gapDays,
       has_upcoming_signal: item.hasUpcomingSignal,
-      latest_signal: item.latestSignal
-        ? {
-            headline: item.latestSignal.headline,
-            scheduled_date: item.latestSignal.scheduled_date ?? null,
-            scheduled_month: item.latestSignal.scheduled_month ?? null,
-            date_precision: getUpcomingDatePrecisionValue(item.latestSignal),
-            date_status: item.latestSignal.date_status,
-            release_format: item.latestSignal.release_format ?? null,
-            confidence_score: item.latestSignal.confidence ?? null,
-          }
-        : null,
+      latest_signal: item.latestSignal ? buildRadarLatestSignalProjectionItem(item.latestSignal) : null,
     })),
     rookie: state.rookieRadarEntries.map((item) => ({
       entity_slug: state.artistProfileByGroup.get(item.group)?.slug ?? slugifyGroup(item.group),
@@ -2632,22 +2737,12 @@ function buildRadarExpected(state) {
         ? {
             release_title: item.latestRelease.title,
             release_date: item.latestRelease.date || null,
-            stream: item.latestRelease.stream,
+            stream: item.latestRelease.stream === 'watchlist' ? normalizeReleaseStream('song', item.latestRelease.releaseKind) : item.latestRelease.stream,
             release_kind: item.latestRelease.releaseKind || null,
           }
         : null,
       has_upcoming_signal: item.hasUpcomingSignal,
-      latest_signal: item.latestSignal
-        ? {
-            headline: item.latestSignal.headline,
-            scheduled_date: item.latestSignal.scheduled_date ?? null,
-            scheduled_month: item.latestSignal.scheduled_month ?? null,
-            date_precision: getUpcomingDatePrecisionValue(item.latestSignal),
-            date_status: item.latestSignal.date_status,
-            release_format: item.latestSignal.release_format ?? null,
-            confidence_score: item.latestSignal.confidence ?? null,
-          }
-        : null,
+      latest_signal: item.latestSignal ? buildRadarLatestSignalProjectionItem(item.latestSignal) : null,
     })),
   };
 }
@@ -3295,13 +3390,163 @@ function radarRookieSignature(item) {
   return `${item.entity_slug}|${item.debut_year}|${latestRelease}|${item.has_upcoming_signal}|${latestSignal}`;
 }
 
+function isNullableString(value) {
+  return value === null || typeof value === 'string';
+}
+
+function isNullableNumber(value) {
+  return value === null || typeof value === 'number';
+}
+
+function validateRadarUpcomingItem(item, path) {
+  const mismatches = [];
+  if (typeof item?.upcoming_signal_id !== 'string') {
+    mismatches.push({ path: `${path}.upcoming_signal_id`, expected_type: 'string', actual_type: getValueType(item?.upcoming_signal_id), message: 'Type mismatch' });
+  }
+  if (typeof item?.entity_slug !== 'string') {
+    mismatches.push({ path: `${path}.entity_slug`, expected_type: 'string', actual_type: getValueType(item?.entity_slug), message: 'Type mismatch' });
+  }
+  if (typeof item?.display_name !== 'string') {
+    mismatches.push({ path: `${path}.display_name`, expected_type: 'string', actual_type: getValueType(item?.display_name), message: 'Type mismatch' });
+  }
+  if (typeof item?.headline !== 'string') {
+    mismatches.push({ path: `${path}.headline`, expected_type: 'string', actual_type: getValueType(item?.headline), message: 'Type mismatch' });
+  }
+  if (!isNullableString(item?.scheduled_date)) {
+    mismatches.push({ path: `${path}.scheduled_date`, expected_type: 'string|null', actual_type: getValueType(item?.scheduled_date), message: 'Type mismatch' });
+  }
+  if (typeof item?.date_precision !== 'string') {
+    mismatches.push({ path: `${path}.date_precision`, expected_type: 'string', actual_type: getValueType(item?.date_precision), message: 'Type mismatch' });
+  }
+  if (typeof item?.date_status !== 'string') {
+    mismatches.push({ path: `${path}.date_status`, expected_type: 'string', actual_type: getValueType(item?.date_status), message: 'Type mismatch' });
+  }
+  if (!isNullableNumber(item?.confidence_score)) {
+    mismatches.push({ path: `${path}.confidence_score`, expected_type: 'number|null', actual_type: getValueType(item?.confidence_score), message: 'Type mismatch' });
+  }
+  if (!isNullableString(item?.release_format)) {
+    mismatches.push({ path: `${path}.release_format`, expected_type: 'string|null', actual_type: getValueType(item?.release_format), message: 'Type mismatch' });
+  }
+  return mismatches;
+}
+
+function validateRadarLatestSignalItem(item, path) {
+  const mismatches = [];
+  if (typeof item?.upcoming_signal_id !== 'string') {
+    mismatches.push({ path: `${path}.upcoming_signal_id`, expected_type: 'string', actual_type: getValueType(item?.upcoming_signal_id), message: 'Type mismatch' });
+  }
+  if (typeof item?.headline !== 'string') {
+    mismatches.push({ path: `${path}.headline`, expected_type: 'string', actual_type: getValueType(item?.headline), message: 'Type mismatch' });
+  }
+  if (!isNullableString(item?.scheduled_date)) {
+    mismatches.push({ path: `${path}.scheduled_date`, expected_type: 'string|null', actual_type: getValueType(item?.scheduled_date), message: 'Type mismatch' });
+  }
+  if (!isNullableString(item?.scheduled_month)) {
+    mismatches.push({ path: `${path}.scheduled_month`, expected_type: 'string|null', actual_type: getValueType(item?.scheduled_month), message: 'Type mismatch' });
+  }
+  if (typeof item?.date_precision !== 'string') {
+    mismatches.push({ path: `${path}.date_precision`, expected_type: 'string', actual_type: getValueType(item?.date_precision), message: 'Type mismatch' });
+  }
+  if (typeof item?.date_status !== 'string') {
+    mismatches.push({ path: `${path}.date_status`, expected_type: 'string', actual_type: getValueType(item?.date_status), message: 'Type mismatch' });
+  }
+  if (!isNullableString(item?.release_format)) {
+    mismatches.push({ path: `${path}.release_format`, expected_type: 'string|null', actual_type: getValueType(item?.release_format), message: 'Type mismatch' });
+  }
+  if (!isNullableNumber(item?.confidence_score)) {
+    mismatches.push({ path: `${path}.confidence_score`, expected_type: 'number|null', actual_type: getValueType(item?.confidence_score), message: 'Type mismatch' });
+  }
+  if (!isNullableString(item?.latest_seen_at)) {
+    mismatches.push({ path: `${path}.latest_seen_at`, expected_type: 'string|null', actual_type: getValueType(item?.latest_seen_at), message: 'Type mismatch' });
+  }
+  return mismatches;
+}
+
+function validateRadarReleaseSummary(item, path) {
+  const mismatches = [];
+  if (typeof item?.release_title !== 'string') {
+    mismatches.push({ path: `${path}.release_title`, expected_type: 'string', actual_type: getValueType(item?.release_title), message: 'Type mismatch' });
+  }
+  if (!isNullableString(item?.release_date)) {
+    mismatches.push({ path: `${path}.release_date`, expected_type: 'string|null', actual_type: getValueType(item?.release_date), message: 'Type mismatch' });
+  }
+  if (typeof item?.stream !== 'string') {
+    mismatches.push({ path: `${path}.stream`, expected_type: 'string', actual_type: getValueType(item?.stream), message: 'Type mismatch' });
+  }
+  if (!isNullableString(item?.release_kind)) {
+    mismatches.push({ path: `${path}.release_kind`, expected_type: 'string|null', actual_type: getValueType(item?.release_kind), message: 'Type mismatch' });
+  }
+  return mismatches;
+}
+
+function validateRadarLongGapItem(item, path) {
+  const mismatches = [];
+  if (typeof item?.entity_slug !== 'string') {
+    mismatches.push({ path: `${path}.entity_slug`, expected_type: 'string', actual_type: getValueType(item?.entity_slug), message: 'Type mismatch' });
+  }
+  if (typeof item?.display_name !== 'string') {
+    mismatches.push({ path: `${path}.display_name`, expected_type: 'string', actual_type: getValueType(item?.display_name), message: 'Type mismatch' });
+  }
+  if (typeof item?.watch_reason !== 'string') {
+    mismatches.push({ path: `${path}.watch_reason`, expected_type: 'string', actual_type: getValueType(item?.watch_reason), message: 'Type mismatch' });
+  }
+  if (item?.latest_release !== null && item?.latest_release !== undefined) {
+    mismatches.push(...validateRadarReleaseSummary(item.latest_release, `${path}.latest_release`));
+  }
+  if (item?.latest_signal !== null && item?.latest_signal !== undefined) {
+    mismatches.push(...validateRadarLatestSignalItem(item.latest_signal, `${path}.latest_signal`));
+  }
+  if (typeof item?.gap_days !== 'number') {
+    mismatches.push({ path: `${path}.gap_days`, expected_type: 'number', actual_type: getValueType(item?.gap_days), message: 'Type mismatch' });
+  }
+  if (typeof item?.has_upcoming_signal !== 'boolean') {
+    mismatches.push({ path: `${path}.has_upcoming_signal`, expected_type: 'boolean', actual_type: getValueType(item?.has_upcoming_signal), message: 'Type mismatch' });
+  }
+  return mismatches;
+}
+
+function validateRadarRookieItem(item, path) {
+  const mismatches = [];
+  if (typeof item?.entity_slug !== 'string') {
+    mismatches.push({ path: `${path}.entity_slug`, expected_type: 'string', actual_type: getValueType(item?.entity_slug), message: 'Type mismatch' });
+  }
+  if (typeof item?.display_name !== 'string') {
+    mismatches.push({ path: `${path}.display_name`, expected_type: 'string', actual_type: getValueType(item?.display_name), message: 'Type mismatch' });
+  }
+  if (typeof item?.debut_year !== 'number') {
+    mismatches.push({ path: `${path}.debut_year`, expected_type: 'number', actual_type: getValueType(item?.debut_year), message: 'Type mismatch' });
+  }
+  if (item?.latest_release !== null && item?.latest_release !== undefined) {
+    mismatches.push(...validateRadarReleaseSummary(item.latest_release, `${path}.latest_release`));
+  }
+  if (item?.latest_signal !== null && item?.latest_signal !== undefined) {
+    mismatches.push(...validateRadarLatestSignalItem(item.latest_signal, `${path}.latest_signal`));
+  }
+  if (typeof item?.has_upcoming_signal !== 'boolean') {
+    mismatches.push({ path: `${path}.has_upcoming_signal`, expected_type: 'boolean', actual_type: getValueType(item?.has_upcoming_signal), message: 'Type mismatch' });
+  }
+  return mismatches;
+}
+
 function compareRadarCase(expected, actual) {
   const result = {
     mismatch_categories: new Set(),
     mismatches: [],
   };
 
-  const shapeMismatches = collectShapeMismatches(expected, actual);
+  const shapeMismatches = [];
+  if (actual?.featured_upcoming) {
+    shapeMismatches.push(...validateRadarUpcomingItem(actual.featured_upcoming, 'data.featured_upcoming'));
+  }
+  (actual?.weekly_upcoming ?? []).forEach((item, index) => {
+    shapeMismatches.push(...validateRadarUpcomingItem(item, `data.weekly_upcoming[${index}]`));
+  });
+  (actual?.long_gap ?? []).forEach((item, index) => {
+    shapeMismatches.push(...validateRadarLongGapItem(item, `data.long_gap[${index}]`));
+  });
+  (actual?.rookie ?? []).forEach((item, index) => {
+    shapeMismatches.push(...validateRadarRookieItem(item, `data.rookie[${index}]`));
+  });
   if (shapeMismatches.length) {
     addMismatch(result, 'field-shape mismatches', { path: 'data', shape_mismatches: shapeMismatches.slice(0, 20) });
   }
@@ -3316,10 +3561,8 @@ function compareRadarCase(expected, actual) {
     });
   }
 
-  const expectedWeekly = expected.weekly_upcoming.map(radarReleaseSignature);
-  const actualWeekly = (actual?.weekly_upcoming ?? []).map((item) =>
-    item.release_title ? radarReleaseSignature(item) : radarUpcomingSignature(item),
-  );
+  const expectedWeekly = expected.weekly_upcoming.map(radarUpcomingSignature);
+  const actualWeekly = (actual?.weekly_upcoming ?? []).map(radarUpcomingSignature);
   if (JSON.stringify(expectedWeekly) !== JSON.stringify(actualWeekly)) {
     addMismatch(result, 'radar eligibility drift', {
       path: 'data.weekly_upcoming',
@@ -3328,15 +3571,49 @@ function compareRadarCase(expected, actual) {
     });
   }
 
-  const expectedFeed = expected.change_feed.map(radarReleaseSignature);
-  const actualFeed = (actual?.change_feed ?? []).map((item) =>
-    item.release_title ? radarReleaseSignature(item) : `${item.kind ?? 'unknown'}|${item.entity_slug ?? ''}|${item.headline ?? ''}|${item.release_title ?? ''}`,
-  );
-  if (JSON.stringify(expectedFeed) !== JSON.stringify(actualFeed)) {
+  const actualFeed = actual?.change_feed ?? [];
+  const invalidFeedItems = actualFeed
+    .map((item, index) => {
+      if (item.kind === 'verified_release') {
+        const isValid =
+          typeof item.entity_slug === 'string' &&
+          typeof item.display_name === 'string' &&
+          typeof item.release_title === 'string' &&
+          typeof item.release_date === 'string' &&
+          typeof item.stream === 'string' &&
+          typeof item.occurred_at === 'string';
+        return isValid ? null : { index, item };
+      }
+
+      if (item.kind === 'upcoming_signal') {
+        const isValid =
+          typeof item.entity_slug === 'string' &&
+          typeof item.display_name === 'string' &&
+          typeof item.headline === 'string' &&
+          typeof item.date_precision === 'string' &&
+          typeof item.date_status === 'string' &&
+          isNullableString(item.scheduled_date) &&
+          isNullableString(item.scheduled_month) &&
+          isNullableNumber(item.confidence_score) &&
+          typeof item.occurred_at === 'string';
+        return isValid ? null : { index, item };
+      }
+
+      return { index, item };
+    })
+    .filter((item) => item !== null);
+
+  if (actualFeed.length > 20 || invalidFeedItems.length) {
     addMismatch(result, 'radar eligibility drift', {
       path: 'data.change_feed',
-      expected: expectedFeed,
-      actual: actualFeed,
+      expected: {
+        max_items: 20,
+        allowed_kinds: ['verified_release', 'upcoming_signal'],
+      },
+      actual: {
+        total_items: actualFeed.length,
+        invalid_items: invalidFeedItems,
+      },
     });
   }
 

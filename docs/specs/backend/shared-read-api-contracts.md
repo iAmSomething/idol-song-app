@@ -596,6 +596,128 @@ lookup helper response:
 
 - long-gap / rookie eligibility는 server-side policy를 따른다
 - change feed는 projection diff 또는 equivalent read model을 사용한다
+- radar upcoming-like payload의 `scheduled_month`는 내려줄 때 항상 `YYYY-MM`로 normalize한다
+- `latest_signal.release_format`은 unknown이면 빈 문자열 대신 `null`을 사용한다
+- `latest_signal.latest_seen_at`과 `change_feed[].occurred_at`은 ISO-8601 문자열로 normalize한다
+
+### 9.5 Item Shapes
+
+`featured_upcoming`
+
+```json
+{
+  "upcoming_signal_id": "uuid",
+  "entity_slug": "yena",
+  "display_name": "YENA",
+  "headline": "YENA confirms March comeback",
+  "scheduled_date": "2026-03-11",
+  "date_precision": "exact",
+  "date_status": "confirmed",
+  "confidence_score": 0.84,
+  "release_format": "ep"
+}
+```
+
+`weekly_upcoming[]`
+
+```json
+{
+  "upcoming_signal_id": "uuid",
+  "entity_slug": "p1harmony",
+  "display_name": "P1Harmony",
+  "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+  "scheduled_date": "2026-03-12",
+  "date_precision": "exact",
+  "date_status": "confirmed",
+  "confidence_score": 0.82,
+  "release_format": "ep"
+}
+```
+
+`change_feed[]`
+
+verified release item:
+
+```json
+{
+  "kind": "verified_release",
+  "entity_slug": "blackpink",
+  "display_name": "BLACKPINK",
+  "release_id": "uuid",
+  "release_title": "DEADLINE",
+  "release_date": "2026-02-27",
+  "stream": "album",
+  "release_kind": "ep",
+  "occurred_at": "2026-03-08T23:52:52.993729+00:00"
+}
+```
+
+upcoming signal item:
+
+```json
+{
+  "kind": "upcoming_signal",
+  "entity_slug": "tomorrow-x-together",
+  "display_name": "TOMORROW X TOGETHER",
+  "upcoming_signal_id": "uuid",
+  "headline": "[NOTICE] Comeback Showcase...",
+  "scheduled_date": "2026-04-13",
+  "scheduled_month": null,
+  "date_precision": "exact",
+  "date_status": "confirmed",
+  "confidence_score": 0.84,
+  "occurred_at": "2026-03-08T10:00:00.000000+00:00"
+}
+```
+
+`long_gap[]`
+
+```json
+{
+  "entity_slug": "weeekly",
+  "display_name": "Weeekly",
+  "watch_reason": "long_gap",
+  "latest_release": {
+    "release_id": "uuid",
+    "release_title": "Bliss",
+    "release_date": "2024-07-09",
+    "stream": "album",
+    "release_kind": "ep"
+  },
+  "gap_days": 608,
+  "has_upcoming_signal": false,
+  "latest_signal": null
+}
+```
+
+`rookie[]`
+
+```json
+{
+  "entity_slug": "atheart",
+  "display_name": "AtHeart",
+  "debut_year": 2025,
+  "latest_release": {
+    "release_id": "uuid",
+    "release_title": "Shut Up",
+    "release_date": "2026-02-26",
+    "stream": "song",
+    "release_kind": "single"
+  },
+  "has_upcoming_signal": true,
+  "latest_signal": {
+    "upcoming_signal_id": "uuid",
+    "headline": "Rookie group AtHeart drops bold new teaser photos...",
+    "scheduled_date": null,
+    "scheduled_month": null,
+    "date_precision": "unknown",
+    "date_status": "rumor",
+    "release_format": null,
+    "confidence_score": 0.68,
+    "latest_seen_at": "2026-01-31T08:00:00+00:00"
+  }
+}
+```
 
 ## 10. Internal / Review Endpoints
 

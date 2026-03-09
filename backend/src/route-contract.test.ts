@@ -464,16 +464,87 @@ function buildCalendarMonthPayload() {
 function buildRadarPayload() {
   return {
     featured_upcoming: {
+      upcoming_signal_id: 'upcoming-yena',
       entity_slug: 'yena',
       display_name: 'YENA',
+      headline: 'YENA confirms March comeback',
       scheduled_date: '2026-03-11',
       date_precision: 'exact',
       date_status: 'confirmed',
+      confidence_score: 0.84,
+      release_format: 'ep',
     },
-    weekly_upcoming: [{ entity_slug: 'yena' }],
-    change_feed: [{ kind: 'verified_release', entity_slug: 'ive' }],
-    long_gap: [{ entity_slug: 'woo-ah', gap_days: 600 }],
-    rookie: [{ entity_slug: 'atheart', debut_year: 2025 }],
+    weekly_upcoming: [
+      {
+        upcoming_signal_id: 'upcoming-yena',
+        entity_slug: 'yena',
+        display_name: 'YENA',
+        headline: 'YENA confirms March comeback',
+        scheduled_date: '2026-03-11',
+        date_precision: 'exact',
+        date_status: 'confirmed',
+        confidence_score: 0.84,
+        release_format: 'ep',
+      },
+    ],
+    change_feed: [
+      {
+        kind: 'upcoming_signal',
+        entity_slug: 'yena',
+        display_name: 'YENA',
+        upcoming_signal_id: 'upcoming-yena',
+        headline: 'YENA confirms March comeback',
+        scheduled_date: '2026-03-11',
+        scheduled_month: null,
+        date_precision: 'exact',
+        date_status: 'confirmed',
+        confidence_score: 0.84,
+        occurred_at: NOW,
+      },
+    ],
+    long_gap: [
+      {
+        entity_slug: 'woo-ah',
+        display_name: 'woo!ah!',
+        watch_reason: 'long_gap',
+        latest_release: {
+          release_id: 'release-wooah',
+          release_title: 'Shining on you',
+          release_date: '2024-07-16',
+          stream: 'album',
+          release_kind: 'ep',
+        },
+        gap_days: 600,
+        has_upcoming_signal: false,
+        latest_signal: null,
+      },
+    ],
+    rookie: [
+      {
+        entity_slug: 'atheart',
+        display_name: 'AtHeart',
+        debut_year: 2025,
+        latest_release: {
+          release_id: 'release-atheart',
+          release_title: 'Shut Up',
+          release_date: '2026-02-26',
+          stream: 'song',
+          release_kind: 'single',
+        },
+        has_upcoming_signal: true,
+        latest_signal: {
+          upcoming_signal_id: 'upcoming-atheart',
+          headline: 'AtHeart April teaser',
+          scheduled_date: null,
+          scheduled_month: '2026-04-01',
+          date_precision: 'month_only',
+          date_status: 'scheduled',
+          release_format: '',
+          confidence_score: 0.76,
+          latest_seen_at: NOW,
+        },
+      },
+    ],
   };
 }
 
@@ -1268,6 +1339,10 @@ test('GET /v1/radar returns projection-backed radar payload', async (t) => {
   assert.equal(body.data.featured_upcoming.entity_slug, 'yena');
   assert.equal(body.data.weekly_upcoming.length, 1);
   assert.equal(body.data.rookie.length, 1);
+  assert.equal(body.data.long_gap[0].latest_release.stream, 'album');
+  assert.equal(body.data.rookie[0].latest_signal.scheduled_month, '2026-04');
+  assert.equal(body.data.rookie[0].latest_signal.release_format, null);
+  assert.equal(typeof body.data.change_feed[0].occurred_at, 'string');
 });
 
 test('review routes return no-store payloads for upcoming and mv tasks', async (t) => {
