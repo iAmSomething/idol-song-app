@@ -35,7 +35,13 @@ import type {
 type RadarScreenState =
   | { kind: 'loading' }
   | { kind: 'error'; message: string }
-  | { kind: 'ready'; source: ActiveMobileDataset; snapshot: RadarSnapshotModel };
+  | {
+      kind: 'ready';
+      source: ActiveMobileDataset;
+      snapshot: RadarSnapshotModel;
+      dataState: 'default' | 'partial' | 'degraded';
+      partialSections: string[];
+    };
 
 function formatUpcomingMeta(card: RadarUpcomingCardModel): string {
   const status = card.upcoming.status ?? '예정';
@@ -74,6 +80,61 @@ function buildLongGapAccessibilityLabel(item: RadarLongGapItemModel): string {
 
 function buildRookieAccessibilityLabel(item: RadarRookieItemModel): string {
   return `${item.team.displayName} 팀 열기, ${formatRookieMeta(item)}`;
+}
+
+function buildRadarPartialSections(snapshot: RadarSnapshotModel): string[] {
+  const sections = new Set<string>();
+
+  if (snapshot.featuredUpcoming && !snapshot.featuredUpcoming.upcoming.releaseLabel) {
+    sections.add('가장 가까운 컴백');
+  }
+
+  if (snapshot.weeklyUpcoming.some((item) => !item.upcoming.confidence)) {
+    sections.add('이번 주 예정');
+  }
+
+  if (snapshot.changeFeed.some((item) => !item.sourceUrl)) {
+    sections.add('일정 변경');
+  }
+
+  if (snapshot.longGap.some((item) => !item.latestRelease)) {
+    sections.add('장기 공백 레이더');
+  }
+
+  if (snapshot.rookie.some((item) => !item.latestRelease)) {
+    sections.add('루키 레이더');
+  }
+
+  return [...sections];
+}
+
+function resolveRadarDataState(
+  source: ActiveMobileDataset,
+  partialSections: string[],
+): 'default' | 'partial' | 'degraded' {
+  if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
+    return 'degraded';
+  }
+
+  if (partialSections.length > 0) {
+    return 'partial';
+  }
+
+  return 'default';
+}
+
+function buildRadarDegradedBody(source: ActiveMobileDataset): string {
+  const issueSummary =
+    source.issues.length > 0 ? ` 현재 상태: ${source.issues.join(' / ')}.` : '';
+  return `최근 데이터 동기화가 완전하지 않아 일부 레이더 정보만 표시됩니다.${issueSummary} 다시 시도해 최신 상태를 확인하세요.`;
+}
+
+function buildRadarPartialBody(partialSections: string[]): string {
+  if (partialSections.length === 1) {
+    return `${partialSections[0]} 섹션은 아직 일부 정보만 표시됩니다. 가능한 범위 안에서 최소 카드만 유지합니다.`;
+  }
+
+  return `${partialSections.join(', ')} 섹션은 아직 일부 정보만 표시됩니다. 가능한 범위 안에서 최소 카드만 유지합니다.`;
 }
 
 export default function RadarTabScreen() {
@@ -116,10 +177,15 @@ export default function RadarTabScreen() {
           }
         }
 
+        const snapshot = selectRadarSnapshot(source.dataset, todayIsoDate);
+        const partialSections = buildRadarPartialSections(snapshot);
+
         setState({
           kind: 'ready',
           source,
-          snapshot: selectRadarSnapshot(source.dataset, todayIsoDate),
+          snapshot,
+          dataState: resolveRadarDataState(source, partialSections),
+          partialSections,
         });
       })
       .catch((error: unknown) => {
@@ -191,6 +257,7 @@ export default function RadarTabScreen() {
         action={{
           label: '다시 시도',
           onPress: () => setReloadCount((count) => count + 1),
+          testID: 'radar-error-retry',
         }}
         body={state.message}
         eyebrow="LOAD ERROR"
@@ -200,7 +267,7 @@ export default function RadarTabScreen() {
     );
   }
 
-  const { snapshot, source } = state;
+  const { dataState, partialSections, snapshot, source } = state;
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
@@ -239,6 +306,27 @@ export default function RadarTabScreen() {
           </Pressable>
         </View>
       </View>
+
+      {dataState === 'degraded' ? (
+        <InlineFeedbackNotice
+          action={{
+            label: '다시 시도',
+            onPress: () => setReloadCount((count) => count + 1),
+            testID: 'radar-degraded-retry',
+          }}
+          body={buildRadarDegradedBody(source)}
+          testID="radar-degraded-notice"
+          title="발매 후 정보 보강 중"
+        />
+      ) : null}
+
+      {partialSections.length > 0 ? (
+        <InlineFeedbackNotice
+          body={buildRadarPartialBody(partialSections)}
+          testID="radar-partial-notice"
+          title="일부 정보만 표시됩니다."
+        />
+      ) : null}
 
       <View style={styles.summaryStrip}>
         <View style={styles.summaryCard}>
