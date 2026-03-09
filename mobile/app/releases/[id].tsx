@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Image,
   Pressable,
@@ -26,6 +26,11 @@ import {
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
 } from '../../src/services/handoff';
+import {
+  trackAnalyticsEvent,
+  trackDatasetDegraded,
+  trackDatasetLoadFailed,
+} from '../../src/services/analytics';
 import { useAppTheme } from '../../src/tokens/theme';
 import type { MobileTheme } from '../../src/tokens/theme';
 import type { ReleaseDetailModel, TrackModel, YoutubeVideoStatus } from '../../src/types';
@@ -230,6 +235,7 @@ export default function ReleaseDetailScreen() {
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const [state, setState] = useState<ReleaseDetailScreenState>({ kind: 'loading' });
+  const datasetEventKeyRef = useRef<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -253,6 +259,17 @@ export default function ReleaseDetailScreen() {
           return;
         }
 
+        const datasetEventKey =
+          source.runtimeState.mode === 'degraded' || source.issues.length > 0
+            ? `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`
+            : `ready:${source.selection.kind}`;
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
+            trackDatasetDegraded('release_detail', source);
+          }
+        }
+
         const detail = selectReleaseDetailById(source.dataset, releaseId);
         if (!detail) {
           setState({
@@ -273,12 +290,19 @@ export default function ReleaseDetailScreen() {
           return;
         }
 
+        const message =
+          error instanceof Error
+            ? error.message
+            : '릴리즈 상세 데이터를 불러오지 못했습니다.';
+        const datasetEventKey = `error:${message}`;
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          trackDatasetLoadFailed('release_detail', message);
+        }
+
         setState({
           kind: 'error',
-          message:
-            error instanceof Error
-              ? error.message
-              : '릴리즈 상세 데이터를 불러오지 못했습니다.',
+          message,
         });
       });
 
@@ -290,7 +314,20 @@ export default function ReleaseDetailScreen() {
   async function handleHandoff(
     handoff: ServiceHandoffResolution | ServiceHandoffFailure,
   ) {
+    trackAnalyticsEvent('service_handoff_attempted', {
+      surface: 'release_detail',
+      service: handoff.service,
+      mode: handoff.mode,
+    });
     const result = await openServiceHandoff(handoff);
+    trackAnalyticsEvent('service_handoff_completed', {
+      surface: 'release_detail',
+      service: result.service,
+      mode: result.mode,
+      ok: result.ok,
+      target: result.target ?? null,
+      failureCode: result.ok ? null : result.code,
+    });
 
     if (!result.ok) {
       setHandoffFeedback(result.feedback.message);

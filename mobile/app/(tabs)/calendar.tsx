@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Modal,
   Pressable,
@@ -32,6 +32,11 @@ import {
   loadActiveMobileDataset,
   type ActiveMobileDataset,
 } from '../../src/services/activeDataset';
+import {
+  trackAnalyticsEvent,
+  trackDatasetDegraded,
+  trackDatasetLoadFailed,
+} from '../../src/services/analytics';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   CalendarDayBadgeKind,
@@ -167,6 +172,16 @@ function moveMonthKey(month: string, offset: number): string {
   return buildMonthKey(next);
 }
 
+function getSelectedDayCounts(snapshot: CalendarMonthSnapshotModel, isoDate: string): {
+  releaseCount: number;
+  upcomingCount: number;
+} {
+  return {
+    releaseCount: snapshot.releases.filter((release) => release.releaseDate === isoDate).length,
+    upcomingCount: snapshot.exactUpcoming.filter((event) => event.scheduledDate === isoDate).length,
+  };
+}
+
 function getBadgePalette(
   theme: ReturnType<typeof useAppTheme>,
   kind: CalendarDayBadgeKind,
@@ -208,6 +223,7 @@ export default function CalendarTabScreen() {
   const [selectedDayIso, setSelectedDayIso] = useState<string | null>(routeState.selectedDayIso);
   const [isSheetOpen, setIsSheetOpen] = useState(routeState.isSheetOpen);
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const datasetEventKeyRef = useRef<string | null>(null);
 
   useEffect(() => {
     setActiveMonth(routeState.activeMonth);
@@ -231,6 +247,17 @@ export default function CalendarTabScreen() {
           return;
         }
 
+        const datasetEventKey =
+          source.runtimeState.mode === 'degraded' || source.issues.length > 0
+            ? `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`
+            : `ready:${source.selection.kind}`;
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
+            trackDatasetDegraded('calendar', source);
+          }
+        }
+
         const snapshot = selectCalendarMonthSnapshot(source.dataset, activeMonth, todayIsoDate);
         const nextKind =
           snapshot.releaseCount === 0 && snapshot.upcomingCount === 0 ? 'empty' : 'ready';
@@ -246,12 +273,19 @@ export default function CalendarTabScreen() {
           return;
         }
 
+        const message =
+          error instanceof Error
+            ? error.message
+            : 'Calendar dataset could not be loaded right now.';
+        const datasetEventKey = `error:${message}`;
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          trackDatasetLoadFailed('calendar', message);
+        }
+
         setState({
           kind: 'error',
-          message:
-            error instanceof Error
-              ? error.message
-              : 'Calendar dataset could not be loaded right now.',
+          message,
         });
       });
 
@@ -344,22 +378,55 @@ export default function CalendarTabScreen() {
   }
 
   function jumpToToday() {
+    trackAnalyticsEvent('calendar_quick_jump_used', {
+      target: 'today',
+      fromMonth: activeMonth,
+      toMonth: currentMonth,
+    });
     setFilterMode('all');
     jumpToMonth(currentMonth, todayIsoDate);
   }
 
   function jumpToNearestUpcoming() {
-    if (!globalNearestUpcoming?.scheduledDate) {
+    if (!source || !globalNearestUpcoming?.scheduledDate) {
       return;
     }
 
+    const nextMonth = globalNearestUpcoming.scheduledDate.slice(0, 7);
+    const baseSnapshot = selectCalendarMonthSnapshot(source.dataset, nextMonth, todayIsoDate);
+    const nextSnapshot = applyCalendarFilter(baseSnapshot, 'all');
+    const counts = getSelectedDayCounts(nextSnapshot, globalNearestUpcoming.scheduledDate);
+
+    trackAnalyticsEvent('calendar_quick_jump_used', {
+      target: 'nearest_upcoming',
+      fromMonth: activeMonth,
+      toMonth: nextMonth,
+    });
+    trackAnalyticsEvent('calendar_date_drill_opened', {
+      date: globalNearestUpcoming.scheduledDate,
+      source: 'nearest_upcoming',
+      filterMode: 'all',
+      releaseCount: counts.releaseCount,
+      upcomingCount: counts.upcomingCount,
+    });
     setFilterMode('all');
-    setActiveMonth(globalNearestUpcoming.scheduledDate.slice(0, 7));
+    setActiveMonth(nextMonth);
     setSelectedDayIso(globalNearestUpcoming.scheduledDate);
     setIsSheetOpen(true);
   }
 
-  function openDaySheet(isoDate: string) {
+  function openDaySheet(isoDate: string, sourceLabel: 'grid' | 'nearest_upcoming' = 'grid') {
+    if (filteredSnapshot) {
+      const counts = getSelectedDayCounts(filteredSnapshot, isoDate);
+      trackAnalyticsEvent('calendar_date_drill_opened', {
+        date: isoDate,
+        source: sourceLabel,
+        filterMode,
+        releaseCount: counts.releaseCount,
+        upcomingCount: counts.upcomingCount,
+      });
+    }
+
     setSelectedDayIso((current) =>
       resolveNextCalendarSelection(
         current ?? isoDate,
@@ -372,6 +439,18 @@ export default function CalendarTabScreen() {
 
   function closeDaySheet() {
     setIsSheetOpen(false);
+  }
+
+  function handleFilterChange(nextFilterMode: CalendarFilterMode) {
+    if (filterMode === nextFilterMode || !filteredSnapshot) {
+      return;
+    }
+
+    trackAnalyticsEvent('calendar_filter_changed', {
+      filterMode: nextFilterMode,
+      month: filteredSnapshot.month,
+    });
+    setFilterMode(nextFilterMode);
   }
 
   if (state.kind === 'loading') {
@@ -530,7 +609,7 @@ export default function CalendarTabScreen() {
                 accessibilityLabel={`${label} 필터`}
                 accessibilityRole="button"
                 accessibilityState={{ selected: filterMode === mode }}
-                onPress={() => setFilterMode(mode)}
+                onPress={() => handleFilterChange(mode)}
                 style={({ pressed }) => [
                   styles.controlChip,
                   filterMode === mode ? styles.controlChipActive : null,

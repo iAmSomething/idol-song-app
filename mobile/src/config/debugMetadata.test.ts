@@ -1,5 +1,6 @@
 import type { MobileRuntimeConfig, RuntimeConfigState } from './runtime';
 import { getDebugMetadata, isDebugMetadataAvailable } from './debugMetadata';
+import { resetAnalyticsEvents, trackAnalyticsEvent } from '../services/analytics';
 
 const previewRuntimeConfig: MobileRuntimeConfig = {
   profile: 'preview',
@@ -35,7 +36,43 @@ const previewRuntimeState: RuntimeConfigState = {
 };
 
 describe('debug metadata helpers', () => {
+  let consoleInfoSpy: jest.SpyInstance;
+
+  beforeAll(() => {
+    consoleInfoSpy = jest.spyOn(console, 'info').mockImplementation(() => undefined);
+  });
+
+  beforeEach(() => {
+    resetAnalyticsEvents();
+  });
+
+  afterAll(() => {
+    consoleInfoSpy.mockRestore();
+  });
+
   test('returns the stable debug metadata fields for preview builds', () => {
+    trackAnalyticsEvent(
+      'dataset_degraded',
+      {
+        surface: 'search',
+        activeSource: 'bundled-static',
+        runtimeMode: 'normal',
+        issueCount: 1,
+      },
+      {
+        ...previewRuntimeConfig,
+        services: {
+          ...previewRuntimeConfig.services,
+          analyticsWriteKey: 'write-key',
+        },
+        featureGates: {
+          ...previewRuntimeConfig.featureGates,
+          analytics: true,
+        },
+      },
+      () => '2026-03-09T00:00:00.000Z',
+    );
+
     expect(getDebugMetadata(previewRuntimeState)).toEqual({
       profile: 'preview',
       runtimeMode: 'normal',
@@ -47,6 +84,8 @@ describe('debug metadata helpers', () => {
       remoteDatasetUrl: 'https://example.com/dataset.json',
       analyticsEnabled: false,
       radarEnabled: true,
+      analyticsEventCount: 1,
+      latestAnalyticsEvent: 'dataset_degraded @ 2026-03-09T00:00:00.000Z',
     });
   });
 

@@ -37,7 +37,7 @@
 - `src/config/runtime.ts`
   - 앱 런타임에서 쓰는 validated config accessor
 - `src/config/debugMetadata.ts`
-  - debug-only build version / dataset version / commit hash helper
+  - debug-only build version / dataset version / commit hash / recent analytics event helper
 - `src/config/featureGates.ts`
   - gate registry / helper / off fallback definition
 - `src/services/datasetSource.ts`
@@ -54,6 +54,8 @@
   - search recent-query persistence helper
 - `src/services/handoff.ts`
   - canonical-open / search-fallback / browser-fallback handoff service layer
+- `src/services/analytics.ts`
+  - env-gated mobile analytics event registry + low-noise debug event buffer
 - `src/components/feedback/FeedbackState.tsx`
   - shared loading / empty / error / retry state components
 - `src/tokens/`

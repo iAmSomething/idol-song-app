@@ -22,6 +22,7 @@
   - `datasetCache.ts`: static dataset artifact cache entry helper
   - `recentQueries.ts`: recent-query persistence helper
   - `handoff.ts`: canonical-open / search-fallback / browser-fallback resolver + opener
+  - `analytics.ts`: env-gated event emitter + debug recent-event buffer
 - `tokens/`: design token / theme
   - `theme.tsx`: theme provider + `useAppTheme()` access convention
   - `colors.ts`, `spacing.ts`, `radii.ts`, `typography.ts`, `sizes.ts`, `elevation.ts`, `motion.ts`
@@ -44,6 +45,12 @@ handoff 관련 규칙:
 - later UI는 raw `Linking.openURL`을 직접 호출하지 않는다.
 - canonical URL validation, search fallback URL builder, browser fallback choice는 `services/handoff.ts`에서 중앙화한다.
 - 실패는 explicit result object로 돌려서 UI가 toast/inline feedback을 붙일 수 있게 한다.
+
+analytics 관련 규칙:
+
+- analytics는 `featureGates.analytics`가 꺼져 있으면 아무 이벤트도 내보내지 않는다.
+- search submit / date drill-in / service handoff / degraded-or-error dataset state만 low-noise 기준으로 추적한다.
+- 최근 이벤트 확인은 `config/debugMetadata.ts`와 hidden `debug/metadata` route를 통해서만 한다.
 
 feedback state 관련 규칙:
 

@@ -3,20 +3,22 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { getDebugMetadata, isDebugMetadataAvailable } from '../../src/config/debugMetadata';
 
-const metadata = getDebugMetadata();
-const rows = [
-  ['Profile', metadata.profile],
-  ['Runtime mode', metadata.runtimeMode],
-  ['Runtime issues', metadata.runtimeIssues.length > 0 ? metadata.runtimeIssues.join(' | ') : 'None'],
-  ['Build version', metadata.buildVersion],
-  ['Dataset version', metadata.datasetVersion ?? 'Unavailable'],
-  ['Commit hash', metadata.commitSha ?? 'Unavailable'],
-  ['Data source mode', metadata.dataSourceMode],
-  ['Remote dataset URL', metadata.remoteDatasetUrl ?? 'Bundled-only'],
-];
-
 export default function DebugMetadataScreen() {
   const available = isDebugMetadataAvailable();
+  const metadata = getDebugMetadata();
+  const rows = [
+    ['Profile', metadata.profile],
+    ['Runtime mode', metadata.runtimeMode],
+    ['Runtime issues', metadata.runtimeIssues.length > 0 ? metadata.runtimeIssues.join(' | ') : 'None'],
+    ['Build version', metadata.buildVersion],
+    ['Dataset version', metadata.datasetVersion ?? 'Unavailable'],
+    ['Commit hash', metadata.commitSha ?? 'Unavailable'],
+    ['Data source mode', metadata.dataSourceMode],
+    ['Remote dataset URL', metadata.remoteDatasetUrl ?? 'Bundled-only'],
+    ['Analytics enabled', metadata.analyticsEnabled ? 'Yes' : 'No'],
+    ['Analytics event count', `${metadata.analyticsEventCount}`],
+    ['Latest analytics event', metadata.latestAnalyticsEvent ?? 'None'],
+  ] as const;
 
   return (
     <View style={styles.container}>
