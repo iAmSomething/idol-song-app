@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-1cd14845"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-1cd14845",
+      "release_title": "From KickFlip, To WeFlip",
+      "release_date": "2026-01-20",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/41e161d0-e355-479c-849f-b2a63f68fb00/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/41e161d0-e355-479c-849f-b2a63f68fb00/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/41e161d0-e355-479c-849f-b2a63f68fb00"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/4VtPAHPKZD2KEgtlkG7zP1"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Hyper Slide",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Good Night",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 2 tracks. Canonical links: Spotify."
+  }
+}

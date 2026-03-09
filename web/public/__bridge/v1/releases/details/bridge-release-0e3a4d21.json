@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-0e3a4d21"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-0e3a4d21",
+      "release_title": "One More Time",
+      "release_date": "2017-10-13",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "One More Time",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=HuoOEry-Yc4",
+      "video_id": "HuoOEry-Yc4",
+      "status": "manual_override",
+      "provenance": "manual review priority slice: official TWICE JAPAN Music Video"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Release detail metadata was supplied explicitly from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN single release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN Music Video)."
+  }
+}

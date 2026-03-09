@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-04bc88fa"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-04bc88fa",
+      "release_title": "原",
+      "release_date": "2026-01-20",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/4qTTzaU30PLhLJmD6lLzFm"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Grenade",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "STOP & MOVE",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "When you're close to me",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify."
+  }
+}

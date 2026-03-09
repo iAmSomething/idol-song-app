@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-ac78c230"
+  },
+  "data": {
+    "release_id": "bridge-release-cdc4c130",
+    "canonical_path": "/artists/itzy/releases/cheshire?date=2022-11-30&stream=album"
+  }
+}

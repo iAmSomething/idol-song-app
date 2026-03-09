@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-922b2fab"
+  },
+  "data": {
+    "release_id": "bridge-release-60837bea",
+    "canonical_path": "/artists/blitzers/releases/check-in?date=2021-05-12&stream=album"
+  }
+}

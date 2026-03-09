@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-f9f38c66"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-f9f38c66",
+      "release_title": "[RESCENE X ???]",
+      "release_date": "2026-02-27",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/4f3f5594-e38f-4e46-bef1-2d2cfc28182e/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/4f3f5594-e38f-4e46-bef1-2d2cfc28182e/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/4f3f5594-e38f-4e46-bef1-2d2cfc28182e"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/0dbuXh0XcMsrgQsVep3jAk"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Busy boy",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Busy boy - inst.",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 2 tracks. Canonical links: Spotify."
+  }
+}

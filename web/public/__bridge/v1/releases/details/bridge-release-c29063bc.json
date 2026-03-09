@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-c29063bc"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-c29063bc",
+      "release_title": "MAZE : AD ASTRA",
+      "release_date": "2025-10-07",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_lWqLPlxJLMnYXeuhba-DKq1WnxY_BnVPc"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Lucky 12",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "MAZE",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "UFO",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Hide & Seek",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Trace",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Diary",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Beyond the Storm",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=9LPigw3hDAo",
+      "video_id": "9LPigw3hDAo",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-ec83b6be"
+  },
+  "data": {
+    "release_id": "bridge-release-cbb2efde",
+    "canonical_path": "/artists/day6/releases/sunrise?date=2017-06-07&stream=album"
+  }
+}

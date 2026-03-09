@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-f97cc4af"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-f97cc4af",
+      "release_title": "Where love passed",
+      "release_date": "2025-07-14",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/bc14070e-4c6f-44c9-bf30-ae20b6d44b96/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/bc14070e-4c6f-44c9-bf30-ae20b6d44b96/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/bc14070e-4c6f-44c9-bf30-ae20b6d44b96"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Where love passed",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+  }
+}

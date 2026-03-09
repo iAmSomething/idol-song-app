@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-abee972e"
+  },
+  "data": {
+    "release_id": "bridge-release-dda864ce",
+    "canonical_path": "/artists/pow/releases/sunset?date=2024-09-23&stream=song"
+  }
+}

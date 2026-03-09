@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-4ebe0e05"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-4ebe0e05",
+      "release_title": "Back to Life",
+      "release_date": "2025-10-28",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/7g35iam7Zn7Kwc1ZpkWD8c"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Back to Life",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Lunatic",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "MISMATCH",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Rush",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Heartbreak Time Machine",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Who am I",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=KqE0P1qMtQg",
+      "video_id": "KqE0P1qMtQg",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

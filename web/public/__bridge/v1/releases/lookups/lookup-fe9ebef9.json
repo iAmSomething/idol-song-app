@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-fe9ebef9"
+  },
+  "data": {
+    "release_id": "bridge-release-2df9fe19",
+    "canonical_path": "/artists/bts/releases/film-out?date=2021-04-01&stream=song"
+  }
+}

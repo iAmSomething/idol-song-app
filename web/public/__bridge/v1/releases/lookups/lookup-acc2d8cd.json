@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-acc2d8cd"
+  },
+  "data": {
+    "release_id": "bridge-release-cedc8e94",
+    "canonical_path": "/artists/exo/releases/exist?date=2023-07-10&stream=album"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-c47db643"
+  },
+  "data": {
+    "release_id": "bridge-release-d5df6fa3",
+    "canonical_path": "/artists/viviz/releases/various?date=2023-01-31&stream=album"
+  }
+}

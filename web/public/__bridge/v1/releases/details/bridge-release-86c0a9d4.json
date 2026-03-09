@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-86c0a9d4"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-86c0a9d4",
+      "release_title": "SPAGHETTI",
+      "release_date": "2025-10-24",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/8fecf07e-3715-4df4-9f47-1f7204f71b94/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/8fecf07e-3715-4df4-9f47-1f7204f71b94/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/8fecf07e-3715-4df4-9f47-1f7204f71b94"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/2yUrwTLHDWBrW74Ewuw6RX"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_lxCP144fHdRRfP4oo-UCdSWmax9sP58Pk"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "SPAGHETTI",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Pearlies (My oyster is the world)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "SPAGHETTI (Member ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "SPAGHETTI (English ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "SPAGHETTI",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Pearlies (My oyster is the world)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "SPAGHETTI (Member ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "SPAGHETTI (English ver.)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 8 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-028b87ed"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-028b87ed",
+      "release_title": "トキメティック",
+      "release_date": "2026-02-05",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/e55e3345-ef7c-44f3-9b99-a25b06df7cf8/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/e55e3345-ef7c-44f3-9b99-a25b06df7cf8/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/e55e3345-ef7c-44f3-9b99-a25b06df7cf8"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "トキメティック",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "トキメティック Shin Sakiura Remix",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "トキメティック TV Edit",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-71cee768"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-71cee768",
+      "release_title": "BRUISE",
+      "release_date": "2026-01-28",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/7ede4c86-fc66-46fd-86ac-90062118583d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/7ede4c86-fc66-46fd-86ac-90062118583d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/7ede4c86-fc66-46fd-86ac-90062118583d"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/0Hnt6Uo4wPdBvh0Yb4oSrI"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "BRUISE",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=WxL5cNNelLk",
+      "video_id": "WxL5cNNelLk",
+      "status": "manual_override",
+      "provenance": "official artist channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+  }
+}

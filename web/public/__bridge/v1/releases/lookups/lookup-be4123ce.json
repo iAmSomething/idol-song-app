@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-be4123ce"
+  },
+  "data": {
+    "release_id": "bridge-release-ffae99f3",
+    "canonical_path": "/artists/kard/releases/oh-nana?date=2016-12-13&stream=song"
+  }
+}

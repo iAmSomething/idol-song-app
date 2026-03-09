@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-fba4f0c6"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-fba4f0c6",
+      "release_title": "Visionary Vision <Performante>",
+      "release_date": "2024-10-23",
+      "stream": "album",
+      "release_kind": "album"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseHistory.placeholder_seed"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-d9024303"
+  },
+  "data": {
+    "release_id": "bridge-release-38e54002",
+    "canonical_path": "/artists/ive/releases/ive-secret?date=2025-08-25&stream=album"
+  }
+}

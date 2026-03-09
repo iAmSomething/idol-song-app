@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-b2ea6c37"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-b2ea6c37",
+      "release_title": "THE SIN : VANISH",
+      "release_date": "2026-01-16",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/4h3umvQDxwVMlZ7Adtc8Ad"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_njsgSSx9YXXGmw3r9acFuNqIU6UYzm0sQ"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "The Beginning",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "No Way Back",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "The Fugitives",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Knife",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Stealer",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "The Voice",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Witnesses",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Big Girls Don't Cry",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Lost Island",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Sleep Tight",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "The Beyond",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 11 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

@@ -1,0 +1,349 @@
+{
+  "meta": {
+    "request_id": "bridge-calendar-2025-11"
+  },
+  "data": {
+    "summary": {
+      "verified_count": 15,
+      "exact_upcoming_count": 0,
+      "month_only_upcoming_count": 0
+    },
+    "nearest_upcoming": null,
+    "days": [
+      {
+        "date": "2025-11-03",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-0ed778d0",
+            "entity_slug": "tempest",
+            "display_name": "TEMPEST",
+            "release_title": "In the Dark (暮色独白)",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-11-03"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-11-04",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-c749de66",
+            "entity_slug": "kiiikiii",
+            "display_name": "KiiiKiii",
+            "release_title": "To Me From Me",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-11-04"
+          },
+          {
+            "release_id": "bridge-release-08bc4e9c",
+            "entity_slug": "fifty-fifty",
+            "display_name": "FIFTY FIFTY",
+            "release_title": "Too Much Part 1",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-11-04"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-11-05",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-85618949",
+            "entity_slug": "kiss-of-life",
+            "display_name": "KISS OF LIFE",
+            "release_title": "TOKYO MISSION START",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-11-05"
+          },
+          {
+            "release_id": "bridge-release-01bddd03",
+            "entity_slug": "xlov",
+            "display_name": "XLOV",
+            "release_title": "UXLXVE",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-11-05"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-11-06",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-bb17fa35",
+            "entity_slug": "stray-kids",
+            "display_name": "Stray Kids",
+            "release_title": "In The Dark",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-11-06"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-11-10",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-57522170",
+            "entity_slug": "plave",
+            "display_name": "PLAVE",
+            "release_title": "PLBBUU",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-11-10"
+          },
+          {
+            "release_id": "bridge-release-f69afaa6",
+            "entity_slug": "itzy",
+            "display_name": "ITZY",
+            "release_title": "TUNNEL VISION",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-11-10"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-11-16",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-33664d2c",
+            "entity_slug": "purple-kiss",
+            "display_name": "Purple Kiss",
+            "release_title": "A Violet to Remember",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-11-16"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-11-17",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-d4861367",
+            "entity_slug": "nct-dream",
+            "display_name": "NCT DREAM",
+            "release_title": "Beat It Up",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-11-17"
+          },
+          {
+            "release_id": "bridge-release-0279c073",
+            "entity_slug": "ateez",
+            "display_name": "ATEEZ",
+            "release_title": "Choose",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-11-17"
+          },
+          {
+            "release_id": "bridge-release-4a0f6974",
+            "entity_slug": "aespa",
+            "display_name": "aespa",
+            "release_title": "SYNK : aeXIS LINE",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-11-17"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-11-21",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-9a2b64fc",
+            "entity_slug": "stray-kids",
+            "display_name": "Stray Kids",
+            "release_title": "DO IT",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-11-21"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-11-24",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-1dc20751",
+            "entity_slug": "triples",
+            "display_name": "tripleS",
+            "release_title": "msnz <Beyond Beauty>",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-11-24"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-11-25",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-d0b07928",
+            "entity_slug": "rescene",
+            "display_name": "RESCENE",
+            "release_title": "lip bomb",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-11-25"
+          }
+        ],
+        "exact_upcoming": []
+      }
+    ],
+    "month_only_upcoming": [],
+    "verified_list": [
+      {
+        "release_id": "bridge-release-0ed778d0",
+        "entity_slug": "tempest",
+        "display_name": "TEMPEST",
+        "release_title": "In the Dark (暮色独白)",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-11-03"
+      },
+      {
+        "release_id": "bridge-release-c749de66",
+        "entity_slug": "kiiikiii",
+        "display_name": "KiiiKiii",
+        "release_title": "To Me From Me",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-11-04"
+      },
+      {
+        "release_id": "bridge-release-08bc4e9c",
+        "entity_slug": "fifty-fifty",
+        "display_name": "FIFTY FIFTY",
+        "release_title": "Too Much Part 1",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-11-04"
+      },
+      {
+        "release_id": "bridge-release-85618949",
+        "entity_slug": "kiss-of-life",
+        "display_name": "KISS OF LIFE",
+        "release_title": "TOKYO MISSION START",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-11-05"
+      },
+      {
+        "release_id": "bridge-release-01bddd03",
+        "entity_slug": "xlov",
+        "display_name": "XLOV",
+        "release_title": "UXLXVE",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-11-05"
+      },
+      {
+        "release_id": "bridge-release-bb17fa35",
+        "entity_slug": "stray-kids",
+        "display_name": "Stray Kids",
+        "release_title": "In The Dark",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-11-06"
+      },
+      {
+        "release_id": "bridge-release-57522170",
+        "entity_slug": "plave",
+        "display_name": "PLAVE",
+        "release_title": "PLBBUU",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-11-10"
+      },
+      {
+        "release_id": "bridge-release-f69afaa6",
+        "entity_slug": "itzy",
+        "display_name": "ITZY",
+        "release_title": "TUNNEL VISION",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-11-10"
+      },
+      {
+        "release_id": "bridge-release-33664d2c",
+        "entity_slug": "purple-kiss",
+        "display_name": "Purple Kiss",
+        "release_title": "A Violet to Remember",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-11-16"
+      },
+      {
+        "release_id": "bridge-release-d4861367",
+        "entity_slug": "nct-dream",
+        "display_name": "NCT DREAM",
+        "release_title": "Beat It Up",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-11-17"
+      },
+      {
+        "release_id": "bridge-release-0279c073",
+        "entity_slug": "ateez",
+        "display_name": "ATEEZ",
+        "release_title": "Choose",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-11-17"
+      },
+      {
+        "release_id": "bridge-release-4a0f6974",
+        "entity_slug": "aespa",
+        "display_name": "aespa",
+        "release_title": "SYNK : aeXIS LINE",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-11-17"
+      },
+      {
+        "release_id": "bridge-release-9a2b64fc",
+        "entity_slug": "stray-kids",
+        "display_name": "Stray Kids",
+        "release_title": "DO IT",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-11-21"
+      },
+      {
+        "release_id": "bridge-release-1dc20751",
+        "entity_slug": "triples",
+        "display_name": "tripleS",
+        "release_title": "msnz <Beyond Beauty>",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-11-24"
+      },
+      {
+        "release_id": "bridge-release-d0b07928",
+        "entity_slug": "rescene",
+        "display_name": "RESCENE",
+        "release_title": "lip bomb",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-11-25"
+      }
+    ],
+    "scheduled_list": []
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-fe701980"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-fe701980",
+      "release_title": "a;effect",
+      "release_date": "2025-07-28",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/ad2aabda-8449-449b-ab23-76e57f7857ee/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/ad2aabda-8449-449b-ab23-76e57f7857ee/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/ad2aabda-8449-449b-ab23-76e57f7857ee"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3NLbROSjvh9Qo0Esb3aTX0"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Stylish",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Talk",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "You and I",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "함께라서 눈부셨던, 서툴지만 아름다운 (Constellation)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "AURA",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+  }
+}

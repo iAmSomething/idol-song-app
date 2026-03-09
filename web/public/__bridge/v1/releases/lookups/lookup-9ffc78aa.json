@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-9ffc78aa"
+  },
+  "data": {
+    "release_id": "bridge-release-c6161e25",
+    "canonical_path": "/artists/tiot/releases/my-pride?date=2025-09-23&stream=album"
+  }
+}

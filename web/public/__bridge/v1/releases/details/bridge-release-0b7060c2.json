@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-0b7060c2"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-0b7060c2",
+      "release_title": "Head Shoulders Knees Toes",
+      "release_date": "2025-09-22",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/2ebe300e-b96c-4678-8bb8-03a0e3a32262/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/2ebe300e-b96c-4678-8bb8-03a0e3a32262/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/2ebe300e-b96c-4678-8bb8-03a0e3a32262"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3D8vj2pQwvS2tIzgmgAuZN"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Head Shoulders Knees Toes",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

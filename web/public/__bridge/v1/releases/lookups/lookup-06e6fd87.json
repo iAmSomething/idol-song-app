@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-06e6fd87"
+  },
+  "data": {
+    "release_id": "bridge-release-a3e5a306",
+    "canonical_path": "/artists/exo/releases/exact?date=2016-06-09&stream=album"
+  }
+}

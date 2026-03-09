@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-be3e34ad"
+  },
+  "data": {
+    "release_id": "bridge-release-2582fd8a",
+    "canonical_path": "/artists/bts/releases/run?date=2016-03-15&stream=song"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-84119c6c"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-84119c6c",
+      "release_title": "DEADLINE",
+      "release_date": "2026-02-27",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "JUMP",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "GO",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "Me and my",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Champion",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Fxxxboy",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
+      "video_id": "2GJfWMYCWY0",
+      "status": "manual_override",
+      "provenance": "official artist channel watch URL"
+    },
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+  }
+}

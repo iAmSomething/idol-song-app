@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-d9bf8f39"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-d9bf8f39",
+      "release_title": "GOLDEN HOUR : Part.4",
+      "release_date": "2026-02-06",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/8072d29d-f779-404e-b5cc-0cc01e442444/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/8072d29d-f779-404e-b5cc-0cc01e442444/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/8072d29d-f779-404e-b5cc-0cc01e442444"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/1FBxW4I6azDVjGallQ4wQk"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_nZhevv94ART20ZjqYs_TTKb1oCyyreWL8"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Ghost",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Adrenaline",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "NASA",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "On the Road",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Choose",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify, YouTube Music."
+  }
+}

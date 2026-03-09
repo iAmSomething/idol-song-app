@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-3c421f67"
+  },
+  "data": {
+    "release_id": "bridge-release-e6df3b67",
+    "canonical_path": "/artists/qwer/releases/fake-idol?date=2024-09-02&stream=song"
+  }
+}

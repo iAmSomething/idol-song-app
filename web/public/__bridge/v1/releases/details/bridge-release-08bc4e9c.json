@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-08bc4e9c"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-08bc4e9c",
+      "release_title": "Too Much Part 1",
+      "release_date": "2025-11-04",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/0spXOvUlUo1EUDs13nlXki"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "가위바위보 (Eeny meeny miny moe)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Skittlez",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "가위바위보 (Eeny meeny miny moe) (Eng ver.)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 3 tracks. Canonical links: Spotify."
+  }
+}

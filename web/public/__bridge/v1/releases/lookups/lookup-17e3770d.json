@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-17e3770d"
+  },
+  "data": {
+    "release_id": "bridge-release-db3e39be",
+    "canonical_path": "/artists/pow/releases/favorite?date=2023-10-11&stream=album"
+  }
+}

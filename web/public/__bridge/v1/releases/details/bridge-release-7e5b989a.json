@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-7e5b989a"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-7e5b989a",
+      "release_title": "FiRE (My Sweet Misery)",
+      "release_date": "2025-07-07",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/a59a689a-c57f-4691-8ef0-c87e5fd2b418/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/a59a689a-c57f-4691-8ef0-c87e5fd2b418/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/a59a689a-c57f-4691-8ef0-c87e5fd2b418"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/6ZqZFhhTiwscyLwyoEq8ku"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "FiRE (My Sweet Misery)",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

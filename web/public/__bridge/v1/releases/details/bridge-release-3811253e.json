@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-3811253e"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-3811253e",
+      "release_title": "I'm Home",
+      "release_date": "2025-12-13",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "/release-placeholder.svg",
+      "thumbnail_image_url": "/release-placeholder.svg",
+      "artwork_source_type": "placeholder",
+      "artwork_source_url": "/release-placeholder.svg"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "I'm Home",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=7hTbNeHqGD8",
+      "video_id": "7hTbNeHqGD8",
+      "status": "relation_match",
+      "provenance": "musicbrainz relation url-rels"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+  }
+}

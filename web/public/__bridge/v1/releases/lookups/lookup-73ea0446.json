@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-73ea0446"
+  },
+  "data": {
+    "release_id": "bridge-release-25b08ae7",
+    "canonical_path": "/artists/h1-key/releases/run?date=2022-07-06&stream=album"
+  }
+}

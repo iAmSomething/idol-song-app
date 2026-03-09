@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-545188dd"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-545188dd",
+      "release_title": "All of You",
+      "release_date": "2026-02-09",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/2BOIZjVSfiQDntgqzE94PI"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "All of You",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

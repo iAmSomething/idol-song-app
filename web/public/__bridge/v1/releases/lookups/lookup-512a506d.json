@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-512a506d"
+  },
+  "data": {
+    "release_id": "bridge-release-a3131d9e",
+    "canonical_path": "/artists/tnx/releases/for-real?date=2025-03-26&stream=album"
+  }
+}

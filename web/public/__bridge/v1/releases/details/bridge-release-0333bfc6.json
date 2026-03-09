@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-0333bfc6"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-0333bfc6",
+      "release_title": "White Memories",
+      "release_date": "2025-12-02",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/8ceecddf-94b4-40a4-b77a-592fae34fc65/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/8ceecddf-94b4-40a4-b77a-592fae34fc65/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/8ceecddf-94b4-40a4-b77a-592fae34fc65"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/4vnA4ZWgxrhxy5doVCGv9u"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "White Memories",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=5ZB9JLfIw_Q",
+      "video_id": "5ZB9JLfIw_Q",
+      "status": "manual_override",
+      "provenance": "official artist channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+  }
+}

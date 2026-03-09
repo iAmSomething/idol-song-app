@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a9ae50e2"
+  },
+  "data": {
+    "release_id": "bridge-release-bebd28a5",
+    "canonical_path": "/artists/twice/releases/like-1?date=2025-08-20&stream=song"
+  }
+}

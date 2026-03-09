@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-6d5a3672"
+  },
+  "data": {
+    "release_id": "bridge-release-6a2783d2",
+    "canonical_path": "/artists/triples/releases/nxt-just-do-it?date=2023-12-23&stream=song"
+  }
+}

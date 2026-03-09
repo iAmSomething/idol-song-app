@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-2e744394"
+  },
+  "data": {
+    "release_id": "bridge-release-481b16f4",
+    "canonical_path": "/artists/tempest/releases/bang?date=2024-04-03&stream=album"
+  }
+}

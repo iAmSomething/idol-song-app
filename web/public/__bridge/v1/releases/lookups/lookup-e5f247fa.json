@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-e5f247fa"
+  },
+  "data": {
+    "release_id": "bridge-release-139ce69d",
+    "canonical_path": "/artists/itzy/releases/collector?date=2025-10-08&stream=album"
+  }
+}

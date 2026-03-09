@@ -1,0 +1,505 @@
+{
+  "meta": {
+    "request_id": "bridge-calendar-2025-10"
+  },
+  "data": {
+    "summary": {
+      "verified_count": 22,
+      "exact_upcoming_count": 0,
+      "month_only_upcoming_count": 0
+    },
+    "nearest_upcoming": null,
+    "days": [
+      {
+        "date": "2025-10-03",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-7f1ba53a",
+            "entity_slug": "g-i-dle",
+            "display_name": "(G)I-DLE",
+            "release_title": "i‐dle",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-03"
+          },
+          {
+            "release_id": "bridge-release-2bd60dea",
+            "entity_slug": "bae173",
+            "display_name": "BAE173",
+            "release_title": "What’s wrong?",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-10-03"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-06",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-3c174317",
+            "entity_slug": "qwer",
+            "display_name": "QWER",
+            "release_title": "흰수염고래",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-10-06"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-07",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-c29063bc",
+            "entity_slug": "onewe",
+            "display_name": "ONEWE",
+            "release_title": "MAZE : AD ASTRA",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-07"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-10",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-4c8b4c59",
+            "entity_slug": "twice",
+            "display_name": "TWICE",
+            "release_title": "TEN: The Story Goes On",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2025-10-10"
+          },
+          {
+            "release_id": "bridge-release-249e9350",
+            "entity_slug": "babymonster",
+            "display_name": "BABYMONSTER",
+            "release_title": "WE GO UP",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-10"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-13",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-5ce164ce",
+            "entity_slug": "nmixx",
+            "display_name": "NMIXX",
+            "release_title": "Blue Valentine",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2025-10-13"
+          },
+          {
+            "release_id": "bridge-release-847f5cf9",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "release_title": "play hard",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-13"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-14",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-133a9652",
+            "entity_slug": "meovv",
+            "display_name": "MEOVV",
+            "release_title": "BURNING UP",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-10-14"
+          },
+          {
+            "release_id": "bridge-release-2cc442bb",
+            "entity_slug": "bae173",
+            "display_name": "BAE173",
+            "release_title": "NEW CHAPTER : DESEAR",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-14"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-19",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-f57f5dd6",
+            "entity_slug": "tomorrow-x-together",
+            "display_name": "TOMORROW X TOGETHER",
+            "release_title": "Starkissed",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2025-10-19"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-20",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-efebb904",
+            "entity_slug": "hearts2hearts",
+            "display_name": "Hearts2Hearts",
+            "release_title": "FOCUS",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-20"
+          },
+          {
+            "release_id": "bridge-release-35b7b742",
+            "entity_slug": "boynextdoor",
+            "display_name": "BOYNEXTDOOR",
+            "release_title": "The Action",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-20"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-23",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-77e6d1c9",
+            "entity_slug": "dkb",
+            "display_name": "DKB",
+            "release_title": "Emotion",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-23"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-24",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-23082ccf",
+            "entity_slug": "xdinary-heroes",
+            "display_name": "Xdinary Heroes",
+            "release_title": "LXVE to DEATH",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-24"
+          },
+          {
+            "release_id": "bridge-release-86c0a9d4",
+            "entity_slug": "le-sserafim",
+            "display_name": "LE SSERAFIM",
+            "release_title": "SPAGHETTI",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-10-24"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-27",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-41990c50",
+            "entity_slug": "tempest",
+            "display_name": "TEMPEST",
+            "release_title": "As I am",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-27"
+          },
+          {
+            "release_id": "bridge-release-c64e81c0",
+            "entity_slug": "nexz",
+            "display_name": "NEXZ",
+            "release_title": "Beat‐Boxer",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-27"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-28",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-4ebe0e05",
+            "entity_slug": "and-team",
+            "display_name": "&TEAM",
+            "release_title": "Back to Life",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-28"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-29",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-30ee2568",
+            "entity_slug": "wei",
+            "display_name": "WEi",
+            "release_title": "Wonderland",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-29"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-30",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-79214dae",
+            "entity_slug": "82major",
+            "display_name": "82MAJOR",
+            "release_title": "Trophy",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-30"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-10-31",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-b2d5f966",
+            "entity_slug": "xikers",
+            "display_name": "xikers",
+            "release_title": "HOUSE OF TRICKY : WRECKING THE HOUSE",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-10-31"
+          }
+        ],
+        "exact_upcoming": []
+      }
+    ],
+    "month_only_upcoming": [],
+    "verified_list": [
+      {
+        "release_id": "bridge-release-7f1ba53a",
+        "entity_slug": "g-i-dle",
+        "display_name": "(G)I-DLE",
+        "release_title": "i‐dle",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-03"
+      },
+      {
+        "release_id": "bridge-release-2bd60dea",
+        "entity_slug": "bae173",
+        "display_name": "BAE173",
+        "release_title": "What’s wrong?",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-10-03"
+      },
+      {
+        "release_id": "bridge-release-3c174317",
+        "entity_slug": "qwer",
+        "display_name": "QWER",
+        "release_title": "흰수염고래",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-10-06"
+      },
+      {
+        "release_id": "bridge-release-c29063bc",
+        "entity_slug": "onewe",
+        "display_name": "ONEWE",
+        "release_title": "MAZE : AD ASTRA",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-07"
+      },
+      {
+        "release_id": "bridge-release-4c8b4c59",
+        "entity_slug": "twice",
+        "display_name": "TWICE",
+        "release_title": "TEN: The Story Goes On",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2025-10-10"
+      },
+      {
+        "release_id": "bridge-release-249e9350",
+        "entity_slug": "babymonster",
+        "display_name": "BABYMONSTER",
+        "release_title": "WE GO UP",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-10"
+      },
+      {
+        "release_id": "bridge-release-5ce164ce",
+        "entity_slug": "nmixx",
+        "display_name": "NMIXX",
+        "release_title": "Blue Valentine",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2025-10-13"
+      },
+      {
+        "release_id": "bridge-release-847f5cf9",
+        "entity_slug": "tws",
+        "display_name": "TWS",
+        "release_title": "play hard",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-13"
+      },
+      {
+        "release_id": "bridge-release-133a9652",
+        "entity_slug": "meovv",
+        "display_name": "MEOVV",
+        "release_title": "BURNING UP",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-10-14"
+      },
+      {
+        "release_id": "bridge-release-2cc442bb",
+        "entity_slug": "bae173",
+        "display_name": "BAE173",
+        "release_title": "NEW CHAPTER : DESEAR",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-14"
+      },
+      {
+        "release_id": "bridge-release-f57f5dd6",
+        "entity_slug": "tomorrow-x-together",
+        "display_name": "TOMORROW X TOGETHER",
+        "release_title": "Starkissed",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2025-10-19"
+      },
+      {
+        "release_id": "bridge-release-efebb904",
+        "entity_slug": "hearts2hearts",
+        "display_name": "Hearts2Hearts",
+        "release_title": "FOCUS",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-20"
+      },
+      {
+        "release_id": "bridge-release-35b7b742",
+        "entity_slug": "boynextdoor",
+        "display_name": "BOYNEXTDOOR",
+        "release_title": "The Action",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-20"
+      },
+      {
+        "release_id": "bridge-release-77e6d1c9",
+        "entity_slug": "dkb",
+        "display_name": "DKB",
+        "release_title": "Emotion",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-23"
+      },
+      {
+        "release_id": "bridge-release-23082ccf",
+        "entity_slug": "xdinary-heroes",
+        "display_name": "Xdinary Heroes",
+        "release_title": "LXVE to DEATH",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-24"
+      },
+      {
+        "release_id": "bridge-release-86c0a9d4",
+        "entity_slug": "le-sserafim",
+        "display_name": "LE SSERAFIM",
+        "release_title": "SPAGHETTI",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-10-24"
+      },
+      {
+        "release_id": "bridge-release-41990c50",
+        "entity_slug": "tempest",
+        "display_name": "TEMPEST",
+        "release_title": "As I am",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-27"
+      },
+      {
+        "release_id": "bridge-release-c64e81c0",
+        "entity_slug": "nexz",
+        "display_name": "NEXZ",
+        "release_title": "Beat‐Boxer",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-27"
+      },
+      {
+        "release_id": "bridge-release-4ebe0e05",
+        "entity_slug": "and-team",
+        "display_name": "&TEAM",
+        "release_title": "Back to Life",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-28"
+      },
+      {
+        "release_id": "bridge-release-30ee2568",
+        "entity_slug": "wei",
+        "display_name": "WEi",
+        "release_title": "Wonderland",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-29"
+      },
+      {
+        "release_id": "bridge-release-79214dae",
+        "entity_slug": "82major",
+        "display_name": "82MAJOR",
+        "release_title": "Trophy",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-30"
+      },
+      {
+        "release_id": "bridge-release-b2d5f966",
+        "entity_slug": "xikers",
+        "display_name": "xikers",
+        "release_title": "HOUSE OF TRICKY : WRECKING THE HOUSE",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-10-31"
+      }
+    ],
+    "scheduled_list": []
+  }
+}

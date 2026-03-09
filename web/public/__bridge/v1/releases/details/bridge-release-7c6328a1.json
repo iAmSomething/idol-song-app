@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-7c6328a1"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-7c6328a1",
+      "release_title": "Wall Flowers",
+      "release_date": "2025-09-29",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/a77ad515-51b9-4bef-a0dc-786a8b55f783/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/a77ad515-51b9-4bef-a0dc-786a8b55f783/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/a77ad515-51b9-4bef-a0dc-786a8b55f783"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Wall Flowers",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+  }
+}

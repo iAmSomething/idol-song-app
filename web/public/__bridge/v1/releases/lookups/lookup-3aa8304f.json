@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-3aa8304f"
+  },
+  "data": {
+    "release_id": "bridge-release-caae2dee",
+    "canonical_path": "/artists/triples/releases/assemble?date=2023-02-13&stream=album"
+  }
+}

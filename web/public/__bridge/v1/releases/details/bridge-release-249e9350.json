@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-249e9350"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-249e9350",
+      "release_title": "WE GO UP",
+      "release_date": "2025-10-10",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_ki16_Lh3p19WqZ8SgTPuGd3Vl96qmbBfE"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "WE GO UP",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "PSYCHO",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "SUPA DUPA LUV",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "WILD",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=wlHwjkYpSr0",
+      "video_id": "wlHwjkYpSr0",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

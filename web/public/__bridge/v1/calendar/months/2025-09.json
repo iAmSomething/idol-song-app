@@ -1,0 +1,355 @@
+{
+  "meta": {
+    "request_id": "bridge-calendar-2025-09"
+  },
+  "data": {
+    "summary": {
+      "verified_count": 15,
+      "exact_upcoming_count": 0,
+      "month_only_upcoming_count": 0
+    },
+    "nearest_upcoming": null,
+    "days": [
+      {
+        "date": "2025-09-01",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-3ea4b955",
+            "entity_slug": "treasure",
+            "display_name": "TREASURE",
+            "release_title": "LOVE PULSE",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-01"
+          },
+          {
+            "release_id": "bridge-release-ab381dfe",
+            "entity_slug": "monsta-x",
+            "display_name": "MONSTA X",
+            "release_title": "THE X",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-01"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-05",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-c6f0ed89",
+            "entity_slug": "aespa",
+            "display_name": "aespa",
+            "release_title": "Rich Man",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-05"
+          },
+          {
+            "release_id": "bridge-release-83a150d6",
+            "entity_slug": "day6",
+            "display_name": "DAY6",
+            "release_title": "The DECADE",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2025-09-05"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-08",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-cd90eeb6",
+            "entity_slug": "cix",
+            "display_name": "CIX",
+            "release_title": "GO Chapter 1: GO Together",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-08"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-09",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-57727b83",
+            "entity_slug": "all-h-ours",
+            "display_name": "ALL(H)OURS",
+            "release_title": "VCF",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-09"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-15",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-5e0b7312",
+            "entity_slug": "badvillain",
+            "display_name": "BADVILLAIN",
+            "release_title": "THRILLER",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-09-15"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-17",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-77380a3b",
+            "entity_slug": "lun8",
+            "display_name": "LUN8",
+            "release_title": "LOST",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-09-17"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-22",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-0b7060c2",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "release_title": "Head Shoulders Knees Toes",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-09-22"
+          },
+          {
+            "release_id": "bridge-release-9480876a",
+            "entity_slug": "kickflip",
+            "display_name": "KickFlip",
+            "release_title": "My First Flip",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-22"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-23",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-c6161e25",
+            "entity_slug": "tiot",
+            "display_name": "TIOT",
+            "release_title": "MY PRIDE",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-23"
+          },
+          {
+            "release_id": "bridge-release-d749394a",
+            "entity_slug": "the-kingdom",
+            "display_name": "The KingDom",
+            "release_title": "the flower of the moon",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-23"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-26",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-21435ec8",
+            "entity_slug": "p1harmony",
+            "display_name": "P1Harmony",
+            "release_title": "EX",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-26"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-29",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-7c6328a1",
+            "entity_slug": "pow",
+            "display_name": "POW",
+            "release_title": "Wall Flowers",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-09-29"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-09-30",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-e391408c",
+            "entity_slug": "izna",
+            "display_name": "izna",
+            "release_title": "Not Just Pretty",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-09-30"
+          }
+        ],
+        "exact_upcoming": []
+      }
+    ],
+    "month_only_upcoming": [],
+    "verified_list": [
+      {
+        "release_id": "bridge-release-3ea4b955",
+        "entity_slug": "treasure",
+        "display_name": "TREASURE",
+        "release_title": "LOVE PULSE",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-01"
+      },
+      {
+        "release_id": "bridge-release-ab381dfe",
+        "entity_slug": "monsta-x",
+        "display_name": "MONSTA X",
+        "release_title": "THE X",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-01"
+      },
+      {
+        "release_id": "bridge-release-c6f0ed89",
+        "entity_slug": "aespa",
+        "display_name": "aespa",
+        "release_title": "Rich Man",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-05"
+      },
+      {
+        "release_id": "bridge-release-83a150d6",
+        "entity_slug": "day6",
+        "display_name": "DAY6",
+        "release_title": "The DECADE",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2025-09-05"
+      },
+      {
+        "release_id": "bridge-release-cd90eeb6",
+        "entity_slug": "cix",
+        "display_name": "CIX",
+        "release_title": "GO Chapter 1: GO Together",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-08"
+      },
+      {
+        "release_id": "bridge-release-57727b83",
+        "entity_slug": "all-h-ours",
+        "display_name": "ALL(H)OURS",
+        "release_title": "VCF",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-09"
+      },
+      {
+        "release_id": "bridge-release-5e0b7312",
+        "entity_slug": "badvillain",
+        "display_name": "BADVILLAIN",
+        "release_title": "THRILLER",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-09-15"
+      },
+      {
+        "release_id": "bridge-release-77380a3b",
+        "entity_slug": "lun8",
+        "display_name": "LUN8",
+        "release_title": "LOST",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-09-17"
+      },
+      {
+        "release_id": "bridge-release-0b7060c2",
+        "entity_slug": "tws",
+        "display_name": "TWS",
+        "release_title": "Head Shoulders Knees Toes",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-09-22"
+      },
+      {
+        "release_id": "bridge-release-9480876a",
+        "entity_slug": "kickflip",
+        "display_name": "KickFlip",
+        "release_title": "My First Flip",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-22"
+      },
+      {
+        "release_id": "bridge-release-c6161e25",
+        "entity_slug": "tiot",
+        "display_name": "TIOT",
+        "release_title": "MY PRIDE",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-23"
+      },
+      {
+        "release_id": "bridge-release-d749394a",
+        "entity_slug": "the-kingdom",
+        "display_name": "The KingDom",
+        "release_title": "the flower of the moon",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-23"
+      },
+      {
+        "release_id": "bridge-release-21435ec8",
+        "entity_slug": "p1harmony",
+        "display_name": "P1Harmony",
+        "release_title": "EX",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-26"
+      },
+      {
+        "release_id": "bridge-release-7c6328a1",
+        "entity_slug": "pow",
+        "display_name": "POW",
+        "release_title": "Wall Flowers",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-09-29"
+      },
+      {
+        "release_id": "bridge-release-e391408c",
+        "entity_slug": "izna",
+        "display_name": "izna",
+        "release_title": "Not Just Pretty",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-09-30"
+      }
+    ],
+    "scheduled_list": []
+  }
+}

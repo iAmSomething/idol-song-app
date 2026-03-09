@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-67c60a68"
+  },
+  "data": {
+    "release_id": "bridge-release-08b1d391",
+    "canonical_path": "/artists/triples/releases/lovelution?date=2023-08-17&stream=album"
+  }
+}

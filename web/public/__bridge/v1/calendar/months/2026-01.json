@@ -1,0 +1,319 @@
+{
+  "meta": {
+    "request_id": "bridge-calendar-2026-01"
+  },
+  "data": {
+    "summary": {
+      "verified_count": 13,
+      "exact_upcoming_count": 0,
+      "month_only_upcoming_count": 0
+    },
+    "nearest_upcoming": null,
+    "days": [
+      {
+        "date": "2026-01-05",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-30d1c702",
+            "entity_slug": "h1-key",
+            "display_name": "H1-KEY",
+            "release_title": "세상은 영화 같지 않더라",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-01-05"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-14",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-942632d1",
+            "entity_slug": "nct-wish",
+            "display_name": "NCT WISH",
+            "release_title": "WISHLIST",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-01-14"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-15",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-a6897094",
+            "entity_slug": "lightsum",
+            "display_name": "LIGHTSUM",
+            "release_title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-01-15"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-16",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-b2ea6c37",
+            "entity_slug": "enhypen",
+            "display_name": "ENHYPEN",
+            "release_title": "THE SIN : VANISH",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-01-16"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-19",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-2cdc535c",
+            "entity_slug": "exo",
+            "display_name": "EXO",
+            "release_title": "REVERXE",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2026-01-19"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-20",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-1cd14845",
+            "entity_slug": "kickflip",
+            "display_name": "KickFlip",
+            "release_title": "From KickFlip, To WeFlip",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-01-20"
+          },
+          {
+            "release_id": "bridge-release-04bc88fa",
+            "entity_slug": "oneus",
+            "display_name": "ONEUS",
+            "release_title": "原",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-01-20"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-22",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-963ed118",
+            "entity_slug": "tnx",
+            "display_name": "TNX",
+            "release_title": "CALL ME BACK",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-01-22"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-23",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-edddbc21",
+            "entity_slug": "zerobaseone",
+            "display_name": "ZEROBASEONE",
+            "release_title": "ROSES",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-01-23"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-25",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-a25411fa",
+            "entity_slug": "kiiikiii",
+            "display_name": "KiiiKiii",
+            "release_title": "Delulu Pack",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-01-25"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-27",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-7aab6710",
+            "entity_slug": "g-i-dle",
+            "display_name": "(G)I-DLE",
+            "release_title": "Mono",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-01-27"
+          },
+          {
+            "release_id": "bridge-release-0905f19f",
+            "entity_slug": "young-posse",
+            "display_name": "YOUNG POSSE",
+            "release_title": "VISA / Pilot3",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-01-27"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-28",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-71cee768",
+            "entity_slug": "8turn",
+            "display_name": "8TURN",
+            "release_title": "BRUISE",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-01-28"
+          }
+        ],
+        "exact_upcoming": []
+      }
+    ],
+    "month_only_upcoming": [],
+    "verified_list": [
+      {
+        "release_id": "bridge-release-30d1c702",
+        "entity_slug": "h1-key",
+        "display_name": "H1-KEY",
+        "release_title": "세상은 영화 같지 않더라",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-01-05"
+      },
+      {
+        "release_id": "bridge-release-942632d1",
+        "entity_slug": "nct-wish",
+        "display_name": "NCT WISH",
+        "release_title": "WISHLIST",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2026-01-14"
+      },
+      {
+        "release_id": "bridge-release-a6897094",
+        "entity_slug": "lightsum",
+        "display_name": "LIGHTSUM",
+        "release_title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-01-15"
+      },
+      {
+        "release_id": "bridge-release-b2ea6c37",
+        "entity_slug": "enhypen",
+        "display_name": "ENHYPEN",
+        "release_title": "THE SIN : VANISH",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2026-01-16"
+      },
+      {
+        "release_id": "bridge-release-2cdc535c",
+        "entity_slug": "exo",
+        "display_name": "EXO",
+        "release_title": "REVERXE",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2026-01-19"
+      },
+      {
+        "release_id": "bridge-release-1cd14845",
+        "entity_slug": "kickflip",
+        "display_name": "KickFlip",
+        "release_title": "From KickFlip, To WeFlip",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-01-20"
+      },
+      {
+        "release_id": "bridge-release-04bc88fa",
+        "entity_slug": "oneus",
+        "display_name": "ONEUS",
+        "release_title": "原",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-01-20"
+      },
+      {
+        "release_id": "bridge-release-963ed118",
+        "entity_slug": "tnx",
+        "display_name": "TNX",
+        "release_title": "CALL ME BACK",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-01-22"
+      },
+      {
+        "release_id": "bridge-release-edddbc21",
+        "entity_slug": "zerobaseone",
+        "display_name": "ZEROBASEONE",
+        "release_title": "ROSES",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-01-23"
+      },
+      {
+        "release_id": "bridge-release-a25411fa",
+        "entity_slug": "kiiikiii",
+        "display_name": "KiiiKiii",
+        "release_title": "Delulu Pack",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2026-01-25"
+      },
+      {
+        "release_id": "bridge-release-7aab6710",
+        "entity_slug": "g-i-dle",
+        "display_name": "(G)I-DLE",
+        "release_title": "Mono",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-01-27"
+      },
+      {
+        "release_id": "bridge-release-0905f19f",
+        "entity_slug": "young-posse",
+        "display_name": "YOUNG POSSE",
+        "release_title": "VISA / Pilot3",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-01-27"
+      },
+      {
+        "release_id": "bridge-release-71cee768",
+        "entity_slug": "8turn",
+        "display_name": "8TURN",
+        "release_title": "BRUISE",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-01-28"
+      }
+    ],
+    "scheduled_list": []
+  }
+}

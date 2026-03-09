@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-10bb7280"
+  },
+  "data": {
+    "release_id": "bridge-release-2a60fb5b",
+    "canonical_path": "/artists/twice/releases/signal?date=2017-05-15&stream=album"
+  }
+}

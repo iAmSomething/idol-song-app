@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-edcb15e7"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-edcb15e7",
+      "release_title": "[Dystopia : The Tree of Language]",
+      "release_date": "2020-02-18",
+      "stream": "album",
+      "release_kind": "album"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseHistory.placeholder_seed"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  }
+}

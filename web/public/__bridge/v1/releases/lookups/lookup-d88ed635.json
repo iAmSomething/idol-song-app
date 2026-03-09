@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-d88ed635"
+  },
+  "data": {
+    "release_id": "bridge-release-55d70cf2",
+    "canonical_path": "/artists/tws/releases/last-bell?date=2024-11-25&stream=song"
+  }
+}

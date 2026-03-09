@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-10a497e0"
+  },
+  "data": {
+    "release_id": "bridge-release-0e3a4d21",
+    "canonical_path": "/artists/twice/releases/one-more-time?date=2017-10-13&stream=song"
+  }
+}

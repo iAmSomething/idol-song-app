@@ -182,7 +182,7 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
   isFallback: boolean
 }
 
-type ReleaseDetailSourceState = 'api' | 'api_error'
+type ReleaseDetailSourceState = 'api' | 'bridge' | 'api_error'
 
 type ReleaseDetailLookupApiResponse = {
   data?: {
@@ -254,8 +254,8 @@ type ReleaseDetailApiRequest = {
 type SearchSourceState = 'api' | 'api_error'
 
 type EntityDetailSourceState = 'api' | 'api_error'
-type CalendarMonthSourceState = 'api' | 'api_error'
-type RadarSourceState = 'api' | 'api_error'
+type CalendarMonthSourceState = 'api' | 'bridge' | 'api_error'
+type RadarSourceState = 'api' | 'bridge' | 'api_error'
 
 type SearchApiEntityMatch = {
   entity_slug?: string
@@ -881,10 +881,11 @@ const TRANSLATIONS = {
     surfaceSourceLabel: '소스',
     surfaceReasonLabel: '이유',
     surfaceTraceLabel: '요청 ID',
-    surfaceSourceModeLabels: {
-      api: 'backend API',
-      api_error: 'backend API unavailable',
-    },
+      surfaceSourceModeLabels: {
+        api: 'backend API',
+        bridge: 'Pages read bridge',
+        api_error: 'backend API unavailable',
+      },
     surfaceFallbackReasonLabels: {
       timeout: '응답 시간 초과',
       network_error: '네트워크 오류',
@@ -1156,10 +1157,11 @@ const TRANSLATIONS = {
     surfaceSourceLabel: 'Source',
     surfaceReasonLabel: 'Reason',
     surfaceTraceLabel: 'Request ID',
-    surfaceSourceModeLabels: {
-      api: 'backend API',
-      api_error: 'backend API unavailable',
-    },
+      surfaceSourceModeLabels: {
+        api: 'backend API',
+        bridge: 'Pages read bridge',
+        api_error: 'backend API unavailable',
+      },
     surfaceFallbackReasonLabels: {
       timeout: 'timeout',
       network_error: 'network failure',
@@ -1684,7 +1686,9 @@ const dashboardStatusOptions = ['all', 'verified', 'confirmed', 'scheduled', 'ru
 const unitGroups = new Set(['ARTMS', 'NCT DREAM', 'NCT WISH', 'VIVIZ'])
 const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
 const AGENCY_UNKNOWN_FILTER = 'agency_unknown'
+const APP_BASE_URL = ((import.meta.env.BASE_URL ?? '/').trim() || '/').replace(/\/?$/, '/')
 const BACKEND_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '')
+const PAGES_READ_BRIDGE_BASE_URL = `${APP_BASE_URL.replace(/\/$/, '')}/__bridge/v1`
 const releaseDetailApiIdCache = new Map<string, string>()
 const releaseDetailApiSnapshotCache = new Map<string, ReleaseDetailApiSnapshot>()
 const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
@@ -6800,16 +6804,64 @@ function buildLocalReleaseDetailSnapshot(album: ReleaseDetailApiRequest, group: 
 }
 
 function buildReleaseDetailLookupUrl(album: ReleaseDetailApiRequest, group: string) {
+  const entitySlug = artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)
+  const stream = normalizeReleaseStream(album.stream, album.release_kind)
+
+  if (!BACKEND_API_BASE_URL) {
+    return buildPagesReadBridgeUrl(
+      `releases/lookups/${buildReleaseLookupBridgeAssetId(entitySlug, album.title, album.date, stream)}.json`,
+    )
+  }
+
   const params = new URLSearchParams()
-  params.set('entity_slug', artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group))
+  params.set('entity_slug', entitySlug)
   params.set('title', album.title)
   params.set('date', album.date)
-  params.set('stream', normalizeReleaseStream(album.stream, album.release_kind))
+  params.set('stream', stream)
   return `/v1/releases/lookup?${params.toString()}`
 }
 
 function buildBackendApiUrl(path: string) {
-  return BACKEND_API_BASE_URL ? `${BACKEND_API_BASE_URL}${path}` : path
+  if (BACKEND_API_BASE_URL) {
+    return `${BACKEND_API_BASE_URL}${path}`
+  }
+
+  if (path === '/v1/radar') {
+    return buildPagesReadBridgeUrl('radar.json')
+  }
+
+  if (path.startsWith('/v1/calendar/month?')) {
+    const monthKey = new URLSearchParams(path.split('?')[1] ?? '').get('month')
+    if (monthKey) {
+      return buildPagesReadBridgeUrl(`calendar/months/${encodeURIComponent(monthKey)}.json`)
+    }
+  }
+
+  const releaseDetailMatch = path.match(/^\/v1\/releases\/([^/?]+)$/)
+  if (releaseDetailMatch) {
+    return buildPagesReadBridgeUrl(`releases/details/${encodeURIComponent(releaseDetailMatch[1])}.json`)
+  }
+
+  return path
+}
+
+function buildPagesReadBridgeUrl(relativePath: string) {
+  return `${PAGES_READ_BRIDGE_BASE_URL}/${relativePath.replace(/^\/+/, '')}`
+}
+
+function buildReleaseLookupBridgeAssetId(entitySlug: string, releaseTitle: string, releaseDate: string, stream: string) {
+  return `lookup-${hashBridgeKey([entitySlug, releaseTitle, releaseDate, stream].join('::'))}`
+}
+
+function hashBridgeKey(value: string) {
+  let hash = 2166136261
+
+  for (const character of value) {
+    hash ^= character.charCodeAt(0)
+    hash = Math.imul(hash, 16777619)
+  }
+
+  return (hash >>> 0).toString(16).padStart(8, '0')
 }
 
 const SEARCH_SURFACE_TIMEOUT_MS = 4_000
@@ -7162,7 +7214,8 @@ function useReleaseDetailResource({
       : cachedSnapshot ?? fallbackSnapshot
   const loading = remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
-  const source: ReleaseDetailSourceState = activeSnapshot === fallbackSnapshot && errorCode ? 'api_error' : 'api'
+  const source: ReleaseDetailSourceState =
+    activeSnapshot === fallbackSnapshot && errorCode ? 'api_error' : BACKEND_API_BASE_URL ? 'api' : 'bridge'
 
   return {
     ...activeSnapshot,
@@ -7783,7 +7836,7 @@ function useCalendarMonthResource({
     remoteState.monthKey === monthKey ? remoteState.snapshot ?? cachedSnapshot ?? null : cachedSnapshot
   const loading = remoteState.monthKey === monthKey && remoteState.snapshot === null && remoteState.loading
   const errorCode = remoteState.monthKey === monthKey ? remoteState.errorCode : null
-  const source: CalendarMonthSourceState = errorCode ? 'api_error' : 'api'
+  const source: CalendarMonthSourceState = errorCode ? 'api_error' : BACKEND_API_BASE_URL ? 'api' : 'bridge'
 
   return {
     snapshot: activeSnapshot,
@@ -8102,7 +8155,7 @@ function useRadarSurfaceResource(): RadarSurfaceResource {
     }
   }, [cachedSnapshot])
 
-  const source: RadarSourceState = remoteState.errorCode ? 'api_error' : 'api'
+  const source: RadarSourceState = remoteState.errorCode ? 'api_error' : BACKEND_API_BASE_URL ? 'api' : 'bridge'
 
   return {
     snapshot: remoteState.snapshot ?? cachedSnapshot ?? null,

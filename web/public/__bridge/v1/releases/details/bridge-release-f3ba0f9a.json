@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-f3ba0f9a"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-f3ba0f9a",
+      "release_title": "宵 -YOI-",
+      "release_date": "2025-07-27",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/79df3384-8d5c-45fa-b53d-8f173e4a5171/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/79df3384-8d5c-45fa-b53d-8f173e4a5171/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/79df3384-8d5c-45fa-b53d-8f173e4a5171"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3SbFks7Ke2crP3O0RpfDEF"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Shine on Me",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Echoes",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Bad Desire (With or Without You) (Japanese Ver.)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=HmAtJr0Mhh4",
+      "video_id": "HmAtJr0Mhh4",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

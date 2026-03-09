@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-62f59950"
+  },
+  "data": {
+    "release_id": "bridge-release-aa79876b",
+    "canonical_path": "/artists/dkb/releases/love?date=2020-05-25&stream=album"
+  }
+}

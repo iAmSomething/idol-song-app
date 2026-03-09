@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-c6f0ed89"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-c6f0ed89",
+      "release_title": "Rich Man",
+      "release_date": "2025-09-05",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/f014b273-c609-4f05-9c72-f3ff93a4c25b/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/f014b273-c609-4f05-9c72-f3ff93a4c25b/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/f014b273-c609-4f05-9c72-f3ff93a4c25b"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Rich Man",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Drift",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Bubble",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Count on Me",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Angel #48",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "To the Girls",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=5oQVTnq-UKk",
+      "video_id": "5oQVTnq-UKk",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

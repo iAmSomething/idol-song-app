@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-ae4b3a0d"
+  },
+  "data": {
+    "release_id": "bridge-release-6eca4357",
+    "canonical_path": "/artists/bts/releases/release?date=2017-05-10&stream=song"
+  }
+}

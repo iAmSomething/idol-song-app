@@ -223,6 +223,7 @@ npm run dev
 - committed JSON snapshot은 import/parity/debug artifact로 유지되지만, shipped web cut-over surface의 runtime source switch로는 더 이상 사용하지 않는다.
 - `web/.env.example`에는 Pages / preview rehearsal에서 쓰는 API base env baseline이 들어 있다.
 - `.github/workflows/deploy-pages.yml`은 GitHub repository variable `VITE_API_BASE_URL`을 읽을 수 있게 열려 있다.
+- `npm run build`는 Pages read bridge(`web/public/__bridge/v1/**`)를 먼저 생성하고, deploy workflow도 `npm run verify:pages-read-bridge`로 known calendar/radar/release-detail regression을 gate로 막는다.
 
 ### 프로덕션 빌드
 

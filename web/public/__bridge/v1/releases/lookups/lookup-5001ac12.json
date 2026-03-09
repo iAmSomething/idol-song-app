@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-5001ac12"
+  },
+  "data": {
+    "release_id": "bridge-release-f6455552",
+    "canonical_path": "/artists/h1-key/releases/release?date=2024-05-10&stream=song"
+  }
+}

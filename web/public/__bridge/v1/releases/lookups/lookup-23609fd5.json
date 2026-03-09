@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-23609fd5"
+  },
+  "data": {
+    "release_id": "bridge-release-7647dbfc",
+    "canonical_path": "/artists/tempest/releases/my-way?date=2025-07-23&stream=song"
+  }
+}

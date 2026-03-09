@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-83a150d6"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-83a150d6",
+      "release_title": "The DECADE",
+      "release_date": "2025-09-05",
+      "stream": "album",
+      "release_kind": "album"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_llmEuUBbQC0ecOvO88e98YZ7j-P3-PbTI"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "꿈의 버스",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "INSIDE OUT",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "해야 뜨지 말아 줘",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Disco Day",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "My Way",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "별들 앞에서",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Take All My Heart",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "날아라! 드림라이더",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "드디어 끝나갑니다",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "우리의 계절",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz ALBUM seed with 10 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a52080d7"
+  },
+  "data": {
+    "release_id": "bridge-release-298a1b84",
+    "canonical_path": "/artists/infinite/releases/clock?date=2019-02-13&stream=song"
+  }
+}

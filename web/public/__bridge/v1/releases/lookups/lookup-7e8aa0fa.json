@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-7e8aa0fa"
+  },
+  "data": {
+    "release_id": "bridge-release-9c7054ba",
+    "canonical_path": "/artists/infinite/releases/24?date=2015-04-29&stream=song"
+  }
+}

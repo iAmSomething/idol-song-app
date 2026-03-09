@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-9b04c8c0"
+  },
+  "data": {
+    "release_id": "bridge-release-a9cb6420",
+    "canonical_path": "/artists/cravity/releases/cheese?date=2023-09-01&stream=song"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-7019d6f8"
+  },
+  "data": {
+    "release_id": "bridge-release-0c16dfa1",
+    "canonical_path": "/artists/triples/releases/evolution?date=2023-10-11&stream=album"
+  }
+}

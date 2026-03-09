@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-de48cae6"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-de48cae6",
+      "release_title": "Lovestruck",
+      "release_date": "2025-06-26",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/a9d2d1a0-f332-41be-b45a-5555d937a892/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/a9d2d1a0-f332-41be-b45a-5555d937a892/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/a9d2d1a0-f332-41be-b45a-5555d937a892"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/21oMWx3BnmfTOy2zqzxJwt"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Good for U",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Summer Was You",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "One, Two, Three, Four",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Let Me Be Your Sea",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Summer Was You (instrumental)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify."
+  }
+}

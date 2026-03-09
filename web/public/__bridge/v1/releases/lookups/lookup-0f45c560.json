@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-0f45c560"
+  },
+  "data": {
+    "release_id": "bridge-release-2a8c680d",
+    "canonical_path": "/artists/twice/releases/candy-pop?date=2018-01-12&stream=song"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-af544a14"
+  },
+  "data": {
+    "release_id": "bridge-release-4941fb14",
+    "canonical_path": "/artists/tiot/releases/find-the-way?date=2023-12-14&stream=song"
+  }
+}

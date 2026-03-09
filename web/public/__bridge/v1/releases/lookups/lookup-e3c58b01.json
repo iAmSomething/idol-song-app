@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-e3c58b01"
+  },
+  "data": {
+    "release_id": "bridge-release-840ff5f4",
+    "canonical_path": "/artists/yuju/releases/rewind?date=2023-08-16&stream=song"
+  }
+}

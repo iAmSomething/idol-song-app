@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-0beb1231"
+  },
+  "data": {
+    "release_id": "bridge-release-117b431e",
+    "canonical_path": "/artists/lightsum/releases/vanilla?date=2021-06-10&stream=song"
+  }
+}

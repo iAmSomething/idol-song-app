@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-32fab131"
+  },
+  "data": {
+    "release_id": "bridge-release-ba048bd1",
+    "canonical_path": "/artists/twice/releases/fake-and-true?date=2019-10-18&stream=song"
+  }
+}

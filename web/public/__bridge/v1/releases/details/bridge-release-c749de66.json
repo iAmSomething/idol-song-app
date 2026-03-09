@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-c749de66"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-c749de66",
+      "release_title": "To Me From Me",
+      "release_date": "2025-11-04",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/3964ffdb-8ba8-4b39-bc6a-b09d4d40d26d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/3964ffdb-8ba8-4b39-bc6a-b09d4d40d26d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/3964ffdb-8ba8-4b39-bc6a-b09d4d40d26d"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "To Me From Me",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+  }
+}

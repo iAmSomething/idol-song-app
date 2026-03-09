@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-d5f63784"
+  },
+  "data": {
+    "release_id": "bridge-release-d1e4d477",
+    "canonical_path": "/artists/boynextdoor/releases/who?date=2023-05-30&stream=song"
+  }
+}

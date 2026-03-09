@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-2ec6b454"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-2ec6b454",
+      "release_title": "Lost and Found",
+      "release_date": "2025-12-01",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/4j6qWUx1OjrrR59XdT6gcU"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "RED (Beggin’)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "empty",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Blame us",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify."
+  }
+}

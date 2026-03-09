@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a71dc7f8"
+  },
+  "data": {
+    "release_id": "bridge-release-59bdd0f8",
+    "canonical_path": "/artists/tiot/releases/flex-line?date=2025-04-17&stream=album"
+  }
+}

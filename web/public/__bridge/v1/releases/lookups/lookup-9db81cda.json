@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-9db81cda"
+  },
+  "data": {
+    "release_id": "bridge-release-b97d9da3",
+    "canonical_path": "/artists/twice/releases/the-feels?date=2021-10-01&stream=song"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-1c01a35e"
+  },
+  "data": {
+    "release_id": "bridge-release-cb1657b1",
+    "canonical_path": "/artists/wjsn/releases/sequence?date=2022-07-05&stream=song"
+  }
+}

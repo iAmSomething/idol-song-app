@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-c07ec17b"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-c07ec17b",
+      "release_title": "REVIVE+",
+      "release_date": "2026-02-23",
+      "stream": "album",
+      "release_kind": "album"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_nO8Pcb0tAIwvqIb6on8b1QXJ1VhnHHgdE"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "BLACKHOLE",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "BANG BANG",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "숨바꼭질 (Hush)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "악성코드 (Stuck in Your Head)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Fireworks",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "HOT COFFEE",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "8",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Odd",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Super ICY",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Unreal",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "In Your Heart",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Force",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz ALBUM seed with 12 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

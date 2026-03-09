@@ -43,6 +43,10 @@ jobs:
         working-directory: web
         run: npm ci
 
+      - name: Verify Pages read bridge
+        working-directory: web
+        run: npm run verify:pages-read-bridge
+
       - name: Build site
         working-directory: web
         env:

@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-133a9652"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-133a9652",
+      "release_title": "BURNING UP",
+      "release_date": "2025-10-14",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "BURNING UP",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+  }
+}

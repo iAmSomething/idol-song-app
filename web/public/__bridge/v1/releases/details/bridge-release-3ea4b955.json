@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-3ea4b955"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-3ea4b955",
+      "release_title": "LOVE PULSE",
+      "release_date": "2025-09-01",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/a33fa122-f703-4e2d-8cf9-93f93c506dc5/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/a33fa122-f703-4e2d-8cf9-93f93c506dc5/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/a33fa122-f703-4e2d-8cf9-93f93c506dc5"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "EVERYTHING",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "PARADISE",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "NOW FOREVER",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "BETTER THAN ME",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 4 tracks."
+  }
+}

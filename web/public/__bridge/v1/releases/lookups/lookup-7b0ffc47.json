@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-7b0ffc47"
+  },
+  "data": {
+    "release_id": "bridge-release-6c666fe2",
+    "canonical_path": "/artists/onewe/releases/last-song?date=2018-09-27&stream=song"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-199dbf0d"
+  },
+  "data": {
+    "release_id": "bridge-release-aa81322a",
+    "canonical_path": "/artists/bts/releases/my-universe?date=2021-09-24&stream=song"
+  }
+}

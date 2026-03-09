@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-4f5bf4c0"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-4f5bf4c0",
+      "release_title": "From Our 20’s",
+      "release_date": "2025-06-25",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/8b4a8c41-9c53-4930-8c90-512bf8e56eee/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/8b4a8c41-9c53-4930-8c90-512bf8e56eee/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/8b4a8c41-9c53-4930-8c90-512bf8e56eee"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3jGURiEnUi4OoN879bBz0V"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_n6eo2k-wLicG711lFzFVY_XZPCzV07UJI"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "LIKE YOU BETTER",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "REBELUTIONAL",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Love=Disaster",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Strawberry Mimosa",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Twisted Love",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Merry Go Round",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

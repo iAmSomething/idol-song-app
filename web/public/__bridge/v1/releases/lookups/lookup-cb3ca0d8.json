@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-cb3ca0d8"
+  },
+  "data": {
+    "release_id": "bridge-release-cb3ca0d8",
+    "canonical_path": "/artists/cignature/releases/my-little-aurora?date=2023-01-17&stream=album"
+  }
+}

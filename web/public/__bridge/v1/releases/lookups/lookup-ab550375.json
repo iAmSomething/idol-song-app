@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-ab550375"
+  },
+  "data": {
+    "release_id": "bridge-release-d4553edc",
+    "canonical_path": "/artists/infinite/releases/top-seed?date=2018-01-08&stream=album"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-2bd60dea"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-2bd60dea",
+      "release_title": "What’s wrong?",
+      "release_date": "2025-10-03",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/c33d7fab-bcc5-4bc2-bd1b-f2a880b1504b/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/c33d7fab-bcc5-4bc2-bd1b-f2a880b1504b/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/c33d7fab-bcc5-4bc2-bd1b-f2a880b1504b"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "What’s wrong?",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=BtXk4dg7juw",
+      "video_id": "BtXk4dg7juw",
+      "status": "manual_override",
+      "provenance": "official artist channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+  }
+}

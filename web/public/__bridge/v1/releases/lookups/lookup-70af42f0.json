@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-70af42f0"
+  },
+  "data": {
+    "release_id": "bridge-release-510da650",
+    "canonical_path": "/artists/nomad/releases/nomad?date=2024-02-28&stream=album"
+  }
+}

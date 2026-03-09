@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-1c084602"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-1c084602",
+      "release_title": "growing pains",
+      "release_date": "2026-02-06",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/d77e44ee-aa20-498d-8606-db1f4ac5d481/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/d77e44ee-aa20-498d-8606-db1f4ac5d481/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/d77e44ee-aa20-498d-8606-db1f4ac5d481"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/6eH7d6D70X0IbAGHBFP9yj"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "growing pains",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

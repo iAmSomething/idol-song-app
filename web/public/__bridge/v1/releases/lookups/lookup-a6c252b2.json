@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a6c252b2"
+  },
+  "data": {
+    "release_id": "bridge-release-cb4836fb",
+    "canonical_path": "/artists/seventeen/releases/hit?date=2019-08-05&stream=song"
+  }
+}

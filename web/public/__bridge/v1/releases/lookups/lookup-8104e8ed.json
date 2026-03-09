@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-8104e8ed"
+  },
+  "data": {
+    "release_id": "bridge-release-d251e49e",
+    "canonical_path": "/artists/exo/releases/universe?date=2017-12-26&stream=album"
+  }
+}

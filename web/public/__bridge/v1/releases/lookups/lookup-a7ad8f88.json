@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a7ad8f88"
+  },
+  "data": {
+    "release_id": "bridge-release-3f55fc65",
+    "canonical_path": "/artists/twice/releases/perfect-world?date=2021-06-30&stream=song"
+  }
+}

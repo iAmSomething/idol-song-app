@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-d4861367"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-d4861367",
+      "release_title": "Beat It Up",
+      "release_date": "2025-11-17",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/7jd5hUsxFPUsM0dqfpRjmp"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_kmoOC0j8PL4v7z-W8wwq64_jv29sWPCmE"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Beat It Up",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Rush",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Cold Coffee",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Butterflies",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Tempo",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "TRICKY",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

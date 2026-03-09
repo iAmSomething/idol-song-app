@@ -1,4 +1,4 @@
-export type SurfaceStatusSource = 'api' | 'api_error'
+export type SurfaceStatusSource = 'api' | 'bridge' | 'api_error'
 export type SurfaceFallbackReasonKey =
   | 'timeout'
   | 'network_error'

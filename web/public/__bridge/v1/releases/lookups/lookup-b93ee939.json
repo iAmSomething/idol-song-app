@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-b93ee939"
+  },
+  "data": {
+    "release_id": "bridge-release-12c11db0",
+    "canonical_path": "/artists/tempest/releases/tempest-voyage?date=2024-03-11&stream=album"
+  }
+}

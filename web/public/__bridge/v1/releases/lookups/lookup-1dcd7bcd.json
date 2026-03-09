@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-1dcd7bcd"
+  },
+  "data": {
+    "release_id": "bridge-release-316c8dea",
+    "canonical_path": "/artists/ive/releases/all-night?date=2024-01-19&stream=song"
+  }
+}

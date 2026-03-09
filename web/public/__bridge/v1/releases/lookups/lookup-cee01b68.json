@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-cee01b68"
+  },
+  "data": {
+    "release_id": "bridge-release-060680d5",
+    "canonical_path": "/artists/tws/releases/bloom?date=2025-06-01&stream=song"
+  }
+}

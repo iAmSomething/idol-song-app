@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-f669325d"
+  },
+  "data": {
+    "release_id": "bridge-release-4658a29c",
+    "canonical_path": "/artists/btob/releases/one?date=2018-06-17&stream=song"
+  }
+}

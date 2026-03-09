@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-8be3e499"
+  },
+  "data": {
+    "release_id": "bridge-release-42a8a490",
+    "canonical_path": "/artists/seventeen/releases/semicolon?date=2020-10-19&stream=album"
+  }
+}

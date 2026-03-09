@@ -1,0 +1,295 @@
+{
+  "meta": {
+    "request_id": "bridge-calendar-2025-08"
+  },
+  "data": {
+    "summary": {
+      "verified_count": 12,
+      "exact_upcoming_count": 0,
+      "month_only_upcoming_count": 0
+    },
+    "nearest_upcoming": null,
+    "days": [
+      {
+        "date": "2025-08-01",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-5af259a3",
+            "entity_slug": "xikers",
+            "display_name": "xikers",
+            "release_title": "ICONIC",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-08-01"
+          },
+          {
+            "release_id": "bridge-release-ccf5e024",
+            "entity_slug": "say-my-name",
+            "display_name": "SAY MY NAME",
+            "release_title": "iLy",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-08-01"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-08-03",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-b86a9d0e",
+            "entity_slug": "onf",
+            "display_name": "ONF",
+            "release_title": "Summer Light",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-08-03"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-08-04",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-b86b86be",
+            "entity_slug": "evnne",
+            "display_name": "EVNNE",
+            "release_title": "LOVE ANECDOTE(S)",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-08-04"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-08-12",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-0dd5aaee",
+            "entity_slug": "ampers-and-one",
+            "display_name": "AMPERS&ONE",
+            "release_title": "LOUD & PROUD",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-08-12"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-08-13",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-6f97d914",
+            "entity_slug": "atheart",
+            "display_name": "AtHeart",
+            "release_title": "Plot Twist",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-08-13"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-08-14",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-1a6dfa6c",
+            "entity_slug": "young-posse",
+            "display_name": "YOUNG POSSE",
+            "release_title": "Growing Pain pt.1 : FREE",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-08-14"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-08-19",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-09d947aa",
+            "entity_slug": "kep1er",
+            "display_name": "Kep1er",
+            "release_title": "BUBBLE GUM",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-08-19"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-08-20",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-738412c6",
+            "entity_slug": "boynextdoor",
+            "display_name": "BOYNEXTDOOR",
+            "release_title": "BOYLIFE",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-08-20"
+          },
+          {
+            "release_id": "bridge-release-bebd28a5",
+            "entity_slug": "twice",
+            "display_name": "TWICE",
+            "release_title": "Like 1",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-08-20"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-08-22",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-3e8e236b",
+            "entity_slug": "fifty-fifty",
+            "display_name": "FIFTY FIFTY",
+            "release_title": "TAKE MY HAND",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-08-22"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-08-31",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-8cd4445d",
+            "entity_slug": "purple-kiss",
+            "display_name": "Purple Kiss",
+            "release_title": "OUR NOW",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2025-08-31"
+          }
+        ],
+        "exact_upcoming": []
+      }
+    ],
+    "month_only_upcoming": [],
+    "verified_list": [
+      {
+        "release_id": "bridge-release-5af259a3",
+        "entity_slug": "xikers",
+        "display_name": "xikers",
+        "release_title": "ICONIC",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-08-01"
+      },
+      {
+        "release_id": "bridge-release-ccf5e024",
+        "entity_slug": "say-my-name",
+        "display_name": "SAY MY NAME",
+        "release_title": "iLy",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-08-01"
+      },
+      {
+        "release_id": "bridge-release-b86a9d0e",
+        "entity_slug": "onf",
+        "display_name": "ONF",
+        "release_title": "Summer Light",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-08-03"
+      },
+      {
+        "release_id": "bridge-release-b86b86be",
+        "entity_slug": "evnne",
+        "display_name": "EVNNE",
+        "release_title": "LOVE ANECDOTE(S)",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-08-04"
+      },
+      {
+        "release_id": "bridge-release-0dd5aaee",
+        "entity_slug": "ampers-and-one",
+        "display_name": "AMPERS&ONE",
+        "release_title": "LOUD & PROUD",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-08-12"
+      },
+      {
+        "release_id": "bridge-release-6f97d914",
+        "entity_slug": "atheart",
+        "display_name": "AtHeart",
+        "release_title": "Plot Twist",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-08-13"
+      },
+      {
+        "release_id": "bridge-release-1a6dfa6c",
+        "entity_slug": "young-posse",
+        "display_name": "YOUNG POSSE",
+        "release_title": "Growing Pain pt.1 : FREE",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-08-14"
+      },
+      {
+        "release_id": "bridge-release-09d947aa",
+        "entity_slug": "kep1er",
+        "display_name": "Kep1er",
+        "release_title": "BUBBLE GUM",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-08-19"
+      },
+      {
+        "release_id": "bridge-release-738412c6",
+        "entity_slug": "boynextdoor",
+        "display_name": "BOYNEXTDOOR",
+        "release_title": "BOYLIFE",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-08-20"
+      },
+      {
+        "release_id": "bridge-release-bebd28a5",
+        "entity_slug": "twice",
+        "display_name": "TWICE",
+        "release_title": "Like 1",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-08-20"
+      },
+      {
+        "release_id": "bridge-release-3e8e236b",
+        "entity_slug": "fifty-fifty",
+        "display_name": "FIFTY FIFTY",
+        "release_title": "TAKE MY HAND",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-08-22"
+      },
+      {
+        "release_id": "bridge-release-8cd4445d",
+        "entity_slug": "purple-kiss",
+        "display_name": "Purple Kiss",
+        "release_title": "OUR NOW",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2025-08-31"
+      }
+    ],
+    "scheduled_list": []
+  }
+}

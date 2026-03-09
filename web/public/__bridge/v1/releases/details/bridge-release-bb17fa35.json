@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-bb17fa35"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-bb17fa35",
+      "release_title": "In The Dark",
+      "release_date": "2025-11-06",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/6fc9a1f5-709d-4180-a01a-aa75c35558d4/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/6fc9a1f5-709d-4180-a01a-aa75c35558d4/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/6fc9a1f5-709d-4180-a01a-aa75c35558d4"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "In The Dark",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+  }
+}

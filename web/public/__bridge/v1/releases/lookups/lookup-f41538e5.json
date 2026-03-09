@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-f41538e5"
+  },
+  "data": {
+    "release_id": "bridge-release-2d46be24",
+    "canonical_path": "/artists/dkb/releases/hip?date=2023-11-30&stream=album"
+  }
+}

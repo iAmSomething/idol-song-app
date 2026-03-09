@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-3c174317"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-3c174317",
+      "release_title": "흰수염고래",
+      "release_date": "2025-10-06",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "흰수염고래",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "needs_review",
+      "provenance": "Official YouTube search currently surfaces a special clip instead of a clearly canonical MV object."
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a630afc2"
+  },
+  "data": {
+    "release_id": "bridge-release-4c66ca2c",
+    "canonical_path": "/artists/fromis-9/releases/from?date=2024-12-23&stream=song"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-ec697e98"
+  },
+  "data": {
+    "release_id": "bridge-release-4c54db17",
+    "canonical_path": "/artists/twice/releases/dive?date=2024-07-17&stream=album"
+  }
+}
