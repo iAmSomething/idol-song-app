@@ -2,7 +2,7 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import SearchTabScreen from '../../app/(tabs)/search';
-import { trackAnalyticsEvent, trackDatasetDegraded, trackDatasetLoadFailed } from '../services/analytics';
+import { trackAnalyticsEvent } from '../services/analytics';
 import { persistRecentQuery, readRecentQueries } from '../services/recentQueries';
 import { resetStorageAdapter, setStorageAdapter, type KeyValueStorageAdapter } from '../services/storage';
 
@@ -48,8 +48,6 @@ const { __mock } = jest.requireMock('expo-router') as {
   };
 };
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
-const mockTrackDatasetDegraded = jest.mocked(trackDatasetDegraded);
-const mockTrackDatasetLoadFailed = jest.mocked(trackDatasetLoadFailed);
 
 async function renderSearchScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -74,8 +72,6 @@ describe('mobile search tab', () => {
     __mock.setParams.mockClear();
     __mock.push.mockClear();
     mockTrackAnalyticsEvent.mockClear();
-    mockTrackDatasetDegraded.mockClear();
-    mockTrackDatasetLoadFailed.mockClear();
   });
 
   afterEach(() => {

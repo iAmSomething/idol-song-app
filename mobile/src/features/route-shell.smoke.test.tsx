@@ -48,6 +48,53 @@ jest.mock('expo-router', () => {
   };
 });
 
+jest.mock('../features/useActiveDatasetScreen', () => {
+  const { cloneBundledDatasetFixture } = jest.requireActual('../services/bundledDatasetFixture');
+  const { createBundledDatasetSelection } = jest.requireActual('../services/datasetSource');
+
+  return {
+    useActiveDatasetScreen: jest.fn(() => ({
+      kind: 'ready',
+      source: {
+        dataset: cloneBundledDatasetFixture(),
+        selection: createBundledDatasetSelection('fixture-v1', 'profile_default'),
+        runtimeState: {
+          mode: 'normal',
+          issues: [],
+          config: {
+            profile: 'development',
+            dataSource: {
+              mode: 'bundled-static',
+              remoteDatasetUrl: null,
+              datasetVersion: 'fixture-v1',
+            },
+            services: {
+              apiBaseUrl: null,
+              analyticsWriteKey: null,
+            },
+            logging: {
+              level: 'verbose',
+            },
+            featureGates: {
+              radar: true,
+              analytics: false,
+              remoteRefresh: false,
+              mvEmbed: true,
+              shareActions: true,
+            },
+            build: {
+              version: '0.1.0',
+              commitSha: 'test-sha',
+            },
+          },
+        },
+        sourceLabel: 'Bundled static dataset',
+        issues: [],
+      },
+    })),
+  };
+});
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     useRouter: jest.Mock;

@@ -157,7 +157,7 @@ describe('mobile radar tab', () => {
     expect(tree.root.findByProps({ testID: 'radar-change-card-p1harmony' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-long-gap-card-weeekly' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-rookie-card-atheart' })).toBeDefined();
-    expect(tree.root.findAllByProps({ testID: 'radar-degraded-notice' })).toHaveLength(0);
+    expect(tree.root.findAllByProps({ testID: 'radar-dataset-risk-notice' })).toHaveLength(0);
     expect(tree.root.findAllByProps({ testID: 'radar-partial-notice' })).toHaveLength(0);
   });
 
@@ -172,7 +172,7 @@ describe('mobile radar tab', () => {
 
     const tree = await renderRadarScreen();
 
-    expect(tree.root.findByProps({ testID: 'radar-degraded-notice' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'radar-dataset-risk-notice' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-featured-card' })).toBeDefined();
     expect(mockTrackDatasetDegraded).toHaveBeenCalledWith(
       'radar',

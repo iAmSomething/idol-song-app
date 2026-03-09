@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import {
   Pressable,
   ScrollView,
@@ -13,22 +13,21 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { buildDatasetRiskDisclosure } from '../../src/features/surfaceDisclosures';
 import {
   areRouteParamsEqual,
   buildSearchRouteParams,
   resolveSearchRouteState,
   type SearchSegment,
 } from '../../src/features/routeState';
+import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import {
   createSelectorContext,
   selectSearchResults,
   selectTeamSummaryBySlug,
 } from '../../src/selectors';
-import { loadActiveMobileDataset, type ActiveMobileDataset } from '../../src/services/activeDataset';
 import {
   trackAnalyticsEvent,
-  trackDatasetDegraded,
-  trackDatasetLoadFailed,
   type SearchSubmitSource,
 } from '../../src/services/analytics';
 import { clearRecentQueries, persistRecentQuery, readRecentQueries } from '../../src/services/recentQueries';
@@ -39,11 +38,6 @@ import type {
   SearchUpcomingResultModel,
   TeamSummaryModel,
 } from '../../src/types';
-
-type SearchScreenState =
-  | { kind: 'loading' }
-  | { kind: 'error'; message: string }
-  | { kind: 'ready'; source: ActiveMobileDataset };
 
 function formatReleaseMeta(release: ReleaseSummaryModel): string {
   const releaseKind = release.releaseKind ?? 'release';
@@ -96,12 +90,15 @@ export default function SearchTabScreen() {
   const routeState = useMemo(() => resolveSearchRouteState(params), [params]);
 
   const [reloadCount, setReloadCount] = useState(0);
-  const [state, setState] = useState<SearchScreenState>({ kind: 'loading' });
+  const datasetState = useActiveDatasetScreen({
+    surface: 'search',
+    reloadKey: reloadCount,
+    fallbackErrorMessage: 'Search dataset could not be loaded right now.',
+  });
   const [query, setQuery] = useState(routeState.query);
   const [activeSegment, setActiveSegment] = useState<SearchSegment>(routeState.activeSegment);
   const [recentQueries, setRecentQueries] = useState<string[]>([]);
   const deferredQuery = useDeferredValue(query);
-  const datasetEventKeyRef = useRef<string | null>(null);
 
   useEffect(() => {
     setQuery(routeState.query);
@@ -110,52 +107,14 @@ export default function SearchTabScreen() {
 
   useEffect(() => {
     let cancelled = false;
-    setState({ kind: 'loading' });
 
-    void Promise.all([loadActiveMobileDataset(), readRecentQueries()])
-      .then(([source, history]) => {
-        if (cancelled) {
-          return;
-        }
+    void readRecentQueries().then((history) => {
+      if (cancelled) {
+        return;
+      }
 
-        const datasetEventKey =
-          source.runtimeState.mode === 'degraded' || source.issues.length > 0
-            ? `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`
-            : `ready:${source.selection.kind}`;
-
-        if (datasetEventKeyRef.current !== datasetEventKey) {
-          datasetEventKeyRef.current = datasetEventKey;
-          if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
-            trackDatasetDegraded('search', source);
-          }
-        }
-
-        setRecentQueries(history);
-        setState({
-          kind: 'ready',
-          source,
-        });
-      })
-      .catch((error: unknown) => {
-        if (cancelled) {
-          return;
-        }
-
-        const message =
-          error instanceof Error
-            ? error.message
-            : 'Search dataset could not be loaded right now.';
-        const datasetEventKey = `error:${message}`;
-        if (datasetEventKeyRef.current !== datasetEventKey) {
-          datasetEventKeyRef.current = datasetEventKey;
-          trackDatasetLoadFailed('search', message);
-        }
-
-        setState({
-          kind: 'error',
-          message,
-        });
-      });
+      setRecentQueries(history);
+    });
 
     return () => {
       cancelled = true;
@@ -163,12 +122,16 @@ export default function SearchTabScreen() {
   }, [reloadCount]);
 
   const selectorContext = useMemo(() => {
-    if (state.kind !== 'ready') {
+    if (datasetState.kind !== 'ready') {
       return null;
     }
 
-    return createSelectorContext(state.source.dataset);
-  }, [state]);
+    return createSelectorContext(datasetState.source.dataset);
+  }, [datasetState]);
+  const datasetRiskDisclosure =
+    datasetState.kind === 'ready'
+      ? buildDatasetRiskDisclosure(datasetState.source, '검색', 'search-dataset-risk-notice')
+      : null;
 
   const results = useMemo(() => {
     if (!selectorContext) {
@@ -337,7 +300,7 @@ export default function SearchTabScreen() {
     openTeamDetail(slug);
   }
 
-  if (state.kind === 'loading') {
+  if (datasetState.kind === 'loading') {
     return (
       <ScreenFeedbackState
         body="검색 대상 팀, 발매, 예정 데이터를 불러오는 중입니다."
@@ -348,14 +311,14 @@ export default function SearchTabScreen() {
     );
   }
 
-  if (state.kind === 'error') {
+  if (datasetState.kind === 'error') {
     return (
       <ScreenFeedbackState
         action={{
           label: '다시 시도',
           onPress: () => setReloadCount((count) => count + 1),
         }}
-        body={state.message}
+        body={datasetState.message}
         eyebrow="LOAD ERROR"
         title="Search"
         variant="error"
@@ -387,6 +350,14 @@ export default function SearchTabScreen() {
         <Text accessibilityRole="header" style={styles.title}>Search</Text>
         <Text style={styles.body}>한글 별칭, 영문 그룹명, 릴리즈명, 예정 headline까지 같은 selector semantics로 찾습니다.</Text>
       </View>
+
+      {datasetRiskDisclosure ? (
+        <InlineFeedbackNotice
+          body={datasetRiskDisclosure.body}
+          testID={datasetRiskDisclosure.testID}
+          title={datasetRiskDisclosure.title}
+        />
+      ) : null}
 
       <View style={styles.searchCard}>
         <TextInput

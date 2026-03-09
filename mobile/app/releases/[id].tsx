@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Image,
   Pressable,
@@ -13,11 +13,12 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
-import { selectReleaseDetailById } from '../../src/selectors';
 import {
-  loadActiveMobileDataset,
-  type ActiveMobileDataset,
-} from '../../src/services/activeDataset';
+  buildDatasetRiskDisclosure,
+  buildReleaseDependencyDisclosure,
+} from '../../src/features/surfaceDisclosures';
+import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
+import { selectReleaseDetailById } from '../../src/selectors';
 import {
   openServiceHandoff,
   resolveServiceHandoff,
@@ -28,18 +29,10 @@ import {
 } from '../../src/services/handoff';
 import {
   trackAnalyticsEvent,
-  trackDatasetDegraded,
-  trackDatasetLoadFailed,
 } from '../../src/services/analytics';
 import { useAppTheme } from '../../src/tokens/theme';
 import type { MobileTheme } from '../../src/tokens/theme';
 import type { ReleaseDetailModel, TrackModel, YoutubeVideoStatus } from '../../src/types';
-
-type ReleaseDetailScreenState =
-  | { kind: 'loading' }
-  | { kind: 'error'; message: string }
-  | { kind: 'missing'; reason: string }
-  | { kind: 'ready'; source: ActiveMobileDataset; detail: ReleaseDetailModel };
 
 type ServiceButtonSpec = {
   accessibilityHint?: string;
@@ -234,81 +227,18 @@ export default function ReleaseDetailScreen() {
   const releaseId = getSingleParam(params.id)?.trim() ?? '';
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
-  const [state, setState] = useState<ReleaseDetailScreenState>({ kind: 'loading' });
-  const datasetEventKeyRef = useRef<string | null>(null);
+  const datasetState = useActiveDatasetScreen({
+    surface: 'release_detail',
+    reloadKey: reloadCount,
+    fallbackErrorMessage: '릴리즈 상세 데이터를 불러오지 못했습니다.',
+  });
+  const detail = useMemo(
+    () => (datasetState.kind === 'ready' && releaseId ? selectReleaseDetailById(datasetState.source.dataset, releaseId) : null),
+    [datasetState, releaseId],
+  );
 
   useEffect(() => {
-    let cancelled = false;
-
-    if (!releaseId) {
-      setState({
-        kind: 'missing',
-        reason: '릴리즈 ID가 없거나 잘못되어 상세 화면을 열 수 없습니다.',
-      });
-      return () => {
-        cancelled = true;
-      };
-    }
-
     setHandoffFeedback(null);
-    setState({ kind: 'loading' });
-
-    void loadActiveMobileDataset()
-      .then((source) => {
-        if (cancelled) {
-          return;
-        }
-
-        const datasetEventKey =
-          source.runtimeState.mode === 'degraded' || source.issues.length > 0
-            ? `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`
-            : `ready:${source.selection.kind}`;
-        if (datasetEventKeyRef.current !== datasetEventKey) {
-          datasetEventKeyRef.current = datasetEventKey;
-          if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
-            trackDatasetDegraded('release_detail', source);
-          }
-        }
-
-        const detail = selectReleaseDetailById(source.dataset, releaseId);
-        if (!detail) {
-          setState({
-            kind: 'missing',
-            reason: '해당 릴리즈 상세 데이터를 찾지 못했습니다.',
-          });
-          return;
-        }
-
-        setState({
-          kind: 'ready',
-          source,
-          detail,
-        });
-      })
-      .catch((error: unknown) => {
-        if (cancelled) {
-          return;
-        }
-
-        const message =
-          error instanceof Error
-            ? error.message
-            : '릴리즈 상세 데이터를 불러오지 못했습니다.';
-        const datasetEventKey = `error:${message}`;
-        if (datasetEventKeyRef.current !== datasetEventKey) {
-          datasetEventKeyRef.current = datasetEventKey;
-          trackDatasetLoadFailed('release_detail', message);
-        }
-
-        setState({
-          kind: 'error',
-          message,
-        });
-      });
-
-    return () => {
-      cancelled = true;
-    };
   }, [releaseId, reloadCount]);
 
   async function handleHandoff(
@@ -337,10 +267,28 @@ export default function ReleaseDetailScreen() {
     setHandoffFeedback(null);
   }
 
-  const screenTitle =
-    state.kind === 'ready' ? state.detail.releaseTitle : releaseId || 'Release Detail';
+  const screenTitle = detail?.releaseTitle ?? releaseId ?? 'Release Detail';
 
-  if (state.kind === 'loading') {
+  if (!releaseId) {
+    return (
+      <>
+        <Stack.Screen options={{ title: screenTitle }} />
+        <ScreenFeedbackState
+          action={{
+            label: '이전 화면으로',
+            onPress: () => router.back(),
+          }}
+          body="릴리즈 ID가 없거나 잘못되어 상세 화면을 열 수 없습니다."
+          eyebrow="MISSING DETAIL"
+          testID="release-missing-state"
+          title="Release Detail"
+          variant="empty"
+        />
+      </>
+    );
+  }
+
+  if (datasetState.kind === 'loading') {
     return (
       <>
         <Stack.Screen options={{ title: screenTitle }} />
@@ -354,7 +302,7 @@ export default function ReleaseDetailScreen() {
     );
   }
 
-  if (state.kind === 'error') {
+  if (datasetState.kind === 'error') {
     return (
       <>
         <Stack.Screen options={{ title: screenTitle }} />
@@ -363,7 +311,7 @@ export default function ReleaseDetailScreen() {
             label: '다시 시도',
             onPress: () => setReloadCount((count) => count + 1),
           }}
-          body={state.message}
+          body={datasetState.message}
           eyebrow="LOAD ERROR"
           title="Release Detail"
           variant="error"
@@ -372,7 +320,7 @@ export default function ReleaseDetailScreen() {
     );
   }
 
-  if (state.kind === 'missing') {
+  if (!detail || datasetState.kind !== 'ready') {
     return (
       <>
         <Stack.Screen options={{ title: screenTitle }} />
@@ -381,7 +329,7 @@ export default function ReleaseDetailScreen() {
             label: '이전 화면으로',
             onPress: () => router.back(),
           }}
-          body={state.reason}
+          body="해당 릴리즈 상세 데이터를 찾지 못했습니다."
           eyebrow="MISSING DETAIL"
           testID="release-missing-state"
           title="Release Detail"
@@ -391,7 +339,12 @@ export default function ReleaseDetailScreen() {
     );
   }
 
-  const { detail, source } = state;
+  const datasetRiskDisclosure = buildDatasetRiskDisclosure(
+    datasetState.source,
+    '릴리즈 상세',
+    'release-dataset-risk-notice',
+  );
+  const releaseDependencyDisclosure = buildReleaseDependencyDisclosure(detail);
   const albumServiceButtons = buildAlbumServiceButtons(detail);
   const mvUrl = resolveYoutubeMvUrl(detail);
   const mvStatusCopy = getMvStatusCopy(detail.youtubeVideoStatus);
@@ -414,7 +367,15 @@ export default function ReleaseDetailScreen() {
         <Text style={styles.backButtonLabel}>뒤로</Text>
       </Pressable>
 
-      <Text style={styles.eyebrow}>{source.sourceLabel}</Text>
+      <Text style={styles.eyebrow}>{datasetState.source.sourceLabel}</Text>
+
+      {datasetRiskDisclosure ? (
+        <InlineFeedbackNotice
+          body={datasetRiskDisclosure.body}
+          testID={datasetRiskDisclosure.testID}
+          title={datasetRiskDisclosure.title}
+        />
+      ) : null}
 
       <View style={styles.heroCard}>
         <ReleaseCover detail={detail} styles={styles} />
@@ -451,6 +412,14 @@ export default function ReleaseDetailScreen() {
 
       {handoffFeedback ? (
         <InlineFeedbackNotice body={handoffFeedback} testID="release-handoff-feedback" tone="error" />
+      ) : null}
+
+      {releaseDependencyDisclosure ? (
+        <InlineFeedbackNotice
+          body={releaseDependencyDisclosure.body}
+          testID={releaseDependencyDisclosure.testID}
+          title={releaseDependencyDisclosure.title}
+        />
       ) : null}
 
       <View style={styles.section}>

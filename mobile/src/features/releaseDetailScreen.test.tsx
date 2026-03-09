@@ -3,11 +3,7 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import ReleaseDetailScreen from '../../app/releases/[id]';
-import {
-  trackAnalyticsEvent,
-  trackDatasetDegraded,
-  trackDatasetLoadFailed,
-} from '../services/analytics';
+import { trackAnalyticsEvent } from '../services/analytics';
 import {
   openServiceHandoff,
   type ServiceHandoffFailure,
@@ -76,8 +72,6 @@ const { __mock } = jest.requireMock('expo-router') as {
 
 const mockOpenServiceHandoff = openServiceHandoff as jest.MockedFunction<typeof openServiceHandoff>;
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
-const mockTrackDatasetDegraded = jest.mocked(trackDatasetDegraded);
-const mockTrackDatasetLoadFailed = jest.mocked(trackDatasetLoadFailed);
 
 async function renderReleaseDetail() {
   let tree: renderer.ReactTestRenderer;
@@ -103,8 +97,6 @@ describe('mobile release detail screen', () => {
     });
     mockOpenServiceHandoff.mockClear();
     mockTrackAnalyticsEvent.mockClear();
-    mockTrackDatasetDegraded.mockClear();
-    mockTrackDatasetLoadFailed.mockClear();
   });
 
   test('renders populated release detail sections for a canonical release', async () => {
@@ -130,6 +122,7 @@ describe('mobile release detail screen', () => {
     expect(tree.root.findByProps({ testID: 'release-detail-title' }).props.children).toBe('Glow Up');
     expect(tree.root.findByProps({ testID: 'release-empty-tracks' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-mv-state' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'release-detail-quality-notice' })).toBeDefined();
     expect(hasText(tree, '현재는 공식 MV가 등록되지 않았습니다.')).toBe(true);
   });
 

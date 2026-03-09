@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Image,
   Linking,
@@ -14,11 +14,12 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
-import { selectEntityDetailSnapshot } from '../../src/selectors';
 import {
-  loadActiveMobileDataset,
-  type ActiveMobileDataset,
-} from '../../src/services/activeDataset';
+  buildDatasetRiskDisclosure,
+  buildEntitySourceDisclosure,
+} from '../../src/features/surfaceDisclosures';
+import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
+import { selectEntityDetailSnapshot } from '../../src/selectors';
 import {
   openServiceHandoff,
   resolveServiceHandoff,
@@ -26,20 +27,12 @@ import {
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
 } from '../../src/services/handoff';
-import { trackDatasetDegraded, trackDatasetLoadFailed } from '../../src/services/analytics';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
-  EntityDetailSnapshotModel,
   ReleaseSummaryModel,
   TeamSummaryModel,
   UpcomingEventModel,
 } from '../../src/types';
-
-type EntityDetailScreenState =
-  | { kind: 'loading' }
-  | { kind: 'error'; message: string }
-  | { kind: 'missing'; reason: string }
-  | { kind: 'ready'; source: ActiveMobileDataset; snapshot: EntityDetailSnapshotModel };
 
 type OfficialLinkItem = {
   key: string;
@@ -238,82 +231,19 @@ export default function ArtistDetailScreen() {
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
-  const [state, setState] = useState<EntityDetailScreenState>({ kind: 'loading' });
-  const datasetEventKeyRef = useRef<string | null>(null);
+  const datasetState = useActiveDatasetScreen({
+    surface: 'entity_detail',
+    reloadKey: reloadCount,
+    fallbackErrorMessage: '팀 상세 데이터를 불러오지 못했습니다.',
+  });
+  const snapshot = useMemo(
+    () => (datasetState.kind === 'ready' && slug ? selectEntityDetailSnapshot(datasetState.source.dataset, slug) : null),
+    [datasetState, slug],
+  );
 
   useEffect(() => {
-    let cancelled = false;
-
-    if (!slug) {
-      setState({
-        kind: 'missing',
-        reason: '팀 slug가 없거나 잘못되어 화면을 열 수 없습니다.',
-      });
-      return () => {
-        cancelled = true;
-      };
-    }
-
     setHandoffFeedback(null);
     setShowAdditionalInfo(false);
-    setState({ kind: 'loading' });
-
-    void loadActiveMobileDataset()
-      .then((source) => {
-        if (cancelled) {
-          return;
-        }
-
-        const datasetEventKey =
-          source.runtimeState.mode === 'degraded' || source.issues.length > 0
-            ? `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`
-            : `ready:${source.selection.kind}`;
-        if (datasetEventKeyRef.current !== datasetEventKey) {
-          datasetEventKeyRef.current = datasetEventKey;
-          if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
-            trackDatasetDegraded('entity_detail', source);
-          }
-        }
-
-        const snapshot = selectEntityDetailSnapshot(source.dataset, slug);
-        if (!snapshot) {
-          setState({
-            kind: 'missing',
-            reason: '해당 팀 데이터를 찾지 못했습니다.',
-          });
-          return;
-        }
-
-        setState({
-          kind: 'ready',
-          source,
-          snapshot,
-        });
-      })
-      .catch((error: unknown) => {
-        if (cancelled) {
-          return;
-        }
-
-        const message =
-          error instanceof Error
-            ? error.message
-            : '팀 상세 데이터를 불러오지 못했습니다.';
-        const datasetEventKey = `error:${message}`;
-        if (datasetEventKeyRef.current !== datasetEventKey) {
-          datasetEventKeyRef.current = datasetEventKey;
-          trackDatasetLoadFailed('entity_detail', message);
-        }
-
-        setState({
-          kind: 'error',
-          message,
-        });
-      });
-
-    return () => {
-      cancelled = true;
-    };
   }, [reloadCount, slug]);
 
   async function handleHandoff(
@@ -328,12 +258,28 @@ export default function ArtistDetailScreen() {
     setHandoffFeedback(null);
   }
 
-  const screenTitle =
-    state.kind === 'ready'
-      ? state.snapshot.team.displayName
-      : slug || 'Team Detail';
+  const screenTitle = snapshot?.team.displayName ?? slug ?? 'Team Detail';
 
-  if (state.kind === 'loading') {
+  if (!slug) {
+    return (
+      <>
+        <Stack.Screen options={{ title: screenTitle }} />
+        <ScreenFeedbackState
+          action={{
+            label: '검색으로 이동',
+            onPress: () => router.push('/(tabs)/search'),
+          }}
+          body="팀 slug가 없거나 잘못되어 화면을 열 수 없습니다."
+          eyebrow="SAFE RECOVERY"
+          testID="entity-missing-state"
+          title="팀 상세"
+          variant="empty"
+        />
+      </>
+    );
+  }
+
+  if (datasetState.kind === 'loading') {
     return (
       <>
         <Stack.Screen options={{ title: screenTitle }} />
@@ -347,7 +293,7 @@ export default function ArtistDetailScreen() {
     );
   }
 
-  if (state.kind === 'error') {
+  if (datasetState.kind === 'error') {
     return (
       <>
         <Stack.Screen options={{ title: screenTitle }} />
@@ -356,7 +302,7 @@ export default function ArtistDetailScreen() {
             label: '다시 시도',
             onPress: () => setReloadCount((count) => count + 1),
           }}
-          body={state.message}
+          body={datasetState.message}
           eyebrow="LOAD ERROR"
           title="팀 상세"
           variant="error"
@@ -365,7 +311,7 @@ export default function ArtistDetailScreen() {
     );
   }
 
-  if (state.kind === 'missing') {
+  if (!snapshot || datasetState.kind !== 'ready') {
     return (
       <>
         <Stack.Screen options={{ title: screenTitle }} />
@@ -374,7 +320,7 @@ export default function ArtistDetailScreen() {
             label: '검색으로 이동',
             onPress: () => router.push('/(tabs)/search'),
           }}
-          body={state.reason}
+          body="해당 팀 데이터를 찾지 못했습니다."
           eyebrow="SAFE RECOVERY"
           testID="entity-missing-state"
           title="팀 상세"
@@ -384,7 +330,12 @@ export default function ArtistDetailScreen() {
     );
   }
 
-  const { snapshot } = state;
+  const datasetRiskDisclosure = buildDatasetRiskDisclosure(
+    datasetState.source,
+    '팀 상세',
+    'entity-dataset-risk-notice',
+  );
+  const entitySourceDisclosure = buildEntitySourceDisclosure(snapshot);
   const officialLinks = buildOfficialLinks(snapshot.team);
   const latestReleaseServiceButtons = snapshot.latestRelease
     ? buildLatestReleaseServiceButtons(snapshot.latestRelease)
@@ -451,6 +402,22 @@ export default function ArtistDetailScreen() {
           </Pressable>
         ) : null}
       </View>
+
+      {datasetRiskDisclosure ? (
+        <InlineFeedbackNotice
+          body={datasetRiskDisclosure.body}
+          testID={datasetRiskDisclosure.testID}
+          title={datasetRiskDisclosure.title}
+        />
+      ) : null}
+
+      {entitySourceDisclosure ? (
+        <InlineFeedbackNotice
+          body={entitySourceDisclosure.body}
+          testID={entitySourceDisclosure.testID}
+          title={entitySourceDisclosure.title}
+        />
+      ) : null}
 
       <SectionCard title="다음 컴백" styles={styles}>
         {snapshot.nextUpcoming ? (
