@@ -10,6 +10,7 @@
 - 접근성 점검 기록은 `docs/specs/mobile/accessibility-audit-2026-03-09.md`를 따른다.
 - decision-log 구현 점검 기준은 `docs/specs/mobile/decision-log-review-checklist.md`를 따른다.
 - RN 구현 감사 메모는 `docs/specs/mobile/rn-implementation-audit-2026-03-10.md`를 따른다.
+- RN 품질 커버리지 매트릭스는 `docs/specs/mobile/rn-quality-coverage-matrix.md`를 따른다.
 
 ## 현재 포함 범위
 

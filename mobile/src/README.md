@@ -4,6 +4,9 @@
 
 - `components/`: 표시 컴포넌트
   - `feedback/`: screen-level loading/empty/error/retry + inline notice 공용 컴포넌트
+  - `actions/`: service button / grouped action row 공용 컴포넌트
+  - `calendar/`: day cell / date detail sheet 공용 컴포넌트
+  - `release/`: track row 공용 컴포넌트
 - `config/`: validated runtime config accessor
   - `featureGates.ts`: gate registry / fallback metadata / helper
   - `runtime.ts`: mobile profile / env validation + safe degraded runtime state

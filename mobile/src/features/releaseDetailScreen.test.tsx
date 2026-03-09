@@ -111,7 +111,7 @@ describe('mobile release detail screen', () => {
     expect(tree.root.findByProps({ testID: 'release-service-youtube-music' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-service-youtube-mv' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-track-row-1' })).toBeDefined();
-    expect(tree.root.findByProps({ testID: 'release-track-title-badge-1' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'release-track-row-title-badge-1' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-mv-card' })).toBeDefined();
   });
 
