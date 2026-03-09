@@ -15,6 +15,10 @@ import {
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
 import {
+  ServiceButtonGroup,
+  type ServiceButtonGroupItem,
+} from '../../src/components/actions/ServiceButtonGroup';
+import {
   buildDatasetRiskDisclosure,
   buildEntitySourceDisclosure,
 } from '../../src/features/surfaceDisclosures';
@@ -23,7 +27,6 @@ import { selectEntityDetailSnapshot } from '../../src/selectors';
 import {
   openServiceHandoff,
   resolveServiceHandoff,
-  type MusicService,
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
 } from '../../src/services/handoff';
@@ -40,12 +43,8 @@ type OfficialLinkItem = {
   url: string;
 };
 
-type ServiceButtonSpec = {
-  accessibilityLabel: string;
-  key: MusicService;
-  label: string;
+type EntityServiceButtonItem = ServiceButtonGroupItem & {
   handoff: ServiceHandoffResolution | ServiceHandoffFailure;
-  testID: string;
 };
 
 function getSingleParam(value: string | string[] | undefined): string | null {
@@ -163,7 +162,7 @@ function resolveUpcomingTimingLabel(event: UpcomingEventModel): string {
   return '날짜 미정';
 }
 
-function buildLatestReleaseServiceButtons(release: ReleaseSummaryModel): ServiceButtonSpec[] {
+function buildLatestReleaseServiceButtons(release: ReleaseSummaryModel): EntityServiceButtonItem[] {
   const releaseQuery = `${release.displayGroup} ${release.releaseTitle}`;
   const mvQuery = `${release.displayGroup} ${release.representativeSongTitle ?? release.releaseTitle}`;
 
@@ -178,6 +177,7 @@ function buildLatestReleaseServiceButtons(release: ReleaseSummaryModel): Service
         canonicalUrl: release.spotifyUrl,
       }),
       testID: 'entity-latest-release-service-spotify',
+      tone: 'spotify',
     },
     {
       accessibilityLabel: `YouTube Music에서 ${release.releaseTitle} 열기`,
@@ -189,6 +189,7 @@ function buildLatestReleaseServiceButtons(release: ReleaseSummaryModel): Service
         canonicalUrl: release.youtubeMusicUrl,
       }),
       testID: 'entity-latest-release-service-youtube-music',
+      tone: 'youtubeMusic',
     },
     {
       accessibilityLabel: `YouTube에서 ${release.releaseTitle} 공식 MV 열기`,
@@ -200,6 +201,7 @@ function buildLatestReleaseServiceButtons(release: ReleaseSummaryModel): Service
         canonicalUrl: release.youtubeMvUrl,
       }),
       testID: 'entity-latest-release-service-youtube-mv',
+      tone: 'youtubeMv',
     },
   ];
 }
@@ -337,7 +339,7 @@ export default function ArtistDetailScreen() {
   );
   const entitySourceDisclosure = buildEntitySourceDisclosure(snapshot);
   const officialLinks = buildOfficialLinks(snapshot.team);
-  const latestReleaseServiceButtons = snapshot.latestRelease
+  const latestReleaseServiceButtons: EntityServiceButtonItem[] = snapshot.latestRelease
     ? buildLatestReleaseServiceButtons(snapshot.latestRelease)
     : [];
 
@@ -491,19 +493,13 @@ export default function ArtistDetailScreen() {
             >
               <Text style={styles.primaryButtonLabel}>상세 보기</Text>
             </Pressable>
-            <View style={styles.serviceButtonRow}>
-              {latestReleaseServiceButtons.map((button) => (
-                <ServiceButton
-                  accessibilityLabel={button.accessibilityLabel}
-                  key={button.key}
-                  label={button.label}
-                  onPress={() => void handleHandoff(button.handoff)}
-                  styles={styles}
-                  tone={button.key}
-                  testID={button.testID}
-                />
-              ))}
-            </View>
+            <ServiceButtonGroup
+              buttons={latestReleaseServiceButtons.map((button) => ({
+                ...button,
+                onPress: () => void handleHandoff(button.handoff),
+              }))}
+              testID="entity-latest-release-service-buttons"
+            />
             {snapshot.latestRelease.sourceUrl ? (
               <Pressable
                 accessibilityLabel={`${snapshot.latestRelease.releaseTitle} 발매 출처 열기`}
@@ -644,38 +640,6 @@ function InfoChip({
     <View style={styles.infoChip}>
       <Text style={styles.infoChipLabel}>{label}</Text>
     </View>
-  );
-}
-
-function ServiceButton({
-  accessibilityLabel,
-  label,
-  onPress,
-  styles,
-  tone,
-  testID,
-}: {
-  accessibilityLabel: string;
-  label: string;
-  onPress: () => void;
-  styles: ReturnType<typeof createStyles>;
-  tone: 'spotify' | 'youtubeMusic' | 'youtubeMv';
-  testID: string;
-}) {
-  return (
-    <Pressable
-      accessibilityLabel={accessibilityLabel}
-      accessibilityRole="button"
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.serviceButton,
-        styles[`${tone}Button`],
-        pressed ? styles.buttonPressed : null,
-      ]}
-      testID={testID}
-    >
-      <Text style={[styles.serviceButtonLabel, styles[`${tone}ButtonLabel`]]}>{label}</Text>
-    </Pressable>
   );
 }
 
@@ -922,48 +886,6 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     releaseCopy: {
       flex: 1,
       gap: theme.space[4],
-    },
-    serviceButtonRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      gap: theme.space[8],
-    },
-    serviceButton: {
-      minHeight: 44,
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[8],
-      borderRadius: theme.radius.button,
-      borderWidth: StyleSheet.hairlineWidth,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    serviceButtonLabel: {
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: '700',
-      flexShrink: 1,
-      textAlign: 'center',
-    },
-    spotifyButton: {
-      backgroundColor: theme.colors.service.spotify.bg,
-      borderColor: theme.colors.service.spotify.icon,
-    },
-    spotifyButtonLabel: {
-      color: theme.colors.service.spotify.icon,
-    },
-    youtubeMusicButton: {
-      backgroundColor: theme.colors.service.youtubeMusic.bg,
-      borderColor: theme.colors.service.youtubeMusic.icon,
-    },
-    youtubeMusicButtonLabel: {
-      color: theme.colors.service.youtubeMusic.icon,
-    },
-    youtubeMvButton: {
-      backgroundColor: theme.colors.service.youtubeMv.bg,
-      borderColor: theme.colors.service.youtubeMv.icon,
-    },
-    youtubeMvButtonLabel: {
-      color: theme.colors.service.youtubeMv.icon,
     },
     albumRow: {
       gap: theme.space[12],

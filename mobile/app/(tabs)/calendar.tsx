@@ -1,7 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-  Modal,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -9,6 +8,8 @@ import {
   View,
 } from 'react-native';
 
+import { DateDetailSheet } from '../../src/components/calendar/DateDetailSheet';
+import { DayCell } from '../../src/components/calendar/DayCell';
 import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
@@ -33,10 +34,7 @@ import {
 import { trackAnalyticsEvent } from '../../src/services/analytics';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
-  CalendarDayBadgeKind,
   CalendarMonthSnapshotModel,
-  CalendarSelectedDayModel,
-  ReleaseSummaryModel,
   UpcomingEventModel,
 } from '../../src/types';
 
@@ -61,20 +59,6 @@ function formatUpcomingLabel(event: UpcomingEventModel): string {
   }
 
   return '날짜 미정';
-}
-
-function formatReleaseRowMeta(release: ReleaseSummaryModel): string {
-  const kind = release.releaseKind ?? 'release';
-  return `${release.releaseDate} · ${kind}`;
-}
-
-function formatSelectedDaySummary(selectedDay: CalendarSelectedDayModel): string {
-  return `발매 ${selectedDay.releases.length} · 예정 ${selectedDay.exactUpcoming.length}`;
-}
-
-function formatAccessibleDateLabel(isoDate: string): string {
-  const [year, month, day] = isoDate.split('-');
-  return `${year}년 ${Number(month)}월 ${Number(day)}일`;
 }
 
 function formatFilterLabel(filterMode: CalendarFilterMode): string {
@@ -114,38 +98,6 @@ function applyCalendarFilter(
   return snapshot;
 }
 
-function buildCalendarDayAccessibilityLabel(args: {
-  isoDate: string;
-  isSelected: boolean;
-  releaseCount: number;
-  upcomingCount: number;
-  overflowCount: number;
-}): string {
-  const segments = [formatAccessibleDateLabel(args.isoDate)];
-
-  if (args.releaseCount > 0) {
-    segments.push(`검증된 발매 ${args.releaseCount}건`);
-  }
-
-  if (args.upcomingCount > 0) {
-    segments.push(`예정 컴백 ${args.upcomingCount}건`);
-  }
-
-  if (args.overflowCount > 0) {
-    segments.push(`추가 ${args.overflowCount}건`);
-  }
-
-  if (args.releaseCount === 0 && args.upcomingCount === 0) {
-    segments.push('등록된 일정 없음');
-  }
-
-  if (args.isSelected) {
-    segments.push('선택됨');
-  }
-
-  return segments.join(', ');
-}
-
 function moveMonthKey(month: string, offset: number): string {
   const [year, monthValue] = month.split('-').map(Number);
   const next = new Date(year, monthValue - 1 + offset, 1);
@@ -159,24 +111,6 @@ function getSelectedDayCounts(snapshot: CalendarMonthSnapshotModel, isoDate: str
   return {
     releaseCount: snapshot.releases.filter((release) => release.releaseDate === isoDate).length,
     upcomingCount: snapshot.exactUpcoming.filter((event) => event.scheduledDate === isoDate).length,
-  };
-}
-
-function getBadgePalette(
-  theme: ReturnType<typeof useAppTheme>,
-  kind: CalendarDayBadgeKind,
-): { backgroundColor: string; color: string } {
-  if (kind === 'release') {
-    return {
-      backgroundColor: theme.colors.status.title.bg,
-      color: theme.colors.status.title.text,
-    };
-  }
-
-  const token = theme.colors.status[kind];
-  return {
-    backgroundColor: token.bg,
-    color: token.text,
   };
 }
 
@@ -622,69 +556,7 @@ export default function CalendarTabScreen() {
                       );
                     }
 
-                    return (
-                      <Pressable
-                        key={cell.isoDate}
-                        testID={`calendar-day-${cell.isoDate}`}
-                        accessibilityHint="날짜 상세 시트를 엽니다."
-                        accessibilityLabel={buildCalendarDayAccessibilityLabel({
-                          isoDate: cell.isoDate,
-                          isSelected: cell.isSelected,
-                          releaseCount: cell.releaseCount,
-                          upcomingCount: cell.upcomingCount,
-                          overflowCount: cell.overflowCount,
-                        })}
-                        accessibilityRole="button"
-                        accessibilityState={{ selected: cell.isSelected }}
-                        onPress={() => openDaySheet(cell.isoDate)}
-                        style={({ pressed }) => [
-                          styles.dayCell,
-                          cell.isToday ? styles.dayCellToday : null,
-                          cell.isSelected ? styles.dayCellSelected : null,
-                          pressed ? styles.dayCellPressed : null,
-                        ]}
-                      >
-                        <View style={styles.dayCellHeader}>
-                          <Text
-                            style={[
-                              styles.dayNumber,
-                              cell.isSelected ? styles.dayNumberSelected : null,
-                            ]}
-                          >
-                            {cell.dayNumber}
-                          </Text>
-                          {cell.releaseCount > 0 || cell.upcomingCount > 0 ? (
-                            <Text style={styles.dayCounts}>
-                              {cell.releaseCount}/{cell.upcomingCount}
-                            </Text>
-                          ) : null}
-                        </View>
-
-                        <View style={styles.badgeStack}>
-                          {cell.badges.map((badge) => {
-                            const palette = getBadgePalette(theme, badge.kind);
-                            return (
-                              <View
-                                key={badge.id}
-                                style={[
-                                  styles.badgePill,
-                                  {
-                                    backgroundColor: palette.backgroundColor,
-                                  },
-                                ]}
-                              >
-                                <Text style={[styles.badgeText, { color: palette.color }]}>
-                                  {badge.monogram}
-                                </Text>
-                              </View>
-                            );
-                          })}
-                          {cell.overflowCount > 0 ? (
-                            <Text style={styles.overflowLabel}>+{cell.overflowCount}</Text>
-                          ) : null}
-                        </View>
-                      </Pressable>
-                    );
+                    return <DayCell key={cell.isoDate} cell={cell} onPress={openDaySheet} />;
                   })}
                 </View>
               ))}
@@ -723,86 +595,7 @@ export default function CalendarTabScreen() {
       </ScrollView>
 
       {selectedDay ? (
-        <Modal
-          transparent
-          animationType="slide"
-          visible={isSheetOpen}
-          onRequestClose={closeDaySheet}
-        >
-          <View style={styles.sheetOverlay}>
-            <Pressable
-              accessible={false}
-              testID="calendar-sheet-backdrop"
-              style={styles.sheetBackdrop}
-              onPress={closeDaySheet}
-            />
-            <View
-              accessibilityLabel={`${selectedDay.label} 일정 상세`}
-              accessibilityViewIsModal
-              accessible
-              testID="calendar-bottom-sheet"
-              style={[
-                styles.sheetPanel,
-                selectedDay.isEmpty ? styles.sheetPanelEmpty : null,
-              ]}
-            >
-              <View style={styles.sheetHandle} />
-              <View style={styles.sheetHeader}>
-                <View style={styles.sheetHeaderCopy}>
-                  <Text accessibilityRole="header" style={styles.sectionTitle}>{selectedDay.label}</Text>
-                  <Text style={styles.sectionMeta}>{formatSelectedDaySummary(selectedDay)}</Text>
-                </View>
-                <Pressable
-                  testID="calendar-sheet-close"
-                  accessibilityLabel="날짜 상세 닫기"
-                  accessibilityRole="button"
-                  onPress={closeDaySheet}
-                  style={styles.sheetCloseButton}
-                >
-                  <Text style={styles.sheetCloseLabel}>닫기</Text>
-                </Pressable>
-              </View>
-
-              <ScrollView
-                style={styles.sheetScroll}
-                contentContainerStyle={styles.sheetContent}
-                bounces={false}
-              >
-                {selectedDay.isEmpty ? (
-                  <InlineFeedbackNotice body="이 날짜에는 등록된 일정이 없습니다." />
-                ) : (
-                  <>
-                    {selectedDay.releases.length ? (
-                      <View style={styles.subsection}>
-                        <Text accessibilityRole="header" style={styles.subsectionTitle}>Verified releases</Text>
-                        {selectedDay.releases.map((release) => (
-                          <View key={release.id} style={styles.row}>
-                            <Text style={styles.rowTitle}>{release.displayGroup}</Text>
-                            <Text style={styles.rowBody}>{release.releaseTitle}</Text>
-                            <Text style={styles.rowMeta}>{formatReleaseRowMeta(release)}</Text>
-                          </View>
-                        ))}
-                      </View>
-                    ) : null}
-
-                    {selectedDay.exactUpcoming.length ? (
-                      <View style={styles.subsection}>
-                        <Text accessibilityRole="header" style={styles.subsectionTitle}>Scheduled comebacks</Text>
-                        {selectedDay.exactUpcoming.map((event) => (
-                          <View key={event.id} style={styles.row}>
-                            <Text style={styles.rowTitle}>{event.displayGroup}</Text>
-                            <Text style={styles.rowBody}>{event.releaseLabel ?? event.headline}</Text>
-                            <Text style={styles.rowMeta}>{formatUpcomingLabel(event)}</Text>
-                          </View>
-                        ))}
-                      </View>
-                    ) : null}
-                  </>
-                )}
-              </ScrollView>
-            </View>
-          </View>
-        </Modal>
+        <DateDetailSheet onClose={closeDaySheet} selectedDay={selectedDay} visible={isSheetOpen} />
       ) : null}
     </>
   );
@@ -879,6 +672,30 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontSize: theme.typography.body.fontSize,
       lineHeight: theme.typography.body.lineHeight,
       fontWeight: theme.typography.body.fontWeight,
+    },
+    row: {
+      gap: theme.space[4],
+      paddingVertical: theme.space[8],
+      borderTopWidth: 1,
+      borderTopColor: theme.colors.border.subtle,
+    },
+    rowTitle: {
+      color: theme.colors.text.primary,
+      fontSize: theme.typography.cardTitle.fontSize,
+      lineHeight: theme.typography.cardTitle.lineHeight,
+      fontWeight: theme.typography.cardTitle.fontWeight,
+    },
+    rowBody: {
+      color: theme.colors.text.secondary,
+      fontSize: theme.typography.body.fontSize,
+      lineHeight: theme.typography.body.lineHeight,
+      fontWeight: theme.typography.body.fontWeight,
+    },
+    rowMeta: {
+      color: theme.colors.text.tertiary,
+      fontSize: theme.typography.meta.fontSize,
+      lineHeight: theme.typography.meta.lineHeight,
+      fontWeight: theme.typography.meta.fontWeight,
     },
     sourceCard: {
       borderRadius: theme.radius.card,
@@ -1039,168 +856,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       flex: 1,
       minHeight: 88,
     },
-    dayCell: {
-      flex: 1,
-      minHeight: 88,
-      borderRadius: theme.radius.button,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      backgroundColor: theme.colors.surface.base,
-      padding: theme.space[8],
-      gap: theme.space[8],
-    },
-    dayCellPressed: {
-      backgroundColor: theme.colors.surface.interactive,
-    },
-    dayCellToday: {
-      borderColor: theme.colors.border.strong,
-    },
-    dayCellSelected: {
-      borderColor: theme.colors.border.focus,
-      backgroundColor: theme.colors.surface.interactive,
-    },
-    dayCellHeader: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'flex-start',
-    },
-    dayNumber: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.cardTitle.fontSize,
-      lineHeight: theme.typography.cardTitle.lineHeight,
-      fontWeight: theme.typography.cardTitle.fontWeight,
-    },
-    dayNumberSelected: {
-      color: theme.colors.text.brand,
-    },
-    dayCounts: {
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-    },
-    badgeStack: {
-      gap: theme.space[4],
-      alignItems: 'flex-start',
-    },
-    badgePill: {
-      minWidth: 32,
-      borderRadius: theme.radius.chip,
-      paddingHorizontal: theme.space[8],
-      paddingVertical: theme.space[4],
-    },
-    badgeText: {
-      fontSize: theme.typography.chip.fontSize,
-      lineHeight: theme.typography.chip.lineHeight,
-      fontWeight: theme.typography.chip.fontWeight,
-      letterSpacing: theme.typography.chip.letterSpacing,
-      textAlign: 'center',
-    },
-    overflowLabel: {
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-    },
     buttonDisabled: {
       opacity: 0.4,
-    },
-    sheetOverlay: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      backgroundColor: theme.colors.surface.overlay,
-    },
-    sheetBackdrop: {
-      flex: 1,
-    },
-    sheetPanel: {
-      height: '78%',
-      backgroundColor: theme.colors.surface.elevated,
-      borderTopLeftRadius: theme.radius.sheet,
-      borderTopRightRadius: theme.radius.sheet,
-      paddingHorizontal: theme.space[20],
-      paddingTop: theme.space[12],
-      paddingBottom: theme.space[20],
-      gap: theme.space[12],
-    },
-    sheetPanelEmpty: {
-      height: '45%',
-    },
-    sheetHandle: {
-      alignSelf: 'center',
-      width: 56,
-      height: 4,
-      borderRadius: theme.radius.chip,
-      backgroundColor: theme.colors.border.strong,
-    },
-    sheetHeader: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'flex-start',
-      gap: theme.space[12],
-    },
-    sheetHeaderCopy: {
-      flex: 1,
-      gap: theme.space[4],
-    },
-    sheetCloseButton: {
-      minHeight: 44,
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[8],
-      borderRadius: theme.radius.button,
-      backgroundColor: theme.colors.surface.interactive,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-    },
-    sheetCloseLabel: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: theme.typography.buttonService.fontWeight,
-      flexShrink: 1,
-      textAlign: 'center',
-    },
-    sheetScroll: {
-      flex: 1,
-    },
-    sheetContent: {
-      gap: theme.space[12],
-      paddingBottom: theme.space[24],
-    },
-    subsection: {
-      gap: theme.space[8],
-    },
-    subsectionTitle: {
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-      letterSpacing: theme.typography.meta.letterSpacing,
-      textTransform: 'uppercase',
-    },
-    row: {
-      gap: theme.space[4],
-      paddingTop: theme.space[8],
-      borderTopWidth: 1,
-      borderTopColor: theme.colors.border.subtle,
-    },
-    rowTitle: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.cardTitle.fontSize,
-      lineHeight: theme.typography.cardTitle.lineHeight,
-      fontWeight: theme.typography.cardTitle.fontWeight,
-    },
-    rowBody: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
-    },
-    rowMeta: {
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
     },
     retryButton: {
       alignSelf: 'flex-start',

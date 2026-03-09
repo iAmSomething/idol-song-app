@@ -94,13 +94,14 @@
    - 결정 로그 기준 구현 점검 체크리스트
 44. `rn-implementation-audit-2026-03-10.md`
    - RN 구현 중복/신뢰도 경로 감사 기록
-
+45. `rn-quality-coverage-matrix.md`
+   - 공용 컴포넌트 / screen smoke / manual QA coverage matrix
 ### Screen Specs
-45. `calendar-screen.md`
-46. `radar-screen.md`
-47. `search-screen.md`
-48. `team-detail-screen.md`
-49. `release-detail-screen.md`
+46. `calendar-screen.md`
+47. `radar-screen.md`
+48. `search-screen.md`
+49. `team-detail-screen.md`
+50. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -144,9 +145,10 @@
 39. `external-dependency-risk-spec.md`
 40. `decision-log-review-checklist.md`
 41. `rn-implementation-audit-2026-03-10.md`
-42. 각 화면 스펙
-43. `edge-case-catalog.md`
-44. `qa-acceptance-spec.md`
+42. `rn-quality-coverage-matrix.md`
+43. 각 화면 스펙
+44. `edge-case-catalog.md`
+45. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
