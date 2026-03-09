@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Linking,
   Modal,
@@ -14,6 +14,7 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { buildDatasetRiskDisclosure } from '../../src/features/surfaceDisclosures';
 import {
   areRouteParamsEqual,
   buildRadarRouteParams,
@@ -22,12 +23,9 @@ import {
   type RadarFilterStatus,
   type RadarSectionKey,
 } from '../../src/features/routeState';
+import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectRadarSnapshot } from '../../src/selectors';
-import {
-  loadActiveMobileDataset,
-  type ActiveMobileDataset,
-} from '../../src/services/activeDataset';
-import { trackDatasetDegraded, trackDatasetLoadFailed } from '../../src/services/analytics';
+import { type ActiveMobileDataset } from '../../src/services/activeDataset';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   RadarChangeFeedItemModel,
@@ -39,17 +37,6 @@ import type {
   UpcomingConfidence,
   UpcomingStatus,
 } from '../../src/types';
-
-type RadarScreenState =
-  | { kind: 'loading' }
-  | { kind: 'error'; message: string }
-  | {
-      kind: 'ready';
-      source: ActiveMobileDataset;
-      snapshot: RadarSnapshotModel;
-      dataState: 'default' | 'partial' | 'degraded';
-      partialSections: string[];
-    };
 
 const DEFAULT_ENABLED_SECTIONS: RadarSectionKey[] = ['weekly', 'change', 'longGap', 'rookie'];
 
@@ -182,12 +169,6 @@ function resolveRadarDataState(
   return 'default';
 }
 
-function buildRadarDegradedBody(source: ActiveMobileDataset): string {
-  const issueSummary =
-    source.issues.length > 0 ? ` 현재 상태: ${source.issues.join(' / ')}.` : '';
-  return `최근 데이터 동기화가 완전하지 않아 일부 레이더 정보만 표시됩니다.${issueSummary} 다시 시도해 최신 상태를 확인하세요.`;
-}
-
 function buildRadarPartialBody(partialSections: string[]): string {
   if (partialSections.length === 1) {
     return `${partialSections[0]} 섹션은 아직 일부 정보만 표시됩니다. 가능한 범위 안에서 최소 카드만 유지합니다.`;
@@ -279,8 +260,11 @@ export default function RadarTabScreen() {
   const [actTypeFilter, setActTypeFilter] = useState(routeState.actTypeFilter);
   const [enabledSections, setEnabledSections] = useState(routeState.enabledSections);
   const [isFilterSheetOpen, setIsFilterSheetOpen] = useState(false);
-  const [state, setState] = useState<RadarScreenState>({ kind: 'loading' });
-  const datasetEventKeyRef = useRef<string | null>(null);
+  const datasetState = useActiveDatasetScreen({
+    surface: 'radar',
+    reloadKey: reloadCount,
+    fallbackErrorMessage: 'Radar dataset could not be loaded right now.',
+  });
   const today = useMemo(() => new Date(), []);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
 
@@ -290,63 +274,21 @@ export default function RadarTabScreen() {
     setEnabledSections(routeState.enabledSections);
   }, [routeState]);
 
-  useEffect(() => {
-    let cancelled = false;
-    setState({ kind: 'loading' });
-
-    void loadActiveMobileDataset()
-      .then((source) => {
-        if (cancelled) {
-          return;
-        }
-
-        const datasetEventKey =
-          source.runtimeState.mode === 'degraded' || source.issues.length > 0
-            ? `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`
-            : `ready:${source.selection.kind}`;
-        if (datasetEventKeyRef.current !== datasetEventKey) {
-          datasetEventKeyRef.current = datasetEventKey;
-          if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
-            trackDatasetDegraded('radar', source);
-          }
-        }
-
-        const snapshot = selectRadarSnapshot(source.dataset, todayIsoDate);
-        const partialSections = buildRadarPartialSections(snapshot);
-
-        setState({
-          kind: 'ready',
-          source,
-          snapshot,
-          dataState: resolveRadarDataState(source, partialSections),
-          partialSections,
-        });
-      })
-      .catch((error: unknown) => {
-        if (cancelled) {
-          return;
-        }
-
-        const message =
-          error instanceof Error
-            ? error.message
-            : 'Radar dataset could not be loaded right now.';
-        const datasetEventKey = `error:${message}`;
-        if (datasetEventKeyRef.current !== datasetEventKey) {
-          datasetEventKeyRef.current = datasetEventKey;
-          trackDatasetLoadFailed('radar', message);
-        }
-
-        setState({
-          kind: 'error',
-          message,
-        });
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [reloadCount, todayIsoDate]);
+  const source = datasetState.kind === 'ready' ? datasetState.source : null;
+  const snapshot = useMemo(
+    () => (source ? selectRadarSnapshot(source.dataset, todayIsoDate) : null),
+    [source, todayIsoDate],
+  );
+  const partialSections = useMemo(
+    () => (snapshot ? buildRadarPartialSections(snapshot) : []),
+    [snapshot],
+  );
+  const dataState = useMemo(
+    () => (source ? resolveRadarDataState(source, partialSections) : 'default'),
+    [partialSections, source],
+  );
+  const datasetRiskDisclosure =
+    source ? buildDatasetRiskDisclosure(source, '레이더', 'radar-dataset-risk-notice') : null;
 
   useEffect(() => {
     const currentRouteParams = buildRadarRouteParams({
@@ -392,7 +334,7 @@ export default function RadarTabScreen() {
     setEnabledSections(DEFAULT_ENABLED_SECTIONS);
   }
 
-  if (state.kind === 'loading') {
+  if (datasetState.kind === 'loading') {
     return (
       <ScreenFeedbackState
         body="가장 가까운 컴백과 레이더 요약을 불러오는 중입니다."
@@ -403,7 +345,7 @@ export default function RadarTabScreen() {
     );
   }
 
-  if (state.kind === 'error') {
+  if (datasetState.kind === 'error') {
     return (
       <ScreenFeedbackState
         action={{
@@ -411,7 +353,7 @@ export default function RadarTabScreen() {
           onPress: () => setReloadCount((count) => count + 1),
           testID: 'radar-error-retry',
         }}
-        body={state.message}
+        body={datasetState.message}
         eyebrow="LOAD ERROR"
         title="레이더"
         variant="error"
@@ -419,7 +361,17 @@ export default function RadarTabScreen() {
     );
   }
 
-  const { dataState, partialSections, snapshot, source } = state;
+  if (!snapshot || !source) {
+    return (
+      <ScreenFeedbackState
+        body="레이더 스냅샷을 찾지 못했습니다."
+        eyebrow="EMPTY SNAPSHOT"
+        title="레이더"
+        variant="empty"
+      />
+    );
+  }
+
   const filteredFutureUpcoming = filterUpcomingCards(snapshot.futureUpcoming, statusFilter, actTypeFilter);
   const filteredWeeklyUpcoming = filterUpcomingCards(snapshot.weeklyUpcoming, statusFilter, actTypeFilter);
   const filteredChangeFeed = filterChangeFeedItems(snapshot.changeFeed, statusFilter, actTypeFilter);
@@ -464,16 +416,16 @@ export default function RadarTabScreen() {
           </View>
         </View>
 
-        {dataState === 'degraded' ? (
+        {dataState === 'degraded' && datasetRiskDisclosure ? (
           <InlineFeedbackNotice
             action={{
               label: '다시 시도',
               onPress: () => setReloadCount((count) => count + 1),
               testID: 'radar-degraded-retry',
             }}
-            body={buildRadarDegradedBody(source)}
-            testID="radar-degraded-notice"
-            title="발매 후 정보 보강 중"
+            body={datasetRiskDisclosure.body}
+            testID={datasetRiskDisclosure.testID}
+            title={datasetRiskDisclosure.title}
           />
         ) : null}
 

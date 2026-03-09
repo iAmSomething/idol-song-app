@@ -9,6 +9,8 @@
   - `runtime.ts`: mobile profile / env validation + safe degraded runtime state
   - `debugMetadata.ts`: debug-only build/dataset/commit/runtime-state metadata helper
 - `features/`: 화면 composition / binding
+  - `useActiveDatasetScreen.ts`: dataset loading / degraded analytics / error state 공통 hook
+  - `surfaceDisclosures.ts`: dataset risk / source confidence / external dependency notice helper
   - `selectors/`: display model selector / adapter
   - `context.ts`: dataset -> indexed selector context
   - `adapters.ts`: raw JSON -> display model 변환 규칙

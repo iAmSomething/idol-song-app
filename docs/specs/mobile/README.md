@@ -90,13 +90,17 @@
    - 외부 서비스/데이터 의존 리스크와 완화 전략
 42. `accessibility-audit-2026-03-09.md`
    - 구현된 모바일 화면에 대한 접근성/동적 글자 크기 점검 기록
+43. `decision-log-review-checklist.md`
+   - 결정 로그 기준 구현 점검 체크리스트
+44. `rn-implementation-audit-2026-03-10.md`
+   - RN 구현 중복/신뢰도 경로 감사 기록
 
 ### Screen Specs
-43. `calendar-screen.md`
-44. `radar-screen.md`
-45. `search-screen.md`
-46. `team-detail-screen.md`
-47. `release-detail-screen.md`
+45. `calendar-screen.md`
+46. `radar-screen.md`
+47. `search-screen.md`
+48. `team-detail-screen.md`
+49. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -138,9 +142,11 @@
 37. `state-restoration-spec.md`
 38. `feature-gate-matrix.md`
 39. `external-dependency-risk-spec.md`
-40. 각 화면 스펙
-41. `edge-case-catalog.md`
-42. `qa-acceptance-spec.md`
+40. `decision-log-review-checklist.md`
+41. `rn-implementation-audit-2026-03-10.md`
+42. 각 화면 스펙
+43. `edge-case-catalog.md`
+44. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.

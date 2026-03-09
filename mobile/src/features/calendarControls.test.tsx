@@ -3,7 +3,7 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import CalendarTabScreen from '../../app/(tabs)/calendar';
-import { trackAnalyticsEvent, trackDatasetDegraded, trackDatasetLoadFailed } from '../services/analytics';
+import { trackAnalyticsEvent } from '../services/analytics';
 
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({}));
@@ -40,8 +40,6 @@ jest.mock('../services/analytics', () => ({
   trackDatasetLoadFailed: jest.fn(),
 }));
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
-const mockTrackDatasetDegraded = jest.mocked(trackDatasetDegraded);
-const mockTrackDatasetLoadFailed = jest.mocked(trackDatasetLoadFailed);
 
 async function renderCalendarScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -64,8 +62,6 @@ describe('calendar controls', () => {
     jest.setSystemTime(new Date('2026-03-07T09:00:00.000Z'));
     __mock.useLocalSearchParams.mockReturnValue({});
     mockTrackAnalyticsEvent.mockClear();
-    mockTrackDatasetDegraded.mockClear();
-    mockTrackDatasetLoadFailed.mockClear();
   });
 
   afterEach(() => {

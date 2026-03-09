@@ -8,6 +8,8 @@
 - route/param 계약은 `docs/specs/mobile/route-param-contracts.md`를 따른다.
 - 세부 모듈 구조는 `docs/specs/mobile/implementation-work-breakdown.md`를 따른다.
 - 접근성 점검 기록은 `docs/specs/mobile/accessibility-audit-2026-03-09.md`를 따른다.
+- decision-log 구현 점검 기준은 `docs/specs/mobile/decision-log-review-checklist.md`를 따른다.
+- RN 구현 감사 메모는 `docs/specs/mobile/rn-implementation-audit-2026-03-10.md`를 따른다.
 
 ## 현재 포함 범위
 
@@ -44,6 +46,10 @@
   - bundled static data vs preview remote data selection layer
 - `src/services/activeDataset.ts`
   - active dataset source resolution + dataset load entrypoint
+- `src/features/useActiveDatasetScreen.ts`
+  - dataset loading / degraded analytics / error handling 공통 hook
+- `src/features/surfaceDisclosures.ts`
+  - dataset risk / source confidence / external dependency notice 공통 helper
 - `src/services/datasetFailurePolicy.ts`
   - runtime misconfiguration / remote dataset unavailable fallback policy
 - `src/services/storage.ts`
