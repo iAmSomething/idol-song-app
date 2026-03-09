@@ -130,6 +130,7 @@ export function buildServiceActionLinks({
   mvUrl,
   includeMv = true,
   allowMvSearchFallback = true,
+  searchTitles,
 }: {
   group: string
   title: string
@@ -137,18 +138,22 @@ export function buildServiceActionLinks({
   mvUrl?: string
   includeMv?: boolean
   allowMvSearchFallback?: boolean
+  searchTitles?: Partial<Record<ServiceActionId, string>>
 }): MusicHandoffLink[] {
-  const query = `${group} ${title}`.trim()
+  const defaultQuery = `${group} ${title}`.trim()
   const links: MusicHandoffLink[] = MUSIC_HANDOFF_SERVICES.map((service) => ({
     service,
-    href: canonicalUrls?.[service] || buildMusicSearchUrl(service, query),
+    href:
+      canonicalUrls?.[service] ||
+      buildMusicSearchUrl(service, `${group} ${searchTitles?.[service] || title}`.trim()),
     mode: canonicalUrls?.[service] ? 'canonical' : 'search',
   }))
 
   if (includeMv && (mvUrl || allowMvSearchFallback)) {
+    const mvSearchQuery = `${group} ${searchTitles?.youtube_mv || title}`.trim()
     links.push({
       service: 'youtube_mv',
-      href: mvUrl || buildYouTubeMvSearchUrl(query),
+      href: mvUrl || buildYouTubeMvSearchUrl(mvSearchQuery || defaultQuery),
       mode: mvUrl ? 'canonical' : 'search',
     })
   }

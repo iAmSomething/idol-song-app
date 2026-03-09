@@ -15,6 +15,7 @@ import {
 } from './lib/backendFetch'
 import {
   buildServiceActionLinks,
+  buildYouTubeMvSearchUrl,
   openMusicHandoff,
   shouldBypassManagedHandoff,
   type MusicHandoffLink,
@@ -3551,6 +3552,8 @@ function ReleaseDetailPage({
   const hasCanonicalTracks = releaseDetail.tracks.length > 0
   const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail)
   const mv = getReleaseDetailMvUrls(releaseDetail)
+  const primaryTitleTrack = getPrimaryTitleTrackTitle(releaseDetail) || album.title
+  const mvSearchUrl = mv.canonicalUrl ? '' : buildYouTubeMvSearchUrl(`${group} ${primaryTitleTrack}`.trim())
   const releaseDetailSourceMessage =
     releaseDetailResource.loading
       ? buildSurfaceStatusMessage({
@@ -3700,6 +3703,13 @@ function ReleaseDetailPage({
           ) : (
             <div className="official-mv-empty">
               <p className="hero-text drawer-copy">{teamCopy.officialMvUnavailable}</p>
+              {mvSearchUrl ? (
+                <div className="meta-links">
+                  <a href={mvSearchUrl} target="_blank" rel="noreferrer" className="meta-link">
+                    {teamCopy.watchOnYouTube}
+                  </a>
+                </div>
+              ) : null}
             </div>
           )}
         </section>
@@ -3717,9 +3727,9 @@ function ReleaseDetailPage({
             title={album.title}
             canonicalUrls={canonicalHandoffs}
             mvUrl={mv.canonicalUrl}
+            mvSearchTitle={primaryTitleTrack}
             language={language}
             showHint
-            allowMvSearchFallback={false}
           />
           <div className="meta-links">
             <a href={album.source} target="_blank" rel="noreferrer" className="meta-link">
@@ -3789,6 +3799,7 @@ function MusicHandoffRow({
   compact = false,
   showHint = false,
   mvUrl = '',
+  mvSearchTitle = '',
   includeMv = true,
   allowMvSearchFallback = true,
 }: {
@@ -3799,6 +3810,7 @@ function MusicHandoffRow({
   compact?: boolean
   showHint?: boolean
   mvUrl?: string
+  mvSearchTitle?: string
   includeMv?: boolean
   allowMvSearchFallback?: boolean
 }) {
@@ -3810,6 +3822,11 @@ function MusicHandoffRow({
     mvUrl,
     includeMv,
     allowMvSearchFallback,
+    searchTitles: mvSearchTitle
+      ? {
+          youtube_mv: mvSearchTitle,
+        }
+      : undefined,
   })
 
   return (
@@ -6664,6 +6681,10 @@ function getReleaseDetailMvUrls(detail: Pick<ReleaseDetailRow, 'youtube_video_id
     canonicalUrl: videoId ? buildYouTubeMvCanonicalUrl(videoId) : '',
     embedUrl: videoId ? buildYouTubeNoCookieEmbedUrl(videoId) : '',
   }
+}
+
+function getPrimaryTitleTrackTitle(detail: Pick<ReleaseDetailRow, 'tracks'>) {
+  return detail.tracks.find((track) => track.is_title_track)?.title ?? ''
 }
 
 function getReleaseLookupKey(
