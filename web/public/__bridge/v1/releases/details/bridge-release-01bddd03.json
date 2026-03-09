@@ -28,7 +28,7 @@
       {
         "order": 2,
         "title": "Rizz",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,
@@ -52,10 +52,10 @@
       }
     ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseHistory.placeholder_seed"
+      "url": "https://www.youtube.com/watch?v=NCuFonpf-qk",
+      "video_id": "NCuFonpf-qk",
+      "status": "manual_override",
+      "provenance": "manual review: user-provided official YouTube MV URL"
     },
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }

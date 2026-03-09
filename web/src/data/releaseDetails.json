@@ -20308,55 +20308,66 @@
     "tracks": [
       {
         "order": 1,
-        "title": "The Beginning"
+        "title": "The Beginning",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "No Way Back"
+        "title": "No Way Back",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "The Fugitives"
+        "title": "The Fugitives",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Knife"
+        "title": "Knife",
+        "is_title_track": true
       },
       {
         "order": 5,
-        "title": "Stealer"
+        "title": "Stealer",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "The Voice"
+        "title": "The Voice",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "Witnesses"
+        "title": "Witnesses",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "Big Girls Don't Cry"
+        "title": "Big Girls Don't Cry",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "Lost Island"
+        "title": "Lost Island",
+        "is_title_track": false
       },
       {
         "order": 10,
-        "title": "Sleep Tight"
+        "title": "Sleep Tight",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "The Beyond"
+        "title": "The Beyond",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4h3umvQDxwVMlZ7Adtc8Ad",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_njsgSSx9YXXGmw3r9acFuNqIU6UYzm0sQ",
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=R6e4tBWxIxE",
+    "youtube_video_id": "R6e4tBWxIxE",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz EP seed with 11 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
@@ -22741,23 +22752,26 @@
     "tracks": [
       {
         "order": 1,
-        "title": "가위바위보 (Eeny meeny miny moe)"
+        "title": "가위바위보 (Eeny meeny miny moe)",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Skittlez"
+        "title": "Skittlez",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "가위바위보 (Eeny meeny miny moe) (Eng ver.)"
+        "title": "가위바위보 (Eeny meeny miny moe) (Eng ver.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0spXOvUlUo1EUDs13nlXki",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=xAOT6ISD9jo",
+    "youtube_video_id": "xAOT6ISD9jo",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz EP seed with 3 tracks. Canonical links: Spotify."
   },
   {
@@ -27686,10 +27700,10 @@
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=9qkpcLK422o",
+    "youtube_video_id": "9qkpcLK422o",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz SINGLE seed with 1 track."
   },
   {
@@ -30242,35 +30256,41 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Delulu"
+        "title": "Delulu",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "404 (New Era)"
+        "title": "404 (New Era)",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "UNDERDOGS"
+        "title": "UNDERDOGS",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "MUNGNYANG"
+        "title": "MUNGNYANG",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Dizzy"
+        "title": "Dizzy",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "To Me From Me"
+        "title": "To Me From Me",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/09YZd8EhjQjGDJbc8EUuKq",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_niDXY6ppq697_xZEdJ9B7ltpp9iy5LhoM",
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=zhHB4dZTChw",
+    "youtube_video_id": "zhHB4dZTChw",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
@@ -30648,35 +30668,41 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Lucky"
+        "title": "Lucky",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "Sticky (Japanese ver.)"
+        "title": "Sticky (Japanese ver.)",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Midas Touch (Japanese ver.)"
+        "title": "Midas Touch (Japanese ver.)",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Shhh (Japanese ver.)"
+        "title": "Shhh (Japanese ver.)",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Nobody Knows (remix)"
+        "title": "Nobody Knows (remix)",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "R.E.M (remix)"
+        "title": "R.E.M (remix)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3isrBYAYBxBerWHVtjD8gE",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_koNfZeY9f5ktUS_AATILpBkxMKFGHxjto",
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=j6OqLm0lQ68",
+    "youtube_video_id": "j6OqLm0lQ68",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
@@ -38554,10 +38580,10 @@
     ],
     "spotify_url": "https://open.spotify.com/album/7jd5hUsxFPUsM0dqfpRjmp",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kmoOC0j8PL4v7z-W8wwq64_jv29sWPCmE",
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=wvtNmMmcAYw",
+    "youtube_video_id": "wvtNmMmcAYw",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
@@ -41627,23 +41653,26 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Grenade"
+        "title": "Grenade",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "STOP & MOVE"
+        "title": "STOP & MOVE",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "When you're close to me"
+        "title": "When you're close to me",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4qTTzaU30PLhLJmD6lLzFm",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=_UQCWEp-8BQ",
+    "youtube_video_id": "_UQCWEp-8BQ",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify."
   },
   {
@@ -44172,23 +44201,26 @@
     "tracks": [
       {
         "order": 1,
-        "title": "BBUU!"
+        "title": "BBUU!",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "숨바꼭질 (Hide and Seek)"
+        "title": "숨바꼭질 (Hide and Seek)",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Bongsoong-a"
+        "title": "Bongsoong-a",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=8L001YT4k6k",
+    "youtube_video_id": "8L001YT4k6k",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz SINGLE seed with 3 tracks."
   },
   {
@@ -46795,10 +46827,10 @@
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=ByX8EZq8500",
+    "youtube_video_id": "ByX8EZq8500",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
@@ -47398,10 +47430,10 @@
     ],
     "spotify_url": "https://open.spotify.com/album/2BOIZjVSfiQDntgqzE94PI",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=yfKBI5l81-A",
+    "youtube_video_id": "yfKBI5l81-A",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
   },
   {
@@ -47518,31 +47550,36 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Bad Idea"
+        "title": "Bad Idea",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "UFO (ATTENT!ON)"
+        "title": "UFO (ATTENT!ON)",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "Delulu Solulu"
+        "title": "Delulu Solulu",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Hard to Love"
+        "title": "Hard to Love",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "SAY MY NAME"
+        "title": "SAY MY NAME",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/52f4wYBg1SDSaMMwZ5u3OF",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kApCbh2UikWb1bBXrhTDc_dCDo9alRZRg",
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=-fPz0KoVwog",
+    "youtube_video_id": "-fPz0KoVwog",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
@@ -54281,31 +54318,36 @@
     "tracks": [
       {
         "order": 1,
-        "title": "In the Dark"
+        "title": "In the Dark",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "nocturnal"
+        "title": "nocturnal",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "CHILL"
+        "title": "CHILL",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Silly Kid"
+        "title": "Silly Kid",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "How deep is your love?"
+        "title": "How deep is your love?",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/173YgSJe4F1sZG6pABL2zm",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lL7LMofqXC6sI9U8ok3K-iED9Ps2dFVVY",
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=Hk2u4zlJ4HE",
+    "youtube_video_id": "Hk2u4zlJ4HE",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
@@ -56830,10 +56872,10 @@
     ],
     "spotify_url": "https://open.spotify.com/album/4x65qm15EE2YTLUIJLX4b5",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=0-xKvImq7Ek",
+    "youtube_video_id": "0-xKvImq7Ek",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz SINGLE seed with 2 tracks. Canonical links: Spotify."
   },
   {
@@ -60136,27 +60178,31 @@
     "tracks": [
       {
         "order": 1,
-        "title": "100%"
+        "title": "100%",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "내가 살아있다는 증거"
+        "title": "내가 살아있다는 증거",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "Obsessed"
+        "title": "Obsessed",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Twenty Something"
+        "title": "Twenty Something",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=cQESe4Jc0rE",
+    "youtube_video_id": "cQESe4Jc0rE",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
@@ -63514,23 +63560,26 @@
     "tracks": [
       {
         "order": 1,
-        "title": "RED (Beggin’)"
+        "title": "RED (Beggin’)",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "empty"
+        "title": "empty",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Blame us"
+        "title": "Blame us",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4j6qWUx1OjrrR59XdT6gcU",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=-gzqfjzqG6U",
+    "youtube_video_id": "-gzqfjzqG6U",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify."
   },
   {
@@ -65613,10 +65662,10 @@
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=ItvDjeiqdlE",
+    "youtube_video_id": "ItvDjeiqdlE",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
@@ -67018,35 +67067,41 @@
     "tracks": [
       {
         "order": 1,
-        "title": "Scent"
+        "title": "Scent",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Rizz"
+        "title": "Rizz",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "Dirty Baby"
+        "title": "Dirty Baby",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Biii:-P"
+        "title": "Biii:-P",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Kiss and say goodbye"
+        "title": "Kiss and say goodbye",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Drip Drip"
+        "title": "Drip Drip",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/06fkAvfJw3XKoHoUxdRwQ4",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=NCuFonpf-qk",
+    "youtube_video_id": "NCuFonpf-qk",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
@@ -67772,10 +67827,10 @@
     ],
     "spotify_url": "https://open.spotify.com/album/7BYBKfbZxXgJkZ82GYp3MI",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=obqsSgY4oU8",
+    "youtube_video_id": "obqsSgY4oU8",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz SINGLE seed with 2 tracks. Canonical links: Spotify."
   },
   {

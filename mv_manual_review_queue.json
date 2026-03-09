@@ -11716,29 +11716,6 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
-    "group": "ENHYPEN",
-    "release_title": "THE SIN : VANISH",
-    "release_date": "2026-01-16",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "ENHYPEN THE SIN : VANISH official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=ENHYPEN+THE+SIN+%3A+VANISH+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
     "group": "EPEX",
     "release_title": "BIPOLAR Pt.1 Prelude of Anxiety",
     "release_date": "2021-06-08",
@@ -12912,28 +12889,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "FIFTY FIFTY TAKE MY HAND official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=FIFTY+FIFTY+TAKE+MY+HAND+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
-    "group": "FIFTY FIFTY",
-    "release_title": "Too Much Part 1",
-    "release_date": "2025-11-04",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "FIFTY FIFTY Too Much Part 1 official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=FIFTY+FIFTY+Too+Much+Part+1+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
@@ -15695,31 +15650,6 @@
   },
   {
     "group": "IVE",
-    "release_title": "BANG BANG",
-    "release_date": "2026-02-09",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "BANG BANG"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
-      "https://www.youtube.com/@officialstarship"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "IVE BANG BANG official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=IVE+BANG+BANG+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
-    "group": "IVE",
     "release_title": "REVIVE+",
     "release_date": "2026-02-23",
     "stream": "album",
@@ -17050,26 +16980,6 @@
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
-    "group": "KiiiKiii",
-    "release_title": "Delulu Pack",
-    "release_date": "2026-01-25",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up.",
-    "suggested_search_query": "KiiiKiii Delulu Pack official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=KiiiKiii+Delulu+Pack+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
     "group": "KISS OF LIFE",
     "release_title": "KISS OF LIFE",
     "release_date": "2023-07-05",
@@ -17300,28 +17210,6 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=KISS+OF+LIFE+224+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "KISS OF LIFE",
-    "release_title": "TOKYO MISSION START",
-    "release_date": "2025-11-05",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCvEEeBssb4XxIfWWIB8IjMw",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCvEEeBssb4XxIfWWIB8IjMw"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "KISS OF LIFE TOKYO MISSION START official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=KISS+OF+LIFE+TOKYO+MISSION+START+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
     "group": "KWON EUNBI",
@@ -22093,31 +21981,6 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
-    "group": "NCT DREAM",
-    "release_title": "Beat It Up",
-    "release_date": "2025-11-17",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "Beat It Up"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
-      "https://www.youtube.com/@SMTOWN"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "NCT DREAM Beat It Up official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=NCT+DREAM+Beat+It+Up+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
     "group": "NCT WISH",
     "release_title": "Hands Up",
     "release_date": "2023-10-08",
@@ -23796,28 +23659,6 @@
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
-    "group": "ONEUS",
-    "release_title": "原",
-    "release_date": "2026-01-20",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "ONEUS 原 official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=ONEUS+%E5%8E%9F+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
     "group": "ONEWE",
     "release_title": "나비, 꽃을 찾다",
     "release_date": "2015-08-13",
@@ -25176,28 +25017,6 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=PLAVE+%EC%88%A8%EB%B0%94%EA%BC%AD%EC%A7%88+%28Hide+and+Seek%29+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "PLAVE",
-    "release_title": "PLBBUU",
-    "release_date": "2025-11-10",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCPZIPuQPrfrUG9Xe_okEmQA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCPZIPuQPrfrUG9Xe_okEmQA"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "PLAVE PLBBUU official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=PLAVE+PLBBUU+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
     "group": "POW",
@@ -26670,28 +26489,6 @@
   },
   {
     "group": "RESCENE",
-    "release_title": "Heart Drop",
-    "release_date": "2025-11-06",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Heart Drop"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
-    "review_reason": "No official team or label YouTube source is registered yet for this release.",
-    "recommended_action": "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up.",
-    "suggested_search_query": "RESCENE Heart Drop official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=RESCENE+Heart+Drop+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "RESCENE",
     "release_title": "lip bomb",
     "release_date": "2025-11-25",
     "stream": "album",
@@ -27080,31 +26877,6 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
-    "group": "RIIZE",
-    "release_title": "All of You",
-    "release_date": "2026-02-09",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "All of You"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
-      "https://www.youtube.com/@SMTOWN"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "RIIZE All of You official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=RIIZE+All+of+You+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
     "group": "SAY MY NAME",
     "release_title": "SAY MY NAME",
     "release_date": "2024-10-16",
@@ -27147,28 +26919,6 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=SAY+MY+NAME+My+Name+Is%E2%80%A6+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "SAY MY NAME",
-    "release_title": "&Our Vibe",
-    "release_date": "2025-12-29",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@inkodeofficial"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "SAY MY NAME &Our Vibe official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=SAY+MY+NAME+%26Our+Vibe+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
     "group": "SEVENTEEN",
@@ -30746,26 +30496,6 @@
   },
   {
     "group": "TEMPEST",
-    "release_title": "As I am",
-    "release_date": "2025-10-27",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up.",
-    "suggested_search_query": "TEMPEST As I am official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TEMPEST+As+I+am+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
-    "group": "TEMPEST",
     "release_title": "In the Dark (暮色独白)",
     "release_date": "2025-11-03",
     "stream": "song",
@@ -32169,28 +31899,6 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=TNX+For+Real%3F+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TNX",
-    "release_title": "CALL ME BACK",
-    "release_date": "2026-01-22",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "CALL ME BACK"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
-    "review_reason": "No official team or label YouTube source is registered yet for this release.",
-    "recommended_action": "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up.",
-    "suggested_search_query": "TNX CALL ME BACK official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TNX+CALL+ME+BACK+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -34188,26 +33896,6 @@
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
-    "group": "TUNEXX",
-    "release_title": "SET BY US ONLY",
-    "release_date": "2026-03-03",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@official_TUNEXX",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
-    "suggested_search_query": "TUNEXX SET BY US ONLY official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TUNEXX+SET+BY+US+ONLY+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
     "group": "TWICE",
     "release_title": "THE STORY BEGINS",
     "release_date": "2015-10-20",
@@ -36125,28 +35813,6 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
-    "group": "VERIVERY",
-    "release_title": "Lost and Found",
-    "release_date": "2025-12-01",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "VERIVERY Lost and Found official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=VERIVERY+Lost+and+Found+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
     "group": "VIVIZ",
     "release_title": "Beam of Prism",
     "release_date": "2022-02-09",
@@ -37348,30 +37014,6 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
-    "group": "WJSN",
-    "release_title": "Bloom hour",
-    "release_date": "2026-02-25",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Bloom hour"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@officialstarship"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "WJSN Bloom hour official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=WJSN+Bloom+hour+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
     "group": "woo!ah!",
     "release_title": "EXCLAMATION",
     "release_date": "2020-05-15",
@@ -38152,26 +37794,6 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
-    "group": "XLOV",
-    "release_title": "UXLXVE",
-    "release_date": "2025-11-05",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@XLOV_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
-    "suggested_search_query": "XLOV UXLXVE official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=XLOV+UXLXVE+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
     "group": "YENA",
     "release_title": "ˣ‿ˣ (SMiLEY)",
     "release_date": "2022-01-17",
@@ -38556,29 +38178,6 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=YOUNG+POSSE+LOSE+YOUR+SHXT+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "YOUNG POSSE",
-    "release_title": "VISA / Pilot3",
-    "release_date": "2026-01-27",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "VISA",
-      "Pilot3"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
-    "review_reason": "No official team or label YouTube source is registered yet for this release.",
-    "recommended_action": "Backfill the team or label YouTube allowlist first or leave the release unresolved for later follow-up.",
-    "suggested_search_query": "YOUNG POSSE VISA official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=YOUNG+POSSE+VISA+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
     "group": "YOUNITE",

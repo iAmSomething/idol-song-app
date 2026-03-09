@@ -32,10 +32,10 @@
       }
     ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseDetails.no_mv_signal"
+      "url": "https://www.youtube.com/watch?v=yfKBI5l81-A",
+      "video_id": "yfKBI5l81-A",
+      "status": "manual_override",
+      "provenance": "manual review: user-provided official YouTube MV URL"
     },
     "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
   }
