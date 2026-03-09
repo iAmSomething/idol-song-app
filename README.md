@@ -226,8 +226,9 @@ npm run dev
 - browser에서 separate API base URL을 쓸 때 backend는 `APP_ENV`와 `WEB_ALLOWED_ORIGINS`를 같이 맞춰야 한다. production 기본 origin은 `https://iamsomething.github.io`다.
 - committed JSON snapshot은 import/parity/debug artifact로 유지되지만, shipped web cut-over surface의 runtime source switch로는 더 이상 사용하지 않는다.
 - `web/.env.example`에는 Pages / preview rehearsal에서 쓰는 API base env baseline이 들어 있다.
-- `.github/workflows/deploy-pages.yml`은 GitHub repository variable `VITE_API_BASE_URL`을 읽을 수 있게 열려 있다.
-- `npm run build`는 Pages read bridge(`web/public/__bridge/v1/**`)를 먼저 생성하고, deploy workflow도 `npm run verify:pages-read-bridge`로 known calendar/radar/release-detail regression을 gate로 막는다.
+- `.github/workflows/deploy-pages.yml`은 GitHub Pages build에 `VITE_API_BASE_URL`과 `VITE_BACKEND_TARGET_ENV=production`을 함께 주입한다.
+- `npm run build`는 Pages read bridge(`web/public/__bridge/v1/**`)를 먼저 생성하고, deploy workflow도 `npm run verify:pages-read-bridge`, `npm run verify:pages-backend-target`로 bridge completeness와 active backend target wiring을 같이 gate로 막는다.
+- 내부 inspection path는 `/__bridge/v1/meta/backend-target.json`이며, 앱에서는 `?inspect=backend-target` query로 현재 runtime target 진단 패널을 열 수 있다.
 
 ### 프로덕션 빌드
 
