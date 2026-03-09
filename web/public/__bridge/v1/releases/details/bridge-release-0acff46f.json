@@ -13,19 +13,55 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/3ctTWbdrxcHcjwbTKurGTI"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Feel Special",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "RAINBOW",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "GET LOUD",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "TRICK IT",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "LOVE FOOLISH",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "21:29",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "BREAKTHROUGH (Korean ver.)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_search_release)."
   }
 }

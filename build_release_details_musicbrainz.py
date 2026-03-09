@@ -8,6 +8,14 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
 
+from release_detail_acquisition import (
+    MusicBrainzReleaseDetailClient,
+    build_attempt,
+    enrich_release_detail,
+    get_actionable_release_detail_fields,
+    get_missing_release_detail_fields,
+)
+
 ROOT = Path(__file__).resolve().parent
 RELEASES_SNAPSHOT_PATH = ROOT / "web/src/data/releases.json"
 RELEASE_HISTORY_PATH = ROOT / "web/src/data/releaseHistory.json"
@@ -17,6 +25,9 @@ AUDIT_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_r
 AUDIT_MARKDOWN_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_summary.md"
 TITLE_TRACK_REVIEW_JSON_PATH = ROOT / "title_track_manual_review_queue.json"
 TITLE_TRACK_REVIEW_CSV_PATH = ROOT / "title_track_manual_review_queue.csv"
+DETAIL_REVIEW_JSON_PATH = ROOT / "release_detail_manual_review_queue.json"
+DETAIL_REVIEW_CSV_PATH = ROOT / "release_detail_manual_review_queue.csv"
+MIN_ACQUISITION_ATTEMPTS = 5
 
 DETAIL_STATUS_VERIFIED = "verified"
 DETAIL_STATUS_INFERRED = "inferred"
@@ -209,6 +220,19 @@ def normalize_tracks(tracks: object) -> List[Dict]:
         normalized_tracks.append(normalized_track)
 
     return normalized_tracks
+
+
+def has_resolved_youtube_video(detail: Dict) -> bool:
+    if optional_text(detail.get("youtube_video_url")) or optional_text(detail.get("youtube_video_id")):
+        return True
+
+    status = optional_text(detail.get("youtube_video_status"))
+    return status in {
+        YOUTUBE_VIDEO_STATUS_RELATION,
+        YOUTUBE_VIDEO_STATUS_MANUAL,
+        YOUTUBE_VIDEO_STATUS_REVIEW,
+        YOUTUBE_VIDEO_STATUS_NO_MV,
+    }
 
 
 def build_placeholder_note(item: Dict) -> str:
@@ -862,6 +886,82 @@ def write_title_track_review_queue(review_rows: List[Dict]) -> None:
             writer.writerow(output)
 
 
+def build_release_detail_review_rows(details_after: List[Dict], acquisition_traces: List[Dict]) -> List[Dict]:
+    details_by_key = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in details_after
+    }
+    review_rows: List[Dict] = []
+    for trace in acquisition_traces:
+        missing_fields_after = trace["missing_fields_after"]
+        if not missing_fields_after:
+            continue
+
+        detail = details_by_key[trace["key"]]
+        attempts = trace["attempts"]
+        attempted_methods = [attempt["method"] for attempt in attempts]
+        review_rows.append(
+            {
+                "group": detail["group"],
+                "release_title": detail["release_title"],
+                "release_date": detail["release_date"],
+                "stream": detail["stream"],
+                "release_kind": detail["release_kind"],
+                "missing_fields": missing_fields_after,
+                "attempted_methods_count": len({attempt["method"] for attempt in attempts}),
+                "attempted_methods": attempted_methods,
+                "attempts": attempts,
+                "compliant_min_attempts": len({attempt["method"] for attempt in attempts}) >= MIN_ACQUISITION_ATTEMPTS,
+                "recommended_action": (
+                    "Escalate to manual verification only after checking dependable official or platform sources for "
+                    "the remaining null fields."
+                ),
+            }
+        )
+
+    review_rows.sort(
+        key=lambda row: (
+            row["group"].casefold(),
+            row["release_date"],
+            row["stream"],
+            row["release_title"].casefold(),
+        )
+    )
+    return review_rows
+
+
+def write_release_detail_review_queue(review_rows: List[Dict]) -> None:
+    DETAIL_REVIEW_JSON_PATH.write_text(
+        json.dumps(review_rows, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    with DETAIL_REVIEW_CSV_PATH.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "group",
+                "release_title",
+                "release_date",
+                "stream",
+                "release_kind",
+                "missing_fields",
+                "attempted_methods_count",
+                "attempted_methods",
+                "compliant_min_attempts",
+                "recommended_action",
+            ],
+            lineterminator="\n",
+        )
+        writer.writeheader()
+        for row in review_rows:
+            output = dict(row)
+            output["missing_fields"] = " ; ".join(output["missing_fields"])
+            output["attempted_methods"] = " ; ".join(output["attempted_methods"])
+            output.pop("attempts", None)
+            writer.writerow(output)
+
+
 def build_title_track_spot_checks(details_after: List[Dict], title_track_resolutions: List[Dict]) -> List[Dict]:
     details_by_key = {
         get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
@@ -1228,6 +1328,7 @@ def build_coverage_summary_lines(
     historical_metrics: Dict,
     cutover_gates: Dict,
     title_track_review_rows: List[Dict],
+    detail_review_rows: List[Dict],
 ) -> List[str]:
     return [
         (
@@ -1254,6 +1355,7 @@ def build_coverage_summary_lines(
             f"{historical_metrics['canonical_mv_rows']}/{historical_metrics['total_rows']} "
             f"({format_percent(historical_metrics['canonical_mv_ratio'])}), mv review {overall_metrics['mv_review_rows']}"
         ),
+        f"release-detail null review queue: {len(detail_review_rows)} rows",
         f"historical catalog cutover gate: {cutover_gates['cutover_status']}",
     ]
 
@@ -1335,6 +1437,8 @@ def build_coverage_report(
     relaxed_match_count: int,
     title_track_resolutions: List[Dict],
     title_track_review_rows: List[Dict],
+    acquisition_traces: List[Dict],
+    detail_review_rows: List[Dict],
 ) -> Dict:
     history_keys = {
         get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
@@ -1485,11 +1589,22 @@ def build_coverage_report(
         ),
     }
     cutover_gates = build_cutover_gates(overall_metrics_after, historical_metrics_after)
+    acquisition_method_counts = dict(
+        Counter(
+            attempt["method"]
+            for trace in acquisition_traces
+            for attempt in trace["attempts"]
+        )
+    )
+    rows_with_min_attempts = sum(
+        1 for trace in acquisition_traces if len({attempt["method"] for attempt in trace["attempts"]}) >= MIN_ACQUISITION_ATTEMPTS
+    )
     summary_lines = build_coverage_summary_lines(
         overall_metrics_after,
         historical_metrics_after,
         cutover_gates,
         title_track_review_rows,
+        detail_review_rows,
     )
 
     return {
@@ -1537,6 +1652,11 @@ def build_coverage_report(
         "title_track_auto_double_rows": title_track_status_counts.get(TITLE_TRACK_STATUS_AUTO_DOUBLE, 0),
         "title_track_review_queue_rows": len(title_track_review_rows),
         "title_track_review_queue_sample": title_track_review_rows[:10],
+        "release_detail_review_queue_rows": len(detail_review_rows),
+        "release_detail_review_queue_sample": detail_review_rows[:10],
+        "rows_with_min_acquisition_attempts": rows_with_min_attempts,
+        "rows_missing_min_acquisition_attempts": len(acquisition_traces) - rows_with_min_attempts,
+        "acquisition_method_counts": acquisition_method_counts,
         "title_track_spot_checks": title_track_spot_checks,
         "verification_state_samples": verification_state_samples,
         "rows_with_youtube_music_after": sum(1 for row in details_after if optional_text(row.get("youtube_music_url"))),
@@ -1584,16 +1704,26 @@ def main() -> None:
         ).append(row)
 
     override_by_key = load_detail_overrides()
+    acquisition_client = MusicBrainzReleaseDetailClient()
 
     details_after: List[Dict] = []
     title_track_resolutions: List[Dict] = []
+    acquisition_traces: List[Dict] = []
     applied_overrides = 0
     relaxed_match_count = 0
 
     for item in items:
+        attempts: List[Dict] = []
         used_relaxed_match = False
         existing = existing_details.get(
             get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
+        )
+        attempts.append(
+            build_attempt(
+                "existing_exact_lookup",
+                existing is not None,
+                note="matched exact release key" if existing is not None else "no exact match",
+            )
         )
         if existing is None:
             existing = select_relaxed_existing_detail(
@@ -1606,14 +1736,65 @@ def main() -> None:
             if existing is not None:
                 relaxed_match_count += 1
                 used_relaxed_match = True
+        attempts.append(
+            build_attempt(
+                "existing_relaxed_lookup",
+                used_relaxed_match,
+                note="matched relaxed ±7 day window" if used_relaxed_match else "no relaxed match",
+            )
+        )
+        attempts.append(
+            build_attempt(
+                "manual_override_lookup",
+                get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) in override_by_key,
+                note="override exists" if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) in override_by_key else "no override",
+            )
+        )
         detail = normalize_existing_detail(item, existing, used_relaxed_match) if existing else build_empty_detail(item)
+        if get_actionable_release_detail_fields(detail):
+            detail, acquisition_attempts = enrich_release_detail(acquisition_client, item, detail)
+            attempts.extend(acquisition_attempts)
         detail, was_overridden, title_track_resolution = apply_detail_override(
             detail,
             override_by_key,
             song_release_index,
         )
+        attempts.append(
+            build_attempt(
+                "youtube_music_pipeline_lookup",
+                optional_text(detail.get("youtube_music_url")) is not None,
+                note=(
+                    "canonical YouTube Music URL present"
+                    if optional_text(detail.get("youtube_music_url")) is not None
+                    else "no canonical YouTube Music URL after current pipeline pass"
+                ),
+            )
+        )
+        attempts.append(
+            build_attempt(
+                "youtube_mv_pipeline_lookup",
+                has_resolved_youtube_video(detail),
+                note=(
+                    f"youtube_video_status={optional_text(detail.get('youtube_video_status')) or YOUTUBE_VIDEO_STATUS_UNRESOLVED}"
+                ),
+            )
+        )
+        attempts.append(
+            build_attempt(
+                "placeholder_seed_fallback",
+                detail.get("detail_provenance") == "releaseHistory.placeholder_seed",
+                note="placeholder retained" if detail.get("detail_provenance") == "releaseHistory.placeholder_seed" else "placeholder not needed",
+            )
+        )
         applied_overrides += int(was_overridden)
         details_after.append(detail)
+        acquisition_traces.append(
+            {
+                "key": get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"]),
+                "attempts": attempts,
+                "missing_fields_after": get_missing_release_detail_fields(detail),
+            }
+        )
         title_track_resolutions.append(
             {
                 "key": get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"]),
@@ -1633,6 +1814,8 @@ def main() -> None:
     OUTPUT_PATH.write_text(json.dumps(details_after, ensure_ascii=False, indent=2) + "\n")
     title_track_review_rows = build_title_track_review_rows(details_after, title_track_resolutions)
     write_title_track_review_queue(title_track_review_rows)
+    detail_review_rows = build_release_detail_review_rows(details_after, acquisition_traces)
+    write_release_detail_review_queue(detail_review_rows)
 
     report = build_coverage_report(
         latest_snapshot_items,
@@ -1643,6 +1826,8 @@ def main() -> None:
         relaxed_match_count,
         title_track_resolutions,
         title_track_review_rows,
+        acquisition_traces,
+        detail_review_rows,
     )
     AUDIT_OUTPUT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     AUDIT_MARKDOWN_OUTPUT_PATH.write_text(build_coverage_markdown(report), encoding="utf-8")

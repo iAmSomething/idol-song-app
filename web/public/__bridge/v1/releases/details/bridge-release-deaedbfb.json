@@ -19,13 +19,64 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Ready or Not",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "아름다워 (Beautiful)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "넘사벽 (Incomparable)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "니가 필요해 (Need U)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Oi",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Miss You",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Calm Down",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "너만 생각해 (All I Do)",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "5:14 (Last Page)",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "넌 어때 (I'll Be There)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

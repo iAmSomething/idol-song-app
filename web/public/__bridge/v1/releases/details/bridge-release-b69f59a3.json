@@ -19,13 +19,79 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "INTRODUCTION : YOUTH",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "RUN (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "FIRE (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "DOPE -超ヤベー!- (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Good Day",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Save ME (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "フンタン少年団 (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "ペップセ (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Wishing on a star",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Butterfly (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "FOR YOU",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "I NEED U (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "EPILOGUE : Young Forever (Japanese ver.)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

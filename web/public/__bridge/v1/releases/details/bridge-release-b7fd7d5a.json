@@ -19,13 +19,64 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "야간비행 (Turbulence)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Be With You",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "The Letter",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Still Here (Korean Ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Better (Korean Ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "멋 (The Real) (흥 : 興 Ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Wave (Overture)",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Wonderland (Symphony No.9 \"From The Wonderland\")",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Answer: Ode to Joy",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Outro : Over the Horizon",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

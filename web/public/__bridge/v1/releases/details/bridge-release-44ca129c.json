@@ -13,19 +13,130 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/6Y72DbWH9RBBVh8XNIGY16"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "雪明かり (Yukiakari)",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Deer Hunter",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "illumination",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "三日月の願い",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "五月雨 (Samidare)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Scar to Scar",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "君にカエル (Maybe)",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "青嵐 (Aoarashi)",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "声変わり",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "向日葵 (Imprinted)",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "十五夜 (Jyuugoya)",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Big好き (suki)",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "Beat the odds",
+        "is_title_track": false
+      },
+      {
+        "order": 14,
+        "title": "Feel the Pulse",
+        "is_title_track": false
+      },
+      {
+        "order": 15,
+        "title": "MEME",
+        "is_title_track": false
+      },
+      {
+        "order": 16,
+        "title": "Samidare - Korean ver.",
+        "is_title_track": false
+      },
+      {
+        "order": 17,
+        "title": "Scar to Scar - Korean ver.",
+        "is_title_track": false
+      },
+      {
+        "order": 18,
+        "title": "Aoarashi - Korean ver.",
+        "is_title_track": false
+      },
+      {
+        "order": 19,
+        "title": "Koegawari - Korean ver.",
+        "is_title_track": false
+      },
+      {
+        "order": 20,
+        "title": "Yukiakari - Korean ver.",
+        "is_title_track": false
+      },
+      {
+        "order": 21,
+        "title": "Deer Hunter - Korean ver.",
+        "is_title_track": false
+      },
+      {
+        "order": 22,
+        "title": "Dropkick - Korean ver.",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

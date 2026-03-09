@@ -13,19 +13,40 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/3L7i2VqeznnAqX5BG6gm3H"
       },
       "youtube_music": {
-        "url": null
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_lylo1HjXQ3etth1Y_2psaHbhoyeNA49_w"
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Dirty Work",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Dirty Work",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Dirty Work (English version)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Dirty Work (instrumental)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": "https://www.youtube.com/watch?v=M2WTUoy4y6E",
       "video_id": "M2WTUoy4y6E",
       "status": "manual_override",
       "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring). MusicBrainz acquisition enriched: tracks, spotify_url, youtube_music_url (musicbrainz.release_group_release)."
   }
 }

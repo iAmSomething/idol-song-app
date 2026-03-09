@@ -19,13 +19,79 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "INTRO.",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "THE STARS",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "JUMP (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Danger (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "BOY IN LUV (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "JUST ONE DAY (Japanese ver. extended)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "いいね!",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "いいね! Pt.2 ~あの場所で~",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "NO MORE DREAM (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "撃の防弾 (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "N.O (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "WAKE UP",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "OUTRO.",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

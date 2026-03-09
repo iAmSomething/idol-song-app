@@ -19,13 +19,39 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Move My Body",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "정글 (Jungle)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "혹시라도 실수로 아름다운 널 해치지 않게 (Change Me)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Switch It Up",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "반항아 (Rebel)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

@@ -13,19 +13,60 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/2gNPnKP1PDkB5SZz3IMKuX"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "How You Like That",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Ice Cream",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "Pretty Savage",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Bet You Wanna",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Lovesick Girls",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Crazy Over You",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Love to Hate Me",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "You Never Know",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

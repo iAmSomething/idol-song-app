@@ -13,19 +13,25 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/11sMvD8KLH8AFB0gThLsNA"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Falling for You",
+        "is_title_track": true
+      }
+    ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseHistory.placeholder_seed"
+      "url": "https://www.youtube.com/watch?v=IG7xOkB75X8",
+      "video_id": "IG7xOkB75X8",
+      "status": "relation_match",
+      "provenance": "musicbrainz.release_group_release.url_relation"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url, youtube_video (musicbrainz.release_group_release)."
   }
 }

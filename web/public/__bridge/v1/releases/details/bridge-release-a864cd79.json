@@ -13,19 +13,50 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/6Pe5LGQgU3mmvuRjFMsACV"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Queendom",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Pose",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Knock on Wood",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Better Be",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Pushin’ n Pullin’",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Hello, Sunset",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

@@ -13,19 +13,65 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/2ij1gxDXIbE3k8LkzgcFX1"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Celebrate",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Voices of Delight",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "TICK TOCK",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Flow like waves",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "That’s all I’m saying",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Bitter Sweet",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Sandcastle",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Just be yourself",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Doughnut",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

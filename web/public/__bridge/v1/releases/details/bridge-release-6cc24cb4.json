@@ -13,19 +13,45 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/0GUY29JTqpAq7U0q1LZvRT"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Evergreen",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "My Tune",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "LOUDER",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Wild Heart (JP ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "PASTEL (JP ver.)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

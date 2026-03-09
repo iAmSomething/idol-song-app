@@ -19,13 +19,74 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "위인전 (Hall of Fame)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "특 (S-Class)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "ITEM",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Super Bowl",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "TOPLINE",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "DLC",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "죽어보자 (GET LIT)",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "충돌 (Collision)",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "FNF",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Youtiful",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "THE SOUND (Korean Ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Mixtape: Time Out",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

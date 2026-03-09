@@ -13,19 +13,55 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/43HdrLwX5sr7sd1dUdL4aX"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "NEW MEN",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Pray (I’ll Be Your Man)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Love Drunk",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "I’m Bored",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Yes I Am",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Come on Over",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Melody Song",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

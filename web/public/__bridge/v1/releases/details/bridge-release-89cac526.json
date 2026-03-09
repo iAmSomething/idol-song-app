@@ -13,19 +13,110 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/7vehBp2yn4AlDZw0SQ8IHf"
       },
       "youtube_music": {
-        "url": null
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_mnGJCB4SKUbe8AyYdVia2BDEzoSQQbnlE"
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Straight Line",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Grand Prix",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "We Fresh (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Up! (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "WA DA DA (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "MVSK (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Celebrate",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Highlight",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Cruise",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Giddy (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "Galileo (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Wing Wing",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "I do! Do you?",
+        "is_title_track": false
+      },
+      {
+        "order": 14,
+        "title": "Sugar",
+        "is_title_track": false
+      },
+      {
+        "order": 15,
+        "title": "Don’t Lose Your Smile",
+        "is_title_track": false
+      },
+      {
+        "order": 16,
+        "title": "WA DA DA (Japanese ver.)~IMLAY remix~",
+        "is_title_track": false
+      },
+      {
+        "order": 17,
+        "title": "Daisy",
+        "is_title_track": false
+      },
+      {
+        "order": 18,
+        "title": "tOgether fOrever",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url, youtube_music_url (musicbrainz.release_group_release)."
   }
 }

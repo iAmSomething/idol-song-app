@@ -19,13 +19,59 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Intro : 화양연화",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "I NEED U",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "잡아줘 (Hold Me Tight)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "SKIT : Expectation!",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "쩔어",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "흥탄소년단",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Converse High",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "이사",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Outro : Love is Not Over",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

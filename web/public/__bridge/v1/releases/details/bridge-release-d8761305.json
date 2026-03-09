@@ -13,19 +13,80 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/1r0F1EzzNOaJyB7U0Jp5RH"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "WE KNOW",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Emergency",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Crazy Form",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "ARRIBA",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Silver Light",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Crescent Part 2",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Dreamy Day",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "MATZ",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "IT’s You",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Youth",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "Everything",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "FIN : WILL",
+        "is_title_track": true
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

@@ -19,13 +19,39 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "MANIAC",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Untie",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Overflow",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "한 걸음 (Day by day)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Up 2 Me",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

@@ -19,13 +19,64 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Intro : DREAMING",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Force",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "5時53分の空で見つけた君と僕 [Japanese Ver.]",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "9と4分の3番線で君を待つ (Run Away) [Japanese Ver.]",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "ある日、頭からツノが生えた (CROWN) [Japanese Ver.]",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Angel Or Devil [Japanese Ver.]",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Drama [Japanese Ver.]",
+        "is_title_track": true
+      },
+      {
+        "order": 8,
+        "title": "永遠に光れ (Everlasting Shine)",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Can't You See Me? (世界が燃えてしまった夜、僕たちは...) [Japanese Ver.]",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Outro : STILL",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

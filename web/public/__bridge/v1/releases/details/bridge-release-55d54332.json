@@ -19,13 +19,44 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "First Time",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Blood",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "놓아 놓아 놓아",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Sing Me",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "바래",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Hunt",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

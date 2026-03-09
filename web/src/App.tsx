@@ -251,9 +251,9 @@ type ReleaseDetailApiRequest = {
   release_kind: VerifiedRelease['release_kind']
 }
 
-type SearchSourceState = 'api' | 'api_error'
+type SearchSourceState = 'api' | 'bridge' | 'api_error'
 
-type EntityDetailSourceState = 'api' | 'api_error'
+type EntityDetailSourceState = 'api' | 'bridge' | 'api_error'
 type CalendarMonthSourceState = 'api' | 'bridge' | 'api_error'
 type RadarSourceState = 'api' | 'bridge' | 'api_error'
 
@@ -864,6 +864,7 @@ const TRANSLATIONS = {
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
     searchBackendLoading: 'backend /v1/search 결과를 확인하는 중입니다.',
     searchBackendActive: '현재 검색 결과는 backend /v1/search 응답을 사용 중입니다.',
+    searchBridgeActive: '현재 검색 결과는 embedded 로컬 데이터로 표시 중입니다.',
     searchBackendFallback: 'backend 검색 응답을 불러오지 못했습니다. 검색 결과 fallback은 비활성화되어 있습니다.',
     searchBackendTimeout: 'backend /v1/search 응답 시간이 초과되었습니다. 검색 결과 fallback은 비활성화되어 있습니다.',
     calendarBackendLoading: 'backend /v1/calendar/month 결과를 확인하는 중입니다.',
@@ -1137,6 +1138,7 @@ const TRANSLATIONS = {
     searchPlaceholder: 'BLACKPINK, Hearts2Hearts, DEADLINE, RUDE!...',
     searchBackendLoading: 'Checking backend /v1/search results now.',
     searchBackendActive: 'Search results are currently coming from the backend /v1/search response.',
+    searchBridgeActive: 'Search results are currently being shown from the embedded local dataset.',
     searchBackendFallback:
       'The backend search response was unavailable. Runtime search fallback is disabled.',
     searchBackendTimeout:
@@ -1395,10 +1397,12 @@ const TEAM_COPY = {
       '공식 badge/avatar가 있으면 우선 사용하고, 없을 때만 대표 이미지나 모노그램 fallback으로 내려갑니다.',
     backendLoading: 'backend /v1/entities 응답을 불러오는 중입니다.',
     backendActive: '이 팀 페이지는 backend /v1/entities 응답을 우선 사용 중입니다.',
+    bridgeActive: '이 팀 페이지는 embedded 로컬 detail 데이터로 표시 중입니다.',
     backendUnavailable: 'backend 팀 페이지 응답을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.',
     backendTimeout: 'backend 팀 페이지 응답 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.',
     backendNotFound: 'backend에 이 팀의 detail payload가 아직 준비되지 않았습니다.',
     backendLoadingBody: '팀 상세 데이터를 backend에서 읽어오는 중입니다.',
+    bridgeActiveBody: '현재 이 팀 상세는 embedded 로컬 데이터로 복구 표시 중입니다.',
     backendUnavailableBody: '팀 상세 데이터를 지금은 표시할 수 없습니다. API 응답이 복구되면 다시 열어 주세요.',
     backendNotFoundBody: '이 팀의 backend detail payload가 아직 준비되지 않아 상세 화면을 표시할 수 없습니다.',
     upcomingLabel: '예정 컴백',
@@ -1525,10 +1529,12 @@ const TEAM_COPY = {
       'Use an official badge/avatar first, then fall back to a representative image or monogram only when no sourced asset exists.',
     backendLoading: 'Loading the backend /v1/entities response now.',
     backendActive: 'This team page is currently using the backend /v1/entities response.',
+    bridgeActive: 'This team page is currently being shown from the embedded local detail dataset.',
     backendUnavailable: 'The backend team-detail response is unavailable right now. Please try again shortly.',
     backendTimeout: 'The backend team-detail request timed out. Please try again shortly.',
     backendNotFound: 'The backend does not have a detail payload for this team yet.',
     backendLoadingBody: 'Loading the team detail from the backend now.',
+    bridgeActiveBody: 'This team detail is currently being restored from the embedded local dataset.',
     backendUnavailableBody: 'The team detail cannot be shown right now because the backend response is unavailable.',
     backendNotFoundBody: 'This team does not have a backend detail payload yet, so the detail screen cannot be rendered.',
     upcomingLabel: 'Upcoming comeback',
@@ -1928,6 +1934,7 @@ function App() {
   }
   const searchSurfaceResource = useSearchSurfaceResource({
     search: deferredSearch,
+    fallbackSnapshot: searchSurfaceFallbackSnapshot,
   })
   const visibleSearchTeams = hasSearchQuery ? searchSurfaceResource.entities : searchSurfaceFallbackSnapshot.entities
   const visibleSearchReleases = hasSearchQuery ? searchSurfaceResource.releases : searchSurfaceFallbackSnapshot.releases
@@ -1942,6 +1949,14 @@ function App() {
             traceId: searchSurfaceResource.traceId,
             baseMessage: searchSurfaceResource.loading ? copy.searchBackendLoading : copy.searchBackendActive,
           })
+        : searchSurfaceResource.source === 'bridge'
+          ? buildSurfaceStatusMessage({
+              language,
+              source: 'bridge',
+              errorCode: null,
+              traceId: searchSurfaceResource.traceId,
+              baseMessage: copy.searchBridgeActive,
+            })
         : searchSurfaceResource.loading
           ? buildSurfaceStatusMessage({
               language,
@@ -2158,6 +2173,14 @@ function App() {
         traceId: selectedTeamResource.traceId,
         baseMessage: teamCopy.backendLoading,
       })
+    : selectedTeamResource.source === 'bridge'
+      ? buildSurfaceStatusMessage({
+          language,
+          source: 'bridge',
+          errorCode: null,
+          traceId: selectedTeamResource.traceId,
+          baseMessage: teamCopy.bridgeActive,
+        })
     : selectedTeamResource.source === 'api'
       ? buildSurfaceStatusMessage({
           language,
@@ -2636,6 +2659,8 @@ function App() {
                   <p className="hero-text team-summary-copy">
                     {selectedTeamResource.loading
                       ? teamCopy.backendLoadingBody
+                      : selectedTeamResource.source === 'bridge'
+                        ? teamCopy.bridgeActiveBody
                       : selectedTeamResource.errorCode === 'not_found'
                         ? teamCopy.backendNotFoundBody
                         : teamCopy.backendUnavailableBody}
@@ -7392,7 +7417,13 @@ async function fetchSearchSurfaceApiSnapshot(
   }
 }
 
-function useSearchSurfaceResource({ search }: { search: string }): SearchSurfaceResource {
+function useSearchSurfaceResource({
+  search,
+  fallbackSnapshot,
+}: {
+  search: string
+  fallbackSnapshot: SearchSurfaceSnapshot
+}): SearchSurfaceResource {
   const cacheKey = search.trim()
   const cachedSnapshot = cacheKey ? searchSurfaceApiSnapshotCache.get(cacheKey) ?? null : null
   const [remoteState, setRemoteState] = useState<{
@@ -7402,6 +7433,16 @@ function useSearchSurfaceResource({ search }: { search: string }): SearchSurface
     errorCode: string | null
     traceId: string | null
   }>(() => {
+    if (cacheKey && !BACKEND_API_BASE_URL) {
+      return {
+        cacheKey,
+        snapshot: fallbackSnapshot,
+        loading: false,
+        errorCode: null,
+        traceId: null,
+      }
+    }
+
     return {
       cacheKey,
       snapshot: cachedSnapshot,
@@ -7413,6 +7454,19 @@ function useSearchSurfaceResource({ search }: { search: string }): SearchSurface
 
   useEffect(() => {
     if (!cacheKey) {
+      return
+    }
+
+    if (!BACKEND_API_BASE_URL) {
+      Promise.resolve().then(() => {
+        setRemoteState({
+          cacheKey,
+          snapshot: fallbackSnapshot,
+          loading: false,
+          errorCode: null,
+          traceId: null,
+        })
+      })
       return
     }
 
@@ -7483,7 +7537,7 @@ function useSearchSurfaceResource({ search }: { search: string }): SearchSurface
       cancelled = true
       controller.abort()
     }
-  }, [cacheKey, cachedSnapshot, search])
+  }, [cacheKey, cachedSnapshot, fallbackSnapshot, search])
 
   const activeSnapshot = cacheKey
     ? remoteState.cacheKey === cacheKey
@@ -7492,8 +7546,13 @@ function useSearchSurfaceResource({ search }: { search: string }): SearchSurface
     : null
   const loading = !!cacheKey && remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
-  const source: SearchSourceState =
-    activeSnapshot || loading ? 'api' : 'api_error'
+  const source: SearchSourceState = !cacheKey
+    ? 'api'
+    : !BACKEND_API_BASE_URL
+      ? 'bridge'
+      : activeSnapshot || loading
+        ? 'api'
+        : 'api_error'
 
   return {
     ...(activeSnapshot ?? {
@@ -8359,6 +8418,14 @@ async function fetchEntityDetailApiSnapshot(
   fallbackTeam: TeamProfile,
   signal: AbortSignal,
 ): Promise<{ team: TeamProfile | null; errorCode: string | null; traceId: string | null }> {
+  if (!BACKEND_API_BASE_URL) {
+    return {
+      team: fallbackTeam,
+      errorCode: null,
+      traceId: null,
+    }
+  }
+
   const cacheKey = fallbackTeam.group
   const cachedSnapshot = entityDetailApiSnapshotCache.get(cacheKey)
   if (cachedSnapshot) {
@@ -8409,14 +8476,27 @@ function useEntityDetailResource({
     traceId: string | null
   }>(() => ({
     cacheKey,
-    team: cachedSnapshot,
-    loading: Boolean(cacheKey && fallbackTeam && !cachedSnapshot),
+    team: !BACKEND_API_BASE_URL && fallbackTeam ? fallbackTeam : cachedSnapshot,
+    loading: Boolean(cacheKey && fallbackTeam && !cachedSnapshot && BACKEND_API_BASE_URL),
     errorCode: null,
     traceId: null,
   }))
 
   useEffect(() => {
     if (!fallbackTeam || !cacheKey) {
+      return
+    }
+
+    if (!BACKEND_API_BASE_URL) {
+      Promise.resolve().then(() => {
+        setRemoteState({
+          cacheKey,
+          team: fallbackTeam,
+          loading: false,
+          errorCode: null,
+          traceId: null,
+        })
+      })
       return
     }
 
@@ -8491,12 +8571,16 @@ function useEntityDetailResource({
 
   const activeTeam = cacheKey
     ? remoteState.cacheKey === cacheKey
-      ? remoteState.team ?? cachedSnapshot
-      : cachedSnapshot
+      ? remoteState.team ?? cachedSnapshot ?? fallbackTeam
+      : cachedSnapshot ?? fallbackTeam
     : null
   const loading = !!cacheKey && remoteState.cacheKey === cacheKey && remoteState.team === null && remoteState.loading
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
-  const source: EntityDetailSourceState = activeTeam ? 'api' : 'api_error'
+  const source: EntityDetailSourceState = !BACKEND_API_BASE_URL
+    ? 'bridge'
+    : activeTeam
+      ? 'api'
+      : 'api_error'
 
   return {
     team: activeTeam,

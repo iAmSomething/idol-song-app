@@ -19,13 +19,39 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Hands on Me",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Why Don't You Know",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Make a Wish",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "우주먼지",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "월화수목금토일",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

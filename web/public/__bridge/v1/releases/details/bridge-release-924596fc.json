@@ -19,13 +19,89 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Intro : Boy Meets Evil",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "피 땀 눈물",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Begin",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Lie",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Stigma",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "First Love",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Reflection",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "MAMA",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Awake",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Lost",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "BTS Cypher 4",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Am I Wrong",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "21세기 소녀",
+        "is_title_track": false
+      },
+      {
+        "order": 14,
+        "title": "둘! 셋! (그래도 좋은 날이 더 많기를)",
+        "is_title_track": false
+      },
+      {
+        "order": 15,
+        "title": "Interlude : Wings",
+        "is_title_track": true
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

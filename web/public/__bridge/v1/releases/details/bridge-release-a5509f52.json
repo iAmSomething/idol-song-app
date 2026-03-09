@@ -13,19 +13,60 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/2qehskW9lYGWfYb0xPZkrS"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Life Goes On",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Fly to My Room",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Blue & Grey",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Skit",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Telepathy",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Dis‐ease",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Stay",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Dynamite",
+        "is_title_track": true
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

@@ -19,13 +19,49 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Hello",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Mr.애매모호",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "히히하헤호",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Baton Touch",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "내맘이야 (화사 solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "썸남썸녀",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "행복하지마",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

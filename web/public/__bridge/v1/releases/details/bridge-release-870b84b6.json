@@ -13,19 +13,65 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/1hG9lZDk2HqmOHMtuI3Zdj"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Prism",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "1 of 1",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "Feel Good",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "투명 우산 Don’t Let Me Go",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Lipstick",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Don’t Stop",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Shift",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "U Need Me",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "So Amazing",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

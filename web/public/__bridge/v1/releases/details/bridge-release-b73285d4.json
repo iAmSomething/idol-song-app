@@ -19,13 +19,44 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "부탁해",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "너, 너, 너",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "아이야",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "가면무도회",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Hurry Up",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "2월의 봄",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

@@ -19,13 +19,49 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Beam",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Before the Rise",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Rising",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Colorful",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "The Baddest",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "New Look",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "초월 (Chowall)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

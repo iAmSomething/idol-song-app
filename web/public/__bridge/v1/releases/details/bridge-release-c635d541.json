@@ -13,19 +13,60 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/1NaADge8wCv2oCkMsOrTd6"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Hello, world!",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Journey of NMIXX (1)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "About Music",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "About Lyrics",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "About NMIXX",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Journey of NMIXX (2)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Thank you for waiting us!",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Coming SOON!",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

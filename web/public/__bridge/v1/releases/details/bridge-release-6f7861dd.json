@@ -13,19 +13,90 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/prerelease/2wQFpdWTxaoRdPRrkc45UG"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "FOUR",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "THIS IS FOR",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "OPTIONS",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "MARS",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "RIGHT HAND GIRL",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "PEACH GELATO",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "HI HELLO",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "BATTITUDE",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "DAT AHH DAT OOH",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "LET LOVE GO",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "G.O.A.T.",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "TALK",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "SEESAW",
+        "is_title_track": false
+      },
+      {
+        "order": 14,
+        "title": "HEARTBREAK AVENUE",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

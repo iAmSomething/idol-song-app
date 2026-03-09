@@ -13,19 +13,40 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/5oDe8KM2IkcIVw9jhHjtkX"
       },
       "youtube_music": {
-        "url": null
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_kqlDwGonDH0Y8tg09w7nITQaWBCMmS4k8"
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "LIGHTHOUSE",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "There",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "B.O.K",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Slow Motion",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url, youtube_music_url (musicbrainz.release_group_release)."
   }
 }

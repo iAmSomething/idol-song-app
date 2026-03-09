@@ -19,13 +19,64 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "INTRO : O!RUL8,2?",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "N.O",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "We On",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Skit : R U Happy Now?",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "If I Ruled the World",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Coffee",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "BTS Cypher Part 1",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "진격의 방탄",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "팔도강산",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "OUTRO : LUV IN SKOOL",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

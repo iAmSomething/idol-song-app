@@ -19,13 +19,109 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Downtown Baby",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Lucky Star",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Everybody",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Picasso",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "3 2 1",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "365",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Sunny Day Hero",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Perfect 10",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Bounce",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Dream Girl",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "Colors of the Season",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Boys Meet U",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "Boys Meet U Music Video",
+        "is_title_track": false
+      },
+      {
+        "order": 14,
+        "title": "3 2 1 Music Video",
+        "is_title_track": false
+      },
+      {
+        "order": 15,
+        "title": "Everybody Dance Music Video",
+        "is_title_track": false
+      },
+      {
+        "order": 16,
+        "title": "Lucky Star Music Video",
+        "is_title_track": false
+      },
+      {
+        "order": 17,
+        "title": "Downtown Baby Dance Music Video",
+        "is_title_track": false
+      },
+      {
+        "order": 18,
+        "title": "Downtown Baby Music Video Shooting Sketch",
+        "is_title_track": false
+      },
+      {
+        "order": 19,
+        "title": "I'm Your Boy Jacket Shooting Sketch & Special Interview",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }

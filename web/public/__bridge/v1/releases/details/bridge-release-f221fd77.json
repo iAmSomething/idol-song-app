@@ -13,19 +13,100 @@
     "artwork": null,
     "service_links": {
       "spotify": {
-        "url": null
+        "url": "https://open.spotify.com/album/0xlyof8BowaJtYPsxWYmkN"
       },
       "youtube_music": {
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "HBD",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "THUNDER",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Bad Influence",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Skyfall (THE 8 Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Fortunate Change (JOSHUA Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "99.9% (WONWOO Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Raindrops (SEUNGKWAN Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Damage (HOSHI Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Shake It Off (MINGYU Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Happy Virus (DK Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "Destiny (WOOZI Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Shining Star (Vernon Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "Gemini (JUN Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 14,
+        "title": "Trigger (DINO Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 15,
+        "title": "Coincidence (JEONGHAN Solo)",
+        "is_title_track": false
+      },
+      {
+        "order": 16,
+        "title": "Jungle (S.COUPS Solo)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   }
 }

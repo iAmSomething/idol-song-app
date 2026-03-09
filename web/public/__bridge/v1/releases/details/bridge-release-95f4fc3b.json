@@ -19,13 +19,64 @@
         "url": null
       }
     },
-    "tracks": [],
+    "tracks": [
+      {
+        "order": 1,
+        "title": "GIANT",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Chk Chk Boom -Japanese ver.-",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "NIGHT",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Falling Up",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "WHY?",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Saiyan",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "love is painful",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Christmas Love",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "NIGHT (English ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Falling Up (English ver.)",
+        "is_title_track": false
+      }
+    ],
     "mv": {
       "url": null,
       "video_id": null,
       "status": "unresolved",
       "provenance": "releaseHistory.placeholder_seed"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }
 }
