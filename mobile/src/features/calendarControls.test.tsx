@@ -3,6 +3,7 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import CalendarTabScreen from '../../app/(tabs)/calendar';
+import { trackAnalyticsEvent, trackDatasetDegraded, trackDatasetLoadFailed } from '../services/analytics';
 
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({}));
@@ -33,6 +34,14 @@ const { __mock } = jest.requireMock('expo-router') as {
     useLocalSearchParams: jest.Mock;
   };
 };
+jest.mock('../services/analytics', () => ({
+  trackAnalyticsEvent: jest.fn(),
+  trackDatasetDegraded: jest.fn(),
+  trackDatasetLoadFailed: jest.fn(),
+}));
+const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
+const mockTrackDatasetDegraded = jest.mocked(trackDatasetDegraded);
+const mockTrackDatasetLoadFailed = jest.mocked(trackDatasetLoadFailed);
 
 async function renderCalendarScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -54,6 +63,9 @@ describe('calendar controls', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-03-07T09:00:00.000Z'));
     __mock.useLocalSearchParams.mockReturnValue({});
+    mockTrackAnalyticsEvent.mockClear();
+    mockTrackDatasetDegraded.mockClear();
+    mockTrackDatasetLoadFailed.mockClear();
   });
 
   afterEach(() => {
@@ -101,6 +113,21 @@ describe('calendar controls', () => {
     expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 3월');
     expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
     expect(hasText(tree, '2026년 3월 11일')).toBe(true);
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'calendar_quick_jump_used',
+      expect.objectContaining({
+        target: 'nearest_upcoming',
+        fromMonth: '2026-04',
+        toMonth: '2026-03',
+      }),
+    );
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'calendar_date_drill_opened',
+      expect.objectContaining({
+        date: '2026-03-11',
+        source: 'nearest_upcoming',
+      }),
+    );
   });
 
   test('keeps month-only items outside the grid and applies compact filters', async () => {
@@ -113,6 +140,13 @@ describe('calendar controls', () => {
     });
 
     expect(hasText(tree, '현재 필터에서는 month-only 예정 신호를 숨깁니다.')).toBe(true);
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'calendar_filter_changed',
+      expect.objectContaining({
+        filterMode: 'releases',
+        month: '2026-03',
+      }),
+    );
 
     await act(async () => {
       tree.root.findByProps({ testID: 'calendar-filter-upcoming' }).props.onPress();
@@ -123,5 +157,13 @@ describe('calendar controls', () => {
     });
 
     expect(hasText(tree, '이 날짜에는 등록된 일정이 없습니다.')).toBe(true);
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'calendar_date_drill_opened',
+      expect.objectContaining({
+        date: '2026-03-03',
+        source: 'grid',
+        filterMode: 'upcoming',
+      }),
+    );
   });
 });

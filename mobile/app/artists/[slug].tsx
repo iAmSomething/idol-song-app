@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Image,
   Linking,
@@ -19,6 +19,7 @@ import {
   loadActiveMobileDataset,
   type ActiveMobileDataset,
 } from '../../src/services/activeDataset';
+import { trackDatasetDegraded, trackDatasetLoadFailed } from '../../src/services/analytics';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   EntityDetailSnapshotModel,
@@ -134,6 +135,7 @@ export default function ArtistDetailScreen() {
   const slug = getSingleParam(params.slug)?.trim() ?? '';
   const [reloadCount, setReloadCount] = useState(0);
   const [state, setState] = useState<EntityDetailScreenState>({ kind: 'loading' });
+  const datasetEventKeyRef = useRef<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -156,6 +158,17 @@ export default function ArtistDetailScreen() {
           return;
         }
 
+        const datasetEventKey =
+          source.runtimeState.mode === 'degraded' || source.issues.length > 0
+            ? `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`
+            : `ready:${source.selection.kind}`;
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
+            trackDatasetDegraded('entity_detail', source);
+          }
+        }
+
         const snapshot = selectEntityDetailSnapshot(source.dataset, slug);
         if (!snapshot) {
           setState({
@@ -176,12 +189,19 @@ export default function ArtistDetailScreen() {
           return;
         }
 
+        const message =
+          error instanceof Error
+            ? error.message
+            : '팀 상세 데이터를 불러오지 못했습니다.';
+        const datasetEventKey = `error:${message}`;
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          trackDatasetLoadFailed('entity_detail', message);
+        }
+
         setState({
           kind: 'error',
-          message:
-            error instanceof Error
-              ? error.message
-              : '팀 상세 데이터를 불러오지 못했습니다.',
+          message,
         });
       });
 

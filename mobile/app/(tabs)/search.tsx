@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useDeferredValue, useEffect, useMemo, useState } from 'react';
+import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Pressable,
   ScrollView,
@@ -25,6 +25,12 @@ import {
   selectTeamSummaryBySlug,
 } from '../../src/selectors';
 import { loadActiveMobileDataset, type ActiveMobileDataset } from '../../src/services/activeDataset';
+import {
+  trackAnalyticsEvent,
+  trackDatasetDegraded,
+  trackDatasetLoadFailed,
+  type SearchSubmitSource,
+} from '../../src/services/analytics';
 import { clearRecentQueries, persistRecentQuery, readRecentQueries } from '../../src/services/recentQueries';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
@@ -95,6 +101,7 @@ export default function SearchTabScreen() {
   const [activeSegment, setActiveSegment] = useState<SearchSegment>(routeState.activeSegment);
   const [recentQueries, setRecentQueries] = useState<string[]>([]);
   const deferredQuery = useDeferredValue(query);
+  const datasetEventKeyRef = useRef<string | null>(null);
 
   useEffect(() => {
     setQuery(routeState.query);
@@ -111,6 +118,18 @@ export default function SearchTabScreen() {
           return;
         }
 
+        const datasetEventKey =
+          source.runtimeState.mode === 'degraded' || source.issues.length > 0
+            ? `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`
+            : `ready:${source.selection.kind}`;
+
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
+            trackDatasetDegraded('search', source);
+          }
+        }
+
         setRecentQueries(history);
         setState({
           kind: 'ready',
@@ -122,12 +141,19 @@ export default function SearchTabScreen() {
           return;
         }
 
+        const message =
+          error instanceof Error
+            ? error.message
+            : 'Search dataset could not be loaded right now.';
+        const datasetEventKey = `error:${message}`;
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          trackDatasetLoadFailed('search', message);
+        }
+
         setState({
           kind: 'error',
-          message:
-            error instanceof Error
-              ? error.message
-              : 'Search dataset could not be loaded right now.',
+          message,
         });
       });
 
@@ -200,18 +226,58 @@ export default function SearchTabScreen() {
     setRecentQueries(history);
   }
 
-  async function handleSubmitQuery(nextQuery = query) {
+  function buildSearchSubmissionMetrics(nextQuery: string): {
+    hadResults: boolean;
+    resultCounts: {
+      entities: number;
+      releases: number;
+      upcoming: number;
+    };
+  } {
+    if (!selectorContext) {
+      return {
+        hadResults: false,
+        resultCounts: {
+          entities: 0,
+          releases: 0,
+          upcoming: 0,
+        },
+      };
+    }
+
+    const nextResults = selectSearchResults(selectorContext, nextQuery);
+    const resultCounts = {
+      entities: nextResults.entities.length,
+      releases: nextResults.releases.length,
+      upcoming: nextResults.upcoming.length,
+    };
+
+    return {
+      hadResults: resultCounts.entities + resultCounts.releases + resultCounts.upcoming > 0,
+      resultCounts,
+    };
+  }
+
+  async function handleSubmitQuery(nextQuery = query, submitSource: SearchSubmitSource = 'input') {
     const normalized = nextQuery.trim();
     if (!normalized) {
       return;
     }
 
+    const metrics = buildSearchSubmissionMetrics(normalized);
+    trackAnalyticsEvent('search_submitted', {
+      query: normalized,
+      submitSource,
+      activeSegment,
+      resultCounts: metrics.resultCounts,
+      hadResults: metrics.hadResults,
+    });
     await rememberQuery(normalized);
   }
 
   async function handleRecentQueryPress(nextQuery: string) {
     setQuery(nextQuery);
-    await rememberQuery(nextQuery);
+    await handleSubmitQuery(nextQuery, 'recent');
   }
 
   async function handleClearHistory() {
@@ -231,6 +297,44 @@ export default function SearchTabScreen() {
       pathname: '/releases/[id]',
       params: { id: releaseId },
     });
+  }
+
+  function handleTeamResultPress(result: SearchTeamResultModel) {
+    trackAnalyticsEvent('search_result_opened', {
+      query: query.trim(),
+      activeSegment,
+      resultType: 'team',
+      targetId: result.team.slug,
+      matchKind: result.matchKind,
+    });
+    openTeamDetail(result.team.slug);
+  }
+
+  function handleReleaseResultPress(release: ReleaseSummaryModel, matchKind: string) {
+    trackAnalyticsEvent('search_result_opened', {
+      query: query.trim(),
+      activeSegment,
+      resultType: 'release',
+      targetId: release.id,
+      matchKind,
+    });
+    openReleaseDetail(release.id);
+  }
+
+  function handleUpcomingResultPress(result: SearchUpcomingResultModel) {
+    const slug = teamSlugByGroup.get(result.upcoming.group);
+    if (!slug) {
+      return;
+    }
+
+    trackAnalyticsEvent('search_result_opened', {
+      query: query.trim(),
+      activeSegment,
+      resultType: 'upcoming',
+      targetId: slug,
+      matchKind: result.matchKind,
+    });
+    openTeamDetail(slug);
   }
 
   if (state.kind === 'loading') {
@@ -417,9 +521,10 @@ export default function SearchTabScreen() {
             ? results.entities.map((result) => (
                 <Pressable
                   key={result.team.slug}
+                  testID={`search-team-result-press-${result.team.slug}`}
                   accessibilityLabel={buildTeamResultAccessibilityLabel(result)}
                   accessibilityRole="button"
-                  onPress={() => openTeamDetail(result.team.slug)}
+                  onPress={() => handleTeamResultPress(result)}
                   style={({ pressed }) => [styles.resultRow, pressed ? styles.segmentButtonPressed : null]}
                 >
                   <View style={styles.resultLeadingBadge}>
@@ -440,9 +545,10 @@ export default function SearchTabScreen() {
             ? results.releases.map((result) => (
                 <Pressable
                   key={result.release.id}
+                  testID={`search-release-result-press-${result.release.id}`}
                   accessibilityLabel={buildReleaseResultAccessibilityLabel(result.release, result.matchKind)}
                   accessibilityRole="button"
-                  onPress={() => openReleaseDetail(result.release.id)}
+                  onPress={() => handleReleaseResultPress(result.release, result.matchKind)}
                   style={({ pressed }) => [styles.resultRow, pressed ? styles.segmentButtonPressed : null]}
                 >
                   <View style={styles.resultLeadingBadge}>
@@ -463,16 +569,12 @@ export default function SearchTabScreen() {
             ? results.upcoming.map((result) => (
                 <Pressable
                   key={result.upcoming.id}
+                  testID={`search-upcoming-result-press-${result.upcoming.id}`}
                   accessibilityLabel={buildUpcomingResultAccessibilityLabel(result)}
                   accessibilityRole="button"
                   accessibilityState={{ disabled: !teamSlugByGroup.get(result.upcoming.group) }}
                   disabled={!teamSlugByGroup.get(result.upcoming.group)}
-                  onPress={() => {
-                    const slug = teamSlugByGroup.get(result.upcoming.group);
-                    if (slug) {
-                      openTeamDetail(slug);
-                    }
-                  }}
+                  onPress={() => handleUpcomingResultPress(result)}
                   style={({ pressed }) => [
                     styles.resultRow,
                     !teamSlugByGroup.get(result.upcoming.group) ? styles.disabledButton : null,

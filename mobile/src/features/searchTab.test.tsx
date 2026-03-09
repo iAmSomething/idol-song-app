@@ -2,6 +2,7 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import SearchTabScreen from '../../app/(tabs)/search';
+import { trackAnalyticsEvent, trackDatasetDegraded, trackDatasetLoadFailed } from '../services/analytics';
 import { persistRecentQuery, readRecentQueries } from '../services/recentQueries';
 import { resetStorageAdapter, setStorageAdapter, type KeyValueStorageAdapter } from '../services/storage';
 
@@ -33,6 +34,12 @@ jest.mock('expo-router', () => {
   };
 });
 
+jest.mock('../services/analytics', () => ({
+  trackAnalyticsEvent: jest.fn(),
+  trackDatasetDegraded: jest.fn(),
+  trackDatasetLoadFailed: jest.fn(),
+}));
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     push: jest.Mock;
@@ -40,6 +47,9 @@ const { __mock } = jest.requireMock('expo-router') as {
     useLocalSearchParams: jest.Mock;
   };
 };
+const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
+const mockTrackDatasetDegraded = jest.mocked(trackDatasetDegraded);
+const mockTrackDatasetLoadFailed = jest.mocked(trackDatasetLoadFailed);
 
 async function renderSearchScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -62,6 +72,10 @@ describe('mobile search tab', () => {
     setStorageAdapter(createMemoryStorage());
     __mock.useLocalSearchParams.mockReturnValue({});
     __mock.setParams.mockClear();
+    __mock.push.mockClear();
+    mockTrackAnalyticsEvent.mockClear();
+    mockTrackDatasetDegraded.mockClear();
+    mockTrackDatasetLoadFailed.mockClear();
   });
 
   afterEach(() => {
@@ -76,6 +90,20 @@ describe('mobile search tab', () => {
     });
 
     expect(tree.root.findByProps({ testID: 'search-team-result-yena' })).toBeDefined();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-team-result-press-yena' }).props.onPress();
+    });
+
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'search_result_opened',
+      expect.objectContaining({
+        query: '최예나',
+        activeSegment: 'entities',
+        resultType: 'team',
+        targetId: 'yena',
+      }),
+    );
 
     await act(async () => {
       tree.root.findByProps({ testID: 'search-segment-releases' }).props.onPress();
@@ -98,6 +126,13 @@ describe('mobile search tab', () => {
     });
 
     await expect(readRecentQueries()).resolves.toEqual(['최예나']);
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'search_submitted',
+      expect.objectContaining({
+        query: '최예나',
+        submitSource: 'input',
+      }),
+    );
   });
 
   test('shows recent queries when idle and allows clearing history', async () => {
@@ -113,6 +148,23 @@ describe('mobile search tab', () => {
 
     expect(await readRecentQueries()).toEqual([]);
     expect(hasText(tree, '최근 검색이 없습니다.')).toBe(true);
+
+    await act(async () => {
+      await persistRecentQuery('최예나');
+    });
+
+    const rerendered = await renderSearchScreen();
+    await act(async () => {
+      rerendered.root.findByProps({ testID: 'recent-query-최예나' }).props.onPress();
+    });
+
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'search_submitted',
+      expect.objectContaining({
+        query: '최예나',
+        submitSource: 'recent',
+      }),
+    );
   });
 
   test('restores query and segment state from route params', async () => {

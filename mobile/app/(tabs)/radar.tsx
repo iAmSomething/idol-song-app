@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Pressable,
   ScrollView,
@@ -22,6 +22,7 @@ import {
   loadActiveMobileDataset,
   type ActiveMobileDataset,
 } from '../../src/services/activeDataset';
+import { trackDatasetDegraded, trackDatasetLoadFailed } from '../../src/services/analytics';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   RadarLongGapItemModel,
@@ -86,6 +87,7 @@ export default function RadarTabScreen() {
   const routeState = useMemo(() => resolveRadarRouteState(params), [params]);
   const [hideEmptySections, setHideEmptySections] = useState(routeState.hideEmptySections);
   const [state, setState] = useState<RadarScreenState>({ kind: 'loading' });
+  const datasetEventKeyRef = useRef<string | null>(null);
   const today = useMemo(() => new Date(), []);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
 
@@ -103,6 +105,17 @@ export default function RadarTabScreen() {
           return;
         }
 
+        const datasetEventKey =
+          source.runtimeState.mode === 'degraded' || source.issues.length > 0
+            ? `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`
+            : `ready:${source.selection.kind}`;
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
+            trackDatasetDegraded('radar', source);
+          }
+        }
+
         setState({
           kind: 'ready',
           source,
@@ -114,12 +127,19 @@ export default function RadarTabScreen() {
           return;
         }
 
+        const message =
+          error instanceof Error
+            ? error.message
+            : 'Radar dataset could not be loaded right now.';
+        const datasetEventKey = `error:${message}`;
+        if (datasetEventKeyRef.current !== datasetEventKey) {
+          datasetEventKeyRef.current = datasetEventKey;
+          trackDatasetLoadFailed('radar', message);
+        }
+
         setState({
           kind: 'error',
-          message:
-            error instanceof Error
-              ? error.message
-              : 'Radar dataset could not be loaded right now.',
+          message,
         });
       });
 

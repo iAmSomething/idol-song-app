@@ -4,6 +4,11 @@ import { Text } from 'react-native';
 
 import ReleaseDetailScreen from '../../app/releases/[id]';
 import {
+  trackAnalyticsEvent,
+  trackDatasetDegraded,
+  trackDatasetLoadFailed,
+} from '../services/analytics';
+import {
   openServiceHandoff,
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
@@ -56,6 +61,12 @@ jest.mock('../services/handoff', () => {
   };
 });
 
+jest.mock('../services/analytics', () => ({
+  trackAnalyticsEvent: jest.fn(),
+  trackDatasetDegraded: jest.fn(),
+  trackDatasetLoadFailed: jest.fn(),
+}));
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     useLocalSearchParams: jest.Mock;
@@ -64,6 +75,9 @@ const { __mock } = jest.requireMock('expo-router') as {
 };
 
 const mockOpenServiceHandoff = openServiceHandoff as jest.MockedFunction<typeof openServiceHandoff>;
+const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
+const mockTrackDatasetDegraded = jest.mocked(trackDatasetDegraded);
+const mockTrackDatasetLoadFailed = jest.mocked(trackDatasetLoadFailed);
 
 async function renderReleaseDetail() {
   let tree: renderer.ReactTestRenderer;
@@ -88,6 +102,9 @@ describe('mobile release detail screen', () => {
       push: jest.fn(),
     });
     mockOpenServiceHandoff.mockClear();
+    mockTrackAnalyticsEvent.mockClear();
+    mockTrackDatasetDegraded.mockClear();
+    mockTrackDatasetLoadFailed.mockClear();
   });
 
   test('renders populated release detail sections for a canonical release', async () => {
@@ -145,6 +162,21 @@ describe('mobile release detail screen', () => {
       service: 'spotify',
       mode: 'searchFallback',
     });
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'service_handoff_attempted',
+      expect.objectContaining({
+        surface: 'release_detail',
+        service: 'spotify',
+      }),
+    );
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'service_handoff_completed',
+      expect.objectContaining({
+        surface: 'release_detail',
+        service: 'spotify',
+        ok: true,
+      }),
+    );
   });
 
   test('keeps the route stable and shows retryable feedback when handoff fails', async () => {
@@ -174,5 +206,14 @@ describe('mobile release detail screen', () => {
       true,
     );
     expect(tree.root.findByProps({ testID: 'release-detail-title' }).props.children).toBe('LOVE CATCHER');
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'service_handoff_completed',
+      expect.objectContaining({
+        surface: 'release_detail',
+        service: 'spotify',
+        ok: false,
+        failureCode: 'handoff_open_failed',
+      }),
+    );
   });
 });

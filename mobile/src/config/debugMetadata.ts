@@ -4,6 +4,7 @@ import {
   type MobileRuntimeConfig,
   type RuntimeConfigState,
 } from './runtime';
+import { getLatestAnalyticsEvent, getRecentAnalyticsEvents } from '../services/analytics';
 
 export type MobileDebugMetadata = {
   profile: MobileRuntimeConfig['profile'];
@@ -16,6 +17,8 @@ export type MobileDebugMetadata = {
   remoteDatasetUrl: string | null;
   analyticsEnabled: boolean;
   radarEnabled: boolean;
+  analyticsEventCount: number;
+  latestAnalyticsEvent: string | null;
 };
 
 export function isDebugMetadataAvailable(runtimeConfig: MobileRuntimeConfig = getRuntimeConfig()): boolean {
@@ -26,6 +29,8 @@ export function getDebugMetadata(
   runtimeState: RuntimeConfigState = getRuntimeConfigState(),
 ): MobileDebugMetadata {
   const runtimeConfig = runtimeState.config;
+  const recentAnalyticsEvents = getRecentAnalyticsEvents();
+  const latestAnalyticsEvent = getLatestAnalyticsEvent();
 
   return {
     profile: runtimeConfig.profile,
@@ -38,5 +43,9 @@ export function getDebugMetadata(
     remoteDatasetUrl: runtimeConfig.dataSource.remoteDatasetUrl,
     analyticsEnabled: runtimeConfig.featureGates.analytics,
     radarEnabled: runtimeConfig.featureGates.radar,
+    analyticsEventCount: recentAnalyticsEvents.length,
+    latestAnalyticsEvent: latestAnalyticsEvent
+      ? `${latestAnalyticsEvent.name} @ ${latestAnalyticsEvent.occurredAt}`
+      : null,
   };
 }
