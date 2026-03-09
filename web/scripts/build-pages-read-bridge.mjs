@@ -8,6 +8,12 @@ const repoRoot = path.resolve(webRoot, '..')
 const dataRoot = path.join(webRoot, 'src', 'data')
 const bridgeBaseRoot = path.join(webRoot, 'public', '__bridge')
 const bridgeRoot = path.join(bridgeBaseRoot, 'v1')
+const normalizedApiBaseUrl = normalizeApiBaseUrl(process.env.VITE_API_BASE_URL ?? '')
+const declaredTargetEnvironment = normalizeTargetEnvironment(process.env.VITE_BACKEND_TARGET_ENV ?? '')
+const runtimeMode = normalizedApiBaseUrl ? 'api' : 'bridge'
+const targetClassification = classifyBackendTarget(normalizedApiBaseUrl)
+const targetEnvironment = declaredTargetEnvironment || (runtimeMode === 'bridge' ? 'bridge' : targetClassification)
+const effectiveTarget = normalizedApiBaseUrl || '/__bridge/v1'
 
 const artistProfiles = await readJson(path.join(dataRoot, 'artistProfiles.json'))
 const releaseRows = await readJson(path.join(dataRoot, 'releases.json'))
@@ -28,6 +34,7 @@ await rm(bridgeBaseRoot, { recursive: true, force: true, maxRetries: 10, retryDe
 await mkdir(path.join(bridgeRoot, 'calendar', 'months'), { recursive: true })
 await mkdir(path.join(bridgeRoot, 'releases', 'lookups'), { recursive: true })
 await mkdir(path.join(bridgeRoot, 'releases', 'details'), { recursive: true })
+await mkdir(path.join(bridgeRoot, 'meta'), { recursive: true })
 
 const releaseLookupEntries = new Map()
 let releaseDetailCount = 0
@@ -93,10 +100,37 @@ await writeBridgeJson(path.join(bridgeRoot, 'radar.json'), {
   data: radarPayload,
 })
 
+await writeBridgeJson(path.join(bridgeRoot, 'meta', 'backend-target.json'), {
+  meta: {
+    request_id: 'bridge-backend-target',
+  },
+  data: {
+    generated_at: new Date().toISOString(),
+    runtime_mode: runtimeMode,
+    target_environment: targetEnvironment,
+    target_classification: targetClassification,
+    configured_api_base_url: normalizedApiBaseUrl || null,
+    effective_target: effectiveTarget,
+    bridge_base_url: '/__bridge/v1',
+    diagnostics_path: '/__bridge/v1/meta/backend-target.json',
+    surfaces: {
+      search: runtimeMode,
+      entity_detail: runtimeMode,
+      release_detail: runtimeMode,
+      calendar_month: runtimeMode,
+      radar: runtimeMode,
+    },
+  },
+})
+
 console.log(
   JSON.stringify(
     {
       bridgeRoot: path.relative(repoRoot, bridgeRoot),
+      runtimeMode,
+      targetEnvironment,
+      targetClassification,
+      effectiveTarget,
       calendarMonthCount,
       releaseDetailCount,
       releaseLookupCount: releaseLookupEntries.size,
@@ -489,6 +523,53 @@ function hashBridgeKey(value) {
   }
 
   return (hash >>> 0).toString(16).padStart(8, '0')
+}
+
+function normalizeApiBaseUrl(value) {
+  const normalized = String(value ?? '').trim()
+  if (!normalized) {
+    return ''
+  }
+
+  return normalized.replace(/\/+$/, '')
+}
+
+function normalizeTargetEnvironment(value) {
+  const normalized = String(value ?? '').trim().toLowerCase()
+  return normalized === 'production' || normalized === 'preview' || normalized === 'local' || normalized === 'bridge'
+    ? normalized
+    : ''
+}
+
+function classifyBackendTarget(apiBaseUrl) {
+  if (!apiBaseUrl) {
+    return 'bridge'
+  }
+
+  try {
+    const hostname = new URL(apiBaseUrl).hostname.toLowerCase()
+    if (
+      hostname === 'localhost' ||
+      hostname === '127.0.0.1' ||
+      hostname.endsWith('.local') ||
+      hostname.startsWith('127.')
+    ) {
+      return 'local'
+    }
+
+    if (
+      hostname.includes('preview') ||
+      hostname.includes('staging') ||
+      hostname.includes('dev') ||
+      hostname.includes('test')
+    ) {
+      return 'preview'
+    }
+
+    return 'production'
+  } catch {
+    return 'unknown'
+  }
 }
 
 function normalizeReleaseStream(stream, releaseKind) {

@@ -257,6 +257,7 @@ type SearchSourceState = 'api' | 'bridge' | 'api_error'
 type EntityDetailSourceState = 'api' | 'bridge' | 'api_error'
 type CalendarMonthSourceState = 'api' | 'bridge' | 'api_error'
 type RadarSourceState = 'api' | 'bridge' | 'api_error'
+type BackendTargetEnvironment = 'production' | 'preview' | 'local' | 'bridge' | 'unknown'
 
 type SearchApiEntityMatch = {
   entity_slug?: string
@@ -1695,7 +1696,14 @@ const RELEASE_ARTWORK_PLACEHOLDER_URL = '/release-placeholder.svg'
 const AGENCY_UNKNOWN_FILTER = 'agency_unknown'
 const APP_BASE_URL = ((import.meta.env.BASE_URL ?? '/').trim() || '/').replace(/\/?$/, '/')
 const BACKEND_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '')
+const BACKEND_TARGET_ENV = normalizeBackendTargetEnvironment(import.meta.env.VITE_BACKEND_TARGET_ENV)
 const PAGES_READ_BRIDGE_BASE_URL = `${APP_BASE_URL.replace(/\/$/, '')}/__bridge/v1`
+const BACKEND_TARGET_DIAGNOSTICS_PATH = `${APP_BASE_URL.replace(/\/$/, '')}/__bridge/v1/meta/backend-target.json`
+const ACTIVE_WEB_BACKEND_TARGET = BACKEND_API_BASE_URL || PAGES_READ_BRIDGE_BASE_URL
+const ACTIVE_WEB_BACKEND_TARGET_MODE: 'api' | 'bridge' = BACKEND_API_BASE_URL ? 'api' : 'bridge'
+const ACTIVE_WEB_BACKEND_TARGET_CLASSIFICATION = classifyBackendTarget(BACKEND_API_BASE_URL)
+const ACTIVE_WEB_BACKEND_TARGET_ENVIRONMENT: BackendTargetEnvironment =
+  BACKEND_TARGET_ENV || (BACKEND_API_BASE_URL ? ACTIVE_WEB_BACKEND_TARGET_CLASSIFICATION : 'bridge')
 const releaseDetailApiIdCache = new Map<string, string>()
 const releaseDetailApiSnapshotCache = new Map<string, ReleaseDetailApiSnapshot>()
 const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
@@ -1770,6 +1778,7 @@ function App() {
   const [selectedGroup, setSelectedGroup] = useState<string | null>(readSelectedGroupFromLocation)
   const [selectedCompareGroup, setSelectedCompareGroup] = useState<string | null>(readSelectedCompareGroupFromLocation)
   const [selectedAlbumKey, setSelectedAlbumKey] = useState<string | null>(readSelectedReleaseKeyFromLocation)
+  const [showBackendTargetInspection, setShowBackendTargetInspection] = useState(readBackendTargetInspectionFromLocation)
   const [selectedDayInteractionTick, setSelectedDayInteractionTick] = useState(0)
   const [desktopUpcomingPanelHeight, setDesktopUpcomingPanelHeight] = useState<number | null>(null)
   const calendarPanelRef = useRef<HTMLElement | null>(null)
@@ -1824,6 +1833,7 @@ function App() {
       setSelectedGroup(readSelectedGroupFromLocation())
       setSelectedCompareGroup(readSelectedCompareGroupFromLocation())
       setSelectedAlbumKey(readSelectedReleaseKeyFromLocation())
+      setShowBackendTargetInspection(readBackendTargetInspectionFromLocation())
     }
 
     window.addEventListener('popstate', handlePopState)
@@ -1852,6 +1862,40 @@ function App() {
 
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
+  const backendTargetCopy =
+    language === 'ko'
+      ? {
+          label: 'backend target 진단',
+          title: '현재 Pages 런타임 타깃',
+          mode: '런타임 모드',
+          environment: '선언된 타깃 환경',
+          classification: '판별된 타깃 환경',
+          configuredApiBase: '설정된 API base',
+          effectiveTarget: '실제 사용 타깃',
+          diagnosticsPath: '메타데이터 경로',
+          openJson: 'JSON 열기',
+        }
+      : {
+          label: 'Backend target diagnostics',
+          title: 'Current Pages runtime target',
+          mode: 'Runtime mode',
+          environment: 'Declared target environment',
+          classification: 'Detected target environment',
+          configuredApiBase: 'Configured API base',
+          effectiveTarget: 'Effective target',
+          diagnosticsPath: 'Metadata path',
+          openJson: 'Open JSON',
+        }
+  const backendTargetSnapshot = showBackendTargetInspection
+    ? {
+        mode: ACTIVE_WEB_BACKEND_TARGET_MODE,
+        environment: ACTIVE_WEB_BACKEND_TARGET_ENVIRONMENT,
+        classification: ACTIVE_WEB_BACKEND_TARGET_CLASSIFICATION,
+        configuredApiBase: BACKEND_API_BASE_URL || copy.none,
+        effectiveTarget: ACTIVE_WEB_BACKEND_TARGET,
+        diagnosticsPath: BACKEND_TARGET_DIAGNOSTICS_PATH,
+      }
+    : null
   const monthFormatter = new Intl.DateTimeFormat(copy.locale, {
     month: 'long',
     year: 'numeric',
@@ -2605,6 +2649,46 @@ function App() {
           />
         </div>
       </header>
+
+      {backendTargetSnapshot ? (
+        <section className="panel backend-target-inspection" aria-label={backendTargetCopy.title}>
+          <div className="backend-target-inspection-head">
+            <div>
+              <p className="panel-label">{backendTargetCopy.label}</p>
+              <h2>{backendTargetCopy.title}</h2>
+            </div>
+            <a href={backendTargetSnapshot.diagnosticsPath} target="_blank" rel="noreferrer">
+              {backendTargetCopy.openJson}
+            </a>
+          </div>
+          <div className="backend-target-inspection-grid">
+            <article className="backend-target-inspection-card">
+              <span>{backendTargetCopy.mode}</span>
+              <strong>{backendTargetSnapshot.mode}</strong>
+            </article>
+            <article className="backend-target-inspection-card">
+              <span>{backendTargetCopy.environment}</span>
+              <strong>{backendTargetSnapshot.environment}</strong>
+            </article>
+            <article className="backend-target-inspection-card">
+              <span>{backendTargetCopy.classification}</span>
+              <strong>{backendTargetSnapshot.classification}</strong>
+            </article>
+            <article className="backend-target-inspection-card">
+              <span>{backendTargetCopy.configuredApiBase}</span>
+              <code>{backendTargetSnapshot.configuredApiBase}</code>
+            </article>
+            <article className="backend-target-inspection-card">
+              <span>{backendTargetCopy.effectiveTarget}</span>
+              <code>{backendTargetSnapshot.effectiveTarget}</code>
+            </article>
+            <article className="backend-target-inspection-card">
+              <span>{backendTargetCopy.diagnosticsPath}</span>
+              <code>{backendTargetSnapshot.diagnosticsPath}</code>
+            </article>
+          </div>
+        </section>
+      ) : null}
 
       {selectedAlbum && selectedGroup ? (
         <ReleaseDetailPage
@@ -9782,6 +9866,27 @@ function readSelectedReleaseKeyFromLocation() {
   return getReleaseRouteFromPath(window.location.pathname, window.location.search)?.releaseKey ?? null
 }
 
+function readBackendTargetInspectionFromLocation() {
+  if (typeof window === 'undefined') {
+    return false
+  }
+
+  return new URLSearchParams(window.location.search).get('inspect') === 'backend-target'
+}
+
+function appendPersistentInspectParams(params: URLSearchParams) {
+  if (typeof window === 'undefined') {
+    return params
+  }
+
+  const currentParams = new URLSearchParams(window.location.search)
+  if (currentParams.get('inspect') === 'backend-target') {
+    params.set('inspect', 'backend-target')
+  }
+
+  return params
+}
+
 function getGroupFromPath(pathname: string) {
   const match = pathname.match(/^\/artists\/([^/]+)(?:\/releases\/[^/]+)?\/?$/)
   if (!match) {
@@ -9806,12 +9911,14 @@ function resolveGroupReference(value: string) {
 }
 
 function getHomePath() {
-  return '/'
+  const params = appendPersistentInspectParams(new URLSearchParams())
+  const query = params.toString()
+  return query ? `/?${query}` : '/'
 }
 
 function getArtistPath(group: string, compareGroup?: string | null) {
   const pathname = `/artists/${artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)}`
-  const params = new URLSearchParams()
+  const params = appendPersistentInspectParams(new URLSearchParams())
   if (compareGroup && compareGroup !== group) {
     params.set('compare', artistProfileByGroup.get(compareGroup)?.slug ?? slugifyGroup(compareGroup))
   }
@@ -9865,10 +9972,56 @@ function getReleaseRouteFromPath(pathname: string, search = '') {
 function getReleasePath(release: VerifiedRelease) {
   const releaseSlug = slugifyPathSegment(release.title) || 'release'
   const pathname = `/artists/${artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)}/releases/${releaseSlug}`
-  const params = new URLSearchParams()
+  const params = appendPersistentInspectParams(new URLSearchParams())
   params.set('date', release.date)
   params.set('stream', release.stream)
   return `${pathname}?${params.toString()}`
+}
+
+function normalizeBackendTargetEnvironment(value: unknown): BackendTargetEnvironment {
+  const normalized = String(value ?? '').trim().toLowerCase()
+  if (
+    normalized === 'production' ||
+    normalized === 'preview' ||
+    normalized === 'local' ||
+    normalized === 'bridge' ||
+    normalized === 'unknown'
+  ) {
+    return normalized
+  }
+
+  return BACKEND_API_BASE_URL ? classifyBackendTarget(BACKEND_API_BASE_URL) : 'bridge'
+}
+
+function classifyBackendTarget(apiBaseUrl: string): BackendTargetEnvironment {
+  if (!apiBaseUrl) {
+    return 'bridge'
+  }
+
+  try {
+    const hostname = new URL(apiBaseUrl).hostname.toLowerCase()
+    if (
+      hostname === 'localhost' ||
+      hostname === '127.0.0.1' ||
+      hostname.endsWith('.local') ||
+      hostname.startsWith('127.')
+    ) {
+      return 'local'
+    }
+
+    if (
+      hostname.includes('preview') ||
+      hostname.includes('staging') ||
+      hostname.includes('dev') ||
+      hostname.includes('test')
+    ) {
+      return 'preview'
+    }
+
+    return 'production'
+  } catch {
+    return 'unknown'
+  }
 }
 
 function createSearchNeedle(value: string): SearchNeedle | null {
