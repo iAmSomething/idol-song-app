@@ -53,6 +53,10 @@ function hasText(tree: renderer.ReactTestRenderer, value: string): boolean {
   return tree.root.findAllByType(Text).some((node) => node.props.children === value);
 }
 
+function findByTestIdPrefix(tree: renderer.ReactTestRenderer, prefix: string) {
+  return tree.root.find((node) => typeof node.props.testID === 'string' && node.props.testID.startsWith(prefix));
+}
+
 describe('mobile entity detail screen', () => {
   beforeEach(() => {
     __mock.useRouter.mockReturnValue({
@@ -66,19 +70,35 @@ describe('mobile entity detail screen', () => {
     const tree = await renderArtistDetail();
 
     expect(tree.root.findByProps({ testID: 'entity-detail-title' }).props.children).toBe('YENA');
+    expect(tree.root.findByProps({ testID: 'entity-official-link-x' }).props.accessibilityLabel).toBe(
+      'YENA 공식 X 열기',
+    );
     expect(tree.root.findByProps({ testID: 'entity-official-link-youtube' }).props.accessibilityLabel).toBe(
       'YENA 공식 YouTube 열기',
     );
+    expect(tree.root.findByProps({ testID: 'entity-artist-source-link' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-next-upcoming-card' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-latest-release-card' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'entity-latest-release-primary' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'entity-latest-release-service-spotify' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'entity-latest-release-service-youtube-music' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'entity-latest-release-service-youtube-mv' })).toBeDefined();
+    expect(findByTestIdPrefix(tree, 'entity-recent-album-single-card-')).toBeDefined();
+    expect(tree.root.findAllByProps({ testID: 'entity-source-timeline' })).toHaveLength(0);
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'entity-source-timeline-toggle' }).props.onPress();
+    });
+
     expect(tree.root.findByProps({ testID: 'entity-source-timeline' })).toBeDefined();
   });
 
-  test('renders safe empty states for sparse teams', async () => {
-    __mock.useLocalSearchParams.mockReturnValue({ slug: 'atheart' });
+  test('renders safe empty states when upcoming and albums are missing', async () => {
+    __mock.useLocalSearchParams.mockReturnValue({ slug: 'weeekly' });
     const tree = await renderArtistDetail();
 
-    expect(tree.root.findByProps({ testID: 'entity-detail-title' }).props.children).toBe('AtHeart');
+    expect(tree.root.findByProps({ testID: 'entity-detail-title' }).props.children).toBe('Weeekly');
+    expect(hasText(tree, '등록된 예정 컴백이 없습니다.')).toBe(true);
     expect(hasText(tree, '등록된 최근 앨범이 없습니다.')).toBe(true);
   });
 

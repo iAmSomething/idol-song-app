@@ -19,6 +19,13 @@ import {
   loadActiveMobileDataset,
   type ActiveMobileDataset,
 } from '../../src/services/activeDataset';
+import {
+  openServiceHandoff,
+  resolveServiceHandoff,
+  type MusicService,
+  type ServiceHandoffFailure,
+  type ServiceHandoffResolution,
+} from '../../src/services/handoff';
 import { trackDatasetDegraded, trackDatasetLoadFailed } from '../../src/services/analytics';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
@@ -38,6 +45,14 @@ type OfficialLinkItem = {
   key: string;
   label: string;
   url: string;
+};
+
+type ServiceButtonSpec = {
+  accessibilityLabel: string;
+  key: MusicService;
+  label: string;
+  handoff: ServiceHandoffResolution | ServiceHandoffFailure;
+  testID: string;
 };
 
 function getSingleParam(value: string | string[] | undefined): string | null {
@@ -66,11 +81,11 @@ function formatReleaseMeta(release: ReleaseSummaryModel): string {
 
 function buildOfficialLinks(team: TeamSummaryModel): OfficialLinkItem[] {
   return [
-    team.officialYoutubeUrl
+    team.officialXUrl
       ? {
-          key: 'youtube',
-          label: 'YouTube',
-          url: team.officialYoutubeUrl,
+          key: 'x',
+          label: 'X',
+          url: team.officialXUrl,
         }
       : null,
     team.officialInstagramUrl
@@ -80,18 +95,11 @@ function buildOfficialLinks(team: TeamSummaryModel): OfficialLinkItem[] {
           url: team.officialInstagramUrl,
         }
       : null,
-    team.officialXUrl
+    team.officialYoutubeUrl
       ? {
-          key: 'x',
-          label: 'X',
-          url: team.officialXUrl,
-        }
-      : null,
-    team.artistSourceUrl
-      ? {
-          key: 'source',
-          label: 'Source',
-          url: team.artistSourceUrl,
+          key: 'youtube',
+          label: 'YouTube',
+          url: team.officialYoutubeUrl,
         }
       : null,
   ].filter((item): item is OfficialLinkItem => item !== null);
@@ -107,6 +115,100 @@ async function openExternalUrl(url: string) {
   } catch {
     // Keep the current route stack stable when external handoff fails.
   }
+}
+
+function getReleaseKindLabel(release: ReleaseSummaryModel): string {
+  if (release.releaseKind?.trim()) {
+    return release.releaseKind.trim().toUpperCase();
+  }
+
+  if (release.stream === 'song') {
+    return 'SONG';
+  }
+
+  if (release.stream === 'album') {
+    return 'ALBUM';
+  }
+
+  return 'RELEASE';
+}
+
+function resolveUpcomingStatusLabel(status?: UpcomingEventModel['status']): string {
+  switch (status) {
+    case 'confirmed':
+      return '확정';
+    case 'rumor':
+      return '루머';
+    case 'scheduled':
+    default:
+      return '예정';
+  }
+}
+
+function resolveUpcomingConfidenceLabel(confidence?: UpcomingEventModel['confidence']): string | null {
+  switch (confidence) {
+    case 'high':
+      return '신뢰 높음';
+    case 'medium':
+      return '신뢰 보통';
+    case 'low':
+      return '신뢰 낮음';
+    default:
+      return null;
+  }
+}
+
+function resolveUpcomingTimingLabel(event: UpcomingEventModel): string {
+  if (event.datePrecision === 'exact' && event.scheduledDate) {
+    return event.scheduledDate;
+  }
+
+  if (event.scheduledMonth) {
+    return `${event.scheduledMonth} · 날짜 미정`;
+  }
+
+  return '날짜 미정';
+}
+
+function buildLatestReleaseServiceButtons(release: ReleaseSummaryModel): ServiceButtonSpec[] {
+  const releaseQuery = `${release.displayGroup} ${release.releaseTitle}`;
+  const mvQuery = `${release.displayGroup} ${release.representativeSongTitle ?? release.releaseTitle}`;
+
+  return [
+    {
+      accessibilityLabel: `Spotify에서 ${release.releaseTitle} 열기`,
+      key: 'spotify',
+      label: 'Spotify',
+      handoff: resolveServiceHandoff({
+        service: 'spotify',
+        query: releaseQuery,
+        canonicalUrl: release.spotifyUrl,
+      }),
+      testID: 'entity-latest-release-service-spotify',
+    },
+    {
+      accessibilityLabel: `YouTube Music에서 ${release.releaseTitle} 열기`,
+      key: 'youtubeMusic',
+      label: 'YouTube Music',
+      handoff: resolveServiceHandoff({
+        service: 'youtubeMusic',
+        query: releaseQuery,
+        canonicalUrl: release.youtubeMusicUrl,
+      }),
+      testID: 'entity-latest-release-service-youtube-music',
+    },
+    {
+      accessibilityLabel: `YouTube에서 ${release.releaseTitle} 공식 MV 열기`,
+      key: 'youtubeMv',
+      label: 'YouTube MV',
+      handoff: resolveServiceHandoff({
+        service: 'youtubeMv',
+        query: mvQuery,
+        canonicalUrl: release.youtubeMvUrl,
+      }),
+      testID: 'entity-latest-release-service-youtube-mv',
+    },
+  ];
 }
 
 function EntityBadge({
@@ -134,6 +236,8 @@ export default function ArtistDetailScreen() {
   const styles = useMemo(() => createStyles(theme), [theme]);
   const slug = getSingleParam(params.slug)?.trim() ?? '';
   const [reloadCount, setReloadCount] = useState(0);
+  const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
+  const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
   const [state, setState] = useState<EntityDetailScreenState>({ kind: 'loading' });
   const datasetEventKeyRef = useRef<string | null>(null);
 
@@ -150,6 +254,8 @@ export default function ArtistDetailScreen() {
       };
     }
 
+    setHandoffFeedback(null);
+    setShowAdditionalInfo(false);
     setState({ kind: 'loading' });
 
     void loadActiveMobileDataset()
@@ -210,6 +316,18 @@ export default function ArtistDetailScreen() {
     };
   }, [reloadCount, slug]);
 
+  async function handleHandoff(
+    handoff: ServiceHandoffResolution | ServiceHandoffFailure,
+  ) {
+    const result = await openServiceHandoff(handoff);
+    if (!result.ok) {
+      setHandoffFeedback(result.feedback.message);
+      return;
+    }
+
+    setHandoffFeedback(null);
+  }
+
   const screenTitle =
     state.kind === 'ready'
       ? state.snapshot.team.displayName
@@ -266,8 +384,11 @@ export default function ArtistDetailScreen() {
     );
   }
 
-  const { snapshot, source } = state;
+  const { snapshot } = state;
   const officialLinks = buildOfficialLinks(snapshot.team);
+  const latestReleaseServiceButtons = snapshot.latestRelease
+    ? buildLatestReleaseServiceButtons(snapshot.latestRelease)
+    : [];
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
@@ -283,43 +404,67 @@ export default function ArtistDetailScreen() {
         >
           <Text style={styles.backButtonLabel}>뒤로</Text>
         </Pressable>
-        <Text style={styles.appBarMeta}>{source.sourceLabel}</Text>
       </View>
 
-      <View style={styles.heroCard}>
-        <EntityBadge team={snapshot.team} styles={styles} />
-        <View style={styles.heroCopy}>
-          <Text accessibilityRole="header" testID="entity-detail-title" style={styles.heroTitle}>
-            {snapshot.team.displayName}
-          </Text>
-          <Text style={styles.heroMeta}>{snapshot.team.agency ?? '소속사 정보 없음'}</Text>
-          <Text style={styles.heroBody}>
-            다음 컴백과 최신 발매를 한 화면에서 확인하는 팀 허브입니다.
-          </Text>
+      <View style={styles.heroBlock}>
+        <View style={styles.heroCard}>
+          <EntityBadge team={snapshot.team} styles={styles} />
+          <View style={styles.heroCopy}>
+            <Text accessibilityRole="header" testID="entity-detail-title" style={styles.heroTitle}>
+              {snapshot.team.displayName}
+            </Text>
+            <Text style={styles.heroMeta}>{snapshot.team.agency ?? '소속사 정보 없음'}</Text>
+            <Text style={styles.heroBody}>
+              해당 팀의 다음 컴백과 최신 발매를 빠르게 확인할 수 있습니다.
+            </Text>
+          </View>
         </View>
-      </View>
 
-      {officialLinks.length > 0 ? (
-        <View style={styles.linkRow}>
-          {officialLinks.map((link) => (
-            <Pressable
-              key={link.key}
-              testID={`entity-official-link-${link.key}`}
-              accessibilityLabel={buildOfficialLinkAccessibilityLabel(snapshot.team, link)}
-              accessibilityHint="외부 공식 페이지를 엽니다."
-              accessibilityRole="button"
-              onPress={() => void openExternalUrl(link.url)}
-              style={({ pressed }) => [styles.linkChip, pressed ? styles.buttonPressed : null]}
-            >
-              <Text style={styles.linkChipLabel}>{link.label}</Text>
-            </Pressable>
-          ))}
-        </View>
-      ) : null}
+        {officialLinks.length > 0 ? (
+          <View style={styles.linkRow}>
+            {officialLinks.map((link) => (
+              <Pressable
+                key={link.key}
+                testID={`entity-official-link-${link.key}`}
+                accessibilityLabel={buildOfficialLinkAccessibilityLabel(snapshot.team, link)}
+                accessibilityHint="외부 공식 페이지를 엽니다."
+                accessibilityRole="button"
+                onPress={() => void openExternalUrl(link.url)}
+                style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
+              >
+                <Text style={styles.metaTextLinkLabel}>{link.label}</Text>
+              </Pressable>
+            ))}
+          </View>
+        ) : null}
+
+        {snapshot.team.artistSourceUrl ? (
+          <Pressable
+            testID="entity-artist-source-link"
+            accessibilityLabel={`${snapshot.team.displayName} 아티스트 출처 열기`}
+            accessibilityHint="외부 기준 소스를 엽니다."
+            accessibilityRole="button"
+            onPress={() => void openExternalUrl(snapshot.team.artistSourceUrl!)}
+            style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
+          >
+            <Text style={styles.metaTextLinkLabel}>아티스트 출처</Text>
+          </Pressable>
+        ) : null}
+      </View>
 
       <SectionCard title="다음 컴백" styles={styles}>
         {snapshot.nextUpcoming ? (
           <View testID="entity-next-upcoming-card" style={styles.primaryCard}>
+            <View style={styles.chipRow}>
+              <InfoChip label={resolveUpcomingTimingLabel(snapshot.nextUpcoming)} styles={styles} />
+              <InfoChip label={resolveUpcomingStatusLabel(snapshot.nextUpcoming.status)} styles={styles} />
+              {resolveUpcomingConfidenceLabel(snapshot.nextUpcoming.confidence) ? (
+                <InfoChip
+                  label={resolveUpcomingConfidenceLabel(snapshot.nextUpcoming.confidence)!}
+                  styles={styles}
+                />
+              ) : null}
+            </View>
             <Text style={styles.primaryCardTitle}>
               {snapshot.nextUpcoming.releaseLabel ?? snapshot.nextUpcoming.headline}
             </Text>
@@ -343,42 +488,108 @@ export default function ArtistDetailScreen() {
 
       <SectionCard title="최신 발매" styles={styles}>
         {snapshot.latestRelease ? (
+          <View testID="entity-latest-release-card" style={styles.releaseCard}>
+            <View style={styles.releaseHeroRow}>
+              <View style={styles.releaseArtwork}>
+                {snapshot.latestRelease.coverImageUrl ? (
+                  <Image source={{ uri: snapshot.latestRelease.coverImageUrl }} style={styles.releaseArtworkImage} />
+                ) : (
+                  <Text style={styles.releaseArtworkFallback}>
+                    {snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
+                  </Text>
+                )}
+              </View>
+              <View style={styles.releaseCopy}>
+                <Text style={styles.primaryCardTitle}>{snapshot.latestRelease.releaseTitle}</Text>
+                <Text style={styles.primaryCardMeta}>{formatReleaseMeta(snapshot.latestRelease)}</Text>
+                <Text style={styles.primaryCardBody}>
+                  {snapshot.latestRelease.representativeSongTitle ?? '상세 화면으로 이동'}
+                </Text>
+                <View style={styles.chipRow}>
+                  <InfoChip label={getReleaseKindLabel(snapshot.latestRelease)} styles={styles} />
+                </View>
+              </View>
+            </View>
+            <Pressable
+              testID="entity-latest-release-primary"
+              accessibilityLabel={`${snapshot.latestRelease.releaseTitle} 릴리즈 상세 보기`}
+              accessibilityRole="button"
+              onPress={() =>
+                router.push({
+                  pathname: '/releases/[id]',
+                  params: { id: snapshot.latestRelease!.id },
+                })
+              }
+              style={({ pressed }) => [styles.primaryButton, pressed ? styles.buttonPressed : null]}
+            >
+              <Text style={styles.primaryButtonLabel}>상세 보기</Text>
+            </Pressable>
+            <View style={styles.serviceButtonRow}>
+              {latestReleaseServiceButtons.map((button) => (
+                <ServiceButton
+                  accessibilityLabel={button.accessibilityLabel}
+                  key={button.key}
+                  label={button.label}
+                  onPress={() => void handleHandoff(button.handoff)}
+                  styles={styles}
+                  tone={button.key}
+                  testID={button.testID}
+                />
+              ))}
+            </View>
+            {snapshot.latestRelease.sourceUrl ? (
+              <Pressable
+                accessibilityLabel={`${snapshot.latestRelease.releaseTitle} 발매 출처 열기`}
+                accessibilityRole="button"
+                onPress={() => void openExternalUrl(snapshot.latestRelease!.sourceUrl!)}
+                style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
+                testID="entity-latest-release-source-link"
+              >
+                <Text style={styles.metaTextLinkLabel}>출처 보기</Text>
+              </Pressable>
+            ) : null}
+          </View>
+        ) : (
+          <InlineFeedbackNotice body="최신 발매 정보가 없습니다." />
+        )}
+        {handoffFeedback ? (
+          <InlineFeedbackNotice
+            body={handoffFeedback}
+            testID="entity-latest-release-handoff-feedback"
+            tone="error"
+          />
+        ) : null}
+      </SectionCard>
+
+      <SectionCard title="최근 앨범들" styles={styles}>
+        {snapshot.recentAlbums.length === 1 ? (
           <Pressable
-            testID="entity-latest-release-card"
-            accessibilityLabel={`${snapshot.latestRelease.releaseTitle} 릴리즈 상세 열기`}
+            testID={`entity-recent-album-single-card-${snapshot.recentAlbums[0]!.id}`}
+            accessibilityLabel={`${snapshot.recentAlbums[0]!.releaseTitle} 릴리즈 상세 열기`}
             accessibilityRole="button"
             onPress={() =>
               router.push({
                 pathname: '/releases/[id]',
-                params: { id: snapshot.latestRelease!.id },
+                params: { id: snapshot.recentAlbums[0]!.id },
               })
             }
-            style={({ pressed }) => [styles.releaseCard, pressed ? styles.buttonPressed : null]}
+            style={({ pressed }) => [styles.singleAlbumCard, pressed ? styles.buttonPressed : null]}
           >
-            <View style={styles.releaseArtwork}>
-              {snapshot.latestRelease.coverImageUrl ? (
-                <Image source={{ uri: snapshot.latestRelease.coverImageUrl }} style={styles.releaseArtworkImage} />
+            <View style={styles.singleAlbumArtwork}>
+              {snapshot.recentAlbums[0]!.coverImageUrl ? (
+                <Image source={{ uri: snapshot.recentAlbums[0]!.coverImageUrl }} style={styles.albumArtworkImage} />
               ) : (
-                <Text style={styles.releaseArtworkFallback}>
+                <Text style={styles.albumArtworkFallback}>
                   {snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
                 </Text>
               )}
             </View>
-            <View style={styles.releaseCopy}>
-              <Text style={styles.primaryCardTitle}>{snapshot.latestRelease.releaseTitle}</Text>
-              <Text style={styles.primaryCardMeta}>{formatReleaseMeta(snapshot.latestRelease)}</Text>
-              <Text style={styles.primaryCardBody}>
-                {snapshot.latestRelease.representativeSongTitle ?? '상세 화면으로 이동'}
-              </Text>
+            <View style={styles.singleAlbumCopy}>
+              <Text style={styles.albumTitle}>{snapshot.recentAlbums[0]!.releaseTitle}</Text>
+              <Text style={styles.albumMeta}>{formatReleaseMeta(snapshot.recentAlbums[0]!)}</Text>
             </View>
           </Pressable>
-        ) : (
-          <InlineFeedbackNotice body="최신 발매 정보가 없습니다." />
-        )}
-      </SectionCard>
-
-      <SectionCard title="최근 앨범들" styles={styles}>
-        {snapshot.recentAlbums.length > 0 ? (
+        ) : snapshot.recentAlbums.length > 1 ? (
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.albumRow}>
             {snapshot.recentAlbums.map((release) => (
               <Pressable
@@ -413,34 +624,91 @@ export default function ArtistDetailScreen() {
         )}
       </SectionCard>
 
-      <SectionCard title="소스 타임라인" styles={styles}>
-        {snapshot.sourceTimeline.length > 0 ? (
-          <View testID="entity-source-timeline" style={styles.timelineList}>
-            {snapshot.sourceTimeline.map((item) => (
-              <View key={item.id} style={styles.timelineRow}>
-                <View style={styles.timelineDot} />
-                <View style={styles.timelineCopy}>
-                  <Text style={styles.timelineTitle}>{item.title}</Text>
-                  <Text style={styles.timelineMeta}>{item.meta}</Text>
+      {snapshot.sourceTimeline.length > 0 ? (
+        <SectionCard title="추가 정보" styles={styles}>
+          <Pressable
+            accessibilityLabel={showAdditionalInfo ? '소스 타임라인 접기' : '소스 타임라인 보기'}
+            accessibilityRole="button"
+            onPress={() => setShowAdditionalInfo((value) => !value)}
+            style={({ pressed }) => [styles.secondaryButton, pressed ? styles.buttonPressed : null]}
+            testID="entity-source-timeline-toggle"
+          >
+            <Text style={styles.secondaryButtonLabel}>
+              {showAdditionalInfo ? '소스 타임라인 접기' : '소스 타임라인 보기'}
+            </Text>
+          </Pressable>
+          {showAdditionalInfo ? (
+            <View testID="entity-source-timeline" style={styles.timelineList}>
+              {snapshot.sourceTimeline.map((item) => (
+                <View key={item.id} style={styles.timelineRow}>
+                  <View style={styles.timelineDot} />
+                  <View style={styles.timelineCopy}>
+                    <Text style={styles.timelineTitle}>{item.title}</Text>
+                    <Text style={styles.timelineMeta}>{item.meta}</Text>
+                  </View>
+                  {item.sourceUrl ? (
+                    <Pressable
+                      accessibilityLabel={`${item.title} 소스 링크 열기`}
+                      accessibilityRole="button"
+                      onPress={() => void openExternalUrl(item.sourceUrl!)}
+                      style={({ pressed }) => [styles.metaButton, pressed ? styles.buttonPressed : null]}
+                    >
+                      <Text style={styles.metaButtonLabel}>열기</Text>
+                    </Pressable>
+                  ) : null}
                 </View>
-                {item.sourceUrl ? (
-                  <Pressable
-                    accessibilityLabel={`${item.title} 소스 링크 열기`}
-                    accessibilityRole="button"
-                    onPress={() => void openExternalUrl(item.sourceUrl!)}
-                    style={({ pressed }) => [styles.metaButton, pressed ? styles.buttonPressed : null]}
-                  >
-                    <Text style={styles.metaButtonLabel}>열기</Text>
-                  </Pressable>
-                ) : null}
-              </View>
-            ))}
-          </View>
-        ) : (
-          <InlineFeedbackNotice body="표시할 소스 타임라인이 없습니다." />
-        )}
-      </SectionCard>
+              ))}
+            </View>
+          ) : null}
+        </SectionCard>
+      ) : null}
     </ScrollView>
+  );
+}
+
+function InfoChip({
+  label,
+  styles,
+}: {
+  label: string;
+  styles: ReturnType<typeof createStyles>;
+}) {
+  return (
+    <View style={styles.infoChip}>
+      <Text style={styles.infoChipLabel}>{label}</Text>
+    </View>
+  );
+}
+
+function ServiceButton({
+  accessibilityLabel,
+  label,
+  onPress,
+  styles,
+  tone,
+  testID,
+}: {
+  accessibilityLabel: string;
+  label: string;
+  onPress: () => void;
+  styles: ReturnType<typeof createStyles>;
+  tone: 'spotify' | 'youtubeMusic' | 'youtubeMv';
+  testID: string;
+}) {
+  return (
+    <Pressable
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole="button"
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.serviceButton,
+        styles[`${tone}Button`],
+        pressed ? styles.buttonPressed : null,
+      ]}
+      testID={testID}
+    >
+      <Text style={[styles.serviceButtonLabel, styles[`${tone}ButtonLabel`]]}>{label}</Text>
+    </Pressable>
   );
 }
 
@@ -476,12 +744,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     appBar: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
-    },
-    appBarMeta: {
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      color: theme.colors.text.tertiary,
+      justifyContent: 'flex-start',
     },
     backButton: {
       minHeight: 44,
@@ -499,6 +762,9 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       color: theme.colors.text.primary,
       flexShrink: 1,
       textAlign: 'center',
+    },
+    heroBlock: {
+      gap: theme.space[12],
     },
     heroCard: {
       flexDirection: 'row',
@@ -556,20 +822,69 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       flexWrap: 'wrap',
       gap: theme.space[8],
     },
-    linkChip: {
-      minHeight: 44,
+    metaTextLink: {
+      alignSelf: 'flex-start',
+      minHeight: 36,
+      justifyContent: 'center',
+    },
+    metaTextLinkLabel: {
+      fontSize: theme.typography.meta.fontSize,
+      lineHeight: theme.typography.meta.lineHeight,
+      color: theme.colors.text.secondary,
+      textDecorationLine: 'underline',
+      flexShrink: 1,
+    },
+    infoChip: {
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.chip,
+      backgroundColor: theme.colors.surface.base,
+      borderWidth: StyleSheet.hairlineWidth,
+      borderColor: theme.colors.border.default,
+    },
+    infoChipLabel: {
+      fontSize: theme.typography.meta.fontSize,
+      lineHeight: theme.typography.meta.lineHeight,
+      color: theme.colors.text.secondary,
+      fontWeight: '600',
+    },
+    chipRow: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: theme.space[8],
+    },
+    primaryButton: {
+      minHeight: 44,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingHorizontal: theme.space[16],
+      paddingVertical: theme.space[12],
+      borderRadius: theme.radius.button,
+      backgroundColor: theme.colors.text.brand,
+    },
+    primaryButtonLabel: {
+      fontSize: theme.typography.buttonPrimary.fontSize,
+      lineHeight: theme.typography.buttonPrimary.lineHeight,
+      fontWeight: '700',
+      color: theme.colors.text.inverse,
+      flexShrink: 1,
+      textAlign: 'center',
+    },
+    secondaryButton: {
+      alignSelf: 'flex-start',
+      minHeight: 44,
+      paddingHorizontal: theme.space[12],
+      paddingVertical: theme.space[8],
+      borderRadius: theme.radius.button,
       backgroundColor: theme.colors.surface.interactive,
       borderWidth: StyleSheet.hairlineWidth,
       borderColor: theme.colors.border.default,
     },
-    linkChipLabel: {
-      fontSize: theme.typography.chip.fontSize,
-      lineHeight: theme.typography.chip.lineHeight,
+    secondaryButtonLabel: {
+      fontSize: theme.typography.buttonService.fontSize,
+      lineHeight: theme.typography.buttonService.lineHeight,
       fontWeight: '600',
-      color: theme.colors.text.secondary,
+      color: theme.colors.text.primary,
       flexShrink: 1,
       textAlign: 'center',
     },
@@ -610,11 +925,14 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       color: theme.colors.text.secondary,
     },
     releaseCard: {
-      flexDirection: 'row',
       gap: theme.space[12],
       padding: theme.space[16],
       borderRadius: theme.radius.card,
       backgroundColor: theme.colors.surface.interactive,
+    },
+    releaseHeroRow: {
+      flexDirection: 'row',
+      gap: theme.space[12],
     },
     releaseArtwork: {
       width: 72,
@@ -638,9 +956,72 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       flex: 1,
       gap: theme.space[4],
     },
+    serviceButtonRow: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: theme.space[8],
+    },
+    serviceButton: {
+      minHeight: 44,
+      paddingHorizontal: theme.space[12],
+      paddingVertical: theme.space[8],
+      borderRadius: theme.radius.button,
+      borderWidth: StyleSheet.hairlineWidth,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    serviceButtonLabel: {
+      fontSize: theme.typography.buttonService.fontSize,
+      lineHeight: theme.typography.buttonService.lineHeight,
+      fontWeight: '700',
+      flexShrink: 1,
+      textAlign: 'center',
+    },
+    spotifyButton: {
+      backgroundColor: theme.colors.service.spotify.bg,
+      borderColor: theme.colors.service.spotify.icon,
+    },
+    spotifyButtonLabel: {
+      color: theme.colors.service.spotify.icon,
+    },
+    youtubeMusicButton: {
+      backgroundColor: theme.colors.service.youtubeMusic.bg,
+      borderColor: theme.colors.service.youtubeMusic.icon,
+    },
+    youtubeMusicButtonLabel: {
+      color: theme.colors.service.youtubeMusic.icon,
+    },
+    youtubeMvButton: {
+      backgroundColor: theme.colors.service.youtubeMv.bg,
+      borderColor: theme.colors.service.youtubeMv.icon,
+    },
+    youtubeMvButtonLabel: {
+      color: theme.colors.service.youtubeMv.icon,
+    },
     albumRow: {
       gap: theme.space[12],
       paddingRight: theme.space[8],
+    },
+    singleAlbumCard: {
+      flexDirection: 'row',
+      gap: theme.space[12],
+      padding: theme.space[12],
+      borderRadius: theme.radius.card,
+      backgroundColor: theme.colors.surface.interactive,
+    },
+    singleAlbumArtwork: {
+      width: 72,
+      aspectRatio: 1,
+      borderRadius: theme.radius.button,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: theme.colors.surface.subtle,
+      overflow: 'hidden',
+    },
+    singleAlbumCopy: {
+      flex: 1,
+      gap: theme.space[4],
+      justifyContent: 'center',
     },
     albumCard: {
       width: 172,
