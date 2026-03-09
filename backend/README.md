@@ -573,6 +573,8 @@ npm run runtime:gate
 기본 보고서 출력:
 
 - `backend/reports/runtime_gate_report.json`
+- `backend/reports/historical_release_detail_coverage_report.json`
+- `backend/reports/historical_release_detail_coverage_summary.md`
 
 gate 정의와 stage mapping은 아래 문서를 따른다.
 

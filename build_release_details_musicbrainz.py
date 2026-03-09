@@ -14,6 +14,7 @@ RELEASE_HISTORY_PATH = ROOT / "web/src/data/releaseHistory.json"
 OUTPUT_PATH = ROOT / "web/src/data/releaseDetails.json"
 OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 AUDIT_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_report.json"
+AUDIT_MARKDOWN_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_summary.md"
 TITLE_TRACK_REVIEW_JSON_PATH = ROOT / "title_track_manual_review_queue.json"
 TITLE_TRACK_REVIEW_CSV_PATH = ROOT / "title_track_manual_review_queue.csv"
 
@@ -35,6 +36,21 @@ TITLE_TRACK_STATUS_AUTO_SINGLE = "auto_single"
 TITLE_TRACK_STATUS_AUTO_DOUBLE = "auto_double"
 TITLE_TRACK_STATUS_REVIEW = "review"
 TITLE_TRACK_STATUS_UNRESOLVED = "unresolved"
+
+DETAIL_TRUSTED_STATUSES = {DETAIL_STATUS_VERIFIED, DETAIL_STATUS_MANUAL}
+TITLE_TRACK_COMPLETE_STATUSES = {DETAIL_STATUS_VERIFIED, DETAIL_STATUS_INFERRED, DETAIL_STATUS_MANUAL}
+MV_COMPLETE_STATUSES = {YOUTUBE_VIDEO_STATUS_RELATION, YOUTUBE_VIDEO_STATUS_MANUAL}
+
+HISTORICAL_COMPLETENESS_THRESHOLDS = {
+    "detail_payload_total_min": 1.0,
+    "detail_payload_pre_2024_min": 1.0,
+    "detail_trusted_total_min": 0.85,
+    "detail_trusted_pre_2024_min": 0.5,
+    "title_track_resolved_total_min": 0.8,
+    "title_track_resolved_pre_2024_min": 0.6,
+    "canonical_mv_total_min": 0.65,
+    "canonical_mv_pre_2024_min": 0.35,
+}
 
 
 def optional_text(value: object) -> Optional[str]:
@@ -930,20 +946,7 @@ def build_title_track_spot_checks(details_after: List[Dict], title_track_resolut
 
 def build_verification_state_samples(details_after: List[Dict]) -> Dict[str, Optional[Dict]]:
     def build_sample(row: Dict) -> Dict:
-        return {
-            "group": row["group"],
-            "release_title": row["release_title"],
-            "release_date": row["release_date"],
-            "stream": row["stream"],
-            "detail_status": row.get("detail_status"),
-            "detail_provenance": row.get("detail_provenance"),
-            "title_track_status": row.get("title_track_status"),
-            "title_track_provenance": row.get("title_track_provenance"),
-            "youtube_video_status": row.get("youtube_video_status"),
-            "youtube_video_provenance": row.get("youtube_video_provenance"),
-            "title_tracks": [track["title"] for track in row.get("tracks", []) if track.get("is_title_track")],
-            "track_count": len(row.get("tracks", [])),
-        }
+        return build_release_row_sample(row)
 
     def first_match(predicate) -> Optional[Dict]:
         for row in details_after:
@@ -970,6 +973,337 @@ def build_verification_state_samples(details_after: List[Dict]) -> Dict[str, Opt
             or row.get("youtube_video_status") == YOUTUBE_VIDEO_STATUS_UNRESOLVED
         ),
     }
+
+
+def build_release_row_sample(row: Dict) -> Dict:
+    return {
+        "group": row["group"],
+        "release_title": row["release_title"],
+        "release_date": row["release_date"],
+        "stream": row["stream"],
+        "release_kind": row.get("release_kind"),
+        "detail_status": row.get("detail_status"),
+        "detail_provenance": row.get("detail_provenance"),
+        "title_track_status": row.get("title_track_status"),
+        "title_track_provenance": row.get("title_track_provenance"),
+        "youtube_video_status": row.get("youtube_video_status"),
+        "youtube_video_provenance": row.get("youtube_video_provenance"),
+        "title_tracks": [track["title"] for track in row.get("tracks", []) if track.get("is_title_track")],
+        "track_count": len(row.get("tracks", [])),
+    }
+
+
+def ratio(count: int, total: int) -> float:
+    if total <= 0:
+        return 0.0
+    return round(count / total, 4)
+
+
+def format_percent(value: float) -> str:
+    return f"{value * 100:.1f}%"
+
+
+def build_slice_metrics(rows: List[Dict]) -> Dict:
+    total_rows = len(rows)
+    detail_statuses = [optional_text(row.get("detail_status")) or DETAIL_STATUS_UNRESOLVED for row in rows]
+    title_track_statuses = [optional_text(row.get("title_track_status")) or DETAIL_STATUS_UNRESOLVED for row in rows]
+    youtube_video_statuses = [
+        optional_text(row.get("youtube_video_status")) or YOUTUBE_VIDEO_STATUS_UNRESOLVED for row in rows
+    ]
+
+    detail_payload_rows = total_rows
+    detail_trusted_rows = sum(status in DETAIL_TRUSTED_STATUSES for status in detail_statuses)
+    detail_inferred_rows = sum(status == DETAIL_STATUS_INFERRED for status in detail_statuses)
+    detail_review_rows = sum(status == DETAIL_STATUS_REVIEW for status in detail_statuses)
+    detail_unresolved_rows = sum(status == DETAIL_STATUS_UNRESOLVED for status in detail_statuses)
+
+    title_track_resolved_rows = sum(status in TITLE_TRACK_COMPLETE_STATUSES for status in title_track_statuses)
+    title_track_review_rows = sum(status == DETAIL_STATUS_REVIEW for status in title_track_statuses)
+    title_track_unresolved_rows = sum(status == DETAIL_STATUS_UNRESOLVED for status in title_track_statuses)
+
+    canonical_mv_rows = sum(status in MV_COMPLETE_STATUSES for status in youtube_video_statuses)
+    mv_review_rows = sum(status == YOUTUBE_VIDEO_STATUS_REVIEW for status in youtube_video_statuses)
+    mv_unresolved_rows = sum(status == YOUTUBE_VIDEO_STATUS_UNRESOLVED for status in youtube_video_statuses)
+    mv_no_mv_rows = sum(status == YOUTUBE_VIDEO_STATUS_NO_MV for status in youtube_video_statuses)
+
+    return {
+        "total_rows": total_rows,
+        "detail_payload_rows": detail_payload_rows,
+        "detail_payload_ratio": ratio(detail_payload_rows, total_rows),
+        "detail_trusted_rows": detail_trusted_rows,
+        "detail_trusted_ratio": ratio(detail_trusted_rows, total_rows),
+        "detail_inferred_rows": detail_inferred_rows,
+        "detail_inferred_ratio": ratio(detail_inferred_rows, total_rows),
+        "detail_review_rows": detail_review_rows,
+        "detail_review_ratio": ratio(detail_review_rows, total_rows),
+        "detail_unresolved_rows": detail_unresolved_rows,
+        "detail_unresolved_ratio": ratio(detail_unresolved_rows, total_rows),
+        "title_track_resolved_rows": title_track_resolved_rows,
+        "title_track_resolved_ratio": ratio(title_track_resolved_rows, total_rows),
+        "title_track_review_rows": title_track_review_rows,
+        "title_track_review_ratio": ratio(title_track_review_rows, total_rows),
+        "title_track_unresolved_rows": title_track_unresolved_rows,
+        "title_track_unresolved_ratio": ratio(title_track_unresolved_rows, total_rows),
+        "canonical_mv_rows": canonical_mv_rows,
+        "canonical_mv_ratio": ratio(canonical_mv_rows, total_rows),
+        "mv_review_rows": mv_review_rows,
+        "mv_review_ratio": ratio(mv_review_rows, total_rows),
+        "mv_unresolved_rows": mv_unresolved_rows,
+        "mv_unresolved_ratio": ratio(mv_unresolved_rows, total_rows),
+        "mv_no_mv_rows": mv_no_mv_rows,
+        "mv_no_mv_ratio": ratio(mv_no_mv_rows, total_rows),
+    }
+
+
+def build_breakdown(rows: List[Dict], key_name: str) -> Dict[str, Dict]:
+    grouped: Dict[str, List[Dict]] = {}
+    for row in rows:
+        if key_name == "year":
+            key = row["release_date"][:4]
+        elif key_name == "release_kind":
+            key = row["release_kind"]
+        else:
+            raise ValueError(f"Unsupported breakdown key: {key_name}")
+        grouped.setdefault(key, []).append(row)
+
+    return {
+        key: build_slice_metrics(bucket)
+        for key, bucket in sorted(grouped.items(), key=lambda item: item[0])
+    }
+
+
+def build_top_gap_entities(rows: List[Dict], limit: int = 10) -> Dict[str, List[Dict]]:
+    grouped: Dict[str, Dict] = {}
+    for row in rows:
+        group = row["group"]
+        detail_status = optional_text(row.get("detail_status")) or DETAIL_STATUS_UNRESOLVED
+        title_track_status = optional_text(row.get("title_track_status")) or DETAIL_STATUS_UNRESOLVED
+        youtube_video_status = optional_text(row.get("youtube_video_status")) or YOUTUBE_VIDEO_STATUS_UNRESOLVED
+
+        stats = grouped.setdefault(
+            group,
+            {
+                "group": group,
+                "total_rows": 0,
+                "detail_gap_rows": 0,
+                "title_track_gap_rows": 0,
+                "mv_gap_rows": 0,
+            },
+        )
+        stats["total_rows"] += 1
+        if detail_status not in DETAIL_TRUSTED_STATUSES:
+            stats["detail_gap_rows"] += 1
+        if title_track_status not in TITLE_TRACK_COMPLETE_STATUSES:
+            stats["title_track_gap_rows"] += 1
+        if youtube_video_status not in MV_COMPLETE_STATUSES:
+            stats["mv_gap_rows"] += 1
+
+    def top_rows(metric: str) -> List[Dict]:
+        ranked = sorted(
+            grouped.values(),
+            key=lambda row: (-row[metric], -row["total_rows"], row["group"].casefold()),
+        )[:limit]
+        return [
+            {
+                **row,
+                metric.replace("_rows", "_ratio"): ratio(row[metric], row["total_rows"]),
+            }
+            for row in ranked
+            if row[metric] > 0
+        ]
+
+    return {
+        "detail": top_rows("detail_gap_rows"),
+        "title_track": top_rows("title_track_gap_rows"),
+        "mv": top_rows("mv_gap_rows"),
+    }
+
+
+def build_gap_samples(rows: List[Dict], predicate, limit: int = 10) -> List[Dict]:
+    samples: List[Dict] = []
+    for row in rows:
+        if predicate(row):
+            samples.append(build_release_row_sample(row))
+            if len(samples) >= limit:
+                break
+    return samples
+
+
+def build_cutover_gates(overall_metrics: Dict, historical_metrics: Dict) -> Dict:
+    gate_specs = {
+        "detail_payload": {
+            "observed_total": overall_metrics["detail_payload_ratio"],
+            "observed_pre_2024": historical_metrics["detail_payload_ratio"],
+            "threshold_total": HISTORICAL_COMPLETENESS_THRESHOLDS["detail_payload_total_min"],
+            "threshold_pre_2024": HISTORICAL_COMPLETENESS_THRESHOLDS["detail_payload_pre_2024_min"],
+        },
+        "detail_trusted": {
+            "observed_total": overall_metrics["detail_trusted_ratio"],
+            "observed_pre_2024": historical_metrics["detail_trusted_ratio"],
+            "threshold_total": HISTORICAL_COMPLETENESS_THRESHOLDS["detail_trusted_total_min"],
+            "threshold_pre_2024": HISTORICAL_COMPLETENESS_THRESHOLDS["detail_trusted_pre_2024_min"],
+        },
+        "title_track_resolved": {
+            "observed_total": overall_metrics["title_track_resolved_ratio"],
+            "observed_pre_2024": historical_metrics["title_track_resolved_ratio"],
+            "threshold_total": HISTORICAL_COMPLETENESS_THRESHOLDS["title_track_resolved_total_min"],
+            "threshold_pre_2024": HISTORICAL_COMPLETENESS_THRESHOLDS["title_track_resolved_pre_2024_min"],
+        },
+        "canonical_mv": {
+            "observed_total": overall_metrics["canonical_mv_ratio"],
+            "observed_pre_2024": historical_metrics["canonical_mv_ratio"],
+            "threshold_total": HISTORICAL_COMPLETENESS_THRESHOLDS["canonical_mv_total_min"],
+            "threshold_pre_2024": HISTORICAL_COMPLETENESS_THRESHOLDS["canonical_mv_pre_2024_min"],
+        },
+    }
+
+    gates: Dict[str, Dict] = {}
+    for name, spec in gate_specs.items():
+        status = "pass"
+        if spec["observed_total"] < spec["threshold_total"] or spec["observed_pre_2024"] < spec["threshold_pre_2024"]:
+            status = "fail"
+        gates[name] = {
+            "status": status,
+            "observed_total": spec["observed_total"],
+            "observed_pre_2024": spec["observed_pre_2024"],
+            "threshold_total": spec["threshold_total"],
+            "threshold_pre_2024": spec["threshold_pre_2024"],
+        }
+
+    cutover_ready = all(gate["status"] == "pass" for gate in gates.values())
+    summary_lines = [
+        (
+            f"detail payload gate: {gates['detail_payload']['status']} "
+            f"(total {format_percent(gates['detail_payload']['observed_total'])}, "
+            f"pre-2024 {format_percent(gates['detail_payload']['observed_pre_2024'])})"
+        ),
+        (
+            f"detail trusted gate: {gates['detail_trusted']['status']} "
+            f"(total {format_percent(gates['detail_trusted']['observed_total'])}, "
+            f"pre-2024 {format_percent(gates['detail_trusted']['observed_pre_2024'])})"
+        ),
+        (
+            f"title-track resolved gate: {gates['title_track_resolved']['status']} "
+            f"(total {format_percent(gates['title_track_resolved']['observed_total'])}, "
+            f"pre-2024 {format_percent(gates['title_track_resolved']['observed_pre_2024'])})"
+        ),
+        (
+            f"canonical MV gate: {gates['canonical_mv']['status']} "
+            f"(total {format_percent(gates['canonical_mv']['observed_total'])}, "
+            f"pre-2024 {format_percent(gates['canonical_mv']['observed_pre_2024'])})"
+        ),
+    ]
+    return {
+        "thresholds": HISTORICAL_COMPLETENESS_THRESHOLDS,
+        "gates": gates,
+        "cutover_ready": cutover_ready,
+        "cutover_status": "pass" if cutover_ready else "fail",
+        "generated_at": date.today().isoformat(),
+        "summary_lines": summary_lines,
+    }
+
+
+def build_coverage_summary_lines(
+    overall_metrics: Dict,
+    historical_metrics: Dict,
+    cutover_gates: Dict,
+    title_track_review_rows: List[Dict],
+) -> List[str]:
+    return [
+        (
+            f"detail payload coverage: {overall_metrics['detail_payload_rows']}/{overall_metrics['total_rows']} "
+            f"({format_percent(overall_metrics['detail_payload_ratio'])}), pre-2024 "
+            f"{historical_metrics['detail_payload_rows']}/{historical_metrics['total_rows']} "
+            f"({format_percent(historical_metrics['detail_payload_ratio'])})"
+        ),
+        (
+            f"detail trusted coverage: {overall_metrics['detail_trusted_rows']}/{overall_metrics['total_rows']} "
+            f"({format_percent(overall_metrics['detail_trusted_ratio'])}), pre-2024 "
+            f"{historical_metrics['detail_trusted_rows']}/{historical_metrics['total_rows']} "
+            f"({format_percent(historical_metrics['detail_trusted_ratio'])})"
+        ),
+        (
+            f"title-track resolved coverage: {overall_metrics['title_track_resolved_rows']}/{overall_metrics['total_rows']} "
+            f"({format_percent(overall_metrics['title_track_resolved_ratio'])}), pre-2024 "
+            f"{historical_metrics['title_track_resolved_rows']}/{historical_metrics['total_rows']} "
+            f"({format_percent(historical_metrics['title_track_resolved_ratio'])}), review queue {len(title_track_review_rows)}"
+        ),
+        (
+            f"canonical MV coverage: {overall_metrics['canonical_mv_rows']}/{overall_metrics['total_rows']} "
+            f"({format_percent(overall_metrics['canonical_mv_ratio'])}), pre-2024 "
+            f"{historical_metrics['canonical_mv_rows']}/{historical_metrics['total_rows']} "
+            f"({format_percent(historical_metrics['canonical_mv_ratio'])}), mv review {overall_metrics['mv_review_rows']}"
+        ),
+        f"historical catalog cutover gate: {cutover_gates['cutover_status']}",
+    ]
+
+
+def build_coverage_markdown(report: Dict) -> str:
+    overall = report["completeness"]["overall"]
+    historical = report["completeness"]["pre_2024"]
+    gates = report["cutover_gates"]
+
+    lines = [
+        "# Historical Catalog Completeness Summary",
+        "",
+        f"- generated_at: `{report['generated_at']}`",
+        f"- cutover status: `{gates['cutover_status']}`",
+        "",
+        "## Summary",
+        "",
+    ]
+    lines.extend([f"- {line}" for line in report["summary_lines"]])
+    lines.extend(
+        [
+            "",
+            "## Overall Coverage",
+            "",
+            "| domain | covered | total | ratio |",
+            "| --- | ---: | ---: | ---: |",
+            f"| detail payload | {overall['detail_payload_rows']} | {overall['total_rows']} | {format_percent(overall['detail_payload_ratio'])} |",
+            f"| detail trusted | {overall['detail_trusted_rows']} | {overall['total_rows']} | {format_percent(overall['detail_trusted_ratio'])} |",
+            f"| title-track resolved | {overall['title_track_resolved_rows']} | {overall['total_rows']} | {format_percent(overall['title_track_resolved_ratio'])} |",
+            f"| canonical MV | {overall['canonical_mv_rows']} | {overall['total_rows']} | {format_percent(overall['canonical_mv_ratio'])} |",
+            "",
+            "## Pre-2024 Historical Slice",
+            "",
+            "| domain | covered | total | ratio |",
+            "| --- | ---: | ---: | ---: |",
+            f"| detail payload | {historical['detail_payload_rows']} | {historical['total_rows']} | {format_percent(historical['detail_payload_ratio'])} |",
+            f"| detail trusted | {historical['detail_trusted_rows']} | {historical['total_rows']} | {format_percent(historical['detail_trusted_ratio'])} |",
+            f"| title-track resolved | {historical['title_track_resolved_rows']} | {historical['total_rows']} | {format_percent(historical['title_track_resolved_ratio'])} |",
+            f"| canonical MV | {historical['canonical_mv_rows']} | {historical['total_rows']} | {format_percent(historical['canonical_mv_ratio'])} |",
+            "",
+            "## Cutover Gates",
+            "",
+            "| gate | status | total | threshold | pre-2024 | threshold |",
+            "| --- | --- | ---: | ---: | ---: | ---: |",
+        ]
+    )
+
+    for gate_name, gate in gates["gates"].items():
+        lines.append(
+            f"| {gate_name} | `{gate['status']}` | {format_percent(gate['observed_total'])} | {format_percent(gate['threshold_total'])} | "
+            f"{format_percent(gate['observed_pre_2024'])} | {format_percent(gate['threshold_pre_2024'])} |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## Top Gap Entities (Pre-2024)",
+            "",
+            "| domain | entity | gap rows | total rows | gap ratio |",
+            "| --- | --- | ---: | ---: | ---: |",
+        ]
+    )
+    for domain, rows in report["top_gap_entities"]["pre_2024"].items():
+        for row in rows[:5]:
+            lines.append(
+                f"| {domain} | {row['group']} | {row[f'{domain}_gap_rows' if domain != 'title_track' else 'title_track_gap_rows']} | "
+                f"{row['total_rows']} | {format_percent(row[f'{domain}_gap_ratio' if domain != 'title_track' else 'title_track_gap_ratio'])} |"
+            )
+
+    return "\n".join(lines) + "\n"
 
 
 def build_coverage_report(
@@ -1102,8 +1436,45 @@ def build_coverage_report(
         Counter(optional_text(row.get("youtube_video_status")) or YOUTUBE_VIDEO_STATUS_UNRESOLVED for row in details_after)
     )
     verification_state_samples = build_verification_state_samples(details_after)
+    overall_metrics_before = build_slice_metrics(details_before)
+    overall_metrics_after = build_slice_metrics(details_after)
+    historical_rows_after = [row for row in details_after if row["release_date"] <= "2023-12-31"]
+    historical_metrics_after = build_slice_metrics(historical_rows_after)
+    breakdowns = {
+        "by_year": build_breakdown(details_after, "year"),
+        "by_release_kind": build_breakdown(details_after, "release_kind"),
+    }
+    top_gap_entities = {
+        "all_time": build_top_gap_entities(details_after),
+        "pre_2024": build_top_gap_entities(historical_rows_after),
+    }
+    gap_samples = {
+        "detail_gap_rows": build_gap_samples(
+            details_after,
+            lambda row: (optional_text(row.get("detail_status")) or DETAIL_STATUS_UNRESOLVED) not in DETAIL_TRUSTED_STATUSES,
+        ),
+        "title_track_gap_rows": build_gap_samples(
+            details_after,
+            lambda row: (optional_text(row.get("title_track_status")) or DETAIL_STATUS_UNRESOLVED)
+            not in TITLE_TRACK_COMPLETE_STATUSES,
+        ),
+        "mv_gap_rows": build_gap_samples(
+            details_after,
+            lambda row: (optional_text(row.get("youtube_video_status")) or YOUTUBE_VIDEO_STATUS_UNRESOLVED)
+            not in MV_COMPLETE_STATUSES,
+        ),
+    }
+    cutover_gates = build_cutover_gates(overall_metrics_after, historical_metrics_after)
+    summary_lines = build_coverage_summary_lines(
+        overall_metrics_after,
+        historical_metrics_after,
+        cutover_gates,
+        title_track_review_rows,
+    )
 
     return {
+        "generated_at": date.today().isoformat(),
+        "summary_lines": summary_lines,
         "latest_snapshot_input_rows": len(latest_snapshot_items),
         "latest_snapshot_unique_keys": len(latest_snapshot_keys),
         "full_catalog_input_rows": len(full_catalog_items),
@@ -1128,6 +1499,15 @@ def build_coverage_report(
         "rows_with_title_track_after": rows_with_title_track_after,
         "rows_without_title_track_before": rows_with_tracks_before - rows_with_title_track_before,
         "rows_without_title_track_after": rows_with_tracks_after - rows_with_title_track_after,
+        "completeness": {
+            "overall_before": overall_metrics_before,
+            "overall": overall_metrics_after,
+            "pre_2024": historical_metrics_after,
+        },
+        "breakdowns": breakdowns,
+        "top_gap_entities": top_gap_entities,
+        "gap_samples": gap_samples,
+        "cutover_gates": cutover_gates,
         "detail_status_counts": detail_status_counts,
         "title_track_status_counts": title_track_status_counts,
         "release_level_title_track_status_counts": release_level_title_track_status_counts,
@@ -1245,6 +1625,7 @@ def main() -> None:
         title_track_review_rows,
     )
     AUDIT_OUTPUT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
+    AUDIT_MARKDOWN_OUTPUT_PATH.write_text(build_coverage_markdown(report), encoding="utf-8")
 
     print(json.dumps(report, ensure_ascii=False, indent=2))
 

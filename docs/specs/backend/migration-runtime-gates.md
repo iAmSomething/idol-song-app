@@ -11,6 +11,7 @@ parity와 shadow verification만으로는 충분하지 않고, 실제 운영에 
 - API error rate
 - projection freshness
 - worker cadence
+- historical catalog completeness
 
 ## 2. Runtime Gate Principles
 
@@ -30,6 +31,7 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 | projection freshness sample | `backend/reports/projection_refresh_summary.json` |
 | parity dependency | `backend/reports/backend_json_parity_report.json` |
 | shadow dependency | `backend/reports/backend_shadow_read_report.json` |
+| historical catalog completeness | `backend/reports/historical_release_detail_coverage_report.json` |
 | combined decision | `backend/reports/runtime_gate_report.json` |
 
 ## 4. Gate Status Semantics
@@ -118,6 +120,25 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 - 현재 제품은 주 3회 scan cadence를 전제로 하므로, 마지막 성공 run이 너무 오래되면 freshness trust가 떨어진다
 - preview에서는 cadence가 production보다 낮아도 되지만, rehearsal 직전에는 같은 순서로 한 번 이상 검증한다
 
+### 5.5 Historical Catalog Completeness
+
+기준:
+
+- `historical_release_detail_coverage_report.json`의 `cutover_gates`
+- 전체 카탈로그와 `pre-2024` slice 각각의 coverage
+
+초기 기준:
+
+- detail payload `100% / 100%`
+- detail trusted `85% / 50%`
+- title-track resolved `80% / 60%`
+- canonical MV `65% / 35%`
+
+해석:
+
+- historical catalog completeness는 read API가 technically 살아 있어도 release-detail cutover를 막을 수 있는 데이터 품질 gate다
+- 특히 `pre-2024` coverage가 크게 비어 있으면 migration / web / mobile readiness를 `pass`로 보지 않는다
+
 ## 6. Stage Gate Mapping
 
 ### 6.1 Shadow API -> Web Cutover
@@ -126,6 +147,7 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 
 - parity dependency `pass`
 - shadow dependency `pass`
+- historical catalog completeness dependency `pass`
 - runtime gates가 모두 `pass` 또는 일부 `needs_review`
 
 판정:
@@ -140,6 +162,7 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 
 - parity dependency `pass`
 - shadow dependency `pass`
+- historical catalog completeness dependency `pass`
 - freshness `pass`
 - worker cadence `pass`
 - latency / error rate가 최소 `needs_review` 이상
