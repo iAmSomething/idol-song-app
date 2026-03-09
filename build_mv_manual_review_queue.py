@@ -76,19 +76,20 @@ def build_review_rows(details: list[dict], profiles: list[dict], overrides: dict
         }:
             continue
 
-        title_tracks = derive_title_tracks(detail)
-        if not title_tracks:
-            continue
-
         key = build_lookup_key(detail)
         override = overrides.get(key, {})
         official_youtube_url = official_youtube_by_group.get(detail["group"]) or ""
         allowlist = allowlists_by_group.get(detail["group"], {})
         mv_allowlist_urls = allowlist.get("mv_allowlist_urls", [])
+        title_tracks = derive_title_tracks(detail)
         search_query = build_search_query(detail, title_tracks)
         review_reason = override.get("youtube_video_review_reason")
         if not review_reason:
-            if status == release_detail_builder.YOUTUBE_VIDEO_STATUS_REVIEW:
+            if not title_tracks:
+                review_reason = "No dependable title-track metadata is attached yet, so MV verification falls back to the release title."
+            elif not mv_allowlist_urls and not official_youtube_url:
+                review_reason = "No official team or label YouTube source is registered yet for this release."
+            elif status == release_detail_builder.YOUTUBE_VIDEO_STATUS_REVIEW:
                 review_reason = "Manual review is required before accepting any canonical MV target."
             else:
                 review_reason = "No canonical MV target is attached yet."
@@ -101,9 +102,12 @@ def build_review_rows(details: list[dict], profiles: list[dict], overrides: dict
                 "stream": detail["stream"],
                 "release_kind": detail["release_kind"],
                 "title_tracks": title_tracks,
+                "title_track_basis": "title_track" if title_tracks else "release_title_fallback",
+                "missing_title_track_metadata": not bool(title_tracks),
                 "youtube_video_status": status,
                 "official_youtube_url": official_youtube_url,
                 "mv_allowlist_urls": mv_allowlist_urls,
+                "missing_mv_allowlist": not bool(mv_allowlist_urls),
                 "review_reason": review_reason,
                 "recommended_action": build_recommended_action(
                     status,
@@ -146,9 +150,12 @@ def main() -> None:
                 "stream",
                 "release_kind",
                 "title_tracks",
+                "title_track_basis",
+                "missing_title_track_metadata",
                 "youtube_video_status",
                 "official_youtube_url",
                 "mv_allowlist_urls",
+                "missing_mv_allowlist",
                 "review_reason",
                 "recommended_action",
                 "suggested_search_query",
