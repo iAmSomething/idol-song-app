@@ -34,6 +34,19 @@ function resolveArtistSourceUrl(profile: ArtistProfileRaw): string | undefined {
   return profile.artist_source_url ?? profile.artist_source ?? undefined;
 }
 
+function resolveActType(profile: ArtistProfileRaw): TeamSummaryModel['actType'] {
+  if (
+    profile.act_type === 'group' ||
+    profile.act_type === 'solo' ||
+    profile.act_type === 'unit' ||
+    profile.act_type === 'project'
+  ) {
+    return profile.act_type;
+  }
+
+  return 'group';
+}
+
 export function adaptTeamBadge(profile: ArtistProfileRaw): TeamBadge | undefined {
   const displayName = resolveDisplayName(profile);
   const imageUrl = profile.badge_image_url ?? profile.representative_image_url ?? undefined;
@@ -83,6 +96,8 @@ export function adaptTeamSummary(
     slug: profile.slug,
     group: profile.group,
     displayName,
+    actType: resolveActType(profile),
+    debutYear: profile.debut_year ?? undefined,
     agency: profile.agency ?? undefined,
     badge: adaptTeamBadge(profile),
     representativeImageUrl: profile.representative_image_url ?? undefined,

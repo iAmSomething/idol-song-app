@@ -16,7 +16,7 @@
 - `calendar` tab은 active dataset + shared selector 기반 container까지 연결됨
   - optional `month/date/filter/sheet` query로 state restoration 지원
 - `radar` tab은 shared radar snapshot 기반 section stack까지 연결됨
-  - optional `hideEmpty=1` query로 tab state restoration 지원
+  - optional `status`, `actType`, `sections` query로 radar tab state restoration 지원
 - `search` tab은 query state + recent query persistence + segmented result container까지 연결됨
   - optional `q/segment` query로 state restoration 지원
   - `artists/[slug]` route는 shared entity detail snapshot 기반 detail screen까지 연결됨

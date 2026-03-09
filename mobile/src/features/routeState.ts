@@ -1,5 +1,8 @@
 export type CalendarFilterMode = 'all' | 'releases' | 'upcoming';
 export type SearchSegment = 'entities' | 'releases' | 'upcoming';
+export type RadarFilterStatus = 'all' | 'scheduled' | 'confirmed' | 'changed';
+export type RadarFilterActType = 'all' | 'group' | 'solo' | 'unit';
+export type RadarSectionKey = 'weekly' | 'change' | 'longGap' | 'rookie';
 
 type RouteParamValue = string | string[] | undefined;
 
@@ -16,7 +19,9 @@ type SearchRouteParams = {
 };
 
 type RadarRouteParams = {
-  hideEmpty?: RouteParamValue;
+  actType?: RouteParamValue;
+  sections?: RouteParamValue;
+  status?: RouteParamValue;
 };
 
 export type CalendarRouteState = {
@@ -32,7 +37,9 @@ export type SearchRouteState = {
 };
 
 export type RadarRouteState = {
-  hideEmptySections: boolean;
+  actTypeFilter: RadarFilterActType;
+  enabledSections: RadarSectionKey[];
+  statusFilter: RadarFilterStatus;
 };
 
 export function getSingleRouteParam(value: RouteParamValue): string | null {
@@ -57,6 +64,30 @@ function resolveFilterMode(value: string | null): CalendarFilterMode {
 
 function resolveSearchSegment(value: string | null): SearchSegment {
   return value === 'releases' || value === 'upcoming' ? value : 'entities';
+}
+
+function resolveRadarFilterStatus(value: string | null): RadarFilterStatus {
+  return value === 'scheduled' || value === 'confirmed' || value === 'changed' ? value : 'all';
+}
+
+function resolveRadarFilterActType(value: string | null): RadarFilterActType {
+  return value === 'group' || value === 'solo' || value === 'unit' ? value : 'all';
+}
+
+const DEFAULT_RADAR_SECTIONS: RadarSectionKey[] = ['weekly', 'change', 'longGap', 'rookie'];
+
+function resolveRadarSections(value: string | null): RadarSectionKey[] {
+  if (!value) {
+    return DEFAULT_RADAR_SECTIONS;
+  }
+
+  const allowed = new Set<RadarSectionKey>(DEFAULT_RADAR_SECTIONS);
+  const sections = value
+    .split(',')
+    .map((entry) => entry.trim())
+    .filter((entry): entry is RadarSectionKey => allowed.has(entry as RadarSectionKey));
+
+  return sections.length > 0 ? Array.from(new Set(sections)) : DEFAULT_RADAR_SECTIONS;
 }
 
 export function resolveCalendarRouteState(
@@ -124,16 +155,27 @@ export function buildSearchRouteParams(args: {
 }
 
 export function resolveRadarRouteState(params: RadarRouteParams): RadarRouteState {
-  const hideEmptyValue = getSingleRouteParam(params.hideEmpty);
-
   return {
-    hideEmptySections: hideEmptyValue === '1',
+    statusFilter: resolveRadarFilterStatus(getSingleRouteParam(params.status)),
+    actTypeFilter: resolveRadarFilterActType(getSingleRouteParam(params.actType)),
+    enabledSections: resolveRadarSections(getSingleRouteParam(params.sections)),
   };
 }
 
-export function buildRadarRouteParams(args: { hideEmptySections: boolean }) {
+export function buildRadarRouteParams(args: {
+  actTypeFilter: RadarFilterActType;
+  enabledSections: RadarSectionKey[];
+  statusFilter: RadarFilterStatus;
+}) {
+  const normalizedSections = Array.from(new Set(args.enabledSections));
+  const useDefaultSections =
+    normalizedSections.length === DEFAULT_RADAR_SECTIONS.length &&
+    DEFAULT_RADAR_SECTIONS.every((section) => normalizedSections.includes(section));
+
   return {
-    hideEmpty: args.hideEmptySections ? '1' : undefined,
+    status: args.statusFilter !== 'all' ? args.statusFilter : undefined,
+    actType: args.actTypeFilter !== 'all' ? args.actTypeFilter : undefined,
+    sections: useDefaultSections ? undefined : normalizedSections.join(','),
   };
 }
 

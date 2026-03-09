@@ -57,9 +57,30 @@ describe('mobile route state helpers', () => {
     });
   });
 
-  test('radar restoration only accepts the explicit hide-empty flag', () => {
-    expect(resolveRadarRouteState({ hideEmpty: '1' })).toEqual({ hideEmptySections: true });
-    expect(resolveRadarRouteState({ hideEmpty: '0' })).toEqual({ hideEmptySections: false });
+  test('radar restoration accepts only valid status, act type, and section filters', () => {
+    expect(
+      resolveRadarRouteState({
+        status: 'confirmed',
+        actType: 'solo',
+        sections: 'weekly,rookie',
+      }),
+    ).toEqual({
+      statusFilter: 'confirmed',
+      actTypeFilter: 'solo',
+      enabledSections: ['weekly', 'rookie'],
+    });
+
+    expect(
+      resolveRadarRouteState({
+        status: 'broken',
+        actType: 'project',
+        sections: 'oops',
+      }),
+    ).toEqual({
+      statusFilter: 'all',
+      actTypeFilter: 'all',
+      enabledSections: ['weekly', 'change', 'longGap', 'rookie'],
+    });
   });
 
   test('builders emit sparse route params for restoration only', () => {
@@ -83,8 +104,16 @@ describe('mobile route state helpers', () => {
       segment: 'upcoming',
     });
 
-    expect(buildRadarRouteParams({ hideEmptySections: true })).toEqual({
-      hideEmpty: '1',
+    expect(
+      buildRadarRouteParams({
+        statusFilter: 'confirmed',
+        actTypeFilter: 'solo',
+        enabledSections: ['weekly', 'rookie'],
+      }),
+    ).toEqual({
+      status: 'confirmed',
+      actType: 'solo',
+      sections: 'weekly,rookie',
     });
   });
 });
