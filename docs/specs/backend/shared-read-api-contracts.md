@@ -445,6 +445,7 @@ lookup helper:
 용도:
 
 - legacy JSON exact key에서 API `release_id`로 넘어가는 migration helper
+- exact key가 sparse duplicate row를 가리켜도, 같은 `entity_slug + normalized release_title + stream` 조합에서 `±1일` 안의 richer canonical candidate가 있으면 그 row로 canonicalize한다
 
 lookup helper response:
 
