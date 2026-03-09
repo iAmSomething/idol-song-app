@@ -21,6 +21,7 @@ const dataset: MobileRawDataset = {
     {
       slug: 'yena',
       group: 'YENA',
+      act_type: 'solo',
       display_name: 'YENA',
       aliases: ['최예나'],
       search_aliases: ['예나'],
@@ -34,6 +35,7 @@ const dataset: MobileRawDataset = {
     {
       slug: 'blackpink',
       group: 'BLACKPINK',
+      act_type: 'group',
       display_name: 'BLACKPINK',
       aliases: ['블랙핑크'],
       search_aliases: ['블핑'],
@@ -44,6 +46,7 @@ const dataset: MobileRawDataset = {
     {
       slug: 'weeekly',
       group: 'Weeekly',
+      act_type: 'group',
       display_name: 'Weeekly',
       aliases: ['위클리'],
       search_aliases: ['위클리'],
@@ -54,6 +57,7 @@ const dataset: MobileRawDataset = {
     {
       slug: 'atheart',
       group: 'AtHeart',
+      act_type: 'group',
       display_name: 'AtHeart',
       aliases: ['앳하트'],
       search_aliases: ['앳하트'],
@@ -134,6 +138,21 @@ const dataset: MobileRawDataset = {
       source_type: 'official_social',
       source_url: 'https://example.com/atheart-social',
       confidence: 0.62,
+    },
+  ],
+  radarChangeFeed: [
+    {
+      group: 'YENA',
+      change_type: '상태 변경',
+      previous_date: '2026-03-13',
+      previous_status: 'scheduled',
+      new_date: '2026-03-11',
+      new_status: 'confirmed',
+      occurred_at: '2026-03-02',
+      release_label: 'LOVE CATCHER',
+      headline: 'YENA comeback date confirmed earlier than expected',
+      source_type: 'news_rss',
+      source_url: 'https://example.com/yena-change',
     },
   ],
   releaseArtwork: [
@@ -362,7 +381,10 @@ describe('mobile selector/adapters scaffold', () => {
     expect(snapshot.featuredUpcoming?.team.slug).toBe('yena');
     expect(snapshot.featuredUpcoming?.dayLabel).toBe('D-3');
     expect(snapshot.weeklyUpcoming).toHaveLength(1);
-    expect(snapshot.changeFeed).toHaveLength(0);
+    expect(snapshot.futureUpcoming).toHaveLength(1);
+    expect(snapshot.changeFeed).toHaveLength(1);
+    expect(snapshot.changeFeed[0]?.team.slug).toBe('yena');
+    expect(snapshot.changeFeed[0]?.sourceLabel).toBe('기사 원문');
     expect(snapshot.longGap[0]?.team.slug).toBe('weeekly');
     expect(snapshot.rookie[0]?.team.slug).toBe('atheart');
   });

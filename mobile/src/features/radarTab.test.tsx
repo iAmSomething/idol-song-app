@@ -154,6 +154,7 @@ describe('mobile radar tab', () => {
     expect(tree.root.findByProps({ testID: 'radar-featured-card' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-featured-card' }).props.accessibilityLabel).toContain('YENA');
     expect(tree.root.findByProps({ testID: 'radar-weekly-card-yena' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'radar-change-card-p1harmony' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-long-gap-card-weeekly' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-rookie-card-atheart' })).toBeDefined();
     expect(tree.root.findAllByProps({ testID: 'radar-degraded-notice' })).toHaveLength(0);
@@ -196,17 +197,21 @@ describe('mobile radar tab', () => {
     const baseSnapshot = actualSelectors.selectRadarSnapshot(source.dataset, '2026-03-09');
 
     mockLoadActiveMobileDataset.mockResolvedValue(source);
-    mockSelectRadarSnapshot.mockReturnValue({
-      ...baseSnapshot,
-      featuredUpcoming: baseSnapshot.featuredUpcoming
+    const partialFutureUpcoming = baseSnapshot.futureUpcoming.map((item, index) =>
+      index === 0
         ? {
-            ...baseSnapshot.featuredUpcoming,
+            ...item,
             upcoming: {
-              ...baseSnapshot.featuredUpcoming.upcoming,
+              ...item.upcoming,
               releaseLabel: undefined,
             },
           }
-        : null,
+        : item,
+    );
+    mockSelectRadarSnapshot.mockReturnValue({
+      ...baseSnapshot,
+      futureUpcoming: partialFutureUpcoming,
+      featuredUpcoming: partialFutureUpcoming[0] ?? null,
       weeklyUpcoming: baseSnapshot.weeklyUpcoming.map((item, index) =>
         index === 0
           ? {
@@ -231,7 +236,9 @@ describe('mobile radar tab', () => {
     const tree = await renderRadarScreen();
 
     expect(tree.root.findByProps({ testID: 'radar-partial-notice' })).toBeDefined();
-    expect(hasText(tree, 'YENA confirms a March 11 comeback')).toBe(true);
+    expect(tree.root.findByProps({ testID: 'radar-featured-card' }).props.accessibilityLabel).toContain(
+      'YENA confirms a March 11 comeback',
+    );
     expect(hasText(tree, '가장 가까운 컴백, 이번 주 예정, 장기 공백 레이더 섹션은 아직 일부 정보만 표시됩니다. 가능한 범위 안에서 최소 카드만 유지합니다.')).toBe(true);
     expect(tree.root.findByProps({ testID: 'radar-long-gap-card-weeekly' })).toBeDefined();
   });
@@ -261,24 +268,44 @@ describe('mobile radar tab', () => {
     expect(tree.root.findByProps({ testID: 'radar-featured-card' })).toBeDefined();
   });
 
-  test('restores the hide-empty toggle state from route params', async () => {
-    __mock.useLocalSearchParams.mockReturnValue({ hideEmpty: '1' });
+  test('restores status, act type, and section state from route params', async () => {
+    __mock.useLocalSearchParams.mockReturnValue({
+      actType: 'solo',
+      sections: 'change',
+      status: 'changed',
+    });
     const tree = await renderRadarScreen();
 
     expect(tree.root.findByProps({ testID: 'radar-filter-button' }).props.accessibilityState.selected).toBe(
       true,
     );
+    expect(tree.root.findByProps({ testID: 'radar-change-card-yena' })).toBeDefined();
+    expect(tree.root.findAllByProps({ testID: 'radar-change-card-p1harmony' })).toHaveLength(0);
+    expect(tree.root.findAllByProps({ testID: 'radar-weekly-card-yena' })).toHaveLength(0);
+    expect(tree.root.findAllByProps({ testID: 'radar-long-gap-card-weeekly' })).toHaveLength(0);
   });
 
-  test('hides empty sections when the filter toggle is active', async () => {
+  test('applies filter sheet selections to featured, weekly, and change sections', async () => {
     const tree = await renderRadarScreen();
 
     await act(async () => {
       tree.root.findByProps({ testID: 'radar-filter-button' }).props.onPress();
+      await Promise.resolve();
     });
 
-    expect(tree.root.findByProps({ testID: 'radar-featured-card' })).toBeDefined();
-    expect(tree.root.findByProps({ testID: 'radar-long-gap-card-weeekly' })).toBeDefined();
-    expect(tree.root.findByProps({ testID: 'radar-rookie-card-atheart' })).toBeDefined();
+    await act(async () => {
+      tree.root.findByProps({ testID: 'radar-filter-status-changed' }).props.onPress();
+      tree.root.findByProps({ testID: 'radar-filter-act-solo' }).props.onPress();
+      tree.root.findByProps({ testID: 'radar-filter-close' }).props.onPress();
+      await Promise.resolve();
+    });
+
+    expect(tree.root.findAllByProps({ testID: 'radar-featured-card' })).toHaveLength(0);
+    expect(tree.root.findAllByProps({ testID: 'radar-weekly-card-yena' })).toHaveLength(0);
+    expect(tree.root.findByProps({ testID: 'radar-change-card-yena' })).toBeDefined();
+    expect(tree.root.findAllByProps({ testID: 'radar-change-card-p1harmony' })).toHaveLength(0);
+    expect(tree.root.findByProps({ testID: 'radar-filter-button' }).props.accessibilityState.selected).toBe(
+      true,
+    );
   });
 });

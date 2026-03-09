@@ -3,6 +3,7 @@ import type {
   EntityDetailSnapshotModel,
   EntityTimelineItemModel,
   MobileRawDataset,
+  RadarChangeFeedItemModel,
   RadarLongGapItemModel,
   RadarRookieItemModel,
   RadarSnapshotModel,
@@ -25,7 +26,13 @@ import {
   adaptUpcomingEvent,
 } from './adapters';
 import { createSelectorContext, type MobileSelectorContext } from './context';
-import { buildReleaseId, compareIsoDateDescending, compareUpcomingDate, normalizeSearchToken } from './normalize';
+import {
+  buildReleaseId,
+  compareIsoDateDescending,
+  compareUpcomingDate,
+  normalizeSearchToken,
+  normalizeUpcomingSourceType,
+} from './normalize';
 
 export { createSelectorContext } from './context';
 export * from './adapters';
@@ -653,6 +660,51 @@ function resolveDayLabel(todayIsoDate: string, scheduledDate?: string): string {
   return `D+${Math.abs(dayDelta)}`;
 }
 
+function resolveRadarSourceLabel(sourceType: UpcomingEventModel['sourceType']): string {
+  if (sourceType === 'agency_notice' || sourceType === 'weverse_notice' || sourceType === 'official_social') {
+    return '공식 공지';
+  }
+
+  if (sourceType === 'news_rss') {
+    return '기사 원문';
+  }
+
+  return '소스 보기';
+}
+
+function resolveChangeStatusLabel(status?: string | null): string | null {
+  if (status === 'confirmed') {
+    return '확정';
+  }
+
+  if (status === 'scheduled') {
+    return '예정';
+  }
+
+  if (status === 'rumor') {
+    return '루머';
+  }
+
+  return null;
+}
+
+function formatChangeScheduleLabel(date?: string | null, status?: string | null): string {
+  const normalizedStatus = resolveChangeStatusLabel(status);
+  if (date && normalizedStatus) {
+    return `${date} · ${normalizedStatus}`;
+  }
+
+  if (date) {
+    return date;
+  }
+
+  if (normalizedStatus) {
+    return normalizedStatus;
+  }
+
+  return '일정 미상';
+}
+
 function buildRadarUpcomingCard(
   context: MobileSelectorContext,
   upcoming: UpcomingEventModel,
@@ -668,6 +720,8 @@ function buildRadarUpcomingCard(
     team,
     upcoming,
     dayLabel: resolveDayLabel(todayIsoDate, upcoming.scheduledDate),
+    sourceLabel: resolveRadarSourceLabel(upcoming.sourceType),
+    sourceUrl: upcoming.sourceUrl,
   };
 }
 
@@ -800,6 +854,38 @@ function buildRookieItems(
   });
 }
 
+function buildChangeFeedItems(context: MobileSelectorContext): RadarChangeFeedItemModel[] {
+  const feed = context.dataset.radarChangeFeed ?? [];
+  const items: RadarChangeFeedItemModel[] = [];
+
+  for (const item of feed) {
+    const profile = context.profilesByGroup.get(item.group);
+    if (!profile) {
+      continue;
+    }
+
+    items.push({
+      id: buildReleaseId(
+        item.group,
+        item.release_label ?? item.headline ?? item.change_type ?? 'change',
+        item.new_date ?? item.previous_date ?? item.occurred_at ?? 'unknown',
+        'album',
+      ),
+      team: adaptTeamSummary(profile, context.allowlistsByGroup.get(item.group)),
+      changeTypeLabel: item.change_type ?? '일정 변경',
+      previousScheduleLabel: formatChangeScheduleLabel(item.previous_date, item.previous_status),
+      nextScheduleLabel: formatChangeScheduleLabel(item.new_date, item.new_status),
+      occurredAtLabel: item.occurred_at ?? undefined,
+      releaseLabel: item.release_label ?? undefined,
+      headline: item.headline ?? undefined,
+      sourceLabel: resolveRadarSourceLabel(normalizeUpcomingSourceType(item.source_type)),
+      sourceUrl: item.source_url ?? undefined,
+    });
+  }
+
+  return items.sort((left, right) => compareIsoDateDescending(left.occurredAtLabel, right.occurredAtLabel));
+}
+
 export function selectRadarSnapshot(
   input: MobileSelectorContext | MobileRawDataset,
   todayIsoDate: string,
@@ -813,21 +899,20 @@ export function selectRadarSnapshot(
     .filter((event) => event.datePrecision === 'exact')
     .sort(compareUpcomingDate);
 
-  const featuredUpcoming =
-    upcomingEvents
-      .filter((event) => event.scheduledDate && event.scheduledDate >= todayIsoDate)
-      .map((event) => buildRadarUpcomingCard(context, event, todayIsoDate))
-      .find((value): value is RadarUpcomingCardModel => value !== null) ?? null;
-
-  const weeklyUpcoming = upcomingEvents
-    .filter((event) => isWithinWeeklyWindow(todayIsoDate, event.scheduledDate))
+  const futureUpcoming = upcomingEvents
+    .filter((event) => event.scheduledDate && event.scheduledDate >= todayIsoDate)
     .map((event) => buildRadarUpcomingCard(context, event, todayIsoDate))
     .filter((value): value is RadarUpcomingCardModel => value !== null);
 
+  const weeklyUpcoming = futureUpcoming.filter((item) =>
+    isWithinWeeklyWindow(todayIsoDate, item.upcoming.scheduledDate),
+  );
+
   return {
-    featuredUpcoming,
+    futureUpcoming,
+    featuredUpcoming: futureUpcoming[0] ?? null,
     weeklyUpcoming,
-    changeFeed: [],
+    changeFeed: buildChangeFeedItems(context),
     longGap: buildLongGapItems(context, todayIsoDate),
     rookie: buildRookieItems(context, todayIsoDate),
   };

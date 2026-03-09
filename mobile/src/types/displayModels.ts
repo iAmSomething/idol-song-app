@@ -5,6 +5,7 @@ export type UpcomingStatus = 'scheduled' | 'confirmed' | 'rumor';
 export type UpcomingConfidence = 'low' | 'medium' | 'high';
 export type UpcomingSourceType = 'agency_notice' | 'weverse_notice' | 'official_social' | 'news_rss' | 'database' | 'pending';
 export type YoutubeVideoStatus = 'relation_match' | 'manual_override' | 'needs_review' | 'no_mv' | 'unresolved';
+export type TeamActType = 'group' | 'solo' | 'unit' | 'project';
 
 export interface TeamBadge {
   imageUrl?: string;
@@ -16,6 +17,8 @@ export interface TeamSummaryModel {
   slug: string;
   group: string;
   displayName: string;
+  actType: TeamActType;
+  debutYear?: number;
   agency?: string;
   badge?: TeamBadge;
   representativeImageUrl?: string;
@@ -178,11 +181,20 @@ export interface RadarUpcomingCardModel {
   team: TeamSummaryModel;
   upcoming: UpcomingEventModel;
   dayLabel: string;
+  sourceLabel: string;
+  sourceUrl?: string;
 }
 
 export interface RadarChangeFeedItemModel {
   id: string;
-  label: string;
+  team: TeamSummaryModel;
+  changeTypeLabel: string;
+  previousScheduleLabel: string;
+  nextScheduleLabel: string;
+  occurredAtLabel?: string;
+  releaseLabel?: string;
+  headline?: string;
+  sourceLabel: string;
   sourceUrl?: string;
 }
 
@@ -204,6 +216,7 @@ export interface RadarRookieItemModel {
 }
 
 export interface RadarSnapshotModel {
+  futureUpcoming: RadarUpcomingCardModel[];
   featuredUpcoming: RadarUpcomingCardModel | null;
   weeklyUpcoming: RadarUpcomingCardModel[];
   changeFeed: RadarChangeFeedItemModel[];

@@ -13,6 +13,8 @@ export type ArtistProfileRaw = {
   display_name?: string | null;
   aliases?: string[] | null;
   search_aliases?: string[] | null;
+  act_type?: 'group' | 'solo' | 'unit' | 'project' | null;
+  debut_year?: number | null;
   agency?: string | null;
   badge_image_url?: string | null;
   representative_image_url?: string | null;
@@ -41,6 +43,20 @@ export type UpcomingCandidateRaw = {
   source_type?: string | null;
   source_url?: string | null;
   confidence?: number | string | null;
+};
+
+export type RadarChangeFeedRaw = {
+  group: string;
+  previous_date?: string | null;
+  previous_status?: string | null;
+  new_date?: string | null;
+  new_status?: string | null;
+  change_type?: string | null;
+  headline?: string | null;
+  release_label?: string | null;
+  occurred_at?: string | null;
+  source_type?: string | null;
+  source_url?: string | null;
 };
 
 export type ReleaseArtworkRaw = {
@@ -109,6 +125,7 @@ export type MobileRawDataset = {
   artistProfiles: ArtistProfileRaw[];
   releases: ReleaseStreamCollectionRaw[];
   upcomingCandidates: UpcomingCandidateRaw[];
+  radarChangeFeed?: RadarChangeFeedRaw[] | null;
   releaseArtwork: ReleaseArtworkRaw[];
   releaseDetails: ReleaseDetailRaw[];
   releaseHistory: ReleaseHistoryGroupRaw[];
