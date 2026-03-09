@@ -27,10 +27,10 @@
       }
     ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseHistory.placeholder_seed"
+      "url": "https://www.youtube.com/watch?v=ByX8EZq8500",
+      "video_id": "ByX8EZq8500",
+      "status": "manual_override",
+      "provenance": "manual review: user-provided official YouTube MV URL"
     },
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   }

@@ -254,7 +254,13 @@
     "release_date": "2026-01-16",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_njsgSSx9YXXGmw3r9acFuNqIU6UYzm0sQ",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_url": "https://www.youtube.com/watch?v=R6e4tBWxIxE",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
+    "title_tracks": [
+      "Knife"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "EVNNE",
@@ -403,7 +409,13 @@
     "release_date": "2026-01-25",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_niDXY6ppq697_xZEdJ9B7ltpp9iy5LhoM",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_url": "https://www.youtube.com/watch?v=zhHB4dZTChw",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
+    "title_tracks": [
+      "404 (New Era)"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "KISS OF LIFE",
@@ -411,7 +423,13 @@
     "release_date": "2025-11-05",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_koNfZeY9f5ktUS_AATILpBkxMKFGHxjto",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_url": "https://www.youtube.com/watch?v=j6OqLm0lQ68",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
+    "title_tracks": [
+      "Lucky"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "LE SSERAFIM",
@@ -453,7 +471,9 @@
     "release_date": "2025-11-17",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kmoOC0j8PL4v7z-W8wwq64_jv29sWPCmE",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_url": "https://www.youtube.com/watch?v=wvtNmMmcAYw",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "NCT WISH",
@@ -636,7 +656,13 @@
     "release_date": "2025-12-29",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kApCbh2UikWb1bBXrhTDc_dCDo9alRZRg",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_url": "https://www.youtube.com/watch?v=-fPz0KoVwog",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
+    "title_tracks": [
+      "UFO (ATTENT!ON)"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "SHINee",
@@ -680,7 +706,13 @@
     "release_date": "2025-10-27",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lL7LMofqXC6sI9U8ok3K-iED9Ps2dFVVY",
-    "provenance": "ytmusicapi exact album search match"
+    "provenance": "ytmusicapi exact album search match",
+    "youtube_video_url": "https://www.youtube.com/watch?v=Hk2u4zlJ4HE",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
+    "title_tracks": [
+      "In the Dark"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "The KingDom",
@@ -927,5 +959,125 @@
     "youtube_video_id": "v5_GoNFr5wc",
     "youtube_video_url": "https://www.youtube.com/watch?v=v5_GoNFr5wc",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "IVE",
+    "release_title": "BANG BANG",
+    "release_date": "2026-02-09",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=9qkpcLK422o",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "RIIZE",
+    "release_title": "All of You",
+    "release_date": "2026-02-09",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=yfKBI5l81-A",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "WJSN",
+    "release_title": "Bloom hour",
+    "release_date": "2026-02-25",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=ItvDjeiqdlE",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "TUNEXX",
+    "release_title": "SET BY US ONLY",
+    "release_date": "2026-03-03",
+    "stream": "album",
+    "title_tracks": [
+      "내가 살아있다는 증거"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=cQESe4Jc0rE",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "TNX",
+    "release_title": "CALL ME BACK",
+    "release_date": "2026-01-22",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=0-xKvImq7Ek",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "XLOV",
+    "release_title": "UXLXVE",
+    "release_date": "2025-11-05",
+    "stream": "album",
+    "title_tracks": [
+      "Rizz"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=NCuFonpf-qk",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "PLAVE",
+    "release_title": "PLBBUU",
+    "release_date": "2025-11-10",
+    "stream": "song",
+    "title_tracks": [
+      "BBUU!"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=8L001YT4k6k",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "YOUNG POSSE",
+    "release_title": "VISA / Pilot3",
+    "release_date": "2026-01-27",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=obqsSgY4oU8",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "ONEUS",
+    "release_title": "原",
+    "release_date": "2026-01-20",
+    "stream": "song",
+    "title_tracks": [
+      "Grenade"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=_UQCWEp-8BQ",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "FIFTY FIFTY",
+    "release_title": "Too Much Part 1",
+    "release_date": "2025-11-04",
+    "stream": "album",
+    "title_tracks": [
+      "가위바위보 (Eeny meeny miny moe)"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=xAOT6ISD9jo",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "VERIVERY",
+    "release_title": "Lost and Found",
+    "release_date": "2025-12-01",
+    "stream": "song",
+    "title_tracks": [
+      "RED (Beggin’)"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=-gzqfjzqG6U",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "RESCENE",
+    "release_title": "Heart Drop",
+    "release_date": "2025-11-06",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=ByX8EZq8500",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
   }
 ]

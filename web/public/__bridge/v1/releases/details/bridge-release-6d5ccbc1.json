@@ -33,7 +33,7 @@
       {
         "order": 2,
         "title": "UFO (ATTENT!ON)",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,
@@ -52,10 +52,10 @@
       }
     ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseDetails.no_mv_signal"
+      "url": "https://www.youtube.com/watch?v=-fPz0KoVwog",
+      "video_id": "-fPz0KoVwog",
+      "status": "manual_override",
+      "provenance": "manual review: user-provided official YouTube MV URL"
     },
     "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   }

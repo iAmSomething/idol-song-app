@@ -33,7 +33,7 @@
       {
         "order": 2,
         "title": "404 (New Era)",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,
@@ -57,10 +57,10 @@
       }
     ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseDetails.no_mv_signal"
+      "url": "https://www.youtube.com/watch?v=zhHB4dZTChw",
+      "video_id": "zhHB4dZTChw",
+      "status": "manual_override",
+      "provenance": "manual review: user-provided official YouTube MV URL"
     },
     "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   }
