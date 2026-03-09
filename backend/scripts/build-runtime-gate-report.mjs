@@ -9,6 +9,10 @@ const DEFAULT_CADENCE_REPORT_PATH = resolve(process.cwd(), './reports/worker_cad
 const DEFAULT_PROJECTION_REPORT_PATH = resolve(process.cwd(), './reports/projection_refresh_summary.json');
 const DEFAULT_PARITY_REPORT_PATH = resolve(process.cwd(), './reports/backend_json_parity_report.json');
 const DEFAULT_SHADOW_REPORT_PATH = resolve(process.cwd(), './reports/backend_shadow_read_report.json');
+const DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH = resolve(
+  process.cwd(),
+  './reports/historical_release_detail_coverage_report.json',
+);
 
 const GATE_THRESHOLDS = {
   latency: {
@@ -41,6 +45,7 @@ function parseArgs(argv) {
     projectionReportPath: DEFAULT_PROJECTION_REPORT_PATH,
     parityReportPath: DEFAULT_PARITY_REPORT_PATH,
     shadowReportPath: DEFAULT_SHADOW_REPORT_PATH,
+    historicalCoverageReportPath: DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -72,6 +77,11 @@ function parseArgs(argv) {
     }
     if (value === '--shadow-report-path') {
       options.shadowReportPath = resolve(process.cwd(), argv[index + 1]);
+      index += 1;
+      continue;
+    }
+    if (value === '--historical-coverage-report-path') {
+      options.historicalCoverageReportPath = resolve(process.cwd(), argv[index + 1]);
       index += 1;
       continue;
     }
@@ -245,12 +255,13 @@ function buildWebToJsonDemotionGate(runtimeChecks, dependencyChecks) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const [latencyReport, cadenceReport, projectionReport, parityReport, shadowReport] = await Promise.all([
+  const [latencyReport, cadenceReport, projectionReport, parityReport, shadowReport, historicalCoverageReport] = await Promise.all([
     loadJson(options.latencyReportPath),
     loadJson(options.cadenceReportPath),
     loadJson(options.projectionReportPath),
     loadJson(options.parityReportPath),
     loadJson(options.shadowReportPath),
+    loadJson(options.historicalCoverageReportPath),
   ]);
 
   const runtimeChecks = {
@@ -263,6 +274,11 @@ async function main() {
   const dependencyChecks = {
     parity: buildDependencyGate(parityReport, 'clean', 'backend_json_parity_report'),
     shadow: buildDependencyGate(shadowReport, 'clean', 'backend_shadow_read_report'),
+    historical_catalog_completeness: buildDependencyGate(
+      historicalCoverageReport?.cutover_gates,
+      'cutover_ready',
+      'historical_release_detail_coverage_report',
+    ),
   };
 
   const stageGates = {
@@ -277,6 +293,7 @@ async function main() {
     `worker cadence: ${runtimeChecks.worker_cadence.status} (failure rate=${runtimeChecks.worker_cadence.observed.scheduled_failure_rate ?? 'n/a'})`,
     `parity dependency: ${dependencyChecks.parity.status}`,
     `shadow dependency: ${dependencyChecks.shadow.status}`,
+    `historical catalog completeness dependency: ${dependencyChecks.historical_catalog_completeness.status}`,
     `shadow -> web cutover gate: ${stageGates.shadow_to_web_cutover}`,
     `web cutover -> JSON demotion gate: ${stageGates.web_cutover_to_json_demotion}`,
   ];
@@ -290,6 +307,7 @@ async function main() {
       projection_report: options.projectionReportPath,
       parity_report: options.parityReportPath,
       shadow_report: options.shadowReportPath,
+      historical_coverage_report: options.historicalCoverageReportPath,
     },
     summary_lines: summaryLines,
     runtime_checks: runtimeChecks,
