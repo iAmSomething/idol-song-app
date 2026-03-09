@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-4bc97d58"
+  },
+  "data": {
+    "release_id": "bridge-release-cc435ed2",
+    "canonical_path": "/artists/weeekly/releases/colorise?date=2023-11-01&stream=album"
+  }
+}

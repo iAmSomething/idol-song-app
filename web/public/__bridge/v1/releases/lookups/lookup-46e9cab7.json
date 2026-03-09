@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-46e9cab7"
+  },
+  "data": {
+    "release_id": "bridge-release-d2e17b92",
+    "canonical_path": "/artists/oneus/releases/last-song?date=2018-09-27&stream=song"
+  }
+}

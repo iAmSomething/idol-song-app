@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-77380a3b"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-77380a3b",
+      "release_title": "LOST",
+      "release_date": "2025-09-17",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Bad Girl",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Lost",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "Nauty",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=0cvhgUyC5G0",
+      "video_id": "0cvhgUyC5G0",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

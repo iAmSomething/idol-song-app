@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-d7233980"
+  },
+  "data": {
+    "release_id": "bridge-release-7c43a69b",
+    "canonical_path": "/artists/tempest/releases/on-and-on?date=2022-11-22&stream=album"
+  }
+}

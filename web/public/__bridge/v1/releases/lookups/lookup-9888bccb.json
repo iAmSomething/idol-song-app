@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-9888bccb"
+  },
+  "data": {
+    "release_id": "bridge-release-9631a06b",
+    "canonical_path": "/artists/zerobaseone/releases/release?date=2024-03-08&stream=song"
+  }
+}

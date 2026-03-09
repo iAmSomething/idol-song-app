@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-eef83733"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-eef83733",
+      "release_title": "BANG BANG",
+      "release_date": "2026-02-09",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/af154a09-c742-4dc1-86ec-af8a25b24c6a/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/af154a09-c742-4dc1-86ec-af8a25b24c6a/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/af154a09-c742-4dc1-86ec-af8a25b24c6a"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "BANG BANG",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+  }
+}

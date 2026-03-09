@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-156c42f2"
+  },
+  "data": {
+    "release_id": "bridge-release-a5509f52",
+    "canonical_path": "/artists/bts/releases/be?date=2020-11-20&stream=album"
+  }
+}

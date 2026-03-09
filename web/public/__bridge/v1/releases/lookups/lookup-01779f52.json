@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-01779f52"
+  },
+  "data": {
+    "release_id": "bridge-release-4018f3b2",
+    "canonical_path": "/artists/riize/releases/get-a-guitar?date=2023-11-09&stream=song"
+  }
+}

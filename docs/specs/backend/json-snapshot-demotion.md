@@ -45,6 +45,9 @@ GitHub Pages build는 backend API base URL만 env로 주입받는다.
 
 - production / preview web build는 API-only runtime을 전제로 `VITE_API_BASE_URL`만 설정한다.
 - GitHub Actions가 JSON을 계속 커밋하더라도 그것은 data publishing이 아니라 transitional export 갱신으로 본다.
+- 단, `VITE_API_BASE_URL`이 비어 있는 Pages build를 그대로 배포하면 same-origin `/v1/*`가 `404`로 무너질 수 있으므로, build 시점에 `web/public/__bridge/v1/**` read bridge를 생성한다.
+- calendar month / radar / known release-detail는 API base가 비어 있을 때 broken root-relative `/v1/*` 대신 이 Pages read bridge를 사용한다.
+- `.github/workflows/deploy-pages.yml`은 deploy 전에 `npm run verify:pages-read-bridge`를 실행해 `2026-02` calendar, `radar`, known release-detail lookup/detail bridge asset이 모두 있는지 gate로 확인한다.
 
 ## 5. 남아 있는 JSON inventory
 
@@ -65,6 +68,7 @@ GitHub Pages build는 backend API base URL만 env로 주입받는다.
 ## 6. Web Runtime Rules
 
 - shipped web cut-over surface는 API-only runtime이다.
+- Pages build에서 API base가 비어 있을 때는 generated Pages read bridge가 runtime target이 된다.
 - local dev도 cut-over surface에서는 JSON primary/source switch를 제공하지 않는다.
 - query override는 남아 있다면 debug/repro 목적에만 한정한다.
 - user-facing copy는 backend availability/error만 설명하고 JSON fallback을 광고하지 않는다.

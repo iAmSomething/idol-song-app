@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-706cc209"
+  },
+  "data": {
+    "release_id": "bridge-release-cf1de050",
+    "canonical_path": "/artists/lun8/releases/my-tune?date=2024-06-07&stream=song"
+  }
+}

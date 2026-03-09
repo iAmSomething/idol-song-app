@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-0ed778d0"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-0ed778d0",
+      "release_title": "In the Dark (暮色独白)",
+      "release_date": "2025-11-03",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/cc31d9d5-c80d-4984-9b7a-599594c81fad/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/cc31d9d5-c80d-4984-9b7a-599594c81fad/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/cc31d9d5-c80d-4984-9b7a-599594c81fad"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3lBfxuIUiLqa03MhYXpr6m"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "In the Dark (暮色独白)",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

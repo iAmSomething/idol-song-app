@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-698763c5"
+  },
+  "data": {
+    "release_id": "bridge-release-68810742",
+    "canonical_path": "/artists/82major/releases/on?date=2023-10-11&stream=song"
+  }
+}

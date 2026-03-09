@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-79214dae"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-79214dae",
+      "release_title": "Trophy",
+      "release_date": "2025-10-30",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/6oTUrlTjn5yEohEoQrXVTf"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_n26tMK3m2CEt3tFoD2YUR5c9WUBUUp5cA"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "TROPHY",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Say more",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Suspicious",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Need That Bass",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=lROE6G2DwFY",
+      "video_id": "lROE6G2DwFY",
+      "status": "manual_override",
+      "provenance": "official artist channel watch URL"
+    },
+    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+  }
+}

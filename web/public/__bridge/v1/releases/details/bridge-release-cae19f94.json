@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-cae19f94"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-cae19f94",
+      "release_title": "STAY ALIVE",
+      "release_date": "2026-02-11",
+      "stream": "album",
+      "release_kind": "album"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_lfT3AHgKiMtF9kQmQOrjHl_q0Of_k4oyw"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "MWUAH",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "I WANT IT (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "BEBE (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "POPPY (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Teddy Bear (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "ASAP (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "LIT",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "STEREOTYPE (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Tell Me Now",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Satellite",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "Lover, Killer",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Say My Name",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "MEOW",
+        "is_title_track": false
+      },
+      {
+        "order": 14,
+        "title": "GPT (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 15,
+        "title": "Bubble (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 16,
+        "title": "Cheeky Icy Thang (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 17,
+        "title": "Stay WITH me (Japanese ver.)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz ALBUM seed with 17 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

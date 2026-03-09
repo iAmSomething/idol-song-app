@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-ed52d679"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-ed52d679",
+      "release_title": "DON’T MESS UP MY TEMPO",
+      "release_date": "2018-11-02",
+      "stream": "album",
+      "release_kind": "album"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseHistory.placeholder_seed"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  }
+}

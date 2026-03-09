@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-18d2cb74"
+  },
+  "data": {
+    "release_id": "bridge-release-5682a5ed",
+    "canonical_path": "/artists/btob/releases/someday?date=2017-02-24&stream=song"
+  }
+}

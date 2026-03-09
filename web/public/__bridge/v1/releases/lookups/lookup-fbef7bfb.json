@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-fbef7bfb"
+  },
+  "data": {
+    "release_id": "bridge-release-d233d1b2",
+    "canonical_path": "/artists/twice/releases/better?date=2020-11-11&stream=song"
+  }
+}

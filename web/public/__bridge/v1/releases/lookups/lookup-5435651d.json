@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-5435651d"
+  },
+  "data": {
+    "release_id": "bridge-release-f41ba7e7",
+    "canonical_path": "/artists/onf/releases/hello-wm?date=2018-12-10&stream=song"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-0198b1a4"
+  },
+  "data": {
+    "release_id": "bridge-release-10640204",
+    "canonical_path": "/artists/triples/releases/assemble24?date=2024-05-08&stream=album"
+  }
+}

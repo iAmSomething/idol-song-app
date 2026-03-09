@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-9bc89fcc"
+  },
+  "data": {
+    "release_id": "bridge-release-e7c7b46d",
+    "canonical_path": "/artists/ive/releases/kitsch?date=2023-03-27&stream=song"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-7fd61145"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-7fd61145",
+      "release_title": "butterflies",
+      "release_date": "2025-07-10",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/ffca8aaa-b0bd-49f5-9800-9d273f4735a7/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/ffca8aaa-b0bd-49f5-9800-9d273f4735a7/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/ffca8aaa-b0bd-49f5-9800-9d273f4735a7"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/1Ct91vpCofv1WLTmhNeFK7"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "butterflies",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

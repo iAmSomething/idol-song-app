@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-a6897094"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-a6897094",
+      "release_title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+      "release_date": "2026-01-15",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "/release-placeholder.svg",
+      "thumbnail_image_url": "/release-placeholder.svg",
+      "artwork_source_type": "placeholder",
+      "artwork_source_url": "/release-placeholder.svg"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/5pPLGQ9xQA7PvD6RTLxOef"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-ab2cd65c"
+  },
+  "data": {
+    "release_id": "bridge-release-8a25ecf5",
+    "canonical_path": "/artists/kard/releases/icky?date=2023-05-23&stream=album"
+  }
+}

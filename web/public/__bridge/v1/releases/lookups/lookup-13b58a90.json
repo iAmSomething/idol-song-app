@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-13b58a90"
+  },
+  "data": {
+    "release_id": "bridge-release-d54e22a9",
+    "canonical_path": "/artists/treasure/releases/reverse?date=2024-07-27&stream=song"
+  }
+}

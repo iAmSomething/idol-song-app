@@ -1,0 +1,379 @@
+{
+  "meta": {
+    "request_id": "bridge-calendar-2026-04"
+  },
+  "data": {
+    "summary": {
+      "verified_count": 0,
+      "exact_upcoming_count": 3,
+      "month_only_upcoming_count": 11
+    },
+    "nearest_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "plave",
+      "display_name": "PLAVE",
+      "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
+      "scheduled_date": "2026-04-07",
+      "scheduled_month": "2026-04",
+      "date_precision": "exact",
+      "date_status": "confirmed",
+      "confidence_score": 0.82,
+      "release_format": null
+    },
+    "days": [
+      {
+        "date": "2026-04-07",
+        "verified_releases": [],
+        "exact_upcoming": [
+          {
+            "upcoming_signal_id": null,
+            "entity_slug": "plave",
+            "display_name": "PLAVE",
+            "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
+            "scheduled_date": "2026-04-07",
+            "scheduled_month": "2026-04",
+            "date_precision": "exact",
+            "date_status": "confirmed",
+            "confidence_score": 0.82,
+            "release_format": null
+          }
+        ]
+      },
+      {
+        "date": "2026-04-13",
+        "verified_releases": [],
+        "exact_upcoming": [
+          {
+            "upcoming_signal_id": null,
+            "entity_slug": "tomorrow-x-together",
+            "display_name": "TOMORROW X TOGETHER",
+            "headline": "TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz",
+            "scheduled_date": "2026-04-13",
+            "scheduled_month": "2026-04",
+            "date_precision": "exact",
+            "date_status": "scheduled",
+            "confidence_score": 0.64,
+            "release_format": null
+          },
+          {
+            "upcoming_signal_id": null,
+            "entity_slug": "tomorrow-x-together",
+            "display_name": "TOMORROW X TOGETHER",
+            "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
+            "scheduled_date": "2026-04-13",
+            "scheduled_month": "2026-04",
+            "date_precision": "exact",
+            "date_status": "confirmed",
+            "confidence_score": 0.84,
+            "release_format": null
+          }
+        ]
+      }
+    ],
+    "month_only_upcoming": [
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "young-posse",
+        "display_name": "YOUNG POSSE",
+        "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": "single"
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tws",
+        "display_name": "TWS",
+        "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tomorrow-x-together",
+        "display_name": "TOMORROW X TOGETHER",
+        "headline": "TOMORROW X TOGETHER made their first comeback after renewing their contract..8th mini album released on April 13th - starnewskorea.com",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": "ep"
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "le-sserafim",
+        "display_name": "LE SSERAFIM",
+        "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tws",
+        "display_name": "TWS",
+        "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tws",
+        "display_name": "TWS",
+        "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "kiss-of-life",
+        "display_name": "KISS OF LIFE",
+        "headline": "KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "kickflip",
+        "display_name": "KickFlip",
+        "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "kickflip",
+        "display_name": "KickFlip",
+        "headline": "KickFlip announces April comeback with their 4th mini-album - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": "ep"
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "kickflip",
+        "display_name": "KickFlip",
+        "headline": "KickFlip announces April comeback - Music Mundial",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "and-team",
+        "display_name": "&TEAM",
+        "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": "ep"
+      }
+    ],
+    "verified_list": [],
+    "scheduled_list": [
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "plave",
+        "display_name": "PLAVE",
+        "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
+        "scheduled_date": "2026-04-07",
+        "scheduled_month": "2026-04",
+        "date_precision": "exact",
+        "date_status": "confirmed",
+        "confidence_score": 0.82,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tomorrow-x-together",
+        "display_name": "TOMORROW X TOGETHER",
+        "headline": "TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz",
+        "scheduled_date": "2026-04-13",
+        "scheduled_month": "2026-04",
+        "date_precision": "exact",
+        "date_status": "scheduled",
+        "confidence_score": 0.64,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tomorrow-x-together",
+        "display_name": "TOMORROW X TOGETHER",
+        "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
+        "scheduled_date": "2026-04-13",
+        "scheduled_month": "2026-04",
+        "date_precision": "exact",
+        "date_status": "confirmed",
+        "confidence_score": 0.84,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "young-posse",
+        "display_name": "YOUNG POSSE",
+        "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": "single"
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tws",
+        "display_name": "TWS",
+        "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tomorrow-x-together",
+        "display_name": "TOMORROW X TOGETHER",
+        "headline": "TOMORROW X TOGETHER made their first comeback after renewing their contract..8th mini album released on April 13th - starnewskorea.com",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": "ep"
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "le-sserafim",
+        "display_name": "LE SSERAFIM",
+        "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tws",
+        "display_name": "TWS",
+        "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "tws",
+        "display_name": "TWS",
+        "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "kiss-of-life",
+        "display_name": "KISS OF LIFE",
+        "headline": "KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.58,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "kickflip",
+        "display_name": "KickFlip",
+        "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "kickflip",
+        "display_name": "KickFlip",
+        "headline": "KickFlip announces April comeback with their 4th mini-album - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": "ep"
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "kickflip",
+        "display_name": "KickFlip",
+        "headline": "KickFlip announces April comeback - Music Mundial",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": null
+      },
+      {
+        "upcoming_signal_id": null,
+        "entity_slug": "and-team",
+        "display_name": "&TEAM",
+        "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "confidence_score": 0.76,
+        "release_format": "ep"
+      }
+    ]
+  }
+}

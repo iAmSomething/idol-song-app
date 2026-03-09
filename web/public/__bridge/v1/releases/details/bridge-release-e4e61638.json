@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-e4e61638"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-e4e61638",
+      "release_title": "사랑한단 뜻이야 (Candle Light)",
+      "release_date": "2018-12-17",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseHistory.placeholder_seed"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-cd90eeb6"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-cd90eeb6",
+      "release_title": "GO Chapter 1: GO Together",
+      "release_date": "2025-09-08",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/fa27cf7c-9d03-4857-87b4-c7be5ffcfd2f/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/fa27cf7c-9d03-4857-87b4-c7be5ffcfd2f/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/fa27cf7c-9d03-4857-87b4-c7be5ffcfd2f"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/5dhQSeZvL4WtRwi4CaQBb6"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_k9wDCgWNvMX8z-De0Y4xpSUxoiCi52XMk"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "S.O.S",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "WONDER YOU",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "UPSTANDER",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "IN MY DREAMS",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical links: Spotify, YouTube Music."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-b43c66d5"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-b43c66d5",
+      "release_title": "Liminality - EP.LOVE",
+      "release_date": "2022-11-14",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseHistory.placeholder_seed"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  }
+}

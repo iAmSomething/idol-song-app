@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a1f128eb"
+  },
+  "data": {
+    "release_id": "bridge-release-da79b6fd",
+    "canonical_path": "/artists/nct-127/releases/save?date=2021-06-04&stream=song"
+  }
+}

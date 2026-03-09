@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-0dd5aaee"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-0dd5aaee",
+      "release_title": "LOUD & PROUD",
+      "release_date": "2025-08-12",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/4s6H9i2JkMF58sij9Xa26W"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_mzU4hGn0UZvpekp3z86by6MXEHLbTmiJo"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "That’s That",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Seesaw",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Get Famous",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Move Out",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Did It",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "I’m Down",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

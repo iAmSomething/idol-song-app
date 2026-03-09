@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-31107c65"
+  },
+  "data": {
+    "release_id": "bridge-release-dd70e3e2",
+    "canonical_path": "/artists/twice/releases/doughnut?date=2021-12-02&stream=song"
+  }
+}

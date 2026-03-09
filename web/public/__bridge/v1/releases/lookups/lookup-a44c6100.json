@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a44c6100"
+  },
+  "data": {
+    "release_id": "bridge-release-d8f2e4ed",
+    "canonical_path": "/artists/ive/releases/either-way?date=2023-09-25&stream=song"
+  }
+}

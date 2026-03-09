@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-e65873c7"
+  },
+  "data": {
+    "release_id": "bridge-release-c3fe8fce",
+    "canonical_path": "/artists/ive/releases/eleven?date=2021-12-01&stream=song"
+  }
+}

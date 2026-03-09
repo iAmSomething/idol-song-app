@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-aa5f18f0"
+  },
+  "data": {
+    "release_id": "bridge-release-600e08a3",
+    "canonical_path": "/artists/btob/releases/release?date=2015-03-25&stream=song"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-1ac2af69"
+  },
+  "data": {
+    "release_id": "bridge-release-1921e4c9",
+    "canonical_path": "/artists/tws/releases/release?date=2025-06-30&stream=song"
+  }
+}

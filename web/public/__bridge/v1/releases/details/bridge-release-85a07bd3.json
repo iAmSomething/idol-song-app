@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-85a07bd3"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-85a07bd3",
+      "release_title": "HOT SAUCE",
+      "release_date": "2025-07-01",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/29d2346a-b87d-4fe7-886a-77021f945abf/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/29d2346a-b87d-4fe7-886a-77021f945abf/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/29d2346a-b87d-4fe7-886a-77021f945abf"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/5kTDyVVuvyPJZX1MlXiBvW"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "HOT SAUCE",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=xn8mQqz2xmM",
+      "video_id": "xn8mQqz2xmM",
+      "status": "manual_override",
+      "provenance": "official artist channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-df0449a6"
+  },
+  "data": {
+    "release_id": "bridge-release-c5dcfb5f",
+    "canonical_path": "/artists/oneus/releases/now?date=2024-05-22&stream=song"
+  }
+}

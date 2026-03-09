@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-980d6d20"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-980d6d20",
+      "release_title": "IT’z Different",
+      "release_date": "2019-02-12",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseHistory.placeholder_seed"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  }
+}

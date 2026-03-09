@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-bafb80cf"
+  },
+  "data": {
+    "release_id": "bridge-release-ec6e2dc4",
+    "canonical_path": "/artists/cravity/releases/master-piece?date=2023-03-06&stream=album"
+  }
+}

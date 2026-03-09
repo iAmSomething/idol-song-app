@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-dd73cf20"
+  },
+  "data": {
+    "release_id": "bridge-release-32e351b3",
+    "canonical_path": "/artists/twice/releases/fanfare?date=2020-06-19&stream=song"
+  }
+}

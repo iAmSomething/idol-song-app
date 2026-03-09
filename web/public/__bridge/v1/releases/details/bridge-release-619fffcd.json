@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-619fffcd"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-619fffcd",
+      "release_title": "Youth Chapter 3 : ROMANTIC YOUTH",
+      "release_date": "2025-07-28",
+      "stream": "album",
+      "release_kind": "album"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/4ifOrn2Qb0xwCTY44o7XCQ"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Waffle",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Bang",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Picasso",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Grateful to Tears",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Dances with Wolves",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Morning to midnight",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Whale fall",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Pluto",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz ALBUM seed with 8 tracks. Canonical links: Spotify."
+  }
+}

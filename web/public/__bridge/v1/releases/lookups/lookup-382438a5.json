@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-382438a5"
+  },
+  "data": {
+    "release_id": "bridge-release-2c19e9c5",
+    "canonical_path": "/artists/artms/releases/dall?date=2024-05-31&stream=album"
+  }
+}

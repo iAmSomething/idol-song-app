@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-d3e4c66b"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-d3e4c66b",
+      "release_title": "I WANT IT",
+      "release_date": "2025-07-23",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/0eaf3023-4c83-45ea-94fe-25efd4c61830/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/0eaf3023-4c83-45ea-94fe-25efd4c61830/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/0eaf3023-4c83-45ea-94fe-25efd4c61830"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/252AHBq3W65lTnnELHIi4y"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "I WANT IT",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "BOY",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "반칙(Honestly)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=W8ml4ryPwic",
+      "video_id": "W8ml4ryPwic",
+      "status": "manual_override",
+      "provenance": "official artist channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+  }
+}

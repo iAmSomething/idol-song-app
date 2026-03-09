@@ -1,0 +1,373 @@
+{
+  "meta": {
+    "request_id": "bridge-calendar-2026-02"
+  },
+  "data": {
+    "summary": {
+      "verified_count": 16,
+      "exact_upcoming_count": 0,
+      "month_only_upcoming_count": 0
+    },
+    "nearest_upcoming": null,
+    "days": [
+      {
+        "date": "2026-02-02",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-db7de0d5",
+            "entity_slug": "zerobaseone",
+            "display_name": "ZEROBASEONE",
+            "release_title": "RE-FLOW",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-02-02"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-05",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-028b87ed",
+            "entity_slug": "triples",
+            "display_name": "tripleS",
+            "release_title": "トキメティック",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-05"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-06",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-d9bf8f39",
+            "entity_slug": "ateez",
+            "display_name": "ATEEZ",
+            "release_title": "GOLDEN HOUR : Part.4",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-02-06"
+          },
+          {
+            "release_id": "bridge-release-1c084602",
+            "entity_slug": "monsta-x",
+            "display_name": "MONSTA X",
+            "release_title": "growing pains",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-06"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-09",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-545188dd",
+            "entity_slug": "riize",
+            "display_name": "RIIZE",
+            "release_title": "All of You",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-09"
+          },
+          {
+            "release_id": "bridge-release-eef83733",
+            "entity_slug": "ive",
+            "display_name": "IVE",
+            "release_title": "BANG BANG",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-09"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-11",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-cae19f94",
+            "entity_slug": "stayc",
+            "display_name": "STAYC",
+            "release_title": "STAY ALIVE",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2026-02-11"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-13",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-53140236",
+            "entity_slug": "trendz",
+            "display_name": "TRENDZ",
+            "release_title": "Kart Racer",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-13"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-20",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-dce83bd1",
+            "entity_slug": "hearts2hearts",
+            "display_name": "Hearts2Hearts",
+            "release_title": "RUDE!",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-20"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-23",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-c07ec17b",
+            "entity_slug": "ive",
+            "display_name": "IVE",
+            "release_title": "REVIVE+",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2026-02-23"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-25",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-017e2070",
+            "entity_slug": "wjsn",
+            "display_name": "WJSN",
+            "release_title": "Bloom hour",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-25"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-26",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-b5213e85",
+            "entity_slug": "blackpink",
+            "display_name": "BLACKPINK",
+            "release_title": "DEADLINE",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-02-26"
+          },
+          {
+            "release_id": "bridge-release-b32b64fc",
+            "entity_slug": "atheart",
+            "display_name": "AtHeart",
+            "release_title": "Shut Up",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-26"
+          },
+          {
+            "release_id": "bridge-release-bb7c4726",
+            "entity_slug": "nmixx",
+            "display_name": "NMIXX",
+            "release_title": "TIC TIC",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-26"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-02-27",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-f9f38c66",
+            "entity_slug": "rescene",
+            "display_name": "RESCENE",
+            "release_title": "[RESCENE X ???]",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-27"
+          },
+          {
+            "release_id": "bridge-release-353dc8fa",
+            "entity_slug": "nct-wish",
+            "display_name": "NCT WISH",
+            "release_title": "Same Sky",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2026-02-27"
+          }
+        ],
+        "exact_upcoming": []
+      }
+    ],
+    "month_only_upcoming": [],
+    "verified_list": [
+      {
+        "release_id": "bridge-release-db7de0d5",
+        "entity_slug": "zerobaseone",
+        "display_name": "ZEROBASEONE",
+        "release_title": "RE-FLOW",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2026-02-02"
+      },
+      {
+        "release_id": "bridge-release-028b87ed",
+        "entity_slug": "triples",
+        "display_name": "tripleS",
+        "release_title": "トキメティック",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-05"
+      },
+      {
+        "release_id": "bridge-release-d9bf8f39",
+        "entity_slug": "ateez",
+        "display_name": "ATEEZ",
+        "release_title": "GOLDEN HOUR : Part.4",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2026-02-06"
+      },
+      {
+        "release_id": "bridge-release-1c084602",
+        "entity_slug": "monsta-x",
+        "display_name": "MONSTA X",
+        "release_title": "growing pains",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-06"
+      },
+      {
+        "release_id": "bridge-release-545188dd",
+        "entity_slug": "riize",
+        "display_name": "RIIZE",
+        "release_title": "All of You",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-09"
+      },
+      {
+        "release_id": "bridge-release-eef83733",
+        "entity_slug": "ive",
+        "display_name": "IVE",
+        "release_title": "BANG BANG",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-09"
+      },
+      {
+        "release_id": "bridge-release-cae19f94",
+        "entity_slug": "stayc",
+        "display_name": "STAYC",
+        "release_title": "STAY ALIVE",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2026-02-11"
+      },
+      {
+        "release_id": "bridge-release-53140236",
+        "entity_slug": "trendz",
+        "display_name": "TRENDZ",
+        "release_title": "Kart Racer",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-13"
+      },
+      {
+        "release_id": "bridge-release-dce83bd1",
+        "entity_slug": "hearts2hearts",
+        "display_name": "Hearts2Hearts",
+        "release_title": "RUDE!",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-20"
+      },
+      {
+        "release_id": "bridge-release-c07ec17b",
+        "entity_slug": "ive",
+        "display_name": "IVE",
+        "release_title": "REVIVE+",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2026-02-23"
+      },
+      {
+        "release_id": "bridge-release-017e2070",
+        "entity_slug": "wjsn",
+        "display_name": "WJSN",
+        "release_title": "Bloom hour",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-25"
+      },
+      {
+        "release_id": "bridge-release-b5213e85",
+        "entity_slug": "blackpink",
+        "display_name": "BLACKPINK",
+        "release_title": "DEADLINE",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2026-02-26"
+      },
+      {
+        "release_id": "bridge-release-b32b64fc",
+        "entity_slug": "atheart",
+        "display_name": "AtHeart",
+        "release_title": "Shut Up",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-26"
+      },
+      {
+        "release_id": "bridge-release-bb7c4726",
+        "entity_slug": "nmixx",
+        "display_name": "NMIXX",
+        "release_title": "TIC TIC",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-26"
+      },
+      {
+        "release_id": "bridge-release-f9f38c66",
+        "entity_slug": "rescene",
+        "display_name": "RESCENE",
+        "release_title": "[RESCENE X ???]",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-27"
+      },
+      {
+        "release_id": "bridge-release-353dc8fa",
+        "entity_slug": "nct-wish",
+        "display_name": "NCT WISH",
+        "release_title": "Same Sky",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2026-02-27"
+      }
+    ],
+    "scheduled_list": []
+  }
+}

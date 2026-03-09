@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-7755d71d"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-7755d71d",
+      "release_title": "STAY BY MY SIDE",
+      "release_date": "2018-10-22",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "STAY BY MY SIDE",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "no_mv",
+      "provenance": "manual review priority slice: official TWICE JAPAN channel only exposes a making video, no canonical MV target was found"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Release detail metadata was supplied explicitly from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN single release)."
+  }
+}

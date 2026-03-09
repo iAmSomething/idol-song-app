@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-5360208e"
+  },
+  "data": {
+    "release_id": "bridge-release-f3a1e801",
+    "canonical_path": "/artists/xdinary-heroes/releases/hello-world?date=2022-07-20&stream=album"
+  }
+}

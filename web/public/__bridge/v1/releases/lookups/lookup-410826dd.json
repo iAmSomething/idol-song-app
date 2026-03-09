@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-410826dd"
+  },
+  "data": {
+    "release_id": "bridge-release-443b98fc",
+    "canonical_path": "/artists/triples/releases/triples?date=2024-11-17&stream=song"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-35b7b742"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-35b7b742",
+      "release_title": "The Action",
+      "release_date": "2025-10-20",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/6NKAKKTVPPE85NIDY9u6QD"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_nlFdyL6NGSDWRNc8FOo6bodDyqEavQTIQ"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Live In Paris",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Hollywood Action",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "JAM!",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Bathroom",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "As Time Goes By",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

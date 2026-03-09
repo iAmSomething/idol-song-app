@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-eaa9dc2e"
+  },
+  "data": {
+    "release_id": "bridge-release-f8e1a20f",
+    "canonical_path": "/artists/mamamoo/releases/hello?date=2014-06-18&stream=album"
+  }
+}

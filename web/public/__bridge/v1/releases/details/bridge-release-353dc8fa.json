@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-353dc8fa"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-353dc8fa",
+      "release_title": "Same Sky",
+      "release_date": "2026-02-27",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/5w10bOkr3HsPSp0nl1R0ff"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Same Sky",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "needs_review",
+      "provenance": "Current YouTube results surface audio and lyric uploads ahead of any clearly canonical MV object."
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

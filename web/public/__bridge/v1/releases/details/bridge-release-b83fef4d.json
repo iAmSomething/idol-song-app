@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-b83fef4d"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-b83fef4d",
+      "release_title": "sweet tang",
+      "release_date": "2025-07-16",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/e00021e9-f5fb-4a4a-8332-498ebaa2da76/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/e00021e9-f5fb-4a4a-8332-498ebaa2da76/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/e00021e9-f5fb-4a4a-8332-498ebaa2da76"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/464og3a6TdySFWC2hEq1TW"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_nwbFxdWNwCwZ6gz6YC2R70gIG_U9wdNIY"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "loverboy",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "friend like me",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "round and round",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "ifeye (interlude)",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "r u ok?",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "say moo!",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "echo",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

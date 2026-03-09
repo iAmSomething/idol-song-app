@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-d4cd5da7"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-d4cd5da7",
+      "release_title": "Dirty Work",
+      "release_date": "2025-06-27",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=M2WTUoy4y6E",
+      "video_id": "M2WTUoy4y6E",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

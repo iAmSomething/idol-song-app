@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-9a2b64fc"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-9a2b64fc",
+      "release_title": "DO IT",
+      "release_date": "2025-11-21",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/ce29b685-a98d-411e-b68f-78c6b4e963c6/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/ce29b685-a98d-411e-b68f-78c6b4e963c6/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/ce29b685-a98d-411e-b68f-78c6b4e963c6"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/4lkJ6i3LDK8HvcU2tPWX9k"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_nYozrF8dvixMpZLFrbNMngS1EYCfNjes0"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Do It",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "DIVINE",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Holiday",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Photobook",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Do It (festival version)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=NED7nev2ywQ",
+      "video_id": "NED7nev2ywQ",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

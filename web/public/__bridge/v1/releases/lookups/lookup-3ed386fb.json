@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-3ed386fb"
+  },
+  "data": {
+    "release_id": "bridge-release-32d1d8e8",
+    "canonical_path": "/artists/itzy/releases/voltage?date=2022-03-23&stream=song"
+  }
+}

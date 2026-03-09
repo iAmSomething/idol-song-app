@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-942632d1"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-942632d1",
+      "release_title": "WISHLIST",
+      "release_date": "2026-01-14",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/aa6bead7-4507-41db-8d27-0a8a46d5db75/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/aa6bead7-4507-41db-8d27-0a8a46d5db75/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/aa6bead7-4507-41db-8d27-0a8a46d5db75"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/0AbenVXd5ypXotWe1z0ytw"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_kgqZHEZo8MitXcPTMyxI-qZIK6MRPDysQ"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Hello Mellow",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "ZONE",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "BUBBLE GUM",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Dreamcatcher",
+        "is_title_track": true
+      },
+      {
+        "order": 5,
+        "title": "SOMEDAY",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Good Morning",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "poppop (Japanese ver.)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

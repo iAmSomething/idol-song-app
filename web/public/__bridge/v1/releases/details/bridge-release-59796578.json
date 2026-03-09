@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-59796578"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-59796578",
+      "release_title": "In a million noises, I’ll be your harmony",
+      "release_date": "2025-06-09",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/3d34baf6-f1f9-4dac-879d-4b37d58c9958/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/3d34baf6-f1f9-4dac-879d-4b37d58c9958/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/3d34baf6-f1f9-4dac-879d-4b37d58c9958"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "눈물참기",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "행복해져라",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "검색어는 QWER",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "OVERDRIVE",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "D‐Day",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Yours Sincerely",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks."
+  }
+}

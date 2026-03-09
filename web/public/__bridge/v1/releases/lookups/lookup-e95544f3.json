@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-e95544f3"
+  },
+  "data": {
+    "release_id": "bridge-release-e9875120",
+    "canonical_path": "/artists/ive/releases/wave?date=2023-05-09&stream=song"
+  }
+}

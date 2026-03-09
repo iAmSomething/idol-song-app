@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-f56741d5"
+  },
+  "data": {
+    "release_id": "bridge-release-1b583735",
+    "canonical_path": "/artists/onf/releases/hello-wm?date=2020-09-04&stream=song"
+  }
+}

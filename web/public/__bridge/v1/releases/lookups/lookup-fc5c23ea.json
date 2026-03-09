@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-fc5c23ea"
+  },
+  "data": {
+    "release_id": "bridge-release-eb9a660d",
+    "canonical_path": "/artists/twice/releases/bdz?date=2018-08-17&stream=song"
+  }
+}

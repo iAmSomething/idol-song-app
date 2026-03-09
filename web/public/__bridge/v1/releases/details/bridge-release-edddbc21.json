@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-edddbc21"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-edddbc21",
+      "release_title": "ROSES",
+      "release_date": "2026-01-23",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/6656b493-ef15-4aee-a142-4fc2656294d3/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/6656b493-ef15-4aee-a142-4fc2656294d3/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/6656b493-ef15-4aee-a142-4fc2656294d3"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3bIZ5FREocfX2tLIUnnOdr"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "ROSES",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=JUeZL0TyT3I",
+      "video_id": "JUeZL0TyT3I",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

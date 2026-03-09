@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "request_id": "bridge-radar"
+  },
+  "data": {
+    "long_gap": [
+      {
+        "entity_slug": "weeekly",
+        "display_name": "Weeekly",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Bliss",
+          "release_date": "2024-07-09",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 608,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "woo-ah",
+        "display_name": "woo!ah!",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Shining on you",
+          "release_date": "2024-07-16",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "gap_days": 601,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      }
+    ],
+    "rookie": [
+      {
+        "entity_slug": "allday-project",
+        "display_name": "ALLDAY PROJECT",
+        "debut_year": 2025,
+        "latest_release": {
+          "release_title": "ALLDAY PROJECT",
+          "release_date": "2025-12-08",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "atheart",
+        "display_name": "AtHeart",
+        "debut_year": 2025,
+        "latest_release": {
+          "release_title": "Shut Up",
+          "release_date": "2026-02-26",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "has_upcoming_signal": true,
+        "latest_signal": {
+          "upcoming_signal_id": null,
+          "entity_slug": "atheart",
+          "display_name": "AtHeart",
+          "headline": "Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop",
+          "scheduled_date": null,
+          "scheduled_month": null,
+          "date_precision": "unknown",
+          "date_status": "rumor",
+          "confidence_score": 0.68,
+          "release_format": null
+        }
+      },
+      {
+        "entity_slug": "close-your-eyes",
+        "display_name": "CLOSE YOUR EYES",
+        "debut_year": 2025,
+        "latest_release": {
+          "release_title": "ETERNALT",
+          "release_date": "2025-04-02",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "hearts2hearts",
+        "display_name": "Hearts2Hearts",
+        "debut_year": 2025,
+        "latest_release": {
+          "release_title": "RUDE!",
+          "release_date": "2026-02-20",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "has_upcoming_signal": true,
+        "latest_signal": {
+          "upcoming_signal_id": null,
+          "entity_slug": "hearts2hearts",
+          "display_name": "Hearts2Hearts",
+          "headline": "Hearts2Hearts Announce Comeback Single “RUDE!”: Here’s When It Drops - inmusicblog.com",
+          "scheduled_date": null,
+          "scheduled_month": null,
+          "date_precision": "unknown",
+          "date_status": "rumor",
+          "confidence_score": 0.68,
+          "release_format": "single"
+        }
+      },
+      {
+        "entity_slug": "ifeye",
+        "display_name": "ifeye",
+        "debut_year": 2025,
+        "latest_release": {
+          "release_title": "sweet tang",
+          "release_date": "2025-07-16",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "kickflip",
+        "display_name": "KickFlip",
+        "debut_year": 2025,
+        "latest_release": {
+          "release_title": "From KickFlip, To WeFlip",
+          "release_date": "2026-01-20",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "has_upcoming_signal": true,
+        "latest_signal": {
+          "upcoming_signal_id": null,
+          "entity_slug": "kickflip",
+          "display_name": "KickFlip",
+          "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
+          "scheduled_date": null,
+          "scheduled_month": "2026-04",
+          "date_precision": "month_only",
+          "date_status": "scheduled",
+          "confidence_score": 0.76,
+          "release_format": null
+        }
+      },
+      {
+        "entity_slug": "kiiikiii",
+        "display_name": "KiiiKiii",
+        "debut_year": 2025,
+        "latest_release": {
+          "release_title": "Delulu Pack",
+          "release_date": "2026-01-25",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "has_upcoming_signal": true,
+        "latest_signal": {
+          "upcoming_signal_id": null,
+          "entity_slug": "kiiikiii",
+          "display_name": "KiiiKiii",
+          "headline": "Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop",
+          "scheduled_date": null,
+          "scheduled_month": null,
+          "date_precision": "unknown",
+          "date_status": "rumor",
+          "confidence_score": 0.56,
+          "release_format": null
+        }
+      },
+      {
+        "entity_slug": "xlov",
+        "display_name": "XLOV",
+        "debut_year": 2025,
+        "latest_release": {
+          "release_title": "UXLXVE",
+          "release_date": "2025-11-05",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      }
+    ]
+  }
+}

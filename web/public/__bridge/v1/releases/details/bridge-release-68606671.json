@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-68606671"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-68606671",
+      "release_title": "Wake Me Up",
+      "release_date": "2018-04-25",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Wake Me Up",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=DdLYSziSXII",
+      "video_id": "DdLYSziSXII",
+      "status": "manual_override",
+      "provenance": "manual review priority slice: official TWICE JAPAN Music Video"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Release detail metadata was supplied explicitly from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN single release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN Music Video)."
+  }
+}

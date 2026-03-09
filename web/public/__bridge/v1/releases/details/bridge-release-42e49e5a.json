@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-42e49e5a"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-42e49e5a",
+      "release_title": "Good Day 2025 (Telepathy + By the Moonlight Window)",
+      "release_date": "2025-04-24",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseHistory.placeholder_seed"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-ad5e5205"
+  },
+  "data": {
+    "release_id": "bridge-release-adc6e965",
+    "canonical_path": "/artists/cix/releases/0-or-1?date=2024-01-24&stream=song"
+  }
+}

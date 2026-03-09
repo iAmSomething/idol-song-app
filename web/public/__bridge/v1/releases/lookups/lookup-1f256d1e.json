@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-1f256d1e"
+  },
+  "data": {
+    "release_id": "bridge-release-844b683e",
+    "canonical_path": "/artists/twice/releases/one-spark?date=2024-02-23&stream=song"
+  }
+}

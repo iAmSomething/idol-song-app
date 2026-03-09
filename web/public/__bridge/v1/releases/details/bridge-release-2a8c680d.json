@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-2a8c680d"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-2a8c680d",
+      "release_title": "Candy Pop",
+      "release_date": "2018-01-12",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Candy Pop",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=wQ_POfToaVY",
+      "video_id": "wQ_POfToaVY",
+      "status": "manual_override",
+      "provenance": "manual review priority slice: official TWICE JAPAN Music Video"
+    },
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Release detail metadata was supplied explicitly from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN single release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN Music Video)."
+  }
+}

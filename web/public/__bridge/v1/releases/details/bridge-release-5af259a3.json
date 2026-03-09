@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-5af259a3"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-5af259a3",
+      "release_title": "ICONIC",
+      "release_date": "2025-08-01",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/d53e958d-4e4e-44cf-8942-75f793e187c6/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/d53e958d-4e4e-44cf-8942-75f793e187c6/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/d53e958d-4e4e-44cf-8942-75f793e187c6"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/5Boa7YknUbdFy87sIxQ2vG"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "ICONIC",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

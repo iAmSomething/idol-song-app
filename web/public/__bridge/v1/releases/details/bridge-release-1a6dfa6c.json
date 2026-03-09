@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-1a6dfa6c"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-1a6dfa6c",
+      "release_title": "Growing Pain pt.1 : FREE",
+      "release_date": "2025-08-14",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/f894d3a6-0225-4269-bb58-8947719d2f5d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/f894d3a6-0225-4269-bb58-8947719d2f5d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/f894d3a6-0225-4269-bb58-8947719d2f5d"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/5Nfxo1U4jKI13JB4nPimOJ"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_nboKa9DtcS0FWNllBthpaoUaHl0dHr_oU"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "YSSR",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "FREESTYLE",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "ADHD",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "School’s Out",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "MON3Y 8ANK",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "soju",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Same Shit, Another One",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

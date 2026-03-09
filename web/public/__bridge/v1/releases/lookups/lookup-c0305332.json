@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-c0305332"
+  },
+  "data": {
+    "release_id": "bridge-release-0c5d38e5",
+    "canonical_path": "/artists/ive/releases/alive?date=2024-08-28&stream=album"
+  }
+}

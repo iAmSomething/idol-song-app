@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-498482b5"
+  },
+  "data": {
+    "release_id": "bridge-release-b3e5c29c",
+    "canonical_path": "/artists/seventeen/releases/release?date=2024-01-23&stream=song"
+  }
+}

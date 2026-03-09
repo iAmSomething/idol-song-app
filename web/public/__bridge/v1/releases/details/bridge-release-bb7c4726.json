@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-bb7c4726"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-bb7c4726",
+      "release_title": "TIC TIC",
+      "release_date": "2026-02-26",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "TIC TIC",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+  }
+}

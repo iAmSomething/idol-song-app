@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-ab381dfe"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-ab381dfe",
+      "release_title": "THE X",
+      "release_date": "2025-09-01",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/ca8e0811-5f61-4cd5-b9d8-354f4f9b5f28/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/ca8e0811-5f61-4cd5-b9d8-354f4f9b5f28/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/ca8e0811-5f61-4cd5-b9d8-354f4f9b5f28"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3BUEab50RO1tf709W4EMcL"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_l8XMeULHqaMdI2JGJ_ai0aq8g5JQhQvlA"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Do What I Want",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "N the Front",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Savior",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Tuscan Leather",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Catch Me Now",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Fire & Ice",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

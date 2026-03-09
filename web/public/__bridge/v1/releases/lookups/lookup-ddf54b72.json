@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-ddf54b72"
+  },
+  "data": {
+    "release_id": "bridge-release-690af340",
+    "canonical_path": "/artists/exo/releases/exodus?date=2015-03-30&stream=album"
+  }
+}

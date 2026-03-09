@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-9f383842"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-9f383842",
+      "release_title": "A Montage of ( )",
+      "release_date": "2025-07-08",
+      "stream": "album",
+      "release_kind": "album"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/7hc0DjpDJHNvVNF7a9PDNq"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "La La Love Me",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Hands Off My Heart",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Citrus",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Sticker",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Toxic",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Hipnotic",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Love Language",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Milky Way",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Wildflower",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz ALBUM seed with 9 tracks. Canonical links: Spotify."
+  }
+}

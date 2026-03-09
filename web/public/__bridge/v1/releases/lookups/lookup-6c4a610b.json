@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-6c4a610b"
+  },
+  "data": {
+    "release_id": "bridge-release-bad931d8",
+    "canonical_path": "/artists/ateez/releases/not-okay?date=2024-02-28&stream=song"
+  }
+}

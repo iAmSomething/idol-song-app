@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-1fefdc0b"
+  },
+  "data": {
+    "release_id": "bridge-release-c31f32d5",
+    "canonical_path": "/artists/the-boyz/releases/maverick?date=2021-11-01&stream=song"
+  }
+}

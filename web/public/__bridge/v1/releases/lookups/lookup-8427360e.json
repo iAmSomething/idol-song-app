@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-8427360e"
+  },
+  "data": {
+    "release_id": "bridge-release-08dc33ae",
+    "canonical_path": "/artists/twice/releases/strategy?date=2024-12-06&stream=album"
+  }
+}

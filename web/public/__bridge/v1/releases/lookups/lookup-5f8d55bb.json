@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-5f8d55bb"
+  },
+  "data": {
+    "release_id": "bridge-release-54e1b5a8",
+    "canonical_path": "/artists/shinee/releases/release?date=2016-05-18&stream=song"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-4a0f6974"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-4a0f6974",
+      "release_title": "SYNK : aeXIS LINE",
+      "release_date": "2025-11-17",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/71d978c6-775d-4327-aca5-517a62cc4626/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/71d978c6-775d-4327-aca5-517a62cc4626/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/71d978c6-775d-4327-aca5-517a62cc4626"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/74gHwFGwl4KWA3sD8ZmAbJ"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "BLUE",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Ketchup and Lemonade",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Tornado",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "GOOD STUFF",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 4 tracks. Canonical links: Spotify."
+  }
+}

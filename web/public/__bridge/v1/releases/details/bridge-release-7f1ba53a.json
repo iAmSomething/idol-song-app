@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-7f1ba53a"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-7f1ba53a",
+      "release_title": "i‐dle",
+      "release_date": "2025-10-03",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/91518b35-2567-4b2d-95f9-135361183fe5/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/91518b35-2567-4b2d-95f9-135361183fe5/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/91518b35-2567-4b2d-95f9-135361183fe5"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/prerelease/6dwb5r26FV8QM1q2VNfin6"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_kAyRRZgPd8_-z3-o-FoAVuoTe4zq0OfBU"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "どうしよっかな",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Invincible",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "愛せなかった世界へ永遠にじゃあね",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "傷つくのは嫌いだから",
+        "is_title_track": true
+      },
+      {
+        "order": 5,
+        "title": "Queencard (Japanese ver.)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=DcxiggTs_q4",
+      "video_id": "DcxiggTs_q4",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

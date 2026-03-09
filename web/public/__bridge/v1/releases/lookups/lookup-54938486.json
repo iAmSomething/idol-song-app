@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-54938486"
+  },
+  "data": {
+    "release_id": "bridge-release-f0e9fc1f",
+    "canonical_path": "/artists/infinite/releases/last-romeo?date=2014-06-25&stream=song"
+  }
+}

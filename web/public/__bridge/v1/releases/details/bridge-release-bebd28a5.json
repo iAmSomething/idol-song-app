@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-bebd28a5"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-bebd28a5",
+      "release_title": "Like 1",
+      "release_date": "2025-08-20",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/ec115903-eb42-4437-925e-ad64f0a2d818/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/ec115903-eb42-4437-925e-ad64f0a2d818/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/ec115903-eb42-4437-925e-ad64f0a2d818"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/6m1tTBNtQtBtNeDLhVm3bO"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Like 1",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  }
+}

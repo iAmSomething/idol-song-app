@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-57522170"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-57522170",
+      "release_title": "PLBBUU",
+      "release_date": "2025-11-10",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/e33697d4-87e8-4aab-8af7-f9b058a8cd98/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/e33697d4-87e8-4aab-8af7-f9b058a8cd98/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/e33697d4-87e8-4aab-8af7-f9b058a8cd98"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "BBUU!",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "숨바꼭질 (Hide and Seek)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Bongsoong-a",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks."
+  }
+}

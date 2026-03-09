@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-20faeb52"
+  },
+  "data": {
+    "release_id": "bridge-release-63e7ae2d",
+    "canonical_path": "/artists/cix/releases/all-for-you?date=2021-04-14&stream=album"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-d76b8569"
+  },
+  "data": {
+    "release_id": "bridge-release-26f79289",
+    "canonical_path": "/artists/yves/releases/dim?date=2025-04-01&stream=song"
+  }
+}

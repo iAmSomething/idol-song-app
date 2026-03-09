@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a672386c"
+  },
+  "data": {
+    "release_id": "bridge-release-33d9d3ff",
+    "canonical_path": "/artists/bts/releases/fake-love-airplane-pt-2?date=2018-11-07&stream=song"
+  }
+}

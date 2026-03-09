@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build:pages-read-bridge": "node ./scripts/build-pages-read-bridge.mjs",
+    "build": "npm run build:pages-read-bridge && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "verify:timeout": "tsx ./scripts/verify-backend-timeout.ts",
     "verify:fallback-reasons": "tsx ./scripts/verify-fallback-reasons.ts",
-    "verify:mobile-web-handoff-qa": "tsx ./scripts/build-mobile-web-handoff-qa-matrix.ts"
+    "verify:mobile-web-handoff-qa": "tsx ./scripts/build-mobile-web-handoff-qa-matrix.ts",
+    "verify:pages-read-bridge": "node ./scripts/verify-pages-read-bridge.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

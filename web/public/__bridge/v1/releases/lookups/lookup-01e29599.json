@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-01e29599"
+  },
+  "data": {
+    "release_id": "bridge-release-1bfbc450",
+    "canonical_path": "/artists/tempest/releases/bubble-gum?date=2024-12-11&stream=album"
+  }
+}

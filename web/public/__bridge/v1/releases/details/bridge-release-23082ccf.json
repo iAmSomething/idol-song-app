@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-23082ccf"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-23082ccf",
+      "release_title": "LXVE to DEATH",
+      "release_date": "2025-10-24",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/04WcDHoLelHf9ajNp6HXkD"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_nVfDacYSJ_k4WewXrsD5MOIa991x2JUfQ"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Lost and Found",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "ICU",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Fire (My Sweet Misery)",
+        "is_title_track": true
+      },
+      {
+        "order": 4,
+        "title": "Ashes to Ashes",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Spoiler!!!",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Love Tug of War",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "LOVE ME 2 DEATH",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

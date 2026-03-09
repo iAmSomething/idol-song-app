@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-b86a9d0e"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-b86a9d0e",
+      "release_title": "Summer Light",
+      "release_date": "2025-08-03",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/017dac05-b448-4199-93a0-0d4415f90936/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/017dac05-b448-4199-93a0-0d4415f90936/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/017dac05-b448-4199-93a0-0d4415f90936"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Summer Light",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Summer Light (Inst.)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 2 tracks."
+  }
+}

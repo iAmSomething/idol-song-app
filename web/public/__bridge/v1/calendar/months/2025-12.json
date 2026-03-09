@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "request_id": "bridge-calendar-2025-12"
+  },
+  "data": {
+    "summary": {
+      "verified_count": 6,
+      "exact_upcoming_count": 0,
+      "month_only_upcoming_count": 0
+    },
+    "nearest_upcoming": null,
+    "days": [
+      {
+        "date": "2025-12-01",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-2ec6b454",
+            "entity_slug": "verivery",
+            "display_name": "VERIVERY",
+            "release_title": "Lost and Found",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-12-01"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-12-02",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-0333bfc6",
+            "entity_slug": "fromis-9",
+            "display_name": "fromis_9",
+            "release_title": "White Memories",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-12-02"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-12-06",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-a39186d2",
+            "entity_slug": "the-boyz",
+            "display_name": "THE BOYZ",
+            "release_title": "Still Love You",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-12-06"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-12-13",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-3811253e",
+            "entity_slug": "exo",
+            "display_name": "EXO",
+            "release_title": "I'm Home",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-12-13"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-12-17",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-10a28b1a",
+            "entity_slug": "unis",
+            "display_name": "UNIS",
+            "release_title": "幸せになんかならないでね",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-12-17"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-12-29",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-6d5ccbc1",
+            "entity_slug": "say-my-name",
+            "display_name": "SAY MY NAME",
+            "release_title": "&Our Vibe",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-12-29"
+          }
+        ],
+        "exact_upcoming": []
+      }
+    ],
+    "month_only_upcoming": [],
+    "verified_list": [
+      {
+        "release_id": "bridge-release-2ec6b454",
+        "entity_slug": "verivery",
+        "display_name": "VERIVERY",
+        "release_title": "Lost and Found",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-12-01"
+      },
+      {
+        "release_id": "bridge-release-0333bfc6",
+        "entity_slug": "fromis-9",
+        "display_name": "fromis_9",
+        "release_title": "White Memories",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-12-02"
+      },
+      {
+        "release_id": "bridge-release-a39186d2",
+        "entity_slug": "the-boyz",
+        "display_name": "THE BOYZ",
+        "release_title": "Still Love You",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-12-06"
+      },
+      {
+        "release_id": "bridge-release-3811253e",
+        "entity_slug": "exo",
+        "display_name": "EXO",
+        "release_title": "I'm Home",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-12-13"
+      },
+      {
+        "release_id": "bridge-release-10a28b1a",
+        "entity_slug": "unis",
+        "display_name": "UNIS",
+        "release_title": "幸せになんかならないでね",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-12-17"
+      },
+      {
+        "release_id": "bridge-release-6d5ccbc1",
+        "entity_slug": "say-my-name",
+        "display_name": "SAY MY NAME",
+        "release_title": "&Our Vibe",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-12-29"
+      }
+    ],
+    "scheduled_list": []
+  }
+}

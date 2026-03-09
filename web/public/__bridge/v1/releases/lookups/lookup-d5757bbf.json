@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-d5757bbf"
+  },
+  "data": {
+    "release_id": "bridge-release-e63acb3e",
+    "canonical_path": "/artists/infinite/releases/evolution?date=2011-01-06&stream=album"
+  }
+}

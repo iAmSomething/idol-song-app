@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-9dfc5962"
+  },
+  "data": {
+    "release_id": "bridge-release-1eac0342",
+    "canonical_path": "/artists/onf/releases/onf-my-identity?date=2025-02-18&stream=album"
+  }
+}

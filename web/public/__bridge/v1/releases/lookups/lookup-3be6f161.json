@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-3be6f161"
+  },
+  "data": {
+    "release_id": "bridge-release-8616d56e",
+    "canonical_path": "/artists/bts/releases/butter?date=2021-05-21&stream=song"
+  }
+}

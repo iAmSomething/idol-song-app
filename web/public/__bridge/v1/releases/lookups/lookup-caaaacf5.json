@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-caaaacf5"
+  },
+  "data": {
+    "release_id": "bridge-release-c786a364",
+    "canonical_path": "/artists/triples/releases/triples-password?date=2025-09-17&stream=song"
+  }
+}

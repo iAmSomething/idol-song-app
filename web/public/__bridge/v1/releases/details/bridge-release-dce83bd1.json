@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-dce83bd1"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-dce83bd1",
+      "release_title": "RUDE!",
+      "release_date": "2026-02-20",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/5209edba-458a-4f37-8863-ec663b51fc6b/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/5209edba-458a-4f37-8863-ec663b51fc6b/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/5209edba-458a-4f37-8863-ec663b51fc6b"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3053E9tumiU5rqbAPWF06s"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "RUDE!",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=F7sGJVUrkjQ",
+      "video_id": "F7sGJVUrkjQ",
+      "status": "manual_override",
+      "provenance": "official label or artist merged channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (official label or artist merged channel watch URL)."
+  }
+}

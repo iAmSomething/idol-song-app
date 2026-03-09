@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-847f5cf9"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-847f5cf9",
+      "release_title": "play hard",
+      "release_date": "2025-10-13",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/6RBnUYZIGKGDdgEnf3ta1U"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Head Shoulders Knees Toes",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "OVERDRIVE",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "HOT BLUE SHOES",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Caffeine Rush",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "overthinking",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Here for You",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify."
+  }
+}

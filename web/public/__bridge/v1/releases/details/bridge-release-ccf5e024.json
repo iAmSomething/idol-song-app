@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-ccf5e024"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-ccf5e024",
+      "release_title": "iLy",
+      "release_date": "2025-08-01",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/440ca3df-b629-4455-b67d-d44cf488a6e3/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/440ca3df-b629-4455-b67d-d44cf488a6e3/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/440ca3df-b629-4455-b67d-d44cf488a6e3"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3fbsZjl86xqxaDmuXCDmV0"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "iLy",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=XceS5vnJvUg",
+      "video_id": "XceS5vnJvUg",
+      "status": "manual_override",
+      "provenance": "official label channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (official label channel watch URL)."
+  }
+}

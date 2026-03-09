@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-30d1c702"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-30d1c702",
+      "release_title": "세상은 영화 같지 않더라",
+      "release_date": "2026-01-05",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/4e4e27fa-97fe-42ac-9c4d-801d31d7de6a/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/4e4e27fa-97fe-42ac-9c4d-801d31d7de6a/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/4e4e27fa-97fe-42ac-9c4d-801d31d7de6a"
+    },
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "세상은 영화 같지 않더라",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=izGJjwhCEaI",
+      "video_id": "izGJjwhCEaI",
+      "status": "manual_override",
+      "provenance": "official artist channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+  }
+}

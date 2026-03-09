@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-b86b86be"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-b86b86be",
+      "release_title": "LOVE ANECDOTE(S)",
+      "release_date": "2025-08-04",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/0hffupnkBt5Q4tP7kf2713"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_mrB7hh-Hh7QeHPFJ6MkL33GqDj3Kp66C4"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "dirtybop",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "How Can I Do",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Mako",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "love chat",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "PUT IT ON ME",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Newest",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

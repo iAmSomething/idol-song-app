@@ -1,0 +1,319 @@
+{
+  "meta": {
+    "request_id": "bridge-calendar-2025-07"
+  },
+  "data": {
+    "summary": {
+      "verified_count": 13,
+      "exact_upcoming_count": 0,
+      "month_only_upcoming_count": 0
+    },
+    "nearest_upcoming": null,
+    "days": [
+      {
+        "date": "2025-07-01",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-85a07bd3",
+            "entity_slug": "babymonster",
+            "display_name": "BABYMONSTER",
+            "release_title": "HOT SAUCE",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-01"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-02",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-3b465c01",
+            "entity_slug": "kard",
+            "display_name": "KARD",
+            "release_title": "DRIFT",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-07-02"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-07",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-7e5b989a",
+            "entity_slug": "xdinary-heroes",
+            "display_name": "Xdinary Heroes",
+            "release_title": "FiRE (My Sweet Misery)",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-07"
+          },
+          {
+            "release_id": "bridge-release-b1877a5b",
+            "entity_slug": "tiot",
+            "display_name": "TIOT",
+            "release_title": "Run Run Barefoot",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-07"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-08",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-9f383842",
+            "entity_slug": "viviz",
+            "display_name": "VIVIZ",
+            "release_title": "A Montage of ( )",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2025-07-08"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-10",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-7fd61145",
+            "entity_slug": "tomorrow-x-together",
+            "display_name": "TOMORROW X TOGETHER",
+            "release_title": "butterflies",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-10"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-11",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-0247dcfa",
+            "entity_slug": "blackpink",
+            "display_name": "BLACKPINK",
+            "release_title": "뛰어 (JUMP)",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-11"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-14",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-f97cc4af",
+            "entity_slug": "seventeen",
+            "display_name": "SEVENTEEN",
+            "release_title": "Where love passed",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-14"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-16",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-b83fef4d",
+            "entity_slug": "ifeye",
+            "display_name": "ifeye",
+            "release_title": "sweet tang",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-07-16"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-23",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-d3e4c66b",
+            "entity_slug": "stayc",
+            "display_name": "STAYC",
+            "release_title": "I WANT IT",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-23"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-27",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-f3ba0f9a",
+            "entity_slug": "enhypen",
+            "display_name": "ENHYPEN",
+            "release_title": "宵 -YOI-",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-27"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-07-28",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-fe701980",
+            "entity_slug": "the-boyz",
+            "display_name": "THE BOYZ",
+            "release_title": "a;effect",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-07-28"
+          },
+          {
+            "release_id": "bridge-release-619fffcd",
+            "entity_slug": "epex",
+            "display_name": "EPEX",
+            "release_title": "Youth Chapter 3 : ROMANTIC YOUTH",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2025-07-28"
+          }
+        ],
+        "exact_upcoming": []
+      }
+    ],
+    "month_only_upcoming": [],
+    "verified_list": [
+      {
+        "release_id": "bridge-release-85a07bd3",
+        "entity_slug": "babymonster",
+        "display_name": "BABYMONSTER",
+        "release_title": "HOT SAUCE",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-01"
+      },
+      {
+        "release_id": "bridge-release-3b465c01",
+        "entity_slug": "kard",
+        "display_name": "KARD",
+        "release_title": "DRIFT",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-07-02"
+      },
+      {
+        "release_id": "bridge-release-7e5b989a",
+        "entity_slug": "xdinary-heroes",
+        "display_name": "Xdinary Heroes",
+        "release_title": "FiRE (My Sweet Misery)",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-07"
+      },
+      {
+        "release_id": "bridge-release-b1877a5b",
+        "entity_slug": "tiot",
+        "display_name": "TIOT",
+        "release_title": "Run Run Barefoot",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-07"
+      },
+      {
+        "release_id": "bridge-release-9f383842",
+        "entity_slug": "viviz",
+        "display_name": "VIVIZ",
+        "release_title": "A Montage of ( )",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2025-07-08"
+      },
+      {
+        "release_id": "bridge-release-7fd61145",
+        "entity_slug": "tomorrow-x-together",
+        "display_name": "TOMORROW X TOGETHER",
+        "release_title": "butterflies",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-10"
+      },
+      {
+        "release_id": "bridge-release-0247dcfa",
+        "entity_slug": "blackpink",
+        "display_name": "BLACKPINK",
+        "release_title": "뛰어 (JUMP)",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-11"
+      },
+      {
+        "release_id": "bridge-release-f97cc4af",
+        "entity_slug": "seventeen",
+        "display_name": "SEVENTEEN",
+        "release_title": "Where love passed",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-14"
+      },
+      {
+        "release_id": "bridge-release-b83fef4d",
+        "entity_slug": "ifeye",
+        "display_name": "ifeye",
+        "release_title": "sweet tang",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-07-16"
+      },
+      {
+        "release_id": "bridge-release-d3e4c66b",
+        "entity_slug": "stayc",
+        "display_name": "STAYC",
+        "release_title": "I WANT IT",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-23"
+      },
+      {
+        "release_id": "bridge-release-f3ba0f9a",
+        "entity_slug": "enhypen",
+        "display_name": "ENHYPEN",
+        "release_title": "宵 -YOI-",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-27"
+      },
+      {
+        "release_id": "bridge-release-fe701980",
+        "entity_slug": "the-boyz",
+        "display_name": "THE BOYZ",
+        "release_title": "a;effect",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-07-28"
+      },
+      {
+        "release_id": "bridge-release-619fffcd",
+        "entity_slug": "epex",
+        "display_name": "EPEX",
+        "release_title": "Youth Chapter 3 : ROMANTIC YOUTH",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2025-07-28"
+      }
+    ],
+    "scheduled_list": []
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-a25411fa"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-a25411fa",
+      "release_title": "Delulu Pack",
+      "release_date": "2026-01-25",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/09YZd8EhjQjGDJbc8EUuKq"
+      },
+      "youtube_music": {
+        "url": "https://music.youtube.com/playlist?list=OLAK5uy_niDXY6ppq697_xZEdJ9B7ltpp9iy5LhoM"
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Delulu",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "404 (New Era)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "UNDERDOGS",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "MUNGNYANG",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Dizzy",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "To Me From Me",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+  }
+}

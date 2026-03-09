@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-cf934ebd"
+  },
+  "data": {
+    "release_id": "bridge-release-0b0e1987",
+    "canonical_path": "/artists/exo/releases/bird?date=2019-10-10&stream=song"
+  }
+}

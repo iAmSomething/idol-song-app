@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-5b6243b1"
+  },
+  "data": {
+    "release_id": "bridge-release-4d10bfc8",
+    "canonical_path": "/artists/twice/releases/twicetagram?date=2017-10-30&stream=album"
+  }
+}

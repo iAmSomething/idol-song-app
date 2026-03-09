@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-b32b64fc"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-b32b64fc",
+      "release_title": "Shut Up",
+      "release_date": "2026-02-26",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/16cf36c1-5330-4078-bb8d-4be324d27250/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/16cf36c1-5330-4078-bb8d-4be324d27250/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/16cf36c1-5330-4078-bb8d-4be324d27250"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/13N8MLxKX3V8AiIRYVZC2q"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Shut Up",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=LD6jMlUC18k",
+      "video_id": "LD6jMlUC18k",
+      "status": "manual_override",
+      "provenance": "official artist channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+  }
+}

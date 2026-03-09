@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-234658f4"
+  },
+  "data": {
+    "release_id": "bridge-release-1f3bd225",
+    "canonical_path": "/artists/infinite/releases/request?date=2013-09-27&stream=song"
+  }
+}

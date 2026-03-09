@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-3b465c01"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-3b465c01",
+      "release_title": "DRIFT",
+      "release_date": "2025-07-02",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/20n7NJgj2ZOi1YJ85KEkhq"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "BETCHA",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Touch",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Before We Go",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Top Down",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Pivot",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Touch (instrumental)",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Pivot (instrumental)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "releaseDetails.no_mv_signal"
+    },
+    "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical links: Spotify."
+  }
+}

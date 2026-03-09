@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-db7de0d5"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-db7de0d5",
+      "release_title": "RE-FLOW",
+      "release_date": "2026-02-02",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/2IhQYBuoaZmcXRQJqwFGQg"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Running to Future",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "ROSES",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "LOVEPOCALYPSE",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=v5_GoNFr5wc",
+      "video_id": "v5_GoNFr5wc",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz EP seed with 3 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}

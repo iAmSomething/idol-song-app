@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-df960368"
+  },
+  "data": {
+    "release_id": "bridge-release-60239108",
+    "canonical_path": "/artists/dxmon/releases/burn-up?date=2024-01-01&stream=song"
+  }
+}

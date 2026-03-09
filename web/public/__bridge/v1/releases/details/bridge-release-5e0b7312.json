@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-5e0b7312"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-5e0b7312",
+      "release_title": "THRILLER",
+      "release_date": "2025-09-15",
+      "stream": "song",
+      "release_kind": "single"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/d739e8f9-6575-41ae-910e-ddc45cad2bd9/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/d739e8f9-6575-41ae-910e-ddc45cad2bd9/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/d739e8f9-6575-41ae-910e-ddc45cad2bd9"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/3WDzrUo4IO2A3ScJh6LWTW"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "THRILLER",
+        "is_title_track": true
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=s-KjDJFOh5s",
+      "video_id": "s-KjDJFOh5s",
+      "status": "manual_override",
+      "provenance": "official label channel watch URL"
+    },
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (official label channel watch URL)."
+  }
+}

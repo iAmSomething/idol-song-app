@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request_id": "bridge-release-lookup-lookup-a89dbf55"
+  },
+  "data": {
+    "release_id": "bridge-release-a89dbf55",
+    "canonical_path": "/artists/aespa/releases/drama?date=2023-11-10&stream=album"
+  }
+}
