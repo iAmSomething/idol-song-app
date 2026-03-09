@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import time
@@ -27,6 +28,7 @@ MAX_RESULTS_PER_QUERY = 8
 MAX_QUERIES_PER_RELEASE = 8
 QUERY_SUFFIXES = ("official mv", "mv")
 HANGUL_PATTERN = re.compile(r"[가-힣]")
+RELEASE_TITLE_FALLBACK_MIN_DATE = "2025-01-01"
 
 
 def load_json(path: Path) -> Any:
@@ -78,11 +80,7 @@ def parse_relative_published_at(text: str, reference: datetime) -> str:
     return (reference - delta).isoformat().replace("+00:00", "Z")
 
 
-def build_candidate_channel_url(video: dict[str, Any]) -> str:
-    runs = video.get("longBylineText", {}).get("runs", [])
-    if not runs:
-        return ""
-    endpoint = runs[0].get("navigationEndpoint", {})
+def resolve_channel_url_from_endpoint(endpoint: dict[str, Any]) -> str:
     url = endpoint.get("commandMetadata", {}).get("webCommandMetadata", {}).get("url", "")
     if not url:
         browse_id = endpoint.get("browseEndpoint", {}).get("browseId")
@@ -93,6 +91,36 @@ def build_candidate_channel_url(video: dict[str, Any]) -> str:
             return f"https://www.youtube.com/channel/{browse_id}"
         return ""
     return f"https://www.youtube.com{url}"
+
+
+def build_candidate_channel_url(video: dict[str, Any]) -> str:
+    run_sets = [
+        video.get("ownerText", {}).get("runs", []),
+        video.get("longBylineText", {}).get("runs", []),
+    ]
+    for runs in run_sets:
+        for run in runs:
+            endpoint = run.get("navigationEndpoint", {})
+            channel_url = resolve_channel_url_from_endpoint(endpoint)
+            if channel_url:
+                return channel_url
+    return ""
+
+
+def candidate_channel_matches_url(candidate: dict[str, Any], channel_url: str) -> bool:
+    if not channel_url:
+        return False
+    candidate_keys = {
+        str(value).casefold()
+        for value in youtube_channel_allowlists.extract_youtube_channel_match_keys(candidate.get("channel_url", ""))
+        if value
+    }
+    channel_keys = {
+        str(value).casefold()
+        for value in youtube_channel_allowlists.extract_youtube_channel_match_keys(channel_url)
+        if value
+    }
+    return bool(candidate_keys & channel_keys)
 
 
 def fetch_query_candidates(query: str, reference: datetime) -> list[dict[str, Any]]:
@@ -220,6 +248,14 @@ def build_queries(detail: dict[str, Any], profile: dict[str, Any] | None) -> lis
     return queries
 
 
+def should_attempt_release_title_fallback(detail: dict[str, Any], title_tracks: list[str]) -> bool:
+    if title_tracks:
+        return True
+    if detail.get("release_date", "") < RELEASE_TITLE_FALLBACK_MIN_DATE:
+        return False
+    return detail.get("stream") == "song" or detail.get("release_kind") == "single"
+
+
 def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[str, dict[str, Any]], allowlists_by_group: dict[str, dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     reference = now_utc()
     resolutions: list[dict[str, Any]] = []
@@ -234,7 +270,8 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
             continue
 
         title_tracks = [track["title"] for track in detail.get("tracks", []) if track.get("is_title_track")]
-        if not title_tracks:
+
+        if not should_attempt_release_title_fallback(detail, title_tracks):
             continue
 
         allowlist = allowlists_by_group.get(detail["group"], {})
@@ -266,11 +303,32 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
                 break
 
         if not candidates_by_video_id:
+            review_rows.append(
+                {
+                    "group": detail["group"],
+                    "release_title": detail["release_title"],
+                    "release_date": detail["release_date"],
+                    "stream": detail["stream"],
+                    "top_candidate_title": "",
+                    "top_candidate_channel_url": "",
+                    "top_candidate_score": 0,
+                    "review_reason": "No allowlisted official MV candidate was found from the generated historical search queries.",
+                    "title_track_basis": "release_title_fallback" if not title_tracks else "title_track",
+                }
+            )
             continue
 
         if outcome["status"] == "accepted" and outcome["accepted_video_id"]:
             accepted = next(
                 candidate for candidate in outcome["candidates"] if candidate.get("video_id") == outcome["accepted_video_id"]
+            )
+            matched_channel = next(
+                (
+                    channel
+                    for channel in allowlist.get("channels", [])
+                    if candidate_channel_matches_url(accepted, channel.get("channel_url", ""))
+                ),
+                None,
             )
             resolutions.append(
                 {
@@ -285,7 +343,9 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
                     "selected_query": accepted.get("query", ""),
                     "selected_title": accepted.get("title", ""),
                     "selected_channel_url": accepted.get("channel_url", ""),
+                    "selected_channel_owner_type": matched_channel.get("owner_type", "unknown") if matched_channel else "unknown",
                     "selected_score": accepted.get("score", 0),
+                    "title_track_basis": "release_title_fallback" if not title_tracks else "title_track",
                 }
             )
             continue
@@ -301,6 +361,8 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
                     "top_candidate_title": top.get("title", ""),
                     "top_candidate_channel_url": top.get("channel_url", ""),
                     "top_candidate_score": top.get("score", 0),
+                    "review_reason": "Top candidate needs manual verification before accepting a canonical MV target.",
+                    "title_track_basis": "release_title_fallback" if not title_tracks else "title_track",
                 }
             )
 
@@ -382,12 +444,21 @@ def build_report(before_details: list[dict[str, Any]], after_details: list[dict[
         in {release_detail_builder.YOUTUBE_VIDEO_STATUS_UNRESOLVED, release_detail_builder.YOUTUBE_VIDEO_STATUS_REVIEW}
     ]
 
+    resolved_entity_samples = sorted({row["group"] for row in resolutions})[:10]
+    label_channel_resolutions = [row for row in resolutions if row.get("selected_channel_owner_type") == "label"]
+    team_channel_resolutions = [row for row in resolutions if row.get("selected_channel_owner_type") == "team"]
     return {
         "baseline_rows": len(before_details),
         "baseline_with_mv": before_with_mv,
         "after_with_mv": after_with_mv,
         "coverage_lift": after_with_mv - before_with_mv,
         "resolved_now": len(resolutions),
+        "resolved_entities": len({row["group"] for row in resolutions}),
+        "resolved_entity_samples": resolved_entity_samples,
+        "label_channel_resolutions": len(label_channel_resolutions),
+        "team_channel_resolutions": len(team_channel_resolutions),
+        "label_channel_samples": label_channel_resolutions[:10],
+        "team_channel_samples": team_channel_resolutions[:10],
         "unresolved_remainder": len(unresolved_after),
         "review_candidates": review_rows[:20],
         "resolved_samples": resolutions[:20],
@@ -395,16 +466,35 @@ def build_report(before_details: list[dict[str, Any]], after_details: list[dict[
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--groups",
+        help="Comma-separated list of groups to limit the current resolution pass.",
+    )
+    args = parser.parse_args()
+
     details = load_json(DETAILS_PATH)
     existing_overrides = load_json(OVERRIDES_PATH)
     profiles = load_json(ARTIST_PROFILES_PATH)
     profiles_by_group = {row["group"]: row for row in profiles}
     allowlists_by_group = youtube_channel_allowlists.load_allowlists_by_group()
 
+    scoped_groups = None
+    if args.groups:
+        scoped_groups = {value.strip() for value in args.groups.split(",") if value.strip()}
+        details = [detail for detail in details if detail["group"] in scoped_groups]
+
     resolutions, review_rows = choose_resolutions(details, profiles_by_group, allowlists_by_group)
+
+    full_details = load_json(DETAILS_PATH)
     merged_overrides = merge_override_rows(existing_overrides, resolutions)
-    updated_details = apply_resolutions_to_details(details, resolutions)
-    report = build_report(details, updated_details, resolutions, review_rows)
+    updated_details = apply_resolutions_to_details(full_details, resolutions)
+    report = build_report(full_details, updated_details, resolutions, review_rows)
+    if scoped_groups is not None:
+        report["execution_scope"] = {
+            "groups": sorted(scoped_groups),
+            "scoped_rows": len(details),
+        }
 
     write_json(OVERRIDES_PATH, merged_overrides)
     write_json(DETAILS_PATH, updated_details)

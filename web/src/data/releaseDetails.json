@@ -886,10 +886,10 @@
     ],
     "spotify_url": "https://open.spotify.com/prerelease/6dwb5r26FV8QM1q2VNfin6",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kAyRRZgPd8_-z3-o-FoAVuoTe4zq0OfBU",
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=DcxiggTs_q4",
+    "youtube_video_id": "DcxiggTs_q4",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
@@ -1179,10 +1179,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=li5H5D3Jd70",
+    "youtube_video_id": "li5H5D3Jd70",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -2040,10 +2040,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=M2WTUoy4y6E",
+    "youtube_video_id": "M2WTUoy4y6E",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -8907,10 +8907,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=0fyZqS0N19o",
+    "youtube_video_id": "0fyZqS0N19o",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -10470,10 +10470,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=HmAtJr0Mhh4",
+    "youtube_video_id": "HmAtJr0Mhh4",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -10505,10 +10505,10 @@
     ],
     "spotify_url": "https://open.spotify.com/album/3SbFks7Ke2crP3O0RpfDEF",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=HmAtJr0Mhh4",
+    "youtube_video_id": "HmAtJr0Mhh4",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify."
   },
   {
@@ -12509,10 +12509,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=kxUA2wwYiME",
+    "youtube_video_id": "kxUA2wwYiME",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -12528,10 +12528,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=n7kFRxFIPrI",
+    "youtube_video_id": "n7kFRxFIPrI",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -12547,10 +12547,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=ufwB9Uja_wM",
+    "youtube_video_id": "ufwB9Uja_wM",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -14359,10 +14359,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=88GkYKvnvvI",
+    "youtube_video_id": "88GkYKvnvvI",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -17019,10 +17019,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=cG0uwxBMVbQ",
+    "youtube_video_id": "cG0uwxBMVbQ",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -17054,10 +17054,10 @@
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=0cvhgUyC5G0",
+    "youtube_video_id": "0cvhgUyC5G0",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Representative MusicBrainz SINGLE seed with 3 tracks."
   },
   {
@@ -20162,10 +20162,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=1pyO6oNmACs",
+    "youtube_video_id": "1pyO6oNmACs",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -20952,10 +20952,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=pVIbBEQB0GU",
+    "youtube_video_id": "pVIbBEQB0GU",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -21608,10 +21608,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=TLlYFfZKOV4",
+    "youtube_video_id": "TLlYFfZKOV4",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -22215,10 +22215,10 @@
     ],
     "spotify_url": null,
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lWqLPlxJLMnYXeuhba-DKq1WnxY_BnVPc",
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=9LPigw3hDAo",
+    "youtube_video_id": "9LPigw3hDAo",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Representative MusicBrainz EP seed with 7 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
@@ -22936,10 +22936,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=5eCFXT6Gnio",
+    "youtube_video_id": "5eCFXT6Gnio",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -23474,10 +23474,10 @@
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=5oIIzNGeXco",
+    "youtube_video_id": "5oIIzNGeXco",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Representative MusicBrainz SINGLE seed with 2 tracks."
   },
   {
@@ -23588,10 +23588,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=8IMPpF2tIWI",
+    "youtube_video_id": "8IMPpF2tIWI",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -26469,10 +26469,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=QF6P6BSPDRw",
+    "youtube_video_id": "QF6P6BSPDRw",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -29812,10 +29812,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=8aRTMQvbODs",
+    "youtube_video_id": "8aRTMQvbODs",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -30909,10 +30909,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=m25wQkLg1jc",
+    "youtube_video_id": "m25wQkLg1jc",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -32478,10 +32478,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=DrU5bxPcH0s",
+    "youtube_video_id": "DrU5bxPcH0s",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -35880,10 +35880,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=05P1XXRmOYI",
+    "youtube_video_id": "05P1XXRmOYI",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -35918,10 +35918,10 @@
     "tracks": [],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=v5_GoNFr5wc",
+    "youtube_video_id": "v5_GoNFr5wc",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
@@ -35978,10 +35978,10 @@
     ],
     "spotify_url": "https://open.spotify.com/album/2IhQYBuoaZmcXRQJqwFGQg",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=v5_GoNFr5wc",
+    "youtube_video_id": "v5_GoNFr5wc",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Representative MusicBrainz EP seed with 3 tracks. Canonical links: Spotify."
   }
 ]
