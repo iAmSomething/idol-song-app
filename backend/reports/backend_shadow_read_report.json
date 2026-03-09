@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T10:32:32.484Z",
+  "generated_at": "2026-03-09T11:57:34.568Z",
   "clean": false,
   "linked_parity_report": {
     "exists": true,
@@ -65,13 +65,13 @@
   },
   "summary_lines": [
     "search: clean 5/5, drift 0/5",
-    "entity_detail: clean 4/4, drift 0/4",
+    "entity_detail: clean 1/4, drift 3/4",
     "release_detail: clean 0/3, drift 3/3",
     "calendar_month: clean 3/3, drift 0/3",
-    "radar: clean 0/1, drift 1/1",
-    "field-shape mismatches: 4 case(s)",
-    "missing rows or segments: 3 case(s)",
-    "radar eligibility drift: 1 case(s)"
+    "radar: clean 1/1, drift 0/1",
+    "missing rows or segments: 6 case(s)",
+    "field-shape mismatches: 3 case(s)",
+    "title-track / MV-state drift: 1 case(s)"
   ],
   "cases": [
     {
@@ -153,8 +153,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-f6902b2e-27d2-4483-b222-b46b382c617a",
-      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-f6902b2e-27d2-4483-b222-b46b382c617a"
+      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-794bfa50-e985-4210-b7e4-474646782a2c",
+      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-794bfa50-e985-4210-b7e4-474646782a2c"
     },
     {
       "surface": "search",
@@ -286,8 +286,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-c84fcebd-a760-449b-bb9c-72b5dc4fc5f1",
-      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-c84fcebd-a760-449b-bb9c-72b5dc4fc5f1"
+      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-7d4be42a-29df-42f4-aea3-498b21d7b816",
+      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-7d4be42a-29df-42f4-aea3-498b21d7b816"
     },
     {
       "surface": "search",
@@ -419,8 +419,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-d47bcf9b-6f9f-4932-bc71-f998782c47cf",
-      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-d47bcf9b-6f9f-4932-bc71-f998782c47cf"
+      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-698fe1d5-5010-4ff0-8068-7d35225f7696",
+      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-698fe1d5-5010-4ff0-8068-7d35225f7696"
     },
     {
       "surface": "search",
@@ -501,8 +501,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-revive-2b-a37cc12e-23e0-4b3f-b480-39b304c350f9",
-      "response_request_id": "shadow--v1-search-q-revive-2b-a37cc12e-23e0-4b3f-b480-39b304c350f9"
+      "request_id_sent": "shadow--v1-search-q-revive-2b-aa597052-dc2b-4d47-bf74-44e2d1539ff3",
+      "response_request_id": "shadow--v1-search-q-revive-2b-aa597052-dc2b-4d47-bf74-44e2d1539ff3"
     },
     {
       "surface": "search",
@@ -583,17 +583,26 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-d76c6847-e3b6-4749-940e-11a77999981f",
-      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-d76c6847-e3b6-4749-940e-11a77999981f"
+      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-2a7ed530-7474-4a25-9ffc-e21b46c5e0d4",
+      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-2a7ed530-7474-4a25-9ffc-e21b46c5e0d4"
     },
     {
       "surface": "entity_detail",
       "input": {
         "slug": "yena"
       },
-      "clean": true,
-      "mismatch_categories": [],
-      "mismatches": [],
+      "clean": false,
+      "mismatch_categories": [
+        "missing rows or segments"
+      ],
+      "mismatches": [
+        {
+          "category": "missing rows or segments",
+          "path": "data.artist_source_url",
+          "expected": null,
+          "actual": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
+        }
+      ],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "yena",
@@ -701,7 +710,7 @@
             "source_count": 1
           }
         ],
-        "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
+        "artist_source_url": null
       },
       "actual_snapshot": {
         "identity": {
@@ -818,17 +827,152 @@
         "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-yena-a3bdb501-4fbe-43c6-b3c7-8f72a4c0e2a8",
-      "response_request_id": "shadow--v1-entities-yena-a3bdb501-4fbe-43c6-b3c7-8f72a4c0e2a8"
+      "request_id_sent": "shadow--v1-entities-yena-106232b0-ab96-48f4-88fe-562df4dc70bc",
+      "response_request_id": "shadow--v1-entities-yena-106232b0-ab96-48f4-88fe-562df4dc70bc"
     },
     {
       "surface": "entity_detail",
       "input": {
         "slug": "blackpink"
       },
-      "clean": true,
-      "mismatch_categories": [],
-      "mismatches": [],
+      "clean": false,
+      "mismatch_categories": [
+        "missing rows or segments"
+      ],
+      "mismatches": [
+        {
+          "category": "missing rows or segments",
+          "path": "data.recent_albums",
+          "expected": [
+            {
+              "release_title": "DEADLINE",
+              "release_date": "2026-02-27",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": null
+            },
+            {
+              "release_title": "DEADLINE",
+              "release_date": "2026-02-26",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+                "is_placeholder": false
+              }
+            },
+            {
+              "release_title": "BORN PINK",
+              "release_date": "2022-09-16",
+              "stream": "album",
+              "release_kind": "album",
+              "release_format": "album",
+              "artwork": null
+            },
+            {
+              "release_title": "THE ALBUM",
+              "release_date": "2020-10-02",
+              "stream": "album",
+              "release_kind": "album",
+              "release_format": "album",
+              "artwork": null
+            },
+            {
+              "release_title": "KILL THIS LOVE",
+              "release_date": "2019-04-05",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": null
+            },
+            {
+              "release_title": "SQUARE UP",
+              "release_date": "2018-06-15",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": null
+            },
+            {
+              "release_title": "BLACKPINK",
+              "release_date": "2017-08-29",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": null
+            }
+          ],
+          "actual": [
+            {
+              "release_title": "DEADLINE",
+              "release_date": "2026-02-27",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": null
+            },
+            {
+              "release_title": "DEADLINE",
+              "release_date": "2026-02-26",
+              "stream": "album",
+              "release_kind": null,
+              "release_format": null,
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+                "is_placeholder": false
+              }
+            },
+            {
+              "release_title": "BORN PINK",
+              "release_date": "2022-09-16",
+              "stream": "album",
+              "release_kind": "album",
+              "release_format": "album",
+              "artwork": null
+            },
+            {
+              "release_title": "THE ALBUM",
+              "release_date": "2020-10-02",
+              "stream": "album",
+              "release_kind": "album",
+              "release_format": "album",
+              "artwork": null
+            },
+            {
+              "release_title": "KILL THIS LOVE",
+              "release_date": "2019-04-05",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": null
+            },
+            {
+              "release_title": "SQUARE UP",
+              "release_date": "2018-06-15",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": null
+            },
+            {
+              "release_title": "BLACKPINK",
+              "release_date": "2017-08-29",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": null
+            }
+          ]
+        }
+      ],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "blackpink",
@@ -1142,8 +1286,8 @@
             "release_title": "DEADLINE",
             "release_date": "2026-02-26",
             "stream": "album",
-            "release_kind": "ep",
-            "release_format": "ep",
+            "release_kind": null,
+            "release_format": null,
             "artwork": {
               "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
               "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
@@ -1347,8 +1491,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-blackpink-848df699-5f19-47c0-b923-74cdd693c89c",
-      "response_request_id": "shadow--v1-entities-blackpink-848df699-5f19-47c0-b923-74cdd693c89c"
+      "request_id_sent": "shadow--v1-entities-blackpink-99af4ad1-acbe-4aff-8d75-9db1d58dd50f",
+      "response_request_id": "shadow--v1-entities-blackpink-99af4ad1-acbe-4aff-8d75-9db1d58dd50f"
     },
     {
       "surface": "entity_detail",
@@ -1618,17 +1762,26 @@
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-and-team-3d636012-29b8-471c-85f7-962c32cac314",
-      "response_request_id": "shadow--v1-entities-and-team-3d636012-29b8-471c-85f7-962c32cac314"
+      "request_id_sent": "shadow--v1-entities-and-team-e7be8f49-4d5e-4da0-aa82-1181bf41acbe",
+      "response_request_id": "shadow--v1-entities-and-team-e7be8f49-4d5e-4da0-aa82-1181bf41acbe"
     },
     {
       "surface": "entity_detail",
       "input": {
         "slug": "allday-project"
       },
-      "clean": true,
-      "mismatch_categories": [],
-      "mismatches": [],
+      "clean": false,
+      "mismatch_categories": [
+        "missing rows or segments"
+      ],
+      "mismatches": [
+        {
+          "category": "missing rows or segments",
+          "path": "data.artist_source_url",
+          "expected": null,
+          "actual": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
+        }
+      ],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "allday-project",
@@ -1675,7 +1828,7 @@
           }
         ],
         "source_timeline": [],
-        "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
+        "artist_source_url": null
       },
       "actual_snapshot": {
         "identity": {
@@ -1731,8 +1884,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-allday-project-3783a1d5-0393-4f41-ae2f-210579c0522b",
-      "response_request_id": "shadow--v1-entities-allday-project-3783a1d5-0393-4f41-ae2f-210579c0522b"
+      "request_id_sent": "shadow--v1-entities-allday-project-d40cb80f-7f4d-4147-9b3d-533d5b6635ab",
+      "response_request_id": "shadow--v1-entities-allday-project-d40cb80f-7f4d-4147-9b3d-533d5b6635ab"
     },
     {
       "surface": "release_detail",
@@ -1745,7 +1898,8 @@
       "clean": false,
       "mismatch_categories": [
         "field-shape mismatches",
-        "missing rows or segments"
+        "missing rows or segments",
+        "title-track / MV-state drift"
       ],
       "mismatches": [
         {
@@ -1787,8 +1941,54 @@
               "expected_type": "string",
               "actual_type": "missing",
               "message": "Missing key"
+            },
+            {
+              "path": "data.artwork",
+              "expected_type": "object",
+              "actual_type": "null",
+              "message": "Type mismatch"
             }
           ]
+        },
+        {
+          "category": "missing rows or segments",
+          "path": "data.lookup.release",
+          "expected": {
+            "release_title": "DEADLINE",
+            "release_date": "2026-02-26",
+            "stream": "album",
+            "release_kind": "ep"
+          },
+          "actual": {
+            "release_title": "DEADLINE",
+            "release_date": "2026-02-27",
+            "stream": "album",
+            "release_kind": "ep"
+          }
+        },
+        {
+          "category": "title-track / MV-state drift",
+          "path": "data.detail.detail_metadata",
+          "expected": {
+            "status": "unresolved",
+            "provenance": "releaseDetails.missing_row"
+          },
+          "actual": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_row"
+          }
+        },
+        {
+          "category": "title-track / MV-state drift",
+          "path": "data.detail.title_track_metadata",
+          "expected": {
+            "status": "unresolved",
+            "provenance": "releaseDetails.missing_row"
+          },
+          "actual": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_title_flags"
+          }
         },
         {
           "category": "missing rows or segments",
@@ -1799,19 +1999,14 @@
             "artwork_source_type": "cover_art_archive",
             "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031"
           },
-          "actual": {
-            "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
-            "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
-            "artwork_source_type": "cover_art_archive",
-            "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250"
-          }
+          "actual": null
         },
         {
           "category": "missing rows or segments",
           "path": "data.detail.service_links.spotify",
           "expected": {
-            "url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
-            "status": "canonical"
+            "url": null,
+            "status": "no_link"
           },
           "actual": {
             "url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
@@ -1823,13 +2018,41 @@
           "category": "missing rows or segments",
           "path": "data.detail.service_links.youtube_music",
           "expected": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
-            "status": "canonical"
+            "url": null,
+            "status": "no_link"
           },
           "actual": {
             "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
+            "status": "canonical",
+            "provenance": "releaseDetails.youtube_music_url"
+          }
+        },
+        {
+          "category": "title-track / MV-state drift",
+          "path": "data.detail.tracks",
+          "expected": [],
+          "actual": [
+            "1|JUMP|false",
+            "2|GO|true",
+            "3|Me and my|false",
+            "4|Champion|false",
+            "5|Fxxxboy|false"
+          ]
+        },
+        {
+          "category": "title-track / MV-state drift",
+          "path": "data.detail.mv",
+          "expected": {
+            "url": null,
+            "video_id": null,
+            "status": "no_link",
+            "provenance": null
+          },
+          "actual": {
+            "url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
+            "video_id": "2GJfWMYCWY0",
             "status": "manual_override",
-            "provenance": "ytmusicapi exact album search match"
+            "provenance": "official artist channel watch URL"
           }
         },
         {
@@ -1877,6 +2100,12 @@
             }
           ],
           "actual": []
+        },
+        {
+          "category": "missing rows or segments",
+          "path": "data.detail.notes",
+          "expected": "",
+          "actual": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
         }
       ],
       "expected_snapshot": {
@@ -1897,6 +2126,14 @@
             "stream": "album",
             "release_kind": "ep"
           },
+          "detail_metadata": {
+            "status": "unresolved",
+            "provenance": "releaseDetails.missing_row"
+          },
+          "title_track_metadata": {
+            "status": "unresolved",
+            "provenance": "releaseDetails.missing_row"
+          },
           "artwork": {
             "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
             "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
@@ -1905,46 +2142,20 @@
           },
           "service_links": {
             "spotify": {
-              "url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
-              "status": "canonical"
+              "url": null,
+              "status": "no_link"
             },
             "youtube_music": {
-              "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
-              "status": "canonical"
+              "url": null,
+              "status": "no_link"
             }
           },
-          "tracks": [
-            {
-              "order": 1,
-              "title": "JUMP",
-              "is_title_track": false
-            },
-            {
-              "order": 2,
-              "title": "GO",
-              "is_title_track": true
-            },
-            {
-              "order": 3,
-              "title": "Me and my",
-              "is_title_track": false
-            },
-            {
-              "order": 4,
-              "title": "Champion",
-              "is_title_track": false
-            },
-            {
-              "order": 5,
-              "title": "Fxxxboy",
-              "is_title_track": false
-            }
-          ],
+          "tracks": [],
           "mv": {
-            "url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
-            "video_id": "2GJfWMYCWY0",
-            "status": "manual_override",
-            "provenance": "official artist channel watch URL"
+            "url": null,
+            "video_id": null,
+            "status": "no_link",
+            "provenance": null
           },
           "credits": [
             {
@@ -1982,39 +2193,42 @@
               "dated_at": "2026-03-04"
             }
           ],
-          "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+          "notes": ""
         }
       },
       "actual_snapshot": {
         "lookup": {
-          "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
-          "canonical_path": "/v1/releases/e3526174-e804-56f2-9d50-17f9f817a351",
+          "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
+          "canonical_path": "/v1/releases/75d59b7a-9f0e-526c-9920-3a156c1a9e36",
           "release": {
-            "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
+            "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
             "entity_slug": "blackpink",
             "display_name": "BLACKPINK",
             "release_title": "DEADLINE",
-            "release_date": "2026-02-26",
+            "release_date": "2026-02-27",
             "stream": "album",
             "release_kind": "ep"
           }
         },
         "detail": {
           "release": {
-            "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
+            "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
             "entity_slug": "blackpink",
             "display_name": "BLACKPINK",
             "release_title": "DEADLINE",
-            "release_date": "2026-02-26",
+            "release_date": "2026-02-27",
             "stream": "album",
             "release_kind": "ep"
           },
-          "artwork": {
-            "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
-            "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
-            "artwork_source_type": "cover_art_archive",
-            "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250"
+          "detail_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_row"
           },
+          "title_track_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_title_flags"
+          },
+          "artwork": null,
           "service_links": {
             "spotify": {
               "url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
@@ -2023,13 +2237,13 @@
             },
             "youtube_music": {
               "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
-              "status": "manual_override",
-              "provenance": "ytmusicapi exact album search match"
+              "status": "canonical",
+              "provenance": "releaseDetails.youtube_music_url"
             }
           },
           "tracks": [
             {
-              "track_id": "9ccf1a37-0d13-5707-a429-1cc23b0d8dc4",
+              "track_id": "c67a4aec-5f5b-5507-b6c8-a52e61bc0c60",
               "order": 1,
               "title": "JUMP",
               "is_title_track": false,
@@ -2037,7 +2251,7 @@
               "youtube_music": null
             },
             {
-              "track_id": "8a2931df-280f-59df-84d4-bc84637dc9d8",
+              "track_id": "d40e56a1-9c8e-5861-9c7d-5503ebb0e13d",
               "order": 2,
               "title": "GO",
               "is_title_track": true,
@@ -2045,7 +2259,7 @@
               "youtube_music": null
             },
             {
-              "track_id": "d4ed0ed9-6dde-52e7-bd98-f2778a132d99",
+              "track_id": "a259253b-093c-5c76-8d6a-fafa86c5488c",
               "order": 3,
               "title": "Me and my",
               "is_title_track": false,
@@ -2053,7 +2267,7 @@
               "youtube_music": null
             },
             {
-              "track_id": "97402bab-4bcd-5f28-bf5c-2fdb4e83338b",
+              "track_id": "4e5a0126-2587-523f-a91b-bc0e04d58892",
               "order": 4,
               "title": "Champion",
               "is_title_track": false,
@@ -2061,7 +2275,7 @@
               "youtube_music": null
             },
             {
-              "track_id": "7186b0a1-0ee0-5fa7-8bfa-e8d3f1ca99db",
+              "track_id": "0cf7e25c-a3f0-528d-bab6-99d836c9b1de",
               "order": 5,
               "title": "Fxxxboy",
               "is_title_track": false,
@@ -2082,10 +2296,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-12cde7d5-6bff-470c-a1cd-ac1066c5fc3e",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-12cde7d5-6bff-470c-a1cd-ac1066c5fc3e",
-      "detail_request_id_sent": "shadow--v1-releases-e3526174-e804-56f2-9d50-17f9f817a351-145602e4-10f8-441e-9eea-3c8b5f36fe62",
-      "detail_response_request_id": "shadow--v1-releases-e3526174-e804-56f2-9d50-17f9f817a351-145602e4-10f8-441e-9eea-3c8b5f36fe62"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-acf0c91f-ffee-4cd6-97e8-25460763bf0e",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-acf0c91f-ffee-4cd6-97e8-25460763bf0e",
+      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-c83df2b3-1b71-4125-bf7d-0853e24502ba",
+      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-c83df2b3-1b71-4125-bf7d-0853e24502ba"
     },
     {
       "surface": "release_detail",
@@ -2244,6 +2458,14 @@
             "stream": "album",
             "release_kind": "album"
           },
+          "detail_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_row"
+          },
+          "title_track_metadata": {
+            "status": "manual_override",
+            "provenance": "release_detail_overrides.title_tracks"
+          },
           "artwork": {
             "cover_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front",
             "thumbnail_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front-250",
@@ -2326,7 +2548,7 @@
             "url": null,
             "video_id": null,
             "status": "unresolved",
-            "provenance": null
+            "provenance": "releaseDetails.no_mv_signal"
           },
           "credits": [
             {
@@ -2384,6 +2606,14 @@
             "release_date": "2026-02-23",
             "stream": "album",
             "release_kind": "album"
+          },
+          "detail_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_row"
+          },
+          "title_track_metadata": {
+            "status": "manual_override",
+            "provenance": "release_detail_overrides.title_tracks"
           },
           "artwork": {
             "cover_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front",
@@ -2505,7 +2735,7 @@
             "url": null,
             "video_id": null,
             "status": "unresolved",
-            "provenance": null
+            "provenance": "releaseDetails.no_mv_signal"
           },
           "credits": [],
           "charts": [],
@@ -2514,10 +2744,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-11cb3eb2-6151-4e67-b03b-5ed937c8f19d",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-11cb3eb2-6151-4e67-b03b-5ed937c8f19d",
-      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-f36d86dc-19db-4714-84fb-e07f506ff284",
-      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-f36d86dc-19db-4714-84fb-e07f506ff284"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-342c1e1c-6d1a-4d34-96c6-6bb15859c98d",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-342c1e1c-6d1a-4d34-96c6-6bb15859c98d",
+      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-e40bc2ec-3b5e-4eea-9d87-dbbf88667788",
+      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-e40bc2ec-3b5e-4eea-9d87-dbbf88667788"
     },
     {
       "surface": "release_detail",
@@ -2636,6 +2866,14 @@
             "stream": "song",
             "release_kind": "single"
           },
+          "detail_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_row"
+          },
+          "title_track_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_title_flags"
+          },
           "artwork": {
             "cover_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front",
             "thumbnail_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front-250",
@@ -2694,6 +2932,14 @@
             "stream": "song",
             "release_kind": "single"
           },
+          "detail_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_row"
+          },
+          "title_track_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_title_flags"
+          },
           "artwork": {
             "cover_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front",
             "artwork_source_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea",
@@ -2735,10 +2981,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-352df4d3-976f-4dc7-9675-7dc70640808e",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-352df4d3-976f-4dc7-9675-7dc70640808e",
-      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-fbbc5ddd-bc51-4b0d-81fb-c6baabb8e43c",
-      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-fbbc5ddd-bc51-4b0d-81fb-c6baabb8e43c"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-2527adeb-1cb6-4d86-8035-70e83241993d",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-2527adeb-1cb6-4d86-8035-70e83241993d",
+      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-566dd76b-fec3-49c1-8260-bb193511dd0d",
+      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-566dd76b-fec3-49c1-8260-bb193511dd0d"
     },
     {
       "surface": "calendar_month",
@@ -3497,8 +3743,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-a2f49a66-9728-4380-93f5-d1010d145503",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-03-a2f49a66-9728-4380-93f5-d1010d145503"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-8672ff79-bfd9-41b0-89bc-8f7b886fbb16",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-03-8672ff79-bfd9-41b0-89bc-8f7b886fbb16"
     },
     {
       "surface": "calendar_month",
@@ -4401,8 +4647,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-4842632d-6298-4da8-be8f-043135f893d6",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-04-4842632d-6298-4da8-be8f-043135f893d6"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-94576fd5-cf3b-4c78-bc08-3036eb57717e",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-04-94576fd5-cf3b-4c78-bc08-3036eb57717e"
     },
     {
       "surface": "calendar_month",
@@ -5157,192 +5403,20 @@
         "scheduled_list": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-ec53e558-7f52-4851-8c77-3810215ea8fd",
-      "response_request_id": "shadow--v1-calendar-month-month-2025-10-ec53e558-7f52-4851-8c77-3810215ea8fd"
+      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-8b2f6778-8235-4332-ab68-28e10cc7f9ab",
+      "response_request_id": "shadow--v1-calendar-month-month-2025-10-8b2f6778-8235-4332-ab68-28e10cc7f9ab"
     },
     {
       "surface": "radar",
       "input": {
         "surface": "default"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "radar eligibility drift"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.weekly_upcoming[0].release_title",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.weekly_upcoming[0].release_date",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.weekly_upcoming[0].stream",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.weekly_upcoming[0].release_kind",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.change_feed[0].release_title",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.change_feed[0].release_date",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.change_feed[0].stream",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.change_feed[0].release_kind",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.change_feed[0].release_format",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.rookie[0].latest_signal.scheduled_date",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
-            {
-              "path": "data.rookie[0].latest_signal.scheduled_month",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            },
-            {
-              "path": "data.rookie[0].latest_signal.release_format",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            }
-          ]
-        },
-        {
-          "category": "radar eligibility drift",
-          "path": "data.weekly_upcoming",
-          "expected": [
-            "tunexx|SET BY US ONLY|2026-03-03|album",
-            "rescene|[RESCENE X ???]|2026-02-27|song",
-            "nct-wish|Same Sky|2026-02-27|song",
-            "blackpink|DEADLINE|2026-02-26|album",
-            "atheart|Shut Up|2026-02-26|song",
-            "nmixx|TIC TIC|2026-02-26|song",
-            "wjsn|Bloom hour|2026-02-25|song"
-          ],
-          "actual": [
-            "yena|최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스|2026-03-11||exact|confirmed",
-            "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12||exact|confirmed"
-          ]
-        },
-        {
-          "category": "radar eligibility drift",
-          "path": "data.change_feed",
-          "expected": [
-            "tunexx|SET BY US ONLY|2026-03-03|album",
-            "nct-wish|Same Sky|2026-02-27|song",
-            "rescene|[RESCENE X ???]|2026-02-27|song",
-            "atheart|Shut Up|2026-02-26|song",
-            "blackpink|DEADLINE|2026-02-26|album",
-            "nmixx|TIC TIC|2026-02-26|song",
-            "wjsn|Bloom hour|2026-02-25|song",
-            "ive|REVIVE+|2026-02-23|album",
-            "hearts2hearts|RUDE!|2026-02-20|song",
-            "trendz|Kart Racer|2026-02-13|song"
-          ],
-          "actual": [
-            "upcoming_signal|tomorrow-x-together|[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”|",
-            "ateez|GOLDEN HOUR : Part.4|2026-02-06|album",
-            "atheart|Shut Up|2026-02-26|song",
-            "blackpink|DEADLINE|2026-02-27|album",
-            "blackpink|DEADLINE|2026-02-26|album",
-            "chung-ha|Save me|2026-02-09|song",
-            "h1-key|LOVECHAPTER|2026-03-05|album",
-            "hearts2hearts|RUDE!|2026-02-20|song",
-            "ive|REVIVE+|2026-02-23|album",
-            "ive|BANG BANG|2026-02-09|song",
-            "monsta-x|growing pains|2026-02-06|song",
-            "nct-wish|Same Sky|2026-02-27|song",
-            "nmixx|TIC TIC|2026-02-26|song",
-            "rescene|[RESCENE X ???]|2026-02-27|song",
-            "riize|All of You|2026-02-09|song",
-            "stayc|STAY ALIVE|2026-02-11|album",
-            "trendz|Kart Racer|2026-02-13|song",
-            "tunexx|SET BY US ONLY|2026-03-03|album",
-            "wjsn|Bloom hour|2026-02-25|song",
-            "upcoming_signal|tws|TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart|"
-          ]
-        },
-        {
-          "category": "radar eligibility drift",
-          "path": "data.long_gap",
-          "expected": [
-            "weeekly|long_gap|Bliss|2024-07-09|watchlist|607|false|null",
-            "woo-ah|long_gap|Shining on you|2024-07-16|watchlist|600|false|null"
-          ],
-          "actual": [
-            "weeekly|long_gap|Bliss|2024-07-09|album|607|false|null",
-            "woo-ah|long_gap|Shining on you|2024-07-16|song|600|false|null"
-          ]
-        },
-        {
-          "category": "radar eligibility drift",
-          "path": "data.rookie",
-          "expected": [
-            "atheart|2025|Shut Up|2026-02-26|song|true|undefined|Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop|||unknown|rumor",
-            "hearts2hearts|2025|RUDE!|2026-02-20|song|true|undefined|Hearts2Hearts Announce Comeback Single “RUDE!”: Here’s When It Drops - inmusicblog.com|||unknown|rumor",
-            "kiiikiii|2025|Delulu Pack|2026-01-25|album|true|undefined|Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop|||unknown|rumor",
-            "kickflip|2025|From KickFlip, To WeFlip|2026-01-20|song|true|undefined|KickFlip announces April comeback - Music Mundial||2026-04|month_only|scheduled",
-            "allday-project|2025|ALLDAY PROJECT|2025-12-08|watchlist|false|null",
-            "xlov|2025|UXLXVE|2025-11-05|album|false|null",
-            "ifeye|2025|sweet tang|2025-07-16|album|false|null",
-            "close-your-eyes|2025|ETERNALT|2025-04-02|watchlist|false|null"
-          ],
-          "actual": [
-            "atheart|2025|Shut Up|2026-02-26|song|true|undefined|Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop|||unknown|rumor",
-            "hearts2hearts|2025|RUDE!|2026-02-20|song|true|undefined|Hearts2Hearts Announce Comeback Single “RUDE!”: Here’s When It Drops - inmusicblog.com|||unknown|rumor",
-            "kiiikiii|2025|Delulu Pack|2026-01-25|album|true|undefined|Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop|||unknown|rumor",
-            "kickflip|2025|From KickFlip, To WeFlip|2026-01-20|song|true|undefined|KickFlip announces April comeback - Music Mundial||2026-04-01|month_only|scheduled",
-            "allday-project|2025|ALLDAY PROJECT|2025-12-08|album|false|null",
-            "close-your-eyes|2025|blackout|2025-11-11|album|false|null",
-            "xlov|2025|UXLXVE|2025-11-05|album|false|null",
-            "ifeye|2025|sweet tang|2025-07-16|album|false|null"
-          ]
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "featured_upcoming": {
+          "upcoming_signal_id": "yena::2026-03-11::love catcher",
           "entity_slug": "yena",
           "display_name": "YENA",
           "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
@@ -5354,159 +5428,184 @@
         },
         "weekly_upcoming": [
           {
-            "entity_slug": "tunexx",
-            "display_name": "TUNEXX",
-            "release_title": "SET BY US ONLY",
-            "release_date": "2026-03-03",
-            "stream": "album",
-            "release_kind": "ep",
+            "upcoming_signal_id": "yena::2026-03-11::love catcher",
+            "entity_slug": "yena",
+            "display_name": "YENA",
+            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+            "scheduled_date": "2026-03-11",
+            "date_precision": "exact",
+            "date_status": "confirmed",
+            "confidence_score": 0.84,
             "release_format": "ep"
           },
           {
-            "entity_slug": "rescene",
-            "display_name": "RESCENE",
-            "release_title": "[RESCENE X ???]",
-            "release_date": "2026-02-27",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
-          },
-          {
-            "entity_slug": "nct-wish",
-            "display_name": "NCT WISH",
-            "release_title": "Same Sky",
-            "release_date": "2026-02-27",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
-          },
-          {
-            "entity_slug": "blackpink",
-            "display_name": "BLACKPINK",
-            "release_title": "DEADLINE",
-            "release_date": "2026-02-26",
-            "stream": "album",
-            "release_kind": "ep",
+            "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
+            "entity_slug": "p1harmony",
+            "display_name": "P1Harmony",
+            "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+            "scheduled_date": "2026-03-12",
+            "date_precision": "exact",
+            "date_status": "confirmed",
+            "confidence_score": 0.82,
             "release_format": "ep"
-          },
-          {
-            "entity_slug": "atheart",
-            "display_name": "AtHeart",
-            "release_title": "Shut Up",
-            "release_date": "2026-02-26",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
-          },
-          {
-            "entity_slug": "nmixx",
-            "display_name": "NMIXX",
-            "release_title": "TIC TIC",
-            "release_date": "2026-02-26",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
-          },
-          {
-            "entity_slug": "wjsn",
-            "display_name": "WJSN",
-            "release_title": "Bloom hour",
-            "release_date": "2026-02-25",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
           }
         ],
         "change_feed": [
           {
-            "entity_slug": "tunexx",
-            "display_name": "TUNEXX",
-            "release_title": "SET BY US ONLY",
-            "release_date": "2026-03-03",
-            "stream": "album",
-            "release_kind": "ep",
-            "release_format": "ep"
+            "kind": "upcoming_signal",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "upcoming_signal_id": "tws::2026-04::high energy spring confirmed april",
+            "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
+            "scheduled_date": null,
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "occurred_at": "Fri, 06 Mar 2026 06:15:24 GMT"
           },
           {
-            "entity_slug": "nct-wish",
-            "display_name": "NCT WISH",
-            "release_title": "Same Sky",
-            "release_date": "2026-02-27",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
+            "kind": "upcoming_signal",
+            "entity_slug": "le-sserafim",
+            "display_name": "LE SSERAFIM",
+            "upcoming_signal_id": "le sserafim::2026-04::tws april as k pop rush intensifies",
+            "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+            "scheduled_date": null,
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "occurred_at": "Fri, 06 Mar 2026 01:00:00 GMT"
           },
           {
-            "entity_slug": "rescene",
-            "display_name": "RESCENE",
-            "release_title": "[RESCENE X ???]",
-            "release_date": "2026-02-27",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
+            "kind": "upcoming_signal",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "upcoming_signal_id": "tws::2026-04::le sserafim april as k pop rush intensifies",
+            "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+            "scheduled_date": null,
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "occurred_at": "Fri, 06 Mar 2026 01:00:00 GMT"
           },
           {
-            "entity_slug": "atheart",
-            "display_name": "AtHeart",
-            "release_title": "Shut Up",
-            "release_date": "2026-02-26",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
+            "kind": "upcoming_signal",
+            "entity_slug": "tws",
+            "display_name": "TWS",
+            "upcoming_signal_id": "tws::2026-04::le sserafim join april lineup",
+            "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
+            "scheduled_date": null,
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.58,
+            "occurred_at": "Thu, 05 Mar 2026 19:13:00 GMT"
           },
           {
-            "entity_slug": "blackpink",
-            "display_name": "BLACKPINK",
-            "release_title": "DEADLINE",
-            "release_date": "2026-02-26",
-            "stream": "album",
-            "release_kind": "ep",
-            "release_format": "ep"
+            "kind": "upcoming_signal",
+            "entity_slug": "bts",
+            "display_name": "BTS",
+            "upcoming_signal_id": "bts::undated::arirang",
+            "headline": "BTS Comeback 2026: Netflix Announces Global Livestream for ‘ARIRANG’ Album Celebration, Releases First Official Trailer - pragativadi.com",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "confidence_score": 0.68,
+            "occurred_at": "Thu, 05 Mar 2026 11:30:04 GMT"
           },
           {
-            "entity_slug": "nmixx",
-            "display_name": "NMIXX",
-            "release_title": "TIC TIC",
-            "release_date": "2026-02-26",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
+            "kind": "upcoming_signal",
+            "entity_slug": "bts",
+            "display_name": "BTS",
+            "upcoming_signal_id": "bts::undated::live arirang",
+            "headline": "BTS Drops Netflix Trailer For ‘The Comeback Live Arirang’ Livestream - weareresonate.com",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "confidence_score": 0.68,
+            "occurred_at": "Thu, 05 Mar 2026 10:29:26 GMT"
           },
           {
-            "entity_slug": "wjsn",
-            "display_name": "WJSN",
-            "release_title": "Bloom hour",
-            "release_date": "2026-02-25",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
+            "kind": "upcoming_signal",
+            "entity_slug": "bts",
+            "display_name": "BTS",
+            "upcoming_signal_id": "bts::undated::seven together we can do anything",
+            "headline": "BTS drops ‘The Comeback Live | Arirang’ trailer: ‘Seven together, we can do anything’ - Telegraph India",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "confidence_score": 0.68,
+            "occurred_at": "Thu, 05 Mar 2026 06:21:14 GMT"
           },
           {
-            "entity_slug": "ive",
-            "display_name": "IVE",
-            "release_title": "REVIVE+",
-            "release_date": "2026-02-23",
-            "stream": "album",
-            "release_kind": "album",
-            "release_format": "album"
+            "kind": "upcoming_signal",
+            "entity_slug": "tomorrow-x-together",
+            "display_name": "TOMORROW X TOGETHER",
+            "upcoming_signal_id": "tomorrow x together::undated::x moa",
+            "headline": "TOMORROW X TOGETHER Announces Comeback Showcase for New Chapter with MOA - DIPE.CO.KR",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "confidence_score": 0.68,
+            "occurred_at": "Thu, 05 Mar 2026 06:01:00 GMT"
           },
           {
-            "entity_slug": "hearts2hearts",
-            "display_name": "Hearts2Hearts",
-            "release_title": "RUDE!",
-            "release_date": "2026-02-20",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
+            "kind": "upcoming_signal",
+            "entity_slug": "bts",
+            "display_name": "BTS",
+            "upcoming_signal_id": "bts::undated::here",
+            "headline": "BTS The Comeback Live: Netflix drops first official trailer, here’s when ARIRANG celebration will stream live in India - The Indian Express",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "confidence_score": 0.68,
+            "occurred_at": "Thu, 05 Mar 2026 05:27:36 GMT"
           },
           {
-            "entity_slug": "trendz",
-            "display_name": "TRENDZ",
-            "release_title": "Kart Racer",
-            "release_date": "2026-02-13",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single"
+            "kind": "upcoming_signal",
+            "entity_slug": "young-posse",
+            "display_name": "YOUNG POSSE",
+            "upcoming_signal_id": "young posse::2026-04::april digital",
+            "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
+            "scheduled_date": null,
+            "scheduled_month": "2026-04",
+            "date_precision": "month_only",
+            "date_status": "scheduled",
+            "confidence_score": 0.76,
+            "occurred_at": "Thu, 05 Mar 2026 00:58:00 GMT"
+          },
+          {
+            "kind": "upcoming_signal",
+            "entity_slug": "bts",
+            "display_name": "BTS",
+            "upcoming_signal_id": "bts::undated::tempo co reveals 14 song upcoming",
+            "headline": "BTS Reveals 14-Song Tracklist for Upcoming \"Arirang\" Album - Tempo.co",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "confidence_score": 0.56,
+            "occurred_at": "Wed, 04 Mar 2026 08:55:41 GMT"
+          },
+          {
+            "kind": "upcoming_signal",
+            "entity_slug": "bts",
+            "display_name": "BTS",
+            "upcoming_signal_id": "bts::undated::full arirang features 14 songs including lead swim",
+            "headline": "BTS drops full ARIRANG tracklist comeback album features 14 songs including lead single SWIM - Moneycontrol.com",
+            "scheduled_date": null,
+            "scheduled_month": null,
+            "date_precision": "unknown",
+            "date_status": "rumor",
+            "confidence_score": 0.68,
+            "occurred_at": "Wed, 04 Mar 2026 05:08:33 GMT"
           }
         ],
         "long_gap": [
@@ -5517,10 +5616,10 @@
             "latest_release": {
               "release_title": "Bliss",
               "release_date": "2024-07-09",
-              "stream": "watchlist",
+              "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 607,
+            "gap_days": 608,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5531,10 +5630,10 @@
             "latest_release": {
               "release_title": "Shining on you",
               "release_date": "2024-07-16",
-              "stream": "watchlist",
+              "stream": "song",
               "release_kind": "single"
             },
-            "gap_days": 600,
+            "gap_days": 601,
             "has_upcoming_signal": false,
             "latest_signal": null
           }
@@ -5552,13 +5651,15 @@
             },
             "has_upcoming_signal": true,
             "latest_signal": {
+              "upcoming_signal_id": "atheart::undated::photos",
               "headline": "Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop",
-              "scheduled_date": "",
+              "scheduled_date": null,
               "scheduled_month": "",
               "date_precision": "unknown",
               "date_status": "rumor",
-              "release_format": "",
-              "confidence_score": 0.68
+              "release_format": null,
+              "confidence_score": 0.68,
+              "latest_seen_at": "2026-01-31T08:00:00.000Z"
             }
           },
           {
@@ -5573,13 +5674,15 @@
             },
             "has_upcoming_signal": true,
             "latest_signal": {
+              "upcoming_signal_id": "hearts2hearts::undated::rude",
               "headline": "Hearts2Hearts Announce Comeback Single “RUDE!”: Here’s When It Drops - inmusicblog.com",
-              "scheduled_date": "",
+              "scheduled_date": null,
               "scheduled_month": "",
               "date_precision": "unknown",
               "date_status": "rumor",
               "release_format": "single",
-              "confidence_score": 0.68
+              "confidence_score": 0.68,
+              "latest_seen_at": "2026-02-12T15:30:11.000Z"
             }
           },
           {
@@ -5594,13 +5697,15 @@
             },
             "has_upcoming_signal": true,
             "latest_signal": {
+              "upcoming_signal_id": "kiiikiii::undated::kakao entertainment 2026 plans its artists monsta x ive more",
               "headline": "Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop",
-              "scheduled_date": "",
+              "scheduled_date": null,
               "scheduled_month": "",
               "date_precision": "unknown",
               "date_status": "rumor",
-              "release_format": "",
-              "confidence_score": 0.56
+              "release_format": null,
+              "confidence_score": 0.56,
+              "latest_seen_at": "2026-01-27T08:00:00.000Z"
             }
           },
           {
@@ -5615,13 +5720,15 @@
             },
             "has_upcoming_signal": true,
             "latest_signal": {
+              "upcoming_signal_id": "kickflip::2026-04::april",
               "headline": "KickFlip announces April comeback - Music Mundial",
-              "scheduled_date": "",
+              "scheduled_date": null,
               "scheduled_month": "2026-04",
               "date_precision": "month_only",
               "date_status": "scheduled",
-              "release_format": "",
-              "confidence_score": 0.76
+              "release_format": null,
+              "confidence_score": 0.76,
+              "latest_seen_at": "2026-03-02T18:54:14.000Z"
             }
           },
           {
@@ -5631,7 +5738,20 @@
             "latest_release": {
               "release_title": "ALLDAY PROJECT",
               "release_date": "2025-12-08",
-              "stream": "watchlist",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
+            "entity_slug": "close-your-eyes",
+            "display_name": "CLOSE YOUR EYES",
+            "debut_year": 2025,
+            "latest_release": {
+              "release_title": "blackout",
+              "release_date": "2025-11-11",
+              "stream": "album",
               "release_kind": "ep"
             },
             "has_upcoming_signal": false,
@@ -5658,19 +5778,6 @@
               "release_title": "sweet tang",
               "release_date": "2025-07-16",
               "stream": "album",
-              "release_kind": "ep"
-            },
-            "has_upcoming_signal": false,
-            "latest_signal": null
-          },
-          {
-            "entity_slug": "close-your-eyes",
-            "display_name": "CLOSE YOUR EYES",
-            "debut_year": 2025,
-            "latest_release": {
-              "release_title": "ETERNALT",
-              "release_date": "2025-04-02",
-              "stream": "watchlist",
               "release_kind": "ep"
             },
             "has_upcoming_signal": false,
@@ -5720,7 +5827,7 @@
             "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
             "date_status": "confirmed",
             "entity_slug": "tomorrow-x-together",
-            "occurred_at": null,
+            "occurred_at": "2026-04-13",
             "display_name": "TOMORROW X TOGETHER",
             "date_precision": "exact",
             "scheduled_date": "2026-04-13",
@@ -5730,21 +5837,10 @@
           },
           {
             "kind": "verified_release",
-            "stream": "album",
-            "release_id": "6a97ac23-629a-5468-9fd1-996c434052b2",
-            "entity_slug": "ateez",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
-            "display_name": "ATEEZ",
-            "release_date": "2026-02-06",
-            "release_kind": "ep",
-            "release_title": "GOLDEN HOUR : Part.4"
-          },
-          {
-            "kind": "verified_release",
             "stream": "song",
             "release_id": "e5976e68-a795-52dd-b40e-a72493038dd3",
             "entity_slug": "atheart",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
             "display_name": "AtHeart",
             "release_date": "2026-02-26",
             "release_kind": "single",
@@ -5755,7 +5851,7 @@
             "stream": "album",
             "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
             "entity_slug": "blackpink",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
             "display_name": "BLACKPINK",
             "release_date": "2026-02-27",
             "release_kind": "ep",
@@ -5766,10 +5862,10 @@
             "stream": "album",
             "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
             "entity_slug": "blackpink",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
             "display_name": "BLACKPINK",
             "release_date": "2026-02-26",
-            "release_kind": "ep",
+            "release_kind": null,
             "release_title": "DEADLINE"
           },
           {
@@ -5777,7 +5873,7 @@
             "stream": "song",
             "release_id": "6e323520-f064-5ba5-bf87-d56898edb48e",
             "entity_slug": "chung-ha",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
             "display_name": "CHUNG HA",
             "release_date": "2026-02-09",
             "release_kind": "single",
@@ -5788,7 +5884,7 @@
             "stream": "album",
             "release_id": "6a1db562-83b4-5e9d-a00f-6ea0ebfb6680",
             "entity_slug": "h1-key",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
             "display_name": "H1-KEY",
             "release_date": "2026-03-05",
             "release_kind": "ep",
@@ -5799,7 +5895,7 @@
             "stream": "song",
             "release_id": "06aa603b-b554-52a8-b9e4-47c6a6764e53",
             "entity_slug": "hearts2hearts",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
             "display_name": "Hearts2Hearts",
             "release_date": "2026-02-20",
             "release_kind": "single",
@@ -5810,7 +5906,7 @@
             "stream": "album",
             "release_id": "c339f501-52fe-599d-8d2d-bf5694ae4de4",
             "entity_slug": "ive",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
             "display_name": "IVE",
             "release_date": "2026-02-23",
             "release_kind": "album",
@@ -5821,7 +5917,7 @@
             "stream": "song",
             "release_id": "78bb2629-2cd8-5f57-aaf1-a029b271ae8f",
             "entity_slug": "ive",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
             "display_name": "IVE",
             "release_date": "2026-02-09",
             "release_kind": "single",
@@ -5830,29 +5926,40 @@
           {
             "kind": "verified_release",
             "stream": "song",
-            "release_id": "48080244-9689-5f33-9e44-f5e854a5f0e8",
-            "entity_slug": "monsta-x",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
-            "display_name": "MONSTA X",
-            "release_date": "2026-02-06",
-            "release_kind": "single",
-            "release_title": "growing pains"
-          },
-          {
-            "kind": "verified_release",
-            "stream": "song",
             "release_id": "179b842f-9bd1-56ca-aaf6-b33e3f87159b",
             "entity_slug": "nct-wish",
-            "occurred_at": "2026-03-08T00:47:05.499608+00:00",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
             "display_name": "NCT WISH",
             "release_date": "2026-02-27",
             "release_kind": "single",
             "release_title": "Same Sky"
+          },
+          {
+            "kind": "verified_release",
+            "stream": "song",
+            "release_id": "d5137bf0-b49d-59f6-815a-5b591cfb966b",
+            "entity_slug": "nmixx",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "display_name": "NMIXX",
+            "release_date": "2026-02-26",
+            "release_kind": "single",
+            "release_title": "TIC TIC"
+          },
+          {
+            "kind": "verified_release",
+            "stream": "song",
+            "release_id": "2c209a92-9d0e-5a9b-8cf1-93ed8f92911a",
+            "entity_slug": "rescene",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "display_name": "RESCENE",
+            "release_date": "2026-02-27",
+            "release_kind": "single",
+            "release_title": "[RESCENE X ???]"
           }
         ],
         "long_gap": [
           {
-            "gap_days": 607,
+            "gap_days": 608,
             "entity_slug": "weeekly",
             "display_name": "Weeekly",
             "watch_reason": "long_gap",
@@ -5867,7 +5974,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 600,
+            "gap_days": 601,
             "entity_slug": "woo-ah",
             "display_name": "woo!ah!",
             "watch_reason": "long_gap",
@@ -5891,7 +5998,7 @@
               "headline": "Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop",
               "date_status": "rumor",
               "date_precision": "unknown",
-              "latest_seen_at": "2026-01-31T08:00:00+00:00",
+              "latest_seen_at": "2026-01-31T08:00:00.000Z",
               "release_format": null,
               "scheduled_date": null,
               "scheduled_month": null,
@@ -5915,7 +6022,7 @@
               "headline": "Hearts2Hearts Announce Comeback Single “RUDE!”: Here’s When It Drops - inmusicblog.com",
               "date_status": "rumor",
               "date_precision": "unknown",
-              "latest_seen_at": "2026-02-12T15:30:11+00:00",
+              "latest_seen_at": "2026-02-12T15:30:11.000Z",
               "release_format": "single",
               "scheduled_date": null,
               "scheduled_month": null,
@@ -5939,7 +6046,7 @@
               "headline": "Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop",
               "date_status": "rumor",
               "date_precision": "unknown",
-              "latest_seen_at": "2026-01-27T08:00:00+00:00",
+              "latest_seen_at": "2026-01-27T08:00:00.000Z",
               "release_format": null,
               "scheduled_date": null,
               "scheduled_month": null,
@@ -5963,10 +6070,10 @@
               "headline": "KickFlip announces April comeback - Music Mundial",
               "date_status": "scheduled",
               "date_precision": "month_only",
-              "latest_seen_at": "2026-03-02T18:54:14+00:00",
+              "latest_seen_at": "2026-03-02T18:54:14.000Z",
               "release_format": null,
               "scheduled_date": null,
-              "scheduled_month": "2026-04-01",
+              "scheduled_month": "2026-04",
               "confidence_score": 0.76,
               "upcoming_signal_id": "5b6fc554-bccf-5dea-906d-4c5cebb58b96"
             },
@@ -6038,8 +6145,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-radar-08a9af03-99da-4ff7-bf74-03a238fef524",
-      "response_request_id": "shadow--v1-radar-08a9af03-99da-4ff7-bf74-03a238fef524"
+      "request_id_sent": "shadow--v1-radar-36b0020b-8faf-4145-b836-796cacec6925",
+      "response_request_id": "shadow--v1-radar-36b0020b-8faf-4145-b836-796cacec6925"
     }
   ]
 }

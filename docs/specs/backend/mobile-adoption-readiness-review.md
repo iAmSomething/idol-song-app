@@ -46,11 +46,12 @@ mobile가 아래를 다시 계산하거나 조합해야 하면 readiness fail로
 
 ## 4. 결론
 
-현 시점 판정은 `부분 준비 완료 / full mobile implementation start는 보류`다.
+현 시점 판정은 `부분 준비 완료 / full mobile implementation start는 일부 surface만 보류`다.
 
 - `release detail`은 v1 mobile 구현을 시작해도 된다.
-- `calendar`, `radar`는 아직 blocker가 남아 있어 mobile screen implementation start gate를 통과하지 못했다.
-- 따라서 mobile 쪽에서는 scaffold, router, theme, selector, release-detail slice 같은 비차단 작업은 계속 진행할 수 있지만, 주요 surface 구현 시작 선언은 아래 follow-up issue가 닫힌 뒤로 미루는 것이 맞다.
+- `search`, `entity detail`, `release detail`, `radar`는 backend contract 기준으로 구현 시작 가능 상태다.
+- `calendar`만 아직 blocker가 남아 있어 mobile screen implementation start gate를 통과하지 못했다.
+- 따라서 mobile 쪽에서는 scaffold, router, theme, selector, release-detail/entity/search/radar slice 같은 비차단 작업은 계속 진행할 수 있지만, calendar 구현 시작 선언은 아래 follow-up issue가 닫힌 뒤로 미루는 것이 맞다.
 
 ## 5. Surface Matrix
 
@@ -60,7 +61,7 @@ mobile가 아래를 다시 계산하거나 조합해야 하면 readiness fail로
 | Search | `GET /v1/search` | `search-screen.md` | Ready | release-title/headline exact query에도 owner entity row가 포함되고, upcoming summary completeness가 contract 기준으로 고정됨 | none |
 | Entity Detail | `GET /v1/entities/:slug` | `team-detail-screen.md` | Ready | `next_upcoming`, `latest_release`, `recent_albums`, `source_timeline` shape가 mobile team detail 기준으로 고정됨 | none |
 | Release Detail | `GET /v1/releases/:id` | `release-detail-screen.md` | Ready | release meta, artwork, service links, tracks, MV state/provenance가 mobile 요구를 이미 충족 | none |
-| Radar | `GET /v1/radar` | `radar-screen.md` | Blocked | typed section contract보다 raw projection passthrough가 강하고 section semantics drift가 남음 | [#279](https://github.com/iAmSomething/idol-song-app/issues/279) |
+| Radar | `GET /v1/radar` | `radar-screen.md` | Ready | typed section contract와 `scheduled_month/latest_seen_at` normalize까지 backend에서 고정됨 | none |
 
 ## 6. Surface Review
 
@@ -151,7 +152,7 @@ non-blocking note:
 
 ### 6.5 Radar
 
-판정: `Blocked`
+판정: `Ready`
 
 mobile radar가 요구하는 것:
 
@@ -163,16 +164,12 @@ mobile radar가 요구하는 것:
 
 각 섹션이 typed payload와 server-owned eligibility를 가져야 한다.
 
-현재 확인된 문제:
+현재 상태:
 
-- shared contract는 section 이름만 고정했고 item shape를 충분히 풀어 쓰지 않았다.
-- runtime route는 raw projection record passthrough에 가깝다.
-- shadow report에서 `weekly_upcoming`, `change_feed`, `long_gap` 의미론 drift가 남아 있다.
-- 이 상태면 client가 “이번 주 예정”과 “변경 feed”의 경계를 다시 해석하거나, long-gap/rookie 카드를 section별로 다르게 보정하게 된다.
-
-blocker issue:
-
-- [#279](https://github.com/iAmSomething/idol-song-app/issues/279)
+- five sections 모두 typed payload를 가진다.
+- featured / weekly는 exact-date upcoming 기준으로 고정돼 있다.
+- change-feed, long-gap, rookie eligibility와 item shape는 server-owned다.
+- shadow report에서 radar case가 clean으로 떨어진다.
 
 ## 7. Remaining Ambiguities That Are Not Release-blocking
 
@@ -191,14 +188,10 @@ blocker issue:
 지금은 보류해야 하는 것:
 
 - calendar screen implementation
-- search screen implementation
-- radar screen implementation
 
 보류 해제 조건:
 
 - [#276](https://github.com/iAmSomething/idol-song-app/issues/276)
-- [#278](https://github.com/iAmSomething/idol-song-app/issues/278)
-- [#279](https://github.com/iAmSomething/idol-song-app/issues/279)
 
 ## 9. Acceptance Checklist
 

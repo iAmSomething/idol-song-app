@@ -33,6 +33,115 @@ function normalizeRecordArray(value: unknown): Record<string, unknown>[] {
   return value.filter(isRecord);
 }
 
+function normalizeOptionalString(value: unknown): string | null {
+  return typeof value === 'string' && value.length > 0 ? value : null;
+}
+
+function normalizeScheduledMonth(value: unknown): string | null {
+  const normalized = normalizeOptionalString(value);
+  if (!normalized) {
+    return null;
+  }
+  if (/^\d{4}-\d{2}$/.test(normalized)) {
+    return normalized;
+  }
+  if (/^\d{4}-\d{2}-\d{2}$/.test(normalized)) {
+    return normalized.slice(0, 7);
+  }
+  return normalized;
+}
+
+function normalizeIsoLikeString(value: unknown): string | null {
+  const normalized = normalizeOptionalString(value);
+  if (!normalized) {
+    return null;
+  }
+  const parsed = new Date(normalized);
+  if (Number.isNaN(parsed.getTime())) {
+    return normalized;
+  }
+  return parsed.toISOString();
+}
+
+function normalizeRadarLatestSignal(value: unknown): Record<string, unknown> | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  return {
+    ...value,
+    scheduled_date: normalizeOptionalString(value.scheduled_date),
+    scheduled_month: normalizeScheduledMonth(value.scheduled_month),
+    release_format: normalizeOptionalString(value.release_format),
+    latest_seen_at: normalizeIsoLikeString(value.latest_seen_at),
+  };
+}
+
+function normalizeRadarReleaseSummary(value: unknown): Record<string, unknown> | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  return {
+    ...value,
+    release_date: normalizeOptionalString(value.release_date),
+    release_kind: normalizeOptionalString(value.release_kind),
+  };
+}
+
+function normalizeRadarLongGapOrRookieItem(value: unknown): Record<string, unknown> | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  return {
+    ...value,
+    latest_release: normalizeRadarReleaseSummary(value.latest_release),
+    latest_signal: normalizeRadarLatestSignal(value.latest_signal),
+  };
+}
+
+function normalizeRadarChangeFeedItem(value: unknown): Record<string, unknown> | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  if (value.kind === 'upcoming_signal') {
+    const occurredAt =
+      normalizeIsoLikeString(value.occurred_at) ??
+      normalizeIsoLikeString(value.latest_seen_at) ??
+      normalizeOptionalString(value.scheduled_date) ??
+      normalizeScheduledMonth(value.scheduled_month);
+    return {
+      ...value,
+      scheduled_date: normalizeOptionalString(value.scheduled_date),
+      scheduled_month: normalizeScheduledMonth(value.scheduled_month),
+      occurred_at: occurredAt,
+    };
+  }
+
+  if (value.kind === 'verified_release') {
+    return {
+      ...value,
+      occurred_at: normalizeIsoLikeString(value.occurred_at),
+    };
+  }
+
+  return value;
+}
+
+function normalizeRadarUpcomingItem(value: unknown): Record<string, unknown> | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  return {
+    ...value,
+    scheduled_date: normalizeOptionalString(value.scheduled_date),
+    release_format: normalizeOptionalString(value.release_format),
+  };
+}
+
 function normalizeRadarPayload(payload: unknown): RadarResponseData {
   if (!isRecord(payload)) {
     return {
@@ -45,11 +154,11 @@ function normalizeRadarPayload(payload: unknown): RadarResponseData {
   }
 
   return {
-    featured_upcoming: isRecord(payload.featured_upcoming) ? payload.featured_upcoming : null,
-    weekly_upcoming: normalizeRecordArray(payload.weekly_upcoming),
-    change_feed: normalizeRecordArray(payload.change_feed),
-    long_gap: normalizeRecordArray(payload.long_gap),
-    rookie: normalizeRecordArray(payload.rookie),
+    featured_upcoming: normalizeRadarUpcomingItem(payload.featured_upcoming),
+    weekly_upcoming: normalizeRecordArray(payload.weekly_upcoming).map((item) => normalizeRadarUpcomingItem(item) ?? item),
+    change_feed: normalizeRecordArray(payload.change_feed).map((item) => normalizeRadarChangeFeedItem(item) ?? item),
+    long_gap: normalizeRecordArray(payload.long_gap).map((item) => normalizeRadarLongGapOrRookieItem(item) ?? item),
+    rookie: normalizeRecordArray(payload.rookie).map((item) => normalizeRadarLongGapOrRookieItem(item) ?? item),
   };
 }
 
