@@ -1,7 +1,7 @@
 import type { RuntimeConfigState } from '../config/runtime';
 
 import { resolveDatasetFailurePolicy } from './datasetFailurePolicy';
-import { createBundledDatasetSelection } from './datasetSource';
+import { createBackendDatasetSelection } from './datasetSource';
 
 function createRuntimeState(mode: RuntimeConfigState['mode'] = 'normal'): RuntimeConfigState {
   return {
@@ -61,14 +61,14 @@ describe('dataset failure policy', () => {
   });
 
   test('stays in normal mode when runtime config is healthy', async () => {
-    const selection = createBundledDatasetSelection('preview-v2', 'backend_api_mode');
+    const selection = createBackendDatasetSelection('preview-v2', 'https://example.com/api');
     const policy = await resolveDatasetFailurePolicy({
       runtimeState: createRuntimeState('normal'),
       selection,
     });
 
     expect(policy.mode).toBe('normal');
-    expect(policy.activeSource).toBe('bundled-static');
+    expect(policy.activeSource).toBe('backend-api');
     expect(policy.selection).toEqual(selection);
     expect(policy.issues).toEqual([]);
   });

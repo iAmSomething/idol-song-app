@@ -197,6 +197,7 @@ python3 sync_release_pipeline_to_neon.py
 - debug metadata helper/surface: `mobile/src/config/debugMetadata.ts`, `mobile/app/debug/metadata.tsx`
 - feature-gate layer: `mobile/src/config/featureGates.ts`
 - dataset-source layer: `mobile/src/services/datasetSource.ts`, `mobile/assets/datasets/README.md`
+  - preview / production은 backend-api primary, bundled static은 explicit fallback로만 유지
 - storage/cache layer: `mobile/src/services/storage.ts`, `mobile/src/services/datasetCache.ts`, `mobile/src/services/recentQueries.ts`
 - external handoff layer: `mobile/src/services/handoff.ts`
 - token/theme layer: `mobile/src/tokens/`, `mobile/src/tokens/theme.tsx`

@@ -14,6 +14,7 @@ export type MobileDebugMetadata = {
   datasetVersion: string | null;
   commitSha: string | null;
   dataSourceMode: MobileRuntimeConfig['dataSource']['mode'];
+  dataSourcePolicy: string;
   apiBaseUrl: string | null;
   analyticsEnabled: boolean;
   radarEnabled: boolean;
@@ -40,6 +41,10 @@ export function getDebugMetadata(
     datasetVersion: runtimeConfig.dataSource.datasetVersion,
     commitSha: runtimeConfig.build.commitSha,
     dataSourceMode: runtimeConfig.dataSource.mode,
+    dataSourcePolicy:
+      runtimeConfig.dataSource.mode === 'backend-api'
+        ? 'Backend API primary + bundled fallback'
+        : 'Bundled static primary',
     apiBaseUrl: runtimeConfig.services.apiBaseUrl,
     analyticsEnabled: runtimeConfig.featureGates.analytics,
     radarEnabled: runtimeConfig.featureGates.radar,

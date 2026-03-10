@@ -2,8 +2,7 @@ import type { RuntimeConfigState } from '../config/runtime';
 import { getRuntimeConfigState } from '../config/runtime';
 import type { MobileRawDataset } from '../types';
 
-import { resolveDatasetFailurePolicy } from './datasetFailurePolicy';
-import { selectDatasetSource, type DatasetSelection } from './datasetSource';
+import { createBundledDatasetSelection, type BundledDatasetSelection } from './datasetSource';
 import { cloneBundledDatasetFixture } from './bundledDatasetFixture';
 
 export type ActiveMobileDataset = {
@@ -15,7 +14,7 @@ export type ActiveMobileDataset = {
   };
   issues: string[];
   runtimeState: RuntimeConfigState;
-  selection: DatasetSelection;
+  selection: BundledDatasetSelection;
   sourceLabel: string;
 };
 
@@ -33,7 +32,7 @@ function normalizeMobileRawDataset(dataset: MobileRawDataset): MobileRawDataset 
 }
 
 function getDatasetSourceLabel(): string {
-  return 'Bundled static dataset';
+  return 'Bundled fallback dataset';
 }
 
 function dedupeIssueMessages(messages: string[]): string[] {
@@ -42,7 +41,7 @@ function dedupeIssueMessages(messages: string[]): string[] {
 
 function buildBundledDatasetResponse(args: {
   extraIssues?: string[];
-  selection: DatasetSelection;
+  selection: BundledDatasetSelection;
   runtimeState: RuntimeConfigState;
 }): ActiveMobileDataset {
   const dataset = normalizeMobileRawDataset(cloneBundledDatasetFixture());
@@ -70,14 +69,17 @@ export async function loadActiveMobileDataset(
   } = {},
 ): Promise<ActiveMobileDataset> {
   const runtimeState = options.runtimeState ?? getRuntimeConfigState();
-  const selection = selectDatasetSource(runtimeState.config);
-  const basePolicy = await resolveDatasetFailurePolicy({
-    runtimeState,
-    selection,
-  });
+  const selection = createBundledDatasetSelection(
+    runtimeState.config.dataSource.datasetVersion,
+    runtimeState.mode === 'degraded'
+      ? 'runtime_degraded'
+      : runtimeState.config.dataSource.mode === 'backend-api'
+        ? 'backend_primary_fallback'
+        : 'profile_default',
+  );
+
   return buildBundledDatasetResponse({
-    extraIssues: basePolicy.issues.map((issue) => issue.message),
-    selection: basePolicy.selection,
+    selection,
     runtimeState,
   });
 }

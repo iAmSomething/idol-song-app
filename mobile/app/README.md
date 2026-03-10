@@ -11,13 +11,13 @@
 - `(tabs)/_layout.tsx`
   - `calendar`, `radar`, `search` 탭 shell
 - `(tabs)/calendar.tsx`
-  - active dataset source + shared selector 기반 current-month container
+  - backend-first + cached snapshot + bundled fallback current-month container
 - `(tabs)/radar.tsx`
 - `(tabs)/search.tsx`
-  - 탭 placeholder screen
+  - backend-first search tab
 - `artists/[slug].tsx`
 - `releases/[id].tsx`
-  - push detail placeholder screen
+  - backend-first push detail screen
 - `debug/metadata.tsx`
   - internal build/dataset/commit metadata inspection route
 

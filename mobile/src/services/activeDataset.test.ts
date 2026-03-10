@@ -67,7 +67,7 @@ describe('loadActiveMobileDataset', () => {
 
     expect(result.activeSource).toBe('bundled-static');
     expect(result.selection.kind).toBe('bundled-static');
-    expect(result.sourceLabel).toBe('Bundled static dataset');
+    expect(result.sourceLabel).toBe('Bundled fallback dataset');
     expect(result.dataset.artistProfiles.length).toBeGreaterThan(0);
     expect(result.issues).toEqual([]);
   });
@@ -115,7 +115,7 @@ describe('loadActiveMobileDataset', () => {
     });
 
     expect(result.activeSource).toBe('bundled-static');
-    expect(result.selection.reason).toBe('backend_api_mode');
-    expect(result.sourceLabel).toBe('Bundled static dataset');
+    expect(result.selection.reason).toBe('backend_primary_fallback');
+    expect(result.sourceLabel).toBe('Bundled fallback dataset');
   });
 });

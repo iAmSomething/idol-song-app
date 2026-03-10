@@ -42,12 +42,13 @@ const bundledSelection: DatasetSelection = {
 };
 
 const previewSelection: DatasetSelection = {
-  kind: 'bundled-static',
-  reason: 'backend_api_mode',
+  kind: 'backend-api',
+  reason: 'profile_default',
   contractId: 'idol-song-mobile-static-v1',
   datasetVersion: 'preview-v2',
   mixingAllowed: false,
-  bundledBasePath: 'mobile/assets/datasets/v1',
+  apiBaseUrl: 'https://example.com/api',
+  bundledFallbackBasePath: 'mobile/assets/datasets/v1',
   artifacts: [],
 };
 

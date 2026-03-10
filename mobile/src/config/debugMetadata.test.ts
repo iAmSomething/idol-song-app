@@ -80,6 +80,7 @@ describe('debug metadata helpers', () => {
       datasetVersion: 'preview-v1',
       commitSha: 'abc123',
       dataSourceMode: 'backend-api',
+      dataSourcePolicy: 'Backend API primary + bundled fallback',
       apiBaseUrl: 'https://example.com/api',
       analyticsEnabled: false,
       radarEnabled: true,
