@@ -42,6 +42,16 @@ jest.mock('expo-router', () => {
   };
 });
 
+jest.mock('react-native/Libraries/Modal/Modal', () => {
+  const React = jest.requireActual<typeof import('react')>('react');
+
+  return {
+    __esModule: true,
+    default: ({ children, visible }: { children?: React.ReactNode; visible?: boolean }) =>
+      visible ? React.createElement(React.Fragment, null, children) : null,
+  };
+});
+
 jest.mock('../services/activeDataset', () => {
   const actual = jest.requireActual('../services/activeDataset');
 
@@ -316,7 +326,7 @@ describe('mobile radar tab', () => {
     expect(tree.root.findAllByProps({ testID: 'radar-long-gap-card-weeekly' })).toHaveLength(0);
   });
 
-  test('applies filter sheet selections to featured, weekly, and change sections', async () => {
+  test('keeps applied radar filters stable until the sheet is explicitly applied', async () => {
     const tree = await renderRadarScreen();
 
     await act(async () => {
@@ -331,12 +341,89 @@ describe('mobile radar tab', () => {
       await Promise.resolve();
     });
 
-    expect(tree.root.findAllByProps({ testID: 'radar-featured-card' })).toHaveLength(0);
-    expect(tree.root.findAllByProps({ testID: 'radar-weekly-card-yena' })).toHaveLength(0);
+    expect(tree.root.findByProps({ testID: 'radar-featured-card' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'radar-weekly-card-yena' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'radar-change-card-p1harmony' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'radar-filter-button' }).props.accessibilityState.selected).toBe(
+      false,
+    );
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'radar-filter-button' }).props.onPress();
+      await Promise.resolve();
+    });
+
+    expect(tree.root.findByProps({ testID: 'radar-filter-status-all' }).props.accessibilityState.selected).toBe(
+      true,
+    );
+    expect(tree.root.findByProps({ testID: 'radar-filter-act-all' }).props.accessibilityState.selected).toBe(
+      true,
+    );
+  });
+
+  test('applies filter sheet selections only after explicit apply', async () => {
+    const tree = await renderRadarScreen();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'radar-filter-button' }).props.onPress();
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'radar-filter-status-changed' }).props.onPress();
+      tree.root.findByProps({ testID: 'radar-filter-act-solo' }).props.onPress();
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'radar-filter-apply' }).props.onPress();
+      await Promise.resolve();
+    });
+
     expect(tree.root.findByProps({ testID: 'radar-change-card-yena' })).toBeDefined();
-    expect(tree.root.findAllByProps({ testID: 'radar-change-card-p1harmony' })).toHaveLength(0);
     expect(tree.root.findByProps({ testID: 'radar-filter-button' }).props.accessibilityState.selected).toBe(
       true,
     );
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'radar-filter-button' }).props.onPress();
+      await Promise.resolve();
+    });
+
+    expect(tree.root.findByProps({ testID: 'radar-filter-status-changed' }).props.accessibilityState.selected).toBe(
+      true,
+    );
+    expect(tree.root.findByProps({ testID: 'radar-filter-act-solo' }).props.accessibilityState.selected).toBe(
+      true,
+    );
+  });
+
+  test('routes team-card primary actions to team detail screens', async () => {
+    const tree = await renderRadarScreen();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'radar-featured-primary' }).props.onPress();
+      tree.root.findByProps({ testID: 'radar-weekly-card-yena-primary' }).props.onPress();
+      tree.root.findByProps({ testID: 'radar-change-primary-p1harmony' }).props.onPress();
+      tree.root.findByProps({ testID: 'radar-long-gap-primary-weeekly' }).props.onPress();
+      tree.root.findByProps({ testID: 'radar-rookie-primary-atheart' }).props.onPress();
+    });
+
+    expect(__mock.push).toHaveBeenCalledWith({
+      pathname: '/artists/[slug]',
+      params: { slug: 'yena' },
+    });
+    expect(__mock.push).toHaveBeenCalledWith({
+      pathname: '/artists/[slug]',
+      params: { slug: 'p1harmony' },
+    });
+    expect(__mock.push).toHaveBeenCalledWith({
+      pathname: '/artists/[slug]',
+      params: { slug: 'weeekly' },
+    });
+    expect(__mock.push).toHaveBeenCalledWith({
+      pathname: '/artists/[slug]',
+      params: { slug: 'atheart' },
+    });
   });
 });

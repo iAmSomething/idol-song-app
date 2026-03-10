@@ -1,7 +1,5 @@
 import React, { memo, useMemo } from 'react';
 import {
-  Modal,
-  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,7 +7,7 @@ import {
 } from 'react-native';
 
 import { EmptyStateBlock } from '../feedback/FeedbackState';
-import { SheetHeader } from '../layout/SheetHeader';
+import { BottomSheetFrame } from '../layout/BottomSheetFrame';
 import {
   ReleaseSummaryRow,
   type ReleaseSummaryRowProps,
@@ -43,98 +41,60 @@ function DateDetailSheetComponent({
   const isEmpty = verifiedRows.length === 0 && scheduledRows.length === 0;
 
   return (
-    <Modal
+    <BottomSheetFrame
+      accessibilityLabel={`${title} 일정 상세`}
       animationType="slide"
-      onRequestClose={onClose}
-      transparent
-      visible={isOpen}
+      backdropTestID="calendar-sheet-backdrop"
+      closeButtonTestID="calendar-sheet-close"
+      isOpen={isOpen}
+      maxHeight="78%"
+      minHeight={isEmpty ? '45%' : undefined}
+      onClose={onClose}
+      sheetTestID="calendar-bottom-sheet"
+      summary={summary}
+      title={title}
     >
-      <View style={styles.sheetOverlay}>
-        <Pressable
-          accessible={false}
-          onPress={onClose}
-          style={styles.sheetBackdrop}
-          testID="calendar-sheet-backdrop"
-        />
-        <View
-          accessibilityLabel={`${title} 일정 상세`}
-          accessibilityViewIsModal
-          accessible
-          style={[styles.sheetPanel, isEmpty ? styles.sheetPanelEmpty : null]}
-          testID="calendar-bottom-sheet"
-        >
-          <SheetHeader
-            closeButtonTestID="calendar-sheet-close"
-            onClose={onClose}
-            showCloseButton
-            summary={summary}
-            title={title}
+      <ScrollView
+        bounces={false}
+        contentContainerStyle={styles.sheetContent}
+        showsVerticalScrollIndicator={false}
+        style={styles.sheetScroll}
+      >
+        {isEmpty ? (
+          <EmptyStateBlock
+            description="이 날짜에는 등록된 일정이 없습니다."
+            message="일정 없음"
           />
+        ) : null}
 
-          <ScrollView
-            bounces={false}
-            contentContainerStyle={styles.sheetContent}
-            showsVerticalScrollIndicator={false}
-            style={styles.sheetScroll}
-          >
-            {isEmpty ? (
-              <EmptyStateBlock
-                description="이 날짜에는 등록된 일정이 없습니다."
-                message="일정 없음"
-              />
-            ) : null}
+        {verifiedRows.length > 0 ? (
+          <View style={styles.subsection}>
+            <Text allowFontScaling style={styles.subsectionTitle}>
+              Verified releases
+            </Text>
+            {verifiedRows.map((row) => (
+              <ReleaseSummaryRow key={row.testID ?? `${row.team.name}-${row.title}`} {...row} />
+            ))}
+          </View>
+        ) : null}
 
-            {verifiedRows.length > 0 ? (
-              <View style={styles.subsection}>
-                <Text allowFontScaling style={styles.subsectionTitle}>
-                  Verified releases
-                </Text>
-                {verifiedRows.map((row) => (
-                  <ReleaseSummaryRow key={row.testID ?? `${row.team.name}-${row.title}`} {...row} />
-                ))}
-              </View>
-            ) : null}
-
-            {scheduledRows.length > 0 ? (
-              <View style={styles.subsection}>
-                <Text allowFontScaling style={styles.subsectionTitle}>
-                  Scheduled comebacks
-                </Text>
-                {scheduledRows.map((row) => (
-                  <UpcomingEventRow key={row.testID ?? `${row.team.name}-${row.headline}`} {...row} />
-                ))}
-              </View>
-            ) : null}
-          </ScrollView>
-        </View>
-      </View>
-    </Modal>
+        {scheduledRows.length > 0 ? (
+          <View style={styles.subsection}>
+            <Text allowFontScaling style={styles.subsectionTitle}>
+              Scheduled comebacks
+            </Text>
+            {scheduledRows.map((row) => (
+              <UpcomingEventRow key={row.testID ?? `${row.team.name}-${row.headline}`} {...row} />
+            ))}
+          </View>
+        ) : null}
+      </ScrollView>
+    </BottomSheetFrame>
   );
 }
 
 function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
-    sheetOverlay: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      backgroundColor: theme.colors.surface.overlay,
-    },
-    sheetBackdrop: {
-      flex: 1,
-    },
-    sheetPanel: {
-      maxHeight: '78%',
-      gap: theme.space[16],
-      paddingHorizontal: theme.space[20],
-      paddingTop: theme.space[12],
-      paddingBottom: theme.space[24],
-      borderTopLeftRadius: theme.radius.sheet,
-      borderTopRightRadius: theme.radius.sheet,
-      backgroundColor: theme.colors.surface.elevated,
-    },
-    sheetPanelEmpty: {
-      minHeight: '45%',
-    },
     sheetScroll: {
       flexGrow: 0,
     },

@@ -124,9 +124,10 @@ describe('mobile release detail screen', () => {
   });
 
   test('renders populated release detail sections for a canonical release', async () => {
+    const back = jest.fn();
     const push = jest.fn();
     __mock.useRouter.mockReturnValue({
-      back: jest.fn(),
+      back,
       push,
     });
     __mock.useLocalSearchParams.mockReturnValue({ id: 'yena--love-catcher--2026-03-11--album' });
@@ -148,9 +149,11 @@ describe('mobile release detail screen', () => {
     expect(tree.root.findByProps({ testID: 'release-mv-card' })).toBeDefined();
 
     await act(async () => {
+      tree.root.findByProps({ testID: 'release-appbar-back' }).props.onPress();
       tree.root.findByProps({ testID: 'release-appbar-team-page' }).props.onPress();
     });
 
+    expect(back).toHaveBeenCalledTimes(1);
     expect(push).toHaveBeenCalledWith('/artists/yena');
   });
 

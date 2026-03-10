@@ -119,12 +119,27 @@ describe('mobile search tab', () => {
         targetId: 'yena',
       }),
     );
+    expect(__mock.push).toHaveBeenCalledWith({
+      pathname: '/artists/[slug]',
+      params: { slug: 'yena' },
+    });
 
     await act(async () => {
       tree.root.findByProps({ testID: 'search-segment-releases' }).props.onPress();
     });
 
     expect(tree.root.findByProps({ testID: 'search-release-result-yena--love-catcher--2026-03-11--album' })).toBeDefined();
+
+    await act(async () => {
+      tree.root
+        .findByProps({ testID: 'search-release-result-press-yena--love-catcher--2026-03-11--album' })
+        .props.onPress();
+    });
+
+    expect(__mock.push).toHaveBeenCalledWith({
+      pathname: '/releases/[id]',
+      params: { id: 'yena--love-catcher--2026-03-11--album' },
+    });
 
     await act(async () => {
       tree.root.findByProps({ testID: 'search-segment-upcoming' }).props.onPress();
@@ -135,6 +150,19 @@ describe('mobile search tab', () => {
         testID: 'search-upcoming-result-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
       }),
     ).toBeDefined();
+
+    await act(async () => {
+      tree.root
+        .findByProps({
+          testID: 'search-upcoming-result-press-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
+        })
+        .props.onPress();
+    });
+
+    expect(__mock.push).toHaveBeenCalledWith({
+      pathname: '/artists/[slug]',
+      params: { slug: 'yena' },
+    });
 
     await act(async () => {
       await tree.root.findByProps({ testID: 'search-input' }).props.onSubmitEditing();

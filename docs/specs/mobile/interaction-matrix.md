@@ -72,7 +72,7 @@
 | Toggle Filter Option | tap | 필터값 갱신 | in-sheet | 임시 상태 반영 |
 | Reset Button | tap | 기본값 복원 | in-sheet | 임시 상태 초기화 |
 | Apply Button | tap | 필터 적용 후 닫기 | sheet close | 대상 화면 재계산 |
-| Background Tap | tap | 닫기 | sheet close | 미적용 또는 마지막 임시 상태 폐기 규칙 필요 |
+| Background Tap | tap | 닫기 | sheet close | draft state 폐기, 마지막 applied state 유지 |
 
 ## 8. Global Rules
 - sheet 내부 액션은 sheet close 없이 push/external이 가능하다.

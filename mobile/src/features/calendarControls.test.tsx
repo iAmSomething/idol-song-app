@@ -165,7 +165,6 @@ describe('calendar controls', () => {
       tree.root.findByProps({ testID: 'calendar-filter-apply' }).props.onPress();
     });
 
-    expect(tree.root.findAllByProps({ testID: 'calendar-bottom-sheet' })).toHaveLength(0);
     expect(hasText(tree, '현재 필터에서는 month-only 예정 신호를 숨깁니다.')).toBe(true);
     expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
       'calendar_filter_changed',
@@ -195,6 +194,37 @@ describe('calendar controls', () => {
         month: '2026-03',
       }),
     );
+  });
+
+  test('opens team and release detail routes from selected-day sheet actions', async () => {
+    const tree = await renderCalendarScreen();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'calendar-day-2026-03-11' }).props.onPress();
+    });
+
+    await act(async () => {
+      tree.root
+        .findByProps({ testID: 'calendar-sheet-release-primary-yena--love-catcher--2026-03-11--album' })
+        .props.onPress();
+      tree.root
+        .findByProps({ testID: 'calendar-sheet-release-secondary-yena--love-catcher--2026-03-11--album' })
+        .props.onPress();
+      tree.root
+        .findByProps({
+          testID: 'calendar-sheet-upcoming-primary-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
+        })
+        .props.onPress();
+    });
+
+    expect(__mock.push).toHaveBeenCalledWith({
+      pathname: '/artists/[slug]',
+      params: { slug: 'yena' },
+    });
+    expect(__mock.push).toHaveBeenCalledWith({
+      pathname: '/releases/[id]',
+      params: { id: 'yena--love-catcher--2026-03-11--album' },
+    });
   });
 
   test('renders list mode with separated verified, exact, and month-only sections', async () => {

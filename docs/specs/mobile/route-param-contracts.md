@@ -57,7 +57,11 @@ Path: `/releases/[id]`
 ### 4.5 Radar state
 - 기본 진입 경로는 `/(tabs)/radar`다.
 - state restoration용 optional query param:
-  - `hideEmpty=1`
+  - `status=all|scheduled|confirmed|changed`
+  - `actType=all|group|solo|unit`
+  - `sections=weekly,change,longGap,rookie`
+- filter sheet open state 자체는 route param으로 강제하지 않는다.
+- invalid status/actType/sections 값은 무시하고 안전한 기본 상태로 복구한다.
 
 ## 5. Param validation
 - missing slug/id는 screen crash 원인이 되어서는 안 된다.

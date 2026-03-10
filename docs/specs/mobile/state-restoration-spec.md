@@ -24,6 +24,8 @@
 ## 5. Radar
 - active filter 또는 섹션 스크롤 맥락을 잃지 않아야 한다.
 - external handoff 후 복귀 시 기존 카드 목록 위치를 유지한다.
+- applied filter(`status`, `actType`, `sections`)는 route state로 복원된다.
+- Filter Sheet draft state는 apply 전까지만 임시 상태이며, close/backdrop dismiss 시 폐기된다.
 
 ## 6. Team Detail / Release Detail
 - back 시 이전 화면 scroll 위치를 복원해야 한다.

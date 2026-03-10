@@ -602,10 +602,12 @@ export default function CalendarTabScreen() {
       primaryAction: {
         label: '팀 페이지',
         onPress: () => openTeamDetailByGroup(release.group),
+        testID: `${testPrefix}-primary-${release.id}`,
       },
       secondaryAction: {
         label: '상세 보기',
         onPress: () => openReleaseDetail(release.id),
+        testID: `${testPrefix}-secondary-${release.id}`,
       },
       serviceButtons: buildReleaseServiceButtons(release),
       sourceLinks: buildReleaseSourceLinks(release),
@@ -629,6 +631,7 @@ export default function CalendarTabScreen() {
       primaryAction: {
         label: '팀 페이지',
         onPress: () => openTeamDetailByGroup(event.group),
+        testID: `${testPrefix}-primary-${event.id}`,
       },
       scheduledDate: formatUpcomingLabel(event),
       sourceLinks: buildUpcomingSourceLinks(event),
