@@ -9,10 +9,14 @@ import {
   View,
 } from 'react-native';
 
+import { ActionButton } from '../../src/components/actions/ActionButton';
+import { SegmentedControl } from '../../src/components/controls/SegmentedControl';
 import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { TeamIdentityRow } from '../../src/components/identity/TeamIdentityRow';
+import { AppBar } from '../../src/components/layout/AppBar';
 import { buildDatasetRiskDisclosure } from '../../src/features/surfaceDisclosures';
 import {
   areRouteParamsEqual,
@@ -345,11 +349,11 @@ export default function SearchTabScreen() {
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      <View style={styles.header}>
-        <Text style={styles.eyebrow}>SEARCH TAB</Text>
-        <Text accessibilityRole="header" style={styles.title}>Search</Text>
-        <Text style={styles.body}>한글 별칭, 영문 그룹명, 릴리즈명, 예정 headline까지 같은 selector semantics로 찾습니다.</Text>
-      </View>
+      <AppBar
+        subtitle="한글 별칭, 영문 그룹명, 릴리즈명, 예정 headline까지 같은 selector semantics로 찾습니다."
+        testID="search-app-bar"
+        title="Search"
+      />
 
       {datasetRiskDisclosure ? (
         <InlineFeedbackNotice
@@ -387,35 +391,16 @@ export default function SearchTabScreen() {
         ) : null}
       </View>
 
-      <View style={styles.segmentRow}>
-        {([
-          ['entities', '팀'],
-          ['releases', '발매'],
-          ['upcoming', '예정'],
-        ] as const).map(([segment, label]) => (
-          <Pressable
-            key={segment}
-            testID={`search-segment-${segment}`}
-            accessibilityLabel={`${label} 결과 ${segmentCounts[segment]}건`}
-            accessibilityHint="검색 결과 구간을 바꿉니다."
-            accessibilityRole="button"
-            accessibilityState={{ selected: activeSegment === segment }}
-            onPress={() => setActiveSegment(segment)}
-            style={({ pressed }) => [
-              styles.segmentButton,
-              activeSegment === segment ? styles.segmentButtonActive : null,
-              pressed ? styles.segmentButtonPressed : null,
-            ]}
-          >
-            <Text style={activeSegment === segment ? styles.segmentLabelActive : styles.segmentLabel}>
-              {label}
-            </Text>
-            <Text style={activeSegment === segment ? styles.segmentCountActive : styles.segmentCount}>
-              {segmentCounts[segment]}
-            </Text>
-          </Pressable>
-        ))}
-      </View>
+      <SegmentedControl
+        items={[
+          { count: segmentCounts.entities, key: 'entities', label: '팀' },
+          { count: segmentCounts.releases, key: 'releases', label: '발매' },
+          { count: segmentCounts.upcoming, key: 'upcoming', label: '예정' },
+        ]}
+        onChange={(key) => setActiveSegment(key as SearchSegment)}
+        selectedKey={activeSegment}
+        testID="search-segment"
+      />
 
       {!query.trim() ? (
         <>
@@ -459,20 +444,25 @@ export default function SearchTabScreen() {
             <Text accessibilityRole="header" style={styles.sectionTitle}>추천 팀</Text>
             <View style={styles.suggestedGrid}>
               {suggestedTeams.map((team) => (
-                <Pressable
+                <View
                   key={team.slug}
+                  style={styles.resultCard}
                   testID={`suggested-team-${team.slug}`}
-                  accessibilityLabel={`${team.displayName} 팀 열기`}
-                  accessibilityRole="button"
-                  onPress={() => openTeamDetail(team.slug)}
-                  style={({ pressed }) => [styles.suggestedCard, pressed ? styles.segmentButtonPressed : null]}
                 >
-                  <View style={styles.suggestedBadge}>
-                    <Text style={styles.suggestedBadgeLabel}>{formatSuggestedLabel(team)}</Text>
-                  </View>
-                  <Text style={styles.suggestedTitle}>{team.displayName}</Text>
-                  <Text style={styles.suggestedMeta}>{team.agency ?? 'Tracked team'}</Text>
-                </Pressable>
+                  <TeamIdentityRow
+                    badgeImageUrl={team.badge?.imageUrl}
+                    meta={team.agency ?? 'Tracked team'}
+                    monogram={formatSuggestedLabel(team)}
+                    name={team.displayName}
+                    testID={`suggested-team-copy-${team.slug}`}
+                  />
+                  <ActionButton
+                    accessibilityLabel={`${team.displayName} 팀 열기`}
+                    label="팀 페이지"
+                    onPress={() => openTeamDetail(team.slug)}
+                    testID={`suggested-team-open-${team.slug}`}
+                  />
+                </View>
               ))}
             </View>
           </View>
@@ -490,83 +480,65 @@ export default function SearchTabScreen() {
 
           {activeSegment === 'entities'
             ? results.entities.map((result) => (
-                <Pressable
-                  key={result.team.slug}
-                  testID={`search-team-result-press-${result.team.slug}`}
-                  accessibilityLabel={buildTeamResultAccessibilityLabel(result)}
-                  accessibilityRole="button"
-                  onPress={() => handleTeamResultPress(result)}
-                  style={({ pressed }) => [styles.resultRow, pressed ? styles.segmentButtonPressed : null]}
-                >
-                  <View style={styles.resultLeadingBadge}>
-                    <Text style={styles.resultLeadingBadgeLabel}>
-                      {result.team.badge?.monogram ?? result.team.displayName.slice(0, 2).toUpperCase()}
-                    </Text>
-                  </View>
-                  <View testID={`search-team-result-${result.team.slug}`} style={styles.resultCopy}>
-                    <Text style={styles.resultTitle}>{result.team.displayName}</Text>
-                    <Text style={styles.resultBody}>{formatTeamMeta(result)}</Text>
-                    <Text style={styles.resultMeta}>{result.matchKind}</Text>
-                  </View>
-                </Pressable>
+                <View key={result.team.slug} style={styles.resultCard}>
+                  <TeamIdentityRow
+                    badgeImageUrl={result.team.badge?.imageUrl}
+                    meta={formatTeamMeta(result)}
+                    monogram={result.team.badge?.monogram}
+                    name={result.team.displayName}
+                    testID={`search-team-result-${result.team.slug}`}
+                  />
+                  <Text style={styles.resultMeta}>{result.matchKind}</Text>
+                  <ActionButton
+                    accessibilityLabel={buildTeamResultAccessibilityLabel(result)}
+                    label="팀 페이지"
+                    onPress={() => handleTeamResultPress(result)}
+                    testID={`search-team-result-press-${result.team.slug}`}
+                  />
+                </View>
               ))
             : null}
 
           {activeSegment === 'releases'
             ? results.releases.map((result) => (
-                <Pressable
-                  key={result.release.id}
-                  testID={`search-release-result-press-${result.release.id}`}
-                  accessibilityLabel={buildReleaseResultAccessibilityLabel(result.release, result.matchKind)}
-                  accessibilityRole="button"
-                  onPress={() => handleReleaseResultPress(result.release, result.matchKind)}
-                  style={({ pressed }) => [styles.resultRow, pressed ? styles.segmentButtonPressed : null]}
-                >
-                  <View style={styles.resultLeadingBadge}>
-                    <Text style={styles.resultLeadingBadgeLabel}>{result.release.displayGroup.slice(0, 2)}</Text>
-                  </View>
-                  <View testID={`search-release-result-${result.release.id}`} style={styles.resultCopy}>
-                    <Text style={styles.resultTitle}>{result.release.releaseTitle}</Text>
-                    <Text style={styles.resultBody}>{result.release.displayGroup}</Text>
-                    <Text style={styles.resultMeta}>
-                      {formatReleaseMeta(result.release)} · {result.matchKind}
-                    </Text>
-                  </View>
-                </Pressable>
+                <View key={result.release.id} style={styles.resultCard}>
+                  <TeamIdentityRow
+                    meta={`${result.release.displayGroup} · ${formatReleaseMeta(result.release)}`}
+                    monogram={result.release.displayGroup.slice(0, 2)}
+                    name={result.release.releaseTitle}
+                    testID={`search-release-result-${result.release.id}`}
+                  />
+                  <Text style={styles.resultMeta}>{result.matchKind}</Text>
+                  <ActionButton
+                    accessibilityLabel={buildReleaseResultAccessibilityLabel(result.release, result.matchKind)}
+                    label="릴리즈 상세"
+                    onPress={() => handleReleaseResultPress(result.release, result.matchKind)}
+                    testID={`search-release-result-press-${result.release.id}`}
+                  />
+                </View>
               ))
             : null}
 
           {activeSegment === 'upcoming'
             ? results.upcoming.map((result) => (
-                <Pressable
-                  key={result.upcoming.id}
-                  testID={`search-upcoming-result-press-${result.upcoming.id}`}
-                  accessibilityLabel={buildUpcomingResultAccessibilityLabel(result)}
-                  accessibilityRole="button"
-                  accessibilityState={{ disabled: !teamSlugByGroup.get(result.upcoming.group) }}
-                  disabled={!teamSlugByGroup.get(result.upcoming.group)}
-                  onPress={() => handleUpcomingResultPress(result)}
-                  style={({ pressed }) => [
-                    styles.resultRow,
-                    !teamSlugByGroup.get(result.upcoming.group) ? styles.disabledButton : null,
-                    pressed ? styles.segmentButtonPressed : null,
-                  ]}
-                >
-                  <View style={styles.resultLeadingBadge}>
-                    <Text style={styles.resultLeadingBadgeLabel}>
-                      {result.upcoming.displayGroup.slice(0, 2)}
-                    </Text>
-                  </View>
-                  <View testID={`search-upcoming-result-${result.upcoming.id}`} style={styles.resultCopy}>
-                    <Text style={styles.resultTitle}>{result.upcoming.displayGroup}</Text>
-                    <Text style={styles.resultBody}>
-                      {result.upcoming.releaseLabel ?? result.upcoming.headline}
-                    </Text>
-                    <Text style={styles.resultMeta}>
-                      {formatUpcomingMeta(result)} · {result.matchKind}
-                    </Text>
-                  </View>
-                </Pressable>
+                <View key={result.upcoming.id} style={styles.resultCard}>
+                  <TeamIdentityRow
+                    meta={result.upcoming.releaseLabel ?? result.upcoming.headline}
+                    monogram={result.upcoming.displayGroup.slice(0, 2)}
+                    name={result.upcoming.displayGroup}
+                    testID={`search-upcoming-result-${result.upcoming.id}`}
+                  />
+                  <Text style={styles.resultMeta}>
+                    {formatUpcomingMeta(result)} · {result.matchKind}
+                  </Text>
+                  <ActionButton
+                    accessibilityLabel={buildUpcomingResultAccessibilityLabel(result)}
+                    disabled={!teamSlugByGroup.get(result.upcoming.group)}
+                    label="팀 페이지"
+                    onPress={() => handleUpcomingResultPress(result)}
+                    testID={`search-upcoming-result-press-${result.upcoming.id}`}
+                  />
+                </View>
               ))
             : null}
         </View>
@@ -593,28 +565,6 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       paddingHorizontal: theme.space[24],
       gap: theme.space[12],
       backgroundColor: theme.colors.surface.base,
-    },
-    header: {
-      gap: theme.space[8],
-    },
-    eyebrow: {
-      color: theme.colors.text.brand,
-      fontSize: theme.typography.meta.fontSize,
-      fontWeight: theme.typography.meta.fontWeight,
-      letterSpacing: theme.typography.meta.letterSpacing,
-    },
-    title: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.screenTitle.fontSize,
-      lineHeight: theme.typography.screenTitle.lineHeight,
-      fontWeight: theme.typography.screenTitle.fontWeight,
-      letterSpacing: theme.typography.screenTitle.letterSpacing,
-    },
-    body: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
     },
     searchCard: {
       borderRadius: theme.radius.card,
@@ -649,56 +599,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       flexShrink: 1,
       textAlign: 'center',
     },
-    segmentRow: {
-      flexDirection: 'row',
-      gap: theme.space[8],
-    },
-    segmentButton: {
-      flex: 1,
-      minHeight: 48,
-      borderRadius: theme.radius.button,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      backgroundColor: theme.colors.surface.elevated,
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[12],
-      gap: theme.space[4],
-      alignItems: 'center',
-    },
-    segmentButtonActive: {
-      borderColor: theme.colors.border.focus,
-      backgroundColor: theme.colors.surface.interactive,
-    },
     segmentButtonPressed: {
       backgroundColor: theme.colors.surface.interactive,
-    },
-    segmentLabel: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: theme.typography.buttonService.fontWeight,
-      flexShrink: 1,
-      textAlign: 'center',
-    },
-    segmentLabelActive: {
-      color: theme.colors.text.brand,
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: theme.typography.buttonService.fontWeight,
-      flexShrink: 1,
-      textAlign: 'center',
-    },
-    segmentCount: {
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-    },
-    segmentCountActive: {
-      color: theme.colors.text.brand,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
     },
     sectionCard: {
       borderRadius: theme.radius.card,
@@ -751,82 +653,11 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     suggestedGrid: {
       gap: theme.space[8],
     },
-    suggestedCard: {
-      borderRadius: theme.radius.button,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      backgroundColor: theme.colors.surface.base,
-      padding: theme.space[12],
+    resultCard: {
       gap: theme.space[8],
-    },
-    suggestedBadge: {
-      alignSelf: 'flex-start',
-      minWidth: 40,
-      borderRadius: theme.radius.chip,
-      backgroundColor: theme.colors.status.title.bg,
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[4],
-    },
-    suggestedBadgeLabel: {
-      color: theme.colors.status.title.text,
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: theme.typography.buttonService.fontWeight,
-      textAlign: 'center',
-    },
-    suggestedTitle: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.cardTitle.fontSize,
-      lineHeight: theme.typography.cardTitle.lineHeight,
-      fontWeight: theme.typography.cardTitle.fontWeight,
-    },
-    suggestedMeta: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
-    },
-    resultRow: {
-      flexDirection: 'row',
-      gap: theme.space[12],
       paddingTop: theme.space[12],
       borderTopWidth: 1,
       borderTopColor: theme.colors.border.subtle,
-    },
-    disabledButton: {
-      opacity: 0.5,
-    },
-    resultLeadingBadge: {
-      width: 44,
-      height: 44,
-      borderRadius: theme.radius.button,
-      backgroundColor: theme.colors.surface.base,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    resultLeadingBadgeLabel: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: theme.typography.buttonService.fontWeight,
-    },
-    resultCopy: {
-      flex: 1,
-      gap: theme.space[4],
-    },
-    resultTitle: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.cardTitle.fontSize,
-      lineHeight: theme.typography.cardTitle.lineHeight,
-      fontWeight: theme.typography.cardTitle.fontWeight,
-    },
-    resultBody: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
     },
     resultMeta: {
       color: theme.colors.text.tertiary,

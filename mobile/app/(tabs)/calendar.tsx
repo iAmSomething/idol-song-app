@@ -10,10 +10,13 @@ import {
 
 import { DateDetailSheet } from '../../src/components/calendar/DateDetailSheet';
 import { DayCell } from '../../src/components/calendar/DayCell';
+import { SegmentedControl } from '../../src/components/controls/SegmentedControl';
 import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { AppBar } from '../../src/components/layout/AppBar';
+import { SummaryStrip } from '../../src/components/layout/SummaryStrip';
 import {
   buildCalendarMonthGrid,
   resolveInitialCalendarSelection,
@@ -173,6 +176,19 @@ export default function CalendarTabScreen() {
   const datasetRiskDisclosure = source
     ? buildDatasetRiskDisclosure(source, '캘린더', 'calendar-dataset-risk-notice')
     : null;
+  const groupSlugByGroup = useMemo(() => {
+    const entries = new Map<string, string>();
+
+    if (!source) {
+      return entries;
+    }
+
+    for (const profile of source.dataset.artistProfiles) {
+      entries.set(profile.group, profile.slug);
+    }
+
+    return entries;
+  }, [source]);
 
   useEffect(() => {
     if (!filteredSnapshot) {
@@ -307,6 +323,26 @@ export default function CalendarTabScreen() {
     setIsSheetOpen(false);
   }
 
+  function openReleaseDetail(releaseId: string) {
+    router.push({
+      pathname: '/releases/[id]',
+      params: { id: releaseId },
+    });
+  }
+
+  function openTeamDetailByGroup(group: string) {
+    const slug = groupSlugByGroup.get(group);
+
+    if (!slug) {
+      return;
+    }
+
+    router.push({
+      pathname: '/artists/[slug]',
+      params: { slug },
+    });
+  }
+
   function handleFilterChange(nextFilterMode: CalendarFilterMode) {
     if (filterMode === nextFilterMode || !filteredSnapshot) {
       return;
@@ -359,49 +395,29 @@ export default function CalendarTabScreen() {
   return (
     <>
       <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-        <View style={styles.appBar}>
-          <Pressable
-            testID="calendar-month-prev"
-            accessibilityHint="이전 달 일정을 봅니다."
-            accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, -1))}로 이동`}
-            accessibilityRole="button"
-            onPress={() => moveToRelativeMonth(-1)}
-            style={({ pressed }) => [
-              styles.monthButton,
-              pressed ? styles.monthButtonPressed : null,
-            ]}
-          >
-            <Text style={styles.monthButtonLabel}>이전</Text>
-          </Pressable>
-
-          <View style={styles.monthTitleWrap}>
-            <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
-            <Text accessibilityRole="header" testID="calendar-month-title" style={styles.title}>
-              {formatMonthLabel(filteredSnapshot.month)}
-            </Text>
-          </View>
-
-          <Pressable
-            testID="calendar-month-next"
-            accessibilityHint="다음 달 일정을 봅니다."
-            accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, 1))}로 이동`}
-            accessibilityRole="button"
-            onPress={() => moveToRelativeMonth(1)}
-            style={({ pressed }) => [
-              styles.monthButton,
-              pressed ? styles.monthButtonPressed : null,
-            ]}
-          >
-            <Text style={styles.monthButtonLabel}>다음</Text>
-          </Pressable>
-        </View>
-
-        <View style={styles.header}>
-          <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
-          <Text style={styles.body}>
-            현재 월 grid, compact filter, quick jump, month-only bucket을 shared selector와 dataset source 위에서 렌더링합니다.
-          </Text>
-        </View>
+        <AppBar
+          leadingAction={{
+            accessibilityHint: '이전 달 일정을 봅니다.',
+            accessibilityLabel: `${formatMonthLabel(moveMonthKey(activeMonth, -1))}로 이동`,
+            label: '이전',
+            onPress: () => moveToRelativeMonth(-1),
+            testID: 'calendar-month-prev',
+          }}
+          subtitle={source.sourceLabel}
+          testID="calendar-app-bar"
+          title={formatMonthLabel(filteredSnapshot.month)}
+          titleTestID="calendar-month-title"
+          trailingActions={[
+            {
+              accessibilityHint: '다음 달 일정을 봅니다.',
+              accessibilityLabel: `${formatMonthLabel(moveMonthKey(activeMonth, 1))}로 이동`,
+              key: 'next',
+              label: '다음',
+              onPress: () => moveToRelativeMonth(1),
+              testID: 'calendar-month-next',
+            },
+          ]}
+        />
 
         {datasetRiskDisclosure ? (
           <InlineFeedbackNotice
@@ -410,11 +426,6 @@ export default function CalendarTabScreen() {
             title={datasetRiskDisclosure.title}
           />
         ) : null}
-
-        <View style={styles.sourceCard}>
-          <Text style={styles.sourceLabel}>Active source</Text>
-          <Text style={styles.sourceValue}>{source.sourceLabel}</Text>
-        </View>
 
         <View style={styles.sectionCard}>
           <View style={styles.calendarHeader}>
@@ -474,57 +485,31 @@ export default function CalendarTabScreen() {
             <Text style={styles.sectionMeta}>{formatFilterLabel(filterMode)}</Text>
           </View>
 
-          <View style={styles.controlRow}>
-            {([
-              ['all', '전체'],
-              ['releases', '발매'],
-              ['upcoming', '예정'],
-            ] as const).map(([mode, label]) => (
-              <Pressable
-                key={mode}
-                testID={`calendar-filter-${mode}`}
-                accessibilityHint="월간 캘린더 표시 범위를 바꿉니다."
-                accessibilityLabel={`${label} 필터`}
-                accessibilityRole="button"
-                accessibilityState={{ selected: filterMode === mode }}
-                onPress={() => handleFilterChange(mode)}
-                style={({ pressed }) => [
-                  styles.controlChip,
-                  filterMode === mode ? styles.controlChipActive : null,
-                  pressed ? styles.controlChipPressed : null,
-                ]}
-              >
-                <Text
-                  style={filterMode === mode ? styles.controlChipActiveLabel : styles.controlChipLabel}
-                >
-                  {label}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
+          <SegmentedControl
+            items={[
+              { key: 'all', label: '전체' },
+              { key: 'releases', label: '발매' },
+              { key: 'upcoming', label: '예정' },
+            ]}
+            onChange={(key) => handleFilterChange(key as CalendarFilterMode)}
+            selectedKey={filterMode}
+            testID="calendar-filter"
+          />
         </View>
 
-        <View style={styles.summaryGrid}>
-          <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>이번 달 발매</Text>
-            <Text style={styles.summaryValue}>{filteredSnapshot.releaseCount}</Text>
-          </View>
-          <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>예정 컴백</Text>
-            <Text style={styles.summaryValue}>{filteredSnapshot.upcomingCount}</Text>
-          </View>
-          <View style={styles.summaryCard}>
-            <Text style={styles.summaryLabel}>가장 가까운 일정</Text>
-            <Text style={styles.summaryValueSmall}>
-              {filteredSnapshot.nearestUpcoming?.displayGroup ?? '없음'}
-            </Text>
-            <Text style={styles.summaryMeta}>
-              {filteredSnapshot.nearestUpcoming
-                ? formatUpcomingLabel(filteredSnapshot.nearestUpcoming)
-                : 'exact 일정 없음'}
-            </Text>
-          </View>
-        </View>
+        <SummaryStrip
+          items={[
+            { key: 'release-count', label: '이번 달 발매', value: filteredSnapshot.releaseCount },
+            { key: 'upcoming-count', label: '예정 컴백', value: filteredSnapshot.upcomingCount },
+            {
+              key: 'nearest-upcoming',
+              label: '가장 가까운 일정',
+              value: filteredSnapshot.nearestUpcoming?.displayGroup ?? '없음',
+            },
+          ]}
+          layout="wrap"
+          testID="calendar-summary-strip"
+        />
 
         {monthGrid ? (
           <View style={styles.sectionCard}>
@@ -556,7 +541,21 @@ export default function CalendarTabScreen() {
                       );
                     }
 
-                    return <DayCell key={cell.isoDate} cell={cell} onPress={openDaySheet} />;
+                    return (
+                      <DayCell
+                        key={cell.isoDate}
+                        badges={cell.badges}
+                        dateNumber={cell.dayNumber}
+                        extraCount={cell.overflowCount}
+                        isCurrentMonth={cell.isCurrentMonth}
+                        isSelected={cell.isSelected}
+                        isToday={cell.isToday}
+                        isoDate={cell.isoDate}
+                        onPress={() => openDaySheet(cell.isoDate)}
+                        releaseCount={cell.releaseCount}
+                        upcomingCount={cell.upcomingCount}
+                      />
+                    );
                   })}
                 </View>
               ))}
@@ -595,7 +594,16 @@ export default function CalendarTabScreen() {
       </ScrollView>
 
       {selectedDay ? (
-        <DateDetailSheet onClose={closeDaySheet} selectedDay={selectedDay} visible={isSheetOpen} />
+        <DateDetailSheet
+          isOpen={isSheetOpen}
+          onClose={closeDaySheet}
+          onPressRelease={openReleaseDetail}
+          onPressTeam={openTeamDetailByGroup}
+          scheduledRows={selectedDay.exactUpcoming}
+          summary={formatMonthLabel(filteredSnapshot.month)}
+          title={selectedDay.label}
+          verifiedRows={selectedDay.releases}
+        />
       ) : null}
     </>
   );

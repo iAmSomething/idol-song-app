@@ -16,22 +16,16 @@ describe('TrackRow', () => {
     await act(async () => {
       tree = renderer.create(
         <TrackRow
-          buttons={[
-            {
-              accessibilityLabel: 'Spotify에서 BLACKHOLE 열기',
-              key: 'spotify',
-              label: 'Spotify',
-              onPress: spotifyPress,
-              testID: 'track-row-spotify',
-              tone: 'spotify',
-            },
-          ]}
-          testIDPrefix="track-row"
-          track={{
-            isTitleTrack: true,
-            order: 1,
-            title: 'BLACKHOLE',
+          isTitleTrack
+          order={1}
+          spotifyButton={{
+            accessibilityLabel: 'Spotify에서 BLACKHOLE 열기',
+            label: 'Spotify',
+            onPress: spotifyPress,
+            testID: 'track-row-spotify',
           }}
+          testIDPrefix="track-row"
+          title="BLACKHOLE"
         />,
       );
     });

@@ -3,6 +3,7 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  View,
 } from 'react-native';
 
 import { useAppTheme } from '../../tokens/theme';
@@ -15,9 +16,11 @@ export interface ServiceButtonProps {
   accessibilityLabel: string;
   disabled?: boolean;
   label: string;
+  mode?: 'canonical' | 'searchFallback';
   onPress?: () => void;
+  service?: ServiceButtonTone;
   testID?: string;
-  tone: ServiceButtonTone;
+  tone?: ServiceButtonTone;
 }
 
 function ServiceButtonComponent({
@@ -25,12 +28,17 @@ function ServiceButtonComponent({
   accessibilityLabel,
   disabled = false,
   label,
+  mode = 'canonical',
   onPress,
+  service,
   testID,
   tone,
 }: ServiceButtonProps) {
   const theme = useAppTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const resolvedService = service ?? tone ?? 'spotify';
+  const serviceMark =
+    resolvedService === 'spotify' ? 'SP' : resolvedService === 'youtubeMusic' ? 'YM' : 'MV';
 
   return (
     <Pressable
@@ -42,22 +50,30 @@ function ServiceButtonComponent({
       onPress={onPress}
       style={({ pressed }) => [
         styles.button,
-        styles[`${tone}Button`],
+        styles[`${resolvedService}Button`],
         pressed && !disabled ? styles.buttonPressed : null,
         disabled ? styles.buttonDisabled : null,
       ]}
       testID={testID}
     >
-      <Text
-        allowFontScaling
-        style={[
-          styles.buttonLabel,
-          styles[`${tone}ButtonLabel`],
-          disabled ? styles.buttonLabelDisabled : null,
-        ]}
-      >
-        {label}
-      </Text>
+      <View style={styles.buttonContent}>
+        <View style={[styles.mark, styles[`${resolvedService}Mark`]]}>
+          <Text allowFontScaling style={styles.markLabel}>
+            {serviceMark}
+          </Text>
+        </View>
+        <Text
+          allowFontScaling
+          style={[
+            styles.buttonLabel,
+            styles[`${resolvedService}ButtonLabel`],
+            disabled ? styles.buttonLabelDisabled : null,
+          ]}
+        >
+          {label}
+        </Text>
+      </View>
+      {mode === 'searchFallback' ? <Text style={styles.modeHint}>검색 결과</Text> : null}
     </Pressable>
   );
 }
@@ -72,6 +88,12 @@ function createStyles(theme: MobileTheme) {
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[12],
       borderRadius: theme.radius.button,
+      gap: theme.space[4],
+    },
+    buttonContent: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: theme.space[8],
     },
     buttonPressed: {
       opacity: 0.84,
@@ -84,6 +106,17 @@ function createStyles(theme: MobileTheme) {
       flexShrink: 1,
       textAlign: 'center',
     },
+    mark: {
+      width: 24,
+      height: 24,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 12,
+    },
+    markLabel: {
+      ...theme.typography.meta,
+      color: theme.colors.text.inverse,
+    },
     buttonLabelDisabled: {
       color: theme.colors.text.tertiary,
     },
@@ -93,11 +126,17 @@ function createStyles(theme: MobileTheme) {
     spotifyButtonLabel: {
       color: theme.colors.service.spotify.icon,
     },
+    spotifyMark: {
+      backgroundColor: theme.colors.service.spotify.icon,
+    },
     youtubeMusicButton: {
       backgroundColor: theme.colors.service.youtubeMusic.bg,
     },
     youtubeMusicButtonLabel: {
       color: theme.colors.service.youtubeMusic.icon,
+    },
+    youtubeMusicMark: {
+      backgroundColor: theme.colors.service.youtubeMusic.icon,
     },
     youtubeMvButton: {
       backgroundColor: theme.colors.service.youtubeMv.bg,
@@ -105,8 +144,14 @@ function createStyles(theme: MobileTheme) {
     youtubeMvButtonLabel: {
       color: theme.colors.service.youtubeMv.icon,
     },
+    youtubeMvMark: {
+      backgroundColor: theme.colors.service.youtubeMv.icon,
+    },
+    modeHint: {
+      ...theme.typography.meta,
+      color: theme.colors.text.tertiary,
+    },
   });
 }
 
 export const ServiceButton = memo(ServiceButtonComponent);
-

@@ -8,14 +8,20 @@ import {
   View,
 } from 'react-native';
 
-import { InlineFeedbackNotice } from '../feedback/FeedbackState';
+import { EmptyStateBlock } from '../feedback/FeedbackState';
+import { SheetHeader } from '../layout/SheetHeader';
+import { ReleaseSummaryRow } from '../release/ReleaseSummaryRow';
+import { UpcomingEventRow } from '../upcoming/UpcomingEventRow';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 import type {
-  CalendarSelectedDayModel,
   ReleaseSummaryModel,
   UpcomingEventModel,
 } from '../../types';
+
+function buildMonogram(value: string): string {
+  return value.slice(0, 2).toUpperCase();
+}
 
 function formatUpcomingLabel(event: UpcomingEventModel): string {
   if (event.datePrecision === 'exact' && event.scheduledDate) {
@@ -34,29 +40,36 @@ function formatReleaseRowMeta(release: ReleaseSummaryModel): string {
   return `${release.releaseDate} · ${kind}`;
 }
 
-function formatSelectedDaySummary(selectedDay: CalendarSelectedDayModel): string {
-  return `발매 ${selectedDay.releases.length} · 예정 ${selectedDay.exactUpcoming.length}`;
-}
-
 interface DateDetailSheetProps {
+  isOpen: boolean;
   onClose: () => void;
-  selectedDay: CalendarSelectedDayModel;
-  visible: boolean;
+  onPressRelease: (releaseId: string) => void;
+  onPressTeam: (group: string) => void;
+  scheduledRows: UpcomingEventModel[];
+  summary?: string;
+  title: string;
+  verifiedRows: ReleaseSummaryModel[];
 }
 
 function DateDetailSheetComponent({
+  isOpen,
   onClose,
-  selectedDay,
-  visible,
+  onPressRelease,
+  onPressTeam,
+  scheduledRows,
+  summary,
+  title,
+  verifiedRows,
 }: DateDetailSheetProps) {
   const theme = useAppTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const isEmpty = verifiedRows.length === 0 && scheduledRows.length === 0;
 
   return (
     <Modal
       transparent
       animationType="slide"
-      visible={visible}
+      visible={isOpen}
       onRequestClose={onClose}
     >
       <View style={styles.sheetOverlay}>
@@ -67,69 +80,100 @@ function DateDetailSheetComponent({
           onPress={onClose}
         />
         <View
-          accessibilityLabel={`${selectedDay.label} 일정 상세`}
+          accessibilityLabel={`${title} 일정 상세`}
           accessibilityViewIsModal
           accessible
           testID="calendar-bottom-sheet"
           style={[
             styles.sheetPanel,
-            selectedDay.isEmpty ? styles.sheetPanelEmpty : null,
+            isEmpty ? styles.sheetPanelEmpty : null,
           ]}
         >
-          <View style={styles.sheetHandle} />
-          <View style={styles.sheetHeader}>
-            <View style={styles.sheetHeaderCopy}>
-              <Text accessibilityRole="header" style={styles.sectionTitle}>
-                {selectedDay.label}
-              </Text>
-              <Text style={styles.sectionMeta}>{formatSelectedDaySummary(selectedDay)}</Text>
-            </View>
-            <Pressable
-              testID="calendar-sheet-close"
-              accessibilityLabel="날짜 상세 닫기"
-              accessibilityRole="button"
-              onPress={onClose}
-              style={styles.sheetCloseButton}
-            >
-              <Text style={styles.sheetCloseLabel}>닫기</Text>
-            </Pressable>
-          </View>
+          <SheetHeader
+            closeButtonTestID="calendar-sheet-close"
+            onClose={onClose}
+            showCloseButton
+            summary={summary}
+            title={title}
+          />
 
           <ScrollView
             style={styles.sheetScroll}
             contentContainerStyle={styles.sheetContent}
             bounces={false}
           >
-            {selectedDay.isEmpty ? (
-              <InlineFeedbackNotice body="이 날짜에는 등록된 일정이 없습니다." />
+            {isEmpty ? (
+              <EmptyStateBlock description="이 날짜에는 등록된 일정이 없습니다." message="일정 없음" />
             ) : (
               <>
-                {selectedDay.releases.length ? (
+                {verifiedRows.length ? (
                   <View style={styles.subsection}>
-                    <Text accessibilityRole="header" style={styles.subsectionTitle}>
-                      Verified releases
-                    </Text>
-                    {selectedDay.releases.map((release) => (
-                      <View key={release.id} style={styles.row}>
-                        <Text style={styles.rowTitle}>{release.displayGroup}</Text>
-                        <Text style={styles.rowBody}>{release.releaseTitle}</Text>
-                        <Text style={styles.rowMeta}>{formatReleaseRowMeta(release)}</Text>
-                      </View>
+                    <Text style={styles.subsectionTitle}>Verified releases</Text>
+                    {verifiedRows.map((release) => (
+                      <ReleaseSummaryRow
+                        key={release.id}
+                        chips={
+                          release.releaseKind
+                            ? [
+                                {
+                                  key: 'kind',
+                                  label: `${release.releaseKind}`.toUpperCase(),
+                                },
+                              ]
+                            : []
+                        }
+                        date={formatReleaseRowMeta(release)}
+                        primaryAction={{
+                          label: '팀 페이지',
+                          onPress: () => onPressTeam(release.group),
+                        }}
+                        secondaryAction={{
+                          label: '상세 보기',
+                          onPress: () => onPressRelease(release.id),
+                        }}
+                        team={{
+                          meta: release.contextTags[0],
+                          monogram: buildMonogram(release.displayGroup),
+                          name: release.displayGroup,
+                        }}
+                        title={release.releaseTitle}
+                      />
                     ))}
                   </View>
                 ) : null}
 
-                {selectedDay.exactUpcoming.length ? (
+                {scheduledRows.length ? (
                   <View style={styles.subsection}>
-                    <Text accessibilityRole="header" style={styles.subsectionTitle}>
-                      Scheduled comebacks
-                    </Text>
-                    {selectedDay.exactUpcoming.map((event) => (
-                      <View key={event.id} style={styles.row}>
-                        <Text style={styles.rowTitle}>{event.displayGroup}</Text>
-                        <Text style={styles.rowBody}>{event.releaseLabel ?? event.headline}</Text>
-                        <Text style={styles.rowMeta}>{formatUpcomingLabel(event)}</Text>
-                      </View>
+                    <Text style={styles.subsectionTitle}>Scheduled comebacks</Text>
+                    {scheduledRows.map((event) => (
+                      <UpcomingEventRow
+                        key={event.id}
+                        confidenceChip={event.confidence ? `신뢰 ${event.confidence}` : undefined}
+                        headline={event.releaseLabel ?? event.headline}
+                        primaryAction={{
+                          label: '팀 페이지',
+                          onPress: () => onPressTeam(event.group),
+                        }}
+                        scheduledDate={formatUpcomingLabel(event)}
+                        sourceLinks={
+                          event.sourceUrl
+                            ? [
+                                {
+                                  key: `${event.id}-source`,
+                                  label: '출처 보기',
+                                  onPress: () => undefined,
+                                  type: 'source',
+                                  url: event.sourceUrl,
+                                },
+                              ]
+                            : []
+                        }
+                        statusChip={event.status ?? '예정'}
+                        team={{
+                          monogram: buildMonogram(event.displayGroup),
+                          name: event.displayGroup,
+                        }}
+                      />
                     ))}
                   </View>
                 ) : null}
@@ -165,36 +209,6 @@ function createStyles(theme: MobileTheme) {
     sheetPanelEmpty: {
       minHeight: 260,
     },
-    sheetHandle: {
-      alignSelf: 'center',
-      width: 52,
-      height: 4,
-      borderRadius: theme.radius.chip,
-      backgroundColor: theme.colors.border.default,
-    },
-    sheetHeader: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      gap: theme.space[12],
-      alignItems: 'flex-start',
-    },
-    sheetHeaderCopy: {
-      flex: 1,
-      gap: theme.space[4],
-    },
-    sheetCloseButton: {
-      minHeight: 44,
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[8],
-      borderRadius: theme.radius.button,
-      backgroundColor: theme.colors.surface.interactive,
-    },
-    sheetCloseLabel: {
-      ...theme.typography.buttonService,
-      color: theme.colors.text.primary,
-      textAlign: 'center',
-      flexShrink: 1,
-    },
     sheetScroll: {
       flexGrow: 0,
     },
@@ -202,43 +216,14 @@ function createStyles(theme: MobileTheme) {
       gap: theme.space[16],
       paddingBottom: theme.space[16],
     },
-    sectionTitle: {
-      ...theme.typography.sectionTitle,
-      color: theme.colors.text.primary,
-    },
-    sectionMeta: {
-      ...theme.typography.meta,
-      color: theme.colors.text.secondary,
-    },
     subsection: {
       gap: theme.space[12],
     },
     subsectionTitle: {
-      ...theme.typography.cardTitle,
-      color: theme.colors.text.primary,
-    },
-    row: {
-      gap: theme.space[4],
-      padding: theme.space[12],
-      borderRadius: theme.radius.card,
-      backgroundColor: theme.colors.surface.base,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-    },
-    rowTitle: {
-      ...theme.typography.cardTitle,
-      color: theme.colors.text.primary,
-    },
-    rowBody: {
-      ...theme.typography.body,
-      color: theme.colors.text.secondary,
-    },
-    rowMeta: {
       ...theme.typography.meta,
-      color: theme.colors.text.tertiary,
+      color: theme.colors.text.secondary,
     },
   });
 }
 
 export const DateDetailSheet = memo(DateDetailSheetComponent);
-
