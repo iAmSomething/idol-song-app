@@ -40,6 +40,14 @@
 - build version, dataset version, commit hash를 debug surface에서 확인할 수 있으면 좋다.
 - 일반 사용자 메인 화면에는 운영 지표를 노출하지 않는다.
 
+## 7.1 Native runtime identifiers
+- `development`, `preview`, `production`은 서로 다른 native identifier를 가진다.
+- 최소 분리 대상:
+  - iOS `bundleIdentifier`
+  - Android `package`
+- preview QA runtime은 Expo Go가 아니라 `expo-dev-client`가 포함된 standalone native simulator/device build로도 열 수 있어야 한다.
+- native identifier가 없어서 `expo prebuild` / `expo run:*`가 막히면 release-readiness blocker다.
+
 ## 8. Failure policy
 - remote dataset unavailable이면 last-known-good 또는 bundled dataset fallback이 필요하다.
 - env misconfiguration은 app crash보다 safe degraded mode로 처리해야 한다.

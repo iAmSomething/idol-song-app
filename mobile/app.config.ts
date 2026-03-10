@@ -8,6 +8,8 @@ type ProfileConfig = {
   name: string;
   slug: string;
   scheme: string;
+  iosBundleIdentifier: string;
+  androidPackage: string;
   dataSourceMode: DataSourceMode;
   loggingLevel: LoggingLevel;
   featureGates: {
@@ -52,6 +54,8 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
     name: 'Idol Song App (Dev)',
     slug: 'idol-song-app-mobile-dev',
     scheme: 'idolsongapp-dev',
+    iosBundleIdentifier: 'com.anonymous.idolsongappmobile.dev',
+    androidPackage: 'com.anonymous.idolsongappmobile.dev',
     dataSourceMode: 'bundled-static',
     loggingLevel: 'verbose',
     featureGates: {
@@ -66,6 +70,8 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
     name: 'Idol Song App (Preview)',
     slug: 'idol-song-app-mobile-preview',
     scheme: 'idolsongapp-preview',
+    iosBundleIdentifier: 'com.anonymous.idolsongappmobile.preview',
+    androidPackage: 'com.anonymous.idolsongappmobile.preview',
     dataSourceMode: 'backend-api',
     loggingLevel: 'debug',
     featureGates: {
@@ -80,6 +86,8 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
     name: 'Idol Song App',
     slug: 'idol-song-app-mobile',
     scheme: 'idolsongapp',
+    iosBundleIdentifier: 'com.anonymous.idolsongappmobile',
+    androidPackage: 'com.anonymous.idolsongappmobile',
     dataSourceMode: 'backend-api',
     loggingLevel: 'error',
     featureGates: {
@@ -215,9 +223,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     ios: {
       supportsTablet: true,
+      bundleIdentifier: profileConfig.iosBundleIdentifier,
     },
     android: {
       predictiveBackGestureEnabled: false,
+      package: profileConfig.androidPackage,
     },
     web: {
       bundler: 'metro',
