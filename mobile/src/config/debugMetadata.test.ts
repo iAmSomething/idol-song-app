@@ -5,8 +5,7 @@ import { resetAnalyticsEvents, trackAnalyticsEvent } from '../services/analytics
 const previewRuntimeConfig: MobileRuntimeConfig = {
   profile: 'preview',
   dataSource: {
-    mode: 'preview-static',
-    remoteDatasetUrl: 'https://example.com/dataset.json',
+    mode: 'backend-api',
     datasetVersion: 'preview-v1',
   },
   services: {
@@ -19,7 +18,7 @@ const previewRuntimeConfig: MobileRuntimeConfig = {
   featureGates: {
     radar: true,
     analytics: false,
-    remoteRefresh: true,
+    remoteRefresh: false,
     mvEmbed: true,
     shareActions: true,
   },
@@ -80,8 +79,8 @@ describe('debug metadata helpers', () => {
       buildVersion: '0.1.0',
       datasetVersion: 'preview-v1',
       commitSha: 'abc123',
-      dataSourceMode: 'preview-static',
-      remoteDatasetUrl: 'https://example.com/dataset.json',
+      dataSourceMode: 'backend-api',
+      apiBaseUrl: 'https://example.com/api',
       analyticsEnabled: false,
       radarEnabled: true,
       analyticsEventCount: 1,
@@ -95,11 +94,6 @@ describe('debug metadata helpers', () => {
       isDebugMetadataAvailable({
         ...previewRuntimeConfig,
         profile: 'production',
-        dataSource: {
-          ...previewRuntimeConfig.dataSource,
-          mode: 'production-static',
-          remoteDatasetUrl: null,
-        },
       }),
     ).toBe(false);
   });

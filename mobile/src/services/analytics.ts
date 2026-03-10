@@ -1,6 +1,6 @@
 import type { MobileRuntimeConfig } from '../config/runtime';
 import { getRuntimeConfig } from '../config/runtime';
-import type { ActiveMobileDataset } from './activeDataset';
+import type { ScreenDataSource } from '../features/screenDataSource';
 
 import type {
   MusicService,
@@ -141,7 +141,7 @@ export function resetAnalyticsEvents(): void {
 
 export function trackDatasetDegraded(
   surface: AnalyticsSurface,
-  source: Pick<ActiveMobileDataset, 'activeSource' | 'issues' | 'runtimeState'>,
+  source: Pick<ScreenDataSource, 'activeSource' | 'issues' | 'runtimeState'>,
   runtimeConfig: MobileRuntimeConfig = getRuntimeConfig(),
   now?: () => string,
 ): boolean {

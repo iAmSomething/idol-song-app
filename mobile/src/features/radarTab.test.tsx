@@ -13,6 +13,16 @@ import { trackDatasetDegraded, trackDatasetLoadFailed } from '../services/analyt
 import { cloneBundledDatasetFixture } from '../services/bundledDatasetFixture';
 import { createBundledDatasetSelection } from '../services/datasetSource';
 
+jest.mock('../config/runtime', () => {
+  const actual = jest.requireActual('../config/runtime');
+
+  return {
+    ...actual,
+    getRuntimeConfigState: jest.fn(),
+    getRuntimeConfig: jest.fn(),
+  };
+});
+
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({}));
   const push = jest.fn();
@@ -67,6 +77,10 @@ const mockLoadActiveMobileDataset = jest.mocked(loadActiveMobileDataset);
 const mockSelectRadarSnapshot = jest.mocked(selectRadarSnapshot);
 const mockTrackDatasetDegraded = jest.mocked(trackDatasetDegraded);
 const mockTrackDatasetLoadFailed = jest.mocked(trackDatasetLoadFailed);
+const runtimeModule = jest.requireMock('../config/runtime') as {
+  getRuntimeConfigState: jest.Mock;
+  getRuntimeConfig: jest.Mock;
+};
 
 function createRuntimeState(
   overrides: Partial<RuntimeConfigState> = {},
@@ -78,7 +92,6 @@ function createRuntimeState(
       profile: 'development',
       dataSource: {
         mode: 'bundled-static',
-        remoteDatasetUrl: null,
         datasetVersion: 'fixture-v1',
       },
       services: {
@@ -107,7 +120,6 @@ function createRuntimeState(
 function createSource(overrides: Partial<ActiveMobileDataset> = {}): ActiveMobileDataset {
   return {
     activeSource: 'bundled-static',
-    cachedArtifactIds: [],
     dataset: cloneBundledDatasetFixture(),
     freshness: {
       rollingReferenceAt: null,
@@ -142,6 +154,8 @@ describe('mobile radar tab', () => {
     __mock.useLocalSearchParams.mockReturnValue({});
     __mock.push.mockClear();
     __mock.setParams.mockClear();
+    runtimeModule.getRuntimeConfigState.mockReturnValue(createRuntimeState());
+    runtimeModule.getRuntimeConfig.mockReturnValue(createRuntimeState().config);
     mockLoadActiveMobileDataset.mockClear();
     mockSelectRadarSnapshot.mockClear();
     mockTrackDatasetDegraded.mockClear();
@@ -173,6 +187,17 @@ describe('mobile radar tab', () => {
         runtimeState: createRuntimeState({ mode: 'degraded' }),
         issues: ['Preview remote dataset is unavailable.'],
         sourceLabel: 'Bundled static dataset',
+      }),
+    );
+    runtimeModule.getRuntimeConfigState.mockReturnValue(
+      createRuntimeState({
+        mode: 'degraded',
+        issues: [
+          {
+            kind: 'invalid_runtime_config',
+            message: 'Preview remote dataset is unavailable.',
+          },
+        ],
       }),
     );
 

@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Keyboard,
   Linking,
@@ -34,6 +34,10 @@ import {
   selectSearchResults,
   selectTeamSummaryBySlug,
 } from '../../src/selectors';
+import { loadActiveMobileDataset } from '../../src/services/activeDataset';
+import { adaptBackendSearchResults } from '../../src/services/backendDisplayAdapters';
+import type { BackendReadClient } from '../../src/services/backendReadClient';
+import { cloneBundledDatasetFixture } from '../../src/services/bundledDatasetFixture';
 import {
   trackAnalyticsEvent,
   type SearchSubmitSource,
@@ -194,17 +198,61 @@ export default function SearchTabScreen() {
   const routeState = useMemo(() => resolveSearchRouteState(params), [params]);
 
   const [reloadCount, setReloadCount] = useState(0);
-  const datasetState = useActiveDatasetScreen({
-    surface: 'search',
-    reloadKey: reloadCount,
-    fallbackErrorMessage: 'Search dataset could not be loaded right now.',
-  });
   const [query, setQuery] = useState(routeState.query);
   const [activeSegment, setActiveSegment] = useState<SearchSegment>(routeState.activeSegment);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const [recentQueries, setRecentQueries] = useState<string[]>([]);
   const deferredQuery = useDeferredValue(query);
+  const bundledSelectorContext = useMemo(
+    () => createSelectorContext(cloneBundledDatasetFixture()),
+    [],
+  );
+  const loadBundledResults = useCallback(async () => {
+    const normalizedQuery = deferredQuery.trim();
+    if (!normalizedQuery) {
+      return {
+        query: '',
+        entities: [],
+        releases: [],
+        upcoming: [],
+      };
+    }
+
+    const activeDataset = await loadActiveMobileDataset();
+    return selectSearchResults(createSelectorContext(activeDataset.dataset), normalizedQuery);
+  }, [deferredQuery]);
+  const loadBackendResults = useCallback(
+    async (client: BackendReadClient) => {
+      const normalizedQuery = deferredQuery.trim();
+      if (!normalizedQuery) {
+        return {
+          data: {
+            query: '',
+            entities: [],
+            releases: [],
+            upcoming: [],
+          },
+          generatedAt: null,
+        };
+      }
+
+      const response = await client.getSearch(normalizedQuery);
+      return {
+        data: adaptBackendSearchResults(normalizedQuery, response.data),
+        generatedAt: response.meta?.generatedAt ?? null,
+      };
+    },
+    [deferredQuery],
+  );
+  const datasetState = useActiveDatasetScreen({
+    surface: 'search',
+    reloadKey: reloadCount,
+    cacheKey: `search:${deferredQuery.trim().toLowerCase() || 'empty'}`,
+    fallbackErrorMessage: 'Search dataset could not be loaded right now.',
+    loadBundled: loadBundledResults,
+    loadBackend: loadBackendResults,
+  });
 
   useEffect(() => {
     setQuery(routeState.query);
@@ -227,68 +275,44 @@ export default function SearchTabScreen() {
     };
   }, [reloadCount]);
 
-  const selectorContext = useMemo(() => {
-    if (datasetState.kind !== 'ready') {
-      return null;
-    }
-
-    return createSelectorContext(datasetState.source.dataset);
-  }, [datasetState]);
   const datasetRiskDisclosure =
     datasetState.kind === 'ready'
       ? buildDatasetRiskDisclosure(datasetState.source, '검색', 'search-dataset-risk-notice')
       : null;
-
-  const results = useMemo(() => {
-    if (!selectorContext) {
-      return null;
-    }
-
-    return selectSearchResults(selectorContext, deferredQuery);
-  }, [deferredQuery, selectorContext]);
+  const results = datasetState.kind === 'ready' ? datasetState.source.data : null;
 
   const suggestedTeams = useMemo(() => {
-    if (!selectorContext) {
-      return [];
-    }
-
-    return selectorContext.dataset.artistProfiles
-      .map((profile) => selectTeamSummaryBySlug(selectorContext, profile.slug))
+    return bundledSelectorContext.dataset.artistProfiles
+      .map((profile) => selectTeamSummaryBySlug(bundledSelectorContext, profile.slug))
       .filter((team): team is TeamSummaryModel => team !== null)
       .sort((left, right) => left.displayName.localeCompare(right.displayName))
       .slice(0, 4);
-  }, [selectorContext]);
+  }, [bundledSelectorContext]);
 
   const teamSlugByGroup = useMemo(() => {
     const entries = new Map<string, string>();
 
-    if (!selectorContext) {
-      return entries;
-    }
-
-    for (const profile of selectorContext.dataset.artistProfiles) {
+    for (const profile of bundledSelectorContext.dataset.artistProfiles) {
       entries.set(profile.group, profile.slug);
+      entries.set(profile.slug, profile.slug);
     }
 
     return entries;
-  }, [selectorContext]);
+  }, [bundledSelectorContext]);
 
   const teamSummaryByGroup = useMemo(() => {
     const entries = new Map<string, TeamSummaryModel>();
 
-    if (!selectorContext) {
-      return entries;
-    }
-
-    for (const profile of selectorContext.dataset.artistProfiles) {
-      const team = selectTeamSummaryBySlug(selectorContext, profile.slug);
+    for (const profile of bundledSelectorContext.dataset.artistProfiles) {
+      const team = selectTeamSummaryBySlug(bundledSelectorContext, profile.slug);
       if (team) {
         entries.set(profile.group, team);
+        entries.set(profile.slug, team);
       }
     }
 
     return entries;
-  }, [selectorContext]);
+  }, [bundledSelectorContext]);
 
   useEffect(() => {
     const currentRouteParams = buildSearchRouteParams({
@@ -320,7 +344,8 @@ export default function SearchTabScreen() {
       upcoming: number;
     };
   } {
-    if (!selectorContext) {
+    const normalized = nextQuery.trim();
+    if (!normalized) {
       return {
         hadResults: false,
         resultCounts: {
@@ -331,11 +356,14 @@ export default function SearchTabScreen() {
       };
     }
 
-    const nextResults = selectSearchResults(selectorContext, nextQuery);
+    const nextResults =
+      normalized === results?.query
+        ? results
+        : selectSearchResults(bundledSelectorContext, normalized);
     const resultCounts = {
-      entities: nextResults.entities.length,
-      releases: nextResults.releases.length,
-      upcoming: nextResults.upcoming.length,
+      entities: nextResults?.entities.length ?? 0,
+      releases: nextResults?.releases.length ?? 0,
+      upcoming: nextResults?.upcoming.length ?? 0,
     };
 
     return {

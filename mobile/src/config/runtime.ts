@@ -2,19 +2,18 @@ import Constants from 'expo-constants';
 
 export type MobileProfile = 'development' | 'preview' | 'production';
 export type LoggingLevel = 'verbose' | 'debug' | 'error';
-export type DataSourceMode = 'bundled-static' | 'preview-static' | 'production-static';
+export type DataSourceMode = 'bundled-static' | 'backend-api';
 
 const EXPECTED_MODE_BY_PROFILE: Record<MobileProfile, DataSourceMode> = {
   development: 'bundled-static',
-  preview: 'preview-static',
-  production: 'production-static',
+  preview: 'backend-api',
+  production: 'backend-api',
 };
 
 export type MobileRuntimeConfig = {
   profile: MobileProfile;
   dataSource: {
     mode: DataSourceMode;
-    remoteDatasetUrl: string | null;
     datasetVersion: string | null;
   };
   services: {
@@ -108,7 +107,7 @@ function readLoggingLevel(value: unknown): LoggingLevel {
 function readDataSourceMode(value: unknown): DataSourceMode {
   const fieldValue = readString(value, 'dataSource.mode');
 
-  if (fieldValue === 'bundled-static' || fieldValue === 'preview-static' || fieldValue === 'production-static') {
+  if (fieldValue === 'bundled-static' || fieldValue === 'backend-api') {
     return fieldValue;
   }
 
@@ -163,7 +162,6 @@ export function parseRuntimeConfig(input: unknown): MobileRuntimeConfig {
     profile: readProfile(input.profile),
     dataSource: {
       mode: readDataSourceMode(dataSource.mode),
-      remoteDatasetUrl: readOptionalUrl(dataSource.remoteDatasetUrl, 'dataSource.remoteDatasetUrl'),
       datasetVersion: readString(dataSource.datasetVersion, 'dataSource.datasetVersion', false),
     },
     services: {
@@ -186,20 +184,16 @@ export function parseRuntimeConfig(input: unknown): MobileRuntimeConfig {
     },
   };
 
-  if (config.featureGates.remoteRefresh && !config.dataSource.remoteDatasetUrl) {
-    throw new Error('Runtime config requires dataSource.remoteDatasetUrl when remoteRefresh is enabled.');
-  }
-
   if (config.dataSource.mode !== EXPECTED_MODE_BY_PROFILE[config.profile]) {
     throw new Error('Runtime config dataSource.mode does not match the active mobile profile.');
   }
 
-  if (config.profile !== 'preview' && config.featureGates.remoteRefresh) {
-    throw new Error('Runtime config only allows remoteRefresh in the preview profile.');
+  if (config.featureGates.remoteRefresh) {
+    throw new Error('Runtime config no longer supports featureGates.remoteRefresh.');
   }
 
-  if (config.profile !== 'preview' && config.dataSource.remoteDatasetUrl) {
-    throw new Error('Runtime config only allows dataSource.remoteDatasetUrl in the preview profile.');
+  if (config.profile !== 'development' && config.dataSource.mode === 'backend-api' && !config.services.apiBaseUrl) {
+    throw new Error('Runtime config requires services.apiBaseUrl when backend-api mode is enabled.');
   }
 
   if (config.featureGates.analytics && !config.services.analyticsWriteKey) {
@@ -225,7 +219,6 @@ function buildDegradedRuntimeConfig(
     profile,
     dataSource: {
       mode: EXPECTED_MODE_BY_PROFILE[profile],
-      remoteDatasetUrl: null,
       datasetVersion: null,
     },
     services: {

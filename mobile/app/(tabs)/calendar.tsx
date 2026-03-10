@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Linking,
   Pressable,
@@ -38,6 +38,12 @@ import {
 } from '../../src/features/routeState';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectCalendarMonthSnapshot } from '../../src/selectors';
+import { loadActiveMobileDataset } from '../../src/services/activeDataset';
+import {
+  adaptBackendCalendarMonth,
+} from '../../src/services/backendDisplayAdapters';
+import type { BackendReadClient } from '../../src/services/backendReadClient';
+import { cloneBundledDatasetFixture } from '../../src/services/bundledDatasetFixture';
 import {
   openServiceHandoff,
   resolveServiceHandoff,
@@ -228,10 +234,28 @@ export default function CalendarTabScreen() {
   const [viewMode, setViewMode] = useState<CalendarViewMode>(routeState.viewMode);
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
+  const bundledProfiles = useMemo(() => cloneBundledDatasetFixture().artistProfiles, []);
+  const loadBundledSnapshot = useCallback(async () => {
+    const activeDataset = await loadActiveMobileDataset();
+    return selectCalendarMonthSnapshot(activeDataset.dataset, activeMonth, todayIsoDate);
+  }, [activeMonth, todayIsoDate]);
+  const loadBackendSnapshot = useCallback(
+    async (client: BackendReadClient) => {
+      const response = await client.getCalendarMonth(activeMonth);
+      return {
+        data: adaptBackendCalendarMonth(activeMonth, response.data),
+        generatedAt: response.meta?.generatedAt ?? null,
+      };
+    },
+    [activeMonth],
+  );
   const datasetState = useActiveDatasetScreen({
     surface: 'calendar',
     reloadKey: reloadCount,
+    cacheKey: `calendar:${activeMonth}:${todayIsoDate}`,
     fallbackErrorMessage: 'Calendar dataset could not be loaded right now.',
+    loadBundled: loadBundledSnapshot,
+    loadBackend: loadBackendSnapshot,
   });
 
   useEffect(() => {
@@ -250,10 +274,7 @@ export default function CalendarTabScreen() {
   ]);
 
   const source = datasetState.kind === 'ready' ? datasetState.source : null;
-  const snapshot = useMemo(
-    () => (source ? selectCalendarMonthSnapshot(source.dataset, activeMonth, todayIsoDate) : null),
-    [activeMonth, source, todayIsoDate],
-  );
+  const snapshot = source?.data ?? null;
   const filteredSnapshot = useMemo(
     () => (snapshot ? applyCalendarFilter(snapshot, filterMode) : null),
     [filterMode, snapshot],
@@ -272,16 +293,13 @@ export default function CalendarTabScreen() {
   const groupSlugByGroup = useMemo(() => {
     const entries = new Map<string, string>();
 
-    if (!source) {
-      return entries;
-    }
-
-    for (const profile of source.dataset.artistProfiles) {
+    for (const profile of bundledProfiles) {
       entries.set(profile.group, profile.slug);
+      entries.set(profile.slug, profile.slug);
     }
 
     return entries;
-  }, [source]);
+  }, [bundledProfiles]);
 
   useEffect(() => {
     if (!filteredSnapshot) {

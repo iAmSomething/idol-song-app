@@ -2,7 +2,7 @@ import type { ExpoConfig, ConfigContext } from 'expo/config';
 
 type MobileProfile = 'development' | 'preview' | 'production';
 type LoggingLevel = 'verbose' | 'debug' | 'error';
-type DataSourceMode = 'bundled-static' | 'preview-static' | 'production-static';
+type DataSourceMode = 'bundled-static' | 'backend-api';
 
 type ProfileConfig = {
   name: string;
@@ -23,7 +23,6 @@ type RuntimeConfig = {
   profile: MobileProfile;
   dataSource: {
     mode: DataSourceMode;
-    remoteDatasetUrl: string | null;
     datasetVersion: string | null;
   };
   services: {
@@ -67,7 +66,7 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
     name: 'Idol Song App (Preview)',
     slug: 'idol-song-app-mobile-preview',
     scheme: 'idolsongapp-preview',
-    dataSourceMode: 'preview-static',
+    dataSourceMode: 'backend-api',
     loggingLevel: 'debug',
     featureGates: {
       radar: true,
@@ -81,7 +80,7 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
     name: 'Idol Song App',
     slug: 'idol-song-app-mobile',
     scheme: 'idolsongapp',
-    dataSourceMode: 'production-static',
+    dataSourceMode: 'backend-api',
     loggingLevel: 'error',
     featureGates: {
       radar: true,
@@ -151,7 +150,6 @@ function assertHttpUrl(value: string | null, envName: string): string | null {
 
 function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig, env: EnvMap): RuntimeConfig {
   const apiBaseUrl = assertHttpUrl(optionalString(env.EXPO_PUBLIC_API_BASE_URL), 'EXPO_PUBLIC_API_BASE_URL');
-  const remoteDatasetUrl = assertHttpUrl(optionalString(env.EXPO_PUBLIC_REMOTE_DATASET_URL), 'EXPO_PUBLIC_REMOTE_DATASET_URL');
   const analyticsWriteKey = optionalString(env.EXPO_PUBLIC_ANALYTICS_WRITE_KEY);
   const datasetVersion = optionalString(env.EXPO_PUBLIC_DATASET_VERSION);
   const buildVersion = optionalString(env.EXPO_PUBLIC_BUILD_VERSION) ?? '0.1.0';
@@ -165,16 +163,12 @@ function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig
     shareActions: parseBooleanOverride(env.EXPO_PUBLIC_ENABLE_SHARE_ACTIONS, profileConfig.featureGates.shareActions),
   };
 
-  if (featureGates.remoteRefresh && !remoteDatasetUrl) {
-    throw new Error('EXPO_PUBLIC_REMOTE_DATASET_URL is required when EXPO_PUBLIC_ENABLE_REMOTE_REFRESH is enabled.');
+  if (featureGates.remoteRefresh) {
+    throw new Error('EXPO_PUBLIC_ENABLE_REMOTE_REFRESH is no longer supported.');
   }
 
-  if (profile !== 'preview' && featureGates.remoteRefresh) {
-    throw new Error('EXPO_PUBLIC_ENABLE_REMOTE_REFRESH is only supported for APP_ENV=preview.');
-  }
-
-  if (profile !== 'preview' && remoteDatasetUrl) {
-    throw new Error('EXPO_PUBLIC_REMOTE_DATASET_URL is only supported for APP_ENV=preview.');
+  if (profile !== 'development' && profileConfig.dataSourceMode === 'backend-api' && !apiBaseUrl) {
+    throw new Error('EXPO_PUBLIC_API_BASE_URL is required for preview/production mobile builds.');
   }
 
   if (featureGates.analytics && !analyticsWriteKey) {
@@ -185,7 +179,6 @@ function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig
     profile,
     dataSource: {
       mode: profileConfig.dataSourceMode,
-      remoteDatasetUrl,
       datasetVersion,
     },
     services: {

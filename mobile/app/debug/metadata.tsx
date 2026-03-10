@@ -14,7 +14,7 @@ export default function DebugMetadataScreen() {
     ['Dataset version', metadata.datasetVersion ?? 'Unavailable'],
     ['Commit hash', metadata.commitSha ?? 'Unavailable'],
     ['Data source mode', metadata.dataSourceMode],
-    ['Remote dataset URL', metadata.remoteDatasetUrl ?? 'Bundled-only'],
+    ['API base URL', metadata.apiBaseUrl ?? 'Bundled-only'],
     ['Analytics enabled', metadata.analyticsEnabled ? 'Yes' : 'No'],
     ['Analytics event count', `${metadata.analyticsEventCount}`],
     ['Latest analytics event', metadata.latestAnalyticsEvent ?? 'None'],

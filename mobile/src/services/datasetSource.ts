@@ -1,7 +1,7 @@
 import { getRuntimeConfig, type MobileRuntimeConfig } from '../config/runtime';
 
 export type DatasetContractId = 'idol-song-mobile-static-v1';
-export type DatasetSourceKind = 'bundled-static' | 'preview-remote';
+export type DatasetSourceKind = 'bundled-static';
 export type DatasetArtifactId =
   | 'artistProfiles'
   | 'releases'
@@ -31,17 +31,10 @@ type DatasetSelectionBase = {
 
 export type BundledDatasetSelection = DatasetSelectionBase & {
   kind: 'bundled-static';
-  reason: 'profile_default' | 'preview_remote_disabled' | 'runtime_degraded' | 'remote_unavailable';
+  reason: 'profile_default' | 'backend_api_mode' | 'runtime_degraded';
   bundledBasePath: string;
 };
-
-export type PreviewRemoteDatasetSelection = DatasetSelectionBase & {
-  kind: 'preview-remote';
-  reason: 'preview_remote_enabled';
-  remoteDatasetUrl: string;
-};
-
-export type DatasetSelection = BundledDatasetSelection | PreviewRemoteDatasetSelection;
+export type DatasetSelection = BundledDatasetSelection;
 
 export const DATASET_CONTRACT_ID: DatasetContractId = 'idol-song-mobile-static-v1';
 export const BUNDLED_DATASET_BASE_PATH = 'mobile/assets/datasets/v1';
@@ -114,40 +107,13 @@ export function createBundledDatasetSelection(
   };
 }
 
-function canUsePreviewRemote(config: MobileRuntimeConfig): config is MobileRuntimeConfig & {
-  profile: 'preview';
-  dataSource: MobileRuntimeConfig['dataSource'] & { remoteDatasetUrl: string };
-} {
-  return (
-    config.profile === 'preview' &&
-    config.featureGates.remoteRefresh &&
-    typeof config.dataSource.remoteDatasetUrl === 'string'
-  );
-}
-
 export function selectDatasetSource(
   runtimeConfig: MobileRuntimeConfig = getRuntimeConfig(),
 ): DatasetSelection {
-  if (canUsePreviewRemote(runtimeConfig)) {
-    return {
-      kind: 'preview-remote',
-      reason: 'preview_remote_enabled',
-      contractId: DATASET_CONTRACT_ID,
-      datasetVersion: runtimeConfig.dataSource.datasetVersion,
-      mixingAllowed: false,
-      remoteDatasetUrl: runtimeConfig.dataSource.remoteDatasetUrl,
-      artifacts: DATASET_ARTIFACTS,
-    };
-  }
-
   return createBundledDatasetSelection(
     runtimeConfig.dataSource.datasetVersion,
-    runtimeConfig.profile === 'preview' ? 'preview_remote_disabled' : 'profile_default',
+    runtimeConfig.dataSource.mode === 'backend-api' ? 'backend_api_mode' : 'profile_default',
   );
-}
-
-export function isRemoteDatasetSelection(selection: DatasetSelection): selection is PreviewRemoteDatasetSelection {
-  return selection.kind === 'preview-remote';
 }
 
 export function isBundledDatasetSelection(selection: DatasetSelection): selection is BundledDatasetSelection {

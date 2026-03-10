@@ -42,12 +42,12 @@ const bundledSelection: DatasetSelection = {
 };
 
 const previewSelection: DatasetSelection = {
-  kind: 'preview-remote',
-  reason: 'preview_remote_enabled',
+  kind: 'bundled-static',
+  reason: 'backend_api_mode',
   contractId: 'idol-song-mobile-static-v1',
   datasetVersion: 'preview-v2',
   mixingAllowed: false,
-  remoteDatasetUrl: 'https://example.com/dataset.json',
+  bundledBasePath: 'mobile/assets/datasets/v1',
   artifacts: [],
 };
 
@@ -69,7 +69,7 @@ describe('mobile storage foundations', () => {
     );
   });
 
-  test('round-trips dataset cache entries and isolates source selections', async () => {
+  test('round-trips dataset cache entries and isolates dataset versions', async () => {
     await writeDatasetCacheEntry('releases', { rows: 10 }, bundledSelection, '2026-03-08T00:00:00.000Z');
     await writeDatasetCacheEntry('releases', { rows: 12 }, previewSelection, '2026-03-08T01:00:00.000Z');
 
