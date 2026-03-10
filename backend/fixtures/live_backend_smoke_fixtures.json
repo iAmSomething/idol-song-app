@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "fixtures": [
+    {
+      "key": "search-yena",
+      "surface": "search",
+      "request": {
+        "query": "최예나"
+      },
+      "expect": {
+        "entity_slug": "yena",
+        "display_name": "YENA"
+      }
+    },
+    {
+      "key": "calendar-2026-03",
+      "surface": "calendar_month",
+      "request": {
+        "month": "2026-03"
+      },
+      "expect": {
+        "verified_release": {
+          "entity_slug": "tunexx",
+          "release_title": "SET BY US ONLY",
+          "date": "2026-03-03"
+        },
+        "exact_upcoming": {
+          "entity_slug": "yena",
+          "scheduled_date": "2026-03-11"
+        },
+        "require_month_only_bucket": true
+      }
+    },
+    {
+      "key": "radar-default",
+      "surface": "radar",
+      "request": {},
+      "expect": {
+        "long_gap_entity_slug": "weeekly",
+        "rookie_entity_slug": "allday-project"
+      }
+    },
+    {
+      "key": "entity-yena",
+      "surface": "entity_detail",
+      "request": {
+        "entity_slug": "yena"
+      },
+      "expect": {
+        "entity_slug": "yena",
+        "display_name": "YENA",
+        "next_upcoming_date": "2026-03-11",
+        "official_youtube_required": true
+      }
+    },
+    {
+      "key": "release-ive-revive-plus",
+      "surface": "release_detail",
+      "request": {
+        "entity_slug": "ive",
+        "title": "REVIVE+",
+        "date": "2026-02-23",
+        "stream": "album"
+      },
+      "expect": {
+        "entity_slug": "ive",
+        "release_title": "REVIVE+",
+        "release_date": "2026-02-23",
+        "stream": "album",
+        "title_tracks": [
+          "BLACKHOLE",
+          "BANG BANG"
+        ],
+        "youtube_music_status": "manual_override"
+      }
+    }
+  ]
+}
