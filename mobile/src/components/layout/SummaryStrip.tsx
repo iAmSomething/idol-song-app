@@ -2,6 +2,7 @@ import React, { memo, useMemo } from 'react';
 import {
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from 'react-native';
 
@@ -26,16 +27,18 @@ function SummaryStripComponent({
   testID,
 }: SummaryStripProps) {
   const theme = useAppTheme();
+  const { width } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const useFullWidthCards = layout === 'wrap' && width <= 430;
 
   return (
     <View style={[styles.row, layout === 'wrap' ? styles.wrapRow : null]} testID={testID}>
       {items.map((item) => (
-        <View key={item.key} style={styles.card}>
-          <Text allowFontScaling numberOfLines={1} style={styles.value}>
+        <View key={item.key} style={[styles.card, useFullWidthCards ? styles.fullWidthCard : null]}>
+          <Text allowFontScaling numberOfLines={2} style={styles.value}>
             {item.value}
           </Text>
-          <Text allowFontScaling numberOfLines={1} style={styles.label}>
+          <Text allowFontScaling numberOfLines={2} style={styles.label}>
             {item.label}
           </Text>
         </View>
@@ -45,6 +48,10 @@ function SummaryStripComponent({
 }
 
 function createStyles(theme: MobileTheme) {
+  const { lineHeight: _sectionTitleLineHeight, ...sectionTitleTypography } =
+    theme.typography.sectionTitle;
+  const { lineHeight: _metaLineHeight, ...metaTypography } = theme.typography.meta;
+
   return StyleSheet.create({
     row: {
       flexDirection: 'row',
@@ -63,12 +70,15 @@ function createStyles(theme: MobileTheme) {
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
     },
+    fullWidthCard: {
+      flexBasis: '100%',
+    },
     value: {
-      ...theme.typography.sectionTitle,
+      ...sectionTitleTypography,
       color: theme.colors.text.primary,
     },
     label: {
-      ...theme.typography.meta,
+      ...metaTypography,
       color: theme.colors.text.secondary,
     },
   });

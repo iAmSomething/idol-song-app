@@ -80,6 +80,10 @@ function ServiceButtonComponent({
 }
 
 function createStyles(theme: MobileTheme) {
+  const { lineHeight: _buttonServiceLineHeight, ...buttonServiceTypography } =
+    theme.typography.buttonService;
+  const { lineHeight: _metaLineHeight, ...metaTypography } = theme.typography.meta;
+
   return StyleSheet.create({
     button: {
       minHeight: theme.size.button.heightService,
@@ -103,7 +107,7 @@ function createStyles(theme: MobileTheme) {
       opacity: 0.45,
     },
     buttonLabel: {
-      ...theme.typography.buttonService,
+      ...buttonServiceTypography,
       flexShrink: 1,
       textAlign: 'center',
     },
@@ -115,7 +119,7 @@ function createStyles(theme: MobileTheme) {
       borderRadius: 12,
     },
     markLabel: {
-      ...theme.typography.meta,
+      ...metaTypography,
       color: theme.colors.text.inverse,
     },
     buttonLabelDisabled: {
@@ -149,7 +153,7 @@ function createStyles(theme: MobileTheme) {
       backgroundColor: theme.colors.service.youtubeMv.icon,
     },
     modeHint: {
-      ...theme.typography.meta,
+      ...metaTypography,
       color: theme.colors.text.tertiary,
     },
   });

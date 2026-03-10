@@ -46,6 +46,10 @@ import {
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
 } from '../../src/services/handoff';
+import {
+  runWithPendingRouteResume,
+  type RouteResumeTarget,
+} from '../../src/services/routeResume';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   ReleaseSummaryModel,
@@ -257,6 +261,13 @@ export default function ArtistDetailScreen() {
     loadBackend: loadBackendSnapshot,
   });
   const snapshot = datasetState.kind === 'ready' ? datasetState.source.data : null;
+  const currentResumeTarget = useMemo<RouteResumeTarget>(
+    () => ({
+      pathname: '/artists/[slug]',
+      params: slug ? { slug } : undefined,
+    }),
+    [slug],
+  );
 
   useEffect(() => {
     setHandoffFeedback(null);
@@ -281,7 +292,7 @@ export default function ArtistDetailScreen() {
       service: handoff.service,
       mode: handoff.mode,
     });
-    const result = await openServiceHandoff(handoff);
+    const result = await runWithPendingRouteResume(currentResumeTarget, () => openServiceHandoff(handoff));
     if (!result.ok) {
       trackAnalyticsEvent('service_handoff_completed', {
         surface: 'entity_detail',
@@ -326,7 +337,9 @@ export default function ArtistDetailScreen() {
   }
 
   async function handleExternalLink(url: string, linkType: 'official' | 'source' | 'artist_source') {
-    const opened = await openExternalLink(normalizeExternalLinkUrl(linkType, url));
+    const opened = await runWithPendingRouteResume(currentResumeTarget, () =>
+      openExternalLink(normalizeExternalLinkUrl(linkType, url)),
+    );
     trackAnalyticsEvent('source_link_opened', {
       surface: 'entity_detail',
       linkType,

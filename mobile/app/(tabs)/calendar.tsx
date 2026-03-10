@@ -65,6 +65,10 @@ import {
   openExternalLink,
   normalizeExternalLinkUrl,
 } from '../../src/services/externalLinks';
+import {
+  runWithPendingRouteResume,
+  type RouteResumeTarget,
+} from '../../src/services/routeResume';
 import { useAppTheme } from '../../src/tokens/theme';
 import type { ServiceButtonGroupItem } from '../../src/components/actions/ServiceButtonGroup';
 import type { SourceLinkRowItem } from '../../src/components/meta/SourceLinkRow';
@@ -244,6 +248,20 @@ export default function CalendarTabScreen() {
     loadBundled: loadBundledSnapshot,
     loadBackend: loadBackendSnapshot,
   });
+  const currentResumeTarget = useMemo<RouteResumeTarget>(
+    () => ({
+      pathname: '/(tabs)/calendar',
+      params: buildCalendarRouteParams({
+        activeMonth,
+        currentMonth,
+        filterMode,
+        isSheetOpen,
+        selectedDayIso,
+        viewMode,
+      }),
+    }),
+    [activeMonth, currentMonth, filterMode, isSheetOpen, selectedDayIso, viewMode],
+  );
 
   useEffect(() => {
     setActiveMonth(routeState.activeMonth);
@@ -347,7 +365,9 @@ export default function CalendarTabScreen() {
   ]);
 
   async function openExternalUrl(url?: string) {
-    const result = await openExternalLink(normalizeExternalLinkUrl('source', url));
+    const result = await runWithPendingRouteResume(currentResumeTarget, () =>
+      openExternalLink(normalizeExternalLinkUrl('source', url)),
+    );
     trackAnalyticsEvent('source_link_opened', {
       surface: 'calendar',
       linkType: 'source',
@@ -378,7 +398,7 @@ export default function CalendarTabScreen() {
       service: handoff.service,
       mode: handoff.mode,
     });
-    const result = await openServiceHandoff(handoff);
+    const result = await runWithPendingRouteResume(currentResumeTarget, () => openServiceHandoff(handoff));
     trackAnalyticsEvent('service_handoff_completed', {
       surface: 'calendar',
       service: result.service,
@@ -1060,6 +1080,15 @@ export default function CalendarTabScreen() {
 }
 
 function createStyles(theme: ReturnType<typeof useAppTheme>) {
+  const { lineHeight: _screenTitleLineHeight, ...screenTitleTypography } =
+    theme.typography.screenTitle;
+  const { lineHeight: _buttonServiceLineHeight, ...buttonServiceTypography } =
+    theme.typography.buttonService;
+  const { lineHeight: _sectionTitleLineHeight, ...sectionTitleTypography } =
+    theme.typography.sectionTitle;
+  const { lineHeight: _bodyLineHeight, ...bodyTypography } = theme.typography.body;
+  const { lineHeight: _metaLineHeight, ...metaTypography } = theme.typography.meta;
+
   return StyleSheet.create({
     screen: {
       flex: 1,
@@ -1072,17 +1101,16 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       gap: theme.space[16],
     },
     headerBar: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      flexDirection: 'column',
       alignItems: 'flex-start',
       gap: theme.space[12],
     },
     monthCluster: {
-      flex: 1,
+      width: '100%',
       gap: theme.space[8],
     },
     monthTitle: {
-      ...theme.typography.screenTitle,
+      ...screenTitleTypography,
       color: theme.colors.text.primary,
     },
     monthNav: {
@@ -1094,7 +1122,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       flexDirection: 'row',
       flexWrap: 'wrap',
       gap: theme.space[8],
-      justifyContent: 'flex-end',
+      justifyContent: 'flex-start',
+      maxWidth: '100%',
     },
     headerButton: {
       minHeight: theme.size.button.heightSecondary,
@@ -1110,7 +1139,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       opacity: 0.84,
     },
     headerButtonLabel: {
-      ...theme.typography.buttonService,
+      ...buttonServiceTypography,
       color: theme.colors.text.primary,
     },
     sectionCard: {
@@ -1125,11 +1154,11 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       gap: theme.space[4],
     },
     sectionTitle: {
-      ...theme.typography.sectionTitle,
+      ...sectionTitleTypography,
       color: theme.colors.text.primary,
     },
     sectionMeta: {
-      ...theme.typography.body,
+      ...bodyTypography,
       color: theme.colors.text.secondary,
     },
     sectionStack: {
@@ -1142,7 +1171,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     weekdayLabel: {
       flex: 1,
       textAlign: 'center',
-      ...theme.typography.meta,
+      ...metaTypography,
       color: theme.colors.text.tertiary,
     },
     calendarGrid: {

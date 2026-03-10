@@ -106,9 +106,9 @@
    - 전체 mobile spec 문서와 RN issue 매핑
 50. `rn-selector-contract-audit.md`
    - selector/adaptor/display-model naming 및 contract parity audit
-51. `rn-release-readiness-gate-2026-03-10.md`
+51. `rn-release-readiness-gate-2026-03-11.md`
    - preview sign-off 전 RN release-readiness gate 실행 결과와 blocker 분류
-52. `rn-runtime-device-qa-2026-03-10.md`
+52. `rn-runtime-device-qa-2026-03-11.md`
    - shipping-target simulator / Android runtime QA 실행 결과와 남은 blocker
 ### Screen Specs
 53. `calendar-screen.md`
@@ -165,8 +165,8 @@
 45. `rn-freshness-review-2026-03-10.md`
 46. `rn-traceability-matrix.md`
 47. `rn-selector-contract-audit.md`
-48. `rn-release-readiness-gate-2026-03-10.md`
-49. `rn-runtime-device-qa-2026-03-10.md`
+48. `rn-release-readiness-gate-2026-03-11.md`
+49. `rn-runtime-device-qa-2026-03-11.md`
 50. 각 화면 스펙
 51. `edge-case-catalog.md`
 52. `qa-acceptance-spec.md`

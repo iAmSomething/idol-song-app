@@ -50,6 +50,10 @@ import {
   trackAnalyticsEvent,
 } from '../../src/services/analytics';
 import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
+import {
+  runWithPendingRouteResume,
+  type RouteResumeTarget,
+} from '../../src/services/routeResume';
 import { useAppTheme } from '../../src/tokens/theme';
 import type { MobileTheme } from '../../src/tokens/theme';
 import type { ReleaseDetailModel, TrackModel, YoutubeVideoStatus } from '../../src/types';
@@ -278,6 +282,13 @@ export default function ReleaseDetailScreen() {
     loadBackend: loadBackendDetail,
   });
   const detail = datasetState.kind === 'ready' ? datasetState.source.data : null;
+  const currentResumeTarget = useMemo<RouteResumeTarget>(
+    () => ({
+      pathname: '/releases/[id]',
+      params: releaseId ? { id: releaseId } : undefined,
+    }),
+    [releaseId],
+  );
   const teamProfile =
     detail
       ? bundledProfiles.find((profile) => profile.slug === detail.group || profile.group === detail.group) ?? null
@@ -306,7 +317,7 @@ export default function ReleaseDetailScreen() {
       service: handoff.service,
       mode: handoff.mode,
     });
-    const result = await openServiceHandoff(handoff);
+    const result = await runWithPendingRouteResume(currentResumeTarget, () => openServiceHandoff(handoff));
     trackAnalyticsEvent('service_handoff_completed', {
       surface: 'release_detail',
       service: result.service,
@@ -365,7 +376,9 @@ export default function ReleaseDetailScreen() {
   }
 
   async function handleSupportingLinkOpen(url: string) {
-    const opened = await openExternalLink(normalizeExternalLinkUrl('source', url));
+    const opened = await runWithPendingRouteResume(currentResumeTarget, () =>
+      openExternalLink(normalizeExternalLinkUrl('source', url)),
+    );
     trackAnalyticsEvent('source_link_opened', {
       surface: 'release_detail',
       linkType: 'source',

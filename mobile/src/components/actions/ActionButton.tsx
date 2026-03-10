@@ -96,6 +96,10 @@ function ActionButtonComponent({
 }
 
 function createStyles(theme: MobileTheme) {
+  const { lineHeight: _buttonPrimaryLineHeight, ...buttonPrimaryTypography } =
+    theme.typography.buttonPrimary;
+  const { lineHeight: _metaLineHeight, ...metaTypography } = theme.typography.meta;
+
   return StyleSheet.create({
     button: {
       alignItems: 'center',
@@ -141,7 +145,7 @@ function createStyles(theme: MobileTheme) {
       gap: theme.space[8],
     },
     label: {
-      ...theme.typography.buttonPrimary,
+      ...buttonPrimaryTypography,
       flexShrink: 1,
       textAlign: 'center',
     },
@@ -152,7 +156,7 @@ function createStyles(theme: MobileTheme) {
       color: theme.colors.text.primary,
     },
     metaLabel: {
-      ...theme.typography.meta,
+      ...metaTypography,
       color: theme.colors.text.secondary,
       textDecorationLine: 'underline',
     },

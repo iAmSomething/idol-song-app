@@ -2,7 +2,10 @@ import { Tabs } from 'expo-router';
 
 export default function TabsLayout() {
   return (
-    <Tabs initialRouteName="calendar" screenOptions={{ headerTitleAlign: 'center' }}>
+    <Tabs
+      initialRouteName="calendar"
+      screenOptions={{ headerShown: false, headerTitleAlign: 'center' }}
+    >
       <Tabs.Screen
         name="calendar"
         options={{

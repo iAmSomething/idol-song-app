@@ -8,6 +8,7 @@ import RootLayout from '../../app/_layout';
 import ArtistDetailScreen from '../../app/artists/[slug]';
 import IndexRoute from '../../app/index';
 import ReleaseDetailScreen from '../../app/releases/[id]';
+import { consumePendingRouteResume } from '../services/routeResume';
 
 jest.mock('expo-router', () => {
   const React = jest.requireActual<typeof import('react')>('react');
@@ -101,6 +102,10 @@ jest.mock('../features/useActiveDatasetScreen', () => {
   };
 });
 
+jest.mock('../services/routeResume', () => ({
+  consumePendingRouteResume: jest.fn(async () => null),
+}));
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     useRouter: jest.Mock;
@@ -110,6 +115,7 @@ const { __mock } = jest.requireMock('expo-router') as {
 
 const mockUseRouter = __mock.useRouter;
 const mockUseLocalSearchParams = __mock.useLocalSearchParams;
+const mockConsumePendingRouteResume = jest.mocked(consumePendingRouteResume);
 
 function renderTree(element: React.ReactElement) {
   let tree: renderer.ReactTestRenderer;
@@ -142,8 +148,27 @@ describe('mobile route shell smoke', () => {
   });
 
   test('root index redirects to calendar tab', () => {
-    const tree = renderTree(<IndexRoute />).toJSON() as renderer.ReactTestRendererJSON;
-    expect(tree.props.href).toBe('/(tabs)/calendar');
+    mockConsumePendingRouteResume.mockResolvedValueOnce(null);
+
+    return renderTreeAsync(<IndexRoute />).then((tree) => {
+      const redirectNode = tree.toJSON() as renderer.ReactTestRendererJSON;
+      expect(redirectNode.props.href).toBe('/(tabs)/calendar');
+    });
+  });
+
+  test('root index restores a pending route resume target when present', () => {
+    mockConsumePendingRouteResume.mockResolvedValueOnce({
+      pathname: '/artists/[slug]',
+      params: { slug: 'yena' },
+    });
+
+    return renderTreeAsync(<IndexRoute />).then((tree) => {
+      const redirectNode = tree.toJSON() as renderer.ReactTestRendererJSON;
+      expect(redirectNode.props.href).toEqual({
+        pathname: '/artists/[slug]',
+        params: { slug: 'yena' },
+      });
+    });
   });
 
   test('root layout and tabs layout render without crashing', () => {
