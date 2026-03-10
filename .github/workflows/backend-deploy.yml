@@ -47,6 +47,18 @@ jobs:
         working-directory: backend
         run: npm ci
 
+      - name: Verify preview deploy environment contract
+        working-directory: backend
+        env:
+          BACKEND_DEPLOY_TARGET: preview
+          BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
+          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID }}
+          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
+        run: npm run deploy:env:verify -- --target preview --report-path ./reports/deploy_env_contract_preview.json
+
       - name: Build backend
         working-directory: backend
         run: npm run build
@@ -67,6 +79,14 @@ jobs:
         with:
           name: backend-query-plan-preview
           path: backend/reports/query_plan_regression_report.json
+          if-no-files-found: warn
+
+      - name: Upload preview deploy environment contract report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-deploy-env-preview
+          path: backend/reports/deploy_env_contract_preview.json
           if-no-files-found: warn
 
       - name: Deploy preview backend
@@ -131,6 +151,18 @@ jobs:
         working-directory: backend
         run: npm ci
 
+      - name: Verify production deploy environment contract
+        working-directory: backend
+        env:
+          BACKEND_DEPLOY_TARGET: production
+          BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
+          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID }}
+          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
+        run: npm run deploy:env:verify -- --target production --report-path ./reports/deploy_env_contract_production.json
+
       - name: Build backend
         working-directory: backend
         run: npm run build
@@ -151,6 +183,14 @@ jobs:
         with:
           name: backend-query-plan-production
           path: backend/reports/query_plan_regression_report.json
+          if-no-files-found: warn
+
+      - name: Upload production deploy environment contract report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-deploy-env-production
+          path: backend/reports/deploy_env_contract_production.json
           if-no-files-found: warn
 
       - name: Deploy production backend

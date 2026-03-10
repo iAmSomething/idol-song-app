@@ -27,7 +27,7 @@ preview/staging backend는 아래 3개 런타임으로 구성한다.
 원칙:
 
 - preview는 production과 같은 payload contract를 유지한다.
-- preview는 production과 다른 data volume, cadence, log level을 가질 수 있다.
+- preview는 production과 다른 data volume과 worker cadence를 가질 수 있다.
 - preview는 production source-of-truth를 직접 수정하지 않는다.
 - production cutover 전 rehearsal은 기본적으로 preview에서 끝낸다.
 
@@ -97,7 +97,6 @@ preview에서 달라져도 되는 것:
 - dataset size
 - 실험용 entity / release seed 일부
 - worker cadence
-- log verbosity
 - rate-limit threshold
 - alert threshold
 - deploy frequency
@@ -129,7 +128,7 @@ preview와 production은 최소 아래 구성을 분리한다.
 | `PORT` | preview service port | production service port |
 | `APP_TIMEZONE` | `Asia/Seoul` | `Asia/Seoul` |
 | `WEB_ALLOWED_ORIGINS` | preview web consumer origin list | production extra web consumer origin list |
-| `LOG_LEVEL` | `debug` 또는 `info` | `info` 또는 `warn` |
+| `LOG_LEVEL` | `info` | `info` |
 | `WORKER_CADENCE_LABEL` | preview cadence label | production cadence label |
 
 운영 규칙:
@@ -138,6 +137,7 @@ preview와 production은 최소 아래 구성을 분리한다.
 - preview API는 production DB URL을 읽지 않는다.
 - preview worker는 production cron과 다른 cadence를 가져도 된다.
 - timezone rule은 preview/production 모두 `Asia/Seoul`로 고정한다.
+- log level baseline은 preview/production 모두 `info`로 고정한다.
 - production 기본 web origin은 `https://iamsomething.github.io`이고, preview/prod에서 추가 origin이 필요하면 `WEB_ALLOWED_ORIGINS`로만 연다.
 
 ## 7. Rehearsal Sequence

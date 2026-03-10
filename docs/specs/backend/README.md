@@ -33,31 +33,37 @@
 9. `json-snapshot-demotion.md`
    - cut-over surface에서 JSON을 fallback/debug/export로 강등하는 runtime / delivery 규칙
    - Pages build, query override, emergency fallback window 운영 기준
-10. `shared-read-api-contracts.md`
-   - calendar, search, entity detail, release detail, radar용 shared read contract
-   - server-side derived field와 client-side allowed logic 구분
-11. `backend-migration-epic.md`
+10. `public-read-api-contract-v1.md`
+   - web / mobile consumer가 보는 canonical versioned public read contract
+   - stable field, transitional/internal detail, compatibility expectation 고정
+11. `shared-read-api-contracts.md`
+   - detailed payload examples와 server-side derived semantics working note
+   - `public-read-api-contract-v1.md`를 보조하는 상세 reference
+12. `deploy-environment-contract.md`
+   - preview / production deploy 전 environment completeness / drift gate
+   - example env, Railway runtime env, GitHub deploy input 사이의 contract
+13. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
-12. `mobile-adoption-readiness-review.md`
+14. `mobile-adoption-readiness-review.md`
    - backend contract가 mobile screen 구현을 바로 받을 수 있는지 surface별 readiness 검토
    - blocker / non-blocker / follow-up issue 기준의 gate decision
-13. `public-read-rate-limit-policy.md`
+15. `public-read-rate-limit-policy.md`
    - public read endpoint의 bucket별 rate-limit 기준
    - preview / production 기대치와 `429 rate_limited` contract
-14. `structured-backend-logging-policy.md`
+16. `structured-backend-logging-policy.md`
    - request/error/runtime-fatal log field shape와 redaction 규칙
    - env별 verbosity와 routine-noise budget
-15. `neon-backup-restore-recovery-drill.md`
+17. `neon-backup-restore-recovery-drill.md`
    - isolated schema clone 기준 backup / restore / recovery rehearsal 절차
    - representative read-path usable state 판정 기준
-16. `projection-query-plan-regression-check.md`
+18. `projection-query-plan-regression-check.md`
    - projection-backed lookup query의 required index / explain probe gate
    - controlled degraded scenario로 failure detection을 증명하는 방법
-17. `backend-secret-inventory-and-rotation.md`
+19. `backend-secret-inventory-and-rotation.md`
    - GitHub / Railway / Neon 기준 backend secret / variable inventory
    - owner role, rotation trigger, rollback baseline, current audit snapshot
-18. `migration-readiness-scorecard.md`
+20. `migration-readiness-scorecard.md`
    - migration readiness category, weight, blocker threshold rubric
    - machine-readable / human-readable scorecard artifact contract
 
@@ -71,16 +77,18 @@
 6. `migration-runtime-gates.md`
 7. `web-cutover-rollback-drills.md`
 8. `json-snapshot-demotion.md`
-9. `shared-read-api-contracts.md`
-10. `mobile-adoption-readiness-review.md`
-11. `phased-rollout-plan.md`
-12. `backend-migration-epic.md`
-13. `public-read-rate-limit-policy.md`
-14. `structured-backend-logging-policy.md`
-15. `neon-backup-restore-recovery-drill.md`
-16. `projection-query-plan-regression-check.md`
-17. `backend-secret-inventory-and-rotation.md`
-18. `migration-readiness-scorecard.md`
+9. `public-read-api-contract-v1.md`
+10. `shared-read-api-contracts.md`
+11. `deploy-environment-contract.md`
+12. `mobile-adoption-readiness-review.md`
+13. `phased-rollout-plan.md`
+14. `backend-migration-epic.md`
+15. `public-read-rate-limit-policy.md`
+16. `structured-backend-logging-policy.md`
+17. `neon-backup-restore-recovery-drill.md`
+18. `projection-query-plan-regression-check.md`
+19. `backend-secret-inventory-and-rotation.md`
+20. `migration-readiness-scorecard.md`
 
 ## 원칙
 

@@ -16,6 +16,8 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 
 - `src/`
   - Fastify read API skeleton
+- `scripts/verify-deploy-env-contract.ts`
+  - preview / production deploy 전에 Railway runtime env + GitHub deploy input completeness/drift를 검증
 - `.env.preview.example`, `.env.production.example`
   - preview / production runtime config baseline
 - `reports/`
@@ -182,13 +184,13 @@ preview에서 달라져도 되는 것:
 
 - dataset size
 - worker cadence
-- log level
 
 preview에서 달라지면 안 되는 것:
 
 - endpoint shape
 - field type / enum domain
 - date precision / MV / service-link semantics
+- `LOG_LEVEL` baseline (`info`)
 
 ## Backend Deploy Path
 
@@ -222,7 +224,27 @@ deploy helper는 아래 스크립트다.
 
 - `backend/scripts/deploy-backend.mjs`
 - `backend/scripts/run-live-smoke-checks.mjs`
+- `backend/scripts/verify-deploy-env-contract.ts`
 - `backend/fixtures/live_backend_smoke_fixtures.json`
+
+deploy 전에 environment contract를 먼저 확인한다.
+
+- target example contract:
+  - `backend/.env.preview.example`
+  - `backend/.env.production.example`
+- pre-deploy gate:
+  - `cd backend && npm run deploy:env:verify -- --target preview`
+  - `cd backend && npm run deploy:env:verify -- --target production`
+
+검사 항목:
+
+- GitHub deploy input presence
+- preview / production example key-set drift
+- shared invariant drift (`APP_TIMEZONE`, DB timeout, `LOG_LEVEL`)
+- target-specific runtime env drift (`APP_ENV`, `PORT`, `WORKER_CADENCE_LABEL`, `WEB_ALLOWED_ORIGINS`)
+- secret shape validation (`DATABASE_URL`, `DATABASE_URL_POOLED`)
+
+secret raw value는 report/log에 남기지 않고 presence와 URL shape만 남긴다.
 
 deploy workflow는 Railway deploy 직후 canonical fixture registry를 읽는 같은 live smoke contract를 preview / production 모두에 적용한다.
 
