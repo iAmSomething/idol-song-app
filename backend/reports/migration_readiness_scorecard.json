@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-10T13:04:13.648Z",
+  "generated_at": "2026-03-10T13:51:35.363Z",
   "rubric": {
     "overall": {
       "passThreshold": 0.85,
@@ -77,9 +77,9 @@
   },
   "overall": {
     "status": "fail",
-    "score_ratio": 0.5942,
-    "score_percent": 59.4,
-    "weighted_points": 59.42,
+    "score_ratio": 0.5989,
+    "score_percent": 59.9,
+    "weighted_points": 59.89,
     "total_weight": 100,
     "blocker_categories": [
       {
@@ -110,8 +110,8 @@
         "key": "catalog_completeness",
         "label": "Catalog completeness",
         "blocker_reasons": [
-          "title_track_resolved overall=62.8 pre_2024=60.5",
-          "canonical_mv overall=4.3 pre_2024=1.7"
+          "title_track_resolved overall=64.5 pre_2024=62",
+          "canonical_mv overall=6.3 pre_2024=3.3"
         ]
       }
     ],
@@ -390,49 +390,100 @@
       "weight": 20,
       "blocker": true,
       "status": "fail",
-      "score_ratio": 0.6585,
-      "score_percent": 65.8,
-      "weighted_points": 13.17,
+      "score_ratio": 0.6818,
+      "score_percent": 68.2,
+      "weighted_points": 13.64,
       "blocker_reasons": [
-        "title_track_resolved overall=62.8 pre_2024=60.5",
-        "canonical_mv overall=4.3 pre_2024=1.7"
+        "title_track_resolved overall=64.5 pre_2024=62",
+        "canonical_mv overall=6.3 pre_2024=3.3"
       ],
       "summary_lines": [
         "detail payload coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
         "detail trusted coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
-        "title-track resolved coverage: 1112/1770 (62.8%), pre-2024 697/1153 (60.5%), review queue 658",
-        "canonical MV coverage: 76/1770 (4.3%), pre-2024 20/1153 (1.7%), mv review 2",
-        "release-detail null review queue: 1760 rows",
-        "historical catalog cutover gate: fail"
+        "title-track resolved coverage: 1141/1770 (64.5%), pre-2024 715/1153 (62.0%), review queue 629",
+        "canonical MV coverage: 112/1770 (6.3%), pre-2024 38/1153 (3.3%), mv review 2",
+        "migration-critical first slice: title-track 18/18 (100.0%), canonical MV 18/18 (100.0%), gate pass",
+        "release-detail null review queue: 1754 rows",
+        "historical catalog cutover gate: fail",
+        "migration_priority_slice rows=18/18 title_track=100 canonical_mv=100 gate=pass"
       ],
       "evidence": {
         "overall": {
           "detail_payload_ratio": 1,
           "detail_trusted_ratio": 1,
-          "title_track_resolved_ratio": 0.6282,
-          "canonical_mv_ratio": 0.0429
+          "title_track_resolved_ratio": 0.6446,
+          "canonical_mv_ratio": 0.0633
         },
         "pre_2024": {
           "detail_payload_ratio": 1,
           "detail_trusted_ratio": 1,
-          "title_track_resolved_ratio": 0.6045,
-          "canonical_mv_ratio": 0.0173
+          "title_track_resolved_ratio": 0.6201,
+          "canonical_mv_ratio": 0.033
+        },
+        "migration_priority_slice": {
+          "expected_rows": 18,
+          "rows_after": 18,
+          "gates": {
+            "thresholds": {
+              "detail_payload_min": 1,
+              "detail_trusted_min": 1,
+              "title_track_resolved_min": 1,
+              "canonical_mv_min": 1
+            },
+            "gates": {
+              "detail_payload": {
+                "status": "pass",
+                "observed": 1,
+                "threshold": 1
+              },
+              "detail_trusted": {
+                "status": "pass",
+                "observed": 1,
+                "threshold": 1
+              },
+              "title_track_resolved": {
+                "status": "pass",
+                "observed": 1,
+                "threshold": 1
+              },
+              "canonical_mv": {
+                "status": "pass",
+                "observed": 1,
+                "threshold": 1
+              }
+            },
+            "cutover_ready": true,
+            "cutover_status": "pass",
+            "generated_at": "2026-03-10",
+            "summary_lines": [
+              "detail_payload gate: pass (100.0% vs 100.0%)",
+              "detail_trusted gate: pass (100.0% vs 100.0%)",
+              "title_track_resolved gate: pass (100.0% vs 100.0%)",
+              "canonical_mv gate: pass (100.0% vs 100.0%)"
+            ]
+          },
+          "after": {
+            "detail_payload_ratio": 1,
+            "detail_trusted_ratio": 1,
+            "title_track_resolved_ratio": 1,
+            "canonical_mv_ratio": 1
+          }
         },
         "review_queues": {
-          "title_track_review_rows": 67,
+          "title_track_review_rows": 65,
           "mv_review_rows": 2,
-          "title_track_unresolved_rows": 591,
-          "mv_unresolved_rows": 1691
+          "title_track_unresolved_rows": 564,
+          "mv_unresolved_rows": 1655
         }
       }
     }
   ],
   "summary_lines": [
-    "overall readiness: fail (59.4/100)",
+    "overall readiness: fail (59.9/100)",
     "Backend runtime health: fail (52/100) [BLOCKER] - worker_cadence=fail",
     "Backend deploy parity: fail (40/100) [BLOCKER] - parity_clean=false (latest_verified_release_selection drift=3)",
     "Web backend-only stability: fail (51.2/100) [BLOCKER] - entity_detail clean_ratio=0.25",
     "Mobile runtime mode: pass (100/100) - no blocker reason",
-    "Catalog completeness: fail (65.8/100) [BLOCKER] - title_track_resolved overall=62.8 pre_2024=60.5"
+    "Catalog completeness: fail (68.2/100) [BLOCKER] - title_track_resolved overall=64.5 pre_2024=62"
   ]
 }

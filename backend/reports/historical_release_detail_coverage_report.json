@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-03-09",
+  "generated_at": "2026-03-10",
   "summary_lines": [
     "detail payload coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
     "detail trusted coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
-    "title-track resolved coverage: 1112/1770 (62.8%), pre-2024 697/1153 (60.5%), review queue 658",
-    "canonical MV coverage: 76/1770 (4.3%), pre-2024 20/1153 (1.7%), mv review 2",
-    "release-detail null review queue: 1760 rows",
+    "title-track resolved coverage: 1141/1770 (64.5%), pre-2024 715/1153 (62.0%), review queue 629",
+    "canonical MV coverage: 112/1770 (6.3%), pre-2024 38/1153 (3.3%), mv review 2",
+    "migration-critical first slice: title-track 18/18 (100.0%), canonical MV 18/18 (100.0%), gate pass",
+    "release-detail null review queue: 1754 rows",
     "historical catalog cutover gate: fail"
   ],
   "latest_snapshot_input_rows": 121,
@@ -69,10 +70,10 @@
   "seeded_placeholder_rows": 0,
   "rows_with_tracks_before": 1770,
   "rows_with_tracks_after": 1770,
-  "rows_with_title_track_before": 1112,
-  "rows_with_title_track_after": 1112,
-  "rows_without_title_track_before": 658,
-  "rows_without_title_track_after": 658,
+  "rows_with_title_track_before": 1135,
+  "rows_with_title_track_after": 1135,
+  "rows_without_title_track_before": 635,
+  "rows_without_title_track_after": 635,
   "completeness": {
     "overall_before": {
       "total_rows": 1770,
@@ -86,18 +87,18 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 1112,
-      "title_track_resolved_ratio": 0.6282,
-      "title_track_review_rows": 67,
-      "title_track_review_ratio": 0.0379,
-      "title_track_unresolved_rows": 591,
-      "title_track_unresolved_ratio": 0.3339,
-      "canonical_mv_rows": 76,
-      "canonical_mv_ratio": 0.0429,
+      "title_track_resolved_rows": 1141,
+      "title_track_resolved_ratio": 0.6446,
+      "title_track_review_rows": 65,
+      "title_track_review_ratio": 0.0367,
+      "title_track_unresolved_rows": 564,
+      "title_track_unresolved_ratio": 0.3186,
+      "canonical_mv_rows": 96,
+      "canonical_mv_ratio": 0.0542,
       "mv_review_rows": 2,
       "mv_review_ratio": 0.0011,
-      "mv_unresolved_rows": 1691,
-      "mv_unresolved_ratio": 0.9554,
+      "mv_unresolved_rows": 1671,
+      "mv_unresolved_ratio": 0.9441,
       "mv_no_mv_rows": 1,
       "mv_no_mv_ratio": 0.0006
     },
@@ -113,18 +114,18 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 1112,
-      "title_track_resolved_ratio": 0.6282,
-      "title_track_review_rows": 67,
-      "title_track_review_ratio": 0.0379,
-      "title_track_unresolved_rows": 591,
-      "title_track_unresolved_ratio": 0.3339,
-      "canonical_mv_rows": 76,
-      "canonical_mv_ratio": 0.0429,
+      "title_track_resolved_rows": 1141,
+      "title_track_resolved_ratio": 0.6446,
+      "title_track_review_rows": 65,
+      "title_track_review_ratio": 0.0367,
+      "title_track_unresolved_rows": 564,
+      "title_track_unresolved_ratio": 0.3186,
+      "canonical_mv_rows": 112,
+      "canonical_mv_ratio": 0.0633,
       "mv_review_rows": 2,
       "mv_review_ratio": 0.0011,
-      "mv_unresolved_rows": 1691,
-      "mv_unresolved_ratio": 0.9554,
+      "mv_unresolved_rows": 1655,
+      "mv_unresolved_ratio": 0.935,
       "mv_no_mv_rows": 1,
       "mv_no_mv_ratio": 0.0006
     },
@@ -140,18 +141,18 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 697,
-      "title_track_resolved_ratio": 0.6045,
+      "title_track_resolved_rows": 715,
+      "title_track_resolved_ratio": 0.6201,
       "title_track_review_rows": 42,
       "title_track_review_ratio": 0.0364,
-      "title_track_unresolved_rows": 414,
-      "title_track_unresolved_ratio": 0.3591,
-      "canonical_mv_rows": 20,
-      "canonical_mv_ratio": 0.0173,
+      "title_track_unresolved_rows": 396,
+      "title_track_unresolved_ratio": 0.3435,
+      "canonical_mv_rows": 38,
+      "canonical_mv_ratio": 0.033,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
-      "mv_unresolved_rows": 1132,
-      "mv_unresolved_ratio": 0.9818,
+      "mv_unresolved_rows": 1114,
+      "mv_unresolved_ratio": 0.9662,
       "mv_no_mv_rows": 1,
       "mv_no_mv_ratio": 0.0009
     }
@@ -197,18 +198,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 3,
-        "title_track_resolved_ratio": 0.6,
+        "title_track_resolved_rows": 5,
+        "title_track_resolved_ratio": 1.0,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 2,
-        "title_track_unresolved_ratio": 0.4,
-        "canonical_mv_rows": 0,
-        "canonical_mv_ratio": 0.0,
+        "title_track_unresolved_rows": 0,
+        "title_track_unresolved_ratio": 0.0,
+        "canonical_mv_rows": 2,
+        "canonical_mv_ratio": 0.4,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 5,
-        "mv_unresolved_ratio": 1.0,
+        "mv_unresolved_rows": 3,
+        "mv_unresolved_ratio": 0.6,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -332,18 +333,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 19,
-        "title_track_resolved_ratio": 0.7917,
+        "title_track_resolved_rows": 20,
+        "title_track_resolved_ratio": 0.8333,
         "title_track_review_rows": 2,
         "title_track_review_ratio": 0.0833,
-        "title_track_unresolved_rows": 3,
-        "title_track_unresolved_ratio": 0.125,
-        "canonical_mv_rows": 0,
-        "canonical_mv_ratio": 0.0,
+        "title_track_unresolved_rows": 2,
+        "title_track_unresolved_ratio": 0.0833,
+        "canonical_mv_rows": 1,
+        "canonical_mv_ratio": 0.0417,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 24,
-        "mv_unresolved_ratio": 1.0,
+        "mv_unresolved_rows": 23,
+        "mv_unresolved_ratio": 0.9583,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -359,18 +360,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 23,
-        "title_track_resolved_ratio": 0.6389,
+        "title_track_resolved_rows": 28,
+        "title_track_resolved_ratio": 0.7778,
         "title_track_review_rows": 2,
         "title_track_review_ratio": 0.0556,
-        "title_track_unresolved_rows": 11,
-        "title_track_unresolved_ratio": 0.3056,
-        "canonical_mv_rows": 0,
-        "canonical_mv_ratio": 0.0,
+        "title_track_unresolved_rows": 6,
+        "title_track_unresolved_ratio": 0.1667,
+        "canonical_mv_rows": 5,
+        "canonical_mv_ratio": 0.1389,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 36,
-        "mv_unresolved_ratio": 1.0,
+        "mv_unresolved_rows": 31,
+        "mv_unresolved_ratio": 0.8611,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -386,18 +387,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 31,
-        "title_track_resolved_ratio": 0.6327,
+        "title_track_resolved_rows": 33,
+        "title_track_resolved_ratio": 0.6735,
         "title_track_review_rows": 1,
         "title_track_review_ratio": 0.0204,
-        "title_track_unresolved_rows": 17,
-        "title_track_unresolved_ratio": 0.3469,
-        "canonical_mv_rows": 1,
-        "canonical_mv_ratio": 0.0204,
+        "title_track_unresolved_rows": 15,
+        "title_track_unresolved_ratio": 0.3061,
+        "canonical_mv_rows": 3,
+        "canonical_mv_ratio": 0.0612,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 48,
-        "mv_unresolved_ratio": 0.9796,
+        "mv_unresolved_rows": 46,
+        "mv_unresolved_ratio": 0.9388,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -413,18 +414,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 41,
-        "title_track_resolved_ratio": 0.5467,
+        "title_track_resolved_rows": 44,
+        "title_track_resolved_ratio": 0.5867,
         "title_track_review_rows": 4,
         "title_track_review_ratio": 0.0533,
-        "title_track_unresolved_rows": 30,
-        "title_track_unresolved_ratio": 0.4,
-        "canonical_mv_rows": 3,
-        "canonical_mv_ratio": 0.04,
+        "title_track_unresolved_rows": 27,
+        "title_track_unresolved_ratio": 0.36,
+        "canonical_mv_rows": 6,
+        "canonical_mv_ratio": 0.08,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 72,
-        "mv_unresolved_ratio": 0.96,
+        "mv_unresolved_rows": 69,
+        "mv_unresolved_ratio": 0.92,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -440,18 +441,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 60,
-        "title_track_resolved_ratio": 0.6452,
+        "title_track_resolved_rows": 63,
+        "title_track_resolved_ratio": 0.6774,
         "title_track_review_rows": 3,
         "title_track_review_ratio": 0.0323,
-        "title_track_unresolved_rows": 30,
-        "title_track_unresolved_ratio": 0.3226,
-        "canonical_mv_rows": 4,
-        "canonical_mv_ratio": 0.043,
+        "title_track_unresolved_rows": 27,
+        "title_track_unresolved_ratio": 0.2903,
+        "canonical_mv_rows": 7,
+        "canonical_mv_ratio": 0.0753,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 88,
-        "mv_unresolved_ratio": 0.9462,
+        "mv_unresolved_rows": 85,
+        "mv_unresolved_ratio": 0.914,
         "mv_no_mv_rows": 1,
         "mv_no_mv_ratio": 0.0108
       },
@@ -467,18 +468,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 63,
-        "title_track_resolved_ratio": 0.5888,
+        "title_track_resolved_rows": 64,
+        "title_track_resolved_ratio": 0.5981,
         "title_track_review_rows": 4,
         "title_track_review_ratio": 0.0374,
-        "title_track_unresolved_rows": 40,
-        "title_track_unresolved_ratio": 0.3738,
-        "canonical_mv_rows": 1,
-        "canonical_mv_ratio": 0.0093,
+        "title_track_unresolved_rows": 39,
+        "title_track_unresolved_ratio": 0.3645,
+        "canonical_mv_rows": 2,
+        "canonical_mv_ratio": 0.0187,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 106,
-        "mv_unresolved_ratio": 0.9907,
+        "mv_unresolved_rows": 105,
+        "mv_unresolved_ratio": 0.9813,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -494,18 +495,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 77,
-        "title_track_resolved_ratio": 0.6016,
+        "title_track_resolved_rows": 78,
+        "title_track_resolved_ratio": 0.6094,
         "title_track_review_rows": 6,
         "title_track_review_ratio": 0.0469,
-        "title_track_unresolved_rows": 45,
-        "title_track_unresolved_ratio": 0.3516,
-        "canonical_mv_rows": 5,
-        "canonical_mv_ratio": 0.0391,
+        "title_track_unresolved_rows": 44,
+        "title_track_unresolved_ratio": 0.3438,
+        "canonical_mv_rows": 6,
+        "canonical_mv_ratio": 0.0469,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 123,
-        "mv_unresolved_ratio": 0.9609,
+        "mv_unresolved_rows": 122,
+        "mv_unresolved_ratio": 0.9531,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -629,18 +630,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 179,
-        "title_track_resolved_ratio": 0.678,
-        "title_track_review_rows": 9,
-        "title_track_review_ratio": 0.0341,
-        "title_track_unresolved_rows": 76,
-        "title_track_unresolved_ratio": 0.2879,
-        "canonical_mv_rows": 44,
-        "canonical_mv_ratio": 0.1667,
+        "title_track_resolved_rows": 186,
+        "title_track_resolved_ratio": 0.7045,
+        "title_track_review_rows": 8,
+        "title_track_review_ratio": 0.0303,
+        "title_track_unresolved_rows": 70,
+        "title_track_unresolved_ratio": 0.2652,
+        "canonical_mv_rows": 53,
+        "canonical_mv_ratio": 0.2008,
         "mv_review_rows": 1,
         "mv_review_ratio": 0.0038,
-        "mv_unresolved_rows": 219,
-        "mv_unresolved_ratio": 0.8295,
+        "mv_unresolved_rows": 210,
+        "mv_unresolved_ratio": 0.7955,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -656,18 +657,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 28,
-        "title_track_resolved_ratio": 0.8,
-        "title_track_review_rows": 1,
-        "title_track_review_ratio": 0.0286,
-        "title_track_unresolved_rows": 6,
-        "title_track_unresolved_ratio": 0.1714,
-        "canonical_mv_rows": 9,
-        "canonical_mv_ratio": 0.2571,
+        "title_track_resolved_rows": 32,
+        "title_track_resolved_ratio": 0.9143,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
+        "title_track_unresolved_rows": 3,
+        "title_track_unresolved_ratio": 0.0857,
+        "canonical_mv_rows": 18,
+        "canonical_mv_ratio": 0.5143,
         "mv_review_rows": 1,
         "mv_review_ratio": 0.0286,
-        "mv_unresolved_rows": 25,
-        "mv_unresolved_ratio": 0.7143,
+        "mv_unresolved_rows": 16,
+        "mv_unresolved_ratio": 0.4571,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       }
@@ -685,18 +686,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 78,
-        "title_track_resolved_ratio": 0.4149,
+        "title_track_resolved_rows": 84,
+        "title_track_resolved_ratio": 0.4468,
         "title_track_review_rows": 22,
         "title_track_review_ratio": 0.117,
-        "title_track_unresolved_rows": 88,
-        "title_track_unresolved_ratio": 0.4681,
-        "canonical_mv_rows": 1,
-        "canonical_mv_ratio": 0.0053,
+        "title_track_unresolved_rows": 82,
+        "title_track_unresolved_ratio": 0.4362,
+        "canonical_mv_rows": 7,
+        "canonical_mv_ratio": 0.0372,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 187,
-        "mv_unresolved_ratio": 0.9947,
+        "mv_unresolved_rows": 181,
+        "mv_unresolved_ratio": 0.9628,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -712,18 +713,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 251,
-        "title_track_resolved_ratio": 0.3675,
-        "title_track_review_rows": 31,
-        "title_track_review_ratio": 0.0454,
-        "title_track_unresolved_rows": 401,
-        "title_track_unresolved_ratio": 0.5871,
-        "canonical_mv_rows": 17,
-        "canonical_mv_ratio": 0.0249,
+        "title_track_resolved_rows": 271,
+        "title_track_resolved_ratio": 0.3968,
+        "title_track_review_rows": 30,
+        "title_track_review_ratio": 0.0439,
+        "title_track_unresolved_rows": 382,
+        "title_track_unresolved_ratio": 0.5593,
+        "canonical_mv_rows": 38,
+        "canonical_mv_ratio": 0.0556,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 666,
-        "mv_unresolved_ratio": 0.9751,
+        "mv_unresolved_rows": 645,
+        "mv_unresolved_ratio": 0.9444,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -739,18 +740,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 783,
-        "title_track_resolved_ratio": 0.871,
-        "title_track_review_rows": 14,
-        "title_track_review_ratio": 0.0156,
-        "title_track_unresolved_rows": 102,
-        "title_track_unresolved_ratio": 0.1135,
-        "canonical_mv_rows": 58,
-        "canonical_mv_ratio": 0.0645,
+        "title_track_resolved_rows": 786,
+        "title_track_resolved_ratio": 0.8743,
+        "title_track_review_rows": 13,
+        "title_track_review_ratio": 0.0145,
+        "title_track_unresolved_rows": 100,
+        "title_track_unresolved_ratio": 0.1112,
+        "canonical_mv_rows": 67,
+        "canonical_mv_ratio": 0.0745,
         "mv_review_rows": 2,
         "mv_review_ratio": 0.0022,
-        "mv_unresolved_rows": 838,
-        "mv_unresolved_ratio": 0.9321,
+        "mv_unresolved_rows": 829,
+        "mv_unresolved_ratio": 0.9221,
         "mv_no_mv_rows": 1,
         "mv_no_mv_ratio": 0.0011
       }
@@ -793,22 +794,6 @@
           "title_track_gap_ratio": 0.381
         },
         {
-          "group": "SEVENTEEN",
-          "total_rows": 38,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 16,
-          "mv_gap_rows": 36,
-          "title_track_gap_ratio": 0.4211
-        },
-        {
-          "group": "TWICE",
-          "total_rows": 54,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 15,
-          "mv_gap_rows": 50,
-          "title_track_gap_ratio": 0.2778
-        },
-        {
           "group": "Stray Kids",
           "total_rows": 42,
           "detail_gap_rows": 0,
@@ -825,20 +810,36 @@
           "title_track_gap_ratio": 0.5769
         },
         {
-          "group": "ONEUS",
-          "total_rows": 30,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 14,
-          "mv_gap_rows": 28,
-          "title_track_gap_ratio": 0.4667
-        },
-        {
           "group": "THE BOYZ",
           "total_rows": 40,
           "detail_gap_rows": 0,
           "title_track_gap_rows": 13,
           "mv_gap_rows": 40,
           "title_track_gap_ratio": 0.325
+        },
+        {
+          "group": "SEVENTEEN",
+          "total_rows": 38,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 13,
+          "mv_gap_rows": 33,
+          "title_track_gap_ratio": 0.3421
+        },
+        {
+          "group": "TOMORROW X TOGETHER",
+          "total_rows": 34,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 13,
+          "mv_gap_rows": 33,
+          "title_track_gap_ratio": 0.3824
+        },
+        {
+          "group": "ONEUS",
+          "total_rows": 30,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 13,
+          "mv_gap_rows": 27,
+          "title_track_gap_ratio": 0.4333
         }
       ],
       "mv": [
@@ -854,31 +855,23 @@
           "group": "TWICE",
           "total_rows": 54,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 15,
-          "mv_gap_rows": 50,
-          "mv_gap_ratio": 0.9259
+          "title_track_gap_rows": 10,
+          "mv_gap_rows": 45,
+          "mv_gap_ratio": 0.8333
         },
         {
           "group": "SHINee",
           "total_rows": 48,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 9,
-          "mv_gap_rows": 47,
-          "mv_gap_ratio": 0.9792
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 43,
+          "mv_gap_ratio": 0.8958
         },
         {
           "group": "ATEEZ",
           "total_rows": 42,
           "detail_gap_rows": 0,
           "title_track_gap_rows": 16,
-          "mv_gap_rows": 42,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "BTS",
-          "total_rows": 42,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
           "mv_gap_rows": 42,
           "mv_gap_ratio": 1.0
         },
@@ -907,12 +900,20 @@
           "mv_gap_ratio": 1.0
         },
         {
+          "group": "BTS",
+          "total_rows": 42,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 37,
+          "mv_gap_ratio": 0.881
+        },
+        {
           "group": "SEVENTEEN",
           "total_rows": 38,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 16,
-          "mv_gap_rows": 36,
-          "mv_gap_ratio": 0.9474
+          "title_track_gap_rows": 13,
+          "mv_gap_rows": 33,
+          "mv_gap_ratio": 0.8684
         },
         {
           "group": "TOMORROW X TOGETHER",
@@ -952,22 +953,6 @@
           "title_track_gap_ratio": 0.2679
         },
         {
-          "group": "SEVENTEEN",
-          "total_rows": 32,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 14,
-          "mv_gap_rows": 30,
-          "title_track_gap_ratio": 0.4375
-        },
-        {
-          "group": "TWICE",
-          "total_rows": 40,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 12,
-          "mv_gap_rows": 36,
-          "title_track_gap_ratio": 0.3
-        },
-        {
           "group": "ATEEZ",
           "total_rows": 26,
           "detail_gap_rows": 0,
@@ -992,12 +977,12 @@
           "title_track_gap_ratio": 0.9231
         },
         {
-          "group": "BTS",
-          "total_rows": 42,
+          "group": "SEVENTEEN",
+          "total_rows": 32,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 42,
-          "title_track_gap_ratio": 0.2381
+          "title_track_gap_rows": 11,
+          "mv_gap_rows": 27,
+          "title_track_gap_ratio": 0.3438
         },
         {
           "group": "BTOB",
@@ -1006,6 +991,22 @@
           "title_track_gap_rows": 10,
           "mv_gap_rows": 37,
           "title_track_gap_ratio": 0.2703
+        },
+        {
+          "group": "MAMAMOO",
+          "total_rows": 32,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 10,
+          "mv_gap_rows": 32,
+          "title_track_gap_ratio": 0.3125
+        },
+        {
+          "group": "THE BOYZ",
+          "total_rows": 32,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 10,
+          "mv_gap_rows": 32,
+          "title_track_gap_ratio": 0.3125
         }
       ],
       "mv": [
@@ -1021,17 +1022,17 @@
           "group": "SHINee",
           "total_rows": 47,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 9,
-          "mv_gap_rows": 47,
-          "mv_gap_ratio": 1.0
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 43,
+          "mv_gap_ratio": 0.9149
         },
         {
           "group": "BTS",
           "total_rows": 42,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 42,
-          "mv_gap_ratio": 1.0
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 37,
+          "mv_gap_ratio": 0.881
         },
         {
           "group": "BTOB",
@@ -1040,14 +1041,6 @@
           "title_track_gap_rows": 10,
           "mv_gap_rows": 37,
           "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "TWICE",
-          "total_rows": 40,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 12,
-          "mv_gap_rows": 36,
-          "mv_gap_ratio": 0.9
         },
         {
           "group": "MAMAMOO",
@@ -1066,12 +1059,12 @@
           "mv_gap_ratio": 1.0
         },
         {
-          "group": "SEVENTEEN",
-          "total_rows": 32,
+          "group": "TWICE",
+          "total_rows": 40,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 14,
-          "mv_gap_rows": 30,
-          "mv_gap_ratio": 0.9375
+          "title_track_gap_rows": 7,
+          "mv_gap_rows": 31,
+          "mv_gap_ratio": 0.775
         },
         {
           "group": "Red Velvet",
@@ -1087,6 +1080,14 @@
           "detail_gap_rows": 0,
           "title_track_gap_rows": 10,
           "mv_gap_rows": 29,
+          "mv_gap_ratio": 1.0
+        },
+        {
+          "group": "Stray Kids",
+          "total_rows": 28,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 10,
+          "mv_gap_rows": 28,
           "mv_gap_ratio": 1.0
         }
       ]
@@ -1441,27 +1442,335 @@
       },
       "title_track_resolved": {
         "status": "fail",
-        "observed_total": 0.6282,
-        "observed_pre_2024": 0.6045,
+        "observed_total": 0.6446,
+        "observed_pre_2024": 0.6201,
         "threshold_total": 0.8,
         "threshold_pre_2024": 0.6
       },
       "canonical_mv": {
         "status": "fail",
-        "observed_total": 0.0429,
-        "observed_pre_2024": 0.0173,
+        "observed_total": 0.0633,
+        "observed_pre_2024": 0.033,
         "threshold_total": 0.65,
         "threshold_pre_2024": 0.35
       }
     },
     "cutover_ready": false,
     "cutover_status": "fail",
-    "generated_at": "2026-03-09",
+    "generated_at": "2026-03-10",
     "summary_lines": [
       "detail payload gate: pass (total 100.0%, pre-2024 100.0%)",
       "detail trusted gate: pass (total 100.0%, pre-2024 100.0%)",
-      "title-track resolved gate: fail (total 62.8%, pre-2024 60.5%)",
-      "canonical MV gate: fail (total 4.3%, pre-2024 1.7%)"
+      "title-track resolved gate: fail (total 64.5%, pre-2024 62.0%)",
+      "canonical MV gate: fail (total 6.3%, pre-2024 3.3%)"
+    ]
+  },
+  "migration_priority_slice": {
+    "label": "migration_critical_first_slice",
+    "entity_groups": [
+      "BLACKPINK",
+      "BTS",
+      "SEVENTEEN",
+      "SHINee",
+      "TWICE"
+    ],
+    "expected_rows": 18,
+    "rows_before": 18,
+    "rows_after": 18,
+    "missing_rows_before": [],
+    "missing_rows_after": [],
+    "before": {
+      "total_rows": 18,
+      "detail_payload_rows": 18,
+      "detail_payload_ratio": 1.0,
+      "detail_trusted_rows": 18,
+      "detail_trusted_ratio": 1.0,
+      "detail_inferred_rows": 0,
+      "detail_inferred_ratio": 0.0,
+      "detail_review_rows": 0,
+      "detail_review_ratio": 0.0,
+      "detail_unresolved_rows": 0,
+      "detail_unresolved_ratio": 0.0,
+      "title_track_resolved_rows": 18,
+      "title_track_resolved_ratio": 1.0,
+      "title_track_review_rows": 0,
+      "title_track_review_ratio": 0.0,
+      "title_track_unresolved_rows": 0,
+      "title_track_unresolved_ratio": 0.0,
+      "canonical_mv_rows": 2,
+      "canonical_mv_ratio": 0.1111,
+      "mv_review_rows": 0,
+      "mv_review_ratio": 0.0,
+      "mv_unresolved_rows": 16,
+      "mv_unresolved_ratio": 0.8889,
+      "mv_no_mv_rows": 0,
+      "mv_no_mv_ratio": 0.0
+    },
+    "after": {
+      "total_rows": 18,
+      "detail_payload_rows": 18,
+      "detail_payload_ratio": 1.0,
+      "detail_trusted_rows": 18,
+      "detail_trusted_ratio": 1.0,
+      "detail_inferred_rows": 0,
+      "detail_inferred_ratio": 0.0,
+      "detail_review_rows": 0,
+      "detail_review_ratio": 0.0,
+      "detail_unresolved_rows": 0,
+      "detail_unresolved_ratio": 0.0,
+      "title_track_resolved_rows": 18,
+      "title_track_resolved_ratio": 1.0,
+      "title_track_review_rows": 0,
+      "title_track_review_ratio": 0.0,
+      "title_track_unresolved_rows": 0,
+      "title_track_unresolved_ratio": 0.0,
+      "canonical_mv_rows": 18,
+      "canonical_mv_ratio": 1.0,
+      "mv_review_rows": 0,
+      "mv_review_ratio": 0.0,
+      "mv_unresolved_rows": 0,
+      "mv_unresolved_ratio": 0.0,
+      "mv_no_mv_rows": 0,
+      "mv_no_mv_ratio": 0.0
+    },
+    "gates": {
+      "thresholds": {
+        "detail_payload_min": 1.0,
+        "detail_trusted_min": 1.0,
+        "title_track_resolved_min": 1.0,
+        "canonical_mv_min": 1.0
+      },
+      "gates": {
+        "detail_payload": {
+          "status": "pass",
+          "observed": 1.0,
+          "threshold": 1.0
+        },
+        "detail_trusted": {
+          "status": "pass",
+          "observed": 1.0,
+          "threshold": 1.0
+        },
+        "title_track_resolved": {
+          "status": "pass",
+          "observed": 1.0,
+          "threshold": 1.0
+        },
+        "canonical_mv": {
+          "status": "pass",
+          "observed": 1.0,
+          "threshold": 1.0
+        }
+      },
+      "cutover_ready": true,
+      "cutover_status": "pass",
+      "generated_at": "2026-03-10",
+      "summary_lines": [
+        "detail_payload gate: pass (100.0% vs 100.0%)",
+        "detail_trusted gate: pass (100.0% vs 100.0%)",
+        "title_track_resolved gate: pass (100.0% vs 100.0%)",
+        "canonical_mv gate: pass (100.0% vs 100.0%)"
+      ]
+    },
+    "release_rows": [
+      {
+        "group": "BTS",
+        "release_title": "DARK&WILD",
+        "release_date": "2014-08-20",
+        "stream": "album",
+        "title_tracks": [
+          "Danger"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=43r6lXilbcQ",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "화양연화 pt.1",
+        "release_date": "2015-04-29",
+        "stream": "album",
+        "title_tracks": [
+          "I NEED U"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=jjskoRh8GTE",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "LOVE YOURSELF 承 ‘Her’",
+        "release_date": "2017-04-10",
+        "stream": "album",
+        "title_tracks": [
+          "DNA"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=MBdVXkSdhwU",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "LOVE YOURSELF 轉 ‘Tear’",
+        "release_date": "2018-05-18",
+        "stream": "album",
+        "title_tracks": [
+          "FAKE LOVE"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=7C2z4GqqS5E",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "MAP OF THE SOUL : PERSONA",
+        "release_date": "2019-04-12",
+        "stream": "album",
+        "title_tracks": [
+          "작은 것들을 위한 시 (Boy With Luv)"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=XsX3ATc3FbA",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BLACKPINK",
+        "release_title": "SQUARE UP",
+        "release_date": "2018-06-15",
+        "stream": "album",
+        "title_tracks": [
+          "뚜두뚜두 (DDU-DU DDU-DU)"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=IHNzOHi8sJs",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "THE STORY BEGINS",
+        "release_date": "2015-10-20",
+        "stream": "album",
+        "title_tracks": [
+          "OOH-AHH하게"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=0rtV5esQT6I",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "PAGE TWO",
+        "release_date": "2016-04-25",
+        "stream": "album",
+        "title_tracks": [
+          "CHEER UP"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=c7rCyll5AeY",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "TWICEcoaster : LANE 1",
+        "release_date": "2016-10-24",
+        "stream": "album",
+        "title_tracks": [
+          "TT"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=ePpPVE-GGJw",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "twicetagram",
+        "release_date": "2017-10-30",
+        "stream": "album",
+        "title_tracks": [
+          "LIKEY"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=V2hlQkVJZhE",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "Eyes wide open",
+        "release_date": "2020-10-26",
+        "stream": "album",
+        "title_tracks": [
+          "I CAN'T STOP ME"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=CM4CkVFmTds",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SEVENTEEN",
+        "release_title": "17 CARAT",
+        "release_date": "2015-05-29",
+        "stream": "album",
+        "title_tracks": [
+          "아낀다"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=9rUFQJrCT7M",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SEVENTEEN",
+        "release_title": "BOYS BE",
+        "release_date": "2015-09-10",
+        "stream": "album",
+        "title_tracks": [
+          "만세"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=9M7k9ZV67c0",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SEVENTEEN",
+        "release_title": "TEEN, AGE",
+        "release_date": "2017-11-06",
+        "stream": "album",
+        "title_tracks": [
+          "박수"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=CyzEtbG-sxY",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "Romeo",
+        "release_date": "2009-05-18",
+        "stream": "album",
+        "title_tracks": [
+          "Juliette"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=XwkP3qfwqs8",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "2009, Year of Us",
+        "release_date": "2009-10-19",
+        "stream": "album",
+        "title_tracks": [
+          "Ring Ding Dong"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=roughtzsCDI",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "Odd",
+        "release_date": "2015-05-18",
+        "stream": "album",
+        "title_tracks": [
+          "View"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=UF53cptEE5k",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "The Story of Light EP.1",
+        "release_date": "2018-05-28",
+        "stream": "album",
+        "title_tracks": [
+          "Good Evening"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=7dGwk5-QMpc",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      }
     ]
   },
   "detail_status_counts": {
@@ -1470,26 +1779,26 @@
   },
   "title_track_status_counts": {
     "preserved_existing": 1105,
-    "unresolved": 591,
-    "review": 67,
-    "manual_override": 7
+    "unresolved": 564,
+    "review": 65,
+    "manual_override": 36
   },
   "release_level_title_track_status_counts": {
     "verified": 1105,
-    "unresolved": 591,
-    "review_needed": 67,
-    "manual_override": 7
+    "unresolved": 564,
+    "review_needed": 65,
+    "manual_override": 36
   },
   "youtube_video_status_counts": {
-    "unresolved": 1691,
-    "manual_override": 55,
+    "unresolved": 1655,
+    "manual_override": 91,
     "relation_match": 21,
     "needs_review": 2,
     "no_mv": 1
   },
   "title_track_auto_resolved_rows": 0,
   "title_track_auto_double_rows": 0,
-  "title_track_review_queue_rows": 658,
+  "title_track_review_queue_rows": 629,
   "title_track_review_queue_sample": [
     {
       "group": "&TEAM",
@@ -1695,7 +2004,7 @@
       "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
     }
   ],
-  "release_detail_review_queue_rows": 1760,
+  "release_detail_review_queue_rows": 1754,
   "release_detail_review_queue_sample": [
     {
       "group": "&TEAM",
@@ -1707,11 +2016,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 6,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -1734,6 +2044,12 @@
           "success": false,
           "filled_fields": [],
           "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -1767,11 +2083,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 6,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -1794,6 +2111,12 @@
           "success": false,
           "filled_fields": [],
           "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -1828,15 +2151,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 10,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "musicbrainz_release_group_lookup",
-        "musicbrainz_release_group_release_lookup",
-        "musicbrainz_release_search_lookup",
-        "musicbrainz_release_search_release_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -1861,28 +2181,10 @@
           "note": "no override"
         },
         {
-          "method": "musicbrainz_release_group_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "release_group_id=d610e963-5242-4e35-8e9e-086d1bfb8c04"
-        },
-        {
-          "method": "musicbrainz_release_group_release_lookup",
+          "method": "external_acquisition_skipped",
           "success": false,
           "filled_fields": [],
-          "note": "release_id=0e230aac-8d8f-44a0-a9f6-8cc009ac5013"
-        },
-        {
-          "method": "musicbrainz_release_search_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "skipped_no_track_gap"
-        },
-        {
-          "method": "musicbrainz_release_search_release_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "skipped_no_track_gap"
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -1916,11 +2218,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 6,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -1943,6 +2246,12 @@
           "success": false,
           "filled_fields": [],
           "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -1977,15 +2286,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 10,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "musicbrainz_release_group_lookup",
-        "musicbrainz_release_group_release_lookup",
-        "musicbrainz_release_search_lookup",
-        "musicbrainz_release_search_release_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2010,28 +2316,10 @@
           "note": "no override"
         },
         {
-          "method": "musicbrainz_release_group_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "release_group_id=cbfa2485-1c7a-49c3-95d0-e32698bac896"
-        },
-        {
-          "method": "musicbrainz_release_group_release_lookup",
+          "method": "external_acquisition_skipped",
           "success": false,
           "filled_fields": [],
-          "note": "release_id=e8b1e411-5bd9-45a5-a274-0cfeb949d907"
-        },
-        {
-          "method": "musicbrainz_release_search_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "skipped_no_track_gap"
-        },
-        {
-          "method": "musicbrainz_release_search_release_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "skipped_no_track_gap"
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2065,11 +2353,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 6,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2092,6 +2381,12 @@
           "success": false,
           "filled_fields": [],
           "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2125,11 +2420,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 6,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2152,6 +2448,12 @@
           "success": false,
           "filled_fields": [],
           "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2185,11 +2487,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 6,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2212,6 +2515,12 @@
           "success": false,
           "filled_fields": [],
           "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2245,11 +2554,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 6,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2272,6 +2582,12 @@
           "success": false,
           "filled_fields": [],
           "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2305,11 +2621,12 @@
         "youtube_music_url",
         "youtube_video"
       ],
-      "attempted_methods_count": 6,
+      "attempted_methods_count": 7,
       "attempted_methods": [
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
+        "external_acquisition_skipped",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2332,6 +2649,12 @@
           "success": false,
           "filled_fields": [],
           "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2362,13 +2685,10 @@
     "existing_exact_lookup": 1770,
     "existing_relaxed_lookup": 1770,
     "manual_override_lookup": 1770,
+    "external_acquisition_skipped": 1770,
     "youtube_music_pipeline_lookup": 1770,
     "youtube_mv_pipeline_lookup": 1770,
-    "placeholder_seed_fallback": 1770,
-    "musicbrainz_release_group_lookup": 677,
-    "musicbrainz_release_group_release_lookup": 677,
-    "musicbrainz_release_search_lookup": 677,
-    "musicbrainz_release_search_release_lookup": 677
+    "placeholder_seed_fallback": 1770
   },
   "title_track_spot_checks": [
     {
@@ -2583,61 +2903,57 @@
       "candidate_titles": []
     },
     {
-      "group": "IVE",
-      "release_title": "REVIVE+",
-      "release_date": "2026-02-23",
+      "group": "BLACKPINK",
+      "release_title": "SQUARE UP",
+      "release_date": "2018-06-15",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "manual_override",
+      "title_tracks": [],
+      "candidate_titles": [
+        "뚜두뚜두 (DDU-DU DDU-DU)"
+      ]
+    },
+    {
+      "group": "BTS",
+      "release_title": "DARK&WILD",
+      "release_date": "2014-08-20",
       "stream": "album",
       "release_kind": "album",
       "status": "manual_override",
       "title_tracks": [
-        "BLACKHOLE",
-        "BANG BANG"
+        "Danger"
       ],
       "candidate_titles": [
-        "BLACKHOLE",
-        "BANG BANG"
+        "Danger"
       ]
     },
     {
-      "group": "MCND",
-      "release_title": "아뜨뜨뜨",
-      "release_date": "2024-08-08",
-      "stream": "song",
-      "release_kind": "single",
+      "group": "BTS",
+      "release_title": "화양연화 pt.1",
+      "release_date": "2015-04-29",
+      "stream": "album",
+      "release_kind": "ep",
       "status": "manual_override",
       "title_tracks": [
-        "아뜨뜨뜨"
+        "I NEED U"
       ],
       "candidate_titles": [
-        "아뜨뜨뜨"
+        "I NEED U"
       ]
     },
     {
-      "group": "TWICE",
-      "release_title": "One More Time",
-      "release_date": "2017-10-13",
-      "stream": "song",
-      "release_kind": "single",
+      "group": "BTS",
+      "release_title": "LOVE YOURSELF 承 ‘Her’",
+      "release_date": "2017-04-10",
+      "stream": "album",
+      "release_kind": "ep",
       "status": "manual_override",
       "title_tracks": [
-        "One More Time"
+        "DNA"
       ],
       "candidate_titles": [
-        "One More Time"
-      ]
-    },
-    {
-      "group": "TWICE",
-      "release_title": "Candy Pop",
-      "release_date": "2018-01-12",
-      "stream": "song",
-      "release_kind": "single",
-      "status": "manual_override",
-      "title_tracks": [
-        "Candy Pop"
-      ],
-      "candidate_titles": [
-        "Candy Pop"
+        "DNA"
       ]
     },
     {
@@ -2698,22 +3014,19 @@
     },
     "inferred": null,
     "manual_override": {
-      "group": "IVE",
-      "release_title": "REVIVE+",
-      "release_date": "2026-02-23",
+      "group": "BLACKPINK",
+      "release_title": "SQUARE UP",
+      "release_date": "2018-06-15",
       "stream": "album",
-      "release_kind": "album",
+      "release_kind": "ep",
       "detail_status": "verified",
-      "detail_provenance": "releaseDetails.existing_row",
+      "detail_provenance": "musicbrainz.release_group_release",
       "title_track_status": "manual_override",
       "title_track_provenance": "release_detail_overrides.title_tracks",
-      "youtube_video_status": "unresolved",
-      "youtube_video_provenance": "releaseDetails.no_mv_signal",
-      "title_tracks": [
-        "BLACKHOLE",
-        "BANG BANG"
-      ],
-      "track_count": 12
+      "youtube_video_status": "manual_override",
+      "youtube_video_provenance": "migration-critical first slice official MV URL",
+      "title_tracks": [],
+      "track_count": 4
     },
     "relation_derived_mv": {
       "group": "BLACKPINK",
@@ -2766,9 +3079,9 @@
     }
   },
   "rows_with_youtube_music_after": 87,
-  "rows_with_youtube_mv_after": 76,
-  "override_rows_total": 97,
-  "applied_overrides": 96,
+  "rows_with_youtube_mv_after": 112,
+  "override_rows_total": 127,
+  "applied_overrides": 126,
   "override_sample_matches": [
     {
       "group": "&TEAM",

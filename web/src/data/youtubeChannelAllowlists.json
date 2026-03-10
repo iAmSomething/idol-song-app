@@ -140,6 +140,156 @@
     ]
   },
   {
+    "group": "CHUNG HA",
+    "primary_team_channel_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "mv_allowlist_match_keys": [
+      "@chungha_official",
+      "https://www.youtube.com/@chungha_official"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
+        "channel_label": "CHUNG HA",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url",
+        "match_keys": [
+          "@chungha_official",
+          "https://www.youtube.com/@chungha_official"
+        ]
+      }
+    ]
+  },
+  {
+    "group": "CHUU",
+    "primary_team_channel_url": "https://www.youtube.com/@CHUUOfficial",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "mv_allowlist_match_keys": [
+      "@chuuofficial",
+      "https://www.youtube.com/@chuuofficial"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@CHUUOfficial",
+        "channel_label": "CHUU",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url",
+        "match_keys": [
+          "@chuuofficial",
+          "https://www.youtube.com/@chuuofficial"
+        ]
+      }
+    ]
+  },
+  {
+    "group": "JEON SOMI",
+    "primary_team_channel_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "mv_allowlist_match_keys": [
+      "@jeonsomiofficial",
+      "https://www.youtube.com/@jeonsomiofficial"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
+        "channel_label": "JEON SOMI",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url",
+        "match_keys": [
+          "@jeonsomiofficial",
+          "https://www.youtube.com/@jeonsomiofficial"
+        ]
+      }
+    ]
+  },
+  {
+    "group": "KWON EUNBI",
+    "primary_team_channel_url": "https://www.youtube.com/@KWONEUNBI",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "mv_allowlist_match_keys": [
+      "@kwoneunbi",
+      "https://www.youtube.com/@kwoneunbi"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@KWONEUNBI",
+        "channel_label": "KWON EUNBI",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url",
+        "match_keys": [
+          "@kwoneunbi",
+          "https://www.youtube.com/@kwoneunbi"
+        ]
+      }
+    ]
+  },
+  {
+    "group": "YUJU",
+    "primary_team_channel_url": "https://www.youtube.com/@YUJUofficial",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "mv_allowlist_match_keys": [
+      "@yujuofficial",
+      "https://www.youtube.com/@yujuofficial"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@YUJUofficial",
+        "channel_label": "YUJU",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url",
+        "match_keys": [
+          "@yujuofficial",
+          "https://www.youtube.com/@yujuofficial"
+        ]
+      }
+    ]
+  },
+  {
+    "group": "Yves",
+    "primary_team_channel_url": "https://www.youtube.com/@YVES_OFFICIAL",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YVES_OFFICIAL"
+    ],
+    "mv_allowlist_match_keys": [
+      "@yves_official",
+      "https://www.youtube.com/@yves_official"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@YVES_OFFICIAL",
+        "channel_label": "Yves",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url",
+        "match_keys": [
+          "@yves_official",
+          "https://www.youtube.com/@yves_official"
+        ]
+      }
+    ]
+  },
+  {
     "group": "ALL(H)OURS",
     "primary_team_channel_url": null,
     "mv_allowlist_urls": [],
@@ -1813,7 +1963,8 @@
     "primary_team_channel_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "mv_allowlist_match_keys": [
       "channel:uc0gpunoyhu44as3-nxys7rg",
@@ -1845,6 +1996,14 @@
           "@hybelabels",
           "https://www.youtube.com/@hybelabels"
         ]
+      },
+      {
+        "channel_url": "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA",
+        "channel_label": "PLEDIS",
+        "owner_type": "label",
+        "allow_mv_uploads": true,
+        "display_in_team_links": false,
+        "provenance": "manual_override_legacy_label_channel"
       }
     ]
   },
@@ -2151,6 +2310,31 @@
         "match_keys": [
           "@jypentertainment",
           "https://www.youtube.com/@jypentertainment"
+        ]
+      }
+    ]
+  },
+  {
+    "group": "TUNEXX",
+    "primary_team_channel_url": "https://www.youtube.com/@official_TUNEXX",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@official_TUNEXX"
+    ],
+    "mv_allowlist_match_keys": [
+      "@official_tunexx",
+      "https://www.youtube.com/@official_tunexx"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@official_TUNEXX",
+        "channel_label": "TUNEXX",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url",
+        "match_keys": [
+          "@official_tunexx",
+          "https://www.youtube.com/@official_tunexx"
         ]
       }
     ]
@@ -2638,6 +2822,56 @@
         "match_keys": [
           "channel:ucptc0mxsw40qq7rkhscxjuq",
           "https://www.youtube.com/channel/ucptc0mxsw40qq7rkhscxjuq"
+        ]
+      }
+    ]
+  },
+  {
+    "group": "XLOV",
+    "primary_team_channel_url": "https://www.youtube.com/@XLOV_official",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@XLOV_official"
+    ],
+    "mv_allowlist_match_keys": [
+      "@xlov_official",
+      "https://www.youtube.com/@xlov_official"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@XLOV_official",
+        "channel_label": "XLOV",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url",
+        "match_keys": [
+          "@xlov_official",
+          "https://www.youtube.com/@xlov_official"
+        ]
+      }
+    ]
+  },
+  {
+    "group": "YENA",
+    "primary_team_channel_url": "https://www.youtube.com/@yena_official",
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "mv_allowlist_match_keys": [
+      "@yena_official",
+      "https://www.youtube.com/@yena_official"
+    ],
+    "channels": [
+      {
+        "channel_url": "https://www.youtube.com/@yena_official",
+        "channel_label": "YENA",
+        "owner_type": "team",
+        "allow_mv_uploads": true,
+        "display_in_team_links": true,
+        "provenance": "artistProfiles.official_youtube_url",
+        "match_keys": [
+          "@yena_official",
+          "https://www.youtube.com/@yena_official"
         ]
       }
     ]

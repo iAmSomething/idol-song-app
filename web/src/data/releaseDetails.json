@@ -7642,8 +7642,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -7664,11 +7664,11 @@
     ],
     "spotify_url": "https://open.spotify.com/album/1HwIUaaEuRsxsIyssqtGLH",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=IHNzOHi8sJs",
+    "youtube_video_id": "IHNzOHi8sJs",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "BLACKPINK",
@@ -10749,73 +10749,87 @@
     "release_kind": "album",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "Intro: What Am I to You"
+        "title": "Intro: What Am I to You",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Danger"
+        "title": "Danger",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "War of Hormone"
+        "title": "War of Hormone",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Hip Hop Phile"
+        "title": "Hip Hop Phile",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Let Me Know"
+        "title": "Let Me Know",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Rain"
+        "title": "Rain",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "BTS Cypher, Pt. 3: Killer"
+        "title": "BTS Cypher, Pt. 3: Killer",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "Interlude: What Are You Doing Now"
+        "title": "Interlude: What Are You Doing Now",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "Could You Turn off Your Cell Phone"
+        "title": "Could You Turn off Your Cell Phone",
+        "is_title_track": false
       },
       {
         "order": 10,
-        "title": "Embarrassed"
+        "title": "Embarrassed",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "24/7=Heaven"
+        "title": "24/7=Heaven",
+        "is_title_track": false
       },
       {
         "order": 12,
-        "title": "Look Here"
+        "title": "Look Here",
+        "is_title_track": false
       },
       {
         "order": 13,
-        "title": "Second Grade"
+        "title": "Second Grade",
+        "is_title_track": false
       },
       {
         "order": 14,
-        "title": "Outro: Do You Think It Makes Sense?"
+        "title": "Outro: Do You Think It Makes Sense?",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/35voVqYGkotyJ945O9egDY",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=43r6lXilbcQ",
+    "youtube_video_id": "43r6lXilbcQ",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "BTS",
@@ -10932,53 +10946,62 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "Intro : 화양연화"
+        "title": "Intro : 화양연화",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "I NEED U"
+        "title": "I NEED U",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "잡아줘 (Hold Me Tight)"
+        "title": "잡아줘 (Hold Me Tight)",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "SKIT : Expectation!"
+        "title": "SKIT : Expectation!",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "쩔어"
+        "title": "쩔어",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "흥탄소년단"
+        "title": "흥탄소년단",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "Converse High"
+        "title": "Converse High",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "이사"
+        "title": "이사",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "Outro : Love is Not Over"
+        "title": "Outro : Love is Not Over",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=jjskoRh8GTE",
+    "youtube_video_id": "jjskoRh8GTE",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "BTS",
@@ -11316,53 +11339,62 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "Intro: Serendipity"
+        "title": "Intro: Serendipity",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "DNA"
+        "title": "DNA",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "Best of Me"
+        "title": "Best of Me",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "dimple"
+        "title": "dimple",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Pied Piper"
+        "title": "Pied Piper",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Skit: Billboard Music Awards Speech"
+        "title": "Skit: Billboard Music Awards Speech",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "MIC Drop"
+        "title": "MIC Drop",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "Go Go"
+        "title": "Go Go",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "Outro: Her"
+        "title": "Outro: Her",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=MBdVXkSdhwU",
+    "youtube_video_id": "MBdVXkSdhwU",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "BTS",
@@ -11560,61 +11592,72 @@
     "release_kind": "album",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "Intro : Singularity"
+        "title": "Intro : Singularity",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "FAKE LOVE"
+        "title": "FAKE LOVE",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "전하지 못한 진심"
+        "title": "전하지 못한 진심",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "134340"
+        "title": "134340",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "낙원"
+        "title": "낙원",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Love Maze"
+        "title": "Love Maze",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "Magic Shop"
+        "title": "Magic Shop",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "Airplane pt.2"
+        "title": "Airplane pt.2",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "Anpanman"
+        "title": "Anpanman",
+        "is_title_track": false
       },
       {
         "order": 10,
-        "title": "So What"
+        "title": "So What",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "Outro : Tear"
+        "title": "Outro : Tear",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/2jJfnAZE6IG3oYnUv2eCj4",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=7C2z4GqqS5E",
+    "youtube_video_id": "7C2z4GqqS5E",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (official HYBE LABELS MV URL). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "BTS",
@@ -11689,8 +11732,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -11723,11 +11766,11 @@
     ],
     "spotify_url": "https://open.spotify.com/album/1AvXa8xFEXtR3hb4bgihIK",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=XsX3ATc3FbA",
+    "youtube_video_id": "XsX3ATc3FbA",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "BTS",
@@ -20303,8 +20346,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "releaseDetails.existing_row",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -20368,7 +20411,7 @@
     "youtube_video_id": "R6e4tBWxIxE",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz EP seed with 11 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+    "notes": "Representative MusicBrainz EP seed with 11 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "EPEX",
@@ -22747,8 +22790,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "releaseDetails.existing_row",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -22772,7 +22815,7 @@
     "youtube_video_id": "xAOT6ISD9jo",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz EP seed with 3 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz EP seed with 3 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "fromis_9",
@@ -27704,7 +27747,7 @@
     "youtube_video_id": "9qkpcLK422o",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "IVE",
@@ -30251,8 +30294,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "releaseDetails.existing_row",
-    "title_track_status": "review_needed",
-    "title_track_provenance": "release_title_substring | nearby_song_release:2025-11-04",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -30291,7 +30334,7 @@
     "youtube_video_id": "zhHB4dZTChw",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "KISS OF LIFE",
@@ -30663,8 +30706,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "releaseDetails.existing_row",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -30703,7 +30746,7 @@
     "youtube_video_id": "j6OqLm0lQ68",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "KWON EUNBI",
@@ -38584,7 +38627,7 @@
     "youtube_video_id": "wvtNmMmcAYw",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "NCT WISH",
@@ -41648,8 +41691,8 @@
     "release_kind": "single",
     "detail_status": "verified",
     "detail_provenance": "releaseDetails.existing_row",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -41673,7 +41716,7 @@
     "youtube_video_id": "_UQCWEp-8BQ",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "ONEWE",
@@ -44196,8 +44239,8 @@
     "release_kind": "single",
     "detail_status": "verified",
     "detail_provenance": "releaseDetails.existing_row",
-    "title_track_status": "review_needed",
-    "title_track_provenance": "release_title_substring | nearby_song_release:2025-09-15",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -44221,7 +44264,7 @@
     "youtube_video_id": "8L001YT4k6k",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks."
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "POW",
@@ -46831,7 +46874,7 @@
     "youtube_video_id": "ByX8EZq8500",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "RESCENE",
@@ -47434,7 +47477,7 @@
     "youtube_video_id": "yfKBI5l81-A",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "SAY MY NAME",
@@ -47545,8 +47588,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "releaseDetails.existing_row",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -47580,7 +47623,7 @@
     "youtube_video_id": "-fPz0KoVwog",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "SEVENTEEN",
@@ -47590,8 +47633,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -47616,11 +47659,11 @@
     ],
     "spotify_url": "https://open.spotify.com/album/0H2K2JrzdvJcxBEPyxC2sl",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=9rUFQJrCT7M",
+    "youtube_video_id": "9rUFQJrCT7M",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "SEVENTEEN",
@@ -47630,37 +47673,42 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "표정관리"
+        "title": "표정관리",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "만세"
+        "title": "만세",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "어른이 되면"
+        "title": "어른이 되면",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "OMG"
+        "title": "OMG",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "ROCK"
+        "title": "ROCK",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=9M7k9ZV67c0",
+    "youtube_video_id": "9M7k9ZV67c0",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "SEVENTEEN",
@@ -47886,8 +47934,8 @@
     "release_kind": "album",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -47944,11 +47992,11 @@
     ],
     "spotify_url": "https://open.spotify.com/album/5aHdNainJWMc3n2AqfiOg5",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=CyzEtbG-sxY",
+    "youtube_video_id": "CyzEtbG-sxY",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "SEVENTEEN",
@@ -49326,8 +49374,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -49356,11 +49404,11 @@
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=XwkP3qfwqs8",
+    "youtube_video_id": "XwkP3qfwqs8",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (official SMTOWN MV URL). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "SHINee",
@@ -49420,41 +49468,47 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "Y.O.U. (Year of Us)"
+        "title": "Y.O.U. (Year of Us)",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Ring Ding Dong"
+        "title": "Ring Ding Dong",
+        "is_title_track": true
       },
       {
         "order": 3,
-        "title": "Jo Jo"
+        "title": "Jo Jo",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Get Down"
+        "title": "Get Down",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "SHINee Girl"
+        "title": "SHINee Girl",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "내가 사랑했던 이름 (The Name)"
+        "title": "내가 사랑했던 이름 (The Name)",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=roughtzsCDI",
+    "youtube_video_id": "roughtzsCDI",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "SHINee",
@@ -50662,61 +50716,72 @@
     "release_kind": "album",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "Odd Eye"
+        "title": "Odd Eye",
+        "is_title_track": false
       },
       {
         "order": 2,
-        "title": "Love Sick"
+        "title": "Love Sick",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "View"
+        "title": "View",
+        "is_title_track": true
       },
       {
         "order": 4,
-        "title": "Romance"
+        "title": "Romance",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Trigger"
+        "title": "Trigger",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "이별의 길 (Farewell My Love)"
+        "title": "이별의 길 (Farewell My Love)",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "너의 노래가 되어 (An Ode To You)"
+        "title": "너의 노래가 되어 (An Ode To You)",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "Alive"
+        "title": "Alive",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "Woof Woof"
+        "title": "Woof Woof",
+        "is_title_track": false
       },
       {
         "order": 10,
-        "title": "Black Hole"
+        "title": "Black Hole",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "재연 (An Encore)"
+        "title": "재연 (An Encore)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5B47B9Brhcv7ZinHgBe6i9",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=UF53cptEE5k",
+    "youtube_video_id": "UF53cptEE5k",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "SHINee",
@@ -51084,8 +51149,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -51110,11 +51175,11 @@
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=7dGwk5-QMpc",
+    "youtube_video_id": "7dGwk5-QMpc",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "SHINee",
@@ -54313,8 +54378,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "releaseDetails.existing_row",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -54348,7 +54413,7 @@
     "youtube_video_id": "Hk2u4zlJ4HE",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+    "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "TEMPEST",
@@ -56876,7 +56941,7 @@
     "youtube_video_id": "0-xKvImq7Ek",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz SINGLE seed with 2 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz SINGLE seed with 2 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -60173,8 +60238,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -60203,7 +60268,7 @@
     "youtube_video_id": "cQESe4Jc0rE",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "TWICE",
@@ -60213,41 +60278,47 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "OOH‐AHH하게"
+        "title": "OOH‐AHH하게",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "다시 해줘"
+        "title": "다시 해줘",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "미쳤나봐"
+        "title": "미쳤나봐",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "Truth"
+        "title": "Truth",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Candy Boy"
+        "title": "Candy Boy",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Like a Fool"
+        "title": "Like a Fool",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/1XAFe5PYd46p6GA4Ckc4Hb",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=0rtV5esQT6I",
+    "youtube_video_id": "0rtV5esQT6I",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "TWICE",
@@ -60257,41 +60328,47 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "CHEER UP"
+        "title": "CHEER UP",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "소중한 사랑"
+        "title": "소중한 사랑",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "Touchdown"
+        "title": "Touchdown",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "툭하면 톡"
+        "title": "툭하면 톡",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "Woohoo"
+        "title": "Woohoo",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Headphone 써"
+        "title": "Headphone 써",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/3kWh17DuM0cn8YYrXXv25w",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=c7rCyll5AeY",
+    "youtube_video_id": "c7rCyll5AeY",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "TWICE",
@@ -60301,45 +60378,52 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "TT"
+        "title": "TT",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "1 TO 10"
+        "title": "1 TO 10",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "PONYTAIL"
+        "title": "PONYTAIL",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "JELLY JELLY"
+        "title": "JELLY JELLY",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "PIT‐A‐PAT"
+        "title": "PIT‐A‐PAT",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "NEXT PAGE"
+        "title": "NEXT PAGE",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "ONE IN A MILLION"
+        "title": "ONE IN A MILLION",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/56w7UaxCFwsRr5VVk0agy0",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=ePpPVE-GGJw",
+    "youtube_video_id": "ePpPVE-GGJw",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "TWICE",
@@ -60424,69 +60508,82 @@
     "release_kind": "album",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "LIKEY"
+        "title": "LIKEY",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "거북이"
+        "title": "거북이",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "MISSING U"
+        "title": "MISSING U",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "WOW"
+        "title": "WOW",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "FFW"
+        "title": "FFW",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "DING DONG"
+        "title": "DING DONG",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "24/7"
+        "title": "24/7",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "날 바라바라봐"
+        "title": "날 바라바라봐",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "ROLLIN’"
+        "title": "ROLLIN’",
+        "is_title_track": false
       },
       {
         "order": 10,
-        "title": "LOVE LINE"
+        "title": "LOVE LINE",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "힘내! (DON’T GIVE UP)"
+        "title": "힘내! (DON’T GIVE UP)",
+        "is_title_track": false
       },
       {
         "order": 12,
-        "title": "널 내게 담아"
+        "title": "널 내게 담아",
+        "is_title_track": false
       },
       {
         "order": 13,
-        "title": "잘자요 굿나잇"
+        "title": "잘자요 굿나잇",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=V2hlQkVJZhE",
+    "youtube_video_id": "V2hlQkVJZhE",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "TWICE",
@@ -61067,69 +61164,82 @@
     "release_kind": "album",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
-        "title": "I CAN’T STOP ME"
+        "title": "I CAN’T STOP ME",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "HELL IN HEAVEN"
+        "title": "HELL IN HEAVEN",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "UP NO MORE"
+        "title": "UP NO MORE",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "DO WHAT WE LIKE"
+        "title": "DO WHAT WE LIKE",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "BRING IT BACK"
+        "title": "BRING IT BACK",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "BELIEVER"
+        "title": "BELIEVER",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "QUEEN"
+        "title": "QUEEN",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "GO HARD"
+        "title": "GO HARD",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "SHOT CLOCK"
+        "title": "SHOT CLOCK",
+        "is_title_track": false
       },
       {
         "order": 10,
-        "title": "HANDLE IT"
+        "title": "HANDLE IT",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "DEPEND ON YOU"
+        "title": "DEPEND ON YOU",
+        "is_title_track": false
       },
       {
         "order": 12,
-        "title": "SAY SOMETHING"
+        "title": "SAY SOMETHING",
+        "is_title_track": false
       },
       {
         "order": 13,
-        "title": "BEHIND THE MASK"
+        "title": "BEHIND THE MASK",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/6vFZol8S54OKgwhe3CQhMx",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=CM4CkVFmTds",
+    "youtube_video_id": "CM4CkVFmTds",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "migration-critical first slice official MV URL",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   },
   {
     "group": "TWICE",
@@ -63555,8 +63665,8 @@
     "release_kind": "single",
     "detail_status": "verified",
     "detail_provenance": "releaseDetails.existing_row",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -63580,7 +63690,7 @@
     "youtube_video_id": "-gzqfjzqG6U",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "VIVIZ",
@@ -65666,7 +65776,7 @@
     "youtube_video_id": "ItvDjeiqdlE",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "woo!ah!",
@@ -67062,8 +67172,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "manual_override",
+    "title_track_provenance": "release_detail_overrides.title_tracks",
     "tracks": [
       {
         "order": 1,
@@ -67102,7 +67212,7 @@
     "youtube_video_id": "NCuFonpf-qk",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "YENA",
@@ -67831,7 +67941,7 @@
     "youtube_video_id": "obqsSgY4oU8",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-    "notes": "Representative MusicBrainz SINGLE seed with 2 tracks. Canonical links: Spotify."
+    "notes": "Representative MusicBrainz SINGLE seed with 2 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
     "group": "YOUNITE",
