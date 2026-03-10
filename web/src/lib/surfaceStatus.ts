@@ -1,4 +1,4 @@
-export type SurfaceStatusSource = 'api' | 'bridge' | 'api_error'
+export type SurfaceStatusSource = 'api' | 'json' | 'json_fallback' | 'backend_unavailable'
 export type SurfaceFallbackReasonKey =
   | 'timeout'
   | 'network_error'
@@ -7,14 +7,6 @@ export type SurfaceFallbackReasonKey =
   | 'disallowed_origin'
   | 'invalid_request'
   | 'unknown'
-
-type SurfaceStatusLabels = {
-  sourceLabel: string
-  reasonLabel: string
-  traceLabel: string
-  sourceStateLabels: Record<SurfaceStatusSource, string>
-  fallbackReasonLabels: Record<SurfaceFallbackReasonKey, string>
-}
 
 export function getSurfaceFallbackReasonKey(errorCode: string | null): SurfaceFallbackReasonKey | null {
   if (!errorCode) {
@@ -50,29 +42,4 @@ export function getSurfaceFallbackReasonKey(errorCode: string | null): SurfaceFa
   }
 
   return 'unknown'
-}
-
-export function buildSurfaceStatusMeta({
-  source,
-  errorCode,
-  traceId,
-  labels,
-}: {
-  source: SurfaceStatusSource
-  errorCode: string | null
-  traceId?: string | null
-  labels: SurfaceStatusLabels
-}) {
-  const parts = [`${labels.sourceLabel}: ${labels.sourceStateLabels[source]}`]
-  const reason = source === 'api_error' ? getSurfaceFallbackReasonKey(errorCode) : null
-
-  if (reason) {
-    parts.push(`${labels.reasonLabel}: ${labels.fallbackReasonLabels[reason]}`)
-  }
-
-  if (traceId) {
-    parts.push(`${labels.traceLabel}: ${traceId}`)
-  }
-
-  return parts.join(' · ')
 }
