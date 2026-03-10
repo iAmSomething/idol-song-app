@@ -2,7 +2,6 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Image,
-  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -28,6 +27,13 @@ import { selectEntityDetailSnapshot } from '../../src/selectors';
 import { loadActiveMobileDataset } from '../../src/services/activeDataset';
 import { adaptBackendEntityDetail } from '../../src/services/backendDisplayAdapters';
 import { BackendReadError, type BackendReadClient } from '../../src/services/backendReadClient';
+import {
+  classifyExternalLinkFailureCategory,
+  classifyServiceHandoffFailureCategory,
+  trackAnalyticsEvent,
+  trackFailureObserved,
+} from '../../src/services/analytics';
+import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
 import {
   openServiceHandoff,
   resolveServiceHandoff,
@@ -103,14 +109,6 @@ function buildOfficialLinks(team: TeamSummaryModel): OfficialLinkItem[] {
 
 function buildOfficialLinkAccessibilityLabel(team: TeamSummaryModel, link: OfficialLinkItem): string {
   return `${team.displayName} 공식 ${link.label} 열기`;
-}
-
-async function openExternalUrl(url: string) {
-  try {
-    await Linking.openURL(url);
-  } catch {
-    // Keep the current route stack stable when external handoff fails.
-  }
 }
 
 function getReleaseKindLabel(release: ReleaseSummaryModel): string {
@@ -284,12 +282,86 @@ export default function ArtistDetailScreen() {
     setShowAdditionalInfo(false);
   }, [reloadCount, slug]);
 
+  useEffect(() => {
+    if (!slug) {
+      return;
+    }
+
+    trackAnalyticsEvent('team_detail_viewed', {
+      teamSlug: slug,
+    });
+  }, [slug]);
+
   async function handleHandoff(
     handoff: ServiceHandoffResolution | ServiceHandoffFailure,
   ) {
+    trackAnalyticsEvent('service_handoff_attempted', {
+      surface: 'entity_detail',
+      service: handoff.service,
+      mode: handoff.mode,
+    });
     const result = await openServiceHandoff(handoff);
     if (!result.ok) {
+      trackAnalyticsEvent('service_handoff_completed', {
+        surface: 'entity_detail',
+        service: result.service,
+        mode: result.mode,
+        ok: false,
+        target: result.target,
+        failureCode: result.code,
+      });
+      trackAnalyticsEvent('service_handoff_failed', {
+        surface: 'entity_detail',
+        service: result.service,
+        mode: result.mode,
+        failureCode: result.code,
+        retryable: result.feedback.retryable,
+      });
+      trackFailureObserved(
+        'entity_detail',
+        classifyServiceHandoffFailureCategory(result.code),
+        result.code,
+        result.feedback.retryable,
+      );
       setHandoffFeedback(result.feedback.message);
+      return;
+    }
+
+    trackAnalyticsEvent('service_handoff_completed', {
+      surface: 'entity_detail',
+      service: result.service,
+      mode: result.mode,
+      ok: true,
+      target: result.target,
+      failureCode: null,
+    });
+    trackAnalyticsEvent('service_handoff_opened', {
+      surface: 'entity_detail',
+      service: result.service,
+      mode: result.mode,
+      target: result.target,
+    });
+    setHandoffFeedback(null);
+  }
+
+  async function handleExternalLink(url: string, linkType: 'official' | 'source' | 'artist_source') {
+    const opened = await openExternalLink(normalizeExternalLinkUrl(linkType, url));
+    trackAnalyticsEvent('source_link_opened', {
+      surface: 'entity_detail',
+      linkType,
+      host: opened.ok ? opened.host : opened.host,
+      ok: opened.ok,
+      failureCode: opened.ok ? null : opened.code,
+    });
+
+    if (!opened.ok) {
+      trackFailureObserved(
+        'entity_detail',
+        classifyExternalLinkFailureCategory(opened.code),
+        opened.code,
+        opened.feedback.retryable,
+      );
+      setHandoffFeedback(opened.feedback.message);
       return;
     }
 
@@ -419,7 +491,7 @@ export default function ArtistDetailScreen() {
                 accessibilityLabel={buildOfficialLinkAccessibilityLabel(snapshot.team, link)}
                 accessibilityHint="외부 공식 페이지를 엽니다."
                 accessibilityRole="button"
-                onPress={() => void openExternalUrl(link.url)}
+                onPress={() => void handleExternalLink(link.url, 'official')}
                 style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
               >
                 <Text style={styles.metaTextLinkLabel}>{link.label}</Text>
@@ -434,7 +506,7 @@ export default function ArtistDetailScreen() {
             accessibilityLabel={`${snapshot.team.displayName} 아티스트 출처 열기`}
             accessibilityHint="외부 기준 소스를 엽니다."
             accessibilityRole="button"
-            onPress={() => void openExternalUrl(snapshot.team.artistSourceUrl!)}
+            onPress={() => void handleExternalLink(snapshot.team.artistSourceUrl!, 'artist_source')}
             style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
           >
             <Text style={styles.metaTextLinkLabel}>아티스트 출처</Text>
@@ -480,7 +552,7 @@ export default function ArtistDetailScreen() {
               <Pressable
                 accessibilityLabel={`${snapshot.team.displayName} 다음 컴백 출처 열기`}
                 accessibilityRole="button"
-                onPress={() => void openExternalUrl(snapshot.nextUpcoming!.sourceUrl!)}
+                onPress={() => void handleExternalLink(snapshot.nextUpcoming!.sourceUrl!, 'source')}
                 style={({ pressed }) => [styles.metaButton, pressed ? styles.buttonPressed : null]}
               >
                 <Text style={styles.metaButtonLabel}>출처 보기</Text>
@@ -520,12 +592,16 @@ export default function ArtistDetailScreen() {
               testID="entity-latest-release-primary"
               accessibilityLabel={`${snapshot.latestRelease.releaseTitle} 릴리즈 상세 보기`}
               accessibilityRole="button"
-              onPress={() =>
+              onPress={() => {
+                trackAnalyticsEvent('team_detail_latest_release_opened', {
+                  teamSlug: snapshot.team.slug,
+                  releaseId: snapshot.latestRelease!.id,
+                });
                 router.push({
                   pathname: '/releases/[id]',
                   params: { id: snapshot.latestRelease!.id },
-                })
-              }
+                });
+              }}
               style={({ pressed }) => [styles.primaryButton, pressed ? styles.buttonPressed : null]}
             >
               <Text style={styles.primaryButtonLabel}>상세 보기</Text>
@@ -541,7 +617,7 @@ export default function ArtistDetailScreen() {
               <Pressable
                 accessibilityLabel={`${snapshot.latestRelease.releaseTitle} 발매 출처 열기`}
                 accessibilityRole="button"
-                onPress={() => void openExternalUrl(snapshot.latestRelease!.sourceUrl!)}
+                onPress={() => void handleExternalLink(snapshot.latestRelease!.sourceUrl!, 'source')}
                 style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
                 testID="entity-latest-release-source-link"
               >
@@ -567,12 +643,16 @@ export default function ArtistDetailScreen() {
             testID={`entity-recent-album-single-card-${snapshot.recentAlbums[0]!.id}`}
             accessibilityLabel={`${snapshot.recentAlbums[0]!.releaseTitle} 릴리즈 상세 열기`}
             accessibilityRole="button"
-            onPress={() =>
+            onPress={() => {
+              trackAnalyticsEvent('team_detail_album_opened', {
+                teamSlug: snapshot.team.slug,
+                releaseId: snapshot.recentAlbums[0]!.id,
+              });
               router.push({
                 pathname: '/releases/[id]',
                 params: { id: snapshot.recentAlbums[0]!.id },
-              })
-            }
+              });
+            }}
             style={({ pressed }) => [styles.singleAlbumCard, pressed ? styles.buttonPressed : null]}
           >
             <View style={styles.singleAlbumArtwork}>
@@ -597,12 +677,16 @@ export default function ArtistDetailScreen() {
                 testID={`entity-recent-album-card-${release.id}`}
                 accessibilityLabel={`${release.releaseTitle} 릴리즈 상세 열기`}
                 accessibilityRole="button"
-                onPress={() =>
+                onPress={() => {
+                  trackAnalyticsEvent('team_detail_album_opened', {
+                    teamSlug: snapshot.team.slug,
+                    releaseId: release.id,
+                  });
                   router.push({
                     pathname: '/releases/[id]',
                     params: { id: release.id },
-                  })
-                }
+                  });
+                }}
                 style={({ pressed }) => [styles.albumCard, pressed ? styles.buttonPressed : null]}
               >
                 <View style={styles.albumArtwork}>
@@ -650,7 +734,7 @@ export default function ArtistDetailScreen() {
                     <Pressable
                       accessibilityLabel={`${item.title} 소스 링크 열기`}
                       accessibilityRole="button"
-                      onPress={() => void openExternalUrl(item.sourceUrl!)}
+                      onPress={() => void handleExternalLink(item.sourceUrl!, 'source')}
                       style={({ pressed }) => [styles.metaButton, pressed ? styles.buttonPressed : null]}
                     >
                       <Text style={styles.metaButtonLabel}>열기</Text>

@@ -58,11 +58,17 @@ jest.mock('../services/handoff', () => {
   };
 });
 
-jest.mock('../services/analytics', () => ({
-  trackAnalyticsEvent: jest.fn(),
-  trackDatasetDegraded: jest.fn(),
-  trackDatasetLoadFailed: jest.fn(),
-}));
+jest.mock('../services/analytics', () => {
+  const actual = jest.requireActual('../services/analytics') as typeof import('../services/analytics');
+
+  return {
+    ...actual,
+    trackAnalyticsEvent: jest.fn(),
+    trackDatasetDegraded: jest.fn(),
+    trackDatasetLoadFailed: jest.fn(),
+    trackFailureObserved: jest.fn(),
+  };
+});
 
 jest.mock('../config/featureGates', () => {
   const actual = jest.requireActual('../config/featureGates');

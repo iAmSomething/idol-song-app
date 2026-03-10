@@ -104,6 +104,31 @@ describe('mobile analytics service', () => {
     });
   });
 
+  test('sanitizes query-like payloads before storing them', () => {
+    trackAnalyticsEvent(
+      'search_submitted',
+      {
+        query: `  ${'최예나 '.repeat(20)}  `,
+        submitSource: 'input',
+        activeSegment: 'entities',
+        resultCounts: {
+          entities: 1,
+          releases: 0,
+          upcoming: 0,
+        },
+        hadResults: true,
+      },
+      analyticsEnabledRuntime,
+    );
+
+    expect(getLatestAnalyticsEvent()?.payload).toEqual(
+      expect.objectContaining({
+        query: expect.stringMatching(/^최예나/),
+      }),
+    );
+    expect((getLatestAnalyticsEvent()?.payload as { query: string }).query.length).toBeLessThanOrEqual(80);
+  });
+
   test('keeps only the most recent 50 events', () => {
     for (let index = 0; index < 55; index += 1) {
       trackAnalyticsEvent(
@@ -153,12 +178,25 @@ describe('mobile analytics service', () => {
     );
 
     expect(getRecentAnalyticsEvents().map((event) => event.name)).toEqual([
+      'failure_observed',
       'dataset_load_failed',
+      'failure_observed',
       'dataset_degraded',
     ]);
-    expect(getLatestAnalyticsEvent()?.payload).toEqual({
+    expect(getRecentAnalyticsEvents()[1]?.payload).toEqual({
       surface: 'release_detail',
       errorMessage: 'Release detail dataset could not be loaded right now.',
     });
+    expect(getLatestAnalyticsEvent()).toEqual(
+      expect.objectContaining({
+        name: 'failure_observed',
+        payload: {
+          surface: 'release_detail',
+          category: 'blocking',
+          code: 'dataset_load_failed',
+          retryable: true,
+        },
+      }),
+    );
   });
 });

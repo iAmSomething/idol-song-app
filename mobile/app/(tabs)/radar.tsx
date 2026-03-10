@@ -1,7 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -32,6 +31,12 @@ import { selectRadarSnapshot } from '../../src/selectors';
 import { loadActiveMobileDataset } from '../../src/services/activeDataset';
 import { adaptBackendRadarSnapshot } from '../../src/services/backendDisplayAdapters';
 import type { BackendReadClient } from '../../src/services/backendReadClient';
+import {
+  classifyExternalLinkFailureCategory,
+  trackAnalyticsEvent,
+  trackFailureObserved,
+} from '../../src/services/analytics';
+import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   RadarChangeFeedItemModel,
@@ -239,20 +244,9 @@ function isSectionEnabled(enabledSections: RadarSectionKey[], section: RadarSect
   return enabledSections.includes(section);
 }
 
-async function openExternalUrl(url?: string): Promise<void> {
-  if (!url) {
-    return;
-  }
-
-  try {
-    await Linking.openURL(url);
-  } catch {
-    // Ignore source-open failures in v1; the primary path remains team detail.
-  }
-}
-
 export default function RadarTabScreen() {
   const router = useRouter();
+  const hasTrackedViewRef = useRef(false);
   const params = useLocalSearchParams<{
     actType?: string | string[];
     sections?: string | string[];
@@ -285,6 +279,7 @@ export default function RadarTabScreen() {
   const [draftActTypeFilter, setDraftActTypeFilter] = useState(routeState.actTypeFilter);
   const [draftEnabledSections, setDraftEnabledSections] = useState(routeState.enabledSections);
   const [isFilterSheetOpen, setIsFilterSheetOpen] = useState(false);
+  const [externalLinkFeedback, setExternalLinkFeedback] = useState<string | null>(null);
   const today = useMemo(() => new Date(), []);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
   const loadBundledSnapshot = useCallback(async () => {
@@ -360,7 +355,14 @@ export default function RadarTabScreen() {
     router.push('/(tabs)/search');
   }
 
-  function openTeamDetail(slug: string) {
+  function openTeamDetail(
+    slug: string,
+    section: 'featured_upcoming' | 'weekly_upcoming' | 'change_feed' | 'long_gap' | 'rookie',
+  ) {
+    trackAnalyticsEvent('radar_card_opened', {
+      section,
+      teamSlug: slug,
+    });
     router.push({
       pathname: '/artists/[slug]',
       params: { slug },
@@ -385,6 +387,11 @@ export default function RadarTabScreen() {
     setStatusFilter(draftStatusFilter);
     setActTypeFilter(draftActTypeFilter);
     setEnabledSections(draftEnabledSections);
+    trackAnalyticsEvent('radar_filter_applied', {
+      statusFilter: draftStatusFilter,
+      actTypeFilter: draftActTypeFilter,
+      enabledSections: draftEnabledSections,
+    });
     setIsFilterSheetOpen(false);
   }
 
@@ -417,6 +424,41 @@ export default function RadarTabScreen() {
       toggleDraftSection(optionKey as RadarSectionKey);
     }
   }
+
+  async function handleSourceOpen(url?: string) {
+    const opened = await openExternalLink(normalizeExternalLinkUrl('source', url));
+    trackAnalyticsEvent('source_link_opened', {
+      surface: 'radar',
+      linkType: 'source',
+      host: opened.ok ? opened.host : opened.host,
+      ok: opened.ok,
+      failureCode: opened.ok ? null : opened.code,
+    });
+
+    if (!opened.ok) {
+      trackFailureObserved(
+        'radar',
+        classifyExternalLinkFailureCategory(opened.code),
+        opened.code,
+        opened.feedback.retryable,
+      );
+      setExternalLinkFeedback(opened.feedback.message);
+      return;
+    }
+
+    setExternalLinkFeedback(null);
+  }
+
+  useEffect(() => {
+    if (hasTrackedViewRef.current) {
+      return;
+    }
+
+    hasTrackedViewRef.current = true;
+    trackAnalyticsEvent('radar_viewed', {
+      enabledSections: enabledSections.length,
+    });
+  }, [enabledSections.length]);
 
   const filterGroups = useMemo<FilterSheetGroup[]>(
     () => [
@@ -551,6 +593,10 @@ export default function RadarTabScreen() {
           />
         ) : null}
 
+        {externalLinkFeedback ? (
+          <InlineFeedbackNotice body={externalLinkFeedback} testID="radar-external-link-feedback" tone="error" />
+        ) : null}
+
         <SummaryStrip
           items={[
             { key: 'weekly', label: '이번 주 예정', value: filteredWeeklyUpcoming.length },
@@ -562,7 +608,7 @@ export default function RadarTabScreen() {
 
         <RadarFeaturedSection
           item={featuredUpcoming}
-          onOpenSource={openExternalUrl}
+          onOpenSource={handleSourceOpen}
           onPressTeam={openTeamDetail}
           styles={styles}
         />
@@ -574,7 +620,7 @@ export default function RadarTabScreen() {
               <RadarUpcomingSectionCard
                 key={item.id}
                 item={item}
-                onOpenSource={openExternalUrl}
+                onOpenSource={handleSourceOpen}
                 onPressTeam={openTeamDetail}
                 styles={styles}
                 testID={`radar-weekly-card-${item.team.slug}`}
@@ -590,7 +636,7 @@ export default function RadarTabScreen() {
               <RadarChangeFeedCard
                 key={item.id}
                 item={item}
-                onOpenSource={openExternalUrl}
+                onOpenSource={handleSourceOpen}
                 onPressTeam={openTeamDetail}
                 styles={styles}
               />
@@ -654,7 +700,10 @@ function RadarFeaturedSection({
 }: {
   item: RadarUpcomingCardModel | null;
   onOpenSource: (url?: string) => void;
-  onPressTeam: (slug: string) => void;
+  onPressTeam: (
+    slug: string,
+    section: 'featured_upcoming' | 'weekly_upcoming' | 'change_feed' | 'long_gap' | 'rookie',
+  ) => void;
   styles: ReturnType<typeof createStyles>;
 }) {
   return (
@@ -678,11 +727,11 @@ function RadarFeaturedSection({
             ) : null}
           </View>
           <Text style={styles.featuredMeta}>{formatUpcomingDateLabel(item)}</Text>
-          <RadarActionRow
-            onOpenSource={() => onOpenSource(item.sourceUrl)}
-            onPressPrimary={() => onPressTeam(item.team.slug)}
-            primaryLabel="팀 페이지"
-            primaryTestID="radar-featured-primary"
+        <RadarActionRow
+          onOpenSource={() => onOpenSource(item.sourceUrl)}
+          onPressPrimary={() => onPressTeam(item.team.slug, 'featured_upcoming')}
+          primaryLabel="팀 페이지"
+          primaryTestID="radar-featured-primary"
             sourceLabel={item.sourceLabel}
             sourceTestID="radar-featured-source"
             sourceUrl={item.sourceUrl}
@@ -724,7 +773,10 @@ function RadarUpcomingSectionCard({
 }: {
   item: RadarUpcomingCardModel;
   onOpenSource: (url?: string) => void;
-  onPressTeam: (slug: string) => void;
+  onPressTeam: (
+    slug: string,
+    section: 'featured_upcoming' | 'weekly_upcoming' | 'change_feed' | 'long_gap' | 'rookie',
+  ) => void;
   styles: ReturnType<typeof createStyles>;
   testID: string;
 }) {
@@ -751,7 +803,7 @@ function RadarUpcomingSectionCard({
         </Text>
         <RadarActionRow
           onOpenSource={() => onOpenSource(item.sourceUrl)}
-          onPressPrimary={() => onPressTeam(item.team.slug)}
+          onPressPrimary={() => onPressTeam(item.team.slug, 'weekly_upcoming')}
           primaryLabel="팀 페이지"
           primaryTestID={`${testID}-primary`}
           sourceLabel={item.sourceLabel}
@@ -772,7 +824,10 @@ function RadarChangeFeedCard({
 }: {
   item: RadarChangeFeedItemModel;
   onOpenSource: (url?: string) => void;
-  onPressTeam: (slug: string) => void;
+  onPressTeam: (
+    slug: string,
+    section: 'featured_upcoming' | 'weekly_upcoming' | 'change_feed' | 'long_gap' | 'rookie',
+  ) => void;
   styles: ReturnType<typeof createStyles>;
 }) {
   return (
@@ -794,7 +849,7 @@ function RadarChangeFeedCard({
         <Text style={styles.cardMetaStrong}>새 일정 · {item.nextScheduleLabel}</Text>
         <RadarActionRow
           onOpenSource={() => onOpenSource(item.sourceUrl)}
-          onPressPrimary={() => onPressTeam(item.team.slug)}
+          onPressPrimary={() => onPressTeam(item.team.slug, 'change_feed')}
           primaryLabel="팀 페이지"
           primaryTestID={`radar-change-primary-${item.team.slug}`}
           sourceLabel={item.sourceLabel}
@@ -813,7 +868,10 @@ function RadarLongGapCard({
   styles,
 }: {
   item: RadarLongGapItemModel;
-  onPressTeam: (slug: string) => void;
+  onPressTeam: (
+    slug: string,
+    section: 'featured_upcoming' | 'weekly_upcoming' | 'change_feed' | 'long_gap' | 'rookie',
+  ) => void;
   styles: ReturnType<typeof createStyles>;
 }) {
   return (
@@ -830,7 +888,7 @@ function RadarLongGapCard({
         <Text style={styles.cardBody}>{formatLongGapBody(item)}</Text>
         <Text style={styles.cardMeta}>{formatLongGapMeta(item)}</Text>
         <RadarActionRow
-          onPressPrimary={() => onPressTeam(item.team.slug)}
+          onPressPrimary={() => onPressTeam(item.team.slug, 'long_gap')}
           primaryLabel="팀 페이지"
           primaryTestID={`radar-long-gap-primary-${item.team.slug}`}
           styles={styles}
@@ -846,7 +904,10 @@ function RadarRookieCard({
   styles,
 }: {
   item: RadarRookieItemModel;
-  onPressTeam: (slug: string) => void;
+  onPressTeam: (
+    slug: string,
+    section: 'featured_upcoming' | 'weekly_upcoming' | 'change_feed' | 'long_gap' | 'rookie',
+  ) => void;
   styles: ReturnType<typeof createStyles>;
 }) {
   return (
@@ -863,7 +924,7 @@ function RadarRookieCard({
         <Text style={styles.cardBody}>{formatRookieBody(item)}</Text>
         <Text style={styles.cardMeta}>{formatRookieMeta(item)}</Text>
         <RadarActionRow
-          onPressPrimary={() => onPressTeam(item.team.slug)}
+          onPressPrimary={() => onPressTeam(item.team.slug, 'rookie')}
           primaryLabel="팀 페이지"
           primaryTestID={`radar-rookie-primary-${item.team.slug}`}
           styles={styles}

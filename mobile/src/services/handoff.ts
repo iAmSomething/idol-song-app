@@ -145,17 +145,7 @@ export function normalizeCanonicalServiceUrl(service: MusicService, value: strin
 }
 
 function normalizeBrowserFallbackUrl(service: MusicService, value: string | null | undefined): string | null {
-  const normalizedCanonical = normalizeCanonicalServiceUrl(service, value);
-  if (normalizedCanonical) {
-    return normalizedCanonical;
-  }
-
-  const parsed = tryParseUrl(value);
-  if (!parsed || parsed.protocol !== 'https:') {
-    return null;
-  }
-
-  return parsed.toString();
+  return normalizeCanonicalServiceUrl(service, value);
 }
 
 export function resolveServiceHandoff(input: {

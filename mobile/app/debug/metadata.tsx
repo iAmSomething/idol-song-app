@@ -9,6 +9,7 @@ export default function DebugMetadataScreen() {
   const rows = [
     ['Profile', metadata.profile],
     ['Runtime mode', metadata.runtimeMode],
+    ['Runtime issue count', `${metadata.runtimeIssueCount}`],
     ['Runtime issues', metadata.runtimeIssues.length > 0 ? metadata.runtimeIssues.join(' | ') : 'None'],
     ['Build version', metadata.buildVersion],
     ['Dataset version', metadata.datasetVersion ?? 'Unavailable'],
@@ -16,7 +17,9 @@ export default function DebugMetadataScreen() {
     ['Data source mode', metadata.dataSourceMode],
     ['Data source policy', metadata.dataSourcePolicy],
     ['API base URL', metadata.apiBaseUrl ?? 'Bundled-only'],
+    ['API host', metadata.apiHost ?? 'Bundled-only'],
     ['Analytics enabled', metadata.analyticsEnabled ? 'Yes' : 'No'],
+    ['Feature gates', metadata.featureGateSummary],
     ['Analytics event count', `${metadata.analyticsEventCount}`],
     ['Latest analytics event', metadata.latestAnalyticsEvent ?? 'None'],
   ] as const;
