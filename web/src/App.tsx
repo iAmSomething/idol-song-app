@@ -23,7 +23,7 @@ import {
   type ServiceActionId,
 } from './lib/mobileWebHandoff'
 import {
-  buildSurfaceStatusMeta,
+  getSurfaceFallbackReasonKey,
   type SurfaceStatusSource,
 } from './lib/surfaceStatus'
 import artistProfileRows from './data/artistProfiles.json'
@@ -183,8 +183,6 @@ type ResolvedReleaseEnrichment = ReleaseEnrichmentRow & {
   isFallback: boolean
 }
 
-type ReleaseDetailSourceState = 'api' | 'bridge' | 'api_error'
-
 type ReleaseDetailLookupApiResponse = {
   data?: {
     release_id?: string
@@ -239,7 +237,7 @@ type ReleaseDetailApiSnapshot = {
 }
 
 type ReleaseDetailApiResource = ReleaseDetailApiSnapshot & {
-  source: ReleaseDetailSourceState
+  source: SurfaceStatusSource
   loading: boolean
   errorCode: string | null
   traceId: string | null
@@ -252,11 +250,6 @@ type ReleaseDetailApiRequest = {
   release_kind: VerifiedRelease['release_kind']
 }
 
-type SearchSourceState = 'api' | 'bridge' | 'api_error'
-
-type EntityDetailSourceState = 'api' | 'bridge' | 'api_error'
-type CalendarMonthSourceState = 'api' | 'bridge' | 'api_error'
-type RadarSourceState = 'api' | 'bridge' | 'api_error'
 type BackendTargetEnvironment = 'production' | 'preview' | 'local' | 'bridge' | 'unknown'
 
 type SearchApiEntityMatch = {
@@ -304,7 +297,7 @@ type SearchSurfaceSnapshot = {
 }
 
 type SearchSurfaceResource = SearchSurfaceSnapshot & {
-  source: SearchSourceState
+  source: SurfaceStatusSource
   loading: boolean
   errorCode: string | null
   traceId: string | null
@@ -384,7 +377,7 @@ type EntityDetailApiResponse = {
 
 type EntityDetailSurfaceResource = {
   team: TeamProfile | null
-  source: EntityDetailSourceState
+  source: SurfaceStatusSource
   loading: boolean
   errorCode: string | null
   traceId: string | null
@@ -445,7 +438,7 @@ type CalendarMonthApiSnapshot = {
 
 type CalendarMonthSurfaceResource = {
   snapshot: CalendarMonthApiSnapshot | null
-  source: CalendarMonthSourceState
+  source: SurfaceStatusSource
   loading: boolean
   errorCode: string | null
   traceId: string | null
@@ -507,7 +500,7 @@ type RadarApiSnapshot = {
 
 type RadarSurfaceResource = {
   snapshot: RadarApiSnapshot | null
-  source: RadarSourceState
+  source: SurfaceStatusSource
   loading: boolean
   errorCode: string | null
   traceId: string | null
@@ -871,12 +864,14 @@ const TRANSLATIONS = {
     searchBackendTimeout: 'backend /v1/search 응답 시간이 초과되었습니다. 검색 결과 fallback은 비활성화되어 있습니다.',
     calendarBackendLoading: 'backend /v1/calendar/month 결과를 확인하는 중입니다.',
     calendarBackendActive: '현재 월간 캘린더와 대시보드는 backend /v1/calendar/month 응답을 우선 사용 중입니다.',
+    calendarJsonActive: '현재 월간 캘린더와 대시보드는 legacy JSON 데이터로 표시 중입니다.',
     calendarBackendFallback:
       'backend 월간 캘린더 응답을 불러오지 못했습니다. 월간 캘린더는 이제 backend-only runtime으로 동작합니다.',
     calendarBackendTimeout:
       'backend /v1/calendar/month 응답 시간이 초과되었습니다. 월간 캘린더는 이제 backend-only runtime으로 동작합니다.',
     radarBackendLoading: 'backend /v1/radar 결과를 확인하는 중입니다.',
     radarBackendActive: '현재 레이더 섹션은 backend /v1/radar 응답을 우선 사용 중입니다.',
+    radarJsonActive: '현재 레이더 섹션은 legacy JSON 데이터로 표시 중입니다.',
     radarBackendFallback:
       'backend 레이더 응답을 불러오지 못했습니다. 레이더 섹션은 이제 backend-only runtime으로 동작합니다.',
     radarBackendTimeout:
@@ -886,8 +881,9 @@ const TRANSLATIONS = {
     surfaceTraceLabel: '요청 ID',
       surfaceSourceModeLabels: {
         api: 'backend API',
-        bridge: 'Pages read bridge',
-        api_error: 'backend API unavailable',
+        json: 'legacy JSON',
+        json_fallback: 'JSON fallback',
+        backend_unavailable: 'backend unavailable',
       },
     surfaceFallbackReasonLabels: {
       timeout: '응답 시간 초과',
@@ -1148,12 +1144,14 @@ const TRANSLATIONS = {
     calendarBackendLoading: 'Checking backend /v1/calendar/month now.',
     calendarBackendActive:
       'The monthly calendar and dashboard are currently using the backend /v1/calendar/month response.',
+    calendarJsonActive: 'The monthly calendar and dashboard are currently being shown from the legacy JSON dataset.',
     calendarBackendFallback:
       'The backend calendar/month response was unavailable. The monthly calendar now runs backend-only.',
     calendarBackendTimeout:
       'The backend /v1/calendar/month request timed out. The monthly calendar now runs backend-only.',
     radarBackendLoading: 'Checking backend /v1/radar now.',
     radarBackendActive: 'The radar sections are currently using the backend /v1/radar response.',
+    radarJsonActive: 'The radar sections are currently being shown from the legacy JSON dataset.',
     radarBackendFallback:
       'The backend radar response was unavailable. The radar sections now run backend-only.',
     radarBackendTimeout:
@@ -1163,8 +1161,9 @@ const TRANSLATIONS = {
     surfaceTraceLabel: 'Request ID',
       surfaceSourceModeLabels: {
         api: 'backend API',
-        bridge: 'Pages read bridge',
-        api_error: 'backend API unavailable',
+        json: 'legacy JSON',
+        json_fallback: 'JSON fallback',
+        backend_unavailable: 'backend unavailable',
       },
     surfaceFallbackReasonLabels: {
       timeout: 'timeout',
@@ -1400,11 +1399,13 @@ const TEAM_COPY = {
     backendLoading: 'backend /v1/entities 응답을 불러오는 중입니다.',
     backendActive: '이 팀 페이지는 backend /v1/entities 응답을 우선 사용 중입니다.',
     bridgeActive: '이 팀 페이지는 embedded 로컬 detail 데이터로 표시 중입니다.',
+    backendFallback: '이 팀 페이지는 backend 요청 실패로 legacy JSON fallback을 표시 중입니다.',
     backendUnavailable: 'backend 팀 페이지 응답을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.',
     backendTimeout: 'backend 팀 페이지 응답 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.',
     backendNotFound: 'backend에 이 팀의 detail payload가 아직 준비되지 않았습니다.',
     backendLoadingBody: '팀 상세 데이터를 backend에서 읽어오는 중입니다.',
     bridgeActiveBody: '현재 이 팀 상세는 embedded 로컬 데이터로 복구 표시 중입니다.',
+    backendFallbackBody: '현재 이 팀 상세는 backend 요청 실패로 legacy JSON fallback을 표시 중입니다.',
     backendUnavailableBody: '팀 상세 데이터를 지금은 표시할 수 없습니다. API 응답이 복구되면 다시 열어 주세요.',
     backendNotFoundBody: '이 팀의 backend detail payload가 아직 준비되지 않아 상세 화면을 표시할 수 없습니다.',
     upcomingLabel: '예정 컴백',
@@ -1496,12 +1497,15 @@ const TEAM_COPY = {
     releaseDetailBackendLoading:
       '백엔드 release-detail 응답을 불러오는 중입니다.',
     releaseDetailBackendActive: '이 상세 페이지는 backend release-detail 응답을 우선 사용 중입니다.',
+    releaseDetailBridgeActive: '이 상세 페이지는 embedded 로컬 detail 데이터로 표시 중입니다.',
     releaseDetailBackendUnavailable:
       '백엔드 release-detail 응답을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.',
     releaseDetailBackendTimeout:
       '백엔드 release-detail 응답 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.',
     releaseDetailBackendNotFound:
       '백엔드에 이 릴리즈의 detail payload가 아직 없습니다.',
+    releaseDetailBackendFallback:
+      '이 상세 페이지는 backend 요청 실패로 legacy JSON fallback을 표시 중입니다.',
     watchOnYouTube: 'YouTube에서 보기',
     placeholderCover: '릴리즈 아트워크',
     drawerCopy:
@@ -1532,11 +1536,13 @@ const TEAM_COPY = {
     backendLoading: 'Loading the backend /v1/entities response now.',
     backendActive: 'This team page is currently using the backend /v1/entities response.',
     bridgeActive: 'This team page is currently being shown from the embedded local detail dataset.',
+    backendFallback: 'This team page is currently showing the legacy JSON fallback because the backend request failed.',
     backendUnavailable: 'The backend team-detail response is unavailable right now. Please try again shortly.',
     backendTimeout: 'The backend team-detail request timed out. Please try again shortly.',
     backendNotFound: 'The backend does not have a detail payload for this team yet.',
     backendLoadingBody: 'Loading the team detail from the backend now.',
     bridgeActiveBody: 'This team detail is currently being restored from the embedded local dataset.',
+    backendFallbackBody: 'This team detail is currently showing the legacy JSON fallback because the backend request failed.',
     backendUnavailableBody: 'The team detail cannot be shown right now because the backend response is unavailable.',
     backendNotFoundBody: 'This team does not have a backend detail payload yet, so the detail screen cannot be rendered.',
     upcomingLabel: 'Upcoming comeback',
@@ -1628,12 +1634,15 @@ const TEAM_COPY = {
     releaseDetailBackendLoading:
       'Loading the backend release-detail response now.',
     releaseDetailBackendActive: 'This detail page is currently using the backend release-detail response.',
+    releaseDetailBridgeActive: 'This detail page is currently being shown from the embedded local detail dataset.',
     releaseDetailBackendUnavailable:
       'The backend release-detail response is unavailable right now. Please try again shortly.',
     releaseDetailBackendTimeout:
       'The backend release-detail request timed out. Please try again shortly.',
     releaseDetailBackendNotFound:
       'The backend does not have a detail payload for this release yet.',
+    releaseDetailBackendFallback:
+      'This detail page is currently showing the legacy JSON fallback because the backend request failed.',
     watchOnYouTube: 'Watch on YouTube',
     placeholderCover: 'Release artwork',
     drawerCopy:
@@ -1655,26 +1664,60 @@ function getSurfaceStatusLabels(language: Language) {
   }
 }
 
-function buildSurfaceStatusMessage({
+function getSurfaceStatusTone(source: SurfaceStatusSource, errorCode: string | null) {
+  if (source === 'json_fallback' || source === 'backend_unavailable' || errorCode) {
+    return 'degraded'
+  }
+
+  if (source === 'api') {
+    return 'api'
+  }
+
+  return 'json'
+}
+
+function SurfaceRuntimeStatus({
   language,
   source,
   errorCode,
   traceId,
-  baseMessage,
+  message,
+  className,
 }: {
   language: Language
   source: SurfaceStatusSource
   errorCode: string | null
   traceId?: string | null
-  baseMessage: string
+  message: string
+  className?: string
 }) {
-  const metadata = buildSurfaceStatusMeta({
-    source,
-    errorCode,
-    traceId,
-    labels: getSurfaceStatusLabels(language),
-  })
-  return `${baseMessage} ${metadata}`
+  const labels = getSurfaceStatusLabels(language)
+  const reasonKey = errorCode ? getSurfaceFallbackReasonKey(errorCode) : null
+  const tone = getSurfaceStatusTone(source, errorCode)
+
+  return (
+    <div className={['surface-runtime-status', `surface-runtime-status-${tone}`, className].filter(Boolean).join(' ')}>
+      <p className="surface-runtime-status-message">{message}</p>
+      <div className="surface-runtime-status-meta">
+        <span className="surface-runtime-chip">
+          <strong>{labels.sourceLabel}</strong>
+          <span>{labels.sourceStateLabels[source]}</span>
+        </span>
+        {reasonKey ? (
+          <span className="surface-runtime-chip surface-runtime-chip-warn">
+            <strong>{labels.reasonLabel}</strong>
+            <span>{labels.fallbackReasonLabels[reasonKey]}</span>
+          </span>
+        ) : null}
+        {traceId ? (
+          <span className="surface-runtime-chip surface-runtime-chip-trace">
+            <strong>{labels.traceLabel}</strong>
+            <code>{traceId}</code>
+          </span>
+        ) : null}
+      </div>
+    </div>
+  )
 }
 
 const UPCOMING_MONTH_FORMATTERS: Record<Language, Intl.DateTimeFormat> = {
@@ -1984,40 +2027,22 @@ function App() {
   const visibleSearchTeams = hasSearchQuery ? searchSurfaceResource.entities : searchSurfaceFallbackSnapshot.entities
   const visibleSearchReleases = hasSearchQuery ? searchSurfaceResource.releases : searchSurfaceFallbackSnapshot.releases
   const visibleSearchUpcoming = hasSearchQuery ? searchSurfaceResource.upcoming : searchSurfaceFallbackSnapshot.upcoming
-  const searchSurfaceMessage =
+  const searchSurfaceStatus =
     search.trim().length > 0
-      ? searchSurfaceResource.source === 'api'
-        ? buildSurfaceStatusMessage({
-            language,
-            source: 'api',
-            errorCode: null,
-            traceId: searchSurfaceResource.traceId,
-            baseMessage: searchSurfaceResource.loading ? copy.searchBackendLoading : copy.searchBackendActive,
-          })
-        : searchSurfaceResource.source === 'bridge'
-          ? buildSurfaceStatusMessage({
-              language,
-              source: 'bridge',
-              errorCode: null,
-              traceId: searchSurfaceResource.traceId,
-              baseMessage: copy.searchBridgeActive,
-            })
-        : searchSurfaceResource.loading
-          ? buildSurfaceStatusMessage({
-              language,
-              source: 'api',
-              errorCode: null,
-              traceId: searchSurfaceResource.traceId,
-              baseMessage: copy.searchBackendLoading,
-            })
-          : buildSurfaceStatusMessage({
-              language,
-              source: 'api_error',
-              errorCode: searchSurfaceResource.errorCode,
-              traceId: searchSurfaceResource.traceId,
-              baseMessage:
-                searchSurfaceResource.errorCode === 'timeout' ? copy.searchBackendTimeout : copy.searchBackendFallback,
-          })
+      ? {
+          source: searchSurfaceResource.source,
+          errorCode: searchSurfaceResource.loading ? null : searchSurfaceResource.errorCode,
+          traceId: searchSurfaceResource.traceId,
+          message: searchSurfaceResource.loading
+            ? copy.searchBackendLoading
+            : searchSurfaceResource.source === 'api'
+              ? copy.searchBackendActive
+              : searchSurfaceResource.source === 'json'
+                ? copy.searchBridgeActive
+                : searchSurfaceResource.errorCode === 'timeout'
+                  ? copy.searchBackendTimeout
+                  : copy.searchBackendFallback,
+        }
       : null
   const filteredUpcomingSignals = filteredUpcoming
     .flatMap((item) => expandUpcomingCandidate(item))
@@ -2165,38 +2190,34 @@ function App() {
     : copy.calendarQuickJumpUnavailable
   const monthlyHighlightEmptyCopy =
     visibleMonthMonthOnlyRows.length > 0 ? copy.monthlyHighlightUndatedOnly : copy.monthlyHighlightEmpty
-  const calendarSurfaceMessage = calendarMonthResource.source === 'api'
-    ? buildSurfaceStatusMessage({
-        language,
-        source: 'api',
-        errorCode: null,
-        traceId: calendarMonthResource.traceId,
-        baseMessage: calendarMonthResource.loading ? copy.calendarBackendLoading : copy.calendarBackendActive,
-      })
-    : buildSurfaceStatusMessage({
-          language,
-          source: 'api_error',
-          errorCode: calendarMonthResource.errorCode,
-          traceId: calendarMonthResource.traceId,
-          baseMessage:
-            calendarMonthResource.errorCode === 'timeout' ? copy.calendarBackendTimeout : copy.calendarBackendFallback,
-        })
-  const radarSurfaceMessage =
-    radarResource.source === 'api'
-      ? buildSurfaceStatusMessage({
-          language,
-          source: 'api',
-          errorCode: null,
-          traceId: radarResource.traceId,
-          baseMessage: radarResource.loading ? copy.radarBackendLoading : copy.radarBackendActive,
-        })
-      : buildSurfaceStatusMessage({
-          language,
-          source: 'api_error',
-          errorCode: radarResource.errorCode,
-          traceId: radarResource.traceId,
-          baseMessage: radarResource.errorCode === 'timeout' ? copy.radarBackendTimeout : copy.radarBackendFallback,
-        })
+  const calendarSurfaceStatus = {
+    source: calendarMonthResource.source,
+    errorCode: calendarMonthResource.loading ? null : calendarMonthResource.errorCode,
+    traceId: calendarMonthResource.traceId,
+    message: calendarMonthResource.loading
+      ? copy.calendarBackendLoading
+      : calendarMonthResource.source === 'api'
+        ? copy.calendarBackendActive
+        : calendarMonthResource.source === 'json'
+          ? copy.calendarJsonActive
+          : calendarMonthResource.errorCode === 'timeout'
+            ? copy.calendarBackendTimeout
+            : copy.calendarBackendFallback,
+  }
+  const radarSurfaceStatus = {
+    source: radarResource.source,
+    errorCode: radarResource.loading ? null : radarResource.errorCode,
+    traceId: radarResource.traceId,
+    message: radarResource.loading
+      ? copy.radarBackendLoading
+      : radarResource.source === 'api'
+        ? copy.radarBackendActive
+        : radarResource.source === 'json'
+          ? copy.radarJsonActive
+          : radarResource.errorCode === 'timeout'
+            ? copy.radarBackendTimeout
+            : copy.radarBackendFallback,
+  }
   const selectedTeamFallback = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
   const selectedTeamResource = useEntityDetailResource({
     group: selectedGroup,
@@ -2210,42 +2231,24 @@ function App() {
   const compareTeamOptions = selectedTeam ? teamProfiles.filter((team) => team.group !== selectedTeam.group) : []
   const selectedTeamCompareSnapshot = selectedTeam ? buildTeamCompareSnapshot(selectedTeam.group) : null
   const compareTeamSnapshot = compareTeam ? buildTeamCompareSnapshot(compareTeam.group) : null
-  const selectedTeamSourceMessage = selectedTeamResource.loading
-    ? buildSurfaceStatusMessage({
-        language,
-        source: 'api',
-        errorCode: null,
-        traceId: selectedTeamResource.traceId,
-        baseMessage: teamCopy.backendLoading,
-      })
-    : selectedTeamResource.source === 'bridge'
-      ? buildSurfaceStatusMessage({
-          language,
-          source: 'bridge',
-          errorCode: null,
-          traceId: selectedTeamResource.traceId,
-          baseMessage: teamCopy.bridgeActive,
-        })
-    : selectedTeamResource.source === 'api'
-      ? buildSurfaceStatusMessage({
-          language,
-          source: 'api',
-          errorCode: null,
-          traceId: selectedTeamResource.traceId,
-          baseMessage: teamCopy.backendActive,
-        })
-      : buildSurfaceStatusMessage({
-          language,
-          source: 'api_error',
-          errorCode: selectedTeamResource.errorCode,
-          traceId: selectedTeamResource.traceId,
-          baseMessage:
-            selectedTeamResource.errorCode === 'timeout'
+  const selectedTeamSourceStatus = {
+    source: selectedTeamResource.source,
+    errorCode: selectedTeamResource.loading ? null : selectedTeamResource.errorCode,
+    traceId: selectedTeamResource.traceId,
+    message: selectedTeamResource.loading
+      ? teamCopy.backendLoading
+      : selectedTeamResource.source === 'json'
+        ? teamCopy.bridgeActive
+        : selectedTeamResource.source === 'json_fallback'
+          ? teamCopy.backendFallback
+          : selectedTeamResource.source === 'api'
+            ? teamCopy.backendActive
+            : selectedTeamResource.errorCode === 'timeout'
               ? teamCopy.backendTimeout
               : selectedTeamResource.errorCode === 'not_found'
                 ? teamCopy.backendNotFound
                 : teamCopy.backendUnavailable,
-        })
+  }
   const selectedAlbum = selectedReleaseRoute
   const selectedTeamLatestRecord =
     selectedTeam?.latestRelease?.verified
@@ -2554,7 +2557,16 @@ function App() {
                   ))}
                 </div>
               </div>
-              {searchSurfaceMessage ? <p className="inline-note">{searchSurfaceMessage}</p> : null}
+              {searchSurfaceStatus ? (
+                <SurfaceRuntimeStatus
+                  language={language}
+                  source={searchSurfaceStatus.source}
+                  errorCode={searchSurfaceStatus.errorCode}
+                  traceId={searchSurfaceStatus.traceId}
+                  message={searchSurfaceStatus.message}
+                  className="context-runtime-status"
+                />
+              ) : null}
 
               <article className="context-highlight-card">
                 <div className="context-highlight-head">
@@ -2723,7 +2735,14 @@ function App() {
             {myTeamsLimitReached && !selectedTeamIsPinned ? (
               <p className="team-focus-note">{teamCopy.pinLimitReached}</p>
             ) : null}
-            <p className="team-focus-note">{selectedTeamSourceMessage}</p>
+            <SurfaceRuntimeStatus
+              language={language}
+              source={selectedTeamSourceStatus.source}
+              errorCode={selectedTeamSourceStatus.errorCode}
+              traceId={selectedTeamSourceStatus.traceId}
+              message={selectedTeamSourceStatus.message}
+              className="team-runtime-status"
+            />
 
             <div className="team-page-summary">
               <div className="team-title-wrap">
@@ -2744,11 +2763,15 @@ function App() {
                   <p className="hero-text team-summary-copy">
                     {selectedTeamResource.loading
                       ? teamCopy.backendLoadingBody
-                      : selectedTeamResource.source === 'bridge'
+                      : selectedTeamResource.source === 'json'
                         ? teamCopy.bridgeActiveBody
-                      : selectedTeamResource.errorCode === 'not_found'
-                        ? teamCopy.backendNotFoundBody
-                        : teamCopy.backendUnavailableBody}
+                        : selectedTeamResource.source === 'json_fallback'
+                          ? teamCopy.backendFallbackBody
+                          : selectedTeamResource.errorCode === 'not_found'
+                            ? teamCopy.backendNotFoundBody
+                            : selectedTeamResource.errorCode
+                              ? teamCopy.backendUnavailableBody
+                              : teamCopy.intro}
                   </p>
                 </div>
               </div>
@@ -2782,7 +2805,14 @@ function App() {
             {myTeamsLimitReached && !selectedTeamIsPinned ? (
               <p className="team-focus-note">{teamCopy.pinLimitReached}</p>
             ) : null}
-            <p className="team-focus-note">{selectedTeamSourceMessage}</p>
+            <SurfaceRuntimeStatus
+              language={language}
+              source={selectedTeamSourceStatus.source}
+              errorCode={selectedTeamSourceStatus.errorCode}
+              traceId={selectedTeamSourceStatus.traceId}
+              message={selectedTeamSourceStatus.message}
+              className="team-runtime-status"
+            />
 
             <div className="team-page-summary">
               <div className="team-title-wrap">
@@ -3296,7 +3326,14 @@ function App() {
                   </div>
                 ) : null}
 
-                {calendarSurfaceMessage ? <p className="signal-meta">{calendarSurfaceMessage}</p> : null}
+                <SurfaceRuntimeStatus
+                  language={language}
+                  source={calendarSurfaceStatus.source}
+                  errorCode={calendarSurfaceStatus.errorCode}
+                  traceId={calendarSurfaceStatus.traceId}
+                  message={calendarSurfaceStatus.message}
+                  className="calendar-runtime-status"
+                />
 
                 <div className="calendar">
                   <div className="calendar-weekdays">
@@ -3480,7 +3517,14 @@ function App() {
             </section>
 
             <div id="dashboard-radar" className="sidebar-radar-stack scroll-anchor-section">
-              {radarSurfaceMessage ? <p className="signal-meta">{radarSurfaceMessage}</p> : null}
+              <SurfaceRuntimeStatus
+                language={language}
+                source={radarSurfaceStatus.source}
+                errorCode={radarSurfaceStatus.errorCode}
+                traceId={radarSurfaceStatus.traceId}
+                message={radarSurfaceStatus.message}
+                className="radar-runtime-status"
+              />
               <section className="panel">
                 <p className="panel-label">{copy.longGapRadar}</p>
                 <h2>{copy.longGapRadarTitle}</h2>
@@ -3638,34 +3682,24 @@ function ReleaseDetailPage({
   const mv = getReleaseDetailMvUrls(releaseDetail)
   const primaryTitleTrack = getPrimaryTitleTrackTitle(releaseDetail) || album.title
   const mvSearchUrl = mv.canonicalUrl ? '' : buildYouTubeMvSearchUrl(`${group} ${primaryTitleTrack}`.trim())
-  const releaseDetailSourceMessage =
-    releaseDetailResource.loading
-      ? buildSurfaceStatusMessage({
-          language,
-          source: 'api',
-          errorCode: null,
-          baseMessage: teamCopy.releaseDetailBackendLoading,
-        })
-      : releaseDetailResource.source === 'api'
-        ? buildSurfaceStatusMessage({
-            language,
-            source: 'api',
-            errorCode: null,
-            traceId: releaseDetailResource.traceId,
-            baseMessage: teamCopy.releaseDetailBackendActive,
-          })
-        : buildSurfaceStatusMessage({
-            language,
-            source: 'api_error',
-            errorCode: releaseDetailResource.errorCode,
-            traceId: releaseDetailResource.traceId,
-            baseMessage:
-              releaseDetailResource.errorCode === 'timeout'
-                ? teamCopy.releaseDetailBackendTimeout
-                : releaseDetailResource.errorCode === 'not_found' || releaseDetailResource.errorCode === 'lookup_404'
-                  ? teamCopy.releaseDetailBackendNotFound
-                  : teamCopy.releaseDetailBackendUnavailable,
-        })
+  const releaseDetailSourceStatus = {
+    source: releaseDetailResource.source,
+    errorCode: releaseDetailResource.loading ? null : releaseDetailResource.errorCode,
+    traceId: releaseDetailResource.traceId,
+    message: releaseDetailResource.loading
+      ? teamCopy.releaseDetailBackendLoading
+      : releaseDetailResource.source === 'json'
+        ? teamCopy.releaseDetailBridgeActive
+        : releaseDetailResource.source === 'json_fallback'
+          ? teamCopy.releaseDetailBackendFallback
+          : releaseDetailResource.source === 'api'
+            ? teamCopy.releaseDetailBackendActive
+            : releaseDetailResource.errorCode === 'timeout'
+              ? teamCopy.releaseDetailBackendTimeout
+              : releaseDetailResource.errorCode === 'not_found' || releaseDetailResource.errorCode === 'lookup_404'
+                ? teamCopy.releaseDetailBackendNotFound
+                : teamCopy.releaseDetailBackendUnavailable,
+  }
 
   return (
     <main className="release-detail-page">
@@ -3688,7 +3722,14 @@ function ReleaseDetailPage({
           </div>
         </div>
 
-        {releaseDetailSourceMessage ? <p className="inline-note">{releaseDetailSourceMessage}</p> : null}
+        <SurfaceRuntimeStatus
+          language={language}
+          source={releaseDetailSourceStatus.source}
+          errorCode={releaseDetailSourceStatus.errorCode}
+          traceId={releaseDetailSourceStatus.traceId}
+          message={releaseDetailSourceStatus.message}
+          className="release-runtime-status"
+        />
 
         <div className="album-drawer-cover release-detail-cover">
           <ReleaseArtworkFigure
@@ -7344,8 +7385,13 @@ function useReleaseDetailResource({
       : cachedSnapshot ?? fallbackSnapshot
   const loading = remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
-  const source: ReleaseDetailSourceState =
-    activeSnapshot === fallbackSnapshot && errorCode ? 'api_error' : BACKEND_API_BASE_URL ? 'api' : 'bridge'
+  const source: SurfaceStatusSource = !BACKEND_API_BASE_URL
+    ? 'json'
+    : errorCode && activeSnapshot === fallbackSnapshot
+      ? 'json_fallback'
+      : activeSnapshot
+        ? 'api'
+        : 'backend_unavailable'
 
   return {
     ...activeSnapshot,
@@ -7651,13 +7697,13 @@ function useSearchSurfaceResource({
     : null
   const loading = !!cacheKey && remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
-  const source: SearchSourceState = !cacheKey
+  const source: SurfaceStatusSource = !cacheKey
     ? 'api'
     : !BACKEND_API_BASE_URL
-      ? 'bridge'
+      ? 'json'
       : activeSnapshot || loading
         ? 'api'
-        : 'api_error'
+        : 'backend_unavailable'
 
   return {
     ...(activeSnapshot ?? {
@@ -8000,7 +8046,11 @@ function useCalendarMonthResource({
     remoteState.monthKey === monthKey ? remoteState.snapshot ?? cachedSnapshot ?? null : cachedSnapshot
   const loading = remoteState.monthKey === monthKey && remoteState.snapshot === null && remoteState.loading
   const errorCode = remoteState.monthKey === monthKey ? remoteState.errorCode : null
-  const source: CalendarMonthSourceState = errorCode ? 'api_error' : BACKEND_API_BASE_URL ? 'api' : 'bridge'
+  const source: SurfaceStatusSource = !BACKEND_API_BASE_URL
+    ? 'json'
+    : activeSnapshot || loading
+      ? 'api'
+      : 'backend_unavailable'
 
   return {
     snapshot: activeSnapshot,
@@ -8319,7 +8369,11 @@ function useRadarSurfaceResource(): RadarSurfaceResource {
     }
   }, [cachedSnapshot])
 
-  const source: RadarSourceState = remoteState.errorCode ? 'api_error' : BACKEND_API_BASE_URL ? 'api' : 'bridge'
+  const source: SurfaceStatusSource = !BACKEND_API_BASE_URL
+    ? 'json'
+    : remoteState.snapshot || cachedSnapshot || remoteState.loading
+      ? 'api'
+      : 'backend_unavailable'
 
   return {
     snapshot: remoteState.snapshot ?? cachedSnapshot ?? null,
@@ -8681,11 +8735,13 @@ function useEntityDetailResource({
     : null
   const loading = !!cacheKey && remoteState.cacheKey === cacheKey && remoteState.team === null && remoteState.loading
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
-  const source: EntityDetailSourceState = !BACKEND_API_BASE_URL
-    ? 'bridge'
-    : activeTeam
-      ? 'api'
-      : 'api_error'
+  const source: SurfaceStatusSource = !BACKEND_API_BASE_URL
+    ? 'json'
+    : errorCode && activeTeam === fallbackTeam
+      ? 'json_fallback'
+      : activeTeam
+        ? 'api'
+        : 'backend_unavailable'
 
   return {
     team: activeTeam,
