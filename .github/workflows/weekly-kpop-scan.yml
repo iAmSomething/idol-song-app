@@ -54,6 +54,7 @@ jobs:
       - name: Rebuild watchlist and scan future candidates
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          BACKEND_PUBLIC_URL: ${{ vars.VITE_API_BASE_URL }}
         run: |
           python build_tracking_watchlist.py
           python scan_upcoming_candidates.py
@@ -73,6 +74,7 @@ jobs:
             (
               cd backend
               npm run shadow:verify
+              npm run freshness:handoff -- --target production --backend-public-url "$BACKEND_PUBLIC_URL"
             )
           else
             echo "DATABASE_URL not configured; skipping upcoming/release pipeline DB sync and post-sync backend verification."
@@ -87,6 +89,14 @@ jobs:
         working-directory: web
         run: npm run build
 
+      - name: Upload backend freshness handoff artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-freshness-handoff-production
+          path: backend/reports/backend_freshness_handoff.json
+          if-no-files-found: warn
+
       - name: Commit refreshed data
         run: |
           if git diff --quiet; then
@@ -95,6 +105,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tracking_watchlist.json tracking_watchlist.csv upcoming_release_candidates.json upcoming_release_candidates.csv manual_review_queue.json manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv web/src/data/watchlist.json web/src/data/upcomingCandidates.json web/src/data/releases.json web/src/data/releaseArtwork.json web/src/data/releaseDetails.json web/src/data/releaseChangeLog.json backend/reports/projection_refresh_summary.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json
+          git add tracking_watchlist.json tracking_watchlist.csv upcoming_release_candidates.json upcoming_release_candidates.csv manual_review_queue.json manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv web/src/data/watchlist.json web/src/data/upcomingCandidates.json web/src/data/releases.json web/src/data/releaseArtwork.json web/src/data/releaseDetails.json web/src/data/releaseChangeLog.json backend/reports/projection_refresh_summary.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json backend/reports/backend_freshness_handoff.json
           git commit -m "chore: refresh upcoming scan data"
           git push

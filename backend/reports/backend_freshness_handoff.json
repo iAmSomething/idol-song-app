@@ -1,0 +1,122 @@
+{
+  "generated_at": "2026-03-10T13:18:55.371Z",
+  "artifact_version": 1,
+  "status": "pass",
+  "target": {
+    "environment": "production",
+    "classification": "production",
+    "backend_public_url": "https://api.idol-song-app.example.com"
+  },
+  "source": {
+    "kind": "manual",
+    "workflow_name": null,
+    "git_commit_sha": null,
+    "github_run_id": null
+  },
+  "source_reports": {
+    "release_pipeline_sync": {
+      "path": "release_pipeline_db_sync_summary.json",
+      "generated_at": "2026-03-07T07:51:00.028Z"
+    },
+    "upcoming_pipeline_sync": {
+      "path": "upcoming_pipeline_db_sync_summary.json",
+      "generated_at": "2026-03-07T08:21:49.354Z"
+    },
+    "projection_refresh": {
+      "path": "projection_refresh_summary.json",
+      "generated_at": "2026-03-08T23:52:59.908Z"
+    },
+    "runtime_gate": {
+      "path": "runtime_gate_report.json",
+      "generated_at": "2026-03-09T00:10:27.541Z"
+    }
+  },
+  "prerequisite_checks": {
+    "release_pipeline_sync": {
+      "status": "pass",
+      "observed": {
+        "generated_at": "2026-03-07T07:51:00.028Z",
+        "scope": "release_pipeline",
+        "summary_path": "backend/reports/release_pipeline_db_sync_summary.json"
+      }
+    },
+    "upcoming_pipeline_sync": {
+      "status": "pass",
+      "observed": {
+        "generated_at": "2026-03-07T08:21:49.354Z",
+        "scope": "upcoming_pipeline",
+        "summary_path": "backend/reports/upcoming_pipeline_db_sync_summary.json"
+      }
+    },
+    "projection_row_counts": {
+      "status": "pass",
+      "observed": {
+        "generated_at": "2026-03-08T23:52:59.908Z",
+        "row_counts": {
+          "entity_search_documents": 117,
+          "calendar_month_projection": 216,
+          "entity_detail_projection": 117,
+          "release_detail_projection": 1771,
+          "radar_projection": 1
+        },
+        "missing_or_empty_keys": []
+      }
+    },
+    "sequence_after_sync": {
+      "status": "pass",
+      "observed": {
+        "release_sync_generated_at": "2026-03-07T07:51:00.028Z",
+        "upcoming_sync_generated_at": "2026-03-07T08:21:49.354Z",
+        "latest_sync_generated_at": "2026-03-07T08:21:49.354Z",
+        "projection_generated_at": "2026-03-08T23:52:59.908Z"
+      }
+    },
+    "artifact_freshness": {
+      "status": "pass",
+      "observed": {
+        "projection_generated_at": "2026-03-08T23:52:59.908Z",
+        "age_hours": 37.43
+      },
+      "thresholds": {
+        "passAgeHours": 96,
+        "reviewAgeHours": 168
+      }
+    },
+    "target_binding": {
+      "status": "pass",
+      "observed": {
+        "target_environment": "production",
+        "backend_public_url": "https://api.idol-song-app.example.com",
+        "classified_target": "production"
+      }
+    }
+  },
+  "runtime_gate_summary": {
+    "generated_at": "2026-03-09T00:10:27.541Z",
+    "projection_freshness_status": "pass",
+    "stage_gates": {
+      "shadow_to_web_cutover": "fail",
+      "web_cutover_to_json_demotion": "fail"
+    },
+    "summary_lines": [
+      "api latency: needs_review (worst p95=1148.96ms)",
+      "api error rate: needs_review (error rate=0)",
+      "projection freshness: pass (lag=17.46m)",
+      "worker cadence: fail (failure rate=n/a)",
+      "parity dependency: fail",
+      "shadow dependency: fail",
+      "historical catalog completeness dependency: fail",
+      "shadow -> web cutover gate: fail",
+      "web cutover -> JSON demotion gate: fail"
+    ]
+  },
+  "summary_lines": [
+    "status: pass",
+    "release sync: pass",
+    "upcoming sync: pass",
+    "projection rows: pass",
+    "projection after sync: pass",
+    "artifact freshness: pass (37.43h old)",
+    "target binding: pass (production -> production)"
+  ]
+}

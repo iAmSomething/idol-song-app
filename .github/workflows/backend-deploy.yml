@@ -84,12 +84,26 @@ jobs:
           BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
         run: npm run smoke:live -- --target preview --base-url "$BACKEND_PUBLIC_URL" --report-path ./reports/live_backend_smoke_preview.json
 
+      - name: Build preview backend freshness handoff artifact
+        working-directory: backend
+        env:
+          BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
+        run: npm run freshness:handoff -- --target preview --backend-public-url "$BACKEND_PUBLIC_URL" --report-path ./reports/backend_freshness_handoff_preview.json
+
       - name: Upload preview live smoke report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: backend-live-smoke-preview
           path: backend/reports/live_backend_smoke_preview.json
+          if-no-files-found: warn
+
+      - name: Upload preview backend freshness handoff artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-freshness-handoff-preview
+          path: backend/reports/backend_freshness_handoff_preview.json
           if-no-files-found: warn
 
   deploy-production:
@@ -154,10 +168,24 @@ jobs:
           BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
         run: npm run smoke:live -- --target production --base-url "$BACKEND_PUBLIC_URL" --report-path ./reports/live_backend_smoke_production.json
 
+      - name: Build production backend freshness handoff artifact
+        working-directory: backend
+        env:
+          BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
+        run: npm run freshness:handoff -- --target production --backend-public-url "$BACKEND_PUBLIC_URL" --report-path ./reports/backend_freshness_handoff_production.json
+
       - name: Upload production live smoke report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: backend-live-smoke-production
           path: backend/reports/live_backend_smoke_production.json
+          if-no-files-found: warn
+
+      - name: Upload production backend freshness handoff artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-freshness-handoff-production
+          path: backend/reports/backend_freshness_handoff_production.json
           if-no-files-found: warn

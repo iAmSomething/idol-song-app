@@ -20,6 +20,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
   - preview / production runtime config baseline
 - `reports/`
   - import / dual-write / projection refresh / parity summary artifact
+  - Pages publish gate가 읽는 backend freshness handoff artifact
   - backup / restore recovery drill artifact
   - secret rotation tabletop artifact
 - `sql/migrations/`
@@ -239,6 +240,17 @@ artifact:
 
 - preview: `backend/reports/live_backend_smoke_preview.json`
 - production: `backend/reports/live_backend_smoke_production.json`
+- preview freshness handoff: `backend/reports/backend_freshness_handoff_preview.json`
+- production freshness handoff: `backend/reports/backend_freshness_handoff_production.json`
+- repo-tracked Pages gate artifact: `backend/reports/backend_freshness_handoff.json`
+
+Pages publish path는 repo에 커밋된 `backend/reports/backend_freshness_handoff.json`을 읽어 아래를 같이 검증한다.
+
+- latest release pipeline sync summary가 존재하는지
+- latest upcoming pipeline sync summary가 존재하는지
+- projection refresh가 위 sync들 뒤에 실행됐는지
+- artifact target URL / env가 `VITE_API_BASE_URL`, `VITE_BACKEND_TARGET_ENV`와 일치하는지
+- handoff artifact가 과도하게 오래되지 않았는지
 
 manual smoke 예시:
 

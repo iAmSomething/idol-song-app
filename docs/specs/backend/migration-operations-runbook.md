@@ -42,6 +42,7 @@
 | release dual-write | `python3 sync_release_pipeline_to_neon.py` | `backend/reports/release_pipeline_db_sync_summary.json` |
 | upcoming dual-write | `python3 sync_upcoming_pipeline_to_neon.py` | `backend/reports/upcoming_pipeline_db_sync_summary.json` |
 | projection refresh | `cd backend && npm run projection:refresh` | `backend/reports/projection_refresh_summary.json` |
+| backend freshness handoff | `cd backend && npm run freshness:handoff -- --target production --backend-public-url <url>` | `backend/reports/backend_freshness_handoff.json` |
 | backend-vs-JSON parity | `python3 build_backend_json_parity_report.py` | `backend/reports/backend_json_parity_report.json` |
 | endpoint shadow verify | `cd backend && npm run shadow:verify` | `backend/reports/backend_shadow_read_report.json` |
 | runtime latency / error sample | `cd backend && npm run runtime:measure -- --base-url <url>` | `backend/reports/read_api_runtime_measurements.json` |
@@ -111,6 +112,7 @@ python3 build_backend_json_parity_report.py
 cd backend
 npm run shadow:verify
 npm run runtime:gate
+npm run freshness:handoff -- --target production --backend-public-url <url>
 npm run migration:scorecard
 cd ..
 ```
@@ -143,6 +145,7 @@ runbook을 따라 한 번 실제로 걷는 최소 경로는 아래다.
 - [ ] `runtime_gate_report.json`에서 해당 stage gate가 `pass` 또는 승인된 `needs_review`다.
 - [ ] `migration_readiness_scorecard.json`에서 overall이 blocker-free이고, blocker-grade category가 모두 허용 범위 안이다.
 - [ ] Pages / local build에 `VITE_API_BASE_URL`이 올바르게 들어간다.
+- [ ] `backend_freshness_handoff.json`이 latest sync / projection 순서와 target binding을 `pass`로 증명한다.
 - [ ] shipped web cut-over surface가 API-only runtime으로 동작한다.
 - [ ] operator가 JSON rollback이 아니라 deploy rollback / backend repair 절차를 알고 있다.
 
