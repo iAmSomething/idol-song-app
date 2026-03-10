@@ -68,8 +68,8 @@ describe('calendar selected-day bottom sheet', () => {
       true,
     );
     expect(tree.root.findAllByType(Text).some((node) => node.props.children === '발매 1 · 예정 1')).toBe(true);
-    expect(tree.root.findAllByType(Text).some((node) => node.props.children === 'Verified releases')).toBe(true);
-    expect(tree.root.findAllByType(Text).some((node) => node.props.children === 'Scheduled comebacks')).toBe(true);
+    expect(tree.root.findAllByType(Text).some((node) => node.props.children === '검증된 발매')).toBe(true);
+    expect(tree.root.findAllByType(Text).some((node) => node.props.children === '날짜가 잡힌 예정 컴백')).toBe(true);
     expect(tree.root.findAllByType(Text).some((node) => node.props.children === 'LOVE CATCHER')).toBe(true);
     expect(tree.root.findAllByType(Text).some((node) => node.props.children === '팀 페이지')).toBe(true);
 

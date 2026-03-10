@@ -15,6 +15,7 @@ export interface TeamIdentityRowProps {
   meta?: string;
   monogram?: string;
   name: string;
+  nameNumberOfLines?: number;
   onPress?: () => void;
   testID?: string;
 }
@@ -24,6 +25,7 @@ function TeamIdentityRowComponent({
   meta,
   monogram,
   name,
+  nameNumberOfLines = 1,
   onPress,
   testID,
 }: TeamIdentityRowProps) {
@@ -43,7 +45,7 @@ function TeamIdentityRowComponent({
         )}
       </View>
       <View style={styles.copy}>
-        <Text allowFontScaling numberOfLines={1} style={styles.name}>
+        <Text allowFontScaling numberOfLines={nameNumberOfLines} style={styles.name}>
           {name}
         </Text>
         {meta ? (
@@ -81,6 +83,7 @@ function createStyles(theme: MobileTheme) {
     row: {
       flexDirection: 'row',
       alignItems: 'center',
+      minHeight: theme.size.row.minHeight,
       gap: theme.space[12],
     },
     pressed: {

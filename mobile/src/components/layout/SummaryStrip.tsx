@@ -32,10 +32,10 @@ function SummaryStripComponent({
     <View style={[styles.row, layout === 'wrap' ? styles.wrapRow : null]} testID={testID}>
       {items.map((item) => (
         <View key={item.key} style={styles.card}>
-          <Text allowFontScaling style={styles.value}>
+          <Text allowFontScaling numberOfLines={1} style={styles.value}>
             {item.value}
           </Text>
-          <Text allowFontScaling style={styles.label}>
+          <Text allowFontScaling numberOfLines={1} style={styles.label}>
             {item.label}
           </Text>
         </View>

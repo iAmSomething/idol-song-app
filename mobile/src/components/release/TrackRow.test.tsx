@@ -33,6 +33,9 @@ describe('TrackRow', () => {
     expect(tree!.root.findByProps({ testID: 'track-row-1' })).toBeDefined();
     expect(tree!.root.findByProps({ testID: 'track-row-title-badge-1' })).toBeDefined();
     expect(hasText(tree!, 'BLACKHOLE')).toBe(true);
+    expect(
+      tree!.root.findAllByType(Text).find((node) => node.props.children === 'BLACKHOLE')?.props.numberOfLines,
+    ).toBe(2);
 
     await act(async () => {
       tree!.root.findByProps({ testID: 'track-row-spotify' }).props.onPress();

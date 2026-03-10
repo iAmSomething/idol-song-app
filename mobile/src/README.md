@@ -7,6 +7,8 @@
   - `actions/`: service button / grouped action row 공용 컴포넌트
   - `calendar/`: day cell / date detail sheet 공용 컴포넌트
   - `release/`: track row 공용 컴포넌트
+- `copy/`: RN 공용 문구 / 상태 라벨 / 날짜 라벨 helper
+  - `mobileCopy.ts`: Korean-first action/source/status/confidence/date copy 중앙화
 - `config/`: validated runtime config accessor
   - `featureGates.ts`: gate registry / fallback metadata / helper
   - `runtime.ts`: mobile profile / env validation + safe degraded runtime state
@@ -66,6 +68,11 @@ feedback state 관련 규칙:
 - screen-level loading / empty / error / retry는 `components/feedback/FeedbackState.tsx`를 우선 사용한다.
 - section 안의 empty / warning / retry copy도 가능하면 `InlineFeedbackNotice`로 통일한다.
 - 화면이 직접 `ActivityIndicator + 문구 + retry button` 조합을 반복해서 만들지 않는다.
+
+copy 관련 규칙:
+
+- `팀 페이지`, `상세 보기`, `소스 보기`, `다시 시도` 같은 공용 라벨은 `copy/mobileCopy.ts`를 우선 사용한다.
+- `날짜 미정`, `월 단위 일정`, `공식 공지`, `기사 원문`, confidence/status 라벨도 가능하면 같은 helper에서 파생한다.
 
 failure-policy 관련 규칙:
 

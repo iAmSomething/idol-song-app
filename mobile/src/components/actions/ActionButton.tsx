@@ -52,6 +52,8 @@ function ActionButtonComponent({
         tone === 'primary' ? styles.primaryButton : null,
         tone === 'secondary' ? styles.secondaryButton : null,
         tone === 'meta' ? styles.metaButton : null,
+        tone === 'primary' ? styles.primarySize : null,
+        tone === 'secondary' ? styles.secondarySize : null,
         fullWidth ? styles.fullWidthButton : null,
         pressed && !isDisabled ? styles.pressed : null,
         isDisabled ? styles.disabled : null,
@@ -66,6 +68,7 @@ function ActionButtonComponent({
           />
           <Text
             allowFontScaling
+            numberOfLines={2}
             style={[
               styles.label,
               tone === 'primary' ? styles.primaryLabel : styles.secondaryLabel,
@@ -77,6 +80,7 @@ function ActionButtonComponent({
       ) : (
         <Text
           allowFontScaling
+          numberOfLines={tone === 'meta' ? 1 : 2}
           style={[
             styles.label,
             tone === 'primary' ? styles.primaryLabel : null,
@@ -94,7 +98,6 @@ function ActionButtonComponent({
 function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     button: {
-      minHeight: 44,
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: theme.radius.button,
@@ -107,10 +110,16 @@ function createStyles(theme: MobileTheme) {
     primaryButton: {
       backgroundColor: theme.colors.text.brand,
     },
+    primarySize: {
+      minHeight: theme.size.button.heightPrimary,
+    },
     secondaryButton: {
       backgroundColor: theme.colors.surface.interactive,
       borderWidth: 1,
       borderColor: theme.colors.border.default,
+    },
+    secondarySize: {
+      minHeight: theme.size.button.heightSecondary,
     },
     metaButton: {
       alignSelf: 'flex-start',

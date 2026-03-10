@@ -171,7 +171,7 @@ describe('calendar controls', () => {
       tree.root.findByProps({ testID: 'calendar-filter-apply' }).props.onPress();
     });
 
-    expect(hasText(tree, '현재 필터에서는 month-only 예정 신호를 숨깁니다.')).toBe(true);
+    expect(hasText(tree, '현재 필터에서는 월 단위 예정 신호를 숨깁니다.')).toBe(true);
     expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
       'calendar_filter_changed',
       expect.objectContaining({
@@ -192,7 +192,7 @@ describe('calendar controls', () => {
       tree.root.findByProps({ testID: 'calendar-filter-apply' }).props.onPress();
     });
 
-    expect(hasText(tree, '현재 필터에서는 month-only 예정 신호를 숨깁니다.')).toBe(false);
+    expect(hasText(tree, '현재 필터에서는 월 단위 예정 신호를 숨깁니다.')).toBe(false);
     expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
       'calendar_filter_changed',
       expect.objectContaining({
@@ -243,9 +243,9 @@ describe('calendar controls', () => {
     expect(tree.root.findByProps({ testID: 'calendar-view-list' }).props.accessibilityState.selected).toBe(
       true,
     );
-    expect(hasText(tree, 'Verified releases')).toBe(true);
-    expect(hasText(tree, 'Scheduled comebacks')).toBe(true);
-    expect(hasText(tree, 'Month-only signals')).toBe(true);
+    expect(hasText(tree, '검증된 발매')).toBe(true);
+    expect(hasText(tree, '날짜가 잡힌 예정 컴백')).toBe(true);
+    expect(hasText(tree, '월 단위 예정 신호')).toBe(true);
     expect(hasText(tree, 'LOVE CATCHER')).toBe(true);
     expect(hasText(tree, 'DUH!')).toBe(true);
     expect(hasTextContaining(tree, 'Rumored follow-up')).toBe(true);

@@ -66,6 +66,7 @@ function createStyles(theme: MobileTheme) {
     container: {
       flexDirection: 'row',
       alignItems: 'flex-start',
+      minHeight: theme.size.button.heightPrimary,
       gap: theme.space[12],
     },
     actionSlot: {

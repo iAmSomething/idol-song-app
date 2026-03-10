@@ -17,6 +17,12 @@ import type {
   TeamSummaryModel,
   UpcomingEventModel,
 } from '../types';
+import {
+  MOBILE_COPY,
+  formatMonthOnlyDateLabel,
+  resolveSourceLinkLabel,
+  resolveUpcomingStatusLabel,
+} from '../copy/mobileCopy';
 
 import {
   adaptLatestReleaseStreams,
@@ -583,14 +589,14 @@ export function selectEntityDetailSnapshot(
 
     const dateLabel =
       upcoming.datePrecision === 'exact'
-        ? upcoming.scheduledDate ?? '날짜 미정'
-        : `${upcoming.scheduledMonth ?? '날짜 미정'} · 날짜 미정`;
+        ? upcoming.scheduledDate ?? MOBILE_COPY.date.unknown
+        : formatMonthOnlyDateLabel(upcoming.scheduledMonth);
 
     sourceTimeline.push({
       id: `${upcoming.id}-source`,
       kind: 'upcoming_source',
       title: upcoming.releaseLabel ?? upcoming.headline,
-      meta: `${dateLabel} · ${upcoming.status ?? '예정'}`,
+      meta: `${dateLabel} · ${resolveUpcomingStatusLabel(upcoming.status) ?? MOBILE_COPY.status.scheduled}`,
       sourceUrl: upcoming.sourceUrl,
     });
   }
@@ -646,7 +652,7 @@ function parseIsoDate(value: string | undefined): number | null {
 
 function resolveDayLabel(todayIsoDate: string, scheduledDate?: string): string {
   if (!scheduledDate) {
-    return '날짜 미정';
+    return MOBILE_COPY.date.unknown;
   }
 
   const todayTime = parseIsoDate(todayIsoDate);
@@ -674,31 +680,11 @@ function resolveDayLabel(todayIsoDate: string, scheduledDate?: string): string {
 }
 
 function resolveRadarSourceLabel(sourceType: UpcomingEventModel['sourceType']): string {
-  if (sourceType === 'agency_notice' || sourceType === 'weverse_notice' || sourceType === 'official_social') {
-    return '공식 공지';
-  }
-
-  if (sourceType === 'news_rss') {
-    return '기사 원문';
-  }
-
-  return '소스 보기';
+  return resolveSourceLinkLabel(sourceType);
 }
 
 function resolveChangeStatusLabel(status?: string | null): string | null {
-  if (status === 'confirmed') {
-    return '확정';
-  }
-
-  if (status === 'scheduled') {
-    return '예정';
-  }
-
-  if (status === 'rumor') {
-    return '루머';
-  }
-
-  return null;
+  return resolveUpcomingStatusLabel(status) ?? null;
 }
 
 function formatChangeScheduleLabel(date?: string | null, status?: string | null): string {
