@@ -80,6 +80,7 @@ export interface ReleaseDetailModel {
   stream?: ReleaseStream;
   coverImageUrl?: string;
   spotifyUrl?: string;
+  sourceUrl?: string;
   youtubeMusicUrl?: string;
   youtubeVideoId?: string;
   youtubeVideoUrl?: string;

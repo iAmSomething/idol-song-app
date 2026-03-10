@@ -2,21 +2,24 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   Image,
-  Pressable,
   ScrollView,
   StyleSheet,
   Text,
   View,
+  Linking,
 } from 'react-native';
 
 import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { AppBar } from '../../src/components/layout/AppBar';
 import {
   ServiceButtonGroup,
   type ServiceButtonGroupItem,
 } from '../../src/components/actions/ServiceButtonGroup';
+import { SourceLinkRow } from '../../src/components/meta/SourceLinkRow';
+import { TeamIdentityRow } from '../../src/components/identity/TeamIdentityRow';
 import { TrackRow } from '../../src/components/release/TrackRow';
 import {
   buildDatasetRiskDisclosure,
@@ -24,6 +27,7 @@ import {
 } from '../../src/features/surfaceDisclosures';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectReleaseDetailById } from '../../src/selectors';
+import { getFeatureGateState } from '../../src/config/featureGates';
 import {
   openServiceHandoff,
   resolveServiceHandoff,
@@ -163,7 +167,7 @@ function buildTrackServiceButtons(detail: ReleaseDetailModel, track: TrackModel)
     {
       accessibilityLabel: `YouTube Music에서 ${track.title} 트랙 열기`,
       key: 'youtubeMusic',
-      label: 'YT Music',
+      label: 'YouTube Music',
       handoff: resolveServiceHandoff({
         service: 'youtubeMusic',
         query,
@@ -194,6 +198,14 @@ function ReleaseCover({
   );
 }
 
+async function openExternalUrl(url: string) {
+  try {
+    await Linking.openURL(url);
+  } catch {
+    // Keep the current route stack stable when external handoff fails.
+  }
+}
+
 export default function ReleaseDetailScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ id?: string | string[] }>();
@@ -211,6 +223,10 @@ export default function ReleaseDetailScreen() {
     () => (datasetState.kind === 'ready' && releaseId ? selectReleaseDetailById(datasetState.source.dataset, releaseId) : null),
     [datasetState, releaseId],
   );
+  const teamProfile =
+    datasetState.kind === 'ready' && detail
+      ? datasetState.source.dataset.artistProfiles.find((profile) => profile.group === detail.group) ?? null
+      : null;
 
   useEffect(() => {
     setHandoffFeedback(null);
@@ -323,6 +339,23 @@ export default function ReleaseDetailScreen() {
   const albumServiceButtons = buildAlbumServiceButtons(detail);
   const mvUrl = resolveYoutubeMvUrl(detail);
   const mvStatusCopy = getMvStatusCopy(detail.youtubeVideoStatus);
+  const mvEmbedGate = getFeatureGateState('mvEmbed');
+  const supportingLinks = [
+    detail.sourceUrl
+      ? {
+          key: 'release-source',
+          label: '출처 보기',
+          onPress: () => void openExternalUrl(detail.sourceUrl!),
+          type: 'source' as const,
+          url: detail.sourceUrl,
+        }
+      : null,
+  ].filter((link): link is NonNullable<typeof link> => link !== null);
+  const hasSupportingInfo = Boolean(detail.notes) || supportingLinks.length > 0;
+  const mvDisclosure =
+    mvUrl && !mvEmbedGate.enabled
+      ? '이 빌드에서는 앱 내 MV 임베드를 끄고 외부 YouTube 재생만 제공합니다.'
+      : mvStatusCopy ?? '공식 MV를 외부 YouTube에서 바로 열 수 있습니다.';
 
   return (
     <ScrollView
@@ -332,15 +365,31 @@ export default function ReleaseDetailScreen() {
     >
       <Stack.Screen options={{ title: detail.releaseTitle }} />
 
-      <Pressable
-        accessibilityHint="이전 화면으로 돌아갑니다."
-        accessibilityLabel="뒤로 가기"
-        accessibilityRole="button"
-        style={styles.backButton}
-        onPress={() => router.back()}
-      >
-        <Text style={styles.backButtonLabel}>뒤로</Text>
-      </Pressable>
+      <AppBar
+        leadingAction={{
+          accessibilityHint: '이전 화면으로 돌아갑니다.',
+          accessibilityLabel: '이전으로',
+          label: '이전으로',
+          onPress: () => router.back(),
+          testID: 'release-appbar-back',
+        }}
+        testID="release-appbar"
+        title={detail.releaseTitle}
+        titleTestID="release-detail-appbar-title"
+        trailingActions={
+          teamProfile
+            ? [
+                {
+                  key: 'team-page',
+                  accessibilityLabel: `${detail.displayGroup} 팀 페이지 열기`,
+                  label: '팀 페이지',
+                  onPress: () => router.push(`/artists/${teamProfile.slug}`),
+                  testID: 'release-appbar-team-page',
+                },
+              ]
+            : []
+        }
+      />
 
       <Text style={styles.eyebrow}>{datasetState.source.sourceLabel}</Text>
 
@@ -363,12 +412,17 @@ export default function ReleaseDetailScreen() {
             <View style={styles.kindChip}>
               <Text style={styles.kindChipLabel}>{getReleaseKindLabel(detail)}</Text>
             </View>
-            <Text style={styles.groupLabel}>{detail.displayGroup}</Text>
           </View>
+          <TeamIdentityRow
+            badgeImageUrl={teamProfile?.badge_image_url ?? teamProfile?.representative_image_url ?? undefined}
+            monogram={detail.displayGroup.slice(0, 2).toUpperCase()}
+            name={detail.displayGroup}
+            testID="release-team-identity"
+          />
         </View>
       </View>
 
-      <View style={styles.section}>
+      <View style={styles.section} testID="release-album-actions-section">
         <Text accessibilityRole="header" style={styles.sectionTitle}>앨범 액션</Text>
         <ServiceButtonGroup
           buttons={albumServiceButtons.map((button) => ({
@@ -396,59 +450,87 @@ export default function ReleaseDetailScreen() {
         {detail.tracks.length > 0 ? (
           <View style={styles.trackList}>
             {detail.tracks.map((track) => (
-              <TrackRow
-                key={`${detail.id}-${track.order}`}
-                isTitleTrack={track.isTitleTrack}
-                order={track.order}
-                spotifyButton={buildTrackServiceButtons(detail, track)
-                  .filter((button) => button.service === 'spotify')
-                  .map((button) => ({
-                    accessibilityHint: button.accessibilityHint,
-                    accessibilityLabel: button.accessibilityLabel,
-                    disabled: button.disabled,
-                    label: button.label,
-                    mode: button.mode,
-                    onPress: () => void handleHandoff(button.handoff),
-                    testID: button.testID,
-                  }))[0]}
-                testIDPrefix="release-track-row"
-                title={track.title}
-                youtubeMusicButton={buildTrackServiceButtons(detail, track)
-                  .filter((button) => button.service === 'youtubeMusic')
-                  .map((button) => ({
-                    accessibilityHint: button.accessibilityHint,
-                    accessibilityLabel: button.accessibilityLabel,
-                    disabled: button.disabled,
-                    label: button.label,
-                    mode: button.mode,
-                    onPress: () => void handleHandoff(button.handoff),
-                    testID: button.testID,
-                  }))[0]}
-              />
+              (() => {
+                const trackButtons = buildTrackServiceButtons(detail, track);
+                const spotifyButton = trackButtons.find((button) => button.service === 'spotify');
+                const youtubeMusicButton = trackButtons.find((button) => button.service === 'youtubeMusic');
+
+                return (
+                  <TrackRow
+                    key={`${detail.id}-${track.order}`}
+                    isTitleTrack={track.isTitleTrack}
+                    order={track.order}
+                    spotifyButton={
+                      spotifyButton
+                        ? {
+                            accessibilityHint: spotifyButton.accessibilityHint,
+                            accessibilityLabel: spotifyButton.accessibilityLabel,
+                            disabled: spotifyButton.disabled,
+                            label: spotifyButton.label,
+                            mode: spotifyButton.mode,
+                            onPress: () => void handleHandoff(spotifyButton.handoff),
+                            testID: spotifyButton.testID,
+                          }
+                        : undefined
+                    }
+                    testIDPrefix="release-track-row"
+                    title={track.title}
+                    youtubeMusicButton={
+                      youtubeMusicButton
+                        ? {
+                            accessibilityHint: youtubeMusicButton.accessibilityHint,
+                            accessibilityLabel: youtubeMusicButton.accessibilityLabel,
+                            disabled: youtubeMusicButton.disabled,
+                            label: youtubeMusicButton.label,
+                            mode: youtubeMusicButton.mode,
+                            onPress: () => void handleHandoff(youtubeMusicButton.handoff),
+                            testID: youtubeMusicButton.testID,
+                          }
+                        : undefined
+                    }
+                  />
+                );
+              })()
             ))}
           </View>
         ) : (
           <InlineFeedbackNotice
-            body="트랙 정보가 아직 정리되지 않았습니다."
+            body="이 릴리즈에는 신뢰 가능한 canonical tracklist가 아직 연결되지 않았습니다. placeholder 트랙은 표시하지 않습니다."
             testID="release-empty-tracks"
           />
         )}
       </View>
 
-      {detail.notes ? (
-        <View style={styles.section}>
-          <Text accessibilityRole="header" style={styles.sectionTitle}>메모</Text>
-          <View style={styles.metaCard}>
-            <Text style={styles.metaBody}>{detail.notes}</Text>
-          </View>
-        </View>
-      ) : null}
+      <View style={styles.section} testID="release-supporting-info">
+        <Text accessibilityRole="header" style={styles.sectionTitle}>추가 정보</Text>
+        {hasSupportingInfo ? (
+          <>
+            {detail.notes ? (
+              <View style={styles.metaCard}>
+                <Text style={styles.metaLabel}>메모</Text>
+                <Text style={styles.metaBody}>{detail.notes}</Text>
+              </View>
+            ) : null}
+            {supportingLinks.length > 0 ? (
+              <View style={styles.metaCard}>
+                <Text style={styles.metaLabel}>출처</Text>
+                <SourceLinkRow links={supportingLinks} testID="release-supporting-links" />
+              </View>
+            ) : null}
+          </>
+        ) : (
+          <InlineFeedbackNotice
+            body="추가 메타데이터와 출처 링크는 아직 정리되지 않았습니다."
+            testID="release-supporting-info-empty"
+          />
+        )}
+      </View>
 
       {mvUrl ? (
         <View style={styles.section} testID="release-mv-card">
           <Text accessibilityRole="header" style={styles.sectionTitle}>공식 MV</Text>
           <View style={styles.metaCard}>
-            {mvStatusCopy ? <Text style={styles.metaBody}>{mvStatusCopy}</Text> : null}
+            <Text style={styles.metaBody}>{mvDisclosure}</Text>
             <ServiceButtonGroup
               buttons={[
                 {
@@ -470,14 +552,6 @@ export default function ReleaseDetailScreen() {
               testID="release-mv-button-group"
             />
           </View>
-        </View>
-      ) : detail.youtubeVideoStatus ? (
-        <View style={styles.section} testID="release-mv-state">
-          <Text accessibilityRole="header" style={styles.sectionTitle}>MV 상태</Text>
-          <InlineFeedbackNotice
-            body={mvStatusCopy ?? '공식 MV 정보가 아직 정리되지 않았습니다.'}
-            title={detail.youtubeVideoProvenance}
-          />
         </View>
       ) : null}
     </ScrollView>
@@ -528,20 +602,6 @@ function createStyles(theme: MobileTheme) {
     retryButtonLabel: {
       ...theme.typography.buttonPrimary,
       color: theme.colors.text.primary,
-    },
-    backButton: {
-      alignSelf: 'flex-start',
-      minHeight: 44,
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[8],
-      borderRadius: theme.radius.button,
-      backgroundColor: theme.colors.surface.interactive,
-    },
-    backButtonLabel: {
-      ...theme.typography.buttonService,
-      color: theme.colors.text.primary,
-      flexShrink: 1,
-      textAlign: 'center',
     },
     heroCard: {
       flexDirection: 'row',
@@ -602,10 +662,6 @@ function createStyles(theme: MobileTheme) {
       ...theme.typography.chip,
       color: theme.colors.text.brand,
     },
-    groupLabel: {
-      ...theme.typography.meta,
-      color: theme.colors.text.secondary,
-    },
     section: {
       gap: theme.space[12],
     },
@@ -649,6 +705,11 @@ function createStyles(theme: MobileTheme) {
     metaBody: {
       ...theme.typography.body,
       color: theme.colors.text.secondary,
+    },
+    metaLabel: {
+      ...theme.typography.meta,
+      color: theme.colors.text.tertiary,
+      textTransform: 'uppercase',
     },
     metaSubtle: {
       ...theme.typography.meta,

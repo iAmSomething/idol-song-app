@@ -90,7 +90,9 @@ function TrackRowComponent({
           ) : null}
         </View>
         {buttons.length ? (
-          <ServiceButtonGroup buttons={buttons} testID={`${testIDPrefix}-actions-${order}`} />
+          <View style={styles.trackActions}>
+            <ServiceButtonGroup buttons={buttons} testID={`${testIDPrefix}-actions-${order}`} />
+          </View>
         ) : null}
       </View>
     </View>
@@ -129,6 +131,9 @@ function createStyles(theme: MobileTheme) {
       ...theme.typography.cardTitle,
       color: theme.colors.text.primary,
       flexShrink: 1,
+    },
+    trackActions: {
+      alignSelf: 'flex-end',
     },
   });
 }

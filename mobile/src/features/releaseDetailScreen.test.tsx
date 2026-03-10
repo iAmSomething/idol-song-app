@@ -3,6 +3,7 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import ReleaseDetailScreen from '../../app/releases/[id]';
+import { getFeatureGateState } from '../config/featureGates';
 import { trackAnalyticsEvent } from '../services/analytics';
 import {
   openServiceHandoff,
@@ -63,6 +64,21 @@ jest.mock('../services/analytics', () => ({
   trackDatasetLoadFailed: jest.fn(),
 }));
 
+jest.mock('../config/featureGates', () => {
+  const actual = jest.requireActual('../config/featureGates');
+
+  return {
+    ...actual,
+    getFeatureGateState: jest.fn(() => ({
+      id: 'mv_embed_enabled',
+      key: 'mvEmbed',
+      label: 'MV embed',
+      offFallback: 'Hide the embed and keep the external watch CTA.',
+      enabled: true,
+    })),
+  };
+});
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     useLocalSearchParams: jest.Mock;
@@ -72,6 +88,7 @@ const { __mock } = jest.requireMock('expo-router') as {
 
 const mockOpenServiceHandoff = openServiceHandoff as jest.MockedFunction<typeof openServiceHandoff>;
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
+const mockGetFeatureGateState = jest.mocked(getFeatureGateState);
 
 async function renderReleaseDetail() {
   let tree: renderer.ReactTestRenderer;
@@ -91,6 +108,13 @@ function hasText(tree: renderer.ReactTestRenderer, value: string): boolean {
 
 describe('mobile release detail screen', () => {
   beforeEach(() => {
+    mockGetFeatureGateState.mockReturnValue({
+      id: 'mv_embed_enabled',
+      key: 'mvEmbed',
+      label: 'MV embed',
+      offFallback: 'Hide the embed and keep the external watch CTA.',
+      enabled: true,
+    });
     __mock.useRouter.mockReturnValue({
       back: jest.fn(),
       push: jest.fn(),
@@ -100,30 +124,45 @@ describe('mobile release detail screen', () => {
   });
 
   test('renders populated release detail sections for a canonical release', async () => {
+    const push = jest.fn();
+    __mock.useRouter.mockReturnValue({
+      back: jest.fn(),
+      push,
+    });
     __mock.useLocalSearchParams.mockReturnValue({ id: 'yena--love-catcher--2026-03-11--album' });
     const tree = await renderReleaseDetail();
 
+    expect(tree.root.findByProps({ testID: 'release-appbar' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'release-appbar-team-page' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-detail-title' }).props.children).toBe('LOVE CATCHER');
+    expect(tree.root.findByProps({ testID: 'release-team-identity' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-service-spotify' }).props.accessibilityLabel).toBe(
       'Spotify에서 LOVE CATCHER 열기',
     );
     expect(tree.root.findByProps({ testID: 'release-service-spotify' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-service-youtube-music' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-service-youtube-mv' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'release-supporting-links' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-track-row-1' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-track-row-title-badge-1' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-mv-card' })).toBeDefined();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'release-appbar-team-page' }).props.onPress();
+    });
+
+    expect(push).toHaveBeenCalledWith('/artists/yena');
   });
 
-  test('renders safe partial states for releases without track or mv links', async () => {
+  test('renders safe partial states for releases without track links and hides unavailable mv blocks', async () => {
     __mock.useLocalSearchParams.mockReturnValue({ id: 'atheart--glow-up--2025-11-18--song' });
     const tree = await renderReleaseDetail();
 
     expect(tree.root.findByProps({ testID: 'release-detail-title' }).props.children).toBe('Glow Up');
     expect(tree.root.findByProps({ testID: 'release-empty-tracks' })).toBeDefined();
-    expect(tree.root.findByProps({ testID: 'release-mv-state' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-detail-quality-notice' })).toBeDefined();
-    expect(hasText(tree, '현재는 공식 MV가 등록되지 않았습니다.')).toBe(true);
+    expect(tree.root.findAllByProps({ testID: 'release-mv-card' })).toHaveLength(0);
+    expect(tree.root.findAllByProps({ testID: 'release-mv-state' })).toHaveLength(0);
   });
 
   test('renders a safe recovery state for missing release ids', async () => {
@@ -208,5 +247,31 @@ describe('mobile release detail screen', () => {
         failureCode: 'handoff_open_failed',
       }),
     );
+  });
+
+  test('marks double title tracks consistently when a release has multiple title songs', async () => {
+    __mock.useLocalSearchParams.mockReturnValue({ id: 'p1harmony--duh--2026-04-02--album' });
+    const tree = await renderReleaseDetail();
+
+    expect(tree.root.findByProps({ testID: 'release-track-row-title-badge-1' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'release-track-row-title-badge-2' })).toBeDefined();
+    expect(tree.root.findAllByProps({ testID: 'release-track-row-title-badge-3' })).toHaveLength(0);
+  });
+
+  test('keeps the mv CTA visible and adds disclosure when mv embed is disabled', async () => {
+    mockGetFeatureGateState.mockReturnValue({
+      id: 'mv_embed_enabled',
+      key: 'mvEmbed',
+      label: 'MV embed',
+      offFallback: 'Hide the embed and keep the external watch CTA.',
+      enabled: false,
+    });
+    __mock.useLocalSearchParams.mockReturnValue({ id: 'yena--love-catcher--2026-03-11--album' });
+
+    const tree = await renderReleaseDetail();
+
+    expect(tree.root.findByProps({ testID: 'release-mv-card' })).toBeDefined();
+    expect(hasText(tree, '이 빌드에서는 앱 내 MV 임베드를 끄고 외부 YouTube 재생만 제공합니다.')).toBe(true);
+    expect(tree.root.findByProps({ testID: 'release-mv-button' })).toBeDefined();
   });
 });
