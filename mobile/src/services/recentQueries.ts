@@ -1,7 +1,14 @@
-import { MOBILE_STORAGE_KEYS, RECENT_QUERY_LIMIT, readStoredJson, removeStoredJson, writeStoredJson } from './storage';
+import {
+  MOBILE_STORAGE_KEYS,
+  RECENT_QUERY_LIMIT,
+  RECENT_QUERY_MAX_LENGTH,
+  readStoredJson,
+  removeStoredJson,
+  writeStoredJson,
+} from './storage';
 
 function normalizeQuery(value: string): string {
-  return value.trim().replace(/\s+/g, ' ');
+  return value.trim().replace(/\s+/g, ' ').slice(0, RECENT_QUERY_MAX_LENGTH);
 }
 
 function comparisonKey(value: string): string {

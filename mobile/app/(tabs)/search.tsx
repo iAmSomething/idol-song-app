@@ -2,7 +2,6 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Keyboard,
-  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -39,9 +38,13 @@ import { adaptBackendSearchResults } from '../../src/services/backendDisplayAdap
 import type { BackendReadClient } from '../../src/services/backendReadClient';
 import { cloneBundledDatasetFixture } from '../../src/services/bundledDatasetFixture';
 import {
+  classifyExternalLinkFailureCategory,
+  classifyServiceHandoffFailureCategory,
+  trackFailureObserved,
   trackAnalyticsEvent,
   type SearchSubmitSource,
 } from '../../src/services/analytics';
+import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
 import { openServiceHandoff, resolveServiceHandoff, type MusicService } from '../../src/services/handoff';
 import { clearRecentQueries, persistRecentQuery, readRecentQueries } from '../../src/services/recentQueries';
 import { useAppTheme } from '../../src/tokens/theme';
@@ -189,6 +192,7 @@ function buildUpcomingResultAccessibilityLabel(result: SearchUpcomingResultModel
 export default function SearchTabScreen() {
   const router = useRouter();
   const inputRef = useRef<TextInput | null>(null);
+  const hasTrackedViewRef = useRef(false);
   const params = useLocalSearchParams<{
     q?: string | string[];
     segment?: string | string[];
@@ -472,16 +476,27 @@ export default function SearchTabScreen() {
   }
 
   async function handleUpcomingSourcePress(result: SearchUpcomingResultModel) {
-    if (!result.upcoming.sourceUrl) {
+    const opened = await openExternalLink(normalizeExternalLinkUrl('source', result.upcoming.sourceUrl));
+    trackAnalyticsEvent('source_link_opened', {
+      surface: 'search',
+      linkType: 'source',
+      host: opened.ok ? opened.host : opened.host,
+      ok: opened.ok,
+      failureCode: opened.ok ? null : opened.code,
+    });
+
+    if (!opened.ok) {
+      trackFailureObserved(
+        'search',
+        classifyExternalLinkFailureCategory(opened.code),
+        opened.code,
+        opened.feedback.retryable,
+      );
+      setHandoffFeedback(opened.feedback.message);
       return;
     }
 
-    try {
-      await Linking.openURL(result.upcoming.sourceUrl);
-      setHandoffFeedback(null);
-    } catch {
-      setHandoffFeedback('링크를 열 수 없습니다. 다시 시도해 주세요.');
-    }
+    setHandoffFeedback(null);
   }
 
   function buildReleaseServiceQuery(release: ReleaseSummaryModel): string {
@@ -520,8 +535,43 @@ export default function SearchTabScreen() {
       failureCode: result.ok ? null : result.code,
     });
 
-    setHandoffFeedback(result.ok ? null : '앱을 열 수 없습니다. 다시 시도해 주세요.');
+    if (!result.ok) {
+      trackAnalyticsEvent('service_handoff_failed', {
+        surface: 'search',
+        service: result.service,
+        mode: result.mode,
+        failureCode: result.code,
+        retryable: result.feedback.retryable,
+      });
+      trackFailureObserved(
+        'search',
+        classifyServiceHandoffFailureCategory(result.code),
+        result.code,
+        result.feedback.retryable,
+      );
+      setHandoffFeedback(result.feedback.message);
+      return;
+    }
+
+    trackAnalyticsEvent('service_handoff_opened', {
+      surface: 'search',
+      service: result.service,
+      mode: result.mode,
+      target: result.target,
+    });
+    setHandoffFeedback(null);
   }
+
+  useEffect(() => {
+    if (hasTrackedViewRef.current) {
+      return;
+    }
+
+    hasTrackedViewRef.current = true;
+    trackAnalyticsEvent('search_viewed', {
+      activeSegment,
+    });
+  }, [activeSegment]);
 
   if (datasetState.kind === 'loading') {
     return (

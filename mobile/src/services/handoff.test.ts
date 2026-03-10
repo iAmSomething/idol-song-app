@@ -136,7 +136,7 @@ describe('mobile external handoff service', () => {
       service: 'spotify',
       query: 'BLACKPINK DEADLINE',
       canonicalUrl: 'https://open.spotify.com/album/12345',
-      browserFallbackUrl: 'https://example.com/browser-safe-spotify',
+      browserFallbackUrl: 'https://open.spotify.com/search/BLACKPINK%20DEADLINE',
     });
 
     if ('ok' in handoff) {
@@ -147,7 +147,7 @@ describe('mobile external handoff service', () => {
     const result = await openServiceHandoff(
       handoff,
       createLinkingAdapter({
-        canOpen: async (url) => url === 'https://example.com/browser-safe-spotify',
+        canOpen: async (url) => url === 'https://open.spotify.com/search/BLACKPINK%20DEADLINE',
         open: async (url) => {
           opened.push(url);
         },
@@ -159,9 +159,24 @@ describe('mobile external handoff service', () => {
       service: 'spotify',
       mode: 'canonical',
       target: 'browserFallback',
-      openedUrl: 'https://example.com/browser-safe-spotify',
+      openedUrl: 'https://open.spotify.com/search/BLACKPINK%20DEADLINE',
     });
-    expect(opened).toEqual(['https://example.com/browser-safe-spotify']);
+    expect(opened).toEqual(['https://open.spotify.com/search/BLACKPINK%20DEADLINE']);
+  });
+
+  test('drops unsafe browser fallback URLs and keeps safe search fallback instead', () => {
+    const handoff = resolveServiceHandoff({
+      service: 'spotify',
+      query: 'BLACKPINK DEADLINE',
+      canonicalUrl: 'https://open.spotify.com/album/12345',
+      browserFallbackUrl: 'https://example.com/browser-safe-spotify',
+    });
+
+    if ('ok' in handoff) {
+      throw new Error('Expected a handoff resolution.');
+    }
+
+    expect(handoff.browserFallbackUrl).toBe('https://open.spotify.com/search/BLACKPINK%20DEADLINE');
   });
 
   test('returns retryable failure metadata when no handoff target can be opened', async () => {

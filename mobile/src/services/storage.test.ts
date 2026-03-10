@@ -1,6 +1,7 @@
 import {
   MOBILE_STORAGE_KEYS,
   RECENT_QUERY_LIMIT,
+  RECENT_QUERY_MAX_LENGTH,
   buildDatasetCacheKey,
   resetStorageAdapter,
   setStorageAdapter,
@@ -114,6 +115,9 @@ describe('mobile storage foundations', () => {
     expect(limitedQueries).toHaveLength(RECENT_QUERY_LIMIT);
     expect(limitedQueries[0]).toBe(`query ${RECENT_QUERY_LIMIT + 1}`);
     expect(limitedQueries.at(-1)).toBe('query 2');
+
+    await persistRecentQuery('x'.repeat(RECENT_QUERY_MAX_LENGTH + 20));
+    expect((await readRecentQueries())[0]).toHaveLength(RECENT_QUERY_MAX_LENGTH);
   });
 
   test('clears recent queries from the shared storage key', async () => {

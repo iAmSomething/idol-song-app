@@ -35,11 +35,17 @@ jest.mock('expo-router', () => {
   };
 });
 
-jest.mock('../services/analytics', () => ({
-  trackAnalyticsEvent: jest.fn(),
-  trackDatasetDegraded: jest.fn(),
-  trackDatasetLoadFailed: jest.fn(),
-}));
+jest.mock('../services/analytics', () => {
+  const actual = jest.requireActual('../services/analytics') as typeof import('../services/analytics');
+
+  return {
+    ...actual,
+    trackAnalyticsEvent: jest.fn(),
+    trackDatasetDegraded: jest.fn(),
+    trackDatasetLoadFailed: jest.fn(),
+    trackFailureObserved: jest.fn(),
+  };
+});
 
 jest.mock('../services/handoff', () => {
   const actual = jest.requireActual('../services/handoff') as typeof import('../services/handoff');

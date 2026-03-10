@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Linking,
 } from 'react-native';
 
 import {
@@ -39,19 +38,39 @@ import {
   openServiceHandoff,
   resolveServiceHandoff,
   resolveServiceHandoffGroup,
+  type MusicService,
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
 } from '../../src/services/handoff';
 import {
+  classifyExternalLinkFailureCategory,
+  classifyServiceHandoffFailureCategory,
+  trackFailureObserved,
   trackAnalyticsEvent,
 } from '../../src/services/analytics';
+import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
 import { useAppTheme } from '../../src/tokens/theme';
 import type { MobileTheme } from '../../src/tokens/theme';
 import type { ReleaseDetailModel, TrackModel, YoutubeVideoStatus } from '../../src/types';
 
 type ReleaseServiceButtonItem = ServiceButtonGroupItem & {
+  service: MusicService;
   handoff: ServiceHandoffResolution | ServiceHandoffFailure;
 };
+
+type ReleaseHandoffContext =
+  | {
+      kind: 'album';
+      service: MusicService;
+    }
+  | {
+      kind: 'track';
+      service: MusicService;
+      trackTitle: string;
+    }
+  | {
+      kind: 'mv';
+    };
 
 function getSingleParam(value: string | string[] | undefined): string | null {
   if (Array.isArray(value)) {
@@ -130,6 +149,7 @@ function buildAlbumServiceButtons(detail: ReleaseDetailModel): ReleaseServiceBut
       key: 'spotify',
       label: 'Spotify',
       handoff: handoffs.spotify,
+      service: 'spotify',
       testID: 'release-service-spotify',
       tone: 'spotify',
     },
@@ -138,6 +158,7 @@ function buildAlbumServiceButtons(detail: ReleaseDetailModel): ReleaseServiceBut
       key: 'youtubeMusic',
       label: 'YouTube Music',
       handoff: handoffs.youtubeMusic,
+      service: 'youtubeMusic',
       testID: 'release-service-youtube-music',
       tone: 'youtubeMusic',
     },
@@ -146,6 +167,7 @@ function buildAlbumServiceButtons(detail: ReleaseDetailModel): ReleaseServiceBut
       key: 'youtubeMv',
       label: 'YouTube MV',
       handoff: handoffs.youtubeMv,
+      service: 'youtubeMv',
       testID: 'release-service-youtube-mv',
       tone: 'youtubeMv',
     },
@@ -203,14 +225,6 @@ function ReleaseCover({
       <Text style={styles.coverFallbackText}>{getCoverMonogram(detail)}</Text>
     </View>
   );
-}
-
-async function openExternalUrl(url: string) {
-  try {
-    await Linking.openURL(url);
-  } catch {
-    // Keep the current route stack stable when external handoff fails.
-  }
 }
 
 export default function ReleaseDetailScreen() {
@@ -272,8 +286,19 @@ export default function ReleaseDetailScreen() {
     setHandoffFeedback(null);
   }, [releaseId, reloadCount]);
 
+  useEffect(() => {
+    if (!releaseId) {
+      return;
+    }
+
+    trackAnalyticsEvent('release_detail_viewed', {
+      releaseId,
+    });
+  }, [releaseId]);
+
   async function handleHandoff(
     handoff: ServiceHandoffResolution | ServiceHandoffFailure,
+    context?: ReleaseHandoffContext,
   ) {
     trackAnalyticsEvent('service_handoff_attempted', {
       surface: 'release_detail',
@@ -291,7 +316,71 @@ export default function ReleaseDetailScreen() {
     });
 
     if (!result.ok) {
+      trackAnalyticsEvent('service_handoff_failed', {
+        surface: 'release_detail',
+        service: result.service,
+        mode: result.mode,
+        failureCode: result.code,
+        retryable: result.feedback.retryable,
+      });
+      trackFailureObserved(
+        'release_detail',
+        classifyServiceHandoffFailureCategory(result.code),
+        result.code,
+        result.feedback.retryable,
+      );
       setHandoffFeedback(result.feedback.message);
+      return;
+    }
+
+    trackAnalyticsEvent('service_handoff_opened', {
+      surface: 'release_detail',
+      service: result.service,
+      mode: result.mode,
+      target: result.target,
+    });
+    if (context?.kind === 'album') {
+      trackAnalyticsEvent('release_detail_album_service_opened', {
+        releaseId: detail?.id ?? releaseId,
+        service: result.service,
+        mode: result.mode,
+      });
+    }
+    if (context?.kind === 'track') {
+      trackAnalyticsEvent('release_detail_track_service_opened', {
+        releaseId: detail?.id ?? releaseId,
+        trackTitle: context.trackTitle,
+        service: result.service,
+        mode: result.mode,
+      });
+    }
+    if (context?.kind === 'mv') {
+      trackAnalyticsEvent('release_detail_mv_opened', {
+        releaseId: detail?.id ?? releaseId,
+        mode: result.mode,
+      });
+    }
+    setHandoffFeedback(null);
+  }
+
+  async function handleSupportingLinkOpen(url: string) {
+    const opened = await openExternalLink(normalizeExternalLinkUrl('source', url));
+    trackAnalyticsEvent('source_link_opened', {
+      surface: 'release_detail',
+      linkType: 'source',
+      host: opened.ok ? opened.host : opened.host,
+      ok: opened.ok,
+      failureCode: opened.ok ? null : opened.code,
+    });
+
+    if (!opened.ok) {
+      trackFailureObserved(
+        'release_detail',
+        classifyExternalLinkFailureCategory(opened.code),
+        opened.code,
+        opened.feedback.retryable,
+      );
+      setHandoffFeedback(opened.feedback.message);
       return;
     }
 
@@ -385,7 +474,7 @@ export default function ReleaseDetailScreen() {
       ? {
           key: 'release-source',
           label: '출처 보기',
-          onPress: () => void openExternalUrl(detail.sourceUrl!),
+          onPress: () => void handleSupportingLinkOpen(detail.sourceUrl!),
           type: 'source' as const,
           url: detail.sourceUrl,
         }
@@ -467,7 +556,7 @@ export default function ReleaseDetailScreen() {
         <ServiceButtonGroup
           buttons={albumServiceButtons.map((button) => ({
             ...button,
-            onPress: () => void handleHandoff(button.handoff),
+            onPress: () => void handleHandoff(button.handoff, { kind: 'album', service: button.service }),
           }))}
           testID="release-service-buttons"
         />
@@ -508,7 +597,12 @@ export default function ReleaseDetailScreen() {
                             disabled: spotifyButton.disabled,
                             label: spotifyButton.label,
                             mode: spotifyButton.mode,
-                            onPress: () => void handleHandoff(spotifyButton.handoff),
+                            onPress: () =>
+                              void handleHandoff(spotifyButton.handoff, {
+                                kind: 'track',
+                                service: 'spotify',
+                                trackTitle: track.title,
+                              }),
                             testID: spotifyButton.testID,
                           }
                         : undefined
@@ -523,7 +617,12 @@ export default function ReleaseDetailScreen() {
                             disabled: youtubeMusicButton.disabled,
                             label: youtubeMusicButton.label,
                             mode: youtubeMusicButton.mode,
-                            onPress: () => void handleHandoff(youtubeMusicButton.handoff),
+                            onPress: () =>
+                              void handleHandoff(youtubeMusicButton.handoff, {
+                                kind: 'track',
+                                service: 'youtubeMusic',
+                                trackTitle: track.title,
+                              }),
                             testID: youtubeMusicButton.testID,
                           }
                         : undefined
@@ -584,6 +683,7 @@ export default function ReleaseDetailScreen() {
                         query: `${detail.displayGroup} ${detail.releaseTitle}`,
                         canonicalUrl: mvUrl,
                       }),
+                      { kind: 'mv' },
                     ),
                   testID: 'release-mv-button',
                   tone: 'youtubeMv',

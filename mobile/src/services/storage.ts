@@ -4,6 +4,7 @@ export type KeyValueStorageAdapter = Pick<typeof AsyncStorage, 'getItem' | 'setI
 
 export const MOBILE_STORAGE_NAMESPACE = 'idol-song-app/mobile/v1';
 export const RECENT_QUERY_LIMIT = 10;
+export const RECENT_QUERY_MAX_LENGTH = 80;
 
 let storageAdapter: KeyValueStorageAdapter = AsyncStorage;
 

@@ -9,7 +9,7 @@ import {
   loadActiveMobileDataset,
   type ActiveMobileDataset,
 } from '../services/activeDataset';
-import { trackDatasetDegraded, trackDatasetLoadFailed } from '../services/analytics';
+import { trackAnalyticsEvent, trackDatasetDegraded, trackDatasetLoadFailed } from '../services/analytics';
 import { cloneBundledDatasetFixture } from '../services/bundledDatasetFixture';
 import { createBundledDatasetSelection } from '../services/datasetSource';
 
@@ -70,10 +70,17 @@ jest.mock('../selectors', () => {
   };
 });
 
-jest.mock('../services/analytics', () => ({
-  trackDatasetDegraded: jest.fn(),
-  trackDatasetLoadFailed: jest.fn(),
-}));
+jest.mock('../services/analytics', () => {
+  const actual = jest.requireActual('../services/analytics') as typeof import('../services/analytics');
+
+  return {
+    ...actual,
+    trackAnalyticsEvent: jest.fn(),
+    trackDatasetDegraded: jest.fn(),
+    trackDatasetLoadFailed: jest.fn(),
+    trackFailureObserved: jest.fn(),
+  };
+});
 
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
@@ -85,6 +92,7 @@ const { __mock } = jest.requireMock('expo-router') as {
 
 const mockLoadActiveMobileDataset = jest.mocked(loadActiveMobileDataset);
 const mockSelectRadarSnapshot = jest.mocked(selectRadarSnapshot);
+const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
 const mockTrackDatasetDegraded = jest.mocked(trackDatasetDegraded);
 const mockTrackDatasetLoadFailed = jest.mocked(trackDatasetLoadFailed);
 const runtimeModule = jest.requireMock('../config/runtime') as {
@@ -168,6 +176,7 @@ describe('mobile radar tab', () => {
     runtimeModule.getRuntimeConfig.mockReturnValue(createRuntimeState().config);
     mockLoadActiveMobileDataset.mockClear();
     mockSelectRadarSnapshot.mockClear();
+    mockTrackAnalyticsEvent.mockClear();
     mockTrackDatasetDegraded.mockClear();
     mockTrackDatasetLoadFailed.mockClear();
     mockLoadActiveMobileDataset.mockResolvedValue(createSource());
@@ -189,6 +198,7 @@ describe('mobile radar tab', () => {
     expect(tree.root.findByProps({ testID: 'radar-rookie-card-atheart' })).toBeDefined();
     expect(tree.root.findAllByProps({ testID: 'radar-dataset-risk-notice' })).toHaveLength(0);
     expect(tree.root.findAllByProps({ testID: 'radar-partial-notice' })).toHaveLength(0);
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith('radar_viewed', { enabledSections: 4 });
   });
 
   test('shows a degraded-state notice while keeping usable cards visible', async () => {
@@ -396,6 +406,13 @@ describe('mobile radar tab', () => {
     expect(tree.root.findByProps({ testID: 'radar-filter-act-solo' }).props.accessibilityState.selected).toBe(
       true,
     );
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'radar_filter_applied',
+      expect.objectContaining({
+        statusFilter: 'changed',
+        actTypeFilter: 'solo',
+      }),
+    );
   });
 
   test('routes team-card primary actions to team detail screens', async () => {
@@ -425,5 +442,19 @@ describe('mobile radar tab', () => {
       pathname: '/artists/[slug]',
       params: { slug: 'atheart' },
     });
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'radar_card_opened',
+      expect.objectContaining({
+        section: 'featured_upcoming',
+        teamSlug: 'yena',
+      }),
+    );
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'radar_card_opened',
+      expect.objectContaining({
+        section: 'change_feed',
+        teamSlug: 'p1harmony',
+      }),
+    );
   });
 });

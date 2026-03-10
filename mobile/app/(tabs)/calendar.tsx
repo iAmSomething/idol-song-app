@@ -1,7 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -45,12 +44,21 @@ import {
 import type { BackendReadClient } from '../../src/services/backendReadClient';
 import { cloneBundledDatasetFixture } from '../../src/services/bundledDatasetFixture';
 import {
+  classifyExternalLinkFailureCategory,
+  classifyServiceHandoffFailureCategory,
+  trackAnalyticsEvent,
+  trackFailureObserved,
+} from '../../src/services/analytics';
+import {
   openServiceHandoff,
   resolveServiceHandoff,
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
 } from '../../src/services/handoff';
-import { trackAnalyticsEvent } from '../../src/services/analytics';
+import {
+  openExternalLink,
+  normalizeExternalLinkUrl,
+} from '../../src/services/externalLinks';
 import { useAppTheme } from '../../src/tokens/theme';
 import type { ServiceButtonGroupItem } from '../../src/components/actions/ServiceButtonGroup';
 import type { SourceLinkRowItem } from '../../src/components/meta/SourceLinkRow';
@@ -209,6 +217,7 @@ function buildReleaseIdentityMeta(release: ReleaseSummaryModel): string | undefi
 
 export default function CalendarTabScreen() {
   const router = useRouter();
+  const hasTrackedViewRef = useRef(false);
   const params = useLocalSearchParams<{
     date?: string | string[];
     filter?: string | string[];
@@ -360,16 +369,27 @@ export default function CalendarTabScreen() {
   ]);
 
   async function openExternalUrl(url?: string) {
-    if (!url) {
+    const result = await openExternalLink(normalizeExternalLinkUrl('source', url));
+    trackAnalyticsEvent('source_link_opened', {
+      surface: 'calendar',
+      linkType: 'source',
+      host: result.ok ? result.host : result.host,
+      ok: result.ok,
+      failureCode: result.ok ? null : result.code,
+    });
+
+    if (!result.ok) {
+      trackFailureObserved(
+        'calendar',
+        classifyExternalLinkFailureCategory(result.code),
+        result.code,
+        result.feedback.retryable,
+      );
+      setHandoffFeedback(result.feedback.message);
       return;
     }
 
-    try {
-      await Linking.openURL(url);
-      setHandoffFeedback(null);
-    } catch {
-      setHandoffFeedback('외부 링크를 열지 못했습니다. 잠시 후 다시 시도해 주세요.');
-    }
+    setHandoffFeedback(null);
   }
 
   async function handleServiceHandoff(
@@ -391,12 +411,42 @@ export default function CalendarTabScreen() {
     });
 
     if (!result.ok) {
+      trackAnalyticsEvent('service_handoff_failed', {
+        surface: 'calendar',
+        service: result.service,
+        mode: result.mode,
+        failureCode: result.code,
+        retryable: result.feedback.retryable,
+      });
+      trackFailureObserved(
+        'calendar',
+        classifyServiceHandoffFailureCategory(result.code),
+        result.code,
+        result.feedback.retryable,
+      );
       setHandoffFeedback(result.feedback.message);
       return;
     }
 
+    trackAnalyticsEvent('service_handoff_opened', {
+      surface: 'calendar',
+      service: result.service,
+      mode: result.mode,
+      target: result.target,
+    });
     setHandoffFeedback(null);
   }
+
+  useEffect(() => {
+    if (hasTrackedViewRef.current) {
+      return;
+    }
+
+    hasTrackedViewRef.current = true;
+    trackAnalyticsEvent('calendar_viewed', {
+      currentMonth: activeMonth,
+    });
+  }, [activeMonth]);
 
   function openSearchTab() {
     router.push('/(tabs)/search');
