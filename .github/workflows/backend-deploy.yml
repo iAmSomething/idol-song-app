@@ -78,7 +78,7 @@ jobs:
           RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
         run: node ./backend/scripts/deploy-backend.mjs
 
-      - name: Run preview live smoke checks
+      - name: Run preview canonical fixture smoke checks
         working-directory: backend
         env:
           BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
@@ -148,7 +148,7 @@ jobs:
           RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
         run: node ./backend/scripts/deploy-backend.mjs
 
-      - name: Run production live smoke checks
+      - name: Run production canonical fixture smoke checks
         working-directory: backend
         env:
           BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}

@@ -221,17 +221,19 @@ deploy helper는 아래 스크립트다.
 
 - `backend/scripts/deploy-backend.mjs`
 - `backend/scripts/run-live-smoke-checks.mjs`
+- `backend/fixtures/live_backend_smoke_fixtures.json`
 
-deploy workflow는 Railway deploy 직후 같은 live smoke contract를 preview / production 모두에 적용한다.
+deploy workflow는 Railway deploy 직후 canonical fixture registry를 읽는 같은 live smoke contract를 preview / production 모두에 적용한다.
 
 - `/health`
 - `/ready`
 - `/v1/search?q=최예나`
+- `/v1/calendar/month?month=2026-03`
 - `/v1/entities/yena`
-- `/v1/releases/lookup?entity_slug=ive&title=REVIVE%2B&date=2026-02-23&stream=album`
+- `/v1/releases/lookup?entity_slug=ive&title=REVIVE%2B&date=2026-02-23&stream=album` -> `/v1/releases/:id`
 - `/v1/radar`
 
-`/ready`는 현재 deploy smoke 기준으로 `ready` 또는 `degraded`를 허용하고, `database.status=ready`는 필수로 본다. smoke 실패 시 job은 non-zero로 끝나고 deploy workflow도 실패한다.
+`/ready`는 현재 deploy smoke 기준으로 `ready` 또는 `degraded`를 허용하고, `database.status=ready`는 필수로 본다. fixture smoke는 known-good calendar / radar / entity / release detail payload가 `404/not_found` 또는 invalid shape로 내려오면 즉시 non-zero로 끝나고 deploy workflow도 실패한다.
 
 artifact:
 
@@ -244,6 +246,8 @@ manual smoke 예시:
 cd backend
 npm run smoke:live -- --target preview --base-url https://preview.example.com --report-path ./reports/live_backend_smoke_preview.json
 ```
+
+fixture registry를 바꿔서 deploy gate를 재현하고 싶으면 `--fixtures-path`로 다른 JSON을 넘기면 된다.
 
 manual dry-run 예시:
 
