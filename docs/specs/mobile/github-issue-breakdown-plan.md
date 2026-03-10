@@ -105,3 +105,37 @@
 - relevant QA acceptance 항목 충족
 - selector fallback 테스트 존재
 - external handoff smoke 확인
+
+## 7. Live RN Umbrella and Execution Order
+
+### 7.1 Landed foundation / cutover work
+- `#404` shared mobile backend read client
+- `#405` parent mobile surface cutover
+- `#415` persisted screen snapshot cache
+- `#416` shared mobile screen-source hook
+- `#417` calendar/search backend cutover
+- `#418` radar/entity detail/release detail backend cutover
+- `#419` preview/production backend-primary runtime policy
+
+### 7.2 Remaining system / shared work
+1. `#425` RN executable implementation umbrella
+2. `#456` document-to-issue traceability matrix
+3. `#457` naming alignment with glossary/TS examples
+4. `#458` selector output + binding parity validation
+5. `#455` content-governance and fallback parity checks
+6. `#426` route-param/deep-link/back-navigation contracts
+7. `#427` shared sheet + snap behavior
+8. `#430` layout constraints, density, token sizing
+9. `#431` copy/localization rules
+10. `#432` analytics and observability taxonomy
+11. `#433` privacy/security/external handoff guards
+12. `#434` feature-gate, environment, failure-policy enforcement
+13. `#435` state restoration across tabs/sheets/detail/search/radar
+
+### 7.3 QA / polish gate
+1. `#459` interaction matrix compliance across all screens
+2. `#454` release-readiness gate + device QA matrix
+
+### 7.4 Working rule
+- 새 RN 작업은 위 순서를 기본으로 집행하되, dependency가 강한 항목은 한 PR에서 묶을 수 있다.
+- `#425`는 umbrella, `#456`은 traceability anchor, `#454`는 최종 gate로 유지한다.

@@ -90,7 +90,7 @@ export interface CalendarScreenState {
 
 export interface SearchScreenState {
   query: string;
-  selectedSegment: 'team' | 'release' | 'upcoming';
+  selectedSegment: 'entities' | 'releases' | 'upcoming';
   recentQueries: string[];
   isFocused: boolean;
   loadingState: 'idle' | 'loading' | 'error';
@@ -148,3 +148,4 @@ export interface CalendarDerivedModel {
 - raw JSON type와 display model type를 분리한다.
 - nullable field는 selector 단계에서 최대한 축약한다.
 - UI 컴포넌트는 raw JSON shape를 직접 알면 안 된다.
+- search segment naming은 shared read contract와 맞춰 `entities / releases / upcoming`을 사용한다.
