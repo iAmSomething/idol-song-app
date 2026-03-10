@@ -209,6 +209,8 @@ python3 sync_release_pipeline_to_neon.py
   - preview / production은 backend-api primary, bundled static은 explicit fallback로만 유지
 - storage/cache layer: `mobile/src/services/storage.ts`, `mobile/src/services/datasetCache.ts`, `mobile/src/services/recentQueries.ts`
 - external handoff layer: `mobile/src/services/handoff.ts`
+- preview release-readiness artifact: `docs/specs/mobile/rn-release-readiness-gate-2026-03-10.md`
+- local readiness evidence: `docs/assets/distribution/rn_release_readiness_local_2026-03-10.md`
 - token/theme layer: `mobile/src/tokens/`, `mobile/src/tokens/theme.tsx`
 - selector/adapter layer: `mobile/src/selectors/`, `mobile/src/types/displayModels.ts`, `mobile/src/types/rawData.ts`
 - quality baseline: `mobile/eslint.config.js`, `mobile/jest.config.js`, `mobile/src/features/route-shell.smoke.test.tsx`, `mobile/src/config/runtime.test.ts`
