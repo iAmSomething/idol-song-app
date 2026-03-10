@@ -106,12 +106,14 @@
    - 전체 mobile spec 문서와 RN issue 매핑
 50. `rn-selector-contract-audit.md`
    - selector/adaptor/display-model naming 및 contract parity audit
+51. `rn-release-readiness-gate-2026-03-10.md`
+   - preview sign-off 전 RN release-readiness gate 실행 결과와 blocker 분류
 ### Screen Specs
-51. `calendar-screen.md`
-52. `radar-screen.md`
-53. `search-screen.md`
-54. `team-detail-screen.md`
-55. `release-detail-screen.md`
+52. `calendar-screen.md`
+53. `radar-screen.md`
+54. `search-screen.md`
+55. `team-detail-screen.md`
+56. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -161,9 +163,10 @@
 45. `rn-freshness-review-2026-03-10.md`
 46. `rn-traceability-matrix.md`
 47. `rn-selector-contract-audit.md`
-48. 각 화면 스펙
-49. `edge-case-catalog.md`
-50. `qa-acceptance-spec.md`
+48. `rn-release-readiness-gate-2026-03-10.md`
+49. 각 화면 스펙
+50. `edge-case-catalog.md`
+51. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
