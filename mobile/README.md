@@ -146,9 +146,19 @@ EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:previe
 EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:android:emu
 ```
 
+Android preview QA rerun을 emulator 안정화 설정과 함께 준비하려면:
+
+```bash
+cd mobile
+npm run qa:preview:android:avd:prepare
+npm run qa:preview:android:avd:launch
+EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:android:emu
+```
+
 참고:
 - preview QA runtime은 Expo Go가 아니라 `expo-dev-client`가 포함된 standalone development build 기준으로 검증한다.
 - Android는 `android-commandlinetools`, `emulator`, `system-images;android-35;google_apis;arm64-v8a`, AVD 1개가 준비되어 있어야 한다.
+- `qa:preview:android:avd:prepare`는 `idol-song-app-preview-qa-api35` AVD를 생성 또는 보정하고, cold boot / no snapshot / `swiftshader_indirect` 기반 안정화 설정을 적용한 뒤 stale lock file을 제거한다.
 
 env 예시는 아래 파일을 기준으로 잡는다.
 
