@@ -196,4 +196,5 @@ parent epic 검증은 아래 기준으로 본다.
 - Runtime baseline: [runtime-and-service-boundaries.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/runtime-and-service-boundaries.md)
 - Shared read contract: [shared-read-api-contracts.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/shared-read-api-contracts.md)
 - Rollout plan: [phased-rollout-plan.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/phased-rollout-plan.md)
+- Readiness rubric: [migration-readiness-scorecard.md](/Users/gimtaehun/Desktop/idol-song-app/docs/specs/backend/migration-readiness-scorecard.md)
 - Existing mobile docs umbrella: `#61`

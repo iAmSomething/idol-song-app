@@ -580,9 +580,22 @@ npm run runtime:gate
 - `backend/reports/historical_release_detail_coverage_report.json`
 - `backend/reports/historical_release_detail_coverage_summary.md`
 
+4. migration readiness scorecard
+
+```bash
+cd backend
+npm run migration:scorecard
+```
+
+기본 보고서 출력:
+
+- `backend/reports/migration_readiness_scorecard.json`
+- `backend/reports/migration_readiness_scorecard.md`
+
 gate 정의와 stage mapping은 아래 문서를 따른다.
 
 - `docs/specs/backend/migration-runtime-gates.md`
+- `docs/specs/backend/migration-readiness-scorecard.md`
 
 ## Web Cutover Rollback Drill Evidence
 

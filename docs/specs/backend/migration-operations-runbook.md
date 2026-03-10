@@ -47,6 +47,7 @@
 | runtime latency / error sample | `cd backend && npm run runtime:measure -- --base-url <url>` | `backend/reports/read_api_runtime_measurements.json` |
 | worker cadence sample | `cd backend && npm run worker:cadence -- --workflow weekly-kpop-scan.yml --limit 12` | `backend/reports/worker_cadence_report.json` |
 | combined runtime gate | `cd backend && npm run runtime:gate` | `backend/reports/runtime_gate_report.json` |
+| migration readiness scorecard | `cd backend && npm run migration:scorecard` | `backend/reports/migration_readiness_scorecard.json`, `backend/reports/migration_readiness_scorecard.md` |
 
 ## 4. Responsibility Split
 
@@ -110,6 +111,7 @@ python3 build_backend_json_parity_report.py
 cd backend
 npm run shadow:verify
 npm run runtime:gate
+npm run migration:scorecard
 cd ..
 ```
 
@@ -118,6 +120,7 @@ cd ..
 - parity clean이 아니면 canonical write나 projection semantics를 먼저 고친다.
 - shadow clean이 아니면 cutover advance를 멈춘다.
 - runtime gate가 `fail`이면 refresh는 끝났더라도 cutover 근거로 쓰지 않는다.
+- migration readiness scorecard에서 blocker-grade category가 `fail`이면 milestone / cutover decision을 advance하지 않는다.
 
 ## 6. Representative Refresh Path
 
@@ -138,6 +141,7 @@ runbook을 따라 한 번 실제로 걷는 최소 경로는 아래다.
 - [ ] `backend_json_parity_report.json`이 허용 범위 안이다.
 - [ ] `backend_shadow_read_report.json`이 target surface 기준 clean 또는 승인된 drift만 가진다.
 - [ ] `runtime_gate_report.json`에서 해당 stage gate가 `pass` 또는 승인된 `needs_review`다.
+- [ ] `migration_readiness_scorecard.json`에서 overall이 blocker-free이고, blocker-grade category가 모두 허용 범위 안이다.
 - [ ] Pages / local build에 `VITE_API_BASE_URL`이 올바르게 들어간다.
 - [ ] shipped web cut-over surface가 API-only runtime으로 동작한다.
 - [ ] operator가 JSON rollback이 아니라 deploy rollback / backend repair 절차를 알고 있다.
