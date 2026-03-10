@@ -3,7 +3,7 @@
     "request_id": "bridge-backend-target"
   },
   "data": {
-    "generated_at": "2026-03-09T14:28:38.658Z",
+    "generated_at": "2026-03-10T13:51:13.588Z",
     "runtime_mode": "api",
     "target_environment": "production",
     "target_classification": "production",

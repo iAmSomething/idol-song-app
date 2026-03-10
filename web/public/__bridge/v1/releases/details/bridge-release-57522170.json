@@ -47,6 +47,6 @@
       "status": "manual_override",
       "provenance": "manual review: user-provided official YouTube MV URL"
     },
-    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks."
+    "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   }
 }

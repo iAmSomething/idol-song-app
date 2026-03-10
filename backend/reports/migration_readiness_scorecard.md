@@ -1,11 +1,11 @@
 # Migration Readiness Scorecard
 
-Generated at: 2026-03-10T13:04:13.648Z
+Generated at: 2026-03-10T13:51:35.363Z
 
 ## Overall
 
 - status: `fail`
-- score: `59.4/100`
+- score: `59.9/100`
 - cutover blocked: `true`
 
 ## Blockers
@@ -13,7 +13,7 @@ Generated at: 2026-03-10T13:04:13.648Z
 - Backend runtime health: worker_cadence=fail; stage_gate:shadow_to_web_cutover=fail; stage_gate:web_cutover_to_json_demotion=fail
 - Backend deploy parity: parity_clean=false (latest_verified_release_selection drift=3)
 - Web backend-only stability: entity_detail clean_ratio=0.25; release_detail clean_ratio=0
-- Catalog completeness: title_track_resolved overall=62.8 pre_2024=60.5; canonical_mv overall=4.3 pre_2024=1.7
+- Catalog completeness: title_track_resolved overall=64.5 pre_2024=62; canonical_mv overall=6.3 pre_2024=3.3
 
 ## Category Table
 
@@ -23,16 +23,16 @@ Generated at: 2026-03-10T13:04:13.648Z
 | Backend deploy parity | 20 | 40 | fail | yes | parity_clean=false (latest_verified_release_selection drift=3) |
 | Web backend-only stability | 20 | 51.2 | fail | yes | entity_detail clean_ratio=0.25 |
 | Mobile runtime mode | 15 | 100 | pass | yes | - |
-| Catalog completeness | 20 | 65.8 | fail | yes | title_track_resolved overall=62.8 pre_2024=60.5 |
+| Catalog completeness | 20 | 68.2 | fail | yes | title_track_resolved overall=64.5 pre_2024=62 |
 
 ## Summary Lines
 
-- overall readiness: fail (59.4/100)
+- overall readiness: fail (59.9/100)
 - Backend runtime health: fail (52/100) [BLOCKER] - worker_cadence=fail
 - Backend deploy parity: fail (40/100) [BLOCKER] - parity_clean=false (latest_verified_release_selection drift=3)
 - Web backend-only stability: fail (51.2/100) [BLOCKER] - entity_detail clean_ratio=0.25
 - Mobile runtime mode: pass (100/100) - no blocker reason
-- Catalog completeness: fail (65.8/100) [BLOCKER] - title_track_resolved overall=62.8 pre_2024=60.5
+- Catalog completeness: fail (68.2/100) [BLOCKER] - title_track_resolved overall=64.5 pre_2024=62
 
 ## Evidence Paths
 

@@ -491,6 +491,7 @@ function buildCatalogCompletenessCategory(historicalCoverageReport) {
   const config = getCategoryConfig('catalog_completeness');
   const overall = historicalCoverageReport.completeness?.overall;
   const pre2024 = historicalCoverageReport.completeness?.pre_2024;
+  const prioritySlice = historicalCoverageReport.migration_priority_slice;
 
   if (!overall || !pre2024) {
     throw new Error('Historical coverage report is missing completeness.overall or completeness.pre_2024.');
@@ -523,8 +524,19 @@ function buildCatalogCompletenessCategory(historicalCoverageReport) {
       `canonical_mv overall=${asPercent(overall.canonical_mv_ratio)} pre_2024=${asPercent(pre2024.canonical_mv_ratio)}`,
     );
   }
+  if (prioritySlice?.gates?.cutover_status === 'fail') {
+    blockerReasons.push(
+      `migration_priority_slice title_track=${asPercent(prioritySlice.after?.title_track_resolved_ratio ?? 0)} canonical_mv=${asPercent(prioritySlice.after?.canonical_mv_ratio ?? 0)}`,
+    );
+  }
 
   const status = blockerReasons.length > 0 ? 'fail' : deriveStatusFromScore(weightedScore, config.statusThresholds);
+  const summaryLines = [...(historicalCoverageReport.summary_lines ?? [])];
+  if (prioritySlice) {
+    summaryLines.push(
+      `migration_priority_slice rows=${prioritySlice.rows_after}/${prioritySlice.expected_rows} title_track=${asPercent(prioritySlice.after?.title_track_resolved_ratio ?? 0)} canonical_mv=${asPercent(prioritySlice.after?.canonical_mv_ratio ?? 0)} gate=${prioritySlice.gates?.cutover_status ?? 'unknown'}`,
+    );
+  }
 
   return {
     key: config.key,
@@ -536,7 +548,7 @@ function buildCatalogCompletenessCategory(historicalCoverageReport) {
     score_percent: asPercent(weightedScore),
     weighted_points: round(weightedScore * config.weight, 2),
     blocker_reasons: blockerReasons,
-    summary_lines: historicalCoverageReport.summary_lines ?? [],
+    summary_lines: summaryLines,
     evidence: {
       overall: {
         detail_payload_ratio: round(overall.detail_payload_ratio, 4),
@@ -550,6 +562,19 @@ function buildCatalogCompletenessCategory(historicalCoverageReport) {
         title_track_resolved_ratio: round(pre2024.title_track_resolved_ratio, 4),
         canonical_mv_ratio: round(pre2024.canonical_mv_ratio, 4),
       },
+      migration_priority_slice: prioritySlice
+        ? {
+            expected_rows: prioritySlice.expected_rows,
+            rows_after: prioritySlice.rows_after,
+            gates: prioritySlice.gates,
+            after: {
+              detail_payload_ratio: round(prioritySlice.after?.detail_payload_ratio ?? 0, 4),
+              detail_trusted_ratio: round(prioritySlice.after?.detail_trusted_ratio ?? 0, 4),
+              title_track_resolved_ratio: round(prioritySlice.after?.title_track_resolved_ratio ?? 0, 4),
+              canonical_mv_ratio: round(prioritySlice.after?.canonical_mv_ratio ?? 0, 4),
+            },
+          }
+        : null,
       review_queues: {
         title_track_review_rows: overall.title_track_review_rows,
         mv_review_rows: overall.mv_review_rows,

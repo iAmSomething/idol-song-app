@@ -4484,29 +4484,6 @@
   },
   {
     "group": "BLACKPINK",
-    "release_title": "SQUARE UP",
-    "release_date": "2018-06-15",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
-      "https://www.youtube.com/@YGEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "BLACKPINK SQUARE UP official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=BLACKPINK+SQUARE+UP+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "BLACKPINK",
     "release_title": "DDU‐DU DDU‐DU",
     "release_date": "2018-08-22",
     "stream": "song",
@@ -6216,29 +6193,6 @@
   },
   {
     "group": "BTS",
-    "release_title": "DARK&WILD",
-    "release_date": "2014-08-20",
-    "stream": "album",
-    "release_kind": "album",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "BTS DARK&WILD official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=BTS+DARK%26WILD+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "BTS",
     "release_title": "Danger",
     "release_date": "2014-11-19",
     "stream": "song",
@@ -6282,29 +6236,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "BTS WAKE UP official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=BTS+WAKE+UP+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "BTS",
-    "release_title": "화양연화 pt.1",
-    "release_date": "2015-04-29",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "BTS 화양연화 pt.1 official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=BTS+%ED%99%94%EC%96%91%EC%97%B0%ED%99%94+pt.1+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -6456,29 +6387,6 @@
   },
   {
     "group": "BTS",
-    "release_title": "LOVE YOURSELF 承 ‘Her’",
-    "release_date": "2017-04-10",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "BTS LOVE YOURSELF 承 ‘Her’ official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=BTS+LOVE+YOURSELF+%E6%89%BF+%E2%80%98Her%E2%80%99+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "BTS",
     "release_title": "血、汗、涙",
     "release_date": "2017-05-10",
     "stream": "song",
@@ -6603,29 +6511,6 @@
   },
   {
     "group": "BTS",
-    "release_title": "LOVE YOURSELF 轉 ‘Tear’",
-    "release_date": "2018-05-18",
-    "stream": "album",
-    "release_kind": "album",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "BTS LOVE YOURSELF 轉 ‘Tear’ official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=BTS+LOVE+YOURSELF+%E8%BD%89+%E2%80%98Tear%E2%80%99+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "BTS",
     "release_title": "Waste It on Me",
     "release_date": "2018-10-25",
     "stream": "song",
@@ -6672,29 +6557,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "BTS FAKE LOVE -Japanese ver.- official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=BTS+FAKE+LOVE+-Japanese+ver.-+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "BTS",
-    "release_title": "MAP OF THE SOUL : PERSONA",
-    "release_date": "2019-04-12",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "BTS MAP OF THE SOUL : PERSONA official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=BTS+MAP+OF+THE+SOUL+%3A+PERSONA+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -7137,10 +6999,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA 꽃, 바람 그리고 너 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+%EA%BD%83%2C+%EB%B0%94%EB%9E%8C+%EA%B7%B8%EB%A6%AC%EA%B3%A0+%EB%84%88+official+mv",
     "current_youtube_video_url": "",
@@ -7159,10 +7023,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA 월화수목금토일 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+%EC%9B%94%ED%99%94%EC%88%98%EB%AA%A9%EA%B8%88%ED%86%A0%EC%9D%BC+official+mv",
     "current_youtube_video_url": "",
@@ -7179,10 +7045,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Hands on Me official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Hands+on+Me+official+mv",
     "current_youtube_video_url": "",
@@ -7201,10 +7069,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA 라라라 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+%EB%9D%BC%EB%9D%BC%EB%9D%BC+official+mv",
     "current_youtube_video_url": "",
@@ -7223,10 +7093,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Offset official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Offset+official+mv",
     "current_youtube_video_url": "",
@@ -7243,10 +7115,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Blooming Blue official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Blooming+Blue+official+mv",
     "current_youtube_video_url": "",
@@ -7265,10 +7139,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Wow Thing official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Wow+Thing+official+mv",
     "current_youtube_video_url": "",
@@ -7287,10 +7163,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA 벌써 12시 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+%EB%B2%8C%EC%8D%A8+12%EC%8B%9C+official+mv",
     "current_youtube_video_url": "",
@@ -7309,10 +7187,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Flourishing official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Flourishing+official+mv",
     "current_youtube_video_url": "",
@@ -7331,10 +7211,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA FAST official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+FAST+official+mv",
     "current_youtube_video_url": "",
@@ -7353,10 +7235,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA These Nights official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+These+Nights+official+mv",
     "current_youtube_video_url": "",
@@ -7375,10 +7259,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Loveship official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Loveship+official+mv",
     "current_youtube_video_url": "",
@@ -7397,10 +7283,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA 솔직히 지친다 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+%EC%86%94%EC%A7%81%ED%9E%88+%EC%A7%80%EC%B9%9C%EB%8B%A4+official+mv",
     "current_youtube_video_url": "",
@@ -7419,10 +7307,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Stay Tonight official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Stay+Tonight+official+mv",
     "current_youtube_video_url": "",
@@ -7441,10 +7331,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA 여기 적어줘 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+%EC%97%AC%EA%B8%B0+%EC%A0%81%EC%96%B4%EC%A4%98+official+mv",
     "current_youtube_video_url": "",
@@ -7463,10 +7355,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Be Yourself official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Be+Yourself+official+mv",
     "current_youtube_video_url": "",
@@ -7485,10 +7379,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA PLAY official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+PLAY+official+mv",
     "current_youtube_video_url": "",
@@ -7508,10 +7404,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA PLAY official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+PLAY+official+mv",
     "current_youtube_video_url": "",
@@ -7530,10 +7428,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Bad Boy official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Bad+Boy+official+mv",
     "current_youtube_video_url": "",
@@ -7552,10 +7452,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Dream of You official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Dream+of+You+official+mv",
     "current_youtube_video_url": "",
@@ -7574,10 +7476,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA X (걸어온 길에 꽃밭 따윈 없었죠) official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+X+%28%EA%B1%B8%EC%96%B4%EC%98%A8+%EA%B8%B8%EC%97%90+%EA%BD%83%EB%B0%AD+%EB%94%B0%EC%9C%88+%EC%97%86%EC%97%88%EC%A3%A0%29+official+mv",
     "current_youtube_video_url": "",
@@ -7594,10 +7498,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Querencia official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Querencia+official+mv",
     "current_youtube_video_url": "",
@@ -7616,10 +7522,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Killing Me official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Killing+Me+official+mv",
     "current_youtube_video_url": "",
@@ -7638,10 +7546,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Sparkling official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Sparkling+official+mv",
     "current_youtube_video_url": "",
@@ -7660,10 +7570,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Sparkling official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Sparkling+official+mv",
     "current_youtube_video_url": "",
@@ -7682,10 +7594,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA When I Get Old official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+When+I+Get+Old+official+mv",
     "current_youtube_video_url": "",
@@ -7704,10 +7618,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA EENIE MEENIE official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+EENIE+MEENIE+official+mv",
     "current_youtube_video_url": "",
@@ -7726,10 +7642,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Algorithm official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Algorithm+official+mv",
     "current_youtube_video_url": "",
@@ -7746,10 +7664,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Christmas Promises official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Christmas+Promises+official+mv",
     "current_youtube_video_url": "",
@@ -7766,10 +7686,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Alivio official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Alivio+official+mv",
     "current_youtube_video_url": "",
@@ -7788,10 +7710,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUNGHA_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUNG HA Save me official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUNG+HA+Save+me+official+mv",
     "current_youtube_video_url": "",
@@ -7810,10 +7734,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU World is One 2021 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+World+is+One+2021+official+mv",
     "current_youtube_video_url": "",
@@ -7832,10 +7758,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU Starlight official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+Starlight+official+mv",
     "current_youtube_video_url": "",
@@ -7854,10 +7782,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU lullaby official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+lullaby+official+mv",
     "current_youtube_video_url": "",
@@ -7876,10 +7806,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU ONE AND A HALF official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+ONE+AND+A+HALF+official+mv",
     "current_youtube_video_url": "",
@@ -7898,10 +7830,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU Dear My Winter official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+Dear+My+Winter+official+mv",
     "current_youtube_video_url": "",
@@ -7920,10 +7854,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU 썸밍아웃 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+%EC%8D%B8%EB%B0%8D%EC%95%84%EC%9B%83+official+mv",
     "current_youtube_video_url": "",
@@ -7942,10 +7878,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU 우리의 밤은 당신의 낮보다 아름답다 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+%EC%9A%B0%EB%A6%AC%EC%9D%98+%EB%B0%A4%EC%9D%80+%EB%8B%B9%EC%8B%A0%EC%9D%98+%EB%82%AE%EB%B3%B4%EB%8B%A4+%EC%95%84%EB%A6%84%EB%8B%B5%EB%8B%A4+official+mv",
     "current_youtube_video_url": "",
@@ -7964,10 +7902,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU Howl official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+Howl+official+mv",
     "current_youtube_video_url": "",
@@ -7986,10 +7926,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU 좋아 좋아 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+%EC%A2%8B%EC%95%84+%EC%A2%8B%EC%95%84+official+mv",
     "current_youtube_video_url": "",
@@ -8008,10 +7950,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU 아름다운 이별 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+%EC%95%84%EB%A6%84%EB%8B%A4%EC%9A%B4+%EC%9D%B4%EB%B3%84+official+mv",
     "current_youtube_video_url": "",
@@ -8030,10 +7974,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU Chocolate official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+Chocolate+official+mv",
     "current_youtube_video_url": "",
@@ -8050,10 +7996,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU Strawberry Rush official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+Strawberry+Rush+official+mv",
     "current_youtube_video_url": "",
@@ -8072,10 +8020,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU 두 번째 사랑 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+%EB%91%90+%EB%B2%88%EC%A7%B8+%EC%82%AC%EB%9E%91+official+mv",
     "current_youtube_video_url": "",
@@ -8094,10 +8044,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU PINK CLOUD official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+PINK+CLOUD+official+mv",
     "current_youtube_video_url": "",
@@ -8116,10 +8068,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU because I’m stupid? official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+because+I%E2%80%99m+stupid%3F+official+mv",
     "current_youtube_video_url": "",
@@ -8138,10 +8092,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU Only cry in the rain official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+Only+cry+in+the+rain+official+mv",
     "current_youtube_video_url": "",
@@ -8160,10 +8116,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU Loveholic official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+Loveholic+official+mv",
     "current_youtube_video_url": "",
@@ -8182,10 +8140,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@CHUUOfficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "CHUU XO, My Cyberlove official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=CHUU+XO%2C+My+Cyberlove+official+mv",
     "current_youtube_video_url": "",
@@ -15731,10 +15691,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI 꽃, 바람 그리고 너 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+%EA%BD%83%2C+%EB%B0%94%EB%9E%8C+%EA%B7%B8%EB%A6%AC%EA%B3%A0+%EB%84%88+official+mv",
     "current_youtube_video_url": "",
@@ -15753,10 +15715,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI 유후 (You, Who?) official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+%EC%9C%A0%ED%9B%84+%28You%2C+Who%3F%29+official+mv",
     "current_youtube_video_url": "",
@@ -15775,10 +15739,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI BIRTHDAY official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+BIRTHDAY+official+mv",
     "current_youtube_video_url": "",
@@ -15797,10 +15763,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI What You Waiting For official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+What+You+Waiting+For+official+mv",
     "current_youtube_video_url": "",
@@ -15819,10 +15787,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI DUMB DUMB official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+DUMB+DUMB+official+mv",
     "current_youtube_video_url": "",
@@ -15839,10 +15809,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI XOXO official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+XOXO+official+mv",
     "current_youtube_video_url": "",
@@ -15859,10 +15831,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI GAME PLAN official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+GAME+PLAN+official+mv",
     "current_youtube_video_url": "",
@@ -15881,10 +15855,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI Ex‐Mas official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+Ex%E2%80%90Mas+official+mv",
     "current_youtube_video_url": "",
@@ -15903,10 +15879,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI Ice Cream official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+Ice+Cream+official+mv",
     "current_youtube_video_url": "",
@@ -15925,10 +15903,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI Keep It Sexy (MOMMAE 2) official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+Keep+It+Sexy+%28MOMMAE+2%29+official+mv",
     "current_youtube_video_url": "",
@@ -15947,10 +15927,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI EXTRA official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+EXTRA+official+mv",
     "current_youtube_video_url": "",
@@ -15967,10 +15949,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@JEONSOMIOFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "JEON SOMI Chaotic & Confused official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=JEON+SOMI+Chaotic+%26+Confused+official+mv",
     "current_youtube_video_url": "",
@@ -17224,10 +17208,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI OPEN official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+OPEN+official+mv",
     "current_youtube_video_url": "",
@@ -17246,10 +17232,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI MIRROR official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+MIRROR+official+mv",
     "current_youtube_video_url": "",
@@ -17268,10 +17256,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI ESPER official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+ESPER+official+mv",
     "current_youtube_video_url": "",
@@ -17288,10 +17278,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI Color official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+Color+official+mv",
     "current_youtube_video_url": "",
@@ -17308,10 +17300,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI Lethality official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+Lethality+official+mv",
     "current_youtube_video_url": "",
@@ -17330,10 +17324,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI The Flash official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+The+Flash+official+mv",
     "current_youtube_video_url": "",
@@ -17352,10 +17348,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI Like Heaven official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+Like+Heaven+official+mv",
     "current_youtube_video_url": "",
@@ -17374,10 +17372,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI SABOTAGE official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+SABOTAGE+official+mv",
     "current_youtube_video_url": "",
@@ -17396,10 +17396,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI 여름아 부탁해 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+%EC%97%AC%EB%A6%84%EC%95%84+%EB%B6%80%ED%83%81%ED%95%B4+official+mv",
     "current_youtube_video_url": "",
@@ -17418,10 +17420,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI Easy dance official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+Easy+dance+official+mv",
     "current_youtube_video_url": "",
@@ -17440,10 +17444,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI Snowfall official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+Snowfall+official+mv",
     "current_youtube_video_url": "",
@@ -17462,10 +17468,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@KWONEUNBI"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KWON EUNBI Hello Stranger official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KWON+EUNBI+Hello+Stranger+official+mv",
     "current_youtube_video_url": "",
@@ -26922,52 +26930,6 @@
   },
   {
     "group": "SEVENTEEN",
-    "release_title": "17 CARAT",
-    "release_date": "2015-05-29",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "SEVENTEEN 17 CARAT official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=SEVENTEEN+17+CARAT+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "SEVENTEEN",
-    "release_title": "BOYS BE",
-    "release_date": "2015-09-10",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "SEVENTEEN BOYS BE official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=SEVENTEEN+BOYS+BE+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "SEVENTEEN",
     "release_title": "Q&A",
     "release_date": "2015-12-04",
     "stream": "song",
@@ -26981,7 +26943,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27006,7 +26969,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27031,7 +26995,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27054,7 +27019,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27077,36 +27043,14 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "SEVENTEEN Al1 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=SEVENTEEN+Al1+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "SEVENTEEN",
-    "release_title": "TEEN, AGE",
-    "release_date": "2017-11-06",
-    "stream": "album",
-    "release_kind": "album",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "SEVENTEEN TEEN, AGE official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=SEVENTEEN+TEEN%2C+AGE+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -27123,7 +27067,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27146,7 +27091,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27171,7 +27117,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27194,7 +27141,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27219,7 +27167,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27244,7 +27193,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27269,7 +27219,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27295,7 +27246,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27320,7 +27272,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27343,7 +27296,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27368,7 +27322,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27391,7 +27346,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27414,7 +27370,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27439,7 +27396,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27464,7 +27422,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27489,7 +27448,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27514,7 +27474,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27539,7 +27500,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27562,7 +27524,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27587,7 +27550,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27610,7 +27574,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27635,7 +27600,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27660,7 +27626,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27683,7 +27650,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27708,7 +27676,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27733,7 +27702,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27756,7 +27726,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -27781,7 +27752,8 @@
     "official_youtube_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
     "mv_allowlist_urls": [
       "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-      "https://www.youtube.com/@HYBELABELS"
+      "https://www.youtube.com/@HYBELABELS",
+      "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -27893,29 +27865,6 @@
   },
   {
     "group": "SHINee",
-    "release_title": "Romeo",
-    "release_date": "2009-05-18",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
-      "https://www.youtube.com/@SMTOWN"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "SHINee Romeo official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=SHINee+Romeo+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "SHINee",
     "release_title": "SCAR",
     "release_date": "2009-08-12",
     "stream": "song",
@@ -27961,29 +27910,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "SHINee Seaside 휴게소 (Boom Boom) official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=SHINee+Seaside+%ED%9C%B4%EA%B2%8C%EC%86%8C+%28Boom+Boom%29+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "SHINee",
-    "release_title": "2009, Year of Us",
-    "release_date": "2009-10-19",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
-      "https://www.youtube.com/@SMTOWN"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "SHINee 2009, Year of Us official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=SHINee+2009%2C+Year+of+Us+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -28561,29 +28487,6 @@
   },
   {
     "group": "SHINee",
-    "release_title": "Odd",
-    "release_date": "2015-05-18",
-    "stream": "album",
-    "release_kind": "album",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
-      "https://www.youtube.com/@SMTOWN"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "SHINee Odd official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=SHINee+Odd+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "SHINee",
     "release_title": "Sing Your Song",
     "release_date": "2015-10-27",
     "stream": "song",
@@ -28752,29 +28655,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "SHINee From Now On official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=SHINee+From+Now+On+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "SHINee",
-    "release_title": "The Story of Light EP.1",
-    "release_date": "2018-05-28",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
-      "https://www.youtube.com/@SMTOWN"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "SHINee The Story of Light EP.1 official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=SHINee+The+Story+of+Light+EP.1+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -33897,75 +33777,6 @@
   },
   {
     "group": "TWICE",
-    "release_title": "THE STORY BEGINS",
-    "release_date": "2015-10-20",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE THE STORY BEGINS official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+THE+STORY+BEGINS+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
-    "release_title": "PAGE TWO",
-    "release_date": "2016-04-25",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE PAGE TWO official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+PAGE+TWO+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
-    "release_title": "TWICEcoaster : LANE 1",
-    "release_date": "2016-10-24",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE TWICEcoaster : LANE 1 official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+TWICEcoaster+%3A+LANE+1+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
     "release_title": "SIGNAL",
     "release_date": "2017-05-15",
     "stream": "album",
@@ -33986,29 +33797,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "TWICE SIGNAL official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+SIGNAL+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
-    "release_title": "twicetagram",
-    "release_date": "2017-10-30",
-    "stream": "album",
-    "release_kind": "album",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE twicetagram official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+twicetagram+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -34276,29 +34064,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "TWICE Fanfare official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+Fanfare+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "TWICE",
-    "release_title": "Eyes wide open",
-    "release_date": "2020-10-26",
-    "stream": "album",
-    "release_kind": "album",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "TWICE Eyes wide open official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=TWICE+Eyes+wide+open+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -37764,10 +37529,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@XLOV_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@XLOV_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "XLOV I’mma Be official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=XLOV+I%E2%80%99mma+Be+official+mv",
     "current_youtube_video_url": "",
@@ -37784,10 +37551,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@XLOV_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@XLOV_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "XLOV I ONE official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=XLOV+I+ONE+official+mv",
     "current_youtube_video_url": "",
@@ -37804,10 +37573,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@yena_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YENA ˣ‿ˣ (SMiLEY) official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YENA+%CB%A3%E2%80%BF%CB%A3+%28SMiLEY%29+official+mv",
     "current_youtube_video_url": "",
@@ -37826,10 +37597,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@yena_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YENA SMARTPHONE official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YENA+SMARTPHONE+official+mv",
     "current_youtube_video_url": "",
@@ -37848,10 +37621,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@yena_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YENA Love War official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YENA+Love+War+official+mv",
     "current_youtube_video_url": "",
@@ -37868,10 +37643,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@yena_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YENA HATE XX official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YENA+HATE+XX+official+mv",
     "current_youtube_video_url": "",
@@ -37890,10 +37667,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@yena_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YENA Good Morning official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YENA+Good+Morning+official+mv",
     "current_youtube_video_url": "",
@@ -37912,10 +37691,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@yena_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YENA DNA official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YENA+DNA+official+mv",
     "current_youtube_video_url": "",
@@ -37934,10 +37715,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@yena_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YENA 네모네모 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YENA+%EB%84%A4%EB%AA%A8%EB%84%A4%EB%AA%A8+official+mv",
     "current_youtube_video_url": "",
@@ -37954,10 +37737,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@yena_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YENA Blooming Wings official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YENA+Blooming+Wings+official+mv",
     "current_youtube_video_url": "",
@@ -37976,10 +37761,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@yena_official",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@yena_official"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YENA STAR! official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YENA+STAR%21+official+mv",
     "current_youtube_video_url": "",
@@ -38374,10 +38161,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU 보일 듯 말 듯 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+%EB%B3%B4%EC%9D%BC+%EB%93%AF+%EB%A7%90+%EB%93%AF+official+mv",
     "current_youtube_video_url": "",
@@ -38396,10 +38185,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU 하트시그널 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+%ED%95%98%ED%8A%B8%EC%8B%9C%EA%B7%B8%EB%84%90+official+mv",
     "current_youtube_video_url": "",
@@ -38418,10 +38209,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU Love Rain official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+Love+Rain+official+mv",
     "current_youtube_video_url": "",
@@ -38440,10 +38233,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU Don't Leave Me official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+Don%27t+Leave+Me+official+mv",
     "current_youtube_video_url": "",
@@ -38462,10 +38257,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU 벼락치기 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+%EB%B2%BC%EB%9D%BD%EC%B9%98%EA%B8%B0+official+mv",
     "current_youtube_video_url": "",
@@ -38484,10 +38281,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU By Your Side official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+By+Your+Side+official+mv",
     "current_youtube_video_url": "",
@@ -38504,10 +38303,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU [REC.] official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+%5BREC.%5D+official+mv",
     "current_youtube_video_url": "",
@@ -38526,10 +38327,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU 이브닝 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+%EC%9D%B4%EB%B8%8C%EB%8B%9D+official+mv",
     "current_youtube_video_url": "",
@@ -38546,10 +38349,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU O official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+O+official+mv",
     "current_youtube_video_url": "",
@@ -38568,10 +38373,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU Happiness index official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+Happiness+index+official+mv",
     "current_youtube_video_url": "",
@@ -38590,10 +38397,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU Rewind official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+Rewind+official+mv",
     "current_youtube_video_url": "",
@@ -38612,10 +38421,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU 따라랏 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+%EB%94%B0%EB%9D%BC%EB%9E%8F+official+mv",
     "current_youtube_video_url": "",
@@ -38634,10 +38445,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU No Way official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+No+Way+official+mv",
     "current_youtube_video_url": "",
@@ -38656,10 +38469,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU 끝이 아니길 official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+%EB%81%9D%EC%9D%B4+%EC%95%84%EB%8B%88%EA%B8%B8+official+mv",
     "current_youtube_video_url": "",
@@ -38676,10 +38491,12 @@
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU In Bloom official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+In+Bloom+official+mv",
     "current_youtube_video_url": "",
@@ -38698,10 +38515,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YUJUofficial",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YUJUofficial"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YUJU What If official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YUJU+What+If+official+mv",
     "current_youtube_video_url": "",
@@ -38720,10 +38539,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YVES_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YVES_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "Yves LOOP official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=Yves+LOOP+official+mv",
     "current_youtube_video_url": "",
@@ -38742,10 +38563,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YVES_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YVES_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "Yves Tik Tok official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=Yves+Tik+Tok+official+mv",
     "current_youtube_video_url": "",
@@ -38764,10 +38587,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YVES_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YVES_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "Yves Tik Tok official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=Yves+Tik+Tok+official+mv",
     "current_youtube_video_url": "",
@@ -38786,10 +38611,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YVES_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YVES_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "Yves DIM official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=Yves+DIM+official+mv",
     "current_youtube_video_url": "",
@@ -38808,10 +38635,12 @@
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YVES_OFFICIAL",
-    "mv_allowlist_urls": [],
-    "missing_mv_allowlist": true,
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YVES_OFFICIAL"
+    ],
+    "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Backfill label-owned MV sources if needed, then search the official team channel before adding an override.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "Yves White cat official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=Yves+White+cat+official+mv",
     "current_youtube_video_url": "",

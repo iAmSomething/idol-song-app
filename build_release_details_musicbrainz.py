@@ -1,3 +1,4 @@
+import argparse
 import csv
 import json
 import re
@@ -21,6 +22,7 @@ RELEASES_SNAPSHOT_PATH = ROOT / "web/src/data/releases.json"
 RELEASE_HISTORY_PATH = ROOT / "web/src/data/releaseHistory.json"
 OUTPUT_PATH = ROOT / "web/src/data/releaseDetails.json"
 OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
+MIGRATION_PRIORITY_SLICE_PATH = ROOT / "historical_migration_priority_slice.json"
 AUDIT_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_report.json"
 AUDIT_MARKDOWN_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_summary.md"
 TITLE_TRACK_REVIEW_JSON_PATH = ROOT / "title_track_manual_review_queue.json"
@@ -61,6 +63,13 @@ HISTORICAL_COMPLETENESS_THRESHOLDS = {
     "title_track_resolved_pre_2024_min": 0.6,
     "canonical_mv_total_min": 0.65,
     "canonical_mv_pre_2024_min": 0.35,
+}
+
+MIGRATION_PRIORITY_SLICE_THRESHOLDS = {
+    "detail_payload_min": 1.0,
+    "detail_trusted_min": 1.0,
+    "title_track_resolved_min": 1.0,
+    "canonical_mv_min": 1.0,
 }
 
 
@@ -125,13 +134,20 @@ def load_rows(path: Path) -> List[Dict]:
 
 
 def load_detail_overrides() -> Dict[str, Dict]:
-    if not OVERRIDES_PATH.exists():
-        return {}
+    merged: Dict[str, Dict] = {}
+    for path in [MIGRATION_PRIORITY_SLICE_PATH, OVERRIDES_PATH]:
+        if not path.exists():
+            continue
+        for row in load_rows(path):
+            key = get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"])
+            merged[key] = {**merged.get(key, {}), **row}
+    return merged
 
-    return {
-        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
-        for row in load_rows(OVERRIDES_PATH)
-    }
+
+def load_migration_priority_slice_rows() -> List[Dict]:
+    if not MIGRATION_PRIORITY_SLICE_PATH.exists():
+        return []
+    return load_rows(MIGRATION_PRIORITY_SLICE_PATH)
 
 
 def iter_release_items(history_rows: List[Dict]) -> List[Dict]:
@@ -1323,10 +1339,91 @@ def build_cutover_gates(overall_metrics: Dict, historical_metrics: Dict) -> Dict
     }
 
 
+def build_single_slice_gates(metrics: Dict, thresholds: Dict[str, float]) -> Dict:
+    gate_specs = {
+        "detail_payload": {
+            "observed": metrics["detail_payload_ratio"],
+            "threshold": thresholds["detail_payload_min"],
+        },
+        "detail_trusted": {
+            "observed": metrics["detail_trusted_ratio"],
+            "threshold": thresholds["detail_trusted_min"],
+        },
+        "title_track_resolved": {
+            "observed": metrics["title_track_resolved_ratio"],
+            "threshold": thresholds["title_track_resolved_min"],
+        },
+        "canonical_mv": {
+            "observed": metrics["canonical_mv_ratio"],
+            "threshold": thresholds["canonical_mv_min"],
+        },
+    }
+
+    gates: Dict[str, Dict] = {}
+    for name, spec in gate_specs.items():
+        gates[name] = {
+            "status": "pass" if spec["observed"] >= spec["threshold"] else "fail",
+            "observed": spec["observed"],
+            "threshold": spec["threshold"],
+        }
+
+    slice_ready = all(gate["status"] == "pass" for gate in gates.values())
+    return {
+        "thresholds": thresholds,
+        "gates": gates,
+        "cutover_ready": slice_ready,
+        "cutover_status": "pass" if slice_ready else "fail",
+        "generated_at": date.today().isoformat(),
+        "summary_lines": [
+            f"{name} gate: {gate['status']} ({format_percent(gate['observed'])} vs {format_percent(gate['threshold'])})"
+            for name, gate in gates.items()
+        ],
+    }
+
+
+def build_migration_priority_slice_report(details_before: List[Dict], details_after: List[Dict]) -> Dict:
+    slice_rows = load_migration_priority_slice_rows()
+    slice_keys = [
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"])
+        for row in slice_rows
+    ]
+    details_before_by_key = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in details_before
+    }
+    details_after_by_key = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in details_after
+    }
+
+    slice_before = [details_before_by_key[key] for key in slice_keys if key in details_before_by_key]
+    slice_after = [details_after_by_key[key] for key in slice_keys if key in details_after_by_key]
+    missing_before = [row for row, key in zip(slice_rows, slice_keys) if key not in details_before_by_key]
+    missing_after = [row for row, key in zip(slice_rows, slice_keys) if key not in details_after_by_key]
+    metrics_before = build_slice_metrics(slice_before)
+    metrics_after = build_slice_metrics(slice_after)
+    gates = build_single_slice_gates(metrics_after, MIGRATION_PRIORITY_SLICE_THRESHOLDS)
+
+    return {
+        "label": "migration_critical_first_slice",
+        "entity_groups": sorted({row["group"] for row in slice_rows}),
+        "expected_rows": len(slice_rows),
+        "rows_before": len(slice_before),
+        "rows_after": len(slice_after),
+        "missing_rows_before": missing_before,
+        "missing_rows_after": missing_after,
+        "before": metrics_before,
+        "after": metrics_after,
+        "gates": gates,
+        "release_rows": slice_rows,
+    }
+
+
 def build_coverage_summary_lines(
     overall_metrics: Dict,
     historical_metrics: Dict,
     cutover_gates: Dict,
+    migration_priority_slice: Dict,
     title_track_review_rows: List[Dict],
     detail_review_rows: List[Dict],
 ) -> List[str]:
@@ -1355,6 +1452,14 @@ def build_coverage_summary_lines(
             f"{historical_metrics['canonical_mv_rows']}/{historical_metrics['total_rows']} "
             f"({format_percent(historical_metrics['canonical_mv_ratio'])}), mv review {overall_metrics['mv_review_rows']}"
         ),
+        (
+            f"migration-critical first slice: title-track "
+            f"{migration_priority_slice['after']['title_track_resolved_rows']}/{migration_priority_slice['expected_rows']} "
+            f"({format_percent(migration_priority_slice['after']['title_track_resolved_ratio'])}), canonical MV "
+            f"{migration_priority_slice['after']['canonical_mv_rows']}/{migration_priority_slice['expected_rows']} "
+            f"({format_percent(migration_priority_slice['after']['canonical_mv_ratio'])}), gate "
+            f"{migration_priority_slice['gates']['cutover_status']}"
+        ),
         f"release-detail null review queue: {len(detail_review_rows)} rows",
         f"historical catalog cutover gate: {cutover_gates['cutover_status']}",
     ]
@@ -1364,6 +1469,10 @@ def build_coverage_markdown(report: Dict) -> str:
     overall = report["completeness"]["overall"]
     historical = report["completeness"]["pre_2024"]
     gates = report["cutover_gates"]
+    priority_slice = report["migration_priority_slice"]
+    priority_slice_after = priority_slice["after"]
+    priority_slice_before = priority_slice["before"]
+    priority_slice_gates = priority_slice["gates"]
 
     lines = [
         "# Historical Catalog Completeness Summary",
@@ -1395,6 +1504,19 @@ def build_coverage_markdown(report: Dict) -> str:
             f"| detail trusted | {historical['detail_trusted_rows']} | {historical['total_rows']} | {format_percent(historical['detail_trusted_ratio'])} |",
             f"| title-track resolved | {historical['title_track_resolved_rows']} | {historical['total_rows']} | {format_percent(historical['title_track_resolved_ratio'])} |",
             f"| canonical MV | {historical['canonical_mv_rows']} | {historical['total_rows']} | {format_percent(historical['canonical_mv_ratio'])} |",
+            "",
+            "## Migration-Critical First Slice",
+            "",
+            f"- entities: `{', '.join(priority_slice['entity_groups'])}`",
+            f"- expected rows: `{priority_slice['expected_rows']}`",
+            f"- gate status: `{priority_slice_gates['cutover_status']}`",
+            "",
+            "| domain | before | after | threshold |",
+            "| --- | ---: | ---: | ---: |",
+            f"| detail payload | {format_percent(priority_slice_before['detail_payload_ratio'])} | {format_percent(priority_slice_after['detail_payload_ratio'])} | {format_percent(priority_slice_gates['thresholds']['detail_payload_min'])} |",
+            f"| detail trusted | {format_percent(priority_slice_before['detail_trusted_ratio'])} | {format_percent(priority_slice_after['detail_trusted_ratio'])} | {format_percent(priority_slice_gates['thresholds']['detail_trusted_min'])} |",
+            f"| title-track resolved | {format_percent(priority_slice_before['title_track_resolved_ratio'])} | {format_percent(priority_slice_after['title_track_resolved_ratio'])} | {format_percent(priority_slice_gates['thresholds']['title_track_resolved_min'])} |",
+            f"| canonical MV | {format_percent(priority_slice_before['canonical_mv_ratio'])} | {format_percent(priority_slice_after['canonical_mv_ratio'])} | {format_percent(priority_slice_gates['thresholds']['canonical_mv_min'])} |",
             "",
             "## Cutover Gates",
             "",
@@ -1589,6 +1711,7 @@ def build_coverage_report(
         ),
     }
     cutover_gates = build_cutover_gates(overall_metrics_after, historical_metrics_after)
+    migration_priority_slice = build_migration_priority_slice_report(details_before, details_after)
     acquisition_method_counts = dict(
         Counter(
             attempt["method"]
@@ -1603,6 +1726,7 @@ def build_coverage_report(
         overall_metrics_after,
         historical_metrics_after,
         cutover_gates,
+        migration_priority_slice,
         title_track_review_rows,
         detail_review_rows,
     )
@@ -1643,6 +1767,7 @@ def build_coverage_report(
         "top_gap_entities": top_gap_entities,
         "gap_samples": gap_samples,
         "cutover_gates": cutover_gates,
+        "migration_priority_slice": migration_priority_slice,
         "detail_status_counts": detail_status_counts,
         "title_track_status_counts": title_track_status_counts,
         "release_level_title_track_status_counts": release_level_title_track_status_counts,
@@ -1686,6 +1811,14 @@ def build_coverage_report(
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--skip-acquisition",
+        action="store_true",
+        help="Reuse existing releaseDetails rows and manual seeds without calling external acquisition lookups.",
+    )
+    args = parser.parse_args()
+
     latest_snapshot_rows = load_rows(RELEASES_SNAPSHOT_PATH)
     history_rows = load_rows(RELEASE_HISTORY_PATH)
     details_before = load_rows(OUTPUT_PATH) if OUTPUT_PATH.exists() else []
@@ -1751,9 +1884,17 @@ def main() -> None:
             )
         )
         detail = normalize_existing_detail(item, existing, used_relaxed_match) if existing else build_empty_detail(item)
-        if get_actionable_release_detail_fields(detail):
+        if not args.skip_acquisition and get_actionable_release_detail_fields(detail):
             detail, acquisition_attempts = enrich_release_detail(acquisition_client, item, detail)
             attempts.extend(acquisition_attempts)
+        elif args.skip_acquisition:
+            attempts.append(
+                build_attempt(
+                    "external_acquisition_skipped",
+                    False,
+                    note="external acquisition skipped by --skip-acquisition",
+                )
+            )
         detail, was_overridden, title_track_resolution = apply_detail_override(
             detail,
             override_by_key,

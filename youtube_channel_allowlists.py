@@ -36,6 +36,16 @@ AGENCY_MV_CHANNELS: dict[str, dict[str, str]] = {
 }
 
 GROUP_CHANNEL_OVERRIDES: dict[str, list[dict[str, Any]]] = {
+    "SEVENTEEN": [
+        {
+            "channel_url": "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA",
+            "channel_label": "PLEDIS",
+            "owner_type": "label",
+            "allow_mv_uploads": True,
+            "display_in_team_links": False,
+            "provenance": "manual_override_legacy_label_channel",
+        }
+    ],
     "AtHeart": [
         {
             "channel_url": "https://www.youtube.com/@AtHeart_TITAN",

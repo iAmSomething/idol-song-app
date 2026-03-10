@@ -23,7 +23,7 @@
       {
         "order": 1,
         "title": "TT",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,
@@ -57,11 +57,11 @@
       }
     ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseHistory.placeholder_seed"
+      "url": "https://www.youtube.com/watch?v=ePpPVE-GGJw",
+      "video_id": "ePpPVE-GGJw",
+      "status": "manual_override",
+      "provenance": "migration-critical first slice official MV URL"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (migration-critical first slice official MV URL)."
   }
 }
