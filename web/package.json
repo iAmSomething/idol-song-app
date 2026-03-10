@@ -13,7 +13,8 @@
     "verify:fallback-reasons": "tsx ./scripts/verify-fallback-reasons.ts",
     "verify:mobile-web-handoff-qa": "tsx ./scripts/build-mobile-web-handoff-qa-matrix.ts",
     "verify:pages-read-bridge": "node ./scripts/verify-pages-read-bridge.mjs",
-    "verify:pages-backend-target": "node ./scripts/verify-pages-backend-target.mjs"
+    "verify:pages-backend-target": "node ./scripts/verify-pages-backend-target.mjs",
+    "verify:pages-backend-handoff": "node ./scripts/verify-pages-backend-handoff.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

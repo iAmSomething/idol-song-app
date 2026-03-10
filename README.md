@@ -182,6 +182,7 @@ python3 sync_release_pipeline_to_neon.py
 - run note: `backend/sql/README.md`
 - upcoming dual-write report: `backend/reports/upcoming_pipeline_db_sync_summary.json`
 - projection refresh report: `backend/reports/projection_refresh_summary.json`
+- backend freshness handoff artifact: `backend/reports/backend_freshness_handoff.json`
 - endpoint shadow-read report: `backend/reports/backend_shadow_read_report.json`
 - backup/restore drill artifact: `backend/reports/neon_backup_restore_drill_2026-03-08.json`
 - backend secret rotation tabletop artifact: `backend/reports/backend_secret_rotation_tabletop_2026-03-08.md`
@@ -228,7 +229,8 @@ npm run dev
 - committed JSON snapshot은 import/parity/debug artifact로 유지되지만, shipped web cut-over surface의 runtime source switch로는 더 이상 사용하지 않는다.
 - `web/.env.example`에는 Pages / preview rehearsal에서 쓰는 API base env baseline이 들어 있다.
 - `.github/workflows/deploy-pages.yml`은 GitHub Pages build에 `VITE_API_BASE_URL`과 `VITE_BACKEND_TARGET_ENV=production`을 함께 주입한다.
-- `npm run build`는 Pages read bridge(`web/public/__bridge/v1/**`)를 먼저 생성하고, deploy workflow도 `npm run verify:pages-read-bridge`, `npm run verify:pages-backend-target`로 bridge completeness와 active backend target wiring을 같이 gate로 막는다.
+- `npm run build`는 Pages read bridge(`web/public/__bridge/v1/**`)를 먼저 생성하고, deploy workflow도 `npm run verify:pages-read-bridge`, `npm run verify:pages-backend-target`, `npm run verify:pages-backend-handoff`로 bridge completeness, active backend target wiring, latest backend freshness handoff를 같이 gate로 막는다.
+- `backend/reports/backend_freshness_handoff.json`은 latest release sync, latest upcoming sync, projection refresh 순서와 Pages target URL 정합성을 요약한 deploy-time artifact다.
 - 내부 inspection path는 `/__bridge/v1/meta/backend-target.json`이며, 앱에서는 `?inspect=backend-target` query로 현재 runtime target 진단 패널을 열 수 있다.
 
 ### 프로덕션 빌드
@@ -250,6 +252,7 @@ npm run build
 - exact date 예정 컴백 기준 release hydration 수행
 - 변경 로그 산출
 - 웹 앱 데이터 동기화
+- canonical DB sync / projection refresh 뒤 `backend/reports/backend_freshness_handoff.json` 생성
 - 프론트엔드 빌드 검증
 - 데이터 변경 시 자동 커밋
 
@@ -258,6 +261,7 @@ npm run build
 파일: `.github/workflows/deploy-pages.yml`
 
 - `web/` 앱을 빌드
+- Pages target env / backend target / backend freshness handoff를 모두 검증한 뒤에만 publish
 - `web/dist`를 GitHub Pages에 배포
 - `main` 브랜치의 웹 변경 사항을 자동 반영
 
