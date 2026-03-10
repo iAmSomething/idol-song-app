@@ -4,11 +4,11 @@
 - Preview sign-off: `BLOCKED`
 - Decision date: `2026-03-10`
 - Runtime QA artifact: `rn-runtime-device-qa-2026-03-10.md`
-- Blocking follow-up: [#488](https://github.com/iAmSomething/idol-song-app/issues/488)
-- Local evidence: `docs/assets/distribution/rn_release_readiness_local_2026-03-10.md`
+- Blocking follow-up: [#491](https://github.com/iAmSomething/idol-song-app/issues/491)
+- Local evidence: `docs/assets/distribution/rn_preview_runtime_stabilization_local_2026-03-10.md`
 
 ## Summary
-자동 검증과 코드/문서 기반 구조 검증은 통과했다. 다만 preview sign-off 차단 조건인 실제 iOS/Android runtime QA matrix와 VoiceOver/TalkBack, largest text 재검증이 이 환경에서 완료되지 않았다. 따라서 이번 판정은 `GO`가 아니라 `BLOCKED`다.
+자동 검증과 코드/문서 기반 구조 검증은 통과했고, `#488`에서 iOS standalone dev client와 Android emulator 기반 preview runtime도 실제로 다시 세웠다. 그래서 이전처럼 “runtime target이 없다”는 상태는 더 이상 blocker가 아니다. 다만 rerun 결과 iOS largest-text overflow와 Android external handoff/state-restore reset이 새 blocker로 드러났고, VoiceOver / TalkBack manual pass도 아직 clean하게 남지 않았다. 따라서 이번 판정은 여전히 `GO`가 아니라 `BLOCKED`다.
 
 ## Gate Result
 | Gate | Result | Evidence | Notes |
@@ -16,9 +16,9 @@
 | Product | PASS | `rn-screen-structure-validation-2026-03-10.md`, `rn-journey-walkthrough-2026-03-10.md` | Calendar, Search, Radar, Team Detail, Release Detail 핵심 플로우 구조와 journey 검증 통과 |
 | Data | PASS | `npm test -- --runInBand`, `specParity.test.ts`, `searchTab.test.tsx` | alias search, release detail, month-only separation, backend/bundled fallback contract 자동 검증 통과 |
 | UX | PASS | `rn-screen-structure-validation-2026-03-10.md`, `qa-acceptance-spec.md` 기준 regression tests | action hierarchy, empty/error/partial state, sheet/list/grid 구조 유지 |
-| Accessibility | BLOCKED | `accessibility-audit-2026-03-09.md` | 코드 레벨 blocker는 해소됐지만 실제 iOS/Android VoiceOver/TalkBack, largest text walkthrough 미실행 |
-| Platform | BLOCKED | iOS simulator boot evidence, Android runtime availability check | iOS handoff/gesture, Android hardware back/handoff/state restore를 실제 runtime에서 재검증하지 못함 |
-| Test | BLOCKED | `lint`, `typecheck`, `test`, iOS/Android export PASS | 자동 검증은 통과했지만 QA-UC-01~05 manual checklist가 완료되지 않음 |
+| Accessibility | BLOCKED | `rn-runtime-device-qa-2026-03-10.md` | iOS largest-text overflow 발생, VoiceOver / TalkBack clean pass 미완료 |
+| Platform | BLOCKED | `rn-runtime-device-qa-2026-03-10.md` | Android external handoff return이 current detail context를 유지하지 못함 |
+| Test | PASS | `lint`, `typecheck`, `test`, iOS/Android export PASS, runtime rerun artifact | 자동 검증과 runtime rerun 자체는 완료 |
 | Ops | PASS | `config:preview`, export smoke, handoff/analytics guards existing tests | preview runtime config는 required env를 주면 정상 생성됨 |
 
 ## Automated Checks
@@ -34,31 +34,32 @@
 ## Device And Runtime Matrix
 | Runtime target | Result | Notes |
 | --- | --- | --- |
-| iOS Simulator `iPhone 16 Pro` / iOS `18.5` | PARTIAL | simulator boot completed with `xcrun simctl bootstatus`; app-level manual walkthrough는 이 환경에서 미실행 |
-| iOS physical device | BLOCKED | `xcrun xcdevice list` 기준 attached iPhone/iPad evidence 없음 |
-| Android emulator | BLOCKED | `emulator -list-avds` command unavailable |
+| iOS Simulator `iPhone 16e` / iOS `26.2` | PASS | standalone preview dev client에서 `Calendar`, `Search`, `Radar`, `Team Detail`, `Release Detail` rerun 완료 |
+| iOS physical device | PARTIAL | 필수 blocker는 아니지만 attached iPhone/iPad evidence는 여전히 없음 |
+| Android emulator | PASS | `idol-song-app-preview-api35` AVD provision + preview build install/open 완료 |
 | Android physical device | BLOCKED | `adb devices -l` returned no attached devices |
 
 ## Blockers
-1. `qa-acceptance-spec.md`의 QA-UC-01 ~ QA-UC-05 manual walkthrough 결과가 실제 iOS/Android runtime 기준으로 남아 있지 않다.
-2. `accessibility-platform-spec.md` 기준 VoiceOver / TalkBack / largest text 재검증 결과가 없다.
-3. Android runtime에서 hardware back, external handoff return, state restoration을 실제로 확인하지 못했다.
+1. iOS `accessibility-extra-extra-extra-large`에서 Search 화면이 sign-off 불가 수준으로 깨진다.
+2. Android external handoff return이 마지막 상세 컨텍스트를 유지하지 못하고 `Calendar` 루트로 되돌린다.
+3. VoiceOver / TalkBack manual walkthrough 결과가 아직 clean pass로 기록되지 않았다.
 
 ## Non-Blockers
 1. preview runtime config는 required env(`EXPO_PUBLIC_API_BASE_URL`)를 주면 정상 생성된다.
-2. 구조/여정/접근성 코드 레벨 audit에서 현재 구현 blocker는 없다.
-3. JS bundle export는 iOS/Android 모두 성공했다.
-4. automated regression suite는 현재 기준 clean이다.
+2. iOS standalone dev client와 Android emulator target은 둘 다 실제로 provision 가능하다.
+3. 구조/여정/접근성 코드 레벨 audit에서 현재 구현 blocker는 없다.
+4. JS bundle export는 iOS/Android 모두 성공했다.
+5. automated regression suite는 현재 기준 clean이다.
 
 ## Sign-off Rule
 - 아래 세 항목이 모두 채워지기 전까지 preview sign-off는 `NO-GO`다.
-  1. iOS runtime manual matrix 결과
-  2. Android runtime manual matrix 결과
-  3. VoiceOver / TalkBack / largest text walkthrough 결과
+  1. largest-text overflow fix 확인
+  2. Android handoff/state-restore fix 확인
+  3. VoiceOver / TalkBack walkthrough 결과
 
 ## Runtime QA Update
-- [#486](https://github.com/iAmSomething/idol-song-app/issues/486)에서 runtime QA 실행을 시도했고, iOS shipping-target simulator launch 자체는 확인했다.
+- [#488](https://github.com/iAmSomething/idol-song-app/issues/488)에서 runtime QA 환경을 안정화했고, iOS standalone dev client와 Android emulator rerun을 완료했다.
 - 세부 결과와 증적은 `rn-runtime-device-qa-2026-03-10.md`에 기록했다.
 
 ## Next Step
-- [#488](https://github.com/iAmSomething/idol-song-app/issues/488)에서 runtime QA 환경 blocker를 해소한 뒤, 이 문서의 blocker를 `pass` 또는 `non-blocking residual risk`로 갱신한다.
+- [#491](https://github.com/iAmSomething/idol-song-app/issues/491)에서 accessibility/state-restore blocker를 해소한 뒤, 이 문서의 blocker를 `pass` 또는 `non-blocking residual risk`로 갱신한다.

@@ -130,6 +130,26 @@ npm run config:preview
 npm run config:production
 ```
 
+preview QA runtime용 native prebuild / simulator 실행:
+
+```bash
+cd mobile
+EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:ios:prebuild
+EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:ios:sim
+```
+
+Android 쪽 native prebuild baseline:
+
+```bash
+cd mobile
+EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:android:prebuild
+EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:android:emu
+```
+
+참고:
+- preview QA runtime은 Expo Go가 아니라 `expo-dev-client`가 포함된 standalone development build 기준으로 검증한다.
+- Android는 `android-commandlinetools`, `emulator`, `system-images;android-35;google_apis;arm64-v8a`, AVD 1개가 준비되어 있어야 한다.
+
 env 예시는 아래 파일을 기준으로 잡는다.
 
 ```bash
