@@ -1,6 +1,8 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useDeferredValue, useEffect, useMemo, useState } from 'react';
+import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Keyboard,
+  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -10,6 +12,7 @@ import {
 } from 'react-native';
 
 import { ActionButton } from '../../src/components/actions/ActionButton';
+import { ServiceButtonGroup } from '../../src/components/actions/ServiceButtonGroup';
 import { SegmentedControl } from '../../src/components/controls/SegmentedControl';
 import {
   InlineFeedbackNotice,
@@ -17,6 +20,7 @@ import {
 } from '../../src/components/feedback/FeedbackState';
 import { TeamIdentityRow } from '../../src/components/identity/TeamIdentityRow';
 import { AppBar } from '../../src/components/layout/AppBar';
+import { SourceLinkRow } from '../../src/components/meta/SourceLinkRow';
 import { buildDatasetRiskDisclosure } from '../../src/features/surfaceDisclosures';
 import {
   areRouteParamsEqual,
@@ -34,17 +38,44 @@ import {
   trackAnalyticsEvent,
   type SearchSubmitSource,
 } from '../../src/services/analytics';
+import { openServiceHandoff, resolveServiceHandoff, type MusicService } from '../../src/services/handoff';
 import { clearRecentQueries, persistRecentQuery, readRecentQueries } from '../../src/services/recentQueries';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   ReleaseSummaryModel,
+  SearchReleaseResultModel,
   SearchTeamResultModel,
   SearchUpcomingResultModel,
   TeamSummaryModel,
 } from '../../src/types';
 
+function resolveReleaseKindLabel(releaseKind?: string): string {
+  if (!releaseKind) {
+    return '발매';
+  }
+
+  const normalized = releaseKind.trim().toLowerCase();
+  if (normalized === 'single') {
+    return '싱글';
+  }
+  if (normalized === 'mini' || normalized === 'ep') {
+    return '미니';
+  }
+  if (normalized === 'album') {
+    return '정규';
+  }
+  if (normalized === 'ost') {
+    return 'OST';
+  }
+  if (normalized === 'collab') {
+    return '콜라보';
+  }
+
+  return releaseKind;
+}
+
 function formatReleaseMeta(release: ReleaseSummaryModel): string {
-  const releaseKind = release.releaseKind ?? 'release';
+  const releaseKind = resolveReleaseKindLabel(release.releaseKind);
   return `${release.releaseDate} · ${releaseKind}`;
 }
 
@@ -71,6 +102,74 @@ function formatSuggestedLabel(team: TeamSummaryModel): string {
   return team.badge?.monogram ?? team.displayName.slice(0, 2).toUpperCase();
 }
 
+function resolveTeamMatchLabel(matchKind: SearchTeamResultModel['matchKind']): string {
+  if (matchKind === 'display_name_exact') {
+    return '팀명 정확';
+  }
+
+  if (matchKind === 'search_alias_exact' || matchKind === 'alias_exact') {
+    return '별칭 정확';
+  }
+
+  if (matchKind === 'alias_partial') {
+    return '별칭 부분';
+  }
+
+  return '부분 일치';
+}
+
+function resolveReleaseMatchLabel(matchKind: SearchReleaseResultModel['matchKind']): string {
+  if (matchKind === 'release_title_exact') {
+    return '릴리즈명 정확';
+  }
+
+  if (matchKind === 'entity_exact_latest_release') {
+    return '팀명 정확';
+  }
+
+  return '부분 일치';
+}
+
+function resolveUpcomingMatchLabel(matchKind: SearchUpcomingResultModel['matchKind']): string {
+  if (matchKind === 'entity_exact') {
+    return '팀명 정확';
+  }
+
+  if (matchKind === 'headline_exact') {
+    return '헤드라인 정확';
+  }
+
+  return '부분 일치';
+}
+
+function resolveSearchSegmentLabel(segment: SearchSegment): string {
+  if (segment === 'entities') {
+    return '팀';
+  }
+
+  if (segment === 'releases') {
+    return '발매';
+  }
+
+  return '예정';
+}
+
+function resolveUpcomingSourceLabel(sourceType: SearchUpcomingResultModel['upcoming']['sourceType']): string {
+  if (
+    sourceType === 'agency_notice' ||
+    sourceType === 'weverse_notice' ||
+    sourceType === 'official_social'
+  ) {
+    return '공식 공지';
+  }
+
+  if (sourceType === 'news_rss') {
+    return '기사 원문';
+  }
+
+  return '출처 보기';
+}
+
 function buildTeamResultAccessibilityLabel(result: SearchTeamResultModel): string {
   return `${result.team.displayName} 팀 열기, ${formatTeamMeta(result)}, ${result.matchKind}`;
 }
@@ -85,6 +184,7 @@ function buildUpcomingResultAccessibilityLabel(result: SearchUpcomingResultModel
 
 export default function SearchTabScreen() {
   const router = useRouter();
+  const inputRef = useRef<TextInput | null>(null);
   const params = useLocalSearchParams<{
     q?: string | string[];
     segment?: string | string[];
@@ -101,6 +201,8 @@ export default function SearchTabScreen() {
   });
   const [query, setQuery] = useState(routeState.query);
   const [activeSegment, setActiveSegment] = useState<SearchSegment>(routeState.activeSegment);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const [recentQueries, setRecentQueries] = useState<string[]>([]);
   const deferredQuery = useDeferredValue(query);
 
@@ -171,6 +273,23 @@ export default function SearchTabScreen() {
     return entries;
   }, [selectorContext]);
 
+  const teamSummaryByGroup = useMemo(() => {
+    const entries = new Map<string, TeamSummaryModel>();
+
+    if (!selectorContext) {
+      return entries;
+    }
+
+    for (const profile of selectorContext.dataset.artistProfiles) {
+      const team = selectTeamSummaryBySlug(selectorContext, profile.slug);
+      if (team) {
+        entries.set(profile.group, team);
+      }
+    }
+
+    return entries;
+  }, [selectorContext]);
+
   useEffect(() => {
     const currentRouteParams = buildSearchRouteParams({
       activeSegment: routeState.activeSegment,
@@ -231,6 +350,8 @@ export default function SearchTabScreen() {
       return;
     }
 
+    setQuery(normalized);
+    setHandoffFeedback(null);
     const metrics = buildSearchSubmissionMetrics(normalized);
     trackAnalyticsEvent('search_submitted', {
       query: normalized,
@@ -244,6 +365,7 @@ export default function SearchTabScreen() {
 
   async function handleRecentQueryPress(nextQuery: string) {
     setQuery(nextQuery);
+    setHandoffFeedback(null);
     await handleSubmitQuery(nextQuery, 'recent');
   }
 
@@ -252,7 +374,23 @@ export default function SearchTabScreen() {
     setRecentQueries([]);
   }
 
+  function handleClearSearch() {
+    setHandoffFeedback(null);
+    setQuery('');
+    setActiveSegment('entities');
+  }
+
+  function handleCancelSearch() {
+    setHandoffFeedback(null);
+    setQuery('');
+    setActiveSegment('entities');
+    setIsInputFocused(false);
+    inputRef.current?.blur();
+    Keyboard.dismiss();
+  }
+
   function openTeamDetail(slug: string) {
+    setHandoffFeedback(null);
     router.push({
       pathname: '/artists/[slug]',
       params: { slug },
@@ -260,6 +398,7 @@ export default function SearchTabScreen() {
   }
 
   function openReleaseDetail(releaseId: string) {
+    setHandoffFeedback(null);
     router.push({
       pathname: '/releases/[id]',
       params: { id: releaseId },
@@ -304,6 +443,58 @@ export default function SearchTabScreen() {
     openTeamDetail(slug);
   }
 
+  async function handleUpcomingSourcePress(result: SearchUpcomingResultModel) {
+    if (!result.upcoming.sourceUrl) {
+      return;
+    }
+
+    try {
+      await Linking.openURL(result.upcoming.sourceUrl);
+      setHandoffFeedback(null);
+    } catch {
+      setHandoffFeedback('링크를 열 수 없습니다. 다시 시도해 주세요.');
+    }
+  }
+
+  function buildReleaseServiceQuery(release: ReleaseSummaryModel): string {
+    return `${release.displayGroup} ${release.releaseTitle}`.trim();
+  }
+
+  function buildReleaseMvQuery(release: ReleaseSummaryModel): string {
+    return `${release.displayGroup} ${release.representativeSongTitle ?? release.releaseTitle}`.trim();
+  }
+
+  async function handleReleaseServicePress(release: ReleaseSummaryModel, service: MusicService) {
+    const resolution = resolveServiceHandoff({
+      service,
+      query: service === 'youtubeMv' ? buildReleaseMvQuery(release) : buildReleaseServiceQuery(release),
+      canonicalUrl:
+        service === 'spotify'
+          ? release.spotifyUrl
+          : service === 'youtubeMusic'
+            ? release.youtubeMusicUrl
+            : release.youtubeMvUrl,
+    });
+
+    trackAnalyticsEvent('service_handoff_attempted', {
+      surface: 'search',
+      service,
+      mode: resolution.mode,
+    });
+
+    const result = await openServiceHandoff(resolution);
+    trackAnalyticsEvent('service_handoff_completed', {
+      surface: 'search',
+      service,
+      mode: result.mode,
+      ok: result.ok,
+      target: result.ok ? result.target : result.target,
+      failureCode: result.ok ? null : result.code,
+    });
+
+    setHandoffFeedback(result.ok ? null : '앱을 열 수 없습니다. 다시 시도해 주세요.');
+  }
+
   if (datasetState.kind === 'loading') {
     return (
       <ScreenFeedbackState
@@ -346,9 +537,23 @@ export default function SearchTabScreen() {
       : activeSegment === 'releases'
         ? results.releases
         : results.upcoming;
+  const totalResults = segmentCounts.entities + segmentCounts.releases + segmentCounts.upcoming;
+  const availableSegments = (['entities', 'releases', 'upcoming'] as SearchSegment[]).filter(
+    (segment) => segmentCounts[segment] > 0,
+  );
+  const hasPartialResults = totalResults > 0 && availableSegments.length < 3;
+  const firstAvailableSegment = availableSegments[0] ?? null;
+  const showActiveSegmentEmpty = query.trim().length > 0 && activeRows.length === 0 && totalResults > 0;
+  const showSegmentSummaryNotice =
+    query.trim().length > 0 && activeRows.length > 0 && hasPartialResults;
+  const showCancelAction = isInputFocused || query.trim().length > 0;
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+    <ScrollView
+      contentContainerStyle={styles.content}
+      keyboardShouldPersistTaps="handled"
+      style={styles.screen}
+    >
       <AppBar
         subtitle="한글 별칭, 영문 그룹명, 릴리즈명, 예정 headline까지 같은 selector semantics로 찾습니다."
         testID="search-app-bar"
@@ -364,31 +569,50 @@ export default function SearchTabScreen() {
       ) : null}
 
       <View style={styles.searchCard}>
-        <TextInput
-          accessibilityHint="팀, 릴리즈, 예정 키워드를 입력해 검색합니다."
-          accessibilityLabel="팀, 앨범, 곡, 별칭 검색"
-          testID="search-input"
-          value={query}
-          onChangeText={setQuery}
-          onSubmitEditing={() => void handleSubmitQuery()}
-          placeholder="팀, 앨범, 곡, 별칭 검색"
-          placeholderTextColor={theme.colors.text.tertiary}
-          autoCapitalize="none"
-          autoCorrect={false}
-          returnKeyType="search"
-          style={styles.searchInput}
-        />
-        {query.trim() ? (
-          <Pressable
-            testID="search-clear-button"
-            accessibilityLabel="검색어 지우기"
-            accessibilityRole="button"
-            onPress={() => setQuery('')}
-            style={styles.inlineButton}
-          >
-            <Text style={styles.inlineButtonLabel}>지우기</Text>
-          </Pressable>
-        ) : null}
+        <View style={styles.searchInputRow}>
+          <TextInput
+            ref={inputRef}
+            accessibilityHint="팀, 릴리즈, 예정 키워드를 입력해 검색합니다."
+            accessibilityLabel="팀, 앨범, 곡, 별칭 검색"
+            autoCapitalize="none"
+            autoCorrect={false}
+            onBlur={() => setIsInputFocused(false)}
+            onChangeText={(nextQuery) => {
+              setHandoffFeedback(null);
+              setQuery(nextQuery);
+            }}
+            onFocus={() => setIsInputFocused(true)}
+            onSubmitEditing={() => void handleSubmitQuery()}
+            placeholder="팀, 앨범, 곡, 별칭 검색"
+            placeholderTextColor={theme.colors.text.tertiary}
+            returnKeyType="search"
+            style={styles.searchInput}
+            testID="search-input"
+            value={query}
+          />
+          {query.trim() ? (
+            <Pressable
+              accessibilityLabel="검색어 지우기"
+              accessibilityRole="button"
+              onPress={handleClearSearch}
+              style={styles.inlineButton}
+              testID="search-clear-button"
+            >
+              <Text style={styles.inlineButtonLabel}>지우기</Text>
+            </Pressable>
+          ) : null}
+          {showCancelAction ? (
+            <Pressable
+              accessibilityLabel="검색 취소"
+              accessibilityRole="button"
+              onPress={handleCancelSearch}
+              style={styles.inlineButton}
+              testID="search-cancel-button"
+            >
+              <Text style={styles.inlineButtonLabel}>취소</Text>
+            </Pressable>
+          ) : null}
+        </View>
       </View>
 
       <SegmentedControl
@@ -474,27 +698,68 @@ export default function SearchTabScreen() {
             <Text style={styles.sectionMeta}>{segmentCounts[activeSegment]}건</Text>
           </View>
 
-          {activeRows.length === 0 ? (
-            <InlineFeedbackNotice body="검색 결과가 없습니다." />
+          {handoffFeedback ? (
+            <InlineFeedbackNotice
+              body={handoffFeedback}
+              testID="search-handoff-feedback"
+              title="외부 열기 실패"
+              tone="error"
+            />
+          ) : null}
+
+          {showSegmentSummaryNotice ? (
+            <InlineFeedbackNotice
+              body={`일부 세그먼트만 결과가 있습니다. 팀 ${segmentCounts.entities} · 발매 ${segmentCounts.releases} · 예정 ${segmentCounts.upcoming}`}
+              testID="search-partial-result-notice"
+              title="일부 세그먼트만 결과가 있습니다."
+            />
+          ) : null}
+
+          {query.trim() && totalResults === 0 ? (
+            <InlineFeedbackNotice body="검색 결과가 없습니다." testID="search-no-result-notice" />
+          ) : null}
+
+          {showActiveSegmentEmpty ? (
+            <InlineFeedbackNotice
+              action={
+                firstAvailableSegment
+                  ? {
+                      label: `${resolveSearchSegmentLabel(firstAvailableSegment)} 결과 보기`,
+                      onPress: () => setActiveSegment(firstAvailableSegment),
+                      testID: 'search-partial-result-action',
+                    }
+                  : undefined
+              }
+              body="다른 탭을 확인해 보세요."
+              testID="search-segment-empty-notice"
+              title="이 세그먼트에는 결과가 없습니다."
+            />
           ) : null}
 
           {activeSegment === 'entities'
             ? results.entities.map((result) => (
                 <View key={result.team.slug} style={styles.resultCard}>
-                  <TeamIdentityRow
-                    badgeImageUrl={result.team.badge?.imageUrl}
-                    meta={formatTeamMeta(result)}
-                    monogram={result.team.badge?.monogram}
-                    name={result.team.displayName}
-                    testID={`search-team-result-${result.team.slug}`}
-                  />
-                  <Text style={styles.resultMeta}>{result.matchKind}</Text>
-                  <ActionButton
+                  <Pressable
+                    accessibilityHint="팀 상세 화면으로 이동합니다."
                     accessibilityLabel={buildTeamResultAccessibilityLabel(result)}
-                    label="팀 페이지"
+                    accessibilityRole="button"
                     onPress={() => handleTeamResultPress(result)}
+                    style={({ pressed }) => [styles.resultPressable, pressed ? styles.resultPressed : null]}
                     testID={`search-team-result-press-${result.team.slug}`}
-                  />
+                  >
+                    <TeamIdentityRow
+                      badgeImageUrl={result.team.badge?.imageUrl}
+                      meta={formatTeamMeta(result)}
+                      monogram={result.team.badge?.monogram}
+                      name={result.team.displayName}
+                      testID={`search-team-result-${result.team.slug}`}
+                    />
+                    <View style={styles.chipRow}>
+                      <View style={styles.resultChip}>
+                        <Text style={styles.resultChipLabel}>{resolveTeamMatchLabel(result.matchKind)}</Text>
+                      </View>
+                    </View>
+                  </Pressable>
                 </View>
               ))
             : null}
@@ -502,19 +767,73 @@ export default function SearchTabScreen() {
           {activeSegment === 'releases'
             ? results.releases.map((result) => (
                 <View key={result.release.id} style={styles.resultCard}>
-                  <TeamIdentityRow
-                    meta={`${result.release.displayGroup} · ${formatReleaseMeta(result.release)}`}
-                    monogram={result.release.displayGroup.slice(0, 2)}
-                    name={result.release.releaseTitle}
-                    testID={`search-release-result-${result.release.id}`}
-                  />
-                  <Text style={styles.resultMeta}>{result.matchKind}</Text>
-                  <ActionButton
+                  <Pressable
+                    accessibilityHint="릴리즈 상세 화면으로 이동합니다."
                     accessibilityLabel={buildReleaseResultAccessibilityLabel(result.release, result.matchKind)}
-                    label="릴리즈 상세"
+                    accessibilityRole="button"
                     onPress={() => handleReleaseResultPress(result.release, result.matchKind)}
+                    style={({ pressed }) => [styles.resultPressable, pressed ? styles.resultPressed : null]}
                     testID={`search-release-result-press-${result.release.id}`}
-                  />
+                  >
+                    <TeamIdentityRow
+                      badgeImageUrl={result.release.coverImageUrl}
+                      meta={`${result.release.displayGroup} · ${formatReleaseMeta(result.release)}`}
+                      monogram={result.release.displayGroup.slice(0, 2).toUpperCase()}
+                      name={result.release.releaseTitle}
+                      testID={`search-release-result-${result.release.id}`}
+                    />
+                  </Pressable>
+                  <View style={styles.resultSupplement}>
+                    <View style={styles.chipRow}>
+                      <View style={styles.resultChip}>
+                        <Text style={styles.resultChipLabel}>{resolveReleaseMatchLabel(result.matchKind)}</Text>
+                      </View>
+                    </View>
+                    <ServiceButtonGroup
+                      buttons={[
+                        {
+                          key: `${result.release.id}-spotify`,
+                          accessibilityLabel: `${result.release.releaseTitle} Spotify 열기`,
+                          label: 'Spotify',
+                          mode: resolveServiceHandoff({
+                            service: 'spotify',
+                            query: buildReleaseServiceQuery(result.release),
+                            canonicalUrl: result.release.spotifyUrl,
+                          }).mode,
+                          onPress: () => void handleReleaseServicePress(result.release, 'spotify'),
+                          service: 'spotify',
+                          testID: `search-release-service-spotify-${result.release.id}`,
+                        },
+                        {
+                          key: `${result.release.id}-youtube-music`,
+                          accessibilityLabel: `${result.release.releaseTitle} YouTube Music 열기`,
+                          label: 'YouTube Music',
+                          mode: resolveServiceHandoff({
+                            service: 'youtubeMusic',
+                            query: buildReleaseServiceQuery(result.release),
+                            canonicalUrl: result.release.youtubeMusicUrl,
+                          }).mode,
+                          onPress: () => void handleReleaseServicePress(result.release, 'youtubeMusic'),
+                          service: 'youtubeMusic',
+                          testID: `search-release-service-youtube-music-${result.release.id}`,
+                        },
+                        {
+                          key: `${result.release.id}-youtube-mv`,
+                          accessibilityLabel: `${result.release.releaseTitle} YouTube MV 열기`,
+                          label: 'YouTube MV',
+                          mode: resolveServiceHandoff({
+                            service: 'youtubeMv',
+                            query: buildReleaseMvQuery(result.release),
+                            canonicalUrl: result.release.youtubeMvUrl,
+                          }).mode,
+                          onPress: () => void handleReleaseServicePress(result.release, 'youtubeMv'),
+                          service: 'youtubeMv',
+                          testID: `search-release-service-youtube-mv-${result.release.id}`,
+                        },
+                      ]}
+                      testID={`search-release-result-services-${result.release.id}`}
+                    />
+                  </View>
                 </View>
               ))
             : null}
@@ -522,22 +841,51 @@ export default function SearchTabScreen() {
           {activeSegment === 'upcoming'
             ? results.upcoming.map((result) => (
                 <View key={result.upcoming.id} style={styles.resultCard}>
-                  <TeamIdentityRow
-                    meta={result.upcoming.releaseLabel ?? result.upcoming.headline}
-                    monogram={result.upcoming.displayGroup.slice(0, 2)}
-                    name={result.upcoming.displayGroup}
-                    testID={`search-upcoming-result-${result.upcoming.id}`}
-                  />
-                  <Text style={styles.resultMeta}>
-                    {formatUpcomingMeta(result)} · {result.matchKind}
-                  </Text>
-                  <ActionButton
+                  <Pressable
+                    accessibilityHint="팀 상세 화면으로 이동합니다."
                     accessibilityLabel={buildUpcomingResultAccessibilityLabel(result)}
+                    accessibilityRole="button"
                     disabled={!teamSlugByGroup.get(result.upcoming.group)}
-                    label="팀 페이지"
                     onPress={() => handleUpcomingResultPress(result)}
+                    style={({ pressed }) => [
+                      styles.resultPressable,
+                      pressed && teamSlugByGroup.get(result.upcoming.group) ? styles.resultPressed : null,
+                    ]}
                     testID={`search-upcoming-result-press-${result.upcoming.id}`}
-                  />
+                  >
+                    <TeamIdentityRow
+                      badgeImageUrl={teamSummaryByGroup.get(result.upcoming.group)?.badge?.imageUrl}
+                      meta={result.upcoming.releaseLabel ?? result.upcoming.headline}
+                      monogram={
+                        teamSummaryByGroup.get(result.upcoming.group)?.badge?.monogram ??
+                        result.upcoming.displayGroup.slice(0, 2).toUpperCase()
+                      }
+                      name={result.upcoming.displayGroup}
+                      testID={`search-upcoming-result-${result.upcoming.id}`}
+                    />
+                    <Text style={styles.resultMeta}>{formatUpcomingMeta(result)}</Text>
+                  </Pressable>
+                  <View style={styles.resultSupplement}>
+                    <View style={styles.chipRow}>
+                      <View style={styles.resultChip}>
+                        <Text style={styles.resultChipLabel}>{resolveUpcomingMatchLabel(result.matchKind)}</Text>
+                      </View>
+                    </View>
+                    {result.upcoming.sourceUrl ? (
+                      <SourceLinkRow
+                        links={[
+                          {
+                            key: `${result.upcoming.id}-source`,
+                            label: resolveUpcomingSourceLabel(result.upcoming.sourceType),
+                            onPress: () => void handleUpcomingSourcePress(result),
+                            type: 'source',
+                            url: result.upcoming.sourceUrl,
+                          },
+                        ]}
+                        testID={`search-upcoming-source-row-${result.upcoming.id}`}
+                      />
+                    ) : null}
+                  </View>
                 </View>
               ))
             : null}
@@ -574,7 +922,13 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       padding: theme.space[12],
       gap: theme.space[8],
     },
+    searchInputRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: theme.space[8],
+    },
     searchInput: {
+      flex: 1,
       color: theme.colors.text.primary,
       fontSize: theme.typography.sectionTitle.fontSize,
       lineHeight: theme.typography.sectionTitle.lineHeight,
@@ -661,6 +1015,30 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     resultMeta: {
       color: theme.colors.text.tertiary,
+      fontSize: theme.typography.meta.fontSize,
+      lineHeight: theme.typography.meta.lineHeight,
+      fontWeight: theme.typography.meta.fontWeight,
+    },
+    resultPressable: {
+      gap: theme.space[8],
+    },
+    resultPressed: {
+      opacity: 0.84,
+    },
+    resultSupplement: {
+      gap: theme.space[8],
+    },
+    resultChip: {
+      alignSelf: 'flex-start',
+      borderRadius: theme.radius.chip,
+      borderWidth: 1,
+      borderColor: theme.colors.border.subtle,
+      backgroundColor: theme.colors.surface.base,
+      paddingHorizontal: theme.space[8],
+      paddingVertical: theme.space[8],
+    },
+    resultChipLabel: {
+      color: theme.colors.text.secondary,
       fontSize: theme.typography.meta.fontSize,
       lineHeight: theme.typography.meta.lineHeight,
       fontWeight: theme.typography.meta.fontWeight,

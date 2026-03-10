@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 
 import SearchTabScreen from '../../app/(tabs)/search';
 import { trackAnalyticsEvent } from '../services/analytics';
+import { openServiceHandoff } from '../services/handoff';
 import { persistRecentQuery, readRecentQueries } from '../services/recentQueries';
 import { resetStorageAdapter, setStorageAdapter, type KeyValueStorageAdapter } from '../services/storage';
 
@@ -40,6 +41,15 @@ jest.mock('../services/analytics', () => ({
   trackDatasetLoadFailed: jest.fn(),
 }));
 
+jest.mock('../services/handoff', () => {
+  const actual = jest.requireActual('../services/handoff') as typeof import('../services/handoff');
+
+  return {
+    ...actual,
+    openServiceHandoff: jest.fn(),
+  };
+});
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     push: jest.Mock;
@@ -48,6 +58,7 @@ const { __mock } = jest.requireMock('expo-router') as {
   };
 };
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
+const mockOpenServiceHandoff = jest.mocked(openServiceHandoff);
 
 async function renderSearchScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -72,6 +83,14 @@ describe('mobile search tab', () => {
     __mock.setParams.mockClear();
     __mock.push.mockClear();
     mockTrackAnalyticsEvent.mockClear();
+    mockOpenServiceHandoff.mockReset();
+    mockOpenServiceHandoff.mockResolvedValue({
+      ok: true,
+      service: 'spotify',
+      mode: 'canonical',
+      target: 'primary',
+      openedUrl: 'https://open.spotify.com/track/test',
+    });
   });
 
   afterEach(() => {
@@ -183,5 +202,121 @@ describe('mobile search tab', () => {
         testID: 'search-upcoming-result-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
       }),
     ).toBeDefined();
+  });
+
+  test('returns to the default state when clearing or cancelling a query', async () => {
+    __mock.useLocalSearchParams.mockReturnValue({
+      q: '최예나',
+      segment: 'upcoming',
+    });
+
+    const tree = await renderSearchScreen();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-clear-button' }).props.onPress();
+    });
+
+    expect(tree.root.findByProps({ testID: 'search-input' }).props.value).toBe('');
+    expect(
+      tree.root.findByProps({ testID: 'search-segment-entities' }).props.accessibilityState.selected,
+    ).toBe(true);
+    expect(hasText(tree, '최근 검색')).toBe(true);
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-input' }).props.onFocus();
+      tree.root.findByProps({ testID: 'search-input' }).props.onChangeText('LOVE CATCHER');
+    });
+
+    expect(tree.root.findByProps({ testID: 'search-cancel-button' })).toBeDefined();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-cancel-button' }).props.onPress();
+    });
+
+    expect(tree.root.findByProps({ testID: 'search-input' }).props.value).toBe('');
+    expect(
+      tree.root.findByProps({ testID: 'search-segment-entities' }).props.accessibilityState.selected,
+    ).toBe(true);
+  });
+
+  test('shows partial-result guidance and jumps to the first available segment', async () => {
+    const tree = await renderSearchScreen();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-input' }).props.onChangeText('LOVE CATCHER');
+    });
+
+    expect(tree.root.findByProps({ testID: 'search-segment-empty-notice' })).toBeDefined();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-partial-result-action' }).props.onPress();
+    });
+
+    expect(
+      tree.root.findByProps({ testID: 'search-segment-releases' }).props.accessibilityState.selected,
+    ).toBe(true);
+    expect(tree.root.findByProps({ testID: 'search-partial-result-notice' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'search-release-result-yena--love-catcher--2026-03-11--album' })).toBeDefined();
+  });
+
+  test('renders compact release service actions and surfaces handoff failures', async () => {
+    const tree = await renderSearchScreen();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-input' }).props.onChangeText('최예나');
+    });
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-segment-releases' }).props.onPress();
+    });
+
+    expect(
+      tree.root.findByProps({ testID: 'search-release-result-services-yena--love-catcher--2026-03-11--album' }),
+    ).toBeDefined();
+
+    await act(async () => {
+      await tree.root
+        .findByProps({ testID: 'search-release-service-spotify-yena--love-catcher--2026-03-11--album' })
+        .props.onPress();
+    });
+
+    expect(mockOpenServiceHandoff).toHaveBeenCalled();
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'service_handoff_attempted',
+      expect.objectContaining({
+        surface: 'search',
+        service: 'spotify',
+      }),
+    );
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'service_handoff_completed',
+      expect.objectContaining({
+        surface: 'search',
+        service: 'spotify',
+        ok: true,
+      }),
+    );
+
+    mockOpenServiceHandoff.mockResolvedValueOnce({
+      ok: false,
+      code: 'handoff_open_failed',
+      service: 'youtubeMusic',
+      mode: 'searchFallback',
+      target: 'browserFallback',
+      attemptedUrl: 'https://music.youtube.com/search?q=%EC%B5%9C%EC%98%88%EB%82%98',
+      feedback: {
+        level: 'warning',
+        retryable: true,
+        message: 'External handoff failed. Keep the current route stack and show retry feedback.',
+      },
+    });
+
+    await act(async () => {
+      await tree.root
+        .findByProps({ testID: 'search-release-service-youtube-music-yena--love-catcher--2026-03-11--album' })
+        .props.onPress();
+    });
+
+    expect(tree.root.findByProps({ testID: 'search-handoff-feedback' })).toBeDefined();
   });
 });
