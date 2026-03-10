@@ -32,7 +32,7 @@ describe('mobile route state helpers', () => {
   test('drops invalid or incomplete calendar params safely', () => {
     expect(
       resolveCalendarRouteState(
-      {
+        {
           month: '2026-3',
           date: 'oops',
           filter: 'broken',
@@ -46,6 +46,25 @@ describe('mobile route state helpers', () => {
       filterMode: 'all',
       isSheetOpen: false,
       selectedDayIso: null,
+      viewMode: 'calendar',
+    });
+  });
+
+  test('restores deep-link style calendar params from array values and date-derived months', () => {
+    expect(
+      resolveCalendarRouteState(
+        {
+          date: ['2026-04-18'],
+          filter: ['releases'],
+          sheet: ['open'],
+        },
+        '2026-03',
+      ),
+    ).toEqual({
+      activeMonth: '2026-04',
+      filterMode: 'releases',
+      isSheetOpen: true,
+      selectedDayIso: '2026-04-18',
       viewMode: 'calendar',
     });
   });
@@ -125,6 +144,18 @@ describe('mobile route state helpers', () => {
     expect(buildSearchRouteParams({ query: '최예나', activeSegment: 'upcoming' })).toEqual({
       q: '최예나',
       segment: 'upcoming',
+    });
+
+    expect(
+      buildRadarRouteParams({
+        statusFilter: 'all',
+        actTypeFilter: 'all',
+        enabledSections: ['weekly', 'change', 'longGap', 'rookie'],
+      }),
+    ).toEqual({
+      status: undefined,
+      actType: undefined,
+      sections: undefined,
     });
 
     expect(

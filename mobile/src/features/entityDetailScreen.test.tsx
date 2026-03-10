@@ -67,6 +67,9 @@ describe('mobile entity detail screen', () => {
 
   test('renders populated entity detail sections for a tracked team', async () => {
     __mock.useLocalSearchParams.mockReturnValue({ slug: 'yena' });
+    const back = jest.fn();
+    const push = jest.fn();
+    __mock.useRouter.mockReturnValue({ back, push });
     const tree = await renderArtistDetail();
 
     expect(tree.root.findByProps({ testID: 'entity-detail-app-bar' })).toBeDefined();
@@ -93,6 +96,18 @@ describe('mobile entity detail screen', () => {
     });
 
     expect(tree.root.findByProps({ testID: 'entity-source-timeline' })).toBeDefined();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'entity-detail-back' }).props.onPress();
+      tree.root.findByProps({ testID: 'entity-latest-release-primary' }).props.onPress();
+      tree.root.findByProps({ testID: 'entity-recent-album-single-card-yena--love-catcher--2026-03-11--album' }).props.onPress();
+    });
+
+    expect(back).toHaveBeenCalledTimes(1);
+    expect(push).toHaveBeenCalledWith({
+      pathname: '/releases/[id]',
+      params: { id: 'yena--love-catcher--2026-03-11--album' },
+    });
   });
 
   test('renders safe empty states when upcoming and albums are missing', async () => {

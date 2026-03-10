@@ -220,6 +220,7 @@
 
 ### Rules
 - verifiedRows, scheduledRows가 모두 비어도 empty state를 포함해 열릴 수 있다.
+- shared bottom-sheet frame을 사용하고 default max height는 약 78%, empty 상태는 약 45%를 따른다.
 - sheet 내부에서 push/external 액션 허용
 
 ## 18. FilterSheet
@@ -234,7 +235,8 @@
 
 ### Rules
 - apply 이전에는 임시 상태 유지 가능
-- background close 시 폐기/유지 정책은 screen-level spec을 따른다.
+- shared bottom-sheet frame을 사용하고 default max height는 약 62%를 따른다.
+- background close 시 draft state를 폐기하고 마지막 applied state를 유지한다.
 
 ## 19. 참조 예시
 - 실제 interface 네이밍 예시는 `typescript-interface-examples.md`를 참조한다.

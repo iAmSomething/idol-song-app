@@ -15,7 +15,7 @@ import type { MobileTheme } from '../../tokens/theme';
 export interface UpcomingEventRowProps {
   confidenceChip?: string;
   headline: string;
-  primaryAction: { label: string; onPress: () => void };
+  primaryAction: { label: string; onPress: () => void; testID?: string };
   scheduledDate?: string;
   sourceLinks?: SourceLinkRowItem[];
   statusChip?: string;

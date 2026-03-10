@@ -2,7 +2,6 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Linking,
-  Modal,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -15,6 +14,7 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { FilterSheet, type FilterSheetGroup } from '../../src/components/filters/FilterSheet';
 import { AppBar } from '../../src/components/layout/AppBar';
 import { SummaryStrip } from '../../src/components/layout/SummaryStrip';
 import { buildDatasetRiskDisclosure } from '../../src/features/surfaceDisclosures';
@@ -258,13 +258,32 @@ export default function RadarTabScreen() {
     sections?: string | string[];
     status?: string | string[];
   }>();
+  const routeActTypeParam = params.actType;
+  const routeSectionsParam = params.sections;
+  const routeStatusParam = params.status;
   const theme = useAppTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const [reloadCount, setReloadCount] = useState(0);
-  const routeState = useMemo(() => resolveRadarRouteState(params), [params]);
+  const routeState = useMemo(
+    () =>
+      resolveRadarRouteState({
+        actType: routeActTypeParam,
+        sections: routeSectionsParam,
+        status: routeStatusParam,
+      }),
+    [routeActTypeParam, routeSectionsParam, routeStatusParam],
+  );
+  const routeSectionsKey = useMemo(
+    () => routeState.enabledSections.join(','),
+    [routeState.enabledSections],
+  );
+  const restoredEnabledSections = routeState.enabledSections;
   const [statusFilter, setStatusFilter] = useState(routeState.statusFilter);
   const [actTypeFilter, setActTypeFilter] = useState(routeState.actTypeFilter);
   const [enabledSections, setEnabledSections] = useState(routeState.enabledSections);
+  const [draftStatusFilter, setDraftStatusFilter] = useState(routeState.statusFilter);
+  const [draftActTypeFilter, setDraftActTypeFilter] = useState(routeState.actTypeFilter);
+  const [draftEnabledSections, setDraftEnabledSections] = useState(routeState.enabledSections);
   const [isFilterSheetOpen, setIsFilterSheetOpen] = useState(false);
   const today = useMemo(() => new Date(), []);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
@@ -294,8 +313,16 @@ export default function RadarTabScreen() {
   useEffect(() => {
     setStatusFilter(routeState.statusFilter);
     setActTypeFilter(routeState.actTypeFilter);
-    setEnabledSections(routeState.enabledSections);
-  }, [routeState]);
+    setEnabledSections([...restoredEnabledSections]);
+    setDraftStatusFilter(routeState.statusFilter);
+    setDraftActTypeFilter(routeState.actTypeFilter);
+    setDraftEnabledSections([...restoredEnabledSections]);
+  }, [
+    routeState.actTypeFilter,
+    restoredEnabledSections,
+    routeSectionsKey,
+    routeState.statusFilter,
+  ]);
 
   const source = datasetState.kind === 'ready' ? datasetState.source : null;
   const snapshot = source?.data ?? null;
@@ -340,19 +367,92 @@ export default function RadarTabScreen() {
     });
   }
 
-  function toggleSection(section: RadarSectionKey) {
-    setEnabledSections((current) =>
+  function openFilterSheet() {
+    setDraftStatusFilter(statusFilter);
+    setDraftActTypeFilter(actTypeFilter);
+    setDraftEnabledSections(enabledSections);
+    setIsFilterSheetOpen(true);
+  }
+
+  function closeFilterSheet() {
+    setDraftStatusFilter(statusFilter);
+    setDraftActTypeFilter(actTypeFilter);
+    setDraftEnabledSections(enabledSections);
+    setIsFilterSheetOpen(false);
+  }
+
+  function applyFilterSheet() {
+    setStatusFilter(draftStatusFilter);
+    setActTypeFilter(draftActTypeFilter);
+    setEnabledSections(draftEnabledSections);
+    setIsFilterSheetOpen(false);
+  }
+
+  function resetFilterSheetDrafts() {
+    setDraftStatusFilter('all');
+    setDraftActTypeFilter('all');
+    setDraftEnabledSections(DEFAULT_ENABLED_SECTIONS);
+  }
+
+  function toggleDraftSection(section: RadarSectionKey) {
+    setDraftEnabledSections((current) =>
       current.includes(section)
         ? current.filter((value) => value !== section)
         : [...current, section],
     );
   }
 
-  function resetFilters() {
-    setStatusFilter('all');
-    setActTypeFilter('all');
-    setEnabledSections(DEFAULT_ENABLED_SECTIONS);
+  function handleFilterSheetToggleOption(groupKey: string, optionKey: string) {
+    if (groupKey === 'status') {
+      setDraftStatusFilter(optionKey as RadarFilterStatus);
+      return;
+    }
+
+    if (groupKey === 'act') {
+      setDraftActTypeFilter(optionKey as RadarFilterActType);
+      return;
+    }
+
+    if (groupKey === 'section') {
+      toggleDraftSection(optionKey as RadarSectionKey);
+    }
   }
+
+  const filterGroups = useMemo<FilterSheetGroup[]>(
+    () => [
+      {
+        key: 'status',
+        label: '상태',
+        options: [
+          { key: 'all', label: '전체', selected: draftStatusFilter === 'all' },
+          { key: 'scheduled', label: '예정', selected: draftStatusFilter === 'scheduled' },
+          { key: 'confirmed', label: '확정', selected: draftStatusFilter === 'confirmed' },
+          { key: 'changed', label: '변경', selected: draftStatusFilter === 'changed' },
+        ],
+      },
+      {
+        key: 'act',
+        label: 'act type',
+        options: [
+          { key: 'all', label: '전체', selected: draftActTypeFilter === 'all' },
+          { key: 'group', label: '그룹', selected: draftActTypeFilter === 'group' },
+          { key: 'solo', label: '솔로', selected: draftActTypeFilter === 'solo' },
+          { key: 'unit', label: '유닛', selected: draftActTypeFilter === 'unit' },
+        ],
+      },
+      {
+        key: 'section',
+        label: '섹션 표시',
+        options: [
+          { key: 'weekly', label: '이번 주 예정', selected: draftEnabledSections.includes('weekly') },
+          { key: 'change', label: '일정 변경', selected: draftEnabledSections.includes('change') },
+          { key: 'longGap', label: '장기 공백', selected: draftEnabledSections.includes('longGap') },
+          { key: 'rookie', label: '루키', selected: draftEnabledSections.includes('rookie') },
+        ],
+      },
+    ],
+    [draftActTypeFilter, draftEnabledSections, draftStatusFilter],
+  );
 
   if (datasetState.kind === 'loading') {
     return (
@@ -418,14 +518,14 @@ export default function RadarTabScreen() {
           >
             <Text style={styles.appBarButtonLabel}>검색</Text>
           </Pressable>
-          <Pressable
-            testID="radar-filter-button"
-            accessibilityLabel="레이더 필터 열기"
-            accessibilityRole="button"
-            accessibilityState={{ selected: hasNonDefaultFilters || isFilterSheetOpen }}
-            onPress={() => setIsFilterSheetOpen(true)}
-            style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
-          >
+            <Pressable
+              testID="radar-filter-button"
+              accessibilityLabel="레이더 필터 열기"
+              accessibilityRole="button"
+              accessibilityState={{ selected: hasNonDefaultFilters || isFilterSheetOpen }}
+              onPress={openFilterSheet}
+              style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
+            >
             <Text style={styles.appBarButtonLabel}>필터</Text>
           </Pressable>
         </View>
@@ -527,17 +627,20 @@ export default function RadarTabScreen() {
         ) : null}
       </ScrollView>
 
-      <RadarFilterSheet
-        actTypeFilter={actTypeFilter}
-        enabledSections={enabledSections}
+      <FilterSheet
+        applyButtonTestID="radar-filter-apply"
+        closeButtonTestID="radar-filter-close"
+        groups={filterGroups}
         isOpen={isFilterSheetOpen}
-        onClose={() => setIsFilterSheetOpen(false)}
-        onReset={resetFilters}
-        onSelectActType={setActTypeFilter}
-        onSelectStatus={setStatusFilter}
-        onToggleSection={toggleSection}
-        statusFilter={statusFilter}
-        styles={styles}
+        onApply={applyFilterSheet}
+        onClose={closeFilterSheet}
+        onReset={resetFilterSheetDrafts}
+        onToggleOption={handleFilterSheetToggleOption}
+        optionTestIDPrefix="radar-filter"
+        resetButtonTestID="radar-filter-reset"
+        summary="레이더 의미를 바꾸지 않는 범위에서 상태, act type, 섹션 표시를 조정합니다."
+        testID="radar-filter-sheet"
+        title="레이더 필터"
       />
     </>
   );
@@ -579,7 +682,9 @@ function RadarFeaturedSection({
             onOpenSource={() => onOpenSource(item.sourceUrl)}
             onPressPrimary={() => onPressTeam(item.team.slug)}
             primaryLabel="팀 페이지"
+            primaryTestID="radar-featured-primary"
             sourceLabel={item.sourceLabel}
+            sourceTestID="radar-featured-source"
             sourceUrl={item.sourceUrl}
             styles={styles}
           />
@@ -648,7 +753,9 @@ function RadarUpcomingSectionCard({
           onOpenSource={() => onOpenSource(item.sourceUrl)}
           onPressPrimary={() => onPressTeam(item.team.slug)}
           primaryLabel="팀 페이지"
+          primaryTestID={`${testID}-primary`}
           sourceLabel={item.sourceLabel}
+          sourceTestID={`${testID}-source`}
           sourceUrl={item.sourceUrl}
           styles={styles}
         />
@@ -689,7 +796,9 @@ function RadarChangeFeedCard({
           onOpenSource={() => onOpenSource(item.sourceUrl)}
           onPressPrimary={() => onPressTeam(item.team.slug)}
           primaryLabel="팀 페이지"
+          primaryTestID={`radar-change-primary-${item.team.slug}`}
           sourceLabel={item.sourceLabel}
+          sourceTestID={`radar-change-source-${item.team.slug}`}
           sourceUrl={item.sourceUrl}
           styles={styles}
         />
@@ -723,6 +832,7 @@ function RadarLongGapCard({
         <RadarActionRow
           onPressPrimary={() => onPressTeam(item.team.slug)}
           primaryLabel="팀 페이지"
+          primaryTestID={`radar-long-gap-primary-${item.team.slug}`}
           styles={styles}
         />
       </View>
@@ -755,6 +865,7 @@ function RadarRookieCard({
         <RadarActionRow
           onPressPrimary={() => onPressTeam(item.team.slug)}
           primaryLabel="팀 페이지"
+          primaryTestID={`radar-rookie-primary-${item.team.slug}`}
           styles={styles}
         />
       </View>
@@ -766,14 +877,18 @@ function RadarActionRow({
   onOpenSource,
   onPressPrimary,
   primaryLabel,
+  primaryTestID,
   sourceLabel,
+  sourceTestID,
   sourceUrl,
   styles,
 }: {
   onOpenSource?: () => void;
   onPressPrimary: () => void;
   primaryLabel: string;
+  primaryTestID?: string;
   sourceLabel?: string;
+  sourceTestID?: string;
   sourceUrl?: string;
   styles: ReturnType<typeof createStyles>;
 }) {
@@ -783,176 +898,18 @@ function RadarActionRow({
         accessibilityLabel={primaryLabel}
         label={primaryLabel}
         onPress={onPressPrimary}
+        testID={primaryTestID}
       />
       {sourceUrl && sourceLabel && onOpenSource ? (
         <ActionButton
           accessibilityLabel={sourceLabel}
           label={sourceLabel}
           onPress={onOpenSource}
+          testID={sourceTestID}
           tone="meta"
         />
       ) : null}
     </View>
-  );
-}
-
-function RadarFilterSheet({
-  actTypeFilter,
-  enabledSections,
-  isOpen,
-  onClose,
-  onReset,
-  onSelectActType,
-  onSelectStatus,
-  onToggleSection,
-  statusFilter,
-  styles,
-}: {
-  actTypeFilter: RadarFilterActType;
-  enabledSections: RadarSectionKey[];
-  isOpen: boolean;
-  onClose: () => void;
-  onReset: () => void;
-  onSelectActType: (value: RadarFilterActType) => void;
-  onSelectStatus: (value: RadarFilterStatus) => void;
-  onToggleSection: (value: RadarSectionKey) => void;
-  statusFilter: RadarFilterStatus;
-  styles: ReturnType<typeof createStyles>;
-}) {
-  return (
-    <Modal
-      animationType="fade"
-      onRequestClose={onClose}
-      presentationStyle="overFullScreen"
-      testID="radar-filter-sheet"
-      transparent
-      visible={isOpen}
-    >
-      <View style={styles.filterOverlay}>
-        <Pressable style={styles.filterBackdrop} onPress={onClose} />
-        <View style={styles.filterSheet}>
-          <View style={styles.sectionHeader}>
-            <Text accessibilityRole="header" style={styles.sectionTitle}>레이더 필터</Text>
-          </View>
-          <Text style={styles.filterHelper}>
-            레이더 의미를 바꾸지 않는 범위에서만 상태와 act type, 섹션 표시를 조정합니다.
-          </Text>
-
-          <View style={styles.filterGroup}>
-            <Text style={styles.filterGroupTitle}>상태</Text>
-            <View style={styles.filterChipRow}>
-              {(['all', 'scheduled', 'confirmed', 'changed'] as RadarFilterStatus[]).map((option) => (
-                <FilterChip
-                  key={option}
-                  active={statusFilter === option}
-                  label={
-                    option === 'all'
-                      ? '전체'
-                      : option === 'scheduled'
-                        ? '예정'
-                        : option === 'confirmed'
-                          ? '확정'
-                          : '변경'
-                  }
-                  onPress={() => onSelectStatus(option)}
-                  styles={styles}
-                  testID={`radar-filter-status-${option}`}
-                />
-              ))}
-            </View>
-          </View>
-
-          <View style={styles.filterGroup}>
-            <Text style={styles.filterGroupTitle}>act type</Text>
-            <View style={styles.filterChipRow}>
-              {(['all', 'group', 'solo', 'unit'] as RadarFilterActType[]).map((option) => (
-                <FilterChip
-                  key={option}
-                  active={actTypeFilter === option}
-                  label={
-                    option === 'all'
-                      ? '전체'
-                      : option === 'group'
-                        ? '그룹'
-                        : option === 'solo'
-                          ? '솔로'
-                          : '유닛'
-                  }
-                  onPress={() => onSelectActType(option)}
-                  styles={styles}
-                  testID={`radar-filter-act-${option}`}
-                />
-              ))}
-            </View>
-          </View>
-
-          <View style={styles.filterGroup}>
-            <Text style={styles.filterGroupTitle}>섹션 표시</Text>
-            <View style={styles.filterChipRow}>
-              {([
-                ['weekly', '이번 주 예정'],
-                ['change', '일정 변경'],
-                ['longGap', '장기 공백'],
-                ['rookie', '루키'],
-              ] as [RadarSectionKey, string][]).map(([section, label]) => (
-                <FilterChip
-                  key={section}
-                  active={enabledSections.includes(section)}
-                  label={label}
-                  onPress={() => onToggleSection(section)}
-                  styles={styles}
-                  testID={`radar-filter-section-${section}`}
-                />
-              ))}
-            </View>
-          </View>
-
-          <View style={styles.actionRow}>
-            <ActionButton
-              label="초기화"
-              onPress={onReset}
-              testID="radar-filter-reset"
-              tone="secondary"
-            />
-            <ActionButton
-              label="닫기"
-              onPress={onClose}
-              testID="radar-filter-close"
-            />
-          </View>
-        </View>
-      </View>
-    </Modal>
-  );
-}
-
-function FilterChip({
-  active,
-  label,
-  onPress,
-  styles,
-  testID,
-}: {
-  active: boolean;
-  label: string;
-  onPress: () => void;
-  styles: ReturnType<typeof createStyles>;
-  testID: string;
-}) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityState={{ selected: active }}
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.filterChip,
-        active ? styles.filterChipActive : null,
-        pressed ? styles.buttonPressed : null,
-      ]}
-      testID={testID}
-    >
-      <Text style={active ? styles.filterChipLabelActive : styles.filterChipLabel}>{label}</Text>
-    </Pressable>
   );
 }
 
@@ -1231,69 +1188,6 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     metaActionLabel: {
       color: theme.colors.text.brand,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-    },
-    filterOverlay: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      backgroundColor: theme.colors.surface.overlay,
-    },
-    filterBackdrop: {
-      flex: 1,
-    },
-    filterSheet: {
-      borderTopLeftRadius: theme.radius.card,
-      borderTopRightRadius: theme.radius.card,
-      backgroundColor: theme.colors.surface.elevated,
-      paddingHorizontal: theme.space[24],
-      paddingTop: theme.space[20],
-      paddingBottom: theme.space[32],
-      gap: theme.space[16],
-    },
-    filterHelper: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
-    },
-    filterGroup: {
-      gap: theme.space[8],
-    },
-    filterGroupTitle: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.cardTitle.fontSize,
-      lineHeight: theme.typography.cardTitle.lineHeight,
-      fontWeight: theme.typography.cardTitle.fontWeight,
-    },
-    filterChipRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      gap: theme.space[8],
-    },
-    filterChip: {
-      minHeight: 40,
-      borderRadius: theme.radius.chip,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      backgroundColor: theme.colors.surface.base,
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[8],
-      justifyContent: 'center',
-    },
-    filterChipActive: {
-      backgroundColor: theme.colors.text.brand,
-      borderColor: theme.colors.text.brand,
-    },
-    filterChipLabel: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-    },
-    filterChipLabelActive: {
-      color: theme.colors.surface.base,
       fontSize: theme.typography.meta.fontSize,
       lineHeight: theme.typography.meta.lineHeight,
       fontWeight: theme.typography.meta.fontWeight,

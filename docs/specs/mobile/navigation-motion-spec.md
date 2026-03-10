@@ -52,6 +52,7 @@
 - Date Detail Sheet empty 상태 높이: 화면의 약 45%
 - Filter Sheet 기본 높이: 화면의 약 62%
 - Language/Settings Sheet 기본 높이: 화면의 약 40~45%
+- Date Detail Sheet와 Filter Sheet는 shared bottom-sheet frame을 사용한다.
 - sheet가 완전히 닫히기 전까지 underlying 화면 스크롤은 잠근다.
 
 ## 5. 화면 간 이동 계약

@@ -19,8 +19,8 @@ import type { MobileTheme } from '../../tokens/theme';
 export interface ReleaseSummaryRowProps {
   chips?: { key: string; label: string }[];
   date: string;
-  primaryAction?: { label: string; onPress: () => void };
-  secondaryAction?: { label: string; onPress: () => void };
+  primaryAction?: { label: string; onPress: () => void; testID?: string };
+  secondaryAction?: { label: string; onPress: () => void; testID?: string };
   serviceButtons?: ServiceButtonGroupItem[];
   sourceLinks?: SourceLinkRowItem[];
   team: TeamIdentityRowProps;
