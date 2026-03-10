@@ -1,7 +1,7 @@
 import { getRuntimeConfig, type MobileRuntimeConfig } from '../config/runtime';
 
 export type DatasetContractId = 'idol-song-mobile-static-v1';
-export type DatasetSourceKind = 'bundled-static';
+export type DatasetSourceKind = 'bundled-static' | 'backend-api';
 export type DatasetArtifactId =
   | 'artistProfiles'
   | 'releases'
@@ -31,10 +31,18 @@ type DatasetSelectionBase = {
 
 export type BundledDatasetSelection = DatasetSelectionBase & {
   kind: 'bundled-static';
-  reason: 'profile_default' | 'backend_api_mode' | 'runtime_degraded';
+  reason: 'profile_default' | 'backend_primary_fallback' | 'runtime_degraded';
   bundledBasePath: string;
 };
-export type DatasetSelection = BundledDatasetSelection;
+
+export type BackendDatasetSelection = DatasetSelectionBase & {
+  kind: 'backend-api';
+  reason: 'profile_default';
+  apiBaseUrl: string;
+  bundledFallbackBasePath: string;
+};
+
+export type DatasetSelection = BundledDatasetSelection | BackendDatasetSelection;
 
 export const DATASET_CONTRACT_ID: DatasetContractId = 'idol-song-mobile-static-v1';
 export const BUNDLED_DATASET_BASE_PATH = 'mobile/assets/datasets/v1';
@@ -107,15 +115,39 @@ export function createBundledDatasetSelection(
   };
 }
 
+export function createBackendDatasetSelection(
+  datasetVersion: string | null,
+  apiBaseUrl: string,
+): BackendDatasetSelection {
+  return {
+    kind: 'backend-api',
+    reason: 'profile_default',
+    contractId: DATASET_CONTRACT_ID,
+    datasetVersion,
+    mixingAllowed: false,
+    apiBaseUrl,
+    bundledFallbackBasePath: BUNDLED_DATASET_BASE_PATH,
+    artifacts: DATASET_ARTIFACTS,
+  };
+}
+
 export function selectDatasetSource(
   runtimeConfig: MobileRuntimeConfig = getRuntimeConfig(),
 ): DatasetSelection {
-  return createBundledDatasetSelection(
-    runtimeConfig.dataSource.datasetVersion,
-    runtimeConfig.dataSource.mode === 'backend-api' ? 'backend_api_mode' : 'profile_default',
-  );
+  if (runtimeConfig.dataSource.mode === 'backend-api' && runtimeConfig.services.apiBaseUrl) {
+    return createBackendDatasetSelection(
+      runtimeConfig.dataSource.datasetVersion,
+      runtimeConfig.services.apiBaseUrl,
+    );
+  }
+
+  return createBundledDatasetSelection(runtimeConfig.dataSource.datasetVersion, 'profile_default');
 }
 
 export function isBundledDatasetSelection(selection: DatasetSelection): selection is BundledDatasetSelection {
   return selection.kind === 'bundled-static';
+}
+
+export function isBackendDatasetSelection(selection: DatasetSelection): selection is BackendDatasetSelection {
+  return selection.kind === 'backend-api';
 }

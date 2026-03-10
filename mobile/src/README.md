@@ -20,9 +20,9 @@
   - `index.ts`: shared selectors entrypoint
     - team / entity detail / release detail selector 외에 calendar month snapshot / radar snapshot / search result selector 포함
 - `services/`: data source / external handoff / helper
-  - `datasetSource.ts`: bundled-static vs preview-remote source selector
-  - `activeDataset.ts`: runtime selection을 실제 dataset payload로 로드하는 entrypoint
-  - `datasetFailurePolicy.ts`: remote unavailable / misconfig degraded-mode fallback policy
+  - `datasetSource.ts`: backend-primary runtime selection + bundled fallback descriptor
+  - `activeDataset.ts`: selector fallback용 bundled dataset payload loader
+  - `datasetFailurePolicy.ts`: backend-primary runtime / degraded fallback policy
   - `storage.ts`: `AsyncStorage` adapter + namespaced key/value helper
   - `datasetCache.ts`: static dataset artifact cache entry helper
   - `recentQueries.ts`: recent-query persistence helper
@@ -66,5 +66,6 @@ feedback state 관련 규칙:
 failure-policy 관련 규칙:
 
 - runtime config parse failure는 crash 대신 degraded state로 내려간다.
-- preview remote dataset failure는 `datasetFailurePolicy.ts`에서 `preview-remote-cache` 또는 `bundled-static` fallback으로 resolve한다.
+- preview / production은 `backend-api`를 primary runtime source로 간주한다.
+- bundled static dataset은 development 기본값이거나, backend failure/degraded state에서만 explicit fallback으로 사용한다.
 - later UI는 `mode = normal | degraded`와 issue list를 직접 소비할 수 있어야 한다.

@@ -19,7 +19,7 @@ export type DatasetFailurePolicyIssue = {
 
 export type DatasetFailurePolicy = {
   mode: 'normal' | 'degraded';
-  activeSource: 'bundled-static';
+  activeSource: DatasetSelection['kind'];
   selection: DatasetSelection;
   issues: DatasetFailurePolicyIssue[];
 };
@@ -52,7 +52,7 @@ export async function resolveDatasetFailurePolicy(options: {
   const selection = options.selection ?? selectDatasetSource(runtimeState.config);
   return {
     mode: 'normal',
-    activeSource: 'bundled-static',
+    activeSource: selection.kind,
     selection,
     issues: [],
   };
