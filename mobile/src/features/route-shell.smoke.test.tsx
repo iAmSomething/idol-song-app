@@ -56,7 +56,13 @@ jest.mock('../features/useActiveDatasetScreen', () => {
     useActiveDatasetScreen: jest.fn(() => ({
       kind: 'ready',
       source: {
+        activeSource: 'bundled-static',
+        cachedArtifactIds: [],
         dataset: cloneBundledDatasetFixture(),
+        freshness: {
+          rollingReferenceAt: null,
+          staleFreshnessClasses: [],
+        },
         selection: createBundledDatasetSelection('fixture-v1', 'profile_default'),
         runtimeState: {
           mode: 'normal',

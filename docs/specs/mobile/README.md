@@ -96,12 +96,18 @@
    - RN 구현 중복/신뢰도 경로 감사 기록
 45. `rn-quality-coverage-matrix.md`
    - 공용 컴포넌트 / screen smoke / manual QA coverage matrix
+46. `rn-screen-structure-validation-2026-03-10.md`
+   - RN 주요 화면의 wireframe/checklist 구조 검증 기록
+47. `rn-journey-walkthrough-2026-03-10.md`
+   - RN 핵심 user journey walkthrough 결과
+48. `rn-freshness-review-2026-03-10.md`
+   - RN freshness/stale disclosure 리뷰 기록
 ### Screen Specs
-46. `calendar-screen.md`
-47. `radar-screen.md`
-48. `search-screen.md`
-49. `team-detail-screen.md`
-50. `release-detail-screen.md`
+49. `calendar-screen.md`
+50. `radar-screen.md`
+51. `search-screen.md`
+52. `team-detail-screen.md`
+53. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -146,9 +152,12 @@
 40. `decision-log-review-checklist.md`
 41. `rn-implementation-audit-2026-03-10.md`
 42. `rn-quality-coverage-matrix.md`
-43. 각 화면 스펙
-44. `edge-case-catalog.md`
-45. `qa-acceptance-spec.md`
+43. `rn-screen-structure-validation-2026-03-10.md`
+44. `rn-journey-walkthrough-2026-03-10.md`
+45. `rn-freshness-review-2026-03-10.md`
+46. 각 화면 스펙
+47. `edge-case-catalog.md`
+48. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.

@@ -124,10 +124,12 @@ export type YoutubeChannelAllowlistRaw = {
 export type MobileRawDataset = {
   artistProfiles: ArtistProfileRaw[];
   releases: ReleaseStreamCollectionRaw[];
+  watchlist?: unknown[] | null;
   upcomingCandidates: UpcomingCandidateRaw[];
   radarChangeFeed?: RadarChangeFeedRaw[] | null;
   releaseArtwork: ReleaseArtworkRaw[];
   releaseDetails: ReleaseDetailRaw[];
   releaseHistory: ReleaseHistoryGroupRaw[];
   youtubeChannelAllowlists: YoutubeChannelAllowlistRaw[];
+  teamBadgeAssets?: unknown[] | null;
 };

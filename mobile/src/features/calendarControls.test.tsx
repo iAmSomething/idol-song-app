@@ -56,6 +56,22 @@ function hasText(tree: renderer.ReactTestRenderer, value: string): boolean {
   return tree.root.findAllByType(Text).some((node) => node.props.children === value);
 }
 
+function hasTextContaining(tree: renderer.ReactTestRenderer, value: string): boolean {
+  return tree.root.findAllByType(Text).some((node) => {
+    const children = node.props.children;
+
+    if (typeof children === 'string') {
+      return children.includes(value);
+    }
+
+    if (Array.isArray(children)) {
+      return children.join('').includes(value);
+    }
+
+    return false;
+  });
+}
+
 describe('calendar controls', () => {
   beforeEach(() => {
     jest.useFakeTimers();
@@ -161,5 +177,23 @@ describe('calendar controls', () => {
         filterMode: 'upcoming',
       }),
     );
+  });
+
+  test('switches to list view and keeps the same day drill-in contract', async () => {
+    const tree = await renderCalendarScreen();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'calendar-view-list' }).props.onPress();
+    });
+
+    expect(tree.root.findByProps({ testID: 'calendar-list-row-2026-03-11' })).toBeDefined();
+    expect(hasTextContaining(tree, '발매 1 · 예정 0')).toBe(true);
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'calendar-list-row-2026-03-11' }).props.onPress();
+    });
+
+    expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
+    expect(hasText(tree, '2026년 3월 11일')).toBe(true);
   });
 });

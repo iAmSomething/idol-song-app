@@ -10,7 +10,9 @@ export type DatasetArtifactId =
   | 'releaseHistory'
   | 'watchlist'
   | 'upcomingCandidates'
-  | 'teamBadgeAssets';
+  | 'teamBadgeAssets'
+  | 'youtubeChannelAllowlists'
+  | 'radarChangeFeed';
 export type DatasetFreshnessClass = 'stable-profile' | 'rolling-release' | 'rolling-upcoming';
 
 export type DatasetArtifactDescriptor = {
@@ -84,6 +86,16 @@ export const DATASET_ARTIFACTS: DatasetArtifactDescriptor[] = [
     id: 'teamBadgeAssets',
     freshnessClass: 'stable-profile',
     relativePath: 'teamBadgeAssets.json',
+  },
+  {
+    id: 'youtubeChannelAllowlists',
+    freshnessClass: 'stable-profile',
+    relativePath: 'youtubeChannelAllowlists.json',
+  },
+  {
+    id: 'radarChangeFeed',
+    freshnessClass: 'rolling-upcoming',
+    relativePath: 'radarChangeFeed.json',
   },
 ];
 

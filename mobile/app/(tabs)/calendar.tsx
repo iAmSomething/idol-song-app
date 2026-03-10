@@ -28,6 +28,7 @@ import {
   buildCalendarRouteParams,
   resolveCalendarRouteState,
   type CalendarFilterMode,
+  type CalendarViewMode,
 } from '../../src/features/routeState';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import {
@@ -117,6 +118,60 @@ function getSelectedDayCounts(snapshot: CalendarMonthSnapshotModel, isoDate: str
   };
 }
 
+type CalendarListRowModel = {
+  isoDate: string;
+  label: string;
+  releaseCount: number;
+  releaseTitles: string[];
+  upcomingCount: number;
+  upcomingTitles: string[];
+};
+
+function formatDayLabel(isoDate: string): string {
+  const [, month, day] = isoDate.split('-');
+  return `${Number(month)}월 ${Number(day)}일`;
+}
+
+function buildCalendarListRows(snapshot: CalendarMonthSnapshotModel): CalendarListRowModel[] {
+  const rows = new Map<string, CalendarListRowModel>();
+
+  for (const release of snapshot.releases) {
+    const current = rows.get(release.releaseDate) ?? {
+      isoDate: release.releaseDate,
+      label: formatDayLabel(release.releaseDate),
+      releaseCount: 0,
+      releaseTitles: [],
+      upcomingCount: 0,
+      upcomingTitles: [],
+    };
+
+    current.releaseCount += 1;
+    current.releaseTitles.push(release.releaseTitle);
+    rows.set(release.releaseDate, current);
+  }
+
+  for (const event of snapshot.exactUpcoming) {
+    if (!event.scheduledDate) {
+      continue;
+    }
+
+    const current = rows.get(event.scheduledDate) ?? {
+      isoDate: event.scheduledDate,
+      label: formatDayLabel(event.scheduledDate),
+      releaseCount: 0,
+      releaseTitles: [],
+      upcomingCount: 0,
+      upcomingTitles: [],
+    };
+
+    current.upcomingCount += 1;
+    current.upcomingTitles.push(event.releaseLabel ?? event.headline);
+    rows.set(event.scheduledDate, current);
+  }
+
+  return Array.from(rows.values()).sort((left, right) => left.isoDate.localeCompare(right.isoDate));
+}
+
 export default function CalendarTabScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{
@@ -124,6 +179,7 @@ export default function CalendarTabScreen() {
     filter?: string | string[];
     month?: string | string[];
     sheet?: string | string[];
+    view?: string | string[];
   }>();
   const theme = useAppTheme();
   const [reloadCount, setReloadCount] = useState(0);
@@ -138,6 +194,7 @@ export default function CalendarTabScreen() {
   const [filterMode, setFilterMode] = useState<CalendarFilterMode>(routeState.filterMode);
   const [selectedDayIso, setSelectedDayIso] = useState<string | null>(routeState.selectedDayIso);
   const [isSheetOpen, setIsSheetOpen] = useState(routeState.isSheetOpen);
+  const [viewMode, setViewMode] = useState<CalendarViewMode>(routeState.viewMode);
   const datasetState = useActiveDatasetScreen({
     surface: 'calendar',
     reloadKey: reloadCount,
@@ -150,11 +207,13 @@ export default function CalendarTabScreen() {
     setFilterMode(routeState.filterMode);
     setSelectedDayIso(routeState.selectedDayIso);
     setIsSheetOpen(routeState.isSheetOpen);
+    setViewMode(routeState.viewMode);
   }, [
     routeState.activeMonth,
     routeState.filterMode,
     routeState.isSheetOpen,
     routeState.selectedDayIso,
+    routeState.viewMode,
   ]);
 
   const source = datasetState.kind === 'ready' ? datasetState.source : null;
@@ -213,6 +272,10 @@ export default function CalendarTabScreen() {
   }, [filteredSnapshot, selectedDayIso, todayIsoDate]);
 
   const selectedDay = monthGrid?.selectedDay ?? null;
+  const listRows = useMemo(
+    () => (filteredSnapshot ? buildCalendarListRows(filteredSnapshot) : []),
+    [filteredSnapshot],
+  );
 
   useEffect(() => {
     const currentRouteParams = buildCalendarRouteParams({
@@ -221,6 +284,7 @@ export default function CalendarTabScreen() {
       filterMode: routeState.filterMode,
       isSheetOpen: routeState.isSheetOpen,
       selectedDayIso: routeState.selectedDayIso,
+      viewMode: routeState.viewMode,
     });
     const nextRouteParams = buildCalendarRouteParams({
       activeMonth,
@@ -228,6 +292,7 @@ export default function CalendarTabScreen() {
       filterMode,
       isSheetOpen,
       selectedDayIso,
+      viewMode,
     });
 
     if (areRouteParamsEqual(currentRouteParams, nextRouteParams)) {
@@ -244,8 +309,10 @@ export default function CalendarTabScreen() {
     routeState.filterMode,
     routeState.isSheetOpen,
     routeState.selectedDayIso,
+    routeState.viewMode,
     router,
     selectedDayIso,
+    viewMode,
   ]);
 
   function jumpToMonth(month: string, isoDate: string) {
@@ -353,6 +420,14 @@ export default function CalendarTabScreen() {
       month: filteredSnapshot.month,
     });
     setFilterMode(nextFilterMode);
+  }
+
+  function handleViewChange(nextViewMode: CalendarViewMode) {
+    if (viewMode === nextViewMode) {
+      return;
+    }
+
+    setViewMode(nextViewMode);
   }
 
   if (datasetState.kind === 'loading') {
@@ -480,21 +555,41 @@ export default function CalendarTabScreen() {
         </View>
 
         <View style={styles.sectionCard}>
-          <View style={styles.calendarHeader}>
-            <Text accessibilityRole="header" style={styles.sectionTitle}>Filters</Text>
-            <Text style={styles.sectionMeta}>{formatFilterLabel(filterMode)}</Text>
-          </View>
+          <View style={styles.controlsBlock}>
+            <View style={styles.controlSection}>
+              <View style={styles.calendarHeader}>
+                <Text accessibilityRole="header" style={styles.sectionTitle}>View</Text>
+                <Text style={styles.sectionMeta}>{viewMode === 'calendar' ? 'Calendar' : 'List'}</Text>
+              </View>
+              <SegmentedControl
+                items={[
+                  { key: 'calendar', label: 'Calendar' },
+                  { key: 'list', label: 'List' },
+                ]}
+                onChange={(key) => handleViewChange(key as CalendarViewMode)}
+                selectedKey={viewMode}
+                testID="calendar-view"
+              />
+            </View>
 
-          <SegmentedControl
-            items={[
-              { key: 'all', label: '전체' },
-              { key: 'releases', label: '발매' },
-              { key: 'upcoming', label: '예정' },
-            ]}
-            onChange={(key) => handleFilterChange(key as CalendarFilterMode)}
-            selectedKey={filterMode}
-            testID="calendar-filter"
-          />
+            <View style={styles.controlSection}>
+              <View style={styles.calendarHeader}>
+                <Text accessibilityRole="header" style={styles.sectionTitle}>Filters</Text>
+                <Text style={styles.sectionMeta}>{formatFilterLabel(filterMode)}</Text>
+              </View>
+
+              <SegmentedControl
+                items={[
+                  { key: 'all', label: '전체' },
+                  { key: 'releases', label: '발매' },
+                  { key: 'upcoming', label: '예정' },
+                ]}
+                onChange={(key) => handleFilterChange(key as CalendarFilterMode)}
+                selectedKey={filterMode}
+                testID="calendar-filter"
+              />
+            </View>
+          </View>
         </View>
 
         <SummaryStrip
@@ -511,7 +606,7 @@ export default function CalendarTabScreen() {
           testID="calendar-summary-strip"
         />
 
-        {monthGrid ? (
+        {viewMode === 'calendar' && monthGrid ? (
           <View style={styles.sectionCard}>
             <View style={styles.calendarHeader}>
               <Text accessibilityRole="header" style={styles.sectionTitle}>Calendar grid</Text>
@@ -566,6 +661,56 @@ export default function CalendarTabScreen() {
                 body={`현재 dataset source에는 ${formatMonthLabel(filteredSnapshot.month)} 기준 발매나 예정 컴백이 없습니다.`}
               />
             ) : null}
+          </View>
+        ) : null}
+
+        {viewMode === 'list' ? (
+          <View style={styles.sectionCard}>
+            <View style={styles.calendarHeader}>
+              <Text accessibilityRole="header" style={styles.sectionTitle}>List view</Text>
+              <Text style={styles.sectionMeta}>{listRows.length}일</Text>
+            </View>
+            {listRows.length > 0 ? (
+              <View style={styles.listRows}>
+                {listRows.map((row) => (
+                  <Pressable
+                    key={row.isoDate}
+                    accessibilityHint="이 날짜의 발매와 예정 상세를 엽니다."
+                    accessibilityLabel={`${row.label} 상세 열기`}
+                    accessibilityRole="button"
+                    onPress={() => openDaySheet(row.isoDate)}
+                    style={({ pressed }) => [
+                      styles.listRowCard,
+                      pressed ? styles.buttonPressed : null,
+                    ]}
+                    testID={`calendar-list-row-${row.isoDate}`}
+                  >
+                    <View style={styles.listRowHeader}>
+                      <Text style={styles.listRowTitle}>{row.label}</Text>
+                      <Text style={styles.listRowMeta}>
+                        발매 {row.releaseCount} · 예정 {row.upcomingCount}
+                      </Text>
+                    </View>
+                    {row.releaseTitles.length > 0 ? (
+                      <Text style={styles.listRowBody}>
+                        발매: {row.releaseTitles.slice(0, 2).join(', ')}
+                        {row.releaseTitles.length > 2 ? ` 외 ${row.releaseTitles.length - 2}건` : ''}
+                      </Text>
+                    ) : null}
+                    {row.upcomingTitles.length > 0 ? (
+                      <Text style={styles.listRowBody}>
+                        예정: {row.upcomingTitles.slice(0, 2).join(', ')}
+                        {row.upcomingTitles.length > 2 ? ` 외 ${row.upcomingTitles.length - 2}건` : ''}
+                      </Text>
+                    ) : null}
+                  </Pressable>
+                ))}
+              </View>
+            ) : (
+              <InlineFeedbackNotice
+                body={`현재 dataset source에는 ${formatMonthLabel(filteredSnapshot.month)} 기준 발매나 예정 컴백이 없습니다.`}
+              />
+            )}
           </View>
         ) : null}
 
@@ -705,6 +850,44 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       lineHeight: theme.typography.meta.lineHeight,
       fontWeight: theme.typography.meta.fontWeight,
     },
+    listRows: {
+      gap: theme.space[12],
+    },
+    listRowCard: {
+      gap: theme.space[8],
+      padding: theme.space[12],
+      borderRadius: theme.radius.card,
+      borderWidth: 1,
+      borderColor: theme.colors.border.subtle,
+      backgroundColor: theme.colors.surface.elevated,
+      minHeight: 72,
+    },
+    listRowHeader: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      gap: theme.space[12],
+    },
+    listRowTitle: {
+      flex: 1,
+      color: theme.colors.text.primary,
+      fontSize: theme.typography.cardTitle.fontSize,
+      lineHeight: theme.typography.cardTitle.lineHeight,
+      fontWeight: theme.typography.cardTitle.fontWeight,
+    },
+    listRowMeta: {
+      color: theme.colors.text.tertiary,
+      fontSize: theme.typography.meta.fontSize,
+      lineHeight: theme.typography.meta.lineHeight,
+      fontWeight: theme.typography.meta.fontWeight,
+      textAlign: 'right',
+    },
+    listRowBody: {
+      color: theme.colors.text.secondary,
+      fontSize: theme.typography.body.fontSize,
+      lineHeight: theme.typography.body.lineHeight,
+      fontWeight: theme.typography.body.fontWeight,
+    },
     sourceCard: {
       borderRadius: theme.radius.card,
       borderWidth: 1,
@@ -734,6 +917,12 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     summaryGrid: {
       gap: theme.space[12],
+    },
+    controlsBlock: {
+      gap: theme.space[16],
+    },
+    controlSection: {
+      gap: theme.space[8],
     },
     summaryCard: {
       borderRadius: theme.radius.card,
@@ -866,6 +1055,9 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     buttonDisabled: {
       opacity: 0.4,
+    },
+    buttonPressed: {
+      opacity: 0.84,
     },
     retryButton: {
       alignSelf: 'flex-start',

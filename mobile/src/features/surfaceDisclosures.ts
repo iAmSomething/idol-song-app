@@ -7,6 +7,19 @@ export type SurfaceDisclosure = {
   testID: string;
 };
 
+function formatCachedAt(value: string | null): string | null {
+  if (!value) {
+    return null;
+  }
+
+  const [date, time] = value.split('T');
+  if (!date || !time) {
+    return value;
+  }
+
+  return `${date} ${time.slice(0, 5)}`;
+}
+
 function summarizeIssues(issues: string[]): string {
   if (issues.length === 0) {
     return 'runtime 이슈는 없지만 최신 동기화 상태를 다시 확인해 주세요.';
@@ -16,7 +29,10 @@ function summarizeIssues(issues: string[]): string {
 }
 
 export function buildDatasetRiskDisclosure(
-  source: Pick<ActiveMobileDataset, 'issues' | 'sourceLabel'> & {
+  source: Pick<
+    ActiveMobileDataset,
+    'activeSource' | 'freshness' | 'issues' | 'sourceLabel'
+  > & {
     runtimeState: Pick<ActiveMobileDataset['runtimeState'], 'mode'>;
   },
   surfaceLabel: string,
@@ -26,9 +42,16 @@ export function buildDatasetRiskDisclosure(
     return null;
   }
 
+  const freshnessNote =
+    source.activeSource === 'preview-remote-cache'
+      ? source.freshness.rollingReferenceAt
+        ? `발매/예정 데이터는 ${formatCachedAt(source.freshness.rollingReferenceAt)}에 저장된 캐시 기준입니다.`
+        : '발매/예정 데이터는 마지막으로 저장된 캐시 기준입니다.'
+      : '프로필/아트워크보다 발매·예정 데이터가 더 빨리 오래될 수 있습니다.';
+
   return {
     title: '데이터 최신화 유의',
-    body: `${surfaceLabel} 화면은 현재 ${source.sourceLabel} 기준으로 유지되고 있습니다. ${summarizeIssues(source.issues)} 일부 정보는 늦게 채워지거나 최소 정보만 표시될 수 있습니다.`,
+    body: `${surfaceLabel} 화면은 현재 ${source.sourceLabel} 기준으로 유지되고 있습니다. ${freshnessNote} ${summarizeIssues(source.issues)} 일부 정보는 늦게 채워지거나 최소 정보만 표시될 수 있습니다.`,
     testID,
   };
 }

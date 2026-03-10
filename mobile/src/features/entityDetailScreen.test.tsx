@@ -69,6 +69,8 @@ describe('mobile entity detail screen', () => {
     __mock.useLocalSearchParams.mockReturnValue({ slug: 'yena' });
     const tree = await renderArtistDetail();
 
+    expect(tree.root.findByProps({ testID: 'entity-detail-app-bar' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'entity-detail-back' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-detail-title' }).props.children).toBe('YENA');
     expect(tree.root.findByProps({ testID: 'entity-official-link-x' }).props.accessibilityLabel).toBe(
       'YENA 공식 X 열기',

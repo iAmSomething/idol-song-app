@@ -18,6 +18,7 @@ import {
   ServiceButtonGroup,
   type ServiceButtonGroupItem,
 } from '../../src/components/actions/ServiceButtonGroup';
+import { AppBar } from '../../src/components/layout/AppBar';
 import {
   buildDatasetRiskDisclosure,
   buildEntitySourceDisclosure,
@@ -347,17 +348,18 @@ export default function ArtistDetailScreen() {
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Stack.Screen options={{ title: snapshot.team.displayName }} />
 
-      <View style={styles.appBar}>
-        <Pressable
-          accessibilityHint="이전 화면으로 돌아갑니다."
-          accessibilityLabel="뒤로 가기"
-          accessibilityRole="button"
-          onPress={() => router.back()}
-          style={({ pressed }) => [styles.backButton, pressed ? styles.buttonPressed : null]}
-        >
-          <Text style={styles.backButtonLabel}>뒤로</Text>
-        </Pressable>
-      </View>
+      <AppBar
+        leadingAction={{
+          accessibilityHint: '이전 화면으로 돌아갑니다.',
+          accessibilityLabel: '뒤로 가기',
+          label: '뒤로',
+          onPress: () => router.back(),
+          testID: 'entity-detail-back',
+        }}
+        subtitle="팀 페이지"
+        testID="entity-detail-app-bar"
+        title={snapshot.team.displayName}
+      />
 
       <View style={styles.heroBlock}>
         <View style={styles.heroCard}>
@@ -671,28 +673,6 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       paddingTop: theme.space[16],
       paddingBottom: theme.space[32],
       gap: theme.space[16],
-    },
-    appBar: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-    },
-    backButton: {
-      minHeight: 44,
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[8],
-      borderRadius: theme.radius.button,
-      backgroundColor: theme.colors.surface.interactive,
-      borderWidth: StyleSheet.hairlineWidth,
-      borderColor: theme.colors.border.default,
-    },
-    backButtonLabel: {
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: '600',
-      color: theme.colors.text.primary,
-      flexShrink: 1,
-      textAlign: 'center',
     },
     heroBlock: {
       gap: theme.space[12],

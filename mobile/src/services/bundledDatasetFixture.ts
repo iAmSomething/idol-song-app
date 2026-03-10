@@ -156,6 +156,7 @@ const bundledDatasetFixture: MobileRawDataset = {
       },
     },
   ],
+  watchlist: [],
   upcomingCandidates: [
     {
       group: 'YENA',
@@ -489,6 +490,7 @@ const bundledDatasetFixture: MobileRawDataset = {
       ],
     },
   ],
+  teamBadgeAssets: [],
 };
 
 export const BUNDLED_DATASET_FIXTURE = bundledDatasetFixture;

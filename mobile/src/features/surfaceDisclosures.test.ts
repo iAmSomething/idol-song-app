@@ -9,6 +9,11 @@ describe('surface disclosure helpers', () => {
     expect(
       buildDatasetRiskDisclosure(
         {
+          activeSource: 'bundled-static',
+          freshness: {
+            rollingReferenceAt: null,
+            staleFreshnessClasses: [],
+          },
           sourceLabel: 'Bundled static dataset',
           runtimeState: { mode: 'normal' },
           issues: [],
@@ -21,6 +26,11 @@ describe('surface disclosure helpers', () => {
     expect(
       buildDatasetRiskDisclosure(
         {
+          activeSource: 'preview-remote-cache',
+          freshness: {
+            rollingReferenceAt: '2026-03-10T00:00:00.000Z',
+            staleFreshnessClasses: ['rolling-release', 'rolling-upcoming'],
+          },
           sourceLabel: 'Bundled static dataset',
           runtimeState: { mode: 'degraded' },
           issues: ['Preview remote dataset is unavailable.'],
