@@ -14,19 +14,19 @@ import type {
 } from '../../types';
 
 function formatAccessibleDateLabel(isoDate: string): string {
-  const [year, month, day] = isoDate.split('-');
-  return `${year}년 ${Number(month)}월 ${Number(day)}일`;
+  const [, month, day] = isoDate.split('-');
+  return `${Number(month)}월 ${Number(day)}일`;
 }
 
 function buildCalendarDayAccessibilityLabel(cell: CalendarDayCellModel): string {
   const segments = [formatAccessibleDateLabel(cell.isoDate)];
 
-  if (cell.releaseCount > 0) {
-    segments.push(`검증된 발매 ${cell.releaseCount}건`);
+  if (cell.upcomingCount > 0) {
+    segments.push(`예정 ${cell.upcomingCount}건`);
   }
 
-  if (cell.upcomingCount > 0) {
-    segments.push(`예정 컴백 ${cell.upcomingCount}건`);
+  if (cell.releaseCount > 0) {
+    segments.push(`확정 발매 ${cell.releaseCount}건`);
   }
 
   if (cell.overflowCount > 0) {
@@ -127,11 +127,6 @@ function DayCellComponent({
         >
           {cell.dayNumber}
         </Text>
-        {cell.releaseCount > 0 || cell.upcomingCount > 0 ? (
-          <Text allowFontScaling style={styles.dayCounts}>
-            {cell.releaseCount}/{cell.upcomingCount}
-          </Text>
-        ) : null}
       </View>
 
       <View style={styles.badgeStack}>
@@ -189,9 +184,6 @@ function createStyles(theme: MobileTheme) {
       opacity: 0.42,
     },
     dayCellHeader: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      gap: theme.space[8],
       alignItems: 'flex-start',
     },
     dayNumber: {
@@ -201,11 +193,6 @@ function createStyles(theme: MobileTheme) {
     },
     dayNumberSelected: {
       color: theme.colors.text.brand,
-    },
-    dayCounts: {
-      ...theme.typography.meta,
-      color: theme.colors.text.secondary,
-      textAlign: 'right',
     },
     badgeStack: {
       flexDirection: 'row',

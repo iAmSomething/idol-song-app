@@ -3,7 +3,6 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import { DateDetailSheet } from './DateDetailSheet';
-import type { ReleaseSummaryModel, UpcomingEventModel } from '../../types';
 
 function hasText(tree: renderer.ReactTestRenderer, value: string): boolean {
   return tree.root.findAllByType(Text).some((node) => node.props.children === value);
@@ -14,31 +13,6 @@ describe('DateDetailSheet', () => {
     const onClose = jest.fn();
     const onPressRelease = jest.fn();
     const onPressTeam = jest.fn();
-    const scheduledRows: UpcomingEventModel[] = [
-      {
-        confidence: 'high',
-        datePrecision: 'exact',
-        displayGroup: 'YENA',
-        group: 'YENA',
-        headline: 'YENA confirms a March 11 comeback',
-        id: 'yena-upcoming',
-        releaseLabel: 'LOVE CATCHER',
-        scheduledDate: '2026-03-11',
-        sourceType: 'official_social',
-        status: 'confirmed',
-      },
-    ];
-    const verifiedRows: ReleaseSummaryModel[] = [
-      {
-        contextTags: [],
-        displayGroup: 'YENA',
-        group: 'YENA',
-        id: 'release-yena',
-        releaseDate: '2026-03-11',
-        releaseKind: 'mini',
-        releaseTitle: 'LOVE CATCHER',
-      },
-    ];
     let tree: renderer.ReactTestRenderer;
 
     await act(async () => {
@@ -46,19 +20,52 @@ describe('DateDetailSheet', () => {
         <DateDetailSheet
           isOpen
           onClose={onClose}
-          onPressRelease={onPressRelease}
-          onPressTeam={onPressTeam}
-          scheduledRows={scheduledRows}
-          summary="2026년 3월"
-          title="2026년 3월 11일"
-          verifiedRows={verifiedRows}
+          scheduledRows={[
+            {
+              confidenceChip: '신뢰 높음',
+              headline: 'LOVE CATCHER',
+              primaryAction: {
+                label: '팀 페이지',
+                onPress: onPressTeam,
+              },
+              scheduledDate: '2026년 3월 11일',
+              statusChip: '확정',
+              team: {
+                monogram: 'YE',
+                name: 'YENA',
+              },
+            },
+          ]}
+          summary="발매 1 · 예정 1"
+          title="3월 11일 발매/컴백"
+          verifiedRows={[
+            {
+              chips: [{ key: 'kind', label: 'MINI' }],
+              date: '2026년 3월 11일',
+              primaryAction: {
+                label: '팀 페이지',
+                onPress: onPressTeam,
+              },
+              secondaryAction: {
+                label: '상세 보기',
+                onPress: onPressRelease,
+              },
+              team: {
+                monogram: 'YE',
+                name: 'YENA',
+              },
+              title: 'LOVE CATCHER',
+            },
+          ]}
         />,
       );
     });
 
     expect(tree!.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
     expect(hasText(tree!, 'LOVE CATCHER')).toBe(true);
-    expect(hasText(tree!, '2026년 3월 11일')).toBe(true);
+    expect(hasText(tree!, '3월 11일 발매/컴백')).toBe(true);
+    expect(hasText(tree!, 'Verified releases')).toBe(true);
+    expect(hasText(tree!, 'Scheduled comebacks')).toBe(true);
 
     await act(async () => {
       tree!.root.findByProps({ accessibilityLabel: '시트 닫기' }).props.onPress();

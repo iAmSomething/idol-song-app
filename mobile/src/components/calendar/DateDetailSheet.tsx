@@ -10,52 +10,29 @@ import {
 
 import { EmptyStateBlock } from '../feedback/FeedbackState';
 import { SheetHeader } from '../layout/SheetHeader';
-import { ReleaseSummaryRow } from '../release/ReleaseSummaryRow';
-import { UpcomingEventRow } from '../upcoming/UpcomingEventRow';
+import {
+  ReleaseSummaryRow,
+  type ReleaseSummaryRowProps,
+} from '../release/ReleaseSummaryRow';
+import {
+  UpcomingEventRow,
+  type UpcomingEventRowProps,
+} from '../upcoming/UpcomingEventRow';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
-import type {
-  ReleaseSummaryModel,
-  UpcomingEventModel,
-} from '../../types';
-
-function buildMonogram(value: string): string {
-  return value.slice(0, 2).toUpperCase();
-}
-
-function formatUpcomingLabel(event: UpcomingEventModel): string {
-  if (event.datePrecision === 'exact' && event.scheduledDate) {
-    return event.scheduledDate;
-  }
-
-  if (event.scheduledMonth) {
-    return `${event.scheduledMonth} · 날짜 미정`;
-  }
-
-  return '날짜 미정';
-}
-
-function formatReleaseRowMeta(release: ReleaseSummaryModel): string {
-  const kind = release.releaseKind ?? 'release';
-  return `${release.releaseDate} · ${kind}`;
-}
 
 interface DateDetailSheetProps {
   isOpen: boolean;
   onClose: () => void;
-  onPressRelease: (releaseId: string) => void;
-  onPressTeam: (group: string) => void;
-  scheduledRows: UpcomingEventModel[];
-  summary?: string;
+  scheduledRows: UpcomingEventRowProps[];
+  summary: string;
   title: string;
-  verifiedRows: ReleaseSummaryModel[];
+  verifiedRows: ReleaseSummaryRowProps[];
 }
 
 function DateDetailSheetComponent({
   isOpen,
   onClose,
-  onPressRelease,
-  onPressTeam,
   scheduledRows,
   summary,
   title,
@@ -67,27 +44,24 @@ function DateDetailSheetComponent({
 
   return (
     <Modal
-      transparent
       animationType="slide"
-      visible={isOpen}
       onRequestClose={onClose}
+      transparent
+      visible={isOpen}
     >
       <View style={styles.sheetOverlay}>
         <Pressable
           accessible={false}
-          testID="calendar-sheet-backdrop"
-          style={styles.sheetBackdrop}
           onPress={onClose}
+          style={styles.sheetBackdrop}
+          testID="calendar-sheet-backdrop"
         />
         <View
           accessibilityLabel={`${title} 일정 상세`}
           accessibilityViewIsModal
           accessible
+          style={[styles.sheetPanel, isEmpty ? styles.sheetPanelEmpty : null]}
           testID="calendar-bottom-sheet"
-          style={[
-            styles.sheetPanel,
-            isEmpty ? styles.sheetPanelEmpty : null,
-          ]}
         >
           <SheetHeader
             closeButtonTestID="calendar-sheet-close"
@@ -98,87 +72,39 @@ function DateDetailSheetComponent({
           />
 
           <ScrollView
-            style={styles.sheetScroll}
-            contentContainerStyle={styles.sheetContent}
             bounces={false}
+            contentContainerStyle={styles.sheetContent}
+            showsVerticalScrollIndicator={false}
+            style={styles.sheetScroll}
           >
             {isEmpty ? (
-              <EmptyStateBlock description="이 날짜에는 등록된 일정이 없습니다." message="일정 없음" />
-            ) : (
-              <>
-                {verifiedRows.length ? (
-                  <View style={styles.subsection}>
-                    <Text style={styles.subsectionTitle}>Verified releases</Text>
-                    {verifiedRows.map((release) => (
-                      <ReleaseSummaryRow
-                        key={release.id}
-                        chips={
-                          release.releaseKind
-                            ? [
-                                {
-                                  key: 'kind',
-                                  label: `${release.releaseKind}`.toUpperCase(),
-                                },
-                              ]
-                            : []
-                        }
-                        date={formatReleaseRowMeta(release)}
-                        primaryAction={{
-                          label: '팀 페이지',
-                          onPress: () => onPressTeam(release.group),
-                        }}
-                        secondaryAction={{
-                          label: '상세 보기',
-                          onPress: () => onPressRelease(release.id),
-                        }}
-                        team={{
-                          meta: release.contextTags[0],
-                          monogram: buildMonogram(release.displayGroup),
-                          name: release.displayGroup,
-                        }}
-                        title={release.releaseTitle}
-                      />
-                    ))}
-                  </View>
-                ) : null}
+              <EmptyStateBlock
+                description="이 날짜에는 등록된 일정이 없습니다."
+                message="일정 없음"
+              />
+            ) : null}
 
-                {scheduledRows.length ? (
-                  <View style={styles.subsection}>
-                    <Text style={styles.subsectionTitle}>Scheduled comebacks</Text>
-                    {scheduledRows.map((event) => (
-                      <UpcomingEventRow
-                        key={event.id}
-                        confidenceChip={event.confidence ? `신뢰 ${event.confidence}` : undefined}
-                        headline={event.releaseLabel ?? event.headline}
-                        primaryAction={{
-                          label: '팀 페이지',
-                          onPress: () => onPressTeam(event.group),
-                        }}
-                        scheduledDate={formatUpcomingLabel(event)}
-                        sourceLinks={
-                          event.sourceUrl
-                            ? [
-                                {
-                                  key: `${event.id}-source`,
-                                  label: '출처 보기',
-                                  onPress: () => undefined,
-                                  type: 'source',
-                                  url: event.sourceUrl,
-                                },
-                              ]
-                            : []
-                        }
-                        statusChip={event.status ?? '예정'}
-                        team={{
-                          monogram: buildMonogram(event.displayGroup),
-                          name: event.displayGroup,
-                        }}
-                      />
-                    ))}
-                  </View>
-                ) : null}
-              </>
-            )}
+            {verifiedRows.length > 0 ? (
+              <View style={styles.subsection}>
+                <Text allowFontScaling style={styles.subsectionTitle}>
+                  Verified releases
+                </Text>
+                {verifiedRows.map((row) => (
+                  <ReleaseSummaryRow key={row.testID ?? `${row.team.name}-${row.title}`} {...row} />
+                ))}
+              </View>
+            ) : null}
+
+            {scheduledRows.length > 0 ? (
+              <View style={styles.subsection}>
+                <Text allowFontScaling style={styles.subsectionTitle}>
+                  Scheduled comebacks
+                </Text>
+                {scheduledRows.map((row) => (
+                  <UpcomingEventRow key={row.testID ?? `${row.team.name}-${row.headline}`} {...row} />
+                ))}
+              </View>
+            ) : null}
           </ScrollView>
         </View>
       </View>
@@ -198,23 +124,23 @@ function createStyles(theme: MobileTheme) {
     },
     sheetPanel: {
       maxHeight: '78%',
-      borderTopLeftRadius: theme.radius.sheet,
-      borderTopRightRadius: theme.radius.sheet,
-      backgroundColor: theme.colors.surface.elevated,
+      gap: theme.space[16],
       paddingHorizontal: theme.space[20],
       paddingTop: theme.space[12],
       paddingBottom: theme.space[24],
-      gap: theme.space[16],
+      borderTopLeftRadius: theme.radius.sheet,
+      borderTopRightRadius: theme.radius.sheet,
+      backgroundColor: theme.colors.surface.elevated,
     },
     sheetPanelEmpty: {
-      minHeight: 260,
+      minHeight: '45%',
     },
     sheetScroll: {
       flexGrow: 0,
     },
     sheetContent: {
       gap: theme.space[16],
-      paddingBottom: theme.space[16],
+      paddingBottom: theme.space[8],
     },
     subsection: {
       gap: theme.space[12],

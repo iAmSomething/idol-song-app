@@ -23,8 +23,8 @@ function formatIsoDate(date: Date): string {
 }
 
 function formatSelectedDayLabel(isoDate: string): string {
-  const [year, month, day] = isoDate.split('-');
-  return `${year}년 ${Number(month)}월 ${Number(day)}일`;
+  const [, month, day] = isoDate.split('-');
+  return `${Number(month)}월 ${Number(day)}일`;
 }
 
 function isIsoDateInMonth(isoDate: string, month: string): boolean {

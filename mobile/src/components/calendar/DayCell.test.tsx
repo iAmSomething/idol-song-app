@@ -47,8 +47,8 @@ describe('DayCell', () => {
 
     const target = tree!.root.findByProps({ testID: 'calendar-day-2026-03-11' });
     expect(target.props.accessibilityState).toEqual({ selected: true });
-    expect(target.props.accessibilityLabel).toContain('2026년 3월 11일');
-    expect(target.props.accessibilityLabel).toContain('검증된 발매 1건');
+    expect(target.props.accessibilityLabel).toContain('3월 11일');
+    expect(target.props.accessibilityLabel).toContain('확정 발매 1건');
     expect(target.props.accessibilityLabel).toContain('추가 2건');
 
     await act(async () => {
