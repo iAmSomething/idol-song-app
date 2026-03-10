@@ -14,12 +14,11 @@ describe('parseRuntimeConfig', () => {
     const parsed = parseRuntimeConfig({
       profile: 'preview',
       dataSource: {
-        mode: 'preview-static',
-        remoteDatasetUrl: {},
+        mode: 'backend-api',
         datasetVersion: {},
       },
       services: {
-        apiBaseUrl: {},
+        apiBaseUrl: 'https://example.com/api',
         analyticsWriteKey: {},
       },
       logging: {
@@ -38,9 +37,7 @@ describe('parseRuntimeConfig', () => {
       },
     });
 
-    expect(parsed.dataSource.remoteDatasetUrl).toBeNull();
     expect(parsed.dataSource.datasetVersion).toBeNull();
-    expect(parsed.services.apiBaseUrl).toBeNull();
     expect(parsed.services.analyticsWriteKey).toBeNull();
     expect(parsed.build.version).toBe('0.1.0');
     expect(parsed.build.commitSha).toBeNull();
@@ -51,12 +48,11 @@ describe('parseRuntimeConfig', () => {
       parseRuntimeConfig({
         profile: 'production',
         dataSource: {
-          mode: 'production-static',
-          remoteDatasetUrl: null,
+          mode: 'backend-api',
           datasetVersion: null,
         },
         services: {
-          apiBaseUrl: null,
+          apiBaseUrl: 'https://example.com/api',
           analyticsWriteKey: null,
         },
         logging: {
@@ -77,17 +73,16 @@ describe('parseRuntimeConfig', () => {
     ).toThrow('analyticsWriteKey');
   });
 
-  test('rejects remote refresh without remote dataset url', () => {
+  test('rejects remote refresh gate outright', () => {
     expect(() =>
       parseRuntimeConfig({
         profile: 'preview',
         dataSource: {
-          mode: 'preview-static',
-          remoteDatasetUrl: null,
+          mode: 'backend-api',
           datasetVersion: null,
         },
         services: {
-          apiBaseUrl: null,
+          apiBaseUrl: 'https://example.com/api',
           analyticsWriteKey: null,
         },
         logging: {
@@ -105,24 +100,23 @@ describe('parseRuntimeConfig', () => {
           commitSha: null,
         },
       }),
-    ).toThrow('remoteDatasetUrl');
+    ).toThrow('remoteRefresh');
   });
 
-  test('rejects remote dataset settings outside preview profile', () => {
+  test('requires api base url for preview backend mode', () => {
     expect(() =>
       parseRuntimeConfig({
-        profile: 'production',
+        profile: 'preview',
         dataSource: {
-          mode: 'production-static',
-          remoteDatasetUrl: 'https://example.com/dataset.json',
-          datasetVersion: 'preview-v1',
+          mode: 'backend-api',
+          datasetVersion: null,
         },
         services: {
           apiBaseUrl: null,
           analyticsWriteKey: null,
         },
         logging: {
-          level: 'error',
+          level: 'debug',
         },
         featureGates: {
           radar: true,
@@ -136,7 +130,7 @@ describe('parseRuntimeConfig', () => {
           commitSha: null,
         },
       }),
-    ).toThrow('remoteDatasetUrl');
+    ).toThrow('services.apiBaseUrl');
   });
 
   test('requires build version to be present', () => {
@@ -145,7 +139,6 @@ describe('parseRuntimeConfig', () => {
         profile: 'development',
         dataSource: {
           mode: 'bundled-static',
-          remoteDatasetUrl: null,
           datasetVersion: null,
         },
         services: {
@@ -174,7 +167,7 @@ describe('parseRuntimeConfig', () => {
 
     expect(state.mode).toBe('degraded');
     expect(state.config.profile).toBe('preview');
-    expect(state.config.dataSource.mode).toBe('preview-static');
+    expect(state.config.dataSource.mode).toBe('backend-api');
     expect(state.config.featureGates.remoteRefresh).toBe(false);
     expect(state.config.services.analyticsWriteKey).toBeNull();
     expect(state.config.build.version).toBe('0.3.0');
@@ -190,8 +183,7 @@ describe('parseRuntimeConfig', () => {
       {
         profile: 'preview',
         dataSource: {
-          mode: 'preview-static',
-          remoteDatasetUrl: null,
+          mode: 'backend-api',
           datasetVersion: null,
         },
         services: {
@@ -203,7 +195,7 @@ describe('parseRuntimeConfig', () => {
         },
         featureGates: {
           radar: true,
-          analytics: true,
+          analytics: false,
           remoteRefresh: true,
           mvEmbed: true,
           shareActions: true,
@@ -219,13 +211,13 @@ describe('parseRuntimeConfig', () => {
 
     expect(state.mode).toBe('degraded');
     expect(state.config.profile).toBe('preview');
-    expect(state.config.dataSource.remoteDatasetUrl).toBeNull();
+    expect(state.config.dataSource.mode).toBe('backend-api');
     expect(state.config.featureGates.analytics).toBe(false);
     expect(state.config.featureGates.remoteRefresh).toBe(false);
     expect(state.issues).toEqual([
       expect.objectContaining({
         kind: 'invalid_runtime_config',
-        message: expect.stringContaining('remoteDatasetUrl'),
+        message: expect.stringContaining('remoteRefresh'),
       }),
     ]);
   });

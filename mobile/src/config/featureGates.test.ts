@@ -9,8 +9,7 @@ import {
 const runtimeConfig: MobileRuntimeConfig = {
   profile: 'preview',
   dataSource: {
-    mode: 'preview-static',
-    remoteDatasetUrl: 'https://example.com/dataset.json',
+    mode: 'backend-api',
     datasetVersion: 'preview-v1',
   },
   services: {
@@ -23,7 +22,7 @@ const runtimeConfig: MobileRuntimeConfig = {
   featureGates: {
     radar: true,
     analytics: false,
-    remoteRefresh: true,
+    remoteRefresh: false,
     mvEmbed: false,
     shareActions: true,
   },

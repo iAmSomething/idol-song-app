@@ -1,4 +1,4 @@
-import type { ActiveMobileDataset } from '../services/activeDataset';
+import type { ScreenDataSource } from './screenDataSource';
 import type { EntityDetailSnapshotModel, ReleaseDetailModel } from '../types';
 
 export type SurfaceDisclosure = {
@@ -29,11 +29,8 @@ function summarizeIssues(issues: string[]): string {
 }
 
 export function buildDatasetRiskDisclosure(
-  source: Pick<
-    ActiveMobileDataset,
-    'activeSource' | 'freshness' | 'issues' | 'sourceLabel'
-  > & {
-    runtimeState: Pick<ActiveMobileDataset['runtimeState'], 'mode'>;
+  source: Pick<ScreenDataSource, 'activeSource' | 'freshness' | 'issues' | 'sourceLabel'> & {
+    runtimeState: Pick<ScreenDataSource['runtimeState'], 'mode'>;
   },
   surfaceLabel: string,
   testID: string,
@@ -43,11 +40,11 @@ export function buildDatasetRiskDisclosure(
   }
 
   const freshnessNote =
-    source.activeSource === 'preview-remote-cache'
+    source.activeSource.includes('cache')
       ? source.freshness.rollingReferenceAt
         ? `발매/예정 데이터는 ${formatCachedAt(source.freshness.rollingReferenceAt)}에 저장된 캐시 기준입니다.`
         : '발매/예정 데이터는 마지막으로 저장된 캐시 기준입니다.'
-      : '프로필/아트워크보다 발매·예정 데이터가 더 빨리 오래될 수 있습니다.';
+      : '발매·예정 데이터는 네트워크 상태에 따라 일부 지연되거나 최소 정보로 축소될 수 있습니다.';
 
   return {
     title: '데이터 최신화 유의',

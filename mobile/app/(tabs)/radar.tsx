@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Linking,
   Modal,
@@ -26,9 +26,12 @@ import {
   type RadarFilterStatus,
   type RadarSectionKey,
 } from '../../src/features/routeState';
+import type { ScreenDataSource } from '../../src/features/screenDataSource';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectRadarSnapshot } from '../../src/selectors';
-import { type ActiveMobileDataset } from '../../src/services/activeDataset';
+import { loadActiveMobileDataset } from '../../src/services/activeDataset';
+import { adaptBackendRadarSnapshot } from '../../src/services/backendDisplayAdapters';
+import type { BackendReadClient } from '../../src/services/backendReadClient';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   RadarChangeFeedItemModel,
@@ -158,7 +161,7 @@ function buildRadarPartialSections(snapshot: RadarSnapshotModel): string[] {
 }
 
 function resolveRadarDataState(
-  source: ActiveMobileDataset,
+  source: Pick<ScreenDataSource<unknown>, 'activeSource' | 'issues' | 'runtimeState'>,
   partialSections: string[],
 ): 'default' | 'partial' | 'degraded' {
   if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
@@ -263,13 +266,30 @@ export default function RadarTabScreen() {
   const [actTypeFilter, setActTypeFilter] = useState(routeState.actTypeFilter);
   const [enabledSections, setEnabledSections] = useState(routeState.enabledSections);
   const [isFilterSheetOpen, setIsFilterSheetOpen] = useState(false);
+  const today = useMemo(() => new Date(), []);
+  const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
+  const loadBundledSnapshot = useCallback(async () => {
+    const activeDataset = await loadActiveMobileDataset();
+    return selectRadarSnapshot(activeDataset.dataset, todayIsoDate);
+  }, [todayIsoDate]);
+  const loadBackendSnapshot = useCallback(
+    async (client: BackendReadClient) => {
+      const response = await client.getRadar();
+      return {
+        data: adaptBackendRadarSnapshot(response.data),
+        generatedAt: response.meta?.generatedAt ?? null,
+      };
+    },
+    [],
+  );
   const datasetState = useActiveDatasetScreen({
     surface: 'radar',
     reloadKey: reloadCount,
+    cacheKey: `radar:${todayIsoDate}`,
     fallbackErrorMessage: 'Radar dataset could not be loaded right now.',
+    loadBundled: loadBundledSnapshot,
+    loadBackend: loadBackendSnapshot,
   });
-  const today = useMemo(() => new Date(), []);
-  const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
 
   useEffect(() => {
     setStatusFilter(routeState.statusFilter);
@@ -278,10 +298,7 @@ export default function RadarTabScreen() {
   }, [routeState]);
 
   const source = datasetState.kind === 'ready' ? datasetState.source : null;
-  const snapshot = useMemo(
-    () => (source ? selectRadarSnapshot(source.dataset, todayIsoDate) : null),
-    [source, todayIsoDate],
-  );
+  const snapshot = source?.data ?? null;
   const partialSections = useMemo(
     () => (snapshot ? buildRadarPartialSections(snapshot) : []),
     [snapshot],

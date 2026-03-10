@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Image,
   Linking,
@@ -25,6 +25,9 @@ import {
 } from '../../src/features/surfaceDisclosures';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectEntityDetailSnapshot } from '../../src/selectors';
+import { loadActiveMobileDataset } from '../../src/services/activeDataset';
+import { adaptBackendEntityDetail } from '../../src/services/backendDisplayAdapters';
+import { BackendReadError, type BackendReadClient } from '../../src/services/backendReadClient';
 import {
   openServiceHandoff,
   resolveServiceHandoff,
@@ -234,15 +237,47 @@ export default function ArtistDetailScreen() {
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
+  const loadBundledSnapshot = useCallback(async () => {
+    const activeDataset = await loadActiveMobileDataset();
+    return slug ? selectEntityDetailSnapshot(activeDataset.dataset, slug) : null;
+  }, [slug]);
+  const loadBackendSnapshot = useCallback(
+    async (client: BackendReadClient) => {
+      if (!slug) {
+        return {
+          data: null,
+          generatedAt: null,
+        };
+      }
+
+      try {
+        const response = await client.getEntityDetail(slug);
+        return {
+          data: adaptBackendEntityDetail(response.data),
+          generatedAt: response.meta?.generatedAt ?? null,
+        };
+      } catch (error) {
+        if (error instanceof BackendReadError && error.status === 404) {
+          return {
+            data: null,
+            generatedAt: null,
+          };
+        }
+
+        throw error;
+      }
+    },
+    [slug],
+  );
   const datasetState = useActiveDatasetScreen({
     surface: 'entity_detail',
     reloadKey: reloadCount,
+    cacheKey: `entity:${slug || 'missing'}`,
     fallbackErrorMessage: '팀 상세 데이터를 불러오지 못했습니다.',
+    loadBundled: loadBundledSnapshot,
+    loadBackend: loadBackendSnapshot,
   });
-  const snapshot = useMemo(
-    () => (datasetState.kind === 'ready' && slug ? selectEntityDetailSnapshot(datasetState.source.dataset, slug) : null),
-    [datasetState, slug],
-  );
+  const snapshot = datasetState.kind === 'ready' ? datasetState.source.data : null;
 
   useEffect(() => {
     setHandoffFeedback(null);

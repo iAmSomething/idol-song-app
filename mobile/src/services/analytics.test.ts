@@ -12,8 +12,7 @@ import {
 const analyticsEnabledRuntime: MobileRuntimeConfig = {
   profile: 'preview',
   dataSource: {
-    mode: 'preview-static',
-    remoteDatasetUrl: null,
+    mode: 'backend-api',
     datasetVersion: 'preview-v1',
   },
   services: {
@@ -100,7 +99,7 @@ describe('mobile analytics service', () => {
       },
       occurredAt: '2026-03-09T00:00:00.000Z',
       profile: 'preview',
-      dataSourceMode: 'preview-static',
+      dataSourceMode: 'backend-api',
       buildVersion: '0.1.0',
     });
   });

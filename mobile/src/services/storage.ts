@@ -39,6 +39,10 @@ export function buildDatasetCacheKey(
   );
 }
 
+export function buildScreenSnapshotCacheKey(surface: string, cacheKey: string): string {
+  return buildNamespacedKey('screen-cache', `${surface}/${cacheKey}`);
+}
+
 export async function readStoredJson<T>(storageKey: string): Promise<T | null> {
   const raw = await storageAdapter.getItem(storageKey);
 

@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Image,
   ScrollView,
@@ -28,6 +28,13 @@ import {
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectReleaseDetailById } from '../../src/selectors';
 import { getFeatureGateState } from '../../src/config/featureGates';
+import { loadActiveMobileDataset } from '../../src/services/activeDataset';
+import { adaptBackendReleaseDetail } from '../../src/services/backendDisplayAdapters';
+import {
+  BackendReadError,
+  type BackendReadClient,
+} from '../../src/services/backendReadClient';
+import { cloneBundledDatasetFixture } from '../../src/services/bundledDatasetFixture';
 import {
   openServiceHandoff,
   resolveServiceHandoff,
@@ -214,18 +221,51 @@ export default function ReleaseDetailScreen() {
   const releaseId = getSingleParam(params.id)?.trim() ?? '';
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
+  const bundledProfiles = useMemo(() => cloneBundledDatasetFixture().artistProfiles, []);
+  const loadBundledDetail = useCallback(async () => {
+    const activeDataset = await loadActiveMobileDataset();
+    return releaseId ? selectReleaseDetailById(activeDataset.dataset, releaseId) : null;
+  }, [releaseId]);
+  const loadBackendDetail = useCallback(
+    async (client: BackendReadClient) => {
+      if (!releaseId) {
+        return {
+          data: null,
+          generatedAt: null,
+        };
+      }
+
+      try {
+        const resolved = await client.getReleaseDetailByLegacyId(releaseId);
+        return {
+          data: adaptBackendReleaseDetail(resolved.detail.data),
+          generatedAt: resolved.detail.meta?.generatedAt ?? resolved.lookup.meta?.generatedAt ?? null,
+        };
+      } catch (error) {
+        if (error instanceof BackendReadError && error.status === 404) {
+          return {
+            data: null,
+            generatedAt: null,
+          };
+        }
+
+        throw error;
+      }
+    },
+    [releaseId],
+  );
   const datasetState = useActiveDatasetScreen({
     surface: 'release_detail',
     reloadKey: reloadCount,
+    cacheKey: `release:${releaseId || 'missing'}`,
     fallbackErrorMessage: '릴리즈 상세 데이터를 불러오지 못했습니다.',
+    loadBundled: loadBundledDetail,
+    loadBackend: loadBackendDetail,
   });
-  const detail = useMemo(
-    () => (datasetState.kind === 'ready' && releaseId ? selectReleaseDetailById(datasetState.source.dataset, releaseId) : null),
-    [datasetState, releaseId],
-  );
+  const detail = datasetState.kind === 'ready' ? datasetState.source.data : null;
   const teamProfile =
-    datasetState.kind === 'ready' && detail
-      ? datasetState.source.dataset.artistProfiles.find((profile) => profile.group === detail.group) ?? null
+    detail
+      ? bundledProfiles.find((profile) => profile.slug === detail.group || profile.group === detail.group) ?? null
       : null;
 
   useEffect(() => {
