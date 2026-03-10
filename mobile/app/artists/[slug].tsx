@@ -22,6 +22,12 @@ import {
   buildDatasetRiskDisclosure,
   buildEntitySourceDisclosure,
 } from '../../src/features/surfaceDisclosures';
+import {
+  MOBILE_COPY,
+  formatMonthOnlyDateLabel,
+  resolveUpcomingConfidenceLabel as resolveUpcomingConfidenceChipLabel,
+  resolveUpcomingStatusWithFallback,
+} from '../../src/copy/mobileCopy';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectEntityDetailSnapshot } from '../../src/selectors';
 import { loadActiveMobileDataset } from '../../src/services/activeDataset';
@@ -67,14 +73,14 @@ function getSingleParam(value: string | string[] | undefined): string | null {
 
 function formatUpcomingMeta(event: UpcomingEventModel): string {
   if (event.datePrecision === 'exact' && event.scheduledDate) {
-    return `${event.scheduledDate} · ${event.status ?? '예정'}`;
+    return `${event.scheduledDate} · ${resolveUpcomingStatusWithFallback(event.status)}`;
   }
 
   if (event.scheduledMonth) {
-    return `${event.scheduledMonth} · 날짜 미정 · ${event.status ?? '예정'}`;
+    return `${formatMonthOnlyDateLabel(event.scheduledMonth)} · ${resolveUpcomingStatusWithFallback(event.status)}`;
   }
 
-  return event.status ?? '예정';
+  return resolveUpcomingStatusWithFallback(event.status);
 }
 
 function formatReleaseMeta(release: ReleaseSummaryModel): string {
@@ -127,41 +133,16 @@ function getReleaseKindLabel(release: ReleaseSummaryModel): string {
   return 'RELEASE';
 }
 
-function resolveUpcomingStatusLabel(status?: UpcomingEventModel['status']): string {
-  switch (status) {
-    case 'confirmed':
-      return '확정';
-    case 'rumor':
-      return '루머';
-    case 'scheduled':
-    default:
-      return '예정';
-  }
-}
-
-function resolveUpcomingConfidenceLabel(confidence?: UpcomingEventModel['confidence']): string | null {
-  switch (confidence) {
-    case 'high':
-      return '신뢰 높음';
-    case 'medium':
-      return '신뢰 보통';
-    case 'low':
-      return '신뢰 낮음';
-    default:
-      return null;
-  }
-}
-
 function resolveUpcomingTimingLabel(event: UpcomingEventModel): string {
   if (event.datePrecision === 'exact' && event.scheduledDate) {
     return event.scheduledDate;
   }
 
   if (event.scheduledMonth) {
-    return `${event.scheduledMonth} · 날짜 미정`;
+    return formatMonthOnlyDateLabel(event.scheduledMonth);
   }
 
-  return '날짜 미정';
+  return MOBILE_COPY.date.unknown;
 }
 
 function buildLatestReleaseServiceButtons(release: ReleaseSummaryModel): EntityServiceButtonItem[] {
@@ -380,7 +361,7 @@ export default function ArtistDetailScreen() {
             onPress: () => router.push('/(tabs)/search'),
           }}
           body="팀 slug가 없거나 잘못되어 화면을 열 수 없습니다."
-          eyebrow="SAFE RECOVERY"
+          eyebrow="안전 복구"
           testID="entity-missing-state"
           title="팀 상세"
           variant="empty"
@@ -395,7 +376,7 @@ export default function ArtistDetailScreen() {
         <Stack.Screen options={{ title: screenTitle }} />
         <ScreenFeedbackState
           body="팀 요약, 다음 컴백, 최근 앨범을 불러오는 중입니다."
-          eyebrow="DETAIL LOADING"
+          eyebrow="상세 로딩"
           title="팀 상세"
           variant="loading"
         />
@@ -409,11 +390,11 @@ export default function ArtistDetailScreen() {
         <Stack.Screen options={{ title: screenTitle }} />
         <ScreenFeedbackState
           action={{
-            label: '다시 시도',
+            label: MOBILE_COPY.action.retry,
             onPress: () => setReloadCount((count) => count + 1),
           }}
           body={datasetState.message}
-          eyebrow="LOAD ERROR"
+          eyebrow="로드 오류"
           title="팀 상세"
           variant="error"
         />
@@ -431,7 +412,7 @@ export default function ArtistDetailScreen() {
             onPress: () => router.push('/(tabs)/search'),
           }}
           body="해당 팀 데이터를 찾지 못했습니다."
-          eyebrow="SAFE RECOVERY"
+          eyebrow="안전 복구"
           testID="entity-missing-state"
           title="팀 상세"
           variant="empty"
@@ -463,7 +444,7 @@ export default function ArtistDetailScreen() {
           onPress: () => router.back(),
           testID: 'entity-detail-back',
         }}
-        subtitle="팀 페이지"
+        subtitle={MOBILE_COPY.action.teamPage}
         testID="entity-detail-app-bar"
         title={snapshot.team.displayName}
       />
@@ -535,15 +516,15 @@ export default function ArtistDetailScreen() {
           <View testID="entity-next-upcoming-card" style={styles.primaryCard}>
             <View style={styles.chipRow}>
               <InfoChip label={resolveUpcomingTimingLabel(snapshot.nextUpcoming)} styles={styles} />
-              <InfoChip label={resolveUpcomingStatusLabel(snapshot.nextUpcoming.status)} styles={styles} />
-              {resolveUpcomingConfidenceLabel(snapshot.nextUpcoming.confidence) ? (
+              <InfoChip label={resolveUpcomingStatusWithFallback(snapshot.nextUpcoming.status)} styles={styles} />
+              {resolveUpcomingConfidenceChipLabel(snapshot.nextUpcoming.confidence) ? (
                 <InfoChip
-                  label={resolveUpcomingConfidenceLabel(snapshot.nextUpcoming.confidence)!}
+                  label={resolveUpcomingConfidenceChipLabel(snapshot.nextUpcoming.confidence)!}
                   styles={styles}
                 />
               ) : null}
             </View>
-            <Text style={styles.primaryCardTitle}>
+            <Text numberOfLines={2} style={styles.primaryCardTitle}>
               {snapshot.nextUpcoming.releaseLabel ?? snapshot.nextUpcoming.headline}
             </Text>
             <Text style={styles.primaryCardMeta}>{formatUpcomingMeta(snapshot.nextUpcoming)}</Text>
@@ -555,7 +536,7 @@ export default function ArtistDetailScreen() {
                 onPress={() => void handleExternalLink(snapshot.nextUpcoming!.sourceUrl!, 'source')}
                 style={({ pressed }) => [styles.metaButton, pressed ? styles.buttonPressed : null]}
               >
-                <Text style={styles.metaButtonLabel}>출처 보기</Text>
+                <Text style={styles.metaButtonLabel}>{MOBILE_COPY.action.sourceView}</Text>
               </Pressable>
             ) : null}
           </View>
@@ -578,7 +559,7 @@ export default function ArtistDetailScreen() {
                 )}
               </View>
               <View style={styles.releaseCopy}>
-                <Text style={styles.primaryCardTitle}>{snapshot.latestRelease.releaseTitle}</Text>
+                <Text numberOfLines={2} style={styles.primaryCardTitle}>{snapshot.latestRelease.releaseTitle}</Text>
                 <Text style={styles.primaryCardMeta}>{formatReleaseMeta(snapshot.latestRelease)}</Text>
                 <Text style={styles.primaryCardBody}>
                   {snapshot.latestRelease.representativeSongTitle ?? '상세 화면으로 이동'}
@@ -604,7 +585,7 @@ export default function ArtistDetailScreen() {
               }}
               style={({ pressed }) => [styles.primaryButton, pressed ? styles.buttonPressed : null]}
             >
-              <Text style={styles.primaryButtonLabel}>상세 보기</Text>
+              <Text style={styles.primaryButtonLabel}>{MOBILE_COPY.action.detailView}</Text>
             </Pressable>
             <ServiceButtonGroup
               buttons={latestReleaseServiceButtons.map((button) => ({
@@ -621,7 +602,7 @@ export default function ArtistDetailScreen() {
                 style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
                 testID="entity-latest-release-source-link"
               >
-                <Text style={styles.metaTextLinkLabel}>출처 보기</Text>
+                <Text style={styles.metaTextLinkLabel}>{MOBILE_COPY.action.sourceView}</Text>
               </Pressable>
             ) : null}
           </View>
@@ -665,7 +646,7 @@ export default function ArtistDetailScreen() {
               )}
             </View>
             <View style={styles.singleAlbumCopy}>
-              <Text style={styles.albumTitle}>{snapshot.recentAlbums[0]!.releaseTitle}</Text>
+              <Text numberOfLines={2} style={styles.albumTitle}>{snapshot.recentAlbums[0]!.releaseTitle}</Text>
               <Text style={styles.albumMeta}>{formatReleaseMeta(snapshot.recentAlbums[0]!)}</Text>
             </View>
           </Pressable>
@@ -698,7 +679,7 @@ export default function ArtistDetailScreen() {
                     </Text>
                   )}
                 </View>
-                <Text style={styles.albumTitle}>{release.releaseTitle}</Text>
+                <Text numberOfLines={2} style={styles.albumTitle}>{release.releaseTitle}</Text>
                 <Text style={styles.albumMeta}>{formatReleaseMeta(release)}</Text>
               </Pressable>
             ))}
@@ -711,14 +692,14 @@ export default function ArtistDetailScreen() {
       {snapshot.sourceTimeline.length > 0 ? (
         <SectionCard title="추가 정보" styles={styles}>
           <Pressable
-            accessibilityLabel={showAdditionalInfo ? '소스 타임라인 접기' : '소스 타임라인 보기'}
+            accessibilityLabel={showAdditionalInfo ? MOBILE_COPY.action.hideSourceTimeline : MOBILE_COPY.action.showSourceTimeline}
             accessibilityRole="button"
             onPress={() => setShowAdditionalInfo((value) => !value)}
             style={({ pressed }) => [styles.secondaryButton, pressed ? styles.buttonPressed : null]}
             testID="entity-source-timeline-toggle"
           >
             <Text style={styles.secondaryButtonLabel}>
-              {showAdditionalInfo ? '소스 타임라인 접기' : '소스 타임라인 보기'}
+              {showAdditionalInfo ? MOBILE_COPY.action.hideSourceTimeline : MOBILE_COPY.action.showSourceTimeline}
             </Text>
           </Pressable>
           {showAdditionalInfo ? (
@@ -737,7 +718,7 @@ export default function ArtistDetailScreen() {
                       onPress={() => void handleExternalLink(item.sourceUrl!, 'source')}
                       style={({ pressed }) => [styles.metaButton, pressed ? styles.buttonPressed : null]}
                     >
-                      <Text style={styles.metaButtonLabel}>열기</Text>
+                      <Text style={styles.metaButtonLabel}>{MOBILE_COPY.action.open}</Text>
                     </Pressable>
                   ) : null}
                 </View>
@@ -884,7 +865,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       gap: theme.space[8],
     },
     primaryButton: {
-      minHeight: 44,
+      minHeight: theme.size.button.heightPrimary,
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: theme.space[16],
@@ -902,7 +883,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     secondaryButton: {
       alignSelf: 'flex-start',
-      minHeight: 44,
+      minHeight: theme.size.button.heightSecondary,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.button,
@@ -1012,7 +993,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       justifyContent: 'center',
     },
     albumCard: {
-      width: 172,
+      width: '52%',
+      minWidth: 188,
       gap: theme.space[8],
       padding: theme.space[12],
       borderRadius: theme.radius.card,
@@ -1078,7 +1060,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       color: theme.colors.text.secondary,
     },
     metaButton: {
-      minHeight: 44,
+      minHeight: theme.size.button.heightSecondary,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.chip,

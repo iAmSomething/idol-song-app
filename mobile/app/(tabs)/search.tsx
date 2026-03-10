@@ -22,6 +22,12 @@ import { AppBar } from '../../src/components/layout/AppBar';
 import { SourceLinkRow } from '../../src/components/meta/SourceLinkRow';
 import { buildDatasetRiskDisclosure } from '../../src/features/surfaceDisclosures';
 import {
+  MOBILE_COPY,
+  formatUpcomingDateLabel,
+  resolveSourceLinkLabel,
+  resolveUpcomingStatusWithFallback,
+} from '../../src/copy/mobileCopy';
+import {
   areRouteParamsEqual,
   buildSearchRouteParams,
   resolveSearchRouteState,
@@ -88,13 +94,12 @@ function formatReleaseMeta(release: ReleaseSummaryModel): string {
 
 function formatUpcomingMeta(result: SearchUpcomingResultModel): string {
   const event = result.upcoming;
-  const dateLabel = event.scheduledDate
-    ? event.scheduledDate
-    : event.scheduledMonth
-      ? `${event.scheduledMonth} · 날짜 미정`
-      : '날짜 미정';
+  const dateLabel = formatUpcomingDateLabel({
+    scheduledDate: event.scheduledDate,
+    scheduledMonth: event.scheduledMonth,
+  });
 
-  return [dateLabel, event.status ?? '예정', event.sourceType].join(' · ');
+  return [dateLabel, resolveUpcomingStatusWithFallback(event.status), event.sourceType].join(' · ');
 }
 
 function formatTeamMeta(result: SearchTeamResultModel): string {
@@ -159,22 +164,6 @@ function resolveSearchSegmentLabel(segment: SearchSegment): string {
   }
 
   return '예정';
-}
-
-function resolveUpcomingSourceLabel(sourceType: SearchUpcomingResultModel['upcoming']['sourceType']): string {
-  if (
-    sourceType === 'agency_notice' ||
-    sourceType === 'weverse_notice' ||
-    sourceType === 'official_social'
-  ) {
-    return '공식 공지';
-  }
-
-  if (sourceType === 'news_rss') {
-    return '기사 원문';
-  }
-
-  return '출처 보기';
 }
 
 function buildTeamResultAccessibilityLabel(result: SearchTeamResultModel): string {
@@ -253,7 +242,7 @@ export default function SearchTabScreen() {
     surface: 'search',
     reloadKey: reloadCount,
     cacheKey: `search:${deferredQuery.trim().toLowerCase() || 'empty'}`,
-    fallbackErrorMessage: 'Search dataset could not be loaded right now.',
+    fallbackErrorMessage: '검색 데이터를 지금 불러오지 못했습니다.',
     loadBundled: loadBundledResults,
     loadBackend: loadBackendResults,
   });
@@ -577,8 +566,8 @@ export default function SearchTabScreen() {
     return (
       <ScreenFeedbackState
         body="검색 대상 팀, 발매, 예정 데이터를 불러오는 중입니다."
-        eyebrow="DATASET LOADING"
-        title="Search"
+        eyebrow="데이터 로딩"
+        title="검색"
         variant="loading"
       />
     );
@@ -588,12 +577,12 @@ export default function SearchTabScreen() {
     return (
       <ScreenFeedbackState
         action={{
-          label: '다시 시도',
+          label: MOBILE_COPY.action.retry,
           onPress: () => setReloadCount((count) => count + 1),
         }}
         body={datasetState.message}
-        eyebrow="LOAD ERROR"
-        title="Search"
+        eyebrow="로드 오류"
+        title="검색"
         variant="error"
       />
     );
@@ -633,9 +622,9 @@ export default function SearchTabScreen() {
       style={styles.screen}
     >
       <AppBar
-        subtitle="한글 별칭, 영문 그룹명, 릴리즈명, 예정 headline까지 같은 selector semantics로 찾습니다."
+        subtitle="한글 별칭, 영문 그룹명, 릴리즈명, 예정 헤드라인까지 같은 검색 규칙으로 찾습니다."
         testID="search-app-bar"
-        title="Search"
+        title="검색"
       />
 
       {datasetRiskDisclosure ? (
@@ -751,16 +740,16 @@ export default function SearchTabScreen() {
                   style={styles.resultCard}
                   testID={`suggested-team-${team.slug}`}
                 >
-                  <TeamIdentityRow
-                    badgeImageUrl={team.badge?.imageUrl}
-                    meta={team.agency ?? 'Tracked team'}
-                    monogram={formatSuggestedLabel(team)}
-                    name={team.displayName}
-                    testID={`suggested-team-copy-${team.slug}`}
-                  />
+                    <TeamIdentityRow
+                      badgeImageUrl={team.badge?.imageUrl}
+                      meta={team.agency ?? '추적 대상 팀'}
+                      monogram={formatSuggestedLabel(team)}
+                      name={team.displayName}
+                      testID={`suggested-team-copy-${team.slug}`}
+                    />
                   <ActionButton
                     accessibilityLabel={`${team.displayName} 팀 열기`}
-                    label="팀 페이지"
+                    label={MOBILE_COPY.action.teamPage}
                     onPress={() => openTeamDetail(team.slug)}
                     testID={`suggested-team-open-${team.slug}`}
                   />
@@ -858,6 +847,7 @@ export default function SearchTabScreen() {
                       meta={`${result.release.displayGroup} · ${formatReleaseMeta(result.release)}`}
                       monogram={result.release.displayGroup.slice(0, 2).toUpperCase()}
                       name={result.release.releaseTitle}
+                      nameNumberOfLines={2}
                       testID={`search-release-result-${result.release.id}`}
                     />
                   </Pressable>
@@ -954,7 +944,7 @@ export default function SearchTabScreen() {
                         links={[
                           {
                             key: `${result.upcoming.id}-source`,
-                            label: resolveUpcomingSourceLabel(result.upcoming.sourceType),
+                            label: resolveSourceLinkLabel(result.upcoming.sourceType),
                             onPress: () => void handleUpcomingSourcePress(result),
                             type: 'source',
                             url: result.upcoming.sourceUrl,
@@ -1015,7 +1005,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     inlineButton: {
       alignSelf: 'flex-start',
-      minHeight: 44,
+      minHeight: theme.size.button.heightSecondary,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.button,
@@ -1070,7 +1060,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
       backgroundColor: theme.colors.surface.base,
-      minHeight: 44,
+      minHeight: theme.size.button.heightSecondary,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
     },
@@ -1099,6 +1089,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     resultPressable: {
       gap: theme.space[8],
+      minHeight: theme.size.row.minHeight,
+      justifyContent: 'center',
     },
     resultPressed: {
       opacity: 0.84,

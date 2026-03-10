@@ -35,6 +35,11 @@ import type {
   BackendSearchUpcoming,
 } from './backendReadClient';
 import {
+  MOBILE_COPY,
+  formatMonthOnlyDateLabel,
+  resolveUpcomingStatusWithFallback,
+} from '../copy/mobileCopy';
+import {
   buildMonogram,
   normalizeReleaseKind,
   normalizeReleaseStream,
@@ -154,8 +159,8 @@ function adaptRadarUpcomingCard(input: BackendRadarUpcoming): RadarUpcomingCardM
       displayName: input.display_name,
     }),
     upcoming,
-    dayLabel: upcoming.scheduledDate ?? upcoming.scheduledMonth ?? '날짜 미정',
-    sourceLabel: input.release_format ?? input.date_status ?? '예정',
+    dayLabel: upcoming.scheduledDate ?? upcoming.scheduledMonth ?? MOBILE_COPY.date.unknown,
+    sourceLabel: input.release_format ?? resolveUpcomingStatusWithFallback(input.date_status),
     sourceUrl: input.source_url ?? undefined,
   };
 }
@@ -174,7 +179,7 @@ function adaptRadarChangeFeedItem(input: BackendRadarChangeFeedItem): RadarChang
       occurredAtLabel: input.occurred_at ?? undefined,
       releaseLabel: input.release_title ?? undefined,
       headline: input.release_title ?? undefined,
-      sourceLabel: 'Verified release',
+      sourceLabel: '검증된 발매',
     };
   }
 
@@ -185,13 +190,16 @@ function adaptRadarChangeFeedItem(input: BackendRadarChangeFeedItem): RadarChang
       displayName: input.display_name,
     }),
     changeTypeLabel: '예정 신호',
-    previousScheduleLabel: input.scheduled_month && !input.scheduled_date ? `${input.scheduled_month} · 날짜 미정` : '일정 조정',
+    previousScheduleLabel:
+      input.scheduled_month && !input.scheduled_date
+        ? formatMonthOnlyDateLabel(input.scheduled_month)
+        : '일정 조정',
     nextScheduleLabel:
-      input.scheduled_date ?? input.scheduled_month ?? input.headline ?? '날짜 미정',
+      input.scheduled_date ?? input.scheduled_month ?? input.headline ?? MOBILE_COPY.date.unknown,
     occurredAtLabel: input.occurred_at ?? undefined,
     releaseLabel: input.headline ?? undefined,
     headline: input.headline ?? undefined,
-    sourceLabel: 'Upcoming signal',
+    sourceLabel: '예정 신호',
   };
 }
 

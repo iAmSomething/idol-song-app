@@ -27,6 +27,7 @@ import {
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectReleaseDetailById } from '../../src/selectors';
 import { getFeatureGateState } from '../../src/config/featureGates';
+import { MOBILE_COPY } from '../../src/copy/mobileCopy';
 import { loadActiveMobileDataset } from '../../src/services/activeDataset';
 import { adaptBackendReleaseDetail } from '../../src/services/backendDisplayAdapters';
 import {
@@ -387,7 +388,7 @@ export default function ReleaseDetailScreen() {
     setHandoffFeedback(null);
   }
 
-  const screenTitle = detail?.releaseTitle ?? releaseId ?? 'Release Detail';
+  const screenTitle = detail?.releaseTitle ?? releaseId ?? '릴리즈 상세';
 
   if (!releaseId) {
     return (
@@ -395,13 +396,13 @@ export default function ReleaseDetailScreen() {
         <Stack.Screen options={{ title: screenTitle }} />
         <ScreenFeedbackState
           action={{
-            label: '이전 화면으로',
+            label: MOBILE_COPY.action.back,
             onPress: () => router.back(),
           }}
           body="릴리즈 ID가 없거나 잘못되어 상세 화면을 열 수 없습니다."
-          eyebrow="MISSING DETAIL"
+          eyebrow="상세 없음"
           testID="release-missing-state"
-          title="Release Detail"
+          title="릴리즈 상세"
           variant="empty"
         />
       </>
@@ -414,8 +415,8 @@ export default function ReleaseDetailScreen() {
         <Stack.Screen options={{ title: screenTitle }} />
         <ScreenFeedbackState
           body="앨범 액션, 트랙 리스트, MV 상태를 불러오는 중입니다."
-          eyebrow="DETAIL LOADING"
-          title="Release Detail"
+          eyebrow="상세 로딩"
+          title="릴리즈 상세"
           variant="loading"
         />
       </>
@@ -428,12 +429,12 @@ export default function ReleaseDetailScreen() {
         <Stack.Screen options={{ title: screenTitle }} />
         <ScreenFeedbackState
           action={{
-            label: '다시 시도',
+            label: MOBILE_COPY.action.retry,
             onPress: () => setReloadCount((count) => count + 1),
           }}
           body={datasetState.message}
-          eyebrow="LOAD ERROR"
-          title="Release Detail"
+          eyebrow="로드 오류"
+          title="릴리즈 상세"
           variant="error"
         />
       </>
@@ -446,13 +447,13 @@ export default function ReleaseDetailScreen() {
         <Stack.Screen options={{ title: screenTitle }} />
         <ScreenFeedbackState
           action={{
-            label: '이전 화면으로',
+            label: MOBILE_COPY.action.back,
             onPress: () => router.back(),
           }}
           body="해당 릴리즈 상세 데이터를 찾지 못했습니다."
-          eyebrow="MISSING DETAIL"
+          eyebrow="상세 없음"
           testID="release-missing-state"
-          title="Release Detail"
+          title="릴리즈 상세"
           variant="empty"
         />
       </>
@@ -473,7 +474,7 @@ export default function ReleaseDetailScreen() {
     detail.sourceUrl
       ? {
           key: 'release-source',
-          label: '출처 보기',
+          label: MOBILE_COPY.action.sourceView,
           onPress: () => void handleSupportingLinkOpen(detail.sourceUrl!),
           type: 'source' as const,
           url: detail.sourceUrl,
@@ -497,8 +498,8 @@ export default function ReleaseDetailScreen() {
       <AppBar
         leadingAction={{
           accessibilityHint: '이전 화면으로 돌아갑니다.',
-          accessibilityLabel: '이전으로',
-          label: '이전으로',
+          accessibilityLabel: MOBILE_COPY.action.back,
+          label: MOBILE_COPY.action.back,
           onPress: () => router.back(),
           testID: 'release-appbar-back',
         }}
@@ -511,7 +512,7 @@ export default function ReleaseDetailScreen() {
                 {
                   key: 'team-page',
                   accessibilityLabel: `${detail.displayGroup} 팀 페이지 열기`,
-                  label: '팀 페이지',
+                  label: MOBILE_COPY.action.teamPage,
                   onPress: () => router.push(`/artists/${teamProfile.slug}`),
                   testID: 'release-appbar-team-page',
                 },

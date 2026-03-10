@@ -64,6 +64,7 @@ function ServiceButtonComponent({
         </View>
         <Text
           allowFontScaling
+          numberOfLines={2}
           style={[
             styles.buttonLabel,
             styles[`${resolvedService}ButtonLabel`],
@@ -81,7 +82,7 @@ function ServiceButtonComponent({
 function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     button: {
-      minHeight: 48,
+      minHeight: theme.size.button.heightService,
       minWidth: 104,
       alignItems: 'center',
       justifyContent: 'center',

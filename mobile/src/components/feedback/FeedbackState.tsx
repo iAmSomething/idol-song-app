@@ -2,6 +2,7 @@ import React from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { useAppTheme, type MobileTheme } from '../../tokens/theme';
+import { MOBILE_COPY } from '../../copy/mobileCopy';
 
 type FeedbackTone = 'neutral' | 'error';
 
@@ -145,7 +146,7 @@ export function ErrorStateBlock({
       action={retryAction ?? backAction}
       body={message}
       testID={testID}
-      title="오류"
+      title={MOBILE_COPY.feedback.errorTitle}
       tone="error"
     />
   );
@@ -155,8 +156,9 @@ function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     screenContainer: {
       flex: 1,
-      justifyContent: 'center',
       paddingHorizontal: theme.space[24],
+      paddingTop: theme.space[24],
+      justifyContent: 'flex-start',
       gap: theme.space[12],
       backgroundColor: theme.colors.surface.base,
     },

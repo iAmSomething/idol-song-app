@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer, { act } from 'react-test-renderer';
-import { Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { InlineFeedbackNotice, ScreenFeedbackState } from './FeedbackState';
 
@@ -54,5 +54,33 @@ describe('shared feedback state components', () => {
     });
 
     expect(onPress).toHaveBeenCalledTimes(1);
+  });
+
+  test('keeps screen-level feedback aligned to the current scroll context', async () => {
+    let tree: renderer.ReactTestRenderer;
+
+    await act(async () => {
+      tree = renderer.create(
+        <ScreenFeedbackState
+          body="팀 상세 데이터를 찾지 못했습니다."
+          eyebrow="빈 상태"
+          testID="screen-feedback"
+          title="팀 상세"
+          variant="empty"
+        />,
+      );
+    });
+
+    const container = tree!.root
+      .findAllByType(View)
+      .find((node) => node.props.testID === 'screen-feedback');
+    expect(container).toBeDefined();
+    if (!container) {
+      throw new Error('screen-feedback container not found');
+    }
+    const flattenedStyle = StyleSheet.flatten(container.props.style);
+
+    expect(flattenedStyle.justifyContent).toBe('flex-start');
+    expect(flattenedStyle.paddingTop).toBeGreaterThan(0);
   });
 });

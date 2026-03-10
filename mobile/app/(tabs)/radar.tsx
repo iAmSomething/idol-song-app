@@ -38,6 +38,12 @@ import {
 } from '../../src/services/analytics';
 import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
 import { useAppTheme } from '../../src/tokens/theme';
+import {
+  MOBILE_COPY,
+  formatUpcomingDateLabel as formatUpcomingScheduleLabel,
+  resolveUpcomingConfidenceLabel,
+  resolveUpcomingStatusWithFallback,
+} from '../../src/copy/mobileCopy';
 import type {
   RadarChangeFeedItemModel,
   RadarLongGapItemModel,
@@ -56,43 +62,18 @@ function resolveBadgeLabel(team: TeamSummaryModel): string {
 }
 
 function resolveUpcomingStatusLabel(status?: UpcomingStatus): string {
-  if (status === 'confirmed') {
-    return '확정';
-  }
-
-  if (status === 'rumor') {
-    return '루머';
-  }
-
-  return '예정';
+  return resolveUpcomingStatusWithFallback(status);
 }
 
 function resolveConfidenceLabel(confidence?: UpcomingConfidence): string | null {
-  if (confidence === 'high') {
-    return '신뢰도 높음';
-  }
-
-  if (confidence === 'medium') {
-    return '신뢰도 보통';
-  }
-
-  if (confidence === 'low') {
-    return '신뢰도 낮음';
-  }
-
-  return null;
+  return resolveUpcomingConfidenceLabel(confidence) ?? null;
 }
 
 function formatUpcomingDateLabel(item: RadarUpcomingCardModel): string {
-  if (item.upcoming.scheduledDate) {
-    return item.upcoming.scheduledDate;
-  }
-
-  if (item.upcoming.scheduledMonth) {
-    return `${item.upcoming.scheduledMonth} · 날짜 미정`;
-  }
-
-  return '날짜 미정';
+  return formatUpcomingScheduleLabel({
+    scheduledDate: item.upcoming.scheduledDate,
+    scheduledMonth: item.upcoming.scheduledMonth,
+  });
 }
 
 function formatFeaturedBody(item: RadarUpcomingCardModel): string {
@@ -300,7 +281,7 @@ export default function RadarTabScreen() {
     surface: 'radar',
     reloadKey: reloadCount,
     cacheKey: `radar:${todayIsoDate}`,
-    fallbackErrorMessage: 'Radar dataset could not be loaded right now.',
+    fallbackErrorMessage: '레이더 데이터를 지금 불러오지 못했습니다.',
     loadBundled: loadBundledSnapshot,
     loadBackend: loadBackendSnapshot,
   });
@@ -500,7 +481,7 @@ export default function RadarTabScreen() {
     return (
       <ScreenFeedbackState
         body="가장 가까운 컴백과 레이더 요약을 불러오는 중입니다."
-        eyebrow="DATA-BACKED TAB"
+        eyebrow="데이터 로딩"
         title="레이더"
         variant="loading"
       />
@@ -511,12 +492,12 @@ export default function RadarTabScreen() {
     return (
       <ScreenFeedbackState
         action={{
-          label: '다시 시도',
+          label: MOBILE_COPY.action.retry,
           onPress: () => setReloadCount((count) => count + 1),
           testID: 'radar-error-retry',
         }}
         body={datasetState.message}
-        eyebrow="LOAD ERROR"
+        eyebrow="로드 오류"
         title="레이더"
         variant="error"
       />
@@ -527,7 +508,7 @@ export default function RadarTabScreen() {
     return (
       <ScreenFeedbackState
         body="레이더 스냅샷을 찾지 못했습니다."
-        eyebrow="EMPTY SNAPSHOT"
+        eyebrow="빈 스냅샷"
         title="레이더"
         variant="empty"
       />
@@ -575,7 +556,7 @@ export default function RadarTabScreen() {
         {dataState === 'degraded' && datasetRiskDisclosure ? (
           <InlineFeedbackNotice
             action={{
-              label: '다시 시도',
+              label: MOBILE_COPY.action.retry,
               onPress: () => setReloadCount((count) => count + 1),
               testID: 'radar-degraded-retry',
             }}
@@ -718,8 +699,8 @@ function RadarFeaturedSection({
           testID="radar-featured-card"
         >
           <Text style={styles.featuredEyebrow}>{item.dayLabel}</Text>
-          <Text style={styles.featuredTitle}>{item.team.displayName}</Text>
-          <Text style={styles.featuredBody}>{formatFeaturedBody(item)}</Text>
+          <Text numberOfLines={1} style={styles.featuredTitle}>{item.team.displayName}</Text>
+          <Text numberOfLines={2} style={styles.featuredBody}>{formatFeaturedBody(item)}</Text>
           <View style={styles.chipRow}>
             <StatusChip label={resolveUpcomingStatusLabel(item.upcoming.status)} styles={styles} />
             {resolveConfidenceLabel(item.upcoming.confidence) ? (
@@ -730,7 +711,7 @@ function RadarFeaturedSection({
         <RadarActionRow
           onOpenSource={() => onOpenSource(item.sourceUrl)}
           onPressPrimary={() => onPressTeam(item.team.slug, 'featured_upcoming')}
-          primaryLabel="팀 페이지"
+          primaryLabel={MOBILE_COPY.action.teamPage}
           primaryTestID="radar-featured-primary"
             sourceLabel={item.sourceLabel}
             sourceTestID="radar-featured-source"
@@ -790,8 +771,8 @@ function RadarUpcomingSectionCard({
         <Text style={styles.cardBadgeLabel}>{resolveBadgeLabel(item.team)}</Text>
       </View>
       <View style={styles.cardCopy}>
-        <Text style={styles.cardTitle}>{item.team.displayName}</Text>
-        <Text style={styles.cardBody}>{formatFeaturedBody(item)}</Text>
+        <Text numberOfLines={1} style={styles.cardTitle}>{item.team.displayName}</Text>
+        <Text numberOfLines={2} style={styles.cardBody}>{formatFeaturedBody(item)}</Text>
         <View style={styles.chipRow}>
           <StatusChip label={resolveUpcomingStatusLabel(item.upcoming.status)} styles={styles} />
           {resolveConfidenceLabel(item.upcoming.confidence) ? (
@@ -804,7 +785,7 @@ function RadarUpcomingSectionCard({
         <RadarActionRow
           onOpenSource={() => onOpenSource(item.sourceUrl)}
           onPressPrimary={() => onPressTeam(item.team.slug, 'weekly_upcoming')}
-          primaryLabel="팀 페이지"
+          primaryLabel={MOBILE_COPY.action.teamPage}
           primaryTestID={`${testID}-primary`}
           sourceLabel={item.sourceLabel}
           sourceTestID={`${testID}-source`}
@@ -840,8 +821,8 @@ function RadarChangeFeedCard({
         <Text style={styles.cardBadgeLabel}>{resolveBadgeLabel(item.team)}</Text>
       </View>
       <View style={styles.cardCopy}>
-        <Text style={styles.cardTitle}>{item.team.displayName}</Text>
-        <Text style={styles.cardBody}>{item.releaseLabel ?? item.headline ?? item.changeTypeLabel}</Text>
+        <Text numberOfLines={1} style={styles.cardTitle}>{item.team.displayName}</Text>
+        <Text numberOfLines={2} style={styles.cardBody}>{item.releaseLabel ?? item.headline ?? item.changeTypeLabel}</Text>
         <View style={styles.chipRow}>
           <StatusChip label={item.changeTypeLabel} styles={styles} tone="title" />
         </View>
@@ -850,7 +831,7 @@ function RadarChangeFeedCard({
         <RadarActionRow
           onOpenSource={() => onOpenSource(item.sourceUrl)}
           onPressPrimary={() => onPressTeam(item.team.slug, 'change_feed')}
-          primaryLabel="팀 페이지"
+          primaryLabel={MOBILE_COPY.action.teamPage}
           primaryTestID={`radar-change-primary-${item.team.slug}`}
           sourceLabel={item.sourceLabel}
           sourceTestID={`radar-change-source-${item.team.slug}`}
@@ -884,12 +865,12 @@ function RadarLongGapCard({
         <Text style={styles.cardBadgeLabel}>{resolveBadgeLabel(item.team)}</Text>
       </View>
       <View style={styles.cardCopy}>
-        <Text style={styles.cardTitle}>{item.team.displayName}</Text>
-        <Text style={styles.cardBody}>{formatLongGapBody(item)}</Text>
+        <Text numberOfLines={1} style={styles.cardTitle}>{item.team.displayName}</Text>
+        <Text numberOfLines={2} style={styles.cardBody}>{formatLongGapBody(item)}</Text>
         <Text style={styles.cardMeta}>{formatLongGapMeta(item)}</Text>
         <RadarActionRow
           onPressPrimary={() => onPressTeam(item.team.slug, 'long_gap')}
-          primaryLabel="팀 페이지"
+          primaryLabel={MOBILE_COPY.action.teamPage}
           primaryTestID={`radar-long-gap-primary-${item.team.slug}`}
           styles={styles}
         />
@@ -920,12 +901,12 @@ function RadarRookieCard({
         <Text style={styles.cardBadgeLabel}>{resolveBadgeLabel(item.team)}</Text>
       </View>
       <View style={styles.cardCopy}>
-        <Text style={styles.cardTitle}>{item.team.displayName}</Text>
-        <Text style={styles.cardBody}>{formatRookieBody(item)}</Text>
+        <Text numberOfLines={1} style={styles.cardTitle}>{item.team.displayName}</Text>
+        <Text numberOfLines={2} style={styles.cardBody}>{formatRookieBody(item)}</Text>
         <Text style={styles.cardMeta}>{formatRookieMeta(item)}</Text>
         <RadarActionRow
           onPressPrimary={() => onPressTeam(item.team.slug, 'rookie')}
-          primaryLabel="팀 페이지"
+          primaryLabel={MOBILE_COPY.action.teamPage}
           primaryTestID={`radar-rookie-primary-${item.team.slug}`}
           styles={styles}
         />
@@ -1019,7 +1000,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
       backgroundColor: theme.colors.surface.elevated,
-      minHeight: 44,
+      minHeight: theme.size.button.heightSecondary,
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
       justifyContent: 'center',
@@ -1213,7 +1194,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       marginTop: theme.space[4],
     },
     primaryActionButton: {
-      minHeight: 44,
+      minHeight: theme.size.button.heightPrimary,
       borderRadius: theme.radius.button,
       backgroundColor: theme.colors.text.brand,
       paddingHorizontal: theme.space[16],
@@ -1227,7 +1208,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontWeight: theme.typography.buttonService.fontWeight,
     },
     secondaryActionButton: {
-      minHeight: 44,
+      minHeight: theme.size.button.heightSecondary,
       borderRadius: theme.radius.button,
       borderWidth: 1,
       borderColor: theme.colors.border.default,
@@ -1243,7 +1224,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       fontWeight: theme.typography.buttonService.fontWeight,
     },
     metaActionButton: {
-      minHeight: 44,
+      minHeight: theme.size.button.heightSecondary,
       justifyContent: 'center',
       paddingVertical: theme.space[8],
     },

@@ -78,7 +78,7 @@ function TrackRowComponent({
       </Text>
       <View style={styles.trackCopy}>
         <View style={styles.trackTitleRow}>
-          <Text allowFontScaling style={styles.trackTitle}>
+          <Text allowFontScaling numberOfLines={2} style={styles.trackTitle}>
             {title}
           </Text>
           {isTitleTrack ? (
@@ -105,6 +105,7 @@ function createStyles(theme: MobileTheme) {
       flexDirection: 'row',
       gap: theme.space[12],
       alignItems: 'flex-start',
+      minHeight: theme.size.row.minHeight,
       padding: theme.space[12],
       borderRadius: theme.radius.card,
       backgroundColor: theme.colors.surface.elevated,

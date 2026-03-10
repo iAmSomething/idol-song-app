@@ -40,7 +40,7 @@ function UpcomingEventRowComponent({
     <View style={styles.card} testID={testID}>
       <TeamIdentityRow {...team} />
       <View style={styles.copy}>
-        <Text allowFontScaling style={styles.title}>
+        <Text allowFontScaling numberOfLines={2} style={styles.title}>
           {headline}
         </Text>
         {scheduledDate ? (

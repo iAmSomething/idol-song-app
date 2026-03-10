@@ -64,8 +64,8 @@ describe('DateDetailSheet', () => {
     expect(tree!.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
     expect(hasText(tree!, 'LOVE CATCHER')).toBe(true);
     expect(hasText(tree!, '3월 11일 발매/컴백')).toBe(true);
-    expect(hasText(tree!, 'Verified releases')).toBe(true);
-    expect(hasText(tree!, 'Scheduled comebacks')).toBe(true);
+    expect(hasText(tree!, '검증된 발매')).toBe(true);
+    expect(hasText(tree!, '날짜가 잡힌 예정 컴백')).toBe(true);
 
     await act(async () => {
       tree!.root.findByProps({ accessibilityLabel: '시트 닫기' }).props.onPress();

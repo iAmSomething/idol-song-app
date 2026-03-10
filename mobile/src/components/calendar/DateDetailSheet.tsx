@@ -70,7 +70,7 @@ function DateDetailSheetComponent({
         {verifiedRows.length > 0 ? (
           <View style={styles.subsection}>
             <Text allowFontScaling style={styles.subsectionTitle}>
-              Verified releases
+              검증된 발매
             </Text>
             {verifiedRows.map((row) => (
               <ReleaseSummaryRow key={row.testID ?? `${row.team.name}-${row.title}`} {...row} />
@@ -81,7 +81,7 @@ function DateDetailSheetComponent({
         {scheduledRows.length > 0 ? (
           <View style={styles.subsection}>
             <Text allowFontScaling style={styles.subsectionTitle}>
-              Scheduled comebacks
+              날짜가 잡힌 예정 컴백
             </Text>
             {scheduledRows.map((row) => (
               <UpcomingEventRow key={row.testID ?? `${row.team.name}-${row.headline}`} {...row} />

@@ -37,6 +37,12 @@ import {
 } from '../../src/features/routeState';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectCalendarMonthSnapshot } from '../../src/selectors';
+import {
+  MOBILE_COPY,
+  resolveSourceLinkLabel,
+  resolveUpcomingConfidenceLabel,
+  resolveUpcomingStatusLabel,
+} from '../../src/copy/mobileCopy';
 import { loadActiveMobileDataset } from '../../src/services/activeDataset';
 import {
   adaptBackendCalendarMonth,
@@ -65,9 +71,7 @@ import type { SourceLinkRowItem } from '../../src/components/meta/SourceLinkRow'
 import type {
   CalendarMonthSnapshotModel,
   ReleaseSummaryModel,
-  UpcomingConfidence,
   UpcomingEventModel,
-  UpcomingStatus,
 } from '../../src/types';
 
 function buildMonthKey(date: Date): string {
@@ -118,32 +122,6 @@ function formatReleaseKindChip(release: ReleaseSummaryModel): string | null {
   return value ? value.toUpperCase() : null;
 }
 
-function formatUpcomingStatus(status?: UpcomingStatus): string | undefined {
-  switch (status) {
-    case 'confirmed':
-      return '확정';
-    case 'rumor':
-      return '루머';
-    case 'scheduled':
-      return '예정';
-    default:
-      return undefined;
-  }
-}
-
-function formatUpcomingConfidence(confidence?: UpcomingConfidence): string | undefined {
-  switch (confidence) {
-    case 'high':
-      return '신뢰 높음';
-    case 'medium':
-      return '신뢰 중간';
-    case 'low':
-      return '신뢰 낮음';
-    default:
-      return undefined;
-  }
-}
-
 function formatUpcomingLabel(event: UpcomingEventModel): string {
   if (event.datePrecision === 'exact' && event.scheduledDate) {
     return formatExactDateLabel(event.scheduledDate);
@@ -153,7 +131,7 @@ function formatUpcomingLabel(event: UpcomingEventModel): string {
     return formatMonthOnlyLabel(event.scheduledMonth);
   }
 
-  return '날짜 미정';
+  return MOBILE_COPY.date.unknown;
 }
 
 function applyCalendarFilter(
@@ -262,7 +240,7 @@ export default function CalendarTabScreen() {
     surface: 'calendar',
     reloadKey: reloadCount,
     cacheKey: `calendar:${activeMonth}:${todayIsoDate}`,
-    fallbackErrorMessage: 'Calendar dataset could not be loaded right now.',
+    fallbackErrorMessage: '캘린더 데이터를 지금 불러오지 못했습니다.',
     loadBundled: loadBundledSnapshot,
     loadBackend: loadBackendSnapshot,
   });
@@ -616,7 +594,7 @@ export default function CalendarTabScreen() {
     return [
       {
         key: `${release.id}-source`,
-        label: '출처 보기',
+        label: MOBILE_COPY.action.sourceView,
         onPress: () => void openExternalUrl(release.sourceUrl),
         type: 'source',
         url: release.sourceUrl,
@@ -632,7 +610,7 @@ export default function CalendarTabScreen() {
     return [
       {
         key: `${event.id}-source`,
-        label: '기사/공식 공지',
+        label: resolveSourceLinkLabel(event.sourceType),
         onPress: () => void openExternalUrl(event.sourceUrl),
         type: 'source',
         url: event.sourceUrl,
@@ -650,12 +628,12 @@ export default function CalendarTabScreen() {
       chips: kindChip ? [{ key: `${release.id}-kind`, label: kindChip }] : [],
       date: formatExactDateLabel(release.releaseDate),
       primaryAction: {
-        label: '팀 페이지',
+        label: MOBILE_COPY.action.teamPage,
         onPress: () => openTeamDetailByGroup(release.group),
         testID: `${testPrefix}-primary-${release.id}`,
       },
       secondaryAction: {
-        label: '상세 보기',
+        label: MOBILE_COPY.action.detailView,
         onPress: () => openReleaseDetail(release.id),
         testID: `${testPrefix}-secondary-${release.id}`,
       },
@@ -676,16 +654,16 @@ export default function CalendarTabScreen() {
     testPrefix: string,
   ): UpcomingEventRowProps {
     return {
-      confidenceChip: formatUpcomingConfidence(event.confidence),
+      confidenceChip: resolveUpcomingConfidenceLabel(event.confidence),
       headline: event.releaseLabel ?? event.headline,
       primaryAction: {
-        label: '팀 페이지',
+        label: MOBILE_COPY.action.teamPage,
         onPress: () => openTeamDetailByGroup(event.group),
         testID: `${testPrefix}-primary-${event.id}`,
       },
       scheduledDate: formatUpcomingLabel(event),
       sourceLinks: buildUpcomingSourceLinks(event),
-      statusChip: formatUpcomingStatus(event.status),
+      statusChip: resolveUpcomingStatusLabel(event.status),
       team: {
         monogram: buildTeamMonogram(event.displayGroup),
         name: event.displayGroup,
@@ -764,7 +742,7 @@ export default function CalendarTabScreen() {
     return (
       <ScreenFeedbackState
         body="현재 월 데이터와 예정 신호를 불러오는 중입니다."
-        eyebrow="DATASET LOADING"
+        eyebrow="데이터 로딩"
         title="캘린더"
         variant="loading"
       />
@@ -775,11 +753,11 @@ export default function CalendarTabScreen() {
     return (
       <ScreenFeedbackState
         action={{
-          label: '다시 시도',
+          label: MOBILE_COPY.action.retry,
           onPress: () => setReloadCount((count) => count + 1),
         }}
         body={datasetState.message}
-        eyebrow="LOAD ERROR"
+        eyebrow="로드 오류"
         title="캘린더"
         variant="error"
       />
@@ -790,7 +768,7 @@ export default function CalendarTabScreen() {
     return (
       <ScreenFeedbackState
         body="현재 월 데이터를 찾지 못했습니다."
-        eyebrow="EMPTY MONTH"
+        eyebrow="빈 월"
         title="캘린더"
         variant="empty"
       />
@@ -970,12 +948,12 @@ export default function CalendarTabScreen() {
           <View style={styles.sectionCard}>
             <View style={styles.sectionHeader}>
               <Text accessibilityRole="header" style={styles.sectionTitle}>
-                Month-only signals
+                월 단위 예정 신호
               </Text>
               <Text style={styles.sectionMeta}>{filteredSnapshot.monthOnlyUpcoming.length}건</Text>
             </View>
             {filterMode === 'releases' ? (
-              <InlineFeedbackNotice body="현재 필터에서는 month-only 예정 신호를 숨깁니다." />
+              <InlineFeedbackNotice body="현재 필터에서는 월 단위 예정 신호를 숨깁니다." />
             ) : listMonthOnlyRows.length > 0 ? (
               <View style={styles.sectionStack}>
                 {listMonthOnlyRows.map((row) => (
@@ -983,7 +961,7 @@ export default function CalendarTabScreen() {
                 ))}
               </View>
             ) : (
-              <InlineFeedbackNotice body="현재 월에 month-only 예정 신호가 없습니다." />
+              <InlineFeedbackNotice body="현재 월에 월 단위 예정 신호가 없습니다." />
             )}
           </View>
         ) : null}
@@ -994,7 +972,7 @@ export default function CalendarTabScreen() {
               <View style={styles.sectionCard}>
                 <View style={styles.sectionHeader}>
                   <Text accessibilityRole="header" style={styles.sectionTitle}>
-                    Verified releases
+                    검증된 발매
                   </Text>
                   <Text style={styles.sectionMeta}>{listReleaseRows.length}건</Text>
                 </View>
@@ -1014,7 +992,7 @@ export default function CalendarTabScreen() {
               <View style={styles.sectionCard}>
                 <View style={styles.sectionHeader}>
                   <Text accessibilityRole="header" style={styles.sectionTitle}>
-                    Scheduled comebacks
+                    날짜가 잡힌 예정 컴백
                   </Text>
                   <Text style={styles.sectionMeta}>{listExactUpcomingRows.length}건</Text>
                 </View>
@@ -1025,7 +1003,7 @@ export default function CalendarTabScreen() {
                     ))}
                   </View>
                 ) : (
-                  <InlineFeedbackNotice body="현재 월에 exact 예정 컴백이 없습니다." />
+                  <InlineFeedbackNotice body="현재 월에 날짜가 잡힌 예정 컴백이 없습니다." />
                 )}
               </View>
             ) : null}
@@ -1033,12 +1011,12 @@ export default function CalendarTabScreen() {
             <View style={styles.sectionCard}>
               <View style={styles.sectionHeader}>
                 <Text accessibilityRole="header" style={styles.sectionTitle}>
-                  Month-only signals
+                  월 단위 예정 신호
                 </Text>
                 <Text style={styles.sectionMeta}>{listMonthOnlyRows.length}건</Text>
               </View>
               {filterMode === 'releases' ? (
-                <InlineFeedbackNotice body="현재 필터에서는 month-only 예정 신호를 숨깁니다." />
+                <InlineFeedbackNotice body="현재 필터에서는 월 단위 예정 신호를 숨깁니다." />
               ) : listMonthOnlyRows.length > 0 ? (
                 <View style={styles.sectionStack}>
                   {listMonthOnlyRows.map((row) => (
@@ -1046,7 +1024,7 @@ export default function CalendarTabScreen() {
                   ))}
                 </View>
               ) : (
-                <InlineFeedbackNotice body="현재 월에 month-only 예정 신호가 없습니다." />
+                <InlineFeedbackNotice body="현재 월에 월 단위 예정 신호가 없습니다." />
               )}
             </View>
           </View>
@@ -1119,7 +1097,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       justifyContent: 'flex-end',
     },
     headerButton: {
-      minHeight: 40,
+      minHeight: theme.size.button.heightSecondary,
       justifyContent: 'center',
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],

@@ -43,7 +43,7 @@ function SourceLinkRowComponent({ links, testID }: SourceLinkRowProps) {
           onPress={link.onPress}
           style={({ pressed }) => [styles.link, pressed ? styles.pressed : null]}
         >
-          <Text allowFontScaling style={styles.linkLabel}>
+          <Text allowFontScaling numberOfLines={2} style={styles.linkLabel}>
             {link.label}
           </Text>
         </Pressable>
