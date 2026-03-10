@@ -31,12 +31,9 @@ function SheetHeaderComponent({
     <View style={styles.wrapper}>
       <View style={styles.handle} />
       <View style={styles.header}>
-        <View style={styles.copy}>
-          <Text accessibilityRole="header" style={styles.title}>
-            {title}
-          </Text>
-          {summary ? <Text style={styles.summary}>{summary}</Text> : null}
-        </View>
+        <Text accessibilityRole="header" style={styles.title}>
+          {title}
+        </Text>
         {showCloseButton && onClose ? (
           <Pressable
             accessibilityLabel="시트 닫기"
@@ -49,6 +46,7 @@ function SheetHeaderComponent({
           </Pressable>
         ) : null}
       </View>
+      {summary ? <Text style={styles.summary}>{summary}</Text> : null}
     </View>
   );
 }
@@ -71,11 +69,8 @@ function createStyles(theme: MobileTheme) {
       justifyContent: 'space-between',
       gap: theme.space[12],
     },
-    copy: {
-      flex: 1,
-      gap: theme.space[4],
-    },
     title: {
+      flex: 1,
       ...theme.typography.sectionTitle,
       color: theme.colors.text.primary,
     },

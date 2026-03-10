@@ -26,23 +26,29 @@ export interface FilterSheetGroup {
 }
 
 export interface FilterSheetProps {
+  applyButtonTestID?: string;
+  closeButtonTestID?: string;
   groups: FilterSheetGroup[];
   isOpen: boolean;
   onApply: () => void;
   onClose: () => void;
   onReset: () => void;
   onToggleOption: (groupKey: string, optionKey: string) => void;
+  resetButtonTestID?: string;
   testID?: string;
   title?: string;
 }
 
 function FilterSheetComponent({
+  applyButtonTestID,
+  closeButtonTestID,
   groups,
   isOpen,
   onApply,
   onClose,
   onReset,
   onToggleOption,
+  resetButtonTestID,
   testID,
   title = '필터',
 }: FilterSheetProps) {
@@ -60,7 +66,13 @@ function FilterSheetComponent({
       <View style={styles.overlay} testID={testID}>
         <Pressable accessible={false} onPress={onClose} style={styles.backdrop} />
         <View style={styles.sheet}>
-          <SheetHeader onClose={onClose} showCloseButton summary="적용 전까지 임시 상태를 유지합니다." title={title} />
+          <SheetHeader
+            closeButtonTestID={closeButtonTestID}
+            onClose={onClose}
+            showCloseButton
+            summary="적용 전까지 임시 상태를 유지합니다."
+            title={title}
+          />
           <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
             {groups.map((group) => (
               <View key={group.key} style={styles.group}>
@@ -89,8 +101,8 @@ function FilterSheetComponent({
             ))}
           </ScrollView>
           <View style={styles.actions}>
-            <ActionButton label="초기화" onPress={onReset} tone="secondary" />
-            <ActionButton label="적용" onPress={onApply} tone="primary" />
+            <ActionButton label="초기화" onPress={onReset} testID={resetButtonTestID} tone="secondary" />
+            <ActionButton label="적용" onPress={onApply} testID={applyButtonTestID} tone="primary" />
           </View>
         </View>
       </View>

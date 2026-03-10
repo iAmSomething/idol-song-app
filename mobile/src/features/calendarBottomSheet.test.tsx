@@ -64,9 +64,14 @@ describe('calendar selected-day bottom sheet', () => {
     });
 
     expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
-    expect(tree.root.findAllByType(Text).some((node) => node.props.children === '2026년 3월 11일')).toBe(true);
+    expect(tree.root.findAllByType(Text).some((node) => node.props.children === '3월 11일 발매/컴백')).toBe(
+      true,
+    );
+    expect(tree.root.findAllByType(Text).some((node) => node.props.children === '발매 1 · 예정 1')).toBe(true);
     expect(tree.root.findAllByType(Text).some((node) => node.props.children === 'Verified releases')).toBe(true);
     expect(tree.root.findAllByType(Text).some((node) => node.props.children === 'Scheduled comebacks')).toBe(true);
+    expect(tree.root.findAllByType(Text).some((node) => node.props.children === 'LOVE CATCHER')).toBe(true);
+    expect(tree.root.findAllByType(Text).some((node) => node.props.children === '팀 페이지')).toBe(true);
 
     await act(async () => {
       tree.root.findByProps({ testID: 'calendar-sheet-backdrop' }).props.onPress();
@@ -113,8 +118,7 @@ describe('calendar selected-day bottom sheet', () => {
     expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' }).props.accessibilityViewIsModal).toBe(true);
     expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 3월');
-    expect(tree.root.findByProps({ testID: 'calendar-filter-upcoming' }).props.accessibilityState.selected).toBe(
-      true,
-    );
+    expect(tree.root.findAllByType(Text).some((node) => node.props.children === '예정만')).toBe(true);
+    expect(tree.root.findAllByType(Text).some((node) => node.props.children === '발매 0 · 예정 1')).toBe(true);
   });
 });

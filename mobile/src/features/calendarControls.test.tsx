@@ -7,13 +7,18 @@ import { trackAnalyticsEvent } from '../services/analytics';
 
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({}));
+  const push = jest.fn();
+  const setParams = jest.fn();
 
   return {
     useLocalSearchParams,
     useRouter: () => ({
-      setParams: jest.fn(),
+      push,
+      setParams,
     }),
     __mock: {
+      push,
+      setParams,
       useLocalSearchParams,
     },
   };
@@ -31,6 +36,8 @@ jest.mock('react-native/Libraries/Modal/Modal', () => {
 
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
+    push: jest.Mock;
+    setParams: jest.Mock;
     useLocalSearchParams: jest.Mock;
   };
 };
@@ -77,6 +84,8 @@ describe('calendar controls', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-03-07T09:00:00.000Z'));
     __mock.useLocalSearchParams.mockReturnValue({});
+    __mock.push.mockReset();
+    __mock.setParams.mockReset();
     mockTrackAnalyticsEvent.mockClear();
   });
 
@@ -84,10 +93,16 @@ describe('calendar controls', () => {
     jest.useRealTimers();
   });
 
-  test('moves across months and jumps back to today', async () => {
+  test('renders compact chrome and moves across months', async () => {
     const tree = await renderCalendarScreen();
 
     expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 3월');
+    expect(hasText(tree, '이번 달 발매')).toBe(true);
+    expect(hasText(tree, '예정 컴백')).toBe(true);
+    expect(hasText(tree, '가장 가까운 일정')).toBe(true);
+    expect(tree.root.findByProps({ testID: 'calendar-view-calendar' }).props.accessibilityState.selected).toBe(
+      true,
+    );
     expect(tree.root.findByProps({ testID: 'calendar-month-next' }).props.accessibilityLabel).toBe(
       '2026년 4월로 이동',
     );
@@ -99,58 +114,58 @@ describe('calendar controls', () => {
     expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 4월');
 
     await act(async () => {
-      tree.root.findByProps({ testID: 'calendar-jump-today' }).props.onPress();
+      tree.root.findByProps({ testID: 'calendar-month-prev' }).props.onPress();
     });
-
     expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 3월');
   });
 
-  test('opens the nearest upcoming day from the quick-jump action', async () => {
+  test('opens the filter sheet and only commits draft changes on apply', async () => {
     const tree = await renderCalendarScreen();
 
-    expect(tree.root.findByProps({ testID: 'calendar-jump-nearest' }).props.accessibilityLabel).toContain(
-      '가장 가까운 일정',
+    await act(async () => {
+      tree.root.findByProps({ testID: 'calendar-filter-open' }).props.onPress();
+    });
+
+    expect(tree.root.findByProps({ testID: 'calendar-filter-sheet' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'calendar-filter-sheet-mode-all' }).props.accessibilityState.selected).toBe(
+      true,
     );
 
     await act(async () => {
-      tree.root.findByProps({ testID: 'calendar-month-next' }).props.onPress();
+      tree.root.findByProps({ testID: 'calendar-filter-sheet-mode-upcoming' }).props.onPress();
     });
-
-    expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 4월');
 
     await act(async () => {
-      tree.root.findByProps({ testID: 'calendar-jump-nearest' }).props.onPress();
+      tree.root.findByProps({ testID: 'calendar-filter-close' }).props.onPress();
     });
 
-    expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 3월');
+    await act(async () => {
+      tree.root.findByProps({ testID: 'calendar-filter-open' }).props.onPress();
+    });
+
+    expect(tree.root.findByProps({ testID: 'calendar-filter-sheet-mode-all' }).props.accessibilityState.selected).toBe(
+      true,
+    );
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'calendar-day-2026-03-12' }).props.onPress();
+    });
+
     expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
-    expect(hasText(tree, '2026년 3월 11일')).toBe(true);
-    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
-      'calendar_quick_jump_used',
-      expect.objectContaining({
-        target: 'nearest_upcoming',
-        fromMonth: '2026-04',
-        toMonth: '2026-03',
-      }),
-    );
-    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
-      'calendar_date_drill_opened',
-      expect.objectContaining({
-        date: '2026-03-11',
-        source: 'nearest_upcoming',
-      }),
-    );
-  });
-
-  test('keeps month-only items outside the grid and applies compact filters', async () => {
-    const tree = await renderCalendarScreen();
-
-    expect(hasText(tree, '2026-03 · 날짜 미정')).toBe(true);
 
     await act(async () => {
-      tree.root.findByProps({ testID: 'calendar-filter-releases' }).props.onPress();
+      tree.root.findByProps({ testID: 'calendar-filter-open' }).props.onPress();
     });
 
+    await act(async () => {
+      tree.root.findByProps({ testID: 'calendar-filter-sheet-mode-releases' }).props.onPress();
+    });
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'calendar-filter-apply' }).props.onPress();
+    });
+
+    expect(tree.root.findAllByProps({ testID: 'calendar-bottom-sheet' })).toHaveLength(0);
     expect(hasText(tree, '현재 필터에서는 month-only 예정 신호를 숨깁니다.')).toBe(true);
     expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
       'calendar_filter_changed',
@@ -161,39 +176,42 @@ describe('calendar controls', () => {
     );
 
     await act(async () => {
-      tree.root.findByProps({ testID: 'calendar-filter-upcoming' }).props.onPress();
+      tree.root.findByProps({ testID: 'calendar-filter-open' }).props.onPress();
     });
 
     await act(async () => {
-      tree.root.findByProps({ testID: 'calendar-day-2026-03-03' }).props.onPress();
+      tree.root.findByProps({ testID: 'calendar-filter-reset' }).props.onPress();
     });
 
-    expect(hasText(tree, '이 날짜에는 등록된 일정이 없습니다.')).toBe(true);
+    await act(async () => {
+      tree.root.findByProps({ testID: 'calendar-filter-apply' }).props.onPress();
+    });
+
+    expect(hasText(tree, '현재 필터에서는 month-only 예정 신호를 숨깁니다.')).toBe(false);
     expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
-      'calendar_date_drill_opened',
+      'calendar_filter_changed',
       expect.objectContaining({
-        date: '2026-03-03',
-        source: 'grid',
-        filterMode: 'upcoming',
+        filterMode: 'all',
+        month: '2026-03',
       }),
     );
   });
 
-  test('switches to list view and keeps the same day drill-in contract', async () => {
+  test('renders list mode with separated verified, exact, and month-only sections', async () => {
     const tree = await renderCalendarScreen();
 
     await act(async () => {
       tree.root.findByProps({ testID: 'calendar-view-list' }).props.onPress();
     });
 
-    expect(tree.root.findByProps({ testID: 'calendar-list-row-2026-03-11' })).toBeDefined();
-    expect(hasTextContaining(tree, '발매 1 · 예정 0')).toBe(true);
-
-    await act(async () => {
-      tree.root.findByProps({ testID: 'calendar-list-row-2026-03-11' }).props.onPress();
-    });
-
-    expect(tree.root.findByProps({ testID: 'calendar-bottom-sheet' })).toBeDefined();
-    expect(hasText(tree, '2026년 3월 11일')).toBe(true);
+    expect(tree.root.findByProps({ testID: 'calendar-view-list' }).props.accessibilityState.selected).toBe(
+      true,
+    );
+    expect(hasText(tree, 'Verified releases')).toBe(true);
+    expect(hasText(tree, 'Scheduled comebacks')).toBe(true);
+    expect(hasText(tree, 'Month-only signals')).toBe(true);
+    expect(hasText(tree, 'LOVE CATCHER')).toBe(true);
+    expect(hasText(tree, 'DUH!')).toBe(true);
+    expect(hasTextContaining(tree, 'Rumored follow-up')).toBe(true);
   });
 });

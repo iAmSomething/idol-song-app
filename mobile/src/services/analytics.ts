@@ -56,12 +56,12 @@ export type AnalyticsEventMap = {
     month: string;
   };
   service_handoff_attempted: {
-    surface: 'release_detail';
+    surface: AnalyticsSurface;
     service: MusicService;
     mode: ServiceHandoffMode;
   };
   service_handoff_completed: {
-    surface: 'release_detail';
+    surface: AnalyticsSurface;
     service: MusicService;
     mode: ServiceHandoffMode;
     ok: boolean;

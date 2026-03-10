@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
+  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -11,12 +12,17 @@ import {
 import { DateDetailSheet } from '../../src/components/calendar/DateDetailSheet';
 import { DayCell } from '../../src/components/calendar/DayCell';
 import { SegmentedControl } from '../../src/components/controls/SegmentedControl';
-import {
-  InlineFeedbackNotice,
-  ScreenFeedbackState,
-} from '../../src/components/feedback/FeedbackState';
-import { AppBar } from '../../src/components/layout/AppBar';
+import { ScreenFeedbackState, InlineFeedbackNotice } from '../../src/components/feedback/FeedbackState';
+import { FilterSheet, type FilterSheetGroup } from '../../src/components/filters/FilterSheet';
 import { SummaryStrip } from '../../src/components/layout/SummaryStrip';
+import {
+  ReleaseSummaryRow,
+  type ReleaseSummaryRowProps,
+} from '../../src/components/release/ReleaseSummaryRow';
+import {
+  UpcomingEventRow,
+  type UpcomingEventRowProps,
+} from '../../src/components/upcoming/UpcomingEventRow';
 import {
   buildCalendarMonthGrid,
   resolveInitialCalendarSelection,
@@ -31,15 +37,23 @@ import {
   type CalendarViewMode,
 } from '../../src/features/routeState';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
+import { selectCalendarMonthSnapshot } from '../../src/selectors';
 import {
-  selectCalendarMonthSnapshot,
-  selectNearestExactUpcomingEvent,
-} from '../../src/selectors';
+  openServiceHandoff,
+  resolveServiceHandoff,
+  type ServiceHandoffFailure,
+  type ServiceHandoffResolution,
+} from '../../src/services/handoff';
 import { trackAnalyticsEvent } from '../../src/services/analytics';
 import { useAppTheme } from '../../src/tokens/theme';
+import type { ServiceButtonGroupItem } from '../../src/components/actions/ServiceButtonGroup';
+import type { SourceLinkRowItem } from '../../src/components/meta/SourceLinkRow';
 import type {
   CalendarMonthSnapshotModel,
+  ReleaseSummaryModel,
+  UpcomingConfidence,
   UpcomingEventModel,
+  UpcomingStatus,
 } from '../../src/types';
 
 function buildMonthKey(date: Date): string {
@@ -48,21 +62,30 @@ function buildMonthKey(date: Date): string {
   return `${year}-${month}`;
 }
 
+function moveMonthKey(month: string, offset: number): string {
+  const [year, monthValue] = month.split('-').map(Number);
+  const nextDate = new Date(year, monthValue - 1 + offset, 1);
+  return buildMonthKey(nextDate);
+}
+
 function formatMonthLabel(month: string): string {
   const [year, monthValue] = month.split('-');
   return `${year}년 ${Number(monthValue)}월`;
 }
 
-function formatUpcomingLabel(event: UpcomingEventModel): string {
-  if (event.datePrecision === 'exact' && event.scheduledDate) {
-    return event.scheduledDate;
-  }
+function formatExactDateLabel(isoDate: string): string {
+  const [year, month, day] = isoDate.split('-');
+  return `${year}년 ${Number(month)}월 ${Number(day)}일`;
+}
 
-  if (event.scheduledMonth) {
-    return `${event.scheduledMonth} · 날짜 미정`;
-  }
+function formatShortDateLabel(isoDate: string): string {
+  const [, month, day] = isoDate.split('-');
+  return `${Number(month)}월 ${Number(day)}일`;
+}
 
-  return '날짜 미정';
+function formatMonthOnlyLabel(month: string): string {
+  const [year, monthValue] = month.split('-');
+  return `${year}년 ${Number(monthValue)}월 · 날짜 미정`;
 }
 
 function formatFilterLabel(filterMode: CalendarFilterMode): string {
@@ -74,6 +97,49 @@ function formatFilterLabel(filterMode: CalendarFilterMode): string {
     default:
       return '전체';
   }
+}
+
+function formatReleaseKindChip(release: ReleaseSummaryModel): string | null {
+  const value = release.releaseKind?.trim();
+  return value ? value.toUpperCase() : null;
+}
+
+function formatUpcomingStatus(status?: UpcomingStatus): string | undefined {
+  switch (status) {
+    case 'confirmed':
+      return '확정';
+    case 'rumor':
+      return '루머';
+    case 'scheduled':
+      return '예정';
+    default:
+      return undefined;
+  }
+}
+
+function formatUpcomingConfidence(confidence?: UpcomingConfidence): string | undefined {
+  switch (confidence) {
+    case 'high':
+      return '신뢰 높음';
+    case 'medium':
+      return '신뢰 중간';
+    case 'low':
+      return '신뢰 낮음';
+    default:
+      return undefined;
+  }
+}
+
+function formatUpcomingLabel(event: UpcomingEventModel): string {
+  if (event.datePrecision === 'exact' && event.scheduledDate) {
+    return formatExactDateLabel(event.scheduledDate);
+  }
+
+  if (event.scheduledMonth) {
+    return formatMonthOnlyLabel(event.scheduledMonth);
+  }
+
+  return '날짜 미정';
 }
 
 function applyCalendarFilter(
@@ -102,74 +168,37 @@ function applyCalendarFilter(
   return snapshot;
 }
 
-function moveMonthKey(month: string, offset: number): string {
-  const [year, monthValue] = month.split('-').map(Number);
-  const next = new Date(year, monthValue - 1 + offset, 1);
-  return buildMonthKey(next);
-}
-
-function getSelectedDayCounts(snapshot: CalendarMonthSnapshotModel, isoDate: string): {
-  releaseCount: number;
-  upcomingCount: number;
-} {
+function getSelectedDayCounts(
+  snapshot: CalendarMonthSnapshotModel,
+  isoDate: string,
+): { releaseCount: number; upcomingCount: number } {
   return {
     releaseCount: snapshot.releases.filter((release) => release.releaseDate === isoDate).length,
     upcomingCount: snapshot.exactUpcoming.filter((event) => event.scheduledDate === isoDate).length,
   };
 }
 
-type CalendarListRowModel = {
-  isoDate: string;
-  label: string;
-  releaseCount: number;
-  releaseTitles: string[];
-  upcomingCount: number;
-  upcomingTitles: string[];
-};
+function buildTeamMonogram(value: string): string {
+  const compact = value.replace(/\s+/g, '');
+  if (!compact) {
+    return '??';
+  }
 
-function formatDayLabel(isoDate: string): string {
-  const [, month, day] = isoDate.split('-');
-  return `${Number(month)}월 ${Number(day)}일`;
+  const hasHangul = /[가-힣]/.test(compact);
+  if (hasHangul) {
+    return compact.slice(0, 2);
+  }
+
+  const normalized = compact.replace(/[^A-Za-z0-9]/g, '');
+  return (normalized || compact).slice(0, 2).toUpperCase();
 }
 
-function buildCalendarListRows(snapshot: CalendarMonthSnapshotModel): CalendarListRowModel[] {
-  const rows = new Map<string, CalendarListRowModel>();
-
-  for (const release of snapshot.releases) {
-    const current = rows.get(release.releaseDate) ?? {
-      isoDate: release.releaseDate,
-      label: formatDayLabel(release.releaseDate),
-      releaseCount: 0,
-      releaseTitles: [],
-      upcomingCount: 0,
-      upcomingTitles: [],
-    };
-
-    current.releaseCount += 1;
-    current.releaseTitles.push(release.releaseTitle);
-    rows.set(release.releaseDate, current);
+function buildReleaseIdentityMeta(release: ReleaseSummaryModel): string | undefined {
+  if (release.representativeSongTitle?.trim()) {
+    return `대표곡 · ${release.representativeSongTitle.trim()}`;
   }
 
-  for (const event of snapshot.exactUpcoming) {
-    if (!event.scheduledDate) {
-      continue;
-    }
-
-    const current = rows.get(event.scheduledDate) ?? {
-      isoDate: event.scheduledDate,
-      label: formatDayLabel(event.scheduledDate),
-      releaseCount: 0,
-      releaseTitles: [],
-      upcomingCount: 0,
-      upcomingTitles: [],
-    };
-
-    current.upcomingCount += 1;
-    current.upcomingTitles.push(event.releaseLabel ?? event.headline);
-    rows.set(event.scheduledDate, current);
-  }
-
-  return Array.from(rows.values()).sort((left, right) => left.isoDate.localeCompare(right.isoDate));
+  return release.contextTags[0];
 }
 
 export default function CalendarTabScreen() {
@@ -182,7 +211,7 @@ export default function CalendarTabScreen() {
     view?: string | string[];
   }>();
   const theme = useAppTheme();
-  const [reloadCount, setReloadCount] = useState(0);
+  const styles = useMemo(() => createStyles(theme), [theme]);
   const today = useMemo(() => new Date(), []);
   const currentMonth = useMemo(() => buildMonthKey(today), [today]);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
@@ -192,19 +221,23 @@ export default function CalendarTabScreen() {
   );
   const [activeMonth, setActiveMonth] = useState(routeState.activeMonth);
   const [filterMode, setFilterMode] = useState<CalendarFilterMode>(routeState.filterMode);
+  const [draftFilterMode, setDraftFilterMode] = useState<CalendarFilterMode>(routeState.filterMode);
+  const [isFilterSheetOpen, setIsFilterSheetOpen] = useState(false);
   const [selectedDayIso, setSelectedDayIso] = useState<string | null>(routeState.selectedDayIso);
   const [isSheetOpen, setIsSheetOpen] = useState(routeState.isSheetOpen);
   const [viewMode, setViewMode] = useState<CalendarViewMode>(routeState.viewMode);
+  const [reloadCount, setReloadCount] = useState(0);
+  const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const datasetState = useActiveDatasetScreen({
     surface: 'calendar',
     reloadKey: reloadCount,
     fallbackErrorMessage: 'Calendar dataset could not be loaded right now.',
   });
-  const styles = useMemo(() => createStyles(theme), [theme]);
 
   useEffect(() => {
     setActiveMonth(routeState.activeMonth);
     setFilterMode(routeState.filterMode);
+    setDraftFilterMode(routeState.filterMode);
     setSelectedDayIso(routeState.selectedDayIso);
     setIsSheetOpen(routeState.isSheetOpen);
     setViewMode(routeState.viewMode);
@@ -221,17 +254,18 @@ export default function CalendarTabScreen() {
     () => (source ? selectCalendarMonthSnapshot(source.dataset, activeMonth, todayIsoDate) : null),
     [activeMonth, source, todayIsoDate],
   );
-  const globalNearestUpcoming = useMemo(() => {
-    if (!source) {
-      return null;
-    }
-
-    return selectNearestExactUpcomingEvent(source.dataset, todayIsoDate);
-  }, [source, todayIsoDate]);
   const filteredSnapshot = useMemo(
     () => (snapshot ? applyCalendarFilter(snapshot, filterMode) : null),
     [filterMode, snapshot],
   );
+  const monthGrid = useMemo(() => {
+    if (!filteredSnapshot || !selectedDayIso) {
+      return null;
+    }
+
+    return buildCalendarMonthGrid(filteredSnapshot, selectedDayIso, todayIsoDate);
+  }, [filteredSnapshot, selectedDayIso, todayIsoDate]);
+  const selectedDay = monthGrid?.selectedDay ?? null;
   const datasetRiskDisclosure = source
     ? buildDatasetRiskDisclosure(source, '캘린더', 'calendar-dataset-risk-notice')
     : null;
@@ -263,19 +297,11 @@ export default function CalendarTabScreen() {
     });
   }, [filteredSnapshot, todayIsoDate]);
 
-  const monthGrid = useMemo(() => {
-    if (!filteredSnapshot || !selectedDayIso) {
-      return null;
+  useEffect(() => {
+    if (viewMode === 'list' && isSheetOpen) {
+      setIsSheetOpen(false);
     }
-
-    return buildCalendarMonthGrid(filteredSnapshot, selectedDayIso, todayIsoDate);
-  }, [filteredSnapshot, selectedDayIso, todayIsoDate]);
-
-  const selectedDay = monthGrid?.selectedDay ?? null;
-  const listRows = useMemo(
-    () => (filteredSnapshot ? buildCalendarListRows(filteredSnapshot) : []),
-    [filteredSnapshot],
-  );
+  }, [isSheetOpen, viewMode]);
 
   useEffect(() => {
     const currentRouteParams = buildCalendarRouteParams({
@@ -315,8 +341,51 @@ export default function CalendarTabScreen() {
     viewMode,
   ]);
 
-  function jumpToMonth(month: string, isoDate: string) {
-    setActiveMonth(month);
+  async function openExternalUrl(url?: string) {
+    if (!url) {
+      return;
+    }
+
+    try {
+      await Linking.openURL(url);
+      setHandoffFeedback(null);
+    } catch {
+      setHandoffFeedback('외부 링크를 열지 못했습니다. 잠시 후 다시 시도해 주세요.');
+    }
+  }
+
+  async function handleServiceHandoff(
+    handoff: ServiceHandoffResolution | ServiceHandoffFailure,
+  ) {
+    trackAnalyticsEvent('service_handoff_attempted', {
+      surface: 'calendar',
+      service: handoff.service,
+      mode: handoff.mode,
+    });
+    const result = await openServiceHandoff(handoff);
+    trackAnalyticsEvent('service_handoff_completed', {
+      surface: 'calendar',
+      service: result.service,
+      mode: result.mode,
+      ok: result.ok,
+      target: result.ok ? result.target : result.target,
+      failureCode: result.ok ? null : result.code,
+    });
+
+    if (!result.ok) {
+      setHandoffFeedback(result.feedback.message);
+      return;
+    }
+
+    setHandoffFeedback(null);
+  }
+
+  function openSearchTab() {
+    router.push('/(tabs)/search');
+  }
+
+  function jumpToMonth(nextMonth: string, isoDate: string) {
+    setActiveMonth(nextMonth);
     setSelectedDayIso(isoDate);
     setIsSheetOpen(false);
   }
@@ -326,50 +395,12 @@ export default function CalendarTabScreen() {
     jumpToMonth(nextMonth, resolveInitialCalendarSelection(nextMonth, todayIsoDate));
   }
 
-  function jumpToToday() {
-    trackAnalyticsEvent('calendar_quick_jump_used', {
-      target: 'today',
-      fromMonth: activeMonth,
-      toMonth: currentMonth,
-    });
-    setFilterMode('all');
-    jumpToMonth(currentMonth, todayIsoDate);
-  }
-
-  function jumpToNearestUpcoming() {
-    if (!source || !globalNearestUpcoming?.scheduledDate) {
-      return;
-    }
-
-    const nextMonth = globalNearestUpcoming.scheduledDate.slice(0, 7);
-    const baseSnapshot = selectCalendarMonthSnapshot(source.dataset, nextMonth, todayIsoDate);
-    const nextSnapshot = applyCalendarFilter(baseSnapshot, 'all');
-    const counts = getSelectedDayCounts(nextSnapshot, globalNearestUpcoming.scheduledDate);
-
-    trackAnalyticsEvent('calendar_quick_jump_used', {
-      target: 'nearest_upcoming',
-      fromMonth: activeMonth,
-      toMonth: nextMonth,
-    });
-    trackAnalyticsEvent('calendar_date_drill_opened', {
-      date: globalNearestUpcoming.scheduledDate,
-      source: 'nearest_upcoming',
-      filterMode: 'all',
-      releaseCount: counts.releaseCount,
-      upcomingCount: counts.upcomingCount,
-    });
-    setFilterMode('all');
-    setActiveMonth(nextMonth);
-    setSelectedDayIso(globalNearestUpcoming.scheduledDate);
-    setIsSheetOpen(true);
-  }
-
-  function openDaySheet(isoDate: string, sourceLabel: 'grid' | 'nearest_upcoming' = 'grid') {
+  function openDaySheet(isoDate: string) {
     if (filteredSnapshot) {
       const counts = getSelectedDayCounts(filteredSnapshot, isoDate);
       trackAnalyticsEvent('calendar_date_drill_opened', {
         date: isoDate,
-        source: sourceLabel,
+        source: 'grid',
         filterMode,
         releaseCount: counts.releaseCount,
         upcomingCount: counts.upcomingCount,
@@ -399,7 +430,6 @@ export default function CalendarTabScreen() {
 
   function openTeamDetailByGroup(group: string) {
     const slug = groupSlugByGroup.get(group);
-
     if (!slug) {
       return;
     }
@@ -410,16 +440,43 @@ export default function CalendarTabScreen() {
     });
   }
 
-  function handleFilterChange(nextFilterMode: CalendarFilterMode) {
-    if (filterMode === nextFilterMode || !filteredSnapshot) {
+  function openFilterSheet() {
+    setDraftFilterMode(filterMode);
+    setIsFilterSheetOpen(true);
+  }
+
+  function closeFilterSheet() {
+    setDraftFilterMode(filterMode);
+    setIsFilterSheetOpen(false);
+  }
+
+  function applyFilterSheet() {
+    if (!snapshot) {
+      setIsFilterSheetOpen(false);
       return;
     }
 
-    trackAnalyticsEvent('calendar_filter_changed', {
-      filterMode: nextFilterMode,
-      month: filteredSnapshot.month,
-    });
-    setFilterMode(nextFilterMode);
+    if (filterMode !== draftFilterMode) {
+      trackAnalyticsEvent('calendar_filter_changed', {
+        filterMode: draftFilterMode,
+        month: snapshot.month,
+      });
+    }
+
+    const nextSnapshot = applyCalendarFilter(snapshot, draftFilterMode);
+    if (isSheetOpen && selectedDayIso) {
+      const counts = getSelectedDayCounts(nextSnapshot, selectedDayIso);
+      if (counts.releaseCount === 0 && counts.upcomingCount === 0) {
+        setIsSheetOpen(false);
+      }
+    }
+
+    setFilterMode(draftFilterMode);
+    setIsFilterSheetOpen(false);
+  }
+
+  function resetFilterSheet() {
+    setDraftFilterMode('all');
   }
 
   function handleViewChange(nextViewMode: CalendarViewMode) {
@@ -427,7 +484,209 @@ export default function CalendarTabScreen() {
       return;
     }
 
+    if (nextViewMode === 'list') {
+      setIsSheetOpen(false);
+    }
     setViewMode(nextViewMode);
+  }
+
+  function buildReleaseServiceButtons(release: ReleaseSummaryModel): ServiceButtonGroupItem[] {
+    const albumQuery = `${release.displayGroup} ${release.releaseTitle}`;
+    const mvQuery = `${release.displayGroup} ${release.representativeSongTitle ?? release.releaseTitle}`;
+    const spotify = resolveServiceHandoff({
+      service: 'spotify',
+      query: albumQuery,
+      canonicalUrl: release.spotifyUrl,
+    });
+    const youtubeMusic = resolveServiceHandoff({
+      service: 'youtubeMusic',
+      query: albumQuery,
+      canonicalUrl: release.youtubeMusicUrl,
+    });
+    const youtubeMv = resolveServiceHandoff({
+      service: 'youtubeMv',
+      query: mvQuery,
+      canonicalUrl: release.youtubeMvUrl,
+    });
+
+    return [
+      {
+        accessibilityLabel: `Spotify에서 ${release.releaseTitle} 열기`,
+        key: `${release.id}-spotify`,
+        label: 'Spotify',
+        mode: spotify.mode,
+        onPress: () => void handleServiceHandoff(spotify),
+        service: 'spotify',
+        testID: `calendar-release-service-spotify-${release.id}`,
+      },
+      {
+        accessibilityLabel: `YouTube Music에서 ${release.releaseTitle} 열기`,
+        key: `${release.id}-youtube-music`,
+        label: 'YouTube Music',
+        mode: youtubeMusic.mode,
+        onPress: () => void handleServiceHandoff(youtubeMusic),
+        service: 'youtubeMusic',
+        testID: `calendar-release-service-youtube-music-${release.id}`,
+      },
+      {
+        accessibilityLabel: `YouTube에서 ${release.representativeSongTitle ?? release.releaseTitle} MV 열기`,
+        key: `${release.id}-youtube-mv`,
+        label: 'YouTube MV',
+        mode: youtubeMv.mode,
+        onPress: () => void handleServiceHandoff(youtubeMv),
+        service: 'youtubeMv',
+        testID: `calendar-release-service-youtube-mv-${release.id}`,
+      },
+    ];
+  }
+
+  function buildReleaseSourceLinks(release: ReleaseSummaryModel): SourceLinkRowItem[] {
+    if (!release.sourceUrl) {
+      return [];
+    }
+
+    return [
+      {
+        key: `${release.id}-source`,
+        label: '출처 보기',
+        onPress: () => void openExternalUrl(release.sourceUrl),
+        type: 'source',
+        url: release.sourceUrl,
+      },
+    ];
+  }
+
+  function buildUpcomingSourceLinks(event: UpcomingEventModel): SourceLinkRowItem[] {
+    if (!event.sourceUrl) {
+      return [];
+    }
+
+    return [
+      {
+        key: `${event.id}-source`,
+        label: '기사/공식 공지',
+        onPress: () => void openExternalUrl(event.sourceUrl),
+        type: 'source',
+        url: event.sourceUrl,
+      },
+    ];
+  }
+
+  function buildReleaseRowProps(
+    release: ReleaseSummaryModel,
+    testPrefix: string,
+  ): ReleaseSummaryRowProps {
+    const kindChip = formatReleaseKindChip(release);
+
+    return {
+      chips: kindChip ? [{ key: `${release.id}-kind`, label: kindChip }] : [],
+      date: formatExactDateLabel(release.releaseDate),
+      primaryAction: {
+        label: '팀 페이지',
+        onPress: () => openTeamDetailByGroup(release.group),
+      },
+      secondaryAction: {
+        label: '상세 보기',
+        onPress: () => openReleaseDetail(release.id),
+      },
+      serviceButtons: buildReleaseServiceButtons(release),
+      sourceLinks: buildReleaseSourceLinks(release),
+      team: {
+        meta: buildReleaseIdentityMeta(release),
+        monogram: buildTeamMonogram(release.displayGroup),
+        name: release.displayGroup,
+      },
+      testID: `${testPrefix}-${release.id}`,
+      title: release.releaseTitle,
+    };
+  }
+
+  function buildUpcomingRowProps(
+    event: UpcomingEventModel,
+    testPrefix: string,
+  ): UpcomingEventRowProps {
+    return {
+      confidenceChip: formatUpcomingConfidence(event.confidence),
+      headline: event.releaseLabel ?? event.headline,
+      primaryAction: {
+        label: '팀 페이지',
+        onPress: () => openTeamDetailByGroup(event.group),
+      },
+      scheduledDate: formatUpcomingLabel(event),
+      sourceLinks: buildUpcomingSourceLinks(event),
+      statusChip: formatUpcomingStatus(event.status),
+      team: {
+        monogram: buildTeamMonogram(event.displayGroup),
+        name: event.displayGroup,
+      },
+      testID: `${testPrefix}-${event.id}`,
+    };
+  }
+
+  const selectedDayReleaseRows = (selectedDay?.releases ?? [])
+    .slice()
+    .sort(
+      (left, right) =>
+        left.displayGroup.localeCompare(right.displayGroup) ||
+        left.releaseTitle.localeCompare(right.releaseTitle),
+    )
+    .map((release) => buildReleaseRowProps(release, 'calendar-sheet-release'));
+  const selectedDayUpcomingRows = (selectedDay?.exactUpcoming ?? [])
+    .slice()
+    .sort(
+      (left, right) =>
+        left.displayGroup.localeCompare(right.displayGroup) ||
+        (left.releaseLabel ?? left.headline).localeCompare(right.releaseLabel ?? right.headline),
+    )
+    .map((event) => buildUpcomingRowProps(event, 'calendar-sheet-upcoming'));
+  const listReleaseRows = filteredSnapshot
+    ? filteredSnapshot.releases
+        .slice()
+        .sort(
+          (left, right) =>
+            left.releaseDate.localeCompare(right.releaseDate) ||
+            left.displayGroup.localeCompare(right.displayGroup),
+        )
+        .map((release) => buildReleaseRowProps(release, 'calendar-list-release'))
+    : [];
+  const listExactUpcomingRows = filteredSnapshot
+    ? filteredSnapshot.exactUpcoming
+        .slice()
+        .sort(
+          (left, right) =>
+            (left.scheduledDate ?? '').localeCompare(right.scheduledDate ?? '') ||
+            left.displayGroup.localeCompare(right.displayGroup),
+        )
+        .map((event) => buildUpcomingRowProps(event, 'calendar-list-upcoming'))
+    : [];
+  const listMonthOnlyRows = filteredSnapshot
+    ? filteredSnapshot.monthOnlyUpcoming
+        .slice()
+        .sort(
+          (left, right) =>
+            (left.scheduledMonth ?? '').localeCompare(right.scheduledMonth ?? '') ||
+            left.displayGroup.localeCompare(right.displayGroup),
+        )
+        .map((event) => buildUpcomingRowProps(event, 'calendar-list-month-only'))
+    : [];
+
+  const filterGroups = useMemo<FilterSheetGroup[]>(
+    () => [
+      {
+        key: 'mode',
+        label: '표시 대상',
+        options: [
+          { key: 'all', label: '전체', selected: draftFilterMode === 'all' },
+          { key: 'releases', label: '발매', selected: draftFilterMode === 'releases' },
+          { key: 'upcoming', label: '예정', selected: draftFilterMode === 'upcoming' },
+        ],
+      },
+    ],
+    [draftFilterMode],
+  );
+
+  function handleFilterOptionToggle(_groupKey: string, optionKey: string) {
+    setDraftFilterMode(optionKey as CalendarFilterMode);
   }
 
   if (datasetState.kind === 'loading') {
@@ -435,7 +694,7 @@ export default function CalendarTabScreen() {
       <ScreenFeedbackState
         body="현재 월 데이터와 예정 신호를 불러오는 중입니다."
         eyebrow="DATASET LOADING"
-        title="Calendar"
+        title="캘린더"
         variant="loading"
       />
     );
@@ -450,7 +709,7 @@ export default function CalendarTabScreen() {
         }}
         body={datasetState.message}
         eyebrow="LOAD ERROR"
-        title="Calendar"
+        title="캘린더"
         variant="error"
       />
     );
@@ -461,37 +720,85 @@ export default function CalendarTabScreen() {
       <ScreenFeedbackState
         body="현재 월 데이터를 찾지 못했습니다."
         eyebrow="EMPTY MONTH"
-        title="Calendar"
+        title="캘린더"
         variant="empty"
       />
     );
   }
 
+  const selectedDaySummary = selectedDay
+    ? `발매 ${selectedDay.releases.length} · 예정 ${selectedDay.exactUpcoming.length}`
+    : '발매 0 · 예정 0';
+  const nearestSummary = filteredSnapshot.nearestUpcoming?.scheduledDate
+    ? `${filteredSnapshot.nearestUpcoming.displayGroup} · ${formatShortDateLabel(filteredSnapshot.nearestUpcoming.scheduledDate)}`
+    : '없음';
+
   return (
     <>
-      <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-        <AppBar
-          leadingAction={{
-            accessibilityHint: '이전 달 일정을 봅니다.',
-            accessibilityLabel: `${formatMonthLabel(moveMonthKey(activeMonth, -1))}로 이동`,
-            label: '이전',
-            onPress: () => moveToRelativeMonth(-1),
-            testID: 'calendar-month-prev',
-          }}
-          subtitle={source.sourceLabel}
-          testID="calendar-app-bar"
-          title={formatMonthLabel(filteredSnapshot.month)}
-          titleTestID="calendar-month-title"
-          trailingActions={[
-            {
-              accessibilityHint: '다음 달 일정을 봅니다.',
-              accessibilityLabel: `${formatMonthLabel(moveMonthKey(activeMonth, 1))}로 이동`,
-              key: 'next',
-              label: '다음',
-              onPress: () => moveToRelativeMonth(1),
-              testID: 'calendar-month-next',
-            },
+      <ScrollView contentContainerStyle={styles.content} style={styles.screen}>
+        <View style={styles.headerBar} testID="calendar-app-bar">
+          <View style={styles.monthCluster}>
+            <Text
+              accessibilityRole="header"
+              style={styles.monthTitle}
+              testID="calendar-month-title"
+            >
+              {formatMonthLabel(filteredSnapshot.month)}
+            </Text>
+            <View style={styles.monthNav}>
+              <Pressable
+                accessibilityHint="이전 달 일정을 봅니다."
+                accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, -1))}로 이동`}
+                accessibilityRole="button"
+                onPress={() => moveToRelativeMonth(-1)}
+                style={({ pressed }) => [styles.headerButton, pressed ? styles.headerButtonPressed : null]}
+                testID="calendar-month-prev"
+              >
+                <Text style={styles.headerButtonLabel}>이전</Text>
+              </Pressable>
+              <Pressable
+                accessibilityHint="다음 달 일정을 봅니다."
+                accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, 1))}로 이동`}
+                accessibilityRole="button"
+                onPress={() => moveToRelativeMonth(1)}
+                style={({ pressed }) => [styles.headerButton, pressed ? styles.headerButtonPressed : null]}
+                testID="calendar-month-next"
+              >
+                <Text style={styles.headerButtonLabel}>다음</Text>
+              </Pressable>
+            </View>
+          </View>
+          <View style={styles.trailingActions}>
+            <Pressable
+              accessibilityLabel="검색 탭으로 이동"
+              accessibilityRole="button"
+              onPress={openSearchTab}
+              style={({ pressed }) => [styles.headerButton, pressed ? styles.headerButtonPressed : null]}
+              testID="calendar-search-open"
+            >
+              <Text style={styles.headerButtonLabel}>검색</Text>
+            </Pressable>
+            <Pressable
+              accessibilityLabel="캘린더 필터 열기"
+              accessibilityRole="button"
+              accessibilityState={{ selected: filterMode !== 'all' || isFilterSheetOpen }}
+              onPress={openFilterSheet}
+              style={({ pressed }) => [styles.headerButton, pressed ? styles.headerButtonPressed : null]}
+              testID="calendar-filter-open"
+            >
+              <Text style={styles.headerButtonLabel}>필터</Text>
+            </Pressable>
+          </View>
+        </View>
+
+        <SummaryStrip
+          items={[
+            { key: 'release-count', label: '이번 달 발매', value: filteredSnapshot.releaseCount },
+            { key: 'upcoming-count', label: '예정 컴백', value: filteredSnapshot.upcomingCount },
+            { key: 'nearest-upcoming', label: '가장 가까운 일정', value: nearestSummary },
           ]}
+          layout="wrap"
+          testID="calendar-summary-strip"
         />
 
         {datasetRiskDisclosure ? (
@@ -502,114 +809,38 @@ export default function CalendarTabScreen() {
           />
         ) : null}
 
+        {handoffFeedback ? (
+          <InlineFeedbackNotice
+            body={handoffFeedback}
+            testID="calendar-handoff-feedback"
+            title="외부 이동을 완료하지 못했습니다."
+          />
+        ) : null}
+
         <View style={styles.sectionCard}>
-          <View style={styles.calendarHeader}>
-            <Text accessibilityRole="header" style={styles.sectionTitle}>Quick jumps</Text>
-            <Text style={styles.sectionMeta}>
-              {globalNearestUpcoming?.scheduledDate
-                ? `${globalNearestUpcoming.displayGroup} · ${globalNearestUpcoming.scheduledDate}`
-                : '다가오는 exact 일정 없음'}
+          <View style={styles.sectionHeader}>
+            <Text accessibilityRole="header" style={styles.sectionTitle}>
+              보기
             </Text>
+            <Text style={styles.sectionMeta}>{formatFilterLabel(filterMode)}</Text>
           </View>
-
-          <View style={styles.controlRow}>
-            <Pressable
-              testID="calendar-jump-today"
-              accessibilityHint="현재 월과 오늘 날짜로 이동합니다."
-              accessibilityLabel="오늘로 이동"
-              accessibilityRole="button"
-              onPress={jumpToToday}
-              style={({ pressed }) => [
-                styles.controlChip,
-                styles.controlChipStrong,
-                pressed ? styles.controlChipPressed : null,
-              ]}
-            >
-              <Text style={styles.controlChipStrongLabel}>오늘</Text>
-            </Pressable>
-
-            <Pressable
-              testID="calendar-jump-nearest"
-              accessibilityHint={
-                globalNearestUpcoming?.scheduledDate
-                  ? '가장 가까운 exact 일정 날짜를 열어 상세 시트를 표시합니다.'
-                  : undefined
-              }
-              accessibilityLabel={
-                globalNearestUpcoming?.scheduledDate
-                  ? `${globalNearestUpcoming.displayGroup} 가장 가까운 일정 열기`
-                  : '가장 가까운 일정 없음'
-              }
-              accessibilityRole="button"
-              disabled={!globalNearestUpcoming?.scheduledDate}
-              onPress={jumpToNearestUpcoming}
-              style={({ pressed }) => [
-                styles.controlChip,
-                !globalNearestUpcoming?.scheduledDate ? styles.buttonDisabled : null,
-                pressed && globalNearestUpcoming?.scheduledDate ? styles.controlChipPressed : null,
-              ]}
-            >
-              <Text style={styles.controlChipLabel}>가장 가까운 일정</Text>
-            </Pressable>
-          </View>
+          <SegmentedControl
+            items={[
+              { key: 'calendar', label: '캘린더' },
+              { key: 'list', label: '리스트' },
+            ]}
+            onChange={(key) => handleViewChange(key as CalendarViewMode)}
+            selectedKey={viewMode}
+            testID="calendar-view"
+          />
         </View>
-
-        <View style={styles.sectionCard}>
-          <View style={styles.controlsBlock}>
-            <View style={styles.controlSection}>
-              <View style={styles.calendarHeader}>
-                <Text accessibilityRole="header" style={styles.sectionTitle}>View</Text>
-                <Text style={styles.sectionMeta}>{viewMode === 'calendar' ? 'Calendar' : 'List'}</Text>
-              </View>
-              <SegmentedControl
-                items={[
-                  { key: 'calendar', label: 'Calendar' },
-                  { key: 'list', label: 'List' },
-                ]}
-                onChange={(key) => handleViewChange(key as CalendarViewMode)}
-                selectedKey={viewMode}
-                testID="calendar-view"
-              />
-            </View>
-
-            <View style={styles.controlSection}>
-              <View style={styles.calendarHeader}>
-                <Text accessibilityRole="header" style={styles.sectionTitle}>Filters</Text>
-                <Text style={styles.sectionMeta}>{formatFilterLabel(filterMode)}</Text>
-              </View>
-
-              <SegmentedControl
-                items={[
-                  { key: 'all', label: '전체' },
-                  { key: 'releases', label: '발매' },
-                  { key: 'upcoming', label: '예정' },
-                ]}
-                onChange={(key) => handleFilterChange(key as CalendarFilterMode)}
-                selectedKey={filterMode}
-                testID="calendar-filter"
-              />
-            </View>
-          </View>
-        </View>
-
-        <SummaryStrip
-          items={[
-            { key: 'release-count', label: '이번 달 발매', value: filteredSnapshot.releaseCount },
-            { key: 'upcoming-count', label: '예정 컴백', value: filteredSnapshot.upcomingCount },
-            {
-              key: 'nearest-upcoming',
-              label: '가장 가까운 일정',
-              value: filteredSnapshot.nearestUpcoming?.displayGroup ?? '없음',
-            },
-          ]}
-          layout="wrap"
-          testID="calendar-summary-strip"
-        />
 
         {viewMode === 'calendar' && monthGrid ? (
           <View style={styles.sectionCard}>
-            <View style={styles.calendarHeader}>
-              <Text accessibilityRole="header" style={styles.sectionTitle}>Calendar grid</Text>
+            <View style={styles.sectionHeader}>
+              <Text accessibilityRole="header" style={styles.sectionTitle}>
+                월간 캘린더
+              </Text>
               <Text style={styles.sectionMeta}>
                 {selectedDay ? selectedDay.label : formatMonthLabel(filteredSnapshot.month)}
               </Text>
@@ -664,92 +895,117 @@ export default function CalendarTabScreen() {
           </View>
         ) : null}
 
-        {viewMode === 'list' ? (
+        {viewMode === 'calendar' ? (
           <View style={styles.sectionCard}>
-            <View style={styles.calendarHeader}>
-              <Text accessibilityRole="header" style={styles.sectionTitle}>List view</Text>
-              <Text style={styles.sectionMeta}>{listRows.length}일</Text>
+            <View style={styles.sectionHeader}>
+              <Text accessibilityRole="header" style={styles.sectionTitle}>
+                Month-only signals
+              </Text>
+              <Text style={styles.sectionMeta}>{filteredSnapshot.monthOnlyUpcoming.length}건</Text>
             </View>
-            {listRows.length > 0 ? (
-              <View style={styles.listRows}>
-                {listRows.map((row) => (
-                  <Pressable
-                    key={row.isoDate}
-                    accessibilityHint="이 날짜의 발매와 예정 상세를 엽니다."
-                    accessibilityLabel={`${row.label} 상세 열기`}
-                    accessibilityRole="button"
-                    onPress={() => openDaySheet(row.isoDate)}
-                    style={({ pressed }) => [
-                      styles.listRowCard,
-                      pressed ? styles.buttonPressed : null,
-                    ]}
-                    testID={`calendar-list-row-${row.isoDate}`}
-                  >
-                    <View style={styles.listRowHeader}>
-                      <Text style={styles.listRowTitle}>{row.label}</Text>
-                      <Text style={styles.listRowMeta}>
-                        발매 {row.releaseCount} · 예정 {row.upcomingCount}
-                      </Text>
-                    </View>
-                    {row.releaseTitles.length > 0 ? (
-                      <Text style={styles.listRowBody}>
-                        발매: {row.releaseTitles.slice(0, 2).join(', ')}
-                        {row.releaseTitles.length > 2 ? ` 외 ${row.releaseTitles.length - 2}건` : ''}
-                      </Text>
-                    ) : null}
-                    {row.upcomingTitles.length > 0 ? (
-                      <Text style={styles.listRowBody}>
-                        예정: {row.upcomingTitles.slice(0, 2).join(', ')}
-                        {row.upcomingTitles.length > 2 ? ` 외 ${row.upcomingTitles.length - 2}건` : ''}
-                      </Text>
-                    ) : null}
-                  </Pressable>
+            {filterMode === 'releases' ? (
+              <InlineFeedbackNotice body="현재 필터에서는 month-only 예정 신호를 숨깁니다." />
+            ) : listMonthOnlyRows.length > 0 ? (
+              <View style={styles.sectionStack}>
+                {listMonthOnlyRows.map((row) => (
+                  <UpcomingEventRow key={row.testID} {...row} />
                 ))}
               </View>
             ) : (
-              <InlineFeedbackNotice
-                body={`현재 dataset source에는 ${formatMonthLabel(filteredSnapshot.month)} 기준 발매나 예정 컴백이 없습니다.`}
-              />
+              <InlineFeedbackNotice body="현재 월에 month-only 예정 신호가 없습니다." />
             )}
           </View>
         ) : null}
 
-        <View style={styles.sectionCard}>
-          <View style={styles.calendarHeader}>
-            <Text accessibilityRole="header" style={styles.sectionTitle}>Month-only signals</Text>
-            <Text style={styles.sectionMeta}>{filteredSnapshot.monthOnlyUpcoming.length}건</Text>
-          </View>
-          <Text style={styles.body}>
-            month-only 예정 신호는 날짜 셀에 넣지 않고 월 컨텍스트 버킷으로 유지합니다.
-          </Text>
-          {filterMode === 'releases' ? (
-            <InlineFeedbackNotice body="현재 필터에서는 month-only 예정 신호를 숨깁니다." />
-          ) : filteredSnapshot.monthOnlyUpcoming.length ? (
-            filteredSnapshot.monthOnlyUpcoming.map((event) => (
-              <View key={event.id} style={styles.row}>
-                <Text style={styles.rowTitle}>{event.displayGroup}</Text>
-                <Text style={styles.rowBody}>{event.headline}</Text>
-                <Text style={styles.rowMeta}>{formatUpcomingLabel(event)}</Text>
+        {viewMode === 'list' ? (
+          <View style={styles.sectionStack}>
+            {filterMode !== 'upcoming' ? (
+              <View style={styles.sectionCard}>
+                <View style={styles.sectionHeader}>
+                  <Text accessibilityRole="header" style={styles.sectionTitle}>
+                    Verified releases
+                  </Text>
+                  <Text style={styles.sectionMeta}>{listReleaseRows.length}건</Text>
+                </View>
+                {listReleaseRows.length > 0 ? (
+                  <View style={styles.sectionStack}>
+                    {listReleaseRows.map((row) => (
+                      <ReleaseSummaryRow key={row.testID} {...row} />
+                    ))}
+                  </View>
+                ) : (
+                  <InlineFeedbackNotice body="현재 월에 확정 발매가 없습니다." />
+                )}
               </View>
-            ))
-          ) : (
-            <InlineFeedbackNotice body="현재 월에 month-only 예정 신호가 없습니다." />
-          )}
-        </View>
+            ) : null}
+
+            {filterMode !== 'releases' ? (
+              <View style={styles.sectionCard}>
+                <View style={styles.sectionHeader}>
+                  <Text accessibilityRole="header" style={styles.sectionTitle}>
+                    Scheduled comebacks
+                  </Text>
+                  <Text style={styles.sectionMeta}>{listExactUpcomingRows.length}건</Text>
+                </View>
+                {listExactUpcomingRows.length > 0 ? (
+                  <View style={styles.sectionStack}>
+                    {listExactUpcomingRows.map((row) => (
+                      <UpcomingEventRow key={row.testID} {...row} />
+                    ))}
+                  </View>
+                ) : (
+                  <InlineFeedbackNotice body="현재 월에 exact 예정 컴백이 없습니다." />
+                )}
+              </View>
+            ) : null}
+
+            <View style={styles.sectionCard}>
+              <View style={styles.sectionHeader}>
+                <Text accessibilityRole="header" style={styles.sectionTitle}>
+                  Month-only signals
+                </Text>
+                <Text style={styles.sectionMeta}>{listMonthOnlyRows.length}건</Text>
+              </View>
+              {filterMode === 'releases' ? (
+                <InlineFeedbackNotice body="현재 필터에서는 month-only 예정 신호를 숨깁니다." />
+              ) : listMonthOnlyRows.length > 0 ? (
+                <View style={styles.sectionStack}>
+                  {listMonthOnlyRows.map((row) => (
+                    <UpcomingEventRow key={row.testID} {...row} />
+                  ))}
+                </View>
+              ) : (
+                <InlineFeedbackNotice body="현재 월에 month-only 예정 신호가 없습니다." />
+              )}
+            </View>
+          </View>
+        ) : null}
       </ScrollView>
 
       {selectedDay ? (
         <DateDetailSheet
-          isOpen={isSheetOpen}
+          isOpen={isSheetOpen && viewMode === 'calendar'}
           onClose={closeDaySheet}
-          onPressRelease={openReleaseDetail}
-          onPressTeam={openTeamDetailByGroup}
-          scheduledRows={selectedDay.exactUpcoming}
-          summary={formatMonthLabel(filteredSnapshot.month)}
-          title={selectedDay.label}
-          verifiedRows={selectedDay.releases}
+          scheduledRows={selectedDayUpcomingRows}
+          summary={selectedDaySummary}
+          title={`${selectedDay.label} 발매/컴백`}
+          verifiedRows={selectedDayReleaseRows}
         />
       ) : null}
+
+      <FilterSheet
+        applyButtonTestID="calendar-filter-apply"
+        closeButtonTestID="calendar-filter-close"
+        groups={filterGroups}
+        isOpen={isFilterSheetOpen}
+        onApply={applyFilterSheet}
+        onClose={closeFilterSheet}
+        onReset={resetFilterSheet}
+        onToggleOption={handleFilterOptionToggle}
+        resetButtonTestID="calendar-filter-reset"
+        testID="calendar-filter-sheet"
+        title="캘린더 필터"
+      />
     </>
   );
 }
@@ -766,269 +1022,69 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       paddingBottom: theme.space[32],
       gap: theme.space[16],
     },
-    stateContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      paddingHorizontal: theme.space[24],
-      gap: theme.space[12],
-      backgroundColor: theme.colors.surface.base,
-    },
-    appBar: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      gap: theme.space[12],
-    },
-    header: {
-      gap: theme.space[8],
-    },
-    monthTitleWrap: {
-      flex: 1,
-      alignItems: 'center',
-      gap: theme.space[4],
-    },
-    monthButton: {
-      borderRadius: theme.radius.button,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      backgroundColor: theme.colors.surface.elevated,
-      minHeight: 44,
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[8],
-    },
-    monthButtonPressed: {
-      backgroundColor: theme.colors.surface.interactive,
-    },
-    monthButtonLabel: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: theme.typography.buttonService.fontWeight,
-      flexShrink: 1,
-      textAlign: 'center',
-    },
-    eyebrow: {
-      color: theme.colors.text.brand,
-      fontSize: theme.typography.meta.fontSize,
-      fontWeight: theme.typography.meta.fontWeight,
-      letterSpacing: theme.typography.meta.letterSpacing,
-    },
-    title: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.screenTitle.fontSize,
-      lineHeight: theme.typography.screenTitle.lineHeight,
-      fontWeight: theme.typography.screenTitle.fontWeight,
-      letterSpacing: theme.typography.screenTitle.letterSpacing,
-    },
-    body: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
-    },
-    row: {
-      gap: theme.space[4],
-      paddingVertical: theme.space[8],
-      borderTopWidth: 1,
-      borderTopColor: theme.colors.border.subtle,
-    },
-    rowTitle: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.cardTitle.fontSize,
-      lineHeight: theme.typography.cardTitle.lineHeight,
-      fontWeight: theme.typography.cardTitle.fontWeight,
-    },
-    rowBody: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
-    },
-    rowMeta: {
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-    },
-    listRows: {
-      gap: theme.space[12],
-    },
-    listRowCard: {
-      gap: theme.space[8],
-      padding: theme.space[12],
-      borderRadius: theme.radius.card,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      backgroundColor: theme.colors.surface.elevated,
-      minHeight: 72,
-    },
-    listRowHeader: {
+    headerBar: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
       gap: theme.space[12],
     },
-    listRowTitle: {
+    monthCluster: {
       flex: 1,
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.cardTitle.fontSize,
-      lineHeight: theme.typography.cardTitle.lineHeight,
-      fontWeight: theme.typography.cardTitle.fontWeight,
-    },
-    listRowMeta: {
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-      textAlign: 'right',
-    },
-    listRowBody: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
-    },
-    sourceCard: {
-      borderRadius: theme.radius.card,
-      borderWidth: 1,
-      borderColor: theme.colors.border.default,
-      backgroundColor: theme.colors.surface.elevated,
-      padding: theme.space[16],
       gap: theme.space[8],
     },
-    sourceLabel: {
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      fontWeight: theme.typography.meta.fontWeight,
-      letterSpacing: theme.typography.meta.letterSpacing,
-      textTransform: 'uppercase',
-    },
-    sourceValue: {
+    monthTitle: {
+      ...theme.typography.screenTitle,
       color: theme.colors.text.primary,
-      fontSize: theme.typography.cardTitle.fontSize,
-      lineHeight: theme.typography.cardTitle.lineHeight,
-      fontWeight: theme.typography.cardTitle.fontWeight,
     },
-    sourceIssue: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-    },
-    summaryGrid: {
-      gap: theme.space[12],
-    },
-    controlsBlock: {
-      gap: theme.space[16],
-    },
-    controlSection: {
-      gap: theme.space[8],
-    },
-    summaryCard: {
-      borderRadius: theme.radius.card,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      backgroundColor: theme.colors.surface.elevated,
-      padding: theme.space[16],
-      gap: theme.space[8],
-    },
-    summaryLabel: {
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
-      letterSpacing: theme.typography.meta.letterSpacing,
-      textTransform: 'uppercase',
-    },
-    summaryValue: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.screenTitle.fontSize,
-      lineHeight: theme.typography.screenTitle.lineHeight,
-      fontWeight: theme.typography.screenTitle.fontWeight,
-    },
-    summaryValueSmall: {
-      color: theme.colors.text.primary,
-      fontSize: theme.typography.sectionTitle.fontSize,
-      lineHeight: theme.typography.sectionTitle.lineHeight,
-      fontWeight: theme.typography.sectionTitle.fontWeight,
-    },
-    summaryMeta: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
-    },
-    controlRow: {
+    monthNav: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       gap: theme.space[8],
     },
-    controlChip: {
-      borderRadius: theme.radius.chip,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      backgroundColor: theme.colors.surface.base,
-      minHeight: 44,
+    trailingActions: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: theme.space[8],
+      justifyContent: 'flex-end',
+    },
+    headerButton: {
+      minHeight: 40,
+      justifyContent: 'center',
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
+      borderRadius: theme.radius.button,
+      backgroundColor: theme.colors.surface.elevated,
+      borderWidth: 1,
+      borderColor: theme.colors.border.subtle,
     },
-    controlChipStrong: {
-      backgroundColor: theme.colors.text.brand,
-      borderColor: theme.colors.text.brand,
+    headerButtonPressed: {
+      opacity: 0.84,
     },
-    controlChipActive: {
-      backgroundColor: theme.colors.surface.interactive,
-      borderColor: theme.colors.border.focus,
-    },
-    controlChipPressed: {
-      backgroundColor: theme.colors.surface.interactive,
-    },
-    controlChipLabel: {
+    headerButtonLabel: {
+      ...theme.typography.buttonService,
       color: theme.colors.text.primary,
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: theme.typography.buttonService.fontWeight,
-      flexShrink: 1,
-      textAlign: 'center',
-    },
-    controlChipStrongLabel: {
-      color: theme.colors.surface.base,
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: theme.typography.buttonService.fontWeight,
-      flexShrink: 1,
-      textAlign: 'center',
-    },
-    controlChipActiveLabel: {
-      color: theme.colors.text.brand,
-      fontSize: theme.typography.buttonService.fontSize,
-      lineHeight: theme.typography.buttonService.lineHeight,
-      fontWeight: theme.typography.buttonService.fontWeight,
-      flexShrink: 1,
-      textAlign: 'center',
     },
     sectionCard: {
+      gap: theme.space[12],
+      padding: theme.space[16],
       borderRadius: theme.radius.card,
       borderWidth: 1,
       borderColor: theme.colors.border.default,
       backgroundColor: theme.colors.surface.elevated,
-      padding: theme.space[16],
-      gap: theme.space[12],
     },
-    calendarHeader: {
+    sectionHeader: {
       gap: theme.space[4],
     },
     sectionTitle: {
+      ...theme.typography.sectionTitle,
       color: theme.colors.text.primary,
-      fontSize: theme.typography.sectionTitle.fontSize,
-      lineHeight: theme.typography.sectionTitle.lineHeight,
-      fontWeight: theme.typography.sectionTitle.fontWeight,
     },
     sectionMeta: {
+      ...theme.typography.body,
       color: theme.colors.text.secondary,
-      fontSize: theme.typography.body.fontSize,
-      lineHeight: theme.typography.body.lineHeight,
-      fontWeight: theme.typography.body.fontWeight,
+    },
+    sectionStack: {
+      gap: theme.space[12],
     },
     weekdayRow: {
       flexDirection: 'row',
@@ -1036,11 +1092,9 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     weekdayLabel: {
       flex: 1,
-      color: theme.colors.text.tertiary,
-      fontSize: theme.typography.meta.fontSize,
-      lineHeight: theme.typography.meta.lineHeight,
-      fontWeight: theme.typography.meta.fontWeight,
       textAlign: 'center',
+      ...theme.typography.meta,
+      color: theme.colors.text.tertiary,
     },
     calendarGrid: {
       gap: theme.space[8],
@@ -1051,26 +1105,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     emptyCell: {
       flex: 1,
-      minHeight: 88,
-    },
-    buttonDisabled: {
-      opacity: 0.4,
-    },
-    buttonPressed: {
-      opacity: 0.84,
-    },
-    retryButton: {
-      alignSelf: 'flex-start',
-      paddingHorizontal: theme.space[16],
-      paddingVertical: theme.space[12],
-      borderRadius: theme.radius.chip,
-      backgroundColor: theme.colors.text.brand,
-    },
-    retryButtonLabel: {
-      color: theme.colors.text.inverse,
-      fontSize: theme.typography.buttonPrimary.fontSize,
-      lineHeight: theme.typography.buttonPrimary.lineHeight,
-      fontWeight: theme.typography.buttonPrimary.fontWeight,
+      minHeight: 96,
     },
   });
 }
