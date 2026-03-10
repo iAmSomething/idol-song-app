@@ -253,6 +253,7 @@ export function adaptReleaseDetail(
   group: string,
   displayGroup: string,
   detail: ReleaseDetailRaw,
+  sourceUrl?: string,
   artwork?: ReleaseArtworkRaw,
 ): ReleaseDetailModel {
   const stream = normalizeReleaseStream(detail.stream);
@@ -267,6 +268,7 @@ export function adaptReleaseDetail(
     stream,
     coverImageUrl: artwork?.cover_image_url ?? undefined,
     spotifyUrl: detail.spotify_url ?? undefined,
+    sourceUrl,
     youtubeMusicUrl: detail.youtube_music_url ?? undefined,
     youtubeVideoId: detail.youtube_video_id ?? undefined,
     youtubeVideoUrl: detail.youtube_video_url ?? undefined,

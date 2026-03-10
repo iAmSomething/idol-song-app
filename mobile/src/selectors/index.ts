@@ -508,8 +508,21 @@ export function selectReleaseDetailById(
 
   const team = context.profilesByGroup.get(detail.group);
   const displayGroup = team?.display_name?.trim() || detail.group;
+  const sourceUrl =
+    context.releaseHistoryByGroup
+      .get(detail.group)
+      ?.releases.find(
+        (release) =>
+          buildReleaseId(detail.group, release.title, release.date, release.stream ?? detail.stream) === releaseId,
+      )?.source ?? undefined;
 
-  return adaptReleaseDetail(detail.group, displayGroup, detail, context.artworkByReleaseId.get(releaseId));
+  return adaptReleaseDetail(
+    detail.group,
+    displayGroup,
+    detail,
+    sourceUrl,
+    context.artworkByReleaseId.get(releaseId),
+  );
 }
 
 function resolveTimelineSortKey(item: EntityTimelineItemModel): string {

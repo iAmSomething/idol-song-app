@@ -138,6 +138,23 @@ const bundledDatasetFixture: MobileRawDataset = {
       },
       latest_album: null,
     },
+    {
+      group: 'P1Harmony',
+      latest_song: {
+        title: 'DUH!',
+        date: '2026-04-02',
+        source: 'https://musicbrainz.org/release-group/example-duh',
+        release_kind: 'single',
+        context_tags: ['title_track'],
+      },
+      latest_album: {
+        title: 'DUH!',
+        date: '2026-04-02',
+        source: 'https://musicbrainz.org/release-group/example-duh',
+        release_kind: 'ep',
+        context_tags: ['title_track'],
+      },
+    },
   ],
   upcomingCandidates: [
     {
@@ -244,6 +261,13 @@ const bundledDatasetFixture: MobileRawDataset = {
       stream: 'song',
       cover_image_url: 'https://example.com/glow-up.jpg',
     },
+    {
+      group: 'P1Harmony',
+      release_title: 'DUH!',
+      release_date: '2026-04-02',
+      stream: 'album',
+      cover_image_url: 'https://example.com/duh.jpg',
+    },
   ],
   releaseDetails: [
     {
@@ -318,6 +342,35 @@ const bundledDatasetFixture: MobileRawDataset = {
       notes: 'Representative rookie detail with incomplete catalog metadata.',
       tracks: [],
     },
+    {
+      group: 'P1Harmony',
+      release_title: 'DUH!',
+      release_date: '2026-04-02',
+      stream: 'album',
+      release_kind: 'ep',
+      spotify_url: 'https://open.spotify.com/album/example-duh',
+      youtube_music_url: 'https://music.youtube.com/playlist?list=example-duh',
+      notes: 'Representative double-title detail.',
+      tracks: [
+        {
+          order: 1,
+          title: 'DUH!',
+          is_title_track: true,
+          spotify_url: 'https://open.spotify.com/track/example-duh-title-track',
+        },
+        {
+          order: 2,
+          title: 'Back Again',
+          is_title_track: true,
+        },
+        {
+          order: 3,
+          title: 'Encore',
+          is_title_track: false,
+          youtube_music_url: 'https://music.youtube.com/watch?v=example-encore',
+        },
+      ],
+    },
   ],
   releaseHistory: [
     {
@@ -376,6 +429,19 @@ const bundledDatasetFixture: MobileRawDataset = {
           source: 'https://musicbrainz.org/release-group/example-glow-up',
           release_kind: 'single',
           stream: 'song',
+          context_tags: ['title_track'],
+        },
+      ],
+    },
+    {
+      group: 'P1Harmony',
+      releases: [
+        {
+          title: 'DUH!',
+          date: '2026-04-02',
+          source: 'https://musicbrainz.org/release-group/example-duh',
+          release_kind: 'ep',
+          stream: 'album',
           context_tags: ['title_track'],
         },
       ],
