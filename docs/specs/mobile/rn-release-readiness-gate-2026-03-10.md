@@ -3,7 +3,8 @@
 ## Decision
 - Preview sign-off: `BLOCKED`
 - Decision date: `2026-03-10`
-- Blocking follow-up: [#486](https://github.com/iAmSomething/idol-song-app/issues/486)
+- Runtime QA artifact: `rn-runtime-device-qa-2026-03-10.md`
+- Blocking follow-up: [#488](https://github.com/iAmSomething/idol-song-app/issues/488)
 - Local evidence: `docs/assets/distribution/rn_release_readiness_local_2026-03-10.md`
 
 ## Summary
@@ -55,5 +56,9 @@
   2. Android runtime manual matrix 결과
   3. VoiceOver / TalkBack / largest text walkthrough 결과
 
+## Runtime QA Update
+- [#486](https://github.com/iAmSomething/idol-song-app/issues/486)에서 runtime QA 실행을 시도했고, iOS shipping-target simulator launch 자체는 확인했다.
+- 세부 결과와 증적은 `rn-runtime-device-qa-2026-03-10.md`에 기록했다.
+
 ## Next Step
-- [#486](https://github.com/iAmSomething/idol-song-app/issues/486)에서 실제 runtime QA matrix와 accessibility walkthrough를 실행하고, 이 문서의 blocker를 `pass` 또는 `non-blocking residual risk`로 갱신한다.
+- [#488](https://github.com/iAmSomething/idol-song-app/issues/488)에서 runtime QA 환경 blocker를 해소한 뒤, 이 문서의 blocker를 `pass` 또는 `non-blocking residual risk`로 갱신한다.

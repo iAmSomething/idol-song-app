@@ -108,12 +108,14 @@
    - selector/adaptor/display-model naming 및 contract parity audit
 51. `rn-release-readiness-gate-2026-03-10.md`
    - preview sign-off 전 RN release-readiness gate 실행 결과와 blocker 분류
+52. `rn-runtime-device-qa-2026-03-10.md`
+   - shipping-target simulator / Android runtime QA 실행 결과와 남은 blocker
 ### Screen Specs
-52. `calendar-screen.md`
-53. `radar-screen.md`
-54. `search-screen.md`
-55. `team-detail-screen.md`
-56. `release-detail-screen.md`
+53. `calendar-screen.md`
+54. `radar-screen.md`
+55. `search-screen.md`
+56. `team-detail-screen.md`
+57. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -164,9 +166,10 @@
 46. `rn-traceability-matrix.md`
 47. `rn-selector-contract-audit.md`
 48. `rn-release-readiness-gate-2026-03-10.md`
-49. 각 화면 스펙
-50. `edge-case-catalog.md`
-51. `qa-acceptance-spec.md`
+49. `rn-runtime-device-qa-2026-03-10.md`
+50. 각 화면 스펙
+51. `edge-case-catalog.md`
+52. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
