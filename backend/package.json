@@ -13,6 +13,7 @@
     "projection:refresh": "node ./scripts/refresh-projections.mjs",
     "shadow:verify": "npm run build && node ./scripts/build-shadow-read-report.mjs",
     "smoke:live": "node ./scripts/run-live-smoke-checks.mjs",
+    "deploy:env:verify": "tsx ./scripts/verify-deploy-env-contract.ts",
     "freshness:handoff": "node ./scripts/build-backend-freshness-handoff.mjs",
     "migration:scorecard": "node ./scripts/build-migration-readiness-scorecard.mjs",
     "recovery:drill": "node ./scripts/run-backup-restore-drill.mjs",
