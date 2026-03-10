@@ -27,12 +27,14 @@ type UseActiveDatasetScreenOptions = {
   fallbackErrorMessage: string;
 };
 
-export function buildActiveDatasetEventKey(source: Pick<ActiveMobileDataset, 'issues' | 'runtimeState' | 'selection'>): string {
+export function buildActiveDatasetEventKey(
+  source: Pick<ActiveMobileDataset, 'activeSource' | 'issues' | 'runtimeState'>,
+): string {
   if (source.runtimeState.mode === 'degraded' || source.issues.length > 0) {
-    return `degraded:${source.selection.kind}:${source.runtimeState.mode}:${source.issues.join('|')}`;
+    return `degraded:${source.activeSource}:${source.runtimeState.mode}:${source.issues.join('|')}`;
   }
 
-  return `ready:${source.selection.kind}`;
+  return `ready:${source.activeSource}`;
 }
 
 export function useActiveDatasetScreen({

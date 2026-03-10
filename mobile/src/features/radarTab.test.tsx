@@ -106,7 +106,13 @@ function createRuntimeState(
 
 function createSource(overrides: Partial<ActiveMobileDataset> = {}): ActiveMobileDataset {
   return {
+    activeSource: 'bundled-static',
+    cachedArtifactIds: [],
     dataset: cloneBundledDatasetFixture(),
+    freshness: {
+      rollingReferenceAt: null,
+      staleFreshnessClasses: [],
+    },
     selection: createBundledDatasetSelection('fixture-v1', 'profile_default'),
     runtimeState: createRuntimeState(),
     sourceLabel: 'Bundled static dataset',

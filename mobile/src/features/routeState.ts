@@ -1,4 +1,5 @@
 export type CalendarFilterMode = 'all' | 'releases' | 'upcoming';
+export type CalendarViewMode = 'calendar' | 'list';
 export type SearchSegment = 'entities' | 'releases' | 'upcoming';
 export type RadarFilterStatus = 'all' | 'scheduled' | 'confirmed' | 'changed';
 export type RadarFilterActType = 'all' | 'group' | 'solo' | 'unit';
@@ -11,6 +12,7 @@ type CalendarRouteParams = {
   filter?: RouteParamValue;
   month?: RouteParamValue;
   sheet?: RouteParamValue;
+  view?: RouteParamValue;
 };
 
 type SearchRouteParams = {
@@ -29,6 +31,7 @@ export type CalendarRouteState = {
   filterMode: CalendarFilterMode;
   isSheetOpen: boolean;
   selectedDayIso: string | null;
+  viewMode: CalendarViewMode;
 };
 
 export type SearchRouteState = {
@@ -60,6 +63,10 @@ function isIsoDate(value: string | null): value is string {
 
 function resolveFilterMode(value: string | null): CalendarFilterMode {
   return value === 'releases' || value === 'upcoming' ? value : 'all';
+}
+
+function resolveViewMode(value: string | null): CalendarViewMode {
+  return value === 'list' ? 'list' : 'calendar';
 }
 
 function resolveSearchSegment(value: string | null): SearchSegment {
@@ -109,6 +116,7 @@ export function resolveCalendarRouteState(
     filterMode: resolveFilterMode(getSingleRouteParam(params.filter)),
     isSheetOpen: getSingleRouteParam(params.sheet) === 'open' && selectedDayIso !== null,
     selectedDayIso,
+    viewMode: resolveViewMode(getSingleRouteParam(params.view)),
   };
 }
 
@@ -118,17 +126,20 @@ export function buildCalendarRouteParams(args: {
   filterMode: CalendarFilterMode;
   isSheetOpen: boolean;
   selectedDayIso: string | null;
+  viewMode: CalendarViewMode;
 }) {
   const includeMonth =
     args.activeMonth !== args.currentMonth ||
     args.filterMode !== 'all' ||
-    args.isSheetOpen;
+    args.isSheetOpen ||
+    args.viewMode !== 'calendar';
 
   return {
     month: includeMonth ? args.activeMonth : undefined,
     filter: args.filterMode !== 'all' ? args.filterMode : undefined,
     date: args.isSheetOpen && args.selectedDayIso ? args.selectedDayIso : undefined,
     sheet: args.isSheetOpen && args.selectedDayIso ? 'open' : undefined,
+    view: args.viewMode !== 'calendar' ? args.viewMode : undefined,
   };
 }
 

@@ -11,11 +11,12 @@ describe('mobile route state helpers', () => {
   test('restores calendar route state safely from valid params', () => {
     expect(
       resolveCalendarRouteState(
-        {
+      {
           month: '2026-03',
           date: '2026-03-11',
           filter: 'upcoming',
           sheet: 'open',
+          view: 'list',
         },
         '2026-03',
       ),
@@ -24,17 +25,19 @@ describe('mobile route state helpers', () => {
       filterMode: 'upcoming',
       isSheetOpen: true,
       selectedDayIso: '2026-03-11',
+      viewMode: 'list',
     });
   });
 
   test('drops invalid or incomplete calendar params safely', () => {
     expect(
       resolveCalendarRouteState(
-        {
+      {
           month: '2026-3',
           date: 'oops',
           filter: 'broken',
           sheet: 'open',
+          view: 'broken',
         },
         '2026-03',
       ),
@@ -43,6 +46,7 @@ describe('mobile route state helpers', () => {
       filterMode: 'all',
       isSheetOpen: false,
       selectedDayIso: null,
+      viewMode: 'calendar',
     });
   });
 
@@ -91,12 +95,31 @@ describe('mobile route state helpers', () => {
         filterMode: 'all',
         isSheetOpen: false,
         selectedDayIso: '2026-03-11',
+        viewMode: 'calendar',
       }),
     ).toEqual({
       month: undefined,
       filter: undefined,
       date: undefined,
       sheet: undefined,
+      view: undefined,
+    });
+
+    expect(
+      buildCalendarRouteParams({
+        activeMonth: '2026-04',
+        currentMonth: '2026-03',
+        filterMode: 'upcoming',
+        isSheetOpen: false,
+        selectedDayIso: null,
+        viewMode: 'list',
+      }),
+    ).toEqual({
+      month: '2026-04',
+      filter: 'upcoming',
+      date: undefined,
+      sheet: undefined,
+      view: 'list',
     });
 
     expect(buildSearchRouteParams({ query: '최예나', activeSegment: 'upcoming' })).toEqual({

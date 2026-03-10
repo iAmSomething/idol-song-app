@@ -1,5 +1,4 @@
 import type { MobileRuntimeConfig } from '../config/runtime';
-import { createBundledDatasetSelection } from './datasetSource';
 
 import {
   getLatestAnalyticsEvent,
@@ -135,7 +134,7 @@ describe('mobile analytics service', () => {
     trackDatasetDegraded(
       'calendar',
       {
-        selection: createBundledDatasetSelection('preview-v1', 'runtime_degraded'),
+        activeSource: 'bundled-static',
         runtimeState: {
           mode: 'degraded',
           config: analyticsEnabledRuntime,

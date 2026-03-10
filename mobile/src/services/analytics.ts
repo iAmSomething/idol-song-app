@@ -141,7 +141,7 @@ export function resetAnalyticsEvents(): void {
 
 export function trackDatasetDegraded(
   surface: AnalyticsSurface,
-  source: Pick<ActiveMobileDataset, 'issues' | 'runtimeState' | 'selection'>,
+  source: Pick<ActiveMobileDataset, 'activeSource' | 'issues' | 'runtimeState'>,
   runtimeConfig: MobileRuntimeConfig = getRuntimeConfig(),
   now?: () => string,
 ): boolean {
@@ -149,7 +149,7 @@ export function trackDatasetDegraded(
     'dataset_degraded',
     {
       surface,
-      activeSource: source.selection.kind,
+      activeSource: source.activeSource,
       runtimeMode: source.runtimeState.mode,
       issueCount: source.issues.length,
     },
