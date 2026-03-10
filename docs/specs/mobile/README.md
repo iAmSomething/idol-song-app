@@ -102,12 +102,16 @@
    - RN 핵심 user journey walkthrough 결과
 48. `rn-freshness-review-2026-03-10.md`
    - RN freshness/stale disclosure 리뷰 기록
+49. `rn-traceability-matrix.md`
+   - 전체 mobile spec 문서와 RN issue 매핑
+50. `rn-selector-contract-audit.md`
+   - selector/adaptor/display-model naming 및 contract parity audit
 ### Screen Specs
-49. `calendar-screen.md`
-50. `radar-screen.md`
-51. `search-screen.md`
-52. `team-detail-screen.md`
-53. `release-detail-screen.md`
+51. `calendar-screen.md`
+52. `radar-screen.md`
+53. `search-screen.md`
+54. `team-detail-screen.md`
+55. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -155,9 +159,11 @@
 43. `rn-screen-structure-validation-2026-03-10.md`
 44. `rn-journey-walkthrough-2026-03-10.md`
 45. `rn-freshness-review-2026-03-10.md`
-46. 각 화면 스펙
-47. `edge-case-catalog.md`
-48. `qa-acceptance-spec.md`
+46. `rn-traceability-matrix.md`
+47. `rn-selector-contract-audit.md`
+48. 각 화면 스펙
+49. `edge-case-catalog.md`
+50. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
