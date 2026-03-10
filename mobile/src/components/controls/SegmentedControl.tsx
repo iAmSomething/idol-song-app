@@ -70,9 +70,14 @@ function SegmentedControlComponent({
 }
 
 function createStyles(theme: MobileTheme) {
+  const { lineHeight: _buttonServiceLineHeight, ...buttonServiceTypography } =
+    theme.typography.buttonService;
+  const { lineHeight: _metaLineHeight, ...metaTypography } = theme.typography.meta;
+
   return StyleSheet.create({
     row: {
       flexDirection: 'row',
+      flexWrap: 'wrap',
       gap: theme.space[8],
       padding: theme.space[4],
       borderRadius: theme.radius.card,
@@ -83,7 +88,8 @@ function createStyles(theme: MobileTheme) {
       borderColor: theme.colors.border.subtle,
     },
     segment: {
-      flex: 1,
+      flexGrow: 1,
+      flexBasis: 96,
       minHeight: 44,
       alignItems: 'center',
       justifyContent: 'center',
@@ -101,19 +107,21 @@ function createStyles(theme: MobileTheme) {
       opacity: 0.84,
     },
     label: {
-      ...theme.typography.buttonService,
+      ...buttonServiceTypography,
       color: theme.colors.text.secondary,
+      textAlign: 'center',
     },
     activeLabel: {
-      ...theme.typography.buttonService,
+      ...buttonServiceTypography,
       color: theme.colors.text.primary,
+      textAlign: 'center',
     },
     count: {
-      ...theme.typography.meta,
+      ...metaTypography,
       color: theme.colors.text.tertiary,
     },
     activeCount: {
-      ...theme.typography.meta,
+      ...metaTypography,
       color: theme.colors.text.brand,
     },
   });

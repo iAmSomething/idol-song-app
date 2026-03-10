@@ -37,6 +37,10 @@ import {
   trackFailureObserved,
 } from '../../src/services/analytics';
 import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
+import {
+  runWithPendingRouteResume,
+  type RouteResumeTarget,
+} from '../../src/services/routeResume';
 import { useAppTheme } from '../../src/tokens/theme';
 import {
   MOBILE_COPY,
@@ -312,6 +316,17 @@ export default function RadarTabScreen() {
   );
   const datasetRiskDisclosure =
     source ? buildDatasetRiskDisclosure(source, '레이더', 'radar-dataset-risk-notice') : null;
+  const currentResumeTarget = useMemo<RouteResumeTarget>(
+    () => ({
+      pathname: '/(tabs)/radar',
+      params: buildRadarRouteParams({
+        statusFilter,
+        actTypeFilter,
+        enabledSections,
+      }),
+    }),
+    [actTypeFilter, enabledSections, statusFilter],
+  );
 
   useEffect(() => {
     const currentRouteParams = buildRadarRouteParams({
@@ -407,7 +422,9 @@ export default function RadarTabScreen() {
   }
 
   async function handleSourceOpen(url?: string) {
-    const opened = await openExternalLink(normalizeExternalLinkUrl('source', url));
+    const opened = await runWithPendingRouteResume(currentResumeTarget, () =>
+      openExternalLink(normalizeExternalLinkUrl('source', url)),
+    );
     trackAnalyticsEvent('source_link_opened', {
       surface: 'radar',
       linkType: 'source',
@@ -584,6 +601,7 @@ export default function RadarTabScreen() {
             { key: 'change', label: '일정 변경', value: filteredChangeFeed.length },
             { key: 'long-gap', label: '장기 공백', value: filteredLongGap.length },
           ]}
+          layout="wrap"
           testID="radar-summary-strip"
         />
 

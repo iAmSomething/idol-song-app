@@ -53,6 +53,10 @@ import {
 import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
 import { openServiceHandoff, resolveServiceHandoff, type MusicService } from '../../src/services/handoff';
 import { clearRecentQueries, persistRecentQuery, readRecentQueries } from '../../src/services/recentQueries';
+import {
+  runWithPendingRouteResume,
+  type RouteResumeTarget,
+} from '../../src/services/routeResume';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   ReleaseSummaryModel,
@@ -307,6 +311,17 @@ export default function SearchTabScreen() {
     return entries;
   }, [bundledSelectorContext]);
 
+  const currentResumeTarget = useMemo<RouteResumeTarget>(
+    () => ({
+      pathname: '/(tabs)/search',
+      params: buildSearchRouteParams({
+        activeSegment,
+        query,
+      }),
+    }),
+    [activeSegment, query],
+  );
+
   useEffect(() => {
     const currentRouteParams = buildSearchRouteParams({
       activeSegment: routeState.activeSegment,
@@ -465,7 +480,9 @@ export default function SearchTabScreen() {
   }
 
   async function handleUpcomingSourcePress(result: SearchUpcomingResultModel) {
-    const opened = await openExternalLink(normalizeExternalLinkUrl('source', result.upcoming.sourceUrl));
+    const opened = await runWithPendingRouteResume(currentResumeTarget, () =>
+      openExternalLink(normalizeExternalLinkUrl('source', result.upcoming.sourceUrl)),
+    );
     trackAnalyticsEvent('source_link_opened', {
       surface: 'search',
       linkType: 'source',
@@ -514,7 +531,7 @@ export default function SearchTabScreen() {
       mode: resolution.mode,
     });
 
-    const result = await openServiceHandoff(resolution);
+    const result = await runWithPendingRouteResume(currentResumeTarget, () => openServiceHandoff(resolution));
     trackAnalyticsEvent('service_handoff_completed', {
       surface: 'search',
       service,
@@ -636,50 +653,52 @@ export default function SearchTabScreen() {
       ) : null}
 
       <View style={styles.searchCard}>
-        <View style={styles.searchInputRow}>
-          <TextInput
-            ref={inputRef}
-            accessibilityHint="팀, 릴리즈, 예정 키워드를 입력해 검색합니다."
-            accessibilityLabel="팀, 앨범, 곡, 별칭 검색"
-            autoCapitalize="none"
-            autoCorrect={false}
-            onBlur={() => setIsInputFocused(false)}
-            onChangeText={(nextQuery) => {
-              setHandoffFeedback(null);
-              setQuery(nextQuery);
-            }}
-            onFocus={() => setIsInputFocused(true)}
-            onSubmitEditing={() => void handleSubmitQuery()}
-            placeholder="팀, 앨범, 곡, 별칭 검색"
-            placeholderTextColor={theme.colors.text.tertiary}
-            returnKeyType="search"
-            style={styles.searchInput}
-            testID="search-input"
-            value={query}
-          />
-          {query.trim() ? (
-            <Pressable
-              accessibilityLabel="검색어 지우기"
-              accessibilityRole="button"
-              onPress={handleClearSearch}
-              style={styles.inlineButton}
-              testID="search-clear-button"
-            >
-              <Text style={styles.inlineButtonLabel}>지우기</Text>
-            </Pressable>
-          ) : null}
-          {showCancelAction ? (
-            <Pressable
-              accessibilityLabel="검색 취소"
-              accessibilityRole="button"
-              onPress={handleCancelSearch}
-              style={styles.inlineButton}
-              testID="search-cancel-button"
-            >
-              <Text style={styles.inlineButtonLabel}>취소</Text>
-            </Pressable>
-          ) : null}
-        </View>
+        <TextInput
+          ref={inputRef}
+          accessibilityHint="팀, 릴리즈, 예정 키워드를 입력해 검색합니다."
+          accessibilityLabel="팀, 앨범, 곡, 별칭 검색"
+          autoCapitalize="none"
+          autoCorrect={false}
+          onBlur={() => setIsInputFocused(false)}
+          onChangeText={(nextQuery) => {
+            setHandoffFeedback(null);
+            setQuery(nextQuery);
+          }}
+          onFocus={() => setIsInputFocused(true)}
+          onSubmitEditing={() => void handleSubmitQuery()}
+          placeholder="팀, 앨범, 곡, 별칭 검색"
+          placeholderTextColor={theme.colors.text.tertiary}
+          returnKeyType="search"
+          style={styles.searchInput}
+          testID="search-input"
+          value={query}
+        />
+        {query.trim() || showCancelAction ? (
+          <View style={styles.searchActionRow}>
+            {query.trim() ? (
+              <Pressable
+                accessibilityLabel="검색어 지우기"
+                accessibilityRole="button"
+                onPress={handleClearSearch}
+                style={styles.inlineButton}
+                testID="search-clear-button"
+              >
+                <Text style={styles.inlineButtonLabel}>지우기</Text>
+              </Pressable>
+            ) : null}
+            {showCancelAction ? (
+              <Pressable
+                accessibilityLabel="검색 취소"
+                accessibilityRole="button"
+                onPress={handleCancelSearch}
+                style={styles.inlineButton}
+                testID="search-cancel-button"
+              >
+                <Text style={styles.inlineButtonLabel}>취소</Text>
+              </Pressable>
+            ) : null}
+          </View>
+        ) : null}
       </View>
 
       <SegmentedControl
@@ -987,21 +1006,27 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       borderWidth: 1,
       borderColor: theme.colors.border.default,
       backgroundColor: theme.colors.surface.elevated,
-      padding: theme.space[12],
-      gap: theme.space[8],
-    },
-    searchInputRow: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: theme.space[8],
+      padding: theme.space[16],
+      gap: theme.space[12],
     },
     searchInput: {
-      flex: 1,
+      minHeight: 56,
+      borderRadius: theme.radius.button,
+      borderWidth: 1,
+      borderColor: theme.colors.border.subtle,
+      backgroundColor: theme.colors.surface.base,
+      paddingHorizontal: theme.space[16],
+      paddingVertical: theme.space[12],
       color: theme.colors.text.primary,
       fontSize: theme.typography.sectionTitle.fontSize,
       lineHeight: theme.typography.sectionTitle.lineHeight,
       fontWeight: theme.typography.body.fontWeight,
-      minHeight: 48,
+    },
+    searchActionRow: {
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      flexWrap: 'wrap',
+      gap: theme.space[8],
     },
     inlineButton: {
       alignSelf: 'flex-start',
@@ -1035,7 +1060,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     sectionHeader: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      alignItems: 'center',
+      alignItems: 'flex-start',
+      flexWrap: 'wrap',
       gap: theme.space[8],
     },
     sectionTitle: {

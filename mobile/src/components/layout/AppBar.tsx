@@ -35,12 +35,22 @@ function AppBarComponent({
 }: AppBarProps) {
   const theme = useAppTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const hasActions = Boolean(leadingAction) || trailingActions.length > 0;
 
   return (
     <View style={styles.container} testID={testID}>
-      <View style={styles.actionSlot}>
-        {leadingAction ? <ActionButton {...leadingAction} tone="secondary" /> : null}
-      </View>
+      {hasActions ? (
+        <View style={styles.actionRow}>
+          <View style={styles.leadingAction}>
+            {leadingAction ? <ActionButton {...leadingAction} tone="secondary" /> : null}
+          </View>
+          <View style={styles.trailingActions}>
+            {trailingActions.slice(0, 2).map(({ key, ...action }) => (
+              <ActionButton key={key} {...action} tone="secondary" />
+            ))}
+          </View>
+        </View>
+      ) : null}
       <View style={styles.copy}>
         {isLoading ? <ActivityIndicator color={theme.colors.text.brand} size="small" /> : null}
         <Text accessibilityRole="header" numberOfLines={2} style={styles.title} testID={titleTestID}>
@@ -52,46 +62,47 @@ function AppBarComponent({
           </Text>
         ) : null}
       </View>
-      <View style={styles.trailingActions}>
-        {trailingActions.slice(0, 2).map(({ key, ...action }) => (
-          <ActionButton key={key} {...action} tone="secondary" />
-        ))}
-      </View>
     </View>
   );
 }
 
 function createStyles(theme: MobileTheme) {
+  const { lineHeight: _titleLineHeight, ...sectionTitleTypography } = theme.typography.sectionTitle;
+  const { lineHeight: _bodyLineHeight, ...bodyTypography } = theme.typography.body;
+
   return StyleSheet.create({
     container: {
-      flexDirection: 'row',
-      alignItems: 'flex-start',
-      minHeight: theme.size.button.heightPrimary,
       gap: theme.space[12],
     },
-    actionSlot: {
-      minWidth: 68,
+    actionRow: {
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
       alignItems: 'flex-start',
+      flexWrap: 'wrap',
+      rowGap: theme.space[8],
+      gap: theme.space[12],
+    },
+    leadingAction: {
+      alignItems: 'flex-start',
+      maxWidth: '100%',
     },
     copy: {
-      flex: 1,
       gap: theme.space[4],
-      paddingTop: theme.space[4],
     },
     title: {
-      ...theme.typography.sectionTitle,
+      ...sectionTitleTypography,
       color: theme.colors.text.primary,
     },
     subtitle: {
-      ...theme.typography.body,
+      ...bodyTypography,
       color: theme.colors.text.secondary,
     },
     trailingActions: {
       flexDirection: 'row',
-      justifyContent: 'flex-end',
       flexWrap: 'wrap',
       gap: theme.space[8],
-      minWidth: 68,
+      justifyContent: 'flex-start',
+      maxWidth: '100%',
     },
   });
 }
