@@ -2222,6 +2222,52 @@ def build_anomaly_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def build_table_count_review_focus(table_counts: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
+    active_tables = [
+        {
+            "table": table,
+            "payload_rows": int(counts.get("payload_rows", 0)),
+            "insert_candidates": int(counts.get("insert_candidates", 0)),
+            "update_candidates": int(counts.get("update_candidates", 0)),
+            "projected_db_rows_after": int(counts.get("projected_db_rows_after", 0)),
+        }
+        for table, counts in table_counts.items()
+        if int(counts.get("payload_rows", 0)) > 0
+        or int(counts.get("insert_candidates", 0)) > 0
+        or int(counts.get("update_candidates", 0)) > 0
+    ]
+    active_tables.sort(
+        key=lambda row: (
+            -row["insert_candidates"],
+            -row["update_candidates"],
+            -row["payload_rows"],
+            row["table"],
+        )
+    )
+
+    return {
+        "active_table_count": len(active_tables),
+        "tables_with_inserts": [row for row in active_tables if row["insert_candidates"] > 0][:10],
+        "tables_with_updates": [row for row in active_tables if row["update_candidates"] > 0][:10],
+    }
+
+
+def build_anomaly_review_focus(anomalies: Dict[str, Any]) -> Dict[str, Any]:
+    by_table = anomalies.get("by_table", {})
+    counts = anomalies.get("counts", {})
+
+    nonzero_by_table = {
+        bucket: {table: int(value) for table, value in values.items() if int(value) > 0}
+        for bucket, values in by_table.items()
+    }
+
+    return {
+        "has_anomalies": any(int(value) > 0 for value in counts.values()),
+        "counts": {key: int(value) for key, value in counts.items() if int(value) > 0},
+        "nonzero_by_table": {bucket: values for bucket, values in nonzero_by_table.items() if values},
+    }
+
+
 def build_dry_run_review_summary() -> Dict[str, List[str]]:
     return {
         "guarantees": [
@@ -2237,6 +2283,23 @@ def build_dry_run_review_summary() -> Dict[str, List[str]]:
             "compare table_counts.projected_db_rows_after against payload_rows to spot unexpected insert volume",
         ],
     }
+
+
+def build_cli_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
+    payload = {
+        "mode": summary["mode"],
+        "summary_path": summary["summary_path"],
+        "entity_rows": summary["db_row_counts"]["entities"],
+        "release_rows": summary["db_row_counts"]["releases"],
+        "upcoming_signal_rows": summary["db_row_counts"]["upcoming_signals"],
+        "review_task_rows": summary["db_row_counts"]["review_tasks"],
+    }
+
+    if summary["mode"] == "dry_run":
+        payload["db_unchanged"] = bool(summary.get("db_unchanged"))
+        payload["dry_run_focus"] = summary.get("dry_run_focus", {})
+
+    return payload
 
 
 def sanitize_summary(summary: Dict[str, Any]) -> Dict[str, Any]:
@@ -2308,22 +2371,12 @@ def main() -> None:
     summary["anomalies"] = build_anomaly_summary(summary)
     if args.dry_run:
         summary["dry_run_review"] = build_dry_run_review_summary()
+        summary["dry_run_focus"] = {
+            "table_counts": build_table_count_review_focus(summary["table_counts"]),
+            "anomalies": build_anomaly_review_focus(summary["anomalies"]),
+        }
     write_summary(Path(args.summary_path), sanitize_summary(summary))
-
-    print(
-        json.dumps(
-            {
-                "mode": summary["mode"],
-                "dry_run": args.dry_run,
-                "summary_path": summary["summary_path"],
-                "entity_rows": summary["db_row_counts"]["entities"],
-                "release_rows": summary["db_row_counts"]["releases"],
-                "upcoming_signal_rows": summary["db_row_counts"]["upcoming_signals"],
-                "review_task_rows": summary["db_row_counts"]["review_tasks"],
-            },
-            ensure_ascii=False,
-        )
-    )
+    print(json.dumps(build_cli_summary(summary), ensure_ascii=False))
 
 
 if __name__ == "__main__":
