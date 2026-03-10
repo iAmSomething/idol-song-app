@@ -108,6 +108,49 @@ export function InlineFeedbackNotice({
   );
 }
 
+export function EmptyStateBlock({
+  action,
+  description,
+  message,
+  testID,
+}: {
+  action?: FeedbackAction;
+  description?: string;
+  message: string;
+  testID?: string;
+}) {
+  return (
+    <InlineFeedbackNotice
+      action={action}
+      body={description ?? message}
+      testID={testID}
+      title={description ? message : undefined}
+    />
+  );
+}
+
+export function ErrorStateBlock({
+  backAction,
+  message,
+  retryAction,
+  testID,
+}: {
+  backAction?: FeedbackAction;
+  message: string;
+  retryAction?: FeedbackAction;
+  testID?: string;
+}) {
+  return (
+    <InlineFeedbackNotice
+      action={retryAction ?? backAction}
+      body={message}
+      testID={testID}
+      title="오류"
+      tone="error"
+    />
+  );
+}
+
 function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     screenContainer: {

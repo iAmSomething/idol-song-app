@@ -156,6 +156,7 @@ function buildTrackServiceButtons(detail: ReleaseDetailModel, track: TrackModel)
         query,
         canonicalUrl: track.spotifyUrl,
       }),
+      service: 'spotify',
       testID: `release-track-${track.order}-spotify`,
       tone: 'spotify',
     },
@@ -168,6 +169,7 @@ function buildTrackServiceButtons(detail: ReleaseDetailModel, track: TrackModel)
         query,
         canonicalUrl: track.youtubeMusicUrl,
       }),
+      service: 'youtubeMusic',
       testID: `release-track-${track.order}-youtube-music`,
       tone: 'youtubeMusic',
     },
@@ -396,12 +398,32 @@ export default function ReleaseDetailScreen() {
             {detail.tracks.map((track) => (
               <TrackRow
                 key={`${detail.id}-${track.order}`}
-                buttons={buildTrackServiceButtons(detail, track).map((button) => ({
-                  ...button,
-                  onPress: () => void handleHandoff(button.handoff),
-                }))}
+                isTitleTrack={track.isTitleTrack}
+                order={track.order}
+                spotifyButton={buildTrackServiceButtons(detail, track)
+                  .filter((button) => button.service === 'spotify')
+                  .map((button) => ({
+                    accessibilityHint: button.accessibilityHint,
+                    accessibilityLabel: button.accessibilityLabel,
+                    disabled: button.disabled,
+                    label: button.label,
+                    mode: button.mode,
+                    onPress: () => void handleHandoff(button.handoff),
+                    testID: button.testID,
+                  }))[0]}
                 testIDPrefix="release-track-row"
-                track={track}
+                title={track.title}
+                youtubeMusicButton={buildTrackServiceButtons(detail, track)
+                  .filter((button) => button.service === 'youtubeMusic')
+                  .map((button) => ({
+                    accessibilityHint: button.accessibilityHint,
+                    accessibilityLabel: button.accessibilityLabel,
+                    disabled: button.disabled,
+                    label: button.label,
+                    mode: button.mode,
+                    onPress: () => void handleHandoff(button.handoff),
+                    testID: button.testID,
+                  }))[0]}
               />
             ))}
           </View>

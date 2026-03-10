@@ -9,51 +9,88 @@ import {
   ServiceButtonGroup,
   type ServiceButtonGroupItem,
 } from '../actions/ServiceButtonGroup';
+import { InfoChip } from '../meta/InfoChip';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
-import type { TrackModel } from '../../types';
 
-interface TrackRowProps {
-  buttons: ServiceButtonGroupItem[];
-  testIDPrefix: string;
-  track: TrackModel;
+interface TrackRowServiceButton {
+  accessibilityHint?: string;
+  accessibilityLabel: string;
+  disabled?: boolean;
+  label: string;
+  mode?: 'canonical' | 'searchFallback';
+  onPress: () => void;
+  testID?: string;
 }
 
-function TrackRowComponent({ buttons, testIDPrefix, track }: TrackRowProps) {
+interface TrackRowProps {
+  isTitleTrack?: boolean;
+  order: number;
+  spotifyButton?: TrackRowServiceButton;
+  testIDPrefix: string;
+  title: string;
+  youtubeMusicButton?: TrackRowServiceButton;
+}
+
+function TrackRowComponent({
+  isTitleTrack = false,
+  order,
+  spotifyButton,
+  testIDPrefix,
+  title,
+  youtubeMusicButton,
+}: TrackRowProps) {
   const theme = useAppTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const buttons: ServiceButtonGroupItem[] = [];
+
+  if (spotifyButton) {
+    buttons.push({
+      ...spotifyButton,
+      key: 'spotify',
+      service: 'spotify',
+    });
+  }
+
+  if (youtubeMusicButton) {
+    buttons.push({
+      ...youtubeMusicButton,
+      key: 'youtubeMusic',
+      service: 'youtubeMusic',
+    });
+  }
 
   return (
     <View
       accessible
       accessibilityLabel={[
-        `${track.order}번 트랙`,
-        track.title,
-        track.isTitleTrack ? '타이틀곡' : null,
+        `${order}번 트랙`,
+        title,
+        isTitleTrack ? '타이틀곡' : null,
       ]
         .filter(Boolean)
         .join(', ')}
       style={styles.trackRow}
-      testID={`${testIDPrefix}-${track.order}`}
+      testID={`${testIDPrefix}-${order}`}
     >
       <Text allowFontScaling style={styles.trackOrder}>
-        {track.order}
+        {order}
       </Text>
       <View style={styles.trackCopy}>
         <View style={styles.trackTitleRow}>
           <Text allowFontScaling style={styles.trackTitle}>
-            {track.title}
+            {title}
           </Text>
-          {track.isTitleTrack ? (
-            <View style={styles.titleTrackBadge} testID={`${testIDPrefix}-title-badge-${track.order}`}>
-              <Text allowFontScaling style={styles.titleTrackBadgeLabel}>
-                타이틀
-              </Text>
-            </View>
+          {isTitleTrack ? (
+            <InfoChip
+              label="타이틀"
+              testID={`${testIDPrefix}-title-badge-${order}`}
+              tone="title"
+            />
           ) : null}
         </View>
         {buttons.length ? (
-          <ServiceButtonGroup buttons={buttons} testID={`${testIDPrefix}-actions-${track.order}`} />
+          <ServiceButtonGroup buttons={buttons} testID={`${testIDPrefix}-actions-${order}`} />
         ) : null}
       </View>
     </View>
@@ -92,16 +129,6 @@ function createStyles(theme: MobileTheme) {
       ...theme.typography.cardTitle,
       color: theme.colors.text.primary,
       flexShrink: 1,
-    },
-    titleTrackBadge: {
-      paddingHorizontal: theme.space[8],
-      paddingVertical: theme.space[4],
-      borderRadius: theme.radius.chip,
-      backgroundColor: theme.colors.status.title.bg,
-    },
-    titleTrackBadgeLabel: {
-      ...theme.typography.chip,
-      color: theme.colors.status.title.text,
     },
   });
 }

@@ -10,10 +10,13 @@ import {
   View,
 } from 'react-native';
 
+import { ActionButton } from '../../src/components/actions/ActionButton';
 import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { AppBar } from '../../src/components/layout/AppBar';
+import { SummaryStrip } from '../../src/components/layout/SummaryStrip';
 import { buildDatasetRiskDisclosure } from '../../src/features/surfaceDisclosures';
 import {
   areRouteParamsEqual,
@@ -387,33 +390,27 @@ export default function RadarTabScreen() {
   return (
     <>
       <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-        <View style={styles.appBar}>
-          <View style={styles.appBarCopy}>
-            <Text style={styles.eyebrow}>DATA-BACKED TAB</Text>
-            <Text accessibilityRole="header" style={styles.title}>레이더</Text>
-            <Text style={styles.body}>{source.sourceLabel}</Text>
-          </View>
-          <View style={styles.appBarActions}>
-            <Pressable
-              testID="radar-search-button"
-              accessibilityLabel="검색 탭으로 이동"
-              accessibilityRole="button"
-              onPress={openSearchTab}
-              style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
-            >
-              <Text style={styles.appBarButtonLabel}>검색</Text>
-            </Pressable>
-            <Pressable
-              testID="radar-filter-button"
-              accessibilityLabel="레이더 필터 열기"
-              accessibilityRole="button"
-              accessibilityState={{ selected: hasNonDefaultFilters || isFilterSheetOpen }}
-              onPress={() => setIsFilterSheetOpen(true)}
-              style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
-            >
-              <Text style={styles.appBarButtonLabel}>필터</Text>
-            </Pressable>
-          </View>
+        <AppBar subtitle={source.sourceLabel} testID="radar-app-bar" title="레이더" />
+        <View style={styles.appBarActions}>
+          <Pressable
+            testID="radar-search-button"
+            accessibilityLabel="검색 탭으로 이동"
+            accessibilityRole="button"
+            onPress={openSearchTab}
+            style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
+          >
+            <Text style={styles.appBarButtonLabel}>검색</Text>
+          </Pressable>
+          <Pressable
+            testID="radar-filter-button"
+            accessibilityLabel="레이더 필터 열기"
+            accessibilityRole="button"
+            accessibilityState={{ selected: hasNonDefaultFilters || isFilterSheetOpen }}
+            onPress={() => setIsFilterSheetOpen(true)}
+            style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
+          >
+            <Text style={styles.appBarButtonLabel}>필터</Text>
+          </Pressable>
         </View>
 
         {dataState === 'degraded' && datasetRiskDisclosure ? (
@@ -437,20 +434,14 @@ export default function RadarTabScreen() {
           />
         ) : null}
 
-        <View style={styles.summaryStrip}>
-          <View style={styles.summaryCard}>
-            <Text style={styles.summaryValue}>{filteredWeeklyUpcoming.length}</Text>
-            <Text style={styles.summaryLabel}>이번 주 예정</Text>
-          </View>
-          <View style={styles.summaryCard}>
-            <Text style={styles.summaryValue}>{filteredChangeFeed.length}</Text>
-            <Text style={styles.summaryLabel}>일정 변경</Text>
-          </View>
-          <View style={styles.summaryCard}>
-            <Text style={styles.summaryValue}>{filteredLongGap.length}</Text>
-            <Text style={styles.summaryLabel}>장기 공백</Text>
-          </View>
-        </View>
+        <SummaryStrip
+          items={[
+            { key: 'weekly', label: '이번 주 예정', value: filteredWeeklyUpcoming.length },
+            { key: 'change', label: '일정 변경', value: filteredChangeFeed.length },
+            { key: 'long-gap', label: '장기 공백', value: filteredLongGap.length },
+          ]}
+          testID="radar-summary-strip"
+        />
 
         <RadarFeaturedSection
           item={featuredUpcoming}
@@ -771,21 +762,18 @@ function RadarActionRow({
 }) {
   return (
     <View style={styles.actionRow}>
-      <Pressable
-        accessibilityRole="button"
+      <ActionButton
+        accessibilityLabel={primaryLabel}
+        label={primaryLabel}
         onPress={onPressPrimary}
-        style={({ pressed }) => [styles.primaryActionButton, pressed ? styles.buttonPressed : null]}
-      >
-        <Text style={styles.primaryActionLabel}>{primaryLabel}</Text>
-      </Pressable>
+      />
       {sourceUrl && sourceLabel && onOpenSource ? (
-        <Pressable
-          accessibilityRole="link"
+        <ActionButton
+          accessibilityLabel={sourceLabel}
+          label={sourceLabel}
           onPress={onOpenSource}
-          style={({ pressed }) => [styles.metaActionButton, pressed ? styles.buttonPressed : null]}
-        >
-          <Text style={styles.metaActionLabel}>{sourceLabel}</Text>
-        </Pressable>
+          tone="meta"
+        />
       ) : null}
     </View>
   );
@@ -903,22 +891,17 @@ function RadarFilterSheet({
           </View>
 
           <View style={styles.actionRow}>
-            <Pressable
-              accessibilityRole="button"
+            <ActionButton
+              label="초기화"
               onPress={onReset}
-              style={({ pressed }) => [styles.secondaryActionButton, pressed ? styles.buttonPressed : null]}
               testID="radar-filter-reset"
-            >
-              <Text style={styles.secondaryActionLabel}>초기화</Text>
-            </Pressable>
-            <Pressable
-              accessibilityRole="button"
+              tone="secondary"
+            />
+            <ActionButton
+              label="닫기"
               onPress={onClose}
-              style={({ pressed }) => [styles.primaryActionButton, pressed ? styles.buttonPressed : null]}
               testID="radar-filter-close"
-            >
-              <Text style={styles.primaryActionLabel}>닫기</Text>
-            </Pressable>
+            />
           </View>
         </View>
       </View>

@@ -63,26 +63,57 @@ function getBadgePalette(
 }
 
 interface DayCellProps {
-  cell: CalendarDayCellModel;
-  onPress: (isoDate: string) => void;
+  badges: CalendarDayCellModel['badges'];
+  dateNumber: number;
+  extraCount?: number;
+  isCurrentMonth: boolean;
+  isSelected: boolean;
+  isoDate: string;
+  onPress: () => void;
+  releaseCount?: number;
+  upcomingCount?: number;
+  isToday?: boolean;
 }
 
-function DayCellComponent({ cell, onPress }: DayCellProps) {
+function DayCellComponent({
+  badges,
+  dateNumber,
+  extraCount = 0,
+  isCurrentMonth,
+  isSelected,
+  isoDate,
+  isToday = false,
+  onPress,
+  releaseCount = 0,
+  upcomingCount = 0,
+}: DayCellProps) {
   const theme = useAppTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const cell: CalendarDayCellModel = {
+    badges,
+    dayNumber: dateNumber,
+    isCurrentMonth,
+    isSelected,
+    isToday,
+    isoDate,
+    overflowCount: extraCount,
+    releaseCount,
+    upcomingCount,
+  };
 
   return (
     <Pressable
-      testID={`calendar-day-${cell.isoDate}`}
+      testID={`calendar-day-${isoDate}`}
       accessibilityHint="날짜 상세 시트를 엽니다."
       accessibilityLabel={buildCalendarDayAccessibilityLabel(cell)}
       accessibilityRole="button"
       accessibilityState={{ selected: cell.isSelected }}
-      onPress={() => onPress(cell.isoDate)}
+      onPress={onPress}
       style={({ pressed }) => [
         styles.dayCell,
         cell.isToday ? styles.dayCellToday : null,
         cell.isSelected ? styles.dayCellSelected : null,
+        !cell.isCurrentMonth ? styles.dayCellDisabled : null,
         pressed ? styles.dayCellPressed : null,
       ]}
     >
@@ -153,6 +184,9 @@ function createStyles(theme: MobileTheme) {
     },
     dayCellPressed: {
       backgroundColor: theme.colors.surface.interactive,
+    },
+    dayCellDisabled: {
+      opacity: 0.42,
     },
     dayCellHeader: {
       flexDirection: 'row',
