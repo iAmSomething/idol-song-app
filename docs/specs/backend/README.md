@@ -57,6 +57,9 @@
 17. `backend-secret-inventory-and-rotation.md`
    - GitHub / Railway / Neon 기준 backend secret / variable inventory
    - owner role, rotation trigger, rollback baseline, current audit snapshot
+18. `migration-readiness-scorecard.md`
+   - migration readiness category, weight, blocker threshold rubric
+   - machine-readable / human-readable scorecard artifact contract
 
 ## 읽는 순서
 
@@ -77,6 +80,7 @@
 15. `neon-backup-restore-recovery-drill.md`
 16. `projection-query-plan-regression-check.md`
 17. `backend-secret-inventory-and-rotation.md`
+18. `migration-readiness-scorecard.md`
 
 ## 원칙
 
