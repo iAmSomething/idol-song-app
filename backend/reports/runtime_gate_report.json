@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-11T07:12:19.414Z",
+  "generated_at": "2026-03-11T08:31:07.684Z",
   "report_bundle": {
-    "generated_at": "2026-03-11T07:11:17.396Z",
-    "bundle_id": "post-sync-verification-2ae8b97863c3",
+    "generated_at": "2026-03-11T08:30:32.344Z",
+    "bundle_id": "post-sync-verification-b72033bd3150",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -19,25 +19,39 @@
       },
       "upcoming_pipeline_sync": {
         "path": "reports/upcoming_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-07T08:21:49.354Z",
+        "generated_at": "2026-03-11T07:53:51.250Z",
         "scope": "upcoming_pipeline"
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-08T23:52:59.908Z"
+        "generated_at": "2026-03-11T07:53:57.809Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
         "generated_at": "2026-03-10T00:00:00.000Z"
       },
+      "canonical_null_coverage": {
+        "path": "reports/canonical_null_coverage_report.json",
+        "generated_at": "2026-03-11T08:30:30.464Z"
+      },
+      "canonical_null_recheck_queue": {
+        "path": "reports/canonical_null_recheck_queue.json",
+        "generated_at": "2026-03-11T08:30:31.766Z",
+        "queue_count": 3762
+      },
+      "null_coverage_trend": {
+        "path": "reports/null_coverage_trend_report.json",
+        "generated_at": "2026-03-11T08:30:32.119Z",
+        "baseline_available": false
+      },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-11T07:11:06.404Z",
+        "generated_at": "2026-03-11T08:30:28.469Z",
         "primary_path_key": "daily_upcoming"
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-2ae8b97863c3",
+      "bundle id: post-sync-verification-b72033bd3150",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -45,12 +59,14 @@
   },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": "post-sync-verification-2ae8b97863c3",
+    "expected_bundle_id": "post-sync-verification-b72033bd3150",
     "observed": {
-      "parity_bundle": "post-sync-verification-2ae8b97863c3",
-      "shadow_bundle": "post-sync-verification-2ae8b97863c3",
+      "parity_bundle": "post-sync-verification-b72033bd3150",
+      "shadow_bundle": "post-sync-verification-b72033bd3150",
       "runtime_gate_bundle": null,
-      "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z"
+      "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z",
+      "canonical_null_coverage_generated_at": "2026-03-11T08:30:30.464Z",
+      "null_coverage_trend_generated_at": "2026-03-11T08:30:32.119Z"
     },
     "mismatches": []
   },
@@ -83,16 +99,19 @@
     "parity_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/backend_json_parity_report.json",
     "shadow_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/backend_shadow_read_report.json",
     "historical_coverage_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/historical_release_detail_coverage_report.json",
+    "canonical_null_coverage_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/canonical_null_coverage_report.json",
+    "null_coverage_trend_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/null_coverage_trend_report.json",
     "bundle_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/report_bundle_metadata.json"
   },
   "summary_lines": [
     "api latency: needs_review (worst p95=1148.96ms)",
     "api error rate: needs_review (error rate=0)",
-    "projection freshness: fail (lag=3319.33m)",
+    "projection freshness: needs_review (lag=37.16m)",
     "worker cadence: fail (failure rate=n/a)",
     "parity dependency: fail",
     "shadow dependency: fail",
     "historical catalog completeness dependency: fail",
+    "critical null coverage dependency: fail",
     "bundle consistency: pass",
     "shadow -> web cutover gate: fail",
     "web cutover -> JSON demotion gate: fail"
@@ -123,10 +142,10 @@
       }
     },
     "projection_freshness": {
-      "status": "fail",
+      "status": "needs_review",
       "observed": {
-        "projection_generated_at": "2026-03-08T23:52:59.908Z",
-        "lag_minutes": 3319.33
+        "projection_generated_at": "2026-03-11T07:53:57.809Z",
+        "lag_minutes": 37.16
       },
       "thresholds": {
         "passLagMinutes": 20,
@@ -156,12 +175,12 @@
       "status": "fail",
       "observed": {
         "clean": false,
-        "generated_at": "2026-03-11T07:11:32.104748+00:00",
+        "generated_at": "2026-03-11T08:30:47.382926+00:00",
         "summary_lines": [
           "entity alias/search coverage: clean (mismatched entities=0)",
           "official links: clean (mismatched entities=0)",
           "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
-          "latest verified release selection: drift (tracking mismatches=0, stream mismatches=3)",
+          "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
           "upcoming counts / nearest: clean (month bucket mismatches=0)",
           "title-track / double-title: drift (mismatched releases=1060)",
           "YouTube Music / MV service-link state: drift (mismatched releases=124)",
@@ -174,17 +193,15 @@
       "status": "fail",
       "observed": {
         "clean": false,
-        "generated_at": "2026-03-11T07:12:10.034Z",
+        "generated_at": "2026-03-11T08:31:07.377Z",
         "summary_lines": [
           "search: clean 5/5, drift 0/5",
-          "entity_detail: clean 1/4, drift 3/4",
+          "entity_detail: clean 2/4, drift 2/4",
           "release_detail: clean 0/3, drift 3/3",
           "calendar_month: clean 3/3, drift 0/3",
-          "radar: clean 0/1, drift 1/1",
-          "missing rows or segments: 6 case(s)",
-          "field-shape mismatches: 4 case(s)",
-          "title-track / MV-state drift: 1 case(s)",
-          "radar eligibility drift: 1 case(s)"
+          "radar: clean 1/1, drift 0/1",
+          "missing rows or segments: 5 case(s)",
+          "field-shape mismatches: 3 case(s)"
         ]
       },
       "label": "backend_shadow_read_report"
@@ -203,16 +220,268 @@
       },
       "label": "historical_release_detail_coverage_report"
     },
+    "critical_null_coverage": {
+      "status": "fail",
+      "observed": {
+        "status": "fail",
+        "score_ratio": 0.708,
+        "trend_baseline_available": false,
+        "floor_checks": [
+          {
+            "cohort": "latest",
+            "field_family_key": "releases.title_track",
+            "field_label": "Title Track Resolution",
+            "minimum_ratio": 0.95,
+            "effective_coverage_ratio": 0.2906,
+            "unresolved_records": 188,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "release_service_links.youtube_mv",
+            "field_label": "YouTube MV Canonical Link",
+            "minimum_ratio": 0.8,
+            "effective_coverage_ratio": 0.1019,
+            "unresolved_records": 238,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "release_service_links.youtube_music",
+            "field_label": "YouTube Music Release Link",
+            "minimum_ratio": 0.85,
+            "effective_coverage_ratio": 1,
+            "unresolved_records": 0,
+            "fake_default_records": 0,
+            "pass": true
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "release_service_links.spotify",
+            "field_label": "Spotify Release Link",
+            "minimum_ratio": 0.85,
+            "effective_coverage_ratio": 1,
+            "unresolved_records": 0,
+            "fake_default_records": 0,
+            "pass": true
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "entities.official_youtube",
+            "field_label": "Official YouTube",
+            "minimum_ratio": 1,
+            "effective_coverage_ratio": 0.7528,
+            "unresolved_records": 22,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "entities.official_x",
+            "field_label": "Official X",
+            "minimum_ratio": 1,
+            "effective_coverage_ratio": 0.9775,
+            "unresolved_records": 2,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "entities.official_instagram",
+            "field_label": "Official Instagram",
+            "minimum_ratio": 1,
+            "effective_coverage_ratio": 0.9888,
+            "unresolved_records": 1,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "recent",
+            "field_family_key": "releases.title_track",
+            "field_label": "Title Track Resolution",
+            "minimum_ratio": 0.85,
+            "effective_coverage_ratio": 0,
+            "unresolved_records": 553,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "recent",
+            "field_family_key": "release_service_links.youtube_mv",
+            "field_label": "YouTube MV Canonical Link",
+            "minimum_ratio": 0.55,
+            "effective_coverage_ratio": 0,
+            "unresolved_records": 553,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "recent",
+            "field_family_key": "release_service_links.youtube_music",
+            "field_label": "YouTube Music Release Link",
+            "minimum_ratio": 0.7,
+            "effective_coverage_ratio": 1,
+            "unresolved_records": 0,
+            "fake_default_records": 0,
+            "pass": true
+          },
+          {
+            "cohort": "recent",
+            "field_family_key": "release_service_links.spotify",
+            "field_label": "Spotify Release Link",
+            "minimum_ratio": 0.7,
+            "effective_coverage_ratio": 1,
+            "unresolved_records": 0,
+            "fake_default_records": 0,
+            "pass": true
+          },
+          {
+            "cohort": "recent",
+            "field_family_key": "entities.official_youtube",
+            "field_label": "Official YouTube",
+            "minimum_ratio": 0.95,
+            "effective_coverage_ratio": 0.7222,
+            "unresolved_records": 5,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "recent",
+            "field_family_key": "entities.official_x",
+            "field_label": "Official X",
+            "minimum_ratio": 0.95,
+            "effective_coverage_ratio": 1,
+            "unresolved_records": 0,
+            "fake_default_records": 0,
+            "pass": true
+          },
+          {
+            "cohort": "recent",
+            "field_family_key": "entities.official_instagram",
+            "field_label": "Official Instagram",
+            "minimum_ratio": 0.95,
+            "effective_coverage_ratio": 1,
+            "unresolved_records": 0,
+            "fake_default_records": 0,
+            "pass": true
+          }
+        ],
+        "latest_floor_failures": [
+          {
+            "cohort": "latest",
+            "field_family_key": "releases.title_track",
+            "field_label": "Title Track Resolution",
+            "minimum_ratio": 0.95,
+            "effective_coverage_ratio": 0.2906,
+            "unresolved_records": 188,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "release_service_links.youtube_mv",
+            "field_label": "YouTube MV Canonical Link",
+            "minimum_ratio": 0.8,
+            "effective_coverage_ratio": 0.1019,
+            "unresolved_records": 238,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "entities.official_youtube",
+            "field_label": "Official YouTube",
+            "minimum_ratio": 1,
+            "effective_coverage_ratio": 0.7528,
+            "unresolved_records": 22,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "entities.official_x",
+            "field_label": "Official X",
+            "minimum_ratio": 1,
+            "effective_coverage_ratio": 0.9775,
+            "unresolved_records": 2,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "latest",
+            "field_family_key": "entities.official_instagram",
+            "field_label": "Official Instagram",
+            "minimum_ratio": 1,
+            "effective_coverage_ratio": 0.9888,
+            "unresolved_records": 1,
+            "fake_default_records": 0,
+            "pass": false
+          }
+        ],
+        "recent_floor_failures": [
+          {
+            "cohort": "recent",
+            "field_family_key": "releases.title_track",
+            "field_label": "Title Track Resolution",
+            "minimum_ratio": 0.85,
+            "effective_coverage_ratio": 0,
+            "unresolved_records": 553,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "recent",
+            "field_family_key": "release_service_links.youtube_mv",
+            "field_label": "YouTube MV Canonical Link",
+            "minimum_ratio": 0.55,
+            "effective_coverage_ratio": 0,
+            "unresolved_records": 553,
+            "fake_default_records": 0,
+            "pass": false
+          },
+          {
+            "cohort": "recent",
+            "field_family_key": "entities.official_youtube",
+            "field_label": "Official YouTube",
+            "minimum_ratio": 0.95,
+            "effective_coverage_ratio": 0.7222,
+            "unresolved_records": 5,
+            "fake_default_records": 0,
+            "pass": false
+          }
+        ],
+        "fake_default_escalations": [],
+        "critical_regressions": [],
+        "blocker_reasons": [
+          "releases.title_track latest 29.1% < 95.0%",
+          "release_service_links.youtube_mv latest 10.2% < 80.0%",
+          "entities.official_youtube latest 75.3% < 100.0%",
+          "entities.official_x latest 97.8% < 100.0%",
+          "entities.official_instagram latest 98.9% < 100.0%",
+          "releases.title_track recent 0.0% < 85.0%",
+          "release_service_links.youtube_mv recent 0.0% < 55.0%",
+          "entities.official_youtube recent 72.2% < 95.0%"
+        ],
+        "review_reasons": [
+          "trend baseline unavailable"
+        ]
+      },
+      "label": "critical_null_coverage"
+    },
     "bundle_consistency": {
       "status": "pass",
       "observed": {
         "status": "pass",
-        "expected_bundle_id": "post-sync-verification-2ae8b97863c3",
+        "expected_bundle_id": "post-sync-verification-b72033bd3150",
         "observed": {
-          "parity_bundle": "post-sync-verification-2ae8b97863c3",
-          "shadow_bundle": "post-sync-verification-2ae8b97863c3",
+          "parity_bundle": "post-sync-verification-b72033bd3150",
+          "shadow_bundle": "post-sync-verification-b72033bd3150",
           "runtime_gate_bundle": null,
-          "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z"
+          "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z",
+          "canonical_null_coverage_generated_at": "2026-03-11T08:30:30.464Z",
+          "null_coverage_trend_generated_at": "2026-03-11T08:30:32.119Z"
         },
         "mismatches": []
       },

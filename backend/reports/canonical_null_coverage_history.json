@@ -1,0 +1,499 @@
+{
+  "generated_at": "2026-03-11T08:30:32.119Z",
+  "snapshots": [
+    {
+      "generated_at": "2026-03-11T08:30:30.464Z",
+      "field_family_summary": [
+        {
+          "field_family_key": "entities.representative_image",
+          "field_label": "Representative Image",
+          "table_name": "entities",
+          "product_criticality": "wave_2",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 117,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "release_service_links.youtube_mv",
+          "field_label": "YouTube MV Canonical Link",
+          "table_name": "release_service_links",
+          "product_criticality": "wave_1",
+          "effective_coverage_ratio": 0.0152,
+          "unresolved_records": 1744,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "releases.title_track",
+          "field_label": "Title Track Resolution",
+          "table_name": "releases",
+          "product_criticality": "wave_1",
+          "effective_coverage_ratio": 0.0435,
+          "unresolved_records": 1694,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "entities.debut_year",
+          "field_label": "Debut Year",
+          "table_name": "entities",
+          "product_criticality": "wave_2",
+          "effective_coverage_ratio": 0.0684,
+          "unresolved_records": 109,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "entities.agency_name",
+          "field_label": "Agency",
+          "table_name": "entities",
+          "product_criticality": "wave_2",
+          "effective_coverage_ratio": 0.4872,
+          "unresolved_records": 60,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "entities.official_youtube",
+          "field_label": "Official YouTube",
+          "table_name": "entities",
+          "product_criticality": "wave_1",
+          "effective_coverage_ratio": 0.7521,
+          "unresolved_records": 29,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "entities.official_x",
+          "field_label": "Official X",
+          "table_name": "entities",
+          "product_criticality": "wave_1",
+          "effective_coverage_ratio": 0.9316,
+          "unresolved_records": 8,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "entities.official_instagram",
+          "field_label": "Official Instagram",
+          "table_name": "entities",
+          "product_criticality": "wave_1",
+          "effective_coverage_ratio": 0.9915,
+          "unresolved_records": 1,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "entities.official_website",
+          "field_label": "Official Website",
+          "table_name": "entities",
+          "product_criticality": "wave_2",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "release_service_links.spotify",
+          "field_label": "Spotify Release Link",
+          "table_name": "release_service_links",
+          "product_criticality": "wave_1",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "release_service_links.youtube_music",
+          "field_label": "YouTube Music Release Link",
+          "table_name": "release_service_links",
+          "product_criticality": "wave_1",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "upcoming_signals.confidence_score",
+          "field_label": "Upcoming Confidence Score",
+          "table_name": "upcoming_signals",
+          "product_criticality": "wave_2",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "upcoming_signals.release_format",
+          "field_label": "Upcoming Release Format",
+          "table_name": "upcoming_signals",
+          "product_criticality": "wave_2",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "upcoming_signals.scheduled_date",
+          "field_label": "Upcoming Exact Date",
+          "table_name": "upcoming_signals",
+          "product_criticality": "wave_1",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0
+        },
+        {
+          "field_family_key": "upcoming_signals.scheduled_month",
+          "field_label": "Upcoming Month Anchor",
+          "table_name": "upcoming_signals",
+          "product_criticality": "wave_1",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0
+        }
+      ],
+      "by_cohort": [
+        {
+          "field_family_key": "entities.agency_name",
+          "cohort": "unknown",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 7,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.debut_year",
+          "cohort": "unknown",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 7,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.debut_year",
+          "cohort": "historical",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 3,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.debut_year",
+          "cohort": "recent",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 18,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.representative_image",
+          "cohort": "unknown",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 7,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.representative_image",
+          "cohort": "latest",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 89,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.representative_image",
+          "cohort": "historical",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 3,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.representative_image",
+          "cohort": "recent",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 18,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "release_service_links.youtube_mv",
+          "cohort": "historical",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 953,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "release_service_links.youtube_mv",
+          "cohort": "recent",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 553,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "releases.title_track",
+          "cohort": "historical",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 953,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "releases.title_track",
+          "cohort": "recent",
+          "effective_coverage_ratio": 0,
+          "unresolved_records": 553,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.debut_year",
+          "cohort": "latest",
+          "effective_coverage_ratio": 0.0899,
+          "unresolved_records": 81,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "release_service_links.youtube_mv",
+          "cohort": "latest",
+          "effective_coverage_ratio": 0.1019,
+          "unresolved_records": 238,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_x",
+          "cohort": "unknown",
+          "effective_coverage_ratio": 0.1429,
+          "unresolved_records": 6,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.agency_name",
+          "cohort": "recent",
+          "effective_coverage_ratio": 0.1667,
+          "unresolved_records": 15,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "releases.title_track",
+          "cohort": "latest",
+          "effective_coverage_ratio": 0.2906,
+          "unresolved_records": 188,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.agency_name",
+          "cohort": "historical",
+          "effective_coverage_ratio": 0.3333,
+          "unresolved_records": 2,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.agency_name",
+          "cohort": "latest",
+          "effective_coverage_ratio": 0.5955,
+          "unresolved_records": 36,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.official_youtube",
+          "cohort": "historical",
+          "effective_coverage_ratio": 0.6667,
+          "unresolved_records": 1,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_youtube",
+          "cohort": "recent",
+          "effective_coverage_ratio": 0.7222,
+          "unresolved_records": 5,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_youtube",
+          "cohort": "latest",
+          "effective_coverage_ratio": 0.7528,
+          "unresolved_records": 22,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_youtube",
+          "cohort": "unknown",
+          "effective_coverage_ratio": 0.8571,
+          "unresolved_records": 1,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_x",
+          "cohort": "latest",
+          "effective_coverage_ratio": 0.9775,
+          "unresolved_records": 2,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_instagram",
+          "cohort": "latest",
+          "effective_coverage_ratio": 0.9888,
+          "unresolved_records": 1,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_instagram",
+          "cohort": "unknown",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_instagram",
+          "cohort": "historical",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_instagram",
+          "cohort": "recent",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_website",
+          "cohort": "unknown",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.official_website",
+          "cohort": "latest",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.official_website",
+          "cohort": "historical",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.official_website",
+          "cohort": "recent",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "entities.official_x",
+          "cohort": "historical",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "entities.official_x",
+          "cohort": "recent",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "release_service_links.spotify",
+          "cohort": "historical",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "release_service_links.spotify",
+          "cohort": "latest",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "release_service_links.spotify",
+          "cohort": "recent",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "release_service_links.youtube_music",
+          "cohort": "historical",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "release_service_links.youtube_music",
+          "cohort": "latest",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "release_service_links.youtube_music",
+          "cohort": "recent",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "upcoming_signals.confidence_score",
+          "cohort": "latest",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "upcoming_signals.release_format",
+          "cohort": "latest",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_2"
+        },
+        {
+          "field_family_key": "upcoming_signals.scheduled_date",
+          "cohort": "latest",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        },
+        {
+          "field_family_key": "upcoming_signals.scheduled_month",
+          "cohort": "latest",
+          "effective_coverage_ratio": 1,
+          "unresolved_records": 0,
+          "fake_default_records": 0,
+          "product_criticality": "wave_1"
+        }
+      ]
+    }
+  ]
+}

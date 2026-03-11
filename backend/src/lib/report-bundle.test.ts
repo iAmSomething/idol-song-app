@@ -24,6 +24,9 @@ test('report bundle metadata is stable for the same snapshot inputs', () => {
     upcomingSyncReference: { path: 'upcoming_pipeline_db_sync_summary.json', generated_at: '2026-03-11T00:01:00.000Z' },
     projectionReference: { path: 'projection_refresh_summary.json', generated_at: '2026-03-11T00:02:00.000Z' },
     historicalCoverageReference: { path: 'historical_release_detail_coverage_report.json', generated_at: '2026-03-10T12:00:00.000Z' },
+    nullCoverageReference: { path: 'canonical_null_coverage_report.json', generated_at: '2026-03-11T00:02:30.000Z' },
+    nullRecheckQueueReference: { path: 'canonical_null_recheck_queue.json', generated_at: '2026-03-11T00:02:45.000Z' },
+    nullTrendReference: { path: 'null_coverage_trend_report.json', generated_at: '2026-03-11T00:02:50.000Z' },
     workerCadenceReference: { path: 'worker_cadence_report.json', generated_at: '2026-03-11T00:03:00.000Z' },
   });
   const second = buildReportBundleMetadata({
@@ -37,6 +40,9 @@ test('report bundle metadata is stable for the same snapshot inputs', () => {
     upcomingSyncReference: { path: 'upcoming_pipeline_db_sync_summary.json', generated_at: '2026-03-11T00:01:00.000Z' },
     projectionReference: { path: 'projection_refresh_summary.json', generated_at: '2026-03-11T00:02:00.000Z' },
     historicalCoverageReference: { path: 'historical_release_detail_coverage_report.json', generated_at: '2026-03-10T12:00:00.000Z' },
+    nullCoverageReference: { path: 'canonical_null_coverage_report.json', generated_at: '2026-03-11T00:02:30.000Z' },
+    nullRecheckQueueReference: { path: 'canonical_null_recheck_queue.json', generated_at: '2026-03-11T00:02:45.000Z' },
+    nullTrendReference: { path: 'null_coverage_trend_report.json', generated_at: '2026-03-11T00:02:50.000Z' },
     workerCadenceReference: { path: 'worker_cadence_report.json', generated_at: '2026-03-11T00:03:00.000Z' },
   });
 
@@ -57,6 +63,8 @@ test('bundle consistency fails when derived reports drift from the declared bund
       path: 'historical_release_detail_coverage_report.json',
       generated_at: '2026-03-11T01:00:00.000Z',
     },
+    nullCoverageReference: { path: 'canonical_null_coverage_report.json', generated_at: '2026-03-11T01:10:00.000Z' },
+    nullTrendReference: { path: 'null_coverage_trend_report.json', generated_at: '2026-03-11T01:15:00.000Z' },
   });
 
   const consistency = buildBundleConsistency({
@@ -65,9 +73,12 @@ test('bundle consistency fails when derived reports drift from the declared bund
     shadowReport: { report_bundle: { bundle_id: bundle.bundle_id } },
     runtimeGateReport: { report_bundle: { bundle_id: bundle.bundle_id } },
     historicalCoverageReport: { generated_at: '2026-03-11T02:00:00.000Z' },
+    nullCoverageReport: { generated_at: '2026-03-11T01:10:00.000Z' },
+    nullTrendReport: { generated_at: '2026-03-11T01:16:00.000Z' },
   });
 
   assert.equal(consistency.status, 'fail');
   assert.ok(consistency.mismatches.some((entry: string) => entry.includes('parity bundle drift')));
   assert.ok(consistency.mismatches.some((entry: string) => entry.includes('historical coverage drift')));
+  assert.ok(consistency.mismatches.some((entry: string) => entry.includes('null coverage trend drift')));
 });

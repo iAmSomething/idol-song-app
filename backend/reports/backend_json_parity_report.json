@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-11T07:58:36.821869+00:00",
+  "generated_at": "2026-03-11T08:30:47.382926+00:00",
   "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-11T07:11:17.396Z",
-    "bundle_id": "post-sync-verification-2ae8b97863c3",
+    "generated_at": "2026-03-11T08:30:32.344Z",
+    "bundle_id": "post-sync-verification-b72033bd3150",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -20,25 +20,39 @@
       },
       "upcoming_pipeline_sync": {
         "path": "reports/upcoming_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-07T08:21:49.354Z",
+        "generated_at": "2026-03-11T07:53:51.250Z",
         "scope": "upcoming_pipeline"
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-08T23:52:59.908Z"
+        "generated_at": "2026-03-11T07:53:57.809Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
         "generated_at": "2026-03-10T00:00:00.000Z"
       },
+      "canonical_null_coverage": {
+        "path": "reports/canonical_null_coverage_report.json",
+        "generated_at": "2026-03-11T08:30:30.464Z"
+      },
+      "canonical_null_recheck_queue": {
+        "path": "reports/canonical_null_recheck_queue.json",
+        "generated_at": "2026-03-11T08:30:31.766Z",
+        "queue_count": 3762
+      },
+      "null_coverage_trend": {
+        "path": "reports/null_coverage_trend_report.json",
+        "generated_at": "2026-03-11T08:30:32.119Z",
+        "baseline_available": false
+      },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-11T07:11:06.404Z",
+        "generated_at": "2026-03-11T08:30:28.469Z",
         "primary_path_key": "daily_upcoming"
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-2ae8b97863c3",
+      "bundle id: post-sync-verification-b72033bd3150",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"

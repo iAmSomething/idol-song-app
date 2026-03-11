@@ -19,6 +19,9 @@ const DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH = path.join(
   'reports',
   'historical_release_detail_coverage_report.json',
 );
+const DEFAULT_NULL_COVERAGE_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'canonical_null_coverage_report.json');
+const DEFAULT_NULL_RECHECK_QUEUE_PATH = path.join(BACKEND_DIR, 'reports', 'canonical_null_recheck_queue.json');
+const DEFAULT_NULL_TREND_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'null_coverage_trend_report.json');
 const DEFAULT_WORKER_CADENCE_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'worker_cadence_report.json');
 
 function parseArgs(argv) {
@@ -28,6 +31,9 @@ function parseArgs(argv) {
     upcomingSyncReportPath: DEFAULT_UPCOMING_SYNC_REPORT_PATH,
     projectionReportPath: DEFAULT_PROJECTION_REPORT_PATH,
     historicalCoverageReportPath: DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH,
+    nullCoverageReportPath: DEFAULT_NULL_COVERAGE_REPORT_PATH,
+    nullRecheckQueuePath: DEFAULT_NULL_RECHECK_QUEUE_PATH,
+    nullTrendReportPath: DEFAULT_NULL_TREND_REPORT_PATH,
     workerCadenceReportPath: DEFAULT_WORKER_CADENCE_REPORT_PATH,
     bundleKind: 'post-sync-verification',
     cadenceProfile: 'daily-upcoming',
@@ -61,6 +67,21 @@ function parseArgs(argv) {
     }
     if (value === '--historical-coverage-report-path') {
       options.historicalCoverageReportPath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
+      index += 1;
+      continue;
+    }
+    if (value === '--null-coverage-report-path') {
+      options.nullCoverageReportPath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
+      index += 1;
+      continue;
+    }
+    if (value === '--null-recheck-queue-path') {
+      options.nullRecheckQueuePath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
+      index += 1;
+      continue;
+    }
+    if (value === '--null-trend-report-path') {
+      options.nullTrendReportPath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
       index += 1;
       continue;
     }
@@ -107,12 +128,24 @@ function parseArgs(argv) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const [releaseSyncReport, upcomingSyncReport, projectionReport, historicalCoverageReport, workerCadenceReport] =
+  const [
+    releaseSyncReport,
+    upcomingSyncReport,
+    projectionReport,
+    historicalCoverageReport,
+    nullCoverageReport,
+    nullRecheckQueue,
+    nullTrendReport,
+    workerCadenceReport,
+  ] =
     await Promise.all([
       readJsonIfExists(options.releaseSyncReportPath),
       readJsonIfExists(options.upcomingSyncReportPath),
       readJsonIfExists(options.projectionReportPath),
       readJsonIfExists(options.historicalCoverageReportPath),
+      readJsonIfExists(options.nullCoverageReportPath),
+      readJsonIfExists(options.nullRecheckQueuePath),
+      readJsonIfExists(options.nullTrendReportPath),
       readJsonIfExists(options.workerCadenceReportPath),
     ]);
 
@@ -135,6 +168,13 @@ async function main() {
       options.historicalCoverageReportPath,
       historicalCoverageReport,
     ),
+    nullCoverageReference: buildReportReference(BACKEND_DIR, options.nullCoverageReportPath, nullCoverageReport),
+    nullRecheckQueueReference: buildReportReference(BACKEND_DIR, options.nullRecheckQueuePath, nullRecheckQueue, {
+      queue_count: nullRecheckQueue?.queue_count ?? null,
+    }),
+    nullTrendReference: buildReportReference(BACKEND_DIR, options.nullTrendReportPath, nullTrendReport, {
+      baseline_available: nullTrendReport?.baseline_available ?? null,
+    }),
     workerCadenceReference: buildReportReference(BACKEND_DIR, options.workerCadenceReportPath, workerCadenceReport, {
       primary_path_key: workerCadenceReport?.primary_path_key ?? null,
     }),

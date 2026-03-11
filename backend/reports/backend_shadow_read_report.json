@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-11T07:12:10.034Z",
+  "generated_at": "2026-03-11T08:31:07.377Z",
   "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-11T07:11:17.396Z",
-    "bundle_id": "post-sync-verification-2ae8b97863c3",
+    "generated_at": "2026-03-11T08:30:32.344Z",
+    "bundle_id": "post-sync-verification-b72033bd3150",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -20,25 +20,39 @@
       },
       "upcoming_pipeline_sync": {
         "path": "reports/upcoming_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-07T08:21:49.354Z",
+        "generated_at": "2026-03-11T07:53:51.250Z",
         "scope": "upcoming_pipeline"
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-08T23:52:59.908Z"
+        "generated_at": "2026-03-11T07:53:57.809Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
         "generated_at": "2026-03-10T00:00:00.000Z"
       },
+      "canonical_null_coverage": {
+        "path": "reports/canonical_null_coverage_report.json",
+        "generated_at": "2026-03-11T08:30:30.464Z"
+      },
+      "canonical_null_recheck_queue": {
+        "path": "reports/canonical_null_recheck_queue.json",
+        "generated_at": "2026-03-11T08:30:31.766Z",
+        "queue_count": 3762
+      },
+      "null_coverage_trend": {
+        "path": "reports/null_coverage_trend_report.json",
+        "generated_at": "2026-03-11T08:30:32.119Z",
+        "baseline_available": false
+      },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-11T07:11:06.404Z",
+        "generated_at": "2026-03-11T08:30:28.469Z",
         "primary_path_key": "daily_upcoming"
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-2ae8b97863c3",
+      "bundle id: post-sync-verification-b72033bd3150",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -46,12 +60,14 @@
   },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": "post-sync-verification-2ae8b97863c3",
+    "expected_bundle_id": "post-sync-verification-b72033bd3150",
     "observed": {
-      "parity_bundle": "post-sync-verification-2ae8b97863c3",
+      "parity_bundle": "post-sync-verification-b72033bd3150",
       "shadow_bundle": null,
       "runtime_gate_bundle": null,
-      "historical_coverage_generated_at": null
+      "historical_coverage_generated_at": null,
+      "canonical_null_coverage_generated_at": null,
+      "null_coverage_trend_generated_at": null
     },
     "mismatches": []
   },
@@ -59,13 +75,13 @@
     "exists": true,
     "path": "backend/reports/backend_json_parity_report.json",
     "clean": false,
-    "generated_at": "2026-03-11T07:11:32.104748+00:00",
-    "bundle_id": "post-sync-verification-2ae8b97863c3",
+    "generated_at": "2026-03-11T08:30:47.382926+00:00",
+    "bundle_id": "post-sync-verification-b72033bd3150",
     "summary_lines": [
       "entity alias/search coverage: clean (mismatched entities=0)",
       "official links: clean (mismatched entities=0)",
       "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
-      "latest verified release selection: drift (tracking mismatches=0, stream mismatches=3)",
+      "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
       "upcoming counts / nearest: clean (month bucket mismatches=0)",
       "title-track / double-title: drift (mismatched releases=1060)",
       "YouTube Music / MV service-link state: drift (mismatched releases=124)",
@@ -120,14 +136,12 @@
   },
   "summary_lines": [
     "search: clean 5/5, drift 0/5",
-    "entity_detail: clean 1/4, drift 3/4",
+    "entity_detail: clean 2/4, drift 2/4",
     "release_detail: clean 0/3, drift 3/3",
     "calendar_month: clean 3/3, drift 0/3",
-    "radar: clean 0/1, drift 1/1",
-    "missing rows or segments: 6 case(s)",
-    "field-shape mismatches: 4 case(s)",
-    "title-track / MV-state drift: 1 case(s)",
-    "radar eligibility drift: 1 case(s)"
+    "radar: clean 1/1, drift 0/1",
+    "missing rows or segments: 5 case(s)",
+    "field-shape mismatches: 3 case(s)"
   ],
   "cases": [
     {
@@ -209,8 +223,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-7774cf64-549f-4e14-849e-e37f5b083ded",
-      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-7774cf64-549f-4e14-849e-e37f5b083ded"
+      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-ca1426e9-4abf-498e-ba7a-e727ba7cd579",
+      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-ca1426e9-4abf-498e-ba7a-e727ba7cd579"
     },
     {
       "surface": "search",
@@ -342,8 +356,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-6166f271-1abf-4b82-9d7d-875f846d6b3c",
-      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-6166f271-1abf-4b82-9d7d-875f846d6b3c"
+      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-69c32074-3455-4058-915f-64cb30404622",
+      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-69c32074-3455-4058-915f-64cb30404622"
     },
     {
       "surface": "search",
@@ -475,8 +489,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-43bb7821-fd10-4273-bd76-bc0af020d506",
-      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-43bb7821-fd10-4273-bd76-bc0af020d506"
+      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-f429db2e-9125-44cb-a7d3-a1d144d18b14",
+      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-f429db2e-9125-44cb-a7d3-a1d144d18b14"
     },
     {
       "surface": "search",
@@ -557,8 +571,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-revive-2b-36cd132b-49e9-47cd-a4a7-6f0b477d1626",
-      "response_request_id": "shadow--v1-search-q-revive-2b-36cd132b-49e9-47cd-a4a7-6f0b477d1626"
+      "request_id_sent": "shadow--v1-search-q-revive-2b-b42dd638-c633-4037-bbc5-0c4628dc2181",
+      "response_request_id": "shadow--v1-search-q-revive-2b-b42dd638-c633-4037-bbc5-0c4628dc2181"
     },
     {
       "surface": "search",
@@ -639,8 +653,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-633276f2-d284-4645-bb7c-cadafb9d6059",
-      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-633276f2-d284-4645-bb7c-cadafb9d6059"
+      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-4b0ff4f3-a0c5-42f3-bfcb-c052098c694d",
+      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-4b0ff4f3-a0c5-42f3-bfcb-c052098c694d"
     },
     {
       "surface": "entity_detail",
@@ -667,9 +681,15 @@
         },
         {
           "category": "missing rows or segments",
-          "path": "data.artist_source_url",
+          "path": "data.tracking_state.tier",
+          "expected": "tracked",
+          "actual": "longtail"
+        },
+        {
+          "category": "missing rows or segments",
+          "path": "data.tracking_state.watch_reason",
           "expected": null,
-          "actual": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
+          "actual": "manual_watch"
         }
       ],
       "expected_snapshot": {
@@ -694,8 +714,8 @@
           ]
         },
         "tracking_state": {
-          "tier": "longtail",
-          "watch_reason": "manual_watch",
+          "tier": "tracked",
+          "watch_reason": null,
           "tracking_status": "watch_only"
         },
         "next_upcoming": {
@@ -781,7 +801,7 @@
             "source_count": 1
           }
         ],
-        "artist_source_url": null
+        "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_snapshot": {
         "identity": {
@@ -835,6 +855,11 @@
           "stream": "song",
           "release_kind": "single",
           "release_format": "single",
+          "representative_song_title": null,
+          "spotify_url": null,
+          "youtube_music_url": null,
+          "youtube_mv_url": null,
+          "source_url": null,
           "artwork": null
         },
         "recent_albums": [
@@ -845,6 +870,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -854,6 +884,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -863,6 +898,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -872,6 +912,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           }
         ],
@@ -898,8 +943,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-yena-3c8643aa-4894-4f8d-b3aa-7d312112c820",
-      "response_request_id": "shadow--v1-entities-yena-3c8643aa-4894-4f8d-b3aa-7d312112c820"
+      "request_id_sent": "shadow--v1-entities-yena-7bcdd9f1-40a9-4377-a397-ad1fb6f64a32",
+      "response_request_id": "shadow--v1-entities-yena-7bcdd9f1-40a9-4377-a397-ad1fb6f64a32"
     },
     {
       "surface": "entity_detail",
@@ -922,20 +967,6 @@
               "release_kind": "ep",
               "release_format": "ep",
               "artwork": null
-            },
-            {
-              "release_title": "DEADLINE",
-              "release_date": "2026-02-26",
-              "stream": "album",
-              "release_kind": "ep",
-              "release_format": "ep",
-              "artwork": {
-                "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
-                "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
-                "artwork_source_type": "cover_art_archive",
-                "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
-                "is_placeholder": false
-              }
             },
             {
               "release_title": "BORN PINK",
@@ -1090,21 +1121,6 @@
             "release_kind": "ep",
             "release_format": "ep",
             "artwork": null
-          },
-          {
-            "release_id": "BLACKPINK::DEADLINE::2026-02-26::album",
-            "release_title": "DEADLINE",
-            "release_date": "2026-02-26",
-            "stream": "album",
-            "release_kind": "ep",
-            "release_format": "ep",
-            "artwork": {
-              "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
-              "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
-              "artwork_source_type": "cover_art_archive",
-              "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
-              "is_placeholder": false
-            }
           },
           {
             "release_id": "BLACKPINK::BORN PINK::2022-09-16::album",
@@ -1340,6 +1356,11 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
+          "representative_song_title": "GO",
+          "spotify_url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
+          "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
+          "youtube_mv_url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
+          "source_url": null,
           "artwork": null
         },
         "recent_albums": [
@@ -1350,6 +1371,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": "GO",
+            "spotify_url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
+            "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
+            "youtube_mv_url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
+            "source_url": null,
             "artwork": null
           },
           {
@@ -1359,6 +1385,11 @@
             "stream": "album",
             "release_kind": null,
             "release_format": null,
+            "representative_song_title": "GO",
+            "spotify_url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
+            "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
+            "youtube_mv_url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
+            "source_url": null,
             "artwork": {
               "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
               "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
@@ -1374,6 +1405,11 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -1383,6 +1419,11 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -1392,6 +1433,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -1401,6 +1447,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -1410,6 +1461,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           }
         ],
@@ -1562,8 +1618,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-blackpink-c53abf3f-ef12-4a1b-866a-0958aa5705c1",
-      "response_request_id": "shadow--v1-entities-blackpink-c53abf3f-ef12-4a1b-866a-0958aa5705c1"
+      "request_id_sent": "shadow--v1-entities-blackpink-d64deb7f-2a9d-4444-837e-78dcebc63640",
+      "response_request_id": "shadow--v1-entities-blackpink-d64deb7f-2a9d-4444-837e-78dcebc63640"
     },
     {
       "surface": "entity_detail",
@@ -1740,6 +1796,11 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
+          "representative_song_title": "Back to Life",
+          "spotify_url": "https://open.spotify.com/album/7g35iam7Zn7Kwc1ZpkWD8c",
+          "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4",
+          "youtube_mv_url": "https://www.youtube.com/watch?v=KqE0P1qMtQg",
+          "source_url": null,
           "artwork": {
             "cover_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front",
             "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
@@ -1756,6 +1817,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": "Back to Life",
+            "spotify_url": "https://open.spotify.com/album/7g35iam7Zn7Kwc1ZpkWD8c",
+            "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4",
+            "youtube_mv_url": "https://www.youtube.com/watch?v=KqE0P1qMtQg",
+            "source_url": null,
             "artwork": {
               "cover_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front",
               "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
@@ -1771,6 +1837,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -1780,6 +1851,11 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -1789,6 +1865,11 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -1798,6 +1879,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           },
           {
@@ -1807,6 +1893,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           }
         ],
@@ -1833,26 +1924,17 @@
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-and-team-c1c7243a-cccf-4aaa-80bb-9a6f0497c79a",
-      "response_request_id": "shadow--v1-entities-and-team-c1c7243a-cccf-4aaa-80bb-9a6f0497c79a"
+      "request_id_sent": "shadow--v1-entities-and-team-f5153119-228f-469c-8156-2a9d91bd0653",
+      "response_request_id": "shadow--v1-entities-and-team-f5153119-228f-469c-8156-2a9d91bd0653"
     },
     {
       "surface": "entity_detail",
       "input": {
         "slug": "allday-project"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "missing rows or segments"
-      ],
-      "mismatches": [
-        {
-          "category": "missing rows or segments",
-          "path": "data.artist_source_url",
-          "expected": null,
-          "actual": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "allday-project",
@@ -1874,8 +1956,8 @@
         },
         "tracking_state": {
           "tier": "manual",
-          "watch_reason": "manual_watch",
-          "tracking_status": "watch_only"
+          "watch_reason": "recent_release",
+          "tracking_status": "recent_release"
         },
         "next_upcoming": null,
         "latest_release": {
@@ -1899,7 +1981,7 @@
           }
         ],
         "source_timeline": [],
-        "artist_source_url": null
+        "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_snapshot": {
         "identity": {
@@ -1927,8 +2009,8 @@
         },
         "tracking_state": {
           "tier": "manual",
-          "watch_reason": "manual_watch",
-          "tracking_status": "watch_only"
+          "watch_reason": "recent_release",
+          "tracking_status": "recent_release"
         },
         "next_upcoming": null,
         "latest_release": {
@@ -1938,6 +2020,11 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
+          "representative_song_title": null,
+          "spotify_url": null,
+          "youtube_music_url": null,
+          "youtube_mv_url": null,
+          "source_url": null,
           "artwork": null
         },
         "recent_albums": [
@@ -1948,6 +2035,11 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
             "artwork": null
           }
         ],
@@ -1955,8 +2047,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-allday-project-c432bbf6-ea5c-4e92-a79c-d4c230eb1b25",
-      "response_request_id": "shadow--v1-entities-allday-project-c432bbf6-ea5c-4e92-a79c-d4c230eb1b25"
+      "request_id_sent": "shadow--v1-entities-allday-project-db1573f7-d7b4-438d-ab93-a16daa5f4362",
+      "response_request_id": "shadow--v1-entities-allday-project-db1573f7-d7b4-438d-ab93-a16daa5f4362"
     },
     {
       "surface": "release_detail",
@@ -1968,305 +2060,23 @@
       },
       "clean": false,
       "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments",
-        "title-track / MV-state drift"
+        "missing rows or segments"
       ],
       "mismatches": [
         {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.entity_slug",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.release_title",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.release_date",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.stream",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.release_kind",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.display_name",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.artwork",
-              "expected_type": "object",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            }
-          ]
+          "category": "missing rows or segments",
+          "path": "lookup.statusCode",
+          "expected": 200,
+          "actual": 200
         },
         {
           "category": "missing rows or segments",
-          "path": "data.lookup.release",
-          "expected": {
-            "release_title": "DEADLINE",
-            "release_date": "2026-02-26",
-            "stream": "album",
-            "release_kind": "ep"
-          },
-          "actual": {
-            "release_title": "DEADLINE",
-            "release_date": "2026-02-27",
-            "stream": "album",
-            "release_kind": "ep"
-          }
-        },
-        {
-          "category": "title-track / MV-state drift",
-          "path": "data.detail.detail_metadata",
-          "expected": {
-            "status": "unresolved",
-            "provenance": "releaseDetails.missing_row"
-          },
-          "actual": {
-            "status": "verified",
-            "provenance": "releaseDetails.existing_row"
-          }
-        },
-        {
-          "category": "title-track / MV-state drift",
-          "path": "data.detail.title_track_metadata",
-          "expected": {
-            "status": "unresolved",
-            "provenance": "releaseDetails.missing_row"
-          },
-          "actual": {
-            "status": "verified",
-            "provenance": "releaseDetails.existing_title_flags"
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.artwork",
-          "expected": {
-            "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
-            "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
-            "artwork_source_type": "cover_art_archive",
-            "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031"
-          },
-          "actual": null
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.service_links.spotify",
-          "expected": {
-            "url": null,
-            "status": "no_link"
-          },
-          "actual": {
-            "url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
-            "status": "canonical",
-            "provenance": "releaseDetails.spotify_url"
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.service_links.youtube_music",
-          "expected": {
-            "url": null,
-            "status": "no_link"
-          },
-          "actual": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          }
-        },
-        {
-          "category": "title-track / MV-state drift",
-          "path": "data.detail.tracks",
-          "expected": [],
-          "actual": [
-            "1|JUMP|false",
-            "2|GO|true",
-            "3|Me and my|false",
-            "4|Champion|false",
-            "5|Fxxxboy|false"
-          ]
-        },
-        {
-          "category": "title-track / MV-state drift",
-          "path": "data.detail.mv",
-          "expected": {
-            "url": null,
-            "video_id": null,
-            "status": "no_link",
-            "provenance": null
-          },
-          "actual": {
-            "url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
-            "video_id": "2GJfWMYCWY0",
-            "status": "manual_override",
-            "provenance": "official artist channel watch URL"
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.credits",
-          "expected": [
-            {
-              "role": "lyrics",
-              "names": [
-                "Deadline Writers Camp"
-              ]
-            },
-            {
-              "role": "composition",
-              "names": [
-                "Atlas Signal Team",
-                "Midnight Loop"
-              ]
-            },
-            {
-              "role": "arrangement",
-              "names": [
-                "Neon Bureau",
-                "City Echo"
-              ]
-            }
-          ],
-          "actual": []
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.charts",
-          "expected": [
-            {
-              "source": "Seed weekly board",
-              "label": "Album momentum",
-              "peak": "#1",
-              "dated_at": "2026-03-02"
-            },
-            {
-              "source": "Seed global board",
-              "label": "Cross-market pickup",
-              "peak": "#2",
-              "dated_at": "2026-03-04"
-            }
-          ],
-          "actual": []
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.notes",
-          "expected": "",
-          "actual": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
+          "path": "detail.statusCode",
+          "expected": 200,
+          "actual": 200
         }
       ],
-      "expected_snapshot": {
-        "lookup": {
-          "entity_slug": "blackpink",
-          "release_title": "DEADLINE",
-          "release_date": "2026-02-26",
-          "stream": "album",
-          "release_kind": "ep",
-          "display_name": "BLACKPINK"
-        },
-        "detail": {
-          "release": {
-            "entity_slug": "blackpink",
-            "display_name": "BLACKPINK",
-            "release_title": "DEADLINE",
-            "release_date": "2026-02-26",
-            "stream": "album",
-            "release_kind": "ep"
-          },
-          "detail_metadata": {
-            "status": "unresolved",
-            "provenance": "releaseDetails.missing_row"
-          },
-          "title_track_metadata": {
-            "status": "unresolved",
-            "provenance": "releaseDetails.missing_row"
-          },
-          "artwork": {
-            "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
-            "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
-            "artwork_source_type": "cover_art_archive",
-            "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031"
-          },
-          "service_links": {
-            "spotify": {
-              "url": null,
-              "status": "no_link"
-            },
-            "youtube_music": {
-              "url": null,
-              "status": "no_link"
-            }
-          },
-          "tracks": [],
-          "mv": {
-            "url": null,
-            "video_id": null,
-            "status": "no_link",
-            "provenance": null
-          },
-          "credits": [
-            {
-              "role": "lyrics",
-              "names": [
-                "[truncated]"
-              ]
-            },
-            {
-              "role": "composition",
-              "names": [
-                "[truncated]",
-                "[truncated]"
-              ]
-            },
-            {
-              "role": "arrangement",
-              "names": [
-                "[truncated]",
-                "[truncated]"
-              ]
-            }
-          ],
-          "charts": [
-            {
-              "source": "Seed weekly board",
-              "label": "Album momentum",
-              "peak": "#1",
-              "dated_at": "2026-03-02"
-            },
-            {
-              "source": "Seed global board",
-              "label": "Cross-market pickup",
-              "peak": "#2",
-              "dated_at": "2026-03-04"
-            }
-          ],
-          "notes": ""
-        }
-      },
+      "expected_snapshot": null,
       "actual_snapshot": {
         "lookup": {
           "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
@@ -2367,10 +2177,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-2adfadfc-395a-4b7f-bc20-2af321e17055",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-2adfadfc-395a-4b7f-bc20-2af321e17055",
-      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-96e103ff-2824-4fe8-a427-e3d921a6ab8d",
-      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-96e103ff-2824-4fe8-a427-e3d921a6ab8d"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-ac3b2349-f57d-45ca-b007-fb909c7d47bd",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-ac3b2349-f57d-45ca-b007-fb909c7d47bd",
+      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-36fe9f9c-467a-47d3-af43-4cead87597ae",
+      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-36fe9f9c-467a-47d3-af43-4cead87597ae"
     },
     {
       "surface": "release_detail",
@@ -2815,10 +2625,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-db249c00-09dc-4c9e-8789-281a12cd6cc9",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-db249c00-09dc-4c9e-8789-281a12cd6cc9",
-      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-0ecdfcfc-23a9-4227-bae9-2584c0f26ca1",
-      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-0ecdfcfc-23a9-4227-bae9-2584c0f26ca1"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-42b1d13b-b143-447d-beb3-0cde4ea6637a",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-42b1d13b-b143-447d-beb3-0cde4ea6637a",
+      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-5c94b4e6-b29e-4d4e-be58-ad8db5ff7de4",
+      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-5c94b4e6-b29e-4d4e-be58-ad8db5ff7de4"
     },
     {
       "surface": "release_detail",
@@ -3052,10 +2862,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-f8925974-93a4-4ea7-975e-1cff26b1c2b7",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-f8925974-93a4-4ea7-975e-1cff26b1c2b7",
-      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-8eebbb5a-5a50-4e43-84f9-da903ac762c2",
-      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-8eebbb5a-5a50-4e43-84f9-da903ac762c2"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-22dfdb9e-f3cd-460c-afa9-48d8dc6037ea",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-22dfdb9e-f3cd-460c-afa9-48d8dc6037ea",
+      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-dc952198-1eea-481f-af11-73fccce905a7",
+      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-dc952198-1eea-481f-af11-73fccce905a7"
     },
     {
       "surface": "calendar_month",
@@ -3814,8 +3624,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-286df197-ea55-4ffd-9ef0-adeb83711f33",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-03-286df197-ea55-4ffd-9ef0-adeb83711f33"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-cebd2073-c40c-4f7d-9d8e-bd71e8a2c963",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-03-cebd2073-c40c-4f7d-9d8e-bd71e8a2c963"
     },
     {
       "surface": "calendar_month",
@@ -4718,8 +4528,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-f065d045-d2ec-482f-9004-5b01c8854ed5",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-04-f065d045-d2ec-482f-9004-5b01c8854ed5"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-f36fbe03-dcf5-437c-a03f-0f8411c01269",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-04-f36fbe03-dcf5-437c-a03f-0f8411c01269"
     },
     {
       "surface": "calendar_month",
@@ -5474,32 +5284,17 @@
         "scheduled_list": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-12c25ba6-c1e7-410e-8970-43042aeeefdb",
-      "response_request_id": "shadow--v1-calendar-month-month-2025-10-12c25ba6-c1e7-410e-8970-43042aeeefdb"
+      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-d433b8e2-ae38-4bd5-8495-d4dcfcec6766",
+      "response_request_id": "shadow--v1-calendar-month-month-2025-10-d433b8e2-ae38-4bd5-8495-d4dcfcec6766"
     },
     {
       "surface": "radar",
       "input": {
         "surface": "default"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "radar eligibility drift"
-      ],
-      "mismatches": [
-        {
-          "category": "radar eligibility drift",
-          "path": "data.long_gap",
-          "expected": [
-            "weeekly|long_gap|Bliss|2024-07-09|album|610|false|null",
-            "woo-ah|long_gap|Shining on you|2024-07-16|song|603|false|null"
-          ],
-          "actual": [
-            "weeekly|long_gap|Bliss|2024-07-09|album|608|false|null",
-            "woo-ah|long_gap|Shining on you|2024-07-16|song|601|false|null"
-          ]
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "featured_upcoming": {
           "upcoming_signal_id": "yena::2026-03-11::love catcher",
@@ -5668,6 +5463,17 @@
             "occurred_at": "Thu, 05 Mar 2026 00:58:00 GMT"
           },
           {
+            "kind": "verified_release",
+            "entity_slug": "h1-key",
+            "display_name": "H1-KEY",
+            "release_id": "H1-KEY::LOVECHAPTER::2026-03-05::album",
+            "release_title": "LOVECHAPTER",
+            "release_date": "2026-03-05",
+            "stream": "album",
+            "release_kind": "ep",
+            "occurred_at": "2026-03-05"
+          },
+          {
             "kind": "upcoming_signal",
             "entity_slug": "bts",
             "display_name": "BTS",
@@ -5679,22 +5485,183 @@
             "date_status": "rumor",
             "confidence_score": 0.56,
             "occurred_at": "Wed, 04 Mar 2026 08:55:41 GMT"
-          },
-          {
-            "kind": "upcoming_signal",
-            "entity_slug": "bts",
-            "display_name": "BTS",
-            "upcoming_signal_id": "bts::undated::full arirang features 14 songs including lead swim",
-            "headline": "BTS drops full ARIRANG tracklist comeback album features 14 songs including lead single SWIM - Moneycontrol.com",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "confidence_score": 0.68,
-            "occurred_at": "Wed, 04 Mar 2026 05:08:33 GMT"
           }
         ],
         "long_gap": [
+          {
+            "entity_slug": "bts",
+            "display_name": "BTS",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "Take Two",
+              "release_date": "2023-06-09",
+              "stream": "song",
+              "release_kind": "single"
+            },
+            "gap_days": 1006,
+            "has_upcoming_signal": true,
+            "latest_signal": {
+              "upcoming_signal_id": "bts::undated::arirang",
+              "headline": "BTS Comeback 2026: Netflix Announces Global Livestream for ‘ARIRANG’ Album Celebration, Releases First Official Trailer - pragativadi.com",
+              "scheduled_date": null,
+              "scheduled_month": "",
+              "date_precision": "unknown",
+              "date_status": "rumor",
+              "release_format": "album",
+              "confidence_score": 0.68,
+              "latest_seen_at": "2026-03-05T11:30:04.000Z"
+            }
+          },
+          {
+            "entity_slug": "ab6ix",
+            "display_name": "AB6IX",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "BORN LIKE THIS",
+              "release_date": "2024-10-10",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "gap_days": 517,
+            "has_upcoming_signal": true,
+            "latest_signal": {
+              "upcoming_signal_id": "ab6ix::2026-03::future month reference 2026 03 unveils",
+              "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
+              "scheduled_date": null,
+              "scheduled_month": "2026-03",
+              "date_precision": "month_only",
+              "date_status": "scheduled",
+              "release_format": "album",
+              "confidence_score": 0.46,
+              "latest_seen_at": "2026-02-27T04:15:49.000Z"
+            }
+          },
+          {
+            "entity_slug": "wayv",
+            "display_name": "WayV",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "Back To You",
+              "release_date": "2021-06-16",
+              "stream": "song",
+              "release_kind": "single"
+            },
+            "gap_days": 1729,
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
+            "entity_slug": "just-b",
+            "display_name": "JUST B",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "Light Sweeper",
+              "release_date": "2022-07-15",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "gap_days": 1335,
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
+            "entity_slug": "mamamoo",
+            "display_name": "MAMAMOO",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "MIC ON",
+              "release_date": "2022-10-11",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "gap_days": 1247,
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
+            "entity_slug": "atbo",
+            "display_name": "ATBO",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "MUST HAVE",
+              "release_date": "2023-11-27",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "gap_days": 835,
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
+            "entity_slug": "nomad",
+            "display_name": "NOMAD",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "NOMAD",
+              "release_date": "2024-02-28",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "gap_days": 742,
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
+            "entity_slug": "cignature",
+            "display_name": "cignature",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "Sweetie but Saltie",
+              "release_date": "2024-06-10",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "gap_days": 639,
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
+            "entity_slug": "blitzers",
+            "display_name": "BLITZERS",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "LUNCH‐BOX",
+              "release_date": "2024-06-19",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "gap_days": 630,
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
+            "entity_slug": "newjeans",
+            "display_name": "NewJeans",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "Supernatural",
+              "release_date": "2024-06-21",
+              "stream": "song",
+              "release_kind": "single"
+            },
+            "gap_days": 628,
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
+          {
+            "entity_slug": "red-velvet",
+            "display_name": "Red Velvet",
+            "watch_reason": "long_gap",
+            "latest_release": {
+              "release_title": "Cosmic",
+              "release_date": "2024-06-24",
+              "stream": "album",
+              "release_kind": "ep"
+            },
+            "gap_days": 625,
+            "has_upcoming_signal": false,
+            "latest_signal": null
+          },
           {
             "entity_slug": "weeekly",
             "display_name": "Weeekly",
@@ -5706,20 +5673,6 @@
               "release_kind": "ep"
             },
             "gap_days": 610,
-            "has_upcoming_signal": false,
-            "latest_signal": null
-          },
-          {
-            "entity_slug": "woo-ah",
-            "display_name": "woo!ah!",
-            "watch_reason": "long_gap",
-            "latest_release": {
-              "release_title": "Shining on you",
-              "release_date": "2024-07-16",
-              "stream": "song",
-              "release_kind": "single"
-            },
-            "gap_days": 603,
             "has_upcoming_signal": false,
             "latest_signal": null
           }
@@ -6045,7 +5998,192 @@
         ],
         "long_gap": [
           {
-            "gap_days": 608,
+            "gap_days": 1006,
+            "entity_slug": "bts",
+            "display_name": "BTS",
+            "watch_reason": "long_gap",
+            "latest_signal": {
+              "headline": "BTS Comeback 2026: Netflix Announces Global Livestream for ‘ARIRANG’ Album Celebration, Releases First Official Trailer - pragativadi.com",
+              "date_status": "rumor",
+              "date_precision": "unknown",
+              "latest_seen_at": "2026-03-05T11:30:04.000Z",
+              "release_format": "album",
+              "scheduled_date": null,
+              "scheduled_month": null,
+              "confidence_score": 0.68,
+              "upcoming_signal_id": "07644eff-2a2b-5123-88fa-3fe71ccc4d9c"
+            },
+            "latest_release": {
+              "stream": "song",
+              "release_id": "d4653d95-ae29-57d2-be3e-e5cb2b7267c3",
+              "release_date": "2023-06-09",
+              "release_kind": "single",
+              "release_title": "Take Two"
+            },
+            "has_upcoming_signal": true
+          },
+          {
+            "gap_days": 517,
+            "entity_slug": "ab6ix",
+            "display_name": "AB6IX",
+            "watch_reason": "long_gap",
+            "latest_signal": {
+              "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
+              "date_status": "scheduled",
+              "date_precision": "month_only",
+              "latest_seen_at": "2026-02-27T04:15:49.000Z",
+              "release_format": "album",
+              "scheduled_date": null,
+              "scheduled_month": "2026-03",
+              "confidence_score": 0.46,
+              "upcoming_signal_id": "6ea3a5db-e83f-51fc-b33e-bf701cef4c24"
+            },
+            "latest_release": {
+              "stream": "album",
+              "release_id": "403a26f7-5bc4-5feb-95ae-2f4de4798ea9",
+              "release_date": "2024-10-10",
+              "release_kind": "ep",
+              "release_title": "BORN LIKE THIS"
+            },
+            "has_upcoming_signal": true
+          },
+          {
+            "gap_days": 1729,
+            "entity_slug": "wayv",
+            "display_name": "WayV",
+            "watch_reason": "long_gap",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "song",
+              "release_id": "2d662b2e-7f45-5ed3-85de-ffa1f3e16b72",
+              "release_date": "2021-06-16",
+              "release_kind": "single",
+              "release_title": "Back To You"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "gap_days": 1335,
+            "entity_slug": "just-b",
+            "display_name": "JUST B",
+            "watch_reason": "long_gap",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "album",
+              "release_id": "7e1f4bf1-04af-5ec8-a8f5-c8071b6c4b6b",
+              "release_date": "2022-07-15",
+              "release_kind": "ep",
+              "release_title": "Light Sweeper"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "gap_days": 1247,
+            "entity_slug": "mamamoo",
+            "display_name": "MAMAMOO",
+            "watch_reason": "long_gap",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "album",
+              "release_id": "5ac11b84-f93e-5c0b-9349-8ffc18ae9ebb",
+              "release_date": "2022-10-11",
+              "release_kind": "ep",
+              "release_title": "MIC ON"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "gap_days": 835,
+            "entity_slug": "atbo",
+            "display_name": "ATBO",
+            "watch_reason": "long_gap",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "album",
+              "release_id": "c0d7e03c-7b01-51dd-ae48-c4e76e903510",
+              "release_date": "2023-11-27",
+              "release_kind": "ep",
+              "release_title": "MUST HAVE"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "gap_days": 742,
+            "entity_slug": "nomad",
+            "display_name": "NOMAD",
+            "watch_reason": "long_gap",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "album",
+              "release_id": "5193c862-8921-5dae-924a-112400ccf545",
+              "release_date": "2024-02-28",
+              "release_kind": "ep",
+              "release_title": "NOMAD"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "gap_days": 639,
+            "entity_slug": "cignature",
+            "display_name": "cignature",
+            "watch_reason": "long_gap",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "album",
+              "release_id": "9770e2a8-80f0-5d42-ad00-5f59038a4684",
+              "release_date": "2024-06-10",
+              "release_kind": "ep",
+              "release_title": "Sweetie but Saltie"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "gap_days": 630,
+            "entity_slug": "blitzers",
+            "display_name": "BLITZERS",
+            "watch_reason": "long_gap",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "album",
+              "release_id": "8980d7d8-9090-5447-a4df-6ae0f0ba990f",
+              "release_date": "2024-06-19",
+              "release_kind": "ep",
+              "release_title": "LUNCH‐BOX"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "gap_days": 628,
+            "entity_slug": "newjeans",
+            "display_name": "NewJeans",
+            "watch_reason": "long_gap",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "song",
+              "release_id": "5aeb168e-dad8-554e-aec1-0d8882c4da4a",
+              "release_date": "2024-06-21",
+              "release_kind": "single",
+              "release_title": "Supernatural"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "gap_days": 625,
+            "entity_slug": "red-velvet",
+            "display_name": "Red Velvet",
+            "watch_reason": "long_gap",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "album",
+              "release_id": "f21dbb3d-c0b5-57ae-84b3-36f25041d237",
+              "release_date": "2024-06-24",
+              "release_kind": "ep",
+              "release_title": "Cosmic"
+            },
+            "has_upcoming_signal": false
+          },
+          {
+            "gap_days": 610,
             "entity_slug": "weeekly",
             "display_name": "Weeekly",
             "watch_reason": "long_gap",
@@ -6056,21 +6194,6 @@
               "release_date": "2024-07-09",
               "release_kind": "ep",
               "release_title": "Bliss"
-            },
-            "has_upcoming_signal": false
-          },
-          {
-            "gap_days": 601,
-            "entity_slug": "woo-ah",
-            "display_name": "woo!ah!",
-            "watch_reason": "long_gap",
-            "latest_signal": null,
-            "latest_release": {
-              "stream": "song",
-              "release_id": "2d4803a4-8bd7-57d2-86b3-ffac2999300b",
-              "release_date": "2024-07-16",
-              "release_kind": "single",
-              "release_title": "Shining on you"
             },
             "has_upcoming_signal": false
           }
@@ -6231,8 +6354,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-radar-279fc6e7-d4ec-4f3a-8b0f-1272f589c7d8",
-      "response_request_id": "shadow--v1-radar-279fc6e7-d4ec-4f3a-8b0f-1272f589c7d8"
+      "request_id_sent": "shadow--v1-radar-ad68c55c-d234-4332-ace7-c0579531eace",
+      "response_request_id": "shadow--v1-radar-ad68c55c-d234-4332-ace7-c0579531eace"
     }
   ]
 }

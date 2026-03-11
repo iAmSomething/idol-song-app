@@ -69,6 +69,9 @@ export function buildReportBundleMetadata({
   upcomingSyncReference = null,
   projectionReference = null,
   historicalCoverageReference = null,
+  nullCoverageReference = null,
+  nullRecheckQueueReference = null,
+  nullTrendReference = null,
   workerCadenceReference = null,
 }) {
   const sourceReports = {
@@ -76,6 +79,9 @@ export function buildReportBundleMetadata({
     upcoming_pipeline_sync: upcomingSyncReference,
     projection_refresh: projectionReference,
     historical_coverage: historicalCoverageReference,
+    canonical_null_coverage: nullCoverageReference,
+    canonical_null_recheck_queue: nullRecheckQueueReference,
+    null_coverage_trend: nullTrendReference,
     worker_cadence: workerCadenceReference,
   };
 
@@ -132,17 +138,23 @@ export function buildBundleConsistency({
   shadowReport,
   runtimeGateReport,
   historicalCoverageReport,
+  nullCoverageReport,
+  nullTrendReport,
 }) {
   const expectedBundleId = bundle?.bundle_id ?? null;
   const requiresParity = typeof parityReport !== 'undefined';
   const requiresShadow = typeof shadowReport !== 'undefined';
   const requiresRuntime = typeof runtimeGateReport !== 'undefined';
   const requiresHistoricalCoverage = typeof historicalCoverageReport !== 'undefined';
+  const requiresNullCoverage = typeof nullCoverageReport !== 'undefined';
+  const requiresNullTrend = typeof nullTrendReport !== 'undefined';
   const checks = {
     parity_bundle: readReportBundleId(parityReport),
     shadow_bundle: readReportBundleId(shadowReport),
     runtime_gate_bundle: readReportBundleId(runtimeGateReport),
     historical_coverage_generated_at: parseIsoTimestamp(historicalCoverageReport?.generated_at ?? null),
+    canonical_null_coverage_generated_at: parseIsoTimestamp(nullCoverageReport?.generated_at ?? null),
+    null_coverage_trend_generated_at: parseIsoTimestamp(nullTrendReport?.generated_at ?? null),
   };
 
   const mismatches = [];
@@ -173,6 +185,30 @@ export function buildBundleConsistency({
     checks.historical_coverage_generated_at !== expectedHistoricalGeneratedAt
   ) {
     mismatches.push(`historical coverage drift (${checks.historical_coverage_generated_at})`);
+  }
+
+  const expectedNullCoverageGeneratedAt = bundle?.source_reports?.canonical_null_coverage?.generated_at ?? null;
+  if (requiresNullCoverage && expectedNullCoverageGeneratedAt && nullCoverageReport === null) {
+    mismatches.push('canonical null coverage missing');
+  } else if (
+    requiresNullCoverage &&
+    expectedNullCoverageGeneratedAt &&
+    checks.canonical_null_coverage_generated_at &&
+    checks.canonical_null_coverage_generated_at !== expectedNullCoverageGeneratedAt
+  ) {
+    mismatches.push(`canonical null coverage drift (${checks.canonical_null_coverage_generated_at})`);
+  }
+
+  const expectedNullTrendGeneratedAt = bundle?.source_reports?.null_coverage_trend?.generated_at ?? null;
+  if (requiresNullTrend && expectedNullTrendGeneratedAt && nullTrendReport === null) {
+    mismatches.push('null coverage trend missing');
+  } else if (
+    requiresNullTrend &&
+    expectedNullTrendGeneratedAt &&
+    checks.null_coverage_trend_generated_at &&
+    checks.null_coverage_trend_generated_at !== expectedNullTrendGeneratedAt
+  ) {
+    mismatches.push(`null coverage trend drift (${checks.null_coverage_trend_generated_at})`);
   }
 
   return {

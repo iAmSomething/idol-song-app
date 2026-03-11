@@ -69,6 +69,9 @@
 21. `canonical-null-hygiene-operating-model.md`
    - canonical nullable field taxonomy, provenance/status/source-pointer convention
    - backfill wave, recency SLA, source precedence, readiness null gate 기준
+22. `canonical-null-hygiene-cadence.md`
+   - daily / weekly / monthly null hygiene cadence와 owner checklist
+   - artifact handoff order, escalation rule, review ritual
 
 ## 읽는 순서
 
@@ -93,6 +96,7 @@
 19. `backend-secret-inventory-and-rotation.md`
 20. `migration-readiness-scorecard.md`
 21. `canonical-null-hygiene-operating-model.md`
+22. `canonical-null-hygiene-cadence.md`
 
 ## 원칙
 

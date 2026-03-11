@@ -242,6 +242,9 @@ npm run runtime:measure -- --base-url http://127.0.0.1:3213 --iterations 5
 ```bash
 cd backend
 npm run worker:cadence
+npm run null:coverage
+npm run null:recheck
+npm run null:trend
 ```
 
 ### 7.3 Combined gate report
