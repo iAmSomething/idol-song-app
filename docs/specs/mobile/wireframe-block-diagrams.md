@@ -18,6 +18,7 @@ flowchart TD
 - `App Bar`, `Summary Strip`, `View Toggle`는 상단 컨텍스트 블록이다.
 - 기본 스크롤 주체는 `Calendar Grid` 또는 `Monthly List`다.
 - `Date Detail Bottom Sheet`는 overlay drill-in이다.
+- `App Bar`와 `Summary Strip`은 utility canvas 위의 compact context block이어야 하며 hero처럼 커지면 안 된다.
 
 ## 3. Radar Screen
 ```mermaid
@@ -34,6 +35,7 @@ flowchart TD
 ### 3.1 Block Rules
 - `Featured Comeback Card`는 첫 화면에서 완전 노출되어야 한다.
 - 각 섹션은 동일 스크롤 컨테이너 안에 배치한다.
+- `Featured Comeback Card`만 accent block이고, 이후 섹션은 inset section rhythm을 유지한다.
 
 ## 4. Search Screen
 ```mermaid
@@ -63,6 +65,7 @@ flowchart TD
 - `Team Hero`는 고정 크기 Hero가 아니라 compact header block이다.
 - `Next Comeback`은 항상 `Latest Release`보다 위다.
 - `Recent Albums Carousel`은 독립 가로 스크롤을 허용한다.
+- hero는 식별용 compact hero여야 하며 marketing banner처럼 커지면 안 된다.
 
 ## 6. Release Detail Screen
 ```mermaid
@@ -79,6 +82,7 @@ flowchart TD
 - `Album Service Action Group`은 헤더 직후 첫 액션 블록이다.
 - `Track List`는 화면의 가장 긴 스크롤 영역이다.
 - `MV Block`은 optional이며 없으면 완전히 제거한다.
+- `Release Header`는 compact hero 성격을 유지하고 `Track List`를 압도하면 안 된다.
 
 ## 7. Overlay Structures
 

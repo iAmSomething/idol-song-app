@@ -4,6 +4,20 @@
 이 문서는 모바일 앱에서 반복 사용되는 공통 컴포넌트의 구조, 위치, 상태, 접근성, 상호작용 계약을 정의한다.
 화면 스펙은 이 문서의 컴포넌트를 조합해 구성하는 것을 원칙으로 한다.
 
+launch-grade surface family와 visual identity 기준은 `launch-grade-visual-identity-system.md`를 함께 본다.
+
+## 1.1 Surface Families
+- `Tonal Panel`: 상단 컨텍스트, disclosure, degraded notice
+- `Strip`: 숫자/짧은 메타 요약
+- `Inset Section`: 섹션 단위 grouping
+- `Compact Hero`: 팀/릴리즈 상단 식별 블록
+- `Sheet Surface`: drill-in / filter overlay
+
+규칙:
+- 같은 역할의 block만 같은 surface family를 공유한다.
+- `Summary Strip`과 `Compact Hero`를 같은 화면에서 같은 시각 강도로 두지 않는다.
+- `Tonal Panel`은 CTA 과밀 블록이 아니라 context disclosure 용도에 한정한다.
+
 ## 2. App Bar
 
 ### 2.1 목적
