@@ -72,6 +72,11 @@ EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:previe
 - `EXPO_IOS_APPLE_TEAM_ID`, `EXPO_IOS_BUNDLE_IDENTIFIER`를 export하지 않고 prebuild를 돌린 경우다.
 - prebuild 전에 두 env를 먼저 넣는다.
 
+### `Unable to open base configuration reference file .../Supporting/IdolSongAppPreview/Supporting/...`
+- `mobile/ios/IdolSongAppPreview.xcodeproj/project.pbxproj`에서 `Supporting` group path와 xcconfig file reference path가 둘 다 `IdolSongAppPreview/Supporting`를 포함할 때 나는 증상이다.
+- canonical 상태는 `Supporting` group path만 `IdolSongAppPreview/Supporting`를 가지는 것이고, child xcconfig file reference는 파일명만 가진다.
+- `project.pbxproj`에서 duplicated `.../Supporting/IdolSongAppPreview/Supporting/...` 문자열이 없어야 한다.
+
 ### simulator는 되는데 실제 iPhone install이 안 됨
 - team/provisioning 문제일 가능성이 가장 높다.
 - Xcode `Signing & Capabilities`에서 `Team`, `Bundle Identifier`, `Automatically manage signing` 세 값을 먼저 본다.
