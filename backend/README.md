@@ -14,6 +14,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 - `docs/specs/backend/canonical-null-hygiene-operating-model.md`
 - `docs/specs/backend/trusted-upcoming-notification-events.md`
 - `docs/specs/backend/runtime-artifact-retention-policy.md`
+- `docs/non-runtime-duplicate-quarantine-policy.md`
 
 현재 포함 범위:
 
@@ -30,6 +31,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
   - secret rotation tabletop artifact
   - canonical entity metadata / asset coverage audit artifact
   - runtime-facing duplicate artifact inventory / retention audit artifact
+  - non-runtime duplicate inventory / quarantine audit artifact
 - `sql/migrations/`
   - Neon canonical schema + projection read-model migration
 - `sql/README.md`
@@ -133,6 +135,27 @@ npm run gap:audit
 - runtime-facing canonical path 옆에 suffix copy (` 2`, ` 3`, ` 4`)를 두지 않는다.
 - comparison/evidence output은 `docs/assets/distribution/`, `backend/reports/`, `/tmp`로 보낸다.
 - gap audit의 duplicate count는 runtime artifact scanner 결과를 그대로 사용한다.
+
+## Non-runtime Duplicate Inventory
+
+- policy:
+  - `docs/non-runtime-duplicate-quarantine-policy.md`
+- machine-readable inventory:
+  - `backend/reports/non_runtime_duplicate_inventory_report.json`
+- human-readable summary:
+  - `backend/reports/non_runtime_duplicate_inventory_report.md`
+
+예시:
+
+```bash
+cd backend
+npm run duplicate:inventory
+```
+
+원칙:
+
+- runtime-facing duplicate는 `artifact:retention` 범위에서 본다.
+- 나머지 suffix copy는 non-runtime scratch로 inventory하고 repo 밖 quarantine 경로로 이동시키는 것을 기본값으로 본다.
 
 ## Read API Envelope
 

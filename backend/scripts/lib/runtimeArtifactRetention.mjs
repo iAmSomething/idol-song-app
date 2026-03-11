@@ -71,7 +71,7 @@ function buildGroupCanonicalIndex(repoDir, group) {
   return index;
 }
 
-function parseDuplicateName(entryName) {
+export function parseSuffixDuplicateName(entryName) {
   const parsed = path.parse(entryName);
   const match = /^(?<canonicalName>.+) (?<copyIndex>[2-9]\d*)$/.exec(parsed.name);
   if (!match?.groups) {
@@ -84,35 +84,55 @@ function parseDuplicateName(entryName) {
   };
 }
 
+export function resolveRuntimeArtifactDuplicate(repoDir, duplicateRelativePath) {
+  const duplicateAbsolutePath = path.join(repoDir, duplicateRelativePath);
+  const duplicateDirectoryPath = path.dirname(duplicateAbsolutePath);
+  const parsed = parseSuffixDuplicateName(path.basename(duplicateRelativePath));
+  if (!parsed) {
+    return null;
+  }
+
+  for (const group of RUNTIME_ARTIFACT_RETENTION_GROUPS) {
+    const directoryPath = path.join(repoDir, group.directory);
+    if (directoryPath !== duplicateDirectoryPath) {
+      continue;
+    }
+    const canonicalIndex = buildGroupCanonicalIndex(repoDir, group);
+    const canonicalAbsolutePath = path.join(directoryPath, `${parsed.canonicalName}${parsed.ext}`);
+    const canonicalMeta = canonicalIndex.get(canonicalAbsolutePath);
+    if (!canonicalMeta) {
+      continue;
+    }
+    return {
+      duplicate_path: duplicateRelativePath,
+      canonical_path: canonicalMeta.canonical_path,
+      group_key: canonicalMeta.group_key,
+      group_label: canonicalMeta.group_label,
+      copy_index: parsed.copyIndex,
+      retention_decision: 'delete_duplicate',
+      archival_rule: canonicalMeta.archival_rule,
+    };
+  }
+
+  return null;
+}
+
 export async function collectRuntimeArtifactDuplicates(repoDir) {
   const duplicates = [];
 
   for (const group of RUNTIME_ARTIFACT_RETENTION_GROUPS) {
     const directoryPath = path.join(repoDir, group.directory);
-    const canonicalIndex = buildGroupCanonicalIndex(repoDir, group);
     const entries = await readdir(directoryPath, { withFileTypes: true });
     for (const entry of entries) {
       if (!entry.isFile()) {
         continue;
       }
-      const parsed = parseDuplicateName(entry.name);
-      if (!parsed) {
+      const duplicatePath = path.relative(repoDir, path.join(directoryPath, entry.name));
+      const resolved = resolveRuntimeArtifactDuplicate(repoDir, duplicatePath);
+      if (!resolved || resolved.group_key !== group.key) {
         continue;
       }
-      const canonicalAbsolutePath = path.join(directoryPath, `${parsed.canonicalName}${parsed.ext}`);
-      const canonicalMeta = canonicalIndex.get(canonicalAbsolutePath);
-      if (!canonicalMeta) {
-        continue;
-      }
-      duplicates.push({
-        duplicate_path: path.relative(repoDir, path.join(directoryPath, entry.name)),
-        canonical_path: canonicalMeta.canonical_path,
-        group_key: canonicalMeta.group_key,
-        group_label: canonicalMeta.group_label,
-        copy_index: parsed.copyIndex,
-        retention_decision: 'delete_duplicate',
-        archival_rule: canonicalMeta.archival_rule,
-      });
+      duplicates.push(resolved);
     }
   }
 

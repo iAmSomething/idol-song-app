@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-03-11T19:32:30.073Z",
+  "quarantine_policy_version": "v1",
+  "scope": {
+    "runtime_facing_duplicates_excluded": true,
+    "duplicate_suffix_pattern": "* 2.* / * 3.* / * 4.*",
+    "ignored_directory_names": [
+      ".expo",
+      ".git",
+      ".next",
+      ".venv",
+      "Pods",
+      "__pycache__",
+      "build",
+      "dist",
+      "node_modules"
+    ]
+  },
+  "summary_lines": [
+    "non-runtime duplicate files detected: 1",
+    "quarantine status: move scratch duplicates out of tracked workspace before treating the worktree as operator-clean",
+    "groups with duplicates: 1"
+  ],
+  "groups": [
+    {
+      "key": "workflow_drafts",
+      "label": "Workflow drafts",
+      "duplicate_count": 0,
+      "quarantine_rule": "Move draft workflow copies to /tmp or a gitignored scratch path before the next PR.",
+      "duplicates": []
+    },
+    {
+      "key": "backend_workspace_scratch",
+      "label": "Backend workspace scratch",
+      "duplicate_count": 0,
+      "quarantine_rule": "Keep only the canonical backend source file in-repo; move experiments to /tmp or gitignored local scratch.",
+      "duplicates": []
+    },
+    {
+      "key": "docs_distribution_evidence",
+      "label": "Docs distribution evidence",
+      "duplicate_count": 0,
+      "quarantine_rule": "Keep one dated evidence file only; remove suffixed copies after choosing the canonical evidence artifact.",
+      "duplicates": []
+    },
+    {
+      "key": "docs_specs_variants",
+      "label": "Docs/spec variants",
+      "duplicate_count": 0,
+      "quarantine_rule": "Promote one spec file to canonical or move the variant out of docs/specs before review.",
+      "duplicates": []
+    },
+    {
+      "key": "mobile_asset_drafts",
+      "label": "Mobile asset drafts",
+      "duplicate_count": 0,
+      "quarantine_rule": "Keep active asset exploration outside the tracked asset tree or replace the canonical asset in a single step.",
+      "duplicates": []
+    },
+    {
+      "key": "mobile_workspace_scratch",
+      "label": "Mobile workspace scratch",
+      "duplicate_count": 0,
+      "quarantine_rule": "Move temporary mobile copies to a gitignored scratch location; leave only the canonical workspace file in-repo.",
+      "duplicates": []
+    },
+    {
+      "key": "web_workspace_scratch",
+      "label": "Web workspace scratch",
+      "duplicate_count": 1,
+      "quarantine_rule": "Move temporary web copies to a gitignored scratch location; do not keep suffixed copies under web/.",
+      "duplicates": [
+        {
+          "duplicate_path": "web/public/release-placeholder 2.svg",
+          "canonical_path": "web/public/release-placeholder.svg",
+          "copy_index": 2,
+          "group_key": "web_workspace_scratch",
+          "group_label": "Web workspace scratch",
+          "quarantine_decision": "quarantine_outside_runtime_scope",
+          "quarantine_rule": "Move temporary web copies to a gitignored scratch location; do not keep suffixed copies under web/."
+        }
+      ]
+    },
+    {
+      "key": "repo_root_misc",
+      "label": "Repo root misc scratch",
+      "duplicate_count": 0,
+      "quarantine_rule": "Move root-level scratch copies out of the repo root once the canonical file is identified.",
+      "duplicates": []
+    }
+  ],
+  "duplicate_inventory": [
+    {
+      "duplicate_path": "web/public/release-placeholder 2.svg",
+      "canonical_path": "web/public/release-placeholder.svg",
+      "copy_index": 2,
+      "group_key": "web_workspace_scratch",
+      "group_label": "Web workspace scratch",
+      "quarantine_decision": "quarantine_outside_runtime_scope",
+      "quarantine_rule": "Move temporary web copies to a gitignored scratch location; do not keep suffixed copies under web/."
+    }
+  ]
+}
