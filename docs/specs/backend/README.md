@@ -66,6 +66,9 @@
 20. `migration-readiness-scorecard.md`
    - migration readiness category, weight, blocker threshold rubric
    - machine-readable / human-readable scorecard artifact contract
+21. `canonical-null-hygiene-operating-model.md`
+   - canonical nullable field taxonomy, provenance/status/source-pointer convention
+   - backfill wave, recency SLA, source precedence, readiness null gate 기준
 
 ## 읽는 순서
 
@@ -89,6 +92,7 @@
 18. `projection-query-plan-regression-check.md`
 19. `backend-secret-inventory-and-rotation.md`
 20. `migration-readiness-scorecard.md`
+21. `canonical-null-hygiene-operating-model.md`
 
 ## 원칙
 
