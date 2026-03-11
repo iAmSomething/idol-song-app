@@ -26,6 +26,7 @@
     "worker:cadence": "node ./scripts/build-worker-cadence-report.mjs",
     "gap:workbenches": "node ./scripts/build-canonical-gap-workbenches.mjs",
     "artifact:retention": "node ./scripts/build-runtime-artifact-retention-report.mjs",
+    "duplicate:inventory": "node ./scripts/build-non-runtime-duplicate-inventory-report.mjs",
     "curation:export": "node ./scripts/build-manual-curation-bundles.mjs",
     "curation:import": "node ./scripts/import-manual-curation-bundles.mjs",
     "runtime:gate": "node ./scripts/build-runtime-gate-report.mjs",
