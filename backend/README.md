@@ -580,6 +580,7 @@ scheduled workflow는 두 cadence로 나뉜다.
 - `npm run null:recheck`
 - `npm run null:trend`
 - `npm run gap:workbenches`
+- `npm run gap:audit`
 - `npm run report:bundle`
 - `python build_backend_json_parity_report.py`
 - `npm run shadow:verify`
@@ -727,6 +728,8 @@ npm run gap:workbenches
 - `backend/reports/entity_identity_field_queue.csv`
 - `backend/reports/trusted_upcoming_notification_event_summary.json`
 - `backend/reports/trusted_upcoming_operator_alert_report.md`
+- `backend/reports/backend_gap_audit_report.json`
+- `backend/reports/backend_gap_audit_report.md`
 
 이 report는 아래 topology를 함께 기록한다.
 

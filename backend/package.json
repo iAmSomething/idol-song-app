@@ -18,6 +18,7 @@
     "smoke:live": "node ./scripts/run-live-smoke-checks.mjs",
     "deploy:env:verify": "tsx ./scripts/verify-deploy-env-contract.ts",
     "report:bundle": "node ./scripts/build-report-bundle-metadata.mjs",
+    "gap:audit": "node ./scripts/build-backend-gap-audit-report.mjs",
     "freshness:handoff": "node ./scripts/build-backend-freshness-handoff.mjs",
     "migration:scorecard": "node ./scripts/build-migration-readiness-scorecard.mjs",
     "recovery:drill": "node ./scripts/run-backup-restore-drill.mjs",

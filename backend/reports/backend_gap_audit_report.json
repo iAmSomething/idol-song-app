@@ -1,0 +1,986 @@
+{
+  "generated_at": "2026-03-11T15:10:28.264Z",
+  "parent_issue": {
+    "number": 529,
+    "url": "https://github.com/iAmSomething/idol-song-app/issues/529",
+    "audit_status": "audit_complete",
+    "closure_recommendation": "close_parent_keep_children_open"
+  },
+  "baseline_snapshot": {
+    "parent_issue_number": 529,
+    "parent_issue_url": "https://github.com/iAmSomething/idol-song-app/issues/529",
+    "readiness_score_percent": 59.9,
+    "latest_verified_release_selection_drift": 3,
+    "title_track_resolved_percent": 64.5,
+    "canonical_mv_percent": 6.3,
+    "allowlist_rows": 117,
+    "mv_source_channels_populated": 0,
+    "artist_profile_rows": 117,
+    "debut_year_populated": 8,
+    "representative_image_populated": 0
+  },
+  "current_snapshot": {
+    "readiness_score_percent": 56.3,
+    "readiness_status": "fail",
+    "latest_verified_release_selection_drift": 0,
+    "title_track_resolved_percent": 67.8,
+    "canonical_mv_percent": 8.6,
+    "allowlist_rows": 117,
+    "mv_source_channels_populated": 92,
+    "artist_profile_rows": 117,
+    "debut_year_populated": 8,
+    "representative_image_populated": 0,
+    "runtime_facing_duplicate_artifact_count": 4
+  },
+  "baseline_comparison": [
+    {
+      "key": "latest_verified_release_selection_drift",
+      "label": "Latest verified release selection drift count",
+      "baseline": 3,
+      "current": 0,
+      "delta": -3,
+      "status": "resolved"
+    },
+    {
+      "key": "title_track_resolved_percent",
+      "label": "Historical title-track resolved coverage (%)",
+      "baseline": 64.5,
+      "current": 67.8,
+      "delta": 3.3,
+      "status": "improved"
+    },
+    {
+      "key": "canonical_mv_percent",
+      "label": "Historical canonical MV coverage (%)",
+      "baseline": 6.3,
+      "current": 8.6,
+      "delta": 2.3,
+      "status": "improved"
+    },
+    {
+      "key": "mv_source_channels_populated",
+      "label": "Rows with mv_source_channels populated",
+      "baseline": 0,
+      "current": 92,
+      "delta": 92,
+      "status": "improved"
+    },
+    {
+      "key": "debut_year_populated",
+      "label": "Artist profiles with debut_year populated",
+      "baseline": 8,
+      "current": 8,
+      "delta": 0,
+      "status": "unchanged"
+    },
+    {
+      "key": "representative_image_populated",
+      "label": "Artist profiles with representative_image_url populated",
+      "baseline": 0,
+      "current": 0,
+      "delta": 0,
+      "status": "unchanged"
+    }
+  ],
+  "blocker_mapping": [
+    {
+      "key": "backend_runtime_health",
+      "label": "Backend runtime health",
+      "status": "fail",
+      "blocker_reasons": [
+        "projection_freshness=fail",
+        "worker_cadence=fail",
+        "stage_gate:shadow_to_web_cutover=fail",
+        "stage_gate:web_cutover_to_json_demotion=fail"
+      ],
+      "summary_lines": [
+        "api latency: needs_review (worst p95=1148.96ms)",
+        "api error rate: needs_review (error rate=0)",
+        "projection freshness: fail (lag=265.33m)",
+        "worker cadence: fail (cadence_status=scheduled_evidence_missing, missed_windows=5)",
+        "parity dependency: fail",
+        "shadow dependency: fail",
+        "historical catalog completeness dependency: fail",
+        "critical null coverage dependency: fail",
+        "bundle consistency: fail",
+        "shadow -> web cutover gate: fail",
+        "web cutover -> JSON demotion gate: fail"
+      ],
+      "issues": [
+        {
+          "number": 600,
+          "title": "Restore backend runtime-health cutover gate by clearing projection freshness lag and scheduled worker cadence evidence",
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/600"
+        }
+      ]
+    },
+    {
+      "key": "backend_deploy_parity",
+      "label": "Backend deploy parity",
+      "status": "fail",
+      "blocker_reasons": [
+        "parity_clean=false (latest_verified_release_selection drift=0)"
+      ],
+      "summary_lines": [
+        "entity alias/search coverage: clean (mismatched entities=0)",
+        "official links: clean (mismatched entities=0)",
+        "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
+        "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
+        "upcoming counts / nearest: clean (month bucket mismatches=0)",
+        "title-track / double-title: drift (mismatched releases=1060)",
+        "YouTube Music / MV service-link state: drift (mismatched releases=124)",
+        "review-required counts: drift (review_type_counts_match=False, youtube_mv_status_counts_match=False)"
+      ],
+      "issues": [
+        {
+          "number": 602,
+          "title": "Resolve backend deploy parity drift for YouTube allowlists, title-track/service-link state, and review-required counts",
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/602"
+        }
+      ]
+    },
+    {
+      "key": "web_backend_only_stability",
+      "label": "Web backend-only stability",
+      "status": "fail",
+      "blocker_reasons": [
+        "entity_detail clean_ratio=0.5",
+        "release_detail clean_ratio=0"
+      ],
+      "summary_lines": [
+        "search: clean 5/5, drift 0/5",
+        "entity_detail: clean 2/4, drift 2/4",
+        "release_detail: clean 0/3, drift 3/3",
+        "calendar_month: clean 3/3, drift 0/3",
+        "radar: clean 1/1, drift 0/1",
+        "missing rows or segments: 5 case(s)",
+        "field-shape mismatches: 3 case(s)"
+      ],
+      "issues": [
+        {
+          "number": 601,
+          "title": "Close remaining backend-only shadow drift on web entity detail and release detail surfaces",
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/601"
+        }
+      ]
+    },
+    {
+      "key": "catalog_completeness",
+      "label": "Catalog completeness",
+      "status": "fail",
+      "blocker_reasons": [
+        "title_track_resolved overall=67.9 pre_2024=65.2",
+        "canonical_mv overall=8.6 pre_2024=6.4",
+        "releases.title_track latest 29.1% < 95.0%",
+        "release_service_links.youtube_mv latest 10.2% < 80.0%",
+        "entities.official_youtube latest 75.3% < 100.0%",
+        "entities.official_x latest 97.8% < 100.0%",
+        "entities.official_instagram latest 98.9% < 100.0%",
+        "releases.title_track recent 0.0% < 85.0%",
+        "release_service_links.youtube_mv recent 0.0% < 55.0%",
+        "entities.official_youtube recent 72.2% < 95.0%"
+      ],
+      "summary_lines": [
+        "detail payload coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
+        "detail trusted coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
+        "title-track resolved coverage: 1201/1770 (67.8%), pre-2024 752/1153 (65.2%), review queue 569",
+        "canonical MV coverage: 153/1770 (8.6%), pre-2024 74/1153 (6.4%), mv review 2",
+        "external acquisition pass: YTM attempted 113, resolved 0; MV attempted 56, resolved 0, review 2",
+        "youtube MV search pass: attempted 54, resolved 41, review 13, unresolved 1616, coverage lift +1",
+        "migration-critical first slice: title-track 18/18 (100.0%), canonical MV 18/18 (100.0%), gate pass",
+        "worst title-track cohort: 2021-2023 ep 31.4% / target 74.0%",
+        "worst canonical MV cohort: 2024+ single 15.4% / target 72.0%",
+        "release-detail null review queue: 1754 rows",
+        "historical catalog cutover gate: fail",
+        "migration_priority_slice rows=18/18 title_track=100 canonical_mv=100 gate=pass",
+        "critical null coverage gate=fail score=70.8"
+      ],
+      "issues": [
+        {
+          "number": 603,
+          "title": "Raise catalog completeness for title-track, MV, official-link, and visual metadata blocker cohorts",
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/603"
+        },
+        {
+          "number": 538,
+          "title": "Integrate collected social links, agency names, and debut-year metadata into canonical entity data with provenance and review states",
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/538"
+        },
+        {
+          "number": 539,
+          "title": "Backfill representative entity images and broaden release artwork coverage beyond the latest-snapshot subset",
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/539"
+        },
+        {
+          "number": 580,
+          "title": "Define export-import manual curation bundles for unresolved canonical nulls across key field families",
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/580"
+        }
+      ]
+    }
+  ],
+  "related_operational_followups": [
+    {
+      "number": 525,
+      "title": "[RN] Provision a stable public preview backend URL for external iPhone and Android device testing",
+      "url": "https://github.com/iAmSomething/idol-song-app/issues/525"
+    },
+    {
+      "number": 540,
+      "title": "Remove duplicate generated artifacts and define one canonical retention policy for runtime-facing JSON and pipeline scripts",
+      "url": "https://github.com/iAmSomething/idol-song-app/issues/540"
+    }
+  ],
+  "resolved_workstreams": [
+    {
+      "key": "latest_verified_release_selection",
+      "label": "Latest verified release selection drift cleared",
+      "issues": [
+        {
+          "number": 532,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/532"
+        }
+      ]
+    },
+    {
+      "key": "historical_release_enrichment_and_mv_allowlists",
+      "label": "Historical release enrichment and MV allowlist foundation landed",
+      "issues": [
+        {
+          "number": 534,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/534"
+        },
+        {
+          "number": 535,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/535"
+        },
+        {
+          "number": 536,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/536"
+        },
+        {
+          "number": 537,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/537"
+        },
+        {
+          "number": 591,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/591"
+        }
+      ]
+    },
+    {
+      "key": "trusted_upcoming_notification_runtime",
+      "label": "Trusted upcoming notification event and push runtime path landed",
+      "issues": [
+        {
+          "number": 554,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/554"
+        },
+        {
+          "number": 556,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/556"
+        },
+        {
+          "number": 557,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/557"
+        },
+        {
+          "number": 558,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/558"
+        },
+        {
+          "number": 559,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/559"
+        },
+        {
+          "number": 560,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/560"
+        },
+        {
+          "number": 561,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/561"
+        }
+      ]
+    },
+    {
+      "key": "null_hygiene_and_gap_workbenches",
+      "label": "Null hygiene cadence, workbench, and bundle reporting landed",
+      "issues": [
+        {
+          "number": 566,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/566"
+        },
+        {
+          "number": 567,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/567"
+        },
+        {
+          "number": 568,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/568"
+        },
+        {
+          "number": 569,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/569"
+        },
+        {
+          "number": 570,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/570"
+        },
+        {
+          "number": 571,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/571"
+        },
+        {
+          "number": 572,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/572"
+        },
+        {
+          "number": 573,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/573"
+        },
+        {
+          "number": 574,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/574"
+        },
+        {
+          "number": 575,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/575"
+        },
+        {
+          "number": 577,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/577"
+        },
+        {
+          "number": 578,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/578"
+        },
+        {
+          "number": 579,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/579"
+        },
+        {
+          "number": 582,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/582"
+        },
+        {
+          "number": 583,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/583"
+        }
+      ]
+    },
+    {
+      "key": "worker_cadence_gate_foundation",
+      "label": "Worker cadence / runtime gate semantics were added even though operational pass is still pending",
+      "issues": [
+        {
+          "number": 530,
+          "url": "https://github.com/iAmSomething/idol-song-app/issues/530"
+        }
+      ]
+    }
+  ],
+  "runtime_details": {
+    "projection_freshness": {
+      "status": "fail",
+      "observed": {
+        "projection_generated_at": "2026-03-11T07:53:57.809Z",
+        "lag_minutes": 265.33
+      },
+      "thresholds": {
+        "passLagMinutes": 20,
+        "reviewLagMinutes": 60
+      }
+    },
+    "worker_cadence": {
+      "status": "fail",
+      "observed": {
+        "primary_path_key": "daily_upcoming",
+        "cadence_label": "daily",
+        "scheduled_failure_rate": null,
+        "last_success_age_hours": null,
+        "scheduled_runs": 0,
+        "cadence_status": "scheduled_evidence_missing",
+        "scheduled_evidence": {
+          "status": "scheduled_evidence_missing",
+          "reason": "Expected scheduled run windows have elapsed without a recorded scheduled sample.",
+          "cadence_label": "daily",
+          "workflow_created_at": "2026-03-06T07:34:09.000Z",
+          "workflow_updated_at": "2026-03-11T09:25:55.000Z",
+          "workflow_state": "active",
+          "workflow_html_url": "https://github.com/iAmSomething/idol-song-app/blob/main/.github/workflows/weekly-kpop-scan.yml",
+          "parsed_schedule": {
+            "kind": "daily",
+            "minute": 0,
+            "hour": 0
+          },
+          "warmup_grace_hours": 12,
+          "first_expected_run_at": "2026-03-07T00:00:00.000Z",
+          "next_expected_run_at": "2026-03-12T00:00:00.000Z",
+          "warmup_deadline_at": "2026-03-07T12:00:00.000Z",
+          "expected_scheduled_runs_by_now": 5,
+          "observed_scheduled_runs": 0,
+          "missed_scheduled_windows": 5
+        }
+      },
+      "thresholds": {
+        "passFailureRate": 0.1,
+        "reviewFailureRate": 0.25,
+        "passLastSuccessAgeHours": 30,
+        "reviewLastSuccessAgeHours": 48
+      }
+    },
+    "stage_gates": {
+      "shadow_to_web_cutover": "fail",
+      "web_cutover_to_json_demotion": "fail"
+    },
+    "worker_cadence_summary": [
+      "[primary] daily_upcoming: cadence=daily, status=scheduled_evidence_missing, observed=0, expected_by_now=5, missed_windows=5",
+      "[secondary] catalog_enrichment: cadence=weekly, status=warming_up, first_due=2026-03-15T01:00:00.000Z, deadline=2026-03-16T01:00:00.000Z"
+    ]
+  },
+  "deploy_parity_details": {
+    "youtube_allowlists": {
+      "role_mismatches_count": 10,
+      "metadata_mismatches_count": 0,
+      "role_mismatches": [
+        {
+          "entity_slug": "chung-ha",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "chuu",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@CHUUOfficial",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "jeon-somi",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "kwon-eunbi",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@KWONEUNBI",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "seventeen",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA",
+              "role": "mv_allowlist"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "tunexx",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@official_TUNEXX",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "xlov",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@XLOV_official",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "yena",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@yena_official",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "yuju",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@YUJUofficial",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "yves",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@YVES_OFFICIAL",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        }
+      ],
+      "metadata_mismatches": [],
+      "clean": false
+    },
+    "latest_verified_release_selection": {
+      "tracking_mismatches_count": 0,
+      "tracking_mismatches": [],
+      "stream_mismatches_count": 0,
+      "stream_mismatches": [],
+      "clean": true
+    },
+    "title_tracks_and_double_title": {
+      "mismatched_releases_count": 1060,
+      "source_double_title_releases": 27,
+      "db_double_title_releases": 3,
+      "mismatches": [
+        {
+          "entity_slug": "82major",
+          "release_date": "2023-10-11",
+          "stream": "song",
+          "source_title_tracks": [
+            "Sure Thing"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "82major",
+          "release_date": "2023-10-05",
+          "stream": "song",
+          "source_title_tracks": [
+            "Sure Thing"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "8turn",
+          "release_date": "2025-08-21",
+          "stream": "song",
+          "source_title_tracks": [
+            "Electric Heart"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "8turn",
+          "release_date": "2025-03-04",
+          "stream": "song",
+          "source_title_tracks": [
+            "LEGGO"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "8turn",
+          "release_date": "2024-11-11",
+          "stream": "song",
+          "source_title_tracks": [
+            "You Are My Reason"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "8turn",
+          "release_date": "2024-12-09",
+          "stream": "song",
+          "source_title_tracks": [
+            "Like a Friend"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "ab6ix",
+          "release_date": "2022-08-24",
+          "stream": "song",
+          "source_title_tracks": [
+            "CHANCE"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "ab6ix",
+          "release_date": "2023-05-10",
+          "stream": "song",
+          "source_title_tracks": [
+            "Fly Away"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "ab6ix",
+          "release_date": "2020-11-02",
+          "stream": "album",
+          "source_title_tracks": [
+            "SALUTE"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "ab6ix",
+          "release_date": "2023-11-24",
+          "stream": "song",
+          "source_title_tracks": [
+            "SIREN"
+          ],
+          "db_title_tracks": []
+        }
+      ],
+      "clean": false
+    },
+    "release_service_links": {
+      "mismatched_release_services_count": 124,
+      "mismatches": [
+        {
+          "entity_slug": "82major",
+          "release_date": "2024-11-15",
+          "stream": "album",
+          "service_type": "youtube_music",
+          "source": {
+            "url": "https://music.youtube.com/playlist?list=OLAK5uy_k1sIbCSXn34yi3_k1kdbhE3r24-du98ic",
+            "status": "canonical",
+            "provenance": "releaseDetails.youtube_music_url"
+          },
+          "db": {
+            "url": null,
+            "status": "no_link",
+            "provenance": null
+          }
+        },
+        {
+          "entity_slug": "8turn",
+          "release_date": "2025-03-04",
+          "stream": "song",
+          "service_type": "youtube_mv",
+          "source": {
+            "url": "https://www.youtube.com/watch?v=li5H5D3Jd70",
+            "status": "manual_override",
+            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+          },
+          "db": {
+            "url": null,
+            "status": "unresolved",
+            "provenance": "releaseHistory.placeholder_seed"
+          }
+        },
+        {
+          "entity_slug": "aespa",
+          "release_date": "2025-06-27",
+          "stream": "song",
+          "service_type": "youtube_music",
+          "source": {
+            "url": "https://music.youtube.com/playlist?list=OLAK5uy_lylo1HjXQ3etth1Y_2psaHbhoyeNA49_w",
+            "status": "canonical",
+            "provenance": "releaseDetails.youtube_music_url"
+          },
+          "db": {
+            "url": null,
+            "status": "no_link",
+            "provenance": null
+          }
+        },
+        {
+          "entity_slug": "aespa",
+          "release_date": "2025-06-27",
+          "stream": "song",
+          "service_type": "youtube_mv",
+          "source": {
+            "url": "https://www.youtube.com/watch?v=M2WTUoy4y6E",
+            "status": "manual_override",
+            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+          },
+          "db": {
+            "url": null,
+            "status": "unresolved",
+            "provenance": "releaseHistory.placeholder_seed"
+          }
+        },
+        {
+          "entity_slug": "aespa",
+          "release_date": "2021-10-05",
+          "stream": "album",
+          "service_type": "youtube_music",
+          "source": {
+            "url": "https://music.youtube.com/playlist?list=OLAK5uy_mAsOG3O5d13B9gcJ0_4JcpqbVlQKNyYzQ",
+            "status": "canonical",
+            "provenance": "releaseDetails.youtube_music_url"
+          },
+          "db": {
+            "url": null,
+            "status": "no_link",
+            "provenance": null
+          }
+        },
+        {
+          "entity_slug": "aespa",
+          "release_date": "2024-10-09",
+          "stream": "song",
+          "service_type": "youtube_music",
+          "source": {
+            "url": "https://music.youtube.com/playlist?list=OLAK5uy_mxuhlhhzPFDf4XF9zXA_fXmJQN8tqCUe4",
+            "status": "canonical",
+            "provenance": "releaseDetails.youtube_music_url"
+          },
+          "db": {
+            "url": null,
+            "status": "no_link",
+            "provenance": null
+          }
+        },
+        {
+          "entity_slug": "ateez",
+          "release_date": "2025-06-13",
+          "stream": "album",
+          "service_type": "youtube_music",
+          "source": {
+            "url": "https://music.youtube.com/playlist?list=OLAK5uy_lQnb6fzlcjYIWuQsQkVX-UucviuRkoyfE",
+            "status": "canonical",
+            "provenance": "releaseDetails.youtube_music_url"
+          },
+          "db": {
+            "url": null,
+            "status": "no_link",
+            "provenance": null
+          }
+        },
+        {
+          "entity_slug": "blackpink",
+          "release_date": "2026-02-26",
+          "stream": "album",
+          "service_type": "youtube_music",
+          "source": null,
+          "db": {
+            "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
+            "status": "manual_override",
+            "provenance": "ytmusicapi exact album search match"
+          }
+        },
+        {
+          "entity_slug": "blackpink",
+          "release_date": "2026-02-26",
+          "stream": "album",
+          "service_type": "youtube_mv",
+          "source": null,
+          "db": {
+            "url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
+            "status": "manual_override",
+            "provenance": "official artist channel watch URL"
+          }
+        },
+        {
+          "entity_slug": "blackpink",
+          "release_date": "2022-07-29",
+          "stream": "song",
+          "service_type": "youtube_mv",
+          "source": {
+            "url": "https://www.youtube.com/watch?v=GDWX-3kV6do",
+            "status": "relation_match",
+            "provenance": "musicbrainz.release_group_release.url_relation"
+          },
+          "db": {
+            "url": null,
+            "status": "unresolved",
+            "provenance": "releaseHistory.placeholder_seed"
+          }
+        }
+      ],
+      "clean": false
+    },
+    "review_required_counts": {
+      "source_review_type_counts": {
+        "upcoming_signal": 64,
+        "entity_onboarding": 3,
+        "mv_candidate": 1657
+      },
+      "db_review_type_counts": {
+        "entity_onboarding": 3,
+        "mv_candidate": 39,
+        "upcoming_signal": 64
+      },
+      "source_youtube_mv_status_counts": {
+        "unresolved": 1655,
+        "manual_override": 91,
+        "relation_match": 21,
+        "needs_review": 2,
+        "no_mv": 1
+      },
+      "db_youtube_mv_status_counts": {
+        "unresolved": 1742,
+        "manual_override": 26,
+        "relation_match": 1,
+        "needs_review": 2
+      },
+      "review_type_counts_match": false,
+      "youtube_mv_status_counts_match": false,
+      "clean": false
+    }
+  },
+  "catalog_completeness_details": {
+    "cutover_gates": {
+      "thresholds": {
+        "detail_payload_total_min": 1,
+        "detail_payload_pre_2024_min": 1,
+        "detail_trusted_total_min": 0.85,
+        "detail_trusted_pre_2024_min": 0.5,
+        "title_track_resolved_total_min": 0.8,
+        "title_track_resolved_pre_2024_min": 0.6,
+        "canonical_mv_total_min": 0.65,
+        "canonical_mv_pre_2024_min": 0.35
+      },
+      "gates": {
+        "detail_payload": {
+          "status": "pass",
+          "observed_total": 1,
+          "observed_pre_2024": 1,
+          "threshold_total": 1,
+          "threshold_pre_2024": 1
+        },
+        "detail_trusted": {
+          "status": "pass",
+          "observed_total": 1,
+          "observed_pre_2024": 1,
+          "threshold_total": 0.85,
+          "threshold_pre_2024": 0.5
+        },
+        "title_track_resolved": {
+          "status": "fail",
+          "observed_total": 0.6785,
+          "observed_pre_2024": 0.6522,
+          "threshold_total": 0.8,
+          "threshold_pre_2024": 0.6
+        },
+        "canonical_mv": {
+          "status": "fail",
+          "observed_total": 0.0864,
+          "observed_pre_2024": 0.0642,
+          "threshold_total": 0.65,
+          "threshold_pre_2024": 0.35
+        }
+      },
+      "cutover_ready": false,
+      "cutover_status": "fail",
+      "generated_at": "2026-03-11",
+      "summary_lines": [
+        "detail payload gate: pass (total 100.0%, pre-2024 100.0%)",
+        "detail trusted gate: pass (total 100.0%, pre-2024 100.0%)",
+        "title-track resolved gate: fail (total 67.8%, pre-2024 65.2%)",
+        "canonical MV gate: fail (total 8.6%, pre-2024 6.4%)"
+      ]
+    },
+    "migration_priority_slice": {
+      "thresholds": {
+        "detail_payload_min": 1,
+        "detail_trusted_min": 1,
+        "title_track_resolved_min": 1,
+        "canonical_mv_min": 1
+      },
+      "gates": {
+        "detail_payload": {
+          "status": "pass",
+          "observed": 1,
+          "threshold": 1
+        },
+        "detail_trusted": {
+          "status": "pass",
+          "observed": 1,
+          "threshold": 1
+        },
+        "title_track_resolved": {
+          "status": "pass",
+          "observed": 1,
+          "threshold": 1
+        },
+        "canonical_mv": {
+          "status": "pass",
+          "observed": 1,
+          "threshold": 1
+        }
+      },
+      "cutover_ready": true,
+      "cutover_status": "pass",
+      "generated_at": "2026-03-11",
+      "summary_lines": [
+        "detail_payload gate: pass (100.0% vs 100.0%)",
+        "detail_trusted gate: pass (100.0% vs 100.0%)",
+        "title_track_resolved gate: pass (100.0% vs 100.0%)",
+        "canonical_mv gate: pass (100.0% vs 100.0%)"
+      ]
+    },
+    "null_field_families": [
+      {
+        "field_family_key": "release_service_links.youtube_mv",
+        "field_label": "YouTube MV Canonical Link",
+        "populated_records": 27,
+        "unresolved_records": 1744,
+        "effective_coverage_percent": 1.5
+      },
+      {
+        "field_family_key": "releases.title_track",
+        "field_label": "Title Track Resolution",
+        "populated_records": 77,
+        "unresolved_records": 1694,
+        "effective_coverage_percent": 4.3
+      },
+      {
+        "field_family_key": "entities.official_youtube",
+        "field_label": "Official YouTube",
+        "populated_records": 88,
+        "unresolved_records": 29,
+        "effective_coverage_percent": 75.2
+      },
+      {
+        "field_family_key": "entities.debut_year",
+        "field_label": "Debut Year",
+        "populated_records": 8,
+        "unresolved_records": 109,
+        "effective_coverage_percent": 6.8
+      },
+      {
+        "field_family_key": "entities.representative_image",
+        "field_label": "Representative Image",
+        "populated_records": 0,
+        "unresolved_records": 117,
+        "effective_coverage_percent": 0
+      }
+    ]
+  },
+  "runtime_facing_duplicate_artifacts": [
+    "build_release_details_musicbrainz 2.py",
+    "web/src/data/artistProfiles 2.json",
+    "web/src/data/releaseArtwork 2.json",
+    "web/src/data/releaseDetails 2.json"
+  ],
+  "summary_lines": [
+    "parent issue #529 audit status: audit_complete",
+    "current readiness score: 56.3% (fail)",
+    "baseline deltas: latest release drift 3 -> 0, title-track 64.5% -> 67.8%, canonical MV 6.3% -> 8.6%",
+    "allowlist progress: mv_source_channels 0/117 -> 92/117",
+    "entity metadata unchanged: debut_year 8/117, representative_image 0/117",
+    "runtime-facing duplicate artifacts still present: 4",
+    "direct blocker follow-ups: #600 backend runtime health, #601 web backend-only stability, #602 backend deploy parity, #603 catalog completeness"
+  ]
+}
