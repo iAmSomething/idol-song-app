@@ -18,12 +18,33 @@ export type MobileDebugMetadata = {
   dataSourcePolicy: string;
   apiBaseUrl: string | null;
   apiHost: string | null;
+  backendTargetLabel: 'Bundled-only' | 'Public preview backend' | 'Temporary tunnel backend' | 'Custom backend target';
   analyticsEnabled: boolean;
   radarEnabled: boolean;
   featureGateSummary: string;
   analyticsEventCount: number;
   latestAnalyticsEvent: string | null;
 };
+
+const PUBLIC_PREVIEW_API_HOST = 'api.idol-song-app.example.com';
+const TUNNEL_API_HOST_SUFFIXES = ['trycloudflare.com', 'ngrok-free.app', 'ngrok.io', 'loca.lt'] as const;
+
+function getBackendTargetLabel(apiBaseUrl: string | null): MobileDebugMetadata['backendTargetLabel'] {
+  if (!apiBaseUrl) {
+    return 'Bundled-only';
+  }
+
+  const host = new URL(apiBaseUrl).host;
+  if (host === PUBLIC_PREVIEW_API_HOST) {
+    return 'Public preview backend';
+  }
+
+  if (TUNNEL_API_HOST_SUFFIXES.some((suffix) => host === suffix || host.endsWith(`.${suffix}`))) {
+    return 'Temporary tunnel backend';
+  }
+
+  return 'Custom backend target';
+}
 
 export function isDebugMetadataAvailable(runtimeConfig: MobileRuntimeConfig = getRuntimeConfig()): boolean {
   return runtimeConfig.profile !== 'production';
@@ -51,6 +72,7 @@ export function getDebugMetadata(
         : 'Bundled static primary',
     apiBaseUrl: runtimeConfig.services.apiBaseUrl,
     apiHost: runtimeConfig.services.apiBaseUrl ? new URL(runtimeConfig.services.apiBaseUrl).host : null,
+    backendTargetLabel: getBackendTargetLabel(runtimeConfig.services.apiBaseUrl),
     analyticsEnabled: runtimeConfig.featureGates.analytics,
     radarEnabled: runtimeConfig.featureGates.radar,
     featureGateSummary: Object.entries(runtimeConfig.featureGates)

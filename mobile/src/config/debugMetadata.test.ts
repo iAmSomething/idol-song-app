@@ -84,12 +84,41 @@ describe('debug metadata helpers', () => {
       dataSourcePolicy: 'Backend API primary + bundled fallback',
       apiBaseUrl: 'https://example.com/api',
       apiHost: 'example.com',
+      backendTargetLabel: 'Custom backend target',
       analyticsEnabled: false,
       radarEnabled: true,
       featureGateSummary: 'radar:on, analytics:off, remoteRefresh:off, mvEmbed:on, shareActions:on',
       analyticsEventCount: 1,
       latestAnalyticsEvent: 'dataset_degraded @ 2026-03-09T00:00:00.000Z',
     });
+  });
+
+  test('labels the stable preview backend and tunnel fallback distinctly', () => {
+    expect(
+      getDebugMetadata({
+        ...previewRuntimeState,
+        config: {
+          ...previewRuntimeConfig,
+          services: {
+            ...previewRuntimeConfig.services,
+            apiBaseUrl: 'https://api.idol-song-app.example.com',
+          },
+        },
+      }).backendTargetLabel,
+    ).toBe('Public preview backend');
+
+    expect(
+      getDebugMetadata({
+        ...previewRuntimeState,
+        config: {
+          ...previewRuntimeConfig,
+          services: {
+            ...previewRuntimeConfig.services,
+            apiBaseUrl: 'https://idol-song-app-preview.trycloudflare.com',
+          },
+        },
+      }).backendTargetLabel,
+    ).toBe('Temporary tunnel backend');
   });
 
   test('keeps the metadata surface unavailable for production profile', () => {

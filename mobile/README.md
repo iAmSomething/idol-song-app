@@ -176,6 +176,83 @@ cd mobile
 cp .env.example .env
 ```
 
+외부 기기 preview QA에서 stable public backend를 바로 쓰려면 아래를 기준으로 복사한다.
+
+```bash
+cd mobile
+cp .env.preview.example .env
+```
+
+public preview backend가 unavailable일 때만 임시 tunnel fallback을 쓴다.
+
+```bash
+cd mobile
+cp .env.preview.tunnel.example .env
+```
+
+## external device preview backend baseline
+
+stable public preview backend를 쓰는 기본 경로:
+
+```bash
+cd mobile
+cp .env.preview.example .env
+set -a
+source .env
+set +a
+npm run config:preview
+```
+
+이후 같은 셸에서 preview dev-client runtime을 띄운다.
+
+```bash
+cd mobile
+set -a
+source .env
+set +a
+APP_ENV=preview npx expo start --dev-client --host lan --port 8082
+```
+
+iPhone / Android 외부 기기 QA minimum steps:
+
+1. 같은 Wi-Fi 또는 reachability 가능한 네트워크에 host machine과 device를 둔다.
+2. `mobile/.env.preview.example`을 `.env`로 복사한다.
+3. `npm run config:preview`로 `EXPO_PUBLIC_API_BASE_URL`이 `https://api.idol-song-app.example.com`로 잡히는지 확인한다.
+4. preview dev client를 열고 Expo CLI가 보여주는 QR 또는 deep link로 runtime에 붙는다.
+5. hidden debug route `idolsongapp-preview://debug/metadata`에서 아래 값을 확인한다.
+   - `Backend target = Public preview backend`
+   - `API base URL = https://api.idol-song-app.example.com`
+   - `API host = api.idol-song-app.example.com`
+
+## temporary tunnel fallback
+
+stable public preview backend가 내려가 있거나 준비 전일 때만 임시 fallback으로 tunnel을 쓴다.
+
+권장 예시:
+
+```bash
+cloudflared tunnel --url http://127.0.0.1:3213
+```
+
+또는 동등한 HTTPS public tunnel을 쓸 수 있다. 이후:
+
+```bash
+cd mobile
+cp .env.preview.tunnel.example .env
+# EXPO_PUBLIC_API_BASE_URL를 실제 tunnel URL로 교체
+set -a
+source .env
+set +a
+npm run config:preview
+APP_ENV=preview npx expo start --dev-client --host tunnel --port 8082
+```
+
+tunnel fallback 규칙:
+
+- 정식 sign-off / distribution 기본 경로로 쓰지 않는다.
+- backend target이 tunnel이면 debug metadata에서 `Backend target = Temporary tunnel backend`가 보여야 한다.
+- tunnel은 속도/안정성/도메인 수명이 불안정하므로 regression spot-check 용도로만 쓴다.
+
 ## profile split 원칙
 
 - `development`
