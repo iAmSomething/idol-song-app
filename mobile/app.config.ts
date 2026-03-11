@@ -21,6 +21,11 @@ type ProfileConfig = {
   };
 };
 
+type NativeIosConfig = {
+  bundleIdentifier: string;
+  appleTeamId: string | null;
+};
+
 type RuntimeConfig = {
   profile: MobileProfile;
   dataSource: {
@@ -156,6 +161,40 @@ function assertHttpUrl(value: string | null, envName: string): string | null {
   return parsed.toString();
 }
 
+function assertBundleIdentifier(value: string | null, envName: string): string | null {
+  if (!value) {
+    return null;
+  }
+
+  const pattern = /^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/;
+  if (!pattern.test(value)) {
+    throw new Error(`${envName} must be a reverse-DNS style bundle identifier.`);
+  }
+
+  return value;
+}
+
+function assertAppleTeamId(value: string | null, envName: string): string | null {
+  if (!value) {
+    return null;
+  }
+
+  if (!/^[A-Z0-9]{10}$/.test(value)) {
+    throw new Error(`${envName} must be a 10-character Apple team identifier.`);
+  }
+
+  return value;
+}
+
+function resolveNativeIosConfig(profileConfig: ProfileConfig, env: EnvMap): NativeIosConfig {
+  return {
+    bundleIdentifier:
+      assertBundleIdentifier(optionalString(env.EXPO_IOS_BUNDLE_IDENTIFIER), 'EXPO_IOS_BUNDLE_IDENTIFIER') ??
+      profileConfig.iosBundleIdentifier,
+    appleTeamId: assertAppleTeamId(optionalString(env.EXPO_IOS_APPLE_TEAM_ID), 'EXPO_IOS_APPLE_TEAM_ID'),
+  };
+}
+
 function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig, env: EnvMap): RuntimeConfig {
   const apiBaseUrl = assertHttpUrl(optionalString(env.EXPO_PUBLIC_API_BASE_URL), 'EXPO_PUBLIC_API_BASE_URL');
   const analyticsWriteKey = optionalString(env.EXPO_PUBLIC_ANALYTICS_WRITE_KEY);
@@ -208,6 +247,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   const profile = resolveProfile(process.env.APP_ENV);
   const profileConfig = PROFILE_CONFIG[profile];
   const runtimeConfig = buildRuntimeConfig(profile, profileConfig, process.env);
+  const nativeIosConfig = resolveNativeIosConfig(profileConfig, process.env);
 
   return {
     ...config,
@@ -233,7 +273,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     ios: {
       supportsTablet: true,
-      bundleIdentifier: profileConfig.iosBundleIdentifier,
+      bundleIdentifier: nativeIosConfig.bundleIdentifier,
+      ...(nativeIosConfig.appleTeamId ? { appleTeamId: nativeIosConfig.appleTeamId } : {}),
     },
     android: {
       predictiveBackGestureEnabled: false,

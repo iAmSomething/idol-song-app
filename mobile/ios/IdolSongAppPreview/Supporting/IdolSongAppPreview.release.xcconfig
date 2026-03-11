@@ -1,0 +1,3 @@
+#include "../../Pods/Target Support Files/Pods-IdolSongAppPreview/Pods-IdolSongAppPreview.release.xcconfig"
+#include "IdolSongAppPreview.shared.xcconfig"
+#include? "IdolSongAppPreview.signing.local.xcconfig"

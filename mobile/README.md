@@ -138,6 +138,17 @@ EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:previe
 EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:ios:sim
 ```
 
+personal Apple team으로 iOS preview signing override를 준비하려면:
+
+```bash
+cd mobile
+npm run qa:preview:ios:signing:prepare -- \
+  --team-id ABCDE12345 \
+  --bundle-id com.example.idolsongapp.preview
+```
+
+자세한 절차는 `docs/specs/mobile/ios-preview-signing-personal-team.md`를 따른다.
+
 iOS VoiceOver QA를 simulator preview runtime 위에서 토글하려면:
 
 ```bash

@@ -47,6 +47,11 @@
   - Android `package`
 - preview QA runtime은 Expo Go가 아니라 `expo-dev-client`가 포함된 standalone native simulator/device build로도 열 수 있어야 한다.
 - native identifier가 없어서 `expo prebuild` / `expo run:*`가 막히면 release-readiness blocker다.
+- iOS preview personal-team install은 아래 두 층을 같이 쓴다.
+  - checked-in native project: `mobile/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.signing.local.xcconfig`
+  - Expo config override: `EXPO_IOS_APPLE_TEAM_ID`, `EXPO_IOS_BUNDLE_IDENTIFIER`
+- local xcconfig는 machine-local override만 담고 git에 커밋하지 않는다.
+- `expo prebuild --clean` 또는 `expo run:ios`를 다시 돌릴 때도 같은 `EXPO_IOS_*` 값이 들어가야 native regeneration과 checked-in project가 같은 identifier를 유지한다.
 
 ## 7.2 Public preview backend and tunnel fallback
 - external iPhone/Android QA의 기본 경로는 stable public preview backend다.

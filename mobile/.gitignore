@@ -37,5 +37,16 @@ coverage/
 *.tsbuildinfo
 
 # generated native folders
-/ios
 /android
+/ios/*
+!/ios/IdolSongAppPreview.xcodeproj/
+/ios/IdolSongAppPreview.xcodeproj/*
+!/ios/IdolSongAppPreview.xcodeproj/project.pbxproj
+!/ios/IdolSongAppPreview/
+/ios/IdolSongAppPreview/*
+!/ios/IdolSongAppPreview/Supporting/
+/ios/IdolSongAppPreview/Supporting/*
+!/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.debug.xcconfig
+!/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.release.xcconfig
+!/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.shared.xcconfig
+!/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.signing.local.example.xcconfig
