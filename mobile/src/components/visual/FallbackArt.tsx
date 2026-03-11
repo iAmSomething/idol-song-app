@@ -37,7 +37,7 @@ function FallbackArtComponent({
   return (
     <ImageBackground
       imageStyle={{ borderRadius }}
-      source={resolveFallbackArtSource(variant)}
+      source={resolveFallbackArtSource(variant, theme.scheme)}
       style={[
         styles.frame,
         {

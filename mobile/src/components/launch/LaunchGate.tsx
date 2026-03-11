@@ -10,8 +10,7 @@ import {
 
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useAppTheme, type MobileTheme } from '../../tokens/theme';
-
-const APP_ICON = require('../../../assets/app-icon/icon-adaptive-foreground.png');
+import { resolveLaunchMarkSource } from '../../utils/assetRegistry';
 
 export interface LaunchGateProps {
   children: React.ReactNode;
@@ -23,6 +22,7 @@ export function LaunchGate({ children }: LaunchGateProps) {
   const styles = React.useMemo(() => createStyles(theme), [theme]);
   const progress = React.useRef(new Animated.Value(0)).current;
   const [isVisible, setIsVisible] = React.useState(true);
+  const launchMarkSource = React.useMemo(() => resolveLaunchMarkSource(theme.scheme), [theme.scheme]);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -107,7 +107,7 @@ export function LaunchGate({ children }: LaunchGateProps) {
           >
             <View style={styles.markRow}>
               <View style={styles.markBadge}>
-                <Image source={APP_ICON} style={styles.markImage} />
+                <Image source={launchMarkSource} style={styles.markImage} />
               </View>
               <View style={styles.copyBlock}>
                 <Text allowFontScaling={false} style={styles.kicker}>
