@@ -15,12 +15,14 @@ export type AnalyticsSurface =
   | 'calendar'
   | 'radar'
   | 'entity_detail'
-  | 'release_detail';
+  | 'release_detail'
+  | 'notifications_settings';
 
 export type SearchSegment = 'entities' | 'releases' | 'upcoming';
 export type CalendarFilterMode = 'all' | 'releases' | 'upcoming';
 export type SearchSubmitSource = 'input' | 'recent';
 export type ObservabilityFailureCategory = 'blocking' | 'degraded' | 'external_failure' | 'data_quality';
+export type PushHandlingSource = 'cold_start' | 'background_resume' | 'foreground_open' | 'foreground_dismiss';
 
 export type AnalyticsEventMap = {
   calendar_viewed: {
@@ -153,6 +155,39 @@ export type AnalyticsEventMap = {
     code: string;
     retryable: boolean;
   };
+  push_permission_prompt_viewed: {
+    surface: AnalyticsSurface;
+  };
+  push_permission_requested: {
+    result: 'granted' | 'provisional' | 'denied' | 'not_determined';
+    canAskAgain: boolean;
+  };
+  push_registration_synced: {
+    permissionStatus: 'granted' | 'provisional' | 'denied' | 'not_determined';
+    alertsEnabled: boolean;
+    active: boolean;
+    hadToken: boolean;
+    reason: 'launch' | 'settings' | 'permission_prompt' | 'token_refresh';
+  };
+  push_registration_failed: {
+    reason: 'launch' | 'settings' | 'permission_prompt' | 'token_refresh';
+    code: string;
+    retryable: boolean;
+  };
+  push_notification_received: {
+    destinationKind: 'release_detail' | 'entity_detail' | 'calendar';
+    eventType: string;
+  };
+  push_notification_opened: {
+    destinationKind: 'release_detail' | 'entity_detail' | 'calendar';
+    eventType: string;
+    source: PushHandlingSource;
+  };
+  push_notification_dismissed: {
+    destinationKind: 'release_detail' | 'entity_detail' | 'calendar';
+    eventType: string;
+    source: PushHandlingSource;
+  };
 };
 
 export type AnalyticsEventName = keyof AnalyticsEventMap;
@@ -215,6 +250,13 @@ function sanitizeAnalyticsPayload<Name extends AnalyticsEventName>(
     }
     case 'failure_observed': {
       const currentPayload = payload as AnalyticsEventMap['failure_observed'];
+      return {
+        ...currentPayload,
+        code: sanitizeText(currentPayload.code, 64),
+      } as AnalyticsEventMap[Name];
+    }
+    case 'push_registration_failed': {
+      const currentPayload = payload as AnalyticsEventMap['push_registration_failed'];
       return {
         ...currentPayload,
         code: sanitizeText(currentPayload.code, 64),

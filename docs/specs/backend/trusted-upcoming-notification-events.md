@@ -10,12 +10,12 @@
 - persisted fingerprint / dedupe state
 - canonical notification event row
 - repo-native operator alert artifact
+- mobile push registration / delivery outcome persistence
 
-범위에서 제외하는 것은 아래다.
+현재 문서 바깥인 것은 아래다.
 
-- Expo/APNs/FCM 실제 fanout
-- RN permission / token registration UI
-- foreground / deep-link open handling
+- iOS / Android OS-level notification presentation policy의 세부 UX
+- mobile large-text / accessibility polish
 
 ## 핵심 엔터티
 
@@ -70,6 +70,48 @@
 - `secondary_reasons`
 - `canonical_destination`
 - `payload`
+
+### 3. `mobile_push_registrations`
+
+역할:
+
+- mobile installation 단위의 Expo push token / permission / alert preference 보존
+- 같은 token이 다른 installation으로 이동했을 때 active row를 하나로 유지
+
+핵심 필드:
+
+- `installation_id`
+- `platform`
+- `build_profile`
+- `expo_push_token`
+- `alerts_enabled`
+- `permission_status`
+- `is_active`
+- `disabled_reason`
+- `last_registered_at`
+- `last_token_refreshed_at`
+- `backend_request_id`
+
+### 4. `notification_event_push_deliveries`
+
+역할:
+
+- canonical event fanout attempt row
+- registration별 sent / failed / skipped outcome 기록
+
+핵심 필드:
+
+- `notification_event_id`
+- `registration_id`
+- `provider = expo`
+- `status`
+- `provider_message_id`
+- `skip_reason`
+- `failure_code`
+- `attempt_count`
+- `payload`
+- `response_payload`
+- `sent_at`
 
 ## Trusted 판정 규칙
 
@@ -171,6 +213,21 @@ summary 최소 필드:
 - `emitted_by_reason`
 - `emitted_events[]`
 
+push delivery worker는 아래 artifact도 남긴다.
+
+- `backend/reports/mobile_push_delivery_summary.json`
+- `backend/reports/mobile_push_delivery_report.md`
+
+summary 최소 필드:
+
+- `events_considered`
+- `delivery_targets_considered`
+- `sent`
+- `failed`
+- `skipped`
+- `invalidated_registrations`
+- `delivery_rows[]`
+
 workflow summary에는 위 aggregate와 상위 emitted sample만 남긴다.
 
 ## 운영 규칙
@@ -179,10 +236,15 @@ workflow summary에는 위 aggregate와 상위 emitted sample만 남긴다.
 - 이후 rerun은 same `dedupe_key`가 있으면 조용히 suppress 한다.
 - stale signal은 state row에서 `is_active=false`로 내리되 historical event row는 지우지 않는다.
 - push delivery 이전 단계에서는 `notification_events.status = queued`를 기본값으로 쓴다.
+- delivery worker는 registration별 row를 먼저 보고 unchanged rerun / max-attempt / skip reason을 보수적으로 유지한다.
+- `DeviceNotRegistered`는 registration row를 즉시 비활성화하고 `disabled_reason = provider_invalid`로 내린다.
 
 ## 관련 구현
 
 - schema migration: `backend/sql/migrations/0006_notification_events.sql`
+- push delivery migration: `backend/sql/migrations/0007_mobile_push_delivery.sql`
 - emission sync: `sync_trusted_upcoming_notification_events.py`
+- delivery worker: `deliver_trusted_push_notifications.py`
+- mobile registration route: `backend/src/routes/notifications.ts`
 - workflow entrypoint: `.github/workflows/weekly-kpop-scan.yml`
 - downstream umbrella: `#557`

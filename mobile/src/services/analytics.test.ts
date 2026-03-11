@@ -18,6 +18,7 @@ const analyticsEnabledRuntime: MobileRuntimeConfig = {
   services: {
     apiBaseUrl: 'https://example.com/api',
     analyticsWriteKey: 'write-key',
+    expoProjectId: null,
   },
   logging: {
     level: 'debug',

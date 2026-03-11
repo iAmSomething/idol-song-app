@@ -578,9 +578,9 @@ export default function RadarTabScreen() {
               검색
             </Text>
           </Pressable>
-            <Pressable
-              testID="radar-filter-button"
-              accessibilityLabel="레이더 필터 열기"
+          <Pressable
+            testID="radar-filter-button"
+            accessibilityLabel="레이더 필터 열기"
               accessibilityRole="button"
               accessibilityState={{ selected: hasNonDefaultFilters || isFilterSheetOpen }}
               onPress={openFilterSheet}
@@ -588,6 +588,17 @@ export default function RadarTabScreen() {
             >
             <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.appBarButtonLabel}>
               필터
+            </Text>
+          </Pressable>
+          <Pressable
+            testID="radar-notifications-button"
+            accessibilityLabel="알림 설정 열기"
+            accessibilityRole="button"
+            onPress={() => router.push('/settings/notifications')}
+            style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
+          >
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.appBarButtonLabel}>
+              알림
             </Text>
           </Pressable>
         </View>

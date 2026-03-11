@@ -115,6 +115,7 @@ function createRuntimeState(
       services: {
         apiBaseUrl: null,
         analyticsWriteKey: null,
+        expoProjectId: null,
       },
       logging: {
         level: 'verbose',

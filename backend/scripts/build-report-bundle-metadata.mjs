@@ -31,6 +31,11 @@ const DEFAULT_TRUSTED_UPCOMING_NOTIFICATION_REPORT_PATH = path.join(
   'reports',
   'trusted_upcoming_notification_event_summary.json',
 );
+const DEFAULT_MOBILE_PUSH_DELIVERY_REPORT_PATH = path.join(
+  BACKEND_DIR,
+  'reports',
+  'mobile_push_delivery_summary.json',
+);
 
 function parseArgs(argv) {
   const options = {
@@ -47,6 +52,7 @@ function parseArgs(argv) {
     titleTrackGapReportPath: DEFAULT_TITLE_TRACK_GAP_REPORT_PATH,
     entityIdentityWorkbenchReportPath: DEFAULT_ENTITY_IDENTITY_WORKBENCH_REPORT_PATH,
     trustedUpcomingNotificationReportPath: DEFAULT_TRUSTED_UPCOMING_NOTIFICATION_REPORT_PATH,
+    mobilePushDeliveryReportPath: DEFAULT_MOBILE_PUSH_DELIVERY_REPORT_PATH,
     bundleKind: 'post-sync-verification',
     cadenceProfile: 'daily-upcoming',
     sourceKind: process.env.GITHUB_ACTIONS === 'true' ? 'automation' : 'manual',
@@ -122,6 +128,11 @@ function parseArgs(argv) {
       index += 1;
       continue;
     }
+    if (value === '--mobile-push-delivery-report-path') {
+      options.mobilePushDeliveryReportPath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
+      index += 1;
+      continue;
+    }
     if (value === '--bundle-kind') {
       options.bundleKind = String(argv[index + 1] ?? '').trim() || options.bundleKind;
       index += 1;
@@ -173,6 +184,7 @@ async function main() {
     titleTrackGapReport,
     entityIdentityWorkbenchReport,
     trustedUpcomingNotificationReport,
+    mobilePushDeliveryReport,
   ] =
     await Promise.all([
       readJsonIfExists(options.releaseSyncReportPath),
@@ -187,6 +199,7 @@ async function main() {
       readJsonIfExists(options.titleTrackGapReportPath),
       readJsonIfExists(options.entityIdentityWorkbenchReportPath),
       readJsonIfExists(options.trustedUpcomingNotificationReportPath),
+      readJsonIfExists(options.mobilePushDeliveryReportPath),
     ]);
 
   const report = buildReportBundleMetadata({
@@ -241,6 +254,15 @@ async function main() {
       trustedUpcomingNotificationReport,
       {
         emitted: trustedUpcomingNotificationReport?.totals?.events_emitted ?? null,
+      },
+    ),
+    mobilePushDeliveryReference: buildReportReference(
+      BACKEND_DIR,
+      options.mobilePushDeliveryReportPath,
+      mobilePushDeliveryReport,
+      {
+        sent: mobilePushDeliveryReport?.totals?.sent ?? null,
+        failed: mobilePushDeliveryReport?.totals?.failed ?? null,
       },
     ),
   });

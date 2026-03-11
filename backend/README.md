@@ -33,6 +33,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
   - migration apply / verify run note
 - `scripts/`
   - plain SQL migration apply / schema verify / projection refresh helper
+  - trusted upcoming mobile push registration / delivery helper
 - `requirements-import.txt`
   - Python importer dependency note
 
@@ -54,6 +55,36 @@ PORT=3000 APP_TIMEZONE=Asia/Seoul npm run start
 - ORM이나 무거운 migration framework는 도입하지 않는다.
 - 정본 schema는 plain SQL로 관리한다.
 - apply / verify 도구는 SQL 실행 보조에만 사용한다.
+
+## Trusted Upcoming Push Delivery
+
+- mobile registration routes:
+  - `POST /v1/mobile/push/registration`
+  - `POST /v1/mobile/push/preferences`
+- canonical delivery queue / audit tables:
+  - `mobile_push_registrations`
+  - `notification_event_push_deliveries`
+- worker entrypoints:
+  - `sync_trusted_upcoming_notification_events.py`
+  - `deliver_trusted_push_notifications.py`
+
+예시:
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+python sync_trusted_upcoming_notification_events.py \
+  --summary-path backend/reports/trusted_upcoming_notification_event_summary.json \
+  --markdown-path backend/reports/trusted_upcoming_operator_alert_report.md
+
+python deliver_trusted_push_notifications.py \
+  --summary-path backend/reports/mobile_push_delivery_summary.json \
+  --markdown-path backend/reports/mobile_push_delivery_report.md
+```
+
+workflow에서는 `MOBILE_PUSH_DELIVERY_ENABLED=true`일 때만 실제 fanout을 수행한다.
 
 ## Read API Envelope
 
@@ -230,8 +261,9 @@ repo-level backend deploy entrypoint는 아래 workflow다.
 역할 분리:
 
 - `preview`
-  - `main`에 backend 관련 변경이 들어오면 자동 deploy
-  - 같은 workflow를 `workflow_dispatch`로 수동 재실행할 수도 있음
+  - Railway GitHub integration이 `main`의 backend 관련 변경을 자동 deploy
+  - GitHub workflow는 deploy env contract, build/test, live smoke, freshness handoff를 검증하는 preview gate로 동작
+  - workflow 안의 deploy helper는 dry-run으로만 남겨서 Railway service wiring이 깨지지 않았는지만 확인
 - `production`
   - `workflow_dispatch`에서 `target=production`일 때만 deploy
   - preview rehearsal이 끝난 뒤 명시적으로 승격하는 용도

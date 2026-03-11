@@ -55,6 +55,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           BACKEND_PUBLIC_URL: ${{ vars.VITE_API_BASE_URL }}
+          MOBILE_PUSH_DELIVERY_ENABLED: ${{ vars.MOBILE_PUSH_DELIVERY_ENABLED }}
         run: |
           python build_tracking_watchlist.py
           python scan_upcoming_candidates.py
@@ -66,6 +67,11 @@ jobs:
           if [ -n "${DATABASE_URL:-}" ]; then
             python sync_upcoming_pipeline_to_neon.py --summary-path /tmp/upcoming-pipeline-db-sync-summary.json
             python sync_trusted_upcoming_notification_events.py --summary-path backend/reports/trusted_upcoming_notification_event_summary.json --markdown-path backend/reports/trusted_upcoming_operator_alert_report.md
+            if [ "${MOBILE_PUSH_DELIVERY_ENABLED:-false}" = "true" ]; then
+              python deliver_trusted_push_notifications.py --summary-path backend/reports/mobile_push_delivery_summary.json --markdown-path backend/reports/mobile_push_delivery_report.md
+            else
+              echo "MOBILE_PUSH_DELIVERY_ENABLED is not true; skipping trusted push fanout."
+            fi
             python sync_release_pipeline_to_neon.py --summary-path /tmp/release-pipeline-db-sync-summary.json
             (
               cd backend
@@ -114,6 +120,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tracking_watchlist.json tracking_watchlist.csv upcoming_release_candidates.json upcoming_release_candidates.csv manual_review_queue.json manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv web/src/data/watchlist.json web/src/data/upcomingCandidates.json web/src/data/releases.json web/src/data/releaseArtwork.json web/src/data/releaseDetails.json web/src/data/releaseChangeLog.json backend/reports/projection_refresh_summary.json backend/reports/worker_cadence_report.json backend/reports/canonical_null_coverage_report.json backend/reports/canonical_null_recheck_queue.json backend/reports/canonical_null_coverage_history.json backend/reports/null_coverage_trend_report.json backend/reports/service_link_gap_queues.json backend/reports/service_link_gap_queue_spotify.csv backend/reports/service_link_gap_queue_youtube_music.csv backend/reports/service_link_gap_queue_youtube_mv.csv backend/reports/title_track_gap_queue.json backend/reports/title_track_gap_queue.csv backend/reports/entity_identity_workbench.json backend/reports/entity_identity_workbench_entities.csv backend/reports/entity_identity_field_queue.csv backend/reports/report_bundle_metadata.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json backend/reports/runtime_gate_report.json backend/reports/migration_readiness_scorecard.json backend/reports/migration_readiness_scorecard.md backend/reports/backend_freshness_handoff.json backend/reports/trusted_upcoming_notification_event_summary.json backend/reports/trusted_upcoming_operator_alert_report.md
+          git add tracking_watchlist.json tracking_watchlist.csv upcoming_release_candidates.json upcoming_release_candidates.csv manual_review_queue.json manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv web/src/data/watchlist.json web/src/data/upcomingCandidates.json web/src/data/releases.json web/src/data/releaseArtwork.json web/src/data/releaseDetails.json web/src/data/releaseChangeLog.json backend/reports/projection_refresh_summary.json backend/reports/worker_cadence_report.json backend/reports/canonical_null_coverage_report.json backend/reports/canonical_null_recheck_queue.json backend/reports/canonical_null_coverage_history.json backend/reports/null_coverage_trend_report.json backend/reports/service_link_gap_queues.json backend/reports/service_link_gap_queue_spotify.csv backend/reports/service_link_gap_queue_youtube_music.csv backend/reports/service_link_gap_queue_youtube_mv.csv backend/reports/title_track_gap_queue.json backend/reports/title_track_gap_queue.csv backend/reports/entity_identity_workbench.json backend/reports/entity_identity_workbench_entities.csv backend/reports/entity_identity_field_queue.csv backend/reports/report_bundle_metadata.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json backend/reports/runtime_gate_report.json backend/reports/migration_readiness_scorecard.json backend/reports/migration_readiness_scorecard.md backend/reports/backend_freshness_handoff.json backend/reports/trusted_upcoming_notification_event_summary.json backend/reports/trusted_upcoming_operator_alert_report.md backend/reports/mobile_push_delivery_summary.json backend/reports/mobile_push_delivery_report.md
           git commit -m "chore: refresh daily upcoming sync data"
           git push

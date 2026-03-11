@@ -673,6 +673,15 @@ export default function SearchTabScreen() {
         subtitle={MOBILE_COPY.surface.searchSubtitle}
         testID="search-app-bar"
         title={MOBILE_COPY.surface.searchTitle}
+        trailingActions={[
+          {
+            key: 'notifications',
+            accessibilityLabel: '알림 설정 열기',
+            label: MOBILE_COPY.action.notifications,
+            onPress: () => router.push('/settings/notifications'),
+            testID: 'search-open-notifications-settings',
+          },
+        ]}
       />
 
       {datasetRiskDisclosure ? (
