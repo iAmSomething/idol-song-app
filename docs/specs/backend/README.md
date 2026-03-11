@@ -79,6 +79,9 @@
 24. `trusted-upcoming-notification-events.md`
    - trusted upcoming signal -> canonical notification event / operator alert contract
    - fingerprint, dedupe, destination, summary artifact 규칙
+25. `runtime-artifact-retention-policy.md`
+   - runtime-facing JSON / pipeline script canonical retention policy
+   - suffix duplicate 금지, allowed temporary path, inventory / cleanup rule
 
 ## 읽는 순서
 
@@ -106,6 +109,7 @@
 22. `canonical-null-hygiene-cadence.md`
 23. `manual-curation-bundle-contract.md`
 24. `trusted-upcoming-notification-events.md`
+25. `runtime-artifact-retention-policy.md`
 
 ## 원칙
 

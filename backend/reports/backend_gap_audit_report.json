@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T15:10:28.264Z",
+  "generated_at": "2026-03-11T18:25:43.631Z",
   "parent_issue": {
     "number": 529,
     "url": "https://github.com/iAmSomething/idol-song-app/issues/529",
@@ -20,7 +20,7 @@
     "representative_image_populated": 0
   },
   "current_snapshot": {
-    "readiness_score_percent": 56.3,
+    "readiness_score_percent": 85.5,
     "readiness_status": "fail",
     "latest_verified_release_selection_drift": 0,
     "title_track_resolved_percent": 67.8,
@@ -29,8 +29,8 @@
     "mv_source_channels_populated": 92,
     "artist_profile_rows": 117,
     "debut_year_populated": 8,
-    "representative_image_populated": 0,
-    "runtime_facing_duplicate_artifact_count": 4
+    "representative_image_populated": 77,
+    "runtime_facing_duplicate_artifact_count": 0
   },
   "baseline_comparison": [
     {
@@ -77,9 +77,9 @@
       "key": "representative_image_populated",
       "label": "Artist profiles with representative_image_url populated",
       "baseline": 0,
-      "current": 0,
-      "delta": 0,
-      "status": "unchanged"
+      "current": 77,
+      "delta": 77,
+      "status": "improved"
     }
   ],
   "blocker_mapping": [
@@ -88,21 +88,19 @@
       "label": "Backend runtime health",
       "status": "fail",
       "blocker_reasons": [
-        "projection_freshness=fail",
-        "worker_cadence=fail",
         "stage_gate:shadow_to_web_cutover=fail",
         "stage_gate:web_cutover_to_json_demotion=fail"
       ],
       "summary_lines": [
         "api latency: needs_review (worst p95=1148.96ms)",
         "api error rate: needs_review (error rate=0)",
-        "projection freshness: fail (lag=265.33m)",
-        "worker cadence: fail (cadence_status=scheduled_evidence_missing, missed_windows=5)",
-        "parity dependency: fail",
-        "shadow dependency: fail",
+        "projection freshness: needs_review (lag=35.77m)",
+        "worker cadence: needs_review (cadence_status=warming_up, deadline=2026-03-12T12:00:00.000Z)",
+        "parity dependency: pass",
+        "shadow dependency: pass",
         "historical catalog completeness dependency: fail",
         "critical null coverage dependency: fail",
-        "bundle consistency: fail",
+        "bundle consistency: pass",
         "shadow -> web cutover gate: fail",
         "web cutover -> JSON demotion gate: fail"
       ],
@@ -117,19 +115,17 @@
     {
       "key": "backend_deploy_parity",
       "label": "Backend deploy parity",
-      "status": "fail",
-      "blocker_reasons": [
-        "parity_clean=false (latest_verified_release_selection drift=0)"
-      ],
+      "status": "pass",
+      "blocker_reasons": [],
       "summary_lines": [
         "entity alias/search coverage: clean (mismatched entities=0)",
         "official links: clean (mismatched entities=0)",
-        "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
+        "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
         "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
         "upcoming counts / nearest: clean (month bucket mismatches=0)",
-        "title-track / double-title: drift (mismatched releases=1060)",
-        "YouTube Music / MV service-link state: drift (mismatched releases=124)",
-        "review-required counts: drift (review_type_counts_match=False, youtube_mv_status_counts_match=False)"
+        "title-track / double-title: clean (mismatched releases=0)",
+        "YouTube Music / MV service-link state: clean (mismatched releases=0)",
+        "review-required counts (release scope): clean (mv_candidate_count_match=True, youtube_mv_status_counts_match=True)"
       ],
       "issues": [
         {
@@ -142,19 +138,14 @@
     {
       "key": "web_backend_only_stability",
       "label": "Web backend-only stability",
-      "status": "fail",
-      "blocker_reasons": [
-        "entity_detail clean_ratio=0.5",
-        "release_detail clean_ratio=0"
-      ],
+      "status": "pass",
+      "blocker_reasons": [],
       "summary_lines": [
         "search: clean 5/5, drift 0/5",
-        "entity_detail: clean 2/4, drift 2/4",
-        "release_detail: clean 0/3, drift 3/3",
+        "entity_detail: clean 4/4, drift 0/4",
+        "release_detail: clean 3/3, drift 0/3",
         "calendar_month: clean 3/3, drift 0/3",
-        "radar: clean 1/1, drift 0/1",
-        "missing rows or segments: 5 case(s)",
-        "field-shape mismatches: 3 case(s)"
+        "radar: clean 1/1, drift 0/1"
       ],
       "issues": [
         {
@@ -171,13 +162,13 @@
       "blocker_reasons": [
         "title_track_resolved overall=67.9 pre_2024=65.2",
         "canonical_mv overall=8.6 pre_2024=6.4",
-        "releases.title_track latest 29.1% < 95.0%",
-        "release_service_links.youtube_mv latest 10.2% < 80.0%",
+        "releases.title_track latest 75.5% < 95.0%",
+        "release_service_links.youtube_mv latest 26.4% < 80.0%",
         "entities.official_youtube latest 75.3% < 100.0%",
         "entities.official_x latest 97.8% < 100.0%",
         "entities.official_instagram latest 98.9% < 100.0%",
-        "releases.title_track recent 0.0% < 85.0%",
-        "release_service_links.youtube_mv recent 0.0% < 55.0%",
+        "releases.title_track recent 68.9% < 85.0%",
+        "release_service_links.youtube_mv recent 1.8% < 55.0%",
         "entities.official_youtube recent 72.2% < 95.0%"
       ],
       "summary_lines": [
@@ -193,7 +184,7 @@
         "release-detail null review queue: 1754 rows",
         "historical catalog cutover gate: fail",
         "migration_priority_slice rows=18/18 title_track=100 canonical_mv=100 gate=pass",
-        "critical null coverage gate=fail score=70.8"
+        "critical null coverage gate=fail score=81.8"
       ],
       "issues": [
         {
@@ -381,10 +372,10 @@
   ],
   "runtime_details": {
     "projection_freshness": {
-      "status": "fail",
+      "status": "needs_review",
       "observed": {
-        "projection_generated_at": "2026-03-11T07:53:57.809Z",
-        "lag_minutes": 265.33
+        "projection_generated_at": "2026-03-11T16:14:21.898Z",
+        "lag_minutes": 35.77
       },
       "thresholds": {
         "passLagMinutes": 20,
@@ -392,20 +383,21 @@
       }
     },
     "worker_cadence": {
-      "status": "fail",
+      "status": "needs_review",
       "observed": {
         "primary_path_key": "daily_upcoming",
         "cadence_label": "daily",
         "scheduled_failure_rate": null,
         "last_success_age_hours": null,
         "scheduled_runs": 0,
-        "cadence_status": "scheduled_evidence_missing",
+        "cadence_status": "warming_up",
         "scheduled_evidence": {
-          "status": "scheduled_evidence_missing",
-          "reason": "Expected scheduled run windows have elapsed without a recorded scheduled sample.",
+          "status": "warming_up",
+          "reason": "Workflow schedule is configured, but the first scheduled sample window is still in warm-up.",
           "cadence_label": "daily",
           "workflow_created_at": "2026-03-06T07:34:09.000Z",
-          "workflow_updated_at": "2026-03-11T09:25:55.000Z",
+          "workflow_updated_at": "2026-03-11T13:45:16.000Z",
+          "schedule_reference_at": "2026-03-11T13:45:16.000Z",
           "workflow_state": "active",
           "workflow_html_url": "https://github.com/iAmSomething/idol-song-app/blob/main/.github/workflows/weekly-kpop-scan.yml",
           "parsed_schedule": {
@@ -414,12 +406,12 @@
             "hour": 0
           },
           "warmup_grace_hours": 12,
-          "first_expected_run_at": "2026-03-07T00:00:00.000Z",
+          "first_expected_run_at": "2026-03-12T00:00:00.000Z",
           "next_expected_run_at": "2026-03-12T00:00:00.000Z",
-          "warmup_deadline_at": "2026-03-07T12:00:00.000Z",
-          "expected_scheduled_runs_by_now": 5,
+          "warmup_deadline_at": "2026-03-12T12:00:00.000Z",
+          "expected_scheduled_runs_by_now": 0,
           "observed_scheduled_runs": 0,
-          "missed_scheduled_windows": 5
+          "missed_scheduled_windows": 0
         }
       },
       "thresholds": {
@@ -434,118 +426,17 @@
       "web_cutover_to_json_demotion": "fail"
     },
     "worker_cadence_summary": [
-      "[primary] daily_upcoming: cadence=daily, status=scheduled_evidence_missing, observed=0, expected_by_now=5, missed_windows=5",
+      "[primary] daily_upcoming: cadence=daily, status=warming_up, first_due=2026-03-12T00:00:00.000Z, deadline=2026-03-12T12:00:00.000Z",
       "[secondary] catalog_enrichment: cadence=weekly, status=warming_up, first_due=2026-03-15T01:00:00.000Z, deadline=2026-03-16T01:00:00.000Z"
     ]
   },
   "deploy_parity_details": {
     "youtube_allowlists": {
-      "role_mismatches_count": 10,
+      "role_mismatches_count": 0,
       "metadata_mismatches_count": 0,
-      "role_mismatches": [
-        {
-          "entity_slug": "chung-ha",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "chuu",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@CHUUOfficial",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "jeon-somi",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "kwon-eunbi",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@KWONEUNBI",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "seventeen",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA",
-              "role": "mv_allowlist"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "tunexx",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@official_TUNEXX",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "xlov",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@XLOV_official",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "yena",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@yena_official",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "yuju",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@YUJUofficial",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "yves",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@YVES_OFFICIAL",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        }
-      ],
+      "role_mismatches": [],
       "metadata_mismatches": [],
-      "clean": false
+      "clean": true
     },
     "latest_verified_release_selection": {
       "tracking_mismatches_count": 0,
@@ -555,288 +446,52 @@
       "clean": true
     },
     "title_tracks_and_double_title": {
-      "mismatched_releases_count": 1060,
+      "mismatched_releases_count": 0,
       "source_double_title_releases": 27,
-      "db_double_title_releases": 3,
-      "mismatches": [
-        {
-          "entity_slug": "82major",
-          "release_date": "2023-10-11",
-          "stream": "song",
-          "source_title_tracks": [
-            "Sure Thing"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "82major",
-          "release_date": "2023-10-05",
-          "stream": "song",
-          "source_title_tracks": [
-            "Sure Thing"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2025-08-21",
-          "stream": "song",
-          "source_title_tracks": [
-            "Electric Heart"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2025-03-04",
-          "stream": "song",
-          "source_title_tracks": [
-            "LEGGO"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2024-11-11",
-          "stream": "song",
-          "source_title_tracks": [
-            "You Are My Reason"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2024-12-09",
-          "stream": "song",
-          "source_title_tracks": [
-            "Like a Friend"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "ab6ix",
-          "release_date": "2022-08-24",
-          "stream": "song",
-          "source_title_tracks": [
-            "CHANCE"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "ab6ix",
-          "release_date": "2023-05-10",
-          "stream": "song",
-          "source_title_tracks": [
-            "Fly Away"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "ab6ix",
-          "release_date": "2020-11-02",
-          "stream": "album",
-          "source_title_tracks": [
-            "SALUTE"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "ab6ix",
-          "release_date": "2023-11-24",
-          "stream": "song",
-          "source_title_tracks": [
-            "SIREN"
-          ],
-          "db_title_tracks": []
-        }
-      ],
-      "clean": false
+      "db_double_title_releases": 27,
+      "mismatches": [],
+      "clean": true
     },
     "release_service_links": {
-      "mismatched_release_services_count": 124,
-      "mismatches": [
-        {
-          "entity_slug": "82major",
-          "release_date": "2024-11-15",
-          "stream": "album",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_k1sIbCSXn34yi3_k1kdbhE3r24-du98ic",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2025-03-04",
-          "stream": "song",
-          "service_type": "youtube_mv",
-          "source": {
-            "url": "https://www.youtube.com/watch?v=li5H5D3Jd70",
-            "status": "manual_override",
-            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
-          },
-          "db": {
-            "url": null,
-            "status": "unresolved",
-            "provenance": "releaseHistory.placeholder_seed"
-          }
-        },
-        {
-          "entity_slug": "aespa",
-          "release_date": "2025-06-27",
-          "stream": "song",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_lylo1HjXQ3etth1Y_2psaHbhoyeNA49_w",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "aespa",
-          "release_date": "2025-06-27",
-          "stream": "song",
-          "service_type": "youtube_mv",
-          "source": {
-            "url": "https://www.youtube.com/watch?v=M2WTUoy4y6E",
-            "status": "manual_override",
-            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
-          },
-          "db": {
-            "url": null,
-            "status": "unresolved",
-            "provenance": "releaseHistory.placeholder_seed"
-          }
-        },
-        {
-          "entity_slug": "aespa",
-          "release_date": "2021-10-05",
-          "stream": "album",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_mAsOG3O5d13B9gcJ0_4JcpqbVlQKNyYzQ",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "aespa",
-          "release_date": "2024-10-09",
-          "stream": "song",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_mxuhlhhzPFDf4XF9zXA_fXmJQN8tqCUe4",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "ateez",
-          "release_date": "2025-06-13",
-          "stream": "album",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_lQnb6fzlcjYIWuQsQkVX-UucviuRkoyfE",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "blackpink",
-          "release_date": "2026-02-26",
-          "stream": "album",
-          "service_type": "youtube_music",
-          "source": null,
-          "db": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
-            "status": "manual_override",
-            "provenance": "ytmusicapi exact album search match"
-          }
-        },
-        {
-          "entity_slug": "blackpink",
-          "release_date": "2026-02-26",
-          "stream": "album",
-          "service_type": "youtube_mv",
-          "source": null,
-          "db": {
-            "url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
-            "status": "manual_override",
-            "provenance": "official artist channel watch URL"
-          }
-        },
-        {
-          "entity_slug": "blackpink",
-          "release_date": "2022-07-29",
-          "stream": "song",
-          "service_type": "youtube_mv",
-          "source": {
-            "url": "https://www.youtube.com/watch?v=GDWX-3kV6do",
-            "status": "relation_match",
-            "provenance": "musicbrainz.release_group_release.url_relation"
-          },
-          "db": {
-            "url": null,
-            "status": "unresolved",
-            "provenance": "releaseHistory.placeholder_seed"
-          }
-        }
-      ],
-      "clean": false
+      "mismatched_release_services_count": 0,
+      "mismatches": [],
+      "clean": true
     },
     "review_required_counts": {
       "source_review_type_counts": {
         "upcoming_signal": 64,
         "entity_onboarding": 3,
-        "mv_candidate": 1657
+        "mv_candidate": 1616
       },
       "db_review_type_counts": {
         "entity_onboarding": 3,
-        "mv_candidate": 39,
+        "mv_candidate": 1616,
         "upcoming_signal": 64
       },
+      "source_release_scope_review_type_counts": {
+        "mv_candidate": 1616
+      },
+      "db_release_scope_review_type_counts": {
+        "mv_candidate": 1616
+      },
       "source_youtube_mv_status_counts": {
-        "unresolved": 1655,
-        "manual_override": 91,
+        "unresolved": 1614,
+        "manual_override": 133,
         "relation_match": 21,
         "needs_review": 2,
         "no_mv": 1
       },
       "db_youtube_mv_status_counts": {
-        "unresolved": 1742,
-        "manual_override": 26,
-        "relation_match": 1,
-        "needs_review": 2
+        "unresolved": 1614,
+        "manual_override": 133,
+        "relation_match": 21,
+        "needs_review": 2,
+        "no_mv": 1
       },
-      "review_type_counts_match": false,
-      "youtube_mv_status_counts_match": false,
-      "clean": false
+      "review_type_counts_match": true,
+      "release_scope_review_type_counts_match": true,
+      "youtube_mv_status_counts_match": true,
+      "clean": true
     }
   },
   "catalog_completeness_details": {
@@ -934,16 +589,16 @@
       {
         "field_family_key": "release_service_links.youtube_mv",
         "field_label": "YouTube MV Canonical Link",
-        "populated_records": 27,
-        "unresolved_records": 1744,
-        "effective_coverage_percent": 1.5
+        "populated_records": 154,
+        "unresolved_records": 1617,
+        "effective_coverage_percent": 8.7
       },
       {
         "field_family_key": "releases.title_track",
         "field_label": "Title Track Resolution",
-        "populated_records": 77,
-        "unresolved_records": 1694,
-        "effective_coverage_percent": 4.3
+        "populated_records": 1196,
+        "unresolved_records": 575,
+        "effective_coverage_percent": 67.5
       },
       {
         "field_family_key": "entities.official_youtube",
@@ -968,19 +623,14 @@
       }
     ]
   },
-  "runtime_facing_duplicate_artifacts": [
-    "build_release_details_musicbrainz 2.py",
-    "web/src/data/artistProfiles 2.json",
-    "web/src/data/releaseArtwork 2.json",
-    "web/src/data/releaseDetails 2.json"
-  ],
+  "runtime_facing_duplicate_artifacts": [],
   "summary_lines": [
     "parent issue #529 audit status: audit_complete",
-    "current readiness score: 56.3% (fail)",
+    "current readiness score: 85.5% (fail)",
     "baseline deltas: latest release drift 3 -> 0, title-track 64.5% -> 67.8%, canonical MV 6.3% -> 8.6%",
     "allowlist progress: mv_source_channels 0/117 -> 92/117",
-    "entity metadata unchanged: debut_year 8/117, representative_image 0/117",
-    "runtime-facing duplicate artifacts still present: 4",
+    "entity metadata unchanged: debut_year 8/117, representative_image 77/117",
+    "runtime-facing duplicate artifacts still present: 0",
     "direct blocker follow-ups: #600 backend runtime health, #601 web backend-only stability, #602 backend deploy parity, #603 catalog completeness"
   ]
 }

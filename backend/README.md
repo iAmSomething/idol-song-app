@@ -13,6 +13,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 - `docs/specs/backend/backend-secret-inventory-and-rotation.md`
 - `docs/specs/backend/canonical-null-hygiene-operating-model.md`
 - `docs/specs/backend/trusted-upcoming-notification-events.md`
+- `docs/specs/backend/runtime-artifact-retention-policy.md`
 
 현재 포함 범위:
 
@@ -28,6 +29,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
   - backup / restore recovery drill artifact
   - secret rotation tabletop artifact
   - canonical entity metadata / asset coverage audit artifact
+  - runtime-facing duplicate artifact inventory / retention audit artifact
 - `sql/migrations/`
   - Neon canonical schema + projection read-model migration
 - `sql/README.md`
@@ -108,6 +110,29 @@ python build_canonical_entity_metadata.py
 python build_release_artwork_catalog.py
 python build_entity_asset_coverage_report.py
 ```
+
+## Runtime Artifact Retention
+
+- policy:
+  - `docs/specs/backend/runtime-artifact-retention-policy.md`
+- machine-readable inventory:
+  - `backend/reports/runtime_artifact_retention_report.json`
+- human-readable summary:
+  - `backend/reports/runtime_artifact_retention_report.md`
+
+예시:
+
+```bash
+cd backend
+npm run artifact:retention
+npm run gap:audit
+```
+
+원칙:
+
+- runtime-facing canonical path 옆에 suffix copy (` 2`, ` 3`, ` 4`)를 두지 않는다.
+- comparison/evidence output은 `docs/assets/distribution/`, `backend/reports/`, `/tmp`로 보낸다.
+- gap audit의 duplicate count는 runtime artifact scanner 결과를 그대로 사용한다.
 
 ## Read API Envelope
 

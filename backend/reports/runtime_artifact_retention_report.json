@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-03-11T18:26:28.738Z",
+  "retention_policy_version": "v1",
+  "scope": {
+    "directories": [
+      ".",
+      "web/src/data"
+    ],
+    "duplicate_suffix_pattern": "* 2.* / * 3.* / * 4.*",
+    "runtime_facing_only": true
+  },
+  "summary_lines": [
+    "runtime-facing canonical groups: 3",
+    "runtime-facing canonical files: 26",
+    "duplicate files detected: 0",
+    "retention status: canonical only"
+  ],
+  "canonical_groups": [
+    {
+      "key": "repo_root_pipeline_scripts",
+      "label": "Repo root pipeline scripts",
+      "canonical_count": 9,
+      "duplicate_count": 0,
+      "canonical_paths": [
+        "build_release_details_musicbrainz.py",
+        "build_manual_review_queue.py",
+        "build_release_change_log.py",
+        "build_release_history_musicbrainz.py",
+        "build_release_rollup_from_history.py",
+        "build_tracking_watchlist.py",
+        "scan_upcoming_candidates.py",
+        "build_canonical_entity_metadata.py",
+        "build_release_artwork_catalog.py"
+      ],
+      "duplicates": [],
+      "archival_rule": "Delete suffix copies from repo root; use docs/assets/distribution or /tmp for comparison outputs."
+    },
+    {
+      "key": "repo_root_runtime_data",
+      "label": "Repo root runtime-facing generated data",
+      "canonical_count": 9,
+      "duplicate_count": 0,
+      "canonical_paths": [
+        "tracking_watchlist.json",
+        "upcoming_release_candidates.json",
+        "manual_review_queue.json",
+        "manual_review_queue.csv",
+        "canonical_entity_metadata.json",
+        "verified_release_history_mb.json",
+        "verified_release_history_mb.csv",
+        "group_latest_release_since_2025-06-01_mb.json",
+        "group_latest_release_since_2025-06-01_mb.csv"
+      ],
+      "duplicates": [],
+      "archival_rule": "Keep one canonical file per artifact; archive dated evidence in docs/assets/distribution."
+    },
+    {
+      "key": "web_runtime_data_exports",
+      "label": "Web runtime data exports",
+      "canonical_count": 8,
+      "duplicate_count": 0,
+      "canonical_paths": [
+        "web/src/data/artistProfiles.json",
+        "web/src/data/releaseArtwork.json",
+        "web/src/data/releaseDetails.json",
+        "web/src/data/releaseHistory.json",
+        "web/src/data/releases.json",
+        "web/src/data/upcomingCandidates.json",
+        "web/src/data/watchlist.json",
+        "web/src/data/youtubeChannelAllowlists.json"
+      ],
+      "duplicates": [],
+      "archival_rule": "Suffix copies are forbidden in web/src/data because import/build paths must stay canonical."
+    }
+  ],
+  "duplicate_inventory": [],
+  "retention_rules": [
+    "Canonical runtime-facing files live only at documented repo-root paths and web/src/data exports.",
+    "Suffix copies are not allowed in runtime-facing directories, even if they are untracked.",
+    "Human review bundles and dated evidence belong in docs/assets/distribution, backend/reports, or /tmp, not beside canonical files.",
+    "Import/build/runtime checks must reference canonical paths only."
+  ]
+}

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { existsSync } from 'node:fs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { buildBackendGapAuditReport, renderBackendGapAuditMarkdown } from './lib/backendGapAudit.mjs';
+import { collectRuntimeArtifactDuplicates } from './lib/runtimeArtifactRetention.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -64,19 +64,6 @@ async function readJson(filePath) {
   return JSON.parse(raw);
 }
 
-function collectRuntimeFacingDuplicateArtifacts() {
-  const candidates = [
-    path.join(REPO_DIR, 'build_release_details_musicbrainz 2.py'),
-    path.join(REPO_DIR, 'web', 'src', 'data', 'artistProfiles 2.json'),
-    path.join(REPO_DIR, 'web', 'src', 'data', 'releaseArtwork 2.json'),
-    path.join(REPO_DIR, 'web', 'src', 'data', 'releaseDetails 2.json'),
-  ];
-
-  return candidates
-    .filter((filePath) => Boolean(filePath) && existsSync(filePath))
-    .map((filePath) => path.relative(REPO_DIR, filePath));
-}
-
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   const [
@@ -88,6 +75,7 @@ async function main() {
     workerCadenceReport,
     allowlistRows,
     artistProfiles,
+    runtimeArtifactDuplicates,
   ] = await Promise.all([
     readJson(options.scorecardPath),
     readJson(options.runtimeGatePath),
@@ -97,6 +85,7 @@ async function main() {
     readJson(options.workerCadencePath),
     readJson(options.allowlistPath),
     readJson(options.artistProfilesPath),
+    collectRuntimeArtifactDuplicates(REPO_DIR),
   ]);
 
   const report = buildBackendGapAuditReport({
@@ -108,7 +97,7 @@ async function main() {
     workerCadenceReport,
     allowlistRows,
     artistProfiles,
-    runtimeFacingDuplicateArtifacts: collectRuntimeFacingDuplicateArtifacts(),
+    runtimeFacingDuplicateArtifacts: runtimeArtifactDuplicates.map((entry) => entry.duplicate_path),
   });
   const markdown = renderBackendGapAuditMarkdown(report);
 
