@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T16:14:21.898Z",
+  "generated_at": "2026-03-11T18:13:46.755Z",
   "row_counts": {
     "entity_search_documents": 117,
     "calendar_month_projection": 216,
@@ -65,17 +65,69 @@
         "entity_type": "solo",
         "display_name": "YENA",
         "canonical_name": "YENA",
+        "field_metadata": {
+          "debut_year": {
+            "value": null,
+            "status": "review_needed",
+            "provenance": "artistProfiles.debut_year.review_needed",
+            "source_url": null,
+            "review_notes": "Debut year is still missing in the canonical entity profile seed."
+          },
+          "official_x": {
+            "value": "https://x.com/YENA_OFFICIAL",
+            "status": "resolved",
+            "provenance": "artistProfiles.official_x_url",
+            "source_url": null,
+            "review_notes": null
+          },
+          "agency_name": {
+            "value": null,
+            "status": "review_needed",
+            "provenance": "artistProfiles.agency.review_needed",
+            "source_url": null,
+            "review_notes": "Agency is still missing in the canonical entity profile seed."
+          },
+          "official_youtube": {
+            "value": "https://www.youtube.com/@yena_official",
+            "status": "resolved",
+            "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
+            "source_url": "https://www.youtube.com/@yena_official",
+            "review_notes": null
+          },
+          "official_instagram": {
+            "value": "https://www.instagram.com/yena.jigumina",
+            "status": "resolved",
+            "provenance": "artistProfiles.official_instagram_url",
+            "source_url": null,
+            "review_notes": null
+          },
+          "representative_image": {
+            "value": null,
+            "status": "review_needed",
+            "provenance": "teamBadgeAssets.badge_image_url.review_needed",
+            "source_url": null,
+            "review_notes": "Representative image has no verified upstream seed yet."
+          }
+        },
         "badge_image_url": null,
         "badge_source_url": null,
         "badge_source_label": null,
         "representative_image_url": null,
-        "representative_image_source": null
+        "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
       },
       "next_upcoming": null,
       "recent_albums": [
         {
           "stream": "album",
-          "artwork": null,
+          "artwork": {
+            "artwork_status": "verified",
+            "is_placeholder": false,
+            "cover_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front",
+            "artwork_provenance": "releaseHistory.releases.source",
+            "artwork_source_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039",
+            "artwork_source_type": "cover_art_archive",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front-250"
+          },
           "release_id": "801052f3-72e8-5b48-b401-1b0aec55a955",
           "release_date": "2025-07-29",
           "release_kind": "ep",
@@ -84,7 +136,15 @@
         },
         {
           "stream": "album",
-          "artwork": null,
+          "artwork": {
+            "artwork_status": "verified",
+            "is_placeholder": false,
+            "cover_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front",
+            "artwork_provenance": "releaseHistory.releases.source",
+            "artwork_source_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65",
+            "artwork_source_type": "cover_art_archive",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front-250"
+          },
           "release_id": "b18e824c-d318-5848-9b08-7341982cca31",
           "release_date": "2024-01-15",
           "release_kind": "ep",
@@ -93,7 +153,15 @@
         },
         {
           "stream": "album",
-          "artwork": null,
+          "artwork": {
+            "artwork_status": "verified",
+            "is_placeholder": false,
+            "cover_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front",
+            "artwork_provenance": "releaseHistory.releases.source",
+            "artwork_source_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13",
+            "artwork_source_type": "cover_art_archive",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front-250"
+          },
           "release_id": "6f634529-e1db-506a-b4fc-f5565b54beb3",
           "release_date": "2022-08-03",
           "release_kind": "ep",
@@ -102,7 +170,15 @@
         },
         {
           "stream": "album",
-          "artwork": null,
+          "artwork": {
+            "artwork_status": "verified",
+            "is_placeholder": false,
+            "cover_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front",
+            "artwork_provenance": "releaseHistory.releases.source",
+            "artwork_source_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c",
+            "artwork_source_type": "cover_art_archive",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front-250"
+          },
           "release_id": "cc26984b-ed23-5e96-9bbd-8364ce7c037b",
           "release_date": "2022-01-17",
           "release_kind": "ep",
@@ -112,7 +188,15 @@
       ],
       "latest_release": {
         "stream": "song",
-        "artwork": null,
+        "artwork": {
+          "artwork_status": "verified",
+          "is_placeholder": false,
+          "cover_image_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c/front",
+          "artwork_provenance": "releaseHistory.releases.source",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c",
+          "artwork_source_type": "cover_art_archive",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c/front-250"
+        },
         "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
         "release_date": "2025-11-26",
         "release_kind": "single",
@@ -150,8 +234,10 @@
         }
       ],
       "youtube_channels": {
-        "mv_allowlist_urls": [],
-        "primary_team_channel_url": null
+        "mv_allowlist_urls": [
+          "https://www.youtube.com/@yena_official"
+        ],
+        "primary_team_channel_url": "https://www.youtube.com/@yena_official"
       },
       "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
     },

@@ -86,9 +86,10 @@ def upsert_release_pipeline_rows(
                 """
                 insert into entities (
                   id, slug, canonical_name, display_name, entity_type, agency_name, debut_year,
+                  badge_image_url, badge_source_url, badge_source_label, badge_kind,
                   representative_image_url, representative_image_source
                 )
-                values (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 on conflict (id) do update set
                   slug = excluded.slug,
                   canonical_name = excluded.canonical_name,
@@ -96,6 +97,10 @@ def upsert_release_pipeline_rows(
                   entity_type = excluded.entity_type,
                   agency_name = excluded.agency_name,
                   debut_year = excluded.debut_year,
+                  badge_image_url = excluded.badge_image_url,
+                  badge_source_url = excluded.badge_source_url,
+                  badge_source_label = excluded.badge_source_label,
+                  badge_kind = excluded.badge_kind,
                   representative_image_url = excluded.representative_image_url,
                   representative_image_source = excluded.representative_image_source,
                   updated_at = now()
@@ -109,10 +114,77 @@ def upsert_release_pipeline_rows(
                         row["entity_type"],
                         row["agency_name"],
                         row["debut_year"],
+                        row["badge_image_url"],
+                        row["badge_source_url"],
+                        row["badge_source_label"],
+                        row["badge_kind"],
                         row["representative_image_url"],
                         row["representative_image_source"],
                     )
                     for row in entity_rows
+                ],
+            )
+
+        official_link_rows = payload["tables"]["entity_official_links"]
+        if official_link_rows:
+            count_operations("entity_official_links", official_link_rows, lambda row: str(row["id"]))
+            cursor.executemany(
+                """
+                insert into entity_official_links (
+                  id, entity_id, link_type, url, is_primary, provenance
+                )
+                values (%s, %s, %s, %s, %s, %s)
+                on conflict (id) do update set
+                  entity_id = excluded.entity_id,
+                  link_type = excluded.link_type,
+                  url = excluded.url,
+                  is_primary = excluded.is_primary,
+                  provenance = excluded.provenance
+                """,
+                [
+                    (
+                        row["id"],
+                        row["entity_id"],
+                        row["link_type"],
+                        row["url"],
+                        row["is_primary"],
+                        row["provenance"],
+                    )
+                    for row in official_link_rows
+                ],
+            )
+
+        entity_metadata_field_rows = payload["tables"]["entity_metadata_fields"]
+        if entity_metadata_field_rows:
+            count_operations("entity_metadata_fields", entity_metadata_field_rows, lambda row: str(row["id"]))
+            cursor.executemany(
+                """
+                insert into entity_metadata_fields (
+                  id, entity_id, field_key, value_json, status, provenance, source_url, review_notes
+                )
+                values (%s, %s, %s, %s, %s, %s, %s, %s)
+                on conflict (id) do update set
+                  entity_id = excluded.entity_id,
+                  field_key = excluded.field_key,
+                  value_json = excluded.value_json,
+                  status = excluded.status,
+                  provenance = excluded.provenance,
+                  source_url = excluded.source_url,
+                  review_notes = excluded.review_notes,
+                  updated_at = now()
+                """,
+                [
+                    (
+                        row["id"],
+                        row["entity_id"],
+                        row["field_key"],
+                        Jsonb(row["value_json"]),
+                        row["status"],
+                        row["provenance"],
+                        row["source_url"],
+                        row["review_notes"],
+                    )
+                    for row in entity_metadata_field_rows
                 ],
             )
 
@@ -220,14 +292,17 @@ def upsert_release_pipeline_rows(
             cursor.executemany(
                 """
                 insert into release_artwork (
-                  release_id, cover_image_url, thumbnail_image_url, artwork_source_type, artwork_source_url
+                  release_id, cover_image_url, thumbnail_image_url, artwork_source_type, artwork_source_url,
+                  artwork_status, artwork_provenance
                 )
-                values (%s, %s, %s, %s, %s)
+                values (%s, %s, %s, %s, %s, %s, %s)
                 on conflict (release_id) do update set
                   cover_image_url = excluded.cover_image_url,
                   thumbnail_image_url = excluded.thumbnail_image_url,
                   artwork_source_type = excluded.artwork_source_type,
                   artwork_source_url = excluded.artwork_source_url,
+                  artwork_status = excluded.artwork_status,
+                  artwork_provenance = excluded.artwork_provenance,
                   updated_at = now()
                 """,
                 [
@@ -237,6 +312,8 @@ def upsert_release_pipeline_rows(
                         row["thumbnail_image_url"],
                         row["artwork_source_type"],
                         row["artwork_source_url"],
+                        row["artwork_status"],
+                        row["artwork_provenance"],
                     )
                     for row in release_artwork_rows
                 ],

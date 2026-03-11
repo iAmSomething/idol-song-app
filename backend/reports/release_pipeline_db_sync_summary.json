@@ -1,13 +1,14 @@
 {
-  "generated_at": "2026-03-11T16:41:51.273282+00:00",
+  "generated_at": "2026-03-11T18:13:37.531229+00:00",
   "source_counts": {
     "artist_profiles": 117,
+    "canonical_entity_metadata": 117,
     "team_badge_assets": 77,
     "youtube_allowlists": 117,
     "release_details": 1770,
     "release_history_groups": 116,
     "release_history_rows": 1770,
-    "release_artwork": 117,
+    "release_artwork": 1770,
     "upcoming_candidates": 71,
     "watchlist": 108,
     "release_detail_overrides": 150,
@@ -68,23 +69,28 @@
     "entities": {
       "updated": 117
     },
+    "entity_official_links": {
+      "updated": 429,
+      "inserted": 1
+    },
+    "entity_metadata_fields": {
+      "inserted": 702
+    },
     "youtube_channels": {
-      "updated": 86,
-      "inserted": 10
+      "updated": 96
     },
     "entity_youtube_channels": {
-      "updated": 111,
-      "inserted": 10
+      "updated": 121
     },
     "releases": {
       "updated": 1771
     },
     "release_artwork": {
-      "updated": 117
+      "inserted": 1654,
+      "updated": 116
     },
     "tracks": {
-      "inserted": 7116,
-      "updated": 497
+      "updated": 7613
     },
     "release_service_links": {
       "updated": 5312
@@ -94,20 +100,20 @@
       "updated": 108
     },
     "review_tasks": {
-      "inserted": 1577,
-      "updated": 39
+      "updated": 1616
     },
     "release_link_overrides": {
-      "updated": 75,
-      "inserted": 88
+      "updated": 163
     }
   },
   "db_row_counts": {
     "entities": 117,
+    "entity_official_links": 430,
+    "entity_metadata_fields": 702,
     "youtube_channels": 96,
     "entity_youtube_channels": 121,
     "releases": 1771,
-    "release_artwork": 117,
+    "release_artwork": 1771,
     "tracks": 7618,
     "release_service_links": 5313,
     "track_service_links": 0,
@@ -145,10 +151,12 @@
   "summary_path": "backend/reports/release_pipeline_db_sync_summary.json",
   "table_source_counts": {
     "entities": 117,
+    "entity_official_links": 430,
+    "entity_metadata_fields": 702,
     "youtube_channels": 96,
     "entity_youtube_channels": 121,
     "releases": 1771,
-    "release_artwork": 117,
+    "release_artwork": 1770,
     "tracks": 7613,
     "release_service_links": 5312,
     "track_service_links": 0,

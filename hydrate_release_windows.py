@@ -637,6 +637,8 @@ def build_artwork_row(group: str, release: dict[str, Any], stream: str) -> dict[
         "thumbnail_image_url": f"{artwork_source_url}/front-250",
         "artwork_source_type": "cover_art_archive",
         "artwork_source_url": artwork_source_url,
+        "artwork_status": "verified",
+        "artwork_provenance": "group_latest_release_since_2025-06-01_mb.source",
     }
 
 

@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parent
 BACKEND_REPORTS_DIR = ROOT / "backend" / "reports"
 DEFAULT_SUMMARY_PATH = BACKEND_REPORTS_DIR / "json_to_neon_import_summary.json"
 ARTIST_PROFILES_PATH = ROOT / "web" / "src" / "data" / "artistProfiles.json"
+CANONICAL_ENTITY_METADATA_PATH = ROOT / "canonical_entity_metadata.json"
 TEAM_BADGE_ASSETS_PATH = ROOT / "web" / "src" / "data" / "teamBadgeAssets.json"
 YOUTUBE_ALLOWLISTS_PATH = ROOT / "web" / "src" / "data" / "youtubeChannelAllowlists.json"
 RELEASE_DETAILS_PATH = ROOT / "web" / "src" / "data" / "releaseDetails.json"
@@ -41,6 +42,7 @@ TARGET_TABLES = [
     "entities",
     "entity_aliases",
     "entity_official_links",
+    "entity_metadata_fields",
     "youtube_channels",
     "entity_youtube_channels",
     "releases",
@@ -56,6 +58,8 @@ TARGET_TABLES = [
 ]
 RELEASE_PIPELINE_TABLES = [
     "entities",
+    "entity_official_links",
+    "entity_metadata_fields",
     "youtube_channels",
     "entity_youtube_channels",
     "releases",
@@ -149,6 +153,14 @@ def collapse_normalized_text(value: str) -> str:
 
 def normalize_text(value: str) -> str:
     return canonical_normalization.normalize_alias_value(value)
+
+
+def metadata_field_value(field_row: Optional[Dict[str, Any]]) -> Any:
+    if not isinstance(field_row, dict):
+        return None
+    if field_row.get("status") != "resolved":
+        return None
+    return field_row.get("value")
 
 
 def stable_uuid(kind: str, *parts: Any) -> uuid.UUID:
@@ -503,7 +515,7 @@ def build_group_metadata(
 def build_entity_rows(
     artist_profiles: Sequence[Dict[str, Any]],
     team_badge_assets_by_group: Dict[str, Dict[str, Any]],
-    watchlist_by_group: Dict[str, Dict[str, Any]],
+    canonical_entity_metadata_by_group: Dict[str, Dict[str, Any]],
     group_metadata: Dict[str, Dict[str, Optional[str]]],
 ) -> Tuple[List[Dict[str, Any]], Dict[str, uuid.UUID]]:
     entity_rows: List[Dict[str, Any]] = []
@@ -512,9 +524,13 @@ def build_entity_rows(
     for profile in sorted(artist_profiles, key=lambda row: row["group"].casefold()):
         normalized_slug = canonical_normalization.normalize_slug_value(profile["slug"])
         entity_id = stable_uuid("entity", normalized_slug)
-        watchlist_row = watchlist_by_group.get(profile["group"], {})
         metadata = group_metadata.get(profile["group"], {})
         badge_asset = team_badge_assets_by_group.get(profile["group"], {})
+        metadata_row = canonical_entity_metadata_by_group.get(profile["group"], {})
+        field_map = metadata_row.get("fields") or {}
+        agency_field = field_map.get("agency_name") or {}
+        debut_year_field = field_map.get("debut_year") or {}
+        representative_image_field = field_map.get("representative_image") or {}
 
         entity_ids[profile["group"]] = entity_id
         entity_rows.append(
@@ -524,38 +540,14 @@ def build_entity_rows(
                 "canonical_name": profile["group"],
                 "display_name": profile.get("display_name") or profile["group"],
                 "entity_type": infer_entity_type(profile),
-                "agency_name": optional_text(profile.get("agency")),
-                "debut_year": profile.get("debut_year"),
+                "agency_name": optional_text(metadata_field_value(agency_field)),
+                "debut_year": metadata_field_value(debut_year_field),
                 "badge_image_url": normalize_url(badge_asset.get("badge_image_url")),
                 "badge_source_url": normalize_url(badge_asset.get("badge_source_url")),
                 "badge_source_label": optional_text(badge_asset.get("badge_source_label")),
                 "badge_kind": optional_text(badge_asset.get("badge_kind")),
-                "representative_image_url": normalize_url(profile.get("representative_image_url")),
-                "representative_image_source": optional_text(profile.get("representative_image_source")),
-                "x_url": normalize_url(profile.get("official_x_url") or watchlist_row.get("x_url")),
-                "instagram_url": normalize_url(profile.get("official_instagram_url") or watchlist_row.get("instagram_url")),
-                "youtube_url": normalize_url(profile.get("official_youtube_url")),
-                "x_provenance": optional_text(profile.get("official_x_source"))
-                if normalize_url(profile.get("official_x_url")) and optional_text(profile.get("official_x_source"))
-                else "artistProfiles.official_x_url"
-                if normalize_url(profile.get("official_x_url"))
-                else "watchlist.x_url"
-                if normalize_url(watchlist_row.get("x_url"))
-                else None,
-                "instagram_provenance": optional_text(profile.get("official_instagram_source"))
-                if normalize_url(profile.get("official_instagram_url"))
-                and optional_text(profile.get("official_instagram_source"))
-                else "artistProfiles.official_instagram_url"
-                if normalize_url(profile.get("official_instagram_url"))
-                else "watchlist.instagram_url"
-                if normalize_url(watchlist_row.get("instagram_url"))
-                else None,
-                "youtube_provenance": optional_text(profile.get("official_youtube_source"))
-                if normalize_url(profile.get("official_youtube_url"))
-                and optional_text(profile.get("official_youtube_source"))
-                else "artistProfiles.official_youtube_url"
-                if normalize_url(profile.get("official_youtube_url"))
-                else None,
+                "representative_image_url": normalize_url(metadata_field_value(representative_image_field)),
+                "representative_image_source": optional_text(representative_image_field.get("provenance")),
                 "artist_source_url": metadata.get("artist_source"),
             }
         )
@@ -601,48 +593,81 @@ def build_alias_rows(
     return alias_rows
 
 
+def build_entity_metadata_field_rows(
+    canonical_entity_metadata_rows: Sequence[Dict[str, Any]],
+    entity_ids: Dict[str, uuid.UUID],
+) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    for metadata_row in sorted(canonical_entity_metadata_rows, key=lambda row: row["group"].casefold()):
+        entity_id = entity_ids[metadata_row["group"]]
+        field_map = metadata_row.get("fields") or {}
+        for field_key in sorted(field_map):
+            field = field_map[field_key]
+            rows.append(
+                {
+                    "id": stable_uuid("entity-metadata-field", entity_id, field_key),
+                    "entity_id": entity_id,
+                    "field_key": field_key,
+                    "value_json": field.get("value"),
+                    "status": optional_text(field.get("status")) or "review_needed",
+                    "provenance": optional_text(field.get("provenance")) or "canonicalEntityMetadata.missing",
+                    "source_url": normalize_url(field.get("source_url")),
+                    "review_notes": optional_text(field.get("review_notes")),
+                }
+            )
+
+    return rows
+
+
 def build_official_link_rows(
-    entity_rows: Sequence[Dict[str, Any]],
-    watchlist_by_group: Dict[str, Dict[str, Any]],
-    youtube_allowlists_by_group: Dict[str, Dict[str, Any]],
+    canonical_entity_metadata_rows: Sequence[Dict[str, Any]],
+    entity_ids: Dict[str, uuid.UUID],
+    group_metadata: Dict[str, Dict[str, Optional[str]]],
     summary: Dict[str, Any],
 ) -> List[Dict[str, Any]]:
     priority = {
-        "artistProfiles.official_youtube_url": 0,
+        "artistSocialsStructured.x_url.wikidata_direct": 0,
+        "artistSocialsStructured.instagram_url.wikidata_direct": 0,
         "youtubeChannelAllowlists.primary_team_channel_url": 1,
         "artistProfiles.official_x_url": 0,
-        "watchlist.x_url": 1,
+        "artistSocialsStructured.x_url.manual_verified": 1,
         "artistProfiles.official_instagram_url": 0,
-        "watchlist.instagram_url": 1,
+        "artistSocialsStructured.instagram_url.manual_verified": 1,
         "releaseHistory.artist_source": 0,
     }
     seen_keys: Dict[Tuple[uuid.UUID, str, str], int] = {}
     official_link_rows: List[Dict[str, Any]] = []
 
-    for entity in entity_rows:
-        group = entity["canonical_name"]
+    for metadata_row in sorted(canonical_entity_metadata_rows, key=lambda row: row["group"].casefold()):
+        group = metadata_row["group"]
+        entity_id = entity_ids[group]
+        field_map = metadata_row.get("fields") or {}
+        group_row = group_metadata.get(group, {})
         candidates = []
-        if entity["youtube_url"]:
-            candidates.append(("youtube", entity["youtube_url"], entity["youtube_provenance"] or "artistProfiles.official_youtube_url"))
-        else:
-            primary_channel = normalize_url((youtube_allowlists_by_group.get(group) or {}).get("primary_team_channel_url"))
-            if primary_channel:
-                candidates.append(("youtube", primary_channel, "youtubeChannelAllowlists.primary_team_channel_url"))
 
-        if entity["x_url"]:
-            candidates.append(("x", entity["x_url"], entity["x_provenance"] or "watchlist.x_url"))
+        youtube_value = normalize_url(metadata_field_value(field_map.get("official_youtube")))
+        youtube_provenance = optional_text((field_map.get("official_youtube") or {}).get("provenance"))
+        if youtube_value:
+            candidates.append(("youtube", youtube_value, youtube_provenance or "artistProfiles.official_youtube_url"))
 
-        if entity["instagram_url"]:
-            candidates.append(("instagram", entity["instagram_url"], entity["instagram_provenance"] or "watchlist.instagram_url"))
+        x_value = normalize_url(metadata_field_value(field_map.get("official_x")))
+        x_provenance = optional_text((field_map.get("official_x") or {}).get("provenance"))
+        if x_value:
+            candidates.append(("x", x_value, x_provenance or "artistProfiles.official_x_url"))
 
-        if entity["artist_source_url"]:
-            candidates.append(("artist_source", entity["artist_source_url"], "releaseHistory.artist_source"))
+        instagram_value = normalize_url(metadata_field_value(field_map.get("official_instagram")))
+        instagram_provenance = optional_text((field_map.get("official_instagram") or {}).get("provenance"))
+        if instagram_value:
+            candidates.append(("instagram", instagram_value, instagram_provenance or "artistProfiles.official_instagram_url"))
+
+        if group_row.get("artist_source"):
+            candidates.append(("artist_source", group_row["artist_source"], "releaseHistory.artist_source"))
 
         for link_type, url, provenance in candidates:
-            key = (entity["id"], link_type, url)
+            key = (entity_id, link_type, url)
             row = {
-                "id": stable_uuid("official-link", entity["id"], link_type, url),
-                "entity_id": entity["id"],
+                "id": stable_uuid("official-link", entity_id, link_type, url),
+                "entity_id": entity_id,
                 "link_type": link_type,
                 "url": url,
                 "is_primary": True,
@@ -907,13 +932,32 @@ def build_release_artwork_rows(
             summary["source_duplicates"]["release_artwork"] += 1
             continue
         seen_release_ids.add(release_id)
+        cover_image_url = normalize_url(artwork.get("cover_image_url"))
+        thumbnail_image_url = normalize_url(artwork.get("thumbnail_image_url"))
+        artwork_source_type = optional_text(artwork.get("artwork_source_type"))
+        artwork_source_url = normalize_url(artwork.get("artwork_source_url"))
+        artwork_status = optional_text(artwork.get("artwork_status"))
+        if artwork_status is None:
+            if artwork_source_type == "placeholder":
+                artwork_status = "placeholder"
+            elif cover_image_url or thumbnail_image_url:
+                artwork_status = "verified"
+            else:
+                artwork_status = "unresolved"
+        artwork_provenance = optional_text(artwork.get("artwork_provenance"))
+        if artwork_provenance is None:
+            artwork_provenance = (
+                f"releaseArtwork.{artwork_source_type}" if artwork_source_type else "releaseArtwork.legacy_row"
+            )
         rows.append(
             {
                 "release_id": release_id,
-                "cover_image_url": normalize_url(artwork.get("cover_image_url")),
-                "thumbnail_image_url": normalize_url(artwork.get("thumbnail_image_url")),
-                "artwork_source_type": optional_text(artwork.get("artwork_source_type")),
-                "artwork_source_url": normalize_url(artwork.get("artwork_source_url")),
+                "cover_image_url": cover_image_url,
+                "thumbnail_image_url": thumbnail_image_url,
+                "artwork_source_type": artwork_source_type,
+                "artwork_source_url": artwork_source_url,
+                "artwork_status": artwork_status,
+                "artwork_provenance": artwork_provenance,
             }
         )
     return rows
@@ -1397,6 +1441,7 @@ def compare_rollup_release_refs(
 
 def build_import_payload() -> Dict[str, Any]:
     artist_profiles = load_json(ARTIST_PROFILES_PATH)
+    canonical_entity_metadata = load_json(CANONICAL_ENTITY_METADATA_PATH)
     team_badge_assets = load_json(TEAM_BADGE_ASSETS_PATH)
     youtube_allowlists = load_json(YOUTUBE_ALLOWLISTS_PATH)
     release_details = load_json(RELEASE_DETAILS_PATH)
@@ -1410,14 +1455,15 @@ def build_import_payload() -> Dict[str, Any]:
     releases_rollup = load_json(RELEASES_ROLLUP_PATH)
 
     watchlist_by_group = {row["group"]: row for row in watchlist}
+    canonical_entity_metadata_by_group = {row["group"]: row for row in canonical_entity_metadata}
     team_badge_assets_by_group = {row["group"]: row for row in team_badge_assets if optional_text(row.get("group"))}
-    youtube_allowlists_by_group = {row["group"]: row for row in youtube_allowlists}
     group_metadata = build_group_metadata(release_history, releases_rollup)
 
     summary = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source_counts": {
             "artist_profiles": len(artist_profiles),
+            "canonical_entity_metadata": len(canonical_entity_metadata),
             "team_badge_assets": len(team_badge_assets),
             "youtube_allowlists": len(youtube_allowlists),
             "release_details": len(release_details),
@@ -1438,9 +1484,15 @@ def build_import_payload() -> Dict[str, Any]:
         "unresolved_review_links": [],
     }
 
-    entity_rows, entity_ids = build_entity_rows(artist_profiles, team_badge_assets_by_group, watchlist_by_group, group_metadata)
+    entity_rows, entity_ids = build_entity_rows(
+        artist_profiles,
+        team_badge_assets_by_group,
+        canonical_entity_metadata_by_group,
+        group_metadata,
+    )
     alias_rows = build_alias_rows(artist_profiles, entity_ids, summary)
-    official_link_rows = build_official_link_rows(entity_rows, watchlist_by_group, youtube_allowlists_by_group, summary)
+    official_link_rows = build_official_link_rows(canonical_entity_metadata, entity_ids, group_metadata, summary)
+    entity_metadata_field_rows = build_entity_metadata_field_rows(canonical_entity_metadata, entity_ids)
     youtube_channel_rows, entity_channel_rows = build_youtube_channel_rows(youtube_allowlists, entity_ids, summary)
     release_candidates = merge_release_candidates(
         release_history,
@@ -1485,6 +1537,7 @@ def build_import_payload() -> Dict[str, Any]:
             "entities": entity_rows,
             "entity_aliases": alias_rows,
             "entity_official_links": official_link_rows,
+            "entity_metadata_fields": entity_metadata_field_rows,
             "youtube_channels": youtube_channel_rows,
             "entity_youtube_channels": entity_channel_rows,
             "releases": release_rows,
@@ -1538,7 +1591,7 @@ def build_upcoming_pipeline_payload() -> Dict[str, Any]:
 def fetch_existing_state(connection: "psycopg.Connection[Any]") -> Dict[str, Any]:
     existing: Dict[str, Any] = {}
     with connection.cursor() as cursor:
-        for table in ["entities", "entity_aliases", "entity_official_links", "youtube_channels", "releases", "tracks", "release_service_links", "review_tasks", "release_link_overrides", "upcoming_signals", "upcoming_signal_sources"]:
+        for table in ["entities", "entity_aliases", "entity_official_links", "entity_metadata_fields", "youtube_channels", "releases", "tracks", "release_service_links", "review_tasks", "release_link_overrides", "upcoming_signals", "upcoming_signal_sources"]:
             cursor.execute(f"select id::text from {table}")
             existing[table] = {row[0] for row in cursor.fetchall()}
 
@@ -1638,6 +1691,9 @@ def upsert_table_rows(
 
     official_link_rows = payload["tables"]["entity_official_links"]
     count_operations("entity_official_links", official_link_rows, lambda row: str(row["id"]))
+
+    entity_metadata_field_rows = payload["tables"]["entity_metadata_fields"]
+    count_operations("entity_metadata_fields", entity_metadata_field_rows, lambda row: str(row["id"]))
 
     youtube_channel_rows = payload["tables"]["youtube_channels"]
     count_operations("youtube_channels", youtube_channel_rows, lambda row: str(row["id"]))
@@ -1793,6 +1849,37 @@ def upsert_table_rows(
 
         cursor.executemany(
             """
+            insert into entity_metadata_fields (
+              id, entity_id, field_key, value_json, status, provenance, source_url, review_notes
+            )
+            values (%s, %s, %s, %s, %s, %s, %s, %s)
+            on conflict (id) do update set
+              entity_id = excluded.entity_id,
+              field_key = excluded.field_key,
+              value_json = excluded.value_json,
+              status = excluded.status,
+              provenance = excluded.provenance,
+              source_url = excluded.source_url,
+              review_notes = excluded.review_notes,
+              updated_at = now()
+            """,
+            [
+                (
+                    row["id"],
+                    row["entity_id"],
+                    row["field_key"],
+                    Jsonb(row["value_json"]),
+                    row["status"],
+                    row["provenance"],
+                    row["source_url"],
+                    row["review_notes"],
+                )
+                for row in entity_metadata_field_rows
+            ],
+        )
+
+        cursor.executemany(
+            """
             insert into youtube_channels (
               id, canonical_channel_url, channel_label, owner_type,
               display_in_team_links, allow_mv_uploads, provenance
@@ -1888,14 +1975,17 @@ def upsert_table_rows(
         cursor.executemany(
             """
             insert into release_artwork (
-              release_id, cover_image_url, thumbnail_image_url, artwork_source_type, artwork_source_url
+              release_id, cover_image_url, thumbnail_image_url, artwork_source_type, artwork_source_url,
+              artwork_status, artwork_provenance
             )
-            values (%s, %s, %s, %s, %s)
+            values (%s, %s, %s, %s, %s, %s, %s)
             on conflict (release_id) do update set
               cover_image_url = excluded.cover_image_url,
               thumbnail_image_url = excluded.thumbnail_image_url,
               artwork_source_type = excluded.artwork_source_type,
               artwork_source_url = excluded.artwork_source_url,
+              artwork_status = excluded.artwork_status,
+              artwork_provenance = excluded.artwork_provenance,
               updated_at = now()
             """,
             [
@@ -1905,6 +1995,8 @@ def upsert_table_rows(
                     row["thumbnail_image_url"],
                     row["artwork_source_type"],
                     row["artwork_source_url"],
+                    row["artwork_status"],
+                    row["artwork_provenance"],
                 )
                 for row in release_artwork_rows
             ],

@@ -52,6 +52,7 @@ type IdentityBlock = {
   badge_kind: string | null;
   representative_image_url: string | null;
   representative_image_source: string | null;
+  field_metadata: Record<string, MetadataFieldSummary>;
 };
 
 type TrackingStateBlock = {
@@ -65,7 +66,17 @@ type ArtworkSummary = {
   thumbnail_image_url: string | null;
   artwork_source_type: string | null;
   artwork_source_url: string | null;
+  artwork_status: string | null;
+  artwork_provenance: string | null;
   is_placeholder: boolean;
+};
+
+type MetadataFieldSummary = {
+  value: unknown;
+  status: string | null;
+  provenance: string | null;
+  source_url: string | null;
+  review_notes: string | null;
 };
 
 type UpcomingSummary = {
@@ -190,9 +201,20 @@ function normalizeArtworkSummary(value: unknown): ArtworkSummary | null {
   const thumbnailImageUrl = asNullableString(value.thumbnail_image_url);
   const artworkSourceType = asNullableString(value.artwork_source_type);
   const artworkSourceUrl = asNullableString(value.artwork_source_url);
-  const isPlaceholder = asNullableBoolean(value.is_placeholder) === true;
+  const artworkStatus = asNullableString(value.artwork_status);
+  const artworkProvenance = asNullableString(value.artwork_provenance);
+  const isPlaceholder =
+    asNullableBoolean(value.is_placeholder) === true || artworkStatus === 'placeholder';
 
-  if (!coverImageUrl && !thumbnailImageUrl && !artworkSourceType && !artworkSourceUrl && !isPlaceholder) {
+  if (
+    !coverImageUrl &&
+    !thumbnailImageUrl &&
+    !artworkSourceType &&
+    !artworkSourceUrl &&
+    !artworkStatus &&
+    !artworkProvenance &&
+    !isPlaceholder
+  ) {
     return null;
   }
 
@@ -201,8 +223,46 @@ function normalizeArtworkSummary(value: unknown): ArtworkSummary | null {
     thumbnail_image_url: thumbnailImageUrl,
     artwork_source_type: artworkSourceType,
     artwork_source_url: artworkSourceUrl,
+    artwork_status: artworkStatus,
+    artwork_provenance: artworkProvenance,
     is_placeholder: isPlaceholder,
   };
+}
+
+function normalizeMetadataFieldSummary(value: unknown): MetadataFieldSummary | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  const hasValue = Object.prototype.hasOwnProperty.call(value, 'value');
+  const status = asNullableString(value.status);
+  const provenance = asNullableString(value.provenance);
+  const sourceUrl = asNullableString(value.source_url);
+  const reviewNotes = asNullableString(value.review_notes);
+
+  if (!hasValue && !status && !provenance && !sourceUrl && !reviewNotes) {
+    return null;
+  }
+
+  return {
+    value: hasValue ? value.value ?? null : null,
+    status,
+    provenance,
+    source_url: sourceUrl,
+    review_notes: reviewNotes,
+  };
+}
+
+function normalizeMetadataFieldMap(value: unknown): Record<string, MetadataFieldSummary> {
+  if (!isRecord(value)) {
+    return {};
+  }
+
+  return Object.fromEntries(
+    Object.entries(value)
+      .map(([key, fieldValue]) => [key, normalizeMetadataFieldSummary(fieldValue)] as const)
+      .filter((entry): entry is [string, MetadataFieldSummary] => entry[1] !== null)
+  );
 }
 
 function normalizeReleaseSummary(value: unknown): ReleaseSummary | null {
@@ -533,6 +593,7 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string): EntityDet
       badge_kind: asNullableString(identityValue.badge_kind),
       representative_image_url: asNullableString(identityValue.representative_image_url),
       representative_image_source: asNullableString(identityValue.representative_image_source),
+      field_metadata: normalizeMetadataFieldMap(identityValue.field_metadata),
     },
     official_links: {
       youtube: officialYoutubeUrl,

@@ -1,0 +1,43 @@
+{
+  "generated_at": null,
+  "entity_metadata": {
+    "entity_count": 117,
+    "field_status_counts": {
+      "official_youtube": {
+        "resolved": 88,
+        "review_needed": 29
+      },
+      "official_x": {
+        "resolved": 110,
+        "review_needed": 7
+      },
+      "official_instagram": {
+        "resolved": 116,
+        "review_needed": 1
+      },
+      "agency_name": {
+        "resolved": 57,
+        "review_needed": 60
+      },
+      "debut_year": {
+        "resolved": 8,
+        "review_needed": 109
+      },
+      "representative_image": {
+        "resolved": 77,
+        "review_needed": 40
+      }
+    }
+  },
+  "release_artwork": {
+    "artwork_rows": 1770,
+    "release_history_rows": 1770,
+    "coverage_ratio": 1.0,
+    "status_counts": {
+      "verified": 1770
+    },
+    "source_type_counts": {
+      "cover_art_archive": 1770
+    }
+  }
+}
