@@ -249,7 +249,7 @@ cloudflared tunnel --url http://127.0.0.1:3213
 규칙:
 
 - tunnel은 임시 QA fallback일 뿐 production/preview deploy 대체가 아니다.
-- sign-off 기본 경로는 `https://api.idol-song-app.example.com` 같은 stable public preview backend다.
+- sign-off 기본 경로는 GitHub Environment `preview`의 `BACKEND_PUBLIC_URL`과 같은 stable public preview backend다.
 - debug metadata에서 `Backend target = Temporary tunnel backend`를 확인해야 한다.
 
 ## Backend Deploy Path
@@ -281,9 +281,12 @@ GitHub Environment baseline:
 - variable: `RAILWAY_SERVICE_ID`
 - variable: `BACKEND_PUBLIC_URL`
 
+preview에서는 `BACKEND_PUBLIC_URL`을 수동 placeholder로 유지하지 않는다. deploy workflow가 Railway provided domain을 resolve한 뒤 preview environment variable을 같은 값으로 다시 써서 smoke / freshness handoff / mobile preview runtime이 모두 같은 stable public URL을 보게 한다.
+
 deploy helper는 아래 스크립트다.
 
 - `backend/scripts/deploy-backend.mjs`
+- `backend/scripts/provision-preview-backend-url.mjs`
 - `backend/scripts/run-live-smoke-checks.mjs`
 - `backend/scripts/verify-deploy-env-contract.ts`
 - `backend/fixtures/live_backend_smoke_fixtures.json`

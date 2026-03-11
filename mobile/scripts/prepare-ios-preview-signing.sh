@@ -66,6 +66,7 @@ Prepared iOS signing override:
 Next steps:
   export EXPO_IOS_APPLE_TEAM_ID=$TEAM_ID
   export EXPO_IOS_BUNDLE_IDENTIFIER=$BUNDLE_ID
-  EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run config:preview
-  EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:ios:sim
+  export EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env preview --repo iAmSomething/idol-song-app)"
+  npm run config:preview
+  npm run qa:preview:ios:sim
 EOF
