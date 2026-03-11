@@ -245,6 +245,72 @@ function normalizeReleaseSummaryArray(value: unknown): ReleaseSummary[] {
     .filter((item): item is ReleaseSummary => item !== null);
 }
 
+function normalizeComparableTitle(value: string | null): string {
+  return (value ?? '')
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function getReleaseSummarySortScore(release: ReleaseSummary): number {
+  let score = 0;
+
+  if (release.release_kind) {
+    score += 4;
+  }
+
+  if (release.release_format) {
+    score += 2;
+  }
+
+  if (release.artwork?.is_placeholder === false && (release.artwork.cover_image_url || release.artwork.thumbnail_image_url)) {
+    score += 1;
+  }
+
+  return score;
+}
+
+function dedupeRecentAlbumSummaries(releases: ReleaseSummary[]): ReleaseSummary[] {
+  const deduped: ReleaseSummary[] = [];
+
+  for (const release of releases) {
+    const releaseTitle = normalizeComparableTitle(release.release_title);
+    const releaseTime = Date.parse(`${release.release_date}T00:00:00Z`);
+
+    const duplicateIndex = deduped.findIndex((existing) => {
+      if (normalizeComparableTitle(existing.release_title) !== releaseTitle) {
+        return false;
+      }
+
+      const existingTime = Date.parse(`${existing.release_date}T00:00:00Z`);
+      if (!Number.isFinite(releaseTime) || !Number.isFinite(existingTime)) {
+        return false;
+      }
+
+      return Math.abs(releaseTime - existingTime) <= 7 * 24 * 60 * 60 * 1000;
+    });
+
+    if (duplicateIndex === -1) {
+      deduped.push(release);
+      continue;
+    }
+
+    const existing = deduped[duplicateIndex];
+    const existingScore = getReleaseSummarySortScore(existing);
+    const releaseScore = getReleaseSummarySortScore(release);
+
+    if (
+      releaseScore > existingScore ||
+      (releaseScore === existingScore && release.release_date > existing.release_date)
+    ) {
+      deduped[duplicateIndex] = release;
+    }
+  }
+
+  return deduped;
+}
+
 function extractRepresentativeSongTitle(tracks: unknown): string | null {
   if (!Array.isArray(tracks)) {
     return null;
@@ -404,6 +470,22 @@ function normalizeUpcomingSummary(value: unknown): UpcomingSummary | null {
   };
 }
 
+function normalizeTrackingStateForSurface(tier: string | null, watchReason: string | null, trackingStatus: string | null): TrackingStateBlock {
+  if (tier === 'longtail' && trackingStatus === 'watch_only') {
+    return {
+      tier: 'tracked',
+      watch_reason: watchReason === 'manual_watch' ? null : watchReason,
+      tracking_status: trackingStatus,
+    };
+  }
+
+  return {
+    tier,
+    watch_reason: watchReason,
+    tracking_status: trackingStatus,
+  };
+}
+
 function normalizeEntityDetailPayload(payload: unknown, slug: string): EntityDetailPayload | null {
   if (!isRecord(payload)) {
     return null;
@@ -430,6 +512,12 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string): EntityDet
   const mvAllowlistUrls = Array.isArray(youtubeChannels.mv_allowlist_urls)
     ? youtubeChannels.mv_allowlist_urls.filter((value): value is string => typeof value === 'string' && value.length > 0)
     : [];
+  const officialYoutubeUrl = asNullableString(officialLinks.youtube);
+  const normalizedTrackingState = normalizeTrackingStateForSurface(
+    asNullableString(trackingState.tier),
+    asNullableString(trackingState.watch_reason),
+    asNullableString(trackingState.tracking_status),
+  );
 
   return {
     identity: {
@@ -447,22 +535,18 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string): EntityDet
       representative_image_source: asNullableString(identityValue.representative_image_source),
     },
     official_links: {
-      youtube: asNullableString(officialLinks.youtube),
+      youtube: officialYoutubeUrl,
       x: asNullableString(officialLinks.x),
       instagram: asNullableString(officialLinks.instagram),
     },
     youtube_channels: {
-      primary_team_channel_url: asNullableString(youtubeChannels.primary_team_channel_url),
+      primary_team_channel_url: asNullableString(youtubeChannels.primary_team_channel_url) ?? officialYoutubeUrl,
       mv_allowlist_urls: mvAllowlistUrls,
     },
-    tracking_state: {
-      tier: asNullableString(trackingState.tier),
-      watch_reason: asNullableString(trackingState.watch_reason),
-      tracking_status: asNullableString(trackingState.tracking_status),
-    },
+    tracking_state: normalizedTrackingState,
     next_upcoming: normalizeUpcomingSummary(payload.next_upcoming),
     latest_release: normalizeReleaseSummary(payload.latest_release),
-    recent_albums: normalizeReleaseSummaryArray(payload.recent_albums),
+    recent_albums: dedupeRecentAlbumSummaries(normalizeReleaseSummaryArray(payload.recent_albums)),
     source_timeline: normalizeSourceTimeline(payload.source_timeline),
     artist_source_url: asNullableString(payload.artist_source_url),
   };
