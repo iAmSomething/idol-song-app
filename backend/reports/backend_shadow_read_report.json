@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-11T16:33:32.630Z",
+  "generated_at": "2026-03-11T16:50:07.341Z",
   "clean": true,
   "report_bundle": {
-    "generated_at": "2026-03-11T16:14:23.510Z",
-    "bundle_id": "post-sync-verification-339f67a6e124",
+    "generated_at": "2026-03-11T16:49:34.579Z",
+    "bundle_id": "post-sync-verification-d9c2b4bf0064",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -15,7 +15,7 @@
     "source_reports": {
       "release_pipeline_sync": {
         "path": "reports/release_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-07T07:51:00.028Z",
+        "generated_at": "2026-03-11T16:41:51.273Z",
         "scope": "release_pipeline"
       },
       "upcoming_pipeline_sync": {
@@ -33,17 +33,17 @@
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
-        "generated_at": "2026-03-11T08:30:30.464Z"
+        "generated_at": "2026-03-11T16:49:30.887Z"
       },
       "canonical_null_recheck_queue": {
         "path": "reports/canonical_null_recheck_queue.json",
-        "generated_at": "2026-03-11T08:30:31.766Z",
-        "queue_count": 3762
+        "generated_at": "2026-03-11T16:49:32.745Z",
+        "queue_count": 2516
       },
       "null_coverage_trend": {
         "path": "reports/null_coverage_trend_report.json",
-        "generated_at": "2026-03-11T08:30:32.119Z",
-        "baseline_available": false
+        "generated_at": "2026-03-11T16:49:33.810Z",
+        "baseline_available": true
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
@@ -79,7 +79,7 @@
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-339f67a6e124",
+      "bundle id: post-sync-verification-d9c2b4bf0064",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -87,9 +87,9 @@
   },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": "post-sync-verification-339f67a6e124",
+    "expected_bundle_id": "post-sync-verification-d9c2b4bf0064",
     "observed": {
-      "parity_bundle": "post-sync-verification-339f67a6e124",
+      "parity_bundle": "post-sync-verification-d9c2b4bf0064",
       "shadow_bundle": null,
       "runtime_gate_bundle": null,
       "historical_coverage_generated_at": null,
@@ -101,18 +101,18 @@
   "linked_parity_report": {
     "exists": true,
     "path": "backend/reports/backend_json_parity_report.json",
-    "clean": false,
-    "generated_at": "2026-03-11T16:15:16.837750+00:00",
-    "bundle_id": "post-sync-verification-339f67a6e124",
+    "clean": true,
+    "generated_at": "2026-03-11T16:49:54.281934+00:00",
+    "bundle_id": "post-sync-verification-d9c2b4bf0064",
     "summary_lines": [
       "entity alias/search coverage: clean (mismatched entities=0)",
       "official links: clean (mismatched entities=0)",
-      "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
+      "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
       "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
       "upcoming counts / nearest: clean (month bucket mismatches=0)",
-      "title-track / double-title: drift (mismatched releases=1120)",
-      "YouTube Music / MV service-link state: drift (mismatched releases=165)",
-      "review-required counts: drift (review_type_counts_match=False, youtube_mv_status_counts_match=False)"
+      "title-track / double-title: clean (mismatched releases=0)",
+      "YouTube Music / MV service-link state: clean (mismatched releases=0)",
+      "review-required counts (release scope): clean (mv_candidate_count_match=True, youtube_mv_status_counts_match=True)"
     ]
   },
   "self_check": {
@@ -248,8 +248,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-c96719c5-7711-4565-a01c-bce7dcb8a07e",
-      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-c96719c5-7711-4565-a01c-bce7dcb8a07e"
+      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-93bca46b-c9a8-4643-9e1e-d4650033f477",
+      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-93bca46b-c9a8-4643-9e1e-d4650033f477"
     },
     {
       "surface": "search",
@@ -381,8 +381,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-e698e94d-f563-4add-bcc2-946483d9f9d0",
-      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-e698e94d-f563-4add-bcc2-946483d9f9d0"
+      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-3c1b73a6-26bd-4da6-abd2-7be5b5a28bc2",
+      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-3c1b73a6-26bd-4da6-abd2-7be5b5a28bc2"
     },
     {
       "surface": "search",
@@ -514,8 +514,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-984314d3-2efe-4fed-9262-4bab542e86fa",
-      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-984314d3-2efe-4fed-9262-4bab542e86fa"
+      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-a0ea0a06-91e8-4802-9f2d-964388bf1370",
+      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-a0ea0a06-91e8-4802-9f2d-964388bf1370"
     },
     {
       "surface": "search",
@@ -596,8 +596,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-revive-2b-d380fa85-4183-4560-8773-f0271735c0c7",
-      "response_request_id": "shadow--v1-search-q-revive-2b-d380fa85-4183-4560-8773-f0271735c0c7"
+      "request_id_sent": "shadow--v1-search-q-revive-2b-71b78962-1c46-4007-add2-721091f615ca",
+      "response_request_id": "shadow--v1-search-q-revive-2b-71b78962-1c46-4007-add2-721091f615ca"
     },
     {
       "surface": "search",
@@ -678,8 +678,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-eb924484-8b37-4294-b3d7-e9a3cab44406",
-      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-eb924484-8b37-4294-b3d7-e9a3cab44406"
+      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-86364a58-c865-4477-bb87-3fa5c1989069",
+      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-86364a58-c865-4477-bb87-3fa5c1989069"
     },
     {
       "surface": "entity_detail",
@@ -910,8 +910,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-yena-19afe972-2fa0-465d-94a0-540afb4f30b8",
-      "response_request_id": "shadow--v1-entities-yena-19afe972-2fa0-465d-94a0-540afb4f30b8"
+      "request_id_sent": "shadow--v1-entities-yena-5d46cc38-78d4-4704-bf77-fddf7dce7fc0",
+      "response_request_id": "shadow--v1-entities-yena-5d46cc38-78d4-4704-bf77-fddf7dce7fc0"
     },
     {
       "surface": "entity_detail",
@@ -1444,8 +1444,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-blackpink-37cfd0b0-2760-44d7-afe9-c4decefd5b43",
-      "response_request_id": "shadow--v1-entities-blackpink-37cfd0b0-2760-44d7-afe9-c4decefd5b43"
+      "request_id_sent": "shadow--v1-entities-blackpink-7d92ff32-caea-47d1-8b93-138e4430b6a8",
+      "response_request_id": "shadow--v1-entities-blackpink-7d92ff32-caea-47d1-8b93-138e4430b6a8"
     },
     {
       "surface": "entity_detail",
@@ -1750,8 +1750,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-and-team-1b7f49d1-3adb-42d7-a78a-8e85d2ea2ece",
-      "response_request_id": "shadow--v1-entities-and-team-1b7f49d1-3adb-42d7-a78a-8e85d2ea2ece"
+      "request_id_sent": "shadow--v1-entities-and-team-33733eaa-d074-4e2c-b9ca-4e18853ff025",
+      "response_request_id": "shadow--v1-entities-and-team-33733eaa-d074-4e2c-b9ca-4e18853ff025"
     },
     {
       "surface": "entity_detail",
@@ -1873,8 +1873,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-allday-project-3298cc5d-dd7f-4425-91ae-8220f3f2397d",
-      "response_request_id": "shadow--v1-entities-allday-project-3298cc5d-dd7f-4425-91ae-8220f3f2397d"
+      "request_id_sent": "shadow--v1-entities-allday-project-8686d6b9-e2c2-40dc-89f8-9034d90c4c8e",
+      "response_request_id": "shadow--v1-entities-allday-project-8686d6b9-e2c2-40dc-89f8-9034d90c4c8e"
     },
     {
       "surface": "release_detail",
@@ -2067,10 +2067,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-b67ce397-3179-4dfc-a486-df2a90c1e12c",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-b67ce397-3179-4dfc-a486-df2a90c1e12c",
-      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-f751b9da-9f21-4ab8-9640-0fcd04acc8a8",
-      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-f751b9da-9f21-4ab8-9640-0fcd04acc8a8"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-bd0c0305-3059-4f70-8c89-bbd12650e132",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-bd0c0305-3059-4f70-8c89-bbd12650e132",
+      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-7c3c2e5c-b5a9-4ca6-be62-4bfc97367897",
+      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-7c3c2e5c-b5a9-4ca6-be62-4bfc97367897"
     },
     {
       "surface": "release_detail",
@@ -2387,10 +2387,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-e4a48bd4-c023-49b0-ac15-b3fb0cabd565",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-e4a48bd4-c023-49b0-ac15-b3fb0cabd565",
-      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-118a623b-34c6-4924-a3df-f17461ada6c8",
-      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-118a623b-34c6-4924-a3df-f17461ada6c8"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-575dbcd3-2a2c-4400-aa5e-0dacc96f9904",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-575dbcd3-2a2c-4400-aa5e-0dacc96f9904",
+      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-515b5c02-e27e-491d-80d2-44671b65be68",
+      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-515b5c02-e27e-491d-80d2-44671b65be68"
     },
     {
       "surface": "release_detail",
@@ -2536,10 +2536,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-ba4a66b9-5e3d-4de9-9c47-3457c607af85",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-ba4a66b9-5e3d-4de9-9c47-3457c607af85",
-      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-f22081f1-5b7d-4463-a487-a260ce30b82d",
-      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-f22081f1-5b7d-4463-a487-a260ce30b82d"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-75d2161f-edaf-4d20-a927-f78c01a2d4b0",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-75d2161f-edaf-4d20-a927-f78c01a2d4b0",
+      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-ff6569a8-ce64-4707-8e75-42f5008f6050",
+      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-ff6569a8-ce64-4707-8e75-42f5008f6050"
     },
     {
       "surface": "calendar_month",
@@ -3298,8 +3298,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-996eadb1-a83d-4349-bc38-a7de23e293e5",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-03-996eadb1-a83d-4349-bc38-a7de23e293e5"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-89704031-7331-49c6-98a8-f04ed62dc2d3",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-03-89704031-7331-49c6-98a8-f04ed62dc2d3"
     },
     {
       "surface": "calendar_month",
@@ -4202,8 +4202,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-3da61e55-b058-4976-a2c4-540ffb06e8b5",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-04-3da61e55-b058-4976-a2c4-540ffb06e8b5"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-21bf7f25-33fb-416d-a1f2-6dab5bd6dcea",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-04-21bf7f25-33fb-416d-a1f2-6dab5bd6dcea"
     },
     {
       "surface": "calendar_month",
@@ -4958,8 +4958,8 @@
         "scheduled_list": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-92bcf91b-3c91-435d-810d-fd616b18409b",
-      "response_request_id": "shadow--v1-calendar-month-month-2025-10-92bcf91b-3c91-435d-810d-fd616b18409b"
+      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-47b26f83-ef9a-4018-8c73-39e0e0a1c1a0",
+      "response_request_id": "shadow--v1-calendar-month-month-2025-10-47b26f83-ef9a-4018-8c73-39e0e0a1c1a0"
     },
     {
       "surface": "radar",
@@ -6006,8 +6006,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-radar-1391c131-7773-4088-b7e0-b67d3206ad05",
-      "response_request_id": "shadow--v1-radar-1391c131-7773-4088-b7e0-b67d3206ad05"
+      "request_id_sent": "shadow--v1-radar-383606d6-ed83-4dc2-8477-d18f3f94e3e2",
+      "response_request_id": "shadow--v1-radar-383606d6-ed83-4dc2-8477-d18f3f94e3e2"
     }
   ]
 }
