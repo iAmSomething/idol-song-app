@@ -17,6 +17,7 @@ export const MOBILE_COPY = {
     hideSourceTimeline: '소스 타임라인 접기',
     sourceView: '소스 보기',
     teamPage: '팀 페이지',
+    viewOnX: 'X에서 보기',
   },
   feedback: {
     errorTitle: '오류',

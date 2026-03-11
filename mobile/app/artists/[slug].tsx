@@ -46,8 +46,12 @@ import {
 } from '../../src/services/analytics';
 import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
 import {
+  buildEntityCenteredXSearchQuery,
   describeServiceHandoffBehavior,
+  describeXSearchHandoffBehavior,
+  openXSearchHandoff,
   openServiceHandoff,
+  resolveXSearchHandoff,
   resolveServiceHandoff,
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
@@ -399,6 +403,50 @@ export default function ArtistDetailScreen() {
     setHandoffFeedback(null);
   }
 
+  async function handleUpcomingXReaction(team: TeamSummaryModel, event: UpcomingEventModel) {
+    const query = buildEntityCenteredXSearchQuery({
+      displayName: team.displayName,
+      searchTokens: team.searchTokens,
+      releaseLabel: event.releaseLabel,
+    });
+    const handoff = resolveXSearchHandoff(query);
+
+    trackAnalyticsEvent('x_search_handoff_attempted', {
+      surface: 'entity_detail',
+      entitySlug: team.slug,
+      mode: handoff.mode,
+    });
+
+    const result = await runWithPendingRouteResume(currentResumeTarget, () => openXSearchHandoff(handoff));
+    if (!result.ok) {
+      trackAnalyticsEvent('x_search_handoff_failed', {
+        surface: 'entity_detail',
+        entitySlug: team.slug,
+        mode: result.mode,
+        failureCode: result.code,
+        retryable: result.feedback.retryable,
+      });
+      trackFailureObserved(
+        'entity_detail',
+        classifyServiceHandoffFailureCategory(result.code),
+        result.code,
+        result.feedback.retryable,
+      );
+      setHandoffFeedback(result.feedback.message);
+      return;
+    }
+
+    trackAnalyticsEvent(
+      result.target === 'app' ? 'x_search_handoff_opened_app' : 'x_search_handoff_opened_web',
+      {
+        surface: 'entity_detail',
+        entitySlug: team.slug,
+        mode: result.mode,
+      },
+    );
+    setHandoffFeedback(null);
+  }
+
   const screenTitle = snapshot?.team.displayName ?? slug ?? 'Team Detail';
 
   if (!slug) {
@@ -482,6 +530,15 @@ export default function ArtistDetailScreen() {
   const latestReleaseServiceButtons: EntityServiceButtonItem[] = snapshot.latestRelease
     ? buildLatestReleaseServiceButtons(snapshot.latestRelease)
     : [];
+  const nextUpcomingXHandoff = snapshot.nextUpcoming
+    ? resolveXSearchHandoff(
+        buildEntityCenteredXSearchQuery({
+          displayName: snapshot.team.displayName,
+          searchTokens: snapshot.team.searchTokens,
+          releaseLabel: snapshot.nextUpcoming.releaseLabel,
+        }),
+      )
+    : null;
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={scrollContentStyle}>
@@ -613,6 +670,14 @@ export default function ArtistDetailScreen() {
             <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.primaryCardBody}>
               {snapshot.nextUpcoming.headline}
             </Text>
+            <ActionButton
+              accessibilityHint={describeXSearchHandoffBehavior(nextUpcomingXHandoff!)}
+              accessibilityLabel={`${snapshot.team.displayName} X 반응 보기`}
+              label={MOBILE_COPY.action.viewOnX}
+              onPress={() => void handleUpcomingXReaction(snapshot.team, snapshot.nextUpcoming!)}
+              testID="entity-next-upcoming-x-search"
+              tone="secondary"
+            />
             {snapshot.nextUpcoming.sourceUrl ? (
               <Pressable
                 accessibilityLabel={`${snapshot.team.displayName} 다음 컴백 출처 열기`}

@@ -40,7 +40,11 @@ import {
   type CalendarViewMode,
 } from '../../src/features/routeState';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
-import { selectCalendarMonthSnapshot } from '../../src/selectors';
+import {
+  createSelectorContext,
+  selectCalendarMonthSnapshot,
+  selectTeamSummaryBySlug,
+} from '../../src/selectors';
 import {
   MOBILE_COPY,
   resolveSourceLinkLabel,
@@ -60,8 +64,11 @@ import {
   trackFailureObserved,
 } from '../../src/services/analytics';
 import {
+  buildEntityCenteredXSearchQuery,
   describeServiceHandoffBehavior,
+  openXSearchHandoff,
   openServiceHandoff,
+  resolveXSearchHandoff,
   resolveServiceHandoff,
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
@@ -83,6 +90,7 @@ import type { SourceLinkRowItem } from '../../src/components/meta/SourceLinkRow'
 import type {
   CalendarMonthSnapshotModel,
   ReleaseSummaryModel,
+  TeamSummaryModel,
   UpcomingEventModel,
 } from '../../src/types';
 
@@ -253,6 +261,7 @@ export default function CalendarTabScreen() {
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const bundledProfiles = useMemo(() => cloneBundledDatasetFixture().artistProfiles, []);
+  const bundledSelectorContext = useMemo(() => createSelectorContext(cloneBundledDatasetFixture()), []);
   const loadBundledSnapshot = useCallback(async () => {
     const activeDataset = await loadActiveMobileDataset();
     return selectCalendarMonthSnapshot(activeDataset.dataset, activeMonth, todayIsoDate);
@@ -341,6 +350,19 @@ export default function CalendarTabScreen() {
 
     return entries;
   }, [bundledProfiles]);
+  const teamSummaryByGroup = useMemo(() => {
+    const entries = new Map<string, TeamSummaryModel>();
+
+    for (const profile of bundledProfiles) {
+      const team = selectTeamSummaryBySlug(bundledSelectorContext, profile.slug);
+      if (team) {
+        entries.set(profile.group, team);
+        entries.set(profile.slug, team);
+      }
+    }
+
+    return entries;
+  }, [bundledProfiles, bundledSelectorContext]);
 
   useEffect(() => {
     if (!filteredSnapshot) {
@@ -468,6 +490,68 @@ export default function CalendarTabScreen() {
       mode: result.mode,
       target: result.target,
     });
+    setHandoffFeedback(null);
+  }
+
+  function buildUpcomingXSearchQuery(event: UpcomingEventModel): {
+    query: string;
+    mode: 'entity_only' | 'release_backed';
+    entitySlug: string | null;
+  } {
+    const team = teamSummaryByGroup.get(event.group);
+    const query = buildEntityCenteredXSearchQuery({
+      displayName: team?.displayName ?? event.displayGroup,
+      searchTokens: team?.searchTokens ?? [],
+      releaseLabel: event.releaseLabel,
+    });
+
+    return {
+      query: query.query,
+      mode: query.mode,
+      entitySlug: team?.slug ?? groupSlugByGroup.get(event.group) ?? null,
+    };
+  }
+
+  async function handleUpcomingXReactionPress(event: UpcomingEventModel) {
+    const query = buildUpcomingXSearchQuery(event);
+    const handoff = resolveXSearchHandoff({
+      query: query.query,
+      mode: query.mode,
+    });
+
+    trackAnalyticsEvent('x_search_handoff_attempted', {
+      surface: 'calendar',
+      entitySlug: query.entitySlug,
+      mode: handoff.mode,
+    });
+
+    const result = await runWithPendingRouteResume(currentResumeTarget, () => openXSearchHandoff(handoff));
+    if (!result.ok) {
+      trackAnalyticsEvent('x_search_handoff_failed', {
+        surface: 'calendar',
+        entitySlug: query.entitySlug,
+        mode: result.mode,
+        failureCode: result.code,
+        retryable: result.feedback.retryable,
+      });
+      trackFailureObserved(
+        'calendar',
+        classifyServiceHandoffFailureCategory(result.code),
+        result.code,
+        result.feedback.retryable,
+      );
+      setHandoffFeedback(result.feedback.message);
+      return;
+    }
+
+    trackAnalyticsEvent(
+      result.target === 'app' ? 'x_search_handoff_opened_app' : 'x_search_handoff_opened_web',
+      {
+        surface: 'calendar',
+        entitySlug: query.entitySlug,
+        mode: result.mode,
+      },
+    );
     setHandoffFeedback(null);
   }
 
@@ -729,6 +813,11 @@ export default function CalendarTabScreen() {
         label: MOBILE_COPY.action.teamPage,
         onPress: () => openTeamDetailByGroup(event.group),
         testID: `${testPrefix}-primary-${event.id}`,
+      },
+      secondaryAction: {
+        label: MOBILE_COPY.action.viewOnX,
+        onPress: () => void handleUpcomingXReactionPress(event),
+        testID: `${testPrefix}-secondary-${event.id}`,
       },
       scheduledDate: formatUpcomingLabel(event),
       sourceLinks: buildUpcomingSourceLinks(event),

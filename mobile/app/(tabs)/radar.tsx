@@ -36,10 +36,17 @@ import { adaptBackendRadarSnapshot } from '../../src/services/backendDisplayAdap
 import type { BackendReadClient } from '../../src/services/backendReadClient';
 import {
   classifyExternalLinkFailureCategory,
+  classifyServiceHandoffFailureCategory,
   trackAnalyticsEvent,
   trackFailureObserved,
 } from '../../src/services/analytics';
 import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
+import {
+  buildEntityCenteredXSearchQuery,
+  describeXSearchHandoffBehavior,
+  openXSearchHandoff,
+  resolveXSearchHandoff,
+} from '../../src/services/handoff';
 import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
@@ -83,6 +90,17 @@ function formatUpcomingDateLabel(item: RadarUpcomingCardModel): string {
   return formatUpcomingScheduleLabel({
     scheduledDate: item.upcoming.scheduledDate,
     scheduledMonth: item.upcoming.scheduledMonth,
+  });
+}
+
+function buildRadarXSearchQuery(input: {
+  team: TeamSummaryModel;
+  releaseLabel?: string | null;
+}): { query: string; mode: 'entity_only' | 'release_backed' } {
+  return buildEntityCenteredXSearchQuery({
+    displayName: input.team.displayName,
+    searchTokens: input.team.searchTokens,
+    releaseLabel: input.releaseLabel,
   });
 }
 
@@ -464,6 +482,49 @@ export default function RadarTabScreen() {
     setExternalLinkFeedback(null);
   }
 
+  async function handleXReactionOpen(input: {
+    team: TeamSummaryModel;
+    releaseLabel?: string | null;
+  }) {
+    const query = buildRadarXSearchQuery(input);
+    const handoff = resolveXSearchHandoff(query);
+
+    trackAnalyticsEvent('x_search_handoff_attempted', {
+      surface: 'radar',
+      entitySlug: input.team.slug,
+      mode: handoff.mode,
+    });
+
+    const result = await runWithPendingRouteResume(currentResumeTarget, () => openXSearchHandoff(handoff));
+    if (!result.ok) {
+      trackAnalyticsEvent('x_search_handoff_failed', {
+        surface: 'radar',
+        entitySlug: input.team.slug,
+        mode: result.mode,
+        failureCode: result.code,
+        retryable: result.feedback.retryable,
+      });
+      trackFailureObserved(
+        'radar',
+        classifyServiceHandoffFailureCategory(result.code),
+        result.code,
+        result.feedback.retryable,
+      );
+      setExternalLinkFeedback(result.feedback.message);
+      return;
+    }
+
+    trackAnalyticsEvent(
+      result.target === 'app' ? 'x_search_handoff_opened_app' : 'x_search_handoff_opened_web',
+      {
+        surface: 'radar',
+        entitySlug: input.team.slug,
+        mode: result.mode,
+      },
+    );
+    setExternalLinkFeedback(null);
+  }
+
   useEffect(() => {
     if (hasTrackedViewRef.current) {
       return;
@@ -646,6 +707,10 @@ export default function RadarTabScreen() {
         <RadarFeaturedSection
           item={featuredUpcoming}
           onOpenSource={handleSourceOpen}
+          onOpenXSearch={(item) => void handleXReactionOpen({
+            team: item.team,
+            releaseLabel: item.upcoming.releaseLabel,
+          })}
           onPressTeam={openTeamDetail}
           styles={styles}
         />
@@ -658,6 +723,10 @@ export default function RadarTabScreen() {
                 key={item.id}
                 item={item}
                 onOpenSource={handleSourceOpen}
+                onOpenXSearch={(entry) => void handleXReactionOpen({
+                  team: entry.team,
+                  releaseLabel: entry.upcoming.releaseLabel,
+                })}
                 onPressTeam={openTeamDetail}
                 styles={styles}
                 testID={`radar-weekly-card-${item.team.slug}`}
@@ -674,6 +743,10 @@ export default function RadarTabScreen() {
                 key={item.id}
                 item={item}
                 onOpenSource={handleSourceOpen}
+                onOpenXSearch={(entry) => void handleXReactionOpen({
+                  team: entry.team,
+                  releaseLabel: entry.releaseLabel ?? entry.headline,
+                })}
                 onPressTeam={openTeamDetail}
                 styles={styles}
               />
@@ -732,11 +805,13 @@ export default function RadarTabScreen() {
 function RadarFeaturedSection({
   item,
   onOpenSource,
+  onOpenXSearch,
   onPressTeam,
   styles,
 }: {
   item: RadarUpcomingCardModel | null;
   onOpenSource: (url?: string) => void;
+  onOpenXSearch: (item: RadarUpcomingCardModel) => void;
   onPressTeam: (
     slug: string,
     section: 'featured_upcoming' | 'weekly_upcoming' | 'change_feed' | 'long_gap' | 'rookie',
@@ -763,9 +838,18 @@ function RadarFeaturedSection({
           <Text style={styles.featuredMeta}>{formatUpcomingDateLabel(item)}</Text>
         <RadarActionRow
           onOpenSource={() => onOpenSource(item.sourceUrl)}
+          onPressSecondary={() => onOpenXSearch(item)}
           onPressPrimary={() => onPressTeam(item.team.slug, 'featured_upcoming')}
           primaryLabel={MOBILE_COPY.action.teamPage}
           primaryTestID="radar-featured-primary"
+          secondaryAccessibilityHint={describeXSearchHandoffBehavior(
+            resolveXSearchHandoff(buildRadarXSearchQuery({
+              team: item.team,
+              releaseLabel: item.upcoming.releaseLabel,
+            })),
+          )}
+          secondaryLabel={MOBILE_COPY.action.viewOnX}
+          secondaryTestID="radar-featured-x-search"
             sourceLabel={item.sourceLabel}
             sourceTestID="radar-featured-source"
             sourceUrl={item.sourceUrl}
@@ -798,12 +882,14 @@ function RadarSection({
 function RadarUpcomingSectionCard({
   item,
   onOpenSource,
+  onOpenXSearch,
   onPressTeam,
   styles,
   testID,
 }: {
   item: RadarUpcomingCardModel;
   onOpenSource: (url?: string) => void;
+  onOpenXSearch: (item: RadarUpcomingCardModel) => void;
   onPressTeam: (
     slug: string,
     section: 'featured_upcoming' | 'weekly_upcoming' | 'change_feed' | 'long_gap' | 'rookie',
@@ -840,9 +926,18 @@ function RadarUpcomingSectionCard({
         </Text>
         <RadarActionRow
           onOpenSource={() => onOpenSource(item.sourceUrl)}
+          onPressSecondary={() => onOpenXSearch(item)}
           onPressPrimary={() => onPressTeam(item.team.slug, 'weekly_upcoming')}
           primaryLabel={MOBILE_COPY.action.teamPage}
           primaryTestID={`${testID}-primary`}
+          secondaryAccessibilityHint={describeXSearchHandoffBehavior(
+            resolveXSearchHandoff(buildRadarXSearchQuery({
+              team: item.team,
+              releaseLabel: item.upcoming.releaseLabel,
+            })),
+          )}
+          secondaryLabel={MOBILE_COPY.action.viewOnX}
+          secondaryTestID={`${testID}-x-search`}
           sourceLabel={item.sourceLabel}
           sourceTestID={`${testID}-source`}
           sourceUrl={item.sourceUrl}
@@ -856,11 +951,13 @@ function RadarUpcomingSectionCard({
 function RadarChangeFeedCard({
   item,
   onOpenSource,
+  onOpenXSearch,
   onPressTeam,
   styles,
 }: {
   item: RadarChangeFeedItemModel;
   onOpenSource: (url?: string) => void;
+  onOpenXSearch: (item: RadarChangeFeedItemModel) => void;
   onPressTeam: (
     slug: string,
     section: 'featured_upcoming' | 'weekly_upcoming' | 'change_feed' | 'long_gap' | 'rookie',
@@ -892,9 +989,18 @@ function RadarChangeFeedCard({
         <Text style={styles.cardMetaStrong}>새 일정 · {item.nextScheduleLabel}</Text>
         <RadarActionRow
           onOpenSource={() => onOpenSource(item.sourceUrl)}
+          onPressSecondary={() => onOpenXSearch(item)}
           onPressPrimary={() => onPressTeam(item.team.slug, 'change_feed')}
           primaryLabel={MOBILE_COPY.action.teamPage}
           primaryTestID={`radar-change-primary-${item.team.slug}`}
+          secondaryAccessibilityHint={describeXSearchHandoffBehavior(
+            resolveXSearchHandoff(buildRadarXSearchQuery({
+              team: item.team,
+              releaseLabel: item.releaseLabel ?? item.headline,
+            })),
+          )}
+          secondaryLabel={MOBILE_COPY.action.viewOnX}
+          secondaryTestID={`radar-change-x-search-${item.team.slug}`}
           sourceLabel={item.sourceLabel}
           sourceTestID={`radar-change-source-${item.team.slug}`}
           sourceUrl={item.sourceUrl}
@@ -992,8 +1098,12 @@ function RadarRookieCard({
 function RadarActionRow({
   onOpenSource,
   onPressPrimary,
+  onPressSecondary,
   primaryLabel,
   primaryTestID,
+  secondaryAccessibilityHint,
+  secondaryLabel,
+  secondaryTestID,
   sourceLabel,
   sourceTestID,
   sourceUrl,
@@ -1001,8 +1111,12 @@ function RadarActionRow({
 }: {
   onOpenSource?: () => void;
   onPressPrimary: () => void;
+  onPressSecondary?: () => void;
   primaryLabel: string;
   primaryTestID?: string;
+  secondaryAccessibilityHint?: string;
+  secondaryLabel?: string;
+  secondaryTestID?: string;
   sourceLabel?: string;
   sourceTestID?: string;
   sourceUrl?: string;
@@ -1016,6 +1130,16 @@ function RadarActionRow({
         onPress={onPressPrimary}
         testID={primaryTestID}
       />
+      {secondaryLabel && onPressSecondary ? (
+        <ActionButton
+          accessibilityHint={secondaryAccessibilityHint}
+          accessibilityLabel={secondaryLabel}
+          label={secondaryLabel}
+          onPress={onPressSecondary}
+          testID={secondaryTestID}
+          tone="secondary"
+        />
+      ) : null}
       {sourceUrl && sourceLabel && onOpenSource ? (
         <ActionButton
           accessibilityLabel={sourceLabel}

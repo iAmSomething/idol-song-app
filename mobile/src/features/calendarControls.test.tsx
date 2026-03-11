@@ -5,6 +5,7 @@ import { Text } from 'react-native';
 
 import CalendarTabScreen from '../../app/(tabs)/calendar';
 import { trackAnalyticsEvent } from '../services/analytics';
+import { openXSearchHandoff } from '../services/handoff';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../tokens/accessibility';
 
 jest.mock('expo-router', () => {
@@ -54,7 +55,16 @@ jest.mock('../services/analytics', () => {
     trackFailureObserved: jest.fn(),
   };
 });
+jest.mock('../services/handoff', () => {
+  const actual = jest.requireActual('../services/handoff') as typeof import('../services/handoff');
+
+  return {
+    ...actual,
+    openXSearchHandoff: jest.fn(),
+  };
+});
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
+const mockOpenXSearchHandoff = jest.mocked(openXSearchHandoff);
 const mockUseWindowDimensions = jest.spyOn(ReactNative, 'useWindowDimensions');
 
 async function renderCalendarScreen() {
@@ -96,6 +106,13 @@ describe('calendar controls', () => {
     __mock.push.mockReset();
     __mock.setParams.mockReset();
     mockTrackAnalyticsEvent.mockClear();
+    mockOpenXSearchHandoff.mockReset();
+    mockOpenXSearchHandoff.mockResolvedValue({
+      ok: true,
+      mode: 'release_backed',
+      target: 'web',
+      openedUrl: 'https://x.com/search?q=YENA',
+    });
     mockUseWindowDimensions.mockReturnValue({
       fontScale: 1,
       height: 844,
@@ -222,6 +239,12 @@ describe('calendar controls', () => {
       tree.root.findByProps({ testID: 'calendar-day-2026-03-11' }).props.onPress();
     });
 
+    expect(
+      tree.root.findByProps({
+        testID: 'calendar-sheet-upcoming-secondary-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
+      }),
+    ).toBeDefined();
+
     await act(async () => {
       tree.root
         .findByProps({ testID: 'calendar-sheet-release-primary-yena--love-catcher--2026-03-11--album' })
@@ -234,6 +257,11 @@ describe('calendar controls', () => {
           testID: 'calendar-sheet-upcoming-primary-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
         })
         .props.onPress();
+      await tree.root
+        .findByProps({
+          testID: 'calendar-sheet-upcoming-secondary-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
+        })
+        .props.onPress();
     });
 
     expect(__mock.push).toHaveBeenCalledWith({
@@ -244,6 +272,7 @@ describe('calendar controls', () => {
       pathname: '/releases/[id]',
       params: { id: 'yena--love-catcher--2026-03-11--album' },
     });
+    expect(mockOpenXSearchHandoff).toHaveBeenCalled();
   });
 
   test('renders list mode with separated verified, exact, and month-only sections', async () => {

@@ -55,8 +55,12 @@ import {
 } from '../../src/services/analytics';
 import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
 import {
+  buildEntityCenteredXSearchQuery,
   describeServiceHandoffBehavior,
+  describeXSearchHandoffBehavior,
+  openXSearchHandoff,
   openServiceHandoff,
+  resolveXSearchHandoff,
   resolveServiceHandoff,
   type MusicService,
 } from '../../src/services/handoff';
@@ -508,6 +512,25 @@ export default function SearchTabScreen() {
     openTeamDetail(slug);
   }
 
+  function buildUpcomingXSearchQuery(result: SearchUpcomingResultModel): {
+    query: string;
+    mode: 'entity_only' | 'release_backed';
+    entitySlug: string | null;
+  } {
+    const team = teamSummaryByGroup.get(result.upcoming.group);
+    const query = buildEntityCenteredXSearchQuery({
+      displayName: team?.displayName ?? result.upcoming.displayGroup,
+      searchTokens: team?.searchTokens ?? [],
+      releaseLabel: result.upcoming.releaseLabel,
+    });
+
+    return {
+      query: query.query,
+      mode: query.mode,
+      entitySlug: team?.slug ?? teamSlugByGroup.get(result.upcoming.group) ?? null,
+    };
+  }
+
   async function handleUpcomingSourcePress(result: SearchUpcomingResultModel) {
     const opened = await runWithPendingRouteResume(currentResumeTarget, () =>
       openExternalLink(normalizeExternalLinkUrl('source', result.upcoming.sourceUrl)),
@@ -531,6 +554,49 @@ export default function SearchTabScreen() {
       return;
     }
 
+    setHandoffFeedback(null);
+  }
+
+  async function handleUpcomingXReactionPress(result: SearchUpcomingResultModel) {
+    const query = buildUpcomingXSearchQuery(result);
+    const handoff = resolveXSearchHandoff({
+      query: query.query,
+      mode: query.mode,
+    });
+
+    trackAnalyticsEvent('x_search_handoff_attempted', {
+      surface: 'search',
+      entitySlug: query.entitySlug,
+      mode: handoff.mode,
+    });
+
+    const outcome = await runWithPendingRouteResume(currentResumeTarget, () => openXSearchHandoff(handoff));
+    if (!outcome.ok) {
+      trackAnalyticsEvent('x_search_handoff_failed', {
+        surface: 'search',
+        entitySlug: query.entitySlug,
+        mode: outcome.mode,
+        failureCode: outcome.code,
+        retryable: outcome.feedback.retryable,
+      });
+      trackFailureObserved(
+        'search',
+        classifyServiceHandoffFailureCategory(outcome.code),
+        outcome.code,
+        outcome.feedback.retryable,
+      );
+      setHandoffFeedback(outcome.feedback.message);
+      return;
+    }
+
+    trackAnalyticsEvent(
+      outcome.target === 'app' ? 'x_search_handoff_opened_app' : 'x_search_handoff_opened_web',
+      {
+        surface: 'search',
+        entitySlug: query.entitySlug,
+        mode: outcome.mode,
+      },
+    );
     setHandoffFeedback(null);
   }
 
@@ -1037,15 +1103,27 @@ export default function SearchTabScreen() {
                     />
                     <Text style={styles.resultMeta}>{formatUpcomingMeta(result)}</Text>
                   </Pressable>
-                  <View style={styles.resultSupplement}>
-                    <View style={styles.chipRow}>
-                      <View style={styles.resultChip}>
-                        <Text style={styles.resultChipLabel}>{resolveUpcomingMatchLabel(result.matchKind)}</Text>
+                    <View style={styles.resultSupplement}>
+                      <View style={styles.chipRow}>
+                        <View style={styles.resultChip}>
+                          <Text style={styles.resultChipLabel}>{resolveUpcomingMatchLabel(result.matchKind)}</Text>
+                        </View>
                       </View>
-                    </View>
-                    {result.upcoming.sourceUrl ? (
-                      <SourceLinkRow
-                        links={[
+                      <View style={styles.resultActionRow}>
+                        <ActionButton
+                          accessibilityHint={describeXSearchHandoffBehavior(
+                            resolveXSearchHandoff(buildUpcomingXSearchQuery(result)),
+                          )}
+                          accessibilityLabel={`${result.upcoming.displayGroup} X 반응 보기`}
+                          label={MOBILE_COPY.action.viewOnX}
+                          onPress={() => void handleUpcomingXReactionPress(result)}
+                          testID={`search-upcoming-x-search-${result.upcoming.id}`}
+                          tone="secondary"
+                        />
+                      </View>
+                      {result.upcoming.sourceUrl ? (
+                        <SourceLinkRow
+                          links={[
                           {
                             key: `${result.upcoming.id}-source`,
                             label: resolveSourceLinkLabel(result.upcoming.sourceType),
@@ -1207,6 +1285,11 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       opacity: 0.84,
     },
     resultSupplement: {
+      gap: theme.space[8],
+    },
+    resultActionRow: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
       gap: theme.space[8],
     },
     resultChip: {

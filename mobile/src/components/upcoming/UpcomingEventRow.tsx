@@ -17,6 +17,7 @@ export interface UpcomingEventRowProps {
   confidenceChip?: string;
   headline: string;
   primaryAction: { label: string; onPress: () => void; testID?: string };
+  secondaryAction?: { label: string; onPress: () => void; testID?: string };
   scheduledDate?: string;
   sourceLinks?: SourceLinkRowItem[];
   statusChip?: string;
@@ -28,6 +29,7 @@ function UpcomingEventRowComponent({
   confidenceChip,
   headline,
   primaryAction,
+  secondaryAction,
   scheduledDate,
   sourceLinks = [],
   statusChip,
@@ -66,7 +68,10 @@ function UpcomingEventRowComponent({
           </View>
         ) : null}
       </View>
-      <ActionButton {...primaryAction} tone="primary" />
+      <View style={styles.actionColumn}>
+        <ActionButton {...primaryAction} fullWidth tone="primary" />
+        {secondaryAction ? <ActionButton {...secondaryAction} fullWidth tone="secondary" /> : null}
+      </View>
       {sourceLinks.length ? <SourceLinkRow links={sourceLinks} /> : null}
     </View>
   );
@@ -97,6 +102,9 @@ function createStyles(theme: MobileTheme) {
       flexDirection: 'row',
       flexWrap: 'wrap',
       gap: theme.space[4],
+    },
+    actionColumn: {
+      gap: theme.space[8],
     },
   });
 }
