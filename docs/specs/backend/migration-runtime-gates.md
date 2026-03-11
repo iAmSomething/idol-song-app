@@ -29,6 +29,7 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 | API latency / error sample | `backend/reports/read_api_runtime_measurements.json` |
 | worker cadence sample | `backend/reports/worker_cadence_report.json` |
 | projection freshness sample | `backend/reports/projection_refresh_summary.json` |
+| report bundle metadata | `backend/reports/report_bundle_metadata.json` |
 | parity dependency | `backend/reports/backend_json_parity_report.json` |
 | shadow dependency | `backend/reports/backend_shadow_read_report.json` |
 | historical catalog completeness | `backend/reports/historical_release_detail_coverage_report.json` |
@@ -105,22 +106,42 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 
 기준:
 
-- `weekly-kpop-scan.yml` 최근 run sample
+- `daily_upcoming` fast path와 `catalog_enrichment` slow path가 같이 기록된 `worker_cadence_report.json`
+- runtime gate는 `daily_upcoming` path를 freshness primary evidence로 사용
 - scheduled run failure rate
 - last successful scheduled run age
 
 초기 기준:
 
-- `pass`: scheduled failure rate `<= 10%` 그리고 last success age `<= 80시간`
-- `needs_review`: scheduled failure rate `<= 25%` 그리고 last success age `<= 96시간`
+- `pass`: daily fast path scheduled failure rate `<= 10%` 그리고 last success age `<= 30시간`
+- `needs_review`: daily fast path scheduled failure rate `<= 25%` 그리고 last success age `<= 48시간`
 - `fail`: 그 외
 
 해석:
 
-- 현재 제품은 주 3회 scan cadence를 전제로 하므로, 마지막 성공 run이 너무 오래되면 freshness trust가 떨어진다
+- fast path는 daily cadence를 전제로 하므로, 마지막 성공 run이 하루를 크게 넘기면 freshness trust가 떨어진다
+- slow path는 historical enrichment / readiness evidence용으로 separate cadence를 가진다
 - preview에서는 cadence가 production보다 낮아도 되지만, rehearsal 직전에는 같은 순서로 한 번 이상 검증한다
 
-### 5.5 Historical Catalog Completeness
+### 5.5 Report Bundle Consistency
+
+기준:
+
+- `report_bundle_metadata.json`
+- parity / shadow / runtime / readiness artifact에 stamp된 `report_bundle.bundle_id`
+- historical coverage report의 `generated_at`
+
+초기 기준:
+
+- `pass`: derived artifact가 같은 `bundle_id`를 공유하고, historical coverage timestamp도 bundle reference와 일치
+- `fail`: stale artifact 조합, bundle drift, missing bundle metadata
+
+해석:
+
+- runtime/parity/shadow/readiness는 latest file wins가 아니라 같은 bundle metadata를 기준으로 읽는다
+- daily fast path와 slow enrichment path는 각각 자기 cadence에서 새 bundle을 만든다
+
+### 5.6 Historical Catalog Completeness
 
 기준:
 
@@ -148,6 +169,7 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 - parity dependency `pass`
 - shadow dependency `pass`
 - historical catalog completeness dependency `pass`
+- report bundle consistency dependency `pass`
 - runtime gates가 모두 `pass` 또는 일부 `needs_review`
 
 판정:
@@ -163,6 +185,7 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 - parity dependency `pass`
 - shadow dependency `pass`
 - historical catalog completeness dependency `pass`
+- report bundle consistency dependency `pass`
 - freshness `pass`
 - worker cadence `pass`
 - latency / error rate가 최소 `needs_review` 이상
@@ -184,14 +207,15 @@ npm run runtime:measure -- --base-url http://127.0.0.1:3213 --iterations 5
 
 ```bash
 cd backend
-npm run worker:cadence -- --workflow weekly-kpop-scan.yml --limit 12
+npm run worker:cadence
 ```
 
 ### 7.3 Combined gate report
 
 ```bash
 cd backend
-npm run runtime:gate
+npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming
+npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json
 ```
 
 ## 8. Review Rules

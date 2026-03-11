@@ -190,12 +190,21 @@ python3 sync_upcoming_pipeline_to_neon.py
 python3 sync_release_pipeline_to_neon.py
 ```
 
+scheduled automation도 cadence를 둘로 나눠서 운영한다.
+
+- `.github/workflows/weekly-kpop-scan.yml`
+  - daily upcoming/news freshness path
+- `.github/workflows/catalog-enrichment-refresh.yml`
+  - weekly historical catalog enrichment path
+
 ### 백엔드 migration baseline
 
 - migration location: `backend/sql/migrations/`
 - run note: `backend/sql/README.md`
 - upcoming dual-write report: `backend/reports/upcoming_pipeline_db_sync_summary.json`
 - projection refresh report: `backend/reports/projection_refresh_summary.json`
+- worker cadence topology report: `backend/reports/worker_cadence_report.json`
+- report bundle metadata: `backend/reports/report_bundle_metadata.json`
 - backend freshness handoff artifact: `backend/reports/backend_freshness_handoff.json`
 - endpoint shadow-read report: `backend/reports/backend_shadow_read_report.json`
 - backup/restore drill artifact: `backend/reports/neon_backup_restore_drill_2026-03-08.json`

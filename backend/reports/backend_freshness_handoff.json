@@ -1,7 +1,61 @@
 {
-  "generated_at": "2026-03-10T13:18:55.371Z",
+  "generated_at": "2026-03-11T07:12:36.986Z",
   "artifact_version": 1,
   "status": "pass",
+  "report_bundle": {
+    "generated_at": "2026-03-11T07:11:17.396Z",
+    "bundle_id": "post-sync-verification-2ae8b97863c3",
+    "bundle_kind": "post-sync-verification",
+    "cadence_profile": "daily-upcoming",
+    "source": {
+      "kind": "manual",
+      "workflow_name": null,
+      "git_commit_sha": null,
+      "github_run_id": null
+    },
+    "source_reports": {
+      "release_pipeline_sync": {
+        "path": "reports/release_pipeline_db_sync_summary.json",
+        "generated_at": "2026-03-07T07:51:00.028Z",
+        "scope": "release_pipeline"
+      },
+      "upcoming_pipeline_sync": {
+        "path": "reports/upcoming_pipeline_db_sync_summary.json",
+        "generated_at": "2026-03-07T08:21:49.354Z",
+        "scope": "upcoming_pipeline"
+      },
+      "projection_refresh": {
+        "path": "reports/projection_refresh_summary.json",
+        "generated_at": "2026-03-08T23:52:59.908Z"
+      },
+      "historical_coverage": {
+        "path": "reports/historical_release_detail_coverage_report.json",
+        "generated_at": "2026-03-10T00:00:00.000Z"
+      },
+      "worker_cadence": {
+        "path": "reports/worker_cadence_report.json",
+        "generated_at": "2026-03-11T07:11:06.404Z",
+        "primary_path_key": "daily_upcoming"
+      }
+    },
+    "summary_lines": [
+      "bundle id: post-sync-verification-2ae8b97863c3",
+      "bundle kind: post-sync-verification",
+      "cadence profile: daily-upcoming",
+      "workflow: manual"
+    ]
+  },
+  "bundle_consistency": {
+    "status": "pass",
+    "expected_bundle_id": "post-sync-verification-2ae8b97863c3",
+    "observed": {
+      "parity_bundle": null,
+      "shadow_bundle": null,
+      "runtime_gate_bundle": "post-sync-verification-2ae8b97863c3",
+      "historical_coverage_generated_at": null
+    },
+    "mismatches": []
+  },
   "target": {
     "environment": "production",
     "classification": "production",
@@ -26,9 +80,13 @@
       "path": "projection_refresh_summary.json",
       "generated_at": "2026-03-08T23:52:59.908Z"
     },
+    "report_bundle": {
+      "path": "report_bundle_metadata.json",
+      "generated_at": "2026-03-11T07:11:17.396Z"
+    },
     "runtime_gate": {
       "path": "runtime_gate_report.json",
-      "generated_at": "2026-03-09T00:10:27.541Z"
+      "generated_at": "2026-03-11T07:12:19.414Z"
     }
   },
   "prerequisite_checks": {
@@ -75,7 +133,7 @@
       "status": "pass",
       "observed": {
         "projection_generated_at": "2026-03-08T23:52:59.908Z",
-        "age_hours": 37.43
+        "age_hours": 55.33
       },
       "thresholds": {
         "passAgeHours": 96,
@@ -89,11 +147,25 @@
         "backend_public_url": "https://api.idol-song-app.example.com",
         "classified_target": "production"
       }
+    },
+    "bundle_consistency": {
+      "status": "pass",
+      "observed": {
+        "status": "pass",
+        "expected_bundle_id": "post-sync-verification-2ae8b97863c3",
+        "observed": {
+          "parity_bundle": null,
+          "shadow_bundle": null,
+          "runtime_gate_bundle": "post-sync-verification-2ae8b97863c3",
+          "historical_coverage_generated_at": null
+        },
+        "mismatches": []
+      }
     }
   },
   "runtime_gate_summary": {
-    "generated_at": "2026-03-09T00:10:27.541Z",
-    "projection_freshness_status": "pass",
+    "generated_at": "2026-03-11T07:12:19.414Z",
+    "projection_freshness_status": "fail",
     "stage_gates": {
       "shadow_to_web_cutover": "fail",
       "web_cutover_to_json_demotion": "fail"
@@ -101,11 +173,12 @@
     "summary_lines": [
       "api latency: needs_review (worst p95=1148.96ms)",
       "api error rate: needs_review (error rate=0)",
-      "projection freshness: pass (lag=17.46m)",
+      "projection freshness: fail (lag=3319.33m)",
       "worker cadence: fail (failure rate=n/a)",
       "parity dependency: fail",
       "shadow dependency: fail",
       "historical catalog completeness dependency: fail",
+      "bundle consistency: pass",
       "shadow -> web cutover gate: fail",
       "web cutover -> JSON demotion gate: fail"
     ]
@@ -116,7 +189,8 @@
     "upcoming sync: pass",
     "projection rows: pass",
     "projection after sync: pass",
-    "artifact freshness: pass (37.43h old)",
-    "target binding: pass (production -> production)"
+    "artifact freshness: pass (55.33h old)",
+    "target binding: pass (production -> production)",
+    "bundle consistency: pass (post-sync-verification-2ae8b97863c3)"
   ]
 }

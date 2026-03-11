@@ -3,11 +3,14 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, relative, resolve } from 'node:path';
 
+import { buildBundleConsistency, readJsonIfExists } from './lib/reportBundle.mjs';
+
 const DEFAULT_REPORT_PATH = resolve(process.cwd(), './reports/backend_freshness_handoff.json');
 const DEFAULT_RELEASE_SYNC_REPORT_PATH = resolve(process.cwd(), './reports/release_pipeline_db_sync_summary.json');
 const DEFAULT_UPCOMING_SYNC_REPORT_PATH = resolve(process.cwd(), './reports/upcoming_pipeline_db_sync_summary.json');
 const DEFAULT_PROJECTION_REPORT_PATH = resolve(process.cwd(), './reports/projection_refresh_summary.json');
 const DEFAULT_RUNTIME_GATE_REPORT_PATH = resolve(process.cwd(), './reports/runtime_gate_report.json');
+const DEFAULT_BUNDLE_PATH = resolve(process.cwd(), './reports/report_bundle_metadata.json');
 
 const REQUIRED_PROJECTION_ROWS = [
   'entity_search_documents',
@@ -29,6 +32,7 @@ function parseArgs(argv) {
     upcomingSyncReportPath: DEFAULT_UPCOMING_SYNC_REPORT_PATH,
     projectionReportPath: DEFAULT_PROJECTION_REPORT_PATH,
     runtimeGateReportPath: DEFAULT_RUNTIME_GATE_REPORT_PATH,
+    bundlePath: DEFAULT_BUNDLE_PATH,
     target: '',
     backendPublicUrl: '',
     sourceKind: process.env.GITHUB_ACTIONS === 'true' ? 'automation' : 'manual',
@@ -66,6 +70,12 @@ function parseArgs(argv) {
 
     if (value === '--runtime-gate-report-path') {
       options.runtimeGateReportPath = resolve(process.cwd(), argv[index + 1]);
+      index += 1;
+      continue;
+    }
+
+    if (value === '--bundle-path') {
+      options.bundlePath = resolve(process.cwd(), argv[index + 1]);
       index += 1;
       continue;
     }
@@ -335,11 +345,12 @@ function worstStatus(statuses) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const [releaseSyncReport, upcomingSyncReport, projectionReport, runtimeGateReport] = await Promise.all([
+  const [releaseSyncReport, upcomingSyncReport, projectionReport, runtimeGateReport, reportBundle] = await Promise.all([
     loadJson(options.releaseSyncReportPath),
     loadJson(options.upcomingSyncReportPath),
     loadJson(options.projectionReportPath),
     loadJson(options.runtimeGateReportPath).catch(() => null),
+    readJsonIfExists(options.bundlePath),
   ]);
 
   const reportDir = dirname(options.reportPath);
@@ -349,6 +360,10 @@ async function main() {
   const sequenceAfterSync = buildSequenceCheck(releaseSyncReport, upcomingSyncReport, projectionReport);
   const artifactFreshness = buildFreshnessCheck(projectionReport);
   const targetBinding = buildTargetBindingCheck(options.target, options.backendPublicUrl);
+  const bundleConsistency = buildBundleConsistency({
+    bundle: reportBundle,
+    runtimeGateReport,
+  });
 
   const overallStatus = worstStatus([
     releasePipelineSync.status,
@@ -357,12 +372,15 @@ async function main() {
     sequenceAfterSync.status,
     artifactFreshness.status,
     targetBinding.status,
+    bundleConsistency.status,
   ]);
 
   const handoff = {
     generated_at: new Date().toISOString(),
     artifact_version: 1,
     status: overallStatus,
+    report_bundle: reportBundle,
+    bundle_consistency: bundleConsistency,
     target: {
       environment: normalizeTargetEnvironment(options.target) || null,
       classification: options.backendPublicUrl ? classifyBackendTarget(options.backendPublicUrl) : null,
@@ -378,6 +396,15 @@ async function main() {
       release_pipeline_sync: buildReportReference(reportDir, options.releaseSyncReportPath, releaseSyncReport),
       upcoming_pipeline_sync: buildReportReference(reportDir, options.upcomingSyncReportPath, upcomingSyncReport),
       projection_refresh: buildReportReference(reportDir, options.projectionReportPath, projectionReport),
+      report_bundle: reportBundle
+        ? buildReportReference(reportDir, options.bundlePath, reportBundle, {
+            bundle_id: reportBundle.bundle_id ?? null,
+          })
+        : {
+            path: relative(reportDir, options.bundlePath),
+            generated_at: null,
+            bundle_id: null,
+          },
       runtime_gate: runtimeGateReport
         ? buildReportReference(reportDir, options.runtimeGateReportPath, runtimeGateReport)
         : {
@@ -392,6 +419,10 @@ async function main() {
       sequence_after_sync: sequenceAfterSync,
       artifact_freshness: artifactFreshness,
       target_binding: targetBinding,
+      bundle_consistency: {
+        status: bundleConsistency.status,
+        observed: bundleConsistency,
+      },
     },
     runtime_gate_summary: buildRuntimeGateSummary(runtimeGateReport),
   };
@@ -404,6 +435,7 @@ async function main() {
     `projection after sync: ${sequenceAfterSync.status}`,
     `artifact freshness: ${artifactFreshness.status} (${artifactFreshness.observed.age_hours ?? 'n/a'}h old)`,
     `target binding: ${targetBinding.status} (${handoff.target.environment ?? 'unknown'} -> ${handoff.target.classification ?? 'n/a'})`,
+    `bundle consistency: ${bundleConsistency.status} (${reportBundle?.bundle_id ?? 'none'})`,
   ];
 
   await mkdir(reportDir, { recursive: true });

@@ -4,6 +4,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { buildBundleConsistency, readJsonIfExists } from './lib/reportBundle.mjs';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const BACKEND_DIR = path.resolve(__dirname, '..');
@@ -24,6 +26,7 @@ const DEFAULT_MOBILE_DATASET_SOURCE_PATH = path.join(REPO_DIR, 'mobile', 'src', 
 const DEFAULT_MOBILE_DEBUG_METADATA_PATH = path.join(REPO_DIR, 'mobile', 'src', 'config', 'debugMetadata.ts');
 const DEFAULT_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'migration_readiness_scorecard.json');
 const DEFAULT_MARKDOWN_PATH = path.join(BACKEND_DIR, 'reports', 'migration_readiness_scorecard.md');
+const DEFAULT_BUNDLE_PATH = path.join(BACKEND_DIR, 'reports', 'report_bundle_metadata.json');
 
 const CATEGORY_STATUS_SCORES = {
   pass: 1,
@@ -114,6 +117,7 @@ function parseArgs(argv) {
     mobileDebugMetadataPath: DEFAULT_MOBILE_DEBUG_METADATA_PATH,
     reportPath: DEFAULT_REPORT_PATH,
     markdownPath: DEFAULT_MARKDOWN_PATH,
+    bundlePath: DEFAULT_BUNDLE_PATH,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -163,6 +167,10 @@ function parseArgs(argv) {
         break;
       case '--markdown-path':
         options.markdownPath = path.resolve(REPO_DIR, next ?? '');
+        index += 1;
+        break;
+      case '--bundle-path':
+        options.bundlePath = path.resolve(REPO_DIR, next ?? '');
         index += 1;
         break;
       default:
@@ -694,6 +702,7 @@ async function main() {
     mobileRuntimeSourceText,
     mobileDatasetSourceText,
     mobileDebugMetadataText,
+    reportBundle,
   ] = await Promise.all([
     readJson(options.runtimeGateReportPath),
     readJson(options.parityReportPath),
@@ -704,6 +713,7 @@ async function main() {
     readText(options.mobileRuntimeConfigPath),
     readText(options.mobileDatasetSourcePath),
     readText(options.mobileDebugMetadataPath),
+    readJsonIfExists(options.bundlePath),
   ]);
 
   const categories = [
@@ -715,14 +725,24 @@ async function main() {
   ];
 
   const overall = buildOverall(categories);
+  const bundleConsistency = buildBundleConsistency({
+    bundle: reportBundle,
+    parityReport,
+    shadowReport,
+    runtimeGateReport,
+    historicalCoverageReport,
+  });
   const report = {
     generated_at: new Date().toISOString(),
+    report_bundle: reportBundle,
+    bundle_consistency: bundleConsistency,
     rubric: READINESS_RUBRIC,
     evidence_paths: {
       runtime_gate_report: normalizePathForReport(options.runtimeGateReportPath),
       parity_report: normalizePathForReport(options.parityReportPath),
       shadow_report: normalizePathForReport(options.shadowReportPath),
       historical_coverage_report: normalizePathForReport(options.historicalCoverageReportPath),
+      bundle_report: normalizePathForReport(options.bundlePath),
       fixture_registry: normalizePathForReport(options.fixtureRegistryPath),
       backend_deploy_workflow: normalizePathForReport(options.backendDeployWorkflowPath),
       mobile_runtime_config: normalizePathForReport(options.mobileRuntimeConfigPath),
@@ -731,7 +751,10 @@ async function main() {
     },
     overall,
     categories,
-    summary_lines: buildSummaryLines(overall, categories),
+    summary_lines: [
+      ...buildSummaryLines(overall, categories),
+      `bundle consistency: ${bundleConsistency.status}`,
+    ],
   };
 
   const markdown = renderMarkdown(report);

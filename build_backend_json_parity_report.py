@@ -37,7 +37,14 @@ from import_json_to_neon import (
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_REPORT_PATH = BACKEND_REPORTS_DIR / "backend_json_parity_report.json"
+DEFAULT_BUNDLE_PATH = BACKEND_REPORTS_DIR / "report_bundle_metadata.json"
 TODAY = date.today()
+
+
+def load_optional_json(path: Path) -> Optional[Dict[str, Any]]:
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def build_slug_maps() -> Tuple[Dict[str, str], Dict[str, Dict[str, Any]]]:
@@ -752,12 +759,18 @@ def parse_args() -> argparse.Namespace:
         default=str(DEFAULT_REPORT_PATH),
         help="Path to write the machine-readable parity report JSON.",
     )
+    parser.add_argument(
+        "--bundle-path",
+        default=str(DEFAULT_BUNDLE_PATH),
+        help="Optional bundle metadata JSON used to stamp the derived parity report.",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
     group_to_slug, _ = build_slug_maps()
+    report_bundle = load_optional_json(Path(args.bundle_path))
 
     source_aliases = build_source_alias_map(group_to_slug)
     source_links, source_channel_roles, source_channel_metadata = build_source_official_links_and_channels(group_to_slug)
@@ -788,6 +801,7 @@ def main() -> None:
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "clean": clean,
+        "report_bundle": report_bundle,
         "summary_lines": summary_lines,
         "source_snapshot_counts": {
             "artist_profiles": len(load_json(ARTIST_PROFILES_PATH)),

@@ -7,12 +7,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { buildApp } from '../dist/app.js';
+import { buildBundleConsistency, readJsonIfExists } from './lib/reportBundle.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BACKEND_DIR = path.resolve(__dirname, '..');
 const REPO_ROOT = path.resolve(BACKEND_DIR, '..');
 const DEFAULT_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'backend_shadow_read_report.json');
 const PARITY_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'backend_json_parity_report.json');
+const DEFAULT_BUNDLE_PATH = path.join(BACKEND_DIR, 'reports', 'report_bundle_metadata.json');
 
 const ARTIST_PROFILES_PATH = path.join(REPO_ROOT, 'web', 'src', 'data', 'artistProfiles.json');
 const RELEASES_PATH = path.join(REPO_ROOT, 'web', 'src', 'data', 'releases.json');
@@ -43,12 +45,18 @@ const CALENDAR_CASES = ['2026-03', '2026-04', '2025-10'];
 function parseArgs(argv) {
   const args = {
     reportPath: DEFAULT_REPORT_PATH,
+    bundlePath: DEFAULT_BUNDLE_PATH,
   };
 
   for (let index = 2; index < argv.length; index += 1) {
     const value = argv[index];
     if (value === '--report-path') {
       args.reportPath = argv[index + 1];
+      index += 1;
+      continue;
+    }
+    if (value === '--bundle-path') {
+      args.bundlePath = argv[index + 1];
       index += 1;
       continue;
     }
@@ -3741,20 +3749,21 @@ function buildCaseReport(surface, input, expectedSnapshot, actualSnapshot, compa
   };
 }
 
-function readLinkedParityReport() {
-  if (!fs.existsSync(PARITY_REPORT_PATH)) {
+function readLinkedParityReport(parityReportPath = PARITY_REPORT_PATH) {
+  if (!fs.existsSync(parityReportPath)) {
     return {
       exists: false,
-      path: path.relative(REPO_ROOT, PARITY_REPORT_PATH),
+      path: path.relative(REPO_ROOT, parityReportPath),
     };
   }
 
-  const report = loadJson(PARITY_REPORT_PATH);
+  const report = loadJson(parityReportPath);
   return {
     exists: true,
-    path: path.relative(REPO_ROOT, PARITY_REPORT_PATH),
+    path: path.relative(REPO_ROOT, parityReportPath),
     clean: report.clean,
     generated_at: report.generated_at,
+    bundle_id: report?.report_bundle?.bundle_id ?? null,
     summary_lines: report.summary_lines ?? [],
   };
 }
@@ -4068,6 +4077,7 @@ async function main() {
   const args = parseArgs(process.argv);
   const state = createBaselineState();
   const linkedParityReport = readLinkedParityReport();
+  const reportBundle = await readJsonIfExists(path.resolve(args.bundlePath));
   const selfCheck = runSelfCheck();
 
   const app = buildApp();
@@ -4096,6 +4106,11 @@ async function main() {
     const report = {
       generated_at: new Date().toISOString(),
       clean,
+      report_bundle: reportBundle,
+      bundle_consistency: buildBundleConsistency({
+        bundle: reportBundle,
+        parityReport: linkedParityReport.exists ? loadJson(PARITY_REPORT_PATH) : null,
+      }),
       linked_parity_report: linkedParityReport,
       self_check: selfCheck,
       coverage: {
