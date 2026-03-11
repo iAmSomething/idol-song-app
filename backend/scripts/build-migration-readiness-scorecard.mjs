@@ -4,6 +4,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { buildNullCoverageEvaluation } from './lib/canonicalNullCoverage.mjs';
 import { buildBundleConsistency, readJsonIfExists } from './lib/reportBundle.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -19,6 +20,8 @@ const DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH = path.join(
   'reports',
   'historical_release_detail_coverage_report.json',
 );
+const DEFAULT_NULL_COVERAGE_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'canonical_null_coverage_report.json');
+const DEFAULT_NULL_TREND_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'null_coverage_trend_report.json');
 const DEFAULT_FIXTURE_REGISTRY_PATH = path.join(BACKEND_DIR, 'fixtures', 'live_backend_smoke_fixtures.json');
 const DEFAULT_BACKEND_DEPLOY_WORKFLOW_PATH = path.join(REPO_DIR, '.github', 'workflows', 'backend-deploy.yml');
 const DEFAULT_MOBILE_RUNTIME_CONFIG_PATH = path.join(REPO_DIR, 'mobile', 'src', 'config', 'runtime.ts');
@@ -110,6 +113,8 @@ function parseArgs(argv) {
     parityReportPath: DEFAULT_PARITY_REPORT_PATH,
     shadowReportPath: DEFAULT_SHADOW_REPORT_PATH,
     historicalCoverageReportPath: DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH,
+    nullCoverageReportPath: DEFAULT_NULL_COVERAGE_REPORT_PATH,
+    nullTrendReportPath: DEFAULT_NULL_TREND_REPORT_PATH,
     fixtureRegistryPath: DEFAULT_FIXTURE_REGISTRY_PATH,
     backendDeployWorkflowPath: DEFAULT_BACKEND_DEPLOY_WORKFLOW_PATH,
     mobileRuntimeConfigPath: DEFAULT_MOBILE_RUNTIME_CONFIG_PATH,
@@ -139,6 +144,14 @@ function parseArgs(argv) {
         break;
       case '--historical-coverage-report':
         options.historicalCoverageReportPath = path.resolve(REPO_DIR, next ?? '');
+        index += 1;
+        break;
+      case '--null-coverage-report':
+        options.nullCoverageReportPath = path.resolve(REPO_DIR, next ?? '');
+        index += 1;
+        break;
+      case '--null-trend-report':
+        options.nullTrendReportPath = path.resolve(REPO_DIR, next ?? '');
         index += 1;
         break;
       case '--fixture-registry':
@@ -495,11 +508,12 @@ function buildMobileRuntimeModeCategory(runtimeSourceText, datasetSourceText, de
   };
 }
 
-function buildCatalogCompletenessCategory(historicalCoverageReport) {
+function buildCatalogCompletenessCategory(historicalCoverageReport, nullCoverageReport, nullTrendReport) {
   const config = getCategoryConfig('catalog_completeness');
   const overall = historicalCoverageReport.completeness?.overall;
   const pre2024 = historicalCoverageReport.completeness?.pre_2024;
   const prioritySlice = historicalCoverageReport.migration_priority_slice;
+  const nullCoverage = buildNullCoverageEvaluation(nullCoverageReport, nullTrendReport);
 
   if (!overall || !pre2024) {
     throw new Error('Historical coverage report is missing completeness.overall or completeness.pre_2024.');
@@ -514,12 +528,14 @@ function buildCatalogCompletenessCategory(historicalCoverageReport) {
   const trustedScore = clamp(overall.detail_trusted_ratio / 1);
   const titleTrackScore = clamp(overall.title_track_resolved_ratio / titleTrackTarget);
   const canonicalMvScore = clamp(overall.canonical_mv_ratio / canonicalMvTarget);
+  const nullCoverageScore = clamp(nullCoverage.score_ratio);
 
   const weightedScore =
     payloadScore * 0.2 +
     trustedScore * 0.2 +
-    titleTrackScore * 0.3 +
-    canonicalMvScore * 0.3;
+    titleTrackScore * 0.2 +
+    canonicalMvScore * 0.2 +
+    nullCoverageScore * 0.2;
 
   const blockerReasons = [];
   if (overall.title_track_resolved_ratio < titleTrackTarget || pre2024.title_track_resolved_ratio < pre2024TitleTrackFloor) {
@@ -537,14 +553,27 @@ function buildCatalogCompletenessCategory(historicalCoverageReport) {
       `migration_priority_slice title_track=${asPercent(prioritySlice.after?.title_track_resolved_ratio ?? 0)} canonical_mv=${asPercent(prioritySlice.after?.canonical_mv_ratio ?? 0)}`,
     );
   }
+  if (nullCoverage.status === 'fail') {
+    blockerReasons.push(...nullCoverage.blocker_reasons);
+  }
+  const reviewReasons = [];
+  if (nullCoverage.status === 'needs_review') {
+    reviewReasons.push(...nullCoverage.review_reasons);
+  }
 
-  const status = blockerReasons.length > 0 ? 'fail' : deriveStatusFromScore(weightedScore, config.statusThresholds);
+  const status =
+    blockerReasons.length > 0
+      ? 'fail'
+      : reviewReasons.length > 0
+        ? 'needs_review'
+        : deriveStatusFromScore(weightedScore, config.statusThresholds);
   const summaryLines = [...(historicalCoverageReport.summary_lines ?? [])];
   if (prioritySlice) {
     summaryLines.push(
       `migration_priority_slice rows=${prioritySlice.rows_after}/${prioritySlice.expected_rows} title_track=${asPercent(prioritySlice.after?.title_track_resolved_ratio ?? 0)} canonical_mv=${asPercent(prioritySlice.after?.canonical_mv_ratio ?? 0)} gate=${prioritySlice.gates?.cutover_status ?? 'unknown'}`,
     );
   }
+  summaryLines.push(`critical null coverage gate=${nullCoverage.status} score=${asPercent(nullCoverage.score_ratio)}`);
 
   return {
     key: config.key,
@@ -556,6 +585,7 @@ function buildCatalogCompletenessCategory(historicalCoverageReport) {
     score_percent: asPercent(weightedScore),
     weighted_points: round(weightedScore * config.weight, 2),
     blocker_reasons: blockerReasons,
+    review_reasons: reviewReasons,
     summary_lines: summaryLines,
     evidence: {
       overall: {
@@ -583,6 +613,15 @@ function buildCatalogCompletenessCategory(historicalCoverageReport) {
             },
           }
         : null,
+      critical_null_coverage: {
+        status: nullCoverage.status,
+        score_ratio: round(nullCoverage.score_ratio, 4),
+        trend_baseline_available: nullCoverage.trend_baseline_available,
+        latest_floor_failures: nullCoverage.latest_floor_failures,
+        recent_floor_failures: nullCoverage.recent_floor_failures,
+        fake_default_escalations: nullCoverage.fake_default_escalations,
+        critical_regressions: nullCoverage.critical_regressions,
+      },
       review_queues: {
         title_track_review_rows: overall.title_track_review_rows,
         mv_review_rows: overall.mv_review_rows,
@@ -697,6 +736,8 @@ async function main() {
     parityReport,
     shadowReport,
     historicalCoverageReport,
+    nullCoverageReport,
+    nullTrendReport,
     fixtureRegistry,
     backendDeployWorkflowText,
     mobileRuntimeSourceText,
@@ -708,6 +749,8 @@ async function main() {
     readJson(options.parityReportPath),
     readJson(options.shadowReportPath),
     readJson(options.historicalCoverageReportPath),
+    readJson(options.nullCoverageReportPath),
+    readJson(options.nullTrendReportPath),
     readJson(options.fixtureRegistryPath),
     readText(options.backendDeployWorkflowPath),
     readText(options.mobileRuntimeConfigPath),
@@ -721,7 +764,7 @@ async function main() {
     buildBackendDeployParityCategory(parityReport, fixtureRegistry, backendDeployWorkflowText),
     buildWebBackendOnlyStabilityCategory(shadowReport),
     buildMobileRuntimeModeCategory(mobileRuntimeSourceText, mobileDatasetSourceText, mobileDebugMetadataText),
-    buildCatalogCompletenessCategory(historicalCoverageReport),
+    buildCatalogCompletenessCategory(historicalCoverageReport, nullCoverageReport, nullTrendReport),
   ];
 
   const overall = buildOverall(categories);
@@ -731,6 +774,8 @@ async function main() {
     shadowReport,
     runtimeGateReport,
     historicalCoverageReport,
+    nullCoverageReport,
+    nullTrendReport,
   });
   const report = {
     generated_at: new Date().toISOString(),
@@ -742,6 +787,8 @@ async function main() {
       parity_report: normalizePathForReport(options.parityReportPath),
       shadow_report: normalizePathForReport(options.shadowReportPath),
       historical_coverage_report: normalizePathForReport(options.historicalCoverageReportPath),
+      canonical_null_coverage_report: normalizePathForReport(options.nullCoverageReportPath),
+      null_coverage_trend_report: normalizePathForReport(options.nullTrendReportPath),
       bundle_report: normalizePathForReport(options.bundlePath),
       fixture_registry: normalizePathForReport(options.fixtureRegistryPath),
       backend_deploy_workflow: normalizePathForReport(options.backendDeployWorkflowPath),

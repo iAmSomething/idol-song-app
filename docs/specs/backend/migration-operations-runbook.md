@@ -42,6 +42,9 @@
 | release dual-write | `python3 sync_release_pipeline_to_neon.py` | `backend/reports/release_pipeline_db_sync_summary.json` |
 | upcoming dual-write | `python3 sync_upcoming_pipeline_to_neon.py` | `backend/reports/upcoming_pipeline_db_sync_summary.json` |
 | projection refresh | `cd backend && npm run projection:refresh` | `backend/reports/projection_refresh_summary.json` |
+| canonical null coverage | `cd backend && npm run null:coverage` | `backend/reports/canonical_null_coverage_report.json` |
+| canonical null recheck queue | `cd backend && npm run null:recheck` | `backend/reports/canonical_null_recheck_queue.json` |
+| null coverage trend | `cd backend && npm run null:trend` | `backend/reports/null_coverage_trend_report.json` |
 | report bundle metadata | `cd backend && npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming` | `backend/reports/report_bundle_metadata.json` |
 | backend freshness handoff | `cd backend && npm run freshness:handoff -- --target production --backend-public-url <url>` | `backend/reports/backend_freshness_handoff.json` |
 | backend-vs-JSON parity | `python3 build_backend_json_parity_report.py` | `backend/reports/backend_json_parity_report.json` |
@@ -111,6 +114,9 @@ cd ..
 ```bash
 cd backend
 npm run worker:cadence
+npm run null:coverage
+npm run null:recheck
+npm run null:trend
 npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming
 cd ..
 python3 build_backend_json_parity_report.py
@@ -223,4 +229,5 @@ JSON snapshot이 아직 남아 있는 동안 emergency fallback은 허용된다.
 - `docs/specs/backend/phased-rollout-plan.md`
 - `docs/specs/backend/preview-staging-backend-path.md`
 - `docs/specs/backend/migration-runtime-gates.md`
+- `docs/specs/backend/canonical-null-hygiene-cadence.md`
 - `docs/specs/backend/json-snapshot-demotion.md`

@@ -69,6 +69,9 @@ jobs:
               cd backend
               npm run projection:refresh
               npm run worker:cadence
+              npm run null:coverage
+              npm run null:recheck
+              npm run null:trend
               npm run report:bundle -- --bundle-kind catalog-enrichment --cadence-profile weekly-enrichment
             )
             python build_backend_json_parity_report.py --bundle-path backend/reports/report_bundle_metadata.json
@@ -110,6 +113,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add verified_release_history_mb.json verified_release_history_mb.csv verified_release_history_mb_unresolved.json group_latest_release_since_2025-06-01_mb.json group_latest_release_since_2025-06-01_mb.csv title_track_manual_review_queue.json title_track_manual_review_queue.csv release_detail_manual_review_queue.json release_detail_manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv web/src/data/releaseHistory.json web/src/data/releaseDetails.json web/src/data/releases.json web/src/data/releaseArtwork.json web/src/data/youtubeChannelAllowlists.json web/src/data/releaseChangeLog.json backend/reports/historical_release_detail_coverage_report.json backend/reports/historical_release_detail_coverage_summary.md backend/reports/projection_refresh_summary.json backend/reports/worker_cadence_report.json backend/reports/report_bundle_metadata.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json backend/reports/runtime_gate_report.json backend/reports/migration_readiness_scorecard.json backend/reports/migration_readiness_scorecard.md backend/reports/backend_freshness_handoff.json
+          git add verified_release_history_mb.json verified_release_history_mb.csv verified_release_history_mb_unresolved.json group_latest_release_since_2025-06-01_mb.json group_latest_release_since_2025-06-01_mb.csv title_track_manual_review_queue.json title_track_manual_review_queue.csv release_detail_manual_review_queue.json release_detail_manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv web/src/data/releaseHistory.json web/src/data/releaseDetails.json web/src/data/releases.json web/src/data/releaseArtwork.json web/src/data/youtubeChannelAllowlists.json web/src/data/releaseChangeLog.json backend/reports/historical_release_detail_coverage_report.json backend/reports/historical_release_detail_coverage_summary.md backend/reports/projection_refresh_summary.json backend/reports/worker_cadence_report.json backend/reports/canonical_null_coverage_report.json backend/reports/canonical_null_recheck_queue.json backend/reports/canonical_null_coverage_history.json backend/reports/null_coverage_trend_report.json backend/reports/report_bundle_metadata.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json backend/reports/runtime_gate_report.json backend/reports/migration_readiness_scorecard.json backend/reports/migration_readiness_scorecard.md backend/reports/backend_freshness_handoff.json
           git commit -m "chore: refresh catalog enrichment data"
           git push

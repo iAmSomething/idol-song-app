@@ -1,14 +1,16 @@
 {
-  "generated_at": "2026-03-11T07:12:26.511Z",
+  "generated_at": "2026-03-11T08:31:07.905Z",
   "report_bundle": null,
   "bundle_consistency": {
     "status": "pass",
     "expected_bundle_id": null,
     "observed": {
-      "parity_bundle": "post-sync-verification-2ae8b97863c3",
-      "shadow_bundle": "post-sync-verification-2ae8b97863c3",
-      "runtime_gate_bundle": "post-sync-verification-2ae8b97863c3",
-      "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z"
+      "parity_bundle": "post-sync-verification-b72033bd3150",
+      "shadow_bundle": "post-sync-verification-b72033bd3150",
+      "runtime_gate_bundle": "post-sync-verification-b72033bd3150",
+      "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z",
+      "canonical_null_coverage_generated_at": "2026-03-11T08:30:30.464Z",
+      "null_coverage_trend_generated_at": "2026-03-11T08:30:32.119Z"
     },
     "mismatches": []
   },
@@ -81,6 +83,8 @@
     "parity_report": "backend/reports/backend_json_parity_report.json",
     "shadow_report": "backend/reports/backend_shadow_read_report.json",
     "historical_coverage_report": "backend/reports/historical_release_detail_coverage_report.json",
+    "canonical_null_coverage_report": "backend/reports/canonical_null_coverage_report.json",
+    "null_coverage_trend_report": "backend/reports/null_coverage_trend_report.json",
     "bundle_report": "reports/report_bundle_metadata.json",
     "fixture_registry": "backend/fixtures/live_backend_smoke_fixtures.json",
     "backend_deploy_workflow": ".github/workflows/backend-deploy.yml",
@@ -90,16 +94,15 @@
   },
   "overall": {
     "status": "fail",
-    "score_ratio": 0.5164,
-    "score_percent": 51.6,
-    "weighted_points": 51.64,
+    "score_ratio": 0.5959,
+    "score_percent": 59.6,
+    "weighted_points": 59.59,
     "total_weight": 100,
     "blocker_categories": [
       {
         "key": "backend_runtime_health",
         "label": "Backend runtime health",
         "blocker_reasons": [
-          "projection_freshness=fail",
           "worker_cadence=fail",
           "stage_gate:shadow_to_web_cutover=fail",
           "stage_gate:web_cutover_to_json_demotion=fail"
@@ -109,16 +112,15 @@
         "key": "backend_deploy_parity",
         "label": "Backend deploy parity",
         "blocker_reasons": [
-          "parity_clean=false (latest_verified_release_selection drift=3)"
+          "parity_clean=false (latest_verified_release_selection drift=0)"
         ]
       },
       {
         "key": "web_backend_only_stability",
         "label": "Web backend-only stability",
         "blocker_reasons": [
-          "entity_detail clean_ratio=0.25",
-          "release_detail clean_ratio=0",
-          "radar clean_ratio=0"
+          "entity_detail clean_ratio=0.5",
+          "release_detail clean_ratio=0"
         ]
       },
       {
@@ -126,7 +128,15 @@
         "label": "Catalog completeness",
         "blocker_reasons": [
           "title_track_resolved overall=64.5 pre_2024=62",
-          "canonical_mv overall=6.3 pre_2024=3.3"
+          "canonical_mv overall=6.3 pre_2024=3.3",
+          "releases.title_track latest 29.1% < 95.0%",
+          "release_service_links.youtube_mv latest 10.2% < 80.0%",
+          "entities.official_youtube latest 75.3% < 100.0%",
+          "entities.official_x latest 97.8% < 100.0%",
+          "entities.official_instagram latest 98.9% < 100.0%",
+          "releases.title_track recent 0.0% < 85.0%",
+          "release_service_links.youtube_mv recent 0.0% < 55.0%",
+          "entities.official_youtube recent 72.2% < 95.0%"
         ]
       }
     ],
@@ -139,11 +149,10 @@
       "weight": 25,
       "blocker": true,
       "status": "fail",
-      "score_ratio": 0.27,
-      "score_percent": 27,
-      "weighted_points": 6.75,
+      "score_ratio": 0.42,
+      "score_percent": 42,
+      "weighted_points": 10.5,
       "blocker_reasons": [
-        "projection_freshness=fail",
         "worker_cadence=fail",
         "stage_gate:shadow_to_web_cutover=fail",
         "stage_gate:web_cutover_to_json_demotion=fail"
@@ -151,11 +160,12 @@
       "summary_lines": [
         "api latency: needs_review (worst p95=1148.96ms)",
         "api error rate: needs_review (error rate=0)",
-        "projection freshness: fail (lag=3319.33m)",
+        "projection freshness: needs_review (lag=37.16m)",
         "worker cadence: fail (failure rate=n/a)",
         "parity dependency: fail",
         "shadow dependency: fail",
         "historical catalog completeness dependency: fail",
+        "critical null coverage dependency: fail",
         "bundle consistency: pass",
         "shadow -> web cutover gate: fail",
         "web cutover -> JSON demotion gate: fail"
@@ -187,10 +197,10 @@
             }
           },
           "projection_freshness": {
-            "status": "fail",
+            "status": "needs_review",
             "observed": {
-              "projection_generated_at": "2026-03-08T23:52:59.908Z",
-              "lag_minutes": 3319.33
+              "projection_generated_at": "2026-03-11T07:53:57.809Z",
+              "lag_minutes": 37.16
             },
             "thresholds": {
               "passLagMinutes": 20,
@@ -231,13 +241,13 @@
       "score_percent": 40,
       "weighted_points": 8,
       "blocker_reasons": [
-        "parity_clean=false (latest_verified_release_selection drift=3)"
+        "parity_clean=false (latest_verified_release_selection drift=0)"
       ],
       "summary_lines": [
         "entity alias/search coverage: clean (mismatched entities=0)",
         "official links: clean (mismatched entities=0)",
         "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
-        "latest verified release selection: drift (tracking mismatches=0, stream mismatches=3)",
+        "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
         "upcoming counts / nearest: clean (month bucket mismatches=0)",
         "title-track / double-title: drift (mismatched releases=1060)",
         "YouTube Music / MV service-link state: drift (mismatched releases=124)",
@@ -257,28 +267,9 @@
         "parity_drift_checks": {
           "tracking_mismatches_count": 0,
           "tracking_mismatches": [],
-          "stream_mismatches_count": 3,
-          "stream_mismatches": [
-            {
-              "entity_slug": "blackpink",
-              "stream": "album",
-              "source": "blackpink|deadline|2026-02-26|album",
-              "db": "blackpink|deadline|2026-02-27|album"
-            },
-            {
-              "entity_slug": "h1-key",
-              "stream": "album",
-              "source": "h1-key|lovestruck|2025-06-26|album",
-              "db": "h1-key|lovechapter|2026-03-05|album"
-            },
-            {
-              "entity_slug": "le-sserafim",
-              "stream": "song",
-              "source": "le-sserafim|spaghetti|2025-10-24|song",
-              "db": "le-sserafim|pearlies my oyster is the world|2025-10-24|song"
-            }
-          ],
-          "clean": false
+          "stream_mismatches_count": 0,
+          "stream_mismatches": [],
+          "clean": true
         }
       }
     },
@@ -288,24 +279,21 @@
       "weight": 20,
       "blocker": true,
       "status": "fail",
-      "score_ratio": 0.4125,
-      "score_percent": 41.3,
-      "weighted_points": 8.25,
+      "score_ratio": 0.575,
+      "score_percent": 57.5,
+      "weighted_points": 11.5,
       "blocker_reasons": [
-        "entity_detail clean_ratio=0.25",
-        "release_detail clean_ratio=0",
-        "radar clean_ratio=0"
+        "entity_detail clean_ratio=0.5",
+        "release_detail clean_ratio=0"
       ],
       "summary_lines": [
         "search: clean 5/5, drift 0/5",
-        "entity_detail: clean 1/4, drift 3/4",
+        "entity_detail: clean 2/4, drift 2/4",
         "release_detail: clean 0/3, drift 3/3",
         "calendar_month: clean 3/3, drift 0/3",
-        "radar: clean 0/1, drift 1/1",
-        "missing rows or segments: 6 case(s)",
-        "field-shape mismatches: 4 case(s)",
-        "title-track / MV-state drift: 1 case(s)",
-        "radar eligibility drift: 1 case(s)"
+        "radar: clean 1/1, drift 0/1",
+        "missing rows or segments: 5 case(s)",
+        "field-shape mismatches: 3 case(s)"
       ],
       "evidence": {
         "clean": false,
@@ -359,9 +347,9 @@
             "ratio": 1
           },
           "entity_detail": {
-            "clean": 1,
+            "clean": 2,
             "total": 4,
-            "ratio": 0.25
+            "ratio": 0.5
           },
           "release_detail": {
             "clean": 0,
@@ -374,9 +362,9 @@
             "ratio": 1
           },
           "radar": {
-            "clean": 0,
+            "clean": 1,
             "total": 1,
-            "ratio": 0
+            "ratio": 1
           }
         }
       }
@@ -412,13 +400,22 @@
       "weight": 20,
       "blocker": true,
       "status": "fail",
-      "score_ratio": 0.6818,
-      "score_percent": 68.2,
-      "weighted_points": 13.64,
+      "score_ratio": 0.7294,
+      "score_percent": 72.9,
+      "weighted_points": 14.59,
       "blocker_reasons": [
         "title_track_resolved overall=64.5 pre_2024=62",
-        "canonical_mv overall=6.3 pre_2024=3.3"
+        "canonical_mv overall=6.3 pre_2024=3.3",
+        "releases.title_track latest 29.1% < 95.0%",
+        "release_service_links.youtube_mv latest 10.2% < 80.0%",
+        "entities.official_youtube latest 75.3% < 100.0%",
+        "entities.official_x latest 97.8% < 100.0%",
+        "entities.official_instagram latest 98.9% < 100.0%",
+        "releases.title_track recent 0.0% < 85.0%",
+        "release_service_links.youtube_mv recent 0.0% < 55.0%",
+        "entities.official_youtube recent 72.2% < 95.0%"
       ],
+      "review_reasons": [],
       "summary_lines": [
         "detail payload coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
         "detail trusted coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
@@ -427,7 +424,8 @@
         "migration-critical first slice: title-track 18/18 (100.0%), canonical MV 18/18 (100.0%), gate pass",
         "release-detail null review queue: 1754 rows",
         "historical catalog cutover gate: fail",
-        "migration_priority_slice rows=18/18 title_track=100 canonical_mv=100 gate=pass"
+        "migration_priority_slice rows=18/18 title_track=100 canonical_mv=100 gate=pass",
+        "critical null coverage gate=fail score=70.8"
       ],
       "evidence": {
         "overall": {
@@ -491,6 +489,97 @@
             "canonical_mv_ratio": 1
           }
         },
+        "critical_null_coverage": {
+          "status": "fail",
+          "score_ratio": 0.708,
+          "trend_baseline_available": false,
+          "latest_floor_failures": [
+            {
+              "cohort": "latest",
+              "field_family_key": "releases.title_track",
+              "field_label": "Title Track Resolution",
+              "minimum_ratio": 0.95,
+              "effective_coverage_ratio": 0.2906,
+              "unresolved_records": 188,
+              "fake_default_records": 0,
+              "pass": false
+            },
+            {
+              "cohort": "latest",
+              "field_family_key": "release_service_links.youtube_mv",
+              "field_label": "YouTube MV Canonical Link",
+              "minimum_ratio": 0.8,
+              "effective_coverage_ratio": 0.1019,
+              "unresolved_records": 238,
+              "fake_default_records": 0,
+              "pass": false
+            },
+            {
+              "cohort": "latest",
+              "field_family_key": "entities.official_youtube",
+              "field_label": "Official YouTube",
+              "minimum_ratio": 1,
+              "effective_coverage_ratio": 0.7528,
+              "unresolved_records": 22,
+              "fake_default_records": 0,
+              "pass": false
+            },
+            {
+              "cohort": "latest",
+              "field_family_key": "entities.official_x",
+              "field_label": "Official X",
+              "minimum_ratio": 1,
+              "effective_coverage_ratio": 0.9775,
+              "unresolved_records": 2,
+              "fake_default_records": 0,
+              "pass": false
+            },
+            {
+              "cohort": "latest",
+              "field_family_key": "entities.official_instagram",
+              "field_label": "Official Instagram",
+              "minimum_ratio": 1,
+              "effective_coverage_ratio": 0.9888,
+              "unresolved_records": 1,
+              "fake_default_records": 0,
+              "pass": false
+            }
+          ],
+          "recent_floor_failures": [
+            {
+              "cohort": "recent",
+              "field_family_key": "releases.title_track",
+              "field_label": "Title Track Resolution",
+              "minimum_ratio": 0.85,
+              "effective_coverage_ratio": 0,
+              "unresolved_records": 553,
+              "fake_default_records": 0,
+              "pass": false
+            },
+            {
+              "cohort": "recent",
+              "field_family_key": "release_service_links.youtube_mv",
+              "field_label": "YouTube MV Canonical Link",
+              "minimum_ratio": 0.55,
+              "effective_coverage_ratio": 0,
+              "unresolved_records": 553,
+              "fake_default_records": 0,
+              "pass": false
+            },
+            {
+              "cohort": "recent",
+              "field_family_key": "entities.official_youtube",
+              "field_label": "Official YouTube",
+              "minimum_ratio": 0.95,
+              "effective_coverage_ratio": 0.7222,
+              "unresolved_records": 5,
+              "fake_default_records": 0,
+              "pass": false
+            }
+          ],
+          "fake_default_escalations": [],
+          "critical_regressions": []
+        },
         "review_queues": {
           "title_track_review_rows": 65,
           "mv_review_rows": 2,
@@ -501,12 +590,12 @@
     }
   ],
   "summary_lines": [
-    "overall readiness: fail (51.6/100)",
-    "Backend runtime health: fail (27/100) [BLOCKER] - projection_freshness=fail",
-    "Backend deploy parity: fail (40/100) [BLOCKER] - parity_clean=false (latest_verified_release_selection drift=3)",
-    "Web backend-only stability: fail (41.3/100) [BLOCKER] - entity_detail clean_ratio=0.25",
+    "overall readiness: fail (59.6/100)",
+    "Backend runtime health: fail (42/100) [BLOCKER] - worker_cadence=fail",
+    "Backend deploy parity: fail (40/100) [BLOCKER] - parity_clean=false (latest_verified_release_selection drift=0)",
+    "Web backend-only stability: fail (57.5/100) [BLOCKER] - entity_detail clean_ratio=0.5",
     "Mobile runtime mode: pass (100/100) - no blocker reason",
-    "Catalog completeness: fail (68.2/100) [BLOCKER] - title_track_resolved overall=64.5 pre_2024=62",
+    "Catalog completeness: fail (72.9/100) [BLOCKER] - title_track_resolved overall=64.5 pre_2024=62",
     "bundle consistency: pass"
   ]
 }

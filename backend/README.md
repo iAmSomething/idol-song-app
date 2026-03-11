@@ -524,6 +524,9 @@ scheduled workflow는 두 cadence로 나뉜다.
 
 - `npm run projection:refresh`
 - `npm run worker:cadence`
+- `npm run null:coverage`
+- `npm run null:recheck`
+- `npm run null:trend`
 - `npm run report:bundle`
 - `python build_backend_json_parity_report.py`
 - `npm run shadow:verify`
@@ -648,11 +651,17 @@ npm run runtime:measure -- --base-url http://127.0.0.1:3213 --iterations 5
 ```bash
 cd backend
 npm run worker:cadence
+npm run null:coverage
+npm run null:recheck
+npm run null:trend
 ```
 
 기본 보고서 출력:
 
 - `backend/reports/worker_cadence_report.json`
+- `backend/reports/canonical_null_coverage_report.json`
+- `backend/reports/canonical_null_recheck_queue.json`
+- `backend/reports/null_coverage_trend_report.json`
 
 이 report는 아래 topology를 함께 기록한다.
 
@@ -672,6 +681,8 @@ npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json
 - `backend/reports/report_bundle_metadata.json`
 - `backend/reports/runtime_gate_report.json`
 - `backend/reports/historical_release_detail_coverage_report.json`
+- `backend/reports/canonical_null_coverage_report.json`
+- `backend/reports/null_coverage_trend_report.json`
 - `backend/reports/historical_release_detail_coverage_summary.md`
 
 4. migration readiness scorecard
@@ -690,6 +701,7 @@ gate 정의와 stage mapping은 아래 문서를 따른다.
 
 - `docs/specs/backend/migration-runtime-gates.md`
 - `docs/specs/backend/migration-readiness-scorecard.md`
+- `docs/specs/backend/canonical-null-hygiene-cadence.md`
 
 ## Web Cutover Rollback Drill Evidence
 

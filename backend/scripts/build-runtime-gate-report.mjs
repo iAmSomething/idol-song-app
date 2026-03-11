@@ -3,6 +3,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
+import { buildNullCoverageEvaluation } from './lib/canonicalNullCoverage.mjs';
 import { buildBundleConsistency, readJsonIfExists } from './lib/reportBundle.mjs';
 
 const DEFAULT_REPORT_PATH = resolve(process.cwd(), './reports/runtime_gate_report.json');
@@ -15,6 +16,8 @@ const DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH = resolve(
   process.cwd(),
   './reports/historical_release_detail_coverage_report.json',
 );
+const DEFAULT_NULL_COVERAGE_REPORT_PATH = resolve(process.cwd(), './reports/canonical_null_coverage_report.json');
+const DEFAULT_NULL_TREND_REPORT_PATH = resolve(process.cwd(), './reports/null_coverage_trend_report.json');
 const DEFAULT_BUNDLE_PATH = resolve(process.cwd(), './reports/report_bundle_metadata.json');
 
 const GATE_THRESHOLDS = {
@@ -49,6 +52,8 @@ function parseArgs(argv) {
     parityReportPath: DEFAULT_PARITY_REPORT_PATH,
     shadowReportPath: DEFAULT_SHADOW_REPORT_PATH,
     historicalCoverageReportPath: DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH,
+    nullCoverageReportPath: DEFAULT_NULL_COVERAGE_REPORT_PATH,
+    nullTrendReportPath: DEFAULT_NULL_TREND_REPORT_PATH,
     bundlePath: DEFAULT_BUNDLE_PATH,
   };
 
@@ -86,6 +91,16 @@ function parseArgs(argv) {
     }
     if (value === '--historical-coverage-report-path') {
       options.historicalCoverageReportPath = resolve(process.cwd(), argv[index + 1]);
+      index += 1;
+      continue;
+    }
+    if (value === '--null-coverage-report-path') {
+      options.nullCoverageReportPath = resolve(process.cwd(), argv[index + 1]);
+      index += 1;
+      continue;
+    }
+    if (value === '--null-trend-report-path') {
+      options.nullTrendReportPath = resolve(process.cwd(), argv[index + 1]);
       index += 1;
       continue;
     }
@@ -233,6 +248,15 @@ function buildDependencyGate(report, cleanKey, label) {
   };
 }
 
+function buildCriticalNullCoverageGate(coverageReport, trendReport) {
+  const evaluation = buildNullCoverageEvaluation(coverageReport, trendReport);
+  return {
+    status: evaluation.status,
+    observed: evaluation,
+    label: 'critical_null_coverage',
+  };
+}
+
 function buildStageGate(statuses, blockingDependencies) {
   const combined = [...statuses, ...blockingDependencies];
   return worstStatus(combined);
@@ -270,7 +294,17 @@ function buildWebToJsonDemotionGate(runtimeChecks, dependencyChecks) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const [latencyReport, cadenceReport, projectionReport, parityReport, shadowReport, historicalCoverageReport, reportBundle] =
+  const [
+    latencyReport,
+    cadenceReport,
+    projectionReport,
+    parityReport,
+    shadowReport,
+    historicalCoverageReport,
+    nullCoverageReport,
+    nullTrendReport,
+    reportBundle,
+  ] =
     await Promise.all([
       loadJson(options.latencyReportPath),
       loadJson(options.cadenceReportPath),
@@ -278,6 +312,8 @@ async function main() {
       loadJson(options.parityReportPath),
       loadJson(options.shadowReportPath),
       loadJson(options.historicalCoverageReportPath),
+      loadJson(options.nullCoverageReportPath),
+      loadJson(options.nullTrendReportPath),
       readJsonIfExists(options.bundlePath),
     ]);
 
@@ -292,6 +328,8 @@ async function main() {
     parityReport,
     shadowReport,
     historicalCoverageReport,
+    nullCoverageReport,
+    nullTrendReport,
   });
 
   const dependencyChecks = {
@@ -302,6 +340,7 @@ async function main() {
       'cutover_ready',
       'historical_release_detail_coverage_report',
     ),
+    critical_null_coverage: buildCriticalNullCoverageGate(nullCoverageReport, nullTrendReport),
     bundle_consistency: {
       status: bundleConsistency.status,
       observed: bundleConsistency,
@@ -322,6 +361,7 @@ async function main() {
     `parity dependency: ${dependencyChecks.parity.status}`,
     `shadow dependency: ${dependencyChecks.shadow.status}`,
     `historical catalog completeness dependency: ${dependencyChecks.historical_catalog_completeness.status}`,
+    `critical null coverage dependency: ${dependencyChecks.critical_null_coverage.status}`,
     `bundle consistency: ${bundleConsistency.status}`,
     `shadow -> web cutover gate: ${stageGates.shadow_to_web_cutover}`,
     `web cutover -> JSON demotion gate: ${stageGates.web_cutover_to_json_demotion}`,
@@ -339,6 +379,8 @@ async function main() {
       parity_report: options.parityReportPath,
       shadow_report: options.shadowReportPath,
       historical_coverage_report: options.historicalCoverageReportPath,
+      canonical_null_coverage_report: options.nullCoverageReportPath,
+      null_coverage_trend_report: options.nullTrendReportPath,
       bundle_report: options.bundlePath,
     },
     summary_lines: summaryLines,
