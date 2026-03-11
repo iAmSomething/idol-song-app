@@ -151,6 +151,10 @@ function buildEntityDetailPayload() {
       stream: 'song',
       release_kind: 'single',
       release_format: 'single',
+      representative_song_title: 'Hate Rodrigo (feat. Yuqi)',
+      spotify_url: 'https://open.spotify.com/track/hate-rodrigo',
+      youtube_music_url: 'https://music.youtube.com/watch?v=hate-rodrigo',
+      youtube_mv_url: 'https://www.youtube.com/watch?v=hate-rodrigo',
       artwork: {
         cover_image_url: 'https://cdn.example.com/hate-rodrigo-cover.jpg',
         thumbnail_image_url: 'https://cdn.example.com/hate-rodrigo-thumb.jpg',
@@ -167,6 +171,10 @@ function buildEntityDetailPayload() {
         stream: 'album',
         release_kind: 'ep',
         release_format: 'ep',
+        representative_song_title: 'LOVE CATCHER',
+        spotify_url: 'https://open.spotify.com/album/love-catcher',
+        youtube_music_url: 'https://music.youtube.com/playlist?list=PLLOVECATCHER',
+        youtube_mv_url: null,
         artwork: {
           cover_image_url: 'https://cdn.example.com/love-catcher-cover.jpg',
           thumbnail_image_url: 'https://cdn.example.com/love-catcher-thumb.jpg',
@@ -798,6 +806,10 @@ class FakeDb {
       return this.result<Row>([]);
     }
 
+    if (normalizedSql.includes('from release_detail_projection') && normalizedSql.includes('where release_id = any($1::uuid[])')) {
+      return this.result<Row>([]);
+    }
+
     if (normalizedSql.includes('from calendar_month_projection')) {
       if (params[0] === '2026-03') {
         return this.result<Row>([
@@ -1237,9 +1249,16 @@ test('GET /v1/entities/:slug returns entity detail projection payload', async (t
   assert.equal(body.data.next_upcoming.source_url, 'https://starnews.example/yena-love-catcher');
   assert.equal(body.data.next_upcoming.source_count, 2);
   assert.equal(body.data.latest_release.release_format, 'single');
+  assert.equal(body.data.latest_release.representative_song_title, 'Hate Rodrigo (feat. Yuqi)');
+  assert.equal(body.data.latest_release.spotify_url, 'https://open.spotify.com/track/hate-rodrigo');
+  assert.equal(body.data.latest_release.youtube_music_url, 'https://music.youtube.com/watch?v=hate-rodrigo');
+  assert.equal(body.data.latest_release.youtube_mv_url, 'https://www.youtube.com/watch?v=hate-rodrigo');
   assert.equal(body.data.latest_release.artwork.cover_image_url, 'https://cdn.example.com/hate-rodrigo-cover.jpg');
   assert.equal(body.data.recent_albums.length, 1);
   assert.equal(body.data.recent_albums[0].release_format, 'ep');
+  assert.equal(body.data.recent_albums[0].representative_song_title, 'LOVE CATCHER');
+  assert.equal(body.data.recent_albums[0].spotify_url, 'https://open.spotify.com/album/love-catcher');
+  assert.equal(body.data.recent_albums[0].youtube_music_url, 'https://music.youtube.com/playlist?list=PLLOVECATCHER');
   assert.equal(body.data.recent_albums[0].artwork.thumbnail_image_url, 'https://cdn.example.com/love-catcher-thumb.jpg');
   assert.equal(body.data.source_timeline[0].event_type, 'official_announcement');
   assert.equal(body.data.source_timeline[0].summary, 'ep · confirmed · 2026-03-11');

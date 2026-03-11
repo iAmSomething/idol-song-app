@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import {
   Image,
   Pressable,
@@ -12,7 +12,10 @@ import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
-import { serviceIconAssets } from '../../utils/assetRegistry';
+import {
+  resolveServiceIconFallbackGlyph,
+  resolveServiceIconSource,
+} from '../../utils/assetRegistry';
 
 export type ServiceButtonTone = 'spotify' | 'youtubeMusic' | 'youtubeMv';
 
@@ -47,6 +50,13 @@ function ServiceButtonComponent({
   const styles = useMemo(() => createStyles(theme), [theme]);
   const resolvedService = service ?? tone ?? 'spotify';
   const labelMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.buttonService : MOBILE_TEXT_SCALE_LIMITS.buttonPrimary;
+  const [iconLoadFailed, setIconLoadFailed] = useState(false);
+  const serviceIconSource = resolveServiceIconSource(resolvedService);
+  const fallbackGlyph = resolveServiceIconFallbackGlyph(resolvedService);
+
+  useEffect(() => {
+    setIconLoadFailed(false);
+  }, [resolvedService]);
 
   return (
     <Pressable
@@ -66,10 +76,24 @@ function ServiceButtonComponent({
     >
       <View style={styles.buttonContent}>
         <View style={[styles.mark, styles[`${resolvedService}Mark`]]}>
-          <Image
-            source={serviceIconAssets[resolvedService]}
-            style={[styles.markIcon, styles[`${resolvedService}MarkIcon`]]}
-          />
+          {iconLoadFailed ? (
+            <Text
+              allowFontScaling={false}
+              style={[styles.markFallbackGlyph, styles[`${resolvedService}MarkFallbackGlyph`]]}
+              testID={testID ? `${testID}-fallback-glyph` : undefined}
+            >
+              {fallbackGlyph}
+            </Text>
+          ) : (
+            <Image
+              accessibilityIgnoresInvertColors
+              fadeDuration={0}
+              onError={() => setIconLoadFailed(true)}
+              source={serviceIconSource}
+              style={[styles.markIcon, styles[`${resolvedService}MarkIcon`]]}
+              testID={testID ? `${testID}-icon` : undefined}
+            />
+          )}
         </View>
         <Text
           allowFontScaling
@@ -143,6 +167,11 @@ function createStyles(theme: MobileTheme) {
       height: 14,
       resizeMode: 'contain',
     },
+    markFallbackGlyph: {
+      ...metaTypography,
+      fontWeight: '800',
+      letterSpacing: 0.3,
+    },
     buttonLabelDisabled: {
       color: theme.colors.text.tertiary,
     },
@@ -159,6 +188,9 @@ function createStyles(theme: MobileTheme) {
     spotifyMarkIcon: {
       tintColor: theme.colors.text.inverse,
     },
+    spotifyMarkFallbackGlyph: {
+      color: theme.colors.text.inverse,
+    },
     youtubeMusicButton: {
       backgroundColor: theme.colors.service.youtubeMusic.bg,
       borderColor: theme.colors.service.youtubeMusic.icon,
@@ -172,6 +204,9 @@ function createStyles(theme: MobileTheme) {
     youtubeMusicMarkIcon: {
       tintColor: theme.colors.text.inverse,
     },
+    youtubeMusicMarkFallbackGlyph: {
+      color: theme.colors.text.inverse,
+    },
     youtubeMvButton: {
       backgroundColor: theme.colors.service.youtubeMv.bg,
       borderColor: theme.colors.service.youtubeMv.icon,
@@ -184,6 +219,9 @@ function createStyles(theme: MobileTheme) {
     },
     youtubeMvMarkIcon: {
       tintColor: theme.colors.text.inverse,
+    },
+    youtubeMvMarkFallbackGlyph: {
+      color: theme.colors.text.inverse,
     },
     modeHint: {
       ...metaTypography,

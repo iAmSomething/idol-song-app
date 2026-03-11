@@ -4,6 +4,9 @@ import {
   badgeFallbackAssets,
   resolveFallbackArtSource,
   resolveLaunchMarkSource,
+  resolveServiceIconFallbackGlyph,
+  resolveServiceIconSource,
+  serviceIconAssets,
 } from './assetRegistry';
 
 describe('asset registry', () => {
@@ -22,5 +25,12 @@ describe('asset registry', () => {
   test('resolves launch mark by scheme', () => {
     expect(resolveLaunchMarkSource('light')).toBe(launchMarkAssets.light);
     expect(resolveLaunchMarkSource('dark')).toBe(launchMarkAssets.dark);
+  });
+
+  test('resolves service icon sources and fallback glyphs', () => {
+    expect(resolveServiceIconSource('spotify')).toBe(serviceIconAssets.spotify.source);
+    expect(resolveServiceIconSource('youtubeMusic')).toBe(serviceIconAssets.youtubeMusic.source);
+    expect(resolveServiceIconFallbackGlyph('spotify')).toBe('SP');
+    expect(resolveServiceIconFallbackGlyph('youtubeMv')).toBe('MV');
   });
 });

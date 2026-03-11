@@ -133,6 +133,41 @@ describe('mobile backend read client', () => {
     expect(response.detail.data.release.release_id).toBe('release-uuid-1');
   });
 
+  test('reads canonical release ids directly without attempting the legacy lookup helper', async () => {
+    const fetchMock = jest.fn(async () =>
+      createJsonResponse({
+        meta: {
+          generatedAt: '2026-03-10T00:00:01.000Z',
+        },
+        data: {
+          release: {
+            release_id: '550e8400-e29b-41d4-a716-446655440000',
+            entity_slug: 'ive',
+            display_name: 'IVE',
+            release_title: 'REVIVE+',
+            release_date: '2026-02-23',
+            stream: 'album',
+            release_kind: 'ep',
+          },
+          tracks: [],
+          mv: {
+            status: 'unresolved',
+          },
+        },
+      }),
+    );
+
+    const client = createBackendReadClient(buildRuntimeConfig(), fetchMock as unknown as typeof fetch);
+    const response = await client.getReleaseDetailForRouteId('550e8400-e29b-41d4-a716-446655440000');
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [firstRequestUrl] = fetchMock.mock.calls[0] as unknown as [string, RequestInit | undefined];
+    expect(firstRequestUrl).toBe(
+      'https://example.com/api/v1/releases/550e8400-e29b-41d4-a716-446655440000',
+    );
+    expect(response.data.release.release_title).toBe('REVIVE+');
+  });
+
   test('throws a typed error when the backend returns an error envelope', async () => {
     const fetchMock = jest.fn(async () =>
       createJsonResponse(

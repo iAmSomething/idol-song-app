@@ -135,6 +135,18 @@ function formatReleaseMeta(detail: ReleaseDetailModel): string {
   return `${detail.releaseDate} · ${getReleaseKindLabel(detail)}`;
 }
 
+function resolveTeamDetailSlug(detail: ReleaseDetailModel, teamProfileSlug?: string | null): string {
+  if (teamProfileSlug) {
+    return teamProfileSlug;
+  }
+
+  return detail.group
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 function getMvStatusCopy(status?: YoutubeVideoStatus): string | null {
   switch (status) {
     case 'manual_override':
@@ -295,13 +307,16 @@ export default function ReleaseDetailScreen() {
       }
 
       try {
-        const resolved = await client.getReleaseDetailByLegacyId(releaseId);
+        const detailResponse = await client.getReleaseDetailForRouteId(releaseId);
         return {
-          data: adaptBackendReleaseDetail(resolved.detail.data),
-          generatedAt: resolved.detail.meta?.generatedAt ?? resolved.lookup.meta?.generatedAt ?? null,
+          data: adaptBackendReleaseDetail(detailResponse.data),
+          generatedAt: detailResponse.meta?.generatedAt ?? null,
         };
       } catch (error) {
-        if (error instanceof BackendReadError && error.status === 404) {
+        if (
+          error instanceof BackendReadError &&
+          (error.status === 404 || error.code === 'invalid_release_lookup')
+        ) {
           return {
             data: null,
             generatedAt: null,
@@ -333,6 +348,7 @@ export default function ReleaseDetailScreen() {
     detail
       ? bundledProfiles.find((profile) => profile.slug === detail.group || profile.group === detail.group) ?? null
       : null;
+  const teamDetailSlug = detail ? resolveTeamDetailSlug(detail, teamProfile?.slug ?? null) : null;
 
   useEffect(() => {
     setHandoffFeedback(null);
@@ -561,13 +577,13 @@ export default function ReleaseDetailScreen() {
         title={detail.releaseTitle}
         titleTestID="release-detail-appbar-title"
         trailingActions={
-          teamProfile
+          teamDetailSlug
             ? [
                 {
                   key: 'team-page',
                   accessibilityLabel: `${detail.displayGroup} 팀 페이지 열기`,
                   label: MOBILE_COPY.action.teamPage,
-                  onPress: () => router.push(`/artists/${teamProfile.slug}`),
+                  onPress: () => router.push(`/artists/${teamDetailSlug}`),
                   testID: 'release-appbar-team-page',
                 },
           ]
