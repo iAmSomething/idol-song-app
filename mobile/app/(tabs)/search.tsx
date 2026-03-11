@@ -233,6 +233,10 @@ export default function SearchTabScreen() {
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const [recentQueries, setRecentQueries] = useState<string[]>([]);
   const deferredQuery = useDeferredValue(query);
+  const routeQuery = useDebouncedValue(query, 250, {
+    enabled: isInputFocused,
+    shouldFlush: (nextValue) => nextValue.trim().length === 0,
+  });
   const runtimeConfigState = useMemo(() => getRuntimeConfigState(), []);
   const shouldDebounceSearchQuery = useMemo(
     () =>
@@ -371,9 +375,11 @@ export default function SearchTabScreen() {
       activeSegment: routeState.activeSegment,
       query: routeState.query,
     });
+    const nextRouteQuery =
+      activeSegment !== routeState.activeSegment ? query : routeQuery;
     const nextRouteParams = buildSearchRouteParams({
       activeSegment,
-      query,
+      query: nextRouteQuery,
     });
 
     if (areRouteParamsEqual(currentRouteParams, nextRouteParams)) {
@@ -381,7 +387,7 @@ export default function SearchTabScreen() {
     }
 
     router.setParams(nextRouteParams);
-  }, [activeSegment, query, routeState.activeSegment, routeState.query, router]);
+  }, [activeSegment, query, routeQuery, routeState.activeSegment, routeState.query, router]);
 
   async function rememberQuery(nextQuery: string) {
     const history = await persistRecentQuery(nextQuery);
