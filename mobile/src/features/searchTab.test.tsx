@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 
 import SearchTabScreen from '../../app/(tabs)/search';
 import { trackAnalyticsEvent } from '../services/analytics';
-import { openServiceHandoff } from '../services/handoff';
+import { openServiceHandoff, openXSearchHandoff } from '../services/handoff';
 import { persistRecentQuery, readRecentQueries } from '../services/recentQueries';
 import { resetStorageAdapter, setStorageAdapter, type KeyValueStorageAdapter } from '../services/storage';
 
@@ -53,6 +53,7 @@ jest.mock('../services/handoff', () => {
   return {
     ...actual,
     openServiceHandoff: jest.fn(),
+    openXSearchHandoff: jest.fn(),
   };
 });
 
@@ -65,6 +66,7 @@ const { __mock } = jest.requireMock('expo-router') as {
 };
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
 const mockOpenServiceHandoff = jest.mocked(openServiceHandoff);
+const mockOpenXSearchHandoff = jest.mocked(openXSearchHandoff);
 
 async function renderSearchScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -90,12 +92,19 @@ describe('mobile search tab', () => {
     __mock.push.mockClear();
     mockTrackAnalyticsEvent.mockClear();
     mockOpenServiceHandoff.mockReset();
+    mockOpenXSearchHandoff.mockReset();
     mockOpenServiceHandoff.mockResolvedValue({
       ok: true,
       service: 'spotify',
       mode: 'canonical',
       target: 'primary',
       openedUrl: 'https://open.spotify.com/track/test',
+    });
+    mockOpenXSearchHandoff.mockResolvedValue({
+      ok: true,
+      mode: 'release_backed',
+      target: 'web',
+      openedUrl: 'https://x.com/search?q=YENA',
     });
   });
 
@@ -156,6 +165,11 @@ describe('mobile search tab', () => {
         testID: 'search-upcoming-result-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
       }),
     ).toBeDefined();
+    expect(
+      tree.root.findByProps({
+        testID: 'search-upcoming-x-search-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
+      }),
+    ).toBeDefined();
 
     await act(async () => {
       tree.root
@@ -169,6 +183,24 @@ describe('mobile search tab', () => {
       pathname: '/artists/[slug]',
       params: { slug: 'yena' },
     });
+
+    await act(async () => {
+      await tree.root
+        .findByProps({
+          testID: 'search-upcoming-x-search-yena--yena-confirms-a-march-11-comeback--2026-03-11--album',
+        })
+        .props.onPress();
+    });
+
+    expect(mockOpenXSearchHandoff).toHaveBeenCalled();
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'x_search_handoff_opened_web',
+      expect.objectContaining({
+        surface: 'search',
+        entitySlug: 'yena',
+        mode: 'release_backed',
+      }),
+    );
 
     await act(async () => {
       await tree.root.findByProps({ testID: 'search-input' }).props.onSubmitEditing();

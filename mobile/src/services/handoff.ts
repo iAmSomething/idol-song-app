@@ -4,6 +4,8 @@ export type MusicService = 'spotify' | 'youtubeMusic' | 'youtubeMv';
 export type ServiceHandoffMode = 'canonical' | 'searchFallback';
 export type ServiceHandoffTarget = 'primary' | 'browserFallback';
 export type ServiceHandoffFailureCode = 'handoff_unavailable' | 'handoff_open_failed';
+export type XSearchHandoffTarget = 'app' | 'web';
+export type XSearchQueryMode = 'entity_only' | 'release_backed';
 
 export type ServiceHandoffResolution = {
   service: MusicService;
@@ -40,6 +42,37 @@ export type ServiceHandoffSuccess = {
 
 export type ServiceHandoffResult = ServiceHandoffSuccess | ServiceHandoffFailure;
 
+export type XSearchHandoffResolution = {
+  query: string;
+  mode: XSearchQueryMode;
+  appUrls: string[];
+  webUrl: string;
+};
+
+export type XSearchHandoffFailure = {
+  ok: false;
+  code: ServiceHandoffFailureCode;
+  mode: XSearchQueryMode;
+  target: XSearchHandoffTarget | null;
+  attemptedUrl: string | null;
+  feedback: {
+    level: 'warning';
+    retryable: boolean;
+    message:
+      | '지금은 열 수 있는 X 검색 경로가 없습니다.'
+      | 'X를 열지 못했습니다. 같은 화면에서 다시 시도해 주세요.';
+  };
+};
+
+export type XSearchHandoffSuccess = {
+  ok: true;
+  mode: XSearchQueryMode;
+  target: XSearchHandoffTarget;
+  openedUrl: string;
+};
+
+export type XSearchHandoffResult = XSearchHandoffSuccess | XSearchHandoffFailure;
+
 export type HandoffLinkingAdapter = {
   canOpenURL(url: string): Promise<boolean>;
   openURL(url: string): Promise<unknown>;
@@ -62,6 +95,12 @@ function isServiceHandoffFailure(
   return 'ok' in handoff;
 }
 
+function isXSearchHandoffFailure(
+  handoff: XSearchHandoffResolution | XSearchHandoffFailure,
+): handoff is XSearchHandoffFailure {
+  return 'ok' in handoff;
+}
+
 const CANONICAL_HOSTS: Record<MusicService, Set<string>> = {
   spotify: new Set(['open.spotify.com']),
   youtubeMusic: new Set(['music.youtube.com']),
@@ -70,6 +109,67 @@ const CANONICAL_HOSTS: Record<MusicService, Set<string>> = {
 
 function normalizeQuery(query: string): string {
   return query.trim().replace(/\s+/g, ' ');
+}
+
+function normalizeEntitySearchToken(value: string): string {
+  return normalizeQuery(value).replace(/^["']+|["']+$/g, '');
+}
+
+function canonicalizeSearchToken(value: string): string {
+  return normalizeEntitySearchToken(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9가-힣]+/g, '');
+}
+
+function containsHangul(value: string): boolean {
+  return /[가-힣]/.test(value);
+}
+
+function containsLatin(value: string): boolean {
+  return /[A-Za-z]/.test(value);
+}
+
+function formatXSearchToken(value: string): string {
+  const normalized = normalizeEntitySearchToken(value);
+  if (!normalized) {
+    return '';
+  }
+
+  if (/[^A-Za-z0-9_-]/.test(normalized) || containsHangul(normalized)) {
+    return `"${normalized}"`;
+  }
+
+  return normalized;
+}
+
+function pushUniqueSearchToken(collection: string[], token: string): void {
+  const normalized = normalizeEntitySearchToken(token);
+  if (!normalized) {
+    return;
+  }
+
+  const canonical = canonicalizeSearchToken(normalized);
+  if (!canonical) {
+    return;
+  }
+
+  if (collection.some((existing) => canonicalizeSearchToken(existing) === canonical)) {
+    return;
+  }
+
+  collection.push(normalized);
+}
+
+function isRedundantReleaseSearchToken(
+  token: string,
+  entityTokens: string[],
+): boolean {
+  const canonical = canonicalizeSearchToken(token);
+  if (!canonical) {
+    return true;
+  }
+
+  return entityTokens.some((entityToken) => canonicalizeSearchToken(entityToken) === canonical);
 }
 
 function tryParseUrl(value: string | null | undefined): URL | null {
@@ -126,6 +226,67 @@ export function buildServiceSearchFallbackUrl(service: MusicService, query: stri
   }
 
   return `https://www.youtube.com/results?search_query=${encodeURIComponent(`${normalizedQuery} official mv`)}`;
+}
+
+export function buildXSearchWebFallbackUrl(query: string): string {
+  return `https://x.com/search?q=${encodeURIComponent(normalizeQuery(query))}&src=typed_query`;
+}
+
+export function buildEntityCenteredXSearchQuery(input: {
+  displayName: string;
+  searchTokens?: string[];
+  releaseLabel?: string | null;
+}): { query: string; mode: XSearchQueryMode } {
+  const orderedEntityTokens: string[] = [];
+  pushUniqueSearchToken(orderedEntityTokens, input.displayName);
+
+  for (const token of input.searchTokens ?? []) {
+    pushUniqueSearchToken(orderedEntityTokens, token);
+  }
+
+  const selectedEntityTokens: string[] = [];
+  const koreanToken = orderedEntityTokens.find(containsHangul);
+  const englishToken = orderedEntityTokens.find(containsLatin);
+  const representativeAlias = orderedEntityTokens.find((token) => {
+    const canonical = canonicalizeSearchToken(token);
+    return (
+      canonical &&
+      canonical !== canonicalizeSearchToken(koreanToken ?? '') &&
+      canonical !== canonicalizeSearchToken(englishToken ?? '')
+    );
+  });
+
+  if (koreanToken) {
+    pushUniqueSearchToken(selectedEntityTokens, koreanToken);
+  }
+  if (englishToken) {
+    pushUniqueSearchToken(selectedEntityTokens, englishToken);
+  }
+  if (representativeAlias) {
+    pushUniqueSearchToken(selectedEntityTokens, representativeAlias);
+  }
+  if (selectedEntityTokens.length === 0) {
+    pushUniqueSearchToken(selectedEntityTokens, input.displayName);
+  }
+
+  const releaseLabel = normalizeEntitySearchToken(input.releaseLabel ?? '');
+  const mode: XSearchQueryMode =
+    releaseLabel && !isRedundantReleaseSearchToken(releaseLabel, selectedEntityTokens)
+      ? 'release_backed'
+      : 'entity_only';
+
+  const entityClause = selectedEntityTokens.map(formatXSearchToken).filter(Boolean).join(' OR ');
+  if (mode === 'release_backed') {
+    return {
+      query: normalizeQuery(`${entityClause} ${formatXSearchToken(releaseLabel)}`),
+      mode,
+    };
+  }
+
+  return {
+    query: entityClause,
+    mode,
+  };
 }
 
 export function normalizeCanonicalServiceUrl(service: MusicService, value: string | null | undefined): string | null {
@@ -203,6 +364,41 @@ export function resolveServiceHandoff(input: {
   };
 }
 
+export function resolveXSearchHandoff(input: {
+  query: string;
+  mode?: XSearchQueryMode;
+}): XSearchHandoffResolution | XSearchHandoffFailure {
+  const query = normalizeQuery(input.query);
+  const mode = input.mode ?? 'entity_only';
+
+  if (!query) {
+    return {
+      ok: false,
+      code: 'handoff_unavailable',
+      mode,
+      target: null,
+      attemptedUrl: null,
+      feedback: {
+        level: 'warning',
+        retryable: false,
+        message: '지금은 열 수 있는 X 검색 경로가 없습니다.',
+      },
+    };
+  }
+
+  const encodedQuery = encodeURIComponent(query);
+
+  return {
+    query,
+    mode,
+    appUrls: [
+      `twitter://search?query=${encodedQuery}`,
+      `x://search?query=${encodedQuery}`,
+    ],
+    webUrl: buildXSearchWebFallbackUrl(query),
+  };
+}
+
 export async function openServiceHandoff(
   handoff: ServiceHandoffResolution | ServiceHandoffFailure,
   adapter: HandoffLinkingAdapter = DEFAULT_LINKING_ADAPTER,
@@ -258,6 +454,52 @@ export async function openServiceHandoff(
   };
 }
 
+export async function openXSearchHandoff(
+  handoff: XSearchHandoffResolution | XSearchHandoffFailure,
+  adapter: HandoffLinkingAdapter = DEFAULT_LINKING_ADAPTER,
+): Promise<XSearchHandoffResult> {
+  if (isXSearchHandoffFailure(handoff)) {
+    return handoff;
+  }
+
+  const attempts: { target: XSearchHandoffTarget; url: string }[] = [
+    ...handoff.appUrls.map((url) => ({ target: 'app' as const, url })),
+    { target: 'web' as const, url: handoff.webUrl },
+  ];
+
+  for (const attempt of attempts) {
+    try {
+      const canOpen = await adapter.canOpenURL(attempt.url);
+      if (!canOpen) {
+        continue;
+      }
+
+      await adapter.openURL(attempt.url);
+      return {
+        ok: true,
+        mode: handoff.mode,
+        target: attempt.target,
+        openedUrl: attempt.url,
+      };
+    } catch {
+      continue;
+    }
+  }
+
+  return {
+    ok: false,
+    code: 'handoff_open_failed',
+    mode: handoff.mode,
+    target: 'web',
+    attemptedUrl: handoff.webUrl,
+    feedback: {
+      level: 'warning',
+      retryable: true,
+      message: 'X를 열지 못했습니다. 같은 화면에서 다시 시도해 주세요.',
+    },
+  };
+}
+
 export function describeServiceHandoffBehavior(
   handoff: ServiceHandoffResolution | ServiceHandoffFailure,
 ): string {
@@ -276,6 +518,20 @@ export function describeServiceHandoffBehavior(
   }
 
   return `${serviceLabel} 설치 여부와 관계없이 검색 결과로 엽니다.`;
+}
+
+export function describeXSearchHandoffBehavior(
+  handoff: XSearchHandoffResolution | XSearchHandoffFailure,
+): string {
+  if (isXSearchHandoffFailure(handoff)) {
+    if (handoff.code === 'handoff_unavailable') {
+      return '현재는 X 검색으로 연결할 수 있는 엔티티 키워드가 아직 준비되지 않았습니다.';
+    }
+
+    return 'X 앱 연결에 실패해도 현재 화면을 유지한 채 다시 시도할 수 있습니다.';
+  }
+
+  return 'X 앱이 있으면 앱으로, 없으면 x.com 검색 결과로 엽니다.';
 }
 
 export function resolveServiceHandoffGroup(input: {

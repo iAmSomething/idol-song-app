@@ -3,6 +3,7 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import ArtistDetailScreen from '../../app/artists/[slug]';
+import { openXSearchHandoff } from '../services/handoff';
 
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({ slug: 'yena' }));
@@ -29,6 +30,14 @@ jest.mock('expo-router', () => {
     },
   };
 });
+jest.mock('../services/handoff', () => {
+  const actual = jest.requireActual('../services/handoff') as typeof import('../services/handoff');
+
+  return {
+    ...actual,
+    openXSearchHandoff: jest.fn(),
+  };
+});
 
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
@@ -36,6 +45,7 @@ const { __mock } = jest.requireMock('expo-router') as {
     useRouter: jest.Mock;
   };
 };
+const mockOpenXSearchHandoff = jest.mocked(openXSearchHandoff);
 
 async function renderArtistDetail() {
   let tree: renderer.ReactTestRenderer;
@@ -63,6 +73,13 @@ describe('mobile entity detail screen', () => {
       back: jest.fn(),
       push: jest.fn(),
     });
+    mockOpenXSearchHandoff.mockReset();
+    mockOpenXSearchHandoff.mockResolvedValue({
+      ok: true,
+      mode: 'release_backed',
+      target: 'web',
+      openedUrl: 'https://x.com/search?q=YENA',
+    });
   });
 
   test('renders populated entity detail sections for a tracked team', async () => {
@@ -83,6 +100,7 @@ describe('mobile entity detail screen', () => {
     );
     expect(tree.root.findByProps({ testID: 'entity-artist-source-link' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-next-upcoming-card' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'entity-next-upcoming-x-search' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-latest-release-card' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-latest-release-primary' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-latest-release-service-spotify' })).toBeDefined();
@@ -99,11 +117,13 @@ describe('mobile entity detail screen', () => {
 
     await act(async () => {
       tree.root.findByProps({ testID: 'entity-detail-back' }).props.onPress();
+      await tree.root.findByProps({ testID: 'entity-next-upcoming-x-search' }).props.onPress();
       tree.root.findByProps({ testID: 'entity-latest-release-primary' }).props.onPress();
       tree.root.findByProps({ testID: 'entity-recent-album-single-card-yena--love-catcher--2026-03-11--album' }).props.onPress();
     });
 
     expect(back).toHaveBeenCalledTimes(1);
+    expect(mockOpenXSearchHandoff).toHaveBeenCalled();
     expect(push).toHaveBeenCalledWith({
       pathname: '/releases/[id]',
       params: { id: 'yena--love-catcher--2026-03-11--album' },

@@ -139,6 +139,28 @@ export type AnalyticsEventMap = {
     target: ServiceHandoffTarget | null;
     failureCode: ServiceHandoffFailureCode | null;
   };
+  x_search_handoff_attempted: {
+    surface: AnalyticsSurface;
+    entitySlug: string | null;
+    mode: 'entity_only' | 'release_backed';
+  };
+  x_search_handoff_opened_app: {
+    surface: AnalyticsSurface;
+    entitySlug: string | null;
+    mode: 'entity_only' | 'release_backed';
+  };
+  x_search_handoff_opened_web: {
+    surface: AnalyticsSurface;
+    entitySlug: string | null;
+    mode: 'entity_only' | 'release_backed';
+  };
+  x_search_handoff_failed: {
+    surface: AnalyticsSurface;
+    entitySlug: string | null;
+    mode: 'entity_only' | 'release_backed';
+    failureCode: ServiceHandoffFailureCode;
+    retryable: boolean;
+  };
   dataset_degraded: {
     surface: AnalyticsSurface;
     activeSource: string;

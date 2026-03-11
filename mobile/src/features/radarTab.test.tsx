@@ -9,6 +9,7 @@ import {
   loadActiveMobileDataset,
   type ActiveMobileDataset,
 } from '../services/activeDataset';
+import { openXSearchHandoff } from '../services/handoff';
 import { trackAnalyticsEvent, trackDatasetDegraded, trackDatasetLoadFailed } from '../services/analytics';
 import { cloneBundledDatasetFixture } from '../services/bundledDatasetFixture';
 import { createBundledDatasetSelection } from '../services/datasetSource';
@@ -81,6 +82,14 @@ jest.mock('../services/analytics', () => {
     trackFailureObserved: jest.fn(),
   };
 });
+jest.mock('../services/handoff', () => {
+  const actual = jest.requireActual('../services/handoff') as typeof import('../services/handoff');
+
+  return {
+    ...actual,
+    openXSearchHandoff: jest.fn(),
+  };
+});
 
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
@@ -95,6 +104,7 @@ const mockSelectRadarSnapshot = jest.mocked(selectRadarSnapshot);
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
 const mockTrackDatasetDegraded = jest.mocked(trackDatasetDegraded);
 const mockTrackDatasetLoadFailed = jest.mocked(trackDatasetLoadFailed);
+const mockOpenXSearchHandoff = jest.mocked(openXSearchHandoff);
 const runtimeModule = jest.requireMock('../config/runtime') as {
   getRuntimeConfigState: jest.Mock;
   getRuntimeConfig: jest.Mock;
@@ -180,6 +190,13 @@ describe('mobile radar tab', () => {
     mockTrackAnalyticsEvent.mockClear();
     mockTrackDatasetDegraded.mockClear();
     mockTrackDatasetLoadFailed.mockClear();
+    mockOpenXSearchHandoff.mockReset();
+    mockOpenXSearchHandoff.mockResolvedValue({
+      ok: true,
+      mode: 'release_backed',
+      target: 'app',
+      openedUrl: 'twitter://search?query=YENA',
+    });
     mockLoadActiveMobileDataset.mockResolvedValue(createSource());
 
     const actualSelectors = jest.requireActual('../selectors') as typeof import('../selectors');
@@ -195,11 +212,28 @@ describe('mobile radar tab', () => {
     expect(tree.root.findByProps({ testID: 'radar-featured-card' }).props.accessibilityLabel).toContain('YENA');
     expect(tree.root.findByProps({ testID: 'radar-weekly-card-yena' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-change-card-p1harmony' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'radar-featured-x-search' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'radar-weekly-card-yena-x-search' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'radar-change-x-search-p1harmony' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-long-gap-card-weeekly' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'radar-rookie-card-atheart' })).toBeDefined();
     expect(tree.root.findAllByProps({ testID: 'radar-dataset-risk-notice' })).toHaveLength(0);
     expect(tree.root.findAllByProps({ testID: 'radar-partial-notice' })).toHaveLength(0);
     expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith('radar_viewed', { enabledSections: 4 });
+
+    await act(async () => {
+      await tree.root.findByProps({ testID: 'radar-featured-x-search' }).props.onPress();
+    });
+
+    expect(mockOpenXSearchHandoff).toHaveBeenCalled();
+    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
+      'x_search_handoff_opened_app',
+      expect.objectContaining({
+        surface: 'radar',
+        entitySlug: 'yena',
+        mode: 'release_backed',
+      }),
+    );
   });
 
   test('shows a degraded-state notice while keeping usable cards visible', async () => {
