@@ -7,6 +7,8 @@ import { openServiceHandoff, openXSearchHandoff } from '../services/handoff';
 import { persistRecentQuery, readRecentQueries } from '../services/recentQueries';
 import { resetStorageAdapter, setStorageAdapter, type KeyValueStorageAdapter } from '../services/storage';
 
+let mockRouteParams: Record<string, string> = {};
+
 function createMemoryStorage(): KeyValueStorageAdapter {
   const values = new Map<string, string>();
 
@@ -25,13 +27,20 @@ function createMemoryStorage(): KeyValueStorageAdapter {
 
 jest.mock('expo-router', () => {
   const push = jest.fn();
-  const setParams = jest.fn();
-  const useLocalSearchParams = jest.fn(() => ({}));
+  const setParams = jest.fn((nextParams: Record<string, string | undefined>) => {
+    mockRouteParams = Object.fromEntries(
+      Object.entries(nextParams).filter(([, value]) => typeof value === 'string' && value.length > 0),
+    ) as Record<string, string>;
+  });
+  const useLocalSearchParams = jest.fn(() => mockRouteParams);
+  const setLocalSearchParams = (nextParams: Record<string, string>) => {
+    mockRouteParams = { ...nextParams };
+  };
 
   return {
     useRouter: () => ({ push, setParams }),
     useLocalSearchParams,
-    __mock: { push, setParams, useLocalSearchParams },
+    __mock: { push, setParams, useLocalSearchParams, setLocalSearchParams },
   };
 });
 
@@ -62,6 +71,7 @@ const { __mock } = jest.requireMock('expo-router') as {
     push: jest.Mock;
     setParams: jest.Mock;
     useLocalSearchParams: jest.Mock;
+    setLocalSearchParams: (nextParams: Record<string, string>) => void;
   };
 };
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
@@ -87,7 +97,8 @@ function hasText(tree: renderer.ReactTestRenderer, value: string): boolean {
 describe('mobile search tab', () => {
   beforeEach(() => {
     setStorageAdapter(createMemoryStorage());
-    __mock.useLocalSearchParams.mockReturnValue({});
+    __mock.setLocalSearchParams({});
+    __mock.useLocalSearchParams.mockImplementation(() => mockRouteParams);
     __mock.setParams.mockClear();
     __mock.push.mockClear();
     mockTrackAnalyticsEvent.mockClear();
@@ -110,6 +121,7 @@ describe('mobile search tab', () => {
 
   afterEach(() => {
     resetStorageAdapter();
+    jest.useRealTimers();
   });
 
   test('renders sectioned results for alias queries and persists recent searches on submit', async () => {
@@ -249,7 +261,7 @@ describe('mobile search tab', () => {
   });
 
   test('restores query and segment state from route params', async () => {
-    __mock.useLocalSearchParams.mockReturnValue({
+    __mock.setLocalSearchParams({
       q: '최예나',
       segment: 'upcoming',
     });
@@ -271,7 +283,7 @@ describe('mobile search tab', () => {
   });
 
   test('returns to the default state when clearing or cancelling a query', async () => {
-    __mock.useLocalSearchParams.mockReturnValue({
+    __mock.setLocalSearchParams({
       q: '최예나',
       segment: 'upcoming',
     });
@@ -384,5 +396,56 @@ describe('mobile search tab', () => {
     });
 
     expect(tree.root.findByProps({ testID: 'search-handoff-feedback' })).toBeDefined();
+  });
+
+  test('debounces route param sync during typing but flushes clear and segment changes immediately', async () => {
+    jest.useFakeTimers();
+    const tree = await renderSearchScreen();
+
+    __mock.setParams.mockClear();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-input' }).props.onFocus();
+      tree.root.findByProps({ testID: 'search-input' }).props.onChangeText('최예나');
+    });
+
+    expect(__mock.setParams).not.toHaveBeenCalled();
+
+    await act(async () => {
+      jest.advanceTimersByTime(249);
+    });
+
+    expect(__mock.setParams).not.toHaveBeenCalled();
+
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+    });
+
+    expect(__mock.setParams).toHaveBeenLastCalledWith({
+      q: '최예나',
+      segment: 'entities',
+    });
+
+    __mock.setParams.mockClear();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-segment-releases' }).props.onPress();
+    });
+
+    expect(__mock.setParams).toHaveBeenLastCalledWith({
+      q: '최예나',
+      segment: 'releases',
+    });
+
+    __mock.setParams.mockClear();
+
+    await act(async () => {
+      tree.root.findByProps({ testID: 'search-clear-button' }).props.onPress();
+    });
+
+    expect(__mock.setParams).toHaveBeenLastCalledWith({
+      q: undefined,
+      segment: undefined,
+    });
   });
 });
