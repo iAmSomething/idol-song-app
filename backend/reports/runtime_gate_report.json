@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T09:17:40.447Z",
+  "generated_at": "2026-03-11T12:19:17.341Z",
   "report_bundle": {
     "generated_at": "2026-03-11T09:16:25.280Z",
     "bundle_id": "post-sync-verification-57fe974c438e",
@@ -74,17 +74,19 @@
     ]
   },
   "bundle_consistency": {
-    "status": "pass",
+    "status": "fail",
     "expected_bundle_id": "post-sync-verification-57fe974c438e",
     "observed": {
       "parity_bundle": "post-sync-verification-57fe974c438e",
       "shadow_bundle": "post-sync-verification-57fe974c438e",
       "runtime_gate_bundle": null,
-      "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z",
+      "historical_coverage_generated_at": "2026-03-11T00:00:00.000Z",
       "canonical_null_coverage_generated_at": "2026-03-11T08:30:30.464Z",
       "null_coverage_trend_generated_at": "2026-03-11T08:30:32.119Z"
     },
-    "mismatches": []
+    "mismatches": [
+      "historical coverage drift (2026-03-11T00:00:00.000Z)"
+    ]
   },
   "thresholds": {
     "latency": {
@@ -122,13 +124,13 @@
   "summary_lines": [
     "api latency: needs_review (worst p95=1148.96ms)",
     "api error rate: needs_review (error rate=0)",
-    "projection freshness: fail (lag=83.71m)",
-    "worker cadence: fail (failure rate=n/a)",
+    "projection freshness: fail (lag=265.33m)",
+    "worker cadence: fail (cadence_status=scheduled_evidence_missing, missed_windows=5)",
     "parity dependency: fail",
     "shadow dependency: fail",
     "historical catalog completeness dependency: fail",
     "critical null coverage dependency: fail",
-    "bundle consistency: pass",
+    "bundle consistency: fail",
     "shadow -> web cutover gate: fail",
     "web cutover -> JSON demotion gate: fail"
   ],
@@ -161,7 +163,7 @@
       "status": "fail",
       "observed": {
         "projection_generated_at": "2026-03-11T07:53:57.809Z",
-        "lag_minutes": 83.71
+        "lag_minutes": 265.33
       },
       "thresholds": {
         "passLagMinutes": 20,
@@ -176,7 +178,28 @@
         "scheduled_failure_rate": null,
         "last_success_age_hours": null,
         "scheduled_runs": 0,
-        "cadence_status": "no_scheduled_sample"
+        "cadence_status": "scheduled_evidence_missing",
+        "scheduled_evidence": {
+          "status": "scheduled_evidence_missing",
+          "reason": "Expected scheduled run windows have elapsed without a recorded scheduled sample.",
+          "cadence_label": "daily",
+          "workflow_created_at": "2026-03-06T07:34:09.000Z",
+          "workflow_updated_at": "2026-03-11T09:25:55.000Z",
+          "workflow_state": "active",
+          "workflow_html_url": "https://github.com/iAmSomething/idol-song-app/blob/main/.github/workflows/weekly-kpop-scan.yml",
+          "parsed_schedule": {
+            "kind": "daily",
+            "minute": 0,
+            "hour": 0
+          },
+          "warmup_grace_hours": 12,
+          "first_expected_run_at": "2026-03-07T00:00:00.000Z",
+          "next_expected_run_at": "2026-03-12T00:00:00.000Z",
+          "warmup_deadline_at": "2026-03-07T12:00:00.000Z",
+          "expected_scheduled_runs_by_now": 5,
+          "observed_scheduled_runs": 0,
+          "missed_scheduled_windows": 5
+        }
       },
       "thresholds": {
         "passFailureRate": 0.1,
@@ -226,12 +249,12 @@
       "status": "fail",
       "observed": {
         "clean": false,
-        "generated_at": "2026-03-10",
+        "generated_at": "2026-03-11",
         "summary_lines": [
           "detail payload gate: pass (total 100.0%, pre-2024 100.0%)",
           "detail trusted gate: pass (total 100.0%, pre-2024 100.0%)",
-          "title-track resolved gate: fail (total 64.5%, pre-2024 62.0%)",
-          "canonical MV gate: fail (total 6.3%, pre-2024 3.3%)"
+          "title-track resolved gate: fail (total 67.8%, pre-2024 65.2%)",
+          "canonical MV gate: fail (total 8.6%, pre-2024 6.4%)"
         ]
       },
       "label": "historical_release_detail_coverage_report"
@@ -487,19 +510,21 @@
       "label": "critical_null_coverage"
     },
     "bundle_consistency": {
-      "status": "pass",
+      "status": "fail",
       "observed": {
-        "status": "pass",
+        "status": "fail",
         "expected_bundle_id": "post-sync-verification-57fe974c438e",
         "observed": {
           "parity_bundle": "post-sync-verification-57fe974c438e",
           "shadow_bundle": "post-sync-verification-57fe974c438e",
           "runtime_gate_bundle": null,
-          "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z",
+          "historical_coverage_generated_at": "2026-03-11T00:00:00.000Z",
           "canonical_null_coverage_generated_at": "2026-03-11T08:30:30.464Z",
           "null_coverage_trend_generated_at": "2026-03-11T08:30:32.119Z"
         },
-        "mismatches": []
+        "mismatches": [
+          "historical coverage drift (2026-03-11T00:00:00.000Z)"
+        ]
       },
       "label": "report_bundle_metadata"
     }

@@ -47,6 +47,15 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 - `fail`
   - 해당 phase advance를 막는 상태
 
+worker cadence evidence에는 gate 상태와 별개로 아래 cadence status를 함께 남긴다.
+
+- `warming_up`
+  - workflow schedule은 설정됐지만, 첫 scheduled sample window가 아직 도래하지 않았거나 grace 안에 있다
+  - runtime gate에서는 `needs_review`로 해석한다
+- `scheduled_evidence_missing`
+  - 첫 scheduled sample window와 warm-up grace가 지난 뒤에도 scheduled sample이 기록되지 않았다
+  - runtime gate에서는 `fail`로 해석한다
+
 ## 5. Gate Definitions
 
 ### 5.1 API Latency
@@ -109,6 +118,9 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 
 - `daily_upcoming` fast path와 `catalog_enrichment` slow path가 같이 기록된 `worker_cadence_report.json`
 - runtime gate는 `daily_upcoming` path를 freshness primary evidence로 사용
+- scheduled event 전용 sample
+- workflow metadata(`created_at`, `updated_at`, `state`, `html_url`)
+- expected scheduled window 계산값(`first_expected_run_at`, `expected_scheduled_runs_by_now`, `missed_scheduled_windows`)
 - scheduled run failure rate
 - last successful scheduled run age
 
@@ -123,6 +135,10 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 - fast path는 daily cadence를 전제로 하므로, 마지막 성공 run이 하루를 크게 넘기면 freshness trust가 떨어진다
 - slow path는 historical enrichment / readiness evidence용으로 separate cadence를 가진다
 - preview에서는 cadence가 production보다 낮아도 되지만, rehearsal 직전에는 같은 순서로 한 번 이상 검증한다
+- scheduled sample이 0건이어도 바로 null-based fail로 보지 않는다
+  - 첫 scheduled run이 아직 오지 않았으면 `warming_up`
+  - expected scheduled window가 이미 여러 번 지났으면 `scheduled_evidence_missing`
+- `scheduled_evidence_missing`는 "evidence가 부족하다"가 아니라 "예상된 scheduled execution이 관측되지 않았다"는 운영 실패 신호다
 
 ### 5.5 Report Bundle Consistency
 
