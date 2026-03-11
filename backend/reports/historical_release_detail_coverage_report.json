@@ -1,19 +1,31 @@
 {
-  "generated_at": "2026-03-10",
+  "generated_at": "2026-03-11",
+  "execution_scope": {
+    "groups": [
+      "BLACKPINK",
+      "BTS",
+      "TWICE"
+    ],
+    "targeted_acquisition": true
+  },
   "summary_lines": [
     "detail payload coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
     "detail trusted coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
-    "title-track resolved coverage: 1141/1770 (64.5%), pre-2024 715/1153 (62.0%), review queue 629",
-    "canonical MV coverage: 112/1770 (6.3%), pre-2024 38/1153 (3.3%), mv review 2",
+    "title-track resolved coverage: 1201/1770 (67.8%), pre-2024 752/1153 (65.2%), review queue 569",
+    "canonical MV coverage: 153/1770 (8.6%), pre-2024 74/1153 (6.4%), mv review 2",
+    "external acquisition pass: YTM attempted 113, resolved 0; MV attempted 56, resolved 0, review 2",
+    "youtube MV search pass: attempted 54, resolved 41, review 13, unresolved 1616, coverage lift +1",
     "migration-critical first slice: title-track 18/18 (100.0%), canonical MV 18/18 (100.0%), gate pass",
+    "worst title-track cohort: 2021-2023 ep 31.4% / target 74.0%",
+    "worst canonical MV cohort: 2024+ single 15.4% / target 72.0%",
     "release-detail null review queue: 1754 rows",
     "historical catalog cutover gate: fail"
   ],
-  "latest_snapshot_input_rows": 121,
-  "latest_snapshot_unique_keys": 121,
+  "latest_snapshot_input_rows": 134,
+  "latest_snapshot_unique_keys": 134,
   "full_catalog_input_rows": 1770,
   "full_catalog_unique_keys": 1770,
-  "historical_input_gain_rows": 1649,
+  "historical_input_gain_rows": 1636,
   "entities_with_multiple_releases_in_input": 113,
   "sample_multi_release_entities": [
     {
@@ -70,10 +82,10 @@
   "seeded_placeholder_rows": 0,
   "rows_with_tracks_before": 1770,
   "rows_with_tracks_after": 1770,
-  "rows_with_title_track_before": 1135,
-  "rows_with_title_track_after": 1135,
-  "rows_without_title_track_before": 635,
-  "rows_without_title_track_after": 635,
+  "rows_with_title_track_before": 1195,
+  "rows_with_title_track_after": 1195,
+  "rows_without_title_track_before": 575,
+  "rows_without_title_track_after": 575,
   "completeness": {
     "overall_before": {
       "total_rows": 1770,
@@ -87,18 +99,18 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 1141,
-      "title_track_resolved_ratio": 0.6446,
-      "title_track_review_rows": 65,
-      "title_track_review_ratio": 0.0367,
+      "title_track_resolved_rows": 1201,
+      "title_track_resolved_ratio": 0.6785,
+      "title_track_review_rows": 5,
+      "title_track_review_ratio": 0.0028,
       "title_track_unresolved_rows": 564,
       "title_track_unresolved_ratio": 0.3186,
-      "canonical_mv_rows": 96,
-      "canonical_mv_ratio": 0.0542,
+      "canonical_mv_rows": 153,
+      "canonical_mv_ratio": 0.0864,
       "mv_review_rows": 2,
       "mv_review_ratio": 0.0011,
-      "mv_unresolved_rows": 1671,
-      "mv_unresolved_ratio": 0.9441,
+      "mv_unresolved_rows": 1614,
+      "mv_unresolved_ratio": 0.9119,
       "mv_no_mv_rows": 1,
       "mv_no_mv_ratio": 0.0006
     },
@@ -114,18 +126,18 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 1141,
-      "title_track_resolved_ratio": 0.6446,
-      "title_track_review_rows": 65,
-      "title_track_review_ratio": 0.0367,
+      "title_track_resolved_rows": 1201,
+      "title_track_resolved_ratio": 0.6785,
+      "title_track_review_rows": 5,
+      "title_track_review_ratio": 0.0028,
       "title_track_unresolved_rows": 564,
       "title_track_unresolved_ratio": 0.3186,
-      "canonical_mv_rows": 112,
-      "canonical_mv_ratio": 0.0633,
+      "canonical_mv_rows": 153,
+      "canonical_mv_ratio": 0.0864,
       "mv_review_rows": 2,
       "mv_review_ratio": 0.0011,
-      "mv_unresolved_rows": 1655,
-      "mv_unresolved_ratio": 0.935,
+      "mv_unresolved_rows": 1614,
+      "mv_unresolved_ratio": 0.9119,
       "mv_no_mv_rows": 1,
       "mv_no_mv_ratio": 0.0006
     },
@@ -141,18 +153,18 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 715,
-      "title_track_resolved_ratio": 0.6201,
-      "title_track_review_rows": 42,
-      "title_track_review_ratio": 0.0364,
+      "title_track_resolved_rows": 752,
+      "title_track_resolved_ratio": 0.6522,
+      "title_track_review_rows": 5,
+      "title_track_review_ratio": 0.0043,
       "title_track_unresolved_rows": 396,
       "title_track_unresolved_ratio": 0.3435,
-      "canonical_mv_rows": 38,
-      "canonical_mv_ratio": 0.033,
+      "canonical_mv_rows": 74,
+      "canonical_mv_ratio": 0.0642,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
-      "mv_unresolved_rows": 1114,
-      "mv_unresolved_ratio": 0.9662,
+      "mv_unresolved_rows": 1078,
+      "mv_unresolved_ratio": 0.935,
       "mv_no_mv_rows": 1,
       "mv_no_mv_ratio": 0.0009
     }
@@ -279,10 +291,10 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 14,
-        "title_track_resolved_ratio": 0.9333,
-        "title_track_review_rows": 1,
-        "title_track_review_ratio": 0.0667,
+        "title_track_resolved_rows": 15,
+        "title_track_resolved_ratio": 1.0,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 0,
         "title_track_unresolved_ratio": 0.0,
         "canonical_mv_rows": 0,
@@ -333,18 +345,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 20,
-        "title_track_resolved_ratio": 0.8333,
-        "title_track_review_rows": 2,
-        "title_track_review_ratio": 0.0833,
+        "title_track_resolved_rows": 21,
+        "title_track_resolved_ratio": 0.875,
+        "title_track_review_rows": 1,
+        "title_track_review_ratio": 0.0417,
         "title_track_unresolved_rows": 2,
         "title_track_unresolved_ratio": 0.0833,
-        "canonical_mv_rows": 1,
-        "canonical_mv_ratio": 0.0417,
+        "canonical_mv_rows": 3,
+        "canonical_mv_ratio": 0.125,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 23,
-        "mv_unresolved_ratio": 0.9583,
+        "mv_unresolved_rows": 21,
+        "mv_unresolved_ratio": 0.875,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -360,18 +372,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 28,
-        "title_track_resolved_ratio": 0.7778,
-        "title_track_review_rows": 2,
-        "title_track_review_ratio": 0.0556,
+        "title_track_resolved_rows": 30,
+        "title_track_resolved_ratio": 0.8333,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 6,
         "title_track_unresolved_ratio": 0.1667,
-        "canonical_mv_rows": 5,
-        "canonical_mv_ratio": 0.1389,
+        "canonical_mv_rows": 6,
+        "canonical_mv_ratio": 0.1667,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 31,
-        "mv_unresolved_ratio": 0.8611,
+        "mv_unresolved_rows": 30,
+        "mv_unresolved_ratio": 0.8333,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -387,18 +399,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 33,
-        "title_track_resolved_ratio": 0.6735,
-        "title_track_review_rows": 1,
-        "title_track_review_ratio": 0.0204,
+        "title_track_resolved_rows": 34,
+        "title_track_resolved_ratio": 0.6939,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 15,
         "title_track_unresolved_ratio": 0.3061,
-        "canonical_mv_rows": 3,
-        "canonical_mv_ratio": 0.0612,
+        "canonical_mv_rows": 4,
+        "canonical_mv_ratio": 0.0816,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 46,
-        "mv_unresolved_ratio": 0.9388,
+        "mv_unresolved_rows": 45,
+        "mv_unresolved_ratio": 0.9184,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -414,18 +426,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 44,
-        "title_track_resolved_ratio": 0.5867,
-        "title_track_review_rows": 4,
-        "title_track_review_ratio": 0.0533,
+        "title_track_resolved_rows": 47,
+        "title_track_resolved_ratio": 0.6267,
+        "title_track_review_rows": 1,
+        "title_track_review_ratio": 0.0133,
         "title_track_unresolved_rows": 27,
         "title_track_unresolved_ratio": 0.36,
-        "canonical_mv_rows": 6,
-        "canonical_mv_ratio": 0.08,
+        "canonical_mv_rows": 9,
+        "canonical_mv_ratio": 0.12,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 69,
-        "mv_unresolved_ratio": 0.92,
+        "mv_unresolved_rows": 66,
+        "mv_unresolved_ratio": 0.88,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -441,18 +453,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 63,
-        "title_track_resolved_ratio": 0.6774,
-        "title_track_review_rows": 3,
-        "title_track_review_ratio": 0.0323,
+        "title_track_resolved_rows": 66,
+        "title_track_resolved_ratio": 0.7097,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 27,
         "title_track_unresolved_ratio": 0.2903,
-        "canonical_mv_rows": 7,
-        "canonical_mv_ratio": 0.0753,
+        "canonical_mv_rows": 10,
+        "canonical_mv_ratio": 0.1075,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 85,
-        "mv_unresolved_ratio": 0.914,
+        "mv_unresolved_rows": 82,
+        "mv_unresolved_ratio": 0.8817,
         "mv_no_mv_rows": 1,
         "mv_no_mv_ratio": 0.0108
       },
@@ -468,18 +480,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 64,
-        "title_track_resolved_ratio": 0.5981,
-        "title_track_review_rows": 4,
-        "title_track_review_ratio": 0.0374,
+        "title_track_resolved_rows": 67,
+        "title_track_resolved_ratio": 0.6262,
+        "title_track_review_rows": 1,
+        "title_track_review_ratio": 0.0093,
         "title_track_unresolved_rows": 39,
         "title_track_unresolved_ratio": 0.3645,
-        "canonical_mv_rows": 2,
-        "canonical_mv_ratio": 0.0187,
+        "canonical_mv_rows": 6,
+        "canonical_mv_ratio": 0.0561,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 105,
-        "mv_unresolved_ratio": 0.9813,
+        "mv_unresolved_rows": 101,
+        "mv_unresolved_ratio": 0.9439,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -495,18 +507,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 78,
-        "title_track_resolved_ratio": 0.6094,
-        "title_track_review_rows": 6,
-        "title_track_review_ratio": 0.0469,
+        "title_track_resolved_rows": 83,
+        "title_track_resolved_ratio": 0.6484,
+        "title_track_review_rows": 1,
+        "title_track_review_ratio": 0.0078,
         "title_track_unresolved_rows": 44,
         "title_track_unresolved_ratio": 0.3438,
-        "canonical_mv_rows": 6,
-        "canonical_mv_ratio": 0.0469,
+        "canonical_mv_rows": 15,
+        "canonical_mv_ratio": 0.1172,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 122,
-        "mv_unresolved_ratio": 0.9531,
+        "mv_unresolved_rows": 113,
+        "mv_unresolved_ratio": 0.8828,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -522,18 +534,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 92,
-        "title_track_resolved_ratio": 0.5644,
-        "title_track_review_rows": 7,
-        "title_track_review_ratio": 0.0429,
+        "title_track_resolved_rows": 98,
+        "title_track_resolved_ratio": 0.6012,
+        "title_track_review_rows": 1,
+        "title_track_review_ratio": 0.0061,
         "title_track_unresolved_rows": 64,
         "title_track_unresolved_ratio": 0.3926,
-        "canonical_mv_rows": 2,
-        "canonical_mv_ratio": 0.0123,
+        "canonical_mv_rows": 10,
+        "canonical_mv_ratio": 0.0613,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 161,
-        "mv_unresolved_ratio": 0.9877,
+        "mv_unresolved_rows": 153,
+        "mv_unresolved_ratio": 0.9387,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -549,18 +561,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 104,
-        "title_track_resolved_ratio": 0.5361,
-        "title_track_review_rows": 3,
-        "title_track_review_ratio": 0.0155,
+        "title_track_resolved_rows": 107,
+        "title_track_resolved_ratio": 0.5515,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 87,
         "title_track_unresolved_ratio": 0.4485,
-        "canonical_mv_rows": 4,
-        "canonical_mv_ratio": 0.0206,
+        "canonical_mv_rows": 7,
+        "canonical_mv_ratio": 0.0361,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 190,
-        "mv_unresolved_ratio": 0.9794,
+        "mv_unresolved_rows": 187,
+        "mv_unresolved_ratio": 0.9639,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -576,18 +588,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 141,
-        "title_track_resolved_ratio": 0.6184,
-        "title_track_review_rows": 9,
-        "title_track_review_ratio": 0.0395,
+        "title_track_resolved_rows": 150,
+        "title_track_resolved_ratio": 0.6579,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 78,
         "title_track_unresolved_ratio": 0.3421,
-        "canonical_mv_rows": 0,
-        "canonical_mv_ratio": 0.0,
+        "canonical_mv_rows": 2,
+        "canonical_mv_ratio": 0.0088,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 228,
-        "mv_unresolved_ratio": 1.0,
+        "mv_unresolved_rows": 226,
+        "mv_unresolved_ratio": 0.9912,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -603,18 +615,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 208,
-        "title_track_resolved_ratio": 0.6541,
-        "title_track_review_rows": 15,
-        "title_track_review_ratio": 0.0472,
+        "title_track_resolved_rows": 223,
+        "title_track_resolved_ratio": 0.7013,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 95,
         "title_track_unresolved_ratio": 0.2987,
-        "canonical_mv_rows": 3,
-        "canonical_mv_ratio": 0.0094,
+        "canonical_mv_rows": 7,
+        "canonical_mv_ratio": 0.022,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 315,
-        "mv_unresolved_ratio": 0.9906,
+        "mv_unresolved_rows": 311,
+        "mv_unresolved_ratio": 0.978,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -630,18 +642,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 186,
-        "title_track_resolved_ratio": 0.7045,
-        "title_track_review_rows": 8,
-        "title_track_review_ratio": 0.0303,
+        "title_track_resolved_rows": 194,
+        "title_track_resolved_ratio": 0.7348,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 70,
         "title_track_unresolved_ratio": 0.2652,
-        "canonical_mv_rows": 53,
-        "canonical_mv_ratio": 0.2008,
+        "canonical_mv_rows": 54,
+        "canonical_mv_ratio": 0.2045,
         "mv_review_rows": 1,
         "mv_review_ratio": 0.0038,
-        "mv_unresolved_rows": 210,
-        "mv_unresolved_ratio": 0.7955,
+        "mv_unresolved_rows": 209,
+        "mv_unresolved_ratio": 0.7917,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -686,18 +698,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 84,
-        "title_track_resolved_ratio": 0.4468,
-        "title_track_review_rows": 22,
-        "title_track_review_ratio": 0.117,
+        "title_track_resolved_rows": 102,
+        "title_track_resolved_ratio": 0.5426,
+        "title_track_review_rows": 4,
+        "title_track_review_ratio": 0.0213,
         "title_track_unresolved_rows": 82,
         "title_track_unresolved_ratio": 0.4362,
-        "canonical_mv_rows": 7,
-        "canonical_mv_ratio": 0.0372,
+        "canonical_mv_rows": 13,
+        "canonical_mv_ratio": 0.0691,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 181,
-        "mv_unresolved_ratio": 0.9628,
+        "mv_unresolved_rows": 175,
+        "mv_unresolved_ratio": 0.9309,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -713,18 +725,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 271,
-        "title_track_resolved_ratio": 0.3968,
-        "title_track_review_rows": 30,
-        "title_track_review_ratio": 0.0439,
+        "title_track_resolved_rows": 300,
+        "title_track_resolved_ratio": 0.4392,
+        "title_track_review_rows": 1,
+        "title_track_review_ratio": 0.0015,
         "title_track_unresolved_rows": 382,
         "title_track_unresolved_ratio": 0.5593,
-        "canonical_mv_rows": 38,
-        "canonical_mv_ratio": 0.0556,
+        "canonical_mv_rows": 48,
+        "canonical_mv_ratio": 0.0703,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 645,
-        "mv_unresolved_ratio": 0.9444,
+        "mv_unresolved_rows": 635,
+        "mv_unresolved_ratio": 0.9297,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -740,22 +752,364 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 786,
-        "title_track_resolved_ratio": 0.8743,
-        "title_track_review_rows": 13,
-        "title_track_review_ratio": 0.0145,
+        "title_track_resolved_rows": 799,
+        "title_track_resolved_ratio": 0.8888,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 100,
         "title_track_unresolved_ratio": 0.1112,
-        "canonical_mv_rows": 67,
-        "canonical_mv_ratio": 0.0745,
+        "canonical_mv_rows": 92,
+        "canonical_mv_ratio": 0.1023,
         "mv_review_rows": 2,
         "mv_review_ratio": 0.0022,
-        "mv_unresolved_rows": 829,
-        "mv_unresolved_ratio": 0.9221,
+        "mv_unresolved_rows": 804,
+        "mv_unresolved_ratio": 0.8943,
         "mv_no_mv_rows": 1,
         "mv_no_mv_ratio": 0.0011
       }
     }
+  },
+  "cohort_tables": {
+    "title_track": [
+      {
+        "year_band": "2021-2023",
+        "release_kind": "ep",
+        "total_rows": 252,
+        "resolved_rows": 79,
+        "resolved_ratio": 0.3135,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 173,
+        "unresolved_ratio": 0.6865,
+        "threshold": 0.74,
+        "gap_to_target": 0.4265,
+        "status": "fail"
+      },
+      {
+        "year_band": "2024+",
+        "release_kind": "album",
+        "total_rows": 50,
+        "resolved_rows": 23,
+        "resolved_ratio": 0.46,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 27,
+        "unresolved_ratio": 0.54,
+        "threshold": 0.76,
+        "gap_to_target": 0.3,
+        "status": "fail"
+      },
+      {
+        "year_band": "2024+",
+        "release_kind": "ep",
+        "total_rows": 224,
+        "resolved_rows": 117,
+        "resolved_ratio": 0.5223,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 107,
+        "unresolved_ratio": 0.4777,
+        "threshold": 0.82,
+        "gap_to_target": 0.2977,
+        "status": "fail"
+      },
+      {
+        "year_band": "2018-2020",
+        "release_kind": "ep",
+        "total_rows": 132,
+        "resolved_rows": 58,
+        "resolved_ratio": 0.4394,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 74,
+        "unresolved_ratio": 0.5606,
+        "threshold": 0.68,
+        "gap_to_target": 0.2406,
+        "status": "fail"
+      },
+      {
+        "year_band": "2021-2023",
+        "release_kind": "album",
+        "total_rows": 63,
+        "resolved_rows": 34,
+        "resolved_ratio": 0.5397,
+        "review_rows": 1,
+        "review_ratio": 0.0159,
+        "unresolved_rows": 28,
+        "unresolved_ratio": 0.4444,
+        "threshold": 0.68,
+        "gap_to_target": 0.1403,
+        "status": "fail"
+      },
+      {
+        "year_band": "2018-2020",
+        "release_kind": "album",
+        "total_rows": 37,
+        "resolved_rows": 19,
+        "resolved_ratio": 0.5135,
+        "review_rows": 2,
+        "review_ratio": 0.0541,
+        "unresolved_rows": 16,
+        "unresolved_ratio": 0.4324,
+        "threshold": 0.62,
+        "gap_to_target": 0.1065,
+        "status": "fail"
+      },
+      {
+        "year_band": "2024+",
+        "release_kind": "single",
+        "total_rows": 343,
+        "resolved_rows": 309,
+        "resolved_ratio": 0.9009,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 34,
+        "unresolved_ratio": 0.0991,
+        "threshold": 0.9,
+        "gap_to_target": 0.0,
+        "status": "pass"
+      },
+      {
+        "year_band": "2021-2023",
+        "release_kind": "single",
+        "total_rows": 270,
+        "resolved_rows": 242,
+        "resolved_ratio": 0.8963,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 28,
+        "unresolved_ratio": 0.1037,
+        "threshold": 0.84,
+        "gap_to_target": 0.0,
+        "status": "pass"
+      },
+      {
+        "year_band": "<=2017",
+        "release_kind": "ep",
+        "total_rows": 75,
+        "resolved_rows": 46,
+        "resolved_ratio": 0.6133,
+        "review_rows": 1,
+        "review_ratio": 0.0133,
+        "unresolved_rows": 28,
+        "unresolved_ratio": 0.3733,
+        "threshold": 0.6,
+        "gap_to_target": 0.0,
+        "status": "pass"
+      },
+      {
+        "year_band": "2018-2020",
+        "release_kind": "single",
+        "total_rows": 159,
+        "resolved_rows": 139,
+        "resolved_ratio": 0.8742,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 20,
+        "unresolved_ratio": 0.1258,
+        "threshold": 0.78,
+        "gap_to_target": 0.0,
+        "status": "pass"
+      },
+      {
+        "year_band": "<=2017",
+        "release_kind": "single",
+        "total_rows": 127,
+        "resolved_rows": 109,
+        "resolved_ratio": 0.8583,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 18,
+        "unresolved_ratio": 0.1417,
+        "threshold": 0.7,
+        "gap_to_target": 0.0,
+        "status": "pass"
+      },
+      {
+        "year_band": "<=2017",
+        "release_kind": "album",
+        "total_rows": 38,
+        "resolved_rows": 26,
+        "resolved_ratio": 0.6842,
+        "review_rows": 1,
+        "review_ratio": 0.0263,
+        "unresolved_rows": 11,
+        "unresolved_ratio": 0.2895,
+        "threshold": 0.55,
+        "gap_to_target": 0.0,
+        "status": "pass"
+      }
+    ],
+    "canonical_mv": [
+      {
+        "year_band": "2024+",
+        "release_kind": "single",
+        "total_rows": 343,
+        "resolved_rows": 53,
+        "resolved_ratio": 0.1545,
+        "review_rows": 2,
+        "review_ratio": 0.0058,
+        "unresolved_rows": 288,
+        "unresolved_ratio": 0.8397,
+        "threshold": 0.72,
+        "gap_to_target": 0.5655,
+        "status": "fail"
+      },
+      {
+        "year_band": "2021-2023",
+        "release_kind": "single",
+        "total_rows": 270,
+        "resolved_rows": 13,
+        "resolved_ratio": 0.0481,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 257,
+        "unresolved_ratio": 0.9519,
+        "threshold": 0.5,
+        "gap_to_target": 0.4519,
+        "status": "fail"
+      },
+      {
+        "year_band": "2024+",
+        "release_kind": "ep",
+        "total_rows": 224,
+        "resolved_rows": 24,
+        "resolved_ratio": 0.1071,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 200,
+        "unresolved_ratio": 0.8929,
+        "threshold": 0.55,
+        "gap_to_target": 0.4429,
+        "status": "fail"
+      },
+      {
+        "year_band": "2024+",
+        "release_kind": "album",
+        "total_rows": 50,
+        "resolved_rows": 2,
+        "resolved_ratio": 0.04,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 48,
+        "unresolved_ratio": 0.96,
+        "threshold": 0.4,
+        "gap_to_target": 0.36,
+        "status": "fail"
+      },
+      {
+        "year_band": "2021-2023",
+        "release_kind": "ep",
+        "total_rows": 252,
+        "resolved_rows": 4,
+        "resolved_ratio": 0.0159,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 248,
+        "unresolved_ratio": 0.9841,
+        "threshold": 0.35,
+        "gap_to_target": 0.3341,
+        "status": "fail"
+      },
+      {
+        "year_band": "2021-2023",
+        "release_kind": "album",
+        "total_rows": 63,
+        "resolved_rows": 2,
+        "resolved_ratio": 0.0317,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 61,
+        "unresolved_ratio": 0.9683,
+        "threshold": 0.28,
+        "gap_to_target": 0.2483,
+        "status": "fail"
+      },
+      {
+        "year_band": "2018-2020",
+        "release_kind": "single",
+        "total_rows": 159,
+        "resolved_rows": 16,
+        "resolved_ratio": 0.1006,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 143,
+        "unresolved_ratio": 0.8994,
+        "threshold": 0.32,
+        "gap_to_target": 0.2194,
+        "status": "fail"
+      },
+      {
+        "year_band": "2018-2020",
+        "release_kind": "ep",
+        "total_rows": 132,
+        "resolved_rows": 10,
+        "resolved_ratio": 0.0758,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 122,
+        "unresolved_ratio": 0.9242,
+        "threshold": 0.22,
+        "gap_to_target": 0.1442,
+        "status": "fail"
+      },
+      {
+        "year_band": "<=2017",
+        "release_kind": "single",
+        "total_rows": 127,
+        "resolved_rows": 10,
+        "resolved_ratio": 0.0787,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 117,
+        "unresolved_ratio": 0.9213,
+        "threshold": 0.2,
+        "gap_to_target": 0.1213,
+        "status": "fail"
+      },
+      {
+        "year_band": "2018-2020",
+        "release_kind": "album",
+        "total_rows": 37,
+        "resolved_rows": 5,
+        "resolved_ratio": 0.1351,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 32,
+        "unresolved_ratio": 0.8649,
+        "threshold": 0.16,
+        "gap_to_target": 0.0249,
+        "status": "fail"
+      },
+      {
+        "year_band": "<=2017",
+        "release_kind": "ep",
+        "total_rows": 75,
+        "resolved_rows": 10,
+        "resolved_ratio": 0.1333,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 65,
+        "unresolved_ratio": 0.8667,
+        "threshold": 0.12,
+        "gap_to_target": 0.0,
+        "status": "pass"
+      },
+      {
+        "year_band": "<=2017",
+        "release_kind": "album",
+        "total_rows": 38,
+        "resolved_rows": 4,
+        "resolved_ratio": 0.1053,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 34,
+        "unresolved_ratio": 0.8947,
+        "threshold": 0.08,
+        "gap_to_target": 0.0,
+        "status": "pass"
+      }
+    ]
   },
   "top_gap_entities": {
     "all_time": {
@@ -773,41 +1127,33 @@
           "group": "Dreamcatcher",
           "total_rows": 25,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 18,
+          "title_track_gap_rows": 17,
           "mv_gap_rows": 25,
-          "title_track_gap_ratio": 0.72
-        },
-        {
-          "group": "MONSTA X",
-          "total_rows": 60,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 16,
-          "mv_gap_rows": 60,
-          "title_track_gap_ratio": 0.2667
+          "title_track_gap_ratio": 0.68
         },
         {
           "group": "ATEEZ",
           "total_rows": 42,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 16,
+          "title_track_gap_rows": 15,
           "mv_gap_rows": 42,
-          "title_track_gap_ratio": 0.381
+          "title_track_gap_ratio": 0.3571
         },
         {
-          "group": "Stray Kids",
-          "total_rows": 42,
+          "group": "MONSTA X",
+          "total_rows": 60,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 15,
-          "mv_gap_rows": 41,
-          "title_track_gap_ratio": 0.3571
+          "title_track_gap_rows": 14,
+          "mv_gap_rows": 60,
+          "title_track_gap_ratio": 0.2333
         },
         {
           "group": "ONEWE",
           "total_rows": 26,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 15,
+          "title_track_gap_rows": 14,
           "mv_gap_rows": 24,
-          "title_track_gap_ratio": 0.5769
+          "title_track_gap_ratio": 0.5385
         },
         {
           "group": "THE BOYZ",
@@ -837,9 +1183,17 @@
           "group": "ONEUS",
           "total_rows": 30,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 13,
+          "title_track_gap_rows": 12,
           "mv_gap_rows": 27,
-          "title_track_gap_ratio": 0.4333
+          "title_track_gap_ratio": 0.4
+        },
+        {
+          "group": "VERIVERY",
+          "total_rows": 14,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 12,
+          "mv_gap_rows": 13,
+          "title_track_gap_ratio": 0.8571
         }
       ],
       "mv": [
@@ -847,23 +1201,15 @@
           "group": "MONSTA X",
           "total_rows": 60,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 16,
+          "title_track_gap_rows": 14,
           "mv_gap_rows": 60,
           "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "TWICE",
-          "total_rows": 54,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 45,
-          "mv_gap_ratio": 0.8333
         },
         {
           "group": "SHINee",
           "total_rows": 48,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
+          "title_track_gap_rows": 3,
           "mv_gap_rows": 43,
           "mv_gap_ratio": 0.8958
         },
@@ -871,7 +1217,7 @@
           "group": "ATEEZ",
           "total_rows": 42,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 16,
+          "title_track_gap_rows": 15,
           "mv_gap_rows": 42,
           "mv_gap_ratio": 1.0
         },
@@ -879,7 +1225,7 @@
           "group": "Stray Kids",
           "total_rows": 42,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 15,
+          "title_track_gap_rows": 11,
           "mv_gap_rows": 41,
           "mv_gap_ratio": 0.9762
         },
@@ -887,7 +1233,7 @@
           "group": "BTOB",
           "total_rows": 40,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
+          "title_track_gap_rows": 9,
           "mv_gap_rows": 40,
           "mv_gap_ratio": 1.0
         },
@@ -898,14 +1244,6 @@
           "title_track_gap_rows": 13,
           "mv_gap_rows": 40,
           "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "BTS",
-          "total_rows": 42,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
-          "mv_gap_rows": 37,
-          "mv_gap_ratio": 0.881
         },
         {
           "group": "SEVENTEEN",
@@ -922,6 +1260,22 @@
           "title_track_gap_rows": 13,
           "mv_gap_rows": 33,
           "mv_gap_ratio": 0.9706
+        },
+        {
+          "group": "MAMAMOO",
+          "total_rows": 32,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 9,
+          "mv_gap_rows": 32,
+          "mv_gap_ratio": 1.0
+        },
+        {
+          "group": "CHUNG HA",
+          "total_rows": 32,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 4,
+          "mv_gap_rows": 31,
+          "mv_gap_ratio": 0.9688
         }
       ]
     },
@@ -940,17 +1294,17 @@
           "group": "Dreamcatcher",
           "total_rows": 23,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 17,
+          "title_track_gap_rows": 16,
           "mv_gap_rows": 23,
-          "title_track_gap_ratio": 0.7391
+          "title_track_gap_ratio": 0.6957
         },
         {
           "group": "MONSTA X",
           "total_rows": 56,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 15,
+          "title_track_gap_rows": 13,
           "mv_gap_rows": 56,
-          "title_track_gap_ratio": 0.2679
+          "title_track_gap_ratio": 0.2321
         },
         {
           "group": "ATEEZ",
@@ -959,14 +1313,6 @@
           "title_track_gap_rows": 12,
           "mv_gap_rows": 26,
           "title_track_gap_ratio": 0.4615
-        },
-        {
-          "group": "ONEWE",
-          "total_rows": 21,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 12,
-          "mv_gap_rows": 21,
-          "title_track_gap_ratio": 0.5714
         },
         {
           "group": "VERIVERY",
@@ -985,20 +1331,12 @@
           "title_track_gap_ratio": 0.3438
         },
         {
-          "group": "BTOB",
-          "total_rows": 37,
+          "group": "ONEWE",
+          "total_rows": 21,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 37,
-          "title_track_gap_ratio": 0.2703
-        },
-        {
-          "group": "MAMAMOO",
-          "total_rows": 32,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 32,
-          "title_track_gap_ratio": 0.3125
+          "title_track_gap_rows": 11,
+          "mv_gap_rows": 21,
+          "title_track_gap_ratio": 0.5238
         },
         {
           "group": "THE BOYZ",
@@ -1007,6 +1345,22 @@
           "title_track_gap_rows": 10,
           "mv_gap_rows": 32,
           "title_track_gap_ratio": 0.3125
+        },
+        {
+          "group": "Red Velvet",
+          "total_rows": 30,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 10,
+          "mv_gap_rows": 30,
+          "title_track_gap_ratio": 0.3333
+        },
+        {
+          "group": "INFINITE",
+          "total_rows": 29,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 10,
+          "mv_gap_rows": 29,
+          "title_track_gap_ratio": 0.3448
         }
       ],
       "mv": [
@@ -1014,7 +1368,7 @@
           "group": "MONSTA X",
           "total_rows": 56,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 15,
+          "title_track_gap_rows": 13,
           "mv_gap_rows": 56,
           "mv_gap_ratio": 1.0
         },
@@ -1022,23 +1376,15 @@
           "group": "SHINee",
           "total_rows": 47,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
+          "title_track_gap_rows": 3,
           "mv_gap_rows": 43,
           "mv_gap_ratio": 0.9149
-        },
-        {
-          "group": "BTS",
-          "total_rows": 42,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
-          "mv_gap_rows": 37,
-          "mv_gap_ratio": 0.881
         },
         {
           "group": "BTOB",
           "total_rows": 37,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
+          "title_track_gap_rows": 9,
           "mv_gap_rows": 37,
           "mv_gap_ratio": 1.0
         },
@@ -1046,7 +1392,7 @@
           "group": "MAMAMOO",
           "total_rows": 32,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
+          "title_track_gap_rows": 9,
           "mv_gap_rows": 32,
           "mv_gap_ratio": 1.0
         },
@@ -1057,14 +1403,6 @@
           "title_track_gap_rows": 10,
           "mv_gap_rows": 32,
           "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "TWICE",
-          "total_rows": 40,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 7,
-          "mv_gap_rows": 31,
-          "mv_gap_ratio": 0.775
         },
         {
           "group": "Red Velvet",
@@ -1086,9 +1424,25 @@
           "group": "Stray Kids",
           "total_rows": 28,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
+          "title_track_gap_rows": 7,
           "mv_gap_rows": 28,
           "mv_gap_ratio": 1.0
+        },
+        {
+          "group": "SEVENTEEN",
+          "total_rows": 32,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 11,
+          "mv_gap_rows": 27,
+          "mv_gap_ratio": 0.8438
+        },
+        {
+          "group": "CHUNG HA",
+          "total_rows": 27,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 26,
+          "mv_gap_ratio": 0.963
         }
       ]
     }
@@ -1110,36 +1464,6 @@
         "youtube_video_provenance": "releaseHistory.placeholder_seed",
         "title_tracks": [],
         "track_count": 18
-      },
-      {
-        "group": "&TEAM",
-        "release_title": "五月雨 (Samidare)",
-        "release_date": "2024-05-07",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "review_needed",
-        "title_track_provenance": "release_title_exact | nearby_song_release:2024-05-07 | nearby_song_release:2024-04-28",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 3
-      },
-      {
-        "group": "&TEAM",
-        "release_title": "青嵐 (Aoarashi)",
-        "release_date": "2024-08-06",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "review_needed",
-        "title_track_provenance": "nearby_song_release:2024-07-18 | release_title_exact | nearby_song_release:2024-08-06",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 3
       },
       {
         "group": "(G)I-DLE",
@@ -1233,18 +1557,48 @@
       },
       {
         "group": "(G)I-DLE",
-        "release_title": "Oh my god",
-        "release_date": "2020-08-26",
+        "release_title": "I burn",
+        "release_date": "2021-01-11",
         "stream": "album",
         "release_kind": "ep",
         "detail_status": "verified",
         "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "review_needed",
-        "title_track_provenance": "nearby_song_release:2020-08-03 | release_title_substring",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
         "youtube_video_status": "unresolved",
         "youtube_video_provenance": "releaseHistory.placeholder_seed",
         "title_tracks": [],
-        "track_count": 5
+        "track_count": 6
+      },
+      {
+        "group": "(G)I-DLE",
+        "release_title": "I NEVER DIE",
+        "release_date": "2022-03-14",
+        "stream": "album",
+        "release_kind": "album",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 9
+      },
+      {
+        "group": "(G)I-DLE",
+        "release_title": "I feel",
+        "release_date": "2023-05-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 6
       }
     ],
     "mv_gap_rows": [
@@ -1356,11 +1710,13 @@
         "release_kind": "single",
         "detail_status": "verified",
         "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "review_needed",
-        "title_track_provenance": "release_title_exact | nearby_song_release:2024-05-07 | nearby_song_release:2024-04-28",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
         "youtube_video_status": "unresolved",
         "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
+        "title_tracks": [
+          "五月雨 (Samidare)"
+        ],
         "track_count": 3
       },
       {
@@ -1388,11 +1744,13 @@
         "release_kind": "single",
         "detail_status": "verified",
         "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "review_needed",
-        "title_track_provenance": "nearby_song_release:2024-07-18 | release_title_exact | nearby_song_release:2024-08-06",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
         "youtube_video_status": "unresolved",
         "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
+        "title_tracks": [
+          "青嵐 (Aoarashi)"
+        ],
         "track_count": 3
       },
       {
@@ -1442,27 +1800,27 @@
       },
       "title_track_resolved": {
         "status": "fail",
-        "observed_total": 0.6446,
-        "observed_pre_2024": 0.6201,
+        "observed_total": 0.6785,
+        "observed_pre_2024": 0.6522,
         "threshold_total": 0.8,
         "threshold_pre_2024": 0.6
       },
       "canonical_mv": {
         "status": "fail",
-        "observed_total": 0.0633,
-        "observed_pre_2024": 0.033,
+        "observed_total": 0.0864,
+        "observed_pre_2024": 0.0642,
         "threshold_total": 0.65,
         "threshold_pre_2024": 0.35
       }
     },
     "cutover_ready": false,
     "cutover_status": "fail",
-    "generated_at": "2026-03-10",
+    "generated_at": "2026-03-11",
     "summary_lines": [
       "detail payload gate: pass (total 100.0%, pre-2024 100.0%)",
       "detail trusted gate: pass (total 100.0%, pre-2024 100.0%)",
-      "title-track resolved gate: fail (total 64.5%, pre-2024 62.0%)",
-      "canonical MV gate: fail (total 6.3%, pre-2024 3.3%)"
+      "title-track resolved gate: fail (total 67.8%, pre-2024 65.2%)",
+      "canonical MV gate: fail (total 8.6%, pre-2024 6.4%)"
     ]
   },
   "migration_priority_slice": {
@@ -1497,12 +1855,12 @@
       "title_track_review_ratio": 0.0,
       "title_track_unresolved_rows": 0,
       "title_track_unresolved_ratio": 0.0,
-      "canonical_mv_rows": 2,
-      "canonical_mv_ratio": 0.1111,
+      "canonical_mv_rows": 18,
+      "canonical_mv_ratio": 1.0,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
-      "mv_unresolved_rows": 16,
-      "mv_unresolved_ratio": 0.8889,
+      "mv_unresolved_rows": 0,
+      "mv_unresolved_ratio": 0.0,
       "mv_no_mv_rows": 0,
       "mv_no_mv_ratio": 0.0
     },
@@ -1564,7 +1922,7 @@
       },
       "cutover_ready": true,
       "cutover_status": "pass",
-      "generated_at": "2026-03-10",
+      "generated_at": "2026-03-11",
       "summary_lines": [
         "detail_payload gate: pass (100.0% vs 100.0%)",
         "detail_trusted gate: pass (100.0% vs 100.0%)",
@@ -1773,32 +2131,56 @@
       }
     ]
   },
+  "external_acquisition": {
+    "candidate_rows": 1750,
+    "youtube_music": {
+      "attempted": 113,
+      "resolved": 0,
+      "out_of_scope": 1570,
+      "unresolved": 1683
+    },
+    "youtube_mv": {
+      "attempted": 56,
+      "resolved": 0,
+      "review_needed": 2,
+      "no_mv": 1,
+      "out_of_scope": 1561,
+      "unresolved": 1614
+    },
+    "youtube_mv_search": {
+      "attempted": 54,
+      "resolved": 41,
+      "review_needed": 13,
+      "unresolved": 1616,
+      "coverage_lift": 1
+    }
+  },
   "detail_status_counts": {
     "verified": 1764,
     "manual_override": 6
   },
   "title_track_status_counts": {
-    "preserved_existing": 1105,
+    "preserved_existing": 1165,
     "unresolved": 564,
-    "review": 65,
-    "manual_override": 36
+    "manual_override": 36,
+    "review": 5
   },
   "release_level_title_track_status_counts": {
-    "verified": 1105,
+    "verified": 1165,
     "unresolved": 564,
-    "review_needed": 65,
-    "manual_override": 36
+    "manual_override": 36,
+    "review_needed": 5
   },
   "youtube_video_status_counts": {
-    "unresolved": 1655,
-    "manual_override": 91,
+    "unresolved": 1614,
+    "manual_override": 132,
     "relation_match": 21,
     "needs_review": 2,
     "no_mv": 1
   },
   "title_track_auto_resolved_rows": 0,
   "title_track_auto_double_rows": 0,
-  "title_track_review_queue_rows": 629,
+  "title_track_review_queue_rows": 569,
   "title_track_review_queue_sample": [
     {
       "group": "&TEAM",
@@ -1829,50 +2211,6 @@
       "candidate_titles": [],
       "candidate_sources": [],
       "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "五月雨 (Samidare)",
-      "release_date": "2024-05-07",
-      "stream": "song",
-      "release_kind": "single",
-      "track_titles": [
-        "五月雨 (Samidare)",
-        "Scar to Scar",
-        "君にカエル (Maybe)"
-      ],
-      "candidate_titles": [
-        "五月雨 (Samidare)",
-        "君にカエル (Maybe)"
-      ],
-      "candidate_sources": [
-        "五月雨 (Samidare): release_title_exact | nearby_song_release:2024-05-07",
-        "君にカエル (Maybe): nearby_song_release:2024-04-28"
-      ],
-      "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "青嵐 (Aoarashi)",
-      "release_date": "2024-08-06",
-      "stream": "song",
-      "release_kind": "single",
-      "track_titles": [
-        "青嵐 (Aoarashi)",
-        "声変わり",
-        "向日葵 (Imprinted)"
-      ],
-      "candidate_titles": [
-        "声変わり",
-        "青嵐 (Aoarashi)"
-      ],
-      "candidate_sources": [
-        "声変わり: nearby_song_release:2024-07-18",
-        "青嵐 (Aoarashi): release_title_exact | nearby_song_release:2024-08-06"
-      ],
-      "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
       "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
     },
     {
@@ -1981,26 +2319,62 @@
     },
     {
       "group": "(G)I-DLE",
-      "release_title": "Oh my god",
-      "release_date": "2020-08-26",
+      "release_title": "I burn",
+      "release_date": "2021-01-11",
       "stream": "album",
       "release_kind": "ep",
       "track_titles": [
-        "Oh my god (Japanese ver.)",
-        "Uh-Oh (Japanese ver.)",
-        "Senorita (Japanese ver.)",
-        "Tung-Tung (Empty)",
-        "DUMDi DUMDi (Japanese ver.)"
+        "한(寒)",
+        "화(火花)",
+        "MOON",
+        "Where is love",
+        "LOST",
+        "DAHLIA"
       ],
-      "candidate_titles": [
-        "DUMDi DUMDi (Japanese ver.)",
-        "Oh my god (Japanese ver.)"
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "I NEVER DIE",
+      "release_date": "2022-03-14",
+      "stream": "album",
+      "release_kind": "album",
+      "track_titles": [
+        "TOMBOY",
+        "말리지 마",
+        "VILLAIN DIES",
+        "ALREADY",
+        "POLAROID",
+        "ESCAPE",
+        "LIAR",
+        "MY BAG",
+        "TOMBOY"
       ],
-      "candidate_sources": [
-        "DUMDi DUMDi (Japanese ver.): nearby_song_release:2020-08-03",
-        "Oh my god (Japanese ver.): release_title_substring"
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "I feel",
+      "release_date": "2023-05-15",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "퀸카",
+        "Allergy",
+        "Lucid",
+        "All Night",
+        "Paradise",
+        "어린 어른"
       ],
-      "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
       "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
     }
   ],
@@ -2021,7 +2395,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2046,10 +2420,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2088,7 +2462,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2113,10 +2487,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2156,7 +2530,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2181,10 +2555,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2223,7 +2597,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2248,10 +2622,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2291,7 +2665,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2316,10 +2690,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2358,7 +2732,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2383,10 +2757,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2425,7 +2799,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2450,10 +2824,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2492,7 +2866,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2517,10 +2891,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2559,7 +2933,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2584,10 +2958,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2626,7 +3000,7 @@
         "existing_exact_lookup",
         "existing_relaxed_lookup",
         "manual_override_lookup",
-        "external_acquisition_skipped",
+        "external_acquisition_out_of_scope",
         "youtube_music_pipeline_lookup",
         "youtube_mv_pipeline_lookup",
         "placeholder_seed_fallback"
@@ -2651,10 +3025,10 @@
           "note": "no override"
         },
         {
-          "method": "external_acquisition_skipped",
+          "method": "external_acquisition_out_of_scope",
           "success": false,
           "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
+          "note": "row kept out of the current targeted acquisition pass"
         },
         {
           "method": "youtube_music_pipeline_lookup",
@@ -2685,76 +3059,77 @@
     "existing_exact_lookup": 1770,
     "existing_relaxed_lookup": 1770,
     "manual_override_lookup": 1770,
-    "external_acquisition_skipped": 1770,
+    "external_acquisition_out_of_scope": 1640,
     "youtube_music_pipeline_lookup": 1770,
     "youtube_mv_pipeline_lookup": 1770,
-    "placeholder_seed_fallback": 1770
+    "placeholder_seed_fallback": 1770,
+    "musicbrainz_release_group_lookup": 114,
+    "musicbrainz_release_group_release_lookup": 114,
+    "musicbrainz_release_search_lookup": 114,
+    "musicbrainz_release_search_release_lookup": 114
   },
   "title_track_spot_checks": [
     {
-      "group": "&TEAM",
-      "release_title": "五月雨 (Samidare)",
-      "release_date": "2024-05-07",
-      "stream": "song",
-      "release_kind": "single",
+      "group": "BTS",
+      "release_title": "WAKE UP",
+      "release_date": "2014-12-24",
+      "stream": "album",
+      "release_kind": "album",
       "status": "review",
       "title_tracks": [],
       "candidate_titles": [
-        "五月雨 (Samidare)",
-        "君にカエル (Maybe)"
+        "BOY IN LUV (Japanese ver.)",
+        "Danger (Japanese ver.)",
+        "WAKE UP"
       ]
     },
     {
-      "group": "&TEAM",
-      "release_title": "青嵐 (Aoarashi)",
-      "release_date": "2024-08-06",
-      "stream": "song",
-      "release_kind": "single",
+      "group": "CHUNG HA",
+      "release_title": "Querencia",
+      "release_date": "2021-02-15",
+      "stream": "album",
+      "release_kind": "album",
       "status": "review",
       "title_tracks": [],
       "candidate_titles": [
-        "声変わり",
-        "青嵐 (Aoarashi)"
+        "Dream of You",
+        "Querencia (epilogue)",
+        "X (걸어온 길에 꽃밭 따윈 없었죠)"
       ]
     },
     {
-      "group": "(G)I-DLE",
-      "release_title": "Oh my god",
-      "release_date": "2020-08-26",
+      "group": "KARD",
+      "release_title": "Hola Hola",
+      "release_date": "2017-07-19",
       "stream": "album",
       "release_kind": "ep",
       "status": "review",
       "title_tracks": [],
       "candidate_titles": [
-        "DUMDi DUMDi (Japanese ver.)",
-        "Oh my god (Japanese ver.)"
+        "Don’t Recall",
+        "Hola Hola",
+        "RUMOR"
       ]
     },
     {
-      "group": "aespa",
-      "release_title": "Girls",
-      "release_date": "2022-07-08",
+      "group": "MONSTA X",
+      "release_title": "ALL ABOUT LUV",
+      "release_date": "2020-02-14",
       "stream": "album",
-      "release_kind": "ep",
+      "release_kind": "album",
       "status": "review",
       "title_tracks": [],
-      "candidate_titles": [
-        "Girls",
-        "Life’s Too Short"
-      ]
+      "candidate_titles": []
     },
     {
-      "group": "aespa",
-      "release_title": "Drama",
-      "release_date": "2023-11-10",
+      "group": "TWICE",
+      "release_title": "&TWICE",
+      "release_date": "2019-11-20",
       "stream": "album",
-      "release_kind": "ep",
+      "release_kind": "album",
       "status": "review",
       "title_tracks": [],
-      "candidate_titles": [
-        "Better Things",
-        "Drama"
-      ]
+      "candidate_titles": []
     },
     {
       "group": "&TEAM",
@@ -2868,6 +3243,18 @@
     },
     {
       "group": "&TEAM",
+      "release_title": "五月雨 (Samidare)",
+      "release_date": "2024-05-07",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "五月雨 (Samidare)"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "&TEAM",
       "release_title": "声変わり",
       "release_date": "2024-07-18",
       "stream": "song",
@@ -2880,25 +3267,13 @@
     },
     {
       "group": "&TEAM",
-      "release_title": "Beat the odds",
-      "release_date": "2024-10-03",
+      "release_title": "青嵐 (Aoarashi)",
+      "release_date": "2024-08-06",
       "stream": "song",
       "release_kind": "single",
       "status": "preserved_existing",
       "title_tracks": [
-        "Beat the odds"
-      ],
-      "candidate_titles": []
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "雪明かり (Yukiakari)",
-      "release_date": "2024-12-17",
-      "stream": "album",
-      "release_kind": "album",
-      "status": "preserved_existing",
-      "title_tracks": [
-        "雪明かり (Yukiakari)"
+        "青嵐 (Aoarashi)"
       ],
       "candidate_titles": []
     },
@@ -2958,6 +3333,30 @@
     },
     {
       "group": "&TEAM",
+      "release_title": "Beat the odds",
+      "release_date": "2024-10-03",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Beat the odds"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "&TEAM",
+      "release_title": "雪明かり (Yukiakari)",
+      "release_date": "2024-12-17",
+      "stream": "album",
+      "release_kind": "album",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "雪明かり (Yukiakari)"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "&TEAM",
       "release_title": "Magic Hour / Wonderful World",
       "release_date": "2025-01-08",
       "stream": "song",
@@ -2966,30 +3365,6 @@
       "title_tracks": [
         "Magic Hour",
         "Wonderful World"
-      ],
-      "candidate_titles": []
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "Go in Blind (月狼)",
-      "release_date": "2025-04-20",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "preserved_existing",
-      "title_tracks": [
-        "Go in Blind (月狼)"
-      ],
-      "candidate_titles": []
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "Back to Life",
-      "release_date": "2025-10-28",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "preserved_existing",
-      "title_tracks": [
-        "Back to Life"
       ],
       "candidate_titles": []
     }
@@ -3046,19 +3421,19 @@
       "track_count": 1
     },
     "review_needed": {
-      "group": "&TEAM",
-      "release_title": "五月雨 (Samidare)",
-      "release_date": "2024-05-07",
-      "stream": "song",
-      "release_kind": "single",
+      "group": "BTS",
+      "release_title": "WAKE UP",
+      "release_date": "2014-12-24",
+      "stream": "album",
+      "release_kind": "album",
       "detail_status": "verified",
       "detail_provenance": "musicbrainz.release_group_release",
       "title_track_status": "review_needed",
-      "title_track_provenance": "release_title_exact | nearby_song_release:2024-05-07 | nearby_song_release:2024-04-28",
+      "title_track_provenance": "nearby_song_release:2014-07-16 | nearby_song_release:2014-11-19 | release_title_exact | release_title_substring",
       "youtube_video_status": "unresolved",
       "youtube_video_provenance": "releaseHistory.placeholder_seed",
       "title_tracks": [],
-      "track_count": 3
+      "track_count": 13
     },
     "unresolved": {
       "group": "&TEAM",
@@ -3079,9 +3454,9 @@
     }
   },
   "rows_with_youtube_music_after": 87,
-  "rows_with_youtube_mv_after": 112,
-  "override_rows_total": 127,
-  "applied_overrides": 126,
+  "rows_with_youtube_mv_after": 153,
+  "override_rows_total": 168,
+  "applied_overrides": 167,
   "override_sample_matches": [
     {
       "group": "&TEAM",

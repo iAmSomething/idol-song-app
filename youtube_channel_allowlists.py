@@ -203,6 +203,7 @@ def build_allowlist_row(profile: dict[str, Any]) -> dict[str, Any]:
 
     sources.extend(GROUP_CHANNEL_OVERRIDES.get(profile["group"], []))
     sources = dedupe_sources(sources)
+    mv_source_channels = [source for source in sources if source.get("allow_mv_uploads")]
 
     resolved_primary_team_url = next(
         (source["channel_url"] for source in sources if source.get("display_in_team_links")),
@@ -212,12 +213,12 @@ def build_allowlist_row(profile: dict[str, Any]) -> dict[str, Any]:
     return {
         "group": profile["group"],
         "primary_team_channel_url": resolved_primary_team_url,
-        "mv_allowlist_urls": [source["channel_url"] for source in sources if source.get("allow_mv_uploads")],
+        "mv_source_channels": mv_source_channels,
+        "mv_allowlist_urls": [source["channel_url"] for source in mv_source_channels],
         "mv_allowlist_match_keys": dedupe_strings(
             [
                 match_key
-                for source in sources
-                if source.get("allow_mv_uploads")
+                for source in mv_source_channels
                 for match_key in source.get("match_keys", [])
             ]
         ),
@@ -244,6 +245,7 @@ def main() -> None:
 
     groups_with_primary = sum(1 for row in rows if row["primary_team_channel_url"])
     groups_with_mv_allowlist = sum(1 for row in rows if row["mv_allowlist_urls"])
+    groups_with_mv_sources = sum(1 for row in rows if row["mv_source_channels"])
     label_sources = sum(
         1 for row in rows for source in row["channels"] if source.get("owner_type") == "label"
     )
@@ -254,6 +256,7 @@ def main() -> None:
                 "rows": len(rows),
                 "groups_with_primary_team_channel": groups_with_primary,
                 "groups_with_mv_allowlist": groups_with_mv_allowlist,
+                "groups_with_mv_source_channels": groups_with_mv_sources,
                 "label_sources": label_sources,
                 "output": str(OUTPUT_PATH.relative_to(ROOT)),
                 "changed": changed,

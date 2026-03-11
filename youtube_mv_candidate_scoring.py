@@ -34,6 +34,8 @@ HARD_REJECT_PATTERNS = {
     "medley": re.compile(r"\bmedley\b", re.IGNORECASE),
     "making_film": re.compile(r"\bmaking film\b|\bmv making\b|\bmaking of\b", re.IGNORECASE),
     "shoot_sketch": re.compile(r"\bshoot sketch\b|\bmv shoot sketch\b|\bsketch\b", re.IGNORECASE),
+    "shooting": re.compile(r"\bshooting\b|\bmv shooting\b", re.IGNORECASE),
+    "episode": re.compile(r"\bepisode\b", re.IGNORECASE),
     "coming_soon": re.compile(r"\bcoming soon\b", re.IGNORECASE),
     "self_cam": re.compile(r"\bself-?cam\b", re.IGNORECASE),
     "special_video": re.compile(r"\bspecial video\b", re.IGNORECASE),

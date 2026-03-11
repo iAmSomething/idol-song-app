@@ -57,11 +57,7 @@ def get_missing_release_detail_fields(detail: Dict) -> List[str]:
 
 
 def get_actionable_release_detail_fields(detail: Dict) -> List[str]:
-    return [
-        field
-        for field in get_missing_release_detail_fields(detail)
-        if field in {"tracks", "spotify_url"}
-    ]
+    return get_missing_release_detail_fields(detail)
 
 
 def build_attempt(method: str, success: bool, filled_fields: Optional[List[str]] = None, note: Optional[str] = None) -> Dict:
@@ -308,7 +304,7 @@ def enrich_release_detail(
         attempts.append(build_attempt("musicbrainz_release_group_release_lookup", False, note="no_candidate_release"))
 
     remaining_missing_fields = get_missing_release_detail_fields(detail)
-    should_attempt_release_search = "tracks" in remaining_missing_fields
+    should_attempt_release_search = bool(remaining_missing_fields)
 
     if should_attempt_release_search:
         try:
@@ -375,14 +371,14 @@ def enrich_release_detail(
             build_attempt(
                 "musicbrainz_release_search_lookup",
                 False,
-                note="skipped_no_track_gap",
+                note="skipped_no_remaining_gap",
             )
         )
         attempts.append(
             build_attempt(
                 "musicbrainz_release_search_release_lookup",
                 False,
-                note="skipped_no_track_gap",
+                note="skipped_no_remaining_gap",
             )
         )
 
