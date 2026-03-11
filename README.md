@@ -215,6 +215,7 @@ scheduled automation도 cadence를 둘로 나눠서 운영한다.
 - prioritized service-link gap queues: `backend/reports/service_link_gap_queues.json`
 - title-track cohort gap queue: `backend/reports/title_track_gap_queue.json`
 - entity identity null workbench: `backend/reports/entity_identity_workbench.json`
+- manual curation bundle contract: `docs/specs/backend/manual-curation-bundle-contract.md`
 - parent backend gap audit report: `backend/reports/backend_gap_audit_report.json`, `backend/reports/backend_gap_audit_report.md`
 - report bundle metadata: `backend/reports/report_bundle_metadata.json`
 - backend freshness handoff artifact: `backend/reports/backend_freshness_handoff.json`

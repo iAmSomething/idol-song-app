@@ -580,6 +580,8 @@ scheduled workflow는 두 cadence로 나뉜다.
 - `npm run null:recheck`
 - `npm run null:trend`
 - `npm run gap:workbenches`
+- `npm run curation:export`
+- `npm run curation:import -- --dry-run`
 - `npm run gap:audit`
 - `npm run report:bundle`
 - `python build_backend_json_parity_report.py`
@@ -726,6 +728,9 @@ npm run gap:workbenches
 - `backend/reports/entity_identity_workbench.json`
 - `backend/reports/entity_identity_workbench_entities.csv`
 - `backend/reports/entity_identity_field_queue.csv`
+- `backend/reports/manual_curation_bundle_service_links.json`
+- `backend/reports/manual_curation_bundle_title_tracks.json`
+- `backend/reports/manual_curation_bundle_entity_identity.json`
 - `backend/reports/trusted_upcoming_notification_event_summary.json`
 - `backend/reports/trusted_upcoming_operator_alert_report.md`
 - `backend/reports/backend_gap_audit_report.json`
@@ -735,6 +740,44 @@ npm run gap:workbenches
 
 - `daily_upcoming`: current freshness primary path
 - `catalog_enrichment`: slower historical enrichment path
+
+### Manual curation bundle export/import
+
+gap workbench를 사람이 바로 curate할 수 있는 JSON bundle로 내보내려면:
+
+```bash
+cd backend
+npm run curation:export
+```
+
+기본 출력:
+
+- `backend/reports/manual_curation_bundle_service_links.json`
+- `backend/reports/manual_curation_bundle_title_tracks.json`
+- `backend/reports/manual_curation_bundle_entity_identity.json`
+
+curated bundle을 source-of-truth JSON으로 다시 흡수하려면:
+
+```bash
+cd backend
+npm run curation:import
+```
+
+검증만 하려면:
+
+```bash
+cd backend
+npm run curation:import -- --dry-run
+```
+
+import sink:
+
+- release/service/title metadata: `release_detail_overrides.json`
+- entity identity: `web/src/data/artistProfiles.json`
+
+reviewer trace contract는 아래 문서를 따른다.
+
+- `docs/specs/backend/manual-curation-bundle-contract.md`
 
 3. combined runtime gate report
 
