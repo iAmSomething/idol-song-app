@@ -446,6 +446,7 @@ export function adaptBackendReleaseDetail(data: BackendReleaseDetailData): Relea
       data.mv?.status === 'relation_match' ||
       data.mv?.status === 'manual_override' ||
       data.mv?.status === 'needs_review' ||
+      data.mv?.status === 'no_link' ||
       data.mv?.status === 'no_mv' ||
       data.mv?.status === 'unresolved'
         ? data.mv.status

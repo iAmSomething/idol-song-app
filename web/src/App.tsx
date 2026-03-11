@@ -147,7 +147,7 @@ type ReleaseDetailRow = {
   youtube_music_url: string | null
   youtube_video_id: string | null
   youtube_video_url?: string | null
-  youtube_video_status?: 'relation_match' | 'manual_override' | 'needs_review' | 'no_mv' | 'unresolved'
+  youtube_video_status?: 'relation_match' | 'manual_override' | 'needs_review' | 'no_link' | 'no_mv' | 'unresolved'
   youtube_video_provenance?: string | null
   notes: string
 }
@@ -751,6 +751,13 @@ type TeamProfile = {
   annualReleaseTimeline: AnnualReleaseTimelineSection[]
   changeLog: ReleaseChangeLogRow[]
   nextUpcomingSignal: UpcomingCandidateRow | null
+}
+
+type CanonicalDisclosureStatus = 'missing' | 'unresolved' | 'review_needed' | 'conditional_none'
+
+type CanonicalSurfaceDisclosure = {
+  title: string
+  lines: string[]
 }
 
 type DashboardSortDirection = 'asc' | 'desc'
@@ -2888,6 +2895,21 @@ function App() {
               ) : null}
             </div>
             <p className="team-footnote">{teamCopy.footnote}</p>
+            {(() => {
+              const teamStatusDisclosure = buildTeamCanonicalStatusDisclosure(selectedTeam, language)
+              if (!teamStatusDisclosure) {
+                return null
+              }
+
+              return (
+                <div className="tracklist-incomplete status-disclosure team-status-disclosure">
+                  <strong>{teamStatusDisclosure.title}</strong>
+                  {teamStatusDisclosure.lines.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
+                </div>
+              )
+            })()}
           </section>
 
           <CompareTeamView
@@ -3682,6 +3704,7 @@ function ReleaseDetailPage({
   const mv = getReleaseDetailMvUrls(releaseDetail)
   const primaryTitleTrack = getPrimaryTitleTrackTitle(releaseDetail) || album.title
   const mvSearchUrl = mv.canonicalUrl ? '' : buildYouTubeMvSearchUrl(`${group} ${primaryTitleTrack}`.trim())
+  const releaseStatusDisclosure = buildReleaseCanonicalStatusDisclosure(releaseDetail, language)
   const releaseDetailSourceStatus = {
     source: releaseDetailResource.source,
     errorCode: releaseDetailResource.loading ? null : releaseDetailResource.errorCode,
@@ -3795,6 +3818,17 @@ function ReleaseDetailPage({
             </div>
           )}
         </section>
+
+        {releaseStatusDisclosure ? (
+          <section className="track-preview">
+            <p className="panel-label">{releaseStatusDisclosure.title}</p>
+            <div className="tracklist-incomplete status-disclosure">
+              {releaseStatusDisclosure.lines.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {releaseDetail.notes ? (
           <section className="track-preview">
@@ -6808,6 +6842,190 @@ function getReleaseDetailMvUrls(detail: Pick<ReleaseDetailRow, 'youtube_video_id
   }
 }
 
+function formatCanonicalDisclosureStatusLabel(status: CanonicalDisclosureStatus, language: Language) {
+  if (language === 'ko') {
+    switch (status) {
+      case 'missing':
+        return '미기재'
+      case 'unresolved':
+        return '미해결'
+      case 'review_needed':
+        return '검토 필요'
+      case 'conditional_none':
+        return '조건부 없음'
+    }
+  }
+
+  switch (status) {
+    case 'missing':
+      return 'Missing'
+    case 'unresolved':
+      return 'Unresolved'
+    case 'review_needed':
+      return 'Review needed'
+    case 'conditional_none':
+      return 'Conditional none'
+  }
+}
+
+function formatCanonicalDisclosureLine(
+  subject: string,
+  status: CanonicalDisclosureStatus,
+  detail: string,
+  language: Language,
+) {
+  return `${subject} · ${formatCanonicalDisclosureStatusLabel(status, language)}: ${detail}`
+}
+
+function buildTeamCanonicalStatusDisclosure(
+  team: TeamProfile,
+  language: Language,
+): CanonicalSurfaceDisclosure | null {
+  const lines: string[] = []
+
+  if (!team.artistSource) {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        language === 'ko' ? '아티스트 출처' : 'Artist source',
+        'missing',
+        language === 'ko'
+          ? '프로필 기준 source link가 아직 연결되지 않았습니다.'
+          : 'The profile-level source link is not attached yet.',
+        language,
+      ),
+    )
+  }
+
+  if (team.nextUpcomingSignal && !team.nextUpcomingSignal.source_url) {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        language === 'ko' ? '다음 컴백 출처' : 'Next comeback source',
+        'missing',
+        language === 'ko'
+          ? '예정 신호는 보이지만 source link가 아직 붙지 않았습니다.'
+          : 'The upcoming signal exists, but its source link is still missing.',
+        language,
+      ),
+    )
+  }
+
+  if (team.latestRelease && !team.latestRelease.source) {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        language === 'ko' ? '최신 발매 출처' : 'Latest release source',
+        'missing',
+        language === 'ko'
+          ? 'verified release source link가 아직 연결되지 않았습니다.'
+          : 'The verified release source link is not attached yet.',
+        language,
+      ),
+    )
+  }
+
+  if (team.sourceTimeline.length === 0) {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        language === 'ko' ? '소스 타임라인' : 'Source timeline',
+        'unresolved',
+        language === 'ko'
+          ? '예정·발매 근거를 하나의 타임라인으로 아직 묶지 못했습니다.'
+          : 'Scheduled and verified evidence has not been merged into one timeline yet.',
+        language,
+      ),
+    )
+  }
+
+  if (lines.length === 0) {
+    return null
+  }
+
+  return {
+    title: language === 'ko' ? '소스 신뢰도' : 'Source confidence',
+    lines,
+  }
+}
+
+function buildReleaseCanonicalStatusDisclosure(
+  detail: ReleaseDetailRow,
+  language: Language,
+): CanonicalSurfaceDisclosure | null {
+  const lines: string[] = []
+
+  if (detail.tracks.length === 0) {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        language === 'ko' ? '트랙 메타데이터' : 'Track metadata',
+        'missing',
+        language === 'ko'
+          ? '신뢰 가능한 canonical tracklist가 아직 연결되지 않았습니다.'
+          : 'A reliable canonical tracklist is not attached yet.',
+        language,
+      ),
+    )
+  }
+
+  if (!detail.spotify_url || !detail.youtube_music_url) {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        language === 'ko' ? '음원 서비스 링크' : 'Streaming links',
+        'missing',
+        language === 'ko'
+          ? 'Spotify 또는 YouTube Music canonical link가 비어 있습니다.'
+          : 'Spotify or YouTube Music canonical links are still missing.',
+        language,
+      ),
+    )
+  }
+
+  if (detail.youtube_video_status === 'needs_review') {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        language === 'ko' ? '공식 MV' : 'Official MV',
+        'review_needed',
+        language === 'ko'
+          ? '후보는 있지만 사람 검토가 아직 끝나지 않았습니다.'
+          : 'A candidate exists, but human review is still required.',
+        language,
+      ),
+    )
+  }
+
+  if (detail.youtube_video_status === 'unresolved') {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        language === 'ko' ? '공식 MV' : 'Official MV',
+        'unresolved',
+        language === 'ko'
+          ? '채워야 하지만 아직 canonical target을 확정하지 못했습니다.'
+          : 'This should be filled, but the canonical target is still unresolved.',
+        language,
+      ),
+    )
+  }
+
+  if (detail.youtube_video_status === 'no_mv' || detail.youtube_video_status === 'no_link') {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        language === 'ko' ? '공식 MV' : 'Official MV',
+        'conditional_none',
+        language === 'ko'
+          ? 'first-party evidence 기준으로 공식 MV가 없다고 확인된 상태입니다.'
+          : 'First-party evidence confirms that there is no official MV for this release.',
+        language,
+      ),
+    )
+  }
+
+  if (lines.length === 0) {
+    return null
+  }
+
+  return {
+    title: language === 'ko' ? '외부 링크 및 메타 상태' : 'External links and metadata state',
+    lines,
+  }
+}
+
 function getPrimaryTitleTrackTitle(detail: Pick<ReleaseDetailRow, 'tracks'>) {
   return detail.tracks.find((track) => track.is_title_track)?.title ?? ''
 }
@@ -7120,6 +7338,7 @@ function normalizeApiReleaseDetailSnapshot(
     youtubeVideoStatus === 'relation_match' ||
     youtubeVideoStatus === 'manual_override' ||
     youtubeVideoStatus === 'needs_review' ||
+    youtubeVideoStatus === 'no_link' ||
     youtubeVideoStatus === 'no_mv' ||
     youtubeVideoStatus === 'unresolved'
       ? youtubeVideoStatus

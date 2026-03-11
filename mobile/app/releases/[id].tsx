@@ -28,6 +28,7 @@ import { FallbackArt } from '../../src/components/visual/FallbackArt';
 import {
   buildDatasetRiskDisclosure,
   buildReleaseDependencyDisclosure,
+  formatCanonicalDisclosureLine,
 } from '../../src/features/surfaceDisclosures';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import { selectReleaseDetailById } from '../../src/selectors';
@@ -154,11 +155,24 @@ function getMvStatusCopy(status?: YoutubeVideoStatus): string | null {
     case 'relation_match':
       return '공식 MV가 확인돼 외부 서비스로 바로 열 수 있습니다.';
     case 'needs_review':
-      return '공식 MV 후보가 있어도 아직 검토가 끝나지 않았습니다.';
+      return formatCanonicalDisclosureLine(
+        '공식 MV',
+        'review_needed',
+        '후보는 있지만 사람 검토가 아직 끝나지 않았습니다.',
+      );
+    case 'no_link':
     case 'no_mv':
-      return '현재는 공식 MV가 등록되지 않았습니다.';
+      return formatCanonicalDisclosureLine(
+        '공식 MV',
+        'conditional_none',
+        'first-party evidence 기준으로 공식 MV가 없다고 확인된 상태입니다.',
+      );
     case 'unresolved':
-      return '공식 MV가 아직 확정되지 않았습니다.';
+      return formatCanonicalDisclosureLine(
+        '공식 MV',
+        'unresolved',
+        '채워야 하지만 아직 canonical target을 확정하지 못했습니다.',
+      );
     default:
       return null;
   }

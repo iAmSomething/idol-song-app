@@ -64,6 +64,38 @@ describe('surface disclosure helpers', () => {
       title: '소스 신뢰도',
       testID: 'entity-source-confidence-notice',
     });
+    expect(
+      buildEntitySourceDisclosure({
+        team: {
+          slug: 'demo',
+          group: 'Demo',
+          displayName: 'Demo',
+          actType: 'group',
+          youtubeChannelUrls: [],
+          searchTokens: [],
+        },
+        nextUpcoming: {
+          id: 'demo-upcoming',
+          group: 'Demo',
+          displayGroup: 'Demo',
+          headline: 'Demo comeback',
+          status: 'confirmed',
+          datePrecision: 'exact',
+          scheduledDate: '2026-03-20',
+          sourceType: 'news_rss',
+        },
+        latestRelease: {
+          id: 'demo-release',
+          group: 'Demo',
+          displayGroup: 'Demo',
+          releaseTitle: 'Demo Release',
+          releaseDate: '2026-01-01',
+          contextTags: [],
+        },
+        recentAlbums: [],
+        sourceTimeline: [],
+      })?.body,
+    ).toContain('아티스트 출처 · 미기재');
   });
 
   test('flags release dependency gaps', () => {
@@ -81,5 +113,16 @@ describe('surface disclosure helpers', () => {
       title: '외부 링크 및 메타 상태',
       testID: 'release-detail-quality-notice',
     });
+    expect(
+      buildReleaseDependencyDisclosure({
+        id: 'demo',
+        group: 'Demo',
+        displayGroup: 'Demo',
+        releaseTitle: 'Demo Release',
+        releaseDate: '2026-01-01',
+        tracks: [],
+        youtubeVideoStatus: 'no_link',
+      })?.body,
+    ).toContain('공식 MV · 조건부 없음');
   });
 });

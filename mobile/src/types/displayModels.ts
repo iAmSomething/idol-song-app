@@ -4,7 +4,13 @@ export type UpcomingDatePrecision = 'exact' | 'month_only' | 'unknown';
 export type UpcomingStatus = 'scheduled' | 'confirmed' | 'rumor';
 export type UpcomingConfidence = 'low' | 'medium' | 'high';
 export type UpcomingSourceType = 'agency_notice' | 'weverse_notice' | 'official_social' | 'news_rss' | 'database' | 'pending';
-export type YoutubeVideoStatus = 'relation_match' | 'manual_override' | 'needs_review' | 'no_mv' | 'unresolved';
+export type YoutubeVideoStatus =
+  | 'relation_match'
+  | 'manual_override'
+  | 'needs_review'
+  | 'no_link'
+  | 'no_mv'
+  | 'unresolved';
 export type TeamActType = 'group' | 'solo' | 'unit' | 'project';
 
 export interface TeamBadge {
