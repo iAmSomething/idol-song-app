@@ -32,6 +32,9 @@
   - push/pop은 기본 전환 유지
   - 추가 fade/translate 최소화
   - spring/bounce 효과 제거
+  - launch intro는 정적 소개 카드 + 짧은 hold로 축소
+  - loading skeleton pulse는 정지하고 정적 placeholder로 유지
+  - sheet는 slide 대신 fade를 우선 사용
 
 ## 7. Platform Behavior
 ### 7.1 iOS

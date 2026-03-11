@@ -11,6 +11,7 @@ import {
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 export type ActionButtonTone = 'primary' | 'secondary' | 'meta';
 
@@ -38,6 +39,7 @@ function ActionButtonComponent({
   tone = 'primary',
 }: ActionButtonProps) {
   const theme = useAppTheme();
+  const reducedMotion = useReducedMotion();
   const { fontScale } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const isDisabled = disabled || loading;
@@ -60,7 +62,7 @@ function ActionButtonComponent({
         tone === 'primary' ? styles.primarySize : null,
         tone === 'secondary' ? styles.secondarySize : null,
         fullWidth ? styles.fullWidthButton : null,
-        pressed && !isDisabled ? styles.pressed : null,
+        pressed && !isDisabled ? (reducedMotion ? styles.pressedReducedMotion : styles.pressed) : null,
         isDisabled ? styles.disabled : null,
       ]}
       testID={testID}
@@ -141,7 +143,11 @@ function createStyles(theme: MobileTheme) {
       backgroundColor: 'transparent',
     },
     pressed: {
+      transform: [{ scale: 0.985 }],
       opacity: 0.84,
+    },
+    pressedReducedMotion: {
+      opacity: 0.88,
     },
     disabled: {
       opacity: 0.5,

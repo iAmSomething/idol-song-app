@@ -222,6 +222,15 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     experiments: {
       typedRoutes: true,
     },
+    splash: {
+      image: './assets/app-icon/icon-adaptive-foreground.png',
+      resizeMode: 'contain',
+      backgroundColor: '#F6F3EE',
+      dark: {
+        image: './assets/app-icon/icon-adaptive-foreground.png',
+        backgroundColor: '#171411',
+      },
+    },
     ios: {
       supportsTablet: true,
       bundleIdentifier: profileConfig.iosBundleIdentifier,

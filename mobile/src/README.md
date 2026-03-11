@@ -5,6 +5,7 @@
 - `components/`: 표시 컴포넌트
   - `feedback/`: screen-level loading/empty/error/retry + inline notice 공용 컴포넌트
   - `actions/`: service button / grouped action row 공용 컴포넌트
+  - `launch/`: app launch gate / intro overlay 공용 컴포넌트
   - `calendar/`: day cell / date detail sheet 공용 컴포넌트
   - `release/`: track row 공용 컴포넌트
 - `copy/`: RN 공용 문구 / 상태 라벨 / 날짜 라벨 helper
@@ -34,6 +35,8 @@
 - `tokens/`: design token / theme
   - `theme.tsx`: theme provider + `useAppTheme()` access convention
   - `colors.ts`, `spacing.ts`, `radii.ts`, `typography.ts`, `sizes.ts`, `elevation.ts`, `motion.ts`
+- `hooks/`: runtime-adaptive UI helper
+  - `useReducedMotion.ts`: OS reduce-motion 선호 동기화
 - `types/`: shared TypeScript model
   - `displayModels.ts`: screen-facing display model types
   - `rawData.ts`: current static dataset contract types
@@ -68,6 +71,12 @@ feedback state 관련 규칙:
 - screen-level loading / empty / error / retry는 `components/feedback/FeedbackState.tsx`를 우선 사용한다.
 - section 안의 empty / warning / retry copy도 가능하면 `InlineFeedbackNotice`로 통일한다.
 - 화면이 직접 `ActivityIndicator + 문구 + retry button` 조합을 반복해서 만들지 않는다.
+- loading은 surface 문맥을 반영한 skeleton layout을 기본으로 하고, 짧은 fetch에는 reveal delay를 둔다.
+
+motion 관련 규칙:
+
+- launch intro, loading pulse, sheet open은 `tokens/motion.ts`와 `hooks/useReducedMotion.ts`를 공통 기준으로 사용한다.
+- reduced motion 환경에서는 long fade/slide를 줄이고 정적 fallback을 우선한다.
 
 copy 관련 규칙:
 

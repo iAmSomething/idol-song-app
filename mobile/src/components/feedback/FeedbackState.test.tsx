@@ -9,23 +9,35 @@ function hasText(tree: renderer.ReactTestRenderer, value: string): boolean {
 }
 
 describe('shared feedback state components', () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   test('renders a screen-level loading state with copy', async () => {
     let tree: renderer.ReactTestRenderer;
+
+    jest.useFakeTimers();
 
     await act(async () => {
       tree = renderer.create(
         <ScreenFeedbackState
           body="데이터를 불러오는 중입니다."
           eyebrow="LOADING"
+          loadingLayout="calendar"
           title="Calendar"
           variant="loading"
         />,
       );
     });
 
+    await act(async () => {
+      jest.advanceTimersByTime(180);
+    });
+
     expect(hasText(tree!, 'LOADING')).toBe(true);
     expect(hasText(tree!, 'Calendar')).toBe(true);
     expect(hasText(tree!, '데이터를 불러오는 중입니다.')).toBe(true);
+    expect(tree!.root.findByProps({ testID: 'loading-skeleton-calendar' })).toBeDefined();
   });
 
   test('renders an inline notice action and calls the handler', async () => {

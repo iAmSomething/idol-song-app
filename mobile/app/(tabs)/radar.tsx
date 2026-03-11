@@ -500,6 +500,7 @@ export default function RadarTabScreen() {
       <ScreenFeedbackState
         body="가장 가까운 컴백과 레이더 요약을 불러오는 중입니다."
         eyebrow="데이터 로딩"
+        loadingLayout="radar"
         title="레이더"
         variant="loading"
       />

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import { SheetHeader } from './SheetHeader';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 
@@ -30,7 +31,7 @@ export interface BottomSheetFrameProps {
 
 function BottomSheetFrameComponent({
   accessibilityLabel,
-  animationType = 'fade',
+  animationType,
   backdropTestID,
   children,
   closeButtonTestID,
@@ -44,7 +45,9 @@ function BottomSheetFrameComponent({
   title,
 }: BottomSheetFrameProps) {
   const theme = useAppTheme();
+  const reducedMotion = useReducedMotion();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const resolvedAnimationType = animationType ?? (reducedMotion ? 'fade' : 'slide');
   const sheetStyle = useMemo<StyleProp<ViewStyle>>(
     () => [
       styles.sheet,
@@ -60,7 +63,7 @@ function BottomSheetFrameComponent({
 
   return (
     <Modal
-      animationType={animationType}
+      animationType={resolvedAnimationType}
       onRequestClose={onClose}
       presentationStyle="overFullScreen"
       transparent

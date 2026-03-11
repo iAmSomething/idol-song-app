@@ -33,6 +33,7 @@
 - 목적: 맥락 심화
 - 뒤로 가기: 이전 화면 상태 복원
 - 애니메이션: 기본 네이티브 push
+- launch 직후 첫 진입은 짧은 branded launch gate 뒤에 본문으로 이어진다.
 
 ### 3.3 Bottom Sheet
 - 대상: Date Detail, Filter, Language/Settings
@@ -40,6 +41,7 @@
 - 배경: dim 처리
 - 닫기: swipe down, background tap, explicit close(optional)
 - 애니메이션: 기본 sheet open/close
+- 기본 모션: 일반 환경 `slide`, reduced motion 환경 `fade`
 
 ### 3.4 External Open
 - 대상: Spotify, YouTube Music, YouTube MV, 기사 원문, 공식 공지
@@ -118,6 +120,7 @@
 - bottom sheet open/close
 - content change 시 짧은 fade/translate
 - subtle press feedback
+- launch 직후 1회성 짧은 fade/settle intro
 
 ### 9.2 금지
 - 과한 spring/bounce
@@ -128,6 +131,13 @@
 - 탭/버튼 press feedback: 120~160ms 수준
 - sheet: 명확하고 예측 가능하게
 - long blocking transition 금지
+- launch intro: 1초 미만
+- loading skeleton pulse: 저강도 반복만 허용
+
+### 9.4 Reduced Motion
+- launch gate는 정적 카드 + 짧은 hold 후 즉시 해제한다.
+- sheet는 slide 대신 fade를 사용한다.
+- loading skeleton은 pulse를 정지하고 정적 블록으로 유지한다.
 
 ## 10. Gesture Conflict
 - bottom sheet 내부 목록 스크롤이 상단 경계에 도달한 경우에만 swipe down close를 허용한다.

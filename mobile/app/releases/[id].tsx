@@ -430,6 +430,7 @@ export default function ReleaseDetailScreen() {
         <ScreenFeedbackState
           body="앨범 액션, 트랙 리스트, MV 상태를 불러오는 중입니다."
           eyebrow="상세 로딩"
+          loadingLayout="detail"
           title="릴리즈 상세"
           variant="loading"
         />

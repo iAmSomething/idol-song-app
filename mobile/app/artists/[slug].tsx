@@ -391,6 +391,7 @@ export default function ArtistDetailScreen() {
         <ScreenFeedbackState
           body="팀 요약, 다음 컴백, 최근 앨범을 불러오는 중입니다."
           eyebrow="상세 로딩"
+          loadingLayout="detail"
           title="팀 상세"
           variant="loading"
         />
