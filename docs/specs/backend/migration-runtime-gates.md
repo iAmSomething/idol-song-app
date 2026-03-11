@@ -33,6 +33,7 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 | parity dependency | `backend/reports/backend_json_parity_report.json` |
 | shadow dependency | `backend/reports/backend_shadow_read_report.json` |
 | historical catalog completeness | `backend/reports/historical_release_detail_coverage_report.json` |
+| critical null coverage | `backend/reports/canonical_null_coverage_report.json`, `backend/reports/null_coverage_trend_report.json` |
 | combined decision | `backend/reports/runtime_gate_report.json` |
 
 ## 4. Gate Status Semantics
@@ -160,6 +161,37 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 - historical catalog completeness는 read API가 technically 살아 있어도 release-detail cutover를 막을 수 있는 데이터 품질 gate다
 - 특히 `pre-2024` coverage가 크게 비어 있으면 migration / web / mobile readiness를 `pass`로 보지 않는다
 
+### 5.7 Critical Null Coverage
+
+기준:
+
+- `canonical_null_coverage_report.json`
+- `null_coverage_trend_report.json`
+- policy baseline: `docs/specs/backend/canonical-null-hygiene-operating-model.md`
+
+초기 기준:
+
+- `latest` cohort Wave 1 floor
+  - title-track `95%`
+  - canonical MV `80%`
+  - YouTube Music / Spotify `85%`
+  - official links `100%`
+- `recent` cohort Wave 1 floor
+  - title-track `85%`
+  - canonical MV `55%`
+  - YouTube Music / Spotify `70%`
+  - official links `95%`
+- regression budget
+  - latest week-over-week `-2pp`
+  - recent week-over-week `-5pp`
+  - historical quarter-over-quarter `-3pp`
+
+해석:
+
+- `conditional_null`과 `true_optional`은 denominator에서 제외한다
+- trend artifact가 없거나 stale이면 `needs_review`를 넘기지 못한다
+- latest cohort에서 하나라도 floor 미달이면 cutover 근거로는 `fail`이다
+
 ## 6. Stage Gate Mapping
 
 ### 6.1 Shadow API -> Web Cutover
@@ -169,6 +201,7 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 - parity dependency `pass`
 - shadow dependency `pass`
 - historical catalog completeness dependency `pass`
+- critical null coverage dependency `pass`
 - report bundle consistency dependency `pass`
 - runtime gates가 모두 `pass` 또는 일부 `needs_review`
 
@@ -185,6 +218,7 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 - parity dependency `pass`
 - shadow dependency `pass`
 - historical catalog completeness dependency `pass`
+- critical null coverage dependency `pass`
 - report bundle consistency dependency `pass`
 - freshness `pass`
 - worker cadence `pass`

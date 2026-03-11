@@ -11,6 +11,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 - `docs/specs/backend/web-cutover-rollback-drills.md`
 - `docs/specs/backend/mobile-adoption-readiness-review.md`
 - `docs/specs/backend/backend-secret-inventory-and-rotation.md`
+- `docs/specs/backend/canonical-null-hygiene-operating-model.md`
 
 현재 포함 범위:
 
