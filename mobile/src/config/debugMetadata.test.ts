@@ -103,7 +103,7 @@ describe('debug metadata helpers', () => {
           ...previewRuntimeConfig,
           services: {
             ...previewRuntimeConfig.services,
-            apiBaseUrl: 'https://api.idol-song-app.example.com',
+            apiBaseUrl: 'https://idol-song-app-preview.up.railway.app',
           },
         },
       }).backendTargetLabel,
@@ -121,6 +121,19 @@ describe('debug metadata helpers', () => {
         },
       }).backendTargetLabel,
     ).toBe('Temporary tunnel backend');
+
+    expect(
+      getDebugMetadata({
+        ...previewRuntimeState,
+        config: {
+          ...previewRuntimeConfig,
+          services: {
+            ...previewRuntimeConfig.services,
+            apiBaseUrl: 'https://idol-song-app-production.up.railway.app',
+          },
+        },
+      }).backendTargetLabel,
+    ).toBe('Custom backend target');
   });
 
   test('keeps the metadata surface unavailable for production profile', () => {

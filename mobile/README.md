@@ -134,8 +134,8 @@ preview QA runtime용 native prebuild / simulator 실행:
 
 ```bash
 cd mobile
-EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:ios:prebuild
-EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:ios:sim
+EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env preview --repo iAmSomething/idol-song-app)" npm run qa:preview:ios:prebuild
+EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env preview --repo iAmSomething/idol-song-app)" npm run qa:preview:ios:sim
 ```
 
 personal Apple team으로 iOS preview signing override를 준비하려면:
@@ -161,8 +161,8 @@ Android 쪽 native prebuild baseline:
 
 ```bash
 cd mobile
-EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:android:prebuild
-EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:android:emu
+EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env preview --repo iAmSomething/idol-song-app)" npm run qa:preview:android:prebuild
+EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env preview --repo iAmSomething/idol-song-app)" npm run qa:preview:android:emu
 ```
 
 Android preview QA rerun을 emulator 안정화 설정과 함께 준비하려면:
@@ -171,7 +171,7 @@ Android preview QA rerun을 emulator 안정화 설정과 함께 준비하려면:
 cd mobile
 npm run qa:preview:android:avd:prepare
 npm run qa:preview:android:avd:launch
-EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:android:emu
+EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env preview --repo iAmSomething/idol-song-app)" npm run qa:preview:android:emu
 ```
 
 참고:
@@ -228,14 +228,15 @@ iPhone / Android 외부 기기 QA minimum steps:
 
 1. 같은 Wi-Fi 또는 reachability 가능한 네트워크에 host machine과 device를 둔다.
 2. `mobile/.env.preview.example`을 `.env`로 복사한다.
-3. `npm run config:preview`로 `EXPO_PUBLIC_API_BASE_URL`이 `https://api.idol-song-app.example.com`로 잡히는지 확인한다.
-4. 같은 출력에서 `services.expoProjectId`도 비어 있지 않은지 확인한다.
-5. 앱 안 `알림` 진입점에서 권한 요청과 등록 상태를 바로 확인할 수 있다.
-6. preview dev client를 열고 Expo CLI가 보여주는 QR 또는 deep link로 runtime에 붙는다.
-7. hidden debug route `idolsongapp-preview://debug/metadata`에서 아래 값을 확인한다.
+3. `gh variable get BACKEND_PUBLIC_URL --env preview --repo iAmSomething/idol-song-app`로 stable preview URL을 확인하고 `.env`에 같은 값을 넣는다.
+4. `npm run config:preview`로 `EXPO_PUBLIC_API_BASE_URL`이 preview GitHub Environment의 `BACKEND_PUBLIC_URL`과 같은지 확인한다.
+5. 같은 출력에서 `services.expoProjectId`도 비어 있지 않은지 확인한다.
+6. 앱 안 `알림` 진입점에서 권한 요청과 등록 상태를 바로 확인할 수 있다.
+7. preview dev client를 열고 Expo CLI가 보여주는 QR 또는 deep link로 runtime에 붙는다.
+8. hidden debug route `idolsongapp-preview://debug/metadata`에서 아래 값을 확인한다.
    - `Backend target = Public preview backend`
-   - `API base URL = https://api.idol-song-app.example.com`
-   - `API host = api.idol-song-app.example.com`
+   - `API base URL = <preview BACKEND_PUBLIC_URL>`
+   - `API host = <preview host>`
 
 ## temporary tunnel fallback
 
@@ -262,7 +263,7 @@ APP_ENV=preview npx expo start --dev-client --host tunnel --port 8082
 
 tunnel fallback 규칙:
 
-- 정식 sign-off / distribution 기본 경로로 쓰지 않는다.
+- 정식 sign-off / distribution 기본 경로는 GitHub Environment `preview`의 `BACKEND_PUBLIC_URL`과 같은 stable public preview backend다.
 - backend target이 tunnel이면 debug metadata에서 `Backend target = Temporary tunnel backend`가 보여야 한다.
 - tunnel은 속도/안정성/도메인 수명이 불안정하므로 regression spot-check 용도로만 쓴다.
 

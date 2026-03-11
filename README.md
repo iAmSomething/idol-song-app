@@ -314,6 +314,7 @@ npm run build
 - production backend는 `workflow_dispatch`에서 수동 승격
 - 두 경로 모두 backend `npm ci`, `npm run build`, `npm run test`를 선행한 뒤 Railway CLI deploy를 실행
 - GitHub Environment `preview`, `production`에 `RAILWAY_TOKEN`, `RAILWAY_PROJECT_ID`, `RAILWAY_ENVIRONMENT_ID`, `RAILWAY_SERVICE_ID`, `BACKEND_PUBLIC_URL`를 설정해야 함
+- preview deploy는 Railway provided domain을 resolve한 뒤 `preview/BACKEND_PUBLIC_URL`을 다시 동기화하고, 같은 URL로 live smoke와 freshness handoff를 검증함
 
 backend deploy topology와 rehearsal 규칙은 `docs/specs/backend/preview-staging-backend-path.md`, public read rate-limit 정책은 `docs/specs/backend/public-read-rate-limit-policy.md`, canonical live smoke fixture registry와 운영 entrypoint는 `backend/README.md`에 정리돼 있습니다.
 

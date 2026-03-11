@@ -19,6 +19,7 @@ on:
       - ".github/workflows/backend-deploy.yml"
 
 permissions:
+  actions: write
   contents: read
 
 jobs:
@@ -47,11 +48,26 @@ jobs:
         working-directory: backend
         run: npm ci
 
+      - name: Resolve preview backend public URL
+        id: resolve_preview_backend_public_url
+        working-directory: backend
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
+          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID }}
+          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
+        run: >
+          npm run preview:url:sync --
+          --repo "${GITHUB_REPOSITORY}"
+          --github-environment preview
+          --report-path ./reports/preview_backend_public_url.json
+
       - name: Verify preview deploy environment contract
         working-directory: backend
         env:
           BACKEND_DEPLOY_TARGET: preview
-          BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
+          BACKEND_PUBLIC_URL: ${{ steps.resolve_preview_backend_public_url.outputs.backend_public_url }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
           RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
@@ -89,6 +105,14 @@ jobs:
           path: backend/reports/deploy_env_contract_preview.json
           if-no-files-found: warn
 
+      - name: Upload preview backend public URL report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-preview-public-url
+          path: backend/reports/preview_backend_public_url.json
+          if-no-files-found: warn
+
       - name: Deploy preview backend
         env:
           BACKEND_DEPLOY_TARGET: preview
@@ -101,13 +125,13 @@ jobs:
       - name: Run preview canonical fixture smoke checks
         working-directory: backend
         env:
-          BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
+          BACKEND_PUBLIC_URL: ${{ steps.resolve_preview_backend_public_url.outputs.backend_public_url }}
         run: npm run smoke:live -- --target preview --base-url "$BACKEND_PUBLIC_URL" --report-path ./reports/live_backend_smoke_preview.json
 
       - name: Build preview backend freshness handoff artifact
         working-directory: backend
         env:
-          BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
+          BACKEND_PUBLIC_URL: ${{ steps.resolve_preview_backend_public_url.outputs.backend_public_url }}
         run: npm run freshness:handoff -- --target preview --backend-public-url "$BACKEND_PUBLIC_URL" --report-path ./reports/backend_freshness_handoff_preview.json
 
       - name: Upload preview live smoke report

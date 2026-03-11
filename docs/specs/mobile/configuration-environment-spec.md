@@ -56,6 +56,8 @@
 ## 7.2 Public preview backend and tunnel fallback
 - external iPhone/Android QA의 기본 경로는 stable public preview backend다.
 - mobile preview 예시 env는 `mobile/.env.preview.example`를 기준으로 둔다.
+- stable preview backend의 source of truth는 GitHub Environment `preview`의 `BACKEND_PUBLIC_URL`이다.
+- preview backend deploy workflow는 Railway provided domain을 resolve한 뒤 같은 값을 `BACKEND_PUBLIC_URL`에 다시 동기화해야 한다.
 - debug metadata에서는 최소 아래를 확인 가능해야 한다.
   - active API base URL
   - active API host

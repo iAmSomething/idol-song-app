@@ -51,8 +51,9 @@ PRODUCT_BUNDLE_IDENTIFIER = com.example.idolsongapp.preview
 cd mobile
 export EXPO_IOS_APPLE_TEAM_ID=ABCDE12345
 export EXPO_IOS_BUNDLE_IDENTIFIER=com.example.idolsongapp.preview
-EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run config:preview
-EXPO_PUBLIC_API_BASE_URL=https://api.idol-song-app.example.com npm run qa:preview:ios:sim
+export EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env preview --repo iAmSomething/idol-song-app)"
+npm run config:preview
+npm run qa:preview:ios:sim
 ```
 
 실제 iPhone으로 설치할 때는 `expo run:ios --device <device name>` 또는 Xcode Run을 사용한다.
