@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Keyboard,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -64,6 +65,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { useOptionalSafeAreaInsets } from '../../src/hooks/useOptionalSafeAreaInsets';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
 import { resolveBadgeFallbackAssetKey } from '../../src/utils/assetRegistry';
@@ -204,7 +206,18 @@ export default function SearchTabScreen() {
     segment?: string | string[];
   }>();
   const theme = useAppTheme();
+  const insets = useOptionalSafeAreaInsets();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const scrollContentStyle = useMemo(
+    () => [
+      styles.content,
+      {
+        paddingTop: theme.space[24] + insets.top,
+        paddingBottom: theme.space[32] + insets.bottom + theme.space[20],
+      },
+    ],
+    [insets.bottom, insets.top, styles.content, theme.space],
+  );
   const routeState = useMemo(() => resolveSearchRouteState(params), [params]);
 
   const [reloadCount, setReloadCount] = useState(0);
@@ -648,7 +661,8 @@ export default function SearchTabScreen() {
 
   return (
     <ScrollView
-      contentContainerStyle={styles.content}
+      contentContainerStyle={scrollContentStyle}
+      keyboardDismissMode={Platform.OS === 'android' ? 'on-drag' : 'interactive'}
       keyboardShouldPersistTaps="handled"
       style={styles.screen}
     >

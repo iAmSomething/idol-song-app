@@ -4,6 +4,7 @@ import { Animated, Easing, StyleSheet, Text, useWindowDimensions, View } from 'r
 import { useAppTheme, type MobileTheme } from '../../tokens/theme';
 import { MOBILE_COPY } from '../../copy/mobileCopy';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
+import { useOptionalSafeAreaInsets } from '../../hooks/useOptionalSafeAreaInsets';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { ActionButton } from '../actions/ActionButton';
 import { FallbackArt } from '../visual/FallbackArt';
@@ -44,6 +45,7 @@ export function ScreenFeedbackState({
   variant,
 }: ScreenFeedbackStateProps) {
   const theme = useAppTheme();
+  const insets = useOptionalSafeAreaInsets();
   const { fontScale } = useWindowDimensions();
   const styles = React.useMemo(() => createStyles(theme), [theme]);
   const titleMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.sectionTitle : MOBILE_TEXT_SCALE_LIMITS.screenTitle;
@@ -64,7 +66,16 @@ export function ScreenFeedbackState({
   }, [theme.motion.loadingDelay, variant]);
 
   return (
-    <View style={styles.screenContainer} testID={testID}>
+    <View
+      style={[
+        styles.screenContainer,
+        {
+          paddingTop: theme.space[24] + insets.top,
+          paddingBottom: theme.space[24] + insets.bottom,
+        },
+      ]}
+      testID={testID}
+    >
       {variant !== 'loading' ? (
         <FallbackArt
           height={104}

@@ -44,6 +44,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { useOptionalSafeAreaInsets } from '../../src/hooks/useOptionalSafeAreaInsets';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
 import {
@@ -246,7 +247,18 @@ export default function RadarTabScreen() {
   const routeSectionsParam = params.sections;
   const routeStatusParam = params.status;
   const theme = useAppTheme();
+  const insets = useOptionalSafeAreaInsets();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const scrollContentStyle = useMemo(
+    () => [
+      styles.content,
+      {
+        paddingTop: theme.space[24] + insets.top,
+        paddingBottom: theme.space[32] + insets.bottom + theme.space[20],
+      },
+    ],
+    [insets.bottom, insets.top, styles.content, theme.space],
+  );
   const [reloadCount, setReloadCount] = useState(0);
   const routeState = useMemo(
     () =>
@@ -552,7 +564,7 @@ export default function RadarTabScreen() {
 
   return (
     <>
-      <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+      <ScrollView style={styles.screen} contentContainerStyle={scrollContentStyle}>
         <AppBar subtitle={source.sourceLabel} testID="radar-app-bar" title={MOBILE_COPY.surface.radarTitle} />
         <View style={styles.appBarActions}>
           <Pressable

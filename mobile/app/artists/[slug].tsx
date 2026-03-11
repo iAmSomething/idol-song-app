@@ -55,6 +55,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { useOptionalSafeAreaInsets } from '../../src/hooks/useOptionalSafeAreaInsets';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
 import { resolveBadgeFallbackAssetKey } from '../../src/utils/assetRegistry';
@@ -239,7 +240,18 @@ export default function ArtistDetailScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ slug?: string | string[] }>();
   const theme = useAppTheme();
+  const insets = useOptionalSafeAreaInsets();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const scrollContentStyle = useMemo(
+    () => [
+      styles.content,
+      {
+        paddingTop: theme.space[16] + insets.top,
+        paddingBottom: theme.space[32] + insets.bottom,
+      },
+    ],
+    [insets.bottom, insets.top, styles.content, theme.space],
+  );
   const slug = getSingleParam(params.slug)?.trim() ?? '';
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
@@ -471,7 +483,7 @@ export default function ArtistDetailScreen() {
     : [];
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+    <ScrollView style={styles.screen} contentContainerStyle={scrollContentStyle}>
       <Stack.Screen options={{ title: snapshot.team.displayName }} />
 
       <AppBar

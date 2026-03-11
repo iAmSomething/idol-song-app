@@ -1,14 +1,17 @@
 import React, { memo, useMemo } from 'react';
 import {
   Modal,
+  Platform,
   Pressable,
   StyleSheet,
+  useWindowDimensions,
   View,
   type StyleProp,
   type ViewStyle,
 } from 'react-native';
 
 import { SheetHeader } from './SheetHeader';
+import { useOptionalSafeAreaInsets } from '../../hooks/useOptionalSafeAreaInsets';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
@@ -45,16 +48,22 @@ function BottomSheetFrameComponent({
   title,
 }: BottomSheetFrameProps) {
   const theme = useAppTheme();
+  const insets = useOptionalSafeAreaInsets();
   const reducedMotion = useReducedMotion();
+  const { height } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const resolvedAnimationType = animationType ?? (reducedMotion ? 'fade' : 'slide');
+  const resolvedMaxHeight = Math.max(height - insets.top - theme.space[24], 320);
   const sheetStyle = useMemo<StyleProp<ViewStyle>>(
     () => [
       styles.sheet,
-      maxHeight !== undefined ? { maxHeight } : null,
+      {
+        maxHeight: maxHeight ?? resolvedMaxHeight,
+        paddingBottom: theme.space[16] + insets.bottom,
+      },
       minHeight !== undefined ? { minHeight } : null,
     ],
-    [maxHeight, minHeight, styles.sheet],
+    [insets.bottom, maxHeight, minHeight, resolvedMaxHeight, styles.sheet, theme.space],
   );
 
   if (!isOpen) {
@@ -64,12 +73,14 @@ function BottomSheetFrameComponent({
   return (
     <Modal
       animationType={resolvedAnimationType}
+      navigationBarTranslucent={Platform.OS === 'android'}
       onRequestClose={onClose}
       presentationStyle="overFullScreen"
+      statusBarTranslucent={Platform.OS === 'android'}
       transparent
       visible
     >
-      <View style={styles.overlay}>
+      <View style={[styles.overlay, { paddingTop: insets.top + theme.space[8] }]}>
         <Pressable
           accessible={false}
           onPress={onClose}
