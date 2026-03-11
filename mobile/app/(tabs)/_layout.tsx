@@ -1,9 +1,11 @@
 import { Tabs } from 'expo-router';
 
+import { useOptionalSafeAreaInsets } from '../../src/hooks/useOptionalSafeAreaInsets';
 import { useAppTheme } from '../../src/tokens/theme';
 
 export default function TabsLayout() {
   const theme = useAppTheme();
+  const insets = useOptionalSafeAreaInsets();
 
   return (
     <Tabs
@@ -17,6 +19,9 @@ export default function TabsLayout() {
         tabBarStyle: {
           backgroundColor: theme.colors.surface.elevated,
           borderTopColor: theme.colors.border.subtle,
+          height: 56 + insets.bottom,
+          paddingTop: theme.space[8],
+          paddingBottom: Math.max(insets.bottom, theme.space[8]),
         },
         tabBarActiveTintColor: theme.colors.text.brand,
         tabBarInactiveTintColor: theme.colors.text.tertiary,

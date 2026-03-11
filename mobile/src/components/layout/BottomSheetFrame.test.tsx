@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer, { act } from 'react-test-renderer';
-import { Text } from 'react-native';
+import { Platform, Text } from 'react-native';
 
 import { BottomSheetFrame } from './BottomSheetFrame';
 
@@ -18,14 +18,22 @@ jest.mock('react-native/Libraries/Modal/Modal', () => {
     default: ({
       animationType,
       children,
+      navigationBarTranslucent,
+      statusBarTranslucent,
       visible,
     }: {
       animationType?: string;
       children?: React.ReactNode;
+      navigationBarTranslucent?: boolean;
+      statusBarTranslucent?: boolean;
       visible?: boolean;
     }) =>
       visible
-        ? React.createElement('modal-host', { animationType, visible }, children)
+        ? React.createElement(
+            'modal-host',
+            { animationType, navigationBarTranslucent, statusBarTranslucent, visible },
+            children,
+          )
         : null,
   };
 });
@@ -59,6 +67,8 @@ describe('BottomSheetFrame', () => {
     expect(tree!.root.findByProps({ testID: 'bottom-sheet' }).props.accessibilityViewIsModal).toBe(true);
     expect(tree!.root.findByProps({ testID: 'bottom-sheet-backdrop' })).toBeDefined();
     expect(tree!.root.findByType('modal-host' as any).props.animationType).toBe('slide');
+    expect(tree!.root.findByType('modal-host' as any).props.statusBarTranslucent).toBe(Platform.OS === 'android');
+    expect(tree!.root.findByType('modal-host' as any).props.navigationBarTranslucent).toBe(Platform.OS === 'android');
 
     await act(async () => {
       tree!.root.findByProps({ testID: 'bottom-sheet-close' }).props.onPress();

@@ -15,6 +15,8 @@ TalkBack도 이번에는 preview target 위에서 실제로 bound service 상태
 
 최종 runtime/accessibility verdict는 `PASS`다. Android preview runtime / handoff-return / TalkBack, iOS largest-text / VoiceOver까지 모두 runnable preview target에서 증적을 남겼다.
 
+후속 Android post-review layout/inset audit는 `#549/#550/#551` 범위로 별도 재실행했고, 로컬 증적은 `docs/assets/distribution/rn_android_post_review_polish_local_2026-03-11.md`에 남겼다.
+
 ## Runtime Matrix
 | Target | Result | Evidence | Notes |
 | --- | --- | --- | --- |

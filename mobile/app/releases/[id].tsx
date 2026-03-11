@@ -59,6 +59,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { useOptionalSafeAreaInsets } from '../../src/hooks/useOptionalSafeAreaInsets';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
 import type { MobileTheme } from '../../src/tokens/theme';
@@ -263,7 +264,18 @@ export default function ReleaseDetailScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ id?: string | string[] }>();
   const theme = useAppTheme();
+  const insets = useOptionalSafeAreaInsets();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const scrollContentStyle = useMemo(
+    () => [
+      styles.content,
+      {
+        paddingTop: theme.space[24] + insets.top,
+        paddingBottom: theme.space[32] + insets.bottom,
+      },
+    ],
+    [insets.bottom, insets.top, styles.content, theme.space],
+  );
   const releaseId = getSingleParam(params.id)?.trim() ?? '';
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
@@ -531,7 +543,7 @@ export default function ReleaseDetailScreen() {
   return (
     <ScrollView
       style={styles.screen}
-      contentContainerStyle={styles.content}
+      contentContainerStyle={scrollContentStyle}
       showsVerticalScrollIndicator={false}
     >
       <Stack.Screen options={{ title: detail.releaseTitle }} />

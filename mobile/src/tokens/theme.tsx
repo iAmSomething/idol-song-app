@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useMemo, type PropsWithChildren } from 'react';
 import { useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { colorTokens, type MobileColorTokens } from './colors';
 import { elevationTokens, type ElevationTokens } from './elevation';
@@ -52,7 +53,11 @@ export function MobileThemeProvider({ children, schemeOverride }: MobileThemePro
   const scheme = schemeOverride ?? resolveThemeScheme(deviceColorScheme);
   const value = useMemo(() => createTheme(scheme), [scheme]);
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <SafeAreaProvider>
+      <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    </SafeAreaProvider>
+  );
 }
 
 export function useAppTheme(): MobileTheme {

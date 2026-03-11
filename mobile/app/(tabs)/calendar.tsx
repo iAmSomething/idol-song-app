@@ -73,6 +73,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { useOptionalSafeAreaInsets } from '../../src/hooks/useOptionalSafeAreaInsets';
 import { useAppTheme } from '../../src/tokens/theme';
 import { MOBILE_TEXT_SCALE_LIMITS, isLargeTextMode } from '../../src/tokens/accessibility';
 import { resolveBadgeFallbackAssetKey } from '../../src/utils/assetRegistry';
@@ -220,9 +221,20 @@ export default function CalendarTabScreen() {
     view?: string | string[];
   }>();
   const theme = useAppTheme();
+  const insets = useOptionalSafeAreaInsets();
   const { fontScale } = useWindowDimensions();
   const largeTextMode = isLargeTextMode(fontScale);
   const styles = useMemo(() => createStyles(theme, largeTextMode), [theme, largeTextMode]);
+  const scrollContentStyle = useMemo(
+    () => [
+      styles.content,
+      {
+        paddingTop: theme.space[24] + insets.top,
+        paddingBottom: theme.space[32] + insets.bottom + theme.space[20],
+      },
+    ],
+    [insets.bottom, insets.top, styles.content, theme.space],
+  );
   const today = useMemo(() => new Date(), []);
   const currentMonth = useMemo(() => buildMonthKey(today), [today]);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
@@ -843,7 +855,7 @@ export default function CalendarTabScreen() {
 
   return (
     <>
-      <ScrollView contentContainerStyle={styles.content} style={styles.screen}>
+      <ScrollView contentContainerStyle={scrollContentStyle} style={styles.screen}>
         <TonalPanel
           body={`현재 필터 · ${formatFilterLabel(filterMode)}`}
           testID="calendar-header-panel"
