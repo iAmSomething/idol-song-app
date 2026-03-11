@@ -76,6 +76,7 @@ export function buildReportBundleMetadata({
   serviceLinkGapReference = null,
   titleTrackGapReference = null,
   entityIdentityWorkbenchReference = null,
+  trustedUpcomingNotificationReference = null,
 }) {
   const sourceReports = {
     release_pipeline_sync: releaseSyncReference,
@@ -89,6 +90,7 @@ export function buildReportBundleMetadata({
     service_link_gap_queues: serviceLinkGapReference,
     title_track_gap_queue: titleTrackGapReference,
     entity_identity_workbench: entityIdentityWorkbenchReference,
+    trusted_upcoming_notification_summary: trustedUpcomingNotificationReference,
   };
 
   const fingerprint = {

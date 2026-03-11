@@ -15,6 +15,8 @@ const REQUIRED_TABLES = [
   'track_service_links',
   'upcoming_signals',
   'upcoming_signal_sources',
+  'notification_signal_states',
+  'notification_events',
   'entity_tracking_state',
   'review_tasks',
   'release_link_overrides',
@@ -38,6 +40,7 @@ const REQUIRED_CONSTRAINTS = [
   ['release_service_links', 'release_service_links_release_id_service_type_key'],
   ['track_service_links', 'track_service_links_track_id_service_type_key'],
   ['upcoming_signal_sources', 'upcoming_signal_sources_upcoming_signal_id_source_url_key'],
+  ['notification_events', 'notification_events_dedupe_key_key'],
   ['release_link_overrides', 'release_link_overrides_release_id_service_type_key'],
 ];
 const REQUIRED_INDEXES = [
@@ -50,6 +53,10 @@ const REQUIRED_INDEXES = [
   ['upcoming_signals', 'idx_upcoming_signals_scheduled_date'],
   ['upcoming_signals', 'idx_upcoming_signals_scheduled_month'],
   ['upcoming_signals', 'idx_upcoming_signals_dedupe_key'],
+  ['notification_signal_states', 'idx_notification_signal_states_last_seen_at'],
+  ['notification_signal_states', 'idx_notification_signal_states_is_active'],
+  ['notification_events', 'idx_notification_events_status_event_type'],
+  ['notification_events', 'idx_notification_events_fingerprint_emitted_at'],
   ['entity_tracking_state', 'idx_entity_tracking_state_tracking_status'],
   ['review_tasks', 'idx_review_tasks_status_review_type'],
   ['release_service_links', 'idx_release_service_links_status'],
