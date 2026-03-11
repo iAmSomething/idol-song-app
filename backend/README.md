@@ -192,6 +192,33 @@ preview에서 달라지면 안 되는 것:
 - date precision / MV / service-link semantics
 - `LOG_LEVEL` baseline (`info`)
 
+## Temporary Tunnel Fallback For Mobile External QA
+
+stable public preview backend가 unavailable일 때만 임시 fallback으로 local backend를 HTTPS tunnel 뒤에 둔다.
+
+예시:
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.preview.env
+set +a
+
+cd backend
+npm run build
+PORT=3213 APP_TIMEZONE=Asia/Seoul npm run start
+
+cloudflared tunnel --url http://127.0.0.1:3213
+```
+
+그 다음 mobile 쪽에서는 `mobile/.env.preview.tunnel.example`을 복사하고,
+`EXPO_PUBLIC_API_BASE_URL`를 실제 tunnel URL로 바꾼 뒤 preview dev client를 붙인다.
+
+규칙:
+
+- tunnel은 임시 QA fallback일 뿐 production/preview deploy 대체가 아니다.
+- sign-off 기본 경로는 `https://api.idol-song-app.example.com` 같은 stable public preview backend다.
+- debug metadata에서 `Backend target = Temporary tunnel backend`를 확인해야 한다.
+
 ## Backend Deploy Path
 
 repo-level backend deploy entrypoint는 아래 workflow다.

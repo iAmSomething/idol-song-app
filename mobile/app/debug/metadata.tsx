@@ -16,6 +16,7 @@ export default function DebugMetadataScreen() {
     ['Commit hash', metadata.commitSha ?? 'Unavailable'],
     ['Data source mode', metadata.dataSourceMode],
     ['Data source policy', metadata.dataSourcePolicy],
+    ['Backend target', metadata.backendTargetLabel],
     ['API base URL', metadata.apiBaseUrl ?? 'Bundled-only'],
     ['API host', metadata.apiHost ?? 'Bundled-only'],
     ['Analytics enabled', metadata.analyticsEnabled ? 'Yes' : 'No'],

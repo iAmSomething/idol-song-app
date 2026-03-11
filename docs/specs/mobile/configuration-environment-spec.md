@@ -48,6 +48,17 @@
 - preview QA runtime은 Expo Go가 아니라 `expo-dev-client`가 포함된 standalone native simulator/device build로도 열 수 있어야 한다.
 - native identifier가 없어서 `expo prebuild` / `expo run:*`가 막히면 release-readiness blocker다.
 
+## 7.2 Public preview backend and tunnel fallback
+- external iPhone/Android QA의 기본 경로는 stable public preview backend다.
+- mobile preview 예시 env는 `mobile/.env.preview.example`를 기준으로 둔다.
+- debug metadata에서는 최소 아래를 확인 가능해야 한다.
+  - active API base URL
+  - active API host
+  - backend target label (`Public preview backend`, `Temporary tunnel backend`, `Custom backend target`, `Bundled-only`)
+- stable preview backend가 unavailable일 때만 temporary tunnel fallback을 허용한다.
+- tunnel fallback 예시 env는 `mobile/.env.preview.tunnel.example`를 기준으로 둔다.
+- tunnel fallback은 release sign-off 기본 경로가 아니라 emergency QA 우회 경로다.
+
 ## 8. Failure policy
 - remote dataset unavailable이면 last-known-good 또는 bundled dataset fallback이 필요하다.
 - env misconfiguration은 app crash보다 safe degraded mode로 처리해야 한다.
