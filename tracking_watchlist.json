@@ -58,111 +58,15 @@
   {
     "group": "AB6IX",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "BORN LIKE THIS",
+    "latest_release_date": "2024-10-10",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/AB6IX",
     "instagram_url": "https://www.instagram.com/ab6ix_official/",
     "search_terms": [
       "\"AB6IX\" kpop comeback"
-    ]
-  },
-  {
-    "group": "CHUNG HA",
-    "tier": "longtail",
-    "watch_reason": "manual_watch",
-    "tracking_status": "watch_only",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
-    "x_url": "",
-    "instagram_url": "https://www.instagram.com/chungha.art/",
-    "search_terms": [
-      "\"CHUNG HA\" kpop comeback",
-      "\"청하\" 컴백",
-      "\"CHUNG HA\" teaser"
-    ]
-  },
-  {
-    "group": "CHUU",
-    "tier": "longtail",
-    "watch_reason": "manual_watch",
-    "tracking_status": "watch_only",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
-    "x_url": "",
-    "instagram_url": "https://www.instagram.com/chuuo3o/",
-    "search_terms": [
-      "\"CHUU\" kpop comeback",
-      "\"츄\" 컴백",
-      "\"CHUU\" teaser"
-    ]
-  },
-  {
-    "group": "JEON SOMI",
-    "tier": "longtail",
-    "watch_reason": "manual_watch",
-    "tracking_status": "watch_only",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
-    "x_url": "",
-    "instagram_url": "https://www.instagram.com/somsomi0309/",
-    "search_terms": [
-      "\"JEON SOMI\" kpop comeback",
-      "\"전소미\" 컴백",
-      "\"JEON SOMI\" teaser"
-    ]
-  },
-  {
-    "group": "KWON EUNBI",
-    "tier": "longtail",
-    "watch_reason": "manual_watch",
-    "tracking_status": "watch_only",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
-    "x_url": "",
-    "instagram_url": "https://www.instagram.com/silver_rain.__/",
-    "search_terms": [
-      "\"KWON EUNBI\" kpop comeback",
-      "\"권은비\" 컴백",
-      "\"KWON EUNBI\" teaser"
-    ]
-  },
-  {
-    "group": "YUJU",
-    "tier": "longtail",
-    "watch_reason": "manual_watch",
-    "tracking_status": "watch_only",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
-    "x_url": "",
-    "instagram_url": "https://www.instagram.com/yuuzth/",
-    "search_terms": [
-      "\"YUJU\" kpop comeback",
-      "\"유주\" 컴백",
-      "\"YUJU\" teaser"
-    ]
-  },
-  {
-    "group": "Yves",
-    "tier": "longtail",
-    "watch_reason": "manual_watch",
-    "tracking_status": "watch_only",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
-    "x_url": "",
-    "instagram_url": "https://www.instagram.com/yvesntual/",
-    "search_terms": [
-      "\"Yves\" kpop comeback",
-      "\"이브\" 컴백",
-      "\"Yves\" teaser"
     ]
   },
   {
@@ -196,8 +100,8 @@
   {
     "group": "ALLDAY PROJECT",
     "tier": "manual",
-    "watch_reason": "manual_watch",
-    "tracking_status": "watch_only",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
     "latest_release_title": "ALLDAY PROJECT",
     "latest_release_date": "2025-12-08",
     "latest_release_kind": "ep",
@@ -240,11 +144,11 @@
   {
     "group": "ATBO",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "MUST HAVE",
+    "latest_release_date": "2023-11-27",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/ATBO_ground",
     "instagram_url": "https://www.instagram.com/atboground/",
     "search_terms": [
@@ -327,7 +231,7 @@
     "watch_reason": "recent_release",
     "tracking_status": "recent_release",
     "latest_release_title": "DEADLINE",
-    "latest_release_date": "2026-02-26",
+    "latest_release_date": "2026-02-27",
     "latest_release_kind": "ep",
     "x_url": "https://x.com/blackpink",
     "instagram_url": "https://www.instagram.com/blackpinkofficial/",
@@ -338,11 +242,11 @@
   {
     "group": "BLITZERS",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "LUNCH‐BOX",
+    "latest_release_date": "2024-06-19",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/WUZO_BLITZERS",
     "instagram_url": "https://www.instagram.com/official_blitzers/",
     "search_terms": [
@@ -366,11 +270,11 @@
   {
     "group": "BTOB",
     "tier": "core",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "BTODAY",
+    "latest_release_date": "2025-03-05",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/OFFICIALBTOB",
     "instagram_url": "https://www.instagram.com/official_btob/",
     "search_terms": [
@@ -380,11 +284,11 @@
   {
     "group": "BTS",
     "tier": "core",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Take Two",
+    "latest_release_date": "2023-06-09",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/BTS_twt",
     "instagram_url": "https://www.instagram.com/bts.bighitofficial/",
     "search_terms": [
@@ -394,11 +298,11 @@
   {
     "group": "cignature",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Sweetie but Saltie",
+    "latest_release_date": "2024-06-10",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/cignature_J9",
     "instagram_url": "https://www.instagram.com/cignature_j9/",
     "search_terms": [
@@ -420,28 +324,13 @@
     ]
   },
   {
-    "group": "CLOSE YOUR EYES",
-    "tier": "longtail",
-    "watch_reason": "recent_release",
-    "tracking_status": "recent_release",
-    "latest_release_title": "ETERNALT",
-    "latest_release_date": "2025-04-02",
-    "latest_release_kind": "ep",
-    "x_url": "",
-    "instagram_url": "https://www.instagram.com/close.your.eyes.official/",
-    "search_terms": [
-      "\"CLOSE YOUR EYES\" kpop comeback",
-      "\"클로즈 유어 아이즈\" 컴백"
-    ]
-  },
-  {
     "group": "CLASS:y",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "LOVE XX",
+    "latest_release_date": "2024-11-15",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/M25_CLASSy",
     "instagram_url": "https://www.instagram.com/m25_classy/",
     "search_terms": [
@@ -507,11 +396,11 @@
   {
     "group": "Dreamcatcher",
     "tier": "core",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "[My Christmas Sweet Love]",
+    "latest_release_date": "2024-12-20",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/hf_dreamcatcher",
     "instagram_url": "https://www.instagram.com/hf_dreamcatcher/",
     "search_terms": [
@@ -521,11 +410,11 @@
   {
     "group": "DRIPPIN",
     "tier": "longtail",
-    "watch_reason": "",
+    "watch_reason": "long_gap",
     "tracking_status": "needs_manual_review",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "latest_release_title": "Weekend",
+    "latest_release_date": "2024-08-19",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/drippin",
     "instagram_url": "https://www.instagram.com/wearedrippin/",
     "search_terms": [
@@ -535,11 +424,11 @@
   {
     "group": "DXMON",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Youth Never DIE",
+    "latest_release_date": "2024-10-21",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/DXMON_HM",
     "instagram_url": "https://www.instagram.com/dxmon_hm/",
     "search_terms": [
@@ -633,11 +522,11 @@
   {
     "group": "GHOST9",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Down for you",
+    "latest_release_date": "2024-12-23",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/GHOST9OFFICIAL",
     "instagram_url": "https://www.instagram.com/official.ghost9/",
     "search_terms": [
@@ -649,9 +538,9 @@
     "tier": "longtail",
     "watch_reason": "recent_release",
     "tracking_status": "recent_release",
-    "latest_release_title": "세상은 영화 같지 않더라",
-    "latest_release_date": "2026-01-05",
-    "latest_release_kind": "single",
+    "latest_release_title": "LOVECHAPTER",
+    "latest_release_date": "2026-03-05",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/H1KEY_official",
     "instagram_url": "https://www.instagram.com/h1key_official/",
     "search_terms": [
@@ -689,11 +578,11 @@
   {
     "group": "INFINITE",
     "tier": "core",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "LIKE INFINITE",
+    "latest_release_date": "2025-03-06",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/INFINITE_UM",
     "instagram_url": "https://www.instagram.com/official_ifnt_/",
     "search_terms": [
@@ -745,11 +634,11 @@
   {
     "group": "JUST B",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Light Sweeper",
+    "latest_release_date": "2022-07-15",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/JUSTB_Official",
     "instagram_url": "https://www.instagram.com/justb_ig_official/",
     "search_terms": [
@@ -831,7 +720,7 @@
     "tier": "core",
     "watch_reason": "recent_release",
     "tracking_status": "recent_release",
-    "latest_release_title": "SPAGHETTI",
+    "latest_release_title": "Pearlies (My oyster is the world)",
     "latest_release_date": "2025-10-24",
     "latest_release_kind": "single",
     "x_url": "https://x.com/le_sserafim",
@@ -857,11 +746,11 @@
   {
     "group": "Loossemble",
     "tier": "longtail",
-    "watch_reason": "",
+    "watch_reason": "long_gap",
     "tracking_status": "needs_manual_review",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "latest_release_title": "TTYL",
+    "latest_release_date": "2024-09-02",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/Loossemble_twt",
     "instagram_url": "https://www.instagram.com/loossemble.official/",
     "search_terms": [
@@ -885,11 +774,11 @@
   {
     "group": "MAMAMOO",
     "tier": "core",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "MIC ON",
+    "latest_release_date": "2022-10-11",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/rbw_mamamoo",
     "instagram_url": "https://www.instagram.com/mamamoo_official/",
     "search_terms": [
@@ -899,11 +788,11 @@
   {
     "group": "MCND",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "아뜨뜨뜨",
+    "latest_release_date": "2024-08-08",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/mcndofficial_",
     "instagram_url": "https://www.instagram.com/mcnd_official/",
     "search_terms": [
@@ -941,11 +830,11 @@
   {
     "group": "NCT 127",
     "tier": "core",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "WALK",
+    "latest_release_date": "2024-07-15",
+    "latest_release_kind": "album",
     "x_url": "https://x.com/NCTsmtown_127",
     "instagram_url": "https://www.instagram.com/nct127/",
     "search_terms": [
@@ -983,11 +872,11 @@
   {
     "group": "NewJeans",
     "tier": "core",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Supernatural",
+    "latest_release_date": "2024-06-21",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/NewJeans_twt",
     "instagram_url": "https://www.instagram.com/newjeans_official/",
     "search_terms": [
@@ -1025,11 +914,11 @@
   {
     "group": "NOMAD",
     "tier": "longtail",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "NOMAD",
+    "latest_release_date": "2024-02-28",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/nomad_is_here",
     "instagram_url": "https://www.instagram.com/nomadaish88/",
     "search_terms": [
@@ -1151,11 +1040,11 @@
   {
     "group": "Red Velvet",
     "tier": "core",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Cosmic",
+    "latest_release_date": "2024-06-24",
+    "latest_release_kind": "ep",
     "x_url": "https://x.com/RVsmtown",
     "instagram_url": "https://www.instagram.com/redvelvet.smtown/",
     "search_terms": [
@@ -1223,9 +1112,9 @@
     "tier": "core",
     "watch_reason": "",
     "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "latest_release_title": "Poet | Artist",
+    "latest_release_date": "2025-05-25",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/shinee",
     "instagram_url": "https://www.instagram.com/shinee/",
     "search_terms": [
@@ -1403,22 +1292,6 @@
     ]
   },
   {
-    "group": "TUNEXX",
-    "tier": "longtail",
-    "watch_reason": "recent_release",
-    "tracking_status": "recent_release",
-    "latest_release_title": "SET BY US ONLY",
-    "latest_release_date": "2026-03-03",
-    "latest_release_kind": "ep",
-    "x_url": "https://x.com/TUNEXX_official",
-    "instagram_url": "https://www.instagram.com/tunexx_official",
-    "search_terms": [
-      "\"TUNEXX\" kpop comeback",
-      "\"튜넥스\" 컴백",
-      "\"TUNEXX\" teaser"
-    ]
-  },
-  {
     "group": "TWS",
     "tier": "core",
     "watch_reason": "recent_release",
@@ -1477,11 +1350,11 @@
   {
     "group": "WayV",
     "tier": "core",
-    "watch_reason": "",
-    "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Back To You",
+    "latest_release_date": "2021-06-16",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/WayV_official",
     "instagram_url": "https://www.instagram.com/wayvofficial/",
     "search_terms": [
@@ -1521,9 +1394,9 @@
     "tier": "longtail",
     "watch_reason": "",
     "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "latest_release_title": "BANG OUT",
+    "latest_release_date": "2025-04-09",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/whib_official",
     "instagram_url": "https://www.instagram.com/whib_official/",
     "search_terms": [
@@ -1605,22 +1478,6 @@
     ]
   },
   {
-    "group": "YENA",
-    "tier": "longtail",
-    "watch_reason": "manual_watch",
-    "tracking_status": "watch_only",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
-    "x_url": "https://x.com/YENA_OFFICIAL",
-    "instagram_url": "https://www.instagram.com/yena.jigumina/",
-    "search_terms": [
-      "\"YENA\" kpop comeback",
-      "\"최예나\" 컴백",
-      "\"YENA\" teaser"
-    ]
-  },
-  {
     "group": "YOUNG POSSE",
     "tier": "longtail",
     "watch_reason": "recent_release",
@@ -1639,9 +1496,9 @@
     "tier": "longtail",
     "watch_reason": "",
     "tracking_status": "filtered_out",
-    "latest_release_title": "",
-    "latest_release_date": "",
-    "latest_release_kind": "",
+    "latest_release_title": "YOUNI-T",
+    "latest_release_date": "2025-04-23",
+    "latest_release_kind": "single",
     "x_url": "https://x.com/younite_offcl",
     "instagram_url": "https://www.instagram.com/younite_bnm/",
     "search_terms": [

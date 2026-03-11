@@ -158,6 +158,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install requests
 
+python build_release_rollup_from_history.py
 python build_tracking_watchlist.py
 python scan_upcoming_candidates.py
 python build_manual_review_queue.py
@@ -175,6 +176,7 @@ python -m unittest test_youtube_mv_candidate_scoring.py
 historical migration slice처럼 기존 `releaseDetails` 위에 manual seed만 다시 입히고 싶을 때는 외부 acquisition 없이 아래처럼 빠르게 재생성할 수 있다.
 
 ```bash
+python build_release_rollup_from_history.py
 python build_release_details_musicbrainz.py --skip-acquisition
 ```
 

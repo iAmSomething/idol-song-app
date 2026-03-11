@@ -33,6 +33,7 @@ from import_json_to_neon import (
     parse_exact_date,
     stable_uuid,
 )
+from latest_verified_release_selection import select_latest_release
 
 
 ROOT = Path(__file__).resolve().parent
@@ -135,6 +136,7 @@ def build_source_official_links_and_channels(
 def build_source_latest_release_maps(group_to_slug: Dict[str, str]) -> Tuple[Dict[str, Optional[str]], Dict[str, Dict[str, Optional[str]]]]:
     watchlist = load_json(WATCHLIST_PATH)
     releases_rollup = load_json(RELEASES_ROLLUP_PATH)
+    release_history = {row["group"]: row for row in load_json(RELEASE_HISTORY_PATH)}
 
     tracking_latest: Dict[str, Optional[str]] = {}
     for row in watchlist:
@@ -148,15 +150,23 @@ def build_source_latest_release_maps(group_to_slug: Dict[str, str]) -> Tuple[Dic
         else:
             tracking_latest[slug] = None
 
+    rollup_by_group = {row["group"]: row for row in releases_rollup}
+
     stream_latest: Dict[str, Dict[str, Optional[str]]] = defaultdict(dict)
-    for row in releases_rollup:
-        slug = group_to_slug[row["group"]]
-        for field_name, stream in (("latest_song", "song"), ("latest_album", "album")):
-            release = row.get(field_name)
-            if release:
-                stream_latest[slug][stream] = release_key(slug, release["title"], release["date"], stream)
-            else:
-                stream_latest[slug][stream] = None
+    for group in sorted(set(rollup_by_group) | set(release_history), key=str.casefold):
+        slug = group_to_slug[group]
+        row = rollup_by_group.get(group, {})
+        history_row = release_history.get(group, {})
+        history_releases = history_row.get("releases") or []
+
+        for stream in ("song", "album"):
+            release = select_latest_release(history_releases, stream=stream) or select_latest_release(
+                [release for release in (row.get("latest_song"), row.get("latest_album")) if release],
+                stream=stream,
+            )
+            stream_latest[slug][stream] = (
+                release_key(slug, release["title"], release["date"], stream) if release else None
+            )
 
     return tracking_latest, stream_latest
 

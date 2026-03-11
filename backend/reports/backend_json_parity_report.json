@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T07:11:32.104748+00:00",
+  "generated_at": "2026-03-11T07:58:36.821869+00:00",
   "clean": false,
   "report_bundle": {
     "generated_at": "2026-03-11T07:11:17.396Z",
@@ -48,7 +48,7 @@
     "entity alias/search coverage: clean (mismatched entities=0)",
     "official links: clean (mismatched entities=0)",
     "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
-    "latest verified release selection: drift (tracking mismatches=0, stream mismatches=3)",
+    "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
     "upcoming counts / nearest: clean (month bucket mismatches=0)",
     "title-track / double-title: drift (mismatched releases=1060)",
     "YouTube Music / MV service-link state: drift (mismatched releases=124)",
@@ -59,7 +59,7 @@
     "youtube_allowlists": 117,
     "release_details": 1770,
     "upcoming_candidates": 71,
-    "watchlist": 117,
+    "watchlist": 108,
     "manual_review_queue": 67,
     "mv_manual_review_queue": 1657
   },
@@ -187,28 +187,9 @@
     "latest_verified_release_selection": {
       "tracking_mismatches_count": 0,
       "tracking_mismatches": [],
-      "stream_mismatches_count": 3,
-      "stream_mismatches": [
-        {
-          "entity_slug": "blackpink",
-          "stream": "album",
-          "source": "blackpink|deadline|2026-02-26|album",
-          "db": "blackpink|deadline|2026-02-27|album"
-        },
-        {
-          "entity_slug": "h1-key",
-          "stream": "album",
-          "source": "h1-key|lovestruck|2025-06-26|album",
-          "db": "h1-key|lovechapter|2026-03-05|album"
-        },
-        {
-          "entity_slug": "le-sserafim",
-          "stream": "song",
-          "source": "le-sserafim|spaghetti|2025-10-24|song",
-          "db": "le-sserafim|pearlies my oyster is the world|2025-10-24|song"
-        }
-      ],
-      "clean": false
+      "stream_mismatches_count": 0,
+      "stream_mismatches": [],
+      "clean": true
     },
     "upcoming_counts_and_nearest": {
       "source": {
@@ -533,7 +514,7 @@
       },
       "db_review_type_counts": {
         "entity_onboarding": 3,
-        "mv_candidate": 50,
+        "mv_candidate": 39,
         "upcoming_signal": 64
       },
       "source_youtube_mv_status_counts": {

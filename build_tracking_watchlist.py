@@ -3,8 +3,12 @@ import json
 from datetime import date
 from pathlib import Path
 
+from latest_verified_release_selection import has_recent_release as has_recent_release_after_cutoff
+from latest_verified_release_selection import merge_release_candidates, select_latest_release
+
 
 ROOT = Path(__file__).resolve().parent
+RECENT_RELEASE_CUTOFF = date(2025, 6, 1)
 
 
 SEARCH_QUERY_OVERRIDE = {
@@ -43,11 +47,17 @@ def default_search_terms(group: str):
     return [f'"{group}" kpop comeback']
 
 
-def newest_release(row: dict):
-    releases = [release for release in [row.get("latest_song"), row.get("latest_album")] if release]
-    if not releases:
-        return None
-    return sorted(releases, key=lambda release: release["date"], reverse=True)[0]
+def release_candidates_from_rollup(row: dict):
+    if not row:
+        return []
+
+    return [release for release in [row.get("latest_song"), row.get("latest_album")] if release]
+
+
+def release_candidates_from_history(row: dict):
+    if not row:
+        return []
+    return row.get("releases") or []
 
 
 def parse_release_date(value: str | None):
@@ -121,10 +131,12 @@ def resolve_tracking_status(
 def main():
     social_rows = load_json("artist_socials_structured_2026-03-04.json")
     recent_rows = load_json("group_latest_release_since_2025-06-01_mb.json")
+    release_history_rows = load_json("verified_release_history_mb.json")
     unresolved_rows = load_json("group_latest_release_since_2025-06-01_mb_unresolved.json")
     manual_rows = load_json("watch_targets_manual.json")
 
     recent_by_group = {row["group"]: row for row in recent_rows}
+    history_by_group = {row["group"]: row for row in release_history_rows}
     unresolved_by_group = {row["group"]: row for row in unresolved_rows}
     manual_by_group = {row["group"]: row for row in manual_rows}
     reference_date = date.today()
@@ -136,8 +148,12 @@ def main():
 
         group = row["artist"]
         manual_row = manual_by_group.get(group)
-        latest_release = newest_release(recent_by_group.get(group, {})) or manual_release(manual_row or {})
-        has_recent_release = group in recent_by_group
+        release_candidates = merge_release_candidates(
+            release_candidates_from_history(history_by_group.get(group, {})),
+            release_candidates_from_rollup(recent_by_group.get(group, {})),
+        )
+        latest_release = select_latest_release(release_candidates, reference_date=reference_date) or manual_release(manual_row or {})
+        has_recent_release = has_recent_release_after_cutoff(release_candidates, cutoff=RECENT_RELEASE_CUTOFF)
         watch_reason = resolve_watch_reason(
             latest_release=latest_release,
             has_recent_release=has_recent_release,
@@ -183,9 +199,15 @@ def main():
             },
         )
         latest_release = manual_release(row)
+        release_candidates = merge_release_candidates(
+            release_candidates_from_history(history_by_group.get(group, {})),
+            release_candidates_from_rollup(recent_by_group.get(group, {})),
+            [latest_release] if latest_release else [],
+        )
+        latest_release = select_latest_release(release_candidates, reference_date=reference_date) or latest_release
         watch_reason = resolve_watch_reason(
             latest_release=latest_release,
-            has_recent_release=group in recent_by_group,
+            has_recent_release=has_recent_release_after_cutoff(release_candidates, cutoff=RECENT_RELEASE_CUTOFF),
             manual_row=row,
             reference_date=reference_date,
         )
@@ -193,7 +215,7 @@ def main():
         current["watch_reason"] = watch_reason
         current["tracking_status"] = resolve_tracking_status(
             group=group,
-            has_recent_release=group in recent_by_group,
+            has_recent_release=has_recent_release_after_cutoff(release_candidates, cutoff=RECENT_RELEASE_CUTOFF),
             watch_reason=watch_reason,
             manual_row=row,
             unresolved_by_group=unresolved_by_group,
@@ -229,6 +251,7 @@ def main():
                 "instagram_url",
                 "search_terms",
             ],
+            lineterminator="\n",
         )
         writer.writeheader()
         for row in rows:

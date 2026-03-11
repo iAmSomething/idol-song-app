@@ -11,7 +11,7 @@ import requests
 from release_classification import classify_release
 
 CUTOFF = datetime(2025, 6, 1, tzinfo=timezone.utc)
-TODAY = datetime(2026, 3, 4, tzinfo=timezone.utc)
+TODAY = datetime.now(timezone.utc)
 
 ALIASES = {
     "(G)I-DLE": ["(G)I-DLE", "GIDLE", "i-dle", "(여자)아이들"],
@@ -214,7 +214,10 @@ def pick_latest_pair(rows: List[dict]) -> Tuple[Optional[dict], Optional[dict]]:
     for bucket in ("song", "album"):
         candidates = [entry for entry in normalized if entry["bucket"] == bucket and entry["date"] <= TODAY]
         if candidates:
-            latest[bucket] = sorted(candidates, key=lambda entry: entry["date"], reverse=True)[0]
+            latest[bucket] = sorted(
+                candidates,
+                key=lambda entry: (-entry["date"].toordinal(), entry["title"].casefold()),
+            )[0]
 
     return latest["song"], latest["album"]
 

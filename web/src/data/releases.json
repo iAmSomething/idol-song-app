@@ -106,6 +106,30 @@
     "artist_source": "https://musicbrainz.org/artist/ce06dad7-098e-467c-a875-1e6525b29c02"
   },
   {
+    "group": "ALLDAY PROJECT",
+    "artist_name_mb": "ALLDAY PROJECT",
+    "artist_mbid": "ce5c564c-0fbe-429c-b93b-5d7e3109cf40",
+    "latest_song": {
+      "title": "ONE MORE TIME",
+      "date": "2025-11-17",
+      "source": "https://musicbrainz.org/release-group/8e75ac73-c5dd-4e3b-8692-e367017165ba",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": {
+      "title": "ALLDAY PROJECT",
+      "date": "2025-12-08",
+      "source": "https://musicbrainz.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": [
+        "special_project"
+      ]
+    },
+    "artist_source": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
+  },
+  {
     "group": "AMPERS&ONE",
     "artist_name_mb": "AMPERS&ONE",
     "artist_mbid": "354c2a04-7379-49cb-9553-97be5c82ca77",
@@ -254,7 +278,7 @@
     },
     "latest_album": {
       "title": "DEADLINE",
-      "date": "2026-02-26",
+      "date": "2026-02-27",
       "source": "https://musicbrainz.org/release-group/38204997-b295-4d09-a946-f7e119725031",
       "release_kind": "ep",
       "release_format": "ep",
@@ -285,6 +309,43 @@
     "artist_source": "https://musicbrainz.org/artist/656d0024-7b5f-4089-9d3e-ce383f15f1b7"
   },
   {
+    "group": "CHUNG HA",
+    "artist_name_mb": "CHUNG HA",
+    "artist_mbid": "08525643-7a01-411e-8188-8bf57261c8b3",
+    "latest_song": {
+      "title": "Save me",
+      "date": "2026-02-09",
+      "source": "https://musicbrainz.org/release-group/996124d6-1423-4fcc-ac05-5ca40e82552c",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": null,
+    "artist_source": "https://musicbrainz.org/artist/08525643-7a01-411e-8188-8bf57261c8b3"
+  },
+  {
+    "group": "CHUU",
+    "artist_name_mb": "CHUU",
+    "artist_mbid": "ebe26895-c0d1-41c3-8bcc-a49d62c497a1",
+    "latest_song": {
+      "title": "Loveholic",
+      "date": "2025-07-21",
+      "source": "https://musicbrainz.org/release-group/e7579896-e193-4722-92d4-1bf797bc2889",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": {
+      "title": "XO, My Cyberlove",
+      "date": "2026-01-07",
+      "source": "https://musicbrainz.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a",
+      "release_kind": "album",
+      "release_format": "album",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/ebe26895-c0d1-41c3-8bcc-a49d62c497a1"
+  },
+  {
     "group": "CIX",
     "artist_name_mb": "CIX",
     "artist_mbid": "03e53482-a069-4e65-aa7a-117ede967ffe",
@@ -298,6 +359,21 @@
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/03e53482-a069-4e65-aa7a-117ede967ffe"
+  },
+  {
+    "group": "CLOSE YOUR EYES",
+    "artist_name_mb": "CLOSE YOUR EYES",
+    "artist_mbid": "64cff6be-dfdb-4d9d-9ee1-c0c121566135",
+    "latest_song": null,
+    "latest_album": {
+      "title": "blackout",
+      "date": "2025-11-11",
+      "source": "https://musicbrainz.org/release-group/b30043bd-2724-4725-a734-fa49479715fb",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/64cff6be-dfdb-4d9d-9ee1-c0c121566135"
   },
   {
     "group": "CRAVITY",
@@ -477,9 +553,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "Lovestruck",
-      "date": "2025-06-26",
-      "source": "https://musicbrainz.org/release-group/a9d2d1a0-f332-41be-b45a-5555d937a892",
+      "title": "LOVECHAPTER",
+      "date": "2026-03-05",
+      "source": "https://musicbrainz.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -583,6 +659,28 @@
     "artist_source": "https://musicbrainz.org/artist/c3d9b981-0420-45ae-93ca-21d78f0fb14f"
   },
   {
+    "group": "JEON SOMI",
+    "artist_name_mb": "JEON SOMI",
+    "artist_mbid": "8d4e6a86-fa1c-4a1b-b8c4-3b58a46dde9f",
+    "latest_song": {
+      "title": "EXTRA",
+      "date": "2025-07-07",
+      "source": "https://musicbrainz.org/release-group/f3b6a29a-79f1-4bfd-b84e-dd98d15e3738",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": {
+      "title": "Chaotic & Confused",
+      "date": "2025-08-11",
+      "source": "https://musicbrainz.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/8d4e6a86-fa1c-4a1b-b8c4-3b58a46dde9f"
+  },
+  {
     "group": "KARD",
     "artist_name_mb": "KARD",
     "artist_mbid": "ad4e8332-861d-4a49-8235-b72888714be4",
@@ -676,9 +774,9 @@
     "artist_name_mb": "LE SSERAFIM",
     "artist_mbid": "1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "latest_song": {
-      "title": "SPAGHETTI",
+      "title": "Pearlies (My oyster is the world)",
       "date": "2025-10-24",
-      "source": "https://musicbrainz.org/release-group/8fecf07e-3715-4df4-9f47-1f7204f71b94",
+      "source": "https://musicbrainz.org/release-group/8ff15315-a8f2-40df-9f7f-44b89c1fda60",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1263,6 +1361,21 @@
     "artist_source": "https://musicbrainz.org/artist/40017bd7-139b-4998-8688-9b2478ad3325"
   },
   {
+    "group": "TUNEXX",
+    "artist_name_mb": "TUNEXX",
+    "artist_mbid": "45745bcc-c6bf-46cc-9e18-9e2e98ad4358",
+    "latest_song": null,
+    "latest_album": {
+      "title": "SET BY US ONLY",
+      "date": "2026-03-03",
+      "source": "https://musicbrainz.org/release-group/f38e3d81-341e-4828-8a18-1f34d3ce4cb5",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/45745bcc-c6bf-46cc-9e18-9e2e98ad4358"
+  },
+  {
     "group": "TWICE",
     "artist_name_mb": "TWICE",
     "artist_mbid": "8da127cc-c432-418f-b356-ef36210d82ac",
@@ -1283,21 +1396,6 @@
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/8da127cc-c432-418f-b356-ef36210d82ac"
-  },
-  {
-    "group": "TUNEXX",
-    "artist_name_mb": "TUNEXX",
-    "artist_mbid": "45745bcc-c6bf-46cc-9e18-9e2e98ad4358",
-    "latest_song": null,
-    "latest_album": {
-      "title": "SET BY US ONLY",
-      "date": "2026-03-03",
-      "source": "https://musicbrainz.org/release-group/f38e3d81-341e-4828-8a18-1f34d3ce4cb5",
-      "release_kind": "ep",
-      "release_format": "ep",
-      "context_tags": []
-    },
-    "artist_source": "https://musicbrainz.org/artist/45745bcc-c6bf-46cc-9e18-9e2e98ad4358"
   },
   {
     "group": "TWS",
@@ -1465,6 +1563,28 @@
     "artist_source": "https://musicbrainz.org/artist/92449998-96fa-45b5-8a67-abb5ff975aa1"
   },
   {
+    "group": "YENA",
+    "artist_name_mb": "YENA",
+    "artist_mbid": "745c5b92-325f-451d-bd52-e6b95229c776",
+    "latest_song": {
+      "title": "STAR!",
+      "date": "2025-11-26",
+      "source": "https://musicbrainz.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": {
+      "title": "Blooming Wings",
+      "date": "2025-07-29",
+      "source": "https://musicbrainz.org/release-group/9647039b-b615-443a-a476-d75de3c06039",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
+  },
+  {
     "group": "YOUNG POSSE",
     "artist_name_mb": "YOUNG POSSE",
     "artist_mbid": "427150d2-674f-47b2-a1a1-7bb4a9e0d070",
@@ -1485,6 +1605,43 @@
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/427150d2-674f-47b2-a1a1-7bb4a9e0d070"
+  },
+  {
+    "group": "YUJU",
+    "artist_name_mb": "YUJU",
+    "artist_mbid": "344d0612-8e74-4227-a4ec-9848a6534d86",
+    "latest_song": {
+      "title": "내향남녀 X 유주",
+      "date": "2025-10-23",
+      "source": "https://musicbrainz.org/release-group/ae25b115-a84a-435f-b8a8-ad6dd0843173",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": {
+      "title": "In Bloom",
+      "date": "2025-08-12",
+      "source": "https://musicbrainz.org/release-group/34777267-c170-42c2-aa59-9d35c0562e86",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/344d0612-8e74-4227-a4ec-9848a6534d86"
+  },
+  {
+    "group": "Yves",
+    "artist_name_mb": "Yves",
+    "artist_mbid": "8339c0c3-7a04-4b19-8ca3-b149e0d09222",
+    "latest_song": {
+      "title": "Falling for You",
+      "date": "2025-12-19",
+      "source": "https://musicbrainz.org/release-group/752272a9-10c7-4a97-83dc-95f16364dbf2",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": null,
+    "artist_source": "https://musicbrainz.org/artist/8339c0c3-7a04-4b19-8ca3-b149e0d09222"
   },
   {
     "group": "ZEROBASEONE",
