@@ -22,6 +22,7 @@ export interface ServiceButtonProps {
   disabled?: boolean;
   label: string;
   mode?: 'canonical' | 'searchFallback';
+  modeHintLabel?: string;
   onPress?: () => void;
   service?: ServiceButtonTone;
   testID?: string;
@@ -34,6 +35,7 @@ function ServiceButtonComponent({
   disabled = false,
   label,
   mode = 'canonical',
+  modeHintLabel,
   onPress,
   service,
   testID,
@@ -82,9 +84,9 @@ function ServiceButtonComponent({
           {label}
         </Text>
       </View>
-      {mode === 'searchFallback' ? (
+      {modeHintLabel || mode === 'searchFallback' ? (
         <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.modeHint}>
-          검색 결과
+          {modeHintLabel ?? '검색 결과'}
         </Text>
       ) : null}
     </Pressable>
@@ -99,18 +101,20 @@ function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     button: {
       minHeight: theme.size.button.heightService,
-      minWidth: 104,
+      minWidth: 112,
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[12],
+      paddingVertical: theme.space[8],
       borderRadius: theme.radius.button,
       gap: theme.space[4],
+      borderWidth: 1,
     },
     buttonContent: {
       flexDirection: 'row',
       alignItems: 'center',
       gap: theme.space[8],
+      minWidth: 0,
     },
     buttonPressed: {
       transform: [{ scale: 0.985 }],
@@ -144,6 +148,7 @@ function createStyles(theme: MobileTheme) {
     },
     spotifyButton: {
       backgroundColor: theme.colors.service.spotify.bg,
+      borderColor: theme.colors.service.spotify.icon,
     },
     spotifyButtonLabel: {
       color: theme.colors.service.spotify.icon,
@@ -156,6 +161,7 @@ function createStyles(theme: MobileTheme) {
     },
     youtubeMusicButton: {
       backgroundColor: theme.colors.service.youtubeMusic.bg,
+      borderColor: theme.colors.service.youtubeMusic.icon,
     },
     youtubeMusicButtonLabel: {
       color: theme.colors.service.youtubeMusic.icon,
@@ -168,6 +174,7 @@ function createStyles(theme: MobileTheme) {
     },
     youtubeMvButton: {
       backgroundColor: theme.colors.service.youtubeMv.bg,
+      borderColor: theme.colors.service.youtubeMv.icon,
     },
     youtubeMvButtonLabel: {
       color: theme.colors.service.youtubeMv.icon,
@@ -181,6 +188,7 @@ function createStyles(theme: MobileTheme) {
     modeHint: {
       ...metaTypography,
       color: theme.colors.text.tertiary,
+      textAlign: 'center',
     },
   });
 }

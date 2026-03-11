@@ -1,5 +1,6 @@
 import {
   buildServiceSearchFallbackUrl,
+  describeServiceHandoffBehavior,
   openServiceHandoff,
   resolveServiceHandoff,
   resolveServiceHandoffGroup,
@@ -99,6 +100,7 @@ describe('mobile external handoff service', () => {
       code: 'handoff_unavailable',
       feedback: {
         retryable: false,
+        message: '지금은 열 수 있는 서비스 경로가 없습니다.',
       },
     });
   });
@@ -198,6 +200,7 @@ describe('mobile external handoff service', () => {
       code: 'handoff_open_failed',
       feedback: {
         retryable: true,
+        message: '외부 앱을 열지 못했습니다. 같은 화면에서 다시 시도해 주세요.',
       },
     });
   });
@@ -221,5 +224,33 @@ describe('mobile external handoff service', () => {
     expect(group.spotify.mode).toBe('canonical');
     expect(group.youtubeMusic.mode).toBe('searchFallback');
     expect(group.youtubeMv.primaryUrl).toBe('https://www.youtube.com/watch?v=2GJfWMYCWY0');
+  });
+
+  test('describes installed-app and fallback behavior in Korean-first hints', () => {
+    const canonical = resolveServiceHandoff({
+      service: 'spotify',
+      query: 'BLACKPINK DEADLINE',
+      canonicalUrl: 'https://open.spotify.com/album/12345',
+    });
+    const searchFallback = resolveServiceHandoff({
+      service: 'youtubeMusic',
+      query: 'YENA LOVE CATCHER',
+      canonicalUrl: null,
+    });
+    const unavailable = resolveServiceHandoff({
+      service: 'youtubeMv',
+      query: '   ',
+      canonicalUrl: null,
+    });
+
+    expect(describeServiceHandoffBehavior(canonical)).toBe(
+      'Spotify 앱이 있으면 앱으로, 없으면 안전한 웹 fallback으로 엽니다.',
+    );
+    expect(describeServiceHandoffBehavior(searchFallback)).toBe(
+      'YouTube Music 설치 여부와 관계없이 검색 결과로 엽니다.',
+    );
+    expect(describeServiceHandoffBehavior(unavailable)).toBe(
+      '현재는 연결 가능한 앱 또는 검색 경로가 아직 준비되지 않았습니다.',
+    );
   });
 });

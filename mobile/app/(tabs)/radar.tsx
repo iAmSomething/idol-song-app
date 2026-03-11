@@ -505,7 +505,7 @@ export default function RadarTabScreen() {
         body="가장 가까운 컴백과 레이더 요약을 불러오는 중입니다."
         eyebrow="데이터 로딩"
         loadingLayout="radar"
-        title="레이더"
+        title={MOBILE_COPY.surface.radarTitle}
         variant="loading"
       />
     );
@@ -521,7 +521,7 @@ export default function RadarTabScreen() {
         }}
         body={datasetState.message}
         eyebrow="로드 오류"
-        title="레이더"
+        title={MOBILE_COPY.surface.radarTitle}
         variant="error"
       />
     );
@@ -532,7 +532,7 @@ export default function RadarTabScreen() {
       <ScreenFeedbackState
         body="레이더 스냅샷을 찾지 못했습니다."
         eyebrow="빈 스냅샷"
-        title="레이더"
+        title={MOBILE_COPY.surface.radarTitle}
         variant="empty"
       />
     );
@@ -553,7 +553,7 @@ export default function RadarTabScreen() {
   return (
     <>
       <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-        <AppBar subtitle={source.sourceLabel} testID="radar-app-bar" title="레이더" />
+        <AppBar subtitle={source.sourceLabel} testID="radar-app-bar" title={MOBILE_COPY.surface.radarTitle} />
         <View style={styles.appBarActions}>
           <Pressable
             testID="radar-search-button"
@@ -602,7 +602,7 @@ export default function RadarTabScreen() {
           <TonalPanel
             body={buildRadarPartialBody(partialSections)}
             testID="radar-partial-notice"
-            title="일부 정보만 표시됩니다."
+            title={MOBILE_COPY.feedback.partialTitle}
           />
         ) : null}
 
@@ -612,9 +612,9 @@ export default function RadarTabScreen() {
 
         <SummaryStrip
           items={[
-            { key: 'weekly', label: '이번 주 예정', value: filteredWeeklyUpcoming.length },
-            { key: 'change', label: '일정 변경', value: filteredChangeFeed.length },
-            { key: 'long-gap', label: '장기 공백', value: filteredLongGap.length },
+            { key: 'weekly', label: MOBILE_COPY.summary.weeklyUpcoming, value: filteredWeeklyUpcoming.length },
+            { key: 'change', label: MOBILE_COPY.summary.changedSchedule, value: filteredChangeFeed.length },
+            { key: 'long-gap', label: MOBILE_COPY.summary.longGap, value: filteredLongGap.length },
           ]}
           layout="wrap"
           testID="radar-summary-strip"

@@ -67,6 +67,7 @@ function TonalPanelComponent({
             accessibilityRole="header"
             allowFontScaling
             maxFontSizeMultiplier={titleMaxFontSizeMultiplier}
+            numberOfLines={2}
             style={styles.title}
             testID={titleTestID}
           >
@@ -77,6 +78,7 @@ function TonalPanelComponent({
           <Text
             allowFontScaling
             maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+            numberOfLines={4}
             style={[
               styles.body,
               tone === 'critical' ? styles.bodyCritical : null,
@@ -110,7 +112,7 @@ function createStyles(theme: MobileTheme) {
       backgroundColor: theme.colors.surface.elevated,
     },
     band: {
-      height: 6,
+      height: 4,
       backgroundColor: theme.colors.border.strong,
     },
     bandAccent: {
@@ -121,7 +123,7 @@ function createStyles(theme: MobileTheme) {
     },
     content: {
       gap: theme.space[8],
-      padding: theme.space[16],
+      padding: theme.space[12],
     },
     eyebrow: {
       ...theme.typography.meta,

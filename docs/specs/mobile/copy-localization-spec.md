@@ -36,6 +36,9 @@
 ### 4.2 Service
 - 표면 라벨은 서비스 이름만 사용
 - `검색 열기`는 tooltip 또는 보조 문구에만 사용
+- canonical link가 있으면 보조 라벨은 `앱 우선`
+- canonical link가 없고 search fallback만 있으면 보조 라벨은 `검색 결과`
+- accessibility hint는 `앱 설치 시 앱 우선 / 미설치 시 안전한 웹 fallback` 또는 `검색 결과만 연다`를 한국어로 설명
 
 ### 4.3 Meta
 - `기사 원문`
@@ -53,6 +56,9 @@
 - 공통: `정보를 불러오지 못했습니다.`
 - retry CTA: `다시 시도`
 - 부분 실패: `일부 정보만 표시됩니다.`
+- 외부 handoff 실패 title: `외부 이동을 완료하지 못했습니다.`
+- 외부 handoff retryable body: `외부 앱을 열지 못했습니다. 같은 화면에서 다시 시도해 주세요.`
+- handoff unavailable body: `지금은 열 수 있는 서비스 경로가 없습니다.`
 
 ## 7. Date Copy
 - 한국어: `2026년 4월 13일`

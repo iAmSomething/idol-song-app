@@ -68,6 +68,8 @@ launch-grade visual identity의 표면 계층과 child issue 분리는 `launch-g
 - 아이콘 좌측, 라벨 우측
 - 전체 fill보다 soft tint 배경 우선
 - 모든 서비스 버튼은 동일 구조 유지
+- secondary hint는 최대 1줄, `앱 우선` 또는 `검색 결과`처럼 짧은 상태 라벨만 허용
+- large text에서도 버튼 1행 구조를 우선 유지하고, copy는 `label 2줄 + hint 1줄`까지만 허용
 
 ### 7.4 Meta Link
 - 텍스트형 또는 아주 약한 outline형
@@ -90,6 +92,7 @@ launch-grade visual identity의 표면 계층과 child issue 분리는 `launch-g
 - 레이더 카드: medium density
 - 팀 상세: mixed density
 - 릴리즈 상세 트랙 리스트: dense but tappable
+- large text 모드에서는 title/meta line clamp를 유지하고, spacing 축소보다 먼저 줄 수와 button wrap 규칙으로 해결한다
 
 ## 10. Icon Sizing
 - 탭 아이콘: 22~24

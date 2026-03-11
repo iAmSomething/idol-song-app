@@ -25,8 +25,8 @@ export type ServiceHandoffFailure = {
     level: 'warning';
     retryable: boolean;
     message:
-      | 'No canonical or search fallback handoff is available yet.'
-      | 'External handoff failed. Keep the current route stack and show retry feedback.';
+      | '지금은 열 수 있는 서비스 경로가 없습니다.'
+      | '외부 앱을 열지 못했습니다. 같은 화면에서 다시 시도해 주세요.';
   };
 };
 
@@ -48,6 +48,12 @@ export type HandoffLinkingAdapter = {
 const DEFAULT_LINKING_ADAPTER: HandoffLinkingAdapter = {
   canOpenURL: Linking.canOpenURL,
   openURL: Linking.openURL,
+};
+
+const SERVICE_LABEL: Record<MusicService, string> = {
+  spotify: 'Spotify',
+  youtubeMusic: 'YouTube Music',
+  youtubeMv: 'YouTube',
 };
 
 function isServiceHandoffFailure(
@@ -182,7 +188,7 @@ export function resolveServiceHandoff(input: {
       feedback: {
         level: 'warning',
         retryable: false,
-        message: 'No canonical or search fallback handoff is available yet.',
+        message: '지금은 열 수 있는 서비스 경로가 없습니다.',
       },
     };
   }
@@ -247,9 +253,29 @@ export async function openServiceHandoff(
     feedback: {
       level: 'warning',
       retryable: true,
-      message: 'External handoff failed. Keep the current route stack and show retry feedback.',
+      message: '외부 앱을 열지 못했습니다. 같은 화면에서 다시 시도해 주세요.',
     },
   };
+}
+
+export function describeServiceHandoffBehavior(
+  handoff: ServiceHandoffResolution | ServiceHandoffFailure,
+): string {
+  if (isServiceHandoffFailure(handoff)) {
+    if (handoff.code === 'handoff_unavailable') {
+      return '현재는 연결 가능한 앱 또는 검색 경로가 아직 준비되지 않았습니다.';
+    }
+
+    return '외부 앱 연결에 실패하면 현재 화면을 유지한 채 다시 시도할 수 있습니다.';
+  }
+
+  const serviceLabel = SERVICE_LABEL[handoff.service];
+
+  if (handoff.mode === 'canonical') {
+    return `${serviceLabel} 앱이 있으면 앱으로, 없으면 안전한 웹 fallback으로 엽니다.`;
+  }
+
+  return `${serviceLabel} 설치 여부와 관계없이 검색 결과로 엽니다.`;
 }
 
 export function resolveServiceHandoffGroup(input: {

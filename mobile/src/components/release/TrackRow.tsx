@@ -20,6 +20,7 @@ interface TrackRowServiceButton {
   disabled?: boolean;
   label: string;
   mode?: 'canonical' | 'searchFallback';
+  modeHintLabel?: string;
   onPress: () => void;
   testID?: string;
 }
@@ -140,7 +141,7 @@ function createStyles(theme: MobileTheme) {
       flexShrink: 1,
     },
     trackActions: {
-      alignSelf: 'flex-end',
+      alignSelf: 'flex-start',
     },
   });
 }

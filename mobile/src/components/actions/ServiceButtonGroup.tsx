@@ -47,6 +47,7 @@ function createStyles(theme: MobileTheme) {
     row: {
       flexDirection: 'row',
       gap: theme.space[8],
+      rowGap: theme.space[8],
     },
     wrapRow: {
       flexWrap: 'wrap',

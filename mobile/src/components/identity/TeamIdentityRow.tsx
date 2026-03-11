@@ -9,6 +9,7 @@ import {
 
 import { FallbackArt } from '../visual/FallbackArt';
 import { resolveBadgeFallbackAssetKey, type BadgeFallbackAssetKey } from '../../utils/assetRegistry';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 
@@ -52,11 +53,21 @@ function TeamIdentityRowComponent({
         )}
       </View>
       <View style={styles.copy}>
-        <Text allowFontScaling numberOfLines={nameNumberOfLines} style={styles.name}>
+        <Text
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+          numberOfLines={nameNumberOfLines}
+          style={styles.name}
+        >
           {name}
         </Text>
         {meta ? (
-          <Text allowFontScaling numberOfLines={2} style={styles.meta}>
+          <Text
+            allowFontScaling
+            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
+            numberOfLines={2}
+            style={styles.meta}
+          >
             {meta}
           </Text>
         ) : null}

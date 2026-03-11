@@ -45,6 +45,7 @@ import {
 } from '../../src/services/analytics';
 import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
 import {
+  describeServiceHandoffBehavior,
   openServiceHandoff,
   resolveServiceHandoff,
   type ServiceHandoffFailure,
@@ -155,44 +156,57 @@ function resolveUpcomingTimingLabel(event: UpcomingEventModel): string {
   return MOBILE_COPY.date.unknown;
 }
 
+function resolveHandoffModeHintLabel(mode: 'canonical' | 'searchFallback'): string {
+  return mode === 'canonical' ? MOBILE_COPY.handoff.appPreferred : MOBILE_COPY.handoff.searchFallback;
+}
+
 function buildLatestReleaseServiceButtons(release: ReleaseSummaryModel): EntityServiceButtonItem[] {
   const releaseQuery = `${release.displayGroup} ${release.releaseTitle}`;
   const mvQuery = `${release.displayGroup} ${release.representativeSongTitle ?? release.releaseTitle}`;
+  const spotifyHandoff = resolveServiceHandoff({
+    service: 'spotify',
+    query: releaseQuery,
+    canonicalUrl: release.spotifyUrl,
+  });
+  const youtubeMusicHandoff = resolveServiceHandoff({
+    service: 'youtubeMusic',
+    query: releaseQuery,
+    canonicalUrl: release.youtubeMusicUrl,
+  });
+  const youtubeMvHandoff = resolveServiceHandoff({
+    service: 'youtubeMv',
+    query: mvQuery,
+    canonicalUrl: release.youtubeMvUrl,
+  });
 
   return [
     {
       accessibilityLabel: `Spotify에서 ${release.releaseTitle} 열기`,
+      accessibilityHint: describeServiceHandoffBehavior(spotifyHandoff),
       key: 'spotify',
       label: 'Spotify',
-      handoff: resolveServiceHandoff({
-        service: 'spotify',
-        query: releaseQuery,
-        canonicalUrl: release.spotifyUrl,
-      }),
+      modeHintLabel: resolveHandoffModeHintLabel(spotifyHandoff.mode),
+      handoff: spotifyHandoff,
       testID: 'entity-latest-release-service-spotify',
       tone: 'spotify',
     },
     {
       accessibilityLabel: `YouTube Music에서 ${release.releaseTitle} 열기`,
+      accessibilityHint: describeServiceHandoffBehavior(youtubeMusicHandoff),
       key: 'youtubeMusic',
       label: 'YouTube Music',
-      handoff: resolveServiceHandoff({
-        service: 'youtubeMusic',
-        query: releaseQuery,
-        canonicalUrl: release.youtubeMusicUrl,
-      }),
+      modeHintLabel: resolveHandoffModeHintLabel(youtubeMusicHandoff.mode),
+      handoff: youtubeMusicHandoff,
       testID: 'entity-latest-release-service-youtube-music',
       tone: 'youtubeMusic',
     },
     {
       accessibilityLabel: `YouTube에서 ${release.releaseTitle} 공식 MV 열기`,
+      accessibilityHint: describeServiceHandoffBehavior(youtubeMvHandoff),
       key: 'youtubeMv',
       label: 'YouTube MV',
-      handoff: resolveServiceHandoff({
-        service: 'youtubeMv',
-        query: mvQuery,
-        canonicalUrl: release.youtubeMvUrl,
-      }),
+      modeHintLabel: resolveHandoffModeHintLabel(youtubeMvHandoff.mode),
+      handoff: youtubeMvHandoff,
       testID: 'entity-latest-release-service-youtube-mv',
       tone: 'youtubeMv',
     },
@@ -671,6 +685,7 @@ export default function ArtistDetailScreen() {
           <InlineFeedbackNotice
             body={handoffFeedback}
             testID="entity-latest-release-handoff-feedback"
+            title={MOBILE_COPY.feedback.handoffFailedTitle}
             tone="error"
           />
         ) : null}

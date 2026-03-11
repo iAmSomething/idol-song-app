@@ -53,7 +53,12 @@ import {
   type SearchSubmitSource,
 } from '../../src/services/analytics';
 import { openExternalLink, normalizeExternalLinkUrl } from '../../src/services/externalLinks';
-import { openServiceHandoff, resolveServiceHandoff, type MusicService } from '../../src/services/handoff';
+import {
+  describeServiceHandoffBehavior,
+  openServiceHandoff,
+  resolveServiceHandoff,
+  type MusicService,
+} from '../../src/services/handoff';
 import { clearRecentQueries, persistRecentQuery, readRecentQueries } from '../../src/services/recentQueries';
 import {
   runWithPendingRouteResume,
@@ -172,6 +177,10 @@ function resolveSearchSegmentLabel(segment: SearchSegment): string {
   }
 
   return '예정';
+}
+
+function resolveHandoffModeHintLabel(mode: 'canonical' | 'searchFallback'): string {
+  return mode === 'canonical' ? MOBILE_COPY.handoff.appPreferred : MOBILE_COPY.handoff.searchFallback;
 }
 
 function buildTeamResultAccessibilityLabel(result: SearchTeamResultModel): string {
@@ -589,7 +598,7 @@ export default function SearchTabScreen() {
         body="검색 대상 팀, 발매, 예정 데이터를 불러오는 중입니다."
         eyebrow="데이터 로딩"
         loadingLayout="search"
-        title="검색"
+        title={MOBILE_COPY.surface.searchTitle}
         variant="loading"
       />
     );
@@ -604,7 +613,7 @@ export default function SearchTabScreen() {
         }}
         body={datasetState.message}
         eyebrow="로드 오류"
-        title="검색"
+        title={MOBILE_COPY.surface.searchTitle}
         variant="error"
       />
     );
@@ -644,9 +653,9 @@ export default function SearchTabScreen() {
       style={styles.screen}
     >
       <AppBar
-        subtitle="한글 별칭, 영문 그룹명, 릴리즈명, 예정 헤드라인까지 같은 검색 규칙으로 찾습니다."
+        subtitle={MOBILE_COPY.surface.searchSubtitle}
         testID="search-app-bar"
-        title="검색"
+        title={MOBILE_COPY.surface.searchTitle}
       />
 
       {datasetRiskDisclosure ? (
@@ -690,7 +699,7 @@ export default function SearchTabScreen() {
                 testID="search-clear-button"
               >
                 <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.inlineButtonLabel}>
-                  지우기
+                  {MOBILE_COPY.action.clear}
                 </Text>
               </Pressable>
             ) : null}
@@ -814,7 +823,7 @@ export default function SearchTabScreen() {
             <InlineFeedbackNotice
               body={handoffFeedback}
               testID="search-handoff-feedback"
-              title="외부 열기 실패"
+              title={MOBILE_COPY.feedback.handoffFailedTitle}
               tone="error"
             />
           ) : null}
@@ -823,7 +832,7 @@ export default function SearchTabScreen() {
             <InlineFeedbackNotice
               body={`일부 세그먼트만 결과가 있습니다. 팀 ${segmentCounts.entities} · 발매 ${segmentCounts.releases} · 예정 ${segmentCounts.upcoming}`}
               testID="search-partial-result-notice"
-              title="일부 세그먼트만 결과가 있습니다."
+              title={MOBILE_COPY.feedback.partialTitle}
             />
           ) : null}
 
@@ -878,7 +887,24 @@ export default function SearchTabScreen() {
             : null}
 
           {activeSegment === 'releases'
-            ? results.releases.map((result) => (
+            ? results.releases.map((result) => {
+                const spotifyHandoff = resolveServiceHandoff({
+                  service: 'spotify',
+                  query: buildReleaseServiceQuery(result.release),
+                  canonicalUrl: result.release.spotifyUrl,
+                });
+                const youtubeMusicHandoff = resolveServiceHandoff({
+                  service: 'youtubeMusic',
+                  query: buildReleaseServiceQuery(result.release),
+                  canonicalUrl: result.release.youtubeMusicUrl,
+                });
+                const youtubeMvHandoff = resolveServiceHandoff({
+                  service: 'youtubeMv',
+                  query: buildReleaseMvQuery(result.release),
+                  canonicalUrl: result.release.youtubeMvUrl,
+                });
+
+                return (
                 <View key={result.release.id} style={styles.resultCard}>
                   <Pressable
                     accessibilityHint="릴리즈 상세 화면으로 이동합니다."
@@ -907,40 +933,34 @@ export default function SearchTabScreen() {
                     <ServiceButtonGroup
                       buttons={[
                         {
+                          accessibilityHint: describeServiceHandoffBehavior(spotifyHandoff),
                           key: `${result.release.id}-spotify`,
                           accessibilityLabel: `${result.release.releaseTitle} Spotify 열기`,
                           label: 'Spotify',
-                          mode: resolveServiceHandoff({
-                            service: 'spotify',
-                            query: buildReleaseServiceQuery(result.release),
-                            canonicalUrl: result.release.spotifyUrl,
-                          }).mode,
+                          mode: spotifyHandoff.mode,
+                          modeHintLabel: resolveHandoffModeHintLabel(spotifyHandoff.mode),
                           onPress: () => void handleReleaseServicePress(result.release, 'spotify'),
                           service: 'spotify',
                           testID: `search-release-service-spotify-${result.release.id}`,
                         },
                         {
+                          accessibilityHint: describeServiceHandoffBehavior(youtubeMusicHandoff),
                           key: `${result.release.id}-youtube-music`,
                           accessibilityLabel: `${result.release.releaseTitle} YouTube Music 열기`,
                           label: 'YouTube Music',
-                          mode: resolveServiceHandoff({
-                            service: 'youtubeMusic',
-                            query: buildReleaseServiceQuery(result.release),
-                            canonicalUrl: result.release.youtubeMusicUrl,
-                          }).mode,
+                          mode: youtubeMusicHandoff.mode,
+                          modeHintLabel: resolveHandoffModeHintLabel(youtubeMusicHandoff.mode),
                           onPress: () => void handleReleaseServicePress(result.release, 'youtubeMusic'),
                           service: 'youtubeMusic',
                           testID: `search-release-service-youtube-music-${result.release.id}`,
                         },
                         {
+                          accessibilityHint: describeServiceHandoffBehavior(youtubeMvHandoff),
                           key: `${result.release.id}-youtube-mv`,
                           accessibilityLabel: `${result.release.releaseTitle} YouTube MV 열기`,
                           label: 'YouTube MV',
-                          mode: resolveServiceHandoff({
-                            service: 'youtubeMv',
-                            query: buildReleaseMvQuery(result.release),
-                            canonicalUrl: result.release.youtubeMvUrl,
-                          }).mode,
+                          mode: youtubeMvHandoff.mode,
+                          modeHintLabel: resolveHandoffModeHintLabel(youtubeMvHandoff.mode),
                           onPress: () => void handleReleaseServicePress(result.release, 'youtubeMv'),
                           service: 'youtubeMv',
                           testID: `search-release-service-youtube-mv-${result.release.id}`,
@@ -950,7 +970,8 @@ export default function SearchTabScreen() {
                     />
                   </View>
                 </View>
-              ))
+                );
+              })
             : null}
 
           {activeSegment === 'upcoming'
