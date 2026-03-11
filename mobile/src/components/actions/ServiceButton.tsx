@@ -3,11 +3,13 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from 'react-native';
 
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 
 export type ServiceButtonTone = 'spotify' | 'youtubeMusic' | 'youtubeMv';
 
@@ -35,10 +37,12 @@ function ServiceButtonComponent({
   tone,
 }: ServiceButtonProps) {
   const theme = useAppTheme();
+  const { fontScale } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const resolvedService = service ?? tone ?? 'spotify';
   const serviceMark =
     resolvedService === 'spotify' ? 'SP' : resolvedService === 'youtubeMusic' ? 'YM' : 'MV';
+  const labelMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.buttonService : MOBILE_TEXT_SCALE_LIMITS.buttonPrimary;
 
   return (
     <Pressable
@@ -58,12 +62,13 @@ function ServiceButtonComponent({
     >
       <View style={styles.buttonContent}>
         <View style={[styles.mark, styles[`${resolvedService}Mark`]]}>
-          <Text allowFontScaling style={styles.markLabel}>
+          <Text allowFontScaling={false} style={styles.markLabel}>
             {serviceMark}
           </Text>
         </View>
         <Text
           allowFontScaling
+          maxFontSizeMultiplier={labelMultiplier}
           numberOfLines={2}
           style={[
             styles.buttonLabel,
@@ -74,7 +79,11 @@ function ServiceButtonComponent({
           {label}
         </Text>
       </View>
-      {mode === 'searchFallback' ? <Text style={styles.modeHint}>검색 결과</Text> : null}
+      {mode === 'searchFallback' ? (
+        <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.modeHint}>
+          검색 결과
+        </Text>
+      ) : null}
     </Pressable>
   );
 }

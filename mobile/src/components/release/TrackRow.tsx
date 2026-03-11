@@ -12,6 +12,7 @@ import {
 import { InfoChip } from '../meta/InfoChip';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 
 interface TrackRowServiceButton {
   accessibilityHint?: string;
@@ -73,12 +74,17 @@ function TrackRowComponent({
       style={styles.trackRow}
       testID={`${testIDPrefix}-${order}`}
     >
-      <Text allowFontScaling style={styles.trackOrder}>
+      <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.trackOrder}>
         {order}
       </Text>
       <View style={styles.trackCopy}>
         <View style={styles.trackTitleRow}>
-          <Text allowFontScaling numberOfLines={2} style={styles.trackTitle}>
+          <Text
+            allowFontScaling
+            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+            numberOfLines={2}
+            style={styles.trackTitle}
+          >
             {title}
           </Text>
           {isTitleTrack ? (

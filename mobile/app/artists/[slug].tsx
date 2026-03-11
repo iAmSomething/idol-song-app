@@ -50,6 +50,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   ReleaseSummaryModel,
@@ -466,11 +467,19 @@ export default function ArtistDetailScreen() {
         <View style={styles.heroCard}>
           <EntityBadge team={snapshot.team} styles={styles} />
           <View style={styles.heroCopy}>
-            <Text accessibilityRole="header" testID="entity-detail-title" style={styles.heroTitle}>
+            <Text
+              accessibilityRole="header"
+              allowFontScaling
+              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
+              testID="entity-detail-title"
+              style={styles.heroTitle}
+            >
               {snapshot.team.displayName}
             </Text>
-            <Text style={styles.heroMeta}>{snapshot.team.agency ?? '소속사 정보 없음'}</Text>
-            <Text style={styles.heroBody}>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.heroMeta}>
+              {snapshot.team.agency ?? '소속사 정보 없음'}
+            </Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.heroBody}>
               해당 팀의 다음 컴백과 최신 발매를 빠르게 확인할 수 있습니다.
             </Text>
           </View>
@@ -488,7 +497,9 @@ export default function ArtistDetailScreen() {
                 onPress={() => void handleExternalLink(link.url, 'official')}
                 style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
               >
-                <Text style={styles.metaTextLinkLabel}>{link.label}</Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.metaTextLinkLabel}>
+                  {link.label}
+                </Text>
               </Pressable>
             ))}
           </View>
@@ -503,7 +514,9 @@ export default function ArtistDetailScreen() {
             onPress={() => void handleExternalLink(snapshot.team.artistSourceUrl!, 'artist_source')}
             style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
           >
-            <Text style={styles.metaTextLinkLabel}>아티스트 출처</Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.metaTextLinkLabel}>
+              아티스트 출처
+            </Text>
           </Pressable>
         ) : null}
       </View>
@@ -537,11 +550,20 @@ export default function ArtistDetailScreen() {
                 />
               ) : null}
             </View>
-            <Text numberOfLines={2} style={styles.primaryCardTitle}>
+            <Text
+              allowFontScaling
+              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+              numberOfLines={2}
+              style={styles.primaryCardTitle}
+            >
               {snapshot.nextUpcoming.releaseLabel ?? snapshot.nextUpcoming.headline}
             </Text>
-            <Text style={styles.primaryCardMeta}>{formatUpcomingMeta(snapshot.nextUpcoming)}</Text>
-            <Text style={styles.primaryCardBody}>{snapshot.nextUpcoming.headline}</Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.primaryCardMeta}>
+              {formatUpcomingMeta(snapshot.nextUpcoming)}
+            </Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.primaryCardBody}>
+              {snapshot.nextUpcoming.headline}
+            </Text>
             {snapshot.nextUpcoming.sourceUrl ? (
               <Pressable
                 accessibilityLabel={`${snapshot.team.displayName} 다음 컴백 출처 열기`}
@@ -572,9 +594,18 @@ export default function ArtistDetailScreen() {
                 )}
               </View>
               <View style={styles.releaseCopy}>
-                <Text numberOfLines={2} style={styles.primaryCardTitle}>{snapshot.latestRelease.releaseTitle}</Text>
-                <Text style={styles.primaryCardMeta}>{formatReleaseMeta(snapshot.latestRelease)}</Text>
-                <Text style={styles.primaryCardBody}>
+                <Text
+                  allowFontScaling
+                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+                  numberOfLines={2}
+                  style={styles.primaryCardTitle}
+                >
+                  {snapshot.latestRelease.releaseTitle}
+                </Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.primaryCardMeta}>
+                  {formatReleaseMeta(snapshot.latestRelease)}
+                </Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.primaryCardBody}>
                   {snapshot.latestRelease.representativeSongTitle ?? '상세 화면으로 이동'}
                 </Text>
                 <View style={styles.chipRow}>
@@ -615,7 +646,9 @@ export default function ArtistDetailScreen() {
                 style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
                 testID="entity-latest-release-source-link"
               >
-                <Text style={styles.metaTextLinkLabel}>{MOBILE_COPY.action.sourceView}</Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.metaTextLinkLabel}>
+                  {MOBILE_COPY.action.sourceView}
+                </Text>
               </Pressable>
             ) : null}
           </View>
@@ -659,8 +692,17 @@ export default function ArtistDetailScreen() {
               )}
             </View>
             <View style={styles.singleAlbumCopy}>
-              <Text numberOfLines={2} style={styles.albumTitle}>{snapshot.recentAlbums[0]!.releaseTitle}</Text>
-              <Text style={styles.albumMeta}>{formatReleaseMeta(snapshot.recentAlbums[0]!)}</Text>
+              <Text
+                allowFontScaling
+                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+                numberOfLines={2}
+                style={styles.albumTitle}
+              >
+                {snapshot.recentAlbums[0]!.releaseTitle}
+              </Text>
+              <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.albumMeta}>
+                {formatReleaseMeta(snapshot.recentAlbums[0]!)}
+              </Text>
             </View>
           </Pressable>
         ) : snapshot.recentAlbums.length > 1 ? (
@@ -692,8 +734,17 @@ export default function ArtistDetailScreen() {
                     </Text>
                   )}
                 </View>
-                <Text numberOfLines={2} style={styles.albumTitle}>{release.releaseTitle}</Text>
-                <Text style={styles.albumMeta}>{formatReleaseMeta(release)}</Text>
+                <Text
+                  allowFontScaling
+                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+                  numberOfLines={2}
+                  style={styles.albumTitle}
+                >
+                  {release.releaseTitle}
+                </Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.albumMeta}>
+                  {formatReleaseMeta(release)}
+                </Text>
               </Pressable>
             ))}
           </ScrollView>
@@ -721,8 +772,12 @@ export default function ArtistDetailScreen() {
                 <View key={item.id} style={styles.timelineRow}>
                   <View style={styles.timelineDot} />
                   <View style={styles.timelineCopy}>
-                    <Text style={styles.timelineTitle}>{item.title}</Text>
-                    <Text style={styles.timelineMeta}>{item.meta}</Text>
+                    <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.timelineTitle}>
+                      {item.title}
+                    </Text>
+                    <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.timelineMeta}>
+                      {item.meta}
+                    </Text>
                   </View>
                   {item.sourceUrl ? (
                     <Pressable
@@ -769,7 +824,14 @@ function SectionCard({
 }) {
   return (
     <View style={styles.sectionCard}>
-      <Text accessibilityRole="header" style={styles.sectionTitle}>{title}</Text>
+      <Text
+        accessibilityRole="header"
+        allowFontScaling
+        maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+        style={styles.sectionTitle}
+      >
+        {title}
+      </Text>
       {children}
     </View>
   );

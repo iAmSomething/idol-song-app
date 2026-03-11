@@ -1,8 +1,9 @@
 import React from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 import { useAppTheme, type MobileTheme } from '../../tokens/theme';
 import { MOBILE_COPY } from '../../copy/mobileCopy';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 
 type FeedbackTone = 'neutral' | 'error';
 
@@ -38,16 +39,18 @@ export function ScreenFeedbackState({
   variant,
 }: ScreenFeedbackStateProps) {
   const theme = useAppTheme();
+  const { fontScale } = useWindowDimensions();
   const styles = React.useMemo(() => createStyles(theme), [theme]);
+  const titleMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.sectionTitle : MOBILE_TEXT_SCALE_LIMITS.screenTitle;
 
   return (
     <View style={styles.screenContainer} testID={testID}>
       {variant === 'loading' ? <ActivityIndicator color={theme.colors.text.brand} /> : null}
-      <Text style={styles.eyebrow}>{eyebrow}</Text>
-      <Text accessibilityRole="header" style={styles.screenTitle}>
+      <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.eyebrow}>{eyebrow}</Text>
+      <Text accessibilityRole="header" allowFontScaling maxFontSizeMultiplier={titleMultiplier} style={styles.screenTitle}>
         {title}
       </Text>
-      <Text style={styles.body}>{body}</Text>
+      <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.body}>{body}</Text>
       {action ? (
         <Pressable
           accessibilityLabel={action.label}
@@ -59,7 +62,7 @@ export function ScreenFeedbackState({
           ]}
           testID={action.testID}
         >
-          <Text style={styles.primaryActionLabel}>{action.label}</Text>
+          <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonPrimary} style={styles.primaryActionLabel}>{action.label}</Text>
         </Pressable>
       ) : null}
     </View>
@@ -74,7 +77,9 @@ export function InlineFeedbackNotice({
   tone = 'neutral',
 }: InlineFeedbackNoticeProps) {
   const theme = useAppTheme();
+  const { fontScale } = useWindowDimensions();
   const styles = React.useMemo(() => createStyles(theme), [theme]);
+  const titleMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.body : MOBILE_TEXT_SCALE_LIMITS.sectionTitle;
 
   return (
     <View
@@ -82,11 +87,13 @@ export function InlineFeedbackNotice({
       testID={testID}
     >
       {title ? (
-        <Text accessibilityRole="header" style={styles.inlineTitle}>
+        <Text accessibilityRole="header" allowFontScaling maxFontSizeMultiplier={titleMultiplier} style={styles.inlineTitle}>
           {title}
         </Text>
       ) : null}
       <Text
+        allowFontScaling
+        maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
         style={[styles.body, tone === 'error' ? styles.inlineBodyError : null]}
       >
         {body}
@@ -102,7 +109,7 @@ export function InlineFeedbackNotice({
           ]}
           testID={action.testID}
         >
-          <Text style={styles.secondaryActionLabel}>{action.label}</Text>
+          <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.secondaryActionLabel}>{action.label}</Text>
         </Pressable>
       ) : null}
     </View>

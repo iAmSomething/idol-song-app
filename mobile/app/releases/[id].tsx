@@ -54,6 +54,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
 import type { MobileTheme } from '../../src/tokens/theme';
 import type { ReleaseDetailModel, TrackModel, YoutubeVideoStatus } from '../../src/types';
@@ -534,7 +535,9 @@ export default function ReleaseDetailScreen() {
         }
       />
 
-      <Text style={styles.eyebrow}>{datasetState.source.sourceLabel}</Text>
+      <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.eyebrow}>
+        {datasetState.source.sourceLabel}
+      </Text>
 
       {datasetRiskDisclosure ? (
         <InlineFeedbackNotice
@@ -547,13 +550,23 @@ export default function ReleaseDetailScreen() {
       <View style={styles.heroCard}>
         <ReleaseCover detail={detail} styles={styles} />
         <View style={styles.heroCopy}>
-          <Text accessibilityRole="header" style={styles.releaseTitle} testID="release-detail-title">
+          <Text
+            accessibilityRole="header"
+            allowFontScaling
+            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
+            style={styles.releaseTitle}
+            testID="release-detail-title"
+          >
             {detail.releaseTitle}
           </Text>
-          <Text style={styles.releaseMeta}>{formatReleaseMeta(detail)}</Text>
+          <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.releaseMeta}>
+            {formatReleaseMeta(detail)}
+          </Text>
           <View style={styles.identityRow}>
             <View style={styles.kindChip}>
-              <Text style={styles.kindChipLabel}>{getReleaseKindLabel(detail)}</Text>
+              <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.kindChipLabel}>
+                {getReleaseKindLabel(detail)}
+              </Text>
             </View>
           </View>
           <TeamIdentityRow
@@ -566,7 +579,14 @@ export default function ReleaseDetailScreen() {
       </View>
 
       <View style={styles.section} testID="release-album-actions-section">
-        <Text accessibilityRole="header" style={styles.sectionTitle}>앨범 액션</Text>
+        <Text
+          accessibilityRole="header"
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+          style={styles.sectionTitle}
+        >
+          앨범 액션
+        </Text>
         <ServiceButtonGroup
           buttons={albumServiceButtons.map((button) => ({
             ...button,
@@ -589,7 +609,14 @@ export default function ReleaseDetailScreen() {
       ) : null}
 
       <View style={styles.section}>
-        <Text accessibilityRole="header" style={styles.sectionTitle}>트랙 리스트</Text>
+        <Text
+          accessibilityRole="header"
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+          style={styles.sectionTitle}
+        >
+          트랙 리스트
+        </Text>
         {detail.tracks.length > 0 ? (
           <View style={styles.trackList}>
             {detail.tracks.map((track) => (
@@ -655,18 +682,31 @@ export default function ReleaseDetailScreen() {
       </View>
 
       <View style={styles.section} testID="release-supporting-info">
-        <Text accessibilityRole="header" style={styles.sectionTitle}>추가 정보</Text>
+        <Text
+          accessibilityRole="header"
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+          style={styles.sectionTitle}
+        >
+          추가 정보
+        </Text>
         {hasSupportingInfo ? (
           <>
             {detail.notes ? (
               <View style={styles.metaCard}>
-                <Text style={styles.metaLabel}>메모</Text>
-                <Text style={styles.metaBody}>{detail.notes}</Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.metaLabel}>
+                  메모
+                </Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.metaBody}>
+                  {detail.notes}
+                </Text>
               </View>
             ) : null}
             {supportingLinks.length > 0 ? (
               <View style={styles.metaCard}>
-                <Text style={styles.metaLabel}>출처</Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.metaLabel}>
+                  출처
+                </Text>
                 <SourceLinkRow links={supportingLinks} testID="release-supporting-links" />
               </View>
             ) : null}
@@ -681,9 +721,18 @@ export default function ReleaseDetailScreen() {
 
       {mvUrl ? (
         <View style={styles.section} testID="release-mv-card">
-          <Text accessibilityRole="header" style={styles.sectionTitle}>공식 MV</Text>
+          <Text
+            accessibilityRole="header"
+            allowFontScaling
+            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+            style={styles.sectionTitle}
+          >
+            공식 MV
+          </Text>
           <View style={styles.metaCard}>
-            <Text style={styles.metaBody}>{mvDisclosure}</Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.metaBody}>
+              {mvDisclosure}
+            </Text>
             <ServiceButtonGroup
               buttons={[
                 {

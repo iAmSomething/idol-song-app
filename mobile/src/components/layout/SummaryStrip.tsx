@@ -8,6 +8,7 @@ import {
 
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS, isLargeTextMode } from '../../tokens/accessibility';
 
 export interface SummaryStripItem {
   key: string;
@@ -27,18 +28,33 @@ function SummaryStripComponent({
   testID,
 }: SummaryStripProps) {
   const theme = useAppTheme();
-  const { width } = useWindowDimensions();
+  const { fontScale, width } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const useFullWidthCards = layout === 'wrap' && width <= 430;
+  const largeTextMode = isLargeTextMode(fontScale);
+  const useFullWidthCards = layout === 'wrap' && (width <= 430 || largeTextMode);
 
   return (
     <View style={[styles.row, layout === 'wrap' ? styles.wrapRow : null]} testID={testID}>
       {items.map((item) => (
-        <View key={item.key} style={[styles.card, useFullWidthCards ? styles.fullWidthCard : null]}>
-          <Text allowFontScaling numberOfLines={2} style={styles.value}>
+        <View
+          key={item.key}
+          style={[styles.card, useFullWidthCards ? styles.fullWidthCard : null]}
+          testID={testID ? `${testID}-item-${item.key}` : undefined}
+        >
+          <Text
+            allowFontScaling
+            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.summaryValue}
+            numberOfLines={2}
+            style={[styles.value, largeTextMode ? styles.valueCompact : null]}
+          >
             {item.value}
           </Text>
-          <Text allowFontScaling numberOfLines={2} style={styles.label}>
+          <Text
+            allowFontScaling
+            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.summaryLabel}
+            numberOfLines={2}
+            style={styles.label}
+          >
             {item.label}
           </Text>
         </View>
@@ -76,6 +92,11 @@ function createStyles(theme: MobileTheme) {
     value: {
       ...sectionTitleTypography,
       color: theme.colors.text.primary,
+    },
+    valueCompact: {
+      fontSize: theme.typography.cardTitle.fontSize,
+      fontWeight: theme.typography.cardTitle.fontWeight,
+      letterSpacing: theme.typography.cardTitle.letterSpacing,
     },
     label: {
       ...metaTypography,

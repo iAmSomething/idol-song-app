@@ -8,6 +8,7 @@ import {
 
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 
 export interface SheetHeaderProps {
   closeButtonTestID?: string;
@@ -31,7 +32,12 @@ function SheetHeaderComponent({
     <View style={styles.wrapper}>
       <View style={styles.handle} />
       <View style={styles.header}>
-        <Text accessibilityRole="header" style={styles.title}>
+        <Text
+          accessibilityRole="header"
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+          style={styles.title}
+        >
           {title}
         </Text>
         {showCloseButton && onClose ? (
@@ -42,11 +48,21 @@ function SheetHeaderComponent({
             style={({ pressed }) => [styles.closeButton, pressed ? styles.pressed : null]}
             testID={closeButtonTestID}
           >
-            <Text style={styles.closeLabel}>닫기</Text>
+            <Text
+              allowFontScaling
+              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+              style={styles.closeLabel}
+            >
+              닫기
+            </Text>
           </Pressable>
         ) : null}
       </View>
-      {summary ? <Text style={styles.summary}>{summary}</Text> : null}
+      {summary ? (
+        <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.summary}>
+          {summary}
+        </Text>
+      ) : null}
     </View>
   );
 }

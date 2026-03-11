@@ -41,6 +41,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
 import {
   MOBILE_COPY,
@@ -556,7 +557,9 @@ export default function RadarTabScreen() {
             onPress={openSearchTab}
             style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
           >
-            <Text style={styles.appBarButtonLabel}>검색</Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.appBarButtonLabel}>
+              검색
+            </Text>
           </Pressable>
             <Pressable
               testID="radar-filter-button"
@@ -566,7 +569,9 @@ export default function RadarTabScreen() {
               onPress={openFilterSheet}
               style={({ pressed }) => [styles.appBarButton, pressed ? styles.buttonPressed : null]}
             >
-            <Text style={styles.appBarButtonLabel}>필터</Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.appBarButtonLabel}>
+              필터
+            </Text>
           </Pressable>
         </View>
 
@@ -708,7 +713,14 @@ function RadarFeaturedSection({
   return (
     <View style={styles.sectionCard}>
       <View style={styles.sectionHeader}>
-        <Text accessibilityRole="header" style={styles.sectionTitle}>가장 가까운 컴백</Text>
+        <Text
+          accessibilityRole="header"
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+          style={styles.sectionTitle}
+        >
+          가장 가까운 컴백
+        </Text>
       </View>
       {item ? (
         <View
@@ -756,7 +768,14 @@ function RadarSection({
   return (
     <View style={styles.sectionCard}>
       <View style={styles.sectionHeader}>
-        <Text accessibilityRole="header" style={styles.sectionTitle}>{title}</Text>
+        <Text
+          accessibilityRole="header"
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+          style={styles.sectionTitle}
+        >
+          {title}
+        </Text>
       </View>
       {children}
     </View>

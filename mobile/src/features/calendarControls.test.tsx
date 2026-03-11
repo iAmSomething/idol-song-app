@@ -1,9 +1,11 @@
 import React from 'react';
+import * as ReactNative from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import CalendarTabScreen from '../../app/(tabs)/calendar';
 import { trackAnalyticsEvent } from '../services/analytics';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../tokens/accessibility';
 
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({}));
@@ -53,6 +55,7 @@ jest.mock('../services/analytics', () => {
   };
 });
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
+const mockUseWindowDimensions = jest.spyOn(ReactNative, 'useWindowDimensions');
 
 async function renderCalendarScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -93,16 +96,26 @@ describe('calendar controls', () => {
     __mock.push.mockReset();
     __mock.setParams.mockReset();
     mockTrackAnalyticsEvent.mockClear();
+    mockUseWindowDimensions.mockReturnValue({
+      fontScale: 1,
+      height: 844,
+      scale: 3,
+      width: 390,
+    });
   });
 
   afterEach(() => {
     jest.useRealTimers();
+    mockUseWindowDimensions.mockReset();
   });
 
   test('renders compact chrome and moves across months', async () => {
     const tree = await renderCalendarScreen();
 
     expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.children).toBe('2026년 3월');
+    expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.maxFontSizeMultiplier).toBe(
+      MOBILE_TEXT_SCALE_LIMITS.screenTitle,
+    );
     expect(hasText(tree, '이번 달 발매')).toBe(true);
     expect(hasText(tree, '예정 컴백')).toBe(true);
     expect(hasText(tree, '가장 가까운 일정')).toBe(true);
@@ -249,5 +262,25 @@ describe('calendar controls', () => {
     expect(hasText(tree, 'LOVE CATCHER')).toBe(true);
     expect(hasText(tree, 'DUH!')).toBe(true);
     expect(hasTextContaining(tree, 'Rumored follow-up')).toBe(true);
+  });
+
+  test('caps month title scaling and keeps summary cards stacked in large-text mode', async () => {
+    mockUseWindowDimensions.mockReturnValue({
+      fontScale: 1.8,
+      height: 844,
+      scale: 3,
+      width: 390,
+    });
+    const tree = await renderCalendarScreen();
+
+    const monthTitle = tree.root.findByProps({ testID: 'calendar-month-title' });
+    const summaryCard = tree.root.findByProps({ testID: 'calendar-summary-strip-item-release-count' });
+    const [valueText] = summaryCard.findAllByType(Text);
+
+    expect(monthTitle.props.maxFontSizeMultiplier).toBe(MOBILE_TEXT_SCALE_LIMITS.screenTitle);
+    expect(summaryCard.props.style).toEqual(
+      expect.arrayContaining([expect.objectContaining({ flexBasis: '100%' })]),
+    );
+    expect(valueText.props.maxFontSizeMultiplier).toBe(MOBILE_TEXT_SCALE_LIMITS.summaryValue);
   });
 });

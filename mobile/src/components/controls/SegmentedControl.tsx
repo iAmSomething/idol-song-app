@@ -3,11 +3,13 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from 'react-native';
 
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 
 export interface SegmentedControlItem {
   key: string;
@@ -31,7 +33,9 @@ function SegmentedControlComponent({
   testID,
 }: SegmentedControlProps) {
   const theme = useAppTheme();
+  const { fontScale } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const labelMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.buttonService : MOBILE_TEXT_SCALE_LIMITS.buttonPrimary;
 
   return (
     <View style={[styles.row, isSticky ? styles.stickyRow : null]} testID={testID}>
@@ -54,11 +58,11 @@ function SegmentedControlComponent({
             ]}
             testID={testID ? `${testID}-${item.key}` : undefined}
           >
-            <Text allowFontScaling style={active ? styles.activeLabel : styles.label}>
+            <Text allowFontScaling maxFontSizeMultiplier={labelMultiplier} style={active ? styles.activeLabel : styles.label}>
               {item.label}
             </Text>
             {item.count !== undefined ? (
-              <Text allowFontScaling style={active ? styles.activeCount : styles.count}>
+              <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={active ? styles.activeCount : styles.count}>
                 {item.count}
               </Text>
             ) : null}
