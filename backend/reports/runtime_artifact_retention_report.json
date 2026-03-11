@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T18:26:28.738Z",
+  "generated_at": "2026-03-11T18:31:21.148Z",
   "retention_policy_version": "v1",
   "scope": {
     "directories": [
@@ -11,7 +11,7 @@
   },
   "summary_lines": [
     "runtime-facing canonical groups: 3",
-    "runtime-facing canonical files: 26",
+    "runtime-facing canonical files: 29",
     "duplicate files detected: 0",
     "retention status: canonical only"
   ],
@@ -19,7 +19,7 @@
     {
       "key": "repo_root_pipeline_scripts",
       "label": "Repo root pipeline scripts",
-      "canonical_count": 9,
+      "canonical_count": 10,
       "duplicate_count": 0,
       "canonical_paths": [
         "build_release_details_musicbrainz.py",
@@ -29,6 +29,7 @@
         "build_release_rollup_from_history.py",
         "build_tracking_watchlist.py",
         "scan_upcoming_candidates.py",
+        "hydrate_release_windows.py",
         "build_canonical_entity_metadata.py",
         "build_release_artwork_catalog.py"
       ],
@@ -38,11 +39,12 @@
     {
       "key": "repo_root_runtime_data",
       "label": "Repo root runtime-facing generated data",
-      "canonical_count": 9,
+      "canonical_count": 10,
       "duplicate_count": 0,
       "canonical_paths": [
         "tracking_watchlist.json",
         "upcoming_release_candidates.json",
+        "upcoming_release_candidates.csv",
         "manual_review_queue.json",
         "manual_review_queue.csv",
         "canonical_entity_metadata.json",
@@ -57,7 +59,7 @@
     {
       "key": "web_runtime_data_exports",
       "label": "Web runtime data exports",
-      "canonical_count": 8,
+      "canonical_count": 9,
       "duplicate_count": 0,
       "canonical_paths": [
         "web/src/data/artistProfiles.json",
@@ -65,6 +67,7 @@
         "web/src/data/releaseDetails.json",
         "web/src/data/releaseHistory.json",
         "web/src/data/releases.json",
+        "web/src/data/unresolved.json",
         "web/src/data/upcomingCandidates.json",
         "web/src/data/watchlist.json",
         "web/src/data/youtubeChannelAllowlists.json"

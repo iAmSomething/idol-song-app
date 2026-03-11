@@ -1,8 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import os from 'node:os';
+import path from 'node:path';
+import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
 
 import {
   buildRuntimeArtifactRetentionReport,
+  collectRuntimeArtifactDuplicates,
   renderRuntimeArtifactRetentionMarkdown,
 } from './runtimeArtifactRetention.mjs';
 
@@ -56,4 +60,47 @@ test('renderRuntimeArtifactRetentionMarkdown renders duplicate inventory and can
   assert.match(markdown, /# Runtime Artifact Retention Report/);
   assert.match(markdown, /\| web\/src\/data\/releaseArtwork 2\.json \| web\/src\/data\/releaseArtwork\.json \| Web runtime data exports \| delete_duplicate \|/);
   assert.match(markdown, /## Canonical Groups/);
+});
+
+test('collectRuntimeArtifactDuplicates scans each canonical group once and covers expanded runtime paths', async () => {
+  const repoDir = await mkdtemp(path.join(os.tmpdir(), 'idol-runtime-artifacts-'));
+  try {
+    await mkdir(path.join(repoDir, 'web', 'src', 'data'), { recursive: true });
+
+    const filesToCreate = [
+      'build_manual_review_queue.py',
+      'build_manual_review_queue 2.py',
+      'hydrate_release_windows.py',
+      'hydrate_release_windows 2.py',
+      'manual_review_queue.json',
+      'manual_review_queue 2.json',
+      'upcoming_release_candidates.csv',
+      'upcoming_release_candidates 2.csv',
+      'web/src/data/unresolved.json',
+      'web/src/data/unresolved 2.json',
+      'web/src/data/watchlist.json',
+      'web/src/data/watchlist 2.json',
+    ];
+
+    await Promise.all(
+      filesToCreate.map((relativePath) =>
+        writeFile(path.join(repoDir, relativePath), '{}\n', 'utf8'),
+      ),
+    );
+
+    const duplicates = await collectRuntimeArtifactDuplicates(repoDir);
+    assert.deepEqual(
+      duplicates.map((entry) => entry.duplicate_path),
+      [
+        'build_manual_review_queue 2.py',
+        'hydrate_release_windows 2.py',
+        'manual_review_queue 2.json',
+        'upcoming_release_candidates 2.csv',
+        'web/src/data/unresolved 2.json',
+        'web/src/data/watchlist 2.json',
+      ],
+    );
+  } finally {
+    await rm(repoDir, { recursive: true, force: true });
+  }
 });

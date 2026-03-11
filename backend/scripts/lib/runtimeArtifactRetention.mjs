@@ -14,6 +14,7 @@ export const RUNTIME_ARTIFACT_RETENTION_GROUPS = [
       'build_release_rollup_from_history.py',
       'build_tracking_watchlist.py',
       'scan_upcoming_candidates.py',
+      'hydrate_release_windows.py',
       'build_canonical_entity_metadata.py',
       'build_release_artwork_catalog.py',
     ],
@@ -26,6 +27,7 @@ export const RUNTIME_ARTIFACT_RETENTION_GROUPS = [
     canonical_paths: [
       'tracking_watchlist.json',
       'upcoming_release_candidates.json',
+      'upcoming_release_candidates.csv',
       'manual_review_queue.json',
       'manual_review_queue.csv',
       'canonical_entity_metadata.json',
@@ -46,6 +48,7 @@ export const RUNTIME_ARTIFACT_RETENTION_GROUPS = [
       'web/src/data/releaseDetails.json',
       'web/src/data/releaseHistory.json',
       'web/src/data/releases.json',
+      'web/src/data/unresolved.json',
       'web/src/data/upcomingCandidates.json',
       'web/src/data/watchlist.json',
       'web/src/data/youtubeChannelAllowlists.json',
@@ -54,18 +57,16 @@ export const RUNTIME_ARTIFACT_RETENTION_GROUPS = [
   },
 ];
 
-function buildCanonicalIndex(repoDir) {
+function buildGroupCanonicalIndex(repoDir, group) {
   const index = new Map();
-  for (const group of RUNTIME_ARTIFACT_RETENTION_GROUPS) {
-    for (const relativePath of group.canonical_paths) {
-      const absolutePath = path.join(repoDir, relativePath);
-      index.set(absolutePath, {
-        group_key: group.key,
-        group_label: group.label,
-        canonical_path: relativePath,
-        archival_rule: group.archival_rule,
-      });
-    }
+  for (const relativePath of group.canonical_paths) {
+    const absolutePath = path.join(repoDir, relativePath);
+    index.set(absolutePath, {
+      group_key: group.key,
+      group_label: group.label,
+      canonical_path: relativePath,
+      archival_rule: group.archival_rule,
+    });
   }
   return index;
 }
@@ -84,11 +85,11 @@ function parseDuplicateName(entryName) {
 }
 
 export async function collectRuntimeArtifactDuplicates(repoDir) {
-  const canonicalIndex = buildCanonicalIndex(repoDir);
   const duplicates = [];
 
   for (const group of RUNTIME_ARTIFACT_RETENTION_GROUPS) {
     const directoryPath = path.join(repoDir, group.directory);
+    const canonicalIndex = buildGroupCanonicalIndex(repoDir, group);
     const entries = await readdir(directoryPath, { withFileTypes: true });
     for (const entry of entries) {
       if (!entry.isFile()) {
@@ -115,7 +116,15 @@ export async function collectRuntimeArtifactDuplicates(repoDir) {
     }
   }
 
-  return duplicates.sort((left, right) => left.duplicate_path.localeCompare(right.duplicate_path));
+  return duplicates
+    .filter(
+      (entry, index, array) =>
+        array.findIndex(
+          (candidate) =>
+            candidate.duplicate_path === entry.duplicate_path && candidate.canonical_path === entry.canonical_path,
+        ) === index,
+    )
+    .sort((left, right) => left.duplicate_path.localeCompare(right.duplicate_path));
 }
 
 export function buildRuntimeArtifactRetentionReport({ duplicates }) {
