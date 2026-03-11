@@ -29,7 +29,7 @@
   - `releases/[id]` route는 shared release detail model 기반 detail screen까지 연결됨
   - hidden `debug/metadata` route for internal metadata inspection
 - `assets/`
-  - app icon / placeholder / service icon / badge fallback asset inventory
+  - app icon / splash / placeholder / service icon / badge fallback asset inventory
 - `src/`
   - components / features / selectors / services / tokens / types / utils 구역
 - `.env.example`
@@ -452,12 +452,17 @@ profile 차이는 아래 범위로만 제한한다.
 - `mobile/assets/placeholders/`
   - cover/team/empty-state fallback
 - `mobile/assets/services/`
-  - Spotify / YouTube Music / YouTube MV icon baseline
+  - Spotify / YouTube Music / YouTube MV service mark export
 - `mobile/assets/badges/`
   - group / solo / label fallback
+- `mobile/assets/splash/`
+  - launch splash foreground export
+- `mobile/assets/launch-visual-export-manifest.json`
+  - icon/splash/fallback handoff inventory
 - `mobile/assets/datasets/`
   - bundled dataset path contract 문서
 - later screen work는 raw asset path 대신 `src/utils/assetRegistry.ts`를 우선 사용한다.
+- export naming/path/update rule은 `docs/specs/mobile/launch-visual-asset-handoff.md`를 따른다.
 
 ## verification baseline
 

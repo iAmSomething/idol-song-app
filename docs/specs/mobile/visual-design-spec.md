@@ -101,6 +101,8 @@ launch-grade visual identity의 표면 계층과 child issue 분리는 `launch-g
 - 팀 대표 이미지: square 또는 soft portrait crop, 강한 장식 프레임 금지
 - 앨범 커버: square 고정
 - 이미지 없음: placeholder는 정보 밀도를 해치지 않게 neutral 처리
+- fallback asset source of truth는 `mobile/assets/**/*-source.svg`, runtime binding은 export PNG만 사용
+- splash foreground와 fallback visuals는 `docs/specs/mobile/launch-visual-asset-handoff.md` 기준으로 이름을 고정한다.
 
 ## 12. Sticky and Scroll Rules
 - 상단 앱 바는 sticky 허용

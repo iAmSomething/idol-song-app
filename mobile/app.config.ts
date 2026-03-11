@@ -223,11 +223,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       typedRoutes: true,
     },
     splash: {
-      image: './assets/app-icon/icon-adaptive-foreground.png',
+      image: './assets/splash/splash-foreground.png',
       resizeMode: 'contain',
       backgroundColor: '#F6F3EE',
       dark: {
-        image: './assets/app-icon/icon-adaptive-foreground.png',
+        image: './assets/splash/splash-foreground.png',
         backgroundColor: '#171411',
       },
     },

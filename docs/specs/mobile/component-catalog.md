@@ -55,6 +55,35 @@ launch-grade surface family와 visual identity 기준은 `launch-grade-visual-id
 - 탭 동작 없음
 - 숫자만이 아니라 label이 반드시 함께 있어야 함
 
+## 3A. Tonal Panel
+
+### 3A.1 목적
+- dataset disclosure, degraded notice, runtime/source context를 카드보다 덜 분절된 표면으로 전달
+
+### 3A.2 규칙
+- 상단 accent band 허용
+- CTA가 많아지면 안 되고 1개 이하로 제한
+- body는 2~4줄 안에서 끝내고, 긴 설명은 별도 섹션으로 보낸다.
+
+## 3B. Inset Section
+
+### 3B.1 목적
+- 화면 중간의 의미 단위를 카드보다 넓고 차분하게 묶음
+
+### 3B.2 규칙
+- header, accessory, body stack을 같은 리듬으로 유지
+- 결과 리스트, supporting info, recent query/history처럼 같은 semantic depth의 묶음에만 쓴다.
+
+## 3C. Compact Hero
+
+### 3C.1 목적
+- 팀/릴리즈 상단 식별 정보를 과장 없이 요약
+
+### 3C.2 규칙
+- media + title + 1~2줄 meta + optional footer만 허용
+- CTA 과밀 금지
+- giant banner처럼 커지지 않고 body content를 압도하면 안 된다.
+
 ## 4. Segmented Control
 
 ### 4.1 목적
@@ -119,6 +148,7 @@ launch-grade surface family와 visual identity 기준은 `launch-grade-visual-id
 - 팀명은 1줄 우선
 - 배지는 항상 텍스트 왼쪽
 - fallback badge 허용
+- fallback badge는 `group / solo / label` 번들 asset으로 그린다.
 
 ## 8. Release Summary Row
 

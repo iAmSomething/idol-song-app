@@ -1,5 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import {
+  Image,
   Pressable,
   StyleSheet,
   Text,
@@ -11,6 +12,7 @@ import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
+import { serviceIconAssets } from '../../utils/assetRegistry';
 
 export type ServiceButtonTone = 'spotify' | 'youtubeMusic' | 'youtubeMv';
 
@@ -42,8 +44,6 @@ function ServiceButtonComponent({
   const { fontScale } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const resolvedService = service ?? tone ?? 'spotify';
-  const serviceMark =
-    resolvedService === 'spotify' ? 'SP' : resolvedService === 'youtubeMusic' ? 'YM' : 'MV';
   const labelMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.buttonService : MOBILE_TEXT_SCALE_LIMITS.buttonPrimary;
 
   return (
@@ -64,9 +64,10 @@ function ServiceButtonComponent({
     >
       <View style={styles.buttonContent}>
         <View style={[styles.mark, styles[`${resolvedService}Mark`]]}>
-          <Text allowFontScaling={false} style={styles.markLabel}>
-            {serviceMark}
-          </Text>
+          <Image
+            source={serviceIconAssets[resolvedService]}
+            style={[styles.markIcon, styles[`${resolvedService}MarkIcon`]]}
+          />
         </View>
         <Text
           allowFontScaling
@@ -133,9 +134,10 @@ function createStyles(theme: MobileTheme) {
       justifyContent: 'center',
       borderRadius: 12,
     },
-    markLabel: {
-      ...metaTypography,
-      color: theme.colors.text.inverse,
+    markIcon: {
+      width: 14,
+      height: 14,
+      resizeMode: 'contain',
     },
     buttonLabelDisabled: {
       color: theme.colors.text.tertiary,
@@ -149,6 +151,9 @@ function createStyles(theme: MobileTheme) {
     spotifyMark: {
       backgroundColor: theme.colors.service.spotify.icon,
     },
+    spotifyMarkIcon: {
+      tintColor: theme.colors.text.inverse,
+    },
     youtubeMusicButton: {
       backgroundColor: theme.colors.service.youtubeMusic.bg,
     },
@@ -158,6 +163,9 @@ function createStyles(theme: MobileTheme) {
     youtubeMusicMark: {
       backgroundColor: theme.colors.service.youtubeMusic.icon,
     },
+    youtubeMusicMarkIcon: {
+      tintColor: theme.colors.text.inverse,
+    },
     youtubeMvButton: {
       backgroundColor: theme.colors.service.youtubeMv.bg,
     },
@@ -166,6 +174,9 @@ function createStyles(theme: MobileTheme) {
     },
     youtubeMvMark: {
       backgroundColor: theme.colors.service.youtubeMv.icon,
+    },
+    youtubeMvMarkIcon: {
+      tintColor: theme.colors.text.inverse,
     },
     modeHint: {
       ...metaTypography,

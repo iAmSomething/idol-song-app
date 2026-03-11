@@ -20,6 +20,8 @@ import {
 import { TeamIdentityRow } from '../../src/components/identity/TeamIdentityRow';
 import { AppBar } from '../../src/components/layout/AppBar';
 import { SourceLinkRow } from '../../src/components/meta/SourceLinkRow';
+import { InsetSection } from '../../src/components/surfaces/InsetSection';
+import { TonalPanel } from '../../src/components/surfaces/TonalPanel';
 import { buildDatasetRiskDisclosure } from '../../src/features/surfaceDisclosures';
 import {
   MOBILE_COPY,
@@ -59,6 +61,7 @@ import {
 } from '../../src/services/routeResume';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
+import { resolveBadgeFallbackAssetKey } from '../../src/utils/assetRegistry';
 import type {
   ReleaseSummaryModel,
   SearchReleaseResultModel,
@@ -647,10 +650,11 @@ export default function SearchTabScreen() {
       />
 
       {datasetRiskDisclosure ? (
-        <InlineFeedbackNotice
+        <TonalPanel
           body={datasetRiskDisclosure.body}
           testID={datasetRiskDisclosure.testID}
           title={datasetRiskDisclosure.title}
+          tone="accent"
         />
       ) : null}
 
@@ -720,17 +724,9 @@ export default function SearchTabScreen() {
 
       {!query.trim() ? (
         <>
-          <View style={styles.sectionCard}>
-            <View style={styles.sectionHeader}>
-              <Text
-                accessibilityRole="header"
-                allowFontScaling
-                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-                style={styles.sectionTitle}
-              >
-                최근 검색
-              </Text>
-              {recentQueries.length ? (
+          <InsetSection
+            accessory={
+              recentQueries.length ? (
                 <Pressable
                   testID="search-clear-history"
                   accessibilityLabel="최근 검색 전체 삭제"
@@ -742,8 +738,12 @@ export default function SearchTabScreen() {
                     전체 삭제
                   </Text>
                 </Pressable>
-              ) : null}
-            </View>
+              ) : null
+            }
+            description="최근에 찾은 팀과 릴리즈를 바로 다시 열 수 있습니다."
+            testID="search-recent-queries-section"
+            title="최근 검색"
+          >
 
             {recentQueries.length ? (
               <View style={styles.chipRow}>
@@ -765,17 +765,13 @@ export default function SearchTabScreen() {
             ) : (
               <InlineFeedbackNotice body="최근 검색이 없습니다." />
             )}
-          </View>
+          </InsetSection>
 
-          <View style={styles.sectionCard}>
-            <Text
-              accessibilityRole="header"
-              allowFontScaling
-              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-              style={styles.sectionTitle}
-            >
-              추천 팀
-            </Text>
+          <InsetSection
+            description="fallback-heavy 상태에서도 대표 팀으로 바로 진입할 수 있게 고정합니다."
+            testID="search-suggested-team-section"
+            title="추천 팀"
+          >
             <View style={styles.suggestedGrid}>
               {suggestedTeams.map((team) => (
                 <View
@@ -785,6 +781,7 @@ export default function SearchTabScreen() {
                 >
                     <TeamIdentityRow
                       badgeImageUrl={team.badge?.imageUrl}
+                      fallbackAssetKey={resolveBadgeFallbackAssetKey(team.actType)}
                       meta={team.agency ?? '추적 대상 팀'}
                       monogram={formatSuggestedLabel(team)}
                       name={team.displayName}
@@ -799,23 +796,19 @@ export default function SearchTabScreen() {
                 </View>
               ))}
             </View>
-          </View>
+          </InsetSection>
         </>
       ) : (
-        <View style={styles.sectionCard}>
-          <View style={styles.sectionHeader}>
-            <Text
-              accessibilityRole="header"
-              allowFontScaling
-              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-              style={styles.sectionTitle}
-            >
-              검색 결과
-            </Text>
+        <InsetSection
+          accessory={
             <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
               {segmentCounts[activeSegment]}건
             </Text>
-          </View>
+          }
+          description={`현재 세그먼트: ${resolveSearchSegmentLabel(activeSegment)}`}
+          testID="search-results-section"
+          title="검색 결과"
+        >
 
           {handoffFeedback ? (
             <InlineFeedbackNotice
@@ -868,6 +861,7 @@ export default function SearchTabScreen() {
                   >
                     <TeamIdentityRow
                       badgeImageUrl={result.team.badge?.imageUrl}
+                      fallbackAssetKey={resolveBadgeFallbackAssetKey(result.team.actType)}
                       meta={formatTeamMeta(result)}
                       monogram={result.team.badge?.monogram}
                       name={result.team.displayName}
@@ -896,6 +890,7 @@ export default function SearchTabScreen() {
                   >
                     <TeamIdentityRow
                       badgeImageUrl={result.release.coverImageUrl}
+                      fallbackAssetKey={resolveBadgeFallbackAssetKey('group')}
                       meta={`${result.release.displayGroup} · ${formatReleaseMeta(result.release)}`}
                       monogram={result.release.displayGroup.slice(0, 2).toUpperCase()}
                       name={result.release.releaseTitle}
@@ -975,6 +970,7 @@ export default function SearchTabScreen() {
                   >
                     <TeamIdentityRow
                       badgeImageUrl={teamSummaryByGroup.get(result.upcoming.group)?.badge?.imageUrl}
+                      fallbackAssetKey={resolveBadgeFallbackAssetKey(teamSummaryByGroup.get(result.upcoming.group)?.actType)}
                       meta={result.upcoming.releaseLabel ?? result.upcoming.headline}
                       monogram={
                         teamSummaryByGroup.get(result.upcoming.group)?.badge?.monogram ??
@@ -1009,7 +1005,7 @@ export default function SearchTabScreen() {
                 </View>
               ))
             : null}
-        </View>
+        </InsetSection>
       )}
     </ScrollView>
   );
