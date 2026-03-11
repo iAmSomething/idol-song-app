@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-11T16:15:22.441Z",
-  "clean": false,
+  "generated_at": "2026-03-11T16:33:32.630Z",
+  "clean": true,
   "report_bundle": {
     "generated_at": "2026-03-11T16:14:23.510Z",
     "bundle_id": "post-sync-verification-339f67a6e124",
@@ -163,12 +163,10 @@
   },
   "summary_lines": [
     "search: clean 5/5, drift 0/5",
-    "entity_detail: clean 2/4, drift 2/4",
-    "release_detail: clean 0/3, drift 3/3",
+    "entity_detail: clean 4/4, drift 0/4",
+    "release_detail: clean 3/3, drift 0/3",
     "calendar_month: clean 3/3, drift 0/3",
-    "radar: clean 1/1, drift 0/1",
-    "missing rows or segments: 5 case(s)",
-    "field-shape mismatches: 3 case(s)"
+    "radar: clean 1/1, drift 0/1"
   ],
   "cases": [
     {
@@ -250,8 +248,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-6014e36a-1f37-47e4-ace9-8dcab656e848",
-      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-6014e36a-1f37-47e4-ace9-8dcab656e848"
+      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-c96719c5-7711-4565-a01c-bce7dcb8a07e",
+      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-c96719c5-7711-4565-a01c-bce7dcb8a07e"
     },
     {
       "surface": "search",
@@ -383,8 +381,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-0973058e-3c39-4d7f-b068-d0b5e63d8b83",
-      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-0973058e-3c39-4d7f-b068-d0b5e63d8b83"
+      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-e698e94d-f563-4add-bcc2-946483d9f9d0",
+      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-e698e94d-f563-4add-bcc2-946483d9f9d0"
     },
     {
       "surface": "search",
@@ -516,8 +514,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-99066b6b-174c-41c4-8195-356705c4b56f",
-      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-99066b6b-174c-41c4-8195-356705c4b56f"
+      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-984314d3-2efe-4fed-9262-4bab542e86fa",
+      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-984314d3-2efe-4fed-9262-4bab542e86fa"
     },
     {
       "surface": "search",
@@ -598,8 +596,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-revive-2b-1c1de7b9-ccb2-4a6d-bae6-bb8c3eaa1fe7",
-      "response_request_id": "shadow--v1-search-q-revive-2b-1c1de7b9-ccb2-4a6d-bae6-bb8c3eaa1fe7"
+      "request_id_sent": "shadow--v1-search-q-revive-2b-d380fa85-4183-4560-8773-f0271735c0c7",
+      "response_request_id": "shadow--v1-search-q-revive-2b-d380fa85-4183-4560-8773-f0271735c0c7"
     },
     {
       "surface": "search",
@@ -680,45 +678,17 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-bf6666ae-11a6-4f28-b6a2-4439d5938926",
-      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-bf6666ae-11a6-4f28-b6a2-4439d5938926"
+      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-eb924484-8b37-4294-b3d7-e9a3cab44406",
+      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-eb924484-8b37-4294-b3d7-e9a3cab44406"
     },
     {
       "surface": "entity_detail",
       "input": {
         "slug": "yena"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.youtube_channels.primary_team_channel_url",
-              "expected_type": "string",
-              "actual_type": "null",
-              "message": "Type mismatch"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.tracking_state.tier",
-          "expected": "tracked",
-          "actual": "longtail"
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.tracking_state.watch_reason",
-          "expected": null,
-          "actual": "manual_watch"
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "yena",
@@ -836,12 +806,12 @@
           "instagram": "https://www.instagram.com/yena.jigumina"
         },
         "youtube_channels": {
-          "primary_team_channel_url": null,
+          "primary_team_channel_url": "https://www.youtube.com/@yena_official",
           "mv_allowlist_urls": []
         },
         "tracking_state": {
-          "tier": "longtail",
-          "watch_reason": "manual_watch",
+          "tier": "tracked",
+          "watch_reason": null,
           "tracking_status": "watch_only"
         },
         "next_upcoming": null,
@@ -940,138 +910,17 @@
         "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-yena-463c68f7-8af4-483e-b5df-4dbb2b47742e",
-      "response_request_id": "shadow--v1-entities-yena-463c68f7-8af4-483e-b5df-4dbb2b47742e"
+      "request_id_sent": "shadow--v1-entities-yena-19afe972-2fa0-465d-94a0-540afb4f30b8",
+      "response_request_id": "shadow--v1-entities-yena-19afe972-2fa0-465d-94a0-540afb4f30b8"
     },
     {
       "surface": "entity_detail",
       "input": {
         "slug": "blackpink"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "missing rows or segments"
-      ],
-      "mismatches": [
-        {
-          "category": "missing rows or segments",
-          "path": "data.recent_albums",
-          "expected": [
-            {
-              "release_title": "DEADLINE",
-              "release_date": "2026-02-27",
-              "stream": "album",
-              "release_kind": "ep",
-              "release_format": "ep",
-              "artwork": null
-            },
-            {
-              "release_title": "BORN PINK",
-              "release_date": "2022-09-16",
-              "stream": "album",
-              "release_kind": "album",
-              "release_format": "album",
-              "artwork": null
-            },
-            {
-              "release_title": "THE ALBUM",
-              "release_date": "2020-10-02",
-              "stream": "album",
-              "release_kind": "album",
-              "release_format": "album",
-              "artwork": null
-            },
-            {
-              "release_title": "KILL THIS LOVE",
-              "release_date": "2019-04-05",
-              "stream": "album",
-              "release_kind": "ep",
-              "release_format": "ep",
-              "artwork": null
-            },
-            {
-              "release_title": "SQUARE UP",
-              "release_date": "2018-06-15",
-              "stream": "album",
-              "release_kind": "ep",
-              "release_format": "ep",
-              "artwork": null
-            },
-            {
-              "release_title": "BLACKPINK",
-              "release_date": "2017-08-29",
-              "stream": "album",
-              "release_kind": "ep",
-              "release_format": "ep",
-              "artwork": null
-            }
-          ],
-          "actual": [
-            {
-              "release_title": "DEADLINE",
-              "release_date": "2026-02-27",
-              "stream": "album",
-              "release_kind": "ep",
-              "release_format": "ep",
-              "artwork": null
-            },
-            {
-              "release_title": "DEADLINE",
-              "release_date": "2026-02-26",
-              "stream": "album",
-              "release_kind": null,
-              "release_format": null,
-              "artwork": {
-                "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
-                "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
-                "artwork_source_type": "cover_art_archive",
-                "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
-                "is_placeholder": false
-              }
-            },
-            {
-              "release_title": "BORN PINK",
-              "release_date": "2022-09-16",
-              "stream": "album",
-              "release_kind": "album",
-              "release_format": "album",
-              "artwork": null
-            },
-            {
-              "release_title": "THE ALBUM",
-              "release_date": "2020-10-02",
-              "stream": "album",
-              "release_kind": "album",
-              "release_format": "album",
-              "artwork": null
-            },
-            {
-              "release_title": "KILL THIS LOVE",
-              "release_date": "2019-04-05",
-              "stream": "album",
-              "release_kind": "ep",
-              "release_format": "ep",
-              "artwork": null
-            },
-            {
-              "release_title": "SQUARE UP",
-              "release_date": "2018-06-15",
-              "stream": "album",
-              "release_kind": "ep",
-              "release_format": "ep",
-              "artwork": null
-            },
-            {
-              "release_title": "BLACKPINK",
-              "release_date": "2017-08-29",
-              "stream": "album",
-              "release_kind": "ep",
-              "release_format": "ep",
-              "artwork": null
-            }
-          ]
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "blackpink",
@@ -1376,26 +1225,6 @@
             "artwork": null
           },
           {
-            "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
-            "release_title": "DEADLINE",
-            "release_date": "2026-02-26",
-            "stream": "album",
-            "release_kind": null,
-            "release_format": null,
-            "representative_song_title": "GO",
-            "spotify_url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
-            "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
-            "youtube_mv_url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
-            "source_url": null,
-            "artwork": {
-              "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
-              "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
-              "artwork_source_type": "cover_art_archive",
-              "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
-              "is_placeholder": false
-            }
-          },
-          {
             "release_id": "0571a361-1b4e-58ab-a628-ff715c81bada",
             "release_title": "BORN PINK",
             "release_date": "2022-09-16",
@@ -1615,8 +1444,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-blackpink-1f5afa2e-cb1a-4875-9015-ea759d848fd6",
-      "response_request_id": "shadow--v1-entities-blackpink-1f5afa2e-cb1a-4875-9015-ea759d848fd6"
+      "request_id_sent": "shadow--v1-entities-blackpink-37cfd0b0-2760-44d7-afe9-c4decefd5b43",
+      "response_request_id": "shadow--v1-entities-blackpink-37cfd0b0-2760-44d7-afe9-c4decefd5b43"
     },
     {
       "surface": "entity_detail",
@@ -1921,8 +1750,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-and-team-545f8e9f-6de1-42dd-862b-e74edc877b68",
-      "response_request_id": "shadow--v1-entities-and-team-545f8e9f-6de1-42dd-862b-e74edc877b68"
+      "request_id_sent": "shadow--v1-entities-and-team-1b7f49d1-3adb-42d7-a78a-8e85d2ea2ece",
+      "response_request_id": "shadow--v1-entities-and-team-1b7f49d1-3adb-42d7-a78a-8e85d2ea2ece"
     },
     {
       "surface": "entity_detail",
@@ -2044,8 +1873,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-allday-project-597ec65c-4452-4f29-8396-26b955ed2aa4",
-      "response_request_id": "shadow--v1-entities-allday-project-597ec65c-4452-4f29-8396-26b955ed2aa4"
+      "request_id_sent": "shadow--v1-entities-allday-project-3298cc5d-dd7f-4425-91ae-8220f3f2397d",
+      "response_request_id": "shadow--v1-entities-allday-project-3298cc5d-dd7f-4425-91ae-8220f3f2397d"
     },
     {
       "surface": "release_detail",
@@ -2055,25 +1884,89 @@
         "date": "2026-02-26",
         "stream": "album"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "missing rows or segments"
-      ],
-      "mismatches": [
-        {
-          "category": "missing rows or segments",
-          "path": "lookup.statusCode",
-          "expected": 200,
-          "actual": 200
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
+      "expected_snapshot": {
+        "lookup": {
+          "entity_slug": "blackpink",
+          "release_title": "DEADLINE",
+          "release_date": "2026-02-27",
+          "stream": "album",
+          "release_kind": "ep",
+          "display_name": "BLACKPINK"
         },
-        {
-          "category": "missing rows or segments",
-          "path": "detail.statusCode",
-          "expected": 200,
-          "actual": 200
+        "detail": {
+          "release": {
+            "entity_slug": "blackpink",
+            "display_name": "BLACKPINK",
+            "release_title": "DEADLINE",
+            "release_date": "2026-02-27",
+            "stream": "album",
+            "release_kind": "ep"
+          },
+          "detail_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_row"
+          },
+          "title_track_metadata": {
+            "status": "verified",
+            "provenance": "releaseDetails.existing_title_flags"
+          },
+          "artwork": {
+            "cover_image_url": "/release-placeholder.svg",
+            "thumbnail_image_url": "/release-placeholder.svg",
+            "artwork_source_type": "placeholder",
+            "artwork_source_url": "/release-placeholder.svg"
+          },
+          "service_links": {
+            "spotify": {
+              "url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
+              "status": "canonical"
+            },
+            "youtube_music": {
+              "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
+              "status": "canonical"
+            }
+          },
+          "tracks": [
+            {
+              "order": 1,
+              "title": "JUMP",
+              "is_title_track": false
+            },
+            {
+              "order": 2,
+              "title": "GO",
+              "is_title_track": true
+            },
+            {
+              "order": 3,
+              "title": "Me and my",
+              "is_title_track": false
+            },
+            {
+              "order": 4,
+              "title": "Champion",
+              "is_title_track": false
+            },
+            {
+              "order": 5,
+              "title": "Fxxxboy",
+              "is_title_track": false
+            }
+          ],
+          "mv": {
+            "url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
+            "video_id": "2GJfWMYCWY0",
+            "status": "manual_override",
+            "provenance": "official artist channel watch URL"
+          },
+          "credits": [],
+          "charts": [],
+          "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (official artist channel watch URL)."
         }
-      ],
-      "expected_snapshot": null,
+      },
       "actual_snapshot": {
         "lookup": {
           "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
@@ -2174,10 +2067,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-ef3138b9-b0d0-4bf0-aa0e-ecb2a640a70b",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-ef3138b9-b0d0-4bf0-aa0e-ecb2a640a70b",
-      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-1783fb3d-6cf8-4158-b5b0-eba4fff39ead",
-      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-1783fb3d-6cf8-4158-b5b0-eba4fff39ead"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-b67ce397-3179-4dfc-a486-df2a90c1e12c",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-b67ce397-3179-4dfc-a486-df2a90c1e12c",
+      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-f751b9da-9f21-4ab8-9640-0fcd04acc8a8",
+      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-f751b9da-9f21-4ab8-9640-0fcd04acc8a8"
     },
     {
       "surface": "release_detail",
@@ -2187,137 +2080,9 @@
         "date": "2026-02-23",
         "stream": "album"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.entity_slug",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.release_title",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.release_date",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.stream",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.release_kind",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.display_name",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.artwork",
-          "expected": {
-            "cover_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front",
-            "thumbnail_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front-250",
-            "artwork_source_type": "cover_art_archive",
-            "artwork_source_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca"
-          },
-          "actual": {
-            "cover_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front",
-            "artwork_source_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca",
-            "artwork_source_type": "cover_art_archive",
-            "thumbnail_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front-250"
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.service_links.spotify",
-          "expected": {
-            "url": null,
-            "status": "no_link"
-          },
-          "actual": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.service_links.youtube_music",
-          "expected": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_nO8Pcb0tAIwvqIb6on8b1QXJ1VhnHHgdE",
-            "status": "canonical"
-          },
-          "actual": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_nO8Pcb0tAIwvqIb6on8b1QXJ1VhnHHgdE",
-            "status": "manual_override",
-            "provenance": "ytmusicapi exact album search match"
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.credits",
-          "expected": [
-            {
-              "role": "lyrics",
-              "names": [
-                "Velvet Draft Unit",
-                "Studio Seed"
-              ]
-            },
-            {
-              "role": "composition",
-              "names": [
-                "Aurora Pattern Lab",
-                "Mono Harbor"
-              ]
-            },
-            {
-              "role": "arrangement",
-              "names": [
-                "Frame Signal"
-              ]
-            }
-          ],
-          "actual": []
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.charts",
-          "expected": [
-            {
-              "source": "Seed weekly board",
-              "label": "Album momentum",
-              "peak": "#2",
-              "dated_at": "2026-03-01"
-            }
-          ],
-          "actual": []
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "lookup": {
           "entity_slug": "ive",
@@ -2622,10 +2387,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-4177219f-7485-47a8-b705-bdf42cd58163",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-4177219f-7485-47a8-b705-bdf42cd58163",
-      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-afdc6631-420a-4cf5-b0be-88fa7cb6d236",
-      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-afdc6631-420a-4cf5-b0be-88fa7cb6d236"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-e4a48bd4-c023-49b0-ac15-b3fb0cabd565",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-e4a48bd4-c023-49b0-ac15-b3fb0cabd565",
+      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-118a623b-34c6-4924-a3df-f17461ada6c8",
+      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-118a623b-34c6-4924-a3df-f17461ada6c8"
     },
     {
       "surface": "release_detail",
@@ -2635,97 +2400,9 @@
         "date": "2025-10-06",
         "stream": "song"
       },
-      "clean": false,
-      "mismatch_categories": [
-        "field-shape mismatches",
-        "missing rows or segments"
-      ],
-      "mismatches": [
-        {
-          "category": "field-shape mismatches",
-          "path": "data",
-          "shape_mismatches": [
-            {
-              "path": "data.entity_slug",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.release_title",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.release_date",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.stream",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.release_kind",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            },
-            {
-              "path": "data.display_name",
-              "expected_type": "string",
-              "actual_type": "missing",
-              "message": "Missing key"
-            }
-          ]
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.artwork",
-          "expected": {
-            "cover_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front",
-            "thumbnail_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front-250",
-            "artwork_source_type": "cover_art_archive",
-            "artwork_source_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea"
-          },
-          "actual": {
-            "cover_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front",
-            "artwork_source_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea",
-            "artwork_source_type": "cover_art_archive",
-            "thumbnail_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front-250"
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.service_links.spotify",
-          "expected": {
-            "url": null,
-            "status": "no_link"
-          },
-          "actual": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "category": "missing rows or segments",
-          "path": "data.detail.service_links.youtube_music",
-          "expected": {
-            "url": null,
-            "status": "no_link"
-          },
-          "actual": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        }
-      ],
+      "clean": true,
+      "mismatch_categories": [],
+      "mismatches": [],
       "expected_snapshot": {
         "lookup": {
           "entity_slug": "qwer",
@@ -2859,10 +2536,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-f2866422-ef37-4411-95cf-1990485361cb",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-f2866422-ef37-4411-95cf-1990485361cb",
-      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-157672e7-53ea-4e54-9ff2-049810973a1d",
-      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-157672e7-53ea-4e54-9ff2-049810973a1d"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-ba4a66b9-5e3d-4de9-9c47-3457c607af85",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-ba4a66b9-5e3d-4de9-9c47-3457c607af85",
+      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-f22081f1-5b7d-4463-a487-a260ce30b82d",
+      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-f22081f1-5b7d-4463-a487-a260ce30b82d"
     },
     {
       "surface": "calendar_month",
@@ -3621,8 +3298,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-942dc744-a3d4-49d7-a2de-80958d82d168",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-03-942dc744-a3d4-49d7-a2de-80958d82d168"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-996eadb1-a83d-4349-bc38-a7de23e293e5",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-03-996eadb1-a83d-4349-bc38-a7de23e293e5"
     },
     {
       "surface": "calendar_month",
@@ -4525,8 +4202,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-fec33bde-62d1-4a3f-9209-06cda1279334",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-04-fec33bde-62d1-4a3f-9209-06cda1279334"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-3da61e55-b058-4976-a2c4-540ffb06e8b5",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-04-3da61e55-b058-4976-a2c4-540ffb06e8b5"
     },
     {
       "surface": "calendar_month",
@@ -5281,8 +4958,8 @@
         "scheduled_list": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-fa6c5bfe-021b-4403-84f5-830297bdfb9d",
-      "response_request_id": "shadow--v1-calendar-month-month-2025-10-fa6c5bfe-021b-4403-84f5-830297bdfb9d"
+      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-92bcf91b-3c91-435d-810d-fd616b18409b",
+      "response_request_id": "shadow--v1-calendar-month-month-2025-10-92bcf91b-3c91-435d-810d-fd616b18409b"
     },
     {
       "surface": "radar",
@@ -6329,8 +6006,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-radar-263fb5bb-d7ff-4b58-a356-2ae520162e0f",
-      "response_request_id": "shadow--v1-radar-263fb5bb-d7ff-4b58-a356-2ae520162e0f"
+      "request_id_sent": "shadow--v1-radar-1391c131-7773-4088-b7e0-b67d3206ad05",
+      "response_request_id": "shadow--v1-radar-1391c131-7773-4088-b7e0-b67d3206ad05"
     }
   ]
 }

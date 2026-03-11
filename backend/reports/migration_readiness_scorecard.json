@@ -1,9 +1,92 @@
 {
-  "generated_at": "2026-03-11T16:15:22.948Z",
-  "report_bundle": null,
+  "generated_at": "2026-03-11T16:33:35.178Z",
+  "report_bundle": {
+    "generated_at": "2026-03-11T16:14:23.510Z",
+    "bundle_id": "post-sync-verification-339f67a6e124",
+    "bundle_kind": "post-sync-verification",
+    "cadence_profile": "daily-upcoming",
+    "source": {
+      "kind": "manual",
+      "workflow_name": null,
+      "git_commit_sha": null,
+      "github_run_id": null
+    },
+    "source_reports": {
+      "release_pipeline_sync": {
+        "path": "reports/release_pipeline_db_sync_summary.json",
+        "generated_at": "2026-03-07T07:51:00.028Z",
+        "scope": "release_pipeline"
+      },
+      "upcoming_pipeline_sync": {
+        "path": "reports/upcoming_pipeline_db_sync_summary.json",
+        "generated_at": "2026-03-11T07:53:51.250Z",
+        "scope": "upcoming_pipeline"
+      },
+      "projection_refresh": {
+        "path": "reports/projection_refresh_summary.json",
+        "generated_at": "2026-03-11T16:14:21.898Z"
+      },
+      "historical_coverage": {
+        "path": "reports/historical_release_detail_coverage_report.json",
+        "generated_at": "2026-03-11T00:00:00.000Z"
+      },
+      "canonical_null_coverage": {
+        "path": "reports/canonical_null_coverage_report.json",
+        "generated_at": "2026-03-11T08:30:30.464Z"
+      },
+      "canonical_null_recheck_queue": {
+        "path": "reports/canonical_null_recheck_queue.json",
+        "generated_at": "2026-03-11T08:30:31.766Z",
+        "queue_count": 3762
+      },
+      "null_coverage_trend": {
+        "path": "reports/null_coverage_trend_report.json",
+        "generated_at": "2026-03-11T08:30:32.119Z",
+        "baseline_available": false
+      },
+      "worker_cadence": {
+        "path": "reports/worker_cadence_report.json",
+        "generated_at": "2026-03-11T16:14:23.247Z",
+        "primary_path_key": "daily_upcoming"
+      },
+      "service_link_gap_queues": {
+        "path": "reports/service_link_gap_queues.json",
+        "generated_at": "2026-03-11T09:16:24.917Z",
+        "total": 5155
+      },
+      "title_track_gap_queue": {
+        "path": "reports/title_track_gap_queue.json",
+        "generated_at": "2026-03-11T09:16:24.922Z",
+        "total": 1694
+      },
+      "entity_identity_workbench": {
+        "path": "reports/entity_identity_workbench.json",
+        "generated_at": "2026-03-11T09:16:24.924Z",
+        "entities": 117,
+        "field_rows": 324
+      },
+      "trusted_upcoming_notification_summary": {
+        "path": "reports/trusted_upcoming_notification_event_summary.json",
+        "generated_at": "2026-03-11T12:38:47.563Z",
+        "emitted": 0
+      },
+      "mobile_push_delivery_summary": {
+        "path": "reports/mobile_push_delivery_summary.json",
+        "generated_at": null,
+        "sent": null,
+        "failed": null
+      }
+    },
+    "summary_lines": [
+      "bundle id: post-sync-verification-339f67a6e124",
+      "bundle kind: post-sync-verification",
+      "cadence profile: daily-upcoming",
+      "workflow: manual"
+    ]
+  },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": null,
+    "expected_bundle_id": "post-sync-verification-339f67a6e124",
     "observed": {
       "parity_bundle": "post-sync-verification-339f67a6e124",
       "shadow_bundle": "post-sync-verification-339f67a6e124",
@@ -85,7 +168,7 @@
     "historical_coverage_report": "backend/reports/historical_release_detail_coverage_report.json",
     "canonical_null_coverage_report": "backend/reports/canonical_null_coverage_report.json",
     "null_coverage_trend_report": "backend/reports/null_coverage_trend_report.json",
-    "bundle_report": "reports/report_bundle_metadata.json",
+    "bundle_report": "backend/reports/report_bundle_metadata.json",
     "fixture_registry": "backend/fixtures/live_backend_smoke_fixtures.json",
     "backend_deploy_workflow": ".github/workflows/backend-deploy.yml",
     "mobile_runtime_config": "mobile/src/config/runtime.ts",
@@ -94,9 +177,9 @@
   },
   "overall": {
     "status": "fail",
-    "score_ratio": 0.6701,
-    "score_percent": 67,
-    "weighted_points": 67.01,
+    "score_ratio": 0.7551,
+    "score_percent": 75.5,
+    "weighted_points": 75.51,
     "total_weight": 100,
     "blocker_categories": [
       {
@@ -112,14 +195,6 @@
         "label": "Backend deploy parity",
         "blocker_reasons": [
           "parity_clean=false (latest_verified_release_selection drift=0)"
-        ]
-      },
-      {
-        "key": "web_backend_only_stability",
-        "label": "Web backend-only stability",
-        "blocker_reasons": [
-          "entity_detail clean_ratio=0.5",
-          "release_detail clean_ratio=0"
         ]
       },
       {
@@ -298,25 +373,20 @@
       "label": "Web backend-only stability",
       "weight": 20,
       "blocker": true,
-      "status": "fail",
-      "score_ratio": 0.575,
-      "score_percent": 57.5,
-      "weighted_points": 11.5,
-      "blocker_reasons": [
-        "entity_detail clean_ratio=0.5",
-        "release_detail clean_ratio=0"
-      ],
+      "status": "pass",
+      "score_ratio": 1,
+      "score_percent": 100,
+      "weighted_points": 20,
+      "blocker_reasons": [],
       "summary_lines": [
         "search: clean 5/5, drift 0/5",
-        "entity_detail: clean 2/4, drift 2/4",
-        "release_detail: clean 0/3, drift 3/3",
+        "entity_detail: clean 4/4, drift 0/4",
+        "release_detail: clean 3/3, drift 0/3",
         "calendar_month: clean 3/3, drift 0/3",
-        "radar: clean 1/1, drift 0/1",
-        "missing rows or segments: 5 case(s)",
-        "field-shape mismatches: 3 case(s)"
+        "radar: clean 1/1, drift 0/1"
       ],
       "evidence": {
-        "clean": false,
+        "clean": true,
         "coverage": {
           "search": [
             "트리플에스",
@@ -367,14 +437,14 @@
             "ratio": 1
           },
           "entity_detail": {
-            "clean": 2,
+            "clean": 4,
             "total": 4,
-            "ratio": 0.5
+            "ratio": 1
           },
           "release_detail": {
-            "clean": 0,
+            "clean": 3,
             "total": 3,
-            "ratio": 0
+            "ratio": 1
           },
           "calendar_month": {
             "clean": 3,
@@ -614,10 +684,10 @@
     }
   ],
   "summary_lines": [
-    "overall readiness: fail (67/100)",
+    "overall readiness: fail (75.5/100)",
     "Backend runtime health: fail (70/100) [BLOCKER] - stage_gate:shadow_to_web_cutover=fail",
     "Backend deploy parity: fail (40/100) [BLOCKER] - parity_clean=false (latest_verified_release_selection drift=0)",
-    "Web backend-only stability: fail (57.5/100) [BLOCKER] - entity_detail clean_ratio=0.5",
+    "Web backend-only stability: pass (100/100) - no blocker reason",
     "Mobile runtime mode: pass (100/100) - no blocker reason",
     "Catalog completeness: fail (75.1/100) [BLOCKER] - title_track_resolved overall=67.9 pre_2024=65.2",
     "bundle consistency: pass"
