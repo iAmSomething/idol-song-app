@@ -59,6 +59,7 @@ import {
   trackFailureObserved,
 } from '../../src/services/analytics';
 import {
+  describeServiceHandoffBehavior,
   openServiceHandoff,
   resolveServiceHandoff,
   type ServiceHandoffFailure,
@@ -599,28 +600,39 @@ export default function CalendarTabScreen() {
 
     return [
       {
+        accessibilityHint: describeServiceHandoffBehavior(spotify),
         accessibilityLabel: `Spotify에서 ${release.releaseTitle} 열기`,
         key: `${release.id}-spotify`,
         label: 'Spotify',
         mode: spotify.mode,
+        modeHintLabel:
+          spotify.mode === 'canonical' ? MOBILE_COPY.handoff.appPreferred : MOBILE_COPY.handoff.searchFallback,
         onPress: () => void handleServiceHandoff(spotify),
         service: 'spotify',
         testID: `calendar-release-service-spotify-${release.id}`,
       },
       {
+        accessibilityHint: describeServiceHandoffBehavior(youtubeMusic),
         accessibilityLabel: `YouTube Music에서 ${release.releaseTitle} 열기`,
         key: `${release.id}-youtube-music`,
         label: 'YouTube Music',
         mode: youtubeMusic.mode,
+        modeHintLabel:
+          youtubeMusic.mode === 'canonical'
+            ? MOBILE_COPY.handoff.appPreferred
+            : MOBILE_COPY.handoff.searchFallback,
         onPress: () => void handleServiceHandoff(youtubeMusic),
         service: 'youtubeMusic',
         testID: `calendar-release-service-youtube-music-${release.id}`,
       },
       {
+        accessibilityHint: describeServiceHandoffBehavior(youtubeMv),
         accessibilityLabel: `YouTube에서 ${release.representativeSongTitle ?? release.releaseTitle} MV 열기`,
         key: `${release.id}-youtube-mv`,
         label: 'YouTube MV',
         mode: youtubeMv.mode,
+        modeHintLabel:
+          youtubeMv.mode === 'canonical' ? MOBILE_COPY.handoff.appPreferred : MOBILE_COPY.handoff.searchFallback,
         onPress: () => void handleServiceHandoff(youtubeMv),
         service: 'youtubeMv',
         testID: `calendar-release-service-youtube-mv-${release.id}`,
@@ -931,9 +943,9 @@ export default function CalendarTabScreen() {
 
         <SummaryStrip
           items={[
-            { key: 'release-count', label: '이번 달 발매', value: filteredSnapshot.releaseCount },
-            { key: 'upcoming-count', label: '예정 컴백', value: filteredSnapshot.upcomingCount },
-            { key: 'nearest-upcoming', label: '가장 가까운 일정', value: nearestSummary },
+            { key: 'release-count', label: MOBILE_COPY.summary.monthRelease, value: filteredSnapshot.releaseCount },
+            { key: 'upcoming-count', label: MOBILE_COPY.summary.upcoming, value: filteredSnapshot.upcomingCount },
+            { key: 'nearest-upcoming', label: MOBILE_COPY.summary.nearestUpcoming, value: nearestSummary },
           ]}
           layout="wrap"
           testID="calendar-summary-strip"
@@ -952,7 +964,7 @@ export default function CalendarTabScreen() {
           <InlineFeedbackNotice
             body={handoffFeedback}
             testID="calendar-handoff-feedback"
-            title="외부 이동을 완료하지 못했습니다."
+            title={MOBILE_COPY.feedback.handoffFailedTitle}
           />
         ) : null}
 

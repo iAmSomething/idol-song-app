@@ -116,9 +116,9 @@ describe('calendar controls', () => {
     expect(tree.root.findByProps({ testID: 'calendar-month-title' }).props.maxFontSizeMultiplier).toBe(
       MOBILE_TEXT_SCALE_LIMITS.screenTitle,
     );
-    expect(hasText(tree, '이번 달 발매')).toBe(true);
-    expect(hasText(tree, '예정 컴백')).toBe(true);
-    expect(hasText(tree, '가장 가까운 일정')).toBe(true);
+    expect(hasText(tree, '이달 발매')).toBe(true);
+    expect(hasText(tree, '예정 일정')).toBe(true);
+    expect(hasText(tree, '가까운 일정')).toBe(true);
     expect(tree.root.findByProps({ testID: 'calendar-view-calendar' }).props.accessibilityState.selected).toBe(
       true,
     );

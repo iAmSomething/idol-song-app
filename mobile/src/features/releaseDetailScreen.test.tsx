@@ -146,9 +146,14 @@ describe('mobile release detail screen', () => {
     expect(tree.root.findByProps({ testID: 'release-service-spotify' }).props.accessibilityLabel).toBe(
       'Spotify에서 LOVE CATCHER 열기',
     );
+    expect(tree.root.findByProps({ testID: 'release-service-spotify' }).props.accessibilityHint).toBe(
+      'Spotify 앱이 있으면 앱으로, 없으면 안전한 웹 fallback으로 엽니다.',
+    );
     expect(tree.root.findByProps({ testID: 'release-service-spotify' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-service-youtube-music' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-service-youtube-mv' })).toBeDefined();
+    expect(hasText(tree, '앱 우선')).toBe(true);
+    expect(hasText(tree, '검색 결과')).toBe(true);
     expect(tree.root.findByProps({ testID: 'release-supporting-links' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-track-row-1' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-track-row-title-badge-1' })).toBeDefined();
@@ -232,7 +237,7 @@ describe('mobile release detail screen', () => {
       feedback: {
         level: 'warning',
         retryable: true,
-        message: 'External handoff failed. Keep the current route stack and show retry feedback.',
+        message: '외부 앱을 열지 못했습니다. 같은 화면에서 다시 시도해 주세요.',
       },
     });
 
@@ -243,9 +248,8 @@ describe('mobile release detail screen', () => {
       await Promise.resolve();
     });
 
-    expect(hasText(tree, 'External handoff failed. Keep the current route stack and show retry feedback.')).toBe(
-      true,
-    );
+    expect(hasText(tree, '외부 이동을 완료하지 못했습니다.')).toBe(true);
+    expect(hasText(tree, '외부 앱을 열지 못했습니다. 같은 화면에서 다시 시도해 주세요.')).toBe(true);
     expect(tree.root.findByProps({ testID: 'release-detail-title' }).props.children).toBe('LOVE CATCHER');
     expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
       'service_handoff_completed',

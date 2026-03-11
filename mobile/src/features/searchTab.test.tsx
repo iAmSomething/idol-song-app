@@ -341,7 +341,7 @@ describe('mobile search tab', () => {
       feedback: {
         level: 'warning',
         retryable: true,
-        message: 'External handoff failed. Keep the current route stack and show retry feedback.',
+        message: '외부 앱을 열지 못했습니다. 같은 화면에서 다시 시도해 주세요.',
       },
     });
 

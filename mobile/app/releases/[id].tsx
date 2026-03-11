@@ -40,6 +40,7 @@ import {
 } from '../../src/services/backendReadClient';
 import { cloneBundledDatasetFixture } from '../../src/services/bundledDatasetFixture';
 import {
+  describeServiceHandoffBehavior,
   openServiceHandoff,
   resolveServiceHandoff,
   resolveServiceHandoffGroup,
@@ -68,6 +69,10 @@ type ReleaseServiceButtonItem = ServiceButtonGroupItem & {
   service: MusicService;
   handoff: ServiceHandoffResolution | ServiceHandoffFailure;
 };
+
+function resolveHandoffModeHintLabel(mode: 'canonical' | 'searchFallback'): string {
+  return mode === 'canonical' ? MOBILE_COPY.handoff.appPreferred : MOBILE_COPY.handoff.searchFallback;
+}
 
 type ReleaseHandoffContext =
   | {
@@ -157,27 +162,33 @@ function buildAlbumServiceButtons(detail: ReleaseDetailModel): ReleaseServiceBut
   const buttons: ReleaseServiceButtonItem[] = [
     {
       accessibilityLabel: `Spotify에서 ${detail.releaseTitle} 열기`,
+      accessibilityHint: describeServiceHandoffBehavior(handoffs.spotify),
       key: 'spotify',
       label: 'Spotify',
       handoff: handoffs.spotify,
+      modeHintLabel: resolveHandoffModeHintLabel(handoffs.spotify.mode),
       service: 'spotify',
       testID: 'release-service-spotify',
       tone: 'spotify',
     },
     {
       accessibilityLabel: `YouTube Music에서 ${detail.releaseTitle} 열기`,
+      accessibilityHint: describeServiceHandoffBehavior(handoffs.youtubeMusic),
       key: 'youtubeMusic',
       label: 'YouTube Music',
       handoff: handoffs.youtubeMusic,
+      modeHintLabel: resolveHandoffModeHintLabel(handoffs.youtubeMusic.mode),
       service: 'youtubeMusic',
       testID: 'release-service-youtube-music',
       tone: 'youtubeMusic',
     },
     {
       accessibilityLabel: `YouTube에서 ${detail.releaseTitle} 공식 MV 열기`,
+      accessibilityHint: describeServiceHandoffBehavior(handoffs.youtubeMv),
       key: 'youtubeMv',
       label: 'YouTube MV',
       handoff: handoffs.youtubeMv,
+      modeHintLabel: resolveHandoffModeHintLabel(handoffs.youtubeMv.mode),
       service: 'youtubeMv',
       testID: 'release-service-youtube-mv',
       tone: 'youtubeMv',
@@ -189,30 +200,36 @@ function buildAlbumServiceButtons(detail: ReleaseDetailModel): ReleaseServiceBut
 
 function buildTrackServiceButtons(detail: ReleaseDetailModel, track: TrackModel): ReleaseServiceButtonItem[] {
   const query = `${detail.displayGroup} ${track.title}`;
+  const spotifyHandoff = resolveServiceHandoff({
+    service: 'spotify',
+    query,
+    canonicalUrl: track.spotifyUrl,
+  });
+  const youtubeMusicHandoff = resolveServiceHandoff({
+    service: 'youtubeMusic',
+    query,
+    canonicalUrl: track.youtubeMusicUrl,
+  });
 
   return [
     {
       accessibilityLabel: `Spotify에서 ${track.title} 트랙 열기`,
+      accessibilityHint: describeServiceHandoffBehavior(spotifyHandoff),
       key: 'spotify',
       label: 'Spotify',
-      handoff: resolveServiceHandoff({
-        service: 'spotify',
-        query,
-        canonicalUrl: track.spotifyUrl,
-      }),
+      modeHintLabel: resolveHandoffModeHintLabel(spotifyHandoff.mode),
+      handoff: spotifyHandoff,
       service: 'spotify',
       testID: `release-track-${track.order}-spotify`,
       tone: 'spotify',
     },
     {
       accessibilityLabel: `YouTube Music에서 ${track.title} 트랙 열기`,
+      accessibilityHint: describeServiceHandoffBehavior(youtubeMusicHandoff),
       key: 'youtubeMusic',
       label: 'YouTube Music',
-      handoff: resolveServiceHandoff({
-        service: 'youtubeMusic',
-        query,
-        canonicalUrl: track.youtubeMusicUrl,
-      }),
+      modeHintLabel: resolveHandoffModeHintLabel(youtubeMusicHandoff.mode),
+      handoff: youtubeMusicHandoff,
       service: 'youtubeMusic',
       testID: `release-track-${track.order}-youtube-music`,
       tone: 'youtubeMusic',
@@ -596,7 +613,12 @@ export default function ReleaseDetailScreen() {
       </InsetSection>
 
       {handoffFeedback ? (
-        <InlineFeedbackNotice body={handoffFeedback} testID="release-handoff-feedback" tone="error" />
+        <InlineFeedbackNotice
+          body={handoffFeedback}
+          testID="release-handoff-feedback"
+          title={MOBILE_COPY.feedback.handoffFailedTitle}
+          tone="error"
+        />
       ) : null}
 
       {releaseDependencyDisclosure ? (
@@ -633,6 +655,7 @@ export default function ReleaseDetailScreen() {
                             disabled: spotifyButton.disabled,
                             label: spotifyButton.label,
                             mode: spotifyButton.mode,
+                            modeHintLabel: spotifyButton.modeHintLabel,
                             onPress: () =>
                               void handleHandoff(spotifyButton.handoff, {
                                 kind: 'track',
@@ -653,6 +676,7 @@ export default function ReleaseDetailScreen() {
                             disabled: youtubeMusicButton.disabled,
                             label: youtubeMusicButton.label,
                             mode: youtubeMusicButton.mode,
+                            modeHintLabel: youtubeMusicButton.modeHintLabel,
                             onPress: () =>
                               void handleHandoff(youtubeMusicButton.handoff, {
                                 kind: 'track',
@@ -722,22 +746,24 @@ export default function ReleaseDetailScreen() {
             </Text>
             <ServiceButtonGroup
               buttons={[
-                {
-                  accessibilityLabel: `YouTube에서 ${detail.releaseTitle} 공식 MV 열기`,
-                  key: 'youtubeMv',
-                  label: 'YouTube MV',
-                  onPress: () =>
-                    void handleHandoff(
-                      resolveServiceHandoff({
-                        service: 'youtubeMv',
-                        query: `${detail.displayGroup} ${detail.releaseTitle}`,
-                        canonicalUrl: mvUrl,
-                      }),
-                      { kind: 'mv' },
-                    ),
-                  testID: 'release-mv-button',
-                  tone: 'youtubeMv',
-                },
+                (() => {
+                  const mvHandoff = resolveServiceHandoff({
+                    service: 'youtubeMv',
+                    query: `${detail.displayGroup} ${detail.releaseTitle}`,
+                    canonicalUrl: mvUrl,
+                  });
+
+                  return {
+                    accessibilityLabel: `YouTube에서 ${detail.releaseTitle} 공식 MV 열기`,
+                    accessibilityHint: describeServiceHandoffBehavior(mvHandoff),
+                    key: 'youtubeMv',
+                    label: 'YouTube MV',
+                    modeHintLabel: resolveHandoffModeHintLabel(mvHandoff.mode),
+                    onPress: () => void handleHandoff(mvHandoff, { kind: 'mv' }),
+                    testID: 'release-mv-button',
+                    tone: 'youtubeMv',
+                  };
+                })(),
               ]}
               testID="release-mv-button-group"
             />

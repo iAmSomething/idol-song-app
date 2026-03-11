@@ -51,6 +51,7 @@ function CompactHeroComponent({
               accessibilityRole="header"
               allowFontScaling
               maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
+              numberOfLines={2}
               style={styles.title}
               testID={titleTestID}
             >
@@ -60,6 +61,7 @@ function CompactHeroComponent({
               <Text
                 allowFontScaling
                 maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+                numberOfLines={2}
                 style={styles.meta}
               >
                 {meta}
@@ -69,6 +71,7 @@ function CompactHeroComponent({
               <Text
                 allowFontScaling
                 maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+                numberOfLines={2}
                 style={styles.secondaryMeta}
               >
                 {secondaryMeta}
@@ -78,6 +81,7 @@ function CompactHeroComponent({
               <Text
                 allowFontScaling
                 maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+                numberOfLines={3}
                 style={styles.body}
               >
                 {body}
@@ -105,8 +109,8 @@ function createStyles(theme: MobileTheme) {
       backgroundColor: theme.colors.text.brand,
     },
     content: {
-      gap: theme.space[12],
-      padding: theme.space[16],
+      gap: theme.space[8],
+      padding: theme.space[12],
     },
     row: {
       flexDirection: 'row',
@@ -120,7 +124,7 @@ function createStyles(theme: MobileTheme) {
     },
     copy: {
       flex: 1,
-      minWidth: 180,
+      minWidth: 0,
       gap: theme.space[4],
     },
     eyebrow: {

@@ -15,6 +15,7 @@ import { InfoChip } from '../meta/InfoChip';
 import { SourceLinkRow, type SourceLinkRowItem } from '../meta/SourceLinkRow';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 
 export interface ReleaseSummaryRowProps {
   chips?: { key: string; label: string }[];
@@ -44,12 +45,22 @@ function ReleaseSummaryRowComponent({
 
   return (
     <View style={styles.card} testID={testID}>
-      <TeamIdentityRow {...team} />
+      <TeamIdentityRow {...team} nameNumberOfLines={team.nameNumberOfLines ?? 2} />
       <View style={styles.copy}>
-        <Text allowFontScaling numberOfLines={2} style={styles.title}>
+        <Text
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+          numberOfLines={2}
+          style={styles.title}
+        >
           {title}
         </Text>
-        <Text allowFontScaling style={styles.meta}>
+        <Text
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
+          numberOfLines={2}
+          style={styles.meta}
+        >
           {date}
         </Text>
         {chips.length ? (
@@ -75,7 +86,7 @@ function ReleaseSummaryRowComponent({
 function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     card: {
-      gap: theme.space[12],
+      gap: theme.space[8],
       padding: theme.space[16],
       borderRadius: theme.radius.card,
       backgroundColor: theme.colors.surface.elevated,

@@ -31,6 +31,7 @@ function InsetSectionComponent({
             accessibilityRole="header"
             allowFontScaling
             maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+            numberOfLines={2}
             style={styles.title}
           >
             {title}
@@ -39,6 +40,7 @@ function InsetSectionComponent({
             <Text
               allowFontScaling
               maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+              numberOfLines={3}
               style={styles.description}
             >
               {description}
@@ -55,7 +57,7 @@ function InsetSectionComponent({
 function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     section: {
-      gap: theme.space[12],
+      gap: theme.space[8],
       padding: theme.space[16],
       borderRadius: theme.radius.card,
       backgroundColor: theme.colors.surface.elevated,
@@ -86,7 +88,7 @@ function createStyles(theme: MobileTheme) {
       justifyContent: 'flex-start',
     },
     body: {
-      gap: theme.space[12],
+      gap: theme.space[8],
     },
   });
 }
