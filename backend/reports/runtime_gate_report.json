@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-11T08:31:07.684Z",
+  "generated_at": "2026-03-11T09:17:40.447Z",
   "report_bundle": {
-    "generated_at": "2026-03-11T08:30:32.344Z",
-    "bundle_id": "post-sync-verification-b72033bd3150",
+    "generated_at": "2026-03-11T09:16:25.280Z",
+    "bundle_id": "post-sync-verification-57fe974c438e",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -48,10 +48,26 @@
         "path": "reports/worker_cadence_report.json",
         "generated_at": "2026-03-11T08:30:28.469Z",
         "primary_path_key": "daily_upcoming"
+      },
+      "service_link_gap_queues": {
+        "path": "reports/service_link_gap_queues.json",
+        "generated_at": "2026-03-11T09:16:24.917Z",
+        "total": 5155
+      },
+      "title_track_gap_queue": {
+        "path": "reports/title_track_gap_queue.json",
+        "generated_at": "2026-03-11T09:16:24.922Z",
+        "total": 1694
+      },
+      "entity_identity_workbench": {
+        "path": "reports/entity_identity_workbench.json",
+        "generated_at": "2026-03-11T09:16:24.924Z",
+        "entities": 117,
+        "field_rows": 324
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-b72033bd3150",
+      "bundle id: post-sync-verification-57fe974c438e",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -59,10 +75,10 @@
   },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": "post-sync-verification-b72033bd3150",
+    "expected_bundle_id": "post-sync-verification-57fe974c438e",
     "observed": {
-      "parity_bundle": "post-sync-verification-b72033bd3150",
-      "shadow_bundle": "post-sync-verification-b72033bd3150",
+      "parity_bundle": "post-sync-verification-57fe974c438e",
+      "shadow_bundle": "post-sync-verification-57fe974c438e",
       "runtime_gate_bundle": null,
       "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z",
       "canonical_null_coverage_generated_at": "2026-03-11T08:30:30.464Z",
@@ -106,7 +122,7 @@
   "summary_lines": [
     "api latency: needs_review (worst p95=1148.96ms)",
     "api error rate: needs_review (error rate=0)",
-    "projection freshness: needs_review (lag=37.16m)",
+    "projection freshness: fail (lag=83.71m)",
     "worker cadence: fail (failure rate=n/a)",
     "parity dependency: fail",
     "shadow dependency: fail",
@@ -142,10 +158,10 @@
       }
     },
     "projection_freshness": {
-      "status": "needs_review",
+      "status": "fail",
       "observed": {
         "projection_generated_at": "2026-03-11T07:53:57.809Z",
-        "lag_minutes": 37.16
+        "lag_minutes": 83.71
       },
       "thresholds": {
         "passLagMinutes": 20,
@@ -175,7 +191,7 @@
       "status": "fail",
       "observed": {
         "clean": false,
-        "generated_at": "2026-03-11T08:30:47.382926+00:00",
+        "generated_at": "2026-03-11T09:16:27.590969+00:00",
         "summary_lines": [
           "entity alias/search coverage: clean (mismatched entities=0)",
           "official links: clean (mismatched entities=0)",
@@ -193,7 +209,7 @@
       "status": "fail",
       "observed": {
         "clean": false,
-        "generated_at": "2026-03-11T08:31:07.377Z",
+        "generated_at": "2026-03-11T09:17:40.030Z",
         "summary_lines": [
           "search: clean 5/5, drift 0/5",
           "entity_detail: clean 2/4, drift 2/4",
@@ -474,10 +490,10 @@
       "status": "pass",
       "observed": {
         "status": "pass",
-        "expected_bundle_id": "post-sync-verification-b72033bd3150",
+        "expected_bundle_id": "post-sync-verification-57fe974c438e",
         "observed": {
-          "parity_bundle": "post-sync-verification-b72033bd3150",
-          "shadow_bundle": "post-sync-verification-b72033bd3150",
+          "parity_bundle": "post-sync-verification-57fe974c438e",
+          "shadow_bundle": "post-sync-verification-57fe974c438e",
           "runtime_gate_bundle": null,
           "historical_coverage_generated_at": "2026-03-10T00:00:00.000Z",
           "canonical_null_coverage_generated_at": "2026-03-11T08:30:30.464Z",

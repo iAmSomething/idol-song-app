@@ -211,6 +211,9 @@ scheduled automation도 cadence를 둘로 나눠서 운영한다.
 - canonical null coverage report: `backend/reports/canonical_null_coverage_report.json`
 - canonical null recheck queue: `backend/reports/canonical_null_recheck_queue.json`
 - null coverage trend report: `backend/reports/null_coverage_trend_report.json`
+- prioritized service-link gap queues: `backend/reports/service_link_gap_queues.json`
+- title-track cohort gap queue: `backend/reports/title_track_gap_queue.json`
+- entity identity null workbench: `backend/reports/entity_identity_workbench.json`
 - report bundle metadata: `backend/reports/report_bundle_metadata.json`
 - backend freshness handoff artifact: `backend/reports/backend_freshness_handoff.json`
 - endpoint shadow-read report: `backend/reports/backend_shadow_read_report.json`

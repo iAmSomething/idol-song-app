@@ -23,6 +23,7 @@
     "recovery:drill": "node ./scripts/run-backup-restore-drill.mjs",
     "runtime:measure": "node ./scripts/measure-read-api-runtime.mjs",
     "worker:cadence": "node ./scripts/build-worker-cadence-report.mjs",
+    "gap:workbenches": "node ./scripts/build-canonical-gap-workbenches.mjs",
     "runtime:gate": "node ./scripts/build-runtime-gate-report.mjs"
   },
   "dependencies": {
