@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-11T16:15:16.837750+00:00",
-  "clean": false,
+  "generated_at": "2026-03-11T16:43:56.995151+00:00",
+  "clean": true,
   "report_bundle": {
     "generated_at": "2026-03-11T16:14:23.510Z",
     "bundle_id": "post-sync-verification-339f67a6e124",
@@ -88,12 +88,12 @@
   "summary_lines": [
     "entity alias/search coverage: clean (mismatched entities=0)",
     "official links: clean (mismatched entities=0)",
-    "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
+    "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
     "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
     "upcoming counts / nearest: clean (month bucket mismatches=0)",
-    "title-track / double-title: drift (mismatched releases=1120)",
-    "YouTube Music / MV service-link state: drift (mismatched releases=165)",
-    "review-required counts: drift (review_type_counts_match=False, youtube_mv_status_counts_match=False)"
+    "title-track / double-title: clean (mismatched releases=0)",
+    "YouTube Music / MV service-link state: clean (mismatched releases=0)",
+    "review-required counts (release scope): clean (mv_candidate_count_match=True, youtube_mv_status_counts_match=True)"
   ],
   "source_snapshot_counts": {
     "artist_profiles": 117,
@@ -118,112 +118,11 @@
       "clean": true
     },
     "youtube_allowlists": {
-      "role_mismatches_count": 10,
+      "role_mismatches_count": 0,
       "metadata_mismatches_count": 0,
-      "role_mismatches": [
-        {
-          "entity_slug": "chung-ha",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "chuu",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@CHUUOfficial",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "jeon-somi",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "kwon-eunbi",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@KWONEUNBI",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "seventeen",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA",
-              "role": "mv_allowlist"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "tunexx",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@official_TUNEXX",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "xlov",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@XLOV_official",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "yena",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@yena_official",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "yuju",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@YUJUofficial",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "yves",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@YVES_OFFICIAL",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        }
-      ],
+      "role_mismatches": [],
       "metadata_mismatches": [],
-      "clean": false
+      "clean": true
     },
     "latest_verified_release_selection": {
       "tracking_mismatches_count": 0,
@@ -292,268 +191,16 @@
       "clean": true
     },
     "title_tracks_and_double_title": {
-      "mismatched_releases_count": 1120,
+      "mismatched_releases_count": 0,
       "source_double_title_releases": 27,
-      "db_double_title_releases": 3,
-      "mismatches": [
-        {
-          "entity_slug": "82major",
-          "release_date": "2023-10-11",
-          "stream": "song",
-          "source_title_tracks": [
-            "Sure Thing"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "82major",
-          "release_date": "2023-10-05",
-          "stream": "song",
-          "source_title_tracks": [
-            "Sure Thing"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2025-08-21",
-          "stream": "song",
-          "source_title_tracks": [
-            "Electric Heart"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2025-03-04",
-          "stream": "song",
-          "source_title_tracks": [
-            "LEGGO"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2024-11-11",
-          "stream": "song",
-          "source_title_tracks": [
-            "You Are My Reason"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2024-12-09",
-          "stream": "song",
-          "source_title_tracks": [
-            "Like a Friend"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "ab6ix",
-          "release_date": "2022-08-24",
-          "stream": "song",
-          "source_title_tracks": [
-            "CHANCE"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "ab6ix",
-          "release_date": "2023-05-10",
-          "stream": "song",
-          "source_title_tracks": [
-            "Fly Away"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "ab6ix",
-          "release_date": "2020-11-02",
-          "stream": "album",
-          "source_title_tracks": [
-            "SALUTE"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "ab6ix",
-          "release_date": "2023-11-24",
-          "stream": "song",
-          "source_title_tracks": [
-            "SIREN"
-          ],
-          "db_title_tracks": []
-        }
-      ],
-      "clean": false
+      "db_double_title_releases": 27,
+      "mismatches": [],
+      "clean": true
     },
     "release_service_links": {
-      "mismatched_release_services_count": 165,
-      "mismatches": [
-        {
-          "entity_slug": "82major",
-          "release_date": "2024-11-15",
-          "stream": "album",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_k1sIbCSXn34yi3_k1kdbhE3r24-du98ic",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "8turn",
-          "release_date": "2025-03-04",
-          "stream": "song",
-          "service_type": "youtube_mv",
-          "source": {
-            "url": "https://www.youtube.com/watch?v=li5H5D3Jd70",
-            "status": "manual_override",
-            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
-          },
-          "db": {
-            "url": null,
-            "status": "unresolved",
-            "provenance": "releaseHistory.placeholder_seed"
-          }
-        },
-        {
-          "entity_slug": "aespa",
-          "release_date": "2025-06-27",
-          "stream": "song",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_lylo1HjXQ3etth1Y_2psaHbhoyeNA49_w",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "aespa",
-          "release_date": "2025-06-27",
-          "stream": "song",
-          "service_type": "youtube_mv",
-          "source": {
-            "url": "https://www.youtube.com/watch?v=M2WTUoy4y6E",
-            "status": "manual_override",
-            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
-          },
-          "db": {
-            "url": null,
-            "status": "unresolved",
-            "provenance": "releaseHistory.placeholder_seed"
-          }
-        },
-        {
-          "entity_slug": "aespa",
-          "release_date": "2021-10-05",
-          "stream": "album",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_mAsOG3O5d13B9gcJ0_4JcpqbVlQKNyYzQ",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "aespa",
-          "release_date": "2024-10-09",
-          "stream": "song",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_mxuhlhhzPFDf4XF9zXA_fXmJQN8tqCUe4",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "ateez",
-          "release_date": "2025-06-13",
-          "stream": "album",
-          "service_type": "youtube_music",
-          "source": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_lQnb6fzlcjYIWuQsQkVX-UucviuRkoyfE",
-            "status": "canonical",
-            "provenance": "releaseDetails.youtube_music_url"
-          },
-          "db": {
-            "url": null,
-            "status": "no_link",
-            "provenance": null
-          }
-        },
-        {
-          "entity_slug": "blackpink",
-          "release_date": "2017-08-08",
-          "stream": "song",
-          "service_type": "youtube_mv",
-          "source": {
-            "url": "https://www.youtube.com/watch?v=bwmSjveL3Lc",
-            "status": "manual_override",
-            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
-          },
-          "db": {
-            "url": null,
-            "status": "unresolved",
-            "provenance": "releaseHistory.placeholder_seed"
-          }
-        },
-        {
-          "entity_slug": "blackpink",
-          "release_date": "2022-09-16",
-          "stream": "album",
-          "service_type": "youtube_mv",
-          "source": {
-            "url": "https://www.youtube.com/watch?v=gQlMMD8auMs",
-            "status": "manual_override",
-            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
-          },
-          "db": {
-            "url": null,
-            "status": "unresolved",
-            "provenance": "releaseHistory.placeholder_seed"
-          }
-        },
-        {
-          "entity_slug": "blackpink",
-          "release_date": "2018-08-22",
-          "stream": "song",
-          "service_type": "youtube_mv",
-          "source": {
-            "url": "https://www.youtube.com/watch?v=IHNzOHi8sJs",
-            "status": "manual_override",
-            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
-          },
-          "db": {
-            "url": null,
-            "status": "unresolved",
-            "provenance": "releaseHistory.placeholder_seed"
-          }
-        }
-      ],
-      "clean": false
+      "mismatched_release_services_count": 0,
+      "mismatches": [],
+      "clean": true
     },
     "review_required_counts": {
       "source_review_type_counts": {
@@ -563,25 +210,33 @@
       },
       "db_review_type_counts": {
         "entity_onboarding": 3,
-        "mv_candidate": 39,
+        "mv_candidate": 1616,
         "upcoming_signal": 64
+      },
+      "source_release_scope_review_type_counts": {
+        "mv_candidate": 1616
+      },
+      "db_release_scope_review_type_counts": {
+        "mv_candidate": 1616
       },
       "source_youtube_mv_status_counts": {
         "unresolved": 1614,
-        "manual_override": 132,
+        "manual_override": 133,
         "relation_match": 21,
         "needs_review": 2,
         "no_mv": 1
       },
       "db_youtube_mv_status_counts": {
-        "unresolved": 1742,
-        "manual_override": 26,
-        "relation_match": 1,
-        "needs_review": 2
+        "unresolved": 1614,
+        "manual_override": 133,
+        "relation_match": 21,
+        "needs_review": 2,
+        "no_mv": 1
       },
-      "review_type_counts_match": false,
-      "youtube_mv_status_counts_match": false,
-      "clean": false
+      "review_type_counts_match": true,
+      "release_scope_review_type_counts_match": true,
+      "youtube_mv_status_counts_match": true,
+      "clean": true
     }
   }
 }

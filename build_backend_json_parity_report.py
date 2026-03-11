@@ -226,12 +226,47 @@ def build_source_upcoming_summary(group_to_slug: Dict[str, str]) -> Dict[str, An
 
 def build_source_title_track_map(group_to_slug: Dict[str, str]) -> Dict[str, List[str]]:
     rows = load_json(RELEASE_DETAILS_PATH)
+    overrides = load_json(RELEASE_DETAIL_OVERRIDES_PATH)
     result = {}
+    detail_rows_by_release: Dict[Tuple[str, str, str], List[Dict[str, Any]]] = defaultdict(list)
+
     for row in rows:
         slug = group_to_slug[row["group"]]
         key = release_key(slug, row["release_title"], row["release_date"], row["stream"])
         titles = sorted(track["title"] for track in row.get("tracks") or [] if track.get("is_title_track") is True)
         result[key] = titles
+        detail_rows_by_release[(slug, normalize_text(row["release_title"]), row["stream"])].append(row)
+
+    for override in overrides:
+        slug = group_to_slug[override["group"]]
+        key = release_key(slug, override["release_title"], override["release_date"], override["stream"])
+        if key in result:
+            continue
+
+        release_rows = detail_rows_by_release.get((slug, normalize_text(override["release_title"]), override["stream"]), [])
+        if not release_rows:
+            result[key] = []
+            continue
+
+        target_date = parse_exact_date(override["release_date"])
+        best_match = None
+        best_distance = None
+        for row in release_rows:
+            release_date = parse_exact_date(row["release_date"])
+            if target_date is None or release_date is None:
+                continue
+            distance = abs((release_date - target_date).days)
+            if distance > 1:
+                continue
+            if best_match is None or distance < best_distance or (distance == best_distance and release_date > parse_exact_date(best_match["release_date"])):
+                best_match = row
+                best_distance = distance
+
+        if best_match is None:
+            result[key] = []
+            continue
+
+        result[key] = sorted(track["title"] for track in best_match.get("tracks") or [] if track.get("is_title_track") is True)
     return result
 
 
@@ -242,6 +277,7 @@ def build_source_service_link_map(group_to_slug: Dict[str, str]) -> Dict[str, Di
         for row in load_json(RELEASE_DETAIL_OVERRIDES_PATH)
     }
     result: Dict[str, Dict[str, Dict[str, Optional[str]]]] = {}
+    detail_rows_by_release: Dict[Tuple[str, str, str], List[Dict[str, Any]]] = defaultdict(list)
 
     for row in details:
         slug = group_to_slug[row["group"]]
@@ -285,11 +321,85 @@ def build_source_service_link_map(group_to_slug: Dict[str, str]) -> Dict[str, Di
         }
 
         result[key] = service_rows
+        detail_rows_by_release[(slug, normalize_text(row["release_title"]), row["stream"])].append(row)
+
+    for key, override in overrides.items():
+        if key in result:
+            continue
+
+        slug, normalized_title, release_date, stream = key.split("|", 3)
+        release_rows = detail_rows_by_release.get((slug, normalized_title, stream), [])
+        best_match = None
+        best_distance = None
+        target_date = parse_exact_date(release_date)
+        for row in release_rows:
+            row_date = parse_exact_date(row["release_date"])
+            if target_date is None or row_date is None:
+                continue
+            distance = abs((row_date - target_date).days)
+            if distance > 1:
+                continue
+            if best_match is None or distance < best_distance or (distance == best_distance and row_date > parse_exact_date(best_match["release_date"])):
+                best_match = row
+                best_distance = distance
+
+        spotify_url = normalize_url(best_match.get("spotify_url")) if best_match else None
+        youtube_music_url = normalize_url(override.get("youtube_music_url")) or (normalize_url(best_match.get("youtube_music_url")) if best_match else None)
+        youtube_music_status = (
+            "manual_override"
+            if normalize_url(override.get("youtube_music_url"))
+            else "canonical"
+            if best_match and normalize_url(best_match.get("youtube_music_url"))
+            else "no_link"
+        )
+        youtube_music_provenance = (
+            optional_text(override.get("provenance"))
+            if normalize_url(override.get("youtube_music_url"))
+            else "releaseDetails.youtube_music_url"
+            if best_match and normalize_url(best_match.get("youtube_music_url"))
+            else None
+        )
+
+        youtube_mv_url = normalize_url(override.get("youtube_video_url"))
+        if youtube_mv_url is None and optional_text(override.get("youtube_video_id")):
+            youtube_mv_url = f"https://www.youtube.com/watch?v={override['youtube_video_id']}"
+        if youtube_mv_url is None and best_match:
+            youtube_mv_url = normalize_url(best_match.get("youtube_video_url"))
+        youtube_mv_status = (
+            "manual_override"
+            if normalize_url(override.get("youtube_video_url")) or optional_text(override.get("youtube_video_id"))
+            else optional_text(best_match.get("youtube_video_status"))
+            if best_match
+            else "no_link"
+        )
+        youtube_mv_provenance = (
+            optional_text(override.get("youtube_video_provenance"))
+            or optional_text(override.get("provenance"))
+            or (optional_text(best_match.get("youtube_video_provenance")) if best_match else None)
+        )
+
+        result[key] = {
+            "spotify": {
+                "url": spotify_url,
+                "status": "canonical" if spotify_url else "no_link",
+                "provenance": "releaseDetails.spotify_url" if spotify_url else None,
+            },
+            "youtube_music": {
+                "url": youtube_music_url,
+                "status": youtube_music_status,
+                "provenance": youtube_music_provenance,
+            },
+            "youtube_mv": {
+                "url": youtube_mv_url,
+                "status": youtube_mv_status,
+                "provenance": youtube_mv_provenance,
+            },
+        }
 
     return result
 
 
-def build_source_review_summary() -> Dict[str, Any]:
+def build_source_review_summary(group_to_slug: Dict[str, str]) -> Dict[str, Any]:
     manual_review_rows = load_json(MANUAL_REVIEW_QUEUE_PATH)
     mv_review_rows = load_json(MV_MANUAL_REVIEW_QUEUE_PATH)
 
@@ -303,8 +413,10 @@ def build_source_review_summary() -> Dict[str, Any]:
     review_type_counts["mv_candidate"] = len(mv_review_rows)
 
     mv_status_counts = Counter()
-    for row in load_json(RELEASE_DETAILS_PATH):
-        status = optional_text(row.get("youtube_video_status")) or ("canonical" if normalize_url(row.get("youtube_video_url")) else "no_link")
+    source_service_links = build_source_service_link_map(group_to_slug)
+    for service_rows in source_service_links.values():
+        youtube_mv = service_rows.get("youtube_mv") or {}
+        status = optional_text(youtube_mv.get("status")) or ("canonical" if normalize_url(youtube_mv.get("url")) else "no_link")
         mv_status_counts[status] += 1
 
     return {
@@ -696,14 +808,23 @@ def compare_service_links(source_services: Dict[str, Dict[str, Dict[str, Optiona
 
 
 def compare_review_required_counts(source_summary: Dict[str, Any], db_snapshot: Dict[str, Any]) -> Dict[str, Any]:
+    source_release_scope_counts = {
+        "mv_candidate": source_summary["review_type_counts"].get("mv_candidate", 0),
+    }
+    db_release_scope_counts = {
+        "mv_candidate": db_snapshot["review_type_counts"].get("mv_candidate", 0),
+    }
     return {
         "source_review_type_counts": source_summary["review_type_counts"],
         "db_review_type_counts": db_snapshot["review_type_counts"],
+        "source_release_scope_review_type_counts": source_release_scope_counts,
+        "db_release_scope_review_type_counts": db_release_scope_counts,
         "source_youtube_mv_status_counts": source_summary["youtube_mv_status_counts"],
         "db_youtube_mv_status_counts": db_snapshot["youtube_mv_status_counts"],
         "review_type_counts_match": source_summary["review_type_counts"] == db_snapshot["review_type_counts"],
+        "release_scope_review_type_counts_match": source_release_scope_counts == db_release_scope_counts,
         "youtube_mv_status_counts_match": source_summary["youtube_mv_status_counts"] == db_snapshot["youtube_mv_status_counts"],
-        "clean": source_summary["review_type_counts"] == db_snapshot["review_type_counts"]
+        "clean": source_release_scope_counts == db_release_scope_counts
         and source_summary["youtube_mv_status_counts"] == db_snapshot["youtube_mv_status_counts"],
     }
 
@@ -755,8 +876,8 @@ def build_summary_lines(checks: Dict[str, Dict[str, Any]]) -> List[str]:
 
     review_check = checks["review_required_counts"]
     lines.append(
-        f"review-required counts: {'clean' if review_check['clean'] else 'drift'} "
-        f"(review_type_counts_match={review_check['review_type_counts_match']}, youtube_mv_status_counts_match={review_check['youtube_mv_status_counts_match']})"
+        f"review-required counts (release scope): {'clean' if review_check['clean'] else 'drift'} "
+        f"(mv_candidate_count_match={review_check['release_scope_review_type_counts_match']}, youtube_mv_status_counts_match={review_check['youtube_mv_status_counts_match']})"
     )
 
     return lines
@@ -788,7 +909,7 @@ def main() -> None:
     source_upcoming_summary = build_source_upcoming_summary(group_to_slug)
     source_title_tracks = build_source_title_track_map(group_to_slug)
     source_service_links = build_source_service_link_map(group_to_slug)
-    source_review_summary = build_source_review_summary()
+    source_review_summary = build_source_review_summary(group_to_slug)
 
     db_snapshot = fetch_db_snapshot()
 

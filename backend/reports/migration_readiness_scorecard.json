@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T16:33:35.178Z",
+  "generated_at": "2026-03-11T16:43:58.360Z",
   "report_bundle": {
     "generated_at": "2026-03-11T16:14:23.510Z",
     "bundle_id": "post-sync-verification-339f67a6e124",
@@ -177,9 +177,9 @@
   },
   "overall": {
     "status": "fail",
-    "score_ratio": 0.7551,
-    "score_percent": 75.5,
-    "weighted_points": 75.51,
+    "score_ratio": 0.8751,
+    "score_percent": 87.5,
+    "weighted_points": 87.51,
     "total_weight": 100,
     "blocker_categories": [
       {
@@ -188,13 +188,6 @@
         "blocker_reasons": [
           "stage_gate:shadow_to_web_cutover=fail",
           "stage_gate:web_cutover_to_json_demotion=fail"
-        ]
-      },
-      {
-        "key": "backend_deploy_parity",
-        "label": "Backend deploy parity",
-        "blocker_reasons": [
-          "parity_clean=false (latest_verified_release_selection drift=0)"
         ]
       },
       {
@@ -331,25 +324,23 @@
       "label": "Backend deploy parity",
       "weight": 20,
       "blocker": true,
-      "status": "fail",
-      "score_ratio": 0.4,
-      "score_percent": 40,
-      "weighted_points": 8,
-      "blocker_reasons": [
-        "parity_clean=false (latest_verified_release_selection drift=0)"
-      ],
+      "status": "pass",
+      "score_ratio": 1,
+      "score_percent": 100,
+      "weighted_points": 20,
+      "blocker_reasons": [],
       "summary_lines": [
         "entity alias/search coverage: clean (mismatched entities=0)",
         "official links: clean (mismatched entities=0)",
-        "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
+        "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
         "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
         "upcoming counts / nearest: clean (month bucket mismatches=0)",
-        "title-track / double-title: drift (mismatched releases=1120)",
-        "YouTube Music / MV service-link state: drift (mismatched releases=165)",
-        "review-required counts: drift (review_type_counts_match=False, youtube_mv_status_counts_match=False)"
+        "title-track / double-title: clean (mismatched releases=0)",
+        "YouTube Music / MV service-link state: clean (mismatched releases=0)",
+        "review-required counts (release scope): clean (mv_candidate_count_match=True, youtube_mv_status_counts_match=True)"
       ],
       "evidence": {
-        "parity_clean": false,
+        "parity_clean": true,
         "fixture_registry_surfaces": [
           "calendar_month",
           "entity_detail",
@@ -684,9 +675,9 @@
     }
   ],
   "summary_lines": [
-    "overall readiness: fail (75.5/100)",
+    "overall readiness: fail (87.5/100)",
     "Backend runtime health: fail (70/100) [BLOCKER] - stage_gate:shadow_to_web_cutover=fail",
-    "Backend deploy parity: fail (40/100) [BLOCKER] - parity_clean=false (latest_verified_release_selection drift=0)",
+    "Backend deploy parity: pass (100/100) - no blocker reason",
     "Web backend-only stability: pass (100/100) - no blocker reason",
     "Mobile runtime mode: pass (100/100) - no blocker reason",
     "Catalog completeness: fail (75.1/100) [BLOCKER] - title_track_resolved overall=67.9 pre_2024=65.2",
