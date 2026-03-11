@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-11T09:17:40.030Z",
+  "generated_at": "2026-03-11T16:15:22.441Z",
   "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-11T09:16:25.280Z",
-    "bundle_id": "post-sync-verification-57fe974c438e",
+    "generated_at": "2026-03-11T16:14:23.510Z",
+    "bundle_id": "post-sync-verification-339f67a6e124",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -25,11 +25,11 @@
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-11T07:53:57.809Z"
+        "generated_at": "2026-03-11T16:14:21.898Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
-        "generated_at": "2026-03-10T00:00:00.000Z"
+        "generated_at": "2026-03-11T00:00:00.000Z"
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
@@ -47,7 +47,7 @@
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-11T08:30:28.469Z",
+        "generated_at": "2026-03-11T16:14:23.247Z",
         "primary_path_key": "daily_upcoming"
       },
       "service_link_gap_queues": {
@@ -65,10 +65,21 @@
         "generated_at": "2026-03-11T09:16:24.924Z",
         "entities": 117,
         "field_rows": 324
+      },
+      "trusted_upcoming_notification_summary": {
+        "path": "reports/trusted_upcoming_notification_event_summary.json",
+        "generated_at": "2026-03-11T12:38:47.563Z",
+        "emitted": 0
+      },
+      "mobile_push_delivery_summary": {
+        "path": "reports/mobile_push_delivery_summary.json",
+        "generated_at": null,
+        "sent": null,
+        "failed": null
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-57fe974c438e",
+      "bundle id: post-sync-verification-339f67a6e124",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -76,9 +87,9 @@
   },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": "post-sync-verification-57fe974c438e",
+    "expected_bundle_id": "post-sync-verification-339f67a6e124",
     "observed": {
-      "parity_bundle": "post-sync-verification-57fe974c438e",
+      "parity_bundle": "post-sync-verification-339f67a6e124",
       "shadow_bundle": null,
       "runtime_gate_bundle": null,
       "historical_coverage_generated_at": null,
@@ -91,16 +102,16 @@
     "exists": true,
     "path": "backend/reports/backend_json_parity_report.json",
     "clean": false,
-    "generated_at": "2026-03-11T09:16:27.590969+00:00",
-    "bundle_id": "post-sync-verification-57fe974c438e",
+    "generated_at": "2026-03-11T16:15:16.837750+00:00",
+    "bundle_id": "post-sync-verification-339f67a6e124",
     "summary_lines": [
       "entity alias/search coverage: clean (mismatched entities=0)",
       "official links: clean (mismatched entities=0)",
       "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
       "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
       "upcoming counts / nearest: clean (month bucket mismatches=0)",
-      "title-track / double-title: drift (mismatched releases=1060)",
-      "YouTube Music / MV service-link state: drift (mismatched releases=124)",
+      "title-track / double-title: drift (mismatched releases=1120)",
+      "YouTube Music / MV service-link state: drift (mismatched releases=165)",
       "review-required counts: drift (review_type_counts_match=False, youtube_mv_status_counts_match=False)"
     ]
   },
@@ -239,8 +250,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-ee7cda50-519c-494f-ac3d-b209658531e7",
-      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-ee7cda50-519c-494f-ac3d-b209658531e7"
+      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-6014e36a-1f37-47e4-ace9-8dcab656e848",
+      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-6014e36a-1f37-47e4-ace9-8dcab656e848"
     },
     {
       "surface": "search",
@@ -372,8 +383,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-46f1c547-8967-4dc5-a1b1-933f35ecfdf1",
-      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-46f1c547-8967-4dc5-a1b1-933f35ecfdf1"
+      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-0973058e-3c39-4d7f-b068-d0b5e63d8b83",
+      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-0973058e-3c39-4d7f-b068-d0b5e63d8b83"
     },
     {
       "surface": "search",
@@ -505,8 +516,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-4d0fab66-295d-4f65-a361-ae68573c810e",
-      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-4d0fab66-295d-4f65-a361-ae68573c810e"
+      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-99066b6b-174c-41c4-8195-356705c4b56f",
+      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-99066b6b-174c-41c4-8195-356705c4b56f"
     },
     {
       "surface": "search",
@@ -587,8 +598,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-revive-2b-a92dbc6a-f737-4330-9ca3-79674896cc08",
-      "response_request_id": "shadow--v1-search-q-revive-2b-a92dbc6a-f737-4330-9ca3-79674896cc08"
+      "request_id_sent": "shadow--v1-search-q-revive-2b-1c1de7b9-ccb2-4a6d-bae6-bb8c3eaa1fe7",
+      "response_request_id": "shadow--v1-search-q-revive-2b-1c1de7b9-ccb2-4a6d-bae6-bb8c3eaa1fe7"
     },
     {
       "surface": "search",
@@ -669,8 +680,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-2a282706-1be6-43fa-86b8-495ecb3cb268",
-      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-2a282706-1be6-43fa-86b8-495ecb3cb268"
+      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-bf6666ae-11a6-4f28-b6a2-4439d5938926",
+      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-bf6666ae-11a6-4f28-b6a2-4439d5938926"
     },
     {
       "surface": "entity_detail",
@@ -734,22 +745,7 @@
           "watch_reason": null,
           "tracking_status": "watch_only"
         },
-        "next_upcoming": {
-          "upcoming_signal_id": "yena::2026-03-11::love catcher",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "scheduled_date": "2026-03-11",
-          "scheduled_month": "2026-03",
-          "date_precision": "exact",
-          "date_status": "confirmed",
-          "release_format": "ep",
-          "confidence_score": 0.84,
-          "latest_seen_at": "Mon, 23 Feb 2026 14:58:00 +0900",
-          "source_type": "news_rss",
-          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
-          "source_domain": "starnewskorea.com",
-          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-          "source_count": 1
-        },
+        "next_upcoming": null,
         "latest_release": {
           "release_id": "YENA::STAR!::2025-11-26::song",
           "release_title": "STAR!",
@@ -848,22 +844,7 @@
           "watch_reason": "manual_watch",
           "tracking_status": "watch_only"
         },
-        "next_upcoming": {
-          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "scheduled_date": "2026-03-11",
-          "scheduled_month": "2026-03",
-          "date_precision": "exact",
-          "date_status": "confirmed",
-          "release_format": "ep",
-          "confidence_score": 0.84,
-          "latest_seen_at": "2026-02-23T05:58:00+00:00",
-          "source_type": "news_rss",
-          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
-          "source_domain": "starnewskorea.com",
-          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-          "source_count": 1
-        },
+        "next_upcoming": null,
         "latest_release": {
           "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
           "release_title": "STAR!",
@@ -959,8 +940,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-yena-12320bce-4f24-456f-85c0-9d4f437d4b6a",
-      "response_request_id": "shadow--v1-entities-yena-12320bce-4f24-456f-85c0-9d4f437d4b6a"
+      "request_id_sent": "shadow--v1-entities-yena-463c68f7-8af4-483e-b5df-4dbb2b47742e",
+      "response_request_id": "shadow--v1-entities-yena-463c68f7-8af4-483e-b5df-4dbb2b47742e"
     },
     {
       "surface": "entity_detail",
@@ -1634,8 +1615,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-blackpink-07fe35c1-d8f4-4841-a578-c7c71e1ff2f4",
-      "response_request_id": "shadow--v1-entities-blackpink-07fe35c1-d8f4-4841-a578-c7c71e1ff2f4"
+      "request_id_sent": "shadow--v1-entities-blackpink-1f5afa2e-cb1a-4875-9015-ea759d848fd6",
+      "response_request_id": "shadow--v1-entities-blackpink-1f5afa2e-cb1a-4875-9015-ea759d848fd6"
     },
     {
       "surface": "entity_detail",
@@ -1940,8 +1921,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-and-team-a427af9a-2e9b-4be2-9eee-9286b1a0d8c6",
-      "response_request_id": "shadow--v1-entities-and-team-a427af9a-2e9b-4be2-9eee-9286b1a0d8c6"
+      "request_id_sent": "shadow--v1-entities-and-team-545f8e9f-6de1-42dd-862b-e74edc877b68",
+      "response_request_id": "shadow--v1-entities-and-team-545f8e9f-6de1-42dd-862b-e74edc877b68"
     },
     {
       "surface": "entity_detail",
@@ -2063,8 +2044,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-allday-project-0560043c-4413-4803-b02c-5b24dc8151f9",
-      "response_request_id": "shadow--v1-entities-allday-project-0560043c-4413-4803-b02c-5b24dc8151f9"
+      "request_id_sent": "shadow--v1-entities-allday-project-597ec65c-4452-4f29-8396-26b955ed2aa4",
+      "response_request_id": "shadow--v1-entities-allday-project-597ec65c-4452-4f29-8396-26b955ed2aa4"
     },
     {
       "surface": "release_detail",
@@ -2193,10 +2174,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-ba09bd93-657a-4309-8245-03ffa487c683",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-ba09bd93-657a-4309-8245-03ffa487c683",
-      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-e26340a4-f7a6-43d5-869e-ffb4251a6e5b",
-      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-e26340a4-f7a6-43d5-869e-ffb4251a6e5b"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-ef3138b9-b0d0-4bf0-aa0e-ecb2a640a70b",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-ef3138b9-b0d0-4bf0-aa0e-ecb2a640a70b",
+      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-1783fb3d-6cf8-4158-b5b0-eba4fff39ead",
+      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-1783fb3d-6cf8-4158-b5b0-eba4fff39ead"
     },
     {
       "surface": "release_detail",
@@ -2641,10 +2622,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-ba8a71f4-4df2-473b-8058-dbcdfe93ac36",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-ba8a71f4-4df2-473b-8058-dbcdfe93ac36",
-      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-4fd6c10b-ab2e-4f59-bfb7-b20d58919f93",
-      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-4fd6c10b-ab2e-4f59-bfb7-b20d58919f93"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-4177219f-7485-47a8-b705-bdf42cd58163",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-4177219f-7485-47a8-b705-bdf42cd58163",
+      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-afdc6631-420a-4cf5-b0be-88fa7cb6d236",
+      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-afdc6631-420a-4cf5-b0be-88fa7cb6d236"
     },
     {
       "surface": "release_detail",
@@ -2878,10 +2859,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-48bee426-f691-422b-83fc-fd48ba19bfd8",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-48bee426-f691-422b-83fc-fd48ba19bfd8",
-      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-978ac683-1cc8-4a7b-adf3-c5a26eb3396d",
-      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-978ac683-1cc8-4a7b-adf3-c5a26eb3396d"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-f2866422-ef37-4411-95cf-1990485361cb",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-f2866422-ef37-4411-95cf-1990485361cb",
+      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-157672e7-53ea-4e54-9ff2-049810973a1d",
+      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-157672e7-53ea-4e54-9ff2-049810973a1d"
     },
     {
       "surface": "calendar_month",
@@ -2898,21 +2879,21 @@
           "month_only_upcoming_count": 4
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "yena::2026-03-11::love catcher",
-          "entity_slug": "yena",
-          "display_name": "YENA",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "scheduled_date": "2026-03-11",
+          "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
+          "entity_slug": "p1harmony",
+          "display_name": "P1Harmony",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "scheduled_date": "2026-03-12",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84,
+          "confidence_score": 0.82,
           "release_format": "ep",
-          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
           "source_type": "news_rss",
-          "source_domain": "starnewskorea.com",
-          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-          "source_count": 1
+          "source_domain": "news.google.com",
+          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "source_count": 4
         },
         "days": [
           {
@@ -3270,21 +3251,21 @@
           "month_only_upcoming_count": 4
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
-          "entity_slug": "yena",
-          "display_name": "YENA",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "scheduled_date": "2026-03-11",
+          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
+          "entity_slug": "p1harmony",
+          "display_name": "P1Harmony",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "scheduled_date": "2026-03-12",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84,
+          "confidence_score": 0.82,
           "release_format": "ep",
-          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
           "source_type": "news_rss",
-          "source_domain": "starnewskorea.com",
-          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-          "source_count": 1
+          "source_domain": "news.google.com",
+          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "source_count": 4
         },
         "days": [
           {
@@ -3640,8 +3621,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-d5ba70c8-a9ee-4bdd-91e7-387c6c029a3b",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-03-d5ba70c8-a9ee-4bdd-91e7-387c6c029a3b"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-942dc744-a3d4-49d7-a2de-80958d82d168",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-03-942dc744-a3d4-49d7-a2de-80958d82d168"
     },
     {
       "surface": "calendar_month",
@@ -3658,21 +3639,21 @@
           "month_only_upcoming_count": 10
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "yena::2026-03-11::love catcher",
-          "entity_slug": "yena",
-          "display_name": "YENA",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "scheduled_date": "2026-03-11",
+          "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
+          "entity_slug": "p1harmony",
+          "display_name": "P1Harmony",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "scheduled_date": "2026-03-12",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84,
+          "confidence_score": 0.82,
           "release_format": "ep",
-          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
           "source_type": "news_rss",
-          "source_domain": "starnewskorea.com",
-          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-          "source_count": 1
+          "source_domain": "news.google.com",
+          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "source_count": 4
         },
         "days": [
           {
@@ -4099,21 +4080,21 @@
           "month_only_upcoming_count": 10
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
-          "entity_slug": "yena",
-          "display_name": "YENA",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "scheduled_date": "2026-03-11",
+          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
+          "entity_slug": "p1harmony",
+          "display_name": "P1Harmony",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "scheduled_date": "2026-03-12",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84,
+          "confidence_score": 0.82,
           "release_format": "ep",
-          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
           "source_type": "news_rss",
-          "source_domain": "starnewskorea.com",
-          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-          "source_count": 1
+          "source_domain": "news.google.com",
+          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "source_count": 4
         },
         "days": [
           {
@@ -4544,8 +4525,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-dc59dc36-2995-4182-920d-fc775898caab",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-04-dc59dc36-2995-4182-920d-fc775898caab"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-fec33bde-62d1-4a3f-9209-06cda1279334",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-04-fec33bde-62d1-4a3f-9209-06cda1279334"
     },
     {
       "surface": "calendar_month",
@@ -4562,21 +4543,21 @@
           "month_only_upcoming_count": 0
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "yena::2026-03-11::love catcher",
-          "entity_slug": "yena",
-          "display_name": "YENA",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "scheduled_date": "2026-03-11",
+          "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
+          "entity_slug": "p1harmony",
+          "display_name": "P1Harmony",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "scheduled_date": "2026-03-12",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84,
+          "confidence_score": 0.82,
           "release_format": "ep",
-          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
           "source_type": "news_rss",
-          "source_domain": "starnewskorea.com",
-          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-          "source_count": 1
+          "source_domain": "news.google.com",
+          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "source_count": 4
         },
         "days": [
           {
@@ -4934,21 +4915,21 @@
           "month_only_upcoming_count": 0
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
-          "entity_slug": "yena",
-          "display_name": "YENA",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "scheduled_date": "2026-03-11",
+          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
+          "entity_slug": "p1harmony",
+          "display_name": "P1Harmony",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "scheduled_date": "2026-03-12",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84,
+          "confidence_score": 0.82,
           "release_format": "ep",
-          "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
           "source_type": "news_rss",
-          "source_domain": "starnewskorea.com",
-          "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-          "source_count": 1
+          "source_domain": "news.google.com",
+          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "source_count": 4
         },
         "days": [
           {
@@ -5300,8 +5281,8 @@
         "scheduled_list": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-3ac17eba-663a-4774-a286-342f04bc234c",
-      "response_request_id": "shadow--v1-calendar-month-month-2025-10-3ac17eba-663a-4774-a286-342f04bc234c"
+      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-fa6c5bfe-021b-4403-84f5-830297bdfb9d",
+      "response_request_id": "shadow--v1-calendar-month-month-2025-10-fa6c5bfe-021b-4403-84f5-830297bdfb9d"
     },
     {
       "surface": "radar",
@@ -5313,28 +5294,17 @@
       "mismatches": [],
       "expected_snapshot": {
         "featured_upcoming": {
-          "upcoming_signal_id": "yena::2026-03-11::love catcher",
-          "entity_slug": "yena",
-          "display_name": "YENA",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "scheduled_date": "2026-03-11",
+          "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
+          "entity_slug": "p1harmony",
+          "display_name": "P1Harmony",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "scheduled_date": "2026-03-12",
           "date_precision": "exact",
           "date_status": "confirmed",
-          "confidence_score": 0.84,
+          "confidence_score": 0.82,
           "release_format": "ep"
         },
         "weekly_upcoming": [
-          {
-            "upcoming_signal_id": "yena::2026-03-11::love catcher",
-            "entity_slug": "yena",
-            "display_name": "YENA",
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "confidence_score": 0.84,
-            "release_format": "ep"
-          },
           {
             "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
             "entity_slug": "p1harmony",
@@ -5514,7 +5484,7 @@
               "stream": "song",
               "release_kind": "single"
             },
-            "gap_days": 1006,
+            "gap_days": 1007,
             "has_upcoming_signal": true,
             "latest_signal": {
               "upcoming_signal_id": "bts::undated::arirang",
@@ -5538,7 +5508,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 517,
+            "gap_days": 518,
             "has_upcoming_signal": true,
             "latest_signal": {
               "upcoming_signal_id": "ab6ix::2026-03::future month reference 2026 03 unveils",
@@ -5562,7 +5532,7 @@
               "stream": "song",
               "release_kind": "single"
             },
-            "gap_days": 1729,
+            "gap_days": 1730,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5576,7 +5546,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 1335,
+            "gap_days": 1336,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5590,7 +5560,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 1247,
+            "gap_days": 1248,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5604,7 +5574,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 835,
+            "gap_days": 836,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5618,7 +5588,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 742,
+            "gap_days": 743,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5632,7 +5602,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 639,
+            "gap_days": 640,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5646,7 +5616,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 630,
+            "gap_days": 631,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5660,7 +5630,7 @@
               "stream": "song",
               "release_kind": "single"
             },
-            "gap_days": 628,
+            "gap_days": 629,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5674,7 +5644,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 625,
+            "gap_days": 626,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -5688,7 +5658,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 610,
+            "gap_days": 611,
             "has_upcoming_signal": false,
             "latest_signal": null
           }
@@ -5842,28 +5812,17 @@
       },
       "actual_snapshot": {
         "featured_upcoming": {
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
           "date_status": "confirmed",
-          "entity_slug": "yena",
-          "display_name": "YENA",
+          "entity_slug": "p1harmony",
+          "display_name": "P1Harmony",
           "date_precision": "exact",
           "release_format": "ep",
-          "scheduled_date": "2026-03-11",
-          "confidence_score": 0.84,
-          "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
+          "scheduled_date": "2026-03-12",
+          "confidence_score": 0.82,
+          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735"
         },
         "weekly_upcoming": [
-          {
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "date_status": "confirmed",
-            "entity_slug": "yena",
-            "display_name": "YENA",
-            "date_precision": "exact",
-            "release_format": "ep",
-            "scheduled_date": "2026-03-11",
-            "confidence_score": 0.84,
-            "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
-          },
           {
             "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
             "date_status": "confirmed",
@@ -5925,17 +5884,6 @@
           },
           {
             "kind": "verified_release",
-            "stream": "song",
-            "release_id": "6e323520-f064-5ba5-bf87-d56898edb48e",
-            "entity_slug": "chung-ha",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
-            "display_name": "CHUNG HA",
-            "release_date": "2026-02-09",
-            "release_kind": "single",
-            "release_title": "Save me"
-          },
-          {
-            "kind": "verified_release",
             "stream": "album",
             "release_id": "6a1db562-83b4-5e9d-a00f-6ea0ebfb6680",
             "entity_slug": "h1-key",
@@ -5970,17 +5918,6 @@
           {
             "kind": "verified_release",
             "stream": "song",
-            "release_id": "78bb2629-2cd8-5f57-aaf1-a029b271ae8f",
-            "entity_slug": "ive",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
-            "display_name": "IVE",
-            "release_date": "2026-02-09",
-            "release_kind": "single",
-            "release_title": "BANG BANG"
-          },
-          {
-            "kind": "verified_release",
-            "stream": "song",
             "release_id": "179b842f-9bd1-56ca-aaf6-b33e3f87159b",
             "entity_slug": "nct-wish",
             "occurred_at": "2026-03-08T23:52:52.993Z",
@@ -6010,11 +5947,33 @@
             "release_date": "2026-02-27",
             "release_kind": "single",
             "release_title": "[RESCENE X ???]"
+          },
+          {
+            "kind": "verified_release",
+            "stream": "album",
+            "release_id": "7c27ebee-3b8e-56c4-8b4c-b58f040b16b3",
+            "entity_slug": "stayc",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "display_name": "STAYC",
+            "release_date": "2026-02-11",
+            "release_kind": "album",
+            "release_title": "STAY ALIVE"
+          },
+          {
+            "kind": "verified_release",
+            "stream": "song",
+            "release_id": "1adfe761-7983-5747-8fdd-282e23684f26",
+            "entity_slug": "trendz",
+            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "display_name": "TRENDZ",
+            "release_date": "2026-02-13",
+            "release_kind": "single",
+            "release_title": "Kart Racer"
           }
         ],
         "long_gap": [
           {
-            "gap_days": 1006,
+            "gap_days": 1007,
             "entity_slug": "bts",
             "display_name": "BTS",
             "watch_reason": "long_gap",
@@ -6039,7 +5998,7 @@
             "has_upcoming_signal": true
           },
           {
-            "gap_days": 517,
+            "gap_days": 518,
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "watch_reason": "long_gap",
@@ -6064,7 +6023,7 @@
             "has_upcoming_signal": true
           },
           {
-            "gap_days": 1729,
+            "gap_days": 1730,
             "entity_slug": "wayv",
             "display_name": "WayV",
             "watch_reason": "long_gap",
@@ -6079,7 +6038,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 1335,
+            "gap_days": 1336,
             "entity_slug": "just-b",
             "display_name": "JUST B",
             "watch_reason": "long_gap",
@@ -6094,7 +6053,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 1247,
+            "gap_days": 1248,
             "entity_slug": "mamamoo",
             "display_name": "MAMAMOO",
             "watch_reason": "long_gap",
@@ -6109,7 +6068,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 835,
+            "gap_days": 836,
             "entity_slug": "atbo",
             "display_name": "ATBO",
             "watch_reason": "long_gap",
@@ -6124,7 +6083,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 742,
+            "gap_days": 743,
             "entity_slug": "nomad",
             "display_name": "NOMAD",
             "watch_reason": "long_gap",
@@ -6139,7 +6098,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 639,
+            "gap_days": 640,
             "entity_slug": "cignature",
             "display_name": "cignature",
             "watch_reason": "long_gap",
@@ -6154,7 +6113,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 630,
+            "gap_days": 631,
             "entity_slug": "blitzers",
             "display_name": "BLITZERS",
             "watch_reason": "long_gap",
@@ -6169,7 +6128,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 628,
+            "gap_days": 629,
             "entity_slug": "newjeans",
             "display_name": "NewJeans",
             "watch_reason": "long_gap",
@@ -6184,7 +6143,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 625,
+            "gap_days": 626,
             "entity_slug": "red-velvet",
             "display_name": "Red Velvet",
             "watch_reason": "long_gap",
@@ -6199,7 +6158,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 610,
+            "gap_days": 611,
             "entity_slug": "weeekly",
             "display_name": "Weeekly",
             "watch_reason": "long_gap",
@@ -6370,8 +6329,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-radar-2a98a698-534e-4af8-a95a-b4433ca31953",
-      "response_request_id": "shadow--v1-radar-2a98a698-534e-4af8-a95a-b4433ca31953"
+      "request_id_sent": "shadow--v1-radar-263fb5bb-d7ff-4b58-a356-2ae520162e0f",
+      "response_request_id": "shadow--v1-radar-263fb5bb-d7ff-4b58-a356-2ae520162e0f"
     }
   ]
 }

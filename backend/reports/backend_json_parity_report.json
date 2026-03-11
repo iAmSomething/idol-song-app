@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-11T09:16:27.590969+00:00",
+  "generated_at": "2026-03-11T16:15:16.837750+00:00",
   "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-11T09:16:25.280Z",
-    "bundle_id": "post-sync-verification-57fe974c438e",
+    "generated_at": "2026-03-11T16:14:23.510Z",
+    "bundle_id": "post-sync-verification-339f67a6e124",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -25,11 +25,11 @@
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-11T07:53:57.809Z"
+        "generated_at": "2026-03-11T16:14:21.898Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
-        "generated_at": "2026-03-10T00:00:00.000Z"
+        "generated_at": "2026-03-11T00:00:00.000Z"
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
@@ -47,7 +47,7 @@
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-11T08:30:28.469Z",
+        "generated_at": "2026-03-11T16:14:23.247Z",
         "primary_path_key": "daily_upcoming"
       },
       "service_link_gap_queues": {
@@ -65,10 +65,21 @@
         "generated_at": "2026-03-11T09:16:24.924Z",
         "entities": 117,
         "field_rows": 324
+      },
+      "trusted_upcoming_notification_summary": {
+        "path": "reports/trusted_upcoming_notification_event_summary.json",
+        "generated_at": "2026-03-11T12:38:47.563Z",
+        "emitted": 0
+      },
+      "mobile_push_delivery_summary": {
+        "path": "reports/mobile_push_delivery_summary.json",
+        "generated_at": null,
+        "sent": null,
+        "failed": null
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-57fe974c438e",
+      "bundle id: post-sync-verification-339f67a6e124",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -80,8 +91,8 @@
     "YouTube allowlists: drift (role mismatches=10, metadata mismatches=0)",
     "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
     "upcoming counts / nearest: clean (month bucket mismatches=0)",
-    "title-track / double-title: drift (mismatched releases=1060)",
-    "YouTube Music / MV service-link state: drift (mismatched releases=124)",
+    "title-track / double-title: drift (mismatched releases=1120)",
+    "YouTube Music / MV service-link state: drift (mismatched releases=165)",
     "review-required counts: drift (review_type_counts_match=False, youtube_mv_status_counts_match=False)"
   ],
   "source_snapshot_counts": {
@@ -91,7 +102,7 @@
     "upcoming_candidates": 71,
     "watchlist": 108,
     "manual_review_queue": 67,
-    "mv_manual_review_queue": 1657
+    "mv_manual_review_queue": 1616
   },
   "checks": {
     "entity_alias_search_coverage": {
@@ -229,12 +240,12 @@
           "exact": 6,
           "month_only": 14
         },
-        "future_exact_count": 6,
+        "future_exact_count": 5,
         "nearest_exact": {
-          "slug": "yena",
-          "scheduled_date": "2026-03-11",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "confidence": 0.84
+          "slug": "p1harmony",
+          "scheduled_date": "2026-03-12",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "confidence": 0.82
         },
         "month_buckets": {
           "exact": {
@@ -254,12 +265,12 @@
           "unknown": 39,
           "exact": 6
         },
-        "future_exact_count": 6,
+        "future_exact_count": 5,
         "nearest_exact": {
-          "slug": "yena",
-          "scheduled_date": "2026-03-11",
-          "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-          "confidence": 0.84
+          "slug": "p1harmony",
+          "scheduled_date": "2026-03-12",
+          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "confidence": 0.82
         },
         "month_buckets": {
           "exact": {
@@ -281,7 +292,7 @@
       "clean": true
     },
     "title_tracks_and_double_title": {
-      "mismatched_releases_count": 1060,
+      "mismatched_releases_count": 1120,
       "source_double_title_releases": 27,
       "db_double_title_releases": 3,
       "mismatches": [
@@ -379,7 +390,7 @@
       "clean": false
     },
     "release_service_links": {
-      "mismatched_release_services_count": 124,
+      "mismatched_release_services_count": 165,
       "mismatches": [
         {
           "entity_slug": "82major",
@@ -495,37 +506,45 @@
         },
         {
           "entity_slug": "blackpink",
-          "release_date": "2026-02-26",
-          "stream": "album",
-          "service_type": "youtube_music",
-          "source": null,
-          "db": {
-            "url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
-            "status": "manual_override",
-            "provenance": "ytmusicapi exact album search match"
-          }
-        },
-        {
-          "entity_slug": "blackpink",
-          "release_date": "2026-02-26",
-          "stream": "album",
-          "service_type": "youtube_mv",
-          "source": null,
-          "db": {
-            "url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
-            "status": "manual_override",
-            "provenance": "official artist channel watch URL"
-          }
-        },
-        {
-          "entity_slug": "blackpink",
-          "release_date": "2022-07-29",
+          "release_date": "2017-08-08",
           "stream": "song",
           "service_type": "youtube_mv",
           "source": {
-            "url": "https://www.youtube.com/watch?v=GDWX-3kV6do",
-            "status": "relation_match",
-            "provenance": "musicbrainz.release_group_release.url_relation"
+            "url": "https://www.youtube.com/watch?v=bwmSjveL3Lc",
+            "status": "manual_override",
+            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+          },
+          "db": {
+            "url": null,
+            "status": "unresolved",
+            "provenance": "releaseHistory.placeholder_seed"
+          }
+        },
+        {
+          "entity_slug": "blackpink",
+          "release_date": "2022-09-16",
+          "stream": "album",
+          "service_type": "youtube_mv",
+          "source": {
+            "url": "https://www.youtube.com/watch?v=gQlMMD8auMs",
+            "status": "manual_override",
+            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+          },
+          "db": {
+            "url": null,
+            "status": "unresolved",
+            "provenance": "releaseHistory.placeholder_seed"
+          }
+        },
+        {
+          "entity_slug": "blackpink",
+          "release_date": "2018-08-22",
+          "stream": "song",
+          "service_type": "youtube_mv",
+          "source": {
+            "url": "https://www.youtube.com/watch?v=IHNzOHi8sJs",
+            "status": "manual_override",
+            "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
           },
           "db": {
             "url": null,
@@ -540,7 +559,7 @@
       "source_review_type_counts": {
         "upcoming_signal": 64,
         "entity_onboarding": 3,
-        "mv_candidate": 1657
+        "mv_candidate": 1616
       },
       "db_review_type_counts": {
         "entity_onboarding": 3,
@@ -548,8 +567,8 @@
         "upcoming_signal": 64
       },
       "source_youtube_mv_status_counts": {
-        "unresolved": 1655,
-        "manual_override": 91,
+        "unresolved": 1614,
+        "manual_override": 132,
         "relation_match": 21,
         "needs_review": 2,
         "no_mv": 1

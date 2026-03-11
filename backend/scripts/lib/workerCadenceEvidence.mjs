@@ -120,11 +120,16 @@ export function buildScheduledEvidenceSummary({
   const normalizedObservedRuns = Number.isInteger(observedScheduledRuns) && observedScheduledRuns > 0 ? observedScheduledRuns : 0;
   const parsedSchedule = parseScheduleExpectation(scheduleExpectation);
   const workflowCreatedAt = toDate(workflowMetadata?.created_at);
+  const workflowUpdatedAt = toDate(workflowMetadata?.updated_at);
   const nowDate = toDate(now);
   const warmupGraceHours = WARMUP_GRACE_HOURS_BY_CADENCE[cadenceLabel] ?? WARMUP_GRACE_HOURS_BY_CADENCE.custom;
+  const scheduleReferenceAt =
+    normalizedObservedRuns === 0 && workflowUpdatedAt && workflowCreatedAt && workflowUpdatedAt > workflowCreatedAt
+      ? workflowUpdatedAt
+      : workflowCreatedAt;
   const firstExpectedRunAt =
-    workflowRegistered && workflowCreatedAt && parsedSchedule
-      ? nextScheduledOccurrenceAfter(workflowCreatedAt, parsedSchedule)
+    workflowRegistered && scheduleReferenceAt && parsedSchedule
+      ? nextScheduledOccurrenceAfter(scheduleReferenceAt, parsedSchedule)
       : null;
   const nextExpectedRunAt =
     workflowRegistered && nowDate && parsedSchedule ? nextScheduledOccurrenceAfter(nowDate, parsedSchedule) : null;
@@ -162,6 +167,7 @@ export function buildScheduledEvidenceSummary({
     cadence_label: cadenceLabel ?? null,
     workflow_created_at: toIsoString(workflowCreatedAt),
     workflow_updated_at: toIsoString(workflowMetadata?.updated_at),
+    schedule_reference_at: toIsoString(scheduleReferenceAt),
     workflow_state: workflowMetadata?.state ?? null,
     workflow_html_url: workflowMetadata?.html_url ?? null,
     parsed_schedule: parsedSchedule,
