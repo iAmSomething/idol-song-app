@@ -585,6 +585,7 @@ export default function SearchTabScreen() {
       <ScreenFeedbackState
         body="검색 대상 팀, 발매, 예정 데이터를 불러오는 중입니다."
         eyebrow="데이터 로딩"
+        loadingLayout="search"
         title="검색"
         variant="loading"
       />

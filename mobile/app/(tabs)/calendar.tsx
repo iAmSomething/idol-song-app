@@ -767,6 +767,7 @@ export default function CalendarTabScreen() {
       <ScreenFeedbackState
         body="현재 월 데이터와 예정 신호를 불러오는 중입니다."
         eyebrow="데이터 로딩"
+        loadingLayout="calendar"
         title="캘린더"
         variant="loading"
       />

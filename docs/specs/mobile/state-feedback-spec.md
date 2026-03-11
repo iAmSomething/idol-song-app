@@ -8,6 +8,13 @@
 - loading 동안 destructive shift 금지
 - 버튼은 disabled 또는 skeleton 대체
 - loading이 길어질 경우 빈 화면처럼 보이지 않게 최소 구조 유지
+- screen-level loading은 surface 문맥을 반영한 skeleton layout을 사용한다.
+  - calendar: month header + summary + day/list rhythm
+  - search: search bar + segment rail + result row rhythm
+  - radar: featured block + feed row rhythm
+  - detail: artwork/header + meta row rhythm
+- skeleton은 soft pulse까지만 허용하고 shimmer sweep는 기본값으로 쓰지 않는다.
+- skeleton은 아주 짧은 fetch에서는 즉시 번쩍이지 않도록 짧은 reveal delay를 둔다.
 
 ## 3. Empty
 - empty는 오류가 아니다.
@@ -26,6 +33,8 @@
 - 기본 문구: `정보를 불러오지 못했습니다.`
 - CTA: `다시 시도`
 - 심각하지 않으면 이전 데이터 유지 가능
+- retry CTA는 primary prominence를 갖되 destructive 톤으로 과장하지 않는다.
+- degraded cache/bundled fallback이 있으면 즉시 구조를 유지하고, 문제 원인은 notice로만 보조한다.
 
 ### 5.2 External Open Error
 - 기본 문구: `앱을 열 수 없습니다.` 또는 `링크를 열 수 없습니다.`
@@ -48,6 +57,7 @@
 - loading: spinner보다 skeleton/disabled 우선
 - partial link absence: 해당 버튼 숨김
 - error: retry CTA 우선, 무의미한 service button 노출 금지
+- retry 버튼은 `busy / disabled / restored` 흐름을 설명 가능한 상태로 유지한다.
 
 ## 9. 서비스 링크 실패
 - canonical URL 실패 시 검색 fallback 재시도 가능

@@ -102,6 +102,14 @@ jest.mock('../features/useActiveDatasetScreen', () => {
   };
 });
 
+jest.mock('../components/launch/LaunchGate', () => {
+  const React = jest.requireActual<typeof import('react')>('react');
+
+  return {
+    LaunchGate: ({ children }: { children?: React.ReactNode }) => React.createElement(React.Fragment, null, children),
+  };
+});
+
 jest.mock('../services/routeResume', () => ({
   consumePendingRouteResume: jest.fn(async () => null),
 }));

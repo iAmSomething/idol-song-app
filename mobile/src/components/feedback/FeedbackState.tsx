@@ -1,9 +1,11 @@
 import React from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Animated, Easing, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 import { useAppTheme, type MobileTheme } from '../../tokens/theme';
 import { MOBILE_COPY } from '../../copy/mobileCopy';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
+import { ActionButton } from '../actions/ActionButton';
 
 type FeedbackTone = 'neutral' | 'error';
 
@@ -16,6 +18,7 @@ type FeedbackAction = {
 type ScreenFeedbackStateProps = {
   body: string;
   eyebrow: string;
+  loadingLayout?: 'generic' | 'calendar' | 'search' | 'radar' | 'detail';
   title: string;
   variant: 'loading' | 'empty' | 'error';
   action?: FeedbackAction;
@@ -34,6 +37,7 @@ export function ScreenFeedbackState({
   action,
   body,
   eyebrow,
+  loadingLayout = 'generic',
   testID,
   title,
   variant,
@@ -42,28 +46,48 @@ export function ScreenFeedbackState({
   const { fontScale } = useWindowDimensions();
   const styles = React.useMemo(() => createStyles(theme), [theme]);
   const titleMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.sectionTitle : MOBILE_TEXT_SCALE_LIMITS.screenTitle;
+  const [showLoadingSkeleton, setShowLoadingSkeleton] = React.useState(variant !== 'loading');
+
+  React.useEffect(() => {
+    if (variant !== 'loading') {
+      setShowLoadingSkeleton(true);
+      return;
+    }
+
+    setShowLoadingSkeleton(false);
+    const timer = setTimeout(() => {
+      setShowLoadingSkeleton(true);
+    }, theme.motion.loadingDelay);
+
+    return () => clearTimeout(timer);
+  }, [theme.motion.loadingDelay, variant]);
 
   return (
     <View style={styles.screenContainer} testID={testID}>
-      {variant === 'loading' ? <ActivityIndicator color={theme.colors.text.brand} /> : null}
       <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.eyebrow}>{eyebrow}</Text>
       <Text accessibilityRole="header" allowFontScaling maxFontSizeMultiplier={titleMultiplier} style={styles.screenTitle}>
         {title}
       </Text>
       <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.body}>{body}</Text>
-      {action ? (
-        <Pressable
+      {variant === 'loading' ? (
+        showLoadingSkeleton ? (
+          <LoadingSkeleton layout={loadingLayout} />
+        ) : (
+          <View style={styles.loadingHoldFrame} testID={testID ? `${testID}-loading-hold` : undefined}>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.loadingHint}>
+              구조를 먼저 고정한 뒤 내용을 채우고 있습니다.
+            </Text>
+          </View>
+        )
+      ) : action ? (
+        <ActionButton
           accessibilityLabel={action.label}
-          accessibilityRole="button"
+          fullWidth={false}
+          label={action.label}
           onPress={action.onPress}
-          style={({ pressed }) => [
-            styles.primaryAction,
-            pressed ? styles.primaryActionPressed : null,
-          ]}
           testID={action.testID}
-        >
-          <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonPrimary} style={styles.primaryActionLabel}>{action.label}</Text>
-        </Pressable>
+          tone={variant === 'error' ? 'primary' : 'secondary'}
+        />
       ) : null}
     </View>
   );
@@ -99,18 +123,13 @@ export function InlineFeedbackNotice({
         {body}
       </Text>
       {action ? (
-        <Pressable
+        <ActionButton
           accessibilityLabel={action.label}
-          accessibilityRole="button"
+          label={action.label}
           onPress={action.onPress}
-          style={({ pressed }) => [
-            styles.secondaryAction,
-            pressed ? styles.secondaryActionPressed : null,
-          ]}
           testID={action.testID}
-        >
-          <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.secondaryActionLabel}>{action.label}</Text>
-        </Pressable>
+          tone={tone === 'error' ? 'primary' : 'secondary'}
+        />
       ) : null}
     </View>
   );
@@ -159,6 +178,60 @@ export function ErrorStateBlock({
   );
 }
 
+function LoadingSkeleton({ layout }: { layout: ScreenFeedbackStateProps['loadingLayout'] }) {
+  const theme = useAppTheme();
+  const reducedMotion = useReducedMotion();
+  const styles = React.useMemo(() => createStyles(theme), [theme]);
+  const pulse = React.useRef(new Animated.Value(reducedMotion ? 1 : 0.72)).current;
+
+  React.useEffect(() => {
+    if (reducedMotion) {
+      pulse.setValue(1);
+      return;
+    }
+
+    const animation = Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulse, {
+          toValue: 1,
+          duration: theme.motion.loadingPulse,
+          easing: Easing.inOut(Easing.quad),
+          useNativeDriver: true,
+        }),
+        Animated.timing(pulse, {
+          toValue: 0.72,
+          duration: theme.motion.loadingPulse,
+          easing: Easing.inOut(Easing.quad),
+          useNativeDriver: true,
+        }),
+      ]),
+    );
+
+    animation.start();
+    return () => animation.stop();
+  }, [pulse, reducedMotion, theme.motion.loadingPulse]);
+
+  const animatedStyle = reducedMotion ? null : { opacity: pulse };
+  const rows =
+    layout === 'calendar'
+      ? [styles.skeletonHero, styles.skeletonGridRow, styles.skeletonGridRow, styles.skeletonListRow]
+      : layout === 'search'
+        ? [styles.skeletonSearchBar, styles.skeletonSegmentRow, styles.skeletonResultRow, styles.skeletonResultRow]
+        : layout === 'radar'
+          ? [styles.skeletonHero, styles.skeletonWideRow, styles.skeletonWideRow, styles.skeletonListRow]
+          : layout === 'detail'
+            ? [styles.skeletonArtwork, styles.skeletonTitleRow, styles.skeletonTitleRowShort, styles.skeletonButtonRow]
+            : [styles.skeletonWideRow, styles.skeletonWideRow, styles.skeletonListRow];
+
+  return (
+    <View style={styles.skeletonFrame} testID={`loading-skeleton-${layout ?? 'generic'}`}>
+      {rows.map((rowStyle, index) => (
+        <Animated.View key={`${layout ?? 'generic'}-${index}`} style={[styles.skeletonBlock, rowStyle, animatedStyle]} />
+      ))}
+    </View>
+  );
+}
+
 function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     screenContainer: {
@@ -182,20 +255,24 @@ function createStyles(theme: MobileTheme) {
       ...theme.typography.body,
       color: theme.colors.text.secondary,
     },
-    primaryAction: {
-      alignSelf: 'flex-start',
-      marginTop: theme.space[4],
-      paddingHorizontal: theme.space[16],
-      paddingVertical: theme.space[12],
-      borderRadius: theme.radius.button,
+    loadingHoldFrame: {
+      width: '100%',
+      paddingTop: theme.space[8],
+    },
+    loadingHint: {
+      ...theme.typography.meta,
+      color: theme.colors.text.tertiary,
+    },
+    skeletonFrame: {
+      width: '100%',
+      gap: theme.space[12],
+      paddingTop: theme.space[8],
+    },
+    skeletonBlock: {
+      borderRadius: theme.radius.card,
       backgroundColor: theme.colors.surface.interactive,
-    },
-    primaryActionPressed: {
-      opacity: 0.84,
-    },
-    primaryActionLabel: {
-      ...theme.typography.buttonPrimary,
-      color: theme.colors.text.primary,
+      borderWidth: 1,
+      borderColor: theme.colors.border.subtle,
     },
     inlineCard: {
       gap: theme.space[8],
@@ -216,19 +293,48 @@ function createStyles(theme: MobileTheme) {
     inlineBodyError: {
       color: theme.colors.text.danger,
     },
-    secondaryAction: {
-      alignSelf: 'flex-start',
-      paddingHorizontal: theme.space[12],
-      paddingVertical: theme.space[8],
+    skeletonHero: {
+      minHeight: 112,
+    },
+    skeletonGridRow: {
+      minHeight: 72,
+    },
+    skeletonListRow: {
+      minHeight: 52,
+    },
+    skeletonSearchBar: {
+      minHeight: 54,
       borderRadius: theme.radius.button,
-      backgroundColor: theme.colors.surface.interactive,
     },
-    secondaryActionPressed: {
-      opacity: 0.84,
+    skeletonSegmentRow: {
+      minHeight: 42,
+      width: '72%',
+      borderRadius: theme.radius.button,
     },
-    secondaryActionLabel: {
-      ...theme.typography.buttonService,
-      color: theme.colors.text.primary,
+    skeletonResultRow: {
+      minHeight: 68,
+    },
+    skeletonWideRow: {
+      minHeight: 84,
+    },
+    skeletonArtwork: {
+      minHeight: 168,
+      borderRadius: theme.radius.sheet,
+    },
+    skeletonTitleRow: {
+      minHeight: 20,
+      width: '76%',
+      borderRadius: theme.radius.chip,
+    },
+    skeletonTitleRowShort: {
+      minHeight: 20,
+      width: '48%',
+      borderRadius: theme.radius.chip,
+    },
+    skeletonButtonRow: {
+      minHeight: 48,
+      width: '64%',
+      borderRadius: theme.radius.button,
     },
   });
 }

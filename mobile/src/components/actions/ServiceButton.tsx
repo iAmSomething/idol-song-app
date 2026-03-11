@@ -10,6 +10,7 @@ import {
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 export type ServiceButtonTone = 'spotify' | 'youtubeMusic' | 'youtubeMv';
 
@@ -37,6 +38,7 @@ function ServiceButtonComponent({
   tone,
 }: ServiceButtonProps) {
   const theme = useAppTheme();
+  const reducedMotion = useReducedMotion();
   const { fontScale } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const resolvedService = service ?? tone ?? 'spotify';
@@ -55,7 +57,7 @@ function ServiceButtonComponent({
       style={({ pressed }) => [
         styles.button,
         styles[`${resolvedService}Button`],
-        pressed && !disabled ? styles.buttonPressed : null,
+        pressed && !disabled ? (reducedMotion ? styles.buttonPressedReducedMotion : styles.buttonPressed) : null,
         disabled ? styles.buttonDisabled : null,
       ]}
       testID={testID}
@@ -110,7 +112,11 @@ function createStyles(theme: MobileTheme) {
       gap: theme.space[8],
     },
     buttonPressed: {
+      transform: [{ scale: 0.985 }],
       opacity: 0.84,
+    },
+    buttonPressedReducedMotion: {
+      opacity: 0.88,
     },
     buttonDisabled: {
       opacity: 0.45,
