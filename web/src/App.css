@@ -2857,6 +2857,14 @@
   line-height: 1.55;
 }
 
+.status-disclosure {
+  gap: 10px;
+}
+
+.team-status-disclosure {
+  margin-top: 16px;
+}
+
 .track-row {
   display: grid;
   gap: 10px;

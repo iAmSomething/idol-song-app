@@ -85,10 +85,10 @@ describe('RN selector spec parity', () => {
     expect(detail?.sourceTimeline).toHaveLength(0);
 
     const disclosure = buildEntitySourceDisclosure(detail!);
-    expect(disclosure?.body).toContain('아티스트 출처');
-    expect(disclosure?.body).toContain('다음 컴백 출처');
-    expect(disclosure?.body).toContain('최신 발매 출처');
-    expect(disclosure?.body).toContain('소스 타임라인');
+    expect(disclosure?.body).toContain('아티스트 출처 · 미기재');
+    expect(disclosure?.body).toContain('다음 컴백 출처 · 미기재');
+    expect(disclosure?.body).toContain('최신 발매 출처 · 미기재');
+    expect(disclosure?.body).toContain('소스 타임라인 · 미해결');
   });
 
   test('keeps title-track and MV/service-link states explicit for release detail binding', () => {
@@ -118,8 +118,8 @@ describe('RN selector spec parity', () => {
     expect(sparse?.youtubeVideoStatus).toBe('no_mv');
 
     const disclosure = buildReleaseDependencyDisclosure(sparse!);
-    expect(disclosure?.body).toContain('트랙 메타데이터 미완료');
-    expect(disclosure?.body).toContain('음원 서비스 링크 일부 누락');
-    expect(disclosure?.body).toContain('공식 MV 미제공');
+    expect(disclosure?.body).toContain('트랙 메타데이터 · 미기재');
+    expect(disclosure?.body).toContain('음원 서비스 링크 · 미기재');
+    expect(disclosure?.body).toContain('공식 MV · 조건부 없음');
   });
 });

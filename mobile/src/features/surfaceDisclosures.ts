@@ -7,6 +7,19 @@ export type SurfaceDisclosure = {
   testID: string;
 };
 
+export type CanonicalDisclosureStatus =
+  | 'missing'
+  | 'unresolved'
+  | 'review_needed'
+  | 'conditional_none';
+
+const CANONICAL_DISCLOSURE_LABELS: Record<CanonicalDisclosureStatus, string> = {
+  missing: '미기재',
+  unresolved: '미해결',
+  review_needed: '검토 필요',
+  conditional_none: '조건부 없음',
+};
+
 function formatCachedAt(value: string | null): string | null {
   if (!value) {
     return null;
@@ -26,6 +39,14 @@ function summarizeIssues(issues: string[]): string {
   }
 
   return issues.join(' / ');
+}
+
+export function formatCanonicalDisclosureLine(
+  subject: string,
+  status: CanonicalDisclosureStatus,
+  detail: string,
+): string {
+  return `${subject} · ${CANONICAL_DISCLOSURE_LABELS[status]}: ${detail}`;
 }
 
 export function buildDatasetRiskDisclosure(
@@ -62,31 +83,55 @@ export function buildDatasetRiskDisclosure(
 export function buildEntitySourceDisclosure(
   snapshot: EntityDetailSnapshotModel,
 ): SurfaceDisclosure | null {
-  const gaps: string[] = [];
+  const lines: string[] = [];
 
   if (!snapshot.team.artistSourceUrl) {
-    gaps.push('아티스트 출처');
+    lines.push(
+      formatCanonicalDisclosureLine(
+        '아티스트 출처',
+        'missing',
+        '프로필 기준 source link가 아직 연결되지 않았습니다.',
+      ),
+    );
   }
 
   if (snapshot.nextUpcoming && !snapshot.nextUpcoming.sourceUrl) {
-    gaps.push('다음 컴백 출처');
+    lines.push(
+      formatCanonicalDisclosureLine(
+        '다음 컴백 출처',
+        'missing',
+        '예정 신호는 보이지만 source link가 아직 붙지 않았습니다.',
+      ),
+    );
   }
 
   if (snapshot.latestRelease && !snapshot.latestRelease.sourceUrl) {
-    gaps.push('최신 발매 출처');
+    lines.push(
+      formatCanonicalDisclosureLine(
+        '최신 발매 출처',
+        'missing',
+        'verified release source link가 아직 연결되지 않았습니다.',
+      ),
+    );
   }
 
   if (snapshot.sourceTimeline.length === 0) {
-    gaps.push('소스 타임라인');
+    lines.push(
+      formatCanonicalDisclosureLine(
+        '소스 타임라인',
+        'unresolved',
+        '예정·발매 근거를 하나의 타임라인으로 아직 묶지 못했습니다.',
+      ),
+    );
   }
 
-  if (gaps.length === 0) {
+  if (lines.length === 0) {
     return null;
   }
 
   return {
     title: '소스 신뢰도',
-    body: `${gaps.join(', ')} 정보가 아직 비어 있거나 연결되지 않았습니다. 이 화면은 실용 허브를 우선하므로, 없는 출처는 숨기고 확인 가능한 정보만 남깁니다.`,
+    body: lines.join('\n'),
     testID: 'entity-source-confidence-notice',
   };
 }
@@ -94,31 +139,65 @@ export function buildEntitySourceDisclosure(
 export function buildReleaseDependencyDisclosure(
   detail: ReleaseDetailModel,
 ): SurfaceDisclosure | null {
-  const issues: string[] = [];
+  const lines: string[] = [];
 
   if (detail.tracks.length === 0) {
-    issues.push('트랙 메타데이터 미완료');
+    lines.push(
+      formatCanonicalDisclosureLine(
+        '트랙 메타데이터',
+        'missing',
+        '신뢰 가능한 canonical tracklist가 아직 연결되지 않았습니다.',
+      ),
+    );
   }
 
   if (!detail.spotifyUrl || !detail.youtubeMusicUrl) {
-    issues.push('음원 서비스 링크 일부 누락');
+    lines.push(
+      formatCanonicalDisclosureLine(
+        '음원 서비스 링크',
+        'missing',
+        'Spotify 또는 YouTube Music canonical link가 비어 있습니다.',
+      ),
+    );
   }
 
-  if (detail.youtubeVideoStatus === 'needs_review' || detail.youtubeVideoStatus === 'unresolved') {
-    issues.push('공식 MV 미확정');
+  if (detail.youtubeVideoStatus === 'needs_review') {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        '공식 MV',
+        'review_needed',
+        '후보는 있지만 사람 검토가 아직 끝나지 않았습니다.',
+      ),
+    );
   }
 
-  if (detail.youtubeVideoStatus === 'no_mv') {
-    issues.push('공식 MV 미제공');
+  if (detail.youtubeVideoStatus === 'unresolved') {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        '공식 MV',
+        'unresolved',
+        '채워야 하지만 아직 canonical target을 확정하지 못했습니다.',
+      ),
+    );
   }
 
-  if (issues.length === 0) {
+  if (detail.youtubeVideoStatus === 'no_mv' || detail.youtubeVideoStatus === 'no_link') {
+    lines.push(
+      formatCanonicalDisclosureLine(
+        '공식 MV',
+        'conditional_none',
+        'first-party evidence 기준으로 공식 MV가 없다고 확인된 상태입니다.',
+      ),
+    );
+  }
+
+  if (lines.length === 0) {
     return null;
   }
 
   return {
     title: '외부 링크 및 메타 상태',
-    body: `${issues.join(' / ')}. canonical 링크가 비어 있으면 검색 fallback 또는 상태 안내만 남기고, 없는 정보를 placeholder로 꾸미지 않습니다.`,
+    body: lines.join('\n'),
     testID: 'release-detail-quality-notice',
   };
 }
