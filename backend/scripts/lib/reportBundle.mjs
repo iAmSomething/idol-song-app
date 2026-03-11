@@ -73,6 +73,9 @@ export function buildReportBundleMetadata({
   nullRecheckQueueReference = null,
   nullTrendReference = null,
   workerCadenceReference = null,
+  serviceLinkGapReference = null,
+  titleTrackGapReference = null,
+  entityIdentityWorkbenchReference = null,
 }) {
   const sourceReports = {
     release_pipeline_sync: releaseSyncReference,
@@ -83,6 +86,9 @@ export function buildReportBundleMetadata({
     canonical_null_recheck_queue: nullRecheckQueueReference,
     null_coverage_trend: nullTrendReference,
     worker_cadence: workerCadenceReference,
+    service_link_gap_queues: serviceLinkGapReference,
+    title_track_gap_queue: titleTrackGapReference,
+    entity_identity_workbench: entityIdentityWorkbenchReference,
   };
 
   const fingerprint = {

@@ -10,7 +10,7 @@
 
 | cadence | primary path | focus | required artifacts |
 | --- | --- | --- | --- |
-| daily | `weekly-kpop-scan.yml` | latest upcoming / latest release-adjacent Wave 1 null | `canonical_null_coverage_report.json`, `canonical_null_recheck_queue.json`, `null_coverage_trend_report.json`, `worker_cadence_report.json`, `report_bundle_metadata.json` |
+| daily | `weekly-kpop-scan.yml` | latest upcoming / latest release-adjacent Wave 1 null | `canonical_null_coverage_report.json`, `canonical_null_recheck_queue.json`, `null_coverage_trend_report.json`, `service_link_gap_queues.json`, `title_track_gap_queue.json`, `entity_identity_workbench.json`, `worker_cadence_report.json`, `report_bundle_metadata.json` |
 | weekly | `catalog-enrichment-refresh.yml` | recent + historical enrichment after slow catalog refresh | 위 daily artifact + `historical_release_detail_coverage_report.json`, `migration_readiness_scorecard.json` |
 | monthly | operator review | unresolved backlog aging, retry policy tuning, field taxonomy correction | latest weekly bundle + explicit issue / policy follow-up |
 
@@ -27,7 +27,8 @@
 3. `fake_default`가 새로 생긴 family가 있는지 본다.
 4. `backend/reports/canonical_null_recheck_queue.json`에서 `review_state=escalate_review` 항목을 triage한다.
 5. `null_coverage_trend_report.json`에 latest regression이 생기면 same-day follow-up issue를 연다.
-6. `report_bundle_metadata.json`과 downstream runtime artifacts bundle id가 맞는지 확인한다.
+6. `service_link_gap_queues.json`, `title_track_gap_queue.json`, `entity_identity_workbench.json`의 latest/tier_1 queue가 갑자기 늘지 않았는지 본다.
+7. `report_bundle_metadata.json`과 downstream runtime artifacts bundle id가 맞는지 확인한다.
 
 ## 3. Weekly Owner Checklist
 
@@ -35,7 +36,8 @@
 2. `recent` cohort Wave 1 miss가 2개 이상이면 blocker 후보로 승격한다.
 3. `pre-2024` coverage가 내려갔으면 enrichment regression으로 기록한다.
 4. `canonical_null_recheck_queue.json`에서 `retry_count`가 높은 historical item을 review queue / override / source rule 중 어디로 보낼지 결정한다.
-5. `migration_readiness_scorecard.json`의 `catalog_completeness` summary가 null-hygiene reason으로 막히는지 확인한다.
+5. service-link/title-track/entity-identity workbench에서 `tier_1` 또는 `core/latest` queue가 줄고 있는지 확인한다.
+6. `migration_readiness_scorecard.json`의 `catalog_completeness` summary가 null-hygiene reason으로 막히는지 확인한다.
 
 ## 4. Monthly Checklist
 
@@ -62,7 +64,8 @@ daily / weekly run이 끝나면 아래 순서를 유지한다.
 3. null coverage
 4. null recheck queue
 5. null trend
-6. report bundle
-7. parity / shadow / runtime / readiness
+6. service-link/title-track/entity-identity workbenches
+7. report bundle
+8. parity / shadow / runtime / readiness
 
 이 순서가 깨지면 downstream gate가 stale artifact를 읽을 수 있으므로, 운영자는 freshness보다 sequence를 먼저 확인한다.

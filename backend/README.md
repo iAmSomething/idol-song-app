@@ -527,6 +527,7 @@ scheduled workflow는 두 cadence로 나뉜다.
 - `npm run null:coverage`
 - `npm run null:recheck`
 - `npm run null:trend`
+- `npm run gap:workbenches`
 - `npm run report:bundle`
 - `python build_backend_json_parity_report.py`
 - `npm run shadow:verify`
@@ -654,6 +655,7 @@ npm run worker:cadence
 npm run null:coverage
 npm run null:recheck
 npm run null:trend
+npm run gap:workbenches
 ```
 
 기본 보고서 출력:
@@ -662,6 +664,15 @@ npm run null:trend
 - `backend/reports/canonical_null_coverage_report.json`
 - `backend/reports/canonical_null_recheck_queue.json`
 - `backend/reports/null_coverage_trend_report.json`
+- `backend/reports/service_link_gap_queues.json`
+- `backend/reports/service_link_gap_queue_spotify.csv`
+- `backend/reports/service_link_gap_queue_youtube_music.csv`
+- `backend/reports/service_link_gap_queue_youtube_mv.csv`
+- `backend/reports/title_track_gap_queue.json`
+- `backend/reports/title_track_gap_queue.csv`
+- `backend/reports/entity_identity_workbench.json`
+- `backend/reports/entity_identity_workbench_entities.csv`
+- `backend/reports/entity_identity_field_queue.csv`
 
 이 report는 아래 topology를 함께 기록한다.
 
