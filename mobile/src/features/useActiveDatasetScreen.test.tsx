@@ -16,12 +16,30 @@ const mockCreateBackendReadClient = jest.fn();
 const mockTrackDatasetDegraded = jest.fn();
 const mockTrackDatasetLoadFailed = jest.fn();
 
+class MockBackendReadError extends Error {
+  status: number | null;
+  code: string | null;
+  requestId: string | null;
+
+  constructor(
+    message: string,
+    options: { status?: number | null; code?: string | null; requestId?: string | null } = {},
+  ) {
+    super(message);
+    this.name = 'BackendReadError';
+    this.status = options.status ?? null;
+    this.code = options.code ?? null;
+    this.requestId = options.requestId ?? null;
+  }
+}
+
 jest.mock('../config/runtime', () => ({
   getRuntimeConfigState: () => mockGetRuntimeConfigState(),
   getRuntimeConfig: () => mockGetRuntimeConfig(),
 }));
 
 jest.mock('../services/backendReadClient', () => ({
+  BackendReadError: MockBackendReadError,
   createBackendReadClient: (...args: unknown[]) => mockCreateBackendReadClient(...args),
 }));
 
@@ -193,6 +211,31 @@ describe('useActiveDatasetScreen', () => {
     expect(secondTree.root.findByProps({ testID: 'hook-source' }).props.children).toBe('backend-cache');
     expect(secondTree.root.findByProps({ testID: 'hook-value' }).props.children).toBe('fresh-backend');
     expect(secondTree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain('Backend timed out.');
+  });
+
+  test('appends the backend request id when cached fallback is used after a live failure', async () => {
+    mockGetRuntimeConfigState.mockReturnValue(buildRuntimeState('normal'));
+    mockCreateBackendReadClient.mockReturnValue({ name: 'backend-client' });
+
+    await renderHarness({
+      loadBundled: async () => ({ value: 'bundled' }),
+      loadBackend: async () => ({
+        data: { value: 'fresh-backend' },
+        generatedAt: '2026-03-10T00:00:00.000Z',
+      }),
+    });
+
+    const tree = await renderHarness({
+      loadBundled: async () => ({ value: 'bundled' }),
+      loadBackend: async () => {
+        throw new MockBackendReadError('백엔드 응답이 지연되어 요청을 중단했습니다. 다시 시도해 주세요.', {
+          code: 'timeout',
+          requestId: 'req_test_123',
+        });
+      },
+    });
+
+    expect(tree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain('요청 ID: req_test_123');
   });
 
   test('falls back to bundled data when runtime is degraded and cache is unavailable', async () => {

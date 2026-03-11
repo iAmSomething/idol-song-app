@@ -412,6 +412,9 @@ export default function SearchTabScreen() {
       return;
     }
 
+    Keyboard.dismiss();
+    inputRef.current?.blur();
+    setIsInputFocused(false);
     setQuery(normalized);
     setHandoffFeedback(null);
     const metrics = buildSearchSubmissionMetrics(normalized);
@@ -675,6 +678,15 @@ export default function SearchTabScreen() {
       {datasetRiskDisclosure ? (
         <TonalPanel
           body={datasetRiskDisclosure.body}
+          footer={
+            <ActionButton
+              accessibilityLabel="라이브 검색 데이터 다시 시도"
+              label={MOBILE_COPY.action.retry}
+              onPress={() => setReloadCount((count) => count + 1)}
+              testID="search-dataset-risk-retry"
+              tone="secondary"
+            />
+          }
           testID={datasetRiskDisclosure.testID}
           title={datasetRiskDisclosure.title}
           tone="accent"

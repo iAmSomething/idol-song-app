@@ -1,7 +1,10 @@
 import React, { memo, useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
-import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
+import {
+  MOBILE_TEXT_SCALE_LIMITS,
+  isLargeTextMode,
+} from '../../tokens/accessibility';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 
@@ -29,14 +32,16 @@ function CompactHeroComponent({
   titleTestID,
 }: CompactHeroProps) {
   const theme = useAppTheme();
+  const { fontScale, width } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const stackedLayout = width <= 410 || isLargeTextMode(fontScale);
 
   return (
     <View style={styles.hero} testID={testID}>
       <View style={styles.band} />
       <View style={styles.content}>
-        <View style={styles.row}>
-          <View style={styles.media}>{media}</View>
+        <View style={[styles.row, stackedLayout ? styles.rowStacked : null]}>
+          <View style={[styles.media, stackedLayout ? styles.mediaStacked : null]}>{media}</View>
           <View style={styles.copy}>
             {eyebrow ? (
               <Text
@@ -50,7 +55,11 @@ function CompactHeroComponent({
             <Text
               accessibilityRole="header"
               allowFontScaling
-              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
+              maxFontSizeMultiplier={
+                stackedLayout
+                  ? MOBILE_TEXT_SCALE_LIMITS.sectionTitle
+                  : MOBILE_TEXT_SCALE_LIMITS.screenTitle
+              }
               numberOfLines={2}
               style={styles.title}
               testID={titleTestID}
@@ -118,9 +127,16 @@ function createStyles(theme: MobileTheme) {
       flexWrap: 'wrap',
       gap: theme.space[16],
     },
+    rowStacked: {
+      flexDirection: 'column',
+      gap: theme.space[12],
+    },
     media: {
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
+    },
+    mediaStacked: {
+      width: '100%',
     },
     copy: {
       flex: 1,

@@ -160,4 +160,52 @@ describe('mobile backend read client', () => {
       code: 'not_found',
     });
   });
+
+  test('retries a retryable backend response once before succeeding', async () => {
+    const fetchMock = jest
+      .fn()
+      .mockResolvedValueOnce(
+        createJsonResponse(
+          {
+            error: {
+              code: 'service_unavailable',
+              message: 'Projection refresh is in progress.',
+            },
+          },
+          503,
+        ),
+      )
+      .mockResolvedValueOnce(
+        createJsonResponse({
+          meta: {
+            generatedAt: '2026-03-10T00:00:02.000Z',
+          },
+          data: {
+            summary: {
+              verified_count: 2,
+              exact_upcoming_count: 1,
+              month_only_upcoming_count: 1,
+            },
+            nearest_upcoming: null,
+            days: [],
+            month_only_upcoming: [],
+            verified_list: [],
+            scheduled_list: [],
+          },
+        }),
+      );
+
+    const client = createBackendReadClient(
+      buildRuntimeConfig(),
+      fetchMock as unknown as typeof fetch,
+      {
+        retryCount: 1,
+        retryDelayMs: 0,
+      },
+    );
+    const response = await client.getCalendarMonth('2026-03');
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(response.data.summary.verified_count).toBe(2);
+  });
 });

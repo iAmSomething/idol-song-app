@@ -1,5 +1,10 @@
 import { getRuntimeConfig, type MobileRuntimeConfig } from '../config/runtime';
 
+const DEFAULT_BACKEND_TIMEOUT_MS = 4500;
+const DEFAULT_BACKEND_RETRY_COUNT = 1;
+const DEFAULT_BACKEND_RETRY_DELAY_MS = 350;
+const RETRYABLE_STATUS_CODES = new Set([408, 429, 502, 503, 504]);
+
 export type BackendReadEnvelope<T> = {
   meta?: {
     generatedAt?: string | null;
@@ -341,14 +346,25 @@ export type BackendResolvedReleaseDetail = {
 export class BackendReadError extends Error {
   status: number | null;
   code: string | null;
+  requestId: string | null;
 
-  constructor(message: string, options: { status?: number | null; code?: string | null } = {}) {
+  constructor(
+    message: string,
+    options: { status?: number | null; code?: string | null; requestId?: string | null } = {},
+  ) {
     super(message);
     this.name = 'BackendReadError';
     this.status = options.status ?? null;
     this.code = options.code ?? null;
+    this.requestId = options.requestId ?? null;
   }
 }
+
+export type BackendReadClientOptions = {
+  retryCount?: number;
+  retryDelayMs?: number;
+  timeoutMs?: number;
+};
 
 function buildUrl(baseUrl: string, pathname: string, searchParams?: Record<string, string | number | undefined>): string {
   const trimmedBaseUrl = baseUrl.replace(/\/+$/, '');
@@ -416,6 +432,12 @@ async function readJsonResponse<T>(response: Response): Promise<BackendReadEnvel
     });
   }
 
+  const requestId =
+    response.headers?.get?.('x-request-id') ??
+    response.headers?.get?.('x-correlation-id') ??
+    response.headers?.get?.('x-vercel-id') ??
+    null;
+
   if (!response.ok) {
     const message =
       isRecord(payload) && isRecord(payload.error) && typeof payload.error.message === 'string'
@@ -428,11 +450,14 @@ async function readJsonResponse<T>(response: Response): Promise<BackendReadEnvel
     throw new BackendReadError(message, {
       status: response.status,
       code,
+      requestId,
     });
   }
 
   if (!isRecord(payload) || !('data' in payload)) {
-    throw new BackendReadError('Backend response envelope was missing data.');
+    throw new BackendReadError('Backend response envelope was missing data.', {
+      requestId,
+    });
   }
 
   return payload as BackendReadEnvelope<T>;
@@ -453,9 +478,53 @@ export type BackendReadClient = {
   getReleaseDetailByLegacyId(legacyReleaseId: string): Promise<BackendResolvedReleaseDetail>;
 };
 
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+function isAbortError(error: unknown): boolean {
+  return error instanceof Error && error.name === 'AbortError';
+}
+
+function isRetryableBackendError(error: BackendReadError): boolean {
+  if (error.code === 'timeout' || error.code === 'network_unavailable') {
+    return true;
+  }
+
+  if (error.status && RETRYABLE_STATUS_CODES.has(error.status)) {
+    return true;
+  }
+
+  return false;
+}
+
+function wrapFetchError(error: unknown): BackendReadError {
+  if (error instanceof BackendReadError) {
+    return error;
+  }
+
+  if (isAbortError(error)) {
+    return new BackendReadError('백엔드 응답이 지연되어 요청을 중단했습니다. 다시 시도해 주세요.', {
+      code: 'timeout',
+    });
+  }
+
+  const message =
+    error instanceof Error && error.message
+      ? error.message
+      : '백엔드에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.';
+
+  return new BackendReadError(message, {
+    code: 'network_unavailable',
+  });
+}
+
 export function createBackendReadClient(
   runtimeConfig: MobileRuntimeConfig = getRuntimeConfig(),
   fetchImpl: typeof fetch = fetch,
+  options: BackendReadClientOptions = {},
 ): BackendReadClient {
   const baseUrl = runtimeConfig.services.apiBaseUrl;
 
@@ -464,24 +533,54 @@ export function createBackendReadClient(
   }
 
   const resolvedBaseUrl = baseUrl;
+  const timeoutMs = options.timeoutMs ?? DEFAULT_BACKEND_TIMEOUT_MS;
+  const retryCount = options.retryCount ?? DEFAULT_BACKEND_RETRY_COUNT;
+  const retryDelayMs = options.retryDelayMs ?? DEFAULT_BACKEND_RETRY_DELAY_MS;
 
   async function get<T>(pathname: string, searchParams?: Record<string, string | number | undefined>) {
     const url = buildUrl(resolvedBaseUrl, pathname, searchParams);
-    let response: Response;
+    let lastError: BackendReadError | null = null;
 
-    try {
-      response = await fetchImpl(url, {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-        },
-      });
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Backend request failed.';
-      throw new BackendReadError(message);
+    for (let attempt = 0; attempt <= retryCount; attempt += 1) {
+      const controller =
+        typeof AbortController === 'function' ? new AbortController() : null;
+      const timeoutId =
+        controller && timeoutMs > 0
+          ? setTimeout(() => controller.abort(), timeoutMs)
+          : null;
+
+      try {
+        const response = await fetchImpl(url, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+          },
+          signal: controller?.signal,
+        });
+
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+
+        return await readJsonResponse<T>(response);
+      } catch (error) {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+
+        const backendError = wrapFetchError(error);
+        lastError = backendError;
+
+        if (attempt < retryCount && isRetryableBackendError(backendError)) {
+          await delay(retryDelayMs);
+          continue;
+        }
+
+        throw backendError;
+      }
     }
 
-    return readJsonResponse<T>(response);
+    throw lastError ?? new BackendReadError('Backend request failed.');
   }
 
   return {

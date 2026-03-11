@@ -16,6 +16,7 @@ export type MobileDebugMetadata = {
   commitSha: string | null;
   dataSourceMode: MobileRuntimeConfig['dataSource']['mode'];
   dataSourcePolicy: string;
+  networkPolicy: string;
   apiBaseUrl: string | null;
   apiHost: string | null;
   backendTargetLabel: 'Bundled-only' | 'Public preview backend' | 'Temporary tunnel backend' | 'Custom backend target';
@@ -70,6 +71,10 @@ export function getDebugMetadata(
       runtimeConfig.dataSource.mode === 'backend-api'
         ? 'Backend API primary + bundled fallback'
         : 'Bundled static primary',
+    networkPolicy:
+      runtimeConfig.dataSource.mode === 'backend-api'
+        ? 'GET timeout 4.5s + 1 retry + cache/bundled degraded fallback'
+        : 'Bundled static only',
     apiBaseUrl: runtimeConfig.services.apiBaseUrl,
     apiHost: runtimeConfig.services.apiBaseUrl ? new URL(runtimeConfig.services.apiBaseUrl).host : null,
     backendTargetLabel: getBackendTargetLabel(runtimeConfig.services.apiBaseUrl),
