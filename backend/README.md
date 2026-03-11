@@ -27,6 +27,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
   - Pages publish gate가 읽는 backend freshness handoff artifact
   - backup / restore recovery drill artifact
   - secret rotation tabletop artifact
+  - canonical entity metadata / asset coverage audit artifact
 - `sql/migrations/`
   - Neon canonical schema + projection read-model migration
 - `sql/README.md`
@@ -36,6 +37,10 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
   - trusted upcoming mobile push registration / delivery helper
 - `requirements-import.txt`
   - Python importer dependency note
+- repo root Python builders
+  - `build_canonical_entity_metadata.py`
+  - `build_release_artwork_catalog.py`
+  - `build_entity_asset_coverage_report.py`
 
 ## 로컬 실행
 
@@ -85,6 +90,24 @@ python deliver_trusted_push_notifications.py \
 ```
 
 workflow에서는 `MOBILE_PUSH_DELIVERY_ENABLED=true`일 때만 실제 fanout을 수행한다.
+
+## Canonical Entity Metadata / Asset Coverage
+
+- canonical entity field source-of-truth export:
+  - `canonical_entity_metadata.json`
+- entity field coverage report:
+  - `backend/reports/entity_asset_coverage_report.json`
+  - `backend/reports/entity_asset_coverage_report.md`
+- historical artwork catalog builder:
+  - `web/src/data/releaseArtwork.json`
+
+예시:
+
+```bash
+python build_canonical_entity_metadata.py
+python build_release_artwork_catalog.py
+python build_entity_asset_coverage_report.py
+```
 
 ## Read API Envelope
 
