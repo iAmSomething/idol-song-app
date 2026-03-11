@@ -215,6 +215,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     slug: profileConfig.slug,
     version: runtimeConfig.build.version,
     scheme: profileConfig.scheme,
+    icon: './assets/app-icon/icon-app-store-1024.png',
     orientation: 'portrait',
     userInterfaceStyle: 'automatic',
     plugins: ['expo-router'],
@@ -228,6 +229,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     android: {
       predictiveBackGestureEnabled: false,
       package: profileConfig.androidPackage,
+      adaptiveIcon: {
+        foregroundImage: './assets/app-icon/icon-adaptive-foreground.png',
+        monochromeImage: './assets/app-icon/icon-adaptive-monochrome.png',
+        backgroundColor: '#241F18',
+      },
     },
     web: {
       bundler: 'metro',

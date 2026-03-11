@@ -18,6 +18,7 @@
    - spacing, radius, elevation, icon size, chip/button 규칙
 6. `launch-grade-visual-identity-system.md`
    - practical tool + editorial accent 톤, surface family, visual child issue split
+   - app icon detail은 `app-icon-system.md`를 함께 참조
 7. `component-catalog.md`
    - 공통 UI 컴포넌트 해부도, props 성격, 상태, 접근성
 8. `layout-constraint-spec.md`
@@ -124,55 +125,56 @@
 2. `component-action-system.md`
 3. `visual-design-spec.md`
 4. `launch-grade-visual-identity-system.md`
-5. `component-catalog.md`
-6. `layout-constraint-spec.md`
-7. `state-feedback-spec.md`
-8. `copy-localization-spec.md`
-9. `navigation-motion-spec.md`
-10. `data-binding-spec.md`
-11. `accessibility-platform-spec.md`
-12. `interaction-matrix.md`
-13. `sample-data-contracts.md`
-14. `wireframe-block-diagrams.md`
-15. `design-token-spec.md`
-16. `implementation-work-breakdown.md`
-17. `component-api-contracts.md`
-18. `view-state-models.md`
-19. `user-journey-sequences.md`
-20. `expo-implementation-guide.md`
-21. `screen-delivery-checklists.md`
-22. `testing-strategy-spec.md`
-23. `typescript-interface-examples.md`
-24. `github-issue-breakdown-plan.md`
-25. `domain-glossary.md`
-26. `non-functional-requirements-spec.md`
-27. `decision-log.md`
-28. `analytics-event-spec.md`
-29. `data-sync-freshness-spec.md`
-30. `privacy-security-spec.md`
-31. `accessibility-reading-order-spec.md`
-32. `release-readiness-gate.md`
-33. `route-param-contracts.md`
-34. `configuration-environment-spec.md`
-35. `observability-error-taxonomy.md`
-36. `content-governance-spec.md`
-37. `performance-budget-spec.md`
-38. `state-restoration-spec.md`
-39. `feature-gate-matrix.md`
-40. `external-dependency-risk-spec.md`
-41. `decision-log-review-checklist.md`
-42. `rn-implementation-audit-2026-03-10.md`
-43. `rn-quality-coverage-matrix.md`
-44. `rn-screen-structure-validation-2026-03-10.md`
-45. `rn-journey-walkthrough-2026-03-10.md`
-46. `rn-freshness-review-2026-03-10.md`
-47. `rn-traceability-matrix.md`
-48. `rn-selector-contract-audit.md`
-49. `rn-release-readiness-gate-2026-03-11.md`
-50. `rn-runtime-device-qa-2026-03-11.md`
-51. 각 화면 스펙
-52. `edge-case-catalog.md`
-53. `qa-acceptance-spec.md`
+5. `app-icon-system.md`
+6. `component-catalog.md`
+7. `layout-constraint-spec.md`
+8. `state-feedback-spec.md`
+9. `copy-localization-spec.md`
+10. `navigation-motion-spec.md`
+11. `data-binding-spec.md`
+12. `accessibility-platform-spec.md`
+13. `interaction-matrix.md`
+14. `sample-data-contracts.md`
+15. `wireframe-block-diagrams.md`
+16. `design-token-spec.md`
+17. `implementation-work-breakdown.md`
+18. `component-api-contracts.md`
+19. `view-state-models.md`
+20. `user-journey-sequences.md`
+21. `expo-implementation-guide.md`
+22. `screen-delivery-checklists.md`
+23. `testing-strategy-spec.md`
+24. `typescript-interface-examples.md`
+25. `github-issue-breakdown-plan.md`
+26. `domain-glossary.md`
+27. `non-functional-requirements-spec.md`
+28. `decision-log.md`
+29. `analytics-event-spec.md`
+30. `data-sync-freshness-spec.md`
+31. `privacy-security-spec.md`
+32. `accessibility-reading-order-spec.md`
+33. `release-readiness-gate.md`
+34. `route-param-contracts.md`
+35. `configuration-environment-spec.md`
+36. `observability-error-taxonomy.md`
+37. `content-governance-spec.md`
+38. `performance-budget-spec.md`
+39. `state-restoration-spec.md`
+40. `feature-gate-matrix.md`
+41. `external-dependency-risk-spec.md`
+42. `decision-log-review-checklist.md`
+43. `rn-implementation-audit-2026-03-10.md`
+44. `rn-quality-coverage-matrix.md`
+45. `rn-screen-structure-validation-2026-03-10.md`
+46. `rn-journey-walkthrough-2026-03-10.md`
+47. `rn-freshness-review-2026-03-10.md`
+48. `rn-traceability-matrix.md`
+49. `rn-selector-contract-audit.md`
+50. `rn-release-readiness-gate-2026-03-11.md`
+51. `rn-runtime-device-qa-2026-03-11.md`
+52. 각 화면 스펙
+53. `edge-case-catalog.md`
+54. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.

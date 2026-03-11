@@ -29,7 +29,7 @@
   - `releases/[id]` route는 shared release detail model 기반 detail screen까지 연결됨
   - hidden `debug/metadata` route for internal metadata inspection
 - `assets/`
-  - placeholder / service icon / badge fallback asset inventory
+  - app icon / placeholder / service icon / badge fallback asset inventory
 - `src/`
   - components / features / selectors / services / tokens / types / utils 구역
 - `.env.example`
