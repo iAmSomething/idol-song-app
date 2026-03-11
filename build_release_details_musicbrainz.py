@@ -29,6 +29,7 @@ TITLE_TRACK_REVIEW_JSON_PATH = ROOT / "title_track_manual_review_queue.json"
 TITLE_TRACK_REVIEW_CSV_PATH = ROOT / "title_track_manual_review_queue.csv"
 DETAIL_REVIEW_JSON_PATH = ROOT / "release_detail_manual_review_queue.json"
 DETAIL_REVIEW_CSV_PATH = ROOT / "release_detail_manual_review_queue.csv"
+MV_COVERAGE_REPORT_PATH = ROOT / "mv_coverage_report.json"
 MIN_ACQUISITION_ATTEMPTS = 5
 
 DETAIL_STATUS_VERIFIED = "verified"
@@ -53,6 +54,9 @@ TITLE_TRACK_STATUS_UNRESOLVED = "unresolved"
 DETAIL_TRUSTED_STATUSES = {DETAIL_STATUS_VERIFIED, DETAIL_STATUS_MANUAL}
 TITLE_TRACK_COMPLETE_STATUSES = {DETAIL_STATUS_VERIFIED, DETAIL_STATUS_INFERRED, DETAIL_STATUS_MANUAL}
 MV_COMPLETE_STATUSES = {YOUTUBE_VIDEO_STATUS_RELATION, YOUTUBE_VIDEO_STATUS_MANUAL}
+TITLE_TRACK_NON_PROMOTED_PATTERN = re.compile(
+    r"(?i)\b(intro|introduction|outro|interlude|skit|inst\.?|instrumental|preview|teaser|highlight|medley)\b"
+)
 
 HISTORICAL_COMPLETENESS_THRESHOLDS = {
     "detail_payload_total_min": 1.0,
@@ -70,6 +74,24 @@ MIGRATION_PRIORITY_SLICE_THRESHOLDS = {
     "detail_trusted_min": 1.0,
     "title_track_resolved_min": 1.0,
     "canonical_mv_min": 1.0,
+}
+COHORT_YEAR_BANDS = (
+    ("<=2017", None, 2017),
+    ("2018-2020", 2018, 2020),
+    ("2021-2023", 2021, 2023),
+    ("2024+", 2024, None),
+)
+TITLE_TRACK_COHORT_TARGETS = {
+    "<=2017": {"single": 0.7, "ep": 0.6, "album": 0.55},
+    "2018-2020": {"single": 0.78, "ep": 0.68, "album": 0.62},
+    "2021-2023": {"single": 0.84, "ep": 0.74, "album": 0.68},
+    "2024+": {"single": 0.9, "ep": 0.82, "album": 0.76},
+}
+CANONICAL_MV_COHORT_TARGETS = {
+    "<=2017": {"single": 0.2, "ep": 0.12, "album": 0.08},
+    "2018-2020": {"single": 0.32, "ep": 0.22, "album": 0.16},
+    "2021-2023": {"single": 0.5, "ep": 0.35, "album": 0.28},
+    "2024+": {"single": 0.72, "ep": 0.55, "album": 0.4},
 }
 
 
@@ -129,6 +151,13 @@ def get_relaxed_detail_key(group: str, release_title: str, stream: str) -> str:
 
 
 def load_rows(path: Path) -> List[Dict]:
+    with path.open() as handle:
+        return json.load(handle)
+
+
+def load_optional_rows(path: Path) -> Optional[object]:
+    if not path.exists():
+        return None
     with path.open() as handle:
         return json.load(handle)
 
@@ -436,6 +465,8 @@ def append_title_track_candidate(
     preferred_title = select_preferred_track_title(tracks, normalized_base_title)
     if preferred_title is None:
         return
+    if TITLE_TRACK_NON_PROMOTED_PATTERN.search(preferred_title):
+        return
 
     candidate = candidates.setdefault(
         normalized_base_title,
@@ -587,6 +618,26 @@ def infer_title_track_resolution(detail: Dict, song_release_index: Dict[str, Lis
         }
 
     if len(candidate_rows) == 2:
+        exact_or_substring_candidates = [
+            candidate
+            for candidate in candidate_rows
+            if "release_title_exact" in candidate["sources"] or "release_title_substring" in candidate["sources"]
+        ]
+        nearby_only_candidates = [
+            candidate
+            for candidate in candidate_rows
+            if candidate["sources"]
+            and all(source.startswith("nearby_song_release:") for source in candidate["sources"])
+        ]
+        if len(exact_or_substring_candidates) == 1 and len(nearby_only_candidates) == 1:
+            preferred_candidate = exact_or_substring_candidates[0]
+            return {
+                "status": TITLE_TRACK_STATUS_AUTO_SINGLE,
+                "selected_titles": [preferred_candidate["title"]],
+                "candidates": candidate_rows,
+                "reason": "Release-title evidence outranked a nearby single fallback, so the title track was resolved automatically.",
+            }
+
         all_nearby_song_resolved = all(
             candidate["sources"]
             and all(source.startswith("nearby_song_release:") for source in candidate["sources"])
@@ -1191,6 +1242,17 @@ def build_slice_metrics(rows: List[Dict]) -> Dict:
     }
 
 
+def get_year_band(release_date: str) -> str:
+    release_year = int(release_date[:4])
+    for label, lower, upper in COHORT_YEAR_BANDS:
+        if lower is not None and release_year < lower:
+            continue
+        if upper is not None and release_year > upper:
+            continue
+        return label
+    return COHORT_YEAR_BANDS[-1][0]
+
+
 def build_breakdown(rows: List[Dict], key_name: str) -> Dict[str, Dict]:
     grouped: Dict[str, List[Dict]] = {}
     for row in rows:
@@ -1206,6 +1268,152 @@ def build_breakdown(rows: List[Dict], key_name: str) -> Dict[str, Dict]:
         key: build_slice_metrics(bucket)
         for key, bucket in sorted(grouped.items(), key=lambda item: item[0])
     }
+
+
+def build_status_cohort_rows(
+    rows: List[Dict],
+    status_key: str,
+    resolved_statuses: set[str],
+    review_statuses: set[str],
+    target_map: Dict[str, Dict[str, float]],
+) -> List[Dict]:
+    cohorts: Dict[Tuple[str, str], List[Dict]] = {}
+    for row in rows:
+        year_band = get_year_band(row["release_date"])
+        release_kind = row["release_kind"]
+        cohorts.setdefault((year_band, release_kind), []).append(row)
+
+    cohort_rows: List[Dict] = []
+    for (year_band, release_kind), bucket in sorted(cohorts.items(), key=lambda item: (item[0][0], item[0][1])):
+        statuses = [optional_text(row.get(status_key)) or DETAIL_STATUS_UNRESOLVED for row in bucket]
+        resolved_rows = sum(status in resolved_statuses for status in statuses)
+        review_rows = sum(status in review_statuses for status in statuses)
+        unresolved_rows = len(bucket) - resolved_rows - review_rows
+        resolved_ratio = ratio(resolved_rows, len(bucket))
+        threshold = target_map.get(year_band, {}).get(release_kind, 0.0)
+        cohort_rows.append(
+            {
+                "year_band": year_band,
+                "release_kind": release_kind,
+                "total_rows": len(bucket),
+                "resolved_rows": resolved_rows,
+                "resolved_ratio": resolved_ratio,
+                "review_rows": review_rows,
+                "review_ratio": ratio(review_rows, len(bucket)),
+                "unresolved_rows": unresolved_rows,
+                "unresolved_ratio": ratio(unresolved_rows, len(bucket)),
+                "threshold": threshold,
+                "gap_to_target": round(max(threshold - resolved_ratio, 0.0), 4),
+                "status": "pass" if resolved_ratio >= threshold else "fail",
+            }
+        )
+
+    cohort_rows.sort(
+        key=lambda row: (
+            row["status"] == "pass",
+            -row["gap_to_target"],
+            -row["unresolved_rows"],
+            row["year_band"],
+            row["release_kind"],
+        )
+    )
+    return cohort_rows
+
+
+def mv_backfill_scope_matches(summary: Dict, execution_scope: Optional[Dict]) -> bool:
+    if not execution_scope:
+        return True
+    summary_scope = summary.get("execution_scope") or {}
+    execution_groups = set(execution_scope.get("groups") or [])
+    summary_groups = set(summary_scope.get("groups") or [])
+    if not execution_groups:
+        return True
+    return execution_groups == summary_groups
+
+
+def build_external_acquisition_summary(
+    acquisition_traces: List[Dict],
+    details_after: List[Dict],
+    execution_scope: Optional[Dict],
+) -> Dict:
+    details_by_key = {
+        get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in details_after
+    }
+
+    candidate_traces = [
+        trace
+        for trace in acquisition_traces
+        if any(field in {"youtube_music_url", "youtube_video"} for field in trace["missing_fields_before"])
+    ]
+    youtube_music_attempted = 0
+    youtube_music_resolved = 0
+    youtube_music_unresolved = 0
+    youtube_music_out_of_scope = 0
+    youtube_mv_attempted = 0
+    youtube_mv_resolved = 0
+    youtube_mv_review_needed = 0
+    youtube_mv_no_mv = 0
+    youtube_mv_unresolved = 0
+    youtube_mv_out_of_scope = 0
+
+    for trace in candidate_traces:
+        detail = details_by_key[trace["key"]]
+        attempt_methods = {attempt["method"] for attempt in trace["attempts"]}
+        out_of_scope = "external_acquisition_out_of_scope" in attempt_methods
+
+        if "youtube_music_url" in trace["missing_fields_before"]:
+            if out_of_scope:
+                youtube_music_out_of_scope += 1
+            if "musicbrainz_release_group_release_lookup" in attempt_methods or "musicbrainz_release_search_release_lookup" in attempt_methods:
+                youtube_music_attempted += 1
+            if optional_text(detail.get("youtube_music_url")):
+                youtube_music_resolved += 1
+            else:
+                youtube_music_unresolved += 1
+
+        if "youtube_video" in trace["missing_fields_before"]:
+            if out_of_scope:
+                youtube_mv_out_of_scope += 1
+            if "musicbrainz_release_group_release_lookup" in attempt_methods or "musicbrainz_release_search_release_lookup" in attempt_methods:
+                youtube_mv_attempted += 1
+            youtube_video_status = optional_text(detail.get("youtube_video_status")) or YOUTUBE_VIDEO_STATUS_UNRESOLVED
+            if youtube_video_status in MV_COMPLETE_STATUSES:
+                youtube_mv_resolved += 1
+            elif youtube_video_status == YOUTUBE_VIDEO_STATUS_REVIEW:
+                youtube_mv_review_needed += 1
+            elif youtube_video_status == YOUTUBE_VIDEO_STATUS_NO_MV:
+                youtube_mv_no_mv += 1
+            else:
+                youtube_mv_unresolved += 1
+
+    summary = {
+        "candidate_rows": len(candidate_traces),
+        "youtube_music": {
+            "attempted": youtube_music_attempted,
+            "resolved": youtube_music_resolved,
+            "out_of_scope": youtube_music_out_of_scope,
+            "unresolved": youtube_music_unresolved,
+        },
+        "youtube_mv": {
+            "attempted": youtube_mv_attempted,
+            "resolved": youtube_mv_resolved,
+            "review_needed": youtube_mv_review_needed,
+            "no_mv": youtube_mv_no_mv,
+            "out_of_scope": youtube_mv_out_of_scope,
+            "unresolved": youtube_mv_unresolved,
+        },
+    }
+    mv_backfill_summary = load_optional_rows(MV_COVERAGE_REPORT_PATH)
+    if isinstance(mv_backfill_summary, dict) and mv_backfill_scope_matches(mv_backfill_summary, execution_scope):
+        summary["youtube_mv_search"] = {
+            "attempted": int(mv_backfill_summary.get("attempted_rows") or 0),
+            "resolved": int(mv_backfill_summary.get("resolved_now") or 0),
+            "review_needed": int(mv_backfill_summary.get("review_row_count") or 0),
+            "unresolved": int(mv_backfill_summary.get("unresolved_remainder") or 0),
+            "coverage_lift": int(mv_backfill_summary.get("coverage_lift") or 0),
+        }
+    return summary
 
 
 def build_top_gap_entities(rows: List[Dict], limit: int = 10) -> Dict[str, List[Dict]]:
@@ -1426,7 +1634,13 @@ def build_coverage_summary_lines(
     migration_priority_slice: Dict,
     title_track_review_rows: List[Dict],
     detail_review_rows: List[Dict],
+    external_acquisition_summary: Dict,
+    title_track_cohorts: List[Dict],
+    canonical_mv_cohorts: List[Dict],
 ) -> List[str]:
+    worst_title_track_cohort = next((row for row in title_track_cohorts if row["status"] == "fail"), None)
+    worst_mv_cohort = next((row for row in canonical_mv_cohorts if row["status"] == "fail"), None)
+    mv_search_summary = external_acquisition_summary.get("youtube_mv_search")
     return [
         (
             f"detail payload coverage: {overall_metrics['detail_payload_rows']}/{overall_metrics['total_rows']} "
@@ -1453,12 +1667,49 @@ def build_coverage_summary_lines(
             f"({format_percent(historical_metrics['canonical_mv_ratio'])}), mv review {overall_metrics['mv_review_rows']}"
         ),
         (
+            f"external acquisition pass: YTM attempted {external_acquisition_summary['youtube_music']['attempted']}, "
+            f"resolved {external_acquisition_summary['youtube_music']['resolved']}; MV attempted "
+            f"{external_acquisition_summary['youtube_mv']['attempted']}, resolved "
+            f"{external_acquisition_summary['youtube_mv']['resolved']}, review "
+            f"{external_acquisition_summary['youtube_mv']['review_needed']}"
+        ),
+        (
+            "youtube MV search pass: "
+            + (
+                f"attempted {mv_search_summary['attempted']}, resolved {mv_search_summary['resolved']}, "
+                f"review {mv_search_summary['review_needed']}, unresolved {mv_search_summary['unresolved']}, "
+                f"coverage lift +{mv_search_summary['coverage_lift']}"
+                if mv_search_summary
+                else "not available for this execution scope"
+            )
+        ),
+        (
             f"migration-critical first slice: title-track "
             f"{migration_priority_slice['after']['title_track_resolved_rows']}/{migration_priority_slice['expected_rows']} "
             f"({format_percent(migration_priority_slice['after']['title_track_resolved_ratio'])}), canonical MV "
             f"{migration_priority_slice['after']['canonical_mv_rows']}/{migration_priority_slice['expected_rows']} "
             f"({format_percent(migration_priority_slice['after']['canonical_mv_ratio'])}), gate "
             f"{migration_priority_slice['gates']['cutover_status']}"
+        ),
+        (
+            "worst title-track cohort: "
+            + (
+                f"{worst_title_track_cohort['year_band']} {worst_title_track_cohort['release_kind']} "
+                f"{format_percent(worst_title_track_cohort['resolved_ratio'])} / target "
+                f"{format_percent(worst_title_track_cohort['threshold'])}"
+                if worst_title_track_cohort
+                else "all cohorts passing"
+            )
+        ),
+        (
+            "worst canonical MV cohort: "
+            + (
+                f"{worst_mv_cohort['year_band']} {worst_mv_cohort['release_kind']} "
+                f"{format_percent(worst_mv_cohort['resolved_ratio'])} / target "
+                f"{format_percent(worst_mv_cohort['threshold'])}"
+                if worst_mv_cohort
+                else "all cohorts passing"
+            )
         ),
         f"release-detail null review queue: {len(detail_review_rows)} rows",
         f"historical catalog cutover gate: {cutover_gates['cutover_status']}",
@@ -1547,6 +1798,49 @@ def build_coverage_markdown(report: Dict) -> str:
                 f"{row['total_rows']} | {format_percent(row[f'{domain}_gap_ratio' if domain != 'title_track' else 'title_track_gap_ratio'])} |"
             )
 
+    lines.extend(
+        [
+            "",
+            "## External Acquisition",
+            "",
+            f"- YTM attempted: `{report['external_acquisition']['youtube_music']['attempted']}`",
+            f"- YTM resolved: `{report['external_acquisition']['youtube_music']['resolved']}`",
+            f"- MV attempted: `{report['external_acquisition']['youtube_mv']['attempted']}`",
+            f"- MV resolved: `{report['external_acquisition']['youtube_mv']['resolved']}`",
+            f"- MV review needed: `{report['external_acquisition']['youtube_mv']['review_needed']}`",
+            f"- MV search attempted: `{report['external_acquisition'].get('youtube_mv_search', {}).get('attempted', 0)}`",
+            f"- MV search resolved: `{report['external_acquisition'].get('youtube_mv_search', {}).get('resolved', 0)}`",
+            f"- MV search review needed: `{report['external_acquisition'].get('youtube_mv_search', {}).get('review_needed', 0)}`",
+            f"- MV search unresolved: `{report['external_acquisition'].get('youtube_mv_search', {}).get('unresolved', 0)}`",
+            f"- MV search coverage lift: `+{report['external_acquisition'].get('youtube_mv_search', {}).get('coverage_lift', 0)}`",
+            "",
+            "## Title-Track Worst Cohorts",
+            "",
+            "| year band | release kind | resolved | total | ratio | target | status |",
+            "| --- | --- | ---: | ---: | ---: | ---: | --- |",
+        ]
+    )
+    for row in report["cohort_tables"]["title_track"][:10]:
+        lines.append(
+            f"| {row['year_band']} | {row['release_kind']} | {row['resolved_rows']} | {row['total_rows']} | "
+            f"{format_percent(row['resolved_ratio'])} | {format_percent(row['threshold'])} | `{row['status']}` |"
+        )
+
+    lines.extend(
+        [
+            "",
+            "## Canonical MV Worst Cohorts",
+            "",
+            "| year band | release kind | resolved | total | ratio | target | status |",
+            "| --- | --- | ---: | ---: | ---: | ---: | --- |",
+        ]
+    )
+    for row in report["cohort_tables"]["canonical_mv"][:10]:
+        lines.append(
+            f"| {row['year_band']} | {row['release_kind']} | {row['resolved_rows']} | {row['total_rows']} | "
+            f"{format_percent(row['resolved_ratio'])} | {format_percent(row['threshold'])} | `{row['status']}` |"
+        )
+
     return "\n".join(lines) + "\n"
 
 
@@ -1561,6 +1855,7 @@ def build_coverage_report(
     title_track_review_rows: List[Dict],
     acquisition_traces: List[Dict],
     detail_review_rows: List[Dict],
+    execution_scope: Optional[Dict],
 ) -> Dict:
     history_keys = {
         get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
@@ -1690,6 +1985,20 @@ def build_coverage_report(
         "by_year": build_breakdown(details_after, "year"),
         "by_release_kind": build_breakdown(details_after, "release_kind"),
     }
+    title_track_cohorts = build_status_cohort_rows(
+        details_after,
+        "title_track_status",
+        TITLE_TRACK_COMPLETE_STATUSES,
+        {DETAIL_STATUS_REVIEW},
+        TITLE_TRACK_COHORT_TARGETS,
+    )
+    canonical_mv_cohorts = build_status_cohort_rows(
+        details_after,
+        "youtube_video_status",
+        MV_COMPLETE_STATUSES,
+        {YOUTUBE_VIDEO_STATUS_REVIEW},
+        CANONICAL_MV_COHORT_TARGETS,
+    )
     top_gap_entities = {
         "all_time": build_top_gap_entities(details_after),
         "pre_2024": build_top_gap_entities(historical_rows_after),
@@ -1712,6 +2021,7 @@ def build_coverage_report(
     }
     cutover_gates = build_cutover_gates(overall_metrics_after, historical_metrics_after)
     migration_priority_slice = build_migration_priority_slice_report(details_before, details_after)
+    external_acquisition_summary = build_external_acquisition_summary(acquisition_traces, details_after, execution_scope)
     acquisition_method_counts = dict(
         Counter(
             attempt["method"]
@@ -1729,10 +2039,14 @@ def build_coverage_report(
         migration_priority_slice,
         title_track_review_rows,
         detail_review_rows,
+        external_acquisition_summary,
+        title_track_cohorts,
+        canonical_mv_cohorts,
     )
 
     return {
         "generated_at": date.today().isoformat(),
+        "execution_scope": execution_scope,
         "summary_lines": summary_lines,
         "latest_snapshot_input_rows": len(latest_snapshot_items),
         "latest_snapshot_unique_keys": len(latest_snapshot_keys),
@@ -1764,10 +2078,15 @@ def build_coverage_report(
             "pre_2024": historical_metrics_after,
         },
         "breakdowns": breakdowns,
+        "cohort_tables": {
+            "title_track": title_track_cohorts,
+            "canonical_mv": canonical_mv_cohorts,
+        },
         "top_gap_entities": top_gap_entities,
         "gap_samples": gap_samples,
         "cutover_gates": cutover_gates,
         "migration_priority_slice": migration_priority_slice,
+        "external_acquisition": external_acquisition_summary,
         "detail_status_counts": detail_status_counts,
         "title_track_status_counts": title_track_status_counts,
         "release_level_title_track_status_counts": release_level_title_track_status_counts,
@@ -1817,7 +2136,14 @@ def main() -> None:
         action="store_true",
         help="Reuse existing releaseDetails rows and manual seeds without calling external acquisition lookups.",
     )
+    parser.add_argument(
+        "--groups",
+        help="Comma-separated groups to limit external acquisition attempts while still rebuilding the full release detail snapshot.",
+    )
     args = parser.parse_args()
+    scoped_groups = None
+    if args.groups:
+        scoped_groups = {value.strip() for value in args.groups.split(",") if value.strip()}
 
     latest_snapshot_rows = load_rows(RELEASES_SNAPSHOT_PATH)
     history_rows = load_rows(RELEASE_HISTORY_PATH)
@@ -1884,9 +2210,19 @@ def main() -> None:
             )
         )
         detail = normalize_existing_detail(item, existing, used_relaxed_match) if existing else build_empty_detail(item)
-        if not args.skip_acquisition and get_actionable_release_detail_fields(detail):
+        missing_fields_before = get_missing_release_detail_fields(detail)
+        acquisition_in_scope = scoped_groups is None or item["group"] in scoped_groups
+        if not args.skip_acquisition and acquisition_in_scope and get_actionable_release_detail_fields(detail):
             detail, acquisition_attempts = enrich_release_detail(acquisition_client, item, detail)
             attempts.extend(acquisition_attempts)
+        elif not args.skip_acquisition and not acquisition_in_scope and get_actionable_release_detail_fields(detail):
+            attempts.append(
+                build_attempt(
+                    "external_acquisition_out_of_scope",
+                    False,
+                    note="row kept out of the current targeted acquisition pass",
+                )
+            )
         elif args.skip_acquisition:
             attempts.append(
                 build_attempt(
@@ -1933,6 +2269,7 @@ def main() -> None:
             {
                 "key": get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"]),
                 "attempts": attempts,
+                "missing_fields_before": missing_fields_before,
                 "missing_fields_after": get_missing_release_detail_fields(detail),
             }
         )
@@ -1969,6 +2306,12 @@ def main() -> None:
         title_track_review_rows,
         acquisition_traces,
         detail_review_rows,
+        {
+            "groups": sorted(scoped_groups),
+            "targeted_acquisition": True,
+        }
+        if scoped_groups is not None
+        else None,
     )
     AUDIT_OUTPUT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     AUDIT_MARKDOWN_OUTPUT_PATH.write_text(build_coverage_markdown(report), encoding="utf-8")

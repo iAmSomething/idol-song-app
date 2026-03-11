@@ -83,6 +83,29 @@ class YouTubeMvCandidateScoringTests(unittest.TestCase):
         self.assertEqual(outcome["status"], "no_match")
         self.assertEqual(outcome["candidates"][0]["decision"], "rejected")
 
+    def test_episode_shooting_title_is_rejected_even_on_allowlisted_channel(self) -> None:
+        case = {
+            "group": "BTS",
+            "release_title": "Danger",
+            "title_tracks": ["Danger -Japanese ver.-"],
+            "release_date": "2014-11-19",
+            "mv_allowlist_match_keys": ["@bts", "@bighitmusic", "@hybelabels"],
+        }
+        outcome = scoring.score_candidates(
+            case,
+            [
+                {
+                    "video_id": "danger-episode",
+                    "title": "[EPISODE] 방탄소년단 'Danger' MV Shooting",
+                    "channel_url": "https://www.youtube.com/channel/UCLkAepWjdylmXSltofFvsYQ",
+                    "published_at": "2014-11-19T09:00:00Z",
+                    "view_count": 1200000,
+                }
+            ],
+        )
+        self.assertEqual(outcome["status"], "no_match")
+        self.assertEqual(outcome["candidates"][0]["decision"], "rejected")
+
 
 if __name__ == "__main__":
     unittest.main()

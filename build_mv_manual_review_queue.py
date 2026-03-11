@@ -80,7 +80,10 @@ def build_review_rows(details: list[dict], profiles: list[dict], overrides: dict
         override = overrides.get(key, {})
         official_youtube_url = official_youtube_by_group.get(detail["group"]) or ""
         allowlist = allowlists_by_group.get(detail["group"], {})
+        mv_source_channels = allowlist.get("mv_source_channels") or []
         mv_allowlist_urls = allowlist.get("mv_allowlist_urls", [])
+        if not mv_allowlist_urls:
+            mv_allowlist_urls = [channel.get("channel_url", "") for channel in mv_source_channels if channel.get("channel_url")]
         title_tracks = derive_title_tracks(detail)
         search_query = build_search_query(detail, title_tracks)
         review_reason = override.get("youtube_video_review_reason")
@@ -106,6 +109,14 @@ def build_review_rows(details: list[dict], profiles: list[dict], overrides: dict
                 "missing_title_track_metadata": not bool(title_tracks),
                 "youtube_video_status": status,
                 "official_youtube_url": official_youtube_url,
+                "mv_source_channels": [
+                    {
+                        "channel_url": channel.get("channel_url", ""),
+                        "channel_label": channel.get("channel_label", ""),
+                        "owner_type": channel.get("owner_type", ""),
+                    }
+                    for channel in mv_source_channels
+                ],
                 "mv_allowlist_urls": mv_allowlist_urls,
                 "missing_mv_allowlist": not bool(mv_allowlist_urls),
                 "review_reason": review_reason,
@@ -154,6 +165,7 @@ def main() -> None:
                 "missing_title_track_metadata",
                 "youtube_video_status",
                 "official_youtube_url",
+                "mv_source_channels",
                 "mv_allowlist_urls",
                 "missing_mv_allowlist",
                 "review_reason",
@@ -169,6 +181,10 @@ def main() -> None:
         for row in review_rows:
             output = dict(row)
             output["title_tracks"] = " ; ".join(output["title_tracks"])
+            output["mv_source_channels"] = " ; ".join(
+                f"{channel['owner_type']}:{channel['channel_label']}:{channel['channel_url']}"
+                for channel in output["mv_source_channels"]
+            )
             output["mv_allowlist_urls"] = " ; ".join(output["mv_allowlist_urls"])
             writer.writerow(output)
 

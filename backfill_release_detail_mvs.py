@@ -29,6 +29,13 @@ MAX_QUERIES_PER_RELEASE = 8
 QUERY_SUFFIXES = ("official mv", "mv")
 HANGUL_PATTERN = re.compile(r"[가-힣]")
 RELEASE_TITLE_FALLBACK_MIN_DATE = "2025-01-01"
+TITLE_TRACK_EXCLUSION_PATTERN = re.compile(
+    r"(?i)\b(intro|outro|interlude|inst\.?|instrumental|remix|ver\.?|version|preview|teaser|highlight|medley)\b"
+)
+CANDIDATE_TITLE_MARKER_PATTERN = re.compile(
+    r"(?i)\b(official|music\s+video|m\/v|mv|performance\s+video|lyric\s+video|track\s+video|visualizer|teaser|shorts?)\b"
+)
+AUTO_ACCEPTED_YOUTUBE_PROVENANCE = "youtube search auto-accepted via allowlist/title/date/view scoring"
 
 
 def load_json(path: Path) -> Any:
@@ -256,6 +263,51 @@ def should_attempt_release_title_fallback(detail: dict[str, Any], title_tracks: 
     return detail.get("stream") == "song" or detail.get("release_kind") == "single"
 
 
+def clean_candidate_title(candidate_title: str, group: str) -> str:
+    cleaned = candidate_title
+    cleaned = re.sub(r"\[[^\]]*\]", " ", cleaned)
+    cleaned = re.sub(re.escape(group), " ", cleaned, flags=re.IGNORECASE)
+    cleaned = CANDIDATE_TITLE_MARKER_PATTERN.sub(" ", cleaned)
+    cleaned = re.sub(r"[-–—|:/]+", " ", cleaned)
+    return " ".join(cleaned.split()).strip()
+
+
+def infer_title_tracks_from_candidate_title(detail: dict[str, Any], candidate_title: str) -> list[str]:
+    if any(track.get("is_title_track") for track in detail.get("tracks", [])):
+        return []
+
+    candidate_base_title = release_detail_builder.normalize_base_title(
+        clean_candidate_title(candidate_title, detail.get("group", ""))
+    )
+    if len(candidate_base_title) < 3:
+        return []
+
+    matches: list[str] = []
+    seen: set[str] = set()
+    for track in detail.get("tracks", []):
+        title = str(track.get("title") or "").strip()
+        if not title or TITLE_TRACK_EXCLUSION_PATTERN.search(title):
+            continue
+
+        track_base_title = release_detail_builder.normalize_base_title(title)
+        if len(track_base_title) < 3:
+            continue
+
+        is_match = candidate_base_title == track_base_title
+        if not is_match and len(candidate_base_title) >= 5 and len(track_base_title) >= 5:
+            is_match = candidate_base_title in track_base_title or track_base_title in candidate_base_title
+        if not is_match:
+            continue
+
+        key = title.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        matches.append(title)
+
+    return matches if len(matches) == 1 else []
+
+
 def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[str, dict[str, Any]], allowlists_by_group: dict[str, dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     reference = now_utc()
     resolutions: list[dict[str, Any]] = []
@@ -263,10 +315,11 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
 
     for detail in details:
         current_status = detail.get("youtube_video_status") or release_detail_builder.YOUTUBE_VIDEO_STATUS_UNRESOLVED
+        auto_accepted_override = detail.get("youtube_video_provenance") == AUTO_ACCEPTED_YOUTUBE_PROVENANCE
         if current_status not in {
             release_detail_builder.YOUTUBE_VIDEO_STATUS_UNRESOLVED,
             release_detail_builder.YOUTUBE_VIDEO_STATUS_REVIEW,
-        }:
+        } and not auto_accepted_override:
             continue
 
         title_tracks = [track["title"] for track in detail.get("tracks", []) if track.get("is_title_track")]
@@ -277,6 +330,7 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
         allowlist = allowlists_by_group.get(detail["group"], {})
         if not allowlist.get("mv_allowlist_match_keys"):
             continue
+        mv_source_channels = allowlist.get("mv_source_channels") or allowlist.get("channels") or []
 
         candidates_by_video_id: dict[str, dict[str, Any]] = {}
         outcome: dict[str, Any] = {"status": "no_match", "accepted_video_id": None, "candidates": []}
@@ -325,11 +379,12 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
             matched_channel = next(
                 (
                     channel
-                    for channel in allowlist.get("channels", [])
+                    for channel in mv_source_channels
                     if candidate_channel_matches_url(accepted, channel.get("channel_url", ""))
                 ),
                 None,
             )
+            inferred_title_tracks = infer_title_tracks_from_candidate_title(detail, accepted.get("title", ""))
             resolutions.append(
                 {
                     "group": detail["group"],
@@ -346,6 +401,7 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
                     "selected_channel_owner_type": matched_channel.get("owner_type", "unknown") if matched_channel else "unknown",
                     "selected_score": accepted.get("score", 0),
                     "title_track_basis": "release_title_fallback" if not title_tracks else "title_track",
+                    "inferred_title_tracks": inferred_title_tracks,
                 }
             )
             continue
@@ -369,11 +425,35 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
     return resolutions, review_rows
 
 
-def merge_override_rows(existing_rows: list[dict[str, Any]], resolutions: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def merge_override_rows(
+    existing_rows: list[dict[str, Any]],
+    resolutions: list[dict[str, Any]],
+    reevaluated_keys: set[str] | None = None,
+) -> list[dict[str, Any]]:
     by_key = {
         release_detail_builder.get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): dict(row)
         for row in existing_rows
     }
+    resolution_keys = {
+        release_detail_builder.get_detail_key(
+            row["group"],
+            row["release_title"],
+            row["release_date"],
+            row["stream"],
+        )
+        for row in resolutions
+    }
+
+    if reevaluated_keys:
+        for key in reevaluated_keys:
+            if key in resolution_keys:
+                continue
+            row = by_key.get(key)
+            if not row or row.get("youtube_video_provenance") != AUTO_ACCEPTED_YOUTUBE_PROVENANCE:
+                continue
+            row.pop("youtube_video_id", None)
+            row.pop("youtube_video_url", None)
+            row.pop("youtube_video_provenance", None)
 
     for resolution in resolutions:
         key = release_detail_builder.get_detail_key(
@@ -396,6 +476,8 @@ def merge_override_rows(existing_rows: list[dict[str, Any]], resolutions: list[d
         row["youtube_video_provenance"] = resolution["youtube_video_provenance"]
         row.pop("youtube_video_status", None)
         row.pop("youtube_video_review_reason", None)
+        if resolution.get("inferred_title_tracks") and not row.get("title_tracks"):
+            row["title_tracks"] = resolution["inferred_title_tracks"]
         by_key[key] = row
 
     return sorted(
@@ -447,18 +529,23 @@ def build_report(before_details: list[dict[str, Any]], after_details: list[dict[
     resolved_entity_samples = sorted({row["group"] for row in resolutions})[:10]
     label_channel_resolutions = [row for row in resolutions if row.get("selected_channel_owner_type") == "label"]
     team_channel_resolutions = [row for row in resolutions if row.get("selected_channel_owner_type") == "team"]
+    title_track_inferred = [row for row in resolutions if row.get("inferred_title_tracks")]
     return {
         "baseline_rows": len(before_details),
         "baseline_with_mv": before_with_mv,
         "after_with_mv": after_with_mv,
         "coverage_lift": after_with_mv - before_with_mv,
+        "attempted_rows": len(review_rows) + len(resolutions),
         "resolved_now": len(resolutions),
+        "review_row_count": len(review_rows),
         "resolved_entities": len({row["group"] for row in resolutions}),
         "resolved_entity_samples": resolved_entity_samples,
         "label_channel_resolutions": len(label_channel_resolutions),
         "team_channel_resolutions": len(team_channel_resolutions),
+        "title_track_inferred_now": len(title_track_inferred),
         "label_channel_samples": label_channel_resolutions[:10],
         "team_channel_samples": team_channel_resolutions[:10],
+        "title_track_inference_samples": title_track_inferred[:10],
         "unresolved_remainder": len(unresolved_after),
         "review_candidates": review_rows[:20],
         "resolved_samples": resolutions[:20],
@@ -485,9 +572,21 @@ def main() -> None:
         details = [detail for detail in details if detail["group"] in scoped_groups]
 
     resolutions, review_rows = choose_resolutions(details, profiles_by_group, allowlists_by_group)
+    reevaluated_keys = {
+        release_detail_builder.get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"])
+        for detail in details
+        if (
+            (detail.get("youtube_video_status") or release_detail_builder.YOUTUBE_VIDEO_STATUS_UNRESOLVED)
+            in {
+                release_detail_builder.YOUTUBE_VIDEO_STATUS_UNRESOLVED,
+                release_detail_builder.YOUTUBE_VIDEO_STATUS_REVIEW,
+            }
+            or detail.get("youtube_video_provenance") == AUTO_ACCEPTED_YOUTUBE_PROVENANCE
+        )
+    }
 
     full_details = load_json(DETAILS_PATH)
-    merged_overrides = merge_override_rows(existing_overrides, resolutions)
+    merged_overrides = merge_override_rows(existing_overrides, resolutions, reevaluated_keys)
     updated_details = apply_resolutions_to_details(full_details, resolutions)
     report = build_report(full_details, updated_details, resolutions, review_rows)
     if scoped_groups is not None:

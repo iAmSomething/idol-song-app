@@ -666,10 +666,23 @@ def build_youtube_channel_rows(
     for row in sorted(youtube_allowlists, key=lambda item: item["group"].casefold()):
         entity_id = entity_ids[row["group"]]
         primary_channel_url = normalize_url(row.get("primary_team_channel_url"))
+        mv_source_channels = row.get("mv_source_channels") or [
+            channel for channel in row.get("channels") or [] if channel.get("allow_mv_uploads")
+        ]
         allowlist_urls = {normalize_url(url) for url in row.get("mv_allowlist_urls") or []}
+        allowlist_urls.update(normalize_url(channel.get("channel_url")) for channel in mv_source_channels)
         allowlist_urls.discard(None)
 
-        for channel in row.get("channels") or []:
+        merged_channels: List[Dict[str, Any]] = []
+        seen_channel_urls = set()
+        for channel in [*(row.get("channels") or []), *mv_source_channels]:
+            channel_url = normalize_url(channel.get("channel_url"))
+            if channel_url is None or channel_url in seen_channel_urls:
+                continue
+            seen_channel_urls.add(channel_url)
+            merged_channels.append(channel)
+
+        for channel in merged_channels:
             channel_url = normalize_url(channel.get("channel_url"))
             if channel_url is None:
                 continue

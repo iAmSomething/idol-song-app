@@ -31,50 +31,6 @@
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
-    "group": "&TEAM",
-    "release_title": "五月雨 (Samidare)",
-    "release_date": "2024-05-07",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "五月雨 (Samidare)",
-      "Scar to Scar",
-      "君にカエル (Maybe)"
-    ],
-    "candidate_titles": [
-      "五月雨 (Samidare)",
-      "君にカエル (Maybe)"
-    ],
-    "candidate_sources": [
-      "五月雨 (Samidare): release_title_exact | nearby_song_release:2024-05-07",
-      "君にカエル (Maybe): nearby_song_release:2024-04-28"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "&TEAM",
-    "release_title": "青嵐 (Aoarashi)",
-    "release_date": "2024-08-06",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "青嵐 (Aoarashi)",
-      "声変わり",
-      "向日葵 (Imprinted)"
-    ],
-    "candidate_titles": [
-      "声変わり",
-      "青嵐 (Aoarashi)"
-    ],
-    "candidate_sources": [
-      "声変わり: nearby_song_release:2024-07-18",
-      "青嵐 (Aoarashi): release_title_exact | nearby_song_release:2024-08-06"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
     "group": "(G)I-DLE",
     "release_title": "I am",
     "release_date": "2018-05-02",
@@ -176,30 +132,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "(G)I-DLE",
-    "release_title": "Oh my god",
-    "release_date": "2020-08-26",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Oh my god (Japanese ver.)",
-      "Uh-Oh (Japanese ver.)",
-      "Senorita (Japanese ver.)",
-      "Tung-Tung (Empty)",
-      "DUMDi DUMDi (Japanese ver.)"
-    ],
-    "candidate_titles": [
-      "DUMDi DUMDi (Japanese ver.)",
-      "Oh my god (Japanese ver.)"
-    ],
-    "candidate_sources": [
-      "DUMDi DUMDi (Japanese ver.): nearby_song_release:2020-08-03",
-      "Oh my god (Japanese ver.): release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -634,89 +566,6 @@
   },
   {
     "group": "aespa",
-    "release_title": "Girls",
-    "release_date": "2022-07-08",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Girls",
-      "Illusion",
-      "Lingo",
-      "Life’s Too Short",
-      "ICU",
-      "Life’s Too Short (English version)",
-      "Black Mamba",
-      "Forever",
-      "Dreams Come True"
-    ],
-    "candidate_titles": [
-      "Girls",
-      "Life’s Too Short"
-    ],
-    "candidate_sources": [
-      "Girls: release_title_exact | release_title_substring",
-      "Life’s Too Short: nearby_song_release:2022-06-24"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "aespa",
-    "release_title": "Drama",
-    "release_date": "2023-11-10",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Drama",
-      "Trick or Trick",
-      "Don't Blink",
-      "Hot Air Balloon",
-      "YOLO",
-      "You",
-      "Better Things"
-    ],
-    "candidate_titles": [
-      "Better Things",
-      "Drama"
-    ],
-    "candidate_sources": [
-      "Better Things: nearby_song_release:2023-08-18",
-      "Drama: release_title_exact | release_title_substring | nearby_song_release:2023-11-10"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "aespa",
-    "release_title": "Armageddon",
-    "release_date": "2024-05-27",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "Supernova",
-      "Armageddon",
-      "Set the Tone",
-      "Mine",
-      "Licorice",
-      "BAHAMA",
-      "Long Chat (#♥︎)",
-      "Prologue",
-      "Live My Life",
-      "목소리 (Melody)"
-    ],
-    "candidate_titles": [
-      "Armageddon",
-      "Supernova"
-    ],
-    "candidate_sources": [
-      "Armageddon: release_title_exact | release_title_substring",
-      "Supernova: nearby_song_release:2024-05-13"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "aespa",
     "release_title": "SYNK : PARALLEL LINE",
     "release_date": "2024-10-09",
     "stream": "song",
@@ -747,30 +596,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ALL(H)OURS",
-    "release_title": "Smoke Point",
-    "release_date": "2025-02-04",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Smoke Point",
-      "Graffiti",
-      "GIMME GIMME",
-      "Kings & Queens",
-      "Freaky Fresh"
-    ],
-    "candidate_titles": [
-      "Graffiti",
-      "Smoke Point"
-    ],
-    "candidate_sources": [
-      "Graffiti: nearby_song_release:2025-01-17",
-      "Smoke Point: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -884,31 +709,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ARTMS",
-    "release_title": "<Club Icarus>",
-    "release_date": "2025-06-13",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Club for the Broken",
-      "Icarus",
-      "Obsessed",
-      "Goddess",
-      "Verified Beauty",
-      "BURN"
-    ],
-    "candidate_titles": [
-      "BURN",
-      "Icarus"
-    ],
-    "candidate_sources": [
-      "BURN: nearby_song_release:2025-04-04",
-      "Icarus: release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -1209,31 +1009,6 @@
   },
   {
     "group": "ATEEZ",
-    "release_title": "Birthday",
-    "release_date": "2024-10-01",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Birthday",
-      "Royal",
-      "Forevermore",
-      "Birthday (instrumental)",
-      "Royal (instrumental)",
-      "Forevermore (instrumental)"
-    ],
-    "candidate_titles": [
-      "Birthday",
-      "Royal"
-    ],
-    "candidate_sources": [
-      "Birthday: release_title_exact | release_title_substring",
-      "Royal: nearby_song_release:2024-09-03"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ATEEZ",
     "release_title": "GOLDEN HOUR : Part.2",
     "release_date": "2024-11-15",
     "stream": "album",
@@ -1289,34 +1064,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "BABYMONSTER",
-    "release_title": "DRIP",
-    "release_date": "2024-11-01",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "CLIK CLAK",
-      "DRIP",
-      "Love, Maybe",
-      "Really Like You",
-      "BILLIONAIRE",
-      "Love in My Heart",
-      "Woke Up in Tokyo",
-      "FOREVER",
-      "BATTER UP (remix)"
-    ],
-    "candidate_titles": [
-      "DRIP",
-      "FOREVER"
-    ],
-    "candidate_sources": [
-      "DRIP: release_title_exact",
-      "FOREVER: nearby_song_release:2024-07-01"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -1604,29 +1351,6 @@
   },
   {
     "group": "BTOB",
-    "release_title": "Born to Beat",
-    "release_date": "2012-04-03",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Born to Beat",
-      "비밀 (Insane)",
-      "Imagine",
-      "Monday to Sunday"
-    ],
-    "candidate_titles": [
-      "Born to Beat",
-      "비밀 (Insane)"
-    ],
-    "candidate_sources": [
-      "Born to Beat: release_title_exact | release_title_substring",
-      "비밀 (Insane): nearby_song_release:2012-03-21"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "BTOB",
     "release_title": "Move",
     "release_date": "2014-09-23",
     "stream": "album",
@@ -1858,38 +1582,6 @@
   },
   {
     "group": "BTS",
-    "release_title": "YOUTH",
-    "release_date": "2016-09-07",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "INTRODUCTION : YOUTH",
-      "RUN (Japanese ver.)",
-      "FIRE (Japanese ver.)",
-      "DOPE -超ヤベー!- (Japanese ver.)",
-      "Good Day",
-      "Save ME (Japanese ver.)",
-      "フンタン少年団 (Japanese ver.)",
-      "ペップセ (Japanese ver.)",
-      "Wishing on a star",
-      "Butterfly (Japanese ver.)",
-      "FOR YOU",
-      "I NEED U (Japanese ver.)",
-      "EPILOGUE : Young Forever (Japanese ver.)"
-    ],
-    "candidate_titles": [
-      "INTRODUCTION : YOUTH",
-      "RUN (Japanese ver.)"
-    ],
-    "candidate_sources": [
-      "INTRODUCTION : YOUTH: release_title_substring",
-      "RUN (Japanese ver.): nearby_song_release:2016-03-15"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "BTS",
     "release_title": "FACE YOURSELF",
     "release_date": "2018-04-04",
     "stream": "album",
@@ -1911,53 +1603,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "BTS",
-    "release_title": "Permission to Dance",
-    "release_date": "2021-07-09",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "Butter",
-      "Permission to Dance",
-      "Butter (Instrumental)",
-      "Permission to Dance (instrumental)"
-    ],
-    "candidate_titles": [
-      "Butter",
-      "Permission to Dance"
-    ],
-    "candidate_sources": [
-      "Butter: nearby_song_release:2021-05-21",
-      "Permission to Dance: release_title_exact | release_title_substring | nearby_song_release:2021-07-09"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "CHUNG HA",
-    "release_title": "Hands on Me",
-    "release_date": "2017-06-07",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Hands on Me",
-      "Why Don't You Know",
-      "Make a Wish",
-      "우주먼지",
-      "월화수목금토일"
-    ],
-    "candidate_titles": [
-      "Hands on Me",
-      "월화수목금토일"
-    ],
-    "candidate_sources": [
-      "Hands on Me: release_title_exact | release_title_substring",
-      "월화수목금토일: nearby_song_release:2017-04-21"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -2054,31 +1699,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "CHUU",
-    "release_title": "Strawberry Rush",
-    "release_date": "2024-06-25",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Strawberry Rush",
-      "Honeybee",
-      "Daydreamer",
-      "Lucid Dream",
-      "Chocolate",
-      "Chocolate (English ver.)"
-    ],
-    "candidate_titles": [
-      "Chocolate",
-      "Strawberry Rush"
-    ],
-    "candidate_sources": [
-      "Chocolate: nearby_song_release:2024-02-13",
-      "Strawberry Rush: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -3373,31 +2993,6 @@
   },
   {
     "group": "Dreamcatcher",
-    "release_title": "Eclipse",
-    "release_date": "2021-03-24",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "Eclipse",
-      "NO MORE",
-      "Don’t light my fire",
-      "Eclipse (instrumental)",
-      "NO MORE (instrumental)",
-      "Don’t light my fire (instrumental)"
-    ],
-    "candidate_titles": [
-      "Eclipse",
-      "NO MORE"
-    ],
-    "candidate_sources": [
-      "Eclipse: release_title_exact | release_title_substring | nearby_song_release:2021-03-24",
-      "NO MORE: nearby_song_release:2020-11-20"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "Dreamcatcher",
     "release_title": "[Summer Holiday]",
     "release_date": "2021-07-30",
     "stream": "album",
@@ -4018,35 +3613,6 @@
   },
   {
     "group": "EXO",
-    "release_title": "SING FOR YOU",
-    "release_date": "2015-12-10",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Unfair",
-      "Sing For You",
-      "Girl x Friend",
-      "발자국 On the snow",
-      "LIGHTSABER",
-      "Unfair (Chinese version)",
-      "Sing For You (Chinese version)",
-      "Girl x Friend (Chinese version)",
-      "발자국 On the snow (Chinese version)",
-      "LIGHTSABER (Chinese version)"
-    ],
-    "candidate_titles": [
-      "LIGHTSABER",
-      "Sing For You"
-    ],
-    "candidate_sources": [
-      "LIGHTSABER: nearby_song_release:2015-11-11",
-      "Sing For You: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "EXO",
     "release_title": "EX’ACT",
     "release_date": "2016-06-09",
     "stream": "album",
@@ -4177,31 +3743,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "fromis_9",
-    "release_title": "To. Heart",
-    "release_date": "2018-01-24",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "나에게로 오는 길 (intro.)",
-      "To Heart",
-      "환상속의 그대",
-      "피노키오",
-      "Be With You",
-      "유리구두 (MAMA ver.)"
-    ],
-    "candidate_titles": [
-      "To Heart",
-      "유리구두 (MAMA ver.)"
-    ],
-    "candidate_sources": [
-      "To Heart: release_title_exact | release_title_substring",
-      "유리구두 (MAMA ver.): nearby_song_release:2017-11-30"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -4963,29 +4504,6 @@
   },
   {
     "group": "ITZY",
-    "release_title": "CHESHIRE",
-    "release_date": "2022-11-30",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Cheshire",
-      "Snowy",
-      "Freaky",
-      "Boys Like You"
-    ],
-    "candidate_titles": [
-      "Boys Like You",
-      "Cheshire"
-    ],
-    "candidate_sources": [
-      "Boys Like You: nearby_song_release:2022-10-21",
-      "Cheshire: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ITZY",
     "release_title": "KILL MY DOUBT",
     "release_date": "2023-07-31",
     "stream": "album",
@@ -5001,59 +4519,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ITZY",
-    "release_title": "RINGO",
-    "release_date": "2023-10-18",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "RINGO",
-      "Sugar‐holic",
-      "Playlist",
-      "STYLE",
-      "Voltage",
-      "Spice",
-      "Blah Blah Blah",
-      "Can’t tie me down",
-      "SNEAKERS -Japanese ver.-",
-      "Cheshire -Japanese ver.-",
-      "Trust Me (MIDZY) -Japanese ver.-"
-    ],
-    "candidate_titles": [
-      "RINGO",
-      "Sugar‐holic"
-    ],
-    "candidate_sources": [
-      "RINGO: release_title_exact | release_title_substring | nearby_song_release:2023-09-27",
-      "Sugar‐holic: nearby_song_release:2023-10-11"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ITZY",
-    "release_title": "Algorhythm",
-    "release_date": "2024-05-15",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "Algorhythm",
-      "No Biggie",
-      "Algorhythm (instrumental)",
-      "No Biggie (instrumental)"
-    ],
-    "candidate_titles": [
-      "Algorhythm",
-      "No Biggie"
-    ],
-    "candidate_sources": [
-      "Algorhythm: release_title_exact | release_title_substring | nearby_song_release:2024-05-15",
-      "No Biggie: nearby_song_release:2024-05-01"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -5096,30 +4561,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "IVE",
-    "release_title": "Be Alright",
-    "release_date": "2025-07-30",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Be Alright",
-      "DARE ME",
-      "Accendio (Japanese version)",
-      "Blue Heart (Japanese version)",
-      "WOW (Japanese version)"
-    ],
-    "candidate_titles": [
-      "Be Alright",
-      "DARE ME"
-    ],
-    "candidate_sources": [
-      "Be Alright: release_title_exact | release_title_substring | nearby_song_release:2025-07-16",
-      "DARE ME: nearby_song_release:2025-04-21"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -5179,33 +4620,6 @@
   },
   {
     "group": "JEON SOMI",
-    "release_title": "XOXO",
-    "release_date": "2021-10-29",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "DUMB DUMB",
-      "XOXO",
-      "Don’t Let Me Go",
-      "Anymore",
-      "Watermelon",
-      "Birthday",
-      "What You Waiting For",
-      "어질어질 (Outta My Head)"
-    ],
-    "candidate_titles": [
-      "DUMB DUMB",
-      "XOXO"
-    ],
-    "candidate_sources": [
-      "DUMB DUMB: nearby_song_release:2021-08-02",
-      "XOXO: release_title_exact"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "JEON SOMI",
     "release_title": "GAME PLAN",
     "release_date": "2023-08-07",
     "stream": "album",
@@ -5220,30 +4634,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "JEON SOMI",
-    "release_title": "Chaotic & Confused",
-    "release_date": "2025-08-11",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Escapade",
-      "EXTRA",
-      "Chaotic & Confused",
-      "CLOSER",
-      "DELU"
-    ],
-    "candidate_titles": [
-      "Chaotic & Confused",
-      "EXTRA"
-    ],
-    "candidate_sources": [
-      "Chaotic & Confused: release_title_exact | release_title_substring",
-      "EXTRA: nearby_song_release:2025-07-07"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -5328,30 +4718,6 @@
   },
   {
     "group": "KARD",
-    "release_title": "RED MOON",
-    "release_date": "2020-02-12",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "GO BABY",
-      "RED MOON",
-      "ENEMY",
-      "INFERNO",
-      "Dumb Litty"
-    ],
-    "candidate_titles": [
-      "Dumb Litty",
-      "RED MOON"
-    ],
-    "candidate_sources": [
-      "Dumb Litty: nearby_song_release:2019-09-22",
-      "RED MOON: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "KARD",
     "release_title": "Way With Words",
     "release_date": "2020-08-26",
     "stream": "song",
@@ -5383,34 +4749,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "KARD",
-    "release_title": "ICKY",
-    "release_date": "2023-05-23",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "ICKY",
-      "Without You",
-      "Fxxk you",
-      "Been That Boy",
-      "CAKE",
-      "Without You (Alok remix) (radio edit)",
-      "ICKY (inst.)",
-      "Oh NaNa (ASTER remix)",
-      "Ring the Alarm (JERIDE remix)"
-    ],
-    "candidate_titles": [
-      "ICKY",
-      "Without You"
-    ],
-    "candidate_sources": [
-      "ICKY: release_title_exact",
-      "Without You: nearby_song_release:2023-04-10"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -5732,87 +5070,6 @@
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
-    "group": "LE SSERAFIM",
-    "release_title": "UNFORGIVEN",
-    "release_date": "2023-05-01",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "The World Is My Oyster (2023 ver.)",
-      "FEARLESS (2023 ver.)",
-      "Blue Flame (2023 ver.)",
-      "The Hydra",
-      "ANTIFRAGILE",
-      "Impurities",
-      "Burn the Bridge",
-      "UNFORGIVEN",
-      "No‐Return (Into the unknown)",
-      "Eve, Psyche & the Bluebeard’s wife",
-      "FEARNOT (Between you, me and the lamppost)",
-      "Flash Forward",
-      "Fire in the belly"
-    ],
-    "candidate_titles": [
-      "FEARLESS (2023 ver.)",
-      "UNFORGIVEN"
-    ],
-    "candidate_sources": [
-      "FEARLESS (2023 ver.): nearby_song_release:2022-12-15",
-      "UNFORGIVEN: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "LE SSERAFIM",
-    "release_title": "CRAZY",
-    "release_date": "2024-12-11",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "CRAZY (Japanese ver.)",
-      "EASY (Japanese ver.)",
-      "Star Signs"
-    ],
-    "candidate_titles": [
-      "CRAZY (Japanese ver.)",
-      "Star Signs"
-    ],
-    "candidate_sources": [
-      "CRAZY (Japanese ver.): release_title_substring | nearby_song_release:2024-12-11",
-      "Star Signs: nearby_song_release:2024-11-12"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "LE SSERAFIM",
-    "release_title": "SPAGHETTI",
-    "release_date": "2025-10-24",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "SPAGHETTI",
-      "Pearlies (My oyster is the world)",
-      "SPAGHETTI (Member ver.)",
-      "SPAGHETTI (English ver.)",
-      "SPAGHETTI",
-      "Pearlies (My oyster is the world)",
-      "SPAGHETTI (Member ver.)",
-      "SPAGHETTI (English ver.)"
-    ],
-    "candidate_titles": [
-      "Pearlies (My oyster is the world)",
-      "SPAGHETTI"
-    ],
-    "candidate_sources": [
-      "Pearlies (My oyster is the world): nearby_song_release:2025-10-24",
-      "SPAGHETTI: release_title_substring | nearby_song_release:2025-10-24"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
     "group": "LIGHTSUM",
     "release_title": "Light a Wish",
     "release_date": "2021-10-13",
@@ -5923,30 +5180,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "LUN8",
-    "release_title": "Evergreen",
-    "release_date": "2024-06-19",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Evergreen",
-      "My Tune",
-      "LOUDER",
-      "Wild Heart (JP ver.)",
-      "PASTEL (JP ver.)"
-    ],
-    "candidate_titles": [
-      "Evergreen",
-      "My Tune"
-    ],
-    "candidate_sources": [
-      "Evergreen: release_title_exact | release_title_substring",
-      "My Tune: nearby_song_release:2024-06-07"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -6098,31 +5331,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "MAMAMOO",
-    "release_title": "TRAVEL",
-    "release_date": "2020-11-03",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Travel",
-      "딩가딩가 (Dingga)",
-      "AYA",
-      "척 (Chuck)",
-      "Diamond",
-      "잘자 (Good Night)"
-    ],
-    "candidate_titles": [
-      "Travel",
-      "딩가딩가 (Dingga)"
-    ],
-    "candidate_sources": [
-      "Travel: release_title_exact | release_title_substring",
-      "딩가딩가 (Dingga): nearby_song_release:2020-10-20"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -6345,27 +5553,6 @@
   },
   {
     "group": "MONSTA X",
-    "release_title": "LOVE U",
-    "release_date": "2019-09-20",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "LOVE U",
-      "WHO DO U LOVE? (will.i.am remix)"
-    ],
-    "candidate_titles": [
-      "LOVE U",
-      "WHO DO U LOVE? (will.i.am remix)"
-    ],
-    "candidate_sources": [
-      "LOVE U: release_title_exact | release_title_substring | nearby_song_release:2019-09-20",
-      "WHO DO U LOVE? (will.i.am remix): nearby_song_release:2019-06-14"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "MONSTA X",
     "release_title": "FOLLOW – FIND YOU",
     "release_date": "2019-10-28",
     "stream": "album",
@@ -6470,35 +5657,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "MONSTA X",
-    "release_title": "The Dreaming",
-    "release_date": "2021-12-10",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "One Day",
-      "You Problem",
-      "Tied to Your Body",
-      "Whispers in the Dark",
-      "Blame Me",
-      "Secrets",
-      "About Last Night",
-      "Better",
-      "Blow Your Mind",
-      "The Dreaming"
-    ],
-    "candidate_titles": [
-      "One Day",
-      "The Dreaming"
-    ],
-    "candidate_sources": [
-      "One Day: nearby_song_release:2021-09-10",
-      "The Dreaming: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -6629,31 +5787,6 @@
   },
   {
     "group": "NCT DREAM",
-    "release_title": "We Young",
-    "release_date": "2017-08-17",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "We Young",
-      "La La Love",
-      "같은 시간 같은 자리 (Walk you home)",
-      "My Page",
-      "We Young (Chinese ver.)",
-      "Trigger the fever"
-    ],
-    "candidate_titles": [
-      "Trigger the fever",
-      "We Young"
-    ],
-    "candidate_sources": [
-      "Trigger the fever: nearby_song_release:2017-03-15",
-      "We Young: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "NCT DREAM",
     "release_title": "Reload",
     "release_date": "2020-04-29",
     "stream": "album",
@@ -6668,35 +5801,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "NCT DREAM",
-    "release_title": "ISTJ",
-    "release_date": "2023-07-17",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "ISTJ",
-      "Broken Melodies",
-      "Yogurt Shake",
-      "Skateboard",
-      "파랑 (Blue Wave)",
-      "Poison (모래성)",
-      "SOS",
-      "Pretzel (♡)",
-      "제자리 걸음 (Starry Night)",
-      "Like We Just Met"
-    ],
-    "candidate_titles": [
-      "Broken Melodies",
-      "ISTJ"
-    ],
-    "candidate_sources": [
-      "Broken Melodies: nearby_song_release:2023-06-19",
-      "ISTJ: release_title_exact"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -6736,36 +5840,6 @@
   },
   {
     "group": "NCT DREAM",
-    "release_title": "DREAMSCAPE",
-    "release_date": "2024-11-11",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "INTRO : DREAMSCAPE",
-      "When I'm With You",
-      "Flying Kiss",
-      "i hate fruits",
-      "No Escape",
-      "Best of Me",
-      "YOU",
-      "Heavenly",
-      "Night Poem",
-      "Off the Wall",
-      "Rains in Heaven"
-    ],
-    "candidate_titles": [
-      "INTRO : DREAMSCAPE",
-      "Rains in Heaven"
-    ],
-    "candidate_sources": [
-      "INTRO : DREAMSCAPE: release_title_substring",
-      "Rains in Heaven: nearby_song_release:2024-08-23"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "NCT DREAM",
     "release_title": "Go Back to the Future",
     "release_date": "2025-07-14",
     "stream": "album",
@@ -6787,58 +5861,6 @@
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
-    "group": "NCT WISH",
-    "release_title": "Steady",
-    "release_date": "2024-09-24",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Steady",
-      "3 Minutes",
-      "Dunk Shot",
-      "On & On",
-      "Supercute",
-      "Skate",
-      "Hands Up (Korean version)"
-    ],
-    "candidate_titles": [
-      "Dunk Shot",
-      "Steady"
-    ],
-    "candidate_sources": [
-      "Dunk Shot: nearby_song_release:2024-09-09",
-      "Steady: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "NCT WISH",
-    "release_title": "COLOR",
-    "release_date": "2025-09-01",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "COLOR",
-      "Baby Blue",
-      "Surf",
-      "Cheat Code",
-      "Videohood",
-      "WICHU",
-      "Reel‐ationship"
-    ],
-    "candidate_titles": [
-      "COLOR",
-      "Surf"
-    ],
-    "candidate_sources": [
-      "COLOR: release_title_exact | release_title_substring",
-      "Surf: nearby_song_release:2025-08-12"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
     "group": "NewJeans",
     "release_title": "New Jeans",
     "release_date": "2022-08-01",
@@ -6853,52 +5875,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "NewJeans",
-    "release_title": "OMG",
-    "release_date": "2023-01-02",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "OMG",
-      "Ditto"
-    ],
-    "candidate_titles": [
-      "Ditto",
-      "OMG"
-    ],
-    "candidate_sources": [
-      "Ditto: nearby_song_release:2022-12-19",
-      "OMG: release_title_exact | nearby_song_release:2023-01-02"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "NewJeans",
-    "release_title": "Get Up",
-    "release_date": "2023-07-21",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "New Jeans",
-      "Super Shy",
-      "ETA",
-      "Cool With You",
-      "Get Up",
-      "ASAP"
-    ],
-    "candidate_titles": [
-      "Get Up",
-      "Super Shy"
-    ],
-    "candidate_sources": [
-      "Get Up: release_title_exact | release_title_substring",
-      "Super Shy: nearby_song_release:2023-07-07"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -7084,36 +6060,6 @@
   },
   {
     "group": "ONEUS",
-    "release_title": "DEVIL",
-    "release_date": "2021-01-19",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "Intro : Devil is in the detail",
-      "No diggity",
-      "Leftover",
-      "Incomplete",
-      "Youth",
-      "BBUSYEO",
-      "Rewind",
-      "Lion Heart",
-      "What You Doing?",
-      "I.P.U",
-      "Outro : Connect with US"
-    ],
-    "candidate_titles": [
-      "BBUSYEO",
-      "Intro : Devil is in the detail"
-    ],
-    "candidate_sources": [
-      "BBUSYEO: nearby_song_release:2020-12-01",
-      "Intro : Devil is in the detail: release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ONEUS",
     "release_title": "BINARY CODE",
     "release_date": "2021-05-11",
     "stream": "album",
@@ -7290,31 +6236,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ONEWE",
-    "release_title": "MAKE SOME NOISE",
-    "release_date": "2017-01-06",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Make Some Noise",
-      "부비적 비비적",
-      "별보다 빛나는 (Starlight)",
-      "Make Some Noise (Inst.)",
-      "부비적 비비적 (Inst.)",
-      "별보다 빛나는 (Starlight) (Inst.)"
-    ],
-    "candidate_titles": [
-      "Make Some Noise",
-      "별보다 빛나는 (Starlight)"
-    ],
-    "candidate_sources": [
-      "Make Some Noise: release_title_exact | release_title_substring",
-      "별보다 빛나는 (Starlight): nearby_song_release:2016-11-10"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -8278,48 +7199,6 @@
   },
   {
     "group": "RIIZE",
-    "release_title": "Get a Guitar",
-    "release_date": "2023-09-04",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "Get a Guitar",
-      "Memories"
-    ],
-    "candidate_titles": [
-      "Get a Guitar",
-      "Memories"
-    ],
-    "candidate_sources": [
-      "Get a Guitar: release_title_exact | release_title_substring | nearby_song_release:2023-09-04",
-      "Memories: nearby_song_release:2023-08-21"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "RIIZE",
-    "release_title": "Impossible",
-    "release_date": "2024-04-18",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "Impossible",
-      "Siren"
-    ],
-    "candidate_titles": [
-      "Impossible",
-      "Siren"
-    ],
-    "candidate_sources": [
-      "Impossible: release_title_exact | release_title_substring | nearby_song_release:2024-04-18",
-      "Siren: nearby_song_release:2024-04-03"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "RIIZE",
     "release_title": "RE:WORKS",
     "release_date": "2024-10-10",
     "stream": "song",
@@ -8647,75 +7526,6 @@
   },
   {
     "group": "SHINee",
-    "release_title": "I'm Your Boy",
-    "release_date": "2014-09-24",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "Downtown Baby",
-      "Lucky Star",
-      "Everybody",
-      "Picasso",
-      "3 2 1",
-      "365",
-      "Sunny Day Hero",
-      "Perfect 10",
-      "Bounce",
-      "Dream Girl",
-      "Colors of the Season",
-      "Boys Meet U",
-      "Boys Meet U Music Video",
-      "3 2 1 Music Video",
-      "Everybody Dance Music Video",
-      "Lucky Star Music Video",
-      "Downtown Baby Dance Music Video",
-      "Downtown Baby Music Video Shooting Sketch",
-      "I'm Your Boy Jacket Shooting Sketch & Special Interview"
-    ],
-    "candidate_titles": [
-      "I'm Your Boy Jacket Shooting Sketch & Special Interview",
-      "Lucky Star"
-    ],
-    "candidate_sources": [
-      "I'm Your Boy Jacket Shooting Sketch & Special Interview: release_title_substring",
-      "Lucky Star: nearby_song_release:2014-06-11"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "SHINee",
-    "release_title": "D×D×D",
-    "release_date": "2015-12-29",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "D×D×D",
-      "Wishful Thinking",
-      "WANTED",
-      "BOYS WILL BE BOYS",
-      "View (Japanese Version)",
-      "Your Number",
-      "Good Good Feeling",
-      "Photograph",
-      "Sweet Surprise",
-      "Sing Your Song",
-      "Moon Drop",
-      "LOVE"
-    ],
-    "candidate_titles": [
-      "D×D×D",
-      "Sing Your Song"
-    ],
-    "candidate_sources": [
-      "D×D×D: release_title_exact",
-      "Sing Your Song: nearby_song_release:2015-10-27"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "SHINee",
     "release_title": "The Story of Light EP.2",
     "release_date": "2018-06-11",
     "stream": "album",
@@ -8780,27 +7590,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "STAYC",
-    "release_title": "Teddy Bear",
-    "release_date": "2023-02-14",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "Teddy Bear",
-      "Poppy (Korean ver.)"
-    ],
-    "candidate_titles": [
-      "Poppy (Korean ver.)",
-      "Teddy Bear"
-    ],
-    "candidate_sources": [
-      "Poppy (Korean ver.): nearby_song_release:2022-11-16",
-      "Teddy Bear: release_title_exact | release_title_substring | nearby_song_release:2023-02-14"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -8954,91 +7743,6 @@
   },
   {
     "group": "Stray Kids",
-    "release_title": "Clé : LEVANTER",
-    "release_date": "2019-12-09",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "STOP",
-      "Double Knot",
-      "Levanter",
-      "Booster",
-      "Astronaut",
-      "Sunshine",
-      "You Can STAY"
-    ],
-    "candidate_titles": [
-      "Double Knot",
-      "Levanter"
-    ],
-    "candidate_sources": [
-      "Double Knot: nearby_song_release:2019-10-09",
-      "Levanter: release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "Stray Kids",
-    "release_title": "GO生",
-    "release_date": "2020-06-17",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "GO生",
-      "神메뉴",
-      "EASY",
-      "PACEMAKER",
-      "비행기",
-      "일상",
-      "PHOBIA",
-      "청사진",
-      "타",
-      "HAVEN",
-      "TOP",
-      "SLUMP",
-      "GONE DAYS",
-      "바보라도 알아"
-    ],
-    "candidate_titles": [
-      "GO生",
-      "TOP"
-    ],
-    "candidate_sources": [
-      "GO生: release_title_exact",
-      "TOP: nearby_song_release:2020-05-13"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "Stray Kids",
-    "release_title": "ALL IN",
-    "release_date": "2020-11-04",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "ALL IN",
-      "FAM",
-      "One Day",
-      "God's Menu -Japanese ver.-",
-      "Back Door -Japanese ver.-",
-      "TOP -Japanese ver.-",
-      "SLUMP -Japanese ver.-"
-    ],
-    "candidate_titles": [
-      "ALL IN",
-      "TOP -Japanese ver.-"
-    ],
-    "candidate_sources": [
-      "ALL IN: release_title_exact | release_title_substring",
-      "TOP -Japanese ver.-: nearby_song_release:2020-05-13"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "Stray Kids",
     "release_title": "킹덤 <FINAL : WHO IS THE KING?>",
     "release_date": "2021-05-28",
     "stream": "album",
@@ -9168,35 +7872,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "Stray Kids",
-    "release_title": "GIANT",
-    "release_date": "2024-11-13",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "GIANT",
-      "Chk Chk Boom -Japanese ver.-",
-      "NIGHT",
-      "Falling Up",
-      "WHY?",
-      "Saiyan",
-      "love is painful",
-      "Christmas Love",
-      "NIGHT (English ver.)",
-      "Falling Up (English ver.)"
-    ],
-    "candidate_titles": [
-      "Falling Up",
-      "GIANT"
-    ],
-    "candidate_sources": [
-      "Falling Up: nearby_song_release:2024-10-07",
-      "GIANT: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -10623,87 +9298,6 @@
   },
   {
     "group": "TWICE",
-    "release_title": "BDZ",
-    "release_date": "2018-09-12",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "BDZ",
-      "One More Time",
-      "Candy Pop",
-      "L.O.V.E",
-      "Wishing",
-      "Say it again",
-      "Wake Me Up",
-      "BRAND NEW GIRL",
-      "Be as ONE",
-      "I WANT YOU BACK"
-    ],
-    "candidate_titles": [
-      "BDZ",
-      "Wake Me Up"
-    ],
-    "candidate_sources": [
-      "BDZ: release_title_exact | nearby_song_release:2018-08-17",
-      "Wake Me Up: nearby_song_release:2018-04-25"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "TWICE",
-    "release_title": "YES or YES",
-    "release_date": "2018-11-05",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "YES or YES",
-      "SAY YOU LOVE ME",
-      "LALALA",
-      "YOUNG & WILD",
-      "SUNSET",
-      "AFTER MOON",
-      "BDZ (Korean ver.)"
-    ],
-    "candidate_titles": [
-      "BDZ (Korean ver.)",
-      "YES or YES"
-    ],
-    "candidate_sources": [
-      "BDZ (Korean ver.): nearby_song_release:2018-08-17",
-      "YES or YES: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "TWICE",
-    "release_title": "Feel Special",
-    "release_date": "2019-09-23",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Feel Special",
-      "RAINBOW",
-      "GET LOUD",
-      "TRICK IT",
-      "LOVE FOOLISH",
-      "21:29",
-      "BREAKTHROUGH (Korean ver.)"
-    ],
-    "candidate_titles": [
-      "BREAKTHROUGH (Korean ver.)",
-      "Feel Special"
-    ],
-    "candidate_sources": [
-      "BREAKTHROUGH (Korean ver.): nearby_song_release:2019-06-12",
-      "Feel Special: release_title_exact | release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "TWICE",
     "release_title": "&TWICE",
     "release_date": "2019-11-20",
     "stream": "album",
@@ -10723,63 +9317,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "More than two nearby song-release title-track candidates were found.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "TWICE",
-    "release_title": "Perfect World",
-    "release_date": "2021-07-28",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "Perfect World",
-      "BETTER",
-      "Good at Love",
-      "Fanfare",
-      "Kura Kura",
-      "Four‐leaf Clover",
-      "In the summer",
-      "PIECES OF LOVE",
-      "Thank you, Family",
-      "PROMISE"
-    ],
-    "candidate_titles": [
-      "Kura Kura",
-      "Perfect World"
-    ],
-    "candidate_sources": [
-      "Kura Kura: nearby_song_release:2021-04-21",
-      "Perfect World: release_title_exact | release_title_substring | nearby_song_release:2021-06-30"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "TWICE",
-    "release_title": "Celebrate",
-    "release_date": "2022-07-27",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "Celebrate",
-      "Voices of Delight",
-      "TICK TOCK",
-      "Flow like waves",
-      "That’s all I’m saying",
-      "Bitter Sweet",
-      "Sandcastle",
-      "Just be yourself",
-      "Doughnut"
-    ],
-    "candidate_titles": [
-      "Celebrate",
-      "Just be yourself"
-    ],
-    "candidate_sources": [
-      "Celebrate: release_title_exact | release_title_substring | nearby_song_release:2022-07-15",
-      "Just be yourself: nearby_song_release:2022-03-22"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -10822,34 +9359,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "TWICE",
-    "release_title": "ENEMY",
-    "release_date": "2025-08-26",
-    "stream": "album",
-    "release_kind": "album",
-    "track_titles": [
-      "Up to you",
-      "ENEMY",
-      "FINE",
-      "One day",
-      "Blind in Love",
-      "Love is more",
-      "The wish",
-      "Glow",
-      "Like 1"
-    ],
-    "candidate_titles": [
-      "ENEMY",
-      "Like 1"
-    ],
-    "candidate_sources": [
-      "ENEMY: release_title_exact | release_title_substring | nearby_song_release:2025-07-30",
-      "Like 1: nearby_song_release:2025-08-20"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -10908,28 +9417,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "TWS",
-    "release_title": "はじめまして",
-    "release_date": "2025-06-30",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "はじめまして",
-      "BLOOM",
-      "plot twist (Japanese ver.)"
-    ],
-    "candidate_titles": [
-      "BLOOM",
-      "はじめまして"
-    ],
-    "candidate_sources": [
-      "BLOOM: nearby_song_release:2025-06-01",
-      "はじめまして: release_title_exact | release_title_substring | nearby_song_release:2025-06-30"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {
@@ -12098,31 +10585,6 @@
   },
   {
     "group": "YOUNG POSSE",
-    "release_title": "Year 1: We Still Loading",
-    "release_date": "2024-10-18",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "We Still Loading",
-      "MACARONI CHEESE (inst.)",
-      "XXL (inst.)",
-      "On My Scars (inst.)",
-      "ATE THAT (inst.)",
-      "We Still Loading (inst.)"
-    ],
-    "candidate_titles": [
-      "On My Scars (inst.)",
-      "We Still Loading"
-    ],
-    "candidate_sources": [
-      "On My Scars (inst.): nearby_song_release:2024-06-26",
-      "We Still Loading: release_title_substring"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "YOUNG POSSE",
     "release_title": "Growing Pain pt.1 : FREE",
     "release_date": "2025-08-14",
     "stream": "album",
@@ -12359,32 +10821,6 @@
     "candidate_titles": [],
     "candidate_sources": [],
     "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ZEROBASEONE",
-    "release_title": "You had me at HELLO",
-    "release_date": "2024-05-13",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Solar POWER",
-      "Feel the POP",
-      "Dear ECLIPSE",
-      "SWEAT",
-      "Sunday RIDE",
-      "HELLO",
-      "Feel the POP (sped up ver.)"
-    ],
-    "candidate_titles": [
-      "HELLO",
-      "SWEAT"
-    ],
-    "candidate_sources": [
-      "HELLO: release_title_substring",
-      "SWEAT: nearby_song_release:2024-04-24"
-    ],
-    "review_reason": "Multiple title-track candidates were found, but the evidence mix requires a manual override.",
     "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
   },
   {

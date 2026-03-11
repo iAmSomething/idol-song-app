@@ -160,6 +160,96 @@
   },
   {
     "group": "BLACKPINK",
+    "release_title": "마지막처럼",
+    "release_date": "2017-06-22",
+    "stream": "song",
+    "youtube_video_id": "Amq-qlqbjYA",
+    "youtube_video_url": "https://www.youtube.com/watch?v=Amq-qlqbjYA",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "BLACKPINK",
+    "release_date": "2017-08-08",
+    "stream": "song",
+    "youtube_video_id": "bwmSjveL3Lc",
+    "youtube_video_url": "https://www.youtube.com/watch?v=bwmSjveL3Lc",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "DDU‐DU DDU‐DU",
+    "release_date": "2018-08-22",
+    "stream": "song",
+    "youtube_video_id": "IHNzOHi8sJs",
+    "youtube_video_url": "https://www.youtube.com/watch?v=IHNzOHi8sJs",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "Kill This Love",
+    "release_date": "2019-04-04",
+    "stream": "song",
+    "youtube_video_id": "2S24-y0Ij3Y",
+    "youtube_video_url": "https://www.youtube.com/watch?v=2S24-y0Ij3Y",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "KILL THIS LOVE",
+    "release_date": "2019-04-05",
+    "stream": "album",
+    "youtube_video_id": "2S24-y0Ij3Y",
+    "youtube_video_url": "https://www.youtube.com/watch?v=2S24-y0Ij3Y",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "How You Like That",
+    "release_date": "2020-06-26",
+    "stream": "song",
+    "youtube_video_id": "ioNng23DkIM",
+    "youtube_video_url": "https://www.youtube.com/watch?v=ioNng23DkIM",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "Ice Cream",
+    "release_date": "2020-08-28",
+    "stream": "song",
+    "youtube_video_id": "vRXZj0DzXIA",
+    "youtube_video_url": "https://www.youtube.com/watch?v=vRXZj0DzXIA",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "THE ALBUM",
+    "release_date": "2020-10-02",
+    "stream": "album",
+    "youtube_video_id": "ioNng23DkIM",
+    "youtube_video_url": "https://www.youtube.com/watch?v=ioNng23DkIM",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "Pink Venom",
+    "release_date": "2022-08-19",
+    "stream": "song",
+    "youtube_video_id": "gQlMMD8auMs",
+    "youtube_video_url": "https://www.youtube.com/watch?v=gQlMMD8auMs",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "BORN PINK",
+    "release_date": "2022-09-16",
+    "stream": "album",
+    "youtube_video_id": "gQlMMD8auMs",
+    "youtube_video_url": "https://www.youtube.com/watch?v=gQlMMD8auMs",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BLACKPINK",
     "release_title": "뛰어 (JUMP)",
     "release_date": "2025-07-11",
     "stream": "song",
@@ -196,6 +286,138 @@
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nlFdyL6NGSDWRNc8FOo6bodDyqEavQTIQ",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "BTS",
+    "release_title": "NO MORE DREAM",
+    "release_date": "2014-06-04",
+    "stream": "song",
+    "youtube_video_id": "rBG5L7UsUxA",
+    "youtube_video_url": "https://www.youtube.com/watch?v=rBG5L7UsUxA",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "Danger",
+    "release_date": "2014-11-19",
+    "stream": "song",
+    "youtube_video_id": "43r6lXilbcQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=43r6lXilbcQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "I NEED U",
+    "release_date": "2015-12-08",
+    "stream": "song",
+    "youtube_video_id": "jjskoRh8GTE",
+    "youtube_video_url": "https://www.youtube.com/watch?v=jjskoRh8GTE",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "RUN",
+    "release_date": "2016-03-15",
+    "stream": "song",
+    "youtube_video_id": "wKysONrSmew",
+    "youtube_video_url": "https://www.youtube.com/watch?v=wKysONrSmew",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "Make It Right",
+    "release_date": "2019-10-18",
+    "stream": "song",
+    "youtube_video_id": "eXBu09fwe3I",
+    "youtube_video_url": "https://www.youtube.com/watch?v=eXBu09fwe3I",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "Black Swan",
+    "release_date": "2020-01-17",
+    "stream": "song",
+    "youtube_video_id": "0lapF4DQPKQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=0lapF4DQPKQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "Stay Gold",
+    "release_date": "2020-06-19",
+    "stream": "song",
+    "youtube_video_id": "9IHwqdz8Xhw",
+    "youtube_video_url": "https://www.youtube.com/watch?v=9IHwqdz8Xhw",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "MAP OF THE SOUL : 7 〜 THE JOURNEY 〜",
+    "release_date": "2020-07-14",
+    "stream": "album",
+    "youtube_video_id": "9IHwqdz8Xhw",
+    "youtube_video_url": "https://www.youtube.com/watch?v=9IHwqdz8Xhw",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "Dynamite",
+    "release_date": "2020-08-21",
+    "stream": "song",
+    "youtube_video_id": "gdZLi9oWNZg",
+    "youtube_video_url": "https://www.youtube.com/watch?v=gdZLi9oWNZg",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "BE",
+    "release_date": "2020-11-20",
+    "stream": "album",
+    "youtube_video_id": "gdZLi9oWNZg",
+    "youtube_video_url": "https://www.youtube.com/watch?v=gdZLi9oWNZg",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "Film out",
+    "release_date": "2021-04-01",
+    "stream": "song",
+    "youtube_video_id": "zFT3f9biz68",
+    "youtube_video_url": "https://www.youtube.com/watch?v=zFT3f9biz68",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "Butter",
+    "release_date": "2021-05-21",
+    "stream": "song",
+    "youtube_video_id": "WMweEpGlu_U",
+    "youtube_video_url": "https://www.youtube.com/watch?v=WMweEpGlu_U",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "Permission to Dance",
+    "release_date": "2021-07-09",
+    "stream": "song",
+    "youtube_video_id": "CuklIb9d3fI",
+    "youtube_video_url": "https://www.youtube.com/watch?v=CuklIb9d3fI",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "BTS",
+    "release_title": "My Universe",
+    "release_date": "2021-09-24",
+    "stream": "song"
+  },
+  {
+    "group": "BTS",
+    "release_title": "Yet to Come (The Most Beautiful Moment)",
+    "release_date": "2022-06-10",
+    "stream": "song",
+    "youtube_video_id": "kXpOEzNZ8hQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=kXpOEzNZ8hQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "CRAVITY",
@@ -269,6 +491,18 @@
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mrB7hh-Hh7QeHPFJ6MkL33GqDj3Kp66C4",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "FIFTY FIFTY",
+    "release_title": "Too Much Part 1",
+    "release_date": "2025-11-04",
+    "stream": "album",
+    "title_tracks": [
+      "가위바위보 (Eeny meeny miny moe)"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=xAOT6ISD9jo",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "fromis_9",
@@ -347,6 +581,14 @@
     "youtube_video_id": "piSq8IioghU",
     "youtube_video_url": "https://www.youtube.com/watch?v=piSq8IioghU",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "IVE",
+    "release_title": "BANG BANG",
+    "release_date": "2026-02-09",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=9qkpcLK422o",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "IVE",
@@ -458,6 +700,25 @@
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
+    "group": "MCND",
+    "release_title": "아뜨뜨뜨",
+    "release_date": "2024-08-08",
+    "stream": "song",
+    "detail_status": "manual_override",
+    "detail_provenance": "manual review single-track verification via Apple Music release listing",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "아뜨뜨뜨",
+        "is_title_track": true
+      }
+    ],
+    "title_tracks": [
+      "아뜨뜨뜨"
+    ],
+    "title_track_provenance": "manual review single-track verification via Apple Music release listing"
+  },
+  {
     "group": "MONSTA X",
     "release_title": "THE X",
     "release_date": "2025-09-01",
@@ -550,6 +811,18 @@
     "provenance": "ytmusicapi exact album search match"
   },
   {
+    "group": "ONEUS",
+    "release_title": "原",
+    "release_date": "2026-01-20",
+    "stream": "song",
+    "title_tracks": [
+      "Grenade"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=_UQCWEp-8BQ",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
     "group": "ONEWE",
     "release_title": "MAZE : AD ASTRA",
     "release_date": "2025-10-07",
@@ -579,6 +852,18 @@
     "youtube_video_id": "5eCFXT6Gnio",
     "youtube_video_url": "https://www.youtube.com/watch?v=5eCFXT6Gnio",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "PLAVE",
+    "release_title": "PLBBUU",
+    "release_date": "2025-11-10",
+    "stream": "song",
+    "title_tracks": [
+      "BBUU!"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=8L001YT4k6k",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "Purple Kiss",
@@ -617,6 +902,14 @@
   },
   {
     "group": "RESCENE",
+    "release_title": "Heart Drop",
+    "release_date": "2025-11-06",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=ByX8EZq8500",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "RESCENE",
     "release_title": "lip bomb",
     "release_date": "2025-11-25",
     "stream": "album",
@@ -624,23 +917,12 @@
     "provenance": "ytmusicapi exact album search match"
   },
   {
-    "group": "MCND",
-    "release_title": "아뜨뜨뜨",
-    "release_date": "2024-08-08",
+    "group": "RIIZE",
+    "release_title": "All of You",
+    "release_date": "2026-02-09",
     "stream": "song",
-    "detail_status": "manual_override",
-    "detail_provenance": "manual review single-track verification via Apple Music release listing",
-    "tracks": [
-      {
-        "order": 1,
-        "title": "아뜨뜨뜨",
-        "is_title_track": true
-      }
-    ],
-    "title_tracks": [
-      "아뜨뜨뜨"
-    ],
-    "title_track_provenance": "manual review single-track verification via Apple Music release listing"
+    "youtube_video_url": "https://www.youtube.com/watch?v=yfKBI5l81-A",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "SAY MY NAME",
@@ -733,6 +1015,14 @@
     "youtube_video_provenance": "official artist channel watch URL"
   },
   {
+    "group": "TNX",
+    "release_title": "CALL ME BACK",
+    "release_date": "2026-01-22",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=0-xKvImq7Ek",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
     "group": "TOMORROW X TOGETHER",
     "release_title": "Love Language",
     "release_date": "2025-05-02",
@@ -765,6 +1055,27 @@
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lqPet88T7Vp2TgI7_A6pRAlQg9OamXC5A",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "TUNEXX",
+    "release_title": "SET BY US ONLY",
+    "release_date": "2026-03-03",
+    "stream": "album",
+    "title_tracks": [
+      "내가 살아있다는 증거"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=cQESe4Jc0rE",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "SIGNAL",
+    "release_date": "2017-05-15",
+    "stream": "album",
+    "youtube_video_id": "VQtonf1fv_s",
+    "youtube_video_url": "https://www.youtube.com/watch?v=VQtonf1fv_s",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "TWICE",
@@ -809,6 +1120,15 @@
     "youtube_video_id": "wQ_POfToaVY",
     "youtube_video_url": "https://www.youtube.com/watch?v=wQ_POfToaVY",
     "youtube_video_provenance": "manual review priority slice: official TWICE JAPAN Music Video"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "What is Love?",
+    "release_date": "2018-04-09",
+    "stream": "album",
+    "youtube_video_id": "i0p1bmr0EmE",
+    "youtube_video_url": "https://www.youtube.com/watch?v=i0p1bmr0EmE",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "TWICE",
@@ -877,6 +1197,132 @@
   },
   {
     "group": "TWICE",
+    "release_title": "YES or YES",
+    "release_date": "2018-11-05",
+    "stream": "album",
+    "youtube_video_id": "mAKsZ26SabQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=mAKsZ26SabQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "FANCY YOU",
+    "release_date": "2019-04-22",
+    "stream": "album",
+    "youtube_video_id": "kOHB85vDuow",
+    "youtube_video_url": "https://www.youtube.com/watch?v=kOHB85vDuow",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "MORE & MORE",
+    "release_date": "2020-06-01",
+    "stream": "album",
+    "youtube_video_id": "mH0_XpSHkZo",
+    "youtube_video_url": "https://www.youtube.com/watch?v=mH0_XpSHkZo",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "Alcohol‐Free",
+    "release_date": "2021-06-09",
+    "stream": "song",
+    "youtube_video_id": "XA2YEHn-A8Q",
+    "youtube_video_url": "https://www.youtube.com/watch?v=XA2YEHn-A8Q",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "Taste of Love",
+    "release_date": "2021-06-11",
+    "stream": "album",
+    "youtube_video_id": "XA2YEHn-A8Q",
+    "youtube_video_url": "https://www.youtube.com/watch?v=XA2YEHn-A8Q",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "The Feels",
+    "release_date": "2021-10-01",
+    "stream": "song",
+    "youtube_video_id": "f5_wn8mexmM",
+    "youtube_video_url": "https://www.youtube.com/watch?v=f5_wn8mexmM",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "Formula of Love: O+T=<3",
+    "release_date": "2021-11-12",
+    "stream": "album",
+    "youtube_video_id": "f5_wn8mexmM",
+    "youtube_video_url": "https://www.youtube.com/watch?v=f5_wn8mexmM",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "MOONLIGHT SUNRISE",
+    "release_date": "2023-01-20",
+    "stream": "song",
+    "youtube_video_id": "cKlEE_EYuNM",
+    "youtube_video_url": "https://www.youtube.com/watch?v=cKlEE_EYuNM",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "READY TO BE",
+    "release_date": "2023-03-10",
+    "stream": "album",
+    "youtube_video_id": "cKlEE_EYuNM",
+    "youtube_video_url": "https://www.youtube.com/watch?v=cKlEE_EYuNM",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "I GOT YOU",
+    "release_date": "2024-02-02",
+    "stream": "song",
+    "youtube_video_id": "haf67eKF0uo",
+    "youtube_video_url": "https://www.youtube.com/watch?v=haf67eKF0uo",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "ONE SPARK",
+    "release_date": "2024-02-23",
+    "stream": "song",
+    "youtube_video_id": "jCzez_q8si0",
+    "youtube_video_url": "https://www.youtube.com/watch?v=jCzez_q8si0",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "With YOU‐th",
+    "release_date": "2024-02-23",
+    "stream": "album",
+    "youtube_video_id": "haf67eKF0uo",
+    "youtube_video_url": "https://www.youtube.com/watch?v=haf67eKF0uo",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "STRATEGY",
+    "release_date": "2024-12-06",
+    "stream": "album",
+    "youtube_video_id": "Sz_wWzgh-vQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=Sz_wWzgh-vQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "THIS IS FOR",
+    "release_date": "2025-07-11",
+    "stream": "album",
+    "youtube_video_id": "eHHQaoEW30Q",
+    "youtube_video_url": "https://www.youtube.com/watch?v=eHHQaoEW30Q",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "TWICE",
     "release_title": "TEN: The Story Goes On",
     "release_date": "2025-10-10",
     "stream": "album",
@@ -893,12 +1339,32 @@
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
+    "group": "VERIVERY",
+    "release_title": "Lost and Found",
+    "release_date": "2025-12-01",
+    "stream": "song",
+    "title_tracks": [
+      "RED (Beggin’)"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=-gzqfjzqG6U",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
     "group": "WEi",
     "release_title": "Wonderland",
     "release_date": "2025-10-29",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lzTVFnoEu2q0cAabgW-h-o3VHC_6C0Q9M",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "WJSN",
+    "release_title": "Bloom hour",
+    "release_date": "2026-02-25",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=ItvDjeiqdlE",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "Xdinary Heroes",
@@ -917,12 +1383,32 @@
     "provenance": "ytmusicapi exact album search match"
   },
   {
+    "group": "XLOV",
+    "release_title": "UXLXVE",
+    "release_date": "2025-11-05",
+    "stream": "album",
+    "title_tracks": [
+      "Rizz"
+    ],
+    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
+    "youtube_video_url": "https://www.youtube.com/watch?v=NCuFonpf-qk",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
+  },
+  {
     "group": "YOUNG POSSE",
     "release_title": "Growing Pain pt.1 : FREE",
     "release_date": "2025-08-14",
     "stream": "album",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nboKa9DtcS0FWNllBthpaoUaHl0dHr_oU",
     "provenance": "ytmusicapi exact album search match"
+  },
+  {
+    "group": "YOUNG POSSE",
+    "release_title": "VISA / Pilot3",
+    "release_date": "2026-01-27",
+    "stream": "song",
+    "youtube_video_url": "https://www.youtube.com/watch?v=obqsSgY4oU8",
+    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
   },
   {
     "group": "ZEROBASEONE",
@@ -959,125 +1445,5 @@
     "youtube_video_id": "v5_GoNFr5wc",
     "youtube_video_url": "https://www.youtube.com/watch?v=v5_GoNFr5wc",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
-  },
-  {
-    "group": "IVE",
-    "release_title": "BANG BANG",
-    "release_date": "2026-02-09",
-    "stream": "song",
-    "youtube_video_url": "https://www.youtube.com/watch?v=9qkpcLK422o",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "RIIZE",
-    "release_title": "All of You",
-    "release_date": "2026-02-09",
-    "stream": "song",
-    "youtube_video_url": "https://www.youtube.com/watch?v=yfKBI5l81-A",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "WJSN",
-    "release_title": "Bloom hour",
-    "release_date": "2026-02-25",
-    "stream": "song",
-    "youtube_video_url": "https://www.youtube.com/watch?v=ItvDjeiqdlE",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "TUNEXX",
-    "release_title": "SET BY US ONLY",
-    "release_date": "2026-03-03",
-    "stream": "album",
-    "title_tracks": [
-      "내가 살아있다는 증거"
-    ],
-    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
-    "youtube_video_url": "https://www.youtube.com/watch?v=cQESe4Jc0rE",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "TNX",
-    "release_title": "CALL ME BACK",
-    "release_date": "2026-01-22",
-    "stream": "song",
-    "youtube_video_url": "https://www.youtube.com/watch?v=0-xKvImq7Ek",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "XLOV",
-    "release_title": "UXLXVE",
-    "release_date": "2025-11-05",
-    "stream": "album",
-    "title_tracks": [
-      "Rizz"
-    ],
-    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
-    "youtube_video_url": "https://www.youtube.com/watch?v=NCuFonpf-qk",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "PLAVE",
-    "release_title": "PLBBUU",
-    "release_date": "2025-11-10",
-    "stream": "song",
-    "title_tracks": [
-      "BBUU!"
-    ],
-    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
-    "youtube_video_url": "https://www.youtube.com/watch?v=8L001YT4k6k",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "YOUNG POSSE",
-    "release_title": "VISA / Pilot3",
-    "release_date": "2026-01-27",
-    "stream": "song",
-    "youtube_video_url": "https://www.youtube.com/watch?v=obqsSgY4oU8",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "ONEUS",
-    "release_title": "原",
-    "release_date": "2026-01-20",
-    "stream": "song",
-    "title_tracks": [
-      "Grenade"
-    ],
-    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
-    "youtube_video_url": "https://www.youtube.com/watch?v=_UQCWEp-8BQ",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "FIFTY FIFTY",
-    "release_title": "Too Much Part 1",
-    "release_date": "2025-11-04",
-    "stream": "album",
-    "title_tracks": [
-      "가위바위보 (Eeny meeny miny moe)"
-    ],
-    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
-    "youtube_video_url": "https://www.youtube.com/watch?v=xAOT6ISD9jo",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "VERIVERY",
-    "release_title": "Lost and Found",
-    "release_date": "2025-12-01",
-    "stream": "song",
-    "title_tracks": [
-      "RED (Beggin’)"
-    ],
-    "title_track_provenance": "manual review: user-provided official YouTube MV URL",
-    "youtube_video_url": "https://www.youtube.com/watch?v=-gzqfjzqG6U",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
-  },
-  {
-    "group": "RESCENE",
-    "release_title": "Heart Drop",
-    "release_date": "2025-11-06",
-    "stream": "song",
-    "youtube_video_url": "https://www.youtube.com/watch?v=ByX8EZq8500",
-    "youtube_video_provenance": "manual review: user-provided official YouTube MV URL"
   }
 ]

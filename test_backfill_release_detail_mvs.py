@@ -59,6 +59,71 @@ class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
             ],
         )
 
+    def test_infer_title_track_from_candidate_title_matches_unique_track(self) -> None:
+        detail = {
+            "group": "YENA",
+            "tracks": [
+                {"title": "Before Anyone Else"},
+                {"title": "SMILEY (feat. BIBI)"},
+            ],
+        }
+
+        self.assertEqual(
+            backfill.infer_title_tracks_from_candidate_title(
+                detail,
+                "YENA - SMILEY (feat. BIBI) Official MV",
+            ),
+            ["SMILEY (feat. BIBI)"],
+        )
+
+    def test_merge_override_rows_persists_inferred_title_tracks(self) -> None:
+        merged = backfill.merge_override_rows(
+            [
+                {
+                    "group": "YENA",
+                    "release_title": "SMiLEY",
+                    "release_date": "2022-01-17",
+                    "stream": "album",
+                }
+            ],
+            [
+                {
+                    "group": "YENA",
+                    "release_title": "SMiLEY",
+                    "release_date": "2022-01-17",
+                    "stream": "album",
+                    "youtube_video_id": "abc123",
+                    "youtube_video_url": "https://www.youtube.com/watch?v=abc123",
+                    "youtube_video_provenance": "test",
+                    "inferred_title_tracks": ["SMILEY (feat. BIBI)"],
+                }
+            ],
+        )
+
+        self.assertEqual(merged[0]["title_tracks"], ["SMILEY (feat. BIBI)"])
+
+    def test_merge_override_rows_clears_stale_auto_accepted_mv_when_reevaluated(self) -> None:
+        key = "bts::danger::2014-11-19::song"
+        merged = backfill.merge_override_rows(
+            [
+                {
+                    "group": "BTS",
+                    "release_title": "Danger",
+                    "release_date": "2014-11-19",
+                    "stream": "song",
+                    "youtube_video_id": "old123",
+                    "youtube_video_url": "https://www.youtube.com/watch?v=old123",
+                    "youtube_video_provenance": backfill.AUTO_ACCEPTED_YOUTUBE_PROVENANCE,
+                }
+            ],
+            [],
+            {key},
+        )
+
+        self.assertNotIn("youtube_video_id", merged[0])
+        self.assertNotIn("youtube_video_url", merged[0])
+        self.assertNotIn("youtube_video_provenance", merged[0])
+
 
 if __name__ == "__main__":
     unittest.main()
