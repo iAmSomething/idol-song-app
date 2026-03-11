@@ -512,13 +512,24 @@ python3 sync_upcoming_pipeline_to_neon.py
 - `web/src/data/watchlist.json`
 - `web/src/data/upcomingCandidates.json`
 
-scheduled workflow `weekly-kpop-scan.yml`에서 `DATABASE_URL`이 설정돼 있으면, release/upcoming dual-write 뒤에 아래 체인이 같은 run 안에서 이어진다.
+scheduled workflow는 두 cadence로 나뉜다.
+
+- fast path: `.github/workflows/weekly-kpop-scan.yml`
+  - daily upcoming/news freshness, DB sync, projection refresh, parity/shadow/runtime/freshness artifact
+- slow path: `.github/workflows/catalog-enrichment-refresh.yml`
+  - weekly release history/detail/title/MV enrichment, historical coverage, readiness artifact
+
+두 workflow 모두 `DATABASE_URL`이 설정돼 있으면 dual-write 뒤에 아래 verification chain을 같은 run 안에서 이어서 실행한다.
 
 - `npm run projection:refresh`
+- `npm run worker:cadence`
+- `npm run report:bundle`
 - `python build_backend_json_parity_report.py`
 - `npm run shadow:verify`
+- `npm run runtime:gate`
+- `npm run migration:scorecard`
 
-그래서 canonical write가 끝난 뒤 projection과 backend-vs-JSON evidence도 같은 자동화 체인에서 같이 최신화된다.
+그래서 canonical write가 끝난 뒤 projection과 backend-vs-JSON evidence, readiness artifact도 같은 bundle metadata 기준으로 같이 최신화된다.
 
 ## Projection Refresh
 
@@ -563,6 +574,7 @@ python3 build_backend_json_parity_report.py
 기본 보고서 출력:
 
 - `backend/reports/backend_json_parity_report.json`
+- `backend/reports/report_bundle_metadata.json`을 같이 넘기면 derived bundle id를 stamp 한다.
 
 현재 parity scope:
 
@@ -628,22 +640,29 @@ npm run runtime:measure -- --base-url http://127.0.0.1:3213 --iterations 5
 
 ```bash
 cd backend
-npm run worker:cadence -- --workflow weekly-kpop-scan.yml --limit 12
+npm run worker:cadence
 ```
 
 기본 보고서 출력:
 
 - `backend/reports/worker_cadence_report.json`
 
+이 report는 아래 topology를 함께 기록한다.
+
+- `daily_upcoming`: current freshness primary path
+- `catalog_enrichment`: slower historical enrichment path
+
 3. combined runtime gate report
 
 ```bash
 cd backend
-npm run runtime:gate
+npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming
+npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json
 ```
 
 기본 보고서 출력:
 
+- `backend/reports/report_bundle_metadata.json`
 - `backend/reports/runtime_gate_report.json`
 - `backend/reports/historical_release_detail_coverage_report.json`
 - `backend/reports/historical_release_detail_coverage_summary.md`
@@ -652,7 +671,7 @@ npm run runtime:gate
 
 ```bash
 cd backend
-npm run migration:scorecard
+npm run migration:scorecard -- --bundle-path ./reports/report_bundle_metadata.json
 ```
 
 기본 보고서 출력:

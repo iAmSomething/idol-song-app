@@ -42,11 +42,12 @@
 | release dual-write | `python3 sync_release_pipeline_to_neon.py` | `backend/reports/release_pipeline_db_sync_summary.json` |
 | upcoming dual-write | `python3 sync_upcoming_pipeline_to_neon.py` | `backend/reports/upcoming_pipeline_db_sync_summary.json` |
 | projection refresh | `cd backend && npm run projection:refresh` | `backend/reports/projection_refresh_summary.json` |
+| report bundle metadata | `cd backend && npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming` | `backend/reports/report_bundle_metadata.json` |
 | backend freshness handoff | `cd backend && npm run freshness:handoff -- --target production --backend-public-url <url>` | `backend/reports/backend_freshness_handoff.json` |
 | backend-vs-JSON parity | `python3 build_backend_json_parity_report.py` | `backend/reports/backend_json_parity_report.json` |
 | endpoint shadow verify | `cd backend && npm run shadow:verify` | `backend/reports/backend_shadow_read_report.json` |
 | runtime latency / error sample | `cd backend && npm run runtime:measure -- --base-url <url>` | `backend/reports/read_api_runtime_measurements.json` |
-| worker cadence sample | `cd backend && npm run worker:cadence -- --workflow weekly-kpop-scan.yml --limit 12` | `backend/reports/worker_cadence_report.json` |
+| worker cadence sample | `cd backend && npm run worker:cadence` | `backend/reports/worker_cadence_report.json` |
 | combined runtime gate | `cd backend && npm run runtime:gate` | `backend/reports/runtime_gate_report.json` |
 | migration readiness scorecard | `cd backend && npm run migration:scorecard` | `backend/reports/migration_readiness_scorecard.json`, `backend/reports/migration_readiness_scorecard.md` |
 
@@ -57,7 +58,7 @@
 | canonical write model | importer / sync scripts | idempotent write summary 확인 |
 | projection read model | backend projection refresh | refresh lag와 row count 확인 |
 | read API runtime | Fastify service | `/health`, `/ready`, representative endpoint smoke |
-| worker cadence | weekly scan workflow | 최근 scheduled success / failure rate 확인 |
+| worker cadence | daily fast path + slow enrichment workflow | fast freshness와 slow catalog enrichment cadence를 각각 확인 |
 | user-facing read path | Pages build + source switch | cut-over surface 기본값과 rollback 경로 확인 |
 | review/debug state | JSON queues + review endpoints + override files | unresolved를 triage하고 provenance 유지 |
 
@@ -108,12 +109,16 @@ cd ..
 5. verification
 
 ```bash
+cd backend
+npm run worker:cadence
+npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming
+cd ..
 python3 build_backend_json_parity_report.py
 cd backend
-npm run shadow:verify
-npm run runtime:gate
-npm run freshness:handoff -- --target production --backend-public-url <url>
-npm run migration:scorecard
+npm run shadow:verify -- --bundle-path ./reports/report_bundle_metadata.json
+npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json
+npm run freshness:handoff -- --target production --backend-public-url <url> --bundle-path ./reports/report_bundle_metadata.json
+npm run migration:scorecard -- --bundle-path ./reports/report_bundle_metadata.json
 cd ..
 ```
 
@@ -144,6 +149,7 @@ runbook을 따라 한 번 실제로 걷는 최소 경로는 아래다.
 - [ ] `backend_shadow_read_report.json`이 target surface 기준 clean 또는 승인된 drift만 가진다.
 - [ ] `runtime_gate_report.json`에서 해당 stage gate가 `pass` 또는 승인된 `needs_review`다.
 - [ ] `migration_readiness_scorecard.json`에서 overall이 blocker-free이고, blocker-grade category가 모두 허용 범위 안이다.
+- [ ] `report_bundle_metadata.json`과 derived artifact의 bundle id가 일치한다.
 - [ ] Pages / local build에 `VITE_API_BASE_URL`이 올바르게 들어간다.
 - [ ] `backend_freshness_handoff.json`이 latest sync / projection 순서와 target binding을 `pass`로 증명한다.
 - [ ] shipped web cut-over surface가 API-only runtime으로 동작한다.
@@ -185,6 +191,7 @@ runbook을 따라 한 번 실제로 걷는 최소 경로는 아래다.
 | manual override | `release_detail_overrides.json` |
 | source-timeline / surface drift | `backend/reports/backend_shadow_read_report.json` |
 | canonical-vs-export drift | `backend/reports/backend_json_parity_report.json` |
+| bundle/source snapshot drift | `backend/reports/report_bundle_metadata.json`, `backend/reports/runtime_gate_report.json`, `backend/reports/migration_readiness_scorecard.json` |
 
 운영 원칙:
 

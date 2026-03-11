@@ -1,19 +1,19 @@
-name: Daily Upcoming Sync
+name: Catalog Enrichment Refresh
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 1 * * 0"
 
 permissions:
   contents: write
 
 concurrency:
-  group: daily-upcoming-sync
+  group: catalog-enrichment-refresh
   cancel-in-progress: false
 
 jobs:
-  scan:
+  enrich:
     runs-on: ubuntu-latest
 
     steps:
@@ -51,26 +51,24 @@ jobs:
         working-directory: backend
         run: npm ci
 
-      - name: Rebuild watchlist and refresh upcoming signals
+      - name: Run slower catalog enrichment path
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           BACKEND_PUBLIC_URL: ${{ vars.VITE_API_BASE_URL }}
         run: |
-          python build_tracking_watchlist.py
-          python scan_upcoming_candidates.py
-          python build_manual_review_queue.py
-          cp tracking_watchlist.json web/src/data/watchlist.json
-          cp upcoming_release_candidates.json web/src/data/upcomingCandidates.json
-          python hydrate_release_windows.py
+          python build_release_history_musicbrainz.py
+          python build_release_details_musicbrainz.py
+          python youtube_channel_allowlists.py
+          python backfill_release_detail_mvs.py
           python build_mv_manual_review_queue.py
           if [ -n "${DATABASE_URL:-}" ]; then
-            python sync_upcoming_pipeline_to_neon.py --summary-path /tmp/upcoming-pipeline-db-sync-summary.json
             python sync_release_pipeline_to_neon.py --summary-path /tmp/release-pipeline-db-sync-summary.json
+            python sync_upcoming_pipeline_to_neon.py --summary-path /tmp/upcoming-pipeline-db-sync-summary.json
             (
               cd backend
               npm run projection:refresh
               npm run worker:cadence
-              npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming
+              npm run report:bundle -- --bundle-kind catalog-enrichment --cadence-profile weekly-enrichment
             )
             python build_backend_json_parity_report.py --bundle-path backend/reports/report_bundle_metadata.json
             (
@@ -93,22 +91,24 @@ jobs:
         working-directory: web
         run: npm run build
 
-      - name: Upload backend freshness handoff artifact
+      - name: Upload migration readiness artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: backend-freshness-handoff-production
-          path: backend/reports/backend_freshness_handoff.json
+          name: migration-readiness-scorecard
+          path: |
+            backend/reports/migration_readiness_scorecard.json
+            backend/reports/migration_readiness_scorecard.md
           if-no-files-found: warn
 
-      - name: Commit refreshed data
+      - name: Commit refreshed enrichment data
         run: |
           if git diff --quiet; then
-            echo "No data changes to commit."
+            echo "No enrichment changes to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tracking_watchlist.json tracking_watchlist.csv upcoming_release_candidates.json upcoming_release_candidates.csv manual_review_queue.json manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv web/src/data/watchlist.json web/src/data/upcomingCandidates.json web/src/data/releases.json web/src/data/releaseArtwork.json web/src/data/releaseDetails.json web/src/data/releaseChangeLog.json backend/reports/projection_refresh_summary.json backend/reports/worker_cadence_report.json backend/reports/report_bundle_metadata.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json backend/reports/runtime_gate_report.json backend/reports/migration_readiness_scorecard.json backend/reports/migration_readiness_scorecard.md backend/reports/backend_freshness_handoff.json
-          git commit -m "chore: refresh daily upcoming sync data"
+          git add verified_release_history_mb.json verified_release_history_mb.csv verified_release_history_mb_unresolved.json title_track_manual_review_queue.json title_track_manual_review_queue.csv release_detail_manual_review_queue.json release_detail_manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv web/src/data/releaseHistory.json web/src/data/releaseDetails.json web/src/data/releases.json web/src/data/releaseArtwork.json web/src/data/youtubeChannelAllowlists.json web/src/data/releaseChangeLog.json backend/reports/historical_release_detail_coverage_report.json backend/reports/historical_release_detail_coverage_summary.md backend/reports/projection_refresh_summary.json backend/reports/worker_cadence_report.json backend/reports/report_bundle_metadata.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json backend/reports/runtime_gate_report.json backend/reports/migration_readiness_scorecard.json backend/reports/migration_readiness_scorecard.md backend/reports/backend_freshness_handoff.json
+          git commit -m "chore: refresh catalog enrichment data"
           git push

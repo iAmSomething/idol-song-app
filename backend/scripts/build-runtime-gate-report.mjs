@@ -3,6 +3,8 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
+import { buildBundleConsistency, readJsonIfExists } from './lib/reportBundle.mjs';
+
 const DEFAULT_REPORT_PATH = resolve(process.cwd(), './reports/runtime_gate_report.json');
 const DEFAULT_LATENCY_REPORT_PATH = resolve(process.cwd(), './reports/read_api_runtime_measurements.json');
 const DEFAULT_CADENCE_REPORT_PATH = resolve(process.cwd(), './reports/worker_cadence_report.json');
@@ -13,6 +15,7 @@ const DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH = resolve(
   process.cwd(),
   './reports/historical_release_detail_coverage_report.json',
 );
+const DEFAULT_BUNDLE_PATH = resolve(process.cwd(), './reports/report_bundle_metadata.json');
 
 const GATE_THRESHOLDS = {
   latency: {
@@ -32,8 +35,8 @@ const GATE_THRESHOLDS = {
   workerCadence: {
     passFailureRate: 0.1,
     reviewFailureRate: 0.25,
-    passLastSuccessAgeHours: 80,
-    reviewLastSuccessAgeHours: 96,
+    passLastSuccessAgeHours: 30,
+    reviewLastSuccessAgeHours: 48,
   },
 };
 
@@ -46,6 +49,7 @@ function parseArgs(argv) {
     parityReportPath: DEFAULT_PARITY_REPORT_PATH,
     shadowReportPath: DEFAULT_SHADOW_REPORT_PATH,
     historicalCoverageReportPath: DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH,
+    bundlePath: DEFAULT_BUNDLE_PATH,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -82,6 +86,11 @@ function parseArgs(argv) {
     }
     if (value === '--historical-coverage-report-path') {
       options.historicalCoverageReportPath = resolve(process.cwd(), argv[index + 1]);
+      index += 1;
+      continue;
+    }
+    if (value === '--bundle-path') {
+      options.bundlePath = resolve(process.cwd(), argv[index + 1]);
       index += 1;
       continue;
     }
@@ -181,8 +190,11 @@ function buildFreshnessGate(projectionReport) {
 }
 
 function buildWorkerCadenceGate(cadenceReport) {
-  const failureRate = cadenceReport?.totals?.scheduled_failure_rate;
-  const lastSuccessAgeHours = cadenceReport?.cadence?.last_success_age_hours;
+  const primaryPathKey = cadenceReport?.primary_path_key ?? null;
+  const primaryPath = primaryPathKey ? cadenceReport?.topology?.[primaryPathKey] ?? null : null;
+  const observedSource = primaryPath ?? cadenceReport;
+  const failureRate = observedSource?.totals?.scheduled_failure_rate;
+  const lastSuccessAgeHours = observedSource?.cadence?.last_success_age_hours;
   const pass =
     typeof failureRate === 'number' &&
     typeof lastSuccessAgeHours === 'number' &&
@@ -197,9 +209,12 @@ function buildWorkerCadenceGate(cadenceReport) {
   return {
     status: deriveStatus({ pass, review }),
     observed: {
+      primary_path_key: primaryPathKey,
+      cadence_label: observedSource?.cadence_label ?? null,
       scheduled_failure_rate: failureRate ?? null,
       last_success_age_hours: lastSuccessAgeHours ?? null,
-      scheduled_runs: cadenceReport?.totals?.scheduled_runs ?? 0,
+      scheduled_runs: observedSource?.totals?.scheduled_runs ?? 0,
+      cadence_status: observedSource?.cadence_status ?? null,
     },
     thresholds: GATE_THRESHOLDS.workerCadence,
   };
@@ -255,14 +270,16 @@ function buildWebToJsonDemotionGate(runtimeChecks, dependencyChecks) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const [latencyReport, cadenceReport, projectionReport, parityReport, shadowReport, historicalCoverageReport] = await Promise.all([
-    loadJson(options.latencyReportPath),
-    loadJson(options.cadenceReportPath),
-    loadJson(options.projectionReportPath),
-    loadJson(options.parityReportPath),
-    loadJson(options.shadowReportPath),
-    loadJson(options.historicalCoverageReportPath),
-  ]);
+  const [latencyReport, cadenceReport, projectionReport, parityReport, shadowReport, historicalCoverageReport, reportBundle] =
+    await Promise.all([
+      loadJson(options.latencyReportPath),
+      loadJson(options.cadenceReportPath),
+      loadJson(options.projectionReportPath),
+      loadJson(options.parityReportPath),
+      loadJson(options.shadowReportPath),
+      loadJson(options.historicalCoverageReportPath),
+      readJsonIfExists(options.bundlePath),
+    ]);
 
   const runtimeChecks = {
     api_latency: buildLatencyGate(latencyReport),
@@ -270,6 +287,12 @@ async function main() {
     projection_freshness: buildFreshnessGate(projectionReport),
     worker_cadence: buildWorkerCadenceGate(cadenceReport),
   };
+  const bundleConsistency = buildBundleConsistency({
+    bundle: reportBundle,
+    parityReport,
+    shadowReport,
+    historicalCoverageReport,
+  });
 
   const dependencyChecks = {
     parity: buildDependencyGate(parityReport, 'clean', 'backend_json_parity_report'),
@@ -279,6 +302,11 @@ async function main() {
       'cutover_ready',
       'historical_release_detail_coverage_report',
     ),
+    bundle_consistency: {
+      status: bundleConsistency.status,
+      observed: bundleConsistency,
+      label: 'report_bundle_metadata',
+    },
   };
 
   const stageGates = {
@@ -294,12 +322,15 @@ async function main() {
     `parity dependency: ${dependencyChecks.parity.status}`,
     `shadow dependency: ${dependencyChecks.shadow.status}`,
     `historical catalog completeness dependency: ${dependencyChecks.historical_catalog_completeness.status}`,
+    `bundle consistency: ${bundleConsistency.status}`,
     `shadow -> web cutover gate: ${stageGates.shadow_to_web_cutover}`,
     `web cutover -> JSON demotion gate: ${stageGates.web_cutover_to_json_demotion}`,
   ];
 
   const report = {
     generated_at: new Date().toISOString(),
+    report_bundle: reportBundle,
+    bundle_consistency: bundleConsistency,
     thresholds: GATE_THRESHOLDS,
     evidence_paths: {
       latency_report: options.latencyReportPath,
@@ -308,6 +339,7 @@ async function main() {
       parity_report: options.parityReportPath,
       shadow_report: options.shadowReportPath,
       historical_coverage_report: options.historicalCoverageReportPath,
+      bundle_report: options.bundlePath,
     },
     summary_lines: summaryLines,
     runtime_checks: runtimeChecks,

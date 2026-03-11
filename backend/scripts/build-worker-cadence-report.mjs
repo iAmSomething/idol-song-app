@@ -7,13 +7,70 @@ import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
 const DEFAULT_LIMIT = 12;
-const DEFAULT_WORKFLOW = 'weekly-kpop-scan.yml';
 const DEFAULT_REPO = 'iAmSomething/idol-song-app';
 const DEFAULT_REPORT_PATH = resolve(process.cwd(), './reports/worker_cadence_report.json');
 
+const DEFAULT_WORKFLOW_CONFIGS = [
+  {
+    key: 'daily_upcoming',
+    workflow: 'weekly-kpop-scan.yml',
+    cadence_label: 'daily',
+    schedule_expectation: '0 0 * * *',
+    runtime_gate_role: 'backend freshness primary path',
+    responsibilities: [
+      'watchlist rebuild',
+      'upcoming/news scan',
+      'manual review queue build',
+      'release-window hydration',
+      'DB sync',
+      'projection refresh',
+      'parity / shadow / runtime / freshness artifacts',
+      'release change log',
+    ],
+    summary_artifacts: [
+      'backend/reports/worker_cadence_report.json',
+      'backend/reports/report_bundle_metadata.json',
+      'backend/reports/backend_json_parity_report.json',
+      'backend/reports/backend_shadow_read_report.json',
+      'backend/reports/runtime_gate_report.json',
+      'backend/reports/backend_freshness_handoff.json',
+    ],
+    thresholds: {
+      pass_last_success_age_hours: 30,
+      review_last_success_age_hours: 48,
+    },
+  },
+  {
+    key: 'catalog_enrichment',
+    workflow: 'catalog-enrichment-refresh.yml',
+    cadence_label: 'weekly',
+    schedule_expectation: '0 1 * * 0',
+    runtime_gate_role: 'historical catalog enrichment and readiness path',
+    responsibilities: [
+      'release history rebuild',
+      'release detail/title-track enrichment',
+      'MV backfill and review queue refresh',
+      'DB sync',
+      'projection refresh',
+      'parity / shadow / runtime / readiness artifacts',
+    ],
+    summary_artifacts: [
+      'backend/reports/worker_cadence_report.json',
+      'backend/reports/report_bundle_metadata.json',
+      'backend/reports/historical_release_detail_coverage_report.json',
+      'backend/reports/migration_readiness_scorecard.json',
+      'backend/reports/migration_readiness_scorecard.md',
+    ],
+    thresholds: {
+      pass_last_success_age_hours: 192,
+      review_last_success_age_hours: 240,
+    },
+  },
+];
+
 function parseArgs(argv) {
   const options = {
-    workflow: DEFAULT_WORKFLOW,
+    workflowConfigs: [],
     repo: DEFAULT_REPO,
     limit: DEFAULT_LIMIT,
     reportPath: DEFAULT_REPORT_PATH,
@@ -22,7 +79,22 @@ function parseArgs(argv) {
   for (let index = 0; index < argv.length; index += 1) {
     const value = argv[index];
     if (value === '--workflow') {
-      options.workflow = argv[index + 1];
+      options.workflowConfigs.push({
+        key: String(argv[index + 1] ?? '')
+          .replace(/\.ya?ml$/i, '')
+          .replace(/[^a-z0-9]+/gi, '_')
+          .toLowerCase(),
+        workflow: argv[index + 1],
+        cadence_label: 'custom',
+        schedule_expectation: null,
+        runtime_gate_role: 'custom cadence sample',
+        responsibilities: [],
+        summary_artifacts: [],
+        thresholds: {
+          pass_last_success_age_hours: 80,
+          review_last_success_age_hours: 96,
+        },
+      });
       index += 1;
       continue;
     }
@@ -46,6 +118,10 @@ function parseArgs(argv) {
 
   if (!Number.isInteger(options.limit) || options.limit <= 0) {
     throw new Error('--limit must be a positive integer');
+  }
+
+  if (options.workflowConfigs.length === 0) {
+    options.workflowConfigs = DEFAULT_WORKFLOW_CONFIGS;
   }
 
   return options;
@@ -87,13 +163,27 @@ function average(values) {
 }
 
 async function fetchWorkflowRuns({ repo, workflow, limit }) {
-  const { stdout } = await execFileAsync('gh', [
-    'api',
-    `repos/${repo}/actions/workflows/${workflow}/runs?per_page=${limit}`,
-    '--jq',
-    '.workflow_runs',
-  ]);
-  return JSON.parse(stdout);
+  try {
+    const { stdout } = await execFileAsync('gh', [
+      'api',
+      `repos/${repo}/actions/workflows/${workflow}/runs?per_page=${limit}`,
+      '--jq',
+      '.workflow_runs',
+    ]);
+    return {
+      workflow_registered: true,
+      runs: JSON.parse(stdout),
+    };
+  } catch (error) {
+    const stderr = `${error?.stderr ?? ''}`;
+    if (stderr.includes('404')) {
+      return {
+        workflow_registered: false,
+        runs: [],
+      };
+    }
+    throw error;
+  }
 }
 
 function summarizeRuns(runs) {
@@ -163,15 +253,103 @@ function summarizeRuns(runs) {
   };
 }
 
+function buildPathReport(config, workflowData, sampleLimit) {
+  const summary = summarizeRuns(workflowData.runs);
+  const lastSuccessAgeHours = summary.cadence.last_success_age_hours;
+
+  return {
+    key: config.key,
+    workflow: config.workflow,
+    workflow_registered: workflowData.workflow_registered,
+    cadence_label: config.cadence_label,
+    schedule_expectation: config.schedule_expectation,
+    runtime_gate_role: config.runtime_gate_role,
+    responsibilities: config.responsibilities,
+    summary_artifacts: config.summary_artifacts,
+    thresholds: config.thresholds,
+    sample_limit: sampleLimit,
+    ...summary,
+    cadence_status:
+      !workflowData.workflow_registered
+        ? 'workflow_not_registered'
+        : summary.totals.scheduled_runs === 0
+          ? 'no_scheduled_sample'
+          : typeof lastSuccessAgeHours === 'number' &&
+              lastSuccessAgeHours <= config.thresholds.pass_last_success_age_hours
+            ? 'pass'
+            : typeof lastSuccessAgeHours === 'number' &&
+                lastSuccessAgeHours <= config.thresholds.review_last_success_age_hours
+              ? 'needs_review'
+              : 'fail',
+  };
+}
+
+function buildSummaryLines(paths, primaryPathKey) {
+  return paths.map((entry) => {
+    const prefix = entry.key === primaryPathKey ? '[primary]' : '[secondary]';
+    const scheduledRuns = entry.totals.scheduled_runs;
+    const failureRate =
+      typeof entry.totals.scheduled_failure_rate === 'number' ? entry.totals.scheduled_failure_rate : 'n/a';
+    const lastSuccessAge =
+      typeof entry.cadence.last_success_age_hours === 'number' ? `${entry.cadence.last_success_age_hours}h` : 'n/a';
+    return `${prefix} ${entry.key}: cadence=${entry.cadence_label}, status=${entry.cadence_status}, scheduled_runs=${scheduledRuns}, failure_rate=${failureRate}, last_success_age=${lastSuccessAge}`;
+  });
+}
+
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const runs = await fetchWorkflowRuns(options);
+  const pathReports = await Promise.all(
+    options.workflowConfigs.map(async (config) => {
+      const workflowData = await fetchWorkflowRuns({
+        repo: options.repo,
+        workflow: config.workflow,
+        limit: options.limit,
+      });
+      return buildPathReport(config, workflowData, options.limit);
+    }),
+  );
+
+  const primaryPath =
+    pathReports.find((entry) => entry.key === 'daily_upcoming') ??
+    pathReports.find((entry) => entry.key === DEFAULT_WORKFLOW_CONFIGS[0].key) ??
+    pathReports[0];
+
+  const topology = Object.fromEntries(
+    pathReports.map((entry) => [
+      entry.key,
+      {
+        workflow: entry.workflow,
+        workflow_registered: entry.workflow_registered,
+        cadence_label: entry.cadence_label,
+        schedule_expectation: entry.schedule_expectation,
+        runtime_gate_role: entry.runtime_gate_role,
+        responsibilities: entry.responsibilities,
+        summary_artifacts: entry.summary_artifacts,
+        thresholds: entry.thresholds,
+        cadence_status: entry.cadence_status,
+        sample_limit: entry.sample_limit,
+        sample_window: entry.sample_window,
+        totals: entry.totals,
+        duration_minutes: entry.duration_minutes,
+        cadence: entry.cadence,
+        latest_runs: entry.latest_runs,
+      },
+    ]),
+  );
+
   const report = {
     generated_at: new Date().toISOString(),
-    workflow: options.workflow,
     repo: options.repo,
     sample_limit: options.limit,
-    ...summarizeRuns(runs),
+    primary_path_key: primaryPath.key,
+    summary_lines: buildSummaryLines(pathReports, primaryPath.key),
+    topology,
+    workflow: primaryPath.workflow,
+    sample_window: primaryPath.sample_window,
+    totals: primaryPath.totals,
+    duration_minutes: primaryPath.duration_minutes,
+    cadence: primaryPath.cadence,
+    latest_runs: primaryPath.latest_runs,
   };
 
   await mkdir(dirname(options.reportPath), { recursive: true });
