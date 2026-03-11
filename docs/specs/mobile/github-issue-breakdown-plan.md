@@ -139,3 +139,27 @@
 ### 7.4 Working rule
 - 새 RN 작업은 위 순서를 기본으로 집행하되, dependency가 강한 항목은 한 PR에서 묶을 수 있다.
 - `#425`는 umbrella, `#456`은 traceability anchor, `#454`는 최종 gate로 유지한다.
+
+## 8. Launch-Grade Visual Identity Track
+
+### 8.1 Light-mode visual identity
+1. `#511` visual identity system 고정
+2. `#512` app icon system
+3. `#515` richer non-card component patterns
+4. `#516` placeholder / badge / fallback asset pack
+5. `#513` splash + restrained launch animation
+6. `#514` premium loading / skeleton / retry-feedback
+7. `#517` motion system
+8. `#518` export assets / implementation handoff
+
+### 8.2 Dark-mode split
+1. `#519` dark mode umbrella
+2. `#520` semantic token and theme mapping
+3. `#521` shared components and main screen adaptation
+4. `#522` splash / loading / placeholder dark assets
+5. `#523` dark-mode accessibility and contrast QA
+
+### 8.3 Rule
+- `#511`은 visual identity 기준을 잠그는 anchor issue다.
+- `#519`는 dark mode 전체 축을 관리하는 umbrella다.
+- visual identity child issue와 dark mode child issue는 서로 dependency는 있지만 다른 sign-off로 추적한다.

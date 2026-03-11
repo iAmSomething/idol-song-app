@@ -9,6 +9,8 @@
 - 목적: 빠른 스캔과 명확한 이동
 - 금지: 과한 장식, 큰 히어로, 버튼과 칩의 시각적 혼동
 
+launch-grade visual identity의 표면 계층과 child issue 분리는 `launch-grade-visual-identity-system.md`를 우선 참조한다.
+
 ## 3. Spacing Scale
 - `4`: 아이콘과 텍스트의 최소 내부 간격
 - `8`: chip 내부, 아주 짧은 그룹 간격
@@ -29,6 +31,11 @@
 - primary 카드: 기본 카드보다 한 단계 높은 elevation
 - bottom sheet: 배경 dim + 명확한 separation shadow
 - 금지: 카드마다 높은 shadow를 중첩 적용
+
+규칙:
+- 하나의 화면에서 강한 elevation 표면은 최대 1개
+- summary/notice/context는 카드보다 `tonal panel` 또는 `strip`로 먼저 해결한다.
+- 카드 3장 이상이 같은 depth로 반복되면 non-card surface 재구성을 먼저 검토한다.
 
 ## 6. Typography Roles
 - Screen Title: 화면 최상단 제목
