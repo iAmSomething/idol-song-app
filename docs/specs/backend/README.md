@@ -73,6 +73,9 @@
    - daily / weekly / monthly null hygiene cadence와 owner checklist
    - artifact handoff order, escalation rule, review ritual
    - service-link/title-track/entity-identity gap workbench artifact contract
+23. `trusted-upcoming-notification-events.md`
+   - trusted upcoming signal -> canonical notification event / operator alert contract
+   - fingerprint, dedupe, destination, summary artifact 규칙
 
 ## 읽는 순서
 
@@ -98,6 +101,7 @@
 20. `migration-readiness-scorecard.md`
 21. `canonical-null-hygiene-operating-model.md`
 22. `canonical-null-hygiene-cadence.md`
+23. `trusted-upcoming-notification-events.md`
 
 ## 원칙
 

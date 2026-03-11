@@ -12,6 +12,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 - `docs/specs/backend/mobile-adoption-readiness-review.md`
 - `docs/specs/backend/backend-secret-inventory-and-rotation.md`
 - `docs/specs/backend/canonical-null-hygiene-operating-model.md`
+- `docs/specs/backend/trusted-upcoming-notification-events.md`
 
 현재 포함 범위:
 
@@ -513,6 +514,22 @@ python3 sync_upcoming_pipeline_to_neon.py
 - `web/src/data/watchlist.json`
 - `web/src/data/upcomingCandidates.json`
 
+trusted upcoming signal을 operator alert / mobile push 후보 event로 승격하려면 이어서 아래를 실행한다.
+
+```bash
+set -a
+source ~/.config/idol-song-app/neon.env
+set +a
+
+python3 -m pip install -r backend/requirements-import.txt
+python3 sync_trusted_upcoming_notification_events.py
+```
+
+기본 보고서 출력:
+
+- `backend/reports/trusted_upcoming_notification_event_summary.json`
+- `backend/reports/trusted_upcoming_operator_alert_report.md`
+
 scheduled workflow는 두 cadence로 나뉜다.
 
 - fast path: `.github/workflows/weekly-kpop-scan.yml`
@@ -673,6 +690,8 @@ npm run gap:workbenches
 - `backend/reports/entity_identity_workbench.json`
 - `backend/reports/entity_identity_workbench_entities.csv`
 - `backend/reports/entity_identity_field_queue.csv`
+- `backend/reports/trusted_upcoming_notification_event_summary.json`
+- `backend/reports/trusted_upcoming_operator_alert_report.md`
 
 이 report는 아래 topology를 함께 기록한다.
 

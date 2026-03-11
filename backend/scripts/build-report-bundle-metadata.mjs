@@ -26,6 +26,11 @@ const DEFAULT_WORKER_CADENCE_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'wo
 const DEFAULT_SERVICE_LINK_GAP_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'service_link_gap_queues.json');
 const DEFAULT_TITLE_TRACK_GAP_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'title_track_gap_queue.json');
 const DEFAULT_ENTITY_IDENTITY_WORKBENCH_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'entity_identity_workbench.json');
+const DEFAULT_TRUSTED_UPCOMING_NOTIFICATION_REPORT_PATH = path.join(
+  BACKEND_DIR,
+  'reports',
+  'trusted_upcoming_notification_event_summary.json',
+);
 
 function parseArgs(argv) {
   const options = {
@@ -41,6 +46,7 @@ function parseArgs(argv) {
     serviceLinkGapReportPath: DEFAULT_SERVICE_LINK_GAP_REPORT_PATH,
     titleTrackGapReportPath: DEFAULT_TITLE_TRACK_GAP_REPORT_PATH,
     entityIdentityWorkbenchReportPath: DEFAULT_ENTITY_IDENTITY_WORKBENCH_REPORT_PATH,
+    trustedUpcomingNotificationReportPath: DEFAULT_TRUSTED_UPCOMING_NOTIFICATION_REPORT_PATH,
     bundleKind: 'post-sync-verification',
     cadenceProfile: 'daily-upcoming',
     sourceKind: process.env.GITHUB_ACTIONS === 'true' ? 'automation' : 'manual',
@@ -111,6 +117,11 @@ function parseArgs(argv) {
       index += 1;
       continue;
     }
+    if (value === '--trusted-upcoming-notification-report-path') {
+      options.trustedUpcomingNotificationReportPath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
+      index += 1;
+      continue;
+    }
     if (value === '--bundle-kind') {
       options.bundleKind = String(argv[index + 1] ?? '').trim() || options.bundleKind;
       index += 1;
@@ -161,6 +172,7 @@ async function main() {
     serviceLinkGapReport,
     titleTrackGapReport,
     entityIdentityWorkbenchReport,
+    trustedUpcomingNotificationReport,
   ] =
     await Promise.all([
       readJsonIfExists(options.releaseSyncReportPath),
@@ -174,6 +186,7 @@ async function main() {
       readJsonIfExists(options.serviceLinkGapReportPath),
       readJsonIfExists(options.titleTrackGapReportPath),
       readJsonIfExists(options.entityIdentityWorkbenchReportPath),
+      readJsonIfExists(options.trustedUpcomingNotificationReportPath),
     ]);
 
   const report = buildReportBundleMetadata({
@@ -220,6 +233,14 @@ async function main() {
       {
         entities: entityIdentityWorkbenchReport?.counts?.entities ?? null,
         field_rows: entityIdentityWorkbenchReport?.counts?.field_rows ?? null,
+      },
+    ),
+    trustedUpcomingNotificationReference: buildReportReference(
+      BACKEND_DIR,
+      options.trustedUpcomingNotificationReportPath,
+      trustedUpcomingNotificationReport,
+      {
+        emitted: trustedUpcomingNotificationReport?.totals?.events_emitted ?? null,
       },
     ),
   });

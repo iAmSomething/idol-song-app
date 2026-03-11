@@ -1,0 +1,122 @@
+{
+  "generated_at": "2026-03-11T12:38:47.563619Z",
+  "event_type": "trusted_upcoming_signal",
+  "summary_path": "backend/reports/trusted_upcoming_notification_event_summary.json",
+  "totals": {
+    "signals_considered": 59,
+    "trusted_signals": 11,
+    "events_emitted": 0,
+    "suppressed_unchanged": 11,
+    "suppressed_untrusted": 48,
+    "emitted_by_reason": {},
+    "suppressed_by_reason": {
+      "untrusted": 48,
+      "unchanged": 11
+    }
+  },
+  "emitted_events": [],
+  "suppressed_samples": [
+    {
+      "entity": "&TEAM",
+      "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
+      "suppression_reason": "untrusted",
+      "date_status": "scheduled",
+      "date_precision": "month_only",
+      "confidence_score": 0.76,
+      "source_type": "news_rss"
+    },
+    {
+      "entity": "AB6IX",
+      "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
+      "suppression_reason": "untrusted",
+      "date_status": "scheduled",
+      "date_precision": "month_only",
+      "confidence_score": 0.46,
+      "source_type": "news_rss"
+    },
+    {
+      "entity": "AB6IX",
+      "headline": "AB6IX announces March comeback with their first full album in 5 years - allkpop",
+      "suppression_reason": "untrusted",
+      "date_status": "scheduled",
+      "date_precision": "month_only",
+      "confidence_score": 0.76,
+      "source_type": "news_rss"
+    },
+    {
+      "entity": "AB6IX",
+      "headline": "AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop",
+      "suppression_reason": "untrusted",
+      "date_status": "scheduled",
+      "date_precision": "month_only",
+      "confidence_score": 0.58,
+      "source_type": "news_rss"
+    },
+    {
+      "entity": "ALL(H)OURS",
+      "headline": "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop",
+      "suppression_reason": "untrusted",
+      "date_status": "scheduled",
+      "date_precision": "month_only",
+      "confidence_score": 0.76,
+      "source_type": "news_rss"
+    },
+    {
+      "entity": "ATEEZ",
+      "headline": "ATEEZ’s ‘GOLDEN HOUR: Part 4’ Drops Feb. 6 - 조선일보",
+      "suppression_reason": "untrusted",
+      "date_status": "rumor",
+      "date_precision": "unknown",
+      "confidence_score": 0.68,
+      "source_type": "news_rss"
+    },
+    {
+      "entity": "AtHeart",
+      "headline": "Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop",
+      "suppression_reason": "untrusted",
+      "date_status": "rumor",
+      "date_precision": "unknown",
+      "confidence_score": 0.68,
+      "source_type": "news_rss"
+    },
+    {
+      "entity": "BABYMONSTER",
+      "headline": "BABYMONSTER’s B-Side Track From Two Years Ago Makes a Reverse Chart Run… Reappears on ‘M Countdown’ → Live Clip Released",
+      "suppression_reason": "unchanged",
+      "date_status": "rumor",
+      "date_precision": "unknown",
+      "confidence_score": 0.7,
+      "source_type": "agency_notice"
+    },
+    {
+      "entity": "BABYMONSTER",
+      "headline": "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed",
+      "suppression_reason": "unchanged",
+      "date_status": "rumor",
+      "date_precision": "unknown",
+      "confidence_score": 0.64,
+      "source_type": "agency_notice"
+    },
+    {
+      "entity": "BABYMONSTER",
+      "headline": "YG Entertainment confirms BABYMONSTER World Tour & BIGBANG's Global - bandwagon.asia",
+      "suppression_reason": "untrusted",
+      "date_status": "rumor",
+      "date_precision": "unknown",
+      "confidence_score": 0.56,
+      "source_type": "news_rss"
+    }
+  ],
+  "summary_lines": [
+    "trusted upcoming alerts: emitted 0 / trusted 11 / considered 59",
+    "unchanged suppressed: 11, untrusted suppressed: 48",
+    "emitted by reason: none"
+  ],
+  "db_row_counts": {
+    "notification_signal_states": 59,
+    "notification_events": 11
+  },
+  "stale_states_deactivated": 0,
+  "inserted_events": 0,
+  "markdown_path": "backend/reports/trusted_upcoming_operator_alert_report.md"
+}
