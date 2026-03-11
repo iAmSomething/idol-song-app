@@ -285,16 +285,36 @@ def build_source_service_link_map(group_to_slug: Dict[str, str]) -> Dict[str, Di
         override = overrides.get(key, {})
         service_rows = {}
 
-        spotify_url = normalize_url(row.get("spotify_url"))
+        spotify_url = normalize_url(override.get("spotify_url") or row.get("spotify_url"))
+        spotify_status = (
+            "manual_override"
+            if normalize_url(override.get("spotify_url"))
+            else optional_text(override.get("spotify_status"))
+            or ("canonical" if normalize_url(row.get("spotify_url")) else "no_link")
+        )
+        spotify_provenance = (
+            optional_text(override.get("spotify_provenance"))
+            or optional_text(override.get("provenance"))
+            or ("releaseDetails.spotify_url" if normalize_url(row.get("spotify_url")) else None)
+        )
         service_rows["spotify"] = {
             "url": spotify_url,
-            "status": "canonical" if spotify_url else "no_link",
-            "provenance": "releaseDetails.spotify_url" if spotify_url else None,
+            "status": spotify_status,
+            "provenance": spotify_provenance,
         }
 
         youtube_music_url = normalize_url(override.get("youtube_music_url") or row.get("youtube_music_url"))
-        youtube_music_status = "manual_override" if normalize_url(override.get("youtube_music_url")) else "canonical" if normalize_url(row.get("youtube_music_url")) else "no_link"
-        youtube_music_provenance = optional_text(override.get("provenance")) if normalize_url(override.get("youtube_music_url")) else "releaseDetails.youtube_music_url" if normalize_url(row.get("youtube_music_url")) else None
+        youtube_music_status = (
+            "manual_override"
+            if normalize_url(override.get("youtube_music_url"))
+            else optional_text(override.get("youtube_music_status"))
+            or ("canonical" if normalize_url(row.get("youtube_music_url")) else "no_link")
+        )
+        youtube_music_provenance = (
+            optional_text(override.get("youtube_music_provenance"))
+            or optional_text(override.get("provenance"))
+            or ("releaseDetails.youtube_music_url" if normalize_url(row.get("youtube_music_url")) else None)
+        )
         service_rows["youtube_music"] = {
             "url": youtube_music_url,
             "status": youtube_music_status,
@@ -343,21 +363,29 @@ def build_source_service_link_map(group_to_slug: Dict[str, str]) -> Dict[str, Di
                 best_match = row
                 best_distance = distance
 
-        spotify_url = normalize_url(best_match.get("spotify_url")) if best_match else None
+        spotify_url = normalize_url(override.get("spotify_url")) or (normalize_url(best_match.get("spotify_url")) if best_match else None)
+        spotify_status = (
+            "manual_override"
+            if normalize_url(override.get("spotify_url"))
+            else optional_text(override.get("spotify_status"))
+            or ("canonical" if best_match and normalize_url(best_match.get("spotify_url")) else "no_link")
+        )
+        spotify_provenance = (
+            optional_text(override.get("spotify_provenance"))
+            or optional_text(override.get("provenance"))
+            or ("releaseDetails.spotify_url" if best_match and normalize_url(best_match.get("spotify_url")) else None)
+        )
         youtube_music_url = normalize_url(override.get("youtube_music_url")) or (normalize_url(best_match.get("youtube_music_url")) if best_match else None)
         youtube_music_status = (
             "manual_override"
             if normalize_url(override.get("youtube_music_url"))
-            else "canonical"
-            if best_match and normalize_url(best_match.get("youtube_music_url"))
-            else "no_link"
+            else optional_text(override.get("youtube_music_status"))
+            or ("canonical" if best_match and normalize_url(best_match.get("youtube_music_url")) else "no_link")
         )
         youtube_music_provenance = (
-            optional_text(override.get("provenance"))
-            if normalize_url(override.get("youtube_music_url"))
-            else "releaseDetails.youtube_music_url"
-            if best_match and normalize_url(best_match.get("youtube_music_url"))
-            else None
+            optional_text(override.get("youtube_music_provenance"))
+            or optional_text(override.get("provenance"))
+            or ("releaseDetails.youtube_music_url" if best_match and normalize_url(best_match.get("youtube_music_url")) else None)
         )
 
         youtube_mv_url = normalize_url(override.get("youtube_video_url"))
@@ -381,8 +409,8 @@ def build_source_service_link_map(group_to_slug: Dict[str, str]) -> Dict[str, Di
         result[key] = {
             "spotify": {
                 "url": spotify_url,
-                "status": "canonical" if spotify_url else "no_link",
-                "provenance": "releaseDetails.spotify_url" if spotify_url else None,
+                "status": spotify_status,
+                "provenance": spotify_provenance,
             },
             "youtube_music": {
                 "url": youtube_music_url,

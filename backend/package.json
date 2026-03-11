@@ -25,6 +25,8 @@
     "runtime:measure": "node ./scripts/measure-read-api-runtime.mjs",
     "worker:cadence": "node ./scripts/build-worker-cadence-report.mjs",
     "gap:workbenches": "node ./scripts/build-canonical-gap-workbenches.mjs",
+    "curation:export": "node ./scripts/build-manual-curation-bundles.mjs",
+    "curation:import": "node ./scripts/import-manual-curation-bundles.mjs",
     "runtime:gate": "node ./scripts/build-runtime-gate-report.mjs",
     "preview:url:sync": "node ./scripts/provision-preview-backend-url.mjs --target preview"
   },

@@ -535,17 +535,27 @@ def build_entity_rows(
                 "x_url": normalize_url(profile.get("official_x_url") or watchlist_row.get("x_url")),
                 "instagram_url": normalize_url(profile.get("official_instagram_url") or watchlist_row.get("instagram_url")),
                 "youtube_url": normalize_url(profile.get("official_youtube_url")),
-                "x_provenance": "artistProfiles.official_x_url"
+                "x_provenance": optional_text(profile.get("official_x_source"))
+                if normalize_url(profile.get("official_x_url")) and optional_text(profile.get("official_x_source"))
+                else "artistProfiles.official_x_url"
                 if normalize_url(profile.get("official_x_url"))
                 else "watchlist.x_url"
                 if normalize_url(watchlist_row.get("x_url"))
                 else None,
-                "instagram_provenance": "artistProfiles.official_instagram_url"
+                "instagram_provenance": optional_text(profile.get("official_instagram_source"))
+                if normalize_url(profile.get("official_instagram_url"))
+                and optional_text(profile.get("official_instagram_source"))
+                else "artistProfiles.official_instagram_url"
                 if normalize_url(profile.get("official_instagram_url"))
                 else "watchlist.instagram_url"
                 if normalize_url(watchlist_row.get("instagram_url"))
                 else None,
-                "youtube_provenance": "artistProfiles.official_youtube_url" if normalize_url(profile.get("official_youtube_url")) else None,
+                "youtube_provenance": optional_text(profile.get("official_youtube_source"))
+                if normalize_url(profile.get("official_youtube_url"))
+                and optional_text(profile.get("official_youtube_source"))
+                else "artistProfiles.official_youtube_url"
+                if normalize_url(profile.get("official_youtube_url"))
+                else None,
                 "artist_source_url": metadata.get("artist_source"),
             }
         )
@@ -1028,26 +1038,39 @@ def build_release_service_rows(
         if release_id is None:
             continue
 
+        spotify_url = normalize_url(override.get("spotify_url"))
+        spotify_status = optional_text(override.get("spotify_status"))
+        if spotify_url or spotify_status:
+            add_row(
+                release_id,
+                "spotify",
+                spotify_url,
+                "manual_override" if spotify_url else spotify_status,
+                optional_text(override.get("spotify_provenance")) or optional_text(override.get("provenance")),
+            )
+
         youtube_music_url = normalize_url(override.get("youtube_music_url"))
-        if youtube_music_url:
+        youtube_music_status = optional_text(override.get("youtube_music_status"))
+        if youtube_music_url or youtube_music_status:
             add_row(
                 release_id,
                 "youtube_music",
                 youtube_music_url,
-                "manual_override",
-                optional_text(override.get("provenance")),
+                "manual_override" if youtube_music_url else youtube_music_status,
+                optional_text(override.get("youtube_music_provenance")) or optional_text(override.get("provenance")),
             )
 
         youtube_video_url = normalize_url(override.get("youtube_video_url"))
         youtube_video_id = optional_text(override.get("youtube_video_id"))
+        youtube_video_status = optional_text(override.get("youtube_video_status"))
         if youtube_video_url is None and youtube_video_id:
             youtube_video_url = f"https://www.youtube.com/watch?v={youtube_video_id}"
-        if youtube_video_url or youtube_video_id:
+        if youtube_video_url or youtube_video_id or youtube_video_status:
             add_row(
                 release_id,
                 "youtube_mv",
                 youtube_video_url,
-                "manual_override",
+                "manual_override" if youtube_video_url or youtube_video_id else youtube_video_status,
                 optional_text(override.get("youtube_video_provenance")) or optional_text(override.get("provenance")),
             )
 

@@ -793,13 +793,28 @@ def apply_detail_override(
             if detail_note not in detail["notes"]:
                 detail["notes"] += detail_note
 
+        spotify_url = optional_text(override.get("spotify_url"))
+        override_spotify_status = optional_text(override.get("spotify_status"))
+        if spotify_url:
+            detail["spotify_url"] = spotify_url
+            spotify_provenance = optional_text(override.get("spotify_provenance")) or optional_text(override.get("provenance"))
+            if spotify_provenance and spotify_provenance not in detail["notes"]:
+                detail["notes"] += f" Canonical Spotify URL preserved from release_detail_overrides.json ({spotify_provenance})."
+        elif override_spotify_status in {"no_link", "needs_review"}:
+            detail["spotify_url"] = None
+
         youtube_music_url = optional_text(override.get("youtube_music_url"))
+        override_youtube_music_status = optional_text(override.get("youtube_music_status"))
         if youtube_music_url:
             detail["youtube_music_url"] = youtube_music_url
+        elif override_youtube_music_status in {"no_link", "needs_review"}:
+            detail["youtube_music_url"] = None
 
-        provenance = optional_text(override.get("provenance"))
-        if provenance and provenance not in detail["notes"]:
+        provenance = optional_text(override.get("youtube_music_provenance")) or optional_text(override.get("provenance"))
+        if youtube_music_url and provenance and provenance not in detail["notes"]:
             detail["notes"] += f" Canonical YouTube Music URL preserved from release_detail_overrides.json ({provenance})."
+        elif override_youtube_music_status in {"no_link", "needs_review"} and provenance and provenance not in detail["notes"]:
+            detail["notes"] += f" YouTube Music curation status preserved from release_detail_overrides.json ({provenance})."
 
         youtube_video_url = optional_text(override.get("youtube_video_url"))
         youtube_video_id = optional_text(override.get("youtube_video_id"))
@@ -830,6 +845,8 @@ def apply_detail_override(
             )
 
     title_track_titles = override.get("title_tracks") if override else None
+    override_title_track_status = optional_text(override.get("title_track_status")) if override else None
+    override_title_track_review_reason = optional_text(override.get("title_track_review_reason")) if override else None
     existing_title_tracks = [track["title"] for track in detail.get("tracks", []) if track.get("is_title_track")]
     unique_existing_title_tracks = list(dict.fromkeys(existing_title_tracks))
     existing_title_tracks_are_ambiguous = (
@@ -854,6 +871,14 @@ def apply_detail_override(
                 for title in title_track_titles
             ],
             "reason": "Title-track metadata was supplied explicitly from release_detail_overrides.json.",
+        }
+    elif override_title_track_status in {TITLE_TRACK_STATUS_REVIEW, TITLE_TRACK_STATUS_UNRESOLVED, TITLE_TRACK_STATUS_NO_TRACKS}:
+        title_track_resolution = {
+            "status": override_title_track_status,
+            "selected_titles": [],
+            "candidates": [],
+            "reason": override_title_track_review_reason
+            or "Title-track manual curation kept this release unresolved.",
         }
     elif existing_title_tracks and not existing_title_tracks_are_ambiguous:
         title_track_resolution = {
