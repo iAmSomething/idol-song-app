@@ -19,9 +19,12 @@
 6. `launch-grade-visual-identity-system.md`
    - practical tool + editorial accent 톤, surface family, visual child issue split
    - app icon detail은 `app-icon-system.md`를 함께 참조
-7. `component-catalog.md`
+   - runtime/export handoff는 `launch-visual-asset-handoff.md`를 함께 참조
+7. `launch-visual-asset-handoff.md`
+   - icon / splash / fallback asset export set, path, naming, update rule
+8. `component-catalog.md`
    - 공통 UI 컴포넌트 해부도, props 성격, 상태, 접근성
-8. `layout-constraint-spec.md`
+9. `layout-constraint-spec.md`
    - 화면/블록별 최소 높이, 줄 수, sticky 범위, 비율
 9. `state-feedback-spec.md`
    - loading, empty, partial, error, external-open 실패 피드백

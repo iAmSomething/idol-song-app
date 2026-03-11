@@ -6,6 +6,7 @@ import { MOBILE_COPY } from '../../copy/mobileCopy';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { ActionButton } from '../actions/ActionButton';
+import { FallbackArt } from '../visual/FallbackArt';
 
 type FeedbackTone = 'neutral' | 'error';
 
@@ -64,6 +65,14 @@ export function ScreenFeedbackState({
 
   return (
     <View style={styles.screenContainer} testID={testID}>
+      {variant !== 'loading' ? (
+        <FallbackArt
+          height={104}
+          testID={testID ? `${testID}-fallback-art` : undefined}
+          variant="emptyState"
+          width={104}
+        />
+      ) : null}
       <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.eyebrow}>{eyebrow}</Text>
       <Text accessibilityRole="header" allowFontScaling maxFontSizeMultiplier={titleMultiplier} style={styles.screenTitle}>
         {title}

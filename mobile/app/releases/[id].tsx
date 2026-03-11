@@ -20,6 +20,10 @@ import {
 import { SourceLinkRow } from '../../src/components/meta/SourceLinkRow';
 import { TeamIdentityRow } from '../../src/components/identity/TeamIdentityRow';
 import { TrackRow } from '../../src/components/release/TrackRow';
+import { CompactHero } from '../../src/components/surfaces/CompactHero';
+import { InsetSection } from '../../src/components/surfaces/InsetSection';
+import { TonalPanel } from '../../src/components/surfaces/TonalPanel';
+import { FallbackArt } from '../../src/components/visual/FallbackArt';
 import {
   buildDatasetRiskDisclosure,
   buildReleaseDependencyDisclosure,
@@ -57,6 +61,7 @@ import {
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
 import type { MobileTheme } from '../../src/tokens/theme';
+import { resolveBadgeFallbackAssetKey } from '../../src/utils/assetRegistry';
 import type { ReleaseDetailModel, TrackModel, YoutubeVideoStatus } from '../../src/types';
 
 type ReleaseServiceButtonItem = ServiceButtonGroupItem & {
@@ -227,9 +232,13 @@ function ReleaseCover({
   }
 
   return (
-    <View style={styles.coverFallback}>
-      <Text style={styles.coverFallbackText}>{getCoverMonogram(detail)}</Text>
-    </View>
+    <FallbackArt
+      height={120}
+      label={getCoverMonogram(detail)}
+      testID="release-detail-fallback-cover"
+      variant="cover"
+      width={120}
+    />
   );
 }
 
@@ -531,63 +540,52 @@ export default function ReleaseDetailScreen() {
                   onPress: () => router.push(`/artists/${teamProfile.slug}`),
                   testID: 'release-appbar-team-page',
                 },
-              ]
+          ]
             : []
         }
       />
 
-      <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.eyebrow}>
-        {datasetState.source.sourceLabel}
-      </Text>
-
       {datasetRiskDisclosure ? (
-        <InlineFeedbackNotice
+        <TonalPanel
           body={datasetRiskDisclosure.body}
           testID={datasetRiskDisclosure.testID}
           title={datasetRiskDisclosure.title}
+          tone="accent"
         />
       ) : null}
 
-      <View style={styles.heroCard}>
-        <ReleaseCover detail={detail} styles={styles} />
-        <View style={styles.heroCopy}>
-          <Text
-            accessibilityRole="header"
-            allowFontScaling
-            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
-            style={styles.releaseTitle}
-            testID="release-detail-title"
-          >
-            {detail.releaseTitle}
-          </Text>
-          <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.releaseMeta}>
-            {formatReleaseMeta(detail)}
-          </Text>
-          <View style={styles.identityRow}>
-            <View style={styles.kindChip}>
-              <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.kindChipLabel}>
-                {getReleaseKindLabel(detail)}
-              </Text>
+      <CompactHero
+        eyebrow={datasetState.source.sourceLabel}
+        footer={
+          <View style={styles.heroFooter}>
+            <View style={styles.identityRow}>
+              <View style={styles.kindChip}>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.kindChipLabel}>
+                  {getReleaseKindLabel(detail)}
+                </Text>
+              </View>
             </View>
+            <TeamIdentityRow
+              badgeImageUrl={teamProfile?.badge_image_url ?? teamProfile?.representative_image_url ?? undefined}
+              fallbackAssetKey={resolveBadgeFallbackAssetKey(teamProfile?.act_type as 'group' | 'solo' | 'unit' | 'project' | undefined)}
+              monogram={detail.displayGroup.slice(0, 2).toUpperCase()}
+              name={detail.displayGroup}
+              testID="release-team-identity"
+            />
           </View>
-          <TeamIdentityRow
-            badgeImageUrl={teamProfile?.badge_image_url ?? teamProfile?.representative_image_url ?? undefined}
-            monogram={detail.displayGroup.slice(0, 2).toUpperCase()}
-            name={detail.displayGroup}
-            testID="release-team-identity"
-          />
-        </View>
-      </View>
+        }
+        media={<ReleaseCover detail={detail} styles={styles} />}
+        meta={formatReleaseMeta(detail)}
+        testID="release-detail-compact-hero"
+        title={detail.releaseTitle}
+        titleTestID="release-detail-title"
+      />
 
-      <View style={styles.section} testID="release-album-actions-section">
-        <Text
-          accessibilityRole="header"
-          allowFontScaling
-          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-          style={styles.sectionTitle}
-        >
-          앨범 액션
-        </Text>
+      <InsetSection
+        description="canonical link가 있으면 바로 열고, 없으면 service fallback 규칙을 적용합니다."
+        testID="release-album-actions-section"
+        title="앨범 액션"
+      >
         <ServiceButtonGroup
           buttons={albumServiceButtons.map((button) => ({
             ...button,
@@ -595,29 +593,25 @@ export default function ReleaseDetailScreen() {
           }))}
           testID="release-service-buttons"
         />
-      </View>
+      </InsetSection>
 
       {handoffFeedback ? (
         <InlineFeedbackNotice body={handoffFeedback} testID="release-handoff-feedback" tone="error" />
       ) : null}
 
       {releaseDependencyDisclosure ? (
-        <InlineFeedbackNotice
+        <TonalPanel
           body={releaseDependencyDisclosure.body}
           testID={releaseDependencyDisclosure.testID}
           title={releaseDependencyDisclosure.title}
         />
       ) : null}
 
-      <View style={styles.section}>
-        <Text
-          accessibilityRole="header"
-          allowFontScaling
-          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-          style={styles.sectionTitle}
-        >
-          트랙 리스트
-        </Text>
+      <InsetSection
+        description="title track 여부와 service handoff를 같은 밀도로 정리합니다."
+        testID="release-track-list-section"
+        title="트랙 리스트"
+      >
         {detail.tracks.length > 0 ? (
           <View style={styles.trackList}>
             {detail.tracks.map((track) => (
@@ -680,17 +674,13 @@ export default function ReleaseDetailScreen() {
             testID="release-empty-tracks"
           />
         )}
-      </View>
+      </InsetSection>
 
-      <View style={styles.section} testID="release-supporting-info">
-        <Text
-          accessibilityRole="header"
-          allowFontScaling
-          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-          style={styles.sectionTitle}
-        >
-          추가 정보
-        </Text>
+      <InsetSection
+        description="notes와 source link를 release body와 분리된 inset block으로 둡니다."
+        testID="release-supporting-info"
+        title="추가 정보"
+      >
         {hasSupportingInfo ? (
           <>
             {detail.notes ? (
@@ -718,18 +708,14 @@ export default function ReleaseDetailScreen() {
             testID="release-supporting-info-empty"
           />
         )}
-      </View>
+      </InsetSection>
 
       {mvUrl ? (
-        <View style={styles.section} testID="release-mv-card">
-          <Text
-            accessibilityRole="header"
-            allowFontScaling
-            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-            style={styles.sectionTitle}
-          >
-            공식 MV
-          </Text>
+        <InsetSection
+          description="canonical MV만 외부 YouTube handoff로 남깁니다."
+          testID="release-mv-card"
+          title="공식 MV"
+        >
           <View style={styles.metaCard}>
             <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.metaBody}>
               {mvDisclosure}
@@ -756,7 +742,7 @@ export default function ReleaseDetailScreen() {
               testID="release-mv-button-group"
             />
           </View>
-        </View>
+        </InsetSection>
       ) : null}
     </ScrollView>
   );
@@ -840,6 +826,9 @@ function createStyles(theme: MobileTheme) {
     heroCopy: {
       flex: 1,
       justifyContent: 'space-between',
+      gap: theme.space[8],
+    },
+    heroFooter: {
       gap: theme.space[8],
     },
     releaseTitle: {

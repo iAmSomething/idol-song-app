@@ -7,11 +7,14 @@ import {
   View,
 } from 'react-native';
 
+import { FallbackArt } from '../visual/FallbackArt';
+import { resolveBadgeFallbackAssetKey, type BadgeFallbackAssetKey } from '../../utils/assetRegistry';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 
 export interface TeamIdentityRowProps {
   badgeImageUrl?: string;
+  fallbackAssetKey?: BadgeFallbackAssetKey;
   meta?: string;
   monogram?: string;
   name: string;
@@ -22,6 +25,7 @@ export interface TeamIdentityRowProps {
 
 function TeamIdentityRowComponent({
   badgeImageUrl,
+  fallbackAssetKey,
   meta,
   monogram,
   name,
@@ -37,11 +41,14 @@ function TeamIdentityRowComponent({
         {badgeImageUrl ? (
           <Image source={{ uri: badgeImageUrl }} style={styles.badgeImage} />
         ) : (
-          <View style={styles.badgeFallback}>
-            <Text allowFontScaling style={styles.badgeFallbackLabel}>
-              {(monogram ?? name.slice(0, 2)).toUpperCase()}
-            </Text>
-          </View>
+          <FallbackArt
+            height={40}
+            label={(monogram ?? name.slice(0, 2)).toUpperCase()}
+            shape="circle"
+            testID={testID ? `${testID}-fallback-badge` : undefined}
+            variant={fallbackAssetKey ?? resolveBadgeFallbackAssetKey()}
+            width={40}
+          />
         )}
       </View>
       <View style={styles.copy}>
@@ -99,16 +106,6 @@ function createStyles(theme: MobileTheme) {
     badgeImage: {
       width: '100%',
       height: '100%',
-    },
-    badgeFallback: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: theme.colors.surface.interactive,
-    },
-    badgeFallbackLabel: {
-      ...theme.typography.cardTitle,
-      color: theme.colors.text.primary,
     },
     copy: {
       flex: 1,

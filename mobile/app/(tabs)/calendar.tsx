@@ -15,6 +15,8 @@ import { SegmentedControl } from '../../src/components/controls/SegmentedControl
 import { ScreenFeedbackState, InlineFeedbackNotice } from '../../src/components/feedback/FeedbackState';
 import { FilterSheet, type FilterSheetGroup } from '../../src/components/filters/FilterSheet';
 import { SummaryStrip } from '../../src/components/layout/SummaryStrip';
+import { InsetSection } from '../../src/components/surfaces/InsetSection';
+import { TonalPanel } from '../../src/components/surfaces/TonalPanel';
 import {
   ReleaseSummaryRow,
   type ReleaseSummaryRowProps,
@@ -72,6 +74,7 @@ import {
 } from '../../src/services/routeResume';
 import { useAppTheme } from '../../src/tokens/theme';
 import { MOBILE_TEXT_SCALE_LIMITS, isLargeTextMode } from '../../src/tokens/accessibility';
+import { resolveBadgeFallbackAssetKey } from '../../src/utils/assetRegistry';
 import type { ServiceButtonGroupItem } from '../../src/components/actions/ServiceButtonGroup';
 import type { SourceLinkRowItem } from '../../src/components/meta/SourceLinkRow';
 import type {
@@ -191,6 +194,12 @@ function buildTeamMonogram(value: string): string {
   return (normalized || compact).slice(0, 2).toUpperCase();
 }
 
+function normalizeProfileActType(
+  value: 'group' | 'solo' | 'unit' | 'project' | null | undefined,
+) {
+  return value ?? undefined;
+}
+
 function buildReleaseIdentityMeta(release: ReleaseSummaryModel): string | undefined {
   if (release.representativeSongTitle?.trim()) {
     return `대표곡 · ${release.representativeSongTitle.trim()}`;
@@ -305,6 +314,15 @@ export default function CalendarTabScreen() {
     for (const profile of bundledProfiles) {
       entries.set(profile.group, profile.slug);
       entries.set(profile.slug, profile.slug);
+    }
+
+    return entries;
+  }, [bundledProfiles]);
+  const profileByGroup = useMemo(() => {
+    const entries = new Map<string, (typeof bundledProfiles)[number]>();
+
+    for (const profile of bundledProfiles) {
+      entries.set(profile.group, profile);
     }
 
     return entries;
@@ -664,6 +682,8 @@ export default function CalendarTabScreen() {
       serviceButtons: buildReleaseServiceButtons(release),
       sourceLinks: buildReleaseSourceLinks(release),
       team: {
+        badgeImageUrl: profileByGroup.get(release.group)?.badge_image_url ?? undefined,
+        fallbackAssetKey: resolveBadgeFallbackAssetKey(normalizeProfileActType(profileByGroup.get(release.group)?.act_type)),
         meta: buildReleaseIdentityMeta(release),
         monogram: buildTeamMonogram(release.displayGroup),
         name: release.displayGroup,
@@ -689,6 +709,8 @@ export default function CalendarTabScreen() {
       sourceLinks: buildUpcomingSourceLinks(event),
       statusChip: resolveUpcomingStatusLabel(event.status),
       team: {
+        badgeImageUrl: profileByGroup.get(event.group)?.badge_image_url ?? undefined,
+        fallbackAssetKey: resolveBadgeFallbackAssetKey(normalizeProfileActType(profileByGroup.get(event.group)?.act_type)),
         monogram: buildTeamMonogram(event.displayGroup),
         name: event.displayGroup,
       },
@@ -810,102 +832,102 @@ export default function CalendarTabScreen() {
   return (
     <>
       <ScrollView contentContainerStyle={styles.content} style={styles.screen}>
-        <View style={styles.headerBar} testID="calendar-app-bar">
-          <View style={styles.monthCluster}>
-            <Text
-              accessibilityRole="header"
-              allowFontScaling
-              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
-              style={[styles.monthTitle, largeTextMode ? styles.monthTitleCompact : null]}
-              testID="calendar-month-title"
-            >
-              {formatMonthLabel(filteredSnapshot.month)}
-            </Text>
-            <View style={[styles.monthNav, largeTextMode ? styles.actionRowLargeText : null]}>
+        <TonalPanel
+          body={`현재 필터 · ${formatFilterLabel(filterMode)}`}
+          testID="calendar-header-panel"
+          title={formatMonthLabel(filteredSnapshot.month)}
+          titleMaxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
+          titleTestID="calendar-month-title"
+          tone="accent"
+        >
+          <View style={styles.headerBar} testID="calendar-app-bar">
+            <View style={styles.monthCluster}>
+              <View style={[styles.monthNav, largeTextMode ? styles.actionRowLargeText : null]}>
+                <Pressable
+                  accessibilityHint="이전 달 일정을 봅니다."
+                  accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, -1))}로 이동`}
+                  accessibilityRole="button"
+                  onPress={() => moveToRelativeMonth(-1)}
+                  style={({ pressed }) => [
+                    styles.headerButton,
+                    largeTextMode ? styles.headerButtonLargeText : null,
+                    pressed ? styles.headerButtonPressed : null,
+                  ]}
+                  testID="calendar-month-prev"
+                >
+                  <Text
+                    allowFontScaling
+                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                    style={styles.headerButtonLabel}
+                  >
+                    이전
+                  </Text>
+                </Pressable>
+                <Pressable
+                  accessibilityHint="다음 달 일정을 봅니다."
+                  accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, 1))}로 이동`}
+                  accessibilityRole="button"
+                  onPress={() => moveToRelativeMonth(1)}
+                  style={({ pressed }) => [
+                    styles.headerButton,
+                    largeTextMode ? styles.headerButtonLargeText : null,
+                    pressed ? styles.headerButtonPressed : null,
+                  ]}
+                  testID="calendar-month-next"
+                >
+                  <Text
+                    allowFontScaling
+                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                    style={styles.headerButtonLabel}
+                  >
+                    다음
+                  </Text>
+                </Pressable>
+              </View>
+            </View>
+            <View style={[styles.trailingActions, largeTextMode ? styles.actionRowLargeText : null]}>
               <Pressable
-                accessibilityHint="이전 달 일정을 봅니다."
-                accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, -1))}로 이동`}
+                accessibilityLabel="검색 탭으로 이동"
                 accessibilityRole="button"
-                onPress={() => moveToRelativeMonth(-1)}
+                onPress={openSearchTab}
                 style={({ pressed }) => [
                   styles.headerButton,
                   largeTextMode ? styles.headerButtonLargeText : null,
                   pressed ? styles.headerButtonPressed : null,
                 ]}
-                testID="calendar-month-prev"
+                testID="calendar-search-open"
               >
                 <Text
                   allowFontScaling
                   maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
                   style={styles.headerButtonLabel}
                 >
-                  이전
+                  검색
                 </Text>
               </Pressable>
               <Pressable
-                accessibilityHint="다음 달 일정을 봅니다."
-                accessibilityLabel={`${formatMonthLabel(moveMonthKey(activeMonth, 1))}로 이동`}
+                accessibilityLabel="캘린더 필터 열기"
                 accessibilityRole="button"
-                onPress={() => moveToRelativeMonth(1)}
+                accessibilityState={{ selected: filterMode !== 'all' || isFilterSheetOpen }}
+                onPress={openFilterSheet}
                 style={({ pressed }) => [
                   styles.headerButton,
                   largeTextMode ? styles.headerButtonLargeText : null,
                   pressed ? styles.headerButtonPressed : null,
                 ]}
-                testID="calendar-month-next"
+                testID="calendar-filter-open"
               >
                 <Text
                   allowFontScaling
                   maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
                   style={styles.headerButtonLabel}
                 >
-                  다음
+                  필터
                 </Text>
               </Pressable>
             </View>
           </View>
-          <View style={[styles.trailingActions, largeTextMode ? styles.actionRowLargeText : null]}>
-            <Pressable
-              accessibilityLabel="검색 탭으로 이동"
-              accessibilityRole="button"
-              onPress={openSearchTab}
-              style={({ pressed }) => [
-                styles.headerButton,
-                largeTextMode ? styles.headerButtonLargeText : null,
-                pressed ? styles.headerButtonPressed : null,
-              ]}
-              testID="calendar-search-open"
-            >
-              <Text
-                allowFontScaling
-                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                style={styles.headerButtonLabel}
-              >
-                검색
-              </Text>
-            </Pressable>
-            <Pressable
-              accessibilityLabel="캘린더 필터 열기"
-              accessibilityRole="button"
-              accessibilityState={{ selected: filterMode !== 'all' || isFilterSheetOpen }}
-              onPress={openFilterSheet}
-              style={({ pressed }) => [
-                styles.headerButton,
-                largeTextMode ? styles.headerButtonLargeText : null,
-                pressed ? styles.headerButtonPressed : null,
-              ]}
-              testID="calendar-filter-open"
-            >
-              <Text
-                allowFontScaling
-                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                style={styles.headerButtonLabel}
-              >
-                필터
-              </Text>
-            </Pressable>
-          </View>
-        </View>
+        </TonalPanel>
 
         <SummaryStrip
           items={[
@@ -918,10 +940,11 @@ export default function CalendarTabScreen() {
         />
 
         {datasetRiskDisclosure ? (
-          <InlineFeedbackNotice
+          <TonalPanel
             body={datasetRiskDisclosure.body}
             testID={datasetRiskDisclosure.testID}
             title={datasetRiskDisclosure.title}
+            tone="accent"
           />
         ) : null}
 
@@ -933,20 +956,15 @@ export default function CalendarTabScreen() {
           />
         ) : null}
 
-        <View style={styles.sectionCard}>
-            <View style={styles.sectionHeader}>
-              <Text
-                accessibilityRole="header"
-                allowFontScaling
-                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-                style={styles.sectionTitle}
-              >
-                보기
-              </Text>
+        <InsetSection
+          accessory={
             <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
               {formatFilterLabel(filterMode)}
             </Text>
-          </View>
+          }
+          testID="calendar-view-section"
+          title="보기"
+        >
           <SegmentedControl
             items={[
               { key: 'calendar', label: '캘린더' },
@@ -956,23 +974,18 @@ export default function CalendarTabScreen() {
             selectedKey={viewMode}
             testID="calendar-view"
           />
-        </View>
+        </InsetSection>
 
         {viewMode === 'calendar' && monthGrid ? (
-          <View style={styles.sectionCard}>
-            <View style={styles.sectionHeader}>
-              <Text
-                accessibilityRole="header"
-                allowFontScaling
-                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-                style={styles.sectionTitle}
-              >
-                월간 캘린더
-              </Text>
+          <InsetSection
+            accessory={
               <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
                 {selectedDay ? selectedDay.label : formatMonthLabel(filteredSnapshot.month)}
               </Text>
-            </View>
+            }
+            testID="calendar-grid-section"
+            title="월간 캘린더"
+          >
 
             <View style={styles.weekdayRow}>
               {monthGrid.weekdayLabels.map((label) => (
@@ -1025,24 +1038,20 @@ export default function CalendarTabScreen() {
                 body={`현재 dataset source에는 ${formatMonthLabel(filteredSnapshot.month)} 기준 발매나 예정 컴백이 없습니다.`}
               />
             ) : null}
-          </View>
+          </InsetSection>
         ) : null}
 
         {viewMode === 'calendar' ? (
-          <View style={styles.sectionCard}>
-              <View style={styles.sectionHeader}>
-              <Text
-                accessibilityRole="header"
-                allowFontScaling
-                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-                style={styles.sectionTitle}
-              >
-                월 단위 예정 신호
-              </Text>
+          <InsetSection
+            accessory={
               <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
                 {filteredSnapshot.monthOnlyUpcoming.length}건
               </Text>
-            </View>
+            }
+            description="날짜가 확정되지 않은 month-only 신호를 day cell과 분리해 둡니다."
+            testID="calendar-month-only-section"
+            title="월 단위 예정 신호"
+          >
             {filterMode === 'releases' ? (
               <InlineFeedbackNotice body="현재 필터에서는 월 단위 예정 신호를 숨깁니다." />
             ) : listMonthOnlyRows.length > 0 ? (
@@ -1054,26 +1063,21 @@ export default function CalendarTabScreen() {
             ) : (
               <InlineFeedbackNotice body="현재 월에 월 단위 예정 신호가 없습니다." />
             )}
-          </View>
+          </InsetSection>
         ) : null}
 
         {viewMode === 'list' ? (
           <View style={styles.sectionStack}>
             {filterMode !== 'upcoming' ? (
-              <View style={styles.sectionCard}>
-                <View style={styles.sectionHeader}>
-                  <Text
-                    accessibilityRole="header"
-                    allowFontScaling
-                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-                    style={styles.sectionTitle}
-                  >
-                    검증된 발매
-                  </Text>
+              <InsetSection
+                accessory={
                   <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
                     {listReleaseRows.length}건
                   </Text>
-                </View>
+                }
+                testID="calendar-verified-release-section"
+                title="검증된 발매"
+              >
                 {listReleaseRows.length > 0 ? (
                   <View style={styles.sectionStack}>
                     {listReleaseRows.map((row) => (
@@ -1083,24 +1087,19 @@ export default function CalendarTabScreen() {
                 ) : (
                   <InlineFeedbackNotice body="현재 월에 확정 발매가 없습니다." />
                 )}
-              </View>
+              </InsetSection>
             ) : null}
 
             {filterMode !== 'releases' ? (
-              <View style={styles.sectionCard}>
-                <View style={styles.sectionHeader}>
-                  <Text
-                    accessibilityRole="header"
-                    allowFontScaling
-                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-                    style={styles.sectionTitle}
-                  >
-                    날짜가 잡힌 예정 컴백
-                  </Text>
+              <InsetSection
+                accessory={
                   <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
                     {listExactUpcomingRows.length}건
                   </Text>
-                </View>
+                }
+                testID="calendar-exact-upcoming-section"
+                title="날짜가 잡힌 예정 컴백"
+              >
                 {listExactUpcomingRows.length > 0 ? (
                   <View style={styles.sectionStack}>
                     {listExactUpcomingRows.map((row) => (
@@ -1110,23 +1109,19 @@ export default function CalendarTabScreen() {
                 ) : (
                   <InlineFeedbackNotice body="현재 월에 날짜가 잡힌 예정 컴백이 없습니다." />
                 )}
-              </View>
+              </InsetSection>
             ) : null}
 
-            <View style={styles.sectionCard}>
-              <View style={styles.sectionHeader}>
-                <Text
-                  accessibilityRole="header"
-                  allowFontScaling
-                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-                  style={styles.sectionTitle}
-                >
-                  월 단위 예정 신호
-                </Text>
+            <InsetSection
+              accessory={
                 <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
                   {listMonthOnlyRows.length}건
                 </Text>
-              </View>
+              }
+              description="month-only 신호는 exact 예정과 분리해서 유지합니다."
+              testID="calendar-list-month-only-section"
+              title="월 단위 예정 신호"
+            >
               {filterMode === 'releases' ? (
                 <InlineFeedbackNotice body="현재 필터에서는 월 단위 예정 신호를 숨깁니다." />
               ) : listMonthOnlyRows.length > 0 ? (
@@ -1138,7 +1133,7 @@ export default function CalendarTabScreen() {
               ) : (
                 <InlineFeedbackNotice body="현재 월에 월 단위 예정 신호가 없습니다." />
               )}
-            </View>
+            </InsetSection>
           </View>
         ) : null}
       </ScrollView>

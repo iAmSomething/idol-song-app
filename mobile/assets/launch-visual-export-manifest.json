@@ -1,0 +1,38 @@
+{
+  "generated_for": "launch-grade mobile asset handoff",
+  "icon": {
+    "app_store": "mobile/assets/app-icon/icon-app-store-1024.png",
+    "adaptive_foreground": "mobile/assets/app-icon/icon-adaptive-foreground.png",
+    "adaptive_monochrome": "mobile/assets/app-icon/icon-adaptive-monochrome.png",
+    "source": [
+      "mobile/assets/app-icon/icon-primary-source.svg",
+      "mobile/assets/app-icon/icon-adaptive-foreground-source.svg",
+      "mobile/assets/app-icon/icon-adaptive-monochrome-source.svg",
+      "mobile/assets/app-icon/icon-alternate-inverted-source.svg"
+    ]
+  },
+  "splash": {
+    "foreground": "mobile/assets/splash/splash-foreground.png",
+    "source": "mobile/assets/splash/splash-foreground-source.svg"
+  },
+  "placeholders": {
+    "cover": "mobile/assets/placeholders/cover-fallback.png",
+    "team": "mobile/assets/placeholders/team-fallback.png",
+    "empty_state": "mobile/assets/placeholders/empty-state-fallback.png"
+  },
+  "badges": {
+    "group": "mobile/assets/badges/group-fallback.png",
+    "solo": "mobile/assets/badges/solo-fallback.png",
+    "label": "mobile/assets/badges/label-fallback.png"
+  },
+  "services": {
+    "spotify": "mobile/assets/services/spotify.png",
+    "youtube_music": "mobile/assets/services/youtube-music.png",
+    "youtube_mv": "mobile/assets/services/youtube-mv.png"
+  },
+  "update_policy": {
+    "source_of_truth": "svg sources under mobile/assets/",
+    "export_rule": "keep exported PNG names stable and only replace file contents",
+    "follow_up": "if visual treatment changes, update both manifest and docs/specs/mobile/launch-visual-asset-handoff.md"
+  }
+}

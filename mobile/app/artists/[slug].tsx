@@ -18,6 +18,10 @@ import {
   type ServiceButtonGroupItem,
 } from '../../src/components/actions/ServiceButtonGroup';
 import { AppBar } from '../../src/components/layout/AppBar';
+import { CompactHero } from '../../src/components/surfaces/CompactHero';
+import { InsetSection } from '../../src/components/surfaces/InsetSection';
+import { TonalPanel } from '../../src/components/surfaces/TonalPanel';
+import { FallbackArt } from '../../src/components/visual/FallbackArt';
 import {
   buildDatasetRiskDisclosure,
   buildEntitySourceDisclosure,
@@ -52,6 +56,7 @@ import {
 } from '../../src/services/routeResume';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
+import { resolveBadgeFallbackAssetKey } from '../../src/utils/assetRegistry';
 import type {
   ReleaseSummaryModel,
   TeamSummaryModel,
@@ -206,9 +211,13 @@ function EntityBadge({
   }
 
   return (
-    <View style={styles.heroMonogramWrap}>
-      <Text style={styles.heroMonogram}>{team.badge?.monogram ?? team.displayName.slice(0, 2).toUpperCase()}</Text>
-    </View>
+    <FallbackArt
+      height={88}
+      label={team.badge?.monogram ?? team.displayName.slice(0, 2).toUpperCase()}
+      testID="entity-hero-fallback-art"
+      variant={resolveBadgeFallbackAssetKey(team.actType)}
+      width={88}
+    />
   );
 }
 
@@ -464,81 +473,75 @@ export default function ArtistDetailScreen() {
         title={snapshot.team.displayName}
       />
 
-      <View style={styles.heroBlock}>
-        <View style={styles.heroCard}>
-          <EntityBadge team={snapshot.team} styles={styles} />
-          <View style={styles.heroCopy}>
-            <Text
-              accessibilityRole="header"
-              allowFontScaling
-              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
-              testID="entity-detail-title"
-              style={styles.heroTitle}
-            >
-              {snapshot.team.displayName}
-            </Text>
-            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.heroMeta}>
-              {snapshot.team.agency ?? '소속사 정보 없음'}
-            </Text>
-            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.heroBody}>
-              해당 팀의 다음 컴백과 최신 발매를 빠르게 확인할 수 있습니다.
-            </Text>
-          </View>
-        </View>
-
-        {officialLinks.length > 0 ? (
-          <View style={styles.linkRow}>
-            {officialLinks.map((link) => (
+      <CompactHero
+        body="다음 컴백과 최신 발매를 빠르게 확인할 수 있습니다."
+        eyebrow={snapshot.team.actType.toUpperCase()}
+        footer={
+          <>
+            {officialLinks.length > 0 ? (
+              <View style={styles.linkRow}>
+                {officialLinks.map((link) => (
+                  <Pressable
+                    key={link.key}
+                    testID={`entity-official-link-${link.key}`}
+                    accessibilityLabel={buildOfficialLinkAccessibilityLabel(snapshot.team, link)}
+                    accessibilityHint="외부 공식 페이지를 엽니다."
+                    accessibilityRole="button"
+                    onPress={() => void handleExternalLink(link.url, 'official')}
+                    style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
+                  >
+                    <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.metaTextLinkLabel}>
+                      {link.label}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            ) : null}
+            {snapshot.team.artistSourceUrl ? (
               <Pressable
-                key={link.key}
-                testID={`entity-official-link-${link.key}`}
-                accessibilityLabel={buildOfficialLinkAccessibilityLabel(snapshot.team, link)}
-                accessibilityHint="외부 공식 페이지를 엽니다."
+                testID="entity-artist-source-link"
+                accessibilityLabel={`${snapshot.team.displayName} 아티스트 출처 열기`}
+                accessibilityHint="외부 기준 소스를 엽니다."
                 accessibilityRole="button"
-                onPress={() => void handleExternalLink(link.url, 'official')}
+                onPress={() => void handleExternalLink(snapshot.team.artistSourceUrl!, 'artist_source')}
                 style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
               >
                 <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.metaTextLinkLabel}>
-                  {link.label}
+                  아티스트 출처
                 </Text>
               </Pressable>
-            ))}
-          </View>
-        ) : null}
-
-        {snapshot.team.artistSourceUrl ? (
-          <Pressable
-            testID="entity-artist-source-link"
-            accessibilityLabel={`${snapshot.team.displayName} 아티스트 출처 열기`}
-            accessibilityHint="외부 기준 소스를 엽니다."
-            accessibilityRole="button"
-            onPress={() => void handleExternalLink(snapshot.team.artistSourceUrl!, 'artist_source')}
-            style={({ pressed }) => [styles.metaTextLink, pressed ? styles.buttonPressed : null]}
-          >
-            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.metaTextLinkLabel}>
-              아티스트 출처
-            </Text>
-          </Pressable>
-        ) : null}
-      </View>
+            ) : null}
+          </>
+        }
+        media={<EntityBadge team={snapshot.team} styles={styles} />}
+        meta={snapshot.team.agency ?? '소속사 정보 없음'}
+        testID="entity-detail-compact-hero"
+        title={snapshot.team.displayName}
+        titleTestID="entity-detail-title"
+      />
 
       {datasetRiskDisclosure ? (
-        <InlineFeedbackNotice
+        <TonalPanel
           body={datasetRiskDisclosure.body}
           testID={datasetRiskDisclosure.testID}
           title={datasetRiskDisclosure.title}
+          tone="accent"
         />
       ) : null}
 
       {entitySourceDisclosure ? (
-        <InlineFeedbackNotice
+        <TonalPanel
           body={entitySourceDisclosure.body}
           testID={entitySourceDisclosure.testID}
           title={entitySourceDisclosure.title}
         />
       ) : null}
 
-      <SectionCard title="다음 컴백" styles={styles}>
+      <InsetSection
+        description="exact 일정이 있으면 가장 가까운 컴백을 먼저 보여 줍니다."
+        testID="entity-next-upcoming-section"
+        title="다음 컴백"
+      >
         {snapshot.nextUpcoming ? (
           <View testID="entity-next-upcoming-card" style={styles.primaryCard}>
             <View style={styles.chipRow}>
@@ -579,9 +582,13 @@ export default function ArtistDetailScreen() {
         ) : (
           <Text style={styles.emptyCopy}>등록된 예정 컴백이 없습니다.</Text>
         )}
-      </SectionCard>
+      </InsetSection>
 
-      <SectionCard title="최신 발매" styles={styles}>
+      <InsetSection
+        description="가장 최근 verified release를 서비스 handoff와 함께 보여 줍니다."
+        testID="entity-latest-release-section"
+        title="최신 발매"
+      >
         {snapshot.latestRelease ? (
           <View testID="entity-latest-release-card" style={styles.releaseCard}>
             <View style={styles.releaseHeroRow}>
@@ -589,9 +596,13 @@ export default function ArtistDetailScreen() {
                 {snapshot.latestRelease.coverImageUrl ? (
                   <Image source={{ uri: snapshot.latestRelease.coverImageUrl }} style={styles.releaseArtworkImage} />
                 ) : (
-                  <Text style={styles.releaseArtworkFallback}>
-                    {snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
-                  </Text>
+                  <FallbackArt
+                    height={72}
+                    label={snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
+                    testID="entity-latest-release-fallback-art"
+                    variant="cover"
+                    width={72}
+                  />
                 )}
               </View>
               <View style={styles.releaseCopy}>
@@ -663,9 +674,13 @@ export default function ArtistDetailScreen() {
             tone="error"
           />
         ) : null}
-      </SectionCard>
+      </InsetSection>
 
-      <SectionCard title="최근 앨범들" styles={styles}>
+      <InsetSection
+        description="full release history 중 최근 앨범을 우선 노출합니다."
+        testID="entity-recent-albums-section"
+        title="최근 앨범들"
+      >
         {snapshot.recentAlbums.length === 1 ? (
           <Pressable
             testID={`entity-recent-album-single-card-${snapshot.recentAlbums[0]!.id}`}
@@ -687,9 +702,13 @@ export default function ArtistDetailScreen() {
               {snapshot.recentAlbums[0]!.coverImageUrl ? (
                 <Image source={{ uri: snapshot.recentAlbums[0]!.coverImageUrl }} style={styles.albumArtworkImage} />
               ) : (
-                <Text style={styles.albumArtworkFallback}>
-                  {snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
-                </Text>
+                <FallbackArt
+                  height={88}
+                  label={snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
+                  testID="entity-single-album-fallback-art"
+                  variant="cover"
+                  width={88}
+                />
               )}
             </View>
             <View style={styles.singleAlbumCopy}>
@@ -730,9 +749,12 @@ export default function ArtistDetailScreen() {
                   {release.coverImageUrl ? (
                     <Image source={{ uri: release.coverImageUrl }} style={styles.albumArtworkImage} />
                   ) : (
-                    <Text style={styles.albumArtworkFallback}>
-                      {snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
-                    </Text>
+                    <FallbackArt
+                      height={96}
+                      label={snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
+                      variant="cover"
+                      width={96}
+                    />
                   )}
                 </View>
                 <Text
@@ -752,10 +774,14 @@ export default function ArtistDetailScreen() {
         ) : (
           <InlineFeedbackNotice body="등록된 최근 앨범이 없습니다." />
         )}
-      </SectionCard>
+      </InsetSection>
 
       {snapshot.sourceTimeline.length > 0 ? (
-        <SectionCard title="추가 정보" styles={styles}>
+        <InsetSection
+          description="artist source와 release/upcoming source를 묶어 보여 줍니다."
+          testID="entity-source-timeline-section"
+          title="추가 정보"
+        >
           <Pressable
             accessibilityLabel={showAdditionalInfo ? MOBILE_COPY.action.hideSourceTimeline : MOBILE_COPY.action.showSourceTimeline}
             accessibilityRole="button"
@@ -794,7 +820,7 @@ export default function ArtistDetailScreen() {
               ))}
             </View>
           ) : null}
-        </SectionCard>
+        </InsetSection>
       ) : null}
     </ScrollView>
   );
@@ -810,30 +836,6 @@ function InfoChip({
   return (
     <View style={styles.infoChip}>
       <Text style={styles.infoChipLabel}>{label}</Text>
-    </View>
-  );
-}
-
-function SectionCard({
-  title,
-  styles,
-  children,
-}: {
-  title: string;
-  styles: ReturnType<typeof createStyles>;
-  children: React.ReactNode;
-}) {
-  return (
-    <View style={styles.sectionCard}>
-      <Text
-        accessibilityRole="header"
-        allowFontScaling
-        maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-        style={styles.sectionTitle}
-      >
-        {title}
-      </Text>
-      {children}
     </View>
   );
 }

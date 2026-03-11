@@ -16,6 +16,9 @@ import {
 import { FilterSheet, type FilterSheetGroup } from '../../src/components/filters/FilterSheet';
 import { AppBar } from '../../src/components/layout/AppBar';
 import { SummaryStrip } from '../../src/components/layout/SummaryStrip';
+import { InsetSection } from '../../src/components/surfaces/InsetSection';
+import { TonalPanel } from '../../src/components/surfaces/TonalPanel';
+import { FallbackArt } from '../../src/components/visual/FallbackArt';
 import { buildDatasetRiskDisclosure } from '../../src/features/surfaceDisclosures';
 import {
   areRouteParamsEqual,
@@ -49,6 +52,7 @@ import {
   resolveUpcomingConfidenceLabel,
   resolveUpcomingStatusWithFallback,
 } from '../../src/copy/mobileCopy';
+import { resolveBadgeFallbackAssetKey } from '../../src/utils/assetRegistry';
 import type {
   RadarChangeFeedItemModel,
   RadarLongGapItemModel,
@@ -577,20 +581,25 @@ export default function RadarTabScreen() {
         </View>
 
         {dataState === 'degraded' && datasetRiskDisclosure ? (
-          <InlineFeedbackNotice
-            action={{
-              label: MOBILE_COPY.action.retry,
-              onPress: () => setReloadCount((count) => count + 1),
-              testID: 'radar-degraded-retry',
-            }}
+          <TonalPanel
             body={datasetRiskDisclosure.body}
+            footer={
+              <ActionButton
+                accessibilityLabel={MOBILE_COPY.action.retry}
+                label={MOBILE_COPY.action.retry}
+                onPress={() => setReloadCount((count) => count + 1)}
+                testID="radar-degraded-retry"
+                tone="secondary"
+              />
+            }
             testID={datasetRiskDisclosure.testID}
             title={datasetRiskDisclosure.title}
+            tone="accent"
           />
         ) : null}
 
         {partialSections.length > 0 ? (
-          <InlineFeedbackNotice
+          <TonalPanel
             body={buildRadarPartialBody(partialSections)}
             testID="radar-partial-notice"
             title="일부 정보만 표시됩니다."
@@ -712,17 +721,7 @@ function RadarFeaturedSection({
   styles: ReturnType<typeof createStyles>;
 }) {
   return (
-    <View style={styles.sectionCard}>
-      <View style={styles.sectionHeader}>
-        <Text
-          accessibilityRole="header"
-          allowFontScaling
-          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-          style={styles.sectionTitle}
-        >
-          가장 가까운 컴백
-        </Text>
-      </View>
+    <TonalPanel testID="radar-featured-section" title="가장 가까운 컴백" tone="accent">
       {item ? (
         <View
           accessibilityLabel={buildUpcomingCardAccessibilityLabel(item)}
@@ -753,7 +752,7 @@ function RadarFeaturedSection({
       ) : (
         <InlineFeedbackNotice body="가까운 컴백 일정이 없습니다." />
       )}
-    </View>
+    </TonalPanel>
   );
 }
 
@@ -767,19 +766,9 @@ function RadarSection({
   title: string;
 }) {
   return (
-    <View style={styles.sectionCard}>
-      <View style={styles.sectionHeader}>
-        <Text
-          accessibilityRole="header"
-          allowFontScaling
-          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
-          style={styles.sectionTitle}
-        >
-          {title}
-        </Text>
-      </View>
+    <InsetSection title={title}>
       {children}
-    </View>
+    </InsetSection>
   );
 }
 
@@ -806,7 +795,13 @@ function RadarUpcomingSectionCard({
       testID={testID}
     >
       <View style={styles.cardBadge}>
-        <Text style={styles.cardBadgeLabel}>{resolveBadgeLabel(item.team)}</Text>
+        <FallbackArt
+          height={48}
+          label={resolveBadgeLabel(item.team)}
+          shape="circle"
+          variant={resolveBadgeFallbackAssetKey(item.team.actType)}
+          width={48}
+        />
       </View>
       <View style={styles.cardCopy}>
         <Text numberOfLines={1} style={styles.cardTitle}>{item.team.displayName}</Text>
@@ -856,7 +851,13 @@ function RadarChangeFeedCard({
       testID={`radar-change-card-${item.team.slug}`}
     >
       <View style={styles.cardBadge}>
-        <Text style={styles.cardBadgeLabel}>{resolveBadgeLabel(item.team)}</Text>
+        <FallbackArt
+          height={48}
+          label={resolveBadgeLabel(item.team)}
+          shape="circle"
+          variant={resolveBadgeFallbackAssetKey(item.team.actType)}
+          width={48}
+        />
       </View>
       <View style={styles.cardCopy}>
         <Text numberOfLines={1} style={styles.cardTitle}>{item.team.displayName}</Text>
@@ -900,7 +901,13 @@ function RadarLongGapCard({
       testID={`radar-long-gap-card-${item.team.slug}`}
     >
       <View style={styles.cardBadge}>
-        <Text style={styles.cardBadgeLabel}>{resolveBadgeLabel(item.team)}</Text>
+        <FallbackArt
+          height={48}
+          label={resolveBadgeLabel(item.team)}
+          shape="circle"
+          variant={resolveBadgeFallbackAssetKey(item.team.actType)}
+          width={48}
+        />
       </View>
       <View style={styles.cardCopy}>
         <Text numberOfLines={1} style={styles.cardTitle}>{item.team.displayName}</Text>
@@ -936,7 +943,13 @@ function RadarRookieCard({
       testID={`radar-rookie-card-${item.team.slug}`}
     >
       <View style={styles.cardBadge}>
-        <Text style={styles.cardBadgeLabel}>{resolveBadgeLabel(item.team)}</Text>
+        <FallbackArt
+          height={48}
+          label={resolveBadgeLabel(item.team)}
+          shape="circle"
+          variant={resolveBadgeFallbackAssetKey(item.team.actType)}
+          width={48}
+        />
       </View>
       <View style={styles.cardCopy}>
         <Text numberOfLines={1} style={styles.cardTitle}>{item.team.displayName}</Text>
