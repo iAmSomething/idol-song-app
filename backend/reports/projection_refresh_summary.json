@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T07:53:57.809Z",
+  "generated_at": "2026-03-11T16:14:21.898Z",
   "row_counts": {
     "entity_search_documents": 117,
     "calendar_month_projection": 216,
@@ -17,13 +17,7 @@
       "entity_slug": "yena",
       "entity_type": "solo",
       "display_name": "YENA",
-      "next_upcoming": {
-        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-        "date_status": "confirmed",
-        "date_precision": "exact",
-        "scheduled_date": "2026-03-11",
-        "confidence_score": 0.84
-      },
+      "next_upcoming": null,
       "canonical_name": "YENA",
       "latest_release": {
         "stream": "song",
@@ -45,21 +39,21 @@
         "month_only_upcoming_count": 4
       },
       "nearest_upcoming": {
-        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-        "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+        "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+        "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
         "date_status": "confirmed",
-        "entity_slug": "yena",
+        "entity_slug": "p1harmony",
         "source_type": "news_rss",
-        "display_name": "YENA",
-        "source_count": 1,
-        "source_domain": "starnewskorea.com",
+        "display_name": "P1Harmony",
+        "source_count": 4,
+        "source_domain": "news.google.com",
         "date_precision": "exact",
         "release_format": "ep",
-        "scheduled_date": "2026-03-11",
+        "scheduled_date": "2026-03-12",
         "scheduled_month": "2026-03",
-        "confidence_score": 0.84,
-        "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-        "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
+        "confidence_score": 0.82,
+        "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+        "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735"
       }
     },
     "entity_detail": {
@@ -77,22 +71,7 @@
         "representative_image_url": null,
         "representative_image_source": null
       },
-      "next_upcoming": {
-        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-        "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
-        "date_status": "confirmed",
-        "source_type": "news_rss",
-        "source_count": 1,
-        "source_domain": "starnewskorea.com",
-        "date_precision": "exact",
-        "latest_seen_at": "2026-02-23T05:58:00+00:00",
-        "release_format": "ep",
-        "scheduled_date": "2026-03-11",
-        "scheduled_month": "2026-03",
-        "confidence_score": 0.84,
-        "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-        "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
-      },
+      "next_upcoming": null,
       "recent_albums": [
         {
           "stream": "album",
@@ -196,17 +175,17 @@
     },
     "radar": {
       "featured_upcoming": {
-        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+        "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
         "date_status": "confirmed",
-        "entity_slug": "yena",
-        "display_name": "YENA",
+        "entity_slug": "p1harmony",
+        "display_name": "P1Harmony",
         "date_precision": "exact",
         "release_format": "ep",
-        "scheduled_date": "2026-03-11",
-        "confidence_score": 0.84,
-        "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f"
+        "scheduled_date": "2026-03-12",
+        "confidence_score": 0.82,
+        "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735"
       },
-      "weekly_upcoming_count": 2,
+      "weekly_upcoming_count": 1,
       "change_feed_count": 20,
       "long_gap_count": 23,
       "rookie_count": 8
