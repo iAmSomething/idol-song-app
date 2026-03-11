@@ -56,3 +56,16 @@
 
 ## Next Step
 - current preview sign-off gate is clear; next work can move to distribution / release operations as needed.
+
+## Issue Reconciliation
+- fulfilled and ready to close from this sign-off bundle:
+  - `#503` iOS end-to-end QA
+  - `#504` Android end-to-end QA
+  - `#508` final accessibility freeze
+  - `#509` production-like preview candidate verification
+  - `#510` final release-readiness gate
+- non-blocking follow-up work that can stay open after sign-off:
+  - `#505` installed-app external handoff matrix on richer real-device conditions
+  - `#506` final visual polish beyond launch-blocking defects
+  - `#507` final copy/truncation polish beyond launch-blocking defects
+- umbrella `#502`는 preview candidate의 blocker/non-blocker 구분과 sign-off verdict가 이 문서로 고정됐으므로 closure 조건을 충족한다.

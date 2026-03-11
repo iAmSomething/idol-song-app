@@ -140,6 +140,19 @@
 - 새 RN 작업은 위 순서를 기본으로 집행하되, dependency가 강한 항목은 한 PR에서 묶을 수 있다.
 - `#425`는 umbrella, `#456`은 traceability anchor, `#454`는 최종 gate로 유지한다.
 
+### 7.5 Release-Grade QA Closure Status
+- `2026-03-11` preview sign-off 기준으로 아래 이슈는 충족 상태다.
+  - `#503` iOS end-to-end QA
+  - `#504` Android end-to-end QA
+  - `#508` final accessibility freeze
+  - `#509` preview candidate runtime verification
+  - `#510` final release-readiness gate
+- release-grade umbrella `#502`는 blocker/non-blocker 구분과 sign-off verdict가 확정된 시점에 닫는다.
+- 아래 이슈는 non-blocking polish / richer real-device follow-up으로 남길 수 있다.
+  - `#505` native external handoff installed-app matrix
+  - `#506` final visual polish
+  - `#507` final Korean-first copy polish
+
 ## 8. Launch-Grade Visual Identity Track
 
 ### 8.1 Light-mode visual identity

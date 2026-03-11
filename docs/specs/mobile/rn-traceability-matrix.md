@@ -24,9 +24,9 @@
 | `layout-constraint-spec.md` | `#430` |  | open | surface layout/density |
 | `state-feedback-spec.md` | `#455` | `#454` | open | loading/empty/error/partial states |
 | `copy-localization-spec.md` | `#431` | `#455` | open | copy/localization 규칙 |
-| `accessibility-platform-spec.md` | `#454` | `#459` | open | QA/platform acceptance |
+| `accessibility-platform-spec.md` | `#454` | `#459`, `#508` | closed | QA/platform acceptance sign-off complete |
 | `edge-case-catalog.md` | `#455` | `#458` | open | null/missing/partial edge cases |
-| `qa-acceptance-spec.md` | `#454` | `#459` | open | preview sign-off gate |
+| `qa-acceptance-spec.md` | `#454` | `#459`, `#510` | closed | preview sign-off gate complete |
 | `interaction-matrix.md` | `#459` | `#426`, `#427`, `#433` | open | 탭/시트/push/external 행동 매트릭스 |
 | `sample-data-contracts.md` | `#458` | `#455` | open | fixture/sample parity 기준 |
 | `wireframe-block-diagrams.md` | `#430` | `#425` | open | 화면 구조 baseline |
@@ -36,8 +36,8 @@
 | `view-state-models.md` | `#457` | `#435`, `#458` | open | state/model naming 기준 |
 | `user-journey-sequences.md` | `#459` | `#454` | open | interaction + QA path |
 | `expo-implementation-guide.md` | `#425` | `#426`, `#434` | open | runtime/router implementation baseline |
-| `screen-delivery-checklists.md` | `#454` | `#425` | open | release gate checklist |
-| `testing-strategy-spec.md` | `#454` | `#458` | open | selector/UI smoke/test scope |
+| `screen-delivery-checklists.md` | `#454` | `#425`, `#510` | closed | release gate checklist executed |
+| `testing-strategy-spec.md` | `#454` | `#458`, `#510` | closed | selector/UI smoke/test scope satisfied for preview gate |
 | `typescript-interface-examples.md` | `#457` | `#458` | open | display model/type naming 기준 |
 | `github-issue-breakdown-plan.md` | `#425` | `#456` | open | live issue umbrella/order |
 | `domain-glossary.md` | `#457` | `#456` | open | 용어 고정점 |
@@ -46,8 +46,8 @@
 | `analytics-event-spec.md` | `#432` | `#459` | open | interaction/failure analytics |
 | `data-sync-freshness-spec.md` | `#455` | `#434` | open | stale/partial disclosure 기준 |
 | `privacy-security-spec.md` | `#433` | `#459` | open | external/handoff/privacy guard |
-| `accessibility-reading-order-spec.md` | `#454` | `#459` | open | reading order QA |
-| `release-readiness-gate.md` | `#454` | `#425` | open | preview sign-off barrier |
+| `accessibility-reading-order-spec.md` | `#454` | `#459`, `#508` | closed | reading order QA evidence complete |
+| `release-readiness-gate.md` | `#454` | `#425`, `#510` | closed | preview sign-off barrier cleared |
 | `route-param-contracts.md` | `#426` | `#435` | open | path/deep-link/back stack |
 | `configuration-environment-spec.md` | `#434` | `#419` | open | runtime/env/failure policy |
 | `observability-error-taxonomy.md` | `#432` | `#434` | open | analytics + runtime failures |
@@ -61,10 +61,10 @@
 
 | Document | Primary RN issue | Secondary issues | Status | Note |
 | --- | --- | --- | --- | --- |
-| `accessibility-audit-2026-03-09.md` | `#454` |  | open | pre-sign-off accessibility evidence |
+| `accessibility-audit-2026-03-09.md` | `#454` | `#508` | closed | pre-sign-off accessibility evidence archived under final pass |
 | `decision-log-review-checklist.md` | `#456` | `#425` | open | doc review/traceability anchor |
 | `rn-implementation-audit-2026-03-10.md` | `#456` | `#457`, `#458` | open | implementation audit evidence |
-| `rn-quality-coverage-matrix.md` | `#454` | `#458` | open | QA/coverage matrix |
+| `rn-quality-coverage-matrix.md` | `#454` | `#458`, `#510` | closed | QA/coverage matrix satisfied by final gate |
 | `rn-screen-structure-validation-2026-03-10.md` | `#430` | `#459` | open | structure/layout validation |
 | `rn-journey-walkthrough-2026-03-10.md` | `#459` | `#454` | open | journey execution evidence |
 | `rn-freshness-review-2026-03-10.md` | `#455` | `#434` | open | stale/fallback review evidence |
