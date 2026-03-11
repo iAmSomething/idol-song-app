@@ -7,6 +7,7 @@ from typing import Dict, List, Optional
 
 import requests
 
+from latest_verified_release_selection import sort_release_candidates
 from map_latest_releases_musicbrainz import (
     BANNED_PATTERN,
     BANNED_SECONDARY_TYPES,
@@ -146,14 +147,7 @@ def build_group_history_rows(session: requests.Session) -> tuple[List[Dict], Lis
             unresolved_rows.append({"group": group, "reason": "no_exact_release_history", "artist_mbid": artist_mbid})
             continue
 
-        normalized_releases.sort(
-            key=lambda row: (
-                row["date"],
-                0 if row["stream"] == "album" else 1,
-                row["title"].casefold(),
-            ),
-            reverse=True,
-        )
+        normalized_releases = sort_release_candidates(normalized_releases)
 
         output_rows.append(
             {

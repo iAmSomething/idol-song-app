@@ -1,18 +1,19 @@
 {
-  "generated_at": "2026-03-07T08:21:49.354868+00:00",
+  "generated_at": "2026-03-11T07:53:51.250474+00:00",
   "source_counts": {
-    "artist_profiles": 116,
-    "youtube_allowlists": 108,
-    "release_details": 117,
-    "release_history_groups": 115,
-    "release_history_rows": 1767,
+    "artist_profiles": 117,
+    "team_badge_assets": 77,
+    "youtube_allowlists": 117,
+    "release_details": 1770,
+    "release_history_groups": 116,
+    "release_history_rows": 1770,
     "release_artwork": 117,
     "upcoming_candidates": 71,
-    "watchlist": 116,
-    "release_detail_overrides": 67,
+    "watchlist": 108,
+    "release_detail_overrides": 109,
     "manual_review_queue": 67,
-    "mv_manual_review_queue": 34,
-    "releases_rollup": 80
+    "mv_manual_review_queue": 1657,
+    "releases_rollup": 89
   },
   "source_duplicates": {
     "entity_aliases": 1,
@@ -24,7 +25,7 @@
   "unresolved_release_mappings": [],
   "unresolved_review_links": [],
   "entity_type_counts": {
-    "group": 104,
+    "group": 105,
     "project": 1,
     "unit": 4,
     "solo": 7
@@ -62,27 +63,27 @@
   "scope": "upcoming_pipeline",
   "stale_pruned": {
     "review_tasks": 0,
-    "upcoming_signals_deactivated": 71,
-    "upcoming_signal_sources_deleted": 71
+    "upcoming_signals_deactivated": 0,
+    "upcoming_signal_sources_deleted": 0
   },
   "operation_counts": {
     "entities": {
-      "updated": 116
+      "updated": 117
     },
     "entity_aliases": {
-      "updated": 166
+      "updated": 168
     },
     "entity_official_links": {
-      "updated": 425
+      "updated": 429
     },
     "upcoming_signals": {
-      "inserted": 59
+      "updated": 59
     },
     "upcoming_signal_sources": {
-      "inserted": 71
+      "updated": 71
     },
     "entity_tracking_state": {
-      "updated": 116
+      "updated": 108
     },
     "review_tasks": {
       "updated": 67
@@ -91,8 +92,8 @@
   "db_row_counts": {
     "upcoming_signals": 130,
     "upcoming_signal_sources": 71,
-    "entity_tracking_state": 116,
-    "review_tasks": 101
+    "entity_tracking_state": 117,
+    "review_tasks": 106
   },
   "critical_checks": {
     "active_upcoming_by_precision": {
@@ -107,12 +108,12 @@
   },
   "summary_path": "backend/reports/upcoming_pipeline_db_sync_summary.json",
   "table_source_counts": {
-    "entities": 116,
-    "entity_aliases": 166,
-    "entity_official_links": 425,
+    "entities": 117,
+    "entity_aliases": 168,
+    "entity_official_links": 429,
     "upcoming_signals": 59,
     "upcoming_signal_sources": 71,
-    "entity_tracking_state": 116,
+    "entity_tracking_state": 108,
     "review_tasks": 67
   }
 }

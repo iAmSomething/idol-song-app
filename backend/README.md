@@ -586,6 +586,12 @@ python3 build_backend_json_parity_report.py
 - YouTube Music / YouTube MV service-link state
 - review-required counts
 
+latest verified release selection rule은 source import / tracking-state / projection / read route에서 아래 순서를 공통으로 사용한다.
+
+- exact `release_date` desc
+- same date면 `album` stream 우선, 그다음 `song`
+- same date + same stream이면 normalized `release_title` asc
+
 ## Endpoint Shadow Read Report
 
 projection-backed read route를 current shipped web semantics와 직접 비교하려면 아래 명령을 사용한다.

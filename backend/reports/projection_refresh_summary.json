@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-08T23:52:59.908Z",
+  "generated_at": "2026-03-11T07:53:57.809Z",
   "row_counts": {
     "entity_search_documents": 117,
     "calendar_month_projection": 216,
@@ -208,7 +208,7 @@
       },
       "weekly_upcoming_count": 2,
       "change_feed_count": 20,
-      "long_gap_count": 2,
+      "long_gap_count": 23,
       "rookie_count": 8
     }
   }
