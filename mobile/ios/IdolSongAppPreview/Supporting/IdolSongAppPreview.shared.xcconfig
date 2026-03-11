@@ -1,0 +1,6 @@
+CODE_SIGN_IDENTITY = Apple Development
+CODE_SIGN_STYLE = Automatic
+CODE_SIGNING_ALLOWED[sdk=iphonesimulator*] = NO
+CODE_SIGNING_REQUIRED[sdk=iphonesimulator*] = NO
+DEVELOPMENT_TEAM =
+PRODUCT_BUNDLE_IDENTIFIER = com.anonymous.idolsongappmobile.preview
