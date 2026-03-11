@@ -17,10 +17,25 @@ export const placeholderAssets = {
 } as const satisfies Record<ThemeScheme, Record<string, ImageSourcePropType>>;
 
 export const serviceIconAssets = {
-  spotify: require('../../assets/services/spotify.png'),
-  youtubeMusic: require('../../assets/services/youtube-music.png'),
-  youtubeMv: require('../../assets/services/youtube-mv.png'),
-} as const satisfies Record<string, ImageSourcePropType>;
+  spotify: {
+    source: require('../../assets/services/spotify.png'),
+    fallbackGlyph: 'SP',
+  },
+  youtubeMusic: {
+    source: require('../../assets/services/youtube-music.png'),
+    fallbackGlyph: 'YM',
+  },
+  youtubeMv: {
+    source: require('../../assets/services/youtube-mv.png'),
+    fallbackGlyph: 'MV',
+  },
+} as const satisfies Record<
+  string,
+  {
+    source: ImageSourcePropType;
+    fallbackGlyph: string;
+  }
+>;
 
 export const badgeFallbackAssets = {
   light: {
@@ -71,4 +86,16 @@ export function resolveFallbackArtSource(
 
 export function resolveLaunchMarkSource(scheme: ThemeScheme = 'light'): ImageSourcePropType {
   return launchMarkAssets[scheme];
+}
+
+export function resolveServiceIconSource(
+  key: ServiceIconAssetKey,
+): ImageSourcePropType {
+  return serviceIconAssets[key].source;
+}
+
+export function resolveServiceIconFallbackGlyph(
+  key: ServiceIconAssetKey,
+): string {
+  return serviceIconAssets[key].fallbackGlyph;
 }

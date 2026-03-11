@@ -118,6 +118,12 @@ function adaptReleaseSummary(
     releaseDate: input.release_date ?? '',
     releaseKind: normalizeReleaseKind(input.release_kind ?? null),
     stream: normalizeReleaseStream(input.stream),
+    representativeSongTitle:
+      'representative_song_title' in input ? input.representative_song_title ?? undefined : undefined,
+    spotifyUrl: 'spotify_url' in input ? input.spotify_url ?? undefined : undefined,
+    youtubeMusicUrl: 'youtube_music_url' in input ? input.youtube_music_url ?? undefined : undefined,
+    youtubeMvUrl: 'youtube_mv_url' in input ? input.youtube_mv_url ?? undefined : undefined,
+    sourceUrl: 'source_url' in input ? input.source_url ?? undefined : undefined,
     coverImageUrl:
       'artwork' in input
         ? input.artwork?.cover_image_url ?? input.artwork?.thumbnail_image_url ?? undefined

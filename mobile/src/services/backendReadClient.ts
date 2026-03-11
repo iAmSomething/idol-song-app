@@ -4,6 +4,8 @@ const DEFAULT_BACKEND_TIMEOUT_MS = 4500;
 const DEFAULT_BACKEND_RETRY_COUNT = 1;
 const DEFAULT_BACKEND_RETRY_DELAY_MS = 350;
 const RETRYABLE_STATUS_CODES = new Set([408, 429, 502, 503, 504]);
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 export type BackendReadEnvelope<T> = {
   meta?: {
@@ -190,6 +192,11 @@ export type BackendEntityReleaseSummary = {
   stream: string;
   release_kind?: string | null;
   release_format?: string | null;
+  representative_song_title?: string | null;
+  spotify_url?: string | null;
+  youtube_music_url?: string | null;
+  youtube_mv_url?: string | null;
+  source_url?: string | null;
   artwork?: {
     cover_image_url?: string | null;
     thumbnail_image_url?: string | null;
@@ -421,6 +428,10 @@ function parseLegacyReleaseId(legacyReleaseId: string): {
   };
 }
 
+function isCanonicalReleaseId(value: string): boolean {
+  return UUID_PATTERN.test(value.trim());
+}
+
 async function readJsonResponse<T>(response: Response): Promise<BackendReadEnvelope<T>> {
   let payload: unknown = null;
 
@@ -475,6 +486,7 @@ export type BackendReadClient = {
     stream: string;
   }): Promise<BackendReadEnvelope<BackendReleaseLookupData>>;
   getReleaseDetail(releaseId: string): Promise<BackendReadEnvelope<BackendReleaseDetailData>>;
+  getReleaseDetailForRouteId(routeReleaseId: string): Promise<BackendReadEnvelope<BackendReleaseDetailData>>;
   getReleaseDetailByLegacyId(legacyReleaseId: string): Promise<BackendResolvedReleaseDetail>;
 };
 
@@ -606,6 +618,17 @@ export function createBackendReadClient(
     },
     getReleaseDetail(releaseId) {
       return get<BackendReleaseDetailData>(`/v1/releases/${encodeURIComponent(releaseId)}`);
+    },
+    getReleaseDetailForRouteId(routeReleaseId) {
+      const trimmedRouteReleaseId = routeReleaseId.trim();
+
+      if (isCanonicalReleaseId(trimmedRouteReleaseId)) {
+        return get<BackendReleaseDetailData>(
+          `/v1/releases/${encodeURIComponent(trimmedRouteReleaseId)}`,
+        );
+      }
+
+      return this.getReleaseDetailByLegacyId(trimmedRouteReleaseId).then((resolved) => resolved.detail);
     },
     async getReleaseDetailByLegacyId(legacyReleaseId) {
       const parsed = parseLegacyReleaseId(legacyReleaseId);

@@ -30,6 +30,11 @@ type EntityDetailProjectionRow = {
   generated_at: Date | string;
 };
 
+type ReleaseDetailProjectionRow = {
+  release_id: string;
+  payload: unknown;
+};
+
 type EntitySlugParams = {
   slug: string;
 };
@@ -87,6 +92,11 @@ type ReleaseSummary = {
   stream: string;
   release_kind: string | null;
   release_format: string | null;
+  representative_song_title: string | null;
+  spotify_url: string | null;
+  youtube_music_url: string | null;
+  youtube_mv_url: string | null;
+  source_url: string | null;
   artwork: ArtworkSummary | null;
 };
 
@@ -216,6 +226,11 @@ function normalizeReleaseSummary(value: unknown): ReleaseSummary | null {
     stream,
     release_kind: asNullableString(value.release_kind),
     release_format: asNullableString(value.release_format),
+    representative_song_title: asNullableString(value.representative_song_title),
+    spotify_url: asNullableString(value.spotify_url),
+    youtube_music_url: asNullableString(value.youtube_music_url),
+    youtube_mv_url: asNullableString(value.youtube_mv_url),
+    source_url: asNullableString(value.source_url),
     artwork: normalizeArtworkSummary(value.artwork),
   };
 }
@@ -228,6 +243,80 @@ function normalizeReleaseSummaryArray(value: unknown): ReleaseSummary[] {
   return value
     .map(normalizeReleaseSummary)
     .filter((item): item is ReleaseSummary => item !== null);
+}
+
+function extractRepresentativeSongTitle(tracks: unknown): string | null {
+  if (!Array.isArray(tracks)) {
+    return null;
+  }
+
+  const titleTrack = tracks.find((track) => {
+    if (!isRecord(track)) {
+      return false;
+    }
+
+    return track.is_title_track === true && typeof track.title === 'string' && track.title.length > 0;
+  });
+
+  if (!isRecord(titleTrack)) {
+    return null;
+  }
+
+  return asNullableString(titleTrack.title);
+}
+
+function mergeReleaseSummaryWithDetail(
+  release: ReleaseSummary,
+  detailPayload: unknown,
+): ReleaseSummary {
+  if (!isRecord(detailPayload)) {
+    return release;
+  }
+
+  const serviceLinks = isRecord(detailPayload.service_links) ? detailPayload.service_links : null;
+  const spotify = serviceLinks && isRecord(serviceLinks.spotify) ? serviceLinks.spotify : null;
+  const youtubeMusic =
+    serviceLinks && isRecord(serviceLinks.youtube_music) ? serviceLinks.youtube_music : null;
+  const mv = isRecord(detailPayload.mv) ? detailPayload.mv : null;
+  const artwork = normalizeArtworkSummary(detailPayload.artwork);
+
+  return {
+    ...release,
+    representative_song_title:
+      extractRepresentativeSongTitle(detailPayload.tracks) ?? release.representative_song_title,
+    spotify_url: asNullableString(spotify?.url) ?? release.spotify_url,
+    youtube_music_url: asNullableString(youtubeMusic?.url) ?? release.youtube_music_url,
+    youtube_mv_url: asNullableString(mv?.url) ?? release.youtube_mv_url,
+    artwork: artwork ?? release.artwork,
+  };
+}
+
+async function hydrateReleaseSummaries(
+  db: DbQueryable,
+  releases: ReleaseSummary[],
+): Promise<ReleaseSummary[]> {
+  const releaseIds = [...new Set(releases.map((release) => release.release_id).filter(Boolean))];
+
+  if (releaseIds.length === 0) {
+    return releases;
+  }
+
+  const result = await db.query<ReleaseDetailProjectionRow>(
+    `
+      select release_id::text as release_id, payload
+      from release_detail_projection
+      where release_id = any($1::uuid[])
+    `,
+    [releaseIds],
+  );
+
+  const payloadByReleaseId = new Map(
+    result.rows.map((row) => [row.release_id, row.payload] as const),
+  );
+
+  return releases.map((release) =>
+    mergeReleaseSummaryWithDetail(release, payloadByReleaseId.get(release.release_id)),
+  );
 }
 
 function normalizeSourceTimeline(value: unknown): SourceTimelineItem[] {
@@ -481,12 +570,23 @@ export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteC
       throw routeError(404, 'not_found', 'No entity matched the supplied slug.', { entity_slug: slug });
     }
 
-    const data = normalizeEntityDetailPayload(row.payload, slug);
-    if (!data) {
+    const normalized = normalizeEntityDetailPayload(row.payload, slug);
+    if (!normalized) {
       throw routeError(500, 'stale_projection', 'entity_detail_projection returned an unexpected payload shape.', {
         entity_slug: slug,
       });
     }
+
+    const [latestRelease] = await hydrateReleaseSummaries(
+      context.db,
+      normalized.latest_release ? [normalized.latest_release] : [],
+    );
+    const recentAlbums = await hydrateReleaseSummaries(context.db, normalized.recent_albums);
+    const data: EntityDetailPayload = {
+      ...normalized,
+      latest_release: latestRelease ?? normalized.latest_release,
+      recent_albums: recentAlbums,
+    };
 
     return buildReadDataEnvelope(
       request,

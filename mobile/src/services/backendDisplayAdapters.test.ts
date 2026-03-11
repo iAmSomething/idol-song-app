@@ -181,6 +181,74 @@ describe('backend display adapter parity', () => {
     expect(snapshot.sourceTimeline[0]?.sourceUrl).toBeUndefined();
   });
 
+  test('preserves enriched canonical release links and representative track data on entity detail payloads', () => {
+    const data: BackendEntityDetailData = {
+      identity: {
+        entity_slug: 'yena',
+        display_name: 'YENA',
+        canonical_name: 'YENA',
+        entity_type: 'solo',
+      },
+      official_links: {
+        youtube: 'https://www.youtube.com/@YENA_OFFICIAL',
+        x: null,
+        instagram: null,
+      },
+      youtube_channels: {
+        primary_team_channel_url: 'https://www.youtube.com/@YENA_OFFICIAL',
+        mv_allowlist_urls: ['https://www.youtube.com/@YENA_OFFICIAL'],
+      },
+      tracking_state: {},
+      next_upcoming: null,
+      latest_release: {
+        release_id: 'release-yena',
+        release_title: 'Hate Rodrigo',
+        release_date: '2025-06-29',
+        stream: 'song',
+        release_kind: 'single',
+        release_format: 'single',
+        representative_song_title: 'Hate Rodrigo (feat. Yuqi)',
+        spotify_url: 'https://open.spotify.com/track/hate-rodrigo',
+        youtube_music_url: 'https://music.youtube.com/watch?v=hate-rodrigo',
+        youtube_mv_url: 'https://www.youtube.com/watch?v=hate-rodrigo',
+        artwork: {
+          cover_image_url: 'https://cdn.example.com/hate-rodrigo-cover.jpg',
+        },
+      },
+      recent_albums: [
+        {
+          release_id: 'release-love-catcher',
+          release_title: 'LOVE CATCHER',
+          release_date: '2026-03-11',
+          stream: 'album',
+          release_kind: 'ep',
+          release_format: 'ep',
+          representative_song_title: 'LOVE CATCHER',
+          spotify_url: 'https://open.spotify.com/album/love-catcher',
+          youtube_music_url: 'https://music.youtube.com/playlist?list=PLLOVECATCHER',
+          youtube_mv_url: null,
+          artwork: {
+            thumbnail_image_url: 'https://cdn.example.com/love-catcher-thumb.jpg',
+          },
+        },
+      ],
+      source_timeline: [],
+      artist_source_url: null,
+    };
+
+    const snapshot = adaptBackendEntityDetail(data);
+
+    expect(snapshot.latestRelease?.representativeSongTitle).toBe('Hate Rodrigo (feat. Yuqi)');
+    expect(snapshot.latestRelease?.spotifyUrl).toBe('https://open.spotify.com/track/hate-rodrigo');
+    expect(snapshot.latestRelease?.youtubeMusicUrl).toBe('https://music.youtube.com/watch?v=hate-rodrigo');
+    expect(snapshot.latestRelease?.youtubeMvUrl).toBe('https://www.youtube.com/watch?v=hate-rodrigo');
+    expect(snapshot.recentAlbums[0]?.representativeSongTitle).toBe('LOVE CATCHER');
+    expect(snapshot.recentAlbums[0]?.spotifyUrl).toBe('https://open.spotify.com/album/love-catcher');
+    expect(snapshot.recentAlbums[0]?.youtubeMusicUrl).toBe(
+      'https://music.youtube.com/playlist?list=PLLOVECATCHER',
+    );
+  });
+
   test('keeps release detail service links and MV state explicit without fake fallback values', () => {
     const data: BackendReleaseDetailData = {
       release: {
