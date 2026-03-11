@@ -100,3 +100,5 @@
 - Calendar, Radar, Search, Team Detail, Release Detail는 공통 token set만 사용한다.
 - 서비스 버튼은 raw brand hex 대신 `service/*` token을 사용한다.
 - 상태 칩은 `status/*` semantic token만 사용한다.
+- light/dark theme 전환은 semantic token key를 유지한 채 `MobileThemeProvider`가 scheme별 값을 선택한다.
+- dark-specific asset 분기는 component 안 raw `require(...)` 분기가 아니라 `mobile/src/utils/assetRegistry.ts`에서만 처리한다.

@@ -26,6 +26,13 @@
 - 상태 칩은 배경색만으로 의미 전달 금지
 - 텍스트와 아이콘 대비는 WCAG AA 이상 목표
 - brand tint는 읽기성보다 우선할 수 없다.
+- dark mode에서도 semantic text/status/service token 대비를 자동 검증해야 한다.
+- minimum local gate:
+  - `text/primary` vs `surface/base` >= 14
+  - `text/secondary` vs `surface/base` >= 6
+  - `status/*/text` vs `status/*/bg` >= 4.5
+  - `service/*/icon` vs `service/*/bg` >= 4.2
+- splash / placeholder / badge fallback은 dark 배경 위에서 과도한 glare 없이 윤곽이 유지되어야 한다.
 
 ## 6. Motion Accessibility
 - 시스템 `Reduce Motion` 활성 시

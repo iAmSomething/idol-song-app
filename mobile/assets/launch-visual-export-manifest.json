@@ -4,6 +4,7 @@
     "app_store": "mobile/assets/app-icon/icon-app-store-1024.png",
     "adaptive_foreground": "mobile/assets/app-icon/icon-adaptive-foreground.png",
     "adaptive_monochrome": "mobile/assets/app-icon/icon-adaptive-monochrome.png",
+    "launch_mark_dark": "mobile/assets/app-icon/icon-launch-mark-dark.png",
     "source": [
       "mobile/assets/app-icon/icon-primary-source.svg",
       "mobile/assets/app-icon/icon-adaptive-foreground-source.svg",
@@ -12,18 +13,42 @@
     ]
   },
   "splash": {
-    "foreground": "mobile/assets/splash/splash-foreground.png",
-    "source": "mobile/assets/splash/splash-foreground-source.svg"
+    "foreground": {
+      "light": "mobile/assets/splash/splash-foreground.png",
+      "dark": "mobile/assets/splash/splash-foreground-dark.png"
+    },
+    "source": {
+      "light": "mobile/assets/splash/splash-foreground-source.svg",
+      "dark": "mobile/assets/splash/splash-foreground-dark-source.svg"
+    }
   },
   "placeholders": {
-    "cover": "mobile/assets/placeholders/cover-fallback.png",
-    "team": "mobile/assets/placeholders/team-fallback.png",
-    "empty_state": "mobile/assets/placeholders/empty-state-fallback.png"
+    "cover": {
+      "light": "mobile/assets/placeholders/cover-fallback.png",
+      "dark": "mobile/assets/placeholders/cover-fallback-dark.png"
+    },
+    "team": {
+      "light": "mobile/assets/placeholders/team-fallback.png",
+      "dark": "mobile/assets/placeholders/team-fallback-dark.png"
+    },
+    "empty_state": {
+      "light": "mobile/assets/placeholders/empty-state-fallback.png",
+      "dark": "mobile/assets/placeholders/empty-state-fallback-dark.png"
+    }
   },
   "badges": {
-    "group": "mobile/assets/badges/group-fallback.png",
-    "solo": "mobile/assets/badges/solo-fallback.png",
-    "label": "mobile/assets/badges/label-fallback.png"
+    "group": {
+      "light": "mobile/assets/badges/group-fallback.png",
+      "dark": "mobile/assets/badges/group-fallback-dark.png"
+    },
+    "solo": {
+      "light": "mobile/assets/badges/solo-fallback.png",
+      "dark": "mobile/assets/badges/solo-fallback-dark.png"
+    },
+    "label": {
+      "light": "mobile/assets/badges/label-fallback.png",
+      "dark": "mobile/assets/badges/label-fallback-dark.png"
+    }
   },
   "services": {
     "spotify": "mobile/assets/services/spotify.png",
@@ -32,7 +57,7 @@
   },
   "update_policy": {
     "source_of_truth": "svg sources under mobile/assets/",
-    "export_rule": "keep exported PNG names stable and only replace file contents",
+    "export_rule": "keep exported PNG names stable and only replace file contents; add -dark variants instead of overwriting light exports",
     "follow_up": "if visual treatment changes, update both manifest and docs/specs/mobile/launch-visual-asset-handoff.md"
   }
 }

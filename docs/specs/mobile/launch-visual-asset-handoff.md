@@ -9,6 +9,7 @@ launch 시점에 필요한 icon, splash, fallback visual을 구현팀이 바로 
 - app icon: `mobile/assets/app-icon/icon-app-store-1024.png`
 - Android adaptive foreground: `mobile/assets/app-icon/icon-adaptive-foreground.png`
 - Android adaptive monochrome: `mobile/assets/app-icon/icon-adaptive-monochrome.png`
+- dark launch mark: `mobile/assets/app-icon/icon-launch-mark-dark.png`
 - source of truth:
   - `mobile/assets/app-icon/icon-primary-source.svg`
   - `mobile/assets/app-icon/icon-adaptive-foreground-source.svg`
@@ -16,20 +17,22 @@ launch 시점에 필요한 icon, splash, fallback visual을 구현팀이 바로 
   - `mobile/assets/app-icon/icon-alternate-inverted-source.svg`
 
 ### Splash
-- foreground export: `mobile/assets/splash/splash-foreground.png`
-- source of truth: `mobile/assets/splash/splash-foreground-source.svg`
+- foreground export:
+  - light: `mobile/assets/splash/splash-foreground.png`
+  - dark: `mobile/assets/splash/splash-foreground-dark.png`
+- source of truth:
+  - light: `mobile/assets/splash/splash-foreground-source.svg`
+  - dark: `mobile/assets/splash/splash-foreground-dark-source.svg`
 - app binding:
   - iOS/Android splash image path는 `mobile/app.config.ts`에서 관리한다.
 
 ### Fallback Visuals
 - placeholder exports:
-  - `mobile/assets/placeholders/cover-fallback.png`
-  - `mobile/assets/placeholders/team-fallback.png`
-  - `mobile/assets/placeholders/empty-state-fallback.png`
+  - light: `mobile/assets/placeholders/cover-fallback.png`, `mobile/assets/placeholders/team-fallback.png`, `mobile/assets/placeholders/empty-state-fallback.png`
+  - dark: `mobile/assets/placeholders/cover-fallback-dark.png`, `mobile/assets/placeholders/team-fallback-dark.png`, `mobile/assets/placeholders/empty-state-fallback-dark.png`
 - badge exports:
-  - `mobile/assets/badges/group-fallback.png`
-  - `mobile/assets/badges/solo-fallback.png`
-  - `mobile/assets/badges/label-fallback.png`
+  - light: `mobile/assets/badges/group-fallback.png`, `mobile/assets/badges/solo-fallback.png`, `mobile/assets/badges/label-fallback.png`
+  - dark: `mobile/assets/badges/group-fallback-dark.png`, `mobile/assets/badges/solo-fallback-dark.png`, `mobile/assets/badges/label-fallback-dark.png`
 - service marks:
   - `mobile/assets/services/spotify.png`
   - `mobile/assets/services/youtube-music.png`
@@ -49,11 +52,13 @@ launch 시점에 필요한 icon, splash, fallback visual을 구현팀이 바로 
 ## iOS / Android 적용 단위
 - iOS app icon / Android adaptive icon: `mobile/app.config.ts`
 - splash foreground + background color: `mobile/app.config.ts`
-- placeholder/badge/service assets: RN bundle static asset (`require(...)`)로 읽는다.
+- placeholder/badge/launch-mark/service assets: RN bundle static asset (`require(...)`)로 읽는다.
+- dark/light variant 선택은 `mobile/src/utils/assetRegistry.ts`에서 `theme.scheme` 기준으로 resolve 한다.
 
 ## Naming Rule
 - export PNG 이름은 stable contract다.
 - source SVG는 `*-source.svg` suffix를 유지한다.
+- dark variant는 `*-dark-source.svg`, `*-dark.png` suffix를 유지한다.
 - runtime code는 source SVG가 아니라 export PNG만 직접 참조한다.
 
 ## Update Policy

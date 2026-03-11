@@ -1,9 +1,14 @@
+import React from 'react';
 import { Stack } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
+import { useAppTheme, type MobileTheme } from '../../src/tokens/theme';
 import { getDebugMetadata, isDebugMetadataAvailable } from '../../src/config/debugMetadata';
 
 export default function DebugMetadataScreen() {
+  const theme = useAppTheme();
+  const styles = React.useMemo(() => createStyles(theme), [theme]);
   const available = isDebugMetadataAvailable();
   const metadata = getDebugMetadata();
   const rows = [
@@ -26,11 +31,11 @@ export default function DebugMetadataScreen() {
   ] as const;
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Stack.Screen options={{ title: 'Debug Metadata' }} />
-      <Text style={styles.eyebrow}>DEBUG ONLY</Text>
-      <Text style={styles.title}>Runtime Metadata</Text>
-      <Text style={styles.body}>
+      <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.eyebrow}>DEBUG ONLY</Text>
+      <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle} style={styles.title}>Runtime Metadata</Text>
+      <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.body}>
         {available
           ? 'This route is for internal preview/development inspection only and is intentionally not linked from the main user-facing tabs.'
           : 'Debug metadata is intentionally hidden from production user surfaces. Use preview or development builds for runtime inspection.'}
@@ -38,63 +43,61 @@ export default function DebugMetadataScreen() {
       <View style={styles.card}>
         {rows.map(([label, value]) => (
           <View key={label} style={styles.row}>
-            <Text style={styles.label}>{label}</Text>
-            <Text style={styles.value}>{value}</Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.label}>{label}</Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.value}>{value}</Text>
           </View>
         ))}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 24,
-    backgroundColor: '#f7f6f2',
-  },
-  eyebrow: {
-    marginBottom: 8,
-    fontSize: 12,
-    fontWeight: '600',
-    letterSpacing: 1.2,
-    color: '#87634d',
-  },
-  title: {
-    marginBottom: 12,
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#1f1b17',
-  },
-  body: {
-    marginBottom: 18,
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#5e554d',
-  },
-  card: {
-    borderRadius: 18,
-    borderWidth: 1,
-    borderColor: '#ddd5cd',
-    backgroundColor: '#fffcf7',
-    paddingHorizontal: 18,
-    paddingVertical: 14,
-    gap: 12,
-  },
-  row: {
-    gap: 4,
-  },
-  label: {
-    fontSize: 12,
-    fontWeight: '600',
-    letterSpacing: 0.8,
-    color: '#87634d',
-    textTransform: 'uppercase',
-  },
-  value: {
-    fontSize: 16,
-    lineHeight: 22,
-    color: '#1f1b17',
-  },
-});
+function createStyles(theme: MobileTheme) {
+  return StyleSheet.create({
+    container: {
+      flexGrow: 1,
+      justifyContent: 'center',
+      paddingHorizontal: theme.space[24],
+      paddingVertical: theme.space[24],
+      backgroundColor: theme.colors.surface.base,
+    },
+    eyebrow: {
+      marginBottom: theme.space[8],
+      ...theme.typography.meta,
+      letterSpacing: 1.2,
+      color: theme.colors.text.brand,
+    },
+    title: {
+      marginBottom: theme.space[12],
+      ...theme.typography.screenTitle,
+      color: theme.colors.text.primary,
+    },
+    body: {
+      marginBottom: theme.space[16],
+      ...theme.typography.body,
+      color: theme.colors.text.secondary,
+    },
+    card: {
+      borderRadius: theme.radius.card,
+      borderWidth: 1,
+      borderColor: theme.colors.border.default,
+      backgroundColor: theme.colors.surface.elevated,
+      paddingHorizontal: theme.space[16],
+      paddingVertical: theme.space[12],
+      gap: theme.space[12],
+    },
+    row: {
+      gap: theme.space[4],
+    },
+    label: {
+      ...theme.typography.meta,
+      letterSpacing: 0.8,
+      color: theme.colors.text.brand,
+      textTransform: 'uppercase',
+    },
+    value: {
+      ...theme.typography.body,
+      color: theme.colors.text.primary,
+    },
+  });
+}

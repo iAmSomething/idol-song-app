@@ -227,7 +227,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       resizeMode: 'contain',
       backgroundColor: '#F6F3EE',
       dark: {
-        image: './assets/splash/splash-foreground.png',
+        image: './assets/splash/splash-foreground-dark.png',
         backgroundColor: '#171411',
       },
     },
