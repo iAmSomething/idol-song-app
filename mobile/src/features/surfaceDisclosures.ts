@@ -39,6 +39,12 @@ export function buildDatasetRiskDisclosure(
     return null;
   }
 
+  const sourceStateLead =
+    source.activeSource === 'backend-cache'
+      ? '마지막 라이브 요청이 실패해 저장된 백엔드 스냅샷으로 화면을 유지하고 있습니다.'
+      : source.activeSource === 'bundled-static-fallback'
+        ? '라이브 응답과 캐시를 모두 확보하지 못해 앱 번들 데이터를 임시로 보여 주고 있습니다.'
+        : '현재 런타임이 degraded 상태라 최신 동기화 대신 안전한 읽기 경로를 우선합니다.';
   const freshnessNote =
     source.activeSource.includes('cache')
       ? source.freshness.rollingReferenceAt
@@ -48,7 +54,7 @@ export function buildDatasetRiskDisclosure(
 
   return {
     title: '데이터 최신화 유의',
-    body: `${surfaceLabel} 화면은 현재 ${source.sourceLabel} 기준으로 유지되고 있습니다. ${freshnessNote} ${summarizeIssues(source.issues)} 일부 정보는 늦게 채워지거나 최소 정보만 표시될 수 있습니다.`,
+    body: `${surfaceLabel} 화면은 현재 ${source.sourceLabel} 기준으로 유지되고 있습니다. ${sourceStateLead} ${freshnessNote} ${summarizeIssues(source.issues)} 다시 시도하면 라이브 응답으로 복귀할 수 있습니다.`,
     testID,
   };
 }

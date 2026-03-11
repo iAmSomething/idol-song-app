@@ -82,6 +82,7 @@ describe('debug metadata helpers', () => {
       commitSha: 'abc123',
       dataSourceMode: 'backend-api',
       dataSourcePolicy: 'Backend API primary + bundled fallback',
+      networkPolicy: 'GET timeout 4.5s + 1 retry + cache/bundled degraded fallback',
       apiBaseUrl: 'https://example.com/api',
       apiHost: 'example.com',
       backendTargetLabel: 'Custom backend target',

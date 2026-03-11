@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 
+import { ActionButton } from '../../src/components/actions/ActionButton';
 import { DateDetailSheet } from '../../src/components/calendar/DateDetailSheet';
 import { DayCell } from '../../src/components/calendar/DayCell';
 import { SegmentedControl } from '../../src/components/controls/SegmentedControl';
@@ -852,12 +853,32 @@ export default function CalendarTabScreen() {
   const nearestSummary = filteredSnapshot.nearestUpcoming?.scheduledDate
     ? `${filteredSnapshot.nearestUpcoming.displayGroup} · ${formatShortDateLabel(filteredSnapshot.nearestUpcoming.scheduledDate)}`
     : '없음';
+  const runtimeRetryAction = datasetRiskDisclosure ? (
+    <ActionButton
+      accessibilityLabel="라이브 캘린더 데이터 다시 시도"
+      label={MOBILE_COPY.action.retry}
+      onPress={() => setReloadCount((count) => count + 1)}
+      testID="calendar-dataset-risk-retry"
+      tone="secondary"
+    />
+  ) : null;
 
   return (
     <>
       <ScrollView contentContainerStyle={scrollContentStyle} style={styles.screen}>
         <TonalPanel
           body={`현재 필터 · ${formatFilterLabel(filterMode)}`}
+          footer={
+            <SummaryStrip
+              items={[
+                { key: 'release-count', label: MOBILE_COPY.summary.monthRelease, value: filteredSnapshot.releaseCount },
+                { key: 'upcoming-count', label: MOBILE_COPY.summary.upcoming, value: filteredSnapshot.upcomingCount },
+                { key: 'nearest-upcoming', label: MOBILE_COPY.summary.nearestUpcoming, value: nearestSummary },
+              ]}
+              layout="wrap"
+              testID="calendar-summary-strip"
+            />
+          }
           testID="calendar-header-panel"
           title={formatMonthLabel(filteredSnapshot.month)}
           titleMaxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
@@ -953,19 +974,10 @@ export default function CalendarTabScreen() {
           </View>
         </TonalPanel>
 
-        <SummaryStrip
-          items={[
-            { key: 'release-count', label: MOBILE_COPY.summary.monthRelease, value: filteredSnapshot.releaseCount },
-            { key: 'upcoming-count', label: MOBILE_COPY.summary.upcoming, value: filteredSnapshot.upcomingCount },
-            { key: 'nearest-upcoming', label: MOBILE_COPY.summary.nearestUpcoming, value: nearestSummary },
-          ]}
-          layout="wrap"
-          testID="calendar-summary-strip"
-        />
-
         {datasetRiskDisclosure ? (
           <TonalPanel
             body={datasetRiskDisclosure.body}
+            footer={runtimeRetryAction}
             testID={datasetRiskDisclosure.testID}
             title={datasetRiskDisclosure.title}
             tone="accent"

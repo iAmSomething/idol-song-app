@@ -13,6 +13,7 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { ActionButton } from '../../src/components/actions/ActionButton';
 import {
   ServiceButtonGroup,
   type ServiceButtonGroupItem,
@@ -549,6 +550,15 @@ export default function ArtistDetailScreen() {
       {datasetRiskDisclosure ? (
         <TonalPanel
           body={datasetRiskDisclosure.body}
+          footer={
+            <ActionButton
+              accessibilityLabel="라이브 팀 상세 데이터 다시 시도"
+              label={MOBILE_COPY.action.retry}
+              onPress={() => setReloadCount((count) => count + 1)}
+              testID="entity-dataset-risk-retry"
+              tone="secondary"
+            />
+          }
           testID={datasetRiskDisclosure.testID}
           title={datasetRiskDisclosure.title}
           tone="accent"

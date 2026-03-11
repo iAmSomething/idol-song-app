@@ -12,6 +12,7 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { ActionButton } from '../../src/components/actions/ActionButton';
 import { AppBar } from '../../src/components/layout/AppBar';
 import {
   ServiceButtonGroup,
@@ -574,15 +575,6 @@ export default function ReleaseDetailScreen() {
         }
       />
 
-      {datasetRiskDisclosure ? (
-        <TonalPanel
-          body={datasetRiskDisclosure.body}
-          testID={datasetRiskDisclosure.testID}
-          title={datasetRiskDisclosure.title}
-          tone="accent"
-        />
-      ) : null}
-
       <CompactHero
         eyebrow={datasetState.source.sourceLabel}
         footer={
@@ -609,6 +601,24 @@ export default function ReleaseDetailScreen() {
         title={detail.releaseTitle}
         titleTestID="release-detail-title"
       />
+
+      {datasetRiskDisclosure ? (
+        <TonalPanel
+          body={datasetRiskDisclosure.body}
+          footer={
+            <ActionButton
+              accessibilityLabel="라이브 릴리즈 상세 데이터 다시 시도"
+              label={MOBILE_COPY.action.retry}
+              onPress={() => setReloadCount((count) => count + 1)}
+              testID="release-dataset-risk-retry"
+              tone="secondary"
+            />
+          }
+          testID={datasetRiskDisclosure.testID}
+          title={datasetRiskDisclosure.title}
+          tone="accent"
+        />
+      ) : null}
 
       <InsetSection
         description="canonical link가 있으면 바로 열고, 없으면 service fallback 규칙을 적용합니다."

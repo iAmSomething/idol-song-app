@@ -31,7 +31,7 @@ function SummaryStripComponent({
   const { fontScale, width } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const largeTextMode = isLargeTextMode(fontScale);
-  const useFullWidthCards = layout === 'wrap' && (width <= 430 || largeTextMode);
+  const useFullWidthCards = layout === 'wrap' && (width <= 360 || largeTextMode);
 
   return (
     <View style={[styles.row, layout === 'wrap' ? styles.wrapRow : null]} testID={testID}>

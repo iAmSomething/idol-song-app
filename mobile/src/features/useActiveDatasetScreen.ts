@@ -6,7 +6,9 @@ import {
   trackDatasetLoadFailed,
   type AnalyticsSurface,
 } from '../services/analytics';
-import { createBackendReadClient } from '../services/backendReadClient';
+import {
+  createBackendReadClient,
+} from '../services/backendReadClient';
 import {
   readScreenSnapshotCacheEntry,
   writeScreenSnapshotCacheEntry,
@@ -56,6 +58,36 @@ export function buildActiveDatasetEventKey(
 
 function dedupeIssues(issues: string[]): string[] {
   return [...new Set(issues.filter(Boolean))];
+}
+
+function appendRequestId(message: string, requestId?: string | null): string {
+  if (!requestId) {
+    return message;
+  }
+
+  return `${message} 요청 ID: ${requestId}`;
+}
+
+function formatLiveReadFailureIssue(
+  message: string,
+  fallbackKind: 'cache' | 'bundled',
+  requestId?: string | null,
+): string {
+  const fallbackLabel =
+    fallbackKind === 'cache'
+      ? '저장된 스냅샷으로 유지합니다.'
+      : '저장된 스냅샷이 없어 앱 번들 데이터로 전환합니다.';
+
+  return `라이브 요청 실패: ${appendRequestId(message, requestId)} ${fallbackLabel}`;
+}
+
+function isBackendReadErrorLike(
+  error: unknown,
+): error is Error & { requestId?: string | null } {
+  return (
+    error instanceof Error &&
+    (error.name === 'BackendReadError' || 'requestId' in error)
+  );
 }
 
 function buildReadySource<T>(args: {
@@ -139,6 +171,8 @@ export function useActiveDatasetScreen<T>({
         } catch (error) {
           const backendMessage =
             error instanceof Error ? error.message : fallbackErrorMessage;
+          const backendRequestId =
+            isBackendReadErrorLike(error) ? error.requestId : null;
           const cached = await readScreenSnapshotCacheEntry<T>(surface, cacheKey);
 
           if (cached) {
@@ -146,7 +180,10 @@ export function useActiveDatasetScreen<T>({
               activeSource: 'backend-cache',
               sourceLabel: 'Cached backend snapshot',
               data: cached.value,
-              issues: [...runtimeIssues, backendMessage],
+              issues: [
+                ...runtimeIssues,
+                formatLiveReadFailureIssue(backendMessage, 'cache', backendRequestId),
+              ],
               runtimeState,
               rollingReferenceAt: cached.generatedAt ?? cached.cachedAt,
               cachedAt: cached.cachedAt,
@@ -159,7 +196,10 @@ export function useActiveDatasetScreen<T>({
             activeSource: 'bundled-static-fallback',
             sourceLabel: 'Bundled static fallback',
             data: bundledData,
-            issues: [...runtimeIssues, backendMessage],
+            issues: [
+              ...runtimeIssues,
+              formatLiveReadFailureIssue(backendMessage, 'bundled', backendRequestId),
+            ],
             runtimeState,
           });
         }
@@ -215,7 +255,12 @@ export function useActiveDatasetScreen<T>({
           return;
         }
 
-        const message = error instanceof Error ? error.message : fallbackErrorMessage;
+        const message =
+          isBackendReadErrorLike(error)
+            ? appendRequestId(error.message, error.requestId)
+            : error instanceof Error
+              ? error.message
+              : fallbackErrorMessage;
         const datasetEventKey = `error:${message}`;
         if (datasetEventKeyRef.current !== datasetEventKey) {
           datasetEventKeyRef.current = datasetEventKey;
