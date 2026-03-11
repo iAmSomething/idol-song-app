@@ -210,6 +210,41 @@ function buildWorkerCadenceGate(cadenceReport) {
   const observedSource = primaryPath ?? cadenceReport;
   const failureRate = observedSource?.totals?.scheduled_failure_rate;
   const lastSuccessAgeHours = observedSource?.cadence?.last_success_age_hours;
+  const cadenceStatus = observedSource?.cadence_status ?? null;
+  const scheduledEvidence = observedSource?.scheduled_evidence ?? null;
+
+  if (cadenceStatus === 'warming_up') {
+    return {
+      status: 'needs_review',
+      observed: {
+        primary_path_key: primaryPathKey,
+        cadence_label: observedSource?.cadence_label ?? null,
+        scheduled_failure_rate: failureRate ?? null,
+        last_success_age_hours: lastSuccessAgeHours ?? null,
+        scheduled_runs: observedSource?.totals?.scheduled_runs ?? 0,
+        cadence_status: cadenceStatus,
+        scheduled_evidence: scheduledEvidence,
+      },
+      thresholds: GATE_THRESHOLDS.workerCadence,
+    };
+  }
+
+  if (cadenceStatus === 'scheduled_evidence_missing' || cadenceStatus === 'workflow_not_registered') {
+    return {
+      status: 'fail',
+      observed: {
+        primary_path_key: primaryPathKey,
+        cadence_label: observedSource?.cadence_label ?? null,
+        scheduled_failure_rate: failureRate ?? null,
+        last_success_age_hours: lastSuccessAgeHours ?? null,
+        scheduled_runs: observedSource?.totals?.scheduled_runs ?? 0,
+        cadence_status: cadenceStatus,
+        scheduled_evidence: scheduledEvidence,
+      },
+      thresholds: GATE_THRESHOLDS.workerCadence,
+    };
+  }
+
   const pass =
     typeof failureRate === 'number' &&
     typeof lastSuccessAgeHours === 'number' &&
@@ -229,7 +264,8 @@ function buildWorkerCadenceGate(cadenceReport) {
       scheduled_failure_rate: failureRate ?? null,
       last_success_age_hours: lastSuccessAgeHours ?? null,
       scheduled_runs: observedSource?.totals?.scheduled_runs ?? 0,
-      cadence_status: observedSource?.cadence_status ?? null,
+      cadence_status: cadenceStatus,
+      scheduled_evidence: scheduledEvidence,
     },
     thresholds: GATE_THRESHOLDS.workerCadence,
   };
@@ -357,7 +393,11 @@ async function main() {
     `api latency: ${runtimeChecks.api_latency.status} (worst p95=${runtimeChecks.api_latency.observed.worst_case_p95_ms ?? 'n/a'}ms)`,
     `api error rate: ${runtimeChecks.api_error_rate.status} (error rate=${runtimeChecks.api_error_rate.observed.overall_error_rate ?? 'n/a'})`,
     `projection freshness: ${runtimeChecks.projection_freshness.status} (lag=${runtimeChecks.projection_freshness.observed.lag_minutes ?? 'n/a'}m)`,
-    `worker cadence: ${runtimeChecks.worker_cadence.status} (failure rate=${runtimeChecks.worker_cadence.observed.scheduled_failure_rate ?? 'n/a'})`,
+    runtimeChecks.worker_cadence.observed.cadence_status === 'warming_up'
+      ? `worker cadence: ${runtimeChecks.worker_cadence.status} (cadence_status=warming_up, deadline=${runtimeChecks.worker_cadence.observed.scheduled_evidence?.warmup_deadline_at ?? 'n/a'})`
+      : runtimeChecks.worker_cadence.observed.cadence_status === 'scheduled_evidence_missing'
+        ? `worker cadence: ${runtimeChecks.worker_cadence.status} (cadence_status=scheduled_evidence_missing, missed_windows=${runtimeChecks.worker_cadence.observed.scheduled_evidence?.missed_scheduled_windows ?? 'n/a'})`
+        : `worker cadence: ${runtimeChecks.worker_cadence.status} (failure rate=${runtimeChecks.worker_cadence.observed.scheduled_failure_rate ?? 'n/a'})`,
     `parity dependency: ${dependencyChecks.parity.status}`,
     `shadow dependency: ${dependencyChecks.shadow.status}`,
     `historical catalog completeness dependency: ${dependencyChecks.historical_catalog_completeness.status}`,

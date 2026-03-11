@@ -5,6 +5,8 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { promisify } from 'node:util';
 
+import { buildScheduledEvidenceSummary } from './lib/workerCadenceEvidence.mjs';
+
 const execFileAsync = promisify(execFile);
 const DEFAULT_LIMIT = 12;
 const DEFAULT_REPO = 'iAmSomething/idol-song-app';
@@ -172,21 +174,17 @@ function average(values) {
 
 async function fetchWorkflowRuns({ repo, workflow, limit }) {
   try {
-    const { stdout } = await execFileAsync('gh', [
-      'api',
-      `repos/${repo}/actions/workflows/${workflow}/runs?per_page=${limit}`,
-      '--jq',
-      '.workflow_runs',
-    ]);
+    const { stdout } = await execFileAsync('gh', ['api', `repos/${repo}/actions/workflows/${workflow}/runs?per_page=${limit}`]);
     return {
       workflow_registered: true,
-      runs: JSON.parse(stdout),
+      ...JSON.parse(stdout),
     };
   } catch (error) {
     const stderr = `${error?.stderr ?? ''}`;
     if (stderr.includes('404')) {
       return {
         workflow_registered: false,
+        total_count: 0,
         runs: [],
       };
     }
@@ -194,12 +192,57 @@ async function fetchWorkflowRuns({ repo, workflow, limit }) {
   }
 }
 
-function summarizeRuns(runs) {
-  const completedRuns = runs.filter((run) => run.status === 'completed');
-  const scheduledRuns = completedRuns.filter((run) => run.event === 'schedule');
+async function fetchScheduledWorkflowRuns({ repo, workflow, limit }) {
+  try {
+    const { stdout } = await execFileAsync('gh', [
+      'api',
+      `repos/${repo}/actions/workflows/${workflow}/runs?per_page=${limit}&event=schedule`,
+    ]);
+    return {
+      workflow_registered: true,
+      ...JSON.parse(stdout),
+    };
+  } catch (error) {
+    const stderr = `${error?.stderr ?? ''}`;
+    if (stderr.includes('404')) {
+      return {
+        workflow_registered: false,
+        total_count: 0,
+        runs: [],
+      };
+    }
+    throw error;
+  }
+}
+
+async function fetchWorkflowMetadata({ repo, workflow }) {
+  try {
+    const { stdout } = await execFileAsync('gh', ['api', `repos/${repo}/actions/workflows/${workflow}`]);
+    return {
+      workflow_registered: true,
+      ...JSON.parse(stdout),
+    };
+  } catch (error) {
+    const stderr = `${error?.stderr ?? ''}`;
+    if (stderr.includes('404')) {
+      return {
+        workflow_registered: false,
+        created_at: null,
+        updated_at: null,
+        state: null,
+        html_url: null,
+      };
+    }
+    throw error;
+  }
+}
+
+function summarizeRuns({ overallRuns, scheduledRuns, scheduledTotalCount }) {
+  const completedRuns = overallRuns.filter((run) => run.status === 'completed');
+  const completedScheduledRuns = scheduledRuns.filter((run) => run.status === 'completed');
   const manualRuns = completedRuns.filter((run) => run.event !== 'schedule');
-  const successRuns = scheduledRuns.filter((run) => run.conclusion === 'success');
-  const failureRuns = scheduledRuns.filter((run) => run.conclusion && run.conclusion !== 'success');
+  const successRuns = completedScheduledRuns.filter((run) => run.conclusion === 'success');
+  const failureRuns = completedScheduledRuns.filter((run) => run.conclusion && run.conclusion !== 'success');
   const durations = completedRuns
     .map((run) => minutesBetween(run.run_started_at ?? run.created_at, run.updated_at))
     .filter((value) => value !== null);
@@ -221,20 +264,21 @@ function summarizeRuns(runs) {
 
   return {
     sample_window: {
-      newest_created_at: runs[0] ? toIsoString(runs[0].created_at) : null,
-      oldest_created_at: runs.at(-1) ? toIsoString(runs.at(-1).created_at) : null,
+      newest_created_at: overallRuns[0] ? toIsoString(overallRuns[0].created_at) : null,
+      oldest_created_at: overallRuns.at(-1) ? toIsoString(overallRuns.at(-1).created_at) : null,
     },
     totals: {
-      all_runs: runs.length,
+      all_runs: overallRuns.length,
       completed_runs: completedRuns.length,
-      scheduled_runs: scheduledRuns.length,
+      scheduled_runs: scheduledTotalCount,
+      scheduled_sampled_runs: completedScheduledRuns.length,
       manual_runs: manualRuns.length,
       successful_scheduled_runs: successRuns.length,
       failed_scheduled_runs: failureRuns.length,
       scheduled_success_rate:
-        scheduledRuns.length === 0 ? null : Number((successRuns.length / scheduledRuns.length).toFixed(4)),
+        completedScheduledRuns.length === 0 ? null : Number((successRuns.length / completedScheduledRuns.length).toFixed(4)),
       scheduled_failure_rate:
-        scheduledRuns.length === 0 ? null : Number((failureRuns.length / scheduledRuns.length).toFixed(4)),
+        completedScheduledRuns.length === 0 ? null : Number((failureRuns.length / completedScheduledRuns.length).toFixed(4)),
     },
     duration_minutes: {
       avg: average(durations),
@@ -247,7 +291,18 @@ function summarizeRuns(runs) {
       avg_success_gap_hours: average(gapHours),
       max_success_gap_hours: gapHours.length ? Number(Math.max(...gapHours).toFixed(2)) : null,
     },
-    latest_runs: runs.slice(0, 5).map((run) => ({
+    latest_runs: overallRuns.slice(0, 5).map((run) => ({
+      database_id: run.id,
+      event: run.event,
+      status: run.status,
+      conclusion: run.conclusion,
+      created_at: toIsoString(run.created_at),
+      started_at: toIsoString(run.run_started_at ?? run.created_at),
+      updated_at: toIsoString(run.updated_at),
+      duration_minutes: minutesBetween(run.run_started_at ?? run.created_at, run.updated_at),
+      html_url: run.html_url ?? null,
+    })),
+    latest_scheduled_runs: scheduledRuns.slice(0, 5).map((run) => ({
       database_id: run.id,
       event: run.event,
       status: run.status,
@@ -261,9 +316,20 @@ function summarizeRuns(runs) {
   };
 }
 
-function buildPathReport(config, workflowData, sampleLimit) {
-  const summary = summarizeRuns(workflowData.runs);
+function buildPathReport(config, workflowData, scheduledWorkflowData, workflowMetadata, sampleLimit) {
+  const summary = summarizeRuns({
+    overallRuns: workflowData.workflow_runs ?? [],
+    scheduledRuns: scheduledWorkflowData.workflow_runs ?? [],
+    scheduledTotalCount: scheduledWorkflowData.total_count ?? 0,
+  });
   const lastSuccessAgeHours = summary.cadence.last_success_age_hours;
+  const scheduledEvidence = buildScheduledEvidenceSummary({
+    workflowRegistered: workflowData.workflow_registered && workflowMetadata.workflow_registered,
+    workflowMetadata,
+    cadenceLabel: config.cadence_label,
+    scheduleExpectation: config.schedule_expectation,
+    observedScheduledRuns: summary.totals.scheduled_runs,
+  });
 
   return {
     key: config.key,
@@ -276,12 +342,19 @@ function buildPathReport(config, workflowData, sampleLimit) {
     summary_artifacts: config.summary_artifacts,
     thresholds: config.thresholds,
     sample_limit: sampleLimit,
+    workflow_metadata: {
+      created_at: workflowMetadata.created_at ?? null,
+      updated_at: workflowMetadata.updated_at ?? null,
+      state: workflowMetadata.state ?? null,
+      html_url: workflowMetadata.html_url ?? null,
+    },
     ...summary,
+    scheduled_evidence: scheduledEvidence,
     cadence_status:
       !workflowData.workflow_registered
         ? 'workflow_not_registered'
         : summary.totals.scheduled_runs === 0
-          ? 'no_scheduled_sample'
+          ? scheduledEvidence.status
           : typeof lastSuccessAgeHours === 'number' &&
               lastSuccessAgeHours <= config.thresholds.pass_last_success_age_hours
             ? 'pass'
@@ -300,6 +373,12 @@ function buildSummaryLines(paths, primaryPathKey) {
       typeof entry.totals.scheduled_failure_rate === 'number' ? entry.totals.scheduled_failure_rate : 'n/a';
     const lastSuccessAge =
       typeof entry.cadence.last_success_age_hours === 'number' ? `${entry.cadence.last_success_age_hours}h` : 'n/a';
+    if (entry.cadence_status === 'warming_up') {
+      return `${prefix} ${entry.key}: cadence=${entry.cadence_label}, status=warming_up, first_due=${entry.scheduled_evidence.first_expected_run_at ?? 'n/a'}, deadline=${entry.scheduled_evidence.warmup_deadline_at ?? 'n/a'}`;
+    }
+    if (entry.cadence_status === 'scheduled_evidence_missing') {
+      return `${prefix} ${entry.key}: cadence=${entry.cadence_label}, status=scheduled_evidence_missing, observed=${entry.scheduled_evidence.observed_scheduled_runs}, expected_by_now=${entry.scheduled_evidence.expected_scheduled_runs_by_now}, missed_windows=${entry.scheduled_evidence.missed_scheduled_windows}`;
+    }
     return `${prefix} ${entry.key}: cadence=${entry.cadence_label}, status=${entry.cadence_status}, scheduled_runs=${scheduledRuns}, failure_rate=${failureRate}, last_success_age=${lastSuccessAge}`;
   });
 }
@@ -308,12 +387,23 @@ async function main() {
   const options = parseArgs(process.argv.slice(2));
   const pathReports = await Promise.all(
     options.workflowConfigs.map(async (config) => {
-      const workflowData = await fetchWorkflowRuns({
-        repo: options.repo,
-        workflow: config.workflow,
-        limit: options.limit,
-      });
-      return buildPathReport(config, workflowData, options.limit);
+      const [workflowData, scheduledWorkflowData, workflowMetadata] = await Promise.all([
+        fetchWorkflowRuns({
+          repo: options.repo,
+          workflow: config.workflow,
+          limit: options.limit,
+        }),
+        fetchScheduledWorkflowRuns({
+          repo: options.repo,
+          workflow: config.workflow,
+          limit: options.limit,
+        }),
+        fetchWorkflowMetadata({
+          repo: options.repo,
+          workflow: config.workflow,
+        }),
+      ]);
+      return buildPathReport(config, workflowData, scheduledWorkflowData, workflowMetadata, options.limit);
     }),
   );
 
@@ -334,13 +424,16 @@ async function main() {
         responsibilities: entry.responsibilities,
         summary_artifacts: entry.summary_artifacts,
         thresholds: entry.thresholds,
+        workflow_metadata: entry.workflow_metadata,
         cadence_status: entry.cadence_status,
         sample_limit: entry.sample_limit,
         sample_window: entry.sample_window,
         totals: entry.totals,
         duration_minutes: entry.duration_minutes,
         cadence: entry.cadence,
+        scheduled_evidence: entry.scheduled_evidence,
         latest_runs: entry.latest_runs,
+        latest_scheduled_runs: entry.latest_scheduled_runs,
       },
     ]),
   );
@@ -357,7 +450,9 @@ async function main() {
     totals: primaryPath.totals,
     duration_minutes: primaryPath.duration_minutes,
     cadence: primaryPath.cadence,
+    scheduled_evidence: primaryPath.scheduled_evidence,
     latest_runs: primaryPath.latest_runs,
+    latest_scheduled_runs: primaryPath.latest_scheduled_runs,
   };
 
   await mkdir(dirname(options.reportPath), { recursive: true });

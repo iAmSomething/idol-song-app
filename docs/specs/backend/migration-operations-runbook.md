@@ -134,6 +134,8 @@ cd ..
 - shadow clean이 아니면 cutover advance를 멈춘다.
 - runtime gate가 `fail`이면 refresh는 끝났더라도 cutover 근거로 쓰지 않는다.
 - migration readiness scorecard에서 blocker-grade category가 `fail`이면 milestone / cutover decision을 advance하지 않는다.
+- worker cadence가 `warming_up`면 first due / deadline을 보고 다음 scheduled sample을 기다린다.
+- worker cadence가 `scheduled_evidence_missing`면 `scheduled_runs=0` 자체가 아니라 "expected window를 놓쳤다"는 의미로 보고, workflow enablement / schedule delivery부터 확인한다.
 
 ## 6. Representative Refresh Path
 
