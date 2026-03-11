@@ -18,6 +18,7 @@ import {
 } from '../upcoming/UpcomingEventRow';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 
 interface DateDetailSheetProps {
   isOpen: boolean;
@@ -69,7 +70,11 @@ function DateDetailSheetComponent({
 
         {verifiedRows.length > 0 ? (
           <View style={styles.subsection}>
-            <Text allowFontScaling style={styles.subsectionTitle}>
+            <Text
+              allowFontScaling
+              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
+              style={styles.subsectionTitle}
+            >
               검증된 발매
             </Text>
             {verifiedRows.map((row) => (
@@ -80,7 +85,11 @@ function DateDetailSheetComponent({
 
         {scheduledRows.length > 0 ? (
           <View style={styles.subsection}>
-            <Text allowFontScaling style={styles.subsectionTitle}>
+            <Text
+              allowFontScaling
+              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
+              style={styles.subsectionTitle}
+            >
               날짜가 잡힌 예정 컴백
             </Text>
             {scheduledRows.map((row) => (

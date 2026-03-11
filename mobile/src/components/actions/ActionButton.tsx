@@ -4,11 +4,13 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from 'react-native';
 
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 
 export type ActionButtonTone = 'primary' | 'secondary' | 'meta';
 
@@ -36,8 +38,11 @@ function ActionButtonComponent({
   tone = 'primary',
 }: ActionButtonProps) {
   const theme = useAppTheme();
+  const { fontScale } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const isDisabled = disabled || loading;
+  const buttonLabelMultiplier =
+    tone === 'meta' ? MOBILE_TEXT_SCALE_LIMITS.meta : fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.buttonService : MOBILE_TEXT_SCALE_LIMITS.buttonPrimary;
 
   return (
     <Pressable
@@ -68,6 +73,7 @@ function ActionButtonComponent({
           />
           <Text
             allowFontScaling
+            maxFontSizeMultiplier={buttonLabelMultiplier}
             numberOfLines={2}
             style={[
               styles.label,
@@ -80,6 +86,7 @@ function ActionButtonComponent({
       ) : (
         <Text
           allowFontScaling
+          maxFontSizeMultiplier={buttonLabelMultiplier}
           numberOfLines={tone === 'meta' ? 1 : 2}
           style={[
             styles.label,

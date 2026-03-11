@@ -57,6 +57,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
 import type {
   ReleaseSummaryModel,
@@ -683,7 +684,9 @@ export default function SearchTabScreen() {
                 style={styles.inlineButton}
                 testID="search-clear-button"
               >
-                <Text style={styles.inlineButtonLabel}>지우기</Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.inlineButtonLabel}>
+                  지우기
+                </Text>
               </Pressable>
             ) : null}
             {showCancelAction ? (
@@ -694,7 +697,9 @@ export default function SearchTabScreen() {
                 style={styles.inlineButton}
                 testID="search-cancel-button"
               >
-                <Text style={styles.inlineButtonLabel}>취소</Text>
+                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.inlineButtonLabel}>
+                  취소
+                </Text>
               </Pressable>
             ) : null}
           </View>
@@ -716,7 +721,14 @@ export default function SearchTabScreen() {
         <>
           <View style={styles.sectionCard}>
             <View style={styles.sectionHeader}>
-              <Text accessibilityRole="header" style={styles.sectionTitle}>최근 검색</Text>
+              <Text
+                accessibilityRole="header"
+                allowFontScaling
+                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+                style={styles.sectionTitle}
+              >
+                최근 검색
+              </Text>
               {recentQueries.length ? (
                 <Pressable
                   testID="search-clear-history"
@@ -725,7 +737,9 @@ export default function SearchTabScreen() {
                   onPress={() => void handleClearHistory()}
                   style={styles.inlineButton}
                 >
-                  <Text style={styles.inlineButtonLabel}>전체 삭제</Text>
+                  <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService} style={styles.inlineButtonLabel}>
+                    전체 삭제
+                  </Text>
                 </Pressable>
               ) : null}
             </View>
@@ -741,7 +755,9 @@ export default function SearchTabScreen() {
                     onPress={() => void handleRecentQueryPress(recentQuery)}
                     style={({ pressed }) => [styles.historyChip, pressed ? styles.segmentButtonPressed : null]}
                   >
-                    <Text style={styles.historyChipLabel}>{recentQuery}</Text>
+                    <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.historyChipLabel}>
+                      {recentQuery}
+                    </Text>
                   </Pressable>
                 ))}
               </View>
@@ -751,7 +767,14 @@ export default function SearchTabScreen() {
           </View>
 
           <View style={styles.sectionCard}>
-            <Text accessibilityRole="header" style={styles.sectionTitle}>추천 팀</Text>
+            <Text
+              accessibilityRole="header"
+              allowFontScaling
+              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+              style={styles.sectionTitle}
+            >
+              추천 팀
+            </Text>
             <View style={styles.suggestedGrid}>
               {suggestedTeams.map((team) => (
                 <View
@@ -780,8 +803,17 @@ export default function SearchTabScreen() {
       ) : (
         <View style={styles.sectionCard}>
           <View style={styles.sectionHeader}>
-            <Text accessibilityRole="header" style={styles.sectionTitle}>검색 결과</Text>
-            <Text style={styles.sectionMeta}>{segmentCounts[activeSegment]}건</Text>
+            <Text
+              accessibilityRole="header"
+              allowFontScaling
+              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+              style={styles.sectionTitle}
+            >
+              검색 결과
+            </Text>
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
+              {segmentCounts[activeSegment]}건
+            </Text>
           </View>
 
           {handoffFeedback ? (

@@ -7,6 +7,7 @@ import {
 
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 
 export type InfoChipTone = 'default' | 'title';
 
@@ -27,7 +28,11 @@ function InfoChipComponent({ label, testID, tone = 'default' }: InfoChipProps) {
       style={[styles.chip, tone === 'title' ? styles.titleChip : null]}
       testID={testID}
     >
-      <Text allowFontScaling style={[styles.label, tone === 'title' ? styles.titleLabel : null]}>
+      <Text
+        allowFontScaling
+        maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
+        style={[styles.label, tone === 'title' ? styles.titleLabel : null]}
+      >
         {label}
       </Text>
     </View>

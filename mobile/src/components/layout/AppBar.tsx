@@ -3,12 +3,14 @@ import {
   ActivityIndicator,
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from 'react-native';
 
 import { ActionButton, type ActionButtonProps } from '../actions/ActionButton';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
+import { MOBILE_TEXT_SCALE_LIMITS, isLargeTextMode } from '../../tokens/accessibility';
 
 export interface AppBarAction extends Omit<ActionButtonProps, 'tone'> {
   key: string;
@@ -34,30 +36,39 @@ function AppBarComponent({
   trailingActions = [],
 }: AppBarProps) {
   const theme = useAppTheme();
+  const { fontScale } = useWindowDimensions();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const hasActions = Boolean(leadingAction) || trailingActions.length > 0;
+  const largeTextMode = isLargeTextMode(fontScale);
 
   return (
     <View style={styles.container} testID={testID}>
       {hasActions ? (
-        <View style={styles.actionRow}>
-          <View style={styles.leadingAction}>
-            {leadingAction ? <ActionButton {...leadingAction} tone="secondary" /> : null}
+        <View style={[styles.actionRow, largeTextMode ? styles.actionRowLargeText : null]}>
+          <View style={[styles.leadingAction, largeTextMode ? styles.leadingActionLargeText : null]}>
+            {leadingAction ? <ActionButton {...leadingAction} fullWidth={largeTextMode} tone="secondary" /> : null}
           </View>
-          <View style={styles.trailingActions}>
+          <View style={[styles.trailingActions, largeTextMode ? styles.trailingActionsLargeText : null]}>
             {trailingActions.slice(0, 2).map(({ key, ...action }) => (
-              <ActionButton key={key} {...action} tone="secondary" />
+              <ActionButton key={key} {...action} fullWidth={largeTextMode} tone="secondary" />
             ))}
           </View>
         </View>
       ) : null}
       <View style={styles.copy}>
         {isLoading ? <ActivityIndicator color={theme.colors.text.brand} size="small" /> : null}
-        <Text accessibilityRole="header" numberOfLines={2} style={styles.title} testID={titleTestID}>
+        <Text
+          accessibilityRole="header"
+          allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.sectionTitle}
+          numberOfLines={2}
+          style={styles.title}
+          testID={titleTestID}
+        >
           {title}
         </Text>
         {subtitle ? (
-          <Text numberOfLines={2} style={styles.subtitle}>
+          <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} numberOfLines={2} style={styles.subtitle}>
             {subtitle}
           </Text>
         ) : null}
@@ -82,9 +93,19 @@ function createStyles(theme: MobileTheme) {
       rowGap: theme.space[8],
       gap: theme.space[12],
     },
+    actionRowLargeText: {
+      width: '100%',
+      flexDirection: 'column',
+      alignItems: 'stretch',
+      gap: theme.space[8],
+    },
     leadingAction: {
       alignItems: 'flex-start',
       maxWidth: '100%',
+    },
+    leadingActionLargeText: {
+      width: '100%',
+      alignItems: 'stretch',
     },
     copy: {
       gap: theme.space[4],
@@ -103,6 +124,11 @@ function createStyles(theme: MobileTheme) {
       gap: theme.space[8],
       justifyContent: 'flex-start',
       maxWidth: '100%',
+    },
+    trailingActionsLargeText: {
+      width: '100%',
+      flexDirection: 'column',
+      alignItems: 'stretch',
     },
   });
 }
