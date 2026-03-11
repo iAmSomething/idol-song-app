@@ -18,6 +18,7 @@ import {
   InlineFeedbackNotice,
   ScreenFeedbackState,
 } from '../../src/components/feedback/FeedbackState';
+import { getRuntimeConfigState } from '../../src/config/runtime';
 import { TeamIdentityRow } from '../../src/components/identity/TeamIdentityRow';
 import { AppBar } from '../../src/components/layout/AppBar';
 import { SourceLinkRow } from '../../src/components/meta/SourceLinkRow';
@@ -69,6 +70,7 @@ import {
   runWithPendingRouteResume,
   type RouteResumeTarget,
 } from '../../src/services/routeResume';
+import { useDebouncedValue } from '../../src/hooks/useDebouncedValue';
 import { useOptionalSafeAreaInsets } from '../../src/hooks/useOptionalSafeAreaInsets';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
 import { useAppTheme } from '../../src/tokens/theme';
@@ -231,12 +233,24 @@ export default function SearchTabScreen() {
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const [recentQueries, setRecentQueries] = useState<string[]>([]);
   const deferredQuery = useDeferredValue(query);
+  const runtimeConfigState = useMemo(() => getRuntimeConfigState(), []);
+  const shouldDebounceSearchQuery = useMemo(
+    () =>
+      runtimeConfigState.mode === 'normal' &&
+      runtimeConfigState.config.dataSource.mode === 'backend-api' &&
+      Boolean(runtimeConfigState.config.services.apiBaseUrl),
+    [runtimeConfigState],
+  );
+  const searchQuery = useDebouncedValue(deferredQuery, 250, {
+    enabled: shouldDebounceSearchQuery,
+    shouldFlush: (nextValue) => nextValue.trim().length === 0,
+  });
   const bundledSelectorContext = useMemo(
     () => createSelectorContext(cloneBundledDatasetFixture()),
     [],
   );
   const loadBundledResults = useCallback(async () => {
-    const normalizedQuery = deferredQuery.trim();
+    const normalizedQuery = searchQuery.trim();
     if (!normalizedQuery) {
       return {
         query: '',
@@ -248,10 +262,10 @@ export default function SearchTabScreen() {
 
     const activeDataset = await loadActiveMobileDataset();
     return selectSearchResults(createSelectorContext(activeDataset.dataset), normalizedQuery);
-  }, [deferredQuery]);
+  }, [searchQuery]);
   const loadBackendResults = useCallback(
     async (client: BackendReadClient) => {
-      const normalizedQuery = deferredQuery.trim();
+      const normalizedQuery = searchQuery.trim();
       if (!normalizedQuery) {
         return {
           data: {
@@ -270,12 +284,12 @@ export default function SearchTabScreen() {
         generatedAt: response.meta?.generatedAt ?? null,
       };
     },
-    [deferredQuery],
+    [searchQuery],
   );
   const datasetState = useActiveDatasetScreen({
     surface: 'search',
     reloadKey: reloadCount,
-    cacheKey: `search:${deferredQuery.trim().toLowerCase() || 'empty'}`,
+    cacheKey: `search:${searchQuery.trim().toLowerCase() || 'empty'}`,
     fallbackErrorMessage: '검색 데이터를 지금 불러오지 못했습니다.',
     loadBundled: loadBundledResults,
     loadBackend: loadBackendResults,
