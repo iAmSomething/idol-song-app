@@ -1,12 +1,12 @@
 # Runtime Artifact Retention Report
 
-- generated_at: 2026-03-11T18:26:28.738Z
+- generated_at: 2026-03-11T18:31:21.148Z
 - retention_policy_version: v1
 
 ## Summary
 
 - runtime-facing canonical groups: 3
-- runtime-facing canonical files: 26
+- runtime-facing canonical files: 29
 - duplicate files detected: 0
 - retention status: canonical only
 
@@ -18,7 +18,7 @@
 
 ### Repo root pipeline scripts
 
-- canonical_count: 9
+- canonical_count: 10
 - duplicate_count: 0
 - archival_rule: Delete suffix copies from repo root; use docs/assets/distribution or /tmp for comparison outputs.
 - canonical: build_release_details_musicbrainz.py
@@ -28,16 +28,18 @@
 - canonical: build_release_rollup_from_history.py
 - canonical: build_tracking_watchlist.py
 - canonical: scan_upcoming_candidates.py
+- canonical: hydrate_release_windows.py
 - canonical: build_canonical_entity_metadata.py
 - canonical: build_release_artwork_catalog.py
 
 ### Repo root runtime-facing generated data
 
-- canonical_count: 9
+- canonical_count: 10
 - duplicate_count: 0
 - archival_rule: Keep one canonical file per artifact; archive dated evidence in docs/assets/distribution.
 - canonical: tracking_watchlist.json
 - canonical: upcoming_release_candidates.json
+- canonical: upcoming_release_candidates.csv
 - canonical: manual_review_queue.json
 - canonical: manual_review_queue.csv
 - canonical: canonical_entity_metadata.json
@@ -48,7 +50,7 @@
 
 ### Web runtime data exports
 
-- canonical_count: 8
+- canonical_count: 9
 - duplicate_count: 0
 - archival_rule: Suffix copies are forbidden in web/src/data because import/build paths must stay canonical.
 - canonical: web/src/data/artistProfiles.json
@@ -56,6 +58,7 @@
 - canonical: web/src/data/releaseDetails.json
 - canonical: web/src/data/releaseHistory.json
 - canonical: web/src/data/releases.json
+- canonical: web/src/data/unresolved.json
 - canonical: web/src/data/upcomingCandidates.json
 - canonical: web/src/data/watchlist.json
 - canonical: web/src/data/youtubeChannelAllowlists.json

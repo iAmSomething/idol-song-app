@@ -26,6 +26,7 @@ mobile asset draft, docs scratch copy, 개인 메모는 이 정책의 직접 대
 - `build_release_rollup_from_history.py`
 - `build_tracking_watchlist.py`
 - `scan_upcoming_candidates.py`
+- `hydrate_release_windows.py`
 - `build_canonical_entity_metadata.py`
 - `build_release_artwork_catalog.py`
 
@@ -33,6 +34,7 @@ mobile asset draft, docs scratch copy, 개인 메모는 이 정책의 직접 대
 
 - `tracking_watchlist.json`
 - `upcoming_release_candidates.json`
+- `upcoming_release_candidates.csv`
 - `manual_review_queue.json`
 - `manual_review_queue.csv`
 - `canonical_entity_metadata.json`
@@ -48,6 +50,7 @@ mobile asset draft, docs scratch copy, 개인 메모는 이 정책의 직접 대
 - `web/src/data/releaseDetails.json`
 - `web/src/data/releaseHistory.json`
 - `web/src/data/releases.json`
+- `web/src/data/unresolved.json`
 - `web/src/data/upcomingCandidates.json`
 - `web/src/data/watchlist.json`
 - `web/src/data/youtubeChannelAllowlists.json`
