@@ -77,6 +77,7 @@ export function buildReportBundleMetadata({
   titleTrackGapReference = null,
   entityIdentityWorkbenchReference = null,
   trustedUpcomingNotificationReference = null,
+  mobilePushDeliveryReference = null,
 }) {
   const sourceReports = {
     release_pipeline_sync: releaseSyncReference,
@@ -91,6 +92,7 @@ export function buildReportBundleMetadata({
     title_track_gap_queue: titleTrackGapReference,
     entity_identity_workbench: entityIdentityWorkbenchReference,
     trusted_upcoming_notification_summary: trustedUpcomingNotificationReference,
+    mobile_push_delivery_summary: mobilePushDeliveryReference,
   };
 
   const fingerprint = {

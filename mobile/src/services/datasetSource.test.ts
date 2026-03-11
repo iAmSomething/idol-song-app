@@ -25,6 +25,7 @@ function buildRuntimeConfig(
     services: {
       apiBaseUrl: profile === 'development' ? null : 'https://example.com/api',
       analyticsWriteKey: null,
+      expoProjectId: null,
       ...overrides.services,
     },
     logging: {

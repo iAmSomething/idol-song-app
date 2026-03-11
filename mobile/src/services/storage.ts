@@ -15,6 +15,8 @@ function buildNamespacedKey(scope: string, key: string): string {
 export const MOBILE_STORAGE_KEYS = {
   recentQueries: buildNamespacedKey('search', 'recent-queries'),
   pendingRouteResume: buildNamespacedKey('navigation', 'pending-route-resume'),
+  pushInstallationId: buildNamespacedKey('push', 'installation-id'),
+  pushRegistrationState: buildNamespacedKey('push', 'registration-state'),
 } as const;
 
 export function getStorageAdapter(): KeyValueStorageAdapter {

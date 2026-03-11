@@ -22,6 +22,7 @@ import {
 import { registerCalendarRoutes } from './routes/calendar.js';
 import { registerEntityRoutes } from './routes/entities.js';
 import { registerHealthRoute } from './routes/health.js';
+import { registerNotificationRoutes } from './routes/notifications.js';
 import { registerRadarRoutes } from './routes/radar.js';
 import { registerReadyRoute } from './routes/ready.js';
 import { registerReviewRoutes } from './routes/review.js';
@@ -34,7 +35,7 @@ export type BuildAppOptions = {
   readyStatusProvider?: ReadyStatusProvider;
 };
 
-const ACCESS_CONTROL_ALLOW_METHODS = 'GET,OPTIONS';
+const ACCESS_CONTROL_ALLOW_METHODS = 'GET,POST,OPTIONS';
 const DEFAULT_ACCESS_CONTROL_ALLOW_HEADERS = 'Content-Type, X-Request-Id';
 const ACCESS_CONTROL_EXPOSE_HEADERS =
   'X-Request-Id, RateLimit-Limit, RateLimit-Remaining, RateLimit-Reset, Retry-After, X-RateLimit-Bucket';
@@ -230,6 +231,7 @@ export function buildApp(options: BuildAppOptions = {}): FastifyInstance {
   registerReleaseRoutes(app, { config, db });
   registerRadarRoutes(app, { config, db });
   registerReviewRoutes(app, { config, db });
+  registerNotificationRoutes(app, { config, db });
 
   return app;
 }

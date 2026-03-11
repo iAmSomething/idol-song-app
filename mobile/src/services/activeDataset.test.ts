@@ -19,6 +19,7 @@ function buildRuntimeState(overrides: Partial<RuntimeConfigState> = {}): Runtime
       services: {
         apiBaseUrl: null,
         analyticsWriteKey: null,
+        expoProjectId: null,
       },
       logging: {
         level: 'verbose',
@@ -106,6 +107,7 @@ describe('loadActiveMobileDataset', () => {
           services: {
             apiBaseUrl: 'https://example.com/api',
             analyticsWriteKey: null,
+            expoProjectId: null,
           },
           logging: {
             level: 'debug',

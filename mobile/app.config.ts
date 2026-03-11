@@ -35,6 +35,7 @@ type RuntimeConfig = {
   services: {
     apiBaseUrl: string | null;
     analyticsWriteKey: string | null;
+    expoProjectId: string | null;
   };
   logging: {
     level: LoggingLevel;
@@ -198,6 +199,7 @@ function resolveNativeIosConfig(profileConfig: ProfileConfig, env: EnvMap): Nati
 function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig, env: EnvMap): RuntimeConfig {
   const apiBaseUrl = assertHttpUrl(optionalString(env.EXPO_PUBLIC_API_BASE_URL), 'EXPO_PUBLIC_API_BASE_URL');
   const analyticsWriteKey = optionalString(env.EXPO_PUBLIC_ANALYTICS_WRITE_KEY);
+  const expoProjectId = optionalString(env.EXPO_PUBLIC_EXPO_PROJECT_ID);
   const datasetVersion = optionalString(env.EXPO_PUBLIC_DATASET_VERSION);
   const buildVersion = optionalString(env.EXPO_PUBLIC_BUILD_VERSION) ?? '0.1.0';
   const commitSha = optionalString(env.EXPO_PUBLIC_COMMIT_SHA);
@@ -231,6 +233,7 @@ function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig
     services: {
       apiBaseUrl,
       analyticsWriteKey,
+      expoProjectId,
     },
     logging: {
       level: profileConfig.loggingLevel,
@@ -258,7 +261,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     icon: './assets/app-icon/icon-app-store-1024.png',
     orientation: 'portrait',
     userInterfaceStyle: 'automatic',
-    plugins: ['expo-router'],
+    plugins: ['expo-router', 'expo-notifications'],
     experiments: {
       typedRoutes: true,
     },

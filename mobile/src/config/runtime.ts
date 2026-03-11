@@ -19,6 +19,7 @@ export type MobileRuntimeConfig = {
   services: {
     apiBaseUrl: string | null;
     analyticsWriteKey: string | null;
+    expoProjectId: string | null;
   };
   logging: {
     level: LoggingLevel;
@@ -167,6 +168,7 @@ export function parseRuntimeConfig(input: unknown): MobileRuntimeConfig {
     services: {
       apiBaseUrl: readOptionalUrl(services.apiBaseUrl, 'services.apiBaseUrl'),
       analyticsWriteKey: readString(services.analyticsWriteKey, 'services.analyticsWriteKey', false),
+      expoProjectId: readString(services.expoProjectId, 'services.expoProjectId', false),
     },
     logging: {
       level: readLoggingLevel(logging.level),
@@ -224,6 +226,7 @@ function buildDegradedRuntimeConfig(
     services: {
       apiBaseUrl: null,
       analyticsWriteKey: null,
+      expoProjectId: null,
     },
     logging: {
       level: getDefaultLoggingLevel(profile),

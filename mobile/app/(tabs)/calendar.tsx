@@ -970,6 +970,25 @@ export default function CalendarTabScreen() {
                   필터
                 </Text>
               </Pressable>
+              <Pressable
+                accessibilityLabel="알림 설정 열기"
+                accessibilityRole="button"
+                onPress={() => router.push('/settings/notifications')}
+                style={({ pressed }) => [
+                  styles.headerButton,
+                  largeTextMode ? styles.headerButtonLargeText : null,
+                  pressed ? styles.headerButtonPressed : null,
+                ]}
+                testID="calendar-notifications-open"
+              >
+                <Text
+                  allowFontScaling
+                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                  style={styles.headerButtonLabel}
+                >
+                  알림
+                </Text>
+              </Pressable>
             </View>
           </View>
         </TonalPanel>

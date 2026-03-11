@@ -229,8 +229,10 @@ iPhone / Android 외부 기기 QA minimum steps:
 1. 같은 Wi-Fi 또는 reachability 가능한 네트워크에 host machine과 device를 둔다.
 2. `mobile/.env.preview.example`을 `.env`로 복사한다.
 3. `npm run config:preview`로 `EXPO_PUBLIC_API_BASE_URL`이 `https://api.idol-song-app.example.com`로 잡히는지 확인한다.
-4. preview dev client를 열고 Expo CLI가 보여주는 QR 또는 deep link로 runtime에 붙는다.
-5. hidden debug route `idolsongapp-preview://debug/metadata`에서 아래 값을 확인한다.
+4. 같은 출력에서 `services.expoProjectId`도 비어 있지 않은지 확인한다.
+5. 앱 안 `알림` 진입점에서 권한 요청과 등록 상태를 바로 확인할 수 있다.
+6. preview dev client를 열고 Expo CLI가 보여주는 QR 또는 deep link로 runtime에 붙는다.
+7. hidden debug route `idolsongapp-preview://debug/metadata`에서 아래 값을 확인한다.
    - `Backend target = Public preview backend`
    - `API base URL = https://api.idol-song-app.example.com`
    - `API host = api.idol-song-app.example.com`
@@ -344,7 +346,7 @@ profile 차이는 아래 범위로만 제한한다.
 
 - `APP_ENV`
   - `development`, `preview`, `production`만 허용한다.
-- `EXPO_PUBLIC_API_BASE_URL`, `EXPO_PUBLIC_REMOTE_DATASET_URL`
+- `EXPO_PUBLIC_API_BASE_URL`, `EXPO_PUBLIC_REMOTE_DATASET_URL`, `EXPO_PUBLIC_EXPO_PROJECT_ID`
   - 값이 있으면 absolute `http(s)` URL이어야 한다.
 - `EXPO_PUBLIC_REMOTE_DATASET_URL`
   - `APP_ENV=preview`에서만 허용한다.
@@ -353,6 +355,9 @@ profile 차이는 아래 범위로만 제한한다.
   - preview profile에서만 허용한다.
 - `EXPO_PUBLIC_ENABLE_ANALYTICS=true`
   - 이 경우 `EXPO_PUBLIC_ANALYTICS_WRITE_KEY`가 필수다.
+- `EXPO_PUBLIC_EXPO_PROJECT_ID`
+  - Expo push token registration에 쓰는 project id다.
+  - preview / production runtime에서 push registration을 쓰려면 비어 있으면 안 된다.
 - `EXPO_PUBLIC_ENABLE_SHARE_ACTIONS`
   - share CTA 노출 여부를 제어한다.
 - `EXPO_PUBLIC_BUILD_VERSION`
