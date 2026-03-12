@@ -18,6 +18,33 @@ const DEFAULT_DIAGNOSTICS_PATH = resolve(process.cwd(), './reports/workflow_sche
 
 const DEFAULT_WORKFLOW_CONFIGS = [
   {
+    key: 'same_day_release_polling',
+    workflow: 'release-day-verification.yml',
+    cadence_label: 'hourly',
+    schedule_expectation: '0 * * * *',
+    runtime_gate_role: 'same-day exact-date release verification path',
+    responsibilities: [
+      'same-day exact-date target selection',
+      'release-day hydration window checks',
+      'release DB sync',
+      'projection refresh',
+      'same-day acceptance verification',
+      'runtime gate artifact generation',
+    ],
+    summary_artifacts: [
+      'backend/reports/release_day_verification_targets.json',
+      'backend/reports/worker_cadence_report.json',
+      'backend/reports/workflow_schedule_diagnostics.json',
+      'backend/reports/same_day_release_acceptance_report.json',
+      'backend/reports/report_bundle_metadata.json',
+      'backend/reports/runtime_gate_report.json',
+    ],
+    thresholds: {
+      pass_last_success_age_hours: 2,
+      review_last_success_age_hours: 4,
+    },
+  },
+  {
     key: 'daily_upcoming',
     workflow: 'weekly-kpop-scan.yml',
     cadence_label: 'daily',

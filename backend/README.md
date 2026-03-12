@@ -666,7 +666,8 @@ python3 sync_trusted_upcoming_notification_events.py
 
 scheduled workflow는 두 cadence로 나뉜다.
 
-- fast path: `.github/workflows/weekly-kpop-scan.yml`
+- fast discovery path: `.github/workflows/weekly-kpop-scan.yml`
+- same-day verification path: `.github/workflows/release-day-verification.yml`
   - daily upcoming/news freshness, DB sync, projection refresh, parity/shadow/runtime/freshness artifact
 - slow path: `.github/workflows/catalog-enrichment-refresh.yml`
   - weekly release history/detail/title/MV enrichment, historical coverage, readiness artifact
@@ -900,6 +901,12 @@ cd backend
 npm run same-day:acceptance -- --reference-date 2026-03-12
 npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming
 npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json
+```
+
+same-day verification target selection만 로컬에서 보고 싶으면:
+
+```bash
+python same_day_release_targets.py --reference-datetime 2026-03-12T12:00:00+09:00
 ```
 
 기본 보고서 출력:

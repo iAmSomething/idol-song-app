@@ -9,7 +9,11 @@ import {
   parseScheduleExpectation,
 } from './workerCadenceEvidence.mjs';
 
-test('parseScheduleExpectation supports daily and weekly cron schedules used by workers', () => {
+test('parseScheduleExpectation supports hourly, daily, and weekly cron schedules used by workers', () => {
+  assert.deepEqual(parseScheduleExpectation('0 * * * *'), {
+    kind: 'hourly',
+    minute: 0,
+  });
   assert.deepEqual(parseScheduleExpectation('0 0 * * *'), {
     kind: 'daily',
     minute: 0,
@@ -24,10 +28,15 @@ test('parseScheduleExpectation supports daily and weekly cron schedules used by 
   assert.equal(parseScheduleExpectation('0 1 1 * *'), null);
 });
 
-test('nextScheduledOccurrenceAfter returns the next daily or weekly slot in UTC', () => {
+test('nextScheduledOccurrenceAfter returns the next hourly, daily, or weekly slot in UTC', () => {
+  const hourly = parseScheduleExpectation('0 * * * *');
   const daily = parseScheduleExpectation('0 0 * * *');
   const weekly = parseScheduleExpectation('0 1 * * 0');
 
+  assert.equal(
+    nextScheduledOccurrenceAfter('2026-03-12T03:14:09.000Z', hourly)?.toISOString(),
+    '2026-03-12T04:00:00.000Z',
+  );
   assert.equal(
     nextScheduledOccurrenceAfter('2026-03-06T07:34:09.000Z', daily)?.toISOString(),
     '2026-03-07T00:00:00.000Z',
@@ -39,7 +48,16 @@ test('nextScheduledOccurrenceAfter returns the next daily or weekly slot in UTC'
 });
 
 test('countExpectedScheduledRunsByNow counts elapsed schedule windows from the first due time', () => {
+  const hourly = parseScheduleExpectation('0 * * * *');
   const daily = parseScheduleExpectation('0 0 * * *');
+  assert.equal(
+    countExpectedScheduledRunsByNow({
+      firstExpectedRunAt: '2026-03-12T03:00:00.000Z',
+      parsedSchedule: hourly,
+      now: '2026-03-12T08:30:00.000Z',
+    }),
+    6,
+  );
   assert.equal(
     countExpectedScheduledRunsByNow({
       firstExpectedRunAt: '2026-03-07T00:00:00.000Z',
@@ -111,6 +129,26 @@ test('buildScheduledEvidenceSummary keeps weekly cadence in warm-up before the f
   assert.equal(summary.expected_scheduled_runs_by_now, 0);
   assert.equal(summary.missed_scheduled_windows, 0);
   assert.equal(summary.first_expected_run_at, '2026-03-15T01:00:00.000Z');
+});
+
+test('buildScheduledEvidenceSummary keeps hourly cadence in warm-up before the first due window', () => {
+  const summary = buildScheduledEvidenceSummary({
+    workflowRegistered: true,
+    workflowMetadata: {
+      created_at: '2026-03-12T03:14:52.000Z',
+      updated_at: '2026-03-12T03:25:54.000Z',
+      state: 'active',
+      html_url: 'https://github.com/example/release-day-verification',
+    },
+    cadenceLabel: 'hourly',
+    scheduleExpectation: '0 * * * *',
+    observedScheduledRuns: 0,
+    now: '2026-03-12T03:30:00.000Z',
+  });
+
+  assert.equal(summary.status, 'warming_up');
+  assert.equal(summary.expected_scheduled_runs_by_now, 0);
+  assert.equal(summary.first_expected_run_at, '2026-03-12T04:00:00.000Z');
 });
 
 test('buildWorkflowScheduleDiagnosticsReport surfaces actionable hints for missing scheduled delivery', () => {

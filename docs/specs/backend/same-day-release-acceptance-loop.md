@@ -4,6 +4,26 @@
 이 문서는 `#671`, `#672`, `#673`, `#674`, `#675`를 묶는 실행 규칙과
 실패 상태 기록 형식을 고정한다.
 
+## Scheduling Policy
+
+same-day release verification은 daily upcoming discovery와 분리된 workflow를 사용한다.
+
+- daily discovery:
+  - workflow: `.github/workflows/weekly-kpop-scan.yml`
+  - cadence: `09:00 KST` once per day
+  - role: new upcoming/news discovery
+- release-day verification:
+  - workflow: `.github/workflows/release-day-verification.yml`
+  - cadence: `hourly`
+  - role: exact-date same-day release promotion and hydration
+
+release-day verification window rules:
+
+1. exact-date upcoming이 `today(KST)`인 경우만 대상이다.
+2. explicit release time이 기사/공식 evidence에 있으면 `release_time - 1h`부터 hourly verification을 시작한다.
+3. explicit release time이 없으면 `12:00 KST`부터 hourly verification을 시작한다.
+4. verification window는 same-day `24:00 KST` 직전까지 유지한다.
+
 ## Fixture Set
 
 같은-day release track은 아래 두 fixture를 같이 본다.
@@ -82,3 +102,6 @@ npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json
 
 scheduled verification chain은 `report:bundle` 전에 반드시 `npm run same-day:acceptance`를 실행해야 한다.
 그래야 failed cycle이 artifact, runtime gate, readiness report에 같은 run timestamp로 남는다.
+
+hourly workflow는 `same_day_release_targets.py`로 active window를 먼저 계산한 뒤,
+eligible group만 `hydrate_release_windows.py`에 넘긴다.

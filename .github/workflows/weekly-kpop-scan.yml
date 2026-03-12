@@ -59,8 +59,6 @@ jobs:
           python build_tracking_watchlist.py
           python scan_upcoming_candidates.py
           python build_manual_review_queue.py
-          python hydrate_release_windows.py --upcoming-path upcoming_release_candidates.json --watchlist-path tracking_watchlist.json
-          python build_mv_manual_review_queue.py
           if [ -n "${DATABASE_URL:-}" ]; then
             python sync_upcoming_pipeline_to_neon.py --summary-path /tmp/upcoming-pipeline-db-sync-summary.json
             python sync_trusted_upcoming_notification_events.py --summary-path backend/reports/trusted_upcoming_notification_event_summary.json --markdown-path backend/reports/trusted_upcoming_operator_alert_report.md
@@ -69,7 +67,6 @@ jobs:
             else
               echo "MOBILE_PUSH_DELIVERY_ENABLED is not true; skipping trusted push fanout."
             fi
-            python sync_release_pipeline_to_neon.py --summary-path /tmp/release-pipeline-db-sync-summary.json
             (
               cd backend
               npm run projection:refresh
@@ -78,7 +75,6 @@ jobs:
               npm run null:recheck
               npm run null:trend
               npm run gap:workbenches
-              npm run same-day:acceptance
               npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming
             )
             python build_backend_json_parity_report.py --bundle-path backend/reports/report_bundle_metadata.json

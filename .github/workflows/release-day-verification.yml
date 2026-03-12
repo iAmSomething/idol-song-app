@@ -1,0 +1,136 @@
+name: Release-day Verification
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-day-verification
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          if [ -n "${DATABASE_URL:-}" ]; then
+            pip install -r backend/requirements-import.txt
+          fi
+
+      - name: Install backend dependencies
+        if: ${{ env.DATABASE_URL != '' }}
+        working-directory: backend
+        run: npm ci
+
+      - name: Capture KST reference window
+        id: kst
+        run: |
+          echo "reference_date=$(TZ=Asia/Seoul date +%F)" >> "$GITHUB_OUTPUT"
+          echo "reference_datetime=$(TZ=Asia/Seoul date +%Y-%m-%dT%H:%M:%S%z)" >> "$GITHUB_OUTPUT"
+
+      - name: Select same-day verification targets
+        run: |
+          python same_day_release_targets.py \
+            --reference-datetime "${{ steps.kst.outputs.reference_datetime }}" \
+            --summary-path backend/reports/release_day_verification_targets.json \
+            --groups-path /tmp/release-day-verification-groups.txt
+
+      - name: Run same-day release verification window
+        run: |
+          if [ ! -s /tmp/release-day-verification-groups.txt ]; then
+            echo "No eligible same-day release verification targets."
+            exit 0
+          fi
+          while IFS= read -r group; do
+            if [ -z "$group" ]; then
+              continue
+            fi
+            python hydrate_release_windows.py \
+              --today "${{ steps.kst.outputs.reference_date }}" \
+              --group "$group" \
+              --upcoming-path upcoming_release_candidates.json \
+              --watchlist-path tracking_watchlist.json
+          done < /tmp/release-day-verification-groups.txt
+          python build_mv_manual_review_queue.py
+
+      - name: Run same-day DB sync and verification chain
+        if: ${{ env.DATABASE_URL != '' }}
+        run: |
+          if [ -s /tmp/release-day-verification-groups.txt ]; then
+            python sync_release_pipeline_to_neon.py --summary-path /tmp/release-pipeline-db-sync-summary.json
+          else
+            echo "No same-day release updates to sync into Neon."
+          fi
+          (
+            cd backend
+            npm run projection:refresh
+            npm run worker:cadence
+            npm run same-day:acceptance -- --reference-date "${{ steps.kst.outputs.reference_date }}"
+            npm run report:bundle -- --bundle-kind same-day-release-verification --cadence-profile same-day-hourly
+            npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json
+          )
+
+      - name: Export non-runtime web snapshots
+        if: ${{ env.DATABASE_URL != '' }}
+        working-directory: backend
+        run: npm run export:web-snapshots -- --source-workflow release-day-verification.yml --cadence-profile same-day-hourly
+
+      - name: Restore runtime web snapshots before commit
+        run: |
+          git restore web/src/data/watchlist.json web/src/data/upcomingCandidates.json web/src/data/releases.json web/src/data/releaseArtwork.json web/src/data/releaseDetails.json web/src/data/releaseHistory.json web/src/data/releaseChangeLog.json web/src/data/artistProfiles.json web/src/data/youtubeChannelAllowlists.json
+
+      - name: Upload same-day verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: same-day-release-verification
+          path: |
+            backend/reports/release_day_verification_targets.json
+            backend/reports/projection_refresh_summary.json
+            backend/reports/worker_cadence_report.json
+            backend/reports/workflow_schedule_diagnostics.json
+            backend/reports/same_day_release_acceptance_report.json
+            backend/reports/same_day_release_acceptance_report.md
+            backend/reports/report_bundle_metadata.json
+            backend/reports/runtime_gate_report.json
+          if-no-files-found: warn
+
+      - name: Commit same-day verification data
+        if: ${{ env.DATABASE_URL != '' }}
+        run: |
+          if git diff --quiet -- tracking_watchlist.json tracking_watchlist.csv group_latest_release_since_2025-06-01_mb.json group_latest_release_since_2025-06-01_mb.csv release_detail_catalog.json release_artwork_catalog.json verified_release_history_mb.json verified_release_history_mb.csv mv_manual_review_queue.json mv_manual_review_queue.csv backend/exports/non_runtime_web_snapshots; then
+            echo "No same-day data changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tracking_watchlist.json tracking_watchlist.csv group_latest_release_since_2025-06-01_mb.json group_latest_release_since_2025-06-01_mb.csv release_detail_catalog.json release_artwork_catalog.json verified_release_history_mb.json verified_release_history_mb.csv mv_manual_review_queue.json mv_manual_review_queue.csv backend/exports/non_runtime_web_snapshots
+          git commit -m "chore: refresh same-day release verification data"
+          git push
