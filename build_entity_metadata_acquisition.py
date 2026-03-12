@@ -6,9 +6,11 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
+import non_runtime_dataset_paths
+
 
 ROOT = Path(__file__).resolve().parent
-ARTIST_PROFILES_PATH = ROOT / "web" / "src" / "data" / "artistProfiles.json"
+ARTIST_PROFILES_PATH = non_runtime_dataset_paths.resolve_input_path("artistProfiles.json")
 SEED_PATH = ROOT / "entity_metadata_acquisition_seed.json"
 OUTPUT_PATH = ROOT / "entity_metadata_acquisition.json"
 USER_AGENT = "Mozilla/5.0 (compatible; idol-song-app-entity-metadata/1.0)"
@@ -252,6 +254,7 @@ def main() -> None:
     print(
         json.dumps(
             {
+                "input_json": str(ARTIST_PROFILES_PATH.relative_to(ROOT)),
                 "output_json": str(OUTPUT_PATH.relative_to(ROOT)),
                 **build_summary(rows),
             },

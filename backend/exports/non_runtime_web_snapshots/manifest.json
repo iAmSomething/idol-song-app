@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-03-12T03:31:43.668Z",
+  "generated_at": "2026-03-12T07:27:46.187Z",
   "classification": "non-runtime export",
-  "source_workflow": "weekly-kpop-scan.yml",
-  "cadence_profile": "daily-upcoming",
+  "source_workflow": "catalog-enrichment-refresh.yml",
+  "cadence_profile": "weekly-enrichment",
   "export_dir": "backend/exports/non_runtime_web_snapshots",
-  "file_count": 9,
+  "file_count": 10,
   "files": [
     {
       "file_name": "artistProfiles.json",
-      "source_path": "web/src/data/artistProfiles.json",
+      "source_path": "artist_profiles_seed.json",
       "export_path": "backend/exports/non_runtime_web_snapshots/artistProfiles.json"
     },
     {
       "file_name": "releaseArtwork.json",
-      "source_path": "web/src/data/releaseArtwork.json",
+      "source_path": "release_artwork_catalog.json",
       "export_path": "backend/exports/non_runtime_web_snapshots/releaseArtwork.json"
     },
     {
@@ -23,32 +23,37 @@
     },
     {
       "file_name": "releaseDetails.json",
-      "source_path": "web/src/data/releaseDetails.json",
+      "source_path": "release_detail_catalog.json",
       "export_path": "backend/exports/non_runtime_web_snapshots/releaseDetails.json"
     },
     {
       "file_name": "releaseHistory.json",
-      "source_path": "web/src/data/releaseHistory.json",
+      "source_path": "verified_release_history_mb.json",
       "export_path": "backend/exports/non_runtime_web_snapshots/releaseHistory.json"
     },
     {
       "file_name": "releases.json",
-      "source_path": "web/src/data/releases.json",
+      "source_path": "group_latest_release_since_2025-06-01_mb.json",
       "export_path": "backend/exports/non_runtime_web_snapshots/releases.json"
     },
     {
+      "file_name": "teamBadgeAssets.json",
+      "source_path": "team_badge_assets.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/teamBadgeAssets.json"
+    },
+    {
       "file_name": "upcomingCandidates.json",
-      "source_path": "web/src/data/upcomingCandidates.json",
+      "source_path": "upcoming_release_candidates.json",
       "export_path": "backend/exports/non_runtime_web_snapshots/upcomingCandidates.json"
     },
     {
       "file_name": "watchlist.json",
-      "source_path": "web/src/data/watchlist.json",
+      "source_path": "tracking_watchlist.json",
       "export_path": "backend/exports/non_runtime_web_snapshots/watchlist.json"
     },
     {
       "file_name": "youtubeChannelAllowlists.json",
-      "source_path": "web/src/data/youtubeChannelAllowlists.json",
+      "source_path": "youtube_channel_allowlists.json",
       "export_path": "backend/exports/non_runtime_web_snapshots/youtubeChannelAllowlists.json"
     }
   ]

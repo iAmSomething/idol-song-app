@@ -2,11 +2,13 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List
 
+import non_runtime_dataset_paths
+
 
 ROOT = Path(__file__).resolve().parent
 ENTITY_METADATA_PATH = ROOT / "canonical_entity_metadata.json"
-RELEASE_ARTWORK_PATH = ROOT / "web" / "src" / "data" / "releaseArtwork.json"
-RELEASE_HISTORY_PATH = ROOT / "web" / "src" / "data" / "releaseHistory.json"
+RELEASE_ARTWORK_PATH = non_runtime_dataset_paths.resolve_input_path("releaseArtwork.json")
+RELEASE_HISTORY_PATH = non_runtime_dataset_paths.resolve_input_path("releaseHistory.json")
 REPORT_JSON_PATH = ROOT / "backend" / "reports" / "entity_asset_coverage_report.json"
 REPORT_MD_PATH = ROOT / "backend" / "reports" / "entity_asset_coverage_report.md"
 

@@ -10,21 +10,21 @@ import {
   exportNonRuntimeWebSnapshots,
 } from './nonRuntimeWebSnapshotExport.mjs';
 
-test('buildNonRuntimeWebSnapshotEntries maps canonical web data files into export paths', () => {
+test('buildNonRuntimeWebSnapshotEntries maps primary non-runtime datasets into export paths', () => {
   const entries = buildNonRuntimeWebSnapshotEntries('/tmp/idol-song-app');
-  assert.ok(entries.some((entry) => entry.sourcePath.endsWith('web/src/data/releaseDetails.json')));
+  assert.ok(entries.some((entry) => entry.sourcePath.endsWith('release_detail_catalog.json')));
   assert.ok(entries.every((entry) => entry.exportPath.includes(NON_RUNTIME_WEB_SNAPSHOT_EXPORT_DIR)));
 });
 
 test('exportNonRuntimeWebSnapshots copies existing files and writes manifest', async () => {
   const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'idol-song-app-web-snapshot-export-'));
-  await fs.mkdir(path.join(rootDir, 'web', 'src', 'data'), { recursive: true });
+  await fs.mkdir(rootDir, { recursive: true });
   await fs.writeFile(
-    path.join(rootDir, 'web', 'src', 'data', 'watchlist.json'),
+    path.join(rootDir, 'tracking_watchlist.json'),
     '[{"group":"YENA"}]\n',
   );
   await fs.writeFile(
-    path.join(rootDir, 'web', 'src', 'data', 'releaseDetails.json'),
+    path.join(rootDir, 'release_detail_catalog.json'),
     '[{"group":"YENA","release_title":"LOVE CATCHER"}]\n',
   );
 

@@ -3,12 +3,17 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 from urllib.parse import urlsplit, urlunsplit
 
+import non_runtime_dataset_paths
+
 
 ROOT = Path(__file__).resolve().parent
-ARTIST_PROFILES_PATH = ROOT / "web" / "src" / "data" / "artistProfiles.json"
+ARTIST_PROFILES_DATASET = "artistProfiles.json"
+TEAM_BADGE_ASSETS_DATASET = "teamBadgeAssets.json"
+YOUTUBE_ALLOWLISTS_DATASET = "youtubeChannelAllowlists.json"
+ARTIST_PROFILES_PATH = non_runtime_dataset_paths.resolve_input_path(ARTIST_PROFILES_DATASET)
 ARTIST_SOCIALS_PATH = ROOT / "artist_socials_structured_2026-03-04.json"
-TEAM_BADGE_ASSETS_PATH = ROOT / "web" / "src" / "data" / "teamBadgeAssets.json"
-YOUTUBE_ALLOWLISTS_PATH = ROOT / "web" / "src" / "data" / "youtubeChannelAllowlists.json"
+TEAM_BADGE_ASSETS_PATH = non_runtime_dataset_paths.resolve_input_path(TEAM_BADGE_ASSETS_DATASET)
+YOUTUBE_ALLOWLISTS_PATH = non_runtime_dataset_paths.resolve_input_path(YOUTUBE_ALLOWLISTS_DATASET)
 ENTITY_METADATA_ACQUISITION_PATH = ROOT / "entity_metadata_acquisition.json"
 OUTPUT_PATH = ROOT / "canonical_entity_metadata.json"
 
@@ -393,7 +398,7 @@ def build_metadata_rows(
             }
         )
 
-    write_json(ARTIST_PROFILES_PATH, updated_profiles)
+    non_runtime_dataset_paths.write_json_dataset(ARTIST_PROFILES_DATASET, updated_profiles)
     return rows
 
 
@@ -425,12 +430,17 @@ def main() -> None:
 
     rows = build_metadata_rows(artist_profiles, social_rows, badge_rows, allowlist_rows, acquisition_rows)
     write_json(OUTPUT_PATH, rows)
+    profile_io = non_runtime_dataset_paths.describe_dataset_io(ARTIST_PROFILES_DATASET)
 
     print(
         json.dumps(
             {
+                "artist_profiles_input_json": str(ARTIST_PROFILES_PATH.relative_to(ROOT)),
+                "team_badge_assets_input_json": str(TEAM_BADGE_ASSETS_PATH.relative_to(ROOT)),
+                "youtube_allowlists_input_json": str(YOUTUBE_ALLOWLISTS_PATH.relative_to(ROOT)),
                 "output_json": str(OUTPUT_PATH.relative_to(ROOT)),
-                "artist_profiles_json": str(ARTIST_PROFILES_PATH.relative_to(ROOT)),
+                "artist_profiles_primary_json": profile_io["primary_path"],
+                "artist_profiles_mirror_json": profile_io["mirror_paths"],
                 **build_summary(rows),
             },
             ensure_ascii=False,

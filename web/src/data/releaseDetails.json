@@ -67920,6 +67920,10 @@
     "release_date": "2025-11-26",
     "stream": "song",
     "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "releaseDetails.existing_row",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
     "tracks": [
       {
         "order": 1,
@@ -67932,48 +67936,8 @@
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
-    "youtube_video_provenance": null,
-    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify.",
-    "title_track_status": "inferred",
-    "title_track_provenance": "single_track_release | release_title_exact | song_variant_collapse | nearby_song_release:2025-11-26"
-  },
-  {
-    "group": "YENA",
-    "release_title": "LOVE CATCHER",
-    "release_date": "2026-03-11",
-    "stream": "album",
-    "release_kind": "ep",
-    "tracks": [
-      {
-        "order": 1,
-        "title": "캐치 캐치"
-      },
-      {
-        "order": 2,
-        "title": "봄이라서"
-      },
-      {
-        "order": 3,
-        "title": "스티커"
-      },
-      {
-        "order": 4,
-        "title": "4월의 고양이"
-      },
-      {
-        "order": 5,
-        "title": "물음표"
-      }
-    ],
-    "spotify_url": null,
-    "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": null,
-    "notes": "Representative MusicBrainz EP seed with 5 tracks.",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal"
+    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
   },
   {
     "group": "YOUNG POSSE",

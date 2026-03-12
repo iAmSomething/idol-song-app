@@ -4,10 +4,14 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import urlsplit, urlunsplit
 
+import non_runtime_dataset_paths
+
 
 ROOT = Path(__file__).resolve().parent
-RELEASE_HISTORY_PATH = ROOT / "web" / "src" / "data" / "releaseHistory.json"
-RELEASE_ARTWORK_PATH = ROOT / "web" / "src" / "data" / "releaseArtwork.json"
+RELEASE_HISTORY_DATASET = "releaseHistory.json"
+RELEASE_ARTWORK_DATASET = "releaseArtwork.json"
+RELEASE_HISTORY_PATH = non_runtime_dataset_paths.resolve_input_path(RELEASE_HISTORY_DATASET)
+RELEASE_ARTWORK_PATH = non_runtime_dataset_paths.resolve_input_path(RELEASE_ARTWORK_DATASET)
 RELEASE_GROUP_PATTERN = re.compile(r"/release-group/([0-9a-f-]{36})/?$", re.IGNORECASE)
 
 
@@ -141,11 +145,12 @@ def main() -> None:
     history_rows = load_json(RELEASE_HISTORY_PATH)
     existing_rows = load_json(RELEASE_ARTWORK_PATH)
     rows = build_rows(history_rows, existing_rows)
-    write_json(RELEASE_ARTWORK_PATH, rows)
+    io_paths = non_runtime_dataset_paths.write_json_dataset(RELEASE_ARTWORK_DATASET, rows)
     print(
         json.dumps(
             {
-                "output_json": str(RELEASE_ARTWORK_PATH.relative_to(ROOT)),
+                "input_json": str(RELEASE_HISTORY_PATH.relative_to(ROOT)),
+                **io_paths,
                 "release_history_rows": sum(len(row.get("releases") or []) for row in history_rows),
                 **build_summary(rows),
             },

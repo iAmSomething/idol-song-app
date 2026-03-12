@@ -1,6 +1,6 @@
 # Historical Catalog Completeness Summary
 
-- generated_at: `2026-03-11`
+- generated_at: `2026-03-12`
 - cutover status: `fail`
 
 ## Summary
@@ -9,7 +9,7 @@
 - detail trusted coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)
 - title-track resolved coverage: 1201/1770 (67.8%), pre-2024 752/1153 (65.2%), review queue 569
 - canonical MV coverage: 153/1770 (8.6%), pre-2024 74/1153 (6.4%), mv review 2
-- external acquisition pass: YTM attempted 113, resolved 0; MV attempted 56, resolved 0, review 2
+- external acquisition pass: YTM attempted 0, resolved 0; MV attempted 0, resolved 0, review 2
 - youtube MV search pass: attempted 54, resolved 41, review 13, unresolved 1616, coverage lift +1
 - migration-critical first slice: title-track 18/18 (100.0%), canonical MV 18/18 (100.0%), gate pass
 - worst title-track cohort: 2021-2023 ep 31.4% / target 74.0%
@@ -74,9 +74,9 @@
 
 ## External Acquisition
 
-- YTM attempted: `113`
+- YTM attempted: `0`
 - YTM resolved: `0`
-- MV attempted: `56`
+- MV attempted: `0`
 - MV resolved: `0`
 - MV review needed: `2`
 - MV search attempted: `54`

@@ -3,22 +3,23 @@ import path from 'node:path';
 
 export const NON_RUNTIME_WEB_SNAPSHOT_EXPORT_DIR = 'backend/exports/non_runtime_web_snapshots';
 
-export const NON_RUNTIME_WEB_SNAPSHOT_FILES = [
-  'artistProfiles.json',
-  'releaseArtwork.json',
-  'releaseChangeLog.json',
-  'releaseDetails.json',
-  'releaseHistory.json',
-  'releases.json',
-  'upcomingCandidates.json',
-  'watchlist.json',
-  'youtubeChannelAllowlists.json',
-];
+export const NON_RUNTIME_WEB_SNAPSHOT_SOURCES = {
+  'artistProfiles.json': 'artist_profiles_seed.json',
+  'releaseArtwork.json': 'release_artwork_catalog.json',
+  'releaseChangeLog.json': 'web/src/data/releaseChangeLog.json',
+  'releaseDetails.json': 'release_detail_catalog.json',
+  'releaseHistory.json': 'verified_release_history_mb.json',
+  'releases.json': 'group_latest_release_since_2025-06-01_mb.json',
+  'teamBadgeAssets.json': 'team_badge_assets.json',
+  'upcomingCandidates.json': 'upcoming_release_candidates.json',
+  'watchlist.json': 'tracking_watchlist.json',
+  'youtubeChannelAllowlists.json': 'youtube_channel_allowlists.json',
+};
 
 export function buildNonRuntimeWebSnapshotEntries(rootDir) {
-  return NON_RUNTIME_WEB_SNAPSHOT_FILES.map((fileName) => ({
+  return Object.entries(NON_RUNTIME_WEB_SNAPSHOT_SOURCES).map(([fileName, sourceRelativePath]) => ({
     fileName,
-    sourcePath: path.join(rootDir, 'web', 'src', 'data', fileName),
+    sourcePath: path.join(rootDir, sourceRelativePath),
     exportPath: path.join(rootDir, NON_RUNTIME_WEB_SNAPSHOT_EXPORT_DIR, fileName),
   }));
 }

@@ -13,13 +13,14 @@ from pathlib import Path
 from typing import Any
 
 import build_release_details_musicbrainz as release_detail_builder
+import non_runtime_dataset_paths
 import youtube_mv_candidate_scoring as mv_scoring
 import youtube_channel_allowlists
 
 
 ROOT = Path(__file__).resolve().parent
-ARTIST_PROFILES_PATH = ROOT / "web/src/data/artistProfiles.json"
-DETAILS_PATH = ROOT / "web/src/data/releaseDetails.json"
+ARTIST_PROFILES_PATH = non_runtime_dataset_paths.resolve_input_path("artistProfiles.json")
+DETAILS_PATH = non_runtime_dataset_paths.resolve_input_path("releaseDetails.json")
 OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 REPORT_PATH = ROOT / "mv_coverage_report.json"
 USER_AGENT = "Mozilla/5.0"
