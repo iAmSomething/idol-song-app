@@ -14,6 +14,7 @@ const runtimeMode = normalizedApiBaseUrl ? 'api' : 'bridge'
 const targetClassification = classifyBackendTarget(normalizedApiBaseUrl)
 const targetEnvironment = declaredTargetEnvironment || (runtimeMode === 'bridge' ? 'bridge' : targetClassification)
 const effectiveTarget = normalizedApiBaseUrl || '/__bridge/v1'
+const bridgeReferenceDate = resolveBridgeReferenceDate(process.env.BRIDGE_REFERENCE_DATE ?? '')
 
 const artistProfiles = await readJson(path.join(dataRoot, 'artistProfiles.json'))
 const releaseRows = await readJson(path.join(dataRoot, 'releases.json'))
@@ -80,7 +81,7 @@ for (const [lookupId, entry] of releaseLookupEntries) {
   await writeBridgeJson(path.join(bridgeRoot, 'releases', 'lookups', `${lookupId}.json`), entry.payload)
 }
 
-const calendarPayloads = buildCalendarPayloads(releaseRows, upcomingCandidates, artistProfileByGroup)
+const calendarPayloads = buildCalendarPayloads(releaseRows, upcomingCandidates, artistProfileByGroup, bridgeReferenceDate)
 let calendarMonthCount = 0
 for (const [monthKey, payload] of calendarPayloads) {
   await writeBridgeJson(path.join(bridgeRoot, 'calendar', 'months', `${monthKey}.json`), {
@@ -144,12 +145,14 @@ console.log(
 
 function buildCalendarPayloads(releases, upcomingRows, artistProfileMap) {
   const verifiedByMonth = new Map()
+  const verifiedReleaseDatesByGroup = new Map()
   const exactUpcomingByMonth = new Map()
   const monthOnlyByMonth = new Map()
 
   for (const releaseRow of releases) {
     for (const release of expandReleaseFacts(releaseRow, artistProfileMap)) {
       pushMapArray(verifiedByMonth, release.release_date.slice(0, 7), release)
+      pushMapSet(verifiedReleaseDatesByGroup, release.group, release.release_date)
     }
   }
 
@@ -160,6 +163,12 @@ function buildCalendarPayloads(releases, upcomingRows, artistProfileMap) {
     }
 
     if (normalized.date_precision === 'exact' && normalized.scheduled_date) {
+      if (
+        isElapsedExactUpcoming(normalized, bridgeReferenceDate) ||
+        verifiedReleaseDatesByGroup.get(candidate.group)?.has(normalized.scheduled_date)
+      ) {
+        continue
+      }
       pushMapArray(exactUpcomingByMonth, normalized.scheduled_date.slice(0, 7), normalized)
       continue
     }
@@ -348,6 +357,24 @@ function buildUpcomingItem(row, artistProfileMap) {
   }
 }
 
+function isElapsedExactUpcoming(item, todayIsoDate) {
+  return Boolean(item?.date_precision === 'exact' && item.scheduled_date && item.scheduled_date < todayIsoDate)
+}
+
+function resolveBridgeReferenceDate(value) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value).trim())
+  if (match) {
+    return `${match[1]}-${match[2]}-${match[3]}`
+  }
+
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date())
+}
+
 function buildReleaseDetailPayload(row, releaseId, artwork) {
   return {
     release: {
@@ -471,6 +498,16 @@ function readCalendarDay(dayMap, isoDate) {
   }
   dayMap.set(isoDate, next)
   return next
+}
+
+function pushMapSet(targetMap, key, value) {
+  const existing = targetMap.get(key)
+  if (existing) {
+    existing.add(value)
+    return
+  }
+
+  targetMap.set(key, new Set([value]))
 }
 
 function expandLookupDates(isoDate) {
