@@ -20,12 +20,17 @@
    - Android Chrome / iOS Safari / representative in-app browser 기준
    - app installed / not installed, canonical / search fallback 차이
    - 후속 QA 이슈 `#291` 재검증 기준
+4. `search-test-strategy.md`
+   - backend / web / mobile 검색 테스트 전략
+   - exact name / alias / release-title / same-day suppression / failure-state 기준
+   - 회귀 테스트 실행 경로
 
 ## 읽는 순서
 
 1. `ui-action-system-v1.md`
 2. `service-button-system-v1.md`
 3. `mobile-web-handoff-qa-matrix.md`
+4. `search-test-strategy.md`
 
 ## 운영 원칙
 

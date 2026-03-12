@@ -45,6 +45,9 @@ jobs:
       - name: Run web runtime policy tests
         run: npm run test:runtime-policy
 
+      - name: Run web search runtime tests
+        run: npm run test:search-runtime
+
       - name: Run Pages read bridge tests
         run: npm run test:pages-read-bridge
 

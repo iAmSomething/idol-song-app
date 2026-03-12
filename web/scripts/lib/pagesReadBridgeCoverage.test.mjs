@@ -148,6 +148,38 @@ test('auditPagesReadBridge reports missing entity assets and stale same-day upco
         upcoming: [],
       },
     })
+    writeJson(path.join(bridgeRoot, 'entities', 'p1harmony.json'), {
+      data: {
+        identity: { entity_slug: 'p1harmony', display_name: 'P1Harmony', canonical_name: 'P1Harmony' },
+        official_links: {},
+        youtube_channels: {},
+        latest_release: { release_id: 'release-1', release_date: '2026-03-12' },
+        recent_albums: [],
+        source_timeline: [],
+      },
+    })
+    writeJson(path.join(bridgeRoot, 'search', 'index.json'), {
+      data: {
+        entities: [
+          {
+            entity_slug: 'hearts2hearts',
+            display_name: 'Hearts2Hearts',
+            canonical_name: 'Hearts2Hearts',
+            search_terms: ['Hearts2Hearts'],
+            latest_release: null,
+          },
+        ],
+        releases: [],
+        upcoming: [
+          {
+            entity_slug: 'p1harmony',
+            headline: "P1Harmony's Hero's Return",
+            scheduled_date: '2026-03-12',
+            source_url: 'https://example.com/p1harmony',
+          },
+        ],
+      },
+    })
     writeJson(path.join(bridgeRoot, 'calendar', 'months', '2026-03.json'), {
       data: {
         days: [
@@ -172,6 +204,10 @@ test('auditPagesReadBridge reports missing entity assets and stale same-day upco
     )
     assert.equal(
       result.errors.some((error) => error.code === 'calendar_stale_same_day_upcoming'),
+      true,
+    )
+    assert.equal(
+      result.errors.some((error) => error.code === 'search_upcoming_stale_same_day'),
       true,
     )
   })

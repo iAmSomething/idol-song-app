@@ -571,4 +571,17 @@ describe('mobile search tab', () => {
       segment: undefined,
     });
   });
+
+  test('renders an explicit retry state when backend-primary search fails instead of stale fallback content', async () => {
+    mockUseActiveDatasetScreen.mockReturnValue({
+      kind: 'error',
+      message: 'backend 검색 응답을 지금 불러오지 못했습니다.',
+    });
+
+    const tree = await renderSearchScreen();
+
+    expect(hasText(tree, '검색')).toBe(true);
+    expect(hasText(tree, 'backend 검색 응답을 지금 불러오지 못했습니다.')).toBe(true);
+    expect(hasText(tree, '다시 시도')).toBe(true);
+  });
 });
