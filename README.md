@@ -178,20 +178,20 @@ python build_release_rollup_from_history.py
 python build_tracking_watchlist.py
 python scan_upcoming_candidates.py
 python build_manual_review_queue.py
-
-cp tracking_watchlist.json web/src/data/watchlist.json
-cp upcoming_release_candidates.json web/src/data/upcomingCandidates.json
 python build_entity_metadata_acquisition.py
 python build_canonical_entity_metadata.py
 python youtube_channel_allowlists.py
 python build_release_artwork_catalog.py
 python build_entity_asset_coverage_report.py
 python backfill_release_detail_mvs.py
-python hydrate_release_windows.py
+python hydrate_release_windows.py --upcoming-path upcoming_release_candidates.json --watchlist-path tracking_watchlist.json
 python build_mv_manual_review_queue.py
-python build_release_change_log.py
+python build_release_change_log.py --upcoming-path upcoming_release_candidates.json --releases-path group_latest_release_since_2025-06-01_mb.json
 python -m unittest test_youtube_mv_candidate_scoring.py
 ```
+
+scheduled workflow에서는 `web/src/data/*.json`를 commit 대상 운영 산출물로 더 이상 직접 올리지 않는다.
+job 내부에서는 transition build/input 용도로 갱신될 수 있지만, commit 전에는 [backend/exports/non_runtime_web_snapshots](/Users/gimtaehun/Desktop/idol-song-app/backend/exports/non_runtime_web_snapshots)로 export하고 `web/src/data`는 restore한다.
 
 historical migration slice처럼 기존 `releaseDetails` 위에 manual seed만 다시 입히고 싶을 때는 외부 acquisition 없이 아래처럼 빠르게 재생성할 수 있다.
 

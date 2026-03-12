@@ -157,6 +157,13 @@ def parse_run_date(value: str) -> date:
     return parsed
 
 
+def parse_json_path(value: str) -> Path:
+    candidate = Path(value)
+    if not candidate.is_absolute():
+        candidate = ROOT / candidate
+    return candidate
+
+
 def infer_release_format(text: str, fallback: str) -> str:
     if MINI_ALBUM_PATTERN.search(text):
         return "ep"
@@ -1058,9 +1065,11 @@ def main() -> None:
     parser.add_argument("--group", type=str, default="", help="hydrate a single group")
     parser.add_argument("--dry-run", action="store_true", help="report due hydration targets without writing files")
     parser.add_argument("--strict", action="store_true", help="exit non-zero when hydration errors occur")
+    parser.add_argument("--upcoming-path", type=parse_json_path, default=UPCOMING_PATH)
+    parser.add_argument("--watchlist-path", type=parse_json_path, default=WATCHLIST_PATH)
     args = parser.parse_args()
 
-    upcoming_rows = load_json(UPCOMING_PATH)
+    upcoming_rows = load_json(args.upcoming_path)
     due_targets = derive_due_targets(upcoming_rows, args.today, args.group)
     phase_counts = Counter(target["phase"] for target in due_targets)
     summary: dict[str, Any] = {
@@ -1123,7 +1132,7 @@ def main() -> None:
         root_release_rows = load_json(ROOT_RELEASES_PATH)
         artwork_rows = load_json(ARTWORK_PATH)
         detail_rows = load_json(DETAILS_PATH)
-        watchlist_rows = load_json(WATCHLIST_PATH)
+        watchlist_rows = load_json(args.watchlist_path)
 
         merged_releases = merge_release_rows(release_rows, [row["release_row"] for row in successful_updates if row["release_row"]])
         merged_root_releases = merge_release_rows(
