@@ -4,7 +4,7 @@
   },
   "data": {
     "summary": {
-      "verified_count": 22,
+      "verified_count": 23,
       "exact_upcoming_count": 0,
       "month_only_upcoming_count": 0
     },
@@ -186,6 +186,15 @@
             "stream": "album",
             "release_kind": "ep",
             "release_date": "2025-10-23"
+          },
+          {
+            "release_id": "bridge-release-0c81546b",
+            "entity_slug": "yuju",
+            "display_name": "YUJU",
+            "release_title": "내향남녀 X 유주",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-10-23"
           }
         ],
         "exact_upcoming": []
@@ -203,10 +212,10 @@
             "release_date": "2025-10-24"
           },
           {
-            "release_id": "bridge-release-86c0a9d4",
+            "release_id": "bridge-release-6c803a6a",
             "entity_slug": "le-sserafim",
             "display_name": "LE SSERAFIM",
-            "release_title": "SPAGHETTI",
+            "release_title": "Pearlies (My oyster is the world)",
             "stream": "song",
             "release_kind": "single",
             "release_date": "2025-10-24"
@@ -428,6 +437,15 @@
         "release_date": "2025-10-23"
       },
       {
+        "release_id": "bridge-release-0c81546b",
+        "entity_slug": "yuju",
+        "display_name": "YUJU",
+        "release_title": "내향남녀 X 유주",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-10-23"
+      },
+      {
         "release_id": "bridge-release-23082ccf",
         "entity_slug": "xdinary-heroes",
         "display_name": "Xdinary Heroes",
@@ -437,10 +455,10 @@
         "release_date": "2025-10-24"
       },
       {
-        "release_id": "bridge-release-86c0a9d4",
+        "release_id": "bridge-release-6c803a6a",
         "entity_slug": "le-sserafim",
         "display_name": "LE SSERAFIM",
-        "release_title": "SPAGHETTI",
+        "release_title": "Pearlies (My oyster is the world)",
         "stream": "song",
         "release_kind": "single",
         "release_date": "2025-10-24"

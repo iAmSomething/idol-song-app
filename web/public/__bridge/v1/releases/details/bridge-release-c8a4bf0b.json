@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/5d486273-27db-4b5e-926b-fed3dc7df907/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/5d486273-27db-4b5e-926b-fed3dc7df907/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/5d486273-27db-4b5e-926b-fed3dc7df907"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/18v5nf750qcff18B0a6WmG"
@@ -28,7 +33,7 @@
       {
         "order": 2,
         "title": "ENEMY",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,

@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/be1d9f08-297f-4832-99cc-015003e051ae/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/be1d9f08-297f-4832-99cc-015003e051ae/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/be1d9f08-297f-4832-99cc-015003e051ae"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/4Oz7K9DRwwGMN49i4NbVDT"
@@ -58,7 +63,7 @@
       {
         "order": 8,
         "title": "UNFORGIVEN",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 9,

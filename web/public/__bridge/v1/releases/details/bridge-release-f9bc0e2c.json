@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/13307860-652b-446a-82b7-326f7f31c9be/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/13307860-652b-446a-82b7-326f7f31c9be/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/13307860-652b-446a-82b7-326f7f31c9be"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/4w1dbvUy1crv0knXQvcSeY"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Girls",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

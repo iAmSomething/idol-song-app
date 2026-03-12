@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/e85b905c-be97-40ed-b74b-6bed712322a9/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/e85b905c-be97-40ed-b74b-6bed712322a9/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/e85b905c-be97-40ed-b74b-6bed712322a9"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/1kRAzoCTDLqwU6nX2I2Nmc"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "RINGO",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

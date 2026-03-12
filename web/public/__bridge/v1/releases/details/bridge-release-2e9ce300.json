@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/b6fb49fd-2b67-4ff4-9192-daebf76d2851/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/b6fb49fd-2b67-4ff4-9192-daebf76d2851/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/b6fb49fd-2b67-4ff4-9192-daebf76d2851"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/2I0nlM24jBs20fWzSwUfLE"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "五月雨 (Samidare)",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

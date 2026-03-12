@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/171v7mbXgzaMBk7S0QmCWu"
@@ -33,7 +38,7 @@
       {
         "order": 3,
         "title": "Chaotic & Confused",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 4,

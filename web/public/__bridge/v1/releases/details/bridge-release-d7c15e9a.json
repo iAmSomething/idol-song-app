@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/f0282c71-6bb6-472f-90b7-1a5a64890aa3/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/f0282c71-6bb6-472f-90b7-1a5a64890aa3/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/f0282c71-6bb6-472f-90b7-1a5a64890aa3"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/1fkW1yc8kn27ROj1s6ebE1"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "We Still Loading",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

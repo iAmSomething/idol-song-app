@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/2f398df5-a88d-4dab-8f08-3d888d5025c1/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/2f398df5-a88d-4dab-8f08-3d888d5025c1/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/2f398df5-a88d-4dab-8f08-3d888d5025c1"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/0st9OqpsKmmtwUz6cS14Fj"
@@ -33,7 +38,7 @@
       {
         "order": 3,
         "title": "Levanter",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 4,

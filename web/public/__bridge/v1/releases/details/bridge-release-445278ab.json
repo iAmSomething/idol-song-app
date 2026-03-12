@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/f334eca4-dab4-44a0-add4-7ced9116c271/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/f334eca4-dab4-44a0-add4-7ced9116c271/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/f334eca4-dab4-44a0-add4-7ced9116c271"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/6Ope4loKrpjkM1pmPj63Gs"
@@ -68,7 +73,7 @@
       {
         "order": 10,
         "title": "The Dreaming",
-        "is_title_track": false
+        "is_title_track": true
       }
     ],
     "mv": {

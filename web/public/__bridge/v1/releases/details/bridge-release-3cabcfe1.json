@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/a0dbd80b-bde9-49d6-9042-a0af42f17a91/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/a0dbd80b-bde9-49d6-9042-a0af42f17a91/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/a0dbd80b-bde9-49d6-9042-a0af42f17a91"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Make Some Noise",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/ef2d689b-caf6-471a-b236-44bd068382f0/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/ef2d689b-caf6-471a-b236-44bd068382f0/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/ef2d689b-caf6-471a-b236-44bd068382f0"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/3ctTWbdrxcHcjwbTKurGTI"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Feel Special",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

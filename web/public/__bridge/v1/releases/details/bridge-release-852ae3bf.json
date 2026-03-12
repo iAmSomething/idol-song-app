@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/d2b0e110-fe62-4c91-9504-5dbfbedf1374/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/d2b0e110-fe62-4c91-9504-5dbfbedf1374/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/d2b0e110-fe62-4c91-9504-5dbfbedf1374"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/4N1fROq2oeyLGAlQ1C1j18"
@@ -43,7 +48,7 @@
       {
         "order": 5,
         "title": "Get Up",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 6,

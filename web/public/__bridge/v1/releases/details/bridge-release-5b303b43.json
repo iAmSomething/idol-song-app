@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/caabe105-f233-4616-8008-14a050a3afb1/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/caabe105-f233-4616-8008-14a050a3afb1/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/caabe105-f233-4616-8008-14a050a3afb1"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/174t5vG5VyNW9nv1PTuE6J"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "CRAZY (Japanese ver.)",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

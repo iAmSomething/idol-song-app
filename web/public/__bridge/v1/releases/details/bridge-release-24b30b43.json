@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/96381f53-ffbe-462c-991c-89b5ed1265f2/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/96381f53-ffbe-462c-991c-89b5ed1265f2/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/96381f53-ffbe-462c-991c-89b5ed1265f2"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/1f7EBZExZ8wFWgacxTLDdM"
@@ -48,7 +53,7 @@
       {
         "order": 6,
         "title": "HELLO",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 7,

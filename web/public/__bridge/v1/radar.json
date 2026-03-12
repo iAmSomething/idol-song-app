@@ -5,6 +5,157 @@
   "data": {
     "long_gap": [
       {
+        "entity_slug": "wayv",
+        "display_name": "WayV",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Back To You",
+          "release_date": "2021-06-16",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "gap_days": 1727,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "just-b",
+        "display_name": "JUST B",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Light Sweeper",
+          "release_date": "2022-07-15",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 1333,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "mamamoo",
+        "display_name": "MAMAMOO",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "MIC ON",
+          "release_date": "2022-10-11",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 1245,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "bts",
+        "display_name": "BTS",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Take Two",
+          "release_date": "2023-06-09",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "gap_days": 1004,
+        "has_upcoming_signal": true,
+        "latest_signal": {
+          "upcoming_signal_id": null,
+          "entity_slug": "bts",
+          "display_name": "BTS",
+          "headline": "BTS The Comeback Live: Netflix drops first official trailer, here’s when ARIRANG celebration will stream live in India - The Indian Express",
+          "scheduled_date": null,
+          "scheduled_month": null,
+          "date_precision": "unknown",
+          "date_status": "rumor",
+          "confidence_score": 0.68,
+          "release_format": null
+        }
+      },
+      {
+        "entity_slug": "atbo",
+        "display_name": "ATBO",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "MUST HAVE",
+          "release_date": "2023-11-27",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 833,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "nomad",
+        "display_name": "NOMAD",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "NOMAD",
+          "release_date": "2024-02-28",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 740,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "cignature",
+        "display_name": "cignature",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Sweetie but Saltie",
+          "release_date": "2024-06-10",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 637,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "blitzers",
+        "display_name": "BLITZERS",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "LUNCH‐BOX",
+          "release_date": "2024-06-19",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 628,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "newjeans",
+        "display_name": "NewJeans",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Supernatural",
+          "release_date": "2024-06-21",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "gap_days": 626,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "red-velvet",
+        "display_name": "Red Velvet",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Cosmic",
+          "release_date": "2024-06-24",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 623,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
         "entity_slug": "weeekly",
         "display_name": "Weeekly",
         "watch_reason": "long_gap",
@@ -19,6 +170,20 @@
         "latest_signal": null
       },
       {
+        "entity_slug": "nct-127",
+        "display_name": "NCT 127",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "WALK",
+          "release_date": "2024-07-15",
+          "stream": "album",
+          "release_kind": "album"
+        },
+        "gap_days": 602,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
         "entity_slug": "woo-ah",
         "display_name": "woo!ah!",
         "watch_reason": "long_gap",
@@ -29,6 +194,157 @@
           "release_kind": "single"
         },
         "gap_days": 601,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "mcnd",
+        "display_name": "MCND",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "아뜨뜨뜨",
+          "release_date": "2024-08-08",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "gap_days": 578,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "drippin",
+        "display_name": "DRIPPIN",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Weekend",
+          "release_date": "2024-08-19",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "gap_days": 567,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "loossemble",
+        "display_name": "Loossemble",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "TTYL",
+          "release_date": "2024-09-02",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 553,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "ab6ix",
+        "display_name": "AB6IX",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "BORN LIKE THIS",
+          "release_date": "2024-10-10",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 515,
+        "has_upcoming_signal": true,
+        "latest_signal": {
+          "upcoming_signal_id": null,
+          "entity_slug": "ab6ix",
+          "display_name": "AB6IX",
+          "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
+          "scheduled_date": null,
+          "scheduled_month": "2026-03",
+          "date_precision": "month_only",
+          "date_status": "scheduled",
+          "confidence_score": 0.46,
+          "release_format": "album"
+        }
+      },
+      {
+        "entity_slug": "dxmon",
+        "display_name": "DXMON",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Youth Never DIE",
+          "release_date": "2024-10-21",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "gap_days": 504,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "class-y",
+        "display_name": "CLASS:y",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "LOVE XX",
+          "release_date": "2024-11-15",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 479,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "dreamcatcher",
+        "display_name": "Dreamcatcher",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "[My Christmas Sweet Love]",
+          "release_date": "2024-12-20",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "gap_days": 444,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "ghost9",
+        "display_name": "GHOST9",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "Down for you",
+          "release_date": "2024-12-23",
+          "stream": "song",
+          "release_kind": "single"
+        },
+        "gap_days": 441,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "btob",
+        "display_name": "BTOB",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "BTODAY",
+          "release_date": "2025-03-05",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 369,
+        "has_upcoming_signal": false,
+        "latest_signal": null
+      },
+      {
+        "entity_slug": "infinite",
+        "display_name": "INFINITE",
+        "watch_reason": "long_gap",
+        "latest_release": {
+          "release_title": "LIKE INFINITE",
+          "release_date": "2025-03-06",
+          "stream": "album",
+          "release_kind": "ep"
+        },
+        "gap_days": 368,
         "has_upcoming_signal": false,
         "latest_signal": null
       }
@@ -75,12 +391,7 @@
         "entity_slug": "close-your-eyes",
         "display_name": "CLOSE YOUR EYES",
         "debut_year": 2025,
-        "latest_release": {
-          "release_title": "ETERNALT",
-          "release_date": "2025-04-02",
-          "stream": "album",
-          "release_kind": "ep"
-        },
+        "latest_release": null,
         "has_upcoming_signal": false,
         "latest_signal": null
       },

@@ -11,10 +11,10 @@
       "release_kind": "single"
     },
     "artwork": {
-      "cover_image_url": "/release-placeholder.svg",
-      "thumbnail_image_url": "/release-placeholder.svg",
-      "artwork_source_type": "placeholder",
-      "artwork_source_url": "/release-placeholder.svg"
+      "cover_image_url": "https://coverartarchive.org/release-group/32188b10-a0bf-4174-8618-9049d3a035e5/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/32188b10-a0bf-4174-8618-9049d3a035e5/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/32188b10-a0bf-4174-8618-9049d3a035e5"
     },
     "service_links": {
       "spotify": {

@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/413e7a83-7159-4e7e-bd1d-ce9d686849a6/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/413e7a83-7159-4e7e-bd1d-ce9d686849a6/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/413e7a83-7159-4e7e-bd1d-ce9d686849a6"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/4CKknn9azZeOb6sO1PmPJS"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "青嵐 (Aoarashi)",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

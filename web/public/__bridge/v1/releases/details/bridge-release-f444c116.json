@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/5e3c71af-694f-4382-a785-0472c8e2a68c/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/5e3c71af-694f-4382-a785-0472c8e2a68c/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/5e3c71af-694f-4382-a785-0472c8e2a68c"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Travel",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

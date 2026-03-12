@@ -4,7 +4,7 @@
   },
   "data": {
     "summary": {
-      "verified_count": 13,
+      "verified_count": 14,
       "exact_upcoming_count": 0,
       "month_only_upcoming_count": 0
     },
@@ -21,6 +21,21 @@
             "stream": "song",
             "release_kind": "single",
             "release_date": "2026-01-05"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2026-01-07",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-81282471",
+            "entity_slug": "chuu",
+            "display_name": "CHUU",
+            "release_title": "XO, My Cyberlove",
+            "stream": "album",
+            "release_kind": "album",
+            "release_date": "2026-01-07"
           }
         ],
         "exact_upcoming": []
@@ -204,6 +219,15 @@
         "stream": "song",
         "release_kind": "single",
         "release_date": "2026-01-05"
+      },
+      {
+        "release_id": "bridge-release-81282471",
+        "entity_slug": "chuu",
+        "display_name": "CHUU",
+        "release_title": "XO, My Cyberlove",
+        "stream": "album",
+        "release_kind": "album",
+        "release_date": "2026-01-07"
       },
       {
         "release_id": "bridge-release-942632d1",

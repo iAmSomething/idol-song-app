@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/0d1a0883-d735-44ce-a49c-38347fe54329/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/0d1a0883-d735-44ce-a49c-38347fe54329/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/0d1a0883-d735-44ce-a49c-38347fe54329"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -28,7 +33,7 @@
       {
         "order": 2,
         "title": "XOXO",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,

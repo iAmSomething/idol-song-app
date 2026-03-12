@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/a03c2285-fc46-4452-b8a6-3b220c45bcb8/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/a03c2285-fc46-4452-b8a6-3b220c45bcb8/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/a03c2285-fc46-4452-b8a6-3b220c45bcb8"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/4NIAziT2P8n5MkVeYYLCd2"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Strawberry Rush",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/216ffd78-75ed-48f0-93b1-712d06153020/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/216ffd78-75ed-48f0-93b1-712d06153020/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/216ffd78-75ed-48f0-93b1-712d06153020"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "GO生",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

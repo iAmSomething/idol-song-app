@@ -4,7 +4,7 @@
   },
   "data": {
     "summary": {
-      "verified_count": 1,
+      "verified_count": 3,
       "exact_upcoming_count": 4,
       "month_only_upcoming_count": 10
     },
@@ -37,8 +37,33 @@
         "exact_upcoming": []
       },
       {
+        "date": "2026-03-05",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-bedf0124",
+            "entity_slug": "h1-key",
+            "display_name": "H1-KEY",
+            "release_title": "LOVECHAPTER",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-03-05"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
         "date": "2026-03-11",
-        "verified_releases": [],
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-cc830546",
+            "entity_slug": "yena",
+            "display_name": "YENA",
+            "release_title": "LOVE CATCHER",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-03-11"
+          }
+        ],
         "exact_upcoming": [
           {
             "upcoming_signal_id": null,
@@ -240,6 +265,24 @@
         "stream": "album",
         "release_kind": "ep",
         "release_date": "2026-03-03"
+      },
+      {
+        "release_id": "bridge-release-bedf0124",
+        "entity_slug": "h1-key",
+        "display_name": "H1-KEY",
+        "release_title": "LOVECHAPTER",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2026-03-05"
+      },
+      {
+        "release_id": "bridge-release-cc830546",
+        "entity_slug": "yena",
+        "display_name": "YENA",
+        "release_title": "LOVE CATCHER",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2026-03-11"
       }
     ],
     "scheduled_list": [

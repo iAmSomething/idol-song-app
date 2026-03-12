@@ -4,7 +4,7 @@
   },
   "data": {
     "summary": {
-      "verified_count": 6,
+      "verified_count": 8,
       "exact_upcoming_count": 0,
       "month_only_upcoming_count": 0
     },
@@ -56,6 +56,21 @@
         "exact_upcoming": []
       },
       {
+        "date": "2025-12-08",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-262cf324",
+            "entity_slug": "allday-project",
+            "display_name": "ALLDAY PROJECT",
+            "release_title": "ALLDAY PROJECT",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-12-08"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
         "date": "2025-12-13",
         "verified_releases": [
           {
@@ -81,6 +96,21 @@
             "stream": "song",
             "release_kind": "single",
             "release_date": "2025-12-17"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
+        "date": "2025-12-19",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-bbe7d67a",
+            "entity_slug": "yves",
+            "display_name": "Yves",
+            "release_title": "Falling for You",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-12-19"
           }
         ],
         "exact_upcoming": []
@@ -131,6 +161,15 @@
         "release_date": "2025-12-06"
       },
       {
+        "release_id": "bridge-release-262cf324",
+        "entity_slug": "allday-project",
+        "display_name": "ALLDAY PROJECT",
+        "release_title": "ALLDAY PROJECT",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-12-08"
+      },
+      {
         "release_id": "bridge-release-3811253e",
         "entity_slug": "exo",
         "display_name": "EXO",
@@ -147,6 +186,15 @@
         "stream": "song",
         "release_kind": "single",
         "release_date": "2025-12-17"
+      },
+      {
+        "release_id": "bridge-release-bbe7d67a",
+        "entity_slug": "yves",
+        "display_name": "Yves",
+        "release_title": "Falling for You",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-12-19"
       },
       {
         "release_id": "bridge-release-6d5ccbc1",

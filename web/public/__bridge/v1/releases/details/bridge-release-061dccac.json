@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/1105fac4-3ff4-4291-8973-697e2ed08be3/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/1105fac4-3ff4-4291-8973-697e2ed08be3/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/1105fac4-3ff4-4291-8973-697e2ed08be3"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Eclipse",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

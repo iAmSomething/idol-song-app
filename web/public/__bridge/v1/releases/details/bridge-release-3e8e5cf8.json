@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/1c32aabf-e8f7-430c-b515-ca6580125577/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/1c32aabf-e8f7-430c-b515-ca6580125577/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/1c32aabf-e8f7-430c-b515-ca6580125577"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -28,7 +33,7 @@
       {
         "order": 2,
         "title": "DRIP",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,

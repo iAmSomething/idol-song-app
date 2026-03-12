@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/4126b2a3-9774-469f-9918-7d41027308fc/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/4126b2a3-9774-469f-9918-7d41027308fc/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/4126b2a3-9774-469f-9918-7d41027308fc"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "はじめまして",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

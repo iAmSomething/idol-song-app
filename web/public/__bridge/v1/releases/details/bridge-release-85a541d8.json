@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/23d1cd75-8dc5-436d-a0c6-cab894dd5f64/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/23d1cd75-8dc5-436d-a0c6-cab894dd5f64/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/23d1cd75-8dc5-436d-a0c6-cab894dd5f64"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/45ozep8uHHnj5CCittuyXj"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "OMG",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

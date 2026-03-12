@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/f6ea67e3-9665-4198-a361-ad69668ba54d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/f6ea67e3-9665-4198-a361-ad69668ba54d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/f6ea67e3-9665-4198-a361-ad69668ba54d"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -28,7 +33,7 @@
       {
         "order": 2,
         "title": "To Heart",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,

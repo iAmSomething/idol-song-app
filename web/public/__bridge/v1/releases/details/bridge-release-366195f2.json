@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/0af4c72c-c719-4e65-b829-6f0770f3a254/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/0af4c72c-c719-4e65-b829-6f0770f3a254/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/0af4c72c-c719-4e65-b829-6f0770f3a254"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/3E5VbhGdSMotB0oQ3LwT9k"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Get a Guitar",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

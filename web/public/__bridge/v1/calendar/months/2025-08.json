@@ -4,7 +4,7 @@
   },
   "data": {
     "summary": {
-      "verified_count": 12,
+      "verified_count": 14,
       "exact_upcoming_count": 0,
       "month_only_upcoming_count": 0
     },
@@ -65,8 +65,32 @@
         "exact_upcoming": []
       },
       {
+        "date": "2025-08-11",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-48363679",
+            "entity_slug": "jeon-somi",
+            "display_name": "JEON SOMI",
+            "release_title": "Chaotic & Confused",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-08-11"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
         "date": "2025-08-12",
         "verified_releases": [
+          {
+            "release_id": "bridge-release-062a7f5b",
+            "entity_slug": "yuju",
+            "display_name": "YUJU",
+            "release_title": "In Bloom",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2025-08-12"
+          },
           {
             "release_id": "bridge-release-0dd5aaee",
             "entity_slug": "ampers-and-one",
@@ -216,6 +240,24 @@
         "stream": "album",
         "release_kind": "ep",
         "release_date": "2025-08-04"
+      },
+      {
+        "release_id": "bridge-release-48363679",
+        "entity_slug": "jeon-somi",
+        "display_name": "JEON SOMI",
+        "release_title": "Chaotic & Confused",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-08-11"
+      },
+      {
+        "release_id": "bridge-release-062a7f5b",
+        "entity_slug": "yuju",
+        "display_name": "YUJU",
+        "release_title": "In Bloom",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2025-08-12"
       },
       {
         "release_id": "bridge-release-0dd5aaee",
