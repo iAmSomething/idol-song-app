@@ -116,6 +116,7 @@ export async function fetchJsonWithTimeout<T>(
 
   try {
     const response = await fetchImpl(url, {
+      cache: 'no-store',
       headers: requestHeaders,
       signal: controller.signal,
     })
