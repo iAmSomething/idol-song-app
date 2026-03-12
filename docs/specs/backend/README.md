@@ -88,6 +88,9 @@
 27. `json-snapshot-demotion.md`의 regression guards section
    - web / mobile shipped runtime이 local dataset dependency로 되돌아가지 않게 막는 CI guard
    - current transitional allowlist와 follow-up boundary
+28. scoped blocker rerun note
+   - `build_release_details_musicbrainz.py --cohorts latest,recent` 로 latest/recent row만 재계산할 수 있다
+   - full snapshot은 유지하고 review queue / coverage report만 같은 execution scope로 다시 만든다
 
 ## 읽는 순서
 

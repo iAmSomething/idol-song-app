@@ -205,6 +205,13 @@ python build_release_rollup_from_history.py
 python build_release_details_musicbrainz.py --skip-acquisition
 ```
 
+latest/recent blocker 코호트만 빠르게 다시 돌리고 싶다면 scoped rebuild를 쓴다. 이 모드는 전체 `release_detail_catalog.json`을 유지한 채 target cohort row만 재계산하고, review queue / coverage report도 같은 scope 기준으로 다시 만든다.
+
+```bash
+python build_release_details_musicbrainz.py --cohorts latest,recent
+python build_mv_manual_review_queue.py
+```
+
 Neon canonical DB까지 같이 최신화하려면 아래를 이어서 실행한다.
 
 ```bash

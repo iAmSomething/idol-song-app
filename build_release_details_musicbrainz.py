@@ -85,6 +85,7 @@ COHORT_YEAR_BANDS = (
     ("2021-2023", 2021, 2023),
     ("2024+", 2024, None),
 )
+SCOPABLE_RELEASE_COHORTS = {"latest", "recent", "historical"}
 TITLE_TRACK_COHORT_TARGETS = {
     "<=2017": {"single": 0.7, "ep": 0.6, "album": 0.55},
     "2018-2020": {"single": 0.78, "ep": 0.68, "album": 0.62},
@@ -132,6 +133,61 @@ def extract_youtube_video_id(resource: str) -> Optional[str]:
 
 def build_youtube_video_url(video_id: str) -> str:
     return f"https://www.youtube.com/watch?v={video_id}"
+
+
+def infer_release_cohort(release_date_text: str, reference_date: date) -> str:
+    try:
+        release_date = date.fromisoformat(release_date_text)
+    except ValueError:
+        return "unknown"
+
+    age_days = (reference_date - release_date).days
+    if age_days <= 365:
+        return "latest"
+    if age_days <= 365 * 3:
+        return "recent"
+    return "historical"
+
+
+def parse_scoped_cohorts(raw_value: Optional[str]) -> Optional[set[str]]:
+    if not raw_value:
+        return None
+
+    scoped = {value.strip() for value in raw_value.split(",") if value.strip()}
+    invalid = sorted(scoped - SCOPABLE_RELEASE_COHORTS)
+    if invalid:
+        raise ValueError(f"Unsupported cohort values: {', '.join(invalid)}")
+    return scoped or None
+
+
+def build_execution_scope(
+    scoped_groups: Optional[set[str]],
+    scoped_cohorts: Optional[set[str]],
+) -> Optional[Dict]:
+    if scoped_groups is None and scoped_cohorts is None:
+        return None
+
+    scope: Dict[str, object] = {"targeted_rebuild": True}
+    if scoped_groups is not None:
+        scope["groups"] = sorted(scoped_groups)
+    if scoped_cohorts is not None:
+        scope["cohorts"] = sorted(scoped_cohorts)
+    return scope
+
+
+def matches_execution_scope(
+    item: Dict,
+    scoped_groups: Optional[set[str]],
+    scoped_cohorts: Optional[set[str]],
+    reference_date: date,
+) -> bool:
+    if scoped_groups is not None and item["group"] not in scoped_groups:
+        return False
+    if scoped_cohorts is not None:
+        release_cohort = infer_release_cohort(item["release_date"], reference_date)
+        if release_cohort not in scoped_cohorts:
+            return False
+    return True
 
 
 def extract_release_group_id(resource: Optional[str]) -> Optional[str]:
@@ -1355,9 +1411,14 @@ def mv_backfill_scope_matches(summary: Dict, execution_scope: Optional[Dict]) ->
     summary_scope = summary.get("execution_scope") or {}
     execution_groups = set(execution_scope.get("groups") or [])
     summary_groups = set(summary_scope.get("groups") or [])
-    if not execution_groups:
-        return True
-    return execution_groups == summary_groups
+    execution_cohorts = set(execution_scope.get("cohorts") or [])
+    summary_cohorts = set(summary_scope.get("cohorts") or [])
+
+    if execution_groups and execution_groups != summary_groups:
+        return False
+    if execution_cohorts and execution_cohorts != summary_cohorts:
+        return False
+    return True
 
 
 def build_external_acquisition_summary(
@@ -2169,10 +2230,17 @@ def main() -> None:
         "--groups",
         help="Comma-separated groups to limit external acquisition attempts while still rebuilding the full release detail snapshot.",
     )
+    parser.add_argument(
+        "--cohorts",
+        help="Comma-separated release cohorts to rebuild (latest,recent,historical). When set, only scoped rows are recomputed and merged back into the full snapshot.",
+    )
     args = parser.parse_args()
     scoped_groups = None
     if args.groups:
         scoped_groups = {value.strip() for value in args.groups.split(",") if value.strip()}
+    scoped_cohorts = parse_scoped_cohorts(args.cohorts)
+    execution_scope = build_execution_scope(scoped_groups, scoped_cohorts)
+    reference_date = date.today()
 
     latest_snapshot_rows = load_rows(RELEASES_SNAPSHOT_PATH)
     history_rows = load_rows(RELEASE_HISTORY_PATH)
@@ -2180,6 +2248,16 @@ def main() -> None:
     details_before = load_rows(detail_input_path) if detail_input_path.exists() else []
     latest_snapshot_items = iter_latest_snapshot_items(latest_snapshot_rows)
     items = iter_release_items(history_rows)
+    scoped_items = [
+        item
+        for item in items
+        if matches_execution_scope(item, scoped_groups, scoped_cohorts, reference_date)
+    ]
+    scoped_latest_snapshot_items = [
+        item
+        for item in latest_snapshot_items
+        if matches_execution_scope(item, scoped_groups, scoped_cohorts, reference_date)
+    ]
     song_release_index = build_song_release_index(items)
     existing_details = {
         get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
@@ -2201,7 +2279,7 @@ def main() -> None:
     applied_overrides = 0
     relaxed_match_count = 0
 
-    for item in items:
+    for item in scoped_items:
         attempts: List[Dict] = []
         used_relaxed_match = False
         existing = existing_details.get(
@@ -2310,6 +2388,20 @@ def main() -> None:
             }
         )
 
+    if execution_scope is None:
+        details_after = details_after
+    else:
+        scoped_keys = {
+            get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
+            for item in scoped_items
+        }
+        preserved_rows = [
+            row
+            for row in details_before
+            if get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]) not in scoped_keys
+        ]
+        details_after = preserved_rows + details_after
+
     details_after.sort(
         key=lambda row: (
             row["group"].casefold(),
@@ -2325,23 +2417,33 @@ def main() -> None:
     detail_review_rows = build_release_detail_review_rows(details_after, acquisition_traces)
     write_release_detail_review_queue(detail_review_rows)
 
+    report_keys = {
+        get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
+        for item in scoped_items
+    }
+    report_details_before = [
+        row
+        for row in details_before
+        if get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]) in report_keys
+    ]
+    report_details_after = [
+        row
+        for row in details_after
+        if get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]) in report_keys
+    ]
+
     report = build_coverage_report(
-        latest_snapshot_items,
-        items,
-        details_before,
-        details_after,
+        scoped_latest_snapshot_items,
+        scoped_items,
+        report_details_before,
+        report_details_after,
         applied_overrides,
         relaxed_match_count,
         title_track_resolutions,
         title_track_review_rows,
         acquisition_traces,
         detail_review_rows,
-        {
-            "groups": sorted(scoped_groups),
-            "targeted_acquisition": True,
-        }
-        if scoped_groups is not None
-        else None,
+        execution_scope,
     )
     AUDIT_OUTPUT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     AUDIT_MARKDOWN_OUTPUT_PATH.write_text(build_coverage_markdown(report), encoding="utf-8")
