@@ -1932,6 +1932,9 @@ const ACTIVE_WEB_BACKEND_TARGET_MODE: 'api' | 'bridge' = BACKEND_API_BASE_URL ? 
 const ACTIVE_WEB_BACKEND_TARGET_CLASSIFICATION = classifyBackendTarget(BACKEND_API_BASE_URL)
 const ACTIVE_WEB_BACKEND_TARGET_ENVIRONMENT: BackendTargetEnvironment =
   BACKEND_TARGET_ENV || (BACKEND_API_BASE_URL ? ACTIVE_WEB_BACKEND_TARGET_CLASSIFICATION : 'bridge')
+const BRIDGE_TARGET_REFRESH_TIMEOUT_MS = 3_000
+const BRIDGE_TARGET_REFRESH_INTERVAL_MS = 60_000
+const BRIDGE_TARGET_GENERATION_STORAGE_KEY = 'idol-song-app.bridge-generated-at'
 const releaseDetailApiIdCache = new Map<string, string>()
 const releaseDetailApiSnapshotCache = new Map<string, ReleaseDetailApiSnapshot>()
 const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
@@ -2000,7 +2003,148 @@ void [
   relatedActsByGroup,
 ]
 
+type BackendTargetDiagnosticsResponse = {
+  data?: {
+    generated_at?: string | null
+  }
+  error?: {
+    code?: string | null
+  }
+}
+
+function clearSurfaceApiSnapshotCaches() {
+  releaseDetailApiIdCache.clear()
+  releaseDetailApiSnapshotCache.clear()
+  searchSurfaceApiSnapshotCache.clear()
+  entityDetailApiSnapshotCache.clear()
+  calendarMonthApiSnapshotCache.clear()
+  radarApiSnapshotCache.clear()
+}
+
+function readStoredBridgeGeneration() {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
+  try {
+    const value = window.sessionStorage.getItem(BRIDGE_TARGET_GENERATION_STORAGE_KEY)
+    return readNonEmptyString(value)
+  } catch {
+    return null
+  }
+}
+
+function storeBridgeGeneration(value: string) {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  try {
+    window.sessionStorage.setItem(BRIDGE_TARGET_GENERATION_STORAGE_KEY, value)
+  } catch {
+    // Ignore storage failures and keep runtime refresh best-effort.
+  }
+}
+
+async function fetchBridgeTargetDiagnostics(
+  signal: AbortSignal,
+): Promise<{ generatedAt: string | null; errorCode: string | null; traceId: string | null }> {
+  const cacheBust = `ts=${Date.now().toString(36)}`
+  const result = await fetchJsonWithTimeout<BackendTargetDiagnosticsResponse>(
+    `${BACKEND_TARGET_DIAGNOSTICS_PATH}${BACKEND_TARGET_DIAGNOSTICS_PATH.includes('?') ? '&' : '?'}${cacheBust}`,
+    {
+      headers: {
+        Accept: 'application/json',
+      },
+      requestIdPrefix: 'web-bridge-target',
+      signal,
+      timeoutMs: BRIDGE_TARGET_REFRESH_TIMEOUT_MS,
+    },
+  )
+
+  if (!result.ok || !result.body?.data) {
+    return {
+      generatedAt: null,
+      errorCode: result.body?.error?.code ?? `bridge_target_${result.status}`,
+      traceId: result.responseRequestId ?? result.requestId,
+    }
+  }
+
+  return {
+    generatedAt: readNonEmptyString(result.body.data.generated_at),
+    errorCode: null,
+    traceId: result.responseRequestId ?? result.requestId,
+  }
+}
+
+function useBridgeDeploymentRefresh() {
+  const initialGeneration = readStoredBridgeGeneration()
+  const generationRef = useRef<string | null>(initialGeneration)
+
+  useEffect(() => {
+    if (BACKEND_API_BASE_URL || typeof window === 'undefined' || typeof document === 'undefined') {
+      return
+    }
+
+    let cancelled = false
+
+    const syncGeneration = async (reloadOnChange: boolean) => {
+      const controller = new AbortController()
+      try {
+        const { generatedAt } = await fetchBridgeTargetDiagnostics(controller.signal)
+        if (cancelled || !generatedAt) {
+          return
+        }
+
+        const previousGeneration = generationRef.current
+        generationRef.current = generatedAt
+        storeBridgeGeneration(generatedAt)
+
+        if (!previousGeneration || previousGeneration === generatedAt) {
+          return
+        }
+
+        clearSurfaceApiSnapshotCaches()
+        if (reloadOnChange) {
+          window.location.reload()
+        }
+      } catch {
+        // Ignore bridge refresh failures and keep current runtime alive.
+      }
+    }
+
+    void syncGeneration(false)
+
+    const handleFocus = () => {
+      void syncGeneration(true)
+    }
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        void syncGeneration(true)
+      }
+    }
+
+    const interval = window.setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        void syncGeneration(true)
+      }
+    }, BRIDGE_TARGET_REFRESH_INTERVAL_MS)
+
+    window.addEventListener('focus', handleFocus)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
+    return () => {
+      cancelled = true
+      window.clearInterval(interval)
+      window.removeEventListener('focus', handleFocus)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [])
+}
+
 function App() {
+  useBridgeDeploymentRefresh()
   const latestMonthKey = CURRENT_KST_ISO.slice(0, 7)
   const [selectedMonthKey, setSelectedMonthKey] = useState(latestMonthKey)
   const [selectedDayIso, setSelectedDayIso] = useState('')
@@ -8072,15 +8216,6 @@ async function fetchReleaseDetailApiSnapshot(
   signal: AbortSignal,
 ): Promise<{ snapshot: ReleaseDetailApiSnapshot | null; errorCode: string | null; traceId: string | null }> {
   const cacheKey = getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind))
-  const cachedSnapshot = releaseDetailApiSnapshotCache.get(cacheKey)
-  if (cachedSnapshot) {
-    return {
-      snapshot: cachedSnapshot,
-      errorCode: null,
-      traceId: null,
-    }
-  }
-
   let releaseId = album.release_id ?? releaseDetailApiIdCache.get(cacheKey) ?? null
   let canonicalPath: string | null = null
   let traceId: string | null = null
@@ -8156,6 +8291,7 @@ function useReleaseDetailResource({
 }): ReleaseDetailApiResource {
   const cacheKey = getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind))
   const cachedSnapshot = releaseDetailApiSnapshotCache.get(cacheKey) ?? null
+  const cachedSnapshotRef = useRef(cachedSnapshot)
   const [remoteState, setRemoteState] = useState<{
     cacheKey: string
     snapshot: ReleaseDetailApiSnapshot | null
@@ -8173,27 +8309,12 @@ function useReleaseDetailResource({
   })
 
   useEffect(() => {
+    cachedSnapshotRef.current = cachedSnapshot
+  }, [cachedSnapshot])
+
+  useEffect(() => {
     let cancelled = false
-
-    if (cachedSnapshot) {
-      Promise.resolve().then(() => {
-        if (cancelled) {
-          return
-        }
-
-        setRemoteState({
-          cacheKey,
-          snapshot: cachedSnapshot,
-          loading: false,
-          errorCode: null,
-          traceId: null,
-        })
-      })
-
-      return () => {
-        cancelled = true
-      }
-    }
+    const currentCachedSnapshot = cachedSnapshotRef.current
 
     const controller = new AbortController()
     const effectRequestAlbum: ReleaseDetailApiRequest = {
@@ -8211,8 +8332,8 @@ function useReleaseDetailResource({
 
       setRemoteState({
         cacheKey,
-        snapshot: null,
-        loading: true,
+        snapshot: currentCachedSnapshot,
+        loading: !currentCachedSnapshot,
         errorCode: null,
         traceId: null,
       })
@@ -8237,10 +8358,10 @@ function useReleaseDetailResource({
 
         setRemoteState({
           cacheKey,
-          snapshot: null,
+          snapshot: currentCachedSnapshot,
           loading: false,
-          errorCode,
-          traceId,
+          errorCode: currentCachedSnapshot ? null : errorCode,
+          traceId: currentCachedSnapshot ? null : traceId,
         })
       })
       .catch((error: unknown) => {
@@ -8255,10 +8376,10 @@ function useReleaseDetailResource({
 
         setRemoteState({
           cacheKey,
-          snapshot: null,
+          snapshot: currentCachedSnapshot,
           loading: false,
-          errorCode: failureState.errorCode,
-          traceId: failureState.traceId,
+          errorCode: currentCachedSnapshot ? null : failureState.errorCode,
+          traceId: currentCachedSnapshot ? null : failureState.traceId,
         })
       })
 
@@ -8266,7 +8387,7 @@ function useReleaseDetailResource({
       cancelled = true
       controller.abort()
     }
-  }, [album.date, album.release_id, album.release_kind, album.stream, album.title, cacheKey, cachedSnapshot, entitySlug, group])
+  }, [album.date, album.release_id, album.release_kind, album.stream, album.title, cacheKey, entitySlug, group])
 
   const activeSnapshot =
     remoteState.cacheKey === cacheKey
@@ -8430,15 +8551,6 @@ async function fetchSearchSurfaceApiSnapshot(
   signal: AbortSignal,
 ): Promise<{ snapshot: SearchSurfaceSnapshot | null; errorCode: string | null; traceId: string | null }> {
   const cacheKey = search.trim()
-  const cachedSnapshot = searchSurfaceApiSnapshotCache.get(cacheKey)
-  if (cachedSnapshot) {
-    return {
-      snapshot: cachedSnapshot,
-      errorCode: null,
-      traceId: null,
-    }
-  }
-
   const params = new URLSearchParams()
   params.set('q', search)
   params.set('limit', '20')
@@ -8477,6 +8589,7 @@ function useSearchSurfaceResource({
 }): SearchSurfaceResource {
   const cacheKey = search.trim()
   const cachedSnapshot = cacheKey ? searchSurfaceApiSnapshotCache.get(cacheKey) ?? null : null
+  const cachedSnapshotRef = useRef(cachedSnapshot)
   const [remoteState, setRemoteState] = useState<{
     cacheKey: string
     snapshot: SearchSurfaceSnapshot | null
@@ -8492,12 +8605,17 @@ function useSearchSurfaceResource({
   }))
 
   useEffect(() => {
+    cachedSnapshotRef.current = cachedSnapshot
+  }, [cachedSnapshot])
+
+  useEffect(() => {
     if (!cacheKey) {
       return
     }
 
     const controller = new AbortController()
     let cancelled = false
+    const currentCachedSnapshot = cachedSnapshotRef.current
 
     Promise.resolve().then(() => {
       if (cancelled) {
@@ -8506,8 +8624,8 @@ function useSearchSurfaceResource({
 
       setRemoteState({
         cacheKey,
-        snapshot: null,
-        loading: true,
+        snapshot: currentCachedSnapshot,
+        loading: !currentCachedSnapshot,
         errorCode: null,
         traceId: null,
       })
@@ -8539,10 +8657,10 @@ function useSearchSurfaceResource({
 
         setRemoteState({
           cacheKey,
-          snapshot: null,
+          snapshot: currentCachedSnapshot,
           loading: false,
-          errorCode: failureState.errorCode,
-          traceId: failureState.traceId,
+          errorCode: currentCachedSnapshot ? null : failureState.errorCode,
+          traceId: currentCachedSnapshot ? null : failureState.traceId,
         })
       })
 
@@ -8550,7 +8668,7 @@ function useSearchSurfaceResource({
       cancelled = true
       controller.abort()
     }
-  }, [cacheKey, cachedSnapshot, search])
+  }, [cacheKey, search])
 
   const activeSnapshot = cacheKey
     ? remoteState.cacheKey === cacheKey
@@ -8733,15 +8851,6 @@ async function fetchCalendarMonthApiSnapshot(
   monthKey: string,
   signal: AbortSignal,
 ): Promise<{ snapshot: CalendarMonthApiSnapshot | null; errorCode: string | null; traceId: string | null }> {
-  const cachedSnapshot = calendarMonthApiSnapshotCache.get(monthKey)
-  if (cachedSnapshot) {
-    return {
-      snapshot: cachedSnapshot,
-      errorCode: null,
-      traceId: null,
-    }
-  }
-
   const result = await fetchApiJson<CalendarMonthApiResponse>(
     `/v1/calendar/month?month=${encodeURIComponent(monthKey)}`,
     signal,
@@ -8771,6 +8880,7 @@ function useCalendarMonthResource({
   monthKey: string
 }): CalendarMonthSurfaceResource {
   const cachedSnapshot = calendarMonthApiSnapshotCache.get(monthKey) ?? null
+  const cachedSnapshotRef = useRef(cachedSnapshot)
   const [remoteState, setRemoteState] = useState<{
     monthKey: string
     snapshot: CalendarMonthApiSnapshot | null
@@ -8786,25 +8896,17 @@ function useCalendarMonthResource({
   }))
 
   useEffect(() => {
-    if (!monthKey) {
-      return
-    }
+    cachedSnapshotRef.current = cachedSnapshot
+  }, [cachedSnapshot])
 
-    if (cachedSnapshot) {
-      Promise.resolve().then(() => {
-        setRemoteState({
-          monthKey,
-          snapshot: cachedSnapshot,
-          loading: false,
-          errorCode: null,
-          traceId: null,
-        })
-      })
+  useEffect(() => {
+    if (!monthKey) {
       return
     }
 
     const controller = new AbortController()
     let cancelled = false
+    const currentCachedSnapshot = cachedSnapshotRef.current
 
     Promise.resolve().then(() => {
       if (cancelled) {
@@ -8813,8 +8915,8 @@ function useCalendarMonthResource({
 
       setRemoteState({
         monthKey,
-        snapshot: null,
-        loading: true,
+        snapshot: currentCachedSnapshot,
+        loading: !currentCachedSnapshot,
         errorCode: null,
         traceId: null,
       })
@@ -8846,10 +8948,10 @@ function useCalendarMonthResource({
 
         setRemoteState({
           monthKey,
-          snapshot: null,
+          snapshot: currentCachedSnapshot,
           loading: false,
-          errorCode: failureState.errorCode,
-          traceId: failureState.traceId,
+          errorCode: currentCachedSnapshot ? null : failureState.errorCode,
+          traceId: currentCachedSnapshot ? null : failureState.traceId,
         })
       })
 
@@ -8857,7 +8959,7 @@ function useCalendarMonthResource({
       cancelled = true
       controller.abort()
     }
-  }, [cachedSnapshot, monthKey])
+  }, [monthKey])
 
   const activeSnapshot =
     remoteState.monthKey === monthKey ? remoteState.snapshot ?? cachedSnapshot ?? null : cachedSnapshot
@@ -9025,15 +9127,6 @@ async function fetchRadarApiSnapshot(
   signal: AbortSignal,
 ): Promise<{ snapshot: RadarApiSnapshot | null; errorCode: string | null; traceId: string | null }> {
   const cacheKey = 'default'
-  const cachedSnapshot = radarApiSnapshotCache.get(cacheKey)
-  if (cachedSnapshot) {
-    return {
-      snapshot: cachedSnapshot,
-      errorCode: null,
-      traceId: null,
-    }
-  }
-
   const result = await fetchApiJson<RadarApiResponse>('/v1/radar', signal, RADAR_FETCH_TIMEOUT_MS, 'web-radar')
   if (!result.ok || !result.body?.data) {
     return {
@@ -9055,6 +9148,7 @@ async function fetchRadarApiSnapshot(
 function useRadarSurfaceResource(): RadarSurfaceResource {
   const cacheKey = 'default'
   const cachedSnapshot = radarApiSnapshotCache.get(cacheKey) ?? null
+  const cachedSnapshotRef = useRef(cachedSnapshot)
   const [remoteState, setRemoteState] = useState<{
     snapshot: RadarApiSnapshot | null
     loading: boolean
@@ -9068,20 +9162,13 @@ function useRadarSurfaceResource(): RadarSurfaceResource {
   }))
 
   useEffect(() => {
-    if (cachedSnapshot) {
-      Promise.resolve().then(() => {
-        setRemoteState({
-          snapshot: cachedSnapshot,
-          loading: false,
-          errorCode: null,
-          traceId: null,
-        })
-      })
-      return
-    }
+    cachedSnapshotRef.current = cachedSnapshot
+  }, [cachedSnapshot])
 
+  useEffect(() => {
     const controller = new AbortController()
     let cancelled = false
+    const currentCachedSnapshot = cachedSnapshotRef.current
 
     Promise.resolve().then(() => {
       if (cancelled) {
@@ -9089,8 +9176,8 @@ function useRadarSurfaceResource(): RadarSurfaceResource {
       }
 
       setRemoteState({
-        snapshot: null,
-        loading: true,
+        snapshot: currentCachedSnapshot,
+        loading: !currentCachedSnapshot,
         errorCode: null,
         traceId: null,
       })
@@ -9120,10 +9207,10 @@ function useRadarSurfaceResource(): RadarSurfaceResource {
         }
 
         setRemoteState({
-          snapshot: null,
+          snapshot: currentCachedSnapshot,
           loading: false,
-          errorCode: failureState.errorCode,
-          traceId: failureState.traceId,
+          errorCode: currentCachedSnapshot ? null : failureState.errorCode,
+          traceId: currentCachedSnapshot ? null : failureState.traceId,
         })
       })
 
@@ -9131,7 +9218,7 @@ function useRadarSurfaceResource(): RadarSurfaceResource {
       cancelled = true
       controller.abort()
     }
-  }, [cachedSnapshot])
+  }, [])
 
   const source: SurfaceStatusSource = !BACKEND_API_BASE_URL
     ? 'json'
@@ -9335,15 +9422,6 @@ async function fetchEntityDetailApiSnapshot(
   signal: AbortSignal,
 ): Promise<{ team: TeamProfile | null; errorCode: string | null; traceId: string | null }> {
   const cacheKey = entitySlug
-  const cachedSnapshot = entityDetailApiSnapshotCache.get(cacheKey)
-  if (cachedSnapshot) {
-    return {
-      team: cachedSnapshot,
-      errorCode: null,
-      traceId: null,
-    }
-  }
-
   const result = await fetchApiJson<EntityDetailApiResponse>(
     `/v1/entities/${encodeURIComponent(entitySlug)}`,
     signal,
@@ -9376,6 +9454,7 @@ function useEntityDetailResource({
 }): EntityDetailSurfaceResource {
   const cacheKey = entitySlug ?? group ?? ''
   const cachedSnapshot = cacheKey ? entityDetailApiSnapshotCache.get(cacheKey) ?? null : null
+  const cachedSnapshotRef = useRef(cachedSnapshot)
   const [remoteState, setRemoteState] = useState<{
     cacheKey: string
     team: TeamProfile | null
@@ -9391,12 +9470,17 @@ function useEntityDetailResource({
   }))
 
   useEffect(() => {
+    cachedSnapshotRef.current = cachedSnapshot
+  }, [cachedSnapshot])
+
+  useEffect(() => {
     if (!cacheKey || !entitySlug || !group) {
       return
     }
 
     const controller = new AbortController()
     let cancelled = false
+    const currentCachedSnapshot = cachedSnapshotRef.current
 
     Promise.resolve().then(() => {
       if (cancelled) {
@@ -9405,8 +9489,8 @@ function useEntityDetailResource({
 
       setRemoteState({
         cacheKey,
-        team: cachedSnapshot,
-        loading: !cachedSnapshot,
+        team: currentCachedSnapshot,
+        loading: !currentCachedSnapshot,
         errorCode: null,
         traceId: null,
       })
@@ -9438,10 +9522,10 @@ function useEntityDetailResource({
 
         setRemoteState({
           cacheKey,
-          team: null,
+          team: currentCachedSnapshot,
           loading: false,
-          errorCode: failureState.errorCode,
-          traceId: failureState.traceId,
+          errorCode: currentCachedSnapshot ? null : failureState.errorCode,
+          traceId: currentCachedSnapshot ? null : failureState.traceId,
         })
       })
 
@@ -9449,7 +9533,7 @@ function useEntityDetailResource({
       cancelled = true
       controller.abort()
     }
-  }, [cacheKey, cachedSnapshot, entitySlug, group])
+  }, [cacheKey, entitySlug, group])
 
   const activeTeam = cacheKey
     ? remoteState.cacheKey === cacheKey
