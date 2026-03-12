@@ -36,11 +36,17 @@ class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
             backfill.build_queries(detail, profile),
             [
                 "IVE BLACKHOLE official mv",
+                "IVE BLACKHOLE official music video",
                 "IVE BLACKHOLE mv",
+                "IVE BLACKHOLE",
                 "아이브 BLACKHOLE official mv",
+                "아이브 BLACKHOLE official music video",
                 "아이브 BLACKHOLE mv",
-                "IVE REVIVE+ official mv",
-                "IVE REVIVE+ mv",
+                "아이브 BLACKHOLE",
+                "IVE BANG BANG official mv",
+                "IVE BANG BANG official music video",
+                "IVE BANG BANG mv",
+                "IVE BANG BANG",
             ],
         )
 
@@ -62,12 +68,33 @@ class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
             backfill.build_queries(detail, profile),
             [
                 "(G)I-DLE Mono official mv",
+                "(G)I-DLE Mono official music video",
                 "(G)I-DLE Mono mv",
+                "(G)I-DLE Mono",
                 "아이들 Mono official mv",
+                "아이들 Mono official music video",
                 "아이들 Mono mv",
+                "아이들 Mono",
                 "i-dle Mono official mv",
+                "i-dle Mono official music video",
                 "i-dle Mono mv",
+                "i-dle Mono",
             ],
+        )
+
+    def test_build_queries_keeps_release_title_as_primary_fallback_after_two_title_tracks(self) -> None:
+        detail = {
+            "group": "ZEROBASEONE",
+            "release_title": "NEVER SAY NEVER",
+            "tracks": [
+                {"title": "SLAM DUNK", "is_title_track": True},
+                {"title": "BLUE", "is_title_track": True},
+            ],
+        }
+
+        self.assertEqual(
+            backfill.pick_title_variants(detail),
+            ["SLAM DUNK", "BLUE", "NEVER SAY NEVER"],
         )
 
     def test_infer_title_track_from_candidate_title_matches_unique_track(self) -> None:

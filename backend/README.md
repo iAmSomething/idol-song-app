@@ -592,6 +592,8 @@ python3 ../build_release_details_musicbrainz.py --cohorts latest,recent --max-ro
 python3 ../backfill_release_detail_mvs.py --cohorts latest,recent --max-rows 25 --progress-every 5
 ```
 
+`backfill_release_detail_mvs.py`는 latest/recent blocker rerun에서 최대 2개의 title track, `official music video` suffix, no-suffix fallback까지 query plan에 포함한다. candidate breadth를 먼저 넓힌 뒤 full rerun을 태우는 기준으로 쓴다.
+
 ## Release Pipeline Dual-Write
 
 기존 JSON export를 유지한 채 release hydration / service-link / MV review 흐름만 canonical DB에 다시 쓰려면 아래 명령을 사용한다.
