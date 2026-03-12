@@ -20,6 +20,8 @@ if (process.env.GITHUB_OUTPUT) {
     `api_base_url=${config.apiBaseUrl}\n` +
       `target_environment=${config.targetEnvironment}\n` +
       `target_classification=${config.targetClassification}\n` +
+      `runtime_mode=${config.runtimeMode}\n` +
+      `decision_reason=${config.decisionReason}\n` +
       `source=${config.source}\n`,
   )
 }
@@ -30,6 +32,12 @@ console.log(
       apiBaseUrl: config.apiBaseUrl,
       targetEnvironment: config.targetEnvironment,
       targetClassification: config.targetClassification,
+      runtimeMode: config.runtimeMode,
+      decisionReason: config.decisionReason,
+      resolvedApiBaseUrl: config.resolvedApiBaseUrl,
+      resolvedTargetEnvironment: config.resolvedTargetEnvironment,
+      resolvedTargetClassification: config.resolvedTargetClassification,
+      runtimeProbe: config.runtimeProbe,
       source: config.source,
       handoffPath: path.relative(repoRoot, config.handoffPath),
     },

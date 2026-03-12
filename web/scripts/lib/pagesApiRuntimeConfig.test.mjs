@@ -2,7 +2,7 @@ import path from 'node:path'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { classifyBackendTarget, resolvePagesApiRuntimeConfig } from './pagesApiRuntimeConfig.mjs'
+import { classifyBackendTarget, probePagesApiTarget, resolvePagesApiRuntimeConfig } from './pagesApiRuntimeConfig.mjs'
 
 const repoRoot = path.resolve(import.meta.dirname, '..', '..', '..')
 
@@ -19,10 +19,19 @@ test('resolvePagesApiRuntimeConfig uses explicit env override when present', asy
     repoRoot,
     configuredApiBaseUrl: 'https://api.idol-song-app.example.com/',
     configuredTargetEnvironment: 'production',
+    probeApiTarget: async () => ({
+      healthy: true,
+      probeUrl: 'https://api.idol-song-app.example.com/health',
+      probePath: '/health',
+      status: 200,
+      error: null,
+    }),
   })
 
   assert.equal(config.apiBaseUrl, 'https://api.idol-song-app.example.com')
   assert.equal(config.targetEnvironment, 'production')
+  assert.equal(config.runtimeMode, 'api')
+  assert.equal(config.decisionReason, 'api_target_healthy')
   assert.equal(config.source, 'env')
 })
 
@@ -31,9 +40,50 @@ test('resolvePagesApiRuntimeConfig falls back to backend freshness handoff targe
     repoRoot,
     configuredApiBaseUrl: '',
     configuredTargetEnvironment: '',
+    probeApiTarget: async () => ({
+      healthy: true,
+      probeUrl: 'https://api.idol-song-app.example.com/health',
+      probePath: '/health',
+      status: 200,
+      error: null,
+    }),
   })
 
   assert.equal(config.apiBaseUrl, 'https://api.idol-song-app.example.com')
   assert.equal(config.targetEnvironment, 'production')
+  assert.equal(config.runtimeMode, 'api')
   assert.equal(config.source, 'backend_freshness_handoff')
+})
+
+test('resolvePagesApiRuntimeConfig falls back to bridge when API target is unhealthy', async () => {
+  const config = await resolvePagesApiRuntimeConfig({
+    repoRoot,
+    configuredApiBaseUrl: 'https://api.idol-song-app.example.com/',
+    configuredTargetEnvironment: 'production',
+    probeApiTarget: async () => ({
+      healthy: false,
+      probeUrl: 'https://api.idol-song-app.example.com/health',
+      probePath: '/health',
+      status: 502,
+      error: 'unexpected_status_502',
+    }),
+  })
+
+  assert.equal(config.apiBaseUrl, '')
+  assert.equal(config.targetEnvironment, 'bridge')
+  assert.equal(config.targetClassification, 'bridge')
+  assert.equal(config.runtimeMode, 'bridge')
+  assert.equal(config.decisionReason, 'api_target_unhealthy')
+  assert.equal(config.resolvedApiBaseUrl, 'https://api.idol-song-app.example.com')
+  assert.equal(config.runtimeProbe.status, 502)
+})
+
+test('probePagesApiTarget reports unexpected status as unhealthy', async () => {
+  const result = await probePagesApiTarget('https://api.idol-song-app.example.com', {
+    fetchImpl: async () => new Response('bad gateway', { status: 502 }),
+  })
+
+  assert.equal(result.healthy, false)
+  assert.equal(result.status, 502)
+  assert.equal(result.error, 'unexpected_status_502')
 })
