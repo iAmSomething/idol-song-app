@@ -133,6 +133,66 @@ describe('parseRuntimeConfig', () => {
     ).toThrow('services.apiBaseUrl');
   });
 
+  test('rejects bundled-static mode for preview profile', () => {
+    expect(() =>
+      parseRuntimeConfig({
+        profile: 'preview',
+        dataSource: {
+          mode: 'bundled-static',
+          datasetVersion: null,
+        },
+        services: {
+          apiBaseUrl: 'https://example.com/api',
+          analyticsWriteKey: null,
+        },
+        logging: {
+          level: 'debug',
+        },
+        featureGates: {
+          radar: true,
+          analytics: false,
+          remoteRefresh: false,
+          mvEmbed: true,
+          shareActions: true,
+        },
+        build: {
+          version: '0.1.0',
+          commitSha: null,
+        },
+      }),
+    ).toThrow('dataSource.mode');
+  });
+
+  test('rejects bundled-static mode for production profile', () => {
+    expect(() =>
+      parseRuntimeConfig({
+        profile: 'production',
+        dataSource: {
+          mode: 'bundled-static',
+          datasetVersion: null,
+        },
+        services: {
+          apiBaseUrl: 'https://example.com/api',
+          analyticsWriteKey: null,
+        },
+        logging: {
+          level: 'error',
+        },
+        featureGates: {
+          radar: true,
+          analytics: false,
+          remoteRefresh: false,
+          mvEmbed: true,
+          shareActions: true,
+        },
+        build: {
+          version: '0.1.0',
+          commitSha: null,
+        },
+      }),
+    ).toThrow('dataSource.mode');
+  });
+
   test('requires build version to be present', () => {
     expect(() =>
       parseRuntimeConfig({

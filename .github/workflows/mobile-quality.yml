@@ -48,5 +48,8 @@ jobs:
       - name: Run mobile typecheck
         run: npm run typecheck
 
+      - name: Verify mobile runtime policy
+        run: npm run verify:runtime-policy
+
       - name: Run mobile tests
         run: npm run test

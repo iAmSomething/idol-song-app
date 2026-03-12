@@ -43,6 +43,18 @@ jobs:
         working-directory: web
         run: npm ci
 
+      - name: Run web runtime policy tests
+        working-directory: web
+        run: npm run test:runtime-policy
+
+      - name: Verify web runtime policy
+        working-directory: web
+        run: npm run verify:runtime-policy
+
+      - name: Run web lint
+        working-directory: web
+        run: npm run lint
+
       - name: Build Pages read bridge
         working-directory: web
         env:
