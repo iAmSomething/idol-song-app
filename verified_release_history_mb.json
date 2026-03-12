@@ -10596,6 +10596,15 @@
     "artist_source": "https://musicbrainz.org/artist/d03d8ba8-065c-41d9-a804-d6c05a949194",
     "releases": [
       {
+        "title": "UNIQUE",
+        "date": "2026-03-12",
+        "source": "https://musicbrainz.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "EX",
         "date": "2025-09-26",
         "source": "https://musicbrainz.org/release-group/a32e5d1a-a665-4cca-beeb-ccd5e2424a91",

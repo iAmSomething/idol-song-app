@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-12T07:27:46.187Z",
+  "generated_at": "2026-03-12T16:34:52.619Z",
   "classification": "non-runtime export",
-  "source_workflow": "catalog-enrichment-refresh.yml",
-  "cadence_profile": "weekly-enrichment",
+  "source_workflow": "release-day-verification.yml",
+  "cadence_profile": "same-day-hourly",
   "export_dir": "backend/exports/non_runtime_web_snapshots",
   "file_count": 10,
   "files": [

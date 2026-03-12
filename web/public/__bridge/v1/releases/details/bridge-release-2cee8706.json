@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-2cee8706"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-2cee8706",
+      "release_title": "UNIQUE",
+      "release_date": "2026-03-12",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d"
+    },
+    "service_links": {
+      "spotify": {
+        "url": "https://open.spotify.com/album/71EVZx82GopCyTNRZVkZSk"
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [
+      {
+        "order": 1,
+        "title": "UNIQUE",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Pandemonium",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "L.O.Y.L.",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Wednesday Girl",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Triple 7",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "ICE (VVS)",
+        "is_title_track": false
+      }
+    ],
+    "mv": {
+      "url": "https://www.youtube.com/watch?v=m18dRRu9-V4",
+      "video_id": "m18dRRu9-V4",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    },
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
+  }
+}
