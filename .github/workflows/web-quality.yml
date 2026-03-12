@@ -45,6 +45,9 @@ jobs:
       - name: Run web runtime policy tests
         run: npm run test:runtime-policy
 
+      - name: Run Pages read bridge tests
+        run: npm run test:pages-read-bridge
+
       - name: Verify web runtime policy
         run: npm run verify:runtime-policy
 
@@ -53,3 +56,6 @@ jobs:
 
       - name: Run web build
         run: npm run build
+
+      - name: Verify Pages read bridge
+        run: npm run verify:pages-read-bridge

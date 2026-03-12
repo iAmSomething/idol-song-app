@@ -1,10 +1,21 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { auditPagesReadBridge } from './lib/pagesReadBridgeCoverage.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const webRoot = path.resolve(__dirname, '..')
 const bridgeRoot = path.join(webRoot, 'public', '__bridge', 'v1')
+const coverage = await auditPagesReadBridge({ webRoot })
+
+if (coverage.errors.length > 0) {
+  throw new Error(
+    [
+      `Bridge coverage audit found ${coverage.errors.length} issue(s).`,
+      ...coverage.errors.slice(0, 10).map((error) => `${error.code}: ${error.message} ${JSON.stringify(error.context)}`),
+    ].join('\n'),
+  )
+}
 
 const calendarMonth = await readJson(path.join(bridgeRoot, 'calendar', 'months', '2026-02.json'))
 const sameDayCalendarMonth = await readJson(path.join(bridgeRoot, 'calendar', 'months', '2026-03.json'))
@@ -88,6 +99,7 @@ console.log(
       searchRequestId: searchIndex?.meta?.request_id ?? null,
       lookupRequestId: lookup?.meta?.request_id ?? null,
       detailRequestId: detail?.meta?.request_id ?? null,
+      coverageSummary: coverage.summary,
       releaseId: lookup.data.release_id,
       trackCount: detail.data.tracks.length,
     },

@@ -3714,7 +3714,7 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
-          "representative_song_title": null,
+          "representative_song_title": "",
           "spotify_url": null,
           "youtube_music_url": null,
           "youtube_mv_url": null,
@@ -35041,6 +35041,23 @@
           "ZEROBASEONE RE-FLOW",
           "제로베이스원 RE-FLOW",
           "제베원 RE-FLOW"
+        ]
+      },
+      {
+        "release_id": "bridge-release-cc830546",
+        "detail_path": "/artists/yena/releases/love-catcher?date=2026-03-11&stream=album",
+        "entity_path": "/artists/yena",
+        "entity_slug": "yena",
+        "display_name": "YENA",
+        "release_title": "LOVE CATCHER",
+        "release_date": "2026-03-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "search_terms": [
+          "LOVE CATCHER",
+          "YENA LOVE CATCHER",
+          "최예나 LOVE CATCHER"
         ]
       }
     ],

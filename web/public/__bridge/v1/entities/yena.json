@@ -32,7 +32,7 @@
       "stream": "album",
       "release_kind": "ep",
       "release_format": "ep",
-      "representative_song_title": null,
+      "representative_song_title": "",
       "spotify_url": null,
       "youtube_music_url": null,
       "youtube_mv_url": null,
