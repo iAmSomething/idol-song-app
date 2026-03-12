@@ -1,0 +1,23 @@
+## Backend Title-Track Follow-up Heuristic Local Note (2026-03-12)
+
+- Scope: `#627` incremental lift for title-track completeness
+- Branch: `codex/dev/625-627-title-track-lift`
+- Change:
+  - added `followup_song_release` inference for album/EP rows when a matching song release lands within `60` days after the parent release
+  - generalized exact-title vs song-release fallback tie-break so `release_title_exact + followup_song_release` resolves to the release-title track instead of staying in review
+- Verification:
+  - `source .venv/bin/activate && python -m unittest test_build_release_details_musicbrainz.py`
+  - `source .venv/bin/activate && python3 -m py_compile build_release_details_musicbrainz.py test_build_release_details_musicbrainz.py`
+  - `source .venv/bin/activate && python build_release_details_musicbrainz.py --skip-acquisition --cohorts latest,recent`
+  - `source ~/.config/idol-song-app/neon.env && source .venv/bin/activate && python build_backend_json_parity_report.py --report-path backend/reports/backend_json_parity_report.json`
+  - `cd backend && source ~/.config/idol-song-app/neon.env && npm run null:coverage && npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming && npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json && npm run migration:scorecard -- --bundle-path ./reports/report_bundle_metadata.json`
+- Observed lift:
+  - scoped title-track resolved rows: `579 -> 581`
+  - scoped title-track review queue rows: `236 -> 234`
+  - latest coverage: `199/264 = 75.38%`
+  - recent coverage: `382/551 = 69.33%`
+- Representative resolved rows:
+  - `ENHYPEN / ROMANCE : UNTOLD / 2024-07-12 -> Brought the Heat Back`
+  - `TREASURE / REBOOT / 2023-07-28 -> BONA BONA`
+- Outcome:
+  - the heuristic is safe and measurable, but `#627` acceptance is still blocked because latest/recent floors remain below `95% / 85%`

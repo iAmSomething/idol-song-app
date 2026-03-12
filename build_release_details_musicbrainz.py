@@ -62,6 +62,7 @@ MV_COMPLETE_STATUSES = {YOUTUBE_VIDEO_STATUS_RELATION, YOUTUBE_VIDEO_STATUS_MANU
 TITLE_TRACK_NON_PROMOTED_PATTERN = re.compile(
     r"(?i)\b(intro|introduction|outro|interlude|skit|inst\.?|instrumental|preview|teaser|highlight|medley)\b"
 )
+FOLLOWUP_SONG_RELEASE_MAX_DAYS = 60
 
 HISTORICAL_COMPLETENESS_THRESHOLDS = {
     "detail_payload_total_min": 1.0,
@@ -580,6 +581,10 @@ def append_title_track_candidate(
         candidate["sources"].append(source)
 
 
+def is_song_release_source(source: str) -> bool:
+    return source.startswith("nearby_song_release:") or source.startswith("followup_song_release:")
+
+
 def infer_title_track_resolution(detail: Dict, song_release_index: Dict[str, List[Dict]]) -> Dict:
     tracks = detail.get("tracks", [])
     if not tracks:
@@ -658,22 +663,29 @@ def infer_title_track_resolution(detail: Dict, song_release_index: Dict[str, Lis
             if normalize_base_title(track.get("title", ""))
         }
         nearby_song_matches: List[Tuple[int, str, str]] = []
+        followup_song_matches: List[Tuple[int, str, str]] = []
         for song_release in song_release_index.get(detail["group"], []):
             delta_days = (detail_release_date - song_release["release_date"]).days
-            if not 0 <= delta_days <= 180:
-                continue
-
             candidate_track_title = track_title_by_base_title.get(song_release["base_title"])
             if candidate_track_title is None:
                 continue
 
-            nearby_song_matches.append(
-                (
-                    delta_days,
-                    candidate_track_title,
-                    song_release["release_date"].isoformat(),
+            if 0 <= delta_days <= 180:
+                nearby_song_matches.append(
+                    (
+                        delta_days,
+                        candidate_track_title,
+                        song_release["release_date"].isoformat(),
+                    )
                 )
-            )
+            elif 0 < -delta_days <= FOLLOWUP_SONG_RELEASE_MAX_DAYS:
+                followup_song_matches.append(
+                    (
+                        abs(delta_days),
+                        candidate_track_title,
+                        song_release["release_date"].isoformat(),
+                    )
+                )
 
         nearby_song_matches.sort()
         unique_nearby_matches: List[Tuple[str, str]] = []
@@ -695,6 +707,27 @@ def infer_title_track_resolution(detail: Dict, song_release_index: Dict[str, Lis
                 )
         elif len(unique_nearby_matches) > 2:
             review_reasons.append("More than two nearby song-release title-track candidates were found.")
+
+        followup_song_matches.sort()
+        unique_followup_matches: List[Tuple[str, str]] = []
+        seen_followup_keys = set()
+        for _, title, release_date_text in followup_song_matches:
+            base_title = normalize_base_title(title)
+            if base_title in seen_followup_keys:
+                continue
+            seen_followup_keys.add(base_title)
+            unique_followup_matches.append((title, release_date_text))
+
+        if not unique_nearby_matches and 1 <= len(unique_followup_matches) <= 2:
+            for title, release_date_text in unique_followup_matches:
+                append_title_track_candidate(
+                    candidates,
+                    tracks,
+                    title,
+                    f"followup_song_release:{release_date_text}",
+                )
+        elif len(unique_followup_matches) > 2:
+            review_reasons.append("More than two follow-up song-release title-track candidates were found.")
 
     candidate_rows = sorted(candidates.values(), key=lambda row: row["title"].casefold())
     if not candidate_rows:
@@ -727,24 +760,24 @@ def infer_title_track_resolution(detail: Dict, song_release_index: Dict[str, Lis
             for candidate in candidate_rows
             if "release_title_exact" in candidate["sources"] or "release_title_substring" in candidate["sources"]
         ]
-        nearby_only_candidates = [
+        song_release_only_candidates = [
             candidate
             for candidate in candidate_rows
             if candidate["sources"]
-            and all(source.startswith("nearby_song_release:") for source in candidate["sources"])
+            and all(is_song_release_source(source) for source in candidate["sources"])
         ]
-        if len(exact_or_substring_candidates) == 1 and len(nearby_only_candidates) == 1:
+        if len(exact_or_substring_candidates) == 1 and len(song_release_only_candidates) == 1:
             preferred_candidate = exact_or_substring_candidates[0]
             return {
                 "status": TITLE_TRACK_STATUS_AUTO_SINGLE,
                 "selected_titles": [preferred_candidate["title"]],
                 "candidates": candidate_rows,
-                "reason": "Release-title evidence outranked a nearby single fallback, so the title track was resolved automatically.",
+                "reason": "Release-title evidence outranked a song-release fallback, so the title track was resolved automatically.",
             }
 
         all_nearby_song_resolved = all(
             candidate["sources"]
-            and all(source.startswith("nearby_song_release:") for source in candidate["sources"])
+            and all(is_song_release_source(source) for source in candidate["sources"])
             for candidate in candidate_rows
         )
         slash_title_pair = "/" in (detail.get("release_title") or "") and all(

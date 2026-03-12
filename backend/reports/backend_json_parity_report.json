@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-12T08:03:37.635667+00:00",
+  "generated_at": "2026-03-12T10:09:25.806189+00:00",
   "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-12T08:03:35.379Z",
-    "bundle_id": "post-sync-verification-368ed485b22b",
+    "generated_at": "2026-03-12T08:28:08.219Z",
+    "bundle_id": "post-sync-verification-42aeae5e1f6f",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -47,8 +47,14 @@
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-12T08:02:36.197Z",
+        "generated_at": "2026-03-12T08:28:07.937Z",
         "primary_path_key": "daily_upcoming"
+      },
+      "workflow_schedule_diagnostics": {
+        "path": "reports/workflow_schedule_diagnostics.json",
+        "generated_at": "2026-03-12T08:28:07.937Z",
+        "hint_count": 1,
+        "workflow_count": 2
       },
       "service_link_gap_queues": {
         "path": "reports/service_link_gap_queues.json",
@@ -79,7 +85,7 @@
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-368ed485b22b",
+      "bundle id: post-sync-verification-42aeae5e1f6f",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -91,7 +97,7 @@
     "YouTube allowlists: drift (role mismatches=90, metadata mismatches=2)",
     "latest verified release selection: drift (tracking mismatches=0, stream mismatches=1)",
     "upcoming counts / nearest: clean (month bucket mismatches=0)",
-    "title-track / double-title: clean (mismatched releases=0)",
+    "title-track / double-title: drift (mismatched releases=2)",
     "YouTube Music / MV service-link state: drift (mismatched releases=2)",
     "review-required counts (release scope): drift (mv_candidate_count_match=True, youtube_mv_status_counts_match=False)"
   ],
@@ -484,11 +490,30 @@
       "clean": true
     },
     "title_tracks_and_double_title": {
-      "mismatched_releases_count": 0,
+      "mismatched_releases_count": 2,
       "source_double_title_releases": 27,
       "db_double_title_releases": 27,
-      "mismatches": [],
-      "clean": true
+      "mismatches": [
+        {
+          "entity_slug": "enhypen",
+          "release_date": "2024-07-12",
+          "stream": "album",
+          "source_title_tracks": [
+            "Brought the Heat Back"
+          ],
+          "db_title_tracks": []
+        },
+        {
+          "entity_slug": "treasure",
+          "release_date": "2023-07-28",
+          "stream": "album",
+          "source_title_tracks": [
+            "BONA BONA"
+          ],
+          "db_title_tracks": []
+        }
+      ],
+      "clean": false
     },
     "release_service_links": {
       "mismatched_release_services_count": 2,

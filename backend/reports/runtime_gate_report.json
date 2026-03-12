@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-12T08:03:43.790Z",
+  "generated_at": "2026-03-12T10:09:26.013Z",
   "report_bundle": {
-    "generated_at": "2026-03-12T08:03:35.379Z",
-    "bundle_id": "post-sync-verification-368ed485b22b",
+    "generated_at": "2026-03-12T10:09:25.875Z",
+    "bundle_id": "post-sync-verification-01dd4718dfce",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -32,7 +32,7 @@
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
-        "generated_at": "2026-03-12T02:34:23.746Z"
+        "generated_at": "2026-03-12T10:09:25.569Z"
       },
       "canonical_null_recheck_queue": {
         "path": "reports/canonical_null_recheck_queue.json",
@@ -46,8 +46,14 @@
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-12T08:02:36.197Z",
+        "generated_at": "2026-03-12T08:28:07.937Z",
         "primary_path_key": "daily_upcoming"
+      },
+      "workflow_schedule_diagnostics": {
+        "path": "reports/workflow_schedule_diagnostics.json",
+        "generated_at": "2026-03-12T08:28:07.937Z",
+        "hint_count": 1,
+        "workflow_count": 2
       },
       "service_link_gap_queues": {
         "path": "reports/service_link_gap_queues.json",
@@ -78,24 +84,27 @@
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-368ed485b22b",
+      "bundle id: post-sync-verification-01dd4718dfce",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
     ]
   },
   "bundle_consistency": {
-    "status": "pass",
-    "expected_bundle_id": "post-sync-verification-368ed485b22b",
+    "status": "fail",
+    "expected_bundle_id": "post-sync-verification-01dd4718dfce",
     "observed": {
-      "parity_bundle": "post-sync-verification-368ed485b22b",
+      "parity_bundle": "post-sync-verification-42aeae5e1f6f",
       "shadow_bundle": "post-sync-verification-368ed485b22b",
       "runtime_gate_bundle": null,
       "historical_coverage_generated_at": "2026-03-12T00:00:00.000Z",
-      "canonical_null_coverage_generated_at": "2026-03-12T02:34:23.746Z",
+      "canonical_null_coverage_generated_at": "2026-03-12T10:09:25.569Z",
       "null_coverage_trend_generated_at": "2026-03-12T02:34:25.709Z"
     },
-    "mismatches": []
+    "mismatches": [
+      "parity bundle drift (post-sync-verification-42aeae5e1f6f)",
+      "shadow bundle drift (post-sync-verification-368ed485b22b)"
+    ]
   },
   "thresholds": {
     "latency": {
@@ -133,13 +142,13 @@
   "summary_lines": [
     "api latency: needs_review (worst p95=1148.96ms)",
     "api error rate: needs_review (error rate=0)",
-    "projection freshness: pass (lag=0.63m)",
+    "projection freshness: fail (lag=126.33m)",
     "worker cadence: fail (cadence_status=scheduled_evidence_missing, missed_windows=6)",
     "parity dependency: fail",
     "shadow dependency: fail",
     "historical catalog completeness dependency: fail",
     "critical null coverage dependency: fail",
-    "bundle consistency: pass",
+    "bundle consistency: fail",
     "shadow -> web cutover gate: fail",
     "web cutover -> JSON demotion gate: fail"
   ],
@@ -169,10 +178,10 @@
       }
     },
     "projection_freshness": {
-      "status": "pass",
+      "status": "fail",
       "observed": {
         "projection_generated_at": "2026-03-12T08:03:06.277Z",
-        "lag_minutes": 0.63
+        "lag_minutes": 126.33
       },
       "thresholds": {
         "passLagMinutes": 20,
@@ -224,14 +233,14 @@
       "status": "fail",
       "observed": {
         "clean": false,
-        "generated_at": "2026-03-12T08:03:37.635667+00:00",
+        "generated_at": "2026-03-12T10:09:25.806189+00:00",
         "summary_lines": [
           "entity alias/search coverage: clean (mismatched entities=0)",
           "official links: drift (mismatched entities=62)",
           "YouTube allowlists: drift (role mismatches=90, metadata mismatches=2)",
           "latest verified release selection: drift (tracking mismatches=0, stream mismatches=1)",
           "upcoming counts / nearest: clean (month bucket mismatches=0)",
-          "title-track / double-title: clean (mismatched releases=0)",
+          "title-track / double-title: drift (mismatched releases=2)",
           "YouTube Music / MV service-link state: drift (mismatched releases=2)",
           "review-required counts (release scope): drift (mv_candidate_count_match=True, youtube_mv_status_counts_match=False)"
         ]
@@ -266,8 +275,8 @@
         "summary_lines": [
           "detail payload gate: pass (total 100.0%, pre-2024 100.0%)",
           "detail trusted gate: pass (total 100.0%, pre-2024 100.0%)",
-          "title-track resolved gate: fail (total 67.8%, pre-2024 65.2%)",
-          "canonical MV gate: fail (total 8.6%, pre-2024 6.4%)"
+          "title-track resolved gate: fail (total 71.3%, pre-2024 66.2%)",
+          "canonical MV gate: fail (total 9.7%, pre-2024 0.0%)"
         ]
       },
       "label": "historical_release_detail_coverage_report"
@@ -477,19 +486,22 @@
       "label": "critical_null_coverage"
     },
     "bundle_consistency": {
-      "status": "pass",
+      "status": "fail",
       "observed": {
-        "status": "pass",
-        "expected_bundle_id": "post-sync-verification-368ed485b22b",
+        "status": "fail",
+        "expected_bundle_id": "post-sync-verification-01dd4718dfce",
         "observed": {
-          "parity_bundle": "post-sync-verification-368ed485b22b",
+          "parity_bundle": "post-sync-verification-42aeae5e1f6f",
           "shadow_bundle": "post-sync-verification-368ed485b22b",
           "runtime_gate_bundle": null,
           "historical_coverage_generated_at": "2026-03-12T00:00:00.000Z",
-          "canonical_null_coverage_generated_at": "2026-03-12T02:34:23.746Z",
+          "canonical_null_coverage_generated_at": "2026-03-12T10:09:25.569Z",
           "null_coverage_trend_generated_at": "2026-03-12T02:34:25.709Z"
         },
-        "mismatches": []
+        "mismatches": [
+          "parity bundle drift (post-sync-verification-42aeae5e1f6f)",
+          "shadow bundle drift (post-sync-verification-368ed485b22b)"
+        ]
       },
       "label": "report_bundle_metadata"
     }

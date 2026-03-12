@@ -1,90 +1,99 @@
 {
   "generated_at": "2026-03-12",
-  "execution_scope": null,
+  "execution_scope": {
+    "targeted_rebuild": true,
+    "cohorts": [
+      "latest",
+      "recent"
+    ],
+    "scoped_rows_total": 815,
+    "selected_rows": 815,
+    "progress_every": 25
+  },
   "summary_lines": [
-    "detail payload coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
-    "detail trusted coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
-    "title-track resolved coverage: 1201/1770 (67.8%), pre-2024 752/1153 (65.2%), review queue 569",
-    "canonical MV coverage: 153/1770 (8.6%), pre-2024 74/1153 (6.4%), mv review 2",
+    "detail payload coverage: 815/815 (100.0%), pre-2024 198/198 (100.0%)",
+    "detail trusted coverage: 815/815 (100.0%), pre-2024 198/198 (100.0%)",
+    "title-track resolved coverage: 581/815 (71.3%), pre-2024 131/198 (66.2%), review queue 234",
+    "canonical MV coverage: 79/815 (9.7%), pre-2024 0/198 (0.0%), mv review 2",
     "external acquisition pass: YTM attempted 0, resolved 0; MV attempted 0, resolved 0, review 2",
-    "youtube MV search pass: attempted 54, resolved 41, review 13, unresolved 1616, coverage lift +1",
-    "migration-critical first slice: title-track 18/18 (100.0%), canonical MV 18/18 (100.0%), gate pass",
-    "worst title-track cohort: 2021-2023 ep 31.4% / target 74.0%",
+    "youtube MV search pass: not available for this execution scope",
+    "migration-critical first slice: title-track 0/18 (0.0%), canonical MV 0/18 (0.0%), gate fail",
+    "worst title-track cohort: 2021-2023 ep 32.5% / target 74.0%",
     "worst canonical MV cohort: 2024+ single 15.4% / target 72.0%",
-    "release-detail null review queue: 1754 rows",
+    "release-detail null review queue: 799 rows",
     "historical catalog cutover gate: fail"
   ],
-  "latest_snapshot_input_rows": 134,
-  "latest_snapshot_unique_keys": 134,
-  "full_catalog_input_rows": 1770,
-  "full_catalog_unique_keys": 1770,
-  "historical_input_gain_rows": 1636,
-  "entities_with_multiple_releases_in_input": 113,
+  "latest_snapshot_input_rows": 133,
+  "latest_snapshot_unique_keys": 133,
+  "full_catalog_input_rows": 815,
+  "full_catalog_unique_keys": 815,
+  "historical_input_gain_rows": 682,
+  "entities_with_multiple_releases_in_input": 109,
   "sample_multi_release_entities": [
     {
-      "group": "MONSTA X",
-      "release_rows": 60
-    },
-    {
-      "group": "TWICE",
-      "release_rows": 54
-    },
-    {
-      "group": "SHINee",
-      "release_rows": 48
+      "group": "IVE",
+      "release_rows": 22
     },
     {
       "group": "ATEEZ",
-      "release_rows": 42
+      "release_rows": 19
     },
     {
-      "group": "BTS",
-      "release_rows": 42
+      "group": "aespa",
+      "release_rows": 18
+    },
+    {
+      "group": "LE SSERAFIM",
+      "release_rows": 17
     },
     {
       "group": "Stray Kids",
-      "release_rows": 42
-    },
-    {
-      "group": "BTOB",
-      "release_rows": 40
-    },
-    {
-      "group": "THE BOYZ",
-      "release_rows": 40
-    },
-    {
-      "group": "SEVENTEEN",
-      "release_rows": 38
+      "release_rows": 17
     },
     {
       "group": "TOMORROW X TOGETHER",
-      "release_rows": 34
+      "release_rows": 17
+    },
+    {
+      "group": "tripleS",
+      "release_rows": 17
+    },
+    {
+      "group": "TWICE",
+      "release_rows": 16
+    },
+    {
+      "group": "ENHYPEN",
+      "release_rows": 15
+    },
+    {
+      "group": "RIIZE",
+      "release_rows": 15
     }
   ],
-  "history_flattened_rows": 1770,
-  "detail_rows_before": 1770,
-  "detail_rows_after": 1770,
-  "history_keys": 1770,
+  "history_flattened_rows": 815,
+  "detail_rows_before": 815,
+  "detail_rows_after": 815,
+  "history_keys": 815,
   "missing_detail_rows_before": 0,
   "missing_detail_rows_after": 0,
-  "pre_2024_history_rows": 1153,
+  "pre_2024_history_rows": 198,
   "pre_2024_missing_before": 0,
   "pre_2024_missing_after": 0,
-  "preserved_exact_key_rows": 1770,
+  "preserved_exact_key_rows": 815,
   "seeded_placeholder_rows": 0,
-  "rows_with_tracks_before": 1770,
-  "rows_with_tracks_after": 1770,
-  "rows_with_title_track_before": 1195,
-  "rows_with_title_track_after": 1195,
-  "rows_without_title_track_before": 575,
-  "rows_without_title_track_after": 575,
+  "rows_with_tracks_before": 815,
+  "rows_with_tracks_after": 815,
+  "rows_with_title_track_before": 579,
+  "rows_with_title_track_after": 581,
+  "rows_without_title_track_before": 236,
+  "rows_without_title_track_after": 234,
   "completeness": {
     "overall_before": {
-      "total_rows": 1770,
-      "detail_payload_rows": 1770,
+      "total_rows": 815,
+      "detail_payload_rows": 815,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 1770,
+      "detail_trusted_rows": 815,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -92,26 +101,26 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 1201,
-      "title_track_resolved_ratio": 0.6785,
-      "title_track_review_rows": 5,
-      "title_track_review_ratio": 0.0028,
-      "title_track_unresolved_rows": 564,
-      "title_track_unresolved_ratio": 0.3186,
-      "canonical_mv_rows": 153,
-      "canonical_mv_ratio": 0.0864,
+      "title_track_resolved_rows": 579,
+      "title_track_resolved_ratio": 0.7104,
+      "title_track_review_rows": 0,
+      "title_track_review_ratio": 0.0,
+      "title_track_unresolved_rows": 236,
+      "title_track_unresolved_ratio": 0.2896,
+      "canonical_mv_rows": 79,
+      "canonical_mv_ratio": 0.0969,
       "mv_review_rows": 2,
-      "mv_review_ratio": 0.0011,
-      "mv_unresolved_rows": 1614,
-      "mv_unresolved_ratio": 0.9119,
-      "mv_no_mv_rows": 1,
-      "mv_no_mv_ratio": 0.0006
+      "mv_review_ratio": 0.0025,
+      "mv_unresolved_rows": 734,
+      "mv_unresolved_ratio": 0.9006,
+      "mv_no_mv_rows": 0,
+      "mv_no_mv_ratio": 0.0
     },
     "overall": {
-      "total_rows": 1770,
-      "detail_payload_rows": 1770,
+      "total_rows": 815,
+      "detail_payload_rows": 815,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 1770,
+      "detail_trusted_rows": 815,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -119,26 +128,26 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 1201,
-      "title_track_resolved_ratio": 0.6785,
-      "title_track_review_rows": 5,
-      "title_track_review_ratio": 0.0028,
-      "title_track_unresolved_rows": 564,
-      "title_track_unresolved_ratio": 0.3186,
-      "canonical_mv_rows": 153,
-      "canonical_mv_ratio": 0.0864,
+      "title_track_resolved_rows": 581,
+      "title_track_resolved_ratio": 0.7129,
+      "title_track_review_rows": 0,
+      "title_track_review_ratio": 0.0,
+      "title_track_unresolved_rows": 234,
+      "title_track_unresolved_ratio": 0.2871,
+      "canonical_mv_rows": 79,
+      "canonical_mv_ratio": 0.0969,
       "mv_review_rows": 2,
-      "mv_review_ratio": 0.0011,
-      "mv_unresolved_rows": 1614,
-      "mv_unresolved_ratio": 0.9119,
-      "mv_no_mv_rows": 1,
-      "mv_no_mv_ratio": 0.0006
+      "mv_review_ratio": 0.0025,
+      "mv_unresolved_rows": 734,
+      "mv_unresolved_ratio": 0.9006,
+      "mv_no_mv_rows": 0,
+      "mv_no_mv_ratio": 0.0
     },
     "pre_2024": {
-      "total_rows": 1153,
-      "detail_payload_rows": 1153,
+      "total_rows": 198,
+      "detail_payload_rows": 198,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 1153,
+      "detail_trusted_rows": 198,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -146,434 +155,29 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 752,
-      "title_track_resolved_ratio": 0.6522,
-      "title_track_review_rows": 5,
-      "title_track_review_ratio": 0.0043,
-      "title_track_unresolved_rows": 396,
-      "title_track_unresolved_ratio": 0.3435,
-      "canonical_mv_rows": 74,
-      "canonical_mv_ratio": 0.0642,
+      "title_track_resolved_rows": 131,
+      "title_track_resolved_ratio": 0.6616,
+      "title_track_review_rows": 0,
+      "title_track_review_ratio": 0.0,
+      "title_track_unresolved_rows": 67,
+      "title_track_unresolved_ratio": 0.3384,
+      "canonical_mv_rows": 0,
+      "canonical_mv_ratio": 0.0,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
-      "mv_unresolved_rows": 1078,
-      "mv_unresolved_ratio": 0.935,
-      "mv_no_mv_rows": 1,
-      "mv_no_mv_ratio": 0.0009
+      "mv_unresolved_rows": 198,
+      "mv_unresolved_ratio": 1.0,
+      "mv_no_mv_rows": 0,
+      "mv_no_mv_ratio": 0.0
     }
   },
   "breakdowns": {
     "by_year": {
-      "2008": {
-        "total_rows": 3,
-        "detail_payload_rows": 3,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 3,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 3,
-        "title_track_resolved_ratio": 1.0,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 0,
-        "title_track_unresolved_ratio": 0.0,
-        "canonical_mv_rows": 0,
-        "canonical_mv_ratio": 0.0,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 3,
-        "mv_unresolved_ratio": 1.0,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2009": {
-        "total_rows": 5,
-        "detail_payload_rows": 5,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 5,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 5,
-        "title_track_resolved_ratio": 1.0,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 0,
-        "title_track_unresolved_ratio": 0.0,
-        "canonical_mv_rows": 2,
-        "canonical_mv_ratio": 0.4,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 3,
-        "mv_unresolved_ratio": 0.6,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2010": {
-        "total_rows": 4,
-        "detail_payload_rows": 4,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 4,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 3,
-        "title_track_resolved_ratio": 0.75,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 1,
-        "title_track_unresolved_ratio": 0.25,
-        "canonical_mv_rows": 0,
-        "canonical_mv_ratio": 0.0,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 4,
-        "mv_unresolved_ratio": 1.0,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2011": {
-        "total_rows": 10,
-        "detail_payload_rows": 10,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 10,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 8,
-        "title_track_resolved_ratio": 0.8,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 2,
-        "title_track_unresolved_ratio": 0.2,
-        "canonical_mv_rows": 0,
-        "canonical_mv_ratio": 0.0,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 10,
-        "mv_unresolved_ratio": 1.0,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2012": {
-        "total_rows": 15,
-        "detail_payload_rows": 15,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 15,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 15,
-        "title_track_resolved_ratio": 1.0,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 0,
-        "title_track_unresolved_ratio": 0.0,
-        "canonical_mv_rows": 0,
-        "canonical_mv_ratio": 0.0,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 15,
-        "mv_unresolved_ratio": 1.0,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2013": {
-        "total_rows": 19,
-        "detail_payload_rows": 19,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 19,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 15,
-        "title_track_resolved_ratio": 0.7895,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 4,
-        "title_track_unresolved_ratio": 0.2105,
-        "canonical_mv_rows": 0,
-        "canonical_mv_ratio": 0.0,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 19,
-        "mv_unresolved_ratio": 1.0,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2014": {
-        "total_rows": 24,
-        "detail_payload_rows": 24,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 24,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 21,
-        "title_track_resolved_ratio": 0.875,
-        "title_track_review_rows": 1,
-        "title_track_review_ratio": 0.0417,
-        "title_track_unresolved_rows": 2,
-        "title_track_unresolved_ratio": 0.0833,
-        "canonical_mv_rows": 3,
-        "canonical_mv_ratio": 0.125,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 21,
-        "mv_unresolved_ratio": 0.875,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2015": {
-        "total_rows": 36,
-        "detail_payload_rows": 36,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 36,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 30,
-        "title_track_resolved_ratio": 0.8333,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 6,
-        "title_track_unresolved_ratio": 0.1667,
-        "canonical_mv_rows": 6,
-        "canonical_mv_ratio": 0.1667,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 30,
-        "mv_unresolved_ratio": 0.8333,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2016": {
-        "total_rows": 49,
-        "detail_payload_rows": 49,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 49,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 34,
-        "title_track_resolved_ratio": 0.6939,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 15,
-        "title_track_unresolved_ratio": 0.3061,
-        "canonical_mv_rows": 4,
-        "canonical_mv_ratio": 0.0816,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 45,
-        "mv_unresolved_ratio": 0.9184,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2017": {
-        "total_rows": 75,
-        "detail_payload_rows": 75,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 75,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 47,
-        "title_track_resolved_ratio": 0.6267,
-        "title_track_review_rows": 1,
-        "title_track_review_ratio": 0.0133,
-        "title_track_unresolved_rows": 27,
-        "title_track_unresolved_ratio": 0.36,
-        "canonical_mv_rows": 9,
-        "canonical_mv_ratio": 0.12,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 66,
-        "mv_unresolved_ratio": 0.88,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2018": {
-        "total_rows": 93,
-        "detail_payload_rows": 93,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 93,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 66,
-        "title_track_resolved_ratio": 0.7097,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 27,
-        "title_track_unresolved_ratio": 0.2903,
-        "canonical_mv_rows": 10,
-        "canonical_mv_ratio": 0.1075,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 82,
-        "mv_unresolved_ratio": 0.8817,
-        "mv_no_mv_rows": 1,
-        "mv_no_mv_ratio": 0.0108
-      },
-      "2019": {
-        "total_rows": 107,
-        "detail_payload_rows": 107,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 107,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 67,
-        "title_track_resolved_ratio": 0.6262,
-        "title_track_review_rows": 1,
-        "title_track_review_ratio": 0.0093,
-        "title_track_unresolved_rows": 39,
-        "title_track_unresolved_ratio": 0.3645,
-        "canonical_mv_rows": 6,
-        "canonical_mv_ratio": 0.0561,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 101,
-        "mv_unresolved_ratio": 0.9439,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2020": {
-        "total_rows": 128,
-        "detail_payload_rows": 128,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 128,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 83,
-        "title_track_resolved_ratio": 0.6484,
-        "title_track_review_rows": 1,
-        "title_track_review_ratio": 0.0078,
-        "title_track_unresolved_rows": 44,
-        "title_track_unresolved_ratio": 0.3438,
-        "canonical_mv_rows": 15,
-        "canonical_mv_ratio": 0.1172,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 113,
-        "mv_unresolved_ratio": 0.8828,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2021": {
-        "total_rows": 163,
-        "detail_payload_rows": 163,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 163,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 98,
-        "title_track_resolved_ratio": 0.6012,
-        "title_track_review_rows": 1,
-        "title_track_review_ratio": 0.0061,
-        "title_track_unresolved_rows": 64,
-        "title_track_unresolved_ratio": 0.3926,
-        "canonical_mv_rows": 10,
-        "canonical_mv_ratio": 0.0613,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 153,
-        "mv_unresolved_ratio": 0.9387,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
-      "2022": {
-        "total_rows": 194,
-        "detail_payload_rows": 194,
-        "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 194,
-        "detail_trusted_ratio": 1.0,
-        "detail_inferred_rows": 0,
-        "detail_inferred_ratio": 0.0,
-        "detail_review_rows": 0,
-        "detail_review_ratio": 0.0,
-        "detail_unresolved_rows": 0,
-        "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 107,
-        "title_track_resolved_ratio": 0.5515,
-        "title_track_review_rows": 0,
-        "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 87,
-        "title_track_unresolved_ratio": 0.4485,
-        "canonical_mv_rows": 7,
-        "canonical_mv_ratio": 0.0361,
-        "mv_review_rows": 0,
-        "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 187,
-        "mv_unresolved_ratio": 0.9639,
-        "mv_no_mv_rows": 0,
-        "mv_no_mv_ratio": 0.0
-      },
       "2023": {
-        "total_rows": 228,
-        "detail_payload_rows": 228,
+        "total_rows": 198,
+        "detail_payload_rows": 198,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 228,
+        "detail_trusted_rows": 198,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -581,18 +185,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 150,
-        "title_track_resolved_ratio": 0.6579,
+        "title_track_resolved_rows": 131,
+        "title_track_resolved_ratio": 0.6616,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 78,
-        "title_track_unresolved_ratio": 0.3421,
-        "canonical_mv_rows": 2,
-        "canonical_mv_ratio": 0.0088,
+        "title_track_unresolved_rows": 67,
+        "title_track_unresolved_ratio": 0.3384,
+        "canonical_mv_rows": 0,
+        "canonical_mv_ratio": 0.0,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 226,
-        "mv_unresolved_ratio": 0.9912,
+        "mv_unresolved_rows": 198,
+        "mv_unresolved_ratio": 1.0,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -608,12 +212,12 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 223,
-        "title_track_resolved_ratio": 0.7013,
+        "title_track_resolved_rows": 224,
+        "title_track_resolved_ratio": 0.7044,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 95,
-        "title_track_unresolved_ratio": 0.2987,
+        "title_track_unresolved_rows": 94,
+        "title_track_unresolved_ratio": 0.2956,
         "canonical_mv_rows": 7,
         "canonical_mv_ratio": 0.022,
         "mv_review_rows": 0,
@@ -680,10 +284,10 @@
     },
     "by_release_kind": {
       "album": {
-        "total_rows": 188,
-        "detail_payload_rows": 188,
+        "total_rows": 68,
+        "detail_payload_rows": 68,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 188,
+        "detail_trusted_rows": 68,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -691,26 +295,26 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 102,
-        "title_track_resolved_ratio": 0.5426,
-        "title_track_review_rows": 4,
-        "title_track_review_ratio": 0.0213,
-        "title_track_unresolved_rows": 82,
-        "title_track_unresolved_ratio": 0.4362,
-        "canonical_mv_rows": 13,
-        "canonical_mv_ratio": 0.0691,
+        "title_track_resolved_rows": 36,
+        "title_track_resolved_ratio": 0.5294,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
+        "title_track_unresolved_rows": 32,
+        "title_track_unresolved_ratio": 0.4706,
+        "canonical_mv_rows": 2,
+        "canonical_mv_ratio": 0.0294,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 175,
-        "mv_unresolved_ratio": 0.9309,
+        "mv_unresolved_rows": 66,
+        "mv_unresolved_ratio": 0.9706,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
       "ep": {
-        "total_rows": 683,
-        "detail_payload_rows": 683,
+        "total_rows": 301,
+        "detail_payload_rows": 301,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 683,
+        "detail_trusted_rows": 301,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -718,26 +322,26 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 300,
-        "title_track_resolved_ratio": 0.4392,
-        "title_track_review_rows": 1,
-        "title_track_review_ratio": 0.0015,
-        "title_track_unresolved_rows": 382,
-        "title_track_unresolved_ratio": 0.5593,
-        "canonical_mv_rows": 48,
-        "canonical_mv_ratio": 0.0703,
+        "title_track_resolved_rows": 142,
+        "title_track_resolved_ratio": 0.4718,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
+        "title_track_unresolved_rows": 159,
+        "title_track_unresolved_ratio": 0.5282,
+        "canonical_mv_rows": 24,
+        "canonical_mv_ratio": 0.0797,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 635,
-        "mv_unresolved_ratio": 0.9297,
+        "mv_unresolved_rows": 277,
+        "mv_unresolved_ratio": 0.9203,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
       "single": {
-        "total_rows": 899,
-        "detail_payload_rows": 899,
+        "total_rows": 446,
+        "detail_payload_rows": 446,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 899,
+        "detail_trusted_rows": 446,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -745,20 +349,20 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 799,
-        "title_track_resolved_ratio": 0.8888,
+        "title_track_resolved_rows": 403,
+        "title_track_resolved_ratio": 0.9036,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 100,
-        "title_track_unresolved_ratio": 0.1112,
-        "canonical_mv_rows": 92,
-        "canonical_mv_ratio": 0.1023,
+        "title_track_unresolved_rows": 43,
+        "title_track_unresolved_ratio": 0.0964,
+        "canonical_mv_rows": 53,
+        "canonical_mv_ratio": 0.1188,
         "mv_review_rows": 2,
-        "mv_review_ratio": 0.0022,
-        "mv_unresolved_rows": 804,
-        "mv_unresolved_ratio": 0.8943,
-        "mv_no_mv_rows": 1,
-        "mv_no_mv_ratio": 0.0011
+        "mv_review_ratio": 0.0045,
+        "mv_unresolved_rows": 391,
+        "mv_unresolved_ratio": 0.8767,
+        "mv_no_mv_rows": 0,
+        "mv_no_mv_ratio": 0.0
       }
     }
   },
@@ -767,29 +371,15 @@
       {
         "year_band": "2021-2023",
         "release_kind": "ep",
-        "total_rows": 252,
-        "resolved_rows": 79,
-        "resolved_ratio": 0.3135,
+        "total_rows": 77,
+        "resolved_rows": 25,
+        "resolved_ratio": 0.3247,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 173,
-        "unresolved_ratio": 0.6865,
+        "unresolved_rows": 52,
+        "unresolved_ratio": 0.6753,
         "threshold": 0.74,
-        "gap_to_target": 0.4265,
-        "status": "fail"
-      },
-      {
-        "year_band": "2024+",
-        "release_kind": "album",
-        "total_rows": 50,
-        "resolved_rows": 23,
-        "resolved_ratio": 0.46,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 27,
-        "unresolved_ratio": 0.54,
-        "threshold": 0.76,
-        "gap_to_target": 0.3,
+        "gap_to_target": 0.4153,
         "status": "fail"
       },
       {
@@ -807,45 +397,31 @@
         "status": "fail"
       },
       {
-        "year_band": "2018-2020",
-        "release_kind": "ep",
-        "total_rows": 132,
-        "resolved_rows": 58,
-        "resolved_ratio": 0.4394,
+        "year_band": "2024+",
+        "release_kind": "album",
+        "total_rows": 50,
+        "resolved_rows": 24,
+        "resolved_ratio": 0.48,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 74,
-        "unresolved_ratio": 0.5606,
-        "threshold": 0.68,
-        "gap_to_target": 0.2406,
+        "unresolved_rows": 26,
+        "unresolved_ratio": 0.52,
+        "threshold": 0.76,
+        "gap_to_target": 0.28,
         "status": "fail"
       },
       {
         "year_band": "2021-2023",
         "release_kind": "album",
-        "total_rows": 63,
-        "resolved_rows": 34,
-        "resolved_ratio": 0.5397,
-        "review_rows": 1,
-        "review_ratio": 0.0159,
-        "unresolved_rows": 28,
-        "unresolved_ratio": 0.4444,
+        "total_rows": 18,
+        "resolved_rows": 12,
+        "resolved_ratio": 0.6667,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 6,
+        "unresolved_ratio": 0.3333,
         "threshold": 0.68,
-        "gap_to_target": 0.1403,
-        "status": "fail"
-      },
-      {
-        "year_band": "2018-2020",
-        "release_kind": "album",
-        "total_rows": 37,
-        "resolved_rows": 19,
-        "resolved_ratio": 0.5135,
-        "review_rows": 2,
-        "review_ratio": 0.0541,
-        "unresolved_rows": 16,
-        "unresolved_ratio": 0.4324,
-        "threshold": 0.62,
-        "gap_to_target": 0.1065,
+        "gap_to_target": 0.0133,
         "status": "fail"
       },
       {
@@ -865,70 +441,14 @@
       {
         "year_band": "2021-2023",
         "release_kind": "single",
-        "total_rows": 270,
-        "resolved_rows": 242,
-        "resolved_ratio": 0.8963,
+        "total_rows": 103,
+        "resolved_rows": 94,
+        "resolved_ratio": 0.9126,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 28,
-        "unresolved_ratio": 0.1037,
+        "unresolved_rows": 9,
+        "unresolved_ratio": 0.0874,
         "threshold": 0.84,
-        "gap_to_target": 0.0,
-        "status": "pass"
-      },
-      {
-        "year_band": "<=2017",
-        "release_kind": "ep",
-        "total_rows": 75,
-        "resolved_rows": 46,
-        "resolved_ratio": 0.6133,
-        "review_rows": 1,
-        "review_ratio": 0.0133,
-        "unresolved_rows": 28,
-        "unresolved_ratio": 0.3733,
-        "threshold": 0.6,
-        "gap_to_target": 0.0,
-        "status": "pass"
-      },
-      {
-        "year_band": "2018-2020",
-        "release_kind": "single",
-        "total_rows": 159,
-        "resolved_rows": 139,
-        "resolved_ratio": 0.8742,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 20,
-        "unresolved_ratio": 0.1258,
-        "threshold": 0.78,
-        "gap_to_target": 0.0,
-        "status": "pass"
-      },
-      {
-        "year_band": "<=2017",
-        "release_kind": "single",
-        "total_rows": 127,
-        "resolved_rows": 109,
-        "resolved_ratio": 0.8583,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 18,
-        "unresolved_ratio": 0.1417,
-        "threshold": 0.7,
-        "gap_to_target": 0.0,
-        "status": "pass"
-      },
-      {
-        "year_band": "<=2017",
-        "release_kind": "album",
-        "total_rows": 38,
-        "resolved_rows": 26,
-        "resolved_ratio": 0.6842,
-        "review_rows": 1,
-        "review_ratio": 0.0263,
-        "unresolved_rows": 11,
-        "unresolved_ratio": 0.2895,
-        "threshold": 0.55,
         "gap_to_target": 0.0,
         "status": "pass"
       }
@@ -951,15 +471,15 @@
       {
         "year_band": "2021-2023",
         "release_kind": "single",
-        "total_rows": 270,
-        "resolved_rows": 13,
-        "resolved_ratio": 0.0481,
+        "total_rows": 103,
+        "resolved_rows": 0,
+        "resolved_ratio": 0.0,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 257,
-        "unresolved_ratio": 0.9519,
+        "unresolved_rows": 103,
+        "unresolved_ratio": 1.0,
         "threshold": 0.5,
-        "gap_to_target": 0.4519,
+        "gap_to_target": 0.5,
         "status": "fail"
       },
       {
@@ -993,114 +513,30 @@
       {
         "year_band": "2021-2023",
         "release_kind": "ep",
-        "total_rows": 252,
-        "resolved_rows": 4,
-        "resolved_ratio": 0.0159,
+        "total_rows": 77,
+        "resolved_rows": 0,
+        "resolved_ratio": 0.0,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 248,
-        "unresolved_ratio": 0.9841,
+        "unresolved_rows": 77,
+        "unresolved_ratio": 1.0,
         "threshold": 0.35,
-        "gap_to_target": 0.3341,
+        "gap_to_target": 0.35,
         "status": "fail"
       },
       {
         "year_band": "2021-2023",
         "release_kind": "album",
-        "total_rows": 63,
-        "resolved_rows": 2,
-        "resolved_ratio": 0.0317,
+        "total_rows": 18,
+        "resolved_rows": 0,
+        "resolved_ratio": 0.0,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 61,
-        "unresolved_ratio": 0.9683,
+        "unresolved_rows": 18,
+        "unresolved_ratio": 1.0,
         "threshold": 0.28,
-        "gap_to_target": 0.2483,
+        "gap_to_target": 0.28,
         "status": "fail"
-      },
-      {
-        "year_band": "2018-2020",
-        "release_kind": "single",
-        "total_rows": 159,
-        "resolved_rows": 16,
-        "resolved_ratio": 0.1006,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 143,
-        "unresolved_ratio": 0.8994,
-        "threshold": 0.32,
-        "gap_to_target": 0.2194,
-        "status": "fail"
-      },
-      {
-        "year_band": "2018-2020",
-        "release_kind": "ep",
-        "total_rows": 132,
-        "resolved_rows": 10,
-        "resolved_ratio": 0.0758,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 122,
-        "unresolved_ratio": 0.9242,
-        "threshold": 0.22,
-        "gap_to_target": 0.1442,
-        "status": "fail"
-      },
-      {
-        "year_band": "<=2017",
-        "release_kind": "single",
-        "total_rows": 127,
-        "resolved_rows": 10,
-        "resolved_ratio": 0.0787,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 117,
-        "unresolved_ratio": 0.9213,
-        "threshold": 0.2,
-        "gap_to_target": 0.1213,
-        "status": "fail"
-      },
-      {
-        "year_band": "2018-2020",
-        "release_kind": "album",
-        "total_rows": 37,
-        "resolved_rows": 5,
-        "resolved_ratio": 0.1351,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 32,
-        "unresolved_ratio": 0.8649,
-        "threshold": 0.16,
-        "gap_to_target": 0.0249,
-        "status": "fail"
-      },
-      {
-        "year_band": "<=2017",
-        "release_kind": "ep",
-        "total_rows": 75,
-        "resolved_rows": 10,
-        "resolved_ratio": 0.1333,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 65,
-        "unresolved_ratio": 0.8667,
-        "threshold": 0.12,
-        "gap_to_target": 0.0,
-        "status": "pass"
-      },
-      {
-        "year_band": "<=2017",
-        "release_kind": "album",
-        "total_rows": 38,
-        "resolved_rows": 4,
-        "resolved_ratio": 0.1053,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 34,
-        "unresolved_ratio": 0.8947,
-        "threshold": 0.08,
-        "gap_to_target": 0.0,
-        "status": "pass"
       }
     ]
   },
@@ -1109,166 +545,166 @@
       "detail": [],
       "title_track": [
         {
-          "group": "DAY6",
-          "total_rows": 30,
+          "group": "tripleS",
+          "total_rows": 17,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 22,
-          "mv_gap_rows": 29,
-          "title_track_gap_ratio": 0.7333
+          "title_track_gap_rows": 10,
+          "mv_gap_rows": 16,
+          "title_track_gap_ratio": 0.5882
         },
         {
-          "group": "Dreamcatcher",
-          "total_rows": 25,
+          "group": "Xdinary Heroes",
+          "total_rows": 10,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 17,
-          "mv_gap_rows": 25,
-          "title_track_gap_ratio": 0.68
+          "title_track_gap_rows": 8,
+          "mv_gap_rows": 10,
+          "title_track_gap_ratio": 0.8
         },
         {
-          "group": "ATEEZ",
-          "total_rows": 42,
+          "group": "BOYNEXTDOOR",
+          "total_rows": 11,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 15,
-          "mv_gap_rows": 42,
-          "title_track_gap_ratio": 0.3571
+          "title_track_gap_rows": 7,
+          "mv_gap_rows": 11,
+          "title_track_gap_ratio": 0.6364
         },
         {
-          "group": "MONSTA X",
-          "total_rows": 60,
+          "group": "Purple Kiss",
+          "total_rows": 8,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 14,
-          "mv_gap_rows": 60,
-          "title_track_gap_ratio": 0.2333
-        },
-        {
-          "group": "ONEWE",
-          "total_rows": 26,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 14,
-          "mv_gap_rows": 24,
-          "title_track_gap_ratio": 0.5385
-        },
-        {
-          "group": "THE BOYZ",
-          "total_rows": 40,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 13,
-          "mv_gap_rows": 40,
-          "title_track_gap_ratio": 0.325
-        },
-        {
-          "group": "SEVENTEEN",
-          "total_rows": 38,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 13,
-          "mv_gap_rows": 33,
-          "title_track_gap_ratio": 0.3421
+          "title_track_gap_rows": 7,
+          "mv_gap_rows": 7,
+          "title_track_gap_ratio": 0.875
         },
         {
           "group": "TOMORROW X TOGETHER",
-          "total_rows": 34,
+          "total_rows": 17,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 13,
-          "mv_gap_rows": 33,
-          "title_track_gap_ratio": 0.3824
+          "title_track_gap_rows": 6,
+          "mv_gap_rows": 16,
+          "title_track_gap_ratio": 0.3529
+        },
+        {
+          "group": "YOUNITE",
+          "total_rows": 6,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 6,
+          "mv_gap_rows": 6,
+          "title_track_gap_ratio": 1.0
+        },
+        {
+          "group": "Stray Kids",
+          "total_rows": 17,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 16,
+          "title_track_gap_ratio": 0.2941
+        },
+        {
+          "group": "THE BOYZ",
+          "total_rows": 14,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 14,
+          "title_track_gap_ratio": 0.3571
         },
         {
           "group": "ONEUS",
-          "total_rows": 30,
+          "total_rows": 10,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 12,
-          "mv_gap_rows": 27,
-          "title_track_gap_ratio": 0.4
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 8,
+          "title_track_gap_ratio": 0.5
         },
         {
-          "group": "VERIVERY",
-          "total_rows": 14,
+          "group": "STAYC",
+          "total_rows": 9,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 12,
-          "mv_gap_rows": 13,
-          "title_track_gap_ratio": 0.8571
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 8,
+          "title_track_gap_ratio": 0.5556
         }
       ],
       "mv": [
         {
-          "group": "MONSTA X",
-          "total_rows": 60,
+          "group": "IVE",
+          "total_rows": 22,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 14,
-          "mv_gap_rows": 60,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "SHINee",
-          "total_rows": 48,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 3,
-          "mv_gap_rows": 43,
-          "mv_gap_ratio": 0.8958
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 21,
+          "mv_gap_ratio": 0.9545
         },
         {
           "group": "ATEEZ",
-          "total_rows": 42,
+          "total_rows": 19,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 15,
-          "mv_gap_rows": 42,
+          "title_track_gap_rows": 3,
+          "mv_gap_rows": 19,
           "mv_gap_ratio": 1.0
+        },
+        {
+          "group": "LE SSERAFIM",
+          "total_rows": 17,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 0,
+          "mv_gap_rows": 17,
+          "mv_gap_ratio": 1.0
+        },
+        {
+          "group": "aespa",
+          "total_rows": 18,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 16,
+          "mv_gap_ratio": 0.8889
         },
         {
           "group": "Stray Kids",
-          "total_rows": 42,
+          "total_rows": 17,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 11,
-          "mv_gap_rows": 41,
-          "mv_gap_ratio": 0.9762
-        },
-        {
-          "group": "BTOB",
-          "total_rows": 40,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 9,
-          "mv_gap_rows": 40,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "THE BOYZ",
-          "total_rows": 40,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 13,
-          "mv_gap_rows": 40,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "SEVENTEEN",
-          "total_rows": 38,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 13,
-          "mv_gap_rows": 33,
-          "mv_gap_ratio": 0.8684
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 16,
+          "mv_gap_ratio": 0.9412
         },
         {
           "group": "TOMORROW X TOGETHER",
-          "total_rows": 34,
+          "total_rows": 17,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 13,
-          "mv_gap_rows": 33,
-          "mv_gap_ratio": 0.9706
+          "title_track_gap_rows": 6,
+          "mv_gap_rows": 16,
+          "mv_gap_ratio": 0.9412
         },
         {
-          "group": "MAMAMOO",
-          "total_rows": 32,
+          "group": "tripleS",
+          "total_rows": 17,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 9,
-          "mv_gap_rows": 32,
+          "title_track_gap_rows": 10,
+          "mv_gap_rows": 16,
+          "mv_gap_ratio": 0.9412
+        },
+        {
+          "group": "RIIZE",
+          "total_rows": 15,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 1,
+          "mv_gap_rows": 14,
+          "mv_gap_ratio": 0.9333
+        },
+        {
+          "group": "THE BOYZ",
+          "total_rows": 14,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 5,
+          "mv_gap_rows": 14,
           "mv_gap_ratio": 1.0
         },
         {
-          "group": "CHUNG HA",
-          "total_rows": 32,
+          "group": "Kep1er",
+          "total_rows": 13,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 4,
-          "mv_gap_rows": 31,
-          "mv_gap_ratio": 0.9688
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 13,
+          "mv_gap_ratio": 1.0
         }
       ]
     },
@@ -1276,166 +712,166 @@
       "detail": [],
       "title_track": [
         {
-          "group": "DAY6",
-          "total_rows": 25,
+          "group": "tripleS",
+          "total_rows": 6,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 18,
-          "mv_gap_rows": 25,
-          "title_track_gap_ratio": 0.72
+          "title_track_gap_rows": 3,
+          "mv_gap_rows": 6,
+          "title_track_gap_ratio": 0.5
         },
         {
-          "group": "Dreamcatcher",
-          "total_rows": 23,
+          "group": "ENHYPEN",
+          "total_rows": 4,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 16,
-          "mv_gap_rows": 23,
-          "title_track_gap_ratio": 0.6957
+          "title_track_gap_rows": 3,
+          "mv_gap_rows": 4,
+          "title_track_gap_ratio": 0.75
         },
         {
-          "group": "MONSTA X",
-          "total_rows": 56,
+          "group": "Kep1er",
+          "total_rows": 6,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 13,
-          "mv_gap_rows": 56,
-          "title_track_gap_ratio": 0.2321
-        },
-        {
-          "group": "ATEEZ",
-          "total_rows": 26,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 12,
-          "mv_gap_rows": 26,
-          "title_track_gap_ratio": 0.4615
-        },
-        {
-          "group": "VERIVERY",
-          "total_rows": 13,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 12,
-          "mv_gap_rows": 13,
-          "title_track_gap_ratio": 0.9231
-        },
-        {
-          "group": "SEVENTEEN",
-          "total_rows": 32,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 11,
-          "mv_gap_rows": 27,
-          "title_track_gap_ratio": 0.3438
-        },
-        {
-          "group": "ONEWE",
-          "total_rows": 21,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 11,
-          "mv_gap_rows": 21,
-          "title_track_gap_ratio": 0.5238
-        },
-        {
-          "group": "THE BOYZ",
-          "total_rows": 32,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 32,
-          "title_track_gap_ratio": 0.3125
-        },
-        {
-          "group": "Red Velvet",
-          "total_rows": 30,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 30,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 6,
           "title_track_gap_ratio": 0.3333
         },
         {
-          "group": "INFINITE",
-          "total_rows": 29,
+          "group": "THE BOYZ",
+          "total_rows": 6,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 29,
-          "title_track_gap_ratio": 0.3448
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 6,
+          "title_track_gap_ratio": 0.3333
+        },
+        {
+          "group": "SEVENTEEN",
+          "total_rows": 5,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 5,
+          "title_track_gap_ratio": 0.4
+        },
+        {
+          "group": "DKB",
+          "total_rows": 4,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 4,
+          "title_track_gap_ratio": 0.5
+        },
+        {
+          "group": "BOYNEXTDOOR",
+          "total_rows": 2,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 2,
+          "title_track_gap_ratio": 1.0
+        },
+        {
+          "group": "Dreamcatcher",
+          "total_rows": 2,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 2,
+          "title_track_gap_ratio": 1.0
+        },
+        {
+          "group": "KISS OF LIFE",
+          "total_rows": 2,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 2,
+          "title_track_gap_ratio": 1.0
+        },
+        {
+          "group": "ONEUS",
+          "total_rows": 2,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 2,
+          "title_track_gap_ratio": 1.0
         }
       ],
       "mv": [
         {
-          "group": "MONSTA X",
-          "total_rows": 56,
+          "group": "IVE",
+          "total_rows": 8,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 13,
-          "mv_gap_rows": 56,
+          "title_track_gap_rows": 0,
+          "mv_gap_rows": 8,
           "mv_gap_ratio": 1.0
         },
         {
-          "group": "SHINee",
-          "total_rows": 47,
+          "group": "aespa",
+          "total_rows": 6,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 3,
-          "mv_gap_rows": 43,
-          "mv_gap_ratio": 0.9149
-        },
-        {
-          "group": "BTOB",
-          "total_rows": 37,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 9,
-          "mv_gap_rows": 37,
+          "title_track_gap_rows": 0,
+          "mv_gap_rows": 6,
           "mv_gap_ratio": 1.0
         },
         {
-          "group": "MAMAMOO",
-          "total_rows": 32,
+          "group": "Kep1er",
+          "total_rows": 6,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 9,
-          "mv_gap_rows": 32,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 6,
           "mv_gap_ratio": 1.0
         },
         {
           "group": "THE BOYZ",
-          "total_rows": 32,
+          "total_rows": 6,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 32,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 6,
           "mv_gap_ratio": 1.0
         },
         {
-          "group": "Red Velvet",
-          "total_rows": 30,
+          "group": "tripleS",
+          "total_rows": 6,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 30,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "INFINITE",
-          "total_rows": 29,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 29,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "Stray Kids",
-          "total_rows": 28,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 7,
-          "mv_gap_rows": 28,
+          "title_track_gap_rows": 3,
+          "mv_gap_rows": 6,
           "mv_gap_ratio": 1.0
         },
         {
           "group": "SEVENTEEN",
-          "total_rows": 32,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 11,
-          "mv_gap_rows": 27,
-          "mv_gap_ratio": 0.8438
-        },
-        {
-          "group": "CHUNG HA",
-          "total_rows": 27,
+          "total_rows": 5,
           "detail_gap_rows": 0,
           "title_track_gap_rows": 2,
-          "mv_gap_rows": 26,
-          "mv_gap_ratio": 0.963
+          "mv_gap_rows": 5,
+          "mv_gap_ratio": 1.0
+        },
+        {
+          "group": "TOMORROW X TOGETHER",
+          "total_rows": 5,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 1,
+          "mv_gap_rows": 5,
+          "mv_gap_ratio": 1.0
+        },
+        {
+          "group": "CHUU",
+          "total_rows": 4,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 0,
+          "mv_gap_rows": 4,
+          "mv_gap_ratio": 1.0
+        },
+        {
+          "group": "DKB",
+          "total_rows": 4,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 4,
+          "mv_gap_ratio": 1.0
+        },
+        {
+          "group": "ENHYPEN",
+          "total_rows": 4,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 3,
+          "mv_gap_rows": 4,
+          "mv_gap_ratio": 1.0
         }
       ]
     }
@@ -1460,128 +896,128 @@
       },
       {
         "group": "(G)I-DLE",
-        "release_title": "I am",
-        "release_date": "2018-05-02",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 6
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "ONE",
-        "release_date": "2018-06-17",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 4
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "I made",
-        "release_date": "2019-02-26",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 5
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "Queendom < Box of Pandora > Pt. 1",
-        "release_date": "2019-10-18",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 2
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "Sugar Man 3, EPISODE.8",
-        "release_date": "2020-02-01",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 4
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "I trust",
-        "release_date": "2020-04-06",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 5
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "I burn",
-        "release_date": "2021-01-11",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 6
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "I NEVER DIE",
-        "release_date": "2022-03-14",
-        "stream": "album",
-        "release_kind": "album",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 9
-      },
-      {
-        "group": "(G)I-DLE",
         "release_title": "I feel",
         "release_date": "2023-05-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 6
+      },
+      {
+        "group": "(G)I-DLE",
+        "release_title": "I SWAY",
+        "release_date": "2024-07-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 4
+      },
+      {
+        "group": "(G)I-DLE",
+        "release_title": "We are",
+        "release_date": "2025-05-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 6
+      },
+      {
+        "group": "82MAJOR",
+        "release_title": "BEAT by 82",
+        "release_date": "2024-04-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 4
+      },
+      {
+        "group": "82MAJOR",
+        "release_title": "X-82",
+        "release_date": "2024-11-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 4
+      },
+      {
+        "group": "82MAJOR",
+        "release_title": "SILENCE SYNDROME",
+        "release_date": "2025-04-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 4
+      },
+      {
+        "group": "8TURN",
+        "release_title": "UNCHARTED DRIFT",
+        "release_date": "2023-06-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 5
+      },
+      {
+        "group": "8TURN",
+        "release_title": "STUNNING",
+        "release_date": "2024-01-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 5
+      },
+      {
+        "group": "8TURN",
+        "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+        "release_date": "2024-10-31",
         "stream": "album",
         "release_kind": "ep",
         "detail_status": "verified",
@@ -1595,40 +1031,6 @@
       }
     ],
     "mv_gap_rows": [
-      {
-        "group": "&TEAM",
-        "release_title": "Under the skin",
-        "release_date": "2022-11-21",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "verified",
-        "title_track_provenance": "releaseDetails.existing_title_flags",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [
-          "Under the skin"
-        ],
-        "track_count": 1
-      },
-      {
-        "group": "&TEAM",
-        "release_title": "First Howling : ME",
-        "release_date": "2022-12-06",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "verified",
-        "title_track_provenance": "releaseDetails.existing_title_flags",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [
-          "Under the Skin"
-        ],
-        "track_count": 4
-      },
       {
         "group": "&TEAM",
         "release_title": "Blind Love",
@@ -1762,6 +1164,41 @@
           "Beat the odds"
         ],
         "track_count": 1
+      },
+      {
+        "group": "&TEAM",
+        "release_title": "雪明かり (Yukiakari)",
+        "release_date": "2024-12-17",
+        "stream": "album",
+        "release_kind": "album",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [
+          "雪明かり (Yukiakari)"
+        ],
+        "track_count": 22
+      },
+      {
+        "group": "&TEAM",
+        "release_title": "Magic Hour / Wonderful World",
+        "release_date": "2025-01-08",
+        "stream": "song",
+        "release_kind": "single",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [
+          "Magic Hour",
+          "Wonderful World"
+        ],
+        "track_count": 2
       }
     ]
   },
@@ -1793,15 +1230,15 @@
       },
       "title_track_resolved": {
         "status": "fail",
-        "observed_total": 0.6785,
-        "observed_pre_2024": 0.6522,
+        "observed_total": 0.7129,
+        "observed_pre_2024": 0.6616,
         "threshold_total": 0.8,
         "threshold_pre_2024": 0.6
       },
       "canonical_mv": {
         "status": "fail",
-        "observed_total": 0.0864,
-        "observed_pre_2024": 0.0642,
+        "observed_total": 0.0969,
+        "observed_pre_2024": 0.0,
         "threshold_total": 0.65,
         "threshold_pre_2024": 0.35
       }
@@ -1812,8 +1249,8 @@
     "summary_lines": [
       "detail payload gate: pass (total 100.0%, pre-2024 100.0%)",
       "detail trusted gate: pass (total 100.0%, pre-2024 100.0%)",
-      "title-track resolved gate: fail (total 67.8%, pre-2024 65.2%)",
-      "canonical MV gate: fail (total 8.6%, pre-2024 6.4%)"
+      "title-track resolved gate: fail (total 71.3%, pre-2024 66.2%)",
+      "canonical MV gate: fail (total 9.7%, pre-2024 0.0%)"
     ]
   },
   "migration_priority_slice": {
@@ -1826,30 +1263,428 @@
       "TWICE"
     ],
     "expected_rows": 18,
-    "rows_before": 18,
-    "rows_after": 18,
-    "missing_rows_before": [],
-    "missing_rows_after": [],
+    "rows_before": 0,
+    "rows_after": 0,
+    "missing_rows_before": [
+      {
+        "group": "BTS",
+        "release_title": "DARK&WILD",
+        "release_date": "2014-08-20",
+        "stream": "album",
+        "title_tracks": [
+          "Danger"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=43r6lXilbcQ",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "화양연화 pt.1",
+        "release_date": "2015-04-29",
+        "stream": "album",
+        "title_tracks": [
+          "I NEED U"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=jjskoRh8GTE",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "LOVE YOURSELF 承 ‘Her’",
+        "release_date": "2017-04-10",
+        "stream": "album",
+        "title_tracks": [
+          "DNA"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=MBdVXkSdhwU",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "LOVE YOURSELF 轉 ‘Tear’",
+        "release_date": "2018-05-18",
+        "stream": "album",
+        "title_tracks": [
+          "FAKE LOVE"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=7C2z4GqqS5E",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "MAP OF THE SOUL : PERSONA",
+        "release_date": "2019-04-12",
+        "stream": "album",
+        "title_tracks": [
+          "작은 것들을 위한 시 (Boy With Luv)"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=XsX3ATc3FbA",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BLACKPINK",
+        "release_title": "SQUARE UP",
+        "release_date": "2018-06-15",
+        "stream": "album",
+        "title_tracks": [
+          "뚜두뚜두 (DDU-DU DDU-DU)"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=IHNzOHi8sJs",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "THE STORY BEGINS",
+        "release_date": "2015-10-20",
+        "stream": "album",
+        "title_tracks": [
+          "OOH-AHH하게"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=0rtV5esQT6I",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "PAGE TWO",
+        "release_date": "2016-04-25",
+        "stream": "album",
+        "title_tracks": [
+          "CHEER UP"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=c7rCyll5AeY",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "TWICEcoaster : LANE 1",
+        "release_date": "2016-10-24",
+        "stream": "album",
+        "title_tracks": [
+          "TT"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=ePpPVE-GGJw",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "twicetagram",
+        "release_date": "2017-10-30",
+        "stream": "album",
+        "title_tracks": [
+          "LIKEY"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=V2hlQkVJZhE",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "Eyes wide open",
+        "release_date": "2020-10-26",
+        "stream": "album",
+        "title_tracks": [
+          "I CAN'T STOP ME"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=CM4CkVFmTds",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SEVENTEEN",
+        "release_title": "17 CARAT",
+        "release_date": "2015-05-29",
+        "stream": "album",
+        "title_tracks": [
+          "아낀다"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=9rUFQJrCT7M",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SEVENTEEN",
+        "release_title": "BOYS BE",
+        "release_date": "2015-09-10",
+        "stream": "album",
+        "title_tracks": [
+          "만세"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=9M7k9ZV67c0",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SEVENTEEN",
+        "release_title": "TEEN, AGE",
+        "release_date": "2017-11-06",
+        "stream": "album",
+        "title_tracks": [
+          "박수"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=CyzEtbG-sxY",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "Romeo",
+        "release_date": "2009-05-18",
+        "stream": "album",
+        "title_tracks": [
+          "Juliette"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=XwkP3qfwqs8",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "2009, Year of Us",
+        "release_date": "2009-10-19",
+        "stream": "album",
+        "title_tracks": [
+          "Ring Ding Dong"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=roughtzsCDI",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "Odd",
+        "release_date": "2015-05-18",
+        "stream": "album",
+        "title_tracks": [
+          "View"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=UF53cptEE5k",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "The Story of Light EP.1",
+        "release_date": "2018-05-28",
+        "stream": "album",
+        "title_tracks": [
+          "Good Evening"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=7dGwk5-QMpc",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      }
+    ],
+    "missing_rows_after": [
+      {
+        "group": "BTS",
+        "release_title": "DARK&WILD",
+        "release_date": "2014-08-20",
+        "stream": "album",
+        "title_tracks": [
+          "Danger"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=43r6lXilbcQ",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "화양연화 pt.1",
+        "release_date": "2015-04-29",
+        "stream": "album",
+        "title_tracks": [
+          "I NEED U"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=jjskoRh8GTE",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "LOVE YOURSELF 承 ‘Her’",
+        "release_date": "2017-04-10",
+        "stream": "album",
+        "title_tracks": [
+          "DNA"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=MBdVXkSdhwU",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "LOVE YOURSELF 轉 ‘Tear’",
+        "release_date": "2018-05-18",
+        "stream": "album",
+        "title_tracks": [
+          "FAKE LOVE"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=7C2z4GqqS5E",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BTS",
+        "release_title": "MAP OF THE SOUL : PERSONA",
+        "release_date": "2019-04-12",
+        "stream": "album",
+        "title_tracks": [
+          "작은 것들을 위한 시 (Boy With Luv)"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=XsX3ATc3FbA",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "BLACKPINK",
+        "release_title": "SQUARE UP",
+        "release_date": "2018-06-15",
+        "stream": "album",
+        "title_tracks": [
+          "뚜두뚜두 (DDU-DU DDU-DU)"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=IHNzOHi8sJs",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "THE STORY BEGINS",
+        "release_date": "2015-10-20",
+        "stream": "album",
+        "title_tracks": [
+          "OOH-AHH하게"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=0rtV5esQT6I",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "PAGE TWO",
+        "release_date": "2016-04-25",
+        "stream": "album",
+        "title_tracks": [
+          "CHEER UP"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=c7rCyll5AeY",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "TWICEcoaster : LANE 1",
+        "release_date": "2016-10-24",
+        "stream": "album",
+        "title_tracks": [
+          "TT"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=ePpPVE-GGJw",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "twicetagram",
+        "release_date": "2017-10-30",
+        "stream": "album",
+        "title_tracks": [
+          "LIKEY"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=V2hlQkVJZhE",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "TWICE",
+        "release_title": "Eyes wide open",
+        "release_date": "2020-10-26",
+        "stream": "album",
+        "title_tracks": [
+          "I CAN'T STOP ME"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=CM4CkVFmTds",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SEVENTEEN",
+        "release_title": "17 CARAT",
+        "release_date": "2015-05-29",
+        "stream": "album",
+        "title_tracks": [
+          "아낀다"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=9rUFQJrCT7M",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SEVENTEEN",
+        "release_title": "BOYS BE",
+        "release_date": "2015-09-10",
+        "stream": "album",
+        "title_tracks": [
+          "만세"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=9M7k9ZV67c0",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SEVENTEEN",
+        "release_title": "TEEN, AGE",
+        "release_date": "2017-11-06",
+        "stream": "album",
+        "title_tracks": [
+          "박수"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=CyzEtbG-sxY",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "Romeo",
+        "release_date": "2009-05-18",
+        "stream": "album",
+        "title_tracks": [
+          "Juliette"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=XwkP3qfwqs8",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "2009, Year of Us",
+        "release_date": "2009-10-19",
+        "stream": "album",
+        "title_tracks": [
+          "Ring Ding Dong"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=roughtzsCDI",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "Odd",
+        "release_date": "2015-05-18",
+        "stream": "album",
+        "title_tracks": [
+          "View"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=UF53cptEE5k",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      },
+      {
+        "group": "SHINee",
+        "release_title": "The Story of Light EP.1",
+        "release_date": "2018-05-28",
+        "stream": "album",
+        "title_tracks": [
+          "Good Evening"
+        ],
+        "youtube_video_url": "https://www.youtube.com/watch?v=7dGwk5-QMpc",
+        "youtube_video_provenance": "migration-critical first slice official MV URL"
+      }
+    ],
     "before": {
-      "total_rows": 18,
-      "detail_payload_rows": 18,
-      "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 18,
-      "detail_trusted_ratio": 1.0,
+      "total_rows": 0,
+      "detail_payload_rows": 0,
+      "detail_payload_ratio": 0.0,
+      "detail_trusted_rows": 0,
+      "detail_trusted_ratio": 0.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
       "detail_review_rows": 0,
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 18,
-      "title_track_resolved_ratio": 1.0,
+      "title_track_resolved_rows": 0,
+      "title_track_resolved_ratio": 0.0,
       "title_track_review_rows": 0,
       "title_track_review_ratio": 0.0,
       "title_track_unresolved_rows": 0,
       "title_track_unresolved_ratio": 0.0,
-      "canonical_mv_rows": 18,
-      "canonical_mv_ratio": 1.0,
+      "canonical_mv_rows": 0,
+      "canonical_mv_ratio": 0.0,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
       "mv_unresolved_rows": 0,
@@ -1858,25 +1693,25 @@
       "mv_no_mv_ratio": 0.0
     },
     "after": {
-      "total_rows": 18,
-      "detail_payload_rows": 18,
-      "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 18,
-      "detail_trusted_ratio": 1.0,
+      "total_rows": 0,
+      "detail_payload_rows": 0,
+      "detail_payload_ratio": 0.0,
+      "detail_trusted_rows": 0,
+      "detail_trusted_ratio": 0.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
       "detail_review_rows": 0,
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 18,
-      "title_track_resolved_ratio": 1.0,
+      "title_track_resolved_rows": 0,
+      "title_track_resolved_ratio": 0.0,
       "title_track_review_rows": 0,
       "title_track_review_ratio": 0.0,
       "title_track_unresolved_rows": 0,
       "title_track_unresolved_ratio": 0.0,
-      "canonical_mv_rows": 18,
-      "canonical_mv_ratio": 1.0,
+      "canonical_mv_rows": 0,
+      "canonical_mv_ratio": 0.0,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
       "mv_unresolved_rows": 0,
@@ -1893,34 +1728,34 @@
       },
       "gates": {
         "detail_payload": {
-          "status": "pass",
-          "observed": 1.0,
+          "status": "fail",
+          "observed": 0.0,
           "threshold": 1.0
         },
         "detail_trusted": {
-          "status": "pass",
-          "observed": 1.0,
+          "status": "fail",
+          "observed": 0.0,
           "threshold": 1.0
         },
         "title_track_resolved": {
-          "status": "pass",
-          "observed": 1.0,
+          "status": "fail",
+          "observed": 0.0,
           "threshold": 1.0
         },
         "canonical_mv": {
-          "status": "pass",
-          "observed": 1.0,
+          "status": "fail",
+          "observed": 0.0,
           "threshold": 1.0
         }
       },
-      "cutover_ready": true,
-      "cutover_status": "pass",
+      "cutover_ready": false,
+      "cutover_status": "fail",
       "generated_at": "2026-03-12",
       "summary_lines": [
-        "detail_payload gate: pass (100.0% vs 100.0%)",
-        "detail_trusted gate: pass (100.0% vs 100.0%)",
-        "title_track_resolved gate: pass (100.0% vs 100.0%)",
-        "canonical_mv gate: pass (100.0% vs 100.0%)"
+        "detail_payload gate: fail (0.0% vs 100.0%)",
+        "detail_trusted gate: fail (0.0% vs 100.0%)",
+        "title_track_resolved gate: fail (0.0% vs 100.0%)",
+        "canonical_mv gate: fail (0.0% vs 100.0%)"
       ]
     },
     "release_rows": [
@@ -2125,55 +1960,47 @@
     ]
   },
   "external_acquisition": {
-    "candidate_rows": 1750,
+    "candidate_rows": 795,
     "youtube_music": {
       "attempted": 0,
       "resolved": 0,
       "out_of_scope": 0,
-      "unresolved": 1683
+      "unresolved": 739
     },
     "youtube_mv": {
       "attempted": 0,
       "resolved": 0,
       "review_needed": 2,
-      "no_mv": 1,
+      "no_mv": 0,
       "out_of_scope": 0,
-      "unresolved": 1614
-    },
-    "youtube_mv_search": {
-      "attempted": 54,
-      "resolved": 41,
-      "review_needed": 13,
-      "unresolved": 1616,
-      "coverage_lift": 1
+      "unresolved": 734
     }
   },
   "detail_status_counts": {
-    "verified": 1764,
-    "manual_override": 6
+    "verified": 814,
+    "manual_override": 1
   },
   "title_track_status_counts": {
-    "preserved_existing": 1165,
-    "unresolved": 564,
-    "manual_override": 36,
-    "review": 5
+    "preserved_existing": 566,
+    "unresolved": 234,
+    "auto_single": 2,
+    "manual_override": 13
   },
   "release_level_title_track_status_counts": {
-    "verified": 1165,
-    "unresolved": 564,
-    "manual_override": 36,
-    "review_needed": 5
+    "verified": 566,
+    "unresolved": 234,
+    "inferred": 2,
+    "manual_override": 13
   },
   "youtube_video_status_counts": {
-    "unresolved": 1614,
-    "manual_override": 132,
-    "relation_match": 21,
-    "needs_review": 2,
-    "no_mv": 1
+    "unresolved": 734,
+    "manual_override": 74,
+    "relation_match": 5,
+    "needs_review": 2
   },
-  "title_track_auto_resolved_rows": 0,
+  "title_track_auto_resolved_rows": 2,
   "title_track_auto_double_rows": 0,
-  "title_track_review_queue_rows": 569,
+  "title_track_review_queue_rows": 234,
   "title_track_review_queue_sample": [
     {
       "group": "&TEAM",
@@ -2208,151 +2035,6 @@
     },
     {
       "group": "(G)I-DLE",
-      "release_title": "I am",
-      "release_date": "2018-05-02",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "Latata",
-        "$$$",
-        "Maze",
-        "DON’T TEXT ME",
-        "What’s in Your House?",
-        "Hear Me"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "ONE",
-      "release_date": "2018-06-17",
-      "stream": "song",
-      "release_kind": "single",
-      "track_titles": [
-        "Upgrade",
-        "Mermaid",
-        "한걸음",
-        "Young & One"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "I made",
-      "release_date": "2019-02-26",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "Senorita",
-        "What’s Your Name",
-        "싫다고 말해",
-        "주세요",
-        "Blow Your Mind"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "Queendom < Box of Pandora > Pt. 1",
-      "release_date": "2019-10-18",
-      "stream": "song",
-      "release_kind": "single",
-      "track_titles": [
-        "Put It Straight - Nightmare Version",
-        "I Miss You"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "Sugar Man 3, EPISODE.8",
-      "release_date": "2020-02-01",
-      "stream": "song",
-      "release_kind": "single",
-      "track_titles": [
-        "Show",
-        "Our little promise",
-        "Show - Instrumental",
-        "Our little promise - Instrumental"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "I trust",
-      "release_date": "2020-04-06",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "Oh my god",
-        "사랑해",
-        "Maybe",
-        "LION",
-        "Oh my god (English ver.)"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "I burn",
-      "release_date": "2021-01-11",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "한(寒)",
-        "화(火花)",
-        "MOON",
-        "Where is love",
-        "LOST",
-        "DAHLIA"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "I NEVER DIE",
-      "release_date": "2022-03-14",
-      "stream": "album",
-      "release_kind": "album",
-      "track_titles": [
-        "TOMBOY",
-        "말리지 마",
-        "VILLAIN DIES",
-        "ALREADY",
-        "POLAROID",
-        "ESCAPE",
-        "LIAR",
-        "MY BAG",
-        "TOMBOY"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
       "release_title": "I feel",
       "release_date": "2023-05-15",
       "stream": "album",
@@ -2369,144 +2051,152 @@
       "candidate_sources": [],
       "review_reason": "No dependable title-track signal was found for this release detail row.",
       "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    }
-  ],
-  "release_detail_review_queue_rows": 1754,
-  "release_detail_review_queue_sample": [
-    {
-      "group": "&TEAM",
-      "release_title": "Under the skin",
-      "release_date": "2022-11-21",
-      "stream": "song",
-      "release_kind": "single",
-      "missing_fields": [
-        "youtube_music_url",
-        "youtube_video"
-      ],
-      "attempted_methods_count": 7,
-      "attempted_methods": [
-        "existing_exact_lookup",
-        "existing_relaxed_lookup",
-        "manual_override_lookup",
-        "external_acquisition_skipped",
-        "youtube_music_pipeline_lookup",
-        "youtube_mv_pipeline_lookup",
-        "placeholder_seed_fallback"
-      ],
-      "attempts": [
-        {
-          "method": "existing_exact_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "matched exact release key"
-        },
-        {
-          "method": "existing_relaxed_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no relaxed match"
-        },
-        {
-          "method": "manual_override_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no override"
-        },
-        {
-          "method": "external_acquisition_skipped",
-          "success": false,
-          "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
-        },
-        {
-          "method": "youtube_music_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no canonical YouTube Music URL after current pipeline pass"
-        },
-        {
-          "method": "youtube_mv_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "youtube_video_status=unresolved"
-        },
-        {
-          "method": "placeholder_seed_fallback",
-          "success": false,
-          "filled_fields": [],
-          "note": "placeholder not needed"
-        }
-      ],
-      "compliant_min_attempts": true,
-      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     },
     {
-      "group": "&TEAM",
-      "release_title": "First Howling : ME",
-      "release_date": "2022-12-06",
+      "group": "(G)I-DLE",
+      "release_title": "I SWAY",
+      "release_date": "2024-07-08",
       "stream": "album",
       "release_kind": "ep",
-      "missing_fields": [
-        "youtube_music_url",
-        "youtube_video"
+      "track_titles": [
+        "클락션 (Klaxon)",
+        "Last Forever",
+        "Bloom",
+        "Neverland"
       ],
-      "attempted_methods_count": 7,
-      "attempted_methods": [
-        "existing_exact_lookup",
-        "existing_relaxed_lookup",
-        "manual_override_lookup",
-        "external_acquisition_skipped",
-        "youtube_music_pipeline_lookup",
-        "youtube_mv_pipeline_lookup",
-        "placeholder_seed_fallback"
-      ],
-      "attempts": [
-        {
-          "method": "existing_exact_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "matched exact release key"
-        },
-        {
-          "method": "existing_relaxed_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no relaxed match"
-        },
-        {
-          "method": "manual_override_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no override"
-        },
-        {
-          "method": "external_acquisition_skipped",
-          "success": false,
-          "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
-        },
-        {
-          "method": "youtube_music_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no canonical YouTube Music URL after current pipeline pass"
-        },
-        {
-          "method": "youtube_mv_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "youtube_video_status=unresolved"
-        },
-        {
-          "method": "placeholder_seed_fallback",
-          "success": false,
-          "filled_fields": [],
-          "note": "placeholder not needed"
-        }
-      ],
-      "compliant_min_attempts": true,
-      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
     },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "We are",
+      "release_date": "2025-05-19",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "Good Thing",
+        "Girlfriend",
+        "Love Tease",
+        "Chain",
+        "Unstoppable",
+        "그래도 돼요"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "82MAJOR",
+      "release_title": "BEAT by 82",
+      "release_date": "2024-04-29",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "Choke",
+        "Birthday",
+        "Illegal",
+        "82"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "82MAJOR",
+      "release_title": "X-82",
+      "release_date": "2024-11-15",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "Stuck",
+        "Thorns",
+        "Face Time",
+        "Gossip"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "82MAJOR",
+      "release_title": "SILENCE SYNDROME",
+      "release_date": "2025-04-14",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "TAKEOVER",
+        "Heroes",
+        "Passport",
+        "Promise You"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "8TURN",
+      "release_title": "UNCHARTED DRIFT",
+      "release_date": "2023-06-26",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "WORLD",
+        "EXCEL",
+        "WALK IT OUT",
+        "SKETCH",
+        "ING"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "8TURN",
+      "release_title": "STUNNING",
+      "release_date": "2024-01-09",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "THE GAME",
+        "RU‐PUM PUM",
+        "NOM",
+        "WE HERE",
+        "GLOW"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "8TURN",
+      "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+      "release_date": "2024-10-31",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "Armageddon",
+        "Love Dive",
+        "월하미인 (LUNA)",
+        "Armageddon (inst.)",
+        "Love Dive (inst.)",
+        "월하미인 (LUNA) (inst.)"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    }
+  ],
+  "release_detail_review_queue_rows": 799,
+  "release_detail_review_queue_sample": [
     {
       "group": "&TEAM",
       "release_title": "Blind Love",
@@ -3044,81 +2734,181 @@
       ],
       "compliant_min_attempts": true,
       "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "&TEAM",
+      "release_title": "雪明かり (Yukiakari)",
+      "release_date": "2024-12-17",
+      "stream": "album",
+      "release_kind": "album",
+      "missing_fields": [
+        "youtube_music_url",
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "&TEAM",
+      "release_title": "Magic Hour / Wonderful World",
+      "release_date": "2025-01-08",
+      "stream": "song",
+      "release_kind": "single",
+      "missing_fields": [
+        "youtube_music_url",
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     }
   ],
-  "rows_with_min_acquisition_attempts": 1770,
+  "rows_with_min_acquisition_attempts": 815,
   "rows_missing_min_acquisition_attempts": 0,
   "acquisition_method_counts": {
-    "existing_exact_lookup": 1770,
-    "existing_relaxed_lookup": 1770,
-    "manual_override_lookup": 1770,
-    "external_acquisition_skipped": 1770,
-    "youtube_music_pipeline_lookup": 1770,
-    "youtube_mv_pipeline_lookup": 1770,
-    "placeholder_seed_fallback": 1770
+    "existing_exact_lookup": 815,
+    "existing_relaxed_lookup": 815,
+    "manual_override_lookup": 815,
+    "external_acquisition_skipped": 815,
+    "youtube_music_pipeline_lookup": 815,
+    "youtube_mv_pipeline_lookup": 815,
+    "placeholder_seed_fallback": 815
   },
   "title_track_spot_checks": [
     {
-      "group": "BTS",
-      "release_title": "WAKE UP",
-      "release_date": "2014-12-24",
+      "group": "ENHYPEN",
+      "release_title": "ROMANCE : UNTOLD",
+      "release_date": "2024-07-12",
       "stream": "album",
       "release_kind": "album",
-      "status": "review",
-      "title_tracks": [],
+      "status": "auto_single",
+      "title_tracks": [
+        "Brought the Heat Back"
+      ],
       "candidate_titles": [
-        "BOY IN LUV (Japanese ver.)",
-        "Danger (Japanese ver.)",
-        "WAKE UP"
+        "Brought the Heat Back"
       ]
     },
     {
-      "group": "CHUNG HA",
-      "release_title": "Querencia",
-      "release_date": "2021-02-15",
+      "group": "TREASURE",
+      "release_title": "REBOOT",
+      "release_date": "2023-07-28",
       "stream": "album",
       "release_kind": "album",
-      "status": "review",
-      "title_tracks": [],
+      "status": "auto_single",
+      "title_tracks": [
+        "BONA BONA"
+      ],
       "candidate_titles": [
-        "Dream of You",
-        "Querencia (epilogue)",
-        "X (걸어온 길에 꽃밭 따윈 없었죠)"
+        "BONA BONA"
       ]
-    },
-    {
-      "group": "KARD",
-      "release_title": "Hola Hola",
-      "release_date": "2017-07-19",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "review",
-      "title_tracks": [],
-      "candidate_titles": [
-        "Don’t Recall",
-        "Hola Hola",
-        "RUMOR"
-      ]
-    },
-    {
-      "group": "MONSTA X",
-      "release_title": "ALL ABOUT LUV",
-      "release_date": "2020-02-14",
-      "stream": "album",
-      "release_kind": "album",
-      "status": "review",
-      "title_tracks": [],
-      "candidate_titles": []
-    },
-    {
-      "group": "TWICE",
-      "release_title": "&TWICE",
-      "release_date": "2019-11-20",
-      "stream": "album",
-      "release_kind": "album",
-      "status": "review",
-      "title_tracks": [],
-      "candidate_titles": []
     },
     {
       "group": "&TEAM",
@@ -3132,8 +2922,8 @@
     },
     {
       "group": "(G)I-DLE",
-      "release_title": "I am",
-      "release_date": "2018-05-02",
+      "release_title": "I feel",
+      "release_date": "2023-05-15",
       "stream": "album",
       "release_kind": "ep",
       "status": "unresolved",
@@ -3142,18 +2932,8 @@
     },
     {
       "group": "(G)I-DLE",
-      "release_title": "ONE",
-      "release_date": "2018-06-17",
-      "stream": "song",
-      "release_kind": "single",
-      "status": "unresolved",
-      "title_tracks": [],
-      "candidate_titles": []
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "I made",
-      "release_date": "2019-02-26",
+      "release_title": "I SWAY",
+      "release_date": "2024-07-08",
       "stream": "album",
       "release_kind": "ep",
       "status": "unresolved",
@@ -3162,36 +2942,22 @@
     },
     {
       "group": "(G)I-DLE",
-      "release_title": "Queendom < Box of Pandora > Pt. 1",
-      "release_date": "2019-10-18",
-      "stream": "song",
-      "release_kind": "single",
+      "release_title": "We are",
+      "release_date": "2025-05-19",
+      "stream": "album",
+      "release_kind": "ep",
       "status": "unresolved",
       "title_tracks": [],
       "candidate_titles": []
     },
     {
-      "group": "&TEAM",
-      "release_title": "Under the skin",
-      "release_date": "2022-11-21",
-      "stream": "song",
-      "release_kind": "single",
-      "status": "preserved_existing",
-      "title_tracks": [
-        "Under the skin"
-      ],
-      "candidate_titles": []
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "First Howling : ME",
-      "release_date": "2022-12-06",
+      "group": "82MAJOR",
+      "release_title": "BEAT by 82",
+      "release_date": "2024-04-29",
       "stream": "album",
       "release_kind": "ep",
-      "status": "preserved_existing",
-      "title_tracks": [
-        "Under the Skin"
-      ],
+      "status": "unresolved",
+      "title_tracks": [],
       "candidate_titles": []
     },
     {
@@ -3267,60 +3033,6 @@
       "candidate_titles": []
     },
     {
-      "group": "BLACKPINK",
-      "release_title": "SQUARE UP",
-      "release_date": "2018-06-15",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "manual_override",
-      "title_tracks": [],
-      "candidate_titles": [
-        "뚜두뚜두 (DDU-DU DDU-DU)"
-      ]
-    },
-    {
-      "group": "BTS",
-      "release_title": "DARK&WILD",
-      "release_date": "2014-08-20",
-      "stream": "album",
-      "release_kind": "album",
-      "status": "manual_override",
-      "title_tracks": [
-        "Danger"
-      ],
-      "candidate_titles": [
-        "Danger"
-      ]
-    },
-    {
-      "group": "BTS",
-      "release_title": "화양연화 pt.1",
-      "release_date": "2015-04-29",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "manual_override",
-      "title_tracks": [
-        "I NEED U"
-      ],
-      "candidate_titles": [
-        "I NEED U"
-      ]
-    },
-    {
-      "group": "BTS",
-      "release_title": "LOVE YOURSELF 承 ‘Her’",
-      "release_date": "2017-04-10",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "manual_override",
-      "title_tracks": [
-        "DNA"
-      ],
-      "candidate_titles": [
-        "DNA"
-      ]
-    },
-    {
       "group": "&TEAM",
       "release_title": "Beat the odds",
       "release_date": "2024-10-03",
@@ -3345,6 +3057,64 @@
       "candidate_titles": []
     },
     {
+      "group": "ENHYPEN",
+      "release_title": "THE SIN : VANISH",
+      "release_date": "2026-01-16",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "manual_override",
+      "title_tracks": [
+        "Knife"
+      ],
+      "candidate_titles": [
+        "Knife"
+      ]
+    },
+    {
+      "group": "FIFTY FIFTY",
+      "release_title": "Too Much Part 1",
+      "release_date": "2025-11-04",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "manual_override",
+      "title_tracks": [
+        "가위바위보 (Eeny meeny miny moe)"
+      ],
+      "candidate_titles": [
+        "가위바위보 (Eeny meeny miny moe)"
+      ]
+    },
+    {
+      "group": "IVE",
+      "release_title": "REVIVE+",
+      "release_date": "2026-02-23",
+      "stream": "album",
+      "release_kind": "album",
+      "status": "manual_override",
+      "title_tracks": [
+        "BLACKHOLE",
+        "BANG BANG"
+      ],
+      "candidate_titles": [
+        "BLACKHOLE",
+        "BANG BANG"
+      ]
+    },
+    {
+      "group": "KiiiKiii",
+      "release_title": "Delulu Pack",
+      "release_date": "2026-01-25",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "manual_override",
+      "title_tracks": [
+        "404 (New Era)"
+      ],
+      "candidate_titles": [
+        "404 (New Era)"
+      ]
+    },
+    {
       "group": "&TEAM",
       "release_title": "Magic Hour / Wonderful World",
       "release_date": "2025-01-08",
@@ -3356,13 +3126,73 @@
         "Wonderful World"
       ],
       "candidate_titles": []
+    },
+    {
+      "group": "&TEAM",
+      "release_title": "Go in Blind (月狼)",
+      "release_date": "2025-04-20",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Go in Blind (月狼)"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "&TEAM",
+      "release_title": "Back to Life",
+      "release_date": "2025-10-28",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Back to Life"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "I DO",
+      "release_date": "2023-07-13",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "I DO"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "HEAT",
+      "release_date": "2023-10-05",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "I DO"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "(G)I-DLE",
+      "release_title": "Wife",
+      "release_date": "2024-01-21",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Wife"
+      ],
+      "candidate_titles": []
     }
   ],
   "verification_state_samples": {
     "verified": {
       "group": "&TEAM",
-      "release_title": "Under the skin",
-      "release_date": "2022-11-21",
+      "release_title": "Blind Love",
+      "release_date": "2023-05-07",
       "stream": "song",
       "release_kind": "single",
       "detail_status": "verified",
@@ -3372,62 +3202,82 @@
       "youtube_video_status": "unresolved",
       "youtube_video_provenance": "releaseHistory.placeholder_seed",
       "title_tracks": [
-        "Under the skin"
+        "Blind Love"
       ],
       "track_count": 1
     },
-    "inferred": null,
-    "manual_override": {
-      "group": "BLACKPINK",
-      "release_title": "SQUARE UP",
-      "release_date": "2018-06-15",
-      "stream": "album",
-      "release_kind": "ep",
-      "detail_status": "verified",
-      "detail_provenance": "musicbrainz.release_group_release",
-      "title_track_status": "manual_override",
-      "title_track_provenance": "release_detail_overrides.title_tracks",
-      "youtube_video_status": "manual_override",
-      "youtube_video_provenance": "migration-critical first slice official MV URL",
-      "title_tracks": [],
-      "track_count": 4
-    },
-    "relation_derived_mv": {
-      "group": "BLACKPINK",
-      "release_title": "Ready for Love",
-      "release_date": "2022-07-29",
-      "stream": "song",
-      "release_kind": "single",
-      "detail_status": "verified",
-      "detail_provenance": "musicbrainz.release_group_release",
-      "title_track_status": "verified",
-      "title_track_provenance": "releaseDetails.existing_title_flags",
-      "youtube_video_status": "relation_match",
-      "youtube_video_provenance": "musicbrainz.release_group_release.url_relation",
-      "title_tracks": [
-        "Ready for Love"
-      ],
-      "track_count": 1
-    },
-    "review_needed": {
-      "group": "BTS",
-      "release_title": "WAKE UP",
-      "release_date": "2014-12-24",
+    "inferred": {
+      "group": "ENHYPEN",
+      "release_title": "ROMANCE : UNTOLD",
+      "release_date": "2024-07-12",
       "stream": "album",
       "release_kind": "album",
       "detail_status": "verified",
       "detail_provenance": "musicbrainz.release_group_release",
-      "title_track_status": "review_needed",
-      "title_track_provenance": "nearby_song_release:2014-07-16 | nearby_song_release:2014-11-19 | release_title_exact | release_title_substring",
+      "title_track_status": "inferred",
+      "title_track_provenance": "followup_song_release:2024-08-09",
       "youtube_video_status": "unresolved",
       "youtube_video_provenance": "releaseHistory.placeholder_seed",
-      "title_tracks": [],
-      "track_count": 13
+      "title_tracks": [
+        "Brought the Heat Back"
+      ],
+      "track_count": 9
+    },
+    "manual_override": {
+      "group": "ENHYPEN",
+      "release_title": "THE SIN : VANISH",
+      "release_date": "2026-01-16",
+      "stream": "album",
+      "release_kind": "ep",
+      "detail_status": "verified",
+      "detail_provenance": "releaseDetails.existing_row",
+      "title_track_status": "manual_override",
+      "title_track_provenance": "release_detail_overrides.title_tracks",
+      "youtube_video_status": "manual_override",
+      "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
+      "title_tracks": [
+        "Knife"
+      ],
+      "track_count": 11
+    },
+    "relation_derived_mv": {
+      "group": "EXO",
+      "release_title": "I'm Home",
+      "release_date": "2025-12-13",
+      "stream": "song",
+      "release_kind": "single",
+      "detail_status": "verified",
+      "detail_provenance": "releaseDetails.existing_row",
+      "title_track_status": "verified",
+      "title_track_provenance": "releaseDetails.existing_title_flags",
+      "youtube_video_status": "relation_match",
+      "youtube_video_provenance": "musicbrainz relation url-rels",
+      "title_tracks": [
+        "I'm Home"
+      ],
+      "track_count": 1
+    },
+    "review_needed": {
+      "group": "NCT WISH",
+      "release_title": "Same Sky",
+      "release_date": "2026-02-27",
+      "stream": "song",
+      "release_kind": "single",
+      "detail_status": "verified",
+      "detail_provenance": "releaseDetails.existing_row",
+      "title_track_status": "verified",
+      "title_track_provenance": "releaseDetails.existing_title_flags",
+      "youtube_video_status": "needs_review",
+      "youtube_video_provenance": "Current YouTube results surface audio and lyric uploads ahead of any clearly canonical MV object.",
+      "title_tracks": [
+        "Same Sky"
+      ],
+      "track_count": 1
     },
     "unresolved": {
       "group": "&TEAM",
-      "release_title": "Under the skin",
-      "release_date": "2022-11-21",
+      "release_title": "Blind Love",
+      "release_date": "2023-05-07",
       "stream": "song",
       "release_kind": "single",
       "detail_status": "verified",
@@ -3437,15 +3287,15 @@
       "youtube_video_status": "unresolved",
       "youtube_video_provenance": "releaseHistory.placeholder_seed",
       "title_tracks": [
-        "Under the skin"
+        "Blind Love"
       ],
       "track_count": 1
     }
   },
-  "rows_with_youtube_music_after": 87,
-  "rows_with_youtube_mv_after": 153,
+  "rows_with_youtube_music_after": 76,
+  "rows_with_youtube_mv_after": 79,
   "override_rows_total": 168,
-  "applied_overrides": 167,
+  "applied_overrides": 108,
   "override_sample_matches": [
     {
       "group": "&TEAM",
@@ -3513,47 +3363,47 @@
   "legacy_spot_checks": [
     {
       "group": "EXO",
-      "detail_rows_pre_2024_after": 23,
-      "sample_release_title": "Mama",
-      "sample_release_date": "2012-04-09",
+      "detail_rows_pre_2024_after": 3,
+      "sample_release_title": "Let Me In",
+      "sample_release_date": "2023-06-12",
       "sample_has_tracks": true
     },
     {
       "group": "BTS",
-      "detail_rows_pre_2024_after": 42,
-      "sample_release_title": "2 Cool 4 Skool",
-      "sample_release_date": "2013-06-12",
+      "detail_rows_pre_2024_after": 1,
+      "sample_release_title": "Take Two",
+      "sample_release_date": "2023-06-09",
       "sample_has_tracks": true
     },
     {
       "group": "BLACKPINK",
-      "detail_rows_pre_2024_after": 17,
-      "sample_release_title": "SQUARE ONE",
-      "sample_release_date": "2016-08-08",
-      "sample_has_tracks": true
+      "detail_rows_pre_2024_after": 0,
+      "sample_release_title": null,
+      "sample_release_date": null,
+      "sample_has_tracks": false
     },
     {
       "group": "TWICE",
-      "detail_rows_pre_2024_after": 40,
-      "sample_release_title": "THE STORY BEGINS",
-      "sample_release_date": "2015-10-20",
+      "detail_rows_pre_2024_after": 2,
+      "sample_release_title": "Hare Hare",
+      "sample_release_date": "2023-05-12",
       "sample_has_tracks": true
     },
     {
       "group": "WJSN",
-      "detail_rows_pre_2024_after": 16,
-      "sample_release_title": "WOULD YOU LIKE?",
-      "sample_release_date": "2016-02-25",
-      "sample_has_tracks": true
+      "detail_rows_pre_2024_after": 0,
+      "sample_release_title": null,
+      "sample_release_date": null,
+      "sample_has_tracks": false
     },
     {
       "group": "YUJU",
-      "detail_rows_pre_2024_after": 13,
-      "sample_release_title": "보일 듯 말 듯",
-      "sample_release_date": "2016-03-11",
+      "detail_rows_pre_2024_after": 4,
+      "sample_release_title": "Happiness index",
+      "sample_release_date": "2023-03-23",
       "sample_has_tracks": true
     }
   ],
   "relaxed_existing_matches": 0,
-  "preserved_existing_detail_rows_total": 1770
+  "preserved_existing_detail_rows_total": 815
 }
