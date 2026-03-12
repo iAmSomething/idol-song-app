@@ -28,6 +28,11 @@ const DEFAULT_WORKFLOW_SCHEDULE_DIAGNOSTICS_REPORT_PATH = path.join(
   'reports',
   'workflow_schedule_diagnostics.json',
 );
+const DEFAULT_SAME_DAY_RELEASE_ACCEPTANCE_REPORT_PATH = path.join(
+  BACKEND_DIR,
+  'reports',
+  'same_day_release_acceptance_report.json',
+);
 const DEFAULT_SERVICE_LINK_GAP_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'service_link_gap_queues.json');
 const DEFAULT_TITLE_TRACK_GAP_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'title_track_gap_queue.json');
 const DEFAULT_ENTITY_IDENTITY_WORKBENCH_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'entity_identity_workbench.json');
@@ -54,6 +59,7 @@ function parseArgs(argv) {
     nullTrendReportPath: DEFAULT_NULL_TREND_REPORT_PATH,
     workerCadenceReportPath: DEFAULT_WORKER_CADENCE_REPORT_PATH,
     workflowScheduleDiagnosticsReportPath: DEFAULT_WORKFLOW_SCHEDULE_DIAGNOSTICS_REPORT_PATH,
+    sameDayReleaseAcceptanceReportPath: DEFAULT_SAME_DAY_RELEASE_ACCEPTANCE_REPORT_PATH,
     serviceLinkGapReportPath: DEFAULT_SERVICE_LINK_GAP_REPORT_PATH,
     titleTrackGapReportPath: DEFAULT_TITLE_TRACK_GAP_REPORT_PATH,
     entityIdentityWorkbenchReportPath: DEFAULT_ENTITY_IDENTITY_WORKBENCH_REPORT_PATH,
@@ -116,6 +122,11 @@ function parseArgs(argv) {
     }
     if (value === '--workflow-schedule-diagnostics-report-path') {
       options.workflowScheduleDiagnosticsReportPath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
+      index += 1;
+      continue;
+    }
+    if (value === '--same-day-release-acceptance-report-path') {
+      options.sameDayReleaseAcceptanceReportPath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
       index += 1;
       continue;
     }
@@ -192,6 +203,7 @@ async function main() {
     nullTrendReport,
     workerCadenceReport,
     workflowScheduleDiagnosticsReport,
+    sameDayReleaseAcceptanceReport,
     serviceLinkGapReport,
     titleTrackGapReport,
     entityIdentityWorkbenchReport,
@@ -208,6 +220,7 @@ async function main() {
       readJsonIfExists(options.nullTrendReportPath),
       readJsonIfExists(options.workerCadenceReportPath),
       readJsonIfExists(options.workflowScheduleDiagnosticsReportPath),
+      readJsonIfExists(options.sameDayReleaseAcceptanceReportPath),
       readJsonIfExists(options.serviceLinkGapReportPath),
       readJsonIfExists(options.titleTrackGapReportPath),
       readJsonIfExists(options.entityIdentityWorkbenchReportPath),
@@ -252,6 +265,17 @@ async function main() {
         hint_count: workflowScheduleDiagnosticsReport?.actionable_hints?.length ?? null,
         workflow_count: workflowScheduleDiagnosticsReport
           ? Object.keys(workflowScheduleDiagnosticsReport.workflows ?? {}).length
+          : null,
+      },
+    ),
+    sameDayReleaseAcceptanceReference: buildReportReference(
+      BACKEND_DIR,
+      options.sameDayReleaseAcceptanceReportPath,
+      sameDayReleaseAcceptanceReport,
+      {
+        overall_status: sameDayReleaseAcceptanceReport?.overall_status ?? null,
+        fixture_count: Array.isArray(sameDayReleaseAcceptanceReport?.fixtures)
+          ? sameDayReleaseAcceptanceReport.fixtures.length
           : null,
       },
     ),

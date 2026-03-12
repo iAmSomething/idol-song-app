@@ -82,13 +82,16 @@
 25. `trusted-upcoming-notification-events.md`
    - trusted upcoming signal -> canonical notification event / operator alert contract
    - fingerprint, dedupe, destination, summary artifact 규칙
-26. `runtime-artifact-retention-policy.md`
+26. `same-day-release-acceptance-loop.md`
+   - `YENA` suppression + `P1Harmony` acceptance fixture를 묶는 repeat-until-pass execution rule
+   - failed-cycle update format, runtime gate wiring, related issue linkage 기준
+27. `runtime-artifact-retention-policy.md`
    - runtime-facing JSON / pipeline script canonical retention policy
    - suffix duplicate 금지, allowed temporary path, inventory / cleanup rule
-27. `json-snapshot-demotion.md`의 regression guards section
+28. `json-snapshot-demotion.md`의 regression guards section
    - web / mobile shipped runtime이 local dataset dependency로 되돌아가지 않게 막는 CI guard
    - current transitional allowlist와 follow-up boundary
-28. scoped blocker rerun note
+29. scoped blocker rerun note
    - `build_release_details_musicbrainz.py --cohorts latest,recent` 로 latest/recent row만 재계산할 수 있다
    - full snapshot은 유지하고 review queue / coverage report만 같은 execution scope로 다시 만든다
    - 긴 rerun은 `--max-rows` 와 `--progress-every` 를 같이 써서 작은 batch로 확인한다
@@ -120,8 +123,9 @@
 23. `canonical-null-hygiene-cadence.md`
 24. `manual-curation-bundle-contract.md`
 25. `trusted-upcoming-notification-events.md`
-26. `runtime-artifact-retention-policy.md`
-27. `json-snapshot-demotion.md`의 regression guards section
+26. `same-day-release-acceptance-loop.md`
+27. `runtime-artifact-retention-policy.md`
+28. `json-snapshot-demotion.md`의 regression guards section
 
 ## 원칙
 

@@ -13,6 +13,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 - `docs/specs/backend/backend-secret-inventory-and-rotation.md`
 - `docs/specs/backend/canonical-null-hygiene-operating-model.md`
 - `docs/specs/backend/trusted-upcoming-notification-events.md`
+- `docs/specs/backend/same-day-release-acceptance-loop.md`
 - `docs/specs/backend/runtime-artifact-retention-policy.md`
 - `docs/non-runtime-duplicate-quarantine-policy.md`
 
@@ -896,6 +897,7 @@ reviewer trace contract는 아래 문서를 따른다.
 
 ```bash
 cd backend
+npm run same-day:acceptance -- --reference-date 2026-03-12
 npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming
 npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json
 ```
@@ -904,10 +906,16 @@ npm run runtime:gate -- --bundle-path ./reports/report_bundle_metadata.json
 
 - `backend/reports/report_bundle_metadata.json`
 - `backend/reports/runtime_gate_report.json`
+- `backend/reports/same_day_release_acceptance_report.json`
+- `backend/reports/same_day_release_acceptance_report.md`
 - `backend/reports/historical_release_detail_coverage_report.json`
 - `backend/reports/canonical_null_coverage_report.json`
 - `backend/reports/null_coverage_trend_report.json`
 - `backend/reports/historical_release_detail_coverage_summary.md`
+
+same-day fixture loop 규칙은 아래 문서를 따른다.
+
+- `docs/specs/backend/same-day-release-acceptance-loop.md`
 
 4. migration readiness scorecard
 

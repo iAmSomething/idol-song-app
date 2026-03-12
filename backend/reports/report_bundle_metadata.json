@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-12T10:09:25.875Z",
-  "bundle_id": "post-sync-verification-01dd4718dfce",
+  "generated_at": "2026-03-12T11:01:20.619Z",
+  "bundle_id": "post-sync-verification-2675934e9846",
   "bundle_kind": "post-sync-verification",
   "cadence_profile": "daily-upcoming",
   "source": {
@@ -79,10 +79,16 @@
       "generated_at": null,
       "sent": null,
       "failed": null
+    },
+    "same_day_release_acceptance": {
+      "path": "reports/same_day_release_acceptance_report.json",
+      "generated_at": "2026-03-12T11:01:15.594Z",
+      "overall_status": "fail",
+      "fixture_count": 2
     }
   },
   "summary_lines": [
-    "bundle id: post-sync-verification-01dd4718dfce",
+    "bundle id: post-sync-verification-2675934e9846",
     "bundle kind: post-sync-verification",
     "cadence profile: daily-upcoming",
     "workflow: manual"

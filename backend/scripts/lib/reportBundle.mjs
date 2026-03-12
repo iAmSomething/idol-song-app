@@ -79,6 +79,7 @@ export function buildReportBundleMetadata({
   entityIdentityWorkbenchReference = null,
   trustedUpcomingNotificationReference = null,
   mobilePushDeliveryReference = null,
+  sameDayReleaseAcceptanceReference = null,
 }) {
   const sourceReports = {
     release_pipeline_sync: releaseSyncReference,
@@ -95,6 +96,7 @@ export function buildReportBundleMetadata({
     entity_identity_workbench: entityIdentityWorkbenchReference,
     trusted_upcoming_notification_summary: trustedUpcomingNotificationReference,
     mobile_push_delivery_summary: mobilePushDeliveryReference,
+    same_day_release_acceptance: sameDayReleaseAcceptanceReference,
   };
 
   const fingerprint = {
@@ -152,6 +154,7 @@ export function buildBundleConsistency({
   historicalCoverageReport,
   nullCoverageReport,
   nullTrendReport,
+  sameDayAcceptanceReport,
 }) {
   const expectedBundleId = bundle?.bundle_id ?? null;
   const requiresParity = typeof parityReport !== 'undefined';
@@ -160,6 +163,7 @@ export function buildBundleConsistency({
   const requiresHistoricalCoverage = typeof historicalCoverageReport !== 'undefined';
   const requiresNullCoverage = typeof nullCoverageReport !== 'undefined';
   const requiresNullTrend = typeof nullTrendReport !== 'undefined';
+  const requiresSameDayAcceptance = typeof sameDayAcceptanceReport !== 'undefined';
   const checks = {
     parity_bundle: readReportBundleId(parityReport),
     shadow_bundle: readReportBundleId(shadowReport),
@@ -167,6 +171,7 @@ export function buildBundleConsistency({
     historical_coverage_generated_at: parseIsoTimestamp(historicalCoverageReport?.generated_at ?? null),
     canonical_null_coverage_generated_at: parseIsoTimestamp(nullCoverageReport?.generated_at ?? null),
     null_coverage_trend_generated_at: parseIsoTimestamp(nullTrendReport?.generated_at ?? null),
+    same_day_release_acceptance_generated_at: parseIsoTimestamp(sameDayAcceptanceReport?.generated_at ?? null),
   };
 
   const mismatches = [];
@@ -221,6 +226,18 @@ export function buildBundleConsistency({
     checks.null_coverage_trend_generated_at !== expectedNullTrendGeneratedAt
   ) {
     mismatches.push(`null coverage trend drift (${checks.null_coverage_trend_generated_at})`);
+  }
+
+  const expectedSameDayAcceptanceGeneratedAt = bundle?.source_reports?.same_day_release_acceptance?.generated_at ?? null;
+  if (requiresSameDayAcceptance && expectedSameDayAcceptanceGeneratedAt && sameDayAcceptanceReport === null) {
+    mismatches.push('same-day release acceptance missing');
+  } else if (
+    requiresSameDayAcceptance &&
+    expectedSameDayAcceptanceGeneratedAt &&
+    checks.same_day_release_acceptance_generated_at &&
+    checks.same_day_release_acceptance_generated_at !== expectedSameDayAcceptanceGeneratedAt
+  ) {
+    mismatches.push(`same-day release acceptance drift (${checks.same_day_release_acceptance_generated_at})`);
   }
 
   return {
