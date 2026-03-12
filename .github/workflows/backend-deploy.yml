@@ -8,9 +8,9 @@ on:
         required: true
         type: choice
         options:
-          - preview
           - production
-        default: preview
+          - preview
+        default: production
   push:
     branches:
       - main
@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   deploy-preview:
-    if: github.event_name == 'push' || github.event.inputs.target == 'preview'
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'preview'
     runs-on: ubuntu-latest
     environment:
       name: preview
@@ -151,7 +151,7 @@ jobs:
           if-no-files-found: warn
 
   deploy-production:
-    if: github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'production'
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.target == 'production')
     runs-on: ubuntu-latest
     environment:
       name: production
@@ -174,6 +174,14 @@ jobs:
       - name: Install backend dependencies
         working-directory: backend
         run: npm ci
+
+      - name: Sync production runtime env to Railway
+        working-directory: backend
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID }}
+          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
+        run: npm run runtime:sync -- --target production --report-path ./reports/railway_runtime_env_sync_production.json
 
       - name: Verify production deploy environment contract
         working-directory: backend
@@ -215,6 +223,14 @@ jobs:
         with:
           name: backend-deploy-env-production
           path: backend/reports/deploy_env_contract_production.json
+          if-no-files-found: warn
+
+      - name: Upload production runtime env sync report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-runtime-env-sync-production
+          path: backend/reports/railway_runtime_env_sync_production.json
           if-no-files-found: warn
 
       - name: Deploy production backend

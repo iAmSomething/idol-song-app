@@ -103,19 +103,9 @@ export async function resolvePagesApiRuntimeConfig({
   const runtimeProbe = await (probeApiTarget ?? probePagesApiTarget)(resolvedApiBaseUrl)
 
   if (!runtimeProbe.healthy) {
-    return {
-      apiBaseUrl: '',
-      targetEnvironment: 'bridge',
-      targetClassification: 'bridge',
-      runtimeMode: 'bridge',
-      decisionReason: 'api_target_unhealthy',
-      source: normalizedConfiguredApiBaseUrl ? 'env' : 'backend_freshness_handoff',
-      resolvedApiBaseUrl,
-      resolvedTargetEnvironment,
-      resolvedTargetClassification: resolvedClassification,
-      runtimeProbe,
-      handoffPath,
-    }
+    throw new Error(
+      `Resolved Pages API target is unhealthy (${runtimeProbe.probeUrl ?? resolvedApiBaseUrl}: ${runtimeProbe.error ?? runtimeProbe.status ?? 'unknown'}).`,
+    )
   }
 
   return {
