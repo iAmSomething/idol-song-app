@@ -313,7 +313,8 @@ npm run dev
 - browser에서 separate API base URL을 쓸 때 backend는 `APP_ENV`와 `WEB_ALLOWED_ORIGINS`를 같이 맞춰야 한다. production 기본 origin은 `https://iamsomething.github.io`다.
 - committed JSON snapshot은 import/parity/debug artifact로 유지되지만, shipped web cut-over surface의 runtime source switch로는 더 이상 사용하지 않는다.
 - `web/.env.example`에는 Pages / preview rehearsal에서 쓰는 API base env baseline이 들어 있다.
-- `.github/workflows/deploy-pages.yml`은 GitHub Pages build에 `VITE_API_BASE_URL`과 `VITE_BACKEND_TARGET_ENV=production`을 함께 주입한다.
+- `.github/workflows/deploy-pages.yml`은 GitHub Pages runtime을 `VITE_BACKEND_TARGET_ENV=bridge`로 고정하고, bridge 산출물만 빌드에 포함한다.
+- bridge runtime이어도 `verify:pages-backend-handoff`는 latest backend freshness artifact가 `production/preview/local` 중 하나의 실제 backend target을 가리키는지 별도로 검증한다.
 - `npm run build`는 Pages read bridge(`web/public/__bridge/v1/**`)를 먼저 생성한다. bridge는 committed `web/src/data`가 아니라 `backend/exports/non_runtime_web_snapshots/**`를 우선 읽고, export가 없을 때만 local snapshot으로 fallback 한다.
 - `deploy-pages.yml`은 `backend/exports/non_runtime_web_snapshots/**` 변경도 함께 감지해서 Pages를 다시 빌드하고, `npm run verify:pages-read-bridge`, `npm run verify:pages-backend-target`, `npm run verify:pages-backend-handoff`로 bridge completeness, active backend target wiring, latest backend freshness handoff를 같이 gate로 막는다.
 - `backend/reports/backend_freshness_handoff.json`은 latest release sync, latest upcoming sync, projection refresh 순서와 Pages target URL 정합성을 요약한 deploy-time artifact다.

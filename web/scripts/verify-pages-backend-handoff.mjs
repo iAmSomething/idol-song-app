@@ -26,27 +26,40 @@ ensurePass('target_binding', checks.target_binding)
 const handoffTargetEnvironment = normalizeTargetEnvironment(target.environment ?? '')
 const handoffTargetClassification = normalizeTargetClassification(target.classification ?? '')
 const handoffApiBaseUrl = normalizeApiBaseUrl(target.backend_public_url ?? '')
+const isBridgeRuntime = expectedTargetEnvironment === 'bridge' && !expectedApiBaseUrl
 
 if (handoff.status !== 'pass') {
   throw new Error(`Backend freshness handoff status must be pass. Got ${String(handoff.status)}.`)
 }
 
-if (handoffTargetEnvironment !== expectedTargetEnvironment) {
-  throw new Error(
-    `Backend freshness handoff target environment mismatch. Expected ${expectedTargetEnvironment}, got ${handoffTargetEnvironment || '(empty)'}.`,
-  )
-}
+if (isBridgeRuntime) {
+  if (!handoffApiBaseUrl) {
+    throw new Error('Bridge runtime still requires backend freshness handoff to resolve a non-empty backend_public_url.')
+  }
 
-if (handoffTargetClassification && handoffTargetClassification !== expectedTargetClassification) {
-  throw new Error(
-    `Backend freshness handoff target classification mismatch. Expected ${expectedTargetClassification}, got ${handoffTargetClassification || '(empty)'}.`,
-  )
-}
+  if (!handoffTargetEnvironment || handoffTargetEnvironment === 'bridge') {
+    throw new Error(
+      `Bridge runtime requires a non-bridge backend freshness handoff target. Got ${handoffTargetEnvironment || '(empty)'}.`,
+    )
+  }
+} else {
+  if (handoffTargetEnvironment !== expectedTargetEnvironment) {
+    throw new Error(
+      `Backend freshness handoff target environment mismatch. Expected ${expectedTargetEnvironment}, got ${handoffTargetEnvironment || '(empty)'}.`,
+    )
+  }
 
-if (handoffApiBaseUrl && handoffApiBaseUrl !== expectedApiBaseUrl) {
-  throw new Error(
-    `Backend freshness handoff API base mismatch. Expected ${expectedApiBaseUrl || '(empty)'}, got ${handoffApiBaseUrl || '(empty)'}.`,
-  )
+  if (handoffTargetClassification && handoffTargetClassification !== expectedTargetClassification) {
+    throw new Error(
+      `Backend freshness handoff target classification mismatch. Expected ${expectedTargetClassification}, got ${handoffTargetClassification || '(empty)'}.`,
+    )
+  }
+
+  if (handoffApiBaseUrl && handoffApiBaseUrl !== expectedApiBaseUrl) {
+    throw new Error(
+      `Backend freshness handoff API base mismatch. Expected ${expectedApiBaseUrl || '(empty)'}, got ${handoffApiBaseUrl || '(empty)'}.`,
+    )
+  }
 }
 
 console.log(
