@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-boynextdoor"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "boynextdoor",
+      "display_name": "BOYNEXTDOOR",
+      "canonical_name": "BOYNEXTDOOR",
+      "agency_name": "HYBE Labels",
+      "badge_image_url": "https://yt3.googleusercontent.com/QhBJg2Djg9obHEAmP7-_BceJFY4KG0iaYWfuDGhjiURG-5CdhS_0npiZpCWvyN3Pfj9DkO8MSw=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/QhBJg2Djg9obHEAmP7-_BceJFY4KG0iaYWfuDGhjiURG-5CdhS_0npiZpCWvyN3Pfj9DkO8MSw=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@boynextdoor_official",
+      "x": "https://x.com/BOYNEXTDOOR_KOZ",
+      "instagram": "https://www.instagram.com/boynextdoor_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@boynextdoor_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-35b7b742",
+      "release_title": "The Action",
+      "release_date": "2025-10-20",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Live In Paris",
+      "spotify_url": "https://open.spotify.com/album/6NKAKKTVPPE85NIDY9u6QD",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nlFdyL6NGSDWRNc8FOo6bodDyqEavQTIQ",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-35b7b742",
+        "release_title": "The Action",
+        "release_date": "2025-10-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Live In Paris",
+        "spotify_url": "https://open.spotify.com/album/6NKAKKTVPPE85NIDY9u6QD",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nlFdyL6NGSDWRNc8FOo6bodDyqEavQTIQ",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-345e079b",
+        "release_title": "No Genre",
+        "release_date": "2025-05-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "123-78",
+        "spotify_url": "https://open.spotify.com/album/2E8hkTJKnSCv69mjVAh6hL",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2bde2b8c-c91c-4a55-b93b-02939be099ab",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2bde2b8c-c91c-4a55-b93b-02939be099ab/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2bde2b8c-c91c-4a55-b93b-02939be099ab/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2bde2b8c-c91c-4a55-b93b-02939be099ab",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b214648d",
+        "release_title": "19.99",
+        "release_date": "2024-09-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "부모님 관람불가",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b021c697-1c0c-48df-836c-a6d751049abb",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b021c697-1c0c-48df-836c-a6d751049abb/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b021c697-1c0c-48df-836c-a6d751049abb/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b021c697-1c0c-48df-836c-a6d751049abb",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-dd651476",
+        "release_title": "HOW?",
+        "release_date": "2024-04-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "OUR",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2f15a7b7-a0cc-4956-a3f2-afe47200de15",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2f15a7b7-a0cc-4956-a3f2-afe47200de15/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2f15a7b7-a0cc-4956-a3f2-afe47200de15/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2f15a7b7-a0cc-4956-a3f2-afe47200de15",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-1e9378f7",
+        "release_title": "WHY..",
+        "release_date": "2023-09-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "But I Like You",
+        "spotify_url": "https://open.spotify.com/album/45skMBkupbWiAxTeZ77rVa",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9c061a78-6519-4c94-9b4d-d873604474a7",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9c061a78-6519-4c94-9b4d-d873604474a7/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9c061a78-6519-4c94-9b4d-d873604474a7/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9c061a78-6519-4c94-9b4d-d873604474a7",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/656d0024-7b5f-4089-9d3e-ce383f15f1b7"
+  }
+}

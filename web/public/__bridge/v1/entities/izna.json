@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-izna"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "izna",
+      "display_name": "izna",
+      "canonical_name": "izna",
+      "agency_name": "WAKEONE",
+      "badge_image_url": "https://yt3.googleusercontent.com/riFlXG_mF7Nvrpbn64hUqlLx7h1j3MwpWBPRDgJ5oLnTYDPJfqUNDdwXJa4wH8p5EQ2FaWSv=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/riFlXG_mF7Nvrpbn64hUqlLx7h1j3MwpWBPRDgJ5oLnTYDPJfqUNDdwXJa4wH8p5EQ2FaWSv=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@izna_offcl",
+      "x": "https://x.com/izna_offcl",
+      "instagram": "https://www.instagram.com/izna_offcl"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@izna_offcl",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-e391408c",
+      "release_title": "Not Just Pretty",
+      "release_date": "2025-09-30",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Supercrush",
+      "spotify_url": "https://open.spotify.com/album/5GbFWsdf0iAbLvg2nMwxHG",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kPUZKFaV6hNIaH5ubVEzqS6KDhOetivOE",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-e391408c",
+        "release_title": "Not Just Pretty",
+        "release_date": "2025-09-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Supercrush",
+        "spotify_url": "https://open.spotify.com/album/5GbFWsdf0iAbLvg2nMwxHG",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kPUZKFaV6hNIaH5ubVEzqS6KDhOetivOE",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-1d8c2899",
+        "release_title": "N/a",
+        "release_date": "2024-11-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "IZNA",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/facad414-33c7-40c0-b089-0097837c704d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/facad414-33c7-40c0-b089-0097837c704d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/facad414-33c7-40c0-b089-0097837c704d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/facad414-33c7-40c0-b089-0097837c704d",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/c3d9b981-0420-45ae-93ca-21d78f0fb14f"
+  }
+}

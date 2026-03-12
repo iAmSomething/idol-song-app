@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-dkb"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "dkb",
+      "display_name": "DKB",
+      "canonical_name": "DKB",
+      "agency_name": "Brave Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/ytc/AIdro_lEUVvfJcT59eXZy4XmtbCA4TI0Za6tipdv_ytCWEpjmQ=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/ytc/AIdro_lEUVvfJcT59eXZy4XmtbCA4TI0Za6tipdv_ytCWEpjmQ=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCCwfiPqSomsqZkkmbjPK5wg",
+      "x": "https://x.com/DKB_BRAVE",
+      "instagram": "https://www.instagram.com/official.dkb"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCCwfiPqSomsqZkkmbjPK5wg",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-77e6d1c9",
+      "release_title": "Emotion",
+      "release_date": "2025-10-23",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Irony",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mfeS1WJS4UT0_x-TUGk7EZrZ3bqf7nYJo",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/18922c4e-7b46-429f-a5b7-c1087a796663",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/18922c4e-7b46-429f-a5b7-c1087a796663/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/18922c4e-7b46-429f-a5b7-c1087a796663/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/18922c4e-7b46-429f-a5b7-c1087a796663",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-77e6d1c9",
+        "release_title": "Emotion",
+        "release_date": "2025-10-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Irony",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mfeS1WJS4UT0_x-TUGk7EZrZ3bqf7nYJo",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/18922c4e-7b46-429f-a5b7-c1087a796663",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/18922c4e-7b46-429f-a5b7-c1087a796663/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/18922c4e-7b46-429f-a5b7-c1087a796663/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/18922c4e-7b46-429f-a5b7-c1087a796663",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4c338574",
+        "release_title": "Urban Ride",
+        "release_date": "2024-07-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Star",
+        "spotify_url": "https://open.spotify.com/album/4lyeE32bD5HW8Y8rAktUAP",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/dcb16e57-d59e-4a0f-9933-431490816bfd",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/dcb16e57-d59e-4a0f-9933-431490816bfd/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/dcb16e57-d59e-4a0f-9933-431490816bfd/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/dcb16e57-d59e-4a0f-9933-431490816bfd",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2d46be24",
+        "release_title": "HIP",
+        "release_date": "2023-11-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Ghost Ridah (Wow Wow)",
+        "spotify_url": "https://open.spotify.com/album/66o3wsfFzC3inxoOZYEwSa",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/fccd54b9-fd30-482b-a00a-4442371540d5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/fccd54b9-fd30-482b-a00a-4442371540d5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/fccd54b9-fd30-482b-a00a-4442371540d5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/fccd54b9-fd30-482b-a00a-4442371540d5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-28fef988",
+        "release_title": "I Need Love",
+        "release_date": "2023-06-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "I Need Love",
+        "spotify_url": "https://open.spotify.com/album/6QEyOo8hthLqADysd5yIjU",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6359c05c-0901-42a3-bfe5-6b0901f7751c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6359c05c-0901-42a3-bfe5-6b0901f7751c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6359c05c-0901-42a3-bfe5-6b0901f7751c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6359c05c-0901-42a3-bfe5-6b0901f7751c",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9dc7f62c",
+        "release_title": "REBEL",
+        "release_date": "2023-04-13",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Sober - Japanese ver.",
+        "spotify_url": "https://open.spotify.com/album/2sseCrRyUCiCMwiOKxptFq",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6dd49c02-78fa-4220-a975-95a4de7c4b0b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6dd49c02-78fa-4220-a975-95a4de7c4b0b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6dd49c02-78fa-4220-a975-95a4de7c4b0b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6dd49c02-78fa-4220-a975-95a4de7c4b0b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-604380e8",
+        "release_title": "Autumn",
+        "release_date": "2022-08-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Autumn",
+        "spotify_url": "https://open.spotify.com/album/00ezJ1c3fzgwPCkA3bKq7Z",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/259a47f5-7620-4c19-beb8-34deb7b941ba",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/259a47f5-7620-4c19-beb8-34deb7b941ba/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/259a47f5-7620-4c19-beb8-34deb7b941ba/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/259a47f5-7620-4c19-beb8-34deb7b941ba",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0da9989f",
+        "release_title": "Rebel",
+        "release_date": "2022-04-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Sober",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9ecbb55b-aa70-4b75-a22a-405d76173a6f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9ecbb55b-aa70-4b75-a22a-405d76173a6f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9ecbb55b-aa70-4b75-a22a-405d76173a6f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9ecbb55b-aa70-4b75-a22a-405d76173a6f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a42d3a15",
+        "release_title": "The Dice Is Cast",
+        "release_date": "2021-03-30",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "난 일해",
+        "spotify_url": "https://open.spotify.com/album/7svk3lquzjYATf8NSXe7K2",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/32627a23-3951-4f98-8f11-da5323736782",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/32627a23-3951-4f98-8f11-da5323736782/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/32627a23-3951-4f98-8f11-da5323736782/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/32627a23-3951-4f98-8f11-da5323736782",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/a88863ae-4744-44aa-b15c-54363cedf9d2"
+  }
+}

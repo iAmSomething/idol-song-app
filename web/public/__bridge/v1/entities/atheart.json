@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-atheart"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "atheart",
+      "display_name": "AtHeart",
+      "canonical_name": "AtHeart",
+      "agency_name": "TITAN CONTENT",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@AtHeart_TITAN",
+      "x": "https://x.com/atheartofficial",
+      "instagram": "https://www.instagram.com/atheart__official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@AtHeart_TITAN",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "atheart",
+      "display_name": "AtHeart",
+      "headline": "Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop",
+      "scheduled_date": null,
+      "scheduled_month": null,
+      "date_precision": "unknown",
+      "date_status": "rumor",
+      "confidence_score": 0.68,
+      "release_format": null,
+      "latest_seen_at": "Sat, 31 Jan 2026 08:00:00 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPTW5XcDBtTWd4YVhwaEVqTktleVBXYlRLZnBGM1RVQ2xVeXVlMkVmckpWQ1RKazl5ZXhBOWRQcXltVVlNcjdSY3hkMjJ4cGFKUGpEbDhVQ0hPcjdScFV2UTUzM1ZmeGFaSDRoWWhMOHBYOFVhX1RiS0hkVEJfeWVGODRQSTlTMjRoTGZMZXBWS09IZ1pFb2VCWVJHZTBSSHNlTnBNNUxuZ2E1VGc?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Rookie group AtHeart drops bold new teaser photos for 'The New Black' allkpop",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-b32b64fc",
+      "release_title": "Shut Up",
+      "release_date": "2026-02-26",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Shut Up",
+      "spotify_url": "https://open.spotify.com/album/13N8MLxKX3V8AiIRYVZC2q",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=LD6jMlUC18k",
+      "source_url": "https://musicbrainz.org/release-group/16cf36c1-5330-4078-bb8d-4be324d27250",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/16cf36c1-5330-4078-bb8d-4be324d27250/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/16cf36c1-5330-4078-bb8d-4be324d27250/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/16cf36c1-5330-4078-bb8d-4be324d27250",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-6f97d914",
+        "release_title": "Plot Twist",
+        "release_date": "2025-08-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Plot Twist",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kbkZQcpCun1GMI03ym_nVHzcA28bYfojc",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/546efe73-cb05-49af-a513-e3fc116b2df3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/546efe73-cb05-49af-a513-e3fc116b2df3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/546efe73-cb05-49af-a513-e3fc116b2df3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/546efe73-cb05-49af-a513-e3fc116b2df3",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop",
+        "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPTW5XcDBtTWd4YVhwaEVqTktleVBXYlRLZnBGM1RVQ2xVeXVlMkVmckpWQ1RKazl5ZXhBOWRQcXltVVlNcjdSY3hkMjJ4cGFKUGpEbDhVQ0hPcjdScFV2UTUzM1ZmeGFaSDRoWWhMOHBYOFVhX1RiS0hkVEJfeWVGODRQSTlTMjRoTGZMZXBWS09IZ1pFb2VCWVJHZTBSSHNlTnBNNUxuZ2E1VGc?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Sat, 31 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.68
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/8a3f4979-23ca-48c8-9d01-5baffee9ea5f"
+  }
+}

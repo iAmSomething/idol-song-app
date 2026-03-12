@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-xdinary-heroes"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "xdinary-heroes",
+      "display_name": "Xdinary Heroes",
+      "canonical_name": "Xdinary Heroes",
+      "agency_name": "JYP Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/1sLQZ659XNIyNVYWpOV4XKXou_y6IinWQJ8HMJahluRpxyxNZ7vxFds1XYSz1i-bMrud-FQv=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/1sLQZ659XNIyNVYWpOV4XKXou_y6IinWQJ8HMJahluRpxyxNZ7vxFds1XYSz1i-bMrud-FQv=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@XH_official",
+      "x": "https://x.com/XH_official",
+      "instagram": "https://www.instagram.com/xdinaryheroes_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@XH_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-23082ccf",
+      "release_title": "LXVE to DEATH",
+      "release_date": "2025-10-24",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Fire (My Sweet Misery)",
+      "spotify_url": "https://open.spotify.com/album/04WcDHoLelHf9ajNp6HXkD",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nVfDacYSJ_k4WewXrsD5MOIa991x2JUfQ",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-23082ccf",
+        "release_title": "LXVE to DEATH",
+        "release_date": "2025-10-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Fire (My Sweet Misery)",
+        "spotify_url": "https://open.spotify.com/album/04WcDHoLelHf9ajNp6HXkD",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nVfDacYSJ_k4WewXrsD5MOIa991x2JUfQ",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-46fb2c50",
+        "release_title": "Beautiful Mind",
+        "release_date": "2025-03-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "FIGHT ME",
+        "spotify_url": "https://open.spotify.com/album/0h4U9eKaISbwP93lglW6s6",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ef437257-f802-4db9-b274-f2ef572800a5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ef437257-f802-4db9-b274-f2ef572800a5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ef437257-f802-4db9-b274-f2ef572800a5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ef437257-f802-4db9-b274-f2ef572800a5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d581d40a",
+        "release_title": "Troubleshooting",
+        "release_date": "2024-04-30",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "No Matter",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/03ecce32-466d-41c3-84d2-4b67c5ad62bb",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/03ecce32-466d-41c3-84d2-4b67c5ad62bb/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/03ecce32-466d-41c3-84d2-4b67c5ad62bb/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/03ecce32-466d-41c3-84d2-4b67c5ad62bb",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-30dc5d1d",
+        "release_title": "Livelock",
+        "release_date": "2023-10-12",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Freddy",
+        "spotify_url": "https://open.spotify.com/album/6wRy2dydFytIzBlEqVa5sh",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a61797b8-cfb2-46af-a22a-fcd0e12d1014",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a61797b8-cfb2-46af-a22a-fcd0e12d1014/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a61797b8-cfb2-46af-a22a-fcd0e12d1014/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a61797b8-cfb2-46af-a22a-fcd0e12d1014",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9b38434d",
+        "release_title": "Deadlock",
+        "release_date": "2023-04-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Come into my head",
+        "spotify_url": "https://open.spotify.com/album/6nePUewVYxSkvIbG9nkB0M",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/16d8dc19-3bd0-4cea-98b2-684ac654d0b6",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/16d8dc19-3bd0-4cea-98b2-684ac654d0b6/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/16d8dc19-3bd0-4cea-98b2-684ac654d0b6/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/16d8dc19-3bd0-4cea-98b2-684ac654d0b6",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6cda5f05",
+        "release_title": "Overload",
+        "release_date": "2022-11-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Zzz..",
+        "spotify_url": "https://open.spotify.com/album/76XckkqatimbtN2NspL4N5",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f1e0a135-1335-4cc2-a5de-7069485e8c9d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f1e0a135-1335-4cc2-a5de-7069485e8c9d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f1e0a135-1335-4cc2-a5de-7069485e8c9d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f1e0a135-1335-4cc2-a5de-7069485e8c9d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f3a1e801",
+        "release_title": "Hello, World!",
+        "release_date": "2022-07-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Test Me",
+        "spotify_url": "https://open.spotify.com/album/0Z5qdttvpyXKKNLdqeEs27",
+        "youtube_music_url": null,
+        "youtube_mv_url": "https://www.youtube.com/watch?v=CL6wr7jozs8",
+        "source_url": "https://musicbrainz.org/release-group/2575a5fd-9eaa-487f-87df-03fc39b0adab",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2575a5fd-9eaa-487f-87df-03fc39b0adab/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2575a5fd-9eaa-487f-87df-03fc39b0adab/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2575a5fd-9eaa-487f-87df-03fc39b0adab",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/d95a463f-e7d3-4c97-98ba-57f75cb4fda2"
+  }
+}

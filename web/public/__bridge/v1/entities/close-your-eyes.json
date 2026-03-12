@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-close-your-eyes"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "close-your-eyes",
+      "display_name": "CLOSE YOUR EYES",
+      "canonical_name": "CLOSE YOUR EYES",
+      "agency_name": "UNCORE",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@close.your.eyes.official",
+      "x": "https://x.com/closeyoureyes_of",
+      "instagram": "https://www.instagram.com/close.your.eyes.official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@close.your.eyes.official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": null,
+      "tracking_status": null
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-971609d7",
+      "release_title": "blackout",
+      "release_date": "2025-11-11",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "X",
+      "spotify_url": "https://open.spotify.com/album/10UGFED19zySy8M8bjI0rk",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/b30043bd-2724-4725-a734-fa49479715fb",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/b30043bd-2724-4725-a734-fa49479715fb/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/b30043bd-2724-4725-a734-fa49479715fb/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/b30043bd-2724-4725-a734-fa49479715fb",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-971609d7",
+        "release_title": "blackout",
+        "release_date": "2025-11-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "X",
+        "spotify_url": "https://open.spotify.com/album/10UGFED19zySy8M8bjI0rk",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b30043bd-2724-4725-a734-fa49479715fb",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b30043bd-2724-4725-a734-fa49479715fb/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b30043bd-2724-4725-a734-fa49479715fb/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b30043bd-2724-4725-a734-fa49479715fb",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-83e7cb25",
+        "release_title": "Snowy Summer",
+        "release_date": "2025-07-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Snowy Summer",
+        "spotify_url": "https://open.spotify.com/album/7eM9aYuP3VOnxRAPz9aGuN",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5e5b87b2-6732-46b4-bc9d-b8e991b46ab5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5e5b87b2-6732-46b4-bc9d-b8e991b46ab5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5e5b87b2-6732-46b4-bc9d-b8e991b46ab5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5e5b87b2-6732-46b4-bc9d-b8e991b46ab5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-7af61193",
+        "release_title": "ETERNALT",
+        "release_date": "2025-04-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Close Your Eyes",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4686a360-f02d-4f67-b7df-c205d8bf7758",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4686a360-f02d-4f67-b7df-c205d8bf7758/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4686a360-f02d-4f67-b7df-c205d8bf7758/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4686a360-f02d-4f67-b7df-c205d8bf7758",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/64cff6be-dfdb-4d9d-9ee1-c0c121566135"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-the-boyz"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "the-boyz",
+      "display_name": "THE BOYZ",
+      "canonical_name": "THE BOYZ",
+      "agency_name": "IST Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/WZvqZ_0AtJF8BuIAU341OunWSPqZHO9JaNGC3vZaawekNBkFYLhIWXzuzMKr92IXNJ8FqfzFju0=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/WZvqZ_0AtJF8BuIAU341OunWSPqZHO9JaNGC3vZaawekNBkFYLhIWXzuzMKr92IXNJ8FqfzFju0=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCkJ1rbOrsyPfBuHNfnLPm-Q",
+      "x": "https://x.com/IST_THEBOYZ",
+      "instagram": "https://www.instagram.com/official_theboyz"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCkJ1rbOrsyPfBuHNfnLPm-Q",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-a39186d2",
+      "release_title": "Still Love You",
+      "release_date": "2025-12-06",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Still Love You",
+      "spotify_url": "https://open.spotify.com/album/5NJHeBJzOo41F03PAdSBiP",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/01e6d59b-8166-40b7-bb26-881c033deb14",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/01e6d59b-8166-40b7-bb26-881c033deb14/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/01e6d59b-8166-40b7-bb26-881c033deb14/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/01e6d59b-8166-40b7-bb26-881c033deb14",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-fe701980",
+        "release_title": "a;effect",
+        "release_date": "2025-07-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Stylish",
+        "spotify_url": "https://open.spotify.com/album/3NLbROSjvh9Qo0Esb3aTX0",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ad2aabda-8449-449b-ab23-76e57f7857ee",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ad2aabda-8449-449b-ab23-76e57f7857ee/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ad2aabda-8449-449b-ab23-76e57f7857ee/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ad2aabda-8449-449b-ab23-76e57f7857ee",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b70a1c60",
+        "release_title": "Unexpected",
+        "release_date": "2025-03-17",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Feel The Bass",
+        "spotify_url": "https://open.spotify.com/album/0gr6ALnqNZF1LwubTWP48V",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7944ab6b-2069-437a-994b-f10cb254a763",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7944ab6b-2069-437a-994b-f10cb254a763/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7944ab6b-2069-437a-994b-f10cb254a763/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7944ab6b-2069-437a-994b-f10cb254a763",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2d531e1a",
+        "release_title": "導火線 (TRIGGER)",
+        "release_date": "2024-10-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Bite Back",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/87d0fd30-9ff0-4b44-afe2-6d39a6645eb2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/87d0fd30-9ff0-4b44-afe2-6d39a6645eb2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/87d0fd30-9ff0-4b44-afe2-6d39a6645eb2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/87d0fd30-9ff0-4b44-afe2-6d39a6645eb2",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-295b2aa5",
+        "release_title": "Gibberish",
+        "release_date": "2024-07-19",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Gibberish",
+        "spotify_url": "https://open.spotify.com/album/5pZFs7Yt5xDHQW6gXSFtqm",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ee63e705-df90-4d53-902c-a2d8c10af741",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ee63e705-df90-4d53-902c-a2d8c10af741/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ee63e705-df90-4d53-902c-a2d8c10af741/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ee63e705-df90-4d53-902c-a2d8c10af741",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-025f1ed2",
+        "release_title": "[PHANTASY] Pt.3 Love Letter",
+        "release_date": "2024-03-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Dear.",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a69da823-94f7-41c6-a550-96cd65920531",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a69da823-94f7-41c6-a550-96cd65920531/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a69da823-94f7-41c6-a550-96cd65920531/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a69da823-94f7-41c6-a550-96cd65920531",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-986bb3cc",
+        "release_title": "[PHANTASY] Pt.2 Sixth Sense",
+        "release_date": "2023-11-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "WATCH IT",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/be52213c-707f-4b04-a652-fccc55841481",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/be52213c-707f-4b04-a652-fccc55841481/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/be52213c-707f-4b04-a652-fccc55841481/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/be52213c-707f-4b04-a652-fccc55841481",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8561f722",
+        "release_title": "[PHANTASY] Pt.1 Christmas In August",
+        "release_date": "2023-08-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "LIP GLOSS",
+        "spotify_url": "https://open.spotify.com/album/6j0bF8s6Kptbr4y8tuIhOY",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/82250ca0-8f66-4059-ab44-507a2d334d3f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/82250ca0-8f66-4059-ab44-507a2d334d3f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/82250ca0-8f66-4059-ab44-507a2d334d3f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/82250ca0-8f66-4059-ab44-507a2d334d3f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-00f61b97",
+        "release_title": "Delicious",
+        "release_date": "2023-06-13",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Delicious",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/cec1bff5-f188-4584-8acf-04055bc567ea",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/cec1bff5-f188-4584-8acf-04055bc567ea/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/cec1bff5-f188-4584-8acf-04055bc567ea/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/cec1bff5-f188-4584-8acf-04055bc567ea",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/527973c7-9a9f-40bf-a52c-8cc2a7115c1a"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-whib"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "whib",
+      "display_name": "WHIB",
+      "canonical_name": "WHIB",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@WHIB_OFFICIAL",
+      "x": "https://x.com/whib_official",
+      "instagram": "https://www.instagram.com/whib_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@WHIB_OFFICIAL",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "filtered_out"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "whib",
+      "display_name": "WHIB",
+      "headline": "WHIB reunites as seven-member group, drops mini album and title track \"ROCK THE NATION\" on 29th - CHOSUNBIZ - Chosunbiz",
+      "scheduled_date": null,
+      "scheduled_month": null,
+      "date_precision": "unknown",
+      "date_status": "rumor",
+      "confidence_score": 0.68,
+      "release_format": "ep",
+      "latest_seen_at": "Sat, 17 Jan 2026 08:00:00 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOOTQ0RHBPQ3ByQTlQX2dtMkNZUndDWEtBM1pQbDBLOHByeEtDRnRveEZVRGlGcFdGMlBWRG9JSV8tUzJOWUtDZm1VaWUyMGFYWEdYa05RdHVEa3dqdDVSbzU3eWV5bHdKamZxOGRkWTJRdnQ4ZEE2ZjkyVGZrcVo5TG5yeFg0ZDJP0gGcAUFVX3lxTE0xeThmN21CeUdDRHdYc0FicFBPWmVxTWhwZGpia2MtWWNIcWpCSlJZTzlEVkVDems2Q09qbGlfazFwd2hIbDZQdWlaRVgxQ2Z4ZlJDUW94Y2szSExURk5CWkMyUW9fX0l5WkctRXFMTWR2QmlmSG9Gdk5Lb3RLNW9mb0ZZS2dPSjIwTXdPbnJNTVlROG1JWURSdXlhZw?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "WHIB reunites as seven-member group, drops mini album and title track \"ROCK THE NATION\" on 29th - CHOSUNBIZ Chosunbiz",
+      "source_count": null
+    },
+    "latest_release": null,
+    "recent_albums": [],
+    "source_timeline": [
+      {
+        "headline": "WHIB reunites as seven-member group, drops mini album and title track \"ROCK THE NATION\" on 29th - CHOSUNBIZ - Chosunbiz",
+        "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOOTQ0RHBPQ3ByQTlQX2dtMkNZUndDWEtBM1pQbDBLOHByeEtDRnRveEZVRGlGcFdGMlBWRG9JSV8tUzJOWUtDZm1VaWUyMGFYWEdYa05RdHVEa3dqdDVSbzU3eWV5bHdKamZxOGRkWTJRdnQ4ZEE2ZjkyVGZrcVo5TG5yeFg0ZDJP0gGcAUFVX3lxTE0xeThmN21CeUdDRHdYc0FicFBPWmVxTWhwZGpia2MtWWNIcWpCSlJZTzlEVkVDems2Q09qbGlfazFwd2hIbDZQdWlaRVgxQ2Z4ZlJDUW94Y2szSExURk5CWkMyUW9fX0l5WkctRXFMTWR2QmlmSG9Gdk5Lb3RLNW9mb0ZZS2dPSjIwTXdPbnJNTVlROG1JWURSdXlhZw?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Sat, 17 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": "ep",
+        "confidence_score": 0.68
+      },
+      {
+        "headline": "WHIB announces comeback with first mini album ‘ROCK THE NATION’ - allkpop",
+        "source_url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPN1JUd1hRRVNCWjZGamFFNFN1Z2FXdlJmOTZMRzNqNVdPNm9zbTRscVl6aFg5RTJGYjRYUGRhZzRoZVExV0JiMGR5LXc3UUF0VXE4UWxjV1MxMmNqMGtuUkE5TFp5TmZJMFdyaHYwT0pwU0ludDZPMnJaeEZhMXhReEg3aFlma1VmQmVMTnplNzY0Zk1iYjdsS2NEYVN0SmNKX1JV?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Tue, 13 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": "ep",
+        "confidence_score": 0.68
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/c681077b-38b4-4689-9023-7176d1e0dbca"
+  }
+}

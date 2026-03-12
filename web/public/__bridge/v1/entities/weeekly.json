@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-weeekly"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "weeekly",
+      "display_name": "Weeekly",
+      "canonical_name": "Weeekly",
+      "agency_name": "IST Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/hdALl9p5Xorp-GnogJe-U8BiIScrDx54jOvxPjZ3uv03DrfCg0YyEcEb8Txj4xQlgZXxbguyrxs=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/hdALl9p5Xorp-GnogJe-U8BiIScrDx54jOvxPjZ3uv03DrfCg0YyEcEb8Txj4xQlgZXxbguyrxs=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UC5rp2rDRSpyKNj-QLytC-tw",
+      "x": "https://x.com/_Weeekly",
+      "instagram": "https://www.instagram.com/_weeekly"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UC5rp2rDRSpyKNj-QLytC-tw",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-f3e56bc3",
+      "release_title": "Bliss",
+      "release_date": "2024-07-09",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Twenties",
+      "spotify_url": "https://open.spotify.com/album/5L7D7qRVcgeuz9KqnbnxnK",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/99d97768-5fb9-4f08-aef0-ea819866d091",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/99d97768-5fb9-4f08-aef0-ea819866d091/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/99d97768-5fb9-4f08-aef0-ea819866d091/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/99d97768-5fb9-4f08-aef0-ea819866d091",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-f3e56bc3",
+        "release_title": "Bliss",
+        "release_date": "2024-07-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Twenties",
+        "spotify_url": "https://open.spotify.com/album/5L7D7qRVcgeuz9KqnbnxnK",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/99d97768-5fb9-4f08-aef0-ea819866d091",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/99d97768-5fb9-4f08-aef0-ea819866d091/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/99d97768-5fb9-4f08-aef0-ea819866d091/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/99d97768-5fb9-4f08-aef0-ea819866d091",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cc435ed2",
+        "release_title": "ColoRise",
+        "release_date": "2023-11-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ODYSSEY",
+        "spotify_url": "https://open.spotify.com/album/1VJ62OC6tQN9n5ss3uEQyr",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/92c741f9-b93c-435c-9800-0b4be0dfa808",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/92c741f9-b93c-435c-9800-0b4be0dfa808/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/92c741f9-b93c-435c-9800-0b4be0dfa808/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/92c741f9-b93c-435c-9800-0b4be0dfa808",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-55cc91f5",
+        "release_title": "Play Game : Holiday",
+        "release_date": "2021-08-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Weekend",
+        "spotify_url": "https://open.spotify.com/album/1FDlvA1PdZujiEhbXihIPJ",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2f34f089-aa73-4066-a3a7-748101bec6f3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2f34f089-aa73-4066-a3a7-748101bec6f3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2f34f089-aa73-4066-a3a7-748101bec6f3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2f34f089-aa73-4066-a3a7-748101bec6f3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-50bdcca0",
+        "release_title": "We play",
+        "release_date": "2021-03-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Yummy!",
+        "spotify_url": "https://open.spotify.com/album/4kU6DFVgZKoDYQPZk1OZp9",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/fdc73ea9-324f-45a8-9663-293c186740e8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/fdc73ea9-324f-45a8-9663-293c186740e8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/fdc73ea9-324f-45a8-9663-293c186740e8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/fdc73ea9-324f-45a8-9663-293c186740e8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8127629f",
+        "release_title": "We can",
+        "release_date": "2020-10-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Unnie",
+        "spotify_url": "https://open.spotify.com/album/3RXt9jdd9X57jxbyk9Mg9y",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/61ffcdfd-a48d-4552-98c1-4afd4bd136f5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/61ffcdfd-a48d-4552-98c1-4afd4bd136f5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/61ffcdfd-a48d-4552-98c1-4afd4bd136f5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/61ffcdfd-a48d-4552-98c1-4afd4bd136f5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-22c43351",
+        "release_title": "We are",
+        "release_date": "2020-06-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Weeekly Day",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2f4034b4-21d9-4ddb-a7e6-4b1344249357",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2f4034b4-21d9-4ddb-a7e6-4b1344249357/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2f4034b4-21d9-4ddb-a7e6-4b1344249357/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2f4034b4-21d9-4ddb-a7e6-4b1344249357",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/30f9b3e7-690b-4199-8441-916c37176532"
+  }
+}

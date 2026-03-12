@@ -20,10 +20,21 @@ const artistProfiles = await readPreferredBridgeJson(repoRoot, 'artistProfiles.j
 const releaseRows = await readPreferredBridgeJson(repoRoot, 'releases.json')
 const releaseDetails = await readPreferredBridgeJson(repoRoot, 'releaseDetails.json')
 const releaseArtwork = await readPreferredBridgeJson(repoRoot, 'releaseArtwork.json')
+const releaseHistory = await readPreferredBridgeJson(repoRoot, 'releaseHistory.json')
 const upcomingCandidates = await readPreferredBridgeJson(repoRoot, 'upcomingCandidates.json')
 const watchlist = await readPreferredBridgeJson(repoRoot, 'watchlist.json')
 
 const artistProfileByGroup = new Map(artistProfiles.map((row) => [row.group, row]))
+const releaseRowByGroup = new Map(releaseRows.map((row) => [row.group, row]))
+const releaseHistoryByGroup = new Map(releaseHistory.map((row) => [row.group, row]))
+const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
+const bestReleaseDetailRows = selectBestReleaseDetailRows(releaseDetails)
+const releaseDetailByKey = new Map(
+  bestReleaseDetailRows.map((row) => [
+    getReleaseKey(row.group, row.release_title, row.release_date, normalizeReleaseStream(row.stream, row.release_kind)),
+    row,
+  ]),
+)
 const artworkByReleaseKey = new Map(
   releaseArtwork.map((row) => [
     getReleaseKey(row.group, row.release_title, row.release_date, normalizeReleaseStream(row.stream, row.release_kind)),
@@ -33,14 +44,16 @@ const artworkByReleaseKey = new Map(
 
 await rm(bridgeBaseRoot, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 })
 await mkdir(path.join(bridgeRoot, 'calendar', 'months'), { recursive: true })
+await mkdir(path.join(bridgeRoot, 'entities'), { recursive: true })
 await mkdir(path.join(bridgeRoot, 'releases', 'lookups'), { recursive: true })
 await mkdir(path.join(bridgeRoot, 'releases', 'details'), { recursive: true })
 await mkdir(path.join(bridgeRoot, 'meta'), { recursive: true })
+await mkdir(path.join(bridgeRoot, 'search'), { recursive: true })
 
 const releaseLookupEntries = new Map()
 let releaseDetailCount = 0
 
-for (const row of selectBestReleaseDetailRows(releaseDetails)) {
+for (const row of bestReleaseDetailRows) {
   const stream = normalizeReleaseStream(row.stream, row.release_kind)
   const releaseKey = getReleaseKey(row.group, row.release_title, row.release_date, stream)
   const releaseId = `bridge-release-${hashBridgeKey(releaseKey)}`
@@ -80,6 +93,41 @@ for (const row of selectBestReleaseDetailRows(releaseDetails)) {
 for (const [lookupId, entry] of releaseLookupEntries) {
   await writeBridgeJson(path.join(bridgeRoot, 'releases', 'lookups', `${lookupId}.json`), entry.payload)
 }
+
+const entityPayloads = buildEntityPayloads({
+  artistProfilesRows: artistProfiles,
+  releaseRows,
+  releaseRowByGroup,
+  releaseHistoryByGroup,
+  upcomingRows: upcomingCandidates,
+  watchlistByGroup,
+  releaseDetailByKey,
+  artworkByReleaseKey,
+})
+let entityDetailCount = 0
+for (const [entitySlug, payload] of entityPayloads) {
+  await writeBridgeJson(path.join(bridgeRoot, 'entities', `${entitySlug}.json`), {
+    meta: {
+      request_id: `bridge-entity-${entitySlug}`,
+    },
+    data: payload,
+  })
+  entityDetailCount += 1
+}
+
+const searchIndexPayload = buildBridgeSearchIndex({
+  entityPayloads,
+  releaseDetailRows: bestReleaseDetailRows,
+  upcomingRows: upcomingCandidates,
+  artistProfileByGroup,
+  suppressedUpcomingState: collectSuppressedUpcomingState(releaseRows),
+})
+await writeBridgeJson(path.join(bridgeRoot, 'search', 'index.json'), {
+  meta: {
+    request_id: 'bridge-search-index',
+  },
+  data: searchIndexPayload,
+})
 
 const calendarPayloads = buildCalendarPayloads(releaseRows, upcomingCandidates, artistProfileByGroup)
 let calendarMonthCount = 0
@@ -134,8 +182,12 @@ console.log(
       targetClassification,
       effectiveTarget,
       calendarMonthCount,
+      entityDetailCount,
       releaseDetailCount,
       releaseLookupCount: releaseLookupEntries.size,
+      searchEntityCount: searchIndexPayload.entities.length,
+      searchReleaseCount: searchIndexPayload.releases.length,
+      searchUpcomingCount: searchIndexPayload.upcoming.length,
       radarLongGapCount: radarPayload.long_gap.length,
       radarRookieCount: radarPayload.rookie.length,
     },
@@ -207,6 +259,177 @@ function buildCalendarPayloads(releases, upcomingRows, artistProfileMap) {
   }
 
   return payloads
+}
+
+function buildEntityPayloads({
+  artistProfilesRows,
+  releaseRows,
+  releaseRowByGroup,
+  releaseHistoryByGroup,
+  upcomingRows,
+  watchlistByGroup,
+  releaseDetailByKey,
+  artworkByReleaseKey,
+}) {
+  const payloads = new Map()
+  const groups = Array.from(
+    new Set([
+      ...artistProfilesRows.map((row) => row.group),
+      ...releaseRows.map((row) => row.group),
+      ...Array.from(releaseHistoryByGroup.keys()),
+      ...upcomingRows.map((row) => row.group),
+      ...Array.from(watchlistByGroup.keys()),
+    ]),
+  ).sort()
+  const suppressedUpcomingState = collectSuppressedUpcomingState(releaseRows)
+  const upcomingByGroup = groupRowsByKey(upcomingRows, (row) => row.group)
+
+  for (const group of groups) {
+    const profile = artistProfileByGroup.get(group) ?? null
+    const releaseRow = releaseRowByGroup.get(group) ?? null
+    const releaseHistoryRow = releaseHistoryByGroup.get(group) ?? null
+    const watchlistRow = watchlistByGroup.get(group) ?? null
+    const entitySlug = profile?.slug ?? slugifyGroup(group)
+    const displayName = profile?.display_name ?? group
+    const upcomingForGroup = (upcomingByGroup.get(group) ?? [])
+      .filter((row) => !isSuppressedUpcomingRow(row, suppressedUpcomingState, entitySlug))
+      .sort(compareUpcomingRows)
+    const nextUpcoming = buildEntityUpcomingSummary(upcomingForGroup[0], entitySlug, displayName)
+    const sourceTimeline = upcomingForGroup.slice(0, 8).map((row) => buildEntityTimelineEntry(row))
+    const recentAlbums = buildEntityRecentAlbums(group, releaseHistoryRow, releaseDetailByKey, artworkByReleaseKey)
+    const latestRelease = buildEntityLatestReleaseSummary(
+      group,
+      releaseRow,
+      releaseDetailByKey,
+      artworkByReleaseKey,
+      recentAlbums,
+    )
+
+    payloads.set(entitySlug, {
+      identity: {
+        entity_slug: entitySlug,
+        display_name: displayName,
+        canonical_name: group,
+        agency_name: profile?.agency ?? null,
+        badge_image_url: profile?.representative_image_url ?? null,
+        representative_image_url: profile?.representative_image_url ?? null,
+      },
+      official_links: {
+        youtube: profile?.official_youtube_url ?? null,
+        x: profile?.official_x_url ?? null,
+        instagram: profile?.official_instagram_url ?? null,
+      },
+      youtube_channels: {
+        primary_team_channel_url: profile?.official_youtube_url ?? null,
+        mv_allowlist_urls: [],
+      },
+      tracking_state: {
+        tier: watchlistRow?.tier ?? null,
+        tracking_status: watchlistRow?.tracking_status ?? null,
+      },
+      next_upcoming: nextUpcoming,
+      latest_release: latestRelease,
+      recent_albums: recentAlbums,
+      source_timeline: sourceTimeline,
+      artist_source_url: releaseRow?.artist_source ?? releaseHistoryRow?.artist_source ?? null,
+    })
+  }
+
+  return payloads
+}
+
+function buildBridgeSearchIndex({
+  entityPayloads,
+  releaseDetailRows,
+  upcomingRows,
+  artistProfileByGroup,
+  suppressedUpcomingState,
+}) {
+  const entities = Array.from(entityPayloads.values()).map((payload) => {
+    const entitySlug = payload.identity?.entity_slug ?? ''
+    const group = payload.identity?.canonical_name ?? payload.identity?.display_name ?? entitySlug
+    const profile = artistProfileByGroup.get(group) ?? null
+
+    return {
+      entity_slug: entitySlug,
+      canonical_path: `/artists/${entitySlug}`,
+      display_name: payload.identity?.display_name ?? group,
+      canonical_name: payload.identity?.canonical_name ?? group,
+      entity_type: 'group',
+      agency_name: payload.identity?.agency_name ?? null,
+      latest_release: payload.latest_release ?? null,
+      next_upcoming: payload.next_upcoming ?? null,
+      search_terms: dedupeSearchTerms([
+        payload.identity?.display_name,
+        payload.identity?.canonical_name,
+        group,
+        ...(Array.isArray(profile?.aliases) ? profile.aliases : []),
+        ...(Array.isArray(profile?.search_aliases) ? profile.search_aliases : []),
+      ]),
+    }
+  })
+
+  const releases = releaseDetailRows.map((row) => {
+    const stream = normalizeReleaseStream(row.stream, row.release_kind)
+    const releaseKey = getReleaseKey(row.group, row.release_title, row.release_date, stream)
+    const releaseId = `bridge-release-${hashBridgeKey(releaseKey)}`
+    const profile = artistProfileByGroup.get(row.group) ?? null
+    const entitySlug = profile?.slug ?? slugifyGroup(row.group)
+    return {
+      release_id: releaseId,
+      detail_path: buildCanonicalReleasePath(entitySlug, row.release_title, row.release_date, stream),
+      entity_path: `/artists/${entitySlug}`,
+      entity_slug: entitySlug,
+      display_name: profile?.display_name ?? row.group,
+      release_title: row.release_title,
+      release_date: row.release_date,
+      stream,
+      release_kind: row.release_kind ?? null,
+      release_format: row.release_kind ?? null,
+      search_terms: dedupeSearchTerms([
+        row.release_title,
+        `${row.group} ${row.release_title}`,
+        `${profile?.display_name ?? row.group} ${row.release_title}`,
+        ...(Array.isArray(profile?.search_aliases) ? profile.search_aliases.map((alias) => `${alias} ${row.release_title}`) : []),
+      ]),
+    }
+  })
+
+  const upcoming = upcomingRows
+    .filter((row) => !isSuppressedUpcomingRow(row, suppressedUpcomingState))
+    .map((row) => {
+      const profile = artistProfileByGroup.get(row.group) ?? null
+      const entitySlug = profile?.slug ?? slugifyGroup(row.group)
+      return {
+        upcoming_signal_id: row.event_key ?? `bridge-upcoming-${hashBridgeKey([row.group, row.headline, row.scheduled_date ?? row.scheduled_month ?? ''].join('::'))}`,
+        entity_path: `/artists/${entitySlug}`,
+        entity_slug: entitySlug,
+        display_name: profile?.display_name ?? row.group,
+        headline: row.headline,
+        scheduled_date: row.scheduled_date ?? null,
+        scheduled_month: row.scheduled_month ?? null,
+        date_precision: row.date_precision ?? 'unknown',
+        date_status: row.date_status ?? 'rumor',
+        release_format: row.release_format ?? null,
+        confidence_score: Number.isFinite(row.confidence) ? row.confidence : null,
+        source_type: row.source_type ?? null,
+        source_url: row.source_url ?? null,
+        source_domain: row.source_domain ?? null,
+        evidence_summary: row.evidence_summary ?? null,
+        search_terms: dedupeSearchTerms([
+          row.headline,
+          row.group,
+          profile?.display_name ?? row.group,
+          ...(Array.isArray(profile?.search_aliases) ? profile.search_aliases : []),
+        ]),
+      }
+    })
+
+  return {
+    entities,
+    releases,
+    upcoming,
+  }
 }
 
 function buildRadarPayload(artistProfilesRows, watchlistRows, upcomingRows) {
@@ -295,6 +518,229 @@ function buildRadarUpcomingSummary(row, entitySlug, displayName) {
     confidence_score: Number.isFinite(row.confidence) ? row.confidence : null,
     release_format: row.release_format || null,
   }
+}
+
+function buildEntityUpcomingSummary(row, entitySlug, displayName) {
+  if (!row) {
+    return null
+  }
+
+  const summary = buildRadarUpcomingSummary(row, entitySlug, displayName)
+  return {
+    ...summary,
+    latest_seen_at: readString(row.published_at) || null,
+    source_type: readString(row.source_type) || null,
+    source_url: readString(row.source_url) || null,
+    source_domain: readString(row.source_domain) || null,
+    evidence_summary: readString(row.evidence_summary) || null,
+    source_count: Number.isFinite(row.source_count) ? row.source_count : null,
+  }
+}
+
+function buildEntityTimelineEntry(row) {
+  return {
+    headline: row.headline,
+    source_url: readString(row.source_url) || null,
+    source_type: readString(row.source_type) || null,
+    source_domain: readString(row.source_domain) || null,
+    published_at: readString(row.published_at) || null,
+    scheduled_date: readString(row.scheduled_date) || null,
+    scheduled_month: readString(row.scheduled_month) || null,
+    date_precision: readString(row.date_precision) || null,
+    date_status: readString(row.date_status) || null,
+    release_format: readString(row.release_format) || null,
+    confidence_score: Number.isFinite(row.confidence) ? row.confidence : null,
+  }
+}
+
+function buildEntityLatestReleaseSummary(group, releaseRow, releaseDetailByKey, artworkByReleaseKey, recentAlbums) {
+  if (!releaseRow) {
+    return recentAlbums[0] ?? null
+  }
+
+  const candidates = []
+  for (const [stream, fact] of [
+    ['song', releaseRow.latest_song],
+    ['album', releaseRow.latest_album],
+  ]) {
+    const summary = buildEntityReleaseSummary(group, fact, stream, releaseDetailByKey, artworkByReleaseKey)
+    if (summary) {
+      candidates.push(summary)
+    }
+  }
+
+  candidates.sort(compareEntityReleaseSummaries)
+  return candidates[0] ?? recentAlbums[0] ?? null
+}
+
+function buildEntityRecentAlbums(group, releaseHistoryRow, releaseDetailByKey, artworkByReleaseKey) {
+  if (!Array.isArray(releaseHistoryRow?.releases)) {
+    return []
+  }
+
+  return releaseHistoryRow.releases
+    .filter((row) => normalizeReleaseStream(row.stream, row.release_kind) === 'album')
+    .map((row) => buildEntityReleaseSummary(group, row, row.stream, releaseDetailByKey, artworkByReleaseKey))
+    .filter(Boolean)
+    .sort(compareEntityReleaseSummaries)
+    .slice(0, 8)
+}
+
+function buildEntityReleaseSummary(group, fact, stream, releaseDetailByKey, artworkByReleaseKey) {
+  if (!fact?.title || !fact?.date) {
+    return null
+  }
+
+  const normalizedStream = normalizeReleaseStream(stream, fact.release_kind)
+  const releaseKey = getReleaseKey(group, fact.title, fact.date, normalizedStream)
+  const detailRow = releaseDetailByKey.get(releaseKey) ?? null
+  const artwork = artworkByReleaseKey.get(releaseKey) ?? null
+  return {
+    release_id: `bridge-release-${hashBridgeKey(releaseKey)}`,
+    release_title: fact.title,
+    release_date: fact.date,
+    stream: normalizedStream,
+    release_kind: fact.release_kind ?? null,
+    release_format: fact.release_format ?? fact.release_kind ?? null,
+    representative_song_title: findRepresentativeSongTitle(detailRow),
+    spotify_url: readString(detailRow?.spotify_url) || null,
+    youtube_music_url: readString(detailRow?.youtube_music_url) || null,
+    youtube_mv_url: readString(detailRow?.youtube_video_url) || null,
+    source_url: readString(fact.source) || null,
+    artwork: buildEntitySummaryArtwork(artwork),
+  }
+}
+
+function buildEntitySummaryArtwork(artwork) {
+  if (!artwork) {
+    return null
+  }
+
+  return {
+    cover_image_url: readString(artwork.cover_image_url) || null,
+    thumbnail_image_url: readString(artwork.thumbnail_image_url) || null,
+    artwork_source_type: readString(artwork.artwork_source_type) || null,
+    artwork_source_url: readString(artwork.artwork_source_url) || null,
+    artwork_status: readString(artwork.artwork_status) || null,
+  }
+}
+
+function findRepresentativeSongTitle(detailRow) {
+  if (!detailRow || !Array.isArray(detailRow.tracks)) {
+    return null
+  }
+
+  return (
+    detailRow.tracks.find((track) => Boolean(track?.is_title_track) && readString(track?.title))?.title ??
+    readString(detailRow.tracks[0]?.title) ??
+    null
+  )
+}
+
+function compareEntityReleaseSummaries(left, right) {
+  const dateCompare = String(right?.release_date ?? '').localeCompare(String(left?.release_date ?? ''))
+  if (dateCompare !== 0) {
+    return dateCompare
+  }
+
+  const streamCompare = String(right?.stream ?? '').localeCompare(String(left?.stream ?? ''))
+  if (streamCompare !== 0) {
+    return streamCompare
+  }
+
+  return String(left?.release_title ?? '').localeCompare(String(right?.release_title ?? ''))
+}
+
+function collectSuppressedUpcomingState(releases) {
+  const exactDateKeys = new Set()
+  const monthKeys = new Set()
+  const titleTermsByEntity = new Map()
+
+  for (const releaseRow of releases) {
+    for (const fact of expandReleaseFacts(releaseRow, artistProfileByGroup)) {
+      const releaseDate = readString(fact.release_date)
+      const releaseTitle = normalizeComparableText(readString(fact.release_title))
+      if (!releaseDate) {
+        continue
+      }
+
+      exactDateKeys.add(`${fact.entity_slug}::${releaseDate}`)
+      monthKeys.add(`${fact.entity_slug}::${releaseDate.slice(0, 7)}`)
+      if (releaseTitle) {
+        const currentTerms = titleTermsByEntity.get(fact.entity_slug)
+        if (currentTerms) {
+          currentTerms.add(releaseTitle)
+        } else {
+          titleTermsByEntity.set(fact.entity_slug, new Set([releaseTitle]))
+        }
+      }
+    }
+  }
+
+  return {
+    exactDateKeys,
+    monthKeys,
+    titleTermsByEntity,
+  }
+}
+
+function isSuppressedUpcomingRow(row, suppressedUpcomingState, entitySlug = slugifyGroup(row.group)) {
+  if (row?.date_precision === 'exact' && row?.scheduled_date) {
+    return suppressedUpcomingState.exactDateKeys.has(`${entitySlug}::${row.scheduled_date}`)
+  }
+
+  if (row?.date_precision === 'month_only' && row?.scheduled_month) {
+    return suppressedUpcomingState.monthKeys.has(`${entitySlug}::${row.scheduled_month}`)
+  }
+
+  if (row?.date_precision === 'unknown') {
+    const headline = normalizeComparableText(readString(row?.headline))
+    const titleTerms = suppressedUpcomingState.titleTermsByEntity.get(entitySlug)
+    if (headline && titleTerms && Array.from(titleTerms).some((term) => headline.includes(term))) {
+      return true
+    }
+  }
+
+  return false
+}
+
+function normalizeComparableText(value) {
+  return String(value ?? '')
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/[\s\-_./'"“”‘’`]+/g, '')
+    .trim()
+}
+
+function groupRowsByKey(rows, readKey) {
+  const grouped = new Map()
+
+  for (const row of rows) {
+    const key = readKey(row)
+    if (!key) {
+      continue
+    }
+
+    const current = grouped.get(key)
+    if (current) {
+      current.push(row)
+      continue
+    }
+
+    grouped.set(key, [row])
+  }
+
+  return grouped
+}
+
+function dedupeSearchTerms(values) {
+  return Array.from(
+    new Set(
+      values
+        .map((value) => readString(value))
+        .filter(Boolean),
+    ),
+  )
 }
 
 function expandReleaseFacts(row, artistProfileMap) {

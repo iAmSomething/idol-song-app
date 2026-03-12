@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-nexz"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "nexz",
+      "display_name": "NEXZ",
+      "canonical_name": "NEXZ",
+      "agency_name": "JYP Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/ETdrX25Wh1uWhJy_x-51-7lvSkUd2Txy2egswaVpk9-i9KQNHhtxMdNoZ9CtIDy9ya2rZWTHFw=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/ETdrX25Wh1uWhJy_x-51-7lvSkUd2Txy2egswaVpk9-i9KQNHhtxMdNoZ9CtIDy9ya2rZWTHFw=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@NEXZ_official",
+      "x": "https://x.com/NEXZ_official",
+      "instagram": "https://www.instagram.com/real_nexz"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@NEXZ_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-c64e81c0",
+      "release_title": "Beat‐Boxer",
+      "release_date": "2025-10-27",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Beat‐Boxer",
+      "spotify_url": "https://open.spotify.com/album/2iI33V0gbSII6iuEfq65fE",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lTkc-Tu6iCFIcrXDYdLPXWsflGY9Pd6gA",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=d4tHKtG9xFo",
+      "source_url": "https://musicbrainz.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-c64e81c0",
+        "release_title": "Beat‐Boxer",
+        "release_date": "2025-10-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Beat‐Boxer",
+        "spotify_url": "https://open.spotify.com/album/2iI33V0gbSII6iuEfq65fE",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lTkc-Tu6iCFIcrXDYdLPXWsflGY9Pd6gA",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=d4tHKtG9xFo",
+        "source_url": "https://musicbrainz.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e3fe26c4",
+        "release_title": "One Bite",
+        "release_date": "2025-07-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "One Bite",
+        "spotify_url": "https://open.spotify.com/album/6dWrSCMiO8AWFvIXkoaQJg",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/513f9166-243d-4118-b34c-50395f06a12b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/513f9166-243d-4118-b34c-50395f06a12b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/513f9166-243d-4118-b34c-50395f06a12b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/513f9166-243d-4118-b34c-50395f06a12b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3c0951f3",
+        "release_title": "O‐RLY?",
+        "release_date": "2025-04-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "O‐RLY?",
+        "spotify_url": "https://open.spotify.com/album/61Ew2Av9en5avhmClRgjhp",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c3a6c658-ba72-4dcb-b5ec-8cd9800448c7",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c3a6c658-ba72-4dcb-b5ec-8cd9800448c7/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c3a6c658-ba72-4dcb-b5ec-8cd9800448c7/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c3a6c658-ba72-4dcb-b5ec-8cd9800448c7",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9788fab5",
+        "release_title": "NALLINA",
+        "release_date": "2024-11-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "NALLINA",
+        "spotify_url": "https://open.spotify.com/album/05c8EK434eE6IMbBhKPDzn",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/1fe18c48-c2ce-4c18-be6d-3b0f0462b79a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1fe18c48-c2ce-4c18-be6d-3b0f0462b79a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1fe18c48-c2ce-4c18-be6d-3b0f0462b79a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1fe18c48-c2ce-4c18-be6d-3b0f0462b79a",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/c870eef2-a1f9-407c-95f2-1448ad56474a"
+  }
+}

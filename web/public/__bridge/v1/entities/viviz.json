@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-viviz"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "viviz",
+      "display_name": "VIVIZ",
+      "canonical_name": "VIVIZ",
+      "agency_name": "BPM Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/vdXffhOPbYfW-U45rtMFqUh5aLC9a9GQ8FPUat9cj6FY_M9yLiu0iwrC0UxNWOrXKR_0OLOW=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/vdXffhOPbYfW-U45rtMFqUh5aLC9a9GQ8FPUat9cj6FY_M9yLiu0iwrC0UxNWOrXKR_0OLOW=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@viviz_official",
+      "x": "https://x.com/VIVIZ_official",
+      "instagram": "https://www.instagram.com/viviz_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@viviz_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-9f383842",
+      "release_title": "A Montage of ( )",
+      "release_date": "2025-07-08",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "La La Love Me",
+      "spotify_url": "https://open.spotify.com/album/7hc0DjpDJHNvVNF7a9PDNq",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-9f383842",
+        "release_title": "A Montage of ( )",
+        "release_date": "2025-07-08",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "La La Love Me",
+        "spotify_url": "https://open.spotify.com/album/7hc0DjpDJHNvVNF7a9PDNq",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/06428a95-ee6f-40dc-9310-36b74a9c112d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9c53f20c",
+        "release_title": "VOYAGE",
+        "release_date": "2024-11-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Shhh!",
+        "spotify_url": "https://open.spotify.com/album/7xqdkXDwZiVOkdZZlKxjEL",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ef0d6e82-147a-488b-a8bd-95baf245f166",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ef0d6e82-147a-488b-a8bd-95baf245f166/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ef0d6e82-147a-488b-a8bd-95baf245f166/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ef0d6e82-147a-488b-a8bd-95baf245f166",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6dfb4783",
+        "release_title": "VERSUS",
+        "release_date": "2023-11-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "MANIAC",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6a501694-dce7-4d1e-9a73-52e0003756dc",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6a501694-dce7-4d1e-9a73-52e0003756dc/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6a501694-dce7-4d1e-9a73-52e0003756dc/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6a501694-dce7-4d1e-9a73-52e0003756dc",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d5df6fa3",
+        "release_title": "VarioUS",
+        "release_date": "2023-01-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "PULL UP",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a2f392c3-84fe-4555-8ab6-53c2199d1aca",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a2f392c3-84fe-4555-8ab6-53c2199d1aca/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a2f392c3-84fe-4555-8ab6-53c2199d1aca/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a2f392c3-84fe-4555-8ab6-53c2199d1aca",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5dd0a284",
+        "release_title": "Summer Vibe",
+        "release_date": "2022-07-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "LOVEADE",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6277f8d4-02ee-40e9-8ea1-db4b859b3386",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6277f8d4-02ee-40e9-8ea1-db4b859b3386/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6277f8d4-02ee-40e9-8ea1-db4b859b3386/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6277f8d4-02ee-40e9-8ea1-db4b859b3386",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0213820e",
+        "release_title": "Beam of Prism",
+        "release_date": "2022-02-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro.",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/db181905-01d6-452a-8705-f0181a3412fb",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/db181905-01d6-452a-8705-f0181a3412fb/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/db181905-01d6-452a-8705-f0181a3412fb/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/db181905-01d6-452a-8705-f0181a3412fb",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/4142301a-8bd8-4ea0-b509-0baf84fe6906"
+  }
+}

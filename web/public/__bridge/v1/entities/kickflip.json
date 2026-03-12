@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-kickflip"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "kickflip",
+      "display_name": "KickFlip",
+      "canonical_name": "KickFlip",
+      "agency_name": "JYP Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@kickflip_jype",
+      "x": "https://x.com/KickFlip_jype",
+      "instagram": "https://www.instagram.com/kickflip_jype"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@kickflip_jype",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "kickflip",
+      "display_name": "KickFlip",
+      "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
+      "scheduled_date": null,
+      "scheduled_month": "2026-04",
+      "date_precision": "month_only",
+      "date_status": "scheduled",
+      "confidence_score": 0.76,
+      "release_format": null,
+      "latest_seen_at": "Mon, 02 Mar 2026 03:09:00 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPd2t2VzJkdFQ0Mm5Ld0JzcWVlZHZvb0dHQ2RWSC1IVWI5bmR4bEJQQ2NuWjdGMUZKQnNnU0J1STBld0VOd0xmTnBXaHJyUzFLb0g4RUhEblhvR1M5eGZtdWhCUTBGN2FGMkNpUjk4dlJwZGZyZUM2cE95cHAta3JrektqM2stTWxGQXZxYWxfdGtTNm1OQWpDY3FDd0xOcENLVGl2Rzh1RjZKUE1HMkRwVG5aSQ?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Future month reference: 2026-04. KickFlip wraps first nationwide fan-con tour and announces April comeback allkpop",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-1cd14845",
+      "release_title": "From KickFlip, To WeFlip",
+      "release_date": "2026-01-20",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Hyper Slide",
+      "spotify_url": "https://open.spotify.com/album/4VtPAHPKZD2KEgtlkG7zP1",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/41e161d0-e355-479c-849f-b2a63f68fb00",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/41e161d0-e355-479c-849f-b2a63f68fb00/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/41e161d0-e355-479c-849f-b2a63f68fb00/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/41e161d0-e355-479c-849f-b2a63f68fb00",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-9480876a",
+        "release_title": "My First Flip",
+        "release_date": "2025-09-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "My First Love Song",
+        "spotify_url": "https://open.spotify.com/album/2oPgsxzvXORR8pnYv9mYdz",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lpMgo38Z6iSDLvzyV5O2BwsYmtBVqrPz8",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d834a7cf-efa3-4a5d-bcf8-d40cbcc2a434",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d834a7cf-efa3-4a5d-bcf8-d40cbcc2a434/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d834a7cf-efa3-4a5d-bcf8-d40cbcc2a434/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d834a7cf-efa3-4a5d-bcf8-d40cbcc2a434",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2289e11b",
+        "release_title": "Kick Out, Flip Now!",
+        "release_date": "2025-05-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "FREEZE",
+        "spotify_url": "https://open.spotify.com/album/4BonBofCFd9r6PRTSA0blD",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/78b0e273-086e-4164-a46c-0d41e06f32aa",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/78b0e273-086e-4164-a46c-0d41e06f32aa/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/78b0e273-086e-4164-a46c-0d41e06f32aa/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/78b0e273-086e-4164-a46c-0d41e06f32aa",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6d5caf8b",
+        "release_title": "Flip it, Kick it!",
+        "release_date": "2025-01-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Mama Said (뭐가 되려고?)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/70f54551-2a6f-4aec-a9f4-8156be368d1c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/70f54551-2a6f-4aec-a9f4-8156be368d1c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/70f54551-2a6f-4aec-a9f4-8156be368d1c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/70f54551-2a6f-4aec-a9f4-8156be368d1c",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
+        "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPd2t2VzJkdFQ0Mm5Ld0JzcWVlZHZvb0dHQ2RWSC1IVWI5bmR4bEJQQ2NuWjdGMUZKQnNnU0J1STBld0VOd0xmTnBXaHJyUzFLb0g4RUhEblhvR1M5eGZtdWhCUTBGN2FGMkNpUjk4dlJwZGZyZUM2cE95cHAta3JrektqM2stTWxGQXZxYWxfdGtTNm1OQWpDY3FDd0xOcENLVGl2Rzh1RjZKUE1HMkRwVG5aSQ?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Mon, 02 Mar 2026 03:09:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": null,
+        "confidence_score": 0.76
+      },
+      {
+        "headline": "KickFlip announces April comeback with their 4th mini-album - allkpop",
+        "source_url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSHllVlA3LVVFQ1pKcGltd3UxLWhSVEpfUHNqall5X2pkZ0ozWlNzazlKS29BYzZUZHA0UFNVQnNNd0JORU9yRFFQelFzeU5jM05kV0k0TVBZZE1iQklwbGZvR2ZSajhTaDFBRDR0dk05aHFNcmNoUWs1MXFVWGRmYXRhQTlWeDU1TE5TRUxpaTJFZ3d1ZlNaRGhVWXh2Z3pR?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Mon, 02 Mar 2026 18:13:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": "ep",
+        "confidence_score": 0.76
+      },
+      {
+        "headline": "KickFlip announces April comeback - Music Mundial",
+        "source_url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1vRVlPU0xVRUlFSlN6SU1oNWQ1VWQxYWNpYUpXaDl6MFVHZWtVSElyTVFIZGZKaU51OFZDRlVTX2R4VmdVZWVzbmVpeEtxb3BrYXkwV3VWb282SVd6dDdlakdaczlVcmtpbWFxWTdOY2NqRS1Z0gF6QVVfeXFMTU5XU1lfWnpuclpnWTlfZm9aVGxocmVnYXN1bzhNenRBUlF2VnJQMzBsZVk5M2RmbklQdnRvUzZneW9qclJ4c29qcTUtSDFPMlNwbk1qUERuVDUtOGpMMldaU25hdVo5MHR3ZnRYYmlSeGNOdnVlOFliUlE?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Mon, 02 Mar 2026 18:54:14 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": null,
+        "confidence_score": 0.76
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/fa8afe53-9f95-4523-b064-004990c2d7c5"
+  }
+}

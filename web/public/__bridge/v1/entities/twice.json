@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-twice"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "twice",
+      "display_name": "TWICE",
+      "canonical_name": "TWICE",
+      "agency_name": "JYP Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/rj-m7CQIV8hIHx_lB8cjs0NxrDFJaUkVwZ5tCnZTNSVEr2IqXGF-2e7nr7og1IGeRXtHikce=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/rj-m7CQIV8hIHx_lB8cjs0NxrDFJaUkVwZ5tCnZTNSVEr2IqXGF-2e7nr7og1IGeRXtHikce=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@JYPETWICE",
+      "x": "https://x.com/JYPETWICE",
+      "instagram": "https://www.instagram.com/twicetagram"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@JYPETWICE",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-4c8b4c59",
+      "release_title": "TEN: The Story Goes On",
+      "release_date": "2025-10-10",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "ME+YOU",
+      "spotify_url": "https://open.spotify.com/album/7zyibWit2LeHvy5h9utbfg",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nEqNynotuYAzV4vnXZjwrrRNdGurwqMZ8",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/3670fec6-643a-4a88-a623-900ff5fdd43b",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/3670fec6-643a-4a88-a623-900ff5fdd43b/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/3670fec6-643a-4a88-a623-900ff5fdd43b/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/3670fec6-643a-4a88-a623-900ff5fdd43b",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-4c8b4c59",
+        "release_title": "TEN: The Story Goes On",
+        "release_date": "2025-10-10",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "ME+YOU",
+        "spotify_url": "https://open.spotify.com/album/7zyibWit2LeHvy5h9utbfg",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nEqNynotuYAzV4vnXZjwrrRNdGurwqMZ8",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3670fec6-643a-4a88-a623-900ff5fdd43b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3670fec6-643a-4a88-a623-900ff5fdd43b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3670fec6-643a-4a88-a623-900ff5fdd43b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3670fec6-643a-4a88-a623-900ff5fdd43b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c8a4bf0b",
+        "release_title": "ENEMY",
+        "release_date": "2025-08-26",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "ENEMY",
+        "spotify_url": "https://open.spotify.com/album/18v5nf750qcff18B0a6WmG",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5d486273-27db-4b5e-926b-fed3dc7df907",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5d486273-27db-4b5e-926b-fed3dc7df907/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5d486273-27db-4b5e-926b-fed3dc7df907/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5d486273-27db-4b5e-926b-fed3dc7df907",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6f7861dd",
+        "release_title": "THIS IS FOR",
+        "release_date": "2025-07-11",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "THIS IS FOR",
+        "spotify_url": "https://open.spotify.com/prerelease/2wQFpdWTxaoRdPRrkc45UG",
+        "youtube_music_url": null,
+        "youtube_mv_url": "https://www.youtube.com/watch?v=eHHQaoEW30Q",
+        "source_url": "https://musicbrainz.org/release-group/507591c7-276e-4e07-8af7-1e4c4d0b8a5a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/507591c7-276e-4e07-8af7-1e4c4d0b8a5a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/507591c7-276e-4e07-8af7-1e4c4d0b8a5a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/507591c7-276e-4e07-8af7-1e4c4d0b8a5a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-08dc33ae",
+        "release_title": "STRATEGY",
+        "release_date": "2024-12-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Strategy",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": "https://www.youtube.com/watch?v=Sz_wWzgh-vQ",
+        "source_url": "https://musicbrainz.org/release-group/4ec7c2ea-04bf-46a5-9376-ab228ad07706",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4ec7c2ea-04bf-46a5-9376-ab228ad07706/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4ec7c2ea-04bf-46a5-9376-ab228ad07706/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4ec7c2ea-04bf-46a5-9376-ab228ad07706",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3cfa3f7d",
+        "release_title": "Track by Track: TWICE",
+        "release_date": "2024-07-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "single",
+        "representative_song_title": "Keeper (intro)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/31cdcf55-f2b2-4521-84a5-eecb94578f5e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/31cdcf55-f2b2-4521-84a5-eecb94578f5e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/31cdcf55-f2b2-4521-84a5-eecb94578f5e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/31cdcf55-f2b2-4521-84a5-eecb94578f5e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4c54db17",
+        "release_title": "DIVE",
+        "release_date": "2024-07-17",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "DIVE",
+        "spotify_url": "https://open.spotify.com/album/7tgTOUXm74GKA12wsQIUPu",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/793597f3-a3bd-4ede-8115-10ffcac388d3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/793597f3-a3bd-4ede-8115-10ffcac388d3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/793597f3-a3bd-4ede-8115-10ffcac388d3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/793597f3-a3bd-4ede-8115-10ffcac388d3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-1eff7222",
+        "release_title": "With YOU‐th",
+        "release_date": "2024-02-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "I GOT YOU",
+        "spotify_url": "https://open.spotify.com/album/51joMRy1FNUYWiPLiKUobo",
+        "youtube_music_url": null,
+        "youtube_mv_url": "https://www.youtube.com/watch?v=haf67eKF0uo",
+        "source_url": "https://musicbrainz.org/release-group/e97e9436-e0fd-4df6-8688-975c01f4c5d5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e97e9436-e0fd-4df6-8688-975c01f4c5d5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e97e9436-e0fd-4df6-8688-975c01f4c5d5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e97e9436-e0fd-4df6-8688-975c01f4c5d5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-93e57a70",
+        "release_title": "READY TO BE",
+        "release_date": "2023-03-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "MOONLIGHT SUNRISE",
+        "spotify_url": "https://open.spotify.com/album/1PeTPycNpQ5RCGMpfM63dG",
+        "youtube_music_url": null,
+        "youtube_mv_url": "https://www.youtube.com/watch?v=cKlEE_EYuNM",
+        "source_url": "https://musicbrainz.org/release-group/560a5b2a-2e49-4327-a298-08d6c63fc15c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/560a5b2a-2e49-4327-a298-08d6c63fc15c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/560a5b2a-2e49-4327-a298-08d6c63fc15c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/560a5b2a-2e49-4327-a298-08d6c63fc15c",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/8da127cc-c432-418f-b356-ef36210d82ac"
+  }
+}

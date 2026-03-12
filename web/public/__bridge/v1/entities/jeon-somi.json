@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-jeon-somi"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "jeon-somi",
+      "display_name": "JEON SOMI",
+      "canonical_name": "JEON SOMI",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@jeonsomiofficial",
+      "x": null,
+      "instagram": "https://www.instagram.com/somsomi0309"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@jeonsomiofficial",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": null,
+      "tracking_status": null
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-48363679",
+      "release_title": "Chaotic & Confused",
+      "release_date": "2025-08-11",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Chaotic & Confused",
+      "spotify_url": "https://open.spotify.com/album/171v7mbXgzaMBk7S0QmCWu",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-48363679",
+        "release_title": "Chaotic & Confused",
+        "release_date": "2025-08-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Chaotic & Confused",
+        "spotify_url": "https://open.spotify.com/album/171v7mbXgzaMBk7S0QmCWu",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d88010d5",
+        "release_title": "GAME PLAN",
+        "release_date": "2023-08-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "금금금",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2ad66298-021e-443c-a4ed-68a75f186a62",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2ad66298-021e-443c-a4ed-68a75f186a62/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2ad66298-021e-443c-a4ed-68a75f186a62/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2ad66298-021e-443c-a4ed-68a75f186a62",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6140696b",
+        "release_title": "XOXO",
+        "release_date": "2021-10-29",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "XOXO",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0d1a0883-d735-44ce-a49c-38347fe54329",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0d1a0883-d735-44ce-a49c-38347fe54329/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0d1a0883-d735-44ce-a49c-38347fe54329/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0d1a0883-d735-44ce-a49c-38347fe54329",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/8d4e6a86-fa1c-4a1b-b8c4-3b58a46dde9f"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-oneus"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "oneus",
+      "display_name": "ONEUS",
+      "canonical_name": "ONEUS",
+      "agency_name": "RBW",
+      "badge_image_url": "https://yt3.googleusercontent.com/nEjipWuky3xIyWJ5X9mTF1rDKpftxbqAqLqJ8Y9PQj2Ts7o_fqBCu7bB_LwTuL_HojNbXvN_bA=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/nEjipWuky3xIyWJ5X9mTF1rDKpftxbqAqLqJ8Y9PQj2Ts7o_fqBCu7bB_LwTuL_HojNbXvN_bA=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
+      "x": "https://x.com/official_oneus",
+      "instagram": "https://www.instagram.com/official_oneus"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-04bc88fa",
+      "release_title": "原",
+      "release_date": "2026-01-20",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Grenade",
+      "spotify_url": "https://open.spotify.com/album/4qTTzaU30PLhLJmD6lLzFm",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=_UQCWEp-8BQ",
+      "source_url": "https://musicbrainz.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-ac5fb971",
+        "release_title": "5x",
+        "release_date": "2025-06-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "TIME MACHINE (Korean ver.)",
+        "spotify_url": "https://open.spotify.com/album/549FaK4UMSSCdbxKVLWaYL",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kqyRUs_1gDVt_BII8bpPiS4egipKtyWG4",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/bf41a2c3-75ef-4c6b-aab6-0c8874163e8a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/bf41a2c3-75ef-4c6b-aab6-0c8874163e8a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/bf41a2c3-75ef-4c6b-aab6-0c8874163e8a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/bf41a2c3-75ef-4c6b-aab6-0c8874163e8a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0dcead3e",
+        "release_title": "Dear.M",
+        "release_date": "2025-01-14",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "IKUK",
+        "spotify_url": "https://open.spotify.com/album/48AedwRUndu10YZyR1C5Qy",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8c01f76a-0e06-4ab5-a28b-e3746c3d73b3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8c01f76a-0e06-4ab5-a28b-e3746c3d73b3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8c01f76a-0e06-4ab5-a28b-e3746c3d73b3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8c01f76a-0e06-4ab5-a28b-e3746c3d73b3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5e02fc1c",
+        "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+        "release_date": "2024-10-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Armageddon",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c7600325",
+        "release_title": "로드 투 킹덤 : ACE OF ACE 〈VS〉, Pt. 2",
+        "release_date": "2024-10-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "영웅(英雄; Kick It)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5fd9a726-14c7-436b-b45c-59e0ce99a301",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5fd9a726-14c7-436b-b45c-59e0ce99a301/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5fd9a726-14c7-436b-b45c-59e0ce99a301/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5fd9a726-14c7-436b-b45c-59e0ce99a301",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-eaf68d84",
+        "release_title": "La Dolce Vita",
+        "release_date": "2023-09-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : Beggin’ you",
+        "spotify_url": "https://open.spotify.com/album/4ycaoQvk5OsGiRoXP1SLq5",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/533f4ddc-ed78-4264-9ed8-fe5442f52fe1",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/533f4ddc-ed78-4264-9ed8-fe5442f52fe1/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/533f4ddc-ed78-4264-9ed8-fe5442f52fe1/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/533f4ddc-ed78-4264-9ed8-fe5442f52fe1",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-164a4e26",
+        "release_title": "PYGMALION",
+        "release_date": "2023-05-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : LETHE",
+        "spotify_url": "https://open.spotify.com/album/5NMfRjmFyNsyF0j8znCOPJ",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nVbksBdTMwK-KV7W8PbIEpXfRse2s2los&feature=share",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/74b93759-99d1-4d3b-97d6-f07480fccfc3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/74b93759-99d1-4d3b-97d6-f07480fccfc3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/74b93759-99d1-4d3b-97d6-f07480fccfc3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/74b93759-99d1-4d3b-97d6-f07480fccfc3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0cd822b0",
+        "release_title": "Dopamine",
+        "release_date": "2022-11-25",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Dopamine",
+        "spotify_url": "https://open.spotify.com/album/60awPM0aor1JqMHqPHEkCT",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/889b5c86-2f72-4555-8136-17237644c260",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/889b5c86-2f72-4555-8136-17237644c260/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/889b5c86-2f72-4555-8136-17237644c260/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/889b5c86-2f72-4555-8136-17237644c260",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-7d873844",
+        "release_title": "MALUS",
+        "release_date": "2022-09-05",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : EDEN",
+        "spotify_url": "https://open.spotify.com/album/5VlLXq5wH22O8D5hBYWqAp",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/608bb631-1f1e-4585-99b0-2b7ef6affd8a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/608bb631-1f1e-4585-99b0-2b7ef6affd8a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/608bb631-1f1e-4585-99b0-2b7ef6affd8a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/608bb631-1f1e-4585-99b0-2b7ef6affd8a",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/c010eb84-2de1-40b2-b267-40de6002daab"
+  }
+}

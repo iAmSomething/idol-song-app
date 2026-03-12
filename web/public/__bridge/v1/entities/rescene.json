@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-rescene"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "rescene",
+      "display_name": "RESCENE",
+      "canonical_name": "RESCENE",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@RESCENEofficial",
+      "x": "https://x.com/RESCENEofficial",
+      "instagram": "https://www.instagram.com/rescene.official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@RESCENEofficial",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-f9f38c66",
+      "release_title": "[RESCENE X ???]",
+      "release_date": "2026-02-27",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Busy boy",
+      "spotify_url": "https://open.spotify.com/album/0dbuXh0XcMsrgQsVep3jAk",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/4f3f5594-e38f-4e46-bef1-2d2cfc28182e",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/4f3f5594-e38f-4e46-bef1-2d2cfc28182e/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/4f3f5594-e38f-4e46-bef1-2d2cfc28182e/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/4f3f5594-e38f-4e46-bef1-2d2cfc28182e",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-d0b07928",
+        "release_title": "lip bomb",
+        "release_date": "2025-11-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Heart Drop",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kZrQiqGr_bgCcTLvKpgOzIebfJRBHdFqU",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0854eb50-8966-441c-80be-74b10eb11c6f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0854eb50-8966-441c-80be-74b10eb11c6f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0854eb50-8966-441c-80be-74b10eb11c6f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0854eb50-8966-441c-80be-74b10eb11c6f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-dd23cfd5",
+        "release_title": "Glow Up",
+        "release_date": "2025-02-05",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Glow Up",
+        "spotify_url": "https://open.spotify.com/album/0Ka3xa6oOWmW1hIjjjxEW0",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/62840b34-c88a-4e7a-ac10-4788dfce9204",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/62840b34-c88a-4e7a-ac10-4788dfce9204/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/62840b34-c88a-4e7a-ac10-4788dfce9204/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/62840b34-c88a-4e7a-ac10-4788dfce9204",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f9efbd47",
+        "release_title": "SCENEDROME",
+        "release_date": "2024-08-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Lucky you",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/26996e38-8255-48e4-bb48-35ebc410984f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/26996e38-8255-48e4-bb48-35ebc410984f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/26996e38-8255-48e4-bb48-35ebc410984f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/26996e38-8255-48e4-bb48-35ebc410984f",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/a54fd8e2-d319-44a6-aa60-21adf17751bf"
+  }
+}

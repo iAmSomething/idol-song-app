@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-xikers"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "xikers",
+      "display_name": "xikers",
+      "canonical_name": "xikers",
+      "agency_name": "KQ Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/guibzVeJuX_WUD1iyTVdOtkD8qCjMvcq1k4JsngjLgeZP086YIXZ4oDvcmojQWo0KgRY9blI=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/guibzVeJuX_WUD1iyTVdOtkD8qCjMvcq1k4JsngjLgeZP086YIXZ4oDvcmojQWo0KgRY9blI=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@xikers_official",
+      "x": "https://x.com/xikers_official",
+      "instagram": "https://www.instagram.com/xikers_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@xikers_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-b2d5f966",
+      "release_title": "HOUSE OF TRICKY : WRECKING THE HOUSE",
+      "release_date": "2025-10-31",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "ICONIC",
+      "spotify_url": "https://open.spotify.com/album/0BWWwBPmMDLnhvi2SJX8CV",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lNYqHpRfe-SlB-Kur4JaeXXJ3sYhltCvU",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-b2d5f966",
+        "release_title": "HOUSE OF TRICKY : WRECKING THE HOUSE",
+        "release_date": "2025-10-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ICONIC",
+        "spotify_url": "https://open.spotify.com/album/0BWWwBPmMDLnhvi2SJX8CV",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lNYqHpRfe-SlB-Kur4JaeXXJ3sYhltCvU",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cb836c6a",
+        "release_title": "Up All Night",
+        "release_date": "2025-07-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Up All Night",
+        "spotify_url": "https://open.spotify.com/album/0L0CetqAg2aiFsC5lHBbyh",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/65bb70a6-900f-41fa-aecc-276b7f2d9f9f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/65bb70a6-900f-41fa-aecc-276b7f2d9f9f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/65bb70a6-900f-41fa-aecc-276b7f2d9f9f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/65bb70a6-900f-41fa-aecc-276b7f2d9f9f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-af2ba1c8",
+        "release_title": "HOUSE OF TRICKY : SPUR",
+        "release_date": "2025-04-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "You Hide We Seek",
+        "spotify_url": "https://open.spotify.com/album/34AWJLKuS7vDo9WvPSd6rE",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8e63e834-2274-4539-a594-cf9c3c516128",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8e63e834-2274-4539-a594-cf9c3c516128/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8e63e834-2274-4539-a594-cf9c3c516128/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8e63e834-2274-4539-a594-cf9c3c516128",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-bcf5b815",
+        "release_title": "HOUSE OF TRICKY : WATCH OUT",
+        "release_date": "2024-09-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "WATCH OUT",
+        "spotify_url": "https://open.spotify.com/album/5i39B9fUkXSofBtiWABi93",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/dc34d7f9-1c6c-4c87-9d19-25f0470a24f3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/dc34d7f9-1c6c-4c87-9d19-25f0470a24f3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/dc34d7f9-1c6c-4c87-9d19-25f0470a24f3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/dc34d7f9-1c6c-4c87-9d19-25f0470a24f3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3095df85",
+        "release_title": "HOUSE OF TRICKY : Trial And Error",
+        "release_date": "2024-03-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Trial And Error (whereabouts)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e552fd34-073e-40f7-98d3-e38c83c88d69",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e552fd34-073e-40f7-98d3-e38c83c88d69/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e552fd34-073e-40f7-98d3-e38c83c88d69/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e552fd34-073e-40f7-98d3-e38c83c88d69",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9ef9cba9",
+        "release_title": "HOUSE OF TRICKY : How To Play",
+        "release_date": "2023-08-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Skater",
+        "spotify_url": "https://open.spotify.com/album/4JoVx1AssR7dcAZrtwFVfW",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6ccdd704-0660-4405-9547-593b73228f02",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6ccdd704-0660-4405-9547-593b73228f02/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6ccdd704-0660-4405-9547-593b73228f02/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6ccdd704-0660-4405-9547-593b73228f02",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f2b8376b",
+        "release_title": "HOUSE OF TRICKY : Doorbell Ringing",
+        "release_date": "2023-03-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Doorbell Ringing",
+        "spotify_url": "https://open.spotify.com/album/6AO0SV6HUmKSu85OECxtYK",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5d66242e-b446-4e5b-ae9e-11987db8d8ee",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5d66242e-b446-4e5b-ae9e-11987db8d8ee/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5d66242e-b446-4e5b-ae9e-11987db8d8ee/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5d66242e-b446-4e5b-ae9e-11987db8d8ee",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/9b779913-3d52-4ab7-bf38-889c2dcabbd1"
+  }
+}

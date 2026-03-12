@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-mamamoo"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "mamamoo",
+      "display_name": "MAMAMOO",
+      "canonical_name": "MAMAMOO",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/bTFet94zsLubbm3rXcTvd-ClSRpVtFiD9bm2eSv_TvVozcmQGWXK5j-2OSp7J0jHiTxloXnc92A=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/bTFet94zsLubbm3rXcTvd-ClSRpVtFiD9bm2eSv_TvVozcmQGWXK5j-2OSp7J0jHiTxloXnc92A=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@MAMAMOO_OFFICIAL",
+      "x": "https://x.com/rbw_mamamoo",
+      "instagram": "https://www.instagram.com/mamamoo_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@MAMAMOO_OFFICIAL",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-425d3ff6",
+      "release_title": "MIC ON",
+      "release_date": "2022-10-11",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "하나둘셋 어이! (1,2,3 Eoi!)",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/0e183e0e-1b14-40f3-aef2-e2e4dac29ec3",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/0e183e0e-1b14-40f3-aef2-e2e4dac29ec3/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/0e183e0e-1b14-40f3-aef2-e2e4dac29ec3/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/0e183e0e-1b14-40f3-aef2-e2e4dac29ec3",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-425d3ff6",
+        "release_title": "MIC ON",
+        "release_date": "2022-10-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "하나둘셋 어이! (1,2,3 Eoi!)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0e183e0e-1b14-40f3-aef2-e2e4dac29ec3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0e183e0e-1b14-40f3-aef2-e2e4dac29ec3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0e183e0e-1b14-40f3-aef2-e2e4dac29ec3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0e183e0e-1b14-40f3-aef2-e2e4dac29ec3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8ce56eb5",
+        "release_title": "WAW",
+        "release_date": "2021-06-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Where Are We Now",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8df6379a-3fdf-4482-beba-609c04f40497",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8df6379a-3fdf-4482-beba-609c04f40497/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8df6379a-3fdf-4482-beba-609c04f40497/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8df6379a-3fdf-4482-beba-609c04f40497",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f444c116",
+        "release_title": "TRAVEL",
+        "release_date": "2020-11-03",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Travel",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5e3c71af-694f-4382-a785-0472c8e2a68c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5e3c71af-694f-4382-a785-0472c8e2a68c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5e3c71af-694f-4382-a785-0472c8e2a68c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5e3c71af-694f-4382-a785-0472c8e2a68c",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-bf23a15e",
+        "release_title": "reality in BLACK",
+        "release_date": "2019-11-14",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "rEALITY",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/426eb0eb-a9c1-4f80-b6ab-8e6c231f340b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/426eb0eb-a9c1-4f80-b6ab-8e6c231f340b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/426eb0eb-a9c1-4f80-b6ab-8e6c231f340b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/426eb0eb-a9c1-4f80-b6ab-8e6c231f340b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-7d1bfc40",
+        "release_title": "4colors",
+        "release_date": "2019-08-07",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Starry Night -Japanese ver.-",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/191cb321-cb4f-4f42-9e47-9885625abd25",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/191cb321-cb4f-4f42-9e47-9885625abd25/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/191cb321-cb4f-4f42-9e47-9885625abd25/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/191cb321-cb4f-4f42-9e47-9885625abd25",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4835f592",
+        "release_title": "White Wind",
+        "release_date": "2019-03-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Where R U",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4de44836-f55f-4f3e-bca3-beede61e3234",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4de44836-f55f-4f3e-bca3-beede61e3234/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4de44836-f55f-4f3e-bca3-beede61e3234/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4de44836-f55f-4f3e-bca3-beede61e3234",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-243aa775",
+        "release_title": "BLUE;S",
+        "release_date": "2018-11-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "가을에서 겨울로 (intro)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8fa4ae9a-79c4-41e3-80a8-c109d82eda2e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8fa4ae9a-79c4-41e3-80a8-c109d82eda2e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8fa4ae9a-79c4-41e3-80a8-c109d82eda2e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8fa4ae9a-79c4-41e3-80a8-c109d82eda2e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-aae65932",
+        "release_title": "RED MOON",
+        "release_date": "2018-07-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Rainy Season",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e955e6dd-c0ba-4db6-b1cc-0ddd0a52107e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e955e6dd-c0ba-4db6-b1cc-0ddd0a52107e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e955e6dd-c0ba-4db6-b1cc-0ddd0a52107e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e955e6dd-c0ba-4db6-b1cc-0ddd0a52107e",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/fb588f59-af1a-493a-9508-ed487caa2a11"
+  }
+}

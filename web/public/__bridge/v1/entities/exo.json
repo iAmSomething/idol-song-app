@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-exo"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "exo",
+      "display_name": "EXO",
+      "canonical_name": "EXO",
+      "agency_name": "SM Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/ujB2n35HjiBrD1UHWY6aLdZJ4-g01agipoXe2NFQaAbuEhnIPnJHbrfi9ScdgawZWSuKZkPGhg=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/ujB2n35HjiBrD1UHWY6aLdZJ4-g01agipoXe2NFQaAbuEhnIPnJHbrfi9ScdgawZWSuKZkPGhg=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@weareoneEXO",
+      "x": "https://x.com/weareoneEXO",
+      "instagram": "https://www.instagram.com/weareone.exo"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@weareoneEXO",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-2cdc535c",
+      "release_title": "REVERXE",
+      "release_date": "2026-01-19",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "I’m Home",
+      "spotify_url": "https://open.spotify.com/album/4ZXDMoZKLnkxFyqRGmCLnB",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-2cdc535c",
+        "release_title": "REVERXE",
+        "release_date": "2026-01-19",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "I’m Home",
+        "spotify_url": "https://open.spotify.com/album/4ZXDMoZKLnkxFyqRGmCLnB",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cedc8e94",
+        "release_title": "EXIST",
+        "release_date": "2023-07-10",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Hear Me Out",
+        "spotify_url": "https://open.spotify.com/album/4qMcBYh4ZlwDeb7vfgZO61",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8b2ea376-1130-4d9a-b1c4-db55d90b1106",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8b2ea376-1130-4d9a-b1c4-db55d90b1106/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8b2ea376-1130-4d9a-b1c4-db55d90b1106/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8b2ea376-1130-4d9a-b1c4-db55d90b1106",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b584f52f",
+        "release_title": "DON’T FIGHT THE FEELING",
+        "release_date": "2021-06-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Don’t Fight the Feeling",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/25e9c20f-d22e-43c6-9aec-1d432322e7f3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/25e9c20f-d22e-43c6-9aec-1d432322e7f3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/25e9c20f-d22e-43c6-9aec-1d432322e7f3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/25e9c20f-d22e-43c6-9aec-1d432322e7f3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-7e6cc1a2",
+        "release_title": "OBSESSION",
+        "release_date": "2019-11-27",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Obsession",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/445fcc2c-3faf-4b3a-be73-b025179d7144",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/445fcc2c-3faf-4b3a-be73-b025179d7144/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/445fcc2c-3faf-4b3a-be73-b025179d7144/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/445fcc2c-3faf-4b3a-be73-b025179d7144",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-ed52d679",
+        "release_title": "DON’T MESS UP MY TEMPO",
+        "release_date": "2018-11-02",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Tempo",
+        "spotify_url": "https://open.spotify.com/album/0aMI0Kctp6xwSnRFakNF3D",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7f266820-472e-41c7-b77c-a4671d9d2bdd",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7f266820-472e-41c7-b77c-a4671d9d2bdd/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7f266820-472e-41c7-b77c-a4671d9d2bdd/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7f266820-472e-41c7-b77c-a4671d9d2bdd",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-49d429ed",
+        "release_title": "COUNTDOWN",
+        "release_date": "2018-01-24",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Electric Kiss",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d4487911-faed-437b-a190-2cfd31e2fe4e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d4487911-faed-437b-a190-2cfd31e2fe4e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d4487911-faed-437b-a190-2cfd31e2fe4e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d4487911-faed-437b-a190-2cfd31e2fe4e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d251e49e",
+        "release_title": "Universe",
+        "release_date": "2017-12-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Universe",
+        "spotify_url": "https://open.spotify.com/album/45RVbFvHsy7bsO7CQ2oQ6e",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ce35cf94-c919-41f7-b169-b911cbe5dff9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ce35cf94-c919-41f7-b169-b911cbe5dff9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ce35cf94-c919-41f7-b169-b911cbe5dff9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ce35cf94-c919-41f7-b169-b911cbe5dff9",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-563b16b7",
+        "release_title": "THE WAR",
+        "release_date": "2017-07-18",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "The Eve",
+        "spotify_url": "https://open.spotify.com/album/53pJcIJBdlm5rhVhjSnvHn",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3ab770b9-a714-4688-8d41-551e05a00e10",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3ab770b9-a714-4688-8d41-551e05a00e10/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3ab770b9-a714-4688-8d41-551e05a00e10/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3ab770b9-a714-4688-8d41-551e05a00e10",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/b3785a55-2cf6-497d-b8e3-cfa21a36f997"
+  }
+}

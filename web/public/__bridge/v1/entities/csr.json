@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-csr"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "csr",
+      "display_name": "CSR",
+      "canonical_name": "CSR",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": null,
+      "x": "https://x.com/CSR_offcl",
+      "instagram": "https://www.instagram.com/csr.offcl"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": null,
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "needs_manual_review"
+    },
+    "next_upcoming": null,
+    "latest_release": null,
+    "recent_albums": [],
+    "source_timeline": [],
+    "artist_source_url": null
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-young-posse"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "young-posse",
+      "display_name": "YOUNG POSSE",
+      "canonical_name": "YOUNG POSSE",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@YOUNGPOSSEUP",
+      "x": "https://x.com/youngposseup",
+      "instagram": "https://www.instagram.com/youngposseup"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@YOUNGPOSSEUP",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "young-posse",
+      "display_name": "YOUNG POSSE",
+      "headline": "Young Posse drops collaboration single with Chinese rapper Benzo - CHOSUNBIZ - Chosunbiz",
+      "scheduled_date": null,
+      "scheduled_month": null,
+      "date_precision": "unknown",
+      "date_status": "rumor",
+      "confidence_score": 0.68,
+      "release_format": "single",
+      "latest_seen_at": "Fri, 09 Jan 2026 08:00:00 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPTjdZMlpRNDV4M1Y4OXhoSnhCX0p0NG5TNllLZnBzVzY3RGxFNlBjLUdkZjlCYjhzWEs3YnNhM0t0SGRUOFJyUFFaVVl3TENmV3J3WEM3ekE3QWVrNDk1TS1meXQ4WmZ4NW04dGtQNEFneU9tYmVhRlFvZXplaGRfNUFfVmgxekZs0gGcAUFVX3lxTE8zU2UtTjdDdGxRd2Nua0hiN1gtWEx5YXZFa1FWcHNTcVpkbkJsTkJDVzBwSHJKa2tkZ3FFUjFzNmxFYlV5VDNoMlFuVHJFY085ZWc2Y21MZWxFVF9yU0FGSkhsdkpuQWhmRkpQSURKNlFNYzd4LTlBOVJxYmFTVXZQcjZlRmhUaXJ6QVlQRTExR0FFMm5maERLSFhESQ?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Young Posse drops collaboration single with Chinese rapper Benzo - CHOSUNBIZ Chosunbiz",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-0905f19f",
+      "release_title": "VISA / Pilot3",
+      "release_date": "2026-01-27",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "VISA",
+      "spotify_url": "https://open.spotify.com/album/7BYBKfbZxXgJkZ82GYp3MI",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=obqsSgY4oU8",
+      "source_url": "https://musicbrainz.org/release-group/a3dca638-6256-40be-b501-692f3e371ba4",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/a3dca638-6256-40be-b501-692f3e371ba4/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/a3dca638-6256-40be-b501-692f3e371ba4/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/a3dca638-6256-40be-b501-692f3e371ba4",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-1a6dfa6c",
+        "release_title": "Growing Pain pt.1 : FREE",
+        "release_date": "2025-08-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "YSSR",
+        "spotify_url": "https://open.spotify.com/album/5Nfxo1U4jKI13JB4nPimOJ",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nboKa9DtcS0FWNllBthpaoUaHl0dHr_oU",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f894d3a6-0225-4269-bb58-8947719d2f5d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f894d3a6-0225-4269-bb58-8947719d2f5d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f894d3a6-0225-4269-bb58-8947719d2f5d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f894d3a6-0225-4269-bb58-8947719d2f5d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-57737efe",
+        "release_title": "COLD",
+        "release_date": "2025-03-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "COLD",
+        "spotify_url": "https://open.spotify.com/album/6qcSwL8RznHrNcex6o73z5",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3304e5ca-4222-4e8a-97d5-922ed9deee65",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3304e5ca-4222-4e8a-97d5-922ed9deee65/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3304e5ca-4222-4e8a-97d5-922ed9deee65/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3304e5ca-4222-4e8a-97d5-922ed9deee65",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d7c15e9a",
+        "release_title": "Year 1: We Still Loading",
+        "release_date": "2024-10-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "We Still Loading",
+        "spotify_url": "https://open.spotify.com/album/1fkW1yc8kn27ROj1s6ebE1",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f0282c71-6bb6-472f-90b7-1a5a64890aa3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f0282c71-6bb6-472f-90b7-1a5a64890aa3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f0282c71-6bb6-472f-90b7-1a5a64890aa3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f0282c71-6bb6-472f-90b7-1a5a64890aa3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e679c2f2",
+        "release_title": "ATE THAT",
+        "release_date": "2024-08-21",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ATE THAT",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/266ad8d4-3913-4510-94ff-bb8e9485fc9d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/266ad8d4-3913-4510-94ff-bb8e9485fc9d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/266ad8d4-3913-4510-94ff-bb8e9485fc9d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/266ad8d4-3913-4510-94ff-bb8e9485fc9d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0cc9671b",
+        "release_title": "XXL",
+        "release_date": "2024-03-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "XXL",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0d736bbe-cc98-4196-b226-fbcfec8bb373",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0d736bbe-cc98-4196-b226-fbcfec8bb373/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0d736bbe-cc98-4196-b226-fbcfec8bb373/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0d736bbe-cc98-4196-b226-fbcfec8bb373",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-dac2b222",
+        "release_title": "MACARONI CHEESE",
+        "release_date": "2023-10-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "MACARONI CHEESE",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/72581bbc-b5c6-4bdf-bf81-15a9775d5582",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/72581bbc-b5c6-4bdf-bf81-15a9775d5582/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/72581bbc-b5c6-4bdf-bf81-15a9775d5582/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/72581bbc-b5c6-4bdf-bf81-15a9775d5582",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "Young Posse drops collaboration single with Chinese rapper Benzo - CHOSUNBIZ - Chosunbiz",
+        "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPTjdZMlpRNDV4M1Y4OXhoSnhCX0p0NG5TNllLZnBzVzY3RGxFNlBjLUdkZjlCYjhzWEs3YnNhM0t0SGRUOFJyUFFaVVl3TENmV3J3WEM3ekE3QWVrNDk1TS1meXQ4WmZ4NW04dGtQNEFneU9tYmVhRlFvZXplaGRfNUFfVmgxekZs0gGcAUFVX3lxTE8zU2UtTjdDdGxRd2Nua0hiN1gtWEx5YXZFa1FWcHNTcVpkbkJsTkJDVzBwSHJKa2tkZ3FFUjFzNmxFYlV5VDNoMlFuVHJFY085ZWc2Y21MZWxFVF9yU0FGSkhsdkpuQWhmRkpQSURKNlFNYzd4LTlBOVJxYmFTVXZQcjZlRmhUaXJ6QVlQRTExR0FFMm5maERLSFhESQ?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Fri, 09 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": "single",
+        "confidence_score": 0.68
+      },
+      {
+        "headline": "YOUNG POSSE Drops 'LOSE YOUR SHXT' Collaboration - 조선일보",
+        "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPQ0Y4Uk9DdGQ0V3JDWG8tUmpHdGNFSkRySDRJbThqU1Z0RGJ0UThUX0gxV2JQWmN5SEp1Q0c1RkZwRGgtSEg1TkhROFA5VGtiSE0wTVQ4U2dVYWo4bk4zRHk1dGw1Y1V4cnBMaUFyQzkyRXRfTDJEUzRQN29lRjJLZ29ZVHMtd0hSd1kxeVB3?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Fri, 09 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.68
+      },
+      {
+        "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
+        "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSEJNTnpUWHJkWGRHUlhvWnFId3BYTEJ4ZHVkZWppbktscmtYLThzRzkzek45UmVrTGd5di0wSmRUN2VjZ0M2YU1MLU9EbU8xTzY0Q3AzUHRzbHFXcDN6V2tYYjlXWGMtT3hlQUxhMFlKVVE4aU9RbDl0NGZfNU54S1NOdXJUSG9MUW5oaEd2VlEtd3dBUm1pV3RqSjJNcmIxR0E?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Thu, 05 Mar 2026 00:58:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": "single",
+        "confidence_score": 0.76
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/427150d2-674f-47b2-a1a1-7bb4a9e0d070"
+  }
+}

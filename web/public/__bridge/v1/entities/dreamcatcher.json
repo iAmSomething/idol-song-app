@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-dreamcatcher"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "dreamcatcher",
+      "display_name": "Dreamcatcher",
+      "canonical_name": "Dreamcatcher",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/_5TAoFPpNGwmXAI-VLvbvlnZlB150H6OEgy2QsH7J24n5oZ1OE3w2CWLOAtgokxHO5iK8nvC9Q=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/_5TAoFPpNGwmXAI-VLvbvlnZlB150H6OEgy2QsH7J24n5oZ1OE3w2CWLOAtgokxHO5iK8nvC9Q=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@hf_dreamcatcher",
+      "x": "https://x.com/hf_dreamcatcher",
+      "instagram": "https://www.instagram.com/hf_dreamcatcher"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@hf_dreamcatcher",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-10e84b64",
+      "release_title": "[VirtuouS]",
+      "release_date": "2024-07-10",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Intro : 7’ Dreamcatcher",
+      "spotify_url": "https://open.spotify.com/album/4PkR73YJKj5RGkC7QZVpM2",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_k53Hho5-WThxyVuaAL8dd39YXS3ou9m8g",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/0f7b08da-1c56-45e2-976c-3087590ce477",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/0f7b08da-1c56-45e2-976c-3087590ce477/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/0f7b08da-1c56-45e2-976c-3087590ce477/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/0f7b08da-1c56-45e2-976c-3087590ce477",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-10e84b64",
+        "release_title": "[VirtuouS]",
+        "release_date": "2024-07-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : 7’ Dreamcatcher",
+        "spotify_url": "https://open.spotify.com/album/4PkR73YJKj5RGkC7QZVpM2",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_k53Hho5-WThxyVuaAL8dd39YXS3ou9m8g",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0f7b08da-1c56-45e2-976c-3087590ce477",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0f7b08da-1c56-45e2-976c-3087590ce477/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0f7b08da-1c56-45e2-976c-3087590ce477/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0f7b08da-1c56-45e2-976c-3087590ce477",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2f7caee4",
+        "release_title": "[VillainS]",
+        "release_date": "2023-11-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : This My Fashion",
+        "spotify_url": "https://open.spotify.com/album/1GWC45tJrcKctt6qtFQHB7",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7225b596-11c6-4bb7-a960-5292f08f02ad",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7225b596-11c6-4bb7-a960-5292f08f02ad/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7225b596-11c6-4bb7-a960-5292f08f02ad/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7225b596-11c6-4bb7-a960-5292f08f02ad",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e263a22e",
+        "release_title": "[Apocalypse : From us]",
+        "release_date": "2023-05-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : From us",
+        "spotify_url": "https://open.spotify.com/album/7D2DrBRs922elDgsyNrqjA",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ea608296-88ab-4e01-bccf-ede0f8058160",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ea608296-88ab-4e01-bccf-ede0f8058160/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ea608296-88ab-4e01-bccf-ede0f8058160/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ea608296-88ab-4e01-bccf-ede0f8058160",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-11d2960a",
+        "release_title": "[Apocalypse : Follow us]",
+        "release_date": "2022-10-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : Chaotical X",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/268b5ebd-82ce-4a50-b3f2-626425d5bd44",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/268b5ebd-82ce-4a50-b3f2-626425d5bd44/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/268b5ebd-82ce-4a50-b3f2-626425d5bd44/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/268b5ebd-82ce-4a50-b3f2-626425d5bd44",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-10591770",
+        "release_title": "[Apocalypse : Save us]",
+        "release_date": "2022-04-12",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Intro : Save Us",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f7f1eab0-4617-45e1-b9bd-65e61397ddf8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f7f1eab0-4617-45e1-b9bd-65e61397ddf8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f7f1eab0-4617-45e1-b9bd-65e61397ddf8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f7f1eab0-4617-45e1-b9bd-65e61397ddf8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-dbe7c931",
+        "release_title": "[Summer Holiday]",
+        "release_date": "2021-07-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro",
+        "spotify_url": "https://open.spotify.com/album/1JOpx5eL6Rb3vRC9epERQD",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/193ca568-4062-4daf-a5a6-7b046ed1a1fa",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/193ca568-4062-4daf-a5a6-7b046ed1a1fa/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/193ca568-4062-4daf-a5a6-7b046ed1a1fa/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/193ca568-4062-4daf-a5a6-7b046ed1a1fa",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-bd40f089",
+        "release_title": "[Dystopia : Road to Utopia]",
+        "release_date": "2021-01-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9f5c8f22-2a75-4d34-a141-4274aff78db2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9f5c8f22-2a75-4d34-a141-4274aff78db2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9f5c8f22-2a75-4d34-a141-4274aff78db2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9f5c8f22-2a75-4d34-a141-4274aff78db2",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e8a4398d",
+        "release_title": "[Dystopia : Lose Myself]",
+        "release_date": "2020-08-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/bfa674cd-3cc1-4400-830a-fc9049520c7d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/bfa674cd-3cc1-4400-830a-fc9049520c7d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/bfa674cd-3cc1-4400-830a-fc9049520c7d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/bfa674cd-3cc1-4400-830a-fc9049520c7d",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/a97f393a-13a7-4645-8bba-f10bd22d7228"
+  }
+}

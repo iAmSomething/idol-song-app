@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-atbo"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "atbo",
+      "display_name": "ATBO",
+      "canonical_name": "ATBO",
+      "agency_name": "IST Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/gh8cXcQr1jNvmm2GjTOvFyYBwiPZSOeP7rqHsfMWppu2LEDdd4y-N1ctmBmMkqhoKMEr25Q7dQ=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/gh8cXcQr1jNvmm2GjTOvFyYBwiPZSOeP7rqHsfMWppu2LEDdd4y-N1ctmBmMkqhoKMEr25Q7dQ=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@ATBO_ground",
+      "x": "https://x.com/ATBO_ground",
+      "instagram": "https://www.instagram.com/atboground"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@ATBO_ground",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-38a05fdd",
+      "release_title": "MUST HAVE",
+      "release_date": "2023-11-27",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Must Have Love",
+      "spotify_url": "https://open.spotify.com/album/0p1vF2SctjpmMLekoIBEcO",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/ed7e00ee-b7ce-4557-9b3a-7555745b2e14",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/ed7e00ee-b7ce-4557-9b3a-7555745b2e14/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/ed7e00ee-b7ce-4557-9b3a-7555745b2e14/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/ed7e00ee-b7ce-4557-9b3a-7555745b2e14",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-38a05fdd",
+        "release_title": "MUST HAVE",
+        "release_date": "2023-11-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Must Have Love",
+        "spotify_url": "https://open.spotify.com/album/0p1vF2SctjpmMLekoIBEcO",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ed7e00ee-b7ce-4557-9b3a-7555745b2e14",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ed7e00ee-b7ce-4557-9b3a-7555745b2e14/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ed7e00ee-b7ce-4557-9b3a-7555745b2e14/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ed7e00ee-b7ce-4557-9b3a-7555745b2e14",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-38685476",
+        "release_title": "The Beginning : 飛上",
+        "release_date": "2023-05-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BOUNCE",
+        "spotify_url": "https://open.spotify.com/album/5jiLdsyFP8bDMu2LcSL8e4",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/235478c1-478a-45a5-a2c2-606b826dd2ff",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/235478c1-478a-45a5-a2c2-606b826dd2ff/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/235478c1-478a-45a5-a2c2-606b826dd2ff/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/235478c1-478a-45a5-a2c2-606b826dd2ff",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a03ef4d4",
+        "release_title": "The Beginning : 始作",
+        "release_date": "2022-10-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ATTITUDE",
+        "spotify_url": "https://open.spotify.com/album/2rk5luKry7s1kCsklJmxKL",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/78baf7fe-2ba5-4462-8f5e-4b4968fdeb5e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/78baf7fe-2ba5-4462-8f5e-4b4968fdeb5e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/78baf7fe-2ba5-4462-8f5e-4b4968fdeb5e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/78baf7fe-2ba5-4462-8f5e-4b4968fdeb5e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-accf0034",
+        "release_title": "The Beginning : 開花",
+        "release_date": "2022-07-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "7IBE (VIBE)",
+        "spotify_url": "https://open.spotify.com/album/36qrWqcSCVzubWlQzUyPtx",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/81a64c45-45df-4244-8e43-e2d0667b33f9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/81a64c45-45df-4244-8e43-e2d0667b33f9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/81a64c45-45df-4244-8e43-e2d0667b33f9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/81a64c45-45df-4244-8e43-e2d0667b33f9",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/dcc35a45-ad2b-41df-93f9-237ab0a63be4"
+  }
+}

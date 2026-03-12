@@ -9,6 +9,8 @@ const bridgeRoot = path.join(webRoot, 'public', '__bridge', 'v1')
 const calendarMonth = await readJson(path.join(bridgeRoot, 'calendar', 'months', '2026-02.json'))
 const sameDayCalendarMonth = await readJson(path.join(bridgeRoot, 'calendar', 'months', '2026-03.json'))
 const radar = await readJson(path.join(bridgeRoot, 'radar.json'))
+const entity = await readJson(path.join(bridgeRoot, 'entities', 'yena.json'))
+const searchIndex = await readJson(path.join(bridgeRoot, 'search', 'index.json'))
 const lookupId = buildReleaseLookupAssetId('blackpink', 'DEADLINE', '2026-02-26', 'album')
 const lookup = await readJson(path.join(bridgeRoot, 'releases', 'lookups', `${lookupId}.json`))
 
@@ -41,6 +43,32 @@ if (!Array.isArray(radar?.data?.rookie) || radar.data.rookie.length === 0) {
   throw new Error('Expected populated radar rookie payload.')
 }
 
+if (entity?.data?.identity?.entity_slug !== 'yena') {
+  throw new Error('Expected YENA bridge entity payload.')
+}
+
+if (!entity?.data?.latest_release?.release_title) {
+  throw new Error('Expected YENA bridge entity payload to expose latest release summary.')
+}
+
+if (!Array.isArray(entity?.data?.recent_albums) || entity.data.recent_albums.length === 0) {
+  throw new Error('Expected YENA bridge entity payload to expose recent albums.')
+}
+
+if (!Array.isArray(searchIndex?.data?.entities) || searchIndex.data.entities.length === 0) {
+  throw new Error('Expected populated bridge search entity index.')
+}
+
+const p1HarmonySearchUpcoming = (searchIndex.data.upcoming ?? []).find((item) => item?.entity_slug === 'p1harmony')
+if (p1HarmonySearchUpcoming) {
+  throw new Error('Expected bridge search index to suppress P1Harmony same-day upcoming once released.')
+}
+
+const yenaSearchEntity = (searchIndex.data.entities ?? []).find((item) => item?.entity_slug === 'yena')
+if (!yenaSearchEntity?.latest_release?.release_title) {
+  throw new Error('Expected bridge search entity index to expose YENA latest release summary.')
+}
+
 if (!lookup?.data?.release_id) {
   throw new Error('Expected BLACKPINK DEADLINE bridge lookup to resolve a release_id.')
 }
@@ -56,6 +84,8 @@ console.log(
       calendarRequestId: calendarMonth?.meta?.request_id ?? null,
       sameDayCalendarRequestId: sameDayCalendarMonth?.meta?.request_id ?? null,
       radarRequestId: radar?.meta?.request_id ?? null,
+      entityRequestId: entity?.meta?.request_id ?? null,
+      searchRequestId: searchIndex?.meta?.request_id ?? null,
       lookupRequestId: lookup?.meta?.request_id ?? null,
       detailRequestId: detail?.meta?.request_id ?? null,
       releaseId: lookup.data.release_id,

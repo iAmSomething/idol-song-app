@@ -384,6 +384,24 @@ type SearchSurfaceSnapshot = {
   upcoming: SearchSurfaceUpcomingResult[]
 }
 
+type BridgeSearchIndexEntity = SearchApiEntityMatch & {
+  search_terms?: string[]
+}
+
+type BridgeSearchIndexRelease = SearchApiReleaseMatch & {
+  search_terms?: string[]
+}
+
+type BridgeSearchIndexUpcoming = SearchApiUpcomingMatch & {
+  search_terms?: string[]
+}
+
+type BridgeSearchIndex = {
+  entities?: BridgeSearchIndexEntity[]
+  releases?: BridgeSearchIndexRelease[]
+  upcoming?: BridgeSearchIndexUpcoming[]
+}
+
 type SearchSurfaceResource = SearchSurfaceSnapshot & {
   source: SurfaceStatusSource
   loading: boolean
@@ -7679,6 +7697,10 @@ function buildBackendApiUrl(path: string) {
     return `${BACKEND_API_BASE_URL}${path}`
   }
 
+  if (path.startsWith('/v1/search?')) {
+    return buildPagesReadBridgeUrl('search/index.json')
+  }
+
   if (path === '/v1/radar') {
     return buildPagesReadBridgeUrl('radar.json')
   }
@@ -7695,11 +7717,205 @@ function buildBackendApiUrl(path: string) {
     return buildPagesReadBridgeUrl(`releases/details/${encodeURIComponent(releaseDetailMatch[1])}.json`)
   }
 
+  const entityDetailMatch = path.match(/^\/v1\/entities\/([^/?]+)$/)
+  if (entityDetailMatch) {
+    return buildPagesReadBridgeUrl(`entities/${encodeURIComponent(entityDetailMatch[1])}.json`)
+  }
+
   return path
 }
 
 function buildPagesReadBridgeUrl(relativePath: string) {
   return `${PAGES_READ_BRIDGE_BASE_URL}/${relativePath.replace(/^\/+/, '')}`
+}
+
+function normalizeBridgeSearchTerm(value: string) {
+  return String(value ?? '')
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/[\s\-_./]+/g, '')
+    .trim()
+}
+
+function compareBridgeSearchMatch(left: { _score: number; _label: string }, right: { _score: number; _label: string }) {
+  if (right._score !== left._score) {
+    return right._score - left._score
+  }
+
+  return left._label.localeCompare(right._label)
+}
+
+function buildBridgeSearchApiData(index: BridgeSearchIndex, search: string): SearchApiResponse['data'] {
+  const query = normalizeBridgeSearchTerm(search)
+  if (!query) {
+    return {
+      entities: [],
+      releases: [],
+      upcoming: [],
+    }
+  }
+
+  const entities = (Array.isArray(index.entities) ? index.entities : [])
+    .flatMap((item) => {
+      const displayName = readNonEmptyString(item.display_name) ?? ''
+      const searchTerms = Array.isArray(item.search_terms) ? item.search_terms : []
+      let bestScore = 0
+      let matchedAlias: string | null = null
+
+      for (const term of searchTerms) {
+        const normalized = normalizeBridgeSearchTerm(term)
+        if (!normalized) {
+          continue
+        }
+
+        if (normalized === query) {
+          bestScore = Math.max(bestScore, 300)
+          matchedAlias = term
+          continue
+        }
+
+        if (normalized.includes(query) || query.includes(normalized)) {
+          bestScore = Math.max(bestScore, 150)
+          matchedAlias = term
+        }
+      }
+
+      if (!bestScore && normalizeBridgeSearchTerm(displayName).includes(query)) {
+        bestScore = 120
+      }
+
+      if (!bestScore) {
+        return []
+      }
+
+      return [
+        {
+          ...item,
+          matched_alias: matchedAlias,
+          match_reason: bestScore >= 300 ? 'alias_exact' : 'partial',
+          _score: bestScore,
+          _label: displayName,
+        },
+      ]
+    })
+    .sort(compareBridgeSearchMatch)
+    .slice(0, 20)
+    .map((item) => {
+      const { _score, _label, ...next } = item
+      void _score
+      void _label
+      return next
+    })
+
+  const releases = (Array.isArray(index.releases) ? index.releases : [])
+    .flatMap((item) => {
+      const releaseTitle = readNonEmptyString(item.release_title) ?? ''
+      const searchTerms = Array.isArray(item.search_terms) ? item.search_terms : []
+      let bestScore = 0
+      let matchedAlias: string | null = null
+
+      for (const term of searchTerms) {
+        const normalized = normalizeBridgeSearchTerm(term)
+        if (!normalized) {
+          continue
+        }
+
+        if (normalized === query) {
+          bestScore = Math.max(bestScore, 260)
+          matchedAlias = term
+          continue
+        }
+
+        if (normalized.includes(query) || query.includes(normalized)) {
+          bestScore = Math.max(bestScore, 130)
+          matchedAlias = term
+        }
+      }
+
+      if (!bestScore && normalizeBridgeSearchTerm(releaseTitle).includes(query)) {
+        bestScore = 110
+      }
+
+      if (!bestScore) {
+        return []
+      }
+
+      return [
+        {
+          ...item,
+          matched_alias: matchedAlias,
+          match_reason: bestScore >= 260 ? 'release_title_exact' : 'release_title_partial',
+          _score: bestScore,
+          _label: releaseTitle,
+        },
+      ]
+    })
+    .sort(compareBridgeSearchMatch)
+    .slice(0, 20)
+    .map((item) => {
+      const { _score, _label, ...next } = item
+      void _score
+      void _label
+      return next
+    })
+
+  const upcoming = (Array.isArray(index.upcoming) ? index.upcoming : [])
+    .flatMap((item) => {
+      const headline = readNonEmptyString(item.headline) ?? ''
+      const searchTerms = Array.isArray(item.search_terms) ? item.search_terms : []
+      let bestScore = 0
+      let matchedAlias: string | null = null
+
+      for (const term of searchTerms) {
+        const normalized = normalizeBridgeSearchTerm(term)
+        if (!normalized) {
+          continue
+        }
+
+        if (normalized === query) {
+          bestScore = Math.max(bestScore, 240)
+          matchedAlias = term
+          continue
+        }
+
+        if (normalized.includes(query) || query.includes(normalized)) {
+          bestScore = Math.max(bestScore, 120)
+          matchedAlias = term
+        }
+      }
+
+      if (!bestScore && normalizeBridgeSearchTerm(headline).includes(query)) {
+        bestScore = 100
+      }
+
+      if (!bestScore) {
+        return []
+      }
+
+      return [
+        {
+          ...item,
+          matched_alias: matchedAlias,
+          match_reason: bestScore >= 240 ? 'entity_exact' : 'partial',
+          _score: bestScore,
+          _label: headline,
+        },
+      ]
+    })
+    .sort(compareBridgeSearchMatch)
+    .slice(0, 20)
+    .map((item) => {
+      const { _score, _label, ...next } = item
+      void _score
+      void _label
+      return next
+    })
+
+  return {
+    entities,
+    releases,
+    upcoming,
+  }
 }
 
 function buildReleaseLookupBridgeAssetId(entitySlug: string, releaseTitle: string, releaseDate: string, stream: string) {
@@ -8227,21 +8443,25 @@ async function fetchSearchSurfaceApiSnapshot(
   params.set('q', search)
   params.set('limit', '20')
 
-  const result = await fetchApiJson<SearchApiResponse>(
+  const result = await fetchApiJson<SearchApiResponse | BridgeSearchIndex>(
     `/v1/search?${params.toString()}`,
     signal,
     SEARCH_SURFACE_TIMEOUT_MS,
     'web-search',
   )
-  if (!result.ok || !result.body?.data) {
+  if (!result.ok || !result.body) {
     return {
       snapshot: null,
-      errorCode: result.body?.error?.code ?? `search_${result.status}`,
+      errorCode:
+        (result.body && 'error' in result.body ? result.body.error?.code : null) ?? `search_${result.status}`,
       traceId: result.traceId,
     }
   }
 
-  const snapshot = buildSearchSurfaceApiSnapshot(result.body.data)
+  const data = BACKEND_API_BASE_URL
+    ? (result.body as SearchApiResponse).data
+    : buildBridgeSearchApiData(result.body as BridgeSearchIndex, search)
+  const snapshot = buildSearchSurfaceApiSnapshot(data)
   searchSurfaceApiSnapshotCache.set(cacheKey, snapshot)
   return {
     snapshot,
@@ -8273,19 +8493,6 @@ function useSearchSurfaceResource({
 
   useEffect(() => {
     if (!cacheKey) {
-      return
-    }
-
-    if (cachedSnapshot) {
-      Promise.resolve().then(() => {
-        setRemoteState({
-          cacheKey,
-          snapshot: cachedSnapshot,
-          loading: false,
-          errorCode: null,
-          traceId: null,
-        })
-      })
       return
     }
 
@@ -9188,32 +9395,6 @@ function useEntityDetailResource({
       return
     }
 
-    if (cachedSnapshot) {
-      Promise.resolve().then(() => {
-        setRemoteState({
-          cacheKey,
-          team: cachedSnapshot,
-          loading: false,
-          errorCode: null,
-          traceId: null,
-        })
-      })
-      return
-    }
-
-    if (!BACKEND_API_BASE_URL) {
-      Promise.resolve().then(() => {
-        setRemoteState({
-          cacheKey,
-          team: null,
-          loading: false,
-          errorCode: 'backend_unavailable',
-          traceId: null,
-        })
-      })
-      return
-    }
-
     const controller = new AbortController()
     let cancelled = false
 
@@ -9224,8 +9405,8 @@ function useEntityDetailResource({
 
       setRemoteState({
         cacheKey,
-        team: null,
-        loading: true,
+        team: cachedSnapshot,
+        loading: !cachedSnapshot,
         errorCode: null,
         traceId: null,
       })
@@ -9277,7 +9458,7 @@ function useEntityDetailResource({
     : null
   const loading = !!cacheKey && remoteState.cacheKey === cacheKey && remoteState.team === null && remoteState.loading
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
-  const source: SurfaceStatusSource = activeTeam || loading ? 'api' : 'backend_unavailable'
+  const source: SurfaceStatusSource = activeTeam || loading ? (BACKEND_API_BASE_URL ? 'api' : 'json') : 'backend_unavailable'
 
   return {
     team: activeTeam,

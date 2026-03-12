@@ -1,0 +1,244 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-enhypen"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "enhypen",
+      "display_name": "ENHYPEN",
+      "canonical_name": "ENHYPEN",
+      "agency_name": "HYBE Labels",
+      "badge_image_url": "https://yt3.googleusercontent.com/gKp9WExdyzEEBpHM7WgVEgIhl7-yVhIAzOe1U5jJEYSYi17AbvUXyW4dGRk2KykXeCsgUhqD4A=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/gKp9WExdyzEEBpHM7WgVEgIhl7-yVhIAzOe1U5jJEYSYi17AbvUXyW4dGRk2KykXeCsgUhqD4A=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+      "x": "https://x.com/ENHYPEN",
+      "instagram": "https://www.instagram.com/enhypen"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "enhypen",
+      "display_name": "ENHYPEN",
+      "headline": "ENHYPEN's 'Knife' Reveals Sharp-Fanged Vampires - 조선일보",
+      "scheduled_date": null,
+      "scheduled_month": null,
+      "date_precision": "unknown",
+      "date_status": "rumor",
+      "confidence_score": 0.56,
+      "release_format": null,
+      "latest_seen_at": "Fri, 09 Jan 2026 08:00:00 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPblZfVHkyVDBQVmZPY0pJaGFqNEd3RTVrQUtXejJEOEE0d0RlaXRteml5TEJuYm44Y0tSb2paeXBHeXI1MlpISTJPUkJld01oWFduVTlIVERpRXpIRWdaeklOWS1nSXpSQTNYZWdCU1d5am9TWFRxV1U4X3BDRWJTcDNoekUxYnNrVXlZYWpR?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "ENHYPEN's 'Knife' Reveals Sharp-Fanged Vampires 조선일보",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-b2ea6c37",
+      "release_title": "THE SIN : VANISH",
+      "release_date": "2026-01-16",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Knife",
+      "spotify_url": "https://open.spotify.com/album/4h3umvQDxwVMlZ7Adtc8Ad",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_njsgSSx9YXXGmw3r9acFuNqIU6UYzm0sQ",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=R6e4tBWxIxE",
+      "source_url": "https://musicbrainz.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-b2ea6c37",
+        "release_title": "THE SIN : VANISH",
+        "release_date": "2026-01-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Knife",
+        "spotify_url": "https://open.spotify.com/album/4h3umvQDxwVMlZ7Adtc8Ad",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_njsgSSx9YXXGmw3r9acFuNqIU6UYzm0sQ",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=R6e4tBWxIxE",
+        "source_url": "https://musicbrainz.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b07a4bc8-9edc-47e9-bfd9-8d3a85d0c080",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4010f8a3",
+        "release_title": "DESIRE : UNLEASH",
+        "release_date": "2025-06-05",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Loose",
+        "spotify_url": "https://open.spotify.com/album/5nskZ8CFMrSNiOrceMHr4B",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/44bcb3de-486d-4520-8a51-d4a6f3ea2620",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/44bcb3de-486d-4520-8a51-d4a6f3ea2620/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/44bcb3de-486d-4520-8a51-d4a6f3ea2620/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/44bcb3de-486d-4520-8a51-d4a6f3ea2620",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-fd7cb4bc",
+        "release_title": "ROMANCE : UNTOLD",
+        "release_date": "2024-07-12",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Brought the Heat Back",
+        "spotify_url": "https://open.spotify.com/album/05I8FltCMnGa3kE38mpOkL",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0c668bdb-328c-4dba-8407-8eddb5373a5d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0c668bdb-328c-4dba-8407-8eddb5373a5d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0c668bdb-328c-4dba-8407-8eddb5373a5d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0c668bdb-328c-4dba-8407-8eddb5373a5d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2144b3fa",
+        "release_title": "MEMORABILIA",
+        "release_date": "2024-05-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "One In A Billion",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4e219d4e-c5e0-4ed9-acec-b948c7319b37",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4e219d4e-c5e0-4ed9-acec-b948c7319b37/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4e219d4e-c5e0-4ed9-acec-b948c7319b37/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4e219d4e-c5e0-4ed9-acec-b948c7319b37",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-56599586",
+        "release_title": "ORANGE BLOOD",
+        "release_date": "2023-11-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Mortal",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d748c55b-68b2-4c9c-aec3-b0515c5dff6e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d748c55b-68b2-4c9c-aec3-b0515c5dff6e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d748c55b-68b2-4c9c-aec3-b0515c5dff6e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d748c55b-68b2-4c9c-aec3-b0515c5dff6e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-1e9cc42d",
+        "release_title": "DARK BLOOD",
+        "release_date": "2023-05-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Fate",
+        "spotify_url": "https://open.spotify.com/album/7q65W5gVANjh1j1KXLeU0f",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0627b156-6eeb-4c01-b7ba-df52f0bbf736",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0627b156-6eeb-4c01-b7ba-df52f0bbf736/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0627b156-6eeb-4c01-b7ba-df52f0bbf736/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0627b156-6eeb-4c01-b7ba-df52f0bbf736",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-aeff4616",
+        "release_title": "定め",
+        "release_date": "2022-10-25",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Make the change",
+        "spotify_url": "https://open.spotify.com/album/58Rn6sczqcudAs9bryXXBv",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/971331ab-419a-45de-93e4-bdae99aa6796",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/971331ab-419a-45de-93e4-bdae99aa6796/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/971331ab-419a-45de-93e4-bdae99aa6796/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/971331ab-419a-45de-93e4-bdae99aa6796",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-626206d1",
+        "release_title": "MANIFESTO : DAY 1",
+        "release_date": "2022-07-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "WALK THE LINE",
+        "spotify_url": "https://open.spotify.com/album/5J8MNLLViH5zqM6VoGErz8",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/75d39c4d-eaaa-467c-8d1a-4c4eab2e7f36",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/75d39c4d-eaaa-467c-8d1a-4c4eab2e7f36/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/75d39c4d-eaaa-467c-8d1a-4c4eab2e7f36/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/75d39c4d-eaaa-467c-8d1a-4c4eab2e7f36",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "ENHYPEN's 'Knife' Reveals Sharp-Fanged Vampires - 조선일보",
+        "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPblZfVHkyVDBQVmZPY0pJaGFqNEd3RTVrQUtXejJEOEE0d0RlaXRteml5TEJuYm44Y0tSb2paeXBHeXI1MlpISTJPUkJld01oWFduVTlIVERpRXpIRWdaeklOWS1nSXpSQTNYZWdCU1d5am9TWFRxV1U4X3BDRWJTcDNoekUxYnNrVXlZYWpR?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Fri, 09 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.56
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/95663592-1447-4579-90f7-c94733476667"
+  }
+}

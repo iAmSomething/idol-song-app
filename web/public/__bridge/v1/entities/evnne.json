@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-evnne"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "evnne",
+      "display_name": "EVNNE",
+      "canonical_name": "EVNNE",
+      "agency_name": "Jellyfish Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@EVNNE_Official",
+      "x": "https://x.com/EVNNE_official",
+      "instagram": "https://www.instagram.com/evnne_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@EVNNE_Official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-b86b86be",
+      "release_title": "LOVE ANECDOTE(S)",
+      "release_date": "2025-08-04",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "dirtybop",
+      "spotify_url": "https://open.spotify.com/album/0hffupnkBt5Q4tP7kf2713",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mrB7hh-Hh7QeHPFJ6MkL33GqDj3Kp66C4",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-b86b86be",
+        "release_title": "LOVE ANECDOTE(S)",
+        "release_date": "2025-08-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "dirtybop",
+        "spotify_url": "https://open.spotify.com/album/0hffupnkBt5Q4tP7kf2713",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mrB7hh-Hh7QeHPFJ6MkL33GqDj3Kp66C4",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9ba34369-e9f0-4adf-9c23-cbbbeeec01b1",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-19613011",
+        "release_title": "HOT MESS",
+        "release_date": "2025-02-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "HOT MESS",
+        "spotify_url": "https://open.spotify.com/album/2U6efTBBp34Zny6jzog79K",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e8451dda-b291-467d-a43d-b8596bdb3532",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e8451dda-b291-467d-a43d-b8596bdb3532/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e8451dda-b291-467d-a43d-b8596bdb3532/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e8451dda-b291-467d-a43d-b8596bdb3532",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-95f175e1",
+        "release_title": "RIDE or DIE",
+        "release_date": "2024-06-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Badder Love",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/dd49097a-217b-4377-aec0-b481263d0569",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/dd49097a-217b-4377-aec0-b481263d0569/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/dd49097a-217b-4377-aec0-b481263d0569/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/dd49097a-217b-4377-aec0-b481263d0569",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6f99e0eb",
+        "release_title": "Un: SEEN",
+        "release_date": "2024-01-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "UGLY",
+        "spotify_url": "https://open.spotify.com/album/6lPOFQarc48hDHdFYcVdzQ",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e2f55b46-1230-47be-9ed6-2475a62c7e8f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e2f55b46-1230-47be-9ed6-2475a62c7e8f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e2f55b46-1230-47be-9ed6-2475a62c7e8f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e2f55b46-1230-47be-9ed6-2475a62c7e8f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5ac8df57",
+        "release_title": "Target: ME",
+        "release_date": "2023-09-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "TROUBLE",
+        "spotify_url": "https://open.spotify.com/album/3zgfK7IBAPDcroAqxzzMOy",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/859242a2-48ad-4911-b257-105451c9c04f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/859242a2-48ad-4911-b257-105451c9c04f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/859242a2-48ad-4911-b257-105451c9c04f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/859242a2-48ad-4911-b257-105451c9c04f",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/bf081017-e5ec-44b8-a5e6-d0401d0b6828"
+  }
+}

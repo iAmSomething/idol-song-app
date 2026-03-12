@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-cravity"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "cravity",
+      "display_name": "CRAVITY",
+      "canonical_name": "CRAVITY",
+      "agency_name": "Starship Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/BpAMpLIF3t9XJQ1FLgdO4jQwMxoWrfVLfqjs-ac5Ou-d1VLbgrq5q1EIXQvA2xzccgu_UrG1VRY=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/BpAMpLIF3t9XJQ1FLgdO4jQwMxoWrfVLfqjs-ac5Ou-d1VLbgrq5q1EIXQvA2xzccgu_UrG1VRY=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "x": "https://x.com/CRAVITY_twt",
+      "instagram": "https://www.instagram.com/cravity_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-878f6f58",
+      "release_title": "Dare to Crave",
+      "release_date": "2025-06-23",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "On My Way",
+      "spotify_url": "https://open.spotify.com/album/5dsLiHjDY0eNIN8iEhNuy5",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nXFWGVBWOJwQakSJ46H7Y4pSgSxwLsuJQ",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/44e36813-a852-401d-ad33-a23e11357a06",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/44e36813-a852-401d-ad33-a23e11357a06/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/44e36813-a852-401d-ad33-a23e11357a06/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/44e36813-a852-401d-ad33-a23e11357a06",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-878f6f58",
+        "release_title": "Dare to Crave",
+        "release_date": "2025-06-23",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "On My Way",
+        "spotify_url": "https://open.spotify.com/album/5dsLiHjDY0eNIN8iEhNuy5",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nXFWGVBWOJwQakSJ46H7Y4pSgSxwLsuJQ",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/44e36813-a852-401d-ad33-a23e11357a06",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/44e36813-a852-401d-ad33-a23e11357a06/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/44e36813-a852-401d-ad33-a23e11357a06/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/44e36813-a852-401d-ad33-a23e11357a06",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3fae63b0",
+        "release_title": "Jelly Bean",
+        "release_date": "2025-03-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Jelly Bean",
+        "spotify_url": "https://open.spotify.com/album/72I1qNoBJDKSDVs9TC0qCO",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e453a5ca-1605-48a2-9daa-d776ddb6fc7d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e453a5ca-1605-48a2-9daa-d776ddb6fc7d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e453a5ca-1605-48a2-9daa-d776ddb6fc7d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e453a5ca-1605-48a2-9daa-d776ddb6fc7d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b38a87db",
+        "release_title": "EVERSHINE",
+        "release_date": "2024-02-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "C’est La Vie",
+        "spotify_url": "https://open.spotify.com/album/6Vann84OY36Th0qtrewvKJ",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3c79b0e8-00b2-4bb8-94fa-5956aaa84d22",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3c79b0e8-00b2-4bb8-94fa-5956aaa84d22/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3c79b0e8-00b2-4bb8-94fa-5956aaa84d22/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3c79b0e8-00b2-4bb8-94fa-5956aaa84d22",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2e9b4853",
+        "release_title": "SUN SEEKER",
+        "release_date": "2023-09-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Cheese",
+        "spotify_url": "https://open.spotify.com/album/1FdVBP7g9FfMa7ifgyY4iA",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c29faed9-97b3-461e-86d7-29765017335e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c29faed9-97b3-461e-86d7-29765017335e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c29faed9-97b3-461e-86d7-29765017335e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c29faed9-97b3-461e-86d7-29765017335e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-ec6e2dc4",
+        "release_title": "MASTER : PIECE",
+        "release_date": "2023-03-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Groovy",
+        "spotify_url": "https://open.spotify.com/album/6vlYZzNPs1SCafyLKbmUrC",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5218d18e-f636-482d-8c40-c3f1a9916dd1",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5218d18e-f636-482d-8c40-c3f1a9916dd1/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5218d18e-f636-482d-8c40-c3f1a9916dd1/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5218d18e-f636-482d-8c40-c3f1a9916dd1",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d17261f3",
+        "release_title": "NEW WAVE",
+        "release_date": "2022-09-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Boogie Woogie",
+        "spotify_url": "https://open.spotify.com/album/43PdGV8b4Xb1a4ffk3Ywt6",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ae5e0b5c-3014-499d-9949-655209905226",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ae5e0b5c-3014-499d-9949-655209905226/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ae5e0b5c-3014-499d-9949-655209905226/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ae5e0b5c-3014-499d-9949-655209905226",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f83ee689",
+        "release_title": "LIBERTY : IN OUR COSMOS",
+        "release_date": "2022-03-22",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Adrenaline",
+        "spotify_url": "https://open.spotify.com/album/0fQl58pOwJpkTfVUZudzpY",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f8e8a722-a80c-4012-a32a-0dbb3851f057",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f8e8a722-a80c-4012-a32a-0dbb3851f057/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f8e8a722-a80c-4012-a32a-0dbb3851f057/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f8e8a722-a80c-4012-a32a-0dbb3851f057",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5c856295",
+        "release_title": "The Awakening : Written in the Stars",
+        "release_date": "2021-08-19",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Intro: New Horizon",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2207d552-8692-40b0-82bf-bb5f2d01783f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2207d552-8692-40b0-82bf-bb5f2d01783f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2207d552-8692-40b0-82bf-bb5f2d01783f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2207d552-8692-40b0-82bf-bb5f2d01783f",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/035e63b4-a34d-4f8e-a61f-6c2527eed16e"
+  }
+}

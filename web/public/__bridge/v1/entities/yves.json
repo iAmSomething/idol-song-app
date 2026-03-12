@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-yves"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "yves",
+      "display_name": "Yves",
+      "canonical_name": "Yves",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@YVES_OFFICIAL",
+      "x": null,
+      "instagram": "https://www.instagram.com/yvesntual"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@YVES_OFFICIAL",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": null,
+      "tracking_status": null
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-bbe7d67a",
+      "release_title": "Falling for You",
+      "release_date": "2025-12-19",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Falling for You",
+      "spotify_url": "https://open.spotify.com/album/11sMvD8KLH8AFB0gThLsNA",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=IG7xOkB75X8",
+      "source_url": "https://musicbrainz.org/release-group/752272a9-10c7-4a97-83dc-95f16364dbf2",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/752272a9-10c7-4a97-83dc-95f16364dbf2/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/752272a9-10c7-4a97-83dc-95f16364dbf2/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/752272a9-10c7-4a97-83dc-95f16364dbf2",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-65df4ae0",
+        "release_title": "I Did",
+        "release_date": "2024-11-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Tik Tok",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c7d6ea37-016b-4e63-be72-6500af92776d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c7d6ea37-016b-4e63-be72-6500af92776d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c7d6ea37-016b-4e63-be72-6500af92776d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c7d6ea37-016b-4e63-be72-6500af92776d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-eff46565",
+        "release_title": "LOOP",
+        "release_date": "2024-05-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "LOOP",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/297b555c-aa51-4e97-844a-d554bb43cc61",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/297b555c-aa51-4e97-844a-d554bb43cc61/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/297b555c-aa51-4e97-844a-d554bb43cc61/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/297b555c-aa51-4e97-844a-d554bb43cc61",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/8339c0c3-7a04-4b19-8ca3-b149e0d09222"
+  }
+}

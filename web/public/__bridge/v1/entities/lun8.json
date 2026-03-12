@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-lun8"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "lun8",
+      "display_name": "LUN8",
+      "canonical_name": "LUN8",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/yCivIheXFwZbhhUmKf_B_YSlQxRG_PshqNjCJwhLXVLprAxya66y7z8f4y-1zGRM1QetxJifng=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/yCivIheXFwZbhhUmKf_B_YSlQxRG_PshqNjCJwhLXVLprAxya66y7z8f4y-1zGRM1QetxJifng=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@LUN8_Official",
+      "x": "https://x.com/LUN8_official",
+      "instagram": "https://www.instagram.com/lun8_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@LUN8_Official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-77380a3b",
+      "release_title": "LOST",
+      "release_date": "2025-09-17",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Lost",
+      "spotify_url": "https://open.spotify.com/album/2RNBslHPjuQ1SSjmevJCiO",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=0cvhgUyC5G0",
+      "source_url": "https://musicbrainz.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-c4c5f4f5",
+        "release_title": "AWAKENING",
+        "release_date": "2024-08-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Ride",
+        "spotify_url": "https://open.spotify.com/album/0813jMWQA9x769uFiyJt4A",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c9914106-9752-4a3e-ba9b-128f1757106b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c9914106-9752-4a3e-ba9b-128f1757106b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c9914106-9752-4a3e-ba9b-128f1757106b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c9914106-9752-4a3e-ba9b-128f1757106b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6cc24cb4",
+        "release_title": "Evergreen",
+        "release_date": "2024-06-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Evergreen",
+        "spotify_url": "https://open.spotify.com/album/0GUY29JTqpAq7U0q1LZvRT",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2e65cbcd-fd8e-4f27-bde5-4f9a97601502",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2e65cbcd-fd8e-4f27-bde5-4f9a97601502/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2e65cbcd-fd8e-4f27-bde5-4f9a97601502/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2e65cbcd-fd8e-4f27-bde5-4f9a97601502",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e8e5c75f",
+        "release_title": "BUFF",
+        "release_date": "2024-03-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "MON2SUN (MON♡SUN)",
+        "spotify_url": "https://open.spotify.com/album/5ppQCaEkY3k6ApwuWr0S39",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/33c2adb3-e57f-4ed0-b2cd-ce0be79e89eb",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/33c2adb3-e57f-4ed0-b2cd-ce0be79e89eb/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/33c2adb3-e57f-4ed0-b2cd-ce0be79e89eb/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/33c2adb3-e57f-4ed0-b2cd-ce0be79e89eb",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-75c34014",
+        "release_title": "CONTINUE?",
+        "release_date": "2023-06-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Voyager",
+        "spotify_url": "https://open.spotify.com/album/38naOKNOPofTwerOOejf2N",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/1e2858fe-76d8-46ce-b8ac-c036a4581719",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1e2858fe-76d8-46ce-b8ac-c036a4581719/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1e2858fe-76d8-46ce-b8ac-c036a4581719/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1e2858fe-76d8-46ce-b8ac-c036a4581719",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/1689d50f-cd03-43ce-a275-ce7616dafa7f"
+  }
+}

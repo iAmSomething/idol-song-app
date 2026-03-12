@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-lightsum"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "lightsum",
+      "display_name": "LIGHTSUM",
+      "canonical_name": "LIGHTSUM",
+      "agency_name": "Cube Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/7a2ALs4EWUYWKT3vhwP2CsaGzOVxYia2o-ndW6I_zhOqCSwMIfHCDPvhLiuXLH5Eh-lEMvW4Jg=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/7a2ALs4EWUYWKT3vhwP2CsaGzOVxYia2o-ndW6I_zhOqCSwMIfHCDPvhLiuXLH5Eh-lEMvW4Jg=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCeQlMQ-4cedE7SNmF5JsdsA",
+      "x": "https://x.com/cube_lightsum",
+      "instagram": "https://www.instagram.com/cube_lightsum"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCeQlMQ-4cedE7SNmF5JsdsA",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-a6897094",
+      "release_title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+      "release_date": "2026-01-15",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+      "spotify_url": "https://open.spotify.com/album/5pPLGQ9xQA7PvD6RTLxOef",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-65f6029d",
+        "release_title": "Honey or Spice",
+        "release_date": "2023-10-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Honey or Spice",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/69781146-25ec-41d3-bbfa-9799fd45af56",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/69781146-25ec-41d3-bbfa-9799fd45af56/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/69781146-25ec-41d3-bbfa-9799fd45af56/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/69781146-25ec-41d3-bbfa-9799fd45af56",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0c8a1f87",
+        "release_title": "Into the Light",
+        "release_date": "2022-05-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ALIVE",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/16e2bd1d-42bb-490f-8232-a76ac11a1938",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/16e2bd1d-42bb-490f-8232-a76ac11a1938/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/16e2bd1d-42bb-490f-8232-a76ac11a1938/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/16e2bd1d-42bb-490f-8232-a76ac11a1938",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/6bfa076d-881b-442f-adc9-c8c17c6c87d3"
+  }
+}

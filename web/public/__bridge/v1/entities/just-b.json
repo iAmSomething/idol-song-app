@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-just-b"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "just-b",
+      "display_name": "JUST B",
+      "canonical_name": "JUST B",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@JUSTB_Official",
+      "x": "https://x.com/JUSTB_Official",
+      "instagram": "https://www.instagram.com/justb_ig_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@JUSTB_Official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-e728f67c",
+      "release_title": "Light Sweeper",
+      "release_date": "2022-07-15",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Light Sweeper",
+      "spotify_url": "https://open.spotify.com/album/4t25tnjEqLew7KsZaO6F6j",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/79888478-a963-486a-8f27-aae4d23f6497",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/79888478-a963-486a-8f27-aae4d23f6497/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/79888478-a963-486a-8f27-aae4d23f6497/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/79888478-a963-486a-8f27-aae4d23f6497",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-e728f67c",
+        "release_title": "Light Sweeper",
+        "release_date": "2022-07-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Light Sweeper",
+        "spotify_url": "https://open.spotify.com/album/4t25tnjEqLew7KsZaO6F6j",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/79888478-a963-486a-8f27-aae4d23f6497",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/79888478-a963-486a-8f27-aae4d23f6497/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/79888478-a963-486a-8f27-aae4d23f6497/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/79888478-a963-486a-8f27-aae4d23f6497",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e2452146",
+        "release_title": "Configurations 16",
+        "release_date": "2022-05-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Ego States",
+        "spotify_url": "https://open.spotify.com/album/13QPGYkGzQiXCOwxdGfZMz",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f9e4d6b6-b361-4d6d-bd6c-c2a147d4042c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f9e4d6b6-b361-4d6d-bd6c-c2a147d4042c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f9e4d6b6-b361-4d6d-bd6c-c2a147d4042c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f9e4d6b6-b361-4d6d-bd6c-c2a147d4042c",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-ac6ae7ab",
+        "release_title": "Different Places",
+        "release_date": "2022-02-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Different Places (vocal)",
+        "spotify_url": "https://open.spotify.com/album/6TpI1GgUNAIZlHyx0dDPPU",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6235ebee-a3e6-4d56-a7a9-2d39e0448a8a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6235ebee-a3e6-4d56-a7a9-2d39e0448a8a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6235ebee-a3e6-4d56-a7a9-2d39e0448a8a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6235ebee-a3e6-4d56-a7a9-2d39e0448a8a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6c03000f",
+        "release_title": "Configurations 12",
+        "release_date": "2020-12-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "In the Field",
+        "spotify_url": "https://open.spotify.com/album/12PmOHEYodt0vL4sCSNjtt",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9d03c542-bdc6-4c47-9ad8-2bc18553e26d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9d03c542-bdc6-4c47-9ad8-2bc18553e26d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9d03c542-bdc6-4c47-9ad8-2bc18553e26d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9d03c542-bdc6-4c47-9ad8-2bc18553e26d",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/23c5f399-a12e-4c7e-8066-b470e65d55a4"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-mcnd"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "mcnd",
+      "display_name": "MCND",
+      "canonical_name": "MCND",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/WLlffb-azl7cN07Qjs6HIIzpwhNaP1gYJpiTbrIb-umUAAfob6NJzG7oWomqdtrFWko8fEMBQw=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/WLlffb-azl7cN07Qjs6HIIzpwhNaP1gYJpiTbrIb-umUAAfob6NJzG7oWomqdtrFWko8fEMBQw=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@MCND_OFFICIAL",
+      "x": "https://x.com/mcndofficial_",
+      "instagram": "https://www.instagram.com/mcnd_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@MCND_OFFICIAL",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-9007a905",
+      "release_title": "X10",
+      "release_date": "2024-05-21",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "X10",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/c200adaa-fddf-4d60-bd6f-8998fbd46510",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/c200adaa-fddf-4d60-bd6f-8998fbd46510/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/c200adaa-fddf-4d60-bd6f-8998fbd46510/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/c200adaa-fddf-4d60-bd6f-8998fbd46510",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-9007a905",
+        "release_title": "X10",
+        "release_date": "2024-05-21",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "X10",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c200adaa-fddf-4d60-bd6f-8998fbd46510",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c200adaa-fddf-4d60-bd6f-8998fbd46510/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c200adaa-fddf-4d60-bd6f-8998fbd46510/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c200adaa-fddf-4d60-bd6f-8998fbd46510",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a4f8e0f5",
+        "release_title": "ODD‐VENTURE",
+        "release_date": "2023-11-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ODD‐VENTURE",
+        "spotify_url": "https://open.spotify.com/album/4dnRFripiPgsKl90ULXuYN",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/eed39533-ad69-488b-aebb-ccfc195253db",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/eed39533-ad69-488b-aebb-ccfc195253db/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/eed39533-ad69-488b-aebb-ccfc195253db/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/eed39533-ad69-488b-aebb-ccfc195253db",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2a503098",
+        "release_title": "THE EARTH : SECRET MISSION Chapter.2",
+        "release_date": "2022-07-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "W.A.T.1",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c07888d6-7054-4e37-817d-89a286353f07",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c07888d6-7054-4e37-817d-89a286353f07/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c07888d6-7054-4e37-817d-89a286353f07/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c07888d6-7054-4e37-817d-89a286353f07",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3e872fde",
+        "release_title": "THE EARTH : SECRET MISSION Chapter.1",
+        "release_date": "2021-08-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Movin’",
+        "spotify_url": "https://open.spotify.com/album/1N3vXThYiEWjbR8xiYiF8H",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4997d714-41f0-49ae-b888-aced70055cf8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4997d714-41f0-49ae-b888-aced70055cf8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4997d714-41f0-49ae-b888-aced70055cf8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4997d714-41f0-49ae-b888-aced70055cf8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-eff93219",
+        "release_title": "MCND AGE",
+        "release_date": "2021-01-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : MCND Age",
+        "spotify_url": "https://open.spotify.com/album/21u04D1IU3NcZ4GQRMG3UN",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a711c5f3-8d53-4d29-acf2-2ce6d6a197aa",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a711c5f3-8d53-4d29-acf2-2ce6d6a197aa/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a711c5f3-8d53-4d29-acf2-2ce6d6a197aa/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a711c5f3-8d53-4d29-acf2-2ce6d6a197aa",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-16a42a05",
+        "release_title": "EARTH AGE",
+        "release_date": "2020-08-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro ; Earth Age",
+        "spotify_url": "https://open.spotify.com/album/07PfxhBiOdsIlzs9oxcbWq",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/78b047f8-73f9-4653-98c6-fb0dfb7ff9ca",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/78b047f8-73f9-4653-98c6-fb0dfb7ff9ca/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/78b047f8-73f9-4653-98c6-fb0dfb7ff9ca/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/78b047f8-73f9-4653-98c6-fb0dfb7ff9ca",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-ad8500fc",
+        "release_title": "Into the Ice Age",
+        "release_date": "2020-02-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Into the Ice Age",
+        "spotify_url": "https://open.spotify.com/album/2N9Y7kFSctM8v4T4G2uYWo",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a3532bec-9e23-46b8-bb8c-0fc1f08c7471",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a3532bec-9e23-46b8-bb8c-0fc1f08c7471/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a3532bec-9e23-46b8-bb8c-0fc1f08c7471/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a3532bec-9e23-46b8-bb8c-0fc1f08c7471",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/f2eb078b-acb6-4dc5-8224-ab180b207ad2"
+  }
+}

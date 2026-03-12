@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-btob"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "btob",
+      "display_name": "BTOB",
+      "canonical_name": "BTOB",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/ytc/AIdro_lRZlsGii0S7kA-gUquyU_I_K3OXKpVwfXwdF0vAivz6-U=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/ytc/AIdro_lRZlsGii0S7kA-gUquyU_I_K3OXKpVwfXwdF0vAivz6-U=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@officialbtob",
+      "x": "https://x.com/OFFICIALBTOB",
+      "instagram": "https://www.instagram.com/official_btob"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@officialbtob",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-26780d23",
+      "release_title": "BTODAY",
+      "release_date": "2025-03-05",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Be Alright",
+      "spotify_url": "https://open.spotify.com/album/6zL4ZHKGmKkzQktkjGOq1K",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/dab347b6-d080-4c9c-9b85-071a1aeb914e",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/dab347b6-d080-4c9c-9b85-071a1aeb914e/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/dab347b6-d080-4c9c-9b85-071a1aeb914e/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/dab347b6-d080-4c9c-9b85-071a1aeb914e",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-26780d23",
+        "release_title": "BTODAY",
+        "release_date": "2025-03-05",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Be Alright",
+        "spotify_url": "https://open.spotify.com/album/6zL4ZHKGmKkzQktkjGOq1K",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/dab347b6-d080-4c9c-9b85-071a1aeb914e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/dab347b6-d080-4c9c-9b85-071a1aeb914e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/dab347b6-d080-4c9c-9b85-071a1aeb914e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/dab347b6-d080-4c9c-9b85-071a1aeb914e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c3be844b",
+        "release_title": "Wind and Wish",
+        "release_date": "2023-05-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "나의 바람 (Wind And Wish)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/dc532de8-8885-46c2-b8fd-8b7b2ef0c8c6",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/dc532de8-8885-46c2-b8fd-8b7b2ef0c8c6/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/dc532de8-8885-46c2-b8fd-8b7b2ef0c8c6/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/dc532de8-8885-46c2-b8fd-8b7b2ef0c8c6",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f96f0e37",
+        "release_title": "Be Together",
+        "release_date": "2022-02-21",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Be Together",
+        "spotify_url": "https://open.spotify.com/album/0Ex4iuYoVnF8IBrBBIfYWU",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0257efba-395d-4a49-a358-a97837c534c8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0257efba-395d-4a49-a358-a97837c534c8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0257efba-395d-4a49-a358-a97837c534c8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0257efba-395d-4a49-a358-a97837c534c8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-63203c97",
+        "release_title": "4U: Outside",
+        "release_date": "2021-08-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Dreamer",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e5154a17-bc0d-4579-81ea-88a84363c5a2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e5154a17-bc0d-4579-81ea-88a84363c5a2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e5154a17-bc0d-4579-81ea-88a84363c5a2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e5154a17-bc0d-4579-81ea-88a84363c5a2",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9aebb349",
+        "release_title": "킹덤 <FINAL : WHO IS THE KING?>",
+        "release_date": "2021-05-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "피날레 (Show And Prove)",
+        "spotify_url": "https://open.spotify.com/album/3n1NaviPQXfiVQ0TarnAf4",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/39c06ea3-f290-492a-b83a-738c225cbba2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/39c06ea3-f290-492a-b83a-738c225cbba2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/39c06ea3-f290-492a-b83a-738c225cbba2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/39c06ea3-f290-492a-b83a-738c225cbba2",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-148d7dcf",
+        "release_title": "HOUR MOMENT",
+        "release_date": "2018-11-12",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Friend",
+        "spotify_url": "https://open.spotify.com/album/3qgQ4Zlq1j5zJL0DadUYU0",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/70015408-95c7-4528-b395-c80e6cb3ac68",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/70015408-95c7-4528-b395-c80e6cb3ac68/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/70015408-95c7-4528-b395-c80e6cb3ac68/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/70015408-95c7-4528-b395-c80e6cb3ac68",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-66b4213f",
+        "release_title": "THIS IS US",
+        "release_date": "2018-06-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "The Feeling",
+        "spotify_url": "https://open.spotify.com/album/1JpC31overHSqPenjJieXv",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/22fe642e-367d-4ae6-854a-1eb65035fdc3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/22fe642e-367d-4ae6-854a-1eb65035fdc3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/22fe642e-367d-4ae6-854a-1eb65035fdc3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/22fe642e-367d-4ae6-854a-1eb65035fdc3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-79938559",
+        "release_title": "Brother Act.",
+        "release_date": "2017-10-16",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Interlude : Brother Act.",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/aff43297-e1fd-49ee-bb6c-626ea4f7b03d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/aff43297-e1fd-49ee-bb6c-626ea4f7b03d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/aff43297-e1fd-49ee-bb6c-626ea4f7b03d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/aff43297-e1fd-49ee-bb6c-626ea4f7b03d",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/7728b64d-8925-4a1c-b684-a88c6194a241"
+  }
+}

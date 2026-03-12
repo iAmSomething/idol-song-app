@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-bae173"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "bae173",
+      "display_name": "BAE173",
+      "canonical_name": "BAE173",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/M9nEH0AlowUE0vJSH9j4r-uMllBGbbaxWl4alNRPrEZXTarERKwLgrKZFBKdHfDJ60ONI1HpeQ=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/M9nEH0AlowUE0vJSH9j4r-uMllBGbbaxWl4alNRPrEZXTarERKwLgrKZFBKdHfDJ60ONI1HpeQ=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCWRNGyk9Nk9yu9ClmlZ6Hww",
+      "x": "https://x.com/BAE173_official",
+      "instagram": "https://www.instagram.com/official_pocketdolz"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCWRNGyk9Nk9yu9ClmlZ6Hww",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-2cc442bb",
+      "release_title": "NEW CHAPTER : DESEAR",
+      "release_date": "2025-10-14",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Turned Up",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kv6ea-C6wkZm4_oKaDuet9iZlOSlccR7Y",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/77b28a76-cd4c-4a58-b4be-ec10e6fedd7b",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/77b28a76-cd4c-4a58-b4be-ec10e6fedd7b/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/77b28a76-cd4c-4a58-b4be-ec10e6fedd7b/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/77b28a76-cd4c-4a58-b4be-ec10e6fedd7b",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-2cc442bb",
+        "release_title": "NEW CHAPTER : DESEAR",
+        "release_date": "2025-10-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Turned Up",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kv6ea-C6wkZm4_oKaDuet9iZlOSlccR7Y",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/77b28a76-cd4c-4a58-b4be-ec10e6fedd7b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/77b28a76-cd4c-4a58-b4be-ec10e6fedd7b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/77b28a76-cd4c-4a58-b4be-ec10e6fedd7b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/77b28a76-cd4c-4a58-b4be-ec10e6fedd7b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0c0a7b2b",
+        "release_title": "NEW CHAPTER : LUCEAT",
+        "release_date": "2024-03-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Fifty‐Fifty",
+        "spotify_url": "https://open.spotify.com/album/3Fq9Q9R4JeietWxlin6Xiy",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ef9c152b-09a2-470c-9405-d537776e50f0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ef9c152b-09a2-470c-9405-d537776e50f0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ef9c152b-09a2-470c-9405-d537776e50f0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ef9c152b-09a2-470c-9405-d537776e50f0",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-38faa223",
+        "release_title": "ODYSSEY:DaSH",
+        "release_date": "2022-08-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "DaSH",
+        "spotify_url": "https://open.spotify.com/album/4tr2tGgWohMbeh5wlMj8QO",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c3352d23-3a1a-4d7f-9df9-7dbdfd5a4951",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c3352d23-3a1a-4d7f-9df9-7dbdfd5a4951/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c3352d23-3a1a-4d7f-9df9-7dbdfd5a4951/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c3352d23-3a1a-4d7f-9df9-7dbdfd5a4951",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9e9ad3d6",
+        "release_title": "INTERSECTION : BLAZE",
+        "release_date": "2022-03-30",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Runnin'",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/01061b03-f243-4ad4-bc35-7cd979819f2f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/01061b03-f243-4ad4-bc35-7cd979819f2f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/01061b03-f243-4ad4-bc35-7cd979819f2f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/01061b03-f243-4ad4-bc35-7cd979819f2f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3605f3ee",
+        "release_title": "Intersection : Trace",
+        "release_date": "2021-04-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "#Trace",
+        "spotify_url": "https://open.spotify.com/album/6ktzrA4koNUT51emdPIFYK",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8ff7cd1c-dd06-4376-a1d7-2a17fe2d5c18",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8ff7cd1c-dd06-4376-a1d7-2a17fe2d5c18/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8ff7cd1c-dd06-4376-a1d7-2a17fe2d5c18/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8ff7cd1c-dd06-4376-a1d7-2a17fe2d5c18",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a576fd4f",
+        "release_title": "INTERSECTION : SPARK",
+        "release_date": "2020-11-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "prelude : with me",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3d739753-84bd-4808-9ff0-55ca63aa20c9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3d739753-84bd-4808-9ff0-55ca63aa20c9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3d739753-84bd-4808-9ff0-55ca63aa20c9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3d739753-84bd-4808-9ff0-55ca63aa20c9",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/ada066dc-bd71-41df-8eb0-799635b6176e"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-loossemble"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "loossemble",
+      "display_name": "Loossemble",
+      "canonical_name": "Loossemble",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@Loossemble_official",
+      "x": "https://x.com/Loossemble_twt",
+      "instagram": "https://www.instagram.com/loossemble.official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@Loossemble_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "needs_manual_review"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-f9d27049",
+      "release_title": "TTYL",
+      "release_date": "2024-09-02",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "TTYL",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/80927cd4-1169-49e0-a2dd-78e9560cada1",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/80927cd4-1169-49e0-a2dd-78e9560cada1/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/80927cd4-1169-49e0-a2dd-78e9560cada1/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/80927cd4-1169-49e0-a2dd-78e9560cada1",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-f9d27049",
+        "release_title": "TTYL",
+        "release_date": "2024-09-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "TTYL",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/80927cd4-1169-49e0-a2dd-78e9560cada1",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/80927cd4-1169-49e0-a2dd-78e9560cada1/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/80927cd4-1169-49e0-a2dd-78e9560cada1/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/80927cd4-1169-49e0-a2dd-78e9560cada1",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3e17310d",
+        "release_title": "One of a Kind",
+        "release_date": "2024-04-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro (A Butterfly’s Signal)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e116d148-c317-4fa1-a030-2d3d81481dca",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e116d148-c317-4fa1-a030-2d3d81481dca/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e116d148-c317-4fa1-a030-2d3d81481dca/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e116d148-c317-4fa1-a030-2d3d81481dca",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-de29cf14",
+        "release_title": "Loossemble",
+        "release_date": "2023-09-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro: Searching for their friends",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ebda5148-14f7-4298-97fe-4c42067302dd",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ebda5148-14f7-4298-97fe-4c42067302dd/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ebda5148-14f7-4298-97fe-4c42067302dd/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ebda5148-14f7-4298-97fe-4c42067302dd",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/cded24f3-361e-4179-8f26-4209479f6187"
+  }
+}

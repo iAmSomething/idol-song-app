@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-wjsn"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "wjsn",
+      "display_name": "WJSN",
+      "canonical_name": "WJSN",
+      "agency_name": "Starship Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@officialstarship",
+      "x": "https://x.com/WJSN_Cosmic",
+      "instagram": "https://www.instagram.com/wjsn_cosmic"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@officialstarship",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "manual",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-017e2070",
+      "release_title": "Bloom hour",
+      "release_date": "2026-02-25",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Bloom hour",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=ItvDjeiqdlE",
+      "source_url": "https://musicbrainz.org/release-group/da99b14f-57c5-4a1f-952e-9c915ba13b4b",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/da99b14f-57c5-4a1f-952e-9c915ba13b4b/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/da99b14f-57c5-4a1f-952e-9c915ba13b4b/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/da99b14f-57c5-4a1f-952e-9c915ba13b4b",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-5d75e2e8",
+        "release_title": "UNNATURAL",
+        "release_date": "2021-03-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "UNNATURAL",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7e7d62f3-cb7d-48ca-8492-2f3e49a68d66",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7e7d62f3-cb7d-48ca-8492-2f3e49a68d66/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7e7d62f3-cb7d-48ca-8492-2f3e49a68d66/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7e7d62f3-cb7d-48ca-8492-2f3e49a68d66",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d860214e",
+        "release_title": "Neverland",
+        "release_date": "2020-06-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BUTTERFLY",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2f52659c-bf7e-4044-ac2d-82e6f1801a72",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2f52659c-bf7e-4044-ac2d-82e6f1801a72/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2f52659c-bf7e-4044-ac2d-82e6f1801a72/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2f52659c-bf7e-4044-ac2d-82e6f1801a72",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8d73481e",
+        "release_title": "As You Wish",
+        "release_date": "2019-11-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "As You Wish",
+        "spotify_url": "https://open.spotify.com/album/5QsZIQcV5BOX9Tzj3IPVyo",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4c7b9a75-3fe8-4412-ac2a-6a687b752646",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4c7b9a75-3fe8-4412-ac2a-6a687b752646/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4c7b9a75-3fe8-4412-ac2a-6a687b752646/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4c7b9a75-3fe8-4412-ac2a-6a687b752646",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2ea92b43",
+        "release_title": "For the Summer",
+        "release_date": "2019-06-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Boogie Up",
+        "spotify_url": "https://open.spotify.com/album/53gncm4YYhGNfqgPWSgXbJ",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ff9b05ff-333c-4246-866d-d0d4599b975b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ff9b05ff-333c-4246-866d-d0d4599b975b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ff9b05ff-333c-4246-866d-d0d4599b975b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ff9b05ff-333c-4246-866d-d0d4599b975b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-54180a94",
+        "release_title": "WJ STAY?",
+        "release_date": "2019-01-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "La La Love",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/57524604-9945-4b42-8b82-ee69bc0bc166",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/57524604-9945-4b42-8b82-ee69bc0bc166/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/57524604-9945-4b42-8b82-ee69bc0bc166/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/57524604-9945-4b42-8b82-ee69bc0bc166",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b73285d4",
+        "release_title": "WJ PLEASE?",
+        "release_date": "2018-09-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "부탁해",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/05ea8933-f5c5-41b9-ae39-2dd1358496e9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/05ea8933-f5c5-41b9-ae39-2dd1358496e9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/05ea8933-f5c5-41b9-ae39-2dd1358496e9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/05ea8933-f5c5-41b9-ae39-2dd1358496e9",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f87ba8b3",
+        "release_title": "Dream your dream",
+        "release_date": "2018-02-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "꿈꾸는 마음으로",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/12ee0c23-cf2d-40a6-b99e-52dc62225210",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/12ee0c23-cf2d-40a6-b99e-52dc62225210/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/12ee0c23-cf2d-40a6-b99e-52dc62225210/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/12ee0c23-cf2d-40a6-b99e-52dc62225210",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4255bd9f",
+        "release_title": "HAPPY MOMENT",
+        "release_date": "2017-06-07",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "HAPPY",
+        "spotify_url": "https://open.spotify.com/album/4nnyYQGOKRU090FK7sfunL",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/33b405c6-8e9f-43d0-89c7-1b72a501d182",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/33b405c6-8e9f-43d0-89c7-1b72a501d182/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/33b405c6-8e9f-43d0-89c7-1b72a501d182/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/33b405c6-8e9f-43d0-89c7-1b72a501d182",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/99689c05-4f6d-4bff-9b00-06731277fe42"
+  }
+}

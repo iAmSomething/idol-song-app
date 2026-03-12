@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-wei"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "wei",
+      "display_name": "WEi",
+      "canonical_name": "WEi",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@wei_Official",
+      "x": "https://x.com/WEi_Official",
+      "instagram": "https://www.instagram.com/wei_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@wei_Official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-30ee2568",
+      "release_title": "Wonderland",
+      "release_date": "2025-10-29",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "HOME",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lzTVFnoEu2q0cAabgW-h-o3VHC_6C0Q9M",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/252b4761-926f-479f-86bc-a0999710321b",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/252b4761-926f-479f-86bc-a0999710321b/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/252b4761-926f-479f-86bc-a0999710321b/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/252b4761-926f-479f-86bc-a0999710321b",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-30ee2568",
+        "release_title": "Wonderland",
+        "release_date": "2025-10-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "HOME",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lzTVFnoEu2q0cAabgW-h-o3VHC_6C0Q9M",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/252b4761-926f-479f-86bc-a0999710321b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/252b4761-926f-479f-86bc-a0999710321b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/252b4761-926f-479f-86bc-a0999710321b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/252b4761-926f-479f-86bc-a0999710321b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b924cfdd",
+        "release_title": "The Feelings",
+        "release_date": "2025-01-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Not Enough",
+        "spotify_url": "https://open.spotify.com/album/4tlFQWOtbAdiRZKXkMITvg",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/02d35fcb-648d-4ac2-9502-bbc944b11fe3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/02d35fcb-648d-4ac2-9502-bbc944b11fe3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/02d35fcb-648d-4ac2-9502-bbc944b11fe3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/02d35fcb-648d-4ac2-9502-bbc944b11fe3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-55063a2b",
+        "release_title": "WAVE",
+        "release_date": "2024-02-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "FAKE LOVE",
+        "spotify_url": "https://open.spotify.com/album/3US5LuKVPgsl0PVbCgyTL4",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/32a6cb46-37c4-4cd4-b31d-44dfe42c4a10",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/32a6cb46-37c4-4cd4-b31d-44dfe42c4a10/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/32a6cb46-37c4-4cd4-b31d-44dfe42c4a10/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/32a6cb46-37c4-4cd4-b31d-44dfe42c4a10",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8dd0d082",
+        "release_title": "Love Pt. 3 : Eternally",
+        "release_date": "2023-06-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "OVERDRIVE",
+        "spotify_url": "https://open.spotify.com/album/2mrCu8xKF0ExIqExAmae9f",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/50978ad3-90bd-4044-90fe-a1a1aea6a87e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/50978ad3-90bd-4044-90fe-a1a1aea6a87e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/50978ad3-90bd-4044-90fe-a1a1aea6a87e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/50978ad3-90bd-4044-90fe-a1a1aea6a87e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-eb0b6b05",
+        "release_title": "Love Pt.2 : Passion",
+        "release_date": "2022-10-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Moonlight",
+        "spotify_url": "https://open.spotify.com/album/0Z2uhDbJLXLL8AEfksFBSO",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/51059194-c403-4898-a689-8964f5d33abe",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/51059194-c403-4898-a689-8964f5d33abe/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/51059194-c403-4898-a689-8964f5d33abe/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/51059194-c403-4898-a689-8964f5d33abe",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9f01941c",
+        "release_title": "Youth",
+        "release_date": "2022-08-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Maldives",
+        "spotify_url": "https://open.spotify.com/album/18XiNd1NbTQcLZnesTSWJV",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/75c37abb-0f03-4f6c-8565-526a28fec69e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/75c37abb-0f03-4f6c-8565-526a28fec69e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/75c37abb-0f03-4f6c-8565-526a28fec69e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/75c37abb-0f03-4f6c-8565-526a28fec69e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cf8eb10e",
+        "release_title": "Love Pt.1 : First Love",
+        "release_date": "2022-03-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BLOSSOM",
+        "spotify_url": "https://open.spotify.com/album/77eiNb82HouMWEiK2xe3sp",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/53f7bd06-6838-4527-9a91-7cab711c4a5e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/53f7bd06-6838-4527-9a91-7cab711c4a5e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/53f7bd06-6838-4527-9a91-7cab711c4a5e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/53f7bd06-6838-4527-9a91-7cab711c4a5e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6923a801",
+        "release_title": "IDENTITY : Action",
+        "release_date": "2021-06-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BYE BYE BYE",
+        "spotify_url": "https://open.spotify.com/album/7nvcGJpVJBTOtYKGTEtCmr",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b0ddda1f-e2be-43b6-81d5-39ad620d83e2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b0ddda1f-e2be-43b6-81d5-39ad620d83e2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b0ddda1f-e2be-43b6-81d5-39ad620d83e2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b0ddda1f-e2be-43b6-81d5-39ad620d83e2",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/a8599fd2-3682-4f6c-a580-f28c4ae97a0b"
+  }
+}

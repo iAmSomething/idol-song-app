@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-kard"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "kard",
+      "display_name": "KARD",
+      "canonical_name": "KARD",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/nAeia3ldQiBtEhYxEQAb7Y84TyYFsKg6DvypKoF4BYuOLIWAZVXRowHYzfJdFYkk0J2HdIraGQ=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/nAeia3ldQiBtEhYxEQAb7Y84TyYFsKg6DvypKoF4BYuOLIWAZVXRowHYzfJdFYkk0J2HdIraGQ=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@Kard_official",
+      "x": "https://x.com/kard_official",
+      "instagram": "https://www.instagram.com/official_kard"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@Kard_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-3b465c01",
+      "release_title": "DRIFT",
+      "release_date": "2025-07-02",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "BETCHA",
+      "spotify_url": "https://open.spotify.com/album/20n7NJgj2ZOi1YJ85KEkhq",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-3b465c01",
+        "release_title": "DRIFT",
+        "release_date": "2025-07-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BETCHA",
+        "spotify_url": "https://open.spotify.com/album/20n7NJgj2ZOi1YJ85KEkhq",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2a2c5208",
+        "release_title": "Where To Now? (Part 1 : Yellow Light)",
+        "release_date": "2024-08-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Waste My Time",
+        "spotify_url": "https://open.spotify.com/album/0eXeBtUotmPrJtREbEa3nE",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d069fea6-75dd-4f98-8e4b-b6559012323b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d069fea6-75dd-4f98-8e4b-b6559012323b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d069fea6-75dd-4f98-8e4b-b6559012323b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d069fea6-75dd-4f98-8e4b-b6559012323b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8a25ecf5",
+        "release_title": "ICKY",
+        "release_date": "2023-05-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ICKY",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8820df59-5abc-4885-910c-824c64e218fd",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8820df59-5abc-4885-910c-824c64e218fd/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8820df59-5abc-4885-910c-824c64e218fd/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8820df59-5abc-4885-910c-824c64e218fd",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8faf16f5",
+        "release_title": "Re:",
+        "release_date": "2022-06-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Break Down",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/32d48479-71db-452c-ad8a-b83f80794977",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/32d48479-71db-452c-ad8a-b83f80794977/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/32d48479-71db-452c-ad8a-b83f80794977/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/32d48479-71db-452c-ad8a-b83f80794977",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-ac1e41e3",
+        "release_title": "RED MOON",
+        "release_date": "2020-02-12",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "RED MOON",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": "https://www.youtube.com/watch?v=ZAEqQPAEkug",
+        "source_url": "https://musicbrainz.org/release-group/768c99d8-0942-47c3-9b3e-ef45fd29c3be",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/768c99d8-0942-47c3-9b3e-ef45fd29c3be/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/768c99d8-0942-47c3-9b3e-ef45fd29c3be/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/768c99d8-0942-47c3-9b3e-ef45fd29c3be",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8cd3beb9",
+        "release_title": "RIDE ON THE WIND",
+        "release_date": "2018-07-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Ride on the wind",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e0993172-0348-4080-87ca-a44f02c7e5ef",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e0993172-0348-4080-87ca-a44f02c7e5ef/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e0993172-0348-4080-87ca-a44f02c7e5ef/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e0993172-0348-4080-87ca-a44f02c7e5ef",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-eb1c6d60",
+        "release_title": "YOU & ME",
+        "release_date": "2017-11-21",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "INTO YOU",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5b0041ba-279b-496f-bae8-66681b4a9cf2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5b0041ba-279b-496f-bae8-66681b4a9cf2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5b0041ba-279b-496f-bae8-66681b4a9cf2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5b0041ba-279b-496f-bae8-66681b4a9cf2",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-491f44ef",
+        "release_title": "Hola Hola",
+        "release_date": "2017-07-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Oh NaNa",
+        "spotify_url": "https://open.spotify.com/album/5eJ58cjTjSRGxOPtVeke2Z",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/962e012c-30bd-4756-b50e-414abbcab20c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/962e012c-30bd-4756-b50e-414abbcab20c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/962e012c-30bd-4756-b50e-414abbcab20c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/962e012c-30bd-4756-b50e-414abbcab20c",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/ad4e8332-861d-4a49-8235-b72888714be4"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-tnx"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "tnx",
+      "display_name": "TNX",
+      "canonical_name": "TNX",
+      "agency_name": "P NATION",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@PNATIONOfficial",
+      "x": "https://x.com/TNX_Official",
+      "instagram": "https://www.instagram.com/official.tnx"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@PNATIONOfficial",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-963ed118",
+      "release_title": "CALL ME BACK",
+      "release_date": "2026-01-22",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "CALL ME BACK",
+      "spotify_url": "https://open.spotify.com/album/4x65qm15EE2YTLUIJLX4b5",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=0-xKvImq7Ek",
+      "source_url": "https://musicbrainz.org/release-group/284125ec-d04c-4023-9977-666ca826b284",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/284125ec-d04c-4023-9977-666ca826b284/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/284125ec-d04c-4023-9977-666ca826b284/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/284125ec-d04c-4023-9977-666ca826b284",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-a3131d9e",
+        "release_title": "For Real?",
+        "release_date": "2025-03-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "For Real?",
+        "spotify_url": "https://open.spotify.com/album/2ZlTmzWp67lhdApzMdmwWV",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ccbc56cc-3b55-40f0-a827-48773217d80e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ccbc56cc-3b55-40f0-a827-48773217d80e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ccbc56cc-3b55-40f0-a827-48773217d80e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ccbc56cc-3b55-40f0-a827-48773217d80e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-af2993ae",
+        "release_title": "BOYHOOD",
+        "release_date": "2023-06-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Kick It 4 Now",
+        "spotify_url": "https://open.spotify.com/album/3k4xr3Bn9NfyX7O1nlK7Mg",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/cc483276-24b1-4860-b5df-1dcb5711d761",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/cc483276-24b1-4860-b5df-1dcb5711d761/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/cc483276-24b1-4860-b5df-1dcb5711d761/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/cc483276-24b1-4860-b5df-1dcb5711d761",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c42bb7cc",
+        "release_title": "Love Never Dies",
+        "release_date": "2023-02-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Love Never Dies",
+        "spotify_url": "https://open.spotify.com/album/0r8x30PzZEBtxJsLpwHHwL",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/721e89a4-cbcd-4f85-a633-7e7e6da9bc58",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/721e89a4-cbcd-4f85-a633-7e7e6da9bc58/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/721e89a4-cbcd-4f85-a633-7e7e6da9bc58/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/721e89a4-cbcd-4f85-a633-7e7e6da9bc58",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-86a1ae13",
+        "release_title": "WAY UP",
+        "release_date": "2022-05-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "WE ON",
+        "spotify_url": "https://open.spotify.com/album/1TgcRUSvCC0QyuMsaiF3M4",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b4526bc2-4d69-47c3-a517-ca605ef13f77",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b4526bc2-4d69-47c3-a517-ca605ef13f77/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b4526bc2-4d69-47c3-a517-ca605ef13f77/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b4526bc2-4d69-47c3-a517-ca605ef13f77",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/136c0dc4-4690-4fb4-bc79-3968700f4eaf"
+  }
+}

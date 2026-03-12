@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-82major"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "82major",
+      "display_name": "82MAJOR",
+      "canonical_name": "82MAJOR",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/U41adlHFVKEP2-a-xxziFRYlqf5XtDYtSHj7t7pY-avDcoAfr3wlLWIazYBU5TvLkzlesGXB_R0=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/U41adlHFVKEP2-a-xxziFRYlqf5XtDYtSHj7t7pY-avDcoAfr3wlLWIazYBU5TvLkzlesGXB_R0=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@82major_official",
+      "x": "https://x.com/82MAJOR_231011",
+      "instagram": "https://www.instagram.com/82major_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@82major_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-79214dae",
+      "release_title": "Trophy",
+      "release_date": "2025-10-30",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "TROPHY",
+      "spotify_url": "https://open.spotify.com/album/6oTUrlTjn5yEohEoQrXVTf",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_n26tMK3m2CEt3tFoD2YUR5c9WUBUUp5cA",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=lROE6G2DwFY",
+      "source_url": "https://musicbrainz.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-79214dae",
+        "release_title": "Trophy",
+        "release_date": "2025-10-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "TROPHY",
+        "spotify_url": "https://open.spotify.com/album/6oTUrlTjn5yEohEoQrXVTf",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_n26tMK3m2CEt3tFoD2YUR5c9WUBUUp5cA",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=lROE6G2DwFY",
+        "source_url": "https://musicbrainz.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d5024035",
+        "release_title": "SILENCE SYNDROME",
+        "release_date": "2025-04-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "TAKEOVER",
+        "spotify_url": "https://open.spotify.com/album/2Z00o0quhfUOA9HY57Msb8",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2167ab87-abf8-41f8-b909-986b9210e64d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2167ab87-abf8-41f8-b909-986b9210e64d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2167ab87-abf8-41f8-b909-986b9210e64d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2167ab87-abf8-41f8-b909-986b9210e64d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e7f78182",
+        "release_title": "X-82",
+        "release_date": "2024-11-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Stuck",
+        "spotify_url": "https://open.spotify.com/album/0thPijogV4uT1nFUz0Nv5A",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_k1sIbCSXn34yi3_k1kdbhE3r24-du98ic",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ab81365f-4fcb-49f0-b3f9-0e0bd58c27a1",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ab81365f-4fcb-49f0-b3f9-0e0bd58c27a1/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ab81365f-4fcb-49f0-b3f9-0e0bd58c27a1/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ab81365f-4fcb-49f0-b3f9-0e0bd58c27a1",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5eb39ac9",
+        "release_title": "BEAT by 82",
+        "release_date": "2024-04-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Choke",
+        "spotify_url": "https://open.spotify.com/album/5PNr1szmjWGuXxHAesSljM",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7869a012-3153-471e-b7ef-0f005c070527",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7869a012-3153-471e-b7ef-0f005c070527/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7869a012-3153-471e-b7ef-0f005c070527/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7869a012-3153-471e-b7ef-0f005c070527",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/1cb80c2a-3f2e-4fdd-ab0f-9ae886dee032"
+  }
+}

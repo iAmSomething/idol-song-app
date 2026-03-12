@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-epex"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "epex",
+      "display_name": "EPEX",
+      "canonical_name": "EPEX",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/i8q4Jrq13aFin04gXOZDgXI6bdPllOak0bG1xzlC52QKBBaTAe9njUayZ6-1oEHOHA6qxaPpJw=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/i8q4Jrq13aFin04gXOZDgXI6bdPllOak0bG1xzlC52QKBBaTAe9njUayZ6-1oEHOHA6qxaPpJw=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A",
+      "x": "https://x.com/the_EPEX",
+      "instagram": "https://www.instagram.com/epex.official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-619fffcd",
+      "release_title": "Youth Chapter 3 : ROMANTIC YOUTH",
+      "release_date": "2025-07-28",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "Waffle",
+      "spotify_url": "https://open.spotify.com/album/4ifOrn2Qb0xwCTY44o7XCQ",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-619fffcd",
+        "release_title": "Youth Chapter 3 : ROMANTIC YOUTH",
+        "release_date": "2025-07-28",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Waffle",
+        "spotify_url": "https://open.spotify.com/album/4ifOrn2Qb0xwCTY44o7XCQ",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9d1d54f3",
+        "release_title": "Youth Chapter 2 : YOUTH DEFICIENCY",
+        "release_date": "2024-11-05",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "UNIVERSE",
+        "spotify_url": "https://open.spotify.com/album/2CLS39zL1TKdUp6XS3kd7V",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0b50c6ad-8cbc-48ff-a470-7de96413838a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0b50c6ad-8cbc-48ff-a470-7de96413838a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0b50c6ad-8cbc-48ff-a470-7de96413838a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0b50c6ad-8cbc-48ff-a470-7de96413838a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d6d39da2",
+        "release_title": "Youth Chapter 1 : YOUTH DAYS",
+        "release_date": "2024-04-09",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Graduation Day",
+        "spotify_url": "https://open.spotify.com/album/3xZNZfIXPxCwTCaNSXjYKi",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/aeb46dd8-5321-48ce-8530-53b9087594d0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/aeb46dd8-5321-48ce-8530-53b9087594d0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/aeb46dd8-5321-48ce-8530-53b9087594d0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/aeb46dd8-5321-48ce-8530-53b9087594d0",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-67247961",
+        "release_title": "Prelude of Anxiety Chapter 2. ‘Can We Surrender?’",
+        "release_date": "2023-10-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Surrender",
+        "spotify_url": "https://open.spotify.com/album/5D8L3qM4Q9GA1bPDqtS4oK",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3fc71a2a-f83e-478f-81a0-2b622cf0627a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3fc71a2a-f83e-478f-81a0-2b622cf0627a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3fc71a2a-f83e-478f-81a0-2b622cf0627a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3fc71a2a-f83e-478f-81a0-2b622cf0627a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-65b7172b",
+        "release_title": "Prelude of Love Chapter 2. ‘Growing Pains’",
+        "release_date": "2023-04-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "My Darling",
+        "spotify_url": "https://open.spotify.com/album/7c4HuyVRABrlh7eOdhozwd",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4cbc72c4-49f2-4d35-b9af-cfc012400d7d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4cbc72c4-49f2-4d35-b9af-cfc012400d7d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4cbc72c4-49f2-4d35-b9af-cfc012400d7d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4cbc72c4-49f2-4d35-b9af-cfc012400d7d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a093051a",
+        "release_title": "Prelude of Love Chapter 1. ‘Puppy Love’",
+        "release_date": "2022-10-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "First Love′s Law",
+        "spotify_url": "https://open.spotify.com/album/2JZJ0Eo9Zi2hqFS3ddBumM",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b5eb45c5-4797-4d20-8255-6bdfbbaeb9ee",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b5eb45c5-4797-4d20-8255-6bdfbbaeb9ee/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b5eb45c5-4797-4d20-8255-6bdfbbaeb9ee/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b5eb45c5-4797-4d20-8255-6bdfbbaeb9ee",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f7d332f2",
+        "release_title": "Prelude of Anxiety Chapter 1. ‘21st Century Boys’",
+        "release_date": "2022-04-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Lone Wolf",
+        "spotify_url": "https://open.spotify.com/album/4fsF93AXASOvrmhfvC4grd",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8041ee97-519b-43d4-8939-5f452950ca1e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8041ee97-519b-43d4-8939-5f452950ca1e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8041ee97-519b-43d4-8939-5f452950ca1e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8041ee97-519b-43d4-8939-5f452950ca1e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-bd11efdf",
+        "release_title": "BIPOLAR Pt.2 Prelude of Love",
+        "release_date": "2021-10-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Love Virus",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6c04fe16-ac67-48c1-bb04-eb9d49bccafc",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6c04fe16-ac67-48c1-bb04-eb9d49bccafc/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6c04fe16-ac67-48c1-bb04-eb9d49bccafc/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6c04fe16-ac67-48c1-bb04-eb9d49bccafc",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/dab563b4-21b2-44be-b8d7-9527c4e530c1"
+  }
+}

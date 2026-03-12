@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-artms"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "artms",
+      "display_name": "ARTMS",
+      "canonical_name": "ARTMS",
+      "agency_name": "MODHAUS",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@official_artms",
+      "x": "https://x.com/official_artms",
+      "instagram": "https://www.instagram.com/official_artms"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@official_artms",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-b48cf8c9",
+      "release_title": "<Club Icarus>",
+      "release_date": "2025-06-13",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Icarus",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nygYEX8EJbqY076z29zCDqErM48SqFmAo",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-b48cf8c9",
+        "release_title": "<Club Icarus>",
+        "release_date": "2025-06-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Icarus",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nygYEX8EJbqY076z29zCDqErM48SqFmAo",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2c19e9c5",
+        "release_title": "<Dall>",
+        "release_date": "2024-05-31",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "url",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ae268385-3eb9-45ea-8221-b5269750c8b0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ae268385-3eb9-45ea-8221-b5269750c8b0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ae268385-3eb9-45ea-8221-b5269750c8b0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ae268385-3eb9-45ea-8221-b5269750c8b0",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/ae98b8c4-d8fc-4ff9-9b4e-4bc1fd8575d1"
+  }
+}

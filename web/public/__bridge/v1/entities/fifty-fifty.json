@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-fifty-fifty"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "fifty-fifty",
+      "display_name": "FIFTY FIFTY",
+      "canonical_name": "FIFTY FIFTY",
+      "agency_name": "ATTRAKT entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/UUxHs8Cskz1374PkiR3xxxyIMChi1aCj-x4an2-yb5W0gz7k2Z3Kmui6EX_TnHtzcmve-2cO=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/UUxHs8Cskz1374PkiR3xxxyIMChi1aCj-x4an2-yb5W0gz7k2Z3Kmui6EX_TnHtzcmve-2cO=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@WE_FIFTYFIFTY",
+      "x": "https://x.com/we_fiftyfifty",
+      "instagram": "https://www.instagram.com/we_fiftyfifty"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@WE_FIFTYFIFTY",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-08bc4e9c",
+      "release_title": "Too Much Part 1",
+      "release_date": "2025-11-04",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "가위바위보 (Eeny meeny miny moe)",
+      "spotify_url": "https://open.spotify.com/album/0spXOvUlUo1EUDs13nlXki",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=xAOT6ISD9jo",
+      "source_url": "https://musicbrainz.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-08bc4e9c",
+        "release_title": "Too Much Part 1",
+        "release_date": "2025-11-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "가위바위보 (Eeny meeny miny moe)",
+        "spotify_url": "https://open.spotify.com/album/0spXOvUlUo1EUDs13nlXki",
+        "youtube_music_url": null,
+        "youtube_mv_url": "https://www.youtube.com/watch?v=xAOT6ISD9jo",
+        "source_url": "https://musicbrainz.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cec9dd26",
+        "release_title": "Day & Night",
+        "release_date": "2025-04-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Perfect Crime",
+        "spotify_url": "https://open.spotify.com/album/087SnCtQCK0szSftQ2KYTF",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/edb94eff-d13b-4004-a7a1-e32cff09fc32",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/edb94eff-d13b-4004-a7a1-e32cff09fc32/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/edb94eff-d13b-4004-a7a1-e32cff09fc32/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/edb94eff-d13b-4004-a7a1-e32cff09fc32",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-af9a3a51",
+        "release_title": "Love Tune",
+        "release_date": "2024-09-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Starry Night",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/66c34d80-7ec0-4597-b0c0-0f8911b7e55d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/66c34d80-7ec0-4597-b0c0-0f8911b7e55d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/66c34d80-7ec0-4597-b0c0-0f8911b7e55d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/66c34d80-7ec0-4597-b0c0-0f8911b7e55d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-97b32a5a",
+        "release_title": "THE FIFTY",
+        "release_date": "2022-11-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Tell Me",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c22f3c7e-34af-4ca0-a126-ed0b63fe9810",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c22f3c7e-34af-4ca0-a126-ed0b63fe9810/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c22f3c7e-34af-4ca0-a126-ed0b63fe9810/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c22f3c7e-34af-4ca0-a126-ed0b63fe9810",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/5c6b4031-c0e6-468f-ada5-28c33b7d4e0e"
+  }
+}
