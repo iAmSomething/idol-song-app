@@ -4,21 +4,21 @@
   },
   "data": {
     "summary": {
-      "verified_count": 3,
-      "exact_upcoming_count": 4,
+      "verified_count": 4,
+      "exact_upcoming_count": 2,
       "month_only_upcoming_count": 10
     },
     "nearest_upcoming": {
       "upcoming_signal_id": null,
-      "entity_slug": "yena",
-      "display_name": "YENA",
-      "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-      "scheduled_date": "2026-03-11",
+      "entity_slug": "bts",
+      "display_name": "BTS",
+      "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+      "scheduled_date": "2026-03-20",
       "scheduled_month": "2026-03",
       "date_precision": "exact",
       "date_status": "confirmed",
-      "confidence_score": 0.84,
-      "release_format": "ep"
+      "confidence_score": 0.82,
+      "release_format": "album"
     },
     "days": [
       {
@@ -64,38 +64,22 @@
             "release_date": "2026-03-11"
           }
         ],
-        "exact_upcoming": [
-          {
-            "upcoming_signal_id": null,
-            "entity_slug": "yena",
-            "display_name": "YENA",
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "scheduled_month": "2026-03",
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "confidence_score": 0.84,
-            "release_format": "ep"
-          }
-        ]
+        "exact_upcoming": []
       },
       {
         "date": "2026-03-12",
-        "verified_releases": [],
-        "exact_upcoming": [
+        "verified_releases": [
           {
-            "upcoming_signal_id": null,
+            "release_id": "bridge-release-2cee8706",
             "entity_slug": "p1harmony",
             "display_name": "P1Harmony",
-            "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-            "scheduled_date": "2026-03-12",
-            "scheduled_month": "2026-03",
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "confidence_score": 0.82,
-            "release_format": "ep"
+            "release_title": "UNIQUE",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-03-12"
           }
-        ]
+        ],
+        "exact_upcoming": []
       },
       {
         "date": "2026-03-20",
@@ -283,33 +267,18 @@
         "stream": "album",
         "release_kind": "ep",
         "release_date": "2026-03-11"
+      },
+      {
+        "release_id": "bridge-release-2cee8706",
+        "entity_slug": "p1harmony",
+        "display_name": "P1Harmony",
+        "release_title": "UNIQUE",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_date": "2026-03-12"
       }
     ],
     "scheduled_list": [
-      {
-        "upcoming_signal_id": null,
-        "entity_slug": "yena",
-        "display_name": "YENA",
-        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-        "scheduled_date": "2026-03-11",
-        "scheduled_month": "2026-03",
-        "date_precision": "exact",
-        "date_status": "confirmed",
-        "confidence_score": 0.84,
-        "release_format": "ep"
-      },
-      {
-        "upcoming_signal_id": null,
-        "entity_slug": "p1harmony",
-        "display_name": "P1Harmony",
-        "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-        "scheduled_date": "2026-03-12",
-        "scheduled_month": "2026-03",
-        "date_precision": "exact",
-        "date_status": "confirmed",
-        "confidence_score": 0.82,
-        "release_format": "ep"
-      },
       {
         "upcoming_signal_id": null,
         "entity_slug": "bts",

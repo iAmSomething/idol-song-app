@@ -44230,7 +44230,7 @@
     "youtube_video_id": "m18dRRu9-V4",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
-    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify.",
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring).",
     "title_track_status": "inferred",
     "title_track_provenance": "release_title_exact | release_title_substring"
   },

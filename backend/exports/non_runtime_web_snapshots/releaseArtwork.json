@@ -13428,6 +13428,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "P1Harmony",
+    "release_title": "UNIQUE",
+    "release_date": "2026-03-12",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d",
+    "artwork_status": "verified",
+    "artwork_provenance": "group_latest_release_since_2025-06-01_mb.source"
+  },
+  {
     "group": "PLAVE",
     "release_title": "ASTERUM",
     "release_date": "2023-03-12",

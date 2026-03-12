@@ -4,7 +4,7 @@
   },
   "data": {
     "summary": {
-      "verified_count": 15,
+      "verified_count": 14,
       "exact_upcoming_count": 0,
       "month_only_upcoming_count": 0
     },
@@ -167,21 +167,6 @@
         "exact_upcoming": []
       },
       {
-        "date": "2025-09-26",
-        "verified_releases": [
-          {
-            "release_id": "bridge-release-21435ec8",
-            "entity_slug": "p1harmony",
-            "display_name": "P1Harmony",
-            "release_title": "EX",
-            "stream": "album",
-            "release_kind": "ep",
-            "release_date": "2025-09-26"
-          }
-        ],
-        "exact_upcoming": []
-      },
-      {
         "date": "2025-09-29",
         "verified_releases": [
           {
@@ -321,15 +306,6 @@
         "stream": "album",
         "release_kind": "ep",
         "release_date": "2025-09-23"
-      },
-      {
-        "release_id": "bridge-release-21435ec8",
-        "entity_slug": "p1harmony",
-        "display_name": "P1Harmony",
-        "release_title": "EX",
-        "stream": "album",
-        "release_kind": "ep",
-        "release_date": "2025-09-26"
       },
       {
         "release_id": "bridge-release-7c6328a1",

@@ -1,11 +1,12 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { suppressReleasedExactUpcoming } from './lib/pagesReadBridgeCalendar.mjs'
+import { readPreferredBridgeJson } from './lib/pagesReadBridgeSources.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const webRoot = path.resolve(__dirname, '..')
 const repoRoot = path.resolve(webRoot, '..')
-const dataRoot = path.join(webRoot, 'src', 'data')
 const bridgeBaseRoot = path.join(webRoot, 'public', '__bridge')
 const bridgeRoot = path.join(bridgeBaseRoot, 'v1')
 const normalizedApiBaseUrl = normalizeApiBaseUrl(process.env.VITE_API_BASE_URL ?? '')
@@ -15,12 +16,12 @@ const targetClassification = classifyBackendTarget(normalizedApiBaseUrl)
 const targetEnvironment = declaredTargetEnvironment || (runtimeMode === 'bridge' ? 'bridge' : targetClassification)
 const effectiveTarget = normalizedApiBaseUrl || '/__bridge/v1'
 
-const artistProfiles = await readJson(path.join(dataRoot, 'artistProfiles.json'))
-const releaseRows = await readJson(path.join(dataRoot, 'releases.json'))
-const releaseDetails = await readJson(path.join(dataRoot, 'releaseDetails.json'))
-const releaseArtwork = await readJson(path.join(dataRoot, 'releaseArtwork.json'))
-const upcomingCandidates = await readJson(path.join(dataRoot, 'upcomingCandidates.json'))
-const watchlist = await readJson(path.join(dataRoot, 'watchlist.json'))
+const artistProfiles = await readPreferredBridgeJson(repoRoot, 'artistProfiles.json')
+const releaseRows = await readPreferredBridgeJson(repoRoot, 'releases.json')
+const releaseDetails = await readPreferredBridgeJson(repoRoot, 'releaseDetails.json')
+const releaseArtwork = await readPreferredBridgeJson(repoRoot, 'releaseArtwork.json')
+const upcomingCandidates = await readPreferredBridgeJson(repoRoot, 'upcomingCandidates.json')
+const watchlist = await readPreferredBridgeJson(repoRoot, 'watchlist.json')
 
 const artistProfileByGroup = new Map(artistProfiles.map((row) => [row.group, row]))
 const artworkByReleaseKey = new Map(
@@ -83,11 +84,12 @@ for (const [lookupId, entry] of releaseLookupEntries) {
 const calendarPayloads = buildCalendarPayloads(releaseRows, upcomingCandidates, artistProfileByGroup)
 let calendarMonthCount = 0
 for (const [monthKey, payload] of calendarPayloads) {
+  const suppressedPayload = suppressReleasedExactUpcoming(payload)
   await writeBridgeJson(path.join(bridgeRoot, 'calendar', 'months', `${monthKey}.json`), {
     meta: {
       request_id: `bridge-calendar-${monthKey}`,
     },
-    data: payload,
+    data: suppressedPayload,
   })
   calendarMonthCount += 1
 }

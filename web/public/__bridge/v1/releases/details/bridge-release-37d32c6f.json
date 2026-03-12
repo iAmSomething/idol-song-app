@@ -35,7 +35,7 @@
       "url": null,
       "video_id": null,
       "status": "unresolved",
-      "provenance": null
+      "provenance": "releaseDetails.no_mv_signal"
     },
     "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
   }

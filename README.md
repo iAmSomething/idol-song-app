@@ -314,7 +314,8 @@ npm run dev
 - committed JSON snapshot은 import/parity/debug artifact로 유지되지만, shipped web cut-over surface의 runtime source switch로는 더 이상 사용하지 않는다.
 - `web/.env.example`에는 Pages / preview rehearsal에서 쓰는 API base env baseline이 들어 있다.
 - `.github/workflows/deploy-pages.yml`은 GitHub Pages build에 `VITE_API_BASE_URL`과 `VITE_BACKEND_TARGET_ENV=production`을 함께 주입한다.
-- `npm run build`는 Pages read bridge(`web/public/__bridge/v1/**`)를 먼저 생성하고, deploy workflow도 `npm run verify:pages-read-bridge`, `npm run verify:pages-backend-target`, `npm run verify:pages-backend-handoff`로 bridge completeness, active backend target wiring, latest backend freshness handoff를 같이 gate로 막는다.
+- `npm run build`는 Pages read bridge(`web/public/__bridge/v1/**`)를 먼저 생성한다. bridge는 committed `web/src/data`가 아니라 `backend/exports/non_runtime_web_snapshots/**`를 우선 읽고, export가 없을 때만 local snapshot으로 fallback 한다.
+- `deploy-pages.yml`은 `backend/exports/non_runtime_web_snapshots/**` 변경도 함께 감지해서 Pages를 다시 빌드하고, `npm run verify:pages-read-bridge`, `npm run verify:pages-backend-target`, `npm run verify:pages-backend-handoff`로 bridge completeness, active backend target wiring, latest backend freshness handoff를 같이 gate로 막는다.
 - `backend/reports/backend_freshness_handoff.json`은 latest release sync, latest upcoming sync, projection refresh 순서와 Pages target URL 정합성을 요약한 deploy-time artifact다.
 - 내부 inspection path는 `/__bridge/v1/meta/backend-target.json`이며, 앱에서는 `?inspect=backend-target` query로 현재 runtime target 진단 패널을 열 수 있다.
 
