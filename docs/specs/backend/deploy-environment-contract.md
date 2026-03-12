@@ -30,7 +30,6 @@ runtime env 실제값은 Railway service variable list를 읽어 확인한다.
 - `APP_ENV`
 - `DATABASE_URL_POOLED`
 - `DATABASE_URL`
-- `PORT`
 - `APP_TIMEZONE`
 - `DB_CONNECTION_TIMEOUT_MS`
 - `DB_READ_TIMEOUT_MS`
@@ -51,15 +50,15 @@ preview와 production이 같아야 하는 것:
 
 preview:
 - `APP_ENV = preview`
-- `PORT = 3213`
 - `WORKER_CADENCE_LABEL = preview-manual`
 - `WEB_ALLOWED_ORIGINS` non-empty preview origin list
 
 production:
 - `APP_ENV = production`
-- `PORT = 3000`
 - `WORKER_CADENCE_LABEL = production-scheduled`
 - `WEB_ALLOWED_ORIGINS` may be empty if default production origin fallback is used
+
+`PORT`는 Railway가 runtime에서 주입하는 값이므로 deploy contract의 managed runtime key에서 제외한다.
 
 connection strings:
 - `DATABASE_URL`

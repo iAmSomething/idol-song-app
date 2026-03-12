@@ -159,7 +159,7 @@ async function main() {
   const runtimeEnvContent = await loadRuntimeEnvKv(runtimeEnvKvPath);
   const desiredEnv = buildDesiredRuntimeEnv(parseKv(exampleContent));
   const currentEnv = parseKv(runtimeEnvContent);
-  const { updates, unchanged } = computeRuntimeEnvUpdates(currentEnv, desiredEnv);
+  const { updates, unchanged, deletions } = computeRuntimeEnvUpdates(currentEnv, desiredEnv);
 
   const report = {
     target,
@@ -167,8 +167,10 @@ async function main() {
     desired_keys: [...desiredEnv.keys()],
     updates,
     unchanged,
+    deletions,
     updated_count: updates.length,
     unchanged_count: unchanged.length,
+    deleted_count: deletions.length,
   };
 
   if (!runtimeEnvKvPath && updates.length > 0) {
@@ -199,6 +201,34 @@ async function main() {
     );
   }
 
+  if (!runtimeEnvKvPath && deletions.length > 0) {
+    const railwayToken = requireEnv('RAILWAY_TOKEN');
+    const railwayEnvironmentId = requireEnv('RAILWAY_ENVIRONMENT_ID');
+    const railwayServiceId = requireEnv('RAILWAY_SERVICE_ID');
+
+    for (const deletion of deletions) {
+      await runCommand(
+        'npx',
+        [
+          '-y',
+          '@railway/cli',
+          'variable',
+          'delete',
+          '--environment',
+          railwayEnvironmentId,
+          '--service',
+          railwayServiceId,
+          deletion.key,
+        ],
+        {
+          env: {
+            RAILWAY_TOKEN: railwayToken,
+          },
+        },
+      );
+    }
+  }
+
   await fs.mkdir(path.dirname(reportPath), { recursive: true });
   await fs.writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 
@@ -208,7 +238,9 @@ async function main() {
         target,
         updatedCount: updates.length,
         unchangedCount: unchanged.length,
+        deletedCount: deletions.length,
         updatedKeys: updates.map((entry) => entry.key),
+        deletedKeys: deletions.map((entry) => entry.key),
       },
       null,
       2,

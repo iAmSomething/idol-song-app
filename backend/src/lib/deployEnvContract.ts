@@ -25,7 +25,6 @@ const EXPECTED_RUNTIME_KEYS = [
   'APP_ENV',
   'DATABASE_URL_POOLED',
   'DATABASE_URL',
-  'PORT',
   'APP_TIMEZONE',
   'DB_CONNECTION_TIMEOUT_MS',
   'DB_READ_TIMEOUT_MS',
@@ -49,7 +48,6 @@ const SHARED_EXAMPLE_KEYS = ['APP_TIMEZONE', 'DB_CONNECTION_TIMEOUT_MS', 'DB_REA
 const TARGET_RUNTIME_EXPECTATIONS: Record<DeployTarget, Record<string, string>> = {
   preview: {
     APP_ENV: 'preview',
-    PORT: '3213',
     APP_TIMEZONE: 'Asia/Seoul',
     DB_CONNECTION_TIMEOUT_MS: '3000',
     DB_READ_TIMEOUT_MS: '5000',
@@ -58,7 +56,6 @@ const TARGET_RUNTIME_EXPECTATIONS: Record<DeployTarget, Record<string, string>> 
   },
   production: {
     APP_ENV: 'production',
-    PORT: '3000',
     APP_TIMEZONE: 'Asia/Seoul',
     DB_CONNECTION_TIMEOUT_MS: '3000',
     DB_READ_TIMEOUT_MS: '5000',

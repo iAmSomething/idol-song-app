@@ -32,7 +32,6 @@ test('buildDesiredRuntimeEnv selects only managed runtime keys', () => {
   const example = parseKv(`
 APP_ENV=production
 DATABASE_URL=postgresql://ignored
-PORT=3000
 APP_TIMEZONE=Asia/Seoul
 DB_CONNECTION_TIMEOUT_MS=3000
 DB_READ_TIMEOUT_MS=5000
@@ -62,7 +61,6 @@ WORKER_CADENCE_LABEL=preview-manual
 
   const desired = new Map([
     ['APP_ENV', 'production'],
-    ['PORT', '3000'],
     ['APP_TIMEZONE', 'Asia/Seoul'],
     ['DB_CONNECTION_TIMEOUT_MS', '3000'],
     ['DB_READ_TIMEOUT_MS', '5000'],
@@ -74,10 +72,11 @@ WORKER_CADENCE_LABEL=preview-manual
   const result = computeRuntimeEnvUpdates(current, desired);
   assert.deepEqual(
     result.updates.map((entry) => entry.key),
-    ['APP_ENV', 'PORT', 'WEB_ALLOWED_ORIGINS', 'WORKER_CADENCE_LABEL'],
+    ['APP_ENV', 'WEB_ALLOWED_ORIGINS', 'WORKER_CADENCE_LABEL'],
   );
   assert.deepEqual(
     result.unchanged.map((entry) => entry.key),
     ['APP_TIMEZONE', 'DB_CONNECTION_TIMEOUT_MS', 'DB_READ_TIMEOUT_MS', 'LOG_LEVEL'],
   );
+  assert.deepEqual(result.deletions.map((entry) => entry.key), ['PORT']);
 });
