@@ -1,0 +1,8 @@
+{
+  "generated_at": "2026-03-12T08:52:53.594Z",
+  "status": "pass",
+  "summary_lines": [
+    "workflow condition guard: no direct secrets usage found in if conditions"
+  ],
+  "violations": []
+}

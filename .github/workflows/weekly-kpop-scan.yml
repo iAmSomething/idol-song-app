@@ -15,6 +15,8 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     steps:
       - name: Check out repository
@@ -37,8 +39,6 @@ jobs:
             web/package-lock.json
 
       - name: Install Python dependencies
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           python -m pip install --upgrade pip
           pip install requests
@@ -47,13 +47,12 @@ jobs:
           fi
 
       - name: Install backend dependencies
-        if: ${{ secrets.DATABASE_URL != '' }}
+        if: ${{ env.DATABASE_URL != '' }}
         working-directory: backend
         run: npm ci
 
       - name: Rebuild watchlist and refresh upcoming signals
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           BACKEND_PUBLIC_URL: ${{ vars.VITE_API_BASE_URL }}
           MOBILE_PUSH_DELIVERY_ENABLED: ${{ vars.MOBILE_PUSH_DELIVERY_ENABLED }}
         run: |
