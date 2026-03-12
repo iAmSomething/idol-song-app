@@ -511,16 +511,24 @@ type CalendarMonthApiVerifiedRelease = {
   release_id?: string
   entity_slug?: string
   display_name?: string
+  entity_type?: string | null
+  agency_name?: string | null
   release_title?: string
+  release_format?: string | null
   stream?: string
   release_kind?: string | null
   release_date?: string
+  source_url?: string | null
+  artist_source_url?: string | null
 }
 
 type CalendarMonthApiUpcomingItem = {
   upcoming_signal_id?: string
   entity_slug?: string
   display_name?: string
+  entity_type?: string | null
+  agency_name?: string | null
+  tracking_status?: string | null
   headline?: string
   scheduled_date?: string | null
   scheduled_month?: string | null
@@ -528,6 +536,11 @@ type CalendarMonthApiUpcomingItem = {
   date_status?: string
   confidence_score?: number | null
   release_format?: string | null
+  source_url?: string | null
+  source_type?: string | null
+  source_domain?: string | null
+  evidence_summary?: string | null
+  source_count?: number | null
 }
 
 type CalendarMonthApiResponse = {
@@ -567,10 +580,14 @@ type CalendarMonthSurfaceResource = {
 }
 
 type RadarApiReleaseSummary = {
+  release_id?: string | null
   release_title?: string
   release_date?: string | null
   stream?: string | null
   release_kind?: string | null
+  release_format?: string | null
+  source_url?: string | null
+  artist_source_url?: string | null
 }
 
 type RadarApiUpcomingSummary = {
@@ -584,11 +601,20 @@ type RadarApiUpcomingSummary = {
   date_status?: string
   confidence_score?: number | null
   release_format?: string | null
+  source_url?: string | null
+  source_type?: string | null
+  source_domain?: string | null
+  evidence_summary?: string | null
+  source_count?: number | null
+  latest_seen_at?: string | null
 }
 
 type RadarApiLongGapItem = {
   entity_slug?: string
   display_name?: string
+  entity_type?: string | null
+  agency_name?: string | null
+  tracking_status?: string | null
   watch_reason?: string | null
   latest_release?: RadarApiReleaseSummary | null
   gap_days?: number | null
@@ -599,6 +625,9 @@ type RadarApiLongGapItem = {
 type RadarApiRookieItem = {
   entity_slug?: string
   display_name?: string
+  entity_type?: string | null
+  agency_name?: string | null
+  tracking_status?: string | null
   debut_year?: number | null
   latest_release?: RadarApiReleaseSummary | null
   has_upcoming_signal?: boolean
@@ -633,6 +662,9 @@ type UpcomingDatePrecision = 'exact' | 'month_only' | 'unknown'
 
 type VerifiedRelease = ReleaseFact & {
   group: string
+  entitySlug?: string
+  displayName?: string
+  agencyName?: string | null
   artist_name_mb: string
   artist_mbid: string
   artist_source: string
@@ -653,6 +685,10 @@ type UnresolvedRow = {
 
 type UpcomingSignalBase = {
   group: string
+  entitySlug?: string
+  displayName?: string
+  agencyName?: string | null
+  actType?: ActType
   scheduled_date: string
   scheduled_month: string
   date_precision: UpcomingDatePrecision
@@ -892,6 +928,8 @@ type ScheduledDashboardSortKey = 'date' | 'team' | 'status' | 'confidence'
 
 type LongGapRadarEntry = {
   group: string
+  entitySlug?: string
+  agencyName?: string | null
   watchReason: WatchReason
   latestRelease: TeamLatestRelease
   gapDays: number
@@ -901,6 +939,8 @@ type LongGapRadarEntry = {
 
 type RookieRadarEntry = {
   group: string
+  entitySlug?: string
+  agencyName?: string | null
   debutYear: number | null
   latestRelease: TeamLatestRelease | null
   hasUpcomingSignal: boolean
@@ -2563,8 +2603,8 @@ function App() {
     }
   }, [selectedGroup])
 
-  function openTeamPage(group: string) {
-    setSelectedEntitySlug(artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group))
+  function openTeamPage(group: string, entitySlug?: string | null) {
+    setSelectedEntitySlug(entitySlug ?? artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group))
     setSelectedGroup(group)
     setSelectedCompareGroup(null)
     setSelectedAlbumKey(null)
@@ -2580,7 +2620,7 @@ function App() {
   }
 
   function openReleaseDetail(release: VerifiedRelease) {
-    const entitySlug = artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)
+    const entitySlug = release.entitySlug ?? artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)
     setSelectedEntitySlug(entitySlug)
     setSelectedGroup(release.group)
     setSelectedCompareGroup(null)
@@ -3923,7 +3963,7 @@ function ReleaseDetailPage({
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
   onBack: () => void
-  onOpenTeamPage: (group: string) => void
+  onOpenTeamPage: (group: string, entitySlug?: string | null) => void
 }) {
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -4549,7 +4589,7 @@ function LongGapRadarList({
   entries: LongGapRadarEntry[]
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
-  onOpenTeamPage: (group: string) => void
+  onOpenTeamPage: (group: string, entitySlug?: string | null) => void
 }) {
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -4624,7 +4664,7 @@ function LongGapRadarList({
             <p className="empty-copy">{copy.longGapLatestSignalEmpty}</p>
           )}
           <div className="detail-links">
-            <button type="button" className="inline-button" onClick={() => onOpenTeamPage(entry.group)}>
+            <button type="button" className="inline-button" onClick={() => onOpenTeamPage(entry.group, entry.entitySlug)}>
               {teamCopy.action}
             </button>
           </div>
@@ -4643,7 +4683,7 @@ function RookieRadarList({
   entries: RookieRadarEntry[]
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
-  onOpenTeamPage: (group: string) => void
+  onOpenTeamPage: (group: string, entitySlug?: string | null) => void
 }) {
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -4739,7 +4779,7 @@ function RookieRadarList({
           )}
 
           <div className="detail-links">
-            <button type="button" className="inline-button" onClick={() => onOpenTeamPage(entry.group)}>
+            <button type="button" className="inline-button" onClick={() => onOpenTeamPage(entry.group, entry.entitySlug)}>
               {teamCopy.action}
             </button>
           </div>
@@ -4968,7 +5008,7 @@ function CompareTeamView({
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
   onSelectCompareGroup: (group: string | null) => void
-  onOpenTeamPage: (group: string) => void
+  onOpenTeamPage: (group: string, entitySlug?: string | null) => void
   onOpenReleaseDetail: (release: VerifiedRelease) => void
   onClearCompare: () => void
 }) {
@@ -5240,7 +5280,7 @@ function DashboardScheduledBucket({
   rows: UpcomingCandidateRow[]
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
-  onOpenTeamPage: (group: string) => void
+  onOpenTeamPage: (group: string, entitySlug?: string | null) => void
 }) {
   const copy = TRANSLATIONS[language]
 
@@ -5299,7 +5339,7 @@ function DashboardScheduledBucket({
                 </td>
                 <td>
                   <div className="dashboard-table-actions">
-                    <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                    <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
                       {TEAM_COPY[language].action}
                     </ActionButton>
                   </div>
@@ -5339,7 +5379,7 @@ function DashboardScheduledBucket({
             ) : null}
             <div className="action-stack">
               <div className="action-row">
-                <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
                   {TEAM_COPY[language].action}
                 </ActionButton>
               </div>
@@ -5380,7 +5420,7 @@ function MonthlyReleaseDashboard({
   activeFilters: string[]
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
-  onOpenTeamPage: (group: string) => void
+  onOpenTeamPage: (group: string, entitySlug?: string | null) => void
   onOpenReleaseDetail: (release: VerifiedRelease) => void
 }) {
   const copy = TRANSLATIONS[language]
@@ -5515,7 +5555,7 @@ function MonthlyReleaseDashboard({
                         </td>
                         <td>
                           <div className="dashboard-table-actions">
-                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
                               {TEAM_COPY[language].action}
                             </ActionButton>
                             <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
@@ -5546,7 +5586,7 @@ function MonthlyReleaseDashboard({
                     </p>
                     <div className="action-stack">
                       <div className="action-row">
-                        <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                        <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
                           {TEAM_COPY[language].action}
                         </ActionButton>
                         <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
@@ -5643,7 +5683,7 @@ function AgencyCalendarView({
   sections: AgencyMonthSection[]
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
-  onOpenTeamPage: (group: string) => void
+  onOpenTeamPage: (group: string, entitySlug?: string | null) => void
   onOpenReleaseDetail: (release: VerifiedRelease) => void
 }) {
   const copy = TRANSLATIONS[language]
@@ -5693,7 +5733,7 @@ function AgencyCalendarView({
                             {formatOptionalDate(item.date, displayDateFormatter, copy.none)}
                           </p>
                           <div className="action-row">
-                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
                               {TEAM_COPY[language].action}
                             </ActionButton>
                             <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
@@ -5728,7 +5768,7 @@ function AgencyCalendarView({
                             {formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}
                           </p>
                           <div className="action-row">
-                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                            <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
                               {TEAM_COPY[language].action}
                             </ActionButton>
                           </div>
@@ -5993,7 +6033,7 @@ function SelectedDayPanel({
   upcomingSignals: DatedUpcomingSignal[]
   language: Language
   shortDateFormatter: Intl.DateTimeFormat
-  onOpenTeamPage: (group: string) => void
+  onOpenTeamPage: (group: string, entitySlug?: string | null) => void
   onOpenReleaseDetail: (release: VerifiedRelease) => void
 }) {
   const copy = TRANSLATIONS[language]
@@ -6028,7 +6068,7 @@ function SelectedDayPanel({
                     </div>
                     <div className="action-stack">
                       <div className="action-row">
-                        <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                        <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
                           {teamCopy.action}
                         </ActionButton>
                         <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
@@ -6105,7 +6145,7 @@ function SelectedDayPanel({
                   </div>
                   <div className="action-stack">
                     <div className="action-row">
-                      <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group)}>
+                      <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
                         {teamCopy.action}
                       </ActionButton>
                     </div>
@@ -7603,6 +7643,24 @@ function normalizeApiReleaseKind(
   return fallbackReleaseKind === 'album' || fallbackReleaseKind === 'ep' ? fallbackReleaseKind : 'single'
 }
 
+function normalizeApiActType(entityType: string | null | undefined): ActType {
+  if (entityType === 'solo' || entityType === 'unit') {
+    return entityType
+  }
+
+  return 'group'
+}
+
+function resolveApiDisplayGroup(entitySlug: string | null | undefined, displayName: string | null | undefined) {
+  const normalizedDisplayName = readNonEmptyString(displayName)
+  if (normalizedDisplayName) {
+    return normalizedDisplayName
+  }
+
+  const normalizedEntitySlug = readNonEmptyString(entitySlug)
+  return normalizedEntitySlug ? humanizeRouteSlug(normalizedEntitySlug) : null
+}
+
 function buildLocalReleaseDetailSnapshot(album: ReleaseDetailApiRequest, group: string): ReleaseDetailApiSnapshot {
   return {
     detail: buildFallbackReleaseDetail(group, album.title, album.date, album.stream, album.release_kind),
@@ -8346,77 +8404,49 @@ function useSearchSurfaceResource({
   }
 }
 
-function resolveCalendarApiGroupReference(entitySlug: string | null, displayName: string | null) {
-  return (
-    (entitySlug ? resolveGroupReference(entitySlug) : null) ??
-    (displayName ? resolveGroupReference(displayName) : null) ??
-    null
-  )
-}
-
-function buildSyntheticCalendarVerifiedRelease(
-  group: string,
-  releaseTitle: string,
-  releaseDate: string,
-  stream: VerifiedRelease['stream'],
-  releaseKind: string | null | undefined,
-): VerifiedRelease {
-  const releaseRow = releaseCatalogByGroup.get(group)
-  const team = teamProfileMap.get(group)
-  const normalizedReleaseKind =
-    releaseKind === 'album' || releaseKind === 'ep' || releaseKind === 'single'
-      ? releaseKind
-      : stream === 'album'
-        ? 'album'
-        : 'single'
-  const releaseFormat: ReleaseFormat =
-    normalizedReleaseKind === 'album' || normalizedReleaseKind === 'ep' || normalizedReleaseKind === 'single'
-      ? normalizedReleaseKind
-      : stream === 'album'
-        ? 'album'
-        : 'single'
-
-  return {
-    group,
-    artist_name_mb: releaseRow?.artist_name_mb ?? group,
-    artist_mbid: releaseRow?.artist_mbid ?? '',
-    artist_source: releaseRow?.artist_source ?? team?.artistSource ?? '',
-    actType: getActType(group),
-    stream,
-    title: releaseTitle,
-    date: releaseDate,
-    source: releaseRow?.artist_source ?? team?.artistSource ?? '',
-    release_kind: normalizedReleaseKind,
-    release_format: releaseFormat,
-    context_tags: [],
-    dateValue: new Date(`${releaseDate}T00:00:00`),
-    isoDate: releaseDate,
-  }
-}
-
 function buildCalendarApiVerifiedRelease(item: CalendarMonthApiVerifiedRelease): VerifiedRelease | null {
   const entitySlug = readNonEmptyString(item.entity_slug)
   const displayName = readNonEmptyString(item.display_name)
   const releaseTitle = readNonEmptyString(item.release_title)
   const releaseDate = readNonEmptyString(item.release_date)
   const stream = item.stream === 'album' || item.stream === 'song' ? item.stream : null
-  const group = resolveCalendarApiGroupReference(entitySlug, displayName)
+  const group = resolveApiDisplayGroup(entitySlug, displayName)
 
   if (!group || !releaseTitle || !releaseDate || !stream) {
     return null
   }
 
-  return (
-    findVerifiedReleaseRecord(group, releaseTitle, releaseDate, stream, item.release_kind ?? undefined) ??
-    buildSyntheticCalendarVerifiedRelease(group, releaseTitle, releaseDate, stream, item.release_kind)
-  )
+  const releaseKind = normalizeApiReleaseKind(item.release_kind, stream === 'album' ? 'album' : 'single')
+
+  return {
+    group,
+    entitySlug: entitySlug ?? undefined,
+    displayName: displayName ?? group,
+    agencyName: normalizeAgencyName(readNonEmptyString(item.agency_name)),
+    artist_name_mb: displayName ?? group,
+    artist_mbid: '',
+    artist_source: readNonEmptyString(item.artist_source_url) ?? '',
+    actType: normalizeApiActType(readNonEmptyString(item.entity_type)),
+    stream,
+    title: releaseTitle,
+    date: releaseDate,
+    source: readNonEmptyString(item.source_url) ?? '',
+    release_kind: releaseKind,
+    release_format:
+      normalizeReleaseFormatValue(item.release_format) ||
+      (releaseKind === 'album' || releaseKind === 'ep' || releaseKind === 'single' ? releaseKind : 'single'),
+    context_tags: [],
+    dateValue: new Date(`${releaseDate}T00:00:00`),
+    isoDate: releaseDate,
+    release_id: readNonEmptyString(item.release_id) ?? undefined,
+  }
 }
 
 function buildCalendarApiUpcomingRow(item: CalendarMonthApiUpcomingItem): UpcomingCandidateRow | null {
   const entitySlug = readNonEmptyString(item.entity_slug)
   const displayName = readNonEmptyString(item.display_name)
   const headline = readNonEmptyString(item.headline)
-  const group = resolveCalendarApiGroupReference(entitySlug, displayName)
+  const group = resolveApiDisplayGroup(entitySlug, displayName)
   if (!group || !headline) {
     return null
   }
@@ -8431,33 +8461,14 @@ function buildCalendarApiUpcomingRow(item: CalendarMonthApiUpcomingItem): Upcomi
     item.date_status === 'confirmed' || item.date_status === 'scheduled' || item.date_status === 'rumor'
       ? item.date_status
       : 'rumor'
-  const localMatch =
-    dedupedUpcomingCandidates.find(
-      (candidate) =>
-        candidate.group === group &&
-        candidate.headline === headline &&
-        getUpcomingDatePrecisionValue(candidate) === datePrecision &&
-        (scheduledDate ? candidate.scheduled_date === scheduledDate : candidate.scheduled_month === scheduledMonth),
-    ) ?? null
-
-  if (localMatch) {
-    return {
-      ...localMatch,
-      scheduled_date: scheduledDate || localMatch.scheduled_date,
-      scheduled_month: scheduledMonth || localMatch.scheduled_month,
-      date_precision: datePrecision,
-      date_status: dateStatus,
-      release_format: normalizeReleaseFormatValue(item.release_format) || localMatch.release_format,
-      confidence:
-        typeof item.confidence_score === 'number' && Number.isFinite(item.confidence_score)
-          ? item.confidence_score
-          : localMatch.confidence,
-      event_key: readNonEmptyString(item.upcoming_signal_id) ?? localMatch.event_key,
-    }
-  }
+  const sourceUrl = readNonEmptyString(item.source_url) ?? ''
 
   return {
     group,
+    entitySlug: entitySlug ?? undefined,
+    displayName: displayName ?? group,
+    agencyName: normalizeAgencyName(readNonEmptyString(item.agency_name)),
+    actType: normalizeApiActType(readNonEmptyString(item.entity_type)),
     scheduled_date: scheduledDate,
     scheduled_month: scheduledMonth,
     date_precision: datePrecision,
@@ -8465,18 +8476,20 @@ function buildCalendarApiUpcomingRow(item: CalendarMonthApiUpcomingItem): Upcomi
     headline,
     release_format: normalizeReleaseFormatValue(item.release_format),
     context_tags: [],
-    source_type: 'pending',
-    source_url: '',
-    source_domain: '',
+    source_type: readNonEmptyString(item.source_type) ?? 'pending',
+    source_url: sourceUrl,
+    source_domain: readNonEmptyString(item.source_domain) ?? getSourceDomain(sourceUrl),
     published_at: '',
     confidence:
       typeof item.confidence_score === 'number' && Number.isFinite(item.confidence_score)
         ? item.confidence_score
         : 0,
-    evidence_summary: '',
-    tracking_status: watchlistByGroup.get(group)?.tracking_status ?? teamProfileMap.get(group)?.trackingStatus ?? 'watch_only',
+    evidence_summary: readNonEmptyString(item.evidence_summary) ?? '',
+    tracking_status: readNonEmptyString(item.tracking_status) ?? 'watch_only',
     search_term: '',
     event_key: readNonEmptyString(item.upcoming_signal_id) ?? undefined,
+    evidence_count:
+      typeof item.source_count === 'number' && Number.isFinite(item.source_count) ? item.source_count : undefined,
   }
 }
 
@@ -8689,42 +8702,16 @@ function useCalendarMonthResource({
   }
 }
 
-function resolveRadarGroupReference(entitySlug: string | null, displayName: string | null) {
-  return (
-    (entitySlug ? resolveGroupReference(entitySlug) : null) ??
-    (displayName ? resolveGroupReference(displayName) : null) ??
-    null
-  )
-}
-
-function buildRadarLatestRelease(
-  group: string,
-  summary: RadarApiReleaseSummary | null | undefined,
-  fallbackTeam: TeamProfile,
-): TeamLatestRelease | null {
+function buildRadarLatestRelease(summary: RadarApiReleaseSummary | null | undefined): TeamLatestRelease | null {
   if (!summary) {
-    return fallbackTeam.latestRelease
+    return null
   }
 
   const releaseTitle = readNonEmptyString(summary.release_title)
   const releaseDate = readNonEmptyString(summary.release_date)
   const stream = summary.stream === 'album' || summary.stream === 'song' ? summary.stream : null
   if (!releaseTitle || !releaseDate || !stream) {
-    return fallbackTeam.latestRelease
-  }
-
-  const verifiedRelease = findVerifiedReleaseRecord(group, releaseTitle, releaseDate, stream, summary.release_kind ?? undefined)
-  if (verifiedRelease) {
-    return buildVerifiedTeamLatestRelease(verifiedRelease)
-  }
-
-  if (
-    fallbackTeam.latestRelease &&
-    fallbackTeam.latestRelease.title === releaseTitle &&
-    fallbackTeam.latestRelease.date === releaseDate &&
-    fallbackTeam.latestRelease.stream === stream
-  ) {
-    return fallbackTeam.latestRelease
+    return null
   }
 
   const releaseKind = normalizeApiReleaseKind(summary.release_kind, stream === 'album' ? 'album' : 'single')
@@ -8732,20 +8719,22 @@ function buildRadarLatestRelease(
     title: releaseTitle,
     date: releaseDate,
     releaseKind,
-    releaseFormat: normalizeReleaseFormatValue(releaseKind),
+    releaseFormat:
+      normalizeReleaseFormatValue(summary.release_format) ||
+      (releaseKind === 'album' || releaseKind === 'ep' || releaseKind === 'single' ? releaseKind : ''),
     contextTags: [],
     streamLabel: stream,
     stream,
-    source: fallbackTeam.artistSource,
-    artistSource: fallbackTeam.artistSource,
-    verified: false,
+    source: readNonEmptyString(summary.source_url) ?? '',
+    artistSource: readNonEmptyString(summary.artist_source_url) ?? '',
+    verified: true,
   }
 }
 
 function buildRadarUpcomingSignal(
   group: string,
+  trackingStatus: string,
   summary: RadarApiUpcomingSummary | null | undefined,
-  fallbackTeam: TeamProfile,
 ): UpcomingCandidateRow | null {
   if (!summary || !readNonEmptyString(summary.headline)) {
     return null
@@ -8762,37 +8751,7 @@ function buildRadarUpcomingSignal(
     summary.date_status === 'confirmed' || summary.date_status === 'scheduled' || summary.date_status === 'rumor'
       ? summary.date_status
       : 'rumor'
-  const localMatch =
-    fallbackTeam.upcomingSignals.find(
-      (item) =>
-        item.headline === headline &&
-        item.date_precision === datePrecision &&
-        (scheduledDate ? item.scheduled_date === scheduledDate : item.scheduled_month === scheduledMonth),
-    ) ??
-    dedupedUpcomingCandidates.find(
-      (candidate) =>
-        candidate.group === group &&
-        candidate.headline === headline &&
-        getUpcomingDatePrecisionValue(candidate) === datePrecision &&
-        (scheduledDate ? candidate.scheduled_date === scheduledDate : candidate.scheduled_month === scheduledMonth),
-    ) ??
-    null
-
-  if (localMatch) {
-    return {
-      ...localMatch,
-      scheduled_date: scheduledDate || localMatch.scheduled_date,
-      scheduled_month: scheduledMonth || localMatch.scheduled_month,
-      date_precision: datePrecision,
-      date_status: dateStatus,
-      release_format: normalizeReleaseFormatValue(summary.release_format) || localMatch.release_format,
-      confidence:
-        typeof summary.confidence_score === 'number' && Number.isFinite(summary.confidence_score)
-          ? summary.confidence_score
-          : localMatch.confidence,
-      event_key: readNonEmptyString(summary.upcoming_signal_id) ?? localMatch.event_key,
-    }
-  }
+  const sourceUrl = readNonEmptyString(summary.source_url) ?? ''
 
   return {
     group,
@@ -8803,38 +8762,37 @@ function buildRadarUpcomingSignal(
     headline,
     release_format: normalizeReleaseFormatValue(summary.release_format),
     context_tags: [],
-    source_type: 'pending',
-    source_url: '',
-    source_domain: '',
-    published_at: '',
+    source_type: readNonEmptyString(summary.source_type) ?? 'pending',
+    source_url: sourceUrl,
+    source_domain: readNonEmptyString(summary.source_domain) ?? getSourceDomain(sourceUrl),
+    published_at: readNonEmptyString(summary.latest_seen_at) ?? '',
     confidence:
       typeof summary.confidence_score === 'number' && Number.isFinite(summary.confidence_score)
         ? summary.confidence_score
         : 0,
-    evidence_summary: '',
-    tracking_status: fallbackTeam.trackingStatus,
+    evidence_summary: readNonEmptyString(summary.evidence_summary) ?? '',
+    tracking_status: trackingStatus,
     search_term: '',
     event_key: readNonEmptyString(summary.upcoming_signal_id) ?? undefined,
+    evidence_count:
+      typeof summary.source_count === 'number' && Number.isFinite(summary.source_count) ? summary.source_count : undefined,
   }
 }
 
 function buildRadarLongGapEntry(item: RadarApiLongGapItem): LongGapRadarEntry | null {
-  const group = resolveRadarGroupReference(readNonEmptyString(item.entity_slug), readNonEmptyString(item.display_name))
+  const entitySlug = readNonEmptyString(item.entity_slug)
+  const group = resolveApiDisplayGroup(entitySlug, readNonEmptyString(item.display_name))
   if (!group) {
     return null
   }
 
-  const fallbackTeam = teamProfileMap.get(group)
-  if (!fallbackTeam) {
-    return null
-  }
-
-  const latestRelease = buildRadarLatestRelease(group, item.latest_release ?? null, fallbackTeam)
+  const latestRelease = buildRadarLatestRelease(item.latest_release ?? null)
   if (!latestRelease) {
     return null
   }
 
-  const latestSignal = buildRadarUpcomingSignal(group, item.latest_signal ?? null, fallbackTeam)
+  const trackingStatus = readNonEmptyString(item.tracking_status) ?? 'watch_only'
+  const latestSignal = buildRadarUpcomingSignal(group, trackingStatus, item.latest_signal ?? null)
   const gapDays =
     typeof item.gap_days === 'number' && Number.isFinite(item.gap_days)
       ? item.gap_days
@@ -8844,6 +8802,8 @@ function buildRadarLongGapEntry(item: RadarApiLongGapItem): LongGapRadarEntry | 
 
   return {
     group,
+    entitySlug: entitySlug ?? undefined,
+    agencyName: normalizeAgencyName(readNonEmptyString(item.agency_name)),
     watchReason: item.watch_reason === 'long_gap' ? 'long_gap' : 'long_gap',
     latestRelease,
     gapDays,
@@ -8853,22 +8813,22 @@ function buildRadarLongGapEntry(item: RadarApiLongGapItem): LongGapRadarEntry | 
 }
 
 function buildRadarRookieEntry(item: RadarApiRookieItem): RookieRadarEntry | null {
-  const group = resolveRadarGroupReference(readNonEmptyString(item.entity_slug), readNonEmptyString(item.display_name))
+  const entitySlug = readNonEmptyString(item.entity_slug)
+  const group = resolveApiDisplayGroup(entitySlug, readNonEmptyString(item.display_name))
   if (!group) {
     return null
   }
 
-  const fallbackTeam = teamProfileMap.get(group)
-  if (!fallbackTeam) {
-    return null
-  }
+  const trackingStatus = readNonEmptyString(item.tracking_status) ?? 'watch_only'
 
   return {
     group,
+    entitySlug: entitySlug ?? undefined,
+    agencyName: normalizeAgencyName(readNonEmptyString(item.agency_name)),
     debutYear: typeof item.debut_year === 'number' && Number.isFinite(item.debut_year) ? item.debut_year : null,
-    latestRelease: buildRadarLatestRelease(group, item.latest_release ?? null, fallbackTeam),
+    latestRelease: buildRadarLatestRelease(item.latest_release ?? null),
     hasUpcomingSignal: Boolean(item.has_upcoming_signal ?? item.latest_signal),
-    latestSignal: buildRadarUpcomingSignal(group, item.latest_signal ?? null, fallbackTeam),
+    latestSignal: buildRadarUpcomingSignal(group, trackingStatus, item.latest_signal ?? null),
   }
 }
 
@@ -10514,21 +10474,6 @@ function findVerifiedReleaseByKey(group: string, albumKey: string) {
   return (verifiedReleaseHistoryByGroup.get(group) ?? []).find((item) => getAlbumKey(item) === albumKey) ?? null
 }
 
-function findVerifiedReleaseRecord(
-  group: string,
-  releaseTitle: string,
-  releaseDate: string,
-  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
-  releaseKind?: string,
-) {
-  const normalizedStream = normalizeReleaseStream(stream, releaseKind)
-  return (
-    (releaseGroups.get(group) ?? []).find(
-      (item) => item.title === releaseTitle && item.date === releaseDate && item.stream === normalizedStream,
-    ) ?? null
-  )
-}
-
 function getReleaseDetailActionLabel(releaseKind: ReleaseFact['release_kind'], language: Language) {
   const teamCopy = TEAM_COPY[language]
   return releaseKind === 'single' ? teamCopy.releaseDetail : teamCopy.albumDetail
@@ -10821,6 +10766,10 @@ function buildSearchIndex(values: Array<string | null | undefined>): SearchIndex
   }
 }
 
+function matchesSearchValues(values: Array<string | null | undefined>, needle: SearchNeedle | null) {
+  return matchesSearchIndex(buildSearchIndex(values), needle)
+}
+
 function matchesSearchIndex(index: SearchIndex | undefined, needle: SearchNeedle | null) {
   if (!needle) {
     return true
@@ -10986,11 +10935,17 @@ function matchesReleaseFilters(
     selectedMyTeamsOnly: boolean
   },
 ) {
-  const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
+  const matchesSearch =
+    item.displayName || item.entitySlug
+      ? matchesSearchValues([item.group, item.displayName, item.entitySlug, item.title], searchNeedle)
+      : matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
   const matchesReleaseKind = selectedReleaseKind === 'all' || item.release_kind === selectedReleaseKind
   const matchesActType = selectedActType === 'all' || item.actType === selectedActType
   const matchesStatus = selectedDashboardStatus === 'all' || selectedDashboardStatus === 'verified'
-  const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
+  const matchesAgency =
+    item.agencyName !== undefined
+      ? getAgencyFilterValue(normalizeAgencyName(item.agencyName)) === selectedAgency || selectedAgency === 'all'
+      : matchesAgencyFilter(item.group, selectedAgency)
   const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
   return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
 }
@@ -11015,16 +10970,22 @@ function matchesUpcomingFilters(
     selectedMyTeamsOnly: boolean
   },
 ) {
-  const matchesSearch = matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
+  const matchesSearch =
+    item.displayName || item.entitySlug
+      ? matchesSearchValues([item.group, item.displayName, item.entitySlug, item.headline], searchNeedle)
+      : matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
   const matchesReleaseKind = selectedReleaseKind === 'all' || item.release_format === selectedReleaseKind
-  const matchesActType = selectedActType === 'all' || getActType(item.group) === selectedActType
+  const matchesActType = selectedActType === 'all' || (item.actType ?? getActType(item.group)) === selectedActType
   const matchesStatus =
     selectedDashboardStatus === 'all'
       ? true
       : selectedDashboardStatus === 'verified'
         ? false
         : item.date_status === selectedDashboardStatus
-  const matchesAgency = matchesAgencyFilter(item.group, selectedAgency)
+  const matchesAgency =
+    item.agencyName !== undefined
+      ? getAgencyFilterValue(normalizeAgencyName(item.agencyName)) === selectedAgency || selectedAgency === 'all'
+      : matchesAgencyFilter(item.group, selectedAgency)
   const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
   return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
 }
@@ -11049,7 +11010,13 @@ function filterCalendarMonthApiSnapshot(
 }
 
 function matchesRadarEntryFilters(
-  group: string,
+  entry: {
+    group: string
+    entitySlug?: string
+    agencyName?: string | null
+    latestRelease?: TeamLatestRelease | null
+    latestSignal?: UpcomingCandidateRow | null
+  },
   {
     searchNeedle,
     selectedAgency,
@@ -11063,9 +11030,12 @@ function matchesRadarEntryFilters(
   },
 ) {
   return (
-    matchesSearchIndex(searchIndexByGroup.get(group), searchNeedle) &&
-    matchesAgencyFilter(group, selectedAgency) &&
-    matchesMyTeamsFilter(group, myTeamsSet, selectedMyTeamsOnly)
+    matchesSearchValues([entry.group, entry.entitySlug, entry.latestRelease?.title, entry.latestSignal?.headline], searchNeedle) &&
+    (selectedAgency === 'all' ||
+      (entry.agencyName !== undefined
+        ? getAgencyFilterValue(normalizeAgencyName(entry.agencyName)) === selectedAgency
+        : matchesAgencyFilter(entry.group, selectedAgency))) &&
+    matchesMyTeamsFilter(entry.group, myTeamsSet, selectedMyTeamsOnly)
   )
 }
 
@@ -11079,8 +11049,8 @@ function filterRadarApiSnapshot(
   },
 ): RadarApiSnapshot {
   return {
-    longGapEntries: snapshot.longGapEntries.filter((item) => matchesRadarEntryFilters(item.group, filters)),
-    rookieEntries: snapshot.rookieEntries.filter((item) => matchesRadarEntryFilters(item.group, filters)),
+    longGapEntries: snapshot.longGapEntries.filter((item) => matchesRadarEntryFilters(item, filters)),
+    rookieEntries: snapshot.rookieEntries.filter((item) => matchesRadarEntryFilters(item, filters)),
   }
 }
 

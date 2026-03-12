@@ -29,6 +29,9 @@ type CalendarNearestUpcoming = {
   upcoming_signal_id: string;
   entity_slug: string;
   display_name: string;
+  entity_type: string | null;
+  agency_name: string | null;
+  tracking_status: string | null;
   headline: string;
   scheduled_date: string;
   scheduled_month: string;
@@ -47,9 +50,14 @@ type CalendarVerifiedRelease = {
   release_id: string;
   entity_slug: string;
   display_name: string;
+  entity_type: string | null;
+  agency_name: string | null;
   release_title: string;
   stream: string;
   release_kind: string | null;
+  release_format: string | null;
+  source_url: string | null;
+  artist_source_url: string | null;
   release_date?: string;
 };
 
@@ -57,6 +65,9 @@ type CalendarUpcomingItem = {
   upcoming_signal_id: string;
   entity_slug: string;
   display_name: string;
+  entity_type: string | null;
+  agency_name: string | null;
+  tracking_status: string | null;
   headline: string;
   scheduled_date: string | null;
   scheduled_month: string;
@@ -162,9 +173,14 @@ function normalizeVerifiedRelease(value: unknown): CalendarVerifiedRelease | nul
     release_id: releaseId,
     entity_slug: entitySlug,
     display_name: displayName,
+    entity_type: asNullableString(value.entity_type),
+    agency_name: asNullableString(value.agency_name),
     release_title: releaseTitle,
     stream,
     release_kind: asNullableString(value.release_kind),
+    release_format: asNullableString(value.release_format),
+    source_url: asNullableString(value.source_url),
+    artist_source_url: asNullableString(value.artist_source_url),
     release_date: asNullableString(value.release_date) ?? undefined,
   };
 }
@@ -199,6 +215,9 @@ function normalizeUpcomingItem(value: unknown): CalendarUpcomingItem | null {
     upcoming_signal_id: upcomingSignalId,
     entity_slug: entitySlug,
     display_name: displayName,
+    entity_type: asNullableString(value.entity_type),
+    agency_name: asNullableString(value.agency_name),
+    tracking_status: asNullableString(value.tracking_status),
     headline,
     scheduled_date: scheduledDate,
     scheduled_month: scheduledMonth,
@@ -297,6 +316,9 @@ function normalizeCalendarMonthPayload(payload: unknown): CalendarMonthData | nu
             upcoming_signal_id: nearestUpcoming.upcoming_signal_id,
             entity_slug: nearestUpcoming.entity_slug,
             display_name: nearestUpcoming.display_name,
+            entity_type: nearestUpcoming.entity_type,
+            agency_name: nearestUpcoming.agency_name,
+            tracking_status: nearestUpcoming.tracking_status,
             headline: nearestUpcoming.headline,
             scheduled_date: nearestUpcoming.scheduled_date,
             scheduled_month: nearestUpcoming.scheduled_month,

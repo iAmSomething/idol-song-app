@@ -82,6 +82,10 @@ function normalizeRadarLatestSignal(value: unknown): Record<string, unknown> | n
     scheduled_date: normalizeOptionalString(value.scheduled_date),
     scheduled_month: normalizeScheduledMonth(value.scheduled_month),
     release_format: normalizeOptionalString(value.release_format),
+    source_url: normalizeOptionalString(value.source_url),
+    source_type: normalizeOptionalString(value.source_type),
+    source_domain: normalizeOptionalString(value.source_domain),
+    evidence_summary: normalizeOptionalString(value.evidence_summary),
     latest_seen_at: normalizeIsoLikeString(value.latest_seen_at),
   };
 }
@@ -95,6 +99,9 @@ function normalizeRadarReleaseSummary(value: unknown): Record<string, unknown> |
     ...value,
     release_date: normalizeOptionalString(value.release_date),
     release_kind: normalizeOptionalString(value.release_kind),
+    release_format: normalizeOptionalString(value.release_format),
+    source_url: normalizeOptionalString(value.source_url),
+    artist_source_url: normalizeOptionalString(value.artist_source_url),
   };
 }
 
@@ -147,7 +154,13 @@ function normalizeRadarUpcomingItem(value: unknown): Record<string, unknown> | n
   return {
     ...value,
     scheduled_date: normalizeOptionalString(value.scheduled_date),
+    scheduled_month: normalizeScheduledMonth(value.scheduled_month),
     release_format: normalizeOptionalString(value.release_format),
+    source_url: normalizeOptionalString(value.source_url),
+    source_type: normalizeOptionalString(value.source_type),
+    source_domain: normalizeOptionalString(value.source_domain),
+    evidence_summary: normalizeOptionalString(value.evidence_summary),
+    latest_seen_at: normalizeIsoLikeString(value.latest_seen_at),
   };
 }
 
