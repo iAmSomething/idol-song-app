@@ -1,4 +1,5 @@
 const WARMUP_GRACE_HOURS_BY_CADENCE = {
+  hourly: 3,
   daily: 12,
   weekly: 24,
   custom: 12,
@@ -221,8 +222,19 @@ export function parseScheduleExpectation(cron) {
 
   const [minuteToken, hourToken, dayOfMonthToken, monthToken, dayOfWeekToken] = parts;
   const minute = parseNumber(minuteToken);
+  if (minute === null || dayOfMonthToken !== '*' || monthToken !== '*') {
+    return null;
+  }
+
+  if (hourToken === '*' && dayOfWeekToken === '*') {
+    return {
+      kind: 'hourly',
+      minute,
+    };
+  }
+
   const hour = parseNumber(hourToken);
-  if (minute === null || hour === null || dayOfMonthToken !== '*' || monthToken !== '*') {
+  if (hour === null) {
     return null;
   }
 
@@ -255,6 +267,15 @@ export function nextScheduledOccurrenceAfter(referenceValue, parsedSchedule) {
 
   const candidate = new Date(reference.getTime());
   candidate.setUTCSeconds(0, 0);
+
+  if (parsedSchedule.kind === 'hourly') {
+    candidate.setUTCMinutes(parsedSchedule.minute, 0, 0);
+    if (candidate <= reference) {
+      candidate.setUTCHours(candidate.getUTCHours() + 1);
+    }
+    return candidate;
+  }
+
   candidate.setUTCHours(parsedSchedule.hour, parsedSchedule.minute, 0, 0);
 
   if (parsedSchedule.kind === 'daily') {
@@ -290,12 +311,19 @@ export function countExpectedScheduledRunsByNow({
 
   let count = 0;
   let cursor = firstExpected;
-  const stepDays = parsedSchedule.kind === 'weekly' ? 7 : 1;
 
   while (cursor <= currentTime) {
     count += 1;
     const next = new Date(cursor.getTime());
-    next.setUTCDate(next.getUTCDate() + stepDays);
+    if (parsedSchedule.kind === 'weekly') {
+      next.setUTCDate(next.getUTCDate() + 7);
+    } else if (parsedSchedule.kind === 'daily') {
+      next.setUTCDate(next.getUTCDate() + 1);
+    } else if (parsedSchedule.kind === 'hourly') {
+      next.setUTCHours(next.getUTCHours() + 1);
+    } else {
+      return count;
+    }
     cursor = next;
   }
 

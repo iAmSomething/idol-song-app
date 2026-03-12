@@ -116,8 +116,8 @@ worker cadence evidence에는 gate 상태와 별개로 아래 cadence status를 
 
 기준:
 
-- `daily_upcoming` fast path와 `catalog_enrichment` slow path가 같이 기록된 `worker_cadence_report.json`
-- runtime gate는 `daily_upcoming` path를 freshness primary evidence로 사용
+- `daily_upcoming` fast discovery path, `same_day_release_polling` hourly verification path, `catalog_enrichment` slow path가 같이 기록된 `worker_cadence_report.json`
+- runtime gate는 `daily_upcoming` path를 freshness primary evidence로 사용하되, same-day verification path를 separate topology row로 같이 기록한다
 - scheduled event 전용 sample
 - workflow metadata(`created_at`, `updated_at`, `state`, `html_url`)
 - expected scheduled window 계산값(`first_expected_run_at`, `expected_scheduled_runs_by_now`, `missed_scheduled_windows`)
@@ -132,7 +132,8 @@ worker cadence evidence에는 gate 상태와 별개로 아래 cadence status를 
 
 해석:
 
-- fast path는 daily cadence를 전제로 하므로, 마지막 성공 run이 하루를 크게 넘기면 freshness trust가 떨어진다
+- fast discovery path는 daily cadence를 전제로 하므로, 마지막 성공 run이 하루를 크게 넘기면 freshness trust가 떨어진다
+- same-day verification path는 hourly cadence로 exact-date same-day release promotion만 담당한다
 - slow path는 historical enrichment / readiness evidence용으로 separate cadence를 가진다
 - preview에서는 cadence가 production보다 낮아도 되지만, rehearsal 직전에는 같은 순서로 한 번 이상 검증한다
 - scheduled sample이 0건이어도 바로 null-based fail로 보지 않는다
