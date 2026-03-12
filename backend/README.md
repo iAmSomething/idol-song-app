@@ -659,6 +659,7 @@ python3 sync_trusted_upcoming_notification_events.py
 - `backend/reports/trusted_upcoming_notification_event_summary.json`
 - `backend/reports/trusted_upcoming_operator_alert_report.md`
 - `backend/reports/workflow_schedule_diagnostics.json`
+- `backend/reports/workflow_condition_guard_report.json`
 
 scheduled workflow는 두 cadence로 나뉜다.
 
@@ -837,6 +838,10 @@ npm run gap:workbenches
 먼저 `workflow_schedule_diagnostics.json`을 본다. 이 artifact는 repo default branch,
 GitHub Actions permissions, workflow state, recent scheduled run count, actionable hint를
 한 번에 모아서 schedule delivery 조사 시작점을 고정한다.
+같은 시점에 `npm run workflow:verify`도 같이 본다. scheduled workflow가 `push`에서도 즉시
+`workflow file issue`로 죽는다면, 먼저 workflow YAML 안의 `if:` condition에서 `secrets.*`
+를 직접 참조하는 패턴이 없는지 확인해야 한다. secret이 필요한 conditional은 job/step `env`
+로 먼저 올린 뒤 `if: ${{ env.NAME != '' }}` 형태로 써야 한다.
 - `backend/reports/trusted_upcoming_notification_event_summary.json`
 - `backend/reports/trusted_upcoming_operator_alert_report.md`
 - `backend/reports/backend_gap_audit_report.json`

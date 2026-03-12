@@ -45,6 +45,7 @@
 | canonical null coverage | `cd backend && npm run null:coverage` | `backend/reports/canonical_null_coverage_report.json` |
 | canonical null recheck queue | `cd backend && npm run null:recheck` | `backend/reports/canonical_null_recheck_queue.json` |
 | null coverage trend | `cd backend && npm run null:trend` | `backend/reports/null_coverage_trend_report.json` |
+| workflow condition guard | `cd backend && npm run workflow:verify` | `backend/reports/workflow_condition_guard_report.json` |
 | report bundle metadata | `cd backend && npm run report:bundle -- --bundle-kind post-sync-verification --cadence-profile daily-upcoming` | `backend/reports/report_bundle_metadata.json` |
 | backend freshness handoff | `cd backend && npm run freshness:handoff -- --target production --backend-public-url <url>` | `backend/reports/backend_freshness_handoff.json` |
 | backend-vs-JSON parity | `python3 build_backend_json_parity_report.py` | `backend/reports/backend_json_parity_report.json` |
@@ -136,6 +137,7 @@ cd ..
 - migration readiness scorecard에서 blocker-grade category가 `fail`이면 milestone / cutover decision을 advance하지 않는다.
 - worker cadence가 `warming_up`면 `created_at` 기준 first due를 보고 다음 scheduled sample을 기다린다.
 - worker cadence가 `scheduled_evidence_missing`면 `scheduled_runs=0` 자체가 아니라 "expected window를 놓쳤다"는 의미로 보고, 먼저 `workflow_schedule_diagnostics.json`에서 repo default branch / Actions permissions / workflow state / actionable hint를 확인한 뒤 workflow enablement / schedule delivery를 조사한다.
+- scheduled workflow가 `push`에서도 `workflow file issue`로 즉시 실패하면, `npm run workflow:verify`를 먼저 돌려서 `if:` condition 안에 `secrets.*` 직접 참조가 없는지 확인한다. secret 기반 분기는 `env`로 올린 뒤 `if: ${{ env.NAME != '' }}` 형태로 유지한다.
 
 ## 6. Representative Refresh Path
 
