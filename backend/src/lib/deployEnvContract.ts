@@ -193,10 +193,11 @@ export function buildDeployEnvContractReport(options: {
   }
 
   for (const key of EXPECTED_RUNTIME_KEYS) {
+    const hasExpectedValue = targetExample.has(key);
     const expectedValue = targetExample.get(key);
     const observedValue = runtimeEnv.get(key);
 
-    if (!expectedValue) {
+    if (!hasExpectedValue) {
       checks.push({
         key,
         category: 'runtime-env',
@@ -235,7 +236,7 @@ export function buildDeployEnvContractReport(options: {
     }
 
     if (key === 'WEB_ALLOWED_ORIGINS') {
-      const expectedOrigins = normalizeOrigins(expectedValue);
+      const expectedOrigins = normalizeOrigins(expectedValue ?? '');
       const observedOrigins = normalizeOrigins(observedValue);
       const matches = JSON.stringify(expectedOrigins) === JSON.stringify(observedOrigins);
       checks.push({
