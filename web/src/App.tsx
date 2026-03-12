@@ -254,19 +254,52 @@ type BackendTargetEnvironment = 'production' | 'preview' | 'local' | 'bridge' | 
 
 type SearchApiEntityMatch = {
   entity_slug?: string
+  canonical_path?: string
+  display_name?: string
+  canonical_name?: string
+  entity_type?: string
+  agency_name?: string | null
+  matched_alias?: string | null
+  match_reason?: string
+  latest_release?: {
+    release_id?: string
+    release_title?: string
+    release_date?: string
+    stream?: string
+    release_kind?: string | null
+  } | null
+  next_upcoming?: {
+    headline?: string
+    scheduled_date?: string | null
+    scheduled_month?: string | null
+    date_precision?: string
+    date_status?: string
+    release_format?: string | null
+    confidence_score?: number | null
+  } | null
 }
 
 type SearchApiReleaseMatch = {
+  release_id?: string
+  canonical_path?: string
+  detail_path?: string
+  entity_path?: string
   entity_slug?: string
+  display_name?: string
   release_title?: string
   release_date?: string
   stream?: string
   release_kind?: string | null
+  release_format?: string | null
+  matched_alias?: string | null
+  match_reason?: string
 }
 
 type SearchApiUpcomingMatch = {
   upcoming_signal_id?: string
+  entity_path?: string
   entity_slug?: string
+  display_name?: string
   headline?: string
   scheduled_date?: string | null
   scheduled_month?: string | null
@@ -276,7 +309,10 @@ type SearchApiUpcomingMatch = {
   confidence_score?: number | null
   source_type?: string | null
   source_url?: string | null
+  source_domain?: string | null
   evidence_summary?: string | null
+  matched_alias?: string | null
+  match_reason?: string
 }
 
 type SearchApiResponse = {
@@ -290,10 +326,72 @@ type SearchApiResponse = {
   }
 }
 
+type SearchSurfaceEntityResult = {
+  entitySlug: string
+  canonicalPath: string
+  displayName: string
+  canonicalName: string
+  entityType: string
+  agencyName: string | null
+  matchReason: string
+  matchedAlias: string | null
+  latestRelease: {
+    releaseId: string
+    title: string
+    date: string
+    stream: 'album' | 'song'
+    releaseKind: ReleaseFact['release_kind']
+  } | null
+  nextUpcoming: {
+    headline: string
+    scheduledDate: string
+    scheduledMonth: string
+    datePrecision: 'exact' | 'month_only' | 'unknown'
+    dateStatus: 'confirmed' | 'scheduled' | 'rumor'
+    releaseFormat: ReleaseFormat | ''
+    confidence: number
+  } | null
+}
+
+type SearchSurfaceReleaseResult = {
+  releaseId: string
+  detailPath: string
+  entityPath: string
+  entitySlug: string
+  displayName: string
+  releaseTitle: string
+  releaseDate: string
+  stream: 'album' | 'song'
+  releaseKind: ReleaseFact['release_kind']
+  releaseFormat: ReleaseFormat | ''
+  matchReason: string
+  matchedAlias: string | null
+}
+
+type SearchSurfaceUpcomingResult = {
+  upcomingSignalId: string
+  entityPath: string
+  entitySlug: string
+  displayName: string
+  headline: string
+  scheduled_date: string
+  scheduled_month: string
+  date_precision: 'exact' | 'month_only' | 'unknown'
+  date_status: 'confirmed' | 'scheduled' | 'rumor'
+  release_format: ReleaseFormat | ''
+  confidence: number
+  source_type: string
+  source_url: string
+  source_domain: string
+  evidence_summary: string
+  matchReason: string
+  matchedAlias: string | null
+}
+
 type SearchSurfaceSnapshot = {
-  entities: TeamProfile[]
-  releases: VerifiedRelease[]
-  upcoming: UpcomingCandidateRow[]
+  entities: SearchSurfaceEntityResult[]
+  releases: SearchSurfaceReleaseResult[]
+  upcoming: SearchSurfaceUpcomingResult[]
 }
 
 type SearchSurfaceResource = SearchSurfaceSnapshot & {
@@ -2031,18 +2129,15 @@ function App() {
   }
   const visibleLongGapRadar = activeRadarSnapshot.longGapEntries
   const visibleRookieRadar = activeRadarSnapshot.rookieEntries
-  const searchSurfaceFallbackSnapshot: SearchSurfaceSnapshot = {
-    entities: filteredTeams.slice(0, 12),
-    releases: filteredReleases.slice(0, 10),
-    upcoming: filteredUpcoming,
-  }
+  const defaultSearchTeams = filteredTeams.slice(0, 12)
+  const defaultSearchReleases = filteredReleases.slice(0, 10)
+  const defaultSearchUpcoming = filteredUpcoming
   const searchSurfaceResource = useSearchSurfaceResource({
     search: deferredSearch,
-    fallbackSnapshot: searchSurfaceFallbackSnapshot,
   })
-  const visibleSearchTeams = hasSearchQuery ? searchSurfaceResource.entities : searchSurfaceFallbackSnapshot.entities
-  const visibleSearchReleases = hasSearchQuery ? searchSurfaceResource.releases : searchSurfaceFallbackSnapshot.releases
-  const visibleSearchUpcoming = hasSearchQuery ? searchSurfaceResource.upcoming : searchSurfaceFallbackSnapshot.upcoming
+  const visibleSearchTeams = hasSearchQuery ? searchSurfaceResource.entities : []
+  const visibleSearchReleases = hasSearchQuery ? searchSurfaceResource.releases : []
+  const visibleSearchUpcoming = hasSearchQuery ? searchSurfaceResource.upcoming : []
   const searchSurfaceStatus =
     search.trim().length > 0
       ? {
@@ -2060,6 +2155,8 @@ function App() {
                   : copy.searchBackendFallback,
         }
       : null
+  const dashboardUpcomingRows = hasSearchQuery ? visibleSearchUpcoming : defaultSearchUpcoming
+  const dashboardTeamRows = hasSearchQuery ? visibleSearchTeams : defaultSearchTeams
   const filteredUpcomingSignals = filteredUpcoming
     .flatMap((item) => expandUpcomingCandidate(item))
     .sort((left, right) => left.dateValue.getTime() - right.dateValue.getTime())
@@ -2445,6 +2542,15 @@ function App() {
     setSelectedGroup(group)
     setSelectedCompareGroup(null)
     setSelectedAlbumKey(null)
+  }
+
+  function openTeamPageBySlug(entitySlug: string) {
+    const group = resolveGroupReference(entitySlug)
+    if (!group) {
+      return
+    }
+
+    openTeamPage(group)
   }
 
   function openReleaseDetail(release: VerifiedRelease) {
@@ -3475,72 +3581,127 @@ function App() {
                   <p className="panel-label">{copy.upcomingScan}</p>
                   <h2>{copy.upcomingTitle}</h2>
                 </div>
-                <span className="sidebar-panel-count">{visibleSearchUpcoming.length}</span>
+                <span className="sidebar-panel-count">{dashboardUpcomingRows.length}</span>
               </div>
               <div className="sidebar-upcoming-panel-body">
-                {visibleSearchUpcoming.length ? (
-                  <div className="feed-list">
-                    {visibleSearchUpcoming.map((item) => (
-                      <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row signal-row-compact">
-                        <div>
-                          <div className="signal-head">
-                            <TeamIdentity group={item.group} variant="list" />
-                            <div className="signal-tags">
-                              <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
-                              <span className={`signal-badge signal-badge-${item.tracking_status}`}>
-                                {formatTrackingStatus(item.tracking_status, language)}
-                              </span>
-                              <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
-                                {formatDateStatus(item.date_status, language)}
-                              </span>
-                              <span
-                                className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
-                              >
-                                {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
-                              </span>
-                              <SourceBadge sourceType={item.source_type} language={language} />
-                              <ReleaseChangeBadge group={item.group} language={language} />
-                              <ReleaseClassificationBadges
-                                releaseFormat={item.release_format}
-                                contextTags={item.context_tags}
-                                language={language}
-                              />
+                {dashboardUpcomingRows.length ? (
+                  hasSearchQuery ? (
+                    <div className="feed-list">
+                      {visibleSearchUpcoming.map((item) => (
+                        <article key={item.upcomingSignalId} className="signal-row signal-row-compact">
+                          <div>
+                            <div className="signal-head">
+                              <span className="team-directory-kicker">{item.displayName}</span>
+                              <div className="signal-tags">
+                                <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
+                                  {formatDateStatus(item.date_status, language)}
+                                </span>
+                                <span
+                                  className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
+                                >
+                                  {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
+                                </span>
+                                <SourceBadge sourceType={item.source_type} language={language} />
+                                {item.release_format ? (
+                                  <span className="signal-badge">
+                                    {formatReleaseFormat(item.release_format, language)}
+                                  </span>
+                                ) : null}
+                              </div>
+                            </div>
+                            <h3>{item.headline}</h3>
+                            <p className="signal-meta">
+                              {formatSourceDomain(item.source_domain, language)} ·{' '}
+                              {formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}
+                            </p>
+                            {item.evidence_summary ? <p className="signal-evidence">{item.evidence_summary}</p> : null}
+                            <div className="action-stack">
+                              <div className="action-row">
+                                <ActionButton variant="primary" onClick={() => openTeamPageBySlug(item.entitySlug)}>
+                                  {teamCopy.action}
+                                </ActionButton>
+                              </div>
+                              <div className="meta-links">
+                                {item.source_url ? (
+                                  <a href={item.source_url} target="_blank" rel="noreferrer" className="meta-link">
+                                    {copy.sourceLink}
+                                  </a>
+                                ) : (
+                                  <span className="signal-link-muted">{copy.noSourceLink}</span>
+                                )}
+                              </div>
                             </div>
                           </div>
-                          <h3>{item.headline}</h3>
-                          <p className="signal-meta">
-                            {formatSourceDomain(item.source_domain, language)} ·{' '}
-                            {formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}
-                          </p>
-                          {formatUpcomingEvidenceMeta(item, language) ? (
-                            <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
-                          ) : null}
-                          {item.evidence_summary ? (
-                            <p className="signal-evidence">{item.evidence_summary}</p>
-                          ) : null}
-                          <div className="action-stack">
-                            <div className="action-row">
-                              <ActionButton variant="primary" onClick={() => openTeamPage(item.group)}>
-                                {teamCopy.action}
-                              </ActionButton>
+                          <div className="signal-date-wrap">
+                            <time>{formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}</time>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="feed-list">
+                      {defaultSearchUpcoming.map((item) => (
+                        <article key={`${item.group}-${item.scheduled_date}-${item.headline}`} className="signal-row signal-row-compact">
+                          <div>
+                            <div className="signal-head">
+                              <TeamIdentity group={item.group} variant="list" />
+                              <div className="signal-tags">
+                                <UpcomingCountdownBadge item={item} formatter={shortDateFormatter} />
+                                <span className={`signal-badge signal-badge-${item.tracking_status}`}>
+                                  {formatTrackingStatus(item.tracking_status, language)}
+                                </span>
+                                <span className={`signal-badge signal-badge-date-${item.date_status || 'rumor'}`}>
+                                  {formatDateStatus(item.date_status, language)}
+                                </span>
+                                <span
+                                  className={`signal-badge signal-badge-confidence-${getConfidenceTone(item.confidence)}`}
+                                >
+                                  {formatConfidenceTone(getConfidenceTone(item.confidence), language)}
+                                </span>
+                                <SourceBadge sourceType={item.source_type} language={language} />
+                                <ReleaseChangeBadge group={item.group} language={language} />
+                                <ReleaseClassificationBadges
+                                  releaseFormat={item.release_format}
+                                  contextTags={item.context_tags}
+                                  language={language}
+                                />
+                              </div>
                             </div>
-                            <div className="meta-links">
-                              {item.source_url ? (
-                                <a href={item.source_url} target="_blank" rel="noreferrer" className="meta-link">
-                                  {copy.sourceLink}
-                                </a>
-                              ) : (
-                                <span className="signal-link-muted">{copy.noSourceLink}</span>
-                              )}
+                            <h3>{item.headline}</h3>
+                            <p className="signal-meta">
+                              {formatSourceDomain(item.source_domain, language)} ·{' '}
+                              {formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}
+                            </p>
+                            {formatUpcomingEvidenceMeta(item, language) ? (
+                              <p className="signal-meta">{formatUpcomingEvidenceMeta(item, language)}</p>
+                            ) : null}
+                            {item.evidence_summary ? (
+                              <p className="signal-evidence">{item.evidence_summary}</p>
+                            ) : null}
+                            <div className="action-stack">
+                              <div className="action-row">
+                                <ActionButton variant="primary" onClick={() => openTeamPage(item.group)}>
+                                  {teamCopy.action}
+                                </ActionButton>
+                              </div>
+                              <div className="meta-links">
+                                {item.source_url ? (
+                                  <a href={item.source_url} target="_blank" rel="noreferrer" className="meta-link">
+                                    {copy.sourceLink}
+                                  </a>
+                                ) : (
+                                  <span className="signal-link-muted">{copy.noSourceLink}</span>
+                                )}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="signal-date-wrap">
-                          <time>{formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}</time>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
+                          <div className="signal-date-wrap">
+                            <time>{formatUpcomingTimingLabel(item, language, displayDateFormatter, copy.none)}</time>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  )
                 ) : (
                   <p className="empty-copy">{copy.noUpcomingCandidates}</p>
                 )}
@@ -3583,30 +3744,52 @@ function App() {
               <p className="panel-label">{copy.recentFeed}</p>
               <h2>{copy.newestReleasesFirst}</h2>
               <div className="feed-list">
-                {visibleSearchReleases.map((item) => (
-                  <article key={`${item.group}-${item.stream}-${item.title}`} className="feed-row">
-                    <div>
-                      <div className="signal-head">
-                        <TeamIdentity group={item.group} variant="list" />
-                        <span className="signal-badge">{describeRelease(item, language)}</span>
-                      </div>
-                      <h3>{item.title}</h3>
-                      <div className="row-actions">
-                        <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
-                          {teamCopy.action}
-                        </button>
-                      </div>
-                      <MusicHandoffRow
-                        group={item.group}
-                        title={item.title}
-                        canonicalUrls={item.music_handoffs}
-                        language={language}
-                        compact
-                      />
-                    </div>
-                    <time>{shortDateFormatter.format(item.dateValue)}</time>
-                  </article>
-                ))}
+                {hasSearchQuery
+                  ? visibleSearchReleases.map((item) => (
+                      <article key={item.releaseId} className="feed-row">
+                        <div>
+                          <div className="signal-head">
+                            <span className="team-directory-kicker">{item.displayName}</span>
+                            <span className="signal-badge">{describeSearchReleaseResult(item, language)}</span>
+                          </div>
+                          <h3>{item.releaseTitle}</h3>
+                          <div className="row-actions">
+                            <button
+                              type="button"
+                              className="inline-button"
+                              onClick={() => openTeamPageBySlug(item.entitySlug)}
+                            >
+                              {teamCopy.action}
+                            </button>
+                          </div>
+                        </div>
+                        <time>{formatOptionalDate(item.releaseDate, shortDateFormatter, copy.none)}</time>
+                      </article>
+                    ))
+                  : defaultSearchReleases.map((item) => (
+                      <article key={`${item.group}-${item.stream}-${item.title}`} className="feed-row">
+                        <div>
+                          <div className="signal-head">
+                            <TeamIdentity group={item.group} variant="list" />
+                            <span className="signal-badge">{describeRelease(item, language)}</span>
+                          </div>
+                          <h3>{item.title}</h3>
+                          <div className="row-actions">
+                            <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
+                              {teamCopy.action}
+                            </button>
+                          </div>
+                          <MusicHandoffRow
+                            group={item.group}
+                            title={item.title}
+                            canonicalUrls={item.music_handoffs}
+                            language={language}
+                            compact
+                          />
+                        </div>
+                        <time>{shortDateFormatter.format(item.dateValue)}</time>
+                      </article>
+                    ))}
               </div>
             </section>
 
@@ -3614,22 +3797,36 @@ function App() {
               <p className="panel-label">{teamCopy.pagesPanelLabel}</p>
               <h2>{teamCopy.pagesPanelTitle}</h2>
               <div className="team-directory">
-                {visibleSearchTeams.length ? (
-                  visibleSearchTeams.map((team) => (
-                    <button
-                      type="button"
-                      key={team.group}
-                      className="team-directory-button"
-                      onClick={() => openTeamPage(team.group)}
-                    >
-                      <span>{team.displayName}</span>
-                      <strong>
-                        {team.nextUpcomingSignal
-                          ? describeUpcomingSignal(team.nextUpcomingSignal, language, displayDateFormatter, copy.none)
-                          : teamCopy.noSignal}
-                      </strong>
-                    </button>
-                  ))
+                {dashboardTeamRows.length ? (
+                  hasSearchQuery ? (
+                    visibleSearchTeams.map((team) => (
+                      <button
+                        type="button"
+                        key={team.entitySlug}
+                        className="team-directory-button"
+                        onClick={() => openTeamPageBySlug(team.entitySlug)}
+                      >
+                        <span>{team.displayName}</span>
+                        <strong>{describeSearchEntityResult(team, language, displayDateFormatter, teamCopy.noSignal)}</strong>
+                      </button>
+                    ))
+                  ) : (
+                    defaultSearchTeams.map((team) => (
+                      <button
+                        type="button"
+                        key={team.group}
+                        className="team-directory-button"
+                        onClick={() => openTeamPage(team.group)}
+                      >
+                        <span>{team.displayName}</span>
+                        <strong>
+                          {team.nextUpcomingSignal
+                            ? describeUpcomingSignal(team.nextUpcomingSignal, language, displayDateFormatter, copy.none)
+                            : teamCopy.noSignal}
+                        </strong>
+                      </button>
+                    ))
+                  )
                 ) : (
                   <p className="empty-copy">{teamCopy.noTeamMatch}</p>
                 )}
@@ -7634,124 +7831,133 @@ function normalizeReleaseFormatValue(value: string | null | undefined): ReleaseF
   return value === 'single' || value === 'album' || value === 'ep' ? value : ''
 }
 
+function normalizeSearchDatePrecision(value: string | null | undefined): 'exact' | 'month_only' | 'unknown' {
+  return value === 'exact' || value === 'month_only' || value === 'unknown' ? value : 'unknown'
+}
+
+function normalizeSearchDateStatus(value: string | null | undefined): 'confirmed' | 'scheduled' | 'rumor' {
+  return value === 'confirmed' || value === 'scheduled' || value === 'rumor' ? value : 'rumor'
+}
+
 function buildSearchSurfaceApiSnapshot(data: SearchApiResponse['data']): SearchSurfaceSnapshot {
-  const teamResults: TeamProfile[] = []
-  const releaseResults: VerifiedRelease[] = []
-  const upcomingResults: UpcomingCandidateRow[] = []
-  const seenTeams = new Set<string>()
-  const seenReleases = new Set<string>()
-  const seenUpcoming = new Set<string>()
-
-  for (const item of data?.entities ?? []) {
-    const entitySlug = readNonEmptyString(item.entity_slug)
-    const group = entitySlug ? resolveGroupReference(entitySlug) : null
-    const team = group ? teamProfileMap.get(group) ?? null : null
-    if (!team || seenTeams.has(team.group)) {
-      continue
-    }
-
-    seenTeams.add(team.group)
-    teamResults.push(team)
-  }
-
-  for (const item of data?.releases ?? []) {
-    const entitySlug = readNonEmptyString(item.entity_slug)
-    const releaseTitle = readNonEmptyString(item.release_title)
-    const releaseDate = readNonEmptyString(item.release_date)
-    const stream = item.stream === 'album' || item.stream === 'song' ? item.stream : null
-    const group = entitySlug ? resolveGroupReference(entitySlug) : null
-    if (!group || !releaseTitle || !releaseDate || !stream) {
-      continue
-    }
-
-    const release = findVerifiedReleaseRecord(group, releaseTitle, releaseDate, stream, item.release_kind ?? undefined)
-    if (!release || seenReleases.has(getAlbumKey(release))) {
-      continue
-    }
-
-    seenReleases.add(getAlbumKey(release))
-    releaseResults.push(release)
-  }
-
-  for (const item of data?.upcoming ?? []) {
-    const entitySlug = readNonEmptyString(item.entity_slug)
-    const headline = readNonEmptyString(item.headline)
-    const group = entitySlug ? resolveGroupReference(entitySlug) : null
-    if (!group || !headline) {
-      continue
-    }
-
-    const scheduledDate = readNonEmptyString(item.scheduled_date) ?? ''
-    const scheduledMonth = readNonEmptyString(item.scheduled_month) ?? ''
-    const datePrecision =
-      item.date_precision === 'exact' || item.date_precision === 'month_only' || item.date_precision === 'unknown'
-        ? item.date_precision
-        : 'unknown'
-    const dateStatus =
-      item.date_status === 'confirmed' || item.date_status === 'scheduled' || item.date_status === 'rumor'
-        ? item.date_status
-        : 'rumor'
-    const localMatch =
-      dedupedUpcomingCandidates.find(
-        (candidate) =>
-          candidate.group === group &&
-          candidate.headline === headline &&
-          getUpcomingDatePrecisionValue(candidate) === datePrecision &&
-          (scheduledDate ? candidate.scheduled_date === scheduledDate : candidate.scheduled_month === scheduledMonth),
-      ) ?? null
-    const nextRow: UpcomingCandidateRow = localMatch
-      ? {
-          ...localMatch,
-          scheduled_date: scheduledDate || localMatch.scheduled_date,
-          scheduled_month: scheduledMonth || localMatch.scheduled_month,
-          date_precision: datePrecision,
-          date_status: dateStatus,
-          release_format: normalizeReleaseFormatValue(item.release_format) || localMatch.release_format,
-          source_type: readNonEmptyString(item.source_type) ?? localMatch.source_type,
-          source_url: readNonEmptyString(item.source_url) ?? localMatch.source_url,
-          source_domain: getSourceDomain(readNonEmptyString(item.source_url) ?? localMatch.source_url),
-          confidence:
-            typeof item.confidence_score === 'number' && Number.isFinite(item.confidence_score)
-              ? item.confidence_score
-              : localMatch.confidence,
-          evidence_summary: readNonEmptyString(item.evidence_summary) ?? localMatch.evidence_summary,
-          event_key: localMatch.event_key ?? readNonEmptyString(item.upcoming_signal_id) ?? undefined,
-        }
-      : {
-          group,
-          scheduled_date: scheduledDate,
-          scheduled_month: scheduledMonth,
-          date_precision: datePrecision,
-          date_status: dateStatus,
-          headline,
-          release_format: normalizeReleaseFormatValue(item.release_format),
-          context_tags: [],
-          source_type: readNonEmptyString(item.source_type) ?? 'pending',
-          source_url: readNonEmptyString(item.source_url) ?? '',
-          source_domain: getSourceDomain(readNonEmptyString(item.source_url) ?? ''),
-          published_at: '',
-          confidence:
-            typeof item.confidence_score === 'number' && Number.isFinite(item.confidence_score)
-              ? item.confidence_score
-              : 0,
-          evidence_summary: readNonEmptyString(item.evidence_summary) ?? '',
-          tracking_status: watchlistByGroup.get(group)?.tracking_status ?? 'watch_only',
-          search_term: '',
-          event_key: readNonEmptyString(item.upcoming_signal_id) ?? undefined,
-        }
-    const rowKey = getUpcomingDashboardRowKey(nextRow)
-    if (seenUpcoming.has(rowKey)) {
-      continue
-    }
-
-    seenUpcoming.add(rowKey)
-    upcomingResults.push(nextRow)
-  }
-
   return {
-    entities: teamResults,
-    releases: releaseResults,
-    upcoming: upcomingResults,
+    entities: (Array.isArray(data?.entities) ? data.entities : []).reduce<SearchSurfaceEntityResult[]>((results, item) => {
+      const entitySlug = readNonEmptyString(item.entity_slug)
+      const canonicalPath = readNonEmptyString(item.canonical_path) ?? (entitySlug ? `/artists/${entitySlug}` : '')
+      const displayName = readNonEmptyString(item.display_name)
+      const canonicalName = readNonEmptyString(item.canonical_name) ?? displayName
+      const entityType = readNonEmptyString(item.entity_type)
+      if (!entitySlug || !canonicalPath || !displayName || !canonicalName || !entityType) {
+        return results
+      }
+
+      results.push({
+        entitySlug,
+        canonicalPath,
+        displayName,
+        canonicalName,
+        entityType,
+        agencyName: readNonEmptyString(item.agency_name),
+        matchReason: readNonEmptyString(item.match_reason) ?? 'partial',
+        matchedAlias: readNonEmptyString(item.matched_alias),
+        latestRelease:
+          item.latest_release &&
+          readNonEmptyString(item.latest_release.release_id) &&
+          readNonEmptyString(item.latest_release.release_title) &&
+          readNonEmptyString(item.latest_release.release_date)
+            ? {
+                releaseId: readNonEmptyString(item.latest_release.release_id) ?? '',
+                title: readNonEmptyString(item.latest_release.release_title) ?? '',
+                date: readNonEmptyString(item.latest_release.release_date) ?? '',
+                stream:
+                  item.latest_release.stream === 'album' || item.latest_release.stream === 'song'
+                    ? item.latest_release.stream
+                    : 'song',
+                releaseKind: normalizeApiReleaseKind(item.latest_release.release_kind, 'single'),
+              }
+            : null,
+        nextUpcoming:
+          item.next_upcoming && readNonEmptyString(item.next_upcoming.headline)
+            ? {
+                headline: readNonEmptyString(item.next_upcoming.headline) ?? '',
+                scheduledDate: readNonEmptyString(item.next_upcoming.scheduled_date) ?? '',
+                scheduledMonth: readNonEmptyString(item.next_upcoming.scheduled_month) ?? '',
+                datePrecision: normalizeSearchDatePrecision(item.next_upcoming.date_precision),
+                dateStatus: normalizeSearchDateStatus(item.next_upcoming.date_status),
+                releaseFormat: normalizeReleaseFormatValue(item.next_upcoming.release_format),
+                confidence:
+                  typeof item.next_upcoming.confidence_score === 'number' &&
+                  Number.isFinite(item.next_upcoming.confidence_score)
+                    ? item.next_upcoming.confidence_score
+                    : 0,
+              }
+            : null,
+      })
+      return results
+    }, []),
+    releases: (Array.isArray(data?.releases) ? data.releases : []).reduce<SearchSurfaceReleaseResult[]>((results, item) => {
+      const releaseId = readNonEmptyString(item.release_id)
+      const entitySlug = readNonEmptyString(item.entity_slug)
+      const detailPath =
+        readNonEmptyString(item.detail_path) ??
+        (releaseId && entitySlug ? `/artists/${entitySlug}/releases/${releaseId}` : '')
+      const entityPath = readNonEmptyString(item.entity_path) ?? (entitySlug ? `/artists/${entitySlug}` : '')
+      const displayName = readNonEmptyString(item.display_name)
+      const releaseTitle = readNonEmptyString(item.release_title)
+      const releaseDate = readNonEmptyString(item.release_date)
+      const stream = item.stream === 'album' || item.stream === 'song' ? item.stream : null
+      if (!releaseId || !entitySlug || !detailPath || !entityPath || !displayName || !releaseTitle || !releaseDate || !stream) {
+        return results
+      }
+
+      results.push({
+        releaseId,
+        detailPath,
+        entityPath,
+        entitySlug,
+        displayName,
+        releaseTitle,
+        releaseDate,
+        stream,
+        releaseKind: normalizeApiReleaseKind(item.release_kind, stream === 'album' ? 'album' : 'single'),
+        releaseFormat: normalizeReleaseFormatValue(item.release_format),
+        matchReason: readNonEmptyString(item.match_reason) ?? 'release_title_partial',
+        matchedAlias: readNonEmptyString(item.matched_alias),
+      })
+      return results
+    }, []),
+    upcoming: (Array.isArray(data?.upcoming) ? data.upcoming : []).reduce<SearchSurfaceUpcomingResult[]>((results, item) => {
+      const upcomingSignalId = readNonEmptyString(item.upcoming_signal_id)
+      const entitySlug = readNonEmptyString(item.entity_slug)
+      const entityPath = readNonEmptyString(item.entity_path) ?? (entitySlug ? `/artists/${entitySlug}` : '')
+      const displayName = readNonEmptyString(item.display_name)
+      const headline = readNonEmptyString(item.headline)
+      if (!upcomingSignalId || !entitySlug || !entityPath || !displayName || !headline) {
+        return results
+      }
+
+      results.push({
+        upcomingSignalId,
+        entityPath,
+        entitySlug,
+        displayName,
+        headline,
+        scheduled_date: readNonEmptyString(item.scheduled_date) ?? '',
+        scheduled_month: readNonEmptyString(item.scheduled_month) ?? '',
+        date_precision: normalizeSearchDatePrecision(item.date_precision),
+        date_status: normalizeSearchDateStatus(item.date_status),
+        release_format: normalizeReleaseFormatValue(item.release_format),
+        confidence:
+          typeof item.confidence_score === 'number' && Number.isFinite(item.confidence_score) ? item.confidence_score : 0,
+        source_type: readNonEmptyString(item.source_type) ?? 'pending',
+        source_url: readNonEmptyString(item.source_url) ?? '',
+        source_domain: readNonEmptyString(item.source_domain) ?? getSourceDomain(readNonEmptyString(item.source_url) ?? ''),
+        evidence_summary: readNonEmptyString(item.evidence_summary) ?? '',
+        matchReason: readNonEmptyString(item.match_reason) ?? 'partial',
+        matchedAlias: readNonEmptyString(item.matched_alias),
+      })
+      return results
+    }, []),
   }
 }
 
@@ -7798,10 +8004,8 @@ async function fetchSearchSurfaceApiSnapshot(
 
 function useSearchSurfaceResource({
   search,
-  fallbackSnapshot,
 }: {
   search: string
-  fallbackSnapshot: SearchSurfaceSnapshot
 }): SearchSurfaceResource {
   const cacheKey = search.trim()
   const cachedSnapshot = cacheKey ? searchSurfaceApiSnapshotCache.get(cacheKey) ?? null : null
@@ -7811,41 +8015,16 @@ function useSearchSurfaceResource({
     loading: boolean
     errorCode: string | null
     traceId: string | null
-  }>(() => {
-    if (cacheKey && !BACKEND_API_BASE_URL) {
-      return {
-        cacheKey,
-        snapshot: fallbackSnapshot,
-        loading: false,
-        errorCode: null,
-        traceId: null,
-      }
-    }
-
-    return {
-      cacheKey,
-      snapshot: cachedSnapshot,
-      loading: false,
-      errorCode: null,
-      traceId: null,
-    }
-  })
+  }>(() => ({
+    cacheKey,
+    snapshot: cachedSnapshot,
+    loading: false,
+    errorCode: null,
+    traceId: null,
+  }))
 
   useEffect(() => {
     if (!cacheKey) {
-      return
-    }
-
-    if (!BACKEND_API_BASE_URL) {
-      Promise.resolve().then(() => {
-        setRemoteState({
-          cacheKey,
-          snapshot: fallbackSnapshot,
-          loading: false,
-          errorCode: null,
-          traceId: null,
-        })
-      })
       return
     }
 
@@ -7916,7 +8095,7 @@ function useSearchSurfaceResource({
       cancelled = true
       controller.abort()
     }
-  }, [cacheKey, cachedSnapshot, fallbackSnapshot, search])
+  }, [cacheKey, cachedSnapshot, search])
 
   const activeSnapshot = cacheKey
     ? remoteState.cacheKey === cacheKey
@@ -7927,11 +8106,11 @@ function useSearchSurfaceResource({
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
   const source: SurfaceStatusSource = !cacheKey
     ? 'api'
-    : !BACKEND_API_BASE_URL
-      ? 'json'
-      : activeSnapshot || loading
+    : activeSnapshot || loading
+      ? BACKEND_API_BASE_URL
         ? 'api'
-        : 'backend_unavailable'
+        : 'json'
+      : 'backend_unavailable'
 
   return {
     ...(activeSnapshot ?? {
@@ -10050,6 +10229,37 @@ function describeUpcomingSignal(
   return `${formatDateStatus(item.date_status, language)} · ${formatUpcomingTimingLabel(item, language, formatter, fallback)}`
 }
 
+function describeSearchEntityResult(
+  item: SearchSurfaceEntityResult,
+  language: Language,
+  formatter: Intl.DateTimeFormat,
+  fallback: string,
+) {
+  if (item.nextUpcoming) {
+    return `${formatDateStatus(item.nextUpcoming.dateStatus, language)} · ${formatUpcomingTimingLabel(
+      {
+        scheduled_date: item.nextUpcoming.scheduledDate,
+        scheduled_month: item.nextUpcoming.scheduledMonth,
+        date_precision: item.nextUpcoming.datePrecision,
+      },
+      language,
+      formatter,
+      fallback,
+    )}`
+  }
+
+  if (item.latestRelease) {
+    return `${item.latestRelease.title} · ${formatOptionalDate(item.latestRelease.date, formatter, fallback)}`
+  }
+
+  return fallback
+}
+
+function describeSearchReleaseResult(item: SearchSurfaceReleaseResult, language: Language) {
+  const releaseFormat = formatReleaseFormat(item.releaseFormat, language)
+  return releaseFormat || item.releaseKind || item.stream
+}
+
 function parseDateValue(value?: string) {
   if (!value || !isExactDate(value)) {
     return -1
@@ -10747,7 +10957,7 @@ function getSourceDomain(sourceUrl: string) {
   }
 
   try {
-    return new URL(sourceUrl).hostname
+    return new URL(sourceUrl).hostname.replace(/^www\./, '')
   } catch {
     return ''
   }

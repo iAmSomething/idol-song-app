@@ -658,6 +658,26 @@ class FakeDb {
     }
 
     if (normalizedSql.includes('from upcoming_signals us') && normalizedSql.includes('projection_normalize_text(us.headline)')) {
+      if (params[0] === '컴백') {
+        return this.result<Row>([
+          {
+            upcoming_signal_id: 'month-only-signal',
+            entity_id: 'kickflip-entity-id',
+            entity_slug: 'kickflip',
+            display_name: 'KickFlip',
+            headline: 'KickFlip announces April comeback',
+            scheduled_date: null,
+            scheduled_month: '2026-04',
+            date_precision: 'month_only',
+            date_status: 'scheduled',
+            release_format: 'album',
+            confidence_score: 0.74,
+            source_type: 'weverse_notice',
+            source_url: 'https://www.weverse.io/kickflip/notice/1',
+            evidence_summary: 'April comeback teaser posted on Weverse.',
+          } as unknown as Row,
+        ]);
+      }
       return this.result<Row>([]);
     }
 
@@ -1117,9 +1137,12 @@ test('GET /v1/search returns envelope with entity, release, and upcoming matches
   const body = parseJson(response);
   assertReadMeta(body.meta, '/v1/search');
   assert.equal(body.data.entities[0].entity_slug, 'yena');
+  assert.equal(body.data.entities[0].canonical_path, '/artists/yena');
   assert.equal(body.data.entities[0].match_reason, 'alias_exact');
   assert.equal(body.data.entities[0].next_upcoming, null);
   assert.equal(body.data.releases[0].release_id, YENA_RELEASE_ID);
+  assert.equal(body.data.releases[0].detail_path, '/artists/yena/releases/22222222-2222-4222-8222-222222222222');
+  assert.equal(body.data.releases[0].entity_path, '/artists/yena');
   assert.equal(body.data.releases[0].match_reason, 'entity_exact_latest_release');
   assert.equal(body.data.upcoming.length, 0);
 });
@@ -1138,10 +1161,30 @@ test('GET /v1/search includes owner entity for exact release-title queries witho
   const body = parseJson(response);
   assertReadMeta(body.meta, '/v1/search');
   assert.equal(body.data.entities[0].entity_slug, 'ive');
+  assert.equal(body.data.entities[0].canonical_path, '/artists/ive');
   assert.equal(body.data.entities[0].match_reason, 'partial');
   assert.equal(body.data.entities[0].matched_alias, null);
   assert.equal(body.data.releases[0].release_id, IVE_RELEASE_ID);
+  assert.equal(body.data.releases[0].detail_path, '/artists/ive/releases/33333333-3333-4333-8333-333333333333');
   assert.equal(body.data.releases[0].match_reason, 'release_title_exact');
+});
+
+test('GET /v1/search includes direct-render fields for upcoming matches', async (t) => {
+  const app = createTestApp(t);
+  const response = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: '컴백',
+    },
+  });
+
+  assert.equal(response.statusCode, 200);
+  const body = parseJson(response);
+  assertReadMeta(body.meta, '/v1/search');
+  assert.equal(body.data.upcoming[0].entity_slug, 'kickflip');
+  assert.equal(body.data.upcoming[0].entity_path, '/artists/kickflip');
+  assert.equal(body.data.upcoming[0].source_domain, 'weverse.io');
 });
 
 test('public read endpoints return deterministic 429 envelopes when rate limited', async (t) => {

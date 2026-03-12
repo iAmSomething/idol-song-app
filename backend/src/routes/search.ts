@@ -181,6 +181,19 @@ function toReleaseFormat(value: string | null | undefined): string | null {
   return asNullableString(value);
 }
 
+function toSourceDomain(value: string | null | undefined): string | null {
+  const normalized = asNullableString(value);
+  if (!normalized) {
+    return null;
+  }
+
+  try {
+    return new URL(normalized).hostname.toLowerCase().replace(/^www\./, '');
+  } catch {
+    return null;
+  }
+}
+
 function resolveTodayIsoDate(timezone: string): string {
   return new Intl.DateTimeFormat('sv-SE', {
     timeZone: timezone,
@@ -806,6 +819,7 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
       {
         entities: finalEntityMatches.map((item) => ({
           entity_slug: item.entity_slug,
+          canonical_path: `/artists/${item.entity_slug}`,
           display_name: item.display_name,
           canonical_name: item.canonical_name,
           entity_type: item.entity_type,
@@ -818,6 +832,8 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
         releases: releaseMatches.map((item) => ({
           release_id: item.release_id,
           canonical_path: `/v1/releases/${item.release_id}`,
+          detail_path: `/artists/${item.entity_slug}/releases/${item.release_id}`,
+          entity_path: `/artists/${item.entity_slug}`,
           entity_slug: item.entity_slug,
           display_name: item.display_name,
           release_title: item.release_title,
@@ -830,6 +846,7 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
         })),
         upcoming: upcomingMatches.map((item) => ({
           upcoming_signal_id: item.upcoming_signal_id,
+          entity_path: `/artists/${item.entity_slug}`,
           entity_slug: item.entity_slug,
           display_name: item.display_name,
           headline: item.headline,
@@ -841,6 +858,7 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
           confidence_score: item.confidence_score,
           source_type: item.source_type,
           source_url: item.source_url,
+          source_domain: toSourceDomain(item.source_url),
           evidence_summary: item.evidence_summary,
           match_reason: item.match_reason,
           matched_alias: item.matched_alias,

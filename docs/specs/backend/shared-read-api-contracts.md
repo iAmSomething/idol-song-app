@@ -215,6 +215,7 @@
     "entities": [
       {
         "entity_slug": "triples",
+        "canonical_path": "/artists/triples",
         "display_name": "tripleS",
         "canonical_name": "tripleS",
         "entity_type": "group",
@@ -235,6 +236,8 @@
       {
         "release_id": "uuid",
         "canonical_path": "/v1/releases/uuid",
+        "detail_path": "/artists/ive/releases/uuid",
+        "entity_path": "/artists/ive",
         "entity_slug": "ive",
         "display_name": "IVE",
         "release_title": "REVIVE+",
@@ -250,6 +253,7 @@
       {
         "upcoming_signal_id": "uuid",
         "entity_slug": "yena",
+        "entity_path": "/artists/yena",
         "display_name": "YENA",
         "headline": "YENA confirms March comeback",
         "scheduled_date": "2026-03-11",
@@ -260,6 +264,7 @@
         "confidence_score": 0.93,
         "source_type": "news_rss",
         "source_url": "https://...",
+        "source_domain": "starnewskorea.com",
         "evidence_summary": "YENA confirmed...",
         "match_reason": "entity_exact",
         "matched_alias": "최예나"
@@ -274,6 +279,8 @@
 - alias normalization은 API가 책임진다
 - client는 matched alias 계산을 재구현하지 않는다
 - segmented empty state는 빈 배열로 표현한다
+- `entities[].canonical_path`, `releases[].detail_path`, `releases[].entity_path`, `upcoming[].entity_path`는 client가 local slug map 없이 기본 row action을 바로 연결할 수 있게 항상 채운다
+- `upcoming[].source_domain`은 client가 source URL 파싱을 다시 하지 않도록 server가 채운다
 - exact `entity/alias` query는 companion `releases` / `upcoming` row를 같이 반환할 수 있다
 - exact `release_title` 또는 exact upcoming `headline` query가 잡히면 owner entity card를 `entities`에 같이 포함한다
 - 위 owner entity card는 `match_reason = partial`, `matched_alias = null`로 고정한다
