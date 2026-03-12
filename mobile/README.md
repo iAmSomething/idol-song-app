@@ -121,6 +121,41 @@ cd mobile
 npm run test
 ```
 
+mobile UI primitives:
+
+```bash
+cd mobile
+npm run test:qa:ui
+```
+
+mobile 기능/screen 흐름:
+
+```bash
+cd mobile
+npm run test:qa:functional
+```
+
+mobile backend/server communication:
+
+```bash
+cd mobile
+npm run test:qa:server
+```
+
+iOS/Android platform sanity:
+
+```bash
+cd mobile
+npm run verify:qa:platforms
+```
+
+full mobile QA matrix:
+
+```bash
+cd mobile
+npm run verify:qa:full
+```
+
 runtime policy guard:
 
 ```bash

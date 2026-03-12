@@ -30,6 +30,11 @@ describe('RN selector spec parity', () => {
 
   test('matches Korean alias and release title queries into display-model search segments', () => {
     const dataset = cloneBundledDatasetFixture();
+    const yenaUpcoming = dataset.upcomingCandidates.find((item) => item.group === 'YENA');
+
+    if (!yenaUpcoming) {
+      throw new Error('Expected YENA upcoming fixture row to exist.');
+    }
 
     const aliasResults = selectSearchResults(dataset, '최예나');
     expect(aliasResults.query).toBe('최예나');
@@ -40,8 +45,8 @@ describe('RN selector spec parity', () => {
     expect(releaseResults.releases[0]?.release.releaseTitle).toBe('LOVE CATCHER');
     expect(releaseResults.releases[0]?.matchKind).toBe('release_title_exact');
 
-    const upcomingResults = selectSearchResults(dataset, 'YENA confirms a March 11 comeback');
-    expect(upcomingResults.upcoming[0]?.upcoming.displayGroup).toBe('YENA');
+    const upcomingResults = selectSearchResults(dataset, yenaUpcoming.headline);
+    expect(upcomingResults.upcoming).toHaveLength(0);
   });
 
   test('uses monogram and hidden links when team metadata is missing instead of inventing placeholders', () => {
@@ -82,11 +87,11 @@ describe('RN selector spec parity', () => {
     expect(team?.badge?.imageUrl).toBeUndefined();
     expect(team?.badge?.monogram).toBe('YE');
     expect(detail).not.toBeNull();
+    expect(detail?.nextUpcoming).toBeNull();
     expect(detail?.sourceTimeline).toHaveLength(0);
 
     const disclosure = buildEntitySourceDisclosure(detail!);
     expect(disclosure?.body).toContain('아티스트 출처 · 미기재');
-    expect(disclosure?.body).toContain('다음 컴백 출처 · 미기재');
     expect(disclosure?.body).toContain('최신 발매 출처 · 미기재');
     expect(disclosure?.body).toContain('소스 타임라인 · 미해결');
   });

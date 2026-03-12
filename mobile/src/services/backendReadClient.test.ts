@@ -77,6 +77,128 @@ describe('mobile backend read client', () => {
     expect(response.data.summary.verified_count).toBe(1);
   });
 
+  test('requests search results from the shared backend contract', async () => {
+    const fetchMock = jest.fn(async () =>
+      createJsonResponse({
+        meta: {
+          generatedAt: '2026-03-10T00:00:03.000Z',
+        },
+        data: {
+          query: '최예나',
+          entities: [
+            {
+              entity_slug: 'yena',
+              display_name: 'YENA',
+              canonical_name: 'YENA',
+              entity_type: 'solo',
+              match_reason: 'alias_exact',
+              matched_alias: '최예나',
+            },
+          ],
+          releases: [],
+          upcoming: [],
+        },
+      }),
+    );
+
+    const client = createBackendReadClient(buildRuntimeConfig(), fetchMock as unknown as typeof fetch);
+    const response = await client.getSearch('최예나', 5);
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      'https://example.com/api/v1/search?q=%EC%B5%9C%EC%98%88%EB%82%98&limit=5',
+      expect.objectContaining({
+        method: 'GET',
+      }),
+    );
+    expect(response.data.entities[0]?.entity_slug).toBe('yena');
+    expect(response.meta?.generatedAt).toBe('2026-03-10T00:00:03.000Z');
+  });
+
+  test('requests radar payload from the shared backend contract', async () => {
+    const fetchMock = jest.fn(async () =>
+      createJsonResponse({
+        meta: {
+          generatedAt: '2026-03-10T00:00:04.000Z',
+        },
+        data: {
+          featured_upcoming: null,
+          weekly_upcoming: [],
+          change_feed: [],
+          long_gap: [],
+          rookie: [
+            {
+              entity_slug: 'hearts2hearts',
+              display_name: 'Hearts2Hearts',
+              has_upcoming_signal: true,
+              debut_year: 2026,
+              latest_release: null,
+              latest_signal: null,
+            },
+          ],
+        },
+      }),
+    );
+
+    const client = createBackendReadClient(buildRuntimeConfig(), fetchMock as unknown as typeof fetch);
+    const response = await client.getRadar();
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      'https://example.com/api/v1/radar',
+      expect.objectContaining({
+        method: 'GET',
+      }),
+    );
+    expect(response.data.rookie[0]?.entity_slug).toBe('hearts2hearts');
+  });
+
+  test('requests entity detail payload from the shared backend contract', async () => {
+    const fetchMock = jest.fn(async () =>
+      createJsonResponse({
+        meta: {
+          generatedAt: '2026-03-10T00:00:05.000Z',
+        },
+        data: {
+          identity: {
+            entity_slug: 'p1harmony',
+            display_name: 'P1Harmony',
+            entity_type: 'group',
+          },
+          official_links: {
+            youtube: 'https://www.youtube.com/@P1Harmonyofficial',
+            x: null,
+            instagram: null,
+          },
+          youtube_channels: {
+            primary_team_channel_url: 'https://www.youtube.com/@P1Harmonyofficial',
+            mv_allowlist_urls: ['https://www.youtube.com/@P1Harmonyofficial'],
+          },
+          tracking_state: {
+            tier: 'core',
+            watch_reason: 'upcoming_exact',
+            tracking_status: 'active',
+          },
+          next_upcoming: null,
+          latest_release: null,
+          recent_albums: [],
+          source_timeline: [],
+          artist_source_url: 'https://www.youtube.com/@P1Harmonyofficial',
+        },
+      }),
+    );
+
+    const client = createBackendReadClient(buildRuntimeConfig(), fetchMock as unknown as typeof fetch);
+    const response = await client.getEntityDetail('p1harmony');
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      'https://example.com/api/v1/entities/p1harmony',
+      expect.objectContaining({
+        method: 'GET',
+      }),
+    );
+    expect(response.data.identity.entity_slug).toBe('p1harmony');
+    expect(response.data.official_links.youtube).toBe('https://www.youtube.com/@P1Harmonyofficial');
+  });
+
   test('resolves release detail through legacy lookup and then canonical release id', async () => {
     const fetchMock = jest
       .fn()

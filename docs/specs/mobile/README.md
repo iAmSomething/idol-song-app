@@ -58,72 +58,74 @@
    - 화면별 완료 체크리스트
 24. `testing-strategy-spec.md`
    - unit/component/smoke/manual 테스트 전략
-25. `typescript-interface-examples.md`
+25. `mobile-ui-functional-server-test-strategy.md`
+   - iOS/Android UI, 기능, 서버 통신 자동 테스트 묶음과 실행 순서
+26. `typescript-interface-examples.md`
    - display model, props, screen state의 TS 예시
-26. `github-issue-breakdown-plan.md`
+27. `github-issue-breakdown-plan.md`
    - 모바일 구현을 위한 GitHub issue 분해 계획
-27. `domain-glossary.md`
+28. `domain-glossary.md`
    - 팀, 릴리즈, upcoming, handoff 등 핵심 용어 정의
-28. `non-functional-requirements-spec.md`
+29. `non-functional-requirements-spec.md`
    - 성능, 상태 보존, 접근성, 테스트성 요구사항
-29. `decision-log.md`
+30. `decision-log.md`
    - 제품/UX 핵심 결정 기록
-30. `analytics-event-spec.md`
+31. `analytics-event-spec.md`
    - 화면/CTA/외부 이동 중심 분석 이벤트 정의
-31. `data-sync-freshness-spec.md`
+32. `data-sync-freshness-spec.md`
    - JSON 산출물 신선도, 갱신 기대치, 캐싱/partial-data 정책
-32. `privacy-security-spec.md`
+33. `privacy-security-spec.md`
    - 외부 링크, analytics, 로컬 저장, 보안 가드 규칙
-33. `accessibility-reading-order-spec.md`
+34. `accessibility-reading-order-spec.md`
    - VoiceOver/TalkBack 기준 읽기 순서와 라벨 정책
-34. `release-readiness-gate.md`
+35. `release-readiness-gate.md`
    - 모바일 MVP 출시 전 게이트와 차단 조건
-35. `route-param-contracts.md`
+36. `route-param-contracts.md`
    - 화면 path, param, deep-link, back behavior 계약
-36. `configuration-environment-spec.md`
+37. `configuration-environment-spec.md`
    - 환경 분리, 데이터 소스, feature gate, build 설정 원칙
-37. `ios-preview-signing-personal-team.md`
+38. `ios-preview-signing-personal-team.md`
    - personal Apple team 기준 iOS preview signing / provisioning / install 절차
-38. `observability-error-taxonomy.md`
+39. `observability-error-taxonomy.md`
    - 오류 분류, 로깅 포인트, 사용자 피드백 규칙
-39. `content-governance-spec.md`
+40. `content-governance-spec.md`
    - 프로필/아트워크/상세 메타데이터 운영 원칙
-40. `performance-budget-spec.md`
+41. `performance-budget-spec.md`
    - 화면별 체감 성능 예산과 금지 패턴
-41. `state-restoration-spec.md`
+42. `state-restoration-spec.md`
    - 탭/시트/뒤로가기/복귀 시 상태 복원 규칙
-42. `feature-gate-matrix.md`
+43. `feature-gate-matrix.md`
    - Radar, MV, analytics 등 기능 게이트와 fallback 규칙
-43. `external-dependency-risk-spec.md`
+44. `external-dependency-risk-spec.md`
    - 외부 서비스/데이터 의존 리스크와 완화 전략
-44. `accessibility-audit-2026-03-09.md`
+45. `accessibility-audit-2026-03-09.md`
    - 구현된 모바일 화면에 대한 접근성/동적 글자 크기 점검 기록
-45. `decision-log-review-checklist.md`
+46. `decision-log-review-checklist.md`
    - 결정 로그 기준 구현 점검 체크리스트
-46. `rn-implementation-audit-2026-03-10.md`
+47. `rn-implementation-audit-2026-03-10.md`
    - RN 구현 중복/신뢰도 경로 감사 기록
-47. `rn-quality-coverage-matrix.md`
+48. `rn-quality-coverage-matrix.md`
    - 공용 컴포넌트 / screen smoke / manual QA coverage matrix
-48. `rn-screen-structure-validation-2026-03-10.md`
+49. `rn-screen-structure-validation-2026-03-10.md`
    - RN 주요 화면의 wireframe/checklist 구조 검증 기록
-49. `rn-journey-walkthrough-2026-03-10.md`
+50. `rn-journey-walkthrough-2026-03-10.md`
    - RN 핵심 user journey walkthrough 결과
-50. `rn-freshness-review-2026-03-10.md`
+51. `rn-freshness-review-2026-03-10.md`
    - RN freshness/stale disclosure 리뷰 기록
-51. `rn-traceability-matrix.md`
+52. `rn-traceability-matrix.md`
    - 전체 mobile spec 문서와 RN issue 매핑
-52. `rn-selector-contract-audit.md`
+53. `rn-selector-contract-audit.md`
    - selector/adaptor/display-model naming 및 contract parity audit
-53. `rn-release-readiness-gate-2026-03-11.md`
+54. `rn-release-readiness-gate-2026-03-11.md`
    - preview sign-off 전 RN release-readiness gate 실행 결과와 blocker 분류
-54. `rn-runtime-device-qa-2026-03-11.md`
+55. `rn-runtime-device-qa-2026-03-11.md`
    - shipping-target simulator / Android runtime QA 실행 결과와 남은 blocker
 ### Screen Specs
-55. `calendar-screen.md`
-56. `radar-screen.md`
-57. `search-screen.md`
-58. `team-detail-screen.md`
-59. `release-detail-screen.md`
+56. `calendar-screen.md`
+57. `radar-screen.md`
+58. `search-screen.md`
+59. `team-detail-screen.md`
+60. `release-detail-screen.md`
 
 ## 읽는 순서
 1. `master-spec.md`
@@ -149,38 +151,39 @@
 21. `expo-implementation-guide.md`
 22. `screen-delivery-checklists.md`
 23. `testing-strategy-spec.md`
-24. `typescript-interface-examples.md`
-25. `github-issue-breakdown-plan.md`
-26. `domain-glossary.md`
-27. `non-functional-requirements-spec.md`
-28. `decision-log.md`
-29. `analytics-event-spec.md`
-30. `data-sync-freshness-spec.md`
-31. `privacy-security-spec.md`
-32. `accessibility-reading-order-spec.md`
-33. `release-readiness-gate.md`
-34. `route-param-contracts.md`
-35. `configuration-environment-spec.md`
-36. `ios-preview-signing-personal-team.md`
-37. `observability-error-taxonomy.md`
-38. `content-governance-spec.md`
-39. `performance-budget-spec.md`
-40. `state-restoration-spec.md`
-41. `feature-gate-matrix.md`
-42. `external-dependency-risk-spec.md`
-43. `decision-log-review-checklist.md`
-44. `rn-implementation-audit-2026-03-10.md`
-45. `rn-quality-coverage-matrix.md`
-46. `rn-screen-structure-validation-2026-03-10.md`
-47. `rn-journey-walkthrough-2026-03-10.md`
-48. `rn-freshness-review-2026-03-10.md`
-49. `rn-traceability-matrix.md`
-50. `rn-selector-contract-audit.md`
-51. `rn-release-readiness-gate-2026-03-11.md`
-52. `rn-runtime-device-qa-2026-03-11.md`
-53. 각 화면 스펙
-54. `edge-case-catalog.md`
-55. `qa-acceptance-spec.md`
+24. `mobile-ui-functional-server-test-strategy.md`
+25. `typescript-interface-examples.md`
+26. `github-issue-breakdown-plan.md`
+27. `domain-glossary.md`
+28. `non-functional-requirements-spec.md`
+29. `decision-log.md`
+30. `analytics-event-spec.md`
+31. `data-sync-freshness-spec.md`
+32. `privacy-security-spec.md`
+33. `accessibility-reading-order-spec.md`
+34. `release-readiness-gate.md`
+35. `route-param-contracts.md`
+36. `configuration-environment-spec.md`
+37. `ios-preview-signing-personal-team.md`
+38. `observability-error-taxonomy.md`
+39. `content-governance-spec.md`
+40. `performance-budget-spec.md`
+41. `state-restoration-spec.md`
+42. `feature-gate-matrix.md`
+43. `external-dependency-risk-spec.md`
+44. `decision-log-review-checklist.md`
+45. `rn-implementation-audit-2026-03-10.md`
+46. `rn-quality-coverage-matrix.md`
+47. `rn-screen-structure-validation-2026-03-10.md`
+48. `rn-journey-walkthrough-2026-03-10.md`
+49. `rn-freshness-review-2026-03-10.md`
+50. `rn-traceability-matrix.md`
+51. `rn-selector-contract-audit.md`
+52. `rn-release-readiness-gate-2026-03-11.md`
+53. `rn-runtime-device-qa-2026-03-11.md`
+54. 각 화면 스펙
+55. `edge-case-catalog.md`
+56. `qa-acceptance-spec.md`
 
 ## 구현 원칙
 - 모바일은 웹과 다른 레이아웃을 사용한다.
