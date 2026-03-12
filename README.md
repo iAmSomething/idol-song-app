@@ -311,6 +311,7 @@ npm run dev
 ```
 
 - backend 연결로 띄우려면 `VITE_API_BASE_URL=http://localhost:3213 npm run dev`
+- GitHub Pages production build는 `VITE_API_BASE_URL`이 비어 있어도 `backend/reports/backend_freshness_handoff.json`의 production backend URL을 읽어 API runtime으로 빌드한다.
 - browser에서 separate API base URL을 쓸 때 backend는 `APP_ENV`와 `WEB_ALLOWED_ORIGINS`를 같이 맞춰야 한다. production 기본 origin은 `https://iamsomething.github.io`다.
 - committed JSON snapshot은 import/parity/debug artifact로 유지되지만, shipped web cut-over surface의 runtime source switch로는 더 이상 사용하지 않는다.
 - `web/.env.example`에는 Pages / preview rehearsal에서 쓰는 API base env baseline이 들어 있다.
