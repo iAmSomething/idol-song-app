@@ -210,7 +210,12 @@ function buildAcceptanceFixtureResult(fixture, releases, details, artworkRows, u
   const promotedRelease = releaseCandidates[0] ?? null;
   const detail = findDetail(details, promotedRelease);
   const artwork = findArtwork(artworkRows, promotedRelease);
-  const userFacingUpcomingOnly = Boolean(exactUpcoming) && !promotedRelease;
+  const promotedReleaseDate = normalizeText(promotedRelease?.release_date);
+  const upcomingScheduledDate = normalizeText(exactUpcoming?.scheduled_date);
+  const userFacingUpcomingOnly = Boolean(
+    exactUpcoming &&
+      (!promotedRelease || !promotedReleaseDate || !upcomingScheduledDate || promotedReleaseDate !== upcomingScheduledDate),
+  );
 
   const checks = {
     exact_upcoming_present: Boolean(exactUpcoming),

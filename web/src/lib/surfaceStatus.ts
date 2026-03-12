@@ -1,4 +1,4 @@
-export type SurfaceStatusSource = 'api' | 'json' | 'json_fallback' | 'backend_unavailable'
+export type SurfaceStatusSource = 'api' | 'json' | 'backend_unavailable'
 export type SurfaceFallbackReasonKey =
   | 'timeout'
   | 'network_error'

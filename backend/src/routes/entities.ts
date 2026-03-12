@@ -549,6 +549,30 @@ function filterElapsedExactUpcomingSummary(upcoming: UpcomingSummary | null, tod
     : upcoming;
 }
 
+function filterElapsedOrReleasedExactUpcomingSummary(
+  upcoming: UpcomingSummary | null,
+  todayIsoDate: string,
+  latestReleaseDate: string | null | undefined,
+): UpcomingSummary | null {
+  if (!upcoming) {
+    return null;
+  }
+
+  if (upcoming.date_precision !== 'exact' || !upcoming.scheduled_date) {
+    return upcoming;
+  }
+
+  if (upcoming.scheduled_date < todayIsoDate) {
+    return null;
+  }
+
+  if (latestReleaseDate && upcoming.scheduled_date === latestReleaseDate) {
+    return null;
+  }
+
+  return upcoming;
+}
+
 function normalizeTrackingStateForSurface(tier: string | null, watchReason: string | null, trackingStatus: string | null): TrackingStateBlock {
   if (tier === 'longtail' && trackingStatus === 'watch_only') {
     return {
@@ -592,6 +616,7 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string, todayIsoDa
     ? youtubeChannels.mv_allowlist_urls.filter((value): value is string => typeof value === 'string' && value.length > 0)
     : [];
   const officialYoutubeUrl = asNullableString(officialLinks.youtube);
+  const normalizedLatestRelease = normalizeReleaseSummary(payload.latest_release);
   const normalizedTrackingState = normalizeTrackingStateForSurface(
     asNullableString(trackingState.tier),
     asNullableString(trackingState.watch_reason),
@@ -624,8 +649,12 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string, todayIsoDa
       mv_allowlist_urls: mvAllowlistUrls,
     },
     tracking_state: normalizedTrackingState,
-    next_upcoming: filterElapsedExactUpcomingSummary(normalizeUpcomingSummary(payload.next_upcoming), todayIsoDate),
-    latest_release: normalizeReleaseSummary(payload.latest_release),
+    next_upcoming: filterElapsedOrReleasedExactUpcomingSummary(
+      normalizeUpcomingSummary(payload.next_upcoming),
+      todayIsoDate,
+      normalizedLatestRelease?.release_date,
+    ),
+    latest_release: normalizedLatestRelease,
     recent_albums: dedupeRecentAlbumSummaries(normalizeReleaseSummaryArray(payload.recent_albums)),
     source_timeline: normalizeSourceTimeline(payload.source_timeline),
     artist_source_url: asNullableString(payload.artist_source_url),
