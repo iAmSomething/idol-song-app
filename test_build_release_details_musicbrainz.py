@@ -7,6 +7,42 @@ import build_release_details_musicbrainz as builder
 
 
 class BuildReleaseDetailsMusicBrainzTitleTrackTests(unittest.TestCase):
+    def test_parse_scoped_cohorts_accepts_supported_values(self) -> None:
+        self.assertEqual(
+            builder.parse_scoped_cohorts("latest,recent"),
+            {"latest", "recent"},
+        )
+
+    def test_parse_scoped_cohorts_rejects_unknown_values(self) -> None:
+        with self.assertRaises(ValueError):
+            builder.parse_scoped_cohorts("latest,foo")
+
+    def test_matches_execution_scope_respects_cohort_filter(self) -> None:
+        item = {
+            "group": "YENA",
+            "release_title": "LOVE CATCHER",
+            "release_date": "2026-03-11",
+            "stream": "album",
+        }
+        self.assertTrue(
+            builder.matches_execution_scope(item, None, {"latest"}, date(2026, 3, 12))
+        )
+        self.assertFalse(
+            builder.matches_execution_scope(item, None, {"recent"}, date(2026, 3, 12))
+        )
+
+    def test_mv_backfill_scope_matches_checks_cohorts_and_groups(self) -> None:
+        execution_scope = {"groups": ["YENA"], "cohorts": ["latest", "recent"]}
+        matching_summary = {
+            "execution_scope": {"groups": ["YENA"], "cohorts": ["latest", "recent"]}
+        }
+        mismatched_summary = {
+            "execution_scope": {"groups": ["YENA"], "cohorts": ["historical"]}
+        }
+
+        self.assertTrue(builder.mv_backfill_scope_matches(matching_summary, execution_scope))
+        self.assertFalse(builder.mv_backfill_scope_matches(mismatched_summary, execution_scope))
+
     def test_exact_title_match_outranks_nearby_single_fallback(self) -> None:
         detail = {
             "group": "TWICE",
