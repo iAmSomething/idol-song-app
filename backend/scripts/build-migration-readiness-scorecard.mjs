@@ -502,7 +502,7 @@ function buildMobileRuntimeModeCategory(runtimeSourceText, datasetSourceText, de
       expected_modes: expectedModes,
       backend_primary_selection: backendPrimarySelection,
       debug_policy_aligned: debugPolicyAligned,
-      bundled_static_primary_only_in_development: developmentBundled && previewBackend && productionBackend,
+      backend_api_primary_in_all_profiles: developmentBackend && previewBackend && productionBackend,
     },
   };
 }

@@ -69,7 +69,7 @@ test('buildScheduledEvidenceSummary marks daily cadence as missing after several
   assert.equal(summary.missed_scheduled_windows, 5);
 });
 
-test('buildScheduledEvidenceSummary uses workflow updated_at as warm-up reference when no scheduled runs exist yet', () => {
+test('buildScheduledEvidenceSummary does not reset cadence warm-up from workflow updated_at churn', () => {
   const summary = buildScheduledEvidenceSummary({
     workflowRegistered: true,
     workflowMetadata: {
@@ -84,11 +84,11 @@ test('buildScheduledEvidenceSummary uses workflow updated_at as warm-up referenc
     now: '2026-03-11T16:10:01.000Z',
   });
 
-  assert.equal(summary.status, 'warming_up');
-  assert.equal(summary.schedule_reference_at, '2026-03-11T13:45:16.000Z');
-  assert.equal(summary.expected_scheduled_runs_by_now, 0);
-  assert.equal(summary.missed_scheduled_windows, 0);
-  assert.equal(summary.first_expected_run_at, '2026-03-12T00:00:00.000Z');
+  assert.equal(summary.status, 'scheduled_evidence_missing');
+  assert.equal(summary.schedule_reference_at, '2026-03-06T07:34:09.000Z');
+  assert.equal(summary.expected_scheduled_runs_by_now, 5);
+  assert.equal(summary.missed_scheduled_windows, 5);
+  assert.equal(summary.first_expected_run_at, '2026-03-07T00:00:00.000Z');
 });
 
 test('buildScheduledEvidenceSummary keeps weekly cadence in warm-up before the first due window', () => {

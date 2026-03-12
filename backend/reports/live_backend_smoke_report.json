@@ -1,0 +1,227 @@
+{
+  "generated_at": "2026-03-12T08:06:21.802Z",
+  "started_at": "2026-03-12T08:06:20.537Z",
+  "target": "preview",
+  "base_url": "https://idol-song-app-production.up.railway.app",
+  "timeout_ms": 5000,
+  "fixtures_path": "/Users/gimtaehun/Desktop/idol-song-app/backend/fixtures/live_backend_smoke_fixtures.json",
+  "fixture_keys": [
+    "search-yena",
+    "calendar-2026-03",
+    "radar-default",
+    "entity-yena",
+    "release-ive-revive-plus"
+  ],
+  "ready_statuses_allowed": [
+    "ready",
+    "degraded"
+  ],
+  "ready_check_skipped": false,
+  "summary": {
+    "total_checks": 7,
+    "fixture_checks": 5,
+    "passed_checks": 0,
+    "failed_checks": 7,
+    "ok": false,
+    "by_surface": {
+      "health": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "readiness": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "search": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "calendar_month": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "radar": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "entity_detail": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      },
+      "release_detail": {
+        "total": 1,
+        "passed": 0,
+        "failed": 1
+      }
+    }
+  },
+  "checks": [
+    {
+      "label": "health",
+      "surface": "health",
+      "fixture_key": null,
+      "ok": false,
+      "status": 502,
+      "duration_ms": 480.05,
+      "error": "Expected 200 from /health, received 502",
+      "requests": [
+        {
+          "label": "health",
+          "path": "/health",
+          "status": 502,
+          "request_id_sent": "live-smoke-health-664be8fc-f471-4318-bfda-afe59d1681b4",
+          "response_request_id": null,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "body_preview": "{\"status\":\"error\",\"code\":502,\"message\":\"Application failed to respond\",\"request_id\":\"rg0sWPtAS3mVRSvlacI7Nw\"}",
+          "network_error": null
+        }
+      ]
+    },
+    {
+      "label": "ready",
+      "surface": "readiness",
+      "fixture_key": null,
+      "ok": false,
+      "status": 502,
+      "duration_ms": 291.51,
+      "error": "Expected 200 from /ready, received 502",
+      "requests": [
+        {
+          "label": "ready",
+          "path": "/ready",
+          "status": 502,
+          "request_id_sent": "live-smoke-ready-79be8a61-f9b5-4523-aaf4-ed76e5804e24",
+          "response_request_id": null,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "body_preview": "{\"status\":\"error\",\"code\":502,\"message\":\"Application failed to respond\",\"request_id\":\"FGpmGQBiRv28Fo9oacI7Nw\"}",
+          "network_error": null
+        }
+      ]
+    },
+    {
+      "label": "fixture:search-yena",
+      "surface": "search",
+      "fixture_key": "search-yena",
+      "ok": false,
+      "status": 502,
+      "duration_ms": 98.98,
+      "error": "Expected 200 from /v1/search?q=%EC%B5%9C%EC%98%88%EB%82%98, received 502",
+      "requests": [
+        {
+          "label": "search-yena",
+          "path": "/v1/search?q=%EC%B5%9C%EC%98%88%EB%82%98",
+          "status": 502,
+          "request_id_sent": "live-smoke-search-yena-f70e5a67-87b3-4626-a78f-5a30d6e20dc3",
+          "response_request_id": null,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "body_preview": "{\"status\":\"error\",\"code\":502,\"message\":\"Application failed to respond\",\"request_id\":\"srt5btYDSeuLPaMMacI7Nw\"}",
+          "network_error": null
+        }
+      ]
+    },
+    {
+      "label": "fixture:calendar-2026-03",
+      "surface": "calendar_month",
+      "fixture_key": "calendar-2026-03",
+      "ok": false,
+      "status": 502,
+      "duration_ms": 97.79,
+      "error": "Expected 200 from /v1/calendar/month?month=2026-03, received 502",
+      "requests": [
+        {
+          "label": "calendar-2026-03",
+          "path": "/v1/calendar/month?month=2026-03",
+          "status": 502,
+          "request_id_sent": "live-smoke-calendar-2026-03-f297933b-6994-41d5-a965-df937741672a",
+          "response_request_id": null,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "body_preview": "{\"status\":\"error\",\"code\":502,\"message\":\"Application failed to respond\",\"request_id\":\"cX9Ny0VlRxGhmNpFacI7Nw\"}",
+          "network_error": null
+        }
+      ]
+    },
+    {
+      "label": "fixture:radar-default",
+      "surface": "radar",
+      "fixture_key": "radar-default",
+      "ok": false,
+      "status": 502,
+      "duration_ms": 97.66,
+      "error": "Expected 200 from /v1/radar, received 502",
+      "requests": [
+        {
+          "label": "radar-default",
+          "path": "/v1/radar",
+          "status": 502,
+          "request_id_sent": "live-smoke-radar-default-d62c6e82-c0c9-47ce-a39c-c8254ea40df5",
+          "response_request_id": null,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "body_preview": "{\"status\":\"error\",\"code\":502,\"message\":\"Application failed to respond\",\"request_id\":\"zWvdKnPBTaSaO7x_acI7Nw\"}",
+          "network_error": null
+        }
+      ]
+    },
+    {
+      "label": "fixture:entity-yena",
+      "surface": "entity_detail",
+      "fixture_key": "entity-yena",
+      "ok": false,
+      "status": 502,
+      "duration_ms": 97.9,
+      "error": "Expected 200 from /v1/entities/yena, received 502",
+      "requests": [
+        {
+          "label": "entity-yena",
+          "path": "/v1/entities/yena",
+          "status": 502,
+          "request_id_sent": "live-smoke-entity-yena-5a3ffeaf-eb5f-485d-baf0-125e59ad3442",
+          "response_request_id": null,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "body_preview": "{\"status\":\"error\",\"code\":502,\"message\":\"Application failed to respond\",\"request_id\":\"HyGoyksBRwyh2Lx6acI7Nw\"}",
+          "network_error": null
+        }
+      ]
+    },
+    {
+      "label": "fixture:release-ive-revive-plus",
+      "surface": "release_detail",
+      "fixture_key": "release-ive-revive-plus",
+      "ok": false,
+      "status": 502,
+      "duration_ms": 98.39,
+      "error": "Expected 200 from /v1/releases/lookup?entity_slug=ive&title=REVIVE%2B&date=2026-02-23&stream=album, received 502",
+      "requests": [
+        {
+          "label": "release-ive-revive-plus-lookup",
+          "path": "/v1/releases/lookup?entity_slug=ive&title=REVIVE%2B&date=2026-02-23&stream=album",
+          "status": 502,
+          "request_id_sent": "live-smoke-release-ive-revive-plus-lookup-e103c60a-c7a1-4377-9ac8-dfccd10cef07",
+          "response_request_id": null,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "body_preview": "{\"status\":\"error\",\"code\":502,\"message\":\"Application failed to respond\",\"request_id\":\"-wo3cJo1Tra7Ny60acI7Nw\"}",
+          "network_error": null
+        }
+      ]
+    }
+  ]
+}

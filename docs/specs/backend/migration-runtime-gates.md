@@ -50,10 +50,10 @@ runtime gate는 아래 산출물을 기본 입력으로 사용한다.
 worker cadence evidence에는 gate 상태와 별개로 아래 cadence status를 함께 남긴다.
 
 - `warming_up`
-  - workflow schedule은 설정됐지만, 첫 scheduled sample window가 아직 도래하지 않았거나 grace 안에 있다
+  - workflow schedule은 설정됐지만, `created_at` 기준 첫 scheduled sample window가 아직 도래하지 않았다
   - runtime gate에서는 `needs_review`로 해석한다
 - `scheduled_evidence_missing`
-  - 첫 scheduled sample window와 warm-up grace가 지난 뒤에도 scheduled sample이 기록되지 않았다
+  - 첫 scheduled sample window가 지난 뒤에도 scheduled sample이 기록되지 않았다
   - runtime gate에서는 `fail`로 해석한다
 
 ## 5. Gate Definitions
@@ -136,8 +136,9 @@ worker cadence evidence에는 gate 상태와 별개로 아래 cadence status를 
 - slow path는 historical enrichment / readiness evidence용으로 separate cadence를 가진다
 - preview에서는 cadence가 production보다 낮아도 되지만, rehearsal 직전에는 같은 순서로 한 번 이상 검증한다
 - scheduled sample이 0건이어도 바로 null-based fail로 보지 않는다
-  - 첫 scheduled run이 아직 오지 않았으면 `warming_up`
-  - expected scheduled window가 이미 여러 번 지났으면 `scheduled_evidence_missing`
+  - 첫 scheduled run due time이 아직 오지 않았으면 `warming_up`
+  - 첫 due time이 한 번이라도 지났으면 `scheduled_evidence_missing`
+- workflow file이 수정돼도 warm-up reference는 `updated_at`로 밀리지 않는다
 - `scheduled_evidence_missing`는 "evidence가 부족하다"가 아니라 "예상된 scheduled execution이 관측되지 않았다"는 운영 실패 신호다
 
 ### 5.5 Report Bundle Consistency

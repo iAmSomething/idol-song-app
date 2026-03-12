@@ -123,10 +123,7 @@ export function buildScheduledEvidenceSummary({
   const workflowUpdatedAt = toDate(workflowMetadata?.updated_at);
   const nowDate = toDate(now);
   const warmupGraceHours = WARMUP_GRACE_HOURS_BY_CADENCE[cadenceLabel] ?? WARMUP_GRACE_HOURS_BY_CADENCE.custom;
-  const scheduleReferenceAt =
-    normalizedObservedRuns === 0 && workflowUpdatedAt && workflowCreatedAt && workflowUpdatedAt > workflowCreatedAt
-      ? workflowUpdatedAt
-      : workflowCreatedAt;
+  const scheduleReferenceAt = workflowCreatedAt ?? workflowUpdatedAt;
   const firstExpectedRunAt =
     workflowRegistered && scheduleReferenceAt && parsedSchedule
       ? nextScheduledOccurrenceAfter(scheduleReferenceAt, parsedSchedule)
@@ -153,12 +150,12 @@ export function buildScheduledEvidenceSummary({
   } else if (normalizedObservedRuns > 0) {
     status = 'has_scheduled_evidence';
     reason = 'Scheduled cadence evidence is present.';
-  } else if (warmupDeadlineAt && nowDate && nowDate <= warmupDeadlineAt) {
-    status = 'warming_up';
-    reason = 'Workflow schedule is configured, but the first scheduled sample window is still in warm-up.';
   } else if (firstExpectedRunAt && expectedScheduledRunsByNow > 0) {
     status = 'scheduled_evidence_missing';
     reason = 'Expected scheduled run windows have elapsed without a recorded scheduled sample.';
+  } else if (warmupDeadlineAt && nowDate && nowDate <= warmupDeadlineAt) {
+    status = 'warming_up';
+    reason = 'Workflow schedule is configured, but the first scheduled sample window is still in warm-up.';
   }
 
   return {

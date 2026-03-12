@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-12T02:34:38.126295+00:00",
+  "generated_at": "2026-03-12T08:03:37.635667+00:00",
   "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-12T02:34:27.398Z",
-    "bundle_id": "post-sync-verification-3fc09490ed96",
+    "generated_at": "2026-03-12T08:03:35.379Z",
+    "bundle_id": "post-sync-verification-368ed485b22b",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -25,11 +25,11 @@
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-12T02:34:21.051Z"
+        "generated_at": "2026-03-12T08:03:06.277Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
-        "generated_at": "2026-03-11T00:00:00.000Z"
+        "generated_at": "2026-03-12T00:00:00.000Z"
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
@@ -47,7 +47,7 @@
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-12T02:34:22.427Z",
+        "generated_at": "2026-03-12T08:02:36.197Z",
         "primary_path_key": "daily_upcoming"
       },
       "service_link_gap_queues": {
@@ -79,7 +79,7 @@
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-3fc09490ed96",
+      "bundle id: post-sync-verification-368ed485b22b",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -88,17 +88,17 @@
   "summary_lines": [
     "entity alias/search coverage: clean (mismatched entities=0)",
     "official links: drift (mismatched entities=62)",
-    "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
-    "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
+    "YouTube allowlists: drift (role mismatches=90, metadata mismatches=2)",
+    "latest verified release selection: drift (tracking mismatches=0, stream mismatches=1)",
     "upcoming counts / nearest: clean (month bucket mismatches=0)",
     "title-track / double-title: clean (mismatched releases=0)",
-    "YouTube Music / MV service-link state: clean (mismatched releases=0)",
-    "review-required counts (release scope): clean (mv_candidate_count_match=True, youtube_mv_status_counts_match=True)"
+    "YouTube Music / MV service-link state: drift (mismatched releases=2)",
+    "review-required counts (release scope): drift (mv_candidate_count_match=True, youtube_mv_status_counts_match=False)"
   ],
   "source_snapshot_counts": {
     "artist_profiles": 117,
     "youtube_allowlists": 117,
-    "release_details": 1771,
+    "release_details": 1770,
     "upcoming_candidates": 71,
     "watchlist": 108,
     "manual_review_queue": 67,
@@ -239,18 +239,190 @@
       "clean": false
     },
     "youtube_allowlists": {
-      "role_mismatches_count": 0,
-      "metadata_mismatches_count": 0,
-      "role_mismatches": [],
-      "metadata_mismatches": [],
-      "clean": true
+      "role_mismatches_count": 90,
+      "metadata_mismatches_count": 2,
+      "role_mismatches": [
+        {
+          "entity_slug": "82major",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@82major_official",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw",
+              "role": "both"
+            }
+          ]
+        },
+        {
+          "entity_slug": "8turn",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@8TURN.official",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw",
+              "role": "both"
+            }
+          ]
+        },
+        {
+          "entity_slug": "ab6ix",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@AB6IX",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UCwytna6i1rFCt13a3Qvuk-A",
+              "role": "both"
+            }
+          ]
+        },
+        {
+          "entity_slug": "aespa",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@aespa_official",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
+              "role": "both"
+            }
+          ]
+        },
+        {
+          "entity_slug": "all-h-ours",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@ALL_H_OURS",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "allday-project",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@ALLDAY_PROJECT",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "and-team",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@andteamofficial",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+              "role": "both"
+            }
+          ]
+        },
+        {
+          "entity_slug": "artms",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@official_artms",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": []
+        },
+        {
+          "entity_slug": "atbo",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@ATBO_ground",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg",
+              "role": "both"
+            }
+          ]
+        },
+        {
+          "entity_slug": "ateez",
+          "missing_channel_roles": [
+            {
+              "url": "https://www.youtube.com/@ATEEZofficial",
+              "role": "both"
+            }
+          ],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
+              "role": "both"
+            }
+          ]
+        }
+      ],
+      "metadata_mismatches": [
+        {
+          "entity_slug": "hearts2hearts",
+          "channel_url": "https://www.youtube.com/@SMTOWN",
+          "diffs": {
+            "owner_type": {
+              "source": "team",
+              "db": "label"
+            },
+            "display_in_team_links": {
+              "source": true,
+              "db": false
+            }
+          }
+        },
+        {
+          "entity_slug": "wjsn",
+          "channel_url": "https://www.youtube.com/@officialstarship",
+          "diffs": {
+            "owner_type": {
+              "source": "team",
+              "db": "label"
+            },
+            "display_in_team_links": {
+              "source": true,
+              "db": false
+            }
+          }
+        }
+      ],
+      "clean": false
     },
     "latest_verified_release_selection": {
       "tracking_mismatches_count": 0,
       "tracking_mismatches": [],
-      "stream_mismatches_count": 0,
-      "stream_mismatches": [],
-      "clean": true
+      "stream_mismatches_count": 1,
+      "stream_mismatches": [
+        {
+          "entity_slug": "yena",
+          "stream": "album",
+          "source": "yena|blooming wings|2025-07-29|album",
+          "db": "yena|love catcher|2026-03-11|album"
+        }
+      ],
+      "clean": false
     },
     "upcoming_counts_and_nearest": {
       "source": {
@@ -319,9 +491,34 @@
       "clean": true
     },
     "release_service_links": {
-      "mismatched_release_services_count": 0,
-      "mismatches": [],
-      "clean": true
+      "mismatched_release_services_count": 2,
+      "mismatches": [
+        {
+          "entity_slug": "yena",
+          "release_date": "2026-03-11",
+          "stream": "album",
+          "service_type": "youtube_music",
+          "source": null,
+          "db": {
+            "url": null,
+            "status": "no_link",
+            "provenance": null
+          }
+        },
+        {
+          "entity_slug": "yena",
+          "release_date": "2026-03-11",
+          "stream": "album",
+          "service_type": "youtube_mv",
+          "source": null,
+          "db": {
+            "url": null,
+            "status": "unresolved",
+            "provenance": null
+          }
+        }
+      ],
+      "clean": false
     },
     "review_required_counts": {
       "source_review_type_counts": {
@@ -341,7 +538,7 @@
         "mv_candidate": 1616
       },
       "source_youtube_mv_status_counts": {
-        "unresolved": 1615,
+        "unresolved": 1614,
         "manual_override": 133,
         "relation_match": 21,
         "needs_review": 2,
@@ -356,8 +553,8 @@
       },
       "review_type_counts_match": true,
       "release_scope_review_type_counts_match": true,
-      "youtube_mv_status_counts_match": true,
-      "clean": true
+      "youtube_mv_status_counts_match": false,
+      "clean": false
     }
   }
 }
