@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  buildWorkflowScheduleDiagnosticsReport,
   buildScheduledEvidenceSummary,
   countExpectedScheduledRunsByNow,
   nextScheduledOccurrenceAfter,
@@ -110,4 +111,89 @@ test('buildScheduledEvidenceSummary keeps weekly cadence in warm-up before the f
   assert.equal(summary.expected_scheduled_runs_by_now, 0);
   assert.equal(summary.missed_scheduled_windows, 0);
   assert.equal(summary.first_expected_run_at, '2026-03-15T01:00:00.000Z');
+});
+
+test('buildWorkflowScheduleDiagnosticsReport surfaces actionable hints for missing scheduled delivery', () => {
+  const report = buildWorkflowScheduleDiagnosticsReport({
+    repo: 'iAmSomething/idol-song-app',
+    repository: {
+      default_branch: 'main',
+      private: false,
+      archived: false,
+      disabled: false,
+      pushed_at: '2026-03-11T15:00:00.000Z',
+      updated_at: '2026-03-12T00:30:00.000Z',
+    },
+    actionsPermissions: {
+      enabled: true,
+      allowed_actions: 'all',
+      sha_pinning_required: false,
+    },
+    workflowPermissions: {
+      default_workflow_permissions: 'read',
+      can_approve_pull_request_reviews: false,
+    },
+    workflowDiagnostics: [
+      {
+        key: 'daily_upcoming',
+        workflow: 'weekly-kpop-scan.yml',
+        workflow_registered: true,
+        workflow_state: 'active',
+        workflow_html_url: 'https://github.com/example/weekly-kpop-scan',
+        cadence_label: 'daily',
+        cadence_status: 'scheduled_evidence_missing',
+        schedule_expectation: '0 0 * * *',
+        workflow_created_at: '2026-03-06T07:34:09.000Z',
+        workflow_updated_at: '2026-03-12T03:34:12.000Z',
+        observed_scheduled_runs: 0,
+        expected_scheduled_runs_by_now: 6,
+        missed_scheduled_windows: 6,
+        first_expected_run_at: '2026-03-07T00:00:00.000Z',
+        next_expected_run_at: '2026-03-13T00:00:00.000Z',
+        last_success_at: null,
+        last_success_age_hours: null,
+        manual_runs: 4,
+        latest_run: {
+          database_id: 123,
+          event: 'workflow_dispatch',
+          created_at: '2026-03-12T02:00:00.000Z',
+          html_url: 'https://github.com/example/runs/123',
+        },
+        latest_scheduled_run: null,
+      },
+    ],
+  });
+
+  assert.equal(report.repository.default_branch, 'main');
+  assert.equal(report.actions_permissions.default_workflow_permissions, 'read');
+  assert.equal(report.workflows.daily_upcoming.missed_scheduled_windows, 6);
+  assert.equal(report.actionable_hints[0].code, 'scheduled_delivery_missing');
+  assert.match(report.actionable_hints[0].details, /expected_by_now=6/);
+});
+
+test('buildWorkflowScheduleDiagnosticsReport reports disabled actions at repository scope', () => {
+  const report = buildWorkflowScheduleDiagnosticsReport({
+    repo: 'iAmSomething/idol-song-app',
+    repository: {
+      default_branch: 'main',
+      private: false,
+      archived: false,
+      disabled: false,
+      pushed_at: '2026-03-11T15:00:00.000Z',
+      updated_at: '2026-03-12T00:30:00.000Z',
+    },
+    actionsPermissions: {
+      enabled: false,
+      allowed_actions: 'all',
+      sha_pinning_required: false,
+    },
+    workflowPermissions: {
+      default_workflow_permissions: 'read',
+      can_approve_pull_request_reviews: false,
+    },
+    workflowDiagnostics: [],
+  });
+
+  assert.equal(report.actionable_hints[0].code, 'actions_disabled');
+  assert.equal(report.actionable_hints[0].severity, 'fail');
 });

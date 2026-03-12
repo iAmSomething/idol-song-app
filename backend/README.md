@@ -651,6 +651,7 @@ python3 sync_trusted_upcoming_notification_events.py
 
 - `backend/reports/trusted_upcoming_notification_event_summary.json`
 - `backend/reports/trusted_upcoming_operator_alert_report.md`
+- `backend/reports/workflow_schedule_diagnostics.json`
 
 scheduled workflow는 두 cadence로 나뉜다.
 
@@ -808,6 +809,7 @@ npm run gap:workbenches
 기본 보고서 출력:
 
 - `backend/reports/worker_cadence_report.json`
+- `backend/reports/workflow_schedule_diagnostics.json`
 - `backend/reports/canonical_null_coverage_report.json`
 - `backend/reports/canonical_null_recheck_queue.json`
 - `backend/reports/null_coverage_trend_report.json`
@@ -823,6 +825,11 @@ npm run gap:workbenches
 - `backend/reports/manual_curation_bundle_service_links.json`
 - `backend/reports/manual_curation_bundle_title_tracks.json`
 - `backend/reports/manual_curation_bundle_entity_identity.json`
+
+`worker_cadence_report.json`이 `warming_up` 또는 `scheduled_evidence_missing`로 보일 때는
+먼저 `workflow_schedule_diagnostics.json`을 본다. 이 artifact는 repo default branch,
+GitHub Actions permissions, workflow state, recent scheduled run count, actionable hint를
+한 번에 모아서 schedule delivery 조사 시작점을 고정한다.
 - `backend/reports/trusted_upcoming_notification_event_summary.json`
 - `backend/reports/trusted_upcoming_operator_alert_report.md`
 - `backend/reports/backend_gap_audit_report.json`
