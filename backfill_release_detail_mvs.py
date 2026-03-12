@@ -26,11 +26,11 @@ OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 REPORT_PATH = ROOT / "mv_coverage_report.json"
 USER_AGENT = "Mozilla/5.0"
 REQUEST_DELAY_SECONDS = 0.05
-MAX_RESULTS_PER_QUERY = 8
-MAX_QUERIES_PER_RELEASE = 8
+MAX_RESULTS_PER_QUERY = 12
+MAX_QUERIES_PER_RELEASE = 12
 MAX_TRACK_CANDIDATES_PER_RELEASE = 3
 MAX_NAME_VARIANTS_PER_TRACK_SEARCH = 1
-QUERY_SUFFIXES = ("official mv", "mv")
+QUERY_SUFFIXES = ("official mv", "official music video", "mv", "")
 HANGUL_PATTERN = re.compile(r"[가-힣]")
 RELEASE_TITLE_FALLBACK_MIN_DATE = "2025-01-01"
 TITLE_TRACK_EXCLUSION_PATTERN = re.compile(
@@ -287,7 +287,10 @@ def pick_title_variants(detail: dict[str, Any]) -> list[str]:
 
     variants: list[str] = []
     seen: set[str] = set()
-    append_unique(variants, seen, title_tracks[0] if title_tracks else detail.get("release_title"))
+    for title_track in title_tracks[:2]:
+        append_unique(variants, seen, title_track)
+    if not variants:
+        append_unique(variants, seen, detail.get("release_title"))
     release_title = detail.get("release_title", "")
     primary_title = variants[0] if variants else ""
     if release_title and release_title.casefold() != primary_title.casefold():
@@ -304,14 +307,12 @@ def build_queries(detail: dict[str, Any], profile: dict[str, Any] | None) -> lis
     queries: list[str] = []
     seen: set[str] = set()
 
-    primary_title = titles[0]
-    fallback_title = titles[1] if len(titles) > 1 else ""
     query_plan: list[tuple[str, str, str]] = []
 
-    for name in names:
-        query_plan.extend((name, primary_title, suffix) for suffix in QUERY_SUFFIXES)
-    if fallback_title:
-        query_plan.extend((names[0], fallback_title, suffix) for suffix in QUERY_SUFFIXES)
+    for title_index, title in enumerate(titles):
+        name_variants = names if title_index == 0 else names[:1]
+        for name in name_variants:
+            query_plan.extend((name, title, suffix) for suffix in QUERY_SUFFIXES)
 
     for name, title, suffix in query_plan:
         query = " ".join(part for part in [name, title, suffix] if part).strip()

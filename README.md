@@ -219,6 +219,8 @@ python build_release_details_musicbrainz.py --cohorts latest,recent --max-rows 2
 python backfill_release_detail_mvs.py --cohorts latest,recent --max-rows 25 --progress-every 5
 ```
 
+`backfill_release_detail_mvs.py`는 이제 첫 번째 title track만 보지 않고 최대 2개의 title track과 `official music video` / no-suffix fallback query까지 포함해서 candidate breadth를 넓힌다. 긴 latest/recent pass를 다시 돌리기 전에 이 경로를 우선 쓴다.
+
 Neon canonical DB까지 같이 최신화하려면 아래를 이어서 실행한다.
 
 ```bash
