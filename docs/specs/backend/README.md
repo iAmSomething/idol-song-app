@@ -82,6 +82,9 @@
 25. `runtime-artifact-retention-policy.md`
    - runtime-facing JSON / pipeline script canonical retention policy
    - suffix duplicate 금지, allowed temporary path, inventory / cleanup rule
+26. `json-snapshot-demotion.md`의 regression guards section
+   - web / mobile shipped runtime이 local dataset dependency로 되돌아가지 않게 막는 CI guard
+   - current transitional allowlist와 follow-up boundary
 
 ## 읽는 순서
 
@@ -110,6 +113,7 @@
 23. `manual-curation-bundle-contract.md`
 24. `trusted-upcoming-notification-events.md`
 25. `runtime-artifact-retention-policy.md`
+26. `json-snapshot-demotion.md`의 regression guards section
 
 ## 원칙
 

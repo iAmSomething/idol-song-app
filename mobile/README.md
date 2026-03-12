@@ -121,6 +121,13 @@ cd mobile
 npm run test
 ```
 
+runtime policy guard:
+
+```bash
+cd mobile
+npm run verify:runtime-policy
+```
+
 profile config 확인:
 
 ```bash
@@ -270,15 +277,15 @@ tunnel fallback 규칙:
 ## profile split 원칙
 
 - `development`
-  - bundled static data 기준
+  - bundled static dataset 기본값
   - verbose logging 허용
   - 내부 개발용 app name / slug / scheme 사용
 - `preview`
-  - preview static dataset 기준
+  - backend API primary
   - debug logging 허용
   - production과 같은 field contract 유지
 - `production`
-  - known-good production static dataset 기준
+  - backend API primary
   - error-level logging만 허용
   - user-facing app identity 사용
 
@@ -408,17 +415,23 @@ profile 차이는 아래 범위로만 제한한다.
 - selector entrypoint는 `src/services/datasetSource.ts`에 둔다.
 - single-source rule
   - 한 build/runtime 조합은 하나의 dataset source만 고른다.
-  - bundled static과 preview remote를 동시에 섞지 않는다.
+  - backend API primary와 bundled fallback을 동시에 active source로 섞지 않는다.
 - bundled source
-  - 기본값이다.
+  - development 기본값이거나 explicit degraded fallback 경로다.
   - v1 계약 경로는 `mobile/assets/datasets/v1/` 기준으로 잡는다.
-- preview remote source
-  - `APP_ENV=preview`
-  - `EXPO_PUBLIC_ENABLE_REMOTE_REFRESH=true`
-  - `EXPO_PUBLIC_REMOTE_DATASET_URL` provided
-  - 위 3조건이 모두 맞을 때만 선택된다.
+- backend API source
+  - `APP_ENV=preview` / `APP_ENV=production`
+  - `EXPO_PUBLIC_API_BASE_URL` provided
+  - shipped runtime의 정상 경로다.
 - field contract
-  - bundled source와 preview remote source는 같은 artifact id / field contract를 유지해야 한다.
+  - bundled fallback과 backend API source는 같은 artifact id / field contract를 유지해야 한다.
+
+runtime regression guard:
+
+- preview / production profile은 반드시 `backend-api`여야 한다.
+- `bundled-static` active mode는 development 기본값 또는 explicit degraded runtime에서만 허용한다.
+- live read failure 시 cache가 없으면 `bundled-static-fallback` disclosure와 함께만 내려갈 수 있다.
+- 위 회귀 체크는 `npm run verify:runtime-policy`와 `.github/workflows/mobile-quality.yml`에서 막는다.
 
 ## storage / cache baseline
 
@@ -487,6 +500,8 @@ profile 차이는 아래 범위로만 제한한다.
   - Expo workspace 기준 ESLint baseline
 - `npm run typecheck`
   - strict TypeScript gate
+- `npm run verify:runtime-policy`
+  - preview / production backend-primary와 bundled fallback boundary regression guard
 - `npm run test`
   - runtime config unit test + route shell smoke test baseline
 - `.github/workflows/mobile-quality.yml`

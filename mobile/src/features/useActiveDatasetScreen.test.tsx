@@ -213,6 +213,29 @@ describe('useActiveDatasetScreen', () => {
     expect(secondTree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain('Backend timed out.');
   });
 
+  test('uses bundled-static-fallback instead of bundled-static after a live backend failure without cache', async () => {
+    mockGetRuntimeConfigState.mockReturnValue(buildRuntimeState('normal'));
+    mockCreateBackendReadClient.mockReturnValue({ name: 'backend-client' });
+
+    const tree = await renderHarness({
+      loadBundled: async () => ({ value: 'bundled-fallback' }),
+      loadBackend: async () => {
+        throw new MockBackendReadError('Backend timed out.', {
+          code: 'timeout',
+          requestId: 'req_no_cache_1',
+        });
+      },
+    });
+
+    expect(tree.root.findByProps({ testID: 'hook-source' }).props.children).toBe(
+      'bundled-static-fallback',
+    );
+    expect(tree.root.findByProps({ testID: 'hook-value' }).props.children).toBe('bundled-fallback');
+    expect(tree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain(
+      '저장된 스냅샷이 없어 앱 번들 데이터로 전환합니다.',
+    );
+  });
+
   test('appends the backend request id when cached fallback is used after a live failure', async () => {
     mockGetRuntimeConfigState.mockReturnValue(buildRuntimeState('normal'));
     mockCreateBackendReadClient.mockReturnValue({ name: 'backend-client' });

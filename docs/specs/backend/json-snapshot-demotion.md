@@ -75,6 +75,23 @@ GitHub Pages build는 backend API base URL만 env로 주입받는다.
 - query override는 남아 있다면 debug/repro 목적에만 한정한다.
 - user-facing copy는 backend availability/error만 설명하고 JSON fallback을 광고하지 않는다.
 
+## 6.1 Regression Guards
+
+API-only runtime 정책이 다시 local dataset 의존으로 미끄러지지 않도록 아래 guard를 같이 유지한다.
+
+- web
+  - `web/scripts/verify-runtime-policy.mjs`
+  - `web/src/App.tsx`만 현재 transitional snapshot import boundary로 허용한다.
+  - `web/src/**`의 다른 shipped runtime file이 `./data/*.json`을 직접 import하면 CI가 실패한다.
+  - `App.tsx`에서도 허용된 snapshot set 밖의 새 import를 추가하면 CI가 실패한다.
+- mobile
+  - `npm run verify:runtime-policy`
+  - preview / production profile은 반드시 `backend-api`여야 한다.
+  - `bundled-static` active mode는 development 기본값 또는 explicit degraded mode에서만 허용한다.
+  - live backend failure 시 cache가 없으면 현재는 `bundled-static-fallback`으로만 내려갈 수 있고, 이 경로도 explicit notice와 test coverage가 있어야 한다.
+
+이 guard는 현재 transitional boundary를 고정하는 것이고, boundary 자체를 제거하는 일은 `#633`, `#636`, `#637`, `#638`에서 계속 진행한다.
+
 ## 7. Exit Criteria
 
 JSON demotion이 완료됐다고 보려면 아래가 필요하다.
