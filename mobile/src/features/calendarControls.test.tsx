@@ -4,9 +4,17 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import CalendarTabScreen from '../../app/(tabs)/calendar';
+import type { RuntimeConfigState } from '../config/runtime';
+import { selectCalendarMonthSnapshot } from '../selectors';
+import { cloneBundledDatasetFixture } from '../services/bundledDatasetFixture';
 import { trackAnalyticsEvent } from '../services/analytics';
 import { openXSearchHandoff } from '../services/handoff';
 import { MOBILE_TEXT_SCALE_LIMITS } from '../tokens/accessibility';
+import {
+  useActiveDatasetScreen,
+  type ActiveDatasetScreenState,
+} from './useActiveDatasetScreen';
+import type { CalendarMonthSnapshotModel } from '../types';
 
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({}));
@@ -37,6 +45,10 @@ jest.mock('react-native/Libraries/Modal/Modal', () => {
   };
 });
 
+jest.mock('./useActiveDatasetScreen', () => ({
+  useActiveDatasetScreen: jest.fn(),
+}));
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     push: jest.Mock;
@@ -66,6 +78,89 @@ jest.mock('../services/handoff', () => {
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
 const mockOpenXSearchHandoff = jest.mocked(openXSearchHandoff);
 const mockUseWindowDimensions = jest.spyOn(ReactNative, 'useWindowDimensions');
+const mockUseActiveDatasetScreen = jest.mocked(useActiveDatasetScreen);
+const bundledFixture = cloneBundledDatasetFixture();
+
+function buildRuntimeState(): RuntimeConfigState {
+  return {
+    mode: 'normal',
+    issues: [],
+    config: {
+      profile: 'preview',
+      dataSource: {
+        mode: 'backend-api',
+        datasetVersion: 'preview-v1',
+      },
+      services: {
+        apiBaseUrl: 'https://example.com/api',
+        analyticsWriteKey: null,
+        expoProjectId: null,
+      },
+      logging: {
+        level: 'debug',
+      },
+      featureGates: {
+        radar: true,
+        analytics: false,
+        remoteRefresh: false,
+        mvEmbed: true,
+        shareActions: true,
+      },
+      build: {
+        version: '0.1.0',
+        commitSha: 'test-sha',
+      },
+    },
+  };
+}
+
+function buildReadyState(
+  snapshot: CalendarMonthSnapshotModel,
+): ActiveDatasetScreenState<CalendarMonthSnapshotModel> {
+  return {
+    kind: 'ready',
+    source: {
+      activeSource: 'backend-api',
+      sourceLabel: 'Backend API',
+      data: snapshot,
+      freshness: {
+        rollingReferenceAt: '2026-03-07T00:00:00.000Z',
+        staleFreshnessClasses: ['rolling-release', 'rolling-upcoming'],
+      },
+      issues: [],
+      runtimeState: buildRuntimeState(),
+    },
+  };
+}
+
+function buildCalendarState(cacheKey: string): ActiveDatasetScreenState<CalendarMonthSnapshotModel> {
+  const month = cacheKey.split(':')[1] ?? '2026-03';
+  const snapshot = selectCalendarMonthSnapshot(bundledFixture, month, '2026-03-07');
+
+  const normalizeSlug = (id: string, fallback: string) => id.split('--')[0] ?? fallback;
+
+  return buildReadyState({
+    ...snapshot,
+    releases: snapshot.releases.map((release) => ({
+      ...release,
+      group: normalizeSlug(release.id, release.group),
+    })),
+    exactUpcoming: snapshot.exactUpcoming.map((event) => ({
+      ...event,
+      group: normalizeSlug(event.id, event.group),
+    })),
+    monthOnlyUpcoming: snapshot.monthOnlyUpcoming.map((event) => ({
+      ...event,
+      group: normalizeSlug(event.id, event.group),
+    })),
+    nearestUpcoming: snapshot.nearestUpcoming
+      ? {
+          ...snapshot.nearestUpcoming,
+          group: normalizeSlug(snapshot.nearestUpcoming.id, snapshot.nearestUpcoming.group),
+        }
+      : null,
+  });
+}
 
 async function renderCalendarScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -119,6 +214,7 @@ describe('calendar controls', () => {
       scale: 3,
       width: 390,
     });
+    mockUseActiveDatasetScreen.mockImplementation((options) => buildCalendarState(options.cacheKey));
   });
 
   afterEach(() => {

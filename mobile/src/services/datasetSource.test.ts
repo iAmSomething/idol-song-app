@@ -1,11 +1,9 @@
 import type { MobileRuntimeConfig } from '../config/runtime';
 
 import {
-  BUNDLED_DATASET_BASE_PATH,
   DATASET_ARTIFACTS,
   DATASET_CONTRACT_ID,
   isBackendDatasetSelection,
-  isBundledDatasetSelection,
   selectDatasetSource,
 } from './datasetSource';
 
@@ -18,12 +16,12 @@ function buildRuntimeConfig(
   return {
     profile,
     dataSource: {
-      mode: profile === 'development' ? 'bundled-static' : 'backend-api',
+      mode: 'backend-api',
       datasetVersion: 'v1-test',
       ...dataSourceOverrides,
     },
     services: {
-      apiBaseUrl: profile === 'development' ? null : 'https://example.com/api',
+      apiBaseUrl: 'https://example.com/api',
       analyticsWriteKey: null,
       expoProjectId: null,
       ...overrides.services,
@@ -48,17 +46,17 @@ function buildRuntimeConfig(
 }
 
 describe('selectDatasetSource', () => {
-  test('uses the bundled dataset for development builds', () => {
+  test('uses backend api selection for development builds too', () => {
     const selection = selectDatasetSource(buildRuntimeConfig());
 
-    expect(isBundledDatasetSelection(selection)).toBe(true);
-    if (!isBundledDatasetSelection(selection)) {
-      throw new Error('Expected development selection to use bundled-static.');
+    expect(isBackendDatasetSelection(selection)).toBe(true);
+    if (!isBackendDatasetSelection(selection)) {
+      throw new Error('Expected development selection to use backend-api.');
     }
 
-    expect(selection.kind).toBe('bundled-static');
+    expect(selection.kind).toBe('backend-api');
     expect(selection.reason).toBe('profile_default');
-    expect(selection.bundledBasePath).toBe(BUNDLED_DATASET_BASE_PATH);
+    expect(selection.apiBaseUrl).toBe('https://example.com/api');
     expect(selection.contractId).toBe(DATASET_CONTRACT_ID);
     expect(selection.mixingAllowed).toBe(false);
   });
@@ -77,10 +75,9 @@ describe('selectDatasetSource', () => {
     expect(selection.reason).toBe('profile_default');
     expect(selection.datasetVersion).toBe('preview-v2');
     expect(selection.apiBaseUrl).toBe('https://example.com/api');
-    expect(selection.bundledFallbackBasePath).toBe(BUNDLED_DATASET_BASE_PATH);
   });
 
-  test('preserves artifact contract across development and backend-primary selections', () => {
+  test('preserves artifact contract across development and preview selections', () => {
     const development = selectDatasetSource(buildRuntimeConfig());
     const preview = selectDatasetSource(buildRuntimeConfig({ profile: 'preview' }));
 

@@ -2,10 +2,10 @@ import Constants from 'expo-constants';
 
 export type MobileProfile = 'development' | 'preview' | 'production';
 export type LoggingLevel = 'verbose' | 'debug' | 'error';
-export type DataSourceMode = 'bundled-static' | 'backend-api';
+export type DataSourceMode = 'backend-api';
 
 const EXPECTED_MODE_BY_PROFILE: Record<MobileProfile, DataSourceMode> = {
-  development: 'bundled-static',
+  development: 'backend-api',
   preview: 'backend-api',
   production: 'backend-api',
 };
@@ -108,11 +108,11 @@ function readLoggingLevel(value: unknown): LoggingLevel {
 function readDataSourceMode(value: unknown): DataSourceMode {
   const fieldValue = readString(value, 'dataSource.mode');
 
-  if (fieldValue === 'bundled-static' || fieldValue === 'backend-api') {
+  if (fieldValue === 'backend-api') {
     return fieldValue;
   }
 
-  throw new Error('Invalid runtime config field: dataSource.mode has an unsupported value.');
+  throw new Error('Invalid runtime config field: dataSource.mode must be backend-api.');
 }
 
 function readProfileHint(value: unknown): MobileProfile | null {
@@ -194,7 +194,7 @@ export function parseRuntimeConfig(input: unknown): MobileRuntimeConfig {
     throw new Error('Runtime config no longer supports featureGates.remoteRefresh.');
   }
 
-  if (config.profile !== 'development' && config.dataSource.mode === 'backend-api' && !config.services.apiBaseUrl) {
+  if (config.dataSource.mode === 'backend-api' && !config.services.apiBaseUrl) {
     throw new Error('Runtime config requires services.apiBaseUrl when backend-api mode is enabled.');
   }
 

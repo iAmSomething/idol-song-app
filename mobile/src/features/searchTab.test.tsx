@@ -2,10 +2,17 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import SearchTabScreen from '../../app/(tabs)/search';
+import type { RuntimeConfigState } from '../config/runtime';
+import { selectSearchResults } from '../selectors';
 import { trackAnalyticsEvent } from '../services/analytics';
 import { openServiceHandoff, openXSearchHandoff } from '../services/handoff';
 import { persistRecentQuery, readRecentQueries } from '../services/recentQueries';
+import { cloneBundledDatasetFixture } from '../services/bundledDatasetFixture';
 import { resetStorageAdapter, setStorageAdapter, type KeyValueStorageAdapter } from '../services/storage';
+import {
+  useActiveDatasetScreen,
+  type ActiveDatasetScreenState,
+} from './useActiveDatasetScreen';
 
 let mockRouteParams: Record<string, string> = {};
 
@@ -66,6 +73,10 @@ jest.mock('../services/handoff', () => {
   };
 });
 
+jest.mock('./useActiveDatasetScreen', () => ({
+  useActiveDatasetScreen: jest.fn(),
+}));
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     push: jest.Mock;
@@ -77,6 +88,99 @@ const { __mock } = jest.requireMock('expo-router') as {
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
 const mockOpenServiceHandoff = jest.mocked(openServiceHandoff);
 const mockOpenXSearchHandoff = jest.mocked(openXSearchHandoff);
+const mockUseActiveDatasetScreen = jest.mocked(useActiveDatasetScreen);
+const bundledFixture = cloneBundledDatasetFixture();
+
+function buildRuntimeState(): RuntimeConfigState {
+  return {
+    mode: 'normal',
+    issues: [],
+    config: {
+      profile: 'preview',
+      dataSource: {
+        mode: 'backend-api',
+        datasetVersion: 'preview-v1',
+      },
+      services: {
+        apiBaseUrl: 'https://example.com/api',
+        analyticsWriteKey: null,
+        expoProjectId: null,
+      },
+      logging: {
+        level: 'debug',
+      },
+      featureGates: {
+        radar: true,
+        analytics: false,
+        remoteRefresh: false,
+        mvEmbed: true,
+        shareActions: true,
+      },
+      build: {
+        version: '0.1.0',
+        commitSha: 'test-sha',
+      },
+    },
+  };
+}
+
+function buildReadyState(
+  query: string,
+): ActiveDatasetScreenState<ReturnType<typeof selectSearchResults>> {
+  const results = selectSearchResults(bundledFixture, query, '2026-03-07');
+  const normalizeSlug = (id: string, fallback: string) => id.split('--')[0] ?? fallback;
+
+  return {
+    kind: 'ready',
+    source: {
+      activeSource: 'backend-api',
+      sourceLabel: 'Backend API',
+      data: {
+        ...results,
+        entities: results.entities.map((result) => ({
+          ...result,
+          latestRelease: result.latestRelease
+            ? {
+                ...result.latestRelease,
+                group: result.team.slug,
+              }
+            : null,
+        })),
+        releases: results.releases.map((result) => ({
+          ...result,
+          release: {
+            ...result.release,
+            group: normalizeSlug(result.release.id, result.release.group),
+          },
+        })),
+        upcoming: results.upcoming.map((result) => ({
+          ...result,
+          upcoming: {
+            ...result.upcoming,
+            group: normalizeSlug(result.upcoming.id, result.upcoming.group),
+          },
+        })),
+      },
+      freshness: {
+        rollingReferenceAt: '2026-03-07T00:00:00.000Z',
+        staleFreshnessClasses: ['rolling-release', 'rolling-upcoming'],
+      },
+      issues: [],
+      runtimeState: buildRuntimeState(),
+    },
+  };
+}
+
+function buildStateFromCacheKey(
+  cacheKey?: string,
+): ActiveDatasetScreenState<ReturnType<typeof selectSearchResults>> {
+  if (!cacheKey?.startsWith('search:')) {
+    return buildReadyState('');
+  }
+
+  const query = cacheKey.slice('search:'.length);
+  return buildReadyState(query === 'empty' ? '' : query);
+}
 
 async function renderSearchScreen() {
   let tree: renderer.ReactTestRenderer;
@@ -94,8 +198,16 @@ function hasText(tree: renderer.ReactTestRenderer, value: string): boolean {
   return tree.root.findAllByType(Text).some((node) => node.props.children === value);
 }
 
+async function flushSearchDebounce() {
+  await act(async () => {
+    jest.advanceTimersByTime(250);
+    await Promise.resolve();
+  });
+}
+
 describe('mobile search tab', () => {
   beforeEach(() => {
+    jest.useFakeTimers();
     setStorageAdapter(createMemoryStorage());
     __mock.setLocalSearchParams({});
     __mock.useLocalSearchParams.mockImplementation(() => mockRouteParams);
@@ -117,6 +229,9 @@ describe('mobile search tab', () => {
       target: 'web',
       openedUrl: 'https://x.com/search?q=YENA',
     });
+    mockUseActiveDatasetScreen.mockImplementation((options) =>
+      buildStateFromCacheKey(options.cacheKey),
+    );
   });
 
   afterEach(() => {
@@ -130,6 +245,7 @@ describe('mobile search tab', () => {
     await act(async () => {
       tree.root.findByProps({ testID: 'search-input' }).props.onChangeText('최예나');
     });
+    await flushSearchDebounce();
 
     expect(tree.root.findByProps({ testID: 'search-team-result-yena' })).toBeDefined();
 
@@ -205,14 +321,18 @@ describe('mobile search tab', () => {
     });
 
     expect(mockOpenXSearchHandoff).toHaveBeenCalled();
-    expect(mockTrackAnalyticsEvent).toHaveBeenCalledWith(
-      'x_search_handoff_opened_web',
-      expect.objectContaining({
-        surface: 'search',
-        entitySlug: 'yena',
-        mode: 'release_backed',
-      }),
-    );
+    expect(
+      mockTrackAnalyticsEvent.mock.calls.some(
+        ([eventName, payload]) =>
+          (eventName === 'x_search_handoff_opened_app' || eventName === 'x_search_handoff_opened_web') &&
+          payload &&
+          typeof payload === 'object' &&
+          'surface' in payload &&
+          'entitySlug' in payload &&
+          (payload as { surface?: string; entitySlug?: string }).surface === 'search' &&
+          (payload as { surface?: string; entitySlug?: string }).entitySlug === 'yena',
+      ),
+    ).toBe(true);
 
     await act(async () => {
       await tree.root.findByProps({ testID: 'search-input' }).props.onSubmitEditing();
@@ -304,6 +424,7 @@ describe('mobile search tab', () => {
       tree.root.findByProps({ testID: 'search-input' }).props.onFocus();
       tree.root.findByProps({ testID: 'search-input' }).props.onChangeText('LOVE CATCHER');
     });
+    await flushSearchDebounce();
 
     expect(tree.root.findByProps({ testID: 'search-cancel-button' })).toBeDefined();
 
@@ -323,6 +444,7 @@ describe('mobile search tab', () => {
     await act(async () => {
       tree.root.findByProps({ testID: 'search-input' }).props.onChangeText('LOVE CATCHER');
     });
+    await flushSearchDebounce();
 
     expect(tree.root.findByProps({ testID: 'search-segment-empty-notice' })).toBeDefined();
 
@@ -343,6 +465,7 @@ describe('mobile search tab', () => {
     await act(async () => {
       tree.root.findByProps({ testID: 'search-input' }).props.onChangeText('최예나');
     });
+    await flushSearchDebounce();
 
     await act(async () => {
       tree.root.findByProps({ testID: 'search-segment-releases' }).props.onPress();

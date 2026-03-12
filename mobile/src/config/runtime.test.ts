@@ -198,11 +198,11 @@ describe('parseRuntimeConfig', () => {
       parseRuntimeConfig({
         profile: 'development',
         dataSource: {
-          mode: 'bundled-static',
+          mode: 'backend-api',
           datasetVersion: null,
         },
         services: {
-          apiBaseUrl: null,
+          apiBaseUrl: 'https://example.com/api',
           analyticsWriteKey: null,
         },
         logging: {

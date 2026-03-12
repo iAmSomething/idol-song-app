@@ -159,7 +159,7 @@ describe('mobile analytics service', () => {
     trackDatasetDegraded(
       'calendar',
       {
-        activeSource: 'bundled-static',
+        activeSource: 'backend-cache',
         runtimeState: {
           mode: 'degraded',
           config: analyticsEnabledRuntime,

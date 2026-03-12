@@ -11,31 +11,22 @@ import {
 import { readScreenSnapshotCacheEntry } from '../services/screenSnapshotCache';
 
 const mockGetRuntimeConfigState = jest.fn();
-const mockGetRuntimeConfig = jest.fn();
 const mockCreateBackendReadClient = jest.fn();
 const mockTrackDatasetDegraded = jest.fn();
 const mockTrackDatasetLoadFailed = jest.fn();
 
 class MockBackendReadError extends Error {
-  status: number | null;
-  code: string | null;
   requestId: string | null;
 
-  constructor(
-    message: string,
-    options: { status?: number | null; code?: string | null; requestId?: string | null } = {},
-  ) {
+  constructor(message: string, requestId?: string | null) {
     super(message);
     this.name = 'BackendReadError';
-    this.status = options.status ?? null;
-    this.code = options.code ?? null;
-    this.requestId = options.requestId ?? null;
+    this.requestId = requestId ?? null;
   }
 }
 
 jest.mock('../config/runtime', () => ({
   getRuntimeConfigState: () => mockGetRuntimeConfigState(),
-  getRuntimeConfig: () => mockGetRuntimeConfig(),
 }));
 
 jest.mock('../services/backendReadClient', () => ({
@@ -76,6 +67,7 @@ function buildRuntimeState(mode: 'normal' | 'degraded' = 'normal') {
       services: {
         apiBaseUrl: 'https://example.com/api',
         analyticsWriteKey: null,
+        expoProjectId: null,
       },
       logging: {
         level: 'debug',
@@ -106,7 +98,6 @@ function buildRuntimeState(mode: 'normal' | 'degraded' = 'normal') {
 
 function Harness(props: {
   reloadKey?: number;
-  loadBundled: () => Promise<{ value: string }>;
   loadBackend?: (client: unknown) => Promise<{ data: { value: string }; generatedAt?: string | null }>;
 }) {
   const state = useActiveDatasetScreen({
@@ -114,12 +105,16 @@ function Harness(props: {
     reloadKey: props.reloadKey ?? 0,
     cacheKey: 'search:test',
     fallbackErrorMessage: 'Search failed.',
-    loadBundled: props.loadBundled,
     loadBackend: props.loadBackend,
   });
 
   if (state.kind !== 'ready') {
-    return <Text testID="hook-state">{state.kind}</Text>;
+    return (
+      <>
+        <Text testID="hook-state">{state.kind}</Text>
+        {'message' in state ? <Text testID="hook-message">{state.message}</Text> : null}
+      </>
+    );
   }
 
   return (
@@ -151,7 +146,6 @@ describe('useActiveDatasetScreen', () => {
     mockCreateBackendReadClient.mockReset();
     mockTrackDatasetDegraded.mockReset();
     mockTrackDatasetLoadFailed.mockReset();
-    mockGetRuntimeConfig.mockReturnValue(buildRuntimeState('normal').config);
   });
 
   afterEach(() => {
@@ -162,7 +156,6 @@ describe('useActiveDatasetScreen', () => {
     mockGetRuntimeConfigState.mockReturnValue(buildRuntimeState('normal'));
     const client = { name: 'backend-client' };
     mockCreateBackendReadClient.mockReturnValue(client);
-    const loadBundled = jest.fn(async () => ({ value: 'bundled' }));
     const loadBackend = jest.fn(async (receivedClient: unknown) => {
       expect(receivedClient).toBe(client);
       return {
@@ -171,14 +164,10 @@ describe('useActiveDatasetScreen', () => {
       };
     });
 
-    const tree = await renderHarness({
-      loadBundled,
-      loadBackend,
-    });
+    const tree = await renderHarness({ loadBackend });
 
     expect(tree.root.findByProps({ testID: 'hook-source' }).props.children).toBe('backend-api');
     expect(tree.root.findByProps({ testID: 'hook-value' }).props.children).toBe('backend');
-    expect(loadBundled).not.toHaveBeenCalled();
     await expect(readScreenSnapshotCacheEntry<{ value: string }>('search', 'search:test')).resolves.toEqual(
       expect.objectContaining({
         generatedAt: '2026-03-10T00:00:00.000Z',
@@ -191,91 +180,78 @@ describe('useActiveDatasetScreen', () => {
     mockGetRuntimeConfigState.mockReturnValue(buildRuntimeState('normal'));
     mockCreateBackendReadClient.mockReturnValue({ name: 'backend-client' });
 
-    const firstTree = await renderHarness({
-      loadBundled: async () => ({ value: 'bundled' }),
+    await renderHarness({
       loadBackend: async () => ({
         data: { value: 'fresh-backend' },
         generatedAt: '2026-03-10T00:00:00.000Z',
       }),
     });
 
-    expect(firstTree.root.findByProps({ testID: 'hook-source' }).props.children).toBe('backend-api');
-
-    const secondTree = await renderHarness({
-      loadBundled: async () => ({ value: 'bundled' }),
+    const tree = await renderHarness({
       loadBackend: async () => {
         throw new Error('Backend timed out.');
       },
     });
 
-    expect(secondTree.root.findByProps({ testID: 'hook-source' }).props.children).toBe('backend-cache');
-    expect(secondTree.root.findByProps({ testID: 'hook-value' }).props.children).toBe('fresh-backend');
-    expect(secondTree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain('Backend timed out.');
+    expect(tree.root.findByProps({ testID: 'hook-source' }).props.children).toBe('backend-cache');
+    expect(tree.root.findByProps({ testID: 'hook-value' }).props.children).toBe('fresh-backend');
+    expect(tree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain('Backend timed out.');
   });
 
-  test('uses bundled-static-fallback instead of bundled-static after a live backend failure without cache', async () => {
+  test('returns an explicit error when live backend fails without cache', async () => {
     mockGetRuntimeConfigState.mockReturnValue(buildRuntimeState('normal'));
     mockCreateBackendReadClient.mockReturnValue({ name: 'backend-client' });
 
     const tree = await renderHarness({
-      loadBundled: async () => ({ value: 'bundled-fallback' }),
       loadBackend: async () => {
-        throw new MockBackendReadError('Backend timed out.', {
-          code: 'timeout',
-          requestId: 'req_no_cache_1',
-        });
+        throw new MockBackendReadError('Backend timed out.', 'req_no_cache_1');
       },
     });
 
-    expect(tree.root.findByProps({ testID: 'hook-source' }).props.children).toBe(
-      'bundled-static-fallback',
+    expect(tree.root.findByProps({ testID: 'hook-state' }).props.children).toBe('error');
+    expect(tree.root.findByProps({ testID: 'hook-message' }).props.children).toContain(
+      '저장된 스냅샷이 없어 현재 화면을 열 수 없습니다.',
     );
-    expect(tree.root.findByProps({ testID: 'hook-value' }).props.children).toBe('bundled-fallback');
-    expect(tree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain(
-      '저장된 스냅샷이 없어 앱 번들 데이터로 전환합니다.',
-    );
+    expect(tree.root.findByProps({ testID: 'hook-message' }).props.children).toContain('req_no_cache_1');
   });
 
-  test('appends the backend request id when cached fallback is used after a live failure', async () => {
+  test('uses cached backend data while runtime is degraded', async () => {
     mockGetRuntimeConfigState.mockReturnValue(buildRuntimeState('normal'));
     mockCreateBackendReadClient.mockReturnValue({ name: 'backend-client' });
 
     await renderHarness({
-      loadBundled: async () => ({ value: 'bundled' }),
       loadBackend: async () => ({
-        data: { value: 'fresh-backend' },
+        data: { value: 'cached-backend' },
         generatedAt: '2026-03-10T00:00:00.000Z',
       }),
     });
 
+    mockGetRuntimeConfigState.mockReturnValue(buildRuntimeState('degraded'));
+
     const tree = await renderHarness({
-      loadBundled: async () => ({ value: 'bundled' }),
-      loadBackend: async () => {
-        throw new MockBackendReadError('백엔드 응답이 지연되어 요청을 중단했습니다. 다시 시도해 주세요.', {
-          code: 'timeout',
-          requestId: 'req_test_123',
-        });
-      },
+      loadBackend: async () => ({
+        data: { value: 'ignored' },
+      }),
     });
 
-    expect(tree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain('요청 ID: req_test_123');
+    expect(tree.root.findByProps({ testID: 'hook-source' }).props.children).toBe('backend-cache');
+    expect(tree.root.findByProps({ testID: 'hook-value' }).props.children).toBe('cached-backend');
+    expect(tree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain('Runtime config is degraded.');
   });
 
-  test('falls back to bundled data when runtime is degraded and cache is unavailable', async () => {
+  test('returns an explicit error when runtime is degraded and cache is unavailable', async () => {
     mockGetRuntimeConfigState.mockReturnValue(buildRuntimeState('degraded'));
     mockCreateBackendReadClient.mockReturnValue({ name: 'backend-client' });
-    const loadBundled = jest.fn(async () => ({ value: 'bundled-fallback' }));
 
     const tree = await renderHarness({
-      loadBundled,
       loadBackend: async () => ({
         data: { value: 'backend' },
       }),
     });
 
-    expect(tree.root.findByProps({ testID: 'hook-source' }).props.children).toBe('bundled-static');
-    expect(tree.root.findByProps({ testID: 'hook-value' }).props.children).toBe('bundled-fallback');
-    expect(tree.root.findByProps({ testID: 'hook-issues' }).props.children).toContain('Runtime config is degraded.');
-    expect(loadBundled).toHaveBeenCalledTimes(1);
+    expect(tree.root.findByProps({ testID: 'hook-state' }).props.children).toBe('error');
+    expect(tree.root.findByProps({ testID: 'hook-message' }).props.children).toContain(
+      '런타임이 degraded 상태이고 저장된 백엔드 스냅샷이 없습니다.',
+    );
   });
 });

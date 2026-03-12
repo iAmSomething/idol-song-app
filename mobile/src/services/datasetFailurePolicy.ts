@@ -4,7 +4,7 @@ import {
   type RuntimeConfigState,
 } from '../config/runtime';
 import {
-  createBundledDatasetSelection,
+  createBackendDatasetSelection,
   selectDatasetSource,
   type DatasetSelection,
 } from './datasetSource';
@@ -40,9 +40,10 @@ export async function resolveDatasetFailurePolicy(options: {
   if (runtimeState.mode === 'degraded') {
     return {
       mode: 'degraded',
-      activeSource: 'bundled-static',
-      selection: createBundledDatasetSelection(
+      activeSource: 'backend-api',
+      selection: createBackendDatasetSelection(
         runtimeState.config.dataSource.datasetVersion,
+        runtimeState.config.services.apiBaseUrl,
         'runtime_degraded',
       ),
       issues: toFailurePolicyIssues(runtimeState.issues),

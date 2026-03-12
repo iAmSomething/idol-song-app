@@ -41,22 +41,15 @@ import {
 } from '../../src/features/routeState';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
 import {
-  createSelectorContext,
-  selectCalendarMonthSnapshot,
-  selectTeamSummaryBySlug,
-} from '../../src/selectors';
-import {
   MOBILE_COPY,
   resolveSourceLinkLabel,
   resolveUpcomingConfidenceLabel,
   resolveUpcomingStatusLabel,
 } from '../../src/copy/mobileCopy';
-import { loadActiveMobileDataset } from '../../src/services/activeDataset';
 import {
   adaptBackendCalendarMonth,
 } from '../../src/services/backendDisplayAdapters';
 import type { BackendReadClient } from '../../src/services/backendReadClient';
-import { cloneBundledDatasetFixture } from '../../src/services/bundledDatasetFixture';
 import {
   classifyExternalLinkFailureCategory,
   classifyServiceHandoffFailureCategory,
@@ -90,7 +83,6 @@ import type { SourceLinkRowItem } from '../../src/components/meta/SourceLinkRow'
 import type {
   CalendarMonthSnapshotModel,
   ReleaseSummaryModel,
-  TeamSummaryModel,
   UpcomingEventModel,
 } from '../../src/types';
 
@@ -190,27 +182,6 @@ function getSelectedDayCounts(
   };
 }
 
-function buildTeamMonogram(value: string): string {
-  const compact = value.replace(/\s+/g, '');
-  if (!compact) {
-    return '??';
-  }
-
-  const hasHangul = /[가-힣]/.test(compact);
-  if (hasHangul) {
-    return compact.slice(0, 2);
-  }
-
-  const normalized = compact.replace(/[^A-Za-z0-9]/g, '');
-  return (normalized || compact).slice(0, 2).toUpperCase();
-}
-
-function normalizeProfileActType(
-  value: 'group' | 'solo' | 'unit' | 'project' | null | undefined,
-) {
-  return value ?? undefined;
-}
-
 function buildReleaseIdentityMeta(release: ReleaseSummaryModel): string | undefined {
   if (release.representativeSongTitle?.trim()) {
     return `대표곡 · ${release.representativeSongTitle.trim()}`;
@@ -260,12 +231,6 @@ export default function CalendarTabScreen() {
   const [viewMode, setViewMode] = useState<CalendarViewMode>(routeState.viewMode);
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
-  const bundledProfiles = useMemo(() => cloneBundledDatasetFixture().artistProfiles, []);
-  const bundledSelectorContext = useMemo(() => createSelectorContext(cloneBundledDatasetFixture()), []);
-  const loadBundledSnapshot = useCallback(async () => {
-    const activeDataset = await loadActiveMobileDataset();
-    return selectCalendarMonthSnapshot(activeDataset.dataset, activeMonth, todayIsoDate);
-  }, [activeMonth, todayIsoDate]);
   const loadBackendSnapshot = useCallback(
     async (client: BackendReadClient) => {
       const response = await client.getCalendarMonth(activeMonth);
@@ -281,7 +246,6 @@ export default function CalendarTabScreen() {
     reloadKey: reloadCount,
     cacheKey: `calendar:${activeMonth}:${todayIsoDate}`,
     fallbackErrorMessage: '캘린더 데이터를 지금 불러오지 못했습니다.',
-    loadBundled: loadBundledSnapshot,
     loadBackend: loadBackendSnapshot,
   });
   const currentResumeTarget = useMemo<RouteResumeTarget>(
@@ -331,38 +295,6 @@ export default function CalendarTabScreen() {
   const datasetRiskDisclosure = source
     ? buildDatasetRiskDisclosure(source, '캘린더', 'calendar-dataset-risk-notice')
     : null;
-  const groupSlugByGroup = useMemo(() => {
-    const entries = new Map<string, string>();
-
-    for (const profile of bundledProfiles) {
-      entries.set(profile.group, profile.slug);
-      entries.set(profile.slug, profile.slug);
-    }
-
-    return entries;
-  }, [bundledProfiles]);
-  const profileByGroup = useMemo(() => {
-    const entries = new Map<string, (typeof bundledProfiles)[number]>();
-
-    for (const profile of bundledProfiles) {
-      entries.set(profile.group, profile);
-    }
-
-    return entries;
-  }, [bundledProfiles]);
-  const teamSummaryByGroup = useMemo(() => {
-    const entries = new Map<string, TeamSummaryModel>();
-
-    for (const profile of bundledProfiles) {
-      const team = selectTeamSummaryBySlug(bundledSelectorContext, profile.slug);
-      if (team) {
-        entries.set(profile.group, team);
-        entries.set(profile.slug, team);
-      }
-    }
-
-    return entries;
-  }, [bundledProfiles, bundledSelectorContext]);
 
   useEffect(() => {
     if (!filteredSnapshot) {
@@ -498,17 +430,16 @@ export default function CalendarTabScreen() {
     mode: 'entity_only' | 'release_backed';
     entitySlug: string | null;
   } {
-    const team = teamSummaryByGroup.get(event.group);
     const query = buildEntityCenteredXSearchQuery({
-      displayName: team?.displayName ?? event.displayGroup,
-      searchTokens: team?.searchTokens ?? [],
+      displayName: event.displayGroup,
+      searchTokens: [],
       releaseLabel: event.releaseLabel,
     });
 
     return {
       query: query.query,
       mode: query.mode,
-      entitySlug: team?.slug ?? groupSlugByGroup.get(event.group) ?? null,
+      entitySlug: event.group,
     };
   }
 
@@ -615,14 +546,13 @@ export default function CalendarTabScreen() {
   }
 
   function openTeamDetailByGroup(group: string) {
-    const slug = groupSlugByGroup.get(group);
-    if (!slug) {
+    if (!group) {
       return;
     }
 
     router.push({
       pathname: '/artists/[slug]',
-      params: { slug },
+      params: { slug: group },
     });
   }
 
@@ -791,10 +721,10 @@ export default function CalendarTabScreen() {
       serviceButtons: buildReleaseServiceButtons(release),
       sourceLinks: buildReleaseSourceLinks(release),
       team: {
-        badgeImageUrl: profileByGroup.get(release.group)?.badge_image_url ?? undefined,
-        fallbackAssetKey: resolveBadgeFallbackAssetKey(normalizeProfileActType(profileByGroup.get(release.group)?.act_type)),
+        badgeImageUrl: undefined,
+        fallbackAssetKey: resolveBadgeFallbackAssetKey('group'),
         meta: buildReleaseIdentityMeta(release),
-        monogram: buildTeamMonogram(release.displayGroup),
+        monogram: release.displayGroup.slice(0, 2).toUpperCase(),
         name: release.displayGroup,
       },
       testID: `${testPrefix}-${release.id}`,
@@ -823,9 +753,9 @@ export default function CalendarTabScreen() {
       sourceLinks: buildUpcomingSourceLinks(event),
       statusChip: resolveUpcomingStatusLabel(event.status),
       team: {
-        badgeImageUrl: profileByGroup.get(event.group)?.badge_image_url ?? undefined,
-        fallbackAssetKey: resolveBadgeFallbackAssetKey(normalizeProfileActType(profileByGroup.get(event.group)?.act_type)),
-        monogram: buildTeamMonogram(event.displayGroup),
+        badgeImageUrl: undefined,
+        fallbackAssetKey: resolveBadgeFallbackAssetKey('group'),
+        monogram: event.displayGroup.slice(0, 2).toUpperCase(),
         name: event.displayGroup,
       },
       testID: `${testPrefix}-${event.id}`,

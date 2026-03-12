@@ -2,7 +2,7 @@ import type { ExpoConfig, ConfigContext } from 'expo/config';
 
 type MobileProfile = 'development' | 'preview' | 'production';
 type LoggingLevel = 'verbose' | 'debug' | 'error';
-type DataSourceMode = 'bundled-static' | 'backend-api';
+type DataSourceMode = 'backend-api';
 
 type ProfileConfig = {
   name: string;
@@ -62,7 +62,7 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
     scheme: 'idolsongapp-dev',
     iosBundleIdentifier: 'com.anonymous.idolsongappmobile.dev',
     androidPackage: 'com.anonymous.idolsongappmobile.dev',
-    dataSourceMode: 'bundled-static',
+    dataSourceMode: 'backend-api',
     loggingLevel: 'verbose',
     featureGates: {
       radar: true,
@@ -216,8 +216,8 @@ function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig
     throw new Error('EXPO_PUBLIC_ENABLE_REMOTE_REFRESH is no longer supported.');
   }
 
-  if (profile !== 'development' && profileConfig.dataSourceMode === 'backend-api' && !apiBaseUrl) {
-    throw new Error('EXPO_PUBLIC_API_BASE_URL is required for preview/production mobile builds.');
+  if (profileConfig.dataSourceMode === 'backend-api' && !apiBaseUrl) {
+    throw new Error('EXPO_PUBLIC_API_BASE_URL is required for backend-api mobile builds.');
   }
 
   if (featureGates.analytics && !analyticsWriteKey) {

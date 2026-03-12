@@ -112,7 +112,7 @@ blocker rule:
 - preview profile default가 `backend-api`
 - production profile default가 `backend-api`
 - dataset selection이 backend primary를 유지
-- bundled-static normal mode가 development에만 남아 있음
+- shipped runtime active mode가 development에도 `backend-api`만 사용
 
 blocker rule:
 
@@ -206,6 +206,6 @@ Markdown에는 아래가 들어가야 한다.
 
 1. 지금 cutover를 선언해도 되는가
 2. blocker가 runtime인지 parity인지 web surface drift인지 catalog completeness인지
-3. mobile이 아직 bundled-static primary인지, 아니면 backend-primary 단계로 올라왔는지
+3. mobile이 아직 bundled fixture에 의존하는지, 아니면 backend-primary 단계로 올라왔는지
 
 이 문서는 blocker를 "고치는 문서"가 아니라 blocker를 "같이 읽는 기준"이다.

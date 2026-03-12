@@ -87,8 +87,8 @@ API-only runtime 정책이 다시 local dataset 의존으로 미끄러지지 않
 - mobile
   - `npm run verify:runtime-policy`
   - preview / production profile은 반드시 `backend-api`여야 한다.
-  - `bundled-static` active mode는 development 기본값 또는 explicit degraded mode에서만 허용한다.
-  - live backend failure 시 cache가 없으면 현재는 `bundled-static-fallback`으로만 내려갈 수 있고, 이 경로도 explicit notice와 test coverage가 있어야 한다.
+  - shipped runtime active mode는 development/preview/production 모두 `backend-api`만 허용한다.
+  - live backend failure 시 cache가 없으면 explicit error로만 내려가고, bundled dataset은 test/debug fixture에만 남는다.
 
 이 guard는 현재 transitional boundary를 고정하는 것이고, boundary 자체를 제거하는 일은 `#633`, `#636`, `#637`, `#638`에서 계속 진행한다.
 

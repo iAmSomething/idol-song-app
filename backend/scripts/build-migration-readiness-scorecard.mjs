@@ -90,7 +90,7 @@ const READINESS_RUBRIC = {
         needs_review: 0.6,
       },
       blockerRule:
-        'Preview and production mobile profiles must default to backend-api, and bundled-static cannot remain the normal shipping mode outside development or degraded fallback.',
+        'Development, preview, and production mobile profiles must default to backend-api, and bundled data must remain fixture-only rather than a shipped active runtime mode.',
     },
     {
       key: 'catalog_completeness',
@@ -452,22 +452,24 @@ function parseExpectedModes(runtimeSourceText) {
 function buildMobileRuntimeModeCategory(runtimeSourceText, datasetSourceText, debugMetadataText) {
   const config = getCategoryConfig('mobile_runtime_mode');
   const expectedModes = parseExpectedModes(runtimeSourceText);
+  const developmentBackend = expectedModes.development === 'backend-api';
   const previewBackend = expectedModes.preview === 'backend-api';
   const productionBackend = expectedModes.production === 'backend-api';
-  const developmentBundled = expectedModes.development === 'bundled-static';
   const backendPrimarySelection =
-    datasetSourceText.includes("runtimeConfig.dataSource.mode === 'backend-api'") &&
+    datasetSourceText.includes('selectDatasetSource') &&
     datasetSourceText.includes('return createBackendDatasetSelection');
-  const bundledStaticNormalReleaseProfile = previewBackend === false || productionBackend === false;
-  const debugPolicyAligned = debugMetadataText.includes('Backend API primary + bundled fallback');
+  const debugPolicyAligned = debugMetadataText.includes('Backend API only');
 
   const weightedScore =
+    (developmentBackend ? 1 : 0) * 0.25 +
     (previewBackend ? 1 : 0) * 0.35 +
     (productionBackend ? 1 : 0) * 0.35 +
-    (backendPrimarySelection ? 1 : 0) * 0.2 +
-    (developmentBundled ? 1 : 0) * 0.1;
+    (backendPrimarySelection ? 1 : 0) * 0.05;
 
   const blockerReasons = [];
+  if (!developmentBackend) {
+    blockerReasons.push('development profile is not backend-api');
+  }
   if (!previewBackend) {
     blockerReasons.push('preview profile is not backend-api');
   }
@@ -476,9 +478,6 @@ function buildMobileRuntimeModeCategory(runtimeSourceText, datasetSourceText, de
   }
   if (!backendPrimarySelection) {
     blockerReasons.push('dataset selection is not backend-primary');
-  }
-  if (bundledStaticNormalReleaseProfile) {
-    blockerReasons.push('bundled-static remains a normal release profile');
   }
 
   const status = blockerReasons.length > 0 ? 'fail' : deriveStatusFromScore(weightedScore, config.statusThresholds);

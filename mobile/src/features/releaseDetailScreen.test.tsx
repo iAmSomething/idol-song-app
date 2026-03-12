@@ -4,12 +4,20 @@ import { Text } from 'react-native';
 
 import ReleaseDetailScreen from '../../app/releases/[id]';
 import { getFeatureGateState } from '../config/featureGates';
+import type { RuntimeConfigState } from '../config/runtime';
+import { selectReleaseDetailById } from '../selectors';
 import { trackAnalyticsEvent } from '../services/analytics';
 import {
   openServiceHandoff,
   type ServiceHandoffFailure,
   type ServiceHandoffResolution,
 } from '../services/handoff';
+import { cloneBundledDatasetFixture } from '../services/bundledDatasetFixture';
+import {
+  useActiveDatasetScreen,
+  type ActiveDatasetScreenState,
+} from './useActiveDatasetScreen';
+import type { ReleaseDetailModel } from '../types';
 
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({ id: 'yena--love-catcher--2026-03-11--album' }));
@@ -85,6 +93,10 @@ jest.mock('../config/featureGates', () => {
   };
 });
 
+jest.mock('./useActiveDatasetScreen', () => ({
+  useActiveDatasetScreen: jest.fn(),
+}));
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     useLocalSearchParams: jest.Mock;
@@ -95,6 +107,70 @@ const { __mock } = jest.requireMock('expo-router') as {
 const mockOpenServiceHandoff = openServiceHandoff as jest.MockedFunction<typeof openServiceHandoff>;
 const mockTrackAnalyticsEvent = jest.mocked(trackAnalyticsEvent);
 const mockGetFeatureGateState = jest.mocked(getFeatureGateState);
+const mockUseActiveDatasetScreen = jest.mocked(useActiveDatasetScreen);
+const bundledFixture = cloneBundledDatasetFixture();
+
+function buildRuntimeState(): RuntimeConfigState {
+  return {
+    mode: 'normal',
+    issues: [],
+    config: {
+      profile: 'preview',
+      dataSource: {
+        mode: 'backend-api',
+        datasetVersion: 'preview-v1',
+      },
+      services: {
+        apiBaseUrl: 'https://example.com/api',
+        analyticsWriteKey: null,
+        expoProjectId: null,
+      },
+      logging: {
+        level: 'debug',
+      },
+      featureGates: {
+        radar: true,
+        analytics: false,
+        remoteRefresh: false,
+        mvEmbed: true,
+        shareActions: true,
+      },
+      build: {
+        version: '0.1.0',
+        commitSha: 'test-sha',
+      },
+    },
+  };
+}
+
+function buildReadyState(detail: ReleaseDetailModel | null): ActiveDatasetScreenState<ReleaseDetailModel | null> {
+  return {
+    kind: 'ready',
+    source: {
+      activeSource: 'backend-api',
+      sourceLabel: 'Backend API',
+      data: detail,
+      freshness: {
+        rollingReferenceAt: '2026-03-11T00:00:00.000Z',
+        staleFreshnessClasses: ['rolling-release', 'rolling-upcoming'],
+      },
+      issues: [],
+      runtimeState: buildRuntimeState(),
+    },
+  };
+}
+
+function buildStateForReleaseId(releaseId: string): ActiveDatasetScreenState<ReleaseDetailModel | null> {
+  const detail = selectReleaseDetailById(bundledFixture, releaseId);
+  if (!detail) {
+    return buildReadyState(null);
+  }
+
+  return buildReadyState({
+    ...detail,
+    group: releaseId.split('--')[0] ?? detail.group,
+  });
+}
 
 async function renderReleaseDetail() {
   let tree: renderer.ReactTestRenderer;
@@ -127,6 +203,10 @@ describe('mobile release detail screen', () => {
     });
     mockOpenServiceHandoff.mockClear();
     mockTrackAnalyticsEvent.mockClear();
+    mockUseActiveDatasetScreen.mockImplementation((options) => {
+      const releaseId = String(options.cacheKey).replace(/^release:/, '');
+      return buildStateForReleaseId(releaseId);
+    });
   });
 
   test('renders populated release detail sections for a canonical release', async () => {

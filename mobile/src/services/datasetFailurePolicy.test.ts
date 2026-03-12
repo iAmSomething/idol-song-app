@@ -45,14 +45,14 @@ function createRuntimeState(mode: RuntimeConfigState['mode'] = 'normal'): Runtim
 }
 
 describe('dataset failure policy', () => {
-  test('falls back to bundled degraded mode when runtime config is already degraded', async () => {
+  test('keeps backend api as the active source when runtime config is already degraded', async () => {
     const policy = await resolveDatasetFailurePolicy({
       runtimeState: createRuntimeState('degraded'),
     });
 
     expect(policy.mode).toBe('degraded');
-    expect(policy.activeSource).toBe('bundled-static');
-    expect(policy.selection.kind).toBe('bundled-static');
+    expect(policy.activeSource).toBe('backend-api');
+    expect(policy.selection.kind).toBe('backend-api');
     expect(policy.selection.reason).toBe('runtime_degraded');
     expect(policy.issues).toEqual([
       expect.objectContaining({

@@ -49,21 +49,6 @@ export function ScreenFeedbackState({
   const { fontScale } = useWindowDimensions();
   const styles = React.useMemo(() => createStyles(theme), [theme]);
   const titleMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.sectionTitle : MOBILE_TEXT_SCALE_LIMITS.screenTitle;
-  const [showLoadingSkeleton, setShowLoadingSkeleton] = React.useState(variant !== 'loading');
-
-  React.useEffect(() => {
-    if (variant !== 'loading') {
-      setShowLoadingSkeleton(true);
-      return;
-    }
-
-    setShowLoadingSkeleton(false);
-    const timer = setTimeout(() => {
-      setShowLoadingSkeleton(true);
-    }, theme.motion.loadingDelay);
-
-    return () => clearTimeout(timer);
-  }, [theme.motion.loadingDelay, variant]);
 
   return (
     <View
@@ -90,15 +75,7 @@ export function ScreenFeedbackState({
       </Text>
       <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.body}>{body}</Text>
       {variant === 'loading' ? (
-        showLoadingSkeleton ? (
-          <LoadingSkeleton layout={loadingLayout} />
-        ) : (
-          <View style={styles.loadingHoldFrame} testID={testID ? `${testID}-loading-hold` : undefined}>
-            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.loadingHint}>
-              구조를 먼저 고정한 뒤 내용을 채우고 있습니다.
-            </Text>
-          </View>
-        )
+        <LoadingSkeleton layout={loadingLayout} />
       ) : action ? (
         <ActionButton
           accessibilityLabel={action.label}
@@ -274,14 +251,6 @@ function createStyles(theme: MobileTheme) {
     body: {
       ...theme.typography.body,
       color: theme.colors.text.secondary,
-    },
-    loadingHoldFrame: {
-      width: '100%',
-      paddingTop: theme.space[8],
-    },
-    loadingHint: {
-      ...theme.typography.meta,
-      color: theme.colors.text.tertiary,
     },
     skeletonFrame: {
       width: '100%',

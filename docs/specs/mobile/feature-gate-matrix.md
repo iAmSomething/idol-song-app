@@ -23,7 +23,7 @@
 
 ### 3.4 Remote dataset refresh
 - gate name: `remote_dataset_enabled`
-- off fallback: bundled dataset only
+- off fallback: cached backend snapshot 유지, 없으면 explicit error
 
 ### 3.5 Share actions
 - gate name: `share_actions_enabled`
@@ -37,4 +37,4 @@
 ## 5. QA 체크포인트
 - gate on/off 모두에서 layout 깨짐이 없어야 한다.
 - MV embed off여도 Release Detail의 소비 흐름이 유지되어야 한다.
-- remote_dataset_enabled off 상태에서도 앱이 bundled dataset으로 정상 동작해야 한다.
+- remote_dataset_enabled off 상태에서도 cache가 있으면 화면 구조를 유지하고, 없으면 explicit error로 끝나야 한다.

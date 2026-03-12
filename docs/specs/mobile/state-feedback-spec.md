@@ -34,7 +34,7 @@
 - CTA: `다시 시도`
 - 심각하지 않으면 이전 데이터 유지 가능
 - retry CTA는 primary prominence를 갖되 destructive 톤으로 과장하지 않는다.
-- degraded cache/bundled fallback이 있으면 즉시 구조를 유지하고, 문제 원인은 notice로만 보조한다.
+- degraded cache가 있으면 즉시 구조를 유지하고, cache도 없으면 explicit error 상태로 전환한다.
 
 ### 5.2 External Open Error
 - 기본 문구: `앱을 열 수 없습니다.` 또는 `링크를 열 수 없습니다.`

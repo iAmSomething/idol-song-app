@@ -3,7 +3,15 @@ import renderer, { act } from 'react-test-renderer';
 import { Text } from 'react-native';
 
 import ArtistDetailScreen from '../../app/artists/[slug]';
+import type { RuntimeConfigState } from '../config/runtime';
+import { selectEntityDetailSnapshot } from '../selectors';
 import { openXSearchHandoff } from '../services/handoff';
+import { cloneBundledDatasetFixture } from '../services/bundledDatasetFixture';
+import {
+  useActiveDatasetScreen,
+  type ActiveDatasetScreenState,
+} from './useActiveDatasetScreen';
+import type { EntityDetailSnapshotModel } from '../types';
 
 jest.mock('expo-router', () => {
   const useLocalSearchParams = jest.fn(() => ({ slug: 'yena' }));
@@ -39,6 +47,10 @@ jest.mock('../services/handoff', () => {
   };
 });
 
+jest.mock('./useActiveDatasetScreen', () => ({
+  useActiveDatasetScreen: jest.fn(),
+}));
+
 const { __mock } = jest.requireMock('expo-router') as {
   __mock: {
     useLocalSearchParams: jest.Mock;
@@ -46,6 +58,60 @@ const { __mock } = jest.requireMock('expo-router') as {
   };
 };
 const mockOpenXSearchHandoff = jest.mocked(openXSearchHandoff);
+const mockUseActiveDatasetScreen = jest.mocked(useActiveDatasetScreen);
+const bundledFixture = cloneBundledDatasetFixture();
+
+function buildRuntimeState(): RuntimeConfigState {
+  return {
+    mode: 'normal',
+    issues: [],
+    config: {
+      profile: 'preview',
+      dataSource: {
+        mode: 'backend-api',
+        datasetVersion: 'preview-v1',
+      },
+      services: {
+        apiBaseUrl: 'https://example.com/api',
+        analyticsWriteKey: null,
+        expoProjectId: null,
+      },
+      logging: {
+        level: 'debug',
+      },
+      featureGates: {
+        radar: true,
+        analytics: false,
+        remoteRefresh: false,
+        mvEmbed: true,
+        shareActions: true,
+      },
+      build: {
+        version: '0.1.0',
+        commitSha: 'test-sha',
+      },
+    },
+  };
+}
+
+function buildReadyState(
+  snapshot: EntityDetailSnapshotModel | null,
+): ActiveDatasetScreenState<EntityDetailSnapshotModel | null> {
+  return {
+    kind: 'ready',
+    source: {
+      activeSource: 'backend-api',
+      sourceLabel: 'Backend API',
+      data: snapshot,
+      freshness: {
+        rollingReferenceAt: '2026-03-11T00:00:00.000Z',
+        staleFreshnessClasses: ['rolling-release', 'rolling-upcoming'],
+      },
+      issues: [],
+      runtimeState: buildRuntimeState(),
+    },
+  };
+}
 
 async function renderArtistDetail() {
   let tree: renderer.ReactTestRenderer;
@@ -79,6 +145,10 @@ describe('mobile entity detail screen', () => {
       mode: 'release_backed',
       target: 'web',
       openedUrl: 'https://x.com/search?q=YENA',
+    });
+    mockUseActiveDatasetScreen.mockImplementation((options) => {
+      const slug = String(options.cacheKey).replace(/^entity:/, '');
+      return buildReadyState(selectEntityDetailSnapshot(bundledFixture, slug, '2026-03-07'));
     });
   });
 

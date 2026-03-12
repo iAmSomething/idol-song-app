@@ -34,8 +34,6 @@ import {
   resolveUpcomingStatusWithFallback,
 } from '../../src/copy/mobileCopy';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
-import { selectEntityDetailSnapshot } from '../../src/selectors';
-import { loadActiveMobileDataset } from '../../src/services/activeDataset';
 import { adaptBackendEntityDetail } from '../../src/services/backendDisplayAdapters';
 import { BackendReadError, type BackendReadClient } from '../../src/services/backendReadClient';
 import {
@@ -261,10 +259,6 @@ export default function ArtistDetailScreen() {
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
-  const loadBundledSnapshot = useCallback(async () => {
-    const activeDataset = await loadActiveMobileDataset();
-    return slug ? selectEntityDetailSnapshot(activeDataset.dataset, slug) : null;
-  }, [slug]);
   const loadBackendSnapshot = useCallback(
     async (client: BackendReadClient) => {
       if (!slug) {
@@ -298,7 +292,6 @@ export default function ArtistDetailScreen() {
     reloadKey: reloadCount,
     cacheKey: `entity:${slug || 'missing'}`,
     fallbackErrorMessage: '팀 상세 데이터를 불러오지 못했습니다.',
-    loadBundled: loadBundledSnapshot,
     loadBackend: loadBackendSnapshot,
   });
   const snapshot = datasetState.kind === 'ready' ? datasetState.source.data : null;

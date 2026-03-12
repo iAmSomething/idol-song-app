@@ -23,9 +23,9 @@
   - `index.ts`: shared selectors entrypoint
     - team / entity detail / release detail selector 외에 calendar month snapshot / radar snapshot / search result selector 포함
 - `services/`: data source / external handoff / helper
-  - `datasetSource.ts`: backend-primary runtime selection + bundled fallback descriptor
-  - `activeDataset.ts`: selector fallback용 bundled dataset payload loader
-  - `datasetFailurePolicy.ts`: backend-primary runtime / degraded fallback policy
+  - `datasetSource.ts`: backend-only runtime selection descriptor
+  - `activeDataset.ts`: test/debug fixture용 bundled dataset loader
+  - `datasetFailurePolicy.ts`: backend-primary runtime / degraded cache-or-error policy
   - `storage.ts`: `AsyncStorage` adapter + namespaced key/value helper
   - `datasetCache.ts`: static dataset artifact cache entry helper
   - `recentQueries.ts`: recent-query persistence helper
