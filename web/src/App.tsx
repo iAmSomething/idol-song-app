@@ -248,6 +248,7 @@ type ReleaseDetailApiRequest = {
   date: string
   stream: VerifiedRelease['stream']
   release_kind: VerifiedRelease['release_kind']
+  release_id?: string
 }
 
 type BackendTargetEnvironment = 'production' | 'preview' | 'local' | 'bridge' | 'unknown'
@@ -401,11 +402,20 @@ type SearchSurfaceResource = SearchSurfaceSnapshot & {
   traceId: string | null
 }
 
+type ReleaseRouteSelection = {
+  entitySlug: string
+  releaseSlug: string
+  releaseDate: string | null
+  releaseStream: VerifiedRelease['stream'] | null
+  releaseId: string | null
+}
+
 type EntityDetailApiResponse = {
   data?: {
     identity?: {
       entity_slug?: string
       display_name?: string
+      canonical_name?: string
       agency_name?: string | null
       badge_image_url?: string | null
       representative_image_url?: string | null
@@ -445,6 +455,13 @@ type EntityDetailApiResponse = {
       release_date?: string
       stream?: string
       release_kind?: string | null
+      release_format?: string | null
+      representative_song_title?: string | null
+      spotify_url?: string | null
+      youtube_music_url?: string | null
+      youtube_mv_url?: string | null
+      source_url?: string | null
+      artwork?: Record<string, unknown> | null
     } | null
     recent_albums?: Array<{
       release_id?: string
@@ -452,6 +469,13 @@ type EntityDetailApiResponse = {
       release_date?: string
       stream?: string
       release_kind?: string | null
+      release_format?: string | null
+      representative_song_title?: string | null
+      spotify_url?: string | null
+      youtube_music_url?: string | null
+      youtube_mv_url?: string | null
+      source_url?: string | null
+      artwork?: Record<string, unknown> | null
     }>
     source_timeline?: Array<{
       headline?: string
@@ -616,6 +640,9 @@ type VerifiedRelease = ReleaseFact & {
   stream: 'song' | 'album'
   dateValue: Date
   isoDate: string
+  release_id?: string
+  artwork?: ResolvedReleaseArtwork | null
+  youtube_mv_url?: string | null
 }
 
 type UnresolvedRow = {
@@ -821,6 +848,7 @@ type TeamLatestRelease = {
   source: string
   artistSource: string
   musicHandoffs?: MusicHandoffUrls
+  youtubeMvUrl?: string | null
   verified: boolean
 }
 
@@ -1932,9 +1960,13 @@ function App() {
   const [myTeams, setMyTeams] = useState<string[]>(readInitialMyTeams)
   const [selectedMyTeamsOnly, setSelectedMyTeamsOnly] = useState(false)
   const [language, setLanguage] = useState<Language>(readInitialLanguage)
+  const [selectedEntitySlug, setSelectedEntitySlug] = useState<string | null>(readSelectedEntitySlugFromLocation)
   const [selectedGroup, setSelectedGroup] = useState<string | null>(readSelectedGroupFromLocation)
   const [selectedCompareGroup, setSelectedCompareGroup] = useState<string | null>(readSelectedCompareGroupFromLocation)
   const [selectedAlbumKey, setSelectedAlbumKey] = useState<string | null>(readSelectedReleaseKeyFromLocation)
+  const [selectedReleaseRouteSelection, setSelectedReleaseRouteSelection] = useState<ReleaseRouteSelection | null>(
+    readSelectedReleaseRouteSelectionFromLocation,
+  )
   const [showBackendTargetInspection, setShowBackendTargetInspection] = useState(readBackendTargetInspectionFromLocation)
   const [selectedDayInteractionTick, setSelectedDayInteractionTick] = useState(0)
   const [desktopUpcomingPanelHeight, setDesktopUpcomingPanelHeight] = useState<number | null>(null)
@@ -1945,9 +1977,8 @@ function App() {
       ? selectedCompareGroup
       : null
   const selectedReleaseRoute =
-    selectedGroup && selectedAlbumKey
-      ? findVerifiedReleaseByKey(selectedGroup, selectedAlbumKey)
-      : null
+    (selectedGroup && selectedAlbumKey ? findVerifiedReleaseByKey(selectedGroup, selectedAlbumKey) : null) ??
+    (selectedReleaseRouteSelection ? buildRouteSelectedRelease(selectedGroup, selectedReleaseRouteSelection) : null)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -1987,9 +2018,11 @@ function App() {
     }
 
     const handlePopState = () => {
+      setSelectedEntitySlug(readSelectedEntitySlugFromLocation())
       setSelectedGroup(readSelectedGroupFromLocation())
       setSelectedCompareGroup(readSelectedCompareGroupFromLocation())
       setSelectedAlbumKey(readSelectedReleaseKeyFromLocation())
+      setSelectedReleaseRouteSelection(readSelectedReleaseRouteSelectionFromLocation())
       setShowBackendTargetInspection(readBackendTargetInspectionFromLocation())
     }
 
@@ -2003,19 +2036,26 @@ function App() {
     }
 
     const nextPath = selectedReleaseRoute
-      ? getReleasePath(selectedReleaseRoute)
+      ? getReleasePath(selectedReleaseRoute, selectedEntitySlug)
       : selectedGroup
         ? getArtistPath(selectedGroup, activeCompareGroup)
-        : getHomePath()
+        : selectedEntitySlug
+          ? getArtistPathBySlug(selectedEntitySlug)
+          : getHomePath()
     const currentLocation = `${window.location.pathname}${window.location.search}`
     if (currentLocation !== nextPath) {
       window.history.pushState(
-        { group: selectedGroup, compare: activeCompareGroup, releaseKey: selectedAlbumKey },
+        {
+          entitySlug: selectedEntitySlug,
+          group: selectedGroup,
+          compare: activeCompareGroup,
+          releaseKey: selectedAlbumKey,
+        },
         '',
         nextPath,
       )
     }
-  }, [activeCompareGroup, selectedAlbumKey, selectedGroup, selectedReleaseRoute])
+  }, [activeCompareGroup, selectedAlbumKey, selectedEntitySlug, selectedGroup, selectedReleaseRoute])
 
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
@@ -2331,9 +2371,12 @@ function App() {
             ? copy.radarBackendTimeout
             : copy.radarBackendFallback,
   }
-  const selectedTeamFallback = selectedGroup ? teamProfileMap.get(selectedGroup) ?? null : null
+  const selectedTeamFallback = selectedEntitySlug
+    ? buildSyntheticTeamProfile(selectedGroup, selectedEntitySlug)
+    : null
   const selectedTeamResource = useEntityDetailResource({
     group: selectedGroup,
+    entitySlug: selectedEntitySlug,
     fallbackTeam: selectedTeamFallback,
   })
   const selectedTeam = selectedTeamResource.team
@@ -2364,32 +2407,14 @@ function App() {
   }
   const selectedAlbum = selectedReleaseRoute
   const selectedTeamLatestRecord =
-    selectedTeam?.latestRelease?.verified
-      ? findVerifiedReleaseRecord(
-          selectedTeam.group,
-          selectedTeam.latestRelease.title,
-          selectedTeam.latestRelease.date,
-          selectedTeam.latestRelease.stream,
-          selectedTeam.latestRelease.releaseKind,
-        )
-      : null
-  const selectedTeamLatestDetail =
-    selectedTeam?.latestRelease
-      ? getReleaseDetail(
-          selectedTeam.group,
-          selectedTeam.latestRelease.title,
-          selectedTeam.latestRelease.date,
-          selectedTeam.latestRelease.stream,
-          selectedTeam.latestRelease.releaseKind,
-        )
+    selectedTeam?.latestRelease &&
+    selectedTeam.latestRelease.verified &&
+    selectedTeam.latestRelease.stream !== 'watchlist'
+      ? buildVerifiedReleaseFromTeamLatestRelease(selectedTeam.group, selectedTeam.latestRelease)
       : null
   const selectedTeamLatestHandoffs =
-    selectedTeam?.latestRelease
-      ? buildReleaseDetailHandoffs(selectedTeamLatestDetail, selectedTeam.latestRelease.musicHandoffs)
-      : undefined
-  const selectedTeamLatestMvUrl = selectedTeamLatestDetail
-    ? getReleaseDetailMvUrls(selectedTeamLatestDetail).canonicalUrl
-    : ''
+    selectedTeam?.latestRelease ? selectedTeam.latestRelease.musicHandoffs : undefined
+  const selectedTeamLatestMvUrl = selectedTeam?.latestRelease?.youtubeMvUrl ?? ''
   const relatedActs = selectedTeam ? relatedActsByGroup.get(selectedTeam.group) ?? [] : []
   const dashboardSectionNavigatorItems: DashboardSectionNavigatorItem[] = [
     {
@@ -2539,24 +2564,34 @@ function App() {
   }, [selectedGroup])
 
   function openTeamPage(group: string) {
+    setSelectedEntitySlug(artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group))
     setSelectedGroup(group)
     setSelectedCompareGroup(null)
     setSelectedAlbumKey(null)
+    setSelectedReleaseRouteSelection(null)
   }
 
   function openTeamPageBySlug(entitySlug: string) {
-    const group = resolveGroupReference(entitySlug)
-    if (!group) {
-      return
-    }
-
-    openTeamPage(group)
+    setSelectedEntitySlug(entitySlug)
+    setSelectedGroup(resolveGroupReference(entitySlug))
+    setSelectedCompareGroup(null)
+    setSelectedAlbumKey(null)
+    setSelectedReleaseRouteSelection(null)
   }
 
   function openReleaseDetail(release: VerifiedRelease) {
+    const entitySlug = artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)
+    setSelectedEntitySlug(entitySlug)
     setSelectedGroup(release.group)
     setSelectedCompareGroup(null)
     setSelectedAlbumKey(getAlbumKey(release))
+    setSelectedReleaseRouteSelection({
+      entitySlug,
+      releaseSlug: release.release_id ?? (slugifyPathSegment(release.title) || 'release'),
+      releaseDate: release.date,
+      releaseStream: release.stream,
+      releaseId: release.release_id ?? null,
+    })
   }
 
   function closeReleaseDetail() {
@@ -2566,12 +2601,15 @@ function App() {
     }
 
     setSelectedAlbumKey(null)
+    setSelectedReleaseRouteSelection(null)
   }
 
   function closeTeamPage() {
+    setSelectedEntitySlug(null)
     setSelectedGroup(null)
     setSelectedCompareGroup(null)
     setSelectedAlbumKey(null)
+    setSelectedReleaseRouteSelection(null)
   }
 
   function toggleMyTeam(group: string) {
@@ -2824,16 +2862,17 @@ function App() {
         </section>
       ) : null}
 
-      {selectedAlbum && selectedGroup ? (
+      {selectedAlbum && selectedEntitySlug ? (
         <ReleaseDetailPage
           album={selectedAlbum}
-          group={selectedGroup}
+          group={selectedAlbum.group}
+          entitySlug={selectedEntitySlug}
           language={language}
           displayDateFormatter={displayDateFormatter}
           onBack={closeReleaseDetail}
           onOpenTeamPage={openTeamPage}
         />
-      ) : selectedGroup && selectedTeamFallback && !selectedTeam ? (
+      ) : selectedEntitySlug && selectedTeamFallback && !selectedTeam ? (
         <main className="team-page">
           <section className="panel team-page-hero">
             <div className="team-page-head">
@@ -3214,9 +3253,6 @@ function App() {
                         {selectedTeam.latestRelease.verified ? teamCopy.verifiedRelease : teamCopy.watchlistFallback} ·{' '}
                         {formatOptionalDate(selectedTeam.latestRelease.date, displayDateFormatter, copy.none)}
                       </p>
-                      {selectedTeamLatestDetail?.notes ? (
-                        <p className="signal-evidence">{selectedTeamLatestDetail.notes}</p>
-                      ) : null}
                       <div className="action-stack">
                         {selectedTeamLatestRecord ? (
                           <div className="action-row">
@@ -3273,20 +3309,9 @@ function App() {
                 {selectedTeam.recentAlbums.length ? (
                   <div className="album-grid">
                     {selectedTeam.recentAlbums.map((item) => {
-                      const artwork = getReleaseArtwork(
-                        item.group,
-                        item.title,
-                        item.date,
-                        item.stream,
-                        item.release_kind,
-                      )
-                      const detail = getReleaseDetail(
-                        item.group,
-                        item.title,
-                        item.date,
-                        item.stream,
-                        item.release_kind,
-                      )
+                      const artwork =
+                        item.artwork ??
+                        buildPlaceholderReleaseArtwork(item.group, item.title, item.date, item.stream, item.release_kind)
 
                       return (
                         <article key={getAlbumKey(item)} className="album-card-shell">
@@ -3310,8 +3335,8 @@ function App() {
                           <MusicHandoffRow
                             group={selectedTeam.group}
                             title={item.title}
-                            canonicalUrls={buildReleaseDetailHandoffs(detail, item.music_handoffs)}
-                            mvUrl={getReleaseDetailMvUrls(detail).canonicalUrl}
+                            canonicalUrls={item.music_handoffs}
+                            mvUrl={item.youtube_mv_url ?? ''}
                             language={language}
                             compact
                           />
@@ -3886,6 +3911,7 @@ function App() {
 function ReleaseDetailPage({
   album,
   group,
+  entitySlug,
   language,
   displayDateFormatter,
   onBack,
@@ -3893,6 +3919,7 @@ function ReleaseDetailPage({
 }: {
   album: VerifiedRelease
   group: string
+  entitySlug: string
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
   onBack: () => void
@@ -3901,10 +3928,11 @@ function ReleaseDetailPage({
   const copy = TRANSLATIONS[language]
   const teamCopy = TEAM_COPY[language]
   const displayName = getTeamDisplayName(group)
-  const releaseDetailResource = useReleaseDetailResource({ album, group })
+  const releaseDetailResource = useReleaseDetailResource({ album, group, entitySlug })
   const artwork = releaseDetailResource.artwork
   const releaseDetail = releaseDetailResource.detail
   const releaseEnrichment = buildFallbackReleaseEnrichment(group, album.title, album.date, album.stream, album.release_kind)
+  const releaseDisplayTitle = releaseDetail.isFallback ? album.title : releaseDetail.release_title
   const hasCanonicalTracks = releaseDetail.tracks.length > 0
   const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail)
   const mv = getReleaseDetailMvUrls(releaseDetail)
@@ -3936,7 +3964,7 @@ function ReleaseDetailPage({
         <div className="release-detail-head">
           <div>
             <p className="panel-label">{album.release_kind === 'single' ? teamCopy.releaseDetail : teamCopy.albumDetail}</p>
-            <h2>{album.title}</h2>
+            <h2>{releaseDisplayTitle}</h2>
             <p className="hero-text drawer-copy">
               {displayName} · {formatOptionalDate(album.date, displayDateFormatter, copy.none)}
             </p>
@@ -7376,6 +7404,194 @@ function readNonEmptyString(value: unknown): string | null {
   return typeof value === 'string' && value.trim().length > 0 ? value : null
 }
 
+function looksLikeUuid(value: string) {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value)
+}
+
+function humanizeRouteSlug(value: string) {
+  const normalized = decodeURIComponent(value).trim().replace(/[-_]+/g, ' ')
+  return normalized.length ? normalized : 'Release'
+}
+
+function buildSyntheticTeamProfile(group: string | null, entitySlug: string): TeamProfile {
+  const displayName = group ?? humanizeRouteSlug(entitySlug)
+
+  return {
+    group: displayName,
+    slug: entitySlug,
+    displayName,
+    aliases: [],
+    tier: 'tracked',
+    trackingStatus: 'watch_only',
+    artistSource: '',
+    xUrl: '',
+    instagramUrl: '',
+    youtubeUrl: null,
+    hasOfficialYouTubeUrl: false,
+    agency: '',
+    badgeImageUrl: null,
+    badgeSourceUrl: null,
+    badgeSourceLabel: null,
+    representativeImageUrl: null,
+    representativeImageSource: null,
+    latestRelease: null,
+    recentAlbums: [],
+    upcomingSignals: [],
+    sourceTimeline: [],
+    annualReleaseTimeline: [],
+    changeLog: [],
+    nextUpcomingSignal: null,
+  }
+}
+
+function normalizeEntityDetailReleaseStream(
+  stream: string | null | undefined,
+  releaseKind: string | null | undefined,
+): VerifiedRelease['stream'] {
+  return stream === 'album' || releaseKind === 'album' || releaseKind === 'ep' ? 'album' : 'song'
+}
+
+function buildEntityDetailArtwork(
+  group: string,
+  releaseTitle: string,
+  releaseDate: string,
+  stream: VerifiedRelease['stream'],
+  releaseKind: string | null | undefined,
+  artworkValue: unknown,
+): ResolvedReleaseArtwork | null {
+  if (!isUnknownRecord(artworkValue)) {
+    return null
+  }
+
+  const coverImageUrl = readNonEmptyString(artworkValue.cover_image_url)
+  const thumbnailImageUrl = readNonEmptyString(artworkValue.thumbnail_image_url) ?? coverImageUrl
+  const artworkSourceUrl = readNonEmptyString(artworkValue.artwork_source_url) ?? coverImageUrl
+  if (!coverImageUrl || !thumbnailImageUrl || !artworkSourceUrl) {
+    return null
+  }
+
+  return {
+    group,
+    release_title: releaseTitle,
+    release_date: releaseDate,
+    stream: normalizeReleaseStream(stream, releaseKind ?? undefined),
+    cover_image_url: coverImageUrl,
+    thumbnail_image_url: thumbnailImageUrl,
+    artwork_source_type: readNonEmptyString(artworkValue.artwork_source_type) ?? 'backend_api',
+    artwork_source_url: artworkSourceUrl,
+    isPlaceholder: readNonEmptyString(artworkValue.artwork_status) === 'placeholder',
+  }
+}
+
+function buildSyntheticVerifiedRelease(
+  group: string,
+  fallbackTeam: TeamProfile,
+  summary:
+    | NonNullable<EntityDetailApiResponse['data']>['latest_release']
+    | NonNullable<NonNullable<EntityDetailApiResponse['data']>['recent_albums']>[number],
+): VerifiedRelease | null {
+  const releaseTitle = readNonEmptyString(summary?.release_title)
+  const releaseDate = readNonEmptyString(summary?.release_date)
+  if (!releaseTitle || !releaseDate) {
+    return null
+  }
+
+  const stream = normalizeEntityDetailReleaseStream(summary?.stream, summary?.release_kind)
+  const releaseKind = normalizeApiReleaseKind(summary?.release_kind, stream === 'album' ? 'album' : 'single')
+  const spotifyUrl = readNonEmptyString(summary?.spotify_url)
+  const youtubeMusicUrl = readNonEmptyString(summary?.youtube_music_url)
+  const canonicalHandoffs =
+    spotifyUrl || youtubeMusicUrl
+      ? {
+          ...(spotifyUrl ? { spotify: spotifyUrl } : {}),
+          ...(youtubeMusicUrl ? { youtube_music: youtubeMusicUrl } : {}),
+        }
+      : undefined
+
+  return {
+    group,
+    artist_name_mb: group,
+    artist_mbid: '',
+    artist_source: readNonEmptyString(summary?.source_url) ?? fallbackTeam.artistSource,
+    actType: getActType(group),
+    stream,
+    title: releaseTitle,
+    date: releaseDate,
+    source: readNonEmptyString(summary?.source_url) ?? fallbackTeam.artistSource,
+    release_kind: releaseKind,
+    release_format:
+      normalizeReleaseFormatValue(summary?.release_format) ||
+      (releaseKind === 'album' || releaseKind === 'ep' || releaseKind === 'single' ? releaseKind : 'single'),
+    context_tags: [],
+    dateValue: new Date(`${releaseDate}T00:00:00`),
+    isoDate: releaseDate,
+    music_handoffs: canonicalHandoffs,
+    release_id: readNonEmptyString(summary?.release_id) ?? undefined,
+    artwork: buildEntityDetailArtwork(group, releaseTitle, releaseDate, stream, releaseKind, summary?.artwork),
+    youtube_mv_url: readNonEmptyString(summary?.youtube_mv_url),
+  }
+}
+
+function buildVerifiedReleaseFromTeamLatestRelease(group: string, latestRelease: TeamLatestRelease): VerifiedRelease {
+  const releaseKind = normalizeApiReleaseKind(
+    latestRelease.releaseKind,
+    latestRelease.stream === 'album' ? 'album' : 'single',
+  )
+
+  return {
+    group,
+    artist_name_mb: group,
+    artist_mbid: '',
+    artist_source: latestRelease.artistSource,
+    actType: getActType(group),
+    stream: latestRelease.stream === 'album' ? 'album' : 'song',
+    title: latestRelease.title,
+    date: latestRelease.date,
+    source: latestRelease.source,
+    release_kind: releaseKind,
+    release_format:
+      latestRelease.releaseFormat ||
+      (releaseKind === 'album' || releaseKind === 'ep' || releaseKind === 'single' ? releaseKind : 'single'),
+    context_tags: latestRelease.contextTags,
+    dateValue: new Date(`${latestRelease.date}T00:00:00`),
+    isoDate: latestRelease.date,
+    music_handoffs: latestRelease.musicHandoffs,
+    youtube_mv_url: latestRelease.youtubeMvUrl,
+  }
+}
+
+function buildRouteSelectedRelease(
+  group: string | null,
+  routeSelection: ReleaseRouteSelection,
+): VerifiedRelease | null {
+  if (!routeSelection.releaseDate || !routeSelection.releaseStream) {
+    return null
+  }
+
+  const fallbackGroup = group ?? humanizeRouteSlug(routeSelection.entitySlug)
+  const fallbackTitle = looksLikeUuid(routeSelection.releaseSlug)
+    ? 'Release'
+    : humanizeRouteSlug(routeSelection.releaseSlug)
+
+  return {
+    group: fallbackGroup,
+    artist_name_mb: fallbackGroup,
+    artist_mbid: '',
+    artist_source: '',
+    actType: getActType(fallbackGroup),
+    stream: routeSelection.releaseStream,
+    title: fallbackTitle,
+    date: routeSelection.releaseDate,
+    source: '',
+    release_kind: routeSelection.releaseStream === 'album' ? 'album' : 'single',
+    release_format: routeSelection.releaseStream === 'album' ? 'album' : 'single',
+    context_tags: [],
+    dateValue: new Date(`${routeSelection.releaseDate}T00:00:00`),
+    isoDate: routeSelection.releaseDate,
+    release_id: routeSelection.releaseId ?? undefined,
+  }
+}
+
 function normalizeApiReleaseKind(
   releaseKind: string | null | undefined,
   fallbackReleaseKind: VerifiedRelease['release_kind'],
@@ -7391,15 +7607,17 @@ function buildLocalReleaseDetailSnapshot(album: ReleaseDetailApiRequest, group: 
   return {
     detail: buildFallbackReleaseDetail(group, album.title, album.date, album.stream, album.release_kind),
     artwork: buildPlaceholderReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind),
-    releaseId: releaseDetailApiIdCache.get(
-      getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind)),
-    ) ?? null,
+    releaseId:
+      album.release_id ??
+      releaseDetailApiIdCache.get(
+        getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind)),
+      ) ??
+      null,
     canonicalPath: null,
   }
 }
 
-function buildReleaseDetailLookupUrl(album: ReleaseDetailApiRequest, group: string) {
-  const entitySlug = artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)
+function buildReleaseDetailLookupUrl(album: ReleaseDetailApiRequest, entitySlug: string) {
   const stream = normalizeReleaseStream(album.stream, album.release_kind)
 
   if (!BACKEND_API_BASE_URL) {
@@ -7590,6 +7808,7 @@ function normalizeApiReleaseDetailSnapshot(
 async function fetchReleaseDetailApiSnapshot(
   album: ReleaseDetailApiRequest,
   group: string,
+  entitySlug: string,
   fallbackSnapshot: ReleaseDetailApiSnapshot,
   signal: AbortSignal,
 ): Promise<{ snapshot: ReleaseDetailApiSnapshot | null; errorCode: string | null; traceId: string | null }> {
@@ -7603,13 +7822,13 @@ async function fetchReleaseDetailApiSnapshot(
     }
   }
 
-  let releaseId = releaseDetailApiIdCache.get(cacheKey) ?? null
+  let releaseId = album.release_id ?? releaseDetailApiIdCache.get(cacheKey) ?? null
   let canonicalPath: string | null = null
   let traceId: string | null = null
 
   if (!releaseId) {
     const lookupResult = await fetchApiJson<ReleaseDetailLookupApiResponse>(
-      buildReleaseDetailLookupUrl(album, group),
+      buildReleaseDetailLookupUrl(album, entitySlug),
       signal,
       RELEASE_DETAIL_LOOKUP_TIMEOUT_MS,
       `web-release-lookup-${group}`,
@@ -7671,15 +7890,18 @@ async function fetchReleaseDetailApiSnapshot(
 function useReleaseDetailResource({
   album,
   group,
+  entitySlug,
 }: {
   album: VerifiedRelease
   group: string
+  entitySlug: string
 }): ReleaseDetailApiResource {
   const requestAlbum: ReleaseDetailApiRequest = {
     title: album.title,
     date: album.date,
     stream: album.stream,
     release_kind: album.release_kind,
+    release_id: album.release_id,
   }
   const cacheKey = getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind))
   const fallbackSnapshot = buildLocalReleaseDetailSnapshot(requestAlbum, group)
@@ -7738,6 +7960,7 @@ function useReleaseDetailResource({
       date: album.date,
       stream: album.stream,
       release_kind: album.release_kind,
+      release_id: album.release_id,
     }
 
     Promise.resolve().then(() => {
@@ -7754,7 +7977,7 @@ function useReleaseDetailResource({
       })
     })
 
-    void fetchReleaseDetailApiSnapshot(effectRequestAlbum, group, effectFallbackSnapshot, controller.signal)
+    void fetchReleaseDetailApiSnapshot(effectRequestAlbum, group, entitySlug, effectFallbackSnapshot, controller.signal)
       .then(({ snapshot, errorCode, traceId }) => {
         if (cancelled) {
           return
@@ -7802,7 +8025,7 @@ function useReleaseDetailResource({
       cancelled = true
       controller.abort()
     }
-  }, [album.date, album.release_kind, album.stream, album.title, cacheKey, cachedSnapshot, group])
+  }, [album.date, album.release_id, album.release_kind, album.stream, album.title, cacheKey, cachedSnapshot, entitySlug, group])
 
   const activeSnapshot =
     remoteState.cacheKey === cacheKey
@@ -7812,9 +8035,7 @@ function useReleaseDetailResource({
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
   const source: SurfaceStatusSource = !BACKEND_API_BASE_URL
     ? 'json'
-    : errorCode && activeSnapshot === fallbackSnapshot
-      ? 'json_fallback'
-      : activeSnapshot
+    : remoteState.snapshot || cachedSnapshot || remoteState.loading
         ? 'api'
         : 'backend_unavailable'
 
@@ -8803,6 +9024,7 @@ function buildVerifiedTeamLatestRelease(release: VerifiedRelease): TeamLatestRel
     source: release.source,
     artistSource: release.artist_source,
     musicHandoffs: release.music_handoffs,
+    youtubeMvUrl: release.youtube_mv_url,
     verified: true,
   }
 }
@@ -8923,43 +9145,29 @@ function buildEntityDetailTeamProfile(
   data: NonNullable<EntityDetailApiResponse['data']>,
 ): TeamProfile {
   const latestReleaseSummary = data.latest_release
-  const latestReleaseTitle = readNonEmptyString(latestReleaseSummary?.release_title)
-  const latestReleaseDate = readNonEmptyString(latestReleaseSummary?.release_date)
-  const latestReleaseRecord =
-    latestReleaseSummary && latestReleaseTitle && latestReleaseDate
-      ? findVerifiedReleaseRecord(
-          group,
-          latestReleaseTitle,
-          latestReleaseDate,
-          latestReleaseSummary.stream === 'album' || latestReleaseSummary.stream === 'song'
-            ? latestReleaseSummary.stream
-            : 'song',
-          latestReleaseSummary.release_kind ?? undefined,
-        )
-      : null
+  const canonicalGroup =
+    readNonEmptyString(data.identity?.canonical_name) ??
+    readNonEmptyString(data.identity?.display_name) ??
+    group
+  const latestReleaseRecord = latestReleaseSummary
+    ? buildSyntheticVerifiedRelease(canonicalGroup, fallbackTeam, latestReleaseSummary)
+    : null
   const recentAlbums = Array.isArray(data.recent_albums)
     ? data.recent_albums
-        .map((item) => {
-          const releaseTitle = readNonEmptyString(item.release_title)
-          const releaseDate = readNonEmptyString(item.release_date)
-          const stream = item.stream === 'album' || item.stream === 'song' ? item.stream : null
-          if (!releaseTitle || !releaseDate || !stream) {
-            return null
-          }
-          return findVerifiedReleaseRecord(group, releaseTitle, releaseDate, stream, item.release_kind ?? undefined)
-        })
+        .map((item) => buildSyntheticVerifiedRelease(canonicalGroup, fallbackTeam, item))
         .filter((item): item is VerifiedRelease => item !== null && item.stream === 'album')
     : []
-  const nextUpcomingSignal = buildEntityDetailUpcomingRow(group, fallbackTeam, data.next_upcoming)
+  const nextUpcomingSignal = buildEntityDetailUpcomingRow(canonicalGroup, fallbackTeam, data.next_upcoming)
   const upcomingSignals = nextUpcomingSignal ? [nextUpcomingSignal] : []
   const primaryTeamChannelUrl =
     readNonEmptyString(data.youtube_channels?.primary_team_channel_url) ??
     readNonEmptyString(data.official_links?.youtube) ??
     null
-  const sourceTimeline = buildEntityDetailSourceTimeline(group, data.source_timeline)
+  const sourceTimeline = buildEntityDetailSourceTimeline(canonicalGroup, data.source_timeline)
 
   return {
     ...fallbackTeam,
+    group: canonicalGroup,
     slug: readNonEmptyString(data.identity?.entity_slug) ?? fallbackTeam.slug,
     displayName: readNonEmptyString(data.identity?.display_name) ?? fallbackTeam.displayName,
     tier: readNonEmptyString(data.tracking_state?.tier) ?? fallbackTeam.tier,
@@ -8981,6 +9189,7 @@ function buildEntityDetailTeamProfile(
 }
 
 async function fetchEntityDetailApiSnapshot(
+  entitySlug: string,
   fallbackTeam: TeamProfile,
   signal: AbortSignal,
 ): Promise<{ team: TeamProfile | null; errorCode: string | null; traceId: string | null }> {
@@ -8992,7 +9201,7 @@ async function fetchEntityDetailApiSnapshot(
     }
   }
 
-  const cacheKey = fallbackTeam.group
+  const cacheKey = entitySlug
   const cachedSnapshot = entityDetailApiSnapshotCache.get(cacheKey)
   if (cachedSnapshot) {
     return {
@@ -9003,10 +9212,10 @@ async function fetchEntityDetailApiSnapshot(
   }
 
   const result = await fetchApiJson<EntityDetailApiResponse>(
-    `/v1/entities/${encodeURIComponent(fallbackTeam.slug)}`,
+    `/v1/entities/${encodeURIComponent(entitySlug)}`,
     signal,
     ENTITY_DETAIL_FETCH_TIMEOUT_MS,
-    `web-entity-${fallbackTeam.slug}`,
+    `web-entity-${entitySlug}`,
   )
   if (!result.ok || !result.body?.data) {
     return {
@@ -9027,12 +9236,14 @@ async function fetchEntityDetailApiSnapshot(
 
 function useEntityDetailResource({
   group,
+  entitySlug,
   fallbackTeam,
 }: {
   group: string | null
+  entitySlug: string | null
   fallbackTeam: TeamProfile | null
 }): EntityDetailSurfaceResource {
-  const cacheKey = fallbackTeam?.group ?? group ?? ''
+  const cacheKey = entitySlug ?? group ?? ''
   const cachedSnapshot = cacheKey ? entityDetailApiSnapshotCache.get(cacheKey) ?? null : null
   const [remoteState, setRemoteState] = useState<{
     cacheKey: string
@@ -9043,13 +9254,13 @@ function useEntityDetailResource({
   }>(() => ({
     cacheKey,
     team: !BACKEND_API_BASE_URL && fallbackTeam ? fallbackTeam : cachedSnapshot,
-    loading: Boolean(cacheKey && fallbackTeam && !cachedSnapshot && BACKEND_API_BASE_URL),
+    loading: Boolean(cacheKey && entitySlug && !cachedSnapshot && BACKEND_API_BASE_URL),
     errorCode: null,
     traceId: null,
   }))
 
   useEffect(() => {
-    if (!fallbackTeam || !cacheKey) {
+    if (!fallbackTeam || !cacheKey || !entitySlug) {
       return
     }
 
@@ -9096,7 +9307,7 @@ function useEntityDetailResource({
       })
     })
 
-    void fetchEntityDetailApiSnapshot(fallbackTeam, controller.signal)
+    void fetchEntityDetailApiSnapshot(entitySlug, fallbackTeam, controller.signal)
       .then(({ team, errorCode, traceId }) => {
         if (cancelled) {
           return
@@ -9133,20 +9344,22 @@ function useEntityDetailResource({
       cancelled = true
       controller.abort()
     }
-  }, [cacheKey, cachedSnapshot, fallbackTeam])
+  }, [cacheKey, cachedSnapshot, entitySlug, fallbackTeam])
 
   const activeTeam = cacheKey
     ? remoteState.cacheKey === cacheKey
-      ? remoteState.team ?? cachedSnapshot ?? fallbackTeam
-      : cachedSnapshot ?? fallbackTeam
+      ? BACKEND_API_BASE_URL
+        ? remoteState.team ?? cachedSnapshot
+        : remoteState.team ?? cachedSnapshot ?? fallbackTeam
+      : BACKEND_API_BASE_URL
+        ? cachedSnapshot
+        : cachedSnapshot ?? fallbackTeam
     : null
   const loading = !!cacheKey && remoteState.cacheKey === cacheKey && remoteState.team === null && remoteState.loading
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
   const source: SurfaceStatusSource = !BACKEND_API_BASE_URL
     ? 'json'
-    : errorCode && activeTeam === fallbackTeam
-      ? 'json_fallback'
-      : activeTeam
+    : activeTeam || loading
         ? 'api'
         : 'backend_unavailable'
 
@@ -10329,6 +10542,14 @@ function readSelectedGroupFromLocation() {
   return getGroupFromPath(window.location.pathname)
 }
 
+function readSelectedEntitySlugFromLocation() {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
+  return getEntitySlugFromPath(window.location.pathname)
+}
+
 function readSelectedCompareGroupFromLocation() {
   if (typeof window === 'undefined') {
     return null
@@ -10360,6 +10581,14 @@ function readSelectedReleaseKeyFromLocation() {
   return getReleaseRouteFromPath(window.location.pathname, window.location.search)?.releaseKey ?? null
 }
 
+function readSelectedReleaseRouteSelectionFromLocation() {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
+  return getReleaseRouteSelectionFromPath(window.location.pathname, window.location.search)
+}
+
 function readBackendTargetInspectionFromLocation() {
   if (typeof window === 'undefined') {
     return false
@@ -10381,14 +10610,22 @@ function appendPersistentInspectParams(params: URLSearchParams) {
   return params
 }
 
-function getGroupFromPath(pathname: string) {
+function getEntitySlugFromPath(pathname: string) {
   const match = pathname.match(/^\/artists\/([^/]+)(?:\/releases\/[^/]+)?\/?$/)
   if (!match) {
     return null
   }
 
-  const slug = decodeURIComponent(match[1]).toLowerCase()
-  return artistProfileBySlug.get(slug)?.group ?? teamProfiles.find((team) => team.slug === slug)?.group ?? null
+  return decodeURIComponent(match[1]).trim().toLowerCase()
+}
+
+function getGroupFromPath(pathname: string) {
+  const slug = getEntitySlugFromPath(pathname)
+  if (!slug) {
+    return null
+  }
+
+  return resolveGroupReference(slug)
 }
 
 function resolveGroupReference(value: string) {
@@ -10408,6 +10645,13 @@ function getHomePath() {
   const params = appendPersistentInspectParams(new URLSearchParams())
   const query = params.toString()
   return query ? `/?${query}` : '/'
+}
+
+function getArtistPathBySlug(entitySlug: string) {
+  const pathname = `/artists/${entitySlug}`
+  const params = appendPersistentInspectParams(new URLSearchParams())
+  const query = params.toString()
+  return query ? `${pathname}?${query}` : pathname
 }
 
 function getArtistPath(group: string, compareGroup?: string | null) {
@@ -10463,9 +10707,32 @@ function getReleaseRouteFromPath(pathname: string, search = '') {
   }
 }
 
-function getReleasePath(release: VerifiedRelease) {
-  const releaseSlug = slugifyPathSegment(release.title) || 'release'
-  const pathname = `/artists/${artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)}/releases/${releaseSlug}`
+function getReleaseRouteSelectionFromPath(pathname: string, search = ''): ReleaseRouteSelection | null {
+  const match = pathname.match(/^\/artists\/([^/]+)\/releases\/([^/]+)\/?$/)
+  if (!match) {
+    return null
+  }
+
+  const entitySlug = decodeURIComponent(match[1]).trim().toLowerCase()
+  const releaseSlug = decodeURIComponent(match[2]).trim().toLowerCase()
+  const params = new URLSearchParams(search)
+  const releaseDate = params.get('date')
+  const releaseStream = params.get('stream')
+  const normalizedStream = releaseStream === 'album' || releaseStream === 'song' ? releaseStream : null
+
+  return {
+    entitySlug,
+    releaseSlug,
+    releaseDate,
+    releaseStream: normalizedStream,
+    releaseId: looksLikeUuid(releaseSlug) ? releaseSlug : null,
+  }
+}
+
+function getReleasePath(release: VerifiedRelease, entitySlugOverride?: string | null) {
+  const releaseSlug = release.release_id ?? (slugifyPathSegment(release.title) || 'release')
+  const entitySlug = entitySlugOverride ?? artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)
+  const pathname = `/artists/${entitySlug}/releases/${releaseSlug}`
   const params = appendPersistentInspectParams(new URLSearchParams())
   params.set('date', release.date)
   params.set('stream', release.stream)
