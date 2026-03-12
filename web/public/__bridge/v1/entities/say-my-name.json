@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-say-my-name"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "say-my-name",
+      "display_name": "SAY MY NAME",
+      "canonical_name": "SAY MY NAME",
+      "agency_name": "INKODE",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@sa2m2nam3",
+      "x": "https://x.com/sa2m2nam3",
+      "instagram": "https://www.instagram.com/sa2m2nam3"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@sa2m2nam3",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-6d5ccbc1",
+      "release_title": "&Our Vibe",
+      "release_date": "2025-12-29",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "UFO (ATTENT!ON)",
+      "spotify_url": "https://open.spotify.com/album/52f4wYBg1SDSaMMwZ5u3OF",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kApCbh2UikWb1bBXrhTDc_dCDo9alRZRg",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=-fPz0KoVwog",
+      "source_url": "https://musicbrainz.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-6d5ccbc1",
+        "release_title": "&Our Vibe",
+        "release_date": "2025-12-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "UFO (ATTENT!ON)",
+        "spotify_url": "https://open.spotify.com/album/52f4wYBg1SDSaMMwZ5u3OF",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kApCbh2UikWb1bBXrhTDc_dCDo9alRZRg",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=-fPz0KoVwog",
+        "source_url": "https://musicbrainz.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-55975e71",
+        "release_title": "My Name Is…",
+        "release_date": "2025-03-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "XOXO",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3fbe1f53-3932-44d1-984b-ff8f5de2c9c1",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3fbe1f53-3932-44d1-984b-ff8f5de2c9c1/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3fbe1f53-3932-44d1-984b-ff8f5de2c9c1/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3fbe1f53-3932-44d1-984b-ff8f5de2c9c1",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f9a081ee",
+        "release_title": "SAY MY NAME",
+        "release_date": "2024-10-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "난 오늘 밤하늘에서 가장 빛나는 별이 된다",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/fe677fe9-911d-4923-b07f-45b3e8ec0fb9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/fe677fe9-911d-4923-b07f-45b3e8ec0fb9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/fe677fe9-911d-4923-b07f-45b3e8ec0fb9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/fe677fe9-911d-4923-b07f-45b3e8ec0fb9",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/61cc7260-0bed-4811-822f-8d30ceae7722"
+  }
+}

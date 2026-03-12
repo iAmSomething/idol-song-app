@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-hearts2hearts"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "hearts2hearts",
+      "display_name": "Hearts2Hearts",
+      "canonical_name": "Hearts2Hearts",
+      "agency_name": "SM Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@SMTOWN",
+      "x": "https://x.com/Hearts2Hearts",
+      "instagram": "https://www.instagram.com/hearts2hearts"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@SMTOWN",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-dce83bd1",
+      "release_title": "RUDE!",
+      "release_date": "2026-02-20",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "RUDE!",
+      "spotify_url": "https://open.spotify.com/album/3053E9tumiU5rqbAPWF06s",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=F7sGJVUrkjQ",
+      "source_url": "https://musicbrainz.org/release-group/5209edba-458a-4f37-8863-ec663b51fc6b",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/5209edba-458a-4f37-8863-ec663b51fc6b/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/5209edba-458a-4f37-8863-ec663b51fc6b/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/5209edba-458a-4f37-8863-ec663b51fc6b",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-efebb904",
+        "release_title": "FOCUS",
+        "release_date": "2025-10-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "FOCUS",
+        "spotify_url": "https://open.spotify.com/album/0SVlu6q116wFO1m4EZ088b",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/158311ee-7ed5-46a3-89e5-0e2ed6416a5c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/158311ee-7ed5-46a3-89e5-0e2ed6416a5c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/158311ee-7ed5-46a3-89e5-0e2ed6416a5c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/158311ee-7ed5-46a3-89e5-0e2ed6416a5c",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/066080a4-84c7-46c6-91d3-dc10d572749b"
+  }
+}

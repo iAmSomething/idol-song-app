@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-dxmon"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "dxmon",
+      "display_name": "DXMON",
+      "canonical_name": "DXMON",
+      "agency_name": "HM Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@DXMON_HM",
+      "x": "https://x.com/DXMON_HM",
+      "instagram": "https://www.instagram.com/dxmon_hm"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@DXMON_HM",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-cdf243a5",
+      "release_title": "HYPERSPACE",
+      "release_date": "2024-01-17",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Burn Up",
+      "spotify_url": "https://open.spotify.com/album/2Z90sx0OCiluXfjGp12ZCA",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/2c914b52-68f4-47fe-93d8-bf90eb95e8a0",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/2c914b52-68f4-47fe-93d8-bf90eb95e8a0/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/2c914b52-68f4-47fe-93d8-bf90eb95e8a0/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/2c914b52-68f4-47fe-93d8-bf90eb95e8a0",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-cdf243a5",
+        "release_title": "HYPERSPACE",
+        "release_date": "2024-01-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Burn Up",
+        "spotify_url": "https://open.spotify.com/album/2Z90sx0OCiluXfjGp12ZCA",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2c914b52-68f4-47fe-93d8-bf90eb95e8a0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2c914b52-68f4-47fe-93d8-bf90eb95e8a0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2c914b52-68f4-47fe-93d8-bf90eb95e8a0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2c914b52-68f4-47fe-93d8-bf90eb95e8a0",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/0d12abec-f7d1-437e-9d82-395ded77262e"
+  }
+}

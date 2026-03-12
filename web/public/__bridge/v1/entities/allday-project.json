@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-allday-project"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "allday-project",
+      "display_name": "ALLDAY PROJECT",
+      "canonical_name": "ALLDAY PROJECT",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@ALLDAY_PROJECT",
+      "x": "https://x.com/ALLDAY_PROJECT",
+      "instagram": "https://www.instagram.com/allday_project"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@ALLDAY_PROJECT",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "manual",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-262cf324",
+      "release_title": "ALLDAY PROJECT",
+      "release_date": "2025-12-08",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "ONE MORE TIME",
+      "spotify_url": "https://open.spotify.com/album/2llGDqePFTgjCIxOW1RehG",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-262cf324",
+        "release_title": "ALLDAY PROJECT",
+        "release_date": "2025-12-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ONE MORE TIME",
+        "spotify_url": "https://open.spotify.com/album/2llGDqePFTgjCIxOW1RehG",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
+  }
+}

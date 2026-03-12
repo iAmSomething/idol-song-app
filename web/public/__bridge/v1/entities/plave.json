@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-plave"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "plave",
+      "display_name": "PLAVE",
+      "canonical_name": "PLAVE",
+      "agency_name": "VLAST",
+      "badge_image_url": "https://yt3.googleusercontent.com/pD_AGB5N1COKX5aRgJSGT0n8mJVFDIB13UW-V1xo28E0E8ZyUBRH9iTrRFYO1-ch8EkFNXTYvQ=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/pD_AGB5N1COKX5aRgJSGT0n8mJVFDIB13UW-V1xo28E0E8ZyUBRH9iTrRFYO1-ch8EkFNXTYvQ=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@plave_official",
+      "x": "https://x.com/plave_official",
+      "instagram": "https://www.instagram.com/plave_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@plave_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "plave",
+      "display_name": "PLAVE",
+      "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
+      "scheduled_date": "2026-04-07",
+      "scheduled_month": "2026-04",
+      "date_precision": "exact",
+      "date_status": "confirmed",
+      "confidence_score": 0.82,
+      "release_format": null,
+      "latest_seen_at": "Mon, 02 Mar 2026 13:27:00 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPRXBEUU5pY3EtWkIyVGVoN3A1dVVyNGtuR2NxaTMtaFVZNmU4UXRQM3RqRWliMEk2SzAwbEllOEFSeHlTUVdIaXNtUzBfZ1plbVNId0NnbEdLX3l6dlJJOGY2aWRYc19lV1FkTEdkV25SM1ZZUlRlaWE4M19LcTVVMVlQVUFXQmQ5TkE0TzhnWnk5ZXVPc1BqY0FnLU5odGdEUXR1YkdjTHYzdVVwczVhaWVkUy3SAcIBQVVfeXFMT0htWFBPejdmaWNOcXRxS1o1VjlMWlVBYzlTTGlmMFRCR0ItSkdjY1U4QVNiSnlLSVprM0dmUE9YRE8xTnA1VXlfNDFhTTRTcGlUUWh2NS15a2VVSTdiYUpSeDZqS0ludXR1TlhKR3BhdHNFSUVpb1lmemgzTWUwcDExOEE0X01Ueml5TEVFeHNLSVhLZ3hHcEhwMjlfS2I2REFUbFduS3A4NHd0bDFrSTZlZkRfeXFIek9NM3l4Rm8tS2c?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Future date reference: 2026-04-07. PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn Outlook Respawn",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-57522170",
+      "release_title": "PLBBUU",
+      "release_date": "2025-11-10",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "BBUU!",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=8L001YT4k6k",
+      "source_url": "https://musicbrainz.org/release-group/e33697d4-87e8-4aab-8af7-f9b058a8cd98",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/e33697d4-87e8-4aab-8af7-f9b058a8cd98/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/e33697d4-87e8-4aab-8af7-f9b058a8cd98/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/e33697d4-87e8-4aab-8af7-f9b058a8cd98",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-853e89d6",
+        "release_title": "’Caligo Pt.1’",
+        "release_date": "2025-02-03",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Chroma Drift",
+        "spotify_url": "https://open.spotify.com/album/6EgR5UlxMx9JksQUqR9Yep",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6c7ef87d-e808-43eb-8b78-8eb34454457a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6c7ef87d-e808-43eb-8b78-8eb34454457a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6c7ef87d-e808-43eb-8b78-8eb34454457a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6c7ef87d-e808-43eb-8b78-8eb34454457a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-17c7daad",
+        "release_title": "ASTERUM : 134-1",
+        "release_date": "2024-02-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Merry PLLIstmas",
+        "spotify_url": "https://open.spotify.com/album/6uDZ4HPxwnOMpykpzpylDS",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0845be57-3a8b-4e1a-a9cc-2b62df2e8f3b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0845be57-3a8b-4e1a-a9cc-2b62df2e8f3b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0845be57-3a8b-4e1a-a9cc-2b62df2e8f3b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0845be57-3a8b-4e1a-a9cc-2b62df2e8f3b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-bddeec7d",
+        "release_title": "ASTERUM : The Shape of Things to Come",
+        "release_date": "2023-08-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Why?",
+        "spotify_url": "https://open.spotify.com/album/0BlLhv46UtmO6UodMnwaYF",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/07fc57f5-d45f-4530-a120-cda92d74c750",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/07fc57f5-d45f-4530-a120-cda92d74c750/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/07fc57f5-d45f-4530-a120-cda92d74c750/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/07fc57f5-d45f-4530-a120-cda92d74c750",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
+        "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPRXBEUU5pY3EtWkIyVGVoN3A1dVVyNGtuR2NxaTMtaFVZNmU4UXRQM3RqRWliMEk2SzAwbEllOEFSeHlTUVdIaXNtUzBfZ1plbVNId0NnbEdLX3l6dlJJOGY2aWRYc19lV1FkTEdkV25SM1ZZUlRlaWE4M19LcTVVMVlQVUFXQmQ5TkE0TzhnWnk5ZXVPc1BqY0FnLU5odGdEUXR1YkdjTHYzdVVwczVhaWVkUy3SAcIBQVVfeXFMT0htWFBPejdmaWNOcXRxS1o1VjlMWlVBYzlTTGlmMFRCR0ItSkdjY1U4QVNiSnlLSVprM0dmUE9YRE8xTnA1VXlfNDFhTTRTcGlUUWh2NS15a2VVSTdiYUpSeDZqS0ludXR1TlhKR3BhdHNFSUVpb1lmemgzTWUwcDExOEE0X01Ueml5TEVFeHNLSVhLZ3hHcEhwMjlfS2I2REFUbFduS3A4NHd0bDFrSTZlZkRfeXFIek9NM3l4Rm8tS2c?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Mon, 02 Mar 2026 13:27:00 GMT",
+        "scheduled_date": "2026-04-07",
+        "scheduled_month": "2026-04",
+        "date_precision": "exact",
+        "date_status": "confirmed",
+        "release_format": null,
+        "confidence_score": 0.82
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/aab90af9-fde7-4988-b26b-b2c3c8e2d8e6"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-ghost9"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "ghost9",
+      "display_name": "GHOST9",
+      "canonical_name": "GHOST9",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/j_zpAi_rr7ZalQ2oEanTQ90vNpKlS7KtL1OwOgo4win2Ad4jvINL5leaaHQ1ONcm9FcvM7M3=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/j_zpAi_rr7ZalQ2oEanTQ90vNpKlS7KtL1OwOgo4win2Ad4jvINL5leaaHQ1ONcm9FcvM7M3=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@GHOST9Official",
+      "x": "https://x.com/GHOST9OFFICIAL",
+      "instagram": "https://www.instagram.com/official.ghost9"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@GHOST9Official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-f5ed0e14",
+      "release_title": "ARCADE : O",
+      "release_date": "2023-10-25",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Let’s Get Lost",
+      "spotify_url": "https://open.spotify.com/album/4VZkNVdXYPTHq7h5amsRd1",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/46ebc43c-9e17-45fd-9911-2a6f6adadafe",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/46ebc43c-9e17-45fd-9911-2a6f6adadafe/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/46ebc43c-9e17-45fd-9911-2a6f6adadafe/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/46ebc43c-9e17-45fd-9911-2a6f6adadafe",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-f5ed0e14",
+        "release_title": "ARCADE : O",
+        "release_date": "2023-10-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Let’s Get Lost",
+        "spotify_url": "https://open.spotify.com/album/4VZkNVdXYPTHq7h5amsRd1",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/46ebc43c-9e17-45fd-9911-2a6f6adadafe",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/46ebc43c-9e17-45fd-9911-2a6f6adadafe/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/46ebc43c-9e17-45fd-9911-2a6f6adadafe/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/46ebc43c-9e17-45fd-9911-2a6f6adadafe",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-da28d8c9",
+        "release_title": "ARCADE : V",
+        "release_date": "2022-04-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Dot",
+        "spotify_url": "https://open.spotify.com/album/2X6KW5nq83Dj1yDImxkYu3",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2129583f-28d7-4a2a-8eb4-5b27e61eda81",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2129583f-28d7-4a2a-8eb4-5b27e61eda81/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2129583f-28d7-4a2a-8eb4-5b27e61eda81/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2129583f-28d7-4a2a-8eb4-5b27e61eda81",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9439035e",
+        "release_title": "NOW: Who we are facing",
+        "release_date": "2021-11-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Milestone (intro)",
+        "spotify_url": "https://open.spotify.com/album/0yO5og1avvyKG0sf83iZ3M",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/fa58b793-14e6-4d4c-8ba5-489d2c330b35",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/fa58b793-14e6-4d4c-8ba5-489d2c330b35/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/fa58b793-14e6-4d4c-8ba5-489d2c330b35/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/fa58b793-14e6-4d4c-8ba5-489d2c330b35",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9a607709",
+        "release_title": "NOW : When we are in Love",
+        "release_date": "2021-06-03",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "On And On (Intro)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/11ff242e-2ec5-4bee-b862-aa4829f65d43",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/11ff242e-2ec5-4bee-b862-aa4829f65d43/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/11ff242e-2ec5-4bee-b862-aa4829f65d43/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/11ff242e-2ec5-4bee-b862-aa4829f65d43",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-00bc54eb",
+        "release_title": "NOW : Where we are, here",
+        "release_date": "2021-03-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Trigger (Intro)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/cb41156c-f6b1-49ab-bf38-e7c9c802e5ca",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/cb41156c-f6b1-49ab-bf38-e7c9c802e5ca/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/cb41156c-f6b1-49ab-bf38-e7c9c802e5ca/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/cb41156c-f6b1-49ab-bf38-e7c9c802e5ca",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-420083ba",
+        "release_title": "PRE EPISODE 2: WALL",
+        "release_date": "2020-12-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "W.All",
+        "spotify_url": "https://open.spotify.com/album/6rV5h3EQyBJ9OgWG1hIyAL",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/228fe170-9d83-478b-b7fd-9e9355d2ad42",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/228fe170-9d83-478b-b7fd-9e9355d2ad42/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/228fe170-9d83-478b-b7fd-9e9355d2ad42/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/228fe170-9d83-478b-b7fd-9e9355d2ad42",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-76c2d603",
+        "release_title": "PRE EPISODE 1 : DOOR",
+        "release_date": "2020-09-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Vision (Intro)",
+        "spotify_url": "https://open.spotify.com/album/00ZztGEk6H34YfAWnqumTq",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ac1001c1-4d17-42e4-b588-1f47613ebe3a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ac1001c1-4d17-42e4-b588-1f47613ebe3a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ac1001c1-4d17-42e4-b588-1f47613ebe3a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ac1001c1-4d17-42e4-b588-1f47613ebe3a",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/0cc5e174-d2cd-48b2-a0b3-8405097f2807"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-younite"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "younite",
+      "display_name": "YOUNITE",
+      "canonical_name": "YOUNITE",
+      "agency_name": "Brand New Music",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@Younite",
+      "x": "https://x.com/younite_offcl",
+      "instagram": "https://www.instagram.com/younite_bnm"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@Younite",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "filtered_out"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-f3a45983",
+      "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+      "release_date": "2024-10-31",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Armageddon",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-f3a45983",
+        "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+        "release_date": "2024-10-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Armageddon",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/66703b27-fc3d-4194-97e7-e9cbbb79a8f5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e55ee768",
+        "release_title": "ANOTHER",
+        "release_date": "2024-05-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "How We Do",
+        "spotify_url": "https://open.spotify.com/album/55SsFWSUnjJD0Ztxu9jz2Z",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d658ee1d-41c4-422d-92d2-db07a061deb8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d658ee1d-41c4-422d-92d2-db07a061deb8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d658ee1d-41c4-422d-92d2-db07a061deb8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d658ee1d-41c4-422d-92d2-db07a061deb8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4bbd4ff9",
+        "release_title": "BIT Part.2",
+        "release_date": "2023-10-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Chili Pop",
+        "spotify_url": "https://open.spotify.com/album/3nnadaRtvxQl3Rchqp672S",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/16391a67-c108-4334-88ff-c2a0e3fe1595",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/16391a67-c108-4334-88ff-c2a0e3fe1595/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/16391a67-c108-4334-88ff-c2a0e3fe1595/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/16391a67-c108-4334-88ff-c2a0e3fe1595",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2008430b",
+        "release_title": "BIT, Pt. 1",
+        "release_date": "2023-05-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ICY",
+        "spotify_url": "https://open.spotify.com/album/1JIBD2xuWX2cdGLoHvBdoc",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/22fa1249-dd1c-4835-b330-374ecd8497f1",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/22fa1249-dd1c-4835-b330-374ecd8497f1/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/22fa1249-dd1c-4835-b330-374ecd8497f1/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/22fa1249-dd1c-4835-b330-374ecd8497f1",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f09d17b5",
+        "release_title": "YOUNI‐ON",
+        "release_date": "2022-10-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Time’s Up",
+        "spotify_url": "https://open.spotify.com/album/7mVMBdyZUYBTXo9RtnRsbr",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/379c345d-4f16-407f-a347-08aee5e7ec96",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/379c345d-4f16-407f-a347-08aee5e7ec96/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/379c345d-4f16-407f-a347-08aee5e7ec96/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/379c345d-4f16-407f-a347-08aee5e7ec96",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-37fb76c0",
+        "release_title": "YOUNI‐Q",
+        "release_date": "2022-07-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "TRAVELER",
+        "spotify_url": "https://open.spotify.com/album/0lhSCcCFD1To8khdkLNE8a",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e42df761-8cff-4352-831e-854f33222585",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e42df761-8cff-4352-831e-854f33222585/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e42df761-8cff-4352-831e-854f33222585/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e42df761-8cff-4352-831e-854f33222585",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3aaf9616",
+        "release_title": "YOUNI‐BIRTH",
+        "release_date": "2022-04-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "YOUNI‐BIRTH",
+        "spotify_url": "https://open.spotify.com/album/1shJJvoHJtR28Tfd8Ebh07",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0d565f28-a560-459f-a2d9-243d406a2733",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0d565f28-a560-459f-a2d9-243d406a2733/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0d565f28-a560-459f-a2d9-243d406a2733/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0d565f28-a560-459f-a2d9-243d406a2733",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/32226bb6-0726-4cd6-a55e-03ec1f48a8d3"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-qwer"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "qwer",
+      "display_name": "QWER",
+      "canonical_name": "QWER",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/P7488ns2ybBumRGU-AzmFY1_hDSuLE9UJ18oMCSaW6btTVUoYi982ENOqs-jjcILla198Nllhw=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/P7488ns2ybBumRGU-AzmFY1_hDSuLE9UJ18oMCSaW6btTVUoYi982ENOqs-jjcILla198Nllhw=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@qwerband_official",
+      "x": "https://x.com/official_QWER",
+      "instagram": "https://www.instagram.com/qwerband_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@qwerband_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-3c174317",
+      "release_title": "흰수염고래",
+      "release_date": "2025-10-06",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "흰수염고래",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-59796578",
+        "release_title": "In a million noises, I’ll be your harmony",
+        "release_date": "2025-06-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "눈물참기",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3d34baf6-f1f9-4dac-879d-4b37d58c9958",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3d34baf6-f1f9-4dac-879d-4b37d58c9958/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3d34baf6-f1f9-4dac-879d-4b37d58c9958/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3d34baf6-f1f9-4dac-879d-4b37d58c9958",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9bf82f39",
+        "release_title": "Algorithm’s Blossom",
+        "release_date": "2024-09-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "FAKE IDOL",
+        "spotify_url": "https://open.spotify.com/album/4i0rZXe1lgKDzJ8LkueifT",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4b7e457b-4ac6-4dfa-ac86-942e29b6234f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4b7e457b-4ac6-4dfa-ac86-942e29b6234f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4b7e457b-4ac6-4dfa-ac86-942e29b6234f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4b7e457b-4ac6-4dfa-ac86-942e29b6234f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b4935cc4",
+        "release_title": "MANITO",
+        "release_date": "2024-04-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Manito",
+        "spotify_url": "https://open.spotify.com/album/58749dw7F011CU9lRmX0MO",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nwHZWrd9VrRPEL7rLfT3iA8DreUqZ6bEY",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7d3ca004-3edc-4bd5-b886-d9bca9345b31",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7d3ca004-3edc-4bd5-b886-d9bca9345b31/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7d3ca004-3edc-4bd5-b886-d9bca9345b31/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7d3ca004-3edc-4bd5-b886-d9bca9345b31",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/86bfda70-ad8c-4db4-9041-e4843d918269"
+  }
+}

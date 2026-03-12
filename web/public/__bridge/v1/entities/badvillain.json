@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-badvillain"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "badvillain",
+      "display_name": "BADVILLAIN",
+      "canonical_name": "BADVILLAIN",
+      "agency_name": "BPM Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/0v8DWfYv0zE3V-nsL65ljoqK34P-G-1cz2xVK7Hc5urcNxBtGm67nLvXYYFMLh4TCaUsd925vas=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/0v8DWfYv0zE3V-nsL65ljoqK34P-G-1cz2xVK7Hc5urcNxBtGm67nLvXYYFMLh4TCaUsd925vas=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@badvillain_bpm",
+      "x": "https://x.com/BADVILLAIN_BPM",
+      "instagram": "https://www.instagram.com/badvillain_bpm"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@badvillain_bpm",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-5e0b7312",
+      "release_title": "THRILLER",
+      "release_date": "2025-09-15",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "THRILLER",
+      "spotify_url": "https://open.spotify.com/album/3WDzrUo4IO2A3ScJh6LWTW",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=s-KjDJFOh5s",
+      "source_url": "https://musicbrainz.org/release-group/d739e8f9-6575-41ae-910e-ddc45cad2bd9",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/d739e8f9-6575-41ae-910e-ddc45cad2bd9/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/d739e8f9-6575-41ae-910e-ddc45cad2bd9/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/d739e8f9-6575-41ae-910e-ddc45cad2bd9",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/0f0ce763-6a74-4714-9c02-7cdc8bdea5e3"
+  }
+}

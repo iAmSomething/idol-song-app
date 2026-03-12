@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-yena"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "yena",
+      "display_name": "YENA",
+      "canonical_name": "YENA",
+      "agency_name": "Yuehua Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@YENA_OFFICIAL",
+      "x": "https://x.com/YENA_OFFICIAL",
+      "instagram": "https://www.instagram.com/yena.jigumina"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@YENA_OFFICIAL",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": null,
+      "tracking_status": null
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-cc830546",
+      "release_title": "LOVE CATCHER",
+      "release_date": "2026-03-11",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": null,
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+      "artwork": null
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-ec35927f",
+        "release_title": "Blooming Wings",
+        "release_date": "2025-07-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Drama Queen",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9647039b-b615-443a-a476-d75de3c06039",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c47fde6d",
+        "release_title": "GOOD MORNING",
+        "release_date": "2024-01-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Good Morning",
+        "spotify_url": "https://open.spotify.com/album/1kfvY0GjQJhhDNjTpy7xOs",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-84476c2f",
+        "release_title": "SMARTPHONE",
+        "release_date": "2022-08-03",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "SMARTPHONE",
+        "spotify_url": "https://open.spotify.com/album/0lbUf1aVf8xmveSuspuNW0",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-77b74b7b",
+        "release_title": "ˣ‿ˣ (SMiLEY)",
+        "release_date": "2022-01-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Before Anyone Else",
+        "spotify_url": "https://open.spotify.com/album/7qldKtsOWklzmwgll5NjCw",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
+  }
+}

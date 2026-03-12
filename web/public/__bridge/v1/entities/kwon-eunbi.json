@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-kwon-eunbi"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "kwon-eunbi",
+      "display_name": "KWON EUNBI",
+      "canonical_name": "KWON EUNBI",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@KWONEUNBI",
+      "x": null,
+      "instagram": "https://www.instagram.com/silver_rain.__"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@KWONEUNBI",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": null,
+      "tracking_status": null
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-9d7b7862",
+      "release_title": "Lethality",
+      "release_date": "2022-10-12",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "WAVE",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/5caa6555-1a65-4fe2-a963-73dff783765d",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/5caa6555-1a65-4fe2-a963-73dff783765d/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/5caa6555-1a65-4fe2-a963-73dff783765d/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/5caa6555-1a65-4fe2-a963-73dff783765d",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-9d7b7862",
+        "release_title": "Lethality",
+        "release_date": "2022-10-12",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "WAVE",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5caa6555-1a65-4fe2-a963-73dff783765d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5caa6555-1a65-4fe2-a963-73dff783765d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5caa6555-1a65-4fe2-a963-73dff783765d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5caa6555-1a65-4fe2-a963-73dff783765d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e3729d25",
+        "release_title": "Color",
+        "release_date": "2022-04-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "The Colors of Light",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9fb22d9e-d3d5-471e-8996-e699c47f9490",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9fb22d9e-d3d5-471e-8996-e699c47f9490/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9fb22d9e-d3d5-471e-8996-e699c47f9490/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9fb22d9e-d3d5-471e-8996-e699c47f9490",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c72a0af3",
+        "release_title": "OPEN",
+        "release_date": "2021-08-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "OPEN",
+        "spotify_url": "https://open.spotify.com/album/3sWCaTJS9BlBIlp2ECBh9t",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ea05ec18-aa83-4ab4-811e-03aec6db64f2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ea05ec18-aa83-4ab4-811e-03aec6db64f2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ea05ec18-aa83-4ab4-811e-03aec6db64f2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ea05ec18-aa83-4ab4-811e-03aec6db64f2",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/508a7f4b-d153-400d-8e79-a2dba1421a11"
+  }
+}

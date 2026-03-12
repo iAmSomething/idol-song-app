@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-verivery"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "verivery",
+      "display_name": "VERIVERY",
+      "canonical_name": "VERIVERY",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/ZaW5GhH5WhcILBMql8LhXTkM_kq0DO2lr4ehe8vvL8gZbrrj2Y2oUa2R1Ex8hh6Bk_O1Cwn9=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/ZaW5GhH5WhcILBMql8LhXTkM_kq0DO2lr4ehe8vvL8gZbrrj2Y2oUa2R1Ex8hh6Bk_O1Cwn9=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q",
+      "x": "https://x.com/by_verivery",
+      "instagram": "https://www.instagram.com/the_verivery"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-2ec6b454",
+      "release_title": "Lost and Found",
+      "release_date": "2025-12-01",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "RED (Beggin’)",
+      "spotify_url": "https://open.spotify.com/album/4j6qWUx1OjrrR59XdT6gcU",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=-gzqfjzqG6U",
+      "source_url": "https://musicbrainz.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-be56ec96",
+        "release_title": "Liminality - EP.DREAM",
+        "release_date": "2023-05-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Crazy Like That",
+        "spotify_url": "https://open.spotify.com/album/0G24S1Jv4NSKhPuDXVtiU6",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a8c18d54-db4e-4197-ae25-4ee64e9475ef",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a8c18d54-db4e-4197-ae25-4ee64e9475ef/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a8c18d54-db4e-4197-ae25-4ee64e9475ef/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a8c18d54-db4e-4197-ae25-4ee64e9475ef",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5cf67ae3",
+        "release_title": "SERIES ’O’ [ROUND 3 : WHOLE]",
+        "release_date": "2022-04-25",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Moment",
+        "spotify_url": "https://open.spotify.com/album/5b2HT9dEEZptUsusV1Klc5",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/74a7ca5a-bb34-430e-a80f-70acf7213ad0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/74a7ca5a-bb34-430e-a80f-70acf7213ad0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/74a7ca5a-bb34-430e-a80f-70acf7213ad0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/74a7ca5a-bb34-430e-a80f-70acf7213ad0",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-153281d4",
+        "release_title": "SERIES ’O’ [ROUND 2 : HOLE]",
+        "release_date": "2021-08-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "TRIGGER",
+        "spotify_url": "https://open.spotify.com/album/6JUF0SnjI6ZUeQQUdZmdP9",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/1cd6611e-5cca-497d-9a70-e7ffc2c4ff6f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1cd6611e-5cca-497d-9a70-e7ffc2c4ff6f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1cd6611e-5cca-497d-9a70-e7ffc2c4ff6f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1cd6611e-5cca-497d-9a70-e7ffc2c4ff6f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-64179234",
+        "release_title": "FACE US",
+        "release_date": "2020-10-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "G.B.T.B.",
+        "spotify_url": "https://open.spotify.com/album/25SdilClIgaAY6Ew94MHgO",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ba2121cd-bbd0-4a51-a2b4-47f661f42108",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ba2121cd-bbd0-4a51-a2b4-47f661f42108/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ba2121cd-bbd0-4a51-a2b4-47f661f42108/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ba2121cd-bbd0-4a51-a2b4-47f661f42108",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6dc65010",
+        "release_title": "FACE YOU",
+        "release_date": "2020-07-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Thunder",
+        "spotify_url": "https://open.spotify.com/album/2eoNKBssNb7XJSZIJ123cm",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8c5f2e09-9fdb-4be2-837f-b9b0c90707c8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8c5f2e09-9fdb-4be2-837f-b9b0c90707c8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8c5f2e09-9fdb-4be2-837f-b9b0c90707c8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8c5f2e09-9fdb-4be2-837f-b9b0c90707c8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f8013d07",
+        "release_title": "FACE ME",
+        "release_date": "2020-01-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "PHOTO",
+        "spotify_url": "https://open.spotify.com/album/4i3Q8eTqefwISi3WltwzAW",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/83ac3b10-b05d-4cbb-ac13-fdbb97f7158f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/83ac3b10-b05d-4cbb-ac13-fdbb97f7158f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/83ac3b10-b05d-4cbb-ac13-fdbb97f7158f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/83ac3b10-b05d-4cbb-ac13-fdbb97f7158f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-ff1741af",
+        "release_title": "VERI-ABLE",
+        "release_date": "2019-04-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "딱 잘라서 말해 (From Now)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/30a6674e-950a-49b3-8fa5-5212d54086ea",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/30a6674e-950a-49b3-8fa5-5212d54086ea/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/30a6674e-950a-49b3-8fa5-5212d54086ea/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/30a6674e-950a-49b3-8fa5-5212d54086ea",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-69f2afcf",
+        "release_title": "VERI-US",
+        "release_date": "2019-01-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "불러줘 (Ring Ring Ring)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/78a04a8a-d7d3-427b-a4bc-b05b72b54af5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/78a04a8a-d7d3-427b-a4bc-b05b72b54af5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/78a04a8a-d7d3-427b-a4bc-b05b72b54af5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/78a04a8a-d7d3-427b-a4bc-b05b72b54af5",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/497ad8ff-0d35-4570-8a46-3f6b344b30b4"
+  }
+}

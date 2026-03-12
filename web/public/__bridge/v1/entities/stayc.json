@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-stayc"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "stayc",
+      "display_name": "STAYC",
+      "canonical_name": "STAYC",
+      "agency_name": "High Up Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/7aQGtpAf_oekxI4ecqCUGUKm0ONbSk4UU2SAiRa4jg9reUo-siOJSm594o3pEBXCRxpg9g2H=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/7aQGtpAf_oekxI4ecqCUGUKm0ONbSk4UU2SAiRa4jg9reUo-siOJSm594o3pEBXCRxpg9g2H=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@stayc_official",
+      "x": "https://x.com/stayc_official",
+      "instagram": "https://www.instagram.com/stayc_highup"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@stayc_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-cae19f94",
+      "release_title": "STAY ALIVE",
+      "release_date": "2026-02-11",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "MWUAH",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lfT3AHgKiMtF9kQmQOrjHl_q0Of_k4oyw",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-cae19f94",
+        "release_title": "STAY ALIVE",
+        "release_date": "2026-02-11",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "MWUAH",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lfT3AHgKiMtF9kQmQOrjHl_q0Of_k4oyw",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0923a01b",
+        "release_title": "Metamorphic",
+        "release_date": "2024-07-01",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Twenty",
+        "spotify_url": "https://open.spotify.com/album/6eTCq3XOz0rVJnelXro3Vk",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/03db5874-7eac-4eaa-bba3-f231c2295d2e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/03db5874-7eac-4eaa-bba3-f231c2295d2e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/03db5874-7eac-4eaa-bba3-f231c2295d2e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/03db5874-7eac-4eaa-bba3-f231c2295d2e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-fc4eba26",
+        "release_title": "TEENFRESH",
+        "release_date": "2023-08-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Bubble",
+        "spotify_url": "https://open.spotify.com/album/4P5wnRQTBnnjNbjt7A6S6x",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5a0e4411-dcc3-4a98-b343-5496794ae887",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5a0e4411-dcc3-4a98-b343-5496794ae887/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5a0e4411-dcc3-4a98-b343-5496794ae887/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5a0e4411-dcc3-4a98-b343-5496794ae887",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0e299453",
+        "release_title": "YOUNG‐LUV.COM",
+        "release_date": "2022-02-21",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "YOUNG LUV",
+        "spotify_url": "https://open.spotify.com/album/2xPdgNkM4yIQmP7axJ1T1o",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6bde9cbc-68a7-4c20-b333-3d530f8a36c3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6bde9cbc-68a7-4c20-b333-3d530f8a36c3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6bde9cbc-68a7-4c20-b333-3d530f8a36c3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6bde9cbc-68a7-4c20-b333-3d530f8a36c3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-027b8c2e",
+        "release_title": "STEREOTYPE",
+        "release_date": "2021-09-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "STEREOTYPE",
+        "spotify_url": "https://open.spotify.com/album/7HGjNJBj1NQGNwCzFD2LHj",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b948841f-59a7-4988-9816-53cf681c1838",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b948841f-59a7-4988-9816-53cf681c1838/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b948841f-59a7-4988-9816-53cf681c1838/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b948841f-59a7-4988-9816-53cf681c1838",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/06bb5fcc-f2b3-428d-b8e7-079060311b6d"
+  }
+}

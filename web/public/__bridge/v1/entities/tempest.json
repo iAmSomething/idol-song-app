@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-tempest"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "tempest",
+      "display_name": "TEMPEST",
+      "canonical_name": "TEMPEST",
+      "agency_name": "Yuehua Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@TPSTOFFICIAL",
+      "x": "https://x.com/TPST__official",
+      "instagram": "https://www.instagram.com/tpst__official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@TPSTOFFICIAL",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-0ed778d0",
+      "release_title": "In the Dark (暮色独白)",
+      "release_date": "2025-11-03",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "In the Dark (暮色独白)",
+      "spotify_url": "https://open.spotify.com/album/3lBfxuIUiLqa03MhYXpr6m",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/cc31d9d5-c80d-4984-9b7a-599594c81fad",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/cc31d9d5-c80d-4984-9b7a-599594c81fad/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/cc31d9d5-c80d-4984-9b7a-599594c81fad/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/cc31d9d5-c80d-4984-9b7a-599594c81fad",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-41990c50",
+        "release_title": "As I am",
+        "release_date": "2025-10-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "In the Dark",
+        "spotify_url": "https://open.spotify.com/album/173YgSJe4F1sZG6pABL2zm",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lL7LMofqXC6sI9U8ok3K-iED9Ps2dFVVY",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=Hk2u4zlJ4HE",
+        "source_url": "https://musicbrainz.org/release-group/2e01370d-bfb6-4ddc-838f-db1447399533",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2e01370d-bfb6-4ddc-838f-db1447399533/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2e01370d-bfb6-4ddc-838f-db1447399533/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2e01370d-bfb6-4ddc-838f-db1447399533",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c88482f0",
+        "release_title": "RE: Full of Youth",
+        "release_date": "2025-03-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "WE ARE THE YOUNG",
+        "spotify_url": "https://open.spotify.com/album/1vlehuBlbn5SqCzpaoRICu",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ec289600-d324-4c77-98a7-cb0cc73f97fd",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ec289600-d324-4c77-98a7-cb0cc73f97fd/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ec289600-d324-4c77-98a7-cb0cc73f97fd/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ec289600-d324-4c77-98a7-cb0cc73f97fd",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-1bfbc450",
+        "release_title": "BUBBLE GUM",
+        "release_date": "2024-12-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Bubble Gum",
+        "spotify_url": "https://open.spotify.com/album/4kiAjeumZF5gTa8pOq7KGK",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0380d17d-3016-4fab-9ea0-a6d8e0cea93d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0380d17d-3016-4fab-9ea0-a6d8e0cea93d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0380d17d-3016-4fab-9ea0-a6d8e0cea93d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0380d17d-3016-4fab-9ea0-a6d8e0cea93d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-481b16f4",
+        "release_title": "BANG!",
+        "release_date": "2024-04-03",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BANG!",
+        "spotify_url": "https://open.spotify.com/album/6FgXRc5VEzawOjf3EWWYqB",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/15390a70-026b-4281-a616-39e4574d81f7",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/15390a70-026b-4281-a616-39e4574d81f7/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/15390a70-026b-4281-a616-39e4574d81f7/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/15390a70-026b-4281-a616-39e4574d81f7",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-12c11db0",
+        "release_title": "TEMPEST Voyage",
+        "release_date": "2024-03-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "LIGHTHOUSE",
+        "spotify_url": "https://open.spotify.com/album/5oDe8KM2IkcIVw9jhHjtkX",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kqlDwGonDH0Y8tg09w7nITQaWBCMmS4k8",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/63c4f0ff-0700-4889-9baf-fd3b912b22c4",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/63c4f0ff-0700-4889-9baf-fd3b912b22c4/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/63c4f0ff-0700-4889-9baf-fd3b912b22c4/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/63c4f0ff-0700-4889-9baf-fd3b912b22c4",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3811a86a",
+        "release_title": "THE CALM BEFORE THE STORM",
+        "release_date": "2023-04-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "EYE OF THE STORM",
+        "spotify_url": "https://open.spotify.com/album/78bGw78N3igo4TrUVfv9Db",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2779a05f-4a19-44f2-9404-3f575fd01183",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2779a05f-4a19-44f2-9404-3f575fd01183/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2779a05f-4a19-44f2-9404-3f575fd01183/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2779a05f-4a19-44f2-9404-3f575fd01183",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-7c43a69b",
+        "release_title": "ON and ON",
+        "release_date": "2022-11-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Taste the Feeling",
+        "spotify_url": "https://open.spotify.com/album/6ZQ6oaMujx039E41fzWdnX",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7668cd9e-beab-4974-aeb4-5e589b401f75",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7668cd9e-beab-4974-aeb4-5e589b401f75/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7668cd9e-beab-4974-aeb4-5e589b401f75/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7668cd9e-beab-4974-aeb4-5e589b401f75",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e31778b8",
+        "release_title": "SHINING UP",
+        "release_date": "2022-08-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Young & Wild",
+        "spotify_url": "https://open.spotify.com/album/1NqjkIZ66H34YgWgtU7gaE",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8304524d-5e88-4c8b-937c-5bea1b45b6c5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8304524d-5e88-4c8b-937c-5bea1b45b6c5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8304524d-5e88-4c8b-937c-5bea1b45b6c5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8304524d-5e88-4c8b-937c-5bea1b45b6c5",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/63307cfb-a65f-4001-b322-fd961b34788b"
+  }
+}

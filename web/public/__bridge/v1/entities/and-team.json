@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-and-team"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "and-team",
+      "display_name": "&TEAM",
+      "canonical_name": "&TEAM",
+      "agency_name": "HYBE Labels",
+      "badge_image_url": "https://yt3.googleusercontent.com/xqtV6QEH8rfsXXZ1sZZRjn2X7ZCxKB0_eoWN6z5gnqtN8TnC-XQN8-OlMzDVvxrKKnwDDvRxQA=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/xqtV6QEH8rfsXXZ1sZZRjn2X7ZCxKB0_eoWN6z5gnqtN8TnC-XQN8-OlMzDVvxrKKnwDDvRxQA=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@andteamofficial",
+      "x": "https://x.com/andTEAMofficial",
+      "instagram": "https://www.instagram.com/andteam_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@andteamofficial",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "and-team",
+      "display_name": "&TEAM",
+      "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
+      "scheduled_date": null,
+      "scheduled_month": "2026-04",
+      "date_precision": "month_only",
+      "date_status": "scheduled",
+      "confidence_score": 0.76,
+      "release_format": "ep",
+      "latest_seen_at": "Thu, 12 Feb 2026 09:38:51 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Future month reference: 2026-04. &TEAM sets April comeback with Japanese mini album ‘We on Fire’ allkpop",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-4ebe0e05",
+      "release_title": "Back to Life",
+      "release_date": "2025-10-28",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Back to Life",
+      "spotify_url": "https://open.spotify.com/album/7g35iam7Zn7Kwc1ZpkWD8c",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=KqE0P1qMtQg",
+      "source_url": "https://musicbrainz.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-4ebe0e05",
+        "release_title": "Back to Life",
+        "release_date": "2025-10-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Back to Life",
+        "spotify_url": "https://open.spotify.com/album/7g35iam7Zn7Kwc1ZpkWD8c",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kYvmw_I9yap7eMZ5Jqye9j9gKdtdmX8s4",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=KqE0P1qMtQg",
+        "source_url": "https://musicbrainz.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d6f9f3f9",
+        "release_title": "Go in Blind (月狼)",
+        "release_date": "2025-04-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Go in Blind (月狼)",
+        "spotify_url": "https://open.spotify.com/album/6FOIiP9yLaT16PUtUkAr3E",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-44ca129c",
+        "release_title": "雪明かり (Yukiakari)",
+        "release_date": "2024-12-17",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "雪明かり (Yukiakari)",
+        "spotify_url": "https://open.spotify.com/album/6Y72DbWH9RBBVh8XNIGY16",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d724e138",
+        "release_title": "First Howling : NOW",
+        "release_date": "2023-11-15",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "War Cry",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-482dd14d",
+        "release_title": "First Howling : WE",
+        "release_date": "2023-06-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Blind Love",
+        "spotify_url": "https://open.spotify.com/album/0ouqxqCo93ccmKOXhMz3RC",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0d3bb44e",
+        "release_title": "First Howling : ME",
+        "release_date": "2022-12-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Under the Skin",
+        "spotify_url": "https://open.spotify.com/album/3jqV1FFra3A2179rdtiNdo",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
+        "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdzN5MmFQbjJLQVdlcktGS1V1MkZnLUxhVDBjQnNlbmtXSkxOZTJCMjVkNXptekllbE5mY2VSanJqZXV5SGJ1T3BPM1huZWlhbWhYeGFsOW55UlFSMDlCY29BYjNDZWxWUGV1RjdNb09MRFFHbWdRdkRKanBTS3lNVS05Xy0yZzVVOGRLZF9Dc1RhT2hVRUFfMFlTX0RELUYtcHc?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Thu, 12 Feb 2026 09:38:51 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": "ep",
+        "confidence_score": 0.76
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
+  }
+}

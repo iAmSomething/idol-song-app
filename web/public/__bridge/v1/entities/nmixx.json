@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-nmixx"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "nmixx",
+      "display_name": "NMIXX",
+      "canonical_name": "NMIXX",
+      "agency_name": "JYP Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/UkZJRmpoFVOe3qfAT5GEB5DTNJQSVUAIkHdj5A-QtfB8kSZS8LMkYJIP8e5-gIx8D0HyhGD9mw=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/UkZJRmpoFVOe3qfAT5GEB5DTNJQSVUAIkHdj5A-QtfB8kSZS8LMkYJIP8e5-gIx8D0HyhGD9mw=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+      "x": "https://x.com/NMIXX_official",
+      "instagram": "https://www.instagram.com/nmixx_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-bb7c4726",
+      "release_title": "TIC TIC",
+      "release_date": "2026-02-26",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "TIC TIC",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/b71aa2e7-c4a3-44ea-a577-f9459bf6456f",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-5ce164ce",
+        "release_title": "Blue Valentine",
+        "release_date": "2025-10-13",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Blue Valentine",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nvsmIZ4mfs1TwPX_-aM4mxw_SV_EytZ8U",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=EmeW6li6bbo",
+        "source_url": "https://musicbrainz.org/release-group/fbdd1a42-b8fe-47a6-8bf4-927b61e567f0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/fbdd1a42-b8fe-47a6-8bf4-927b61e567f0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/fbdd1a42-b8fe-47a6-8bf4-927b61e567f0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/fbdd1a42-b8fe-47a6-8bf4-927b61e567f0",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-413836c0",
+        "release_title": "Fe3O4: FORWARD",
+        "release_date": "2025-03-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "High Horse",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4d566dec-e72a-49b2-a48e-28ded2832fc1",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4d566dec-e72a-49b2-a48e-28ded2832fc1/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4d566dec-e72a-49b2-a48e-28ded2832fc1/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4d566dec-e72a-49b2-a48e-28ded2832fc1",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d7173e41",
+        "release_title": "Fe3O4: STICK OUT",
+        "release_date": "2024-08-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "별별별 (See that?)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/dacd77f2-0e4d-4551-a13d-70824d18030f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/dacd77f2-0e4d-4551-a13d-70824d18030f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/dacd77f2-0e4d-4551-a13d-70824d18030f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/dacd77f2-0e4d-4551-a13d-70824d18030f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c63dc40f",
+        "release_title": "Fe3O4: BREAK",
+        "release_date": "2024-01-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Soñar (Breaker)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/48e4a94a-7fe5-4764-8880-b23a91bd7ee3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/48e4a94a-7fe5-4764-8880-b23a91bd7ee3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/48e4a94a-7fe5-4764-8880-b23a91bd7ee3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/48e4a94a-7fe5-4764-8880-b23a91bd7ee3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c6a8ad74",
+        "release_title": "expérgo",
+        "release_date": "2023-03-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Young, Dumb, Stupid",
+        "spotify_url": "https://open.spotify.com/album/6GbCvETnCVvkpvK6qCqTYS",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3faa1f5b-13f1-4dc2-95c9-f7a6c9faec05",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3faa1f5b-13f1-4dc2-95c9-f7a6c9faec05/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3faa1f5b-13f1-4dc2-95c9-f7a6c9faec05/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3faa1f5b-13f1-4dc2-95c9-f7a6c9faec05",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-16155b96",
+        "release_title": "Special Message : NMIXX is coming!",
+        "release_date": "2022-02-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Message from NMIXX: JIWOO",
+        "spotify_url": "https://open.spotify.com/album/5s15PlkjUUIUFt0n3KMHIC",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8ffa79ea-3696-4761-a414-803630dce3cb",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8ffa79ea-3696-4761-a414-803630dce3cb/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8ffa79ea-3696-4761-a414-803630dce3cb/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8ffa79ea-3696-4761-a414-803630dce3cb",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c635d541",
+        "release_title": "Now is the time! : We Are NMIXX",
+        "release_date": "2022-02-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Hello, world!",
+        "spotify_url": "https://open.spotify.com/album/1NaADge8wCv2oCkMsOrTd6",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3a64009e-d8b7-42b1-a09a-bc0e84dff8ed",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3a64009e-d8b7-42b1-a09a-bc0e84dff8ed/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3a64009e-d8b7-42b1-a09a-bc0e84dff8ed/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3a64009e-d8b7-42b1-a09a-bc0e84dff8ed",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/2d623e82-73e2-4179-9c44-e963980f2d58"
+  }
+}

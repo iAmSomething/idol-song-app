@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-nct-dream"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "nct-dream",
+      "display_name": "NCT DREAM",
+      "canonical_name": "NCT DREAM",
+      "agency_name": "SM Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/zueBt4nWmanBgh4z4W1-S5wbiOIESaXVad_TKTbeHlx97T8fKcbjyX-0iwGaPvZ8BQA1Esyybw=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/zueBt4nWmanBgh4z4W1-S5wbiOIESaXVad_TKTbeHlx97T8fKcbjyX-0iwGaPvZ8BQA1Esyybw=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@NCTsmtown_DREAM",
+      "x": "https://x.com/nctsmtown_dream",
+      "instagram": "https://www.instagram.com/nct_dream"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@NCTsmtown_DREAM",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-d4861367",
+      "release_title": "Beat It Up",
+      "release_date": "2025-11-17",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Beat It Up",
+      "spotify_url": "https://open.spotify.com/album/7jd5hUsxFPUsM0dqfpRjmp",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kmoOC0j8PL4v7z-W8wwq64_jv29sWPCmE",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=wvtNmMmcAYw",
+      "source_url": "https://musicbrainz.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-d4861367",
+        "release_title": "Beat It Up",
+        "release_date": "2025-11-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Beat It Up",
+        "spotify_url": "https://open.spotify.com/album/7jd5hUsxFPUsM0dqfpRjmp",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kmoOC0j8PL4v7z-W8wwq64_jv29sWPCmE",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=wvtNmMmcAYw",
+        "source_url": "https://musicbrainz.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1d8b6f46-e52b-43a8-912d-0c7cee7a5c5a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-7ccda723",
+        "release_title": "Go Back to the Future",
+        "release_date": "2025-07-14",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "BTTF",
+        "spotify_url": "https://open.spotify.com/album/2sOb21DLBATC7czm21LQoM",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/55b6c7af-6d59-4deb-9d9b-25c921f16b7c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/55b6c7af-6d59-4deb-9d9b-25c921f16b7c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/55b6c7af-6d59-4deb-9d9b-25c921f16b7c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/55b6c7af-6d59-4deb-9d9b-25c921f16b7c",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8d801337",
+        "release_title": "DREAMSCAPE",
+        "release_date": "2024-11-11",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Rains in Heaven",
+        "spotify_url": "https://open.spotify.com/album/4CbiijbtjdFusL6uXiZJ2k",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/96701b7b-9569-4766-b2ab-d548c061d5f6",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/96701b7b-9569-4766-b2ab-d548c061d5f6/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/96701b7b-9569-4766-b2ab-d548c061d5f6/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/96701b7b-9569-4766-b2ab-d548c061d5f6",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-85a2b386",
+        "release_title": "DREAM( )SCAPE",
+        "release_date": "2024-03-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "icantfeelanything",
+        "spotify_url": "https://open.spotify.com/album/2urIpiAu1CySTyyNuQQxcz",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e5ff8e97-205c-4a01-a01e-80681b402820",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e5ff8e97-205c-4a01-a01e-80681b402820/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e5ff8e97-205c-4a01-a01e-80681b402820/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e5ff8e97-205c-4a01-a01e-80681b402820",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-670e9c82",
+        "release_title": "ISTJ",
+        "release_date": "2023-07-17",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "ISTJ",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/11357b36-41d5-4d1d-afa2-9d36d3e9e74b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/11357b36-41d5-4d1d-afa2-9d36d3e9e74b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/11357b36-41d5-4d1d-afa2-9d36d3e9e74b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/11357b36-41d5-4d1d-afa2-9d36d3e9e74b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b97b816b",
+        "release_title": "Candy",
+        "release_date": "2022-12-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Candy",
+        "spotify_url": "https://open.spotify.com/album/6lqazNXadymQLwUh41qW2K",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/bd2d157d-82d8-4dde-8262-4f01e037f97b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/bd2d157d-82d8-4dde-8262-4f01e037f97b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/bd2d157d-82d8-4dde-8262-4f01e037f97b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/bd2d157d-82d8-4dde-8262-4f01e037f97b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4f44505d",
+        "release_title": "Glitch Mode",
+        "release_date": "2022-03-28",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Glitch Mode",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9cf4ed6b-7a7e-478d-9bd4-e83f8e4ecd6a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9cf4ed6b-7a7e-478d-9bd4-e83f8e4ecd6a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9cf4ed6b-7a7e-478d-9bd4-e83f8e4ecd6a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9cf4ed6b-7a7e-478d-9bd4-e83f8e4ecd6a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6e4ac44d",
+        "release_title": "Hot Sauce",
+        "release_date": "2021-05-10",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Hot Sauce",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/507a996b-d264-49ef-98d0-c048e1ab653c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/507a996b-d264-49ef-98d0-c048e1ab653c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/507a996b-d264-49ef-98d0-c048e1ab653c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/507a996b-d264-49ef-98d0-c048e1ab653c",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/dc7c8277-d4b6-4bca-bdfe-50eee42536ac"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-monsta-x"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "monsta-x",
+      "display_name": "MONSTA X",
+      "canonical_name": "MONSTA X",
+      "agency_name": "Starship Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/Ubx6dkmebSRAWWjNek0cYSPJn6duhZ9Z76hEzmRWK4nfYAb2Nrl2ZlqhGEBsh5iH0IJVq7re=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/Ubx6dkmebSRAWWjNek0cYSPJn6duhZ9Z76hEzmRWK4nfYAb2Nrl2ZlqhGEBsh5iH0IJVq7re=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@officialmonstax",
+      "x": "https://x.com/officialmonstax",
+      "instagram": "https://www.instagram.com/official_monsta_x"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@officialmonstax",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-1c084602",
+      "release_title": "growing pains",
+      "release_date": "2026-02-06",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "growing pains",
+      "spotify_url": "https://open.spotify.com/album/6eH7d6D70X0IbAGHBFP9yj",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/d77e44ee-aa20-498d-8606-db1f4ac5d481",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/d77e44ee-aa20-498d-8606-db1f4ac5d481/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/d77e44ee-aa20-498d-8606-db1f4ac5d481/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/d77e44ee-aa20-498d-8606-db1f4ac5d481",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-ab381dfe",
+        "release_title": "THE X",
+        "release_date": "2025-09-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Do What I Want",
+        "spotify_url": "https://open.spotify.com/album/3BUEab50RO1tf709W4EMcL",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l8XMeULHqaMdI2JGJ_ai0aq8g5JQhQvlA",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ca8e0811-5f61-4cd5-b9d8-354f4f9b5f28",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ca8e0811-5f61-4cd5-b9d8-354f4f9b5f28/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ca8e0811-5f61-4cd5-b9d8-354f4f9b5f28/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ca8e0811-5f61-4cd5-b9d8-354f4f9b5f28",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0a91cb5c",
+        "release_title": "Beautiful Liar / GAMBLER (JAPAN SPECIAL EDITION)",
+        "release_date": "2025-05-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Beautiful Liar (Japanese Version)",
+        "spotify_url": "https://open.spotify.com/album/3nLFvGjsAqr57295bnkWr2",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/913c0154-42e2-4b37-bab2-345b6fcacdc7",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/913c0154-42e2-4b37-bab2-345b6fcacdc7/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/913c0154-42e2-4b37-bab2-345b6fcacdc7/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/913c0154-42e2-4b37-bab2-345b6fcacdc7",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e2413a5b",
+        "release_title": "REASON",
+        "release_date": "2023-01-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Beautiful Liar",
+        "spotify_url": "https://open.spotify.com/album/5evr2BAxQmxyF8dZyaezzS",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6598cb4e-0e3f-4288-8672-8c014b2f3ce4",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6598cb4e-0e3f-4288-8672-8c014b2f3ce4/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6598cb4e-0e3f-4288-8672-8c014b2f3ce4/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6598cb4e-0e3f-4288-8672-8c014b2f3ce4",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d3891848",
+        "release_title": "SHAPE OF LOVE",
+        "release_date": "2022-04-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Love",
+        "spotify_url": "https://open.spotify.com/album/7KncCixIi7xhPSYBHGMm3q",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b0c24931-b4de-49ab-aad9-f96c839d3268",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b0c24931-b4de-49ab-aad9-f96c839d3268/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b0c24931-b4de-49ab-aad9-f96c839d3268/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b0c24931-b4de-49ab-aad9-f96c839d3268",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-445278ab",
+        "release_title": "The Dreaming",
+        "release_date": "2021-12-10",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "The Dreaming",
+        "spotify_url": "https://open.spotify.com/album/6Ope4loKrpjkM1pmPj63Gs",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f334eca4-dab4-44a0-add4-7ced9116c271",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f334eca4-dab4-44a0-add4-7ced9116c271/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f334eca4-dab4-44a0-add4-7ced9116c271/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f334eca4-dab4-44a0-add4-7ced9116c271",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cdaad7d7",
+        "release_title": "NO LIMIT",
+        "release_date": "2021-11-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Rush Hour",
+        "spotify_url": "https://open.spotify.com/album/7C4wO7npFwUlVgNye4hbII",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/98cb2be2-8449-44f3-bd6b-7d4d19e9ff92",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/98cb2be2-8449-44f3-bd6b-7d4d19e9ff92/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/98cb2be2-8449-44f3-bd6b-7d4d19e9ff92/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/98cb2be2-8449-44f3-bd6b-7d4d19e9ff92",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-149d6c72",
+        "release_title": "One Of a Kind",
+        "release_date": "2021-06-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "GAMBLER",
+        "spotify_url": "https://open.spotify.com/album/2Zuovdo5g1RhfbHniwZ8yI",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/88c8cbdf-f4b8-40c2-87af-b6678875fbcc",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/88c8cbdf-f4b8-40c2-87af-b6678875fbcc/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/88c8cbdf-f4b8-40c2-87af-b6678875fbcc/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/88c8cbdf-f4b8-40c2-87af-b6678875fbcc",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c3739a3d",
+        "release_title": "Flavors of love",
+        "release_date": "2021-05-05",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Flavors of love",
+        "spotify_url": "https://open.spotify.com/album/6Otl9FYuwf1KGPkxydpBo1",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0698e05c-fbdd-487f-91d2-69540e8d3db8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0698e05c-fbdd-487f-91d2-69540e8d3db8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0698e05c-fbdd-487f-91d2-69540e8d3db8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0698e05c-fbdd-487f-91d2-69540e8d3db8",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/b6b21b0c-a706-4b46-a929-bd4d21b06cad"
+  }
+}

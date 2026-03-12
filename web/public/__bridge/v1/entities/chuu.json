@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-chuu"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "chuu",
+      "display_name": "CHUU",
+      "canonical_name": "CHUU",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@CHUUOfficial",
+      "x": null,
+      "instagram": "https://www.instagram.com/chuuo3o"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@CHUUOfficial",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": null,
+      "tracking_status": null
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-81282471",
+      "release_title": "XO, My Cyberlove",
+      "release_date": "2026-01-07",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "XO, My Cyberlove",
+      "spotify_url": "https://open.spotify.com/album/2sVppxhqMC6qFOp1Xxvy8Q",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-81282471",
+        "release_title": "XO, My Cyberlove",
+        "release_date": "2026-01-07",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "XO, My Cyberlove",
+        "spotify_url": "https://open.spotify.com/album/2sVppxhqMC6qFOp1Xxvy8Q",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4b0bf9f3",
+        "release_title": "Only cry in the rain",
+        "release_date": "2025-04-21",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Only cry in the rain",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3b6c6bbd-709d-4697-8aae-e80b44b991a6",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3b6c6bbd-709d-4697-8aae-e80b44b991a6/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3b6c6bbd-709d-4697-8aae-e80b44b991a6/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3b6c6bbd-709d-4697-8aae-e80b44b991a6",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-be5f349b",
+        "release_title": "Strawberry Rush",
+        "release_date": "2024-06-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Strawberry Rush",
+        "spotify_url": "https://open.spotify.com/album/4NIAziT2P8n5MkVeYYLCd2",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a03c2285-fc46-4452-b8a6-3b220c45bcb8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a03c2285-fc46-4452-b8a6-3b220c45bcb8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a03c2285-fc46-4452-b8a6-3b220c45bcb8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a03c2285-fc46-4452-b8a6-3b220c45bcb8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-fc6f5f56",
+        "release_title": "Howl",
+        "release_date": "2023-10-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Howl",
+        "spotify_url": "https://open.spotify.com/album/4Dmzff19nSvZgWpgExga4d",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3e02a80f-1454-4c27-8ee0-7dd1c7bff8ef",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3e02a80f-1454-4c27-8ee0-7dd1c7bff8ef/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3e02a80f-1454-4c27-8ee0-7dd1c7bff8ef/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3e02a80f-1454-4c27-8ee0-7dd1c7bff8ef",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/ebe26895-c0d1-41c3-8bcc-a49d62c497a1"
+  }
+}

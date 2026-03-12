@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-itzy"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "itzy",
+      "display_name": "ITZY",
+      "canonical_name": "ITZY",
+      "agency_name": "JYP Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/K_YJ1Lr0UBrtIZCAqbF3gmB258wrHQthumrWkHVgr7b32_ChoixS4LAKnMT8lw432MsnX5XODCU=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/K_YJ1Lr0UBrtIZCAqbF3gmB258wrHQthumrWkHVgr7b32_ChoixS4LAKnMT8lw432MsnX5XODCU=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@ItzyOfficial",
+      "x": "https://x.com/ITZYofficial",
+      "instagram": "https://www.instagram.com/itzy.all.in.us"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@ItzyOfficial",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-f69afaa6",
+      "release_title": "TUNNEL VISION",
+      "release_date": "2025-11-10",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "TUNNEL VISION",
+      "spotify_url": "https://open.spotify.com/album/7CD7NdEDOMY5Owl9MEzgRw",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nAwplpKBLvrFvJQUrR89jEkhA6EoNW8SA",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=piSq8IioghU",
+      "source_url": "https://musicbrainz.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-f69afaa6",
+        "release_title": "TUNNEL VISION",
+        "release_date": "2025-11-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "TUNNEL VISION",
+        "spotify_url": "https://open.spotify.com/album/7CD7NdEDOMY5Owl9MEzgRw",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nAwplpKBLvrFvJQUrR89jEkhA6EoNW8SA",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=piSq8IioghU",
+        "source_url": "https://musicbrainz.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-139ce69d",
+        "release_title": "Collector",
+        "release_date": "2025-10-08",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "ROCK & ROLL",
+        "spotify_url": "https://open.spotify.com/album/57c4boNwQniM54V9Zv7zhh",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9cb4ab32-614d-4155-a21e-5d4840cc13c2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9cb4ab32-614d-4155-a21e-5d4840cc13c2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9cb4ab32-614d-4155-a21e-5d4840cc13c2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9cb4ab32-614d-4155-a21e-5d4840cc13c2",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-566c458d",
+        "release_title": "Girls Will Be Girls",
+        "release_date": "2025-06-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Girls Will Be Girls",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d78881f0-16e2-40ca-b882-43f359269da8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d78881f0-16e2-40ca-b882-43f359269da8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d78881f0-16e2-40ca-b882-43f359269da8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d78881f0-16e2-40ca-b882-43f359269da8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e60070bb",
+        "release_title": "GOLD",
+        "release_date": "2024-10-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "GOLD",
+        "spotify_url": "https://open.spotify.com/album/4CRfobFgSG0GOzplgTI79s",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/fab2ff69-1c44-49d1-a771-b0169c840c81",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/fab2ff69-1c44-49d1-a771-b0169c840c81/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/fab2ff69-1c44-49d1-a771-b0169c840c81/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/fab2ff69-1c44-49d1-a771-b0169c840c81",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-81838862",
+        "release_title": "BORN TO BE",
+        "release_date": "2024-01-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BORN TO BE",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/454d3a85-146f-49f3-b064-4c18ebc2cda9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/454d3a85-146f-49f3-b064-4c18ebc2cda9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/454d3a85-146f-49f3-b064-4c18ebc2cda9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/454d3a85-146f-49f3-b064-4c18ebc2cda9",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-21ab6b78",
+        "release_title": "RINGO",
+        "release_date": "2023-10-18",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "RINGO",
+        "spotify_url": "https://open.spotify.com/album/1kRAzoCTDLqwU6nX2I2Nmc",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e85b905c-be97-40ed-b74b-6bed712322a9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e85b905c-be97-40ed-b74b-6bed712322a9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e85b905c-be97-40ed-b74b-6bed712322a9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e85b905c-be97-40ed-b74b-6bed712322a9",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2fe25386",
+        "release_title": "KILL MY DOUBT",
+        "release_date": "2023-07-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BET ON ME",
+        "spotify_url": "https://open.spotify.com/album/5tXD77S3yCWTToU5eMLnlo",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d23dd7f6-e4a5-48b5-9b15-78a0a9acf415",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d23dd7f6-e4a5-48b5-9b15-78a0a9acf415/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d23dd7f6-e4a5-48b5-9b15-78a0a9acf415/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d23dd7f6-e4a5-48b5-9b15-78a0a9acf415",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cdc4c130",
+        "release_title": "CHESHIRE",
+        "release_date": "2022-11-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Cheshire",
+        "spotify_url": "https://open.spotify.com/album/4iL0sqHuipLrqy4y8HRYsZ",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9f65d004-ce44-436a-958d-99fc2856f681",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9f65d004-ce44-436a-958d-99fc2856f681/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9f65d004-ce44-436a-958d-99fc2856f681/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9f65d004-ce44-436a-958d-99fc2856f681",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/bce172fc-51bb-43f7-9a25-b406a0a581d5"
+  }
+}

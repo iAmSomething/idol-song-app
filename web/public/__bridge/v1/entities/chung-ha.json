@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-chung-ha"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "chung-ha",
+      "display_name": "CHUNG HA",
+      "canonical_name": "CHUNG HA",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
+      "x": "https://x.com/CH_CHUN9HA",
+      "instagram": "https://www.instagram.com/chungha.art"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": null,
+      "tracking_status": null
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-85d1bd9a",
+      "release_title": "Save me",
+      "release_date": "2026-02-09",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Save me",
+      "spotify_url": "https://open.spotify.com/album/0RUo3HqDbrgs2AZlpVc616",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/996124d6-1423-4fcc-ac05-5ca40e82552c",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/996124d6-1423-4fcc-ac05-5ca40e82552c/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/996124d6-1423-4fcc-ac05-5ca40e82552c/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/996124d6-1423-4fcc-ac05-5ca40e82552c",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-9eaf9d32",
+        "release_title": "Alivio",
+        "release_date": "2025-02-12",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Creepin’",
+        "spotify_url": "https://open.spotify.com/album/5NzrdLdqF0ZuAt51eSIORo",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7a159ff5-9fc3-404b-a56e-e05cf494daf9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7a159ff5-9fc3-404b-a56e-e05cf494daf9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7a159ff5-9fc3-404b-a56e-e05cf494daf9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7a159ff5-9fc3-404b-a56e-e05cf494daf9",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-545884ae",
+        "release_title": "Bare&Rare Pt.1",
+        "release_date": "2022-07-11",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Sparkling",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/00d36dd0-b25f-4492-aa44-64b6f29c99ba",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/00d36dd0-b25f-4492-aa44-64b6f29c99ba/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/00d36dd0-b25f-4492-aa44-64b6f29c99ba/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/00d36dd0-b25f-4492-aa44-64b6f29c99ba",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-1a6bfed6",
+        "release_title": "Querencia",
+        "release_date": "2021-02-15",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "SIDE A {NOBLE}",
+        "spotify_url": "https://open.spotify.com/album/0Gx8xMmiB89thaOXS86seu",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/75415453-4f60-47d2-82e9-7d2ff7820673",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/75415453-4f60-47d2-82e9-7d2ff7820673/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/75415453-4f60-47d2-82e9-7d2ff7820673/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/75415453-4f60-47d2-82e9-7d2ff7820673",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6bca7944",
+        "release_title": "Flourishing",
+        "release_date": "2019-06-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Flourishing",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c99aadf4-d90f-4f1f-a2dd-3b27c7267c1b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c99aadf4-d90f-4f1f-a2dd-3b27c7267c1b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c99aadf4-d90f-4f1f-a2dd-3b27c7267c1b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c99aadf4-d90f-4f1f-a2dd-3b27c7267c1b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0710afa6",
+        "release_title": "Blooming Blue",
+        "release_date": "2018-07-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BB",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/95b60c73-1b08-4087-b76a-63c10033ed52",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/95b60c73-1b08-4087-b76a-63c10033ed52/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/95b60c73-1b08-4087-b76a-63c10033ed52/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/95b60c73-1b08-4087-b76a-63c10033ed52",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-65c38455",
+        "release_title": "Offset",
+        "release_date": "2018-01-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Offset",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ceb2a998-bfc3-47b8-9154-09048fd17b47",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ceb2a998-bfc3-47b8-9154-09048fd17b47/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ceb2a998-bfc3-47b8-9154-09048fd17b47/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ceb2a998-bfc3-47b8-9154-09048fd17b47",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c39a4516",
+        "release_title": "Hands on Me",
+        "release_date": "2017-06-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Hands on Me",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/1bf37474-83c5-419e-b49c-aa348ba1c5e5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1bf37474-83c5-419e-b49c-aa348ba1c5e5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1bf37474-83c5-419e-b49c-aa348ba1c5e5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1bf37474-83c5-419e-b49c-aa348ba1c5e5",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/08525643-7a01-411e-8188-8bf57261c8b3"
+  }
+}

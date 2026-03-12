@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-blitzers"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "blitzers",
+      "display_name": "BLITZERS",
+      "canonical_name": "BLITZERS",
+      "agency_name": "WUZO Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@Blitzers",
+      "x": "https://x.com/WUZO_BLITZERS",
+      "instagram": "https://www.instagram.com/official_blitzers"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@Blitzers",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-34d8909e",
+      "release_title": "LUNCH‐BOX",
+      "release_date": "2024-06-19",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Race Up",
+      "spotify_url": "https://open.spotify.com/album/4dHoAVeWILU2xZXlla0mDG",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/6fb4ec2c-6652-4566-abdc-59def195bb9c",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/6fb4ec2c-6652-4566-abdc-59def195bb9c/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/6fb4ec2c-6652-4566-abdc-59def195bb9c/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/6fb4ec2c-6652-4566-abdc-59def195bb9c",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-34d8909e",
+        "release_title": "LUNCH‐BOX",
+        "release_date": "2024-06-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Race Up",
+        "spotify_url": "https://open.spotify.com/album/4dHoAVeWILU2xZXlla0mDG",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6fb4ec2c-6652-4566-abdc-59def195bb9c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6fb4ec2c-6652-4566-abdc-59def195bb9c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6fb4ec2c-6652-4566-abdc-59def195bb9c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6fb4ec2c-6652-4566-abdc-59def195bb9c",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0511f0c0",
+        "release_title": "WIN‐DOW",
+        "release_date": "2022-07-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Win‐Dow",
+        "spotify_url": "https://open.spotify.com/album/4dcwVvd7l0sAGBg0pSmKK2",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c505d29d-1a7e-449d-ae2d-63663f4a3efc",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c505d29d-1a7e-449d-ae2d-63663f4a3efc/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c505d29d-1a7e-449d-ae2d-63663f4a3efc/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c505d29d-1a7e-449d-ae2d-63663f4a3efc",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-85b17619",
+        "release_title": "SEAT‐BELT",
+        "release_date": "2021-10-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Seat‐Belt",
+        "spotify_url": "https://open.spotify.com/album/1Z1nMx8QglGa8tQFerndsg",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0a6d4662-24d9-468e-8025-af160b4a2237",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0a6d4662-24d9-468e-8025-af160b4a2237/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0a6d4662-24d9-468e-8025-af160b4a2237/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0a6d4662-24d9-468e-8025-af160b4a2237",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-60837bea",
+        "release_title": "CHECK-IN",
+        "release_date": "2021-05-12",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "CHECK-IN",
+        "spotify_url": "https://open.spotify.com/album/1ByTvinHUbdfpRMqxzGCUr",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2dc8ed29-9a82-41bb-b419-61b99f95e4eb",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2dc8ed29-9a82-41bb-b419-61b99f95e4eb/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2dc8ed29-9a82-41bb-b419-61b99f95e4eb/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2dc8ed29-9a82-41bb-b419-61b99f95e4eb",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/74c13246-58ca-47d2-8223-81f5920a21be"
+  }
+}

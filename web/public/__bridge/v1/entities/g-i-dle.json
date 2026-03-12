@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-g-i-dle"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "g-i-dle",
+      "display_name": "(G)I-DLE",
+      "canonical_name": "(G)I-DLE",
+      "agency_name": "Cube Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/Z0pYcm-PI6zo0J3iS1Y-M4fNyKUji4D_DYehrB3icbtmCrwJy-e1Tm3FZ3Nm0cagcKaTAJymxg=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/Z0pYcm-PI6zo0J3iS1Y-M4fNyKUji4D_DYehrB3icbtmCrwJy-e1Tm3FZ3Nm0cagcKaTAJymxg=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@official_i_dle",
+      "x": "https://x.com/official_i_dle",
+      "instagram": "https://www.instagram.com/i_dle_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@official_i_dle",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-7aab6710",
+      "release_title": "Mono",
+      "release_date": "2026-01-27",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Mono",
+      "spotify_url": "https://open.spotify.com/album/4FbuxAECa56oJs71RE9acG",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=DYgE3SGPEqk",
+      "source_url": "https://musicbrainz.org/release-group/c669f230-9b65-46c3-808c-99a26d44b464",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/c669f230-9b65-46c3-808c-99a26d44b464/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/c669f230-9b65-46c3-808c-99a26d44b464/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/c669f230-9b65-46c3-808c-99a26d44b464",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-7f1ba53a",
+        "release_title": "i‐dle",
+        "release_date": "2025-10-03",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "傷つくのは嫌いだから",
+        "spotify_url": "https://open.spotify.com/prerelease/6dwb5r26FV8QM1q2VNfin6",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kAyRRZgPd8_-z3-o-FoAVuoTe4zq0OfBU",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=DcxiggTs_q4",
+        "source_url": "https://musicbrainz.org/release-group/91518b35-2567-4b2d-95f9-135361183fe5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/91518b35-2567-4b2d-95f9-135361183fe5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/91518b35-2567-4b2d-95f9-135361183fe5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/91518b35-2567-4b2d-95f9-135361183fe5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-2e24ec27",
+        "release_title": "We are",
+        "release_date": "2025-05-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Good Thing",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/85b4143a-d444-485c-b777-0ffd5076eba4",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/85b4143a-d444-485c-b777-0ffd5076eba4/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/85b4143a-d444-485c-b777-0ffd5076eba4/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/85b4143a-d444-485c-b777-0ffd5076eba4",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-23834fa7",
+        "release_title": "I SWAY",
+        "release_date": "2024-07-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "클락션 (Klaxon)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/1bfb866b-a0c9-4d62-aa0f-3975e08e8c38",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1bfb866b-a0c9-4d62-aa0f-3975e08e8c38/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1bfb866b-a0c9-4d62-aa0f-3975e08e8c38/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1bfb866b-a0c9-4d62-aa0f-3975e08e8c38",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-aa51f3f3",
+        "release_title": "2",
+        "release_date": "2024-01-29",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Wife",
+        "spotify_url": "https://open.spotify.com/album/3SZZriuBZnmKfQ7LqEH6It",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/871503b4-da86-4c80-8371-58f6888f03a2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/871503b4-da86-4c80-8371-58f6888f03a2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/871503b4-da86-4c80-8371-58f6888f03a2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/871503b4-da86-4c80-8371-58f6888f03a2",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-7cd1b9b8",
+        "release_title": "HEAT",
+        "release_date": "2023-10-05",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "I DO",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5359766c-801e-4075-8553-09cac24f65fd",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5359766c-801e-4075-8553-09cac24f65fd/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5359766c-801e-4075-8553-09cac24f65fd/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5359766c-801e-4075-8553-09cac24f65fd",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-798ebaac",
+        "release_title": "I feel",
+        "release_date": "2023-05-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "퀸카",
+        "spotify_url": "https://open.spotify.com/album/2cBuoAocFtOZU31Tk6UmTt",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e988de57-e00e-4dae-91d8-d147bf18e70a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e988de57-e00e-4dae-91d8-d147bf18e70a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e988de57-e00e-4dae-91d8-d147bf18e70a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e988de57-e00e-4dae-91d8-d147bf18e70a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-829b9c81",
+        "release_title": "I love",
+        "release_date": "2022-10-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "LOVE",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5cae6816-c82e-4ae5-8bad-192066284836",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5cae6816-c82e-4ae5-8bad-192066284836/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5cae6816-c82e-4ae5-8bad-192066284836/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5cae6816-c82e-4ae5-8bad-192066284836",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-78156d38",
+        "release_title": "I NEVER DIE",
+        "release_date": "2022-03-14",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "TOMBOY",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f2ce706f-f28d-4062-95f8-f0104efcea2e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f2ce706f-f28d-4062-95f8-f0104efcea2e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f2ce706f-f28d-4062-95f8-f0104efcea2e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f2ce706f-f28d-4062-95f8-f0104efcea2e",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/0068ae6c-7156-40f9-a81f-39294af6a549"
+  }
+}

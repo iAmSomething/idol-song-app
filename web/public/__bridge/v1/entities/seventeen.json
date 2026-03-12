@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-seventeen"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "seventeen",
+      "display_name": "SEVENTEEN",
+      "canonical_name": "SEVENTEEN",
+      "agency_name": "HYBE Labels",
+      "badge_image_url": "https://yt3.googleusercontent.com/8fqbFMfIjAMs6TuRGii5MEsXIdn5ZTliSbCPPfbZ8R07Pt15ht0n0OjexUCG8t4_q-c3YO2KXQ=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/8fqbFMfIjAMs6TuRGii5MEsXIdn5ZTliSbCPPfbZ8R07Pt15ht0n0OjexUCG8t4_q-c3YO2KXQ=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@pledis_17",
+      "x": "https://x.com/pledis_17",
+      "instagram": "https://www.instagram.com/saythename_17"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@pledis_17",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-f97cc4af",
+      "release_title": "Where love passed",
+      "release_date": "2025-07-14",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Where love passed",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/bc14070e-4c6f-44c9-bf30-ae20b6d44b96",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/bc14070e-4c6f-44c9-bf30-ae20b6d44b96/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/bc14070e-4c6f-44c9-bf30-ae20b6d44b96/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/bc14070e-4c6f-44c9-bf30-ae20b6d44b96",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-f221fd77",
+        "release_title": "HAPPY BURSTDAY",
+        "release_date": "2025-05-26",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "HBD",
+        "spotify_url": "https://open.spotify.com/album/0xlyof8BowaJtYPsxWYmkN",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/72471282-3d58-430a-9495-c778d4748682",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/72471282-3d58-430a-9495-c778d4748682/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/72471282-3d58-430a-9495-c778d4748682/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/72471282-3d58-430a-9495-c778d4748682",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-88dc5495",
+        "release_title": "SPILL THE FEELS",
+        "release_date": "2024-10-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Eyes on you?",
+        "spotify_url": "https://open.spotify.com/album/4xggkS8rdsJL3dgji8zW6W",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/34df5dfe-47d9-4ada-99cc-e4dca9d2d99b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/34df5dfe-47d9-4ada-99cc-e4dca9d2d99b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/34df5dfe-47d9-4ada-99cc-e4dca9d2d99b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/34df5dfe-47d9-4ada-99cc-e4dca9d2d99b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-af6bed38",
+        "release_title": "SEVENTEENTH HEAVEN",
+        "release_date": "2023-10-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "SOS",
+        "spotify_url": "https://open.spotify.com/album/1rE0Gy69MFUh4GuXafWd0f",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/bfdc7f36-4037-46e3-9a28-eb6d304b7309",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/bfdc7f36-4037-46e3-9a28-eb6d304b7309/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/bfdc7f36-4037-46e3-9a28-eb6d304b7309/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/bfdc7f36-4037-46e3-9a28-eb6d304b7309",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-980b6d4b",
+        "release_title": "FML",
+        "release_date": "2023-04-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "F*ck My Life",
+        "spotify_url": "https://open.spotify.com/album/1JBzeeCJ3axQMVkqWbKh0I",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9d50c3e9-805b-441e-b175-18eed31d26dc",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9d50c3e9-805b-441e-b175-18eed31d26dc/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9d50c3e9-805b-441e-b175-18eed31d26dc/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9d50c3e9-805b-441e-b175-18eed31d26dc",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-c821cdd3",
+        "release_title": "DREAM",
+        "release_date": "2022-11-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "DREAM",
+        "spotify_url": "https://open.spotify.com/album/2cXtPWMSKgf55ERnDrzZQb",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9f2de70d-3b12-4eeb-8532-e5cf047dd6f4",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9f2de70d-3b12-4eeb-8532-e5cf047dd6f4/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9f2de70d-3b12-4eeb-8532-e5cf047dd6f4/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9f2de70d-3b12-4eeb-8532-e5cf047dd6f4",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e04b5757",
+        "release_title": "Face the Sun",
+        "release_date": "2022-05-27",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Darl+ing",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ae7bed2f-4297-448b-b632-0ffb44082205",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ae7bed2f-4297-448b-b632-0ffb44082205/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ae7bed2f-4297-448b-b632-0ffb44082205/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ae7bed2f-4297-448b-b632-0ffb44082205",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-bf641562",
+        "release_title": "Attacca",
+        "release_date": "2021-10-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "To You",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e4b54604-6f60-4d54-9125-f2c6db62c30d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e4b54604-6f60-4d54-9125-f2c6db62c30d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e4b54604-6f60-4d54-9125-f2c6db62c30d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e4b54604-6f60-4d54-9125-f2c6db62c30d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-db80b811",
+        "release_title": "Your Choice",
+        "release_date": "2021-06-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Heaven's Cloud",
+        "spotify_url": "https://open.spotify.com/album/79VvXTQNeLr8KmvcdxN0Pc",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/17451423-b577-409c-a0b1-d3dee6c86d1e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/17451423-b577-409c-a0b1-d3dee6c86d1e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/17451423-b577-409c-a0b1-d3dee6c86d1e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/17451423-b577-409c-a0b1-d3dee6c86d1e",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/e04d239e-9fa8-49b3-b9b7-9e439c3cb1d1"
+  }
+}

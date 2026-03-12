@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-nct-127"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "nct-127",
+      "display_name": "NCT 127",
+      "canonical_name": "NCT 127",
+      "agency_name": "SM Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/e8K-7Yu4rcqxSFJwqQrIvwYF14oEgUJ5X510R5rDz8EUe6BC7pPVSA5tG4F1ZTAjXvFl2jMGzg=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/e8K-7Yu4rcqxSFJwqQrIvwYF14oEgUJ5X510R5rDz8EUe6BC7pPVSA5tG4F1ZTAjXvFl2jMGzg=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@NCT127",
+      "x": "https://x.com/NCTsmtown_127",
+      "instagram": "https://www.instagram.com/nct127"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@NCT127",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-02cd439f",
+      "release_title": "WALK",
+      "release_date": "2024-07-15",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "Intro: Wall to Wall",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-02cd439f",
+        "release_title": "WALK",
+        "release_date": "2024-07-15",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Intro: Wall to Wall",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d3351ca5",
+        "release_title": "Fact Check",
+        "release_date": "2023-10-06",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Fact Check (불가사의; 不可思議)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/29def30b-0fda-4c0c-b02f-f7b895959354",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/29def30b-0fda-4c0c-b02f-f7b895959354/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/29def30b-0fda-4c0c-b02f-f7b895959354/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/29def30b-0fda-4c0c-b02f-f7b895959354",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-65c3f2f8",
+        "release_title": "질주 (2 Baddies)",
+        "release_date": "2022-09-16",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "질주 (2 Baddies)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/1a59b1d6-b4a5-485a-b16f-1a496741bb2e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1a59b1d6-b4a5-485a-b16f-1a496741bb2e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1a59b1d6-b4a5-485a-b16f-1a496741bb2e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1a59b1d6-b4a5-485a-b16f-1a496741bb2e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d58739e4",
+        "release_title": "Sticker",
+        "release_date": "2021-09-17",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Sticker",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/cc27c120-a903-48a2-ab67-f2286fdeef9d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/cc27c120-a903-48a2-ab67-f2286fdeef9d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/cc27c120-a903-48a2-ab67-f2286fdeef9d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/cc27c120-a903-48a2-ab67-f2286fdeef9d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5b02a48d",
+        "release_title": "LOVEHOLIC",
+        "release_date": "2021-02-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "gimme gimme",
+        "spotify_url": "https://open.spotify.com/album/3JaPVxuCzsEEyRWP1K1Ya2",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/17247ce0-c2ef-42ea-9e09-bbf83ce87017",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/17247ce0-c2ef-42ea-9e09-bbf83ce87017/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/17247ce0-c2ef-42ea-9e09-bbf83ce87017/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/17247ce0-c2ef-42ea-9e09-bbf83ce87017",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-992e1b94",
+        "release_title": "Neo Zone",
+        "release_date": "2020-03-06",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Interlude: Neo Zone",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/488f80c4-3ee9-48d6-8266-a5e92264d8d5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/488f80c4-3ee9-48d6-8266-a5e92264d8d5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/488f80c4-3ee9-48d6-8266-a5e92264d8d5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/488f80c4-3ee9-48d6-8266-a5e92264d8d5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-25d0b810",
+        "release_title": "WE ARE SUPERHUMAN",
+        "release_date": "2019-04-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "SUPERHUMAN",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5150b157-ea8e-4db7-8bf9-854f3b80ed1a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5150b157-ea8e-4db7-8bf9-854f3b80ed1a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5150b157-ea8e-4db7-8bf9-854f3b80ed1a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5150b157-ea8e-4db7-8bf9-854f3b80ed1a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a7d30b2a",
+        "release_title": "Awaken",
+        "release_date": "2019-04-17",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Lips",
+        "spotify_url": "https://open.spotify.com/album/5ZZi6WiDmPcTkx2Vx7n61Z",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d2fc4ff8-2765-4851-a8cb-8df4fb8d9d5d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d2fc4ff8-2765-4851-a8cb-8df4fb8d9d5d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d2fc4ff8-2765-4851-a8cb-8df4fb8d9d5d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d2fc4ff8-2765-4851-a8cb-8df4fb8d9d5d",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/9d17d14a-e81c-410e-a90b-b02b0a9de6f8"
+  }
+}

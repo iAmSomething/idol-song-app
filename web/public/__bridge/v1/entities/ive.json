@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-ive"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "ive",
+      "display_name": "IVE",
+      "canonical_name": "IVE",
+      "agency_name": "Starship Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/_CyiM1Ob0gRzu4d3Y4-l1vJTyZSRld8OR7oJ9PmtLNdDMtN0koRRs_asLpIEsSGmKAwEKK_CTqs=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/_CyiM1Ob0gRzu4d3Y4-l1vJTyZSRld8OR7oJ9PmtLNdDMtN0koRRs_asLpIEsSGmKAwEKK_CTqs=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@IVEstarship",
+      "x": "https://x.com/IVE_twt",
+      "instagram": "https://www.instagram.com/ivestarship"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@IVEstarship",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-c07ec17b",
+      "release_title": "REVIVE+",
+      "release_date": "2026-02-23",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "BLACKHOLE",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nO8Pcb0tAIwvqIb6on8b1QXJ1VhnHHgdE",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-c07ec17b",
+        "release_title": "REVIVE+",
+        "release_date": "2026-02-23",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "BLACKHOLE",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nO8Pcb0tAIwvqIb6on8b1QXJ1VhnHHgdE",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-38e54002",
+        "release_title": "IVE SECRET",
+        "release_date": "2025-08-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "XOXZ",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/70c49314-31c5-440e-bdbe-b28319ebc546",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/70c49314-31c5-440e-bdbe-b28319ebc546/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/70c49314-31c5-440e-bdbe-b28319ebc546/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/70c49314-31c5-440e-bdbe-b28319ebc546",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-9272b467",
+        "release_title": "Be Alright",
+        "release_date": "2025-07-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Be Alright",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0708670e-6748-4316-85dc-184cf31d6e2d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0708670e-6748-4316-85dc-184cf31d6e2d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0708670e-6748-4316-85dc-184cf31d6e2d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0708670e-6748-4316-85dc-184cf31d6e2d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-106e8202",
+        "release_title": "IVE EMPATHY",
+        "release_date": "2025-02-03",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "REBEL HEART",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/41acc8d9-e4de-4191-a989-7c89faf93758",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/41acc8d9-e4de-4191-a989-7c89faf93758/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/41acc8d9-e4de-4191-a989-7c89faf93758/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/41acc8d9-e4de-4191-a989-7c89faf93758",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0c5d38e5",
+        "release_title": "ALIVE",
+        "release_date": "2024-08-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "CRUSH",
+        "spotify_url": "https://open.spotify.com/album/46uFocwb9yPpQyi7f431Sf",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/66a96064-6d1e-4521-9010-b32d28575879",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/66a96064-6d1e-4521-9010-b32d28575879/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/66a96064-6d1e-4521-9010-b32d28575879/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/66a96064-6d1e-4521-9010-b32d28575879",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0a799b53",
+        "release_title": "IVE SWITCH",
+        "release_date": "2024-04-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "해야 (HEYA)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/fb62df2d-56bb-44c1-accc-c725123286f6",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/fb62df2d-56bb-44c1-accc-c725123286f6/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/fb62df2d-56bb-44c1-accc-c725123286f6/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/fb62df2d-56bb-44c1-accc-c725123286f6",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-ebfb23e0",
+        "release_title": "I’VE MINE",
+        "release_date": "2023-10-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Off the Record",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8fcb93c3-e39c-45fa-87f2-b00e13bf0d24",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8fcb93c3-e39c-45fa-87f2-b00e13bf0d24/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8fcb93c3-e39c-45fa-87f2-b00e13bf0d24/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8fcb93c3-e39c-45fa-87f2-b00e13bf0d24",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-55747615",
+        "release_title": "WAVE",
+        "release_date": "2023-05-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "WAVE",
+        "spotify_url": "https://open.spotify.com/album/5GsSoccwm4oOWG2l50yM8B",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3bc66267-5938-458a-871e-c9b0946c1e33",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3bc66267-5938-458a-871e-c9b0946c1e33/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3bc66267-5938-458a-871e-c9b0946c1e33/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3bc66267-5938-458a-871e-c9b0946c1e33",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/b2f2216a-d7a9-4ce0-8b8f-f494d9a8c196"
+  }
+}

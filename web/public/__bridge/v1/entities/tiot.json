@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-tiot"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "tiot",
+      "display_name": "TIOT",
+      "canonical_name": "TIOT",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@TIOT_NOW",
+      "x": "https://x.com/TIOT_NOW",
+      "instagram": "https://www.instagram.com/tiot_now"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@TIOT_NOW",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-c6161e25",
+      "release_title": "MY PRIDE",
+      "release_date": "2025-09-23",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "MY PRIDE",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mfvCWYWL7GIQxnSAYpBttmP0exDSznA48",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=KvPyf4K3zdo",
+      "source_url": "https://musicbrainz.org/release-group/25a28c0e-f4b4-420c-b80f-bcca8c7d5fc4",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/25a28c0e-f4b4-420c-b80f-bcca8c7d5fc4/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/25a28c0e-f4b4-420c-b80f-bcca8c7d5fc4/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/25a28c0e-f4b4-420c-b80f-bcca8c7d5fc4",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-c6161e25",
+        "release_title": "MY PRIDE",
+        "release_date": "2025-09-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "MY PRIDE",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mfvCWYWL7GIQxnSAYpBttmP0exDSznA48",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=KvPyf4K3zdo",
+        "source_url": "https://musicbrainz.org/release-group/25a28c0e-f4b4-420c-b80f-bcca8c7d5fc4",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/25a28c0e-f4b4-420c-b80f-bcca8c7d5fc4/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/25a28c0e-f4b4-420c-b80f-bcca8c7d5fc4/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/25a28c0e-f4b4-420c-b80f-bcca8c7d5fc4",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-59bdd0f8",
+        "release_title": "FLEX LINE",
+        "release_date": "2025-04-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "FLEX LINE",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/72233d09-8025-4256-8c8c-945d43ceed71",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/72233d09-8025-4256-8c8c-945d43ceed71/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/72233d09-8025-4256-8c8c-945d43ceed71/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/72233d09-8025-4256-8c8c-945d43ceed71",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-be76d028",
+        "release_title": "Kick‐START",
+        "release_date": "2024-04-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Goosebumps",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/23fc086d-680b-456e-9f6d-244e517cbc05",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/23fc086d-680b-456e-9f6d-244e517cbc05/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/23fc086d-680b-456e-9f6d-244e517cbc05/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/23fc086d-680b-456e-9f6d-244e517cbc05",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8fa3bf8c",
+        "release_title": "Frame the Blueprint : Prelude to Possibilities",
+        "release_date": "2023-08-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "This is our time",
+        "spotify_url": "https://open.spotify.com/album/5HvSTx0dsyBNEvu6JGq4wR",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e8ae1324-5402-4a3f-b6c3-2123efc48be9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e8ae1324-5402-4a3f-b6c3-2123efc48be9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e8ae1324-5402-4a3f-b6c3-2123efc48be9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e8ae1324-5402-4a3f-b6c3-2123efc48be9",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/c0113855-feb6-4c2b-b86a-6ec87b310f5d"
+  }
+}

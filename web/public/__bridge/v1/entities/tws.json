@@ -1,0 +1,190 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-tws"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "tws",
+      "display_name": "TWS",
+      "canonical_name": "TWS",
+      "agency_name": "HYBE Labels",
+      "badge_image_url": "https://yt3.googleusercontent.com/1tZiC0UZY3WFchtfc4-7GtwcglB1poRinYmIyaXZ5G_0CqTzyCtocVlVHDkMXDuEiOlwrA-z=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/1tZiC0UZY3WFchtfc4-7GtwcglB1poRinYmIyaXZ5G_0CqTzyCtocVlVHDkMXDuEiOlwrA-z=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@TWS_PLEDIS",
+      "x": "https://x.com/tws_pledis",
+      "instagram": "https://www.instagram.com/tws_pledis"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@TWS_PLEDIS",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "tws",
+      "display_name": "TWS",
+      "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
+      "scheduled_date": null,
+      "scheduled_month": "2026-04",
+      "date_precision": "month_only",
+      "date_status": "scheduled",
+      "confidence_score": 0.58,
+      "release_format": null,
+      "latest_seen_at": "Fri, 06 Mar 2026 06:15:24 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZzJ5VkxoOGhGVS1GUEVVV0dMUnR1RkJHQlBqR2tGOGpWNUh2SXEwUzJ0czNVVHdlb1h3SzBMZnhPNXJHSWdaNlk5ajlOYy1wYTZYNDE2UUJmX3NpXzlhc1BXR0Q4SWR0ZXZqb2xja0lFYzhmQ2FKSS05cWZ0ZEkzZmJzMlFJRmstYVhfcA?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Future month reference: 2026-04. TWS Set for a High-Energy Spring Comeback Confirmed for April OtakuKart",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-847f5cf9",
+      "release_title": "play hard",
+      "release_date": "2025-10-13",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Head Shoulders Knees Toes",
+      "spotify_url": "https://open.spotify.com/album/6RBnUYZIGKGDdgEnf3ta1U",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-847f5cf9",
+        "release_title": "play hard",
+        "release_date": "2025-10-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Head Shoulders Knees Toes",
+        "spotify_url": "https://open.spotify.com/album/6RBnUYZIGKGDdgEnf3ta1U",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-17144e39",
+        "release_title": "TRY WITH US",
+        "release_date": "2025-04-21",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Lucky to be loved",
+        "spotify_url": "https://open.spotify.com/album/5JfdYZ1OTue80fQxp2rE6y",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3e1ec9ef-9f18-434f-98f6-fb767898ee2d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3e1ec9ef-9f18-434f-98f6-fb767898ee2d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3e1ec9ef-9f18-434f-98f6-fb767898ee2d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3e1ec9ef-9f18-434f-98f6-fb767898ee2d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a20dbe54",
+        "release_title": "SUMMER BEAT!",
+        "release_date": "2024-06-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "hey! hey!",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/aa1505a6-34a9-4fa1-ba23-665c6babfcb5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/aa1505a6-34a9-4fa1-ba23-665c6babfcb5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/aa1505a6-34a9-4fa1-ba23-665c6babfcb5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/aa1505a6-34a9-4fa1-ba23-665c6babfcb5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-39dbb4c4",
+        "release_title": "Sparkling Blue",
+        "release_date": "2024-01-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Oh Mymy : 7s",
+        "spotify_url": "https://open.spotify.com/album/25qO1VYd8BuT8m5w8CFpdG",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/24530e74-a5c8-4895-ade9-7c46cb613d81",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/24530e74-a5c8-4895-ade9-7c46cb613d81/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/24530e74-a5c8-4895-ade9-7c46cb613d81/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/24530e74-a5c8-4895-ade9-7c46cb613d81",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
+        "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZzJ5VkxoOGhGVS1GUEVVV0dMUnR1RkJHQlBqR2tGOGpWNUh2SXEwUzJ0czNVVHdlb1h3SzBMZnhPNXJHSWdaNlk5ajlOYy1wYTZYNDE2UUJmX3NpXzlhc1BXR0Q4SWR0ZXZqb2xja0lFYzhmQ2FKSS05cWZ0ZEkzZmJzMlFJRmstYVhfcA?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Fri, 06 Mar 2026 06:15:24 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": null,
+        "confidence_score": 0.58
+      },
+      {
+        "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
+        "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9aMUtzSDlQa2FxSG9TZjNlMF9fcU9PYmE3WE1lUmJFaWhzOW5aaDQ4VVpXZkJxYkNLcEJhSkZCNlZUWFE1?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Fri, 06 Mar 2026 01:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": null,
+        "confidence_score": 0.58
+      },
+      {
+        "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
+        "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPOW9KYnhjSUlXYTZXUDN5MXFtTGdwZklGc3lCd3NuTDJlOTVxd0FTTmhRVzNNejdBdjZDQVRySkJzSzFJT1BwakRaV1hsaF95SWpsczZHNnRicGNCM2ozOHJzOTZUamkwTW9SZExmSEFSYlFvX2g0QmNERW5KUnJNMWlRbE5vRWVXTTVPTW83Yw?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Thu, 05 Mar 2026 19:13:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": null,
+        "confidence_score": 0.58
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/f68e8675-5ad8-47eb-b7ec-da9cc210e0b4"
+  }
+}

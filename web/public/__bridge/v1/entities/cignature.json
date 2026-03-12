@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-cignature"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "cignature",
+      "display_name": "cignature",
+      "canonical_name": "cignature",
+      "agency_name": "J9 Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/30LF8En041JD6CCoCC9Lq-1lz3VdkCetMNwxkXuzRkTPpVEHJ2nycy-MHps8Vo0dygGYedqa=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/30LF8En041JD6CCoCC9Lq-1lz3VdkCetMNwxkXuzRkTPpVEHJ2nycy-MHps8Vo0dygGYedqa=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCaRdmTJgO6w0esJPZUOzXrw",
+      "x": "https://x.com/cignature_J9",
+      "instagram": "https://www.instagram.com/cignature_j9"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCaRdmTJgO6w0esJPZUOzXrw",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-1c2292a4",
+      "release_title": "Sweetie but Saltie",
+      "release_date": "2024-06-10",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "I Like I Like",
+      "spotify_url": "https://open.spotify.com/album/2b1k5XuKhLK0zkCS7B85pY",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/e41355a7-4269-42d2-8e26-bf996f46bb34",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/e41355a7-4269-42d2-8e26-bf996f46bb34/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/e41355a7-4269-42d2-8e26-bf996f46bb34/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/e41355a7-4269-42d2-8e26-bf996f46bb34",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-1c2292a4",
+        "release_title": "Sweetie but Saltie",
+        "release_date": "2024-06-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "I Like I Like",
+        "spotify_url": "https://open.spotify.com/album/2b1k5XuKhLK0zkCS7B85pY",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/e41355a7-4269-42d2-8e26-bf996f46bb34",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/e41355a7-4269-42d2-8e26-bf996f46bb34/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/e41355a7-4269-42d2-8e26-bf996f46bb34/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/e41355a7-4269-42d2-8e26-bf996f46bb34",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a1f496ae",
+        "release_title": "그해 여름의 우리 (Us in the Summer)",
+        "release_date": "2023-08-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "어젯밤 이야기 (Mess With My Mind)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b81dd4b0-c36a-431d-ba69-f502c1d05b77",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b81dd4b0-c36a-431d-ba69-f502c1d05b77/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b81dd4b0-c36a-431d-ba69-f502c1d05b77/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b81dd4b0-c36a-431d-ba69-f502c1d05b77",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cb3ca0d8",
+        "release_title": "My Little Aurora",
+        "release_date": "2023-01-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "AURORA",
+        "spotify_url": "https://open.spotify.com/album/0Bhl5VhnxFho8slGxiBgZK",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/26a11511-faf7-4406-bb9c-56300aa6f303",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/26a11511-faf7-4406-bb9c-56300aa6f303/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/26a11511-faf7-4406-bb9c-56300aa6f303/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/26a11511-faf7-4406-bb9c-56300aa6f303",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4fd12ad9",
+        "release_title": "Dear Diary Moment",
+        "release_date": "2021-11-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "My Diary",
+        "spotify_url": "https://open.spotify.com/album/0aTFAjXc6DQuBiJt3WePb9",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ad13be93-cc27-4b89-b0fc-44d76a59c29d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ad13be93-cc27-4b89-b0fc-44d76a59c29d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ad13be93-cc27-4b89-b0fc-44d76a59c29d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ad13be93-cc27-4b89-b0fc-44d76a59c29d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5b98f571",
+        "release_title": "Listen and Speak",
+        "release_date": "2020-09-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ASSA",
+        "spotify_url": "https://open.spotify.com/album/6aRbtGXk0pqVMiGbjbWnNR",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a353efb8-b200-4ce2-acf0-e75fccac21f6",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a353efb8-b200-4ce2-acf0-e75fccac21f6/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a353efb8-b200-4ce2-acf0-e75fccac21f6/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a353efb8-b200-4ce2-acf0-e75fccac21f6",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/52d7b09c-df89-4215-9955-50bb5f4ba7f3"
+  }
+}

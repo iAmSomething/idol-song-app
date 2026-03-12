@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-kiiikiii"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "kiiikiii",
+      "display_name": "KiiiKiii",
+      "canonical_name": "KiiiKiii",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@We_KiiiKiii",
+      "x": "https://x.com/We_KiiiKiii",
+      "instagram": "https://www.instagram.com/we_kiiikiii"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@We_KiiiKiii",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "kiiikiii",
+      "display_name": "KiiiKiii",
+      "headline": "Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop",
+      "scheduled_date": null,
+      "scheduled_month": null,
+      "date_precision": "unknown",
+      "date_status": "rumor",
+      "confidence_score": 0.56,
+      "release_format": null,
+      "latest_seen_at": "Tue, 27 Jan 2026 08:00:00 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSS11aDk5TGN1WTJJN29mcE5JbTBya1JJUk1YaFZqMFBIRkhuWjZTYkpJZ3kxdzhyYUdGVXUxZWQwY2ZYLXhFZnkwSGN0SFdHV1FuZ0JSNlN6Wm5oX0xhekUzdERieHdmSEJJOGFoSjdNRVFLRHIxWTY1Z0Fpa05VV1FleUljZUZnaDFqdmx3bWJXdUR0ekZ2ZDNUbEMxbWtPN0cxeDNjVFVmWHFoblFxRkpYN2ZVYVVCZnVsNGZubHM?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more allkpop",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-a25411fa",
+      "release_title": "Delulu Pack",
+      "release_date": "2026-01-25",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "404 (New Era)",
+      "spotify_url": "https://open.spotify.com/album/09YZd8EhjQjGDJbc8EUuKq",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_niDXY6ppq697_xZEdJ9B7ltpp9iy5LhoM",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=zhHB4dZTChw",
+      "source_url": "https://musicbrainz.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-a25411fa",
+        "release_title": "Delulu Pack",
+        "release_date": "2026-01-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "404 (New Era)",
+        "spotify_url": "https://open.spotify.com/album/09YZd8EhjQjGDJbc8EUuKq",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_niDXY6ppq697_xZEdJ9B7ltpp9iy5LhoM",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=zhHB4dZTChw",
+        "source_url": "https://musicbrainz.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9abb5e1d-54f9-49cc-b973-d7d561f7c181",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3bc07d70",
+        "release_title": "UNCUT GEM",
+        "release_date": "2025-03-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "I DO ME",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ea9d3f57-401a-4452-89f5-40b391000a42",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ea9d3f57-401a-4452-89f5-40b391000a42/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ea9d3f57-401a-4452-89f5-40b391000a42/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ea9d3f57-401a-4452-89f5-40b391000a42",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop",
+        "source_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSS11aDk5TGN1WTJJN29mcE5JbTBya1JJUk1YaFZqMFBIRkhuWjZTYkpJZ3kxdzhyYUdGVXUxZWQwY2ZYLXhFZnkwSGN0SFdHV1FuZ0JSNlN6Wm5oX0xhekUzdERieHdmSEJJOGFoSjdNRVFLRHIxWTY1Z0Fpa05VV1FleUljZUZnaDFqdmx3bWJXdUR0ekZ2ZDNUbEMxbWtPN0cxeDNjVFVmWHFoblFxRkpYN2ZVYVVCZnVsNGZubHM?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Tue, 27 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.56
+      },
+      {
+        "headline": "\"Like Ive! Onto a Bigger Stage!\" Starship Rookie KiiiKiii Sets Out Their Comeback Ambitions [On-site LIVE] - 매일경제",
+        "source_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9UODlHM01ud0pEM2pqRXVZQVM5YWJnU0FIUGJFT0swbGJ0UWw1dzl0cU40cTFycUtQdWloVWpDY0VKVkRpbU1fc1RzS1hTeEhO?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Mon, 26 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.68
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/bdbc7927-6ff5-4a64-a2dd-9756323008e1"
+  }
+}

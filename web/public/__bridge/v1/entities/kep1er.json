@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-kep1er"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "kep1er",
+      "display_name": "Kep1er",
+      "canonical_name": "Kep1er",
+      "agency_name": "WAKEONE",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@official_kep1er",
+      "x": "https://x.com/official_kep1er",
+      "instagram": "https://www.instagram.com/official.kep1er"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@official_kep1er",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-09d947aa",
+      "release_title": "BUBBLE GUM",
+      "release_date": "2025-08-19",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "BUBBLE GUM",
+      "spotify_url": "https://open.spotify.com/album/3pKcgDJmV3GZwgElcupVrg",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l8YRn3qytjiaPGW33To9luTNVb0_H8SCY",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-09d947aa",
+        "release_title": "BUBBLE GUM",
+        "release_date": "2025-08-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BUBBLE GUM",
+        "spotify_url": "https://open.spotify.com/album/3pKcgDJmV3GZwgElcupVrg",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l8YRn3qytjiaPGW33To9luTNVb0_H8SCY",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-4b193260",
+        "release_title": "AGAINST THE WORLD",
+        "release_date": "2025-04-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Yum",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/90fe9c45-5f45-4a0b-9943-1ed1e2ea2b12",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/90fe9c45-5f45-4a0b-9943-1ed1e2ea2b12/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/90fe9c45-5f45-4a0b-9943-1ed1e2ea2b12/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/90fe9c45-5f45-4a0b-9943-1ed1e2ea2b12",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-96af929a",
+        "release_title": "TIPI‐TAP",
+        "release_date": "2024-11-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "TIPI‐TAP",
+        "spotify_url": "https://open.spotify.com/album/1oHK6dDixDIjnMB03DIeZM",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/1e74edd9-23b4-4c4c-9f76-b8bc76704a0f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1e74edd9-23b4-4c4c-9f76-b8bc76704a0f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1e74edd9-23b4-4c4c-9f76-b8bc76704a0f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1e74edd9-23b4-4c4c-9f76-b8bc76704a0f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a49f60a7",
+        "release_title": "Kep1going On",
+        "release_date": "2024-06-03",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Straight Line (KOR ver.)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/323f00de-fff8-49d2-835a-76e00df1589f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/323f00de-fff8-49d2-835a-76e00df1589f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/323f00de-fff8-49d2-835a-76e00df1589f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/323f00de-fff8-49d2-835a-76e00df1589f",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-89cac526",
+        "release_title": "Kep1going",
+        "release_date": "2024-05-08",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Straight Line",
+        "spotify_url": "https://open.spotify.com/album/7vehBp2yn4AlDZw0SQ8IHf",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mnGJCB4SKUbe8AyYdVia2BDEzoSQQbnlE",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d0457480-f491-4a9a-97a7-920f49b6bd2d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d0457480-f491-4a9a-97a7-920f49b6bd2d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d0457480-f491-4a9a-97a7-920f49b6bd2d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d0457480-f491-4a9a-97a7-920f49b6bd2d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-db81bc50",
+        "release_title": "Magic Hour",
+        "release_date": "2023-09-25",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Galileo",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6cb88e14-7aed-4868-a9d2-f13c35d430e4",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6cb88e14-7aed-4868-a9d2-f13c35d430e4/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6cb88e14-7aed-4868-a9d2-f13c35d430e4/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6cb88e14-7aed-4868-a9d2-f13c35d430e4",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-640540b5",
+        "release_title": "LOVESTRUCK!",
+        "release_date": "2023-04-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Giddy",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4c301340-7a92-44b9-ae62-d5a24e349e69",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4c301340-7a92-44b9-ae62-d5a24e349e69/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4c301340-7a92-44b9-ae62-d5a24e349e69/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4c301340-7a92-44b9-ae62-d5a24e349e69",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-192100f2",
+        "release_title": "TROUBLESHOOTER",
+        "release_date": "2022-10-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "We Fresh",
+        "spotify_url": "https://open.spotify.com/album/2PbytQbw3uuEMECdw46ya7",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9106cacf-893d-4f70-b958-58ccb5256e19",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9106cacf-893d-4f70-b958-58ccb5256e19/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9106cacf-893d-4f70-b958-58ccb5256e19/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9106cacf-893d-4f70-b958-58ccb5256e19",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/187da628-d21a-4e0f-a93c-456c97a2c032"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-babymonster"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "babymonster",
+      "display_name": "BABYMONSTER",
+      "canonical_name": "BABYMONSTER",
+      "agency_name": "YG Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/guzIoEyd9IyKWaD7Jfnlp1rD7k9SiEOV7go0ItyJ3O9V-j8ez6Jvs4Yj3LfrCu3Z7rFcdIqYLTI=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/guzIoEyd9IyKWaD7Jfnlp1rD7k9SiEOV7go0ItyJ3O9V-j8ez6Jvs4Yj3LfrCu3Z7rFcdIqYLTI=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@YGBABYMONSTER_",
+      "x": "https://x.com/YGBABYMONSTER_",
+      "instagram": "https://www.instagram.com/babymonster_ygofficial"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@YGBABYMONSTER_",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "babymonster",
+      "display_name": "BABYMONSTER",
+      "headline": "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing",
+      "scheduled_date": null,
+      "scheduled_month": null,
+      "date_precision": "unknown",
+      "date_status": "rumor",
+      "confidence_score": 0.64,
+      "release_format": null,
+      "latest_seen_at": "Wed, 04 Mar 2026 00:00:00 GMT",
+      "source_type": "agency_notice",
+      "source_url": "https://www.ygfamily.com/en/news/report/7389",
+      "source_domain": "www.ygfamily.com",
+      "evidence_summary": "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing YG has raised the expectations among global music fans...",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-249e9350",
+      "release_title": "WE GO UP",
+      "release_date": "2025-10-10",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "WE GO UP",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_ki16_Lh3p19WqZ8SgTPuGd3Vl96qmbBfE",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=wlHwjkYpSr0",
+      "source_url": "https://musicbrainz.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-249e9350",
+        "release_title": "WE GO UP",
+        "release_date": "2025-10-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "WE GO UP",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_ki16_Lh3p19WqZ8SgTPuGd3Vl96qmbBfE",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=wlHwjkYpSr0",
+        "source_url": "https://musicbrainz.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3e8e5cf8",
+        "release_title": "DRIP",
+        "release_date": "2024-11-01",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "DRIP",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/1c32aabf-e8f7-430c-b515-ca6580125577",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1c32aabf-e8f7-430c-b515-ca6580125577/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1c32aabf-e8f7-430c-b515-ca6580125577/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1c32aabf-e8f7-430c-b515-ca6580125577",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-353288d8",
+        "release_title": "BABYMONS7ER",
+        "release_date": "2024-04-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Stuck in the Middle (7 ver.)",
+        "spotify_url": "https://open.spotify.com/album/0eSbsl3j8jz96LC2NCLPc4",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f7fccca7-508f-4a0b-97b5-78fba2d0c508",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f7fccca7-508f-4a0b-97b5-78fba2d0c508/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f7fccca7-508f-4a0b-97b5-78fba2d0c508/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f7fccca7-508f-4a0b-97b5-78fba2d0c508",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "YG to Launch First New Boy Group in 6 Years Since TREASURE… Rookie Girl Group Project Also in Full Swing",
+        "source_url": "https://www.ygfamily.com/en/news/report/7389",
+        "source_type": "agency_notice",
+        "source_domain": "www.ygfamily.com",
+        "published_at": "Wed, 04 Mar 2026 00:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.64
+      },
+      {
+        "headline": "YG Entertainment confirms BABYMONSTER World Tour & BIGBANG's Global - bandwagon.asia",
+        "source_url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOZWI5YWpSUmd6bk1rYS1VM1o3bXU4aFNhaTRfLUhvYjBKSUN5S1ZSc0NPalNBZVlMaDI0UE9EVVktaWlPZ0RHWEd1SFN4MVcwM1IzaEY2VkpxcUViUDZEQVFaV3BSbmFHbXhmejZFTXpLQ2hMV3BzS1Foc0ZoNHdJZ0xkaGJnZXZYczNrY3d2b3dJb2EzNVROZy1DRlIyUFBPTU9UU2FKVTlvVVV5cTIyRjZfdl9WSFNCWXo2dUwzQzE5ZnluSGQ5X29BVGRZZXZVTUE4N1U3a29nQQ?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Wed, 04 Mar 2026 04:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.56
+      },
+      {
+        "headline": "BIGBANG Returns for 20th Anniversary… Global Tour with YG confirmed",
+        "source_url": "https://www.ygfamily.com/en/news/report/7385",
+        "source_type": "agency_notice",
+        "source_domain": "www.ygfamily.com",
+        "published_at": "Wed, 04 Mar 2026 00:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.64
+      },
+      {
+        "headline": "BABYMONSTER’s B-Side Track From Two Years Ago Makes a Reverse Chart Run… Reappears on ‘M Countdown’ → Live Clip Released",
+        "source_url": "https://www.ygfamily.com/en/news/report/7372",
+        "source_type": "agency_notice",
+        "source_domain": "www.ygfamily.com",
+        "published_at": "Tue, 03 Feb 2026 00:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": "single",
+        "confidence_score": 0.7
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/5829cd4f-e693-4b03-abe5-1226243c23d6"
+  }
+}

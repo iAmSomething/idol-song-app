@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-wayv"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "wayv",
+      "display_name": "WayV",
+      "canonical_name": "WayV",
+      "agency_name": "SM Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/4D3N23DJRKZdbyoiZresEmQLayrWyad-3DGKhK3rO0_7IrUVDv3zh-MF0uZEAIB-ee7UKAK6k8c=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/4D3N23DJRKZdbyoiZresEmQLayrWyad-3DGKhK3rO0_7IrUVDv3zh-MF0uZEAIB-ee7UKAK6k8c=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@WayV_official",
+      "x": "https://x.com/WayV_official",
+      "instagram": "https://www.instagram.com/wayvofficial"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@WayV_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": null,
+    "recent_albums": [],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/2f51b986-6358-462a-83fd-372d501a86d1"
+  }
+}

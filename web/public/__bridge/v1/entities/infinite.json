@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-infinite"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "infinite",
+      "display_name": "INFINITE",
+      "canonical_name": "INFINITE",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/LJoGTgVSlHOmc9gC1qULrAGl0q0YYBv2UD77ck2g4M_dS7_RSS4oW_T9dL9C59oHrk2PnhA_Fw=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/LJoGTgVSlHOmc9gC1qULrAGl0q0YYBv2UD77ck2g4M_dS7_RSS4oW_T9dL9C59oHrk2PnhA_Fw=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCdzXSux7OnRD1Cml-DQ416Q",
+      "x": "https://x.com/INFINITE_UM",
+      "instagram": "https://www.instagram.com/official_ifnt_"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCdzXSux7OnRD1Cml-DQ416Q",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-b5de2e65",
+      "release_title": "LIKE INFINITE",
+      "release_date": "2025-03-06",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Heat It Up",
+      "spotify_url": "https://open.spotify.com/album/4na98IiEj4lAFQS3NKQ5qk",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-b5de2e65",
+        "release_title": "LIKE INFINITE",
+        "release_date": "2025-03-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Heat It Up",
+        "spotify_url": "https://open.spotify.com/album/4na98IiEj4lAFQS3NKQ5qk",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d250de2d",
+        "release_title": "13egin",
+        "release_date": "2023-07-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : 13",
+        "spotify_url": "https://open.spotify.com/album/7niD2tsuMKHMXBx5TEyF2W",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7b9f38b5-5c83-46b2-84a9-52adddd3128d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7b9f38b5-5c83-46b2-84a9-52adddd3128d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7b9f38b5-5c83-46b2-84a9-52adddd3128d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7b9f38b5-5c83-46b2-84a9-52adddd3128d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d4553edc",
+        "release_title": "TOP SEED",
+        "release_date": "2018-01-08",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Begin",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2d0884ba-f6b2-4c02-a450-68cc7e49e5ca",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2d0884ba-f6b2-4c02-a450-68cc7e49e5ca/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2d0884ba-f6b2-4c02-a450-68cc7e49e5ca/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2d0884ba-f6b2-4c02-a450-68cc7e49e5ca",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-ccb4f357",
+        "release_title": "Air",
+        "release_date": "2017-05-24",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Air (Japanese version)",
+        "spotify_url": "https://open.spotify.com/album/2Cvm4brxkj1BmITpihJ0RM",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/27f7dafc-358a-420b-8158-99193d1f44e0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/27f7dafc-358a-420b-8158-99193d1f44e0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/27f7dafc-358a-420b-8158-99193d1f44e0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/27f7dafc-358a-420b-8158-99193d1f44e0",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-97193cf4",
+        "release_title": "INFINITE ONLY",
+        "release_date": "2016-09-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Eternity",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/bee20cb6-8619-4b6c-b7d5-6e2a38987435",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/bee20cb6-8619-4b6c-b7d5-6e2a38987435/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/bee20cb6-8619-4b6c-b7d5-6e2a38987435/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/bee20cb6-8619-4b6c-b7d5-6e2a38987435",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-30c79d26",
+        "release_title": "For You",
+        "release_date": "2015-12-16",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "For You - Japanese Ver.-",
+        "spotify_url": "https://open.spotify.com/album/3nnMbY0TjqB8kRv9XWb69P",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/32ff1ddc-8af0-48bc-8e6a-d25ef3c6a66a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/32ff1ddc-8af0-48bc-8e6a-d25ef3c6a66a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/32ff1ddc-8af0-48bc-8e6a-d25ef3c6a66a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/32ff1ddc-8af0-48bc-8e6a-d25ef3c6a66a",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-da8b96a5",
+        "release_title": "Reality",
+        "release_date": "2015-07-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Betting",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/735abc6f-617c-4196-bb63-9fafa7b0369c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/735abc6f-617c-4196-bb63-9fafa7b0369c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/735abc6f-617c-4196-bb63-9fafa7b0369c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/735abc6f-617c-4196-bb63-9fafa7b0369c",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-efbb8026",
+        "release_title": "Be Back (2 (리패키지))",
+        "release_date": "2014-07-22",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Back",
+        "spotify_url": "https://open.spotify.com/album/11VsfJuRkz2A47xDgT203V",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2341778f-9f81-47a1-992a-79fc5f542b3a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2341778f-9f81-47a1-992a-79fc5f542b3a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2341778f-9f81-47a1-992a-79fc5f542b3a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2341778f-9f81-47a1-992a-79fc5f542b3a",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/c175f8b3-47f8-46d4-a4cf-cb92fe7a37ae"
+  }
+}

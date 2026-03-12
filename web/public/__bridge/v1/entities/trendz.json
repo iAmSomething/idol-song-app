@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-trendz"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "trendz",
+      "display_name": "TRENDZ",
+      "canonical_name": "TRENDZ",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/pvDIiMTgeRWSFoz0HnPBUKFJoEGe-bFLg88-ZrcN_snZ_PW5fXgzMTFhCl4E9imUVceO5gLLbA=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/pvDIiMTgeRWSFoz0HnPBUKFJoEGe-bFLg88-ZrcN_snZ_PW5fXgzMTFhCl4E9imUVceO5gLLbA=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@TRENDZ_OFFCL",
+      "x": "https://x.com/trendz_offcl",
+      "instagram": "https://www.instagram.com/trendz_offcl"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@TRENDZ_OFFCL",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-53140236",
+      "release_title": "Kart Racer",
+      "release_date": "2026-02-13",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Kart Racer",
+      "spotify_url": "https://open.spotify.com/album/1p3Mq5paEBsbHmv1DT55Kx",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/d44c9809-e64b-4038-8993-a0ff75f67986",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/d44c9809-e64b-4038-8993-a0ff75f67986/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/d44c9809-e64b-4038-8993-a0ff75f67986/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/d44c9809-e64b-4038-8993-a0ff75f67986",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-c6e21467",
+        "release_title": "CANVAS",
+        "release_date": "2025-04-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BAD ENOUGH",
+        "spotify_url": "https://open.spotify.com/album/4GiBoD70ZczHOSTG8POWkW",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6663c562-9c1d-42b7-86ed-235685683332",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6663c562-9c1d-42b7-86ed-235685683332/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6663c562-9c1d-42b7-86ed-235685683332/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6663c562-9c1d-42b7-86ed-235685683332",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-874db480",
+        "release_title": "REBIRTH",
+        "release_date": "2024-07-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "REBIRTH",
+        "spotify_url": "https://open.spotify.com/album/3c8T5hoHfAv938hHCLaWdB",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/53811042-fb0c-4f83-ad2b-766a0c113042",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/53811042-fb0c-4f83-ad2b-766a0c113042/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/53811042-fb0c-4f83-ad2b-766a0c113042/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/53811042-fb0c-4f83-ad2b-766a0c113042",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-0926dae4",
+        "release_title": "DREAMLIKE",
+        "release_date": "2024-06-12",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Glow",
+        "spotify_url": "https://open.spotify.com/album/6SEZODcAqs3POcivEfRJiX",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b08bf3fb-66fa-4b60-b5f7-5d0e3351d431",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b08bf3fb-66fa-4b60-b5f7-5d0e3351d431/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b08bf3fb-66fa-4b60-b5f7-5d0e3351d431/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b08bf3fb-66fa-4b60-b5f7-5d0e3351d431",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-400c3a11",
+        "release_title": "BLUE SET Chapter 2. CHOICE",
+        "release_date": "2022-06-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Awake",
+        "spotify_url": "https://open.spotify.com/album/4GLRJegCJ1llD62K5wUHK4",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/43b21864-349c-4b76-ba14-2badda1be2f8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/43b21864-349c-4b76-ba14-2badda1be2f8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/43b21864-349c-4b76-ba14-2badda1be2f8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/43b21864-349c-4b76-ba14-2badda1be2f8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6a6fcd8f",
+        "release_title": "BLUE SET Chapter 1. TRACKS",
+        "release_date": "2022-01-05",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Villain",
+        "spotify_url": "https://open.spotify.com/album/2ZgUNU6gmCxWtEdHNWjtDw",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c427e0bf-45b3-41b1-9c71-ae0a5bb6b865",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c427e0bf-45b3-41b1-9c71-ae0a5bb6b865/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c427e0bf-45b3-41b1-9c71-ae0a5bb6b865/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c427e0bf-45b3-41b1-9c71-ae0a5bb6b865",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/3d612dbf-32fc-4198-a2d0-2d04a99a6adf"
+  }
+}

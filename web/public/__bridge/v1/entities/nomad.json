@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-nomad"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "nomad",
+      "display_name": "NOMAD",
+      "canonical_name": "NOMAD",
+      "agency_name": null,
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@nomad_is_here",
+      "x": "https://x.com/nomad_is_here",
+      "instagram": "https://www.instagram.com/nomadaish88"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@nomad_is_here",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-510da650",
+      "release_title": "NOMAD",
+      "release_date": "2024-02-28",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "No pressure",
+      "spotify_url": "https://open.spotify.com/album/6oDqu99whUrfzlBj5du4WV",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/fa09f6e8-26b0-499c-b9a9-89dbacba1dc8",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/fa09f6e8-26b0-499c-b9a9-89dbacba1dc8/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/fa09f6e8-26b0-499c-b9a9-89dbacba1dc8/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/fa09f6e8-26b0-499c-b9a9-89dbacba1dc8",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-510da650",
+        "release_title": "NOMAD",
+        "release_date": "2024-02-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "No pressure",
+        "spotify_url": "https://open.spotify.com/album/6oDqu99whUrfzlBj5du4WV",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/fa09f6e8-26b0-499c-b9a9-89dbacba1dc8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/fa09f6e8-26b0-499c-b9a9-89dbacba1dc8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/fa09f6e8-26b0-499c-b9a9-89dbacba1dc8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/fa09f6e8-26b0-499c-b9a9-89dbacba1dc8",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/cc2e5d30-48d4-49ca-865d-c426444557ac"
+  }
+}

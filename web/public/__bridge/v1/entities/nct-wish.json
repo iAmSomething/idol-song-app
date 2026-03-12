@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-nct-wish"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "nct-wish",
+      "display_name": "NCT WISH",
+      "canonical_name": "NCT WISH",
+      "agency_name": "SM Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@NCTWISH",
+      "x": "https://x.com/nctwishofficial",
+      "instagram": "https://www.instagram.com/nctwish_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@NCTWISH",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-353dc8fa",
+      "release_title": "Same Sky",
+      "release_date": "2026-02-27",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Same Sky",
+      "spotify_url": "https://open.spotify.com/album/5w10bOkr3HsPSp0nl1R0ff",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-942632d1",
+        "release_title": "WISHLIST",
+        "release_date": "2026-01-14",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Dreamcatcher",
+        "spotify_url": "https://open.spotify.com/album/0AbenVXd5ypXotWe1z0ytw",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kgqZHEZo8MitXcPTMyxI-qZIK6MRPDysQ",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/aa6bead7-4507-41db-8d27-0a8a46d5db75",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/aa6bead7-4507-41db-8d27-0a8a46d5db75/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/aa6bead7-4507-41db-8d27-0a8a46d5db75/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/aa6bead7-4507-41db-8d27-0a8a46d5db75",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d8a014be",
+        "release_title": "COLOR",
+        "release_date": "2025-09-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "COLOR",
+        "spotify_url": "https://open.spotify.com/album/1tNgwDohccU3bCwaylqOQ0",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/843e2a5d-38da-46d0-9f50-36866a8452f6",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/843e2a5d-38da-46d0-9f50-36866a8452f6/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/843e2a5d-38da-46d0-9f50-36866a8452f6/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/843e2a5d-38da-46d0-9f50-36866a8452f6",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6f357489",
+        "release_title": "WISHFUL",
+        "release_date": "2024-11-27",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Songbird - Japanese Ver.",
+        "spotify_url": "https://open.spotify.com/album/3JSUHAskqOwtOnMLO21kd3",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7cdb5888-acea-4178-9cee-022db9fcec76",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7cdb5888-acea-4178-9cee-022db9fcec76/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7cdb5888-acea-4178-9cee-022db9fcec76/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7cdb5888-acea-4178-9cee-022db9fcec76",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6460ddc9",
+        "release_title": "Steady",
+        "release_date": "2024-09-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Steady",
+        "spotify_url": "https://open.spotify.com/album/3fWEp6LTn7hHD4w3Oo4hvF",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6ddfc06e-3ab0-49f5-99aa-e6cbec6d6a3f",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6ddfc06e-3ab0-49f5-99aa-e6cbec6d6a3f/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6ddfc06e-3ab0-49f5-99aa-e6cbec6d6a3f/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6ddfc06e-3ab0-49f5-99aa-e6cbec6d6a3f",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/fb175979-152f-4f32-bf8b-08aa86c24fe3"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-riize"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "riize",
+      "display_name": "RIIZE",
+      "canonical_name": "RIIZE",
+      "agency_name": "SM Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/W_0y6cSRgfBNVuen8N-dlCjyUl0ty5bTSJwob0IMb9L2P-9PKhTBRDS6-_tdqlvY2mLKVHX9=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/W_0y6cSRgfBNVuen8N-dlCjyUl0ty5bTSJwob0IMb9L2P-9PKhTBRDS6-_tdqlvY2mLKVHX9=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@RIIZE_official",
+      "x": "https://x.com/riize_official",
+      "instagram": "https://www.instagram.com/riize_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@RIIZE_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-545188dd",
+      "release_title": "All of You",
+      "release_date": "2026-02-09",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "All of You",
+      "spotify_url": "https://open.spotify.com/album/2BOIZjVSfiQDntgqzE94PI",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=yfKBI5l81-A",
+      "source_url": "https://musicbrainz.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-c207723e",
+        "release_title": "RIIZE의 앨범 소개: ODYSSEY",
+        "release_date": "2025-05-26",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "RIIZE의 앨범 소개: ODYSSEY",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0c7a578d-c98c-4cfa-94e9-23cf777af824",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0c7a578d-c98c-4cfa-94e9-23cf777af824/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0c7a578d-c98c-4cfa-94e9-23cf777af824/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0c7a578d-c98c-4cfa-94e9-23cf777af824",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-943c49e5",
+        "release_title": "ODYSSEY",
+        "release_date": "2025-05-19",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Odyssey",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/298cb91f-3c2d-4644-9c93-fa0b35017f37",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/298cb91f-3c2d-4644-9c93-fa0b35017f37/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/298cb91f-3c2d-4644-9c93-fa0b35017f37/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/298cb91f-3c2d-4644-9c93-fa0b35017f37",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-68319277",
+        "release_title": "RIIZING",
+        "release_date": "2024-04-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Siren",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8d2f6c2e-e190-4842-b75f-6ddb41fbf8ad",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8d2f6c2e-e190-4842-b75f-6ddb41fbf8ad/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8d2f6c2e-e190-4842-b75f-6ddb41fbf8ad/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8d2f6c2e-e190-4842-b75f-6ddb41fbf8ad",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/f3eaa943-71b3-44b6-8b66-74c787742aae"
+  }
+}

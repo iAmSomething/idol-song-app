@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-red-velvet"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "red-velvet",
+      "display_name": "Red Velvet",
+      "canonical_name": "Red Velvet",
+      "agency_name": "SM Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/8-pUU8kJ1sXmDY9OVaglW5UO-t9vmnOt9SKZd0OvEEpULpOUhhcOvgoTaOgZVi-H7FukRNL2Zg=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/8-pUU8kJ1sXmDY9OVaglW5UO-t9vmnOt9SKZd0OvEEpULpOUhhcOvgoTaOgZVi-H7FukRNL2Zg=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@redvelvet.smtown",
+      "x": "https://x.com/RVsmtown",
+      "instagram": "https://www.instagram.com/redvelvet.smtown"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@redvelvet.smtown",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "watch_only"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-c90e2901",
+      "release_title": "Cosmic",
+      "release_date": "2024-06-24",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Cosmic",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/3e814b4e-71d6-4481-891a-dd92dc7ef092",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/3e814b4e-71d6-4481-891a-dd92dc7ef092/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/3e814b4e-71d6-4481-891a-dd92dc7ef092/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/3e814b4e-71d6-4481-891a-dd92dc7ef092",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-c90e2901",
+        "release_title": "Cosmic",
+        "release_date": "2024-06-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Cosmic",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3e814b4e-71d6-4481-891a-dd92dc7ef092",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3e814b4e-71d6-4481-891a-dd92dc7ef092/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3e814b4e-71d6-4481-891a-dd92dc7ef092/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3e814b4e-71d6-4481-891a-dd92dc7ef092",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-493cf364",
+        "release_title": "Chill Kill",
+        "release_date": "2023-11-13",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Chill Kill",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/aa1822c8-9756-4424-a247-f7e314013e04",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/aa1822c8-9756-4424-a247-f7e314013e04/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/aa1822c8-9756-4424-a247-f7e314013e04/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/aa1822c8-9756-4424-a247-f7e314013e04",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8c35bc41",
+        "release_title": "‘The ReVe Festival 2022 - Birthday’",
+        "release_date": "2022-11-28",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Birthday",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/80e9e468-64a4-4279-a41b-9993f42cb991",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/80e9e468-64a4-4279-a41b-9993f42cb991/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/80e9e468-64a4-4279-a41b-9993f42cb991/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/80e9e468-64a4-4279-a41b-9993f42cb991",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cde5a81e",
+        "release_title": "Bloom",
+        "release_date": "2022-04-06",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Marionette",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/93f17502-53e9-4e7b-abd7-17357c33cd78",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/93f17502-53e9-4e7b-abd7-17357c33cd78/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/93f17502-53e9-4e7b-abd7-17357c33cd78/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/93f17502-53e9-4e7b-abd7-17357c33cd78",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-fe5abfd0",
+        "release_title": "‘The ReVe Festival 2022 - Feel My Rhythm’",
+        "release_date": "2022-03-21",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Feel My Rhythm",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3bd63485-7481-41d4-9454-cd0690ecfb22",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3bd63485-7481-41d4-9454-cd0690ecfb22/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3bd63485-7481-41d4-9454-cd0690ecfb22/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3bd63485-7481-41d4-9454-cd0690ecfb22",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a864cd79",
+        "release_title": "Queendom",
+        "release_date": "2021-08-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Queendom",
+        "spotify_url": "https://open.spotify.com/album/6Pe5LGQgU3mmvuRjFMsACV",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/61af6d71-b4ba-4d70-940e-747cbc04dd8d",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/61af6d71-b4ba-4d70-940e-747cbc04dd8d/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/61af6d71-b4ba-4d70-940e-747cbc04dd8d/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/61af6d71-b4ba-4d70-940e-747cbc04dd8d",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5eaa2787",
+        "release_title": "‘The ReVe Festival’ Day 2",
+        "release_date": "2019-08-20",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Umpah Umpah",
+        "spotify_url": "https://open.spotify.com/album/3DXz6ItR9DzIw9S0h3Cxfc",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/73d8c312-1a89-4e39-b16a-1cdea1127343",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/73d8c312-1a89-4e39-b16a-1cdea1127343/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/73d8c312-1a89-4e39-b16a-1cdea1127343/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/73d8c312-1a89-4e39-b16a-1cdea1127343",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a4b7cd1a",
+        "release_title": "‘The ReVe Festival’ Day 1",
+        "release_date": "2019-06-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Zimzalabim",
+        "spotify_url": "https://open.spotify.com/album/2nLEiP268mSFZHW5dajM4R",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/1ab93541-7983-446a-bab8-f4fc66ec6a27",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/1ab93541-7983-446a-bab8-f4fc66ec6a27/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/1ab93541-7983-446a-bab8-f4fc66ec6a27/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/1ab93541-7983-446a-bab8-f4fc66ec6a27",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/4f0cb3b7-6c06-4317-ae35-ddf3106a17ee"
+  }
+}

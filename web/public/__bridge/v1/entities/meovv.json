@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-meovv"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "meovv",
+      "display_name": "MEOVV",
+      "canonical_name": "MEOVV",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/EGc4207D8JJEMC3jn_SIV_wRRbB2k4wMpuS8FvLgXUs3s8ICMRmTHh8-VdntYLqkcqaDdB3ibg=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/EGc4207D8JJEMC3jn_SIV_wRRbB2k4wMpuS8FvLgXUs3s8ICMRmTHh8-VdntYLqkcqaDdB3ibg=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@official_meovv",
+      "x": "https://x.com/OFFICIAL_MEOVV",
+      "instagram": "https://www.instagram.com/meovv"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@official_meovv",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-133a9652",
+      "release_title": "BURNING UP",
+      "release_date": "2025-10-14",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "BURNING UP",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-1495c76e",
+        "release_title": "MY EYES OPEN VVIDE",
+        "release_date": "2025-05-12",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "HANDS UP",
+        "spotify_url": "https://open.spotify.com/album/4n3pIffNB5CVVBmfhATTo8",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/f2435d8b-8a29-453d-9d7e-03c61c4b6fc4"
+  }
+}

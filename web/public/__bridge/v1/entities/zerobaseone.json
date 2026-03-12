@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-zerobaseone"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "zerobaseone",
+      "display_name": "ZEROBASEONE",
+      "canonical_name": "ZEROBASEONE",
+      "agency_name": "WAKEONE",
+      "badge_image_url": "https://yt3.googleusercontent.com/_ZYPa-Cy7H63Xybby-5Os-EiJTU4OdZK_thtkDyql1mSGBdbPhFPKHW6-gHwFdjhdH69PTHk=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/_ZYPa-Cy7H63Xybby-5Os-EiJTU4OdZK_thtkDyql1mSGBdbPhFPKHW6-gHwFdjhdH69PTHk=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@ZB1_official",
+      "x": "https://x.com/ZB1_official",
+      "instagram": "https://www.instagram.com/zb1official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@ZB1_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "zerobaseone",
+      "display_name": "ZEROBASEONE",
+      "headline": "ZEROBASEONE Drops Track Poster for ‘Running To Future’ Ahead of Comeback - K-en News",
+      "scheduled_date": null,
+      "scheduled_month": null,
+      "date_precision": "unknown",
+      "date_status": "rumor",
+      "confidence_score": 0.68,
+      "release_format": "single",
+      "latest_seen_at": "Tue, 06 Jan 2026 08:00:00 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9BeUhpZUhiSnN5QkdyX0s2WG83X0htbHdlNkl3UXdYcmlDbHA2eUNOQjhoeUFHWDN0R2E3YUhjejRtdkk2NUFjVHUzYnhwWm5mOHRob3RKZGZCMnVSZXVkdlk3T2pvVmQ4QWfSAW5BVV95cUxOMmFwRWhrTkE3QS1ORkR2X01fVHdTU0I1dU1fMmxMTlpiRFFENnVOMnBSRHJjdEQ2dDAxV2pKY3dSb2NHdF9jSEN6ZW51SW8wV1hEU191WXBIZ1BwdXZEQWg4S0lpai1aNV9Gbi1RZw?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "ZEROBASEONE Drops Track Poster for ‘Running To Future’ Ahead of Comeback K-en News",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-db7de0d5",
+      "release_title": "RE-FLOW",
+      "release_date": "2026-02-02",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Running to Future",
+      "spotify_url": "https://open.spotify.com/album/2IhQYBuoaZmcXRQJqwFGQg",
+      "youtube_music_url": null,
+      "youtube_mv_url": "https://www.youtube.com/watch?v=v5_GoNFr5wc",
+      "source_url": "https://musicbrainz.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-db7de0d5",
+        "release_title": "RE-FLOW",
+        "release_date": "2026-02-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Running to Future",
+        "spotify_url": "https://open.spotify.com/album/2IhQYBuoaZmcXRQJqwFGQg",
+        "youtube_music_url": null,
+        "youtube_mv_url": "https://www.youtube.com/watch?v=v5_GoNFr5wc",
+        "source_url": "https://musicbrainz.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cce7ed05",
+        "release_title": "NEVER SAY NEVER",
+        "release_date": "2025-09-01",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "SLAM DUNK",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/141eea1a-4486-428b-9013-d4ee83c0a671",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/141eea1a-4486-428b-9013-d4ee83c0a671/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/141eea1a-4486-428b-9013-d4ee83c0a671/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/141eea1a-4486-428b-9013-d4ee83c0a671",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f18e73cd",
+        "release_title": "BLUE PARADISE",
+        "release_date": "2025-02-24",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "BLUE",
+        "spotify_url": "https://open.spotify.com/album/2aYKVVYN7aTK3HMMyQiVam",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a185a099-d59b-4fb2-9255-d993f86cd1b0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a185a099-d59b-4fb2-9255-d993f86cd1b0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a185a099-d59b-4fb2-9255-d993f86cd1b0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a185a099-d59b-4fb2-9255-d993f86cd1b0",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6d788acc",
+        "release_title": "PREZENT",
+        "release_date": "2025-01-29",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Only One Story",
+        "spotify_url": "https://open.spotify.com/album/2W4coh0YmTpCovcdoyxmGd",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8274ed24-2d2f-4bdf-b183-ceccd5b9d98b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8274ed24-2d2f-4bdf-b183-ceccd5b9d98b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8274ed24-2d2f-4bdf-b183-ceccd5b9d98b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8274ed24-2d2f-4bdf-b183-ceccd5b9d98b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a48dab4b",
+        "release_title": "CINEMA PARADISE",
+        "release_date": "2024-08-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "GOOD SO BAD",
+        "spotify_url": "https://open.spotify.com/prerelease/3Y5LTS2RwyKvEgVSZ3EekX",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3a019a65-64e4-4c85-8c7f-071a9455f703",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3a019a65-64e4-4c85-8c7f-071a9455f703/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3a019a65-64e4-4c85-8c7f-071a9455f703/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3a019a65-64e4-4c85-8c7f-071a9455f703",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-24b30b43",
+        "release_title": "You had me at HELLO",
+        "release_date": "2024-05-13",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "HELLO",
+        "spotify_url": "https://open.spotify.com/album/1f7EBZExZ8wFWgacxTLDdM",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mwlIqeLOnh71x22ZQU954pXpcPLW2U3c0",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/96381f53-ffbe-462c-991c-89b5ed1265f2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/96381f53-ffbe-462c-991c-89b5ed1265f2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/96381f53-ffbe-462c-991c-89b5ed1265f2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/96381f53-ffbe-462c-991c-89b5ed1265f2",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-67a83934",
+        "release_title": "MELTING POINT",
+        "release_date": "2023-11-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "MELTING POINT",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2cc41c2a-209d-482c-b464-4d91b6913541",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2cc41c2a-209d-482c-b464-4d91b6913541/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2cc41c2a-209d-482c-b464-4d91b6913541/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2cc41c2a-209d-482c-b464-4d91b6913541",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-cbfd9db6",
+        "release_title": "YOUTH IN THE SHADE",
+        "release_date": "2023-07-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Back to ZEROBASE",
+        "spotify_url": "https://open.spotify.com/album/7fV7RChHagCcKRnAaDRXuX",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/011bd598-d711-42d1-9f23-0ca2ec5ea59a",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/011bd598-d711-42d1-9f23-0ca2ec5ea59a/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/011bd598-d711-42d1-9f23-0ca2ec5ea59a/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/011bd598-d711-42d1-9f23-0ca2ec5ea59a",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "ZEROBASEONE Drops Track Poster for ‘Running To Future’ Ahead of Comeback - K-en News",
+        "source_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9BeUhpZUhiSnN5QkdyX0s2WG83X0htbHdlNkl3UXdYcmlDbHA2eUNOQjhoeUFHWDN0R2E3YUhjejRtdkk2NUFjVHUzYnhwWm5mOHRob3RKZGZCMnVSZXVkdlk3T2pvVmQ4QWfSAW5BVV95cUxOMmFwRWhrTkE3QS1ORkR2X01fVHdTU0I1dU1fMmxMTlpiRFFENnVOMnBSRHJjdEQ2dDAxV2pKY3dSb2NHdF9jSEN6ZW51SW8wV1hEU191WXBIZ1BwdXZEQWg4S0lpai1aNV9Gbi1RZw?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Tue, 06 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": "single",
+        "confidence_score": 0.68
+      },
+      {
+        "headline": "ZEROBASEONE Announces New Chapter as Five-Member Group - hellokpop",
+        "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQcTl0VDFsQ3RudzB3N3hoU1h6MGVicUFKbEoxSHhzbjlENUptREdZNlhZbVd3UGI0UGNKUElEZE1mTU04ZEFTRXZjeC02TEh1SjBFR3ZIcC1OQjl5ZERZRnJibW16eUxwUXFoY2dqU05sbm85ZHd1dEdORG1vclVIZXA2YXN2T2JtcG9zUTJCdw?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Thu, 12 Feb 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.56
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/fe038151-1099-4de8-901b-39be66d6e493"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-onewe"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "onewe",
+      "display_name": "ONEWE",
+      "canonical_name": "ONEWE",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/Wh9AAzEZZSS2Nq15i8MRoW-5zChrA_CFVDPN_yoZdlQvclg81yW9IBZ8eeWq5fVplTvLOR2oYOE=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/Wh9AAzEZZSS2Nq15i8MRoW-5zChrA_CFVDPN_yoZdlQvclg81yW9IBZ8eeWq5fVplTvLOR2oYOE=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+      "x": "https://x.com/official_onewe",
+      "instagram": "https://www.instagram.com/official_onewe"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-c29063bc",
+      "release_title": "MAZE : AD ASTRA",
+      "release_date": "2025-10-07",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "MAZE",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lWqLPlxJLMnYXeuhba-DKq1WnxY_BnVPc",
+      "youtube_mv_url": "https://www.youtube.com/watch?v=9LPigw3hDAo",
+      "source_url": "https://musicbrainz.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-c29063bc",
+        "release_title": "MAZE : AD ASTRA",
+        "release_date": "2025-10-07",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "MAZE",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lWqLPlxJLMnYXeuhba-DKq1WnxY_BnVPc",
+        "youtube_mv_url": "https://www.youtube.com/watch?v=9LPigw3hDAo",
+        "source_url": "https://musicbrainz.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-48082be2",
+        "release_title": "WE : Dream Chaser",
+        "release_date": "2025-03-05",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Alice",
+        "spotify_url": "https://open.spotify.com/album/0gWM4TwSrL4t3fj4V9dfKb",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/af6e4bd5-1be7-46fa-a6c2-9594cd865b41",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/af6e4bd5-1be7-46fa-a6c2-9594cd865b41/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/af6e4bd5-1be7-46fa-a6c2-9594cd865b41/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/af6e4bd5-1be7-46fa-a6c2-9594cd865b41",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-7d4ac2d1",
+        "release_title": "Planet Nine : ISOTROPY",
+        "release_date": "2024-04-17",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Beautiful Ashes",
+        "spotify_url": "https://open.spotify.com/album/7gwFXZUmeGXQhMimYtujWN",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/3f13b43e-5e87-4e67-b206-9192e9070e10",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/3f13b43e-5e87-4e67-b206-9192e9070e10/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/3f13b43e-5e87-4e67-b206-9192e9070e10/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/3f13b43e-5e87-4e67-b206-9192e9070e10",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a30ae886",
+        "release_title": "GRAVITY",
+        "release_date": "2023-01-28",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "GRAVITY",
+        "spotify_url": "https://open.spotify.com/album/1Rqrzkqe56mPHfdEbF3rXt",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/61019f47-14d0-43b2-85ef-86c38293d860",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/61019f47-14d0-43b2-85ef-86c38293d860/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/61019f47-14d0-43b2-85ef-86c38293d860/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/61019f47-14d0-43b2-85ef-86c38293d860",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-d3f50952",
+        "release_title": "Studio We : Recording #3",
+        "release_date": "2022-10-04",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "기어이 또 (Still Here)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/52a2ff21-e17e-40a6-88ae-9d023f03e8df",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/52a2ff21-e17e-40a6-88ae-9d023f03e8df/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/52a2ff21-e17e-40a6-88ae-9d023f03e8df/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/52a2ff21-e17e-40a6-88ae-9d023f03e8df",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6878e1f8",
+        "release_title": "Planet Nine : VOYAGER",
+        "release_date": "2022-01-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Universe_",
+        "spotify_url": "https://open.spotify.com/album/2mM97mU3Xh4IvV51Dwq8Ky",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/857eef17-68a7-442a-a0fb-78ce0402ce4e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/857eef17-68a7-442a-a0fb-78ce0402ce4e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/857eef17-68a7-442a-a0fb-78ce0402ce4e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/857eef17-68a7-442a-a0fb-78ce0402ce4e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-98ae4b8e",
+        "release_title": "Studio We : Recording #2",
+        "release_date": "2021-11-23",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "별 (Star)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7f30fd24-6ac8-40e4-ab21-a80a2bc620dc",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7f30fd24-6ac8-40e4-ab21-a80a2bc620dc/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7f30fd24-6ac8-40e4-ab21-a80a2bc620dc/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7f30fd24-6ac8-40e4-ab21-a80a2bc620dc",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3a136dc3",
+        "release_title": "Planet Nine : Alter Ego",
+        "release_date": "2021-06-16",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : Spaceship",
+        "spotify_url": "https://open.spotify.com/album/4vGyxBRf0DK6Jhq0DyL87O",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/db90c1d3-dfe4-497f-812b-e72b07f30a2e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/db90c1d3-dfe4-497f-812b-e72b07f30a2e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/db90c1d3-dfe4-497f-812b-e72b07f30a2e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/db90c1d3-dfe4-497f-812b-e72b07f30a2e",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/720f9030-9b10-4cfa-9a1b-16f80c774cc9"
+  }
+}

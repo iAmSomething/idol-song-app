@@ -1,0 +1,296 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-tomorrow-x-together"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "tomorrow-x-together",
+      "display_name": "TOMORROW X TOGETHER",
+      "canonical_name": "TOMORROW X TOGETHER",
+      "agency_name": "HYBE Labels",
+      "badge_image_url": "https://yt3.googleusercontent.com/RRRNWsQbSqBaW8YB750AZo2Ad3f_YnRVDV5BFn54PrxM606rxcHLICm1rs_6EsxlC_4w9JN23Q=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/RRRNWsQbSqBaW8YB750AZo2Ad3f_YnRVDV5BFn54PrxM606rxcHLICm1rs_6EsxlC_4w9JN23Q=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@txt_members",
+      "x": "https://x.com/TXT_members",
+      "instagram": "https://www.instagram.com/txt_bighit"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@txt_members",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "tomorrow-x-together",
+      "display_name": "TOMORROW X TOGETHER",
+      "headline": "Tomorrow X Together Announces First Comeback Post-Contract Renewal - 조선일보",
+      "scheduled_date": null,
+      "scheduled_month": null,
+      "date_precision": "unknown",
+      "date_status": "rumor",
+      "confidence_score": 0.68,
+      "release_format": null,
+      "latest_seen_at": "Wed, 04 Mar 2026 03:54:19 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNWGFmZF91c1E3MVNJTTI4dDlxc1VfeDNHOWZGMUVXWHlMSl9VZVQ4QXN5NExtUTRRNXlqLTY0T3ZjUldKXzR2ZHRFVkRmaFZOUG9SSlJ5b1RwRVpUMkp6WHluc3Y1d01KcnkxaXdVVXhfM3Z6V0NQRV9uS040NHFZcGlLV2JkRG40dThtODNB?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Tomorrow X Together Announces First Comeback Post-Contract Renewal 조선일보",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-f57f5dd6",
+      "release_title": "Starkissed",
+      "release_date": "2025-10-19",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "Step by Step",
+      "spotify_url": "https://open.spotify.com/album/6iPNWX9dibeWPMaVuhRKEw",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3UOq52gI30GZD8VmY_2IvLCWdOtltHuE",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/f7ce84d1-8d9e-4674-98e5-8987db78cb86",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/f7ce84d1-8d9e-4674-98e5-8987db78cb86/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/f7ce84d1-8d9e-4674-98e5-8987db78cb86/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/f7ce84d1-8d9e-4674-98e5-8987db78cb86",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-f57f5dd6",
+        "release_title": "Starkissed",
+        "release_date": "2025-10-19",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Step by Step",
+        "spotify_url": "https://open.spotify.com/album/6iPNWX9dibeWPMaVuhRKEw",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3UOq52gI30GZD8VmY_2IvLCWdOtltHuE",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/f7ce84d1-8d9e-4674-98e5-8987db78cb86",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/f7ce84d1-8d9e-4674-98e5-8987db78cb86/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/f7ce84d1-8d9e-4674-98e5-8987db78cb86/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/f7ce84d1-8d9e-4674-98e5-8987db78cb86",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-6d297ac6",
+        "release_title": "The Star Chapter: TOGETHER",
+        "release_date": "2025-07-21",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Upside Down Kiss",
+        "spotify_url": "https://open.spotify.com/album/1FwFdMp4ewxTlLSudNzlyG",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/8faa462f-3e01-447d-959b-5c2fbd09b1f2",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/8faa462f-3e01-447d-959b-5c2fbd09b1f2/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/8faa462f-3e01-447d-959b-5c2fbd09b1f2/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/8faa462f-3e01-447d-959b-5c2fbd09b1f2",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-29414a1d",
+        "release_title": "The Star Chapter: SANCTUARY (Expanded Edition)",
+        "release_date": "2024-11-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Heaven",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/61f5fa7e-d7a8-4962-bf6e-978b328b86b9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/61f5fa7e-d7a8-4962-bf6e-978b328b86b9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/61f5fa7e-d7a8-4962-bf6e-978b328b86b9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/61f5fa7e-d7a8-4962-bf6e-978b328b86b9",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3c8a1a4b",
+        "release_title": "The Star Chapter: SANCTUARY",
+        "release_date": "2024-11-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Heaven",
+        "spotify_url": "https://open.spotify.com/album/72JboNccBYyXR676YNfcYE",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/be8683f5-ddc3-473f-b461-ee0a88b4d9dd",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/be8683f5-ddc3-473f-b461-ee0a88b4d9dd/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/be8683f5-ddc3-473f-b461-ee0a88b4d9dd/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/be8683f5-ddc3-473f-b461-ee0a88b4d9dd",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b4039b72",
+        "release_title": "minisode 3: TOMORROW",
+        "release_date": "2024-04-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "I’ll See You There Tomorrow",
+        "spotify_url": "https://open.spotify.com/album/0mDwrOXZHN1lgCNeBvkBbj",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/87f6f671-8219-4043-b5c1-7cc3bb0d36d9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/87f6f671-8219-4043-b5c1-7cc3bb0d36d9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/87f6f671-8219-4043-b5c1-7cc3bb0d36d9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/87f6f671-8219-4043-b5c1-7cc3bb0d36d9",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-1202f3d5",
+        "release_title": "The Name Chapter: FREEFALL",
+        "release_date": "2023-10-13",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Back For More (TXT ver.)",
+        "spotify_url": "https://open.spotify.com/album/63fWdGyeBj8VDjvHSUROx3",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/9161a528-0c6b-470c-80e8-c7e9689d743b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/9161a528-0c6b-470c-80e8-c7e9689d743b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/9161a528-0c6b-470c-80e8-c7e9689d743b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/9161a528-0c6b-470c-80e8-c7e9689d743b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-46a57f51",
+        "release_title": "Back For More (More Edition)",
+        "release_date": "2023-09-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Back for More",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ea33aab3-29b0-4764-85f6-3d89340d7e65",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ea33aab3-29b0-4764-85f6-3d89340d7e65/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ea33aab3-29b0-4764-85f6-3d89340d7e65/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ea33aab3-29b0-4764-85f6-3d89340d7e65",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-e6d09ece",
+        "release_title": "SWEET",
+        "release_date": "2023-07-05",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Intro : FLOATING",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0bc7bae8-9a59-4654-875e-9ef31821894e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0bc7bae8-9a59-4654-875e-9ef31821894e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0bc7bae8-9a59-4654-875e-9ef31821894e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0bc7bae8-9a59-4654-875e-9ef31821894e",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "Tomorrow X Together Announces First Comeback Post-Contract Renewal - 조선일보",
+        "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNWGFmZF91c1E3MVNJTTI4dDlxc1VfeDNHOWZGMUVXWHlMSl9VZVQ4QXN5NExtUTRRNXlqLTY0T3ZjUldKXzR2ZHRFVkRmaFZOUG9SSlJ5b1RwRVpUMkp6WHluc3Y1d01KcnkxaXdVVXhfM3Z6V0NQRV9uS040NHFZcGlLV2JkRG40dThtODNB?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Wed, 04 Mar 2026 03:54:19 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.68
+      },
+      {
+        "headline": "TOMORROW X TOGETHER Announces Comeback Showcase for New Chapter with MOA - DIPE.CO.KR",
+        "source_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE5KUm5nQ2VtaTFneExxWHB5bDVXMjZfdVBNYk52UnlzV09QNzlmTmV3N3NoRmpJd2pzcl9OOHEycVB5cGhG?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Thu, 05 Mar 2026 06:01:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": null,
+        "confidence_score": 0.68
+      },
+      {
+        "headline": "TOMORROW X TOGETHER mark comeback after contract renewal with April 13 showcase in Korea - CHOSUNBIZ - Chosunbiz",
+        "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQMW1kOGc0dXpHVzNhZ0JlOGhoZ3FFRV9rQi1PZjREZXNnd241eVF2aUVRWEMzTTYxbnE2ZHY5UU9nTzM3N3pLVGlpbVVDbTVxT0xkVHRXdHdjb3J0dFVmNElGNGxGNUpRZTd1aWVLMHJ0OWNMSkZPZjEzQTJXb0l1amduREhydEZv0gGcAUFVX3lxTE1KaW1xUnVEQnNBMTlGb19XcmZKX1FFZ1F2TVhvYnBzZS1hM1o4WFZsZF9LR1dNWTctNTJEblhaZVpWQ2NZM0wwcjNoNVRfRkFxbk5MbHRBZEkzZ0pEalBNNWtScHpkN0YtSnFmeWNwUE9pb2dETmpPV3Z2emYtMmFGLTgtQ0czbi1GS2hINU5HN196cXRVLW5KdTRPRg?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Wed, 04 Mar 2026 03:29:00 GMT",
+        "scheduled_date": "2026-04-13",
+        "scheduled_month": "2026-04",
+        "date_precision": "exact",
+        "date_status": "scheduled",
+        "release_format": null,
+        "confidence_score": 0.64
+      },
+      {
+        "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
+        "source_url": "https://weverse.io/txt/notice/34002",
+        "source_type": "weverse_notice",
+        "source_domain": "weverse.io",
+        "published_at": null,
+        "scheduled_date": "2026-04-13",
+        "scheduled_month": "2026-04",
+        "date_precision": "exact",
+        "date_status": "confirmed",
+        "release_format": null,
+        "confidence_score": 0.84
+      },
+      {
+        "headline": "TOMORROW X TOGETHER made their first comeback after renewing their contract..8th mini album released on April 13th - starnewskorea.com",
+        "source_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE11U0FzM2s2dXpCcHhqME5ZMVdCSlB2MjJKT21JS0p0dmhocmxhcXI4UlVDdGRBRXJQTmZiS1NLV2VCdlNYVFBhQzdoa0RvRVRYcnV1RWtEa2JZTVR4VERGdVRZSWRQaFlJSHZWUG10NHBDSW9oMXMtQg?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Sun, 01 Mar 2026 22:39:13 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-04",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": "ep",
+        "confidence_score": 0.58
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/9d027d72-790e-40ec-bbb7-61aa613457de"
+  }
+}

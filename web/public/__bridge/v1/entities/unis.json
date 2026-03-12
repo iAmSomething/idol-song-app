@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-unis"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "unis",
+      "display_name": "UNIS",
+      "canonical_name": "UNIS",
+      "agency_name": null,
+      "badge_image_url": "https://yt3.googleusercontent.com/hHBWqpC3udEDwHa0Z6tT5Qq0k5fTPJ6ow08zJpmk4womarCfE8YroBY0uCvJTozNtcc2nRah=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/hHBWqpC3udEDwHa0Z6tT5Qq0k5fTPJ6ow08zJpmk4womarCfE8YroBY0uCvJTozNtcc2nRah=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@UNIS_Offcl",
+      "x": "https://x.com/UNIS_offcl",
+      "instagram": "https://www.instagram.com/unis_offcl"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@UNIS_Offcl",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-10a28b1a",
+      "release_title": "幸せになんかならないでね",
+      "release_date": "2025-12-17",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "幸せになんかならないでね",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/6c4f751d-053e-4d6e-970c-24bd12985f3b",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/6c4f751d-053e-4d6e-970c-24bd12985f3b/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/6c4f751d-053e-4d6e-970c-24bd12985f3b/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/6c4f751d-053e-4d6e-970c-24bd12985f3b",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-7686147f",
+        "release_title": "SWICY",
+        "release_date": "2025-04-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "SWICY",
+        "spotify_url": "https://open.spotify.com/album/3S4N457QDAQonUfQU2ACj9",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a3898809-d9b0-46b8-b307-7977a7df4f8b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a3898809-d9b0-46b8-b307-7977a7df4f8b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a3898809-d9b0-46b8-b307-7977a7df4f8b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a3898809-d9b0-46b8-b307-7977a7df4f8b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-40f1bdc6",
+        "release_title": "WE UNIS",
+        "release_date": "2024-03-27",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "SUPERWOMAN",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4a0d860d-f2ac-41e0-bf0d-7ea7eecc0341",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4a0d860d-f2ac-41e0-bf0d-7ea7eecc0341/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4a0d860d-f2ac-41e0-bf0d-7ea7eecc0341/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4a0d860d-f2ac-41e0-bf0d-7ea7eecc0341",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/ddea2b8e-f772-4c39-ab90-e1983b74a149"
+  }
+}

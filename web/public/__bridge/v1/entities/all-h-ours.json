@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-all-h-ours"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "all-h-ours",
+      "display_name": "ALL(H)OURS",
+      "canonical_name": "ALL(H)OURS",
+      "agency_name": "EDEN Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@ALL_H_OURS",
+      "x": "https://x.com/ALL_H_OURS",
+      "instagram": "https://www.instagram.com/all_h_ours"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@ALL_H_OURS",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "all-h-ours",
+      "display_name": "ALL(H)OURS",
+      "headline": "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop",
+      "scheduled_date": null,
+      "scheduled_month": "2026-03",
+      "date_precision": "month_only",
+      "date_status": "scheduled",
+      "confidence_score": 0.76,
+      "release_format": "ep",
+      "latest_seen_at": "Tue, 24 Feb 2026 17:04:01 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOSE5EeC1kOFlYeXdfbjBKQkpEejdVY0xacGVqYjJmc3JLNFhIUVN1SEVhQWNXellSRnZxX2RGMGZ1N0ZPaXVuZm9XaVZhRk1tb2lQMndGUjJGQ3lxMGVkTTdHdnZVcWZKWlF5NTJjcXJaZjVRUkxVRWhLSlQ3NGFsSk5PSHNiNTZDMlctZ2RxTlV2WjQ?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Future month reference: 2026-03. ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ hellokpop",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-57727b83",
+      "release_title": "VCF",
+      "release_date": "2025-09-09",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "VCF",
+      "spotify_url": "https://open.spotify.com/album/3mNJ0XCdr6TbY3TPN0k0tn",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mJBwjYFfSF9-YOrEnw0sKqCC1GHL4-of8",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-57727b83",
+        "release_title": "VCF",
+        "release_date": "2025-09-09",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "VCF",
+        "spotify_url": "https://open.spotify.com/album/3mNJ0XCdr6TbY3TPN0k0tn",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mJBwjYFfSF9-YOrEnw0sKqCC1GHL4-of8",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-453c81f3",
+        "release_title": "Smoke Point",
+        "release_date": "2025-02-04",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Smoke Point",
+        "spotify_url": "https://open.spotify.com/album/77YEnm5uEUWW3SL8KiO2Jk",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/496a593f-97ed-421c-b5bd-a6b2290d7349",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/496a593f-97ed-421c-b5bd-a6b2290d7349/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/496a593f-97ed-421c-b5bd-a6b2290d7349/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/496a593f-97ed-421c-b5bd-a6b2290d7349",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-66453253",
+        "release_title": "WITNESS",
+        "release_date": "2024-07-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "WITNESS",
+        "spotify_url": "https://open.spotify.com/album/5Jx6O54pZxFGlMaeO25FWt",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6141405a-5a9f-4d72-9089-cf24aaeb3827",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6141405a-5a9f-4d72-9089-cf24aaeb3827/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6141405a-5a9f-4d72-9089-cf24aaeb3827/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6141405a-5a9f-4d72-9089-cf24aaeb3827",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-886a3597",
+        "release_title": "ALL OURS",
+        "release_date": "2024-01-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "ALL OURS",
+        "spotify_url": "https://open.spotify.com/album/0YMO8e9YT76Dz4HQxW4gQn",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/c555fb21-d518-461b-8fdf-00fed53f258c",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/c555fb21-d518-461b-8fdf-00fed53f258c/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/c555fb21-d518-461b-8fdf-00fed53f258c/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/c555fb21-d518-461b-8fdf-00fed53f258c",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop",
+        "source_url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOSE5EeC1kOFlYeXdfbjBKQkpEejdVY0xacGVqYjJmc3JLNFhIUVN1SEVhQWNXellSRnZxX2RGMGZ1N0ZPaXVuZm9XaVZhRk1tb2lQMndGUjJGQ3lxMGVkTTdHdnZVcWZKWlF5NTJjcXJaZjVRUkxVRWhLSlQ3NGFsSk5PSHNiNTZDMlctZ2RxTlV2WjQ?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Tue, 24 Feb 2026 17:04:01 GMT",
+        "scheduled_date": null,
+        "scheduled_month": "2026-03",
+        "date_precision": "month_only",
+        "date_status": "scheduled",
+        "release_format": "ep",
+        "confidence_score": 0.76
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/ce06dad7-098e-467c-a875-1e6525b29c02"
+  }
+}

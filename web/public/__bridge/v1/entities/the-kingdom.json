@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-the-kingdom"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "the-kingdom",
+      "display_name": "The KingDom",
+      "canonical_name": "The KingDom",
+      "agency_name": "GF Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@gf_entertainment",
+      "x": "https://x.com/TheKingDom_GF",
+      "instagram": "https://www.instagram.com/kingdom_gfent"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@gf_entertainment",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-d749394a",
+      "release_title": "the flower of the moon",
+      "release_date": "2025-09-23",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Last Flower",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lmAdIKzD4R2257L9YPwCZtXYSR3NGJa7s",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/326d8498-e340-4cad-a02f-5ea369e6ec49",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/326d8498-e340-4cad-a02f-5ea369e6ec49/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/326d8498-e340-4cad-a02f-5ea369e6ec49/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/326d8498-e340-4cad-a02f-5ea369e6ec49",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-d749394a",
+        "release_title": "the flower of the moon",
+        "release_date": "2025-09-23",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Last Flower",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lmAdIKzD4R2257L9YPwCZtXYSR3NGJa7s",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/326d8498-e340-4cad-a02f-5ea369e6ec49",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/326d8498-e340-4cad-a02f-5ea369e6ec49/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/326d8498-e340-4cad-a02f-5ea369e6ec49/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/326d8498-e340-4cad-a02f-5ea369e6ec49",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-75bdffe3",
+        "release_title": "REALIZE",
+        "release_date": "2024-04-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Flip that Coin",
+        "spotify_url": "https://open.spotify.com/album/6v7iksfXRkSLYljK0u7ejT",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/0939f9e5-1969-47b2-8d9d-d277a4a2f0e3",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/0939f9e5-1969-47b2-8d9d-d277a4a2f0e3/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/0939f9e5-1969-47b2-8d9d-d277a4a2f0e3/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/0939f9e5-1969-47b2-8d9d-d277a4a2f0e3",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-073fcc5d",
+        "release_title": "History Of Kingdom: Pt. VII. JAHAN",
+        "release_date": "2023-10-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "INTRO: APOCALYPSE",
+        "spotify_url": "https://open.spotify.com/album/73wDhd3LnOIhvkYkuVeebF",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/73495b62-40e3-42f8-9161-63f8f71837ac",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/73495b62-40e3-42f8-9161-63f8f71837ac/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/73495b62-40e3-42f8-9161-63f8f71837ac/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/73495b62-40e3-42f8-9161-63f8f71837ac",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-ea04c6ed",
+        "release_title": "History Of Kingdom: Pt. Ⅵ. Mujin",
+        "release_date": "2023-03-23",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Intro: Stigma",
+        "spotify_url": "https://open.spotify.com/album/5MtxPx9oyiXDH6x5r646Go",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/2b392826-a015-478c-ac72-e76ceec14fea",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/2b392826-a015-478c-ac72-e76ceec14fea/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/2b392826-a015-478c-ac72-e76ceec14fea/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/2b392826-a015-478c-ac72-e76ceec14fea",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-64b9cb8d",
+        "release_title": "History Of Kingdom : PartⅤ. Louis",
+        "release_date": "2022-10-05",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : Requiem",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/324e1324-4f4b-4253-b98a-9daf0f9087fa",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/324e1324-4f4b-4253-b98a-9daf0f9087fa/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/324e1324-4f4b-4253-b98a-9daf0f9087fa/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/324e1324-4f4b-4253-b98a-9daf0f9087fa",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-20a90025",
+        "release_title": "History of Kingdom, Part Ⅳ: Dann",
+        "release_date": "2022-03-21",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : 宫 (Palace)",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a23f2db4-faa2-47c9-9625-596202858812",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a23f2db4-faa2-47c9-9625-596202858812/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a23f2db4-faa2-47c9-9625-596202858812/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a23f2db4-faa2-47c9-9625-596202858812",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-193a3502",
+        "release_title": "History Of Kingdom : Part Ⅲ. Ivan",
+        "release_date": "2021-10-21",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : Legacy of Hatred",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/b19230bd-243a-430f-98e7-efd3a76ab99b",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/b19230bd-243a-430f-98e7-efd3a76ab99b/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/b19230bd-243a-430f-98e7-efd3a76ab99b/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/b19230bd-243a-430f-98e7-efd3a76ab99b",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f0c7d54b",
+        "release_title": "History of Kingdom, Part II: Chiwoo",
+        "release_date": "2021-07-01",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro: Echoes of Nirvana",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/23da0ece-c32e-411c-93a0-1719a78a2ca0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/23da0ece-c32e-411c-93a0-1719a78a2ca0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/23da0ece-c32e-411c-93a0-1719a78a2ca0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/23da0ece-c32e-411c-93a0-1719a78a2ca0",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/aa6844e7-42a8-425b-bd67-3b3a8b43b9ec"
+  }
+}

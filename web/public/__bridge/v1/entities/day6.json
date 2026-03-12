@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-day6"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "day6",
+      "display_name": "DAY6",
+      "canonical_name": "DAY6",
+      "agency_name": "JYP Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/V1pNQjnS31WUTRZUMKaiJwajsN68Bie_SAiAepR4h5HHNk9Sw91uJm6ubXYS6OC5nZd5rDBt1dE=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/V1pNQjnS31WUTRZUMKaiJwajsN68Bie_SAiAepR4h5HHNk9Sw91uJm6ubXYS6OC5nZd5rDBt1dE=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@DAY6Official",
+      "x": "https://x.com/day6official",
+      "instagram": "https://www.instagram.com/day6kilogram"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@DAY6Official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "core",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-83a150d6",
+      "release_title": "The DECADE",
+      "release_date": "2025-09-05",
+      "stream": "album",
+      "release_kind": "album",
+      "release_format": "album",
+      "representative_song_title": "꿈의 버스",
+      "spotify_url": null,
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_llmEuUBbQC0ecOvO88e98YZ7j-P3-PbTI",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-83a150d6",
+        "release_title": "The DECADE",
+        "release_date": "2025-09-05",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "꿈의 버스",
+        "spotify_url": null,
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_llmEuUBbQC0ecOvO88e98YZ7j-P3-PbTI",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/213758ae-0a4a-452a-867f-5b65b4dcfc08",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-b4715f50",
+        "release_title": "Band Aid",
+        "release_date": "2024-09-02",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "괴물",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/587245fe-82ab-4daf-8eba-8b26022d1858",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/587245fe-82ab-4daf-8eba-8b26022d1858/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/587245fe-82ab-4daf-8eba-8b26022d1858/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/587245fe-82ab-4daf-8eba-8b26022d1858",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f524841c",
+        "release_title": "Psycho, Loveholic [THE SEASONS: Red Carpet with Lee Hyo Ri]",
+        "release_date": "2024-03-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Psycho",
+        "spotify_url": "https://open.spotify.com/album/09TIE1YIl3sDA5uuPcIBqe",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ce7a0e4d-5e44-4d7f-8a1d-18c8ffe57a10",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ce7a0e4d-5e44-4d7f-8a1d-18c8ffe57a10/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ce7a0e4d-5e44-4d7f-8a1d-18c8ffe57a10/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ce7a0e4d-5e44-4d7f-8a1d-18c8ffe57a10",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-f0dd7924",
+        "release_title": "Fourever",
+        "release_date": "2024-03-18",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Welcome to the Show",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ce22b7e6-71fb-4de5-9a53-e550d512b51e",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ce22b7e6-71fb-4de5-9a53-e550d512b51e/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ce22b7e6-71fb-4de5-9a53-e550d512b51e/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ce22b7e6-71fb-4de5-9a53-e550d512b51e",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-3d2e6490",
+        "release_title": "The Book of Us : Negentropy - Chaos swallowed up in love",
+        "release_date": "2021-04-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "everyday we fight",
+        "spotify_url": "https://open.spotify.com/album/5ZQuMOStcP5jMmGiI1Slmj",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/66a053b9-80dc-4233-a13c-8bcf30a35ad0",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/66a053b9-80dc-4233-a13c-8bcf30a35ad0/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/66a053b9-80dc-4233-a13c-8bcf30a35ad0/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/66a053b9-80dc-4233-a13c-8bcf30a35ad0",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-bd9f5480",
+        "release_title": "The Book of Us : The Demon",
+        "release_date": "2020-05-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Day and Night",
+        "spotify_url": "https://open.spotify.com/album/6nLZ4KhjJSdxag9cDIFHhJ",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/6c48aff1-e09a-4c39-9fe4-2fac7cf8d090",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/6c48aff1-e09a-4c39-9fe4-2fac7cf8d090/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/6c48aff1-e09a-4c39-9fe4-2fac7cf8d090/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/6c48aff1-e09a-4c39-9fe4-2fac7cf8d090",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-1cb1b3f3",
+        "release_title": "The Book of Us : Entropy",
+        "release_date": "2019-10-22",
+        "stream": "album",
+        "release_kind": "album",
+        "release_format": "album",
+        "representative_song_title": "Deep in love",
+        "spotify_url": "https://open.spotify.com/album/3k0QCw6Cpvq6hIEXUf6qAr",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/ba656433-e2bb-4217-9506-444f9dca8ae8",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/ba656433-e2bb-4217-9506-444f9dca8ae8/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/ba656433-e2bb-4217-9506-444f9dca8ae8/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/ba656433-e2bb-4217-9506-444f9dca8ae8",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-8e7a5368",
+        "release_title": "The Book of Us : Gravity",
+        "release_date": "2019-07-15",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "For me",
+        "spotify_url": "https://open.spotify.com/album/3gTiTx97I9WtlvWOLnPETW",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/42887e1e-b20e-4f47-afae-c761ef840e08",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/42887e1e-b20e-4f47-afae-c761ef840e08/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/42887e1e-b20e-4f47-afae-c761ef840e08/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/42887e1e-b20e-4f47-afae-c761ef840e08",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/77191d5f-1045-4b3b-ad7f-12ea398db929"
+  }
+}

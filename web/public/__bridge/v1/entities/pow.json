@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-pow"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "pow",
+      "display_name": "POW",
+      "canonical_name": "POW",
+      "agency_name": "GRID Entertainment",
+      "badge_image_url": null,
+      "representative_image_url": null
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@POW_Official",
+      "x": "https://x.com/POW_grid",
+      "instagram": "https://www.instagram.com/pow_grid"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@POW_Official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": {
+      "upcoming_signal_id": null,
+      "entity_slug": "pow",
+      "display_name": "POW",
+      "headline": "Rookie Group POW Drops Debut Single 'COME TRUE' Today! - K-en News",
+      "scheduled_date": null,
+      "scheduled_month": null,
+      "date_precision": "unknown",
+      "date_status": "rumor",
+      "confidence_score": 0.68,
+      "release_format": "single",
+      "latest_seen_at": "Wed, 28 Jan 2026 08:00:00 GMT",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBXaHZpbGJjckUyLXlnczdSN2lfZXBlQWhoZ096enJ4U19ELTVuQmpnRDVNSTJ6YlNjVTE1dHZVWFlRSmhJbGNrQnpCVENuWkdOX1JNTDJMOS1kYUExbUpGNDQtWkxpcGUxT1HSAW5BVV95cUxOek9wUHFGWlRFV2pxNENEdWpXU3IyWXlJTzM5VE10Q3RUWW5kejB1YmdSanM3NEdVRDAybWdKQ0JZNndZaUdxN1ZYTGxXQXY0WkNMNWpkbWxKUmJHeU1FelhqTk0ybFhmMFU4cDJyUQ?oc=5",
+      "source_domain": "news.google.com",
+      "evidence_summary": "Rookie Group POW Drops Debut Single 'COME TRUE' Today! K-en News",
+      "source_count": null
+    },
+    "latest_release": {
+      "release_id": "bridge-release-7c6328a1",
+      "release_title": "Wall Flowers",
+      "release_date": "2025-09-29",
+      "stream": "song",
+      "release_kind": "single",
+      "release_format": "single",
+      "representative_song_title": "Wall Flowers",
+      "spotify_url": null,
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/a77ad515-51b9-4bef-a0dc-786a8b55f783",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/a77ad515-51b9-4bef-a0dc-786a8b55f783/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/a77ad515-51b9-4bef-a0dc-786a8b55f783/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/a77ad515-51b9-4bef-a0dc-786a8b55f783",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-db3e39be",
+        "release_title": "Favorite",
+        "release_date": "2023-10-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Favorite",
+        "spotify_url": "https://open.spotify.com/album/7klViaQWhXvUw3ESxprPiI",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/4c852a16-2797-435c-b50b-16ec924a2ef7",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/4c852a16-2797-435c-b50b-16ec924a2ef7/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/4c852a16-2797-435c-b50b-16ec924a2ef7/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/4c852a16-2797-435c-b50b-16ec924a2ef7",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [
+      {
+        "headline": "Rookie Group POW Drops Debut Single 'COME TRUE' Today! - K-en News",
+        "source_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBXaHZpbGJjckUyLXlnczdSN2lfZXBlQWhoZ096enJ4U19ELTVuQmpnRDVNSTJ6YlNjVTE1dHZVWFlRSmhJbGNrQnpCVENuWkdOX1JNTDJMOS1kYUExbUpGNDQtWkxpcGUxT1HSAW5BVV95cUxOek9wUHFGWlRFV2pxNENEdWpXU3IyWXlJTzM5VE10Q3RUWW5kejB1YmdSanM3NEdVRDAybWdKQ0JZNndZaUdxN1ZYTGxXQXY0WkNMNWpkbWxKUmJHeU1FelhqTk0ybFhmMFU4cDJyUQ?oc=5",
+        "source_type": "news_rss",
+        "source_domain": "news.google.com",
+        "published_at": "Wed, 28 Jan 2026 08:00:00 GMT",
+        "scheduled_date": null,
+        "scheduled_month": null,
+        "date_precision": "unknown",
+        "date_status": "rumor",
+        "release_format": "single",
+        "confidence_score": 0.68
+      }
+    ],
+    "artist_source_url": "https://musicbrainz.org/artist/fa1ab450-4f04-44f7-9f5c-574b99683098"
+  }
+}

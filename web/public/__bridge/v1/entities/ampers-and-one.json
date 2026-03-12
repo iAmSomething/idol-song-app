@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-ampers-and-one"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "ampers-and-one",
+      "display_name": "AMPERS&ONE",
+      "canonical_name": "AMPERS&ONE",
+      "agency_name": "FNC Entertainment",
+      "badge_image_url": "https://yt3.googleusercontent.com/Cld-X1XWG6BlhzwN7ZejO4rKQZChyNKY8hpDjc95sneeFlf8zH9yCm3sTCjtiBfsc2FywqnLzw=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/Cld-X1XWG6BlhzwN7ZejO4rKQZChyNKY8hpDjc95sneeFlf8zH9yCm3sTCjtiBfsc2FywqnLzw=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA",
+      "x": "https://x.com/_AMPERSANDONE_",
+      "instagram": "https://www.instagram.com/ampersandone_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-0dd5aaee",
+      "release_title": "LOUD & PROUD",
+      "release_date": "2025-08-12",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "That’s That",
+      "spotify_url": "https://open.spotify.com/album/4s6H9i2JkMF58sij9Xa26W",
+      "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mzU4hGn0UZvpekp3z86by6MXEHLbTmiJo",
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-0dd5aaee",
+        "release_title": "LOUD & PROUD",
+        "release_date": "2025-08-12",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "That’s That",
+        "spotify_url": "https://open.spotify.com/album/4s6H9i2JkMF58sij9Xa26W",
+        "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_mzU4hGn0UZvpekp3z86by6MXEHLbTmiJo",
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/5c07db0b-4bd5-453c-9258-082d9599de19",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-5e6553dd",
+        "release_title": "WILD & FREE",
+        "release_date": "2025-04-08",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Kick Start",
+        "spotify_url": "https://open.spotify.com/album/5wMSWuUrpMu6jOA3CmPfgt",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/71686e83-67dd-4d31-b542-6d520253f1e9",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/71686e83-67dd-4d31-b542-6d520253f1e9/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/71686e83-67dd-4d31-b542-6d520253f1e9/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/71686e83-67dd-4d31-b542-6d520253f1e9",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-487ac21f",
+        "release_title": "ONE QUESTION",
+        "release_date": "2024-10-22",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "He + She = We",
+        "spotify_url": "https://open.spotify.com/album/5IjDhgOEY5fIdZkb37DL5a",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/d49147e1-1b7c-4d71-ac5e-afcb74fc85dc",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/d49147e1-1b7c-4d71-ac5e-afcb74fc85dc/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/d49147e1-1b7c-4d71-ac5e-afcb74fc85dc/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/d49147e1-1b7c-4d71-ac5e-afcb74fc85dc",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/354c2a04-7379-49cb-9553-97be5c82ca77"
+  }
+}

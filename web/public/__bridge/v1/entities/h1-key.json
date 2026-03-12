@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "request_id": "bridge-entity-h1-key"
+  },
+  "data": {
+    "identity": {
+      "entity_slug": "h1-key",
+      "display_name": "H1-KEY",
+      "canonical_name": "H1-KEY",
+      "agency_name": "GLG",
+      "badge_image_url": "https://yt3.googleusercontent.com/LDsqhcM6lWgBNPSpJNIvZ5RbpzU6SCM_5ahIfc91i3rc65zLPDraSlhRfkZRybZ9y7jmUy-x5g=s900-c-k-c0x00ffffff-no-rj",
+      "representative_image_url": "https://yt3.googleusercontent.com/LDsqhcM6lWgBNPSpJNIvZ5RbpzU6SCM_5ahIfc91i3rc65zLPDraSlhRfkZRybZ9y7jmUy-x5g=s900-c-k-c0x00ffffff-no-rj"
+    },
+    "official_links": {
+      "youtube": "https://www.youtube.com/@H1KEY_official",
+      "x": "https://x.com/H1KEY_official",
+      "instagram": "https://www.instagram.com/h1key_official"
+    },
+    "youtube_channels": {
+      "primary_team_channel_url": "https://www.youtube.com/@H1KEY_official",
+      "mv_allowlist_urls": []
+    },
+    "tracking_state": {
+      "tier": "longtail",
+      "tracking_status": "recent_release"
+    },
+    "next_upcoming": null,
+    "latest_release": {
+      "release_id": "bridge-release-bedf0124",
+      "release_title": "LOVECHAPTER",
+      "release_date": "2026-03-05",
+      "stream": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "representative_song_title": "Be full of Romantic",
+      "spotify_url": "https://open.spotify.com/album/4taRaj6jpJSs4cp5KFbPJZ",
+      "youtube_music_url": null,
+      "youtube_mv_url": null,
+      "source_url": "https://musicbrainz.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98",
+      "artwork": {
+        "cover_image_url": "https://coverartarchive.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98/front",
+        "thumbnail_image_url": "https://coverartarchive.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98/front-250",
+        "artwork_source_type": "cover_art_archive",
+        "artwork_source_url": "https://coverartarchive.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98",
+        "artwork_status": "verified"
+      }
+    },
+    "recent_albums": [
+      {
+        "release_id": "bridge-release-bedf0124",
+        "release_title": "LOVECHAPTER",
+        "release_date": "2026-03-05",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Be full of Romantic",
+        "spotify_url": "https://open.spotify.com/album/4taRaj6jpJSs4cp5KFbPJZ",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-de48cae6",
+        "release_title": "Lovestruck",
+        "release_date": "2025-06-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Good for U",
+        "spotify_url": "https://open.spotify.com/album/21oMWx3BnmfTOy2zqzxJwt",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/a9d2d1a0-f332-41be-b45a-5555d937a892",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/a9d2d1a0-f332-41be-b45a-5555d937a892/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a9d2d1a0-f332-41be-b45a-5555d937a892/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a9d2d1a0-f332-41be-b45a-5555d937a892",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-a35e6ba0",
+        "release_title": "LOVE or HATE",
+        "release_date": "2024-06-19",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Let It Burn",
+        "spotify_url": "https://open.spotify.com/album/6SCL9tVHIBgOyr4GIRPFfN",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/7c38d28b-12d1-46fb-996f-10bdec4d5d67",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/7c38d28b-12d1-46fb-996f-10bdec4d5d67/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/7c38d28b-12d1-46fb-996f-10bdec4d5d67/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/7c38d28b-12d1-46fb-996f-10bdec4d5d67",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-36122650",
+        "release_title": "Seoul Dreaming",
+        "release_date": "2023-08-30",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Intro : Seoul Dreaming",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/cd48d67e-790d-413a-8831-7e68bd8dd494",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/cd48d67e-790d-413a-8831-7e68bd8dd494/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/cd48d67e-790d-413a-8831-7e68bd8dd494/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/cd48d67e-790d-413a-8831-7e68bd8dd494",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-77af5ac2",
+        "release_title": "Rose Blossom",
+        "release_date": "2023-01-05",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "Ring the Alarm",
+        "spotify_url": null,
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/92da3043-6156-40f5-a91c-d0b8d5ea6046",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/92da3043-6156-40f5-a91c-d0b8d5ea6046/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/92da3043-6156-40f5-a91c-d0b8d5ea6046/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/92da3043-6156-40f5-a91c-d0b8d5ea6046",
+          "artwork_status": "verified"
+        }
+      },
+      {
+        "release_id": "bridge-release-25b08ae7",
+        "release_title": "RUN",
+        "release_date": "2022-07-06",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "representative_song_title": "RUN",
+        "spotify_url": "https://open.spotify.com/album/5WQdyEPsMtXtFIldEhgqpF",
+        "youtube_music_url": null,
+        "youtube_mv_url": null,
+        "source_url": "https://musicbrainz.org/release-group/02f1092b-fd93-45f9-99de-4fb45cbb8b30",
+        "artwork": {
+          "cover_image_url": "https://coverartarchive.org/release-group/02f1092b-fd93-45f9-99de-4fb45cbb8b30/front",
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/02f1092b-fd93-45f9-99de-4fb45cbb8b30/front-250",
+          "artwork_source_type": "cover_art_archive",
+          "artwork_source_url": "https://coverartarchive.org/release-group/02f1092b-fd93-45f9-99de-4fb45cbb8b30",
+          "artwork_status": "verified"
+        }
+      }
+    ],
+    "source_timeline": [],
+    "artist_source_url": "https://musicbrainz.org/artist/6d9dc445-463c-4c98-a554-429afe985f2b"
+  }
+}
