@@ -128,6 +128,14 @@
     ]
   },
   {
+    "group": "P1Harmony",
+    "slug": "p1harmony",
+    "official_youtube_url": "https://www.youtube.com/@P1Harmonyofficial",
+    "official_youtube_source": "entityMetadataAcquisition.reviewed_social_profile",
+    "official_youtube_source_url": "https://www.youtube.com/@P1Harmonyofficial",
+    "official_youtube_review_notes": "Reviewed direct official YouTube uploader from the 2026-03-12 UNIQUE MV watch page owner profile."
+  },
+  {
     "group": "POW",
     "slug": "pow",
     "official_youtube_candidates": [

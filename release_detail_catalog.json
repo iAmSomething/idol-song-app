@@ -44187,6 +44187,54 @@
     "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
   },
   {
+    "group": "P1Harmony",
+    "release_title": "UNIQUE",
+    "release_date": "2026-03-12",
+    "stream": "album",
+    "release_kind": "ep",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "UNIQUE",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Pandemonium",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "L.O.Y.L.",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Wednesday Girl",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Triple 7",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "ICE (VVS)",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/71EVZx82GopCyTNRZVkZSk",
+    "youtube_music_url": null,
+    "youtube_video_url": "https://www.youtube.com/watch?v=m18dRRu9-V4",
+    "youtube_video_id": "m18dRRu9-V4",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "notes": "Representative MusicBrainz EP seed with 6 tracks. Canonical links: Spotify.",
+    "title_track_status": "inferred",
+    "title_track_provenance": "release_title_exact | release_title_substring"
+  },
+  {
     "group": "PLAVE",
     "release_title": "ASTERUM",
     "release_date": "2023-03-12",
