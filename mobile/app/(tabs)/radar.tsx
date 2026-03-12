@@ -30,8 +30,6 @@ import {
 } from '../../src/features/routeState';
 import type { ScreenDataSource } from '../../src/features/screenDataSource';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
-import { selectRadarSnapshot } from '../../src/selectors';
-import { loadActiveMobileDataset } from '../../src/services/activeDataset';
 import { adaptBackendRadarSnapshot } from '../../src/services/backendDisplayAdapters';
 import type { BackendReadClient } from '../../src/services/backendReadClient';
 import {
@@ -302,10 +300,6 @@ export default function RadarTabScreen() {
   const [externalLinkFeedback, setExternalLinkFeedback] = useState<string | null>(null);
   const today = useMemo(() => new Date(), []);
   const todayIsoDate = useMemo(() => today.toISOString().slice(0, 10), [today]);
-  const loadBundledSnapshot = useCallback(async () => {
-    const activeDataset = await loadActiveMobileDataset();
-    return selectRadarSnapshot(activeDataset.dataset, todayIsoDate);
-  }, [todayIsoDate]);
   const loadBackendSnapshot = useCallback(
     async (client: BackendReadClient) => {
       const response = await client.getRadar();
@@ -321,7 +315,6 @@ export default function RadarTabScreen() {
     reloadKey: reloadCount,
     cacheKey: `radar:${todayIsoDate}`,
     fallbackErrorMessage: '레이더 데이터를 지금 불러오지 못했습니다.',
-    loadBundled: loadBundledSnapshot,
     loadBackend: loadBackendSnapshot,
   });
 

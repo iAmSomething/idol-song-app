@@ -31,16 +31,13 @@ import {
   formatCanonicalDisclosureLine,
 } from '../../src/features/surfaceDisclosures';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
-import { selectReleaseDetailById } from '../../src/selectors';
 import { getFeatureGateState } from '../../src/config/featureGates';
 import { MOBILE_COPY } from '../../src/copy/mobileCopy';
-import { loadActiveMobileDataset } from '../../src/services/activeDataset';
 import { adaptBackendReleaseDetail } from '../../src/services/backendDisplayAdapters';
 import {
   BackendReadError,
   type BackendReadClient,
 } from '../../src/services/backendReadClient';
-import { cloneBundledDatasetFixture } from '../../src/services/bundledDatasetFixture';
 import {
   describeServiceHandoffBehavior,
   openServiceHandoff,
@@ -136,16 +133,8 @@ function formatReleaseMeta(detail: ReleaseDetailModel): string {
   return `${detail.releaseDate} · ${getReleaseKindLabel(detail)}`;
 }
 
-function resolveTeamDetailSlug(detail: ReleaseDetailModel, teamProfileSlug?: string | null): string {
-  if (teamProfileSlug) {
-    return teamProfileSlug;
-  }
-
-  return detail.group
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+function resolveTeamDetailSlug(detail: ReleaseDetailModel): string {
+  return detail.group;
 }
 
 function getMvStatusCopy(status?: YoutubeVideoStatus): string | null {
@@ -306,11 +295,6 @@ export default function ReleaseDetailScreen() {
   const releaseId = getSingleParam(params.id)?.trim() ?? '';
   const [reloadCount, setReloadCount] = useState(0);
   const [handoffFeedback, setHandoffFeedback] = useState<string | null>(null);
-  const bundledProfiles = useMemo(() => cloneBundledDatasetFixture().artistProfiles, []);
-  const loadBundledDetail = useCallback(async () => {
-    const activeDataset = await loadActiveMobileDataset();
-    return releaseId ? selectReleaseDetailById(activeDataset.dataset, releaseId) : null;
-  }, [releaseId]);
   const loadBackendDetail = useCallback(
     async (client: BackendReadClient) => {
       if (!releaseId) {
@@ -347,7 +331,6 @@ export default function ReleaseDetailScreen() {
     reloadKey: reloadCount,
     cacheKey: `release:${releaseId || 'missing'}`,
     fallbackErrorMessage: '릴리즈 상세 데이터를 불러오지 못했습니다.',
-    loadBundled: loadBundledDetail,
     loadBackend: loadBackendDetail,
   });
   const detail = datasetState.kind === 'ready' ? datasetState.source.data : null;
@@ -358,11 +341,7 @@ export default function ReleaseDetailScreen() {
     }),
     [releaseId],
   );
-  const teamProfile =
-    detail
-      ? bundledProfiles.find((profile) => profile.slug === detail.group || profile.group === detail.group) ?? null
-      : null;
-  const teamDetailSlug = detail ? resolveTeamDetailSlug(detail, teamProfile?.slug ?? null) : null;
+  const teamDetailSlug = detail ? resolveTeamDetailSlug(detail) : null;
 
   useEffect(() => {
     setHandoffFeedback(null);
@@ -626,8 +605,8 @@ export default function ReleaseDetailScreen() {
               </View>
             </View>
             <TeamIdentityRow
-              badgeImageUrl={teamProfile?.badge_image_url ?? teamProfile?.representative_image_url ?? undefined}
-              fallbackAssetKey={resolveBadgeFallbackAssetKey(teamProfile?.act_type as 'group' | 'solo' | 'unit' | 'project' | undefined)}
+              badgeImageUrl={undefined}
+              fallbackAssetKey={resolveBadgeFallbackAssetKey('group')}
               monogram={detail.displayGroup.slice(0, 2).toUpperCase()}
               name={detail.displayGroup}
               testID="release-team-identity"

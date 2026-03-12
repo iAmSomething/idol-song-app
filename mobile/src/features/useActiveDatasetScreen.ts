@@ -42,7 +42,6 @@ type UseActiveDatasetScreenOptions<T> = {
   reloadKey: number | string;
   cacheKey: string;
   fallbackErrorMessage: string;
-  loadBundled: () => Promise<T>;
   loadBackend?: (client: ReturnType<typeof createBackendReadClient>) => Promise<BackendLoadResult<T>>;
 };
 
@@ -68,17 +67,24 @@ function appendRequestId(message: string, requestId?: string | null): string {
   return `${message} 요청 ID: ${requestId}`;
 }
 
-function formatLiveReadFailureIssue(
-  message: string,
-  fallbackKind: 'cache' | 'bundled',
-  requestId?: string | null,
-): string {
-  const fallbackLabel =
-    fallbackKind === 'cache'
-      ? '저장된 스냅샷으로 유지합니다.'
-      : '저장된 스냅샷이 없어 앱 번들 데이터로 전환합니다.';
+function formatLiveReadFailureIssue(message: string, requestId?: string | null): string {
+  return `라이브 요청 실패: ${appendRequestId(message, requestId)} 저장된 스냅샷으로 화면을 유지합니다.`;
+}
 
-  return `라이브 요청 실패: ${appendRequestId(message, requestId)} ${fallbackLabel}`;
+function formatLiveReadFailureError(message: string, requestId?: string | null): string {
+  return `라이브 요청 실패: ${appendRequestId(message, requestId)} 저장된 스냅샷이 없어 현재 화면을 열 수 없습니다.`;
+}
+
+function formatRuntimeDegradedNoCacheError(
+  runtimeIssues: string[],
+  fallbackErrorMessage: string,
+): string {
+  const issueSummary = dedupeIssues(runtimeIssues).join(' / ');
+  if (issueSummary) {
+    return `런타임이 degraded 상태이고 저장된 백엔드 스냅샷이 없습니다. ${issueSummary}`;
+  }
+
+  return `런타임이 degraded 상태이고 저장된 백엔드 스냅샷이 없습니다. ${fallbackErrorMessage}`;
 }
 
 function isBackendReadErrorLike(
@@ -120,7 +126,6 @@ export function useActiveDatasetScreen<T>({
   cacheKey,
   fallbackErrorMessage,
   loadBackend,
-  loadBundled,
   reloadKey,
   surface,
 }: UseActiveDatasetScreenOptions<T>): ActiveDatasetScreenState<T> {
@@ -182,7 +187,7 @@ export function useActiveDatasetScreen<T>({
               data: cached.value,
               issues: [
                 ...runtimeIssues,
-                formatLiveReadFailureIssue(backendMessage, 'cache', backendRequestId),
+                formatLiveReadFailureIssue(backendMessage, backendRequestId),
               ],
               runtimeState,
               rollingReferenceAt: cached.generatedAt ?? cached.cachedAt,
@@ -191,17 +196,7 @@ export function useActiveDatasetScreen<T>({
             });
           }
 
-          const bundledData = await loadBundled();
-          return buildReadySource({
-            activeSource: 'bundled-static-fallback',
-            sourceLabel: 'Bundled static fallback',
-            data: bundledData,
-            issues: [
-              ...runtimeIssues,
-              formatLiveReadFailureIssue(backendMessage, 'bundled', backendRequestId),
-            ],
-            runtimeState,
-          });
+          throw new Error(formatLiveReadFailureError(backendMessage, backendRequestId));
         }
       }
 
@@ -219,16 +214,25 @@ export function useActiveDatasetScreen<T>({
             generatedAt: cached.generatedAt,
           });
         }
+
+        throw new Error(formatRuntimeDegradedNoCacheError(runtimeIssues, fallbackErrorMessage));
       }
 
-      const bundledData = await loadBundled();
-      return buildReadySource({
-        activeSource: 'bundled-static',
-        sourceLabel: 'Bundled static dataset',
-        data: bundledData,
-        issues: runtimeIssues,
-        runtimeState,
-      });
+      const cached = await readScreenSnapshotCacheEntry<T>(surface, cacheKey);
+      if (cached) {
+        return buildReadySource({
+          activeSource: 'backend-cache',
+          sourceLabel: 'Cached backend snapshot',
+          data: cached.value,
+          issues: runtimeIssues,
+          runtimeState,
+          rollingReferenceAt: cached.generatedAt ?? cached.cachedAt,
+          cachedAt: cached.cachedAt,
+          generatedAt: cached.generatedAt,
+        });
+      }
+
+      throw new Error(fallbackErrorMessage);
     }
 
     void loadScreenSource()
@@ -276,7 +280,7 @@ export function useActiveDatasetScreen<T>({
     return () => {
       cancelled = true;
     };
-  }, [cacheKey, enabled, fallbackErrorMessage, loadBackend, loadBundled, reloadKey, surface]);
+  }, [cacheKey, enabled, fallbackErrorMessage, loadBackend, reloadKey, surface]);
 
   return state;
 }

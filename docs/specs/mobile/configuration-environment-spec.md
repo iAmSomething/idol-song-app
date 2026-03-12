@@ -61,13 +61,13 @@
 - debug metadata에서는 최소 아래를 확인 가능해야 한다.
   - active API base URL
   - active API host
-  - backend target label (`Public preview backend`, `Temporary tunnel backend`, `Custom backend target`, `Bundled-only`)
+  - backend target label (`Public preview backend`, `Temporary tunnel backend`, `Custom backend target`, `Missing backend target`)
 - stable preview backend가 unavailable일 때만 temporary tunnel fallback을 허용한다.
 - tunnel fallback 예시 env는 `mobile/.env.preview.tunnel.example`를 기준으로 둔다.
 - tunnel fallback은 release sign-off 기본 경로가 아니라 emergency QA 우회 경로다.
 
 ## 8. Failure policy
-- remote dataset unavailable이면 last-known-good 또는 bundled dataset fallback이 필요하다.
+- remote dataset unavailable이면 last-known-good cache를 유지하고, cache도 없으면 explicit error 상태가 필요하다.
 - env misconfiguration은 app crash보다 safe degraded mode로 처리해야 한다.
 
 ## 9. QA 체크포인트

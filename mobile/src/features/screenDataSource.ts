@@ -1,10 +1,8 @@
 import type { RuntimeConfigState } from '../config/runtime';
 
 export type ScreenDataSourceActiveSource =
-  | 'bundled-static'
   | 'backend-api'
-  | 'backend-cache'
-  | 'bundled-static-fallback';
+  | 'backend-cache';
 
 export type ScreenDataFreshness = {
   rollingReferenceAt: string | null;

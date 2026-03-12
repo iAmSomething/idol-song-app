@@ -38,15 +38,8 @@ import {
   type SearchSegment,
 } from '../../src/features/routeState';
 import { useActiveDatasetScreen } from '../../src/features/useActiveDatasetScreen';
-import {
-  createSelectorContext,
-  selectSearchResults,
-  selectTeamSummaryBySlug,
-} from '../../src/selectors';
-import { loadActiveMobileDataset } from '../../src/services/activeDataset';
 import { adaptBackendSearchResults } from '../../src/services/backendDisplayAdapters';
 import type { BackendReadClient } from '../../src/services/backendReadClient';
-import { cloneBundledDatasetFixture } from '../../src/services/bundledDatasetFixture';
 import {
   classifyExternalLinkFailureCategory,
   classifyServiceHandoffFailureCategory,
@@ -80,7 +73,6 @@ import type {
   SearchReleaseResultModel,
   SearchTeamResultModel,
   SearchUpcomingResultModel,
-  TeamSummaryModel,
 } from '../../src/types';
 
 function resolveReleaseKindLabel(releaseKind?: string): string {
@@ -129,10 +121,6 @@ function formatTeamMeta(result: SearchTeamResultModel): string {
   }
 
   return result.team.agency ?? '최근 발매 정보 없음';
-}
-
-function formatSuggestedLabel(team: TeamSummaryModel): string {
-  return team.badge?.monogram ?? team.displayName.slice(0, 2).toUpperCase();
 }
 
 function resolveTeamMatchLabel(matchKind: SearchTeamResultModel['matchKind']): string {
@@ -249,24 +237,6 @@ export default function SearchTabScreen() {
     enabled: shouldDebounceSearchQuery,
     shouldFlush: (nextValue) => nextValue.trim().length === 0,
   });
-  const bundledSelectorContext = useMemo(
-    () => createSelectorContext(cloneBundledDatasetFixture()),
-    [],
-  );
-  const loadBundledResults = useCallback(async () => {
-    const normalizedQuery = searchQuery.trim();
-    if (!normalizedQuery) {
-      return {
-        query: '',
-        entities: [],
-        releases: [],
-        upcoming: [],
-      };
-    }
-
-    const activeDataset = await loadActiveMobileDataset();
-    return selectSearchResults(createSelectorContext(activeDataset.dataset), normalizedQuery);
-  }, [searchQuery]);
   const loadBackendResults = useCallback(
     async (client: BackendReadClient) => {
       const normalizedQuery = searchQuery.trim();
@@ -295,7 +265,6 @@ export default function SearchTabScreen() {
     reloadKey: reloadCount,
     cacheKey: `search:${searchQuery.trim().toLowerCase() || 'empty'}`,
     fallbackErrorMessage: '검색 데이터를 지금 불러오지 못했습니다.',
-    loadBundled: loadBundledResults,
     loadBackend: loadBackendResults,
   });
 
@@ -325,39 +294,6 @@ export default function SearchTabScreen() {
       ? buildDatasetRiskDisclosure(datasetState.source, '검색', 'search-dataset-risk-notice')
       : null;
   const results = datasetState.kind === 'ready' ? datasetState.source.data : null;
-
-  const suggestedTeams = useMemo(() => {
-    return bundledSelectorContext.dataset.artistProfiles
-      .map((profile) => selectTeamSummaryBySlug(bundledSelectorContext, profile.slug))
-      .filter((team): team is TeamSummaryModel => team !== null)
-      .sort((left, right) => left.displayName.localeCompare(right.displayName))
-      .slice(0, 4);
-  }, [bundledSelectorContext]);
-
-  const teamSlugByGroup = useMemo(() => {
-    const entries = new Map<string, string>();
-
-    for (const profile of bundledSelectorContext.dataset.artistProfiles) {
-      entries.set(profile.group, profile.slug);
-      entries.set(profile.slug, profile.slug);
-    }
-
-    return entries;
-  }, [bundledSelectorContext]);
-
-  const teamSummaryByGroup = useMemo(() => {
-    const entries = new Map<string, TeamSummaryModel>();
-
-    for (const profile of bundledSelectorContext.dataset.artistProfiles) {
-      const team = selectTeamSummaryBySlug(bundledSelectorContext, profile.slug);
-      if (team) {
-        entries.set(profile.group, team);
-        entries.set(profile.slug, team);
-      }
-    }
-
-    return entries;
-  }, [bundledSelectorContext]);
 
   const currentResumeTarget = useMemo<RouteResumeTarget>(
     () => ({
@@ -417,7 +353,7 @@ export default function SearchTabScreen() {
     const nextResults =
       normalized === results?.query
         ? results
-        : selectSearchResults(bundledSelectorContext, normalized);
+        : null;
     const resultCounts = {
       entities: nextResults?.entities.length ?? 0,
       releases: nextResults?.releases.length ?? 0,
@@ -517,7 +453,7 @@ export default function SearchTabScreen() {
   }
 
   function handleUpcomingResultPress(result: SearchUpcomingResultModel) {
-    const slug = teamSlugByGroup.get(result.upcoming.group);
+    const slug = result.upcoming.group;
     if (!slug) {
       return;
     }
@@ -537,17 +473,16 @@ export default function SearchTabScreen() {
     mode: 'entity_only' | 'release_backed';
     entitySlug: string | null;
   } {
-    const team = teamSummaryByGroup.get(result.upcoming.group);
     const query = buildEntityCenteredXSearchQuery({
-      displayName: team?.displayName ?? result.upcoming.displayGroup,
-      searchTokens: team?.searchTokens ?? [],
+      displayName: result.upcoming.displayGroup,
+      searchTokens: [],
       releaseLabel: result.upcoming.releaseLabel,
     });
 
     return {
       query: query.query,
       mode: query.mode,
-      entitySlug: team?.slug ?? teamSlugByGroup.get(result.upcoming.group) ?? null,
+      entitySlug: result.upcoming.group,
     };
   }
 
@@ -932,34 +867,15 @@ export default function SearchTabScreen() {
           </InsetSection>
 
           <InsetSection
-            description="fallback-heavy 상태에서도 대표 팀으로 바로 진입할 수 있게 고정합니다."
-            testID="search-suggested-team-section"
-            title="추천 팀"
+            description="백엔드 검색은 팀, 발매, 예정 세그먼트를 동시에 찾습니다."
+            testID="search-tips-section"
+            title="검색 팁"
           >
-            <View style={styles.suggestedGrid}>
-              {suggestedTeams.map((team) => (
-                <View
-                  key={team.slug}
-                  style={styles.resultCard}
-                  testID={`suggested-team-${team.slug}`}
-                >
-                    <TeamIdentityRow
-                      badgeImageUrl={team.badge?.imageUrl}
-                      fallbackAssetKey={resolveBadgeFallbackAssetKey(team.actType)}
-                      meta={team.agency ?? '추적 대상 팀'}
-                      monogram={formatSuggestedLabel(team)}
-                      name={team.displayName}
-                      testID={`suggested-team-copy-${team.slug}`}
-                    />
-                  <ActionButton
-                    accessibilityLabel={`${team.displayName} 팀 열기`}
-                    label={MOBILE_COPY.action.teamPage}
-                    onPress={() => openTeamDetail(team.slug)}
-                    testID={`suggested-team-open-${team.slug}`}
-                  />
-                </View>
-              ))}
-            </View>
+            <InlineFeedbackNotice
+              body="팀명, 릴리즈명, 한글 별칭으로 검색해 보세요. 예: 최예나, 투바투, REVIVE+"
+              testID="search-tips-notice"
+              title="입력 예시"
+            />
           </InsetSection>
         </>
       ) : (
@@ -1136,22 +1052,18 @@ export default function SearchTabScreen() {
                     accessibilityHint="팀 상세 화면으로 이동합니다."
                     accessibilityLabel={buildUpcomingResultAccessibilityLabel(result)}
                     accessibilityRole="button"
-                    disabled={!teamSlugByGroup.get(result.upcoming.group)}
+                    disabled={!result.upcoming.group}
                     onPress={() => handleUpcomingResultPress(result)}
                     style={({ pressed }) => [
                       styles.resultPressable,
-                      pressed && teamSlugByGroup.get(result.upcoming.group) ? styles.resultPressed : null,
+                      pressed && result.upcoming.group ? styles.resultPressed : null,
                     ]}
                     testID={`search-upcoming-result-press-${result.upcoming.id}`}
                   >
                     <TeamIdentityRow
-                      badgeImageUrl={teamSummaryByGroup.get(result.upcoming.group)?.badge?.imageUrl}
-                      fallbackAssetKey={resolveBadgeFallbackAssetKey(teamSummaryByGroup.get(result.upcoming.group)?.actType)}
+                      fallbackAssetKey={resolveBadgeFallbackAssetKey('group')}
                       meta={result.upcoming.releaseLabel ?? result.upcoming.headline}
-                      monogram={
-                        teamSummaryByGroup.get(result.upcoming.group)?.badge?.monogram ??
-                        result.upcoming.displayGroup.slice(0, 2).toUpperCase()
-                      }
+                      monogram={result.upcoming.displayGroup.slice(0, 2).toUpperCase()}
                       name={result.upcoming.displayGroup}
                       testID={`search-upcoming-result-${result.upcoming.id}`}
                     />

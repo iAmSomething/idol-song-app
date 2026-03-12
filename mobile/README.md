@@ -382,10 +382,10 @@ profile 차이는 아래 범위로만 제한한다.
   - app crash 대신 `mode = degraded`
   - `remoteRefresh = false`
   - `analytics = false`
-  - bundled/static dataset path만 허용
+  - cached backend snapshot이 있으면 유지하고, 없으면 explicit error로 내린다.
 - preview remote dataset이 unavailable/invalid면:
   - 가능한 경우 `last-known-good` cache로 fallback
-  - cache가 불완전하면 bundled dataset으로 fallback
+  - cache가 없으면 explicit error state로 전환
 - later UI는 `normal`과 `degraded`를 명시적으로 구분해 badge/banner/toast를 붙일 수 있어야 한다.
 
 ## debug metadata surface
@@ -415,22 +415,22 @@ profile 차이는 아래 범위로만 제한한다.
 - selector entrypoint는 `src/services/datasetSource.ts`에 둔다.
 - single-source rule
   - 한 build/runtime 조합은 하나의 dataset source만 고른다.
-  - backend API primary와 bundled fallback을 동시에 active source로 섞지 않는다.
-- bundled source
-  - development 기본값이거나 explicit degraded fallback 경로다.
-  - v1 계약 경로는 `mobile/assets/datasets/v1/` 기준으로 잡는다.
+  - active source는 `backend-api` 또는 `backend-cache`만 허용한다.
+- bundled fixture source
+  - test/debug fixture workflow에서만 허용한다.
+  - shipped runtime active source로 쓰지 않는다.
 - backend API source
   - `APP_ENV=preview` / `APP_ENV=production`
   - `EXPO_PUBLIC_API_BASE_URL` provided
   - shipped runtime의 정상 경로다.
 - field contract
-  - bundled fallback과 backend API source는 같은 artifact id / field contract를 유지해야 한다.
+  - bundled fixture와 backend API source는 같은 artifact id / field contract를 유지해야 한다.
 
 runtime regression guard:
 
 - preview / production profile은 반드시 `backend-api`여야 한다.
-- `bundled-static` active mode는 development 기본값 또는 explicit degraded runtime에서만 허용한다.
-- live read failure 시 cache가 없으면 `bundled-static-fallback` disclosure와 함께만 내려갈 수 있다.
+- development도 shipped runtime 기준 active mode는 `backend-api`만 허용한다.
+- live read failure 시 cache가 없으면 explicit error로만 내려갈 수 있다.
 - 위 회귀 체크는 `npm run verify:runtime-policy`와 `.github/workflows/mobile-quality.yml`에서 막는다.
 
 ## storage / cache baseline
@@ -465,7 +465,7 @@ runtime regression guard:
 - off fallback
   - radar: 탭 숨김 또는 read-only placeholder
   - analytics: 이벤트 미발행, UI 변화 없음
-  - remote dataset: bundled dataset only
+  - remote dataset: cached backend snapshot 유지, 없으면 explicit error
   - MV embed: embed 숨김, external watch CTA 유지
   - share actions: 공유 버튼 비노출
 
@@ -490,7 +490,7 @@ runtime regression guard:
 - `mobile/assets/launch-visual-export-manifest.json`
   - icon/splash/fallback handoff inventory
 - `mobile/assets/datasets/`
-  - bundled dataset path contract 문서
+  - test/debug fixture path contract 문서
 - later screen work는 raw asset path 대신 `src/utils/assetRegistry.ts`를 우선 사용한다.
 - export naming/path/update rule은 `docs/specs/mobile/launch-visual-asset-handoff.md`를 따른다.
 
@@ -501,7 +501,7 @@ runtime regression guard:
 - `npm run typecheck`
   - strict TypeScript gate
 - `npm run verify:runtime-policy`
-  - preview / production backend-primary와 bundled fallback boundary regression guard
+  - preview / production backend-primary와 no-bundled-active boundary regression guard
 - `npm run test`
   - runtime config unit test + route shell smoke test baseline
 - `.github/workflows/mobile-quality.yml`

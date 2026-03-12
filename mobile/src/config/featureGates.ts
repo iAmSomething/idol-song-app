@@ -36,7 +36,7 @@ export const FEATURE_GATE_DEFINITIONS: Record<FeatureGateKey, FeatureGateDefinit
     id: 'remote_dataset_enabled',
     key: 'remoteRefresh',
     label: 'Remote dataset refresh',
-    offFallback: 'Stay on bundled dataset only.',
+    offFallback: 'Keep cached backend snapshots when available; otherwise show an explicit error state.',
   },
   mvEmbed: {
     id: 'mv_embed_enabled',

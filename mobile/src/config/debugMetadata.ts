@@ -19,7 +19,11 @@ export type MobileDebugMetadata = {
   networkPolicy: string;
   apiBaseUrl: string | null;
   apiHost: string | null;
-  backendTargetLabel: 'Bundled-only' | 'Public preview backend' | 'Temporary tunnel backend' | 'Custom backend target';
+  backendTargetLabel:
+    | 'Missing backend target'
+    | 'Public preview backend'
+    | 'Temporary tunnel backend'
+    | 'Custom backend target';
   analyticsEnabled: boolean;
   radarEnabled: boolean;
   featureGateSummary: string;
@@ -32,7 +36,7 @@ const TUNNEL_API_HOST_SUFFIXES = ['trycloudflare.com', 'ngrok-free.app', 'ngrok.
 
 function getBackendTargetLabel(apiBaseUrl: string | null): MobileDebugMetadata['backendTargetLabel'] {
   if (!apiBaseUrl) {
-    return 'Bundled-only';
+    return 'Missing backend target';
   }
 
   const host = new URL(apiBaseUrl).host;
@@ -71,14 +75,8 @@ export function getDebugMetadata(
     datasetVersion: runtimeConfig.dataSource.datasetVersion,
     commitSha: runtimeConfig.build.commitSha,
     dataSourceMode: runtimeConfig.dataSource.mode,
-    dataSourcePolicy:
-      runtimeConfig.dataSource.mode === 'backend-api'
-        ? 'Backend API primary + bundled fallback'
-        : 'Bundled static primary',
-    networkPolicy:
-      runtimeConfig.dataSource.mode === 'backend-api'
-        ? 'GET timeout 4.5s + 1 retry + cache/bundled degraded fallback'
-        : 'Bundled static only',
+    dataSourcePolicy: 'Backend API only',
+    networkPolicy: 'GET timeout 4.5s + 1 retry + cache or explicit error',
     apiBaseUrl: runtimeConfig.services.apiBaseUrl,
     apiHost: runtimeConfig.services.apiBaseUrl ? new URL(runtimeConfig.services.apiBaseUrl).host : null,
     backendTargetLabel: getBackendTargetLabel(runtimeConfig.services.apiBaseUrl),

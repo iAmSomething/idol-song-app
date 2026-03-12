@@ -63,15 +63,13 @@ export function buildDatasetRiskDisclosure(
   const sourceStateLead =
     source.activeSource === 'backend-cache'
       ? '마지막 라이브 요청이 실패해 저장된 백엔드 스냅샷으로 화면을 유지하고 있습니다.'
-      : source.activeSource === 'bundled-static-fallback'
-        ? '라이브 응답과 캐시를 모두 확보하지 못해 앱 번들 데이터를 임시로 보여 주고 있습니다.'
-        : '현재 런타임이 degraded 상태라 최신 동기화 대신 안전한 읽기 경로를 우선합니다.';
+      : '현재 런타임이 degraded 상태라 라이브 응답 대신 검증된 백엔드 경로만 허용합니다.';
   const freshnessNote =
     source.activeSource.includes('cache')
       ? source.freshness.rollingReferenceAt
         ? `발매/예정 데이터는 ${formatCachedAt(source.freshness.rollingReferenceAt)}에 저장된 캐시 기준입니다.`
         : '발매/예정 데이터는 마지막으로 저장된 캐시 기준입니다.'
-      : '발매·예정 데이터는 네트워크 상태에 따라 일부 지연되거나 최소 정보로 축소될 수 있습니다.';
+      : '라이브 응답이 복구되기 전까지는 캐시 또는 명시적 오류 상태만 허용됩니다.';
 
   return {
     title: '데이터 최신화 유의',

@@ -32,24 +32,23 @@ function createMemoryStorage(): KeyValueStorageAdapter {
   };
 }
 
-const bundledSelection: DatasetSelection = {
-  kind: 'bundled-static',
+const previewSelection: DatasetSelection = {
+  kind: 'backend-api',
   reason: 'profile_default',
   contractId: 'idol-song-mobile-static-v1',
   datasetVersion: 'v1',
   mixingAllowed: false,
-  bundledBasePath: 'mobile/assets/datasets/v1',
+  apiBaseUrl: 'https://example.com/api',
   artifacts: [],
 };
 
-const previewSelection: DatasetSelection = {
+const productionSelection: DatasetSelection = {
   kind: 'backend-api',
   reason: 'profile_default',
   contractId: 'idol-song-mobile-static-v1',
   datasetVersion: 'preview-v2',
   mixingAllowed: false,
-  apiBaseUrl: 'https://example.com/api',
-  bundledFallbackBasePath: 'mobile/assets/datasets/v1',
+  apiBaseUrl: 'https://example.com/production-api',
   artifacts: [],
 };
 
@@ -63,40 +62,40 @@ describe('mobile storage foundations', () => {
   });
 
   test('builds namespaced dataset cache keys', () => {
-    expect(buildDatasetCacheKey('idol-song-mobile-static-v1', 'bundled-static', 'v1', 'releases')).toBe(
-      'idol-song-app/mobile/v1/dataset-cache/idol-song-mobile-static-v1/bundled-static/v1/releases',
+    expect(buildDatasetCacheKey('idol-song-mobile-static-v1', 'backend-api', 'v1', 'releases')).toBe(
+      'idol-song-app/mobile/v1/dataset-cache/idol-song-mobile-static-v1/backend-api/v1/releases',
     );
-    expect(buildDatasetCacheKey('idol-song-mobile-static-v1', 'bundled-static', null, 'releases')).toBe(
-      'idol-song-app/mobile/v1/dataset-cache/idol-song-mobile-static-v1/bundled-static/unversioned/releases',
+    expect(buildDatasetCacheKey('idol-song-mobile-static-v1', 'backend-api', null, 'releases')).toBe(
+      'idol-song-app/mobile/v1/dataset-cache/idol-song-mobile-static-v1/backend-api/unversioned/releases',
     );
   });
 
   test('round-trips dataset cache entries and isolates dataset versions', async () => {
-    await writeDatasetCacheEntry('releases', { rows: 10 }, bundledSelection, '2026-03-08T00:00:00.000Z');
-    await writeDatasetCacheEntry('releases', { rows: 12 }, previewSelection, '2026-03-08T01:00:00.000Z');
-
-    await expect(readDatasetCacheEntry<{ rows: number }>('releases', bundledSelection)).resolves.toEqual({
-      artifactId: 'releases',
-      contractId: bundledSelection.contractId,
-      datasetVersion: bundledSelection.datasetVersion,
-      sourceKind: bundledSelection.kind,
-      cachedAt: '2026-03-08T00:00:00.000Z',
-      value: { rows: 10 },
-    });
+    await writeDatasetCacheEntry('releases', { rows: 10 }, previewSelection, '2026-03-08T00:00:00.000Z');
+    await writeDatasetCacheEntry('releases', { rows: 12 }, productionSelection, '2026-03-08T01:00:00.000Z');
 
     await expect(readDatasetCacheEntry<{ rows: number }>('releases', previewSelection)).resolves.toEqual({
       artifactId: 'releases',
       contractId: previewSelection.contractId,
       datasetVersion: previewSelection.datasetVersion,
       sourceKind: previewSelection.kind,
+      cachedAt: '2026-03-08T00:00:00.000Z',
+      value: { rows: 10 },
+    });
+
+    await expect(readDatasetCacheEntry<{ rows: number }>('releases', productionSelection)).resolves.toEqual({
+      artifactId: 'releases',
+      contractId: productionSelection.contractId,
+      datasetVersion: productionSelection.datasetVersion,
+      sourceKind: productionSelection.kind,
       cachedAt: '2026-03-08T01:00:00.000Z',
       value: { rows: 12 },
     });
 
-    await clearDatasetCacheEntry('releases', bundledSelection);
-    await expect(readDatasetCacheEntry('releases', bundledSelection)).resolves.toBeNull();
-    await expect(readDatasetCacheEntry('releases', previewSelection)).resolves.not.toBeNull();
-    expect(getDatasetCacheKey('releases', bundledSelection)).not.toBe(getDatasetCacheKey('releases', previewSelection));
+    await clearDatasetCacheEntry('releases', previewSelection);
+    await expect(readDatasetCacheEntry('releases', previewSelection)).resolves.toBeNull();
+    await expect(readDatasetCacheEntry('releases', productionSelection)).resolves.not.toBeNull();
+    expect(getDatasetCacheKey('releases', previewSelection)).not.toBe(getDatasetCacheKey('releases', productionSelection));
   });
 
   test('persists recent queries with dedupe, trim, and limit handling', async () => {

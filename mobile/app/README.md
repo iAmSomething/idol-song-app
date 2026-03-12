@@ -11,7 +11,7 @@
 - `(tabs)/_layout.tsx`
   - `calendar`, `radar`, `search` 탭 shell
 - `(tabs)/calendar.tsx`
-  - backend-first + cached snapshot + bundled fallback current-month container
+  - backend-first + cached snapshot current-month container
 - `(tabs)/radar.tsx`
 - `(tabs)/search.tsx`
   - backend-first search tab

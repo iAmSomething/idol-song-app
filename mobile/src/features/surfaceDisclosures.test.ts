@@ -9,12 +9,12 @@ describe('surface disclosure helpers', () => {
     expect(
       buildDatasetRiskDisclosure(
         {
-          activeSource: 'bundled-static',
+          activeSource: 'backend-api',
           freshness: {
             rollingReferenceAt: null,
             staleFreshnessClasses: [],
           },
-          sourceLabel: 'Bundled static dataset',
+          sourceLabel: 'Backend API',
           runtimeState: { mode: 'normal' },
           issues: [],
         },

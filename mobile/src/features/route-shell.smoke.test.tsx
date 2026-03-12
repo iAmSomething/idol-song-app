@@ -50,55 +50,8 @@ jest.mock('expo-router', () => {
 });
 
 jest.mock('../features/useActiveDatasetScreen', () => {
-  const { cloneBundledDatasetFixture } = jest.requireActual('../services/bundledDatasetFixture');
-  const { createBundledDatasetSelection } = jest.requireActual('../services/datasetSource');
-
   return {
-    useActiveDatasetScreen: jest.fn(() => ({
-      kind: 'ready',
-      source: {
-        activeSource: 'bundled-static',
-        cachedArtifactIds: [],
-        dataset: cloneBundledDatasetFixture(),
-        freshness: {
-          rollingReferenceAt: null,
-          staleFreshnessClasses: [],
-        },
-        selection: createBundledDatasetSelection('fixture-v1', 'profile_default'),
-        runtimeState: {
-          mode: 'normal',
-          issues: [],
-          config: {
-            profile: 'development',
-            dataSource: {
-              mode: 'bundled-static',
-              remoteDatasetUrl: null,
-              datasetVersion: 'fixture-v1',
-            },
-            services: {
-              apiBaseUrl: null,
-              analyticsWriteKey: null,
-            },
-            logging: {
-              level: 'verbose',
-            },
-            featureGates: {
-              radar: true,
-              analytics: false,
-              remoteRefresh: false,
-              mvEmbed: true,
-              shareActions: true,
-            },
-            build: {
-              version: '0.1.0',
-              commitSha: 'test-sha',
-            },
-          },
-        },
-        sourceLabel: 'Bundled static dataset',
-        issues: [],
-      },
-    })),
+    useActiveDatasetScreen: jest.fn(() => ({ kind: 'loading' })),
   };
 });
 

@@ -4,6 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { InlineFeedbackNotice, ScreenFeedbackState } from './FeedbackState';
 
+jest.mock('../../hooks/useReducedMotion', () => ({
+  useReducedMotion: () => true,
+}));
+
 function hasText(tree: renderer.ReactTestRenderer, value: string): boolean {
   return tree.root.findAllByType(Text).some((node) => node.props.children === value);
 }
@@ -38,6 +42,10 @@ describe('shared feedback state components', () => {
     expect(hasText(tree!, 'Calendar')).toBe(true);
     expect(hasText(tree!, '데이터를 불러오는 중입니다.')).toBe(true);
     expect(tree!.root.findByProps({ testID: 'loading-skeleton-calendar' })).toBeDefined();
+
+    await act(async () => {
+      tree!.unmount();
+    });
   });
 
   test('renders an inline notice action and calls the handler', async () => {
