@@ -283,6 +283,7 @@ scheduled automation도 cadence를 둘로 나눠서 운영한다.
 - external handoff layer: `mobile/src/services/handoff.ts`
 - preview release-readiness artifact: `docs/specs/mobile/rn-release-readiness-gate-2026-03-11.md`
 - runtime QA artifact: `docs/specs/mobile/rn-runtime-device-qa-2026-03-11.md`
+- mobile UI/functional/server test strategy: `docs/specs/mobile/mobile-ui-functional-server-test-strategy.md`
 - local iOS VoiceOver sign-off evidence: `docs/assets/distribution/rn_ios_voiceover_signoff_local_2026-03-11.md`
 - local runtime QA evidence: `docs/assets/distribution/rn_runtime_device_qa_local_2026-03-11.md`
 - backend public consumer contract: `docs/specs/backend/public-read-api-contract-v1.md`

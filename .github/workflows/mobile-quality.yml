@@ -42,14 +42,23 @@ jobs:
       - name: Install mobile dependencies
         run: npm ci
 
-      - name: Run mobile lint
-        run: npm run lint
+      - name: Verify mobile runtime policy
+        run: npm run verify:runtime-policy
+
+      - name: Run mobile UI test suite
+        run: npm run test:qa:ui
+
+      - name: Run mobile functional test suite
+        run: npm run test:qa:functional
+
+      - name: Run mobile server communication test suite
+        run: npm run test:qa:server
 
       - name: Run mobile typecheck
         run: npm run typecheck
 
-      - name: Verify mobile runtime policy
-        run: npm run verify:runtime-policy
+      - name: Run mobile lint
+        run: npm run lint
 
-      - name: Run mobile tests
-        run: npm run test
+      - name: Verify mobile platform sanity
+        run: npm run verify:qa:platforms
