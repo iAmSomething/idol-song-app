@@ -33,56 +33,59 @@
 9. `json-snapshot-demotion.md`
    - cut-over surface에서 JSON을 fallback/debug/export로 강등하는 runtime / delivery 규칙
    - Pages build, query override, emergency fallback window 운영 기준
-10. `public-read-api-contract-v1.md`
+10. `api-only-end-state-tracker.md`
+   - shipped client/runtime과 DB-first pipeline이 실제로 어디까지 도달했는지 요약
+   - 남아 있는 preview/runtime/data blocker issue 집합을 한 번에 연결
+11. `public-read-api-contract-v1.md`
    - web / mobile consumer가 보는 canonical versioned public read contract
    - stable field, transitional/internal detail, compatibility expectation 고정
-11. `shared-read-api-contracts.md`
+12. `shared-read-api-contracts.md`
    - detailed payload examples와 server-side derived semantics working note
    - `public-read-api-contract-v1.md`를 보조하는 상세 reference
-12. `deploy-environment-contract.md`
+13. `deploy-environment-contract.md`
    - preview / production deploy 전 environment completeness / drift gate
    - example env, Railway runtime env, GitHub deploy input 사이의 contract
-13. `backend-migration-epic.md`
+14. `backend-migration-epic.md`
    - cross-platform migration용 backend platform 전체 방향
    - child issue 분해, dependency, target architecture, implementation order
-14. `mobile-adoption-readiness-review.md`
+15. `mobile-adoption-readiness-review.md`
    - backend contract가 mobile screen 구현을 바로 받을 수 있는지 surface별 readiness 검토
    - blocker / non-blocker / follow-up issue 기준의 gate decision
-15. `public-read-rate-limit-policy.md`
+16. `public-read-rate-limit-policy.md`
    - public read endpoint의 bucket별 rate-limit 기준
    - preview / production 기대치와 `429 rate_limited` contract
-16. `structured-backend-logging-policy.md`
+17. `structured-backend-logging-policy.md`
    - request/error/runtime-fatal log field shape와 redaction 규칙
    - env별 verbosity와 routine-noise budget
-17. `neon-backup-restore-recovery-drill.md`
+18. `neon-backup-restore-recovery-drill.md`
    - isolated schema clone 기준 backup / restore / recovery rehearsal 절차
    - representative read-path usable state 판정 기준
-18. `projection-query-plan-regression-check.md`
+19. `projection-query-plan-regression-check.md`
    - projection-backed lookup query의 required index / explain probe gate
    - controlled degraded scenario로 failure detection을 증명하는 방법
-19. `backend-secret-inventory-and-rotation.md`
+20. `backend-secret-inventory-and-rotation.md`
    - GitHub / Railway / Neon 기준 backend secret / variable inventory
    - owner role, rotation trigger, rollback baseline, current audit snapshot
-20. `migration-readiness-scorecard.md`
+21. `migration-readiness-scorecard.md`
    - migration readiness category, weight, blocker threshold rubric
    - machine-readable / human-readable scorecard artifact contract
-21. `canonical-null-hygiene-operating-model.md`
+22. `canonical-null-hygiene-operating-model.md`
    - canonical nullable field taxonomy, provenance/status/source-pointer convention
    - backfill wave, recency SLA, source precedence, readiness null gate 기준
-22. `canonical-null-hygiene-cadence.md`
+23. `canonical-null-hygiene-cadence.md`
    - daily / weekly / monthly null hygiene cadence와 owner checklist
    - artifact handoff order, escalation rule, review ritual
    - service-link/title-track/entity-identity gap workbench artifact contract
-23. `manual-curation-bundle-contract.md`
+24. `manual-curation-bundle-contract.md`
    - gap workbench -> human curation -> source-of-truth re-absorb contract
    - reviewer trace, field-family decision set, sink mapping
-24. `trusted-upcoming-notification-events.md`
+25. `trusted-upcoming-notification-events.md`
    - trusted upcoming signal -> canonical notification event / operator alert contract
    - fingerprint, dedupe, destination, summary artifact 규칙
-25. `runtime-artifact-retention-policy.md`
+26. `runtime-artifact-retention-policy.md`
    - runtime-facing JSON / pipeline script canonical retention policy
    - suffix duplicate 금지, allowed temporary path, inventory / cleanup rule
-26. `json-snapshot-demotion.md`의 regression guards section
+27. `json-snapshot-demotion.md`의 regression guards section
    - web / mobile shipped runtime이 local dataset dependency로 되돌아가지 않게 막는 CI guard
    - current transitional allowlist와 follow-up boundary
 
@@ -96,24 +99,25 @@
 6. `migration-runtime-gates.md`
 7. `web-cutover-rollback-drills.md`
 8. `json-snapshot-demotion.md`
-9. `public-read-api-contract-v1.md`
-10. `shared-read-api-contracts.md`
-11. `deploy-environment-contract.md`
-12. `mobile-adoption-readiness-review.md`
-13. `phased-rollout-plan.md`
-14. `backend-migration-epic.md`
-15. `public-read-rate-limit-policy.md`
-16. `structured-backend-logging-policy.md`
-17. `neon-backup-restore-recovery-drill.md`
-18. `projection-query-plan-regression-check.md`
-19. `backend-secret-inventory-and-rotation.md`
-20. `migration-readiness-scorecard.md`
-21. `canonical-null-hygiene-operating-model.md`
-22. `canonical-null-hygiene-cadence.md`
-23. `manual-curation-bundle-contract.md`
-24. `trusted-upcoming-notification-events.md`
-25. `runtime-artifact-retention-policy.md`
-26. `json-snapshot-demotion.md`의 regression guards section
+9. `api-only-end-state-tracker.md`
+10. `public-read-api-contract-v1.md`
+11. `shared-read-api-contracts.md`
+12. `deploy-environment-contract.md`
+13. `mobile-adoption-readiness-review.md`
+14. `phased-rollout-plan.md`
+15. `backend-migration-epic.md`
+16. `public-read-rate-limit-policy.md`
+17. `structured-backend-logging-policy.md`
+18. `neon-backup-restore-recovery-drill.md`
+19. `projection-query-plan-regression-check.md`
+20. `backend-secret-inventory-and-rotation.md`
+21. `migration-readiness-scorecard.md`
+22. `canonical-null-hygiene-operating-model.md`
+23. `canonical-null-hygiene-cadence.md`
+24. `manual-curation-bundle-contract.md`
+25. `trusted-upcoming-notification-events.md`
+26. `runtime-artifact-retention-policy.md`
+27. `json-snapshot-demotion.md`의 regression guards section
 
 ## 원칙
 

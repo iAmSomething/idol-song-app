@@ -100,3 +100,12 @@ JSON demotion이 완료됐다고 보려면 아래가 필요하다.
 2. runtime gate와 shadow/parity 증적이 rollback-only 상태가 아님을 보여 준다.
 3. 운영 문서가 GitHub commit을 production data publish가 아니라 import/export artifact로 설명한다.
 4. deploy rollback과 backend repair 절차가 문서화돼 있다.
+
+## 8. End-state Tracker
+
+JSON demotion 자체는 더 이상 단독 blocker가 아니다.
+현재 implementation-level API-only end state와 남아 있는 blocker issue 집합은 아래 tracker에서 관리한다.
+
+- `docs/specs/backend/api-only-end-state-tracker.md`
+
+이 tracker는 남아 있는 preview infra / runtime health / title-track / MV completeness issue를 한 번에 연결한다.
