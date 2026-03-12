@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 import time
 import urllib.parse
 import urllib.request
@@ -40,6 +41,34 @@ CANDIDATE_TITLE_MARKER_PATTERN = re.compile(
 )
 AUTO_ACCEPTED_YOUTUBE_PROVENANCE = "youtube search auto-accepted via allowlist/title/date/view scoring"
 VIDEO_CHANNEL_URL_CACHE: dict[str, str] = {}
+
+
+def parse_positive_int_arg(raw_value: str) -> int:
+    try:
+        parsed = int(raw_value)
+    except ValueError as error:
+        raise argparse.ArgumentTypeError("must be a positive integer") from error
+    if parsed <= 0:
+        raise argparse.ArgumentTypeError("must be a positive integer")
+    return parsed
+
+
+def should_emit_progress(current_index: int, total_rows: int, progress_every: int) -> bool:
+    if total_rows <= 0:
+        return False
+    return current_index == 1 or current_index == total_rows or current_index % progress_every == 0
+
+
+def emit_progress(current_index: int, total_rows: int, detail: dict[str, Any]) -> None:
+    print(
+        (
+            "[backfill_release_detail_mvs] "
+            f"{current_index}/{total_rows} "
+            f"{detail['group']} / {detail['release_title']} / {detail['release_date']} / {detail['stream']}"
+        ),
+        file=sys.stderr,
+        flush=True,
+    )
 
 
 def load_json(path: Path) -> Any:
@@ -495,12 +524,20 @@ def choose_track_search_resolution(
     return None, None
 
 
-def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[str, dict[str, Any]], allowlists_by_group: dict[str, dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def choose_resolutions(
+    details: list[dict[str, Any]],
+    profiles_by_group: dict[str, dict[str, Any]],
+    allowlists_by_group: dict[str, dict[str, Any]],
+    progress_every: int | None = None,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     reference = now_utc()
     resolutions: list[dict[str, Any]] = []
     review_rows: list[dict[str, Any]] = []
 
-    for detail in details:
+    total_rows = len(details)
+    for current_index, detail in enumerate(details, start=1):
+        if progress_every is not None and should_emit_progress(current_index, total_rows, progress_every):
+            emit_progress(current_index, total_rows, detail)
         current_status = detail.get("youtube_video_status") or release_detail_builder.YOUTUBE_VIDEO_STATUS_UNRESOLVED
         auto_accepted_override = detail.get("youtube_video_provenance") == AUTO_ACCEPTED_YOUTUBE_PROVENANCE
         if current_status not in {
@@ -764,6 +801,17 @@ def main() -> None:
         "--cohorts",
         help="Comma-separated release cohorts to scope the pass (latest,recent,historical).",
     )
+    parser.add_argument(
+        "--max-rows",
+        type=parse_positive_int_arg,
+        help="Limit the current scoped pass to the first N matching release-detail rows.",
+    )
+    parser.add_argument(
+        "--progress-every",
+        type=parse_positive_int_arg,
+        default=25,
+        help="Emit stderr progress after every N inspected rows during the current pass.",
+    )
     args = parser.parse_args()
 
     details = load_json(DETAILS_PATH)
@@ -786,8 +834,25 @@ def main() -> None:
             for detail in details
             if infer_release_cohort(detail.get("release_date", ""), reference_date) in scoped_cohorts
         ]
+    total_scoped_rows = len(details)
+    if args.max_rows is not None:
+        details = details[: args.max_rows]
+    print(
+        (
+            "[backfill_release_detail_mvs] "
+            f"processing {len(details)}/{total_scoped_rows} scoped rows "
+            f"(progress_every={args.progress_every})"
+        ),
+        file=sys.stderr,
+        flush=True,
+    )
 
-    resolutions, review_rows = choose_resolutions(details, profiles_by_group, allowlists_by_group)
+    resolutions, review_rows = choose_resolutions(
+        details,
+        profiles_by_group,
+        allowlists_by_group,
+        progress_every=args.progress_every,
+    )
     reevaluated_keys = {
         release_detail_builder.get_detail_key(detail["group"], detail["release_title"], detail["release_date"], detail["stream"])
         for detail in details
@@ -808,12 +873,16 @@ def main() -> None:
     if scoped_groups is not None:
         report["execution_scope"] = {
             "groups": sorted(scoped_groups),
-            "scoped_rows": len(details),
         }
+    if report.get("execution_scope") is None:
+        report["execution_scope"] = {}
     if scoped_cohorts is not None:
-        report.setdefault("execution_scope", {})
         report["execution_scope"]["cohorts"] = sorted(scoped_cohorts)
-        report["execution_scope"]["scoped_rows"] = len(details)
+    report["execution_scope"]["scoped_rows_total"] = total_scoped_rows
+    report["execution_scope"]["selected_rows"] = len(details)
+    report["execution_scope"]["progress_every"] = args.progress_every
+    if args.max_rows is not None:
+        report["execution_scope"]["max_rows"] = args.max_rows
 
     write_json(OVERRIDES_PATH, merged_overrides)
     write_json(DETAILS_PATH, updated_details)

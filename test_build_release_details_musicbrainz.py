@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import unittest
 from datetime import date
 
@@ -7,6 +8,13 @@ import build_release_details_musicbrainz as builder
 
 
 class BuildReleaseDetailsMusicBrainzTitleTrackTests(unittest.TestCase):
+    def test_parse_positive_int_arg_accepts_positive_values(self) -> None:
+        self.assertEqual(builder.parse_positive_int_arg("5"), 5)
+
+    def test_parse_positive_int_arg_rejects_zero(self) -> None:
+        with self.assertRaises(argparse.ArgumentTypeError):
+            builder.parse_positive_int_arg("0")
+
     def test_parse_scoped_cohorts_accepts_supported_values(self) -> None:
         self.assertEqual(
             builder.parse_scoped_cohorts("latest,recent"),
@@ -42,6 +50,26 @@ class BuildReleaseDetailsMusicBrainzTitleTrackTests(unittest.TestCase):
 
         self.assertTrue(builder.mv_backfill_scope_matches(matching_summary, execution_scope))
         self.assertFalse(builder.mv_backfill_scope_matches(mismatched_summary, execution_scope))
+
+    def test_enrich_execution_scope_adds_selected_rows_and_progress_metadata(self) -> None:
+        enriched = builder.enrich_execution_scope(
+            {"groups": ["YENA"]},
+            total_scoped_rows=10,
+            selected_rows=3,
+            max_rows=3,
+            progress_every=2,
+        )
+
+        self.assertEqual(
+            enriched,
+            {
+                "groups": ["YENA"],
+                "scoped_rows_total": 10,
+                "selected_rows": 3,
+                "max_rows": 3,
+                "progress_every": 2,
+            },
+        )
 
     def test_exact_title_match_outranks_nearby_single_fallback(self) -> None:
         detail = {

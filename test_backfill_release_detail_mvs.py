@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import argparse
+import io
 import unittest
 from datetime import date
 from unittest.mock import patch
@@ -8,6 +10,13 @@ import backfill_release_detail_mvs as backfill
 
 
 class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
+    def test_parse_positive_int_arg_accepts_positive_values(self) -> None:
+        self.assertEqual(backfill.parse_positive_int_arg("4"), 4)
+
+    def test_parse_positive_int_arg_rejects_zero(self) -> None:
+        with self.assertRaises(argparse.ArgumentTypeError):
+            backfill.parse_positive_int_arg("0")
+
     def test_build_queries_prefers_primary_name_then_korean_alias_then_release_title(self) -> None:
         detail = {
             "group": "IVE",
@@ -205,6 +214,60 @@ class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
         self.assertEqual(resolutions[0]["youtube_video_id"], "abc123")
         self.assertEqual(resolutions[0]["inferred_title_tracks"], ["캐치 캐치"])
         self.assertEqual(resolutions[0]["title_track_basis"], "track_search")
+
+    @patch.object(backfill, "REQUEST_DELAY_SECONDS", 0)
+    def test_choose_resolutions_emits_progress_to_stderr_without_changing_resolution(self) -> None:
+        details = [
+            {
+                "group": "YENA",
+                "release_title": "LOVE CATCHER",
+                "release_date": "2026-03-11",
+                "stream": "album",
+                "release_kind": "ep",
+                "youtube_video_status": "unresolved",
+                "tracks": [
+                    {"title": "캐치 캐치"},
+                ],
+            }
+        ]
+        profiles_by_group = {"YENA": {"display_name": "YENA", "aliases": [], "search_aliases": ["최예나"]}}
+        allowlists_by_group = {
+            "YENA": {
+                "mv_allowlist_match_keys": ["channel:uckrdegnm3mqzxhk2mfnojmw"],
+                "mv_source_channels": [
+                    {
+                        "channel_url": "https://www.youtube.com/channel/UCkrDEGNM3mqZXHk2MfnOjMw",
+                        "owner_type": "team",
+                    }
+                ],
+            }
+        }
+
+        def fake_fetch_query_candidates(query: str, reference: object) -> list[dict[str, object]]:
+            return [
+                {
+                    "video_id": "abc123",
+                    "title": "YENA(최예나) - '캐치 캐치' M/V",
+                    "channel_url": "https://www.youtube.com/channel/UCkrDEGNM3mqZXHk2MfnOjMw",
+                    "view_count": 1000,
+                    "published_at": "2026-03-11T09:00:00Z",
+                    "query": query,
+                }
+            ]
+
+        stderr_buffer = io.StringIO()
+        with patch.object(backfill, "fetch_query_candidates", side_effect=fake_fetch_query_candidates):
+            with patch("sys.stderr", stderr_buffer):
+                resolutions, review_rows = backfill.choose_resolutions(
+                    details,
+                    profiles_by_group,
+                    allowlists_by_group,
+                    progress_every=1,
+                )
+
+        self.assertEqual(len(review_rows), 0)
+        self.assertEqual(len(resolutions), 1)
+        self.assertIn("[backfill_release_detail_mvs] 1/1 YENA / LOVE CATCHER", stderr_buffer.getvalue())
 
 
 if __name__ == "__main__":

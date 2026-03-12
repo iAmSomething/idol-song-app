@@ -2,6 +2,7 @@ import argparse
 import csv
 import json
 import re
+import sys
 import unicodedata
 from collections import Counter
 from datetime import date
@@ -98,6 +99,49 @@ CANONICAL_MV_COHORT_TARGETS = {
     "2021-2023": {"single": 0.5, "ep": 0.35, "album": 0.28},
     "2024+": {"single": 0.72, "ep": 0.55, "album": 0.4},
 }
+
+
+def parse_positive_int_arg(raw_value: str) -> int:
+    try:
+        parsed = int(raw_value)
+    except ValueError as error:
+        raise argparse.ArgumentTypeError("must be a positive integer") from error
+    if parsed <= 0:
+        raise argparse.ArgumentTypeError("must be a positive integer")
+    return parsed
+
+
+def enrich_execution_scope(
+    execution_scope: Optional[Dict],
+    total_scoped_rows: int,
+    selected_rows: int,
+    max_rows: Optional[int],
+    progress_every: int,
+) -> Dict:
+    scope = dict(execution_scope or {})
+    scope["scoped_rows_total"] = total_scoped_rows
+    scope["selected_rows"] = selected_rows
+    if max_rows is not None:
+        scope["max_rows"] = max_rows
+    scope["progress_every"] = progress_every
+    return scope
+
+
+def should_emit_progress(current_index: int, total_rows: int, progress_every: int) -> bool:
+    if total_rows <= 0:
+        return False
+    return current_index == 1 or current_index == total_rows or current_index % progress_every == 0
+
+
+def emit_progress(prefix: str, current_index: int, total_rows: int, row: Dict) -> None:
+    print(
+        (
+            f"[{prefix}] {current_index}/{total_rows} "
+            f"{row['group']} / {row['release_title']} / {row['release_date']} / {row['stream']}"
+        ),
+        file=sys.stderr,
+        flush=True,
+    )
 
 
 def optional_text(value: object) -> Optional[str]:
@@ -2234,6 +2278,17 @@ def main() -> None:
         "--cohorts",
         help="Comma-separated release cohorts to rebuild (latest,recent,historical). When set, only scoped rows are recomputed and merged back into the full snapshot.",
     )
+    parser.add_argument(
+        "--max-rows",
+        type=parse_positive_int_arg,
+        help="Limit the current scoped rebuild to the first N matching rows for safer targeted reruns.",
+    )
+    parser.add_argument(
+        "--progress-every",
+        type=parse_positive_int_arg,
+        default=25,
+        help="Emit stderr progress after every N processed rows during the current pass.",
+    )
     args = parser.parse_args()
     scoped_groups = None
     if args.groups:
@@ -2258,6 +2313,34 @@ def main() -> None:
         for item in latest_snapshot_items
         if matches_execution_scope(item, scoped_groups, scoped_cohorts, reference_date)
     ]
+    total_scoped_rows = len(scoped_items)
+    if args.max_rows is not None:
+        scoped_items = scoped_items[: args.max_rows]
+    scoped_keys = {
+        get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"])
+        for item in scoped_items
+    }
+    scoped_latest_snapshot_items = [
+        item
+        for item in scoped_latest_snapshot_items
+        if get_detail_key(item["group"], item["release_title"], item["release_date"], item["stream"]) in scoped_keys
+    ]
+    execution_scope = enrich_execution_scope(
+        execution_scope,
+        total_scoped_rows=total_scoped_rows,
+        selected_rows=len(scoped_items),
+        max_rows=args.max_rows,
+        progress_every=args.progress_every,
+    )
+    print(
+        (
+            "[build_release_details_musicbrainz] "
+            f"processing {len(scoped_items)}/{total_scoped_rows} scoped rows "
+            f"(progress_every={args.progress_every})"
+        ),
+        file=sys.stderr,
+        flush=True,
+    )
     song_release_index = build_song_release_index(items)
     existing_details = {
         get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
@@ -2279,7 +2362,9 @@ def main() -> None:
     applied_overrides = 0
     relaxed_match_count = 0
 
-    for item in scoped_items:
+    for current_index, item in enumerate(scoped_items, start=1):
+        if should_emit_progress(current_index, len(scoped_items), args.progress_every):
+            emit_progress("build_release_details_musicbrainz", current_index, len(scoped_items), item)
         attempts: List[Dict] = []
         used_relaxed_match = False
         existing = existing_details.get(
