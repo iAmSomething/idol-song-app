@@ -1774,10 +1774,16 @@ const releases = releaseCatalog
 
 const unresolved = unresolvedRows as UnresolvedRow[]
 const watchlist = watchlistRows as WatchlistRow[]
-const upcomingCandidates = upcomingCandidateRows as UpcomingCandidateRow[]
+const rawUpcomingCandidates = upcomingCandidateRows as UpcomingCandidateRow[]
 const releaseChangeLog = releaseChangeLogRows as ReleaseChangeLogRow[]
 const youtubeChannelAllowlists = youtubeChannelAllowlistRows as YouTubeChannelAllowlistRow[]
 const teamBadgeAssetByGroup = new Map(teamBadgeAssets.map((row) => [row.group, row]))
+const UPCOMING_VISIBILITY_TODAY_KST = new Intl.DateTimeFormat('sv-SE', {
+  timeZone: 'Asia/Seoul',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+}).format(new Date())
 
 const dateFormatter = new Intl.DateTimeFormat('en-CA', {
   year: 'numeric',
@@ -1801,6 +1807,9 @@ const verifiedReleaseHistory = buildVerifiedReleaseHistory(seededVerifiedRelease
 const verifiedReleaseHistoryByGroup = groupReleasesByGroup(verifiedReleaseHistory)
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
 const relatedActOverrideMap = new Map(relatedActOverrides.map((row) => [row.group, row.related_groups]))
+const upcomingCandidates = rawUpcomingCandidates.filter((item) =>
+  shouldDisplayUpcomingCandidate(item, UPCOMING_VISIBILITY_TODAY_KST),
+)
 const dedupedUpcomingCandidates = dedupeUpcomingCandidatesForDisplay(upcomingCandidates)
 const rawUpcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
 const upcomingByGroup = groupUpcomingCandidatesByGroup(dedupedUpcomingCandidates)
@@ -10624,6 +10633,13 @@ function getUpcomingDatePrecisionValue(item: Pick<UpcomingSignalBase, 'date_prec
   }
 
   return 'unknown'
+}
+
+function shouldDisplayUpcomingCandidate(
+  item: Pick<UpcomingSignalBase, 'date_precision' | 'scheduled_date' | 'scheduled_month'>,
+  todayIsoDate: string,
+) {
+  return !(getUpcomingDatePrecisionValue(item) === 'exact' && isExactDate(item.scheduled_date) && item.scheduled_date < todayIsoDate)
 }
 
 function hasExactUpcomingDate(item: Pick<UpcomingSignalBase, 'date_precision' | 'scheduled_date' | 'scheduled_month'>) {

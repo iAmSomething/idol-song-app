@@ -232,6 +232,22 @@ function normalizeUpcomingArray(value: unknown): CalendarUpcomingItem[] {
   return value.map(normalizeUpcomingItem).filter((item): item is CalendarUpcomingItem => item !== null);
 }
 
+function resolveTodayIsoDate(timezone: string): string {
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+}
+
+function isElapsedExactUpcoming(
+  item: Pick<CalendarUpcomingItem, 'date_precision' | 'scheduled_date'> | null,
+  todayIsoDate: string,
+): boolean {
+  return Boolean(item?.date_precision === 'exact' && item.scheduled_date && item.scheduled_date < todayIsoDate);
+}
+
 function normalizeCalendarMonthPayload(payload: unknown): CalendarMonthData | null {
   if (!isRecord(payload) || !isRecord(payload.summary)) {
     return null;
@@ -304,6 +320,28 @@ function normalizeCalendarMonthPayload(payload: unknown): CalendarMonthData | nu
   };
 }
 
+function filterElapsedExactUpcomingRows(data: CalendarMonthData, todayIsoDate: string): CalendarMonthData {
+  const days = data.days.map((day) => ({
+    ...day,
+    exact_upcoming: day.exact_upcoming.filter((item) => !isElapsedExactUpcoming(item, todayIsoDate)),
+  }));
+  const scheduledList = data.scheduled_list.filter((item) => !isElapsedExactUpcoming(item, todayIsoDate));
+  const filteredNearestUpcoming =
+    data.nearest_upcoming && !isElapsedExactUpcoming(data.nearest_upcoming, todayIsoDate) ? data.nearest_upcoming : null;
+
+  return {
+    ...data,
+    summary: {
+      verified_count: data.summary.verified_count,
+      exact_upcoming_count: days.reduce((count, day) => count + day.exact_upcoming.length, 0),
+      month_only_upcoming_count: data.month_only_upcoming.length,
+    },
+    nearest_upcoming: filteredNearestUpcoming,
+    days,
+    scheduled_list: scheduledList,
+  };
+}
+
 export function registerCalendarRoutes(app: FastifyInstance, context: CalendarRouteContext): void {
   app.get('/v1/calendar/month', async (request) => {
     const { month } = request.query as CalendarMonthQuery;
@@ -338,6 +376,15 @@ export function registerCalendarRoutes(app: FastifyInstance, context: CalendarRo
       });
     }
 
-    return buildReadDataEnvelope(request, context.config.appTimezone, data, { month: row.month_key }, toIsoString(row.generated_at));
+    const todayIsoDate = resolveTodayIsoDate(context.config.appTimezone);
+    const filteredData = filterElapsedExactUpcomingRows(data, todayIsoDate);
+
+    return buildReadDataEnvelope(
+      request,
+      context.config.appTimezone,
+      filteredData,
+      { month: row.month_key },
+      toIsoString(row.generated_at)
+    );
   });
 }

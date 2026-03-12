@@ -181,6 +181,25 @@ function toReleaseFormat(value: string | null | undefined): string | null {
   return asNullableString(value);
 }
 
+function resolveTodayIsoDate(timezone: string): string {
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+}
+
+function isElapsedExactUpcomingRow(
+  row:
+    | Pick<UpcomingSearchRow, 'date_precision' | 'scheduled_date'>
+    | Pick<NonNullable<EntitySearchPayload['next_upcoming']>, 'date_precision' | 'scheduled_date'>
+    | null,
+  todayIsoDate: string,
+): boolean {
+  return Boolean(row?.date_precision === 'exact' && row.scheduled_date && row.scheduled_date < todayIsoDate);
+}
+
 function parseSearchLimit(value: string | undefined): number | null {
   if (value === undefined) {
     return DEFAULT_SEARCH_LIMIT;
@@ -432,6 +451,7 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
 
     const needle = buildSearchNeedle(q);
     const limit = parseSearchLimit(limitQuery);
+    const todayIsoDate = resolveTodayIsoDate(context.config.appTimezone);
 
     if (!needle || limit === null) {
       throw routeError(
@@ -470,6 +490,11 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
         return payload ? buildEntityMatch(row, payload, needle) : null;
       })
       .filter((item): item is EntityMatch => item !== null);
+    for (const match of entityMatches) {
+      if (isElapsedExactUpcomingRow(match.next_upcoming, todayIsoDate)) {
+        match.next_upcoming = null;
+      }
+    }
     const entityMatchById = new Map(entityMatches.map((item) => [item.entity_id, item]));
     const entityMatchBySlug = new Map(entityMatches.map((item) => [item.entity_slug, item]));
 
@@ -610,6 +635,9 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
 
     const upcomingMatchMap = new Map<string, UpcomingMatch>();
     for (const row of upcomingTitleResult.rows) {
+      if (isElapsedExactUpcomingRow(row, todayIsoDate)) {
+        continue;
+      }
       const normalizedHeadline = normalizeAliasValue(row.headline);
       const isExact = normalizedHeadline === needle.normalized || compactNormalizedAlias(normalizedHeadline) === needle.compact;
       if (isExact && !entityMatchBySlug.has(row.entity_slug)) {
@@ -682,7 +710,7 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
     if (entityIdsForUpcomingHydration.length > 0) {
       const entityUpcomingResult = await context.db.query<UpcomingSearchRow>(
         `
-          select distinct on (us.entity_id)
+          select
             us.id::text as upcoming_signal_id,
             e.id::text as entity_id,
             e.slug as entity_slug,
@@ -727,7 +755,13 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
         [entityIdsForUpcomingHydration]
       );
 
+      const seenEntityUpcoming = new Set<string>();
       for (const row of entityUpcomingResult.rows) {
+        if (seenEntityUpcoming.has(row.entity_id) || isElapsedExactUpcomingRow(row, todayIsoDate)) {
+          continue;
+        }
+        seenEntityUpcoming.add(row.entity_id);
+
         const matchedEntity = entityMatchById.get(row.entity_id);
         if (matchedEntity) {
           matchedEntity.next_upcoming = buildEntityUpcomingSummary(row);
