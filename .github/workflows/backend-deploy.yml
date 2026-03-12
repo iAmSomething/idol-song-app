@@ -242,6 +242,24 @@ jobs:
           RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID }}
         run: node ./backend/scripts/deploy-backend.mjs
 
+      - name: Wait for production backend health
+        env:
+          BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL }}
+        run: |
+          attempts=30
+          for attempt in $(seq 1 "$attempts"); do
+            status=$(curl -s -o /tmp/backend-health.json -w '%{http_code}' "$BACKEND_PUBLIC_URL/health" || true)
+            if [ "$status" = "200" ]; then
+              cat /tmp/backend-health.json
+              exit 0
+            fi
+            echo "backend health not ready yet (attempt ${attempt}/${attempts}, status=${status:-error})"
+            sleep 10
+          done
+          echo "production backend did not become healthy in time"
+          cat /tmp/backend-health.json || true
+          exit 1
+
       - name: Run production canonical fixture smoke checks
         working-directory: backend
         env:
