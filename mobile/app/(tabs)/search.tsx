@@ -694,67 +694,14 @@ export default function SearchTabScreen() {
     });
   }, [activeSegment]);
 
-  if (datasetState.kind === 'loading') {
-    return (
-      <ScreenFeedbackState
-        body="검색 대상 팀, 발매, 예정 데이터를 불러오는 중입니다."
-        eyebrow="데이터 로딩"
-        loadingLayout="search"
-        title={MOBILE_COPY.surface.searchTitle}
-        variant="loading"
-      />
-    );
-  }
-
-  if (datasetState.kind === 'error') {
-    return (
-      <ScreenFeedbackState
-        action={{
-          label: MOBILE_COPY.action.retry,
-          onPress: () => setReloadCount((count) => count + 1),
-        }}
-        body={datasetState.message}
-        eyebrow="로드 오류"
-        title={MOBILE_COPY.surface.searchTitle}
-        variant="error"
-      />
-    );
-  }
-
-  if (!results) {
-    return null;
-  }
-
   const segmentCounts: Record<SearchSegment, number> = {
-    entities: results.entities.length,
-    releases: results.releases.length,
-    upcoming: results.upcoming.length,
+    entities: results?.entities.length ?? 0,
+    releases: results?.releases.length ?? 0,
+    upcoming: results?.upcoming.length ?? 0,
   };
-
-  const activeRows =
-    activeSegment === 'entities'
-      ? results.entities
-      : activeSegment === 'releases'
-        ? results.releases
-        : results.upcoming;
-  const totalResults = segmentCounts.entities + segmentCounts.releases + segmentCounts.upcoming;
-  const availableSegments = (['entities', 'releases', 'upcoming'] as SearchSegment[]).filter(
-    (segment) => segmentCounts[segment] > 0,
-  );
-  const hasPartialResults = totalResults > 0 && availableSegments.length < 3;
-  const firstAvailableSegment = availableSegments[0] ?? null;
-  const showActiveSegmentEmpty = query.trim().length > 0 && activeRows.length === 0 && totalResults > 0;
-  const showSegmentSummaryNotice =
-    query.trim().length > 0 && activeRows.length > 0 && hasPartialResults;
   const showCancelAction = isInputFocused || query.trim().length > 0;
-
-  return (
-    <ScrollView
-      contentContainerStyle={scrollContentStyle}
-      keyboardDismissMode={Platform.OS === 'android' ? 'on-drag' : 'interactive'}
-      keyboardShouldPersistTaps="handled"
-      style={styles.screen}
-    >
+  const searchChrome = (
+    <>
       <AppBar
         subtitle={MOBILE_COPY.surface.searchSubtitle}
         testID="search-app-bar"
@@ -851,6 +798,93 @@ export default function SearchTabScreen() {
         selectedKey={activeSegment}
         testID="search-segment"
       />
+    </>
+  );
+
+  if (datasetState.kind === 'loading' && !query.trim()) {
+    return (
+      <ScreenFeedbackState
+        body="검색 대상 팀, 발매, 예정 데이터를 불러오는 중입니다."
+        eyebrow="데이터 로딩"
+        loadingLayout="search"
+        title={MOBILE_COPY.surface.searchTitle}
+        variant="loading"
+      />
+    );
+  }
+
+  if (datasetState.kind === 'loading') {
+    return (
+      <ScrollView
+        contentContainerStyle={scrollContentStyle}
+        keyboardDismissMode={Platform.OS === 'android' ? 'on-drag' : 'interactive'}
+        keyboardShouldPersistTaps="handled"
+        style={styles.screen}
+      >
+        {searchChrome}
+        <InsetSection
+          accessory={
+            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
+              업데이트 중
+            </Text>
+          }
+          description={`현재 세그먼트: ${resolveSearchSegmentLabel(activeSegment)}`}
+          testID="search-results-section"
+          title="검색 결과"
+        >
+          <InlineFeedbackNotice
+            body="입력한 키워드로 결과를 다시 찾고 있습니다."
+            testID="search-loading-notice"
+            title="검색 업데이트 중"
+          />
+        </InsetSection>
+      </ScrollView>
+    );
+  }
+
+  if (datasetState.kind === 'error') {
+    return (
+      <ScreenFeedbackState
+        action={{
+          label: MOBILE_COPY.action.retry,
+          onPress: () => setReloadCount((count) => count + 1),
+        }}
+        body={datasetState.message}
+        eyebrow="로드 오류"
+        title={MOBILE_COPY.surface.searchTitle}
+        variant="error"
+      />
+    );
+  }
+
+  if (!results) {
+    return null;
+  }
+
+  const activeRows =
+    activeSegment === 'entities'
+      ? results.entities
+      : activeSegment === 'releases'
+        ? results.releases
+        : results.upcoming;
+  const totalResults = segmentCounts.entities + segmentCounts.releases + segmentCounts.upcoming;
+  const availableSegments = (['entities', 'releases', 'upcoming'] as SearchSegment[]).filter(
+    (segment) => segmentCounts[segment] > 0,
+  );
+  const hasPartialResults = totalResults > 0 && availableSegments.length < 3;
+  const firstAvailableSegment = availableSegments[0] ?? null;
+  const showActiveSegmentEmpty = query.trim().length > 0 && activeRows.length === 0 && totalResults > 0;
+  const showSegmentSummaryNotice =
+    query.trim().length > 0 && activeRows.length > 0 && hasPartialResults;
+
+  return (
+    <ScrollView
+      contentContainerStyle={scrollContentStyle}
+      keyboardDismissMode={Platform.OS === 'android' ? 'on-drag' : 'interactive'}
+      keyboardShouldPersistTaps="handled"
+      style={styles.screen}
+    >
+      {searchChrome}
 
       {!query.trim() ? (
         <>
