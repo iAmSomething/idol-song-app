@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-12T02:34:45.081Z",
+  "generated_at": "2026-03-12T08:04:24.853Z",
   "report_bundle": null,
   "bundle_consistency": {
     "status": "pass",
     "expected_bundle_id": null,
     "observed": {
-      "parity_bundle": "post-sync-verification-3fc09490ed96",
-      "shadow_bundle": "post-sync-verification-3fc09490ed96",
-      "runtime_gate_bundle": "post-sync-verification-3fc09490ed96",
-      "historical_coverage_generated_at": "2026-03-11T00:00:00.000Z",
+      "parity_bundle": "post-sync-verification-368ed485b22b",
+      "shadow_bundle": "post-sync-verification-368ed485b22b",
+      "runtime_gate_bundle": "post-sync-verification-368ed485b22b",
+      "historical_coverage_generated_at": "2026-03-12T00:00:00.000Z",
       "canonical_null_coverage_generated_at": "2026-03-12T02:34:23.746Z",
       "null_coverage_trend_generated_at": "2026-03-12T02:34:25.709Z"
     },
@@ -63,7 +63,7 @@
           "pass": 0.85,
           "needs_review": 0.6
         },
-        "blockerRule": "Preview and production mobile profiles must default to backend-api, and bundled-static cannot remain the normal shipping mode outside development or degraded fallback."
+        "blockerRule": "Development, preview, and production mobile profiles must default to backend-api, and bundled data must remain fixture-only rather than a shipped active runtime mode."
       },
       {
         "key": "catalog_completeness",
@@ -94,15 +94,16 @@
   },
   "overall": {
     "status": "fail",
-    "score_ratio": 0.7417,
-    "score_percent": 74.2,
-    "weighted_points": 74.17,
+    "score_ratio": 0.6592,
+    "score_percent": 65.9,
+    "weighted_points": 65.92,
     "total_weight": 100,
     "blocker_categories": [
       {
         "key": "backend_runtime_health",
         "label": "Backend runtime health",
         "blocker_reasons": [
+          "worker_cadence=fail",
           "stage_gate:shadow_to_web_cutover=fail",
           "stage_gate:web_cutover_to_json_demotion=fail"
         ]
@@ -111,13 +112,14 @@
         "key": "backend_deploy_parity",
         "label": "Backend deploy parity",
         "blocker_reasons": [
-          "parity_clean=false (latest_verified_release_selection drift=0)"
+          "parity_clean=false (latest_verified_release_selection drift=1)"
         ]
       },
       {
         "key": "web_backend_only_stability",
         "label": "Web backend-only stability",
         "blocker_reasons": [
+          "entity_detail clean_ratio=0.25",
           "calendar_month clean_ratio=0.67"
         ]
       },
@@ -143,18 +145,19 @@
       "weight": 25,
       "blocker": true,
       "status": "fail",
-      "score_ratio": 0.7,
-      "score_percent": 70,
-      "weighted_points": 17.5,
+      "score_ratio": 0.52,
+      "score_percent": 52,
+      "weighted_points": 13,
       "blocker_reasons": [
+        "worker_cadence=fail",
         "stage_gate:shadow_to_web_cutover=fail",
         "stage_gate:web_cutover_to_json_demotion=fail"
       ],
       "summary_lines": [
         "api latency: needs_review (worst p95=1148.96ms)",
         "api error rate: needs_review (error rate=0)",
-        "projection freshness: pass (lag=0.4m)",
-        "worker cadence: needs_review (cadence_status=warming_up, deadline=2026-03-12T12:00:00.000Z)",
+        "projection freshness: pass (lag=0.63m)",
+        "worker cadence: fail (cadence_status=scheduled_evidence_missing, missed_windows=6)",
         "parity dependency: fail",
         "shadow dependency: fail",
         "historical catalog completeness dependency: fail",
@@ -192,8 +195,8 @@
           "projection_freshness": {
             "status": "pass",
             "observed": {
-              "projection_generated_at": "2026-03-12T02:34:21.051Z",
-              "lag_minutes": 0.4
+              "projection_generated_at": "2026-03-12T08:03:06.277Z",
+              "lag_minutes": 0.63
             },
             "thresholds": {
               "passLagMinutes": 20,
@@ -201,21 +204,21 @@
             }
           },
           "worker_cadence": {
-            "status": "needs_review",
+            "status": "fail",
             "observed": {
               "primary_path_key": "daily_upcoming",
               "cadence_label": "daily",
               "scheduled_failure_rate": null,
               "last_success_age_hours": null,
               "scheduled_runs": 0,
-              "cadence_status": "warming_up",
+              "cadence_status": "scheduled_evidence_missing",
               "scheduled_evidence": {
-                "status": "warming_up",
-                "reason": "Workflow schedule is configured, but the first scheduled sample window is still in warm-up.",
+                "status": "scheduled_evidence_missing",
+                "reason": "Expected scheduled run windows have elapsed without a recorded scheduled sample.",
                 "cadence_label": "daily",
                 "workflow_created_at": "2026-03-06T07:34:09.000Z",
-                "workflow_updated_at": "2026-03-11T13:45:16.000Z",
-                "schedule_reference_at": "2026-03-11T13:45:16.000Z",
+                "workflow_updated_at": "2026-03-12T03:34:12.000Z",
+                "schedule_reference_at": "2026-03-06T07:34:09.000Z",
                 "workflow_state": "active",
                 "workflow_html_url": "https://github.com/iAmSomething/idol-song-app/blob/main/.github/workflows/weekly-kpop-scan.yml",
                 "parsed_schedule": {
@@ -224,12 +227,12 @@
                   "hour": 0
                 },
                 "warmup_grace_hours": 12,
-                "first_expected_run_at": "2026-03-12T00:00:00.000Z",
+                "first_expected_run_at": "2026-03-07T00:00:00.000Z",
                 "next_expected_run_at": "2026-03-13T00:00:00.000Z",
-                "warmup_deadline_at": "2026-03-12T12:00:00.000Z",
-                "expected_scheduled_runs_by_now": 1,
+                "warmup_deadline_at": "2026-03-07T12:00:00.000Z",
+                "expected_scheduled_runs_by_now": 6,
                 "observed_scheduled_runs": 0,
-                "missed_scheduled_windows": 1
+                "missed_scheduled_windows": 6
               }
             },
             "thresholds": {
@@ -256,17 +259,17 @@
       "score_percent": 40,
       "weighted_points": 8,
       "blocker_reasons": [
-        "parity_clean=false (latest_verified_release_selection drift=0)"
+        "parity_clean=false (latest_verified_release_selection drift=1)"
       ],
       "summary_lines": [
         "entity alias/search coverage: clean (mismatched entities=0)",
         "official links: drift (mismatched entities=62)",
-        "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
-        "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
+        "YouTube allowlists: drift (role mismatches=90, metadata mismatches=2)",
+        "latest verified release selection: drift (tracking mismatches=0, stream mismatches=1)",
         "upcoming counts / nearest: clean (month bucket mismatches=0)",
         "title-track / double-title: clean (mismatched releases=0)",
-        "YouTube Music / MV service-link state: clean (mismatched releases=0)",
-        "review-required counts (release scope): clean (mv_candidate_count_match=True, youtube_mv_status_counts_match=True)"
+        "YouTube Music / MV service-link state: drift (mismatched releases=2)",
+        "review-required counts (release scope): drift (mv_candidate_count_match=True, youtube_mv_status_counts_match=False)"
       ],
       "evidence": {
         "parity_clean": false,
@@ -282,9 +285,16 @@
         "parity_drift_checks": {
           "tracking_mismatches_count": 0,
           "tracking_mismatches": [],
-          "stream_mismatches_count": 0,
-          "stream_mismatches": [],
-          "clean": true
+          "stream_mismatches_count": 1,
+          "stream_mismatches": [
+            {
+              "entity_slug": "yena",
+              "stream": "album",
+              "source": "yena|blooming wings|2025-07-29|album",
+              "db": "yena|love catcher|2026-03-11|album"
+            }
+          ],
+          "clean": false
         }
       }
     },
@@ -294,22 +304,24 @@
       "weight": 20,
       "blocker": true,
       "status": "fail",
-      "score_ratio": 0.9033,
-      "score_percent": 90.3,
-      "weighted_points": 18.07,
+      "score_ratio": 0.7158,
+      "score_percent": 71.6,
+      "weighted_points": 14.32,
       "blocker_reasons": [
+        "entity_detail clean_ratio=0.25",
         "calendar_month clean_ratio=0.67"
       ],
       "summary_lines": [
         "search: clean 4/5, drift 1/5",
-        "entity_detail: clean 4/4, drift 0/4",
+        "entity_detail: clean 1/4, drift 3/4",
         "release_detail: clean 3/3, drift 0/3",
         "calendar_month: clean 2/3, drift 1/3",
         "radar: clean 1/1, drift 0/1",
-        "missing rows or segments: 2 case(s)",
+        "missing rows or segments: 5 case(s)",
         "exact-vs-month-only drift: 2 case(s)",
         "field-shape mismatches: 1 case(s)",
-        "alias-match differences: 1 case(s)"
+        "alias-match differences: 1 case(s)",
+        "latest-release or next-upcoming drift: 1 case(s)"
       ],
       "evidence": {
         "clean": false,
@@ -363,9 +375,9 @@
             "ratio": 0.8
           },
           "entity_detail": {
-            "clean": 4,
+            "clean": 1,
             "total": 4,
-            "ratio": 1
+            "ratio": 0.25
           },
           "release_detail": {
             "clean": 3,
@@ -396,18 +408,18 @@
       "weighted_points": 15,
       "blocker_reasons": [],
       "summary_lines": [
-        "profile defaults: development=bundled-static, preview=backend-api, production=backend-api",
+        "profile defaults: development=backend-api, preview=backend-api, production=backend-api",
         "debug metadata exposes backend-primary policy"
       ],
       "evidence": {
         "expected_modes": {
-          "development": "bundled-static",
+          "development": "backend-api",
           "preview": "backend-api",
           "production": "backend-api"
         },
         "backend_primary_selection": true,
         "debug_policy_aligned": true,
-        "bundled_static_primary_only_in_development": true
+        "backend_api_primary_in_all_profiles": true
       }
     },
     {
@@ -433,7 +445,7 @@
         "detail trusted coverage: 1770/1770 (100.0%), pre-2024 1153/1153 (100.0%)",
         "title-track resolved coverage: 1201/1770 (67.8%), pre-2024 752/1153 (65.2%), review queue 569",
         "canonical MV coverage: 153/1770 (8.6%), pre-2024 74/1153 (6.4%), mv review 2",
-        "external acquisition pass: YTM attempted 113, resolved 0; MV attempted 56, resolved 0, review 2",
+        "external acquisition pass: YTM attempted 0, resolved 0; MV attempted 0, resolved 0, review 2",
         "youtube MV search pass: attempted 54, resolved 41, review 13, unresolved 1616, coverage lift +1",
         "migration-critical first slice: title-track 18/18 (100.0%), canonical MV 18/18 (100.0%), gate pass",
         "worst title-track cohort: 2021-2023 ep 31.4% / target 74.0%",
@@ -490,7 +502,7 @@
             },
             "cutover_ready": true,
             "cutover_status": "pass",
-            "generated_at": "2026-03-11",
+            "generated_at": "2026-03-12",
             "summary_lines": [
               "detail_payload gate: pass (100.0% vs 100.0%)",
               "detail_trusted gate: pass (100.0% vs 100.0%)",
@@ -566,10 +578,10 @@
     }
   ],
   "summary_lines": [
-    "overall readiness: fail (74.2/100)",
-    "Backend runtime health: fail (70/100) [BLOCKER] - stage_gate:shadow_to_web_cutover=fail",
-    "Backend deploy parity: fail (40/100) [BLOCKER] - parity_clean=false (latest_verified_release_selection drift=0)",
-    "Web backend-only stability: fail (90.3/100) [BLOCKER] - calendar_month clean_ratio=0.67",
+    "overall readiness: fail (65.9/100)",
+    "Backend runtime health: fail (52/100) [BLOCKER] - worker_cadence=fail",
+    "Backend deploy parity: fail (40/100) [BLOCKER] - parity_clean=false (latest_verified_release_selection drift=1)",
+    "Web backend-only stability: fail (71.6/100) [BLOCKER] - entity_detail clean_ratio=0.25",
     "Mobile runtime mode: pass (100/100) - no blocker reason",
     "Catalog completeness: fail (78/100) [BLOCKER] - title_track_resolved overall=67.9 pre_2024=65.2",
     "bundle consistency: pass"

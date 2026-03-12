@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-12T02:34:27.398Z",
-  "bundle_id": "post-sync-verification-3fc09490ed96",
+  "generated_at": "2026-03-12T08:03:35.379Z",
+  "bundle_id": "post-sync-verification-368ed485b22b",
   "bundle_kind": "post-sync-verification",
   "cadence_profile": "daily-upcoming",
   "source": {
@@ -22,11 +22,11 @@
     },
     "projection_refresh": {
       "path": "reports/projection_refresh_summary.json",
-      "generated_at": "2026-03-12T02:34:21.051Z"
+      "generated_at": "2026-03-12T08:03:06.277Z"
     },
     "historical_coverage": {
       "path": "reports/historical_release_detail_coverage_report.json",
-      "generated_at": "2026-03-11T00:00:00.000Z"
+      "generated_at": "2026-03-12T00:00:00.000Z"
     },
     "canonical_null_coverage": {
       "path": "reports/canonical_null_coverage_report.json",
@@ -44,7 +44,7 @@
     },
     "worker_cadence": {
       "path": "reports/worker_cadence_report.json",
-      "generated_at": "2026-03-12T02:34:22.427Z",
+      "generated_at": "2026-03-12T08:02:36.197Z",
       "primary_path_key": "daily_upcoming"
     },
     "service_link_gap_queues": {
@@ -76,7 +76,7 @@
     }
   },
   "summary_lines": [
-    "bundle id: post-sync-verification-3fc09490ed96",
+    "bundle id: post-sync-verification-368ed485b22b",
     "bundle kind: post-sync-verification",
     "cadence profile: daily-upcoming",
     "workflow: manual"

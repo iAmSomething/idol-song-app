@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-12T02:34:44.443Z",
+  "generated_at": "2026-03-12T08:03:43.500Z",
   "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-12T02:34:27.398Z",
-    "bundle_id": "post-sync-verification-3fc09490ed96",
+    "generated_at": "2026-03-12T08:03:35.379Z",
+    "bundle_id": "post-sync-verification-368ed485b22b",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -25,11 +25,11 @@
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-12T02:34:21.051Z"
+        "generated_at": "2026-03-12T08:03:06.277Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
-        "generated_at": "2026-03-11T00:00:00.000Z"
+        "generated_at": "2026-03-12T00:00:00.000Z"
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
@@ -47,7 +47,7 @@
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-12T02:34:22.427Z",
+        "generated_at": "2026-03-12T08:02:36.197Z",
         "primary_path_key": "daily_upcoming"
       },
       "service_link_gap_queues": {
@@ -79,7 +79,7 @@
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-3fc09490ed96",
+      "bundle id: post-sync-verification-368ed485b22b",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -87,9 +87,9 @@
   },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": "post-sync-verification-3fc09490ed96",
+    "expected_bundle_id": "post-sync-verification-368ed485b22b",
     "observed": {
-      "parity_bundle": "post-sync-verification-3fc09490ed96",
+      "parity_bundle": "post-sync-verification-368ed485b22b",
       "shadow_bundle": null,
       "runtime_gate_bundle": null,
       "historical_coverage_generated_at": null,
@@ -102,17 +102,17 @@
     "exists": true,
     "path": "backend/reports/backend_json_parity_report.json",
     "clean": false,
-    "generated_at": "2026-03-12T02:34:38.126295+00:00",
-    "bundle_id": "post-sync-verification-3fc09490ed96",
+    "generated_at": "2026-03-12T08:03:37.635667+00:00",
+    "bundle_id": "post-sync-verification-368ed485b22b",
     "summary_lines": [
       "entity alias/search coverage: clean (mismatched entities=0)",
       "official links: drift (mismatched entities=62)",
-      "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
-      "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
+      "YouTube allowlists: drift (role mismatches=90, metadata mismatches=2)",
+      "latest verified release selection: drift (tracking mismatches=0, stream mismatches=1)",
       "upcoming counts / nearest: clean (month bucket mismatches=0)",
       "title-track / double-title: clean (mismatched releases=0)",
-      "YouTube Music / MV service-link state: clean (mismatched releases=0)",
-      "review-required counts (release scope): clean (mv_candidate_count_match=True, youtube_mv_status_counts_match=True)"
+      "YouTube Music / MV service-link state: drift (mismatched releases=2)",
+      "review-required counts (release scope): drift (mv_candidate_count_match=True, youtube_mv_status_counts_match=False)"
     ]
   },
   "self_check": {
@@ -163,14 +163,15 @@
   },
   "summary_lines": [
     "search: clean 4/5, drift 1/5",
-    "entity_detail: clean 4/4, drift 0/4",
+    "entity_detail: clean 1/4, drift 3/4",
     "release_detail: clean 3/3, drift 0/3",
     "calendar_month: clean 2/3, drift 1/3",
     "radar: clean 1/1, drift 0/1",
-    "missing rows or segments: 2 case(s)",
+    "missing rows or segments: 5 case(s)",
     "exact-vs-month-only drift: 2 case(s)",
     "field-shape mismatches: 1 case(s)",
-    "alias-match differences: 1 case(s)"
+    "alias-match differences: 1 case(s)",
+    "latest-release or next-upcoming drift: 1 case(s)"
   ],
   "cases": [
     {
@@ -218,6 +219,7 @@
         "entities": [
           {
             "entity_slug": "triples",
+            "canonical_path": "/artists/triples",
             "display_name": "tripleS",
             "canonical_name": "tripleS",
             "entity_type": "group",
@@ -238,6 +240,8 @@
           {
             "release_id": "0f9b4a68-5b21-554f-bc5e-11c41291becf",
             "canonical_path": "/v1/releases/0f9b4a68-5b21-554f-bc5e-11c41291becf",
+            "detail_path": "/artists/triples/releases/0f9b4a68-5b21-554f-bc5e-11c41291becf",
+            "entity_path": "/artists/triples",
             "entity_slug": "triples",
             "display_name": "tripleS",
             "release_title": "トキメティック",
@@ -252,8 +256,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-c81bdb45-5720-405d-b0ca-e7e8a7056caf",
-      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-c81bdb45-5720-405d-b0ca-e7e8a7056caf"
+      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-6501801f-6797-446c-bcd0-bfe3e60fcd12",
+      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-6501801f-6797-446c-bcd0-bfe3e60fcd12"
     },
     {
       "surface": "search",
@@ -325,6 +329,7 @@
         "entities": [
           {
             "entity_slug": "tomorrow-x-together",
+            "canonical_path": "/artists/tomorrow-x-together",
             "display_name": "TOMORROW X TOGETHER",
             "canonical_name": "TOMORROW X TOGETHER",
             "entity_type": "group",
@@ -353,6 +358,8 @@
           {
             "release_id": "d22706bb-fcc0-50d9-b853-34cd6d85c24f",
             "canonical_path": "/v1/releases/d22706bb-fcc0-50d9-b853-34cd6d85c24f",
+            "detail_path": "/artists/tomorrow-x-together/releases/d22706bb-fcc0-50d9-b853-34cd6d85c24f",
+            "entity_path": "/artists/tomorrow-x-together",
             "entity_slug": "tomorrow-x-together",
             "display_name": "TOMORROW X TOGETHER",
             "release_title": "Starkissed",
@@ -367,6 +374,7 @@
         "upcoming": [
           {
             "upcoming_signal_id": "085d1cb7-4a4c-5232-abb0-a982534217b2",
+            "entity_path": "/artists/tomorrow-x-together",
             "entity_slug": "tomorrow-x-together",
             "display_name": "TOMORROW X TOGETHER",
             "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
@@ -378,6 +386,7 @@
             "confidence_score": 0.84,
             "source_type": "news_rss",
             "source_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE11U0FzM2s2dXpCcHhqME5ZMVdCSlB2MjJKT21JS0p0dmhocmxhcXI4UlVDdGRBRXJQTmZiS1NLV2VCdlNYVFBhQzdoa0RvRVRYcnV1RWtEa2JZTVR4VERGdVRZSWRQaFlJSHZWUG10NHBDSW9oMXMtQg?oc=5",
+            "source_domain": "news.google.com",
             "evidence_summary": "Future month reference: 2026-04. TOMORROW X TOGETHER made their first comeback after renewing their contract..8th mini album released on April 13th starnewskorea.com",
             "match_reason": "entity_exact",
             "matched_alias": "투바투"
@@ -385,8 +394,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-6c4c238f-6d2d-47c4-95fe-61dcc15877f9",
-      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-6c4c238f-6d2d-47c4-95fe-61dcc15877f9"
+      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-43dcab50-c64c-45d7-b464-2faeeb882440",
+      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-43dcab50-c64c-45d7-b464-2faeeb882440"
     },
     {
       "surface": "search",
@@ -527,6 +536,7 @@
         "entities": [
           {
             "entity_slug": "yena",
+            "canonical_path": "/artists/yena",
             "display_name": "YENA",
             "canonical_name": "YENA",
             "entity_type": "solo",
@@ -547,6 +557,8 @@
           {
             "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
             "canonical_path": "/v1/releases/cbc23da6-08cd-5cc9-991c-a3638f493d45",
+            "detail_path": "/artists/yena/releases/cbc23da6-08cd-5cc9-991c-a3638f493d45",
+            "entity_path": "/artists/yena",
             "entity_slug": "yena",
             "display_name": "YENA",
             "release_title": "LOVE CATCHER",
@@ -561,8 +573,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-fc97f275-b757-44b8-87f5-6c8f5683a437",
-      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-fc97f275-b757-44b8-87f5-6c8f5683a437"
+      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-f4712912-82ea-43c6-892a-17e8f3a93b3c",
+      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-f4712912-82ea-43c6-892a-17e8f3a93b3c"
     },
     {
       "surface": "search",
@@ -609,6 +621,7 @@
         "entities": [
           {
             "entity_slug": "ive",
+            "canonical_path": "/artists/ive",
             "display_name": "IVE",
             "canonical_name": "IVE",
             "entity_type": "group",
@@ -629,6 +642,8 @@
           {
             "release_id": "c339f501-52fe-599d-8d2d-bf5694ae4de4",
             "canonical_path": "/v1/releases/c339f501-52fe-599d-8d2d-bf5694ae4de4",
+            "detail_path": "/artists/ive/releases/c339f501-52fe-599d-8d2d-bf5694ae4de4",
+            "entity_path": "/artists/ive",
             "entity_slug": "ive",
             "display_name": "IVE",
             "release_title": "REVIVE+",
@@ -643,8 +658,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-revive-2b-59118f1b-b7f5-4ab3-85b5-fbb0a6ce927c",
-      "response_request_id": "shadow--v1-search-q-revive-2b-59118f1b-b7f5-4ab3-85b5-fbb0a6ce927c"
+      "request_id_sent": "shadow--v1-search-q-revive-2b-b3ee66f3-bc97-41f1-a7d5-24826151c611",
+      "response_request_id": "shadow--v1-search-q-revive-2b-b3ee66f3-bc97-41f1-a7d5-24826151c611"
     },
     {
       "surface": "search",
@@ -691,6 +706,7 @@
         "entities": [
           {
             "entity_slug": "qwer",
+            "canonical_path": "/artists/qwer",
             "display_name": "QWER",
             "canonical_name": "QWER",
             "entity_type": "group",
@@ -711,6 +727,8 @@
           {
             "release_id": "d9a85b3d-ed19-51bb-a6c4-e5e538401b50",
             "canonical_path": "/v1/releases/d9a85b3d-ed19-51bb-a6c4-e5e538401b50",
+            "detail_path": "/artists/qwer/releases/d9a85b3d-ed19-51bb-a6c4-e5e538401b50",
+            "entity_path": "/artists/qwer",
             "entity_slug": "qwer",
             "display_name": "QWER",
             "release_title": "흰수염고래",
@@ -725,17 +743,195 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-ca83b86e-1c1c-495f-b6e1-5add53b9e2b5",
-      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-ca83b86e-1c1c-495f-b6e1-5add53b9e2b5"
+      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-33313cd0-e2fb-4757-a057-9c30db5b74f5",
+      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-33313cd0-e2fb-4757-a057-9c30db5b74f5"
     },
     {
       "surface": "entity_detail",
       "input": {
         "slug": "yena"
       },
-      "clean": true,
-      "mismatch_categories": [],
-      "mismatches": [],
+      "clean": false,
+      "mismatch_categories": [
+        "missing rows or segments",
+        "latest-release or next-upcoming drift"
+      ],
+      "mismatches": [
+        {
+          "category": "missing rows or segments",
+          "path": "data.official_links.youtube",
+          "expected": "https://www.youtube.com/@YENA_OFFICIAL",
+          "actual": "https://www.youtube.com/@yena_official"
+        },
+        {
+          "category": "latest-release or next-upcoming drift",
+          "path": "data.latest_release",
+          "expected": {
+            "release_title": "LOVE CATCHER",
+            "release_date": "2026-03-11",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": null
+          },
+          "actual": {
+            "release_title": "LOVE CATCHER",
+            "release_date": "2026-03-11",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+              "is_placeholder": false
+            }
+          }
+        },
+        {
+          "category": "missing rows or segments",
+          "path": "data.recent_albums",
+          "expected": [
+            {
+              "release_title": "LOVE CATCHER",
+              "release_date": "2026-03-11",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": null
+            },
+            {
+              "release_title": "Blooming Wings",
+              "release_date": "2025-07-29",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039",
+                "is_placeholder": false
+              }
+            },
+            {
+              "release_title": "GOOD MORNING",
+              "release_date": "2024-01-15",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65",
+                "is_placeholder": false
+              }
+            },
+            {
+              "release_title": "SMARTPHONE",
+              "release_date": "2022-08-03",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13",
+                "is_placeholder": false
+              }
+            },
+            {
+              "release_title": "ˣ‿ˣ (SMiLEY)",
+              "release_date": "2022-01-17",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c",
+                "is_placeholder": false
+              }
+            }
+          ],
+          "actual": [
+            {
+              "release_title": "LOVE CATCHER",
+              "release_date": "2026-03-11",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+                "is_placeholder": false
+              }
+            },
+            {
+              "release_title": "Blooming Wings",
+              "release_date": "2025-07-29",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039",
+                "is_placeholder": false
+              }
+            },
+            {
+              "release_title": "GOOD MORNING",
+              "release_date": "2024-01-15",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65",
+                "is_placeholder": false
+              }
+            },
+            {
+              "release_title": "SMARTPHONE",
+              "release_date": "2022-08-03",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13",
+                "is_placeholder": false
+              }
+            },
+            {
+              "release_title": "ˣ‿ˣ (SMiLEY)",
+              "release_date": "2022-01-17",
+              "stream": "album",
+              "release_kind": "ep",
+              "release_format": "ep",
+              "artwork": {
+                "cover_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front",
+                "thumbnail_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front-250",
+                "artwork_source_type": "cover_art_archive",
+                "artwork_source_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c",
+                "is_placeholder": false
+              }
+            }
+          ]
+        }
+      ],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "yena",
@@ -747,14 +943,14 @@
           "debut_year": null
         },
         "official_links": {
-          "youtube": "https://www.youtube.com/@yena_official",
+          "youtube": "https://www.youtube.com/@YENA_OFFICIAL",
           "x": "https://x.com/YENA_OFFICIAL",
           "instagram": "https://www.instagram.com/yena.jigumina"
         },
         "youtube_channels": {
-          "primary_team_channel_url": "https://www.youtube.com/@yena_official",
+          "primary_team_channel_url": "https://www.youtube.com/@YENA_OFFICIAL",
           "mv_allowlist_urls": [
-            "https://www.youtube.com/@yena_official"
+            "https://www.youtube.com/@YENA_OFFICIAL"
           ]
         },
         "tracking_state": {
@@ -770,13 +966,7 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
-          "artwork": {
-            "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
-            "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250",
-            "artwork_source_type": "cover_art_archive",
-            "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
-            "is_placeholder": false
-          }
+          "artwork": null
         },
         "recent_albums": [
           {
@@ -786,13 +976,7 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": {
-              "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
-              "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250",
-              "artwork_source_type": "cover_art_archive",
-              "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
-              "is_placeholder": false
-            }
+            "artwork": null
           },
           {
             "release_id": "YENA::Blooming Wings::2025-07-29::album",
@@ -1110,17 +1294,26 @@
         "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-yena-9c6c32c7-1148-4750-a2ec-fdbf3c0a6bfe",
-      "response_request_id": "shadow--v1-entities-yena-9c6c32c7-1148-4750-a2ec-fdbf3c0a6bfe"
+      "request_id_sent": "shadow--v1-entities-yena-0f7c0998-420f-4990-9ea0-bed0bd79dd1d",
+      "response_request_id": "shadow--v1-entities-yena-0f7c0998-420f-4990-9ea0-bed0bd79dd1d"
     },
     {
       "surface": "entity_detail",
       "input": {
         "slug": "blackpink"
       },
-      "clean": true,
-      "mismatch_categories": [],
-      "mismatches": [],
+      "clean": false,
+      "mismatch_categories": [
+        "missing rows or segments"
+      ],
+      "mismatches": [
+        {
+          "category": "missing rows or segments",
+          "path": "data.official_links.youtube",
+          "expected": "https://www.youtube.com/@BLACKPINK",
+          "actual": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A"
+        }
+      ],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "blackpink",
@@ -1132,14 +1325,14 @@
           "debut_year": null
         },
         "official_links": {
-          "youtube": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+          "youtube": "https://www.youtube.com/@BLACKPINK",
           "x": "https://x.com/blackpink",
           "instagram": "https://www.instagram.com/blackpinkofficial"
         },
         "youtube_channels": {
-          "primary_team_channel_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+          "primary_team_channel_url": "https://www.youtube.com/@BLACKPINK",
           "mv_allowlist_urls": [
-            "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+            "https://www.youtube.com/@BLACKPINK",
             "https://www.youtube.com/@YGEntertainment"
           ]
         },
@@ -1786,17 +1979,26 @@
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-blackpink-c24fdca5-09de-45d9-9714-f526bc06894d",
-      "response_request_id": "shadow--v1-entities-blackpink-c24fdca5-09de-45d9-9714-f526bc06894d"
+      "request_id_sent": "shadow--v1-entities-blackpink-d56dc09a-f840-4b2e-94ae-059dde665255",
+      "response_request_id": "shadow--v1-entities-blackpink-d56dc09a-f840-4b2e-94ae-059dde665255"
     },
     {
       "surface": "entity_detail",
       "input": {
         "slug": "and-team"
       },
-      "clean": true,
-      "mismatch_categories": [],
-      "mismatches": [],
+      "clean": false,
+      "mismatch_categories": [
+        "missing rows or segments"
+      ],
+      "mismatches": [
+        {
+          "category": "missing rows or segments",
+          "path": "data.official_links.youtube",
+          "expected": "https://www.youtube.com/@andteamofficial",
+          "actual": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg"
+        }
+      ],
       "expected_snapshot": {
         "identity": {
           "entity_slug": "and-team",
@@ -1808,14 +2010,14 @@
           "debut_year": null
         },
         "official_links": {
-          "youtube": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+          "youtube": "https://www.youtube.com/@andteamofficial",
           "x": "https://x.com/andTEAMofficial",
           "instagram": "https://www.instagram.com/andteam_official"
         },
         "youtube_channels": {
-          "primary_team_channel_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+          "primary_team_channel_url": "https://www.youtube.com/@andteamofficial",
           "mv_allowlist_urls": [
-            "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+            "https://www.youtube.com/@andteamofficial",
             "https://www.youtube.com/@HYBELABELS"
           ]
         },
@@ -2210,8 +2412,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-and-team-42435c15-acdc-4030-bd5f-1787c286c687",
-      "response_request_id": "shadow--v1-entities-and-team-42435c15-acdc-4030-bd5f-1787c286c687"
+      "request_id_sent": "shadow--v1-entities-and-team-dc5ef5ae-5cd9-489e-86d7-943f268e088a",
+      "response_request_id": "shadow--v1-entities-and-team-dc5ef5ae-5cd9-489e-86d7-943f268e088a"
     },
     {
       "surface": "entity_detail",
@@ -2237,8 +2439,10 @@
           "instagram": "https://www.instagram.com/allday_project"
         },
         "youtube_channels": {
-          "primary_team_channel_url": null,
-          "mv_allowlist_urls": []
+          "primary_team_channel_url": "https://www.youtube.com/@ALLDAY_PROJECT",
+          "mv_allowlist_urls": [
+            "https://www.youtube.com/@ALLDAY_PROJECT"
+          ]
         },
         "tracking_state": {
           "tier": "manual",
@@ -2405,8 +2609,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-allday-project-6e3333b7-10ca-48d3-ba15-2c5a5a5a15b8",
-      "response_request_id": "shadow--v1-entities-allday-project-6e3333b7-10ca-48d3-ba15-2c5a5a5a15b8"
+      "request_id_sent": "shadow--v1-entities-allday-project-f150874c-7cd1-46e1-9a31-b2cf15c19122",
+      "response_request_id": "shadow--v1-entities-allday-project-f150874c-7cd1-46e1-9a31-b2cf15c19122"
     },
     {
       "surface": "release_detail",
@@ -2607,10 +2811,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-912a646f-d467-4e00-b015-0bae1aac5632",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-912a646f-d467-4e00-b015-0bae1aac5632",
-      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-b05a973d-f617-4c23-b913-8145ed58e463",
-      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-b05a973d-f617-4c23-b913-8145ed58e463"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-8d5e01e2-fa9e-4e02-873f-4c42f8a7c3dd",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-8d5e01e2-fa9e-4e02-873f-4c42f8a7c3dd",
+      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-7ae0927f-03e1-45da-b60e-86db66ed4d69",
+      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-7ae0927f-03e1-45da-b60e-86db66ed4d69"
     },
     {
       "surface": "release_detail",
@@ -2930,10 +3134,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-ed5abff6-767c-488c-a045-1725f3ef5214",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-ed5abff6-767c-488c-a045-1725f3ef5214",
-      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-566e358d-49e1-479b-b13e-80780d0d4918",
-      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-566e358d-49e1-479b-b13e-80780d0d4918"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-e3852f6d-c18a-4062-b133-6082c5af5a04",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-e3852f6d-c18a-4062-b133-6082c5af5a04",
+      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-a0e4cccb-b743-43de-a6e0-94a96001a851",
+      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-a0e4cccb-b743-43de-a6e0-94a96001a851"
     },
     {
       "surface": "release_detail",
@@ -3082,10 +3286,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-3745dce0-281b-4377-bb2e-34edee2b0a0e",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-3745dce0-281b-4377-bb2e-34edee2b0a0e",
-      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-a0175fba-0d48-428b-9dba-6dc589517533",
-      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-a0175fba-0d48-428b-9dba-6dc589517533"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-ee8f578a-9ccd-474a-bf27-3142c5e5690e",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-ee8f578a-9ccd-474a-bf27-3142c5e5690e",
+      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-0be59546-ac96-4a46-9567-b41c023804af",
+      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-0be59546-ac96-4a46-9567-b41c023804af"
     },
     {
       "surface": "calendar_month",
@@ -3631,6 +3835,9 @@
           "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
           "entity_slug": "p1harmony",
           "display_name": "P1Harmony",
+          "entity_type": null,
+          "agency_name": null,
+          "tracking_status": null,
           "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
           "scheduled_date": "2026-03-12",
           "scheduled_month": "2026-03",
@@ -3652,9 +3859,14 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -3667,9 +3879,14 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -3682,9 +3899,14 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -3698,6 +3920,9 @@
                 "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
+                "tracking_status": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
                 "scheduled_month": "[truncated]",
@@ -3721,6 +3946,9 @@
                 "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
+                "tracking_status": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
                 "scheduled_month": "[truncated]",
@@ -3744,6 +3972,9 @@
                 "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
+                "tracking_status": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
                 "scheduled_month": "[truncated]",
@@ -3765,6 +3996,9 @@
             "upcoming_signal_id": "b349b515-3866-513b-89db-6c4325fa2853",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "AB6IX announces March comeback with their first full album in 5 years - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-03",
@@ -3782,6 +4016,9 @@
             "upcoming_signal_id": "40b00178-7b92-5b5a-9581-7795f8676c98",
             "entity_slug": "all-h-ours",
             "display_name": "ALL(H)OURS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop",
             "scheduled_date": null,
             "scheduled_month": "2026-03",
@@ -3799,6 +4036,9 @@
             "upcoming_signal_id": "0dc840bb-7287-5cf6-bf60-229beee35d38",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-03",
@@ -3816,6 +4056,9 @@
             "upcoming_signal_id": "6ea3a5db-e83f-51fc-b33e-bf701cef4c24",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
             "scheduled_date": null,
             "scheduled_month": "2026-03",
@@ -3835,27 +4078,42 @@
             "release_id": "bd9eebee-c5fe-509e-8b08-8b76ef26499e",
             "entity_slug": "tunexx",
             "display_name": "TUNEXX",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "SET BY US ONLY",
             "stream": "album",
             "release_kind": "ep",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2026-03-03"
           },
           {
             "release_id": "6a1db562-83b4-5e9d-a00f-6ea0ebfb6680",
             "entity_slug": "h1-key",
             "display_name": "H1-KEY",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "LOVECHAPTER",
             "stream": "album",
             "release_kind": "ep",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2026-03-05"
           },
           {
             "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
             "entity_slug": "yena",
             "display_name": "YENA",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "LOVE CATCHER",
             "stream": "album",
             "release_kind": "ep",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2026-03-11"
           }
         ],
@@ -3864,6 +4122,9 @@
             "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
             "entity_slug": "p1harmony",
             "display_name": "P1Harmony",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
             "scheduled_date": "2026-03-12",
             "scheduled_month": "2026-03",
@@ -3881,6 +4142,9 @@
             "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742",
             "entity_slug": "bts",
             "display_name": "BTS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
             "scheduled_date": "2026-03-20",
             "scheduled_month": "2026-03",
@@ -3898,6 +4162,9 @@
             "upcoming_signal_id": "e35fd84c-870e-5b22-998d-4bf66de28a16",
             "entity_slug": "bts",
             "display_name": "BTS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net",
             "scheduled_date": "2026-03-21",
             "scheduled_month": "2026-03",
@@ -3915,6 +4182,9 @@
             "upcoming_signal_id": "b349b515-3866-513b-89db-6c4325fa2853",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "AB6IX announces March comeback with their first full album in 5 years - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-03",
@@ -3932,6 +4202,9 @@
             "upcoming_signal_id": "40b00178-7b92-5b5a-9581-7795f8676c98",
             "entity_slug": "all-h-ours",
             "display_name": "ALL(H)OURS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop",
             "scheduled_date": null,
             "scheduled_month": "2026-03",
@@ -3949,6 +4222,9 @@
             "upcoming_signal_id": "0dc840bb-7287-5cf6-bf60-229beee35d38",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-03",
@@ -3966,6 +4242,9 @@
             "upcoming_signal_id": "6ea3a5db-e83f-51fc-b33e-bf701cef4c24",
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보",
             "scheduled_date": null,
             "scheduled_month": "2026-03",
@@ -3982,8 +4261,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-ca2b80ca-5921-40e9-98c2-be15ade4bd23",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-03-ca2b80ca-5921-40e9-98c2-be15ade4bd23"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-4eabaf10-6775-4abb-8b40-f8fcedd45808",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-03-4eabaf10-6775-4abb-8b40-f8fcedd45808"
     },
     {
       "surface": "calendar_month",
@@ -4444,6 +4723,9 @@
           "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
           "entity_slug": "p1harmony",
           "display_name": "P1Harmony",
+          "entity_type": null,
+          "agency_name": null,
+          "tracking_status": null,
           "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
           "scheduled_date": "2026-03-12",
           "scheduled_month": "2026-03",
@@ -4466,6 +4748,9 @@
                 "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
+                "tracking_status": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
                 "scheduled_month": "[truncated]",
@@ -4489,6 +4774,9 @@
                 "upcoming_signal_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
+                "tracking_status": "[truncated]",
                 "headline": "[truncated]",
                 "scheduled_date": "[truncated]",
                 "scheduled_month": "[truncated]",
@@ -4510,6 +4798,9 @@
             "upcoming_signal_id": "b2ce87e3-5912-5b58-aa78-e4366e3e13ba",
             "entity_slug": "and-team",
             "display_name": "&TEAM",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4527,6 +4818,9 @@
             "upcoming_signal_id": "5b6fc554-bccf-5dea-906d-4c5cebb58b96",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "KickFlip announces April comeback - Music Mundial",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4544,6 +4838,9 @@
             "upcoming_signal_id": "2d6a22f6-f4ec-5b46-aba0-fccfc75e3df9",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "KickFlip announces April comeback with their 4th mini-album - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4561,6 +4858,9 @@
             "upcoming_signal_id": "40e933d3-cd90-5fed-ab51-b94953ab2132",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4578,6 +4878,9 @@
             "upcoming_signal_id": "daea5bae-dfed-53cf-ad37-05f6f469621d",
             "entity_slug": "young-posse",
             "display_name": "YOUNG POSSE",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4595,6 +4898,9 @@
             "upcoming_signal_id": "b09afdd8-a6b8-55cf-b938-f05e57f2162a",
             "entity_slug": "kiss-of-life",
             "display_name": "KISS OF LIFE",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4612,6 +4918,9 @@
             "upcoming_signal_id": "e9edf786-686c-5b65-aee4-f28df14d1016",
             "entity_slug": "le-sserafim",
             "display_name": "LE SSERAFIM",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4629,6 +4938,9 @@
             "upcoming_signal_id": "8b7be2bc-53e3-5b0f-b090-71d79518f967",
             "entity_slug": "tws",
             "display_name": "TWS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4646,6 +4958,9 @@
             "upcoming_signal_id": "9e39b332-708c-5b76-a9c6-82102bae2e2e",
             "entity_slug": "tws",
             "display_name": "TWS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4663,6 +4978,9 @@
             "upcoming_signal_id": "d0cf2b3a-95a2-5bcf-b184-d47dc3a2739b",
             "entity_slug": "tws",
             "display_name": "TWS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4683,6 +5001,9 @@
             "upcoming_signal_id": "035200de-6d2f-5866-97b4-e76b78528077",
             "entity_slug": "plave",
             "display_name": "PLAVE",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
             "scheduled_date": "2026-04-07",
             "scheduled_month": "2026-04",
@@ -4700,6 +5021,9 @@
             "upcoming_signal_id": "085d1cb7-4a4c-5232-abb0-a982534217b2",
             "entity_slug": "tomorrow-x-together",
             "display_name": "TOMORROW X TOGETHER",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
             "scheduled_date": "2026-04-13",
             "scheduled_month": "2026-04",
@@ -4717,6 +5041,9 @@
             "upcoming_signal_id": "b2ce87e3-5912-5b58-aa78-e4366e3e13ba",
             "entity_slug": "and-team",
             "display_name": "&TEAM",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "&TEAM sets April comeback with Japanese mini album ‘We on Fire’ - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4734,6 +5061,9 @@
             "upcoming_signal_id": "5b6fc554-bccf-5dea-906d-4c5cebb58b96",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "KickFlip announces April comeback - Music Mundial",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4751,6 +5081,9 @@
             "upcoming_signal_id": "2d6a22f6-f4ec-5b46-aba0-fccfc75e3df9",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "KickFlip announces April comeback with their 4th mini-album - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4768,6 +5101,9 @@
             "upcoming_signal_id": "40e933d3-cd90-5fed-ab51-b94953ab2132",
             "entity_slug": "kickflip",
             "display_name": "KickFlip",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "KickFlip wraps first nationwide fan-con tour and announces April comeback - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4785,6 +5121,9 @@
             "upcoming_signal_id": "daea5bae-dfed-53cf-ad37-05f6f469621d",
             "entity_slug": "young-posse",
             "display_name": "YOUNG POSSE",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "YOUNG POSSE announces April comeback with new digital single - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4802,6 +5141,9 @@
             "upcoming_signal_id": "b09afdd8-a6b8-55cf-b938-f05e57f2162a",
             "entity_slug": "kiss-of-life",
             "display_name": "KISS OF LIFE",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "KISS OF LIFE Teases April Comeback with 'COMING SOON' Video - 조선일보",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4819,6 +5161,9 @@
             "upcoming_signal_id": "e9edf786-686c-5b65-aee4-f28df14d1016",
             "entity_slug": "le-sserafim",
             "display_name": "LE SSERAFIM",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4836,6 +5181,9 @@
             "upcoming_signal_id": "8b7be2bc-53e3-5b0f-b090-71d79518f967",
             "entity_slug": "tws",
             "display_name": "TWS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "LE SSERAFIM and TWS Set for April Comebacks as K-Pop Return Rush Intensifies - DIPE.CO.KR",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4853,6 +5201,9 @@
             "upcoming_signal_id": "9e39b332-708c-5b76-a9c6-82102bae2e2e",
             "entity_slug": "tws",
             "display_name": "TWS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "LE SSERAFIM and TWS join April comeback lineup - allkpop",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4870,6 +5221,9 @@
             "upcoming_signal_id": "d0cf2b3a-95a2-5bcf-b184-d47dc3a2739b",
             "entity_slug": "tws",
             "display_name": "TWS",
+            "entity_type": null,
+            "agency_name": null,
+            "tracking_status": null,
             "headline": "TWS Set for a High-Energy Spring Comeback Confirmed for April - OtakuKart",
             "scheduled_date": null,
             "scheduled_month": "2026-04",
@@ -4886,8 +5240,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-c2cbcfe4-8856-4011-b8ba-a785dbc86cb3",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-04-c2cbcfe4-8856-4011-b8ba-a785dbc86cb3"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-17040305-0eef-4fe8-b0b7-04af8e7c3566",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-04-17040305-0eef-4fe8-b0b7-04af8e7c3566"
     },
     {
       "surface": "calendar_month",
@@ -5279,6 +5633,9 @@
           "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
           "entity_slug": "p1harmony",
           "display_name": "P1Harmony",
+          "entity_type": null,
+          "agency_name": null,
+          "tracking_status": null,
           "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
           "scheduled_date": "2026-03-12",
           "scheduled_month": "2026-03",
@@ -5300,9 +5657,14 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5315,9 +5677,14 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5330,18 +5697,28 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5354,9 +5731,14 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5369,9 +5751,14 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5384,9 +5771,14 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5399,18 +5791,28 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5423,18 +5825,28 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5447,18 +5859,28 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5471,9 +5893,14 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5486,18 +5913,28 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5510,18 +5947,28 @@
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               },
               {
                 "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
+                "entity_type": "[truncated]",
+                "agency_name": "[truncated]",
                 "release_title": "[truncated]",
                 "stream": "[truncated]",
                 "release_kind": "[truncated]",
+                "release_format": "[truncated]",
+                "source_url": "[truncated]",
+                "artist_source_url": "[truncated]",
                 "release_date": "[truncated]"
               }
             ],
@@ -5534,116 +5981,176 @@
             "release_id": "f52f59c6-a551-5dd2-b5b6-2c9e465f3828",
             "entity_slug": "triples",
             "display_name": "tripleS",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "tripleS ∞! < SecretHimitsuBimil >",
             "stream": "album",
             "release_kind": "album",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-01"
           },
           {
             "release_id": "297299cc-138e-52c1-9430-c10c22f95415",
             "entity_slug": "bae173",
             "display_name": "BAE173",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "One day",
             "stream": "song",
             "release_kind": "single",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-02"
           },
           {
             "release_id": "f49d9a86-bd1b-53a8-8c31-7f8163cdbb29",
             "entity_slug": "g-i-dle",
             "display_name": "(G)I-DLE",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "i‐dle",
             "stream": "album",
             "release_kind": "ep",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-03"
           },
           {
             "release_id": "05a34ac3-1116-5cc7-a9b8-8d5127790193",
             "entity_slug": "bae173",
             "display_name": "BAE173",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "What’s wrong?",
             "stream": "song",
             "release_kind": "single",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-03"
           },
           {
             "release_id": "d9a85b3d-ed19-51bb-a6c4-e5e538401b50",
             "entity_slug": "qwer",
             "display_name": "QWER",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "흰수염고래",
             "stream": "song",
             "release_kind": "single",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-06"
           },
           {
             "release_id": "184a3749-a2e9-5309-b0be-2dc995e48e3f",
             "entity_slug": "onewe",
             "display_name": "ONEWE",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "MAZE : AD ASTRA",
             "stream": "album",
             "release_kind": "ep",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-07"
           },
           {
             "release_id": "da4197ce-7ce3-5a60-ad58-185d842c716d",
             "entity_slug": "itzy",
             "display_name": "ITZY",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "Collector",
             "stream": "album",
             "release_kind": "album",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-08"
           },
           {
             "release_id": "ee1e9da9-904f-5f37-aa38-11f9a05bce84",
             "entity_slug": "babymonster",
             "display_name": "BABYMONSTER",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "WE GO UP",
             "stream": "album",
             "release_kind": "ep",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-10"
           },
           {
             "release_id": "5a3a11fe-195d-50c4-a215-347eba0e018e",
             "entity_slug": "twice",
             "display_name": "TWICE",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "TEN: The Story Goes On",
             "stream": "album",
             "release_kind": "album",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-10"
           },
           {
             "release_id": "510353ab-c5c1-5461-80ce-eaeb26f94a12",
             "entity_slug": "nmixx",
             "display_name": "NMIXX",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "Blue Valentine",
             "stream": "album",
             "release_kind": "album",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-13"
           },
           {
             "release_id": "c0c2c69b-8f5c-53e9-a9b1-115b6e82e886",
             "entity_slug": "tws",
             "display_name": "TWS",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "play hard",
             "stream": "album",
             "release_kind": "ep",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-13"
           },
           {
             "release_id": "4fc193c7-cc0a-5d88-b656-d9615f60e359",
             "entity_slug": "bae173",
             "display_name": "BAE173",
+            "entity_type": null,
+            "agency_name": null,
             "release_title": "NEW CHAPTER : DESEAR",
             "stream": "album",
             "release_kind": "ep",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
             "release_date": "2025-10-14"
           }
         ],
         "scheduled_list": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-0c7b6ff6-5559-45ed-91df-e859b4b9a979",
-      "response_request_id": "shadow--v1-calendar-month-month-2025-10-0c7b6ff6-5559-45ed-91df-e859b4b9a979"
+      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-201b58bc-5c55-45a4-9c6b-f2647b45bbf8",
+      "response_request_id": "shadow--v1-calendar-month-month-2025-10-201b58bc-5c55-45a4-9c6b-f2647b45bbf8"
     },
     {
       "surface": "radar",
@@ -6179,7 +6686,13 @@
           "release_format": "ep",
           "scheduled_date": "2026-03-12",
           "confidence_score": 0.82,
-          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735"
+          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
+          "scheduled_month": null,
+          "source_url": null,
+          "source_type": null,
+          "source_domain": null,
+          "evidence_summary": null,
+          "latest_seen_at": null
         },
         "weekly_upcoming": [
           {
@@ -6191,7 +6704,13 @@
             "release_format": "ep",
             "scheduled_date": "2026-03-12",
             "confidence_score": 0.82,
-            "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735"
+            "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
+            "scheduled_month": null,
+            "source_url": null,
+            "source_type": null,
+            "source_domain": null,
+            "evidence_summary": null,
+            "latest_seen_at": null
           }
         ],
         "change_feed": [
@@ -6222,23 +6741,23 @@
           {
             "kind": "verified_release",
             "stream": "album",
-            "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
-            "entity_slug": "blackpink",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
-            "display_name": "BLACKPINK",
-            "release_date": "2026-02-27",
-            "release_kind": "ep",
-            "release_title": "DEADLINE"
-          },
-          {
-            "kind": "verified_release",
-            "stream": "album",
             "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
             "entity_slug": "blackpink",
             "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "BLACKPINK",
             "release_date": "2026-02-26",
             "release_kind": null,
+            "release_title": "DEADLINE"
+          },
+          {
+            "kind": "verified_release",
+            "stream": "album",
+            "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
+            "entity_slug": "blackpink",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "display_name": "BLACKPINK",
+            "release_date": "2026-02-27",
+            "release_kind": "ep",
             "release_title": "DEADLINE"
           },
           {
@@ -6345,14 +6864,21 @@
               "scheduled_date": null,
               "scheduled_month": null,
               "confidence_score": 0.68,
-              "upcoming_signal_id": "07644eff-2a2b-5123-88fa-3fe71ccc4d9c"
+              "upcoming_signal_id": "07644eff-2a2b-5123-88fa-3fe71ccc4d9c",
+              "source_url": null,
+              "source_type": null,
+              "source_domain": null,
+              "evidence_summary": null
             },
             "latest_release": {
               "stream": "song",
               "release_id": "d4653d95-ae29-57d2-be3e-e5cb2b7267c3",
               "release_date": "2023-06-09",
               "release_kind": "single",
-              "release_title": "Take Two"
+              "release_title": "Take Two",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": true
           },
@@ -6370,14 +6896,21 @@
               "scheduled_date": null,
               "scheduled_month": "2026-03",
               "confidence_score": 0.46,
-              "upcoming_signal_id": "6ea3a5db-e83f-51fc-b33e-bf701cef4c24"
+              "upcoming_signal_id": "6ea3a5db-e83f-51fc-b33e-bf701cef4c24",
+              "source_url": null,
+              "source_type": null,
+              "source_domain": null,
+              "evidence_summary": null
             },
             "latest_release": {
               "stream": "album",
               "release_id": "403a26f7-5bc4-5feb-95ae-2f4de4798ea9",
               "release_date": "2024-10-10",
               "release_kind": "ep",
-              "release_title": "BORN LIKE THIS"
+              "release_title": "BORN LIKE THIS",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": true
           },
@@ -6392,7 +6925,10 @@
               "release_id": "2d662b2e-7f45-5ed3-85de-ffa1f3e16b72",
               "release_date": "2021-06-16",
               "release_kind": "single",
-              "release_title": "Back To You"
+              "release_title": "Back To You",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6407,7 +6943,10 @@
               "release_id": "7e1f4bf1-04af-5ec8-a8f5-c8071b6c4b6b",
               "release_date": "2022-07-15",
               "release_kind": "ep",
-              "release_title": "Light Sweeper"
+              "release_title": "Light Sweeper",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6422,7 +6961,10 @@
               "release_id": "5ac11b84-f93e-5c0b-9349-8ffc18ae9ebb",
               "release_date": "2022-10-11",
               "release_kind": "ep",
-              "release_title": "MIC ON"
+              "release_title": "MIC ON",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6437,7 +6979,10 @@
               "release_id": "c0d7e03c-7b01-51dd-ae48-c4e76e903510",
               "release_date": "2023-11-27",
               "release_kind": "ep",
-              "release_title": "MUST HAVE"
+              "release_title": "MUST HAVE",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6452,7 +6997,10 @@
               "release_id": "5193c862-8921-5dae-924a-112400ccf545",
               "release_date": "2024-02-28",
               "release_kind": "ep",
-              "release_title": "NOMAD"
+              "release_title": "NOMAD",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6467,7 +7015,10 @@
               "release_id": "9770e2a8-80f0-5d42-ad00-5f59038a4684",
               "release_date": "2024-06-10",
               "release_kind": "ep",
-              "release_title": "Sweetie but Saltie"
+              "release_title": "Sweetie but Saltie",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6482,7 +7033,10 @@
               "release_id": "8980d7d8-9090-5447-a4df-6ae0f0ba990f",
               "release_date": "2024-06-19",
               "release_kind": "ep",
-              "release_title": "LUNCH‐BOX"
+              "release_title": "LUNCH‐BOX",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6497,7 +7051,10 @@
               "release_id": "5aeb168e-dad8-554e-aec1-0d8882c4da4a",
               "release_date": "2024-06-21",
               "release_kind": "single",
-              "release_title": "Supernatural"
+              "release_title": "Supernatural",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6512,7 +7069,10 @@
               "release_id": "f21dbb3d-c0b5-57ae-84b3-36f25041d237",
               "release_date": "2024-06-24",
               "release_kind": "ep",
-              "release_title": "Cosmic"
+              "release_title": "Cosmic",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6527,7 +7087,10 @@
               "release_id": "f4a2b5b1-c9e2-5a1a-9cd6-56afa855ef8f",
               "release_date": "2024-07-09",
               "release_kind": "ep",
-              "release_title": "Bliss"
+              "release_title": "Bliss",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           }
@@ -6546,14 +7109,21 @@
               "scheduled_date": null,
               "scheduled_month": null,
               "confidence_score": 0.68,
-              "upcoming_signal_id": "d81d7432-3d57-5f0c-b049-c11807aace85"
+              "upcoming_signal_id": "d81d7432-3d57-5f0c-b049-c11807aace85",
+              "source_url": null,
+              "source_type": null,
+              "source_domain": null,
+              "evidence_summary": null
             },
             "latest_release": {
               "stream": "song",
               "release_id": "e5976e68-a795-52dd-b40e-a72493038dd3",
               "release_date": "2026-02-26",
               "release_kind": "single",
-              "release_title": "Shut Up"
+              "release_title": "Shut Up",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": true
           },
@@ -6570,14 +7140,21 @@
               "scheduled_date": null,
               "scheduled_month": null,
               "confidence_score": 0.68,
-              "upcoming_signal_id": "113ba3c1-a52d-56c0-a58d-d3b204addf15"
+              "upcoming_signal_id": "113ba3c1-a52d-56c0-a58d-d3b204addf15",
+              "source_url": null,
+              "source_type": null,
+              "source_domain": null,
+              "evidence_summary": null
             },
             "latest_release": {
               "stream": "song",
               "release_id": "06aa603b-b554-52a8-b9e4-47c6a6764e53",
               "release_date": "2026-02-20",
               "release_kind": "single",
-              "release_title": "RUDE!"
+              "release_title": "RUDE!",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": true
           },
@@ -6594,14 +7171,21 @@
               "scheduled_date": null,
               "scheduled_month": null,
               "confidence_score": 0.56,
-              "upcoming_signal_id": "aeed763b-0ed9-50c7-8045-f1273a07df45"
+              "upcoming_signal_id": "aeed763b-0ed9-50c7-8045-f1273a07df45",
+              "source_url": null,
+              "source_type": null,
+              "source_domain": null,
+              "evidence_summary": null
             },
             "latest_release": {
               "stream": "album",
               "release_id": "da1a7f42-5755-5649-b235-e8568b2e4a58",
               "release_date": "2026-01-25",
               "release_kind": "ep",
-              "release_title": "Delulu Pack"
+              "release_title": "Delulu Pack",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": true
           },
@@ -6618,14 +7202,21 @@
               "scheduled_date": null,
               "scheduled_month": "2026-04",
               "confidence_score": 0.76,
-              "upcoming_signal_id": "5b6fc554-bccf-5dea-906d-4c5cebb58b96"
+              "upcoming_signal_id": "5b6fc554-bccf-5dea-906d-4c5cebb58b96",
+              "source_url": null,
+              "source_type": null,
+              "source_domain": null,
+              "evidence_summary": null
             },
             "latest_release": {
               "stream": "song",
               "release_id": "f8f95da5-91f9-53f5-bef1-fa14153369f3",
               "release_date": "2026-01-20",
               "release_kind": "single",
-              "release_title": "From KickFlip, To WeFlip"
+              "release_title": "From KickFlip, To WeFlip",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": true
           },
@@ -6639,7 +7230,10 @@
               "release_id": "c00920b0-930d-5662-9874-82603c0ad5f7",
               "release_date": "2025-12-08",
               "release_kind": "ep",
-              "release_title": "ALLDAY PROJECT"
+              "release_title": "ALLDAY PROJECT",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6653,7 +7247,10 @@
               "release_id": "f6355382-6712-52f4-87ff-593f96ca7869",
               "release_date": "2025-11-11",
               "release_kind": "ep",
-              "release_title": "blackout"
+              "release_title": "blackout",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6667,7 +7264,10 @@
               "release_id": "52e2b10d-b9bf-55d0-ae7c-0aae46a013dc",
               "release_date": "2025-11-05",
               "release_kind": "ep",
-              "release_title": "UXLXVE"
+              "release_title": "UXLXVE",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           },
@@ -6681,15 +7281,18 @@
               "release_id": "40006299-e74f-5b9e-9174-36fa3fe552b3",
               "release_date": "2025-07-16",
               "release_kind": "ep",
-              "release_title": "sweet tang"
+              "release_title": "sweet tang",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
             },
             "has_upcoming_signal": false
           }
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-radar-fa14d16f-9789-4936-9977-055adbc2aa66",
-      "response_request_id": "shadow--v1-radar-fa14d16f-9789-4936-9977-055adbc2aa66"
+      "request_id_sent": "shadow--v1-radar-08006eb7-326c-416f-be77-4d7269963586",
+      "response_request_id": "shadow--v1-radar-08006eb7-326c-416f-be77-4d7269963586"
     }
   ]
 }
