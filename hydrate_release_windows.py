@@ -15,16 +15,17 @@ from zoneinfo import ZoneInfo
 
 import requests
 import build_release_details_musicbrainz as release_detail_builder
+import non_runtime_dataset_paths
 
 
 ROOT = Path(__file__).resolve().parent
-UPCOMING_PATH = ROOT / "web/src/data/upcomingCandidates.json"
-RELEASES_PATH = ROOT / "web/src/data/releases.json"
-ROOT_RELEASES_PATH = ROOT / "group_latest_release_since_2025-06-01_mb.json"
-ARTWORK_PATH = ROOT / "web/src/data/releaseArtwork.json"
-DETAILS_PATH = ROOT / "web/src/data/releaseDetails.json"
-RELEASE_HISTORY_PATH = ROOT / "web/src/data/releaseHistory.json"
-WATCHLIST_PATH = ROOT / "web/src/data/watchlist.json"
+UPCOMING_PATH = non_runtime_dataset_paths.resolve_input_path("upcomingCandidates.json")
+RELEASES_PATH = non_runtime_dataset_paths.resolve_input_path("releases.json")
+ROOT_RELEASES_PATH = non_runtime_dataset_paths.primary_path("releases.json")
+ARTWORK_PATH = non_runtime_dataset_paths.resolve_input_path("releaseArtwork.json")
+DETAILS_PATH = non_runtime_dataset_paths.resolve_input_path("releaseDetails.json")
+RELEASE_HISTORY_PATH = non_runtime_dataset_paths.resolve_input_path("releaseHistory.json")
+WATCHLIST_PATH = non_runtime_dataset_paths.resolve_input_path("watchlist.json")
 CUTOFF_DATE = date(2025, 6, 1)
 KST = ZoneInfo("Asia/Seoul")
 USER_AGENT = "idol-song-app/1.0 (https://github.com/iAmSomething/idol-song-app)"

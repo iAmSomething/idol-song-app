@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
 
+import non_runtime_dataset_paths
 from release_detail_acquisition import (
     MusicBrainzReleaseDetailClient,
     build_attempt,
@@ -18,9 +19,12 @@ from release_detail_acquisition import (
 )
 
 ROOT = Path(__file__).resolve().parent
-RELEASES_SNAPSHOT_PATH = ROOT / "web/src/data/releases.json"
-RELEASE_HISTORY_PATH = ROOT / "web/src/data/releaseHistory.json"
-OUTPUT_PATH = ROOT / "web/src/data/releaseDetails.json"
+RELEASES_SNAPSHOT_DATASET = "releases.json"
+RELEASE_HISTORY_DATASET = "releaseHistory.json"
+RELEASE_DETAILS_DATASET = "releaseDetails.json"
+RELEASES_SNAPSHOT_PATH = non_runtime_dataset_paths.resolve_input_path(RELEASES_SNAPSHOT_DATASET)
+RELEASE_HISTORY_PATH = non_runtime_dataset_paths.resolve_input_path(RELEASE_HISTORY_DATASET)
+OUTPUT_PATH = non_runtime_dataset_paths.primary_path(RELEASE_DETAILS_DATASET)
 OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 MIGRATION_PRIORITY_SLICE_PATH = ROOT / "historical_migration_priority_slice.json"
 AUDIT_OUTPUT_PATH = ROOT / "backend/reports/historical_release_detail_coverage_report.json"
@@ -2172,7 +2176,8 @@ def main() -> None:
 
     latest_snapshot_rows = load_rows(RELEASES_SNAPSHOT_PATH)
     history_rows = load_rows(RELEASE_HISTORY_PATH)
-    details_before = load_rows(OUTPUT_PATH) if OUTPUT_PATH.exists() else []
+    detail_input_path = non_runtime_dataset_paths.resolve_input_path(RELEASE_DETAILS_DATASET)
+    details_before = load_rows(detail_input_path) if detail_input_path.exists() else []
     latest_snapshot_items = iter_latest_snapshot_items(latest_snapshot_rows)
     items = iter_release_items(history_rows)
     song_release_index = build_song_release_index(items)
@@ -2314,7 +2319,7 @@ def main() -> None:
         )
     )
 
-    OUTPUT_PATH.write_text(json.dumps(details_after, ensure_ascii=False, indent=2) + "\n")
+    detail_io_paths = non_runtime_dataset_paths.write_json_dataset(RELEASE_DETAILS_DATASET, details_after)
     title_track_review_rows = build_title_track_review_rows(details_after, title_track_resolutions)
     write_title_track_review_queue(title_track_review_rows)
     detail_review_rows = build_release_detail_review_rows(details_after, acquisition_traces)
@@ -2340,6 +2345,12 @@ def main() -> None:
     )
     AUDIT_OUTPUT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     AUDIT_MARKDOWN_OUTPUT_PATH.write_text(build_coverage_markdown(report), encoding="utf-8")
+
+    report["release_snapshot_input_json"] = str(RELEASES_SNAPSHOT_PATH.relative_to(ROOT))
+    report["release_history_input_json"] = str(RELEASE_HISTORY_PATH.relative_to(ROOT))
+    report["release_detail_input_json"] = str(detail_input_path.relative_to(ROOT))
+    report["release_detail_primary_json"] = detail_io_paths["primary_path"]
+    report["release_detail_mirror_json"] = detail_io_paths["mirror_paths"]
 
     print(json.dumps(report, ensure_ascii=False, indent=2))
 

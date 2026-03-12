@@ -9,10 +9,14 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
+import non_runtime_dataset_paths
+
 
 ROOT = Path(__file__).resolve().parent
-PROFILES_PATH = ROOT / "web/src/data/artistProfiles.json"
-OUTPUT_PATH = ROOT / "web/src/data/youtubeChannelAllowlists.json"
+PROFILES_DATASET = "artistProfiles.json"
+ALLOWLISTS_DATASET = "youtubeChannelAllowlists.json"
+PROFILES_PATH = non_runtime_dataset_paths.resolve_input_path(PROFILES_DATASET)
+OUTPUT_PATH = non_runtime_dataset_paths.primary_path(ALLOWLISTS_DATASET)
 USER_AGENT = "Mozilla/5.0"
 REQUEST_TIMEOUT_SECONDS = 15
 YOUTUBE_CHANNEL_ID_PATTERNS = (
@@ -103,13 +107,8 @@ def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def write_json(path: Path, rows: Any) -> bool:
-    serialized = json.dumps(rows, ensure_ascii=False, indent=2) + "\n"
-    previous = path.read_text(encoding="utf-8") if path.exists() else None
-    if previous == serialized:
-        return False
-    path.write_text(serialized, encoding="utf-8")
-    return True
+def write_json(rows: Any) -> dict[str, list[str] | str]:
+    return non_runtime_dataset_paths.write_json_dataset(ALLOWLISTS_DATASET, rows)
 
 
 def extract_youtube_channel_match_keys(channel_url: str) -> list[str]:
@@ -313,7 +312,7 @@ def load_allowlists_by_group(path: Path = OUTPUT_PATH) -> dict[str, dict[str, An
 def main() -> None:
     profiles = load_json(PROFILES_PATH)
     rows = build_allowlists(profiles)
-    changed = write_json(OUTPUT_PATH, rows)
+    io_paths = write_json(rows)
 
     groups_with_primary = sum(1 for row in rows if row["primary_team_channel_url"])
     groups_with_mv_allowlist = sum(1 for row in rows if row["mv_allowlist_urls"])
@@ -330,8 +329,8 @@ def main() -> None:
                 "groups_with_mv_allowlist": groups_with_mv_allowlist,
                 "groups_with_mv_source_channels": groups_with_mv_sources,
                 "label_sources": label_sources,
-                "output": str(OUTPUT_PATH.relative_to(ROOT)),
-                "changed": changed,
+                "input": str(PROFILES_PATH.relative_to(ROOT)),
+                **io_paths,
             },
             ensure_ascii=False,
         )

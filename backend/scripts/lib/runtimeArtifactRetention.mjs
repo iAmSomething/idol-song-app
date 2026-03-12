@@ -25,6 +25,11 @@ export const RUNTIME_ARTIFACT_RETENTION_GROUPS = [
     label: 'Repo root runtime-facing generated data',
     directory: '.',
     canonical_paths: [
+      'artist_profiles_seed.json',
+      'team_badge_assets.json',
+      'youtube_channel_allowlists.json',
+      'release_detail_catalog.json',
+      'release_artwork_catalog.json',
       'tracking_watchlist.json',
       'upcoming_release_candidates.json',
       'upcoming_release_candidates.csv',

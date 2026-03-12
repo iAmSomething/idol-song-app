@@ -8,12 +8,13 @@ from pathlib import Path
 from urllib.parse import quote_plus
 
 import build_release_details_musicbrainz as release_detail_builder
+import non_runtime_dataset_paths
 import youtube_channel_allowlists
 
 
 ROOT = Path(__file__).resolve().parent
-DETAILS_PATH = ROOT / "web/src/data/releaseDetails.json"
-PROFILES_PATH = ROOT / "web/src/data/artistProfiles.json"
+DETAILS_PATH = non_runtime_dataset_paths.resolve_input_path("releaseDetails.json")
+PROFILES_PATH = non_runtime_dataset_paths.resolve_input_path("artistProfiles.json")
 OUTPUT_JSON = ROOT / "mv_manual_review_queue.json"
 OUTPUT_CSV = ROOT / "mv_manual_review_queue.csv"
 

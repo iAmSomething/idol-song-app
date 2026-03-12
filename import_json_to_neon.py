@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 from urllib.parse import urlsplit, urlunsplit
 
 import canonical_normalization
+import non_runtime_dataset_paths
 
 try:
     import psycopg
@@ -24,19 +25,19 @@ except ImportError as error:  # pragma: no cover - runtime dependency guard
 ROOT = Path(__file__).resolve().parent
 BACKEND_REPORTS_DIR = ROOT / "backend" / "reports"
 DEFAULT_SUMMARY_PATH = BACKEND_REPORTS_DIR / "json_to_neon_import_summary.json"
-ARTIST_PROFILES_PATH = ROOT / "web" / "src" / "data" / "artistProfiles.json"
+ARTIST_PROFILES_PATH = non_runtime_dataset_paths.resolve_input_path("artistProfiles.json")
 CANONICAL_ENTITY_METADATA_PATH = ROOT / "canonical_entity_metadata.json"
-TEAM_BADGE_ASSETS_PATH = ROOT / "web" / "src" / "data" / "teamBadgeAssets.json"
-YOUTUBE_ALLOWLISTS_PATH = ROOT / "web" / "src" / "data" / "youtubeChannelAllowlists.json"
-RELEASE_DETAILS_PATH = ROOT / "web" / "src" / "data" / "releaseDetails.json"
-RELEASE_HISTORY_PATH = ROOT / "web" / "src" / "data" / "releaseHistory.json"
-RELEASE_ARTWORK_PATH = ROOT / "web" / "src" / "data" / "releaseArtwork.json"
-UPCOMING_CANDIDATES_PATH = ROOT / "web" / "src" / "data" / "upcomingCandidates.json"
-WATCHLIST_PATH = ROOT / "web" / "src" / "data" / "watchlist.json"
+TEAM_BADGE_ASSETS_PATH = non_runtime_dataset_paths.resolve_input_path("teamBadgeAssets.json")
+YOUTUBE_ALLOWLISTS_PATH = non_runtime_dataset_paths.resolve_input_path("youtubeChannelAllowlists.json")
+RELEASE_DETAILS_PATH = non_runtime_dataset_paths.resolve_input_path("releaseDetails.json")
+RELEASE_HISTORY_PATH = non_runtime_dataset_paths.resolve_input_path("releaseHistory.json")
+RELEASE_ARTWORK_PATH = non_runtime_dataset_paths.resolve_input_path("releaseArtwork.json")
+UPCOMING_CANDIDATES_PATH = non_runtime_dataset_paths.resolve_input_path("upcomingCandidates.json")
+WATCHLIST_PATH = non_runtime_dataset_paths.resolve_input_path("watchlist.json")
 RELEASE_DETAIL_OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 MANUAL_REVIEW_QUEUE_PATH = ROOT / "manual_review_queue.json"
 MV_MANUAL_REVIEW_QUEUE_PATH = ROOT / "mv_manual_review_queue.json"
-RELEASES_ROLLUP_PATH = ROOT / "web" / "src" / "data" / "releases.json"
+RELEASES_ROLLUP_PATH = non_runtime_dataset_paths.resolve_input_path("releases.json")
 
 TARGET_TABLES = [
     "entities",

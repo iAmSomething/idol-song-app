@@ -56,6 +56,7 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           BACKEND_PUBLIC_URL: ${{ vars.VITE_API_BASE_URL }}
         run: |
+          python youtube_channel_allowlists.py
           python build_entity_metadata_acquisition.py
           python build_canonical_entity_metadata.py
           python build_release_history_musicbrainz.py
@@ -63,7 +64,6 @@ jobs:
           python build_release_details_musicbrainz.py
           python build_release_artwork_catalog.py
           python build_entity_asset_coverage_report.py
-          python youtube_channel_allowlists.py
           python backfill_release_detail_mvs.py
           python build_mv_manual_review_queue.py
           if [ -n "${DATABASE_URL:-}" ]; then
@@ -126,6 +126,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add entity_metadata_acquisition.json canonical_entity_metadata.json verified_release_history_mb.json verified_release_history_mb.csv verified_release_history_mb_unresolved.json group_latest_release_since_2025-06-01_mb.json group_latest_release_since_2025-06-01_mb.csv title_track_manual_review_queue.json title_track_manual_review_queue.csv release_detail_manual_review_queue.json release_detail_manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv backend/exports/non_runtime_web_snapshots backend/reports/entity_asset_coverage_report.json backend/reports/entity_asset_coverage_report.md backend/reports/historical_release_detail_coverage_report.json backend/reports/historical_release_detail_coverage_summary.md backend/reports/projection_refresh_summary.json backend/reports/worker_cadence_report.json backend/reports/canonical_null_coverage_report.json backend/reports/canonical_null_recheck_queue.json backend/reports/canonical_null_coverage_history.json backend/reports/null_coverage_trend_report.json backend/reports/service_link_gap_queues.json backend/reports/service_link_gap_queue_spotify.csv backend/reports/service_link_gap_queue_youtube_music.csv backend/reports/service_link_gap_queue_youtube_mv.csv backend/reports/title_track_gap_queue.json backend/reports/title_track_gap_queue.csv backend/reports/entity_identity_workbench.json backend/reports/entity_identity_workbench_entities.csv backend/reports/entity_identity_field_queue.csv backend/reports/report_bundle_metadata.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json backend/reports/runtime_gate_report.json backend/reports/migration_readiness_scorecard.json backend/reports/migration_readiness_scorecard.md backend/reports/backend_freshness_handoff.json
+          git add artist_profiles_seed.json team_badge_assets.json youtube_channel_allowlists.json release_detail_catalog.json release_artwork_catalog.json entity_metadata_acquisition.json canonical_entity_metadata.json verified_release_history_mb.json verified_release_history_mb.csv verified_release_history_mb_unresolved.json group_latest_release_since_2025-06-01_mb.json group_latest_release_since_2025-06-01_mb.csv title_track_manual_review_queue.json title_track_manual_review_queue.csv release_detail_manual_review_queue.json release_detail_manual_review_queue.csv mv_manual_review_queue.json mv_manual_review_queue.csv backend/exports/non_runtime_web_snapshots backend/reports/entity_asset_coverage_report.json backend/reports/entity_asset_coverage_report.md backend/reports/historical_release_detail_coverage_report.json backend/reports/historical_release_detail_coverage_summary.md backend/reports/projection_refresh_summary.json backend/reports/worker_cadence_report.json backend/reports/canonical_null_coverage_report.json backend/reports/canonical_null_recheck_queue.json backend/reports/canonical_null_coverage_history.json backend/reports/null_coverage_trend_report.json backend/reports/service_link_gap_queues.json backend/reports/service_link_gap_queue_spotify.csv backend/reports/service_link_gap_queue_youtube_music.csv backend/reports/service_link_gap_queue_youtube_mv.csv backend/reports/title_track_gap_queue.json backend/reports/title_track_gap_queue.csv backend/reports/entity_identity_workbench.json backend/reports/entity_identity_workbench_entities.csv backend/reports/entity_identity_field_queue.csv backend/reports/report_bundle_metadata.json backend/reports/backend_json_parity_report.json backend/reports/backend_shadow_read_report.json backend/reports/runtime_gate_report.json backend/reports/migration_readiness_scorecard.json backend/reports/migration_readiness_scorecard.md backend/reports/backend_freshness_handoff.json
           git commit -m "chore: refresh catalog enrichment data"
           git push

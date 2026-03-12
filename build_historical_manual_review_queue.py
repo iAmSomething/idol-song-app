@@ -8,8 +8,10 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
+import non_runtime_dataset_paths
+
 ROOT = Path(__file__).resolve().parent
-DETAILS_PATH = ROOT / "web/src/data/releaseDetails.json"
+DETAILS_PATH = non_runtime_dataset_paths.resolve_input_path("releaseDetails.json")
 QUEUE_JSON_PATH = ROOT / "historical_manual_review_priority_queue.json"
 QUEUE_CSV_PATH = ROOT / "historical_manual_review_priority_queue.csv"
 REVIEW_REPORT_JSON_PATH = ROOT / "backend/reports/historical_manual_review_slice_report.json"
