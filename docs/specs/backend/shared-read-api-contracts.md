@@ -97,7 +97,9 @@
 - monthly verified list
 - monthly scheduled list
 - nearest upcoming calculated from exact future date only
+- direct-render identity/meta for verified and upcoming rows (`entity_type`, `agency_name`, `tracking_status`)
 - scheduled row action-ready source summary (`source_url`, `source_type`, `source_domain`, `evidence_summary`, `source_count`)
+- verified row action-ready source summary (`release_format`, `source_url`, `artist_source_url`)
 - stable `scheduled_month` in `YYYY-MM` format for both `exact` and `month_only` rows
 
 ### 5.4 Response Shape
@@ -119,6 +121,9 @@
       "upcoming_signal_id": "upc_yena_2026_03_11",
       "entity_slug": "yena",
       "display_name": "YENA",
+      "entity_type": "solo",
+      "agency_name": "YUE HUA Entertainment",
+      "tracking_status": "watch_only",
       "headline": "YENA 4th Mini Album",
       "scheduled_date": "2026-03-11",
       "scheduled_month": "2026-03",
@@ -140,10 +145,15 @@
             "release_id": "rel_tunexx_set_by_us_only_2026_03_03_album",
             "entity_slug": "tunexx",
             "display_name": "TUNEXX",
+            "entity_type": "group",
+            "agency_name": "IST Entertainment",
             "release_title": "SET BY US ONLY",
             "release_date": "2026-03-03",
             "stream": "album",
-            "release_kind": "ep"
+            "release_kind": "ep",
+            "release_format": "ep",
+            "source_url": "https://musicbrainz.org/release-group/...",
+            "artist_source_url": "https://www.youtube.com/@official_TUNEXX"
           }
         ],
         "exact_upcoming": []
@@ -153,6 +163,9 @@
       {
         "entity_slug": "tomorrow-x-together",
         "display_name": "TOMORROW X TOGETHER",
+        "entity_type": "group",
+        "agency_name": "BIGHIT MUSIC",
+        "tracking_status": "watch_only",
         "headline": "March comeback",
         "scheduled_date": null,
         "scheduled_month": "2026-03",
@@ -181,6 +194,7 @@
 - `scheduled_month`는 항상 `YYYY-MM` 형식이다
 - `scheduled_month`는 `exact` row에서도 month context를 유지하기 위해 채워진다
 - source summary는 `agency_notice -> weverse_notice -> official_social -> news_rss -> manual` 우선순위의 대표 source를 사용한다
+- web calendar는 `verified_list`, `scheduled_list`, `month_only_upcoming`만으로 CTA/agency/entity routing을 그릴 수 있어야 한다
 
 ## 6. `GET /v1/search`
 
@@ -580,6 +594,7 @@ lookup helper response:
 - change feed
 - long-gap
 - rookie
+- long-gap / rookie direct-render meta (`entity_type`, `agency_name`, `tracking_status`, nested release/signal source pointers)
 
 ### 9.3 Response Shape
 
@@ -616,12 +631,21 @@ lookup helper response:
   "upcoming_signal_id": "uuid",
   "entity_slug": "yena",
   "display_name": "YENA",
+  "entity_type": "solo",
+  "agency_name": "YUE HUA Entertainment",
+  "tracking_status": "watch_only",
   "headline": "YENA confirms March comeback",
   "scheduled_date": "2026-03-11",
+  "scheduled_month": "2026-03",
   "date_precision": "exact",
   "date_status": "confirmed",
   "confidence_score": 0.84,
-  "release_format": "ep"
+  "release_format": "ep",
+  "source_url": "https://starnewskorea.com/...",
+  "source_type": "news_rss",
+  "source_domain": "starnewskorea.com",
+  "evidence_summary": "YENA will release a new mini album on March 11.",
+  "source_count": 2
 }
 ```
 
@@ -632,12 +656,21 @@ lookup helper response:
   "upcoming_signal_id": "uuid",
   "entity_slug": "p1harmony",
   "display_name": "P1Harmony",
+  "entity_type": "group",
+  "agency_name": "FNC Entertainment",
+  "tracking_status": "watch_only",
   "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
   "scheduled_date": "2026-03-12",
+  "scheduled_month": "2026-03",
   "date_precision": "exact",
   "date_status": "confirmed",
   "confidence_score": 0.82,
-  "release_format": "ep"
+  "release_format": "ep",
+  "source_url": "https://fncent.com/...",
+  "source_type": "agency_notice",
+  "source_domain": "fncent.com",
+  "evidence_summary": "FNC confirmed the March 12 mini-album release.",
+  "source_count": 2
 }
 ```
 
@@ -683,13 +716,19 @@ upcoming signal item:
 {
   "entity_slug": "weeekly",
   "display_name": "Weeekly",
+  "entity_type": "group",
+  "agency_name": "IST Entertainment",
+  "tracking_status": "watch_only",
   "watch_reason": "long_gap",
   "latest_release": {
     "release_id": "uuid",
     "release_title": "Bliss",
     "release_date": "2024-07-09",
     "stream": "album",
-    "release_kind": "ep"
+    "release_kind": "ep",
+    "release_format": "ep",
+    "source_url": "https://musicbrainz.org/release-group/...",
+    "artist_source_url": "https://www.youtube.com/@Weeekly"
   },
   "gap_days": 608,
   "has_upcoming_signal": false,
@@ -703,25 +742,36 @@ upcoming signal item:
 {
   "entity_slug": "atheart",
   "display_name": "AtHeart",
+  "entity_type": "group",
+  "agency_name": "Titan Content",
+  "tracking_status": "watch_only",
   "debut_year": 2025,
   "latest_release": {
     "release_id": "uuid",
     "release_title": "Shut Up",
     "release_date": "2026-02-26",
     "stream": "song",
-    "release_kind": "single"
+    "release_kind": "single",
+    "release_format": "single",
+    "source_url": "https://musicbrainz.org/release-group/...",
+    "artist_source_url": "https://www.youtube.com/@AtHeart"
   },
   "has_upcoming_signal": true,
   "latest_signal": {
     "upcoming_signal_id": "uuid",
     "headline": "Rookie group AtHeart drops bold new teaser photos...",
     "scheduled_date": null,
-    "scheduled_month": null,
-    "date_precision": "unknown",
-    "date_status": "rumor",
+    "scheduled_month": "2026-04",
+    "date_precision": "month_only",
+    "date_status": "scheduled",
     "release_format": null,
     "confidence_score": 0.68,
-    "latest_seen_at": "2026-01-31T08:00:00+00:00"
+    "latest_seen_at": "2026-01-31T08:00:00+00:00",
+    "source_url": "https://example.com/atheart-april",
+    "source_type": "news_rss",
+    "source_domain": "example.com",
+    "evidence_summary": "Month-only teaser coverage.",
+    "source_count": 1
   }
 }
 ```

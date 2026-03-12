@@ -369,6 +369,9 @@ function buildCalendarMonthPayload() {
       upcoming_signal_id: UPCOMING_SIGNAL_ID,
       entity_slug: 'yena',
       display_name: 'YENA',
+      entity_type: 'solo',
+      agency_name: 'YUE HUA Entertainment',
+      tracking_status: 'watch_only',
       headline: '최예나, 3월 11일 컴백 확정',
       scheduled_date: '2026-03-11',
       scheduled_month: '2026-03',
@@ -390,9 +393,14 @@ function buildCalendarMonthPayload() {
             release_id: YENA_RELEASE_ID,
             entity_slug: 'yena',
             display_name: 'YENA',
+            entity_type: 'solo',
+            agency_name: 'YUE HUA Entertainment',
             release_title: 'LOVE CATCHER',
             stream: 'album',
             release_kind: 'ep',
+            release_format: 'ep',
+            source_url: 'https://musicbrainz.example/yena-love-catcher',
+            artist_source_url: 'https://www.youtube.com/@YENA_OFFICIAL',
             release_date: '2026-03-11',
           },
         ],
@@ -401,6 +409,9 @@ function buildCalendarMonthPayload() {
             upcoming_signal_id: UPCOMING_SIGNAL_ID,
             entity_slug: 'yena',
             display_name: 'YENA',
+            entity_type: 'solo',
+            agency_name: 'YUE HUA Entertainment',
+            tracking_status: 'watch_only',
             headline: '최예나, 3월 11일 컴백 확정',
             scheduled_date: '2026-03-11',
             scheduled_month: '2026-03',
@@ -422,6 +433,9 @@ function buildCalendarMonthPayload() {
         upcoming_signal_id: 'month-only-signal',
         entity_slug: 'kickflip',
         display_name: 'KickFlip',
+        entity_type: 'group',
+        agency_name: 'JYP Entertainment',
+        tracking_status: 'watch_only',
         headline: 'KickFlip announces April comeback',
         scheduled_date: null,
         scheduled_month: '2026-04',
@@ -441,9 +455,14 @@ function buildCalendarMonthPayload() {
         release_id: YENA_RELEASE_ID,
         entity_slug: 'yena',
         display_name: 'YENA',
+        entity_type: 'solo',
+        agency_name: 'YUE HUA Entertainment',
         release_title: 'LOVE CATCHER',
         stream: 'album',
         release_kind: 'ep',
+        release_format: 'ep',
+        source_url: 'https://musicbrainz.example/yena-love-catcher',
+        artist_source_url: 'https://www.youtube.com/@YENA_OFFICIAL',
         release_date: '2026-03-11',
       },
     ],
@@ -452,6 +471,9 @@ function buildCalendarMonthPayload() {
         upcoming_signal_id: UPCOMING_SIGNAL_ID,
         entity_slug: 'yena',
         display_name: 'YENA',
+        entity_type: 'solo',
+        agency_name: 'YUE HUA Entertainment',
+        tracking_status: 'watch_only',
         headline: '최예나, 3월 11일 컴백 확정',
         scheduled_date: '2026-03-11',
         scheduled_month: '2026-03',
@@ -475,24 +497,42 @@ function buildRadarPayload() {
       upcoming_signal_id: 'upcoming-yena',
       entity_slug: 'yena',
       display_name: 'YENA',
+      entity_type: 'solo',
+      agency_name: 'YUE HUA Entertainment',
+      tracking_status: 'watch_only',
       headline: 'YENA confirms March comeback',
       scheduled_date: '2026-03-11',
+      scheduled_month: '2026-03',
       date_precision: 'exact',
       date_status: 'confirmed',
       confidence_score: 0.84,
       release_format: 'ep',
+      source_url: 'https://starnews.example/yena-love-catcher',
+      source_type: 'news_rss',
+      source_domain: 'starnews.example',
+      evidence_summary: 'Korean article confirmed the release date.',
+      source_count: 1,
     },
     weekly_upcoming: [
       {
         upcoming_signal_id: 'upcoming-yena',
         entity_slug: 'yena',
         display_name: 'YENA',
+        entity_type: 'solo',
+        agency_name: 'YUE HUA Entertainment',
+        tracking_status: 'watch_only',
         headline: 'YENA confirms March comeback',
         scheduled_date: '2026-03-11',
+        scheduled_month: '2026-03',
         date_precision: 'exact',
         date_status: 'confirmed',
         confidence_score: 0.84,
         release_format: 'ep',
+        source_url: 'https://starnews.example/yena-love-catcher',
+        source_type: 'news_rss',
+        source_domain: 'starnews.example',
+        evidence_summary: 'Korean article confirmed the release date.',
+        source_count: 1,
       },
     ],
     change_feed: [
@@ -514,6 +554,9 @@ function buildRadarPayload() {
       {
         entity_slug: 'woo-ah',
         display_name: 'woo!ah!',
+        entity_type: 'group',
+        agency_name: 'NV Entertainment',
+        tracking_status: 'watch_only',
         watch_reason: 'long_gap',
         latest_release: {
           release_id: 'release-wooah',
@@ -521,6 +564,9 @@ function buildRadarPayload() {
           release_date: '2024-07-16',
           stream: 'album',
           release_kind: 'ep',
+          release_format: 'ep',
+          source_url: 'https://musicbrainz.example/wooah-shining-on-you',
+          artist_source_url: 'https://www.youtube.com/@wooah',
         },
         gap_days: 600,
         has_upcoming_signal: false,
@@ -531,6 +577,9 @@ function buildRadarPayload() {
       {
         entity_slug: 'atheart',
         display_name: 'AtHeart',
+        entity_type: 'group',
+        agency_name: 'Titan Content',
+        tracking_status: 'watch_only',
         debut_year: 2025,
         latest_release: {
           release_id: 'release-atheart',
@@ -538,6 +587,9 @@ function buildRadarPayload() {
           release_date: '2026-02-26',
           stream: 'song',
           release_kind: 'single',
+          release_format: 'single',
+          source_url: 'https://musicbrainz.example/atheart-shut-up',
+          artist_source_url: 'https://www.youtube.com/@AtHeart',
         },
         has_upcoming_signal: true,
         latest_signal: {
@@ -550,6 +602,11 @@ function buildRadarPayload() {
           release_format: '',
           confidence_score: 0.76,
           latest_seen_at: NOW,
+          source_url: 'https://example.com/atheart-april',
+          source_type: 'news_rss',
+          source_domain: 'example.com',
+          evidence_summary: 'Month-only teaser coverage.',
+          source_count: 1,
         },
       },
     ],
@@ -1382,7 +1439,12 @@ test('GET /v1/calendar/month returns calendar projection contract', async (t) =>
   assert.equal(body.data.scheduled_list.length, 0);
   assert.equal(body.data.nearest_upcoming, null);
   assert.equal(body.data.verified_list[0].release_id, YENA_RELEASE_ID);
+  assert.equal(body.data.verified_list[0].entity_type, 'solo');
+  assert.equal(body.data.verified_list[0].agency_name, 'YUE HUA Entertainment');
+  assert.equal(body.data.verified_list[0].artist_source_url, 'https://www.youtube.com/@YENA_OFFICIAL');
   assert.equal(body.data.month_only_upcoming[0].date_precision, 'month_only');
+  assert.equal(body.data.month_only_upcoming[0].tracking_status, 'watch_only');
+  assert.equal(body.data.month_only_upcoming[0].agency_name, 'JYP Entertainment');
 });
 
 test('GET /v1/radar returns projection-backed radar payload', async (t) => {
@@ -1398,9 +1460,13 @@ test('GET /v1/radar returns projection-backed radar payload', async (t) => {
   assert.equal(body.data.featured_upcoming, null);
   assert.equal(body.data.weekly_upcoming.length, 0);
   assert.equal(body.data.rookie.length, 1);
+  assert.equal(body.data.long_gap[0].agency_name, 'NV Entertainment');
+  assert.equal(body.data.long_gap[0].latest_release.artist_source_url, 'https://www.youtube.com/@wooah');
   assert.equal(body.data.long_gap[0].latest_release.stream, 'album');
+  assert.equal(body.data.rookie[0].tracking_status, 'watch_only');
   assert.equal(body.data.rookie[0].latest_signal.scheduled_month, '2026-04');
   assert.equal(body.data.rookie[0].latest_signal.release_format, null);
+  assert.equal(body.data.rookie[0].latest_signal.source_domain, 'example.com');
   assert.equal(typeof body.data.change_feed[0].occurred_at, 'string');
 });
 
