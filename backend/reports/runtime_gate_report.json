@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-12T10:09:26.013Z",
+  "generated_at": "2026-03-12T11:02:20.175Z",
   "report_bundle": {
-    "generated_at": "2026-03-12T10:09:25.875Z",
-    "bundle_id": "post-sync-verification-01dd4718dfce",
+    "generated_at": "2026-03-12T11:01:20.619Z",
+    "bundle_id": "post-sync-verification-2675934e9846",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -81,30 +81,34 @@
         "generated_at": null,
         "sent": null,
         "failed": null
+      },
+      "same_day_release_acceptance": {
+        "path": "reports/same_day_release_acceptance_report.json",
+        "generated_at": "2026-03-12T11:01:15.594Z",
+        "overall_status": "fail",
+        "fixture_count": 2
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-01dd4718dfce",
+      "bundle id: post-sync-verification-2675934e9846",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
     ]
   },
   "bundle_consistency": {
-    "status": "fail",
-    "expected_bundle_id": "post-sync-verification-01dd4718dfce",
+    "status": "pass",
+    "expected_bundle_id": "post-sync-verification-2675934e9846",
     "observed": {
-      "parity_bundle": "post-sync-verification-42aeae5e1f6f",
-      "shadow_bundle": "post-sync-verification-368ed485b22b",
+      "parity_bundle": "post-sync-verification-2675934e9846",
+      "shadow_bundle": "post-sync-verification-2675934e9846",
       "runtime_gate_bundle": null,
       "historical_coverage_generated_at": "2026-03-12T00:00:00.000Z",
       "canonical_null_coverage_generated_at": "2026-03-12T10:09:25.569Z",
-      "null_coverage_trend_generated_at": "2026-03-12T02:34:25.709Z"
+      "null_coverage_trend_generated_at": "2026-03-12T02:34:25.709Z",
+      "same_day_release_acceptance_generated_at": "2026-03-12T11:01:15.594Z"
     },
-    "mismatches": [
-      "parity bundle drift (post-sync-verification-42aeae5e1f6f)",
-      "shadow bundle drift (post-sync-verification-368ed485b22b)"
-    ]
+    "mismatches": []
   },
   "thresholds": {
     "latency": {
@@ -137,18 +141,20 @@
     "historical_coverage_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/historical_release_detail_coverage_report.json",
     "canonical_null_coverage_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/canonical_null_coverage_report.json",
     "null_coverage_trend_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/null_coverage_trend_report.json",
+    "same_day_release_acceptance_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/same_day_release_acceptance_report.json",
     "bundle_report": "/Users/gimtaehun/Desktop/idol-song-app/backend/reports/report_bundle_metadata.json"
   },
   "summary_lines": [
     "api latency: needs_review (worst p95=1148.96ms)",
     "api error rate: needs_review (error rate=0)",
-    "projection freshness: fail (lag=126.33m)",
+    "projection freshness: fail (lag=179.23m)",
     "worker cadence: fail (cadence_status=scheduled_evidence_missing, missed_windows=6)",
     "parity dependency: fail",
     "shadow dependency: fail",
     "historical catalog completeness dependency: fail",
     "critical null coverage dependency: fail",
-    "bundle consistency: fail",
+    "same-day release acceptance dependency: fail",
+    "bundle consistency: pass",
     "shadow -> web cutover gate: fail",
     "web cutover -> JSON demotion gate: fail"
   ],
@@ -181,7 +187,7 @@
       "status": "fail",
       "observed": {
         "projection_generated_at": "2026-03-12T08:03:06.277Z",
-        "lag_minutes": 126.33
+        "lag_minutes": 179.23
       },
       "thresholds": {
         "passLagMinutes": 20,
@@ -233,7 +239,7 @@
       "status": "fail",
       "observed": {
         "clean": false,
-        "generated_at": "2026-03-12T10:09:25.806189+00:00",
+        "generated_at": "2026-03-12T11:02:07.614583+00:00",
         "summary_lines": [
           "entity alias/search coverage: clean (mismatched entities=0)",
           "official links: drift (mismatched entities=62)",
@@ -251,7 +257,7 @@
       "status": "fail",
       "observed": {
         "clean": false,
-        "generated_at": "2026-03-12T08:03:43.500Z",
+        "generated_at": "2026-03-12T11:02:16.705Z",
         "summary_lines": [
           "search: clean 4/5, drift 1/5",
           "entity_detail: clean 1/4, drift 3/4",
@@ -485,23 +491,47 @@
       },
       "label": "critical_null_coverage"
     },
-    "bundle_consistency": {
+    "same_day_release_acceptance": {
       "status": "fail",
       "observed": {
-        "status": "fail",
-        "expected_bundle_id": "post-sync-verification-01dd4718dfce",
+        "overall_status": "fail",
+        "generated_at": "2026-03-12T11:01:15.594Z",
+        "failed_fixtures": [
+          {
+            "key": "p1harmony_acceptance",
+            "label": "P1Harmony same-day release acceptance",
+            "missing_requirements": [
+              "released_row",
+              "album_cover",
+              "track_list",
+              "official_mv",
+              "title_track",
+              "user_surface_suppression"
+            ]
+          }
+        ],
+        "summary_lines": [
+          "YENA same-day suppression: pass",
+          "P1Harmony same-day release acceptance: fail (released_row, album_cover, track_list, official_mv, title_track, user_surface_suppression)"
+        ]
+      },
+      "label": "same_day_release_acceptance"
+    },
+    "bundle_consistency": {
+      "status": "pass",
+      "observed": {
+        "status": "pass",
+        "expected_bundle_id": "post-sync-verification-2675934e9846",
         "observed": {
-          "parity_bundle": "post-sync-verification-42aeae5e1f6f",
-          "shadow_bundle": "post-sync-verification-368ed485b22b",
+          "parity_bundle": "post-sync-verification-2675934e9846",
+          "shadow_bundle": "post-sync-verification-2675934e9846",
           "runtime_gate_bundle": null,
           "historical_coverage_generated_at": "2026-03-12T00:00:00.000Z",
           "canonical_null_coverage_generated_at": "2026-03-12T10:09:25.569Z",
-          "null_coverage_trend_generated_at": "2026-03-12T02:34:25.709Z"
+          "null_coverage_trend_generated_at": "2026-03-12T02:34:25.709Z",
+          "same_day_release_acceptance_generated_at": "2026-03-12T11:01:15.594Z"
         },
-        "mismatches": [
-          "parity bundle drift (post-sync-verification-42aeae5e1f6f)",
-          "shadow bundle drift (post-sync-verification-368ed485b22b)"
-        ]
+        "mismatches": []
       },
       "label": "report_bundle_metadata"
     }

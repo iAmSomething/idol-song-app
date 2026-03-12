@@ -31,6 +31,7 @@
     "workflow:verify": "node ./scripts/verify-workflow-condition-guards.mjs",
     "curation:export": "node ./scripts/build-manual-curation-bundles.mjs",
     "curation:import": "node ./scripts/import-manual-curation-bundles.mjs",
+    "same-day:acceptance": "node ./scripts/build-same-day-release-acceptance-report.mjs",
     "runtime:gate": "node ./scripts/build-runtime-gate-report.mjs",
     "preview:url:sync": "node ./scripts/provision-preview-backend-url.mjs --target preview"
   },

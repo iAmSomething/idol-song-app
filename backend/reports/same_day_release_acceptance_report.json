@@ -1,0 +1,116 @@
+{
+  "generated_at": "2026-03-12T11:01:15.594Z",
+  "reference_date": "2026-03-12",
+  "overall_status": "fail",
+  "summary_lines": [
+    "YENA same-day suppression: pass",
+    "P1Harmony same-day release acceptance: fail (released_row, album_cover, track_list, official_mv, title_track, user_surface_suppression)"
+  ],
+  "fixtures": [
+    {
+      "key": "yena_suppression",
+      "label": "YENA same-day suppression",
+      "mode": "suppression",
+      "status": "pass",
+      "fixture": {
+        "key": "yena_suppression",
+        "label": "YENA same-day suppression",
+        "group": "YENA",
+        "scheduled_date": "2026-03-11",
+        "release_title": "LOVE CATCHER",
+        "stream": "album",
+        "mode": "suppression"
+      },
+      "exact_upcoming": {
+        "group": "YENA",
+        "scheduled_date": "2026-03-11",
+        "date_status": "confirmed",
+        "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+        "source_type": "news_rss",
+        "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+        "source_domain": "starnewskorea.com",
+        "published_at": "Mon, 23 Feb 2026 14:58:00 +0900",
+        "confidence": 0.84,
+        "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
+        "tracking_status": "watch_only",
+        "search_term": "\"최예나\" 컴백",
+        "release_format": "ep",
+        "context_tags": [],
+        "date_precision": "exact",
+        "scheduled_month": "2026-03"
+      },
+      "promoted_release": {
+        "group": "YENA",
+        "release_title": "LOVE CATCHER",
+        "release_date": "2026-03-11",
+        "stream": "album",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "source": "https://musicbrainz.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+        "delta_days": 0
+      },
+      "checks": {
+        "exact_upcoming_present": true,
+        "released_row_present": true,
+        "user_facing_upcoming_suppressed": true,
+        "upcoming_only_surface_state": false
+      },
+      "missing_requirements": []
+    },
+    {
+      "key": "p1harmony_acceptance",
+      "label": "P1Harmony same-day release acceptance",
+      "mode": "acceptance",
+      "status": "fail",
+      "fixture": {
+        "key": "p1harmony_acceptance",
+        "label": "P1Harmony same-day release acceptance",
+        "group": "P1Harmony",
+        "scheduled_date": "2026-03-12",
+        "release_title": null,
+        "stream": null,
+        "mode": "acceptance"
+      },
+      "exact_upcoming": {
+        "group": "P1Harmony",
+        "scheduled_date": "2026-03-12",
+        "date_status": "confirmed",
+        "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+        "source_type": "news_rss",
+        "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+        "source_domain": "news.google.com",
+        "published_at": "Wed, 25 Feb 2026 08:00:00 GMT",
+        "confidence": 0.82,
+        "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+        "tracking_status": "recent_release",
+        "search_term": "\"P1Harmony\" kpop comeback",
+        "release_format": "ep",
+        "context_tags": [],
+        "date_precision": "exact",
+        "scheduled_month": "2026-03"
+      },
+      "promoted_release": null,
+      "matched_detail": null,
+      "matched_artwork": null,
+      "checks": {
+        "exact_upcoming_present": true,
+        "released_row_present": false,
+        "album_cover_attached": false,
+        "track_list_attached": false,
+        "official_mv_attached": false,
+        "title_track_attached": false,
+        "user_facing_not_upcoming_only": false
+      },
+      "missing_requirements": [
+        "released_row",
+        "album_cover",
+        "track_list",
+        "official_mv",
+        "title_track",
+        "user_surface_suppression"
+      ],
+      "release_candidates_considered": []
+    }
+  ],
+  "failure_update_markdown": "## same-day acceptance status\n- reference date: 2026-03-12\n- status: FAIL\n- fixture: P1Harmony same-day release acceptance\n  - missing: released_row, album_cover, track_list, official_mv, title_track, user_surface_suppression\n  - promoted release: none"
+}

@@ -76,6 +76,7 @@ jobs:
               npm run null:recheck
               npm run null:trend
               npm run gap:workbenches
+              npm run same-day:acceptance
               npm run report:bundle -- --bundle-kind catalog-enrichment --cadence-profile weekly-enrichment
             )
             python build_backend_json_parity_report.py --bundle-path backend/reports/report_bundle_metadata.json

@@ -18,6 +18,10 @@ const DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH = resolve(
 );
 const DEFAULT_NULL_COVERAGE_REPORT_PATH = resolve(process.cwd(), './reports/canonical_null_coverage_report.json');
 const DEFAULT_NULL_TREND_REPORT_PATH = resolve(process.cwd(), './reports/null_coverage_trend_report.json');
+const DEFAULT_SAME_DAY_RELEASE_ACCEPTANCE_REPORT_PATH = resolve(
+  process.cwd(),
+  './reports/same_day_release_acceptance_report.json',
+);
 const DEFAULT_BUNDLE_PATH = resolve(process.cwd(), './reports/report_bundle_metadata.json');
 
 const GATE_THRESHOLDS = {
@@ -54,6 +58,7 @@ function parseArgs(argv) {
     historicalCoverageReportPath: DEFAULT_HISTORICAL_COVERAGE_REPORT_PATH,
     nullCoverageReportPath: DEFAULT_NULL_COVERAGE_REPORT_PATH,
     nullTrendReportPath: DEFAULT_NULL_TREND_REPORT_PATH,
+    sameDayReleaseAcceptanceReportPath: DEFAULT_SAME_DAY_RELEASE_ACCEPTANCE_REPORT_PATH,
     bundlePath: DEFAULT_BUNDLE_PATH,
   };
 
@@ -101,6 +106,11 @@ function parseArgs(argv) {
     }
     if (value === '--null-trend-report-path') {
       options.nullTrendReportPath = resolve(process.cwd(), argv[index + 1]);
+      index += 1;
+      continue;
+    }
+    if (value === '--same-day-release-acceptance-report-path') {
+      options.sameDayReleaseAcceptanceReportPath = resolve(process.cwd(), argv[index + 1]);
       index += 1;
       continue;
     }
@@ -293,6 +303,42 @@ function buildCriticalNullCoverageGate(coverageReport, trendReport) {
   };
 }
 
+function buildSameDayAcceptanceGate(report) {
+  if (!report) {
+    return {
+      status: 'fail',
+      observed: {
+        overall_status: null,
+        generated_at: null,
+        failed_fixtures: [],
+        summary_lines: [],
+      },
+      label: 'same_day_release_acceptance',
+    };
+  }
+
+  const failedFixtures = Array.isArray(report.fixtures)
+    ? report.fixtures
+        .filter((fixture) => fixture?.status !== 'pass')
+        .map((fixture) => ({
+          key: fixture?.key ?? null,
+          label: fixture?.label ?? null,
+          missing_requirements: Array.isArray(fixture?.missing_requirements) ? fixture.missing_requirements : [],
+        }))
+    : [];
+
+  return {
+    status: report.overall_status === 'pass' ? 'pass' : 'fail',
+    observed: {
+      overall_status: report.overall_status ?? null,
+      generated_at: report.generated_at ?? null,
+      failed_fixtures: failedFixtures,
+      summary_lines: Array.isArray(report.summary_lines) ? report.summary_lines : [],
+    },
+    label: 'same_day_release_acceptance',
+  };
+}
+
 function buildStageGate(statuses, blockingDependencies) {
   const combined = [...statuses, ...blockingDependencies];
   return worstStatus(combined);
@@ -339,6 +385,7 @@ async function main() {
     historicalCoverageReport,
     nullCoverageReport,
     nullTrendReport,
+    sameDayAcceptanceReport,
     reportBundle,
   ] =
     await Promise.all([
@@ -350,6 +397,7 @@ async function main() {
       loadJson(options.historicalCoverageReportPath),
       loadJson(options.nullCoverageReportPath),
       loadJson(options.nullTrendReportPath),
+      readJsonIfExists(options.sameDayReleaseAcceptanceReportPath),
       readJsonIfExists(options.bundlePath),
     ]);
 
@@ -366,6 +414,7 @@ async function main() {
     historicalCoverageReport,
     nullCoverageReport,
     nullTrendReport,
+    sameDayAcceptanceReport,
   });
 
   const dependencyChecks = {
@@ -377,6 +426,7 @@ async function main() {
       'historical_release_detail_coverage_report',
     ),
     critical_null_coverage: buildCriticalNullCoverageGate(nullCoverageReport, nullTrendReport),
+    same_day_release_acceptance: buildSameDayAcceptanceGate(sameDayAcceptanceReport),
     bundle_consistency: {
       status: bundleConsistency.status,
       observed: bundleConsistency,
@@ -402,6 +452,7 @@ async function main() {
     `shadow dependency: ${dependencyChecks.shadow.status}`,
     `historical catalog completeness dependency: ${dependencyChecks.historical_catalog_completeness.status}`,
     `critical null coverage dependency: ${dependencyChecks.critical_null_coverage.status}`,
+    `same-day release acceptance dependency: ${dependencyChecks.same_day_release_acceptance.status}`,
     `bundle consistency: ${bundleConsistency.status}`,
     `shadow -> web cutover gate: ${stageGates.shadow_to_web_cutover}`,
     `web cutover -> JSON demotion gate: ${stageGates.web_cutover_to_json_demotion}`,
@@ -421,6 +472,7 @@ async function main() {
       historical_coverage_report: options.historicalCoverageReportPath,
       canonical_null_coverage_report: options.nullCoverageReportPath,
       null_coverage_trend_report: options.nullTrendReportPath,
+      same_day_release_acceptance_report: options.sameDayReleaseAcceptanceReportPath,
       bundle_report: options.bundlePath,
     },
     summary_lines: summaryLines,
