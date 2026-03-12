@@ -125,6 +125,65 @@ class BuildReleaseDetailsMusicBrainzTitleTrackTests(unittest.TestCase):
         self.assertEqual(resolution["status"], builder.TITLE_TRACK_STATUS_AUTO_SINGLE)
         self.assertEqual(resolution["selected_titles"], ["RUN (Japanese ver.)"])
 
+    def test_followup_song_release_can_resolve_title_track_after_album_release(self) -> None:
+        detail = {
+            "group": "ENHYPEN",
+            "release_title": "ROMANCE : UNTOLD",
+            "release_date": "2024-07-12",
+            "stream": "album",
+            "release_kind": "album",
+            "tracks": [
+                {"title": "Moonstruck"},
+                {"title": "Brought The Heat Back"},
+                {"title": "XO (Only If You Say Yes)"},
+            ],
+        }
+        song_release_index = {
+            "ENHYPEN": [
+                {
+                    "title": "Brought The Heat Back",
+                    "release_date": date(2024, 8, 9),
+                    "base_title": builder.normalize_base_title("Brought The Heat Back"),
+                }
+            ]
+        }
+
+        resolution = builder.infer_title_track_resolution(detail, song_release_index)
+
+        self.assertEqual(resolution["status"], builder.TITLE_TRACK_STATUS_AUTO_SINGLE)
+        self.assertEqual(resolution["selected_titles"], ["Brought The Heat Back"])
+        self.assertEqual(
+            resolution["candidates"][0]["sources"],
+            ["followup_song_release:2024-08-09"],
+        )
+
+    def test_release_title_exact_outranks_followup_song_release_fallback(self) -> None:
+        detail = {
+            "group": "TEST",
+            "release_title": "Spotlight",
+            "release_date": "2024-07-01",
+            "stream": "album",
+            "release_kind": "ep",
+            "tracks": [
+                {"title": "Spotlight"},
+                {"title": "Afterglow"},
+            ],
+        }
+        song_release_index = {
+            "TEST": [
+                {
+                    "title": "Afterglow",
+                    "release_date": date(2024, 7, 21),
+                    "base_title": builder.normalize_base_title("Afterglow"),
+                }
+            ]
+        }
+
+        resolution = builder.infer_title_track_resolution(detail, song_release_index)
+
+        self.assertEqual(resolution["status"], builder.TITLE_TRACK_STATUS_AUTO_SINGLE)
+        self.assertEqual(resolution["selected_titles"], ["Spotlight"])
+
 
 if __name__ == "__main__":
     unittest.main()
