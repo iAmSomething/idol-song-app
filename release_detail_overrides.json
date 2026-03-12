@@ -845,6 +845,15 @@
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
+    "group": "P1Harmony",
+    "release_title": "UNIQUE",
+    "release_date": "2026-03-12",
+    "stream": "album",
+    "youtube_video_id": "m18dRRu9-V4",
+    "youtube_video_url": "https://www.youtube.com/watch?v=m18dRRu9-V4",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
     "group": "PLAVE",
     "release_title": "かくれんぼ (Hide and Seek)",
     "release_date": "2025-06-16",

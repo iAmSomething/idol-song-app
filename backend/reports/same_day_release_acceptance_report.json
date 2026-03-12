@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-12T12:36:23.495Z",
+  "generated_at": "2026-03-12T13:11:24.233Z",
   "reference_date": "2026-03-12",
-  "overall_status": "fail",
+  "overall_status": "pass",
   "summary_lines": [
     "YENA same-day suppression: pass",
-    "P1Harmony same-day release acceptance: fail (official_mv)"
+    "P1Harmony same-day release acceptance: pass"
   ],
   "fixtures": [
     {
@@ -51,7 +51,7 @@
       "key": "p1harmony_acceptance",
       "label": "P1Harmony same-day release acceptance",
       "mode": "acceptance",
-      "status": "fail",
+      "status": "pass",
       "fixture": {
         "key": "p1harmony_acceptance",
         "label": "P1Harmony same-day release acceptance",
@@ -69,7 +69,7 @@
         "stream": "album",
         "release_kind": "ep",
         "release_format": "ep",
-        "source": "https://musicbrainz.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d",
+        "source": null,
         "delta_days": 0
       },
       "matched_detail": {
@@ -78,8 +78,8 @@
         "release_date": "2026-03-12",
         "stream": "album",
         "title_track_status": "unresolved",
-        "youtube_video_status": "unresolved",
-        "youtube_video_url": null,
+        "youtube_video_status": "manual_override",
+        "youtube_video_url": "https://www.youtube.com/watch?v=m18dRRu9-V4",
         "tracks": [
           {
             "order": 1,
@@ -143,13 +143,11 @@
         "released_row_present": true,
         "album_cover_attached": true,
         "track_list_attached": true,
-        "official_mv_attached": false,
+        "official_mv_attached": true,
         "title_track_attached": true,
         "user_facing_not_upcoming_only": true
       },
-      "missing_requirements": [
-        "official_mv"
-      ],
+      "missing_requirements": [],
       "release_candidates_considered": [
         {
           "group": "P1Harmony",
@@ -158,12 +156,12 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
-          "source": "https://musicbrainz.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d",
+          "source": null,
           "delta_days": 0
         }
       ]
     }
   ],
-  "failure_update_markdown": "## same-day acceptance status\n- reference date: 2026-03-12\n- status: FAIL\n- fixture: P1Harmony same-day release acceptance\n  - missing: official_mv\n  - promoted release: UNIQUE / 2026-03-12 / album",
+  "failure_update_markdown": "## same-day acceptance status\n- reference date: 2026-03-12\n- status: PASS\n- note: YENA suppression and P1Harmony acceptance are both green.",
   "data_source": "database"
 }

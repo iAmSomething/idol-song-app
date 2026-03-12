@@ -854,11 +854,11 @@
     "slug": "p1harmony",
     "fields": {
       "official_youtube": {
-        "value": "https://www.youtube.com/@P1H_official",
+        "value": "https://www.youtube.com/@P1Harmonyofficial",
         "status": "resolved",
-        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
-        "source_url": "https://www.youtube.com/@P1H_official",
-        "review_notes": "Verified from @P1H_official handle probe against the official social handle pattern."
+        "provenance": "entityMetadataAcquisition.reviewed_social_profile",
+        "source_url": "https://www.youtube.com/@P1Harmonyofficial",
+        "review_notes": "Reviewed direct official YouTube uploader from the 2026-03-12 UNIQUE MV watch page owner profile."
       }
     }
   },

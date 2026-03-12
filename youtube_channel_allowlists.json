@@ -4533,53 +4533,53 @@
   },
   {
     "group": "P1Harmony",
-    "primary_team_channel_url": "https://www.youtube.com/@P1H_official",
+    "primary_team_channel_url": "https://www.youtube.com/@P1Harmonyofficial",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@P1H_official",
+        "channel_url": "https://www.youtube.com/@P1Harmonyofficial",
         "channel_label": "P1Harmony",
         "owner_type": "team",
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCusCD4I-_-AAWpAnm0xgkCw",
-          "https://www.youtube.com/@P1H_official"
+          "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
+          "https://www.youtube.com/@P1Harmonyofficial"
         ],
         "match_keys": [
-          "@p1h_official",
-          "https://www.youtube.com/@p1h_official",
-          "channel:ucuscd4i-_-aawpanm0xgkcw",
-          "https://www.youtube.com/channel/ucuscd4i-_-aawpanm0xgkcw"
+          "@p1harmonyofficial",
+          "https://www.youtube.com/@p1harmonyofficial",
+          "channel:uce-xzqhlaq4zs_mpxzuc_2q",
+          "https://www.youtube.com/channel/uce-xzqhlaq4zs_mpxzuc_2q"
         ]
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@P1H_official"
+      "https://www.youtube.com/@P1Harmonyofficial"
     ],
     "mv_allowlist_match_keys": [
-      "@p1h_official",
-      "https://www.youtube.com/@p1h_official",
-      "channel:ucuscd4i-_-aawpanm0xgkcw",
-      "https://www.youtube.com/channel/ucuscd4i-_-aawpanm0xgkcw"
+      "@p1harmonyofficial",
+      "https://www.youtube.com/@p1harmonyofficial",
+      "channel:uce-xzqhlaq4zs_mpxzuc_2q",
+      "https://www.youtube.com/channel/uce-xzqhlaq4zs_mpxzuc_2q"
     ],
     "channels": [
       {
-        "channel_url": "https://www.youtube.com/@P1H_official",
+        "channel_url": "https://www.youtube.com/@P1Harmonyofficial",
         "channel_label": "P1Harmony",
         "owner_type": "team",
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCusCD4I-_-AAWpAnm0xgkCw",
-          "https://www.youtube.com/@P1H_official"
+          "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
+          "https://www.youtube.com/@P1Harmonyofficial"
         ],
         "match_keys": [
-          "@p1h_official",
-          "https://www.youtube.com/@p1h_official",
-          "channel:ucuscd4i-_-aawpanm0xgkcw",
-          "https://www.youtube.com/channel/ucuscd4i-_-aawpanm0xgkcw"
+          "@p1harmonyofficial",
+          "https://www.youtube.com/@p1harmonyofficial",
+          "channel:uce-xzqhlaq4zs_mpxzuc_2q",
+          "https://www.youtube.com/channel/uce-xzqhlaq4zs_mpxzuc_2q"
         ]
       }
     ]
