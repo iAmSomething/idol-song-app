@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/768c99d8-0942-47c3-9b3e-ef45fd29c3be/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/768c99d8-0942-47c3-9b3e-ef45fd29c3be/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/768c99d8-0942-47c3-9b3e-ef45fd29c3be"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -28,7 +33,7 @@
       {
         "order": 2,
         "title": "RED MOON",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,

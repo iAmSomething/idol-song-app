@@ -26,18 +26,6 @@ import {
   getSurfaceFallbackReasonKey,
   type SurfaceStatusSource,
 } from './lib/surfaceStatus'
-import artistProfileRows from './data/artistProfiles.json'
-import releaseArtworkRows from './data/releaseArtwork.json'
-import releaseDetailRows from './data/releaseDetails.json'
-import releaseHistoryRows from './data/releaseHistory.json'
-import releaseRows from './data/releases.json'
-import teamBadgeAssetRows from './data/teamBadgeAssets.json'
-import unresolvedRows from './data/unresolved.json'
-import upcomingCandidateRows from './data/upcomingCandidates.json'
-import releaseChangeLogRows from './data/releaseChangeLog.json'
-import relatedActOverrideRows from './data/relatedActsOverrides.json'
-import watchlistRows from './data/watchlist.json'
-import youtubeChannelAllowlistRows from './data/youtubeChannelAllowlists.json'
 
 type ReleaseFact = {
   title: string
@@ -838,6 +826,13 @@ type TeamCompareSnapshot = {
   latestSong: VerifiedRelease | null
   nextUpcomingSignal: UpcomingCandidateRow | null
   recentYearReleaseCount: number
+}
+
+type TeamDirectoryEntry = {
+  group: string
+  entitySlug: string | null
+  displayName: string
+  nextUpcomingSignal: UpcomingCandidateRow | null
 }
 
 type WatchReason = 'recent_release' | 'long_gap' | 'manual_watch'
@@ -1926,25 +1921,7 @@ const searchSurfaceApiSnapshotCache = new Map<string, SearchSurfaceSnapshot>()
 const entityDetailApiSnapshotCache = new Map<string, TeamProfile>()
 const calendarMonthApiSnapshotCache = new Map<string, CalendarMonthApiSnapshot>()
 const radarApiSnapshotCache = new Map<string, RadarApiSnapshot>()
-
-const artistProfiles = artistProfileRows as ArtistProfileRow[]
-const teamBadgeAssets = teamBadgeAssetRows as TeamBadgeAssetRow[]
-const releaseArtworkCatalog = releaseArtworkRows as ReleaseArtworkRow[]
-const releaseDetailsCatalog = releaseDetailRows as ReleaseDetailRow[]
-const releaseHistoryCatalog = releaseHistoryRows as ReleaseHistorySeedRow[]
-const releaseCatalog = releaseRows as ReleaseRow[]
-const relatedActOverrides = relatedActOverrideRows as RelatedActsOverrideRow[]
-const releases = releaseCatalog
-  .flatMap((row) => expandReleaseRow(row))
-  .sort((left, right) => right.dateValue.getTime() - left.dateValue.getTime())
-
-const unresolved = unresolvedRows as UnresolvedRow[]
-const watchlist = watchlistRows as WatchlistRow[]
-const rawUpcomingCandidates = upcomingCandidateRows as UpcomingCandidateRow[]
-const releaseChangeLog = releaseChangeLogRows as ReleaseChangeLogRow[]
-const youtubeChannelAllowlists = youtubeChannelAllowlistRows as YouTubeChannelAllowlistRow[]
-const teamBadgeAssetByGroup = new Map(teamBadgeAssets.map((row) => [row.group, row]))
-const UPCOMING_VISIBILITY_TODAY_KST = new Intl.DateTimeFormat('sv-SE', {
+const CURRENT_KST_ISO = new Intl.DateTimeFormat('sv-SE', {
   timeZone: 'Asia/Seoul',
   year: 'numeric',
   month: '2-digit',
@@ -1957,39 +1934,57 @@ const dateFormatter = new Intl.DateTimeFormat('en-CA', {
   day: '2-digit',
 })
 
-const releaseCatalogByGroup = new Map(releaseCatalog.map((row) => [row.group, row]))
-const artistProfileByGroup = new Map(artistProfiles.map((row) => [row.group, row]))
-const artistProfileBySlug = new Map(artistProfiles.map((row) => [row.slug, row]))
-const youtubeChannelAllowlistByGroup = new Map(youtubeChannelAllowlists.map((row) => [row.group, row]))
-const releaseArtworkByKey = new Map(
-  releaseArtworkCatalog.map((row) => [getReleaseLookupKey(row.group, row.release_title, row.release_date, row.stream), row]),
-)
-const releaseDetailsByKey = new Map(
-  releaseDetailsCatalog.map((row) => [getReleaseLookupKey(row.group, row.release_title, row.release_date, row.stream), row]),
-)
-const releaseGroups = groupReleasesByGroup(releases)
-const seededVerifiedReleaseHistory = buildSeededVerifiedReleaseHistory(releaseHistoryCatalog)
-const verifiedReleaseHistory = buildVerifiedReleaseHistory(seededVerifiedReleaseHistory)
-const verifiedReleaseHistoryByGroup = groupReleasesByGroup(verifiedReleaseHistory)
-const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
-const relatedActOverrideMap = new Map(relatedActOverrides.map((row) => [row.group, row.related_groups]))
-const upcomingCandidates = rawUpcomingCandidates.filter((item) =>
-  shouldDisplayUpcomingCandidate(item, UPCOMING_VISIBILITY_TODAY_KST),
-)
-const dedupedUpcomingCandidates = dedupeUpcomingCandidatesForDisplay(upcomingCandidates)
-const rawUpcomingByGroup = groupUpcomingCandidatesByGroup(upcomingCandidates)
-const upcomingByGroup = groupUpcomingCandidatesByGroup(dedupedUpcomingCandidates)
-const releaseChangeLogByGroup = groupReleaseChangeLogByGroup(releaseChangeLog)
-const latestReleaseChangeByGroup = new Map(
-  Array.from(releaseChangeLogByGroup, ([group, changes]) => [group, changes[0] ?? null]),
-)
-const searchIndexByGroup = buildSearchIndexByGroup()
-const teamProfiles = buildTeamProfiles()
-const teamProfileMap = new Map(teamProfiles.map((team) => [team.group, team]))
-const relatedActsByGroup = buildRelatedActsByGroup()
-const agencyFilterOptions = ['all', ...buildAgencyFilterOptions()]
+const artistProfiles: ArtistProfileRow[] = []
+const teamBadgeAssets: TeamBadgeAssetRow[] = []
+const releaseArtworkCatalog: ReleaseArtworkRow[] = []
+const releaseDetailsCatalog: ReleaseDetailRow[] = []
+const releaseHistoryCatalog: ReleaseHistorySeedRow[] = []
+const releaseCatalog: ReleaseRow[] = []
+const relatedActOverrides: RelatedActsOverrideRow[] = []
+const releases: VerifiedRelease[] = []
+const unresolved: UnresolvedRow[] = []
+const watchlist: WatchlistRow[] = []
+const upcomingCandidates: UpcomingCandidateRow[] = []
+const dedupedUpcomingCandidates: UpcomingCandidateRow[] = []
+const releaseChangeLog: ReleaseChangeLogRow[] = []
+const youtubeChannelAllowlists: YouTubeChannelAllowlistRow[] = []
+const teamBadgeAssetByGroup = new Map<string, TeamBadgeAssetRow>()
+const releaseCatalogByGroup = new Map<string, ReleaseRow>()
+const artistProfileByGroup = new Map<string, ArtistProfileRow>()
+const artistProfileBySlug = new Map<string, ArtistProfileRow>()
+const youtubeChannelAllowlistByGroup = new Map<string, YouTubeChannelAllowlistRow>()
+const releaseGroups = new Map<string, VerifiedRelease[]>()
+const verifiedReleaseHistory = [] as VerifiedRelease[]
+const verifiedReleaseHistoryByGroup = new Map<string, VerifiedRelease[]>()
+const watchlistByGroup = new Map<string, WatchlistRow>()
+const relatedActOverrideMap = new Map<string, string[]>()
+const rawUpcomingByGroup = new Map<string, UpcomingCandidateRow[]>()
+const upcomingByGroup = new Map<string, UpcomingCandidateRow[]>()
+const releaseChangeLogByGroup = new Map<string, ReleaseChangeLogRow[]>()
+const latestReleaseChangeByGroup = new Map<string, ReleaseChangeLogRow | null>()
+const searchIndexByGroup = new Map<string, SearchIndex>()
+const teamProfiles: TeamProfile[] = []
+const teamProfileMap = new Map<string, TeamProfile>()
+const relatedActsByGroup = new Map<string, RelatedActRecommendation[]>()
+
+// Transitional placeholders kept only until the backend-native file split lands.
+void [
+  teamBadgeAssets,
+  releaseArtworkCatalog,
+  releaseHistoryCatalog,
+  relatedActOverrides,
+  unresolved,
+  dedupedUpcomingCandidates,
+  releaseChangeLog,
+  youtubeChannelAllowlists,
+  artistProfileBySlug,
+  verifiedReleaseHistory,
+  searchIndexByGroup,
+  relatedActsByGroup,
+]
+
 function App() {
-  const latestMonthKey = getLatestMonthKey(releases)
+  const latestMonthKey = CURRENT_KST_ISO.slice(0, 7)
   const [selectedMonthKey, setSelectedMonthKey] = useState(latestMonthKey)
   const [selectedDayIso, setSelectedDayIso] = useState('')
   const [search, setSearch] = useState('')
@@ -2013,12 +2008,11 @@ function App() {
   const calendarPanelRef = useRef<HTMLElement | null>(null)
   const selectedDayPanelRef = useRef<HTMLElement | null>(null)
   const activeCompareGroup =
-    selectedGroup && selectedCompareGroup && selectedCompareGroup !== selectedGroup && teamProfileMap.has(selectedCompareGroup)
+    selectedGroup && selectedCompareGroup && selectedCompareGroup !== selectedGroup
       ? selectedCompareGroup
       : null
   const selectedReleaseRoute =
-    (selectedGroup && selectedAlbumKey ? findVerifiedReleaseByKey(selectedGroup, selectedAlbumKey) : null) ??
-    (selectedReleaseRouteSelection ? buildRouteSelectedRelease(selectedGroup, selectedReleaseRouteSelection) : null)
+    selectedReleaseRouteSelection ? buildRouteSelectedRelease(selectedGroup, selectedReleaseRouteSelection) : null
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -2164,36 +2158,6 @@ function App() {
   const myTeamsSet = new Set(myTeams)
   const myTeamsCountLabel = formatMyTeamsCount(myTeams.length, MY_TEAMS_LIMIT, language)
   const myTeamsHelperText = myTeams.length > 0 ? copy.myTeamsOnlyHint : copy.myTeamsEmpty
-
-  const filteredReleases = releases.filter((item) =>
-    matchesReleaseFilters(item, {
-      searchNeedle,
-      selectedReleaseKind,
-      selectedActType,
-      selectedDashboardStatus,
-      selectedAgency,
-      myTeamsSet,
-      selectedMyTeamsOnly,
-    }),
-  )
-
-  const filteredUpcoming = dedupedUpcomingCandidates.filter((item) =>
-    matchesUpcomingFilters(item, {
-      searchNeedle,
-      selectedReleaseKind,
-      selectedActType,
-      selectedDashboardStatus,
-      selectedAgency,
-      myTeamsSet,
-      selectedMyTeamsOnly,
-    }),
-  )
-  const filteredTeams = teamProfiles.filter(
-    (team) =>
-      matchesSearchIndex(searchIndexByGroup.get(team.group), searchNeedle) &&
-      matchesAgencyFilter(team.group, selectedAgency) &&
-      matchesMyTeamsFilter(team.group, myTeamsSet, selectedMyTeamsOnly),
-  )
   const radarResource = useRadarSurfaceResource()
   const filteredRadarApiSnapshot = radarResource.snapshot
     ? filterRadarApiSnapshot(radarResource.snapshot, {
@@ -2209,9 +2173,6 @@ function App() {
   }
   const visibleLongGapRadar = activeRadarSnapshot.longGapEntries
   const visibleRookieRadar = activeRadarSnapshot.rookieEntries
-  const defaultSearchTeams = filteredTeams.slice(0, 12)
-  const defaultSearchReleases = filteredReleases.slice(0, 10)
-  const defaultSearchUpcoming = filteredUpcoming
   const searchSurfaceResource = useSearchSurfaceResource({
     search: deferredSearch,
   })
@@ -2235,21 +2196,9 @@ function App() {
                   : copy.searchBackendFallback,
         }
       : null
-  const dashboardUpcomingRows = hasSearchQuery ? visibleSearchUpcoming : defaultSearchUpcoming
-  const dashboardTeamRows = hasSearchQuery ? visibleSearchTeams : defaultSearchTeams
-  const filteredUpcomingSignals = filteredUpcoming
-    .flatMap((item) => expandUpcomingCandidate(item))
-    .sort((left, right) => left.dateValue.getTime() - right.dateValue.getTime())
-
-  const todayIso = dateFormatter.format(new Date())
+  const todayIso = CURRENT_KST_ISO
   const todayMonthKey = todayIso.slice(0, 7)
-  const filteredUpcomingMonthKeys = Array.from(
-    new Set(filteredUpcoming.map((item) => getUpcomingMonthKey(item)).filter(Boolean)),
-  ).sort()
-  const visibleMonthKeys = getVisibleMonthKeys(filteredReleases, filteredUpcomingSignals, [
-    todayMonthKey,
-    ...filteredUpcomingMonthKeys,
-  ])
+  const visibleMonthKeys = buildCalendarNavigationMonthKeys(todayMonthKey, selectedMonthKey)
   const effectiveMonthKey = visibleMonthKeys.includes(selectedMonthKey)
     ? selectedMonthKey
     : visibleMonthKeys.at(-1) ?? selectedMonthKey
@@ -2277,6 +2226,23 @@ function App() {
   const visibleMonthVerifiedRows = [...activeCalendarMonthSnapshot.verifiedRows].sort(compareMonthlyDashboardVerified)
   const visibleMonthScheduledRows = [...activeCalendarMonthSnapshot.scheduledRows].sort(compareMonthlyDashboardUpcoming)
   const visibleMonthMonthOnlyRows = [...activeCalendarMonthSnapshot.monthOnlyRows].sort(compareUpcomingSignals)
+  const agencyFilterOptions = [
+    'all',
+    ...buildRuntimeAgencyFilterOptions({
+      verifiedRows: visibleMonthVerifiedRows,
+      scheduledRows: visibleMonthScheduledRows,
+      monthOnlyRows: visibleMonthMonthOnlyRows,
+      searchEntities: visibleSearchTeams,
+      searchReleases: visibleSearchReleases,
+      searchUpcoming: visibleSearchUpcoming,
+      longGapEntries: visibleLongGapRadar,
+      rookieEntries: visibleRookieRadar,
+    }),
+  ]
+  const defaultSearchUpcoming = [...visibleMonthScheduledRows, ...visibleMonthMonthOnlyRows].sort(compareUpcomingSignals)
+  const defaultSearchReleases = visibleMonthVerifiedRows.slice(0, 10)
+  const defaultSearchTeams = buildTeamDirectoryEntries(visibleMonthVerifiedRows, defaultSearchUpcoming)
+  const dashboardUpcomingCount = hasSearchQuery ? visibleSearchUpcoming.length : defaultSearchUpcoming.length
   const releasesByDate = groupByDate(visibleMonthVerifiedRows)
   const upcomingByDate = groupUpcomingByDate(visibleMonthScheduledRows)
   const monthScheduledCount = visibleMonthScheduledRows.length + visibleMonthMonthOnlyRows.length
@@ -2298,18 +2264,12 @@ function App() {
       ...visibleMonthScheduledRows.map((item) => item.isoDate),
     ]),
   ).sort()
-  const filteredActiveDayIsos = Array.from(
-    new Set([
-      ...filteredReleases.map((item) => item.isoDate),
-      ...filteredUpcomingSignals.map((item) => item.isoDate),
-    ]),
-  ).sort()
-  const weeklyDigestReferenceDate = filteredReleases[0]?.dateValue ?? null
+  const weeklyDigestReferenceDate = visibleMonthVerifiedRows[0]?.dateValue ?? null
   const weeklyDigestWindowStart = weeklyDigestReferenceDate ? getDateDaysBefore(weeklyDigestReferenceDate, 6) : null
   const weeklyDigestRows =
     weeklyDigestReferenceDate && weeklyDigestWindowStart
       ? buildWeeklyDigestRows(
-          filteredReleases.filter((item) => {
+          visibleMonthVerifiedRows.filter((item) => {
             const time = item.dateValue.getTime()
             return time >= weeklyDigestWindowStart.getTime() && time <= weeklyDigestReferenceDate.getTime()
           }),
@@ -2326,7 +2286,7 @@ function App() {
   const effectiveSelectedDayIso =
     isSelectedDayVisible
       ? selectedDayIso
-      : monthActiveDayIsos[0] ?? monthDays.find((day) => day.inMonth)?.iso ?? filteredActiveDayIsos[0] ?? ''
+      : monthActiveDayIsos[0] ?? monthDays.find((day) => day.inMonth)?.iso ?? ''
 
   const selectedDayReleases = effectiveSelectedDayIso
     ? releasesByDate.get(effectiveSelectedDayIso) ?? []
@@ -2335,8 +2295,8 @@ function App() {
     ? upcomingByDate.get(effectiveSelectedDayIso) ?? []
     : []
 
-  const latestRelease = filteredReleases[0]
-  const earliestRelease = filteredReleases.at(-1)
+  const latestRelease = visibleMonthVerifiedRows[0]
+  const earliestRelease = visibleMonthVerifiedRows.at(-1)
   const monthIndex = visibleMonthKeys.indexOf(effectiveMonthKey)
   const selectedDayLabel = effectiveSelectedDayIso
     ? formatDisplayDate(effectiveSelectedDayIso, displayDateFormatter)
@@ -2351,9 +2311,9 @@ function App() {
     monthKey: todayMonthKey,
     source: 'today',
   }
-  const nearestUpcomingJumpSignal = filteredUpcomingSignals.find((item) => item.isoDate >= todayIso) ?? null
+  const nearestUpcomingJumpSignal = visibleMonthScheduledRows.find((item) => item.isoDate >= todayIso) ?? null
   const currentMonthFallbackIso = pickClosestIsoDate(monthActiveDayIsos, todayIso)
-  const latestVerifiedFallbackIso = filteredReleases[0]?.isoDate ?? ''
+  const latestVerifiedFallbackIso = visibleMonthVerifiedRows[0]?.isoDate ?? ''
   const nearestCalendarJumpTarget: CalendarQuickJumpTarget | null =
     nearestUpcomingJumpSignal
       ? {
@@ -2423,10 +2383,10 @@ function App() {
   const selectedTeamPageGroup = selectedTeam?.group ?? selectedTeamFallback?.group ?? null
   const selectedTeamIsPinned = selectedTeamPageGroup ? myTeamsSet.has(selectedTeamPageGroup) : false
   const myTeamsLimitReached = myTeams.length >= MY_TEAMS_LIMIT
-  const compareTeam = activeCompareGroup ? teamProfileMap.get(activeCompareGroup) ?? null : null
-  const compareTeamOptions = selectedTeam ? teamProfiles.filter((team) => team.group !== selectedTeam.group) : []
-  const selectedTeamCompareSnapshot = selectedTeam ? buildTeamCompareSnapshot(selectedTeam.group) : null
-  const compareTeamSnapshot = compareTeam ? buildTeamCompareSnapshot(compareTeam.group) : null
+  const compareTeam = null
+  const compareTeamOptions: TeamProfile[] = []
+  const selectedTeamCompareSnapshot = selectedTeam ? buildEntityDetailCompareSnapshot(selectedTeam) : null
+  const compareTeamSnapshot = null
   const selectedTeamSourceStatus = {
     source: selectedTeamResource.source,
     errorCode: selectedTeamResource.loading ? null : selectedTeamResource.errorCode,
@@ -2455,7 +2415,7 @@ function App() {
   const selectedTeamLatestHandoffs =
     selectedTeam?.latestRelease ? selectedTeam.latestRelease.musicHandoffs : undefined
   const selectedTeamLatestMvUrl = selectedTeam?.latestRelease?.youtubeMvUrl ?? ''
-  const relatedActs = selectedTeam ? relatedActsByGroup.get(selectedTeam.group) ?? [] : []
+  const relatedActs: RelatedActRecommendation[] = []
   const dashboardSectionNavigatorItems: DashboardSectionNavigatorItem[] = [
     {
       id: DASHBOARD_SECTION_NAV_IDS[0],
@@ -2604,7 +2564,7 @@ function App() {
   }, [selectedGroup])
 
   function openTeamPage(group: string, entitySlug?: string | null) {
-    setSelectedEntitySlug(entitySlug ?? artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group))
+    setSelectedEntitySlug(entitySlug ?? slugifyGroup(group))
     setSelectedGroup(group)
     setSelectedCompareGroup(null)
     setSelectedAlbumKey(null)
@@ -2613,14 +2573,14 @@ function App() {
 
   function openTeamPageBySlug(entitySlug: string) {
     setSelectedEntitySlug(entitySlug)
-    setSelectedGroup(resolveGroupReference(entitySlug))
+    setSelectedGroup(null)
     setSelectedCompareGroup(null)
     setSelectedAlbumKey(null)
     setSelectedReleaseRouteSelection(null)
   }
 
   function openReleaseDetail(release: VerifiedRelease) {
-    const entitySlug = release.entitySlug ?? artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)
+    const entitySlug = release.entitySlug ?? slugifyGroup(release.group)
     setSelectedEntitySlug(entitySlug)
     setSelectedGroup(release.group)
     setSelectedCompareGroup(null)
@@ -3262,13 +3222,16 @@ function App() {
                 {selectedTeam.latestRelease ? (
                   <article className="detail-card detail-card-feature">
                     <ReleaseArtworkFigure
-                      artwork={getReleaseArtwork(
-                        selectedTeam.group,
-                        selectedTeam.latestRelease.title,
-                        selectedTeam.latestRelease.date,
-                        selectedTeam.latestRelease.stream,
-                        selectedTeam.latestRelease.releaseKind,
-                      )}
+                      artwork={
+                        selectedTeamLatestRecord?.artwork ??
+                        buildPlaceholderReleaseArtwork(
+                          selectedTeam.group,
+                          selectedTeam.latestRelease.title,
+                          selectedTeam.latestRelease.date,
+                          selectedTeam.latestRelease.stream,
+                          selectedTeam.latestRelease.releaseKind,
+                        )
+                      }
                       alt={`${selectedTeam.displayName} ${selectedTeam.latestRelease.title} cover artwork`}
                       variant="feature"
                     />
@@ -3646,10 +3609,10 @@ function App() {
                   <p className="panel-label">{copy.upcomingScan}</p>
                   <h2>{copy.upcomingTitle}</h2>
                 </div>
-                <span className="sidebar-panel-count">{dashboardUpcomingRows.length}</span>
+                <span className="sidebar-panel-count">{dashboardUpcomingCount}</span>
               </div>
               <div className="sidebar-upcoming-panel-body">
-                {dashboardUpcomingRows.length ? (
+                {dashboardUpcomingCount ? (
                   hasSearchQuery ? (
                     <div className="feed-list">
                       {visibleSearchUpcoming.map((item) => (
@@ -3745,7 +3708,7 @@ function App() {
                             ) : null}
                             <div className="action-stack">
                               <div className="action-row">
-                                <ActionButton variant="primary" onClick={() => openTeamPage(item.group)}>
+                                <ActionButton variant="primary" onClick={() => openTeamPage(item.group, item.entitySlug)}>
                                   {teamCopy.action}
                                 </ActionButton>
                               </div>
@@ -3840,7 +3803,11 @@ function App() {
                           </div>
                           <h3>{item.title}</h3>
                           <div className="row-actions">
-                            <button type="button" className="inline-button" onClick={() => openTeamPage(item.group)}>
+                            <button
+                              type="button"
+                              className="inline-button"
+                              onClick={() => openTeamPage(item.group, item.entitySlug)}
+                            >
                               {teamCopy.action}
                             </button>
                           </div>
@@ -3862,7 +3829,7 @@ function App() {
               <p className="panel-label">{teamCopy.pagesPanelLabel}</p>
               <h2>{teamCopy.pagesPanelTitle}</h2>
               <div className="team-directory">
-                {dashboardTeamRows.length ? (
+                {(hasSearchQuery ? visibleSearchTeams.length : defaultSearchTeams.length) ? (
                   hasSearchQuery ? (
                     visibleSearchTeams.map((team) => (
                       <button
@@ -3879,9 +3846,9 @@ function App() {
                     defaultSearchTeams.map((team) => (
                       <button
                         type="button"
-                        key={team.group}
+                        key={`${team.group}-${team.entitySlug ?? team.displayName}`}
                         className="team-directory-button"
-                        onClick={() => openTeamPage(team.group)}
+                        onClick={() => openTeamPage(team.group, team.entitySlug)}
                       >
                         <span>{team.displayName}</span>
                         <strong>
@@ -3920,7 +3887,7 @@ function App() {
                 />
                 <MetaItem
                   label={copy.openQuestions}
-                  value={unresolved.length ? unresolved.map((item) => item.group).join(', ') : copy.none}
+                  value={copy.none}
                 />
               </div>
             </section>
@@ -5797,16 +5764,12 @@ function DashboardServiceActions({
   release: VerifiedRelease
   language: Language
 }) {
-  const detail = getReleaseDetail(release.group, release.title, release.date, release.stream, release.release_kind)
-  const canonicalHandoffs = buildReleaseDetailHandoffs(detail, release.music_handoffs)
-  const mvUrl = getReleaseDetailMvUrls(detail).canonicalUrl
-
   return (
     <MusicHandoffRow
       group={release.group}
       title={release.title}
-      canonicalUrls={canonicalHandoffs}
-      mvUrl={mvUrl}
+      canonicalUrls={release.music_handoffs}
+      mvUrl={release.youtube_mv_url ?? ''}
       language={language}
       compact
     />
@@ -6052,48 +6015,42 @@ function SelectedDayPanel({
           </div>
           <div className="detail-list">
             {releases.length ? (
-              releases.map((item) => {
-                const detail = getReleaseDetail(item.group, item.title, item.date, item.stream, item.release_kind)
-                const canonicalHandoffs = buildReleaseDetailHandoffs(detail, item.music_handoffs)
-                const mvUrl = getReleaseDetailMvUrls(detail).canonicalUrl
-
-                return (
-                  <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
-                    <div>
-                      <div className="signal-head">
-                        <TeamIdentity group={item.group} variant="list" />
-                        <span className="signal-badge">{describeRelease(item, language)}</span>
-                      </div>
-                      <h3>{item.title}</h3>
+              releases.map((item) => (
+                <article key={`${item.group}-${item.stream}-${item.title}`} className="detail-card">
+                  <div>
+                    <div className="signal-head">
+                      <TeamIdentity group={item.group} variant="list" />
+                      <span className="signal-badge">{describeRelease(item, language)}</span>
                     </div>
-                    <div className="action-stack">
-                      <div className="action-row">
-                        <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
-                          {teamCopy.action}
-                        </ActionButton>
-                        <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
-                          {getReleaseDetailActionLabel(item.release_kind, language)}
-                        </ActionButton>
-                      </div>
-                      <MusicHandoffRow
-                        group={item.group}
-                        title={item.title}
-                        canonicalUrls={canonicalHandoffs}
-                        mvUrl={mvUrl}
-                        language={language}
-                      />
-                      <div className="meta-links">
-                        <a href={item.source} target="_blank" rel="noreferrer" className="meta-link">
-                          {copy.releaseSource}
-                        </a>
-                        <a href={item.artist_source} target="_blank" rel="noreferrer" className="meta-link">
-                          {copy.artistSource}
-                        </a>
-                      </div>
+                    <h3>{item.title}</h3>
+                  </div>
+                  <div className="action-stack">
+                    <div className="action-row">
+                      <ActionButton variant="primary" onClick={() => onOpenTeamPage(item.group, item.entitySlug)}>
+                        {teamCopy.action}
+                      </ActionButton>
+                      <ActionButton variant="secondary" onClick={() => onOpenReleaseDetail(item)}>
+                        {getReleaseDetailActionLabel(item.release_kind, language)}
+                      </ActionButton>
                     </div>
-                  </article>
-                )
-              })
+                    <MusicHandoffRow
+                      group={item.group}
+                      title={item.title}
+                      canonicalUrls={item.music_handoffs}
+                      mvUrl={item.youtube_mv_url ?? ''}
+                      language={language}
+                    />
+                    <div className="meta-links">
+                      <a href={item.source} target="_blank" rel="noreferrer" className="meta-link">
+                        {copy.releaseSource}
+                      </a>
+                      <a href={item.artist_source} target="_blank" rel="noreferrer" className="meta-link">
+                        {copy.artistSource}
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))
             ) : (
               <p className="empty-copy">{copy.selectedDayVerifiedEmpty}</p>
             )}
@@ -6546,11 +6503,50 @@ function buildMonthlyDashboardFilterSummary(
   return filters
 }
 
-function buildAgencyFilterOptions() {
+function buildRuntimeAgencyFilterOptions({
+  verifiedRows,
+  scheduledRows,
+  monthOnlyRows,
+  searchEntities,
+  searchReleases,
+  searchUpcoming,
+  longGapEntries,
+  rookieEntries,
+}: {
+  verifiedRows: VerifiedRelease[]
+  scheduledRows: DatedUpcomingSignal[]
+  monthOnlyRows: UpcomingCandidateRow[]
+  searchEntities: SearchSurfaceEntityResult[]
+  searchReleases: SearchSurfaceReleaseResult[]
+  searchUpcoming: SearchSurfaceUpcomingResult[]
+  longGapEntries: LongGapRadarEntry[]
+  rookieEntries: RookieRadarEntry[]
+}) {
   const agencies = new Set<string>()
+  void searchReleases
+  void searchUpcoming
 
-  for (const team of teamProfiles) {
-    agencies.add(getAgencyFilterValue(team.agency))
+  const appendAgency = (agency: string | null | undefined) => {
+    agencies.add(getAgencyFilterValue(agency ?? ''))
+  }
+
+  for (const row of verifiedRows) {
+    appendAgency(row.agencyName)
+  }
+  for (const row of scheduledRows) {
+    appendAgency(row.agencyName)
+  }
+  for (const row of monthOnlyRows) {
+    appendAgency(row.agencyName)
+  }
+  for (const row of searchEntities) {
+    appendAgency(row.agencyName)
+  }
+  for (const row of longGapEntries) {
+    appendAgency(row.agencyName)
+  }
+  for (const row of rookieEntries) {
+    appendAgency(row.agencyName)
   }
 
   return [...agencies].sort(compareAgencyFilterOptions)
@@ -6605,7 +6601,8 @@ function getAgencyFilterValue(agency: string) {
 }
 
 function getGroupAgency(group: string) {
-  return normalizeAgencyName(artistProfileByGroup.get(group)?.agency)
+  void group
+  return ''
 }
 
 function matchesAgencyFilter(group: string, selectedAgency: string) {
@@ -6623,7 +6620,7 @@ function buildAgencyMonthSections(
   const sections = new Map<string, AgencyMonthSection>()
 
   for (const item of verifiedRows) {
-    const agency = getAgencyFilterValue(getGroupAgency(item.group))
+    const agency = getAgencyFilterValue(item.agencyName ?? '')
     const current = sections.get(agency) ?? {
       agency,
       verifiedRows: [],
@@ -6634,7 +6631,7 @@ function buildAgencyMonthSections(
   }
 
   for (const item of scheduledRows) {
-    const agency = getAgencyFilterValue(getGroupAgency(item.group))
+    const agency = getAgencyFilterValue(item.agencyName ?? '')
     const current = sections.get(agency) ?? {
       agency,
       verifiedRows: [],
@@ -7346,28 +7343,6 @@ function buildPlaceholderReleaseArtwork(
   }
 }
 
-function getReleaseArtwork(
-  group: string,
-  releaseTitle: string,
-  releaseDate: string,
-  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
-  releaseKind?: string,
-): ResolvedReleaseArtwork {
-  const normalizedStream = normalizeReleaseStream(stream, releaseKind)
-  const artwork = releaseArtworkByKey.get(
-    getReleaseLookupKey(group, releaseTitle, releaseDate, normalizedStream),
-  )
-
-  if (!artwork) {
-    return buildPlaceholderReleaseArtwork(group, releaseTitle, releaseDate, stream, releaseKind)
-  }
-
-  return {
-    ...artwork,
-    isPlaceholder: artwork.artwork_source_type === 'placeholder',
-  }
-}
-
 function buildFallbackReleaseDetail(
   group: string,
   releaseTitle: string,
@@ -7411,28 +7386,6 @@ function buildFallbackReleaseEnrichment(
     charts: [],
     notes: '',
     isFallback: true,
-  }
-}
-
-function getReleaseDetail(
-  group: string,
-  releaseTitle: string,
-  releaseDate: string,
-  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
-  releaseKind?: string,
-): ResolvedReleaseDetail {
-  const normalizedStream = normalizeReleaseStream(stream, releaseKind)
-  const detail = releaseDetailsByKey.get(
-    getReleaseLookupKey(group, releaseTitle, releaseDate, normalizedStream),
-  )
-
-  if (!detail) {
-    return buildFallbackReleaseDetail(group, releaseTitle, releaseDate, stream, releaseKind)
-  }
-
-  return {
-    ...detail,
-    isFallback: false,
   }
 }
 
@@ -7598,6 +7551,89 @@ function buildVerifiedReleaseFromTeamLatestRelease(group: string, latestRelease:
     music_handoffs: latestRelease.musicHandoffs,
     youtube_mv_url: latestRelease.youtubeMvUrl,
   }
+}
+
+function buildEntityDetailCompareSnapshot(team: TeamProfile): TeamCompareSnapshot {
+  const recentAlbums = [...team.recentAlbums].sort(compareMonthlyDashboardVerified)
+  const latestAlbum = recentAlbums[0] ?? null
+  const latestSong =
+    team.latestRelease && team.latestRelease.stream === 'song'
+      ? buildVerifiedReleaseFromTeamLatestRelease(team.group, team.latestRelease)
+      : null
+
+  return {
+    group: team.group,
+    latestVerifiedRelease:
+      team.latestRelease && team.latestRelease.verified
+        ? buildVerifiedReleaseFromTeamLatestRelease(team.group, team.latestRelease)
+        : latestAlbum,
+    latestAlbum,
+    latestSong,
+    nextUpcomingSignal: team.nextUpcomingSignal,
+    recentYearReleaseCount: recentAlbums.length + (latestSong ? 1 : 0),
+  }
+}
+
+function buildCalendarNavigationMonthKeys(referenceMonthKey: string, selectedMonthKey: string) {
+  const baseDate = monthKeyToDate(referenceMonthKey)
+  const months = new Set<string>([referenceMonthKey, selectedMonthKey])
+
+  for (let offset = -2; offset <= 12; offset += 1) {
+    const nextDate = new Date(baseDate)
+    nextDate.setMonth(baseDate.getMonth() + offset)
+    months.add(getMonthKey(nextDate))
+  }
+
+  return [...months].sort()
+}
+
+function buildTeamDirectoryEntries(
+  verifiedRows: VerifiedRelease[],
+  upcomingRows: UpcomingCandidateRow[],
+): TeamDirectoryEntry[] {
+  const entries = new Map<string, TeamDirectoryEntry>()
+
+  const ensureEntry = (group: string, entitySlug: string | null | undefined, displayName?: string | null) => {
+    const current = entries.get(group)
+    if (current) {
+      if (!current.entitySlug && entitySlug) {
+        current.entitySlug = entitySlug
+      }
+      if (!current.displayName && displayName) {
+        current.displayName = displayName
+      }
+      return current
+    }
+
+    const nextEntry: TeamDirectoryEntry = {
+      group,
+      entitySlug: entitySlug ?? null,
+      displayName: displayName ?? group,
+      nextUpcomingSignal: null,
+    }
+    entries.set(group, nextEntry)
+    return nextEntry
+  }
+
+  upcomingRows.forEach((row) => {
+    const entry = ensureEntry(row.group, row.entitySlug, row.displayName)
+    entry.nextUpcomingSignal ??= row
+  })
+
+  verifiedRows.forEach((row) => {
+    ensureEntry(row.group, row.entitySlug, row.displayName)
+  })
+
+  return [...entries.values()]
+    .sort((left, right) => {
+      const upcomingCompare = compareUpcomingSignals(left.nextUpcomingSignal, right.nextUpcomingSignal)
+      if (upcomingCompare !== 0) {
+        return upcomingCompare
+      }
+
+      return left.displayName.localeCompare(right.displayName)
+    })
+    .slice(0, 12)
 }
 
 function buildRouteSelectedRelease(
@@ -10342,7 +10378,7 @@ function getTeamMonogram(group: string) {
 }
 
 function getTeamBadgeImageUrl(group: string) {
-  return teamBadgeAssetByGroup.get(group)?.badge_image_url ?? artistProfileByGroup.get(group)?.representative_image_url ?? null
+  return teamBadgeAssetByGroup.get(group)?.badge_image_url ?? null
 }
 
 function getTeamBadgeSourceUrl(group: string) {
@@ -10354,15 +10390,11 @@ function getTeamBadgeSourceLabel(group: string) {
 }
 
 function getPrimaryTeamYouTubeUrl(group: string) {
-  return (
-    youtubeChannelAllowlistByGroup.get(group)?.primary_team_channel_url ??
-    artistProfileByGroup.get(group)?.official_youtube_url ??
-    null
-  )
+  return youtubeChannelAllowlistByGroup.get(group)?.primary_team_channel_url ?? null
 }
 
 function getTeamDisplayName(group: string) {
-  return artistProfileByGroup.get(group)?.display_name ?? group
+  return group
 }
 
 function getCompactTeamLabel(group: string) {
@@ -10470,10 +10502,6 @@ function getUpcomingDashboardRowKey(item: UpcomingCandidateRow) {
   return item.event_key ?? [item.group, item.scheduled_date || item.scheduled_month || 'undated', item.headline].join('::')
 }
 
-function findVerifiedReleaseByKey(group: string, albumKey: string) {
-  return (verifiedReleaseHistoryByGroup.get(group) ?? []).find((item) => getAlbumKey(item) === albumKey) ?? null
-}
-
 function getReleaseDetailActionLabel(releaseKind: ReleaseFact['release_kind'], language: Language) {
   const teamCopy = TEAM_COPY[language]
   return releaseKind === 'single' ? teamCopy.releaseDetail : teamCopy.albumDetail
@@ -10579,11 +10607,7 @@ function resolveGroupReference(value: string) {
     return null
   }
 
-  return (
-    artistProfileBySlug.get(normalized)?.group ??
-    teamProfiles.find((team) => team.slug === normalized || team.group.toLowerCase() === normalized)?.group ??
-    null
-  )
+  return null
 }
 
 function getHomePath() {
@@ -10600,10 +10624,10 @@ function getArtistPathBySlug(entitySlug: string) {
 }
 
 function getArtistPath(group: string, compareGroup?: string | null) {
-  const pathname = `/artists/${artistProfileByGroup.get(group)?.slug ?? slugifyGroup(group)}`
+  const pathname = `/artists/${slugifyGroup(group)}`
   const params = appendPersistentInspectParams(new URLSearchParams())
   if (compareGroup && compareGroup !== group) {
-    params.set('compare', artistProfileByGroup.get(compareGroup)?.slug ?? slugifyGroup(compareGroup))
+    params.set('compare', slugifyGroup(compareGroup))
   }
   const query = params.toString()
   return query ? `${pathname}?${query}` : pathname
@@ -10676,7 +10700,7 @@ function getReleaseRouteSelectionFromPath(pathname: string, search = ''): Releas
 
 function getReleasePath(release: VerifiedRelease, entitySlugOverride?: string | null) {
   const releaseSlug = release.release_id ?? (slugifyPathSegment(release.title) || 'release')
-  const entitySlug = entitySlugOverride ?? artistProfileByGroup.get(release.group)?.slug ?? slugifyGroup(release.group)
+  const entitySlug = entitySlugOverride ?? slugifyGroup(release.group)
   const pathname = `/artists/${entitySlug}/releases/${releaseSlug}`
   const params = appendPersistentInspectParams(new URLSearchParams())
   params.set('date', release.date)
@@ -10875,7 +10899,7 @@ function sanitizeStoredMyTeams(value: unknown) {
     }
 
     const normalized = item.trim()
-    if (!normalized || seen.has(normalized) || !teamProfileMap.has(normalized)) {
+    if (!normalized || seen.has(normalized)) {
       continue
     }
 
@@ -10936,16 +10960,14 @@ function matchesReleaseFilters(
   },
 ) {
   const matchesSearch =
-    item.displayName || item.entitySlug
-      ? matchesSearchValues([item.group, item.displayName, item.entitySlug, item.title], searchNeedle)
-      : matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
+    matchesSearchValues([item.group, item.displayName, item.entitySlug, item.title], searchNeedle)
   const matchesReleaseKind = selectedReleaseKind === 'all' || item.release_kind === selectedReleaseKind
   const matchesActType = selectedActType === 'all' || item.actType === selectedActType
   const matchesStatus = selectedDashboardStatus === 'all' || selectedDashboardStatus === 'verified'
   const matchesAgency =
     item.agencyName !== undefined
       ? getAgencyFilterValue(normalizeAgencyName(item.agencyName)) === selectedAgency || selectedAgency === 'all'
-      : matchesAgencyFilter(item.group, selectedAgency)
+      : selectedAgency === 'all' || selectedAgency === AGENCY_UNKNOWN_FILTER
   const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
   return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
 }
@@ -10971,9 +10993,7 @@ function matchesUpcomingFilters(
   },
 ) {
   const matchesSearch =
-    item.displayName || item.entitySlug
-      ? matchesSearchValues([item.group, item.displayName, item.entitySlug, item.headline], searchNeedle)
-      : matchesSearchIndex(searchIndexByGroup.get(item.group), searchNeedle)
+    matchesSearchValues([item.group, item.displayName, item.entitySlug, item.headline], searchNeedle)
   const matchesReleaseKind = selectedReleaseKind === 'all' || item.release_format === selectedReleaseKind
   const matchesActType = selectedActType === 'all' || (item.actType ?? getActType(item.group)) === selectedActType
   const matchesStatus =
@@ -10985,7 +11005,7 @@ function matchesUpcomingFilters(
   const matchesAgency =
     item.agencyName !== undefined
       ? getAgencyFilterValue(normalizeAgencyName(item.agencyName)) === selectedAgency || selectedAgency === 'all'
-      : matchesAgencyFilter(item.group, selectedAgency)
+      : selectedAgency === 'all' || selectedAgency === AGENCY_UNKNOWN_FILTER
   const matchesMyTeams = matchesMyTeamsFilter(item.group, myTeamsSet, selectedMyTeamsOnly)
   return matchesSearch && matchesReleaseKind && matchesActType && matchesStatus && matchesAgency && matchesMyTeams
 }
@@ -11034,7 +11054,7 @@ function matchesRadarEntryFilters(
     (selectedAgency === 'all' ||
       (entry.agencyName !== undefined
         ? getAgencyFilterValue(normalizeAgencyName(entry.agencyName)) === selectedAgency
-        : matchesAgencyFilter(entry.group, selectedAgency))) &&
+        : selectedAgency === AGENCY_UNKNOWN_FILTER)) &&
     matchesMyTeamsFilter(entry.group, myTeamsSet, selectedMyTeamsOnly)
   )
 }
@@ -11088,6 +11108,24 @@ function shouldDisplayUpcomingCandidate(
 ) {
   return !(getUpcomingDatePrecisionValue(item) === 'exact' && isExactDate(item.scheduled_date) && item.scheduled_date < todayIsoDate)
 }
+
+void [
+  expandReleaseRow,
+  matchesAgencyFilter,
+  buildSeededVerifiedReleaseHistory,
+  buildVerifiedReleaseHistory,
+  buildTeamProfiles,
+  buildRelatedActsByGroup,
+  buildTeamCompareSnapshot,
+  buildSearchIndexByGroup,
+  dedupeUpcomingCandidatesForDisplay,
+  groupReleasesByGroup,
+  groupUpcomingCandidatesByGroup,
+  groupReleaseChangeLogByGroup,
+  getLatestMonthKey,
+  getVisibleMonthKeys,
+  shouldDisplayUpcomingCandidate,
+]
 
 function hasExactUpcomingDate(item: Pick<UpcomingSignalBase, 'date_precision' | 'scheduled_date' | 'scheduled_month'>) {
   return getUpcomingDatePrecisionValue(item) === 'exact' && isExactDate(item.scheduled_date)

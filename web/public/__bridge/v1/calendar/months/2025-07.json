@@ -4,7 +4,7 @@
   },
   "data": {
     "summary": {
-      "verified_count": 13,
+      "verified_count": 15,
       "exact_upcoming_count": 0,
       "month_only_upcoming_count": 0
     },
@@ -43,6 +43,15 @@
       {
         "date": "2025-07-07",
         "verified_releases": [
+          {
+            "release_id": "bridge-release-635385d9",
+            "entity_slug": "jeon-somi",
+            "display_name": "JEON SOMI",
+            "release_title": "EXTRA",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-07"
+          },
           {
             "release_id": "bridge-release-7e5b989a",
             "entity_slug": "xdinary-heroes",
@@ -140,6 +149,21 @@
         "exact_upcoming": []
       },
       {
+        "date": "2025-07-21",
+        "verified_releases": [
+          {
+            "release_id": "bridge-release-fb49703d",
+            "entity_slug": "chuu",
+            "display_name": "CHUU",
+            "release_title": "Loveholic",
+            "stream": "song",
+            "release_kind": "single",
+            "release_date": "2025-07-21"
+          }
+        ],
+        "exact_upcoming": []
+      },
+      {
         "date": "2025-07-23",
         "verified_releases": [
           {
@@ -215,6 +239,15 @@
         "release_date": "2025-07-02"
       },
       {
+        "release_id": "bridge-release-635385d9",
+        "entity_slug": "jeon-somi",
+        "display_name": "JEON SOMI",
+        "release_title": "EXTRA",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-07"
+      },
+      {
         "release_id": "bridge-release-7e5b989a",
         "entity_slug": "xdinary-heroes",
         "display_name": "Xdinary Heroes",
@@ -276,6 +309,15 @@
         "stream": "album",
         "release_kind": "ep",
         "release_date": "2025-07-16"
+      },
+      {
+        "release_id": "bridge-release-fb49703d",
+        "entity_slug": "chuu",
+        "display_name": "CHUU",
+        "release_title": "Loveholic",
+        "stream": "song",
+        "release_kind": "single",
+        "release_date": "2025-07-21"
       },
       {
         "release_id": "bridge-release-d3e4c66b",

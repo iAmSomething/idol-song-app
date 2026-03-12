@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/1685c9ec-6f76-4cbc-bd4c-c88f12f41318/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/1685c9ec-6f76-4cbc-bd4c-c88f12f41318/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/1685c9ec-6f76-4cbc-bd4c-c88f12f41318"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -47,11 +52,11 @@
       }
     ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseHistory.placeholder_seed"
+      "url": "https://www.youtube.com/watch?v=2S24-y0Ij3Y",
+      "video_id": "2S24-y0Ij3Y",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
   }
 }

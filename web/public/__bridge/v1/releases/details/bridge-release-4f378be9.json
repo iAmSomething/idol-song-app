@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/349be2ad-047e-4462-8f4d-6f4c01121775/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/349be2ad-047e-4462-8f4d-6f4c01121775/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/349be2ad-047e-4462-8f4d-6f4c01121775"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/3Bi7hl11zYHpw6uE6gAtSs"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "BDZ",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

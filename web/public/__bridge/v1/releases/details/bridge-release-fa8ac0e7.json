@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/609147d2-e3d8-4434-863f-ccf7ed0c506e/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/609147d2-e3d8-4434-863f-ccf7ed0c506e/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/609147d2-e3d8-4434-863f-ccf7ed0c506e"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -28,7 +33,7 @@
       {
         "order": 2,
         "title": "Permission to Dance",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,
@@ -42,11 +47,11 @@
       }
     ],
     "mv": {
-      "url": null,
-      "video_id": null,
-      "status": "unresolved",
-      "provenance": "releaseHistory.placeholder_seed"
+      "url": "https://www.youtube.com/watch?v=CuklIb9d3fI",
+      "video_id": "CuklIb9d3fI",
+      "status": "manual_override",
+      "provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
   }
 }

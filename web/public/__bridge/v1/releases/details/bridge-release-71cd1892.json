@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/68efce58-f82a-4570-b537-bc3f8d8b5356/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/68efce58-f82a-4570-b537-bc3f8d8b5356/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/68efce58-f82a-4570-b537-bc3f8d8b5356"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/0iyZ0E6cbCJgKO533uGnM2"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "D×D×D",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

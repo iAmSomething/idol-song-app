@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/9f65d004-ce44-436a-958d-99fc2856f681/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/9f65d004-ce44-436a-958d-99fc2856f681/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/9f65d004-ce44-436a-958d-99fc2856f681"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/4iL0sqHuipLrqy4y8HRYsZ"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Cheshire",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

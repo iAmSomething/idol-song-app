@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/38NCFW1oQcxdBzAnz64bkm"
@@ -30,8 +35,8 @@
       "url": null,
       "video_id": null,
       "status": "unresolved",
-      "provenance": "releaseHistory.placeholder_seed"
+      "provenance": null
     },
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
   }
 }

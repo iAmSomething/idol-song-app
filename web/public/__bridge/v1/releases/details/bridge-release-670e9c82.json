@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/11357b36-41d5-4d1d-afa2-9d36d3e9e74b/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/11357b36-41d5-4d1d-afa2-9d36d3e9e74b/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/11357b36-41d5-4d1d-afa2-9d36d3e9e74b"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "ISTJ",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

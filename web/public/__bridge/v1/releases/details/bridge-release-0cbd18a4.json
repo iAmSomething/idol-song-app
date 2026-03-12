@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/bfd33450-abe4-4fd7-b696-f5384021a77d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/bfd33450-abe4-4fd7-b696-f5384021a77d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/bfd33450-abe4-4fd7-b696-f5384021a77d"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/2vapQ5AsHtSVE970EbK9i7"
@@ -48,7 +53,7 @@
       {
         "order": 6,
         "title": "BBUSYEO",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 7,

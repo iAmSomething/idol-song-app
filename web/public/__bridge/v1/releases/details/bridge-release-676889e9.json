@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/0f6dbb80-efd2-4db2-9641-4b1e67ca371d/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/0f6dbb80-efd2-4db2-9641-4b1e67ca371d/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/0f6dbb80-efd2-4db2-9641-4b1e67ca371d"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Impossible",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

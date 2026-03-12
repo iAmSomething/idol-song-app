@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/3f5eba8d-4dc1-4599-a936-21f501787f8e/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/3f5eba8d-4dc1-4599-a936-21f501787f8e/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/3f5eba8d-4dc1-4599-a936-21f501787f8e"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -28,7 +33,7 @@
       {
         "order": 2,
         "title": "Armageddon",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,

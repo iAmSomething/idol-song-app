@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/840c8853-db27-4132-95de-2bc7a80412a8/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/840c8853-db27-4132-95de-2bc7a80412a8/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/840c8853-db27-4132-95de-2bc7a80412a8"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/4lgToZ6PFbsj6PpN1qfKGa"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Birthday",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

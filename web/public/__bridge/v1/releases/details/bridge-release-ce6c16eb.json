@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/3825cbe6-d1e4-45c7-85b7-90fc78504bc4/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/3825cbe6-d1e4-45c7-85b7-90fc78504bc4/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/3825cbe6-d1e4-45c7-85b7-90fc78504bc4"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/1eGKfrv3zUriBWbPOFKKxq"
@@ -28,7 +33,7 @@
       {
         "order": 2,
         "title": "Sing For You",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 3,

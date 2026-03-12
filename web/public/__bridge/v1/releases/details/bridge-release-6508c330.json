@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/75dfd38b-713b-48ca-ac48-71954f9f286e/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/75dfd38b-713b-48ca-ac48-71954f9f286e/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/75dfd38b-713b-48ca-ac48-71954f9f286e"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/325MEzmbNCQvjsP3oaJh4x"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Teddy Bear",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

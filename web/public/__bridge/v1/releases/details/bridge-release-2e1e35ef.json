@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/e05788f5-3528-4c20-a5bd-9fd19597d4f0/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/e05788f5-3528-4c20-a5bd-9fd19597d4f0/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/e05788f5-3528-4c20-a5bd-9fd19597d4f0"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/17rk8h2IU4wwSFXw9j2uR6"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Perfect World",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/c4a4e428-e0f8-46d1-85c8-6ff5d7233781/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/c4a4e428-e0f8-46d1-85c8-6ff5d7233781/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/c4a4e428-e0f8-46d1-85c8-6ff5d7233781"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/5NMtxQJy4wq3mpo3ERVnLs"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Drama",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

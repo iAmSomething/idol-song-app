@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/8820df59-5abc-4885-910c-824c64e218fd/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/8820df59-5abc-4885-910c-824c64e218fd/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/8820df59-5abc-4885-910c-824c64e218fd"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "ICKY",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

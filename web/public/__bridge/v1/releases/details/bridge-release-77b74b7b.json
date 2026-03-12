@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/7qldKtsOWklzmwgll5NjCw"

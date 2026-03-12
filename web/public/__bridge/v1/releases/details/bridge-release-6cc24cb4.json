@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/2e65cbcd-fd8e-4f27-bde5-4f9a97601502/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/2e65cbcd-fd8e-4f27-bde5-4f9a97601502/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/2e65cbcd-fd8e-4f27-bde5-4f9a97601502"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/0GUY29JTqpAq7U0q1LZvRT"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Evergreen",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

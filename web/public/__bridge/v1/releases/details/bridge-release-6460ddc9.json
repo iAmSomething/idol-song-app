@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/6ddfc06e-3ab0-49f5-99aa-e6cbec6d6a3f/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/6ddfc06e-3ab0-49f5-99aa-e6cbec6d6a3f/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/6ddfc06e-3ab0-49f5-99aa-e6cbec6d6a3f"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/3fWEp6LTn7hHD4w3Oo4hvF"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Steady",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

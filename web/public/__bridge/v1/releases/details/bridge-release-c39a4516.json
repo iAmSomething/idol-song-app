@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/1bf37474-83c5-419e-b49c-aa348ba1c5e5/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/1bf37474-83c5-419e-b49c-aa348ba1c5e5/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/1bf37474-83c5-419e-b49c-aa348ba1c5e5"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Hands on Me",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

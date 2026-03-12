@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/46aa31cd-61f2-4ab6-9aa0-6b3af013cf5c/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/46aa31cd-61f2-4ab6-9aa0-6b3af013cf5c/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/46aa31cd-61f2-4ab6-9aa0-6b3af013cf5c"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/4ssE26euGGqF4QUbWhzvCj"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "LOVE U",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

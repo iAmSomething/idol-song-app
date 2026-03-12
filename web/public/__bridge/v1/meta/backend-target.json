@@ -3,20 +3,20 @@
     "request_id": "bridge-backend-target"
   },
   "data": {
-    "generated_at": "2026-03-10T13:51:13.588Z",
-    "runtime_mode": "api",
-    "target_environment": "production",
-    "target_classification": "production",
-    "configured_api_base_url": "https://api.idol-song-app.example.com",
-    "effective_target": "https://api.idol-song-app.example.com",
+    "generated_at": "2026-03-12T06:05:38.878Z",
+    "runtime_mode": "bridge",
+    "target_environment": "bridge",
+    "target_classification": "bridge",
+    "configured_api_base_url": null,
+    "effective_target": "/__bridge/v1",
     "bridge_base_url": "/__bridge/v1",
     "diagnostics_path": "/__bridge/v1/meta/backend-target.json",
     "surfaces": {
-      "search": "api",
-      "entity_detail": "api",
-      "release_detail": "api",
-      "calendar_month": "api",
-      "radar": "api"
+      "search": "bridge",
+      "entity_detail": "bridge",
+      "release_detail": "bridge",
+      "calendar_month": "bridge",
+      "radar": "bridge"
     }
   }
 }

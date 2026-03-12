@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/bd81d3e0-35b3-4afd-88a7-5a87a47a37dc/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/bd81d3e0-35b3-4afd-88a7-5a87a47a37dc/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/bd81d3e0-35b3-4afd-88a7-5a87a47a37dc"
+    },
     "service_links": {
       "spotify": {
         "url": null

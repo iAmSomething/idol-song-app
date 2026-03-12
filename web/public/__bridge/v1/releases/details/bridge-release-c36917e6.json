@@ -10,7 +10,12 @@
       "stream": "song",
       "release_kind": "single"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/92c85a64-a842-4ca9-bb49-bccae1f8c33c/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/92c85a64-a842-4ca9-bb49-bccae1f8c33c/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/92c85a64-a842-4ca9-bb49-bccae1f8c33c"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/7eNsf4qcc9uV6IklAlPp4b"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Algorhythm",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/96701b7b-9569-4766-b2ab-d548c061d5f6/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/96701b7b-9569-4766-b2ab-d548c061d5f6/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/96701b7b-9569-4766-b2ab-d548c061d5f6"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/4CbiijbtjdFusL6uXiZJ2k"
@@ -73,7 +78,7 @@
       {
         "order": 11,
         "title": "Rains in Heaven",
-        "is_title_track": false
+        "is_title_track": true
       }
     ],
     "mv": {

@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "ep"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/db3455a5-c761-4cef-9d05-2ba7f5010c98/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/db3455a5-c761-4cef-9d05-2ba7f5010c98/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/db3455a5-c761-4cef-9d05-2ba7f5010c98"
+    },
     "service_links": {
       "spotify": {
         "url": "https://open.spotify.com/album/5t9wX15utgPUOZsazbYojz"
@@ -23,7 +28,7 @@
       {
         "order": 1,
         "title": "Oh my god (Japanese ver.)",
-        "is_title_track": false
+        "is_title_track": true
       },
       {
         "order": 2,

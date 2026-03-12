@@ -10,7 +10,12 @@
       "stream": "album",
       "release_kind": "album"
     },
-    "artwork": null,
+    "artwork": {
+      "cover_image_url": "https://coverartarchive.org/release-group/f01678b0-ee8e-4861-943a-3ee92d136513/front",
+      "thumbnail_image_url": "https://coverartarchive.org/release-group/f01678b0-ee8e-4861-943a-3ee92d136513/front-250",
+      "artwork_source_type": "cover_art_archive",
+      "artwork_source_url": "https://coverartarchive.org/release-group/f01678b0-ee8e-4861-943a-3ee92d136513"
+    },
     "service_links": {
       "spotify": {
         "url": null
@@ -113,7 +118,7 @@
       {
         "order": 19,
         "title": "I'm Your Boy Jacket Shooting Sketch & Special Interview",
-        "is_title_track": false
+        "is_title_track": true
       }
     ],
     "mv": {
