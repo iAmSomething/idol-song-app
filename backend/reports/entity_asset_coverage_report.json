@@ -4,20 +4,19 @@
     "entity_count": 117,
     "field_status_counts": {
       "official_youtube": {
-        "resolved": 88,
-        "review_needed": 29
-      },
-      "official_x": {
-        "resolved": 110,
-        "review_needed": 7
-      },
-      "official_instagram": {
         "resolved": 116,
         "review_needed": 1
       },
+      "official_x": {
+        "resolved": 112,
+        "review_needed": 5
+      },
+      "official_instagram": {
+        "resolved": 117
+      },
       "agency_name": {
-        "resolved": 57,
-        "review_needed": 60
+        "resolved": 78,
+        "review_needed": 39
       },
       "debut_year": {
         "resolved": 8,
@@ -30,14 +29,14 @@
     }
   },
   "release_artwork": {
-    "artwork_rows": 1770,
-    "release_history_rows": 1770,
+    "artwork_rows": 1771,
+    "release_history_rows": 1771,
     "coverage_ratio": 1.0,
     "status_counts": {
-      "verified": 1770
+      "verified": 1771
     },
     "source_type_counts": {
-      "cover_art_archive": 1770
+      "cover_art_archive": 1771
     }
   }
 }

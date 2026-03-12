@@ -18,11 +18,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+        "value": "https://www.youtube.com/@andteamofficial",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@andteamofficial",
+        "review_notes": "Verified from @andTEAMofficial handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "HYBE Labels",
@@ -34,7 +34,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -66,11 +66,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow",
+        "value": "https://www.youtube.com/@official_i_dle",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@official_i_dle",
+        "review_notes": "Verified from @official_i_dle handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "Cube Entertainment",
@@ -82,7 +82,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -114,23 +114,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw",
+        "value": "https://www.youtube.com/@82major_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@82major_official",
+        "review_notes": "Verified from @82major_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -162,23 +162,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw",
+        "value": "https://www.youtube.com/@8TURN.official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@8TURN.official",
+        "review_notes": "Verified from @8turn.official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -210,11 +210,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCwytna6i1rFCt13a3Qvuk-A",
+        "value": "https://www.youtube.com/@AB6IX",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCwytna6i1rFCt13a3Qvuk-A",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@AB6IX",
+        "review_notes": "Verified from @AB6IX handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "Brand New Music",
@@ -226,7 +226,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -258,11 +258,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
+        "value": "https://www.youtube.com/@aespa_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@aespa_official",
+        "review_notes": "Verified from @aespa_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -274,7 +274,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -306,23 +306,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@ALL_H_OURS",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@ALL_H_OURS",
+        "review_notes": "Verified from @ALL_H_OURS handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "EDEN Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_site",
+        "source_url": "https://www.edenent.co.kr/",
+        "review_notes": "Reviewed against the group's official current agency site."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -340,30 +340,30 @@
     "slug": "allday-project",
     "fields": {
       "official_x": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistSocialsStructured.x_url.unspecified.review_needed",
-        "source_url": null,
-        "review_notes": "Collected social inventory has no defensible value yet."
+        "value": "https://x.com/ALLDAY_PROJECT",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_social_profile",
+        "source_url": "https://x.com/ALLDAY_PROJECT",
+        "review_notes": "Reviewed direct official profile URL for the latest-cohort X gap."
       },
       "official_instagram": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistSocialsStructured.instagram_url.unspecified.review_needed",
-        "source_url": null,
-        "review_notes": "Collected social inventory has no defensible value yet."
+        "value": "https://www.instagram.com/allday_project",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_social_profile",
+        "source_url": "https://www.instagram.com/allday_project",
+        "review_notes": "Reviewed direct official profile URL for the latest-cohort Instagram gap."
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@ALLDAY_PROJECT",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_social_profile",
+        "source_url": "https://www.youtube.com/@ALLDAY_PROJECT",
+        "review_notes": "Reviewed direct official YouTube handle for the latest-cohort channel gap."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
@@ -418,7 +418,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -450,11 +450,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@official_artms",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@official_artms",
+        "review_notes": "Verified from @official_artms handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "MODHAUS",
@@ -466,7 +466,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -498,11 +498,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg",
+        "value": "https://www.youtube.com/@ATBO_ground",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@ATBO_ground",
+        "review_notes": "Verified from @ATBO_ground handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "IST Entertainment",
@@ -514,7 +514,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -546,11 +546,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
+        "value": "https://www.youtube.com/@ATEEZofficial",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@ATEEZofficial",
+        "review_notes": "Verified from @ATEEZofficial handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "KQ Entertainment",
@@ -562,7 +562,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -596,16 +596,16 @@
       "official_youtube": {
         "value": "https://www.youtube.com/@AtHeart_TITAN",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
         "source_url": "https://www.youtube.com/@AtHeart_TITAN",
-        "review_notes": null
+        "review_notes": "Verified from @AtHeart_TITAN handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "TITAN CONTENT",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://www.youtube.com/@AtHeart_TITAN",
+        "review_notes": "Agency verified from the official channel handle branding."
       },
       "debut_year": {
         "value": 2025,
@@ -642,11 +642,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
+        "value": "https://www.youtube.com/@YGBABYMONSTER_",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@YGBABYMONSTER_",
+        "review_notes": "Verified from @YGBABYMONSTER_ handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "YG Entertainment",
@@ -658,7 +658,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -690,23 +690,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCh0KpQuSJ9m0DaENZmnYwzw",
+        "value": "https://www.youtube.com/@badvillain_bpm",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCh0KpQuSJ9m0DaENZmnYwzw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@badvillain_bpm",
+        "review_notes": "Verified from @BADVILLAIN_BPM handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "BPM Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://x.com/BADVILLAIN_BPM",
+        "review_notes": "Agency verified from the official team handle branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -747,14 +747,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -786,11 +786,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+        "value": "https://www.youtube.com/@BLACKPINK",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@BLACKPINK",
+        "review_notes": "Verified from @blackpink handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "YG Entertainment",
@@ -802,7 +802,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -834,23 +834,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@Blitzers",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@Blitzers",
+        "review_notes": "Verified from @BLITZERS handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "WUZO Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://x.com/WUZO_BLITZERS",
+        "review_notes": "Agency verified from the official handle branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -882,11 +882,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UChhKBlh_wvspTh5n4mL0b5g",
+        "value": "https://www.youtube.com/@boynextdoor_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UChhKBlh_wvspTh5n4mL0b5g",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@boynextdoor_official",
+        "review_notes": "Verified from @boynextdoor_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "HYBE Labels",
@@ -898,7 +898,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -930,23 +930,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCgB7A457ULlgm5c3948vr-w",
+        "value": "https://www.youtube.com/@officialbtob",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCgB7A457ULlgm5c3948vr-w",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@officialbtob",
+        "review_notes": "Verified from @OFFICIALBTOB handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -994,7 +994,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1028,21 +1028,21 @@
       "official_youtube": {
         "value": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
         "source_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
-        "review_notes": null
+        "review_notes": "Verified from @CHUNGHA_OFFICIAL handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1076,21 +1076,21 @@
       "official_youtube": {
         "value": "https://www.youtube.com/@CHUUOfficial",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
         "source_url": "https://www.youtube.com/@CHUUOfficial",
-        "review_notes": null
+        "review_notes": "Verified from @CHUUOfficial handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1129,16 +1129,16 @@
         "review_notes": null
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "J9 Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://x.com/cignature_J9",
+        "review_notes": "Agency verified from the official handle branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1170,11 +1170,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCuaslC77K-NmCy8Xwk7x0hA",
+        "value": "https://www.youtube.com/@cix.official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCuaslC77K-NmCy8Xwk7x0hA",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@cix.official",
+        "review_notes": "Verified from @cix.official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "C9 Entertainment",
@@ -1186,7 +1186,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1227,14 +1227,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1252,11 +1252,11 @@
     "slug": "close-your-eyes",
     "fields": {
       "official_x": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistSocialsStructured.x_url.unspecified.review_needed",
-        "source_url": null,
-        "review_notes": "Collected social inventory has no defensible value yet."
+        "value": "https://x.com/closeyoureyes_of",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_social_profile",
+        "source_url": "https://x.com/closeyoureyes_of",
+        "review_notes": "Reviewed direct official profile URL for the latest-cohort X gap."
       },
       "official_instagram": {
         "value": "https://www.instagram.com/close.your.eyes.official",
@@ -1266,11 +1266,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@close.your.eyes.official",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@close.your.eyes.official",
+        "review_notes": "Verified from @close.your.eyes.official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "UNCORE",
@@ -1330,7 +1330,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1371,14 +1371,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1410,11 +1410,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCp-pqXsizklX3ZHvLxXyhxw",
+        "value": "https://www.youtube.com/@DAY6Official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCp-pqXsizklX3ZHvLxXyhxw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@DAY6Official",
+        "review_notes": "Verified from @day6official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "JYP Entertainment",
@@ -1426,7 +1426,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1465,16 +1465,16 @@
         "review_notes": null
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "Brave Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://x.com/DKB_BRAVE",
+        "review_notes": "Agency verified from the official handle branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1506,23 +1506,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCijULR2sXLutCRBtW3_WEfA",
+        "value": "https://www.youtube.com/@hf_dreamcatcher",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCijULR2sXLutCRBtW3_WEfA",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@hf_dreamcatcher",
+        "review_notes": "Verified from @hf_dreamcatcher handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1554,11 +1554,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@DRIPPIN",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@DRIPPIN",
+        "review_notes": "Verified from @drippin handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "Woollim Entertainment",
@@ -1570,7 +1570,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1602,23 +1602,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@DXMON_HM",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@DXMON_HM",
+        "review_notes": "Verified from @DXMON_HM handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "HM Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://x.com/DXMON_HM",
+        "review_notes": "Agency verified from the official handle branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1666,7 +1666,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1707,14 +1707,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1746,11 +1746,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@EVNNE_Official",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@EVNNE_Official",
+        "review_notes": "Verified from @EVNNE_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "Jellyfish Entertainment",
@@ -1762,7 +1762,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1794,11 +1794,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCzCedBCSSltI1TFd3bKyN6g",
+        "value": "https://www.youtube.com/@weareoneEXO",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCzCedBCSSltI1TFd3bKyN6g",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@weareoneEXO",
+        "review_notes": "Verified from @weareoneEXO handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -1810,7 +1810,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1842,23 +1842,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw",
+        "value": "https://www.youtube.com/@WE_FIFTYFIFTY",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@WE_FIFTYFIFTY",
+        "review_notes": "Verified from @we_fiftyfifty handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "ATTRAKT entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_site",
+        "source_url": "https://www.theattrakt.com/sub/artist/view.php?artistSeq=10",
+        "review_notes": "Reviewed against the official artist page."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1890,23 +1890,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC8qO5racajmy4YgPgNJkVXg",
+        "value": "https://www.youtube.com/@realfromis_9",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC8qO5racajmy4YgPgNJkVXg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@realfromis_9",
+        "review_notes": "Verified from @realfromis_9 handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1938,23 +1938,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCwBsVtDcTVG4QCorkVNJ5Sg",
+        "value": "https://www.youtube.com/@GHOST9Official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCwBsVtDcTVG4QCorkVNJ5Sg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@GHOST9Official",
+        "review_notes": "Verified from @GHOST9OFFICIAL handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1986,11 +1986,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC-6L6QIx3M6O_ROf7CP-pJg",
+        "value": "https://www.youtube.com/@H1KEY_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC-6L6QIx3M6O_ROf7CP-pJg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@H1KEY_official",
+        "review_notes": "Verified from @H1KEY_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "GLG",
@@ -2002,7 +2002,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2034,11 +2034,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@SMTOWN",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_label_channel_fallback",
+        "source_url": "https://www.youtube.com/@SMTOWN",
+        "review_notes": "No dependable team-owned channel was confirmed, so the official label-owned upload channel is used as the canonical fallback."
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -2082,16 +2082,16 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@ifeye_official",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@ifeye_official",
+        "review_notes": "Verified from @ifeye_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
@@ -2139,14 +2139,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2178,11 +2178,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
+        "value": "https://www.youtube.com/@ItzyOfficial",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@ItzyOfficial",
+        "review_notes": "Verified from @ITZYofficial handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "JYP Entertainment",
@@ -2194,7 +2194,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2226,11 +2226,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
+        "value": "https://www.youtube.com/@IVEstarship",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@IVEstarship",
+        "review_notes": "Verified from @ivestarship handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "Starship Entertainment",
@@ -2242,7 +2242,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2274,11 +2274,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ",
+        "value": "https://www.youtube.com/@izna_offcl",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@izna_offcl",
+        "review_notes": "Verified from @izna_offcl handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "WAKEONE",
@@ -2290,7 +2290,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2322,23 +2322,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/@JEONSOMIOFFICIAL",
+        "value": "https://www.youtube.com/@jeonsomiofficial",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/@JEONSOMIOFFICIAL",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@jeonsomiofficial",
+        "review_notes": "Verified from @JEONSOMIOFFICIAL handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2370,23 +2370,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@JUSTB_Official",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@JUSTB_Official",
+        "review_notes": "Verified from @JUSTB_Official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2418,23 +2418,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC5OwlwvsVmf_lXHguB6OYFw",
+        "value": "https://www.youtube.com/@Kard_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC5OwlwvsVmf_lXHguB6OYFw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@Kard_official",
+        "review_notes": "Verified from @kard_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2466,11 +2466,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@official_kep1er",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@official_kep1er",
+        "review_notes": "Verified from @official_kep1er handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "WAKEONE",
@@ -2482,7 +2482,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2514,18 +2514,18 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@kickflip_jype",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@kickflip_jype",
+        "review_notes": "Verified from @KickFlip_jype handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "JYP Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://www.youtube.com/@kickflip_jype",
+        "review_notes": "Agency verified from the official channel handle branding."
       },
       "debut_year": {
         "value": 2025,
@@ -2562,16 +2562,16 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@We_KiiiKiii",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@We_KiiiKiii",
+        "review_notes": "Verified from @We_KiiiKiii handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
@@ -2610,11 +2610,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCvEEeBssb4XxIfWWIB8IjMw",
+        "value": "https://www.youtube.com/@KISSOFLIFE_S2",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCvEEeBssb4XxIfWWIB8IjMw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@KISSOFLIFE_S2",
+        "review_notes": "Verified from @KISSOFLIFE_S2 handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "S2 Entertainment",
@@ -2626,7 +2626,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2660,21 +2660,21 @@
       "official_youtube": {
         "value": "https://www.youtube.com/@KWONEUNBI",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
         "source_url": "https://www.youtube.com/@KWONEUNBI",
-        "review_notes": null
+        "review_notes": "Verified from @KWONEUNBI handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2706,11 +2706,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCs-QBT4qkj_YiQw1ZntDO3g",
+        "value": "https://www.youtube.com/@LE_SSERAFIM",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCs-QBT4qkj_YiQw1ZntDO3g",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@LE_SSERAFIM",
+        "review_notes": "Verified from @le_sserafim handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "HYBE Labels",
@@ -2722,7 +2722,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2770,7 +2770,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2802,23 +2802,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@Loossemble_official",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@Loossemble_official",
+        "review_notes": "Verified from @Loossemble_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2850,23 +2850,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCHx0MD2c0DTNGAtc0Yq6YPQ",
+        "value": "https://www.youtube.com/@LUN8_Official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCHx0MD2c0DTNGAtc0Yq6YPQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@LUN8_Official",
+        "review_notes": "Verified from @LUN8_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2898,23 +2898,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCuhAUMLzJxlP1W7mEk0_6lA",
+        "value": "https://www.youtube.com/@MAMAMOO_OFFICIAL",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCuhAUMLzJxlP1W7mEk0_6lA",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@MAMAMOO_OFFICIAL",
+        "review_notes": "Verified from @mamamoo_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2946,23 +2946,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCNC_wxtoMCuvRVQzpbHPaZw",
+        "value": "https://www.youtube.com/@MCND_OFFICIAL",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCNC_wxtoMCuvRVQzpbHPaZw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@MCND_OFFICIAL",
+        "review_notes": "Verified from @mcnd_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2994,23 +2994,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCowiwt93gqGlNG4k5VDxO-w",
+        "value": "https://www.youtube.com/@official_meovv",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCowiwt93gqGlNG4k5VDxO-w",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@official_meovv",
+        "review_notes": "Verified from @OFFICIAL_MEOVV handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3042,11 +3042,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCZvCP6sWj75MwpUP4LVtpNw",
+        "value": "https://www.youtube.com/@officialmonstax",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCZvCP6sWj75MwpUP4LVtpNw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@officialmonstax",
+        "review_notes": "Verified from @officialmonstax handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "Starship Entertainment",
@@ -3058,7 +3058,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3090,11 +3090,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCk2E0dbAyEJWnrN2bbQOcbg",
+        "value": "https://www.youtube.com/@NCT127",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCk2E0dbAyEJWnrN2bbQOcbg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@NCT127",
+        "review_notes": "Verified from @nct127 handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -3106,7 +3106,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3138,11 +3138,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
+        "value": "https://www.youtube.com/@NCTsmtown_DREAM",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@NCTsmtown_DREAM",
+        "review_notes": "Verified from @nctsmtown_dream handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -3154,7 +3154,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3186,11 +3186,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@NCTWISH",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@NCTWISH",
+        "review_notes": "Verified from @NCTWISH handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -3202,7 +3202,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3234,23 +3234,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCMki_UkHb4qSc0qyEcOHHJw",
+        "value": "https://www.youtube.com/@NewJeans_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCMki_UkHb4qSc0qyEcOHHJw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@NewJeans_official",
+        "review_notes": "Verified from @newjeans_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3282,11 +3282,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
+        "value": "https://www.youtube.com/@NEXZ_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@NEXZ_official",
+        "review_notes": "Verified from @NEXZ_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "JYP Entertainment",
@@ -3298,7 +3298,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3346,7 +3346,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3378,23 +3378,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@nomad_is_here",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@nomad_is_here",
+        "review_notes": "Verified from @nomad_is_here handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3442,7 +3442,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3483,14 +3483,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3538,7 +3538,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3570,11 +3570,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
+        "value": "https://www.youtube.com/@P1H_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@P1H_official",
+        "review_notes": "Verified from @p1h_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "FNC Entertainment",
@@ -3586,7 +3586,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3618,11 +3618,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCPZIPuQPrfrUG9Xe_okEmQA",
+        "value": "https://www.youtube.com/@plave_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCPZIPuQPrfrUG9Xe_okEmQA",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@plave_official",
+        "review_notes": "Verified from @plave_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "VLAST",
@@ -3634,7 +3634,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3666,23 +3666,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@POW_Official",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@POW_Official",
+        "review_notes": "Verified from @POW_Official handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "GRID Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://x.com/POW_grid",
+        "review_notes": "Agency verified from the official handle branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3714,23 +3714,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCor8nQnEdMs4eBcU-uVBQ8g",
+        "value": "https://www.youtube.com/@PURPLEKISS_Official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCor8nQnEdMs4eBcU-uVBQ8g",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@PURPLEKISS_Official",
+        "review_notes": "Verified from @purplekiss_official handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "RBW",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://x.com/RBW_PURPLEKISS",
+        "review_notes": "Agency verified from the official handle branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3762,23 +3762,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCgD0APk2x9uBlLM0UsmhQjw",
+        "value": "https://www.youtube.com/@qwerband_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCgD0APk2x9uBlLM0UsmhQjw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@qwerband_official",
+        "review_notes": "Verified from @qwerband_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3810,23 +3810,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
+        "value": "https://www.youtube.com/@redvelvet.smtown",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@redvelvet.smtown",
+        "review_notes": "Verified from @redvelvet.smtown handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "SM Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_wikidata_record_label",
+        "source_url": "https://www.wikidata.org/wiki/Q17466114",
+        "review_notes": "Reviewed current label ownership from the structured reference."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3858,23 +3858,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@RESCENEofficial",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@RESCENEofficial",
+        "review_notes": "Verified from @RESCENEofficial handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3906,11 +3906,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+        "value": "https://www.youtube.com/@RIIZE_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@RIIZE_official",
+        "review_notes": "Verified from @riize_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -3922,7 +3922,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3954,23 +3954,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@sa2m2nam3",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@sa2m2nam3",
+        "review_notes": "Verified from @sa2m2nam3 handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "INKODE",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_label_channel",
+        "source_url": "https://www.youtube.com/@inkodeofficial",
+        "review_notes": "Agency verified from the official label-owned channel used for the group."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4002,11 +4002,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
+        "value": "https://www.youtube.com/@pledis_17",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC0gpUnoyhu44aS3-NxYs7rg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@pledis_17",
+        "review_notes": "Verified from @pledis_17 handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "HYBE Labels",
@@ -4018,7 +4018,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4050,11 +4050,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
+        "value": "https://www.youtube.com/@SHINee",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@SHINee",
+        "review_notes": "Verified from @shinee handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -4066,7 +4066,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4098,23 +4098,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCod5V2dpnpJLklGvVOv5FcQ",
+        "value": "https://www.youtube.com/@stayc_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCod5V2dpnpJLklGvVOv5FcQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@stayc_official",
+        "review_notes": "Verified from @stayc_official handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "High Up Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_site",
+        "source_url": "http://www.highup-ent.com/stayc",
+        "review_notes": "Reviewed against the official artist page."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4146,11 +4146,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
+        "value": "https://www.youtube.com/@stray_kids",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@stray_kids",
+        "review_notes": "Verified from @Stray_Kids handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "JYP Entertainment",
@@ -4162,7 +4162,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4194,11 +4194,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@TPSTOFFICIAL",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@TPSTOFFICIAL",
+        "review_notes": "Verified from @TPSTofficial handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "Yuehua Entertainment",
@@ -4210,7 +4210,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4258,7 +4258,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4290,23 +4290,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@gf_entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_label_channel_fallback",
+        "source_url": "https://www.youtube.com/@gf_entertainment",
+        "review_notes": "No dependable team-owned channel was confirmed, so the official label-owned upload channel is used as the canonical fallback."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "GF Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_label_channel",
+        "source_url": "https://www.youtube.com/@gf_entertainment",
+        "review_notes": "Agency verified from the official label-owned channel branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4340,21 +4340,21 @@
       "official_youtube": {
         "value": "https://www.youtube.com/@TIOT_NOW",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
         "source_url": "https://www.youtube.com/@TIOT_NOW",
-        "review_notes": null
+        "review_notes": "Verified from @TIOT_NOW handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4386,23 +4386,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@PNATIONOfficial",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_label_channel_fallback",
+        "source_url": "https://www.youtube.com/@PNATIONOfficial",
+        "review_notes": "No dependable team-owned channel was confirmed, so the official label-owned upload channel is used as the canonical fallback."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "P NATION",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_label_channel",
+        "source_url": "https://www.youtube.com/@PNATIONOfficial",
+        "review_notes": "Agency verified from the official label-owned channel branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4434,11 +4434,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
+        "value": "https://www.youtube.com/@txt_members",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@txt_members",
+        "review_notes": "Verified from @TXT_members handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "HYBE Labels",
@@ -4450,7 +4450,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4482,11 +4482,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCx9hXYOCvUYwrprEqe4ZQHA",
+        "value": "https://www.youtube.com/@ygtreasuremaker",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCx9hXYOCvUYwrprEqe4ZQHA",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@ygtreasuremaker",
+        "review_notes": "Verified from @ygtreasuremaker handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "YG Entertainment",
@@ -4498,7 +4498,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4530,23 +4530,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCvc55IOOCI165H3raqcjjrg",
+        "value": "https://www.youtube.com/@TRENDZ_OFFCL",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCvc55IOOCI165H3raqcjjrg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@TRENDZ_OFFCL",
+        "review_notes": "Verified from @trendz_offcl handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4578,11 +4578,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCJnL-TBcsYrF2SLs7tmiC8Q",
+        "value": "https://www.youtube.com/@triplescosmos",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCJnL-TBcsYrF2SLs7tmiC8Q",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@triplescosmos",
+        "review_notes": "Verified from @triplescosmos handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "MODHAUS",
@@ -4594,7 +4594,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4628,9 +4628,9 @@
       "official_youtube": {
         "value": "https://www.youtube.com/@official_TUNEXX",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
         "source_url": "https://www.youtube.com/@official_TUNEXX",
-        "review_notes": null
+        "review_notes": "Verified from @official_TUNEXX handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "IST Entertainment",
@@ -4642,7 +4642,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4674,11 +4674,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
+        "value": "https://www.youtube.com/@JYPETWICE",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@JYPETWICE",
+        "review_notes": "Verified from @JYPETWICE handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "JYP Entertainment",
@@ -4690,7 +4690,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4722,11 +4722,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC8C6QOPDVYwmuaSBZksefdg",
+        "value": "https://www.youtube.com/@TWS_PLEDIS",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC8C6QOPDVYwmuaSBZksefdg",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@TWS_PLEDIS",
+        "review_notes": "Verified from @tws_pledis handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "HYBE Labels",
@@ -4738,7 +4738,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4770,23 +4770,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw",
+        "value": "https://www.youtube.com/@UNIS_Offcl",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@UNIS_Offcl",
+        "review_notes": "Verified from @UNIS_offcl handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4827,14 +4827,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4866,23 +4866,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCWFMjDuWKlct0jy89k2kkRA",
+        "value": "https://www.youtube.com/@viviz_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCWFMjDuWKlct0jy89k2kkRA",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@viviz_official",
+        "review_notes": "Verified from @VIVIZ_official handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "BPM Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_wikidata_record_label",
+        "source_url": "https://www.wikidata.org/wiki/Q108853211",
+        "review_notes": "Reviewed current label ownership from the structured reference."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4914,11 +4914,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UC-ZHt5Zgadfx-B1CM63Lqew",
+        "value": "https://www.youtube.com/@WayV_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UC-ZHt5Zgadfx-B1CM63Lqew",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@WayV_official",
+        "review_notes": "Verified from @WayV_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -4930,7 +4930,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4969,16 +4969,16 @@
         "review_notes": null
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "IST Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_wikidata_record_label",
+        "source_url": "https://www.wikidata.org/wiki/Q65046002",
+        "review_notes": "Reviewed current label ownership from the structured reference."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5010,23 +5010,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@wei_Official",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@wei_Official",
+        "review_notes": "Verified from @WEi_Official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5058,23 +5058,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@WHIB_OFFICIAL",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@WHIB_OFFICIAL",
+        "review_notes": "Verified from @whib_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5106,11 +5106,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@officialstarship",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_label_channel_fallback",
+        "source_url": "https://www.youtube.com/@officialstarship",
+        "review_notes": "No dependable team-owned channel was confirmed, so the official label-owned upload channel is used as the canonical fallback."
       },
       "agency_name": {
         "value": "Starship Entertainment",
@@ -5122,7 +5122,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5154,23 +5154,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCNeLbWtlJzTsavMC70zY0dQ",
+        "value": "https://www.youtube.com/@wooah_nv",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCNeLbWtlJzTsavMC70zY0dQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@wooah_nv",
+        "review_notes": "Verified from @wooah_nv handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "NV Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_official_handle",
+        "source_url": "https://x.com/wooah_nv",
+        "review_notes": "Agency verified from the official handle branding."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5202,23 +5202,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ",
+        "value": "https://www.youtube.com/@XH_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@XH_official",
+        "review_notes": "Verified from @XH_official handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "JYP Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_wikidata_record_label",
+        "source_url": "https://www.wikidata.org/wiki/Q109579414",
+        "review_notes": "Reviewed current label ownership from the structured reference."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5250,11 +5250,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ",
+        "value": "https://www.youtube.com/@xikers_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@xikers_official",
+        "review_notes": "Verified from @xikers_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "KQ Entertainment",
@@ -5266,7 +5266,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5300,9 +5300,9 @@
       "official_youtube": {
         "value": "https://www.youtube.com/@XLOV_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
         "source_url": "https://www.youtube.com/@XLOV_official",
-        "review_notes": null
+        "review_notes": "Verified from @XLOV_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "257 Entertainment",
@@ -5346,23 +5346,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/@yena_official",
+        "value": "https://www.youtube.com/@YENA_OFFICIAL",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/@yena_official",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@YENA_OFFICIAL",
+        "review_notes": "Verified from @yena_official handle probe against the official social handle pattern."
       },
       "agency_name": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
-        "source_url": null,
-        "review_notes": "Agency is still missing in the canonical entity profile seed."
+        "value": "Yuehua Entertainment",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.reviewed_news_source",
+        "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+        "review_notes": "Agency verified from the reviewed comeback article used in the current release pipeline."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5394,23 +5394,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@YOUNGPOSSEUP",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@YOUNGPOSSEUP",
+        "review_notes": "Verified from @youngposseup handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5442,11 +5442,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
-        "source_url": null,
-        "review_notes": "Primary team channel is still missing from the allowlist seed."
+        "value": "https://www.youtube.com/@Younite",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@Younite",
+        "review_notes": "Verified from @YOUNITE handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "Brand New Music",
@@ -5458,7 +5458,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5490,23 +5490,23 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/@YUJUofficial",
+        "value": "https://www.youtube.com/@Yujuofficial",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/@YUJUofficial",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@Yujuofficial",
+        "review_notes": "Verified from @YUJUofficial handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5540,21 +5540,21 @@
       "official_youtube": {
         "value": "https://www.youtube.com/@YVES_OFFICIAL",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
         "source_url": "https://www.youtube.com/@YVES_OFFICIAL",
-        "review_notes": null
+        "review_notes": "Verified from @YVES_OFFICIAL handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5586,11 +5586,11 @@
         "review_notes": null
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ",
+        "value": "https://www.youtube.com/@ZB1_official",
         "status": "resolved",
-        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-        "source_url": "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ",
-        "review_notes": null
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@ZB1_official",
+        "review_notes": "Verified from @ZB1_official handle probe against the official social handle pattern."
       },
       "agency_name": {
         "value": "WAKEONE",
@@ -5602,7 +5602,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },

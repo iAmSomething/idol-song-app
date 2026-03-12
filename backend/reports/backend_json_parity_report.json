@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-11T16:49:54.281934+00:00",
-  "clean": true,
+  "generated_at": "2026-03-12T02:34:38.126295+00:00",
+  "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-11T16:49:34.579Z",
-    "bundle_id": "post-sync-verification-d9c2b4bf0064",
+    "generated_at": "2026-03-12T02:34:27.398Z",
+    "bundle_id": "post-sync-verification-3fc09490ed96",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -15,7 +15,7 @@
     "source_reports": {
       "release_pipeline_sync": {
         "path": "reports/release_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-11T16:41:51.273Z",
+        "generated_at": "2026-03-11T18:13:37.531Z",
         "scope": "release_pipeline"
       },
       "upcoming_pipeline_sync": {
@@ -25,7 +25,7 @@
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-11T16:14:21.898Z"
+        "generated_at": "2026-03-12T02:34:21.051Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
@@ -33,38 +33,38 @@
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
-        "generated_at": "2026-03-11T16:49:30.887Z"
+        "generated_at": "2026-03-12T02:34:23.746Z"
       },
       "canonical_null_recheck_queue": {
         "path": "reports/canonical_null_recheck_queue.json",
-        "generated_at": "2026-03-11T16:49:32.745Z",
-        "queue_count": 2516
+        "generated_at": "2026-03-12T02:34:25.223Z",
+        "queue_count": 2388
       },
       "null_coverage_trend": {
         "path": "reports/null_coverage_trend_report.json",
-        "generated_at": "2026-03-11T16:49:33.810Z",
+        "generated_at": "2026-03-12T02:34:25.709Z",
         "baseline_available": true
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-11T16:14:23.247Z",
+        "generated_at": "2026-03-12T02:34:22.427Z",
         "primary_path_key": "daily_upcoming"
       },
       "service_link_gap_queues": {
         "path": "reports/service_link_gap_queues.json",
-        "generated_at": "2026-03-11T09:16:24.917Z",
-        "total": 5155
+        "generated_at": "2026-03-12T02:34:26.993Z",
+        "total": 3979
       },
       "title_track_gap_queue": {
         "path": "reports/title_track_gap_queue.json",
-        "generated_at": "2026-03-11T09:16:24.922Z",
-        "total": 1694
+        "generated_at": "2026-03-12T02:34:26.996Z",
+        "total": 576
       },
       "entity_identity_workbench": {
         "path": "reports/entity_identity_workbench.json",
-        "generated_at": "2026-03-11T09:16:24.924Z",
+        "generated_at": "2026-03-12T02:34:26.997Z",
         "entities": 117,
-        "field_rows": 324
+        "field_rows": 194
       },
       "trusted_upcoming_notification_summary": {
         "path": "reports/trusted_upcoming_notification_event_summary.json",
@@ -79,7 +79,7 @@
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-d9c2b4bf0064",
+      "bundle id: post-sync-verification-3fc09490ed96",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -87,7 +87,7 @@
   },
   "summary_lines": [
     "entity alias/search coverage: clean (mismatched entities=0)",
-    "official links: clean (mismatched entities=0)",
+    "official links: drift (mismatched entities=62)",
     "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
     "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
     "upcoming counts / nearest: clean (month bucket mismatches=0)",
@@ -98,7 +98,7 @@
   "source_snapshot_counts": {
     "artist_profiles": 117,
     "youtube_allowlists": 117,
-    "release_details": 1770,
+    "release_details": 1771,
     "upcoming_candidates": 71,
     "watchlist": 108,
     "manual_review_queue": 67,
@@ -113,9 +113,130 @@
       "clean": true
     },
     "official_links": {
-      "mismatched_entities_count": 0,
-      "mismatches": [],
-      "clean": true
+      "mismatched_entities_count": 62,
+      "mismatches": [
+        {
+          "entity_slug": "82major",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw"
+              ]
+            }
+          ]
+        },
+        {
+          "entity_slug": "8turn",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw"
+              ]
+            }
+          ]
+        },
+        {
+          "entity_slug": "ab6ix",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UCwytna6i1rFCt13a3Qvuk-A"
+              ]
+            }
+          ]
+        },
+        {
+          "entity_slug": "aespa",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg"
+              ]
+            }
+          ]
+        },
+        {
+          "entity_slug": "and-team",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg"
+              ]
+            }
+          ]
+        },
+        {
+          "entity_slug": "atbo",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg"
+              ]
+            }
+          ]
+        },
+        {
+          "entity_slug": "ateez",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ"
+              ]
+            }
+          ]
+        },
+        {
+          "entity_slug": "babymonster",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ"
+              ]
+            }
+          ]
+        },
+        {
+          "entity_slug": "badvillain",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UCh0KpQuSJ9m0DaENZmnYwzw"
+              ]
+            }
+          ]
+        },
+        {
+          "entity_slug": "blackpink",
+          "diffs": [
+            {
+              "link_type": "youtube",
+              "missing_urls": [],
+              "extra_urls": [
+                "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A"
+              ]
+            }
+          ]
+        }
+      ],
+      "clean": false
     },
     "youtube_allowlists": {
       "role_mismatches_count": 0,
@@ -220,14 +341,14 @@
         "mv_candidate": 1616
       },
       "source_youtube_mv_status_counts": {
-        "unresolved": 1614,
+        "unresolved": 1615,
         "manual_override": 133,
         "relation_match": 21,
         "needs_review": 2,
         "no_mv": 1
       },
       "db_youtube_mv_status_counts": {
-        "unresolved": 1614,
+        "unresolved": 1615,
         "manual_override": 133,
         "relation_match": 21,
         "needs_review": 2,
