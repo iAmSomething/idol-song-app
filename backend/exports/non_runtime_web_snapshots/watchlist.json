@@ -1,0 +1,1522 @@
+[
+  {
+    "group": "&TEAM",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Back to Life",
+    "latest_release_date": "2025-10-28",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/andTEAMofficial",
+    "instagram_url": "https://www.instagram.com/andteam_official/",
+    "search_terms": [
+      "\"&TEAM\" kpop comeback"
+    ]
+  },
+  {
+    "group": "(G)I-DLE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Mono",
+    "latest_release_date": "2026-01-27",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/official_i_dle",
+    "instagram_url": "https://www.instagram.com/i_dle_official/",
+    "search_terms": [
+      "\"i-dle\" kpop comeback"
+    ]
+  },
+  {
+    "group": "82MAJOR",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Trophy",
+    "latest_release_date": "2025-10-30",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/82MAJOR_231011",
+    "instagram_url": "https://www.instagram.com/82major_official/",
+    "search_terms": [
+      "\"82MAJOR\" kpop comeback"
+    ]
+  },
+  {
+    "group": "8TURN",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "BRUISE",
+    "latest_release_date": "2026-01-28",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/8TURN_official",
+    "instagram_url": "https://www.instagram.com/8turn.official/",
+    "search_terms": [
+      "\"8TURN\" kpop comeback"
+    ]
+  },
+  {
+    "group": "AB6IX",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "BORN LIKE THIS",
+    "latest_release_date": "2024-10-10",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/AB6IX",
+    "instagram_url": "https://www.instagram.com/ab6ix_official/",
+    "search_terms": [
+      "\"AB6IX\" kpop comeback"
+    ]
+  },
+  {
+    "group": "aespa",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "SYNK : aeXIS LINE",
+    "latest_release_date": "2025-11-17",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/aespa_official",
+    "instagram_url": "https://www.instagram.com/aespa_official/",
+    "search_terms": [
+      "\"aespa\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ALL(H)OURS",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "VCF",
+    "latest_release_date": "2025-09-09",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/ALL_H_OURS",
+    "instagram_url": "https://www.instagram.com/all_h_ours/",
+    "search_terms": [
+      "\"ALL(H)OURS\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ALLDAY PROJECT",
+    "tier": "manual",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "ALLDAY PROJECT",
+    "latest_release_date": "2025-12-08",
+    "latest_release_kind": "ep",
+    "x_url": "",
+    "instagram_url": "",
+    "search_terms": [
+      "\"ALLDAY PROJECT\" kpop comeback",
+      "\"ALLDAY PROJECT\" teaser",
+      "\"ALLDAY PROJECT\" 컴백"
+    ]
+  },
+  {
+    "group": "AMPERS&ONE",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "LOUD & PROUD",
+    "latest_release_date": "2025-08-12",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/_AMPERSANDONE_",
+    "instagram_url": "https://www.instagram.com/ampersandone_official/",
+    "search_terms": [
+      "\"AMPERS&ONE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ARTMS",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "<Club Icarus>",
+    "latest_release_date": "2025-06-13",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/official_artms",
+    "instagram_url": "https://www.instagram.com/official_artms/",
+    "search_terms": [
+      "\"ARTMS\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ATBO",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "MUST HAVE",
+    "latest_release_date": "2023-11-27",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/ATBO_ground",
+    "instagram_url": "https://www.instagram.com/atboground/",
+    "search_terms": [
+      "\"ATBO\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ATEEZ",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "GOLDEN HOUR : Part.4",
+    "latest_release_date": "2026-02-06",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/ATEEZofficial",
+    "instagram_url": "https://www.instagram.com/ateez_official_/",
+    "search_terms": [
+      "\"ATEEZ\" kpop comeback"
+    ]
+  },
+  {
+    "group": "AtHeart",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Shut Up",
+    "latest_release_date": "2026-02-26",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/atheartofficial",
+    "instagram_url": "https://www.instagram.com/atheart__official/",
+    "search_terms": [
+      "\"AtHeart\" kpop comeback"
+    ]
+  },
+  {
+    "group": "BABYMONSTER",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "WE GO UP",
+    "latest_release_date": "2025-10-10",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/YGBABYMONSTER_",
+    "instagram_url": "https://www.instagram.com/babymonster_ygofficial/",
+    "search_terms": [
+      "\"BABYMONSTER\" kpop comeback"
+    ]
+  },
+  {
+    "group": "BADVILLAIN",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "THRILLER",
+    "latest_release_date": "2025-09-15",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/BADVILLAIN_BPM",
+    "instagram_url": "https://www.instagram.com/badvillain_bpm/",
+    "search_terms": [
+      "\"BADVILLAIN\" kpop comeback"
+    ]
+  },
+  {
+    "group": "BAE173",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "NEW CHAPTER : DESEAR",
+    "latest_release_date": "2025-10-14",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/BAE173_official",
+    "instagram_url": "https://www.instagram.com/official_pocketdolz/",
+    "search_terms": [
+      "\"BAE173\" kpop comeback"
+    ]
+  },
+  {
+    "group": "BLACKPINK",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "DEADLINE",
+    "latest_release_date": "2026-02-27",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/blackpink",
+    "instagram_url": "https://www.instagram.com/blackpinkofficial/",
+    "search_terms": [
+      "\"BLACKPINK\" kpop comeback"
+    ]
+  },
+  {
+    "group": "BLITZERS",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "LUNCH‐BOX",
+    "latest_release_date": "2024-06-19",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/WUZO_BLITZERS",
+    "instagram_url": "https://www.instagram.com/official_blitzers/",
+    "search_terms": [
+      "\"BLITZERS\" kpop comeback"
+    ]
+  },
+  {
+    "group": "BOYNEXTDOOR",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "The Action",
+    "latest_release_date": "2025-10-20",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/BOYNEXTDOOR_KOZ",
+    "instagram_url": "https://www.instagram.com/boynextdoor_official/",
+    "search_terms": [
+      "\"BOYNEXTDOOR\" kpop comeback"
+    ]
+  },
+  {
+    "group": "BTOB",
+    "tier": "core",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "BTODAY",
+    "latest_release_date": "2025-03-05",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/OFFICIALBTOB",
+    "instagram_url": "https://www.instagram.com/official_btob/",
+    "search_terms": [
+      "\"BTOB\" kpop comeback"
+    ]
+  },
+  {
+    "group": "BTS",
+    "tier": "core",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Take Two",
+    "latest_release_date": "2023-06-09",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/BTS_twt",
+    "instagram_url": "https://www.instagram.com/bts.bighitofficial/",
+    "search_terms": [
+      "\"BTS\" kpop comeback"
+    ]
+  },
+  {
+    "group": "cignature",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Sweetie but Saltie",
+    "latest_release_date": "2024-06-10",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/cignature_J9",
+    "instagram_url": "https://www.instagram.com/cignature_j9/",
+    "search_terms": [
+      "\"cignature\" kpop comeback"
+    ]
+  },
+  {
+    "group": "CIX",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "GO Chapter 1: GO Together",
+    "latest_release_date": "2025-09-08",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/cix_official",
+    "instagram_url": "https://www.instagram.com/cix.official/",
+    "search_terms": [
+      "\"CIX\" kpop comeback"
+    ]
+  },
+  {
+    "group": "CLASS:y",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "LOVE XX",
+    "latest_release_date": "2024-11-15",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/M25_CLASSy",
+    "instagram_url": "https://www.instagram.com/m25_classy/",
+    "search_terms": [
+      "\"CLASS:y\" kpop comeback"
+    ]
+  },
+  {
+    "group": "CRAVITY",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Dare to Crave",
+    "latest_release_date": "2025-06-23",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/CRAVITY_twt",
+    "instagram_url": "https://www.instagram.com/cravity_official/",
+    "search_terms": [
+      "\"CRAVITY\" kpop comeback"
+    ]
+  },
+  {
+    "group": "CSR",
+    "tier": "longtail",
+    "watch_reason": "",
+    "tracking_status": "needs_manual_review",
+    "latest_release_title": "",
+    "latest_release_date": "",
+    "latest_release_kind": "",
+    "x_url": "https://x.com/CSR_offcl",
+    "instagram_url": "https://www.instagram.com/csr.offcl/",
+    "search_terms": [
+      "\"CSR\" kpop comeback"
+    ]
+  },
+  {
+    "group": "DAY6",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "The DECADE",
+    "latest_release_date": "2025-09-05",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/day6official",
+    "instagram_url": "https://www.instagram.com/day6kilogram/",
+    "search_terms": [
+      "\"DAY6\" kpop comeback"
+    ]
+  },
+  {
+    "group": "DKB",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Emotion",
+    "latest_release_date": "2025-10-23",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/DKB_BRAVE",
+    "instagram_url": "https://www.instagram.com/official.dkb/",
+    "search_terms": [
+      "\"DKB\" kpop comeback"
+    ]
+  },
+  {
+    "group": "Dreamcatcher",
+    "tier": "core",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "[My Christmas Sweet Love]",
+    "latest_release_date": "2024-12-20",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/hf_dreamcatcher",
+    "instagram_url": "https://www.instagram.com/hf_dreamcatcher/",
+    "search_terms": [
+      "\"Dreamcatcher\" kpop comeback"
+    ]
+  },
+  {
+    "group": "DRIPPIN",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "needs_manual_review",
+    "latest_release_title": "Weekend",
+    "latest_release_date": "2024-08-19",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/drippin",
+    "instagram_url": "https://www.instagram.com/wearedrippin/",
+    "search_terms": [
+      "\"DRIPPIN\" kpop comeback"
+    ]
+  },
+  {
+    "group": "DXMON",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Youth Never DIE",
+    "latest_release_date": "2024-10-21",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/DXMON_HM",
+    "instagram_url": "https://www.instagram.com/dxmon_hm/",
+    "search_terms": [
+      "\"DXMON\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ENHYPEN",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "THE SIN : VANISH",
+    "latest_release_date": "2026-01-16",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/ENHYPEN",
+    "instagram_url": "https://www.instagram.com/enhypen/",
+    "search_terms": [
+      "\"ENHYPEN\" kpop comeback"
+    ]
+  },
+  {
+    "group": "EPEX",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Youth Chapter 3 : ROMANTIC YOUTH",
+    "latest_release_date": "2025-07-28",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/the_EPEX",
+    "instagram_url": "https://www.instagram.com/epex.official/",
+    "search_terms": [
+      "\"EPEX\" kpop comeback"
+    ]
+  },
+  {
+    "group": "EVNNE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "LOVE ANECDOTE(S)",
+    "latest_release_date": "2025-08-04",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/EVNNE_official",
+    "instagram_url": "https://www.instagram.com/evnne_official/",
+    "search_terms": [
+      "\"EVNNE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "EXO",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "REVERXE",
+    "latest_release_date": "2026-01-19",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/weareoneEXO",
+    "instagram_url": "https://www.instagram.com/weareone.exo/",
+    "search_terms": [
+      "\"EXO\" kpop comeback"
+    ]
+  },
+  {
+    "group": "FIFTY FIFTY",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Too Much Part 1",
+    "latest_release_date": "2025-11-04",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/we_fiftyfifty",
+    "instagram_url": "https://www.instagram.com/we_fiftyfifty/",
+    "search_terms": [
+      "\"FIFTY FIFTY\" kpop comeback"
+    ]
+  },
+  {
+    "group": "fromis_9",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "White Memories",
+    "latest_release_date": "2025-12-02",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/realfromis_9",
+    "instagram_url": "https://www.instagram.com/officialfromis_9/",
+    "search_terms": [
+      "\"fromis_9\" kpop comeback"
+    ]
+  },
+  {
+    "group": "GHOST9",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Down for you",
+    "latest_release_date": "2024-12-23",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/GHOST9OFFICIAL",
+    "instagram_url": "https://www.instagram.com/official.ghost9/",
+    "search_terms": [
+      "\"GHOST9\" kpop comeback"
+    ]
+  },
+  {
+    "group": "H1-KEY",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "LOVECHAPTER",
+    "latest_release_date": "2026-03-05",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/H1KEY_official",
+    "instagram_url": "https://www.instagram.com/h1key_official/",
+    "search_terms": [
+      "\"H1-KEY\" kpop comeback"
+    ]
+  },
+  {
+    "group": "Hearts2Hearts",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "RUDE!",
+    "latest_release_date": "2026-02-20",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/Hearts2Hearts",
+    "instagram_url": "https://www.instagram.com/hearts2hearts/",
+    "search_terms": [
+      "\"Hearts2Hearts\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ifeye",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "sweet tang",
+    "latest_release_date": "2025-07-16",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/ifeye_official",
+    "instagram_url": "https://www.instagram.com/ifeye.official/",
+    "search_terms": [
+      "\"ifeye\" kpop comeback"
+    ]
+  },
+  {
+    "group": "INFINITE",
+    "tier": "core",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "LIKE INFINITE",
+    "latest_release_date": "2025-03-06",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/INFINITE_UM",
+    "instagram_url": "https://www.instagram.com/official_ifnt_/",
+    "search_terms": [
+      "\"INFINITE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ITZY",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "TUNNEL VISION",
+    "latest_release_date": "2025-11-10",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/ITZYofficial",
+    "instagram_url": "https://www.instagram.com/itzy.all.in.us/",
+    "search_terms": [
+      "\"ITZY\" kpop comeback"
+    ]
+  },
+  {
+    "group": "IVE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "REVIVE+",
+    "latest_release_date": "2026-02-23",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/IVE_twt",
+    "instagram_url": "https://www.instagram.com/ivestarship/",
+    "search_terms": [
+      "\"IVE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "izna",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Not Just Pretty",
+    "latest_release_date": "2025-09-30",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/izna_offcl",
+    "instagram_url": "https://www.instagram.com/izna_offcl/",
+    "search_terms": [
+      "\"izna\" kpop comeback"
+    ]
+  },
+  {
+    "group": "JUST B",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Light Sweeper",
+    "latest_release_date": "2022-07-15",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/JUSTB_Official",
+    "instagram_url": "https://www.instagram.com/justb_ig_official/",
+    "search_terms": [
+      "\"JUST B\" kpop comeback"
+    ]
+  },
+  {
+    "group": "KARD",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "DRIFT",
+    "latest_release_date": "2025-07-02",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/kard_official",
+    "instagram_url": "https://www.instagram.com/official_kard/",
+    "search_terms": [
+      "\"KARD\" kpop comeback"
+    ]
+  },
+  {
+    "group": "Kep1er",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "BUBBLE GUM",
+    "latest_release_date": "2025-08-19",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/official_kep1er",
+    "instagram_url": "https://www.instagram.com/official.kep1er/",
+    "search_terms": [
+      "\"Kep1er\" kpop comeback"
+    ]
+  },
+  {
+    "group": "KickFlip",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "From KickFlip, To WeFlip",
+    "latest_release_date": "2026-01-20",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/KickFlip_jype",
+    "instagram_url": "https://www.instagram.com/kickflip_jype/",
+    "search_terms": [
+      "\"KickFlip\" kpop comeback"
+    ]
+  },
+  {
+    "group": "KiiiKiii",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Delulu Pack",
+    "latest_release_date": "2026-01-25",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/We_KiiiKiii",
+    "instagram_url": "https://www.instagram.com/we_kiiikiii/",
+    "search_terms": [
+      "\"KiiiKiii\" kpop comeback"
+    ]
+  },
+  {
+    "group": "KISS OF LIFE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "TOKYO MISSION START",
+    "latest_release_date": "2025-11-05",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/KISSOFLIFE_S2",
+    "instagram_url": "https://www.instagram.com/kissoflife_s2/",
+    "search_terms": [
+      "\"KISS OF LIFE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "LE SSERAFIM",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Pearlies (My oyster is the world)",
+    "latest_release_date": "2025-10-24",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/le_sserafim",
+    "instagram_url": "https://www.instagram.com/le_sserafim/",
+    "search_terms": [
+      "\"LE SSERAFIM\" kpop comeback"
+    ]
+  },
+  {
+    "group": "LIGHTSUM",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+    "latest_release_date": "2026-01-15",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/cube_lightsum",
+    "instagram_url": "https://www.instagram.com/cube_lightsum/",
+    "search_terms": [
+      "\"LIGHTSUM\" kpop comeback"
+    ]
+  },
+  {
+    "group": "Loossemble",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "needs_manual_review",
+    "latest_release_title": "TTYL",
+    "latest_release_date": "2024-09-02",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/Loossemble_twt",
+    "instagram_url": "https://www.instagram.com/loossemble.official/",
+    "search_terms": [
+      "\"Loossemble\" kpop comeback"
+    ]
+  },
+  {
+    "group": "LUN8",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "LOST",
+    "latest_release_date": "2025-09-17",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/LUN8_official",
+    "instagram_url": "https://www.instagram.com/lun8_official/",
+    "search_terms": [
+      "\"LUN8\" kpop comeback"
+    ]
+  },
+  {
+    "group": "MAMAMOO",
+    "tier": "core",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "MIC ON",
+    "latest_release_date": "2022-10-11",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/rbw_mamamoo",
+    "instagram_url": "https://www.instagram.com/mamamoo_official/",
+    "search_terms": [
+      "\"MAMAMOO\" kpop comeback"
+    ]
+  },
+  {
+    "group": "MCND",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "아뜨뜨뜨",
+    "latest_release_date": "2024-08-08",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/mcndofficial_",
+    "instagram_url": "https://www.instagram.com/mcnd_official/",
+    "search_terms": [
+      "\"MCND\" kpop comeback"
+    ]
+  },
+  {
+    "group": "MEOVV",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "BURNING UP",
+    "latest_release_date": "2025-10-14",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/OFFICIAL_MEOVV",
+    "instagram_url": "https://www.instagram.com/meovv/",
+    "search_terms": [
+      "\"MEOVV\" kpop comeback"
+    ]
+  },
+  {
+    "group": "MONSTA X",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "growing pains",
+    "latest_release_date": "2026-02-06",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/officialmonstax",
+    "instagram_url": "https://www.instagram.com/official_monsta_x/",
+    "search_terms": [
+      "\"MONSTA X\" kpop comeback"
+    ]
+  },
+  {
+    "group": "NCT 127",
+    "tier": "core",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "WALK",
+    "latest_release_date": "2024-07-15",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/NCTsmtown_127",
+    "instagram_url": "https://www.instagram.com/nct127/",
+    "search_terms": [
+      "\"NCT 127\" kpop comeback"
+    ]
+  },
+  {
+    "group": "NCT DREAM",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Beat It Up",
+    "latest_release_date": "2025-11-17",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/nctsmtown_dream",
+    "instagram_url": "https://www.instagram.com/nct_dream/",
+    "search_terms": [
+      "\"NCT DREAM\" kpop comeback"
+    ]
+  },
+  {
+    "group": "NCT WISH",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Same Sky",
+    "latest_release_date": "2026-02-27",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/nctwishofficial",
+    "instagram_url": "https://www.instagram.com/nctwish_official/",
+    "search_terms": [
+      "\"NCT WISH\" kpop comeback"
+    ]
+  },
+  {
+    "group": "NewJeans",
+    "tier": "core",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Supernatural",
+    "latest_release_date": "2024-06-21",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/NewJeans_twt",
+    "instagram_url": "https://www.instagram.com/newjeans_official/",
+    "search_terms": [
+      "\"NewJeans\" kpop comeback"
+    ]
+  },
+  {
+    "group": "NEXZ",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Beat‐Boxer",
+    "latest_release_date": "2025-10-27",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/NEXZ_official",
+    "instagram_url": "https://www.instagram.com/real_nexz/",
+    "search_terms": [
+      "\"NEXZ\" kpop comeback"
+    ]
+  },
+  {
+    "group": "NMIXX",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "TIC TIC",
+    "latest_release_date": "2026-02-26",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/NMIXX_official",
+    "instagram_url": "https://www.instagram.com/nmixx_official/",
+    "search_terms": [
+      "\"NMIXX\" kpop comeback"
+    ]
+  },
+  {
+    "group": "NOMAD",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "NOMAD",
+    "latest_release_date": "2024-02-28",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/nomad_is_here",
+    "instagram_url": "https://www.instagram.com/nomadaish88/",
+    "search_terms": [
+      "\"NOMAD\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ONEUS",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "原",
+    "latest_release_date": "2026-01-20",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/official_oneus",
+    "instagram_url": "https://www.instagram.com/official_oneus/",
+    "search_terms": [
+      "\"ONEUS\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ONEWE",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "MAZE : AD ASTRA",
+    "latest_release_date": "2025-10-07",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/official_onewe",
+    "instagram_url": "https://www.instagram.com/official_onewe/",
+    "search_terms": [
+      "\"ONEWE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ONF",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Summer Light",
+    "latest_release_date": "2025-08-03",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/WM_ONOFF",
+    "instagram_url": "https://www.instagram.com/wm_onoff/",
+    "search_terms": [
+      "\"ONF\" kpop comeback"
+    ]
+  },
+  {
+    "group": "P1Harmony",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "EX",
+    "latest_release_date": "2025-09-26",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/p1h_official",
+    "instagram_url": "https://www.instagram.com/p1h_official/",
+    "search_terms": [
+      "\"P1Harmony\" kpop comeback"
+    ]
+  },
+  {
+    "group": "PLAVE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "PLBBUU",
+    "latest_release_date": "2025-11-10",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/plave_official",
+    "instagram_url": "https://www.instagram.com/plave_official/",
+    "search_terms": [
+      "\"PLAVE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "POW",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Wall Flowers",
+    "latest_release_date": "2025-09-29",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/POW_grid",
+    "instagram_url": "https://www.instagram.com/pow_grid/",
+    "search_terms": [
+      "\"POW\" kpop comeback"
+    ]
+  },
+  {
+    "group": "Purple Kiss",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "A Violet to Remember",
+    "latest_release_date": "2025-11-16",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/RBW_PURPLEKISS",
+    "instagram_url": "https://www.instagram.com/purplekiss_official/",
+    "search_terms": [
+      "\"Purple Kiss\" kpop comeback"
+    ]
+  },
+  {
+    "group": "QWER",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "흰수염고래",
+    "latest_release_date": "2025-10-06",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/official_QWER",
+    "instagram_url": "https://www.instagram.com/qwerband_official/",
+    "search_terms": [
+      "\"QWER\" kpop band comeback"
+    ]
+  },
+  {
+    "group": "Red Velvet",
+    "tier": "core",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Cosmic",
+    "latest_release_date": "2024-06-24",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/RVsmtown",
+    "instagram_url": "https://www.instagram.com/redvelvet.smtown/",
+    "search_terms": [
+      "\"Red Velvet\" kpop comeback"
+    ]
+  },
+  {
+    "group": "RESCENE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "[RESCENE X ???]",
+    "latest_release_date": "2026-02-27",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/RESCENEofficial",
+    "instagram_url": "https://www.instagram.com/rescene.official/",
+    "search_terms": [
+      "\"RESCENE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "RIIZE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "All of You",
+    "latest_release_date": "2026-02-09",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/riize_official",
+    "instagram_url": "https://www.instagram.com/riize_official/",
+    "search_terms": [
+      "\"RIIZE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "SAY MY NAME",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "&Our Vibe",
+    "latest_release_date": "2025-12-29",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/sa2m2nam3",
+    "instagram_url": "https://www.instagram.com/sa2m2nam3/",
+    "search_terms": [
+      "\"SAY MY NAME\" kpop comeback"
+    ]
+  },
+  {
+    "group": "SEVENTEEN",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Where love passed",
+    "latest_release_date": "2025-07-14",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/pledis_17",
+    "instagram_url": "https://www.instagram.com/saythename_17/",
+    "search_terms": [
+      "\"SEVENTEEN\" kpop comeback"
+    ]
+  },
+  {
+    "group": "SHINee",
+    "tier": "core",
+    "watch_reason": "",
+    "tracking_status": "filtered_out",
+    "latest_release_title": "Poet | Artist",
+    "latest_release_date": "2025-05-25",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/shinee",
+    "instagram_url": "https://www.instagram.com/shinee/",
+    "search_terms": [
+      "\"SHINee\" kpop comeback"
+    ]
+  },
+  {
+    "group": "STAYC",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "STAY ALIVE",
+    "latest_release_date": "2026-02-11",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/stayc_official",
+    "instagram_url": "https://www.instagram.com/stayc_highup/",
+    "search_terms": [
+      "\"STAYC\" kpop comeback"
+    ]
+  },
+  {
+    "group": "Stray Kids",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "DO IT",
+    "latest_release_date": "2025-11-21",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/Stray_Kids",
+    "instagram_url": "https://www.instagram.com/realstraykids/",
+    "search_terms": [
+      "\"Stray Kids\" kpop comeback"
+    ]
+  },
+  {
+    "group": "TEMPEST",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "In the Dark (暮色独白)",
+    "latest_release_date": "2025-11-03",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/TPST__official",
+    "instagram_url": "https://www.instagram.com/tpst__official/",
+    "search_terms": [
+      "\"TEMPEST\" kpop comeback"
+    ]
+  },
+  {
+    "group": "THE BOYZ",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Still Love You",
+    "latest_release_date": "2025-12-06",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/IST_THEBOYZ",
+    "instagram_url": "https://www.instagram.com/official_theboyz/",
+    "search_terms": [
+      "\"THE BOYZ\" kpop comeback"
+    ]
+  },
+  {
+    "group": "The KingDom",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "the flower of the moon",
+    "latest_release_date": "2025-09-23",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/TheKingDom_GF",
+    "instagram_url": "https://www.instagram.com/kingdom_gfent/",
+    "search_terms": [
+      "\"The KingDom\" kpop comeback",
+      "\"KINGDOM\" kpop comeback"
+    ]
+  },
+  {
+    "group": "TIOT",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "MY PRIDE",
+    "latest_release_date": "2025-09-23",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/TIOT_NOW",
+    "instagram_url": "https://www.instagram.com/tiot_now/",
+    "search_terms": [
+      "\"TIOT\" kpop comeback"
+    ]
+  },
+  {
+    "group": "TNX",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "CALL ME BACK",
+    "latest_release_date": "2026-01-22",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/TNX_Official",
+    "instagram_url": "https://www.instagram.com/official.tnx/",
+    "search_terms": [
+      "\"TNX\" kpop comeback"
+    ]
+  },
+  {
+    "group": "TOMORROW X TOGETHER",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Starkissed",
+    "latest_release_date": "2025-10-19",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/TXT_members",
+    "instagram_url": "https://www.instagram.com/txt_bighit/",
+    "search_terms": [
+      "\"TOMORROW X TOGETHER\" comeback",
+      "\"TXT\" comeback kpop"
+    ]
+  },
+  {
+    "group": "TREASURE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "LOVE PULSE",
+    "latest_release_date": "2025-09-01",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/ygtreasuremaker",
+    "instagram_url": "https://www.instagram.com/yg_treasure_official/",
+    "search_terms": [
+      "\"TREASURE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "TRENDZ",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Kart Racer",
+    "latest_release_date": "2026-02-13",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/trendz_offcl",
+    "instagram_url": "https://www.instagram.com/trendz_offcl/",
+    "search_terms": [
+      "\"TRENDZ\" kpop comeback"
+    ]
+  },
+  {
+    "group": "tripleS",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "トキメティック",
+    "latest_release_date": "2026-02-05",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/triplescosmos",
+    "instagram_url": "https://www.instagram.com/triplescosmos/",
+    "search_terms": [
+      "\"tripleS\" kpop comeback"
+    ]
+  },
+  {
+    "group": "TWICE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "TEN: The Story Goes On",
+    "latest_release_date": "2025-10-10",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/JYPETWICE",
+    "instagram_url": "https://www.instagram.com/twicetagram/",
+    "search_terms": [
+      "\"TWICE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "TWS",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "play hard",
+    "latest_release_date": "2025-10-13",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/tws_pledis",
+    "instagram_url": "https://www.instagram.com/tws_pledis/",
+    "search_terms": [
+      "\"TWS\" kpop comeback"
+    ]
+  },
+  {
+    "group": "UNIS",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "幸せになんかならないでね",
+    "latest_release_date": "2025-12-17",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/UNIS_offcl",
+    "instagram_url": "https://www.instagram.com/unis_offcl/",
+    "search_terms": [
+      "\"UNIS\" kpop comeback"
+    ]
+  },
+  {
+    "group": "VERIVERY",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Lost and Found",
+    "latest_release_date": "2025-12-01",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/by_verivery",
+    "instagram_url": "https://www.instagram.com/the_verivery/",
+    "search_terms": [
+      "\"VERIVERY\" kpop comeback"
+    ]
+  },
+  {
+    "group": "VIVIZ",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "A Montage of ( )",
+    "latest_release_date": "2025-07-08",
+    "latest_release_kind": "album",
+    "x_url": "https://x.com/VIVIZ_official",
+    "instagram_url": "https://www.instagram.com/viviz_official/",
+    "search_terms": [
+      "\"VIVIZ\" kpop comeback"
+    ]
+  },
+  {
+    "group": "WayV",
+    "tier": "core",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Back To You",
+    "latest_release_date": "2021-06-16",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/WayV_official",
+    "instagram_url": "https://www.instagram.com/wayvofficial/",
+    "search_terms": [
+      "\"WayV\" kpop comeback"
+    ]
+  },
+  {
+    "group": "Weeekly",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Bliss",
+    "latest_release_date": "2024-07-09",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/_Weeekly",
+    "instagram_url": "https://www.instagram.com/_weeekly/",
+    "search_terms": [
+      "\"Weeekly\" comeback"
+    ]
+  },
+  {
+    "group": "WEi",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Wonderland",
+    "latest_release_date": "2025-10-29",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/WEi_Official",
+    "instagram_url": "https://www.instagram.com/wei_official/",
+    "search_terms": [
+      "\"WEi\" kpop comeback"
+    ]
+  },
+  {
+    "group": "WHIB",
+    "tier": "longtail",
+    "watch_reason": "",
+    "tracking_status": "filtered_out",
+    "latest_release_title": "BANG OUT",
+    "latest_release_date": "2025-04-09",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/whib_official",
+    "instagram_url": "https://www.instagram.com/whib_official/",
+    "search_terms": [
+      "\"WHIB\" kpop comeback"
+    ]
+  },
+  {
+    "group": "WJSN",
+    "tier": "manual",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "Bloom hour",
+    "latest_release_date": "2026-02-25",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/WJSN_Cosmic",
+    "instagram_url": "https://www.instagram.com/wjsn_cosmic/",
+    "search_terms": [
+      "WJSN kpop comeback",
+      "\"Cosmic Girls\" comeback",
+      "우주소녀 컴백"
+    ]
+  },
+  {
+    "group": "woo!ah!",
+    "tier": "longtail",
+    "watch_reason": "long_gap",
+    "tracking_status": "watch_only",
+    "latest_release_title": "Shining on you",
+    "latest_release_date": "2024-07-16",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/wooah_nv",
+    "instagram_url": "https://www.instagram.com/wooah_nv/",
+    "search_terms": [
+      "\"woo!ah!\" comeback"
+    ]
+  },
+  {
+    "group": "Xdinary Heroes",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "LXVE to DEATH",
+    "latest_release_date": "2025-10-24",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/XH_official",
+    "instagram_url": "https://www.instagram.com/xdinaryheroes_official/",
+    "search_terms": [
+      "\"Xdinary Heroes\" kpop comeback"
+    ]
+  },
+  {
+    "group": "xikers",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "HOUSE OF TRICKY : WRECKING THE HOUSE",
+    "latest_release_date": "2025-10-31",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/xikers_official",
+    "instagram_url": "https://www.instagram.com/xikers_official/",
+    "search_terms": [
+      "\"xikers\" comeback"
+    ]
+  },
+  {
+    "group": "XLOV",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "UXLXVE",
+    "latest_release_date": "2025-11-05",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/XLOV_official",
+    "instagram_url": "https://www.instagram.com/xlov_official/",
+    "search_terms": [
+      "\"XLOV\" kpop comeback",
+      "\"엑스러브\" 컴백",
+      "\"xluv\" comeback kpop"
+    ]
+  },
+  {
+    "group": "YOUNG POSSE",
+    "tier": "longtail",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "VISA / Pilot3",
+    "latest_release_date": "2026-01-27",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/youngposseup",
+    "instagram_url": "https://www.instagram.com/youngposseup/",
+    "search_terms": [
+      "\"YOUNG POSSE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "YOUNITE",
+    "tier": "longtail",
+    "watch_reason": "",
+    "tracking_status": "filtered_out",
+    "latest_release_title": "YOUNI-T",
+    "latest_release_date": "2025-04-23",
+    "latest_release_kind": "single",
+    "x_url": "https://x.com/younite_offcl",
+    "instagram_url": "https://www.instagram.com/younite_bnm/",
+    "search_terms": [
+      "\"YOUNITE\" kpop comeback"
+    ]
+  },
+  {
+    "group": "ZEROBASEONE",
+    "tier": "core",
+    "watch_reason": "recent_release",
+    "tracking_status": "recent_release",
+    "latest_release_title": "RE-FLOW",
+    "latest_release_date": "2026-02-02",
+    "latest_release_kind": "ep",
+    "x_url": "https://x.com/ZB1_official",
+    "instagram_url": "https://www.instagram.com/zb1official/",
+    "search_terms": [
+      "\"ZEROBASEONE\" kpop comeback"
+    ]
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-03-12T03:31:43.668Z",
+  "classification": "non-runtime export",
+  "source_workflow": "weekly-kpop-scan.yml",
+  "cadence_profile": "daily-upcoming",
+  "export_dir": "backend/exports/non_runtime_web_snapshots",
+  "file_count": 9,
+  "files": [
+    {
+      "file_name": "artistProfiles.json",
+      "source_path": "web/src/data/artistProfiles.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/artistProfiles.json"
+    },
+    {
+      "file_name": "releaseArtwork.json",
+      "source_path": "web/src/data/releaseArtwork.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/releaseArtwork.json"
+    },
+    {
+      "file_name": "releaseChangeLog.json",
+      "source_path": "web/src/data/releaseChangeLog.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/releaseChangeLog.json"
+    },
+    {
+      "file_name": "releaseDetails.json",
+      "source_path": "web/src/data/releaseDetails.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/releaseDetails.json"
+    },
+    {
+      "file_name": "releaseHistory.json",
+      "source_path": "web/src/data/releaseHistory.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/releaseHistory.json"
+    },
+    {
+      "file_name": "releases.json",
+      "source_path": "web/src/data/releases.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/releases.json"
+    },
+    {
+      "file_name": "upcomingCandidates.json",
+      "source_path": "web/src/data/upcomingCandidates.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/upcomingCandidates.json"
+    },
+    {
+      "file_name": "watchlist.json",
+      "source_path": "web/src/data/watchlist.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/watchlist.json"
+    },
+    {
+      "file_name": "youtubeChannelAllowlists.json",
+      "source_path": "web/src/data/youtubeChannelAllowlists.json",
+      "export_path": "backend/exports/non_runtime_web_snapshots/youtubeChannelAllowlists.json"
+    }
+  ]
+}

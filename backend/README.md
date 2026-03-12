@@ -647,6 +647,11 @@ scheduled workflow는 두 cadence로 나뉜다.
 - slow path: `.github/workflows/catalog-enrichment-refresh.yml`
   - weekly release history/detail/title/MV enrichment, historical coverage, readiness artifact
 
+두 workflow 모두 frontend build 검증 직후 `npm run export:web-snapshots`를 실행해서
+generated `web/src/data/*.json` snapshot을 [backend/exports/non_runtime_web_snapshots](/Users/gimtaehun/Desktop/idol-song-app/backend/exports/non_runtime_web_snapshots)로 복사한다.
+이 export는 `classification = non-runtime export` manifest를 남기고, workflow commit 전에 `web/src/data`는 `git restore`로 되돌린다.
+즉 scheduled workflow의 commit 대상은 DB/projection/report/export artifact이지 `web/src/data` runtime snapshot 자체가 아니다.
+
 두 workflow 모두 `DATABASE_URL`이 설정돼 있으면 dual-write 뒤에 아래 verification chain을 같은 run 안에서 이어서 실행한다.
 
 - `npm run projection:refresh`

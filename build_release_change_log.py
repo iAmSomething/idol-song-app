@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import subprocess
@@ -66,6 +67,20 @@ def get_history_refs(path: str) -> list[str]:
 
 def get_commit_date(ref: str) -> str:
     return run_git("show", "-s", "--format=%cI", ref).strip()
+
+
+def parse_repo_relative_path(value: str) -> str:
+    candidate = Path(value)
+    if candidate.is_absolute():
+        candidate = candidate.relative_to(ROOT)
+    return candidate.as_posix()
+
+
+def parse_output_path(value: str) -> Path:
+    candidate = Path(value)
+    if not candidate.is_absolute():
+        candidate = ROOT / candidate
+    return candidate
 
 
 def is_exact_date(value: str) -> bool:
@@ -415,13 +430,19 @@ def occurred_sort_value(value: str) -> tuple[int, str]:
 
 
 def main() -> None:
-    refs = get_history_refs(UPCOMING_PATH)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--upcoming-path", type=parse_repo_relative_path, default=UPCOMING_PATH)
+    parser.add_argument("--releases-path", type=parse_repo_relative_path, default=RELEASES_PATH)
+    parser.add_argument("--output-path", type=parse_output_path, default=OUTPUT_PATH)
+    args = parser.parse_args()
+
+    refs = get_history_refs(args.upcoming_path)
     if not refs:
         raise SystemExit("Need at least one snapshot revision to build release change log.")
 
     snapshots: list[dict[str, Any]] = []
     for ref in refs:
-        states = select_group_states(load_json_at_ref(ref, UPCOMING_PATH))
+        states = select_group_states(load_json_at_ref(ref, args.upcoming_path))
         if not states:
             continue
         snapshots.append(
@@ -429,15 +450,15 @@ def main() -> None:
                 "ref": ref,
                 "commit_date": get_commit_date(ref),
                 "states": states,
-                "releases": latest_release_states(load_json_at_ref(ref, RELEASES_PATH)),
+                "releases": latest_release_states(load_json_at_ref(ref, args.releases_path)),
             }
         )
 
     head_ref = refs[-1]
-    current_upcoming = load_current_json(UPCOMING_PATH)
-    current_releases = load_current_json(RELEASES_PATH)
-    head_upcoming = load_json_at_ref(head_ref, UPCOMING_PATH)
-    head_releases = load_json_at_ref(head_ref, RELEASES_PATH)
+    current_upcoming = load_current_json(args.upcoming_path)
+    current_releases = load_current_json(args.releases_path)
+    head_upcoming = load_json_at_ref(head_ref, args.upcoming_path)
+    head_releases = load_json_at_ref(head_ref, args.releases_path)
 
     if current_upcoming != head_upcoming or current_releases != head_releases:
         snapshots.append(
@@ -473,8 +494,12 @@ def main() -> None:
         reverse=True,
     )
 
-    OUTPUT_PATH.write_text(json.dumps(ordered, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {len(ordered)} change events to {OUTPUT_PATH.relative_to(ROOT)}")
+    args.output_path.write_text(json.dumps(ordered, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    try:
+        display_output_path = args.output_path.relative_to(ROOT)
+    except ValueError:
+        display_output_path = args.output_path
+    print(f"Wrote {len(ordered)} change events to {display_output_path}")
 
 
 if __name__ == "__main__":

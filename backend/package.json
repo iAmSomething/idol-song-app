@@ -25,6 +25,7 @@
     "runtime:measure": "node ./scripts/measure-read-api-runtime.mjs",
     "worker:cadence": "node ./scripts/build-worker-cadence-report.mjs",
     "gap:workbenches": "node ./scripts/build-canonical-gap-workbenches.mjs",
+    "export:web-snapshots": "node ./scripts/build-non-runtime-web-snapshot-export.mjs",
     "artifact:retention": "node ./scripts/build-runtime-artifact-retention-report.mjs",
     "duplicate:inventory": "node ./scripts/build-non-runtime-duplicate-inventory-report.mjs",
     "curation:export": "node ./scripts/build-manual-curation-bundles.mjs",
