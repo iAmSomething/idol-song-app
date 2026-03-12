@@ -1517,6 +1517,25 @@ test('GET /v1/search returns envelope with entity, release, and upcoming matches
   assert.equal(body.data.upcoming.length, 0);
 });
 
+test('GET /v1/search treats exact display-name queries as successful search hits instead of missing rows', async (t) => {
+  const app = createTestApp(t);
+  const response = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: 'YENA',
+    },
+  });
+
+  assert.equal(response.statusCode, 200);
+  const body = parseJson(response);
+  assertReadMeta(body.meta, '/v1/search');
+  assert.equal(body.data.entities[0].entity_slug, 'yena');
+  assert.equal(body.data.entities[0].match_reason, 'display_name_exact');
+  assert.equal(body.data.releases[0].release_id, YENA_RELEASE_ID);
+  assert.equal(body.data.upcoming.length, 0);
+});
+
 test('GET /v1/search suppresses same-day exact upcoming when a verified release exists on the same date', async (t) => {
   const app = createTestApp(t);
   const response = await app.inject({
@@ -1575,6 +1594,26 @@ test('GET /v1/search includes direct-render fields for upcoming matches', async 
   assert.equal(body.data.upcoming[0].entity_slug, 'kickflip');
   assert.equal(body.data.upcoming[0].entity_path, '/artists/kickflip');
   assert.equal(body.data.upcoming[0].source_domain, 'weverse.io');
+});
+
+test('GET /v1/search returns an empty envelope for unknown queries instead of 404 semantics', async (t) => {
+  const app = createTestApp(t);
+  const response = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: 'totally-unknown-query',
+    },
+  });
+
+  assert.equal(response.statusCode, 200);
+  const body = parseJson(response);
+  assertReadMeta(body.meta, '/v1/search');
+  assert.deepEqual(body.data, {
+    entities: [],
+    releases: [],
+    upcoming: [],
+  });
 });
 
 test('public read endpoints return deterministic 429 envelopes when rate limited', async (t) => {

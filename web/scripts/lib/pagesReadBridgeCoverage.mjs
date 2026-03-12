@@ -148,6 +148,21 @@ export async function auditPagesReadBridge({ webRoot }) {
       entitySlug,
       headline: readString(entry?.headline) ?? null,
     })
+    const entityPayload = entityPayloadBySlug.get(entitySlug)
+    const latestReleaseDate = readString(entityPayload?.data?.latest_release?.release_date)
+    const scheduledDate = readString(entry?.scheduled_date)
+    if (latestReleaseDate && scheduledDate && latestReleaseDate === scheduledDate) {
+      pushError(
+        errors,
+        'search_upcoming_stale_same_day',
+        'Bridge search upcoming rows must not keep same-day exact upcoming rows when a verified release exists for the same entity/date.',
+        {
+          entitySlug,
+          scheduledDate,
+          latestReleaseDate,
+        },
+      )
+    }
   }
 
   for (const { monthKey, payload } of calendarMonths) {
