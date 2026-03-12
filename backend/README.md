@@ -585,6 +585,13 @@ python3 ../build_release_details_musicbrainz.py --cohorts latest,recent
 python3 ../build_mv_manual_review_queue.py
 ```
 
+긴 pass를 안전하게 확인할 때는 row limit와 stderr progress를 같이 건다.
+
+```bash
+python3 ../build_release_details_musicbrainz.py --cohorts latest,recent --max-rows 25 --progress-every 5
+python3 ../backfill_release_detail_mvs.py --cohorts latest,recent --max-rows 25 --progress-every 5
+```
+
 ## Release Pipeline Dual-Write
 
 기존 JSON export를 유지한 채 release hydration / service-link / MV review 흐름만 canonical DB에 다시 쓰려면 아래 명령을 사용한다.

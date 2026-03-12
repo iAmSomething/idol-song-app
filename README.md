@@ -212,6 +212,13 @@ python build_release_details_musicbrainz.py --cohorts latest,recent
 python build_mv_manual_review_queue.py
 ```
 
+오래 걸리는 pass를 작게 확인할 때는 progress와 row limit를 같이 건다. progress는 `stderr`로만 찍히기 때문에 기존 JSON stdout consumer는 깨지지 않는다.
+
+```bash
+python build_release_details_musicbrainz.py --cohorts latest,recent --max-rows 25 --progress-every 5
+python backfill_release_detail_mvs.py --cohorts latest,recent --max-rows 25 --progress-every 5
+```
+
 Neon canonical DB까지 같이 최신화하려면 아래를 이어서 실행한다.
 
 ```bash
