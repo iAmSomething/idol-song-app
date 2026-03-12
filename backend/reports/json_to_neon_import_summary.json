@@ -1,19 +1,20 @@
 {
-  "generated_at": "2026-03-08T23:52:50.767543+00:00",
+  "generated_at": "2026-03-12T02:33:56.132126+00:00",
   "source_counts": {
     "artist_profiles": 117,
+    "canonical_entity_metadata": 117,
     "team_badge_assets": 77,
-    "youtube_allowlists": 108,
-    "release_details": 1770,
+    "youtube_allowlists": 117,
+    "release_details": 1771,
     "release_history_groups": 116,
-    "release_history_rows": 1770,
-    "release_artwork": 117,
+    "release_history_rows": 1771,
+    "release_artwork": 1771,
     "upcoming_candidates": 71,
-    "watchlist": 117,
-    "release_detail_overrides": 67,
+    "watchlist": 108,
+    "release_detail_overrides": 150,
     "manual_review_queue": 67,
-    "mv_manual_review_queue": 50,
-    "releases_rollup": 81
+    "mv_manual_review_queue": 1616,
+    "releases_rollup": 89
   },
   "source_duplicates": {
     "entity_aliases": 1,
@@ -71,27 +72,33 @@
       "updated": 168
     },
     "entity_official_links": {
-      "updated": 429
+      "inserted": 93,
+      "updated": 368
+    },
+    "entity_metadata_fields": {
+      "updated": 702
     },
     "youtube_channels": {
-      "updated": 86
+      "updated": 96
     },
     "entity_youtube_channels": {
-      "updated": 111
+      "updated": 121
     },
     "releases": {
-      "updated": 1771
+      "updated": 1771,
+      "inserted": 1
     },
     "release_artwork": {
-      "updated": 117
+      "updated": 1770,
+      "inserted": 1
     },
     "tracks": {
-      "updated": 492,
+      "updated": 7613,
       "inserted": 5
     },
     "release_service_links": {
-      "inserted": 4962,
-      "updated": 350
+      "updated": 5312,
+      "inserted": 3
     },
     "track_service_links": {},
     "upcoming_signals": {
@@ -101,14 +108,13 @@
       "updated": 71
     },
     "entity_tracking_state": {
-      "updated": 117
+      "updated": 108
     },
     "review_tasks": {
-      "updated": 101,
-      "inserted": 16
+      "updated": 1683
     },
     "release_link_overrides": {
-      "updated": 75
+      "updated": 163
     }
   },
   "dry_run": {
@@ -118,19 +124,20 @@
   "db_row_counts": {
     "entities": 117,
     "entity_aliases": 168,
-    "entity_official_links": 429,
-    "youtube_channels": 86,
-    "entity_youtube_channels": 111,
-    "releases": 1771,
-    "release_artwork": 117,
-    "tracks": 502,
-    "release_service_links": 5313,
+    "entity_official_links": 523,
+    "entity_metadata_fields": 702,
+    "youtube_channels": 96,
+    "entity_youtube_channels": 121,
+    "releases": 1772,
+    "release_artwork": 1772,
+    "tracks": 7623,
+    "release_service_links": 5316,
     "track_service_links": 0,
     "upcoming_signals": 130,
     "upcoming_signal_sources": 71,
     "entity_tracking_state": 117,
-    "review_tasks": 117,
-    "release_link_overrides": 75
+    "review_tasks": 1683,
+    "release_link_overrides": 163
   },
   "critical_checks": {
     "entity_type_counts": {
@@ -145,12 +152,13 @@
       "unknown": 82
     },
     "youtube_mv_status_counts": {
-      "manual_override": 26,
+      "manual_override": 133,
       "needs_review": 2,
-      "relation_match": 1,
-      "unresolved": 1742
+      "no_mv": 1,
+      "relation_match": 21,
+      "unresolved": 1615
     },
-    "title_track_rows": 80,
+    "title_track_rows": 1223,
     "hangul_alias_rows": 153
   },
   "mode": "apply",
@@ -158,19 +166,20 @@
   "table_source_counts": {
     "entities": 117,
     "entity_aliases": 168,
-    "entity_official_links": 429,
-    "youtube_channels": 86,
-    "entity_youtube_channels": 111,
-    "releases": 1771,
-    "release_artwork": 117,
-    "tracks": 497,
-    "release_service_links": 5312,
+    "entity_official_links": 461,
+    "entity_metadata_fields": 702,
+    "youtube_channels": 96,
+    "entity_youtube_channels": 121,
+    "releases": 1772,
+    "release_artwork": 1771,
+    "tracks": 7618,
+    "release_service_links": 5315,
     "track_service_links": 0,
     "upcoming_signals": 59,
     "upcoming_signal_sources": 71,
-    "entity_tracking_state": 117,
-    "review_tasks": 117,
-    "release_link_overrides": 75
+    "entity_tracking_state": 108,
+    "review_tasks": 1683,
+    "release_link_overrides": 163
   },
   "table_counts": {
     "entities": {
@@ -190,60 +199,68 @@
       "update_candidates": 168
     },
     "entity_official_links": {
-      "payload_rows": 429,
-      "db_rows_before": 429,
-      "db_rows_after": 429,
-      "projected_db_rows_after": 429,
+      "payload_rows": 461,
+      "db_rows_before": 430,
+      "db_rows_after": 523,
+      "projected_db_rows_after": 523,
+      "insert_candidates": 93,
+      "update_candidates": 368
+    },
+    "entity_metadata_fields": {
+      "payload_rows": 702,
+      "db_rows_before": 702,
+      "db_rows_after": 702,
+      "projected_db_rows_after": 702,
       "insert_candidates": 0,
-      "update_candidates": 429
+      "update_candidates": 702
     },
     "youtube_channels": {
-      "payload_rows": 86,
-      "db_rows_before": 86,
-      "db_rows_after": 86,
-      "projected_db_rows_after": 86,
+      "payload_rows": 96,
+      "db_rows_before": 96,
+      "db_rows_after": 96,
+      "projected_db_rows_after": 96,
       "insert_candidates": 0,
-      "update_candidates": 86
+      "update_candidates": 96
     },
     "entity_youtube_channels": {
-      "payload_rows": 111,
-      "db_rows_before": 111,
-      "db_rows_after": 111,
-      "projected_db_rows_after": 111,
+      "payload_rows": 121,
+      "db_rows_before": 121,
+      "db_rows_after": 121,
+      "projected_db_rows_after": 121,
       "insert_candidates": 0,
-      "update_candidates": 111
+      "update_candidates": 121
     },
     "releases": {
-      "payload_rows": 1771,
+      "payload_rows": 1772,
       "db_rows_before": 1771,
-      "db_rows_after": 1771,
-      "projected_db_rows_after": 1771,
-      "insert_candidates": 0,
+      "db_rows_after": 1772,
+      "projected_db_rows_after": 1772,
+      "insert_candidates": 1,
       "update_candidates": 1771
     },
     "release_artwork": {
-      "payload_rows": 117,
-      "db_rows_before": 117,
-      "db_rows_after": 117,
-      "projected_db_rows_after": 117,
-      "insert_candidates": 0,
-      "update_candidates": 117
+      "payload_rows": 1771,
+      "db_rows_before": 1771,
+      "db_rows_after": 1772,
+      "projected_db_rows_after": 1772,
+      "insert_candidates": 1,
+      "update_candidates": 1770
     },
     "tracks": {
-      "payload_rows": 497,
-      "db_rows_before": 497,
-      "db_rows_after": 502,
-      "projected_db_rows_after": 502,
+      "payload_rows": 7618,
+      "db_rows_before": 7618,
+      "db_rows_after": 7623,
+      "projected_db_rows_after": 7623,
       "insert_candidates": 5,
-      "update_candidates": 492
+      "update_candidates": 7613
     },
     "release_service_links": {
-      "payload_rows": 5312,
-      "db_rows_before": 351,
-      "db_rows_after": 5313,
-      "projected_db_rows_after": 5313,
-      "insert_candidates": 4962,
-      "update_candidates": 350
+      "payload_rows": 5315,
+      "db_rows_before": 5313,
+      "db_rows_after": 5316,
+      "projected_db_rows_after": 5316,
+      "insert_candidates": 3,
+      "update_candidates": 5312
     },
     "track_service_links": {
       "payload_rows": 0,
@@ -270,28 +287,28 @@
       "update_candidates": 71
     },
     "entity_tracking_state": {
-      "payload_rows": 117,
+      "payload_rows": 108,
       "db_rows_before": 117,
       "db_rows_after": 117,
       "projected_db_rows_after": 117,
       "insert_candidates": 0,
-      "update_candidates": 117
+      "update_candidates": 108
     },
     "review_tasks": {
-      "payload_rows": 117,
-      "db_rows_before": 101,
-      "db_rows_after": 117,
-      "projected_db_rows_after": 117,
-      "insert_candidates": 16,
-      "update_candidates": 101
+      "payload_rows": 1683,
+      "db_rows_before": 1683,
+      "db_rows_after": 1683,
+      "projected_db_rows_after": 1683,
+      "insert_candidates": 0,
+      "update_candidates": 1683
     },
     "release_link_overrides": {
-      "payload_rows": 75,
-      "db_rows_before": 75,
-      "db_rows_after": 75,
-      "projected_db_rows_after": 75,
+      "payload_rows": 163,
+      "db_rows_before": 163,
+      "db_rows_after": 163,
+      "projected_db_rows_after": 163,
       "insert_candidates": 0,
-      "update_candidates": 75
+      "update_candidates": 163
     }
   },
   "anomalies": {
@@ -309,6 +326,7 @@
         "entities": 0,
         "entity_aliases": 1,
         "entity_official_links": 0,
+        "entity_metadata_fields": 0,
         "youtube_channels": 25,
         "entity_youtube_channels": 0,
         "releases": 0,
@@ -326,6 +344,7 @@
         "entities": 0,
         "entity_aliases": 0,
         "entity_official_links": 0,
+        "entity_metadata_fields": 0,
         "youtube_channels": 0,
         "entity_youtube_channels": 0,
         "releases": 0,
@@ -343,6 +362,7 @@
         "entities": 0,
         "entity_aliases": 0,
         "entity_official_links": 0,
+        "entity_metadata_fields": 0,
         "youtube_channels": 0,
         "entity_youtube_channels": 0,
         "releases": 0,

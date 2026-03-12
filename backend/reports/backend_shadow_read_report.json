@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-11T16:50:07.341Z",
-  "clean": true,
+  "generated_at": "2026-03-12T02:34:44.443Z",
+  "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-11T16:49:34.579Z",
-    "bundle_id": "post-sync-verification-d9c2b4bf0064",
+    "generated_at": "2026-03-12T02:34:27.398Z",
+    "bundle_id": "post-sync-verification-3fc09490ed96",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -15,7 +15,7 @@
     "source_reports": {
       "release_pipeline_sync": {
         "path": "reports/release_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-11T16:41:51.273Z",
+        "generated_at": "2026-03-11T18:13:37.531Z",
         "scope": "release_pipeline"
       },
       "upcoming_pipeline_sync": {
@@ -25,7 +25,7 @@
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-11T16:14:21.898Z"
+        "generated_at": "2026-03-12T02:34:21.051Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
@@ -33,38 +33,38 @@
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
-        "generated_at": "2026-03-11T16:49:30.887Z"
+        "generated_at": "2026-03-12T02:34:23.746Z"
       },
       "canonical_null_recheck_queue": {
         "path": "reports/canonical_null_recheck_queue.json",
-        "generated_at": "2026-03-11T16:49:32.745Z",
-        "queue_count": 2516
+        "generated_at": "2026-03-12T02:34:25.223Z",
+        "queue_count": 2388
       },
       "null_coverage_trend": {
         "path": "reports/null_coverage_trend_report.json",
-        "generated_at": "2026-03-11T16:49:33.810Z",
+        "generated_at": "2026-03-12T02:34:25.709Z",
         "baseline_available": true
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-11T16:14:23.247Z",
+        "generated_at": "2026-03-12T02:34:22.427Z",
         "primary_path_key": "daily_upcoming"
       },
       "service_link_gap_queues": {
         "path": "reports/service_link_gap_queues.json",
-        "generated_at": "2026-03-11T09:16:24.917Z",
-        "total": 5155
+        "generated_at": "2026-03-12T02:34:26.993Z",
+        "total": 3979
       },
       "title_track_gap_queue": {
         "path": "reports/title_track_gap_queue.json",
-        "generated_at": "2026-03-11T09:16:24.922Z",
-        "total": 1694
+        "generated_at": "2026-03-12T02:34:26.996Z",
+        "total": 576
       },
       "entity_identity_workbench": {
         "path": "reports/entity_identity_workbench.json",
-        "generated_at": "2026-03-11T09:16:24.924Z",
+        "generated_at": "2026-03-12T02:34:26.997Z",
         "entities": 117,
-        "field_rows": 324
+        "field_rows": 194
       },
       "trusted_upcoming_notification_summary": {
         "path": "reports/trusted_upcoming_notification_event_summary.json",
@@ -79,7 +79,7 @@
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-d9c2b4bf0064",
+      "bundle id: post-sync-verification-3fc09490ed96",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -87,9 +87,9 @@
   },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": "post-sync-verification-d9c2b4bf0064",
+    "expected_bundle_id": "post-sync-verification-3fc09490ed96",
     "observed": {
-      "parity_bundle": "post-sync-verification-d9c2b4bf0064",
+      "parity_bundle": "post-sync-verification-3fc09490ed96",
       "shadow_bundle": null,
       "runtime_gate_bundle": null,
       "historical_coverage_generated_at": null,
@@ -101,12 +101,12 @@
   "linked_parity_report": {
     "exists": true,
     "path": "backend/reports/backend_json_parity_report.json",
-    "clean": true,
-    "generated_at": "2026-03-11T16:49:54.281934+00:00",
-    "bundle_id": "post-sync-verification-d9c2b4bf0064",
+    "clean": false,
+    "generated_at": "2026-03-12T02:34:38.126295+00:00",
+    "bundle_id": "post-sync-verification-3fc09490ed96",
     "summary_lines": [
       "entity alias/search coverage: clean (mismatched entities=0)",
-      "official links: clean (mismatched entities=0)",
+      "official links: drift (mismatched entities=62)",
       "YouTube allowlists: clean (role mismatches=0, metadata mismatches=0)",
       "latest verified release selection: clean (tracking mismatches=0, stream mismatches=0)",
       "upcoming counts / nearest: clean (month bucket mismatches=0)",
@@ -162,11 +162,15 @@
     ]
   },
   "summary_lines": [
-    "search: clean 5/5, drift 0/5",
+    "search: clean 4/5, drift 1/5",
     "entity_detail: clean 4/4, drift 0/4",
     "release_detail: clean 3/3, drift 0/3",
-    "calendar_month: clean 3/3, drift 0/3",
-    "radar: clean 1/1, drift 0/1"
+    "calendar_month: clean 2/3, drift 1/3",
+    "radar: clean 1/1, drift 0/1",
+    "missing rows or segments: 2 case(s)",
+    "exact-vs-month-only drift: 2 case(s)",
+    "field-shape mismatches: 1 case(s)",
+    "alias-match differences: 1 case(s)"
   ],
   "cases": [
     {
@@ -248,8 +252,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-93bca46b-c9a8-4643-9e1e-d4650033f477",
-      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-93bca46b-c9a8-4643-9e1e-d4650033f477"
+      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-c81bdb45-5720-405d-b0ca-e7e8a7056caf",
+      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-c81bdb45-5720-405d-b0ca-e7e8a7056caf"
     },
     {
       "surface": "search",
@@ -381,31 +385,100 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-3c1b73a6-26bd-4da6-abd2-7be5b5a28bc2",
-      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-3c1b73a6-26bd-4da6-abd2-7be5b5a28bc2"
+      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-6c4c238f-6d2d-47c4-95fe-61dcc15877f9",
+      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-6c4c238f-6d2d-47c4-95fe-61dcc15877f9"
     },
     {
       "surface": "search",
       "input": {
         "q": "최예나"
       },
-      "clean": true,
-      "mismatch_categories": [],
-      "mismatches": [],
+      "clean": false,
+      "mismatch_categories": [
+        "field-shape mismatches",
+        "missing rows or segments",
+        "exact-vs-month-only drift",
+        "alias-match differences"
+      ],
+      "mismatches": [
+        {
+          "category": "field-shape mismatches",
+          "path": "data",
+          "shape_mismatches": [
+            {
+              "path": "data.entities[0].next_upcoming",
+              "expected_type": "object",
+              "actual_type": "null",
+              "message": "Type mismatch"
+            }
+          ]
+        },
+        {
+          "category": "missing rows or segments",
+          "path": "data.upcoming",
+          "expected_count": 1,
+          "actual_count": 0
+        },
+        {
+          "category": "exact-vs-month-only drift",
+          "path": "data.entities[0].next_upcoming",
+          "expected": {
+            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+            "scheduled_date": "2026-03-11",
+            "scheduled_month": "2026-03",
+            "date_precision": "exact",
+            "date_status": "confirmed"
+          },
+          "actual": null
+        },
+        {
+          "category": "alias-match differences",
+          "path": "data.upcoming[0]",
+          "expected": {
+            "entity_slug": "yena",
+            "display_name": "YENA",
+            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+            "scheduled_date": "2026-03-11",
+            "scheduled_month": "2026-03",
+            "date_precision": "exact",
+            "date_status": "confirmed",
+            "match_reason": "entity_exact",
+            "matched_alias": "최예나"
+          },
+          "actual": null,
+          "query": "최예나"
+        },
+        {
+          "category": "exact-vs-month-only drift",
+          "path": "data.upcoming[0]",
+          "expected": {
+            "entity_slug": "yena",
+            "display_name": "YENA",
+            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
+            "scheduled_date": "2026-03-11",
+            "scheduled_month": "2026-03",
+            "date_precision": "exact",
+            "date_status": "confirmed",
+            "match_reason": "entity_exact",
+            "matched_alias": "최예나"
+          },
+          "actual": null
+        }
+      ],
       "expected_snapshot": {
         "entities": [
           {
             "entity_slug": "yena",
             "display_name": "YENA",
             "canonical_name": "YENA",
-            "agency_name": null,
+            "agency_name": "Yuehua Entertainment",
             "match_reason": "alias_exact",
             "matched_alias": "최예나",
             "latest_release": {
-              "release_title": "STAR!",
-              "release_date": "2025-11-26",
-              "stream": "song",
-              "release_kind": "single"
+              "release_title": "LOVE CATCHER",
+              "release_date": "2026-03-11",
+              "stream": "album",
+              "release_kind": "ep"
             },
             "next_upcoming": {
               "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
@@ -422,11 +495,11 @@
           {
             "entity_slug": "yena",
             "display_name": "YENA",
-            "release_title": "STAR!",
-            "release_date": "2025-11-26",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single",
+            "release_title": "LOVE CATCHER",
+            "release_date": "2026-03-11",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_format": "ep",
             "match_reason": "entity_exact_latest_release",
             "matched_alias": "최예나"
           }
@@ -457,65 +530,39 @@
             "display_name": "YENA",
             "canonical_name": "YENA",
             "entity_type": "solo",
-            "agency_name": null,
+            "agency_name": "Yuehua Entertainment",
             "match_reason": "alias_exact",
             "matched_alias": "최예나",
             "latest_release": {
-              "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
-              "release_title": "STAR!",
-              "release_date": "2025-11-26",
-              "stream": "song",
-              "release_kind": "single"
+              "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
+              "release_title": "LOVE CATCHER",
+              "release_date": "2026-03-11",
+              "stream": "album",
+              "release_kind": "ep"
             },
-            "next_upcoming": {
-              "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-              "scheduled_date": "2026-03-11",
-              "scheduled_month": "2026-03",
-              "date_precision": "exact",
-              "date_status": "confirmed",
-              "release_format": "ep",
-              "confidence_score": 0.84
-            }
+            "next_upcoming": null
           }
         ],
         "releases": [
           {
-            "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
-            "canonical_path": "/v1/releases/0363f526-e841-560d-940d-541a4e536e4e",
+            "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
+            "canonical_path": "/v1/releases/cbc23da6-08cd-5cc9-991c-a3638f493d45",
             "entity_slug": "yena",
             "display_name": "YENA",
-            "release_title": "STAR!",
-            "release_date": "2025-11-26",
-            "stream": "song",
-            "release_kind": "single",
-            "release_format": "single",
+            "release_title": "LOVE CATCHER",
+            "release_date": "2026-03-11",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_format": "ep",
             "match_reason": "entity_exact_latest_release",
             "matched_alias": "최예나"
           }
         ],
-        "upcoming": [
-          {
-            "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
-            "entity_slug": "yena",
-            "display_name": "YENA",
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "scheduled_month": "2026-03",
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "release_format": "ep",
-            "confidence_score": 0.84,
-            "source_type": "news_rss",
-            "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
-            "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-            "match_reason": "entity_exact",
-            "matched_alias": "최예나"
-          }
-        ]
+        "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-a0ea0a06-91e8-4802-9f2d-964388bf1370",
-      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-a0ea0a06-91e8-4802-9f2d-964388bf1370"
+      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-fc97f275-b757-44b8-87f5-6c8f5683a437",
+      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-fc97f275-b757-44b8-87f5-6c8f5683a437"
     },
     {
       "surface": "search",
@@ -596,8 +643,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-revive-2b-71b78962-1c46-4007-add2-721091f615ca",
-      "response_request_id": "shadow--v1-search-q-revive-2b-71b78962-1c46-4007-add2-721091f615ca"
+      "request_id_sent": "shadow--v1-search-q-revive-2b-59118f1b-b7f5-4ab3-85b5-fbb0a6ce927c",
+      "response_request_id": "shadow--v1-search-q-revive-2b-59118f1b-b7f5-4ab3-85b5-fbb0a6ce927c"
     },
     {
       "surface": "search",
@@ -678,8 +725,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-86364a58-c865-4477-bb87-3fa5c1989069",
-      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-86364a58-c865-4477-bb87-3fa5c1989069"
+      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-ca83b86e-1c1c-495f-b6e1-5add53b9e2b5",
+      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-ca83b86e-1c1c-495f-b6e1-5add53b9e2b5"
     },
     {
       "surface": "entity_detail",
@@ -694,7 +741,7 @@
           "entity_slug": "yena",
           "display_name": "YENA",
           "canonical_name": "YENA",
-          "agency_name": null,
+          "agency_name": "Yuehua Entertainment",
           "badge_image_url": null,
           "representative_image_url": null,
           "debut_year": null
@@ -702,7 +749,7 @@
         "official_links": {
           "youtube": "https://www.youtube.com/@yena_official",
           "x": "https://x.com/YENA_OFFICIAL",
-          "instagram": "https://www.instagram.com/yena.jigumina/"
+          "instagram": "https://www.instagram.com/yena.jigumina"
         },
         "youtube_channels": {
           "primary_team_channel_url": "https://www.youtube.com/@yena_official",
@@ -717,15 +764,36 @@
         },
         "next_upcoming": null,
         "latest_release": {
-          "release_id": "YENA::STAR!::2025-11-26::song",
-          "release_title": "STAR!",
-          "release_date": "2025-11-26",
-          "stream": "song",
-          "release_kind": "single",
-          "release_format": "single",
-          "artwork": null
+          "release_id": "YENA::LOVE CATCHER::2026-03-11::album",
+          "release_title": "LOVE CATCHER",
+          "release_date": "2026-03-11",
+          "stream": "album",
+          "release_kind": "ep",
+          "release_format": "ep",
+          "artwork": {
+            "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250",
+            "artwork_source_type": "cover_art_archive",
+            "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+            "is_placeholder": false
+          }
         },
         "recent_albums": [
+          {
+            "release_id": "YENA::LOVE CATCHER::2026-03-11::album",
+            "release_title": "LOVE CATCHER",
+            "release_date": "2026-03-11",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_format": "ep",
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+              "is_placeholder": false
+            }
+          },
           {
             "release_id": "YENA::Blooming Wings::2025-07-29::album",
             "release_title": "Blooming Wings",
@@ -733,7 +801,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "YENA::GOOD MORNING::2024-01-15::album",
@@ -742,7 +816,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "YENA::SMARTPHONE::2022-08-03::album",
@@ -751,7 +831,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "YENA::ˣ‿ˣ (SMiLEY)::2022-01-17::album",
@@ -760,7 +846,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c",
+              "is_placeholder": false
+            }
           }
         ],
         "source_timeline": [
@@ -791,14 +883,58 @@
           "display_name": "YENA",
           "canonical_name": "YENA",
           "entity_type": "solo",
-          "agency_name": null,
+          "agency_name": "Yuehua Entertainment",
           "debut_year": null,
           "badge_image_url": null,
           "badge_source_url": null,
           "badge_source_label": null,
           "badge_kind": null,
           "representative_image_url": null,
-          "representative_image_source": null
+          "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed",
+          "field_metadata": {
+            "debut_year": {
+              "value": null,
+              "status": "review_needed",
+              "provenance": "artistProfiles.debut_year.review_needed.review_needed",
+              "source_url": null,
+              "review_notes": "Debut year is still missing in the canonical entity profile seed."
+            },
+            "official_x": {
+              "value": "https://x.com/YENA_OFFICIAL",
+              "status": "resolved",
+              "provenance": "artistProfiles.official_x_url",
+              "source_url": null,
+              "review_notes": null
+            },
+            "agency_name": {
+              "value": "Yuehua Entertainment",
+              "status": "resolved",
+              "provenance": "entityMetadataAcquisition.reviewed_news_source",
+              "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+              "review_notes": "Agency verified from the reviewed comeback article used in the current release pipeline."
+            },
+            "official_youtube": {
+              "value": "https://www.youtube.com/@YENA_OFFICIAL",
+              "status": "resolved",
+              "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+              "source_url": "https://www.youtube.com/@YENA_OFFICIAL",
+              "review_notes": "Verified from @yena_official handle probe against the official social handle pattern."
+            },
+            "official_instagram": {
+              "value": "https://www.instagram.com/yena.jigumina",
+              "status": "resolved",
+              "provenance": "artistProfiles.official_instagram_url",
+              "source_url": null,
+              "review_notes": null
+            },
+            "representative_image": {
+              "value": null,
+              "status": "review_needed",
+              "provenance": "teamBadgeAssets.badge_image_url.review_needed",
+              "source_url": null,
+              "review_notes": "Representative image has no verified upstream seed yet."
+            }
+          }
         },
         "official_links": {
           "youtube": "https://www.youtube.com/@yena_official",
@@ -807,7 +943,9 @@
         },
         "youtube_channels": {
           "primary_team_channel_url": "https://www.youtube.com/@yena_official",
-          "mv_allowlist_urls": []
+          "mv_allowlist_urls": [
+            "https://www.youtube.com/@yena_official"
+          ]
         },
         "tracking_state": {
           "tier": "tracked",
@@ -816,20 +954,50 @@
         },
         "next_upcoming": null,
         "latest_release": {
-          "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
-          "release_title": "STAR!",
-          "release_date": "2025-11-26",
-          "stream": "song",
-          "release_kind": "single",
-          "release_format": "single",
+          "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
+          "release_title": "LOVE CATCHER",
+          "release_date": "2026-03-11",
+          "stream": "album",
+          "release_kind": "ep",
+          "release_format": "ep",
           "representative_song_title": null,
           "spotify_url": null,
           "youtube_music_url": null,
           "youtube_mv_url": null,
           "source_url": null,
-          "artwork": null
+          "artwork": {
+            "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250",
+            "artwork_source_type": "cover_art_archive",
+            "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+            "artwork_status": "verified",
+            "artwork_provenance": "group_latest_release_since_2025-06-01_mb.source",
+            "is_placeholder": false
+          }
         },
         "recent_albums": [
+          {
+            "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
+            "release_title": "LOVE CATCHER",
+            "release_date": "2026-03-11",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_format": "ep",
+            "representative_song_title": null,
+            "spotify_url": null,
+            "youtube_music_url": null,
+            "youtube_mv_url": null,
+            "source_url": null,
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+              "artwork_status": "verified",
+              "artwork_provenance": "group_latest_release_since_2025-06-01_mb.source",
+              "is_placeholder": false
+            }
+          },
           {
             "release_id": "801052f3-72e8-5b48-b401-1b0aec55a955",
             "release_title": "Blooming Wings",
@@ -842,7 +1010,15 @@
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/9647039b-b615-443a-a476-d75de3c06039",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "b18e824c-d318-5848-9b08-7341982cca31",
@@ -851,12 +1027,20 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "representative_song_title": null,
-            "spotify_url": null,
+            "representative_song_title": "Good Morning",
+            "spotify_url": "https://open.spotify.com/album/1kfvY0GjQJhhDNjTpy7xOs",
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "6f634529-e1db-506a-b4fc-f5565b54beb3",
@@ -865,12 +1049,20 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "representative_song_title": null,
-            "spotify_url": null,
+            "representative_song_title": "SMARTPHONE",
+            "spotify_url": "https://open.spotify.com/album/0lbUf1aVf8xmveSuspuNW0",
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "cc26984b-ed23-5e96-9bbd-8364ce7c037b",
@@ -880,11 +1072,19 @@
             "release_kind": "ep",
             "release_format": "ep",
             "representative_song_title": null,
-            "spotify_url": null,
+            "spotify_url": "https://open.spotify.com/album/7qldKtsOWklzmwgll5NjCw",
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           }
         ],
         "source_timeline": [
@@ -910,8 +1110,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-yena-5d46cc38-78d4-4704-bf77-fddf7dce7fc0",
-      "response_request_id": "shadow--v1-entities-yena-5d46cc38-78d4-4704-bf77-fddf7dce7fc0"
+      "request_id_sent": "shadow--v1-entities-yena-9c6c32c7-1148-4750-a2ec-fdbf3c0a6bfe",
+      "response_request_id": "shadow--v1-entities-yena-9c6c32c7-1148-4750-a2ec-fdbf3c0a6bfe"
     },
     {
       "surface": "entity_detail",
@@ -928,13 +1128,13 @@
           "canonical_name": "BLACKPINK",
           "agency_name": "YG Entertainment",
           "badge_image_url": "https://yt3.googleusercontent.com/U3VrCkKjzTpQ3VYv4SCPjNfDHeJV-swGNnhLYhr0nV4lZz_GVUNzK4EB-HFRfKv9S5VNh14uAg=s900-c-k-c0x00ffffff-no-rj",
-          "representative_image_url": null,
+          "representative_image_url": "https://yt3.googleusercontent.com/U3VrCkKjzTpQ3VYv4SCPjNfDHeJV-swGNnhLYhr0nV4lZz_GVUNzK4EB-HFRfKv9S5VNh14uAg=s900-c-k-c0x00ffffff-no-rj",
           "debut_year": null
         },
         "official_links": {
           "youtube": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
           "x": "https://x.com/blackpink",
-          "instagram": "https://www.instagram.com/blackpinkofficial/"
+          "instagram": "https://www.instagram.com/blackpinkofficial"
         },
         "youtube_channels": {
           "primary_team_channel_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
@@ -956,7 +1156,13 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
-          "artwork": null
+          "artwork": {
+            "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
+            "artwork_source_type": "cover_art_archive",
+            "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+            "is_placeholder": false
+          }
         },
         "recent_albums": [
           {
@@ -966,7 +1172,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "BLACKPINK::BORN PINK::2022-09-16::album",
@@ -975,7 +1187,13 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/350340d1-0121-4881-a6fb-97801e64d261/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/350340d1-0121-4881-a6fb-97801e64d261/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/350340d1-0121-4881-a6fb-97801e64d261",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "BLACKPINK::THE ALBUM::2020-10-02::album",
@@ -984,7 +1202,13 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/8240b45e-5e5c-4c47-a96c-0a0d2c556c08/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/8240b45e-5e5c-4c47-a96c-0a0d2c556c08/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/8240b45e-5e5c-4c47-a96c-0a0d2c556c08",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "BLACKPINK::KILL THIS LOVE::2019-04-05::album",
@@ -993,7 +1217,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/1685c9ec-6f76-4cbc-bd4c-c88f12f41318/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/1685c9ec-6f76-4cbc-bd4c-c88f12f41318/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/1685c9ec-6f76-4cbc-bd4c-c88f12f41318",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "BLACKPINK::SQUARE UP::2018-06-15::album",
@@ -1002,7 +1232,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/8ed9b2a2-e67b-4b8c-9907-258e438ac3a2/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/8ed9b2a2-e67b-4b8c-9907-258e438ac3a2/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/8ed9b2a2-e67b-4b8c-9907-258e438ac3a2",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "BLACKPINK::BLACKPINK::2017-08-29::album",
@@ -1011,7 +1247,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/4f54a818-25f4-4c5c-b962-a698dfd01098/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/4f54a818-25f4-4c5c-b962-a698dfd01098/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/4f54a818-25f4-4c5c-b962-a698dfd01098",
+              "is_placeholder": false
+            }
           }
         ],
         "source_timeline": [
@@ -1174,8 +1416,52 @@
           "badge_source_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
           "badge_source_label": "Official YouTube channel avatar",
           "badge_kind": "official_channel_avatar",
-          "representative_image_url": null,
-          "representative_image_source": null
+          "representative_image_url": "https://yt3.googleusercontent.com/U3VrCkKjzTpQ3VYv4SCPjNfDHeJV-swGNnhLYhr0nV4lZz_GVUNzK4EB-HFRfKv9S5VNh14uAg=s900-c-k-c0x00ffffff-no-rj",
+          "representative_image_source": "teamBadgeAssets.badge_image_url",
+          "field_metadata": {
+            "debut_year": {
+              "value": null,
+              "status": "review_needed",
+              "provenance": "artistProfiles.debut_year.review_needed.review_needed",
+              "source_url": null,
+              "review_notes": "Debut year is still missing in the canonical entity profile seed."
+            },
+            "official_x": {
+              "value": "https://x.com/blackpink",
+              "status": "resolved",
+              "provenance": "artistSocialsStructured.x_url.wikidata_direct",
+              "source_url": "https://www.wikidata.org/wiki/Q25056945",
+              "review_notes": null
+            },
+            "agency_name": {
+              "value": "YG Entertainment",
+              "status": "resolved",
+              "provenance": "artistProfiles.agency",
+              "source_url": null,
+              "review_notes": null
+            },
+            "official_youtube": {
+              "value": "https://www.youtube.com/@BLACKPINK",
+              "status": "resolved",
+              "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+              "source_url": "https://www.youtube.com/@BLACKPINK",
+              "review_notes": "Verified from @blackpink handle probe against the official social handle pattern."
+            },
+            "official_instagram": {
+              "value": "https://www.instagram.com/blackpinkofficial",
+              "status": "resolved",
+              "provenance": "artistSocialsStructured.instagram_url.wikidata_direct",
+              "source_url": "https://www.wikidata.org/wiki/Q25056945",
+              "review_notes": null
+            },
+            "representative_image": {
+              "value": "https://yt3.googleusercontent.com/U3VrCkKjzTpQ3VYv4SCPjNfDHeJV-swGNnhLYhr0nV4lZz_GVUNzK4EB-HFRfKv9S5VNh14uAg=s900-c-k-c0x00ffffff-no-rj",
+              "status": "resolved",
+              "provenance": "teamBadgeAssets.badge_image_url",
+              "source_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+              "review_notes": null
+            }
+          }
         },
         "official_links": {
           "youtube": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
@@ -1207,7 +1493,15 @@
           "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
           "youtube_mv_url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
           "source_url": null,
-          "artwork": null
+          "artwork": {
+            "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
+            "artwork_source_type": "cover_art_archive",
+            "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+            "artwork_status": "verified",
+            "artwork_provenance": "releaseHistory.releases.source",
+            "is_placeholder": false
+          }
         },
         "recent_albums": [
           {
@@ -1222,7 +1516,15 @@
             "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_l3QGS6y9ZWficqzcu429HoCvcKlpMmmmY",
             "youtube_mv_url": "https://www.youtube.com/watch?v=2GJfWMYCWY0",
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "0571a361-1b4e-58ab-a628-ff715c81bada",
@@ -1231,12 +1533,20 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
-            "representative_song_title": null,
+            "representative_song_title": "Pink Venom",
             "spotify_url": null,
             "youtube_music_url": null,
-            "youtube_mv_url": null,
+            "youtube_mv_url": "https://www.youtube.com/watch?v=gQlMMD8auMs",
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/350340d1-0121-4881-a6fb-97801e64d261/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/350340d1-0121-4881-a6fb-97801e64d261/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/350340d1-0121-4881-a6fb-97801e64d261",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "e0a1b8e5-7e83-515e-8cad-bf1916aeb8dd",
@@ -1245,12 +1555,20 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
-            "representative_song_title": null,
-            "spotify_url": null,
+            "representative_song_title": "How You Like That",
+            "spotify_url": "https://open.spotify.com/album/2gNPnKP1PDkB5SZz3IMKuX",
             "youtube_music_url": null,
-            "youtube_mv_url": null,
+            "youtube_mv_url": "https://www.youtube.com/watch?v=ioNng23DkIM",
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/8240b45e-5e5c-4c47-a96c-0a0d2c556c08/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/8240b45e-5e5c-4c47-a96c-0a0d2c556c08/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/8240b45e-5e5c-4c47-a96c-0a0d2c556c08",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "6476d409-4ef3-5050-b581-a72e973ed65f",
@@ -1259,12 +1577,20 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "representative_song_title": null,
+            "representative_song_title": "Kill This Love",
             "spotify_url": null,
             "youtube_music_url": null,
-            "youtube_mv_url": null,
+            "youtube_mv_url": "https://www.youtube.com/watch?v=2S24-y0Ij3Y",
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/1685c9ec-6f76-4cbc-bd4c-c88f12f41318/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/1685c9ec-6f76-4cbc-bd4c-c88f12f41318/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/1685c9ec-6f76-4cbc-bd4c-c88f12f41318",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "fbca20e6-f7a3-5b69-9abd-d27a36dd11d9",
@@ -1274,11 +1600,19 @@
             "release_kind": "ep",
             "release_format": "ep",
             "representative_song_title": null,
-            "spotify_url": null,
+            "spotify_url": "https://open.spotify.com/album/1HwIUaaEuRsxsIyssqtGLH",
             "youtube_music_url": null,
-            "youtube_mv_url": null,
+            "youtube_mv_url": "https://www.youtube.com/watch?v=IHNzOHi8sJs",
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/8ed9b2a2-e67b-4b8c-9907-258e438ac3a2/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/8ed9b2a2-e67b-4b8c-9907-258e438ac3a2/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/8ed9b2a2-e67b-4b8c-9907-258e438ac3a2",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "756b10bf-d09a-525f-ba50-0879d91f228e",
@@ -1288,11 +1622,19 @@
             "release_kind": "ep",
             "release_format": "ep",
             "representative_song_title": null,
-            "spotify_url": null,
+            "spotify_url": "https://open.spotify.com/album/6vl7a0PooHBuDRLrtNeUL0",
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/4f54a818-25f4-4c5c-b962-a698dfd01098/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/4f54a818-25f4-4c5c-b962-a698dfd01098/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/4f54a818-25f4-4c5c-b962-a698dfd01098",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           }
         ],
         "source_timeline": [
@@ -1444,8 +1786,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-blackpink-7d92ff32-caea-47d1-8b93-138e4430b6a8",
-      "response_request_id": "shadow--v1-entities-blackpink-7d92ff32-caea-47d1-8b93-138e4430b6a8"
+      "request_id_sent": "shadow--v1-entities-blackpink-c24fdca5-09de-45d9-9714-f526bc06894d",
+      "response_request_id": "shadow--v1-entities-blackpink-c24fdca5-09de-45d9-9714-f526bc06894d"
     },
     {
       "surface": "entity_detail",
@@ -1462,13 +1804,13 @@
           "canonical_name": "&TEAM",
           "agency_name": "HYBE Labels",
           "badge_image_url": "https://yt3.googleusercontent.com/xqtV6QEH8rfsXXZ1sZZRjn2X7ZCxKB0_eoWN6z5gnqtN8TnC-XQN8-OlMzDVvxrKKnwDDvRxQA=s900-c-k-c0x00ffffff-no-rj",
-          "representative_image_url": null,
+          "representative_image_url": "https://yt3.googleusercontent.com/xqtV6QEH8rfsXXZ1sZZRjn2X7ZCxKB0_eoWN6z5gnqtN8TnC-XQN8-OlMzDVvxrKKnwDDvRxQA=s900-c-k-c0x00ffffff-no-rj",
           "debut_year": null
         },
         "official_links": {
           "youtube": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
           "x": "https://x.com/andTEAMofficial",
-          "instagram": "https://www.instagram.com/andteam_official/"
+          "instagram": "https://www.instagram.com/andteam_official"
         },
         "youtube_channels": {
           "primary_team_channel_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
@@ -1521,7 +1863,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "&TEAM::雪明かり (Yukiakari)::2024-12-17::album",
@@ -1530,7 +1878,13 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "&TEAM::First Howling : NOW::2023-11-15::album",
@@ -1539,7 +1893,13 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "&TEAM::First Howling : WE::2023-06-14::album",
@@ -1548,7 +1908,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "&TEAM::First Howling : ME::2022-12-06::album",
@@ -1557,7 +1923,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328",
+              "is_placeholder": false
+            }
           }
         ],
         "source_timeline": [
@@ -1594,8 +1966,52 @@
           "badge_source_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
           "badge_source_label": "Official YouTube channel avatar",
           "badge_kind": "official_channel_avatar",
-          "representative_image_url": null,
-          "representative_image_source": null
+          "representative_image_url": "https://yt3.googleusercontent.com/xqtV6QEH8rfsXXZ1sZZRjn2X7ZCxKB0_eoWN6z5gnqtN8TnC-XQN8-OlMzDVvxrKKnwDDvRxQA=s900-c-k-c0x00ffffff-no-rj",
+          "representative_image_source": "teamBadgeAssets.badge_image_url",
+          "field_metadata": {
+            "debut_year": {
+              "value": null,
+              "status": "review_needed",
+              "provenance": "artistProfiles.debut_year.review_needed.review_needed",
+              "source_url": null,
+              "review_notes": "Debut year is still missing in the canonical entity profile seed."
+            },
+            "official_x": {
+              "value": "https://x.com/andTEAMofficial",
+              "status": "resolved",
+              "provenance": "artistSocialsStructured.x_url.wikidata_direct",
+              "source_url": "https://www.wikidata.org/wiki/Q112834233",
+              "review_notes": null
+            },
+            "agency_name": {
+              "value": "HYBE Labels",
+              "status": "resolved",
+              "provenance": "artistProfiles.agency",
+              "source_url": null,
+              "review_notes": null
+            },
+            "official_youtube": {
+              "value": "https://www.youtube.com/@andteamofficial",
+              "status": "resolved",
+              "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+              "source_url": "https://www.youtube.com/@andteamofficial",
+              "review_notes": "Verified from @andTEAMofficial handle probe against the official social handle pattern."
+            },
+            "official_instagram": {
+              "value": "https://www.instagram.com/andteam_official",
+              "status": "resolved",
+              "provenance": "artistSocialsStructured.instagram_url.wikidata_direct",
+              "source_url": "https://www.wikidata.org/wiki/Q112834233",
+              "review_notes": null
+            },
+            "representative_image": {
+              "value": "https://yt3.googleusercontent.com/xqtV6QEH8rfsXXZ1sZZRjn2X7ZCxKB0_eoWN6z5gnqtN8TnC-XQN8-OlMzDVvxrKKnwDDvRxQA=s900-c-k-c0x00ffffff-no-rj",
+              "status": "resolved",
+              "provenance": "teamBadgeAssets.badge_image_url",
+              "source_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+              "review_notes": null
+            }
+          }
         },
         "official_links": {
           "youtube": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
@@ -1632,6 +2048,8 @@
             "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
             "artwork_source_type": "cover_art_archive",
             "artwork_source_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+            "artwork_status": "verified",
+            "artwork_provenance": "releaseHistory.releases.source",
             "is_placeholder": false
           }
         },
@@ -1653,6 +2071,8 @@
               "thumbnail_image_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f/front-250",
               "artwork_source_type": "cover_art_archive",
               "artwork_source_url": "https://coverartarchive.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
               "is_placeholder": false
             }
           },
@@ -1663,12 +2083,20 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "representative_song_title": null,
-            "spotify_url": null,
+            "representative_song_title": "Go in Blind (月狼)",
+            "spotify_url": "https://open.spotify.com/album/6FOIiP9yLaT16PUtUkAr3E",
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/9f271d39-af60-42cf-8e3d-d9065ffc3f53",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "4953a8e4-60a7-5eb2-95ad-9108f883211c",
@@ -1677,12 +2105,20 @@
             "stream": "album",
             "release_kind": "album",
             "release_format": "album",
-            "representative_song_title": null,
-            "spotify_url": null,
+            "representative_song_title": "雪明かり (Yukiakari)",
+            "spotify_url": "https://open.spotify.com/album/6Y72DbWH9RBBVh8XNIGY16",
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/0ebe208a-badb-466a-90ec-532b22ab6400",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "60649bc4-3862-5435-b11e-74efc4cd6c41",
@@ -1696,7 +2132,15 @@
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/cbfa2485-1c7a-49c3-95d0-e32698bac896",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "1e32ea5c-2ccc-5a27-807c-d1e1b24cc39f",
@@ -1705,12 +2149,20 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "representative_song_title": null,
-            "spotify_url": null,
+            "representative_song_title": "Blind Love",
+            "spotify_url": "https://open.spotify.com/album/0ouqxqCo93ccmKOXhMz3RC",
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/cced769c-b02b-4ccc-a43a-bdb39cabb843",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           },
           {
             "release_id": "e0f26669-7cae-59e0-aed7-ce93b60a1df3",
@@ -1719,12 +2171,20 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "representative_song_title": null,
-            "spotify_url": null,
+            "representative_song_title": "Under the Skin",
+            "spotify_url": "https://open.spotify.com/album/3jqV1FFra3A2179rdtiNdo",
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/ae840da7-df44-49a5-89f3-7d4ae9cb2328",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           }
         ],
         "source_timeline": [
@@ -1750,8 +2210,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-and-team-33733eaa-d074-4e2c-b9ca-4e18853ff025",
-      "response_request_id": "shadow--v1-entities-and-team-33733eaa-d074-4e2c-b9ca-4e18853ff025"
+      "request_id_sent": "shadow--v1-entities-and-team-42435c15-acdc-4030-bd5f-1787c286c687",
+      "response_request_id": "shadow--v1-entities-and-team-42435c15-acdc-4030-bd5f-1787c286c687"
     },
     {
       "surface": "entity_detail",
@@ -1772,9 +2232,9 @@
           "debut_year": 2025
         },
         "official_links": {
-          "youtube": null,
-          "x": null,
-          "instagram": null
+          "youtube": "https://www.youtube.com/@ALLDAY_PROJECT",
+          "x": "https://x.com/ALLDAY_PROJECT",
+          "instagram": "https://www.instagram.com/allday_project"
         },
         "youtube_channels": {
           "primary_team_channel_url": null,
@@ -1793,7 +2253,13 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
-          "artwork": null
+          "artwork": {
+            "cover_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front-250",
+            "artwork_source_type": "cover_art_archive",
+            "artwork_source_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+            "is_placeholder": false
+          }
         },
         "recent_albums": [
           {
@@ -1803,7 +2269,13 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+              "is_placeholder": false
+            }
           }
         ],
         "source_timeline": [],
@@ -1822,15 +2294,59 @@
           "badge_source_label": null,
           "badge_kind": null,
           "representative_image_url": null,
-          "representative_image_source": null
+          "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed",
+          "field_metadata": {
+            "debut_year": {
+              "value": 2025,
+              "status": "resolved",
+              "provenance": "artistProfiles.debut_year",
+              "source_url": null,
+              "review_notes": null
+            },
+            "official_x": {
+              "value": "https://x.com/ALLDAY_PROJECT",
+              "status": "resolved",
+              "provenance": "entityMetadataAcquisition.reviewed_social_profile",
+              "source_url": "https://x.com/ALLDAY_PROJECT",
+              "review_notes": "Reviewed direct official profile URL for the latest-cohort X gap."
+            },
+            "agency_name": {
+              "value": null,
+              "status": "review_needed",
+              "provenance": "artistProfiles.agency.review_needed.review_needed",
+              "source_url": null,
+              "review_notes": "Agency is still missing in the canonical entity profile seed."
+            },
+            "official_youtube": {
+              "value": "https://www.youtube.com/@ALLDAY_PROJECT",
+              "status": "resolved",
+              "provenance": "entityMetadataAcquisition.reviewed_social_profile",
+              "source_url": "https://www.youtube.com/@ALLDAY_PROJECT",
+              "review_notes": "Reviewed direct official YouTube handle for the latest-cohort channel gap."
+            },
+            "official_instagram": {
+              "value": "https://www.instagram.com/allday_project",
+              "status": "resolved",
+              "provenance": "entityMetadataAcquisition.reviewed_social_profile",
+              "source_url": "https://www.instagram.com/allday_project",
+              "review_notes": "Reviewed direct official profile URL for the latest-cohort Instagram gap."
+            },
+            "representative_image": {
+              "value": null,
+              "status": "review_needed",
+              "provenance": "teamBadgeAssets.badge_image_url.review_needed",
+              "source_url": null,
+              "review_notes": "Representative image has no verified upstream seed yet."
+            }
+          }
         },
         "official_links": {
-          "youtube": null,
-          "x": null,
-          "instagram": null
+          "youtube": "https://www.youtube.com/@ALLDAY_PROJECT",
+          "x": "https://x.com/ALLDAY_PROJECT",
+          "instagram": "https://www.instagram.com/allday_project"
         },
         "youtube_channels": {
-          "primary_team_channel_url": null,
+          "primary_team_channel_url": "https://www.youtube.com/@ALLDAY_PROJECT",
           "mv_allowlist_urls": []
         },
         "tracking_state": {
@@ -1846,12 +2362,20 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
-          "representative_song_title": null,
-          "spotify_url": null,
+          "representative_song_title": "ONE MORE TIME",
+          "spotify_url": "https://open.spotify.com/album/2llGDqePFTgjCIxOW1RehG",
           "youtube_music_url": null,
           "youtube_mv_url": null,
           "source_url": null,
-          "artwork": null
+          "artwork": {
+            "cover_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front-250",
+            "artwork_source_type": "cover_art_archive",
+            "artwork_source_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+            "artwork_status": "verified",
+            "artwork_provenance": "releaseHistory.releases.source",
+            "is_placeholder": false
+          }
         },
         "recent_albums": [
           {
@@ -1861,20 +2385,28 @@
             "stream": "album",
             "release_kind": "ep",
             "release_format": "ep",
-            "representative_song_title": null,
-            "spotify_url": null,
+            "representative_song_title": "ONE MORE TIME",
+            "spotify_url": "https://open.spotify.com/album/2llGDqePFTgjCIxOW1RehG",
             "youtube_music_url": null,
             "youtube_mv_url": null,
             "source_url": null,
-            "artwork": null
+            "artwork": {
+              "cover_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front",
+              "thumbnail_image_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8/front-250",
+              "artwork_source_type": "cover_art_archive",
+              "artwork_source_url": "https://coverartarchive.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+              "artwork_status": "verified",
+              "artwork_provenance": "releaseHistory.releases.source",
+              "is_placeholder": false
+            }
           }
         ],
         "source_timeline": [],
         "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-allday-project-8686d6b9-e2c2-40dc-89f8-9034d90c4c8e",
-      "response_request_id": "shadow--v1-entities-allday-project-8686d6b9-e2c2-40dc-89f8-9034d90c4c8e"
+      "request_id_sent": "shadow--v1-entities-allday-project-6e3333b7-10ca-48d3-ba15-2c5a5a5a15b8",
+      "response_request_id": "shadow--v1-entities-allday-project-6e3333b7-10ca-48d3-ba15-2c5a5a5a15b8"
     },
     {
       "surface": "release_detail",
@@ -1914,10 +2446,10 @@
             "provenance": "releaseDetails.existing_title_flags"
           },
           "artwork": {
-            "cover_image_url": "/release-placeholder.svg",
-            "thumbnail_image_url": "/release-placeholder.svg",
-            "artwork_source_type": "placeholder",
-            "artwork_source_url": "/release-placeholder.svg"
+            "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250",
+            "artwork_source_type": "cover_art_archive",
+            "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031"
           },
           "service_links": {
             "spotify": {
@@ -1999,7 +2531,15 @@
             "status": "verified",
             "provenance": "releaseDetails.existing_title_flags"
           },
-          "artwork": null,
+          "artwork": {
+            "artwork_status": "verified",
+            "is_placeholder": false,
+            "cover_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front",
+            "artwork_provenance": "releaseHistory.releases.source",
+            "artwork_source_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031",
+            "artwork_source_type": "cover_art_archive",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/38204997-b295-4d09-a946-f7e119725031/front-250"
+          },
           "service_links": {
             "spotify": {
               "url": "https://open.spotify.com/album/0al74j1n8XIEkZMMFRfsbx",
@@ -2067,10 +2607,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-bd0c0305-3059-4f70-8c89-bbd12650e132",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-bd0c0305-3059-4f70-8c89-bbd12650e132",
-      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-7c3c2e5c-b5a9-4ca6-be62-4bfc97367897",
-      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-7c3c2e5c-b5a9-4ca6-be62-4bfc97367897"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-912a646f-d467-4e00-b015-0bae1aac5632",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-912a646f-d467-4e00-b015-0bae1aac5632",
+      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-b05a973d-f617-4c23-b913-8145ed58e463",
+      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-b05a973d-f617-4c23-b913-8145ed58e463"
     },
     {
       "surface": "release_detail",
@@ -2259,7 +2799,10 @@
             "provenance": "release_detail_overrides.title_tracks"
           },
           "artwork": {
+            "artwork_status": "verified",
+            "is_placeholder": false,
             "cover_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front",
+            "artwork_provenance": "releaseHistory.releases.source",
             "artwork_source_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca",
             "artwork_source_type": "cover_art_archive",
             "thumbnail_image_url": "https://coverartarchive.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca/front-250"
@@ -2387,10 +2930,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-575dbcd3-2a2c-4400-aa5e-0dacc96f9904",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-575dbcd3-2a2c-4400-aa5e-0dacc96f9904",
-      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-515b5c02-e27e-491d-80d2-44671b65be68",
-      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-515b5c02-e27e-491d-80d2-44671b65be68"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-ed5abff6-767c-488c-a045-1725f3ef5214",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-ed5abff6-767c-488c-a045-1725f3ef5214",
+      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-566e358d-49e1-479b-b13e-80780d0d4918",
+      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-566e358d-49e1-479b-b13e-80780d0d4918"
     },
     {
       "surface": "release_detail",
@@ -2496,7 +3039,10 @@
             "provenance": "releaseDetails.existing_title_flags"
           },
           "artwork": {
+            "artwork_status": "verified",
+            "is_placeholder": false,
             "cover_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front",
+            "artwork_provenance": "releaseHistory.releases.source",
             "artwork_source_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea",
             "artwork_source_type": "cover_art_archive",
             "thumbnail_image_url": "https://coverartarchive.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea/front-250"
@@ -2527,7 +3073,7 @@
             "url": null,
             "video_id": null,
             "status": "needs_review",
-            "provenance": "Official YouTube search currently surfaces a special clip instead of a clearly canonical MV object."
+            "provenance": "manual review seed"
           },
           "credits": [],
           "charts": [],
@@ -2536,22 +3082,157 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-75d2161f-edaf-4d20-a927-f78c01a2d4b0",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-75d2161f-edaf-4d20-a927-f78c01a2d4b0",
-      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-ff6569a8-ce64-4707-8e75-42f5008f6050",
-      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-ff6569a8-ce64-4707-8e75-42f5008f6050"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-3745dce0-281b-4377-bb2e-34edee2b0a0e",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-3745dce0-281b-4377-bb2e-34edee2b0a0e",
+      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-a0175fba-0d48-428b-9dba-6dc589517533",
+      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-a0175fba-0d48-428b-9dba-6dc589517533"
     },
     {
       "surface": "calendar_month",
       "input": {
         "month": "2026-03"
       },
-      "clean": true,
-      "mismatch_categories": [],
-      "mismatches": [],
+      "clean": false,
+      "mismatch_categories": [
+        "missing rows or segments",
+        "exact-vs-month-only drift"
+      ],
+      "mismatches": [
+        {
+          "category": "missing rows or segments",
+          "path": "data.summary",
+          "expected": {
+            "verified_count": 3,
+            "exact_upcoming_count": 4,
+            "month_only_upcoming_count": 4
+          },
+          "actual": {
+            "verified_count": 3,
+            "exact_upcoming_count": 3,
+            "month_only_upcoming_count": 4
+          }
+        },
+        {
+          "category": "missing rows or segments",
+          "path": "data.days",
+          "expected": [
+            {
+              "date": "2026-03-03",
+              "verified_releases": [
+                "tunexx|SET BY US ONLY|2026-03-03|album"
+              ],
+              "exact_upcoming": []
+            },
+            {
+              "date": "2026-03-05",
+              "verified_releases": [
+                "h1-key|LOVECHAPTER|2026-03-05|album"
+              ],
+              "exact_upcoming": []
+            },
+            {
+              "date": "2026-03-11",
+              "verified_releases": [
+                "yena|LOVE CATCHER|2026-03-11|album"
+              ],
+              "exact_upcoming": [
+                "yena|최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스|2026-03-11|2026-03|exact|confirmed|ep|news_rss|https://www.starnewskorea.com/music/2026/02/23/2026022315005262396|starnewskorea.com|1"
+              ]
+            },
+            {
+              "date": "2026-03-12",
+              "verified_releases": [],
+              "exact_upcoming": [
+                "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12|2026-03|exact|confirmed|ep|news_rss|https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5|news.google.com|4"
+              ]
+            },
+            {
+              "date": "2026-03-20",
+              "verified_releases": [],
+              "exact_upcoming": [
+                "bts|Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net|2026-03-20|2026-03|exact|confirmed|album|news_rss|https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5|news.google.com|4"
+              ]
+            },
+            {
+              "date": "2026-03-21",
+              "verified_releases": [],
+              "exact_upcoming": [
+                "bts|Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net|2026-03-21|2026-03|exact|scheduled||news_rss|https://news.google.com/rss/articles/CBMirAFBVV95cUxNbUJYMndMdVRDQTZGRGVzT3dUMlpiWFc1b2NrZUpIUVpZWkFia2xiU0xXN3pHdXRJbzRsRHRpc01pTGEzSlNOSXJhdGVqRWkwX1I0R05FRkpXNk0zUkh4WjZ6R251T3diRURZQ3BDOUViMk5TVFByUnZzRC1GS2RFbWJHRFdCRk94ZFFqanR4MXRmaGZVVWh6RGFGbFE4aGd2ZktQVEZOdjV5VVAx?oc=5|news.google.com|1"
+              ]
+            }
+          ],
+          "actual": [
+            {
+              "date": "2026-03-03",
+              "verified_releases": [
+                "tunexx|SET BY US ONLY|2026-03-03|album"
+              ],
+              "exact_upcoming": []
+            },
+            {
+              "date": "2026-03-05",
+              "verified_releases": [
+                "h1-key|LOVECHAPTER|2026-03-05|album"
+              ],
+              "exact_upcoming": []
+            },
+            {
+              "date": "2026-03-11",
+              "verified_releases": [
+                "yena|LOVE CATCHER|2026-03-11|album"
+              ],
+              "exact_upcoming": []
+            },
+            {
+              "date": "2026-03-12",
+              "verified_releases": [],
+              "exact_upcoming": [
+                "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12|2026-03|exact|confirmed|ep|news_rss|https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5|news.google.com|4"
+              ]
+            },
+            {
+              "date": "2026-03-20",
+              "verified_releases": [],
+              "exact_upcoming": [
+                "bts|Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net|2026-03-20|2026-03|exact|confirmed|album|news_rss|https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5|news.google.com|4"
+              ]
+            },
+            {
+              "date": "2026-03-21",
+              "verified_releases": [],
+              "exact_upcoming": [
+                "bts|Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net|2026-03-21|2026-03|exact|scheduled||news_rss|https://news.google.com/rss/articles/CBMirAFBVV95cUxNbUJYMndMdVRDQTZGRGVzT3dUMlpiWFc1b2NrZUpIUVpZWkFia2xiU0xXN3pHdXRJbzRsRHRpc01pTGEzSlNOSXJhdGVqRWkwX1I0R05FRkpXNk0zUkh4WjZ6R251T3diRURZQ3BDOUViMk5TVFByUnZzRC1GS2RFbWJHRFdCRk94ZFFqanR4MXRmaGZVVWh6RGFGbFE4aGd2ZktQVEZOdjV5VVAx?oc=5|news.google.com|1"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "exact-vs-month-only drift",
+          "path": "data.scheduled_list",
+          "expected": [
+            "yena|최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스|2026-03-11|2026-03|exact|confirmed|ep|news_rss|https://www.starnewskorea.com/music/2026/02/23/2026022315005262396|starnewskorea.com|1",
+            "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12|2026-03|exact|confirmed|ep|news_rss|https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5|news.google.com|4",
+            "bts|Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net|2026-03-20|2026-03|exact|confirmed|album|news_rss|https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5|news.google.com|4",
+            "bts|Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net|2026-03-21|2026-03|exact|scheduled||news_rss|https://news.google.com/rss/articles/CBMirAFBVV95cUxNbUJYMndMdVRDQTZGRGVzT3dUMlpiWFc1b2NrZUpIUVpZWkFia2xiU0xXN3pHdXRJbzRsRHRpc01pTGEzSlNOSXJhdGVqRWkwX1I0R05FRkpXNk0zUkh4WjZ6R251T3diRURZQ3BDOUViMk5TVFByUnZzRC1GS2RFbWJHRFdCRk94ZFFqanR4MXRmaGZVVWh6RGFGbFE4aGd2ZktQVEZOdjV5VVAx?oc=5|news.google.com|1",
+            "ab6ix|AB6IX announces March comeback with their first full album in 5 years - allkpop||2026-03|month_only|scheduled|album|news_rss|https://news.google.com/rss/articles/CBMirgFBVV95cUxNTTRFb2pHMTZWckFqWVRGMTVDTm51S2xhRGhZY3F6UXhzbXJaQUMzVTFMM094SGphU0I1VWd5VGVtbTZYeHVMRGx0QVRJU01xS2Y3ZUp4UmUtandjVk1LaUJGSWxWTnZVSExjRUY2eFJLeVZFSjZGNGdvVnpWZFNmVEw3MFZxMXh2cHNkeURSRWliMHNfMnlQTHk4bGhZNkx6ajdFYXBGejV5R2dHbkE?oc=5|news.google.com|1",
+            "all-h-ours|ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop||2026-03|month_only|scheduled|ep|news_rss|https://news.google.com/rss/articles/CBMikwFBVV95cUxOSE5EeC1kOFlYeXdfbjBKQkpEejdVY0xacGVqYjJmc3JLNFhIUVN1SEVhQWNXellSRnZxX2RGMGZ1N0ZPaXVuZm9XaVZhRk1tb2lQMndGUjJGQ3lxMGVkTTdHdnZVcWZKWlF5NTJjcXJaZjVRUkxVRWhLSlQ3NGFsSk5PSHNiNTZDMlctZ2RxTlV2WjQ?oc=5|news.google.com|1",
+            "ab6ix|AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop||2026-03|month_only|scheduled|album|news_rss|https://news.google.com/rss/articles/CBMizgFBVV95cUxPVmxkNlRtVUNEN2NvXzlKemx1eks1MmpKM1pYWHhXN0FOU0FzVUk4eEJBYkJ6bURfcVdhTktZcVZETVpsUWk5WVI5enBTbWhxdHYwMzdWLWp4aWQzaElURkxfSkZfSzNseERlcHU1eXA0Tm1IdzB4VUtCZVF1ZlRDNllGanktbXduODgzY3czb083djJrM2l2TzBoTjhfcVVteUxtTlFDS3BZMU40amVRaTRLOTY1Zy10eXljcVd1OURINmxNVHk3dE1GeWI2dw?oc=5|news.google.com|1",
+            "ab6ix|AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보||2026-03|month_only|scheduled|album|news_rss|https://news.google.com/rss/articles/CBMijgFBVV95cUxNbHNMekRwTExfSmdJZlZ5ZXJwSkhsUFZObjJzZFREVjFHWG1TNHFWNmt4aVhqV1lvNVo5MVI4cXF5Z3FPWGtVUkxBUHNMQ05RWUhwYzl2R2FzWFZTcFZJQ0czOTI0MFVQZ2RLUFZaVkgtUnVITlZFMjZyakdNcjBUT0o1ZzJRVUFXVXdmZGdR?oc=5|news.google.com|1"
+          ],
+          "actual": [
+            "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12|2026-03|exact|confirmed|ep|news_rss|https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5|news.google.com|4",
+            "bts|Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net|2026-03-20|2026-03|exact|confirmed|album|news_rss|https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5|news.google.com|4",
+            "bts|Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net|2026-03-21|2026-03|exact|scheduled||news_rss|https://news.google.com/rss/articles/CBMirAFBVV95cUxNbUJYMndMdVRDQTZGRGVzT3dUMlpiWFc1b2NrZUpIUVpZWkFia2xiU0xXN3pHdXRJbzRsRHRpc01pTGEzSlNOSXJhdGVqRWkwX1I0R05FRkpXNk0zUkh4WjZ6R251T3diRURZQ3BDOUViMk5TVFByUnZzRC1GS2RFbWJHRFdCRk94ZFFqanR4MXRmaGZVVWh6RGFGbFE4aGd2ZktQVEZOdjV5VVAx?oc=5|news.google.com|1",
+            "ab6ix|AB6IX announces March comeback with their first full album in 5 years - allkpop||2026-03|month_only|scheduled|album|news_rss|https://news.google.com/rss/articles/CBMirgFBVV95cUxNTTRFb2pHMTZWckFqWVRGMTVDTm51S2xhRGhZY3F6UXhzbXJaQUMzVTFMM094SGphU0I1VWd5VGVtbTZYeHVMRGx0QVRJU01xS2Y3ZUp4UmUtandjVk1LaUJGSWxWTnZVSExjRUY2eFJLeVZFSjZGNGdvVnpWZFNmVEw3MFZxMXh2cHNkeURSRWliMHNfMnlQTHk4bGhZNkx6ajdFYXBGejV5R2dHbkE?oc=5|news.google.com|1",
+            "all-h-ours|ALL(H)OURS Sets March Comeback With 5th Mini-Album ‘NO DOUBT’ - hellokpop||2026-03|month_only|scheduled|ep|news_rss|https://news.google.com/rss/articles/CBMikwFBVV95cUxOSE5EeC1kOFlYeXdfbjBKQkpEejdVY0xacGVqYjJmc3JLNFhIUVN1SEVhQWNXellSRnZxX2RGMGZ1N0ZPaXVuZm9XaVZhRk1tb2lQMndGUjJGQ3lxMGVkTTdHdnZVcWZKWlF5NTJjcXJaZjVRUkxVRWhLSlQ3NGFsSk5PSHNiNTZDMlctZ2RxTlV2WjQ?oc=5|news.google.com|1",
+            "ab6ix|AB6IX begins the countdown for their March comeback with the full album ‘SEVEN : CRIMSON HORIZON’ - allkpop||2026-03|month_only|scheduled|album|news_rss|https://news.google.com/rss/articles/CBMizgFBVV95cUxPVmxkNlRtVUNEN2NvXzlKemx1eks1MmpKM1pYWHhXN0FOU0FzVUk4eEJBYkJ6bURfcVdhTktZcVZETVpsUWk5WVI5enBTbWhxdHYwMzdWLWp4aWQzaElURkxfSkZfSzNseERlcHU1eXA0Tm1IdzB4VUtCZVF1ZlRDNllGanktbXduODgzY3czb083djJrM2l2TzBoTjhfcVVteUxtTlFDS3BZMU40amVRaTRLOTY1Zy10eXljcVd1OURINmxNVHk3dE1GeWI2dw?oc=5|news.google.com|1",
+            "ab6ix|AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보||2026-03|month_only|scheduled|album|news_rss|https://news.google.com/rss/articles/CBMijgFBVV95cUxNbHNMekRwTExfSmdJZlZ5ZXJwSkhsUFZObjJzZFREVjFHWG1TNHFWNmt4aVhqV1lvNVo5MVI4cXF5Z3FPWGtVUkxBUHNMQ05RWUhwYzl2R2FzWFZTcFZJQ0czOTI0MFVQZ2RLUFZaVkgtUnVITlZFMjZyakdNcjBUT0o1ZzJRVUFXVXdmZGdR?oc=5|news.google.com|1"
+          ]
+        }
+      ],
       "expected_snapshot": {
         "summary": {
-          "verified_count": 2,
+          "verified_count": 3,
           "exact_upcoming_count": 4,
           "month_only_upcoming_count": 4
         },
@@ -2605,7 +3286,17 @@
           },
           {
             "date": "2026-03-11",
-            "verified_releases": [],
+            "verified_releases": [
+              {
+                "release_id": "[truncated]",
+                "entity_slug": "[truncated]",
+                "display_name": "[truncated]",
+                "release_title": "[truncated]",
+                "stream": "[truncated]",
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
+              }
+            ],
             "exact_upcoming": [
               {
                 "upcoming_signal_id": "[truncated]",
@@ -2780,6 +3471,15 @@
             "release_date": "2026-03-05",
             "stream": "album",
             "release_kind": "ep"
+          },
+          {
+            "release_id": "YENA::LOVE CATCHER::2026-03-11::album",
+            "entity_slug": "yena",
+            "display_name": "YENA",
+            "release_title": "LOVE CATCHER",
+            "release_date": "2026-03-11",
+            "stream": "album",
+            "release_kind": "ep"
           }
         ],
         "scheduled_list": [
@@ -2923,8 +3623,8 @@
       },
       "actual_snapshot": {
         "summary": {
-          "verified_count": 2,
-          "exact_upcoming_count": 4,
+          "verified_count": 3,
+          "exact_upcoming_count": 3,
           "month_only_upcoming_count": 4
         },
         "nearest_upcoming": {
@@ -2977,26 +3677,18 @@
           },
           {
             "date": "2026-03-11",
-            "verified_releases": [],
-            "exact_upcoming": [
+            "verified_releases": [
               {
-                "upcoming_signal_id": "[truncated]",
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
-                "headline": "[truncated]",
-                "scheduled_date": "[truncated]",
-                "scheduled_month": "[truncated]",
-                "date_precision": "[truncated]",
-                "date_status": "[truncated]",
-                "confidence_score": "[truncated]",
-                "release_format": "[truncated]",
-                "source_url": "[truncated]",
-                "source_type": "[truncated]",
-                "source_domain": "[truncated]",
-                "evidence_summary": "[truncated]",
-                "source_count": "[truncated]"
+                "release_title": "[truncated]",
+                "stream": "[truncated]",
+                "release_kind": "[truncated]",
+                "release_date": "[truncated]"
               }
-            ]
+            ],
+            "exact_upcoming": []
           },
           {
             "date": "2026-03-12",
@@ -3156,26 +3848,18 @@
             "stream": "album",
             "release_kind": "ep",
             "release_date": "2026-03-05"
+          },
+          {
+            "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
+            "entity_slug": "yena",
+            "display_name": "YENA",
+            "release_title": "LOVE CATCHER",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_date": "2026-03-11"
           }
         ],
         "scheduled_list": [
-          {
-            "upcoming_signal_id": "135cb637-d988-5028-b221-0ec2f59f124f",
-            "entity_slug": "yena",
-            "display_name": "YENA",
-            "headline": "최예나, 3월 11일 컴백 확정..새 앨범명은 'LOVE CATCHER' [공식] - 스타뉴스",
-            "scheduled_date": "2026-03-11",
-            "scheduled_month": "2026-03",
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "confidence_score": 0.84,
-            "release_format": "ep",
-            "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
-            "source_type": "news_rss",
-            "source_domain": "starnewskorea.com",
-            "evidence_summary": "Future date reference: 2026-03-11. YENA confirmed her comeback with the 5th mini album LOVE CATCHER, scheduled for March 11 at 6 p.m. KST.",
-            "source_count": 1
-          },
           {
             "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
             "entity_slug": "p1harmony",
@@ -3298,8 +3982,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-89704031-7331-49c6-98a8-f04ed62dc2d3",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-03-89704031-7331-49c6-98a8-f04ed62dc2d3"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-ca2b80ca-5921-40e9-98c2-be15ade4bd23",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-03-ca2b80ca-5921-40e9-98c2-be15ade4bd23"
     },
     {
       "surface": "calendar_month",
@@ -4202,8 +4886,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-21bf7f25-33fb-416d-a1f2-6dab5bd6dcea",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-04-21bf7f25-33fb-416d-a1f2-6dab5bd6dcea"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-c2cbcfe4-8856-4011-b8ba-a785dbc86cb3",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-04-c2cbcfe4-8856-4011-b8ba-a785dbc86cb3"
     },
     {
       "surface": "calendar_month",
@@ -4958,8 +5642,8 @@
         "scheduled_list": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-47b26f83-ef9a-4018-8c73-39e0e0a1c1a0",
-      "response_request_id": "shadow--v1-calendar-month-month-2025-10-47b26f83-ef9a-4018-8c73-39e0e0a1c1a0"
+      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-0c7b6ff6-5559-45ed-91df-e859b4b9a979",
+      "response_request_id": "shadow--v1-calendar-month-month-2025-10-0c7b6ff6-5559-45ed-91df-e859b4b9a979"
     },
     {
       "surface": "radar",
@@ -4995,6 +5679,17 @@
           }
         ],
         "change_feed": [
+          {
+            "kind": "verified_release",
+            "entity_slug": "yena",
+            "display_name": "YENA",
+            "release_id": "YENA::LOVE CATCHER::2026-03-11::album",
+            "release_title": "LOVE CATCHER",
+            "release_date": "2026-03-11",
+            "stream": "album",
+            "release_kind": "ep",
+            "occurred_at": "2026-03-11"
+          },
           {
             "kind": "upcoming_signal",
             "entity_slug": "tws",
@@ -5135,19 +5830,6 @@
             "stream": "album",
             "release_kind": "ep",
             "occurred_at": "2026-03-05"
-          },
-          {
-            "kind": "upcoming_signal",
-            "entity_slug": "bts",
-            "display_name": "BTS",
-            "upcoming_signal_id": "bts::undated::tempo co reveals 14 song upcoming",
-            "headline": "BTS Reveals 14-Song Tracklist for Upcoming \"Arirang\" Album - Tempo.co",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "confidence_score": 0.56,
-            "occurred_at": "Wed, 04 Mar 2026 08:55:41 GMT"
           }
         ],
         "long_gap": [
@@ -5531,7 +6213,7 @@
             "stream": "song",
             "release_id": "e5976e68-a795-52dd-b40e-a72493038dd3",
             "entity_slug": "atheart",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "AtHeart",
             "release_date": "2026-02-26",
             "release_kind": "single",
@@ -5542,7 +6224,7 @@
             "stream": "album",
             "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
             "entity_slug": "blackpink",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "BLACKPINK",
             "release_date": "2026-02-27",
             "release_kind": "ep",
@@ -5553,7 +6235,7 @@
             "stream": "album",
             "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
             "entity_slug": "blackpink",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "BLACKPINK",
             "release_date": "2026-02-26",
             "release_kind": null,
@@ -5564,7 +6246,7 @@
             "stream": "album",
             "release_id": "6a1db562-83b4-5e9d-a00f-6ea0ebfb6680",
             "entity_slug": "h1-key",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "H1-KEY",
             "release_date": "2026-03-05",
             "release_kind": "ep",
@@ -5575,7 +6257,7 @@
             "stream": "song",
             "release_id": "06aa603b-b554-52a8-b9e4-47c6a6764e53",
             "entity_slug": "hearts2hearts",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "Hearts2Hearts",
             "release_date": "2026-02-20",
             "release_kind": "single",
@@ -5586,7 +6268,7 @@
             "stream": "album",
             "release_id": "c339f501-52fe-599d-8d2d-bf5694ae4de4",
             "entity_slug": "ive",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "IVE",
             "release_date": "2026-02-23",
             "release_kind": "album",
@@ -5597,7 +6279,7 @@
             "stream": "song",
             "release_id": "179b842f-9bd1-56ca-aaf6-b33e3f87159b",
             "entity_slug": "nct-wish",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "NCT WISH",
             "release_date": "2026-02-27",
             "release_kind": "single",
@@ -5608,7 +6290,7 @@
             "stream": "song",
             "release_id": "d5137bf0-b49d-59f6-815a-5b591cfb966b",
             "entity_slug": "nmixx",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "NMIXX",
             "release_date": "2026-02-26",
             "release_kind": "single",
@@ -5619,7 +6301,7 @@
             "stream": "song",
             "release_id": "2c209a92-9d0e-5a9b-8cf1-93ed8f92911a",
             "entity_slug": "rescene",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "RESCENE",
             "release_date": "2026-02-27",
             "release_kind": "single",
@@ -5630,7 +6312,7 @@
             "stream": "album",
             "release_id": "7c27ebee-3b8e-56c4-8b4c-b58f040b16b3",
             "entity_slug": "stayc",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "STAYC",
             "release_date": "2026-02-11",
             "release_kind": "album",
@@ -5641,7 +6323,7 @@
             "stream": "song",
             "release_id": "1adfe761-7983-5747-8fdd-282e23684f26",
             "entity_slug": "trendz",
-            "occurred_at": "2026-03-08T23:52:52.993Z",
+            "occurred_at": "2026-03-12T02:33:59.504Z",
             "display_name": "TRENDZ",
             "release_date": "2026-02-13",
             "release_kind": "single",
@@ -6006,8 +6688,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-radar-383606d6-ed83-4dc2-8477-d18f3f94e3e2",
-      "response_request_id": "shadow--v1-radar-383606d6-ed83-4dc2-8477-d18f3f94e3e2"
+      "request_id_sent": "shadow--v1-radar-fa14d16f-9789-4936-9977-055adbc2aa66",
+      "response_request_id": "shadow--v1-radar-fa14d16f-9789-4936-9977-055adbc2aa66"
     }
   ]
 }

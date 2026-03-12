@@ -9,6 +9,7 @@ ARTIST_PROFILES_PATH = ROOT / "web" / "src" / "data" / "artistProfiles.json"
 ARTIST_SOCIALS_PATH = ROOT / "artist_socials_structured_2026-03-04.json"
 TEAM_BADGE_ASSETS_PATH = ROOT / "web" / "src" / "data" / "teamBadgeAssets.json"
 YOUTUBE_ALLOWLISTS_PATH = ROOT / "web" / "src" / "data" / "youtubeChannelAllowlists.json"
+ENTITY_METADATA_ACQUISITION_PATH = ROOT / "entity_metadata_acquisition.json"
 OUTPUT_PATH = ROOT / "canonical_entity_metadata.json"
 
 FIELD_KEYS = (
@@ -307,6 +308,20 @@ def build_field_map(
     }
 
 
+def overlay_acquisition_fields(
+    field_map: Dict[str, Dict[str, Any]],
+    acquisition_fields: Dict[str, Any],
+) -> Dict[str, Dict[str, Any]]:
+    if not acquisition_fields:
+        return field_map
+
+    overlaid = dict(field_map)
+    for field_key, acquisition_field in acquisition_fields.items():
+        if field_key in FIELD_KEYS:
+            overlaid[field_key] = acquisition_field
+    return overlaid
+
+
 def apply_fields_to_profile(profile: Dict[str, Any], field_map: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
     updated = dict(profile)
 
@@ -353,10 +368,12 @@ def build_metadata_rows(
     social_rows: List[Dict[str, Any]],
     badge_rows: List[Dict[str, Any]],
     allowlist_rows: List[Dict[str, Any]],
+    acquisition_rows: List[Dict[str, Any]],
 ) -> List[Dict[str, Any]]:
     social_by_artist = {row["artist"]: row for row in social_rows if optional_text(row.get("artist"))}
     badge_by_group = {row["group"]: row for row in badge_rows if optional_text(row.get("group"))}
     allowlist_by_group = {row["group"]: row for row in allowlist_rows if optional_text(row.get("group"))}
+    acquisition_by_slug = {row["slug"]: row for row in acquisition_rows if optional_text(row.get("slug"))}
 
     rows: List[Dict[str, Any]] = []
     updated_profiles: List[Dict[str, Any]] = []
@@ -364,7 +381,9 @@ def build_metadata_rows(
         social_row = social_by_artist.get(profile["group"], {})
         badge_row = badge_by_group.get(profile["group"], {})
         allowlist_row = allowlist_by_group.get(profile["group"], {})
+        acquisition_row = acquisition_by_slug.get(profile["slug"], {})
         field_map = build_field_map(profile, social_row, badge_row, allowlist_row)
+        field_map = overlay_acquisition_fields(field_map, acquisition_row.get("fields", {}))
         updated_profiles.append(apply_fields_to_profile(profile, field_map))
         rows.append(
             {
@@ -402,8 +421,9 @@ def main() -> None:
     social_rows = load_json(ARTIST_SOCIALS_PATH)
     badge_rows = load_json(TEAM_BADGE_ASSETS_PATH)
     allowlist_rows = load_json(YOUTUBE_ALLOWLISTS_PATH)
+    acquisition_rows = load_json(ENTITY_METADATA_ACQUISITION_PATH) if ENTITY_METADATA_ACQUISITION_PATH.exists() else []
 
-    rows = build_metadata_rows(artist_profiles, social_rows, badge_rows, allowlist_rows)
+    rows = build_metadata_rows(artist_profiles, social_rows, badge_rows, allowlist_rows, acquisition_rows)
     write_json(OUTPUT_PATH, rows)
 
     print(

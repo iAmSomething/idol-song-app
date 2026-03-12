@@ -1,0 +1,266 @@
+[
+  {
+    "group": "ALLDAY PROJECT",
+    "slug": "allday-project",
+    "official_x_url": "https://x.com/ALLDAY_PROJECT",
+    "official_x_source": "entityMetadataAcquisition.reviewed_social_profile",
+    "official_x_source_url": "https://x.com/ALLDAY_PROJECT",
+    "official_x_review_notes": "Reviewed direct official profile URL for the latest-cohort X gap.",
+    "official_instagram_url": "https://www.instagram.com/allday_project/",
+    "official_instagram_source": "entityMetadataAcquisition.reviewed_social_profile",
+    "official_instagram_source_url": "https://www.instagram.com/allday_project/",
+    "official_instagram_review_notes": "Reviewed direct official profile URL for the latest-cohort Instagram gap.",
+    "official_youtube_url": "https://www.youtube.com/@ALLDAY_PROJECT",
+    "official_youtube_source": "entityMetadataAcquisition.reviewed_social_profile",
+    "official_youtube_source_url": "https://www.youtube.com/@ALLDAY_PROJECT",
+    "official_youtube_review_notes": "Reviewed direct official YouTube handle for the latest-cohort channel gap."
+  },
+  {
+    "group": "ALL(H)OURS",
+    "slug": "all-h-ours",
+    "agency_name": "EDEN Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_site",
+    "agency_name_source_url": "https://www.edenent.co.kr/",
+    "agency_name_review_notes": "Reviewed against the group's official current agency site."
+  },
+  {
+    "group": "AtHeart",
+    "slug": "atheart",
+    "agency_name": "TITAN CONTENT",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://www.youtube.com/@AtHeart_TITAN",
+    "agency_name_review_notes": "Agency verified from the official channel handle branding."
+  },
+  {
+    "group": "BADVILLAIN",
+    "slug": "badvillain",
+    "agency_name": "BPM Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://x.com/BADVILLAIN_BPM",
+    "agency_name_review_notes": "Agency verified from the official team handle branding."
+  },
+  {
+    "group": "BLITZERS",
+    "slug": "blitzers",
+    "official_youtube_candidates": [
+      "BLITZERS"
+    ],
+    "agency_name": "WUZO Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://x.com/WUZO_BLITZERS",
+    "agency_name_review_notes": "Agency verified from the official handle branding."
+  },
+  {
+    "group": "cignature",
+    "slug": "cignature",
+    "agency_name": "J9 Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://x.com/cignature_J9",
+    "agency_name_review_notes": "Agency verified from the official handle branding."
+  },
+  {
+    "group": "CLOSE YOUR EYES",
+    "slug": "close-your-eyes",
+    "official_x_url": "https://x.com/closeyoureyes_of",
+    "official_x_source": "entityMetadataAcquisition.reviewed_social_profile",
+    "official_x_source_url": "https://x.com/closeyoureyes_of",
+    "official_x_review_notes": "Reviewed direct official profile URL for the latest-cohort X gap."
+  },
+  {
+    "group": "DKB",
+    "slug": "dkb",
+    "agency_name": "Brave Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://x.com/DKB_BRAVE",
+    "agency_name_review_notes": "Agency verified from the official handle branding."
+  },
+  {
+    "group": "DXMON",
+    "slug": "dxmon",
+    "agency_name": "HM Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://x.com/DXMON_HM",
+    "agency_name_review_notes": "Agency verified from the official handle branding."
+  },
+  {
+    "group": "FIFTY FIFTY",
+    "slug": "fifty-fifty",
+    "agency_name": "ATTRAKT entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_site",
+    "agency_name_source_url": "https://www.theattrakt.com/sub/artist/view.php?artistSeq=10",
+    "agency_name_review_notes": "Reviewed against the official artist page."
+  },
+  {
+    "group": "Hearts2Hearts",
+    "slug": "hearts2hearts",
+    "official_youtube_url": "https://www.youtube.com/@SMTOWN",
+    "official_youtube_source": "entityMetadataAcquisition.reviewed_label_channel_fallback",
+    "official_youtube_source_url": "https://www.youtube.com/@SMTOWN",
+    "official_youtube_review_notes": "No dependable team-owned channel was confirmed, so the official label-owned upload channel is used as the canonical fallback."
+  },
+  {
+    "group": "Kep1er",
+    "slug": "kep1er",
+    "official_youtube_candidates": [
+      "Kep1er_Offcl"
+    ]
+  },
+  {
+    "group": "KickFlip",
+    "slug": "kickflip",
+    "agency_name": "JYP Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://www.youtube.com/@kickflip_jype",
+    "agency_name_review_notes": "Agency verified from the official channel handle branding."
+  },
+  {
+    "group": "Loossemble",
+    "slug": "loossemble",
+    "official_youtube_candidates": [
+      "Loossemble_official"
+    ]
+  },
+  {
+    "group": "NCT WISH",
+    "slug": "nct-wish",
+    "official_youtube_candidates": [
+      "NCTWISH"
+    ]
+  },
+  {
+    "group": "POW",
+    "slug": "pow",
+    "official_youtube_candidates": [
+      "POW_Official"
+    ],
+    "agency_name": "GRID Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://x.com/POW_grid",
+    "agency_name_review_notes": "Agency verified from the official handle branding."
+  },
+  {
+    "group": "Purple Kiss",
+    "slug": "purple-kiss",
+    "agency_name": "RBW",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://x.com/RBW_PURPLEKISS",
+    "agency_name_review_notes": "Agency verified from the official handle branding."
+  },
+  {
+    "group": "Red Velvet",
+    "slug": "red-velvet",
+    "agency_name": "SM Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_wikidata_record_label",
+    "agency_name_source_url": "https://www.wikidata.org/wiki/Q17466114",
+    "agency_name_review_notes": "Reviewed current label ownership from the structured reference."
+  },
+  {
+    "group": "SAY MY NAME",
+    "slug": "say-my-name",
+    "agency_name": "INKODE",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_label_channel",
+    "agency_name_source_url": "https://www.youtube.com/@inkodeofficial",
+    "agency_name_review_notes": "Agency verified from the official label-owned channel used for the group."
+  },
+  {
+    "group": "STAYC",
+    "slug": "stayc",
+    "agency_name": "High Up Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_site",
+    "agency_name_source_url": "http://www.highup-ent.com/stayc",
+    "agency_name_review_notes": "Reviewed against the official artist page."
+  },
+  {
+    "group": "TEMPEST",
+    "slug": "tempest",
+    "official_youtube_candidates": [
+      "TPSTofficial"
+    ]
+  },
+  {
+    "group": "The KingDom",
+    "slug": "the-kingdom",
+    "official_youtube_url": "https://www.youtube.com/@gf_entertainment",
+    "official_youtube_source": "entityMetadataAcquisition.reviewed_label_channel_fallback",
+    "official_youtube_source_url": "https://www.youtube.com/@gf_entertainment",
+    "official_youtube_review_notes": "No dependable team-owned channel was confirmed, so the official label-owned upload channel is used as the canonical fallback.",
+    "agency_name": "GF Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_label_channel",
+    "agency_name_source_url": "https://www.youtube.com/@gf_entertainment",
+    "agency_name_review_notes": "Agency verified from the official label-owned channel branding."
+  },
+  {
+    "group": "TNX",
+    "slug": "tnx",
+    "official_youtube_url": "https://www.youtube.com/@PNATIONOfficial",
+    "official_youtube_source": "entityMetadataAcquisition.reviewed_label_channel_fallback",
+    "official_youtube_source_url": "https://www.youtube.com/@PNATIONOfficial",
+    "official_youtube_review_notes": "No dependable team-owned channel was confirmed, so the official label-owned upload channel is used as the canonical fallback.",
+    "agency_name": "P NATION",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_label_channel",
+    "agency_name_source_url": "https://www.youtube.com/@PNATIONOfficial",
+    "agency_name_review_notes": "Agency verified from the official label-owned channel branding."
+  },
+  {
+    "group": "VIVIZ",
+    "slug": "viviz",
+    "agency_name": "BPM Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_wikidata_record_label",
+    "agency_name_source_url": "https://www.wikidata.org/wiki/Q108853211",
+    "agency_name_review_notes": "Reviewed current label ownership from the structured reference."
+  },
+  {
+    "group": "WEi",
+    "slug": "wei",
+    "official_youtube_candidates": [
+      "WEiOfficial"
+    ]
+  },
+  {
+    "group": "Weeekly",
+    "slug": "weeekly",
+    "agency_name": "IST Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_wikidata_record_label",
+    "agency_name_source_url": "https://www.wikidata.org/wiki/Q65046002",
+    "agency_name_review_notes": "Reviewed current label ownership from the structured reference."
+  },
+  {
+    "group": "WJSN",
+    "slug": "wjsn",
+    "official_youtube_url": "https://www.youtube.com/@officialstarship",
+    "official_youtube_source": "entityMetadataAcquisition.reviewed_label_channel_fallback",
+    "official_youtube_source_url": "https://www.youtube.com/@officialstarship",
+    "official_youtube_review_notes": "No dependable team-owned channel was confirmed, so the official label-owned upload channel is used as the canonical fallback."
+  },
+  {
+    "group": "woo!ah!",
+    "slug": "woo-ah",
+    "agency_name": "NV Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_official_handle",
+    "agency_name_source_url": "https://x.com/wooah_nv",
+    "agency_name_review_notes": "Agency verified from the official handle branding."
+  },
+  {
+    "group": "Xdinary Heroes",
+    "slug": "xdinary-heroes",
+    "agency_name": "JYP Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_wikidata_record_label",
+    "agency_name_source_url": "https://www.wikidata.org/wiki/Q109579414",
+    "agency_name_review_notes": "Reviewed current label ownership from the structured reference."
+  },
+  {
+    "group": "YENA",
+    "slug": "yena",
+    "agency_name": "Yuehua Entertainment",
+    "agency_name_source": "entityMetadataAcquisition.reviewed_news_source",
+    "agency_name_source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+    "agency_name_review_notes": "Agency verified from the reviewed comeback article used in the current release pipeline."
+  },
+  {
+    "group": "YOUNITE",
+    "slug": "younite",
+    "official_youtube_candidates": [
+      "YOUNITE"
+    ]
+  }
+]

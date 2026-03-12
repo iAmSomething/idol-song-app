@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-11T18:13:46.755Z",
+  "generated_at": "2026-03-12T02:34:21.051Z",
   "row_counts": {
     "entity_search_documents": 117,
     "calendar_month_projection": 216,
     "entity_detail_projection": 117,
-    "release_detail_projection": 1771,
+    "release_detail_projection": 1772,
     "radar_projection": 1
   },
   "samples": {
@@ -13,18 +13,18 @@
         "YENA",
         "최예나"
       ],
-      "agency_name": null,
+      "agency_name": "Yuehua Entertainment",
       "entity_slug": "yena",
       "entity_type": "solo",
       "display_name": "YENA",
       "next_upcoming": null,
       "canonical_name": "YENA",
       "latest_release": {
-        "stream": "song",
-        "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
-        "release_date": "2025-11-26",
-        "release_kind": "single",
-        "release_title": "STAR!"
+        "stream": "album",
+        "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
+        "release_date": "2026-03-11",
+        "release_kind": "ep",
+        "release_title": "LOVE CATCHER"
       },
       "normalized_terms": [
         "yena",
@@ -34,7 +34,7 @@
     "calendar": {
       "month_key": "2026-03",
       "summary": {
-        "verified_count": 2,
+        "verified_count": 3,
         "exact_upcoming_count": 4,
         "month_only_upcoming_count": 4
       },
@@ -60,7 +60,7 @@
       "identity": {
         "badge_kind": null,
         "debut_year": null,
-        "agency_name": null,
+        "agency_name": "Yuehua Entertainment",
         "entity_slug": "yena",
         "entity_type": "solo",
         "display_name": "YENA",
@@ -69,7 +69,7 @@
           "debut_year": {
             "value": null,
             "status": "review_needed",
-            "provenance": "artistProfiles.debut_year.review_needed",
+            "provenance": "artistProfiles.debut_year.review_needed.review_needed",
             "source_url": null,
             "review_notes": "Debut year is still missing in the canonical entity profile seed."
           },
@@ -81,18 +81,18 @@
             "review_notes": null
           },
           "agency_name": {
-            "value": null,
-            "status": "review_needed",
-            "provenance": "artistProfiles.agency.review_needed",
-            "source_url": null,
-            "review_notes": "Agency is still missing in the canonical entity profile seed."
+            "value": "Yuehua Entertainment",
+            "status": "resolved",
+            "provenance": "entityMetadataAcquisition.reviewed_news_source",
+            "source_url": "https://www.starnewskorea.com/music/2026/02/23/2026022315005262396",
+            "review_notes": "Agency verified from the reviewed comeback article used in the current release pipeline."
           },
           "official_youtube": {
-            "value": "https://www.youtube.com/@yena_official",
+            "value": "https://www.youtube.com/@YENA_OFFICIAL",
             "status": "resolved",
-            "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
-            "source_url": "https://www.youtube.com/@yena_official",
-            "review_notes": null
+            "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+            "source_url": "https://www.youtube.com/@YENA_OFFICIAL",
+            "review_notes": "Verified from @yena_official handle probe against the official social handle pattern."
           },
           "official_instagram": {
             "value": "https://www.instagram.com/yena.jigumina",
@@ -117,6 +117,23 @@
       },
       "next_upcoming": null,
       "recent_albums": [
+        {
+          "stream": "album",
+          "artwork": {
+            "artwork_status": "verified",
+            "is_placeholder": false,
+            "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
+            "artwork_provenance": "group_latest_release_since_2025-06-01_mb.source",
+            "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+            "artwork_source_type": "cover_art_archive",
+            "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250"
+          },
+          "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
+          "release_date": "2026-03-11",
+          "release_kind": "ep",
+          "release_title": "LOVE CATCHER",
+          "release_format": "ep"
+        },
         {
           "stream": "album",
           "artwork": {
@@ -187,21 +204,21 @@
         }
       ],
       "latest_release": {
-        "stream": "song",
+        "stream": "album",
         "artwork": {
           "artwork_status": "verified",
           "is_placeholder": false,
-          "cover_image_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c/front",
-          "artwork_provenance": "releaseHistory.releases.source",
-          "artwork_source_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c",
+          "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
+          "artwork_provenance": "group_latest_release_since_2025-06-01_mb.source",
+          "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
           "artwork_source_type": "cover_art_archive",
-          "thumbnail_image_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c/front-250"
+          "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250"
         },
-        "release_id": "0363f526-e841-560d-940d-541a4e536e4e",
-        "release_date": "2025-11-26",
-        "release_kind": "single",
-        "release_title": "STAR!",
-        "release_format": "single"
+        "release_id": "cbc23da6-08cd-5cc9-991c-a3638f493d45",
+        "release_date": "2026-03-11",
+        "release_kind": "ep",
+        "release_title": "LOVE CATCHER",
+        "release_format": "ep"
       },
       "official_links": {
         "x": "https://x.com/YENA_OFFICIAL",

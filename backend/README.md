@@ -42,6 +42,7 @@ cut-over surface의 primary read path는 API이고, committed JSON은 transition
 - `requirements-import.txt`
   - Python importer dependency note
 - repo root Python builders
+  - `build_entity_metadata_acquisition.py`
   - `build_canonical_entity_metadata.py`
   - `build_release_artwork_catalog.py`
   - `build_entity_asset_coverage_report.py`
@@ -99,6 +100,8 @@ workflow에서는 `MOBILE_PUSH_DELIVERY_ENABLED=true`일 때만 실제 fanout을
 
 - canonical entity field source-of-truth export:
   - `canonical_entity_metadata.json`
+- reviewed acquisition overlay used before canonical field selection:
+  - `entity_metadata_acquisition.json`
 - entity field coverage report:
   - `backend/reports/entity_asset_coverage_report.json`
   - `backend/reports/entity_asset_coverage_report.md`
@@ -108,6 +111,7 @@ workflow에서는 `MOBILE_PUSH_DELIVERY_ENABLED=true`일 때만 실제 fanout을
 예시:
 
 ```bash
+python build_entity_metadata_acquisition.py
 python build_canonical_entity_metadata.py
 python build_release_artwork_catalog.py
 python build_entity_asset_coverage_report.py
