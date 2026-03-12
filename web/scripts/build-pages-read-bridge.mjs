@@ -11,6 +11,8 @@ const bridgeBaseRoot = path.join(webRoot, 'public', '__bridge')
 const bridgeRoot = path.join(bridgeBaseRoot, 'v1')
 const normalizedApiBaseUrl = normalizeApiBaseUrl(process.env.VITE_API_BASE_URL ?? '')
 const declaredTargetEnvironment = normalizeTargetEnvironment(process.env.VITE_BACKEND_TARGET_ENV ?? '')
+const runtimeDecisionReason = String(process.env.VITE_RUNTIME_DECISION_REASON ?? '').trim() || null
+const runtimeDecisionSource = String(process.env.VITE_RUNTIME_DECISION_SOURCE ?? '').trim() || null
 const runtimeMode = normalizedApiBaseUrl ? 'api' : 'bridge'
 const targetClassification = classifyBackendTarget(normalizedApiBaseUrl)
 const targetEnvironment = declaredTargetEnvironment || (runtimeMode === 'bridge' ? 'bridge' : targetClassification)
@@ -168,6 +170,8 @@ await writeBridgeJson(path.join(bridgeRoot, 'meta', 'backend-target.json'), {
     effective_target: effectiveTarget,
     bridge_base_url: '/__bridge/v1',
     diagnostics_path: '/__bridge/v1/meta/backend-target.json',
+    runtime_decision_reason: runtimeDecisionReason,
+    runtime_decision_source: runtimeDecisionSource,
     surfaces: {
       search: runtimeMode,
       entity_detail: runtimeMode,

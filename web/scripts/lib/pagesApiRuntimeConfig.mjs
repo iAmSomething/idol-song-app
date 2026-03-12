@@ -62,6 +62,7 @@ export async function resolvePagesApiRuntimeConfig({
   repoRoot,
   configuredApiBaseUrl,
   configuredTargetEnvironment,
+  probeApiTarget,
 }) {
   const normalizedConfiguredApiBaseUrl = normalizeApiBaseUrl(configuredApiBaseUrl)
   const normalizedConfiguredTargetEnvironment = normalizeTargetEnvironment(configuredTargetEnvironment)
@@ -99,11 +100,91 @@ export async function resolvePagesApiRuntimeConfig({
     )
   }
 
+  const runtimeProbe = await (probeApiTarget ?? probePagesApiTarget)(resolvedApiBaseUrl)
+
+  if (!runtimeProbe.healthy) {
+    return {
+      apiBaseUrl: '',
+      targetEnvironment: 'bridge',
+      targetClassification: 'bridge',
+      runtimeMode: 'bridge',
+      decisionReason: 'api_target_unhealthy',
+      source: normalizedConfiguredApiBaseUrl ? 'env' : 'backend_freshness_handoff',
+      resolvedApiBaseUrl,
+      resolvedTargetEnvironment,
+      resolvedTargetClassification: resolvedClassification,
+      runtimeProbe,
+      handoffPath,
+    }
+  }
+
   return {
     apiBaseUrl: resolvedApiBaseUrl,
     targetEnvironment: resolvedTargetEnvironment,
     targetClassification: resolvedClassification,
+    runtimeMode: 'api',
+    decisionReason: 'api_target_healthy',
     source: normalizedConfiguredApiBaseUrl ? 'env' : 'backend_freshness_handoff',
+    resolvedApiBaseUrl,
+    resolvedTargetEnvironment,
+    resolvedTargetClassification: resolvedClassification,
+    runtimeProbe,
     handoffPath,
+  }
+}
+
+export async function probePagesApiTarget(
+  apiBaseUrl,
+  {
+    fetchImpl = fetch,
+    timeoutMs = 5000,
+    probePaths = ['/health', '/ready'],
+  } = {},
+) {
+  const normalizedApiBaseUrl = normalizeApiBaseUrl(apiBaseUrl)
+
+  for (const probePath of probePaths) {
+    const probeUrl = `${normalizedApiBaseUrl}${probePath}`
+    try {
+      const response = await fetchImpl(probeUrl, {
+        method: 'GET',
+        redirect: 'follow',
+        signal: AbortSignal.timeout(timeoutMs),
+      })
+
+      if (response.ok) {
+        return {
+          healthy: true,
+          probeUrl,
+          probePath,
+          status: response.status,
+          error: null,
+        }
+      }
+
+      return {
+        healthy: false,
+        probeUrl,
+        probePath,
+        status: response.status,
+        error: `unexpected_status_${response.status}`,
+      }
+    } catch (error) {
+      return {
+        healthy: false,
+        probeUrl,
+        probePath,
+        status: null,
+        error: error instanceof Error ? error.message : String(error),
+      }
+    }
+  }
+
+  return {
+    healthy: false,
+    probeUrl: null,
+    probePath: null,
+    status: null,
+    error: 'no_probe_paths',
   }
 }

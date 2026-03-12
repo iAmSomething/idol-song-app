@@ -19,7 +19,7 @@
 - shipped web surface는 backend read API만 primary runtime source로 사용한다.
 - committed JSON snapshot과 bridge export는 inspection/debug/export/reference artifact 역할만 가진다.
 - runtime regression guard가 local dataset direct import 회귀를 막는다.
-- Pages production deploy는 backend freshness handoff가 가리키는 production API URL을 active runtime target으로 사용한다.
+- Pages production deploy는 backend freshness handoff가 가리키는 production API URL을 우선 target으로 해석하고, target이 healthy할 때만 active runtime target으로 사용한다.
 
 관련 근거:
 
@@ -58,13 +58,13 @@
 현재 repo는 implementation 관점에서 아래까지 도달했다.
 
 - web cut-over surface는 backend-primary runtime으로 정리되어 있다.
-- Pages deploy는 `bridge`가 아니라 production backend API를 active runtime target으로 빌드한다.
+- Pages deploy는 production backend API를 우선 target으로 해석한다. 다만 target이 unhealthy하면 broken live runtime 대신 bridge mode로 내려간다.
 - mobile preview / production profile은 backend-primary runtime으로 정리되어 있다.
 - scheduled workflow는 `web/src/data`를 운영 truth로 커밋하지 않는다.
 - committed JSON snapshot과 bridge export는 demoted artifact로만 남는다.
 
-즉, 남아 있는 blocker는 더 이상 "client가 JSON을 primary runtime source로 쓴다"가 아니다.
-남아 있는 문제는 preview host / live runtime evidence / data completeness 같은 운영/품질 blocker다.
+즉, 남아 있는 blocker는 더 이상 "client가 JSON을 primary runtime source로 쓴다"만이 아니다.
+남아 있는 문제는 preview host / production API health / live runtime evidence / data completeness 같은 운영/품질 blocker다.
 
 ## 4. Remaining Linked Blockers
 
