@@ -50,7 +50,7 @@
 | backend-vs-JSON parity | `python3 build_backend_json_parity_report.py` | `backend/reports/backend_json_parity_report.json` |
 | endpoint shadow verify | `cd backend && npm run shadow:verify` | `backend/reports/backend_shadow_read_report.json` |
 | runtime latency / error sample | `cd backend && npm run runtime:measure -- --base-url <url>` | `backend/reports/read_api_runtime_measurements.json` |
-| worker cadence sample | `cd backend && npm run worker:cadence` | `backend/reports/worker_cadence_report.json` |
+| worker cadence sample | `cd backend && npm run worker:cadence` | `backend/reports/worker_cadence_report.json`, `backend/reports/workflow_schedule_diagnostics.json` |
 | combined runtime gate | `cd backend && npm run runtime:gate` | `backend/reports/runtime_gate_report.json` |
 | migration readiness scorecard | `cd backend && npm run migration:scorecard` | `backend/reports/migration_readiness_scorecard.json`, `backend/reports/migration_readiness_scorecard.md` |
 
@@ -135,7 +135,7 @@ cd ..
 - runtime gate가 `fail`이면 refresh는 끝났더라도 cutover 근거로 쓰지 않는다.
 - migration readiness scorecard에서 blocker-grade category가 `fail`이면 milestone / cutover decision을 advance하지 않는다.
 - worker cadence가 `warming_up`면 `created_at` 기준 first due를 보고 다음 scheduled sample을 기다린다.
-- worker cadence가 `scheduled_evidence_missing`면 `scheduled_runs=0` 자체가 아니라 "expected window를 놓쳤다"는 의미로 보고, workflow enablement / schedule delivery부터 확인한다.
+- worker cadence가 `scheduled_evidence_missing`면 `scheduled_runs=0` 자체가 아니라 "expected window를 놓쳤다"는 의미로 보고, 먼저 `workflow_schedule_diagnostics.json`에서 repo default branch / Actions permissions / workflow state / actionable hint를 확인한 뒤 workflow enablement / schedule delivery를 조사한다.
 
 ## 6. Representative Refresh Path
 

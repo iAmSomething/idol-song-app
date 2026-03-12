@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-12T08:03:35.379Z",
-  "bundle_id": "post-sync-verification-368ed485b22b",
+  "generated_at": "2026-03-12T08:28:08.219Z",
+  "bundle_id": "post-sync-verification-42aeae5e1f6f",
   "bundle_kind": "post-sync-verification",
   "cadence_profile": "daily-upcoming",
   "source": {
@@ -44,8 +44,14 @@
     },
     "worker_cadence": {
       "path": "reports/worker_cadence_report.json",
-      "generated_at": "2026-03-12T08:02:36.197Z",
+      "generated_at": "2026-03-12T08:28:07.937Z",
       "primary_path_key": "daily_upcoming"
+    },
+    "workflow_schedule_diagnostics": {
+      "path": "reports/workflow_schedule_diagnostics.json",
+      "generated_at": "2026-03-12T08:28:07.937Z",
+      "hint_count": 1,
+      "workflow_count": 2
     },
     "service_link_gap_queues": {
       "path": "reports/service_link_gap_queues.json",
@@ -76,7 +82,7 @@
     }
   },
   "summary_lines": [
-    "bundle id: post-sync-verification-368ed485b22b",
+    "bundle id: post-sync-verification-42aeae5e1f6f",
     "bundle kind: post-sync-verification",
     "cadence profile: daily-upcoming",
     "workflow: manual"

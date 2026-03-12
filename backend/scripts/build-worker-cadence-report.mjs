@@ -2,15 +2,19 @@
 
 import { execFile } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { dirname, relative, resolve } from 'node:path';
 import { promisify } from 'node:util';
 
-import { buildScheduledEvidenceSummary } from './lib/workerCadenceEvidence.mjs';
+import {
+  buildScheduledEvidenceSummary,
+  buildWorkflowScheduleDiagnosticsReport,
+} from './lib/workerCadenceEvidence.mjs';
 
 const execFileAsync = promisify(execFile);
 const DEFAULT_LIMIT = 12;
 const DEFAULT_REPO = 'iAmSomething/idol-song-app';
 const DEFAULT_REPORT_PATH = resolve(process.cwd(), './reports/worker_cadence_report.json');
+const DEFAULT_DIAGNOSTICS_PATH = resolve(process.cwd(), './reports/workflow_schedule_diagnostics.json');
 
 const DEFAULT_WORKFLOW_CONFIGS = [
   {
@@ -32,6 +36,7 @@ const DEFAULT_WORKFLOW_CONFIGS = [
     ],
     summary_artifacts: [
       'backend/reports/worker_cadence_report.json',
+      'backend/reports/workflow_schedule_diagnostics.json',
       'backend/reports/report_bundle_metadata.json',
       'backend/reports/canonical_null_coverage_report.json',
       'backend/reports/canonical_null_recheck_queue.json',
@@ -63,6 +68,7 @@ const DEFAULT_WORKFLOW_CONFIGS = [
     ],
     summary_artifacts: [
       'backend/reports/worker_cadence_report.json',
+      'backend/reports/workflow_schedule_diagnostics.json',
       'backend/reports/report_bundle_metadata.json',
       'backend/reports/canonical_null_coverage_report.json',
       'backend/reports/canonical_null_recheck_queue.json',
@@ -84,6 +90,7 @@ function parseArgs(argv) {
     repo: DEFAULT_REPO,
     limit: DEFAULT_LIMIT,
     reportPath: DEFAULT_REPORT_PATH,
+    diagnosticsPath: DEFAULT_DIAGNOSTICS_PATH,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -120,6 +127,11 @@ function parseArgs(argv) {
     }
     if (value === '--report-path') {
       options.reportPath = resolve(process.cwd(), argv[index + 1]);
+      index += 1;
+      continue;
+    }
+    if (value === '--diagnostics-path') {
+      options.diagnosticsPath = resolve(process.cwd(), argv[index + 1]);
       index += 1;
       continue;
     }
@@ -235,6 +247,28 @@ async function fetchWorkflowMetadata({ repo, workflow }) {
     }
     throw error;
   }
+}
+
+async function fetchRepositoryMetadata({ repo }) {
+  const { stdout } = await execFileAsync('gh', [
+    'api',
+    `repos/${repo}`,
+    '--jq',
+    '{default_branch, archived, disabled, private, pushed_at, updated_at}',
+  ]);
+  return JSON.parse(stdout);
+}
+
+async function fetchActionsPermissions({ repo }) {
+  const [actionsPermissionsResult, workflowPermissionsResult] = await Promise.all([
+    execFileAsync('gh', ['api', `repos/${repo}/actions/permissions`]),
+    execFileAsync('gh', ['api', `repos/${repo}/actions/permissions/workflow`]),
+  ]);
+
+  return {
+    actionsPermissions: JSON.parse(actionsPermissionsResult.stdout),
+    workflowPermissions: JSON.parse(workflowPermissionsResult.stdout),
+  };
 }
 
 function summarizeRuns({ overallRuns, scheduledRuns, scheduledTotalCount }) {
@@ -385,27 +419,31 @@ function buildSummaryLines(paths, primaryPathKey) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const pathReports = await Promise.all(
-    options.workflowConfigs.map(async (config) => {
-      const [workflowData, scheduledWorkflowData, workflowMetadata] = await Promise.all([
-        fetchWorkflowRuns({
-          repo: options.repo,
-          workflow: config.workflow,
-          limit: options.limit,
-        }),
-        fetchScheduledWorkflowRuns({
-          repo: options.repo,
-          workflow: config.workflow,
-          limit: options.limit,
-        }),
-        fetchWorkflowMetadata({
-          repo: options.repo,
-          workflow: config.workflow,
-        }),
-      ]);
-      return buildPathReport(config, workflowData, scheduledWorkflowData, workflowMetadata, options.limit);
-    }),
-  );
+  const [{ actionsPermissions, workflowPermissions }, repositoryMetadata, pathReports] = await Promise.all([
+    fetchActionsPermissions({ repo: options.repo }),
+    fetchRepositoryMetadata({ repo: options.repo }),
+    Promise.all(
+      options.workflowConfigs.map(async (config) => {
+        const [workflowData, scheduledWorkflowData, workflowMetadata] = await Promise.all([
+          fetchWorkflowRuns({
+            repo: options.repo,
+            workflow: config.workflow,
+            limit: options.limit,
+          }),
+          fetchScheduledWorkflowRuns({
+            repo: options.repo,
+            workflow: config.workflow,
+            limit: options.limit,
+          }),
+          fetchWorkflowMetadata({
+            repo: options.repo,
+            workflow: config.workflow,
+          }),
+        ]);
+        return buildPathReport(config, workflowData, scheduledWorkflowData, workflowMetadata, options.limit);
+      }),
+    ),
+  ]);
 
   const primaryPath =
     pathReports.find((entry) => entry.key === 'daily_upcoming') ??
@@ -442,6 +480,7 @@ async function main() {
     generated_at: new Date().toISOString(),
     repo: options.repo,
     sample_limit: options.limit,
+    diagnostics_report_path: relative(process.cwd(), options.diagnosticsPath),
     primary_path_key: primaryPath.key,
     summary_lines: buildSummaryLines(pathReports, primaryPath.key),
     topology,
@@ -455,8 +494,39 @@ async function main() {
     latest_scheduled_runs: primaryPath.latest_scheduled_runs,
   };
 
+  const diagnosticsReport = buildWorkflowScheduleDiagnosticsReport({
+    repo: options.repo,
+    repository: repositoryMetadata,
+    actionsPermissions,
+    workflowPermissions,
+    workflowDiagnostics: pathReports.map((entry) => ({
+      key: entry.key,
+      workflow: entry.workflow,
+      workflow_registered: entry.workflow_registered,
+      workflow_state: entry.workflow_metadata.state,
+      workflow_html_url: entry.workflow_metadata.html_url,
+      cadence_label: entry.cadence_label,
+      cadence_status: entry.cadence_status,
+      schedule_expectation: entry.schedule_expectation,
+      workflow_created_at: entry.workflow_metadata.created_at,
+      workflow_updated_at: entry.workflow_metadata.updated_at,
+      observed_scheduled_runs: entry.scheduled_evidence.observed_scheduled_runs,
+      expected_scheduled_runs_by_now: entry.scheduled_evidence.expected_scheduled_runs_by_now,
+      missed_scheduled_windows: entry.scheduled_evidence.missed_scheduled_windows,
+      first_expected_run_at: entry.scheduled_evidence.first_expected_run_at,
+      next_expected_run_at: entry.scheduled_evidence.next_expected_run_at,
+      last_success_at: entry.cadence.last_success_at,
+      last_success_age_hours: entry.cadence.last_success_age_hours,
+      manual_runs: entry.totals.manual_runs,
+      latest_run: entry.latest_runs[0] ?? null,
+      latest_scheduled_run: entry.latest_scheduled_runs[0] ?? null,
+    })),
+  });
+
   await mkdir(dirname(options.reportPath), { recursive: true });
+  await mkdir(dirname(options.diagnosticsPath), { recursive: true });
   await writeFile(options.reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
+  await writeFile(options.diagnosticsPath, `${JSON.stringify(diagnosticsReport, null, 2)}\n`, 'utf8');
   console.log(JSON.stringify(report, null, 2));
 }
 

@@ -23,6 +23,11 @@ const DEFAULT_NULL_COVERAGE_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'can
 const DEFAULT_NULL_RECHECK_QUEUE_PATH = path.join(BACKEND_DIR, 'reports', 'canonical_null_recheck_queue.json');
 const DEFAULT_NULL_TREND_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'null_coverage_trend_report.json');
 const DEFAULT_WORKER_CADENCE_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'worker_cadence_report.json');
+const DEFAULT_WORKFLOW_SCHEDULE_DIAGNOSTICS_REPORT_PATH = path.join(
+  BACKEND_DIR,
+  'reports',
+  'workflow_schedule_diagnostics.json',
+);
 const DEFAULT_SERVICE_LINK_GAP_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'service_link_gap_queues.json');
 const DEFAULT_TITLE_TRACK_GAP_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'title_track_gap_queue.json');
 const DEFAULT_ENTITY_IDENTITY_WORKBENCH_REPORT_PATH = path.join(BACKEND_DIR, 'reports', 'entity_identity_workbench.json');
@@ -48,6 +53,7 @@ function parseArgs(argv) {
     nullRecheckQueuePath: DEFAULT_NULL_RECHECK_QUEUE_PATH,
     nullTrendReportPath: DEFAULT_NULL_TREND_REPORT_PATH,
     workerCadenceReportPath: DEFAULT_WORKER_CADENCE_REPORT_PATH,
+    workflowScheduleDiagnosticsReportPath: DEFAULT_WORKFLOW_SCHEDULE_DIAGNOSTICS_REPORT_PATH,
     serviceLinkGapReportPath: DEFAULT_SERVICE_LINK_GAP_REPORT_PATH,
     titleTrackGapReportPath: DEFAULT_TITLE_TRACK_GAP_REPORT_PATH,
     entityIdentityWorkbenchReportPath: DEFAULT_ENTITY_IDENTITY_WORKBENCH_REPORT_PATH,
@@ -105,6 +111,11 @@ function parseArgs(argv) {
     }
     if (value === '--worker-cadence-report-path') {
       options.workerCadenceReportPath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
+      index += 1;
+      continue;
+    }
+    if (value === '--workflow-schedule-diagnostics-report-path') {
+      options.workflowScheduleDiagnosticsReportPath = path.resolve(BACKEND_DIR, argv[index + 1] ?? '');
       index += 1;
       continue;
     }
@@ -180,6 +191,7 @@ async function main() {
     nullRecheckQueue,
     nullTrendReport,
     workerCadenceReport,
+    workflowScheduleDiagnosticsReport,
     serviceLinkGapReport,
     titleTrackGapReport,
     entityIdentityWorkbenchReport,
@@ -195,6 +207,7 @@ async function main() {
       readJsonIfExists(options.nullRecheckQueuePath),
       readJsonIfExists(options.nullTrendReportPath),
       readJsonIfExists(options.workerCadenceReportPath),
+      readJsonIfExists(options.workflowScheduleDiagnosticsReportPath),
       readJsonIfExists(options.serviceLinkGapReportPath),
       readJsonIfExists(options.titleTrackGapReportPath),
       readJsonIfExists(options.entityIdentityWorkbenchReportPath),
@@ -231,6 +244,17 @@ async function main() {
     workerCadenceReference: buildReportReference(BACKEND_DIR, options.workerCadenceReportPath, workerCadenceReport, {
       primary_path_key: workerCadenceReport?.primary_path_key ?? null,
     }),
+    workflowScheduleDiagnosticsReference: buildReportReference(
+      BACKEND_DIR,
+      options.workflowScheduleDiagnosticsReportPath,
+      workflowScheduleDiagnosticsReport,
+      {
+        hint_count: workflowScheduleDiagnosticsReport?.actionable_hints?.length ?? null,
+        workflow_count: workflowScheduleDiagnosticsReport
+          ? Object.keys(workflowScheduleDiagnosticsReport.workflows ?? {}).length
+          : null,
+      },
+    ),
     serviceLinkGapReference: buildReportReference(BACKEND_DIR, options.serviceLinkGapReportPath, serviceLinkGapReport, {
       total: serviceLinkGapReport
         ? Object.values(serviceLinkGapReport.counts ?? {}).reduce((accumulator, countEntry) => accumulator + (countEntry.total ?? 0), 0)
