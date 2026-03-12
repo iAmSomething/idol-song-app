@@ -224,7 +224,8 @@ type ReleaseDetailApiSnapshot = {
   canonicalPath: string | null
 }
 
-type ReleaseDetailApiResource = ReleaseDetailApiSnapshot & {
+type ReleaseDetailApiResource = {
+  snapshot: ReleaseDetailApiSnapshot | null
   source: SurfaceStatusSource
   loading: boolean
   errorCode: string | null
@@ -2369,15 +2370,15 @@ function App() {
             ? copy.radarBackendTimeout
             : copy.radarBackendFallback,
   }
-  const selectedTeamFallback = selectedEntitySlug
-    ? buildSyntheticTeamProfile(selectedGroup, selectedEntitySlug)
+  const selectedTeamShellDisplayName = selectedEntitySlug
+    ? selectedGroup ?? humanizeRouteSlug(selectedEntitySlug)
     : null
   const selectedTeamResource = useEntityDetailResource({
     group: selectedGroup,
     entitySlug: selectedEntitySlug,
   })
   const selectedTeam = selectedTeamResource.team
-  const selectedTeamPageGroup = selectedTeam?.group ?? selectedTeamFallback?.group ?? null
+  const selectedTeamPageGroup = selectedTeam?.group ?? selectedGroup ?? selectedTeamShellDisplayName ?? null
   const selectedTeamIsPinned = selectedTeamPageGroup ? myTeamsSet.has(selectedTeamPageGroup) : false
   const myTeamsLimitReached = myTeams.length >= MY_TEAMS_LIMIT
   const compareTeam = null
@@ -2867,7 +2868,7 @@ function App() {
           onBack={closeReleaseDetail}
           onOpenTeamPage={openTeamPage}
         />
-      ) : selectedEntitySlug && selectedTeamFallback && !selectedTeam ? (
+      ) : selectedEntitySlug && selectedTeamShellDisplayName && !selectedTeam ? (
         <main className="team-page">
           <section className="panel team-page-hero">
             <div className="team-page-head">
@@ -2875,22 +2876,11 @@ function App() {
                 <button type="button" className="ghost-button" onClick={closeTeamPage}>
                   {teamCopy.back}
                 </button>
-                <button
-                  type="button"
-                  className={`ghost-button ghost-button-subtle ${selectedTeamIsPinned ? 'my-team-button-active' : ''}`}
-                  onClick={() => toggleMyTeam(selectedTeamFallback.group)}
-                  disabled={myTeamsLimitReached && !selectedTeamIsPinned}
-                >
-                  {selectedTeamIsPinned ? teamCopy.unpinAction : teamCopy.pinAction}
-                </button>
               </div>
               <div className="team-page-head-meta">
                 {selectedTeamIsPinned ? <span className="team-focus-badge">{teamCopy.pinnedLabel}</span> : null}
               </div>
             </div>
-            {myTeamsLimitReached && !selectedTeamIsPinned ? (
-              <p className="team-focus-note">{teamCopy.pinLimitReached}</p>
-            ) : null}
             <SurfaceRuntimeStatus
               language={language}
               source={selectedTeamSourceStatus.source}
@@ -2903,19 +2893,11 @@ function App() {
             <div className="team-page-summary">
               <div className="team-title-wrap">
                 <div className="team-avatar" aria-hidden="true">
-                  {selectedTeamFallback.badgeImageUrl || selectedTeamFallback.representativeImageUrl ? (
-                    <img
-                      className="team-avatar-image"
-                      src={selectedTeamFallback.badgeImageUrl ?? selectedTeamFallback.representativeImageUrl ?? ''}
-                      alt=""
-                    />
-                  ) : (
-                    getTeamMonogram(selectedTeamFallback.group)
-                  )}
+                  {getTeamMonogram(selectedTeamShellDisplayName)}
                 </div>
                 <div>
                   <p className="panel-label">{teamCopy.panelLabel}</p>
-                  <h2>{selectedTeamFallback.displayName}</h2>
+                  <h2>{selectedTeamShellDisplayName}</h2>
                   <p className="hero-text team-summary-copy">
                     {selectedTeamResource.loading
                       ? teamCopy.backendLoadingBody
@@ -3929,16 +3911,20 @@ function ReleaseDetailPage({
   const teamCopy = TEAM_COPY[language]
   const displayName = getTeamDisplayName(group)
   const releaseDetailResource = useReleaseDetailResource({ album, group, entitySlug })
-  const artwork = releaseDetailResource.artwork
-  const releaseDetail = releaseDetailResource.detail
-  const releaseEnrichment = buildFallbackReleaseEnrichment(group, album.title, album.date, album.stream, album.release_kind)
-  const releaseDisplayTitle = releaseDetail.isFallback ? album.title : releaseDetail.release_title
-  const hasCanonicalTracks = releaseDetail.tracks.length > 0
+  const releaseDetailSnapshot = releaseDetailResource.snapshot
+  const artwork =
+    releaseDetailSnapshot?.artwork ?? buildPlaceholderReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind)
+  const releaseDetail = releaseDetailSnapshot?.detail ?? null
+  const releaseEnrichment = releaseDetail
+    ? buildFallbackReleaseEnrichment(group, album.title, album.date, album.stream, album.release_kind)
+    : null
+  const releaseDisplayTitle = releaseDetail?.isFallback ? album.title : releaseDetail?.release_title ?? album.title
+  const hasCanonicalTracks = releaseDetail ? releaseDetail.tracks.length > 0 : false
   const canonicalHandoffs = buildReleaseDetailHandoffs(releaseDetail)
-  const mv = getReleaseDetailMvUrls(releaseDetail)
-  const primaryTitleTrack = getPrimaryTitleTrackTitle(releaseDetail) || album.title
+  const mv = releaseDetail ? getReleaseDetailMvUrls(releaseDetail) : { canonicalUrl: '', embedUrl: '' }
+  const primaryTitleTrack = releaseDetail ? getPrimaryTitleTrackTitle(releaseDetail) || album.title : album.title
   const mvSearchUrl = mv.canonicalUrl ? '' : buildYouTubeMvSearchUrl(`${group} ${primaryTitleTrack}`.trim())
-  const releaseStatusDisclosure = buildReleaseCanonicalStatusDisclosure(releaseDetail, language)
+  const releaseStatusDisclosure = releaseDetail ? buildReleaseCanonicalStatusDisclosure(releaseDetail, language) : null
   const releaseDetailSourceStatus = {
     source: releaseDetailResource.source,
     errorCode: releaseDetailResource.loading ? null : releaseDetailResource.errorCode,
@@ -4023,7 +4009,7 @@ function ReleaseDetailPage({
 
         <section className="track-preview">
           <p className="panel-label">{teamCopy.trackPreview}</p>
-          {hasCanonicalTracks ? (
+          {releaseDetail && hasCanonicalTracks ? (
             <>
               <div className="track-list">
                 {releaseDetail.tracks.map((track) => (
@@ -4043,10 +4029,15 @@ function ReleaseDetailPage({
               </div>
               <p className="hero-text drawer-copy">{teamCopy.trackPreviewHint}</p>
             </>
-          ) : (
+          ) : releaseDetail ? (
             <div className="tracklist-incomplete">
               <strong>{teamCopy.trackDataIncompleteTitle}</strong>
               <p>{teamCopy.trackDataIncomplete}</p>
+            </div>
+          ) : (
+            <div className="tracklist-incomplete">
+              <strong>{teamCopy.backendUnavailable}</strong>
+              <p>{teamCopy.releaseDetailBackendUnavailable}</p>
             </div>
           )}
         </section>
@@ -4062,7 +4053,7 @@ function ReleaseDetailPage({
           </section>
         ) : null}
 
-        {releaseDetail.notes ? (
+        {releaseDetail?.notes ? (
           <section className="track-preview">
             <p className="panel-label">{teamCopy.releaseNotes}</p>
             <p className="hero-text drawer-copy">{releaseDetail.notes}</p>
@@ -4105,11 +4096,13 @@ function ReleaseDetailPage({
           )}
         </section>
 
-        <ReleaseEnrichmentSection
-          enrichment={releaseEnrichment}
-          language={language}
-          displayDateFormatter={displayDateFormatter}
-        />
+        {releaseEnrichment ? (
+          <ReleaseEnrichmentSection
+            enrichment={releaseEnrichment}
+            language={language}
+            displayDateFormatter={displayDateFormatter}
+          />
+        ) : null}
 
         <p className="hero-text drawer-copy">{teamCopy.drawerCopy}</p>
         <div className="action-stack">
@@ -7334,29 +7327,6 @@ function buildPlaceholderReleaseArtwork(
   }
 }
 
-function buildPlaceholderReleaseDetail(
-  group: string,
-  releaseTitle: string,
-  releaseDate: string,
-  stream: TeamLatestRelease['stream'] | VerifiedRelease['stream'],
-  releaseKind?: string,
-): ResolvedReleaseDetail {
-  return {
-    group,
-    release_title: releaseTitle,
-    release_date: releaseDate,
-    stream: normalizeReleaseStream(stream, releaseKind),
-    release_kind: releaseKind === 'album' || releaseKind === 'ep' ? releaseKind : 'single',
-    tracks: [],
-    spotify_url: null,
-    youtube_music_url: null,
-    youtube_video_id: null,
-    youtube_video_url: null,
-    notes: '',
-    isFallback: true,
-  }
-}
-
 function buildFallbackReleaseEnrichment(
   group: string,
   releaseTitle: string,
@@ -7687,20 +7657,6 @@ function resolveApiDisplayGroup(entitySlug: string | null | undefined, displayNa
   return normalizedEntitySlug ? humanizeRouteSlug(normalizedEntitySlug) : null
 }
 
-function buildReleaseDetailPlaceholderSnapshot(album: ReleaseDetailApiRequest, group: string): ReleaseDetailApiSnapshot {
-  return {
-    detail: buildPlaceholderReleaseDetail(group, album.title, album.date, album.stream, album.release_kind),
-    artwork: buildPlaceholderReleaseArtwork(group, album.title, album.date, album.stream, album.release_kind),
-    releaseId:
-      album.release_id ??
-      releaseDetailApiIdCache.get(
-        getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind)),
-      ) ??
-      null,
-    canonicalPath: null,
-  }
-}
-
 function buildReleaseDetailLookupUrl(album: ReleaseDetailApiRequest, entitySlug: string) {
   const stream = normalizeReleaseStream(album.stream, album.release_kind)
 
@@ -7982,15 +7938,7 @@ function useReleaseDetailResource({
   group: string
   entitySlug: string
 }): ReleaseDetailApiResource {
-  const requestAlbum: ReleaseDetailApiRequest = {
-    title: album.title,
-    date: album.date,
-    stream: album.stream,
-    release_kind: album.release_kind,
-    release_id: album.release_id,
-  }
   const cacheKey = getReleaseLookupKey(group, album.title, album.date, normalizeReleaseStream(album.stream, album.release_kind))
-  const placeholderSnapshot = buildReleaseDetailPlaceholderSnapshot(requestAlbum, group)
   const cachedSnapshot = releaseDetailApiSnapshotCache.get(cacheKey) ?? null
   const [remoteState, setRemoteState] = useState<{
     cacheKey: string
@@ -8106,18 +8054,20 @@ function useReleaseDetailResource({
 
   const activeSnapshot =
     remoteState.cacheKey === cacheKey
-      ? remoteState.snapshot ?? cachedSnapshot ?? placeholderSnapshot
-      : cachedSnapshot ?? placeholderSnapshot
+      ? remoteState.snapshot ?? cachedSnapshot ?? null
+      : cachedSnapshot ?? null
   const loading = remoteState.cacheKey === cacheKey && remoteState.snapshot === null && remoteState.loading
   const errorCode = remoteState.cacheKey === cacheKey ? remoteState.errorCode : null
   const source: SurfaceStatusSource = !BACKEND_API_BASE_URL
-    ? 'json'
+    ? activeSnapshot || loading
+      ? 'json'
+      : 'backend_unavailable'
     : remoteState.snapshot || cachedSnapshot || remoteState.loading
-        ? 'api'
-        : 'backend_unavailable'
+      ? 'api'
+      : 'backend_unavailable'
 
   return {
-    ...activeSnapshot,
+    snapshot: activeSnapshot,
     source,
     loading,
     errorCode,
