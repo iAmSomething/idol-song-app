@@ -8,7 +8,7 @@ import re
 import time
 import urllib.parse
 import urllib.request
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -23,9 +23,11 @@ DETAILS_PATH = ROOT / "web/src/data/releaseDetails.json"
 OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 REPORT_PATH = ROOT / "mv_coverage_report.json"
 USER_AGENT = "Mozilla/5.0"
-REQUEST_DELAY_SECONDS = 0.35
+REQUEST_DELAY_SECONDS = 0.05
 MAX_RESULTS_PER_QUERY = 8
 MAX_QUERIES_PER_RELEASE = 8
+MAX_TRACK_CANDIDATES_PER_RELEASE = 3
+MAX_NAME_VARIANTS_PER_TRACK_SEARCH = 1
 QUERY_SUFFIXES = ("official mv", "mv")
 HANGUL_PATTERN = re.compile(r"[가-힣]")
 RELEASE_TITLE_FALLBACK_MIN_DATE = "2025-01-01"
@@ -36,6 +38,7 @@ CANDIDATE_TITLE_MARKER_PATTERN = re.compile(
     r"(?i)\b(official|music\s+video|m\/v|mv|performance\s+video|lyric\s+video|track\s+video|visualizer|teaser|shorts?)\b"
 )
 AUTO_ACCEPTED_YOUTUBE_PROVENANCE = "youtube search auto-accepted via allowlist/title/date/view scoring"
+VIDEO_CHANNEL_URL_CACHE: dict[str, str] = {}
 
 
 def load_json(path: Path) -> Any:
@@ -48,6 +51,20 @@ def write_json(path: Path, rows: Any) -> None:
 
 def now_utc() -> datetime:
     return datetime.now(timezone.utc)
+
+
+def infer_release_cohort(release_date_text: str, reference_date: date) -> str:
+    try:
+        release_date = date.fromisoformat(release_date_text)
+    except ValueError:
+        return "unknown"
+
+    age_days = (reference_date - release_date).days
+    if age_days <= 365:
+        return "latest"
+    if age_days <= 365 * 3:
+        return "recent"
+    return "historical"
 
 
 def extract_text(node: dict[str, Any] | None) -> str:
@@ -104,6 +121,7 @@ def build_candidate_channel_url(video: dict[str, Any]) -> str:
     run_sets = [
         video.get("ownerText", {}).get("runs", []),
         video.get("longBylineText", {}).get("runs", []),
+        video.get("shortBylineText", {}).get("runs", []),
     ]
     for runs in run_sets:
         for run in runs:
@@ -128,6 +146,26 @@ def candidate_channel_matches_url(candidate: dict[str, Any], channel_url: str) -
         if value
     }
     return bool(candidate_keys & channel_keys)
+
+
+def resolve_video_channel_url(video_id: str) -> str:
+    cached = VIDEO_CHANNEL_URL_CACHE.get(video_id)
+    if cached is not None:
+        return cached
+
+    watch_url = f"https://www.youtube.com/watch?v={video_id}"
+    request = urllib.request.Request(watch_url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            html = response.read().decode("utf-8", "ignore")
+    except Exception:  # noqa: BLE001
+        VIDEO_CHANNEL_URL_CACHE[video_id] = ""
+        return ""
+
+    alias_urls = youtube_channel_allowlists.extract_youtube_channel_alias_urls(html)
+    resolved = alias_urls[0] if alias_urls else ""
+    VIDEO_CHANNEL_URL_CACHE[video_id] = resolved
+    return resolved
 
 
 def fetch_query_candidates(query: str, reference: datetime) -> list[dict[str, Any]]:
@@ -158,6 +196,8 @@ def fetch_query_candidates(query: str, reference: datetime) -> list[dict[str, An
                 "query": query,
             }
             if candidate["video_id"] and candidate["title"]:
+                if not candidate["channel_url"]:
+                    candidate["channel_url"] = resolve_video_channel_url(candidate["video_id"])
                 candidates.append(candidate)
             if len(candidates) >= MAX_RESULTS_PER_QUERY:
                 return candidates
@@ -263,6 +303,43 @@ def should_attempt_release_title_fallback(detail: dict[str, Any], title_tracks: 
     return detail.get("stream") == "song" or detail.get("release_kind") == "single"
 
 
+def pick_track_search_candidates(detail: dict[str, Any]) -> list[str]:
+    candidates: list[str] = []
+    seen: set[str] = set()
+    for track in detail.get("tracks", []):
+        title = " ".join(str(track.get("title") or "").split()).strip()
+        if not title or TITLE_TRACK_EXCLUSION_PATTERN.search(title):
+            continue
+
+        base_title = release_detail_builder.normalize_base_title(title)
+        if len(base_title) < 3:
+            continue
+
+        key = title.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        candidates.append(title)
+        if len(candidates) >= MAX_TRACK_CANDIDATES_PER_RELEASE:
+            break
+    return candidates
+
+
+def build_track_queries(detail: dict[str, Any], profile: dict[str, Any] | None, track_title: str) -> list[str]:
+    names = pick_name_variants(detail, profile)[:MAX_NAME_VARIANTS_PER_TRACK_SEARCH]
+    queries: list[str] = []
+    seen: set[str] = set()
+    for name in names:
+        for suffix in QUERY_SUFFIXES:
+            query = " ".join(part for part in [name, track_title, suffix] if part).strip()
+            key = query.casefold()
+            if key in seen:
+                continue
+            seen.add(key)
+            queries.append(query)
+    return queries
+
+
 def clean_candidate_title(candidate_title: str, group: str) -> str:
     cleaned = candidate_title
     cleaned = re.sub(r"\[[^\]]*\]", " ", cleaned)
@@ -308,6 +385,115 @@ def infer_title_tracks_from_candidate_title(detail: dict[str, Any], candidate_ti
     return matches if len(matches) == 1 else []
 
 
+def choose_track_search_resolution(
+    detail: dict[str, Any],
+    profile: dict[str, Any] | None,
+    allowlist: dict[str, Any],
+    reference: datetime,
+) -> tuple[dict[str, Any] | None, dict[str, Any] | None]:
+    track_outcomes: list[dict[str, Any]] = []
+    for track_title in pick_track_search_candidates(detail):
+        candidates_by_video_id: dict[str, dict[str, Any]] = {}
+        outcome: dict[str, Any] = {"status": "no_match", "accepted_video_id": None, "candidates": []}
+        for query in build_track_queries(detail, profile, track_title):
+            time.sleep(REQUEST_DELAY_SECONDS)
+            for candidate in fetch_query_candidates(query, reference):
+                existing = candidates_by_video_id.get(candidate["video_id"])
+                if existing is None or candidate["view_count"] > existing["view_count"]:
+                    candidates_by_video_id[candidate["video_id"]] = candidate
+            if not candidates_by_video_id:
+                continue
+
+            outcome = mv_scoring.score_candidates(
+                {
+                    "group": detail["group"],
+                    "release_title": detail["release_title"],
+                    "title_tracks": [track_title],
+                    "release_date": detail["release_date"],
+                    "mv_allowlist_match_keys": allowlist.get("mv_allowlist_match_keys", []),
+                },
+                list(candidates_by_video_id.values()),
+            )
+            if outcome["status"] == "accepted":
+                break
+
+        if not candidates_by_video_id:
+            continue
+
+        top_candidate = outcome["candidates"][0] if outcome["candidates"] else None
+        track_outcomes.append(
+            {
+                "track_title": track_title,
+                "outcome": outcome,
+                "top_candidate": top_candidate,
+            }
+        )
+
+    accepted_tracks = [row for row in track_outcomes if row["outcome"]["status"] == "accepted"]
+    if len(accepted_tracks) == 1:
+        accepted_track = accepted_tracks[0]
+        accepted_candidate = next(
+            candidate
+            for candidate in accepted_track["outcome"]["candidates"]
+            if candidate.get("video_id") == accepted_track["outcome"]["accepted_video_id"]
+        )
+        matched_channel = next(
+            (
+                channel
+                for channel in (allowlist.get("mv_source_channels") or allowlist.get("channels") or [])
+                if candidate_channel_matches_url(accepted_candidate, channel.get("channel_url", ""))
+            ),
+            None,
+        )
+        return (
+            {
+                "group": detail["group"],
+                "release_title": detail["release_title"],
+                "release_date": detail["release_date"],
+                "stream": detail["stream"],
+                "release_kind": detail["release_kind"],
+                "youtube_video_id": accepted_candidate["video_id"],
+                "youtube_video_url": release_detail_builder.build_youtube_video_url(accepted_candidate["video_id"]),
+                "youtube_video_provenance": AUTO_ACCEPTED_YOUTUBE_PROVENANCE,
+                "selected_query": accepted_candidate.get("query", ""),
+                "selected_title": accepted_candidate.get("title", ""),
+                "selected_channel_url": accepted_candidate.get("channel_url", ""),
+                "selected_channel_owner_type": matched_channel.get("owner_type", "unknown") if matched_channel else "unknown",
+                "selected_score": accepted_candidate.get("score", 0),
+                "title_track_basis": "track_search",
+                "inferred_title_tracks": [accepted_track["track_title"]],
+            },
+            None,
+        )
+
+    review_tracks = [row for row in track_outcomes if row["outcome"]["status"] == "needs_review" and row["top_candidate"]]
+    if review_tracks:
+        review_track = max(
+            review_tracks,
+            key=lambda row: row["top_candidate"].get("score", 0),
+        )
+        top_candidate = review_track["top_candidate"]
+        return (
+            None,
+            {
+                "group": detail["group"],
+                "release_title": detail["release_title"],
+                "release_date": detail["release_date"],
+                "stream": detail["stream"],
+                "top_candidate_title": top_candidate.get("title", ""),
+                "top_candidate_channel_url": top_candidate.get("channel_url", ""),
+                "top_candidate_score": top_candidate.get("score", 0),
+                "review_reason": (
+                    "Track-aware search found a likely official MV candidate, but the evidence still requires manual verification."
+                ),
+                "title_track_basis": "track_search",
+                "track_search_candidate": review_track["track_title"],
+            },
+        )
+
+    return None, None
+
+
 def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[str, dict[str, Any]], allowlists_by_group: dict[str, dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     reference = now_utc()
     resolutions: list[dict[str, Any]] = []
@@ -323,8 +509,9 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
             continue
 
         title_tracks = [track["title"] for track in detail.get("tracks", []) if track.get("is_title_track")]
-
-        if not should_attempt_release_title_fallback(detail, title_tracks):
+        release_title_search_enabled = should_attempt_release_title_fallback(detail, title_tracks)
+        track_search_enabled = not title_tracks and bool(pick_track_search_candidates(detail))
+        if not release_title_search_enabled and not track_search_enabled:
             continue
 
         allowlist = allowlists_by_group.get(detail["group"], {})
@@ -334,45 +521,30 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
 
         candidates_by_video_id: dict[str, dict[str, Any]] = {}
         outcome: dict[str, Any] = {"status": "no_match", "accepted_video_id": None, "candidates": []}
-        for query in build_queries(detail, profiles_by_group.get(detail["group"])):
-            time.sleep(REQUEST_DELAY_SECONDS)
-            for candidate in fetch_query_candidates(query, reference):
-                existing = candidates_by_video_id.get(candidate["video_id"])
-                if existing is None or candidate["view_count"] > existing["view_count"]:
-                    candidates_by_video_id[candidate["video_id"]] = candidate
-            if not candidates_by_video_id:
-                continue
+        if release_title_search_enabled:
+            for query in build_queries(detail, profiles_by_group.get(detail["group"])):
+                time.sleep(REQUEST_DELAY_SECONDS)
+                for candidate in fetch_query_candidates(query, reference):
+                    existing = candidates_by_video_id.get(candidate["video_id"])
+                    if existing is None or candidate["view_count"] > existing["view_count"]:
+                        candidates_by_video_id[candidate["video_id"]] = candidate
+                if not candidates_by_video_id:
+                    continue
 
-            outcome = mv_scoring.score_candidates(
-                {
-                    "group": detail["group"],
-                    "release_title": detail["release_title"],
-                    "title_tracks": title_tracks,
-                    "release_date": detail["release_date"],
-                    "mv_allowlist_match_keys": allowlist.get("mv_allowlist_match_keys", []),
-                },
-                list(candidates_by_video_id.values()),
-            )
-            if outcome["status"] == "accepted":
-                break
+                outcome = mv_scoring.score_candidates(
+                    {
+                        "group": detail["group"],
+                        "release_title": detail["release_title"],
+                        "title_tracks": title_tracks,
+                        "release_date": detail["release_date"],
+                        "mv_allowlist_match_keys": allowlist.get("mv_allowlist_match_keys", []),
+                    },
+                    list(candidates_by_video_id.values()),
+                )
+                if outcome["status"] == "accepted":
+                    break
 
-        if not candidates_by_video_id:
-            review_rows.append(
-                {
-                    "group": detail["group"],
-                    "release_title": detail["release_title"],
-                    "release_date": detail["release_date"],
-                    "stream": detail["stream"],
-                    "top_candidate_title": "",
-                    "top_candidate_channel_url": "",
-                    "top_candidate_score": 0,
-                    "review_reason": "No allowlisted official MV candidate was found from the generated historical search queries.",
-                    "title_track_basis": "release_title_fallback" if not title_tracks else "title_track",
-                }
-            )
-            continue
-
-        if outcome["status"] == "accepted" and outcome["accepted_video_id"]:
+        if candidates_by_video_id and outcome["status"] == "accepted" and outcome["accepted_video_id"]:
             accepted = next(
                 candidate for candidate in outcome["candidates"] if candidate.get("video_id") == outcome["accepted_video_id"]
             )
@@ -406,7 +578,21 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
             )
             continue
 
-        if outcome["status"] == "needs_review" and outcome["candidates"]:
+        if not title_tracks:
+            track_resolution, track_review_row = choose_track_search_resolution(
+                detail,
+                profiles_by_group.get(detail["group"]),
+                allowlist,
+                reference,
+            )
+            if track_resolution:
+                resolutions.append(track_resolution)
+                continue
+            if track_review_row:
+                review_rows.append(track_review_row)
+                continue
+
+        if candidates_by_video_id and outcome["status"] == "needs_review" and outcome["candidates"]:
             top = outcome["candidates"][0]
             review_rows.append(
                 {
@@ -421,6 +607,21 @@ def choose_resolutions(details: list[dict[str, Any]], profiles_by_group: dict[st
                     "title_track_basis": "release_title_fallback" if not title_tracks else "title_track",
                 }
             )
+            continue
+
+        review_rows.append(
+            {
+                "group": detail["group"],
+                "release_title": detail["release_title"],
+                "release_date": detail["release_date"],
+                "stream": detail["stream"],
+                "top_candidate_title": "",
+                "top_candidate_channel_url": "",
+                "top_candidate_score": 0,
+                "review_reason": "No allowlisted official MV candidate was found from the generated historical search queries.",
+                "title_track_basis": "release_title_fallback" if not title_tracks else "title_track",
+            }
+        )
 
     return resolutions, review_rows
 
@@ -558,6 +759,10 @@ def main() -> None:
         "--groups",
         help="Comma-separated list of groups to limit the current resolution pass.",
     )
+    parser.add_argument(
+        "--cohorts",
+        help="Comma-separated release cohorts to scope the pass (latest,recent,historical).",
+    )
     args = parser.parse_args()
 
     details = load_json(DETAILS_PATH)
@@ -570,6 +775,16 @@ def main() -> None:
     if args.groups:
         scoped_groups = {value.strip() for value in args.groups.split(",") if value.strip()}
         details = [detail for detail in details if detail["group"] in scoped_groups]
+
+    scoped_cohorts = None
+    if args.cohorts:
+        scoped_cohorts = {value.strip() for value in args.cohorts.split(",") if value.strip()}
+        reference_date = now_utc().date()
+        details = [
+            detail
+            for detail in details
+            if infer_release_cohort(detail.get("release_date", ""), reference_date) in scoped_cohorts
+        ]
 
     resolutions, review_rows = choose_resolutions(details, profiles_by_group, allowlists_by_group)
     reevaluated_keys = {
@@ -594,6 +809,10 @@ def main() -> None:
             "groups": sorted(scoped_groups),
             "scoped_rows": len(details),
         }
+    if scoped_cohorts is not None:
+        report.setdefault("execution_scope", {})
+        report["execution_scope"]["cohorts"] = sorted(scoped_cohorts)
+        report["execution_scope"]["scoped_rows"] = len(details)
 
     write_json(OVERRIDES_PATH, merged_overrides)
     write_json(DETAILS_PATH, updated_details)

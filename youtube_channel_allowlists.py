@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import re
+import urllib.request
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -11,6 +13,14 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parent
 PROFILES_PATH = ROOT / "web/src/data/artistProfiles.json"
 OUTPUT_PATH = ROOT / "web/src/data/youtubeChannelAllowlists.json"
+USER_AGENT = "Mozilla/5.0"
+REQUEST_TIMEOUT_SECONDS = 15
+YOUTUBE_CHANNEL_ID_PATTERNS = (
+    re.compile(r'"channelId":"(UC[\w-]{20,})"'),
+    re.compile(r'"externalId":"(UC[\w-]{20,})"'),
+    re.compile(r'"browseId":"(UC[\w-]{20,})"'),
+)
+YOUTUBE_CANONICAL_BASE_PATTERN = re.compile(r'"canonicalBaseUrl":"([^"]+)"')
 
 AGENCY_MV_CHANNELS: dict[str, dict[str, str]] = {
     "HYBE Labels": {
@@ -133,13 +143,74 @@ def extract_youtube_channel_match_keys(channel_url: str) -> list[str]:
     return deduped
 
 
+def fetch_text(url: str) -> str:
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT_SECONDS) as response:
+        return response.read().decode("utf-8", "ignore")
+
+
+def extract_youtube_channel_alias_urls(html: str) -> list[str]:
+    aliases: list[str] = []
+
+    for pattern in YOUTUBE_CHANNEL_ID_PATTERNS:
+        channel_id_match = pattern.search(html)
+        if channel_id_match:
+            aliases.append(f"https://www.youtube.com/channel/{channel_id_match.group(1)}")
+            break
+
+    canonical_match = YOUTUBE_CANONICAL_BASE_PATTERN.search(html)
+    if canonical_match:
+        canonical_path = canonical_match.group(1)
+        if canonical_path.startswith(("/@", "/channel/")):
+            aliases.append(f"https://www.youtube.com{canonical_path}")
+
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for alias in aliases:
+        normalized = alias.rstrip("/")
+        if normalized in seen:
+            continue
+        seen.add(normalized)
+        deduped.append(normalized)
+    return deduped
+
+
+def resolve_youtube_channel_alias_urls(
+    channel_url: str,
+    fetcher: Any = fetch_text,
+) -> list[str]:
+    parsed = urlparse(channel_url)
+    if "youtube.com" not in parsed.netloc.lower():
+        return []
+
+    path = parsed.path.strip("/")
+    if not path or path.startswith("channel/"):
+        return []
+
+    try:
+        html = fetcher(channel_url)
+    except Exception:  # noqa: BLE001
+        return []
+    return extract_youtube_channel_alias_urls(html)
+
+
 def build_source(
     channel_url: str,
     channel_label: str,
     owner_type: str,
     display_in_team_links: bool,
     provenance: str,
+    fetcher: Any = fetch_text,
 ) -> dict[str, Any]:
+    alias_urls = resolve_youtube_channel_alias_urls(channel_url, fetcher=fetcher)
+    match_keys = dedupe_strings(
+        extract_youtube_channel_match_keys(channel_url)
+        + [
+            match_key
+            for alias_url in alias_urls
+            for match_key in extract_youtube_channel_match_keys(alias_url)
+        ]
+    )
     return {
         "channel_url": channel_url,
         "channel_label": channel_label,
@@ -147,7 +218,8 @@ def build_source(
         "allow_mv_uploads": True,
         "display_in_team_links": display_in_team_links,
         "provenance": provenance,
-        "match_keys": extract_youtube_channel_match_keys(channel_url),
+        "resolved_alias_urls": alias_urls,
+        "match_keys": match_keys,
     }
 
 
