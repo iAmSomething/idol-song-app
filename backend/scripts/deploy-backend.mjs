@@ -77,7 +77,6 @@ async function main() {
     '--yes',
     '@railway/cli',
     'up',
-    '--ci',
     '--project',
     projectId,
     '--environment',
@@ -85,6 +84,12 @@ async function main() {
     '--service',
     serviceId,
   ];
+
+  if (process.env.CI?.trim()) {
+    args.push('--detach');
+  } else {
+    args.push('--ci');
+  }
 
   console.log(`backend deploy target: ${target}`);
   console.log(`backend deploy mode: ${mode}`);
