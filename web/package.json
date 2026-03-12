@@ -9,6 +9,7 @@
     "build": "npm run build:pages-read-bridge && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "test:pages-read-bridge": "node --test ./scripts/lib/pagesReadBridgeCalendar.test.mjs ./scripts/lib/pagesReadBridgeCoverage.test.mjs",
     "test:runtime-policy": "node --test ./scripts/lib/runtimeImportBoundary.test.mjs",
     "verify:runtime-policy": "node ./scripts/verify-runtime-policy.mjs",
     "verify:timeout": "tsx ./scripts/verify-backend-timeout.ts",

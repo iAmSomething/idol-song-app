@@ -29,8 +29,13 @@ const releaseRowByGroup = new Map(releaseRows.map((row) => [row.group, row]))
 const releaseHistoryByGroup = new Map(releaseHistory.map((row) => [row.group, row]))
 const watchlistByGroup = new Map(watchlist.map((row) => [row.group, row]))
 const bestReleaseDetailRows = selectBestReleaseDetailRows(releaseDetails)
+const bridgeReleaseDetailRows = buildBridgeReleaseDetailRows({
+  explicitRows: bestReleaseDetailRows,
+  releaseRows,
+  releaseHistoryRows: releaseHistory,
+})
 const releaseDetailByKey = new Map(
-  bestReleaseDetailRows.map((row) => [
+  bridgeReleaseDetailRows.map((row) => [
     getReleaseKey(row.group, row.release_title, row.release_date, normalizeReleaseStream(row.stream, row.release_kind)),
     row,
   ]),
@@ -53,7 +58,7 @@ await mkdir(path.join(bridgeRoot, 'search'), { recursive: true })
 const releaseLookupEntries = new Map()
 let releaseDetailCount = 0
 
-for (const row of bestReleaseDetailRows) {
+for (const row of bridgeReleaseDetailRows) {
   const stream = normalizeReleaseStream(row.stream, row.release_kind)
   const releaseKey = getReleaseKey(row.group, row.release_title, row.release_date, stream)
   const releaseId = `bridge-release-${hashBridgeKey(releaseKey)}`
@@ -117,7 +122,7 @@ for (const [entitySlug, payload] of entityPayloads) {
 
 const searchIndexPayload = buildBridgeSearchIndex({
   entityPayloads,
-  releaseDetailRows: bestReleaseDetailRows,
+  releaseDetailRows: bridgeReleaseDetailRows,
   upcomingRows: upcomingCandidates,
   artistProfileByGroup,
   suppressedUpcomingState: collectSuppressedUpcomingState(releaseRows),
@@ -838,6 +843,87 @@ function buildReleaseDetailPayload(row, releaseId, artwork) {
           }
         : null,
     notes: readString(row.notes) || null,
+  }
+}
+
+function buildBridgeReleaseDetailRows({ explicitRows, releaseRows, releaseHistoryRows }) {
+  const rowsByKey = new Map()
+
+  for (const row of explicitRows) {
+    const key = getReleaseKey(row.group, row.release_title, row.release_date, normalizeReleaseStream(row.stream, row.release_kind))
+    rowsByKey.set(key, row)
+  }
+
+  for (const historyRow of releaseHistoryRows) {
+    const group = historyRow.group
+    const releases = Array.isArray(historyRow.releases) ? historyRow.releases : []
+    for (const release of releases) {
+      const synthetic = buildSyntheticReleaseDetailRow(group, release, release.stream)
+      if (!synthetic) {
+        continue
+      }
+
+      const key = getReleaseKey(
+        synthetic.group,
+        synthetic.release_title,
+        synthetic.release_date,
+        normalizeReleaseStream(synthetic.stream, synthetic.release_kind),
+      )
+      if (!rowsByKey.has(key)) {
+        rowsByKey.set(key, synthetic)
+      }
+    }
+  }
+
+  for (const releaseRow of releaseRows) {
+    for (const [stream, fact] of [
+      ['song', releaseRow.latest_song],
+      ['album', releaseRow.latest_album],
+    ]) {
+      const synthetic = buildSyntheticReleaseDetailRow(releaseRow.group, fact, stream)
+      if (!synthetic) {
+        continue
+      }
+
+      const key = getReleaseKey(
+        synthetic.group,
+        synthetic.release_title,
+        synthetic.release_date,
+        normalizeReleaseStream(synthetic.stream, synthetic.release_kind),
+      )
+      if (!rowsByKey.has(key)) {
+        rowsByKey.set(key, synthetic)
+      }
+    }
+  }
+
+  return Array.from(rowsByKey.values())
+}
+
+function buildSyntheticReleaseDetailRow(group, fact, stream) {
+  if (!fact || !readString(fact.title) || !readString(fact.date)) {
+    return null
+  }
+
+  const normalizedStream = normalizeReleaseStream(stream, fact.release_kind)
+  return {
+    group,
+    release_title: readString(fact.title),
+    release_date: readString(fact.date),
+    stream: normalizedStream,
+    release_kind: readString(fact.release_kind) || (normalizedStream === 'album' ? 'album' : 'single'),
+    detail_status: 'bridge_summary_fallback',
+    detail_provenance: 'bridge.release_summary_fallback',
+    title_track_status: 'unresolved',
+    title_track_provenance: 'bridge.release_summary_fallback',
+    tracks: [],
+    spotify_url: null,
+    youtube_music_url: null,
+    youtube_video_url: null,
+    youtube_video_id: null,
+    youtube_video_status: 'unresolved',
+    youtube_video_provenance: 'bridge.release_summary_fallback',
+    notes: 'Bridge summary fallback generated from verified release summary.',
   }
 }
 

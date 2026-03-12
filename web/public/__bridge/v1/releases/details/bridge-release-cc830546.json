@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "request_id": "bridge-release-detail-bridge-release-cc830546"
+  },
+  "data": {
+    "release": {
+      "release_id": "bridge-release-cc830546",
+      "release_title": "LOVE CATCHER",
+      "release_date": "2026-03-11",
+      "stream": "album",
+      "release_kind": "ep"
+    },
+    "artwork": null,
+    "service_links": {
+      "spotify": {
+        "url": null
+      },
+      "youtube_music": {
+        "url": null
+      }
+    },
+    "tracks": [],
+    "mv": {
+      "url": null,
+      "video_id": null,
+      "status": "unresolved",
+      "provenance": "bridge.release_summary_fallback"
+    },
+    "notes": "Bridge summary fallback generated from verified release summary."
+  }
+}
