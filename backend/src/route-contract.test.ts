@@ -12,9 +12,12 @@ const YENA_RELEASE_ID = '22222222-2222-4222-8222-222222222222';
 const IVE_RELEASE_ID = '33333333-3333-4333-8333-333333333333';
 const MALFORMED_RELEASE_ID = '44444444-4444-4444-8444-444444444444';
 const UPCOMING_SIGNAL_ID = '55555555-5555-4555-8555-555555555555';
+const P1HARMONY_RELEASE_ID = '55555555-5555-4555-8555-555555555556';
+const P1HARMONY_UPCOMING_SIGNAL_ID = '55555555-5555-4555-8555-555555555557';
 const UPCOMING_REVIEW_ID = '66666666-6666-4666-8666-666666666666';
 const MV_REVIEW_ID = '77777777-7777-4777-8777-777777777777';
 const IVE_ENTITY_ID = '88888888-8888-4888-8888-888888888888';
+const P1HARMONY_ENTITY_ID = '88888888-8888-4888-8888-888888888889';
 const BLACKPINK_DEADLINE_UNRESOLVED_RELEASE_ID = '99999999-9999-4999-8999-999999999991';
 const BLACKPINK_DEADLINE_VERIFIED_RELEASE_ID = '99999999-9999-4999-8999-999999999992';
 const CALLER_REQUEST_ID = 'web-search-trace-yena-001';
@@ -95,6 +98,33 @@ function buildIveEntitySearchPayload() {
       release_kind: 'ep',
     },
     next_upcoming: null,
+  };
+}
+
+function buildP1HarmonyEntitySearchPayload() {
+  return {
+    entity_slug: 'p1harmony',
+    display_name: 'P1Harmony',
+    canonical_name: 'P1Harmony',
+    entity_type: 'group',
+    agency_name: 'FNC Entertainment',
+    aliases: ['피원하모니'],
+    latest_release: {
+      release_id: P1HARMONY_RELEASE_ID,
+      release_title: 'UNIQUE',
+      release_date: '2026-03-12',
+      stream: 'album',
+      release_kind: 'ep',
+    },
+    next_upcoming: {
+      headline: "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+      scheduled_date: '2026-03-12',
+      scheduled_month: '2026-03',
+      date_precision: 'exact',
+      date_status: 'confirmed',
+      release_format: 'ep',
+      confidence_score: 0.92,
+    },
   };
 }
 
@@ -205,6 +235,116 @@ function buildEntityDetailPayload() {
       },
     ],
     artist_source_url: 'https://www.youtube.com/@YENA_OFFICIAL',
+  };
+}
+
+function buildP1HarmonyEntityDetailPayload() {
+  return {
+    identity: {
+      entity_slug: 'p1harmony',
+      display_name: 'P1Harmony',
+      canonical_name: 'P1Harmony',
+      entity_type: 'group',
+      agency_name: 'FNC Entertainment',
+      debut_year: 2020,
+      badge_image_url: null,
+      badge_source_url: null,
+      badge_source_label: null,
+      badge_kind: null,
+      representative_image_url: null,
+      representative_image_source: null,
+    },
+    official_links: {
+      youtube: 'https://www.youtube.com/@P1Harmony',
+      x: 'https://x.com/P1H_official',
+      instagram: 'https://www.instagram.com/p1h_official',
+    },
+    youtube_channels: {
+      primary_team_channel_url: 'https://www.youtube.com/@P1Harmony',
+      mv_allowlist_urls: ['https://www.youtube.com/@P1Harmony'],
+    },
+    tracking_state: {
+      tier: 'tracked',
+      watch_reason: null,
+      tracking_status: 'recent_release',
+    },
+    next_upcoming: {
+      upcoming_signal_id: P1HARMONY_UPCOMING_SIGNAL_ID,
+      headline: "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+      scheduled_date: '2026-03-12',
+      scheduled_month: '2026-03',
+      date_precision: 'exact',
+      date_status: 'confirmed',
+      release_format: 'ep',
+      confidence_score: 0.92,
+      latest_seen_at: NOW,
+      source_type: 'news_rss',
+      source_url: 'https://news.example.com/p1harmony-unique',
+      source_domain: 'news.example.com',
+      evidence_summary: 'Release-day upcoming signal before same-day suppression.',
+      source_count: 2,
+    },
+    latest_release: {
+      release_id: P1HARMONY_RELEASE_ID,
+      release_title: 'UNIQUE',
+      release_date: '2026-03-12',
+      stream: 'album',
+      release_kind: 'ep',
+      release_format: 'ep',
+      representative_song_title: 'DUH!',
+      spotify_url: 'https://open.spotify.com/album/p1harmony-unique',
+      youtube_music_url: 'https://music.youtube.com/playlist?list=PLP1HUNIQUE',
+      youtube_mv_url: null,
+      artwork: {
+        cover_image_url: 'https://cdn.example.com/p1harmony-unique-cover.jpg',
+        thumbnail_image_url: 'https://cdn.example.com/p1harmony-unique-thumb.jpg',
+        artwork_source_type: 'releaseArtwork.cover_image_url',
+        artwork_source_url: 'https://artwork.example.com/p1harmony-unique',
+        is_placeholder: false,
+      },
+    },
+    recent_albums: [
+      {
+        release_id: P1HARMONY_RELEASE_ID,
+        release_title: 'UNIQUE',
+        release_date: '2026-03-12',
+        stream: 'album',
+        release_kind: 'ep',
+        release_format: 'ep',
+        representative_song_title: 'DUH!',
+        spotify_url: 'https://open.spotify.com/album/p1harmony-unique',
+        youtube_music_url: 'https://music.youtube.com/playlist?list=PLP1HUNIQUE',
+        youtube_mv_url: null,
+        artwork: {
+          cover_image_url: 'https://cdn.example.com/p1harmony-unique-cover.jpg',
+          thumbnail_image_url: 'https://cdn.example.com/p1harmony-unique-thumb.jpg',
+          artwork_source_type: 'releaseArtwork.cover_image_url',
+          artwork_source_url: 'https://artwork.example.com/p1harmony-unique',
+          is_placeholder: false,
+        },
+      },
+    ],
+    source_timeline: [
+      {
+        event_type: 'official_announcement',
+        headline: "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+        occurred_at: NOW,
+        summary: 'ep · confirmed · 2026-03-12',
+        source_url: 'https://news.example.com/p1harmony-unique',
+        source_type: 'news_rss',
+        source_domain: 'news.example.com',
+        published_at: NOW,
+        scheduled_date: '2026-03-12',
+        scheduled_month: '2026-03',
+        date_precision: 'exact',
+        date_status: 'confirmed',
+        release_format: 'ep',
+        confidence_score: 0.92,
+        evidence_summary: 'Release-day upcoming signal before same-day suppression.',
+        source_count: 2,
+      },
+    ],
+    artist_source_url: 'https://www.youtube.com/@P1Harmony',
   };
 }
 
@@ -361,8 +501,8 @@ function buildBlackpinkDeadlinePayload(releaseId: string, releaseDate: string, d
 function buildCalendarMonthPayload() {
   return {
     summary: {
-      verified_count: 1,
-      exact_upcoming_count: 1,
+      verified_count: 2,
+      exact_upcoming_count: 2,
       month_only_upcoming_count: 1,
     },
     nearest_upcoming: {
@@ -427,6 +567,47 @@ function buildCalendarMonthPayload() {
           },
         ],
       },
+      {
+        date: '2026-03-12',
+        verified_releases: [
+          {
+            release_id: P1HARMONY_RELEASE_ID,
+            entity_slug: 'p1harmony',
+            display_name: 'P1Harmony',
+            entity_type: 'group',
+            agency_name: 'FNC Entertainment',
+            release_title: 'UNIQUE',
+            stream: 'album',
+            release_kind: 'ep',
+            release_format: 'ep',
+            source_url: 'https://musicbrainz.example/p1harmony-unique',
+            artist_source_url: 'https://www.youtube.com/@P1Harmony',
+            release_date: '2026-03-12',
+          },
+        ],
+        exact_upcoming: [
+          {
+            upcoming_signal_id: P1HARMONY_UPCOMING_SIGNAL_ID,
+            entity_slug: 'p1harmony',
+            display_name: 'P1Harmony',
+            entity_type: 'group',
+            agency_name: 'FNC Entertainment',
+            tracking_status: 'recent_release',
+            headline: "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+            scheduled_date: '2026-03-12',
+            scheduled_month: '2026-03',
+            date_precision: 'exact',
+            date_status: 'confirmed',
+            confidence_score: 0.92,
+            release_format: 'ep',
+            source_url: 'https://news.example.com/p1harmony-unique',
+            source_type: 'news_rss',
+            source_domain: 'news.example.com',
+            evidence_summary: 'Release-day upcoming signal before same-day suppression.',
+            source_count: 2,
+          },
+        ],
+      },
     ],
     month_only_upcoming: [
       {
@@ -465,6 +646,20 @@ function buildCalendarMonthPayload() {
         artist_source_url: 'https://www.youtube.com/@YENA_OFFICIAL',
         release_date: '2026-03-11',
       },
+      {
+        release_id: P1HARMONY_RELEASE_ID,
+        entity_slug: 'p1harmony',
+        display_name: 'P1Harmony',
+        entity_type: 'group',
+        agency_name: 'FNC Entertainment',
+        release_title: 'UNIQUE',
+        stream: 'album',
+        release_kind: 'ep',
+        release_format: 'ep',
+        source_url: 'https://musicbrainz.example/p1harmony-unique',
+        artist_source_url: 'https://www.youtube.com/@P1Harmony',
+        release_date: '2026-03-12',
+      },
     ],
     scheduled_list: [
       {
@@ -487,6 +682,26 @@ function buildCalendarMonthPayload() {
         evidence_summary: 'Korean article confirmed the release date.',
         source_count: 1,
       },
+      {
+        upcoming_signal_id: P1HARMONY_UPCOMING_SIGNAL_ID,
+        entity_slug: 'p1harmony',
+        display_name: 'P1Harmony',
+        entity_type: 'group',
+        agency_name: 'FNC Entertainment',
+        tracking_status: 'recent_release',
+        headline: "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+        scheduled_date: '2026-03-12',
+        scheduled_month: '2026-03',
+        date_precision: 'exact',
+        date_status: 'confirmed',
+        confidence_score: 0.92,
+        release_format: 'ep',
+        source_url: 'https://news.example.com/p1harmony-unique',
+        source_type: 'news_rss',
+        source_domain: 'news.example.com',
+        evidence_summary: 'Release-day upcoming signal before same-day suppression.',
+        source_count: 2,
+      },
     ],
   };
 }
@@ -494,48 +709,59 @@ function buildCalendarMonthPayload() {
 function buildRadarPayload() {
   return {
     featured_upcoming: {
-      upcoming_signal_id: 'upcoming-yena',
-      entity_slug: 'yena',
-      display_name: 'YENA',
-      entity_type: 'solo',
-      agency_name: 'YUE HUA Entertainment',
-      tracking_status: 'watch_only',
-      headline: 'YENA confirms March comeback',
-      scheduled_date: '2026-03-11',
+      upcoming_signal_id: P1HARMONY_UPCOMING_SIGNAL_ID,
+      entity_slug: 'p1harmony',
+      display_name: 'P1Harmony',
+      entity_type: 'group',
+      agency_name: 'FNC Entertainment',
+      tracking_status: 'recent_release',
+      headline: "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+      scheduled_date: '2026-03-12',
       scheduled_month: '2026-03',
       date_precision: 'exact',
       date_status: 'confirmed',
-      confidence_score: 0.84,
+      confidence_score: 0.92,
       release_format: 'ep',
-      source_url: 'https://starnews.example/yena-love-catcher',
+      source_url: 'https://news.example.com/p1harmony-unique',
       source_type: 'news_rss',
-      source_domain: 'starnews.example',
-      evidence_summary: 'Korean article confirmed the release date.',
-      source_count: 1,
+      source_domain: 'news.example.com',
+      evidence_summary: 'Release-day upcoming signal before same-day suppression.',
+      source_count: 2,
     },
     weekly_upcoming: [
       {
-        upcoming_signal_id: 'upcoming-yena',
-        entity_slug: 'yena',
-        display_name: 'YENA',
-        entity_type: 'solo',
-        agency_name: 'YUE HUA Entertainment',
-        tracking_status: 'watch_only',
-        headline: 'YENA confirms March comeback',
-        scheduled_date: '2026-03-11',
+        upcoming_signal_id: P1HARMONY_UPCOMING_SIGNAL_ID,
+        entity_slug: 'p1harmony',
+        display_name: 'P1Harmony',
+        entity_type: 'group',
+        agency_name: 'FNC Entertainment',
+        tracking_status: 'recent_release',
+        headline: "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+        scheduled_date: '2026-03-12',
         scheduled_month: '2026-03',
         date_precision: 'exact',
         date_status: 'confirmed',
-        confidence_score: 0.84,
+        confidence_score: 0.92,
         release_format: 'ep',
-        source_url: 'https://starnews.example/yena-love-catcher',
+        source_url: 'https://news.example.com/p1harmony-unique',
         source_type: 'news_rss',
-        source_domain: 'starnews.example',
-        evidence_summary: 'Korean article confirmed the release date.',
-        source_count: 1,
+        source_domain: 'news.example.com',
+        evidence_summary: 'Release-day upcoming signal before same-day suppression.',
+        source_count: 2,
       },
     ],
     change_feed: [
+      {
+        kind: 'verified_release',
+        entity_slug: 'p1harmony',
+        display_name: 'P1Harmony',
+        release_id: P1HARMONY_RELEASE_ID,
+        release_title: 'UNIQUE',
+        release_date: '2026-03-12',
+        stream: 'album',
+        release_kind: 'ep',
+        occurred_at: NOW,
+      },
       {
         kind: 'upcoming_signal',
         entity_slug: 'yena',
@@ -663,6 +889,15 @@ class FakeDb {
             generated_at: NOW,
           } as unknown as Row);
         }
+        if (slugs.includes('p1harmony')) {
+          rows.push({
+            entity_id: P1HARMONY_ENTITY_ID,
+            entity_slug: 'p1harmony',
+            aliases: ['피원하모니'],
+            payload: buildP1HarmonyEntitySearchPayload(),
+            generated_at: NOW,
+          } as unknown as Row);
+        }
         return this.result<Row>(rows);
       }
 
@@ -673,6 +908,18 @@ class FakeDb {
             entity_slug: 'yena',
             aliases: ['최예나'],
             payload: buildEntitySearchPayload(),
+            generated_at: NOW,
+          } as unknown as Row,
+        ]);
+      }
+
+      if (params[0] === 'p1harmony' || params[0] === '피원하모니') {
+        return this.result<Row>([
+          {
+            entity_id: P1HARMONY_ENTITY_ID,
+            entity_slug: 'p1harmony',
+            aliases: ['피원하모니'],
+            payload: buildP1HarmonyEntitySearchPayload(),
             generated_at: NOW,
           } as unknown as Row,
         ]);
@@ -700,8 +947,10 @@ class FakeDb {
     }
 
     if (normalizedSql.includes('from releases r') && normalizedSql.includes('where r.id = any($1::uuid[])')) {
-      return this.result<Row>([
-        {
+      const releaseIds = Array.isArray(params[0]) ? params[0].map(String) : [];
+      const rows: Row[] = [];
+      if (releaseIds.includes(YENA_RELEASE_ID)) {
+        rows.push({
           release_id: YENA_RELEASE_ID,
           entity_slug: 'yena',
           display_name: 'YENA',
@@ -710,8 +959,21 @@ class FakeDb {
           stream: 'album',
           release_kind: 'ep',
           release_format: 'ep',
-        } as unknown as Row,
-      ]);
+        } as unknown as Row);
+      }
+      if (releaseIds.includes(P1HARMONY_RELEASE_ID)) {
+        rows.push({
+          release_id: P1HARMONY_RELEASE_ID,
+          entity_slug: 'p1harmony',
+          display_name: 'P1Harmony',
+          release_title: 'UNIQUE',
+          release_date: '2026-03-12',
+          stream: 'album',
+          release_kind: 'ep',
+          release_format: 'ep',
+        } as unknown as Row);
+      }
+      return this.result<Row>(rows);
     }
 
     if (normalizedSql.includes('from upcoming_signals us') && normalizedSql.includes('projection_normalize_text(us.headline)')) {
@@ -735,12 +997,34 @@ class FakeDb {
           } as unknown as Row,
         ]);
       }
+      if (params[0] === 'p1harmony') {
+        return this.result<Row>([
+          {
+            upcoming_signal_id: P1HARMONY_UPCOMING_SIGNAL_ID,
+            entity_id: P1HARMONY_ENTITY_ID,
+            entity_slug: 'p1harmony',
+            display_name: 'P1Harmony',
+            headline: "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+            scheduled_date: '2026-03-12',
+            scheduled_month: '2026-03',
+            date_precision: 'exact',
+            date_status: 'confirmed',
+            release_format: 'ep',
+            confidence_score: 0.92,
+            source_type: 'news_rss',
+            source_url: 'https://news.example.com/p1harmony-unique',
+            evidence_summary: 'Release-day upcoming signal before same-day suppression.',
+          } as unknown as Row,
+        ]);
+      }
       return this.result<Row>([]);
     }
 
     if (normalizedSql.includes('from upcoming_signals us') && normalizedSql.includes('us.entity_id = any($1::uuid[])')) {
-      return this.result<Row>([
-        {
+      const entityIds = Array.isArray(params[0]) ? params[0].map(String) : [];
+      const rows: Row[] = [];
+      if (entityIds.includes(ENTITY_ID)) {
+        rows.push({
           upcoming_signal_id: UPCOMING_SIGNAL_ID,
           entity_id: ENTITY_ID,
           entity_slug: 'yena',
@@ -755,8 +1039,27 @@ class FakeDb {
           source_type: 'news_rss',
           source_url: 'https://starnews.example/yena-love-catcher',
           evidence_summary: 'Korean article confirmed the release date.',
-        } as unknown as Row,
-      ]);
+        } as unknown as Row);
+      }
+      if (entityIds.includes(P1HARMONY_ENTITY_ID)) {
+        rows.push({
+          upcoming_signal_id: P1HARMONY_UPCOMING_SIGNAL_ID,
+          entity_id: P1HARMONY_ENTITY_ID,
+          entity_slug: 'p1harmony',
+          display_name: 'P1Harmony',
+          headline: "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12",
+          scheduled_date: '2026-03-12',
+          scheduled_month: '2026-03',
+          date_precision: 'exact',
+          date_status: 'confirmed',
+          release_format: 'ep',
+          confidence_score: 0.92,
+          source_type: 'news_rss',
+          source_url: 'https://news.example.com/p1harmony-unique',
+          evidence_summary: 'Release-day upcoming signal before same-day suppression.',
+        } as unknown as Row);
+      }
+      return this.result<Row>(rows);
     }
 
     if (normalizedSql.includes('from entity_detail_projection')) {
@@ -765,6 +1068,16 @@ class FakeDb {
           {
             entity_slug: 'yena',
             payload: buildEntityDetailPayload(),
+            generated_at: NOW,
+          } as unknown as Row,
+        ]);
+      }
+
+      if (params[0] === 'p1harmony') {
+        return this.result<Row>([
+          {
+            entity_slug: 'p1harmony',
+            payload: buildP1HarmonyEntityDetailPayload(),
             generated_at: NOW,
           } as unknown as Row,
         ]);
@@ -1204,6 +1517,26 @@ test('GET /v1/search returns envelope with entity, release, and upcoming matches
   assert.equal(body.data.upcoming.length, 0);
 });
 
+test('GET /v1/search suppresses same-day exact upcoming when a verified release exists on the same date', async (t) => {
+  const app = createTestApp(t);
+  const response = await app.inject({
+    method: 'GET',
+    url: '/v1/search',
+    query: {
+      q: 'P1Harmony',
+    },
+  });
+
+  assert.equal(response.statusCode, 200);
+  const body = parseJson(response);
+  assertReadMeta(body.meta, '/v1/search');
+  assert.equal(body.data.entities[0].entity_slug, 'p1harmony');
+  assert.equal(body.data.entities[0].next_upcoming, null);
+  assert.equal(body.data.releases[0].release_id, P1HARMONY_RELEASE_ID);
+  assert.equal(body.data.releases[0].release_title, 'UNIQUE');
+  assert.equal(body.data.upcoming.length, 0);
+});
+
 test('GET /v1/search includes owner entity for exact release-title queries without client patching', async (t) => {
   const app = createTestApp(t);
   const response = await app.inject({
@@ -1358,6 +1691,22 @@ test('GET /v1/entities/:slug returns entity detail projection payload', async (t
   assert.equal(body.data.source_timeline[0].summary, 'ep · confirmed · 2026-03-11');
 });
 
+test('GET /v1/entities/:slug suppresses same-day exact upcoming when latest release matches the scheduled date', async (t) => {
+  const app = createTestApp(t);
+  const response = await app.inject({
+    method: 'GET',
+    url: '/v1/entities/p1harmony',
+  });
+
+  assert.equal(response.statusCode, 200);
+  const body = parseJson(response);
+  assertReadMeta(body.meta, '/v1/entities/:slug');
+  assert.equal(body.data.identity.entity_slug, 'p1harmony');
+  assert.equal(body.data.next_upcoming, null);
+  assert.equal(body.data.latest_release.release_title, 'UNIQUE');
+  assert.equal(body.data.recent_albums[0].release_title, 'UNIQUE');
+});
+
 test('GET /v1/releases/lookup resolves legacy key to release id', async (t) => {
   const app = createTestApp(t);
   const response = await app.inject({
@@ -1439,7 +1788,10 @@ test('GET /v1/calendar/month returns calendar projection contract', async (t) =>
   assert.equal(body.data.scheduled_list.length, 0);
   assert.equal(body.data.nearest_upcoming, null);
   assert.equal(body.data.verified_list[0].release_id, YENA_RELEASE_ID);
+  assert.equal(body.data.days[1].date, '2026-03-12');
+  assert.equal(body.data.days[1].exact_upcoming.length, 0);
   assert.equal(body.data.verified_list[0].entity_type, 'solo');
+  assert.ok(body.data.verified_list.some((item: { entity_slug: string }) => item.entity_slug === 'p1harmony'));
   assert.equal(body.data.verified_list[0].agency_name, 'YUE HUA Entertainment');
   assert.equal(body.data.verified_list[0].artist_source_url, 'https://www.youtube.com/@YENA_OFFICIAL');
   assert.equal(body.data.month_only_upcoming[0].date_precision, 'month_only');
@@ -1459,6 +1811,12 @@ test('GET /v1/radar returns projection-backed radar payload', async (t) => {
   assertReadMeta(body.meta, '/v1/radar');
   assert.equal(body.data.featured_upcoming, null);
   assert.equal(body.data.weekly_upcoming.length, 0);
+  assert.ok(
+    body.data.change_feed.some(
+      (item: { kind: string; entity_slug?: string; release_date?: string }) =>
+        item.kind === 'verified_release' && item.entity_slug === 'p1harmony' && item.release_date === '2026-03-12',
+    ),
+  );
   assert.equal(body.data.rookie.length, 1);
   assert.equal(body.data.long_gap[0].agency_name, 'NV Entertainment');
   assert.equal(body.data.long_gap[0].latest_release.artist_source_url, 'https://www.youtube.com/@wooah');

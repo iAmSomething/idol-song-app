@@ -267,6 +267,71 @@ function isElapsedExactUpcoming(
   return Boolean(item?.date_precision === 'exact' && item.scheduled_date && item.scheduled_date < todayIsoDate);
 }
 
+function buildEntityDateKey(entitySlug: string | null | undefined, isoDate: string | null | undefined): string | null {
+  return entitySlug && isoDate ? `${entitySlug}::${isoDate}` : null;
+}
+
+function isSameDayReleasedUpcoming(
+  item: Pick<CalendarUpcomingItem, 'entity_slug' | 'date_precision' | 'scheduled_date'> | null,
+  verifiedReleaseKeys: ReadonlySet<string>,
+): boolean {
+  if (item?.date_precision !== 'exact' || !item.scheduled_date) {
+    return false;
+  }
+
+  const key = buildEntityDateKey(item.entity_slug, item.scheduled_date);
+  return key ? verifiedReleaseKeys.has(key) : false;
+}
+
+function collectVerifiedReleaseKeys(data: CalendarMonthData): Set<string> {
+  const keys = new Set<string>();
+
+  for (const release of data.verified_list) {
+    const key = buildEntityDateKey(release.entity_slug, release.release_date);
+    if (key) {
+      keys.add(key);
+    }
+  }
+
+  for (const day of data.days) {
+    for (const release of day.verified_releases) {
+      const key = buildEntityDateKey(release.entity_slug, release.release_date ?? day.date);
+      if (key) {
+        keys.add(key);
+      }
+    }
+  }
+
+  return keys;
+}
+
+function toNearestUpcoming(item: CalendarUpcomingItem | null): CalendarNearestUpcoming | null {
+  if (!item || item.date_precision !== 'exact' || !item.scheduled_date) {
+    return null;
+  }
+
+  return {
+    upcoming_signal_id: item.upcoming_signal_id,
+    entity_slug: item.entity_slug,
+    display_name: item.display_name,
+    entity_type: item.entity_type,
+    agency_name: item.agency_name,
+    tracking_status: item.tracking_status,
+    headline: item.headline,
+    scheduled_date: item.scheduled_date,
+    scheduled_month: item.scheduled_month,
+    date_precision: item.date_precision,
+    date_status: item.date_status,
+    confidence_score: item.confidence_score,
+    release_format: item.release_format,
+    source_url: item.source_url,
+    source_type: item.source_type,
+    source_domain: item.source_domain,
+    evidence_summary: item.evidence_summary,
+    source_count: item.source_count,
+  };
+}
+
 function normalizeCalendarMonthPayload(payload: unknown): CalendarMonthData | null {
   if (!isRecord(payload) || !isRecord(payload.summary)) {
     return null;
@@ -343,13 +408,24 @@ function normalizeCalendarMonthPayload(payload: unknown): CalendarMonthData | nu
 }
 
 function filterElapsedExactUpcomingRows(data: CalendarMonthData, todayIsoDate: string): CalendarMonthData {
+  const verifiedReleaseKeys = collectVerifiedReleaseKeys(data);
   const days = data.days.map((day) => ({
     ...day,
-    exact_upcoming: day.exact_upcoming.filter((item) => !isElapsedExactUpcoming(item, todayIsoDate)),
+    exact_upcoming: day.exact_upcoming.filter(
+      (item) => !isElapsedExactUpcoming(item, todayIsoDate) && !isSameDayReleasedUpcoming(item, verifiedReleaseKeys),
+    ),
   }));
-  const scheduledList = data.scheduled_list.filter((item) => !isElapsedExactUpcoming(item, todayIsoDate));
+  const scheduledList = data.scheduled_list.filter(
+    (item) => !isElapsedExactUpcoming(item, todayIsoDate) && !isSameDayReleasedUpcoming(item, verifiedReleaseKeys),
+  );
   const filteredNearestUpcoming =
-    data.nearest_upcoming && !isElapsedExactUpcoming(data.nearest_upcoming, todayIsoDate) ? data.nearest_upcoming : null;
+    data.nearest_upcoming &&
+    !isElapsedExactUpcoming(data.nearest_upcoming, todayIsoDate) &&
+    !isSameDayReleasedUpcoming(data.nearest_upcoming, verifiedReleaseKeys)
+      ? data.nearest_upcoming
+      : toNearestUpcoming(
+          scheduledList.find((item) => item.date_precision === 'exact' && item.scheduled_date) ?? null,
+        );
 
   return {
     ...data,

@@ -193,18 +193,79 @@ function isElapsedExactUpcoming(value: Record<string, unknown> | null, todayIsoD
   );
 }
 
+function buildEntityDateKey(entitySlug: string | null, isoDate: string | null): string | null {
+  return entitySlug && isoDate ? `${entitySlug}::${isoDate}` : null;
+}
+
+function extractVerifiedReleaseDateKeys(changeFeed: Record<string, unknown>[]): Set<string> {
+  const keys = new Set<string>();
+
+  for (const item of changeFeed) {
+    if (item.kind !== 'verified_release') {
+      continue;
+    }
+
+    const entitySlug = normalizeOptionalString(item.entity_slug);
+    const releaseDate =
+      normalizeOptionalString(item.release_date) ??
+      normalizeOptionalString(item.occurred_at)?.slice(0, 10) ??
+      null;
+    const key = buildEntityDateKey(entitySlug, releaseDate);
+    if (key) {
+      keys.add(key);
+    }
+  }
+
+  return keys;
+}
+
+function isSameDayReleasedUpcoming(value: Record<string, unknown> | null, verifiedReleaseDateKeys: ReadonlySet<string>): boolean {
+  if (!value || value.date_precision !== 'exact') {
+    return false;
+  }
+
+  const entitySlug = normalizeOptionalString(value.entity_slug);
+  const scheduledDate = normalizeOptionalString(value.scheduled_date);
+  const key = buildEntityDateKey(entitySlug, scheduledDate);
+  return key ? verifiedReleaseDateKeys.has(key) : false;
+}
+
+function isSameDayReleasedLatestSignal(item: Record<string, unknown> | null): boolean {
+  if (!item || !isRecord(item.latest_signal) || !isRecord(item.latest_release)) {
+    return false;
+  }
+
+  const latestSignalDate = normalizeOptionalString(item.latest_signal.scheduled_date);
+  const latestReleaseDate = normalizeOptionalString(item.latest_release.release_date);
+  return Boolean(item.latest_signal.date_precision === 'exact' && latestSignalDate && latestReleaseDate && latestSignalDate === latestReleaseDate);
+}
+
 function filterElapsedRadarUpcoming(payload: RadarResponseData, todayIsoDate: string): RadarResponseData {
+  const verifiedReleaseDateKeys = extractVerifiedReleaseDateKeys(payload.change_feed);
+  const filteredWeeklyUpcoming = payload.weekly_upcoming.filter(
+    (item) => !isElapsedExactUpcoming(item, todayIsoDate) && !isSameDayReleasedUpcoming(item, verifiedReleaseDateKeys),
+  );
+
   return {
     ...payload,
-    featured_upcoming: isElapsedExactUpcoming(payload.featured_upcoming, todayIsoDate) ? null : payload.featured_upcoming,
-    weekly_upcoming: payload.weekly_upcoming.filter((item) => !isElapsedExactUpcoming(item, todayIsoDate)),
+    featured_upcoming:
+      payload.featured_upcoming &&
+      !isElapsedExactUpcoming(payload.featured_upcoming, todayIsoDate) &&
+      !isSameDayReleasedUpcoming(payload.featured_upcoming, verifiedReleaseDateKeys)
+        ? payload.featured_upcoming
+        : filteredWeeklyUpcoming[0] ?? null,
+    weekly_upcoming: filteredWeeklyUpcoming,
     long_gap: payload.long_gap.map((item) =>
-      isRecord(item) && isElapsedExactUpcoming(item.latest_signal as Record<string, unknown> | null, todayIsoDate)
+      isRecord(item) &&
+      (isElapsedExactUpcoming(item.latest_signal as Record<string, unknown> | null, todayIsoDate) ||
+        isSameDayReleasedLatestSignal(item))
         ? { ...item, latest_signal: null, has_upcoming_signal: false }
         : item
     ),
     rookie: payload.rookie.map((item) =>
-      isRecord(item) && isElapsedExactUpcoming(item.latest_signal as Record<string, unknown> | null, todayIsoDate)
+      isRecord(item) &&
+      (isElapsedExactUpcoming(item.latest_signal as Record<string, unknown> | null, todayIsoDate) ||
+        isSameDayReleasedLatestSignal(item))
         ? { ...item, latest_signal: null, has_upcoming_signal: false }
         : item
     ),

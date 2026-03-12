@@ -213,6 +213,21 @@ function isElapsedExactUpcomingRow(
   return Boolean(row?.date_precision === 'exact' && row.scheduled_date && row.scheduled_date < todayIsoDate);
 }
 
+function isSameDayReleasedUpcomingRow(
+  row:
+    | Pick<UpcomingSearchRow, 'date_precision' | 'scheduled_date'>
+    | Pick<NonNullable<EntitySearchPayload['next_upcoming']>, 'date_precision' | 'scheduled_date'>
+    | null,
+  latestReleaseDate: string | null | undefined,
+): boolean {
+  return Boolean(
+    row?.date_precision === 'exact' &&
+      row.scheduled_date &&
+      latestReleaseDate &&
+      row.scheduled_date === latestReleaseDate
+  );
+}
+
 function parseSearchLimit(value: string | undefined): number | null {
   if (value === undefined) {
     return DEFAULT_SEARCH_LIMIT;
@@ -504,12 +519,20 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
       })
       .filter((item): item is EntityMatch => item !== null);
     for (const match of entityMatches) {
-      if (isElapsedExactUpcomingRow(match.next_upcoming, todayIsoDate)) {
+      if (
+        isElapsedExactUpcomingRow(match.next_upcoming, todayIsoDate) ||
+        isSameDayReleasedUpcomingRow(match.next_upcoming, match.latest_release?.release_date)
+      ) {
         match.next_upcoming = null;
       }
     }
     const entityMatchById = new Map(entityMatches.map((item) => [item.entity_id, item]));
     const entityMatchBySlug = new Map(entityMatches.map((item) => [item.entity_slug, item]));
+    const latestReleaseDateByEntitySlug = new Map(
+      entityMatches
+        .map((item) => [item.entity_slug, item.latest_release?.release_date ?? null] as const)
+        .filter((entry): entry is readonly [string, string] => typeof entry[1] === 'string' && entry[1].length > 0),
+    );
 
     const releaseTitleResult = await context.db.query<ReleaseSearchRow>(
       `
@@ -646,9 +669,39 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
       [needle.normalized, needle.compact, limit * 10]
     );
 
+    const upcomingEntitySlugsForReleaseHydration = Array.from(
+      new Set(upcomingTitleResult.rows.map((row) => row.entity_slug).filter((value) => !latestReleaseDateByEntitySlug.has(value))),
+    );
+    if (upcomingEntitySlugsForReleaseHydration.length > 0) {
+      const upcomingContextRows = await context.db.query<EntitySearchRow>(
+        `
+          select
+            entity_id::text as entity_id,
+            entity_slug,
+            aliases,
+            payload,
+            generated_at
+          from entity_search_documents
+          where entity_slug = any($1::text[])
+        `,
+        [upcomingEntitySlugsForReleaseHydration]
+      );
+
+      for (const row of upcomingContextRows.rows) {
+        const payload = normalizeEntityPayload(row.payload);
+        const latestReleaseDate = payload?.latest_release?.release_date ?? null;
+        if (latestReleaseDate) {
+          latestReleaseDateByEntitySlug.set(row.entity_slug, latestReleaseDate);
+        }
+      }
+    }
+
     const upcomingMatchMap = new Map<string, UpcomingMatch>();
     for (const row of upcomingTitleResult.rows) {
-      if (isElapsedExactUpcomingRow(row, todayIsoDate)) {
+      if (
+        isElapsedExactUpcomingRow(row, todayIsoDate) ||
+        isSameDayReleasedUpcomingRow(row, latestReleaseDateByEntitySlug.get(row.entity_slug))
+      ) {
         continue;
       }
       const normalizedHeadline = normalizeAliasValue(row.headline);
@@ -770,12 +823,15 @@ export function registerSearchRoutes(app: FastifyInstance, context: SearchRouteC
 
       const seenEntityUpcoming = new Set<string>();
       for (const row of entityUpcomingResult.rows) {
-        if (seenEntityUpcoming.has(row.entity_id) || isElapsedExactUpcomingRow(row, todayIsoDate)) {
+        const matchedEntity = entityMatchById.get(row.entity_id);
+        if (
+          seenEntityUpcoming.has(row.entity_id) ||
+          isElapsedExactUpcomingRow(row, todayIsoDate) ||
+          isSameDayReleasedUpcomingRow(row, matchedEntity?.latest_release?.release_date)
+        ) {
           continue;
         }
         seenEntityUpcoming.add(row.entity_id);
-
-        const matchedEntity = entityMatchById.get(row.entity_id);
         if (matchedEntity) {
           matchedEntity.next_upcoming = buildEntityUpcomingSummary(row);
         }

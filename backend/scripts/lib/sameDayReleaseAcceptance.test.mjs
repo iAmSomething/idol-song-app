@@ -132,6 +132,7 @@ test('passes the P1Harmony acceptance fixture when all five release-side fields 
   assert.equal(p1?.checks.track_list_attached, true);
   assert.equal(p1?.checks.official_mv_attached, true);
   assert.equal(p1?.checks.title_track_attached, true);
+  assert.equal(p1?.checks.user_facing_not_upcoming_only, true);
 });
 
 test('renders a markdown report with the failed-cycle update template', () => {
