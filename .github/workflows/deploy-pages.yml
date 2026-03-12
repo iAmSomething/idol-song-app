@@ -44,6 +44,14 @@ jobs:
         working-directory: web
         run: npm ci
 
+      - name: Resolve Pages API runtime target
+        id: resolve_pages_api_runtime
+        working-directory: web
+        env:
+          VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+          VITE_BACKEND_TARGET_ENV: production
+        run: node ./scripts/resolve-pages-api-runtime.mjs
+
       - name: Run web runtime policy tests
         working-directory: web
         run: npm run test:runtime-policy
@@ -56,34 +64,39 @@ jobs:
         working-directory: web
         run: npm run lint
 
-      - name: Build Pages read bridge
+      - name: Build Pages bridge artifact
         working-directory: web
         env:
-          VITE_BACKEND_TARGET_ENV: bridge
+          VITE_API_BASE_URL: ${{ steps.resolve_pages_api_runtime.outputs.api_base_url }}
+          VITE_BACKEND_TARGET_ENV: ${{ steps.resolve_pages_api_runtime.outputs.target_environment }}
         run: npm run build:pages-read-bridge
 
       - name: Verify Pages read bridge
         working-directory: web
         env:
-          VITE_BACKEND_TARGET_ENV: bridge
+          VITE_API_BASE_URL: ${{ steps.resolve_pages_api_runtime.outputs.api_base_url }}
+          VITE_BACKEND_TARGET_ENV: ${{ steps.resolve_pages_api_runtime.outputs.target_environment }}
         run: npm run verify:pages-read-bridge
 
       - name: Verify Pages backend target
         working-directory: web
         env:
-          VITE_BACKEND_TARGET_ENV: bridge
+          VITE_API_BASE_URL: ${{ steps.resolve_pages_api_runtime.outputs.api_base_url }}
+          VITE_BACKEND_TARGET_ENV: ${{ steps.resolve_pages_api_runtime.outputs.target_environment }}
         run: npm run verify:pages-backend-target
 
       - name: Verify backend freshness handoff
         working-directory: web
         env:
-          VITE_BACKEND_TARGET_ENV: bridge
+          VITE_API_BASE_URL: ${{ steps.resolve_pages_api_runtime.outputs.api_base_url }}
+          VITE_BACKEND_TARGET_ENV: ${{ steps.resolve_pages_api_runtime.outputs.target_environment }}
         run: npm run verify:pages-backend-handoff
 
       - name: Build site
         working-directory: web
         env:
-          VITE_BACKEND_TARGET_ENV: bridge
+          VITE_API_BASE_URL: ${{ steps.resolve_pages_api_runtime.outputs.api_base_url }}
+          VITE_BACKEND_TARGET_ENV: ${{ steps.resolve_pages_api_runtime.outputs.target_environment }}
         run: npm run build
 
       - name: Upload artifact
