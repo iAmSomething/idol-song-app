@@ -7,7 +7,6 @@ const PREVIEW_EXAMPLE = parseDotenvExample(`
 APP_ENV=preview
 DATABASE_URL_POOLED=postgresql://user:password@your-preview-neon-pooler-host/neondb?sslmode=require
 DATABASE_URL=postgresql://user:password@your-preview-neon-direct-host/neondb?sslmode=require
-PORT=3213
 APP_TIMEZONE=Asia/Seoul
 DB_CONNECTION_TIMEOUT_MS=3000
 DB_READ_TIMEOUT_MS=5000
@@ -20,7 +19,6 @@ const PRODUCTION_EXAMPLE = parseDotenvExample(`
 APP_ENV=production
 DATABASE_URL_POOLED=postgresql://user:password@your-production-neon-pooler-host/neondb?sslmode=require
 DATABASE_URL=postgresql://user:password@your-production-neon-direct-host/neondb?sslmode=require
-PORT=3000
 APP_TIMEZONE=Asia/Seoul
 DB_CONNECTION_TIMEOUT_MS=3000
 DB_READ_TIMEOUT_MS=5000
@@ -43,9 +41,9 @@ function buildDeployEnv(overrides: Record<string, string> = {}): NodeJS.ProcessE
 }
 
 test('parseKvOutput reads key-value pairs', () => {
-  const parsed = parseKvOutput('APP_ENV=preview\nPORT=3213\n');
+  const parsed = parseKvOutput('APP_ENV=preview\nWORKER_CADENCE_LABEL=preview-manual\n');
   assert.equal(parsed.get('APP_ENV'), 'preview');
-  assert.equal(parsed.get('PORT'), '3213');
+  assert.equal(parsed.get('WORKER_CADENCE_LABEL'), 'preview-manual');
 });
 
 test('deploy env contract passes for matching preview runtime config', () => {
@@ -53,7 +51,6 @@ test('deploy env contract passes for matching preview runtime config', () => {
 APP_ENV=preview
 DATABASE_URL_POOLED=postgresql://preview-pooled-host/neondb?sslmode=require
 DATABASE_URL=postgresql://preview-direct-host/neondb?sslmode=require
-PORT=3213
 APP_TIMEZONE=Asia/Seoul
 DB_CONNECTION_TIMEOUT_MS=3000
 DB_READ_TIMEOUT_MS=5000
@@ -78,7 +75,6 @@ test('deploy env contract fails when runtime config is incomplete', () => {
   const runtimeEnv = parseKvOutput(`
 APP_ENV=preview
 DATABASE_URL=postgresql://preview-direct-host/neondb?sslmode=require
-PORT=3213
 APP_TIMEZONE=Asia/Seoul
 DB_CONNECTION_TIMEOUT_MS=3000
 DB_READ_TIMEOUT_MS=5000
@@ -104,7 +100,6 @@ test('deploy env contract fails when deploy env target drifts', () => {
 APP_ENV=preview
 DATABASE_URL_POOLED=postgresql://preview-pooled-host/neondb?sslmode=require
 DATABASE_URL=postgresql://preview-direct-host/neondb?sslmode=require
-PORT=3213
 APP_TIMEZONE=Asia/Seoul
 DB_CONNECTION_TIMEOUT_MS=3000
 DB_READ_TIMEOUT_MS=5000
@@ -130,7 +125,6 @@ test('deploy env contract catches preview example drift from policy baseline', (
 APP_ENV=preview
 DATABASE_URL_POOLED=postgresql://user:password@your-preview-neon-pooler-host/neondb?sslmode=require
 DATABASE_URL=postgresql://user:password@your-preview-neon-direct-host/neondb?sslmode=require
-PORT=3213
 APP_TIMEZONE=Asia/Seoul
 DB_CONNECTION_TIMEOUT_MS=3000
 DB_READ_TIMEOUT_MS=5000
@@ -143,7 +137,6 @@ WORKER_CADENCE_LABEL=preview-manual
 APP_ENV=preview
 DATABASE_URL_POOLED=postgresql://preview-pooled-host/neondb?sslmode=require
 DATABASE_URL=postgresql://preview-direct-host/neondb?sslmode=require
-PORT=3213
 APP_TIMEZONE=Asia/Seoul
 DB_CONNECTION_TIMEOUT_MS=3000
 DB_READ_TIMEOUT_MS=5000

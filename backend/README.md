@@ -386,7 +386,7 @@ deploy 전에 environment contract를 먼저 확인한다.
 - GitHub deploy input presence
 - preview / production example key-set drift
 - shared invariant drift (`APP_TIMEZONE`, DB timeout, `LOG_LEVEL`)
-- target-specific runtime env drift (`APP_ENV`, `PORT`, `WORKER_CADENCE_LABEL`, `WEB_ALLOWED_ORIGINS`)
+- target-specific runtime env drift (`APP_ENV`, `WORKER_CADENCE_LABEL`, `WEB_ALLOWED_ORIGINS`)
 - secret shape validation (`DATABASE_URL`, `DATABASE_URL_POOLED`)
 
 secret raw value는 report/log에 남기지 않고 presence와 URL shape만 남긴다.

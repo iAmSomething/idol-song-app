@@ -125,7 +125,6 @@ preview와 production은 최소 아래 구성을 분리한다.
 | `APP_ENV` | `preview` | `production` |
 | `DATABASE_URL` | preview direct Neon URL | production direct Neon URL |
 | `DATABASE_URL_POOLED` | preview pooled URL | production pooled URL |
-| `PORT` | preview service port | production service port |
 | `APP_TIMEZONE` | `Asia/Seoul` | `Asia/Seoul` |
 | `WEB_ALLOWED_ORIGINS` | preview web consumer origin list | production extra web consumer origin list |
 | `LOG_LEVEL` | `info` | `info` |
