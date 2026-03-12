@@ -142,6 +142,22 @@ function resolveUpcomingMonth(
   return upcoming.scheduled_month ?? upcoming.scheduled_date?.slice(0, 7);
 }
 
+function resolveTodayIsoDate(): string {
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+}
+
+function isElapsedExactUpcoming(
+  upcoming: Pick<MobileRawDataset['upcomingCandidates'][number], 'date_precision' | 'scheduled_date'>,
+  todayIsoDate: string,
+): boolean {
+  return upcoming.date_precision === 'exact' && Boolean(upcoming.scheduled_date && upcoming.scheduled_date < todayIsoDate);
+}
+
 export function selectMonthReleaseSummaries(
   input: MobileSelectorContext | MobileRawDataset,
   month: string,
@@ -180,6 +196,7 @@ export function selectMonthReleaseSummaries(
 export function selectUpcomingEventsBySlug(
   input: MobileSelectorContext | MobileRawDataset,
   slug: string,
+  todayIsoDate = resolveTodayIsoDate(),
 ): UpcomingEventModel[] {
   const context = resolveContext(input);
   const team = selectTeamSummaryBySlug(context, slug);
@@ -189,6 +206,7 @@ export function selectUpcomingEventsBySlug(
   }
 
   return (context.upcomingByGroup.get(team.group) ?? [])
+    .filter((upcoming) => !isElapsedExactUpcoming(upcoming, todayIsoDate))
     .map((upcoming) => adaptUpcomingEvent(team.group, team.displayName, upcoming))
     .sort(compareUpcomingDate);
 }
@@ -196,12 +214,16 @@ export function selectUpcomingEventsBySlug(
 export function selectMonthUpcomingEvents(
   input: MobileSelectorContext | MobileRawDataset,
   month: string,
+  todayIsoDate = resolveTodayIsoDate(),
 ): UpcomingEventModel[] {
   const context = resolveContext(input);
   const events: UpcomingEventModel[] = [];
 
   for (const upcoming of context.dataset.upcomingCandidates) {
     if (resolveUpcomingMonth(upcoming) !== month) {
+      continue;
+    }
+    if (isElapsedExactUpcoming(upcoming, todayIsoDate)) {
       continue;
     }
 
@@ -457,6 +479,7 @@ function findSearchUpcomingResults(
 export function selectSearchResults(
   input: MobileSelectorContext | MobileRawDataset,
   query: string,
+  todayIsoDate = resolveTodayIsoDate(),
 ): SearchResultsModel {
   const context = resolveContext(input);
   const normalizedQuery = normalizeSearchToken(query);
@@ -474,7 +497,14 @@ export function selectSearchResults(
     query,
     entities: findSearchTeamResults(context, normalizedQuery),
     releases: findSearchReleaseResults(context, normalizedQuery),
-    upcoming: findSearchUpcomingResults(context, normalizedQuery),
+    upcoming: findSearchUpcomingResults(context, normalizedQuery).filter(
+      (item) =>
+        !(
+          item.upcoming.datePrecision === 'exact' &&
+          item.upcoming.scheduledDate &&
+          item.upcoming.scheduledDate < todayIsoDate
+        ),
+    ),
   };
 }
 
@@ -484,7 +514,7 @@ export function selectCalendarMonthSnapshot(
   todayIsoDate: string,
 ): CalendarMonthSnapshotModel {
   const releases = selectMonthReleaseSummaries(input, month);
-  const upcoming = selectMonthUpcomingEvents(input, month);
+  const upcoming = selectMonthUpcomingEvents(input, month, todayIsoDate);
   const exactUpcoming = upcoming.filter((event) => event.datePrecision === 'exact');
   const monthOnlyUpcoming = upcoming.filter((event) => event.datePrecision === 'month_only');
   const nearestUpcoming =
@@ -555,6 +585,7 @@ function resolveTimelineRank(item: EntityTimelineItemModel): number {
 export function selectEntityDetailSnapshot(
   input: MobileSelectorContext | MobileRawDataset,
   slug: string,
+  todayIsoDate = resolveTodayIsoDate(),
 ): EntityDetailSnapshotModel | null {
   const context = resolveContext(input);
   const team = selectTeamSummaryBySlug(context, slug);
@@ -563,7 +594,7 @@ export function selectEntityDetailSnapshot(
     return null;
   }
 
-  const upcomingEvents = selectUpcomingEventsBySlug(context, slug);
+  const upcomingEvents = selectUpcomingEventsBySlug(context, slug, todayIsoDate);
   const nextUpcoming = upcomingEvents[0] ?? null;
   const latestRelease = selectLatestReleaseSummaryBySlug(context, slug);
   const recentAlbums = selectRecentReleaseSummariesBySlug(context, slug).filter(

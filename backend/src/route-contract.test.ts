@@ -146,20 +146,20 @@ function buildEntityDetailPayload() {
     },
     latest_release: {
       release_id: YENA_RELEASE_ID,
-      release_title: 'Hate Rodrigo',
-      release_date: '2025-06-29',
-      stream: 'song',
-      release_kind: 'single',
-      release_format: 'single',
-      representative_song_title: 'Hate Rodrigo (feat. Yuqi)',
-      spotify_url: 'https://open.spotify.com/track/hate-rodrigo',
-      youtube_music_url: 'https://music.youtube.com/watch?v=hate-rodrigo',
-      youtube_mv_url: 'https://www.youtube.com/watch?v=hate-rodrigo',
+      release_title: 'LOVE CATCHER',
+      release_date: '2026-03-11',
+      stream: 'album',
+      release_kind: 'ep',
+      release_format: 'ep',
+      representative_song_title: 'LOVE CATCHER',
+      spotify_url: 'https://open.spotify.com/album/love-catcher',
+      youtube_music_url: 'https://music.youtube.com/playlist?list=PLLOVECATCHER',
+      youtube_mv_url: null,
       artwork: {
-        cover_image_url: 'https://cdn.example.com/hate-rodrigo-cover.jpg',
-        thumbnail_image_url: 'https://cdn.example.com/hate-rodrigo-thumb.jpg',
+        cover_image_url: 'https://cdn.example.com/love-catcher-cover.jpg',
+        thumbnail_image_url: 'https://cdn.example.com/love-catcher-thumb.jpg',
         artwork_source_type: 'releaseArtwork.cover_image_url',
-        artwork_source_url: 'https://artwork.example.com/hate-rodrigo',
+        artwork_source_url: 'https://artwork.example.com/love-catcher',
         is_placeholder: false,
       },
     },
@@ -661,7 +661,7 @@ class FakeDb {
       return this.result<Row>([]);
     }
 
-    if (normalizedSql.includes('distinct on (us.entity_id)')) {
+    if (normalizedSql.includes('from upcoming_signals us') && normalizedSql.includes('us.entity_id = any($1::uuid[])')) {
       return this.result<Row>([
         {
           upcoming_signal_id: UPCOMING_SIGNAL_ID,
@@ -1118,14 +1118,10 @@ test('GET /v1/search returns envelope with entity, release, and upcoming matches
   assertReadMeta(body.meta, '/v1/search');
   assert.equal(body.data.entities[0].entity_slug, 'yena');
   assert.equal(body.data.entities[0].match_reason, 'alias_exact');
-  assert.equal(body.data.entities[0].next_upcoming.scheduled_month, '2026-03');
-  assert.equal(body.data.entities[0].next_upcoming.release_format, 'ep');
+  assert.equal(body.data.entities[0].next_upcoming, null);
   assert.equal(body.data.releases[0].release_id, YENA_RELEASE_ID);
   assert.equal(body.data.releases[0].match_reason, 'entity_exact_latest_release');
-  assert.equal(body.data.upcoming[0].upcoming_signal_id, UPCOMING_SIGNAL_ID);
-  assert.equal(body.data.upcoming[0].match_reason, 'entity_exact');
-  assert.equal(body.data.upcoming[0].scheduled_month, '2026-03');
-  assert.equal(body.data.upcoming[0].release_format, 'ep');
+  assert.equal(body.data.upcoming.length, 0);
 });
 
 test('GET /v1/search includes owner entity for exact release-title queries without client patching', async (t) => {
@@ -1245,15 +1241,13 @@ test('GET /v1/entities/:slug returns entity detail projection payload', async (t
   assertReadMeta(body.meta, '/v1/entities/:slug');
   assert.equal(body.data.identity.entity_slug, 'yena');
   assert.equal(body.data.official_links.youtube, 'https://www.youtube.com/@YENA_OFFICIAL');
-  assert.equal(body.data.next_upcoming.upcoming_signal_id, UPCOMING_SIGNAL_ID);
-  assert.equal(body.data.next_upcoming.source_url, 'https://starnews.example/yena-love-catcher');
-  assert.equal(body.data.next_upcoming.source_count, 2);
-  assert.equal(body.data.latest_release.release_format, 'single');
-  assert.equal(body.data.latest_release.representative_song_title, 'Hate Rodrigo (feat. Yuqi)');
-  assert.equal(body.data.latest_release.spotify_url, 'https://open.spotify.com/track/hate-rodrigo');
-  assert.equal(body.data.latest_release.youtube_music_url, 'https://music.youtube.com/watch?v=hate-rodrigo');
-  assert.equal(body.data.latest_release.youtube_mv_url, 'https://www.youtube.com/watch?v=hate-rodrigo');
-  assert.equal(body.data.latest_release.artwork.cover_image_url, 'https://cdn.example.com/hate-rodrigo-cover.jpg');
+  assert.equal(body.data.next_upcoming, null);
+  assert.equal(body.data.latest_release.release_format, 'ep');
+  assert.equal(body.data.latest_release.representative_song_title, 'LOVE CATCHER');
+  assert.equal(body.data.latest_release.spotify_url, 'https://open.spotify.com/album/love-catcher');
+  assert.equal(body.data.latest_release.youtube_music_url, 'https://music.youtube.com/playlist?list=PLLOVECATCHER');
+  assert.equal(body.data.latest_release.youtube_mv_url, null);
+  assert.equal(body.data.latest_release.artwork.cover_image_url, 'https://cdn.example.com/love-catcher-cover.jpg');
   assert.equal(body.data.recent_albums.length, 1);
   assert.equal(body.data.recent_albums[0].release_format, 'ep');
   assert.equal(body.data.recent_albums[0].representative_song_title, 'LOVE CATCHER');
@@ -1340,8 +1334,11 @@ test('GET /v1/calendar/month returns calendar projection contract', async (t) =>
   assert.equal(response.statusCode, 200);
   const body = parseJson(response);
   assertReadMeta(body.meta, '/v1/calendar/month');
-  assert.equal(body.data.summary.exact_upcoming_count, 1);
-  assert.equal(body.data.days[0].exact_upcoming[0].date_precision, 'exact');
+  assert.equal(body.data.summary.exact_upcoming_count, 0);
+  assert.equal(body.data.days[0].exact_upcoming.length, 0);
+  assert.equal(body.data.scheduled_list.length, 0);
+  assert.equal(body.data.nearest_upcoming, null);
+  assert.equal(body.data.verified_list[0].release_id, YENA_RELEASE_ID);
   assert.equal(body.data.month_only_upcoming[0].date_precision, 'month_only');
 });
 
@@ -1355,8 +1352,8 @@ test('GET /v1/radar returns projection-backed radar payload', async (t) => {
   assert.equal(response.statusCode, 200);
   const body = parseJson(response);
   assertReadMeta(body.meta, '/v1/radar');
-  assert.equal(body.data.featured_upcoming.entity_slug, 'yena');
-  assert.equal(body.data.weekly_upcoming.length, 1);
+  assert.equal(body.data.featured_upcoming, null);
+  assert.equal(body.data.weekly_upcoming.length, 0);
   assert.equal(body.data.rookie.length, 1);
   assert.equal(body.data.long_gap[0].latest_release.stream, 'album');
   assert.equal(body.data.rookie[0].latest_signal.scheduled_month, '2026-04');

@@ -322,7 +322,7 @@ describe('mobile selector/adapters scaffold', () => {
   });
 
   test('sorts group upcoming rows by exact date before month-only rows', () => {
-    const upcoming = selectUpcomingEventsBySlug(dataset, 'yena');
+    const upcoming = selectUpcomingEventsBySlug(dataset, 'yena', '2026-03-10');
 
     expect(upcoming).toHaveLength(2);
     expect(upcoming[0]?.datePrecision).toBe('exact');
@@ -340,7 +340,7 @@ describe('mobile selector/adapters scaffold', () => {
   });
 
   test('builds month upcoming rows with exact before month-only ordering', () => {
-    const upcoming = selectMonthUpcomingEvents(dataset, '2026-03');
+    const upcoming = selectMonthUpcomingEvents(dataset, '2026-03', '2026-03-10');
 
     expect(upcoming).toHaveLength(2);
     expect(upcoming[0]?.datePrecision).toBe('exact');
@@ -358,7 +358,7 @@ describe('mobile selector/adapters scaffold', () => {
   });
 
   test('returns sectioned search results for Korean alias and exact upcoming coverage', () => {
-    const results = selectSearchResults(dataset, '최예나');
+    const results = selectSearchResults(dataset, '최예나', '2026-03-10');
 
     expect(results.entities[0]?.team.slug).toBe('yena');
     expect(results.entities[0]?.matchKind).toBe('alias_exact');
@@ -390,7 +390,7 @@ describe('mobile selector/adapters scaffold', () => {
   });
 
   test('builds an entity detail snapshot with upcoming, albums, and ordered timeline rows', () => {
-    const snapshot = selectEntityDetailSnapshot(dataset, 'yena');
+    const snapshot = selectEntityDetailSnapshot(dataset, 'yena', '2026-03-10');
 
     expect(snapshot).not.toBeNull();
     expect(snapshot?.team.slug).toBe('yena');
@@ -411,5 +411,20 @@ describe('mobile selector/adapters scaffold', () => {
     expect(detail?.coverImageUrl).toBe('https://example.com/love-catcher.jpg');
     expect(detail?.tracks[0]?.isTitleTrack).toBe(true);
     expect(detail?.youtubeVideoStatus).toBe('manual_override');
+  });
+
+  test('suppresses elapsed exact upcoming rows after the scheduled date passes', () => {
+    const upcoming = selectUpcomingEventsBySlug(dataset, 'yena', '2026-03-12');
+    const monthUpcoming = selectMonthUpcomingEvents(dataset, '2026-03', '2026-03-12');
+    const results = selectSearchResults(dataset, '최예나', '2026-03-12');
+    const entity = selectEntityDetailSnapshot(dataset, 'yena', '2026-03-12');
+
+    expect(upcoming).toHaveLength(1);
+    expect(upcoming[0]?.datePrecision).toBe('month_only');
+    expect(monthUpcoming).toHaveLength(1);
+    expect(monthUpcoming[0]?.datePrecision).toBe('month_only');
+    expect(results.upcoming).toHaveLength(1);
+    expect(results.upcoming[0]?.upcoming.datePrecision).toBe('month_only');
+    expect(entity?.nextUpcoming?.datePrecision).toBe('month_only');
   });
 });

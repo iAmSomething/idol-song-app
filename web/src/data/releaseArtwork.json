@@ -20553,7 +20553,19 @@
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c",
     "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
+    "artwork_provenance": "group_latest_release_since_2025-06-01_mb.source"
+  },
+  {
+    "group": "YENA",
+    "release_title": "LOVE CATCHER",
+    "release_date": "2026-03-11",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/a2762912-326e-4a07-bcb1-fbd6887ab3a1",
+    "artwork_status": "verified",
+    "artwork_provenance": "group_latest_release_since_2025-06-01_mb.source"
   },
   {
     "group": "YOUNG POSSE",

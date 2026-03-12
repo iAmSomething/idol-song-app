@@ -192,6 +192,15 @@ function toIsoString(value: Date | string | undefined): string {
   return new Date().toISOString();
 }
 
+function resolveTodayIsoDate(timezone: string): string {
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+}
+
 function normalizeArtworkSummary(value: unknown): ArtworkSummary | null {
   if (!isRecord(value)) {
     return null;
@@ -530,6 +539,16 @@ function normalizeUpcomingSummary(value: unknown): UpcomingSummary | null {
   };
 }
 
+function filterElapsedExactUpcomingSummary(upcoming: UpcomingSummary | null, todayIsoDate: string): UpcomingSummary | null {
+  if (!upcoming) {
+    return null;
+  }
+
+  return upcoming.date_precision === 'exact' && upcoming.scheduled_date && upcoming.scheduled_date < todayIsoDate
+    ? null
+    : upcoming;
+}
+
 function normalizeTrackingStateForSurface(tier: string | null, watchReason: string | null, trackingStatus: string | null): TrackingStateBlock {
   if (tier === 'longtail' && trackingStatus === 'watch_only') {
     return {
@@ -546,7 +565,7 @@ function normalizeTrackingStateForSurface(tier: string | null, watchReason: stri
   };
 }
 
-function normalizeEntityDetailPayload(payload: unknown, slug: string): EntityDetailPayload | null {
+function normalizeEntityDetailPayload(payload: unknown, slug: string, todayIsoDate: string): EntityDetailPayload | null {
   if (!isRecord(payload)) {
     return null;
   }
@@ -605,7 +624,7 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string): EntityDet
       mv_allowlist_urls: mvAllowlistUrls,
     },
     tracking_state: normalizedTrackingState,
-    next_upcoming: normalizeUpcomingSummary(payload.next_upcoming),
+    next_upcoming: filterElapsedExactUpcomingSummary(normalizeUpcomingSummary(payload.next_upcoming), todayIsoDate),
     latest_release: normalizeReleaseSummary(payload.latest_release),
     recent_albums: dedupeRecentAlbumSummaries(normalizeReleaseSummaryArray(payload.recent_albums)),
     source_timeline: normalizeSourceTimeline(payload.source_timeline),
@@ -715,7 +734,7 @@ export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteC
       throw routeError(404, 'not_found', 'No entity matched the supplied slug.', { entity_slug: slug });
     }
 
-    const normalized = normalizeEntityDetailPayload(row.payload, slug);
+    const normalized = normalizeEntityDetailPayload(row.payload, slug, resolveTodayIsoDate(context.config.appTimezone));
     if (!normalized) {
       throw routeError(500, 'stale_projection', 'entity_detail_projection returned an unexpected payload shape.', {
         entity_slug: slug,

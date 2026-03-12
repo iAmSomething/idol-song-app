@@ -51,6 +51,15 @@ function normalizeScheduledMonth(value: unknown): string | null {
   return normalized;
 }
 
+function resolveTodayIsoDate(timezone: string): string {
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+}
+
 function normalizeIsoLikeString(value: unknown): string | null {
   const normalized = normalizeOptionalString(value);
   if (!normalized) {
@@ -162,6 +171,33 @@ function normalizeRadarPayload(payload: unknown): RadarResponseData {
   };
 }
 
+function isElapsedExactUpcoming(value: Record<string, unknown> | null, todayIsoDate: string): boolean {
+  return Boolean(
+    value?.date_precision === 'exact' &&
+      typeof value.scheduled_date === 'string' &&
+      value.scheduled_date.length > 0 &&
+      value.scheduled_date < todayIsoDate
+  );
+}
+
+function filterElapsedRadarUpcoming(payload: RadarResponseData, todayIsoDate: string): RadarResponseData {
+  return {
+    ...payload,
+    featured_upcoming: isElapsedExactUpcoming(payload.featured_upcoming, todayIsoDate) ? null : payload.featured_upcoming,
+    weekly_upcoming: payload.weekly_upcoming.filter((item) => !isElapsedExactUpcoming(item, todayIsoDate)),
+    long_gap: payload.long_gap.map((item) =>
+      isRecord(item) && isElapsedExactUpcoming(item.latest_signal as Record<string, unknown> | null, todayIsoDate)
+        ? { ...item, latest_signal: null, has_upcoming_signal: false }
+        : item
+    ),
+    rookie: payload.rookie.map((item) =>
+      isRecord(item) && isElapsedExactUpcoming(item.latest_signal as Record<string, unknown> | null, todayIsoDate)
+        ? { ...item, latest_signal: null, has_upcoming_signal: false }
+        : item
+    ),
+  };
+}
+
 function toIsoString(value: Date | string | undefined): string {
   if (value instanceof Date) {
     return value.toISOString();
@@ -191,10 +227,12 @@ export function registerRadarRoutes(app: FastifyInstance, context: RadarRouteCon
 
     const row = result.rows[0];
 
+    const payload = filterElapsedRadarUpcoming(normalizeRadarPayload(row?.payload), resolveTodayIsoDate(context.config.appTimezone));
+
     return buildReadDataEnvelope(
       request,
       context.config.appTimezone,
-      normalizeRadarPayload(row?.payload),
+      payload,
       {},
       toIsoString(row?.generated_at),
     );
