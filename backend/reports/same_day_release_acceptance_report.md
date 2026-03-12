@@ -1,13 +1,13 @@
 # Same-day Release Acceptance Report
 
-- generated_at: 2026-03-12T11:01:15.594Z
+- generated_at: 2026-03-12T12:36:23.495Z
 - reference_date: 2026-03-12
 - overall_status: fail
 
 ## Summary
 
 - YENA same-day suppression: pass
-- P1Harmony same-day release acceptance: fail (released_row, album_cover, track_list, official_mv, title_track, user_surface_suppression)
+- P1Harmony same-day release acceptance: fail (official_mv)
 
 ## Fixtures
 
@@ -24,14 +24,15 @@
 ### P1Harmony same-day release acceptance
 
 - status: fail
-- exact upcoming present: yes
-- promoted release present: no
-- album cover attached: no
-- track list attached: no
+- exact upcoming present: no
+- promoted release present: yes
+- album cover attached: yes
+- track list attached: yes
 - official MV attached: no
-- title track attached: no
-- user-facing not upcoming-only: no
-- missing requirements: released_row, album_cover, track_list, official_mv, title_track, user_surface_suppression
+- title track attached: yes
+- user-facing not upcoming-only: yes
+- missing requirements: official_mv
+- promoted release: UNIQUE / 2026-03-12 / album
 
 ## Failed-cycle update template
 
@@ -40,7 +41,7 @@
 - reference date: 2026-03-12
 - status: FAIL
 - fixture: P1Harmony same-day release acceptance
-  - missing: released_row, album_cover, track_list, official_mv, title_track, user_surface_suppression
-  - promoted release: none
+  - missing: official_mv
+  - promoted release: UNIQUE / 2026-03-12 / album
 ```
 

@@ -61,6 +61,74 @@ def prune_stale_mv_review_tasks(connection: "psycopg.Connection[Any]", review_ta
     return deleted
 
 
+def deactivate_released_upcoming_signals(
+    connection: "psycopg.Connection[Any]",
+    release_rows: Sequence[Dict[str, Any]],
+) -> int:
+    suppression_scopes = []
+    seen_scopes = set()
+    for row in release_rows:
+        entity_id = row.get("entity_id")
+        release_date = row.get("release_date")
+        if entity_id is None or release_date is None:
+            continue
+        normalized_release_title = canonical_import.optional_text(row.get("normalized_release_title")) or ""
+        release_month = release_date.replace(day=1)
+        scope_key = (entity_id, release_date, release_month, normalized_release_title)
+        if scope_key in seen_scopes:
+            continue
+        seen_scopes.add(scope_key)
+        suppression_scopes.append(
+            {
+                "entity_id": str(entity_id),
+                "release_date": release_date.isoformat(),
+                "release_month": release_month.isoformat(),
+                "normalized_release_title": normalized_release_title,
+            }
+        )
+
+    if not suppression_scopes:
+        return 0
+
+    with connection.cursor() as cursor:
+        cursor.execute(
+            """
+            with suppression_scope as (
+              select
+                (item->>'entity_id')::uuid as entity_id,
+                (item->>'release_date')::date as release_date,
+                (item->>'release_month')::date as release_month,
+                coalesce(item->>'normalized_release_title', '') as normalized_release_title
+              from jsonb_array_elements(%s::jsonb) as item
+            ),
+            matched_signals as (
+              select distinct u.id
+              from upcoming_signals u
+              join suppression_scope scope
+                on scope.entity_id = u.entity_id
+              where u.is_active = true
+                and (
+                  (u.date_precision = 'exact' and u.scheduled_date = scope.release_date)
+                  or (u.date_precision = 'month_only' and u.scheduled_month = scope.release_month)
+                  or (
+                    scope.normalized_release_title <> ''
+                    and u.date_precision = 'unknown'
+                    and coalesce(u.normalized_headline, '') like ('%%' || scope.normalized_release_title || '%%')
+                  )
+                )
+            )
+            update upcoming_signals u
+            set is_active = false,
+                updated_at = now()
+            where u.id in (select id from matched_signals)
+            """,
+            (Jsonb(suppression_scopes),),
+        )
+        updated = max(cursor.rowcount, 0)
+    connection.commit()
+    return updated
+
+
 def upsert_release_pipeline_rows(
     connection: "psycopg.Connection[Any]",
     payload: Dict[str, Any],
@@ -508,6 +576,10 @@ def upsert_release_pipeline_rows(
             )
 
     connection.commit()
+    summary["stale_pruned"]["upcoming_signals_deactivated_for_releases"] = deactivate_released_upcoming_signals(
+        connection,
+        release_rows,
+    )
     summary["operation_counts"] = {table: dict(counter) for table, counter in operations.items()}
 
 

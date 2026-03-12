@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-11T18:13:37.531229+00:00",
+  "generated_at": "2026-03-12T12:35:42.357878+00:00",
   "source_counts": {
     "artist_profiles": 117,
     "canonical_entity_metadata": 117,
     "team_badge_assets": 77,
     "youtube_allowlists": 117,
-    "release_details": 1770,
+    "release_details": 1771,
     "release_history_groups": 116,
-    "release_history_rows": 1770,
-    "release_artwork": 1770,
+    "release_history_rows": 1771,
+    "release_artwork": 1771,
     "upcoming_candidates": 71,
     "watchlist": 108,
     "release_detail_overrides": 150,
@@ -18,12 +18,20 @@
   },
   "source_duplicates": {
     "entity_aliases": 1,
-    "youtube_channels": 25,
+    "youtube_channels": 28,
     "upcoming_signals": 12
   },
   "dropped_records": {},
   "dropped_missing_fk_samples": {},
-  "unresolved_release_mappings": [],
+  "unresolved_release_mappings": [
+    {
+      "dataset": "releases.json.latest_album",
+      "group": "YENA",
+      "release_title": "LOVE CATCHER",
+      "release_date": "2026-03-11",
+      "stream": "album"
+    }
+  ],
   "unresolved_review_links": [],
   "entity_type_counts": {
     "group": 105,
@@ -63,37 +71,36 @@
   },
   "scope": "release_pipeline",
   "stale_pruned": {
-    "review_tasks": 0
+    "review_tasks": 0,
+    "upcoming_signals_deactivated_for_releases": 12
   },
   "operation_counts": {
     "entities": {
       "updated": 117
     },
     "entity_official_links": {
-      "updated": 429,
-      "inserted": 1
+      "updated": 461
     },
     "entity_metadata_fields": {
-      "inserted": 702
+      "updated": 702
     },
     "youtube_channels": {
-      "updated": 96
+      "updated": 122
     },
     "entity_youtube_channels": {
-      "updated": 121
+      "updated": 150
     },
     "releases": {
-      "updated": 1771
+      "updated": 1772
     },
     "release_artwork": {
-      "inserted": 1654,
-      "updated": 116
+      "updated": 1771
     },
     "tracks": {
-      "updated": 7613
+      "updated": 7619
     },
     "release_service_links": {
-      "updated": 5312
+      "updated": 5315
     },
     "track_service_links": {},
     "entity_tracking_state": {
@@ -108,14 +115,14 @@
   },
   "db_row_counts": {
     "entities": 117,
-    "entity_official_links": 430,
+    "entity_official_links": 523,
     "entity_metadata_fields": 702,
-    "youtube_channels": 96,
-    "entity_youtube_channels": 121,
-    "releases": 1771,
-    "release_artwork": 1771,
-    "tracks": 7618,
-    "release_service_links": 5313,
+    "youtube_channels": 184,
+    "entity_youtube_channels": 212,
+    "releases": 1773,
+    "release_artwork": 1773,
+    "tracks": 7629,
+    "release_service_links": 5319,
     "track_service_links": 0,
     "entity_tracking_state": 117,
     "review_tasks": 1683,
@@ -124,26 +131,26 @@
   "critical_checks": {
     "release_service_status_counts": {
       "spotify": {
-        "canonical": 1095,
-        "no_link": 676
+        "canonical": 1096,
+        "no_link": 677
       },
       "youtube_music": {
         "canonical": 38,
         "manual_override": 50,
-        "no_link": 1683
+        "no_link": 1685
       },
       "youtube_mv": {
         "manual_override": 133,
         "needs_review": 2,
         "no_mv": 1,
         "relation_match": 21,
-        "unresolved": 1614
+        "unresolved": 1616
       }
     },
-    "title_track_rows": 1223,
+    "title_track_rows": 1226,
     "entity_channel_role_counts": {
-      "both": 88,
-      "mv_allowlist": 33
+      "both": 178,
+      "mv_allowlist": 34
     },
     "mv_review_task_rows": 1616,
     "tracking_state_rows_with_latest_release": 109
@@ -151,14 +158,14 @@
   "summary_path": "backend/reports/release_pipeline_db_sync_summary.json",
   "table_source_counts": {
     "entities": 117,
-    "entity_official_links": 430,
+    "entity_official_links": 461,
     "entity_metadata_fields": 702,
-    "youtube_channels": 96,
-    "entity_youtube_channels": 121,
-    "releases": 1771,
-    "release_artwork": 1770,
-    "tracks": 7613,
-    "release_service_links": 5312,
+    "youtube_channels": 122,
+    "entity_youtube_channels": 150,
+    "releases": 1772,
+    "release_artwork": 1771,
+    "tracks": 7619,
+    "release_service_links": 5315,
     "track_service_links": 0,
     "entity_tracking_state": 108,
     "review_tasks": 1616,

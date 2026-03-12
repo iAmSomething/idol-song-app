@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-12T08:03:06.277Z",
+  "generated_at": "2026-03-12T12:36:08.340Z",
   "row_counts": {
     "entity_search_documents": 117,
     "calendar_month_projection": 216,
     "entity_detail_projection": 117,
-    "release_detail_projection": 1772,
+    "release_detail_projection": 1773,
     "radar_projection": 1
   },
   "samples": {
@@ -34,26 +34,26 @@
     "calendar": {
       "month_key": "2026-03",
       "summary": {
-        "verified_count": 3,
-        "exact_upcoming_count": 4,
+        "verified_count": 4,
+        "exact_upcoming_count": 3,
         "month_only_upcoming_count": 4
       },
       "nearest_upcoming": {
-        "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-        "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+        "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+        "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
         "date_status": "confirmed",
-        "entity_slug": "p1harmony",
+        "entity_slug": "bts",
         "source_type": "news_rss",
-        "display_name": "P1Harmony",
+        "display_name": "BTS",
         "source_count": 4,
         "source_domain": "news.google.com",
         "date_precision": "exact",
-        "release_format": "ep",
-        "scheduled_date": "2026-03-12",
+        "release_format": "album",
+        "scheduled_date": "2026-03-20",
         "scheduled_month": "2026-03",
         "confidence_score": 0.82,
-        "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
-        "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735"
+        "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
+        "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742"
       }
     },
     "entity_detail": {
@@ -69,7 +69,7 @@
           "debut_year": {
             "value": null,
             "status": "review_needed",
-            "provenance": "artistProfiles.debut_year.review_needed.review_needed",
+            "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
             "source_url": null,
             "review_notes": "Debut year is still missing in the canonical entity profile seed."
           },
@@ -92,7 +92,7 @@
             "status": "resolved",
             "provenance": "entityMetadataAcquisition.youtube_handle_probe",
             "source_url": "https://www.youtube.com/@YENA_OFFICIAL",
-            "review_notes": "Verified from @yena_official handle probe against the official social handle pattern."
+            "review_notes": "Verified from @YENA_OFFICIAL handle probe against the official social handle pattern."
           },
           "official_instagram": {
             "value": "https://www.instagram.com/yena.jigumina",
@@ -252,9 +252,10 @@
       ],
       "youtube_channels": {
         "mv_allowlist_urls": [
+          "https://www.youtube.com/@YENA_OFFICIAL",
           "https://www.youtube.com/@yena_official"
         ],
-        "primary_team_channel_url": "https://www.youtube.com/@yena_official"
+        "primary_team_channel_url": "https://www.youtube.com/@YENA_OFFICIAL"
       },
       "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
     },
@@ -278,17 +279,17 @@
     },
     "radar": {
       "featured_upcoming": {
-        "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+        "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
         "date_status": "confirmed",
-        "entity_slug": "p1harmony",
-        "display_name": "P1Harmony",
+        "entity_slug": "bts",
+        "display_name": "BTS",
         "date_precision": "exact",
-        "release_format": "ep",
-        "scheduled_date": "2026-03-12",
+        "release_format": "album",
+        "scheduled_date": "2026-03-20",
         "confidence_score": 0.82,
-        "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735"
+        "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742"
       },
-      "weekly_upcoming_count": 1,
+      "weekly_upcoming_count": 0,
       "change_feed_count": 20,
       "long_gap_count": 23,
       "rookie_count": 8
