@@ -9,11 +9,13 @@ import type { ReadyStatusSnapshot } from './lib/readiness.js';
 const NOW = '2026-03-08T06:00:00.000Z';
 const ENTITY_ID = '11111111-1111-4111-8111-111111111111';
 const YENA_RELEASE_ID = '22222222-2222-4222-8222-222222222222';
+const YENA_OLDER_RELEASE_ID = '22222222-2222-4222-8222-222222222223';
 const IVE_RELEASE_ID = '33333333-3333-4333-8333-333333333333';
 const MALFORMED_RELEASE_ID = '44444444-4444-4444-8444-444444444444';
 const UPCOMING_SIGNAL_ID = '55555555-5555-4555-8555-555555555555';
 const P1HARMONY_RELEASE_ID = '55555555-5555-4555-8555-555555555556';
 const P1HARMONY_UPCOMING_SIGNAL_ID = '55555555-5555-4555-8555-555555555557';
+const P1HARMONY_OLDER_RELEASE_ID = '55555555-5555-4555-8555-555555555558';
 const UPCOMING_REVIEW_ID = '66666666-6666-4666-8666-666666666666';
 const MV_REVIEW_ID = '77777777-7777-4777-8777-777777777777';
 const IVE_ENTITY_ID = '88888888-8888-4888-8888-888888888888';
@@ -1026,6 +1028,64 @@ class FakeDb {
       return this.result<Row>(rows);
     }
 
+    if (
+      normalizedSql.includes('from releases r') &&
+      normalizedSql.includes('inner join entities e on e.id = r.entity_id') &&
+      normalizedSql.includes('where e.slug = $1')
+    ) {
+      if (params[0] === 'yena') {
+        return this.result<Row>([
+          {
+            release_id: YENA_RELEASE_ID,
+            release_title: 'LOVE CATCHER',
+            release_date: '2026-03-11',
+            stream: 'album',
+            release_kind: 'ep',
+            release_format: 'ep',
+            source_url: 'https://musicbrainz.org/release-group/yena-love-catcher',
+            artist_source_url: 'https://www.youtube.com/@YENA_OFFICIAL',
+          } as unknown as Row,
+          {
+            release_id: YENA_OLDER_RELEASE_ID,
+            release_title: 'SMILEY',
+            release_date: '2025-02-17',
+            stream: 'album',
+            release_kind: 'single',
+            release_format: 'single',
+            source_url: 'https://musicbrainz.org/release-group/yena-smiley',
+            artist_source_url: 'https://www.youtube.com/@YENA_OFFICIAL',
+          } as unknown as Row,
+        ]);
+      }
+
+      if (params[0] === 'p1harmony') {
+        return this.result<Row>([
+          {
+            release_id: P1HARMONY_RELEASE_ID,
+            release_title: 'UNIQUE',
+            release_date: '2026-03-12',
+            stream: 'album',
+            release_kind: 'ep',
+            release_format: 'ep',
+            source_url: 'https://musicbrainz.org/release-group/p1harmony-unique',
+            artist_source_url: 'https://www.youtube.com/@P1Harmony',
+          } as unknown as Row,
+          {
+            release_id: P1HARMONY_OLDER_RELEASE_ID,
+            release_title: 'SAD SONG',
+            release_date: '2025-09-20',
+            stream: 'album',
+            release_kind: 'ep',
+            release_format: 'ep',
+            source_url: 'https://musicbrainz.org/release-group/p1harmony-sad-song',
+            artist_source_url: 'https://www.youtube.com/@P1Harmony',
+          } as unknown as Row,
+        ]);
+      }
+
+      return this.result<Row>([]);
+    }
+
     if (normalizedSql.includes('from upcoming_signals us') && normalizedSql.includes('projection_normalize_text(us.headline)')) {
       if (params[0] === '컴백') {
         return this.result<Row>([
@@ -1865,6 +1925,10 @@ test('GET /v1/entities/:slug returns entity detail projection payload', async (t
   assert.equal(body.data.latest_release.youtube_music_url, 'https://music.youtube.com/playlist?list=PLLOVECATCHER');
   assert.equal(body.data.latest_release.youtube_mv_url, null);
   assert.equal(body.data.latest_release.artwork.cover_image_url, 'https://cdn.example.com/love-catcher-cover.jpg');
+  assert.equal(body.data.release_history.length, 2);
+  assert.equal(body.data.release_history[0].release_title, 'LOVE CATCHER');
+  assert.equal(body.data.release_history[0].source_url, 'https://starnews.example/yena-love-catcher');
+  assert.equal(body.data.release_history[1].release_title, 'SMILEY');
   assert.equal(body.data.recent_albums.length, 1);
   assert.equal(body.data.recent_albums[0].release_format, 'ep');
   assert.equal(body.data.recent_albums[0].representative_song_title, 'LOVE CATCHER');
@@ -1893,6 +1957,8 @@ test('GET /v1/entities/:slug suppresses same-day exact upcoming when latest rele
   assert.equal(body.data.identity.entity_slug, 'p1harmony');
   assert.equal(body.data.next_upcoming, null);
   assert.equal(body.data.latest_release.release_title, 'UNIQUE');
+  assert.equal(body.data.release_history.length, 2);
+  assert.equal(body.data.release_history[0].release_title, 'UNIQUE');
   assert.equal(body.data.recent_albums[0].release_title, 'UNIQUE');
   assert.equal(body.data.compare_candidates.length, 1);
   assert.equal(body.data.compare_candidates[0].entity_slug, 'yena');
