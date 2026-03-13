@@ -596,9 +596,10 @@ python3 ../build_mv_manual_review_queue.py
 ```bash
 python3 ../build_release_details_musicbrainz.py --cohorts latest,recent --max-rows 25 --progress-every 5
 python3 ../backfill_release_detail_mvs.py --cohorts latest,recent --max-rows 25 --progress-every 5
+python3 ../backfill_release_detail_mvs.py --cohorts latest,recent --row-offset 25 --max-rows 25 --progress-every 5
 ```
 
-`backfill_release_detail_mvs.py`는 latest/recent blocker rerun에서 최대 2개의 title track, `official music video` suffix, no-suffix fallback까지 query plan에 포함한다. candidate breadth를 먼저 넓힌 뒤 full rerun을 태우는 기준으로 쓴다.
+`backfill_release_detail_mvs.py`는 latest/recent blocker rerun에서 최대 2개의 title track, `official music video` suffix, no-suffix fallback까지 query plan에 포함한다. candidate breadth를 먼저 넓힌 뒤 full rerun을 태우는 기준으로 쓰고, 긴 pass는 `--row-offset`과 `--max-rows`를 함께 써서 batch를 이어간다. 외부 검색 단발 실패는 빈 결과로 흡수해 전체 rerun이 중단되지 않게 한다.
 
 ## Release Pipeline Dual-Write
 

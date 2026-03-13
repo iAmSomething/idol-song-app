@@ -53,6 +53,16 @@ def parse_positive_int_arg(raw_value: str) -> int:
     return parsed
 
 
+def parse_non_negative_int_arg(raw_value: str) -> int:
+    try:
+        parsed = int(raw_value)
+    except ValueError as error:
+        raise argparse.ArgumentTypeError("must be a non-negative integer") from error
+    if parsed < 0:
+        raise argparse.ArgumentTypeError("must be a non-negative integer")
+    return parsed
+
+
 def should_emit_progress(current_index: int, total_rows: int, progress_every: int) -> bool:
     if total_rows <= 0:
         return False
@@ -201,14 +211,28 @@ def resolve_video_channel_url(video_id: str) -> str:
 def fetch_query_candidates(query: str, reference: datetime) -> list[dict[str, Any]]:
     search_url = "https://www.youtube.com/results?hl=en&search_query=" + urllib.parse.quote_plus(query)
     request = urllib.request.Request(search_url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=20) as response:
-        html = response.read().decode("utf-8", "ignore")
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            html = response.read().decode("utf-8", "ignore")
+    except Exception as exc:  # noqa: BLE001
+        print(
+            f"[backfill_release_detail_mvs] query fetch failed for {query!r}: {exc}",
+            file=sys.stderr,
+        )
+        return []
 
     match = re.search(r"var ytInitialData = (\{.*?\});</script>", html)
     if not match:
         return []
 
-    data = json.loads(match.group(1))
+    try:
+        data = json.loads(match.group(1))
+    except json.JSONDecodeError as exc:
+        print(
+            f"[backfill_release_detail_mvs] query parse failed for {query!r}: {exc}",
+            file=sys.stderr,
+        )
+        return []
     sections = data["contents"]["twoColumnSearchResultsRenderer"]["primaryContents"]["sectionListRenderer"]["contents"]
     candidates: list[dict[str, Any]] = []
     for section in sections:
@@ -808,6 +832,12 @@ def main() -> None:
         help="Limit the current scoped pass to the first N matching release-detail rows.",
     )
     parser.add_argument(
+        "--row-offset",
+        type=parse_non_negative_int_arg,
+        default=0,
+        help="Skip the first N matching scoped rows before applying --max-rows.",
+    )
+    parser.add_argument(
         "--progress-every",
         type=parse_positive_int_arg,
         default=25,
@@ -836,6 +866,8 @@ def main() -> None:
             if infer_release_cohort(detail.get("release_date", ""), reference_date) in scoped_cohorts
         ]
     total_scoped_rows = len(details)
+    if args.row_offset:
+        details = details[args.row_offset :]
     if args.max_rows is not None:
         details = details[: args.max_rows]
     print(
@@ -882,6 +914,7 @@ def main() -> None:
     report["execution_scope"]["scoped_rows_total"] = total_scoped_rows
     report["execution_scope"]["selected_rows"] = len(details)
     report["execution_scope"]["progress_every"] = args.progress_every
+    report["execution_scope"]["row_offset"] = args.row_offset
     if args.max_rows is not None:
         report["execution_scope"]["max_rows"] = args.max_rows
 

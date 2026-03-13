@@ -3,7 +3,8 @@ from __future__ import annotations
 import argparse
 import io
 import unittest
-from datetime import date
+from datetime import date, datetime
+from urllib.error import URLError
 from unittest.mock import patch
 
 import backfill_release_detail_mvs as backfill
@@ -16,6 +17,13 @@ class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
     def test_parse_positive_int_arg_rejects_zero(self) -> None:
         with self.assertRaises(argparse.ArgumentTypeError):
             backfill.parse_positive_int_arg("0")
+
+    def test_parse_non_negative_int_arg_accepts_zero(self) -> None:
+        self.assertEqual(backfill.parse_non_negative_int_arg("0"), 0)
+
+    def test_parse_non_negative_int_arg_rejects_negative_values(self) -> None:
+        with self.assertRaises(argparse.ArgumentTypeError):
+            backfill.parse_non_negative_int_arg("-1")
 
     def test_build_queries_prefers_primary_name_then_korean_alias_then_release_title(self) -> None:
         detail = {
@@ -189,6 +197,13 @@ class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
         self.assertEqual(backfill.infer_release_cohort("2025-12-01", reference_date), "latest")
         self.assertEqual(backfill.infer_release_cohort("2024-04-01", reference_date), "recent")
         self.assertEqual(backfill.infer_release_cohort("2021-03-10", reference_date), "historical")
+
+    @patch.object(backfill.urllib.request, "urlopen", side_effect=URLError("boom"))
+    def test_fetch_query_candidates_returns_empty_when_request_fails(self, _: object) -> None:
+        self.assertEqual(
+            backfill.fetch_query_candidates("YENA LOVE CATCHER official mv", datetime(2026, 3, 12)),
+            [],
+        )
 
     @patch.object(backfill, "REQUEST_DELAY_SECONDS", 0)
     def test_choose_resolutions_uses_track_search_for_unresolved_album_rows(self) -> None:
