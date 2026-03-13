@@ -1,8 +1,10 @@
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-const PROJECTION_FRESHNESS_PASS_LAG_MINUTES = 20;
-const PROJECTION_FRESHNESS_DEGRADED_LAG_MINUTES = 60;
+// Projection refreshes follow daily upcoming sync plus conditional release-day verification.
+// A few hours of lag should degrade readiness, not hard-fail deploy/runtime checks.
+const PROJECTION_FRESHNESS_PASS_LAG_MINUTES = 180;
+const PROJECTION_FRESHNESS_DEGRADED_LAG_MINUTES = 1440;
 
 type ReadyStatus = 'ready' | 'degraded' | 'not_ready';
 type ProjectionStatus = 'healthy' | 'degraded' | 'not_ready';
