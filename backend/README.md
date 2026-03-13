@@ -410,6 +410,7 @@ artifact:
 
 - preview: `backend/reports/live_backend_smoke_preview.json`
 - production: `backend/reports/live_backend_smoke_production.json`
+- `--report-path`를 생략하면 target별 기본 경로를 자동 사용한다.
 - preview freshness handoff: `backend/reports/backend_freshness_handoff_preview.json`
 - production freshness handoff: `backend/reports/backend_freshness_handoff_production.json`
 - repo-tracked Pages gate artifact: `backend/reports/backend_freshness_handoff.json`
@@ -427,6 +428,7 @@ manual smoke 예시:
 ```bash
 cd backend
 npm run smoke:live -- --target preview --base-url https://preview.example.com --report-path ./reports/live_backend_smoke_preview.json
+npm run smoke:live -- --target production --base-url https://idol-song-app-production.up.railway.app
 ```
 
 fixture registry를 바꿔서 deploy gate를 재현하고 싶으면 `--fixtures-path`로 다른 JSON을 넘기면 된다.
