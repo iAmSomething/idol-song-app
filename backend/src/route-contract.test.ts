@@ -1165,7 +1165,10 @@ class FakeDb {
       return this.result<Row>([]);
     }
 
-    if (normalizedSql.includes('from release_detail_projection') && normalizedSql.includes('where entity_slug = $1')) {
+    if (
+      normalizedSql.includes('from release_detail_projection') &&
+      (normalizedSql.includes('where entity_slug = $1') || normalizedSql.includes('where rdp.entity_slug = $1'))
+    ) {
       if (params[0] === 'ive' && params[2] === '2026-02-23' && params[3] === 'album') {
         return this.result<Row>([
           {
@@ -1175,6 +1178,8 @@ class FakeDb {
             release_date: '2026-02-23',
             stream: 'album',
             payload: buildReleaseDetailPayload(IVE_RELEASE_ID),
+            source_url: 'https://artwork.example.com/revive-plus',
+            artist_source_url: null,
             generated_at: NOW,
           } as unknown as Row,
         ]);
@@ -1195,6 +1200,8 @@ class FakeDb {
               'unresolved',
               'manual_override',
             ),
+            source_url: 'https://artwork.example.com/deadline',
+            artist_source_url: 'https://www.youtube.com/@BLACKPINK',
             generated_at: NOW,
           } as unknown as Row,
           {
@@ -1210,6 +1217,8 @@ class FakeDb {
               'verified',
               'canonical',
             ),
+            source_url: 'https://artwork.example.com/deadline',
+            artist_source_url: 'https://www.youtube.com/@BLACKPINK',
             generated_at: NOW,
           } as unknown as Row,
         ]);
@@ -1218,7 +1227,11 @@ class FakeDb {
       return this.result<Row>([]);
     }
 
-    if (normalizedSql.includes('from release_detail_projection') && normalizedSql.includes('where release_id = $1::uuid')) {
+    if (
+      normalizedSql.includes('from release_detail_projection') &&
+      (normalizedSql.includes('where release_id = $1::uuid') ||
+        normalizedSql.includes('where rdp.release_id = $1::uuid'))
+    ) {
       const releaseId = String(params[0] ?? '');
       if (releaseId === IVE_RELEASE_ID) {
         return this.result<Row>([
@@ -1229,6 +1242,8 @@ class FakeDb {
             release_date: '2026-02-23',
             stream: 'album',
             payload: buildReleaseDetailPayload(IVE_RELEASE_ID),
+            source_url: 'https://artwork.example.com/revive-plus',
+            artist_source_url: null,
             generated_at: NOW,
           } as unknown as Row,
         ]);
@@ -1249,6 +1264,8 @@ class FakeDb {
               'verified',
               'canonical',
             ),
+            source_url: 'https://artwork.example.com/deadline',
+            artist_source_url: 'https://www.youtube.com/@BLACKPINK',
             generated_at: NOW,
           } as unknown as Row,
         ]);
@@ -1267,6 +1284,8 @@ class FakeDb {
                 release_id: 'wrong-id',
               },
             },
+            source_url: null,
+            artist_source_url: null,
             generated_at: NOW,
           } as unknown as Row,
         ]);
@@ -1275,8 +1294,55 @@ class FakeDb {
       return this.result<Row>([]);
     }
 
-    if (normalizedSql.includes('from release_detail_projection') && normalizedSql.includes('where release_id = any($1::uuid[])')) {
-      return this.result<Row>([]);
+    if (
+      normalizedSql.includes('from release_detail_projection') &&
+      (normalizedSql.includes('where release_id = any($1::uuid[])') ||
+        normalizedSql.includes('where rdp.release_id = any($1::uuid[])'))
+    ) {
+      const releaseIds = Array.isArray(params[0]) ? params[0].map((value) => String(value)) : [];
+
+      const rows = releaseIds.flatMap((releaseId) => {
+        if (releaseId === YENA_RELEASE_ID) {
+          return [
+            {
+              release_id: YENA_RELEASE_ID,
+              payload: {
+                tracks: [{ title: 'LOVE CATCHER', is_title_track: true }],
+              },
+              source_url: 'https://starnews.example/yena-love-catcher',
+              artist_source_url: 'https://www.youtube.com/@YENA_OFFICIAL',
+            } as unknown as Row,
+          ];
+        }
+
+        if (releaseId === P1HARMONY_RELEASE_ID) {
+          return [
+            {
+              release_id: P1HARMONY_RELEASE_ID,
+              payload: {
+                tracks: [{ title: 'DUH!', is_title_track: true }],
+              },
+              source_url: 'https://news.example.com/p1harmony-unique',
+              artist_source_url: 'https://www.youtube.com/@P1Harmony',
+            } as unknown as Row,
+          ];
+        }
+
+        if (releaseId === IVE_RELEASE_ID) {
+          return [
+            {
+              release_id: IVE_RELEASE_ID,
+              payload: buildReleaseDetailPayload(IVE_RELEASE_ID),
+              source_url: 'https://artwork.example.com/revive-plus',
+              artist_source_url: null,
+            } as unknown as Row,
+          ];
+        }
+
+        return [];
+      });
+
+      return this.result<Row>(rows);
     }
 
     if (normalizedSql.includes('from calendar_month_projection')) {
