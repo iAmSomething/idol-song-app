@@ -81,6 +81,7 @@ class BuildTeamBadgeAssetsTest(unittest.TestCase):
             {
                 "group": "Hearts2Hearts",
                 "official_youtube_url": "https://www.youtube.com/@SMTOWN",
+                "official_instagram_url": "https://www.instagram.com/hearts2hearts",
             },
         ]
         existing_rows = [
@@ -123,7 +124,14 @@ class BuildTeamBadgeAssetsTest(unittest.TestCase):
                   </head>
                   <body>"channelId":"UCg8ZzloDPTrOiGztK0C9txQ"</body>
                 </html>
-                """
+                """,
+                "https://www.instagram.com/hearts2hearts": """
+                <html>
+                  <head>
+                    <meta property="og:image" content="https://scontent.example/hearts2hearts.jpg" />
+                  </head>
+                </html>
+                """,
             }
         )
 
@@ -131,9 +139,11 @@ class BuildTeamBadgeAssetsTest(unittest.TestCase):
 
         groups = {row["group"] for row in rows}
         self.assertIn("ALLDAY PROJECT", groups)
-        self.assertNotIn("Hearts2Hearts", {row["group"] for row in rows if row["group"] != "BTS" and row["group"] != "ALLDAY PROJECT"})
-        self.assertEqual(summary["added"], 1)
-        self.assertEqual(summary["skipped_agency_only"], 1)
+        self.assertIn("Hearts2Hearts", groups)
+        hearts_row = next(row for row in rows if row["group"] == "Hearts2Hearts")
+        self.assertEqual(hearts_row["badge_kind"], "official_social_avatar")
+        self.assertEqual(summary["added"], 2)
+        self.assertEqual(summary["skipped_agency_only"], 0)
 
 
 if __name__ == "__main__":

@@ -118,6 +118,31 @@ def build_badge_row(group: str, channel_url: str, fetcher: FetchText) -> dict[st
     }
 
 
+def build_social_badge_row(
+    group: str,
+    source_url: str,
+    source_label: str,
+    badge_kind: str,
+    fetcher: FetchText,
+) -> dict[str, str] | None:
+    try:
+        page_html = fetcher(source_url)
+    except Exception:  # noqa: BLE001
+        return None
+
+    badge_image_url = extract_avatar_image_url(page_html)
+    if not badge_image_url:
+        return None
+
+    return {
+        "group": group,
+        "badge_image_url": badge_image_url,
+        "badge_source_url": source_url,
+        "badge_source_label": source_label,
+        "badge_kind": badge_kind,
+    }
+
+
 def build_badge_rows(
     profiles: list[dict[str, Any]],
     existing_rows: list[dict[str, Any]],
@@ -139,13 +164,22 @@ def build_badge_rows(
             continue
 
         channel_url = select_team_channel_url(profile, allowlists_by_group.get(group))
-        if not channel_url:
-            summary["skipped_agency_only"] += 1
-            continue
-
-        badge_row = build_badge_row(group, channel_url, fetcher)
+        badge_row = build_badge_row(group, channel_url, fetcher) if channel_url else None
         if not badge_row:
-            summary["skipped_fetch_failed"] += 1
+            official_instagram_url = profile.get("official_instagram_url")
+            if official_instagram_url:
+                badge_row = build_social_badge_row(
+                    group,
+                    official_instagram_url,
+                    "Official Instagram profile image",
+                    "official_social_avatar",
+                    fetcher,
+                )
+        if not badge_row:
+            if channel_url:
+                summary["skipped_fetch_failed"] += 1
+            else:
+                summary["skipped_agency_only"] += 1
             continue
 
         rows_by_group[group] = badge_row
