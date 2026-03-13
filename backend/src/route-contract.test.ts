@@ -348,6 +348,56 @@ function buildP1HarmonyEntityDetailPayload() {
   };
 }
 
+function buildChuuEntityDetailPayload() {
+  return {
+    identity: {
+      entity_slug: 'chuu',
+      display_name: 'CHUU',
+      canonical_name: 'CHUU',
+      entity_type: 'solo',
+      agency_name: 'ATRP',
+      debut_year: 2023,
+      badge_image_url: null,
+      badge_source_url: null,
+      badge_source_label: null,
+      badge_kind: null,
+      representative_image_url: null,
+      representative_image_source: null,
+    },
+    official_links: {
+      youtube: 'https://www.youtube.com/@chuuofficial',
+      x: 'https://x.com/chuu_atrp',
+      instagram: 'https://www.instagram.com/chuuo3o',
+    },
+    youtube_channels: {
+      primary_team_channel_url: 'https://www.youtube.com/@chuuofficial',
+      mv_allowlist_urls: ['https://www.youtube.com/@chuuofficial'],
+    },
+    tracking_state: {
+      tier: 'tracked',
+      watch_reason: null,
+      tracking_status: 'watch_only',
+    },
+    next_upcoming: null,
+    latest_release: {
+      release_id: 'aaaaaaaa-1111-4222-8333-aaaaaaaaaaaa',
+      release_title: 'Only cry in the rain',
+      release_date: '2026-02-10',
+      stream: 'album',
+      release_kind: 'single',
+      release_format: 'single',
+      representative_song_title: 'Only cry in the rain',
+      spotify_url: null,
+      youtube_music_url: null,
+      youtube_mv_url: null,
+      artwork: null,
+    },
+    recent_albums: [],
+    source_timeline: [],
+    artist_source_url: 'https://www.youtube.com/@chuuofficial',
+  };
+}
+
 function buildReleaseDetailPayload(releaseId: string) {
   return {
     release: {
@@ -1062,6 +1112,35 @@ class FakeDb {
       return this.result<Row>(rows);
     }
 
+    if (normalizedSql.includes('from entity_detail_projection') && normalizedSql.includes('where entity_slug <> $1')) {
+      if (params[0] === 'yena') {
+        return this.result<Row>([
+          {
+            entity_slug: 'p1harmony',
+            payload: buildP1HarmonyEntityDetailPayload(),
+            generated_at: NOW,
+          } as unknown as Row,
+          {
+            entity_slug: 'chuu',
+            payload: buildChuuEntityDetailPayload(),
+            generated_at: NOW,
+          } as unknown as Row,
+        ]);
+      }
+
+      if (params[0] === 'p1harmony') {
+        return this.result<Row>([
+          {
+            entity_slug: 'yena',
+            payload: buildEntityDetailPayload(),
+            generated_at: NOW,
+          } as unknown as Row,
+        ]);
+      }
+
+      return this.result<Row>([]);
+    }
+
     if (normalizedSql.includes('from entity_detail_projection')) {
       if (params[0] === 'yena') {
         return this.result<Row>([
@@ -1728,6 +1807,11 @@ test('GET /v1/entities/:slug returns entity detail projection payload', async (t
   assert.equal(body.data.recent_albums[0].artwork.thumbnail_image_url, 'https://cdn.example.com/love-catcher-thumb.jpg');
   assert.equal(body.data.source_timeline[0].event_type, 'official_announcement');
   assert.equal(body.data.source_timeline[0].summary, 'ep · confirmed · 2026-03-11');
+  assert.equal(body.data.compare_candidates.length, 2);
+  assert.equal(body.data.compare_candidates[0].entity_slug, 'chuu');
+  assert.equal(body.data.related_acts.length, 1);
+  assert.equal(body.data.related_acts[0].entity_slug, 'chuu');
+  assert.equal(body.data.related_acts[0].reason.kind, 'entity_type');
 });
 
 test('GET /v1/entities/:slug suppresses same-day exact upcoming when latest release matches the scheduled date', async (t) => {
@@ -1744,6 +1828,9 @@ test('GET /v1/entities/:slug suppresses same-day exact upcoming when latest rele
   assert.equal(body.data.next_upcoming, null);
   assert.equal(body.data.latest_release.release_title, 'UNIQUE');
   assert.equal(body.data.recent_albums[0].release_title, 'UNIQUE');
+  assert.equal(body.data.compare_candidates.length, 1);
+  assert.equal(body.data.compare_candidates[0].entity_slug, 'yena');
+  assert.equal(body.data.related_acts.length, 0);
 });
 
 test('GET /v1/releases/lookup resolves legacy key to release id', async (t) => {

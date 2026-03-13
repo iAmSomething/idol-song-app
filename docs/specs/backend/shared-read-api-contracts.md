@@ -321,6 +321,8 @@
 - next upcoming
 - latest release
 - recent albums
+- compare candidates
+- related acts
 - optional source timeline support
 
 ### 7.4 Response Shape
@@ -412,6 +414,26 @@
         }
       }
     ],
+    "compare_candidates": [
+      {
+        "entity_slug": "enhypen",
+        "display_name": "ENHYPEN",
+        "entity_type": "group",
+        "agency_name": "BELIFT LAB"
+      }
+    ],
+    "related_acts": [
+      {
+        "entity_slug": "boynextdoor",
+        "display_name": "BOYNEXTDOOR",
+        "entity_type": "group",
+        "agency_name": "KOZ ENTERTAINMENT",
+        "reason": {
+          "kind": "entity_type",
+          "value": "group"
+        }
+      }
+    ],
     "source_timeline": [
       {
         "event_type": "official_announcement",
@@ -443,6 +465,8 @@
 - official links는 deduped canonical URL만 준다
 - latest release와 recent album card는 `release_format`과 nested `artwork` shape를 항상 포함한다
 - recent album selection rule은 서버가 고정하며 `album` stream 기준 최신순 최대 `12`개다
+- `compare_candidates`는 현재 entity를 제외한 비교 가능한 팀 후보를 stable slug/display shape로 준다
+- `related_acts`는 서버가 reason(`agency`, `entity_type`)까지 함께 계산해서 준다
 - `source_timeline`를 shared contract로 유지하는 동안 item shape는 `event_type`, `occurred_at`, `summary`, source/date meta까지 포함한 구조로 고정한다
 
 ## 8. `GET /v1/releases/:id`
