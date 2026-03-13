@@ -9,10 +9,12 @@ BUNDLE_ID="${EXPO_IOS_BUNDLE_IDENTIFIER:-com.anonymous.idolsongappmobile}"
 APP_DISPLAY_NAME="${EXPO_IOS_APP_DISPLAY_NAME:-Idol Song App}"
 PRODUCT_NAME="${EXPO_IOS_PRODUCT_NAME:-IdolSongApp}"
 API_BASE_URL="${EXPO_PUBLIC_API_BASE_URL:-https://idol-song-app-production.up.railway.app}"
-PORT="8081"
-NO_BUILD_CACHE=0
+DERIVED_DATA_PATH="${ROOT_DIR}/ios/build/IdolSongAppProductionDerivedData"
+SKIP_PREBUILD=0
+CLEAN_PREBUILD=0
 NO_INSTALL=0
-NO_BUNDLER=1
+NO_LAUNCH=0
+ALLOW_PROVISIONING_UPDATES=0
 DRY_RUN=0
 SIGNING_OVERRIDE_PATH="$ROOT_DIR/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.production.signing.local.xcconfig"
 PREVIEW_BUNDLE_ID="${EXPO_IOS_PREVIEW_BUNDLE_IDENTIFIER:-}"
@@ -23,7 +25,7 @@ usage() {
 Usage:
   $(basename "$0") --device "김태훈의 iPhone" --team-id ABCDE12345 [--bundle-id com.example.idolsongapp] [--app-display-name "Idol Song App"] [--product-name IdolSongApp] [--api-base-url https://idol-song-app-production.up.railway.app]
 
-Installs the production Release build on a physical iPhone so the app opens directly instead of the Expo dev launcher.
+Builds a signed Release .app and installs it on a physical iPhone so the app opens directly instead of the Expo dev launcher.
 EOF
 }
 
@@ -77,20 +79,28 @@ while [[ $# -gt 0 ]]; do
       API_BASE_URL="${2:-}"
       shift 2
       ;;
-    --port)
-      PORT="${2:-}"
+    --derived-data-path)
+      DERIVED_DATA_PATH="${2:-}"
       shift 2
       ;;
-    --no-build-cache)
-      NO_BUILD_CACHE=1
+    --skip-prebuild)
+      SKIP_PREBUILD=1
+      shift
+      ;;
+    --clean-prebuild)
+      CLEAN_PREBUILD=1
+      shift
+      ;;
+    --allow-provisioning-updates)
+      ALLOW_PROVISIONING_UPDATES=1
       shift
       ;;
     --no-install)
       NO_INSTALL=1
       shift
       ;;
-    --with-bundler)
-      NO_BUNDLER=0
+    --no-launch)
+      NO_LAUNCH=1
       shift
       ;;
     --dry-run)
@@ -146,36 +156,87 @@ export EXPO_IOS_BUNDLE_IDENTIFIER="$BUNDLE_ID"
 export EXPO_IOS_APP_DISPLAY_NAME="$APP_DISPLAY_NAME"
 export EXPO_IOS_PRODUCT_NAME="$PRODUCT_NAME"
 
-COMMAND=(
+PREBUILD_COMMAND=(
   npx
   expo
-  run:ios
-  --configuration
-  Release
-  --device
-  "$DEVICE_NAME"
-  --port
-  "$PORT"
+  prebuild
+  --platform
+  ios
 )
 
-if [[ $NO_BUNDLER -eq 1 ]]; then
-  COMMAND+=(--no-bundler)
-fi
-
-if [[ $NO_BUILD_CACHE -eq 1 ]]; then
-  COMMAND+=(--no-build-cache)
-fi
-
 if [[ $NO_INSTALL -eq 1 ]]; then
-  COMMAND+=(--no-install)
+  PREBUILD_COMMAND+=(--no-install)
 fi
+
+if [[ $CLEAN_PREBUILD -eq 1 ]]; then
+  PREBUILD_COMMAND+=(--clean)
+fi
+
+XCODEBUILD_COMMAND=(
+  xcodebuild
+  -workspace
+  "$ROOT_DIR/ios/IdolSongAppPreview.xcworkspace"
+  -scheme
+  IdolSongAppPreview
+  -configuration
+  Release
+  -destination
+  generic/platform=iOS
+  -derivedDataPath
+  "$DERIVED_DATA_PATH"
+  CODE_SIGN_STYLE=Automatic
+  DEVELOPMENT_TEAM="$TEAM_ID"
+  PRODUCT_BUNDLE_IDENTIFIER="$BUNDLE_ID"
+  APP_DISPLAY_NAME="$APP_DISPLAY_NAME"
+  PRODUCT_NAME="$PRODUCT_NAME"
+  build
+)
+
+if [[ $ALLOW_PROVISIONING_UPDATES -eq 1 ]]; then
+  XCODEBUILD_COMMAND=(-allowProvisioningUpdates "${XCODEBUILD_COMMAND[@]}")
+fi
+
+INSTALL_COMMAND=(
+  xcrun
+  devicectl
+  device
+  install
+  app
+  --device
+  "$DEVICE_NAME"
+)
+
+LAUNCH_COMMAND=(
+  xcrun
+  devicectl
+  device
+  process
+  launch
+  --device
+  "$DEVICE_NAME"
+  --terminate-existing
+  --activate
+  "$BUNDLE_ID"
+)
 
 if [[ $DRY_RUN -eq 1 ]]; then
   printf 'APP_ENV=%q EXPO_PUBLIC_API_BASE_URL=%q EXPO_IOS_APPLE_TEAM_ID=%q EXPO_IOS_BUNDLE_IDENTIFIER=%q EXPO_IOS_PREVIEW_BUNDLE_IDENTIFIER=%q EXPO_IOS_DEV_BUNDLE_IDENTIFIER=%q ' \
     "$APP_ENV" "$EXPO_PUBLIC_API_BASE_URL" "$EXPO_IOS_APPLE_TEAM_ID" "$EXPO_IOS_BUNDLE_IDENTIFIER" "$PREVIEW_BUNDLE_ID" "$DEV_BUNDLE_ID"
   printf 'EXPO_IOS_APP_DISPLAY_NAME=%q EXPO_IOS_PRODUCT_NAME=%q ' "$EXPO_IOS_APP_DISPLAY_NAME" "$EXPO_IOS_PRODUCT_NAME"
-  printf '%q ' "${COMMAND[@]}"
   printf '\n'
+  if [[ $SKIP_PREBUILD -eq 0 ]]; then
+    printf '%q ' "${PREBUILD_COMMAND[@]}"
+    printf '\n'
+  fi
+  printf '%q ' "${XCODEBUILD_COMMAND[@]}"
+  printf '\n'
+  if [[ $NO_INSTALL -eq 0 ]]; then
+    printf '%q <APP_PATH>\n' "${INSTALL_COMMAND[@]}"
+  fi
+  if [[ $NO_INSTALL -eq 0 && $NO_LAUNCH -eq 0 ]]; then
+    printf '%q ' "${LAUNCH_COMMAND[@]}"
+    printf '\n'
+  fi
   exit 0
 fi
 
@@ -192,4 +253,28 @@ cleanup_existing_client() {
 cleanup_existing_client "$PREVIEW_BUNDLE_ID"
 cleanup_existing_client "$DEV_BUNDLE_ID"
 
-"${COMMAND[@]}"
+if [[ $SKIP_PREBUILD -eq 0 ]]; then
+  "${PREBUILD_COMMAND[@]}"
+fi
+
+mkdir -p "$DERIVED_DATA_PATH"
+"${XCODEBUILD_COMMAND[@]}"
+
+APP_PATH="$DERIVED_DATA_PATH/Build/Products/Release-iphoneos/${PRODUCT_NAME}.app"
+
+if [[ ! -d "$APP_PATH" ]]; then
+  APP_PATH="$(find "$DERIVED_DATA_PATH/Build/Products/Release-iphoneos" -maxdepth 1 -type d -name '*.app' | head -n 1)"
+fi
+
+if [[ -z "$APP_PATH" || ! -d "$APP_PATH" ]]; then
+  echo "Unable to locate built .app inside $DERIVED_DATA_PATH/Build/Products/Release-iphoneos" >&2
+  exit 1
+fi
+
+if [[ $NO_INSTALL -eq 0 ]]; then
+  "${INSTALL_COMMAND[@]}" "$APP_PATH"
+fi
+
+if [[ $NO_INSTALL -eq 0 && $NO_LAUNCH -eq 0 ]]; then
+  "${LAUNCH_COMMAND[@]}"
+fi

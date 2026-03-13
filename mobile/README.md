@@ -188,7 +188,8 @@ npm run ios -- \
 ```
 
 - `npm run ios`는 이제 production release install alias다.
-- `npm run ios`는 실제 앱을 여는 production install 경로로 유지한다.
+- `npm run ios`는 `expo run:ios`가 아니라, native `xcodebuild Release .app -> devicectl install -> launch` 경로를 사용한다.
+- 그래서 설치 후 앱 아이콘을 누르면 Expo dev launcher가 아니라 실제 앱 화면이 열리는 경로를 기준으로 유지한다.
 - preview/dev 빌드는 `Idol Song QA Client`, `Idol Song Dev Client`처럼 이름부터 구분되며, `npm run ios` 실행 전에 기기에 남아 있으면 best-effort로 제거한다.
 - preview dev launcher를 열고 싶을 때만 `npm run ios:preview` 또는 `npm run ios:dev`를 명시적으로 사용한다.
 
@@ -215,8 +216,9 @@ npm run ios -- \
 ```
 
 - 이 경로는 `Release` configuration을 사용한다.
+- 앱 bundle은 `xcodebuild`로 만들고 `xcrun devicectl`로 기기에 직접 설치/실행한다.
 - dev launcher를 여는 preview runtime이 아니라, 앱 아이콘을 누르면 바로 기능 화면으로 들어가는 실제 앱 경로를 기준으로 삼는다.
-- 기본적으로 Metro는 띄우지 않는다.
+- Metro는 띄우지 않는다.
 
 ### 3. production archive 생성
 
