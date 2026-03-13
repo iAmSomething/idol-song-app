@@ -1447,6 +1447,22 @@ def compare_rollup_release_refs(
                 )
 
 
+def normalize_official_social_upcoming_findings(
+    rows: Sequence[Dict[str, Any]],
+    watchlist_by_group: Dict[str, Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    normalized_rows: List[Dict[str, Any]] = []
+    for row in rows:
+        normalized = dict(row)
+        group = optional_text(normalized.get("group"))
+        watchlist_row = watchlist_by_group.get(group) if group else None
+        tracking_status = optional_text(normalized.get("tracking_status"))
+        if watchlist_row and tracking_status in (None, "", "filtered_out"):
+            normalized["tracking_status"] = optional_text(watchlist_row.get("tracking_status")) or "watch_only"
+        normalized_rows.append(normalized)
+    return normalized_rows
+
+
 def build_import_payload() -> Dict[str, Any]:
     artist_profiles = load_json(ARTIST_PROFILES_PATH)
     canonical_entity_metadata = load_json(CANONICAL_ENTITY_METADATA_PATH)
@@ -1467,6 +1483,11 @@ def build_import_payload() -> Dict[str, Any]:
     canonical_entity_metadata_by_group = {row["group"]: row for row in canonical_entity_metadata}
     team_badge_assets_by_group = {row["group"]: row for row in team_badge_assets if optional_text(row.get("group"))}
     group_metadata = build_group_metadata(release_history, releases_rollup)
+
+    official_social_upcoming_findings = normalize_official_social_upcoming_findings(
+        official_social_upcoming_findings,
+        watchlist_by_group,
+    )
 
     summary = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
