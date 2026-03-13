@@ -9510,7 +9510,7 @@ function buildEntityDetailTeamProfile(
 
 async function fetchEntityDetailApiSnapshot(
   entitySlug: string,
-  group: string,
+  group: string | null,
   signal: AbortSignal,
 ): Promise<{ team: TeamProfile | null; errorCode: string | null; traceId: string | null }> {
   const cacheKey = entitySlug
@@ -9528,7 +9528,8 @@ async function fetchEntityDetailApiSnapshot(
     }
   }
 
-  const team = buildEntityDetailTeamProfile(group, entitySlug, result.body.data)
+  const fallbackGroup = group ?? humanizeRouteSlug(entitySlug)
+  const team = buildEntityDetailTeamProfile(fallbackGroup, entitySlug, result.body.data)
   entityDetailApiSnapshotCache.set(cacheKey, team)
   return {
     team,
@@ -9556,7 +9557,7 @@ function useEntityDetailResource({
   }>(() => ({
     cacheKey,
     team: cachedSnapshot,
-    loading: Boolean(cacheKey && entitySlug && group && !cachedSnapshot && BACKEND_API_BASE_URL),
+    loading: Boolean(cacheKey && entitySlug && !cachedSnapshot && BACKEND_API_BASE_URL),
     errorCode: null,
     traceId: null,
   }))
@@ -9566,7 +9567,7 @@ function useEntityDetailResource({
   }, [cachedSnapshot])
 
   useEffect(() => {
-    if (!cacheKey || !entitySlug || !group) {
+    if (!cacheKey || !entitySlug) {
       return
     }
 
