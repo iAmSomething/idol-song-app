@@ -27,6 +27,10 @@ import {
   type SurfaceStatusSource,
 } from './lib/surfaceStatus'
 import { buildBridgeSearchApiData, type BridgeSearchIndex } from './lib/bridgeSearch'
+import {
+  buildEntityDetailRecoverySearchTerms,
+  pickEntityDetailRecoveryCandidate,
+} from './lib/entityDetailRecovery'
 import { shouldReloadForRuntimeRefresh } from './lib/runtimeRefresh'
 
 type ReleaseFact = {
@@ -8211,7 +8215,7 @@ function hashBridgeKey(value: string) {
 const SEARCH_SURFACE_TIMEOUT_MS = 4_000
 const RELEASE_DETAIL_LOOKUP_TIMEOUT_MS = 4_000
 const RELEASE_DETAIL_FETCH_TIMEOUT_MS = 4_500
-const ENTITY_DETAIL_FETCH_TIMEOUT_MS = 4_500
+const ENTITY_DETAIL_FETCH_TIMEOUT_MS = 7_000
 const CALENDAR_MONTH_FETCH_TIMEOUT_MS = 4_500
 const RADAR_FETCH_TIMEOUT_MS = 4_000
 
@@ -9663,12 +9667,12 @@ function buildEntityDetailTeamProfile(
   }
 }
 
-async function fetchEntityDetailApiSnapshot(
+async function requestEntityDetailApiSnapshot(
   entitySlug: string,
   group: string | null,
   signal: AbortSignal,
-): Promise<{ team: TeamProfile | null; errorCode: string | null; traceId: string | null }> {
-  const cacheKey = entitySlug
+  cacheKeys: string[],
+): Promise<{ team: TeamProfile | null; errorCode: string | null; traceId: string | null; resolvedEntitySlug: string }> {
   const result = await fetchApiJson<EntityDetailApiResponse>(
     `/v1/entities/${encodeURIComponent(entitySlug)}`,
     signal,
@@ -9680,16 +9684,90 @@ async function fetchEntityDetailApiSnapshot(
       team: null,
       errorCode: result.body?.error?.code ?? `entity_${result.status}`,
       traceId: result.traceId,
+      resolvedEntitySlug: entitySlug,
     }
   }
 
   const fallbackGroup = group ?? humanizeRouteSlug(entitySlug)
   const team = buildEntityDetailTeamProfile(fallbackGroup, entitySlug, result.body.data)
-  entityDetailApiSnapshotCache.set(cacheKey, team)
+  for (const nextCacheKey of cacheKeys) {
+    if (nextCacheKey) {
+      entityDetailApiSnapshotCache.set(nextCacheKey, team)
+    }
+  }
   return {
     team,
     errorCode: null,
     traceId: result.traceId,
+    resolvedEntitySlug: entitySlug,
+  }
+}
+
+async function fetchEntityDetailRecoveryCandidate(
+  entitySlug: string,
+  signal: AbortSignal,
+): Promise<{ entitySlug: string; displayName: string } | null> {
+  const searchTerms = buildEntityDetailRecoverySearchTerms(entitySlug)
+
+  for (const searchTerm of searchTerms) {
+    const params = new URLSearchParams()
+    params.set('q', searchTerm)
+    params.set('limit', '5')
+
+    const result = await fetchApiJson<SearchApiResponse>(
+      `/v1/search?${params.toString()}`,
+      signal,
+      SEARCH_SURFACE_TIMEOUT_MS,
+      `web-entity-reresolve-${entitySlug}`,
+    )
+
+    if (!result.ok || !result.body?.data) {
+      continue
+    }
+
+    const candidate = pickEntityDetailRecoveryCandidate(result.body.data.entities, entitySlug, searchTerm)
+    if (candidate) {
+      return candidate
+    }
+  }
+
+  return null
+}
+
+async function fetchEntityDetailApiSnapshot(
+  entitySlug: string,
+  group: string | null,
+  signal: AbortSignal,
+): Promise<{ team: TeamProfile | null; errorCode: string | null; traceId: string | null }> {
+  const directResult = await requestEntityDetailApiSnapshot(entitySlug, group, signal, [entitySlug])
+  if (directResult.team || group) {
+    return {
+      team: directResult.team,
+      errorCode: directResult.errorCode,
+      traceId: directResult.traceId,
+    }
+  }
+
+  const recoveryCandidate = await fetchEntityDetailRecoveryCandidate(entitySlug, signal)
+  if (!recoveryCandidate) {
+    return {
+      team: directResult.team,
+      errorCode: directResult.errorCode,
+      traceId: directResult.traceId,
+    }
+  }
+
+  const recoveredResult = await requestEntityDetailApiSnapshot(
+    recoveryCandidate.entitySlug,
+    recoveryCandidate.displayName,
+    signal,
+    [entitySlug, recoveryCandidate.entitySlug],
+  )
+
+  return {
+    team: recoveredResult.team,
+    errorCode: recoveredResult.errorCode,
+    traceId: recoveredResult.traceId,
   }
 }
 
