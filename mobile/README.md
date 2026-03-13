@@ -188,6 +188,8 @@ npm run ios -- \
 ```
 
 - `npm run ios`는 이제 production release install alias다.
+- `npm run ios`는 실제 앱을 여는 production install 경로로 유지한다.
+- preview/dev 빌드는 `Idol Song QA Client`, `Idol Song Dev Client`처럼 이름부터 구분되며, `npm run ios` 실행 전에 기기에 남아 있으면 best-effort로 제거한다.
 - preview dev launcher를 열고 싶을 때만 `npm run ios:preview` 또는 `npm run ios:dev`를 명시적으로 사용한다.
 
 ### 1. personal Apple team signing override 준비
