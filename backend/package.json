@@ -35,7 +35,8 @@
     "curation:import": "node ./scripts/import-manual-curation-bundles.mjs",
     "same-day:acceptance": "node ./scripts/build-same-day-release-acceptance-report.mjs",
     "runtime:gate": "node ./scripts/build-runtime-gate-report.mjs",
-    "preview:url:sync": "node ./scripts/provision-preview-backend-url.mjs --target preview"
+    "preview:url:sync": "node ./scripts/provision-preview-backend-url.mjs --target preview",
+    "title-track:loop": "python3 ../run_title_track_backfill_batch_loop.py"
   },
   "dependencies": {
     "fastify": "^5.2.1",
