@@ -452,6 +452,7 @@ type EntityDetailApiResponse = {
       youtube_music_url?: string | null
       youtube_mv_url?: string | null
       source_url?: string | null
+      artist_source_url?: string | null
       artwork?: Record<string, unknown> | null
     } | null
     recent_albums?: Array<{
@@ -466,6 +467,7 @@ type EntityDetailApiResponse = {
       youtube_music_url?: string | null
       youtube_mv_url?: string | null
       source_url?: string | null
+      artist_source_url?: string | null
       artwork?: Record<string, unknown> | null
     }>
     source_timeline?: Array<{
@@ -2488,7 +2490,7 @@ function App() {
       ...visibleMonthScheduledRows.map((item) => item.isoDate),
     ]),
   ).sort()
-  const weeklyDigestReferenceDate = visibleMonthVerifiedRows[0]?.dateValue ?? null
+  const weeklyDigestReferenceDate = visibleMonthVerifiedRows.at(-1)?.dateValue ?? null
   const weeklyDigestWindowStart = weeklyDigestReferenceDate ? getDateDaysBefore(weeklyDigestReferenceDate, 6) : null
   const weeklyDigestRows =
     weeklyDigestReferenceDate && weeklyDigestWindowStart
@@ -2519,8 +2521,8 @@ function App() {
     ? upcomingByDate.get(effectiveSelectedDayIso) ?? []
     : []
 
-  const latestRelease = visibleMonthVerifiedRows[0]
-  const earliestRelease = visibleMonthVerifiedRows.at(-1)
+  const latestRelease = visibleMonthVerifiedRows.at(-1)
+  const earliestRelease = visibleMonthVerifiedRows[0]
   const monthIndex = visibleMonthKeys.indexOf(effectiveMonthKey)
   const normalizedSearchQuery = deferredSearch.trim()
   const searchSummaryCounts = {
@@ -2555,7 +2557,7 @@ function App() {
   }
   const nearestUpcomingJumpSignal = visibleMonthScheduledRows.find((item) => item.isoDate >= todayIso) ?? null
   const currentMonthFallbackIso = pickClosestIsoDate(monthActiveDayIsos, todayIso)
-  const latestVerifiedFallbackIso = visibleMonthVerifiedRows[0]?.isoDate ?? ''
+  const latestVerifiedFallbackIso = visibleMonthVerifiedRows.at(-1)?.isoDate ?? ''
   const nearestCalendarJumpTarget: CalendarQuickJumpTarget | null =
     nearestUpcomingJumpSignal
       ? {
@@ -7953,7 +7955,7 @@ function buildSyntheticVerifiedRelease(
     group,
     artist_name_mb: group,
     artist_mbid: '',
-    artist_source: readNonEmptyString(summary?.source_url) ?? '',
+    artist_source: readNonEmptyString(summary?.artist_source_url) ?? readNonEmptyString(summary?.source_url) ?? '',
     actType: getActType(group),
     stream,
     title: releaseTitle,
@@ -9616,6 +9618,26 @@ function buildEntityDetailTeamProfile(
   const sourceTimeline = buildEntityDetailSourceTimeline(canonicalGroup, data.source_timeline)
   const compareOptions = buildEntityDetailCompareOptions(data.compare_candidates)
   const relatedActs = buildEntityDetailRelatedActs(data.related_acts)
+  const verifiedHistoryByKey = new Map<string, VerifiedRelease>()
+
+  if (latestReleaseRecord) {
+    verifiedHistoryByKey.set(
+      getReleaseLookupKey(canonicalGroup, latestReleaseRecord.title, latestReleaseRecord.date, latestReleaseRecord.stream),
+      latestReleaseRecord,
+    )
+  }
+
+  for (const album of recentAlbums) {
+    verifiedHistoryByKey.set(
+      getReleaseLookupKey(canonicalGroup, album.title, album.date, album.stream),
+      album,
+    )
+  }
+
+  const annualReleaseTimeline = buildAnnualReleaseTimelineSections(
+    [...verifiedHistoryByKey.values()].sort(compareMonthlyDashboardVerified),
+    upcomingSignals,
+  )
 
   return {
     ...baseTeam,
@@ -9634,6 +9656,7 @@ function buildEntityDetailTeamProfile(
     representativeImageUrl: readNonEmptyString(data.identity?.representative_image_url) ?? baseTeam.representativeImageUrl,
     latestRelease: latestReleaseRecord ? buildVerifiedTeamLatestRelease(latestReleaseRecord) : null,
     recentAlbums,
+    annualReleaseTimeline,
     upcomingSignals,
     sourceTimeline,
     nextUpcomingSignal,

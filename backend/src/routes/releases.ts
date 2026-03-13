@@ -18,6 +18,8 @@ type ReleaseDetailProjectionRow = {
   stream: string;
   payload: unknown;
   generated_at: Date | string;
+  source_url?: string | null;
+  artist_source_url?: string | null;
 };
 
 type ReleaseLookupQuery = {
@@ -39,6 +41,8 @@ type ReleaseCore = {
   release_date: string;
   stream: string;
   release_kind: string | null;
+  source_url: string | null;
+  artist_source_url: string | null;
 };
 
 type ServiceLink = {
@@ -232,6 +236,8 @@ function normalizeReleaseCore(value: unknown): ReleaseCore | null {
     release_date: releaseDate,
     stream,
     release_kind: asNullableString(value.release_kind),
+    source_url: asNullableString(value.source_url),
+    artist_source_url: asNullableString(value.artist_source_url),
   };
 }
 
@@ -398,19 +404,22 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
     const result = await context.db.query<ReleaseDetailProjectionRow>(
       `
         select
-          release_id::text as release_id,
-          entity_slug,
-          normalized_release_title,
-          release_date::text as release_date,
-          stream,
-          payload,
-          generated_at
-        from release_detail_projection
-        where entity_slug = $1
-          and normalized_release_title = projection_normalize_text($2)
-          and stream = $4
-          and release_date between ($3::date - interval '1 day') and ($3::date + interval '1 day')
-        order by release_date desc
+          rdp.release_id::text as release_id,
+          rdp.entity_slug,
+          rdp.normalized_release_title,
+          rdp.release_date::text as release_date,
+          rdp.stream,
+          rdp.payload,
+          rdp.generated_at,
+          r.source_url,
+          r.artist_source_url
+        from release_detail_projection rdp
+        left join releases r on r.id = rdp.release_id
+        where rdp.entity_slug = $1
+          and rdp.normalized_release_title = projection_normalize_text($2)
+          and rdp.stream = $4
+          and rdp.release_date between ($3::date - interval '1 day') and ($3::date + interval '1 day')
+        order by rdp.release_date desc
         limit 5
       `,
       [lookup.entity_slug, lookup.normalized_release_title, lookup.release_date, lookup.stream]
@@ -454,15 +463,18 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
     const result = await context.db.query<ReleaseDetailProjectionRow>(
       `
         select
-          release_id::text as release_id,
-          entity_slug,
-          normalized_release_title,
-          release_date::text as release_date,
-          stream,
-          payload,
-          generated_at
-        from release_detail_projection
-        where release_id = $1::uuid
+          rdp.release_id::text as release_id,
+          rdp.entity_slug,
+          rdp.normalized_release_title,
+          rdp.release_date::text as release_date,
+          rdp.stream,
+          rdp.payload,
+          rdp.generated_at,
+          r.source_url,
+          r.artist_source_url
+        from release_detail_projection rdp
+        left join releases r on r.id = rdp.release_id
+        where rdp.release_id = $1::uuid
         limit 1
       `,
       [id]
@@ -479,6 +491,9 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
         release_id: row.release_id,
       });
     }
+
+    data.release.source_url = data.release.source_url ?? asNullableString(row.source_url);
+    data.release.artist_source_url = data.release.artist_source_url ?? asNullableString(row.artist_source_url);
 
     return buildReadDataEnvelope(
       request,

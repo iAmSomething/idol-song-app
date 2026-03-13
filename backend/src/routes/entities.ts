@@ -126,6 +126,7 @@ type ReleaseSummary = {
   youtube_music_url: string | null;
   youtube_mv_url: string | null;
   source_url: string | null;
+  artist_source_url: string | null;
   artwork: ArtworkSummary | null;
 };
 
@@ -320,6 +321,7 @@ function normalizeReleaseSummary(value: unknown): ReleaseSummary | null {
     youtube_music_url: asNullableString(value.youtube_music_url),
     youtube_mv_url: asNullableString(value.youtube_mv_url),
     source_url: asNullableString(value.source_url),
+    artist_source_url: asNullableString(value.artist_source_url),
     artwork: normalizeArtworkSummary(value.artwork),
   };
 }
@@ -420,28 +422,37 @@ function extractRepresentativeSongTitle(tracks: unknown): string | null {
   return asNullableString(titleTrack.title);
 }
 
+type ReleaseSummaryHydrationRow = {
+  release_id: string;
+  payload: unknown;
+  source_url: string | null;
+  artist_source_url: string | null;
+};
+
 function mergeReleaseSummaryWithDetail(
   release: ReleaseSummary,
-  detailPayload: unknown,
+  detailRow: ReleaseSummaryHydrationRow | undefined,
 ): ReleaseSummary {
-  if (!isRecord(detailPayload)) {
+  if (!detailRow || !isRecord(detailRow.payload)) {
     return release;
   }
 
-  const serviceLinks = isRecord(detailPayload.service_links) ? detailPayload.service_links : null;
+  const serviceLinks = isRecord(detailRow.payload.service_links) ? detailRow.payload.service_links : null;
   const spotify = serviceLinks && isRecord(serviceLinks.spotify) ? serviceLinks.spotify : null;
   const youtubeMusic =
     serviceLinks && isRecord(serviceLinks.youtube_music) ? serviceLinks.youtube_music : null;
-  const mv = isRecord(detailPayload.mv) ? detailPayload.mv : null;
-  const artwork = normalizeArtworkSummary(detailPayload.artwork);
+  const mv = isRecord(detailRow.payload.mv) ? detailRow.payload.mv : null;
+  const artwork = normalizeArtworkSummary(detailRow.payload.artwork);
 
   return {
     ...release,
     representative_song_title:
-      extractRepresentativeSongTitle(detailPayload.tracks) ?? release.representative_song_title,
+      extractRepresentativeSongTitle(detailRow.payload.tracks) ?? release.representative_song_title,
     spotify_url: asNullableString(spotify?.url) ?? release.spotify_url,
     youtube_music_url: asNullableString(youtubeMusic?.url) ?? release.youtube_music_url,
     youtube_mv_url: asNullableString(mv?.url) ?? release.youtube_mv_url,
+    source_url: detailRow.source_url ?? release.source_url,
+    artist_source_url: detailRow.artist_source_url ?? release.artist_source_url,
     artwork: artwork ?? release.artwork,
   };
 }
@@ -456,22 +467,25 @@ async function hydrateReleaseSummaries(
     return releases;
   }
 
-  const result = await db.query<ReleaseDetailProjectionRow>(
+  const result = await db.query<ReleaseSummaryHydrationRow>(
     `
-      select release_id::text as release_id, payload
-      from release_detail_projection
-      where release_id = any($1::uuid[])
+      select
+        rdp.release_id::text as release_id,
+        rdp.payload,
+        r.source_url,
+        r.artist_source_url
+      from release_detail_projection rdp
+      left join releases r on r.id = rdp.release_id
+      where rdp.release_id = any($1::uuid[])
     `,
     [releaseIds],
   );
 
   const payloadByReleaseId = new Map(
-    result.rows.map((row) => [row.release_id, row.payload] as const),
+    result.rows.map((row) => [row.release_id, row] as const),
   );
 
-  return releases.map((release) =>
-    mergeReleaseSummaryWithDetail(release, payloadByReleaseId.get(release.release_id)),
-  );
+  return releases.map((release) => mergeReleaseSummaryWithDetail(release, payloadByReleaseId.get(release.release_id)));
 }
 
 function normalizeSourceTimeline(value: unknown): SourceTimelineItem[] {

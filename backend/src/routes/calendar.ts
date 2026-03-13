@@ -19,6 +19,15 @@ type CalendarMonthProjectionRow = {
   generated_at: Date | string;
 };
 
+type CalendarVerifiedReleaseHydrationRow = {
+  release_id: string;
+  source_url: string | null;
+  artist_source_url: string | null;
+  release_format: string | null;
+  entity_type: string | null;
+  agency_name: string | null;
+};
+
 type CalendarSummary = {
   verified_count: number;
   exact_upcoming_count: number;
@@ -305,6 +314,81 @@ function collectVerifiedReleaseKeys(data: CalendarMonthData): Set<string> {
   return keys;
 }
 
+function hydrateVerifiedRelease(
+  release: CalendarVerifiedRelease,
+  row: CalendarVerifiedReleaseHydrationRow | undefined,
+): CalendarVerifiedRelease {
+  if (!row) {
+    return release;
+  }
+
+  return {
+    ...release,
+    entity_type: release.entity_type ?? row.entity_type,
+    agency_name: release.agency_name ?? row.agency_name,
+    release_format: release.release_format ?? row.release_format,
+    source_url: release.source_url ?? row.source_url,
+    artist_source_url: release.artist_source_url ?? row.artist_source_url,
+  };
+}
+
+async function hydrateVerifiedReleaseArray(
+  db: DbQueryable,
+  releases: CalendarVerifiedRelease[],
+): Promise<CalendarVerifiedRelease[]> {
+  const releaseIds = [...new Set(releases.map((release) => release.release_id).filter(Boolean))];
+
+  if (releaseIds.length === 0) {
+    return releases;
+  }
+
+  const result = await db.query<CalendarVerifiedReleaseHydrationRow>(
+    `
+      select
+        r.id::text as release_id,
+        r.source_url,
+        r.artist_source_url,
+        r.release_format,
+        e.entity_type,
+        e.agency_name
+      from releases r
+      left join entities e on e.id = r.entity_id
+      where r.id = any($1::uuid[])
+    `,
+    [releaseIds],
+  );
+
+  const rowsByReleaseId = new Map(
+    result.rows.map((row) => [row.release_id, row] as const),
+  );
+
+  return releases.map((release) => hydrateVerifiedRelease(release, rowsByReleaseId.get(release.release_id)));
+}
+
+async function hydrateCalendarMonthData(db: DbQueryable, data: CalendarMonthData): Promise<CalendarMonthData> {
+  const allVerified = [
+    ...data.verified_list,
+    ...data.days.flatMap((day) => day.verified_releases),
+  ];
+  const hydratedAllVerified = await hydrateVerifiedReleaseArray(db, allVerified);
+  const hydratedByKey = new Map(
+    hydratedAllVerified.map((release) => [release.release_id, release]),
+  );
+  const pickHydratedRelease = (release: CalendarVerifiedRelease) => hydratedByKey.get(release.release_id) ?? release;
+
+  const verifiedRows = data.verified_list.map(pickHydratedRelease);
+  const dayRows = data.days.map((day) => ({
+    ...day,
+    verified_releases: day.verified_releases.map(pickHydratedRelease),
+  }));
+
+  return {
+    ...data,
+    verified_list: verifiedRows,
+    days: dayRows,
+  };
+}
+
 function toNearestUpcoming(item: CalendarUpcomingItem | null): CalendarNearestUpcoming | null {
   if (!item || item.date_precision !== 'exact' || !item.scheduled_date) {
     return null;
@@ -476,11 +560,12 @@ export function registerCalendarRoutes(app: FastifyInstance, context: CalendarRo
 
     const todayIsoDate = resolveTodayIsoDate(context.config.appTimezone);
     const filteredData = filterElapsedExactUpcomingRows(data, todayIsoDate);
+    const hydratedData = await hydrateCalendarMonthData(context.db, filteredData);
 
     return buildReadDataEnvelope(
       request,
       context.config.appTimezone,
-      filteredData,
+      hydratedData,
       { month: row.month_key },
       toIsoString(row.generated_at)
     );
