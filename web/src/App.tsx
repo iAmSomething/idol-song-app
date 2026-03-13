@@ -401,6 +401,22 @@ type ReleaseRouteSelection = {
   releaseId: string | null
 }
 
+type EntityDetailReleaseSummary = {
+  release_id?: string
+  release_title?: string
+  release_date?: string
+  stream?: string
+  release_kind?: string | null
+  release_format?: string | null
+  representative_song_title?: string | null
+  spotify_url?: string | null
+  youtube_music_url?: string | null
+  youtube_mv_url?: string | null
+  source_url?: string | null
+  artist_source_url?: string | null
+  artwork?: Record<string, unknown> | null
+}
+
 type EntityDetailApiResponse = {
   data?: {
     identity?: {
@@ -440,36 +456,9 @@ type EntityDetailApiResponse = {
       evidence_summary?: string | null
       source_count?: number | null
     } | null
-    latest_release?: {
-      release_id?: string
-      release_title?: string
-      release_date?: string
-      stream?: string
-      release_kind?: string | null
-      release_format?: string | null
-      representative_song_title?: string | null
-      spotify_url?: string | null
-      youtube_music_url?: string | null
-      youtube_mv_url?: string | null
-      source_url?: string | null
-      artist_source_url?: string | null
-      artwork?: Record<string, unknown> | null
-    } | null
-    recent_albums?: Array<{
-      release_id?: string
-      release_title?: string
-      release_date?: string
-      stream?: string
-      release_kind?: string | null
-      release_format?: string | null
-      representative_song_title?: string | null
-      spotify_url?: string | null
-      youtube_music_url?: string | null
-      youtube_mv_url?: string | null
-      source_url?: string | null
-      artist_source_url?: string | null
-      artwork?: Record<string, unknown> | null
-    }>
+    latest_release?: EntityDetailReleaseSummary | null
+    release_history?: EntityDetailReleaseSummary[]
+    recent_albums?: EntityDetailReleaseSummary[]
     source_timeline?: Array<{
       headline?: string
       source_url?: string | null
@@ -2490,18 +2479,16 @@ function App() {
       ...visibleMonthScheduledRows.map((item) => item.isoDate),
     ]),
   ).sort()
-  const weeklyDigestReferenceDate = visibleMonthVerifiedRows.at(-1)?.dateValue ?? null
-  const weeklyDigestWindowStart = weeklyDigestReferenceDate ? getDateDaysBefore(weeklyDigestReferenceDate, 6) : null
+  const weeklyDigestReferenceDate = new Date(`${todayIso}T00:00:00`)
+  const weeklyDigestWindowStart = getDateDaysBefore(weeklyDigestReferenceDate, 6)
   const weeklyDigestRows =
-    weeklyDigestReferenceDate && weeklyDigestWindowStart
-      ? buildWeeklyDigestRows(
-          visibleMonthVerifiedRows.filter((item) => {
-            const time = item.dateValue.getTime()
-            return time >= weeklyDigestWindowStart.getTime() && time <= weeklyDigestReferenceDate.getTime()
-          }),
-          WEEKLY_DIGEST_MAX_ITEMS,
-        )
-      : []
+    buildWeeklyDigestRows(
+      visibleMonthVerifiedRows.filter((item) => {
+        const time = item.dateValue.getTime()
+        return time >= weeklyDigestWindowStart.getTime() && time <= weeklyDigestReferenceDate.getTime()
+      }),
+      WEEKLY_DIGEST_MAX_ITEMS,
+    )
   const visibleDayIsos = new Set(monthDays.map((day) => day.iso))
   const isSelectedDayVisible = visibleDayIsos.has(selectedDayIso)
   const hasNoMonthMatches =
@@ -9592,14 +9579,25 @@ function buildEntityDetailTeamProfile(
   data: NonNullable<EntityDetailApiResponse['data']>,
 ): TeamProfile {
   const baseTeam = buildSyntheticTeamProfile(group, entitySlug)
-  const latestReleaseSummary = data.latest_release
   const canonicalGroup =
     readNonEmptyString(data.identity?.canonical_name) ??
     readNonEmptyString(data.identity?.display_name) ??
     group
-  const latestReleaseRecord = latestReleaseSummary
+  const releaseHistory = Array.isArray(data.release_history)
+    ? data.release_history
+        .map((item) => buildSyntheticVerifiedRelease(canonicalGroup, item))
+        .filter((item): item is VerifiedRelease => item !== null)
+    : []
+  const latestReleaseSummary = data.latest_release
+  const latestReleaseId = readNonEmptyString(latestReleaseSummary?.release_id)
+  const latestReleaseRecordFromSummary = latestReleaseSummary
     ? buildSyntheticVerifiedRelease(canonicalGroup, latestReleaseSummary)
     : null
+  const latestReleaseRecord =
+    (latestReleaseId ? releaseHistory.find((item) => item.release_id === latestReleaseId) ?? null : null) ??
+    latestReleaseRecordFromSummary ??
+    releaseHistory[0] ??
+    null
   const recentAlbums = Array.isArray(data.recent_albums)
     ? data.recent_albums
         .map((item) => buildSyntheticVerifiedRelease(canonicalGroup, item))
@@ -9620,17 +9618,17 @@ function buildEntityDetailTeamProfile(
   const relatedActs = buildEntityDetailRelatedActs(data.related_acts)
   const verifiedHistoryByKey = new Map<string, VerifiedRelease>()
 
+  for (const release of releaseHistory) {
+    verifiedHistoryByKey.set(
+      getReleaseLookupKey(canonicalGroup, release.title, release.date, release.stream),
+      release,
+    )
+  }
+
   if (latestReleaseRecord) {
     verifiedHistoryByKey.set(
       getReleaseLookupKey(canonicalGroup, latestReleaseRecord.title, latestReleaseRecord.date, latestReleaseRecord.stream),
       latestReleaseRecord,
-    )
-  }
-
-  for (const album of recentAlbums) {
-    verifiedHistoryByKey.set(
-      getReleaseLookupKey(canonicalGroup, album.title, album.date, album.stream),
-      album,
     )
   }
 

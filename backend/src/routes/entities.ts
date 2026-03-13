@@ -163,6 +163,7 @@ type EntityDetailPayload = {
   tracking_state: TrackingStateBlock;
   next_upcoming: UpcomingSummary | null;
   latest_release: ReleaseSummary | null;
+  release_history: ReleaseSummary[];
   recent_albums: ReleaseSummary[];
   source_timeline: SourceTimelineItem[];
   artist_source_url: string | null;
@@ -811,12 +812,55 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string, todayIsoDa
       normalizedLatestRelease?.release_date,
     ),
     latest_release: normalizedLatestRelease,
+    release_history: normalizeReleaseSummaryArray(payload.release_history),
     recent_albums: dedupeRecentAlbumSummaries(normalizeReleaseSummaryArray(payload.recent_albums)),
     source_timeline: normalizeSourceTimeline(payload.source_timeline),
     artist_source_url: asNullableString(payload.artist_source_url),
     compare_candidates: normalizeCompareCandidateArray(payload.compare_candidates),
     related_acts: normalizeRelatedActSummaryArray(payload.related_acts),
   };
+}
+
+async function hydrateEntityReleaseHistory(
+  db: DbQueryable,
+  slug: string,
+): Promise<ReleaseSummary[]> {
+  const result = await db.query<ReleaseSummary>(
+    `
+      select
+        r.id::text as release_id,
+        r.release_title,
+        r.release_date::text as release_date,
+        r.stream,
+        r.release_kind,
+        r.release_format,
+        null::text as representative_song_title,
+        null::text as spotify_url,
+        null::text as youtube_music_url,
+        null::text as youtube_mv_url,
+        r.source_url,
+        r.artist_source_url,
+        null::jsonb as artwork
+      from releases r
+      inner join entities e on e.id = r.entity_id
+      where e.slug = $1
+      order by
+        r.release_date desc nulls last,
+        case r.stream
+          when 'album' then 0
+          when 'song' then 1
+          else 2
+        end,
+        r.release_title asc
+    `,
+    [slug],
+  );
+
+  const normalized = result.rows
+    .map((row) => normalizeReleaseSummary(row))
+    .filter((item): item is ReleaseSummary => item !== null);
+
+  return hydrateReleaseSummaries(db, normalized);
 }
 
 export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteContext): void {
@@ -953,10 +997,12 @@ export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteC
       context.db,
       normalized.latest_release ? [normalized.latest_release] : [],
     );
+    const releaseHistory = await hydrateEntityReleaseHistory(context.db, slug);
     const recentAlbums = await hydrateReleaseSummaries(context.db, normalized.recent_albums);
     const data: EntityDetailPayload = {
       ...normalized,
       latest_release: latestRelease ?? normalized.latest_release,
+      release_history: releaseHistory,
       recent_albums: recentAlbums,
       compare_candidates: compareCandidates,
       related_acts: buildRelatedActSummaries(normalized.identity, compareCandidates),

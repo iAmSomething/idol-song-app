@@ -320,6 +320,7 @@
 - tracking state
 - next upcoming
 - latest release
+- release history
 - recent albums
 - compare candidates
 - related acts
@@ -397,6 +398,25 @@
         "is_placeholder": false
       }
     },
+    "release_history": [
+      {
+        "release_id": "rel_txt_example",
+        "release_title": "Example",
+        "release_date": "2026-02-27",
+        "stream": "album",
+        "release_kind": "mini",
+        "release_format": "mini",
+        "source_url": "https://musicbrainz.org/release-group/example",
+        "artist_source_url": "https://www.youtube.com/@TXT_bighit",
+        "artwork": {
+          "cover_image_url": "https://cdn.example.com/txt-example-cover.jpg",
+          "thumbnail_image_url": "https://cdn.example.com/txt-example-thumb.jpg",
+          "artwork_source_type": "releaseArtwork.cover_image_url",
+          "artwork_source_url": "https://artwork.example.com/txt-example",
+          "is_placeholder": false
+        }
+      }
+    ],
     "recent_albums": [
       {
         "release_id": "rel_txt_example",
