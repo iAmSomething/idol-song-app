@@ -201,7 +201,7 @@ npm run ios:signing:prepare -- \
   --bundle-id com.example.idolsongapp
 ```
 
-기본 bundle id는 `com.anonymous.idolsongappmobile`이지만, personal team에서 충돌하면 자신이 소유한 reverse-DNS id로 바꿔 쓴다.
+기본 bundle id는 `com.anonymous.idolsongappmobile`이고, generated local override에는 `APP_DISPLAY_NAME = Idol Song App`, `PRODUCT_NAME = IdolSongApp`도 같이 들어간다. personal team에서 충돌하면 자신이 소유한 reverse-DNS id로 바꿔 쓴다.
 
 ### 2. 실제 iPhone에 production release build 설치
 
