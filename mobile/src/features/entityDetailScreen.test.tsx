@@ -176,7 +176,7 @@ describe('mobile entity detail screen', () => {
     expect(tree.root.findByProps({ testID: 'entity-latest-release-service-spotify' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-latest-release-service-youtube-music' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'entity-latest-release-service-youtube-mv' })).toBeDefined();
-    expect(findByTestIdPrefix(tree, 'entity-recent-album-single-card-')).toBeDefined();
+    expect(findByTestIdPrefix(tree, 'entity-recent-album-card-')).toBeDefined();
     expect(tree.root.findAllByProps({ testID: 'entity-source-timeline' })).toHaveLength(0);
 
     await act(async () => {
@@ -189,7 +189,7 @@ describe('mobile entity detail screen', () => {
       tree.root.findByProps({ testID: 'entity-detail-back' }).props.onPress();
       await tree.root.findByProps({ testID: 'entity-next-upcoming-x-search' }).props.onPress();
       tree.root.findByProps({ testID: 'entity-latest-release-primary' }).props.onPress();
-      tree.root.findByProps({ testID: 'entity-recent-album-single-card-yena--love-catcher--2026-03-11--album' }).props.onPress();
+      tree.root.findByProps({ testID: 'entity-recent-album-card-yena--love-catcher--2026-03-11--album' }).props.onPress();
     });
 
     expect(back).toHaveBeenCalledTimes(1);

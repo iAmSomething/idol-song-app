@@ -785,53 +785,9 @@ export default function ArtistDetailScreen() {
         testID="entity-recent-albums-section"
         title="최근 앨범들"
       >
-        {snapshot.recentAlbums.length === 1 ? (
-          <Pressable
-            testID={`entity-recent-album-single-card-${snapshot.recentAlbums[0]!.id}`}
-            accessibilityLabel={`${snapshot.recentAlbums[0]!.releaseTitle} 릴리즈 상세 열기`}
-            accessibilityRole="button"
-            onPress={() => {
-              trackAnalyticsEvent('team_detail_album_opened', {
-                teamSlug: snapshot.team.slug,
-                releaseId: snapshot.recentAlbums[0]!.id,
-              });
-              router.push({
-                pathname: '/releases/[id]',
-                params: { id: snapshot.recentAlbums[0]!.id },
-              });
-            }}
-            style={({ pressed }) => [styles.singleAlbumCard, pressed ? styles.buttonPressed : null]}
-          >
-            <View style={styles.singleAlbumArtwork}>
-              {snapshot.recentAlbums[0]!.coverImageUrl ? (
-                <Image source={{ uri: snapshot.recentAlbums[0]!.coverImageUrl }} style={styles.albumArtworkImage} />
-              ) : (
-                <FallbackArt
-                  height={88}
-                  label={snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
-                  testID="entity-single-album-fallback-art"
-                  variant="cover"
-                  width={88}
-                />
-              )}
-            </View>
-            <View style={styles.singleAlbumCopy}>
-              <Text
-                allowFontScaling
-                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
-                numberOfLines={2}
-                style={styles.albumTitle}
-              >
-                {snapshot.recentAlbums[0]!.releaseTitle}
-              </Text>
-              <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.albumMeta}>
-                {formatReleaseMeta(snapshot.recentAlbums[0]!)}
-              </Text>
-            </View>
-          </Pressable>
-        ) : snapshot.recentAlbums.length > 1 ? (
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.albumRow}>
-            {snapshot.recentAlbums.map((release) => (
+        {snapshot.recentAlbums.length > 0 ? (
+          <View style={styles.albumList}>
+            {snapshot.recentAlbums.map((release, index) => (
               <Pressable
                 key={release.id}
                 testID={`entity-recent-album-card-${release.id}`}
@@ -847,34 +803,37 @@ export default function ArtistDetailScreen() {
                     params: { id: release.id },
                   });
                 }}
-                style={({ pressed }) => [styles.albumCard, pressed ? styles.buttonPressed : null]}
+                style={({ pressed }) => [styles.albumCard, index > 0 ? styles.albumCardDivider : null, pressed ? styles.buttonPressed : null]}
               >
                 <View style={styles.albumArtwork}>
                   {release.coverImageUrl ? (
                     <Image source={{ uri: release.coverImageUrl }} style={styles.albumArtworkImage} />
                   ) : (
                     <FallbackArt
-                      height={96}
+                      height={72}
                       label={snapshot.team.badge?.monogram ?? snapshot.team.displayName.slice(0, 2).toUpperCase()}
+                      testID={index === 0 ? 'entity-recent-album-fallback-art' : undefined}
                       variant="cover"
-                      width={96}
+                      width={72}
                     />
                   )}
                 </View>
-                <Text
-                  allowFontScaling
-                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
-                  numberOfLines={2}
-                  style={styles.albumTitle}
-                >
-                  {release.releaseTitle}
-                </Text>
-                <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.albumMeta}>
-                  {formatReleaseMeta(release)}
-                </Text>
+                <View style={styles.albumCopy}>
+                  <Text
+                    allowFontScaling
+                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+                    numberOfLines={2}
+                    style={styles.albumTitle}
+                  >
+                    {release.releaseTitle}
+                  </Text>
+                  <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.albumMeta}>
+                    {formatReleaseMeta(release)}
+                  </Text>
+                </View>
               </Pressable>
             ))}
-          </ScrollView>
+          </View>
         ) : (
           <InlineFeedbackNotice body="등록된 최근 앨범이 없습니다." />
         )}
@@ -1149,11 +1108,10 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       flex: 1,
       gap: theme.space[4],
     },
-    albumRow: {
+    albumList: {
       gap: theme.space[12],
-      paddingRight: theme.space[8],
     },
-    singleAlbumCard: {
+    albumCard: {
       flexDirection: 'row',
       alignItems: 'center',
       gap: theme.space[12],
@@ -1161,31 +1119,12 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       borderRadius: theme.radius.card,
       backgroundColor: theme.colors.surface.interactive,
     },
-    singleAlbumArtwork: {
-      width: 72,
-      height: 72,
-      borderRadius: theme.radius.button,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: theme.colors.surface.subtle,
-      overflow: 'hidden',
-    },
-    singleAlbumCopy: {
-      flex: 1,
-      gap: theme.space[4],
-      justifyContent: 'center',
-    },
-    albumCard: {
-      width: 156,
-      flexShrink: 0,
-      gap: theme.space[8],
-      padding: theme.space[12],
-      borderRadius: theme.radius.card,
-      backgroundColor: theme.colors.surface.interactive,
+    albumCardDivider: {
+      marginTop: 0,
     },
     albumArtwork: {
-      width: '100%',
-      height: 132,
+      width: 72,
+      height: 72,
       borderRadius: theme.radius.button,
       alignItems: 'center',
       justifyContent: 'center',
@@ -1207,6 +1146,11 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       lineHeight: theme.typography.body.lineHeight,
       fontWeight: '700',
       color: theme.colors.text.primary,
+    },
+    albumCopy: {
+      flex: 1,
+      gap: theme.space[4],
+      justifyContent: 'center',
     },
     albumMeta: {
       fontSize: theme.typography.meta.fontSize,
