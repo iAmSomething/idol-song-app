@@ -1359,6 +1359,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     weekdayRow: {
       flexDirection: 'row',
       gap: theme.space[4],
+      marginBottom: theme.space[4],
     },
     weekdayLabel: {
       flex: 1,
@@ -1375,7 +1376,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     },
     emptyCell: {
       flex: 1,
-      minHeight: 72,
+      minHeight: 62,
     },
   });
 }

@@ -123,46 +123,57 @@ function DayCellComponent({
       ]}
     >
       <View style={styles.dayCellHeader}>
-        <Text
-          allowFontScaling
-          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
-          numberOfLines={1}
+        <View
           style={[
-            styles.dayNumber,
-            cell.isSelected ? styles.dayNumberSelected : null,
+            styles.dayNumberBadge,
+            cell.isToday ? styles.dayNumberBadgeToday : null,
+            cell.isSelected ? styles.dayNumberBadgeSelected : null,
           ]}
         >
-          {cell.dayNumber}
-        </Text>
+          <Text
+            allowFontScaling
+            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+            numberOfLines={1}
+            style={[
+              styles.dayNumber,
+              cell.isToday ? styles.dayNumberToday : null,
+              cell.isSelected ? styles.dayNumberSelected : null,
+            ]}
+          >
+            {cell.dayNumber}
+          </Text>
+        </View>
       </View>
 
-      <View style={styles.markerRow}>
-        {cell.badges.map((badge) => {
-          const { backgroundColor } = getBadgePalette(theme, badge.kind);
-          return (
-            <View
-              key={badge.id}
-              style={[
-                styles.badgeMarker,
-                {
-                  backgroundColor,
-                },
-              ]}
-            />
-          );
-        })}
-        {cell.overflowCount > 0 ? (
-          <View style={styles.overflowPill}>
-            <Text
-              allowFontScaling
-              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
-              numberOfLines={1}
-              style={styles.overflowLabel}
-            >
-              +{cell.overflowCount}
-            </Text>
-          </View>
-        ) : null}
+      <View style={styles.dayCellFooter}>
+        <View style={styles.markerRow}>
+          {cell.badges.map((badge) => {
+            const { backgroundColor } = getBadgePalette(theme, badge.kind);
+            return (
+              <View
+                key={badge.id}
+                style={[
+                  styles.badgeMarker,
+                  {
+                    backgroundColor,
+                  },
+                ]}
+              />
+            );
+          })}
+          {cell.overflowCount > 0 ? (
+            <View style={styles.overflowPill}>
+              <Text
+                allowFontScaling
+                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
+                numberOfLines={1}
+                style={styles.overflowLabel}
+              >
+                +{cell.overflowCount}
+              </Text>
+            </View>
+          ) : null}
+        </View>
       </View>
     </Pressable>
   );
@@ -172,21 +183,22 @@ function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     dayCell: {
       flex: 1,
-      minHeight: 72,
+      minHeight: 62,
       justifyContent: 'space-between',
       paddingHorizontal: theme.space[4],
       paddingVertical: theme.space[4],
-      borderRadius: 18,
+      borderRadius: 16,
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
       backgroundColor: theme.colors.surface.base,
     },
     dayCellToday: {
-      borderColor: theme.colors.border.focus,
+      borderColor: theme.colors.border.default,
+      backgroundColor: theme.colors.surface.elevated,
     },
     dayCellSelected: {
-      backgroundColor: theme.colors.surface.interactive,
       borderColor: theme.colors.border.focus,
+      backgroundColor: theme.colors.surface.elevated,
     },
     dayCellPressed: {
       backgroundColor: theme.colors.surface.interactive,
@@ -195,34 +207,58 @@ function createStyles(theme: MobileTheme) {
       opacity: 0.42,
     },
     dayCellHeader: {
-      alignItems: 'flex-start',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: 34,
+    },
+    dayNumberBadge: {
+      minWidth: 30,
+      height: 30,
+      paddingHorizontal: theme.space[8],
+      borderRadius: theme.radius.chip,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    dayNumberBadgeToday: {
+      backgroundColor: theme.colors.surface.interactive,
+    },
+    dayNumberBadgeSelected: {
+      backgroundColor: theme.colors.text.brand,
     },
     dayNumber: {
       ...theme.typography.body,
       color: theme.colors.text.primary,
       fontWeight: '700',
-      fontSize: 16,
+      fontSize: 15,
       lineHeight: 18,
     },
-    dayNumberSelected: {
+    dayNumberToday: {
       color: theme.colors.text.brand,
+    },
+    dayNumberSelected: {
+      color: theme.colors.text.inverse,
+    },
+    dayCellFooter: {
+      minHeight: 16,
+      justifyContent: 'flex-end',
     },
     markerRow: {
       flexDirection: 'row',
       gap: theme.space[4],
+      justifyContent: 'center',
       alignItems: 'center',
-      minHeight: 14,
+      minHeight: 12,
     },
     badgeMarker: {
-      width: 12,
-      height: 12,
+      width: 8,
+      height: 8,
       borderRadius: theme.radius.chip,
       borderWidth: 1,
       borderColor: theme.colors.surface.base,
     },
     overflowPill: {
-      minWidth: 20,
-      minHeight: 16,
+      minWidth: 18,
+      minHeight: 14,
       paddingHorizontal: theme.space[4],
       alignItems: 'center',
       justifyContent: 'center',
