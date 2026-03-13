@@ -63,6 +63,7 @@ describe('SummaryStrip', () => {
         <SummaryStrip
           items={[
             {
+              kind: 'focus',
               key: 'nearest-upcoming',
               label: '가까운 일정',
               value: 'BTS',
@@ -76,7 +77,11 @@ describe('SummaryStrip', () => {
     });
 
     const texts = tree!.root.findAllByType(Text).map((node) => node.props.children);
+    const card = tree!.root.findByProps({ testID: 'summary-item-nearest-upcoming' });
 
+    expect(card.props.style).toEqual(
+      expect.arrayContaining([expect.objectContaining({ flexBasis: '100%' })]),
+    );
     expect(texts).toContain('BTS');
     expect(texts).toContain('3월 20일');
     expect(texts).toContain('가까운 일정');
