@@ -9,7 +9,7 @@
     "build": "npm run build:pages-read-bridge && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:search-runtime": "tsx --test ./src/lib/bridgeSearch.test.ts",
+    "test:search-runtime": "tsx --test ./src/lib/bridgeSearch.test.ts ./src/lib/runtimeRefresh.test.ts",
     "test:pages-read-bridge": "node --test ./scripts/lib/pagesReadBridgeCalendar.test.mjs ./scripts/lib/pagesReadBridgeCoverage.test.mjs",
     "test:runtime-policy": "node --test ./scripts/lib/runtimeImportBoundary.test.mjs",
     "verify:runtime-policy": "node ./scripts/verify-runtime-policy.mjs",

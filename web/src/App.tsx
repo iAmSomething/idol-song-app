@@ -27,6 +27,7 @@ import {
   type SurfaceStatusSource,
 } from './lib/surfaceStatus'
 import { buildBridgeSearchApiData, type BridgeSearchIndex } from './lib/bridgeSearch'
+import { shouldReloadForRuntimeRefresh } from './lib/runtimeRefresh'
 
 type ReleaseFact = {
   title: string
@@ -1989,6 +1990,8 @@ void [
 type BackendTargetDiagnosticsResponse = {
   data?: {
     generated_at?: string | null
+    runtime_mode?: string | null
+    effective_target?: string | null
   }
   error?: {
     code?: string | null
@@ -2031,7 +2034,13 @@ function storeBridgeGeneration(value: string) {
 
 async function fetchBridgeTargetDiagnostics(
   signal: AbortSignal,
-): Promise<{ generatedAt: string | null; errorCode: string | null; traceId: string | null }> {
+): Promise<{
+  generatedAt: string | null
+  runtimeMode: string | null
+  effectiveTarget: string | null
+  errorCode: string | null
+  traceId: string | null
+}> {
   const cacheBust = `ts=${Date.now().toString(36)}`
   const result = await fetchJsonWithTimeout<BackendTargetDiagnosticsResponse>(
     `${BACKEND_TARGET_DIAGNOSTICS_PATH}${BACKEND_TARGET_DIAGNOSTICS_PATH.includes('?') ? '&' : '?'}${cacheBust}`,
@@ -2048,6 +2057,8 @@ async function fetchBridgeTargetDiagnostics(
   if (!result.ok || !result.body?.data) {
     return {
       generatedAt: null,
+      runtimeMode: null,
+      effectiveTarget: null,
       errorCode: result.body?.error?.code ?? `bridge_target_${result.status}`,
       traceId: result.responseRequestId ?? result.requestId,
     }
@@ -2055,17 +2066,19 @@ async function fetchBridgeTargetDiagnostics(
 
   return {
     generatedAt: readNonEmptyString(result.body.data.generated_at),
+    runtimeMode: readNonEmptyString(result.body.data.runtime_mode),
+    effectiveTarget: readNonEmptyString(result.body.data.effective_target),
     errorCode: null,
     traceId: result.responseRequestId ?? result.requestId,
   }
 }
 
-function useBridgeDeploymentRefresh() {
+function useRuntimeDeploymentRefresh() {
   const initialGeneration = readStoredBridgeGeneration()
   const generationRef = useRef<string | null>(initialGeneration)
 
   useEffect(() => {
-    if (BACKEND_API_BASE_URL || typeof window === 'undefined' || typeof document === 'undefined') {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
       return
     }
 
@@ -2074,7 +2087,7 @@ function useBridgeDeploymentRefresh() {
     const syncGeneration = async (reloadOnChange: boolean) => {
       const controller = new AbortController()
       try {
-        const { generatedAt } = await fetchBridgeTargetDiagnostics(controller.signal)
+        const { generatedAt, runtimeMode, effectiveTarget } = await fetchBridgeTargetDiagnostics(controller.signal)
         if (cancelled || !generatedAt) {
           return
         }
@@ -2083,7 +2096,16 @@ function useBridgeDeploymentRefresh() {
         generationRef.current = generatedAt
         storeBridgeGeneration(generatedAt)
 
-        if (!previousGeneration || previousGeneration === generatedAt) {
+        const shouldReload = shouldReloadForRuntimeRefresh({
+          previousGeneration,
+          nextGeneration: generatedAt,
+          currentRuntimeMode: ACTIVE_WEB_BACKEND_TARGET_MODE,
+          currentEffectiveTarget: ACTIVE_WEB_BACKEND_TARGET,
+          diagnosticsRuntimeMode: runtimeMode,
+          diagnosticsEffectiveTarget: effectiveTarget,
+        })
+
+        if (!shouldReload) {
           return
         }
 
@@ -2127,7 +2149,7 @@ function useBridgeDeploymentRefresh() {
 }
 
 function App() {
-  useBridgeDeploymentRefresh()
+  useRuntimeDeploymentRefresh()
   const latestMonthKey = CURRENT_KST_ISO.slice(0, 7)
   const [selectedMonthKey, setSelectedMonthKey] = useState(latestMonthKey)
   const [selectedDayIso, setSelectedDayIso] = useState('')
