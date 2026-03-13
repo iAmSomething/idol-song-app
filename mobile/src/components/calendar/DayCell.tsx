@@ -1,5 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import {
+  Image,
   Pressable,
   StyleSheet,
   Text,
@@ -148,17 +149,38 @@ function DayCellComponent({
       <View style={styles.dayCellFooter}>
         <View style={styles.markerRow}>
           {cell.badges.map((badge) => {
-            const { backgroundColor } = getBadgePalette(theme, badge.kind);
+            const { backgroundColor, color } = getBadgePalette(theme, badge.kind);
             return (
               <View
                 key={badge.id}
                 style={[
-                  styles.badgeMarker,
+                  styles.badgeMarkerWrap,
                   {
                     backgroundColor,
                   },
                 ]}
-              />
+              >
+                {badge.imageUrl ? (
+                  <Image
+                    source={{ uri: badge.imageUrl }}
+                    style={styles.badgeMarkerImage}
+                    testID={`calendar-day-badge-image-${badge.id}`}
+                  />
+                ) : (
+                  <Text
+                    allowFontScaling={false}
+                    numberOfLines={1}
+                    style={[
+                      styles.badgeMarkerText,
+                      {
+                        color,
+                      },
+                    ]}
+                  >
+                    {badge.monogram.slice(0, 2)}
+                  </Text>
+                )}
+              </View>
             );
           })}
           {cell.overflowCount > 0 ? (
@@ -244,17 +266,30 @@ function createStyles(theme: MobileTheme) {
     },
     markerRow: {
       flexDirection: 'row',
-      gap: 3,
+      gap: 4,
       justifyContent: 'flex-start',
       alignItems: 'center',
-      minHeight: 10,
+      minHeight: 16,
     },
-    badgeMarker: {
-      width: 6,
-      height: 6,
-      borderRadius: theme.radius.chip,
+    badgeMarkerWrap: {
+      width: 16,
+      height: 16,
+      borderRadius: 8,
       borderWidth: 1,
       borderColor: theme.colors.surface.base,
+      overflow: 'hidden',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    badgeMarkerImage: {
+      width: '100%',
+      height: '100%',
+    },
+    badgeMarkerText: {
+      ...theme.typography.meta,
+      fontSize: 8,
+      lineHeight: 9,
+      fontWeight: '800',
     },
     overflowPill: {
       minWidth: 16,
