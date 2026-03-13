@@ -1002,10 +1002,23 @@ const TRANSLATIONS = {
       scheduled: '예정 컴백',
       nearest: '가장 가까운 일정',
     },
+    searchSummaryLabels: {
+      teams: '팀 결과',
+      releases: '릴리즈 결과',
+      upcoming: '예정 결과',
+    },
     monthlyNearestEmpty: '정확한 날짜 없음',
     monthlyHighlightLabel: '가장 가까운 일정',
     monthlyHighlightEmpty: '현재 월과 필터 기준으로 정확한 날짜가 있는 예정 컴백이 없습니다.',
     monthlyHighlightUndatedOnly: '현재 월에는 날짜 미정 월 단위 신호만 있습니다. 아래 월간 목록에서 확인하세요.',
+    searchResultsLabel: '검색 결과',
+    searchResultsSpotlightLabel: '대표 결과',
+    searchResultsEmptyTitle: '검색 결과 없음',
+    searchResultsEmptyBody: '정확한 이름을 넣었는데도 비어 있다면 API 응답 또는 alias 데이터를 다시 확인해야 합니다.',
+    searchResultsEntityLabel: '팀',
+    searchResultsReleaseLabel: '릴리즈',
+    searchResultsUpcomingLabel: '예정',
+    searchResultsMatchedAliasLabel: '일치',
     stats: {
       verifiedReleases: '검증된 발매',
       watchTargets: '추적 대상',
@@ -1278,10 +1291,23 @@ const TRANSLATIONS = {
       scheduled: 'Scheduled comebacks',
       nearest: 'Closest schedule',
     },
+    searchSummaryLabels: {
+      teams: 'Teams',
+      releases: 'Releases',
+      upcoming: 'Upcoming',
+    },
     monthlyNearestEmpty: 'No exact date',
     monthlyHighlightLabel: 'Closest schedule',
     monthlyHighlightEmpty: 'No exact-date scheduled comebacks match this month and filter state.',
     monthlyHighlightUndatedOnly: 'Only month-level undated signals remain for this month. Check the monthly list below.',
+    searchResultsLabel: 'Search results',
+    searchResultsSpotlightLabel: 'Top matches',
+    searchResultsEmptyTitle: 'No search results',
+    searchResultsEmptyBody: 'If an exact name still returns nothing, we should inspect the API response or alias coverage again.',
+    searchResultsEntityLabel: 'Team',
+    searchResultsReleaseLabel: 'Release',
+    searchResultsUpcomingLabel: 'Upcoming',
+    searchResultsMatchedAliasLabel: 'Matched',
     stats: {
       verifiedReleases: 'Verified releases',
       watchTargets: 'Watch targets',
@@ -2464,6 +2490,17 @@ function App() {
   const latestRelease = visibleMonthVerifiedRows[0]
   const earliestRelease = visibleMonthVerifiedRows.at(-1)
   const monthIndex = visibleMonthKeys.indexOf(effectiveMonthKey)
+  const normalizedSearchQuery = deferredSearch.trim()
+  const searchSummaryCounts = {
+    teams: visibleSearchTeams.length,
+    releases: visibleSearchReleases.length,
+    upcoming: visibleSearchUpcoming.length,
+  }
+  const primarySearchEntity = visibleSearchTeams[0] ?? null
+  const primarySearchRelease = visibleSearchReleases[0] ?? null
+  const primarySearchUpcoming = visibleSearchUpcoming[0] ?? null
+  const hasSearchMatches =
+    searchSummaryCounts.teams > 0 || searchSummaryCounts.releases > 0 || searchSummaryCounts.upcoming > 0
   const selectedDayLabel = effectiveSelectedDayIso
     ? formatDisplayDate(effectiveSelectedDayIso, displayDateFormatter)
     : copy.noReleaseSelected
@@ -2471,6 +2508,13 @@ function App() {
     language === 'ko'
       ? `${selectedMonthDate.getFullYear()}년 ${selectedMonthDate.getMonth() + 1}월 컴백 캘린더`
       : `${monthFormatter.format(selectedMonthDate)} comeback calendar`
+  const contextHeaderLabel = hasSearchQuery ? copy.searchResultsLabel : copy.monthlyContextLabel
+  const contextHeaderTitle =
+    hasSearchQuery && normalizedSearchQuery
+      ? language === 'ko'
+        ? `"${normalizedSearchQuery}" 검색 결과`
+        : `Results for "${normalizedSearchQuery}"`
+      : monthlyContextTitle
   const nearestMonthlySignal = visibleMonthScheduledRows[0] ?? null
   const todayJumpTarget: CalendarQuickJumpTarget = {
     isoDate: todayIso,
@@ -2734,19 +2778,62 @@ function App() {
     setSelectedReleaseRouteSelection(null)
   }
 
-  function openTeamPageBySlug(entitySlug: string) {
-    setSelectedEntitySlug(entitySlug)
-    setSelectedGroup(null)
-    setSelectedCompareGroup(null)
-    setSelectedAlbumKey(null)
-    setSelectedReleaseRouteSelection(null)
-  }
+function openTeamPageBySlug(entitySlug: string) {
+  setSelectedEntitySlug(entitySlug)
+  setSelectedGroup(null)
+  setSelectedCompareGroup(null)
+  setSelectedAlbumKey(null)
+  setSelectedReleaseRouteSelection(null)
+}
 
-  function openReleaseDetail(release: VerifiedRelease) {
-    const entitySlug = release.entitySlug ?? slugifyGroup(release.group)
-    setSelectedEntitySlug(entitySlug)
-    setSelectedGroup(release.group)
-    setSelectedCompareGroup(null)
+function buildSearchReleasePreview({
+  displayName,
+  entitySlug,
+  releaseId,
+  releaseTitle,
+  releaseDate,
+  stream,
+  releaseKind,
+  releaseFormat,
+  actType = 'group',
+}: {
+  displayName: string
+  entitySlug: string
+  releaseId: string | null
+  releaseTitle: string
+  releaseDate: string
+  stream: 'song' | 'album'
+  releaseKind: ReleaseFact['release_kind']
+  releaseFormat: ReleaseFormat | ''
+  actType?: ActType
+}): VerifiedRelease {
+  return {
+    group: displayName,
+    displayName,
+    entitySlug,
+    title: releaseTitle,
+    date: releaseDate,
+    source: 'backend-search',
+    release_kind: releaseKind,
+    release_format:
+      releaseFormat || (releaseKind === 'album' ? 'album' : releaseKind === 'ep' ? 'ep' : 'single'),
+    context_tags: [],
+    artist_name_mb: displayName,
+    artist_mbid: '',
+    artist_source: 'backend-search',
+    actType,
+    stream,
+    dateValue: new Date(`${releaseDate}T00:00:00`),
+    isoDate: releaseDate,
+    release_id: releaseId ?? undefined,
+  }
+}
+
+function openReleaseDetail(release: VerifiedRelease) {
+  const entitySlug = release.entitySlug ?? slugifyGroup(release.group)
+  setSelectedEntitySlug(entitySlug)
+  setSelectedGroup(release.group)
+  setSelectedCompareGroup(null)
     setSelectedAlbumKey(getAlbumKey(release))
     setSelectedReleaseRouteSelection({
       entitySlug,
@@ -2755,13 +2842,53 @@ function App() {
       releaseStream: release.stream,
       releaseId: release.release_id ?? null,
     })
+}
+
+function openSearchReleaseDetail(release: SearchSurfaceReleaseResult) {
+  openReleaseDetail(
+    buildSearchReleasePreview({
+      displayName: release.displayName,
+      entitySlug: release.entitySlug,
+      releaseId: release.releaseId,
+      releaseTitle: release.releaseTitle,
+      releaseDate: release.releaseDate,
+      stream: release.stream,
+      releaseKind: release.releaseKind,
+      releaseFormat: release.releaseFormat,
+    }),
+  )
+}
+
+function openEntityLatestReleaseDetail(entity: SearchSurfaceEntityResult) {
+  if (!entity.latestRelease) {
+    return
   }
 
-  function closeReleaseDetail() {
-    if (typeof window !== 'undefined' && window.history.state?.releaseKey) {
-      window.history.back()
-      return
-    }
+  openReleaseDetail(
+    buildSearchReleasePreview({
+      displayName: entity.displayName,
+      entitySlug: entity.entitySlug,
+      releaseId: entity.latestRelease.releaseId,
+      releaseTitle: entity.latestRelease.title,
+      releaseDate: entity.latestRelease.date,
+      stream: entity.latestRelease.stream,
+      releaseKind: entity.latestRelease.releaseKind,
+      releaseFormat:
+        entity.latestRelease.releaseKind === 'album'
+          ? 'album'
+          : entity.latestRelease.releaseKind === 'ep'
+            ? 'ep'
+            : 'single',
+      actType: entity.entityType === 'solo' || entity.entityType === 'unit' ? entity.entityType : 'group',
+    }),
+  )
+}
+
+function closeReleaseDetail() {
+  if (typeof window !== 'undefined' && window.history.state?.releaseKey) {
+    window.history.back()
+    return
+  }
 
     setSelectedAlbumKey(null)
     setSelectedReleaseRouteSelection(null)
@@ -2830,28 +2957,47 @@ function App() {
       <header className="panel context-header">
         <div className="context-header-top">
           <div className="context-header-copy">
-            <p className="panel-label">{copy.monthlyContextLabel}</p>
-            <h1>{monthlyContextTitle}</h1>
+            <p className="panel-label">{contextHeaderLabel}</p>
+            <h1>{contextHeaderTitle}</h1>
             <div className="context-summary-grid">
-              <article className="context-summary-card">
-                <span>{copy.monthlySummaryLabels.verified}</span>
-                <strong>{visibleMonthVerifiedRows.length}</strong>
-              </article>
-              <article className="context-summary-card">
-                <span>{copy.monthlySummaryLabels.scheduled}</span>
-                <strong>{monthScheduledCount}</strong>
-              </article>
-              <article className="context-summary-card">
-                <span>{copy.monthlySummaryLabels.nearest}</span>
-                <strong>
-                  {nearestMonthlySignal
-                    ? formatUpcomingTimingLabel(nearestMonthlySignal, language, displayDateFormatter, copy.none)
-                    : copy.monthlyNearestEmpty}
-                </strong>
-                <p className="context-summary-meta">
-                  {nearestMonthlySignal ? getTeamDisplayName(nearestMonthlySignal.group) : copy.none}
-                </p>
-              </article>
+              {hasSearchQuery ? (
+                <>
+                  <article className="context-summary-card">
+                    <span>{copy.searchSummaryLabels.teams}</span>
+                    <strong>{searchSummaryCounts.teams}</strong>
+                  </article>
+                  <article className="context-summary-card">
+                    <span>{copy.searchSummaryLabels.releases}</span>
+                    <strong>{searchSummaryCounts.releases}</strong>
+                  </article>
+                  <article className="context-summary-card">
+                    <span>{copy.searchSummaryLabels.upcoming}</span>
+                    <strong>{searchSummaryCounts.upcoming}</strong>
+                  </article>
+                </>
+              ) : (
+                <>
+                  <article className="context-summary-card">
+                    <span>{copy.monthlySummaryLabels.verified}</span>
+                    <strong>{visibleMonthVerifiedRows.length}</strong>
+                  </article>
+                  <article className="context-summary-card">
+                    <span>{copy.monthlySummaryLabels.scheduled}</span>
+                    <strong>{monthScheduledCount}</strong>
+                  </article>
+                  <article className="context-summary-card">
+                    <span>{copy.monthlySummaryLabels.nearest}</span>
+                    <strong>
+                      {nearestMonthlySignal
+                        ? formatUpcomingTimingLabel(nearestMonthlySignal, language, displayDateFormatter, copy.none)
+                        : copy.monthlyNearestEmpty}
+                    </strong>
+                    <p className="context-summary-meta">
+                      {nearestMonthlySignal ? getTeamDisplayName(nearestMonthlySignal.group) : copy.none}
+                    </p>
+                  </article>
+                </>
+              )}
             </div>
           </div>
 
@@ -2894,51 +3040,181 @@ function App() {
               <article className="context-highlight-card">
                 <div className="context-highlight-head">
                   <div>
-                  <p className="panel-label">{copy.monthlyHighlightLabel}</p>
-                  <h2>{nearestMonthlySignal ? nearestMonthlySignal.headline : copy.monthlyNearestEmpty}</h2>
-                </div>
-                {nearestMonthlySignal ? (
-                  <div className="signal-tags">
-                    <UpcomingCountdownBadge item={nearestMonthlySignal} formatter={shortDateFormatter} />
-                    <span className={`signal-badge signal-badge-date-${nearestMonthlySignal.date_status}`}>
-                      {formatDateStatus(nearestMonthlySignal.date_status, language)}
-                    </span>
-                  </div>
-                ) : null}
-              </div>
-
-              {nearestMonthlySignal ? (
-                <div className="context-highlight-body">
-                  <div>
-                    <TeamIdentity group={nearestMonthlySignal.group} variant="list" />
-                    <p className="signal-meta">
-                      {formatUpcomingTimingLabel(nearestMonthlySignal, language, displayDateFormatter, copy.none)} ·{' '}
-                      {formatSourceType(nearestMonthlySignal.source_type, language)} ·{' '}
-                      {nearestMonthlySignal.source_domain || copy.sourceTypeLabels.pending}
+                    <p className="panel-label">
+                      {hasSearchQuery ? copy.searchResultsSpotlightLabel : copy.monthlyHighlightLabel}
                     </p>
-                    {formatUpcomingEvidenceMeta(nearestMonthlySignal, language) ? (
-                      <p className="signal-meta">{formatUpcomingEvidenceMeta(nearestMonthlySignal, language)}</p>
-                    ) : null}
+                    <h2>
+                      {hasSearchQuery
+                        ? hasSearchMatches
+                          ? primarySearchEntity?.displayName ??
+                            primarySearchRelease?.releaseTitle ??
+                            primarySearchUpcoming?.headline ??
+                            copy.searchResultsEmptyTitle
+                          : copy.searchResultsEmptyTitle
+                        : nearestMonthlySignal?.headline ?? copy.monthlyNearestEmpty}
+                    </h2>
                   </div>
-                  <div className="context-highlight-actions">
-                    <button type="button" className="inline-button" onClick={() => openTeamPage(nearestMonthlySignal.group)}>
-                      {teamCopy.action}
-                    </button>
-                    {nearestMonthlySignal.source_url ? (
-                      <a href={nearestMonthlySignal.source_url} target="_blank" rel="noreferrer">
-                        {copy.open}
-                      </a>
-                    ) : (
-                      <span className="signal-link-muted">{copy.noSourceLink}</span>
-                    )}
-                  </div>
+                  {hasSearchQuery ? null : nearestMonthlySignal ? (
+                    <div className="signal-tags">
+                      <UpcomingCountdownBadge item={nearestMonthlySignal} formatter={shortDateFormatter} />
+                      <span className={`signal-badge signal-badge-date-${nearestMonthlySignal.date_status}`}>
+                        {formatDateStatus(nearestMonthlySignal.date_status, language)}
+                      </span>
+                    </div>
+                  ) : null}
                 </div>
-              ) : (
-                <p className="empty-copy">{monthlyHighlightEmptyCopy}</p>
-              )}
-            </article>
+                {hasSearchQuery ? (
+                  hasSearchMatches ? (
+                    <div className="context-search-results">
+                      {primarySearchEntity ? (
+                        <article className="context-search-result-card">
+                          <div className="context-search-result-head">
+                            <div className="context-search-result-copy">
+                              <span className="team-directory-kicker">{copy.searchResultsEntityLabel}</span>
+                              <h3>{primarySearchEntity.displayName}</h3>
+                              <p className="context-search-result-meta">
+                                {describeSearchEntityResult(
+                                  primarySearchEntity,
+                                  language,
+                                  displayDateFormatter,
+                                  teamCopy.noSignal,
+                                )}
+                              </p>
+                              <p className="context-search-result-meta">
+                                {primarySearchEntity.agencyName || primarySearchEntity.canonicalName}
+                                {primarySearchEntity.matchedAlias
+                                  ? ` · ${copy.searchResultsMatchedAliasLabel} ${primarySearchEntity.matchedAlias}`
+                                  : ''}
+                              </p>
+                            </div>
+                            <div className="signal-tags">
+                              <span className="signal-badge">{primarySearchEntity.entityType}</span>
+                            </div>
+                          </div>
+                          <div className="action-stack">
+                            <div className="action-row">
+                              <ActionButton variant="primary" onClick={() => openTeamPageBySlug(primarySearchEntity.entitySlug)}>
+                                {teamCopy.action}
+                              </ActionButton>
+                              {primarySearchEntity.latestRelease ? (
+                                <ActionButton variant="secondary" onClick={() => openEntityLatestReleaseDetail(primarySearchEntity)}>
+                                  {getReleaseDetailActionLabel(primarySearchEntity.latestRelease.releaseKind, language)}
+                                </ActionButton>
+                              ) : null}
+                            </div>
+                          </div>
+                        </article>
+                      ) : null}
+
+                      {primarySearchRelease ? (
+                        <article className="context-search-result-card">
+                          <div className="context-search-result-head">
+                            <div className="context-search-result-copy">
+                              <span className="team-directory-kicker">{copy.searchResultsReleaseLabel}</span>
+                              <h3>{primarySearchRelease.releaseTitle}</h3>
+                              <p className="context-search-result-meta">
+                                {primarySearchRelease.displayName} ·{' '}
+                                {describeSearchReleaseResult(primarySearchRelease, language)} ·{' '}
+                                {formatOptionalDate(primarySearchRelease.releaseDate, displayDateFormatter, copy.none)}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="action-stack">
+                            <div className="action-row">
+                              <ActionButton variant="primary" onClick={() => openSearchReleaseDetail(primarySearchRelease)}>
+                                {getReleaseDetailActionLabel(primarySearchRelease.releaseKind, language)}
+                              </ActionButton>
+                              <ActionButton variant="secondary" onClick={() => openTeamPageBySlug(primarySearchRelease.entitySlug)}>
+                                {teamCopy.action}
+                              </ActionButton>
+                            </div>
+                          </div>
+                        </article>
+                      ) : null}
+
+                      {primarySearchUpcoming ? (
+                        <article className="context-search-result-card">
+                          <div className="context-search-result-head">
+                            <div className="context-search-result-copy">
+                              <span className="team-directory-kicker">{copy.searchResultsUpcomingLabel}</span>
+                              <h3>{primarySearchUpcoming.headline}</h3>
+                              <p className="context-search-result-meta">
+                                {primarySearchUpcoming.displayName} ·{' '}
+                                {formatUpcomingTimingLabel(
+                                  primarySearchUpcoming,
+                                  language,
+                                  displayDateFormatter,
+                                  copy.none,
+                                )}{' '}
+                                · {formatSourceDomain(primarySearchUpcoming.source_domain, language)}
+                              </p>
+                              {primarySearchUpcoming.evidence_summary ? (
+                                <p className="context-search-result-meta">{primarySearchUpcoming.evidence_summary}</p>
+                              ) : null}
+                            </div>
+                            <div className="signal-tags">
+                              <span className={`signal-badge signal-badge-date-${primarySearchUpcoming.date_status}`}>
+                                {formatDateStatus(primarySearchUpcoming.date_status, language)}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="action-stack">
+                            <div className="action-row">
+                              <ActionButton variant="primary" onClick={() => openTeamPageBySlug(primarySearchUpcoming.entitySlug)}>
+                                {teamCopy.action}
+                              </ActionButton>
+                            </div>
+                            <div className="meta-links">
+                              {primarySearchUpcoming.source_url ? (
+                                <a href={primarySearchUpcoming.source_url} target="_blank" rel="noreferrer" className="meta-link">
+                                  {copy.sourceLink}
+                                </a>
+                              ) : (
+                                <span className="signal-link-muted">{copy.noSourceLink}</span>
+                              )}
+                            </div>
+                          </div>
+                        </article>
+                      ) : null}
+                    </div>
+                  ) : (
+                    <div className="context-highlight-empty">
+                      <strong>{copy.searchResultsEmptyTitle}</strong>
+                      <p className="empty-copy">{copy.searchResultsEmptyBody}</p>
+                    </div>
+                  )
+                ) : nearestMonthlySignal ? (
+                  <div className="context-highlight-body">
+                    <div>
+                      <TeamIdentity group={nearestMonthlySignal.group} variant="list" />
+                      <p className="signal-meta">
+                        {formatUpcomingTimingLabel(nearestMonthlySignal, language, displayDateFormatter, copy.none)} ·{' '}
+                        {formatSourceType(nearestMonthlySignal.source_type, language)} ·{' '}
+                        {nearestMonthlySignal.source_domain || copy.sourceTypeLabels.pending}
+                      </p>
+                      {formatUpcomingEvidenceMeta(nearestMonthlySignal, language) ? (
+                        <p className="signal-meta">{formatUpcomingEvidenceMeta(nearestMonthlySignal, language)}</p>
+                      ) : null}
+                    </div>
+                    <div className="context-highlight-actions">
+                      <button type="button" className="inline-button" onClick={() => openTeamPage(nearestMonthlySignal.group)}>
+                        {teamCopy.action}
+                      </button>
+                      {nearestMonthlySignal.source_url ? (
+                        <a href={nearestMonthlySignal.source_url} target="_blank" rel="noreferrer">
+                          {copy.open}
+                        </a>
+                      ) : (
+                        <span className="signal-link-muted">{copy.noSourceLink}</span>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <p className="empty-copy">{monthlyHighlightEmptyCopy}</p>
+                )}
+              </article>
+            </div>
           </div>
-        </div>
 
         <div className="context-filter-stack">
           <div className="context-filter-grid context-filter-grid-primary">
