@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-11T07:12:36.986Z",
+  "generated_at": "2026-03-13T00:12:56.634Z",
   "artifact_version": 1,
   "status": "pass",
   "report_bundle": {
-    "generated_at": "2026-03-11T07:11:17.396Z",
-    "bundle_id": "post-sync-verification-2ae8b97863c3",
+    "generated_at": "2026-03-13T00:12:46.985Z",
+    "bundle_id": "post-sync-verification-a09976359f4a",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -16,30 +16,83 @@
     "source_reports": {
       "release_pipeline_sync": {
         "path": "reports/release_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-07T07:51:00.028Z",
+        "generated_at": "2026-03-12T12:35:42.357Z",
         "scope": "release_pipeline"
       },
       "upcoming_pipeline_sync": {
         "path": "reports/upcoming_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-07T08:21:49.354Z",
+        "generated_at": "2026-03-11T07:53:51.250Z",
         "scope": "upcoming_pipeline"
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-08T23:52:59.908Z"
+        "generated_at": "2026-03-13T00:10:47.902Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
-        "generated_at": "2026-03-10T00:00:00.000Z"
+        "generated_at": "2026-03-12T00:00:00.000Z"
+      },
+      "canonical_null_coverage": {
+        "path": "reports/canonical_null_coverage_report.json",
+        "generated_at": "2026-03-13T00:10:50.480Z"
+      },
+      "canonical_null_recheck_queue": {
+        "path": "reports/canonical_null_recheck_queue.json",
+        "generated_at": "2026-03-13T00:10:51.777Z",
+        "queue_count": 2386
+      },
+      "null_coverage_trend": {
+        "path": "reports/null_coverage_trend_report.json",
+        "generated_at": "2026-03-13T00:10:52.201Z",
+        "baseline_available": true
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-11T07:11:06.404Z",
+        "generated_at": "2026-03-13T00:10:49.273Z",
         "primary_path_key": "daily_upcoming"
+      },
+      "workflow_schedule_diagnostics": {
+        "path": "reports/workflow_schedule_diagnostics.json",
+        "generated_at": "2026-03-13T00:10:49.273Z",
+        "hint_count": 1,
+        "workflow_count": 3
+      },
+      "service_link_gap_queues": {
+        "path": "reports/service_link_gap_queues.json",
+        "generated_at": "2026-03-13T00:10:53.460Z",
+        "total": 3980
+      },
+      "title_track_gap_queue": {
+        "path": "reports/title_track_gap_queue.json",
+        "generated_at": "2026-03-13T00:10:53.463Z",
+        "total": 574
+      },
+      "entity_identity_workbench": {
+        "path": "reports/entity_identity_workbench.json",
+        "generated_at": "2026-03-13T00:10:53.464Z",
+        "entities": 117,
+        "field_rows": 194
+      },
+      "trusted_upcoming_notification_summary": {
+        "path": "reports/trusted_upcoming_notification_event_summary.json",
+        "generated_at": "2026-03-11T12:38:47.563Z",
+        "emitted": 0
+      },
+      "mobile_push_delivery_summary": {
+        "path": "reports/mobile_push_delivery_summary.json",
+        "generated_at": null,
+        "sent": null,
+        "failed": null
+      },
+      "same_day_release_acceptance": {
+        "path": "reports/same_day_release_acceptance_report.json",
+        "generated_at": "2026-03-13T00:12:46.726Z",
+        "overall_status": "pass",
+        "fixture_count": 2
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-2ae8b97863c3",
+      "bundle id: post-sync-verification-a09976359f4a",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -47,19 +100,22 @@
   },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": "post-sync-verification-2ae8b97863c3",
+    "expected_bundle_id": "post-sync-verification-a09976359f4a",
     "observed": {
       "parity_bundle": null,
       "shadow_bundle": null,
-      "runtime_gate_bundle": "post-sync-verification-2ae8b97863c3",
-      "historical_coverage_generated_at": null
+      "runtime_gate_bundle": "post-sync-verification-a09976359f4a",
+      "historical_coverage_generated_at": null,
+      "canonical_null_coverage_generated_at": null,
+      "null_coverage_trend_generated_at": null,
+      "same_day_release_acceptance_generated_at": null
     },
     "mismatches": []
   },
   "target": {
     "environment": "production",
     "classification": "production",
-    "backend_public_url": "https://api.idol-song-app.example.com"
+    "backend_public_url": "https://idol-song-app-production.up.railway.app"
   },
   "source": {
     "kind": "manual",
@@ -70,30 +126,30 @@
   "source_reports": {
     "release_pipeline_sync": {
       "path": "release_pipeline_db_sync_summary.json",
-      "generated_at": "2026-03-07T07:51:00.028Z"
+      "generated_at": "2026-03-12T12:35:42.357Z"
     },
     "upcoming_pipeline_sync": {
       "path": "upcoming_pipeline_db_sync_summary.json",
-      "generated_at": "2026-03-07T08:21:49.354Z"
+      "generated_at": "2026-03-11T07:53:51.250Z"
     },
     "projection_refresh": {
       "path": "projection_refresh_summary.json",
-      "generated_at": "2026-03-08T23:52:59.908Z"
+      "generated_at": "2026-03-13T00:10:47.902Z"
     },
     "report_bundle": {
       "path": "report_bundle_metadata.json",
-      "generated_at": "2026-03-11T07:11:17.396Z"
+      "generated_at": "2026-03-13T00:12:46.985Z"
     },
     "runtime_gate": {
       "path": "runtime_gate_report.json",
-      "generated_at": "2026-03-11T07:12:19.414Z"
+      "generated_at": "2026-03-13T00:12:55.634Z"
     }
   },
   "prerequisite_checks": {
     "release_pipeline_sync": {
       "status": "pass",
       "observed": {
-        "generated_at": "2026-03-07T07:51:00.028Z",
+        "generated_at": "2026-03-12T12:35:42.357Z",
         "scope": "release_pipeline",
         "summary_path": "backend/reports/release_pipeline_db_sync_summary.json"
       }
@@ -101,7 +157,7 @@
     "upcoming_pipeline_sync": {
       "status": "pass",
       "observed": {
-        "generated_at": "2026-03-07T08:21:49.354Z",
+        "generated_at": "2026-03-11T07:53:51.250Z",
         "scope": "upcoming_pipeline",
         "summary_path": "backend/reports/upcoming_pipeline_db_sync_summary.json"
       }
@@ -109,12 +165,12 @@
     "projection_row_counts": {
       "status": "pass",
       "observed": {
-        "generated_at": "2026-03-08T23:52:59.908Z",
+        "generated_at": "2026-03-13T00:10:47.902Z",
         "row_counts": {
           "entity_search_documents": 117,
           "calendar_month_projection": 216,
           "entity_detail_projection": 117,
-          "release_detail_projection": 1771,
+          "release_detail_projection": 1773,
           "radar_projection": 1
         },
         "missing_or_empty_keys": []
@@ -123,17 +179,17 @@
     "sequence_after_sync": {
       "status": "pass",
       "observed": {
-        "release_sync_generated_at": "2026-03-07T07:51:00.028Z",
-        "upcoming_sync_generated_at": "2026-03-07T08:21:49.354Z",
-        "latest_sync_generated_at": "2026-03-07T08:21:49.354Z",
-        "projection_generated_at": "2026-03-08T23:52:59.908Z"
+        "release_sync_generated_at": "2026-03-12T12:35:42.357Z",
+        "upcoming_sync_generated_at": "2026-03-11T07:53:51.250Z",
+        "latest_sync_generated_at": "2026-03-12T12:35:42.357Z",
+        "projection_generated_at": "2026-03-13T00:10:47.902Z"
       }
     },
     "artifact_freshness": {
       "status": "pass",
       "observed": {
-        "projection_generated_at": "2026-03-08T23:52:59.908Z",
-        "age_hours": 55.33
+        "projection_generated_at": "2026-03-13T00:10:47.902Z",
+        "age_hours": 0.04
       },
       "thresholds": {
         "passAgeHours": 96,
@@ -144,7 +200,7 @@
       "status": "pass",
       "observed": {
         "target_environment": "production",
-        "backend_public_url": "https://api.idol-song-app.example.com",
+        "backend_public_url": "https://idol-song-app-production.up.railway.app",
         "classified_target": "production"
       }
     },
@@ -152,20 +208,23 @@
       "status": "pass",
       "observed": {
         "status": "pass",
-        "expected_bundle_id": "post-sync-verification-2ae8b97863c3",
+        "expected_bundle_id": "post-sync-verification-a09976359f4a",
         "observed": {
           "parity_bundle": null,
           "shadow_bundle": null,
-          "runtime_gate_bundle": "post-sync-verification-2ae8b97863c3",
-          "historical_coverage_generated_at": null
+          "runtime_gate_bundle": "post-sync-verification-a09976359f4a",
+          "historical_coverage_generated_at": null,
+          "canonical_null_coverage_generated_at": null,
+          "null_coverage_trend_generated_at": null,
+          "same_day_release_acceptance_generated_at": null
         },
         "mismatches": []
       }
     }
   },
   "runtime_gate_summary": {
-    "generated_at": "2026-03-11T07:12:19.414Z",
-    "projection_freshness_status": "fail",
+    "generated_at": "2026-03-13T00:12:55.634Z",
+    "projection_freshness_status": "pass",
     "stage_gates": {
       "shadow_to_web_cutover": "fail",
       "web_cutover_to_json_demotion": "fail"
@@ -173,11 +232,13 @@
     "summary_lines": [
       "api latency: needs_review (worst p95=1148.96ms)",
       "api error rate: needs_review (error rate=0)",
-      "projection freshness: fail (lag=3319.33m)",
-      "worker cadence: fail (failure rate=n/a)",
+      "projection freshness: pass (lag=2.13m)",
+      "worker cadence: fail (cadence_status=scheduled_evidence_missing, missed_windows=7)",
       "parity dependency: fail",
       "shadow dependency: fail",
       "historical catalog completeness dependency: fail",
+      "critical null coverage dependency: fail",
+      "same-day release acceptance dependency: pass",
       "bundle consistency: pass",
       "shadow -> web cutover gate: fail",
       "web cutover -> JSON demotion gate: fail"
@@ -189,8 +250,8 @@
     "upcoming sync: pass",
     "projection rows: pass",
     "projection after sync: pass",
-    "artifact freshness: pass (55.33h old)",
+    "artifact freshness: pass (0.04h old)",
     "target binding: pass (production -> production)",
-    "bundle consistency: pass (post-sync-verification-2ae8b97863c3)"
+    "bundle consistency: pass (post-sync-verification-a09976359f4a)"
   ]
 }

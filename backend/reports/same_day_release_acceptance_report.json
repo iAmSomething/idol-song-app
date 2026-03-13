@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-12T13:11:24.233Z",
-  "reference_date": "2026-03-12",
+  "generated_at": "2026-03-13T00:12:46.726Z",
+  "reference_date": "2026-03-13",
   "overall_status": "pass",
   "summary_lines": [
     "YENA same-day suppression: pass",
@@ -69,7 +69,7 @@
         "stream": "album",
         "release_kind": "ep",
         "release_format": "ep",
-        "source": null,
+        "source": "https://musicbrainz.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d",
         "delta_days": 0
       },
       "matched_detail": {
@@ -156,12 +156,12 @@
           "stream": "album",
           "release_kind": "ep",
           "release_format": "ep",
-          "source": null,
+          "source": "https://musicbrainz.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d",
           "delta_days": 0
         }
       ]
     }
   ],
-  "failure_update_markdown": "## same-day acceptance status\n- reference date: 2026-03-12\n- status: PASS\n- note: YENA suppression and P1Harmony acceptance are both green.",
+  "failure_update_markdown": "## same-day acceptance status\n- reference date: 2026-03-13\n- status: PASS\n- note: YENA suppression and P1Harmony acceptance are both green.",
   "data_source": "database"
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-12T02:34:26.997Z",
+  "generated_at": "2026-03-13T00:10:53.464Z",
   "summary_lines": [
     "entities=117",
     "field_rows=194",
@@ -50,7 +50,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -101,7 +101,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -117,7 +117,7 @@
       "high_impact": true,
       "entity_cohort": "latest",
       "latest_release_date": "2026-02-20",
-      "has_active_upcoming": true,
+      "has_active_upcoming": false,
       "missing_fields": [
         "entities.representative_image"
       ],
@@ -126,7 +126,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -152,7 +152,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -178,7 +178,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -203,7 +203,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -229,7 +229,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -255,7 +255,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -281,7 +281,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -308,7 +308,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -335,7 +335,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -388,7 +388,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -496,7 +496,7 @@
       "high_impact": true,
       "entity_cohort": "latest",
       "latest_release_date": "2026-02-06",
-      "has_active_upcoming": true,
+      "has_active_upcoming": false,
       "missing_fields": [
         "entities.debut_year"
       ],
@@ -542,7 +542,7 @@
       "high_impact": true,
       "entity_cohort": "latest",
       "latest_release_date": "2026-02-27",
-      "has_active_upcoming": true,
+      "has_active_upcoming": false,
       "missing_fields": [
         "entities.debut_year"
       ],
@@ -1051,8 +1051,8 @@
       "priority_tier": "tier_1",
       "high_impact": true,
       "entity_cohort": "latest",
-      "latest_release_date": "2025-09-26",
-      "has_active_upcoming": true,
+      "latest_release_date": "2026-03-12",
+      "has_active_upcoming": false,
       "missing_fields": [
         "entities.debut_year"
       ],
@@ -1524,7 +1524,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": false,
         "official_instagram": false
       },
@@ -1550,7 +1550,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1576,7 +1576,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1601,7 +1601,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": false,
         "official_instagram": false
       },
@@ -1627,7 +1627,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1653,7 +1653,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1680,7 +1680,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1707,7 +1707,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1733,7 +1733,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1759,7 +1759,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1785,7 +1785,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1838,7 +1838,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1891,7 +1891,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -1917,7 +1917,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": false,
         "official_instagram": false
       },
@@ -1968,7 +1968,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },
@@ -2878,7 +2878,7 @@
       ],
       "candidate_sources_available": {
         "representative_image": false,
-        "official_youtube": false,
+        "official_youtube": true,
         "official_x": true,
         "official_instagram": true
       },

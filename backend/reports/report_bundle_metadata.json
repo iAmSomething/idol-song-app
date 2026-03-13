@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-12T11:01:20.619Z",
-  "bundle_id": "post-sync-verification-2675934e9846",
+  "generated_at": "2026-03-13T00:12:46.985Z",
+  "bundle_id": "post-sync-verification-a09976359f4a",
   "bundle_kind": "post-sync-verification",
   "cadence_profile": "daily-upcoming",
   "source": {
@@ -12,7 +12,7 @@
   "source_reports": {
     "release_pipeline_sync": {
       "path": "reports/release_pipeline_db_sync_summary.json",
-      "generated_at": "2026-03-11T18:13:37.531Z",
+      "generated_at": "2026-03-12T12:35:42.357Z",
       "scope": "release_pipeline"
     },
     "upcoming_pipeline_sync": {
@@ -22,7 +22,7 @@
     },
     "projection_refresh": {
       "path": "reports/projection_refresh_summary.json",
-      "generated_at": "2026-03-12T08:03:06.277Z"
+      "generated_at": "2026-03-13T00:10:47.902Z"
     },
     "historical_coverage": {
       "path": "reports/historical_release_detail_coverage_report.json",
@@ -30,42 +30,42 @@
     },
     "canonical_null_coverage": {
       "path": "reports/canonical_null_coverage_report.json",
-      "generated_at": "2026-03-12T10:09:25.569Z"
+      "generated_at": "2026-03-13T00:10:50.480Z"
     },
     "canonical_null_recheck_queue": {
       "path": "reports/canonical_null_recheck_queue.json",
-      "generated_at": "2026-03-12T02:34:25.223Z",
-      "queue_count": 2388
+      "generated_at": "2026-03-13T00:10:51.777Z",
+      "queue_count": 2386
     },
     "null_coverage_trend": {
       "path": "reports/null_coverage_trend_report.json",
-      "generated_at": "2026-03-12T02:34:25.709Z",
+      "generated_at": "2026-03-13T00:10:52.201Z",
       "baseline_available": true
     },
     "worker_cadence": {
       "path": "reports/worker_cadence_report.json",
-      "generated_at": "2026-03-12T08:28:07.937Z",
+      "generated_at": "2026-03-13T00:10:49.273Z",
       "primary_path_key": "daily_upcoming"
     },
     "workflow_schedule_diagnostics": {
       "path": "reports/workflow_schedule_diagnostics.json",
-      "generated_at": "2026-03-12T08:28:07.937Z",
+      "generated_at": "2026-03-13T00:10:49.273Z",
       "hint_count": 1,
-      "workflow_count": 2
+      "workflow_count": 3
     },
     "service_link_gap_queues": {
       "path": "reports/service_link_gap_queues.json",
-      "generated_at": "2026-03-12T02:34:26.993Z",
-      "total": 3979
+      "generated_at": "2026-03-13T00:10:53.460Z",
+      "total": 3980
     },
     "title_track_gap_queue": {
       "path": "reports/title_track_gap_queue.json",
-      "generated_at": "2026-03-12T02:34:26.996Z",
-      "total": 576
+      "generated_at": "2026-03-13T00:10:53.463Z",
+      "total": 574
     },
     "entity_identity_workbench": {
       "path": "reports/entity_identity_workbench.json",
-      "generated_at": "2026-03-12T02:34:26.997Z",
+      "generated_at": "2026-03-13T00:10:53.464Z",
       "entities": 117,
       "field_rows": 194
     },
@@ -82,13 +82,13 @@
     },
     "same_day_release_acceptance": {
       "path": "reports/same_day_release_acceptance_report.json",
-      "generated_at": "2026-03-12T11:01:15.594Z",
-      "overall_status": "fail",
+      "generated_at": "2026-03-13T00:12:46.726Z",
+      "overall_status": "pass",
       "fixture_count": 2
     }
   },
   "summary_lines": [
-    "bundle id: post-sync-verification-2675934e9846",
+    "bundle id: post-sync-verification-a09976359f4a",
     "bundle kind: post-sync-verification",
     "cadence profile: daily-upcoming",
     "workflow: manual"
