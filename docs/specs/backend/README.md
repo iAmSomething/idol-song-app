@@ -94,7 +94,7 @@
 29. scoped blocker rerun note
    - `build_release_details_musicbrainz.py --cohorts latest,recent` 로 latest/recent row만 재계산할 수 있다
    - full snapshot은 유지하고 review queue / coverage report만 같은 execution scope로 다시 만든다
-   - 긴 rerun은 `--max-rows` 와 `--progress-every` 를 같이 써서 작은 batch로 확인한다
+   - 긴 rerun은 `--max-rows`, `--row-offset`, `--progress-every` 를 같이 써서 작은 batch를 이어서 확인한다
 
 ## 읽는 순서
 
