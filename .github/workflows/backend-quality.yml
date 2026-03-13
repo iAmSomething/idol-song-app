@@ -32,6 +32,10 @@ jobs:
         working-directory: backend
         run: npm ci
 
+      - name: Verify Railway runtime build config
+        working-directory: backend
+        run: npm run runtime:config:verify
+
       - name: Verify workflow condition guards
         working-directory: backend
         run: npm run workflow:verify

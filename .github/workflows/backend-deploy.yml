@@ -48,6 +48,10 @@ jobs:
         working-directory: backend
         run: npm ci
 
+      - name: Verify Railway runtime build config
+        working-directory: backend
+        run: npm run runtime:config:verify
+
       - name: Resolve preview backend public URL
         id: resolve_preview_backend_public_url
         working-directory: backend
@@ -174,6 +178,10 @@ jobs:
       - name: Install backend dependencies
         working-directory: backend
         run: npm ci
+
+      - name: Verify Railway runtime build config
+        working-directory: backend
+        run: npm run runtime:config:verify
 
       - name: Sync production runtime env to Railway
         working-directory: backend
