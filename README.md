@@ -251,6 +251,7 @@ scheduled automation도 cadence를 둘로 나눠서 운영한다.
 - upcoming dual-write report: `backend/reports/upcoming_pipeline_db_sync_summary.json`
 - projection refresh report: `backend/reports/projection_refresh_summary.json`
 - worker cadence topology report: `backend/reports/worker_cadence_report.json`
+- Android Firebase production config: `mobile/firebase/google-services.production.json`
 - canonical null coverage report: `backend/reports/canonical_null_coverage_report.json`
 - canonical null recheck queue: `backend/reports/canonical_null_recheck_queue.json`
 - null coverage trend report: `backend/reports/null_coverage_trend_report.json`

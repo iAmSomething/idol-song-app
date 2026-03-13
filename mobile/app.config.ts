@@ -1,3 +1,6 @@
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+
 import type { ExpoConfig, ConfigContext } from 'expo/config';
 
 type MobileProfile = 'development' | 'preview' | 'production';
@@ -24,6 +27,10 @@ type ProfileConfig = {
 type NativeIosConfig = {
   bundleIdentifier: string;
   appleTeamId: string | null;
+};
+
+type AndroidFirebaseConfig = {
+  googleServicesFile: string | null;
 };
 
 type RuntimeConfig = {
@@ -196,6 +203,29 @@ function resolveNativeIosConfig(profileConfig: ProfileConfig, env: EnvMap): Nati
   };
 }
 
+function resolveAndroidFirebaseConfig(profile: MobileProfile, env: EnvMap): AndroidFirebaseConfig {
+  const overridePath = optionalString(env.EXPO_ANDROID_GOOGLE_SERVICES_FILE);
+  const defaultRelativePath = profile === 'production' ? './firebase/google-services.production.json' : null;
+  const configuredPath = overridePath ?? defaultRelativePath;
+
+  if (!configuredPath) {
+    return {
+      googleServicesFile: null,
+    };
+  }
+
+  const absolutePath = resolve(__dirname, configuredPath);
+  if (!existsSync(absolutePath)) {
+    return {
+      googleServicesFile: null,
+    };
+  }
+
+  return {
+    googleServicesFile: configuredPath,
+  };
+}
+
 function buildRuntimeConfig(profile: MobileProfile, profileConfig: ProfileConfig, env: EnvMap): RuntimeConfig {
   const apiBaseUrl = assertHttpUrl(optionalString(env.EXPO_PUBLIC_API_BASE_URL), 'EXPO_PUBLIC_API_BASE_URL');
   const analyticsWriteKey = optionalString(env.EXPO_PUBLIC_ANALYTICS_WRITE_KEY);
@@ -251,6 +281,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   const profileConfig = PROFILE_CONFIG[profile];
   const runtimeConfig = buildRuntimeConfig(profile, profileConfig, process.env);
   const nativeIosConfig = resolveNativeIosConfig(profileConfig, process.env);
+  const androidFirebaseConfig = resolveAndroidFirebaseConfig(profile, process.env);
 
   return {
     ...config,
@@ -282,6 +313,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     android: {
       predictiveBackGestureEnabled: false,
       package: profileConfig.androidPackage,
+      ...(androidFirebaseConfig.googleServicesFile
+        ? {
+            googleServicesFile: androidFirebaseConfig.googleServicesFile,
+          }
+        : {}),
       adaptiveIcon: {
         foregroundImage: './assets/app-icon/icon-adaptive-foreground.png',
         monochromeImage: './assets/app-icon/icon-adaptive-monochrome.png',
