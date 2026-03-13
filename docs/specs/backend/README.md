@@ -97,6 +97,10 @@
    - `run_title_track_backfill_batch_loop.py --cohorts latest,recent --batch-size 25 --min-batch-size 10` 로 latest/recent unresolved title-track row를 timeout-adaptive batch loop로 밀 수 있다
    - full snapshot은 유지하고 review queue / coverage report만 같은 execution scope로 다시 만든다
    - 긴 rerun은 `--max-rows`, `--row-offset`, `--progress-every`, `--request-timeout`, `--command-timeout-seconds` 를 같이 써서 작은 batch를 이어서 확인한다
+30. official social survey inventory note
+   - `build_official_social_survey_inventory.py` 로 tracked entity의 `official_x / official_instagram / official_youtube` 상태를 일괄 분류한다
+   - 산출물은 `backend/reports/official_social_survey_inventory.{json,csv,md}` 와 `backend/reports/official_social_survey_workbench.json`
+   - `survey_ready / partially_ready / missing_handle` 기준으로 all-team social survey source list와 follow-up 대상을 같이 남긴다
 
 ## 읽는 순서
 
