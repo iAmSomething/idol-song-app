@@ -2,7 +2,7 @@ import * as Linking from 'expo-linking';
 
 export type MusicService = 'spotify' | 'youtubeMusic' | 'youtubeMv';
 export type ServiceHandoffMode = 'canonical' | 'searchFallback';
-export type ServiceHandoffTarget = 'primary' | 'browserFallback';
+export type ServiceHandoffTarget = 'app' | 'primary' | 'browserFallback';
 export type ServiceHandoffFailureCode = 'handoff_unavailable' | 'handoff_open_failed';
 export type XSearchHandoffTarget = 'app' | 'web';
 export type XSearchQueryMode = 'entity_only' | 'release_backed';
@@ -11,6 +11,7 @@ export type ServiceHandoffResolution = {
   service: MusicService;
   mode: ServiceHandoffMode;
   query: string;
+  appUrls: string[];
   primaryUrl: string;
   browserFallbackUrl: string | null;
   searchFallbackUrl: string;
@@ -315,6 +316,70 @@ function normalizeBrowserFallbackUrl(service: MusicService, value: string | null
   return normalizeCanonicalServiceUrl(service, value);
 }
 
+function buildSpotifyAppUrls(primaryUrl: string, query: string): string[] {
+  const urls = new Set<string>();
+  const parsed = tryParseUrl(primaryUrl);
+
+  if (parsed?.hostname === 'open.spotify.com') {
+    const [kind, id] = parsed.pathname.split('/').filter(Boolean);
+    if (kind && id) {
+      urls.add(`spotify:${kind}:${id}`);
+    }
+  }
+
+  if (query) {
+    urls.add(`spotify:search:${encodeURIComponent(query)}`);
+  }
+
+  return [...urls];
+}
+
+function buildYoutubeMusicAppUrls(primaryUrl: string, query: string): string[] {
+  const urls = new Set<string>();
+  const parsed = tryParseUrl(primaryUrl);
+
+  if (parsed) {
+    urls.add(`youtubemusic://${parsed.host}${parsed.pathname}${parsed.search}`);
+    urls.add(`ytmusic://${parsed.host}${parsed.pathname}${parsed.search}`);
+  }
+
+  if (query) {
+    const searchPath = `/search?q=${encodeURIComponent(query)}`;
+    urls.add(`youtubemusic://music.youtube.com${searchPath}`);
+    urls.add(`ytmusic://music.youtube.com${searchPath}`);
+  }
+
+  return [...urls];
+}
+
+function buildYoutubeAppUrls(primaryUrl: string, query: string): string[] {
+  const urls = new Set<string>();
+  const videoId = extractYouTubeVideoId(primaryUrl);
+
+  if (videoId) {
+    urls.add(`youtube://www.youtube.com/watch?v=${videoId}`);
+  }
+
+  if (query) {
+    urls.add(`youtube://www.youtube.com/results?search_query=${encodeURIComponent(`${query} official mv`)}`);
+  }
+
+  return [...urls];
+}
+
+function buildServiceAppUrls(service: MusicService, primaryUrl: string, query: string): string[] {
+  switch (service) {
+    case 'spotify':
+      return buildSpotifyAppUrls(primaryUrl, query);
+    case 'youtubeMusic':
+      return buildYoutubeMusicAppUrls(primaryUrl, query);
+    case 'youtubeMv':
+      return buildYoutubeAppUrls(primaryUrl, query);
+    default:
+      return [];
+  }
+}
+
 export function resolveServiceHandoff(input: {
   service: MusicService;
   query: string;
@@ -331,6 +396,7 @@ export function resolveServiceHandoff(input: {
       service: input.service,
       mode: 'canonical',
       query,
+      appUrls: buildServiceAppUrls(input.service, canonicalUrl, query),
       primaryUrl: canonicalUrl,
       browserFallbackUrl:
         browserFallbackUrl && browserFallbackUrl !== canonicalUrl ? browserFallbackUrl : searchFallbackUrl,
@@ -358,6 +424,7 @@ export function resolveServiceHandoff(input: {
     service: input.service,
     mode: 'searchFallback',
     query,
+    appUrls: buildServiceAppUrls(input.service, searchFallbackUrl, query),
     primaryUrl: searchFallbackUrl,
     browserFallbackUrl: browserFallbackUrl && browserFallbackUrl !== searchFallbackUrl ? browserFallbackUrl : null,
     searchFallbackUrl,
@@ -409,6 +476,7 @@ export async function openServiceHandoff(
 
   const resolvedHandoff: ServiceHandoffResolution = handoff;
   const attempts: { target: ServiceHandoffTarget; url: string }[] = [
+    ...resolvedHandoff.appUrls.map((url) => ({ target: 'app' as const, url })),
     { target: 'primary', url: resolvedHandoff.primaryUrl },
   ];
 

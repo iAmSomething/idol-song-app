@@ -162,9 +162,10 @@ function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     dayCell: {
       flex: 1,
-      minHeight: 96,
-      gap: theme.space[8],
-      padding: theme.space[8],
+      minHeight: 88,
+      gap: theme.space[4],
+      paddingHorizontal: theme.space[8],
+      paddingVertical: theme.space[4],
       borderRadius: theme.radius.card,
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
@@ -190,6 +191,8 @@ function createStyles(theme: MobileTheme) {
       ...theme.typography.cardTitle,
       color: theme.colors.text.primary,
       flexShrink: 1,
+      fontSize: 18,
+      lineHeight: 22,
     },
     dayNumberSelected: {
       color: theme.colors.text.brand,
@@ -201,11 +204,11 @@ function createStyles(theme: MobileTheme) {
       alignItems: 'center',
     },
     badgePill: {
-      minHeight: 24,
-      minWidth: 24,
+      minHeight: 22,
+      minWidth: 22,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingHorizontal: theme.space[8],
+      paddingHorizontal: theme.space[4],
       borderRadius: theme.radius.chip,
     },
     badgeText: {

@@ -90,7 +90,7 @@ function ServiceButtonComponent({
               fadeDuration={0}
               onError={() => setIconLoadFailed(true)}
               source={serviceIconSource}
-              style={[styles.markIcon, styles[`${resolvedService}MarkIcon`]]}
+              style={styles.markIcon}
               testID={testID ? `${testID}-icon` : undefined}
             />
           )}
@@ -156,15 +156,15 @@ function createStyles(theme: MobileTheme) {
       textAlign: 'center',
     },
     mark: {
-      width: 24,
-      height: 24,
+      width: 28,
+      height: 28,
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 12,
+      borderRadius: 14,
     },
     markIcon: {
-      width: 14,
-      height: 14,
+      width: 18,
+      height: 18,
       resizeMode: 'contain',
     },
     markFallbackGlyph: {
@@ -185,9 +185,6 @@ function createStyles(theme: MobileTheme) {
     spotifyMark: {
       backgroundColor: theme.colors.service.spotify.icon,
     },
-    spotifyMarkIcon: {
-      tintColor: theme.colors.text.inverse,
-    },
     spotifyMarkFallbackGlyph: {
       color: theme.colors.text.inverse,
     },
@@ -201,9 +198,6 @@ function createStyles(theme: MobileTheme) {
     youtubeMusicMark: {
       backgroundColor: theme.colors.service.youtubeMusic.icon,
     },
-    youtubeMusicMarkIcon: {
-      tintColor: theme.colors.text.inverse,
-    },
     youtubeMusicMarkFallbackGlyph: {
       color: theme.colors.text.inverse,
     },
@@ -216,9 +210,6 @@ function createStyles(theme: MobileTheme) {
     },
     youtubeMvMark: {
       backgroundColor: theme.colors.service.youtubeMv.icon,
-    },
-    youtubeMvMarkIcon: {
-      tintColor: theme.colors.text.inverse,
     },
     youtubeMvMarkFallbackGlyph: {
       color: theme.colors.text.inverse,

@@ -539,6 +539,7 @@ export default function CalendarTabScreen() {
   }
 
   function openReleaseDetail(releaseId: string) {
+    setIsSheetOpen(false);
     router.push({
       pathname: '/releases/[id]',
       params: { id: releaseId },
@@ -550,6 +551,7 @@ export default function CalendarTabScreen() {
       return;
     }
 
+    setIsSheetOpen(false);
     router.push({
       pathname: '/artists/[slug]',
       params: { slug: group },
