@@ -883,6 +883,12 @@ export default function CalendarTabScreen() {
         value: '정확한 날짜 없음',
         detail: '없음',
       };
+  const nearestUpcomingSummaryValue = filteredSnapshot.nearestUpcoming
+    ? nearestUpcomingItem.detail
+    : '없음';
+  const nearestUpcomingSummaryDetail = filteredSnapshot.nearestUpcoming
+    ? nearestUpcomingItem.value
+    : '정확한 날짜 없음';
   const runtimeRetryAction = datasetRiskDisclosure ? (
     <ActionButton
       accessibilityLabel="라이브 캘린더 데이터 다시 시도"
@@ -897,7 +903,6 @@ export default function CalendarTabScreen() {
     <>
       <ScrollView contentContainerStyle={scrollContentStyle} style={styles.screen}>
         <TonalPanel
-          body={`${formatShortDateLabel(todayIsoDate)} · ${formatFilterLabel(filterMode)}`}
           eyebrow="월간 탐색"
           footer={
             <SummaryStrip
@@ -907,24 +912,63 @@ export default function CalendarTabScreen() {
                 { key: 'upcoming-count', label: MOBILE_COPY.summary.upcoming, value: filteredSnapshot.upcomingCount },
                 {
                   key: 'nearest-upcoming',
-                  kind: 'focus',
                   label: MOBILE_COPY.summary.nearestUpcoming,
-                  value: nearestUpcomingItem.value,
-                  detail: nearestUpcomingItem.detail,
+                  value: nearestUpcomingSummaryValue,
+                  detail: nearestUpcomingSummaryDetail,
                 },
               ]}
-              layout="wrap"
+              layout={largeTextMode ? 'wrap' : 'horizontal'}
               testID="calendar-summary-strip"
             />
           }
           testID="calendar-header-panel"
-          title={formatMonthLabel(filteredSnapshot.month)}
-          titleMaxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
-          titleTestID="calendar-month-title"
           tone="accent"
         >
+          <View style={styles.monthCluster}>
+            <View style={styles.monthHeaderRow}>
+              <View style={styles.monthTitleStack}>
+                <Text
+                  accessibilityRole="header"
+                  allowFontScaling
+                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle}
+                  numberOfLines={1}
+                  style={[styles.monthTitle, styles.monthTitleCompact]}
+                  testID="calendar-month-title"
+                >
+                  {formatMonthLabel(filteredSnapshot.month)}
+                </Text>
+                <Text
+                  allowFontScaling
+                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+                  numberOfLines={1}
+                  style={styles.monthSubtitle}
+                >
+                  현재 필터 · {formatFilterLabel(filterMode)}
+                </Text>
+              </View>
+              <View style={styles.todayPill}>
+                <Text
+                  allowFontScaling
+                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
+                  numberOfLines={1}
+                  style={styles.todayPillLabel}
+                >
+                  오늘
+                </Text>
+                <Text
+                  allowFontScaling
+                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+                  numberOfLines={1}
+                  style={styles.todayPillValue}
+                >
+                  {formatShortDateLabel(todayIsoDate)}
+                </Text>
+              </View>
+            </View>
+          </View>
           <View style={styles.headerControlsStack} testID="calendar-app-bar">
             <SegmentedControl
+              density="compact"
               items={[
                 { key: 'calendar', label: '캘린더' },
                 { key: 'list', label: '리스트' },
@@ -1018,6 +1062,7 @@ export default function CalendarTabScreen() {
                   style={({ pressed }) => [
                     styles.headerButton,
                     styles.headerButtonCompact,
+                    !largeTextMode ? styles.headerButtonIconOnly : null,
                     largeTextMode ? styles.headerButtonLargeText : null,
                     pressed ? styles.headerButtonPressed : null,
                   ]}
@@ -1025,14 +1070,16 @@ export default function CalendarTabScreen() {
                 >
                   <View style={styles.headerButtonContentCompact}>
                     <MaterialCommunityIcons color={theme.colors.text.secondary} name="magnify" size={16} />
-                    <Text
-                      allowFontScaling
-                      maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                      numberOfLines={1}
-                      style={styles.headerButtonLabel}
-                    >
-                      검색
-                    </Text>
+                    {largeTextMode ? (
+                      <Text
+                        allowFontScaling
+                        maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                        numberOfLines={1}
+                        style={styles.headerButtonLabel}
+                      >
+                        검색
+                      </Text>
+                    ) : null}
                   </View>
                 </Pressable>
                 <Pressable
@@ -1043,6 +1090,7 @@ export default function CalendarTabScreen() {
                   style={({ pressed }) => [
                     styles.headerButton,
                     styles.headerButtonCompact,
+                    !largeTextMode ? styles.headerButtonIconOnly : null,
                     largeTextMode ? styles.headerButtonLargeText : null,
                     filterMode !== 'all' ? styles.headerButtonActive : null,
                     pressed ? styles.headerButtonPressed : null,
@@ -1055,17 +1103,19 @@ export default function CalendarTabScreen() {
                       name="tune-variant"
                       size={16}
                     />
-                    <Text
-                      allowFontScaling
-                      maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                      numberOfLines={1}
-                      style={[
-                        styles.headerButtonLabel,
-                        filterMode !== 'all' ? styles.headerButtonLabelActive : null,
-                      ]}
-                    >
-                      필터
-                    </Text>
+                    {largeTextMode ? (
+                      <Text
+                        allowFontScaling
+                        maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                        numberOfLines={1}
+                        style={[
+                          styles.headerButtonLabel,
+                          filterMode !== 'all' ? styles.headerButtonLabelActive : null,
+                        ]}
+                      >
+                        필터
+                      </Text>
+                    ) : null}
                   </View>
                 </Pressable>
                 <Pressable
@@ -1075,6 +1125,7 @@ export default function CalendarTabScreen() {
                   style={({ pressed }) => [
                     styles.headerButton,
                     styles.headerButtonCompact,
+                    !largeTextMode ? styles.headerButtonIconOnly : null,
                     largeTextMode ? styles.headerButtonLargeText : null,
                     pressed ? styles.headerButtonPressed : null,
                   ]}
@@ -1082,14 +1133,16 @@ export default function CalendarTabScreen() {
                 >
                   <View style={styles.headerButtonContentCompact}>
                     <MaterialCommunityIcons color={theme.colors.text.secondary} name="bell-outline" size={16} />
-                    <Text
-                      allowFontScaling
-                      maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                      numberOfLines={1}
-                      style={styles.headerButtonLabel}
-                    >
-                      알림
-                    </Text>
+                    {largeTextMode ? (
+                      <Text
+                        allowFontScaling
+                        maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                        numberOfLines={1}
+                        style={styles.headerButtonLabel}
+                      >
+                        알림
+                      </Text>
+                    ) : null}
                   </View>
                 </Pressable>
               </View>
@@ -1327,18 +1380,28 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       gap: theme.space[8],
     },
     headerControlsStack: {
-      gap: 8,
+      gap: theme.space[4],
     },
     headerBar: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       alignItems: 'center',
       justifyContent: 'space-between',
-      gap: theme.space[8],
+      gap: theme.space[4],
     },
     monthCluster: {
       width: '100%',
-      gap: 6,
+      gap: theme.space[4],
+    },
+    monthHeaderRow: {
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      justifyContent: 'space-between',
+      gap: theme.space[8],
+    },
+    monthTitleStack: {
+      flex: 1,
+      gap: 4,
     },
     monthTitle: {
       ...screenTitleTypography,
@@ -1349,10 +1412,36 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       fontWeight: theme.typography.sectionTitle.fontWeight,
       letterSpacing: theme.typography.sectionTitle.letterSpacing,
     },
+    monthSubtitle: {
+      ...bodyTypography,
+      color: theme.colors.text.secondary,
+      fontSize: theme.typography.meta.fontSize,
+    },
+    todayPill: {
+      minWidth: 92,
+      paddingHorizontal: theme.space[8],
+      paddingVertical: theme.space[8],
+      borderRadius: theme.radius.sheet,
+      backgroundColor: theme.colors.surface.elevated,
+      borderWidth: 1,
+      borderColor: theme.colors.border.subtle,
+      gap: 2,
+      alignItems: 'flex-end',
+    },
+    todayPillLabel: {
+      ...metaTypography,
+      color: theme.colors.text.tertiary,
+      textTransform: 'uppercase',
+    },
+    todayPillValue: {
+      ...metaTypography,
+      color: theme.colors.text.primary,
+      fontWeight: '700',
+    },
     monthNav: {
       flexDirection: 'row',
       flexWrap: 'nowrap',
-      gap: theme.space[8],
+      gap: theme.space[4],
       alignItems: 'center',
       flexShrink: 1,
     },
@@ -1365,15 +1454,15 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     trailingActions: {
       flexDirection: 'row',
       flexWrap: 'wrap',
-      gap: theme.space[8],
+      gap: theme.space[4],
       justifyContent: 'flex-end',
       maxWidth: '100%',
       flexGrow: 1,
     },
     headerButton: {
-      minHeight: 38,
+      minHeight: 36,
       justifyContent: 'center',
-      paddingHorizontal: theme.space[12],
+      paddingHorizontal: theme.space[8],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.chip,
       backgroundColor: theme.colors.surface.elevated,
@@ -1381,15 +1470,20 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       borderColor: theme.colors.border.subtle,
     },
     headerIconButton: {
-      width: 38,
-      minWidth: 38,
+      width: 36,
+      minWidth: 36,
       paddingHorizontal: 0,
       alignItems: 'center',
     },
     headerButtonCompact: {
-      minHeight: 36,
-      paddingHorizontal: theme.space[12],
+      minHeight: 34,
+      paddingHorizontal: theme.space[8],
       paddingVertical: theme.space[4],
+    },
+    headerButtonIconOnly: {
+      width: 34,
+      minWidth: 34,
+      paddingHorizontal: 0,
     },
     headerButtonActive: {
       backgroundColor: theme.colors.surface.interactive,
@@ -1413,7 +1507,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: theme.space[8],
+      gap: theme.space[4],
     },
     headerButtonLabel: {
       ...buttonServiceTypography,
