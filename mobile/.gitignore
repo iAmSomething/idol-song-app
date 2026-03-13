@@ -50,3 +50,4 @@ coverage/
 !/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.release.xcconfig
 !/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.shared.xcconfig
 !/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.signing.local.example.xcconfig
+!/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.production.signing.local.example.xcconfig

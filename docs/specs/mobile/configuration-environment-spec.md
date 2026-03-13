@@ -53,6 +53,20 @@
 - local xcconfig는 machine-local override만 담고 git에 커밋하지 않는다.
 - `expo prebuild --clean` 또는 `expo run:ios`를 다시 돌릴 때도 같은 `EXPO_IOS_*` 값이 들어가야 native regeneration과 checked-in project가 같은 identifier를 유지한다.
 
+## 7.1.1 Canonical iOS install path
+- 실제 사용자 설치/배포 기준은 preview dev launcher가 아니라 `production` release build다.
+- iOS에서 canonical path는 아래 둘 중 하나다.
+  - `npm run ios -- --device ... --team-id ...`
+  - `xcodebuild archive` 기반 production archive 생성
+- repo 기본 CLI alias도 production install을 가리켜야 한다.
+  - `npm run ios` => production release install
+  - preview/dev client는 explicit QA 명령으로만 진입
+- preview dev client는 QA와 회귀 재현 보조 수단이지, “실제 앱처럼 설치되는 경로”의 기준이 아니다.
+- production install/archive에는 아래 값이 고정돼야 한다.
+  - backend target: single live production backend
+  - bundle identifier: production 또는 personal-team override
+  - signing team: local override 또는 explicit env
+
 ## 7.2 Production backend and tunnel fallback
 - external iPhone/Android QA의 기본 경로는 single live production backend다.
 - mobile preview 예시 env는 `mobile/.env.preview.example`를 기준으로 둔다.

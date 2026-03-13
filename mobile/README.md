@@ -172,6 +172,72 @@ npm run config:preview
 npm run config:production
 ```
 
+## 실제 iPhone 앱 설치 / 배포 경로
+
+preview dev launcher가 아니라 실제 앱을 바로 열리는 형태로 검증하거나 배포하려면 production profile을 기준으로 움직인다.
+
+가장 짧은 기본 경로는 아래다.
+
+```bash
+cd mobile
+EXPO_PUBLIC_API_BASE_URL=https://idol-song-app-production.up.railway.app \
+npm run ios -- \
+  --device "김태훈의 iPhone" \
+  --team-id ABCDE12345 \
+  --bundle-id com.example.idolsongapp
+```
+
+- `npm run ios`는 이제 production release install alias다.
+- preview dev launcher를 열고 싶을 때만 `npm run ios:preview` 또는 `npm run ios:dev`를 명시적으로 사용한다.
+
+### 1. personal Apple team signing override 준비
+
+```bash
+cd mobile
+npm run ios:signing:prepare -- \
+  --team-id ABCDE12345 \
+  --bundle-id com.example.idolsongapp
+```
+
+기본 bundle id는 `com.anonymous.idolsongappmobile`이지만, personal team에서 충돌하면 자신이 소유한 reverse-DNS id로 바꿔 쓴다.
+
+### 2. 실제 iPhone에 production release build 설치
+
+```bash
+cd mobile
+EXPO_PUBLIC_API_BASE_URL=https://idol-song-app-production.up.railway.app \
+npm run ios -- \
+  --device "김태훈의 iPhone" \
+  --team-id ABCDE12345 \
+  --bundle-id com.example.idolsongapp
+```
+
+- 이 경로는 `Release` configuration을 사용한다.
+- dev launcher를 여는 preview runtime이 아니라, 앱 아이콘을 누르면 바로 기능 화면으로 들어가는 실제 앱 경로를 기준으로 삼는다.
+- 기본적으로 Metro는 띄우지 않는다.
+
+### 3. production archive 생성
+
+```bash
+cd mobile
+EXPO_PUBLIC_API_BASE_URL=https://idol-song-app-production.up.railway.app \
+npm run ios:archive -- \
+  --team-id ABCDE12345 \
+  --bundle-id com.example.idolsongapp \
+  --allow-provisioning-updates
+```
+
+- 결과 기본 경로: `mobile/ios/build/IdolSongAppProduction.xcarchive`
+- 이 archive는 Organizer/App Distribution/TestFlight 같은 후속 경로의 입력으로 쓴다.
+
+### 4. dry-run으로 명령만 확인
+
+```bash
+cd mobile
+npm run ios -- --dry-run --device "김태훈의 iPhone" --team-id ABCDE12345
+npm run ios:archive -- --dry-run --team-id ABCDE12345
+```
+
 preview QA runtime용 native prebuild / simulator 실행:
 
 ```bash
@@ -189,7 +255,7 @@ npm run qa:preview:ios:signing:prepare -- \
   --bundle-id com.example.idolsongapp.preview
 ```
 
-자세한 절차는 `docs/specs/mobile/ios-preview-signing-personal-team.md`를 따른다.
+자세한 절차는 `docs/specs/mobile/ios-preview-signing-personal-team.md`를 따른다. 다만 이 문서는 preview QA용이고, 실제 설치/배포 기준은 위 production 경로가 우선이다.
 
 iOS VoiceOver QA를 simulator preview runtime 위에서 토글하려면:
 
@@ -217,6 +283,8 @@ EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env production 
 ```
 
 참고:
+- user-facing install은 production release build를 canonical path로 본다.
+- preview dev client는 QA / accessibility / regression reproduction용 보조 경로다.
 - preview QA runtime은 Expo Go가 아니라 `expo-dev-client`가 포함된 standalone development build 기준으로 검증한다.
 - iOS VoiceOver helper는 booted simulator 안에 active preview runtime이 떠 있는 상태에서 쓰는 것을 전제로 한다. Expo launcher 상태에서 켜면 Apple onboarding overlay가 먼저 뜰 수 있다.
 - Android는 `android-commandlinetools`, `emulator`, `system-images;android-35;google_apis;arm64-v8a`, AVD 1개가 준비되어 있어야 한다.
