@@ -8,17 +8,21 @@ import { performance } from 'node:perf_hooks';
 const DEFAULT_TIMEOUT_MS = 5000;
 const DEFAULT_TARGET = 'preview';
 const DEFAULT_READY_STATUSES = ['ready', 'degraded'];
-const DEFAULT_REPORT_PATH = resolve(process.cwd(), './reports/live_backend_smoke_report.json');
 const DEFAULT_FIXTURES_PATH = resolve(process.cwd(), './fixtures/live_backend_smoke_fixtures.json');
 const VALID_STREAMS = new Set(['album', 'song']);
 const VALID_FIXTURE_SURFACES = new Set(['search', 'calendar_month', 'radar', 'entity_detail', 'release_detail']);
+
+function getDefaultReportPath(target) {
+  const normalizedTarget = typeof target === 'string' && target.trim().length > 0 ? target.trim() : DEFAULT_TARGET;
+  return resolve(process.cwd(), `./reports/live_backend_smoke_${normalizedTarget}.json`);
+}
 
 function parseArgs(argv) {
   const options = {
     baseUrl: null,
     target: DEFAULT_TARGET,
     timeoutMs: DEFAULT_TIMEOUT_MS,
-    reportPath: DEFAULT_REPORT_PATH,
+    reportPath: null,
     fixturesPath: DEFAULT_FIXTURES_PATH,
     allowReadyStatuses: [...DEFAULT_READY_STATUSES],
     skipReady: false,
@@ -46,7 +50,7 @@ function parseArgs(argv) {
     }
 
     if (value === '--report-path') {
-      options.reportPath = resolve(process.cwd(), argv[index + 1] ?? DEFAULT_REPORT_PATH);
+      options.reportPath = resolve(process.cwd(), argv[index + 1] ?? getDefaultReportPath(options.target));
       index += 1;
       continue;
     }
@@ -90,6 +94,7 @@ function parseArgs(argv) {
   return {
     ...options,
     baseUrl: options.baseUrl.replace(/\/+$/, ''),
+    reportPath: options.reportPath ?? getDefaultReportPath(options.target),
   };
 }
 
