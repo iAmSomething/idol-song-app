@@ -88,6 +88,7 @@ describe('mobile external handoff service', () => {
     }
 
     expect(handoff.mode).toBe('canonical');
+    expect(handoff.appUrls).toContain('spotify:album:12345');
     expect(handoff.primaryUrl).toBe('https://open.spotify.com/album/12345');
     expect(handoff.searchFallbackUrl).toBe('https://open.spotify.com/search/BLACKPINK%20DEADLINE');
     expect(handoff.browserFallbackUrl).toBe('https://open.spotify.com/search/BLACKPINK%20DEADLINE');
@@ -169,10 +170,10 @@ describe('mobile external handoff service', () => {
       ok: true,
       service: 'spotify',
       mode: 'canonical',
-      target: 'primary',
-      openedUrl: 'https://open.spotify.com/album/12345',
+      target: 'app',
+      openedUrl: 'spotify:album:12345',
     });
-    expect(opened).toEqual(['https://open.spotify.com/album/12345']);
+    expect(opened).toEqual(['spotify:album:12345']);
   });
 
   test('uses browser fallback when the primary target cannot be opened', async () => {

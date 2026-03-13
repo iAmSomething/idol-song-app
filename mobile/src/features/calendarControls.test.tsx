@@ -369,6 +369,7 @@ describe('calendar controls', () => {
       params: { id: 'yena--love-catcher--2026-03-11--album' },
     });
     expect(mockOpenXSearchHandoff).toHaveBeenCalled();
+    expect(tree.root.findAllByProps({ testID: 'calendar-bottom-sheet' })).toHaveLength(0);
   });
 
   test('renders list mode with separated verified, exact, and month-only sections', async () => {

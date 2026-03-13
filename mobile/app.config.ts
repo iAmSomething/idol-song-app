@@ -308,6 +308,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ios: {
       supportsTablet: true,
       bundleIdentifier: nativeIosConfig.bundleIdentifier,
+      infoPlist: {
+        LSApplicationQueriesSchemes: ['spotify', 'youtube', 'youtubemusic', 'ytmusic', 'twitter', 'x'],
+      },
       ...(nativeIosConfig.appleTeamId ? { appleTeamId: nativeIosConfig.appleTeamId } : {}),
     },
     android: {

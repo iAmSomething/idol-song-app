@@ -1155,6 +1155,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     singleAlbumCard: {
       flexDirection: 'row',
+      alignItems: 'center',
       gap: theme.space[12],
       padding: theme.space[12],
       borderRadius: theme.radius.card,
@@ -1162,7 +1163,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     singleAlbumArtwork: {
       width: 72,
-      aspectRatio: 1,
+      height: 72,
       borderRadius: theme.radius.button,
       alignItems: 'center',
       justifyContent: 'center',
@@ -1175,8 +1176,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
       justifyContent: 'center',
     },
     albumCard: {
-      width: '52%',
-      minWidth: 188,
+      width: 156,
+      flexShrink: 0,
       gap: theme.space[8],
       padding: theme.space[12],
       borderRadius: theme.radius.card,
@@ -1184,7 +1185,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     },
     albumArtwork: {
       width: '100%',
-      aspectRatio: 1,
+      height: 132,
       borderRadius: theme.radius.button,
       alignItems: 'center',
       justifyContent: 'center',
@@ -1194,6 +1195,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>) {
     albumArtworkImage: {
       width: '100%',
       height: '100%',
+      resizeMode: 'cover',
     },
     albumArtworkFallback: {
       fontSize: 22,
