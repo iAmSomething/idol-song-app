@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "364777074329",
+    "project_id": "idol-music-7094a",
+    "storage_bucket": "idol-music-7094a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364777074329:android:3c06d1a2c73a4a44c8d208",
+        "android_client_info": {
+          "package_name": "com.anonymous.idolsongappmobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAEWBzDBcltekl4fT_ldEnyMxsMKRaypg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

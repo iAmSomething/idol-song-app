@@ -243,6 +243,31 @@ cd mobile
 cp .env.preview.tunnel.example .env
 ```
 
+## Android Firebase config
+
+production Android Firebase app는 `com.anonymous.idolsongappmobile` 패키지를 기준으로 한다.
+
+- tracked config file:
+  - `mobile/firebase/google-services.production.json`
+- Expo config wiring:
+  - production profile에서 `android.googleServicesFile`로 자동 연결
+- package sanity check:
+
+```bash
+cd mobile
+npm run verify:firebase:android
+```
+
+production config가 실제로 Firebase file을 읽는지 확인하려면:
+
+```bash
+cd mobile
+EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env production --repo iAmSomething/idol-song-app)" npm run config:production
+```
+
+새 Firebase Android app config를 받으면 `mobile/firebase/google-services.production.json`만 교체하면 된다.
+preview/development package(`.preview`, `.dev`)를 Firebase까지 쓰려면 각 패키지명에 맞는 별도 Android app registration이 추가로 필요하다.
+
 ## external device backend baseline
 
 single live production backend를 쓰는 기본 경로:
