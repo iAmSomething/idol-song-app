@@ -21,7 +21,7 @@ export type MobileDebugMetadata = {
   apiHost: string | null;
   backendTargetLabel:
     | 'Missing backend target'
-    | 'Public preview backend'
+    | 'Live production backend'
     | 'Temporary tunnel backend'
     | 'Custom backend target';
   analyticsEnabled: boolean;
@@ -31,7 +31,7 @@ export type MobileDebugMetadata = {
   latestAnalyticsEvent: string | null;
 };
 
-const LEGACY_PUBLIC_PREVIEW_API_HOST = 'api.idol-song-app.example.com';
+const LEGACY_PUBLIC_API_HOST = 'api.idol-song-app.example.com';
 const TUNNEL_API_HOST_SUFFIXES = ['trycloudflare.com', 'ngrok-free.app', 'ngrok.io', 'loca.lt'] as const;
 
 function getBackendTargetLabel(apiBaseUrl: string | null): MobileDebugMetadata['backendTargetLabel'] {
@@ -44,12 +44,12 @@ function getBackendTargetLabel(apiBaseUrl: string | null): MobileDebugMetadata['
     return 'Temporary tunnel backend';
   }
 
-  if (host === LEGACY_PUBLIC_PREVIEW_API_HOST) {
-    return 'Public preview backend';
+  if (host === LEGACY_PUBLIC_API_HOST) {
+    return 'Live production backend';
   }
 
-  if (host.endsWith('.up.railway.app') && !host.includes('production')) {
-    return 'Public preview backend';
+  if (host.endsWith('.up.railway.app') && host.includes('production')) {
+    return 'Live production backend';
   }
 
   return 'Custom backend target';

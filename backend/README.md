@@ -308,7 +308,7 @@ preview에서 달라지면 안 되는 것:
 
 ## Temporary Tunnel Fallback For Mobile External QA
 
-stable public preview backend가 unavailable일 때만 임시 fallback으로 local backend를 HTTPS tunnel 뒤에 둔다.
+single live production backend가 unavailable일 때만 임시 fallback으로 local backend를 HTTPS tunnel 뒤에 둔다.
 
 예시:
 
@@ -330,7 +330,7 @@ cloudflared tunnel --url http://127.0.0.1:3213
 규칙:
 
 - tunnel은 임시 QA fallback일 뿐 production/preview deploy 대체가 아니다.
-- sign-off 기본 경로는 GitHub Environment `preview`의 `BACKEND_PUBLIC_URL`과 같은 stable public preview backend다.
+- sign-off 기본 경로는 GitHub Environment `production`의 `BACKEND_PUBLIC_URL`과 같은 live production backend다.
 - debug metadata에서 `Backend target = Temporary tunnel backend`를 확인해야 한다.
 
 ## Backend Deploy Path
