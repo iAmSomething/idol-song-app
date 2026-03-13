@@ -884,11 +884,11 @@ export default function CalendarTabScreen() {
         detail: '없음',
       };
   const nearestUpcomingSummaryValue = filteredSnapshot.nearestUpcoming
-    ? nearestUpcomingItem.detail
-    : '없음';
-  const nearestUpcomingSummaryDetail = filteredSnapshot.nearestUpcoming
     ? nearestUpcomingItem.value
     : '정확한 날짜 없음';
+  const nearestUpcomingSummaryDetail = filteredSnapshot.nearestUpcoming
+    ? nearestUpcomingItem.detail
+    : '없음';
   const runtimeRetryAction = datasetRiskDisclosure ? (
     <ActionButton
       accessibilityLabel="라이브 캘린더 데이터 다시 시도"
@@ -902,28 +902,7 @@ export default function CalendarTabScreen() {
   return (
     <>
       <ScrollView contentContainerStyle={scrollContentStyle} style={styles.screen}>
-        <TonalPanel
-          eyebrow="월간 탐색"
-          footer={
-            <SummaryStrip
-              density="compact"
-              items={[
-                { key: 'release-count', label: MOBILE_COPY.summary.monthRelease, value: filteredSnapshot.releaseCount },
-                { key: 'upcoming-count', label: MOBILE_COPY.summary.upcoming, value: filteredSnapshot.upcomingCount },
-                {
-                  key: 'nearest-upcoming',
-                  label: MOBILE_COPY.summary.nearestUpcoming,
-                  value: nearestUpcomingSummaryValue,
-                  detail: nearestUpcomingSummaryDetail,
-                },
-              ]}
-              layout={largeTextMode ? 'wrap' : 'horizontal'}
-              testID="calendar-summary-strip"
-            />
-          }
-          testID="calendar-header-panel"
-          tone="accent"
-        >
+        <View style={styles.headerPanel} testID="calendar-header-panel">
           <View style={styles.monthCluster}>
             <View style={styles.monthHeaderRow}>
               <View style={styles.monthTitleStack}>
@@ -946,24 +925,14 @@ export default function CalendarTabScreen() {
                   현재 필터 · {formatFilterLabel(filterMode)}
                 </Text>
               </View>
-              <View style={styles.todayPill}>
-                <Text
-                  allowFontScaling
-                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
-                  numberOfLines={1}
-                  style={styles.todayPillLabel}
-                >
-                  오늘
-                </Text>
-                <Text
-                  allowFontScaling
-                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
-                  numberOfLines={1}
-                  style={styles.todayPillValue}
-                >
-                  {formatShortDateLabel(todayIsoDate)}
-                </Text>
-              </View>
+              <Text
+                allowFontScaling
+                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
+                numberOfLines={1}
+                style={styles.todayInline}
+              >
+                오늘 {formatShortDateLabel(todayIsoDate)}
+              </Text>
             </View>
           </View>
           <View style={styles.headerControlsStack} testID="calendar-app-bar">
@@ -1121,7 +1090,23 @@ export default function CalendarTabScreen() {
               </View>
             </View>
           </View>
-        </TonalPanel>
+          <SummaryStrip
+            density="compact"
+            items={[
+              { key: 'release-count', label: MOBILE_COPY.summary.monthRelease, value: filteredSnapshot.releaseCount },
+              { key: 'upcoming-count', label: MOBILE_COPY.summary.upcoming, value: filteredSnapshot.upcomingCount },
+              {
+                key: 'nearest-upcoming',
+                kind: 'focus',
+                label: MOBILE_COPY.summary.nearestUpcoming,
+                value: nearestUpcomingSummaryValue,
+                detail: nearestUpcomingSummaryDetail,
+              },
+            ]}
+            layout={largeTextMode ? 'wrap' : 'horizontal'}
+            testID="calendar-summary-strip"
+          />
+        </View>
 
         {datasetRiskDisclosure ? (
           <TonalPanel
@@ -1346,6 +1331,12 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       flex: 1,
       backgroundColor: theme.colors.surface.base,
     },
+    headerPanel: {
+      gap: theme.space[12],
+      paddingHorizontal: 0,
+      paddingTop: theme.space[4],
+      paddingBottom: theme.space[4],
+    },
     content: {
       paddingHorizontal: theme.space[24],
       paddingTop: theme.space[24],
@@ -1353,7 +1344,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       gap: theme.space[8],
     },
     headerControlsStack: {
-      gap: theme.space[4],
+      gap: theme.space[8],
     },
     headerBar: {
       flexDirection: 'row',
@@ -1364,7 +1355,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     },
     monthCluster: {
       width: '100%',
-      gap: theme.space[4],
+      gap: theme.space[8],
     },
     monthHeaderRow: {
       flexDirection: 'row',
@@ -1374,7 +1365,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     },
     monthTitleStack: {
       flex: 1,
-      gap: 4,
+      gap: theme.space[4],
     },
     monthTitle: {
       ...screenTitleTypography,
@@ -1390,31 +1381,16 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       color: theme.colors.text.secondary,
       fontSize: theme.typography.meta.fontSize,
     },
-    todayPill: {
-      minWidth: 92,
-      paddingHorizontal: theme.space[8],
-      paddingVertical: theme.space[8],
-      borderRadius: theme.radius.sheet,
-      backgroundColor: theme.colors.surface.elevated,
-      borderWidth: 1,
-      borderColor: theme.colors.border.subtle,
-      gap: 2,
-      alignItems: 'flex-end',
-    },
-    todayPillLabel: {
+    todayInline: {
       ...metaTypography,
-      color: theme.colors.text.tertiary,
-      textTransform: 'uppercase',
-    },
-    todayPillValue: {
-      ...metaTypography,
-      color: theme.colors.text.primary,
+      color: theme.colors.text.secondary,
       fontWeight: '700',
+      paddingTop: theme.space[4],
     },
     monthNav: {
       flexDirection: 'row',
       flexWrap: 'nowrap',
-      gap: theme.space[4],
+      gap: theme.space[8],
       alignItems: 'center',
       flexShrink: 1,
     },
@@ -1427,18 +1403,18 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     trailingActions: {
       flexDirection: 'row',
       flexWrap: 'wrap',
-      gap: theme.space[4],
+      gap: theme.space[8],
       justifyContent: 'flex-end',
       maxWidth: '100%',
       flexGrow: 1,
     },
     headerButton: {
-      minHeight: 36,
+      minHeight: 34,
       justifyContent: 'center',
       paddingHorizontal: theme.space[8],
       paddingVertical: theme.space[8],
       borderRadius: theme.radius.chip,
-      backgroundColor: theme.colors.surface.elevated,
+      backgroundColor: theme.colors.surface.subtle,
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
     },

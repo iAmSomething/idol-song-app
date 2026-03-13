@@ -52,7 +52,7 @@ function buildCalendarDayAccessibilityLabel(cell: CalendarDayCellModel): string 
 
 function getBadgePalette(
   theme: MobileTheme,
-  kind: CalendarDayBadgeKind,
+  kind: CalendarDayBadgeKind | 'upcoming' | string,
 ): { backgroundColor: string; color: string } {
   if (kind === 'release') {
     return {
@@ -61,7 +61,10 @@ function getBadgePalette(
     };
   }
 
-  const token = theme.colors.status[kind];
+  const normalizedKind = kind === 'upcoming' ? 'scheduled' : kind;
+  const token =
+    theme.colors.status[normalizedKind as keyof MobileTheme['colors']['status']] ??
+    theme.colors.status.scheduled;
   return {
     backgroundColor: token.bg,
     color: token.text,
@@ -170,6 +173,7 @@ function DayCellComponent({
                   <Text
                     allowFontScaling={false}
                     numberOfLines={1}
+                    testID={`calendar-day-badge-fallback-${badge.id}`}
                     style={[
                       styles.badgeMarkerText,
                       {

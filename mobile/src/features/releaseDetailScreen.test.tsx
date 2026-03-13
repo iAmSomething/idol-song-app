@@ -223,6 +223,8 @@ describe('mobile release detail screen', () => {
     expect(tree.root.findByProps({ testID: 'release-appbar-team-page' })).toBeDefined();
     expect(tree.root.findByProps({ testID: 'release-detail-title' }).props.children).toBe('LOVE CATCHER');
     expect(tree.root.findByProps({ testID: 'release-team-identity' })).toBeDefined();
+    expect(tree.root.findByProps({ testID: 'release-team-identity-fallback-badge' })).toBeDefined();
+    expect(tree.root.findAllByProps({ testID: 'release-team-identity-badge-image' })).toHaveLength(0);
     expect(tree.root.findByProps({ testID: 'release-service-spotify' }).props.accessibilityLabel).toBe(
       'Spotify에서 LOVE CATCHER 열기',
     );
