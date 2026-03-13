@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack } from 'expo-router';
+import { Redirect, Stack } from 'expo-router';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { MOBILE_TEXT_SCALE_LIMITS } from '../../src/tokens/accessibility';
@@ -7,9 +7,14 @@ import { useAppTheme, type MobileTheme } from '../../src/tokens/theme';
 import { getDebugMetadata, isDebugMetadataAvailable } from '../../src/config/debugMetadata';
 
 export default function DebugMetadataScreen() {
+  const available = isDebugMetadataAvailable();
   const theme = useAppTheme();
   const styles = React.useMemo(() => createStyles(theme), [theme]);
-  const available = isDebugMetadataAvailable();
+
+  if (!available) {
+    return <Redirect href="/(tabs)/calendar" />;
+  }
+
   const metadata = getDebugMetadata();
   const rows = [
     ['Profile', metadata.profile],
@@ -36,9 +41,7 @@ export default function DebugMetadataScreen() {
       <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta} style={styles.eyebrow}>DEBUG ONLY</Text>
       <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.screenTitle} style={styles.title}>Runtime Metadata</Text>
       <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.body}>
-        {available
-          ? 'This route is for internal preview/development inspection only and is intentionally not linked from the main user-facing tabs.'
-          : 'Debug metadata is intentionally hidden from production user surfaces. Use preview or development builds for runtime inspection.'}
+        This route is for internal preview/development inspection only and is intentionally not linked from the main user-facing tabs.
       </Text>
       <View style={styles.card}>
         {rows.map(([label, value]) => (
