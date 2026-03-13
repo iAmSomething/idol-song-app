@@ -26,6 +26,7 @@ OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 REPORT_PATH = ROOT / "mv_coverage_report.json"
 USER_AGENT = "Mozilla/5.0"
 REQUEST_DELAY_SECONDS = 0.05
+DEFAULT_REQUEST_TIMEOUT_SECONDS = 10
 MAX_RESULTS_PER_QUERY = 12
 MAX_QUERIES_PER_RELEASE = 12
 MAX_TRACK_CANDIDATES_PER_RELEASE = 3
@@ -188,7 +189,7 @@ def candidate_channel_matches_url(candidate: dict[str, Any], channel_url: str) -
     return bool(candidate_keys & channel_keys)
 
 
-def resolve_video_channel_url(video_id: str) -> str:
+def resolve_video_channel_url(video_id: str, request_timeout_seconds: int = DEFAULT_REQUEST_TIMEOUT_SECONDS) -> str:
     cached = VIDEO_CHANNEL_URL_CACHE.get(video_id)
     if cached is not None:
         return cached
@@ -196,7 +197,7 @@ def resolve_video_channel_url(video_id: str) -> str:
     watch_url = f"https://www.youtube.com/watch?v={video_id}"
     request = urllib.request.Request(watch_url, headers={"User-Agent": USER_AGENT})
     try:
-        with urllib.request.urlopen(request, timeout=20) as response:
+        with urllib.request.urlopen(request, timeout=request_timeout_seconds) as response:
             html = response.read().decode("utf-8", "ignore")
     except Exception:  # noqa: BLE001
         VIDEO_CHANNEL_URL_CACHE[video_id] = ""
@@ -208,11 +209,15 @@ def resolve_video_channel_url(video_id: str) -> str:
     return resolved
 
 
-def fetch_query_candidates(query: str, reference: datetime) -> list[dict[str, Any]]:
+def fetch_query_candidates(
+    query: str,
+    reference: datetime,
+    request_timeout_seconds: int = DEFAULT_REQUEST_TIMEOUT_SECONDS,
+) -> list[dict[str, Any]]:
     search_url = "https://www.youtube.com/results?hl=en&search_query=" + urllib.parse.quote_plus(query)
     request = urllib.request.Request(search_url, headers={"User-Agent": USER_AGENT})
     try:
-        with urllib.request.urlopen(request, timeout=20) as response:
+        with urllib.request.urlopen(request, timeout=request_timeout_seconds) as response:
             html = response.read().decode("utf-8", "ignore")
     except Exception as exc:  # noqa: BLE001
         print(
@@ -251,7 +256,10 @@ def fetch_query_candidates(query: str, reference: datetime) -> list[dict[str, An
             }
             if candidate["video_id"] and candidate["title"]:
                 if not candidate["channel_url"]:
-                    candidate["channel_url"] = resolve_video_channel_url(candidate["video_id"])
+                    candidate["channel_url"] = resolve_video_channel_url(
+                        candidate["video_id"],
+                        request_timeout_seconds=request_timeout_seconds,
+                    )
                 candidates.append(candidate)
             if len(candidates) >= MAX_RESULTS_PER_QUERY:
                 return candidates
@@ -445,6 +453,7 @@ def choose_track_search_resolution(
     profile: dict[str, Any] | None,
     allowlist: dict[str, Any],
     reference: datetime,
+    request_timeout_seconds: int,
 ) -> tuple[dict[str, Any] | None, dict[str, Any] | None]:
     track_outcomes: list[dict[str, Any]] = []
     for track_title in pick_track_search_candidates(detail):
@@ -452,7 +461,11 @@ def choose_track_search_resolution(
         outcome: dict[str, Any] = {"status": "no_match", "accepted_video_id": None, "candidates": []}
         for query in build_track_queries(detail, profile, track_title):
             time.sleep(REQUEST_DELAY_SECONDS)
-            for candidate in fetch_query_candidates(query, reference):
+            for candidate in fetch_query_candidates(
+                query,
+                reference,
+                request_timeout_seconds=request_timeout_seconds,
+            ):
                 existing = candidates_by_video_id.get(candidate["video_id"])
                 if existing is None or candidate["view_count"] > existing["view_count"]:
                     candidates_by_video_id[candidate["video_id"]] = candidate
@@ -553,6 +566,7 @@ def choose_resolutions(
     details: list[dict[str, Any]],
     profiles_by_group: dict[str, dict[str, Any]],
     allowlists_by_group: dict[str, dict[str, Any]],
+    request_timeout_seconds: int = DEFAULT_REQUEST_TIMEOUT_SECONDS,
     progress_every: int | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     reference = now_utc()
@@ -587,7 +601,11 @@ def choose_resolutions(
         if release_title_search_enabled:
             for query in build_queries(detail, profiles_by_group.get(detail["group"])):
                 time.sleep(REQUEST_DELAY_SECONDS)
-                for candidate in fetch_query_candidates(query, reference):
+                for candidate in fetch_query_candidates(
+                    query,
+                    reference,
+                    request_timeout_seconds=request_timeout_seconds,
+                ):
                     existing = candidates_by_video_id.get(candidate["video_id"])
                     if existing is None or candidate["view_count"] > existing["view_count"]:
                         candidates_by_video_id[candidate["video_id"]] = candidate
@@ -647,6 +665,7 @@ def choose_resolutions(
                 profiles_by_group.get(detail["group"]),
                 allowlist,
                 reference,
+                request_timeout_seconds,
             )
             if track_resolution:
                 resolutions.append(track_resolution)
@@ -780,6 +799,41 @@ def apply_resolutions_to_details(details: list[dict[str, Any]], resolutions: lis
     return updated
 
 
+def count_persisted_resolution_changes(
+    before_details: list[dict[str, Any]],
+    after_details: list[dict[str, Any]],
+    resolutions: list[dict[str, Any]],
+) -> int:
+    before_by_key = {
+        release_detail_builder.get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in before_details
+    }
+    after_by_key = {
+        release_detail_builder.get_detail_key(row["group"], row["release_title"], row["release_date"], row["stream"]): row
+        for row in after_details
+    }
+    changed_keys: set[str] = set()
+    for resolution in resolutions:
+        key = release_detail_builder.get_detail_key(
+            resolution["group"],
+            resolution["release_title"],
+            resolution["release_date"],
+            resolution["stream"],
+        )
+        before_row = before_by_key.get(key, {})
+        after_row = after_by_key.get(key, {})
+        watched_fields = (
+            "youtube_video_id",
+            "youtube_video_url",
+            "youtube_video_status",
+            "youtube_video_provenance",
+            "title_tracks",
+        )
+        if any(before_row.get(field) != after_row.get(field) for field in watched_fields):
+            changed_keys.add(key)
+    return len(changed_keys)
+
+
 def build_report(before_details: list[dict[str, Any]], after_details: list[dict[str, Any]], resolutions: list[dict[str, Any]], review_rows: list[dict[str, Any]]) -> dict[str, Any]:
     before_with_mv = sum(1 for row in before_details if row.get("youtube_video_id") or row.get("youtube_video_url"))
     after_with_mv = sum(1 for row in after_details if row.get("youtube_video_id") or row.get("youtube_video_url"))
@@ -794,6 +848,7 @@ def build_report(before_details: list[dict[str, Any]], after_details: list[dict[
     label_channel_resolutions = [row for row in resolutions if row.get("selected_channel_owner_type") == "label"]
     team_channel_resolutions = [row for row in resolutions if row.get("selected_channel_owner_type") == "team"]
     title_track_inferred = [row for row in resolutions if row.get("inferred_title_tracks")]
+    persisted_resolution_changes = count_persisted_resolution_changes(before_details, after_details, resolutions)
     return {
         "baseline_rows": len(before_details),
         "baseline_with_mv": before_with_mv,
@@ -801,6 +856,7 @@ def build_report(before_details: list[dict[str, Any]], after_details: list[dict[
         "coverage_lift": after_with_mv - before_with_mv,
         "attempted_rows": len(review_rows) + len(resolutions),
         "resolved_now": len(resolutions),
+        "persisted_resolution_changes": persisted_resolution_changes,
         "review_row_count": len(review_rows),
         "resolved_entities": len({row["group"] for row in resolutions}),
         "resolved_entity_samples": resolved_entity_samples,
@@ -843,6 +899,12 @@ def main() -> None:
         default=25,
         help="Emit stderr progress after every N inspected rows during the current pass.",
     )
+    parser.add_argument(
+        "--request-timeout",
+        type=parse_positive_int_arg,
+        default=DEFAULT_REQUEST_TIMEOUT_SECONDS,
+        help="Timeout in seconds for each outbound YouTube request during the current pass.",
+    )
     args = parser.parse_args()
 
     details = load_json(DETAILS_PATH)
@@ -884,6 +946,7 @@ def main() -> None:
         details,
         profiles_by_group,
         allowlists_by_group,
+        request_timeout_seconds=args.request_timeout,
         progress_every=args.progress_every,
     )
     reevaluated_keys = {
@@ -914,6 +977,7 @@ def main() -> None:
     report["execution_scope"]["scoped_rows_total"] = total_scoped_rows
     report["execution_scope"]["selected_rows"] = len(details)
     report["execution_scope"]["progress_every"] = args.progress_every
+    report["execution_scope"]["request_timeout"] = args.request_timeout
     report["execution_scope"]["row_offset"] = args.row_offset
     if args.max_rows is not None:
         report["execution_scope"]["max_rows"] = args.max_rows

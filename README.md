@@ -213,17 +213,17 @@ latest/recent blocker 코호트만 빠르게 다시 돌리고 싶다면 scoped r
 
 ```bash
 python build_release_details_musicbrainz.py --cohorts latest,recent
-python run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 50 --max-batches 20 --progress-every 10
+python run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 50 --max-batches 20 --progress-every 10 --request-timeout 10 --command-timeout-seconds 180
 ```
 
 오래 걸리는 pass를 작게 확인할 때는 progress와 row limit를 같이 건다. progress는 `stderr`로만 찍히기 때문에 기존 JSON stdout consumer는 깨지지 않는다.
 
 ```bash
 python build_release_details_musicbrainz.py --cohorts latest,recent --max-rows 25 --progress-every 5
-python run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 25 --max-batches 12 --progress-every 5
+python run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 25 --max-batches 12 --progress-every 5 --request-timeout 10 --command-timeout-seconds 180
 ```
 
-`run_mv_backfill_batch_loop.py`는 latest/recent unresolved rows를 서버사이드에서 자동 batch loop로 처리한다. progress가 나는 batch는 즉시 `row_offset=0`으로 리셋해서 새 unresolved head부터 다시 먹고, progress가 없는 batch만 같은 snapshot 뒤쪽 chunk로 넘어간다. 전체 snapshot을 한 번 다 훑었는데 progress가 없거나 `max_batches`에 닿으면 멈추고, 마지막에 `build_mv_manual_review_queue.py`를 자동으로 다시 생성한다.
+`run_mv_backfill_batch_loop.py`는 latest/recent unresolved rows를 서버사이드에서 자동 batch loop로 처리한다. 실제 persisted change(`persisted_resolution_changes`) 또는 coverage lift가 난 batch만 `row_offset=0`으로 리셋해서 새 unresolved head부터 다시 먹고, 이미 반영된 head를 다시 찾기만 한 batch는 같은 snapshot 뒤쪽 chunk로 넘어간다. 전체 snapshot을 한 번 다 훑었는데 progress가 없거나 `max_batches`에 닿으면 멈추고, 마지막에 `build_mv_manual_review_queue.py`를 자동으로 다시 생성한다. `--request-timeout`은 개별 YouTube 요청, `--command-timeout-seconds`는 각 batch subprocess의 상한을 고정한다.
 
 Neon canonical DB까지 같이 최신화하려면 아래를 이어서 실행한다.
 

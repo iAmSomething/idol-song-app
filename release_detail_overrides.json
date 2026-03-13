@@ -112,10 +112,7 @@
     "group": "(G)I-DLE",
     "release_title": "Mono",
     "release_date": "2026-01-27",
-    "stream": "song",
-    "youtube_video_id": "DYgE3SGPEqk",
-    "youtube_video_url": "https://www.youtube.com/watch?v=DYgE3SGPEqk",
-    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+    "stream": "song"
   },
   {
     "group": "82MAJOR",
@@ -262,6 +259,33 @@
     "stream": "song",
     "youtube_video_id": "D8VEhcPeSlc",
     "youtube_video_url": "https://www.youtube.com/watch?v=D8VEhcPeSlc",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "aespa",
+    "release_title": "Whiplash",
+    "release_date": "2024-02-24",
+    "stream": "album",
+    "youtube_video_id": "jWQx2f-CErU",
+    "youtube_video_url": "https://www.youtube.com/watch?v=jWQx2f-CErU",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "aespa",
+    "release_title": "Armageddon",
+    "release_date": "2024-05-27",
+    "stream": "album",
+    "youtube_video_id": "nFYwcndNuOY",
+    "youtube_video_url": "https://www.youtube.com/watch?v=nFYwcndNuOY",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "aespa",
+    "release_title": "RE:WORKS",
+    "release_date": "2024-10-10",
+    "stream": "song",
+    "youtube_video_id": "xJgSJzNAEG8",
+    "youtube_video_url": "https://www.youtube.com/watch?v=xJgSJzNAEG8",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {

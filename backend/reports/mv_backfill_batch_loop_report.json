@@ -1,0 +1,220 @@
+{
+  "started_at": "2026-03-13T04:50:18.553785Z",
+  "finished_at": "2026-03-13T04:57:10.535865Z",
+  "config": {
+    "cohorts": [
+      "latest",
+      "recent"
+    ],
+    "batch_size": 10,
+    "max_batches": 8,
+    "progress_every": 2,
+    "request_timeout_seconds": 10,
+    "command_timeout_seconds": 180
+  },
+  "stop_reason": "max_batches",
+  "batches_run": 8,
+  "total_resolved_now": 36,
+  "total_persisted_resolution_changes": 3,
+  "total_coverage_lift": 3,
+  "iterations": [
+    {
+      "batch_index": 1,
+      "row_offset": 0,
+      "selected_rows": 10,
+      "scoped_rows_total": 816,
+      "resolved_now": 3,
+      "persisted_resolution_changes": 0,
+      "coverage_lift": 0,
+      "review_row_count": 7,
+      "unresolved_remainder": 1595,
+      "resolved_entities": 1,
+      "stderr_lines": [
+        "[backfill_release_detail_mvs] processing 10/816 scoped rows (progress_every=2)",
+        "[backfill_release_detail_mvs] 1/10 &TEAM / Blind Love / 2023-05-07 / song",
+        "[backfill_release_detail_mvs] 2/10 &TEAM / First Howling : WE / 2023-06-14 / album",
+        "[backfill_release_detail_mvs] 4/10 &TEAM / 君にカエル (Maybe) / 2024-04-28 / song",
+        "[backfill_release_detail_mvs] 6/10 &TEAM / 声変わり / 2024-07-18 / song",
+        "[backfill_release_detail_mvs] 8/10 &TEAM / Beat the odds / 2024-10-03 / song",
+        "[backfill_release_detail_mvs] 10/10 &TEAM / Magic Hour / Wonderful World / 2025-01-08 / song"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "row_offset": 10,
+      "selected_rows": 10,
+      "scoped_rows_total": 816,
+      "resolved_now": 6,
+      "persisted_resolution_changes": 0,
+      "coverage_lift": 0,
+      "review_row_count": 4,
+      "unresolved_remainder": 1595,
+      "resolved_entities": 2,
+      "stderr_lines": [
+        "[backfill_release_detail_mvs] processing 10/816 scoped rows (progress_every=2)",
+        "[backfill_release_detail_mvs] 1/10 &TEAM / Go in Blind (月狼) / 2025-04-20 / album",
+        "[backfill_release_detail_mvs] 2/10 &TEAM / Back to Life / 2025-10-28 / album",
+        "[backfill_release_detail_mvs] 4/10 (G)I-DLE / I DO / 2023-07-13 / song",
+        "[backfill_release_detail_mvs] 6/10 (G)I-DLE / Wife / 2024-01-21 / song",
+        "[backfill_release_detail_mvs] 8/10 (G)I-DLE / Abracadabra / 2024-03-08 / song",
+        "[backfill_release_detail_mvs] 10/10 (G)I-DLE / I SWAY / 2024-07-08 / album"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "row_offset": 20,
+      "selected_rows": 10,
+      "scoped_rows_total": 816,
+      "resolved_now": 6,
+      "persisted_resolution_changes": 0,
+      "coverage_lift": 0,
+      "review_row_count": 4,
+      "unresolved_remainder": 1595,
+      "resolved_entities": 2,
+      "stderr_lines": [
+        "[backfill_release_detail_mvs] processing 10/816 scoped rows (progress_every=2)",
+        "[backfill_release_detail_mvs] 1/10 (G)I-DLE / Klaxon / 2024-07-08 / song",
+        "[backfill_release_detail_mvs] 2/10 (G)I-DLE / We are / 2025-05-19 / album",
+        "[backfill_release_detail_mvs] 4/10 (G)I-DLE / i‐dle / 2025-10-03 / album",
+        "[backfill_release_detail_mvs] 6/10 82MAJOR / Sure Thing / 2023-10-05 / song",
+        "[backfill_release_detail_mvs] 8/10 82MAJOR / BEAT by 82 / 2024-04-29 / album",
+        "[backfill_release_detail_mvs] 10/10 82MAJOR / SILENCE SYNDROME / 2025-04-14 / album"
+      ]
+    },
+    {
+      "batch_index": 4,
+      "row_offset": 30,
+      "selected_rows": 10,
+      "scoped_rows_total": 816,
+      "resolved_now": 4,
+      "persisted_resolution_changes": 0,
+      "coverage_lift": 0,
+      "review_row_count": 4,
+      "unresolved_remainder": 1595,
+      "resolved_entities": 1,
+      "stderr_lines": [
+        "[backfill_release_detail_mvs] processing 10/816 scoped rows (progress_every=2)",
+        "[backfill_release_detail_mvs] 1/10 82MAJOR / Trophy / 2025-10-30 / album",
+        "[backfill_release_detail_mvs] 2/10 8TURN / UNCHARTED DRIFT / 2023-06-26 / album",
+        "[backfill_release_detail_mvs] 4/10 8TURN / 로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2 / 2024-10-31 / album",
+        "[backfill_release_detail_mvs] 6/10 8TURN / 이럴거면 다음생에 / 2024-12-09 / song",
+        "[backfill_release_detail_mvs] 8/10 8TURN / Electric Heart : Born to Glow / 2025-08-21 / song",
+        "[backfill_release_detail_mvs] 10/10 AB6IX / Fly Away / 2023-05-10 / song"
+      ]
+    },
+    {
+      "batch_index": 5,
+      "row_offset": 40,
+      "selected_rows": 10,
+      "scoped_rows_total": 816,
+      "resolved_now": 5,
+      "persisted_resolution_changes": 0,
+      "coverage_lift": 0,
+      "review_row_count": 5,
+      "unresolved_remainder": 1595,
+      "resolved_entities": 1,
+      "stderr_lines": [
+        "[backfill_release_detail_mvs] processing 10/816 scoped rows (progress_every=2)",
+        "[backfill_release_detail_mvs] 1/10 AB6IX / THE FUTURE IS OURS: LOST / 2023-05-29 / album",
+        "[backfill_release_detail_mvs] 2/10 AB6IX / Siren / 2023-11-24 / song",
+        "[backfill_release_detail_mvs] 4/10 AB6IX / Find YOU / 2024-08-13 / album",
+        "[backfill_release_detail_mvs] 6/10 aespa / Welcome to MY World / 2023-05-02 / song",
+        "[backfill_release_detail_mvs] 8/10 aespa / Better Things / 2023-08-18 / song",
+        "[backfill_release_detail_mvs] 10/10 aespa / Drama / 2023-11-10 / song"
+      ]
+    },
+    {
+      "batch_index": 6,
+      "row_offset": 50,
+      "selected_rows": 10,
+      "scoped_rows_total": 816,
+      "resolved_now": 3,
+      "persisted_resolution_changes": 3,
+      "coverage_lift": 3,
+      "review_row_count": 7,
+      "unresolved_remainder": 1592,
+      "resolved_entities": 1,
+      "stderr_lines": [
+        "[backfill_release_detail_mvs] processing 10/816 scoped rows (progress_every=2)",
+        "[backfill_release_detail_mvs] 1/10 aespa / Jingle Bell Rock / 2023-11-24 / song",
+        "[backfill_release_detail_mvs] 2/10 aespa / Whiplash / 2024-02-24 / album",
+        "[backfill_release_detail_mvs] 4/10 aespa / Supernova / 2024-05-13 / song",
+        "[backfill_release_detail_mvs] 6/10 aespa / Hot Mess / 2024-07-02 / song",
+        "[backfill_release_detail_mvs] 8/10 aespa / SYNK : PARALLEL LINE / 2024-10-09 / song",
+        "[backfill_release_detail_mvs] 10/10 aespa / Good Day 2025 (Telepathy + By the Moonlight Window) / 2025-04-24 / song"
+      ]
+    },
+    {
+      "batch_index": 7,
+      "row_offset": 0,
+      "selected_rows": 10,
+      "scoped_rows_total": 816,
+      "resolved_now": 3,
+      "persisted_resolution_changes": 0,
+      "coverage_lift": 0,
+      "review_row_count": 7,
+      "unresolved_remainder": 1592,
+      "resolved_entities": 1,
+      "stderr_lines": [
+        "[backfill_release_detail_mvs] processing 10/816 scoped rows (progress_every=2)",
+        "[backfill_release_detail_mvs] 1/10 &TEAM / Blind Love / 2023-05-07 / song",
+        "[backfill_release_detail_mvs] 2/10 &TEAM / First Howling : WE / 2023-06-14 / album",
+        "[backfill_release_detail_mvs] 4/10 &TEAM / 君にカエル (Maybe) / 2024-04-28 / song",
+        "[backfill_release_detail_mvs] 6/10 &TEAM / 声変わり / 2024-07-18 / song",
+        "[backfill_release_detail_mvs] 8/10 &TEAM / Beat the odds / 2024-10-03 / song",
+        "[backfill_release_detail_mvs] 10/10 &TEAM / Magic Hour / Wonderful World / 2025-01-08 / song"
+      ]
+    },
+    {
+      "batch_index": 8,
+      "row_offset": 10,
+      "selected_rows": 10,
+      "scoped_rows_total": 816,
+      "resolved_now": 6,
+      "persisted_resolution_changes": 0,
+      "coverage_lift": 0,
+      "review_row_count": 4,
+      "unresolved_remainder": 1592,
+      "resolved_entities": 2,
+      "stderr_lines": [
+        "[backfill_release_detail_mvs] processing 10/816 scoped rows (progress_every=2)",
+        "[backfill_release_detail_mvs] 1/10 &TEAM / Go in Blind (月狼) / 2025-04-20 / album",
+        "[backfill_release_detail_mvs] 2/10 &TEAM / Back to Life / 2025-10-28 / album",
+        "[backfill_release_detail_mvs] 4/10 (G)I-DLE / I DO / 2023-07-13 / song",
+        "[backfill_release_detail_mvs] 6/10 (G)I-DLE / Wife / 2024-01-21 / song",
+        "[backfill_release_detail_mvs] 8/10 (G)I-DLE / Abracadabra / 2024-03-08 / song",
+        "[backfill_release_detail_mvs] 10/10 (G)I-DLE / I SWAY / 2024-07-08 / album"
+      ]
+    }
+  ],
+  "final_iteration": {
+    "batch_index": 8,
+    "row_offset": 10,
+    "selected_rows": 10,
+    "scoped_rows_total": 816,
+    "resolved_now": 6,
+    "persisted_resolution_changes": 0,
+    "coverage_lift": 0,
+    "review_row_count": 4,
+    "unresolved_remainder": 1592,
+    "resolved_entities": 2,
+    "stderr_lines": [
+      "[backfill_release_detail_mvs] processing 10/816 scoped rows (progress_every=2)",
+      "[backfill_release_detail_mvs] 1/10 &TEAM / Go in Blind (月狼) / 2025-04-20 / album",
+      "[backfill_release_detail_mvs] 2/10 &TEAM / Back to Life / 2025-10-28 / album",
+      "[backfill_release_detail_mvs] 4/10 (G)I-DLE / I DO / 2023-07-13 / song",
+      "[backfill_release_detail_mvs] 6/10 (G)I-DLE / Wife / 2024-01-21 / song",
+      "[backfill_release_detail_mvs] 8/10 (G)I-DLE / Abracadabra / 2024-03-08 / song",
+      "[backfill_release_detail_mvs] 10/10 (G)I-DLE / I SWAY / 2024-07-08 / album"
+    ]
+  },
+  "queue_summary": {
+    "queue_items": 1592,
+    "status_counts": {
+      "needs_review": 2,
+      "unresolved": 1590
+    },
+    "output_json": "mv_manual_review_queue.json",
+    "output_csv": "mv_manual_review_queue.csv"
+  }
+}
