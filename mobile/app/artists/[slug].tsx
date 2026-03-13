@@ -548,15 +548,7 @@ export default function ArtistDetailScreen() {
         subtitle={MOBILE_COPY.action.teamPage}
         testID="entity-detail-app-bar"
         title={snapshot.team.displayName}
-        trailingActions={[
-          {
-            key: 'notifications',
-            accessibilityLabel: '알림 설정 열기',
-            label: MOBILE_COPY.action.notifications,
-            onPress: () => router.push('/settings/notifications'),
-            testID: 'entity-detail-notifications-settings',
-          },
-        ]}
+        trailingActions={[]}
       />
 
       <CompactHero

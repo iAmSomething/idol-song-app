@@ -1118,33 +1118,6 @@ export default function CalendarTabScreen() {
                     ) : null}
                   </View>
                 </Pressable>
-                <Pressable
-                  accessibilityLabel="알림 설정 열기"
-                  accessibilityRole="button"
-                  onPress={() => router.push('/settings/notifications')}
-                  style={({ pressed }) => [
-                    styles.headerButton,
-                    styles.headerButtonCompact,
-                    !largeTextMode ? styles.headerButtonIconOnly : null,
-                    largeTextMode ? styles.headerButtonLargeText : null,
-                    pressed ? styles.headerButtonPressed : null,
-                  ]}
-                  testID="calendar-notifications-open"
-                >
-                  <View style={styles.headerButtonContentCompact}>
-                    <MaterialCommunityIcons color={theme.colors.text.secondary} name="bell-outline" size={16} />
-                    {largeTextMode ? (
-                      <Text
-                        allowFontScaling
-                        maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                        numberOfLines={1}
-                        style={styles.headerButtonLabel}
-                      >
-                        알림
-                      </Text>
-                    ) : null}
-                  </View>
-                </Pressable>
               </View>
             </View>
           </View>
