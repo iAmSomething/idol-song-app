@@ -1474,10 +1474,10 @@ function buildReadyStatusSnapshot(status: ReadyStatusSnapshot['status']): ReadyS
       status: status === 'not_ready' ? 'not_ready' : status === 'degraded' ? 'degraded' : 'healthy',
       generated_at: NOW,
       summary_lines: [],
-      lag_minutes: status === 'ready' ? 5 : status === 'degraded' ? 30 : 90,
+      lag_minutes: status === 'ready' ? 5 : status === 'degraded' ? 240 : 1500,
       thresholds: {
-        pass_lag_minutes: 20,
-        degraded_lag_minutes: 60,
+        pass_lag_minutes: 180,
+        degraded_lag_minutes: 1440,
       },
       row_counts: {
         entity_search_documents: 117,
