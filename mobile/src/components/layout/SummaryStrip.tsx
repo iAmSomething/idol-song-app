@@ -11,6 +11,7 @@ import type { MobileTheme } from '../../tokens/theme';
 import { MOBILE_TEXT_SCALE_LIMITS, isLargeTextMode } from '../../tokens/accessibility';
 
 export interface SummaryStripItem {
+  detail?: string;
   key: string;
   label: string;
   value: string | number;
@@ -41,14 +42,24 @@ function SummaryStripComponent({
           style={[styles.card, useFullWidthCards ? styles.fullWidthCard : null]}
           testID={testID ? `${testID}-item-${item.key}` : undefined}
         >
-          <Text
-            allowFontScaling
-            maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.summaryValue}
-            numberOfLines={2}
-            style={[styles.value, largeTextMode ? styles.valueCompact : null]}
-          >
-            {item.value}
-          </Text>
+          <View style={styles.valueGroup}>
+            <Text
+              allowFontScaling
+              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.summaryValue}
+              style={[styles.value, largeTextMode ? styles.valueCompact : null]}
+            >
+              {item.value}
+            </Text>
+            {item.detail ? (
+              <Text
+                allowFontScaling
+                maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.summaryLabel}
+                style={styles.detail}
+              >
+                {item.detail}
+              </Text>
+            ) : null}
+          </View>
           <Text
             allowFontScaling
             maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.summaryLabel}
@@ -89,6 +100,10 @@ function createStyles(theme: MobileTheme) {
     fullWidthCard: {
       flexBasis: '100%',
     },
+    valueGroup: {
+      gap: theme.space[4],
+      minHeight: 0,
+    },
     value: {
       ...sectionTitleTypography,
       color: theme.colors.text.primary,
@@ -97,6 +112,11 @@ function createStyles(theme: MobileTheme) {
       fontSize: theme.typography.cardTitle.fontSize,
       fontWeight: theme.typography.cardTitle.fontWeight,
       letterSpacing: theme.typography.cardTitle.letterSpacing,
+    },
+    detail: {
+      ...metaTypography,
+      color: theme.colors.text.secondary,
+      fontWeight: '600',
     },
     label: {
       ...metaTypography,
