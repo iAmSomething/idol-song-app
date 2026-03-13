@@ -64,7 +64,7 @@ type EnvMap = Record<string, string | undefined>;
 
 const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
   development: {
-    name: 'Idol Song App (Dev)',
+    name: 'Idol Song Dev Client',
     slug: 'idol-song-app-mobile-dev',
     scheme: 'idolsongapp-dev',
     iosBundleIdentifier: 'com.anonymous.idolsongappmobile.dev',
@@ -80,7 +80,7 @@ const PROFILE_CONFIG: Record<MobileProfile, ProfileConfig> = {
     },
   },
   preview: {
-    name: 'Idol Song App (Preview)',
+    name: 'Idol Song QA Client',
     slug: 'idol-song-app-mobile-preview',
     scheme: 'idolsongapp-preview',
     iosBundleIdentifier: 'com.anonymous.idolsongappmobile.preview',

@@ -13,6 +13,8 @@ NO_INSTALL=0
 NO_BUNDLER=1
 DRY_RUN=0
 SIGNING_OVERRIDE_PATH="$ROOT_DIR/ios/IdolSongAppPreview/Supporting/IdolSongAppPreview.production.signing.local.xcconfig"
+PREVIEW_BUNDLE_ID="${EXPO_IOS_PREVIEW_BUNDLE_IDENTIFIER:-}"
+DEV_BUNDLE_ID="${EXPO_IOS_DEV_BUNDLE_IDENTIFIER:-}"
 
 usage() {
   cat <<EOF
@@ -90,6 +92,14 @@ done
 
 read_local_override
 
+if [[ -z "$PREVIEW_BUNDLE_ID" ]]; then
+  PREVIEW_BUNDLE_ID="${BUNDLE_ID}.preview"
+fi
+
+if [[ -z "$DEV_BUNDLE_ID" ]]; then
+  DEV_BUNDLE_ID="${BUNDLE_ID}.dev"
+fi
+
 if [[ $DRY_RUN -eq 0 && -z "$DEVICE_NAME" ]]; then
   echo "--device is required unless --dry-run is used." >&2
   exit 1
@@ -135,11 +145,24 @@ if [[ $NO_INSTALL -eq 1 ]]; then
 fi
 
 if [[ $DRY_RUN -eq 1 ]]; then
-  printf 'APP_ENV=%q EXPO_PUBLIC_API_BASE_URL=%q EXPO_IOS_APPLE_TEAM_ID=%q EXPO_IOS_BUNDLE_IDENTIFIER=%q ' \
-    "$APP_ENV" "$EXPO_PUBLIC_API_BASE_URL" "$EXPO_IOS_APPLE_TEAM_ID" "$EXPO_IOS_BUNDLE_IDENTIFIER"
+  printf 'APP_ENV=%q EXPO_PUBLIC_API_BASE_URL=%q EXPO_IOS_APPLE_TEAM_ID=%q EXPO_IOS_BUNDLE_IDENTIFIER=%q EXPO_IOS_PREVIEW_BUNDLE_IDENTIFIER=%q EXPO_IOS_DEV_BUNDLE_IDENTIFIER=%q ' \
+    "$APP_ENV" "$EXPO_PUBLIC_API_BASE_URL" "$EXPO_IOS_APPLE_TEAM_ID" "$EXPO_IOS_BUNDLE_IDENTIFIER" "$PREVIEW_BUNDLE_ID" "$DEV_BUNDLE_ID"
   printf '%q ' "${COMMAND[@]}"
   printf '\n'
   exit 0
 fi
+
+cleanup_existing_client() {
+  local bundle_id="$1"
+
+  if [[ -z "$bundle_id" || "$bundle_id" == "$BUNDLE_ID" ]]; then
+    return 0
+  fi
+
+  xcrun devicectl device uninstall app --device "$DEVICE_NAME" "$bundle_id" >/dev/null 2>&1 || true
+}
+
+cleanup_existing_client "$PREVIEW_BUNDLE_ID"
+cleanup_existing_client "$DEV_BUNDLE_ID"
 
 "${COMMAND[@]}"
