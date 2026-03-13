@@ -578,17 +578,10 @@ export default function ReleaseDetailScreen() {
                     accessibilityLabel: `${detail.displayGroup} 팀 페이지 열기`,
                     label: MOBILE_COPY.action.teamPage,
                     onPress: () => router.push(`/artists/${teamDetailSlug}`),
-                    testID: 'release-appbar-team-page',
-                  },
-                ]
-              : []),
-            {
-              key: 'notifications',
-              accessibilityLabel: '알림 설정 열기',
-              label: MOBILE_COPY.action.notifications,
-              onPress: () => router.push('/settings/notifications'),
-              testID: 'release-appbar-notifications',
-            },
+                  testID: 'release-appbar-team-page',
+                },
+              ]
+            : []),
           ]
         }
       />
