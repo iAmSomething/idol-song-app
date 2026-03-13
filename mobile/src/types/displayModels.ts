@@ -40,6 +40,8 @@ export interface ReleaseSummaryModel {
   id: string;
   group: string;
   displayGroup: string;
+  badgeImageUrl?: string;
+  representativeImageUrl?: string;
   releaseTitle: string;
   releaseDate: string;
   releaseKind?: ReleaseKind | string;
@@ -57,6 +59,8 @@ export interface UpcomingEventModel {
   id: string;
   group: string;
   displayGroup: string;
+  badgeImageUrl?: string;
+  representativeImageUrl?: string;
   scheduledDate?: string;
   scheduledMonth?: string;
   datePrecision: UpcomingDatePrecision;
@@ -80,6 +84,8 @@ export interface ReleaseDetailModel {
   id: string;
   group: string;
   displayGroup: string;
+  badgeImageUrl?: string;
+  representativeImageUrl?: string;
   releaseTitle: string;
   releaseDate: string;
   releaseKind?: string;

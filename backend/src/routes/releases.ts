@@ -20,6 +20,8 @@ type ReleaseDetailProjectionRow = {
   generated_at: Date | string;
   source_url?: string | null;
   artist_source_url?: string | null;
+  badge_image_url?: string | null;
+  representative_image_url?: string | null;
 };
 
 type ReleaseLookupQuery = {
@@ -37,6 +39,8 @@ type ReleaseCore = {
   release_id: string;
   entity_slug: string;
   display_name: string;
+  badge_image_url: string | null;
+  representative_image_url: string | null;
   release_title: string;
   release_date: string;
   stream: string;
@@ -232,6 +236,8 @@ function normalizeReleaseCore(value: unknown): ReleaseCore | null {
     release_id: releaseId,
     entity_slug: entitySlug,
     display_name: displayName,
+    badge_image_url: asNullableString(value.badge_image_url),
+    representative_image_url: asNullableString(value.representative_image_url),
     release_title: releaseTitle,
     release_date: releaseDate,
     stream,
@@ -409,12 +415,15 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
           rdp.normalized_release_title,
           rdp.release_date::text as release_date,
           rdp.stream,
-          rdp.payload,
-          rdp.generated_at,
-          r.source_url,
-          r.artist_source_url
+        rdp.payload,
+        rdp.generated_at,
+        r.source_url,
+        r.artist_source_url,
+        e.badge_image_url,
+        e.representative_image_url
         from release_detail_projection rdp
         left join releases r on r.id = rdp.release_id
+        left join entities e on e.id = r.entity_id
         where rdp.entity_slug = $1
           and rdp.normalized_release_title = projection_normalize_text($2)
           and rdp.stream = $4
@@ -468,12 +477,15 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
           rdp.normalized_release_title,
           rdp.release_date::text as release_date,
           rdp.stream,
-          rdp.payload,
-          rdp.generated_at,
-          r.source_url,
-          r.artist_source_url
+        rdp.payload,
+        rdp.generated_at,
+        r.source_url,
+        r.artist_source_url,
+        e.badge_image_url,
+        e.representative_image_url
         from release_detail_projection rdp
         left join releases r on r.id = rdp.release_id
+        left join entities e on e.id = r.entity_id
         where rdp.release_id = $1::uuid
         limit 1
       `,
@@ -494,6 +506,9 @@ export function registerReleaseRoutes(app: FastifyInstance, context: ReleaseRout
 
     data.release.source_url = data.release.source_url ?? asNullableString(row.source_url);
     data.release.artist_source_url = data.release.artist_source_url ?? asNullableString(row.artist_source_url);
+    data.release.badge_image_url = data.release.badge_image_url ?? asNullableString(row.badge_image_url);
+    data.release.representative_image_url =
+      data.release.representative_image_url ?? asNullableString(row.representative_image_url);
 
     return buildReadDataEnvelope(
       request,

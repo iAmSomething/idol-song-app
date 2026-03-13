@@ -26,6 +26,8 @@ type CalendarVerifiedReleaseHydrationRow = {
   release_format: string | null;
   entity_type: string | null;
   agency_name: string | null;
+  badge_image_url: string | null;
+  representative_image_url: string | null;
 };
 
 type CalendarSummary = {
@@ -38,6 +40,8 @@ type CalendarNearestUpcoming = {
   upcoming_signal_id: string;
   entity_slug: string;
   display_name: string;
+  badge_image_url: string | null;
+  representative_image_url: string | null;
   entity_type: string | null;
   agency_name: string | null;
   tracking_status: string | null;
@@ -59,6 +63,8 @@ type CalendarVerifiedRelease = {
   release_id: string;
   entity_slug: string;
   display_name: string;
+  badge_image_url: string | null;
+  representative_image_url: string | null;
   entity_type: string | null;
   agency_name: string | null;
   release_title: string;
@@ -74,6 +80,8 @@ type CalendarUpcomingItem = {
   upcoming_signal_id: string;
   entity_slug: string;
   display_name: string;
+  badge_image_url: string | null;
+  representative_image_url: string | null;
   entity_type: string | null;
   agency_name: string | null;
   tracking_status: string | null;
@@ -182,6 +190,8 @@ function normalizeVerifiedRelease(value: unknown): CalendarVerifiedRelease | nul
     release_id: releaseId,
     entity_slug: entitySlug,
     display_name: displayName,
+    badge_image_url: asNullableString(value.badge_image_url),
+    representative_image_url: asNullableString(value.representative_image_url),
     entity_type: asNullableString(value.entity_type),
     agency_name: asNullableString(value.agency_name),
     release_title: releaseTitle,
@@ -224,6 +234,8 @@ function normalizeUpcomingItem(value: unknown): CalendarUpcomingItem | null {
     upcoming_signal_id: upcomingSignalId,
     entity_slug: entitySlug,
     display_name: displayName,
+    badge_image_url: asNullableString(value.badge_image_url),
+    representative_image_url: asNullableString(value.representative_image_url),
     entity_type: asNullableString(value.entity_type),
     agency_name: asNullableString(value.agency_name),
     tracking_status: asNullableString(value.tracking_status),
@@ -324,6 +336,8 @@ function hydrateVerifiedRelease(
 
   return {
     ...release,
+    badge_image_url: release.badge_image_url ?? row.badge_image_url,
+    representative_image_url: release.representative_image_url ?? row.representative_image_url,
     entity_type: release.entity_type ?? row.entity_type,
     agency_name: release.agency_name ?? row.agency_name,
     release_format: release.release_format ?? row.release_format,
@@ -350,7 +364,9 @@ async function hydrateVerifiedReleaseArray(
         r.artist_source_url,
         r.release_format,
         e.entity_type,
-        e.agency_name
+        e.agency_name,
+        e.badge_image_url,
+        e.representative_image_url
       from releases r
       left join entities e on e.id = r.entity_id
       where r.id = any($1::uuid[])
@@ -398,6 +414,8 @@ function toNearestUpcoming(item: CalendarUpcomingItem | null): CalendarNearestUp
     upcoming_signal_id: item.upcoming_signal_id,
     entity_slug: item.entity_slug,
     display_name: item.display_name,
+    badge_image_url: item.badge_image_url,
+    representative_image_url: item.representative_image_url,
     entity_type: item.entity_type,
     agency_name: item.agency_name,
     tracking_status: item.tracking_status,
@@ -461,10 +479,12 @@ function normalizeCalendarMonthPayload(payload: unknown): CalendarMonthData | nu
       nearestUpcoming &&
       nearestUpcoming.scheduled_date &&
       nearestUpcoming.date_precision === 'exact'
-        ? {
+          ? {
             upcoming_signal_id: nearestUpcoming.upcoming_signal_id,
             entity_slug: nearestUpcoming.entity_slug,
             display_name: nearestUpcoming.display_name,
+            badge_image_url: nearestUpcoming.badge_image_url,
+            representative_image_url: nearestUpcoming.representative_image_url,
             entity_type: nearestUpcoming.entity_type,
             agency_name: nearestUpcoming.agency_name,
             tracking_status: nearestUpcoming.tracking_status,

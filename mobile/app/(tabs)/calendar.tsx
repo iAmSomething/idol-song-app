@@ -723,13 +723,13 @@ export default function CalendarTabScreen() {
       },
       serviceButtons: buildReleaseServiceButtons(release),
       sourceLinks: buildReleaseSourceLinks(release),
-      team: {
-        badgeImageUrl: undefined,
-        fallbackAssetKey: resolveBadgeFallbackAssetKey('group'),
-        meta: buildReleaseIdentityMeta(release),
-        monogram: release.displayGroup.slice(0, 2).toUpperCase(),
-        name: release.displayGroup,
-      },
+              team: {
+                badgeImageUrl: release.badgeImageUrl ?? release.representativeImageUrl,
+                fallbackAssetKey: resolveBadgeFallbackAssetKey('group'),
+                meta: buildReleaseIdentityMeta(release),
+                monogram: release.displayGroup.slice(0, 2).toUpperCase(),
+                name: release.displayGroup,
+              },
       testID: `${testPrefix}-${release.id}`,
       title: release.releaseTitle,
     };
@@ -755,12 +755,12 @@ export default function CalendarTabScreen() {
       scheduledDate: formatUpcomingLabel(event),
       sourceLinks: buildUpcomingSourceLinks(event),
       statusChip: resolveUpcomingStatusLabel(event.status),
-      team: {
-        badgeImageUrl: undefined,
-        fallbackAssetKey: resolveBadgeFallbackAssetKey('group'),
-        monogram: event.displayGroup.slice(0, 2).toUpperCase(),
-        name: event.displayGroup,
-      },
+              team: {
+                badgeImageUrl: event.badgeImageUrl ?? event.representativeImageUrl,
+                fallbackAssetKey: resolveBadgeFallbackAssetKey('group'),
+                monogram: event.displayGroup.slice(0, 2).toUpperCase(),
+                name: event.displayGroup,
+              },
       testID: `${testPrefix}-${event.id}`,
     };
   }

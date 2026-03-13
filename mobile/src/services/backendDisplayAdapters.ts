@@ -114,6 +114,9 @@ function adaptReleaseSummary(
     id: input.release_id,
     group: entitySlug,
     displayGroup: displayName,
+    badgeImageUrl: 'badge_image_url' in input ? input.badge_image_url ?? undefined : undefined,
+    representativeImageUrl:
+      'representative_image_url' in input ? input.representative_image_url ?? undefined : undefined,
     releaseTitle: input.release_title,
     releaseDate: input.release_date ?? '',
     releaseKind: normalizeReleaseKind(input.release_kind ?? null),
@@ -144,6 +147,9 @@ function adaptUpcomingEvent(
     id: input.upcoming_signal_id,
     group: entitySlug,
     displayGroup: displayName,
+    badgeImageUrl: 'badge_image_url' in input ? input.badge_image_url ?? undefined : undefined,
+    representativeImageUrl:
+      'representative_image_url' in input ? input.representative_image_url ?? undefined : undefined,
     scheduledDate: input.scheduled_date ?? undefined,
     scheduledMonth: input.scheduled_month ?? undefined,
     datePrecision: normalizeUpcomingDatePrecision(input.date_precision),
@@ -429,6 +435,8 @@ export function adaptBackendReleaseDetail(data: BackendReleaseDetailData): Relea
     id: data.release.release_id,
     group: data.release.entity_slug,
     displayGroup: data.release.display_name,
+    badgeImageUrl: data.release.badge_image_url ?? undefined,
+    representativeImageUrl: data.release.representative_image_url ?? undefined,
     releaseTitle: data.release.release_title,
     releaseDate: data.release.release_date,
     releaseKind: data.release.release_kind ?? undefined,
