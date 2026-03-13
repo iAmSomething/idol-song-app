@@ -18,6 +18,7 @@ export interface SegmentedControlItem {
 }
 
 export interface SegmentedControlProps {
+  density?: 'regular' | 'compact';
   items: SegmentedControlItem[];
   isSticky?: boolean;
   onChange: (key: string) => void;
@@ -26,6 +27,7 @@ export interface SegmentedControlProps {
 }
 
 function SegmentedControlComponent({
+  density = 'regular',
   items,
   isSticky = false,
   onChange,
@@ -38,7 +40,14 @@ function SegmentedControlComponent({
   const labelMultiplier = fontScale >= 1.4 ? MOBILE_TEXT_SCALE_LIMITS.buttonService : MOBILE_TEXT_SCALE_LIMITS.buttonPrimary;
 
   return (
-    <View style={[styles.row, isSticky ? styles.stickyRow : null]} testID={testID}>
+    <View
+      style={[
+        styles.row,
+        density === 'compact' ? styles.rowCompact : null,
+        isSticky ? styles.stickyRow : null,
+      ]}
+      testID={testID}
+    >
       {items.map((item) => {
         const active = item.key === selectedKey;
 
@@ -53,6 +62,7 @@ function SegmentedControlComponent({
             onPress={() => onChange(item.key)}
             style={({ pressed }) => [
               styles.segment,
+              density === 'compact' ? styles.segmentCompact : null,
               active ? styles.segmentActive : null,
               pressed ? styles.pressed : null,
             ]}
@@ -87,6 +97,11 @@ function createStyles(theme: MobileTheme) {
       borderRadius: theme.radius.card,
       backgroundColor: theme.colors.surface.subtle,
     },
+    rowCompact: {
+      gap: theme.space[4],
+      padding: theme.space[4],
+      borderRadius: theme.radius.sheet,
+    },
     stickyRow: {
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
@@ -101,6 +116,13 @@ function createStyles(theme: MobileTheme) {
       borderRadius: theme.radius.button,
       paddingHorizontal: theme.space[8],
       paddingVertical: theme.space[8],
+    },
+    segmentCompact: {
+      flexBasis: 80,
+      minHeight: 38,
+      paddingHorizontal: theme.space[8],
+      paddingVertical: theme.space[4],
+      borderRadius: theme.radius.chip,
     },
     segmentActive: {
       backgroundColor: theme.colors.surface.elevated,
