@@ -482,6 +482,22 @@ type EntityDetailApiResponse = {
       confidence_score?: number | null
     }>
     artist_source_url?: string | null
+    compare_candidates?: Array<{
+      entity_slug?: string
+      display_name?: string
+      entity_type?: string | null
+      agency_name?: string | null
+    }>
+    related_acts?: Array<{
+      entity_slug?: string
+      display_name?: string
+      entity_type?: string | null
+      agency_name?: string | null
+      reason?: {
+        kind?: string
+        value?: string | null
+      } | null
+    }>
   }
   error?: {
     code?: string
@@ -749,6 +765,10 @@ type RelatedActReason =
       agency: string
     }
   | {
+      kind: 'entity_type'
+      entityType: string
+    }
+  | {
       kind: 'radar_tag'
       radarTag: RelatedRadarTag
     }
@@ -758,6 +778,8 @@ type RelatedActReason =
 
 type RelatedActRecommendation = {
   group: string
+  entitySlug: string | null
+  displayName: string
   reason: RelatedActReason
   score: number
 }
@@ -829,6 +851,12 @@ type TeamCompareSnapshot = {
   latestSong: VerifiedRelease | null
   nextUpcomingSignal: UpcomingCandidateRow | null
   recentYearReleaseCount: number
+}
+
+type TeamCompareOption = {
+  group: string
+  entitySlug: string
+  displayName: string
 }
 
 type TeamDirectoryEntry = {
@@ -911,6 +939,8 @@ type TeamProfile = {
   annualReleaseTimeline: AnnualReleaseTimelineSection[]
   changeLog: ReleaseChangeLogRow[]
   nextUpcomingSignal: UpcomingCandidateRow | null
+  compareOptions: TeamCompareOption[]
+  relatedActs: RelatedActRecommendation[]
 }
 
 type CanonicalDisclosureStatus = 'missing' | 'unresolved' | 'review_needed' | 'conditional_none'
@@ -1627,6 +1657,7 @@ const TEAM_COPY = {
     relatedActsTitle: '비슷한 결로 바로 이동',
     relatedActsEmpty: '추천할 관련 팀 데이터가 아직 충분하지 않습니다.',
     relatedActsReasonAgency: '같은 소속사',
+    relatedActsReasonType: '같은 유형',
     relatedActsReasonRadarTag: '같은 레이더 태그',
     relatedActsReasonManual: '수동 추천',
     compareAction: '비교',
@@ -1764,6 +1795,7 @@ const TEAM_COPY = {
     relatedActsTitle: 'Jump into adjacent acts',
     relatedActsEmpty: 'There is not enough related-act data to recommend another team yet.',
     relatedActsReasonAgency: 'Same agency',
+    relatedActsReasonType: 'Same type',
     relatedActsReasonRadarTag: 'Same radar tag',
     relatedActsReasonManual: 'Manual pick',
     compareAction: 'Compare',
@@ -2200,7 +2232,7 @@ function App() {
   const calendarPanelRef = useRef<HTMLElement | null>(null)
   const selectedDayPanelRef = useRef<HTMLElement | null>(null)
   const activeCompareGroup =
-    selectedGroup && selectedCompareGroup && selectedCompareGroup !== selectedGroup
+    selectedEntitySlug && selectedCompareGroup && selectedCompareGroup !== selectedEntitySlug
       ? selectedCompareGroup
       : null
   const selectedReleaseRoute =
@@ -2232,7 +2264,7 @@ function App() {
 
       document.title = selectedGroup
         ? activeCompareGroup
-          ? `${selectedGroup} vs ${activeCompareGroup} | Idol Song App`
+          ? `${selectedGroup} vs ${humanizeRouteSlug(activeCompareGroup)} | Idol Song App`
           : `${selectedGroup} | Idol Song App`
         : 'Idol Song App'
     }
@@ -2266,7 +2298,7 @@ function App() {
       : selectedGroup
         ? getArtistPath(selectedGroup, activeCompareGroup)
         : selectedEntitySlug
-          ? getArtistPathBySlug(selectedEntitySlug)
+          ? getArtistPathBySlug(selectedEntitySlug, activeCompareGroup)
           : getHomePath()
     const currentLocation = `${window.location.pathname}${window.location.search}`
     if (currentLocation !== nextPath) {
@@ -2590,21 +2622,16 @@ function App() {
   })
   const selectedTeam = selectedTeamResource.team
   const selectedTeamPageGroup = selectedTeam?.group ?? selectedGroup ?? selectedTeamShellDisplayName ?? null
-  const selectedTeamLocalProfile = selectedTeamPageGroup ? teamProfileMap.get(selectedTeamPageGroup) ?? null : null
+  const compareTeamResource = useEntityDetailResource({
+    group: null,
+    entitySlug: activeCompareGroup,
+  })
+  const compareTeam = compareTeamResource.team
   const selectedTeamIsPinned = selectedTeamPageGroup ? myTeamsSet.has(selectedTeamPageGroup) : false
   const myTeamsLimitReached = myTeams.length >= MY_TEAMS_LIMIT
-  const compareTeam = activeCompareGroup ? teamProfileMap.get(activeCompareGroup) ?? null : null
-  const compareTeamOptions: TeamProfile[] = selectedTeamPageGroup
-    ? teamProfiles
-        .filter((team) => team.group !== selectedTeamPageGroup)
-        .sort((left, right) => left.displayName.localeCompare(right.displayName))
-    : []
-  const selectedTeamCompareSnapshot = selectedTeamLocalProfile
-    ? buildTeamCompareSnapshot(selectedTeamLocalProfile.group)
-    : selectedTeam
-      ? buildEntityDetailCompareSnapshot(selectedTeam)
-      : null
-  const compareTeamSnapshot = compareTeam ? buildTeamCompareSnapshot(compareTeam.group) : null
+  const compareTeamOptions: TeamCompareOption[] = selectedTeam?.compareOptions ?? []
+  const selectedTeamCompareSnapshot = selectedTeam ? buildEntityDetailCompareSnapshot(selectedTeam) : null
+  const compareTeamSnapshot = compareTeam ? buildEntityDetailCompareSnapshot(compareTeam) : null
   const selectedTeamSourceStatus = {
     source: selectedTeamResource.source,
     errorCode: selectedTeamResource.loading ? null : selectedTeamResource.errorCode,
@@ -2631,9 +2658,7 @@ function App() {
   const selectedTeamLatestHandoffs =
     selectedTeam?.latestRelease ? selectedTeam.latestRelease.musicHandoffs : undefined
   const selectedTeamLatestMvUrl = selectedTeam?.latestRelease?.youtubeMvUrl ?? ''
-  const relatedActs: RelatedActRecommendation[] = selectedTeamPageGroup
-    ? (relatedActsByGroup.get(selectedTeamPageGroup) ?? []).filter((item) => teamProfileMap.has(item.group))
-    : []
+  const relatedActs: RelatedActRecommendation[] = selectedTeam?.relatedActs ?? []
   const dashboardSectionNavigatorItems: DashboardSectionNavigatorItem[] = [
     {
       id: DASHBOARD_SECTION_NAV_IDS[0],
@@ -3789,27 +3814,27 @@ function closeReleaseDetail() {
                 <div className="team-directory related-acts-list">
                   {relatedActs.length ? (
                     relatedActs.map((item) => {
-                      const team = teamProfileMap.get(item.group)
-                      if (!team) {
-                        return null
-                      }
-
                       return (
-                        <article key={team.group} className="related-acts-card">
+                        <article key={item.entitySlug ?? item.group} className="related-acts-card">
                           <div className="related-acts-head">
-                            <TeamIdentity group={team.group} variant="list" />
+                            <TeamIdentity group={item.group} variant="list" />
                             <span className={`signal-badge signal-badge-related-${item.reason.kind}`}>
                               {formatRelatedActReasonLabel(item.reason, language)}
                             </span>
                           </div>
                           <p className="related-acts-reason">{formatRelatedActReasonDetail(item.reason, language)}</p>
                           <div className="action-row">
-                            <ActionButton variant="primary" onClick={() => openTeamPage(team.group)}>
+                            <ActionButton
+                              variant="primary"
+                              onClick={() => openTeamPage(item.group, item.entitySlug)}
+                            >
                               {teamCopy.action}
                             </ActionButton>
-                            <ActionButton variant="secondary" onClick={() => setSelectedCompareGroup(team.group)}>
-                              {teamCopy.compareAction}
-                            </ActionButton>
+                            {item.entitySlug ? (
+                              <ActionButton variant="secondary" onClick={() => setSelectedCompareGroup(item.entitySlug)}>
+                                {teamCopy.compareAction}
+                              </ActionButton>
+                            ) : null}
                           </div>
                         </article>
                       )
@@ -5408,7 +5433,7 @@ function CompareTeamView({
   secondaryTeam: TeamProfile | null
   primarySnapshot: TeamCompareSnapshot | null
   secondarySnapshot: TeamCompareSnapshot | null
-  compareOptions: TeamProfile[]
+  compareOptions: TeamCompareOption[]
   selectedCompareGroup: string | null
   language: Language
   displayDateFormatter: Intl.DateTimeFormat
@@ -5439,7 +5464,7 @@ function CompareTeamView({
           <select value={selectedCompareGroup ?? ''} onChange={(event) => onSelectCompareGroup(event.target.value || null)}>
             <option value="">{teamCopy.compareSelectPlaceholder}</option>
             {compareOptions.map((team) => (
-              <option key={team.group} value={team.group}>
+              <option key={team.entitySlug} value={team.entitySlug}>
                 {team.displayName}
               </option>
             ))}
@@ -5454,7 +5479,7 @@ function CompareTeamView({
             <article className="compare-summary-card">
               <TeamIdentity group={primaryTeam.group} variant="list" />
               <div className="action-row">
-                <ActionButton variant="secondary" onClick={() => onOpenTeamPage(primaryTeam.group)}>
+                <ActionButton variant="secondary" onClick={() => onOpenTeamPage(primaryTeam.group, primaryTeam.slug)}>
                   {teamCopy.action}
                 </ActionButton>
               </div>
@@ -5462,7 +5487,10 @@ function CompareTeamView({
             <article className="compare-summary-card">
               <TeamIdentity group={secondaryTeam.group} variant="list" />
               <div className="action-row">
-                <ActionButton variant="secondary" onClick={() => onOpenTeamPage(secondaryTeam.group)}>
+                <ActionButton
+                  variant="secondary"
+                  onClick={() => onOpenTeamPage(secondaryTeam.group, secondaryTeam.slug)}
+                >
                   {teamCopy.action}
                 </ActionButton>
               </div>
@@ -7388,6 +7416,8 @@ function formatRelatedActReasonLabel(reason: RelatedActReason, language: Languag
   switch (reason.kind) {
     case 'agency':
       return teamCopy.relatedActsReasonAgency
+    case 'entity_type':
+      return teamCopy.relatedActsReasonType
     case 'radar_tag':
       return teamCopy.relatedActsReasonRadarTag
     case 'manual_override':
@@ -7401,6 +7431,8 @@ function formatRelatedActReasonDetail(reason: RelatedActReason, language: Langua
   switch (reason.kind) {
     case 'agency':
       return `${teamCopy.relatedActsReasonAgency} · ${reason.agency}`
+    case 'entity_type':
+      return `${teamCopy.relatedActsReasonType} · ${formatEntityTypeLabel(reason.entityType, language)}`
     case 'radar_tag':
       return `${teamCopy.relatedActsReasonRadarTag} · ${formatRelatedRadarTag(reason.radarTag, language)}`
     case 'manual_override':
@@ -7849,6 +7881,8 @@ function buildSyntheticTeamProfile(group: string | null, entitySlug: string): Te
     annualReleaseTimeline: [],
     changeLog: [],
     nextUpcomingSignal: null,
+    compareOptions: [],
+    relatedActs: [],
   }
 }
 
@@ -8099,6 +8133,11 @@ function normalizeApiActType(entityType: string | null | undefined): ActType {
   }
 
   return 'group'
+}
+
+function formatEntityTypeLabel(entityType: string, language: Language) {
+  const actType = normalizeApiActType(entityType)
+  return TRANSLATIONS[language].filterOptions[actType]
 }
 
 function resolveApiDisplayGroup(entitySlug: string | null | undefined, displayName: string | null | undefined) {
@@ -9465,6 +9504,86 @@ function buildEntityDetailSourceTimeline(
     .filter((item): item is SourceTimelineItem => item !== null)
 }
 
+function normalizeEntityTypeLabel(value: string | null | undefined) {
+  const normalized = readNonEmptyString(value)?.toLowerCase()
+  if (normalized === 'solo') {
+    return 'solo'
+  }
+  if (normalized === 'unit') {
+    return 'unit'
+  }
+  return 'group'
+}
+
+function buildEntityDetailCompareOptions(
+  items: NonNullable<EntityDetailApiResponse['data']>['compare_candidates'],
+): TeamCompareOption[] {
+  if (!Array.isArray(items)) {
+    return []
+  }
+
+  return items
+    .map((item) => {
+      const entitySlug = readNonEmptyString(item.entity_slug)
+      const displayName = readNonEmptyString(item.display_name)
+      if (!entitySlug || !displayName) {
+        return null
+      }
+
+      return {
+        group: displayName,
+        entitySlug,
+        displayName,
+      } satisfies TeamCompareOption
+    })
+    .filter((item): item is TeamCompareOption => item !== null)
+    .sort((left, right) => left.displayName.localeCompare(right.displayName))
+}
+
+function buildEntityDetailRelatedActs(
+  items: NonNullable<EntityDetailApiResponse['data']>['related_acts'],
+): RelatedActRecommendation[] {
+  if (!Array.isArray(items)) {
+    return []
+  }
+
+  return items.reduce<RelatedActRecommendation[]>((recommendations, item, index) => {
+      const entitySlug = readNonEmptyString(item.entity_slug)
+      const displayName = readNonEmptyString(item.display_name)
+      if (!entitySlug || !displayName) {
+        return recommendations
+      }
+
+      const reasonKind = readNonEmptyString(item.reason?.kind)
+      let reason: RelatedActReason | null = null
+
+      if (reasonKind === 'agency') {
+        reason = {
+          kind: 'agency',
+          agency: readNonEmptyString(item.reason?.value) ?? readNonEmptyString(item.agency_name) ?? displayName,
+        }
+      } else if (reasonKind === 'entity_type') {
+        reason = {
+          kind: 'entity_type',
+          entityType: normalizeEntityTypeLabel(item.reason?.value ?? item.entity_type),
+        }
+      }
+
+      if (!reason) {
+        return recommendations
+      }
+
+      recommendations.push({
+        group: displayName,
+        entitySlug,
+        displayName,
+        reason,
+        score: items.length - index,
+      })
+      return recommendations
+    }, [])
+}
+
 function buildEntityDetailTeamProfile(
   group: string,
   entitySlug: string,
@@ -9495,6 +9614,8 @@ function buildEntityDetailTeamProfile(
     readNonEmptyString(data.official_links?.youtube) ??
     null
   const sourceTimeline = buildEntityDetailSourceTimeline(canonicalGroup, data.source_timeline)
+  const compareOptions = buildEntityDetailCompareOptions(data.compare_candidates)
+  const relatedActs = buildEntityDetailRelatedActs(data.related_acts)
 
   return {
     ...baseTeam,
@@ -9516,6 +9637,8 @@ function buildEntityDetailTeamProfile(
     upcomingSignals,
     sourceTimeline,
     nextUpcomingSignal,
+    compareOptions,
+    relatedActs,
   }
 }
 
@@ -9720,6 +9843,8 @@ function buildTeamProfiles() {
         annualReleaseTimeline,
         changeLog,
         nextUpcomingSignal: upcomingSignals[0] ?? null,
+        compareOptions: [],
+        relatedActs: [],
       }
     })
     .sort(compareTeamProfiles)
@@ -9775,9 +9900,11 @@ function buildRelatedActsByGroup() {
         return [
           {
             group: candidate.group,
+            entitySlug: candidate.slug,
+            displayName: candidate.displayName,
             reason,
             score,
-          },
+          } satisfies RelatedActRecommendation,
         ]
       })
       .sort(compareRelatedActRecommendations)
@@ -10817,8 +10944,8 @@ function readSelectedCompareGroupFromLocation() {
     return null
   }
 
-  const primaryGroup = getGroupFromPath(window.location.pathname)
-  if (!primaryGroup) {
+  const primaryEntitySlug = getEntitySlugFromPath(window.location.pathname)
+  if (!primaryEntitySlug) {
     return null
   }
 
@@ -10827,12 +10954,12 @@ function readSelectedCompareGroupFromLocation() {
     return null
   }
 
-  const resolvedGroup = resolveGroupReference(compareValue)
-  if (!resolvedGroup || resolvedGroup === primaryGroup) {
+  const compareEntitySlug = decodeURIComponent(compareValue).trim().toLowerCase()
+  if (!compareEntitySlug || compareEntitySlug === primaryEntitySlug) {
     return null
   }
 
-  return resolvedGroup
+  return compareEntitySlug
 }
 
 function readSelectedReleaseKeyFromLocation() {
@@ -10896,7 +11023,7 @@ function resolveGroupReference(value: string) {
     return null
   }
 
-  return null
+  return humanizeRouteSlug(normalized)
 }
 
 function getHomePath() {
@@ -10905,9 +11032,12 @@ function getHomePath() {
   return query ? `/?${query}` : '/'
 }
 
-function getArtistPathBySlug(entitySlug: string) {
+function getArtistPathBySlug(entitySlug: string, compareGroup?: string | null) {
   const pathname = `/artists/${entitySlug}`
   const params = appendPersistentInspectParams(new URLSearchParams())
+  if (compareGroup && compareGroup !== entitySlug) {
+    params.set('compare', compareGroup)
+  }
   const query = params.toString()
   return query ? `${pathname}?${query}` : pathname
 }
@@ -10915,8 +11045,9 @@ function getArtistPathBySlug(entitySlug: string) {
 function getArtistPath(group: string, compareGroup?: string | null) {
   const pathname = `/artists/${slugifyGroup(group)}`
   const params = appendPersistentInspectParams(new URLSearchParams())
-  if (compareGroup && compareGroup !== group) {
-    params.set('compare', slugifyGroup(compareGroup))
+  const primaryEntitySlug = slugifyGroup(group)
+  if (compareGroup && compareGroup !== primaryEntitySlug) {
+    params.set('compare', compareGroup)
   }
   const query = params.toString()
   return query ? `${pathname}?${query}` : pathname

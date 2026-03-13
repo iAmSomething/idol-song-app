@@ -61,6 +61,24 @@ type TrackingStateBlock = {
   tracking_status: string | null;
 };
 
+type CompareCandidateSummary = {
+  entity_slug: string;
+  display_name: string;
+  entity_type: string;
+  agency_name: string | null;
+};
+
+type RelatedActSummary = {
+  entity_slug: string;
+  display_name: string;
+  entity_type: string;
+  agency_name: string | null;
+  reason: {
+    kind: 'agency' | 'entity_type';
+    value: string | null;
+  };
+};
+
 type ArtworkSummary = {
   cover_image_url: string | null;
   thumbnail_image_url: string | null;
@@ -147,6 +165,8 @@ type EntityDetailPayload = {
   recent_albums: ReleaseSummary[];
   source_timeline: SourceTimelineItem[];
   artist_source_url: string | null;
+  compare_candidates: CompareCandidateSummary[];
+  related_acts: RelatedActSummary[];
 };
 
 function asNullableString(value: unknown): string | null {
@@ -589,6 +609,128 @@ function normalizeTrackingStateForSurface(tier: string | null, watchReason: stri
   };
 }
 
+function normalizeCompareCandidate(value: unknown): CompareCandidateSummary | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  const entitySlug = asNullableString(value.entity_slug);
+  const displayName = asNullableString(value.display_name);
+  const entityType = asNullableString(value.entity_type);
+
+  if (!entitySlug || !displayName || !entityType) {
+    return null;
+  }
+
+  return {
+    entity_slug: entitySlug,
+    display_name: displayName,
+    entity_type: entityType,
+    agency_name: asNullableString(value.agency_name),
+  };
+}
+
+function normalizeCompareCandidateArray(value: unknown): CompareCandidateSummary[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .map(normalizeCompareCandidate)
+    .filter((item): item is CompareCandidateSummary => item !== null);
+}
+
+function normalizeRelatedActSummary(value: unknown): RelatedActSummary | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  const candidate = normalizeCompareCandidate(value);
+  if (!candidate) {
+    return null;
+  }
+
+  const reasonValue = isRecord(value.reason) ? value.reason : null;
+  const reasonKind = asNullableString(reasonValue?.kind);
+  if (reasonKind !== 'agency' && reasonKind !== 'entity_type') {
+    return null;
+  }
+
+  return {
+    ...candidate,
+    reason: {
+      kind: reasonKind,
+      value: asNullableString(reasonValue?.value),
+    },
+  };
+}
+
+function normalizeRelatedActSummaryArray(value: unknown): RelatedActSummary[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .map(normalizeRelatedActSummary)
+    .filter((item): item is RelatedActSummary => item !== null);
+}
+
+function compareCandidateSummaries(left: CompareCandidateSummary, right: CompareCandidateSummary): number {
+  return left.display_name.localeCompare(right.display_name, 'en', { sensitivity: 'base' });
+}
+
+function buildCompareCandidateSummary(payload: EntityDetailPayload): CompareCandidateSummary {
+  return {
+    entity_slug: payload.identity.entity_slug,
+    display_name: payload.identity.display_name,
+    entity_type: payload.identity.entity_type,
+    agency_name: payload.identity.agency_name,
+  };
+}
+
+function buildRelatedActSummaries(
+  identity: IdentityBlock,
+  candidates: CompareCandidateSummary[],
+): RelatedActSummary[] {
+  const related: RelatedActSummary[] = [];
+  const seen = new Set<string>();
+  const currentAgency = identity.agency_name;
+
+  for (const candidate of candidates) {
+    if (currentAgency && candidate.agency_name === currentAgency) {
+      related.push({
+        ...candidate,
+        reason: {
+          kind: 'agency',
+          value: currentAgency,
+        },
+      });
+      seen.add(candidate.entity_slug);
+    }
+  }
+
+  for (const candidate of candidates) {
+    if (seen.has(candidate.entity_slug)) {
+      continue;
+    }
+
+    if (candidate.entity_type !== identity.entity_type) {
+      continue;
+    }
+
+    related.push({
+      ...candidate,
+      reason: {
+        kind: 'entity_type',
+        value: candidate.entity_type,
+      },
+    });
+    seen.add(candidate.entity_slug);
+  }
+
+  return related.slice(0, 6);
+}
+
 function normalizeEntityDetailPayload(payload: unknown, slug: string, todayIsoDate: string): EntityDetailPayload | null {
   if (!isRecord(payload)) {
     return null;
@@ -658,6 +800,8 @@ function normalizeEntityDetailPayload(payload: unknown, slug: string, todayIsoDa
     recent_albums: dedupeRecentAlbumSummaries(normalizeReleaseSummaryArray(payload.recent_albums)),
     source_timeline: normalizeSourceTimeline(payload.source_timeline),
     artist_source_url: asNullableString(payload.artist_source_url),
+    compare_candidates: normalizeCompareCandidateArray(payload.compare_candidates),
+    related_acts: normalizeRelatedActSummaryArray(payload.related_acts),
   };
 }
 
@@ -770,6 +914,27 @@ export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteC
       });
     }
 
+    const compareCandidateResult = await context.db.query<EntityDetailProjectionRow>(
+      `
+        select entity_slug, payload, generated_at
+        from entity_detail_projection
+        where entity_slug <> $1
+      `,
+      [slug]
+    );
+
+    const compareCandidates = compareCandidateResult.rows
+      .map((candidateRow) =>
+        normalizeEntityDetailPayload(
+          candidateRow.payload,
+          candidateRow.entity_slug,
+          resolveTodayIsoDate(context.config.appTimezone),
+        )
+      )
+      .filter((item): item is EntityDetailPayload => item !== null)
+      .map(buildCompareCandidateSummary)
+      .sort(compareCandidateSummaries);
+
     const [latestRelease] = await hydrateReleaseSummaries(
       context.db,
       normalized.latest_release ? [normalized.latest_release] : [],
@@ -779,6 +944,8 @@ export function registerEntityRoutes(app: FastifyInstance, context: EntityRouteC
       ...normalized,
       latest_release: latestRelease ?? normalized.latest_release,
       recent_albums: recentAlbums,
+      compare_candidates: compareCandidates,
+      related_acts: buildRelatedActSummaries(normalized.identity, compareCandidates),
     };
 
     return buildReadDataEnvelope(
