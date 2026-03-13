@@ -1,7 +1,7 @@
 # Same-day Release Acceptance Report
 
-- generated_at: 2026-03-12T13:11:24.233Z
-- reference_date: 2026-03-12
+- generated_at: 2026-03-13T00:12:46.726Z
+- reference_date: 2026-03-13
 - overall_status: pass
 
 ## Summary
@@ -38,7 +38,7 @@
 
 ```md
 ## same-day acceptance status
-- reference date: 2026-03-12
+- reference date: 2026-03-13
 - status: PASS
 - note: YENA suppression and P1Harmony acceptance are both green.
 ```

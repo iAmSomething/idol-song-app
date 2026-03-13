@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-12T11:02:07.614583+00:00",
+  "generated_at": "2026-03-13T00:12:49.237925+00:00",
   "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-12T11:01:20.619Z",
-    "bundle_id": "post-sync-verification-2675934e9846",
+    "generated_at": "2026-03-13T00:12:46.985Z",
+    "bundle_id": "post-sync-verification-a09976359f4a",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -15,7 +15,7 @@
     "source_reports": {
       "release_pipeline_sync": {
         "path": "reports/release_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-11T18:13:37.531Z",
+        "generated_at": "2026-03-12T12:35:42.357Z",
         "scope": "release_pipeline"
       },
       "upcoming_pipeline_sync": {
@@ -25,7 +25,7 @@
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-12T08:03:06.277Z"
+        "generated_at": "2026-03-13T00:10:47.902Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
@@ -33,42 +33,42 @@
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
-        "generated_at": "2026-03-12T10:09:25.569Z"
+        "generated_at": "2026-03-13T00:10:50.480Z"
       },
       "canonical_null_recheck_queue": {
         "path": "reports/canonical_null_recheck_queue.json",
-        "generated_at": "2026-03-12T02:34:25.223Z",
-        "queue_count": 2388
+        "generated_at": "2026-03-13T00:10:51.777Z",
+        "queue_count": 2386
       },
       "null_coverage_trend": {
         "path": "reports/null_coverage_trend_report.json",
-        "generated_at": "2026-03-12T02:34:25.709Z",
+        "generated_at": "2026-03-13T00:10:52.201Z",
         "baseline_available": true
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-12T08:28:07.937Z",
+        "generated_at": "2026-03-13T00:10:49.273Z",
         "primary_path_key": "daily_upcoming"
       },
       "workflow_schedule_diagnostics": {
         "path": "reports/workflow_schedule_diagnostics.json",
-        "generated_at": "2026-03-12T08:28:07.937Z",
+        "generated_at": "2026-03-13T00:10:49.273Z",
         "hint_count": 1,
-        "workflow_count": 2
+        "workflow_count": 3
       },
       "service_link_gap_queues": {
         "path": "reports/service_link_gap_queues.json",
-        "generated_at": "2026-03-12T02:34:26.993Z",
-        "total": 3979
+        "generated_at": "2026-03-13T00:10:53.460Z",
+        "total": 3980
       },
       "title_track_gap_queue": {
         "path": "reports/title_track_gap_queue.json",
-        "generated_at": "2026-03-12T02:34:26.996Z",
-        "total": 576
+        "generated_at": "2026-03-13T00:10:53.463Z",
+        "total": 574
       },
       "entity_identity_workbench": {
         "path": "reports/entity_identity_workbench.json",
-        "generated_at": "2026-03-12T02:34:26.997Z",
+        "generated_at": "2026-03-13T00:10:53.464Z",
         "entities": 117,
         "field_rows": 194
       },
@@ -85,13 +85,13 @@
       },
       "same_day_release_acceptance": {
         "path": "reports/same_day_release_acceptance_report.json",
-        "generated_at": "2026-03-12T11:01:15.594Z",
-        "overall_status": "fail",
+        "generated_at": "2026-03-13T00:12:46.726Z",
+        "overall_status": "pass",
         "fixture_count": 2
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-2675934e9846",
+      "bundle id: post-sync-verification-a09976359f4a",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -100,17 +100,17 @@
   "summary_lines": [
     "entity alias/search coverage: clean (mismatched entities=0)",
     "official links: drift (mismatched entities=62)",
-    "YouTube allowlists: drift (role mismatches=90, metadata mismatches=2)",
+    "YouTube allowlists: drift (role mismatches=62, metadata mismatches=14)",
     "latest verified release selection: drift (tracking mismatches=0, stream mismatches=1)",
-    "upcoming counts / nearest: clean (month bucket mismatches=0)",
-    "title-track / double-title: drift (mismatched releases=2)",
+    "upcoming counts / nearest: drift (month bucket mismatches=1)",
+    "title-track / double-title: clean (mismatched releases=0)",
     "YouTube Music / MV service-link state: drift (mismatched releases=2)",
     "review-required counts (release scope): drift (mv_candidate_count_match=True, youtube_mv_status_counts_match=False)"
   ],
   "source_snapshot_counts": {
     "artist_profiles": 117,
     "youtube_allowlists": 117,
-    "release_details": 1770,
+    "release_details": 1771,
     "upcoming_candidates": 71,
     "watchlist": 108,
     "manual_review_queue": 67,
@@ -251,17 +251,12 @@
       "clean": false
     },
     "youtube_allowlists": {
-      "role_mismatches_count": 90,
-      "metadata_mismatches_count": 2,
+      "role_mismatches_count": 62,
+      "metadata_mismatches_count": 14,
       "role_mismatches": [
         {
           "entity_slug": "82major",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@82major_official",
-              "role": "both"
-            }
-          ],
+          "missing_channel_roles": [],
           "extra_channel_roles": [
             {
               "url": "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw",
@@ -271,12 +266,7 @@
         },
         {
           "entity_slug": "8turn",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@8TURN.official",
-              "role": "both"
-            }
-          ],
+          "missing_channel_roles": [],
           "extra_channel_roles": [
             {
               "url": "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw",
@@ -286,12 +276,7 @@
         },
         {
           "entity_slug": "ab6ix",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@AB6IX",
-              "role": "both"
-            }
-          ],
+          "missing_channel_roles": [],
           "extra_channel_roles": [
             {
               "url": "https://www.youtube.com/channel/UCwytna6i1rFCt13a3Qvuk-A",
@@ -301,12 +286,7 @@
         },
         {
           "entity_slug": "aespa",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@aespa_official",
-              "role": "both"
-            }
-          ],
+          "missing_channel_roles": [],
           "extra_channel_roles": [
             {
               "url": "https://www.youtube.com/channel/UC9GtSLeksfK4yuJ_g1lgQbg",
@@ -315,33 +295,8 @@
           ]
         },
         {
-          "entity_slug": "all-h-ours",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@ALL_H_OURS",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
-          "entity_slug": "allday-project",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@ALLDAY_PROJECT",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
           "entity_slug": "and-team",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@andteamofficial",
-              "role": "both"
-            }
-          ],
+          "missing_channel_roles": [],
           "extra_channel_roles": [
             {
               "url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
@@ -350,23 +305,8 @@
           ]
         },
         {
-          "entity_slug": "artms",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@official_artms",
-              "role": "both"
-            }
-          ],
-          "extra_channel_roles": []
-        },
-        {
           "entity_slug": "atbo",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@ATBO_ground",
-              "role": "both"
-            }
-          ],
+          "missing_channel_roles": [],
           "extra_channel_roles": [
             {
               "url": "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg",
@@ -376,15 +316,40 @@
         },
         {
           "entity_slug": "ateez",
-          "missing_channel_roles": [
-            {
-              "url": "https://www.youtube.com/@ATEEZofficial",
-              "role": "both"
-            }
-          ],
+          "missing_channel_roles": [],
           "extra_channel_roles": [
             {
               "url": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
+              "role": "both"
+            }
+          ]
+        },
+        {
+          "entity_slug": "babymonster",
+          "missing_channel_roles": [],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
+              "role": "both"
+            }
+          ]
+        },
+        {
+          "entity_slug": "badvillain",
+          "missing_channel_roles": [],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UCh0KpQuSJ9m0DaENZmnYwzw",
+              "role": "both"
+            }
+          ]
+        },
+        {
+          "entity_slug": "blackpink",
+          "missing_channel_roles": [],
+          "extra_channel_roles": [
+            {
+              "url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
               "role": "both"
             }
           ]
@@ -392,30 +357,102 @@
       ],
       "metadata_mismatches": [
         {
+          "entity_slug": "aespa",
+          "channel_url": "https://www.youtube.com/@SMTOWN",
+          "diffs": {
+            "display_in_team_links": {
+              "source": false,
+              "db": true
+            }
+          }
+        },
+        {
+          "entity_slug": "cravity",
+          "channel_url": "https://www.youtube.com/@officialstarship",
+          "diffs": {
+            "display_in_team_links": {
+              "source": false,
+              "db": true
+            }
+          }
+        },
+        {
+          "entity_slug": "exo",
+          "channel_url": "https://www.youtube.com/@SMTOWN",
+          "diffs": {
+            "display_in_team_links": {
+              "source": false,
+              "db": true
+            }
+          }
+        },
+        {
           "entity_slug": "hearts2hearts",
           "channel_url": "https://www.youtube.com/@SMTOWN",
           "diffs": {
             "owner_type": {
               "source": "team",
               "db": "label"
-            },
-            "display_in_team_links": {
-              "source": true,
-              "db": false
             }
           }
         },
         {
-          "entity_slug": "wjsn",
+          "entity_slug": "ive",
           "channel_url": "https://www.youtube.com/@officialstarship",
           "diffs": {
-            "owner_type": {
-              "source": "team",
-              "db": "label"
-            },
             "display_in_team_links": {
-              "source": true,
-              "db": false
+              "source": false,
+              "db": true
+            }
+          }
+        },
+        {
+          "entity_slug": "monsta-x",
+          "channel_url": "https://www.youtube.com/@officialstarship",
+          "diffs": {
+            "display_in_team_links": {
+              "source": false,
+              "db": true
+            }
+          }
+        },
+        {
+          "entity_slug": "nct-127",
+          "channel_url": "https://www.youtube.com/@SMTOWN",
+          "diffs": {
+            "display_in_team_links": {
+              "source": false,
+              "db": true
+            }
+          }
+        },
+        {
+          "entity_slug": "nct-dream",
+          "channel_url": "https://www.youtube.com/@SMTOWN",
+          "diffs": {
+            "display_in_team_links": {
+              "source": false,
+              "db": true
+            }
+          }
+        },
+        {
+          "entity_slug": "nct-wish",
+          "channel_url": "https://www.youtube.com/@SMTOWN",
+          "diffs": {
+            "display_in_team_links": {
+              "source": false,
+              "db": true
+            }
+          }
+        },
+        {
+          "entity_slug": "red-velvet",
+          "channel_url": "https://www.youtube.com/@SMTOWN",
+          "diffs": {
+            "display_in_team_links": {
+              "source": false,
+              "db": true
             }
           }
         }
@@ -444,11 +481,11 @@
           "exact": 6,
           "month_only": 14
         },
-        "future_exact_count": 5,
+        "future_exact_count": 4,
         "nearest_exact": {
-          "slug": "p1harmony",
-          "scheduled_date": "2026-03-12",
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "slug": "bts",
+          "scheduled_date": "2026-03-20",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
           "confidence": 0.82
         },
         "month_buckets": {
@@ -463,22 +500,22 @@
         }
       },
       "db": {
-        "total": 59,
+        "total": 47,
         "precision_counts": {
           "month_only": 14,
-          "unknown": 39,
-          "exact": 6
+          "unknown": 28,
+          "exact": 5
         },
-        "future_exact_count": 5,
+        "future_exact_count": 4,
         "nearest_exact": {
-          "slug": "p1harmony",
-          "scheduled_date": "2026-03-12",
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "slug": "bts",
+          "scheduled_date": "2026-03-20",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
           "confidence": 0.82
         },
         "month_buckets": {
           "exact": {
-            "2026-03": 4,
+            "2026-03": 3,
             "2026-04": 2
           },
           "month_only": {
@@ -487,39 +524,27 @@
           }
         }
       },
-      "total_matches": true,
-      "precision_matches": true,
+      "total_matches": false,
+      "precision_matches": false,
       "future_exact_matches": true,
       "nearest_exact_matches": true,
-      "month_bucket_mismatches_count": 0,
-      "month_bucket_mismatches": [],
-      "clean": true
-    },
-    "title_tracks_and_double_title": {
-      "mismatched_releases_count": 2,
-      "source_double_title_releases": 27,
-      "db_double_title_releases": 27,
-      "mismatches": [
+      "month_bucket_mismatches_count": 1,
+      "month_bucket_mismatches": [
         {
-          "entity_slug": "enhypen",
-          "release_date": "2024-07-12",
-          "stream": "album",
-          "source_title_tracks": [
-            "Brought the Heat Back"
-          ],
-          "db_title_tracks": []
-        },
-        {
-          "entity_slug": "treasure",
-          "release_date": "2023-07-28",
-          "stream": "album",
-          "source_title_tracks": [
-            "BONA BONA"
-          ],
-          "db_title_tracks": []
+          "bucket": "exact",
+          "month": "2026-03",
+          "source": 4,
+          "db": 3
         }
       ],
       "clean": false
+    },
+    "title_tracks_and_double_title": {
+      "mismatched_releases_count": 0,
+      "source_double_title_releases": 27,
+      "db_double_title_releases": 27,
+      "mismatches": [],
+      "clean": true
     },
     "release_service_links": {
       "mismatched_release_services_count": 2,
@@ -570,14 +595,14 @@
       },
       "source_youtube_mv_status_counts": {
         "unresolved": 1614,
-        "manual_override": 133,
+        "manual_override": 134,
         "relation_match": 21,
         "needs_review": 2,
         "no_mv": 1
       },
       "db_youtube_mv_status_counts": {
         "unresolved": 1615,
-        "manual_override": 133,
+        "manual_override": 134,
         "relation_match": 21,
         "needs_review": 2,
         "no_mv": 1

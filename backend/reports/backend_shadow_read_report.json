@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-12T11:02:16.705Z",
+  "generated_at": "2026-03-13T00:12:55.003Z",
   "clean": false,
   "report_bundle": {
-    "generated_at": "2026-03-12T11:01:20.619Z",
-    "bundle_id": "post-sync-verification-2675934e9846",
+    "generated_at": "2026-03-13T00:12:46.985Z",
+    "bundle_id": "post-sync-verification-a09976359f4a",
     "bundle_kind": "post-sync-verification",
     "cadence_profile": "daily-upcoming",
     "source": {
@@ -15,7 +15,7 @@
     "source_reports": {
       "release_pipeline_sync": {
         "path": "reports/release_pipeline_db_sync_summary.json",
-        "generated_at": "2026-03-11T18:13:37.531Z",
+        "generated_at": "2026-03-12T12:35:42.357Z",
         "scope": "release_pipeline"
       },
       "upcoming_pipeline_sync": {
@@ -25,7 +25,7 @@
       },
       "projection_refresh": {
         "path": "reports/projection_refresh_summary.json",
-        "generated_at": "2026-03-12T08:03:06.277Z"
+        "generated_at": "2026-03-13T00:10:47.902Z"
       },
       "historical_coverage": {
         "path": "reports/historical_release_detail_coverage_report.json",
@@ -33,42 +33,42 @@
       },
       "canonical_null_coverage": {
         "path": "reports/canonical_null_coverage_report.json",
-        "generated_at": "2026-03-12T10:09:25.569Z"
+        "generated_at": "2026-03-13T00:10:50.480Z"
       },
       "canonical_null_recheck_queue": {
         "path": "reports/canonical_null_recheck_queue.json",
-        "generated_at": "2026-03-12T02:34:25.223Z",
-        "queue_count": 2388
+        "generated_at": "2026-03-13T00:10:51.777Z",
+        "queue_count": 2386
       },
       "null_coverage_trend": {
         "path": "reports/null_coverage_trend_report.json",
-        "generated_at": "2026-03-12T02:34:25.709Z",
+        "generated_at": "2026-03-13T00:10:52.201Z",
         "baseline_available": true
       },
       "worker_cadence": {
         "path": "reports/worker_cadence_report.json",
-        "generated_at": "2026-03-12T08:28:07.937Z",
+        "generated_at": "2026-03-13T00:10:49.273Z",
         "primary_path_key": "daily_upcoming"
       },
       "workflow_schedule_diagnostics": {
         "path": "reports/workflow_schedule_diagnostics.json",
-        "generated_at": "2026-03-12T08:28:07.937Z",
+        "generated_at": "2026-03-13T00:10:49.273Z",
         "hint_count": 1,
-        "workflow_count": 2
+        "workflow_count": 3
       },
       "service_link_gap_queues": {
         "path": "reports/service_link_gap_queues.json",
-        "generated_at": "2026-03-12T02:34:26.993Z",
-        "total": 3979
+        "generated_at": "2026-03-13T00:10:53.460Z",
+        "total": 3980
       },
       "title_track_gap_queue": {
         "path": "reports/title_track_gap_queue.json",
-        "generated_at": "2026-03-12T02:34:26.996Z",
-        "total": 576
+        "generated_at": "2026-03-13T00:10:53.463Z",
+        "total": 574
       },
       "entity_identity_workbench": {
         "path": "reports/entity_identity_workbench.json",
-        "generated_at": "2026-03-12T02:34:26.997Z",
+        "generated_at": "2026-03-13T00:10:53.464Z",
         "entities": 117,
         "field_rows": 194
       },
@@ -85,13 +85,13 @@
       },
       "same_day_release_acceptance": {
         "path": "reports/same_day_release_acceptance_report.json",
-        "generated_at": "2026-03-12T11:01:15.594Z",
-        "overall_status": "fail",
+        "generated_at": "2026-03-13T00:12:46.726Z",
+        "overall_status": "pass",
         "fixture_count": 2
       }
     },
     "summary_lines": [
-      "bundle id: post-sync-verification-2675934e9846",
+      "bundle id: post-sync-verification-a09976359f4a",
       "bundle kind: post-sync-verification",
       "cadence profile: daily-upcoming",
       "workflow: manual"
@@ -99,9 +99,9 @@
   },
   "bundle_consistency": {
     "status": "pass",
-    "expected_bundle_id": "post-sync-verification-2675934e9846",
+    "expected_bundle_id": "post-sync-verification-a09976359f4a",
     "observed": {
-      "parity_bundle": "post-sync-verification-2675934e9846",
+      "parity_bundle": "post-sync-verification-a09976359f4a",
       "shadow_bundle": null,
       "runtime_gate_bundle": null,
       "historical_coverage_generated_at": null,
@@ -115,15 +115,15 @@
     "exists": true,
     "path": "backend/reports/backend_json_parity_report.json",
     "clean": false,
-    "generated_at": "2026-03-12T11:02:07.614583+00:00",
-    "bundle_id": "post-sync-verification-2675934e9846",
+    "generated_at": "2026-03-13T00:12:49.237925+00:00",
+    "bundle_id": "post-sync-verification-a09976359f4a",
     "summary_lines": [
       "entity alias/search coverage: clean (mismatched entities=0)",
       "official links: drift (mismatched entities=62)",
-      "YouTube allowlists: drift (role mismatches=90, metadata mismatches=2)",
+      "YouTube allowlists: drift (role mismatches=62, metadata mismatches=14)",
       "latest verified release selection: drift (tracking mismatches=0, stream mismatches=1)",
-      "upcoming counts / nearest: clean (month bucket mismatches=0)",
-      "title-track / double-title: drift (mismatched releases=2)",
+      "upcoming counts / nearest: drift (month bucket mismatches=1)",
+      "title-track / double-title: clean (mismatched releases=0)",
       "YouTube Music / MV service-link state: drift (mismatched releases=2)",
       "review-required counts (release scope): drift (mv_candidate_count_match=True, youtube_mv_status_counts_match=False)"
     ]
@@ -179,12 +179,13 @@
     "entity_detail: clean 1/4, drift 3/4",
     "release_detail: clean 3/3, drift 0/3",
     "calendar_month: clean 2/3, drift 1/3",
-    "radar: clean 1/1, drift 0/1",
+    "radar: clean 0/1, drift 1/1",
     "missing rows or segments: 5 case(s)",
     "exact-vs-month-only drift: 2 case(s)",
     "field-shape mismatches: 1 case(s)",
     "alias-match differences: 1 case(s)",
-    "latest-release or next-upcoming drift: 1 case(s)"
+    "latest-release or next-upcoming drift: 1 case(s)",
+    "radar eligibility drift: 1 case(s)"
   ],
   "cases": [
     {
@@ -269,8 +270,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-b0103571-4cab-42f9-a4de-735d71c550a7",
-      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-b0103571-4cab-42f9-a4de-735d71c550a7"
+      "request_id_sent": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-1a70dd46-611a-4fec-9df5-081a5b5e6452",
+      "response_request_id": "shadow--v1-search-q-ed-8a-b8-eb-a6-ac-ed-94-8c-ec-97-90-ec-8a-a4-1a70dd46-611a-4fec-9df5-081a5b5e6452"
     },
     {
       "surface": "search",
@@ -407,8 +408,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-5e535d7d-d5ea-4e91-8c61-7df27678eb48",
-      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-5e535d7d-d5ea-4e91-8c61-7df27678eb48"
+      "request_id_sent": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-be7f1831-000a-4087-ab18-04c13fba6358",
+      "response_request_id": "shadow--v1-search-q-ed-88-ac-eb-b0-94-ed-88-ac-be7f1831-000a-4087-ab18-04c13fba6358"
     },
     {
       "surface": "search",
@@ -586,8 +587,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-71ab2bfd-a3cf-428f-9d76-c1733584845c",
-      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-71ab2bfd-a3cf-428f-9d76-c1733584845c"
+      "request_id_sent": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-9d34dcae-2d73-4215-b884-615ec2cce862",
+      "response_request_id": "shadow--v1-search-q-ec-b5-9c-ec-98-88-eb-82-98-9d34dcae-2d73-4215-b884-615ec2cce862"
     },
     {
       "surface": "search",
@@ -671,8 +672,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-revive-2b-e83b1875-d4d8-4a75-b114-a4073efb76ef",
-      "response_request_id": "shadow--v1-search-q-revive-2b-e83b1875-d4d8-4a75-b114-a4073efb76ef"
+      "request_id_sent": "shadow--v1-search-q-revive-2b-9a2bc7c8-ac20-449a-9c4d-9ac1ee7327e5",
+      "response_request_id": "shadow--v1-search-q-revive-2b-9a2bc7c8-ac20-449a-9c4d-9ac1ee7327e5"
     },
     {
       "surface": "search",
@@ -756,8 +757,8 @@
         "upcoming": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-92f56e92-8f72-43d3-a10a-51fce5ca5119",
-      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-92f56e92-8f72-43d3-a10a-51fce5ca5119"
+      "request_id_sent": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-61d17b03-5f3a-4684-ae5d-1eb292ad91c7",
+      "response_request_id": "shadow--v1-search-q-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-61d17b03-5f3a-4684-ae5d-1eb292ad91c7"
     },
     {
       "surface": "entity_detail",
@@ -1092,7 +1093,7 @@
             "debut_year": {
               "value": null,
               "status": "review_needed",
-              "provenance": "artistProfiles.debut_year.review_needed.review_needed",
+              "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
               "source_url": null,
               "review_notes": "Debut year is still missing in the canonical entity profile seed."
             },
@@ -1115,7 +1116,7 @@
               "status": "resolved",
               "provenance": "entityMetadataAcquisition.youtube_handle_probe",
               "source_url": "https://www.youtube.com/@YENA_OFFICIAL",
-              "review_notes": "Verified from @yena_official handle probe against the official social handle pattern."
+              "review_notes": "Verified from @YENA_OFFICIAL handle probe against the official social handle pattern."
             },
             "official_instagram": {
               "value": "https://www.instagram.com/yena.jigumina",
@@ -1139,8 +1140,9 @@
           "instagram": "https://www.instagram.com/yena.jigumina"
         },
         "youtube_channels": {
-          "primary_team_channel_url": "https://www.youtube.com/@yena_official",
+          "primary_team_channel_url": "https://www.youtube.com/@YENA_OFFICIAL",
           "mv_allowlist_urls": [
+            "https://www.youtube.com/@YENA_OFFICIAL",
             "https://www.youtube.com/@yena_official"
           ]
         },
@@ -1307,8 +1309,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-yena-3bd2f4f7-ec64-4bad-96e9-7a86a3a3ef5c",
-      "response_request_id": "shadow--v1-entities-yena-3bd2f4f7-ec64-4bad-96e9-7a86a3a3ef5c"
+      "request_id_sent": "shadow--v1-entities-yena-73cf206e-8cf5-4543-9d18-5cf5405d2e32",
+      "response_request_id": "shadow--v1-entities-yena-73cf206e-8cf5-4543-9d18-5cf5405d2e32"
     },
     {
       "surface": "entity_detail",
@@ -1325,6 +1327,85 @@
           "path": "data.official_links.youtube",
           "expected": "https://www.youtube.com/@BLACKPINK",
           "actual": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A"
+        },
+        {
+          "category": "missing rows or segments",
+          "path": "data.source_timeline",
+          "expected": [
+            {
+              "event_type": "first_signal",
+              "headline": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter",
+              "occurred_at": "2026-03-02T15:11:07.000Z",
+              "summary": "album · rumor",
+              "source_type": "news_rss",
+              "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOcldhb1d6S2hhMDQxTDZndUlEa0VqLXROcEJucWkxLTZxdFNha25nckc0LWxVZ2I3MHhnVk0zX0xfM3NnRlpnaW9MemF5U3VnaTRyZWlYRVI0YmxtN1Y0T0U0WmxuZmNqVWRxeDNsaVFOeXpzNGJrSVVsSjEtMHlnMGRBT3hpNDl2RW1IelNpVzdYWTBrNXlZUFNZZHN0VHFkVG1RZERvT3k3SlE?oc=5",
+              "source_domain": "news.google.com"
+            },
+            {
+              "event_type": "first_signal",
+              "headline": "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record - The Korea Economic Daily Global Edition",
+              "occurred_at": "2026-03-01T17:47:48.000Z",
+              "summary": "rumor",
+              "source_type": "news_rss",
+              "source_url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE94bmhvU2RuMVBXTGNpS1VMaExLUXN6c0lCekxVbm1KTy1McTNvTkUycE1KNUl1c0U3b2c5ajh3cE9WSEs0TGJwNlgyZU9LX3JHam55VVhGX3h2SDBoaUdtcGYwWmdGdHc?oc=5",
+              "source_domain": "news.google.com"
+            },
+            {
+              "event_type": "first_signal",
+              "headline": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter",
+              "occurred_at": "2026-02-28T10:50:00.000Z",
+              "summary": "album · rumor",
+              "source_type": "news_rss",
+              "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQREV5ZV9pTDZyVFVyS0JqTDJEbWJGMzh0UDhwcnFKLVFFbDhmVW5rcmVrdGt5cTFkR1BHSzQ4Z0dBZG9RNFBXQVN5UlRKcGF0V1Bycm1KT2ZObWRpS0FBZll0N2RrWjlYWTZlQ3M4Nk8zc2o4dzFMcnlmTzFVMk4zcGZKUms3eFNMQzlLSzN2UERxVmZOOGVyWm90Tzh2b0tHVlJUMHdVZjU5Z0QzWWFibGhEYWtRbzRuNHBZ0gHIAUFVX3lxTFA5LVQ4Uk41RERaWnk5UXh0eC1MTEppZWVTd05yVGlNeEs0UHVKRnExQ3hBcFVsX2wyUmp3Z1U3Z0Q2R3hWcFdBU09hVHV1blJ6VHIyTEgxTnNUc0V5VmxWOUt1S2hwcm11QmRZdUY5c3dfTGZPWE5MT1IzQndIdkUzVHF6NDhCaE9ZeWc5T1JBVlg3MURjV2hrVVVuRDV5ek1LdlRTS1lSTFNCemJxa0t6VlN2bURxM3Uxb0tMRXl0dkJSU3FQbm9l?oc=5",
+              "source_domain": "news.google.com"
+            },
+            {
+              "event_type": "first_signal",
+              "headline": "K-Pop girl group Blackpink drops their third mini album Deadline - Indulgexpress",
+              "occurred_at": "2026-02-28T06:59:53.000Z",
+              "summary": "ep · rumor",
+              "source_type": "news_rss",
+              "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQVG9PNFdjS19QUkVoYU95M21Rb2l5em5EQUVZSzZrcU9qa1hYMWRQSGRnc3dJZDFUYWtBcWstQVREcEw5c3BKc2M5WHJETHB0LUlFTGI3dmFKbXdBbWRtOEZRVTVzZ29UWTRaLVJ5RnhDc25IS2ZsRVNTTXVTWnEtZENIdTVDeUVmM0ZGTXlBSnNBek1aSEs0TFJ4UndGTjVYMDdZWVhmV2tPc092MDN5WnZWYlBiNkJ5M09nbNIBygFBVV95cUxOWlFldno4Y0RLNjhoRFkxN29BT2J3WHdBaFN6THNuYk1HbEZUdzAwSzA5T0U5V3QwVWg1WDZCQUs1S0ZVdDVnSXo3TGpCeTNsZm5tS1VsRDZoVlhyR3doOFNEcVVTVEJubVJTLXNIVG5RX21xN3BEc3preXJVREU0MUVlU2JMalh1Q0QxamJhZ0xIcHFKcTNDV3V4RHFKeV9qZ0dnS2IySkJNaXBVU3lvRDA0eXhYbS1BZFdEbVZBclJQcU9UeFRhUlBB?oc=5",
+              "source_domain": "news.google.com"
+            },
+            {
+              "event_type": "first_signal",
+              "headline": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”",
+              "occurred_at": "2026-02-06T00:00:00.000Z",
+              "summary": "single · rumor",
+              "source_type": "agency_notice",
+              "source_url": "https://www.ygfamily.com/en/news/report/7378",
+              "source_domain": "www.ygfamily.com"
+            },
+            {
+              "event_type": "first_signal",
+              "headline": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ",
+              "occurred_at": "2026-01-14T08:00:00.000Z",
+              "summary": "ep · rumor",
+              "source_type": "news_rss",
+              "source_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4waE5xc2U4eWNJaFhldTl2aGZEdGRxYl9DTVRRYnQ2Sk5rRGMtX2JHVVhiWFV3VTZJdUc1b1VoWWdmM25vcXhDb0dKSlBlanpHSlh2NDlHQ1hEMEtCalpvdkFudzNKZDJ0Y1VnVlpwOTA?oc=5",
+              "source_domain": "news.google.com"
+            },
+            {
+              "event_type": "first_signal",
+              "headline": "Blackpink Sets Release Date for Comeback Album - Pitchfork",
+              "occurred_at": "2026-01-14T08:00:00.000Z",
+              "summary": "album · rumor",
+              "source_type": "news_rss",
+              "source_url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9Ucm80bHB0cUYwcHNhZkJxaWM1MnA5SnJUVzk0ZkdyQmg3b0Q2SXFudk41aXVRN1RjLURta0tvemNPdl8yaE10cVdHbkc2d3dnM3VxSDhtNWhlSGZtM3RYNzJFVThxRzhqWlFjSzR4ekNGM04tLWdWWW9n?oc=5",
+              "source_domain": "news.google.com"
+            },
+            {
+              "event_type": "first_signal",
+              "headline": "K-pop group Blackpink announces new mini album Deadline, out Feb 27 - CNA Lifestyle",
+              "occurred_at": "2026-01-14T08:00:00.000Z",
+              "summary": "ep · rumor",
+              "source_type": "news_rss",
+              "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUFhWaFpuYnA5UDVRQmR0bHhuS2NIS2pfa255aDEzNGlFMHUzQ0p4MVRRLVVGUm13czJyclV5d3Rhd2xCakNqSmNaaDRtdkZhSWxqbk1VbWc0RzdMX3FjZ1RQTEY5RTV1czR6a3pXQmR4RS0wVVZNSHo3QllWLTBidzlESGpVNGwybzZ1Ti1Wc2VuLXE5WWk1U1Y2QlBtY1JWWXp6cjF3VGZwblhfclE?oc=5",
+              "source_domain": "news.google.com"
+            }
+          ],
+          "actual": []
         }
       ],
       "expected_snapshot": {
@@ -1628,7 +1709,7 @@
             "debut_year": {
               "value": null,
               "status": "review_needed",
-              "provenance": "artistProfiles.debut_year.review_needed.review_needed",
+              "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
               "source_url": null,
               "review_notes": "Debut year is still missing in the canonical entity profile seed."
             },
@@ -1651,7 +1732,7 @@
               "status": "resolved",
               "provenance": "entityMetadataAcquisition.youtube_handle_probe",
               "source_url": "https://www.youtube.com/@BLACKPINK",
-              "review_notes": "Verified from @blackpink handle probe against the official social handle pattern."
+              "review_notes": "Verified from @BLACKPINK handle probe against the official social handle pattern."
             },
             "official_instagram": {
               "value": "https://www.instagram.com/blackpinkofficial",
@@ -1675,8 +1756,9 @@
           "instagram": "https://www.instagram.com/blackpinkofficial"
         },
         "youtube_channels": {
-          "primary_team_channel_url": "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A",
+          "primary_team_channel_url": "https://www.youtube.com/@BLACKPINK",
           "mv_allowlist_urls": [
+            "https://www.youtube.com/@BLACKPINK",
             "https://www.youtube.com/@YGEntertainment",
             "https://www.youtube.com/channel/UCOmHUn--16B90oW2L6FRR3A"
           ]
@@ -1843,157 +1925,12 @@
             }
           }
         ],
-        "source_timeline": [
-          {
-            "event_type": "first_signal",
-            "headline": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter",
-            "occurred_at": "2026-03-02T15:11:07+00:00",
-            "summary": "album · rumor",
-            "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOcldhb1d6S2hhMDQxTDZndUlEa0VqLXROcEJucWkxLTZxdFNha25nckc0LWxVZ2I3MHhnVk0zX0xfM3NnRlpnaW9MemF5U3VnaTRyZWlYRVI0YmxtN1Y0T0U0WmxuZmNqVWRxeDNsaVFOeXpzNGJrSVVsSjEtMHlnMGRBT3hpNDl2RW1IelNpVzdYWTBrNXlZUFNZZHN0VHFkVG1RZERvT3k3SlE?oc=5",
-            "source_type": "news_rss",
-            "source_domain": "news.google.com",
-            "published_at": "2026-03-02T15:11:07+00:00",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "release_format": "album",
-            "confidence_score": 0.68,
-            "evidence_summary": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” The Hollywood Reporter",
-            "source_count": 2
-          },
-          {
-            "event_type": "first_signal",
-            "headline": "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record - The Korea Economic Daily Global Edition",
-            "occurred_at": "2026-03-01T17:47:48+00:00",
-            "summary": "rumor",
-            "source_url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE94bmhvU2RuMVBXTGNpS1VMaExLUXN6c0lCekxVbm1KTy1McTNvTkUycE1KNUl1c0U3b2c5ajh3cE9WSEs0TGJwNlgyZU9LX3JHam55VVhGX3h2SDBoaUdtcGYwWmdGdHc?oc=5",
-            "source_type": "news_rss",
-            "source_domain": "news.google.com",
-            "published_at": "2026-03-01T17:47:48+00:00",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "release_format": null,
-            "confidence_score": 0.68,
-            "evidence_summary": "Blackpink's DEADLINE sells 1.46 million copies on day of release, sets new K-pop girl group record The Korea Economic Daily Global Edition",
-            "source_count": 1
-          },
-          {
-            "event_type": "first_signal",
-            "headline": "Blackpink’s Jisoo Shares Love for Album ‘Deadline,’ Talks New Netflix K-Drama: “Blinks Will Love It” - The Hollywood Reporter",
-            "occurred_at": "2026-02-28T10:50:00+00:00",
-            "summary": "album · rumor",
-            "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQREV5ZV9pTDZyVFVyS0JqTDJEbWJGMzh0UDhwcnFKLVFFbDhmVW5rcmVrdGt5cTFkR1BHSzQ4Z0dBZG9RNFBXQVN5UlRKcGF0V1Bycm1KT2ZObWRpS0FBZll0N2RrWjlYWTZlQ3M4Nk8zc2o4dzFMcnlmTzFVMk4zcGZKUms3eFNMQzlLSzN2UERxVmZOOGVyWm90Tzh2b0tHVlJUMHdVZjU5Z0QzWWFibGhEYWtRbzRuNHBZ0gHIAUFVX3lxTFA5LVQ4Uk41RERaWnk5UXh0eC1MTEppZWVTd05yVGlNeEs0UHVKRnExQ3hBcFVsX2wyUmp3Z1U3Z0Q2R3hWcFdBU09hVHV1blJ6VHIyTEgxTnNUc0V5VmxWOUt1S2hwcm11QmRZdUY5c3dfTGZPWE5MT1IzQndIdkUzVHF6NDhCaE9ZeWc5T1JBVlg3MURjV2hrVVVuRDV5ek1LdlRTS1lSTFNCemJxa0t6VlN2bURxM3Uxb0tMRXl0dkJSU3FQbm9l?oc=5",
-            "source_type": "news_rss",
-            "source_domain": "news.google.com",
-            "published_at": "2026-02-28T10:50:00+00:00",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "release_format": "album",
-            "confidence_score": 0.68,
-            "evidence_summary": "Blackpink Sets New Record As ‘Deadline’ Tops First-Day Sales Among K-Pop Girl Groups Outlook Luxe",
-            "source_count": 2
-          },
-          {
-            "event_type": "first_signal",
-            "headline": "K-Pop girl group Blackpink drops their third mini album Deadline - Indulgexpress",
-            "occurred_at": "2026-02-28T06:59:53+00:00",
-            "summary": "ep · rumor",
-            "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQVG9PNFdjS19QUkVoYU95M21Rb2l5em5EQUVZSzZrcU9qa1hYMWRQSGRnc3dJZDFUYWtBcWstQVREcEw5c3BKc2M5WHJETHB0LUlFTGI3dmFKbXdBbWRtOEZRVTVzZ29UWTRaLVJ5RnhDc25IS2ZsRVNTTXVTWnEtZENIdTVDeUVmM0ZGTXlBSnNBek1aSEs0TFJ4UndGTjVYMDdZWVhmV2tPc092MDN5WnZWYlBiNkJ5M09nbNIBygFBVV95cUxOWlFldno4Y0RLNjhoRFkxN29BT2J3WHdBaFN6THNuYk1HbEZUdzAwSzA5T0U5V3QwVWg1WDZCQUs1S0ZVdDVnSXo3TGpCeTNsZm5tS1VsRDZoVlhyR3doOFNEcVVTVEJubVJTLXNIVG5RX21xN3BEc3preXJVREU0MUVlU2JMalh1Q0QxamJhZ0xIcHFKcTNDV3V4RHFKeV9qZ0dnS2IySkJNaXBVU3lvRDA0eXhYbS1BZFdEbVZBclJQcU9UeFRhUlBB?oc=5",
-            "source_type": "news_rss",
-            "source_domain": "news.google.com",
-            "published_at": "2026-02-28T06:59:53+00:00",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "release_format": "ep",
-            "confidence_score": 0.68,
-            "evidence_summary": "K-Pop girl group Blackpink drops their third mini album Deadline Indulgexpress",
-            "source_count": 1
-          },
-          {
-            "event_type": "first_signal",
-            "headline": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care”",
-            "occurred_at": "2026-02-06T00:00:00+00:00",
-            "summary": "single · rumor",
-            "source_url": "https://www.ygfamily.com/en/news/report/7378",
-            "source_type": "agency_notice",
-            "source_domain": "www.ygfamily.com",
-            "published_at": "2026-02-06T00:00:00+00:00",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "release_format": "single",
-            "confidence_score": 0.64,
-            "evidence_summary": "BLACKPINK’s New Title Track Is ‘GO’.. YG “Created with Great Care” BLACKPINK has unveiled the tracklist for their new release. According to YG Entertainment on...",
-            "source_count": 1
-          },
-          {
-            "event_type": "first_signal",
-            "headline": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date - TMZ",
-            "occurred_at": "2026-01-14T08:00:00+00:00",
-            "summary": "ep · rumor",
-            "source_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4waE5xc2U4eWNJaFhldTl2aGZEdGRxYl9DTVRRYnQ2Sk5rRGMtX2JHVVhiWFV3VTZJdUc1b1VoWWdmM25vcXhDb0dKSlBlanpHSlh2NDlHQ1hEMEtCalpvdkFudzNKZDJ0Y1VnVlpwOTA?oc=5",
-            "source_type": "news_rss",
-            "source_domain": "news.google.com",
-            "published_at": "2026-01-14T08:00:00+00:00",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "release_format": "ep",
-            "confidence_score": 0.68,
-            "evidence_summary": "BLACKPINK Finally Reveals 'DEADLINE' Mini Album Release Date TMZ",
-            "source_count": 1
-          },
-          {
-            "event_type": "first_signal",
-            "headline": "Blackpink Sets Release Date for Comeback Album - Pitchfork",
-            "occurred_at": "2026-01-14T08:00:00+00:00",
-            "summary": "album · rumor",
-            "source_url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9Ucm80bHB0cUYwcHNhZkJxaWM1MnA5SnJUVzk0ZkdyQmg3b0Q2SXFudk41aXVRN1RjLURta0tvemNPdl8yaE10cVdHbkc2d3dnM3VxSDhtNWhlSGZtM3RYNzJFVThxRzhqWlFjSzR4ekNGM04tLWdWWW9n?oc=5",
-            "source_type": "news_rss",
-            "source_domain": "news.google.com",
-            "published_at": "2026-01-14T08:00:00+00:00",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "release_format": "album",
-            "confidence_score": 0.68,
-            "evidence_summary": "Blackpink Sets Release Date for Comeback Album Pitchfork",
-            "source_count": 1
-          },
-          {
-            "event_type": "first_signal",
-            "headline": "K-pop group Blackpink announces new mini album Deadline, out Feb 27 - CNA Lifestyle",
-            "occurred_at": "2026-01-14T08:00:00+00:00",
-            "summary": "ep · rumor",
-            "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUFhWaFpuYnA5UDVRQmR0bHhuS2NIS2pfa255aDEzNGlFMHUzQ0p4MVRRLVVGUm13czJyclV5d3Rhd2xCakNqSmNaaDRtdkZhSWxqbk1VbWc0RzdMX3FjZ1RQTEY5RTV1czR6a3pXQmR4RS0wVVZNSHo3QllWLTBidzlESGpVNGwybzZ1Ti1Wc2VuLXE5WWk1U1Y2QlBtY1JWWXp6cjF3VGZwblhfclE?oc=5",
-            "source_type": "news_rss",
-            "source_domain": "news.google.com",
-            "published_at": "2026-01-14T08:00:00+00:00",
-            "scheduled_date": null,
-            "scheduled_month": null,
-            "date_precision": "unknown",
-            "date_status": "rumor",
-            "release_format": "ep",
-            "confidence_score": 0.68,
-            "evidence_summary": "K-pop group Blackpink announces new mini album Deadline, out Feb 27 CNA Lifestyle",
-            "source_count": 1
-          }
-        ],
+        "source_timeline": [],
         "artist_source_url": "https://musicbrainz.org/artist/48646387-1664-4c9a-9139-9bfd091b823c"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-blackpink-d88d7f5b-e546-4e9f-a979-09d0e96d5a3d",
-      "response_request_id": "shadow--v1-entities-blackpink-d88d7f5b-e546-4e9f-a979-09d0e96d5a3d"
+      "request_id_sent": "shadow--v1-entities-blackpink-b4a7f8b3-6b2f-440f-80b3-83ff23300c26",
+      "response_request_id": "shadow--v1-entities-blackpink-b4a7f8b3-6b2f-440f-80b3-83ff23300c26"
     },
     {
       "surface": "entity_detail",
@@ -2187,7 +2124,7 @@
             "debut_year": {
               "value": null,
               "status": "review_needed",
-              "provenance": "artistProfiles.debut_year.review_needed.review_needed",
+              "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
               "source_url": null,
               "review_notes": "Debut year is still missing in the canonical entity profile seed."
             },
@@ -2210,7 +2147,7 @@
               "status": "resolved",
               "provenance": "entityMetadataAcquisition.youtube_handle_probe",
               "source_url": "https://www.youtube.com/@andteamofficial",
-              "review_notes": "Verified from @andTEAMofficial handle probe against the official social handle pattern."
+              "review_notes": "Verified from @andteamofficial handle probe against the official social handle pattern."
             },
             "official_instagram": {
               "value": "https://www.instagram.com/andteam_official",
@@ -2234,9 +2171,10 @@
           "instagram": "https://www.instagram.com/andteam_official"
         },
         "youtube_channels": {
-          "primary_team_channel_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+          "primary_team_channel_url": "https://www.youtube.com/@andteamofficial",
           "mv_allowlist_urls": [
             "https://www.youtube.com/@HYBELABELS",
+            "https://www.youtube.com/@andteamofficial",
             "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg"
           ]
         },
@@ -2425,8 +2363,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-and-team-17a7600f-1696-4d5f-abb7-523b1c27c161",
-      "response_request_id": "shadow--v1-entities-and-team-17a7600f-1696-4d5f-abb7-523b1c27c161"
+      "request_id_sent": "shadow--v1-entities-and-team-e402c94f-0454-449f-b2b6-9cbc8a0a29e2",
+      "response_request_id": "shadow--v1-entities-and-team-e402c94f-0454-449f-b2b6-9cbc8a0a29e2"
     },
     {
       "surface": "entity_detail",
@@ -2530,7 +2468,7 @@
             "agency_name": {
               "value": null,
               "status": "review_needed",
-              "provenance": "artistProfiles.agency.review_needed.review_needed",
+              "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
               "source_url": null,
               "review_notes": "Agency is still missing in the canonical entity profile seed."
             },
@@ -2564,7 +2502,9 @@
         },
         "youtube_channels": {
           "primary_team_channel_url": "https://www.youtube.com/@ALLDAY_PROJECT",
-          "mv_allowlist_urls": []
+          "mv_allowlist_urls": [
+            "https://www.youtube.com/@ALLDAY_PROJECT"
+          ]
         },
         "tracking_state": {
           "tier": "manual",
@@ -2622,8 +2562,8 @@
         "artist_source_url": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-entities-allday-project-6ef0b99a-6021-4b1a-96b9-e4a9bc2a961c",
-      "response_request_id": "shadow--v1-entities-allday-project-6ef0b99a-6021-4b1a-96b9-e4a9bc2a961c"
+      "request_id_sent": "shadow--v1-entities-allday-project-f777142f-3c66-4d3f-886e-fb3cdfa4aabe",
+      "response_request_id": "shadow--v1-entities-allday-project-f777142f-3c66-4d3f-886e-fb3cdfa4aabe"
     },
     {
       "surface": "release_detail",
@@ -2824,10 +2764,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-781d19f7-02ee-49e3-a249-94fedbd68206",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-781d19f7-02ee-49e3-a249-94fedbd68206",
-      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-38ae25ef-b194-453d-b884-e62648e107b3",
-      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-38ae25ef-b194-453d-b884-e62648e107b3"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-45eeee41-1d1a-4a42-939f-9ebbf4d835d4",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-blackpink-title-deadline-date-2026-02-26-stream-album-45eeee41-1d1a-4a42-939f-9ebbf4d835d4",
+      "detail_request_id_sent": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-2bf403f3-58a4-49d7-b8f5-220dc4d0116d",
+      "detail_response_request_id": "shadow--v1-releases-75d59b7a-9f0e-526c-9920-3a156c1a9e36-2bf403f3-58a4-49d7-b8f5-220dc4d0116d"
     },
     {
       "surface": "release_detail",
@@ -3147,10 +3087,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-2146428d-f8a1-46df-b1dd-b741805f4e09",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-2146428d-f8a1-46df-b1dd-b741805f4e09",
-      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-84fbda42-4c09-4736-94a8-7f6fe97d0f12",
-      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-84fbda42-4c09-4736-94a8-7f6fe97d0f12"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-b510eea9-b1b2-44c8-8b4b-da4e1be6679c",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-ive-title-revive-2b-date-2026-02-23-stream-album-b510eea9-b1b2-44c8-8b4b-da4e1be6679c",
+      "detail_request_id_sent": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-a0db0161-6e66-45a7-910f-eedc83ff525b",
+      "detail_response_request_id": "shadow--v1-releases-c339f501-52fe-599d-8d2d-bf5694ae4de4-a0db0161-6e66-45a7-910f-eedc83ff525b"
     },
     {
       "surface": "release_detail",
@@ -3299,10 +3239,10 @@
       },
       "lookup_status_code": 200,
       "detail_status_code": 200,
-      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-61d869a0-7d8b-4f51-87c1-c490f3593b54",
-      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-61d869a0-7d8b-4f51-87c1-c490f3593b54",
-      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-e0db6c50-0bcd-4832-9c40-1a075b732044",
-      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-e0db6c50-0bcd-4832-9c40-1a075b732044"
+      "lookup_request_id_sent": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-8dd2a4a1-b14a-4c82-986f-1bb08370fa31",
+      "lookup_response_request_id": "shadow--v1-releases-lookup-entity_slug-qwer-title-ed-9d-b0-ec-88-98-ec-97-bc-ea-b3-a0-eb-9e-98-date-2025-10-06-stream-song-8dd2a4a1-b14a-4c82-986f-1bb08370fa31",
+      "detail_request_id_sent": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-8533959d-a9f4-47c8-bc38-2f463610da37",
+      "detail_response_request_id": "shadow--v1-releases-d9a85b3d-ed19-51bb-a6c4-e5e538401b50-8533959d-a9f4-47c8-bc38-2f463610da37"
     },
     {
       "surface": "calendar_month",
@@ -3324,8 +3264,8 @@
             "month_only_upcoming_count": 4
           },
           "actual": {
-            "verified_count": 3,
-            "exact_upcoming_count": 3,
+            "verified_count": 4,
+            "exact_upcoming_count": 2,
             "month_only_upcoming_count": 4
           }
         },
@@ -3402,10 +3342,10 @@
             },
             {
               "date": "2026-03-12",
-              "verified_releases": [],
-              "exact_upcoming": [
-                "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12|2026-03|exact|confirmed|ep|news_rss|https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5|news.google.com|4"
-              ]
+              "verified_releases": [
+                "p1harmony|UNIQUE|2026-03-12|album"
+              ],
+              "exact_upcoming": []
             },
             {
               "date": "2026-03-20",
@@ -3424,6 +3364,21 @@
           ]
         },
         {
+          "category": "missing rows or segments",
+          "path": "data.verified_list",
+          "expected": [
+            "tunexx|SET BY US ONLY|2026-03-03|album",
+            "h1-key|LOVECHAPTER|2026-03-05|album",
+            "yena|LOVE CATCHER|2026-03-11|album"
+          ],
+          "actual": [
+            "tunexx|SET BY US ONLY|2026-03-03|album",
+            "h1-key|LOVECHAPTER|2026-03-05|album",
+            "yena|LOVE CATCHER|2026-03-11|album",
+            "p1harmony|UNIQUE|2026-03-12|album"
+          ]
+        },
+        {
           "category": "exact-vs-month-only drift",
           "path": "data.scheduled_list",
           "expected": [
@@ -3437,7 +3392,6 @@
             "ab6ix|AB6IX Unveils 'So Sweet' Ahead of March Album - 조선일보||2026-03|month_only|scheduled|album|news_rss|https://news.google.com/rss/articles/CBMijgFBVV95cUxNbHNMekRwTExfSmdJZlZ5ZXJwSkhsUFZObjJzZFREVjFHWG1TNHFWNmt4aVhqV1lvNVo5MVI4cXF5Z3FPWGtVUkxBUHNMQ05RWUhwYzl2R2FzWFZTcFZJQ0czOTI0MFVQZ2RLUFZaVkgtUnVITlZFMjZyakdNcjBUT0o1ZzJRVUFXVXdmZGdR?oc=5|news.google.com|1"
           ],
           "actual": [
-            "p1harmony|P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보|2026-03-12|2026-03|exact|confirmed|ep|news_rss|https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5|news.google.com|4",
             "bts|Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net|2026-03-20|2026-03|exact|confirmed|album|news_rss|https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5|news.google.com|4",
             "bts|Gwanghwamun Square hosts BTS comeback concert March 21, expecting 260k fans - artthreat.net|2026-03-21|2026-03|exact|scheduled||news_rss|https://news.google.com/rss/articles/CBMirAFBVV95cUxNbUJYMndMdVRDQTZGRGVzT3dUMlpiWFc1b2NrZUpIUVpZWkFia2xiU0xXN3pHdXRJbzRsRHRpc01pTGEzSlNOSXJhdGVqRWkwX1I0R05FRkpXNk0zUkh4WjZ6R251T3diRURZQ3BDOUViMk5TVFByUnZzRC1GS2RFbWJHRFdCRk94ZFFqanR4MXRmaGZVVWh6RGFGbFE4aGd2ZktQVEZOdjV5VVAx?oc=5|news.google.com|1",
             "ab6ix|AB6IX announces March comeback with their first full album in 5 years - allkpop||2026-03|month_only|scheduled|album|news_rss|https://news.google.com/rss/articles/CBMirgFBVV95cUxNTTRFb2pHMTZWckFqWVRGMTVDTm51S2xhRGhZY3F6UXhzbXJaQUMzVTFMM094SGphU0I1VWd5VGVtbTZYeHVMRGx0QVRJU01xS2Y3ZUp4UmUtandjVk1LaUJGSWxWTnZVSExjRUY2eFJLeVZFSjZGNGdvVnpWZFNmVEw3MFZxMXh2cHNkeURSRWliMHNfMnlQTHk4bGhZNkx6ajdFYXBGejV5R2dHbkE?oc=5|news.google.com|1",
@@ -3454,20 +3408,20 @@
           "month_only_upcoming_count": 4
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
-          "entity_slug": "p1harmony",
-          "display_name": "P1Harmony",
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-          "scheduled_date": "2026-03-12",
+          "upcoming_signal_id": "bts::2026-03-20::arirang highly anticipated march 20 3 year hiatus",
+          "entity_slug": "bts",
+          "display_name": "BTS",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+          "scheduled_date": "2026-03-20",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
           "confidence_score": 0.82,
-          "release_format": "ep",
-          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+          "release_format": "album",
+          "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
           "source_type": "news_rss",
           "source_domain": "news.google.com",
-          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
           "source_count": 4
         },
         "days": [
@@ -3840,28 +3794,28 @@
       },
       "actual_snapshot": {
         "summary": {
-          "verified_count": 3,
-          "exact_upcoming_count": 3,
+          "verified_count": 4,
+          "exact_upcoming_count": 2,
           "month_only_upcoming_count": 4
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
-          "entity_slug": "p1harmony",
-          "display_name": "P1Harmony",
+          "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742",
+          "entity_slug": "bts",
+          "display_name": "BTS",
           "entity_type": null,
           "agency_name": null,
           "tracking_status": null,
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-          "scheduled_date": "2026-03-12",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+          "scheduled_date": "2026-03-20",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
           "confidence_score": 0.82,
-          "release_format": "ep",
-          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+          "release_format": "album",
+          "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
           "source_type": "news_rss",
           "source_domain": "news.google.com",
-          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
           "source_count": 4
         },
         "days": [
@@ -3927,29 +3881,23 @@
           },
           {
             "date": "2026-03-12",
-            "verified_releases": [],
-            "exact_upcoming": [
+            "verified_releases": [
               {
-                "upcoming_signal_id": "[truncated]",
+                "release_id": "[truncated]",
                 "entity_slug": "[truncated]",
                 "display_name": "[truncated]",
                 "entity_type": "[truncated]",
                 "agency_name": "[truncated]",
-                "tracking_status": "[truncated]",
-                "headline": "[truncated]",
-                "scheduled_date": "[truncated]",
-                "scheduled_month": "[truncated]",
-                "date_precision": "[truncated]",
-                "date_status": "[truncated]",
-                "confidence_score": "[truncated]",
+                "release_title": "[truncated]",
+                "stream": "[truncated]",
+                "release_kind": "[truncated]",
                 "release_format": "[truncated]",
                 "source_url": "[truncated]",
-                "source_type": "[truncated]",
-                "source_domain": "[truncated]",
-                "evidence_summary": "[truncated]",
-                "source_count": "[truncated]"
+                "artist_source_url": "[truncated]",
+                "release_date": "[truncated]"
               }
-            ]
+            ],
+            "exact_upcoming": []
           },
           {
             "date": "2026-03-20",
@@ -4128,29 +4076,23 @@
             "source_url": null,
             "artist_source_url": null,
             "release_date": "2026-03-11"
-          }
-        ],
-        "scheduled_list": [
+          },
           {
-            "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
+            "release_id": "76e852d1-777e-5e9f-b719-5cff46f544e3",
             "entity_slug": "p1harmony",
             "display_name": "P1Harmony",
             "entity_type": null,
             "agency_name": null,
-            "tracking_status": null,
-            "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-            "scheduled_date": "2026-03-12",
-            "scheduled_month": "2026-03",
-            "date_precision": "exact",
-            "date_status": "confirmed",
-            "confidence_score": 0.82,
-            "release_format": "ep",
-            "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
-            "source_type": "news_rss",
-            "source_domain": "news.google.com",
-            "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
-            "source_count": 4
-          },
+            "release_title": "UNIQUE",
+            "stream": "album",
+            "release_kind": "ep",
+            "release_format": null,
+            "source_url": null,
+            "artist_source_url": null,
+            "release_date": "2026-03-12"
+          }
+        ],
+        "scheduled_list": [
           {
             "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742",
             "entity_slug": "bts",
@@ -4274,8 +4216,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-893d8899-ad18-42c5-8e14-a5048b227016",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-03-893d8899-ad18-42c5-8e14-a5048b227016"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-03-836e0791-2253-4cc0-979d-ffd55d965642",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-03-836e0791-2253-4cc0-979d-ffd55d965642"
     },
     {
       "surface": "calendar_month",
@@ -4292,20 +4234,20 @@
           "month_only_upcoming_count": 10
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
-          "entity_slug": "p1harmony",
-          "display_name": "P1Harmony",
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-          "scheduled_date": "2026-03-12",
+          "upcoming_signal_id": "bts::2026-03-20::arirang highly anticipated march 20 3 year hiatus",
+          "entity_slug": "bts",
+          "display_name": "BTS",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+          "scheduled_date": "2026-03-20",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
           "confidence_score": 0.82,
-          "release_format": "ep",
-          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+          "release_format": "album",
+          "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
           "source_type": "news_rss",
           "source_domain": "news.google.com",
-          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
           "source_count": 4
         },
         "days": [
@@ -4733,23 +4675,23 @@
           "month_only_upcoming_count": 10
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
-          "entity_slug": "p1harmony",
-          "display_name": "P1Harmony",
+          "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742",
+          "entity_slug": "bts",
+          "display_name": "BTS",
           "entity_type": null,
           "agency_name": null,
           "tracking_status": null,
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-          "scheduled_date": "2026-03-12",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+          "scheduled_date": "2026-03-20",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
           "confidence_score": 0.82,
-          "release_format": "ep",
-          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+          "release_format": "album",
+          "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
           "source_type": "news_rss",
           "source_domain": "news.google.com",
-          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
           "source_count": 4
         },
         "days": [
@@ -5253,8 +5195,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-de912d8d-bfd2-46b4-b524-d3230c3b15b7",
-      "response_request_id": "shadow--v1-calendar-month-month-2026-04-de912d8d-bfd2-46b4-b524-d3230c3b15b7"
+      "request_id_sent": "shadow--v1-calendar-month-month-2026-04-02de9e4a-be76-4ea3-bf71-b93b4702ac75",
+      "response_request_id": "shadow--v1-calendar-month-month-2026-04-02de9e4a-be76-4ea3-bf71-b93b4702ac75"
     },
     {
       "surface": "calendar_month",
@@ -5271,20 +5213,20 @@
           "month_only_upcoming_count": 0
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
-          "entity_slug": "p1harmony",
-          "display_name": "P1Harmony",
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-          "scheduled_date": "2026-03-12",
+          "upcoming_signal_id": "bts::2026-03-20::arirang highly anticipated march 20 3 year hiatus",
+          "entity_slug": "bts",
+          "display_name": "BTS",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+          "scheduled_date": "2026-03-20",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
           "confidence_score": 0.82,
-          "release_format": "ep",
-          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+          "release_format": "album",
+          "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
           "source_type": "news_rss",
           "source_domain": "news.google.com",
-          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
           "source_count": 4
         },
         "days": [
@@ -5643,23 +5585,23 @@
           "month_only_upcoming_count": 0
         },
         "nearest_upcoming": {
-          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
-          "entity_slug": "p1harmony",
-          "display_name": "P1Harmony",
+          "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742",
+          "entity_slug": "bts",
+          "display_name": "BTS",
           "entity_type": null,
           "agency_name": null,
           "tracking_status": null,
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-          "scheduled_date": "2026-03-12",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+          "scheduled_date": "2026-03-20",
           "scheduled_month": "2026-03",
           "date_precision": "exact",
           "date_status": "confirmed",
           "confidence_score": 0.82,
-          "release_format": "ep",
-          "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+          "release_format": "album",
+          "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
           "source_type": "news_rss",
           "source_domain": "news.google.com",
-          "evidence_summary": "Future date reference: 2026-03-12. P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 조선일보",
+          "evidence_summary": "Future date reference: 2026-03-20. Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus artthreat.net",
           "source_count": 4
         },
         "days": [
@@ -6162,40 +6104,67 @@
         "scheduled_list": []
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-7400b665-5841-4876-b02d-41d3d9c108d8",
-      "response_request_id": "shadow--v1-calendar-month-month-2025-10-7400b665-5841-4876-b02d-41d3d9c108d8"
+      "request_id_sent": "shadow--v1-calendar-month-month-2025-10-3e795e06-77a6-4580-bf4d-2adb663e9af2",
+      "response_request_id": "shadow--v1-calendar-month-month-2025-10-3e795e06-77a6-4580-bf4d-2adb663e9af2"
     },
     {
       "surface": "radar",
       "input": {
         "surface": "default"
       },
-      "clean": true,
-      "mismatch_categories": [],
-      "mismatches": [],
+      "clean": false,
+      "mismatch_categories": [
+        "radar eligibility drift"
+      ],
+      "mismatches": [
+        {
+          "category": "radar eligibility drift",
+          "path": "data.rookie",
+          "expected": [
+            "atheart|2025|Shut Up|2026-02-26|song|true|undefined|Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop|||unknown|rumor",
+            "hearts2hearts|2025|RUDE!|2026-02-20|song|true|undefined|Hearts2Hearts Announce Comeback Single “RUDE!”: Here’s When It Drops - inmusicblog.com|||unknown|rumor",
+            "kiiikiii|2025|Delulu Pack|2026-01-25|album|true|undefined|Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop|||unknown|rumor",
+            "kickflip|2025|From KickFlip, To WeFlip|2026-01-20|song|true|undefined|KickFlip announces April comeback - Music Mundial||2026-04|month_only|scheduled",
+            "allday-project|2025|ALLDAY PROJECT|2025-12-08|album|false|null",
+            "close-your-eyes|2025|blackout|2025-11-11|album|false|null",
+            "xlov|2025|UXLXVE|2025-11-05|album|false|null",
+            "ifeye|2025|sweet tang|2025-07-16|album|false|null"
+          ],
+          "actual": [
+            "atheart|2025|Shut Up|2026-02-26|song|true|undefined|Rookie group AtHeart drops bold new teaser photos for 'The New Black' - allkpop|||unknown|rumor",
+            "kiiikiii|2025|Delulu Pack|2026-01-25|album|true|undefined|Kakao Entertainment announces 2026 plans for its artists MONSTA X, IVE, KiiiKiii, & more - allkpop|||unknown|rumor",
+            "kickflip|2025|From KickFlip, To WeFlip|2026-01-20|song|true|undefined|KickFlip announces April comeback - Music Mundial||2026-04|month_only|scheduled",
+            "hearts2hearts|2025|RUDE!|2026-02-20|song|false|null",
+            "allday-project|2025|ALLDAY PROJECT|2025-12-08|album|false|null",
+            "close-your-eyes|2025|blackout|2025-11-11|album|false|null",
+            "xlov|2025|UXLXVE|2025-11-05|album|false|null",
+            "ifeye|2025|sweet tang|2025-07-16|album|false|null"
+          ]
+        }
+      ],
       "expected_snapshot": {
         "featured_upcoming": {
-          "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
-          "entity_slug": "p1harmony",
-          "display_name": "P1Harmony",
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-          "scheduled_date": "2026-03-12",
+          "upcoming_signal_id": "bts::2026-03-20::arirang highly anticipated march 20 3 year hiatus",
+          "entity_slug": "bts",
+          "display_name": "BTS",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+          "scheduled_date": "2026-03-20",
           "date_precision": "exact",
           "date_status": "confirmed",
           "confidence_score": 0.82,
-          "release_format": "ep"
+          "release_format": "album"
         },
         "weekly_upcoming": [
           {
-            "upcoming_signal_id": "p1harmony::2026-03-12::march 12 future date reference 2026 03 12",
-            "entity_slug": "p1harmony",
-            "display_name": "P1Harmony",
-            "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
-            "scheduled_date": "2026-03-12",
+            "upcoming_signal_id": "bts::2026-03-20::arirang highly anticipated march 20 3 year hiatus",
+            "entity_slug": "bts",
+            "display_name": "BTS",
+            "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+            "scheduled_date": "2026-03-20",
             "date_precision": "exact",
             "date_status": "confirmed",
             "confidence_score": 0.82,
-            "release_format": "ep"
+            "release_format": "album"
           }
         ],
         "change_feed": [
@@ -6363,7 +6332,7 @@
               "stream": "song",
               "release_kind": "single"
             },
-            "gap_days": 1007,
+            "gap_days": 1008,
             "has_upcoming_signal": true,
             "latest_signal": {
               "upcoming_signal_id": "bts::undated::arirang",
@@ -6387,7 +6356,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 518,
+            "gap_days": 519,
             "has_upcoming_signal": true,
             "latest_signal": {
               "upcoming_signal_id": "ab6ix::2026-03::future month reference 2026 03 unveils",
@@ -6411,7 +6380,7 @@
               "stream": "song",
               "release_kind": "single"
             },
-            "gap_days": 1730,
+            "gap_days": 1731,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -6425,7 +6394,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 1336,
+            "gap_days": 1337,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -6439,7 +6408,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 1248,
+            "gap_days": 1249,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -6453,7 +6422,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 836,
+            "gap_days": 837,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -6467,7 +6436,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 743,
+            "gap_days": 744,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -6481,7 +6450,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 640,
+            "gap_days": 641,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -6495,7 +6464,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 631,
+            "gap_days": 632,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -6509,7 +6478,7 @@
               "stream": "song",
               "release_kind": "single"
             },
-            "gap_days": 629,
+            "gap_days": 630,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -6523,7 +6492,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 626,
+            "gap_days": 627,
             "has_upcoming_signal": false,
             "latest_signal": null
           },
@@ -6537,7 +6506,7 @@
               "stream": "album",
               "release_kind": "ep"
             },
-            "gap_days": 611,
+            "gap_days": 612,
             "has_upcoming_signal": false,
             "latest_signal": null
           }
@@ -6691,15 +6660,15 @@
       },
       "actual_snapshot": {
         "featured_upcoming": {
-          "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+          "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
           "date_status": "confirmed",
-          "entity_slug": "p1harmony",
-          "display_name": "P1Harmony",
+          "entity_slug": "bts",
+          "display_name": "BTS",
           "date_precision": "exact",
-          "release_format": "ep",
-          "scheduled_date": "2026-03-12",
+          "release_format": "album",
+          "scheduled_date": "2026-03-20",
           "confidence_score": 0.82,
-          "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
+          "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742",
           "scheduled_month": null,
           "source_url": null,
           "source_type": null,
@@ -6709,15 +6678,15 @@
         },
         "weekly_upcoming": [
           {
-            "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+            "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
             "date_status": "confirmed",
-            "entity_slug": "p1harmony",
-            "display_name": "P1Harmony",
+            "entity_slug": "bts",
+            "display_name": "BTS",
             "date_precision": "exact",
-            "release_format": "ep",
-            "scheduled_date": "2026-03-12",
+            "release_format": "album",
+            "scheduled_date": "2026-03-20",
             "confidence_score": 0.82,
-            "upcoming_signal_id": "909b6943-f6f5-5b45-a753-e625f9678735",
+            "upcoming_signal_id": "d830b9ba-3993-55fe-9f8b-680fa46e2742",
             "scheduled_month": null,
             "source_url": null,
             "source_type": null,
@@ -6745,7 +6714,7 @@
             "stream": "song",
             "release_id": "e5976e68-a795-52dd-b40e-a72493038dd3",
             "entity_slug": "atheart",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "AtHeart",
             "release_date": "2026-02-26",
             "release_kind": "single",
@@ -6756,7 +6725,7 @@
             "stream": "album",
             "release_id": "e3526174-e804-56f2-9d50-17f9f817a351",
             "entity_slug": "blackpink",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "BLACKPINK",
             "release_date": "2026-02-26",
             "release_kind": null,
@@ -6767,7 +6736,7 @@
             "stream": "album",
             "release_id": "75d59b7a-9f0e-526c-9920-3a156c1a9e36",
             "entity_slug": "blackpink",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "BLACKPINK",
             "release_date": "2026-02-27",
             "release_kind": "ep",
@@ -6778,7 +6747,7 @@
             "stream": "album",
             "release_id": "6a1db562-83b4-5e9d-a00f-6ea0ebfb6680",
             "entity_slug": "h1-key",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "H1-KEY",
             "release_date": "2026-03-05",
             "release_kind": "ep",
@@ -6789,7 +6758,7 @@
             "stream": "song",
             "release_id": "06aa603b-b554-52a8-b9e4-47c6a6764e53",
             "entity_slug": "hearts2hearts",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "Hearts2Hearts",
             "release_date": "2026-02-20",
             "release_kind": "single",
@@ -6800,7 +6769,7 @@
             "stream": "album",
             "release_id": "c339f501-52fe-599d-8d2d-bf5694ae4de4",
             "entity_slug": "ive",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "IVE",
             "release_date": "2026-02-23",
             "release_kind": "album",
@@ -6811,7 +6780,7 @@
             "stream": "song",
             "release_id": "179b842f-9bd1-56ca-aaf6-b33e3f87159b",
             "entity_slug": "nct-wish",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "NCT WISH",
             "release_date": "2026-02-27",
             "release_kind": "single",
@@ -6822,7 +6791,7 @@
             "stream": "song",
             "release_id": "d5137bf0-b49d-59f6-815a-5b591cfb966b",
             "entity_slug": "nmixx",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "NMIXX",
             "release_date": "2026-02-26",
             "release_kind": "single",
@@ -6830,10 +6799,21 @@
           },
           {
             "kind": "verified_release",
+            "stream": "album",
+            "release_id": "76e852d1-777e-5e9f-b719-5cff46f544e3",
+            "entity_slug": "p1harmony",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
+            "display_name": "P1Harmony",
+            "release_date": "2026-03-12",
+            "release_kind": "ep",
+            "release_title": "UNIQUE"
+          },
+          {
+            "kind": "verified_release",
             "stream": "song",
             "release_id": "2c209a92-9d0e-5a9b-8cf1-93ed8f92911a",
             "entity_slug": "rescene",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "RESCENE",
             "release_date": "2026-02-27",
             "release_kind": "single",
@@ -6844,27 +6824,16 @@
             "stream": "album",
             "release_id": "7c27ebee-3b8e-56c4-8b4c-b58f040b16b3",
             "entity_slug": "stayc",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
+            "occurred_at": "2026-03-12T18:35:54.209Z",
             "display_name": "STAYC",
             "release_date": "2026-02-11",
             "release_kind": "album",
             "release_title": "STAY ALIVE"
-          },
-          {
-            "kind": "verified_release",
-            "stream": "song",
-            "release_id": "1adfe761-7983-5747-8fdd-282e23684f26",
-            "entity_slug": "trendz",
-            "occurred_at": "2026-03-12T02:33:59.504Z",
-            "display_name": "TRENDZ",
-            "release_date": "2026-02-13",
-            "release_kind": "single",
-            "release_title": "Kart Racer"
           }
         ],
         "long_gap": [
           {
-            "gap_days": 1007,
+            "gap_days": 1008,
             "entity_slug": "bts",
             "display_name": "BTS",
             "watch_reason": "long_gap",
@@ -6896,7 +6865,7 @@
             "has_upcoming_signal": true
           },
           {
-            "gap_days": 518,
+            "gap_days": 519,
             "entity_slug": "ab6ix",
             "display_name": "AB6IX",
             "watch_reason": "long_gap",
@@ -6928,7 +6897,7 @@
             "has_upcoming_signal": true
           },
           {
-            "gap_days": 1730,
+            "gap_days": 1731,
             "entity_slug": "wayv",
             "display_name": "WayV",
             "watch_reason": "long_gap",
@@ -6946,7 +6915,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 1336,
+            "gap_days": 1337,
             "entity_slug": "just-b",
             "display_name": "JUST B",
             "watch_reason": "long_gap",
@@ -6964,7 +6933,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 1248,
+            "gap_days": 1249,
             "entity_slug": "mamamoo",
             "display_name": "MAMAMOO",
             "watch_reason": "long_gap",
@@ -6982,7 +6951,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 836,
+            "gap_days": 837,
             "entity_slug": "atbo",
             "display_name": "ATBO",
             "watch_reason": "long_gap",
@@ -7000,7 +6969,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 743,
+            "gap_days": 744,
             "entity_slug": "nomad",
             "display_name": "NOMAD",
             "watch_reason": "long_gap",
@@ -7018,7 +6987,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 640,
+            "gap_days": 641,
             "entity_slug": "cignature",
             "display_name": "cignature",
             "watch_reason": "long_gap",
@@ -7036,7 +7005,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 631,
+            "gap_days": 632,
             "entity_slug": "blitzers",
             "display_name": "BLITZERS",
             "watch_reason": "long_gap",
@@ -7054,7 +7023,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 629,
+            "gap_days": 630,
             "entity_slug": "newjeans",
             "display_name": "NewJeans",
             "watch_reason": "long_gap",
@@ -7072,7 +7041,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 626,
+            "gap_days": 627,
             "entity_slug": "red-velvet",
             "display_name": "Red Velvet",
             "watch_reason": "long_gap",
@@ -7090,7 +7059,7 @@
             "has_upcoming_signal": false
           },
           {
-            "gap_days": 611,
+            "gap_days": 612,
             "entity_slug": "weeekly",
             "display_name": "Weeekly",
             "watch_reason": "long_gap",
@@ -7134,37 +7103,6 @@
               "release_date": "2026-02-26",
               "release_kind": "single",
               "release_title": "Shut Up",
-              "release_format": null,
-              "source_url": null,
-              "artist_source_url": null
-            },
-            "has_upcoming_signal": true
-          },
-          {
-            "debut_year": 2025,
-            "entity_slug": "hearts2hearts",
-            "display_name": "Hearts2Hearts",
-            "latest_signal": {
-              "headline": "Hearts2Hearts Announce Comeback Single “RUDE!”: Here’s When It Drops - inmusicblog.com",
-              "date_status": "rumor",
-              "date_precision": "unknown",
-              "latest_seen_at": "2026-02-12T15:30:11.000Z",
-              "release_format": "single",
-              "scheduled_date": null,
-              "scheduled_month": null,
-              "confidence_score": 0.68,
-              "upcoming_signal_id": "113ba3c1-a52d-56c0-a58d-d3b204addf15",
-              "source_url": null,
-              "source_type": null,
-              "source_domain": null,
-              "evidence_summary": null
-            },
-            "latest_release": {
-              "stream": "song",
-              "release_id": "06aa603b-b554-52a8-b9e4-47c6a6764e53",
-              "release_date": "2026-02-20",
-              "release_kind": "single",
-              "release_title": "RUDE!",
               "release_format": null,
               "source_url": null,
               "artist_source_url": null
@@ -7232,6 +7170,23 @@
               "artist_source_url": null
             },
             "has_upcoming_signal": true
+          },
+          {
+            "debut_year": 2025,
+            "entity_slug": "hearts2hearts",
+            "display_name": "Hearts2Hearts",
+            "latest_signal": null,
+            "latest_release": {
+              "stream": "song",
+              "release_id": "06aa603b-b554-52a8-b9e4-47c6a6764e53",
+              "release_date": "2026-02-20",
+              "release_kind": "single",
+              "release_title": "RUDE!",
+              "release_format": null,
+              "source_url": null,
+              "artist_source_url": null
+            },
+            "has_upcoming_signal": false
           },
           {
             "debut_year": 2025,
@@ -7304,8 +7259,8 @@
         ]
       },
       "actual_status_code": 200,
-      "request_id_sent": "shadow--v1-radar-759c0b08-dda4-428a-a501-c08fd2ff5aaf",
-      "response_request_id": "shadow--v1-radar-759c0b08-dda4-428a-a501-c08fd2ff5aaf"
+      "request_id_sent": "shadow--v1-radar-8f05d0a5-d2c2-42b9-832b-21c454ea4773",
+      "response_request_id": "shadow--v1-radar-8f05d0a5-d2c2-42b9-832b-21c454ea4773"
     }
   ]
 }

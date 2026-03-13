@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-12T08:28:07.937Z",
+  "generated_at": "2026-03-13T00:10:49.273Z",
   "repo": "iAmSomething/idol-song-app",
   "repository": {
     "default_branch": "main",
     "private": false,
     "archived": false,
     "disabled": false,
-    "pushed_at": "2026-03-12T08:08:03.000Z",
-    "updated_at": "2026-03-12T08:08:07.000Z"
+    "pushed_at": "2026-03-13T00:07:32.000Z",
+    "updated_at": "2026-03-13T00:07:33.000Z"
   },
   "actions_permissions": {
     "actions_enabled": true,
@@ -17,6 +17,47 @@
     "can_approve_pull_request_reviews": false
   },
   "workflows": {
+    "same_day_release_polling": {
+      "workflow": "release-day-verification.yml",
+      "workflow_registered": true,
+      "workflow_state": "active",
+      "workflow_html_url": "https://github.com/iAmSomething/idol-song-app/blob/main/.github/workflows/release-day-verification.yml",
+      "cadence_label": "hourly",
+      "cadence_status": "pass",
+      "schedule_expectation": "0 * * * *",
+      "workflow_created_at": "2026-03-12T22:32:13.000+09:00",
+      "workflow_updated_at": "2026-03-12T22:32:13.000+09:00",
+      "observed_scheduled_runs": 8,
+      "expected_scheduled_runs_by_now": 11,
+      "missed_scheduled_windows": 3,
+      "first_expected_run_at": "2026-03-12T14:00:00.000Z",
+      "next_expected_run_at": "2026-03-13T01:00:00.000Z",
+      "last_success_at": "2026-03-12T23:35:21.000Z",
+      "last_success_age_hours": 0.59,
+      "manual_runs": 0,
+      "latest_run": {
+        "database_id": 23028959870,
+        "event": "schedule",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-03-12T23:35:08.000Z",
+        "started_at": "2026-03-12T23:35:08.000Z",
+        "updated_at": "2026-03-12T23:35:21.000Z",
+        "duration_minutes": 0.22,
+        "html_url": "https://github.com/iAmSomething/idol-song-app/actions/runs/23028959870"
+      },
+      "latest_scheduled_run": {
+        "database_id": 23028959870,
+        "event": "schedule",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-03-12T23:35:08.000Z",
+        "started_at": "2026-03-12T23:35:08.000Z",
+        "updated_at": "2026-03-12T23:35:21.000Z",
+        "duration_minutes": 0.22,
+        "html_url": "https://github.com/iAmSomething/idol-song-app/actions/runs/23028959870"
+      }
+    },
     "daily_upcoming": {
       "workflow": "weekly-kpop-scan.yml",
       "workflow_registered": true,
@@ -26,25 +67,25 @@
       "cadence_status": "scheduled_evidence_missing",
       "schedule_expectation": "0 0 * * *",
       "workflow_created_at": "2026-03-06T16:34:09.000+09:00",
-      "workflow_updated_at": "2026-03-12T12:34:12.000+09:00",
+      "workflow_updated_at": "2026-03-12T17:54:00.000+09:00",
       "observed_scheduled_runs": 0,
-      "expected_scheduled_runs_by_now": 6,
-      "missed_scheduled_windows": 6,
+      "expected_scheduled_runs_by_now": 7,
+      "missed_scheduled_windows": 7,
       "first_expected_run_at": "2026-03-07T00:00:00.000Z",
-      "next_expected_run_at": "2026-03-13T00:00:00.000Z",
+      "next_expected_run_at": "2026-03-14T00:00:00.000Z",
       "last_success_at": null,
       "last_success_age_hours": null,
       "manual_runs": 12,
       "latest_run": {
-        "database_id": 22992379968,
+        "database_id": 22993619482,
         "event": "push",
         "status": "completed",
         "conclusion": "failure",
-        "created_at": "2026-03-12T08:08:05.000Z",
-        "started_at": "2026-03-12T08:08:05.000Z",
-        "updated_at": "2026-03-12T08:08:05.000Z",
+        "created_at": "2026-03-12T08:45:18.000Z",
+        "started_at": "2026-03-12T08:45:18.000Z",
+        "updated_at": "2026-03-12T08:45:18.000Z",
         "duration_minutes": 0,
-        "html_url": "https://github.com/iAmSomething/idol-song-app/actions/runs/22992379968"
+        "html_url": "https://github.com/iAmSomething/idol-song-app/actions/runs/22993619482"
       },
       "latest_scheduled_run": null
     },
@@ -57,7 +98,7 @@
       "cadence_status": "warming_up",
       "schedule_expectation": "0 1 * * 0",
       "workflow_created_at": "2026-03-11T16:14:52.000+09:00",
-      "workflow_updated_at": "2026-03-12T16:30:31.000+09:00",
+      "workflow_updated_at": "2026-03-12T17:54:00.000+09:00",
       "observed_scheduled_runs": 0,
       "expected_scheduled_runs_by_now": 0,
       "missed_scheduled_windows": 0,
@@ -67,15 +108,15 @@
       "last_success_age_hours": null,
       "manual_runs": 12,
       "latest_run": {
-        "database_id": 22992380222,
+        "database_id": 22993619306,
         "event": "push",
         "status": "completed",
         "conclusion": "failure",
-        "created_at": "2026-03-12T08:08:06.000Z",
-        "started_at": "2026-03-12T08:08:06.000Z",
-        "updated_at": "2026-03-12T08:08:06.000Z",
+        "created_at": "2026-03-12T08:45:17.000Z",
+        "started_at": "2026-03-12T08:45:17.000Z",
+        "updated_at": "2026-03-12T08:45:17.000Z",
         "duration_minutes": 0,
-        "html_url": "https://github.com/iAmSomething/idol-song-app/actions/runs/22992380222"
+        "html_url": "https://github.com/iAmSomething/idol-song-app/actions/runs/22993619306"
       },
       "latest_scheduled_run": null
     }
@@ -85,7 +126,7 @@
       "severity": "fail",
       "code": "scheduled_delivery_missing",
       "summary": "Active scheduled workflows have missed expected schedule windows with zero recorded scheduled runs.",
-      "details": "daily_upcoming: observed=0, expected_by_now=6, missed_windows=6, manual_runs=12",
+      "details": "daily_upcoming: observed=0, expected_by_now=7, missed_windows=7, manual_runs=12",
       "workflow_keys": [
         "daily_upcoming"
       ],
