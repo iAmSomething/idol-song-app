@@ -604,6 +604,8 @@ python3 ../run_title_track_backfill_batch_loop.py --cohorts latest,recent --batc
 
 `run_title_track_backfill_batch_loop.py`는 latest/recent unresolved title-track head를 batch로 반복 처리한다. 한 batch에서 실제 persisted title-track change(`persisted_title_track_changes`)가 나면 `row_offset=0`으로 다시 시작하고, progress가 없으면 같은 snapshot에서 `row_offset += selected_rows`로 뒤쪽 chunk를 훑는다. 전체 snapshot을 한 번 다 훑었는데도 progress가 없거나 `max_batches`에 닿으면 멈추고, summary는 `backend/reports/title_track_backfill_batch_loop_report.json`에 남긴다. 내부적으로는 `build_release_details_musicbrainz.py --cohorts ... --row-offset ... --max-rows ...`를 재사용한다.
 
+주간 `Catalog Enrichment Refresh` workflow는 latest/recent 코호트에 대해 title-track loop와 MV loop를 같이 태운다. 즉 scheduled enrichment가 `title_track_manual_review_queue`와 `mv_manual_review_queue`를 둘 다 자동으로 계속 줄이는 경로를 갖는다.
+
 ## Release Pipeline Dual-Write
 
 기존 JSON export를 유지한 채 release hydration / service-link / MV review 흐름만 canonical DB에 다시 쓰려면 아래 명령을 사용한다.
