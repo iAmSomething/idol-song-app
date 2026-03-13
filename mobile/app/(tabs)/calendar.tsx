@@ -906,6 +906,7 @@ export default function CalendarTabScreen() {
                 { key: 'upcoming-count', label: MOBILE_COPY.summary.upcoming, value: filteredSnapshot.upcomingCount },
                 {
                   key: 'nearest-upcoming',
+                  kind: 'focus',
                   label: MOBILE_COPY.summary.nearestUpcoming,
                   value: nearestUpcomingItem.value,
                   detail: nearestUpcomingItem.detail,
