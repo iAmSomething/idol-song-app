@@ -93,6 +93,7 @@
    - current transitional allowlist와 follow-up boundary
 29. scoped blocker rerun note
    - `build_release_details_musicbrainz.py --cohorts latest,recent` 로 latest/recent row만 재계산할 수 있다
+   - `run_mv_backfill_batch_loop.py --cohorts latest,recent` 로 latest/recent unresolved MV row를 자동 batch loop로 밀 수 있다
    - full snapshot은 유지하고 review queue / coverage report만 같은 execution scope로 다시 만든다
    - 긴 rerun은 `--max-rows`, `--row-offset`, `--progress-every` 를 같이 써서 작은 batch를 이어서 확인한다
 
