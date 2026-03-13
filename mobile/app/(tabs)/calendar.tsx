@@ -896,9 +896,11 @@ export default function CalendarTabScreen() {
     <>
       <ScrollView contentContainerStyle={scrollContentStyle} style={styles.screen}>
         <TonalPanel
-          body={`현재 필터 · ${formatFilterLabel(filterMode)}`}
+          body={`${formatShortDateLabel(todayIsoDate)} · ${formatFilterLabel(filterMode)}`}
+          eyebrow="월간 탐색"
           footer={
             <SummaryStrip
+              density="compact"
               items={[
                 { key: 'release-count', label: MOBILE_COPY.summary.monthRelease, value: filteredSnapshot.releaseCount },
                 { key: 'upcoming-count', label: MOBILE_COPY.summary.upcoming, value: filteredSnapshot.upcomingCount },
@@ -919,8 +921,18 @@ export default function CalendarTabScreen() {
           titleTestID="calendar-month-title"
           tone="accent"
         >
-          <View style={styles.headerBar} testID="calendar-app-bar">
-            <View style={styles.monthCluster}>
+          <View style={styles.headerControlsStack} testID="calendar-app-bar">
+            <SegmentedControl
+              items={[
+                { key: 'calendar', label: '캘린더' },
+                { key: 'list', label: '리스트' },
+              ]}
+              onChange={(key) => handleViewChange(key as CalendarViewMode)}
+              selectedKey={viewMode}
+              testID="calendar-view"
+            />
+
+            <View style={styles.headerBar}>
               <View style={[styles.monthNav, largeTextMode ? styles.actionRowLargeText : null]}>
                 <Pressable
                   accessibilityHint="이전 달 일정을 봅니다."
@@ -940,6 +952,30 @@ export default function CalendarTabScreen() {
                     style={styles.headerButtonLabel}
                   >
                     이전
+                  </Text>
+                </Pressable>
+                <Pressable
+                  accessibilityHint="이번 달 일정으로 돌아갑니다."
+                  accessibilityLabel={`${formatMonthLabel(currentMonth)}로 이동`}
+                  accessibilityRole="button"
+                  onPress={() => setActiveMonth(currentMonth)}
+                  style={({ pressed }) => [
+                    styles.headerButton,
+                    largeTextMode ? styles.headerButtonLargeText : null,
+                    activeMonth === currentMonth ? styles.headerButtonActive : null,
+                    pressed ? styles.headerButtonPressed : null,
+                  ]}
+                  testID="calendar-month-current"
+                >
+                  <Text
+                    allowFontScaling
+                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                    style={[
+                      styles.headerButtonLabel,
+                      activeMonth === currentMonth ? styles.headerButtonLabelActive : null,
+                    ]}
+                  >
+                    이번 달
                   </Text>
                 </Pressable>
                 <Pressable
@@ -963,66 +999,74 @@ export default function CalendarTabScreen() {
                   </Text>
                 </Pressable>
               </View>
-            </View>
-            <View style={[styles.trailingActions, largeTextMode ? styles.actionRowLargeText : null]}>
-              <Pressable
-                accessibilityLabel="검색 탭으로 이동"
-                accessibilityRole="button"
-                onPress={openSearchTab}
-                style={({ pressed }) => [
-                  styles.headerButton,
-                  largeTextMode ? styles.headerButtonLargeText : null,
-                  pressed ? styles.headerButtonPressed : null,
-                ]}
-                testID="calendar-search-open"
-              >
-                <Text
-                  allowFontScaling
-                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                  style={styles.headerButtonLabel}
+
+              <View style={[styles.trailingActions, largeTextMode ? styles.actionRowLargeText : null]}>
+                <Pressable
+                  accessibilityLabel="검색 탭으로 이동"
+                  accessibilityRole="button"
+                  onPress={openSearchTab}
+                  style={({ pressed }) => [
+                    styles.headerButton,
+                    styles.headerButtonCompact,
+                    largeTextMode ? styles.headerButtonLargeText : null,
+                    pressed ? styles.headerButtonPressed : null,
+                  ]}
+                  testID="calendar-search-open"
                 >
-                  검색
-                </Text>
-              </Pressable>
-              <Pressable
-                accessibilityLabel="캘린더 필터 열기"
-                accessibilityRole="button"
-                accessibilityState={{ selected: filterMode !== 'all' || isFilterSheetOpen }}
-                onPress={openFilterSheet}
-                style={({ pressed }) => [
-                  styles.headerButton,
-                  largeTextMode ? styles.headerButtonLargeText : null,
-                  pressed ? styles.headerButtonPressed : null,
-                ]}
-                testID="calendar-filter-open"
-              >
-                <Text
-                  allowFontScaling
-                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                  style={styles.headerButtonLabel}
+                  <Text
+                    allowFontScaling
+                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                    style={styles.headerButtonLabel}
+                  >
+                    검색
+                  </Text>
+                </Pressable>
+                <Pressable
+                  accessibilityLabel="캘린더 필터 열기"
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: filterMode !== 'all' || isFilterSheetOpen }}
+                  onPress={openFilterSheet}
+                  style={({ pressed }) => [
+                    styles.headerButton,
+                    styles.headerButtonCompact,
+                    largeTextMode ? styles.headerButtonLargeText : null,
+                    filterMode !== 'all' ? styles.headerButtonActive : null,
+                    pressed ? styles.headerButtonPressed : null,
+                  ]}
+                  testID="calendar-filter-open"
                 >
-                  필터
-                </Text>
-              </Pressable>
-              <Pressable
-                accessibilityLabel="알림 설정 열기"
-                accessibilityRole="button"
-                onPress={() => router.push('/settings/notifications')}
-                style={({ pressed }) => [
-                  styles.headerButton,
-                  largeTextMode ? styles.headerButtonLargeText : null,
-                  pressed ? styles.headerButtonPressed : null,
-                ]}
-                testID="calendar-notifications-open"
-              >
-                <Text
-                  allowFontScaling
-                  maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                  style={styles.headerButtonLabel}
+                  <Text
+                    allowFontScaling
+                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                    style={[
+                      styles.headerButtonLabel,
+                      filterMode !== 'all' ? styles.headerButtonLabelActive : null,
+                    ]}
+                  >
+                    필터
+                  </Text>
+                </Pressable>
+                <Pressable
+                  accessibilityLabel="알림 설정 열기"
+                  accessibilityRole="button"
+                  onPress={() => router.push('/settings/notifications')}
+                  style={({ pressed }) => [
+                    styles.headerButton,
+                    styles.headerButtonCompact,
+                    largeTextMode ? styles.headerButtonLargeText : null,
+                    pressed ? styles.headerButtonPressed : null,
+                  ]}
+                  testID="calendar-notifications-open"
                 >
-                  알림
-                </Text>
-              </Pressable>
+                  <Text
+                    allowFontScaling
+                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                    style={styles.headerButtonLabel}
+                  >
+                    알림
+                  </Text>
+                </Pressable>
+              </View>
             </View>
           </View>
         </TonalPanel>
@@ -1045,26 +1089,6 @@ export default function CalendarTabScreen() {
           />
         ) : null}
 
-        <InsetSection
-          accessory={
-            <Text allowFontScaling maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body} style={styles.sectionMeta}>
-              {formatFilterLabel(filterMode)}
-            </Text>
-          }
-          testID="calendar-view-section"
-          title="보기"
-        >
-          <SegmentedControl
-            items={[
-              { key: 'calendar', label: '캘린더' },
-              { key: 'list', label: '리스트' },
-            ]}
-            onChange={(key) => handleViewChange(key as CalendarViewMode)}
-            selectedKey={viewMode}
-            testID="calendar-view"
-          />
-        </InsetSection>
-
         {viewMode === 'calendar' && monthGrid ? (
           <InsetSection
             accessory={
@@ -1073,7 +1097,7 @@ export default function CalendarTabScreen() {
               </Text>
             }
             testID="calendar-grid-section"
-            title="월간 캘린더"
+            title="캘린더"
           >
 
             <View style={styles.weekdayRow}>
@@ -1274,12 +1298,17 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       paddingHorizontal: theme.space[24],
       paddingTop: theme.space[24],
       paddingBottom: theme.space[32],
-      gap: theme.space[16],
+      gap: theme.space[12],
+    },
+    headerControlsStack: {
+      gap: theme.space[8],
     },
     headerBar: {
-      flexDirection: 'column',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
       alignItems: 'flex-start',
-      gap: theme.space[12],
+      justifyContent: 'space-between',
+      gap: theme.space[8],
     },
     monthCluster: {
       width: '100%',
@@ -1298,6 +1327,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       flexDirection: 'row',
       flexWrap: 'wrap',
       gap: theme.space[8],
+      flex: 1,
     },
     actionRowLargeText: {
       width: '100%',
@@ -1309,8 +1339,9 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       flexDirection: 'row',
       flexWrap: 'wrap',
       gap: theme.space[8],
-      justifyContent: 'flex-start',
+      justifyContent: 'flex-end',
       maxWidth: '100%',
+      flexShrink: 1,
     },
     headerButton: {
       minHeight: theme.size.button.heightSecondary,
@@ -1321,6 +1352,15 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       backgroundColor: theme.colors.surface.elevated,
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
+    },
+    headerButtonCompact: {
+      minHeight: 40,
+      paddingHorizontal: theme.space[8],
+      paddingVertical: theme.space[4],
+    },
+    headerButtonActive: {
+      backgroundColor: theme.colors.surface.interactive,
+      borderColor: theme.colors.border.focus,
     },
     headerButtonLargeText: {
       flexGrow: 1,
@@ -1333,6 +1373,9 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     headerButtonLabel: {
       ...buttonServiceTypography,
       color: theme.colors.text.primary,
+    },
+    headerButtonLabelActive: {
+      color: theme.colors.text.brand,
     },
     sectionCard: {
       gap: theme.space[12],
@@ -1376,7 +1419,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     },
     emptyCell: {
       flex: 1,
-      minHeight: 62,
+      minHeight: 56,
     },
   });
 }
