@@ -25,6 +25,13 @@ class BuildReleaseDetailsMusicBrainzTitleTrackTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             builder.parse_scoped_cohorts("latest,foo")
 
+    def test_parse_non_negative_int_arg_accepts_zero(self) -> None:
+        self.assertEqual(builder.parse_non_negative_int_arg("0"), 0)
+
+    def test_parse_non_negative_int_arg_rejects_negative_values(self) -> None:
+        with self.assertRaises(argparse.ArgumentTypeError):
+            builder.parse_non_negative_int_arg("-1")
+
     def test_matches_execution_scope_respects_cohort_filter(self) -> None:
         item = {
             "group": "YENA",
@@ -58,6 +65,7 @@ class BuildReleaseDetailsMusicBrainzTitleTrackTests(unittest.TestCase):
             selected_rows=3,
             max_rows=3,
             progress_every=2,
+            row_offset=5,
         )
 
         self.assertEqual(
@@ -68,6 +76,7 @@ class BuildReleaseDetailsMusicBrainzTitleTrackTests(unittest.TestCase):
                 "selected_rows": 3,
                 "max_rows": 3,
                 "progress_every": 2,
+                "row_offset": 5,
             },
         )
 

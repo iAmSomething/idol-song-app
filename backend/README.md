@@ -589,6 +589,7 @@ latest/recent blocker 코호트만 빠르게 재생성할 때는 아래처럼 sc
 ```bash
 python3 ../build_release_details_musicbrainz.py --cohorts latest,recent
 python3 ../run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 50 --max-batches 20 --progress-every 10 --request-timeout 10 --command-timeout-seconds 180
+python3 ../run_title_track_backfill_batch_loop.py --cohorts latest,recent --batch-size 50 --max-batches 20 --progress-every 10
 ```
 
 긴 pass를 안전하게 확인할 때는 row limit와 stderr progress를 같이 건다.
@@ -596,9 +597,12 @@ python3 ../run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 50
 ```bash
 python3 ../build_release_details_musicbrainz.py --cohorts latest,recent --max-rows 25 --progress-every 5
 python3 ../run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 25 --max-batches 12 --progress-every 5 --request-timeout 10 --command-timeout-seconds 180
+python3 ../run_title_track_backfill_batch_loop.py --cohorts latest,recent --batch-size 25 --max-batches 12 --progress-every 5
 ```
 
 `run_mv_backfill_batch_loop.py`는 latest/recent unresolved head를 batch로 반복 처리한다. 한 batch에서 실제 persisted change(`persisted_resolution_changes`)나 coverage lift가 나면 `row_offset=0`으로 다시 시작하고, 이미 반영된 row를 다시 찾기만 한 batch는 같은 snapshot에서 `row_offset += selected_rows`로 뒤쪽 chunk를 훑는다. 전체 snapshot을 한 번 다 훑었는데도 progress가 없거나 `max_batches`에 닿으면 멈추고, 마지막에 `build_mv_manual_review_queue.py`를 자동으로 다시 돌린다. 내부적으로는 `backfill_release_detail_mvs.py`를 재사용하므로 최대 2개의 title track, `official music video` suffix, no-suffix fallback, 외부 검색 단발 실패 흡수 규칙은 그대로 유지된다. `--request-timeout`은 개별 YouTube 요청의 상한, `--command-timeout-seconds`는 각 batch subprocess의 상한이다.
+
+`run_title_track_backfill_batch_loop.py`는 latest/recent unresolved title-track head를 batch로 반복 처리한다. 한 batch에서 실제 persisted title-track change(`persisted_title_track_changes`)가 나면 `row_offset=0`으로 다시 시작하고, progress가 없으면 같은 snapshot에서 `row_offset += selected_rows`로 뒤쪽 chunk를 훑는다. 전체 snapshot을 한 번 다 훑었는데도 progress가 없거나 `max_batches`에 닿으면 멈추고, summary는 `backend/reports/title_track_backfill_batch_loop_report.json`에 남긴다. 내부적으로는 `build_release_details_musicbrainz.py --cohorts ... --row-offset ... --max-rows ...`를 재사용한다.
 
 ## Release Pipeline Dual-Write
 

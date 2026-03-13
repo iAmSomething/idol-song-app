@@ -112,12 +112,23 @@ def parse_positive_int_arg(raw_value: str) -> int:
     return parsed
 
 
+def parse_non_negative_int_arg(raw_value: str) -> int:
+    try:
+        parsed = int(raw_value)
+    except ValueError as error:
+        raise argparse.ArgumentTypeError("must be a non-negative integer") from error
+    if parsed < 0:
+        raise argparse.ArgumentTypeError("must be a non-negative integer")
+    return parsed
+
+
 def enrich_execution_scope(
     execution_scope: Optional[Dict],
     total_scoped_rows: int,
     selected_rows: int,
     max_rows: Optional[int],
     progress_every: int,
+    row_offset: int,
 ) -> Dict:
     scope = dict(execution_scope or {})
     scope["scoped_rows_total"] = total_scoped_rows
@@ -125,6 +136,7 @@ def enrich_execution_scope(
     if max_rows is not None:
         scope["max_rows"] = max_rows
     scope["progress_every"] = progress_every
+    scope["row_offset"] = row_offset
     return scope
 
 
@@ -2317,6 +2329,12 @@ def main() -> None:
         help="Limit the current scoped rebuild to the first N matching rows for safer targeted reruns.",
     )
     parser.add_argument(
+        "--row-offset",
+        type=parse_non_negative_int_arg,
+        default=0,
+        help="Skip the first N scoped rows before applying --max-rows for batch-based reruns.",
+    )
+    parser.add_argument(
         "--progress-every",
         type=parse_positive_int_arg,
         default=25,
@@ -2347,6 +2365,8 @@ def main() -> None:
         if matches_execution_scope(item, scoped_groups, scoped_cohorts, reference_date)
     ]
     total_scoped_rows = len(scoped_items)
+    if args.row_offset:
+        scoped_items = scoped_items[args.row_offset :]
     if args.max_rows is not None:
         scoped_items = scoped_items[: args.max_rows]
     scoped_keys = {
@@ -2364,12 +2384,13 @@ def main() -> None:
         selected_rows=len(scoped_items),
         max_rows=args.max_rows,
         progress_every=args.progress_every,
+        row_offset=args.row_offset,
     )
     print(
         (
             "[build_release_details_musicbrainz] "
             f"processing {len(scoped_items)}/{total_scoped_rows} scoped rows "
-            f"(progress_every={args.progress_every})"
+            f"(row_offset={args.row_offset}, progress_every={args.progress_every})"
         ),
         file=sys.stderr,
         flush=True,

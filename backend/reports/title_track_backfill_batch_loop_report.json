@@ -1,0 +1,75 @@
+{
+  "started_at": "2026-03-13T05:24:15.087478Z",
+  "finished_at": "2026-03-13T05:24:15.989127Z",
+  "config": {
+    "cohorts": [
+      "latest",
+      "recent"
+    ],
+    "batch_size": 3,
+    "max_batches": 2,
+    "progress_every": 1,
+    "skip_acquisition": true,
+    "command_timeout_seconds": 180
+  },
+  "stop_reason": "max_batches",
+  "batches_run": 2,
+  "total_persisted_title_track_changes": 0,
+  "total_auto_resolved_rows": 0,
+  "final_iteration": {
+    "batch_index": 2,
+    "row_offset": 3,
+    "selected_rows": 3,
+    "scoped_rows_total": 816,
+    "rows_with_title_track_before": 3,
+    "rows_with_title_track_after": 3,
+    "persisted_title_track_changes": 0,
+    "title_track_auto_resolved_rows": 0,
+    "title_track_auto_double_rows": 0,
+    "title_track_review_queue_rows": 0,
+    "stderr_lines": [
+      "[build_release_details_musicbrainz] processing 3/816 scoped rows (row_offset=3, progress_every=1)",
+      "[build_release_details_musicbrainz] 1/3 &TEAM / 君にカエル (Maybe) / 2024-04-28 / song",
+      "[build_release_details_musicbrainz] 2/3 &TEAM / 五月雨 (Samidare) / 2024-05-07 / song",
+      "[build_release_details_musicbrainz] 3/3 &TEAM / 声変わり / 2024-07-18 / song"
+    ]
+  },
+  "iterations": [
+    {
+      "batch_index": 1,
+      "row_offset": 0,
+      "selected_rows": 3,
+      "scoped_rows_total": 816,
+      "rows_with_title_track_before": 2,
+      "rows_with_title_track_after": 2,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 1,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 3/816 scoped rows (row_offset=0, progress_every=1)",
+        "[build_release_details_musicbrainz] 1/3 &TEAM / Blind Love / 2023-05-07 / song",
+        "[build_release_details_musicbrainz] 2/3 &TEAM / First Howling : WE / 2023-06-14 / album",
+        "[build_release_details_musicbrainz] 3/3 &TEAM / First Howling : NOW / 2023-11-15 / album"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "row_offset": 3,
+      "selected_rows": 3,
+      "scoped_rows_total": 816,
+      "rows_with_title_track_before": 3,
+      "rows_with_title_track_after": 3,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 0,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 3/816 scoped rows (row_offset=3, progress_every=1)",
+        "[build_release_details_musicbrainz] 1/3 &TEAM / 君にカエル (Maybe) / 2024-04-28 / song",
+        "[build_release_details_musicbrainz] 2/3 &TEAM / 五月雨 (Samidare) / 2024-05-07 / song",
+        "[build_release_details_musicbrainz] 3/3 &TEAM / 声変わり / 2024-07-18 / song"
+      ]
+    }
+  ]
+}
