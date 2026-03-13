@@ -1,0 +1,339 @@
+{
+  "generated_at": "2026-03-13T17:03:20.679590+00:00",
+  "total_entries": 6,
+  "counts_by_state": {
+    "partially_ready": 6
+  },
+  "entries": [
+    {
+      "group": "CHUU",
+      "slug": "chuu",
+      "eligibility_state": "partially_ready",
+      "resolved_handle_count": 2,
+      "resolved_fields": [
+        "official_instagram",
+        "official_youtube"
+      ],
+      "weak_fields": [
+        "official_x"
+      ],
+      "field_statuses": {
+        "official_x": "review_needed",
+        "official_instagram": "resolved",
+        "official_youtube": "resolved"
+      },
+      "handles": {
+        "official_x": {
+          "value": null,
+          "status": "review_needed",
+          "provenance": "artistSocialsStructured.x_url.unspecified.review_needed",
+          "source_url": null,
+          "review_notes": "Collected social inventory has no defensible value yet."
+        },
+        "official_instagram": {
+          "value": "https://www.instagram.com/chuuo3o",
+          "status": "resolved",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null,
+          "review_notes": null
+        },
+        "official_youtube": {
+          "value": "https://www.youtube.com/@CHUUOfficial",
+          "status": "resolved",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@CHUUOfficial",
+          "review_notes": "Verified from @CHUUOfficial handle probe against the official social handle pattern."
+        }
+      },
+      "survey_sources": [
+        {
+          "field": "official_instagram",
+          "url": "https://www.instagram.com/chuuo3o",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null
+        },
+        {
+          "field": "official_youtube",
+          "url": "https://www.youtube.com/@CHUUOfficial",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@CHUUOfficial"
+        }
+      ]
+    },
+    {
+      "group": "CSR",
+      "slug": "csr",
+      "eligibility_state": "partially_ready",
+      "resolved_handle_count": 2,
+      "resolved_fields": [
+        "official_x",
+        "official_instagram"
+      ],
+      "weak_fields": [
+        "official_youtube"
+      ],
+      "field_statuses": {
+        "official_x": "resolved",
+        "official_instagram": "resolved",
+        "official_youtube": "review_needed"
+      },
+      "handles": {
+        "official_x": {
+          "value": "https://x.com/CSR_offcl",
+          "status": "resolved",
+          "provenance": "artistSocialsStructured.x_url.manual_kprofiles",
+          "source_url": null,
+          "review_notes": null
+        },
+        "official_instagram": {
+          "value": "https://www.instagram.com/csr.offcl",
+          "status": "resolved",
+          "provenance": "artistSocialsStructured.instagram_url.manual_kprofiles",
+          "source_url": null,
+          "review_notes": null
+        },
+        "official_youtube": {
+          "value": null,
+          "status": "review_needed",
+          "provenance": "youtubeChannelAllowlists.primary_team_channel_url.review_needed",
+          "source_url": null,
+          "review_notes": "Primary team channel is still missing from the allowlist seed."
+        }
+      },
+      "survey_sources": [
+        {
+          "field": "official_x",
+          "url": "https://x.com/CSR_offcl",
+          "provenance": "artistSocialsStructured.x_url.manual_kprofiles",
+          "source_url": null
+        },
+        {
+          "field": "official_instagram",
+          "url": "https://www.instagram.com/csr.offcl",
+          "provenance": "artistSocialsStructured.instagram_url.manual_kprofiles",
+          "source_url": null
+        }
+      ]
+    },
+    {
+      "group": "JEON SOMI",
+      "slug": "jeon-somi",
+      "eligibility_state": "partially_ready",
+      "resolved_handle_count": 2,
+      "resolved_fields": [
+        "official_instagram",
+        "official_youtube"
+      ],
+      "weak_fields": [
+        "official_x"
+      ],
+      "field_statuses": {
+        "official_x": "review_needed",
+        "official_instagram": "resolved",
+        "official_youtube": "resolved"
+      },
+      "handles": {
+        "official_x": {
+          "value": null,
+          "status": "review_needed",
+          "provenance": "artistSocialsStructured.x_url.unspecified.review_needed",
+          "source_url": null,
+          "review_notes": "Collected social inventory has no defensible value yet."
+        },
+        "official_instagram": {
+          "value": "https://www.instagram.com/somsomi0309",
+          "status": "resolved",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null,
+          "review_notes": null
+        },
+        "official_youtube": {
+          "value": "https://www.youtube.com/@jeonsomiofficial",
+          "status": "resolved",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@jeonsomiofficial",
+          "review_notes": "Verified from @jeonsomiofficial handle probe against the official social handle pattern."
+        }
+      },
+      "survey_sources": [
+        {
+          "field": "official_instagram",
+          "url": "https://www.instagram.com/somsomi0309",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null
+        },
+        {
+          "field": "official_youtube",
+          "url": "https://www.youtube.com/@jeonsomiofficial",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@jeonsomiofficial"
+        }
+      ]
+    },
+    {
+      "group": "KWON EUNBI",
+      "slug": "kwon-eunbi",
+      "eligibility_state": "partially_ready",
+      "resolved_handle_count": 2,
+      "resolved_fields": [
+        "official_instagram",
+        "official_youtube"
+      ],
+      "weak_fields": [
+        "official_x"
+      ],
+      "field_statuses": {
+        "official_x": "review_needed",
+        "official_instagram": "resolved",
+        "official_youtube": "resolved"
+      },
+      "handles": {
+        "official_x": {
+          "value": null,
+          "status": "review_needed",
+          "provenance": "artistSocialsStructured.x_url.unspecified.review_needed",
+          "source_url": null,
+          "review_notes": "Collected social inventory has no defensible value yet."
+        },
+        "official_instagram": {
+          "value": "https://www.instagram.com/silver_rain.__",
+          "status": "resolved",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null,
+          "review_notes": null
+        },
+        "official_youtube": {
+          "value": "https://www.youtube.com/@KWONEUNBI",
+          "status": "resolved",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@KWONEUNBI",
+          "review_notes": "Verified from @KWONEUNBI handle probe against the official social handle pattern."
+        }
+      },
+      "survey_sources": [
+        {
+          "field": "official_instagram",
+          "url": "https://www.instagram.com/silver_rain.__",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null
+        },
+        {
+          "field": "official_youtube",
+          "url": "https://www.youtube.com/@KWONEUNBI",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@KWONEUNBI"
+        }
+      ]
+    },
+    {
+      "group": "YUJU",
+      "slug": "yuju",
+      "eligibility_state": "partially_ready",
+      "resolved_handle_count": 2,
+      "resolved_fields": [
+        "official_instagram",
+        "official_youtube"
+      ],
+      "weak_fields": [
+        "official_x"
+      ],
+      "field_statuses": {
+        "official_x": "review_needed",
+        "official_instagram": "resolved",
+        "official_youtube": "resolved"
+      },
+      "handles": {
+        "official_x": {
+          "value": null,
+          "status": "review_needed",
+          "provenance": "artistSocialsStructured.x_url.unspecified.review_needed",
+          "source_url": null,
+          "review_notes": "Collected social inventory has no defensible value yet."
+        },
+        "official_instagram": {
+          "value": "https://www.instagram.com/yuuzth",
+          "status": "resolved",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null,
+          "review_notes": null
+        },
+        "official_youtube": {
+          "value": "https://www.youtube.com/@Yujuofficial",
+          "status": "resolved",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@Yujuofficial",
+          "review_notes": "Verified from @Yujuofficial handle probe against the official social handle pattern."
+        }
+      },
+      "survey_sources": [
+        {
+          "field": "official_instagram",
+          "url": "https://www.instagram.com/yuuzth",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null
+        },
+        {
+          "field": "official_youtube",
+          "url": "https://www.youtube.com/@Yujuofficial",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@Yujuofficial"
+        }
+      ]
+    },
+    {
+      "group": "Yves",
+      "slug": "yves",
+      "eligibility_state": "partially_ready",
+      "resolved_handle_count": 2,
+      "resolved_fields": [
+        "official_instagram",
+        "official_youtube"
+      ],
+      "weak_fields": [
+        "official_x"
+      ],
+      "field_statuses": {
+        "official_x": "review_needed",
+        "official_instagram": "resolved",
+        "official_youtube": "resolved"
+      },
+      "handles": {
+        "official_x": {
+          "value": null,
+          "status": "review_needed",
+          "provenance": "artistSocialsStructured.x_url.unspecified.review_needed",
+          "source_url": null,
+          "review_notes": "Collected social inventory has no defensible value yet."
+        },
+        "official_instagram": {
+          "value": "https://www.instagram.com/yvesntual",
+          "status": "resolved",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null,
+          "review_notes": null
+        },
+        "official_youtube": {
+          "value": "https://www.youtube.com/@YVES_OFFICIAL",
+          "status": "resolved",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@YVES_OFFICIAL",
+          "review_notes": "Verified from @YVES_OFFICIAL handle probe against the official social handle pattern."
+        }
+      },
+      "survey_sources": [
+        {
+          "field": "official_instagram",
+          "url": "https://www.instagram.com/yvesntual",
+          "provenance": "artistProfiles.official_instagram_url",
+          "source_url": null
+        },
+        {
+          "field": "official_youtube",
+          "url": "https://www.youtube.com/@YVES_OFFICIAL",
+          "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+          "source_url": "https://www.youtube.com/@YVES_OFFICIAL"
+        }
+      ]
+    }
+  ]
+}

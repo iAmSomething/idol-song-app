@@ -123,6 +123,25 @@ python build_release_artwork_catalog.py
 python build_entity_asset_coverage_report.py
 ```
 
+## Official Social Survey Inventory
+
+- tracked entity social-handle inventory:
+  - `backend/reports/official_social_survey_inventory.json`
+  - `backend/reports/official_social_survey_inventory.csv`
+  - `backend/reports/official_social_survey_inventory.md`
+- non-ready follow-up workbench:
+  - `backend/reports/official_social_survey_workbench.json`
+
+예시:
+
+```bash
+python build_official_social_survey_inventory.py
+```
+
+이 리포트는 `official_x / official_instagram / official_youtube` 기준으로
+각 tracked entity를 `survey_ready / partially_ready / missing_handle`로 분류하고,
+all-team social comeback survey에 바로 쓸 source list를 함께 남긴다.
+
 ## Runtime Artifact Retention
 
 - policy:
