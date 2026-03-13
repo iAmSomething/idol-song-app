@@ -1,0 +1,22 @@
+[
+  {
+    "group": "AB6IX",
+    "scheduled_date": "2026-03-16",
+    "date_status": "confirmed",
+    "headline": "AB6IX official X announcement · SEVEN : CRIMSON HORIZON · 2026-03-16 6PM KST",
+    "source_type": "official_social",
+    "source_url": "https://x.com/AB6IX/status/2025948771490955484",
+    "source_domain": "x.com",
+    "published_at": null,
+    "confidence": 0.98,
+    "evidence_summary": "Official X announcement. AB6IX will return with the full album SEVEN : CRIMSON HORIZON on 2026-03-16 at 6PM KST.",
+    "tracking_status": "filtered_out",
+    "search_term": "\"AB6IX\" official X comeback",
+    "release_format": "album",
+    "context_tags": [
+      "official_social"
+    ],
+    "date_precision": "exact",
+    "scheduled_month": "2026-03"
+  }
+]
