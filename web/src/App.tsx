@@ -4812,7 +4812,7 @@ function TeamIdentity({
   group: string
   variant: 'chip' | 'list'
 }) {
-  const badgeImageUrl = getTeamBadgeImageUrl(group)
+  const identityImageUrl = getTeamBadgeImageUrl(group) ?? getTeamRepresentativeImageUrl(group)
   const badgeStyle = getTeamBadgeStyle(group)
   const displayName = getTeamDisplayName(group)
   const label = variant === 'chip' ? getCompactTeamLabel(displayName) : displayName
@@ -4824,8 +4824,8 @@ function TeamIdentity({
       aria-label={displayName}
     >
       <span className="team-badge" style={badgeStyle} aria-hidden="true">
-        {badgeImageUrl ? (
-          <img className="team-badge-image" src={badgeImageUrl} alt="" />
+        {identityImageUrl ? (
+          <img className="team-badge-image" src={identityImageUrl} alt="" />
         ) : (
           <span className="team-badge-fallback">{getTeamMonogram(group)}</span>
         )}
@@ -10818,6 +10818,10 @@ function getTeamMonogram(group: string) {
 
 function getTeamBadgeImageUrl(group: string) {
   return teamBadgeAssetByGroup.get(group)?.badge_image_url ?? null
+}
+
+function getTeamRepresentativeImageUrl(group: string) {
+  return artistProfileByGroup.get(group)?.representative_image_url ?? null
 }
 
 function getTeamBadgeSourceUrl(group: string) {
