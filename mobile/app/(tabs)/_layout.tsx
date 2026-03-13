@@ -1,4 +1,5 @@
 import { Tabs } from 'expo-router';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { useOptionalSafeAreaInsets } from '../../src/hooks/useOptionalSafeAreaInsets';
 import { useAppTheme } from '../../src/tokens/theme';
@@ -36,18 +37,39 @@ export default function TabsLayout() {
         name="calendar"
         options={{
           title: 'Calendar',
+          tabBarIcon: ({ color, size, focused }) => (
+            <MaterialCommunityIcons
+              color={color}
+              name={focused ? 'calendar-month' : 'calendar-month-outline'}
+              size={size}
+            />
+          ),
         }}
       />
       <Tabs.Screen
         name="radar"
         options={{
           title: 'Radar',
+          tabBarIcon: ({ color, size, focused }) => (
+            <MaterialCommunityIcons
+              color={color}
+              name={focused ? 'radar' : 'radar'}
+              size={size}
+            />
+          ),
         }}
       />
       <Tabs.Screen
         name="search"
         options={{
           title: 'Search',
+          tabBarIcon: ({ color, size, focused }) => (
+            <MaterialCommunityIcons
+              color={color}
+              name={focused ? 'magnify' : 'magnify'}
+              size={size}
+            />
+          ),
         }}
       />
     </Tabs>
