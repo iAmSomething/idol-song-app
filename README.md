@@ -229,6 +229,8 @@ python run_title_track_backfill_batch_loop.py --cohorts latest,recent --batch-si
 
 `run_title_track_backfill_batch_loop.py`는 latest/recent unresolved title-track rows를 같은 방식으로 자동 batch loop 처리한다. 한 batch에서 실제 persisted title-track change가 나면 `row_offset=0`으로 다시 시작하고, 이미 반영된 head를 다시 계산하기만 한 batch는 같은 snapshot 뒤쪽 chunk로 넘어간다. 전체 snapshot을 한 번 다 훑었는데도 progress가 없거나 `max_batches`에 닿으면 멈추고, summary는 `backend/reports/title_track_backfill_batch_loop_report.json`에 남긴다.
 
+주간 `Catalog Enrichment Refresh` workflow는 이제 latest/recent 코호트에 대해 `run_title_track_backfill_batch_loop.py`와 `run_mv_backfill_batch_loop.py`를 둘 다 자동 실행한다. 즉 title-track / MV blocker queue는 scheduled enrichment cadence에서 서버사이드로 계속 전진한다.
+
 Neon canonical DB까지 같이 최신화하려면 아래를 이어서 실행한다.
 
 ```bash
