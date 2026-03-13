@@ -1,6 +1,42 @@
 [
   {
     "group": "&TEAM",
+    "release_title": "五月雨 (Samidare)",
+    "release_date": "2024-05-07",
+    "stream": "song",
+    "youtube_video_id": "k1hAdf8F-gQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=k1hAdf8F-gQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "&TEAM",
+    "release_title": "青嵐 (Aoarashi)",
+    "release_date": "2024-08-06",
+    "stream": "song",
+    "youtube_video_id": "WklwroX2yOU",
+    "youtube_video_url": "https://www.youtube.com/watch?v=WklwroX2yOU",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "&TEAM",
+    "release_title": "雪明かり (Yukiakari)",
+    "release_date": "2024-12-17",
+    "stream": "album",
+    "youtube_video_id": "0V6zjDb1YN0",
+    "youtube_video_url": "https://www.youtube.com/watch?v=0V6zjDb1YN0",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "&TEAM",
+    "release_title": "Go in Blind (月狼)",
+    "release_date": "2025-04-20",
+    "stream": "album",
+    "youtube_video_id": "RjJTiajpyrA",
+    "youtube_video_url": "https://www.youtube.com/watch?v=RjJTiajpyrA",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "&TEAM",
     "release_title": "Back to Life",
     "release_date": "2025-10-28",
     "stream": "album",
@@ -8,6 +44,57 @@
     "provenance": "ytmusicapi exact album search match",
     "youtube_video_id": "KqE0P1qMtQg",
     "youtube_video_url": "https://www.youtube.com/watch?v=KqE0P1qMtQg",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "(G)I-DLE",
+    "release_title": "I feel",
+    "release_date": "2023-05-15",
+    "stream": "album",
+    "youtube_video_id": "XZaBkbvteBc",
+    "youtube_video_url": "https://www.youtube.com/watch?v=XZaBkbvteBc",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "title_tracks": [
+      "Allergy"
+    ]
+  },
+  {
+    "group": "(G)I-DLE",
+    "release_title": "Wife",
+    "release_date": "2024-01-21",
+    "stream": "song",
+    "youtube_video_id": "baaNwRAhHBo",
+    "youtube_video_url": "https://www.youtube.com/watch?v=baaNwRAhHBo",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "(G)I-DLE",
+    "release_title": "2",
+    "release_date": "2024-01-29",
+    "stream": "album",
+    "youtube_video_id": "baaNwRAhHBo",
+    "youtube_video_url": "https://www.youtube.com/watch?v=baaNwRAhHBo",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "(G)I-DLE",
+    "release_title": "I SWAY",
+    "release_date": "2024-07-08",
+    "stream": "album",
+    "youtube_video_id": "rTKqSmX9XhQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=rTKqSmX9XhQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "title_tracks": [
+      "클락션 (Klaxon)"
+    ]
+  },
+  {
+    "group": "(G)I-DLE",
+    "release_title": "Klaxon",
+    "release_date": "2024-07-08",
+    "stream": "song",
+    "youtube_video_id": "rTKqSmX9XhQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=rTKqSmX9XhQ",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
@@ -32,6 +119,48 @@
   },
   {
     "group": "82MAJOR",
+    "release_title": "Sure Thing",
+    "release_date": "2023-10-05",
+    "stream": "song",
+    "youtube_video_id": "5O864SE0rzQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=5O864SE0rzQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "82MAJOR",
+    "release_title": "ON",
+    "release_date": "2023-10-11",
+    "stream": "song",
+    "youtube_video_id": "5O864SE0rzQ",
+    "youtube_video_url": "https://www.youtube.com/watch?v=5O864SE0rzQ",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "82MAJOR",
+    "release_title": "BEAT by 82",
+    "release_date": "2024-04-29",
+    "stream": "album",
+    "youtube_video_id": "OMEcEBYe3jw",
+    "youtube_video_url": "https://www.youtube.com/watch?v=OMEcEBYe3jw",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "title_tracks": [
+      "Choke"
+    ]
+  },
+  {
+    "group": "82MAJOR",
+    "release_title": "X-82",
+    "release_date": "2024-11-15",
+    "stream": "album",
+    "youtube_video_id": "Vls2xzqYbG4",
+    "youtube_video_url": "https://www.youtube.com/watch?v=Vls2xzqYbG4",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "title_tracks": [
+      "Stuck"
+    ]
+  },
+  {
+    "group": "82MAJOR",
     "release_title": "Trophy",
     "release_date": "2025-10-30",
     "stream": "album",
@@ -39,6 +168,30 @@
     "provenance": "ytmusicapi exact album search match",
     "youtube_video_url": "https://www.youtube.com/watch?v=lROE6G2DwFY",
     "youtube_video_provenance": "official artist channel watch URL"
+  },
+  {
+    "group": "8TURN",
+    "release_title": "UNCHARTED DRIFT",
+    "release_date": "2023-06-26",
+    "stream": "album",
+    "youtube_video_id": "CTzISCJILd4",
+    "youtube_video_url": "https://www.youtube.com/watch?v=CTzISCJILd4",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "title_tracks": [
+      "EXCEL"
+    ]
+  },
+  {
+    "group": "8TURN",
+    "release_title": "STUNNING",
+    "release_date": "2024-01-09",
+    "stream": "album",
+    "youtube_video_id": "gN2SgTVZ2aU",
+    "youtube_video_url": "https://www.youtube.com/watch?v=gN2SgTVZ2aU",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "title_tracks": [
+      "RU‐PUM PUM"
+    ]
   },
   {
     "group": "8TURN",
@@ -51,11 +204,65 @@
   },
   {
     "group": "8TURN",
+    "release_title": "Electric Heart : Born to Glow",
+    "release_date": "2025-08-21",
+    "stream": "song",
+    "youtube_video_id": "4TTI8UR7kTE",
+    "youtube_video_url": "https://www.youtube.com/watch?v=4TTI8UR7kTE",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "8TURN",
     "release_title": "BRUISE",
     "release_date": "2026-01-28",
     "stream": "song",
     "youtube_video_url": "https://www.youtube.com/watch?v=WxL5cNNelLk",
     "youtube_video_provenance": "official artist channel watch URL"
+  },
+  {
+    "group": "aespa",
+    "release_title": "Welcome to MY World",
+    "release_date": "2023-05-02",
+    "stream": "song",
+    "youtube_video_id": "0xdB_vo4r2c",
+    "youtube_video_url": "https://www.youtube.com/watch?v=0xdB_vo4r2c",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "aespa",
+    "release_title": "MY WORLD",
+    "release_date": "2023-05-08",
+    "stream": "album",
+    "youtube_video_id": "0xdB_vo4r2c",
+    "youtube_video_url": "https://www.youtube.com/watch?v=0xdB_vo4r2c",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "aespa",
+    "release_title": "Better Things",
+    "release_date": "2023-08-18",
+    "stream": "song",
+    "youtube_video_id": "gfk3QLU1x0E",
+    "youtube_video_url": "https://www.youtube.com/watch?v=gfk3QLU1x0E",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "aespa",
+    "release_title": "Drama",
+    "release_date": "2023-11-10",
+    "stream": "album",
+    "youtube_video_id": "D8VEhcPeSlc",
+    "youtube_video_url": "https://www.youtube.com/watch?v=D8VEhcPeSlc",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
+  },
+  {
+    "group": "aespa",
+    "release_title": "Drama",
+    "release_date": "2023-11-10",
+    "stream": "song",
+    "youtube_video_id": "D8VEhcPeSlc",
+    "youtube_video_url": "https://www.youtube.com/watch?v=D8VEhcPeSlc",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring"
   },
   {
     "group": "aespa",
