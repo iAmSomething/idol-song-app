@@ -348,6 +348,33 @@ describe('mobile search tab', () => {
     );
   });
 
+  test('clears stale local query when navigation opens the search tab without params', async () => {
+    __mock.setLocalSearchParams({
+      q: '최예나',
+      segment: 'entities',
+    });
+
+    const tree = await renderSearchScreen();
+
+    expect(tree.root.findByProps({ testID: 'search-input' }).props.value).toBe('최예나');
+
+    __mock.setParams.mockClear();
+
+    await act(async () => {
+      __mock.setLocalSearchParams({});
+      tree.update(<SearchTabScreen />);
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+
+    expect(tree.root.findByProps({ testID: 'search-input' }).props.value).toBe('');
+    expect(__mock.setParams).not.toHaveBeenCalledWith(
+      expect.objectContaining({
+        q: '최예나',
+      }),
+    );
+  });
+
   test('shows recent queries when idle and allows clearing history', async () => {
     await persistRecentQuery('피원하');
 

@@ -17,6 +17,10 @@
     "qa:preview:android:avd:prepare": "bash ./scripts/prepare-android-preview-qa-emulator.sh",
     "qa:preview:android:avd:launch": "bash ./scripts/prepare-android-preview-qa-emulator.sh --launch",
     "qa:preview:android:emu": "cross-env APP_ENV=preview expo run:android --port 8083",
+    "android:production:assemble": "cross-env APP_ENV=production EXPO_PUBLIC_API_BASE_URL=https://idol-song-app-production.up.railway.app bash -lc 'cd android && ./gradlew assembleRelease'",
+    "android:production:bundle": "cross-env APP_ENV=production EXPO_PUBLIC_API_BASE_URL=https://idol-song-app-production.up.railway.app bash -lc 'cd android && ./gradlew bundleRelease'",
+    "android:production:distribute": "bash ./scripts/distribute-android-production.sh",
+    "android:production:distribute:dry-run": "bash ./scripts/distribute-android-production.sh --dry-run",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
@@ -56,6 +60,9 @@
     "react-native-worklets": "0.7.2"
   },
   "devDependencies": {
+    "@react-native-community/cli": "^20.1.2",
+    "@react-native-community/cli-platform-android": "^20.1.2",
+    "@react-native-community/cli-platform-ios": "^20.1.2",
     "@types/jest": "^30.0.0",
     "@types/react": "~19.2.2",
     "@types/react-test-renderer": "^19.1.0",
