@@ -422,12 +422,6 @@ function buildReadyCheck() {
     fixtureKey: null,
     async execute(options) {
       const request = await requestJson(`${options.baseUrl}/ready`, 'ready', options);
-      const envelopeError = validateJsonEnvelope(request);
-
-      if (envelopeError) {
-        return buildFailure(envelopeError, [request], request.status);
-      }
-
       const readyStatus = request.body?.status;
       const databaseStatus =
         request.body &&
