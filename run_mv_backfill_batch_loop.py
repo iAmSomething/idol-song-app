@@ -47,6 +47,7 @@ def build_backfill_command(
     batch_size: int,
     row_offset: int,
     progress_every: int,
+    request_timeout_seconds: int,
 ) -> list[str]:
     return [
         sys.executable,
@@ -59,17 +60,27 @@ def build_backfill_command(
         str(row_offset),
         "--progress-every",
         str(progress_every),
+        "--request-timeout",
+        str(request_timeout_seconds),
     ]
 
 
-def run_json_command(command: list[str]) -> tuple[dict[str, Any], str]:
-    completed = subprocess.run(
-        command,
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+def run_json_command(command: list[str], command_timeout_seconds: int) -> tuple[dict[str, Any], str]:
+    try:
+        completed = subprocess.run(
+            command,
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=command_timeout_seconds,
+        )
+    except subprocess.TimeoutExpired as error:
+        raise RuntimeError(
+            "command timed out "
+            f"(timeout={command_timeout_seconds}s): {' '.join(command)}\n"
+            f"stdout:\n{error.stdout or ''}\nstderr:\n{error.stderr or ''}"
+        ) from error
     if completed.returncode != 0:
         raise RuntimeError(
             "command failed "
@@ -87,6 +98,7 @@ def summarize_iteration(batch_index: int, row_offset: int, report: dict[str, Any
         "selected_rows": execution_scope.get("selected_rows", 0),
         "scoped_rows_total": execution_scope.get("scoped_rows_total", 0),
         "resolved_now": report.get("resolved_now", 0),
+        "persisted_resolution_changes": report.get("persisted_resolution_changes", 0),
         "coverage_lift": report.get("coverage_lift", 0),
         "review_row_count": report.get("review_row_count", 0),
         "unresolved_remainder": report.get("unresolved_remainder", 0),
@@ -101,6 +113,8 @@ def run_batch_loop(
     batch_size: int,
     max_batches: int,
     progress_every: int,
+    request_timeout_seconds: int,
+    command_timeout_seconds: int,
     batch_runner: Callable[[int], tuple[dict[str, Any], str]],
     queue_builder: Callable[[], dict[str, Any]],
 ) -> dict[str, Any]:
@@ -118,14 +132,14 @@ def run_batch_loop(
 
         selected_rows = int(iteration["selected_rows"])
         scoped_rows_total = int(iteration["scoped_rows_total"])
-        resolved_now = int(iteration["resolved_now"])
+        persisted_resolution_changes = int(iteration["persisted_resolution_changes"])
         coverage_lift = int(iteration["coverage_lift"])
 
         if selected_rows == 0:
             stop_reason = "exhausted"
             break
 
-        if resolved_now > 0 or coverage_lift > 0:
+        if persisted_resolution_changes > 0 or coverage_lift > 0:
             row_offset = 0
             continue
 
@@ -139,6 +153,7 @@ def run_batch_loop(
 
     queue_summary = queue_builder()
     total_resolved_now = sum(int(row["resolved_now"]) for row in iterations)
+    total_persisted_resolution_changes = sum(int(row["persisted_resolution_changes"]) for row in iterations)
     total_coverage_lift = sum(int(row["coverage_lift"]) for row in iterations)
     summary = {
         "started_at": started_at,
@@ -148,10 +163,13 @@ def run_batch_loop(
             "batch_size": batch_size,
             "max_batches": max_batches,
             "progress_every": progress_every,
+            "request_timeout_seconds": request_timeout_seconds,
+            "command_timeout_seconds": command_timeout_seconds,
         },
         "stop_reason": stop_reason,
         "batches_run": len(iterations),
         "total_resolved_now": total_resolved_now,
+        "total_persisted_resolution_changes": total_persisted_resolution_changes,
         "total_coverage_lift": total_coverage_lift,
         "iterations": iterations,
         "final_iteration": iterations[-1] if iterations else None,
@@ -186,6 +204,18 @@ def main() -> None:
         help="Forwarded to backfill_release_detail_mvs.py for stderr progress output.",
     )
     parser.add_argument(
+        "--request-timeout",
+        type=parse_positive_int_arg,
+        default=10,
+        help="Per-request timeout in seconds for each backfill batch.",
+    )
+    parser.add_argument(
+        "--command-timeout-seconds",
+        type=parse_positive_int_arg,
+        default=180,
+        help="Hard timeout in seconds for each batch subprocess.",
+    )
+    parser.add_argument(
         "--summary-path",
         default=str(DEFAULT_SUMMARY_PATH),
         help="Where to write the loop summary JSON.",
@@ -198,6 +228,7 @@ def main() -> None:
             args.batch_size,
             row_offset,
             args.progress_every,
+            args.request_timeout,
         )
         print(
             "[run_mv_backfill_batch_loop] "
@@ -205,11 +236,14 @@ def main() -> None:
             file=sys.stderr,
             flush=True,
         )
-        return run_json_command(command)
+        return run_json_command(command, args.command_timeout_seconds)
 
     def queue_builder() -> dict[str, Any]:
         print("[run_mv_backfill_batch_loop] rebuilding MV review queue", file=sys.stderr, flush=True)
-        queue_summary, _stderr = run_json_command([sys.executable, str(QUEUE_SCRIPT)])
+        queue_summary, _stderr = run_json_command(
+            [sys.executable, str(QUEUE_SCRIPT)],
+            args.command_timeout_seconds,
+        )
         return queue_summary
 
     summary = run_batch_loop(
@@ -217,6 +251,8 @@ def main() -> None:
         batch_size=args.batch_size,
         max_batches=args.max_batches,
         progress_every=args.progress_every,
+        request_timeout_seconds=args.request_timeout,
+        command_timeout_seconds=args.command_timeout_seconds,
         batch_runner=batch_runner,
         queue_builder=queue_builder,
     )

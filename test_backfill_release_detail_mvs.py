@@ -170,6 +170,42 @@ class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
         self.assertNotIn("youtube_video_url", merged[0])
         self.assertNotIn("youtube_video_provenance", merged[0])
 
+    def test_count_persisted_resolution_changes_counts_only_actual_detail_changes(self) -> None:
+        before_details = [
+            {
+                "group": "YENA",
+                "release_title": "LOVE CATCHER",
+                "release_date": "2026-03-11",
+                "stream": "album",
+                "youtube_video_status": "unresolved",
+            }
+        ]
+        after_details = [
+            {
+                "group": "YENA",
+                "release_title": "LOVE CATCHER",
+                "release_date": "2026-03-11",
+                "stream": "album",
+                "youtube_video_id": "abc123",
+                "youtube_video_url": "https://www.youtube.com/watch?v=abc123",
+                "youtube_video_status": "manual_override",
+                "youtube_video_provenance": "test",
+            }
+        ]
+        resolutions = [
+            {
+                "group": "YENA",
+                "release_title": "LOVE CATCHER",
+                "release_date": "2026-03-11",
+                "stream": "album",
+            }
+        ]
+
+        self.assertEqual(
+            backfill.count_persisted_resolution_changes(before_details, after_details, resolutions),
+            1,
+        )
+
     def test_build_candidate_channel_url_uses_short_byline_text(self) -> None:
         video = {
             "shortBylineText": {
@@ -234,7 +270,12 @@ class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
             }
         }
 
-        def fake_fetch_query_candidates(query: str, reference: object) -> list[dict[str, object]]:
+        def fake_fetch_query_candidates(
+            query: str,
+            reference: object,
+            request_timeout_seconds: int = backfill.DEFAULT_REQUEST_TIMEOUT_SECONDS,
+        ) -> list[dict[str, object]]:
+            self.assertEqual(request_timeout_seconds, backfill.DEFAULT_REQUEST_TIMEOUT_SECONDS)
             if "캐치 캐치" not in query:
                 return []
             return [
@@ -285,7 +326,12 @@ class BackfillReleaseDetailMvQueryTests(unittest.TestCase):
             }
         }
 
-        def fake_fetch_query_candidates(query: str, reference: object) -> list[dict[str, object]]:
+        def fake_fetch_query_candidates(
+            query: str,
+            reference: object,
+            request_timeout_seconds: int = backfill.DEFAULT_REQUEST_TIMEOUT_SECONDS,
+        ) -> list[dict[str, object]]:
+            self.assertEqual(request_timeout_seconds, backfill.DEFAULT_REQUEST_TIMEOUT_SECONDS)
             return [
                 {
                     "video_id": "abc123",
