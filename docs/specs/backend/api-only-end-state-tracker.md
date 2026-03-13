@@ -64,7 +64,7 @@
 - committed JSON snapshot과 bridge export는 demoted artifact로만 남는다.
 
 즉, 남아 있는 blocker는 더 이상 "client가 JSON을 primary runtime source로 쓴다"만이 아니다.
-남아 있는 문제는 preview host / production API health / live runtime evidence / data completeness 같은 운영/품질 blocker다.
+남아 있는 문제는 production API health / live runtime evidence / data completeness 같은 운영/품질 blocker다.
 
 ## 4. Remaining Linked Blockers
 
@@ -72,8 +72,6 @@
 
 | issue | blocker class | why it is still open |
 | --- | --- | --- |
-| [#525](https://github.com/iAmSomething/idol-song-app/issues/525) | preview infra | stable public preview backend URL이 아직 정상 provisioning되지 않았다. |
-| [#624](https://github.com/iAmSomething/idol-song-app/issues/624) | external-device verification | external iPhone / Android validation이 stable preview host에 아직 완전히 정착되지 않았다. |
 | [#626](https://github.com/iAmSomething/idol-song-app/issues/626) | runtime health evidence | first real daily cadence window 이후 refreshed runtime bundle로 남은 runtime-health blocker를 재판정해야 한다. |
 | [#625](https://github.com/iAmSomething/idol-song-app/issues/625) | catalog completeness (MV) | latest / recent cohort의 canonical MV floor가 readiness threshold를 아직 못 넘겼다. |
 | [#627](https://github.com/iAmSomething/idol-song-app/issues/627) | catalog completeness (title-track) | latest / recent cohort의 title-track floor가 readiness threshold를 아직 못 넘겼다. |
@@ -82,7 +80,6 @@
 
 위 5개 issue가 모두 닫히면 다음을 동시에 만족한다.
 
-- preview / external-device path가 stable public backend URL 기준으로 고정된다.
 - runtime-health / readiness bundle이 first scheduled cadence evidence까지 포함한 최신 상태로 고정된다.
 - latest / recent user-facing cohort의 title-track / canonical MV blocker가 readiness threshold 아래에 더 이상 남지 않는다.
 

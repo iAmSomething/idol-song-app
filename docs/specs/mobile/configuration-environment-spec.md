@@ -53,16 +53,15 @@
 - local xcconfig는 machine-local override만 담고 git에 커밋하지 않는다.
 - `expo prebuild --clean` 또는 `expo run:ios`를 다시 돌릴 때도 같은 `EXPO_IOS_*` 값이 들어가야 native regeneration과 checked-in project가 같은 identifier를 유지한다.
 
-## 7.2 Public preview backend and tunnel fallback
-- external iPhone/Android QA의 기본 경로는 stable public preview backend다.
+## 7.2 Production backend and tunnel fallback
+- external iPhone/Android QA의 기본 경로는 single live production backend다.
 - mobile preview 예시 env는 `mobile/.env.preview.example`를 기준으로 둔다.
-- stable preview backend의 source of truth는 GitHub Environment `preview`의 `BACKEND_PUBLIC_URL`이다.
-- preview backend deploy workflow는 Railway provided domain을 resolve한 뒤 같은 값을 `BACKEND_PUBLIC_URL`에 다시 동기화해야 한다.
+- preview profile도 user-facing data는 GitHub Environment `production`의 `BACKEND_PUBLIC_URL`만 읽는다.
 - debug metadata에서는 최소 아래를 확인 가능해야 한다.
   - active API base URL
   - active API host
-  - backend target label (`Public preview backend`, `Temporary tunnel backend`, `Custom backend target`, `Missing backend target`)
-- stable preview backend가 unavailable일 때만 temporary tunnel fallback을 허용한다.
+  - backend target label (`Live production backend`, `Temporary tunnel backend`, `Custom backend target`, `Missing backend target`)
+- production backend가 unavailable일 때만 temporary tunnel fallback을 허용한다.
 - tunnel fallback 예시 env는 `mobile/.env.preview.tunnel.example`를 기준으로 둔다.
 - tunnel fallback은 release sign-off 기본 경로가 아니라 emergency QA 우회 경로다.
 

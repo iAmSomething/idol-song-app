@@ -95,7 +95,7 @@ describe('debug metadata helpers', () => {
     });
   });
 
-  test('labels the stable preview backend and tunnel fallback distinctly', () => {
+  test('labels the live production backend and tunnel fallback distinctly', () => {
     expect(
       getDebugMetadata({
         ...previewRuntimeState,
@@ -103,11 +103,11 @@ describe('debug metadata helpers', () => {
           ...previewRuntimeConfig,
           services: {
             ...previewRuntimeConfig.services,
-            apiBaseUrl: 'https://idol-song-app-preview.up.railway.app',
+            apiBaseUrl: 'https://idol-song-app-production.up.railway.app',
           },
         },
       }).backendTargetLabel,
-    ).toBe('Public preview backend');
+    ).toBe('Live production backend');
 
     expect(
       getDebugMetadata({
@@ -129,7 +129,7 @@ describe('debug metadata helpers', () => {
           ...previewRuntimeConfig,
           services: {
             ...previewRuntimeConfig.services,
-            apiBaseUrl: 'https://idol-song-app-production.up.railway.app',
+            apiBaseUrl: 'https://api.example.com',
           },
         },
       }).backendTargetLabel,
