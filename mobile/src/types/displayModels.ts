@@ -160,6 +160,7 @@ export interface CalendarDayBadgeModel {
   label: string;
   monogram: string;
   kind: CalendarDayBadgeKind;
+  imageUrl?: string;
 }
 
 export interface CalendarDayCellModel {

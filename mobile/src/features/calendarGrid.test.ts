@@ -7,6 +7,7 @@ function createRelease(
   group: string,
   displayGroup: string,
   releaseDate: string,
+  overrides: Partial<ReleaseSummaryModel> = {},
 ): ReleaseSummaryModel {
   return {
     id: `${group}-${releaseDate}`,
@@ -17,6 +18,7 @@ function createRelease(
     releaseKind: 'single',
     stream: 'song',
     contextTags: [],
+    ...overrides,
   };
 }
 
@@ -92,6 +94,47 @@ describe('calendar month grid', () => {
 
     expect(march8?.badges).toHaveLength(2);
     expect(march8?.overflowCount).toBe(1);
+  });
+
+  test('carries badge image urls into visible badges when available', () => {
+    const snapshot: CalendarMonthSnapshotModel = {
+      month: '2026-03',
+      releaseCount: 1,
+      upcomingCount: 1,
+      nearestUpcoming: null,
+      releases: [
+        createRelease('ALPHA', 'Alpha', '2026-03-08', {
+          badgeImageUrl: 'https://example.com/alpha.png',
+        }),
+      ],
+      exactUpcoming: [
+        {
+          id: 'beta-upcoming',
+          group: 'BETA',
+          displayGroup: 'Beta',
+          badgeImageUrl: 'https://example.com/beta.png',
+          scheduledDate: '2026-03-08',
+          datePrecision: 'exact',
+          headline: 'Beta comeback',
+          sourceType: 'official_social',
+        },
+      ],
+      monthOnlyUpcoming: [],
+    };
+
+    const grid = buildCalendarMonthGrid(snapshot, '2026-03-08', '2026-03-07');
+    const march8 = grid.weeks.flat().find((cell) => cell?.isoDate === '2026-03-08');
+
+    expect(march8?.badges).toEqual([
+      expect.objectContaining({
+        group: 'ALPHA',
+        imageUrl: 'https://example.com/alpha.png',
+      }),
+      expect.objectContaining({
+        group: 'BETA',
+        imageUrl: 'https://example.com/beta.png',
+      }),
+    ]);
   });
 
   test('supports empty-day selection and month-safe fallback selection', () => {

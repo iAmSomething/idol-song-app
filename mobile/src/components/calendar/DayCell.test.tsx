@@ -20,6 +20,7 @@ describe('DayCell', () => {
           kind: 'release',
           label: 'YENA',
           monogram: 'YE',
+          imageUrl: 'https://example.com/yena.png',
         },
       ],
       overflowCount: 2,
@@ -46,6 +47,7 @@ describe('DayCell', () => {
     });
 
     const target = tree!.root.findByProps({ testID: 'calendar-day-2026-03-11' });
+    expect(tree!.root.findByProps({ testID: 'calendar-day-badge-image-release-yena' })).toBeTruthy();
     expect(target.props.accessibilityState).toEqual({ selected: true });
     expect(target.props.accessibilityLabel).toContain('3월 11일');
     expect(target.props.accessibilityLabel).toContain('확정 발매 1건');

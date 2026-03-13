@@ -69,6 +69,20 @@ function getBadgeLabel(
   );
 }
 
+function getBadgeImageUrl(
+  group: string,
+  releaseRows: ReleaseSummaryModel[],
+  upcomingRows: UpcomingEventModel[],
+): string | undefined {
+  const releaseMatch = releaseRows.find((item) => item.group === group);
+  if (releaseMatch?.badgeImageUrl || releaseMatch?.representativeImageUrl) {
+    return releaseMatch.badgeImageUrl ?? releaseMatch.representativeImageUrl;
+  }
+
+  const upcomingMatch = upcomingRows.find((item) => item.group === group);
+  return upcomingMatch?.badgeImageUrl ?? upcomingMatch?.representativeImageUrl ?? undefined;
+}
+
 function buildBadges(
   releaseRows: ReleaseSummaryModel[],
   upcomingRows: UpcomingEventModel[],
@@ -91,6 +105,7 @@ function buildBadges(
       label,
       monogram: buildTeamMonogram(label),
       kind: getBadgeKind(group, releaseRows, upcomingRows),
+      imageUrl: getBadgeImageUrl(group, releaseRows, upcomingRows),
     };
   });
 }
