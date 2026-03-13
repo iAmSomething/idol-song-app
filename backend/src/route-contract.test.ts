@@ -406,6 +406,8 @@ function buildReleaseDetailPayload(releaseId: string) {
       release_id: releaseId,
       entity_slug: 'ive',
       display_name: 'IVE',
+      badge_image_url: 'https://cdn.example.com/ive-badge.png',
+      representative_image_url: 'https://cdn.example.com/ive-representative.jpg',
       release_title: 'REVIVE+',
       release_date: '2026-02-23',
       stream: 'album',
@@ -2023,6 +2025,8 @@ test('GET /v1/releases/:id returns release detail payload with title tracks', as
   assert.equal(body.data.detail_metadata.provenance, 'releaseDetails.existing_row');
   assert.equal(body.data.title_track_metadata.status, 'manual_override');
   assert.equal(body.data.title_track_metadata.provenance, 'release_detail_overrides.title_tracks');
+  assert.equal(body.data.release.badge_image_url, 'https://cdn.example.com/ive-badge.png');
+  assert.equal(body.data.release.representative_image_url, 'https://cdn.example.com/ive-representative.jpg');
   assert.equal(body.data.tracks.length, 2);
   assert.equal(body.data.tracks.filter((track: { is_title_track: boolean }) => track.is_title_track).length, 2);
   assert.equal(body.data.service_links.youtube_music.status, 'manual_override');

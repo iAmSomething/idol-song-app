@@ -19,6 +19,8 @@ export type BackendCalendarRelease = {
   release_id: string;
   entity_slug: string;
   display_name: string;
+  badge_image_url?: string | null;
+  representative_image_url?: string | null;
   release_title: string;
   release_date?: string;
   stream: string;
@@ -29,6 +31,8 @@ export type BackendCalendarUpcoming = {
   upcoming_signal_id: string;
   entity_slug: string;
   display_name: string;
+  badge_image_url?: string | null;
+  representative_image_url?: string | null;
   headline: string;
   scheduled_date?: string | null;
   scheduled_month?: string | null;
@@ -192,6 +196,8 @@ export type BackendEntityReleaseSummary = {
   stream: string;
   release_kind?: string | null;
   release_format?: string | null;
+  badge_image_url?: string | null;
+  representative_image_url?: string | null;
   representative_song_title?: string | null;
   spotify_url?: string | null;
   youtube_music_url?: string | null;
@@ -292,6 +298,8 @@ export type BackendReleaseDetailData = {
     release_id: string;
     entity_slug: string;
     display_name: string;
+    badge_image_url?: string | null;
+    representative_image_url?: string | null;
     release_title: string;
     release_date: string;
     stream: string;

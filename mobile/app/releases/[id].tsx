@@ -597,13 +597,13 @@ export default function ReleaseDetailScreen() {
                 </Text>
               </View>
             </View>
-            <TeamIdentityRow
-              badgeImageUrl={undefined}
-              fallbackAssetKey={resolveBadgeFallbackAssetKey('group')}
-              monogram={detail.displayGroup.slice(0, 2).toUpperCase()}
-              name={detail.displayGroup}
-              testID="release-team-identity"
-            />
+        <TeamIdentityRow
+          badgeImageUrl={detail.badgeImageUrl ?? detail.representativeImageUrl}
+          fallbackAssetKey={resolveBadgeFallbackAssetKey('group')}
+          monogram={detail.displayGroup.slice(0, 2).toUpperCase()}
+          name={detail.displayGroup}
+          testID="release-team-identity"
+        />
           </View>
         }
         media={<ReleaseCover detail={detail} styles={styles} />}
