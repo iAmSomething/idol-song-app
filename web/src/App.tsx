@@ -2590,12 +2590,21 @@ function App() {
   })
   const selectedTeam = selectedTeamResource.team
   const selectedTeamPageGroup = selectedTeam?.group ?? selectedGroup ?? selectedTeamShellDisplayName ?? null
+  const selectedTeamLocalProfile = selectedTeamPageGroup ? teamProfileMap.get(selectedTeamPageGroup) ?? null : null
   const selectedTeamIsPinned = selectedTeamPageGroup ? myTeamsSet.has(selectedTeamPageGroup) : false
   const myTeamsLimitReached = myTeams.length >= MY_TEAMS_LIMIT
-  const compareTeam = null
-  const compareTeamOptions: TeamProfile[] = []
-  const selectedTeamCompareSnapshot = selectedTeam ? buildEntityDetailCompareSnapshot(selectedTeam) : null
-  const compareTeamSnapshot = null
+  const compareTeam = activeCompareGroup ? teamProfileMap.get(activeCompareGroup) ?? null : null
+  const compareTeamOptions: TeamProfile[] = selectedTeamPageGroup
+    ? teamProfiles
+        .filter((team) => team.group !== selectedTeamPageGroup)
+        .sort((left, right) => left.displayName.localeCompare(right.displayName))
+    : []
+  const selectedTeamCompareSnapshot = selectedTeamLocalProfile
+    ? buildTeamCompareSnapshot(selectedTeamLocalProfile.group)
+    : selectedTeam
+      ? buildEntityDetailCompareSnapshot(selectedTeam)
+      : null
+  const compareTeamSnapshot = compareTeam ? buildTeamCompareSnapshot(compareTeam.group) : null
   const selectedTeamSourceStatus = {
     source: selectedTeamResource.source,
     errorCode: selectedTeamResource.loading ? null : selectedTeamResource.errorCode,
@@ -2622,7 +2631,9 @@ function App() {
   const selectedTeamLatestHandoffs =
     selectedTeam?.latestRelease ? selectedTeam.latestRelease.musicHandoffs : undefined
   const selectedTeamLatestMvUrl = selectedTeam?.latestRelease?.youtubeMvUrl ?? ''
-  const relatedActs: RelatedActRecommendation[] = []
+  const relatedActs: RelatedActRecommendation[] = selectedTeamPageGroup
+    ? (relatedActsByGroup.get(selectedTeamPageGroup) ?? []).filter((item) => teamProfileMap.has(item.group))
+    : []
   const dashboardSectionNavigatorItems: DashboardSectionNavigatorItem[] = [
     {
       id: DASHBOARD_SECTION_NAV_IDS[0],
