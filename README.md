@@ -213,18 +213,17 @@ latest/recent blocker 코호트만 빠르게 다시 돌리고 싶다면 scoped r
 
 ```bash
 python build_release_details_musicbrainz.py --cohorts latest,recent
-python build_mv_manual_review_queue.py
+python run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 50 --max-batches 20 --progress-every 10
 ```
 
 오래 걸리는 pass를 작게 확인할 때는 progress와 row limit를 같이 건다. progress는 `stderr`로만 찍히기 때문에 기존 JSON stdout consumer는 깨지지 않는다.
 
 ```bash
 python build_release_details_musicbrainz.py --cohorts latest,recent --max-rows 25 --progress-every 5
-python backfill_release_detail_mvs.py --cohorts latest,recent --max-rows 25 --progress-every 5
-python backfill_release_detail_mvs.py --cohorts latest,recent --row-offset 25 --max-rows 25 --progress-every 5
+python run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 25 --max-batches 12 --progress-every 5
 ```
 
-`backfill_release_detail_mvs.py`는 이제 첫 번째 title track만 보지 않고 최대 2개의 title track과 `official music video` / no-suffix fallback query까지 포함해서 candidate breadth를 넓힌다. 긴 latest/recent pass를 다시 돌릴 때는 `--max-rows`와 `--row-offset`을 같이 써서 batch를 이어가고, 외부 검색 단발 실패는 빈 결과로 흡수해 whole run이 죽지 않게 한다.
+`run_mv_backfill_batch_loop.py`는 latest/recent unresolved rows를 서버사이드에서 자동 batch loop로 처리한다. progress가 나는 batch는 즉시 `row_offset=0`으로 리셋해서 새 unresolved head부터 다시 먹고, progress가 없는 batch만 같은 snapshot 뒤쪽 chunk로 넘어간다. 전체 snapshot을 한 번 다 훑었는데 progress가 없거나 `max_batches`에 닿으면 멈추고, 마지막에 `build_mv_manual_review_queue.py`를 자동으로 다시 생성한다.
 
 Neon canonical DB까지 같이 최신화하려면 아래를 이어서 실행한다.
 

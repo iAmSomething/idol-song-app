@@ -588,18 +588,17 @@ latest/recent blocker 코호트만 빠르게 재생성할 때는 아래처럼 sc
 
 ```bash
 python3 ../build_release_details_musicbrainz.py --cohorts latest,recent
-python3 ../build_mv_manual_review_queue.py
+python3 ../run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 50 --max-batches 20 --progress-every 10
 ```
 
 긴 pass를 안전하게 확인할 때는 row limit와 stderr progress를 같이 건다.
 
 ```bash
 python3 ../build_release_details_musicbrainz.py --cohorts latest,recent --max-rows 25 --progress-every 5
-python3 ../backfill_release_detail_mvs.py --cohorts latest,recent --max-rows 25 --progress-every 5
-python3 ../backfill_release_detail_mvs.py --cohorts latest,recent --row-offset 25 --max-rows 25 --progress-every 5
+python3 ../run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 25 --max-batches 12 --progress-every 5
 ```
 
-`backfill_release_detail_mvs.py`는 latest/recent blocker rerun에서 최대 2개의 title track, `official music video` suffix, no-suffix fallback까지 query plan에 포함한다. candidate breadth를 먼저 넓힌 뒤 full rerun을 태우는 기준으로 쓰고, 긴 pass는 `--row-offset`과 `--max-rows`를 함께 써서 batch를 이어간다. 외부 검색 단발 실패는 빈 결과로 흡수해 전체 rerun이 중단되지 않게 한다.
+`run_mv_backfill_batch_loop.py`는 latest/recent unresolved head를 batch로 반복 처리한다. 한 batch에서 progress가 나면 `row_offset=0`으로 다시 시작하고, progress가 없으면 같은 snapshot에서 `row_offset += selected_rows`로 뒤쪽 chunk를 훑는다. 전체 snapshot을 한 번 다 훑었는데도 progress가 없거나 `max_batches`에 닿으면 멈추고, 마지막에 `build_mv_manual_review_queue.py`를 자동으로 다시 돌린다. 내부적으로는 `backfill_release_detail_mvs.py`를 재사용하므로 최대 2개의 title track, `official music video` suffix, no-suffix fallback, 외부 검색 단발 실패 흡수 규칙은 그대로 유지된다.
 
 ## Release Pipeline Dual-Write
 
