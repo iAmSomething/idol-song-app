@@ -63,8 +63,8 @@ jobs:
           python build_release_details_musicbrainz.py
           python build_release_artwork_catalog.py
           python build_entity_asset_coverage_report.py
-          python run_title_track_backfill_batch_loop.py --cohorts latest,recent --batch-size 50 --max-batches 20 --progress-every 10 --skip-acquisition
-          python run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 50 --max-batches 20 --progress-every 10
+          python run_title_track_backfill_batch_loop.py --cohorts latest,recent --batch-size 25 --min-batch-size 10 --max-batches 40 --progress-every 10 --skip-acquisition
+          python run_mv_backfill_batch_loop.py --cohorts latest,recent --batch-size 25 --min-batch-size 10 --max-batches 40 --progress-every 10
           if [ -n "${DATABASE_URL:-}" ]; then
             python sync_release_pipeline_to_neon.py --summary-path /tmp/release-pipeline-db-sync-summary.json
             python sync_upcoming_pipeline_to_neon.py --summary-path /tmp/upcoming-pipeline-db-sync-summary.json

@@ -16,6 +16,10 @@ DEFAULT_SUMMARY_PATH = ROOT / "backend" / "reports" / "title_track_backfill_batc
 BACKFILL_SCRIPT = ROOT / "build_release_details_musicbrainz.py"
 
 
+class CommandTimedOutError(RuntimeError):
+    pass
+
+
 def parse_positive_int_arg(raw_value: str) -> int:
     try:
         parsed = int(raw_value)
@@ -75,7 +79,7 @@ def run_json_command(command: list[str], command_timeout_seconds: int) -> tuple[
             timeout=command_timeout_seconds,
         )
     except subprocess.TimeoutExpired as error:
-        raise RuntimeError(
+        raise CommandTimedOutError(
             "command timed out "
             f"(timeout={command_timeout_seconds}s): {' '.join(command)}\n"
             f"stdout:\n{error.stdout or ''}\nstderr:\n{error.stderr or ''}"
@@ -89,13 +93,20 @@ def run_json_command(command: list[str], command_timeout_seconds: int) -> tuple[
     return load_json_from_stdout(completed.stdout), completed.stderr
 
 
-def summarize_iteration(batch_index: int, row_offset: int, report: dict[str, Any], stderr: str) -> dict[str, Any]:
+def summarize_iteration(
+    batch_index: int,
+    row_offset: int,
+    batch_size: int,
+    report: dict[str, Any],
+    stderr: str,
+) -> dict[str, Any]:
     execution_scope = report.get("execution_scope", {})
     rows_with_title_track_before = int(report.get("rows_with_title_track_before") or 0)
     rows_with_title_track_after = int(report.get("rows_with_title_track_after") or 0)
     return {
         "batch_index": batch_index,
         "row_offset": row_offset,
+        "batch_size": batch_size,
         "selected_rows": execution_scope.get("selected_rows", 0),
         "scoped_rows_total": execution_scope.get("scoped_rows_total", 0),
         "rows_with_title_track_before": rows_with_title_track_before,
@@ -112,22 +123,42 @@ def run_batch_loop(
     *,
     cohorts: str,
     batch_size: int,
+    min_batch_size: int,
     max_batches: int,
     progress_every: int,
     skip_acquisition: bool,
     command_timeout_seconds: int,
-    batch_runner: Callable[[int], tuple[dict[str, Any], str]],
+    batch_runner: Callable[[int, int], tuple[dict[str, Any], str]],
 ) -> dict[str, Any]:
     started_at = now_utc_iso()
     row_offset = 0
     batch_index = 0
     iterations: list[dict[str, Any]] = []
+    adaptive_events: list[dict[str, Any]] = []
     stop_reason = "unknown"
+    current_batch_size = batch_size
 
     while batch_index < max_batches:
+        try:
+            report, stderr = batch_runner(row_offset, current_batch_size)
+        except CommandTimedOutError as error:
+            if current_batch_size <= min_batch_size:
+                raise
+            next_batch_size = max(min_batch_size, current_batch_size // 2)
+            adaptive_events.append(
+                {
+                    "row_offset": row_offset,
+                    "previous_batch_size": current_batch_size,
+                    "next_batch_size": next_batch_size,
+                    "reason": "command_timeout",
+                    "error": str(error),
+                }
+            )
+            current_batch_size = next_batch_size
+            continue
+
         batch_index += 1
-        report, stderr = batch_runner(row_offset)
-        iteration = summarize_iteration(batch_index, row_offset, report, stderr)
+        iteration = summarize_iteration(batch_index, row_offset, current_batch_size, report, stderr)
         iterations.append(iteration)
 
         selected_rows = int(iteration["selected_rows"])
@@ -156,6 +187,7 @@ def run_batch_loop(
         "config": {
             "cohorts": [value.strip() for value in cohorts.split(",") if value.strip()],
             "batch_size": batch_size,
+            "min_batch_size": min_batch_size,
             "max_batches": max_batches,
             "progress_every": progress_every,
             "skip_acquisition": skip_acquisition,
@@ -163,6 +195,7 @@ def run_batch_loop(
         },
         "stop_reason": stop_reason,
         "batches_run": len(iterations),
+        "adaptive_events": adaptive_events,
         "total_persisted_title_track_changes": sum(int(row["persisted_title_track_changes"]) for row in iterations),
         "total_auto_resolved_rows": sum(int(row["title_track_auto_resolved_rows"]) for row in iterations),
         "final_iteration": iterations[-1] if iterations else None,
@@ -183,6 +216,12 @@ def main() -> None:
         type=parse_positive_int_arg,
         default=50,
         help="Number of rows to process per title-track batch.",
+    )
+    parser.add_argument(
+        "--min-batch-size",
+        type=parse_positive_int_arg,
+        default=10,
+        help="Minimum batch size to fall back to after timeout-driven retries.",
     )
     parser.add_argument(
         "--max-batches",
@@ -214,17 +253,17 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    def batch_runner(row_offset: int) -> tuple[dict[str, Any], str]:
+    def batch_runner(row_offset: int, batch_size: int) -> tuple[dict[str, Any], str]:
         command = build_backfill_command(
             args.cohorts,
-            args.batch_size,
+            batch_size,
             row_offset,
             args.progress_every,
             args.skip_acquisition,
         )
         print(
             "[run_title_track_backfill_batch_loop] "
-            f"batch row_offset={row_offset} batch_size={args.batch_size}",
+            f"batch row_offset={row_offset} batch_size={batch_size}",
             file=sys.stderr,
             flush=True,
         )
@@ -233,6 +272,7 @@ def main() -> None:
     summary = run_batch_loop(
         cohorts=args.cohorts,
         batch_size=args.batch_size,
+        min_batch_size=args.min_batch_size,
         max_batches=args.max_batches,
         progress_every=args.progress_every,
         skip_acquisition=args.skip_acquisition,
