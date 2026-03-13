@@ -59,4 +59,47 @@ describe('DayCell', () => {
 
     expect(onPress).toHaveBeenCalledTimes(1);
   });
+
+  test('renders fallback badge art when a badge image is unavailable', async () => {
+    const cell: CalendarDayCellModel = {
+      isoDate: '2026-03-12',
+      dayNumber: 12,
+      isCurrentMonth: true,
+      isToday: false,
+      isSelected: false,
+      badges: [
+        {
+          id: 'upcoming-ab6ix',
+          group: 'AB6IX',
+          kind: 'scheduled',
+          label: 'AB6IX',
+          monogram: 'AB',
+        },
+      ],
+      overflowCount: 0,
+      releaseCount: 0,
+      upcomingCount: 1,
+    };
+    let tree: renderer.ReactTestRenderer;
+
+    await act(async () => {
+      tree = renderer.create(
+        <DayCell
+          badges={cell.badges}
+          dateNumber={cell.dayNumber}
+          extraCount={cell.overflowCount}
+          isCurrentMonth={cell.isCurrentMonth}
+          isSelected={cell.isSelected}
+          isToday={cell.isToday}
+          isoDate={cell.isoDate}
+          onPress={jest.fn()}
+          releaseCount={cell.releaseCount}
+          upcomingCount={cell.upcomingCount}
+        />,
+      );
+    });
+
+    expect(tree!.root.findAllByProps({ testID: 'calendar-day-badge-image-upcoming-ab6ix' })).toHaveLength(0);
+    expect(tree!.root.findByProps({ testID: 'calendar-day-badge-fallback-upcoming-ab6ix' })).toBeDefined();
+  });
 });

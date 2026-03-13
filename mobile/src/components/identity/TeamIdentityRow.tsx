@@ -40,7 +40,11 @@ function TeamIdentityRowComponent({
     <>
       <View style={styles.badgeWrap}>
         {badgeImageUrl ? (
-          <Image source={{ uri: badgeImageUrl }} style={styles.badgeImage} />
+          <Image
+            source={{ uri: badgeImageUrl }}
+            style={styles.badgeImage}
+            testID={testID ? `${testID}-badge-image` : undefined}
+          />
         ) : (
           <FallbackArt
             height={40}

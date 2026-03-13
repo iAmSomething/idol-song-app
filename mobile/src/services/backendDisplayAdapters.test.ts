@@ -188,6 +188,8 @@ describe('backend display adapter parity', () => {
         display_name: 'YENA',
         canonical_name: 'YENA',
         entity_type: 'solo',
+        badge_image_url: 'https://cdn.example.com/yena-badge.png',
+        representative_image_url: 'https://cdn.example.com/yena-representative.png',
       },
       official_links: {
         youtube: 'https://www.youtube.com/@YENA_OFFICIAL',
@@ -238,6 +240,8 @@ describe('backend display adapter parity', () => {
 
     const snapshot = adaptBackendEntityDetail(data);
 
+    expect(snapshot.team.badge?.imageUrl).toBe('https://cdn.example.com/yena-badge.png');
+    expect(snapshot.team.representativeImageUrl).toBe('https://cdn.example.com/yena-representative.png');
     expect(snapshot.latestRelease?.representativeSongTitle).toBe('Hate Rodrigo (feat. Yuqi)');
     expect(snapshot.latestRelease?.spotifyUrl).toBe('https://open.spotify.com/track/hate-rodrigo');
     expect(snapshot.latestRelease?.youtubeMusicUrl).toBe('https://music.youtube.com/watch?v=hate-rodrigo');
@@ -299,5 +303,44 @@ describe('backend display adapter parity', () => {
     expect(detail.notes).toBe('Backend detail remains sparse.');
     expect(detail.tracks[0]?.isTitleTrack).toBe(true);
     expect(detail.tracks[0]?.spotifyUrl).toBeUndefined();
+  });
+
+  test('preserves canonical badge and representative imagery on release detail payloads', () => {
+    const data: BackendReleaseDetailData = {
+      release: {
+        release_id: 'release-blackpink',
+        entity_slug: 'blackpink',
+        display_name: 'BLACKPINK',
+        release_title: 'DEADLINE',
+        release_date: '2026-02-27',
+        stream: 'album',
+        release_kind: 'ep',
+        badge_image_url: 'https://cdn.example.com/blackpink-badge.png',
+        representative_image_url: 'https://cdn.example.com/blackpink-hero.png',
+      },
+      artwork: null,
+      service_links: {
+        spotify: {
+          url: 'https://open.spotify.com/album/deadline',
+        },
+        youtube_music: {
+          url: null,
+        },
+      },
+      tracks: [],
+      mv: {
+        status: 'manual_override',
+        url: 'https://www.youtube.com/watch?v=deadline',
+        video_id: 'deadline',
+      },
+      notes: null,
+    };
+
+    const detail = adaptBackendReleaseDetail(data);
+
+    expect(detail.badgeImageUrl).toBe('https://cdn.example.com/blackpink-badge.png');
+    expect(detail.representativeImageUrl).toBe('https://cdn.example.com/blackpink-hero.png');
+    expect(detail.spotifyUrl).toBe('https://open.spotify.com/album/deadline');
+    expect(detail.youtubeVideoStatus).toBe('manual_override');
   });
 });
