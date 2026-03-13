@@ -1,4 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Pressable,
@@ -942,18 +943,17 @@ export default function CalendarTabScreen() {
                   onPress={() => moveToRelativeMonth(-1)}
                   style={({ pressed }) => [
                     styles.headerButton,
+                    styles.headerIconButton,
                     largeTextMode ? styles.headerButtonLargeText : null,
                     pressed ? styles.headerButtonPressed : null,
                   ]}
                   testID="calendar-month-prev"
                 >
-                  <Text
-                    allowFontScaling
-                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                    style={styles.headerButtonLabel}
-                  >
-                    이전
-                  </Text>
+                  <MaterialCommunityIcons
+                    color={theme.colors.text.primary}
+                    name="chevron-left"
+                    size={20}
+                  />
                 </Pressable>
                 <Pressable
                   accessibilityHint="이번 달 일정으로 돌아갑니다."
@@ -968,16 +968,26 @@ export default function CalendarTabScreen() {
                   ]}
                   testID="calendar-month-current"
                 >
-                  <Text
-                    allowFontScaling
-                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                    style={[
-                      styles.headerButtonLabel,
-                      activeMonth === currentMonth ? styles.headerButtonLabelActive : null,
-                    ]}
-                  >
-                    이번 달
-                  </Text>
+                  <View style={styles.headerButtonContent}>
+                    <MaterialCommunityIcons
+                      color={
+                        activeMonth === currentMonth ? theme.colors.text.brand : theme.colors.text.secondary
+                      }
+                      name="calendar-refresh-outline"
+                      size={16}
+                    />
+                    <Text
+                      allowFontScaling
+                      maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                      numberOfLines={1}
+                      style={[
+                        styles.headerButtonLabel,
+                        activeMonth === currentMonth ? styles.headerButtonLabelActive : null,
+                      ]}
+                    >
+                      이번 달
+                    </Text>
+                  </View>
                 </Pressable>
                 <Pressable
                   accessibilityHint="다음 달 일정을 봅니다."
@@ -986,18 +996,17 @@ export default function CalendarTabScreen() {
                   onPress={() => moveToRelativeMonth(1)}
                   style={({ pressed }) => [
                     styles.headerButton,
+                    styles.headerIconButton,
                     largeTextMode ? styles.headerButtonLargeText : null,
                     pressed ? styles.headerButtonPressed : null,
                   ]}
                   testID="calendar-month-next"
                 >
-                  <Text
-                    allowFontScaling
-                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                    style={styles.headerButtonLabel}
-                  >
-                    다음
-                  </Text>
+                  <MaterialCommunityIcons
+                    color={theme.colors.text.primary}
+                    name="chevron-right"
+                    size={20}
+                  />
                 </Pressable>
               </View>
 
@@ -1014,13 +1023,17 @@ export default function CalendarTabScreen() {
                   ]}
                   testID="calendar-search-open"
                 >
-                  <Text
-                    allowFontScaling
-                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                    style={styles.headerButtonLabel}
-                  >
-                    검색
-                  </Text>
+                  <View style={styles.headerButtonContentCompact}>
+                    <MaterialCommunityIcons color={theme.colors.text.secondary} name="magnify" size={16} />
+                    <Text
+                      allowFontScaling
+                      maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                      numberOfLines={1}
+                      style={styles.headerButtonLabel}
+                    >
+                      검색
+                    </Text>
+                  </View>
                 </Pressable>
                 <Pressable
                   accessibilityLabel="캘린더 필터 열기"
@@ -1036,16 +1049,24 @@ export default function CalendarTabScreen() {
                   ]}
                   testID="calendar-filter-open"
                 >
-                  <Text
-                    allowFontScaling
-                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                    style={[
-                      styles.headerButtonLabel,
-                      filterMode !== 'all' ? styles.headerButtonLabelActive : null,
-                    ]}
-                  >
-                    필터
-                  </Text>
+                  <View style={styles.headerButtonContentCompact}>
+                    <MaterialCommunityIcons
+                      color={filterMode !== 'all' ? theme.colors.text.brand : theme.colors.text.secondary}
+                      name="tune-variant"
+                      size={16}
+                    />
+                    <Text
+                      allowFontScaling
+                      maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                      numberOfLines={1}
+                      style={[
+                        styles.headerButtonLabel,
+                        filterMode !== 'all' ? styles.headerButtonLabelActive : null,
+                      ]}
+                    >
+                      필터
+                    </Text>
+                  </View>
                 </Pressable>
                 <Pressable
                   accessibilityLabel="알림 설정 열기"
@@ -1059,13 +1080,17 @@ export default function CalendarTabScreen() {
                   ]}
                   testID="calendar-notifications-open"
                 >
-                  <Text
-                    allowFontScaling
-                    maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
-                    style={styles.headerButtonLabel}
-                  >
-                    알림
-                  </Text>
+                  <View style={styles.headerButtonContentCompact}>
+                    <MaterialCommunityIcons color={theme.colors.text.secondary} name="bell-outline" size={16} />
+                    <Text
+                      allowFontScaling
+                      maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.buttonService}
+                      numberOfLines={1}
+                      style={styles.headerButtonLabel}
+                    >
+                      알림
+                    </Text>
+                  </View>
                 </Pressable>
               </View>
             </View>
@@ -1302,12 +1327,12 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       gap: theme.space[8],
     },
     headerControlsStack: {
-      gap: 6,
+      gap: 8,
     },
     headerBar: {
       flexDirection: 'row',
       flexWrap: 'wrap',
-      alignItems: 'flex-start',
+      alignItems: 'center',
       justifyContent: 'space-between',
       gap: theme.space[8],
     },
@@ -1326,9 +1351,10 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     },
     monthNav: {
       flexDirection: 'row',
-      flexWrap: 'wrap',
+      flexWrap: 'nowrap',
       gap: theme.space[8],
-      flex: 1,
+      alignItems: 'center',
+      flexShrink: 1,
     },
     actionRowLargeText: {
       width: '100%',
@@ -1342,21 +1368,27 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       gap: theme.space[8],
       justifyContent: 'flex-end',
       maxWidth: '100%',
-      flexShrink: 1,
+      flexGrow: 1,
     },
     headerButton: {
-      minHeight: theme.size.button.heightSecondary,
+      minHeight: 38,
       justifyContent: 'center',
       paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[8],
-      borderRadius: theme.radius.button,
+      borderRadius: theme.radius.chip,
       backgroundColor: theme.colors.surface.elevated,
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
     },
+    headerIconButton: {
+      width: 38,
+      minWidth: 38,
+      paddingHorizontal: 0,
+      alignItems: 'center',
+    },
     headerButtonCompact: {
-      minHeight: 40,
-      paddingHorizontal: theme.space[8],
+      minHeight: 36,
+      paddingHorizontal: theme.space[12],
       paddingVertical: theme.space[4],
     },
     headerButtonActive: {
@@ -1371,9 +1403,22 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     headerButtonPressed: {
       opacity: 0.84,
     },
+    headerButtonContent: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: theme.space[8],
+    },
+    headerButtonContentCompact: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: theme.space[8],
+    },
     headerButtonLabel: {
       ...buttonServiceTypography,
       color: theme.colors.text.primary,
+      fontSize: theme.typography.meta.fontSize,
     },
     headerButtonLabelActive: {
       color: theme.colors.text.brand,
