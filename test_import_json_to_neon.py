@@ -183,7 +183,17 @@ class ImportJsonToNeonDryRunSummaryTests(unittest.TestCase):
             },
         ]
 
-        signal_rows, source_rows, signal_ids_by_dedupe = self.module.build_upcoming_rows(rows, entity_ids, summary)
+        normalized_rows = self.module.normalize_official_social_upcoming_findings(
+            rows,
+            {
+                "AB6IX": {
+                    "group": "AB6IX",
+                    "tracking_status": "watch_only",
+                }
+            },
+        )
+
+        signal_rows, source_rows, signal_ids_by_dedupe = self.module.build_upcoming_rows(normalized_rows, entity_ids, summary)
 
         self.assertEqual(len(signal_rows), 1)
         self.assertEqual(signal_rows[0]["headline"], rows[0]["headline"])
@@ -191,10 +201,42 @@ class ImportJsonToNeonDryRunSummaryTests(unittest.TestCase):
         self.assertEqual(signal_rows[0]["date_precision"], "exact")
         self.assertEqual(signal_rows[0]["date_status"], "confirmed")
         self.assertEqual(signal_rows[0]["release_format"], "album")
+        self.assertEqual(signal_rows[0]["tracking_status"], "watch_only")
         self.assertEqual(len(source_rows), 2)
         self.assertEqual(source_rows[0]["source_type"], "news_rss")
         self.assertEqual(source_rows[1]["source_type"], "official_social")
         self.assertEqual(len(signal_ids_by_dedupe), 2)
+
+    def test_normalize_official_social_upcoming_findings_reuses_watchlist_tracking_status(self):
+        rows = [
+            {
+                "group": "AB6IX",
+                "headline": "AB6IX official X announcement",
+                "tracking_status": "filtered_out",
+            },
+            {
+                "group": "TUNEXX",
+                "headline": "TUNEXX official X announcement",
+                "tracking_status": "watch_only",
+            },
+        ]
+
+        normalized_rows = self.module.normalize_official_social_upcoming_findings(
+            rows,
+            {
+                "AB6IX": {
+                    "group": "AB6IX",
+                    "tracking_status": "watch_only",
+                },
+                "TUNEXX": {
+                    "group": "TUNEXX",
+                    "tracking_status": "recent_release",
+                },
+            },
+        )
+
+        self.assertEqual(normalized_rows[0]["tracking_status"], "watch_only")
+        self.assertEqual(normalized_rows[1]["tracking_status"], "watch_only")
 
 
 if __name__ == "__main__":
