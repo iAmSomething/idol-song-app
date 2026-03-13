@@ -33,6 +33,7 @@ RELEASE_DETAILS_PATH = non_runtime_dataset_paths.resolve_input_path("releaseDeta
 RELEASE_HISTORY_PATH = non_runtime_dataset_paths.resolve_input_path("releaseHistory.json")
 RELEASE_ARTWORK_PATH = non_runtime_dataset_paths.resolve_input_path("releaseArtwork.json")
 UPCOMING_CANDIDATES_PATH = non_runtime_dataset_paths.resolve_input_path("upcomingCandidates.json")
+OFFICIAL_SOCIAL_UPCOMING_FINDINGS_PATH = ROOT / "official_social_upcoming_findings.json"
 WATCHLIST_PATH = non_runtime_dataset_paths.resolve_input_path("watchlist.json")
 RELEASE_DETAIL_OVERRIDES_PATH = ROOT / "release_detail_overrides.json"
 MANUAL_REVIEW_QUEUE_PATH = ROOT / "manual_review_queue.json"
@@ -125,6 +126,12 @@ UPCOMING_STATUS_RANK = {
 
 def load_json(path: Path) -> List[Dict[str, Any]]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_optional_json(path: Path) -> List[Dict[str, Any]]:
+    if not path.exists():
+        return []
+    return load_json(path)
 
 
 def optional_text(value: Any) -> Optional[str]:
@@ -1449,6 +1456,7 @@ def build_import_payload() -> Dict[str, Any]:
     release_history = load_json(RELEASE_HISTORY_PATH)
     release_artwork = load_json(RELEASE_ARTWORK_PATH)
     upcoming_candidates = load_json(UPCOMING_CANDIDATES_PATH)
+    official_social_upcoming_findings = load_optional_json(OFFICIAL_SOCIAL_UPCOMING_FINDINGS_PATH)
     watchlist = load_json(WATCHLIST_PATH)
     release_detail_overrides = load_json(RELEASE_DETAIL_OVERRIDES_PATH)
     manual_review_queue = load_json(MANUAL_REVIEW_QUEUE_PATH)
@@ -1471,7 +1479,9 @@ def build_import_payload() -> Dict[str, Any]:
             "release_history_groups": len(release_history),
             "release_history_rows": sum(len(row.get("releases") or []) for row in release_history),
             "release_artwork": len(release_artwork),
+            "official_social_upcoming_findings": len(official_social_upcoming_findings),
             "upcoming_candidates": len(upcoming_candidates),
+            "combined_upcoming_candidates": len(official_social_upcoming_findings) + len(upcoming_candidates),
             "watchlist": len(watchlist),
             "release_detail_overrides": len(release_detail_overrides),
             "manual_review_queue": len(manual_review_queue),
@@ -1484,6 +1494,8 @@ def build_import_payload() -> Dict[str, Any]:
         "unresolved_release_mappings": [],
         "unresolved_review_links": [],
     }
+
+    combined_upcoming_candidates = [*official_social_upcoming_findings, *upcoming_candidates]
 
     entity_rows, entity_ids = build_entity_rows(
         artist_profiles,
@@ -1508,7 +1520,11 @@ def build_import_payload() -> Dict[str, Any]:
     track_rows, _ = build_track_rows(release_details, release_ids, summary)
     release_service_rows = build_release_service_rows(release_details, release_detail_overrides, release_ids, summary)
     track_service_rows: List[Dict[str, Any]] = []
-    signal_rows, signal_source_rows, signal_ids_by_dedupe = build_upcoming_rows(upcoming_candidates, entity_ids, summary)
+    signal_rows, signal_source_rows, signal_ids_by_dedupe = build_upcoming_rows(
+        combined_upcoming_candidates,
+        entity_ids,
+        summary,
+    )
     tracking_state_rows = build_tracking_state_rows(watchlist, entity_ids, release_ids, summary)
     review_task_rows = build_review_task_rows(
         manual_review_queue,

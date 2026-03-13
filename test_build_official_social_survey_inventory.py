@@ -97,6 +97,30 @@ class BuildOfficialSocialSurveyInventoryTests(unittest.TestCase):
         self.assertEqual(classified["handles"]["official_youtube"]["status"], "missing")
         self.assertEqual(classified["weak_fields"], ["official_youtube"])
 
+    def test_build_inventory_report_tracks_official_social_findings(self) -> None:
+        report = module.build_inventory_report(
+            [make_row("AB6IX", "ab6ix", "resolved", "resolved", "resolved")],
+            [
+                {
+                    "group": "AB6IX",
+                    "scheduled_date": "2026-03-16",
+                    "headline": "AB6IX official X announcement · SEVEN : CRIMSON HORIZON · 2026-03-16 6PM KST",
+                    "source_type": "official_social",
+                    "source_url": "https://x.com/AB6IX/status/2025948771490955484",
+                    "release_format": "album",
+                    "date_precision": "exact",
+                }
+            ],
+        )
+
+        findings = report["official_social_findings"]
+        self.assertEqual(findings["count"], 1)
+        self.assertEqual(findings["cohort_counts"]["resolved"], 1)
+        self.assertEqual(findings["cohort_counts"]["unresolved"], 0)
+        self.assertEqual(findings["fixtures"][0]["group"], "AB6IX")
+        self.assertEqual(findings["fixtures"][0]["cohort"], "resolved")
+        self.assertEqual(findings["fixtures"][0]["source_type"], "official_social")
+
 
 if __name__ == "__main__":
     unittest.main()

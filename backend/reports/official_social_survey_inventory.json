@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T17:03:20.679590+00:00",
+  "generated_at": "2026-03-13T19:02:37.682169+00:00",
   "entity_count": 117,
   "eligibility_counts": {
     "partially_ready": 6,
@@ -22,6 +22,28 @@
     "official_x": 5,
     "official_instagram": 0,
     "official_youtube": 1
+  },
+  "official_social_findings": {
+    "count": 1,
+    "cohort_counts": {
+      "resolved": 1,
+      "unresolved": 0,
+      "missing_handle": 0
+    },
+    "fixtures": [
+      {
+        "group": "AB6IX",
+        "slug": "ab6ix",
+        "eligibility_state": "survey_ready",
+        "cohort": "resolved",
+        "scheduled_date": "2026-03-16",
+        "headline": "AB6IX official X announcement · SEVEN : CRIMSON HORIZON · 2026-03-16 6PM KST",
+        "source_type": "official_social",
+        "source_url": "https://x.com/AB6IX/status/2025948771490955484",
+        "release_format": "album",
+        "date_precision": "exact"
+      }
+    ]
   },
   "entities": [
     {

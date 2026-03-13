@@ -11,6 +11,7 @@ from typing import Any, Dict, Iterable, List
 
 ROOT = Path(__file__).resolve().parent
 INPUT_PATH = ROOT / "canonical_entity_metadata.json"
+OFFICIAL_SOCIAL_UPCOMING_FINDINGS_PATH = ROOT / "official_social_upcoming_findings.json"
 REPORT_JSON_PATH = ROOT / "backend" / "reports" / "official_social_survey_inventory.json"
 REPORT_CSV_PATH = ROOT / "backend" / "reports" / "official_social_survey_inventory.csv"
 REPORT_MD_PATH = ROOT / "backend" / "reports" / "official_social_survey_inventory.md"
@@ -21,6 +22,12 @@ SOCIAL_FIELDS = ("official_x", "official_instagram", "official_youtube")
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_optional_json(path: Path) -> Any:
+    if not path.exists():
+        return []
+    return load_json(path)
 
 
 def write_json(path: Path, payload: Any) -> None:
@@ -104,8 +111,12 @@ def build_field_status_counts(rows: Iterable[dict[str, Any]]) -> dict[str, dict[
     return {field_name: dict(sorted(field_counts.items())) for field_name, field_counts in counts.items()}
 
 
-def build_inventory_report(canonical_rows: list[dict[str, Any]]) -> dict[str, Any]:
+def build_inventory_report(
+    canonical_rows: list[dict[str, Any]],
+    official_social_findings: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     entities = sorted((classify_entity(row) for row in canonical_rows), key=lambda row: row["group"].casefold())
+    entity_by_group = {row["group"]: row for row in entities}
 
     eligibility_counts: dict[str, int] = {}
     for row in entities:
@@ -117,12 +128,43 @@ def build_inventory_report(canonical_rows: list[dict[str, Any]]) -> dict[str, An
         for field_name in row["weak_fields"]:
             weak_field_counts[field_name] += 1
 
+    findings_rows = []
+    finding_cohort_counts = {"resolved": 0, "unresolved": 0, "missing_handle": 0}
+    for finding in sorted(official_social_findings or [], key=lambda row: row["group"].casefold()):
+        entity = entity_by_group.get(finding["group"])
+        if entity is None or entity["eligibility_state"] == "missing_handle":
+            cohort = "missing_handle"
+        elif entity["eligibility_state"] == "survey_ready":
+            cohort = "resolved"
+        else:
+            cohort = "unresolved"
+        finding_cohort_counts[cohort] += 1
+        findings_rows.append(
+            {
+                "group": finding["group"],
+                "slug": entity["slug"] if entity else None,
+                "eligibility_state": entity["eligibility_state"] if entity else "missing_handle",
+                "cohort": cohort,
+                "scheduled_date": finding.get("scheduled_date"),
+                "headline": finding["headline"],
+                "source_type": finding.get("source_type"),
+                "source_url": finding.get("source_url"),
+                "release_format": finding.get("release_format"),
+                "date_precision": finding.get("date_precision"),
+            }
+        )
+
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "entity_count": len(entities),
         "eligibility_counts": dict(sorted(eligibility_counts.items())),
         "field_status_counts": build_field_status_counts(entities),
         "weak_field_counts": weak_field_counts,
+        "official_social_findings": {
+            "count": len(findings_rows),
+            "cohort_counts": finding_cohort_counts,
+            "fixtures": findings_rows,
+        },
         "entities": entities,
     }
 
@@ -181,6 +223,7 @@ def write_csv(path: Path, entities: list[dict[str, Any]]) -> None:
 
 
 def build_markdown(report: dict[str, Any], workbench: dict[str, Any]) -> str:
+    findings = report["official_social_findings"]
     lines = [
         "# Official Social Survey Inventory",
         "",
@@ -195,10 +238,30 @@ def build_markdown(report: dict[str, Any], workbench: dict[str, Any]) -> str:
         f"- official_instagram weak rows: **{report['weak_field_counts']['official_instagram']}**",
         f"- official_youtube weak rows: **{report['weak_field_counts']['official_youtube']}**",
         "",
+        "## Official Social Comeback Findings",
+        "",
+        f"- tracked findings: **{findings['count']}**",
+        f"- resolved-ready cohorts: **{findings['cohort_counts']['resolved']}**",
+        f"- unresolved cohorts: **{findings['cohort_counts']['unresolved']}**",
+        f"- missing-handle cohorts: **{findings['cohort_counts']['missing_handle']}**",
+        "",
         "## Workbench",
         "",
         f"- total non-ready rows: **{workbench['total_entries']}**",
     ]
+    if findings["fixtures"]:
+        first_fixture = findings["fixtures"][0]
+        lines.extend(
+            [
+                "",
+                "### First Fixture",
+                "",
+                f"- group: **{first_fixture['group']}**",
+                f"- cohort: **{first_fixture['cohort']}**",
+                f"- scheduled_date: **{first_fixture['scheduled_date']}**",
+                f"- source_type: **{first_fixture['source_type']}**",
+            ]
+        )
     for state, count in sorted(workbench["counts_by_state"].items()):
         lines.append(f"- {state}: **{count}**")
     return "\n".join(lines) + "\n"
@@ -206,7 +269,8 @@ def build_markdown(report: dict[str, Any], workbench: dict[str, Any]) -> str:
 
 def main() -> None:
     canonical_rows = load_json(INPUT_PATH)
-    report = build_inventory_report(canonical_rows)
+    official_social_findings = load_optional_json(OFFICIAL_SOCIAL_UPCOMING_FINDINGS_PATH)
+    report = build_inventory_report(canonical_rows, official_social_findings)
     workbench = build_workbench(report)
 
     write_json(REPORT_JSON_PATH, report)
@@ -222,6 +286,7 @@ def main() -> None:
                 "report_md": str(REPORT_MD_PATH.relative_to(ROOT)),
                 "workbench_json": str(WORKBENCH_JSON_PATH.relative_to(ROOT)),
                 "entity_count": report["entity_count"],
+                "official_social_findings": report["official_social_findings"]["count"],
                 "survey_ready": report["eligibility_counts"].get("survey_ready", 0),
                 "partially_ready": report["eligibility_counts"].get("partially_ready", 0),
                 "missing_handle": report["eligibility_counts"].get("missing_handle", 0),

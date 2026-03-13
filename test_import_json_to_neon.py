@@ -2,6 +2,7 @@ import importlib
 import sys
 import types
 import unittest
+import uuid
 
 
 def import_module_under_test():
@@ -131,6 +132,69 @@ class ImportJsonToNeonDryRunSummaryTests(unittest.TestCase):
                 "anomalies": {"has_anomalies": True},
             },
         )
+
+    def test_build_upcoming_rows_prefers_official_social_exact_signal(self):
+        summary = {
+            "generated_at": "2026-03-14T00:00:00+00:00",
+            "source_counts": {},
+            "source_duplicates": self.module.Counter(),
+            "dropped_records": self.module.Counter(),
+            "dropped_missing_fk_samples": {},
+            "unresolved_release_mappings": [],
+            "unresolved_review_links": [],
+        }
+        entity_ids = {"AB6IX": uuid.uuid4()}
+        rows = [
+            {
+                "group": "AB6IX",
+                "scheduled_date": "2026-03-16",
+                "date_status": "confirmed",
+                "headline": "AB6IX official X announcement · SEVEN : CRIMSON HORIZON · 2026-03-16 6PM KST",
+                "source_type": "official_social",
+                "source_url": "https://x.com/AB6IX/status/2025948771490955484",
+                "source_domain": "x.com",
+                "published_at": None,
+                "confidence": 0.98,
+                "evidence_summary": "Official X announcement.",
+                "tracking_status": "filtered_out",
+                "search_term": "\"AB6IX\" official X comeback",
+                "release_format": "album",
+                "context_tags": ["official_social"],
+                "date_precision": "exact",
+                "scheduled_month": "2026-03",
+            },
+            {
+                "group": "AB6IX",
+                "scheduled_date": None,
+                "date_status": "scheduled",
+                "headline": "AB6IX March comeback expected",
+                "source_type": "news_rss",
+                "source_url": "https://example.com/news",
+                "source_domain": "example.com",
+                "published_at": None,
+                "confidence": 0.4,
+                "evidence_summary": "News placeholder.",
+                "tracking_status": "filtered_out",
+                "search_term": "AB6IX comeback",
+                "release_format": "album",
+                "context_tags": ["news_rss"],
+                "date_precision": "month_only",
+                "scheduled_month": "2026-03",
+            },
+        ]
+
+        signal_rows, source_rows, signal_ids_by_dedupe = self.module.build_upcoming_rows(rows, entity_ids, summary)
+
+        self.assertEqual(len(signal_rows), 1)
+        self.assertEqual(signal_rows[0]["headline"], rows[0]["headline"])
+        self.assertEqual(str(signal_rows[0]["scheduled_date"]), "2026-03-16")
+        self.assertEqual(signal_rows[0]["date_precision"], "exact")
+        self.assertEqual(signal_rows[0]["date_status"], "confirmed")
+        self.assertEqual(signal_rows[0]["release_format"], "album")
+        self.assertEqual(len(source_rows), 2)
+        self.assertEqual(source_rows[0]["source_type"], "news_rss")
+        self.assertEqual(source_rows[1]["source_type"], "official_social")
+        self.assertEqual(len(signal_ids_by_dedupe), 2)
 
 
 if __name__ == "__main__":
