@@ -84,4 +84,15 @@ describe('useDebouncedValue', () => {
 
     expect(readValue(tree)).toBe('YENA');
   });
+
+  test('stays stable when rerendered with the same value', async () => {
+    const tree = await renderProbe({ value: '최예나' });
+
+    await act(async () => {
+      tree.update(<DebounceProbe value="최예나" />);
+      tree.update(<DebounceProbe value="최예나" />);
+    });
+
+    expect(readValue(tree)).toBe('최예나');
+  });
 });

@@ -13,27 +13,38 @@ export function useDebouncedValue<T>(
   const { enabled = true, shouldFlush } = options;
   const [debouncedValue, setDebouncedValue] = React.useState(value);
   const isFirstRenderRef = React.useRef(true);
+  const shouldFlushRef = React.useRef(shouldFlush);
+
+  React.useEffect(() => {
+    shouldFlushRef.current = shouldFlush;
+  }, [shouldFlush]);
+
+  const assignDebouncedValue = React.useCallback((nextValue: T) => {
+    setDebouncedValue((currentValue) => (
+      Object.is(currentValue, nextValue) ? currentValue : nextValue
+    ));
+  }, []);
 
   React.useEffect(() => {
     if (isFirstRenderRef.current) {
       isFirstRenderRef.current = false;
-      setDebouncedValue(value);
+      assignDebouncedValue(value);
       return undefined;
     }
 
-    if (!enabled || shouldFlush?.(value)) {
-      setDebouncedValue(value);
+    if (!enabled || shouldFlushRef.current?.(value)) {
+      assignDebouncedValue(value);
       return undefined;
     }
 
     const timeoutId = setTimeout(() => {
-      setDebouncedValue(value);
+      assignDebouncedValue(value);
     }, delayMs);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [delayMs, enabled, shouldFlush, value]);
+  }, [assignDebouncedValue, delayMs, enabled, value]);
 
   return debouncedValue;
 }

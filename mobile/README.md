@@ -265,6 +265,28 @@ cd mobile
 EXPO_PUBLIC_API_BASE_URL="$(gh variable get BACKEND_PUBLIC_URL --env production --repo iAmSomething/idol-song-app)" npm run config:production
 ```
 
+실제 Android production release를 Firebase App Distribution에 올릴 때는 아래 one-command 스크립트를 쓴다.
+
+```bash
+cd mobile
+npm run android:production:distribute -- --groups internal-android
+```
+
+지원 옵션:
+
+```bash
+cd mobile
+npm run android:production:distribute -- --rebuild
+npm run android:production:distribute -- --testers user1@example.com,user2@example.com
+npm run android:production:distribute -- --release-notes "Android production build"
+npm run android:production:distribute:dry-run
+```
+
+참고:
+- production Firebase Android app id는 `1:364777074329:android:3c06d1a2c73a4a44c8d208`이다.
+- 스크립트는 `/usr/local/bin/node`가 있으면 그 binary로 firebase-tools를 실행해서 Homebrew Node 충돌을 피한다.
+- 실제 업로드 전에는 `firebase login`이 되어 있어야 한다.
+
 새 Firebase Android app config를 받으면 `mobile/firebase/google-services.production.json`만 교체하면 된다.
 preview/development package(`.preview`, `.dev`)를 Firebase까지 쓰려면 각 패키지명에 맞는 별도 Android app registration이 추가로 필요하다.
 
