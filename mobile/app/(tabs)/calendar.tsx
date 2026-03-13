@@ -1298,10 +1298,10 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       paddingHorizontal: theme.space[24],
       paddingTop: theme.space[24],
       paddingBottom: theme.space[32],
-      gap: theme.space[12],
+      gap: theme.space[8],
     },
     headerControlsStack: {
-      gap: theme.space[8],
+      gap: 6,
     },
     headerBar: {
       flexDirection: 'row',
@@ -1312,7 +1312,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     },
     monthCluster: {
       width: '100%',
-      gap: theme.space[8],
+      gap: 6,
     },
     monthTitle: {
       ...screenTitleTypography,
@@ -1378,8 +1378,8 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       color: theme.colors.text.brand,
     },
     sectionCard: {
-      gap: theme.space[12],
-      padding: theme.space[16],
+      gap: theme.space[8],
+      padding: 14,
       borderRadius: theme.radius.card,
       borderWidth: 1,
       borderColor: theme.colors.border.default,
@@ -1397,29 +1397,30 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       color: theme.colors.text.secondary,
     },
     sectionStack: {
-      gap: theme.space[12],
+      gap: theme.space[8],
     },
     weekdayRow: {
       flexDirection: 'row',
-      gap: theme.space[4],
-      marginBottom: theme.space[4],
+      gap: 3,
+      marginBottom: 2,
     },
     weekdayLabel: {
       flex: 1,
       textAlign: 'center',
       ...metaTypography,
       color: theme.colors.text.tertiary,
+      fontSize: 11,
     },
     calendarGrid: {
-      gap: theme.space[4],
+      gap: 3,
     },
     weekRow: {
       flexDirection: 'row',
-      gap: theme.space[4],
+      gap: 3,
     },
     emptyCell: {
       flex: 1,
-      minHeight: 56,
+      minHeight: 48,
     },
   });
 }
