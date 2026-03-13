@@ -1358,7 +1358,7 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
     },
     weekdayRow: {
       flexDirection: 'row',
-      gap: theme.space[8],
+      gap: theme.space[4],
     },
     weekdayLabel: {
       flex: 1,
@@ -1367,15 +1367,15 @@ function createStyles(theme: ReturnType<typeof useAppTheme>, largeTextMode: bool
       color: theme.colors.text.tertiary,
     },
     calendarGrid: {
-      gap: theme.space[8],
+      gap: theme.space[4],
     },
     weekRow: {
       flexDirection: 'row',
-      gap: theme.space[8],
+      gap: theme.space[4],
     },
     emptyCell: {
       flex: 1,
-      minHeight: 96,
+      minHeight: 72,
     },
   });
 }

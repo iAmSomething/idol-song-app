@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 
+import { MOBILE_TEXT_SCALE_LIMITS } from '../../tokens/accessibility';
 import { useAppTheme } from '../../tokens/theme';
 import type { MobileTheme } from '../../tokens/theme';
 import type {
@@ -35,6 +36,10 @@ function buildCalendarDayAccessibilityLabel(cell: CalendarDayCellModel): string 
 
   if (cell.releaseCount === 0 && cell.upcomingCount === 0) {
     segments.push('등록된 일정 없음');
+  }
+
+  if (cell.badges.length > 0) {
+    segments.push(`대표 팀 ${cell.badges.map((badge) => badge.label).join(', ')}`);
   }
 
   if (cell.isSelected) {
@@ -120,6 +125,8 @@ function DayCellComponent({
       <View style={styles.dayCellHeader}>
         <Text
           allowFontScaling
+          maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.body}
+          numberOfLines={1}
           style={[
             styles.dayNumber,
             cell.isSelected ? styles.dayNumberSelected : null,
@@ -129,29 +136,32 @@ function DayCellComponent({
         </Text>
       </View>
 
-      <View style={styles.badgeStack}>
+      <View style={styles.markerRow}>
         {cell.badges.map((badge) => {
-          const palette = getBadgePalette(theme, badge.kind);
+          const { backgroundColor } = getBadgePalette(theme, badge.kind);
           return (
             <View
               key={badge.id}
               style={[
-                styles.badgePill,
+                styles.badgeMarker,
                 {
-                  backgroundColor: palette.backgroundColor,
+                  backgroundColor,
                 },
               ]}
-            >
-              <Text allowFontScaling style={[styles.badgeText, { color: palette.color }]}>
-                {badge.monogram}
-              </Text>
-            </View>
+            />
           );
         })}
         {cell.overflowCount > 0 ? (
-          <Text allowFontScaling style={styles.overflowLabel}>
-            +{cell.overflowCount}
-          </Text>
+          <View style={styles.overflowPill}>
+            <Text
+              allowFontScaling
+              maxFontSizeMultiplier={MOBILE_TEXT_SCALE_LIMITS.meta}
+              numberOfLines={1}
+              style={styles.overflowLabel}
+            >
+              +{cell.overflowCount}
+            </Text>
+          </View>
         ) : null}
       </View>
     </Pressable>
@@ -162,11 +172,11 @@ function createStyles(theme: MobileTheme) {
   return StyleSheet.create({
     dayCell: {
       flex: 1,
-      minHeight: 88,
-      gap: theme.space[4],
-      paddingHorizontal: theme.space[8],
+      minHeight: 72,
+      justifyContent: 'space-between',
+      paddingHorizontal: theme.space[4],
       paddingVertical: theme.space[4],
-      borderRadius: theme.radius.card,
+      borderRadius: 18,
       borderWidth: 1,
       borderColor: theme.colors.border.subtle,
       backgroundColor: theme.colors.surface.base,
@@ -188,36 +198,41 @@ function createStyles(theme: MobileTheme) {
       alignItems: 'flex-start',
     },
     dayNumber: {
-      ...theme.typography.cardTitle,
+      ...theme.typography.body,
       color: theme.colors.text.primary,
-      flexShrink: 1,
-      fontSize: 18,
-      lineHeight: 22,
+      fontWeight: '700',
+      fontSize: 16,
+      lineHeight: 18,
     },
     dayNumberSelected: {
       color: theme.colors.text.brand,
     },
-    badgeStack: {
+    markerRow: {
       flexDirection: 'row',
-      flexWrap: 'wrap',
       gap: theme.space[4],
       alignItems: 'center',
+      minHeight: 14,
     },
-    badgePill: {
-      minHeight: 22,
-      minWidth: 22,
+    badgeMarker: {
+      width: 12,
+      height: 12,
+      borderRadius: theme.radius.chip,
+      borderWidth: 1,
+      borderColor: theme.colors.surface.base,
+    },
+    overflowPill: {
+      minWidth: 20,
+      minHeight: 16,
+      paddingHorizontal: theme.space[4],
       alignItems: 'center',
       justifyContent: 'center',
-      paddingHorizontal: theme.space[4],
       borderRadius: theme.radius.chip,
-    },
-    badgeText: {
-      ...theme.typography.chip,
-      textAlign: 'center',
+      backgroundColor: theme.colors.surface.interactive,
     },
     overflowLabel: {
       ...theme.typography.meta,
       color: theme.colors.text.secondary,
+      lineHeight: 14,
     },
   });
 }
