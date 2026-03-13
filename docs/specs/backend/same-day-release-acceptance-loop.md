@@ -105,3 +105,26 @@ scheduled verification chain은 `report:bundle` 전에 반드시 `npm run same-d
 
 hourly workflow는 `same_day_release_targets.py`로 active window를 먼저 계산한 뒤,
 eligible group만 `hydrate_release_windows.py`에 넘긴다.
+
+## Trusted Promotion Evidence
+
+same-day provisional promotion은 generic 기사 링크를 그대로 믿지 않는다.
+promotion evidence는 아래 kind로 분류된 경우에만 guarded provisional release를 만들 수 있다.
+
+1. `official_notice`
+   - `agency_notice`, `weverse_notice`
+2. `official_social`
+   - `official_social` + `x.com`, `instagram.com`, `facebook.com`, `tiktok.com`
+3. `official_youtube`
+   - `youtube.com`, `youtu.be`, `music.youtube.com`
+4. `trusted_catalog`
+   - `musicbrainz.org`, `open.spotify.com`, `spotify.com`, `melon.com`
+
+promotion row는 `detail_provenance`에 evidence kind를 남긴다.
+
+- `trusted_upcoming_signal.same_day_official_notice`
+- `trusted_upcoming_signal.same_day_official_social`
+- `trusted_upcoming_signal.same_day_official_youtube`
+- `trusted_upcoming_signal.same_day_trusted_catalog`
+
+`news_rss` 일반 기사 링크만 있는 경우에는 same-day provisional promotion을 만들지 않고, 기존 review / delayed catalog path로 남긴다.

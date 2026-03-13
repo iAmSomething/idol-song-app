@@ -110,7 +110,6 @@ SPECIAL_PROJECT_PATTERN = re.compile(
     r"\b(project|special single|special album|anniversary|tribute|season song|special track)\b",
     re.IGNORECASE,
 )
-TRUSTED_PROMOTION_SOURCE_TYPES = {"agency_notice", "weverse_notice", "official_social", "news_rss"}
 QUOTED_TITLE_PATTERN = re.compile(r"[\"'“”‘’]([^\"'“”‘’]{2,120}?)['\"“”‘’]")
 EVIDENCE_TITLE_PATTERNS = (
     re.compile(
@@ -122,10 +121,51 @@ EVIDENCE_TITLE_PATTERNS = (
         re.IGNORECASE,
     ),
 )
+YOUTUBE_HOSTS = {
+    "youtube.com",
+    "www.youtube.com",
+    "m.youtube.com",
+    "music.youtube.com",
+    "youtu.be",
+}
+TRUSTED_CATALOG_HOSTS = {
+    "musicbrainz.org",
+    "www.musicbrainz.org",
+    "open.spotify.com",
+    "spotify.com",
+    "www.spotify.com",
+    "www.melon.com",
+    "melon.com",
+}
+OFFICIAL_SOCIAL_HOSTS = {
+    "x.com",
+    "www.x.com",
+    "twitter.com",
+    "www.twitter.com",
+    "instagram.com",
+    "www.instagram.com",
+    "facebook.com",
+    "www.facebook.com",
+    "tiktok.com",
+    "www.tiktok.com",
+}
+PROMOTION_DETAIL_PROVENANCE = {
+    "official_notice": "trusted_upcoming_signal.same_day_official_notice",
+    "official_social": "trusted_upcoming_signal.same_day_official_social",
+    "official_youtube": "trusted_upcoming_signal.same_day_official_youtube",
+    "trusted_catalog": "trusted_upcoming_signal.same_day_trusted_catalog",
+}
 
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def optional_text(value: Any) -> Optional[str]:
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text or None
 
 
 def write_json(path: Path, rows: Any) -> bool:
@@ -248,9 +288,11 @@ def parse_published_at(value: str) -> float:
 def source_rank(source_type: str) -> int:
     if source_type in {"agency_notice", "weverse_notice"}:
         return 0
-    if source_type == "news_rss":
+    if source_type == "official_social":
         return 1
-    return 2
+    if source_type == "news_rss":
+        return 2
+    return 9
 
 
 def status_rank(date_status: str) -> int:
@@ -295,6 +337,39 @@ def choose_representative_targets(rows: list[dict[str, Any]]) -> list[dict[str, 
         selected.values(),
         key=lambda row: (row["scheduled_date"], row["group"].lower()),
     )
+
+
+def normalize_source_host(source_url: str) -> Optional[str]:
+    if not source_url:
+        return None
+    parsed = urlparse(source_url)
+    host = (parsed.netloc or parsed.path).strip().lower()
+    if not host:
+        return None
+    if "/" in host:
+        host = host.split("/", 1)[0]
+    return host.removeprefix("www.")
+
+
+def classify_same_day_promotion_evidence(target: dict[str, Any]) -> Optional[str]:
+    source_type = optional_text(target.get("source_type")) or ""
+    source_host = normalize_source_host(optional_text(target.get("source_url")) or "")
+
+    if source_host in {"youtube.com", "m.youtube.com", "music.youtube.com", "youtu.be"}:
+        return "official_youtube"
+    if source_host in {"musicbrainz.org", "open.spotify.com", "spotify.com", "melon.com"}:
+        return "trusted_catalog"
+    if source_type in {"agency_notice", "weverse_notice"}:
+        return "official_notice"
+    if source_type == "official_social" and source_host in {
+        "x.com",
+        "twitter.com",
+        "instagram.com",
+        "facebook.com",
+        "tiktok.com",
+    }:
+        return "official_social"
+    return None
 
 
 def derive_due_targets(rows: list[dict[str, Any]], run_date: date, group_filter: str) -> list[dict[str, Any]]:
@@ -779,11 +854,12 @@ def build_provisional_release_candidate(targets: list[dict[str, Any]], preflight
             continue
         if scheduled_date > run_date or row.get("candidate_releases"):
             continue
-        if target.get("source_type") not in TRUSTED_PROMOTION_SOURCE_TYPES:
-            continue
         if target.get("date_status") not in {"confirmed", "scheduled"}:
             continue
         if float(target.get("confidence", 0) or 0) < 0.75:
+            continue
+        evidence_kind = classify_same_day_promotion_evidence(target)
+        if evidence_kind is None:
             continue
 
         title = extract_title_from_text(target.get("headline", "")) or extract_title_from_text(
@@ -806,11 +882,12 @@ def build_provisional_release_candidate(targets: list[dict[str, Any]], preflight
             "release_format": release_kind,
             "context_tags": target.get("context_tags") or [],
             "detail_status": release_detail_builder.DETAIL_STATUS_REVIEW,
-            "detail_provenance": "trusted_upcoming_signal.provisional_release_fast_path",
+            "detail_provenance": PROMOTION_DETAIL_PROVENANCE[evidence_kind],
             "detail_notes": (
-                "Provisional release promoted from a trusted exact-date upcoming signal after the scheduled date elapsed; "
+                f"Provisional release promoted from trusted same-day evidence ({evidence_kind}) after the scheduled date elapsed; "
                 "canonical catalog verification is still pending."
             ),
+            "promotion_evidence_kind": evidence_kind,
         }
 
     return None
