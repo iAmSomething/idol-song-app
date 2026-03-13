@@ -10,7 +10,7 @@ same-day release verification은 daily upcoming discovery와 분리된 workflow�
 
 - daily discovery:
   - workflow: `.github/workflows/weekly-kpop-scan.yml`
-  - cadence: `09:00 KST` once per day
+- cadence: `09:07 KST` once per day
   - role: new upcoming/news discovery
 - release-day verification:
   - workflow: `.github/workflows/release-day-verification.yml`
