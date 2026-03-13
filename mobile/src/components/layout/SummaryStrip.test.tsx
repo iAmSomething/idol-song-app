@@ -54,4 +54,31 @@ describe('SummaryStrip', () => {
     expect(valueText.props.maxFontSizeMultiplier).toBe(MOBILE_TEXT_SCALE_LIMITS.summaryValue);
     expect(labelText.props.maxFontSizeMultiplier).toBe(MOBILE_TEXT_SCALE_LIMITS.summaryLabel);
   });
+
+  test('renders detail text without collapsing the primary value into a single truncated line', () => {
+    let tree: renderer.ReactTestRenderer;
+
+    act(() => {
+      tree = renderer.create(
+        <SummaryStrip
+          items={[
+            {
+              key: 'nearest-upcoming',
+              label: '가까운 일정',
+              value: 'BTS',
+              detail: '3월 20일',
+            },
+          ]}
+          layout="wrap"
+          testID="summary"
+        />,
+      );
+    });
+
+    const texts = tree!.root.findAllByType(Text).map((node) => node.props.children);
+
+    expect(texts).toContain('BTS');
+    expect(texts).toContain('3월 20일');
+    expect(texts).toContain('가까운 일정');
+  });
 });

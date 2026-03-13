@@ -871,9 +871,17 @@ export default function CalendarTabScreen() {
   const selectedDaySummary = selectedDay
     ? `발매 ${selectedDay.releases.length} · 예정 ${selectedDay.exactUpcoming.length}`
     : '발매 0 · 예정 0';
-  const nearestSummary = filteredSnapshot.nearestUpcoming?.scheduledDate
-    ? `${filteredSnapshot.nearestUpcoming.displayGroup} · ${formatShortDateLabel(filteredSnapshot.nearestUpcoming.scheduledDate)}`
-    : '없음';
+  const nearestUpcomingItem = filteredSnapshot.nearestUpcoming
+    ? {
+        value: filteredSnapshot.nearestUpcoming.displayGroup,
+        detail: filteredSnapshot.nearestUpcoming.scheduledDate
+          ? formatShortDateLabel(filteredSnapshot.nearestUpcoming.scheduledDate)
+          : '날짜 미정',
+      }
+    : {
+        value: '정확한 날짜 없음',
+        detail: '없음',
+      };
   const runtimeRetryAction = datasetRiskDisclosure ? (
     <ActionButton
       accessibilityLabel="라이브 캘린더 데이터 다시 시도"
@@ -894,7 +902,12 @@ export default function CalendarTabScreen() {
               items={[
                 { key: 'release-count', label: MOBILE_COPY.summary.monthRelease, value: filteredSnapshot.releaseCount },
                 { key: 'upcoming-count', label: MOBILE_COPY.summary.upcoming, value: filteredSnapshot.upcomingCount },
-                { key: 'nearest-upcoming', label: MOBILE_COPY.summary.nearestUpcoming, value: nearestSummary },
+                {
+                  key: 'nearest-upcoming',
+                  label: MOBILE_COPY.summary.nearestUpcoming,
+                  value: nearestUpcomingItem.value,
+                  detail: nearestUpcomingItem.detail,
+                },
               ]}
               layout="wrap"
               testID="calendar-summary-strip"
