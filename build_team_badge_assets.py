@@ -17,6 +17,9 @@ ROOT = Path(__file__).resolve().parent
 PROFILES_PATH = non_runtime_dataset_paths.resolve_input_path("artistProfiles.json")
 BADGES_PATH = non_runtime_dataset_paths.resolve_input_path("teamBadgeAssets.json")
 OUTPUT_PATH = non_runtime_dataset_paths.primary_path("teamBadgeAssets.json")
+LOGO_SEED_PATH = ROOT / "team_badge_logo_seed.json"
+WORKBENCH_JSON_PATH = ROOT / "backend" / "reports" / "team_badge_logo_review_workbench.json"
+WORKBENCH_MD_PATH = ROOT / "backend" / "reports" / "team_badge_logo_review_workbench.md"
 OG_IMAGE_PATTERN = re.compile(r'<meta property="og:image" content="([^"]+)"')
 AVATAR_PATTERN = re.compile(r'"avatar":\{"thumbnails":\[(.*?)\]\}')
 URL_PATTERN = re.compile(r'"url":"([^"]+)"')
@@ -31,6 +34,12 @@ FetchText = Callable[[str], str]
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_optional_json(path: Path) -> Any:
+    if not path.exists():
+        return []
+    return load_json(path)
 
 
 def normalize_url(url: str | None) -> str | None:
@@ -146,11 +155,18 @@ def build_social_badge_row(
 def build_badge_rows(
     profiles: list[dict[str, Any]],
     existing_rows: list[dict[str, Any]],
+    logo_seed_rows: list[dict[str, Any]],
     allowlists_by_group: dict[str, dict[str, Any]],
     fetcher: FetchText,
-) -> tuple[list[dict[str, Any]], dict[str, int]]:
+) -> tuple[list[dict[str, Any]], dict[str, int], dict[str, Any]]:
     rows_by_group = {row["group"]: row for row in existing_rows}
+    seeded_groups: set[str] = set()
+    for row in logo_seed_rows:
+        group = row["group"]
+        rows_by_group[group] = row
+        seeded_groups.add(group)
     summary = {
+        "logo_seeded": len(seeded_groups),
         "added": 0,
         "skipped_existing": 0,
         "skipped_agency_only": 0,
@@ -159,6 +175,8 @@ def build_badge_rows(
 
     for profile in profiles:
         group = profile["group"]
+        if group in seeded_groups:
+            continue
         if rows_by_group.get(group, {}).get("badge_image_url"):
             summary["skipped_existing"] += 1
             continue
@@ -186,7 +204,83 @@ def build_badge_rows(
         summary["added"] += 1
 
     sorted_rows = sorted(rows_by_group.values(), key=lambda row: row["group"].casefold())
-    return sorted_rows, summary
+    workbench = build_avatar_only_workbench(profiles, rows_by_group)
+    return sorted_rows, summary, workbench
+
+
+def build_avatar_only_workbench(
+    profiles: list[dict[str, Any]],
+    rows_by_group: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    entries: list[dict[str, Any]] = []
+    for profile in profiles:
+        group = profile["group"]
+        badge_row = rows_by_group.get(group)
+        if not badge_row:
+            entries.append(
+                {
+                    "group": group,
+                    "badge_kind": "missing_badge",
+                    "badge_source_url": None,
+                    "badge_source_label": None,
+                    "official_youtube_url": profile.get("official_youtube_url"),
+                    "official_instagram_url": profile.get("official_instagram_url"),
+                    "representative_image_source": profile.get("representative_image_source"),
+                }
+            )
+            continue
+        if badge_row.get("badge_kind") == "official_logo":
+            continue
+        entries.append(
+            {
+                "group": group,
+                "badge_kind": badge_row.get("badge_kind"),
+                "badge_source_url": badge_row.get("badge_source_url"),
+                "badge_source_label": badge_row.get("badge_source_label"),
+                "official_youtube_url": profile.get("official_youtube_url"),
+                "official_instagram_url": profile.get("official_instagram_url"),
+                "representative_image_source": profile.get("representative_image_source"),
+            }
+        )
+    entries.sort(key=lambda entry: entry["group"].casefold())
+    counts_by_kind: dict[str, int] = {}
+    for entry in entries:
+        kind = entry["badge_kind"]
+        counts_by_kind[kind] = counts_by_kind.get(kind, 0) + 1
+    return {
+        "reviewed_logo_count": sum(1 for row in rows_by_group.values() if row.get("badge_kind") == "official_logo"),
+        "avatar_only_count": len(entries),
+        "counts_by_kind": counts_by_kind,
+        "entries": entries,
+    }
+
+
+def write_workbench(workbench: dict[str, Any]) -> dict[str, str]:
+    WORKBENCH_JSON_PATH.parent.mkdir(parents=True, exist_ok=True)
+    WORKBENCH_JSON_PATH.write_text(json.dumps(workbench, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    lines = [
+        "# Team Badge Logo Review Workbench",
+        "",
+        f"- Reviewed `official_logo` rows: **{workbench['reviewed_logo_count']}**",
+        f"- Remaining avatar-only or missing rows: **{workbench['avatar_only_count']}**",
+        "",
+        "## Counts by badge kind",
+        "",
+    ]
+    for kind, count in sorted(workbench["counts_by_kind"].items()):
+        lines.append(f"- `{kind}`: {count}")
+    lines.extend(["", "## Remaining groups", ""])
+    for entry in workbench["entries"]:
+        lines.append(
+            f"- **{entry['group']}**: `{entry['badge_kind']}`"
+            f" ({entry['badge_source_label'] or 'no source label'})"
+        )
+    WORKBENCH_MD_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return {
+        "workbench_json_path": str(WORKBENCH_JSON_PATH.relative_to(ROOT)),
+        "workbench_md_path": str(WORKBENCH_MD_PATH.relative_to(ROOT)),
+    }
 
 
 def write_json(rows: list[dict[str, Any]]) -> dict[str, list[str] | str]:
@@ -202,17 +296,28 @@ def fetch_text(url: str) -> str:
 def main() -> None:
     profiles = load_json(PROFILES_PATH)
     existing_rows = load_json(BADGES_PATH)
+    logo_seed_rows = load_optional_json(LOGO_SEED_PATH)
     allowlists_by_group = load_allowlists_by_group()
-    rows, summary = build_badge_rows(profiles, existing_rows, allowlists_by_group, fetch_text)
+    rows, summary, workbench = build_badge_rows(
+        profiles,
+        existing_rows,
+        logo_seed_rows,
+        allowlists_by_group,
+        fetch_text,
+    )
     io_paths = write_json(rows)
+    workbench_paths = write_workbench(workbench)
     print(
         json.dumps(
             {
                 "rows": len(rows),
                 "input_profiles": str(PROFILES_PATH.relative_to(ROOT)),
                 "input_badges": str(BADGES_PATH.relative_to(ROOT)),
+                "input_logo_seed": str(LOGO_SEED_PATH.relative_to(ROOT)),
                 **summary,
+                "avatar_only_review_queue": workbench["avatar_only_count"],
                 **io_paths,
+                **workbench_paths,
             },
             ensure_ascii=False,
         )

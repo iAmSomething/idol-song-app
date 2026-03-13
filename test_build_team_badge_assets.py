@@ -135,7 +135,13 @@ class BuildTeamBadgeAssetsTest(unittest.TestCase):
             }
         )
 
-        rows, summary = build_badge_rows(profiles, existing_rows, allowlists_by_group, fetcher)
+        rows, summary, workbench = build_badge_rows(
+            profiles,
+            existing_rows,
+            [],
+            allowlists_by_group,
+            fetcher,
+        )
 
         groups = {row["group"] for row in rows}
         self.assertIn("ALLDAY PROJECT", groups)
@@ -144,6 +150,46 @@ class BuildTeamBadgeAssetsTest(unittest.TestCase):
         self.assertEqual(hearts_row["badge_kind"], "official_social_avatar")
         self.assertEqual(summary["added"], 2)
         self.assertEqual(summary["skipped_agency_only"], 0)
+        self.assertEqual(workbench["avatar_only_count"], 2)
+        self.assertEqual(workbench["counts_by_kind"]["official_channel_avatar"], 1)
+        self.assertEqual(workbench["counts_by_kind"]["official_social_avatar"], 1)
+
+    def test_build_badge_rows_applies_logo_seed_before_existing_avatar(self) -> None:
+        profiles = [{"group": "BTS", "official_youtube_url": "https://www.youtube.com/@BTS"}]
+        existing_rows = [
+            {
+                "group": "BTS",
+                "badge_image_url": "https://yt3.googleusercontent.com/bts-avatar=s900-c-k-c0x00ffffff-no-rj",
+                "badge_source_url": "https://www.youtube.com/channel/avatar",
+                "badge_source_label": "Official YouTube channel avatar",
+                "badge_kind": "official_channel_avatar",
+            }
+        ]
+        logo_seed_rows = [
+            {
+                "group": "BTS",
+                "badge_image_url": "https://yt3.googleusercontent.com/bts-logo=s900-c-k-c0x00ffffff-no-rj",
+                "badge_source_url": "https://www.youtube.com/channel/logo",
+                "badge_source_label": "Reviewed official logo from official profile image",
+                "badge_kind": "official_logo",
+            }
+        ]
+
+        rows, summary, workbench = build_badge_rows(
+            profiles,
+            existing_rows,
+            logo_seed_rows,
+            {},
+            stub_fetcher_factory({}),
+        )
+
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["badge_kind"], "official_logo")
+        self.assertEqual(rows[0]["badge_source_url"], "https://www.youtube.com/channel/logo")
+        self.assertEqual(summary["logo_seeded"], 1)
+        self.assertEqual(summary["added"], 0)
+        self.assertEqual(workbench["reviewed_logo_count"], 1)
+        self.assertEqual(workbench["avatar_only_count"], 0)
 
 
 if __name__ == "__main__":

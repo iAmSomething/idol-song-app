@@ -1,0 +1,973 @@
+{
+  "reviewed_logo_count": 10,
+  "avatar_only_count": 107,
+  "counts_by_kind": {
+    "official_channel_avatar": 104,
+    "official_social_avatar": 3
+  },
+  "entries": [
+    {
+      "group": "&TEAM",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCHD1jo5RhijLfx5-0Ehe_cg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@andteamofficial",
+      "official_instagram_url": "https://www.instagram.com/andteam_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "(G)I-DLE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCritGVo7pLJLUS8wEu32vow",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@official_i_dle",
+      "official_instagram_url": "https://www.instagram.com/i_dle_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "82MAJOR",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC6H_3Rv-q8Z23jtMofgPGsw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@82major_official",
+      "official_instagram_url": "https://www.instagram.com/82major_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "8TURN",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCZzpLKZPTSNNycp-qQc2kLw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@8TURN.official",
+      "official_instagram_url": "https://www.instagram.com/8turn.official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "ALL(H)OURS",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC1buRciG8QIL9kRtHxI_tpw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@ALL_H_OURS",
+      "official_instagram_url": "https://www.instagram.com/all_h_ours",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "ALLDAY PROJECT",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCg8ZzloDPTrOiGztK0C9txQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@ALLDAY_PROJECT",
+      "official_instagram_url": "https://www.instagram.com/allday_project",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "AMPERS&ONE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA",
+      "official_instagram_url": "https://www.instagram.com/ampersandone_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "ARTMS",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UChXC6ok0LaZIpf-50SIFf0Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@official_artms",
+      "official_instagram_url": "https://www.instagram.com/official_artms",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "ATBO",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCZeIyD0qf91yYwNiyIquSTg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@ATBO_ground",
+      "official_instagram_url": "https://www.instagram.com/atboground",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "ATEEZ",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC2e4Ukj5Pfr7cb3KpJAFBdQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@ATEEZofficial",
+      "official_instagram_url": "https://www.instagram.com/ateez_official_",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "AtHeart",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCgSDdHK0MNXOHv7oBC2dHXA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@AtHeart_TITAN",
+      "official_instagram_url": "https://www.instagram.com/atheart__official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "BABYMONSTER",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCqwUnggBBct-AY2lAdI88jQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@YGBABYMONSTER_",
+      "official_instagram_url": "https://www.instagram.com/babymonster_ygofficial",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "BADVILLAIN",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCh0KpQuSJ9m0DaENZmnYwzw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@badvillain_bpm",
+      "official_instagram_url": "https://www.instagram.com/badvillain_bpm",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "BAE173",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCWRNGyk9Nk9yu9ClmlZ6Hww",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCWRNGyk9Nk9yu9ClmlZ6Hww",
+      "official_instagram_url": "https://www.instagram.com/official_pocketdolz",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "BLITZERS",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCfwfC9QCYr_wxgib5dAB-mQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@Blitzers",
+      "official_instagram_url": "https://www.instagram.com/official_blitzers",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "BTOB",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCgB7A457ULlgm5c3948vr-w",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@officialbtob",
+      "official_instagram_url": "https://www.instagram.com/official_btob",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "CHUNG HA",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC9Gxb0gMCh3EPIDLQXeQUog",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@CHUNGHA_OFFICIAL",
+      "official_instagram_url": "https://www.instagram.com/chungha.art",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "CHUU",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCa0ylH-c4-MHZ7ih_6AHtXg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@CHUUOfficial",
+      "official_instagram_url": "https://www.instagram.com/chuuo3o",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "cignature",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCaRdmTJgO6w0esJPZUOzXrw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCaRdmTJgO6w0esJPZUOzXrw",
+      "official_instagram_url": "https://www.instagram.com/cignature_j9",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "CIX",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCuaslC77K-NmCy8Xwk7x0hA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@cix.official",
+      "official_instagram_url": "https://www.instagram.com/cix.official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "CLASS:y",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCbCyYn2M_1ccicwj-KU7t0Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCbCyYn2M_1ccicwj-KU7t0Q",
+      "official_instagram_url": "https://www.instagram.com/m25_classy",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "CLOSE YOUR EYES",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCPo532dDHpbKVhJyJseLVbw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@close.your.eyes.official",
+      "official_instagram_url": "https://www.instagram.com/close.your.eyes.official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "CRAVITY",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "official_instagram_url": "https://www.instagram.com/cravity_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "CSR",
+      "badge_kind": "official_social_avatar",
+      "badge_source_url": "https://www.instagram.com/csr.offcl",
+      "badge_source_label": "Official Instagram profile image",
+      "official_youtube_url": null,
+      "official_instagram_url": "https://www.instagram.com/csr.offcl",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "DAY6",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCp-pqXsizklX3ZHvLxXyhxw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@DAY6Official",
+      "official_instagram_url": "https://www.instagram.com/day6kilogram",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "DKB",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCCwfiPqSomsqZkkmbjPK5wg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCCwfiPqSomsqZkkmbjPK5wg",
+      "official_instagram_url": "https://www.instagram.com/official.dkb",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "Dreamcatcher",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCijULR2sXLutCRBtW3_WEfA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@hf_dreamcatcher",
+      "official_instagram_url": "https://www.instagram.com/hf_dreamcatcher",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "DRIPPIN",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCNf1JFLCOec-SUhREgZaR6w",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@DRIPPIN",
+      "official_instagram_url": "https://www.instagram.com/wearedrippin",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "DXMON",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCrhNp7bqMHOjVfMcyjk_J9Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@DXMON_HM",
+      "official_instagram_url": "https://www.instagram.com/dxmon_hm",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "ENHYPEN",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
+      "official_instagram_url": "https://www.instagram.com/enhypen",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "EPEX",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A",
+      "official_instagram_url": "https://www.instagram.com/epex.official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "EVNNE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCAWT2IC2TrPFNPCvkKZUFjg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@EVNNE_Official",
+      "official_instagram_url": "https://www.instagram.com/evnne_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "EXO",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCzCedBCSSltI1TFd3bKyN6g",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@weareoneEXO",
+      "official_instagram_url": "https://www.instagram.com/weareone.exo",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "FIFTY FIFTY",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCJEER74X9kBenMT_x9iK9Mw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@WE_FIFTYFIFTY",
+      "official_instagram_url": "https://www.instagram.com/we_fiftyfifty",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "fromis_9",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC8qO5racajmy4YgPgNJkVXg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@realfromis_9",
+      "official_instagram_url": "https://www.instagram.com/officialfromis_9",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "GHOST9",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCwBsVtDcTVG4QCorkVNJ5Sg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@GHOST9Official",
+      "official_instagram_url": "https://www.instagram.com/official.ghost9",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "H1-KEY",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC-6L6QIx3M6O_ROf7CP-pJg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@H1KEY_official",
+      "official_instagram_url": "https://www.instagram.com/h1key_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "Hearts2Hearts",
+      "badge_kind": "official_social_avatar",
+      "badge_source_url": "https://www.instagram.com/hearts2hearts",
+      "badge_source_label": "Official Instagram profile image",
+      "official_youtube_url": "https://www.youtube.com/@SMTOWN",
+      "official_instagram_url": "https://www.instagram.com/hearts2hearts",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "ifeye",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCQ5K9InArSCtJoiUOlqu27g",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@ifeye_official",
+      "official_instagram_url": "https://www.instagram.com/ifeye.official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "INFINITE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCdzXSux7OnRD1Cml-DQ416Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCdzXSux7OnRD1Cml-DQ416Q",
+      "official_instagram_url": "https://www.instagram.com/official_ifnt_",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "ITZY",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCDhM2k2Cua-JdobAh5moMFg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@ItzyOfficial",
+      "official_instagram_url": "https://www.instagram.com/itzy.all.in.us",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "IVE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC-Fnix71vRP64WXeo0ikd0Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@IVEstarship",
+      "official_instagram_url": "https://www.instagram.com/ivestarship",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "izna",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCfbYNlxgLuKJXQZEhkMmaCQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@izna_offcl",
+      "official_instagram_url": "https://www.instagram.com/izna_offcl",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "JEON SOMI",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCjDH1Pld9zc8pTYjbv5eM-Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@jeonsomiofficial",
+      "official_instagram_url": "https://www.instagram.com/somsomi0309",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "JUST B",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCcpodGf_wkyawcTc-fXa82g",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@JUSTB_Official",
+      "official_instagram_url": "https://www.instagram.com/justb_ig_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "KARD",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC5OwlwvsVmf_lXHguB6OYFw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@Kard_official",
+      "official_instagram_url": "https://www.instagram.com/official_kard",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "Kep1er",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCoQwdDRNobhnp6_wIvsE4aw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@official_kep1er",
+      "official_instagram_url": "https://www.instagram.com/official.kep1er",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "KickFlip",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCmq9jjpHA69PwAwlA0DwOsg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@kickflip_jype",
+      "official_instagram_url": "https://www.instagram.com/kickflip_jype",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "KiiiKiii",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCcoT6JMccOgbh0Qtw_Kb3XA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@We_KiiiKiii",
+      "official_instagram_url": "https://www.instagram.com/we_kiiikiii",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "KISS OF LIFE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCvEEeBssb4XxIfWWIB8IjMw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@KISSOFLIFE_S2",
+      "official_instagram_url": "https://www.instagram.com/kissoflife_s2",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "KWON EUNBI",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCoCvj_VhZPOtttlJK7RCh2A",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@KWONEUNBI",
+      "official_instagram_url": "https://www.instagram.com/silver_rain.__",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "LIGHTSUM",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCeQlMQ-4cedE7SNmF5JsdsA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCeQlMQ-4cedE7SNmF5JsdsA",
+      "official_instagram_url": "https://www.instagram.com/cube_lightsum",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "Loossemble",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCbTzy8kj_6Kik_LFD1XyN5g",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@Loossemble_official",
+      "official_instagram_url": "https://www.instagram.com/loossemble.official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "LUN8",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCHx0MD2c0DTNGAtc0Yq6YPQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@LUN8_Official",
+      "official_instagram_url": "https://www.instagram.com/lun8_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "MAMAMOO",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCuhAUMLzJxlP1W7mEk0_6lA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@MAMAMOO_OFFICIAL",
+      "official_instagram_url": "https://www.instagram.com/mamamoo_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "MCND",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCNC_wxtoMCuvRVQzpbHPaZw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@MCND_OFFICIAL",
+      "official_instagram_url": "https://www.instagram.com/mcnd_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "MEOVV",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCowiwt93gqGlNG4k5VDxO-w",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@official_meovv",
+      "official_instagram_url": "https://www.instagram.com/meovv",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "MONSTA X",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCZvCP6sWj75MwpUP4LVtpNw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@officialmonstax",
+      "official_instagram_url": "https://www.instagram.com/official_monsta_x",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "NCT 127",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCk2E0dbAyEJWnrN2bbQOcbg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@NCT127",
+      "official_instagram_url": "https://www.instagram.com/nct127",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "NCT DREAM",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCXURHJRGr4-EB3l87kcbElw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@NCTsmtown_DREAM",
+      "official_instagram_url": "https://www.instagram.com/nct_dream",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "NCT WISH",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCiZqWVAeChfqlom5ZPR3ZJA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@NCTWISH",
+      "official_instagram_url": "https://www.instagram.com/nctwish_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "NewJeans",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCMki_UkHb4qSc0qyEcOHHJw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@NewJeans_official",
+      "official_instagram_url": "https://www.instagram.com/newjeans_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "NEXZ",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC-o9yrZxu5Ru-DVGhnmeTug",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@NEXZ_official",
+      "official_instagram_url": "https://www.instagram.com/real_nexz",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "NMIXX",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+      "official_instagram_url": "https://www.instagram.com/nmixx_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "NOMAD",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCtCFxLt-bMmSnxGEbjsyg6Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@nomad_is_here",
+      "official_instagram_url": "https://www.instagram.com/nomadaish88",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "ONEUS",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
+      "official_instagram_url": "https://www.instagram.com/official_oneus",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "ONEWE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+      "official_instagram_url": "https://www.instagram.com/official_onewe",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "ONF",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw",
+      "official_instagram_url": "https://www.instagram.com/wm_onoff",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "P1Harmony",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCe-XzQhLaq4zS_mPXzuc_2Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@P1Harmonyofficial",
+      "official_instagram_url": "https://www.instagram.com/p1h_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "PLAVE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCPZIPuQPrfrUG9Xe_okEmQA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@plave_official",
+      "official_instagram_url": "https://www.instagram.com/plave_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "POW",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCc8hWuK9dgKvB04rzZL23sQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@POW_Official",
+      "official_instagram_url": "https://www.instagram.com/pow_grid",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "Purple Kiss",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCor8nQnEdMs4eBcU-uVBQ8g",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@PURPLEKISS_Official",
+      "official_instagram_url": "https://www.instagram.com/purplekiss_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "QWER",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCgD0APk2x9uBlLM0UsmhQjw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@qwerband_official",
+      "official_instagram_url": "https://www.instagram.com/qwerband_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "Red Velvet",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@redvelvet.smtown",
+      "official_instagram_url": "https://www.instagram.com/redvelvet.smtown",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "RESCENE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC4jgjZ6BDua0IjI4JT7h0-A",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@RESCENEofficial",
+      "official_instagram_url": "https://www.instagram.com/rescene.official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "SAY MY NAME",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCTItOHr70Tq_GAOACSGawPw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@sa2m2nam3",
+      "official_instagram_url": "https://www.instagram.com/sa2m2nam3",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "SHINee",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCyPwRgc3gQGqhk6RoGS50Ug",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@SHINee",
+      "official_instagram_url": "https://www.instagram.com/shinee",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "Stray Kids",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC9rMiEjNaCSsebs31MRDCRA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@stray_kids",
+      "official_instagram_url": "https://www.instagram.com/realstraykids",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "TEMPEST",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCCViKQ1A1tXhIVKAVEazcaA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@TPSTOFFICIAL",
+      "official_instagram_url": "https://www.instagram.com/tpst__official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "THE BOYZ",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCkJ1rbOrsyPfBuHNfnLPm-Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UCkJ1rbOrsyPfBuHNfnLPm-Q",
+      "official_instagram_url": "https://www.instagram.com/official_theboyz",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "The KingDom",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCYp2CgC9Hxj_YnliiVKlOsQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@gf_entertainment",
+      "official_instagram_url": "https://www.instagram.com/kingdom_gfent",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "TIOT",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC4AVxeN8iY5j8kzg2WE0Vng",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@TIOT_NOW",
+      "official_instagram_url": "https://www.instagram.com/tiot_now",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "TNX",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCZOA7I_vjrxLuLGatPekGoA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@PNATIONOfficial",
+      "official_instagram_url": "https://www.instagram.com/official.tnx",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "TOMORROW X TOGETHER",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@txt_members",
+      "official_instagram_url": "https://www.instagram.com/txt_bighit",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "TREASURE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCx9hXYOCvUYwrprEqe4ZQHA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@ygtreasuremaker",
+      "official_instagram_url": "https://www.instagram.com/yg_treasure_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "TRENDZ",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCvc55IOOCI165H3raqcjjrg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@TRENDZ_OFFCL",
+      "official_instagram_url": "https://www.instagram.com/trendz_offcl",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "tripleS",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCJnL-TBcsYrF2SLs7tmiC8Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@triplescosmos",
+      "official_instagram_url": "https://www.instagram.com/triplescosmos",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "TUNEXX",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCjyoasKZmVv1uHDIID04ivw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@official_TUNEXX",
+      "official_instagram_url": "https://www.instagram.com/tunexx_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "TWICE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@JYPETWICE",
+      "official_instagram_url": "https://www.instagram.com/twicetagram",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "UNIS",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@UNIS_Offcl",
+      "official_instagram_url": "https://www.instagram.com/unis_offcl",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "VERIVERY",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UC4t_pYSKIhLWFgutdzIK66Q",
+      "official_instagram_url": "https://www.instagram.com/the_verivery",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "VIVIZ",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCWFMjDuWKlct0jy89k2kkRA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@viviz_official",
+      "official_instagram_url": "https://www.instagram.com/viviz_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "WayV",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC-ZHt5Zgadfx-B1CM63Lqew",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@WayV_official",
+      "official_instagram_url": "https://www.instagram.com/wayvofficial",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "Weeekly",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC5rp2rDRSpyKNj-QLytC-tw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/channel/UC5rp2rDRSpyKNj-QLytC-tw",
+      "official_instagram_url": "https://www.instagram.com/_weeekly",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "WEi",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCbTXWjND2y7zLlSKtHqiwGA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@wei_Official",
+      "official_instagram_url": "https://www.instagram.com/wei_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "WHIB",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UC_isDbPZQyyQqXX-POFFPIw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@WHIB_OFFICIAL",
+      "official_instagram_url": "https://www.instagram.com/whib_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "WJSN",
+      "badge_kind": "official_social_avatar",
+      "badge_source_url": "https://www.instagram.com/wjsn_cosmic",
+      "badge_source_label": "Official Instagram profile image",
+      "official_youtube_url": "https://www.youtube.com/@officialstarship",
+      "official_instagram_url": "https://www.instagram.com/wjsn_cosmic",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "woo!ah!",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCNeLbWtlJzTsavMC70zY0dQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@wooah_nv",
+      "official_instagram_url": "https://www.instagram.com/wooah_nv",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "Xdinary Heroes",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCO9GhtdQcCRf67GIdSQ0HNQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@XH_official",
+      "official_instagram_url": "https://www.instagram.com/xdinaryheroes_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "xikers",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCPtC0MXSW40Qq7RkhsCXjUQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@xikers_official",
+      "official_instagram_url": "https://www.instagram.com/xikers_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    },
+    {
+      "group": "XLOV",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCHWhn9xw7x8NPPnV6eWQDQA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@XLOV_official",
+      "official_instagram_url": "https://www.instagram.com/xlov_official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "YENA",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCkrDEGNM3mqZXHk2MfnOjMw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@YENA_OFFICIAL",
+      "official_instagram_url": "https://www.instagram.com/yena.jigumina",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "YOUNG POSSE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCYvGSZPvQj09LgpcziCszyA",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@YOUNGPOSSEUP",
+      "official_instagram_url": "https://www.instagram.com/youngposseup",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "YOUNITE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCtBLjxlnFpzt7Jvl_0aA7lw",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@Younite",
+      "official_instagram_url": "https://www.instagram.com/younite_bnm",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "YUJU",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCt7Nlt3vXkz-NTyou5Kqp6w",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@Yujuofficial",
+      "official_instagram_url": "https://www.instagram.com/yuuzth",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "Yves",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCMuK2QPg9oFJ1-veMCw3Irg",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@YVES_OFFICIAL",
+      "official_instagram_url": "https://www.instagram.com/yvesntual",
+      "representative_image_source": "teamBadgeAssets.badge_image_url.review_needed"
+    },
+    {
+      "group": "ZEROBASEONE",
+      "badge_kind": "official_channel_avatar",
+      "badge_source_url": "https://www.youtube.com/channel/UCSAp0Yl9S0Zq5uDqE6im_XQ",
+      "badge_source_label": "Official YouTube channel avatar",
+      "official_youtube_url": "https://www.youtube.com/@ZB1_official",
+      "official_instagram_url": "https://www.instagram.com/zb1official",
+      "representative_image_source": "teamBadgeAssets.badge_image_url"
+    }
+  ]
+}
