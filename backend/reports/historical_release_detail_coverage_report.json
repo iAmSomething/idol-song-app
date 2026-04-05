@@ -1,99 +1,69 @@
 {
-  "generated_at": "2026-03-12",
+  "generated_at": "2026-04-05",
   "execution_scope": {
     "targeted_rebuild": true,
     "cohorts": [
       "latest",
       "recent"
     ],
-    "scoped_rows_total": 815,
-    "selected_rows": 815,
-    "progress_every": 25
+    "scoped_rows_total": 768,
+    "selected_rows": 18,
+    "max_rows": 25,
+    "progress_every": 10,
+    "row_offset": 750
   },
   "summary_lines": [
-    "detail payload coverage: 815/815 (100.0%), pre-2024 198/198 (100.0%)",
-    "detail trusted coverage: 815/815 (100.0%), pre-2024 198/198 (100.0%)",
-    "title-track resolved coverage: 581/815 (71.3%), pre-2024 131/198 (66.2%), review queue 234",
-    "canonical MV coverage: 79/815 (9.7%), pre-2024 0/198 (0.0%), mv review 2",
-    "external acquisition pass: YTM attempted 0, resolved 0; MV attempted 0, resolved 0, review 2",
-    "youtube MV search pass: not available for this execution scope",
+    "detail payload coverage: 18/18 (100.0%), pre-2024 2/2 (100.0%)",
+    "detail trusted coverage: 18/18 (100.0%), pre-2024 2/2 (100.0%)",
+    "title-track resolved coverage: 13/18 (72.2%), pre-2024 1/2 (50.0%), review queue 5",
+    "canonical MV coverage: 4/18 (22.2%), pre-2024 0/2 (0.0%), mv review 0",
+    "external acquisition pass: YTM attempted 0, resolved 0; MV attempted 0, resolved 0, review 0",
+    "youtube MV search pass: attempted 10, resolved 6, review 4, unresolved 1592, coverage lift +0",
     "migration-critical first slice: title-track 0/18 (0.0%), canonical MV 0/18 (0.0%), gate fail",
-    "worst title-track cohort: 2021-2023 ep 32.5% / target 74.0%",
-    "worst canonical MV cohort: 2024+ single 15.4% / target 72.0%",
-    "release-detail null review queue: 799 rows",
+    "worst title-track cohort: 2021-2023 ep 50.0% / target 74.0%",
+    "worst canonical MV cohort: 2024+ album 0.0% / target 40.0%",
+    "release-detail null review queue: 18 rows",
     "historical catalog cutover gate: fail"
   ],
-  "latest_snapshot_input_rows": 133,
-  "latest_snapshot_unique_keys": 133,
-  "full_catalog_input_rows": 815,
-  "full_catalog_unique_keys": 815,
-  "historical_input_gain_rows": 682,
-  "entities_with_multiple_releases_in_input": 109,
+  "latest_snapshot_input_rows": 2,
+  "latest_snapshot_unique_keys": 2,
+  "full_catalog_input_rows": 18,
+  "full_catalog_unique_keys": 18,
+  "historical_input_gain_rows": 16,
+  "entities_with_multiple_releases_in_input": 2,
   "sample_multi_release_entities": [
     {
-      "group": "IVE",
-      "release_rows": 22
-    },
-    {
-      "group": "ATEEZ",
-      "release_rows": 19
-    },
-    {
-      "group": "aespa",
-      "release_rows": 18
-    },
-    {
-      "group": "LE SSERAFIM",
-      "release_rows": 17
-    },
-    {
-      "group": "Stray Kids",
-      "release_rows": 17
-    },
-    {
-      "group": "TOMORROW X TOGETHER",
-      "release_rows": 17
-    },
-    {
-      "group": "tripleS",
-      "release_rows": 17
-    },
-    {
-      "group": "TWICE",
-      "release_rows": 16
-    },
-    {
-      "group": "ENHYPEN",
+      "group": "ZEROBASEONE",
       "release_rows": 15
     },
     {
-      "group": "RIIZE",
-      "release_rows": 15
+      "group": "YOUNITE",
+      "release_rows": 3
     }
   ],
-  "history_flattened_rows": 815,
-  "detail_rows_before": 815,
-  "detail_rows_after": 815,
-  "history_keys": 815,
+  "history_flattened_rows": 18,
+  "detail_rows_before": 18,
+  "detail_rows_after": 18,
+  "history_keys": 18,
   "missing_detail_rows_before": 0,
   "missing_detail_rows_after": 0,
-  "pre_2024_history_rows": 198,
+  "pre_2024_history_rows": 2,
   "pre_2024_missing_before": 0,
   "pre_2024_missing_after": 0,
-  "preserved_exact_key_rows": 815,
+  "preserved_exact_key_rows": 18,
   "seeded_placeholder_rows": 0,
-  "rows_with_tracks_before": 815,
-  "rows_with_tracks_after": 815,
-  "rows_with_title_track_before": 579,
-  "rows_with_title_track_after": 581,
-  "rows_without_title_track_before": 236,
-  "rows_without_title_track_after": 234,
+  "rows_with_tracks_before": 18,
+  "rows_with_tracks_after": 18,
+  "rows_with_title_track_before": 13,
+  "rows_with_title_track_after": 13,
+  "rows_without_title_track_before": 5,
+  "rows_without_title_track_after": 5,
   "completeness": {
     "overall_before": {
-      "total_rows": 815,
-      "detail_payload_rows": 815,
+      "total_rows": 18,
+      "detail_payload_rows": 18,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 815,
+      "detail_trusted_rows": 18,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -101,26 +71,26 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 579,
-      "title_track_resolved_ratio": 0.7104,
+      "title_track_resolved_rows": 13,
+      "title_track_resolved_ratio": 0.7222,
       "title_track_review_rows": 0,
       "title_track_review_ratio": 0.0,
-      "title_track_unresolved_rows": 236,
-      "title_track_unresolved_ratio": 0.2896,
-      "canonical_mv_rows": 79,
-      "canonical_mv_ratio": 0.0969,
-      "mv_review_rows": 2,
-      "mv_review_ratio": 0.0025,
-      "mv_unresolved_rows": 734,
-      "mv_unresolved_ratio": 0.9006,
+      "title_track_unresolved_rows": 5,
+      "title_track_unresolved_ratio": 0.2778,
+      "canonical_mv_rows": 4,
+      "canonical_mv_ratio": 0.2222,
+      "mv_review_rows": 0,
+      "mv_review_ratio": 0.0,
+      "mv_unresolved_rows": 14,
+      "mv_unresolved_ratio": 0.7778,
       "mv_no_mv_rows": 0,
       "mv_no_mv_ratio": 0.0
     },
     "overall": {
-      "total_rows": 815,
-      "detail_payload_rows": 815,
+      "total_rows": 18,
+      "detail_payload_rows": 18,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 815,
+      "detail_trusted_rows": 18,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -128,26 +98,26 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 581,
-      "title_track_resolved_ratio": 0.7129,
+      "title_track_resolved_rows": 13,
+      "title_track_resolved_ratio": 0.7222,
       "title_track_review_rows": 0,
       "title_track_review_ratio": 0.0,
-      "title_track_unresolved_rows": 234,
-      "title_track_unresolved_ratio": 0.2871,
-      "canonical_mv_rows": 79,
-      "canonical_mv_ratio": 0.0969,
-      "mv_review_rows": 2,
-      "mv_review_ratio": 0.0025,
-      "mv_unresolved_rows": 734,
-      "mv_unresolved_ratio": 0.9006,
+      "title_track_unresolved_rows": 5,
+      "title_track_unresolved_ratio": 0.2778,
+      "canonical_mv_rows": 4,
+      "canonical_mv_ratio": 0.2222,
+      "mv_review_rows": 0,
+      "mv_review_ratio": 0.0,
+      "mv_unresolved_rows": 14,
+      "mv_unresolved_ratio": 0.7778,
       "mv_no_mv_rows": 0,
       "mv_no_mv_ratio": 0.0
     },
     "pre_2024": {
-      "total_rows": 198,
-      "detail_payload_rows": 198,
+      "total_rows": 2,
+      "detail_payload_rows": 2,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 198,
+      "detail_trusted_rows": 2,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -155,17 +125,17 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 131,
-      "title_track_resolved_ratio": 0.6616,
+      "title_track_resolved_rows": 1,
+      "title_track_resolved_ratio": 0.5,
       "title_track_review_rows": 0,
       "title_track_review_ratio": 0.0,
-      "title_track_unresolved_rows": 67,
-      "title_track_unresolved_ratio": 0.3384,
+      "title_track_unresolved_rows": 1,
+      "title_track_unresolved_ratio": 0.5,
       "canonical_mv_rows": 0,
       "canonical_mv_ratio": 0.0,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
-      "mv_unresolved_rows": 198,
+      "mv_unresolved_rows": 2,
       "mv_unresolved_ratio": 1.0,
       "mv_no_mv_rows": 0,
       "mv_no_mv_ratio": 0.0
@@ -174,10 +144,10 @@
   "breakdowns": {
     "by_year": {
       "2023": {
-        "total_rows": 198,
-        "detail_payload_rows": 198,
+        "total_rows": 2,
+        "detail_payload_rows": 2,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 198,
+        "detail_trusted_rows": 2,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -185,26 +155,26 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 131,
-        "title_track_resolved_ratio": 0.6616,
+        "title_track_resolved_rows": 1,
+        "title_track_resolved_ratio": 0.5,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 67,
-        "title_track_unresolved_ratio": 0.3384,
+        "title_track_unresolved_rows": 1,
+        "title_track_unresolved_ratio": 0.5,
         "canonical_mv_rows": 0,
         "canonical_mv_ratio": 0.0,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 198,
+        "mv_unresolved_rows": 2,
         "mv_unresolved_ratio": 1.0,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
       "2024": {
-        "total_rows": 318,
-        "detail_payload_rows": 318,
+        "total_rows": 8,
+        "detail_payload_rows": 8,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 318,
+        "detail_trusted_rows": 8,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -212,26 +182,26 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 224,
-        "title_track_resolved_ratio": 0.7044,
+        "title_track_resolved_rows": 5,
+        "title_track_resolved_ratio": 0.625,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 94,
-        "title_track_unresolved_ratio": 0.2956,
-        "canonical_mv_rows": 7,
-        "canonical_mv_ratio": 0.022,
+        "title_track_unresolved_rows": 3,
+        "title_track_unresolved_ratio": 0.375,
+        "canonical_mv_rows": 0,
+        "canonical_mv_ratio": 0.0,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 311,
-        "mv_unresolved_ratio": 0.978,
+        "mv_unresolved_rows": 8,
+        "mv_unresolved_ratio": 1.0,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
       "2025": {
-        "total_rows": 264,
-        "detail_payload_rows": 264,
+        "total_rows": 5,
+        "detail_payload_rows": 5,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 264,
+        "detail_trusted_rows": 5,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -239,26 +209,26 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 194,
-        "title_track_resolved_ratio": 0.7348,
+        "title_track_resolved_rows": 4,
+        "title_track_resolved_ratio": 0.8,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 70,
-        "title_track_unresolved_ratio": 0.2652,
-        "canonical_mv_rows": 54,
-        "canonical_mv_ratio": 0.2045,
-        "mv_review_rows": 1,
-        "mv_review_ratio": 0.0038,
-        "mv_unresolved_rows": 209,
-        "mv_unresolved_ratio": 0.7917,
+        "title_track_unresolved_rows": 1,
+        "title_track_unresolved_ratio": 0.2,
+        "canonical_mv_rows": 1,
+        "canonical_mv_ratio": 0.2,
+        "mv_review_rows": 0,
+        "mv_review_ratio": 0.0,
+        "mv_unresolved_rows": 4,
+        "mv_unresolved_ratio": 0.8,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
       "2026": {
-        "total_rows": 35,
-        "detail_payload_rows": 35,
+        "total_rows": 3,
+        "detail_payload_rows": 3,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 35,
+        "detail_trusted_rows": 3,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -266,28 +236,28 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 32,
-        "title_track_resolved_ratio": 0.9143,
+        "title_track_resolved_rows": 3,
+        "title_track_resolved_ratio": 1.0,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 3,
-        "title_track_unresolved_ratio": 0.0857,
-        "canonical_mv_rows": 18,
-        "canonical_mv_ratio": 0.5143,
-        "mv_review_rows": 1,
-        "mv_review_ratio": 0.0286,
-        "mv_unresolved_rows": 16,
-        "mv_unresolved_ratio": 0.4571,
+        "title_track_unresolved_rows": 0,
+        "title_track_unresolved_ratio": 0.0,
+        "canonical_mv_rows": 3,
+        "canonical_mv_ratio": 1.0,
+        "mv_review_rows": 0,
+        "mv_review_ratio": 0.0,
+        "mv_unresolved_rows": 0,
+        "mv_unresolved_ratio": 0.0,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       }
     },
     "by_release_kind": {
       "album": {
-        "total_rows": 68,
-        "detail_payload_rows": 68,
+        "total_rows": 1,
+        "detail_payload_rows": 1,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 68,
+        "detail_trusted_rows": 1,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -295,26 +265,26 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 36,
-        "title_track_resolved_ratio": 0.5294,
+        "title_track_resolved_rows": 1,
+        "title_track_resolved_ratio": 1.0,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 32,
-        "title_track_unresolved_ratio": 0.4706,
-        "canonical_mv_rows": 2,
-        "canonical_mv_ratio": 0.0294,
+        "title_track_unresolved_rows": 0,
+        "title_track_unresolved_ratio": 0.0,
+        "canonical_mv_rows": 0,
+        "canonical_mv_ratio": 0.0,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 66,
-        "mv_unresolved_ratio": 0.9706,
+        "mv_unresolved_rows": 1,
+        "mv_unresolved_ratio": 1.0,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
       "ep": {
-        "total_rows": 301,
-        "detail_payload_rows": 301,
+        "total_rows": 8,
+        "detail_payload_rows": 8,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 301,
+        "detail_trusted_rows": 8,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -322,26 +292,26 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 142,
-        "title_track_resolved_ratio": 0.4718,
+        "title_track_resolved_rows": 5,
+        "title_track_resolved_ratio": 0.625,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 159,
-        "title_track_unresolved_ratio": 0.5282,
-        "canonical_mv_rows": 24,
-        "canonical_mv_ratio": 0.0797,
+        "title_track_unresolved_rows": 3,
+        "title_track_unresolved_ratio": 0.375,
+        "canonical_mv_rows": 1,
+        "canonical_mv_ratio": 0.125,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 277,
-        "mv_unresolved_ratio": 0.9203,
+        "mv_unresolved_rows": 7,
+        "mv_unresolved_ratio": 0.875,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
       "single": {
-        "total_rows": 446,
-        "detail_payload_rows": 446,
+        "total_rows": 9,
+        "detail_payload_rows": 9,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 446,
+        "detail_trusted_rows": 9,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -349,18 +319,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 403,
-        "title_track_resolved_ratio": 0.9036,
+        "title_track_resolved_rows": 7,
+        "title_track_resolved_ratio": 0.7778,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 43,
-        "title_track_unresolved_ratio": 0.0964,
-        "canonical_mv_rows": 53,
-        "canonical_mv_ratio": 0.1188,
-        "mv_review_rows": 2,
-        "mv_review_ratio": 0.0045,
-        "mv_unresolved_rows": 391,
-        "mv_unresolved_ratio": 0.8767,
+        "title_track_unresolved_rows": 2,
+        "title_track_unresolved_ratio": 0.2222,
+        "canonical_mv_rows": 3,
+        "canonical_mv_ratio": 0.3333,
+        "mv_review_rows": 0,
+        "mv_review_ratio": 0.0,
+        "mv_unresolved_rows": 6,
+        "mv_unresolved_ratio": 0.6667,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       }
@@ -371,84 +341,56 @@
       {
         "year_band": "2021-2023",
         "release_kind": "ep",
-        "total_rows": 77,
-        "resolved_rows": 25,
-        "resolved_ratio": 0.3247,
+        "total_rows": 2,
+        "resolved_rows": 1,
+        "resolved_ratio": 0.5,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 52,
-        "unresolved_ratio": 0.6753,
+        "unresolved_rows": 1,
+        "unresolved_ratio": 0.5,
         "threshold": 0.74,
-        "gap_to_target": 0.4153,
+        "gap_to_target": 0.24,
         "status": "fail"
       },
       {
         "year_band": "2024+",
         "release_kind": "ep",
-        "total_rows": 224,
-        "resolved_rows": 117,
-        "resolved_ratio": 0.5223,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 107,
-        "unresolved_ratio": 0.4777,
-        "threshold": 0.82,
-        "gap_to_target": 0.2977,
-        "status": "fail"
-      },
-      {
-        "year_band": "2024+",
-        "release_kind": "album",
-        "total_rows": 50,
-        "resolved_rows": 24,
-        "resolved_ratio": 0.48,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 26,
-        "unresolved_ratio": 0.52,
-        "threshold": 0.76,
-        "gap_to_target": 0.28,
-        "status": "fail"
-      },
-      {
-        "year_band": "2021-2023",
-        "release_kind": "album",
-        "total_rows": 18,
-        "resolved_rows": 12,
+        "total_rows": 6,
+        "resolved_rows": 4,
         "resolved_ratio": 0.6667,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 6,
+        "unresolved_rows": 2,
         "unresolved_ratio": 0.3333,
-        "threshold": 0.68,
-        "gap_to_target": 0.0133,
+        "threshold": 0.82,
+        "gap_to_target": 0.1533,
         "status": "fail"
       },
       {
         "year_band": "2024+",
         "release_kind": "single",
-        "total_rows": 343,
-        "resolved_rows": 309,
-        "resolved_ratio": 0.9009,
+        "total_rows": 9,
+        "resolved_rows": 7,
+        "resolved_ratio": 0.7778,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 34,
-        "unresolved_ratio": 0.0991,
+        "unresolved_rows": 2,
+        "unresolved_ratio": 0.2222,
         "threshold": 0.9,
-        "gap_to_target": 0.0,
-        "status": "pass"
+        "gap_to_target": 0.1222,
+        "status": "fail"
       },
       {
-        "year_band": "2021-2023",
-        "release_kind": "single",
-        "total_rows": 103,
-        "resolved_rows": 94,
-        "resolved_ratio": 0.9126,
+        "year_band": "2024+",
+        "release_kind": "album",
+        "total_rows": 1,
+        "resolved_rows": 1,
+        "resolved_ratio": 1.0,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 9,
-        "unresolved_ratio": 0.0874,
-        "threshold": 0.84,
+        "unresolved_rows": 0,
+        "unresolved_ratio": 0.0,
+        "threshold": 0.76,
         "gap_to_target": 0.0,
         "status": "pass"
       }
@@ -456,86 +398,58 @@
     "canonical_mv": [
       {
         "year_band": "2024+",
-        "release_kind": "single",
-        "total_rows": 343,
-        "resolved_rows": 53,
-        "resolved_ratio": 0.1545,
-        "review_rows": 2,
-        "review_ratio": 0.0058,
-        "unresolved_rows": 288,
-        "unresolved_ratio": 0.8397,
-        "threshold": 0.72,
-        "gap_to_target": 0.5655,
-        "status": "fail"
-      },
-      {
-        "year_band": "2021-2023",
-        "release_kind": "single",
-        "total_rows": 103,
-        "resolved_rows": 0,
-        "resolved_ratio": 0.0,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 103,
-        "unresolved_ratio": 1.0,
-        "threshold": 0.5,
-        "gap_to_target": 0.5,
-        "status": "fail"
-      },
-      {
-        "year_band": "2024+",
-        "release_kind": "ep",
-        "total_rows": 224,
-        "resolved_rows": 24,
-        "resolved_ratio": 0.1071,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 200,
-        "unresolved_ratio": 0.8929,
-        "threshold": 0.55,
-        "gap_to_target": 0.4429,
-        "status": "fail"
-      },
-      {
-        "year_band": "2024+",
         "release_kind": "album",
-        "total_rows": 50,
-        "resolved_rows": 2,
-        "resolved_ratio": 0.04,
+        "total_rows": 1,
+        "resolved_rows": 0,
+        "resolved_ratio": 0.0,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 48,
-        "unresolved_ratio": 0.96,
+        "unresolved_rows": 1,
+        "unresolved_ratio": 1.0,
         "threshold": 0.4,
-        "gap_to_target": 0.36,
+        "gap_to_target": 0.4,
+        "status": "fail"
+      },
+      {
+        "year_band": "2024+",
+        "release_kind": "single",
+        "total_rows": 9,
+        "resolved_rows": 3,
+        "resolved_ratio": 0.3333,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 6,
+        "unresolved_ratio": 0.6667,
+        "threshold": 0.72,
+        "gap_to_target": 0.3867,
+        "status": "fail"
+      },
+      {
+        "year_band": "2024+",
+        "release_kind": "ep",
+        "total_rows": 6,
+        "resolved_rows": 1,
+        "resolved_ratio": 0.1667,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 5,
+        "unresolved_ratio": 0.8333,
+        "threshold": 0.55,
+        "gap_to_target": 0.3833,
         "status": "fail"
       },
       {
         "year_band": "2021-2023",
         "release_kind": "ep",
-        "total_rows": 77,
+        "total_rows": 2,
         "resolved_rows": 0,
         "resolved_ratio": 0.0,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 77,
+        "unresolved_rows": 2,
         "unresolved_ratio": 1.0,
         "threshold": 0.35,
         "gap_to_target": 0.35,
-        "status": "fail"
-      },
-      {
-        "year_band": "2021-2023",
-        "release_kind": "album",
-        "total_rows": 18,
-        "resolved_rows": 0,
-        "resolved_ratio": 0.0,
-        "review_rows": 0,
-        "review_ratio": 0.0,
-        "unresolved_rows": 18,
-        "unresolved_ratio": 1.0,
-        "threshold": 0.28,
-        "gap_to_target": 0.28,
         "status": "fail"
       }
     ]
@@ -545,165 +459,37 @@
       "detail": [],
       "title_track": [
         {
-          "group": "tripleS",
-          "total_rows": 17,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 16,
-          "title_track_gap_ratio": 0.5882
-        },
-        {
-          "group": "Xdinary Heroes",
-          "total_rows": 10,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 8,
-          "mv_gap_rows": 10,
-          "title_track_gap_ratio": 0.8
-        },
-        {
-          "group": "BOYNEXTDOOR",
-          "total_rows": 11,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 7,
-          "mv_gap_rows": 11,
-          "title_track_gap_ratio": 0.6364
-        },
-        {
-          "group": "Purple Kiss",
-          "total_rows": 8,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 7,
-          "mv_gap_rows": 7,
-          "title_track_gap_ratio": 0.875
-        },
-        {
-          "group": "TOMORROW X TOGETHER",
-          "total_rows": 17,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 6,
-          "mv_gap_rows": 16,
-          "title_track_gap_ratio": 0.3529
-        },
-        {
           "group": "YOUNITE",
-          "total_rows": 6,
+          "total_rows": 3,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 6,
-          "mv_gap_rows": 6,
+          "title_track_gap_rows": 3,
+          "mv_gap_rows": 3,
           "title_track_gap_ratio": 1.0
         },
         {
-          "group": "Stray Kids",
-          "total_rows": 17,
+          "group": "ZEROBASEONE",
+          "total_rows": 15,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
-          "mv_gap_rows": 16,
-          "title_track_gap_ratio": 0.2941
-        },
-        {
-          "group": "THE BOYZ",
-          "total_rows": 14,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
-          "mv_gap_rows": 14,
-          "title_track_gap_ratio": 0.3571
-        },
-        {
-          "group": "ONEUS",
-          "total_rows": 10,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
-          "mv_gap_rows": 8,
-          "title_track_gap_ratio": 0.5
-        },
-        {
-          "group": "STAYC",
-          "total_rows": 9,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
-          "mv_gap_rows": 8,
-          "title_track_gap_ratio": 0.5556
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 11,
+          "title_track_gap_ratio": 0.1333
         }
       ],
       "mv": [
         {
-          "group": "IVE",
-          "total_rows": 22,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 21,
-          "mv_gap_ratio": 0.9545
-        },
-        {
-          "group": "ATEEZ",
-          "total_rows": 19,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 3,
-          "mv_gap_rows": 19,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "LE SSERAFIM",
-          "total_rows": 17,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 0,
-          "mv_gap_rows": 17,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "aespa",
-          "total_rows": 18,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 16,
-          "mv_gap_ratio": 0.8889
-        },
-        {
-          "group": "Stray Kids",
-          "total_rows": 17,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
-          "mv_gap_rows": 16,
-          "mv_gap_ratio": 0.9412
-        },
-        {
-          "group": "TOMORROW X TOGETHER",
-          "total_rows": 17,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 6,
-          "mv_gap_rows": 16,
-          "mv_gap_ratio": 0.9412
-        },
-        {
-          "group": "tripleS",
-          "total_rows": 17,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 10,
-          "mv_gap_rows": 16,
-          "mv_gap_ratio": 0.9412
-        },
-        {
-          "group": "RIIZE",
+          "group": "ZEROBASEONE",
           "total_rows": 15,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 1,
-          "mv_gap_rows": 14,
-          "mv_gap_ratio": 0.9333
-        },
-        {
-          "group": "THE BOYZ",
-          "total_rows": 14,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 5,
-          "mv_gap_rows": 14,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "Kep1er",
-          "total_rows": 13,
-          "detail_gap_rows": 0,
           "title_track_gap_rows": 2,
-          "mv_gap_rows": 13,
+          "mv_gap_rows": 11,
+          "mv_gap_ratio": 0.7333
+        },
+        {
+          "group": "YOUNITE",
+          "total_rows": 3,
+          "detail_gap_rows": 0,
+          "title_track_gap_rows": 3,
+          "mv_gap_rows": 3,
           "mv_gap_ratio": 1.0
         }
       ]
@@ -712,165 +498,21 @@
       "detail": [],
       "title_track": [
         {
-          "group": "tripleS",
-          "total_rows": 6,
+          "group": "ZEROBASEONE",
+          "total_rows": 2,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 3,
-          "mv_gap_rows": 6,
+          "title_track_gap_rows": 1,
+          "mv_gap_rows": 2,
           "title_track_gap_ratio": 0.5
-        },
-        {
-          "group": "ENHYPEN",
-          "total_rows": 4,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 3,
-          "mv_gap_rows": 4,
-          "title_track_gap_ratio": 0.75
-        },
-        {
-          "group": "Kep1er",
-          "total_rows": 6,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 6,
-          "title_track_gap_ratio": 0.3333
-        },
-        {
-          "group": "THE BOYZ",
-          "total_rows": 6,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 6,
-          "title_track_gap_ratio": 0.3333
-        },
-        {
-          "group": "SEVENTEEN",
-          "total_rows": 5,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 5,
-          "title_track_gap_ratio": 0.4
-        },
-        {
-          "group": "DKB",
-          "total_rows": 4,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 4,
-          "title_track_gap_ratio": 0.5
-        },
-        {
-          "group": "BOYNEXTDOOR",
-          "total_rows": 2,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 2,
-          "title_track_gap_ratio": 1.0
-        },
-        {
-          "group": "Dreamcatcher",
-          "total_rows": 2,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 2,
-          "title_track_gap_ratio": 1.0
-        },
-        {
-          "group": "KISS OF LIFE",
-          "total_rows": 2,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 2,
-          "title_track_gap_ratio": 1.0
-        },
-        {
-          "group": "ONEUS",
-          "total_rows": 2,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 2,
-          "title_track_gap_ratio": 1.0
         }
       ],
       "mv": [
         {
-          "group": "IVE",
-          "total_rows": 8,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 0,
-          "mv_gap_rows": 8,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "aespa",
-          "total_rows": 6,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 0,
-          "mv_gap_rows": 6,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "Kep1er",
-          "total_rows": 6,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 6,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "THE BOYZ",
-          "total_rows": 6,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 6,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "tripleS",
-          "total_rows": 6,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 3,
-          "mv_gap_rows": 6,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "SEVENTEEN",
-          "total_rows": 5,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 5,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "TOMORROW X TOGETHER",
-          "total_rows": 5,
+          "group": "ZEROBASEONE",
+          "total_rows": 2,
           "detail_gap_rows": 0,
           "title_track_gap_rows": 1,
-          "mv_gap_rows": 5,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "CHUU",
-          "total_rows": 4,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 0,
-          "mv_gap_rows": 4,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "DKB",
-          "total_rows": 4,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 2,
-          "mv_gap_rows": 4,
-          "mv_gap_ratio": 1.0
-        },
-        {
-          "group": "ENHYPEN",
-          "total_rows": 4,
-          "detail_gap_rows": 0,
-          "title_track_gap_rows": 3,
-          "mv_gap_rows": 4,
+          "mv_gap_rows": 2,
           "mv_gap_ratio": 1.0
         }
       ]
@@ -880,142 +522,7 @@
     "detail_gap_rows": [],
     "title_track_gap_rows": [
       {
-        "group": "&TEAM",
-        "release_title": "First Howling : NOW",
-        "release_date": "2023-11-15",
-        "stream": "album",
-        "release_kind": "album",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 18
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "I feel",
-        "release_date": "2023-05-15",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 6
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "I SWAY",
-        "release_date": "2024-07-08",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 4
-      },
-      {
-        "group": "(G)I-DLE",
-        "release_title": "We are",
-        "release_date": "2025-05-19",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 6
-      },
-      {
-        "group": "82MAJOR",
-        "release_title": "BEAT by 82",
-        "release_date": "2024-04-29",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 4
-      },
-      {
-        "group": "82MAJOR",
-        "release_title": "X-82",
-        "release_date": "2024-11-15",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 4
-      },
-      {
-        "group": "82MAJOR",
-        "release_title": "SILENCE SYNDROME",
-        "release_date": "2025-04-14",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 4
-      },
-      {
-        "group": "8TURN",
-        "release_title": "UNCHARTED DRIFT",
-        "release_date": "2023-06-26",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 5
-      },
-      {
-        "group": "8TURN",
-        "release_title": "STUNNING",
-        "release_date": "2024-01-09",
-        "stream": "album",
-        "release_kind": "ep",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "unresolved",
-        "title_track_provenance": "no_dependable_title_track_signal",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [],
-        "track_count": 5
-      },
-      {
-        "group": "8TURN",
+        "group": "YOUNITE",
         "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
         "release_date": "2024-10-31",
         "stream": "album",
@@ -1028,30 +535,133 @@
         "youtube_video_provenance": "releaseHistory.placeholder_seed",
         "title_tracks": [],
         "track_count": 6
-      }
-    ],
-    "mv_gap_rows": [
+      },
       {
-        "group": "&TEAM",
-        "release_title": "Blind Love",
-        "release_date": "2023-05-07",
+        "group": "YOUNITE",
+        "release_title": "Y",
+        "release_date": "2024-12-11",
         "stream": "song",
         "release_kind": "single",
         "detail_status": "verified",
         "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "verified",
-        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
         "youtube_video_status": "unresolved",
         "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [
-          "Blind Love"
-        ],
-        "track_count": 1
+        "title_tracks": [],
+        "track_count": 3
       },
       {
-        "group": "&TEAM",
-        "release_title": "First Howling : WE",
-        "release_date": "2023-06-14",
+        "group": "YOUNITE",
+        "release_title": "YOUNI-T",
+        "release_date": "2025-04-23",
+        "stream": "song",
+        "release_kind": "single",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 7
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "YOUTH IN THE SHADE",
+        "release_date": "2023-07-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 6
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "CINEMA PARADISE",
+        "release_date": "2024-08-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 7
+      }
+    ],
+    "mv_gap_rows": [
+      {
+        "group": "YOUNITE",
+        "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+        "release_date": "2024-10-31",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 6
+      },
+      {
+        "group": "YOUNITE",
+        "release_title": "Y",
+        "release_date": "2024-12-11",
+        "stream": "song",
+        "release_kind": "single",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 3
+      },
+      {
+        "group": "YOUNITE",
+        "release_title": "YOUNI-T",
+        "release_date": "2025-04-23",
+        "stream": "song",
+        "release_kind": "single",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 7
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "YOUTH IN THE SHADE",
+        "release_date": "2023-07-10",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 6
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "MELTING POINT",
+        "release_date": "2023-11-06",
         "stream": "album",
         "release_kind": "ep",
         "detail_status": "verified",
@@ -1061,16 +671,67 @@
         "youtube_video_status": "unresolved",
         "youtube_video_provenance": "releaseHistory.placeholder_seed",
         "title_tracks": [
-          "Blind Love"
+          "MELTING POINT"
         ],
-        "track_count": 6
+        "track_count": 5
       },
       {
-        "group": "&TEAM",
-        "release_title": "First Howling : NOW",
-        "release_date": "2023-11-15",
+        "group": "ZEROBASEONE",
+        "release_title": "ゆらゆら -運命の花-",
+        "release_date": "2024-03-08",
+        "stream": "song",
+        "release_kind": "single",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [
+          "ゆらゆら -運命の花-"
+        ],
+        "track_count": 1
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "SWEAT",
+        "release_date": "2024-04-24",
+        "stream": "song",
+        "release_kind": "single",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [
+          "SWEAT"
+        ],
+        "track_count": 1
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "You had me at HELLO",
+        "release_date": "2024-05-13",
         "stream": "album",
-        "release_kind": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [
+          "HELLO"
+        ],
+        "track_count": 7
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "CINEMA PARADISE",
+        "release_date": "2024-08-26",
+        "stream": "album",
+        "release_kind": "ep",
         "detail_status": "verified",
         "detail_provenance": "musicbrainz.release_group_release",
         "title_track_status": "unresolved",
@@ -1078,12 +739,12 @@
         "youtube_video_status": "unresolved",
         "youtube_video_provenance": "releaseHistory.placeholder_seed",
         "title_tracks": [],
-        "track_count": 18
+        "track_count": 7
       },
       {
-        "group": "&TEAM",
-        "release_title": "君にカエル (Maybe)",
-        "release_date": "2024-04-28",
+        "group": "ZEROBASEONE",
+        "release_title": "Only One Story",
+        "release_date": "2024-10-11",
         "stream": "song",
         "release_kind": "single",
         "detail_status": "verified",
@@ -1093,112 +754,9 @@
         "youtube_video_status": "unresolved",
         "youtube_video_provenance": "releaseHistory.placeholder_seed",
         "title_tracks": [
-          "君にカエル (Maybe)"
+          "Only One Story"
         ],
         "track_count": 1
-      },
-      {
-        "group": "&TEAM",
-        "release_title": "五月雨 (Samidare)",
-        "release_date": "2024-05-07",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "verified",
-        "title_track_provenance": "releaseDetails.existing_title_flags",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [
-          "五月雨 (Samidare)"
-        ],
-        "track_count": 3
-      },
-      {
-        "group": "&TEAM",
-        "release_title": "声変わり",
-        "release_date": "2024-07-18",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "verified",
-        "title_track_provenance": "releaseDetails.existing_title_flags",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [
-          "声変わり"
-        ],
-        "track_count": 1
-      },
-      {
-        "group": "&TEAM",
-        "release_title": "青嵐 (Aoarashi)",
-        "release_date": "2024-08-06",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "verified",
-        "title_track_provenance": "releaseDetails.existing_title_flags",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [
-          "青嵐 (Aoarashi)"
-        ],
-        "track_count": 3
-      },
-      {
-        "group": "&TEAM",
-        "release_title": "Beat the odds",
-        "release_date": "2024-10-03",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "verified",
-        "title_track_provenance": "releaseDetails.existing_title_flags",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [
-          "Beat the odds"
-        ],
-        "track_count": 1
-      },
-      {
-        "group": "&TEAM",
-        "release_title": "雪明かり (Yukiakari)",
-        "release_date": "2024-12-17",
-        "stream": "album",
-        "release_kind": "album",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "verified",
-        "title_track_provenance": "releaseDetails.existing_title_flags",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [
-          "雪明かり (Yukiakari)"
-        ],
-        "track_count": 22
-      },
-      {
-        "group": "&TEAM",
-        "release_title": "Magic Hour / Wonderful World",
-        "release_date": "2025-01-08",
-        "stream": "song",
-        "release_kind": "single",
-        "detail_status": "verified",
-        "detail_provenance": "musicbrainz.release_group_release",
-        "title_track_status": "verified",
-        "title_track_provenance": "releaseDetails.existing_title_flags",
-        "youtube_video_status": "unresolved",
-        "youtube_video_provenance": "releaseHistory.placeholder_seed",
-        "title_tracks": [
-          "Magic Hour",
-          "Wonderful World"
-        ],
-        "track_count": 2
       }
     ]
   },
@@ -1230,14 +788,14 @@
       },
       "title_track_resolved": {
         "status": "fail",
-        "observed_total": 0.7129,
-        "observed_pre_2024": 0.6616,
+        "observed_total": 0.7222,
+        "observed_pre_2024": 0.5,
         "threshold_total": 0.8,
         "threshold_pre_2024": 0.6
       },
       "canonical_mv": {
         "status": "fail",
-        "observed_total": 0.0969,
+        "observed_total": 0.2222,
         "observed_pre_2024": 0.0,
         "threshold_total": 0.65,
         "threshold_pre_2024": 0.35
@@ -1245,12 +803,12 @@
     },
     "cutover_ready": false,
     "cutover_status": "fail",
-    "generated_at": "2026-03-12",
+    "generated_at": "2026-04-05",
     "summary_lines": [
       "detail payload gate: pass (total 100.0%, pre-2024 100.0%)",
       "detail trusted gate: pass (total 100.0%, pre-2024 100.0%)",
-      "title-track resolved gate: fail (total 71.3%, pre-2024 66.2%)",
-      "canonical MV gate: fail (total 9.7%, pre-2024 0.0%)"
+      "title-track resolved gate: fail (total 72.2%, pre-2024 50.0%)",
+      "canonical MV gate: fail (total 22.2%, pre-2024 0.0%)"
     ]
   },
   "migration_priority_slice": {
@@ -1750,7 +1308,7 @@
       },
       "cutover_ready": false,
       "cutover_status": "fail",
-      "generated_at": "2026-03-12",
+      "generated_at": "2026-04-05",
       "summary_lines": [
         "detail_payload gate: fail (0.0% vs 100.0%)",
         "detail_trusted gate: fail (0.0% vs 100.0%)",
@@ -1960,223 +1518,50 @@
     ]
   },
   "external_acquisition": {
-    "candidate_rows": 795,
+    "candidate_rows": 18,
     "youtube_music": {
       "attempted": 0,
       "resolved": 0,
       "out_of_scope": 0,
-      "unresolved": 739
+      "unresolved": 16
     },
     "youtube_mv": {
       "attempted": 0,
       "resolved": 0,
-      "review_needed": 2,
+      "review_needed": 0,
       "no_mv": 0,
       "out_of_scope": 0,
-      "unresolved": 734
+      "unresolved": 14
+    },
+    "youtube_mv_search": {
+      "attempted": 10,
+      "resolved": 6,
+      "review_needed": 4,
+      "unresolved": 1592,
+      "coverage_lift": 0
     }
   },
   "detail_status_counts": {
-    "verified": 814,
-    "manual_override": 1
+    "verified": 18
   },
   "title_track_status_counts": {
-    "preserved_existing": 566,
-    "unresolved": 234,
-    "auto_single": 2,
-    "manual_override": 13
+    "unresolved": 5,
+    "preserved_existing": 13
   },
   "release_level_title_track_status_counts": {
-    "verified": 566,
-    "unresolved": 234,
-    "inferred": 2,
-    "manual_override": 13
+    "unresolved": 5,
+    "verified": 13
   },
   "youtube_video_status_counts": {
-    "unresolved": 734,
-    "manual_override": 74,
-    "relation_match": 5,
-    "needs_review": 2
+    "unresolved": 14,
+    "manual_override": 4
   },
-  "title_track_auto_resolved_rows": 2,
+  "title_track_auto_resolved_rows": 0,
   "title_track_auto_double_rows": 0,
-  "title_track_review_queue_rows": 234,
+  "title_track_review_queue_rows": 5,
   "title_track_review_queue_sample": [
     {
-      "group": "&TEAM",
-      "release_title": "First Howling : NOW",
-      "release_date": "2023-11-15",
-      "stream": "album",
-      "release_kind": "album",
-      "track_titles": [
-        "War Cry",
-        "Dropkick",
-        "Really Crazy",
-        "ALIEN",
-        "FIREWORK",
-        "Road Not Taken",
-        "The moon is beautiful",
-        "Blind Love",
-        "Under the skin",
-        "Scent of you",
-        "BUZZ LOVE",
-        "War Cry (Korean ver.)",
-        "Road Not Taken (Korean ver.)",
-        "FIREWORK (Korean ver.)",
-        "Scent of you (Korean ver.)",
-        "The Final Countdown (&TEAM ver.)",
-        "Melody (&TEAM ver.)",
-        "Running with the pack (&TEAM ver.)"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "I feel",
-      "release_date": "2023-05-15",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "퀸카",
-        "Allergy",
-        "Lucid",
-        "All Night",
-        "Paradise",
-        "어린 어른"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "I SWAY",
-      "release_date": "2024-07-08",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "클락션 (Klaxon)",
-        "Last Forever",
-        "Bloom",
-        "Neverland"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "We are",
-      "release_date": "2025-05-19",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "Good Thing",
-        "Girlfriend",
-        "Love Tease",
-        "Chain",
-        "Unstoppable",
-        "그래도 돼요"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "82MAJOR",
-      "release_title": "BEAT by 82",
-      "release_date": "2024-04-29",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "Choke",
-        "Birthday",
-        "Illegal",
-        "82"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "82MAJOR",
-      "release_title": "X-82",
-      "release_date": "2024-11-15",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "Stuck",
-        "Thorns",
-        "Face Time",
-        "Gossip"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "82MAJOR",
-      "release_title": "SILENCE SYNDROME",
-      "release_date": "2025-04-14",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "TAKEOVER",
-        "Heroes",
-        "Passport",
-        "Promise You"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "8TURN",
-      "release_title": "UNCHARTED DRIFT",
-      "release_date": "2023-06-26",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "WORLD",
-        "EXCEL",
-        "WALK IT OUT",
-        "SKETCH",
-        "ING"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "8TURN",
-      "release_title": "STUNNING",
-      "release_date": "2024-01-09",
-      "stream": "album",
-      "release_kind": "ep",
-      "track_titles": [
-        "THE GAME",
-        "RU‐PUM PUM",
-        "NOM",
-        "WE HERE",
-        "GLOW"
-      ],
-      "candidate_titles": [],
-      "candidate_sources": [],
-      "review_reason": "No dependable title-track signal was found for this release detail row.",
-      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    },
-    {
-      "group": "8TURN",
+      "group": "YOUNITE",
       "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
       "release_date": "2024-10-31",
       "stream": "album",
@@ -2193,16 +1578,91 @@
       "candidate_sources": [],
       "review_reason": "No dependable title-track signal was found for this release detail row.",
       "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-    }
-  ],
-  "release_detail_review_queue_rows": 799,
-  "release_detail_review_queue_sample": [
+    },
     {
-      "group": "&TEAM",
-      "release_title": "Blind Love",
-      "release_date": "2023-05-07",
+      "group": "YOUNITE",
+      "release_title": "Y",
+      "release_date": "2024-12-11",
       "stream": "song",
       "release_kind": "single",
+      "track_titles": [
+        "Perfume",
+        "TASTE",
+        "Episode"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "YOUNITE",
+      "release_title": "YOUNI-T",
+      "release_date": "2025-04-23",
+      "stream": "song",
+      "release_kind": "single",
+      "track_titles": [
+        "AMIE SONG",
+        "Rock Steady",
+        "GASOLINE",
+        "Who's Next? (HYUNGSEOK, DEY, KYUNGMUN)",
+        "Twilight Rush (EUNHO, STEVE)",
+        "Miracle Day (EUNSANG, WOONO, SION)",
+        "GOOD TO GO"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "YOUTH IN THE SHADE",
+      "release_date": "2023-07-10",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "Back to ZEROBASE",
+        "In Bloom",
+        "New Kidz on the Block",
+        "And I",
+        "Our Season",
+        "Always"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "CINEMA PARADISE",
+      "release_date": "2024-08-26",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "GOOD SO BAD",
+        "KILL THE ROMEO",
+        "The Sea (ZB1 remake)",
+        "Insomnia",
+        "Road Movie",
+        "Eternity",
+        "YURA YURA (Korean ver.)"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    }
+  ],
+  "release_detail_review_queue_rows": 18,
+  "release_detail_review_queue_sample": [
+    {
+      "group": "YOUNITE",
+      "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+      "release_date": "2024-10-31",
+      "stream": "album",
+      "release_kind": "ep",
       "missing_fields": [
         "spotify_url",
         "youtube_music_url",
@@ -2266,9 +1726,143 @@
       "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     },
     {
-      "group": "&TEAM",
-      "release_title": "First Howling : WE",
-      "release_date": "2023-06-14",
+      "group": "YOUNITE",
+      "release_title": "Y",
+      "release_date": "2024-12-11",
+      "stream": "song",
+      "release_kind": "single",
+      "missing_fields": [
+        "youtube_music_url",
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "YOUNITE",
+      "release_title": "YOUNI-T",
+      "release_date": "2025-04-23",
+      "stream": "song",
+      "release_kind": "single",
+      "missing_fields": [
+        "youtube_music_url",
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "YOUTH IN THE SHADE",
+      "release_date": "2023-07-10",
       "stream": "album",
       "release_kind": "ep",
       "missing_fields": [
@@ -2333,11 +1927,11 @@
       "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     },
     {
-      "group": "&TEAM",
-      "release_title": "First Howling : NOW",
-      "release_date": "2023-11-15",
+      "group": "ZEROBASEONE",
+      "release_title": "MELTING POINT",
+      "release_date": "2023-11-06",
       "stream": "album",
-      "release_kind": "album",
+      "release_kind": "ep",
       "missing_fields": [
         "spotify_url",
         "youtube_music_url",
@@ -2401,12 +1995,79 @@
       "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     },
     {
-      "group": "&TEAM",
-      "release_title": "君にカエル (Maybe)",
-      "release_date": "2024-04-28",
+      "group": "ZEROBASEONE",
+      "release_title": "ゆらゆら -運命の花-",
+      "release_date": "2024-03-08",
       "stream": "song",
       "release_kind": "single",
       "missing_fields": [
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "canonical YouTube Music URL present"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "SWEAT",
+      "release_date": "2024-04-24",
+      "stream": "song",
+      "release_kind": "single",
+      "missing_fields": [
+        "spotify_url",
         "youtube_music_url",
         "youtube_video"
       ],
@@ -2468,279 +2129,77 @@
       "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     },
     {
-      "group": "&TEAM",
-      "release_title": "五月雨 (Samidare)",
-      "release_date": "2024-05-07",
-      "stream": "song",
-      "release_kind": "single",
-      "missing_fields": [
-        "youtube_music_url",
-        "youtube_video"
-      ],
-      "attempted_methods_count": 7,
-      "attempted_methods": [
-        "existing_exact_lookup",
-        "existing_relaxed_lookup",
-        "manual_override_lookup",
-        "external_acquisition_skipped",
-        "youtube_music_pipeline_lookup",
-        "youtube_mv_pipeline_lookup",
-        "placeholder_seed_fallback"
-      ],
-      "attempts": [
-        {
-          "method": "existing_exact_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "matched exact release key"
-        },
-        {
-          "method": "existing_relaxed_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no relaxed match"
-        },
-        {
-          "method": "manual_override_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no override"
-        },
-        {
-          "method": "external_acquisition_skipped",
-          "success": false,
-          "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
-        },
-        {
-          "method": "youtube_music_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no canonical YouTube Music URL after current pipeline pass"
-        },
-        {
-          "method": "youtube_mv_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "youtube_video_status=unresolved"
-        },
-        {
-          "method": "placeholder_seed_fallback",
-          "success": false,
-          "filled_fields": [],
-          "note": "placeholder not needed"
-        }
-      ],
-      "compliant_min_attempts": true,
-      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "声変わり",
-      "release_date": "2024-07-18",
-      "stream": "song",
-      "release_kind": "single",
-      "missing_fields": [
-        "youtube_music_url",
-        "youtube_video"
-      ],
-      "attempted_methods_count": 7,
-      "attempted_methods": [
-        "existing_exact_lookup",
-        "existing_relaxed_lookup",
-        "manual_override_lookup",
-        "external_acquisition_skipped",
-        "youtube_music_pipeline_lookup",
-        "youtube_mv_pipeline_lookup",
-        "placeholder_seed_fallback"
-      ],
-      "attempts": [
-        {
-          "method": "existing_exact_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "matched exact release key"
-        },
-        {
-          "method": "existing_relaxed_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no relaxed match"
-        },
-        {
-          "method": "manual_override_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no override"
-        },
-        {
-          "method": "external_acquisition_skipped",
-          "success": false,
-          "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
-        },
-        {
-          "method": "youtube_music_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no canonical YouTube Music URL after current pipeline pass"
-        },
-        {
-          "method": "youtube_mv_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "youtube_video_status=unresolved"
-        },
-        {
-          "method": "placeholder_seed_fallback",
-          "success": false,
-          "filled_fields": [],
-          "note": "placeholder not needed"
-        }
-      ],
-      "compliant_min_attempts": true,
-      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "青嵐 (Aoarashi)",
-      "release_date": "2024-08-06",
-      "stream": "song",
-      "release_kind": "single",
-      "missing_fields": [
-        "youtube_music_url",
-        "youtube_video"
-      ],
-      "attempted_methods_count": 7,
-      "attempted_methods": [
-        "existing_exact_lookup",
-        "existing_relaxed_lookup",
-        "manual_override_lookup",
-        "external_acquisition_skipped",
-        "youtube_music_pipeline_lookup",
-        "youtube_mv_pipeline_lookup",
-        "placeholder_seed_fallback"
-      ],
-      "attempts": [
-        {
-          "method": "existing_exact_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "matched exact release key"
-        },
-        {
-          "method": "existing_relaxed_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no relaxed match"
-        },
-        {
-          "method": "manual_override_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no override"
-        },
-        {
-          "method": "external_acquisition_skipped",
-          "success": false,
-          "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
-        },
-        {
-          "method": "youtube_music_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no canonical YouTube Music URL after current pipeline pass"
-        },
-        {
-          "method": "youtube_mv_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "youtube_video_status=unresolved"
-        },
-        {
-          "method": "placeholder_seed_fallback",
-          "success": false,
-          "filled_fields": [],
-          "note": "placeholder not needed"
-        }
-      ],
-      "compliant_min_attempts": true,
-      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "Beat the odds",
-      "release_date": "2024-10-03",
-      "stream": "song",
-      "release_kind": "single",
-      "missing_fields": [
-        "youtube_music_url",
-        "youtube_video"
-      ],
-      "attempted_methods_count": 7,
-      "attempted_methods": [
-        "existing_exact_lookup",
-        "existing_relaxed_lookup",
-        "manual_override_lookup",
-        "external_acquisition_skipped",
-        "youtube_music_pipeline_lookup",
-        "youtube_mv_pipeline_lookup",
-        "placeholder_seed_fallback"
-      ],
-      "attempts": [
-        {
-          "method": "existing_exact_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "matched exact release key"
-        },
-        {
-          "method": "existing_relaxed_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no relaxed match"
-        },
-        {
-          "method": "manual_override_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no override"
-        },
-        {
-          "method": "external_acquisition_skipped",
-          "success": false,
-          "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
-        },
-        {
-          "method": "youtube_music_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no canonical YouTube Music URL after current pipeline pass"
-        },
-        {
-          "method": "youtube_mv_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "youtube_video_status=unresolved"
-        },
-        {
-          "method": "placeholder_seed_fallback",
-          "success": false,
-          "filled_fields": [],
-          "note": "placeholder not needed"
-        }
-      ],
-      "compliant_min_attempts": true,
-      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "雪明かり (Yukiakari)",
-      "release_date": "2024-12-17",
+      "group": "ZEROBASEONE",
+      "release_title": "You had me at HELLO",
+      "release_date": "2024-05-13",
       "stream": "album",
-      "release_kind": "album",
+      "release_kind": "ep",
+      "missing_fields": [
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "canonical YouTube Music URL present"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "CINEMA PARADISE",
+      "release_date": "2024-08-26",
+      "stream": "album",
+      "release_kind": "ep",
       "missing_fields": [
         "youtube_music_url",
         "youtube_video"
@@ -2803,9 +2262,9 @@
       "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     },
     {
-      "group": "&TEAM",
-      "release_title": "Magic Hour / Wonderful World",
-      "release_date": "2025-01-08",
+      "group": "ZEROBASEONE",
+      "release_title": "Only One Story",
+      "release_date": "2024-10-11",
       "stream": "song",
       "release_kind": "single",
       "missing_fields": [
@@ -2870,60 +2329,22 @@
       "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     }
   ],
-  "rows_with_min_acquisition_attempts": 815,
+  "rows_with_min_acquisition_attempts": 18,
   "rows_missing_min_acquisition_attempts": 0,
   "acquisition_method_counts": {
-    "existing_exact_lookup": 815,
-    "existing_relaxed_lookup": 815,
-    "manual_override_lookup": 815,
-    "external_acquisition_skipped": 815,
-    "youtube_music_pipeline_lookup": 815,
-    "youtube_mv_pipeline_lookup": 815,
-    "placeholder_seed_fallback": 815
+    "existing_exact_lookup": 18,
+    "existing_relaxed_lookup": 18,
+    "manual_override_lookup": 18,
+    "external_acquisition_skipped": 18,
+    "youtube_music_pipeline_lookup": 18,
+    "youtube_mv_pipeline_lookup": 18,
+    "placeholder_seed_fallback": 18
   },
   "title_track_spot_checks": [
     {
-      "group": "ENHYPEN",
-      "release_title": "ROMANCE : UNTOLD",
-      "release_date": "2024-07-12",
-      "stream": "album",
-      "release_kind": "album",
-      "status": "auto_single",
-      "title_tracks": [
-        "Brought the Heat Back"
-      ],
-      "candidate_titles": [
-        "Brought the Heat Back"
-      ]
-    },
-    {
-      "group": "TREASURE",
-      "release_title": "REBOOT",
-      "release_date": "2023-07-28",
-      "stream": "album",
-      "release_kind": "album",
-      "status": "auto_single",
-      "title_tracks": [
-        "BONA BONA"
-      ],
-      "candidate_titles": [
-        "BONA BONA"
-      ]
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "First Howling : NOW",
-      "release_date": "2023-11-15",
-      "stream": "album",
-      "release_kind": "album",
-      "status": "unresolved",
-      "title_tracks": [],
-      "candidate_titles": []
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "I feel",
-      "release_date": "2023-05-15",
+      "group": "YOUNITE",
+      "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+      "release_date": "2024-10-31",
       "stream": "album",
       "release_kind": "ep",
       "status": "unresolved",
@@ -2931,9 +2352,29 @@
       "candidate_titles": []
     },
     {
-      "group": "(G)I-DLE",
-      "release_title": "I SWAY",
-      "release_date": "2024-07-08",
+      "group": "YOUNITE",
+      "release_title": "Y",
+      "release_date": "2024-12-11",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "unresolved",
+      "title_tracks": [],
+      "candidate_titles": []
+    },
+    {
+      "group": "YOUNITE",
+      "release_title": "YOUNI-T",
+      "release_date": "2025-04-23",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "unresolved",
+      "title_tracks": [],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "YOUTH IN THE SHADE",
+      "release_date": "2023-07-10",
       "stream": "album",
       "release_kind": "ep",
       "status": "unresolved",
@@ -2941,9 +2382,9 @@
       "candidate_titles": []
     },
     {
-      "group": "(G)I-DLE",
-      "release_title": "We are",
-      "release_date": "2025-05-19",
+      "group": "ZEROBASEONE",
+      "release_title": "CINEMA PARADISE",
+      "release_date": "2024-08-26",
       "stream": "album",
       "release_kind": "ep",
       "status": "unresolved",
@@ -2951,410 +2392,242 @@
       "candidate_titles": []
     },
     {
-      "group": "82MAJOR",
-      "release_title": "BEAT by 82",
-      "release_date": "2024-04-29",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "unresolved",
-      "title_tracks": [],
-      "candidate_titles": []
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "Blind Love",
-      "release_date": "2023-05-07",
-      "stream": "song",
-      "release_kind": "single",
-      "status": "preserved_existing",
-      "title_tracks": [
-        "Blind Love"
-      ],
-      "candidate_titles": []
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "First Howling : WE",
-      "release_date": "2023-06-14",
+      "group": "ZEROBASEONE",
+      "release_title": "MELTING POINT",
+      "release_date": "2023-11-06",
       "stream": "album",
       "release_kind": "ep",
       "status": "preserved_existing",
       "title_tracks": [
-        "Blind Love"
+        "MELTING POINT"
       ],
       "candidate_titles": []
     },
     {
-      "group": "&TEAM",
-      "release_title": "君にカエル (Maybe)",
-      "release_date": "2024-04-28",
+      "group": "ZEROBASEONE",
+      "release_title": "ゆらゆら -運命の花-",
+      "release_date": "2024-03-08",
       "stream": "song",
       "release_kind": "single",
       "status": "preserved_existing",
       "title_tracks": [
-        "君にカエル (Maybe)"
+        "ゆらゆら -運命の花-"
       ],
       "candidate_titles": []
     },
     {
-      "group": "&TEAM",
-      "release_title": "五月雨 (Samidare)",
-      "release_date": "2024-05-07",
+      "group": "ZEROBASEONE",
+      "release_title": "SWEAT",
+      "release_date": "2024-04-24",
       "stream": "song",
       "release_kind": "single",
       "status": "preserved_existing",
       "title_tracks": [
-        "五月雨 (Samidare)"
+        "SWEAT"
       ],
       "candidate_titles": []
     },
     {
-      "group": "&TEAM",
-      "release_title": "声変わり",
-      "release_date": "2024-07-18",
+      "group": "ZEROBASEONE",
+      "release_title": "You had me at HELLO",
+      "release_date": "2024-05-13",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "HELLO"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "Only One Story",
+      "release_date": "2024-10-11",
       "stream": "song",
       "release_kind": "single",
       "status": "preserved_existing",
       "title_tracks": [
-        "声変わり"
+        "Only One Story"
       ],
       "candidate_titles": []
     },
     {
-      "group": "&TEAM",
-      "release_title": "青嵐 (Aoarashi)",
-      "release_date": "2024-08-06",
+      "group": "ZEROBASEONE",
+      "release_title": "STAGE FIGHTER(STF) Original, Vol. 6",
+      "release_date": "2024-11-26",
       "stream": "song",
       "release_kind": "single",
       "status": "preserved_existing",
       "title_tracks": [
-        "青嵐 (Aoarashi)"
+        "Checkmate (Prod. Czaer)"
       ],
       "candidate_titles": []
     },
     {
-      "group": "&TEAM",
-      "release_title": "Beat the odds",
-      "release_date": "2024-10-03",
+      "group": "ZEROBASEONE",
+      "release_title": "PREZENT",
+      "release_date": "2025-01-29",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Only One Story"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "BLUE PARADISE",
+      "release_date": "2025-02-24",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "BLUE"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "SLAM DUNK",
+      "release_date": "2025-07-23",
       "stream": "song",
       "release_kind": "single",
       "status": "preserved_existing",
       "title_tracks": [
-        "Beat the odds"
+        "SLAM DUNK"
       ],
       "candidate_titles": []
     },
     {
-      "group": "&TEAM",
-      "release_title": "雪明かり (Yukiakari)",
-      "release_date": "2024-12-17",
+      "group": "ZEROBASEONE",
+      "release_title": "NEVER SAY NEVER",
+      "release_date": "2025-09-01",
       "stream": "album",
       "release_kind": "album",
       "status": "preserved_existing",
       "title_tracks": [
-        "雪明かり (Yukiakari)"
+        "SLAM DUNK"
       ],
       "candidate_titles": []
     },
     {
-      "group": "ENHYPEN",
-      "release_title": "THE SIN : VANISH",
-      "release_date": "2026-01-16",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "manual_override",
-      "title_tracks": [
-        "Knife"
-      ],
-      "candidate_titles": [
-        "Knife"
-      ]
-    },
-    {
-      "group": "FIFTY FIFTY",
-      "release_title": "Too Much Part 1",
-      "release_date": "2025-11-04",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "manual_override",
-      "title_tracks": [
-        "가위바위보 (Eeny meeny miny moe)"
-      ],
-      "candidate_titles": [
-        "가위바위보 (Eeny meeny miny moe)"
-      ]
-    },
-    {
-      "group": "IVE",
-      "release_title": "REVIVE+",
-      "release_date": "2026-02-23",
-      "stream": "album",
-      "release_kind": "album",
-      "status": "manual_override",
-      "title_tracks": [
-        "BLACKHOLE",
-        "BANG BANG"
-      ],
-      "candidate_titles": [
-        "BLACKHOLE",
-        "BANG BANG"
-      ]
-    },
-    {
-      "group": "KiiiKiii",
-      "release_title": "Delulu Pack",
-      "release_date": "2026-01-25",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "manual_override",
-      "title_tracks": [
-        "404 (New Era)"
-      ],
-      "candidate_titles": [
-        "404 (New Era)"
-      ]
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "Magic Hour / Wonderful World",
-      "release_date": "2025-01-08",
+      "group": "ZEROBASEONE",
+      "release_title": "Running to Future",
+      "release_date": "2026-01-09",
       "stream": "song",
       "release_kind": "single",
       "status": "preserved_existing",
       "title_tracks": [
-        "Magic Hour",
-        "Wonderful World"
+        "Running to Future"
       ],
       "candidate_titles": []
     },
     {
-      "group": "&TEAM",
-      "release_title": "Go in Blind (月狼)",
-      "release_date": "2025-04-20",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "preserved_existing",
-      "title_tracks": [
-        "Go in Blind (月狼)"
-      ],
-      "candidate_titles": []
-    },
-    {
-      "group": "&TEAM",
-      "release_title": "Back to Life",
-      "release_date": "2025-10-28",
-      "stream": "album",
-      "release_kind": "ep",
-      "status": "preserved_existing",
-      "title_tracks": [
-        "Back to Life"
-      ],
-      "candidate_titles": []
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "I DO",
-      "release_date": "2023-07-13",
+      "group": "ZEROBASEONE",
+      "release_title": "ROSES",
+      "release_date": "2026-01-23",
       "stream": "song",
       "release_kind": "single",
       "status": "preserved_existing",
       "title_tracks": [
-        "I DO"
+        "ROSES"
       ],
       "candidate_titles": []
     },
     {
-      "group": "(G)I-DLE",
-      "release_title": "HEAT",
-      "release_date": "2023-10-05",
+      "group": "ZEROBASEONE",
+      "release_title": "RE-FLOW",
+      "release_date": "2026-02-02",
       "stream": "album",
       "release_kind": "ep",
       "status": "preserved_existing",
       "title_tracks": [
-        "I DO"
-      ],
-      "candidate_titles": []
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "Wife",
-      "release_date": "2024-01-21",
-      "stream": "song",
-      "release_kind": "single",
-      "status": "preserved_existing",
-      "title_tracks": [
-        "Wife"
+        "Running to Future",
+        "ROSES"
       ],
       "candidate_titles": []
     }
   ],
   "verification_state_samples": {
     "verified": {
-      "group": "&TEAM",
-      "release_title": "Blind Love",
-      "release_date": "2023-05-07",
-      "stream": "song",
-      "release_kind": "single",
-      "detail_status": "verified",
-      "detail_provenance": "musicbrainz.release_group_release",
-      "title_track_status": "verified",
-      "title_track_provenance": "releaseDetails.existing_title_flags",
-      "youtube_video_status": "unresolved",
-      "youtube_video_provenance": "releaseHistory.placeholder_seed",
-      "title_tracks": [
-        "Blind Love"
-      ],
-      "track_count": 1
-    },
-    "inferred": {
-      "group": "ENHYPEN",
-      "release_title": "ROMANCE : UNTOLD",
-      "release_date": "2024-07-12",
-      "stream": "album",
-      "release_kind": "album",
-      "detail_status": "verified",
-      "detail_provenance": "musicbrainz.release_group_release",
-      "title_track_status": "inferred",
-      "title_track_provenance": "followup_song_release:2024-08-09",
-      "youtube_video_status": "unresolved",
-      "youtube_video_provenance": "releaseHistory.placeholder_seed",
-      "title_tracks": [
-        "Brought the Heat Back"
-      ],
-      "track_count": 9
-    },
-    "manual_override": {
-      "group": "ENHYPEN",
-      "release_title": "THE SIN : VANISH",
-      "release_date": "2026-01-16",
+      "group": "YOUNITE",
+      "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+      "release_date": "2024-10-31",
       "stream": "album",
       "release_kind": "ep",
       "detail_status": "verified",
-      "detail_provenance": "releaseDetails.existing_row",
-      "title_track_status": "manual_override",
-      "title_track_provenance": "release_detail_overrides.title_tracks",
-      "youtube_video_status": "manual_override",
-      "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
-      "title_tracks": [
-        "Knife"
-      ],
-      "track_count": 11
+      "detail_provenance": "musicbrainz.release_group_release",
+      "title_track_status": "unresolved",
+      "title_track_provenance": "no_dependable_title_track_signal",
+      "youtube_video_status": "unresolved",
+      "youtube_video_provenance": "releaseHistory.placeholder_seed",
+      "title_tracks": [],
+      "track_count": 6
     },
-    "relation_derived_mv": {
-      "group": "EXO",
-      "release_title": "I'm Home",
-      "release_date": "2025-12-13",
-      "stream": "song",
-      "release_kind": "single",
-      "detail_status": "verified",
-      "detail_provenance": "releaseDetails.existing_row",
-      "title_track_status": "verified",
-      "title_track_provenance": "releaseDetails.existing_title_flags",
-      "youtube_video_status": "relation_match",
-      "youtube_video_provenance": "musicbrainz relation url-rels",
-      "title_tracks": [
-        "I'm Home"
-      ],
-      "track_count": 1
-    },
-    "review_needed": {
-      "group": "NCT WISH",
-      "release_title": "Same Sky",
-      "release_date": "2026-02-27",
-      "stream": "song",
-      "release_kind": "single",
-      "detail_status": "verified",
-      "detail_provenance": "releaseDetails.existing_row",
-      "title_track_status": "verified",
-      "title_track_provenance": "releaseDetails.existing_title_flags",
-      "youtube_video_status": "needs_review",
-      "youtube_video_provenance": "Current YouTube results surface audio and lyric uploads ahead of any clearly canonical MV object.",
-      "title_tracks": [
-        "Same Sky"
-      ],
-      "track_count": 1
-    },
-    "unresolved": {
-      "group": "&TEAM",
-      "release_title": "Blind Love",
-      "release_date": "2023-05-07",
+    "inferred": null,
+    "manual_override": {
+      "group": "ZEROBASEONE",
+      "release_title": "SLAM DUNK",
+      "release_date": "2025-07-23",
       "stream": "song",
       "release_kind": "single",
       "detail_status": "verified",
       "detail_provenance": "musicbrainz.release_group_release",
       "title_track_status": "verified",
       "title_track_provenance": "releaseDetails.existing_title_flags",
-      "youtube_video_status": "unresolved",
-      "youtube_video_provenance": "releaseHistory.placeholder_seed",
+      "youtube_video_status": "manual_override",
+      "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
       "title_tracks": [
-        "Blind Love"
+        "SLAM DUNK"
       ],
       "track_count": 1
+    },
+    "relation_derived_mv": null,
+    "review_needed": null,
+    "unresolved": {
+      "group": "YOUNITE",
+      "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
+      "release_date": "2024-10-31",
+      "stream": "album",
+      "release_kind": "ep",
+      "detail_status": "verified",
+      "detail_provenance": "musicbrainz.release_group_release",
+      "title_track_status": "unresolved",
+      "title_track_provenance": "no_dependable_title_track_signal",
+      "youtube_video_status": "unresolved",
+      "youtube_video_provenance": "releaseHistory.placeholder_seed",
+      "title_tracks": [],
+      "track_count": 6
     }
   },
-  "rows_with_youtube_music_after": 76,
-  "rows_with_youtube_mv_after": 79,
-  "override_rows_total": 168,
-  "applied_overrides": 108,
+  "rows_with_youtube_music_after": 2,
+  "rows_with_youtube_mv_after": 4,
+  "override_rows_total": 193,
+  "applied_overrides": 4,
   "override_sample_matches": [
     {
-      "group": "&TEAM",
-      "release_title": "Back to Life",
-      "release_date": "2025-10-28",
-      "stream": "album"
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "i‐dle",
-      "release_date": "2025-10-03",
-      "stream": "album"
-    },
-    {
-      "group": "(G)I-DLE",
-      "release_title": "Mono",
-      "release_date": "2026-01-27",
+      "group": "ZEROBASEONE",
+      "release_title": "SLAM DUNK",
+      "release_date": "2025-07-23",
       "stream": "song"
     },
     {
-      "group": "82MAJOR",
-      "release_title": "Trophy",
-      "release_date": "2025-10-30",
-      "stream": "album"
-    },
-    {
-      "group": "8TURN",
-      "release_title": "LEGGO",
-      "release_date": "2025-03-04",
+      "group": "ZEROBASEONE",
+      "release_title": "Running to Future",
+      "release_date": "2026-01-09",
       "stream": "song"
     },
     {
-      "group": "8TURN",
-      "release_title": "BRUISE",
-      "release_date": "2026-01-28",
+      "group": "ZEROBASEONE",
+      "release_title": "ROSES",
+      "release_date": "2026-01-23",
       "stream": "song"
     },
     {
-      "group": "aespa",
-      "release_title": "Dirty Work",
-      "release_date": "2025-06-27",
-      "stream": "song"
-    },
-    {
-      "group": "aespa",
-      "release_title": "Rich Man",
-      "release_date": "2025-09-05",
-      "stream": "album"
-    },
-    {
-      "group": "ALL(H)OURS",
-      "release_title": "VCF",
-      "release_date": "2025-09-09",
-      "stream": "album"
-    },
-    {
-      "group": "AMPERS&ONE",
-      "release_title": "LOUD & PROUD",
-      "release_date": "2025-08-12",
+      "group": "ZEROBASEONE",
+      "release_title": "RE-FLOW",
+      "release_date": "2026-02-02",
       "stream": "album"
     }
   ],
@@ -3363,17 +2636,17 @@
   "legacy_spot_checks": [
     {
       "group": "EXO",
-      "detail_rows_pre_2024_after": 3,
-      "sample_release_title": "Let Me In",
-      "sample_release_date": "2023-06-12",
-      "sample_has_tracks": true
+      "detail_rows_pre_2024_after": 0,
+      "sample_release_title": null,
+      "sample_release_date": null,
+      "sample_has_tracks": false
     },
     {
       "group": "BTS",
-      "detail_rows_pre_2024_after": 1,
-      "sample_release_title": "Take Two",
-      "sample_release_date": "2023-06-09",
-      "sample_has_tracks": true
+      "detail_rows_pre_2024_after": 0,
+      "sample_release_title": null,
+      "sample_release_date": null,
+      "sample_has_tracks": false
     },
     {
       "group": "BLACKPINK",
@@ -3384,10 +2657,10 @@
     },
     {
       "group": "TWICE",
-      "detail_rows_pre_2024_after": 2,
-      "sample_release_title": "Hare Hare",
-      "sample_release_date": "2023-05-12",
-      "sample_has_tracks": true
+      "detail_rows_pre_2024_after": 0,
+      "sample_release_title": null,
+      "sample_release_date": null,
+      "sample_has_tracks": false
     },
     {
       "group": "WJSN",
@@ -3398,12 +2671,12 @@
     },
     {
       "group": "YUJU",
-      "detail_rows_pre_2024_after": 4,
-      "sample_release_title": "Happiness index",
-      "sample_release_date": "2023-03-23",
-      "sample_has_tracks": true
+      "detail_rows_pre_2024_after": 0,
+      "sample_release_title": null,
+      "sample_release_date": null,
+      "sample_has_tracks": false
     }
   ],
   "relaxed_existing_matches": 0,
-  "preserved_existing_detail_rows_total": 815
+  "preserved_existing_detail_rows_total": 18
 }

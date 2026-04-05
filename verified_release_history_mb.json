@@ -186,15 +186,6 @@
         "stream": "album"
       },
       {
-        "title": "Klaxon",
-        "date": "2024-07-08",
-        "source": "https://musicbrainz.org/release-group/0a291d6f-62f4-4e08-a1f2-e1c9b3003f89",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
         "title": "I SWAY",
         "date": "2024-07-08",
         "source": "https://musicbrainz.org/release-group/1bfb866b-a0c9-4d62-aa0f-3975e08e8c38",
@@ -202,6 +193,15 @@
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "Klaxon",
+        "date": "2024-07-08",
+        "source": "https://musicbrainz.org/release-group/0a291d6f-62f4-4e08-a1f2-e1c9b3003f89",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "This Time Around",
@@ -588,6 +588,42 @@
     "artist_source": "https://musicbrainz.org/artist/1d2c24a6-9ae6-460b-a65e-63671c9fbdd9",
     "releases": [
       {
+        "title": "SEVEN : CRIMSON HORIZON",
+        "date": "2026-03-16",
+        "source": "https://musicbrainz.org/release-group/32abdeaa-e8e0-4ba9-8841-12aa56eec93d",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "So Sweet (0522)",
+        "date": "2026-02-27",
+        "source": "https://musicbrainz.org/release-group/7f879196-57e8-40bc-9296-9077af09da6a",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "A Minute, A Second",
+        "date": "2026-01-27",
+        "source": "https://musicbrainz.org/release-group/2ed0ae9f-20da-4bed-9797-524c3b01a7e0",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "UPSIDE DOWN",
+        "date": "2025-08-25",
+        "source": "https://musicbrainz.org/release-group/aa7bd9fb-66ca-42da-9a45-1cecc6ea29d7",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "BORN LIKE THIS",
         "date": "2024-10-10",
         "source": "https://musicbrainz.org/release-group/abd8fc1a-4079-44d1-abd9-cebbdcff857b",
@@ -877,20 +913,20 @@
       {
         "title": "Drama",
         "date": "2023-11-10",
-        "source": "https://musicbrainz.org/release-group/d8186a16-0a1a-47ea-bc01-b33a800b8bf5",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Drama",
-        "date": "2023-11-10",
         "source": "https://musicbrainz.org/release-group/c4a4e428-e0f8-46d1-85c8-6ff5d7233781",
         "release_kind": "ep",
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "Drama",
+        "date": "2023-11-10",
+        "source": "https://musicbrainz.org/release-group/d8186a16-0a1a-47ea-bc01-b33a800b8bf5",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "Better Things",
@@ -1009,6 +1045,15 @@
     "artist_source": "https://musicbrainz.org/artist/ce06dad7-098e-467c-a875-1e6525b29c02",
     "releases": [
       {
+        "title": "NO DOUBT",
+        "date": "2026-03-16",
+        "source": "https://musicbrainz.org/release-group/fd9318cb-3549-401c-9db0-06d97db0104f",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "VCF",
         "date": "2025-09-09",
         "source": "https://musicbrainz.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e",
@@ -1061,6 +1106,15 @@
     "artist_mbid": "ce5c564c-0fbe-429c-b93b-5d7e3109cf40",
     "artist_source": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40",
     "releases": [
+      {
+        "title": "I DON'T BARGAIN",
+        "date": "2026-03-09",
+        "source": "https://musicbrainz.org/release-group/b14990f4-8a42-495f-bec5-a59cbace31b8",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "ALLDAY PROJECT",
         "date": "2025-12-08",
@@ -1609,19 +1663,19 @@
         "stream": "album"
       },
       {
-        "title": "TREASURE EP.EXTRA : SHIFT THE MAP (Remixx!)",
+        "title": "TREASURE EP. EXTRA: Shift The Map",
         "date": "2019-12-04",
-        "source": "https://musicbrainz.org/release-group/bd41f568-883f-4127-9768-f8204d859793",
-        "release_kind": "ep",
+        "source": "https://musicbrainz.org/release-group/abadc718-c179-4f3d-8b7c-e2b6c5c573fa",
+        "release_kind": "album",
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
       },
       {
-        "title": "TREASURE EP. EXTRA: Shift The Map",
+        "title": "TREASURE EP.EXTRA : SHIFT THE MAP (Remixx!)",
         "date": "2019-12-04",
-        "source": "https://musicbrainz.org/release-group/abadc718-c179-4f3d-8b7c-e2b6c5c573fa",
-        "release_kind": "album",
+        "source": "https://musicbrainz.org/release-group/bd41f568-883f-4127-9768-f8204d859793",
+        "release_kind": "ep",
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
@@ -1670,6 +1724,15 @@
     "artist_mbid": "8a3f4979-23ca-48c8-9d01-5baffee9ea5f",
     "artist_source": "https://musicbrainz.org/artist/8a3f4979-23ca-48c8-9d01-5baffee9ea5f",
     "releases": [
+      {
+        "title": "Butterfly Doors",
+        "date": "2026-03-11",
+        "source": "https://musicbrainz.org/release-group/b0590b45-e28c-4789-843e-24c4c079bd28",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Shut Up",
         "date": "2026-02-26",
@@ -2183,7 +2246,7 @@
       },
       {
         "title": "BOYLIFE",
-        "date": "2025-08-20",
+        "date": "2025-08-17",
         "source": "https://musicbrainz.org/release-group/7f3e5d77-9ad8-4de6-8dcc-3ea29c6208ae",
         "release_kind": "single",
         "release_format": "single",
@@ -2279,6 +2342,15 @@
     "artist_mbid": "7728b64d-8925-4a1c-b684-a88c6194a241",
     "artist_source": "https://musicbrainz.org/artist/7728b64d-8925-4a1c-b684-a88c6194a241",
     "releases": [
+      {
+        "title": "우리 다시",
+        "date": "2026-03-21",
+        "source": "https://musicbrainz.org/release-group/1877c9a7-1dfd-4e6e-89f4-87a621aba92f",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "BTODAY",
         "date": "2025-03-05",
@@ -2653,6 +2725,24 @@
     "artist_mbid": "0d79fe8e-ba27-4859-bb8c-2f255f346853",
     "artist_source": "https://musicbrainz.org/artist/0d79fe8e-ba27-4859-bb8c-2f255f346853",
     "releases": [
+      {
+        "title": "ARIRANG",
+        "date": "2026-03-20",
+        "source": "https://musicbrainz.org/release-group/21159e3f-172e-43f6-aa7d-8e06a81fea49",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "SWIM",
+        "date": "2026-03-20",
+        "source": "https://musicbrainz.org/release-group/9034c5d7-5fd8-4b64-b734-0dbd8f293e94",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Take Two",
         "date": "2023-06-09",
@@ -3034,476 +3124,6 @@
     ]
   },
   {
-    "group": "CHUNG HA",
-    "artist_name_mb": "CHUNG HA",
-    "artist_mbid": "08525643-7a01-411e-8188-8bf57261c8b3",
-    "artist_source": "https://musicbrainz.org/artist/08525643-7a01-411e-8188-8bf57261c8b3",
-    "releases": [
-      {
-        "title": "Save me",
-        "date": "2026-02-09",
-        "source": "https://musicbrainz.org/release-group/996124d6-1423-4fcc-ac05-5ca40e82552c",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Alivio",
-        "date": "2025-02-12",
-        "source": "https://musicbrainz.org/release-group/7a159ff5-9fc3-404b-a56e-e05cf494daf9",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Christmas Promises",
-        "date": "2024-12-03",
-        "source": "https://musicbrainz.org/release-group/1c12c352-2a51-4a65-ad80-ece6f896384c",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Algorithm",
-        "date": "2024-08-28",
-        "source": "https://musicbrainz.org/release-group/943089a2-7e0c-4b59-9d45-5d6f03d20256",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "EENIE MEENIE",
-        "date": "2024-03-11",
-        "source": "https://musicbrainz.org/release-group/dedfbb80-ce87-4246-9c88-a17e2e6fcf7d",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "When I Get Old",
-        "date": "2022-10-20",
-        "source": "https://musicbrainz.org/release-group/5e1139ef-00be-452b-81bf-48e8146917e2",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Sparkling",
-        "date": "2022-07-11",
-        "source": "https://musicbrainz.org/release-group/f3494dfb-f77b-49a7-b25e-883bcb14f120",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Bare&Rare Pt.1",
-        "date": "2022-07-11",
-        "source": "https://musicbrainz.org/release-group/00d36dd0-b25f-4492-aa44-64b6f29c99ba",
-        "release_kind": "album",
-        "release_format": "album",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Killing Me",
-        "date": "2021-11-29",
-        "source": "https://musicbrainz.org/release-group/7e0d6521-6318-468d-9380-aa20f747fd6b",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Querencia",
-        "date": "2021-02-15",
-        "source": "https://musicbrainz.org/release-group/75415453-4f60-47d2-82e9-7d2ff7820673",
-        "release_kind": "album",
-        "release_format": "album",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "X (걸어온 길에 꽃밭 따윈 없었죠)",
-        "date": "2021-01-19",
-        "source": "https://musicbrainz.org/release-group/76757bd0-b710-422a-abe7-5ddc19022009",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Dream of You",
-        "date": "2020-11-26",
-        "source": "https://musicbrainz.org/release-group/a03ee908-ace4-48d6-bf80-930d365e98a3",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Bad Boy",
-        "date": "2020-09-23",
-        "source": "https://musicbrainz.org/release-group/fb5a3d12-367f-46e5-9365-db8f7bdd64a7",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "PLAY / STAY TONIGHT",
-        "date": "2020-07-06",
-        "source": "https://musicbrainz.org/release-group/0377c493-912c-491c-a225-5a5561cc7aac",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "PLAY",
-        "date": "2020-07-06",
-        "source": "https://musicbrainz.org/release-group/c4b60982-395b-4f95-b5de-01311a3ceab8",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Be Yourself",
-        "date": "2020-06-09",
-        "source": "https://musicbrainz.org/release-group/3b893cd5-773b-4bda-b5c9-2df3c8fa67a4",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "여기 적어줘",
-        "date": "2020-05-30",
-        "source": "https://musicbrainz.org/release-group/aee0edaf-64c5-40c7-9dc4-f3fdefb21007",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Stay Tonight",
-        "date": "2020-04-27",
-        "source": "https://musicbrainz.org/release-group/3e2db0e0-1546-42ef-8068-18cf51d6c941",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "솔직히 지친다.newwav",
-        "date": "2020-02-29",
-        "source": "https://musicbrainz.org/release-group/f3373956-3cc0-4a02-abf3-91242a99f1da",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Loveship",
-        "date": "2020-01-21",
-        "source": "https://musicbrainz.org/release-group/bca2ea16-bc2c-4057-ae9c-51481b08166a",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "These Nights",
-        "date": "2019-10-03",
-        "source": "https://musicbrainz.org/release-group/e1252177-e6a1-4b36-8145-ca92a5b52dcc",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "FAST",
-        "date": "2019-09-08",
-        "source": "https://musicbrainz.org/release-group/951d6c31-4db3-4fb4-94f5-0147791dd348",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Flourishing",
-        "date": "2019-06-24",
-        "source": "https://musicbrainz.org/release-group/c99aadf4-d90f-4f1f-a2dd-3b27c7267c1b",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "벌써 12시",
-        "date": "2019-01-02",
-        "source": "https://musicbrainz.org/release-group/77ee3a54-23cf-44d6-9b69-ba6154008e8f",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Whatcha Doin’",
-        "date": "2018-12-17",
-        "source": "https://musicbrainz.org/release-group/876c4f85-3cc9-45e4-9dff-0c92616894b0",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Wow Thing",
-        "date": "2018-09-28",
-        "source": "https://musicbrainz.org/release-group/482a158c-25c0-4c3c-8bc2-759e124f6d03",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Blooming Blue",
-        "date": "2018-07-18",
-        "source": "https://musicbrainz.org/release-group/95b60c73-1b08-4087-b76a-63c10033ed52",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Offset",
-        "date": "2018-01-17",
-        "source": "https://musicbrainz.org/release-group/ceb2a998-bfc3-47b8-9154-09048fd17b47",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "LA VIDA LOCA",
-        "date": "2017-09-01",
-        "source": "https://musicbrainz.org/release-group/087e884b-980b-4cba-8425-5ba1adca8de4",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Hands on Me",
-        "date": "2017-06-07",
-        "source": "https://musicbrainz.org/release-group/1bf37474-83c5-419e-b49c-aa348ba1c5e5",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "월화수목금토일",
-        "date": "2017-04-21",
-        "source": "https://musicbrainz.org/release-group/286430ae-130e-49b3-9f00-79703fa679b6",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "꽃, 바람 그리고 너",
-        "date": "2016-08-29",
-        "source": "https://musicbrainz.org/release-group/7c26399a-f076-4811-80df-21e3141c4958",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      }
-    ]
-  },
-  {
-    "group": "CHUU",
-    "artist_name_mb": "CHUU",
-    "artist_mbid": "ebe26895-c0d1-41c3-8bcc-a49d62c497a1",
-    "artist_source": "https://musicbrainz.org/artist/ebe26895-c0d1-41c3-8bcc-a49d62c497a1",
-    "releases": [
-      {
-        "title": "XO, My Cyberlove",
-        "date": "2026-01-07",
-        "source": "https://musicbrainz.org/release-group/04341117-f1d6-44e3-a65d-4cd7718b028a",
-        "release_kind": "album",
-        "release_format": "album",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Loveholic",
-        "date": "2025-07-21",
-        "source": "https://musicbrainz.org/release-group/e7579896-e193-4722-92d4-1bf797bc2889",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Only cry in the rain",
-        "date": "2025-04-21",
-        "source": "https://musicbrainz.org/release-group/3b6c6bbd-709d-4697-8aae-e80b44b991a6",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "because I’m stupid?",
-        "date": "2025-03-27",
-        "source": "https://musicbrainz.org/release-group/effcef31-8304-4148-a460-07137d119ccb",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "nrv",
-        "date": "2024-11-09",
-        "source": "https://musicbrainz.org/release-group/234bf90f-7f5d-4d36-9b86-b48f0568c29a",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "두번째 사랑",
-        "date": "2024-07-22",
-        "source": "https://musicbrainz.org/release-group/ee4a1014-c439-4433-9278-c1969a71143e",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Strawberry Rush",
-        "date": "2024-06-25",
-        "source": "https://musicbrainz.org/release-group/a03c2285-fc46-4452-b8a6-3b220c45bcb8",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Chocolate",
-        "date": "2024-02-13",
-        "source": "https://musicbrainz.org/release-group/8b143909-d4c1-43f3-a4fc-12a8516a0b0d",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "아름다운 이별 - I am Re:Born #1",
-        "date": "2023-12-10",
-        "source": "https://musicbrainz.org/release-group/b9e4b420-7afe-4489-a3bb-0ed77121634f",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "[THE 시즌즈 VolⅡ. 10] <악뮤의 오날오밤> ReːWake x 츄 (CHUU)",
-        "date": "2023-11-18",
-        "source": "https://musicbrainz.org/release-group/67bf23aa-db74-4baf-b989-dfba5451c78a",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Howl",
-        "date": "2023-10-18",
-        "source": "https://musicbrainz.org/release-group/3e02a80f-1454-4c27-8ee0-7dd1c7bff8ef",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "우리의 밤은 당신의 낮보다 아름답다",
-        "date": "2023-08-02",
-        "source": "https://musicbrainz.org/release-group/1412070d-8669-4623-a43f-7b4313d67d43",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "썸밍아웃",
-        "date": "2023-02-23",
-        "source": "https://musicbrainz.org/release-group/15e76e81-9619-4ee4-a5d9-c93cfdc7cd48",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Song for you project Vol.4 : Dear My Winter",
-        "date": "2022-12-05",
-        "source": "https://musicbrainz.org/release-group/1785bdf0-f37c-41bc-a5e2-5f387ce9e841",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [
-          "special_project"
-        ],
-        "stream": "song"
-      },
-      {
-        "title": "ONE AND A HALF",
-        "date": "2022-09-04",
-        "source": "https://musicbrainz.org/release-group/8045b9c4-a9c7-4a52-8d37-1f5fcbb35078",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "lullaby",
-        "date": "2022-06-27",
-        "source": "https://musicbrainz.org/release-group/1820972b-7ba7-479b-ba7c-aa9e22c6ee6b",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "<Muzie-Kwang Company> project album",
-        "date": "2021-11-24",
-        "source": "https://musicbrainz.org/release-group/fe33292f-1675-4884-8a63-007f9f7c3a0c",
-        "release_kind": "single",
-        "release_format": "album",
-        "context_tags": [
-          "special_project"
-        ],
-        "stream": "song"
-      },
-      {
-        "title": "World is One 2021",
-        "date": "2021-09-15",
-        "source": "https://musicbrainz.org/release-group/e3b525fc-338c-41ff-b9b4-afe1d37ec395",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      }
-    ]
-  },
-  {
     "group": "cignature",
     "artist_name_mb": "cignature",
     "artist_mbid": "52d7b09c-df89-4215-9955-50bb5f4ba7f3",
@@ -3790,41 +3410,6 @@
         "title": "CLASS IS OVER",
         "date": "2022-05-05",
         "source": "https://musicbrainz.org/release-group/872e28e2-5998-4505-9a68-42aa87d35d82",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      }
-    ]
-  },
-  {
-    "group": "CLOSE YOUR EYES",
-    "artist_name_mb": "CLOSE YOUR EYES",
-    "artist_mbid": "64cff6be-dfdb-4d9d-9ee1-c0c121566135",
-    "artist_source": "https://musicbrainz.org/artist/64cff6be-dfdb-4d9d-9ee1-c0c121566135",
-    "releases": [
-      {
-        "title": "blackout",
-        "date": "2025-11-11",
-        "source": "https://musicbrainz.org/release-group/b30043bd-2724-4725-a734-fa49479715fb",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Snowy Summer",
-        "date": "2025-07-09",
-        "source": "https://musicbrainz.org/release-group/5e5b87b2-6732-46b4-bc9d-b8e991b46ab5",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "ETERNALT",
-        "date": "2025-04-02",
-        "source": "https://musicbrainz.org/release-group/4686a360-f02d-4f67-b7df-c205d8bf7758",
         "release_kind": "ep",
         "release_format": "ep",
         "context_tags": [],
@@ -4352,15 +3937,6 @@
         "stream": "song"
       },
       {
-        "title": "The dice is cast",
-        "date": "2021-03-30",
-        "source": "https://musicbrainz.org/release-group/82ffb21e-d8b4-4715-b437-66cef5cbf484",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
         "title": "The Dice Is Cast",
         "date": "2021-03-30",
         "source": "https://musicbrainz.org/release-group/32627a23-3951-4f98-8f11-da5323736782",
@@ -4368,6 +3944,15 @@
         "release_format": "album",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "The dice is cast",
+        "date": "2021-03-30",
+        "source": "https://musicbrainz.org/release-group/82ffb21e-d8b4-4715-b437-66cef5cbf484",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "Growth",
@@ -5033,131 +4618,6 @@
     ]
   },
   {
-    "group": "EPEX",
-    "artist_name_mb": "EPEX",
-    "artist_mbid": "dab563b4-21b2-44be-b8d7-9527c4e530c1",
-    "artist_source": "https://musicbrainz.org/artist/dab563b4-21b2-44be-b8d7-9527c4e530c1",
-    "releases": [
-      {
-        "title": "Youth Chapter 3 : ROMANTIC YOUTH",
-        "date": "2025-07-28",
-        "source": "https://musicbrainz.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e",
-        "release_kind": "album",
-        "release_format": "album",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "EPEX & joan 1st Digital Single ‘so nice’",
-        "date": "2025-05-06",
-        "source": "https://musicbrainz.org/release-group/4c22bd90-84ad-4ea8-b2b0-fd3fb24b9892",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Youth Chapter 2 : YOUTH DEFICIENCY",
-        "date": "2024-11-05",
-        "source": "https://musicbrainz.org/release-group/0b50c6ad-8cbc-48ff-a470-7de96413838a",
-        "release_kind": "album",
-        "release_format": "album",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Youth Chapter 1 : YOUTH DAYS",
-        "date": "2024-04-09",
-        "source": "https://musicbrainz.org/release-group/aeb46dd8-5321-48ce-8530-53b9087594d0",
-        "release_kind": "album",
-        "release_format": "album",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Peppermint Yum",
-        "date": "2024-03-20",
-        "source": "https://musicbrainz.org/release-group/d47d8cce-60ad-4abe-83e1-14b20cc527e4",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Graduation Day",
-        "date": "2024-02-05",
-        "source": "https://musicbrainz.org/release-group/16fe89eb-1978-47bf-9328-67de902a61dc",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Prelude of Anxiety Chapter 2. ‘Can We Surrender?’",
-        "date": "2023-10-04",
-        "source": "https://musicbrainz.org/release-group/3fc71a2a-f83e-478f-81a0-2b622cf0627a",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "K‐909 : Baby good night",
-        "date": "2023-05-28",
-        "source": "https://musicbrainz.org/release-group/cac8808a-2bbd-4c86-9868-8b76f851e2e0",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Prelude of Love Chapter 2. ‘Growing Pains’",
-        "date": "2023-04-26",
-        "source": "https://musicbrainz.org/release-group/4cbc72c4-49f2-4d35-b9af-cfc012400d7d",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Prelude of Love Chapter 1. ‘Puppy Love’",
-        "date": "2022-10-26",
-        "source": "https://musicbrainz.org/release-group/b5eb45c5-4797-4d20-8255-6bdfbbaeb9ee",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Prelude of Anxiety Chapter 1. ‘21st Century Boys’",
-        "date": "2022-04-11",
-        "source": "https://musicbrainz.org/release-group/8041ee97-519b-43d4-8939-5f452950ca1e",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "BIPOLAR Pt.2 Prelude of Love",
-        "date": "2021-10-26",
-        "source": "https://musicbrainz.org/release-group/6c04fe16-ac67-48c1-bb04-eb9d49bccafc",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "BIPOLAR Pt.1 Prelude of Anxiety",
-        "date": "2021-06-08",
-        "source": "https://musicbrainz.org/release-group/ef96b327-50fc-4c4f-84ec-3286a09c145a",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      }
-    ]
-  },
-  {
     "group": "EVNNE",
     "artist_name_mb": "EVNNE",
     "artist_mbid": "bf081017-e5ec-44b8-a5e6-d0401d0b6828",
@@ -5451,6 +4911,15 @@
     "artist_mbid": "5c6b4031-c0e6-468f-ada5-28c33b7d4e0e",
     "artist_source": "https://musicbrainz.org/artist/5c6b4031-c0e6-468f-ada5-28c33b7d4e0e",
     "releases": [
+      {
+        "title": "Wish You Were Here",
+        "date": "2026-03-24",
+        "source": "https://musicbrainz.org/release-group/98380414-80a3-4e73-bea4-16fb8398fb2e",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Too Much Part 1",
         "date": "2025-11-04",
@@ -5827,6 +5296,15 @@
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "Re: Thinkin' About You",
+        "date": "2024-11-20",
+        "source": "https://musicbrainz.org/release-group/8b4bfa36-d458-4c62-99b0-c8588a07869b",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "LOVE or HATE",
@@ -6521,6 +5999,15 @@
     "artist_source": "https://musicbrainz.org/artist/b2f2216a-d7a9-4ce0-8b8f-f494d9a8c196",
     "releases": [
       {
+        "title": "Fashion",
+        "date": "2026-04-03",
+        "source": "https://musicbrainz.org/release-group/c8ddddd3-db0d-460e-8cce-ccfad9c1170c",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "REVIVE+",
         "date": "2026-02-23",
         "source": "https://musicbrainz.org/release-group/5a37b657-9f1d-4bce-b85f-9b1f5b72feca",
@@ -6754,6 +6241,15 @@
     "artist_source": "https://musicbrainz.org/artist/c3d9b981-0420-45ae-93ca-21d78f0fb14f",
     "releases": [
       {
+        "title": "Love All",
+        "date": "2026-03-16",
+        "source": "https://musicbrainz.org/release-group/0907f508-a93a-435e-87d9-f7f827f2093f",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "Not Just Pretty",
         "date": "2025-09-30",
         "source": "https://musicbrainz.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae",
@@ -6788,122 +6284,6 @@
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
-      }
-    ]
-  },
-  {
-    "group": "JEON SOMI",
-    "artist_name_mb": "JEON SOMI",
-    "artist_mbid": "8d4e6a86-fa1c-4a1b-b8c4-3b58a46dde9f",
-    "artist_source": "https://musicbrainz.org/artist/8d4e6a86-fa1c-4a1b-b8c4-3b58a46dde9f",
-    "releases": [
-      {
-        "title": "Chaotic & Confused",
-        "date": "2025-08-11",
-        "source": "https://musicbrainz.org/release-group/f20cb126-f86c-48aa-9558-d56d019a8aec",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "EXTRA",
-        "date": "2025-07-07",
-        "source": "https://musicbrainz.org/release-group/f3b6a29a-79f1-4bfd-b84e-dd98d15e3738",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Keep It Sexy (MOMMAE 2)",
-        "date": "2025-05-23",
-        "source": "https://musicbrainz.org/release-group/a1dbb60a-ea05-467b-a0ab-a2539a2bd6b7",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Ice Cream",
-        "date": "2024-08-02",
-        "source": "https://musicbrainz.org/release-group/57e0845e-1a57-46df-861e-4bb844c3b1bf",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Ex‐Mas",
-        "date": "2023-12-12",
-        "source": "https://musicbrainz.org/release-group/d0f7d4ea-72a3-4288-b060-ed1d7d27dcdb",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "GAME PLAN",
-        "date": "2023-08-07",
-        "source": "https://musicbrainz.org/release-group/2ad66298-021e-443c-a4ed-68a75f186a62",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "XOXO",
-        "date": "2021-10-29",
-        "source": "https://musicbrainz.org/release-group/0d1a0883-d735-44ce-a49c-38347fe54329",
-        "release_kind": "album",
-        "release_format": "album",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "DUMB DUMB",
-        "date": "2021-08-02",
-        "source": "https://musicbrainz.org/release-group/69d87a3b-487e-4f6d-a1c5-dbe27f15c802",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "What You Waiting For",
-        "date": "2020-07-22",
-        "source": "https://musicbrainz.org/release-group/9d71a71e-6dcb-4178-9db7-5a5c94efbaa2",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "BIRTHDAY",
-        "date": "2019-06-13",
-        "source": "https://musicbrainz.org/release-group/0d6204e9-c39e-444c-aeb7-c2ba655c598a",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "YOU, WHO?",
-        "date": "2017-03-09",
-        "source": "https://musicbrainz.org/release-group/f52b59d7-dbc3-4e62-8d81-f29280e58b44",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "꽃, 바람 그리고 너",
-        "date": "2016-08-29",
-        "source": "https://musicbrainz.org/release-group/7c26399a-f076-4811-80df-21e3141c4958",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
       }
     ]
   },
@@ -7128,6 +6508,15 @@
     "artist_source": "https://musicbrainz.org/artist/187da628-d21a-4e0f-a93c-456c97a2c032",
     "releases": [
       {
+        "title": "CRACK CODE",
+        "date": "2026-03-31",
+        "source": "https://musicbrainz.org/release-group/aa916e87-9236-4ad8-b35b-3e2d79f4e20f",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "BUBBLE GUM",
         "date": "2025-08-19",
         "source": "https://musicbrainz.org/release-group/cefd55a0-2cd7-4bfa-bae8-c05e741109fd",
@@ -7324,6 +6713,15 @@
     "artist_mbid": "fa8afe53-9f95-4523-b064-004990c2d7c5",
     "artist_source": "https://musicbrainz.org/artist/fa8afe53-9f95-4523-b064-004990c2d7c5",
     "releases": [
+      {
+        "title": "Twenty",
+        "date": "2026-03-09",
+        "source": "https://musicbrainz.org/release-group/7dffad99-bbab-414c-9ff1-ada63056469e",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "From KickFlip, To WeFlip",
         "date": "2026-01-20",
@@ -7523,140 +6921,24 @@
     ]
   },
   {
-    "group": "KWON EUNBI",
-    "artist_name_mb": "KWON EUNBI",
-    "artist_mbid": "508a7f4b-d153-400d-8e79-a2dba1421a11",
-    "artist_source": "https://musicbrainz.org/artist/508a7f4b-d153-400d-8e79-a2dba1421a11",
-    "releases": [
-      {
-        "title": "Hello Stranger",
-        "date": "2025-04-14",
-        "source": "https://musicbrainz.org/release-group/d40e2f4b-99d4-4d66-aaa2-c32c54e8f002",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Snowfall",
-        "date": "2025-01-07",
-        "source": "https://musicbrainz.org/release-group/05dba1fa-c242-4196-9f2f-859c20fec51c",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Easy dance",
-        "date": "2024-08-13",
-        "source": "https://musicbrainz.org/release-group/cb2a8293-e28d-44b5-8754-f7255af330ef",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "여름아 부탁해",
-        "date": "2024-07-28",
-        "source": "https://musicbrainz.org/release-group/92b006f6-c1fc-42ed-9225-5071f1c48a02",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "SABOTAGE",
-        "date": "2024-06-18",
-        "source": "https://musicbrainz.org/release-group/f2511f42-c273-40d0-ad65-298e3d42c0a2",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Like Heaven",
-        "date": "2023-10-24",
-        "source": "https://musicbrainz.org/release-group/f94ad6ae-9f9a-4e52-ac1a-b3a1669a0a00",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "The Flash",
-        "date": "2023-08-02",
-        "source": "https://musicbrainz.org/release-group/828d2585-2a64-4d8f-9e5c-e164681a0642",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Lethality",
-        "date": "2022-10-12",
-        "source": "https://musicbrainz.org/release-group/5caa6555-1a65-4fe2-a963-73dff783765d",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Color",
-        "date": "2022-04-04",
-        "source": "https://musicbrainz.org/release-group/9fb22d9e-d3d5-471e-8996-e699c47f9490",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "ESPER",
-        "date": "2022-03-10",
-        "source": "https://musicbrainz.org/release-group/2ec428bb-33e7-494a-bee5-706f7d05de3d",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "MIRROR",
-        "date": "2022-02-03",
-        "source": "https://musicbrainz.org/release-group/0bbffa5d-121d-4b4d-b4c1-ca109ff2040f",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "OPEN",
-        "date": "2021-08-24",
-        "source": "https://musicbrainz.org/release-group/ea05ec18-aa83-4ab4-811e-03aec6db64f2",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      }
-    ]
-  },
-  {
     "group": "LE SSERAFIM",
     "artist_name_mb": "LE SSERAFIM",
     "artist_mbid": "1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "artist_source": "https://musicbrainz.org/artist/1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "releases": [
       {
-        "title": "SPAGHETTI",
+        "title": "Pearlies (My oyster is the world)",
         "date": "2025-10-24",
-        "source": "https://musicbrainz.org/release-group/8fecf07e-3715-4df4-9f47-1f7204f71b94",
+        "source": "https://musicbrainz.org/release-group/8ff15315-a8f2-40df-9f7f-44b89c1fda60",
         "release_kind": "single",
         "release_format": "single",
         "context_tags": [],
         "stream": "song"
       },
       {
-        "title": "Pearlies (My oyster is the world)",
+        "title": "SPAGHETTI",
         "date": "2025-10-24",
-        "source": "https://musicbrainz.org/release-group/8ff15315-a8f2-40df-9f7f-44b89c1fda60",
+        "source": "https://musicbrainz.org/release-group/8fecf07e-3715-4df4-9f47-1f7204f71b94",
         "release_kind": "single",
         "release_format": "single",
         "context_tags": [],
@@ -7701,20 +6983,20 @@
       {
         "title": "HOT",
         "date": "2025-03-14",
-        "source": "https://musicbrainz.org/release-group/44adb7df-66bd-4ebe-a43a-3ea45a93529d",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "HOT",
-        "date": "2025-03-14",
         "source": "https://musicbrainz.org/release-group/50bcea80-692f-4e36-a7a5-825a3233cb13",
         "release_kind": "ep",
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "HOT",
+        "date": "2025-03-14",
+        "source": "https://musicbrainz.org/release-group/44adb7df-66bd-4ebe-a43a-3ea45a93529d",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "CRAZY",
@@ -7737,20 +7019,20 @@
       {
         "title": "CRAZY",
         "date": "2024-08-30",
-        "source": "https://musicbrainz.org/release-group/ba6185b4-95e1-4437-982c-c49105f48460",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "CRAZY",
-        "date": "2024-08-30",
         "source": "https://musicbrainz.org/release-group/f4ccbdf3-1d77-4f56-b77f-5d0f3888271c",
         "release_kind": "ep",
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "CRAZY",
+        "date": "2024-08-30",
+        "source": "https://musicbrainz.org/release-group/ba6185b4-95e1-4437-982c-c49105f48460",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "EASY",
@@ -8487,6 +7769,15 @@
     "artist_mbid": "b6b21b0c-a706-4b46-a929-bd4d21b06cad",
     "artist_source": "https://musicbrainz.org/artist/b6b21b0c-a706-4b46-a929-bd4d21b06cad",
     "releases": [
+      {
+        "title": "Unfold",
+        "date": "2026-04-03",
+        "source": "https://musicbrainz.org/release-group/a173c578-1eba-4a08-8666-3ba009c338f6",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "growing pains",
         "date": "2026-02-06",
@@ -9497,6 +8788,15 @@
         "stream": "song"
       },
       {
+        "title": "poppop",
+        "date": "2025-04-14",
+        "source": "https://musicbrainz.org/release-group/254ae072-9435-41f1-9915-62a86679e0df",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "Miracle",
         "date": "2025-01-22",
         "source": "https://musicbrainz.org/release-group/3022e1f2-ef2e-43b6-8cc3-2ba6a4d81386",
@@ -10283,15 +9583,6 @@
         "stream": "album"
       },
       {
-        "title": "Still Here",
-        "date": "2022-10-04",
-        "source": "https://musicbrainz.org/release-group/1435b98b-64ff-40e6-9d3d-ea4256be3948",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
         "title": "Studio We : Recording #3",
         "date": "2022-10-04",
         "source": "https://musicbrainz.org/release-group/52a2ff21-e17e-40a6-88ae-9d023f03e8df",
@@ -10299,6 +9590,15 @@
         "release_format": "album",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "Still Here",
+        "date": "2022-10-04",
+        "source": "https://musicbrainz.org/release-group/1435b98b-64ff-40e6-9d3d-ea4256be3948",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "시간을 담은 작은 방",
@@ -10328,15 +9628,6 @@
         "stream": "song"
       },
       {
-        "title": "STAR",
-        "date": "2021-11-23",
-        "source": "https://musicbrainz.org/release-group/2899ef7b-7ad1-4d3e-8860-2cc9c77df450",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
         "title": "Studio We : Recording #2",
         "date": "2021-11-23",
         "source": "https://musicbrainz.org/release-group/7f30fd24-6ac8-40e4-ab21-a80a2bc620dc",
@@ -10344,6 +9635,15 @@
         "release_format": "album",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "STAR",
+        "date": "2021-11-23",
+        "source": "https://musicbrainz.org/release-group/2899ef7b-7ad1-4d3e-8860-2cc9c77df450",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "Planet Nine : Alter Ego",
@@ -12233,7 +11533,7 @@
       },
       {
         "title": "3 2 1",
-        "date": "2013-10-23",
+        "date": "2013-12-04",
         "source": "https://musicbrainz.org/release-group/0a09c852-c722-4bb0-b1b2-bf871ed1d996",
         "release_kind": "single",
         "release_format": "single",
@@ -12278,7 +11578,7 @@
       },
       {
         "title": "Fire",
-        "date": "2013-03-13",
+        "date": "2013-03-08",
         "source": "https://musicbrainz.org/release-group/700a0d25-baa6-410a-9afe-9fc5a219a96f",
         "release_kind": "single",
         "release_format": "single",
@@ -12647,6 +11947,24 @@
     "artist_mbid": "142b343d-bf5a-428c-a64f-6d1a7566bbe9",
     "artist_source": "https://musicbrainz.org/artist/142b343d-bf5a-428c-a64f-6d1a7566bbe9",
     "releases": [
+      {
+        "title": "별, 빛 (STAY)",
+        "date": "2026-03-25",
+        "source": "https://musicbrainz.org/release-group/ef3ed3c3-ba82-45e9-8dd5-2f1fce1df7c4",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "Endless Sun",
+        "date": "2026-03-13",
+        "source": "https://musicbrainz.org/release-group/4840b7a1-4b5f-4e90-afe6-dc713f7cedb1",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "DO IT",
         "date": "2025-11-21",
@@ -14557,23 +13875,6 @@
     ]
   },
   {
-    "group": "TUNEXX",
-    "artist_name_mb": "TUNEXX",
-    "artist_mbid": "45745bcc-c6bf-46cc-9e18-9e2e98ad4358",
-    "artist_source": "https://musicbrainz.org/artist/45745bcc-c6bf-46cc-9e18-9e2e98ad4358",
-    "releases": [
-      {
-        "title": "SET BY US ONLY",
-        "date": "2026-03-03",
-        "source": "https://musicbrainz.org/release-group/f38e3d81-341e-4828-8a18-1f34d3ce4cb5",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      }
-    ]
-  },
-  {
     "group": "TWICE",
     "artist_name_mb": "TWICE",
     "artist_mbid": "8da127cc-c432-418f-b356-ef36210d82ac",
@@ -14679,15 +13980,6 @@
         "stream": "song"
       },
       {
-        "title": "ONE SPARK",
-        "date": "2024-02-23",
-        "source": "https://musicbrainz.org/release-group/0c171b90-559f-475b-a94d-66671f8850f6",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
         "title": "With YOU‐th",
         "date": "2024-02-23",
         "source": "https://musicbrainz.org/release-group/e97e9436-e0fd-4df6-8688-975c01f4c5d5",
@@ -14695,6 +13987,15 @@
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "ONE SPARK",
+        "date": "2024-02-23",
+        "source": "https://musicbrainz.org/release-group/0c171b90-559f-475b-a94d-66671f8850f6",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "I GOT YOU",
@@ -14922,18 +14223,18 @@
         "stream": "album"
       },
       {
-        "title": "HAPPY HAPPY",
+        "title": "Breakthrough",
         "date": "2019-06-12",
-        "source": "https://musicbrainz.org/release-group/1adcbc39-b654-44ba-9a7f-e0bc184b2650",
+        "source": "https://musicbrainz.org/release-group/7f83039d-b2ba-4da3-9fca-afa75395aa4f",
         "release_kind": "single",
         "release_format": "single",
         "context_tags": [],
         "stream": "song"
       },
       {
-        "title": "Breakthrough",
+        "title": "HAPPY HAPPY",
         "date": "2019-06-12",
-        "source": "https://musicbrainz.org/release-group/7f83039d-b2ba-4da3-9fca-afa75395aa4f",
+        "source": "https://musicbrainz.org/release-group/1adcbc39-b654-44ba-9a7f-e0bc184b2650",
         "release_kind": "single",
         "release_format": "single",
         "context_tags": [],
@@ -15073,6 +14374,15 @@
     "artist_mbid": "f68e8675-5ad8-47eb-b7ec-da9cc210e0b4",
     "artist_source": "https://musicbrainz.org/artist/f68e8675-5ad8-47eb-b7ec-da9cc210e0b4",
     "releases": [
+      {
+        "title": "YOU LIKE IT I LOVE IT",
+        "date": "2026-03-23",
+        "source": "https://musicbrainz.org/release-group/d560330a-b407-4d53-8213-316455f9d9fc",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "play hard",
         "date": "2025-10-13",
@@ -15618,6 +14928,15 @@
     "artist_source": "https://musicbrainz.org/artist/a8599fd2-3682-4f6c-a580-f28c4ae97a0b",
     "releases": [
       {
+        "title": "SAVE",
+        "date": "2026-03-27",
+        "source": "https://musicbrainz.org/release-group/f7d71558-d4ca-4440-be31-c4cea7223a7e",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "Wonderland",
         "date": "2025-10-29",
         "source": "https://musicbrainz.org/release-group/252b4761-926f-479f-86bc-a0999710321b",
@@ -15742,6 +15061,15 @@
     "artist_mbid": "c681077b-38b4-4689-9023-7176d1e0dbca",
     "artist_source": "https://musicbrainz.org/artist/c681077b-38b4-4689-9023-7176d1e0dbca",
     "releases": [
+      {
+        "title": "ROCK THE NATION",
+        "date": "2026-01-29",
+        "source": "https://musicbrainz.org/release-group/d32777e2-8615-4ca0-b6d5-4479d09d0ab9",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "BANG OUT",
         "date": "2025-04-09",
@@ -16002,18 +15330,18 @@
         "stream": "album"
       },
       {
-        "title": "별 따러 가자",
+        "title": "Catch the Stars",
         "date": "2022-01-04",
-        "source": "https://musicbrainz.org/release-group/e47f8896-75f6-4c76-bfe3-a67fb104b2c2",
+        "source": "https://musicbrainz.org/release-group/47540a16-4359-4cbf-ac36-045dd43aa186",
         "release_kind": "single",
         "release_format": "single",
         "context_tags": [],
         "stream": "song"
       },
       {
-        "title": "Catch the Stars",
+        "title": "별 따러 가자",
         "date": "2022-01-04",
-        "source": "https://musicbrainz.org/release-group/47540a16-4359-4cbf-ac36-045dd43aa186",
+        "source": "https://musicbrainz.org/release-group/e47f8896-75f6-4c76-bfe3-a67fb104b2c2",
         "release_kind": "single",
         "release_format": "single",
         "context_tags": [],
@@ -16054,6 +15382,15 @@
     "artist_mbid": "d95a463f-e7d3-4c97-98ba-57f75cb4fda2",
     "artist_source": "https://musicbrainz.org/artist/d95a463f-e7d3-4c97-98ba-57f75cb4fda2",
     "releases": [
+      {
+        "title": "X room",
+        "date": "2026-03-25",
+        "source": "https://musicbrainz.org/release-group/5ce13101-a443-4ecf-be79-77c5115d10c1",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "LXVE to DEATH",
         "date": "2025-10-24",
@@ -16307,95 +15644,6 @@
     ]
   },
   {
-    "group": "YENA",
-    "artist_name_mb": "YENA",
-    "artist_mbid": "745c5b92-325f-451d-bd52-e6b95229c776",
-    "artist_source": "https://musicbrainz.org/artist/745c5b92-325f-451d-bd52-e6b95229c776",
-    "releases": [
-      {
-        "title": "STAR!",
-        "date": "2025-11-26",
-        "source": "https://musicbrainz.org/release-group/c9efdc23-8e8f-4bf6-975f-a0c5f470470c",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Blooming Wings",
-        "date": "2025-07-29",
-        "source": "https://musicbrainz.org/release-group/9647039b-b615-443a-a476-d75de3c06039",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "네모네모",
-        "date": "2024-09-30",
-        "source": "https://musicbrainz.org/release-group/f0c591d8-ddb9-4d8c-b12d-1202e1f17141",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "DNA",
-        "date": "2024-02-07",
-        "source": "https://musicbrainz.org/release-group/2a3eca49-87ea-415b-a004-336504c1b5d7",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "GOOD MORNING",
-        "date": "2024-01-15",
-        "source": "https://musicbrainz.org/release-group/c8b7a898-4e24-4450-aa3b-594a95912e65",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "HATE XX",
-        "date": "2023-06-27",
-        "source": "https://musicbrainz.org/release-group/c10a36d3-3487-4cb4-a7e3-449b985eec01",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Love War",
-        "date": "2023-01-16",
-        "source": "https://musicbrainz.org/release-group/c6bbee3d-765c-4ce8-869c-5b0437a1e9da",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "SMARTPHONE",
-        "date": "2022-08-03",
-        "source": "https://musicbrainz.org/release-group/a45ab2e0-1dc4-4938-a0e9-648dc6df2c13",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "ˣ‿ˣ (SMiLEY)",
-        "date": "2022-01-17",
-        "source": "https://musicbrainz.org/release-group/20d67cb3-1f48-4637-b760-e9b6e501d80c",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      }
-    ]
-  },
-  {
     "group": "YOUNG POSSE",
     "artist_name_mb": "YOUNG POSSE",
     "artist_mbid": "427150d2-674f-47b2-a1a1-7bb4a9e0d070",
@@ -16584,220 +15832,6 @@
         "title": "YOUNI‐BIRTH",
         "date": "2022-04-20",
         "source": "https://musicbrainz.org/release-group/0d565f28-a560-459f-a2d9-243d406a2733",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      }
-    ]
-  },
-  {
-    "group": "YUJU",
-    "artist_name_mb": "YUJU",
-    "artist_mbid": "344d0612-8e74-4227-a4ec-9848a6534d86",
-    "artist_source": "https://musicbrainz.org/artist/344d0612-8e74-4227-a4ec-9848a6534d86",
-    "releases": [
-      {
-        "title": "내향남녀 X 유주",
-        "date": "2025-10-23",
-        "source": "https://musicbrainz.org/release-group/ae25b115-a84a-435f-b8a8-ad6dd0843173",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "In Bloom",
-        "date": "2025-08-12",
-        "source": "https://musicbrainz.org/release-group/34777267-c170-42c2-aa59-9d35c0562e86",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "끝이 아니길",
-        "date": "2025-03-05",
-        "source": "https://musicbrainz.org/release-group/ffcccdce-283b-4140-aac4-7ad0cf2871c8",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "No Way",
-        "date": "2023-11-12",
-        "source": "https://musicbrainz.org/release-group/43528d7d-7c23-45f6-9d71-4930df8d9c81",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "따라랏",
-        "date": "2023-09-20",
-        "source": "https://musicbrainz.org/release-group/2fb934e3-8ec7-4c9f-a31e-4a18de23772e",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Rewind",
-        "date": "2023-08-16",
-        "source": "https://musicbrainz.org/release-group/d25b4563-ac61-431f-93bc-ab99ef72ba33",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Happiness index",
-        "date": "2023-03-23",
-        "source": "https://musicbrainz.org/release-group/32dd9cc8-0a76-4836-be58-73aa500a37b7",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "O",
-        "date": "2023-03-07",
-        "source": "https://musicbrainz.org/release-group/0f42ffd2-4087-4f3e-bc28-33f90a7a047d",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "이브닝",
-        "date": "2022-07-28",
-        "source": "https://musicbrainz.org/release-group/4d0cfdac-55bd-4329-8695-9b48e5545f1d",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "[REC.]",
-        "date": "2022-01-18",
-        "source": "https://musicbrainz.org/release-group/cd62b35d-5111-4ce4-ac37-648c044e3076",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "CYWORLD BGM 2021",
-        "date": "2021-11-24",
-        "source": "https://musicbrainz.org/release-group/9c354a05-c9d1-42c2-a6a9-524e47936f55",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "2018 월간 윤종신 11월호",
-        "date": "2018-11-09",
-        "source": "https://musicbrainz.org/release-group/5c72e090-00a7-4311-934c-31f2b80a3e13",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Don't Leave Me",
-        "date": "2018-08-13",
-        "source": "https://musicbrainz.org/release-group/ccc5f1b1-e7f5-4839-a085-81271bef6c22",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Love Rain",
-        "date": "2018-06-29",
-        "source": "https://musicbrainz.org/release-group/2ca496e3-339b-4a22-b21a-4e34244301d1",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "하트시그널",
-        "date": "2017-10-27",
-        "source": "https://musicbrainz.org/release-group/e62661f4-acbe-4e9e-a3d5-fadfa4beb7ec",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "보일 듯 말 듯",
-        "date": "2016-03-11",
-        "source": "https://musicbrainz.org/release-group/06d75ed3-d34a-4936-9bd8-da194a6d4a15",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      }
-    ]
-  },
-  {
-    "group": "Yves",
-    "artist_name_mb": "Yves",
-    "artist_mbid": "8339c0c3-7a04-4b19-8ca3-b149e0d09222",
-    "artist_source": "https://musicbrainz.org/artist/8339c0c3-7a04-4b19-8ca3-b149e0d09222",
-    "releases": [
-      {
-        "title": "Falling for You",
-        "date": "2025-12-19",
-        "source": "https://musicbrainz.org/release-group/752272a9-10c7-4a97-83dc-95f16364dbf2",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "White cat",
-        "date": "2025-07-24",
-        "source": "https://musicbrainz.org/release-group/41180ace-ef01-482d-b11d-48c2e957e779",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "DIM ∞",
-        "date": "2025-04-01",
-        "source": "https://musicbrainz.org/release-group/18523d88-13f8-4015-a0a2-fe3aa79ff470",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "I Did",
-        "date": "2024-11-14",
-        "source": "https://musicbrainz.org/release-group/c7d6ea37-016b-4e63-be72-6500af92776d",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Tik Tok",
-        "date": "2024-08-30",
-        "source": "https://musicbrainz.org/release-group/bb43edf6-5fca-4cf7-a522-6b2a009221a1",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "LOOP",
-        "date": "2024-05-29",
-        "source": "https://musicbrainz.org/release-group/297b555c-aa51-4e97-844a-d554bb43cc61",
         "release_kind": "ep",
         "release_format": "ep",
         "context_tags": [],

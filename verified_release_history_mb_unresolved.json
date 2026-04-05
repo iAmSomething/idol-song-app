@@ -3,5 +3,10 @@
     "group": "CSR",
     "reason": "no_exact_release_history",
     "artist_mbid": "27cc84d3-4319-445f-a747-c4b4c7550dfb"
+  },
+  {
+    "group": "EPEX",
+    "reason": "HTTPError",
+    "artist_mbid": "dab563b4-21b2-44be-b8d7-9527c4e530c1"
   }
 ]

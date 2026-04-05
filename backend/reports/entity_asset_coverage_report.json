@@ -23,20 +23,19 @@
         "review_needed": 109
       },
       "representative_image": {
-        "resolved": 77,
-        "review_needed": 40
+        "resolved": 117
       }
     }
   },
   "release_artwork": {
-    "artwork_rows": 1770,
-    "release_history_rows": 1770,
+    "artwork_rows": 1673,
+    "release_history_rows": 1673,
     "coverage_ratio": 1.0,
     "status_counts": {
-      "verified": 1770
+      "verified": 1673
     },
     "source_type_counts": {
-      "cover_art_archive": 1770
+      "cover_art_archive": 1673
     }
   }
 }

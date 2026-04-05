@@ -66,6 +66,82 @@
     }
   },
   {
+    "key": "BTS:4d4fc9e2aafd:4d4fc9e2aafd:verified_release_detected",
+    "diff_key": "BTS:4d4fc9e2aafd:4d4fc9e2aafd",
+    "group": "BTS",
+    "change_type": "verified_release_detected",
+    "occurred_at": "2026-03-20",
+    "summary": "Verified release \"SWIM\" landed on 2026-03-20.",
+    "source_url": "https://musicbrainz.org/release-group/9034c5d7-5fd8-4b64-b734-0dbd8f293e94",
+    "source_domain": "musicbrainz.org",
+    "previous_state_hash": "4d4fc9e2aafd",
+    "next_state_hash": "4d4fc9e2aafd",
+    "previous": {
+      "scheduled_date": "2026-03-20",
+      "date_status": "confirmed",
+      "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
+      "published_at": "Wed, 04 Mar 2026 02:54:42 GMT"
+    },
+    "next": {
+      "scheduled_date": "2026-03-20",
+      "date_status": "confirmed",
+      "headline": "Arirang BTS drops highly anticipated comeback album March 20 after 3-year hiatus - artthreat.net",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUGtWWC0xT3VxRmZWdmowU2Z4UzlpWlNoTFgzaHFtUldKcDZiVm00bWdJTWJjMnl1ZzUtTkY1UzNMeU1zSllkSVh2LTQzVlBDWExSUXpFSnZZbWFPMzA1bU1xdmY2aTVLNVVWV1B0R3JxTklxak8zR1BFbWtDU2xnaG1kOURJTXRKTmJETmR4YUhQODlydDA2S2ItRU9CSlFSWDlsQWVRQ3Q5eUZVSDZ5aDRHRW0?oc=5",
+      "published_at": "Wed, 04 Mar 2026 02:54:42 GMT"
+    },
+    "verified_release": {
+      "title": "SWIM",
+      "date": "2026-03-20",
+      "release_kind": "single",
+      "source": "https://musicbrainz.org/release-group/9034c5d7-5fd8-4b64-b734-0dbd8f293e94"
+    },
+    "snapshot": {
+      "previous_ref": "fe41ebf",
+      "next_ref": "worktree"
+    }
+  },
+  {
+    "key": "P1Harmony:edd32d13dda0:edd32d13dda0:verified_release_detected",
+    "diff_key": "P1Harmony:edd32d13dda0:edd32d13dda0",
+    "group": "P1Harmony",
+    "change_type": "verified_release_detected",
+    "occurred_at": "2026-03-12",
+    "summary": "Verified release \"UNIQUE\" landed on 2026-03-12.",
+    "source_url": "https://musicbrainz.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d",
+    "source_domain": "musicbrainz.org",
+    "previous_state_hash": "edd32d13dda0",
+    "next_state_hash": "edd32d13dda0",
+    "previous": {
+      "scheduled_date": "2026-03-12",
+      "date_status": "confirmed",
+      "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+      "published_at": "Wed, 25 Feb 2026 08:00:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "2026-03-12",
+      "date_status": "confirmed",
+      "headline": "P1Harmony's Hero's Return: 9th Mini-Album Drops March 12 - 조선일보",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY1dvTzFyaVdpSEdaRVZDM1VmUlpqUk14S1VLVlFlZm5hODU5RDhFMjdCeXFoV2ZWeTZGb016cUJFZDFnQjF1S2FJeGdZb2FpOXZ4OXZaVUo0YTIwSmd1RlZMWmplU2JFcW4wZ0VQRHBiaGJiWlFIcDczNUQ4TEVyT0xrMk1ZM2NHdnVNVUxn?oc=5",
+      "published_at": "Wed, 25 Feb 2026 08:00:00 GMT"
+    },
+    "verified_release": {
+      "title": "UNIQUE",
+      "date": "2026-03-12",
+      "release_kind": "ep",
+      "source": "https://musicbrainz.org/release-group/e37d2c21-d4dc-4336-a042-840f3bb98b2d"
+    },
+    "snapshot": {
+      "previous_ref": "fe41ebf",
+      "next_ref": "worktree"
+    }
+  },
+  {
     "key": "TWS:eea81a76964e:ed272a7287bd:headline_changed",
     "diff_key": "TWS:eea81a76964e:ed272a7287bd",
     "group": "TWS",

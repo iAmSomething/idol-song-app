@@ -65,19 +65,6 @@
     }
   },
   {
-    "group": "aespa",
-    "slug": "aespa",
-    "fields": {
-      "official_youtube": {
-        "value": "https://www.youtube.com/@aespa_official",
-        "status": "resolved",
-        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
-        "source_url": "https://www.youtube.com/@aespa_official",
-        "review_notes": "Verified from @aespa_official handle probe against the official social handle pattern."
-      }
-    }
-  },
-  {
     "group": "ALL(H)OURS",
     "slug": "all-h-ours",
     "fields": {

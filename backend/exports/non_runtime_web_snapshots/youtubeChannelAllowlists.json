@@ -316,15 +316,10 @@
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
-        "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCZpFge83uRp3plkS-D9pj1w",
-          "https://www.youtube.com/@aespa_official"
-        ],
+        "resolved_alias_urls": [],
         "match_keys": [
           "@aespa_official",
-          "https://www.youtube.com/@aespa_official",
-          "channel:uczpfge83urp3plks-d9pj1w",
-          "https://www.youtube.com/channel/uczpfge83urp3plks-d9pj1w"
+          "https://www.youtube.com/@aespa_official"
         ]
       },
       {
@@ -353,8 +348,6 @@
     "mv_allowlist_match_keys": [
       "@aespa_official",
       "https://www.youtube.com/@aespa_official",
-      "channel:uczpfge83urp3plks-d9pj1w",
-      "https://www.youtube.com/channel/uczpfge83urp3plks-d9pj1w",
       "@smtown",
       "https://www.youtube.com/@smtown",
       "channel:ucydd_cdcetqk-jbmrbhbl5w",
@@ -368,15 +361,10 @@
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
-        "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCZpFge83uRp3plkS-D9pj1w",
-          "https://www.youtube.com/@aespa_official"
-        ],
+        "resolved_alias_urls": [],
         "match_keys": [
           "@aespa_official",
-          "https://www.youtube.com/@aespa_official",
-          "channel:uczpfge83urp3plks-d9pj1w",
-          "https://www.youtube.com/channel/uczpfge83urp3plks-d9pj1w"
+          "https://www.youtube.com/@aespa_official"
         ]
       },
       {
@@ -6259,7 +6247,8 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw"
+          "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw",
+          "https://www.youtube.com/@UNIS_Offcl"
         ],
         "match_keys": [
           "@unis_offcl",
@@ -6287,7 +6276,8 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw"
+          "https://www.youtube.com/channel/UCspnElmzSLPhrZJDG9v7JWw",
+          "https://www.youtube.com/@UNIS_Offcl"
         ],
         "match_keys": [
           "@unis_offcl",

@@ -34,7 +34,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -82,7 +82,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -123,14 +123,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -171,14 +171,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -226,7 +226,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -260,9 +260,9 @@
       "official_youtube": {
         "value": "https://www.youtube.com/@aespa_official",
         "status": "resolved",
-        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "provenance": "youtubeChannelAllowlists.primary_team_channel_url",
         "source_url": "https://www.youtube.com/@aespa_official",
-        "review_notes": "Verified from @aespa_official handle probe against the official social handle pattern."
+        "review_notes": null
       },
       "agency_name": {
         "value": "SM Entertainment",
@@ -274,7 +274,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -322,16 +322,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/fWu6-87NDvXhuElT88HXeQYUL_npxgNwkt3ON0a8wJ6WyYcg5Bk3gF3Z2seljYY7dubQFntZ=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UC1buRciG8QIL9kRtHxI_tpw",
+        "review_notes": null
       }
     }
   },
@@ -363,7 +363,7 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
@@ -375,11 +375,11 @@
         "review_notes": null
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/KlKnNaef1rJVk4GVe1wlz6ISIEvDn0iuJcsfX8IJ7KcCOLqEPiXQy9RDUgikzWPgYdwisInuxw=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCg8ZzloDPTrOiGztK0C9txQ",
+        "review_notes": null
       }
     }
   },
@@ -418,7 +418,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -466,16 +466,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/plDKMY8MHWfkhnks3OVY9fQ9qWHXsi3bQACUHkJaQdGhqlIYME_nrxKLrfB20WqDgUnBPxer=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UChXC6ok0LaZIpf-50SIFf0Q",
+        "review_notes": null
       }
     }
   },
@@ -514,7 +514,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -562,7 +562,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -615,11 +615,11 @@
         "review_notes": null
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/U8nrIoUFiKRS-EQYrppTpTLFdL2S0WyMpub7aKe-439AXwzFhW9Wmc-AteZvYxMXt_ELOrLYZw=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCgSDdHK0MNXOHv7oBC2dHXA",
+        "review_notes": null
       }
     }
   },
@@ -658,7 +658,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -706,7 +706,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -747,14 +747,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -802,7 +802,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -850,16 +850,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/ytc/AIdro_kdpfzk45qlzBLA4bASJH1u5lC3WPw2GBSwXzCscEg=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCfwfC9QCYr_wxgib5dAB-mQ",
+        "review_notes": null
       }
     }
   },
@@ -898,7 +898,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -939,14 +939,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -994,7 +994,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1035,23 +1035,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/zBjTczBXQiYIZwYEC8h6qrF04uMlGtCD7yUn8kfViFOlAoIKhu7ai2dh8op6_aFqr8NKrmUB=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UC9Gxb0gMCh3EPIDLQXeQUog",
+        "review_notes": null
       }
     }
   },
@@ -1083,23 +1083,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/kemVwXcfboHXyLKPnpUaNoyFummTChwAGmes8Q8ZY2wGPfwZAaA1SAy85bXtKE2MEF02-hRQYIM=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCa0ylH-c4-MHZ7ih_6AHtXg",
+        "review_notes": null
       }
     }
   },
@@ -1138,7 +1138,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1186,7 +1186,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1227,14 +1227,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1287,11 +1287,11 @@
         "review_notes": null
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/zzquYCzqk4qB_XfGx3bw2aR-r-McxAOIP1cuMh0sXIcb9SmVYUjXdiStdEr89OHCEFcGO4fMXg=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCPo532dDHpbKVhJyJseLVbw",
+        "review_notes": null
       }
     }
   },
@@ -1330,7 +1330,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1371,23 +1371,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://scontent-icn2-1.cdninstagram.com/v/t51.2885-19/446555786_857741539533419_3107289545524488844_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=108&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Y_TJmKpFr0wQ7kNvwFYWyxC&_nc_oc=AdkP4EvfVMx_bIxy1tsZ7G1llos2vitq07Y2XnPbzUK_h0RdXda2pGHrpx6NDlxYN7A&_nc_zt=24&_nc_ht=scontent-icn2-1.cdninstagram.com&_nc_ss=8&oh=00_AfzjfXFZxHQcuj_BxSz6lFIC0JChRrs7NYblYt4CjmmJGg&oe=69B94F05",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.instagram.com/csr.offcl",
+        "review_notes": null
       }
     }
   },
@@ -1426,7 +1426,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1474,7 +1474,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1515,14 +1515,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1570,16 +1570,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/Q95lrIm35iyloY37gLqn-wafIrECa9W0k_JUlSjj9Qna1ETXBkfEieXZtiMgvU-bSooaNLW1hg=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCNf1JFLCOec-SUhREgZaR6w",
+        "review_notes": null
       }
     }
   },
@@ -1618,16 +1618,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/EmC7yf0coePAVKbfDmfxpuuIVidnJ-rXuCi5SHHj36gfggLXGHNfpuAMyyduSDcIWmECu0hJxA=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCrhNp7bqMHOjVfMcyjk_J9Q",
+        "review_notes": null
       }
     }
   },
@@ -1666,7 +1666,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1707,14 +1707,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1762,16 +1762,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/bccCK7GoZnIJW2j7KdSEuJSzKWqjOwLCtxowxOG2UcLDUYL8FjWosJxmIP6cpq3Ks8X95__FwDY=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCAWT2IC2TrPFNPCvkKZUFjg",
+        "review_notes": null
       }
     }
   },
@@ -1810,7 +1810,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1858,7 +1858,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1899,14 +1899,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -1947,14 +1947,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2002,7 +2002,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2055,11 +2055,11 @@
         "review_notes": null
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://scontent-icn2-1.cdninstagram.com/v/t51.82787-19/629373161_17896862172396895_3942247668013275531_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=1&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=N0nXidYKtHgQ7kNvwGO5ymP&_nc_oc=Adm7aWwOJ02DJqXKetCQpkCQE5cHdFNsB89LlxWQZz3Y8ib0sYjsCdW8CUDr1Jxwc7A&_nc_zt=24&_nc_ht=scontent-icn2-1.cdninstagram.com&_nc_gid=fjBosh43P2XgBrurcMvbyQ&_nc_ss=8&oh=00_Afyyo-n60QWf8fUGGjOSUeqDfkOdjOw5N-tE3jX2gfr5Ig&oe=69B96137",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.instagram.com/hearts2hearts",
+        "review_notes": null
       }
     }
   },
@@ -2091,7 +2091,7 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
@@ -2103,11 +2103,11 @@
         "review_notes": null
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/kgwXABXfEJjR2Ui8bCMFOezihv-YVOen4jYi7sXKXfnm-CvYW4FgZUUkhkz78jQWM4ZwC3JEDg=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCQ5K9InArSCtJoiUOlqu27g",
+        "review_notes": null
       }
     }
   },
@@ -2139,14 +2139,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2194,7 +2194,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2242,7 +2242,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2290,7 +2290,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2331,23 +2331,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/pAAg3_IMU45qWBSxDrupSsQaq19-4gfERWEM6eqlbpOKoYLFUBRPZj8iM_RTw1zYkQ0TVfjagg=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCjDH1Pld9zc8pTYjbv5eM-Q",
+        "review_notes": null
       }
     }
   },
@@ -2379,23 +2379,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/NxqWHzDwAylOLgm1Sc3cEyP3773hU9ONvUZofAl0uMAu9REssh0HbtzYwfhrD6IR22g6WvtA7Q=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCcpodGf_wkyawcTc-fXa82g",
+        "review_notes": null
       }
     }
   },
@@ -2427,14 +2427,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2482,16 +2482,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/L7N_d5rtqKhSPS14K878wpwxTC8thABdbQHbVhTV9wEIDuTFnw_xq2T64kXtSBPxj0gzSpoV=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCoQwdDRNobhnp6_wIvsE4aw",
+        "review_notes": null
       }
     }
   },
@@ -2535,11 +2535,11 @@
         "review_notes": null
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/xTwAhDMn0MxN9FD08hE-UDt9zwY1lvUn99MYttLASGQJc1nvLp3eGhUUjGjtdYQoPJxJviXIVA=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCmq9jjpHA69PwAwlA0DwOsg",
+        "review_notes": null
       }
     }
   },
@@ -2571,7 +2571,7 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
@@ -2583,11 +2583,11 @@
         "review_notes": null
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/ytc/AIdro_kgo5-MnM8oZR7nY16V-tDL5_A6dKIJoQqTwiqSgTbZYwwthXx2pd4s6k-o2cXayo3jJA=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCcoT6JMccOgbh0Qtw_Kb3XA",
+        "review_notes": null
       }
     }
   },
@@ -2626,7 +2626,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2667,23 +2667,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/qboVN73fAVmaXT8vj-BCxT58Rc_JqzCYT4pKwbfoWb30QblZVOsZ_ScQcCtrHdpTLDZaXK4t6Q=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCoCvj_VhZPOtttlJK7RCh2A",
+        "review_notes": null
       }
     }
   },
@@ -2722,7 +2722,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2770,7 +2770,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2811,23 +2811,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/37MTPSDgyyLL8FETZajRMd6-dJNYaC47b-30raAb54YfKBLT8uAbxZkAGb8t5lpRMHeyNhBObys=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCbTzy8kj_6Kik_LFD1XyN5g",
+        "review_notes": null
       }
     }
   },
@@ -2859,14 +2859,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2907,14 +2907,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -2955,14 +2955,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3003,14 +3003,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3058,7 +3058,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3106,7 +3106,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3154,7 +3154,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3202,16 +3202,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/84qKR6IVkVxHABf51W8u2WK_NVGZIrIPPEZwmriaLTdBce7kIv31489lHtLPpYYhkoLPnsbH=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCiZqWVAeChfqlom5ZPR3ZJA",
+        "review_notes": null
       }
     }
   },
@@ -3243,14 +3243,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3298,7 +3298,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3346,7 +3346,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3387,23 +3387,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/rsoXmClOrT6Uv9AuvXZQuSfHNUywbBUaSemFXJ_q4VS5hgie1jc6AhhyiV-EMnP7qluqPuxKfA=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCtCFxLt-bMmSnxGEbjsyg6Q",
+        "review_notes": null
       }
     }
   },
@@ -3442,7 +3442,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3483,14 +3483,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3538,7 +3538,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3586,7 +3586,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3634,7 +3634,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3682,16 +3682,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/UET-9siTg07_yKQqM3gipiHF1wdETu5eF2lHuCeUDnHCIe05b0sndXdCMs08GFADGSLs7zVQcvg=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCc8hWuK9dgKvB04rzZL23sQ",
+        "review_notes": null
       }
     }
   },
@@ -3730,7 +3730,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3771,14 +3771,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3826,7 +3826,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3867,23 +3867,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/u04HvCKlGWkEu0XQuOdKAJOKVeVMt1PtkxI0rIfjbHUZsJhhGxXTZmPVV9ryOZK1eoCibvnR3w=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UC4jgjZ6BDua0IjI4JT7h0-A",
+        "review_notes": null
       }
     }
   },
@@ -3922,7 +3922,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -3970,16 +3970,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/jnoOgcgRCTVSB-krPF11mSI2r7w9h_acRYAIK2ba0WA7WcQh9Iq57jtGFSgU0SG-CHTYM0MdVA=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCTItOHr70Tq_GAOACSGawPw",
+        "review_notes": null
       }
     }
   },
@@ -4018,7 +4018,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4066,7 +4066,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4114,7 +4114,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4162,7 +4162,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4210,16 +4210,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/9ye6rhhC2fS5vAXUKgifndsoCZ3PUpbEzCN9bBsOxahjZeIuN6zwCJd90yLe4r0p4rvJB3UwXA=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCCViKQ1A1tXhIVKAVEazcaA",
+        "review_notes": null
       }
     }
   },
@@ -4258,7 +4258,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4306,16 +4306,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/6csbcy2n_mJuh7hx-ln3Mal8vJHyRrCEnjy12rq98RmgmF5qmI_jXZACiaO2VsPOGGqBOM1VEA=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCYp2CgC9Hxj_YnliiVKlOsQ",
+        "review_notes": null
       }
     }
   },
@@ -4347,23 +4347,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/yU8e1L1dHiOhTbYZymV6Q3WAHipYFVeIOYuzUycS8VR2C3iP-k-wqco40ZxYtLUBZT-unRso=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UC4AVxeN8iY5j8kzg2WE0Vng",
+        "review_notes": null
       }
     }
   },
@@ -4402,16 +4402,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/ytc/AIdro_myfBq5IcGJV31Us6pPPwhEwMikRVq3R3QNZ4jXC-P_Ow=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCZOA7I_vjrxLuLGatPekGoA",
+        "review_notes": null
       }
     }
   },
@@ -4450,7 +4450,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4498,7 +4498,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4539,14 +4539,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4594,7 +4594,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4642,16 +4642,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/Ln8aMN3UkCaEkHtMqGgFoyryv2pcdYFv7x58q5iAF477MN1H86Z-6EKlRN8dL7GDIh-I_Pzl9A=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCjyoasKZmVv1uHDIID04ivw",
+        "review_notes": null
       }
     }
   },
@@ -4690,7 +4690,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4738,7 +4738,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4779,14 +4779,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4827,14 +4827,14 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4882,7 +4882,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4930,7 +4930,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -4978,7 +4978,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5019,23 +5019,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/RGCyXjp99SpRWKeSbDFRbI9HA7cK7B28t6UG3UskIvxprJG8yWzh8BUKFXINShdCAJSY4veM=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCbTXWjND2y7zLlSKtHqiwGA",
+        "review_notes": null
       }
     }
   },
@@ -5067,23 +5067,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/IoLB3V0LkVj91fXL1MZqwuZCC2iNevEkzlsZzInq34fLaUXSKJEiNYXhmv2y6tVbDkCRAaYDn7Q=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UC_isDbPZQyyQqXX-POFFPIw",
+        "review_notes": null
       }
     }
   },
@@ -5122,16 +5122,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://scontent-icn2-1.cdninstagram.com/v/t51.2885-19/429482687_734946172132167_7267530967471263956_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=103&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43NTAuQzMifQ%3D%3D&_nc_ohc=SQ1x8ZFzDqwQ7kNvwEMgkpr&_nc_oc=AdnZ3Bkn7EEWsjGxzpB5bHEsu2OKcAZsUrM8d3swBMb_uZVRgInOvJBV19Ru37WK0NQ&_nc_zt=24&_nc_ht=scontent-icn2-1.cdninstagram.com&_nc_ss=8&oh=00_AfwtInL4U0Yi3jvEWefCDwmZVVm6opGE3XKeInLPZ8wgEA&oe=69B96E49",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.instagram.com/wjsn_cosmic",
+        "review_notes": null
       }
     }
   },
@@ -5170,7 +5170,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5218,7 +5218,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5266,7 +5266,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
@@ -5319,11 +5319,11 @@
         "review_notes": null
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/r89AwR6X6s6R41Woe7rvSI4INfOmY6pQzwefrPGKx_GyKh20B6qknl74mIVCA94myOkPBaMm_A=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCHWhn9xw7x8NPPnV6eWQDQA",
+        "review_notes": null
       }
     }
   },
@@ -5362,16 +5362,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/1PO2aCez6i_TqIy1mS-h-PnvjmB46gh42Gdkj4WvGw-ZPW-irnjIGM6tNmm574COoNq398En=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCkrDEGNM3mqZXHk2MfnOjMw",
+        "review_notes": null
       }
     }
   },
@@ -5403,23 +5403,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/9ydrDmxLEzNrsx3wUo4y-qjGmggTUy5O91iwJrvp-qsXqCqstlFUujnth3RaX7m9clj0mFJbpeg=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCYvGSZPvQj09LgpcziCszyA",
+        "review_notes": null
       }
     }
   },
@@ -5458,16 +5458,16 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/ytc/AIdro_lumwHjAwitSOM2pDk0cr_Nc5-Y3TfhTBUq5XAvsFS9PKk=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCtBLjxlnFpzt7Jvl_0aA7lw",
+        "review_notes": null
       }
     }
   },
@@ -5499,23 +5499,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/ZFhcGw5AIVLxjPm1LJ-GdOZsIYmHFUmDAuounmhnZIP6bnlQrorXag2KP3CkS2clWY7QKooNlwE=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCt7Nlt3vXkz-NTyou5Kqp6w",
+        "review_notes": null
       }
     }
   },
@@ -5547,23 +5547,23 @@
       "agency_name": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.agency.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Agency is still missing in the canonical entity profile seed."
       },
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
       "representative_image": {
-        "value": null,
-        "status": "review_needed",
-        "provenance": "teamBadgeAssets.badge_image_url.review_needed",
-        "source_url": null,
-        "review_notes": "Representative image has no verified upstream seed yet."
+        "value": "https://yt3.googleusercontent.com/3IX22RvkkcBbMlwk4ywaXA3m6pbZt5kEVApi7vvLB31SUKTlRVoffqqqloe8Uu5uVgXvV9q3tg=s900-c-k-c0x00ffffff-no-rj",
+        "status": "resolved",
+        "provenance": "teamBadgeAssets.badge_image_url",
+        "source_url": "https://www.youtube.com/channel/UCMuK2QPg9oFJ1-veMCw3Irg",
+        "review_notes": null
       }
     }
   },
@@ -5602,7 +5602,7 @@
       "debut_year": {
         "value": null,
         "status": "review_needed",
-        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed",
+        "provenance": "artistProfiles.debut_year.review_needed.review_needed.review_needed.review_needed.review_needed.review_needed",
         "source_url": null,
         "review_notes": "Debut year is still missing in the canonical entity profile seed."
       },
