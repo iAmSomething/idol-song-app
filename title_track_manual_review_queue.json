@@ -1,6 +1,60 @@
 [
   {
     "group": "YOUNITE",
+    "release_title": "BIT, Pt. 1",
+    "release_date": "2023-05-17",
+    "stream": "album",
+    "release_kind": "ep",
+    "track_titles": [
+      "ICY",
+      "WATERFALL",
+      "LOOK AT THE TV",
+      "TRIP",
+      "SLOGAN"
+    ],
+    "candidate_titles": [],
+    "candidate_sources": [],
+    "review_reason": "No dependable title-track signal was found for this release detail row.",
+    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+  },
+  {
+    "group": "YOUNITE",
+    "release_title": "BIT Part.2",
+    "release_date": "2023-10-17",
+    "stream": "album",
+    "release_kind": "ep",
+    "track_titles": [
+      "Chili Pop",
+      "Love it",
+      "F!zzy Soda Love",
+      "Cupcake",
+      "A star called you"
+    ],
+    "candidate_titles": [],
+    "candidate_sources": [],
+    "review_reason": "No dependable title-track signal was found for this release detail row.",
+    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+  },
+  {
+    "group": "YOUNITE",
+    "release_title": "ANOTHER",
+    "release_date": "2024-05-01",
+    "stream": "album",
+    "release_kind": "ep",
+    "track_titles": [
+      "How We Do",
+      "GEEKIN",
+      "Poco Loco",
+      "ONE+WON",
+      "OMH (Out My Head)"
+    ],
+    "candidate_titles": [],
+    "candidate_sources": [],
+    "review_reason": "No dependable title-track signal was found for this release detail row.",
+    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+  },
+  {
+    "group": "YOUNITE",
     "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
     "release_date": "2024-10-31",
     "stream": "album",
