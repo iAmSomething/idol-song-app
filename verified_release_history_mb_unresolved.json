@@ -5,13 +5,8 @@
     "artist_mbid": "27cc84d3-4319-445f-a747-c4b4c7550dfb"
   },
   {
-    "group": "EXO",
+    "group": "VERIVERY",
     "reason": "HTTPError",
-    "artist_mbid": "b3785a55-2cf6-497d-b8e3-cfa21a36f997"
-  },
-  {
-    "group": "KARD",
-    "reason": "HTTPError",
-    "artist_mbid": "ad4e8332-861d-4a49-8235-b72888714be4"
+    "artist_mbid": "497ad8ff-0d35-4570-8a46-3f6b344b30b4"
   }
 ]

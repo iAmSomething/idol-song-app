@@ -400,6 +400,78 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "&TEAM",
+    "release_title": "Extraordinary day",
+    "release_date": "2025-02-01",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@andteamofficial",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@andteamofficial",
+        "channel_label": "&TEAM",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@andteamofficial",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "&TEAM Extraordinary day official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=%26TEAM+Extraordinary+day+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "&TEAM",
+    "release_title": "Sakura-iro Yell",
+    "release_date": "2026-03-13",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Sakura-iro Yell"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@andteamofficial",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@andteamofficial",
+        "channel_label": "&TEAM",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@andteamofficial",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "&TEAM Sakura-iro Yell official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=%26TEAM+Sakura-iro+Yell+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "(G)I-DLE",
     "release_title": "I am",
     "release_date": "2018-05-02",
@@ -1093,6 +1165,35 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "(G)I-DLE 傷つくのは嫌いだから official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=%28G%29I-DLE+%E5%82%B7%E3%81%A4%E3%81%8F%E3%81%AE%E3%81%AF%E5%AB%8C%E3%81%84%E3%81%A0%E3%81%8B%E3%82%89+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "(G)I-DLE",
+    "release_title": "HIDE AND SEEK",
+    "release_date": "2026-04-22",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@official_i_dle",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@official_i_dle",
+        "channel_label": "(G)I-DLE",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@official_i_dle"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "(G)I-DLE HIDE AND SEEK official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=%28G%29I-DLE+HIDE+AND+SEEK+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -2418,6 +2519,43 @@
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
+    "group": "aespa",
+    "release_title": "WDA (Whole Different Animal)",
+    "release_date": "2026-05-11",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "WDA (Whole Different Animal)"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@aespa_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@aespa_official",
+        "channel_label": "aespa",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@aespa_official",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "aespa WDA (Whole Different Animal) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=aespa+WDA+%28Whole+Different+Animal%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "ALL(H)OURS",
     "release_title": "ALL OURS",
     "release_date": "2024-01-10",
@@ -2627,35 +2765,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "AMPERS&ONE ONE HEARTED official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=AMPERS%26ONE+ONE+HEARTED+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "AMPERS&ONE",
-    "release_title": "DEFINITION",
-    "release_date": "2026-04-08",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA",
-        "channel_label": "AMPERS&ONE",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCH9IB4tD3U2TSjT3ZLICXTA"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "AMPERS&ONE DEFINITION official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=AMPERS%26ONE+DEFINITION+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -4428,6 +4537,41 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "BABYMONSTER",
+    "release_title": "춤 (CHOOM)",
+    "release_date": "2026-05-04",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@YGBABYMONSTER_",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@YGBABYMONSTER_",
+        "channel_label": "BABYMONSTER",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@YGEntertainment",
+        "channel_label": "YG ENTERTAINMENT",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YGBABYMONSTER_",
+      "https://www.youtube.com/@YGEntertainment"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "BABYMONSTER 춤 (CHOOM) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=BABYMONSTER+%EC%B6%A4+%28CHOOM%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "BADVILLAIN",
     "release_title": "OVERSTEP",
     "release_date": "2024-06-03",
@@ -4848,13 +4992,15 @@
   },
   {
     "group": "BLACKPINK",
-    "release_title": "BLACKPINK",
-    "release_date": "2017-08-29",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "release_title": "As If It's Your Last",
+    "release_date": "2017-06-22",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "As If It's Your Last"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@BLACKPINK",
     "mv_source_channels": [
@@ -4874,10 +5020,47 @@
       "https://www.youtube.com/@YGEntertainment"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "BLACKPINK BLACKPINK official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=BLACKPINK+BLACKPINK+official+mv",
+    "suggested_search_query": "BLACKPINK As If It's Your Last official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=BLACKPINK+As+If+It%27s+Your+Last+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "BLACKPINK",
+    "release_title": "BLACKPINK",
+    "release_date": "2017-08-29",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "AS IF IT'S YOUR LAST (Japanese version)"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@BLACKPINK",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@BLACKPINK",
+        "channel_label": "BLACKPINK",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@YGEntertainment",
+        "channel_label": "YG ENTERTAINMENT",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@BLACKPINK",
+      "https://www.youtube.com/@YGEntertainment"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "BLACKPINK AS IF IT'S YOUR LAST (Japanese version) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=BLACKPINK+AS+IF+IT%27S+YOUR+LAST+%28Japanese+version%29+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -5278,6 +5461,80 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "BOYNEXTDOOR It's Beginning To Look A Lot Like Christmas official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=BOYNEXTDOOR+It%27s+Beginning+To+Look+A+Lot+Like+Christmas+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "BOYNEXTDOOR",
+    "release_title": "SAY CHEESE!",
+    "release_date": "2025-11-09",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "SAY CHEESE!"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@boynextdoor_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@boynextdoor_official",
+        "channel_label": "BOYNEXTDOOR",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@boynextdoor_official",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "BOYNEXTDOOR SAY CHEESE! official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=BOYNEXTDOOR+SAY+CHEESE%21+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "BOYNEXTDOOR",
+    "release_title": "ddok ddok ddok",
+    "release_date": "2026-05-11",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "ddok ddok ddok"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@boynextdoor_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@boynextdoor_official",
+        "channel_label": "BOYNEXTDOOR",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@boynextdoor_official",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "BOYNEXTDOOR ddok ddok ddok official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=BOYNEXTDOOR+ddok+ddok+ddok+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -10249,6 +10506,41 @@
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
+    "group": "CRAVITY",
+    "release_title": "ReDeFINE",
+    "release_date": "2026-04-29",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_label": "CRAVITY",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@officialstarship",
+        "channel_label": "STARSHIP",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@officialstarship"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "CRAVITY ReDeFINE official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=CRAVITY+ReDeFINE+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "DAY6",
     "release_title": "The Day",
     "release_date": "2015-09-07",
@@ -12673,35 +12965,6 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
-    "group": "DXMON",
-    "release_title": "HYPER LINK: Vol.1",
-    "release_date": "2026-04-14",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@DXMON_HM",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@DXMON_HM",
-        "channel_label": "DXMON",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@DXMON_HM"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "DXMON HYPER LINK: Vol.1 official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=DXMON+HYPER+LINK%3A+Vol.1+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
     "group": "ENHYPEN",
     "release_title": "BORDER : DAY ONE",
     "release_date": "2020-11-30",
@@ -13277,80 +13540,6 @@
   },
   {
     "group": "ENHYPEN",
-    "release_title": "Brought The Heat Back",
-    "release_date": "2024-08-09",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Brought The Heat Back"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-        "channel_label": "ENHYPEN",
-        "owner_type": "team"
-      },
-      {
-        "channel_url": "https://www.youtube.com/@HYBELABELS",
-        "channel_label": "HYBE LABELS",
-        "owner_type": "label"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "ENHYPEN Brought The Heat Back official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=ENHYPEN+Brought+The+Heat+Back+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "ENHYPEN",
-    "release_title": "Home",
-    "release_date": "2024-10-18",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Home"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-        "channel_label": "ENHYPEN",
-        "owner_type": "team"
-      },
-      {
-        "channel_url": "https://www.youtube.com/@HYBELABELS",
-        "channel_label": "HYBE LABELS",
-        "owner_type": "label"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "ENHYPEN Home official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=ENHYPEN+Home+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "ENHYPEN",
     "release_title": "Loose",
     "release_date": "2025-04-04",
     "stream": "song",
@@ -13754,37 +13943,6 @@
   },
   {
     "group": "EPEX",
-    "release_title": "EPEX & joan 1st Digital Single ‘so nice’",
-    "release_date": "2025-05-06",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "so nice"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A",
-        "channel_label": "EPEX",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCKHl-9B-aa4AK5ZR9XLOg8A"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "EPEX so nice official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=EPEX+so+nice+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "EPEX",
     "release_title": "Youth Chapter 3 : ROMANTIC YOUTH",
     "release_date": "2025-07-28",
     "stream": "album",
@@ -13901,6 +14059,37 @@
   },
   {
     "group": "EVNNE",
+    "release_title": "景色 (KESHIKI)",
+    "release_date": "2024-11-05",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "景色 (KESHIKI)"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@EVNNE_Official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@EVNNE_Official",
+        "channel_label": "EVNNE",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@EVNNE_Official"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "EVNNE 景色 (KESHIKI) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=EVNNE+%E6%99%AF%E8%89%B2+%28KESHIKI%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "EVNNE",
     "release_title": "HOT MESS",
     "release_date": "2025-02-10",
     "stream": "album",
@@ -13958,6 +14147,37 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=EVNNE+LOVE+ANECDOTE%28S%29+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
+  },
+  {
+    "group": "EVNNE",
+    "release_title": "Backtalk",
+    "release_date": "2026-04-20",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Backtalk"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@EVNNE_Official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@EVNNE_Official",
+        "channel_label": "EVNNE",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@EVNNE_Official"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "EVNNE Backtalk official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=EVNNE+Backtalk+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
     "group": "EXO",
@@ -14728,43 +14948,6 @@
   },
   {
     "group": "EXO",
-    "release_title": "Hear Me Out",
-    "release_date": "2023-06-30",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Hear Me Out"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@weareoneEXO",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@weareoneEXO",
-        "channel_label": "EXO",
-        "owner_type": "team"
-      },
-      {
-        "channel_url": "https://www.youtube.com/@SMTOWN",
-        "channel_label": "SMTOWN",
-        "owner_type": "label"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@weareoneEXO",
-      "https://www.youtube.com/@SMTOWN"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "EXO Hear Me Out official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=EXO+Hear+Me+Out+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "EXO",
     "release_title": "EXIST",
     "release_date": "2023-07-10",
     "stream": "album",
@@ -14895,37 +15078,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "FIFTY FIFTY Cupid official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=FIFTY+FIFTY+Cupid+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "FIFTY FIFTY",
-    "release_title": "Starry Night",
-    "release_date": "2024-08-30",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Starry Night"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@WE_FIFTYFIFTY",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@WE_FIFTYFIFTY",
-        "channel_label": "FIFTY FIFTY",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@WE_FIFTYFIFTY"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "FIFTY FIFTY Starry Night official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=FIFTY+FIFTY+Starry+Night+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -15119,9 +15271,11 @@
     "release_date": "2026-04-10",
     "stream": "song",
     "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "Say Yes!"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@WE_FIFTYFIFTY",
     "mv_source_channels": [
@@ -15135,7 +15289,7 @@
       "https://www.youtube.com/@WE_FIFTYFIFTY"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "FIFTY FIFTY Say Yes! official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=FIFTY+FIFTY+Say+Yes%21+official+mv",
@@ -15798,35 +15952,6 @@
   },
   {
     "group": "GHOST9",
-    "release_title": "ARCADE : O",
-    "release_date": "2023-10-25",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@GHOST9Official",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@GHOST9Official",
-        "channel_label": "GHOST9",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@GHOST9Official"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "GHOST9 ARCADE : O official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=GHOST9+ARCADE+%3A+O+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "GHOST9",
     "release_title": "Awesome day",
     "release_date": "2024-06-06",
     "stream": "song",
@@ -15949,37 +16074,6 @@
   },
   {
     "group": "H1-KEY",
-    "release_title": "Time to Shine",
-    "release_date": "2023-08-23",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Time to Shine"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@H1KEY_official",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@H1KEY_official",
-        "channel_label": "H1-KEY",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@H1KEY_official"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "H1-KEY Time to Shine official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=H1-KEY+Time+to+Shine+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "H1-KEY",
     "release_title": "Seoul Dreaming",
     "release_date": "2023-08-30",
     "stream": "album",
@@ -16004,37 +16098,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "H1-KEY Seoul Dreaming official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=H1-KEY+Seoul+Dreaming+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "H1-KEY",
-    "release_title": "H1-KEYnote #1 [Thinkin’ About You]",
-    "release_date": "2024-01-19",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Thinkin’ About You"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@H1KEY_official",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@H1KEY_official",
-        "channel_label": "H1-KEY",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@H1KEY_official"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "H1-KEY Thinkin’ About You official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=H1-KEY+Thinkin%E2%80%99+About+You+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -18183,6 +18246,41 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "ITZY",
+    "release_title": "Motto",
+    "release_date": "2026-05-18",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@ItzyOfficial",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@ItzyOfficial",
+        "channel_label": "ITZY",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@ItzyOfficial",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "ITZY Motto official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ITZY+Motto+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "IVE",
     "release_title": "ELEVEN",
     "release_date": "2021-12-01",
@@ -19102,6 +19200,41 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "IVE Fashion official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=IVE+Fashion+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "IVE",
+    "release_title": "LUCID DREAM",
+    "release_date": "2026-05-20",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@IVEstarship",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@IVEstarship",
+        "channel_label": "IVE",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@officialstarship",
+        "channel_label": "STARSHIP",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@IVEstarship",
+      "https://www.youtube.com/@officialstarship"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "IVE LUCID DREAM official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=IVE+LUCID+DREAM+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -22561,6 +22694,115 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=LE+SSERAFIM+SPAGHETTI+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
+  },
+  {
+    "group": "LE SSERAFIM",
+    "release_title": "CELEBRATION",
+    "release_date": "2026-04-24",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "CELEBRATION"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@LE_SSERAFIM",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@LE_SSERAFIM",
+        "channel_label": "LE SSERAFIM",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@LE_SSERAFIM",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "LE SSERAFIM CELEBRATION official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=LE+SSERAFIM+CELEBRATION+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "LE SSERAFIM",
+    "release_title": "BOOMPALA",
+    "release_date": "2026-05-22",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "BOOMPALA"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@LE_SSERAFIM",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@LE_SSERAFIM",
+        "channel_label": "LE SSERAFIM",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@LE_SSERAFIM",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "LE SSERAFIM BOOMPALA official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=LE+SSERAFIM+BOOMPALA+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "LE SSERAFIM",
+    "release_title": "‘PUREFLOW’ pt.1",
+    "release_date": "2026-05-22",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@LE_SSERAFIM",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@LE_SSERAFIM",
+        "channel_label": "LE SSERAFIM",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@LE_SSERAFIM",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "LE SSERAFIM ‘PUREFLOW’ pt.1 official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=LE+SSERAFIM+%E2%80%98PUREFLOW%E2%80%99+pt.1+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
     "group": "LIGHTSUM",
@@ -28556,9 +28798,11 @@
     "release_date": "2025-04-14",
     "stream": "album",
     "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "poppop"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@NCTWISH",
     "mv_source_channels": [
@@ -28578,7 +28822,7 @@
       "https://www.youtube.com/@SMTOWN"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "NCT WISH poppop official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=NCT+WISH+poppop+official+mv",
@@ -28695,6 +28939,43 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=NCT+WISH+Dreamcatcher+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
+  },
+  {
+    "group": "NCT WISH",
+    "release_title": "Ode to Love",
+    "release_date": "2026-04-20",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [
+      "Ode to Love"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@NCTWISH",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@NCTWISH",
+        "channel_label": "NCT WISH",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@NCTWISH",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "NCT WISH Ode to Love official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NCT+WISH+Ode+to+Love+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
     "group": "NewJeans",
@@ -29153,6 +29434,43 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "NEXZ One Bite official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=NEXZ+One+Bite+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "NEXZ",
+    "release_title": "Mmchk",
+    "release_date": "2026-04-27",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Mmchk"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@NEXZ_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@NEXZ_official",
+        "channel_label": "NEXZ",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@NEXZ_official",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "NEXZ Mmchk official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NEXZ+Mmchk+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -29850,6 +30168,43 @@
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
+    "group": "NMIXX",
+    "release_title": "Heavy Serenade",
+    "release_date": "2026-05-11",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "Heavy Serenade"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+        "channel_label": "NMIXX",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "NMIXX Heavy Serenade official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NMIXX+Heavy+Serenade+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "NOMAD",
     "release_title": "NOMAD",
     "release_date": "2024-02-28",
@@ -29875,6 +30230,68 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "NOMAD NOMAD official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=NOMAD+NOMAD+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "NOMAD",
+    "release_title": "Call Me Back",
+    "release_date": "2024-10-09",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Call Me Back"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@nomad_is_here",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@nomad_is_here",
+        "channel_label": "NOMAD",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@nomad_is_here"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "NOMAD Call Me Back official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NOMAD+Call+Me+Back+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "NOMAD",
+    "release_title": "CARNIVAL",
+    "release_date": "2025-02-28",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "CARNIVAL"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@nomad_is_here",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@nomad_is_here",
+        "channel_label": "NOMAD",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@nomad_is_here"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "NOMAD CARNIVAL official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NOMAD+CARNIVAL+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -32505,9 +32922,11 @@
     "release_date": "2026-04-14",
     "stream": "album",
     "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "흥흥흥 (HMPH!)"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@plave_official",
     "mv_source_channels": [
@@ -32521,10 +32940,10 @@
       "https://www.youtube.com/@plave_official"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "PLAVE Caligo Pt.2 official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=PLAVE+Caligo+Pt.2+official+mv",
+    "suggested_search_query": "PLAVE 흥흥흥 (HMPH!) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=PLAVE+%ED%9D%A5%ED%9D%A5%ED%9D%A5+%28HMPH%21%29+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -33374,6 +33793,37 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=QWER+In+a+million+noises%2C+I%E2%80%99ll+be+your+harmony+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
+  },
+  {
+    "group": "QWER",
+    "release_title": "CEREMONY",
+    "release_date": "2026-04-27",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "CEREMONY"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@qwerband_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@qwerband_official",
+        "channel_label": "QWER",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@qwerband_official"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "QWER CEREMONY official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=QWER+CEREMONY+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
     "group": "Red Velvet",
@@ -34683,6 +35133,35 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=RESCENE+Heart+Drop+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
+  },
+  {
+    "group": "RESCENE",
+    "release_title": "ピンボール (Pinball)",
+    "release_date": "2026-01-21",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@RESCENEofficial",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@RESCENEofficial",
+        "channel_label": "RESCENE",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@RESCENEofficial"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "RESCENE ピンボール (Pinball) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=RESCENE+%E3%83%94%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%AB+%28Pinball%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
     "group": "RESCENE",
@@ -40341,9 +40820,11 @@
     "release_date": "2026-03-13",
     "stream": "song",
     "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "Endless Sun"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@stray_kids",
     "mv_source_channels": [
@@ -40363,7 +40844,7 @@
       "https://www.youtube.com/@JYPEntertainment"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "Stray Kids Endless Sun official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=Stray+Kids+Endless+Sun+official+mv",
@@ -43807,6 +44288,41 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "TOMORROW X TOGETHER",
+    "release_title": "7TH YEAR: 가시덤불에 잠시 바람이 멈췄을 때",
+    "release_date": "2026-04-13",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@txt_members",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@txt_members",
+        "channel_label": "TOMORROW X TOGETHER",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@txt_members",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "TOMORROW X TOGETHER 7TH YEAR: 가시덤불에 잠시 바람이 멈췄을 때 official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TOMORROW+X+TOGETHER+7TH+YEAR%3A+%EA%B0%80%EC%8B%9C%EB%8D%A4%EB%B6%88%EC%97%90+%EC%9E%A0%EC%8B%9C+%EB%B0%94%EB%9E%8C%EC%9D%B4+%EB%A9%88%EC%B7%84%EC%9D%84+%EB%95%8C+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "TREASURE",
     "release_title": "THE FIRST STEP : CHAPTER ONE",
     "release_date": "2020-08-07",
@@ -44157,6 +44673,43 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "TREASURE THE SECOND STEP : CHAPTER TWO official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=TREASURE+THE+SECOND+STEP+%3A+CHAPTER+TWO+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "TREASURE",
+    "release_title": "MOVE (T5)",
+    "release_date": "2023-01-28",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [
+      "MOVE (T5)"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@ygtreasuremaker",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@ygtreasuremaker",
+        "channel_label": "TREASURE",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@YGEntertainment",
+        "channel_label": "YG ENTERTAINMENT",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@ygtreasuremaker",
+      "https://www.youtube.com/@YGEntertainment"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "TREASURE MOVE (T5) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TREASURE+MOVE+%28T5%29+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -46929,6 +47482,41 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "TWS",
+    "release_title": "NO TRAGEDY",
+    "release_date": "2026-04-27",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@TWS_PLEDIS",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@TWS_PLEDIS",
+        "channel_label": "TWS",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@TWS_PLEDIS",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "TWS NO TRAGEDY official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TWS+NO+TRAGEDY+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "UNIS",
     "release_title": "WE UNIS",
     "release_date": "2024-03-27",
@@ -49536,6 +50124,35 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "woo!ah!",
+    "release_title": "WXW(Wish With W)",
+    "release_date": "2026-05-13",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@wooah_nv",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@wooah_nv",
+        "channel_label": "woo!ah!",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@wooah_nv"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "woo!ah! WXW(Wish With W) official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=woo%21ah%21+WXW%28Wish+With+W%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "Xdinary Heroes",
     "release_title": "Overload",
     "release_date": "2022-11-11",
@@ -49962,6 +50579,41 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "Xdinary Heroes",
+    "release_title": "DEAD AND",
+    "release_date": "2026-04-17",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@XH_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@XH_official",
+        "channel_label": "Xdinary Heroes",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@JYPEntertainment",
+        "channel_label": "JYP Entertainment",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@XH_official",
+      "https://www.youtube.com/@JYPEntertainment"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "Xdinary Heroes DEAD AND official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=Xdinary+Heroes+DEAD+AND+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "xikers",
     "release_title": "HOUSE OF TRICKY : Doorbell Ringing",
     "release_date": "2023-03-30",
@@ -50266,6 +50918,35 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=xikers+ICONIC+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
+  },
+  {
+    "group": "xikers",
+    "release_title": "Route Zero: THE ORA",
+    "release_date": "2026-05-19",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@xikers_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@xikers_official",
+        "channel_label": "xikers",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@xikers_official"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "xikers Route Zero: THE ORA official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=xikers+Route+Zero%3A+THE+ORA+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
     "group": "XLOV",
@@ -50883,9 +51564,11 @@
     "release_date": "2026-04-07",
     "stream": "song",
     "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "we don’t go to bed tonight"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YOUNGPOSSEUP",
     "mv_source_channels": [
@@ -50899,7 +51582,7 @@
       "https://www.youtube.com/@YOUNGPOSSEUP"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YOUNG POSSE we don’t go to bed tonight official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YOUNG+POSSE+we+don%E2%80%99t+go+to+bed+tonight+official+mv",
@@ -51166,6 +51849,64 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YOUNITE YOUNI-T official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YOUNITE+YOUNI-T+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "YOUNITE",
+    "release_title": "YOUNI‐T",
+    "release_date": "2025-04-23",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@Younite",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@Younite",
+        "channel_label": "YOUNITE",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@Younite"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "YOUNITE YOUNI‐T official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=YOUNITE+YOUNI%E2%80%90T+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "YOUNITE",
+    "release_title": "INYUN Part.1",
+    "release_date": "2026-05-12",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@Younite",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@Younite",
+        "channel_label": "YOUNITE",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@Younite"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "YOUNITE INYUN Part.1 official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=YOUNITE+INYUN+Part.1+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -52179,6 +52920,35 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "ZEROBASEONE SLAM DUNK official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=ZEROBASEONE+SLAM+DUNK+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "Ascend-",
+    "release_date": "2026-05-18",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@ZB1_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@ZB1_official",
+        "channel_label": "ZEROBASEONE",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@ZB1_official"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "ZEROBASEONE Ascend- official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ZEROBASEONE+Ascend-+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   }

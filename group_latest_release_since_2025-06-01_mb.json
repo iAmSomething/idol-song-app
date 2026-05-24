@@ -3,16 +3,21 @@
     "group": "&TEAM",
     "artist_name_mb": "&TEAM",
     "artist_mbid": "bba737dc-7ec8-482d-b79f-68d949ef2c7f",
-    "latest_song": null,
+    "latest_song": {
+      "title": "Sakura-iro Yell",
+      "date": "2026-03-13",
+      "source": "https://musicbrainz.org/release-group/370f7b89-6fd0-4c47-a651-f4678902191c",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
     "latest_album": {
-      "title": "Back to Life",
-      "date": "2025-10-28",
-      "source": "https://musicbrainz.org/release-group/159eca09-5a9a-4ee2-a1ea-56a08269229f",
+      "title": "We on Fire",
+      "date": "2026-04-12",
+      "source": "https://musicbrainz.org/release-group/9179dab5-170d-41e1-9aeb-83764aad6660",
       "release_kind": "ep",
       "release_format": "ep",
-      "context_tags": [
-        "japanese_release"
-      ]
+      "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f"
   },
@@ -21,9 +26,9 @@
     "artist_name_mb": "i‐dle",
     "artist_mbid": "0068ae6c-7156-40f9-a81f-39294af6a549",
     "latest_song": {
-      "title": "Mono",
-      "date": "2026-01-27",
-      "source": "https://musicbrainz.org/release-group/c669f230-9b65-46c3-808c-99a26d44b464",
+      "title": "HIDE AND SEEK",
+      "date": "2026-04-22",
+      "source": "https://musicbrainz.org/release-group/273a441b-0687-42df-bd34-5517f01503df",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -44,9 +49,9 @@
     "artist_mbid": "1cb80c2a-3f2e-4fdd-ab0f-9ae886dee032",
     "latest_song": null,
     "latest_album": {
-      "title": "Trophy",
-      "date": "2025-10-30",
-      "source": "https://musicbrainz.org/release-group/6981db36-66ea-42a5-9f19-5d42eb7ead2c",
+      "title": "FEELM",
+      "date": "2026-04-28",
+      "source": "https://musicbrainz.org/release-group/75f9f49a-c499-4ffa-8eb5-be0329459b20",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -95,9 +100,9 @@
     "artist_name_mb": "aespa",
     "artist_mbid": "b51c672b-85e0-48fe-8648-470a2422229f",
     "latest_song": {
-      "title": "SYNK : aeXIS LINE",
-      "date": "2025-11-17",
-      "source": "https://musicbrainz.org/release-group/71d978c6-775d-4327-aca5-517a62cc4626",
+      "title": "WDA (Whole Different Animal)",
+      "date": "2026-05-11",
+      "source": "https://musicbrainz.org/release-group/8f39c571-fa6f-4546-abd5-caf725a5b900",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -238,9 +243,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "WE GO UP",
-      "date": "2025-10-10",
-      "source": "https://musicbrainz.org/release-group/ffe2b6b8-2d2c-44e7-af71-e5aac4a23dd5",
+      "title": "춤 (CHOOM)",
+      "date": "2026-05-04",
+      "source": "https://musicbrainz.org/release-group/1267feb3-0379-4904-a9fa-86091f38d83d",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -313,9 +318,9 @@
     "artist_name_mb": "BOYNEXTDOOR",
     "artist_mbid": "656d0024-7b5f-4089-9d3e-ce383f15f1b7",
     "latest_song": {
-      "title": "BOYLIFE",
-      "date": "2025-08-17",
-      "source": "https://musicbrainz.org/release-group/7f3e5d77-9ad8-4de6-8dcc-3ea29c6208ae",
+      "title": "ddok ddok ddok",
+      "date": "2026-05-11",
+      "source": "https://musicbrainz.org/release-group/986ee1a2-b78b-45cb-b372-d98b6a5391f5",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -388,11 +393,11 @@
     "artist_mbid": "035e63b4-a34d-4f8e-a61f-6c2527eed16e",
     "latest_song": null,
     "latest_album": {
-      "title": "Dare to Crave",
-      "date": "2025-06-23",
-      "source": "https://musicbrainz.org/release-group/44e36813-a852-401d-ad33-a23e11357a06",
-      "release_kind": "album",
-      "release_format": "album",
+      "title": "ReDeFINE",
+      "date": "2026-04-29",
+      "source": "https://musicbrainz.org/release-group/a5f932b5-3448-4526-875b-9e2d0e49722b",
+      "release_kind": "ep",
+      "release_format": "ep",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/035e63b4-a34d-4f8e-a61f-6c2527eed16e"
@@ -432,9 +437,9 @@
     "artist_name_mb": "DXMON",
     "artist_mbid": "0d12abec-f7d1-437e-9d82-395ded77262e",
     "latest_song": {
-      "title": "HYPER LINK: Vol.1",
-      "date": "2026-04-14",
-      "source": "https://musicbrainz.org/release-group/e1c44ee6-245d-49c5-846c-752b8bc35f0c",
+      "title": "HYPER LINK: Vol.2",
+      "date": "2026-05-20",
+      "source": "https://musicbrainz.org/release-group/35ee4a40-b9b0-438a-ab08-c7321b2b0ea6",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -485,7 +490,14 @@
     "group": "EVNNE",
     "artist_name_mb": "EVNNE",
     "artist_mbid": "bf081017-e5ec-44b8-a5e6-d0401d0b6828",
-    "latest_song": null,
+    "latest_song": {
+      "title": "Backtalk",
+      "date": "2026-04-20",
+      "source": "https://musicbrainz.org/release-group/ecbb5875-8432-4c54-859b-052e0333acc5",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
     "latest_album": {
       "title": "LOVE ANECDOTE(S)",
       "date": "2025-08-04",
@@ -497,13 +509,35 @@
     "artist_source": "https://musicbrainz.org/artist/bf081017-e5ec-44b8-a5e6-d0401d0b6828"
   },
   {
+    "group": "EXO",
+    "artist_name_mb": "EXO",
+    "artist_mbid": "b3785a55-2cf6-497d-b8e3-cfa21a36f997",
+    "latest_song": {
+      "title": "I'm Home",
+      "date": "2025-12-13",
+      "source": "https://musicbrainz.org/release-group/32188b10-a0bf-4174-8618-9049d3a035e5",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": {
+      "title": "REVERXE",
+      "date": "2026-01-19",
+      "source": "https://musicbrainz.org/release-group/d9a5d58f-6520-4718-b46c-dabc26e152f1",
+      "release_kind": "album",
+      "release_format": "album",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/b3785a55-2cf6-497d-b8e3-cfa21a36f997"
+  },
+  {
     "group": "FIFTY FIFTY",
     "artist_name_mb": "FIFTY FIFTY",
     "artist_mbid": "5c6b4031-c0e6-468f-ada5-28c33b7d4e0e",
     "latest_song": {
-      "title": "Say Yes!",
-      "date": "2026-04-10",
-      "source": "https://musicbrainz.org/release-group/c9576e6d-6a5a-4e76-a955-da1077f27e3b",
+      "title": "STARSTRUCK",
+      "date": "2026-05-15",
+      "source": "https://musicbrainz.org/release-group/47441c43-5b20-4808-965f-8ced061bbe25",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -605,9 +639,9 @@
     "artist_mbid": "bce172fc-51bb-43f7-9a25-b406a0a581d5",
     "latest_song": null,
     "latest_album": {
-      "title": "TUNNEL VISION",
-      "date": "2025-11-10",
-      "source": "https://musicbrainz.org/release-group/ed339807-5313-4773-91cd-3f770c3a9d10",
+      "title": "Motto",
+      "date": "2026-05-18",
+      "source": "https://musicbrainz.org/release-group/36a1fe9c-5dc7-4072-b0c2-4e15caf5862d",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -619,9 +653,9 @@
     "artist_name_mb": "IVE",
     "artist_mbid": "b2f2216a-d7a9-4ce0-8b8f-f494d9a8c196",
     "latest_song": {
-      "title": "Fashion",
-      "date": "2026-04-03",
-      "source": "https://musicbrainz.org/release-group/c8ddddd3-db0d-460e-8cce-ccfad9c1170c",
+      "title": "LUCID DREAM",
+      "date": "2026-05-20",
+      "source": "https://musicbrainz.org/release-group/b1643d40-f647-4970-b35d-116dc89db79f",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -657,6 +691,21 @@
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/c3d9b981-0420-45ae-93ca-21d78f0fb14f"
+  },
+  {
+    "group": "KARD",
+    "artist_name_mb": "KARD",
+    "artist_mbid": "ad4e8332-861d-4a49-8235-b72888714be4",
+    "latest_song": null,
+    "latest_album": {
+      "title": "DRIFT",
+      "date": "2025-07-02",
+      "source": "https://musicbrainz.org/release-group/94d7a1a2-136f-4645-b3de-80540fd5cfc4",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/ad4e8332-861d-4a49-8235-b72888714be4"
   },
   {
     "group": "Kep1er",
@@ -744,14 +793,21 @@
     "artist_name_mb": "LE SSERAFIM",
     "artist_mbid": "1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "latest_song": {
-      "title": "Pearlies (My oyster is the world)",
-      "date": "2025-10-24",
-      "source": "https://musicbrainz.org/release-group/8ff15315-a8f2-40df-9f7f-44b89c1fda60",
+      "title": "BOOMPALA",
+      "date": "2026-05-22",
+      "source": "https://musicbrainz.org/release-group/50625dfe-f537-4b7b-8782-112338299aaf",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
     },
-    "latest_album": null,
+    "latest_album": {
+      "title": "‘PUREFLOW’ pt.1",
+      "date": "2026-05-22",
+      "source": "https://musicbrainz.org/release-group/195b4cc7-40c2-414b-b9b2-5e2c69eb612f",
+      "release_kind": "album",
+      "release_format": "album",
+      "context_tags": []
+    },
     "artist_source": "https://musicbrainz.org/artist/1ee37742-1e3d-4e61-84d2-bc85f4c1459a"
   },
   {
@@ -851,11 +907,11 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "WISHLIST",
-      "date": "2026-01-14",
-      "source": "https://musicbrainz.org/release-group/aa6bead7-4507-41db-8d27-0a8a46d5db75",
-      "release_kind": "ep",
-      "release_format": "ep",
+      "title": "Ode to Love",
+      "date": "2026-04-20",
+      "source": "https://musicbrainz.org/release-group/7cd7234a-bbc7-4b9b-bec6-9443914c9719",
+      "release_kind": "album",
+      "release_format": "album",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/fb175979-152f-4f32-bf8b-08aa86c24fe3"
@@ -866,9 +922,9 @@
     "artist_mbid": "c870eef2-a1f9-407c-95f2-1448ad56474a",
     "latest_song": null,
     "latest_album": {
-      "title": "Beat‐Boxer",
-      "date": "2025-10-27",
-      "source": "https://musicbrainz.org/release-group/78518e14-605e-4abe-b030-b2ec4fcd1440",
+      "title": "Mmchk",
+      "date": "2026-04-27",
+      "source": "https://musicbrainz.org/release-group/ed83bc37-256a-4c12-91df-30ef9be5e4c6",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -888,11 +944,11 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "Blue Valentine",
-      "date": "2025-10-13",
-      "source": "https://musicbrainz.org/release-group/fbdd1a42-b8fe-47a6-8bf4-927b61e567f0",
-      "release_kind": "album",
-      "release_format": "album",
+      "title": "Heavy Serenade",
+      "date": "2026-05-11",
+      "source": "https://musicbrainz.org/release-group/98dd9011-5507-46f7-8308-0cb352b1cf64",
+      "release_kind": "ep",
+      "release_format": "ep",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/2d623e82-73e2-4179-9c44-e963980f2d58"
@@ -1036,9 +1092,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "In a million noises, I’ll be your harmony",
-      "date": "2025-06-09",
-      "source": "https://musicbrainz.org/release-group/3d34baf6-f1f9-4dac-879d-4b37d58c9958",
+      "title": "CEREMONY",
+      "date": "2026-04-27",
+      "source": "https://musicbrainz.org/release-group/7ae027f0-aff3-46cc-a5fe-1ce05151288e",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -1272,11 +1328,11 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "7TH YEAR: A Moment of Stillness in the Thorns",
+      "title": "7TH YEAR: 가시덤불에 잠시 바람이 멈췄을 때",
       "date": "2026-04-13",
       "source": "https://musicbrainz.org/release-group/dc4cfe5f-d5b9-4d18-b281-0691e93d40c8",
-      "release_kind": "album",
-      "release_format": "album",
+      "release_kind": "ep",
+      "release_format": "ep",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/9d027d72-790e-40ec-bbb7-61aa613457de"
@@ -1370,9 +1426,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "play hard",
-      "date": "2025-10-13",
-      "source": "https://musicbrainz.org/release-group/5be26f41-0605-41a6-a7a0-06f85305f1c9",
+      "title": "NO TRAGEDY",
+      "date": "2026-04-27",
+      "source": "https://musicbrainz.org/release-group/d44ef52e-c442-4c86-8b8d-c7f06ed15fe5",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -1395,21 +1451,6 @@
     },
     "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/ddea2b8e-f772-4c39-ab90-e1983b74a149"
-  },
-  {
-    "group": "VERIVERY",
-    "artist_name_mb": "VERIVERY",
-    "artist_mbid": "497ad8ff-0d35-4570-8a46-3f6b344b30b4",
-    "latest_song": {
-      "title": "Lost and Found",
-      "date": "2025-12-01",
-      "source": "https://musicbrainz.org/release-group/109571b5-c2ef-4bb1-a3ec-dff21ad2d31c",
-      "release_kind": "single",
-      "release_format": "single",
-      "context_tags": []
-    },
-    "latest_album": null,
-    "artist_source": "https://musicbrainz.org/artist/497ad8ff-0d35-4570-8a46-3f6b344b30b4"
   },
   {
     "group": "VIVIZ",
@@ -1479,6 +1520,21 @@
     "artist_source": "https://musicbrainz.org/artist/99689c05-4f6d-4bff-9b00-06731277fe42"
   },
   {
+    "group": "woo!ah!",
+    "artist_name_mb": "WOOAH",
+    "artist_mbid": "1e8da137-9aa8-4e62-9699-4f66d290b643",
+    "latest_song": {
+      "title": "WXW(Wish With W)",
+      "date": "2026-05-13",
+      "source": "https://musicbrainz.org/release-group/9719e27a-297a-423d-9f16-8e7ca6aaa5b2",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": null,
+    "artist_source": "https://musicbrainz.org/artist/1e8da137-9aa8-4e62-9699-4f66d290b643"
+  },
+  {
     "group": "Xdinary Heroes",
     "artist_name_mb": "Xdinary Heroes",
     "artist_mbid": "d95a463f-e7d3-4c97-98ba-57f75cb4fda2",
@@ -1491,9 +1547,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "LXVE to DEATH",
-      "date": "2025-10-24",
-      "source": "https://musicbrainz.org/release-group/25bb96b9-3470-4923-bb05-7cf734d5775c",
+      "title": "DEAD AND",
+      "date": "2026-04-17",
+      "source": "https://musicbrainz.org/release-group/11b5e506-e259-4f93-8b68-b930fb513d2f",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -1513,9 +1569,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "HOUSE OF TRICKY : WRECKING THE HOUSE",
-      "date": "2025-10-31",
-      "source": "https://musicbrainz.org/release-group/f2c83a31-4bcb-4e5e-b40e-59478ccc77ba",
+      "title": "Route Zero: THE ORA",
+      "date": "2026-05-19",
+      "source": "https://musicbrainz.org/release-group/057c3a5e-8623-472a-8bb7-09f3c7a429c5",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -1567,6 +1623,21 @@
     "artist_source": "https://musicbrainz.org/artist/427150d2-674f-47b2-a1a1-7bb4a9e0d070"
   },
   {
+    "group": "YOUNITE",
+    "artist_name_mb": "YOUNITE",
+    "artist_mbid": "32226bb6-0726-4cd6-a55e-03ec1f48a8d3",
+    "latest_song": null,
+    "latest_album": {
+      "title": "INYUN Part.1",
+      "date": "2026-05-12",
+      "source": "https://musicbrainz.org/release-group/c43fd48b-82ce-468d-9b6a-8b5792b0fa62",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/32226bb6-0726-4cd6-a55e-03ec1f48a8d3"
+  },
+  {
     "group": "ZEROBASEONE",
     "artist_name_mb": "ZEROBASEONE",
     "artist_mbid": "fe038151-1099-4de8-901b-39be66d6e493",
@@ -1579,9 +1650,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "RE-FLOW",
-      "date": "2026-02-02",
-      "source": "https://musicbrainz.org/release-group/901f64ef-586f-4061-86f6-3ec3fb156d5b",
+      "title": "Ascend-",
+      "date": "2026-05-18",
+      "source": "https://musicbrainz.org/release-group/d79cb203-9606-4ec3-9a69-f64888f12fbf",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []

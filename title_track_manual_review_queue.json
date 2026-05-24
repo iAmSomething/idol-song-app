@@ -1,146 +1,18 @@
 [
   {
-    "group": "YOUNITE",
-    "release_title": "BIT, Pt. 1",
-    "release_date": "2023-05-17",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "ICY",
-      "WATERFALL",
-      "LOOK AT THE TV",
-      "TRIP",
-      "SLOGAN"
-    ],
-    "candidate_titles": [],
-    "candidate_sources": [],
-    "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "YOUNITE",
-    "release_title": "BIT Part.2",
-    "release_date": "2023-10-17",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Chili Pop",
-      "Love it",
-      "F!zzy Soda Love",
-      "Cupcake",
-      "A star called you"
-    ],
-    "candidate_titles": [],
-    "candidate_sources": [],
-    "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "YOUNITE",
-    "release_title": "ANOTHER",
-    "release_date": "2024-05-01",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "How We Do",
-      "GEEKIN",
-      "Poco Loco",
-      "ONE+WON",
-      "OMH (Out My Head)"
-    ],
-    "candidate_titles": [],
-    "candidate_sources": [],
-    "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "YOUNITE",
-    "release_title": "로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2",
-    "release_date": "2024-10-31",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "Armageddon",
-      "Love Dive",
-      "월하미인 (LUNA)",
-      "Armageddon (inst.)",
-      "Love Dive (inst.)",
-      "월하미인 (LUNA) (inst.)"
-    ],
-    "candidate_titles": [],
-    "candidate_sources": [],
-    "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "YOUNITE",
-    "release_title": "Y",
-    "release_date": "2024-12-11",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "Perfume",
-      "TASTE",
-      "Episode"
-    ],
-    "candidate_titles": [],
-    "candidate_sources": [],
-    "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "YOUNITE",
-    "release_title": "YOUNI-T",
-    "release_date": "2025-04-23",
-    "stream": "song",
-    "release_kind": "single",
-    "track_titles": [
-      "AMIE SONG",
-      "Rock Steady",
-      "GASOLINE",
-      "Who's Next? (HYUNGSEOK, DEY, KYUNGMUN)",
-      "Twilight Rush (EUNHO, STEVE)",
-      "Miracle Day (EUNSANG, WOONO, SION)",
-      "GOOD TO GO"
-    ],
-    "candidate_titles": [],
-    "candidate_sources": [],
-    "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
     "group": "ZEROBASEONE",
-    "release_title": "YOUTH IN THE SHADE",
-    "release_date": "2023-07-10",
+    "release_title": "Ascend-",
+    "release_date": "2026-05-18",
     "stream": "album",
     "release_kind": "ep",
     "track_titles": [
-      "Back to ZEROBASE",
-      "In Bloom",
-      "New Kidz on the Block",
-      "And I",
-      "Our Season",
-      "Always"
-    ],
-    "candidate_titles": [],
-    "candidate_sources": [],
-    "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ZEROBASEONE",
-    "release_title": "CINEMA PARADISE",
-    "release_date": "2024-08-26",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "GOOD SO BAD",
-      "KILL THE ROMEO",
-      "The Sea (ZB1 remake)",
-      "Insomnia",
-      "Road Movie",
-      "Eternity",
-      "YURA YURA (Korean ver.)"
+      "Intro.",
+      "TOP 5",
+      "V for Vision",
+      "Customize",
+      "Exotic",
+      "Changes",
+      "Zero to Hundred"
     ],
     "candidate_titles": [],
     "candidate_sources": [],

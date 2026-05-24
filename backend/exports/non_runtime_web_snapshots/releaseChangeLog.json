@@ -43,7 +43,7 @@
     "group": "TOMORROW X TOGETHER",
     "change_type": "verified_release_detected",
     "occurred_at": "2026-04-13",
-    "summary": "Verified release \"7TH YEAR: A Moment of Stillness in the Thorns\" landed on 2026-04-13.",
+    "summary": "Verified release \"7TH YEAR: 가시덤불에 잠시 바람이 멈췄을 때\" landed on 2026-04-13.",
     "source_url": "https://musicbrainz.org/release-group/dc4cfe5f-d5b9-4d18-b281-0691e93d40c8",
     "source_domain": "musicbrainz.org",
     "previous_state_hash": "3f5265bb8f47",
@@ -65,9 +65,9 @@
       "published_at": ""
     },
     "verified_release": {
-      "title": "7TH YEAR: A Moment of Stillness in the Thorns",
+      "title": "7TH YEAR: 가시덤불에 잠시 바람이 멈췄을 때",
       "date": "2026-04-13",
-      "release_kind": "album",
+      "release_kind": "ep",
       "source": "https://musicbrainz.org/release-group/dc4cfe5f-d5b9-4d18-b281-0691e93d40c8"
     },
     "snapshot": {
