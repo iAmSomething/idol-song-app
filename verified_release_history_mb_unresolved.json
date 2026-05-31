@@ -3,10 +3,5 @@
     "group": "CSR",
     "reason": "no_exact_release_history",
     "artist_mbid": "27cc84d3-4319-445f-a747-c4b4c7550dfb"
-  },
-  {
-    "group": "VERIVERY",
-    "reason": "HTTPError",
-    "artist_mbid": "497ad8ff-0d35-4570-8a46-3f6b344b30b4"
   }
 ]

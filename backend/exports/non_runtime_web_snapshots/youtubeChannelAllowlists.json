@@ -4797,13 +4797,15 @@
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
           "https://www.youtube.com/channel/UCzCPlvzBhDCz4Z3fWatCUUA",
-          "https://www.youtube.com/@redvelvet.smtown"
+          "https://www.youtube.com/@SANGHYUN0825"
         ],
         "match_keys": [
           "@redvelvet.smtown",
           "https://www.youtube.com/@redvelvet.smtown",
           "channel:uczcplvzbhdcz4z3fwatcuua",
-          "https://www.youtube.com/channel/uczcplvzbhdcz4z3fwatcuua"
+          "https://www.youtube.com/channel/uczcplvzbhdcz4z3fwatcuua",
+          "@sanghyun0825",
+          "https://www.youtube.com/@sanghyun0825"
         ]
       },
       {
@@ -4834,6 +4836,8 @@
       "https://www.youtube.com/@redvelvet.smtown",
       "channel:uczcplvzbhdcz4z3fwatcuua",
       "https://www.youtube.com/channel/uczcplvzbhdcz4z3fwatcuua",
+      "@sanghyun0825",
+      "https://www.youtube.com/@sanghyun0825",
       "@smtown",
       "https://www.youtube.com/@smtown",
       "channel:uc9gtsleksfk4yuj_g1lgqbg",
@@ -4849,13 +4853,15 @@
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
           "https://www.youtube.com/channel/UCzCPlvzBhDCz4Z3fWatCUUA",
-          "https://www.youtube.com/@redvelvet.smtown"
+          "https://www.youtube.com/@SANGHYUN0825"
         ],
         "match_keys": [
           "@redvelvet.smtown",
           "https://www.youtube.com/@redvelvet.smtown",
           "channel:uczcplvzbhdcz4z3fwatcuua",
-          "https://www.youtube.com/channel/uczcplvzbhdcz4z3fwatcuua"
+          "https://www.youtube.com/channel/uczcplvzbhdcz4z3fwatcuua",
+          "@sanghyun0825",
+          "https://www.youtube.com/@sanghyun0825"
         ]
       },
       {

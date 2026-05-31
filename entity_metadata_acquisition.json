@@ -925,13 +925,6 @@
         "provenance": "entityMetadataAcquisition.reviewed_wikidata_record_label",
         "source_url": "https://www.wikidata.org/wiki/Q17466114",
         "review_notes": "Reviewed current label ownership from the structured reference."
-      },
-      "official_youtube": {
-        "value": "https://www.youtube.com/@redvelvet.smtown",
-        "status": "resolved",
-        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
-        "source_url": "https://www.youtube.com/@redvelvet.smtown",
-        "review_notes": "Verified from @redvelvet.smtown handle probe against the official social handle pattern."
       }
     }
   },
