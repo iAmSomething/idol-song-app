@@ -6672,6 +6672,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "FIFTY FIFTY",
+    "release_title": "Imperfect-I'mperfect",
+    "release_date": "2026-06-01",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/3769de60-45d0-475f-93ee-ff9ad184aba1/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/3769de60-45d0-475f-93ee-ff9ad184aba1/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/3769de60-45d0-475f-93ee-ff9ad184aba1",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "fromis_9",
     "release_title": "유리구두",
     "release_date": "2017-11-30",
@@ -10032,6 +10044,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "MAMAMOO",
+    "release_title": "4WARD",
+    "release_date": "2026-06-04",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/dc9e5902-489d-4ee4-90b5-3ad43f45b6cc/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/dc9e5902-489d-4ee4-90b5-3ad43f45b6cc/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/dc9e5902-489d-4ee4-90b5-3ad43f45b6cc",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "MCND",
     "release_title": "Into the Ice Age",
     "release_date": "2020-02-27",
@@ -10136,78 +10160,6 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/187b34ac-9131-41b9-9e5a-db43bacb6f46/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/187b34ac-9131-41b9-9e5a-db43bacb6f46",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "MEOVV",
-    "release_title": "MEOW",
-    "release_date": "2024-09-06",
-    "stream": "song",
-    "cover_image_url": "https://coverartarchive.org/release-group/f2b0987c-fb88-4598-8d3c-fea5c47b4c6d/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/f2b0987c-fb88-4598-8d3c-fea5c47b4c6d/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/f2b0987c-fb88-4598-8d3c-fea5c47b4c6d",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "MEOVV",
-    "release_title": "TOXIC",
-    "release_date": "2024-11-18",
-    "stream": "song",
-    "cover_image_url": "https://coverartarchive.org/release-group/5473b4ff-1f38-4da0-8f8e-dc9879fee4f7/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/5473b4ff-1f38-4da0-8f8e-dc9879fee4f7/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/5473b4ff-1f38-4da0-8f8e-dc9879fee4f7",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "MEOVV",
-    "release_title": "HANDS UP",
-    "release_date": "2025-04-28",
-    "stream": "song",
-    "cover_image_url": "https://coverartarchive.org/release-group/0b9ccbd6-eed1-47e9-b143-242039b8b8d2/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/0b9ccbd6-eed1-47e9-b143-242039b8b8d2/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/0b9ccbd6-eed1-47e9-b143-242039b8b8d2",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "MEOVV",
-    "release_title": "MY EYES OPEN VVIDE",
-    "release_date": "2025-05-12",
-    "stream": "album",
-    "cover_image_url": "https://coverartarchive.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "MEOVV",
-    "release_title": "ME ME ME",
-    "release_date": "2025-07-29",
-    "stream": "song",
-    "cover_image_url": "https://coverartarchive.org/release-group/42fe32fd-e54e-4f97-a470-2328c7628248/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/42fe32fd-e54e-4f97-a470-2328c7628248/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/42fe32fd-e54e-4f97-a470-2328c7628248",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "MEOVV",
-    "release_title": "BURNING UP",
-    "release_date": "2025-10-14",
-    "stream": "song",
-    "cover_image_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -15420,6 +15372,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "SHINee",
+    "release_title": "Atmos",
+    "release_date": "2026-06-01",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/fcc61b73-c620-4204-8fc9-3c1b57c1e8dc/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/fcc61b73-c620-4204-8fc9-3c1b57c1e8dc/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/fcc61b73-c620-4204-8fc9-3c1b57c1e8dc",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "STAYC",
     "release_title": "Star to a Young Culture",
     "release_date": "2020-11-12",
@@ -18092,6 +18056,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/e55e3345-ef7c-44f3-9b99-a25b06df7cf8/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/e55e3345-ef7c-44f3-9b99-a25b06df7cf8",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "tripleS",
+    "release_title": "<LOVE&POP> pt.1",
+    "release_date": "2026-06-01",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/98fb14cc-9134-479b-baa6-18a881e18dca/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/98fb14cc-9134-479b-baa6-18a881e18dca/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/98fb14cc-9134-479b-baa6-18a881e18dca",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },

@@ -5208,6 +5208,15 @@
     "artist_source": "https://musicbrainz.org/artist/5c6b4031-c0e6-468f-ada5-28c33b7d4e0e",
     "releases": [
       {
+        "title": "Imperfect-I'mperfect",
+        "date": "2026-06-01",
+        "source": "https://musicbrainz.org/release-group/3769de60-45d0-475f-93ee-ff9ad184aba1",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "STARSTRUCK",
         "date": "2026-05-15",
         "source": "https://musicbrainz.org/release-group/47441c43-5b20-4808-965f-8ced061bbe25",
@@ -7718,6 +7727,15 @@
     "artist_source": "https://musicbrainz.org/artist/fb588f59-af1a-493a-9508-ed487caa2a11",
     "releases": [
       {
+        "title": "4WARD",
+        "date": "2026-06-04",
+        "source": "https://musicbrainz.org/release-group/dc9e5902-489d-4ee4-90b5-3ad43f45b6cc",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "MIC ON",
         "date": "2022-10-11",
         "source": "https://musicbrainz.org/release-group/0e183e0e-1b14-40f3-aef2-e2e4dac29ec3",
@@ -8093,68 +8111,6 @@
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
-      }
-    ]
-  },
-  {
-    "group": "MEOVV",
-    "artist_name_mb": "MEOVV",
-    "artist_mbid": "f2435d8b-8a29-453d-9d7e-03c61c4b6fc4",
-    "artist_source": "https://musicbrainz.org/artist/f2435d8b-8a29-453d-9d7e-03c61c4b6fc4",
-    "releases": [
-      {
-        "title": "BURNING UP",
-        "date": "2025-10-14",
-        "source": "https://musicbrainz.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "ME ME ME",
-        "date": "2025-07-29",
-        "source": "https://musicbrainz.org/release-group/42fe32fd-e54e-4f97-a470-2328c7628248",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "MY EYES OPEN VVIDE",
-        "date": "2025-05-12",
-        "source": "https://musicbrainz.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "HANDS UP",
-        "date": "2025-04-28",
-        "source": "https://musicbrainz.org/release-group/0b9ccbd6-eed1-47e9-b143-242039b8b8d2",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "TOXIC",
-        "date": "2024-11-18",
-        "source": "https://musicbrainz.org/release-group/5473b4ff-1f38-4da0-8f8e-dc9879fee4f7",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "MEOW",
-        "date": "2024-09-06",
-        "source": "https://musicbrainz.org/release-group/f2b0987c-fb88-4598-8d3c-fea5c47b4c6d",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
       }
     ]
   },
@@ -11819,6 +11775,15 @@
     "artist_source": "https://musicbrainz.org/artist/70e5098b-c4ae-4cd7-9799-3c1b9b57c753",
     "releases": [
       {
+        "title": "Atmos",
+        "date": "2026-06-01",
+        "source": "https://musicbrainz.org/release-group/fcc61b73-c620-4204-8fc9-3c1b57c1e8dc",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "Poet | Artist",
         "date": "2025-05-25",
         "source": "https://musicbrainz.org/release-group/01247a55-c7e5-4fea-8acb-5ef407cfa5f3",
@@ -14184,6 +14149,15 @@
     "artist_mbid": "40017bd7-139b-4998-8688-9b2478ad3325",
     "artist_source": "https://musicbrainz.org/artist/40017bd7-139b-4998-8688-9b2478ad3325",
     "releases": [
+      {
+        "title": "<LOVE&POP> pt.1",
+        "date": "2026-06-01",
+        "source": "https://musicbrainz.org/release-group/98fb14cc-9134-479b-baa6-18a881e18dca",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "トキメティック",
         "date": "2026-02-05",

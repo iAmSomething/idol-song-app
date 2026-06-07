@@ -572,18 +572,24 @@
     "release_date": "2025-02-01",
     "stream": "song",
     "release_kind": "single",
-    "detail_status": "inferred",
-    "detail_provenance": "releaseHistory.placeholder_seed",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_tracklist",
-    "tracks": [],
-    "spotify_url": null,
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Extraordinary day",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/25nQUx8eJNhjD4SCFo3jtW",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "&TEAM",
@@ -4424,18 +4430,69 @@
     "release_date": "2026-05-29",
     "stream": "album",
     "release_kind": "album",
-    "detail_status": "inferred",
-    "detail_provenance": "releaseHistory.placeholder_seed",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_tracklist",
-    "tracks": [],
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "WDA (Whole Different Animal)",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "LEMONADE",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "SHAKIN’",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Can’t Help Myself",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Camouflage",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Bite",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Switchblade",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Roll",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "My Plan",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "’Til We Die",
+        "is_title_track": false
+      }
+    ],
     "spotify_url": null,
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
     "group": "aespa",
@@ -12269,18 +12326,109 @@
     "release_date": "2017-02-12",
     "stream": "album",
     "release_kind": "album",
-    "detail_status": "inferred",
-    "detail_provenance": "releaseHistory.placeholder_seed",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_tracklist",
-    "tracks": [],
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "inferred",
+    "title_track_provenance": "release_title_substring",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Intro : Boy Meets Evil",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Blood Sweat & Tears",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Begin",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Lie",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Stigma",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "First Love",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Reflection",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "MAMA",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "Awake",
+        "is_title_track": false
+      },
+      {
+        "order": 10,
+        "title": "Lost",
+        "is_title_track": false
+      },
+      {
+        "order": 11,
+        "title": "BTS Cypher 4",
+        "is_title_track": false
+      },
+      {
+        "order": 12,
+        "title": "Am I Wrong",
+        "is_title_track": false
+      },
+      {
+        "order": 13,
+        "title": "21st Century Girl",
+        "is_title_track": false
+      },
+      {
+        "order": 14,
+        "title": "2! 3!",
+        "is_title_track": false
+      },
+      {
+        "order": 15,
+        "title": "Spring Day",
+        "is_title_track": false
+      },
+      {
+        "order": 16,
+        "title": "Not Today",
+        "is_title_track": false
+      },
+      {
+        "order": 17,
+        "title": "Outro : Wings",
+        "is_title_track": false
+      },
+      {
+        "order": 18,
+        "title": "A Supplementary Story : You Never Walk Alone",
+        "is_title_track": true
+      }
+    ],
     "spotify_url": null,
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
     "group": "BTS",
@@ -23616,10 +23764,10 @@
     ],
     "spotify_url": "https://open.spotify.com/album/6QcaLmC3oxXlQ3L92VMVHl",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=91VhCIQNjIc",
+    "youtube_video_id": "91VhCIQNjIc",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
@@ -23796,8 +23944,8 @@
     ],
     "spotify_url": "https://open.spotify.com/album/4ZXDMoZKLnkxFyqRGmCLnB",
     "youtube_music_url": null,
-    "youtube_video_url": "https://www.youtube.com/watch?v=7hTbNeHqGD8",
-    "youtube_video_id": "7hTbNeHqGD8",
+    "youtube_video_url": "https://www.youtube.com/watch?v=2EVu6tVZUgc",
+    "youtube_video_id": "2EVu6tVZUgc",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Representative MusicBrainz ALBUM seed with 9 tracks. Canonical links: Spotify."
@@ -23942,10 +24090,10 @@
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=lzm-7YfBJBU",
+    "youtube_video_id": "lzm-7YfBJBU",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
@@ -24190,6 +24338,25 @@
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "FIFTY FIFTY",
+    "release_title": "Imperfect-I'mperfect",
+    "release_date": "2026-06-01",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
     "group": "fromis_9",
@@ -35820,6 +35987,25 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "MAMAMOO",
+    "release_title": "4WARD",
+    "release_date": "2026-06-04",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
     "group": "MCND",
@@ -54306,6 +54492,56 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring). MusicBrainz acquisition enriched: tracks, spotify_url, youtube_music_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "SHINee",
+    "release_title": "Atmos",
+    "release_date": "2026-06-01",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Atmos",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "HOURS",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Possibility",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Anti Believer",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Still Raining",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Thousand Miles Away",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/2EKRc8vhOZC3ExSdP9WDQi",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "STAYC",
     "release_title": "Star to a Young Culture",
     "release_date": "2020-11-12",
@@ -63198,6 +63434,25 @@
     "notes": "Representative MusicBrainz SINGLE seed with 3 tracks."
   },
   {
+    "group": "tripleS",
+    "release_title": "<LOVE&POP> pt.1",
+    "release_date": "2026-06-01",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  },
+  {
     "group": "TUNEXX",
     "release_title": "SET BY US ONLY",
     "release_date": "2026-03-03",
@@ -69305,18 +69560,24 @@
     "release_date": "2026-05-13",
     "stream": "song",
     "release_kind": "single",
-    "detail_status": "inferred",
-    "detail_provenance": "releaseHistory.placeholder_seed",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_tracklist",
-    "tracks": [],
-    "spotify_url": null,
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "WXW(Wish With W)",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/13maoZj59uUsJEh99CbCxY",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "Xdinary Heroes",
@@ -69867,18 +70128,54 @@
     "release_date": "2026-04-17",
     "stream": "album",
     "release_kind": "ep",
-    "detail_status": "inferred",
-    "detail_provenance": "releaseHistory.placeholder_seed",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_tracklist",
-    "tracks": [],
-    "spotify_url": null,
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Helium Balloon",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Voyager",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "No Cool Kids Zone",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Hurt So Good",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Rise High Rise",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "KTM",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "X room",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/4ZkG5DPuj47UvzoZ2bAVOU",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "xikers",

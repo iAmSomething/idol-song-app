@@ -543,9 +543,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "Too Much Part 1",
-      "date": "2025-11-04",
-      "source": "https://musicbrainz.org/release-group/10fc1795-de3f-4a73-8b52-ae882d3b895d",
+      "title": "Imperfect-I'mperfect",
+      "date": "2026-06-01",
+      "source": "https://musicbrainz.org/release-group/3769de60-45d0-475f-93ee-ff9ad184aba1",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -843,19 +843,19 @@
     "artist_source": "https://musicbrainz.org/artist/1689d50f-cd03-43ce-a275-ce7616dafa7f"
   },
   {
-    "group": "MEOVV",
-    "artist_name_mb": "MEOVV",
-    "artist_mbid": "f2435d8b-8a29-453d-9d7e-03c61c4b6fc4",
+    "group": "MAMAMOO",
+    "artist_name_mb": "MAMAMOO",
+    "artist_mbid": "fb588f59-af1a-493a-9508-ed487caa2a11",
     "latest_song": {
-      "title": "BURNING UP",
-      "date": "2025-10-14",
-      "source": "https://musicbrainz.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
+      "title": "4WARD",
+      "date": "2026-06-04",
+      "source": "https://musicbrainz.org/release-group/dc9e5902-489d-4ee4-90b5-3ad43f45b6cc",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
     },
     "latest_album": null,
-    "artist_source": "https://musicbrainz.org/artist/f2435d8b-8a29-453d-9d7e-03c61c4b6fc4"
+    "artist_source": "https://musicbrainz.org/artist/fb588f59-af1a-493a-9508-ed487caa2a11"
   },
   {
     "group": "MONSTA X",
@@ -1176,6 +1176,21 @@
     "artist_source": "https://musicbrainz.org/artist/e04d239e-9fa8-49b3-b9b7-9e439c3cb1d1"
   },
   {
+    "group": "SHINee",
+    "artist_name_mb": "SHINee",
+    "artist_mbid": "70e5098b-c4ae-4cd7-9799-3c1b9b57c753",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Atmos",
+      "date": "2026-06-01",
+      "source": "https://musicbrainz.org/release-group/fcc61b73-c620-4204-8fc9-3c1b57c1e8dc",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/70e5098b-c4ae-4cd7-9799-3c1b9b57c753"
+  },
+  {
     "group": "STAYC",
     "artist_name_mb": "STAYC",
     "artist_mbid": "06bb5fcc-f2b3-428d-b8e7-079060311b6d",
@@ -1382,9 +1397,9 @@
       ]
     },
     "latest_album": {
-      "title": "msnz <Beyond Beauty>",
-      "date": "2025-11-24",
-      "source": "https://musicbrainz.org/release-group/3c02e3dc-a991-4721-9252-c9b3cb2c9290",
+      "title": "<LOVE&POP> pt.1",
+      "date": "2026-06-01",
+      "source": "https://musicbrainz.org/release-group/98fb14cc-9134-479b-baa6-18a881e18dca",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
