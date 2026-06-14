@@ -235,9 +235,9 @@
     "artist_name_mb": "BABYMONSTER",
     "artist_mbid": "5829cd4f-e693-4b03-abe5-1226243c23d6",
     "latest_song": {
-      "title": "HOT SAUCE",
-      "date": "2025-07-01",
-      "source": "https://musicbrainz.org/release-group/29d2346a-b87d-4fe7-886a-77021f945abf",
+      "title": "SUGAR HONEY ICE TEA",
+      "date": "2026-06-08",
+      "source": "https://musicbrainz.org/release-group/9dc57d19-2cfe-4c2a-8322-4011d00172a7",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -326,11 +326,11 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "The Action",
-      "date": "2025-10-20",
-      "source": "https://musicbrainz.org/release-group/79e7f180-0f4a-4d87-98dd-0a39991823fa",
-      "release_kind": "ep",
-      "release_format": "ep",
+      "title": "HOME",
+      "date": "2026-06-08",
+      "source": "https://musicbrainz.org/release-group/ced8da5a-06bf-4570-9834-4456e5bb2ca2",
+      "release_kind": "album",
+      "release_format": "album",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/656d0024-7b5f-4089-9d3e-ce383f15f1b7"
@@ -355,9 +355,9 @@
     "artist_name_mb": "BTS",
     "artist_mbid": "0d79fe8e-ba27-4859-bb8c-2f255f346853",
     "latest_song": {
-      "title": "SWIMSIDE: A Message from BTS",
-      "date": "2026-03-27",
-      "source": "https://musicbrainz.org/release-group/7fb10e85-1809-480c-8c81-4357bf4554f2",
+      "title": "Come Over",
+      "date": "2026-06-12",
+      "source": "https://musicbrainz.org/release-group/faa3b577-949b-4338-8a8b-11ffcbca32c2",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -683,9 +683,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "Not Just Pretty",
-      "date": "2025-09-30",
-      "source": "https://musicbrainz.org/release-group/b1cc1d3d-2f6f-4dd1-836d-e29b3869f5ae",
+      "title": "SET THE TEMPO",
+      "date": "2026-06-08",
+      "source": "https://musicbrainz.org/release-group/c7f50c09-18d1-4d6a-b416-c909d29c3cc3",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -793,9 +793,9 @@
     "artist_name_mb": "LE SSERAFIM",
     "artist_mbid": "1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "latest_song": {
-      "title": "BOOMPALA",
-      "date": "2026-05-22",
-      "source": "https://musicbrainz.org/release-group/50625dfe-f537-4b7b-8782-112338299aaf",
+      "title": "ICONIC BY MISTAKE",
+      "date": "2026-06-10",
+      "source": "https://musicbrainz.org/release-group/c20f68e8-125e-4cf9-8edd-f27e1bc8d2bf",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -856,6 +856,28 @@
     },
     "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/fb588f59-af1a-493a-9508-ed487caa2a11"
+  },
+  {
+    "group": "MEOVV",
+    "artist_name_mb": "MEOVV",
+    "artist_mbid": "f2435d8b-8a29-453d-9d7e-03c61c4b6fc4",
+    "latest_song": {
+      "title": "BURNING UP",
+      "date": "2025-10-14",
+      "source": "https://musicbrainz.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": {
+      "title": "BITE NOW",
+      "date": "2026-06-01",
+      "source": "https://musicbrainz.org/release-group/45bb6c4e-a707-49af-888b-0764a7aa6e41",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/f2435d8b-8a29-453d-9d7e-03c61c4b6fc4"
   },
   {
     "group": "MONSTA X",
@@ -979,7 +1001,14 @@
     "group": "ONEWE",
     "artist_name_mb": "ONEWE",
     "artist_mbid": "720f9030-9b10-4cfa-9a1b-16f80c774cc9",
-    "latest_song": null,
+    "latest_song": {
+      "title": "點 : The Quiver",
+      "date": "2026-05-29",
+      "source": "https://musicbrainz.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
     "latest_album": {
       "title": "MAZE : AD ASTRA",
       "date": "2025-10-07",
@@ -1358,9 +1387,9 @@
     "artist_mbid": "6a64307a-1806-428c-9bee-4afb13b27042",
     "latest_song": null,
     "latest_album": {
-      "title": "LOVE PULSE",
-      "date": "2025-09-01",
-      "source": "https://musicbrainz.org/release-group/a33fa122-f703-4e2d-8cf9-93f93c506dc5",
+      "title": "NEW WAV",
+      "date": "2026-06-01",
+      "source": "https://musicbrainz.org/release-group/21b7e5bb-ca40-4171-b894-e0b3dda01d2b",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []

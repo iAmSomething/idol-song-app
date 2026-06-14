@@ -2400,6 +2400,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "BABYMONSTER",
+    "release_title": "SUGAR HONEY ICE TEA",
+    "release_date": "2026-06-08",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/9dc57d19-2cfe-4c2a-8322-4011d00172a7/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/9dc57d19-2cfe-4c2a-8322-4011d00172a7/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/9dc57d19-2cfe-4c2a-8322-4011d00172a7",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "BADVILLAIN",
     "release_title": "OVERSTEP",
     "release_date": "2024-06-03",
@@ -3032,6 +3044,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/986ee1a2-b78b-45cb-b372-d98b6a5391f5/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/986ee1a2-b78b-45cb-b372-d98b6a5391f5",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "BOYNEXTDOOR",
+    "release_title": "HOME",
+    "release_date": "2026-06-08",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/ced8da5a-06bf-4570-9834-4456e5bb2ca2/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/ced8da5a-06bf-4570-9834-4456e5bb2ca2/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/ced8da5a-06bf-4570-9834-4456e5bb2ca2",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -4080,6 +4104,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "BTS",
+    "release_title": "Come Over",
+    "release_date": "2026-06-12",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/faa3b577-949b-4338-8a8b-11ffcbca32c2/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/faa3b577-949b-4338-8a8b-11ffcbca32c2/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/faa3b577-949b-4338-8a8b-11ffcbca32c2",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "cignature",
     "release_title": "NUN NU NAN NA",
     "release_date": "2020-02-03",
@@ -4628,6 +4664,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/44e36813-a852-401d-ad33-a23e11357a06/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/44e36813-a852-401d-ad33-a23e11357a06",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "CRAVITY",
+    "release_title": "Dare to Crave: Epilogue",
+    "release_date": "2025-11-10",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/52412acf-905b-44b1-a85d-bcd30ca8dde7/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/52412acf-905b-44b1-a85d-bcd30ca8dde7/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/52412acf-905b-44b1-a85d-bcd30ca8dde7",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -8340,6 +8388,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "izna",
+    "release_title": "SET THE TEMPO",
+    "release_date": "2026-06-08",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/c7f50c09-18d1-4d6a-b416-c909d29c3cc3/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/c7f50c09-18d1-4d6a-b416-c909d29c3cc3/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/c7f50c09-18d1-4d6a-b416-c909d29c3cc3",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "JUST B",
     "release_title": "Configurations 12",
     "release_date": "2020-12-28",
@@ -9432,6 +9492,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "LE SSERAFIM",
+    "release_title": "ICONIC BY MISTAKE",
+    "release_date": "2026-06-10",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/c20f68e8-125e-4cf9-8edd-f27e1bc8d2bf/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/c20f68e8-125e-4cf9-8edd-f27e1bc8d2bf/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/c20f68e8-125e-4cf9-8edd-f27e1bc8d2bf",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "LIGHTSUM",
     "release_title": "Vanilla",
     "release_date": "2021-06-10",
@@ -10160,6 +10232,90 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/187b34ac-9131-41b9-9e5a-db43bacb6f46/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/187b34ac-9131-41b9-9e5a-db43bacb6f46",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "MEOVV",
+    "release_title": "MEOW",
+    "release_date": "2024-09-06",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/f2b0987c-fb88-4598-8d3c-fea5c47b4c6d/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/f2b0987c-fb88-4598-8d3c-fea5c47b4c6d/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/f2b0987c-fb88-4598-8d3c-fea5c47b4c6d",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "MEOVV",
+    "release_title": "TOXIC",
+    "release_date": "2024-11-18",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/5473b4ff-1f38-4da0-8f8e-dc9879fee4f7/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/5473b4ff-1f38-4da0-8f8e-dc9879fee4f7/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/5473b4ff-1f38-4da0-8f8e-dc9879fee4f7",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "MEOVV",
+    "release_title": "HANDS UP",
+    "release_date": "2025-04-28",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/0b9ccbd6-eed1-47e9-b143-242039b8b8d2/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/0b9ccbd6-eed1-47e9-b143-242039b8b8d2/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/0b9ccbd6-eed1-47e9-b143-242039b8b8d2",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "MEOVV",
+    "release_title": "MY EYES OPEN VVIDE",
+    "release_date": "2025-05-12",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "MEOVV",
+    "release_title": "ME ME ME",
+    "release_date": "2025-07-29",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/42fe32fd-e54e-4f97-a470-2328c7628248/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/42fe32fd-e54e-4f97-a470-2328c7628248/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/42fe32fd-e54e-4f97-a470-2328c7628248",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "MEOVV",
+    "release_title": "BURNING UP",
+    "release_date": "2025-10-14",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "MEOVV",
+    "release_title": "BITE NOW",
+    "release_date": "2026-06-01",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/45bb6c4e-a707-49af-888b-0764a7aa6e41/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/45bb6c4e-a707-49af-888b-0764a7aa6e41/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/45bb6c4e-a707-49af-888b-0764a7aa6e41",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -12752,6 +12908,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONEWE",
+    "release_title": "點 : The Quiver",
+    "release_date": "2026-05-29",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -17672,6 +17840,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/a33fa122-f703-4e2d-8cf9-93f93c506dc5/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/a33fa122-f703-4e2d-8cf9-93f93c506dc5",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "TREASURE",
+    "release_title": "NEW WAV",
+    "release_date": "2026-06-01",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/21b7e5bb-ca40-4171-b894-e0b3dda01d2b/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/21b7e5bb-ca40-4171-b894-e0b3dda01d2b/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/21b7e5bb-ca40-4171-b894-e0b3dda01d2b",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },

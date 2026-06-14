@@ -1841,6 +1841,15 @@
     "artist_source": "https://musicbrainz.org/artist/5829cd4f-e693-4b03-abe5-1226243c23d6",
     "releases": [
       {
+        "title": "SUGAR HONEY ICE TEA",
+        "date": "2026-06-08",
+        "source": "https://musicbrainz.org/release-group/9dc57d19-2cfe-4c2a-8322-4011d00172a7",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "춤 (CHOOM)",
         "date": "2026-05-04",
         "source": "https://musicbrainz.org/release-group/1267feb3-0379-4904-a9fa-86091f38d83d",
@@ -2325,6 +2334,15 @@
     "artist_mbid": "656d0024-7b5f-4089-9d3e-ce383f15f1b7",
     "artist_source": "https://musicbrainz.org/artist/656d0024-7b5f-4089-9d3e-ce383f15f1b7",
     "releases": [
+      {
+        "title": "HOME",
+        "date": "2026-06-08",
+        "source": "https://musicbrainz.org/release-group/ced8da5a-06bf-4570-9834-4456e5bb2ca2",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "ddok ddok ddok",
         "date": "2026-05-11",
@@ -2833,6 +2851,15 @@
     "artist_mbid": "0d79fe8e-ba27-4859-bb8c-2f255f346853",
     "artist_source": "https://musicbrainz.org/artist/0d79fe8e-ba27-4859-bb8c-2f255f346853",
     "releases": [
+      {
+        "title": "Come Over",
+        "date": "2026-06-12",
+        "source": "https://musicbrainz.org/release-group/faa3b577-949b-4338-8a8b-11ffcbca32c2",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "SWIMSIDE: A Message from BTS",
         "date": "2026-03-27",
@@ -3555,6 +3582,15 @@
         "source": "https://musicbrainz.org/release-group/a5f932b5-3448-4526-875b-9e2d0e49722b",
         "release_kind": "ep",
         "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "Dare to Crave: Epilogue",
+        "date": "2025-11-10",
+        "source": "https://musicbrainz.org/release-group/52412acf-905b-44b1-a85d-bcd30ca8dde7",
+        "release_kind": "album",
+        "release_format": "album",
         "context_tags": [],
         "stream": "album"
       },
@@ -6600,6 +6636,15 @@
     "artist_source": "https://musicbrainz.org/artist/c3d9b981-0420-45ae-93ca-21d78f0fb14f",
     "releases": [
       {
+        "title": "SET THE TEMPO",
+        "date": "2026-06-08",
+        "source": "https://musicbrainz.org/release-group/c7f50c09-18d1-4d6a-b416-c909d29c3cc3",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "Love All",
         "date": "2026-03-16",
         "source": "https://musicbrainz.org/release-group/0907f508-a93a-435e-87d9-f7f827f2093f",
@@ -7303,6 +7348,15 @@
     "artist_mbid": "1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "artist_source": "https://musicbrainz.org/artist/1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "releases": [
+      {
+        "title": "ICONIC BY MISTAKE",
+        "date": "2026-06-10",
+        "source": "https://musicbrainz.org/release-group/c20f68e8-125e-4cf9-8edd-f27e1bc8d2bf",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "‘PUREFLOW’ pt.1",
         "date": "2026-05-22",
@@ -8111,6 +8165,77 @@
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
+      }
+    ]
+  },
+  {
+    "group": "MEOVV",
+    "artist_name_mb": "MEOVV",
+    "artist_mbid": "f2435d8b-8a29-453d-9d7e-03c61c4b6fc4",
+    "artist_source": "https://musicbrainz.org/artist/f2435d8b-8a29-453d-9d7e-03c61c4b6fc4",
+    "releases": [
+      {
+        "title": "BITE NOW",
+        "date": "2026-06-01",
+        "source": "https://musicbrainz.org/release-group/45bb6c4e-a707-49af-888b-0764a7aa6e41",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "BURNING UP",
+        "date": "2025-10-14",
+        "source": "https://musicbrainz.org/release-group/87bcfee4-b8fc-438b-8e4b-241ec21c3895",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "ME ME ME",
+        "date": "2025-07-29",
+        "source": "https://musicbrainz.org/release-group/42fe32fd-e54e-4f97-a470-2328c7628248",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "MY EYES OPEN VVIDE",
+        "date": "2025-05-12",
+        "source": "https://musicbrainz.org/release-group/5ad72bb4-353d-4cfe-8cc8-9cd17973d21a",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "HANDS UP",
+        "date": "2025-04-28",
+        "source": "https://musicbrainz.org/release-group/0b9ccbd6-eed1-47e9-b143-242039b8b8d2",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "TOXIC",
+        "date": "2024-11-18",
+        "source": "https://musicbrainz.org/release-group/5473b4ff-1f38-4da0-8f8e-dc9879fee4f7",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "MEOW",
+        "date": "2024-09-06",
+        "source": "https://musicbrainz.org/release-group/f2b0987c-fb88-4598-8d3c-fea5c47b4c6d",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       }
     ]
   },
@@ -9906,6 +10031,15 @@
     "artist_mbid": "720f9030-9b10-4cfa-9a1b-16f80c774cc9",
     "artist_source": "https://musicbrainz.org/artist/720f9030-9b10-4cfa-9a1b-16f80c774cc9",
     "releases": [
+      {
+        "title": "點 : The Quiver",
+        "date": "2026-05-29",
+        "source": "https://musicbrainz.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "MAZE : AD ASTRA",
         "date": "2025-10-07",
@@ -13827,6 +13961,15 @@
     "artist_mbid": "6a64307a-1806-428c-9bee-4afb13b27042",
     "artist_source": "https://musicbrainz.org/artist/6a64307a-1806-428c-9bee-4afb13b27042",
     "releases": [
+      {
+        "title": "NEW WAV",
+        "date": "2026-06-01",
+        "source": "https://musicbrainz.org/release-group/21b7e5bb-ca40-4171-b894-e0b3dda01d2b",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "LOVE PULSE",
         "date": "2025-09-01",
