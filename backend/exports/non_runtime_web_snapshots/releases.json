@@ -26,9 +26,9 @@
     "artist_name_mb": "i‐dle",
     "artist_mbid": "0068ae6c-7156-40f9-a81f-39294af6a549",
     "latest_song": {
-      "title": "HIDE AND SEEK",
-      "date": "2026-04-22",
-      "source": "https://musicbrainz.org/release-group/273a441b-0687-42df-bd34-5517f01503df",
+      "title": "Crow",
+      "date": "2026-06-15",
+      "source": "https://musicbrainz.org/release-group/f4f4c753-c9c9-4ba1-baff-10eb1efed3e0",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -477,11 +477,11 @@
     "artist_mbid": "dab563b4-21b2-44be-b8d7-9527c4e530c1",
     "latest_song": null,
     "latest_album": {
-      "title": "Youth Chapter 3 : ROMANTIC YOUTH",
-      "date": "2025-07-28",
-      "source": "https://musicbrainz.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e",
-      "release_kind": "album",
-      "release_format": "album",
+      "title": "Youth : Epilogue",
+      "date": "2026-06-09",
+      "source": "https://musicbrainz.org/release-group/fca34014-435c-429b-bb9e-8dc9d1e2ea17",
+      "release_kind": "ep",
+      "release_format": "ep",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/dab563b4-21b2-44be-b8d7-9527c4e530c1"
@@ -1031,7 +1031,14 @@
       "release_format": "single",
       "context_tags": []
     },
-    "latest_album": null,
+    "latest_album": {
+      "title": "ONF:MY SELF",
+      "date": "2026-06-17",
+      "source": "https://musicbrainz.org/release-group/599aad9a-25be-4c51-9d5a-c4400f91da9b",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
     "artist_source": "https://musicbrainz.org/artist/407edcfa-cc74-40ca-bece-8e98f8fb0deb"
   },
   {
@@ -1157,14 +1164,21 @@
     "artist_name_mb": "RIIZE",
     "artist_mbid": "f3eaa943-71b3-44b6-8b66-74c787742aae",
     "latest_song": {
-      "title": "All of You",
-      "date": "2026-02-09",
-      "source": "https://musicbrainz.org/release-group/4dc1c060-7c99-408b-8ffe-2afb1a9032bb",
+      "title": "KILL SHOT",
+      "date": "2026-04-19",
+      "source": "https://musicbrainz.org/release-group/07ffcd81-f4a2-4a25-9618-5a5b4b4e7990",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
     },
-    "latest_album": null,
+    "latest_album": {
+      "title": "Ⅱ",
+      "date": "2026-06-15",
+      "source": "https://musicbrainz.org/release-group/86f39630-d9ca-41e8-98ba-afdf9ada7e88",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
     "artist_source": "https://musicbrainz.org/artist/f3eaa943-71b3-44b6-8b66-74c787742aae"
   },
   {
@@ -1172,12 +1186,14 @@
     "artist_name_mb": "SAY MY NAME",
     "artist_mbid": "61cc7260-0bed-4811-822f-8d30ceae7722",
     "latest_song": {
-      "title": "iLy",
-      "date": "2025-08-01",
-      "source": "https://musicbrainz.org/release-group/440ca3df-b629-4455-b67d-d44cf488a6e3",
+      "title": "YOUR SCENT (20th Anniversary of the Korean Wave Pt.8)",
+      "date": "2026-06-15",
+      "source": "https://musicbrainz.org/release-group/86743465-66f8-4c02-bd98-4dafdd9cb6d2",
       "release_kind": "single",
       "release_format": "single",
-      "context_tags": []
+      "context_tags": [
+        "special_project"
+      ]
     },
     "latest_album": {
       "title": "&Our Vibe",
@@ -1232,11 +1248,11 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "STAY ALIVE",
-      "date": "2026-02-11",
-      "source": "https://musicbrainz.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76",
-      "release_kind": "album",
-      "release_format": "album",
+      "title": "2:LOVE",
+      "date": "2026-06-16",
+      "source": "https://musicbrainz.org/release-group/dfdd988b-98f2-4f2d-937c-40f4a372aec2",
+      "release_kind": "ep",
+      "release_format": "ep",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/06bb5fcc-f2b3-428d-b8e7-079060311b6d"
@@ -1462,9 +1478,9 @@
     "artist_name_mb": "TWS",
     "artist_mbid": "f68e8675-5ad8-47eb-b7ec-da9cc210e0b4",
     "latest_song": {
-      "title": "YOU LIKE IT I LOVE IT",
-      "date": "2026-03-23",
-      "source": "https://musicbrainz.org/release-group/d560330a-b407-4d53-8213-316455f9d9fc",
+      "title": "Dream With Us",
+      "date": "2026-06-11",
+      "source": "https://musicbrainz.org/release-group/6a3bcc3a-48d4-4c74-9341-c0fb9f7c037c",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []

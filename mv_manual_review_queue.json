@@ -4581,9 +4581,11 @@
     "release_date": "2026-06-08",
     "stream": "song",
     "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "SUGAR HONEY ICE TEA"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@YGBABYMONSTER_",
     "mv_source_channels": [
@@ -4603,7 +4605,7 @@
       "https://www.youtube.com/@YGEntertainment"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "BABYMONSTER SUGAR HONEY ICE TEA official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=BABYMONSTER+SUGAR+HONEY+ICE+TEA+official+mv",
@@ -32106,6 +32108,35 @@
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
+    "group": "ONF",
+    "release_title": "ONF:MY SELF",
+    "release_date": "2026-06-17",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw",
+        "channel_label": "ONF",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCgdj5bL5_Il2tqsQ7J4k6zw"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "ONF ONF:MY SELF official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ONF+ONF%3AMY+SELF+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "P1Harmony",
     "release_title": "DISHARMONY: STAND OUT",
     "release_date": "2020-10-28",
@@ -35600,6 +35631,76 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "RIIZE",
+    "release_title": "KILL SHOT",
+    "release_date": "2026-04-19",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@RIIZE_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@RIIZE_official",
+        "channel_label": "RIIZE",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@RIIZE_official",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "RIIZE KILL SHOT official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=RIIZE+KILL+SHOT+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "RIIZE",
+    "release_title": "Ⅱ",
+    "release_date": "2026-06-15",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@RIIZE_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@RIIZE_official",
+        "channel_label": "RIIZE",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@RIIZE_official",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "RIIZE Ⅱ official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=RIIZE+%E2%85%A1+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "SAY MY NAME",
     "release_title": "SAY MY NAME",
     "release_date": "2024-10-16",
@@ -35666,6 +35767,43 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "SAY MY NAME My Name Is… official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=SAY+MY+NAME+My+Name+Is%E2%80%A6+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "SAY MY NAME",
+    "release_title": "YOUR SCENT (20th Anniversary of the Korean Wave Pt.8)",
+    "release_date": "2026-06-15",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "YOUR SCENT"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@sa2m2nam3",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@sa2m2nam3",
+        "channel_label": "SAY MY NAME",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@inkodeofficial",
+        "channel_label": "iNKODE Official",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@sa2m2nam3",
+      "https://www.youtube.com/@inkodeofficial"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "SAY MY NAME YOUR SCENT official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=SAY+MY+NAME+YOUR+SCENT+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -39255,6 +39393,35 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=STAYC+STAY+ALIVE+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
+  },
+  {
+    "group": "STAYC",
+    "release_title": "2:LOVE",
+    "release_date": "2026-06-16",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@stayc_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_label": "STAYC",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@stayc_official"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "STAYC 2:LOVE official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=STAYC+2%3ALOVE+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
     "group": "Stray Kids",
@@ -47514,6 +47681,43 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "TWS NO TRAGEDY official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=TWS+NO+TRAGEDY+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "TWS",
+    "release_title": "Dream With Us",
+    "release_date": "2026-06-11",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "Dream With Us"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@TWS_PLEDIS",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@TWS_PLEDIS",
+        "channel_label": "TWS",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@HYBELABELS",
+        "channel_label": "HYBE LABELS",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@TWS_PLEDIS",
+      "https://www.youtube.com/@HYBELABELS"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "TWS Dream With Us official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TWS+Dream+With+Us+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },

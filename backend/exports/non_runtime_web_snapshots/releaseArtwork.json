@@ -505,18 +505,6 @@
   },
   {
     "group": "(G)I-DLE",
-    "release_title": "This Time Around",
-    "release_date": "2024-03-15",
-    "stream": "song",
-    "cover_image_url": "https://coverartarchive.org/release-group/e1556996-2deb-4290-9c05-62ed5e4fbeba/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/e1556996-2deb-4290-9c05-62ed5e4fbeba/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/e1556996-2deb-4290-9c05-62ed5e4fbeba",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "(G)I-DLE",
     "release_title": "I SWAY",
     "release_date": "2024-07-08",
     "stream": "album",
@@ -596,6 +584,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/273a441b-0687-42df-bd34-5517f01503df/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/273a441b-0687-42df-bd34-5517f01503df",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "(G)I-DLE",
+    "release_title": "Crow",
+    "release_date": "2026-06-15",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/f4f4c753-c9c9-4ba1-baff-10eb1efed3e0/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/f4f4c753-c9c9-4ba1-baff-10eb1efed3e0/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/f4f4c753-c9c9-4ba1-baff-10eb1efed3e0",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -3733,18 +3733,6 @@
   },
   {
     "group": "BTS",
-    "release_title": "You Never Walk Alone",
-    "release_date": "2017-02-12",
-    "stream": "album",
-    "cover_image_url": "https://coverartarchive.org/release-group/1055160e-0e42-4281-ad7b-a7618788a328/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/1055160e-0e42-4281-ad7b-a7618788a328/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/1055160e-0e42-4281-ad7b-a7618788a328",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "BTS",
     "release_title": "LOVE YOURSELF 承 ‘Her’",
     "release_date": "2017-04-10",
     "stream": "album",
@@ -6188,6 +6176,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/cd7b898e-80a2-4257-b2bb-3a2c8d550f1e",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "EPEX",
+    "release_title": "Youth : Epilogue",
+    "release_date": "2026-06-09",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/fca34014-435c-429b-bb9e-8dc9d1e2ea17/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/fca34014-435c-429b-bb9e-8dc9d1e2ea17/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/fca34014-435c-429b-bb9e-8dc9d1e2ea17",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -13092,6 +13092,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "ONF",
+    "release_title": "ONF:MY SELF",
+    "release_date": "2026-06-17",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/599aad9a-25be-4c51-9d5a-c4400f91da9b/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/599aad9a-25be-4c51-9d5a-c4400f91da9b/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/599aad9a-25be-4c51-9d5a-c4400f91da9b",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "P1Harmony",
     "release_title": "DISHARMONY: STAND OUT",
     "release_date": "2020-10-28",
@@ -14448,6 +14460,30 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "RIIZE",
+    "release_title": "KILL SHOT",
+    "release_date": "2026-04-19",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/07ffcd81-f4a2-4a25-9618-5a5b4b4e7990/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/07ffcd81-f4a2-4a25-9618-5a5b4b4e7990/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/07ffcd81-f4a2-4a25-9618-5a5b4b4e7990",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "RIIZE",
+    "release_title": "Ⅱ",
+    "release_date": "2026-06-15",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/86f39630-d9ca-41e8-98ba-afdf9ada7e88/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/86f39630-d9ca-41e8-98ba-afdf9ada7e88/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/86f39630-d9ca-41e8-98ba-afdf9ada7e88",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "SAY MY NAME",
     "release_title": "SAY MY NAME",
     "release_date": "2024-10-16",
@@ -14492,6 +14528,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/46627fda-0c83-491f-89dd-19b93b6c7c46",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "SAY MY NAME",
+    "release_title": "YOUR SCENT (20th Anniversary of the Korean Wave Pt.8)",
+    "release_date": "2026-06-15",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/86743465-66f8-4c02-bd98-4dafdd9cb6d2/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/86743465-66f8-4c02-bd98-4dafdd9cb6d2/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/86743465-66f8-4c02-bd98-4dafdd9cb6d2",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -15740,6 +15788,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "STAYC",
+    "release_title": "2:LOVE",
+    "release_date": "2026-06-16",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/dfdd988b-98f2-4f2d-937c-40f4a372aec2/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/dfdd988b-98f2-4f2d-937c-40f4a372aec2/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/dfdd988b-98f2-4f2d-937c-40f4a372aec2",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -19052,6 +19112,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/d44ef52e-c442-4c86-8b8d-c7f06ed15fe5/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/d44ef52e-c442-4c86-8b8d-c7f06ed15fe5",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "TWS",
+    "release_title": "Dream With Us",
+    "release_date": "2026-06-11",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/6a3bcc3a-48d4-4c74-9341-c0fb9f7c037c/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/6a3bcc3a-48d4-4c74-9341-c0fb9f7c037c/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/6a3bcc3a-48d4-4c74-9341-c0fb9f7c037c",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
