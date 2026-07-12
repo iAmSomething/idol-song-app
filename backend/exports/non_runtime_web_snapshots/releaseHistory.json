@@ -184,6 +184,15 @@
     "artist_source": "https://musicbrainz.org/artist/0068ae6c-7156-40f9-a81f-39294af6a549",
     "releases": [
       {
+        "title": "We made",
+        "date": "2026-07-06",
+        "source": "https://musicbrainz.org/release-group/f2bb7374-1953-48b0-94d8-87a5f64a6b51",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "Crow",
         "date": "2026-06-15",
         "source": "https://musicbrainz.org/release-group/f4f4c753-c9c9-4ba1-baff-10eb1efed3e0",
@@ -247,15 +256,6 @@
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
-      },
-      {
-        "title": "Klaxon",
-        "date": "2024-07-08",
-        "source": "https://musicbrainz.org/release-group/0a291d6f-62f4-4e08-a1f2-e1c9b3003f89",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
       },
       {
         "title": "Abracadabra",
@@ -857,6 +857,15 @@
         "stream": "album"
       },
       {
+        "title": "LEMONADE - The 2nd Album",
+        "date": "2026-05-29",
+        "source": "https://musicbrainz.org/release-group/e5127f72-7758-4ecd-9b48-2b977b216c5e",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "LEMONADE",
         "date": "2026-05-29",
         "source": "https://musicbrainz.org/release-group/5087c822-983c-4100-a976-151f444d1b41",
@@ -1411,6 +1420,15 @@
     "artist_source": "https://musicbrainz.org/artist/cf0dbc16-4e24-4957-b5b4-955c8978f690",
     "releases": [
       {
+        "title": "GOLDEN HOUR : Part.5",
+        "date": "2026-06-26",
+        "source": "https://musicbrainz.org/release-group/04059843-93e5-4d50-9604-7dc48ae74fb9",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "GOLDEN HOUR : Part.4",
         "date": "2026-02-06",
         "source": "https://musicbrainz.org/release-group/8072d29d-f779-404e-b5cc-0cc01e442444",
@@ -1796,6 +1814,15 @@
     "artist_mbid": "8a3f4979-23ca-48c8-9d01-5baffee9ea5f",
     "artist_source": "https://musicbrainz.org/artist/8a3f4979-23ca-48c8-9d01-5baffee9ea5f",
     "releases": [
+      {
+        "title": "Say It",
+        "date": "2026-06-25",
+        "source": "https://musicbrainz.org/release-group/0cf55baf-dc9c-451b-bf81-9d3299dff844",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Butterfly Doors",
         "date": "2026-03-11",
@@ -2229,15 +2256,6 @@
         "stream": "song"
       },
       {
-        "title": "As If It's Your Last",
-        "date": "2017-06-22",
-        "source": "https://musicbrainz.org/release-group/afcdf137-3185-40d4-ae9f-cc4090bf7da3",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
         "title": "마지막처럼",
         "date": "2017-06-22",
         "source": "https://musicbrainz.org/release-group/22f59819-f5f9-4f2d-a126-781485419a9f",
@@ -2398,7 +2416,7 @@
         "stream": "song"
       },
       {
-        "title": "It's Beginning To Look A Lot Like Christmas - Single",
+        "title": "It's Beginning to Look a Lot Like Christmas",
         "date": "2024-10-31",
         "source": "https://musicbrainz.org/release-group/63d08bb1-b930-417f-a0b0-dd3a407991f7",
         "release_kind": "single",
@@ -3473,95 +3491,6 @@
     ]
   },
   {
-    "group": "CLASS:y",
-    "artist_name_mb": "CLASS:y",
-    "artist_mbid": "d822cea3-5299-4c20-9973-0b122864da21",
-    "artist_source": "https://musicbrainz.org/artist/d822cea3-5299-4c20-9973-0b122864da21",
-    "releases": [
-      {
-        "title": "LOVE XX",
-        "date": "2024-11-15",
-        "source": "https://musicbrainz.org/release-group/baa6066f-4d62-4509-acfa-a06661ab8343",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Winter Bloom",
-        "date": "2023-12-20",
-        "source": "https://musicbrainz.org/release-group/ce2ee7b9-a3fe-43a2-80fc-2fbf534dfb61",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Crack‐Crack‐Crackle",
-        "date": "2023-07-12",
-        "source": "https://musicbrainz.org/release-group/bd7508e3-1ea4-4642-b6e5-e45b66cdf3e8",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "My Love",
-        "date": "2023-05-05",
-        "source": "https://musicbrainz.org/release-group/c95c725c-d06e-4121-a749-ae06614581d6",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "TARGET",
-        "date": "2023-02-08",
-        "source": "https://musicbrainz.org/release-group/30d5b2a4-741b-42c2-aa94-7e319d848151",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Day&Night",
-        "date": "2022-10-26",
-        "source": "https://musicbrainz.org/release-group/bc6261c4-8ae9-4e35-99f5-014d90366aa3",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Can I Call It Love",
-        "date": "2022-09-25",
-        "source": "https://musicbrainz.org/release-group/bd6cc87d-1d5c-4fde-b59a-13bfcdc1d1bc",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "LIVES ACROSS",
-        "date": "2022-05-26",
-        "source": "https://musicbrainz.org/release-group/229d50e7-9ba5-459a-8055-1dd768b400b0",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "CLASS IS OVER",
-        "date": "2022-05-05",
-        "source": "https://musicbrainz.org/release-group/872e28e2-5998-4505-9a68-42aa87d35d82",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      }
-    ]
-  },
-  {
     "group": "CRAVITY",
     "artist_name_mb": "CRAVITY",
     "artist_mbid": "035e63b4-a34d-4f8e-a61f-6c2527eed16e",
@@ -4494,6 +4423,15 @@
     "artist_source": "https://musicbrainz.org/artist/0d12abec-f7d1-437e-9d82-395ded77262e",
     "releases": [
       {
+        "title": "HYPER LINK : Vol.3",
+        "date": "2026-07-06",
+        "source": "https://musicbrainz.org/release-group/4a24b9d8-a27d-4550-9bb0-baa901aa60bf",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "HYPER LINK: Vol.2",
         "date": "2026-05-20",
         "source": "https://musicbrainz.org/release-group/35ee4a40-b9b0-438a-ab08-c7321b2b0ea6",
@@ -4555,6 +4493,15 @@
     "artist_mbid": "95663592-1447-4579-90f7-c94733476667",
     "artist_source": "https://musicbrainz.org/artist/95663592-1447-4579-90f7-c94733476667",
     "releases": [
+      {
+        "title": "We’ll Be Fine",
+        "date": "2026-06-28",
+        "source": "https://musicbrainz.org/release-group/ae392451-e486-47f0-934b-1d468ea40a60",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "THE SIN : VANISH",
         "date": "2026-01-16",
@@ -5754,6 +5701,15 @@
     "artist_mbid": "066080a4-84c7-46c6-91d3-dc10d572749b",
     "artist_source": "https://musicbrainz.org/artist/066080a4-84c7-46c6-91d3-dc10d572749b",
     "releases": [
+      {
+        "title": "Lemon Tang",
+        "date": "2026-06-22",
+        "source": "https://musicbrainz.org/release-group/23757eb9-48b4-4bdd-aee9-10c6c135ec97",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "RUDE!",
         "date": "2026-02-20",
@@ -7233,6 +7189,15 @@
     "artist_source": "https://musicbrainz.org/artist/cbe629e3-fbbd-4071-9e12-4c5074c2231b",
     "releases": [
       {
+        "title": "BREAK IT",
+        "date": "2026-07-04",
+        "source": "https://musicbrainz.org/release-group/8c766240-86d1-489d-abf0-2323b2d92471",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "Who is she",
         "date": "2026-04-06",
         "source": "https://musicbrainz.org/release-group/ad3e34ed-ce16-4b33-82e2-823e3a0cc638",
@@ -7574,70 +7539,6 @@
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
-      }
-    ]
-  },
-  {
-    "group": "LIGHTSUM",
-    "artist_name_mb": "LIGHTSUM",
-    "artist_mbid": "6bfa076d-881b-442f-adc9-c8c17c6c87d3",
-    "artist_source": "https://musicbrainz.org/artist/6bfa076d-881b-442f-adc9-c8c17c6c87d3",
-    "releases": [
-      {
-        "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
-        "date": "2026-01-15",
-        "source": "https://musicbrainz.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [
-          "special_project"
-        ],
-        "stream": "song"
-      },
-      {
-        "title": "POSE!",
-        "date": "2024-08-07",
-        "source": "https://musicbrainz.org/release-group/1f94ea31-0471-47ff-90db-c672bbf28882",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Honey or Spice",
-        "date": "2023-10-11",
-        "source": "https://musicbrainz.org/release-group/69781146-25ec-41d3-bbfa-9799fd45af56",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Into the Light",
-        "date": "2022-05-24",
-        "source": "https://musicbrainz.org/release-group/16e2bd1d-42bb-490f-8232-a76ac11a1938",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Light a Wish",
-        "date": "2021-10-13",
-        "source": "https://musicbrainz.org/release-group/c6983c6c-a103-4d84-8f4b-05ff21307580",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Vanilla",
-        "date": "2021-06-10",
-        "source": "https://musicbrainz.org/release-group/e3547c16-b39b-4c3a-8033-a821f80899b8",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
       }
     ]
   },
@@ -9210,6 +9111,15 @@
     "artist_source": "https://musicbrainz.org/artist/fb175979-152f-4f32-bf8b-08aa86c24fe3",
     "releases": [
       {
+        "title": "BOY MEETS GIRL",
+        "date": "2026-06-22",
+        "source": "https://musicbrainz.org/release-group/a2343b92-299a-4819-80e5-121d910ec73c",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "Ode to Love",
         "date": "2026-04-20",
         "source": "https://musicbrainz.org/release-group/7cd7234a-bbc7-4b9b-bec6-9443914c9719",
@@ -9753,6 +9663,15 @@
     "artist_mbid": "c010eb84-2de1-40b2-b267-40de6002daab",
     "artist_source": "https://musicbrainz.org/artist/c010eb84-2de1-40b2-b267-40de6002daab",
     "releases": [
+      {
+        "title": "Under",
+        "date": "2026-07-01",
+        "source": "https://musicbrainz.org/release-group/a667d824-1049-4880-bdeb-83920c96f186",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "原",
         "date": "2026-01-20",
@@ -10912,6 +10831,15 @@
     "artist_source": "https://musicbrainz.org/artist/86bfda70-ad8c-4db4-9041-e4843d918269",
     "releases": [
       {
+        "title": "SHOW DOWN",
+        "date": "2026-07-08",
+        "source": "https://musicbrainz.org/release-group/7227ec39-4c16-4421-b514-2ebafd883ecd",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "CEREMONY",
         "date": "2026-04-27",
         "source": "https://musicbrainz.org/release-group/7ae027f0-aff3-46cc-a5fe-1ce05151288e",
@@ -11278,6 +11206,15 @@
     "artist_mbid": "a54fd8e2-d319-44a6-aa60-21adf17751bf",
     "artist_source": "https://musicbrainz.org/artist/a54fd8e2-d319-44a6-aa60-21adf17751bf",
     "releases": [
+      {
+        "title": "Pretty Girl",
+        "date": "2026-07-08",
+        "source": "https://musicbrainz.org/release-group/2e6d3314-5174-4ad3-9b73-debdd264bd97",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Runaway",
         "date": "2026-04-08",
@@ -12405,10 +12342,10 @@
         "title": "2:LOVE",
         "date": "2026-06-16",
         "source": "https://musicbrainz.org/release-group/dfdd988b-98f2-4f2d-937c-40f4a372aec2",
-        "release_kind": "ep",
-        "release_format": "ep",
+        "release_kind": "single",
+        "release_format": "single",
         "context_tags": [],
-        "stream": "album"
+        "stream": "song"
       },
       {
         "title": "STAY ALIVE",
@@ -12562,6 +12499,15 @@
     "artist_mbid": "142b343d-bf5a-428c-a64f-6d1a7566bbe9",
     "artist_source": "https://musicbrainz.org/artist/142b343d-bf5a-428c-a64f-6d1a7566bbe9",
     "releases": [
+      {
+        "title": "RUN IT",
+        "date": "2026-06-24",
+        "source": "https://musicbrainz.org/release-group/ad30176e-c9f0-4fbd-b473-3858f81f403a",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "별, 빛 (STAY)",
         "date": "2026-03-25",
@@ -14214,6 +14160,17 @@
     "artist_mbid": "3d612dbf-32fc-4198-a2d0-2d04a99a6adf",
     "artist_source": "https://musicbrainz.org/artist/3d612dbf-32fc-4198-a2d0-2d04a99a6adf",
     "releases": [
+      {
+        "title": "まだあと0cm",
+        "date": "2026-05-27",
+        "source": "https://musicbrainz.org/release-group/00fa1a6b-4b88-4408-9e4e-bdaea5550694",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [
+          "japanese_release"
+        ],
+        "stream": "song"
+      },
       {
         "title": "Kart Racer",
         "date": "2026-02-13",

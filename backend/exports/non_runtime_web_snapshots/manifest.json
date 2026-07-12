@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-21T07:44:48.417Z",
+  "generated_at": "2026-07-12T06:15:50.592Z",
   "classification": "non-runtime export",
   "source_workflow": "catalog-enrichment-refresh.yml",
   "cadence_profile": "weekly-enrichment",

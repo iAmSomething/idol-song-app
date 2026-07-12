@@ -1012,11 +1012,11 @@
         "review_notes": "Reviewed against the official artist page."
       },
       "official_youtube": {
-        "value": "https://www.youtube.com/@stayc_official",
+        "value": "https://www.youtube.com/@stayc_highup",
         "status": "resolved",
         "provenance": "entityMetadataAcquisition.youtube_handle_probe",
-        "source_url": "https://www.youtube.com/@stayc_official",
-        "review_notes": "Verified from @stayc_official handle probe against the official social handle pattern."
+        "source_url": "https://www.youtube.com/@stayc_highup",
+        "review_notes": "Verified from @stayc_highup handle probe against the official social handle pattern."
       }
     }
   },

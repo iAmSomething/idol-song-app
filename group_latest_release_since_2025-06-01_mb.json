@@ -34,9 +34,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "i‐dle",
-      "date": "2025-10-03",
-      "source": "https://musicbrainz.org/release-group/91518b35-2567-4b2d-95f9-135361183fe5",
+      "title": "We made",
+      "date": "2026-07-06",
+      "source": "https://musicbrainz.org/release-group/f2bb7374-1953-48b0-94d8-87a5f64a6b51",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -199,9 +199,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "GOLDEN HOUR : Part.4",
-      "date": "2026-02-06",
-      "source": "https://musicbrainz.org/release-group/8072d29d-f779-404e-b5cc-0cc01e442444",
+      "title": "GOLDEN HOUR : Part.5",
+      "date": "2026-06-26",
+      "source": "https://musicbrainz.org/release-group/04059843-93e5-4d50-9604-7dc48ae74fb9",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -213,9 +213,9 @@
     "artist_name_mb": "AtHeart",
     "artist_mbid": "8a3f4979-23ca-48c8-9d01-5baffee9ea5f",
     "latest_song": {
-      "title": "Butterfly Doors",
-      "date": "2026-03-11",
-      "source": "https://musicbrainz.org/release-group/b0590b45-e28c-4789-843e-24c4c079bd28",
+      "title": "Say It",
+      "date": "2026-06-25",
+      "source": "https://musicbrainz.org/release-group/0cf55baf-dc9c-451b-bf81-9d3299dff844",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -437,9 +437,9 @@
     "artist_name_mb": "DXMON",
     "artist_mbid": "0d12abec-f7d1-437e-9d82-395ded77262e",
     "latest_song": {
-      "title": "HYPER LINK: Vol.2",
-      "date": "2026-05-20",
-      "source": "https://musicbrainz.org/release-group/35ee4a40-b9b0-438a-ab08-c7321b2b0ea6",
+      "title": "HYPER LINK : Vol.3",
+      "date": "2026-07-06",
+      "source": "https://musicbrainz.org/release-group/4a24b9d8-a27d-4550-9bb0-baa901aa60bf",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -452,14 +452,12 @@
     "artist_name_mb": "ENHYPEN",
     "artist_mbid": "95663592-1447-4579-90f7-c94733476667",
     "latest_song": {
-      "title": "宵 -YOI-",
-      "date": "2025-07-27",
-      "source": "https://musicbrainz.org/release-group/79df3384-8d5c-45fa-b53d-8f173e4a5171",
+      "title": "We’ll Be Fine",
+      "date": "2026-06-28",
+      "source": "https://musicbrainz.org/release-group/ae392451-e486-47f0-934b-1d468ea40a60",
       "release_kind": "single",
       "release_format": "single",
-      "context_tags": [
-        "japanese_release"
-      ]
+      "context_tags": []
     },
     "latest_album": {
       "title": "THE SIN : VANISH",
@@ -609,9 +607,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "FOCUS",
-      "date": "2025-10-20",
-      "source": "https://musicbrainz.org/release-group/158311ee-7ed5-46a3-89e5-0e2ed6416a5c",
+      "title": "Lemon Tang",
+      "date": "2026-06-22",
+      "source": "https://musicbrainz.org/release-group/23757eb9-48b4-4bdd-aee9-10c6c135ec97",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -771,9 +769,9 @@
     "artist_name_mb": "KISS OF LIFE",
     "artist_mbid": "cbe629e3-fbbd-4071-9e12-4c5074c2231b",
     "latest_song": {
-      "title": "Who is she",
-      "date": "2026-04-06",
-      "source": "https://musicbrainz.org/release-group/ad3e34ed-ce16-4b33-82e2-823e3a0cc638",
+      "title": "BREAK IT",
+      "date": "2026-07-04",
+      "source": "https://musicbrainz.org/release-group/8c766240-86d1-489d-abf0-2323b2d92471",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -809,23 +807,6 @@
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/1ee37742-1e3d-4e61-84d2-bc85f4c1459a"
-  },
-  {
-    "group": "LIGHTSUM",
-    "artist_name_mb": "LIGHTSUM",
-    "artist_mbid": "6bfa076d-881b-442f-adc9-c8c17c6c87d3",
-    "latest_song": {
-      "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
-      "date": "2026-01-15",
-      "source": "https://musicbrainz.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
-      "release_kind": "single",
-      "release_format": "single",
-      "context_tags": [
-        "special_project"
-      ]
-    },
-    "latest_album": null,
-    "artist_source": "https://musicbrainz.org/artist/6bfa076d-881b-442f-adc9-c8c17c6c87d3"
   },
   {
     "group": "LUN8",
@@ -921,9 +902,9 @@
     "artist_name_mb": "NCT WISH",
     "artist_mbid": "fb175979-152f-4f32-bf8b-08aa86c24fe3",
     "latest_song": {
-      "title": "Same Sky",
-      "date": "2026-02-27",
-      "source": "https://musicbrainz.org/release-group/44a5498a-7844-4ad3-891f-831eaa143b5d",
+      "title": "BOY MEETS GIRL",
+      "date": "2026-06-22",
+      "source": "https://musicbrainz.org/release-group/a2343b92-299a-4819-80e5-121d910ec73c",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -980,9 +961,9 @@
     "artist_name_mb": "ONEUS",
     "artist_mbid": "c010eb84-2de1-40b2-b267-40de6002daab",
     "latest_song": {
-      "title": "原",
-      "date": "2026-01-20",
-      "source": "https://musicbrainz.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7",
+      "title": "Under",
+      "date": "2026-07-01",
+      "source": "https://musicbrainz.org/release-group/a667d824-1049-4880-bdeb-83920c96f186",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1120,9 +1101,9 @@
     "artist_name_mb": "QWER",
     "artist_mbid": "86bfda70-ad8c-4db4-9041-e4843d918269",
     "latest_song": {
-      "title": "흰수염고래",
-      "date": "2025-10-06",
-      "source": "https://musicbrainz.org/release-group/f6027192-7e1d-4e68-a82b-b43cab18efea",
+      "title": "SHOW DOWN",
+      "date": "2026-07-08",
+      "source": "https://musicbrainz.org/release-group/7227ec39-4c16-4421-b514-2ebafd883ecd",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1142,9 +1123,9 @@
     "artist_name_mb": "RESCENE",
     "artist_mbid": "a54fd8e2-d319-44a6-aa60-21adf17751bf",
     "latest_song": {
-      "title": "Runaway",
-      "date": "2026-04-08",
-      "source": "https://musicbrainz.org/release-group/16f72dd9-8d34-485c-9ab1-cc275912191e",
+      "title": "Pretty Girl",
+      "date": "2026-07-08",
+      "source": "https://musicbrainz.org/release-group/2e6d3314-5174-4ad3-9b73-debdd264bd97",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1240,19 +1221,19 @@
     "artist_name_mb": "STAYC",
     "artist_mbid": "06bb5fcc-f2b3-428d-b8e7-079060311b6d",
     "latest_song": {
-      "title": "I WANT IT",
-      "date": "2025-07-23",
-      "source": "https://musicbrainz.org/release-group/0eaf3023-4c83-45ea-94fe-25efd4c61830",
+      "title": "2:LOVE",
+      "date": "2026-06-16",
+      "source": "https://musicbrainz.org/release-group/dfdd988b-98f2-4f2d-937c-40f4a372aec2",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
     },
     "latest_album": {
-      "title": "2:LOVE",
-      "date": "2026-06-16",
-      "source": "https://musicbrainz.org/release-group/dfdd988b-98f2-4f2d-937c-40f4a372aec2",
-      "release_kind": "ep",
-      "release_format": "ep",
+      "title": "STAY ALIVE",
+      "date": "2026-02-11",
+      "source": "https://musicbrainz.org/release-group/d441bac9-17d5-47db-97cb-65b9000e3f76",
+      "release_kind": "album",
+      "release_format": "album",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/06bb5fcc-f2b3-428d-b8e7-079060311b6d"
@@ -1262,9 +1243,9 @@
     "artist_name_mb": "Stray Kids",
     "artist_mbid": "142b343d-bf5a-428c-a64f-6d1a7566bbe9",
     "latest_song": {
-      "title": "별, 빛 (STAY)",
-      "date": "2026-03-25",
-      "source": "https://musicbrainz.org/release-group/ef3ed3c3-ba82-45e9-8dd5-2f1fce1df7c4",
+      "title": "RUN IT",
+      "date": "2026-06-24",
+      "source": "https://musicbrainz.org/release-group/ad30176e-c9f0-4fbd-b473-3858f81f403a",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1417,12 +1398,14 @@
     "artist_name_mb": "TRENDZ",
     "artist_mbid": "3d612dbf-32fc-4198-a2d0-2d04a99a6adf",
     "latest_song": {
-      "title": "Kart Racer",
-      "date": "2026-02-13",
-      "source": "https://musicbrainz.org/release-group/d44c9809-e64b-4038-8993-a0ff75f67986",
+      "title": "まだあと0cm",
+      "date": "2026-05-27",
+      "source": "https://musicbrainz.org/release-group/00fa1a6b-4b88-4408-9e4e-bdaea5550694",
       "release_kind": "single",
       "release_format": "single",
-      "context_tags": []
+      "context_tags": [
+        "japanese_release"
+      ]
     },
     "latest_album": null,
     "artist_source": "https://musicbrainz.org/artist/3d612dbf-32fc-4198-a2d0-2d04a99a6adf"

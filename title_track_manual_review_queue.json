@@ -1,26 +1,6 @@
 [
   {
     "group": "ZEROBASEONE",
-    "release_title": "CINEMA PARADISE",
-    "release_date": "2024-08-26",
-    "stream": "album",
-    "release_kind": "ep",
-    "track_titles": [
-      "GOOD SO BAD",
-      "KILL THE ROMEO",
-      "The Sea (ZB1 remake)",
-      "Insomnia",
-      "Road Movie",
-      "Eternity",
-      "YURA YURA (Korean ver.)"
-    ],
-    "candidate_titles": [],
-    "candidate_sources": [],
-    "review_reason": "No dependable title-track signal was found for this release detail row.",
-    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
-  },
-  {
-    "group": "ZEROBASEONE",
     "release_title": "Ascend-",
     "release_date": "2026-05-18",
     "stream": "album",

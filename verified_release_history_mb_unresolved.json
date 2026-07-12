@@ -1,7 +1,16 @@
 [
   {
+    "group": "CLASS:y",
+    "reason": "artist_not_found"
+  },
+  {
     "group": "CSR",
-    "reason": "no_exact_release_history",
+    "reason": "HTTPError",
     "artist_mbid": "27cc84d3-4319-445f-a747-c4b4c7550dfb"
+  },
+  {
+    "group": "LIGHTSUM",
+    "reason": "HTTPError",
+    "artist_mbid": "6bfa076d-881b-442f-adc9-c8c17c6c87d3"
   }
 ]

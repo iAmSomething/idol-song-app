@@ -28,14 +28,14 @@
     }
   },
   "release_artwork": {
-    "artwork_rows": 1753,
-    "release_history_rows": 1753,
+    "artwork_rows": 1750,
+    "release_history_rows": 1750,
     "coverage_ratio": 1.0,
     "status_counts": {
-      "verified": 1753
+      "verified": 1750
     },
     "source_type_counts": {
-      "cover_art_archive": 1753
+      "cover_art_archive": 1750
     }
   }
 }

@@ -4,6 +4,6 @@
 - representative image resolved: 117
 - agency resolved: 78
 - debut year resolved: 8
-- release artwork rows: 1753/1753
-- release artwork verified: 1753
+- release artwork rows: 1750/1750
+- release artwork verified: 1750
 - release artwork placeholder: 0
