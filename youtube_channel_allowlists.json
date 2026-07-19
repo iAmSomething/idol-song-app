@@ -5093,8 +5093,7 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCus0FFI3ZSFv4e2Yw6nn3aw",
-          "https://www.youtube.com/@pledis_17"
+          "https://www.youtube.com/channel/UCus0FFI3ZSFv4e2Yw6nn3aw"
         ],
         "match_keys": [
           "@pledis_17",
@@ -5154,8 +5153,7 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCus0FFI3ZSFv4e2Yw6nn3aw",
-          "https://www.youtube.com/@pledis_17"
+          "https://www.youtube.com/channel/UCus0FFI3ZSFv4e2Yw6nn3aw"
         ],
         "match_keys": [
           "@pledis_17",
@@ -5288,41 +5286,53 @@
   },
   {
     "group": "STAYC",
-    "primary_team_channel_url": "https://www.youtube.com/@stayc_official",
+    "primary_team_channel_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team",
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
-        "resolved_alias_urls": [],
+        "resolved_alias_urls": [
+          "https://www.youtube.com/channel/UCXaUTMr_sHV7GiKVhtA07ZQ",
+          "https://www.youtube.com/@stayc_highup"
+        ],
         "match_keys": [
-          "@stayc_official",
-          "https://www.youtube.com/@stayc_official"
+          "@stayc_highup",
+          "https://www.youtube.com/@stayc_highup",
+          "channel:ucxautmr_shv7gikvhta07zq",
+          "https://www.youtube.com/channel/ucxautmr_shv7gikvhta07zq"
         ]
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "mv_allowlist_match_keys": [
-      "@stayc_official",
-      "https://www.youtube.com/@stayc_official"
+      "@stayc_highup",
+      "https://www.youtube.com/@stayc_highup",
+      "channel:ucxautmr_shv7gikvhta07zq",
+      "https://www.youtube.com/channel/ucxautmr_shv7gikvhta07zq"
     ],
     "channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team",
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
-        "resolved_alias_urls": [],
+        "resolved_alias_urls": [
+          "https://www.youtube.com/channel/UCXaUTMr_sHV7GiKVhtA07ZQ",
+          "https://www.youtube.com/@stayc_highup"
+        ],
         "match_keys": [
-          "@stayc_official",
-          "https://www.youtube.com/@stayc_official"
+          "@stayc_highup",
+          "https://www.youtube.com/@stayc_highup",
+          "channel:ucxautmr_shv7gikvhta07zq",
+          "https://www.youtube.com/channel/ucxautmr_shv7gikvhta07zq"
         ]
       }
     ]
@@ -5339,8 +5349,7 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCw65oxhmqIxjE_ijNkBb4xg",
-          "https://www.youtube.com/@stray_kids"
+          "https://www.youtube.com/channel/UCw65oxhmqIxjE_ijNkBb4xg"
         ],
         "match_keys": [
           "@stray_kids",
@@ -5391,8 +5400,7 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCw65oxhmqIxjE_ijNkBb4xg",
-          "https://www.youtube.com/@stray_kids"
+          "https://www.youtube.com/channel/UCw65oxhmqIxjE_ijNkBb4xg"
         ],
         "match_keys": [
           "@stray_kids",

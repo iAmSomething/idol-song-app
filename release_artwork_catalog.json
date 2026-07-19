@@ -1381,18 +1381,6 @@
   },
   {
     "group": "aespa",
-    "release_title": "LEMONADE - The 2nd Album",
-    "release_date": "2026-05-29",
-    "stream": "album",
-    "cover_image_url": "https://coverartarchive.org/release-group/e5127f72-7758-4ecd-9b48-2b977b216c5e/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/e5127f72-7758-4ecd-9b48-2b977b216c5e/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/e5127f72-7758-4ecd-9b48-2b977b216c5e",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "aespa",
     "release_title": "LEMONADE",
     "release_date": "2026-05-29",
     "stream": "song",
@@ -4124,6 +4112,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/faa3b577-949b-4338-8a8b-11ffcbca32c2/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/faa3b577-949b-4338-8a8b-11ffcbca32c2",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "BTS",
+    "release_title": "NORMAL",
+    "release_date": "2026-07-17",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/9d599c66-4789-445c-872f-6fed114ab053/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/9d599c66-4789-445c-872f-6fed114ab053/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/9d599c66-4789-445c-872f-6fed114ab053",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -9468,6 +9468,78 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "LIGHTSUM",
+    "release_title": "Vanilla",
+    "release_date": "2021-06-10",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/e3547c16-b39b-4c3a-8033-a821f80899b8/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/e3547c16-b39b-4c3a-8033-a821f80899b8/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/e3547c16-b39b-4c3a-8033-a821f80899b8",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "Light a Wish",
+    "release_date": "2021-10-13",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/c6983c6c-a103-4d84-8f4b-05ff21307580/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/c6983c6c-a103-4d84-8f4b-05ff21307580/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/c6983c6c-a103-4d84-8f4b-05ff21307580",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "Into the Light",
+    "release_date": "2022-05-24",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/16e2bd1d-42bb-490f-8232-a76ac11a1938/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/16e2bd1d-42bb-490f-8232-a76ac11a1938/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/16e2bd1d-42bb-490f-8232-a76ac11a1938",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "Honey or Spice",
+    "release_date": "2023-10-11",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/69781146-25ec-41d3-bbfa-9799fd45af56/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/69781146-25ec-41d3-bbfa-9799fd45af56/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/69781146-25ec-41d3-bbfa-9799fd45af56",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "POSE!",
+    "release_date": "2024-08-07",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/1f94ea31-0471-47ff-90db-c672bbf28882/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/1f94ea31-0471-47ff-90db-c672bbf28882/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/1f94ea31-0471-47ff-90db-c672bbf28882",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+    "release_date": "2026-01-15",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "Loossemble",
     "release_title": "Loossemble",
     "release_date": "2023-09-15",
@@ -11648,6 +11720,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/a2343b92-299a-4819-80e5-121d910ec73c/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/a2343b92-299a-4819-80e5-121d910ec73c",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "NCT WISH",
+    "release_title": "YO-I-DON! / BOY MEETS GIRL",
+    "release_date": "2026-07-13",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/80ffb057-bc75-4449-8756-b9593a80dcdf/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/80ffb057-bc75-4449-8756-b9593a80dcdf/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/80ffb057-bc75-4449-8756-b9593a80dcdf",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -18036,6 +18120,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "TRENDZ",
+    "release_title": "On My Knees",
+    "release_date": "2026-07-08",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/27c00ca8-c575-4ffb-a108-62a5441e466a/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/27c00ca8-c575-4ffb-a108-62a5441e466a/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/27c00ca8-c575-4ffb-a108-62a5441e466a",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "tripleS",
     "release_title": "Acid Angel from Asia <ACCESS>",
     "release_date": "2022-10-28",
@@ -20168,6 +20264,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/9719e27a-297a-423d-9f16-8e7ca6aaa5b2/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/9719e27a-297a-423d-9f16-8e7ca6aaa5b2",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "woo!ah!",
+    "release_title": "Wish With W : Vol.3",
+    "release_date": "2026-07-13",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/458bdb5d-e4fa-4d4e-818d-841652aade07/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/458bdb5d-e4fa-4d4e-818d-841652aade07/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/458bdb5d-e4fa-4d4e-818d-841652aade07",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },

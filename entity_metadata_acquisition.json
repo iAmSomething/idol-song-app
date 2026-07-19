@@ -335,6 +335,19 @@
     }
   },
   {
+    "group": "CRAVITY",
+    "slug": "cravity",
+    "fields": {
+      "official_youtube": {
+        "value": "https://www.youtube.com/@cravity_official",
+        "status": "resolved",
+        "provenance": "entityMetadataAcquisition.youtube_handle_probe",
+        "source_url": "https://www.youtube.com/@cravity_official",
+        "review_notes": "Verified from @cravity_official handle probe against the official social handle pattern."
+      }
+    }
+  },
+  {
     "group": "DAY6",
     "slug": "day6",
     "fields": {

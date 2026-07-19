@@ -355,9 +355,9 @@
     "artist_name_mb": "BTS",
     "artist_mbid": "0d79fe8e-ba27-4859-bb8c-2f255f346853",
     "latest_song": {
-      "title": "Come Over",
-      "date": "2026-06-12",
-      "source": "https://musicbrainz.org/release-group/faa3b577-949b-4338-8a8b-11ffcbca32c2",
+      "title": "NORMAL",
+      "date": "2026-07-17",
+      "source": "https://musicbrainz.org/release-group/9d599c66-4789-445c-872f-6fed114ab053",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -809,6 +809,23 @@
     "artist_source": "https://musicbrainz.org/artist/1ee37742-1e3d-4e61-84d2-bc85f4c1459a"
   },
   {
+    "group": "LIGHTSUM",
+    "artist_name_mb": "LIGHTSUM",
+    "artist_mbid": "6bfa076d-881b-442f-adc9-c8c17c6c87d3",
+    "latest_song": {
+      "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+      "date": "2026-01-15",
+      "source": "https://musicbrainz.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": [
+        "special_project"
+      ]
+    },
+    "latest_album": null,
+    "artist_source": "https://musicbrainz.org/artist/6bfa076d-881b-442f-adc9-c8c17c6c87d3"
+  },
+  {
     "group": "LUN8",
     "artist_name_mb": "LUN8",
     "artist_mbid": "1689d50f-cd03-43ce-a275-ce7616dafa7f",
@@ -902,9 +919,9 @@
     "artist_name_mb": "NCT WISH",
     "artist_mbid": "fb175979-152f-4f32-bf8b-08aa86c24fe3",
     "latest_song": {
-      "title": "BOY MEETS GIRL",
-      "date": "2026-06-22",
-      "source": "https://musicbrainz.org/release-group/a2343b92-299a-4819-80e5-121d910ec73c",
+      "title": "YO-I-DON! / BOY MEETS GIRL",
+      "date": "2026-07-13",
+      "source": "https://musicbrainz.org/release-group/80ffb057-bc75-4449-8756-b9593a80dcdf",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1407,7 +1424,14 @@
         "japanese_release"
       ]
     },
-    "latest_album": null,
+    "latest_album": {
+      "title": "On My Knees",
+      "date": "2026-07-08",
+      "source": "https://musicbrainz.org/release-group/27c00ca8-c575-4ffb-a108-62a5441e466a",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
     "artist_source": "https://musicbrainz.org/artist/3d612dbf-32fc-4198-a2d0-2d04a99a6adf"
   },
   {
@@ -1582,9 +1606,9 @@
     "artist_name_mb": "WOOAH",
     "artist_mbid": "1e8da137-9aa8-4e62-9699-4f66d290b643",
     "latest_song": {
-      "title": "WXW(Wish With W)",
-      "date": "2026-05-13",
-      "source": "https://musicbrainz.org/release-group/9719e27a-297a-423d-9f16-8e7ca6aaa5b2",
+      "title": "Wish With W : Vol.3",
+      "date": "2026-07-13",
+      "source": "https://musicbrainz.org/release-group/458bdb5d-e4fa-4d4e-818d-841652aade07",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []

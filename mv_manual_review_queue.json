@@ -1202,67 +1202,6 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
-    "group": "(G)I-DLE",
-    "release_title": "We made",
-    "release_date": "2026-07-06",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "Mono",
-      "Crow"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@official_i_dle",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@official_i_dle",
-        "channel_label": "(G)I-DLE",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@official_i_dle"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "(G)I-DLE Mono official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=%28G%29I-DLE+Mono+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "82MAJOR",
-    "release_title": "SILENCE SYNDROME",
-    "release_date": "2025-04-14",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@82major_official",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@82major_official",
-        "channel_label": "82MAJOR",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@82major_official"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "82MAJOR SILENCE SYNDROME official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=82MAJOR+SILENCE+SYNDROME+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
     "group": "8TURN",
     "release_title": "8TURNRISE",
     "release_date": "2023-01-30",
@@ -10228,7 +10167,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10263,7 +10202,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10298,7 +10237,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10333,7 +10272,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10368,7 +10307,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10405,7 +10344,7 @@
     "title_track_basis": "title_track",
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10442,7 +10381,7 @@
     "title_track_basis": "title_track",
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10479,7 +10418,7 @@
     "title_track_basis": "title_track",
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10514,7 +10453,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10551,7 +10490,7 @@
     "title_track_basis": "title_track",
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10586,7 +10525,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10623,7 +10562,7 @@
     "title_track_basis": "title_track",
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10658,7 +10597,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10695,7 +10634,7 @@
     "title_track_basis": "title_track",
     "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10730,7 +10669,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10765,7 +10704,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -10800,7 +10739,7 @@
     "title_track_basis": "release_title_fallback",
     "missing_title_track_metadata": true,
     "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
         "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
@@ -13250,35 +13189,6 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
-    "group": "DXMON",
-    "release_title": "HYPER LINK : Vol.3",
-    "release_date": "2026-07-06",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@DXMON_HM",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@DXMON_HM",
-        "channel_label": "DXMON",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@DXMON_HM"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "DXMON HYPER LINK : Vol.3 official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=DXMON+HYPER+LINK+%3A+Vol.3+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
     "group": "ENHYPEN",
     "release_title": "BORDER : DAY ONE",
     "release_date": "2020-11-30",
@@ -13923,43 +13833,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "ENHYPEN Loose official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=ENHYPEN+Loose+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "ENHYPEN",
-    "release_title": "We’ll Be Fine",
-    "release_date": "2026-06-28",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "We’ll Be Fine"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-        "channel_label": "ENHYPEN",
-        "owner_type": "team"
-      },
-      {
-        "channel_url": "https://www.youtube.com/@HYBELABELS",
-        "channel_label": "HYBE LABELS",
-        "owner_type": "label"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCArLZtok93cO5R9RI4_Y5Jw",
-      "https://www.youtube.com/@HYBELABELS"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "ENHYPEN We’ll Be Fine official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=ENHYPEN+We%E2%80%99ll+Be+Fine+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -29033,6 +28906,44 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "NCT WISH",
+    "release_title": "YO-I-DON! / BOY MEETS GIRL",
+    "release_date": "2026-07-13",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [
+      "YO-I-DON!",
+      "BOY MEETS GIRL"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@NCTWISH",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@NCTWISH",
+        "channel_label": "NCT WISH",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@NCTWISH",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "NCT WISH YO-I-DON! official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=NCT+WISH+YO-I-DON%21+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "NewJeans",
     "release_title": "New Jeans",
     "release_date": "2022-08-01",
@@ -31171,9 +31082,11 @@
     "release_date": "2026-07-01",
     "stream": "song",
     "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "Under"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g",
     "mv_source_channels": [
@@ -31187,7 +31100,7 @@
       "https://www.youtube.com/channel/UCWTYf4xModfNsyq2NUYjF5g"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "ONEUS Under official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=ONEUS+Under+official+mv",
@@ -33973,9 +33886,11 @@
     "release_date": "2026-07-08",
     "stream": "song",
     "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "SHOW DOWN"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@qwerband_official",
     "mv_source_channels": [
@@ -33989,7 +33904,7 @@
       "https://www.youtube.com/@qwerband_official"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "QWER SHOW DOWN official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=QWER+SHOW+DOWN+official+mv",
@@ -39272,13 +39187,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -39301,13 +39216,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -39332,13 +39247,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -39363,13 +39278,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -39394,13 +39309,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -39425,13 +39340,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -39456,13 +39371,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -39485,13 +39400,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -39516,13 +39431,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -39547,13 +39462,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -39576,13 +39491,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -39605,13 +39520,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -39636,13 +39551,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No canonical MV target is attached yet.",
@@ -39665,13 +39580,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -39694,13 +39609,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -39723,13 +39638,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -39752,13 +39667,13 @@
     "official_youtube_url": "https://www.youtube.com/@stayc_highup",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/@stayc_official",
+        "channel_url": "https://www.youtube.com/@stayc_highup",
         "channel_label": "STAYC",
         "owner_type": "team"
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/@stayc_official"
+      "https://www.youtube.com/@stayc_highup"
     ],
     "missing_mv_allowlist": false,
     "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
@@ -46028,6 +45943,37 @@
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
+    "group": "TRENDZ",
+    "release_title": "On My Knees",
+    "release_date": "2026-07-08",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "On My Knees"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@TRENDZ_OFFCL",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@TRENDZ_OFFCL",
+        "channel_label": "TRENDZ",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@TRENDZ_OFFCL"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "TRENDZ On My Knees official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=TRENDZ+On+My+Knees+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "tripleS",
     "release_title": "Acid Angel from Asia <ACCESS>",
     "release_date": "2022-10-28",
@@ -50769,6 +50715,35 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "woo!ah! WXW(Wish With W) official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=woo%21ah%21+WXW%28Wish+With+W%29+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "woo!ah!",
+    "release_title": "Wish With W : Vol.3",
+    "release_date": "2026-07-13",
+    "stream": "song",
+    "release_kind": "single",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@wooah_nv",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@wooah_nv",
+        "channel_label": "woo!ah!",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@wooah_nv"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "woo!ah! Wish With W : Vol.3 official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=woo%21ah%21+Wish+With+W+%3A+Vol.3+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },

@@ -857,15 +857,6 @@
         "stream": "album"
       },
       {
-        "title": "LEMONADE - The 2nd Album",
-        "date": "2026-05-29",
-        "source": "https://musicbrainz.org/release-group/e5127f72-7758-4ecd-9b48-2b977b216c5e",
-        "release_kind": "album",
-        "release_format": "album",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
         "title": "LEMONADE",
         "date": "2026-05-29",
         "source": "https://musicbrainz.org/release-group/5087c822-983c-4100-a976-151f444d1b41",
@@ -2869,6 +2860,15 @@
     "artist_mbid": "0d79fe8e-ba27-4859-bb8c-2f255f346853",
     "artist_source": "https://musicbrainz.org/artist/0d79fe8e-ba27-4859-bb8c-2f255f346853",
     "releases": [
+      {
+        "title": "NORMAL",
+        "date": "2026-07-17",
+        "source": "https://musicbrainz.org/release-group/9d599c66-4789-445c-872f-6fed114ab053",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Come Over",
         "date": "2026-06-12",
@@ -7543,6 +7543,70 @@
     ]
   },
   {
+    "group": "LIGHTSUM",
+    "artist_name_mb": "LIGHTSUM",
+    "artist_mbid": "6bfa076d-881b-442f-adc9-c8c17c6c87d3",
+    "artist_source": "https://musicbrainz.org/artist/6bfa076d-881b-442f-adc9-c8c17c6c87d3",
+    "releases": [
+      {
+        "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
+        "date": "2026-01-15",
+        "source": "https://musicbrainz.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [
+          "special_project"
+        ],
+        "stream": "song"
+      },
+      {
+        "title": "POSE!",
+        "date": "2024-08-07",
+        "source": "https://musicbrainz.org/release-group/1f94ea31-0471-47ff-90db-c672bbf28882",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "Honey or Spice",
+        "date": "2023-10-11",
+        "source": "https://musicbrainz.org/release-group/69781146-25ec-41d3-bbfa-9799fd45af56",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "Into the Light",
+        "date": "2022-05-24",
+        "source": "https://musicbrainz.org/release-group/16e2bd1d-42bb-490f-8232-a76ac11a1938",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "Light a Wish",
+        "date": "2021-10-13",
+        "source": "https://musicbrainz.org/release-group/c6983c6c-a103-4d84-8f4b-05ff21307580",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "Vanilla",
+        "date": "2021-06-10",
+        "source": "https://musicbrainz.org/release-group/e3547c16-b39b-4c3a-8033-a821f80899b8",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      }
+    ]
+  },
+  {
     "group": "Loossemble",
     "artist_name_mb": "Loossemble",
     "artist_mbid": "cded24f3-361e-4179-8f26-4209479f6187",
@@ -9110,6 +9174,15 @@
     "artist_mbid": "fb175979-152f-4f32-bf8b-08aa86c24fe3",
     "artist_source": "https://musicbrainz.org/artist/fb175979-152f-4f32-bf8b-08aa86c24fe3",
     "releases": [
+      {
+        "title": "YO-I-DON! / BOY MEETS GIRL",
+        "date": "2026-07-13",
+        "source": "https://musicbrainz.org/release-group/80ffb057-bc75-4449-8756-b9593a80dcdf",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "BOY MEETS GIRL",
         "date": "2026-06-22",
@@ -14161,6 +14234,15 @@
     "artist_source": "https://musicbrainz.org/artist/3d612dbf-32fc-4198-a2d0-2d04a99a6adf",
     "releases": [
       {
+        "title": "On My Knees",
+        "date": "2026-07-08",
+        "source": "https://musicbrainz.org/release-group/27c00ca8-c575-4ffb-a108-62a5441e466a",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "まだあと0cm",
         "date": "2026-05-27",
         "source": "https://musicbrainz.org/release-group/00fa1a6b-4b88-4408-9e4e-bdaea5550694",
@@ -15901,6 +15983,15 @@
     "artist_mbid": "1e8da137-9aa8-4e62-9699-4f66d290b643",
     "artist_source": "https://musicbrainz.org/artist/1e8da137-9aa8-4e62-9699-4f66d290b643",
     "releases": [
+      {
+        "title": "Wish With W : Vol.3",
+        "date": "2026-07-13",
+        "source": "https://musicbrainz.org/release-group/458bdb5d-e4fa-4d4e-818d-841652aade07",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "WXW(Wish With W)",
         "date": "2026-05-13",
