@@ -1,65 +1,65 @@
 {
-  "generated_at": "2026-07-19",
+  "generated_at": "2026-07-26",
   "execution_scope": {
     "targeted_rebuild": true,
     "cohorts": [
       "latest",
       "recent"
     ],
-    "scoped_rows_total": 783,
-    "selected_rows": 8,
+    "scoped_rows_total": 787,
+    "selected_rows": 12,
     "max_rows": 25,
     "progress_every": 10,
     "row_offset": 775
   },
   "summary_lines": [
-    "detail payload coverage: 8/8 (100.0%), pre-2024 0/0 (0.0%)",
-    "detail trusted coverage: 8/8 (100.0%), pre-2024 0/0 (0.0%)",
-    "title-track resolved coverage: 7/8 (87.5%), pre-2024 0/0 (0.0%), review queue 1",
-    "canonical MV coverage: 4/8 (50.0%), pre-2024 0/0 (0.0%), mv review 0",
+    "detail payload coverage: 12/12 (100.0%), pre-2024 0/0 (0.0%)",
+    "detail trusted coverage: 12/12 (100.0%), pre-2024 0/0 (0.0%)",
+    "title-track resolved coverage: 10/12 (83.3%), pre-2024 0/0 (0.0%), review queue 2",
+    "canonical MV coverage: 4/12 (33.3%), pre-2024 0/0 (0.0%), mv review 0",
     "external acquisition pass: YTM attempted 0, resolved 0; MV attempted 0, resolved 0, review 0",
     "youtube MV search pass: attempted 10, resolved 6, review 4, unresolved 1592, coverage lift +0",
     "migration-critical first slice: title-track 0/18 (0.0%), canonical MV 0/18 (0.0%), gate fail",
-    "worst title-track cohort: 2024+ ep 75.0% / target 82.0%",
+    "worst title-track cohort: 2024+ ep 60.0% / target 82.0%",
     "worst canonical MV cohort: 2024+ album 0.0% / target 40.0%",
-    "release-detail null review queue: 8 rows",
+    "release-detail null review queue: 12 rows",
     "historical catalog cutover gate: fail"
   ],
   "latest_snapshot_input_rows": 2,
   "latest_snapshot_unique_keys": 2,
-  "full_catalog_input_rows": 8,
-  "full_catalog_unique_keys": 8,
-  "historical_input_gain_rows": 6,
+  "full_catalog_input_rows": 12,
+  "full_catalog_unique_keys": 12,
+  "historical_input_gain_rows": 10,
   "entities_with_multiple_releases_in_input": 1,
   "sample_multi_release_entities": [
     {
       "group": "ZEROBASEONE",
-      "release_rows": 8
+      "release_rows": 12
     }
   ],
-  "history_flattened_rows": 8,
-  "detail_rows_before": 8,
-  "detail_rows_after": 8,
-  "history_keys": 8,
+  "history_flattened_rows": 12,
+  "detail_rows_before": 12,
+  "detail_rows_after": 12,
+  "history_keys": 12,
   "missing_detail_rows_before": 0,
   "missing_detail_rows_after": 0,
   "pre_2024_history_rows": 0,
   "pre_2024_missing_before": 0,
   "pre_2024_missing_after": 0,
-  "preserved_exact_key_rows": 8,
+  "preserved_exact_key_rows": 12,
   "seeded_placeholder_rows": 0,
-  "rows_with_tracks_before": 8,
-  "rows_with_tracks_after": 8,
-  "rows_with_title_track_before": 7,
-  "rows_with_title_track_after": 7,
-  "rows_without_title_track_before": 1,
-  "rows_without_title_track_after": 1,
+  "rows_with_tracks_before": 12,
+  "rows_with_tracks_after": 12,
+  "rows_with_title_track_before": 10,
+  "rows_with_title_track_after": 10,
+  "rows_without_title_track_before": 2,
+  "rows_without_title_track_after": 2,
   "completeness": {
     "overall_before": {
-      "total_rows": 8,
-      "detail_payload_rows": 8,
+      "total_rows": 12,
+      "detail_payload_rows": 12,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 8,
+      "detail_trusted_rows": 12,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -67,26 +67,26 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 7,
-      "title_track_resolved_ratio": 0.875,
+      "title_track_resolved_rows": 10,
+      "title_track_resolved_ratio": 0.8333,
       "title_track_review_rows": 0,
       "title_track_review_ratio": 0.0,
-      "title_track_unresolved_rows": 1,
-      "title_track_unresolved_ratio": 0.125,
+      "title_track_unresolved_rows": 2,
+      "title_track_unresolved_ratio": 0.1667,
       "canonical_mv_rows": 4,
-      "canonical_mv_ratio": 0.5,
+      "canonical_mv_ratio": 0.3333,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
-      "mv_unresolved_rows": 4,
-      "mv_unresolved_ratio": 0.5,
+      "mv_unresolved_rows": 8,
+      "mv_unresolved_ratio": 0.6667,
       "mv_no_mv_rows": 0,
       "mv_no_mv_ratio": 0.0
     },
     "overall": {
-      "total_rows": 8,
-      "detail_payload_rows": 8,
+      "total_rows": 12,
+      "detail_payload_rows": 12,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 8,
+      "detail_trusted_rows": 12,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -94,18 +94,18 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 7,
-      "title_track_resolved_ratio": 0.875,
+      "title_track_resolved_rows": 10,
+      "title_track_resolved_ratio": 0.8333,
       "title_track_review_rows": 0,
       "title_track_review_ratio": 0.0,
-      "title_track_unresolved_rows": 1,
-      "title_track_unresolved_ratio": 0.125,
+      "title_track_unresolved_rows": 2,
+      "title_track_unresolved_ratio": 0.1667,
       "canonical_mv_rows": 4,
-      "canonical_mv_ratio": 0.5,
+      "canonical_mv_ratio": 0.3333,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
-      "mv_unresolved_rows": 4,
-      "mv_unresolved_ratio": 0.5,
+      "mv_unresolved_rows": 8,
+      "mv_unresolved_ratio": 0.6667,
       "mv_no_mv_rows": 0,
       "mv_no_mv_ratio": 0.0
     },
@@ -139,11 +139,11 @@
   },
   "breakdowns": {
     "by_year": {
-      "2025": {
-        "total_rows": 4,
-        "detail_payload_rows": 4,
+      "2024": {
+        "total_rows": 3,
+        "detail_payload_rows": 3,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 4,
+        "detail_trusted_rows": 3,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -151,18 +151,45 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 4,
+        "title_track_resolved_rows": 2,
+        "title_track_resolved_ratio": 0.6667,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
+        "title_track_unresolved_rows": 1,
+        "title_track_unresolved_ratio": 0.3333,
+        "canonical_mv_rows": 0,
+        "canonical_mv_ratio": 0.0,
+        "mv_review_rows": 0,
+        "mv_review_ratio": 0.0,
+        "mv_unresolved_rows": 3,
+        "mv_unresolved_ratio": 1.0,
+        "mv_no_mv_rows": 0,
+        "mv_no_mv_ratio": 0.0
+      },
+      "2025": {
+        "total_rows": 5,
+        "detail_payload_rows": 5,
+        "detail_payload_ratio": 1.0,
+        "detail_trusted_rows": 5,
+        "detail_trusted_ratio": 1.0,
+        "detail_inferred_rows": 0,
+        "detail_inferred_ratio": 0.0,
+        "detail_review_rows": 0,
+        "detail_review_ratio": 0.0,
+        "detail_unresolved_rows": 0,
+        "detail_unresolved_ratio": 0.0,
+        "title_track_resolved_rows": 5,
         "title_track_resolved_ratio": 1.0,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 0,
         "title_track_unresolved_ratio": 0.0,
         "canonical_mv_rows": 1,
-        "canonical_mv_ratio": 0.25,
+        "canonical_mv_ratio": 0.2,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 3,
-        "mv_unresolved_ratio": 0.75,
+        "mv_unresolved_rows": 4,
+        "mv_unresolved_ratio": 0.8,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
@@ -223,10 +250,10 @@
         "mv_no_mv_ratio": 0.0
       },
       "ep": {
-        "total_rows": 4,
-        "detail_payload_rows": 4,
+        "total_rows": 5,
+        "detail_payload_rows": 5,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 4,
+        "detail_trusted_rows": 5,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -235,25 +262,25 @@
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
         "title_track_resolved_rows": 3,
-        "title_track_resolved_ratio": 0.75,
+        "title_track_resolved_ratio": 0.6,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 1,
-        "title_track_unresolved_ratio": 0.25,
+        "title_track_unresolved_rows": 2,
+        "title_track_unresolved_ratio": 0.4,
         "canonical_mv_rows": 1,
-        "canonical_mv_ratio": 0.25,
+        "canonical_mv_ratio": 0.2,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 3,
-        "mv_unresolved_ratio": 0.75,
+        "mv_unresolved_rows": 4,
+        "mv_unresolved_ratio": 0.8,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       },
       "single": {
-        "total_rows": 3,
-        "detail_payload_rows": 3,
+        "total_rows": 6,
+        "detail_payload_rows": 6,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 3,
+        "detail_trusted_rows": 6,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -261,18 +288,18 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 3,
+        "title_track_resolved_rows": 6,
         "title_track_resolved_ratio": 1.0,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 0,
         "title_track_unresolved_ratio": 0.0,
         "canonical_mv_rows": 3,
-        "canonical_mv_ratio": 1.0,
+        "canonical_mv_ratio": 0.5,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 0,
-        "mv_unresolved_ratio": 0.0,
+        "mv_unresolved_rows": 3,
+        "mv_unresolved_ratio": 0.5,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       }
@@ -283,15 +310,15 @@
       {
         "year_band": "2024+",
         "release_kind": "ep",
-        "total_rows": 4,
+        "total_rows": 5,
         "resolved_rows": 3,
-        "resolved_ratio": 0.75,
+        "resolved_ratio": 0.6,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 1,
-        "unresolved_ratio": 0.25,
+        "unresolved_rows": 2,
+        "unresolved_ratio": 0.4,
         "threshold": 0.82,
-        "gap_to_target": 0.07,
+        "gap_to_target": 0.22,
         "status": "fail"
       },
       {
@@ -311,8 +338,8 @@
       {
         "year_band": "2024+",
         "release_kind": "single",
-        "total_rows": 3,
-        "resolved_rows": 3,
+        "total_rows": 6,
+        "resolved_rows": 6,
         "resolved_ratio": 1.0,
         "review_rows": 0,
         "review_ratio": 0.0,
@@ -341,30 +368,30 @@
       {
         "year_band": "2024+",
         "release_kind": "ep",
-        "total_rows": 4,
+        "total_rows": 5,
         "resolved_rows": 1,
-        "resolved_ratio": 0.25,
+        "resolved_ratio": 0.2,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 3,
-        "unresolved_ratio": 0.75,
+        "unresolved_rows": 4,
+        "unresolved_ratio": 0.8,
         "threshold": 0.55,
-        "gap_to_target": 0.3,
+        "gap_to_target": 0.35,
         "status": "fail"
       },
       {
         "year_band": "2024+",
         "release_kind": "single",
-        "total_rows": 3,
+        "total_rows": 6,
         "resolved_rows": 3,
-        "resolved_ratio": 1.0,
+        "resolved_ratio": 0.5,
         "review_rows": 0,
         "review_ratio": 0.0,
-        "unresolved_rows": 0,
-        "unresolved_ratio": 0.0,
+        "unresolved_rows": 3,
+        "unresolved_ratio": 0.5,
         "threshold": 0.72,
-        "gap_to_target": 0.0,
-        "status": "pass"
+        "gap_to_target": 0.22,
+        "status": "fail"
       }
     ]
   },
@@ -374,21 +401,21 @@
       "title_track": [
         {
           "group": "ZEROBASEONE",
-          "total_rows": 8,
+          "total_rows": 12,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 1,
-          "mv_gap_rows": 4,
-          "title_track_gap_ratio": 0.125
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 8,
+          "title_track_gap_ratio": 0.1667
         }
       ],
       "mv": [
         {
           "group": "ZEROBASEONE",
-          "total_rows": 8,
+          "total_rows": 12,
           "detail_gap_rows": 0,
-          "title_track_gap_rows": 1,
-          "mv_gap_rows": 4,
-          "mv_gap_ratio": 0.5
+          "title_track_gap_rows": 2,
+          "mv_gap_rows": 8,
+          "mv_gap_ratio": 0.6667
         }
       ]
     },
@@ -401,6 +428,21 @@
   "gap_samples": {
     "detail_gap_rows": [],
     "title_track_gap_rows": [
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "CINEMA PARADISE",
+        "release_date": "2024-08-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 7
+      },
       {
         "group": "ZEROBASEONE",
         "release_title": "Ascend-",
@@ -418,6 +460,72 @@
       }
     ],
     "mv_gap_rows": [
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "CINEMA PARADISE",
+        "release_date": "2024-08-26",
+        "stream": "album",
+        "release_kind": "ep",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "unresolved",
+        "title_track_provenance": "no_dependable_title_track_signal",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [],
+        "track_count": 7
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "Only One Story",
+        "release_date": "2024-10-11",
+        "stream": "song",
+        "release_kind": "single",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [
+          "Only One Story"
+        ],
+        "track_count": 1
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "STAGE FIGHTER(STF) Original, Vol. 6",
+        "release_date": "2024-11-26",
+        "stream": "song",
+        "release_kind": "single",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [
+          "Checkmate (Prod. Czaer)"
+        ],
+        "track_count": 2
+      },
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "Doctor! Doctor!",
+        "release_date": "2025-01-20",
+        "stream": "song",
+        "release_kind": "single",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [
+          "Doctor! Doctor!"
+        ],
+        "track_count": 1
+      },
       {
         "group": "ZEROBASEONE",
         "release_title": "PREZENT",
@@ -514,14 +622,14 @@
       },
       "title_track_resolved": {
         "status": "fail",
-        "observed_total": 0.875,
+        "observed_total": 0.8333,
         "observed_pre_2024": 0.0,
         "threshold_total": 0.8,
         "threshold_pre_2024": 0.6
       },
       "canonical_mv": {
         "status": "fail",
-        "observed_total": 0.5,
+        "observed_total": 0.3333,
         "observed_pre_2024": 0.0,
         "threshold_total": 0.65,
         "threshold_pre_2024": 0.35
@@ -529,12 +637,12 @@
     },
     "cutover_ready": false,
     "cutover_status": "fail",
-    "generated_at": "2026-07-19",
+    "generated_at": "2026-07-26",
     "summary_lines": [
       "detail payload gate: fail (total 100.0%, pre-2024 0.0%)",
       "detail trusted gate: fail (total 100.0%, pre-2024 0.0%)",
-      "title-track resolved gate: fail (total 87.5%, pre-2024 0.0%)",
-      "canonical MV gate: fail (total 50.0%, pre-2024 0.0%)"
+      "title-track resolved gate: fail (total 83.3%, pre-2024 0.0%)",
+      "canonical MV gate: fail (total 33.3%, pre-2024 0.0%)"
     ]
   },
   "migration_priority_slice": {
@@ -1034,7 +1142,7 @@
       },
       "cutover_ready": false,
       "cutover_status": "fail",
-      "generated_at": "2026-07-19",
+      "generated_at": "2026-07-26",
       "summary_lines": [
         "detail_payload gate: fail (0.0% vs 100.0%)",
         "detail_trusted gate: fail (0.0% vs 100.0%)",
@@ -1244,12 +1352,12 @@
     ]
   },
   "external_acquisition": {
-    "candidate_rows": 8,
+    "candidate_rows": 12,
     "youtube_music": {
       "attempted": 0,
       "resolved": 0,
       "out_of_scope": 0,
-      "unresolved": 8
+      "unresolved": 12
     },
     "youtube_mv": {
       "attempted": 0,
@@ -1257,7 +1365,7 @@
       "review_needed": 0,
       "no_mv": 0,
       "out_of_scope": 0,
-      "unresolved": 4
+      "unresolved": 8
     },
     "youtube_mv_search": {
       "attempted": 10,
@@ -1268,24 +1376,44 @@
     }
   },
   "detail_status_counts": {
-    "verified": 8
+    "verified": 12
   },
   "title_track_status_counts": {
-    "preserved_existing": 7,
-    "unresolved": 1
+    "unresolved": 2,
+    "preserved_existing": 10
   },
   "release_level_title_track_status_counts": {
-    "verified": 7,
-    "unresolved": 1
+    "unresolved": 2,
+    "verified": 10
   },
   "youtube_video_status_counts": {
-    "unresolved": 4,
+    "unresolved": 8,
     "manual_override": 4
   },
   "title_track_auto_resolved_rows": 0,
   "title_track_auto_double_rows": 0,
-  "title_track_review_queue_rows": 1,
+  "title_track_review_queue_rows": 2,
   "title_track_review_queue_sample": [
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "CINEMA PARADISE",
+      "release_date": "2024-08-26",
+      "stream": "album",
+      "release_kind": "ep",
+      "track_titles": [
+        "GOOD SO BAD",
+        "KILL THE ROMEO",
+        "The Sea (ZB1 remake)",
+        "Insomnia",
+        "Road Movie",
+        "Eternity",
+        "YURA YURA (Korean ver.)"
+      ],
+      "candidate_titles": [],
+      "candidate_sources": [],
+      "review_reason": "No dependable title-track signal was found for this release detail row.",
+      "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+    },
     {
       "group": "ZEROBASEONE",
       "release_title": "Ascend-",
@@ -1307,8 +1435,277 @@
       "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
     }
   ],
-  "release_detail_review_queue_rows": 8,
+  "release_detail_review_queue_rows": 12,
   "release_detail_review_queue_sample": [
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "CINEMA PARADISE",
+      "release_date": "2024-08-26",
+      "stream": "album",
+      "release_kind": "ep",
+      "missing_fields": [
+        "youtube_music_url",
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "Only One Story",
+      "release_date": "2024-10-11",
+      "stream": "song",
+      "release_kind": "single",
+      "missing_fields": [
+        "youtube_music_url",
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "STAGE FIGHTER(STF) Original, Vol. 6",
+      "release_date": "2024-11-26",
+      "stream": "song",
+      "release_kind": "single",
+      "missing_fields": [
+        "youtube_music_url",
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "Doctor! Doctor!",
+      "release_date": "2025-01-20",
+      "stream": "song",
+      "release_kind": "single",
+      "missing_fields": [
+        "spotify_url",
+        "youtube_music_url",
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
     {
       "group": "ZEROBASEONE",
       "release_title": "PREZENT",
@@ -1709,153 +2106,30 @@
       ],
       "compliant_min_attempts": true,
       "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
-    },
-    {
-      "group": "ZEROBASEONE",
-      "release_title": "RE-FLOW",
-      "release_date": "2026-02-02",
-      "stream": "album",
-      "release_kind": "ep",
-      "missing_fields": [
-        "youtube_music_url"
-      ],
-      "attempted_methods_count": 7,
-      "attempted_methods": [
-        "existing_exact_lookup",
-        "existing_relaxed_lookup",
-        "manual_override_lookup",
-        "external_acquisition_skipped",
-        "youtube_music_pipeline_lookup",
-        "youtube_mv_pipeline_lookup",
-        "placeholder_seed_fallback"
-      ],
-      "attempts": [
-        {
-          "method": "existing_exact_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "matched exact release key"
-        },
-        {
-          "method": "existing_relaxed_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no relaxed match"
-        },
-        {
-          "method": "manual_override_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "override exists"
-        },
-        {
-          "method": "external_acquisition_skipped",
-          "success": false,
-          "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
-        },
-        {
-          "method": "youtube_music_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no canonical YouTube Music URL after current pipeline pass"
-        },
-        {
-          "method": "youtube_mv_pipeline_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "youtube_video_status=manual_override"
-        },
-        {
-          "method": "placeholder_seed_fallback",
-          "success": false,
-          "filled_fields": [],
-          "note": "placeholder not needed"
-        }
-      ],
-      "compliant_min_attempts": true,
-      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
-    },
-    {
-      "group": "ZEROBASEONE",
-      "release_title": "Ascend-",
-      "release_date": "2026-05-18",
-      "stream": "album",
-      "release_kind": "ep",
-      "missing_fields": [
-        "youtube_music_url",
-        "youtube_video"
-      ],
-      "attempted_methods_count": 7,
-      "attempted_methods": [
-        "existing_exact_lookup",
-        "existing_relaxed_lookup",
-        "manual_override_lookup",
-        "external_acquisition_skipped",
-        "youtube_music_pipeline_lookup",
-        "youtube_mv_pipeline_lookup",
-        "placeholder_seed_fallback"
-      ],
-      "attempts": [
-        {
-          "method": "existing_exact_lookup",
-          "success": true,
-          "filled_fields": [],
-          "note": "matched exact release key"
-        },
-        {
-          "method": "existing_relaxed_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no relaxed match"
-        },
-        {
-          "method": "manual_override_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no override"
-        },
-        {
-          "method": "external_acquisition_skipped",
-          "success": false,
-          "filled_fields": [],
-          "note": "external acquisition skipped by --skip-acquisition"
-        },
-        {
-          "method": "youtube_music_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "no canonical YouTube Music URL after current pipeline pass"
-        },
-        {
-          "method": "youtube_mv_pipeline_lookup",
-          "success": false,
-          "filled_fields": [],
-          "note": "youtube_video_status=unresolved"
-        },
-        {
-          "method": "placeholder_seed_fallback",
-          "success": false,
-          "filled_fields": [],
-          "note": "placeholder not needed"
-        }
-      ],
-      "compliant_min_attempts": true,
-      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     }
   ],
-  "rows_with_min_acquisition_attempts": 8,
+  "rows_with_min_acquisition_attempts": 12,
   "rows_missing_min_acquisition_attempts": 0,
   "acquisition_method_counts": {
-    "existing_exact_lookup": 8,
-    "existing_relaxed_lookup": 8,
-    "manual_override_lookup": 8,
-    "external_acquisition_skipped": 8,
-    "youtube_music_pipeline_lookup": 8,
-    "youtube_mv_pipeline_lookup": 8,
-    "placeholder_seed_fallback": 8
+    "existing_exact_lookup": 12,
+    "existing_relaxed_lookup": 12,
+    "manual_override_lookup": 12,
+    "external_acquisition_skipped": 12,
+    "youtube_music_pipeline_lookup": 12,
+    "youtube_mv_pipeline_lookup": 12,
+    "placeholder_seed_fallback": 12
   },
   "title_track_spot_checks": [
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "CINEMA PARADISE",
+      "release_date": "2024-08-26",
+      "stream": "album",
+      "release_kind": "ep",
+      "status": "unresolved",
+      "title_tracks": [],
+      "candidate_titles": []
+    },
     {
       "group": "ZEROBASEONE",
       "release_title": "Ascend-",
@@ -1864,6 +2138,42 @@
       "release_kind": "ep",
       "status": "unresolved",
       "title_tracks": [],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "Only One Story",
+      "release_date": "2024-10-11",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Only One Story"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "STAGE FIGHTER(STF) Original, Vol. 6",
+      "release_date": "2024-11-26",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Checkmate (Prod. Czaer)"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "Doctor! Doctor!",
+      "release_date": "2025-01-20",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Doctor! Doctor!"
+      ],
       "candidate_titles": []
     },
     {
@@ -1955,20 +2265,18 @@
   "verification_state_samples": {
     "verified": {
       "group": "ZEROBASEONE",
-      "release_title": "PREZENT",
-      "release_date": "2025-01-29",
+      "release_title": "CINEMA PARADISE",
+      "release_date": "2024-08-26",
       "stream": "album",
       "release_kind": "ep",
       "detail_status": "verified",
       "detail_provenance": "musicbrainz.release_group_release",
-      "title_track_status": "verified",
-      "title_track_provenance": "releaseDetails.existing_title_flags",
+      "title_track_status": "unresolved",
+      "title_track_provenance": "no_dependable_title_track_signal",
       "youtube_video_status": "unresolved",
       "youtube_video_provenance": "releaseHistory.placeholder_seed",
-      "title_tracks": [
-        "Only One Story"
-      ],
-      "track_count": 6
+      "title_tracks": [],
+      "track_count": 7
     },
     "inferred": null,
     "manual_override": {
@@ -1992,20 +2300,18 @@
     "review_needed": null,
     "unresolved": {
       "group": "ZEROBASEONE",
-      "release_title": "PREZENT",
-      "release_date": "2025-01-29",
+      "release_title": "CINEMA PARADISE",
+      "release_date": "2024-08-26",
       "stream": "album",
       "release_kind": "ep",
       "detail_status": "verified",
       "detail_provenance": "musicbrainz.release_group_release",
-      "title_track_status": "verified",
-      "title_track_provenance": "releaseDetails.existing_title_flags",
+      "title_track_status": "unresolved",
+      "title_track_provenance": "no_dependable_title_track_signal",
       "youtube_video_status": "unresolved",
       "youtube_video_provenance": "releaseHistory.placeholder_seed",
-      "title_tracks": [
-        "Only One Story"
-      ],
-      "track_count": 6
+      "title_tracks": [],
+      "track_count": 7
     }
   },
   "rows_with_youtube_music_after": 0,
@@ -2085,5 +2391,5 @@
     }
   ],
   "relaxed_existing_matches": 0,
-  "preserved_existing_detail_rows_total": 8
+  "preserved_existing_detail_rows_total": 12
 }

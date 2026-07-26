@@ -1153,6 +1153,18 @@
   },
   {
     "group": "aespa",
+    "release_title": "Girls - The 2nd Mini Album",
+    "release_date": "2022-07-08",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/e036296a-caac-4f8b-9bb3-01c984a19294/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/e036296a-caac-4f8b-9bb3-01c984a19294/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/e036296a-caac-4f8b-9bb3-01c984a19294",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "aespa",
     "release_title": "Beautiful Christmas",
     "release_date": "2022-12-14",
     "stream": "song",
@@ -1165,6 +1177,18 @@
   },
   {
     "group": "aespa",
+    "release_title": "MY WORLD",
+    "release_date": "2023-01-01",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/36f4c763-a09f-4527-9bb3-ae425f8ee0aa/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/36f4c763-a09f-4527-9bb3-ae425f8ee0aa/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/36f4c763-a09f-4527-9bb3-ae425f8ee0aa",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "aespa",
     "release_title": "Welcome to MY World",
     "release_date": "2023-05-02",
     "stream": "song",
@@ -1172,18 +1196,6 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/9cd1a4ec-bf23-454f-a77a-f4173a9beb4d/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/9cd1a4ec-bf23-454f-a77a-f4173a9beb4d",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "aespa",
-    "release_title": "MY WORLD",
-    "release_date": "2023-05-08",
-    "stream": "album",
-    "cover_image_url": "https://coverartarchive.org/release-group/36f4c763-a09f-4527-9bb3-ae425f8ee0aa/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/36f4c763-a09f-4527-9bb3-ae425f8ee0aa/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/36f4c763-a09f-4527-9bb3-ae425f8ee0aa",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -1388,6 +1400,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/5087c822-983c-4100-a976-151f444d1b41/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/5087c822-983c-4100-a976-151f444d1b41",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "aespa",
+    "release_title": "KISS N TELL",
+    "release_date": "2026-07-24",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/6493859c-f44d-4b8d-b5bd-bb79a5e34aa9/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/6493859c-f44d-4b8d-b5bd-bb79a5e34aa9/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/6493859c-f44d-4b8d-b5bd-bb79a5e34aa9",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -1676,6 +1700,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/46b396ea-dee3-4c62-b8db-2bd84bc70b08",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ARTMS",
+    "release_title": "<Born Stunner>",
+    "release_date": "2026-07-24",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/6787c705-5010-4fc2-80cd-ad788f097cff/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/6787c705-5010-4fc2-80cd-ad788f097cff/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/6787c705-5010-4fc2-80cd-ad788f097cff",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -6876,6 +6912,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "fromis_9",
+    "release_title": "Glow ME",
+    "release_date": "2026-07-21",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/6176636c-1c4b-4057-947a-ff5291666ec5/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/6176636c-1c4b-4057-947a-ff5291666ec5/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/6176636c-1c4b-4057-947a-ff5291666ec5",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "GHOST9",
     "release_title": "PRE EPISODE 1 : DOOR",
     "release_date": "2020-09-23",
@@ -9692,6 +9740,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/c1bfa152-a517-4bf8-9753-a366541d3c67",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "LUN8",
+    "release_title": "Off the Grid",
+    "release_date": "2026-07-22",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/6016f9a5-7fc8-4dba-be0e-d1aa26db726d/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/6016f9a5-7fc8-4dba-be0e-d1aa26db726d/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/6016f9a5-7fc8-4dba-be0e-d1aa26db726d",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -12908,6 +12968,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONEWE",
+    "release_title": "Studio We : Recording #4",
+    "release_date": "2026-01-14",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/39a2bca6-065d-4f1f-a285-ac9bc4458d9f/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/39a2bca6-065d-4f1f-a285-ac9bc4458d9f/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/39a2bca6-065d-4f1f-a285-ac9bc4458d9f",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -20780,6 +20852,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/274fb6b2-a31d-4c86-98e0-078e11811a9c/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/274fb6b2-a31d-4c86-98e0-078e11811a9c",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "YOUNG POSSE",
+    "release_title": "young tape",
+    "release_date": "2026-07-13",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/292dfea7-2e03-4ef4-a18f-a7a4e74ade64/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/292dfea7-2e03-4ef4-a18f-a7a4e74ade64/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/292dfea7-2e03-4ef4-a18f-a7a4e74ade64",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },

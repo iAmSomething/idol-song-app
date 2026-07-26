@@ -2277,6 +2277,43 @@
   },
   {
     "group": "aespa",
+    "release_title": "Girls - The 2nd Mini Album",
+    "release_date": "2022-07-08",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [
+      "Girls"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@aespa_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@aespa_official",
+        "channel_label": "aespa",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@aespa_official",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "aespa Girls official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=aespa+Girls+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "aespa",
     "release_title": "Beautiful Christmas",
     "release_date": "2022-12-14",
     "stream": "song",
@@ -2309,6 +2346,41 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "aespa Beautiful Christmas official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=aespa+Beautiful+Christmas+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "aespa",
+    "release_title": "MY WORLD",
+    "release_date": "2023-01-01",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@aespa_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@aespa_official",
+        "channel_label": "aespa",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@aespa_official",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "aespa MY WORLD official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=aespa+MY+WORLD+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -2564,6 +2636,43 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "aespa LEMONADE official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=aespa+LEMONADE+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "aespa",
+    "release_title": "KISS N TELL",
+    "release_date": "2026-07-24",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [
+      "KISS N TELL"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@aespa_official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@aespa_official",
+        "channel_label": "aespa",
+        "owner_type": "team"
+      },
+      {
+        "channel_url": "https://www.youtube.com/@SMTOWN",
+        "channel_label": "SMTOWN",
+        "owner_type": "label"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@aespa_official",
+      "https://www.youtube.com/@SMTOWN"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No canonical MV target is attached yet.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "aespa KISS N TELL official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=aespa+KISS+N+TELL+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -10170,7 +10279,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10181,7 +10290,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10205,7 +10314,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10216,7 +10325,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10240,7 +10349,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10251,7 +10360,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10275,7 +10384,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10286,7 +10395,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10310,7 +10419,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10321,7 +10430,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10347,7 +10456,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10358,7 +10467,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10384,7 +10493,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10395,7 +10504,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10421,7 +10530,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10432,7 +10541,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10456,7 +10565,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10467,7 +10576,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10493,7 +10602,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10504,7 +10613,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10528,7 +10637,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10539,7 +10648,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10565,7 +10674,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10576,7 +10685,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10600,7 +10709,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10611,7 +10720,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10637,7 +10746,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10648,7 +10757,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10672,7 +10781,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10683,7 +10792,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10707,7 +10816,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10718,7 +10827,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -10742,7 +10851,7 @@
     "official_youtube_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team"
       },
@@ -10753,7 +10862,7 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "missing_mv_allowlist": false,
@@ -15858,6 +15967,35 @@
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
   },
   {
+    "group": "fromis_9",
+    "release_title": "Glow ME",
+    "release_date": "2026-07-21",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@realfromis_9",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@realfromis_9",
+        "channel_label": "fromis_9",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@realfromis_9"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "fromis_9 Glow ME official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=fromis_9+Glow+ME+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
     "group": "GHOST9",
     "release_title": "PRE EPISODE 1 : DOOR",
     "release_date": "2020-09-23",
@@ -19007,35 +19145,6 @@
   },
   {
     "group": "izna",
-    "release_title": "Not Just Pretty",
-    "release_date": "2025-09-30",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@izna_offcl",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@izna_offcl",
-        "channel_label": "izna",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@izna_offcl"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "izna Not Just Pretty official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=izna+Not+Just+Pretty+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
-    "group": "izna",
     "release_title": "Love All",
     "release_date": "2026-03-16",
     "stream": "song",
@@ -19062,35 +19171,6 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "izna Love All official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=izna+Love+All+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "izna",
-    "release_title": "SET THE TEMPO",
-    "release_date": "2026-06-08",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@izna_offcl",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@izna_offcl",
-        "channel_label": "izna",
-        "owner_type": "team"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@izna_offcl"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "izna SET THE TEMPO official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=izna+SET+THE+TEMPO+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -20683,41 +20763,6 @@
   },
   {
     "group": "KickFlip",
-    "release_title": "Kick Out, Flip Now!",
-    "release_date": "2025-05-26",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@kickflip_jype",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@kickflip_jype",
-        "channel_label": "KickFlip",
-        "owner_type": "team"
-      },
-      {
-        "channel_url": "https://www.youtube.com/@JYPEntertainment",
-        "channel_label": "JYP Entertainment",
-        "owner_type": "label"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@kickflip_jype",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "KickFlip Kick Out, Flip Now! official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=KickFlip+Kick+Out%2C+Flip+Now%21+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "KickFlip",
     "release_title": "My First Flip",
     "release_date": "2025-09-22",
     "stream": "album",
@@ -20785,80 +20830,6 @@
     "suggested_search_url": "https://www.youtube.com/results?search_query=KickFlip+From+KickFlip%2C+To+WeFlip+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseDetails.no_mv_signal"
-  },
-  {
-    "group": "KickFlip",
-    "release_title": "Twenty",
-    "release_date": "2026-03-09",
-    "stream": "song",
-    "release_kind": "single",
-    "title_tracks": [
-      "Twenty"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@kickflip_jype",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@kickflip_jype",
-        "channel_label": "KickFlip",
-        "owner_type": "team"
-      },
-      {
-        "channel_url": "https://www.youtube.com/@JYPEntertainment",
-        "channel_label": "JYP Entertainment",
-        "owner_type": "label"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@kickflip_jype",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "KickFlip Twenty official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=KickFlip+Twenty+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
-  },
-  {
-    "group": "KickFlip",
-    "release_title": "My First Kick",
-    "release_date": "2026-04-06",
-    "stream": "album",
-    "release_kind": "ep",
-    "title_tracks": [
-      "Twenty"
-    ],
-    "title_track_basis": "title_track",
-    "missing_title_track_metadata": false,
-    "youtube_video_status": "unresolved",
-    "official_youtube_url": "https://www.youtube.com/@kickflip_jype",
-    "mv_source_channels": [
-      {
-        "channel_url": "https://www.youtube.com/@kickflip_jype",
-        "channel_label": "KickFlip",
-        "owner_type": "team"
-      },
-      {
-        "channel_url": "https://www.youtube.com/@JYPEntertainment",
-        "channel_label": "JYP Entertainment",
-        "owner_type": "label"
-      }
-    ],
-    "mv_allowlist_urls": [
-      "https://www.youtube.com/@kickflip_jype",
-      "https://www.youtube.com/@JYPEntertainment"
-    ],
-    "missing_mv_allowlist": false,
-    "review_reason": "No canonical MV target is attached yet.",
-    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
-    "suggested_search_query": "KickFlip Twenty official mv",
-    "suggested_search_url": "https://www.youtube.com/results?search_query=KickFlip+Twenty+official+mv",
-    "current_youtube_video_url": "",
-    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
   {
     "group": "KiiiKiii",
@@ -21323,9 +21294,11 @@
     "release_date": "2026-07-04",
     "stream": "song",
     "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "BREAK IT"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@KISSOFLIFE_S2",
     "mv_source_channels": [
@@ -21339,7 +21312,7 @@
       "https://www.youtube.com/@KISSOFLIFE_S2"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "KISS OF LIFE BREAK IT official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=KISS+OF+LIFE+BREAK+IT+official+mv",
@@ -23116,6 +23089,35 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "LUN8 We’re Not Alone official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=LUN8+We%E2%80%99re+Not+Alone+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "LUN8",
+    "release_title": "Off the Grid",
+    "release_date": "2026-07-22",
+    "stream": "album",
+    "release_kind": "ep",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@LUN8_Official",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@LUN8_Official",
+        "channel_label": "LUN8",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@LUN8_Official"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "LUN8 Off the Grid official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=LUN8+Off+the+Grid+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },
@@ -31827,6 +31829,35 @@
   },
   {
     "group": "ONEWE",
+    "release_title": "Studio We : Recording #4",
+    "release_date": "2026-01-14",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ",
+        "channel_label": "ONEWE",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/channel/UCj-dtq6jHfj4_fufifPzMEQ"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "ONEWE Studio We : Recording #4 official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=ONEWE+Studio+We+%3A+Recording+%234+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "ONEWE",
     "release_title": "點 : The Quiver",
     "release_date": "2026-05-29",
     "stream": "song",
@@ -35319,9 +35350,11 @@
     "release_date": "2026-07-08",
     "stream": "song",
     "release_kind": "single",
-    "title_tracks": [],
-    "title_track_basis": "release_title_fallback",
-    "missing_title_track_metadata": true,
+    "title_tracks": [
+      "Pretty Girl"
+    ],
+    "title_track_basis": "title_track",
+    "missing_title_track_metadata": false,
     "youtube_video_status": "unresolved",
     "official_youtube_url": "https://www.youtube.com/@RESCENEofficial",
     "mv_source_channels": [
@@ -35335,7 +35368,7 @@
       "https://www.youtube.com/@RESCENEofficial"
     ],
     "missing_mv_allowlist": false,
-    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "review_reason": "No canonical MV target is attached yet.",
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "RESCENE Pretty Girl official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=RESCENE+Pretty+Girl+official+mv",
@@ -52212,6 +52245,35 @@
     "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
     "suggested_search_query": "YOUNG POSSE we don’t go to bed tonight official mv",
     "suggested_search_url": "https://www.youtube.com/results?search_query=YOUNG+POSSE+we+don%E2%80%99t+go+to+bed+tonight+official+mv",
+    "current_youtube_video_url": "",
+    "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
+  },
+  {
+    "group": "YOUNG POSSE",
+    "release_title": "young tape",
+    "release_date": "2026-07-13",
+    "stream": "album",
+    "release_kind": "album",
+    "title_tracks": [],
+    "title_track_basis": "release_title_fallback",
+    "missing_title_track_metadata": true,
+    "youtube_video_status": "unresolved",
+    "official_youtube_url": "https://www.youtube.com/@YOUNGPOSSEUP",
+    "mv_source_channels": [
+      {
+        "channel_url": "https://www.youtube.com/@YOUNGPOSSEUP",
+        "channel_label": "YOUNG POSSE",
+        "owner_type": "team"
+      }
+    ],
+    "mv_allowlist_urls": [
+      "https://www.youtube.com/@YOUNGPOSSEUP"
+    ],
+    "missing_mv_allowlist": false,
+    "review_reason": "No dependable title-track metadata is attached yet, so MV verification falls back to the release title.",
+    "recommended_action": "Search only the allowlisted official channels and add a manual override only when the MV match is explicit.",
+    "suggested_search_query": "YOUNG POSSE young tape official mv",
+    "suggested_search_url": "https://www.youtube.com/results?search_query=YOUNG+POSSE+young+tape+official+mv",
     "current_youtube_video_url": "",
     "current_youtube_video_provenance": "releaseHistory.placeholder_seed"
   },

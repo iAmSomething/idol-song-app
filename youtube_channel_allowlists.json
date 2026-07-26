@@ -1623,19 +1623,24 @@
   },
   {
     "group": "CRAVITY",
-    "primary_team_channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+    "primary_team_channel_url": "https://www.youtube.com/@cravity_official",
     "mv_source_channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team",
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
-        "resolved_alias_urls": [],
+        "resolved_alias_urls": [
+          "https://www.youtube.com/channel/UCexbfWdQ5za-nmkqSsuxdJg",
+          "https://www.youtube.com/@cravity_official"
+        ],
         "match_keys": [
-          "channel:ucrm-0jvuufh5hv7ngg7qxlq",
-          "https://www.youtube.com/channel/ucrm-0jvuufh5hv7ngg7qxlq"
+          "@cravity_official",
+          "https://www.youtube.com/@cravity_official",
+          "channel:ucexbfwdq5za-nmkqssuxdjg",
+          "https://www.youtube.com/channel/ucexbfwdq5za-nmkqssuxdjg"
         ]
       },
       {
@@ -1658,12 +1663,14 @@
       }
     ],
     "mv_allowlist_urls": [
-      "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+      "https://www.youtube.com/@cravity_official",
       "https://www.youtube.com/@officialstarship"
     ],
     "mv_allowlist_match_keys": [
-      "channel:ucrm-0jvuufh5hv7ngg7qxlq",
-      "https://www.youtube.com/channel/ucrm-0jvuufh5hv7ngg7qxlq",
+      "@cravity_official",
+      "https://www.youtube.com/@cravity_official",
+      "channel:ucexbfwdq5za-nmkqssuxdjg",
+      "https://www.youtube.com/channel/ucexbfwdq5za-nmkqssuxdjg",
       "@officialstarship",
       "https://www.youtube.com/@officialstarship",
       "channel:uc7famnhb-bnenj_6drtrhcq",
@@ -1671,16 +1678,21 @@
     ],
     "channels": [
       {
-        "channel_url": "https://www.youtube.com/channel/UCRm-0JVuUFh5HV7NGG7qXlQ",
+        "channel_url": "https://www.youtube.com/@cravity_official",
         "channel_label": "CRAVITY",
         "owner_type": "team",
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
-        "resolved_alias_urls": [],
+        "resolved_alias_urls": [
+          "https://www.youtube.com/channel/UCexbfWdQ5za-nmkqSsuxdJg",
+          "https://www.youtube.com/@cravity_official"
+        ],
         "match_keys": [
-          "channel:ucrm-0jvuufh5hv7ngg7qxlq",
-          "https://www.youtube.com/channel/ucrm-0jvuufh5hv7ngg7qxlq"
+          "@cravity_official",
+          "https://www.youtube.com/@cravity_official",
+          "channel:ucexbfwdq5za-nmkqssuxdjg",
+          "https://www.youtube.com/channel/ucexbfwdq5za-nmkqssuxdjg"
         ]
       },
       {
@@ -5093,7 +5105,8 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCus0FFI3ZSFv4e2Yw6nn3aw"
+          "https://www.youtube.com/channel/UCus0FFI3ZSFv4e2Yw6nn3aw",
+          "https://www.youtube.com/@pledis_17"
         ],
         "match_keys": [
           "@pledis_17",
@@ -5153,7 +5166,8 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCus0FFI3ZSFv4e2Yw6nn3aw"
+          "https://www.youtube.com/channel/UCus0FFI3ZSFv4e2Yw6nn3aw",
+          "https://www.youtube.com/@pledis_17"
         ],
         "match_keys": [
           "@pledis_17",
@@ -5349,7 +5363,8 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCw65oxhmqIxjE_ijNkBb4xg"
+          "https://www.youtube.com/channel/UCw65oxhmqIxjE_ijNkBb4xg",
+          "https://www.youtube.com/@stray_kids"
         ],
         "match_keys": [
           "@stray_kids",
@@ -5400,7 +5415,8 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCw65oxhmqIxjE_ijNkBb4xg"
+          "https://www.youtube.com/channel/UCw65oxhmqIxjE_ijNkBb4xg",
+          "https://www.youtube.com/@stray_kids"
         ],
         "match_keys": [
           "@stray_kids",

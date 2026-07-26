@@ -108,11 +108,11 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "LEMONADE",
-      "date": "2026-05-29",
-      "source": "https://musicbrainz.org/release-group/d685037e-a15f-4cd1-8bad-16225120fa58",
-      "release_kind": "album",
-      "release_format": "album",
+      "title": "KISS N TELL",
+      "date": "2026-07-24",
+      "source": "https://musicbrainz.org/release-group/6493859c-f44d-4b8d-b5bd-bb79a5e34aa9",
+      "release_kind": "ep",
+      "release_format": "ep",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/b51c672b-85e0-48fe-8648-470a2422229f"
@@ -175,7 +175,14 @@
     "group": "ARTMS",
     "artist_name_mb": "ARTMS",
     "artist_mbid": "ae98b8c4-d8fc-4ff9-9b4e-4bc1fd8575d1",
-    "latest_song": null,
+    "latest_song": {
+      "title": "<Born Stunner>",
+      "date": "2026-07-24",
+      "source": "https://musicbrainz.org/release-group/6787c705-5010-4fc2-80cd-ad788f097cff",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
     "latest_album": {
       "title": "<Club Icarus>",
       "date": "2025-06-13",
@@ -563,11 +570,11 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "From Our 20’s",
-      "date": "2025-06-25",
-      "source": "https://musicbrainz.org/release-group/8b4a8c41-9c53-4930-8c90-512bf8e56eee",
-      "release_kind": "ep",
-      "release_format": "ep",
+      "title": "Glow ME",
+      "date": "2026-07-21",
+      "source": "https://musicbrainz.org/release-group/6176636c-1c4b-4057-947a-ff5291666ec5",
+      "release_kind": "album",
+      "release_format": "album",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/705f04e2-fc5b-41ab-b837-1d850d44084a"
@@ -837,7 +844,14 @@
       "release_format": "single",
       "context_tags": []
     },
-    "latest_album": null,
+    "latest_album": {
+      "title": "Off the Grid",
+      "date": "2026-07-22",
+      "source": "https://musicbrainz.org/release-group/6016f9a5-7fc8-4dba-be0e-d1aa26db726d",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
     "artist_source": "https://musicbrainz.org/artist/1689d50f-cd03-43ce-a275-ce7616dafa7f"
   },
   {
@@ -1008,11 +1022,11 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "MAZE : AD ASTRA",
-      "date": "2025-10-07",
-      "source": "https://musicbrainz.org/release-group/9b82559f-d786-4418-a8b9-066bb90c8484",
-      "release_kind": "ep",
-      "release_format": "ep",
+      "title": "Studio We : Recording #4",
+      "date": "2026-01-14",
+      "source": "https://musicbrainz.org/release-group/39a2bca6-065d-4f1f-a285-ac9bc4458d9f",
+      "release_kind": "album",
+      "release_format": "album",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/720f9030-9b10-4cfa-9a1b-16f80c774cc9"
@@ -1695,11 +1709,11 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "Growing Pain pt.1 : FREE",
-      "date": "2025-08-14",
-      "source": "https://musicbrainz.org/release-group/f894d3a6-0225-4269-bb58-8947719d2f5d",
-      "release_kind": "ep",
-      "release_format": "ep",
+      "title": "young tape",
+      "date": "2026-07-13",
+      "source": "https://musicbrainz.org/release-group/292dfea7-2e03-4ef4-a18f-a7a4e74ade64",
+      "release_kind": "album",
+      "release_format": "album",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/427150d2-674f-47b2-a1a1-7bb4a9e0d070"

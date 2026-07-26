@@ -848,6 +848,15 @@
     "artist_source": "https://musicbrainz.org/artist/b51c672b-85e0-48fe-8648-470a2422229f",
     "releases": [
       {
+        "title": "KISS N TELL",
+        "date": "2026-07-24",
+        "source": "https://musicbrainz.org/release-group/6493859c-f44d-4b8d-b5bd-bb79a5e34aa9",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "LEMONADE",
         "date": "2026-05-29",
         "source": "https://musicbrainz.org/release-group/d685037e-a15f-4cd1-8bad-16225120fa58",
@@ -1001,15 +1010,6 @@
         "stream": "song"
       },
       {
-        "title": "MY WORLD",
-        "date": "2023-05-08",
-        "source": "https://musicbrainz.org/release-group/36f4c763-a09f-4527-9bb3-ae425f8ee0aa",
-        "release_kind": "ep",
-        "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
         "title": "Welcome to MY World",
         "date": "2023-05-02",
         "source": "https://musicbrainz.org/release-group/9cd1a4ec-bf23-454f-a77a-f4173a9beb4d",
@@ -1017,6 +1017,15 @@
         "release_format": "single",
         "context_tags": [],
         "stream": "song"
+      },
+      {
+        "title": "MY WORLD",
+        "date": "2023-01-01",
+        "source": "https://musicbrainz.org/release-group/36f4c763-a09f-4527-9bb3-ae425f8ee0aa",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
       },
       {
         "title": "Beautiful Christmas",
@@ -1032,6 +1041,15 @@
         "date": "2022-07-08",
         "source": "https://musicbrainz.org/release-group/13307860-652b-446a-82b7-326f7f31c9be",
         "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "Girls - The 2nd Mini Album",
+        "date": "2022-07-08",
+        "source": "https://musicbrainz.org/release-group/e036296a-caac-4f8b-9bb3-01c984a19294",
+        "release_kind": "album",
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
@@ -1277,6 +1295,15 @@
     "artist_mbid": "ae98b8c4-d8fc-4ff9-9b4e-4bc1fd8575d1",
     "artist_source": "https://musicbrainz.org/artist/ae98b8c4-d8fc-4ff9-9b4e-4bc1fd8575d1",
     "releases": [
+      {
+        "title": "<Born Stunner>",
+        "date": "2026-07-24",
+        "source": "https://musicbrainz.org/release-group/6787c705-5010-4fc2-80cd-ad788f097cff",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "<Club Icarus>",
         "date": "2025-06-13",
@@ -5316,6 +5343,15 @@
     "artist_source": "https://musicbrainz.org/artist/705f04e2-fc5b-41ab-b837-1d850d44084a",
     "releases": [
       {
+        "title": "Glow ME",
+        "date": "2026-07-21",
+        "source": "https://musicbrainz.org/release-group/6176636c-1c4b-4057-947a-ff5291666ec5",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "White Memories",
         "date": "2025-12-02",
         "source": "https://musicbrainz.org/release-group/8ceecddf-94b4-40a4-b77a-592fae34fc65",
@@ -7647,6 +7683,15 @@
     "artist_mbid": "1689d50f-cd03-43ce-a275-ce7616dafa7f",
     "artist_source": "https://musicbrainz.org/artist/1689d50f-cd03-43ce-a275-ce7616dafa7f",
     "releases": [
+      {
+        "title": "Off the Grid",
+        "date": "2026-07-22",
+        "source": "https://musicbrainz.org/release-group/6016f9a5-7fc8-4dba-be0e-d1aa26db726d",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "LOST",
         "date": "2025-09-17",
@@ -10031,6 +10076,15 @@
         "release_format": "single",
         "context_tags": [],
         "stream": "song"
+      },
+      {
+        "title": "Studio We : Recording #4",
+        "date": "2026-01-14",
+        "source": "https://musicbrainz.org/release-group/39a2bca6-065d-4f1f-a285-ac9bc4458d9f",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
       },
       {
         "title": "MAZE : AD ASTRA",
@@ -16393,6 +16447,15 @@
     "artist_mbid": "427150d2-674f-47b2-a1a1-7bb4a9e0d070",
     "artist_source": "https://musicbrainz.org/artist/427150d2-674f-47b2-a1a1-7bb4a9e0d070",
     "releases": [
+      {
+        "title": "young tape",
+        "date": "2026-07-13",
+        "source": "https://musicbrainz.org/release-group/292dfea7-2e03-4ef4-a18f-a7a4e74ade64",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "we don’t go to bed tonight",
         "date": "2026-04-07",
