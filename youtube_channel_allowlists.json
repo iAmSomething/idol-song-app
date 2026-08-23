@@ -330,14 +330,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -350,8 +350,8 @@
       "https://www.youtube.com/@aespa_official",
       "@smtown",
       "https://www.youtube.com/@smtown",
-      "channel:ucdvd0msyecqaie5ru-poiqq",
-      "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -375,14 +375,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]
@@ -1632,15 +1632,10 @@
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
-        "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCexbfWdQ5za-nmkqSsuxdJg",
-          "https://www.youtube.com/@cravity_official"
-        ],
+        "resolved_alias_urls": [],
         "match_keys": [
           "@cravity_official",
-          "https://www.youtube.com/@cravity_official",
-          "channel:ucexbfwdq5za-nmkqssuxdjg",
-          "https://www.youtube.com/channel/ucexbfwdq5za-nmkqssuxdjg"
+          "https://www.youtube.com/@cravity_official"
         ]
       },
       {
@@ -1669,8 +1664,6 @@
     "mv_allowlist_match_keys": [
       "@cravity_official",
       "https://www.youtube.com/@cravity_official",
-      "channel:ucexbfwdq5za-nmkqssuxdjg",
-      "https://www.youtube.com/channel/ucexbfwdq5za-nmkqssuxdjg",
       "@officialstarship",
       "https://www.youtube.com/@officialstarship",
       "channel:uc7famnhb-bnenj_6drtrhcq",
@@ -1684,15 +1677,10 @@
         "allow_mv_uploads": true,
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
-        "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCexbfWdQ5za-nmkqSsuxdJg",
-          "https://www.youtube.com/@cravity_official"
-        ],
+        "resolved_alias_urls": [],
         "match_keys": [
           "@cravity_official",
-          "https://www.youtube.com/@cravity_official",
-          "channel:ucexbfwdq5za-nmkqssuxdjg",
-          "https://www.youtube.com/channel/ucexbfwdq5za-nmkqssuxdjg"
+          "https://www.youtube.com/@cravity_official"
         ]
       },
       {
@@ -2221,14 +2209,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -2243,8 +2231,8 @@
       "https://www.youtube.com/channel/uczcedbcsslti1tfd3bkyn6g",
       "@smtown",
       "https://www.youtube.com/@smtown",
-      "channel:ucdvd0msyecqaie5ru-poiqq",
-      "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -2273,14 +2261,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]
@@ -2509,14 +2497,14 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -2526,8 +2514,8 @@
     "mv_allowlist_match_keys": [
       "@smtown",
       "https://www.youtube.com/@smtown",
-      "channel:ucdvd0msyecqaie5ru-poiqq",
-      "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -2538,14 +2526,14 @@
         "display_in_team_links": true,
         "provenance": "artistProfiles.official_youtube_url",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]
@@ -3874,14 +3862,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -3896,8 +3884,8 @@
       "https://www.youtube.com/channel/uck2e0dbayejwnrn2bbqocbg",
       "@smtown",
       "https://www.youtube.com/@smtown",
-      "channel:ucdvd0msyecqaie5ru-poiqq",
-      "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -3926,14 +3914,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]
@@ -3968,14 +3956,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -3990,8 +3978,8 @@
       "https://www.youtube.com/channel/ucjmkphxcmb4jjjdasxstunq",
       "@smtown",
       "https://www.youtube.com/@smtown",
-      "channel:ucdvd0msyecqaie5ru-poiqq",
-      "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -4020,14 +4008,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]
@@ -4062,14 +4050,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -4084,8 +4072,8 @@
       "https://www.youtube.com/channel/ucizqwvaechfqlom5zpr3zja",
       "@smtown",
       "https://www.youtube.com/@smtown",
-      "channel:ucdvd0msyecqaie5ru-poiqq",
-      "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -4114,14 +4102,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]
@@ -4821,14 +4809,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -4841,8 +4829,8 @@
       "https://www.youtube.com/@redvelvet.smtown",
       "@smtown",
       "https://www.youtube.com/@smtown",
-      "channel:ucdvd0msyecqaie5ru-poiqq",
-      "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -4866,14 +4854,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]
@@ -4961,14 +4949,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -4982,7 +4970,9 @@
       "channel:ucdvd0msyecqaie5ru-poiqq",
       "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq",
       "@smtown",
-      "https://www.youtube.com/@smtown"
+      "https://www.youtube.com/@smtown",
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -5011,14 +5001,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]
@@ -5234,14 +5224,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -5256,8 +5246,8 @@
       "https://www.youtube.com/channel/ucypwrgc3gqgqhk6rogs50ug",
       "@smtown",
       "https://www.youtube.com/@smtown",
-      "channel:ucdvd0msyecqaie5ru-poiqq",
-      "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -5286,14 +5276,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]
@@ -6410,14 +6400,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ],
@@ -6432,8 +6422,8 @@
       "https://www.youtube.com/channel/ucb7uy-f5akkijy89qfwq02g",
       "@smtown",
       "https://www.youtube.com/@smtown",
-      "channel:ucdvd0msyecqaie5ru-poiqq",
-      "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+      "channel:uck9gmdldtbfggrb7vxermoq",
+      "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
     ],
     "channels": [
       {
@@ -6462,14 +6452,14 @@
         "display_in_team_links": false,
         "provenance": "curated_agency_allowlist",
         "resolved_alias_urls": [
-          "https://www.youtube.com/channel/UCdVD0MsYecQaIE5Ru-pOIQQ",
+          "https://www.youtube.com/channel/UCk9GmdlDTBfgGRb7vXeRMoQ",
           "https://www.youtube.com/@SMTOWN"
         ],
         "match_keys": [
           "@smtown",
           "https://www.youtube.com/@smtown",
-          "channel:ucdvd0msyecqaie5ru-poiqq",
-          "https://www.youtube.com/channel/ucdvd0msyecqaie5ru-poiqq"
+          "channel:uck9gmdldtbfggrb7vxermoq",
+          "https://www.youtube.com/channel/uck9gmdldtbfggrb7vxermoq"
         ]
       }
     ]

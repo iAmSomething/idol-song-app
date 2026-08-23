@@ -1,6 +1,6 @@
 {
-  "started_at": "2026-07-26T05:38:13.561305Z",
-  "finished_at": "2026-07-26T05:38:23.381884Z",
+  "started_at": "2026-08-23T04:58:31.170063Z",
+  "finished_at": "2026-08-23T04:58:40.704323Z",
   "config": {
     "cohorts": [
       "latest",
@@ -22,19 +22,19 @@
     "batch_index": 32,
     "row_offset": 775,
     "batch_size": 25,
-    "selected_rows": 12,
-    "scoped_rows_total": 787,
-    "rows_with_title_track_before": 10,
-    "rows_with_title_track_after": 10,
+    "selected_rows": 20,
+    "scoped_rows_total": 795,
+    "rows_with_title_track_before": 15,
+    "rows_with_title_track_after": 15,
     "persisted_title_track_changes": 0,
     "title_track_auto_resolved_rows": 0,
     "title_track_auto_double_rows": 0,
-    "title_track_review_queue_rows": 2,
+    "title_track_review_queue_rows": 5,
     "stderr_lines": [
-      "[build_release_details_musicbrainz] processing 12/787 scoped rows (row_offset=775, progress_every=10)",
-      "[build_release_details_musicbrainz] 1/12 ZEROBASEONE / CINEMA PARADISE / 2024-08-26 / album",
-      "[build_release_details_musicbrainz] 10/12 ZEROBASEONE / ROSES / 2026-01-23 / song",
-      "[build_release_details_musicbrainz] 12/12 ZEROBASEONE / Ascend- / 2026-05-18 / album"
+      "[build_release_details_musicbrainz] processing 20/795 scoped rows (row_offset=775, progress_every=10)",
+      "[build_release_details_musicbrainz] 1/20 YOUNITE / YOUNI‐T / 2025-04-23 / album",
+      "[build_release_details_musicbrainz] 10/20 ZEROBASEONE / STAGE FIGHTER(STF) Original, Vol. 6 / 2024-11-26 / song",
+      "[build_release_details_musicbrainz] 20/20 ZEROBASEONE / Return to LOVE / 2026-08-19 / album"
     ]
   },
   "iterations": [
@@ -43,7 +43,7 @@
       "row_offset": 0,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 23,
       "rows_with_title_track_after": 23,
       "persisted_title_track_changes": 0,
@@ -51,7 +51,7 @@
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 2,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=0, progress_every=10)",
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=0, progress_every=10)",
         "[build_release_details_musicbrainz] 1/25 &TEAM / First Howling : NOW / 2023-11-15 / album",
         "[build_release_details_musicbrainz] 10/25 &TEAM / Extraordinary day / 2025-02-01 / song",
         "[build_release_details_musicbrainz] 20/25 (G)I-DLE / We are / 2025-05-19 / album",
@@ -63,18 +63,18 @@
       "row_offset": 25,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 18,
-      "rows_with_title_track_after": 18,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 17,
+      "rows_with_title_track_after": 17,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 7,
+      "title_track_review_queue_rows": 8,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=25, progress_every=10)",
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=25, progress_every=10)",
         "[build_release_details_musicbrainz] 1/25 (G)I-DLE / We made / 2026-07-06 / album",
         "[build_release_details_musicbrainz] 10/25 8TURN / 로드 투 킹덤 : ACE OF ACE 〈NO LIMIT〉, Pt. 2 / 2024-10-31 / album",
-        "[build_release_details_musicbrainz] 20/25 AB6IX / UPSIDE DOWN / 2025-08-25 / album",
+        "[build_release_details_musicbrainz] 20/25 AB6IX / BORN LIKE THIS / 2024-10-10 / album",
         "[build_release_details_musicbrainz] 25/25 aespa / Drama / 2023-11-10 / album"
       ]
     },
@@ -83,19 +83,19 @@
       "row_offset": 50,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 23,
-      "rows_with_title_track_after": 23,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 22,
+      "rows_with_title_track_after": 22,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 2,
+      "title_track_review_queue_rows": 3,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=50, progress_every=10)",
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=50, progress_every=10)",
         "[build_release_details_musicbrainz] 1/25 aespa / Drama / 2023-11-10 / song",
         "[build_release_details_musicbrainz] 10/25 aespa / Dirty Work / 2025-06-27 / song",
-        "[build_release_details_musicbrainz] 20/25 ALL(H)OURS / Smoke Point / 2025-02-04 / album",
-        "[build_release_details_musicbrainz] 25/25 ALLDAY PROJECT / ALLDAY PROJECT / 2025-12-08 / album"
+        "[build_release_details_musicbrainz] 20/25 ALL(H)OURS / Graffiti / 2025-01-17 / song",
+        "[build_release_details_musicbrainz] 25/25 ALLDAY PROJECT / ONE MORE TIME / 2025-11-17 / song"
       ]
     },
     {
@@ -103,7 +103,7 @@
       "row_offset": 75,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 18,
       "rows_with_title_track_after": 18,
       "persisted_title_track_changes": 0,
@@ -111,11 +111,11 @@
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 7,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=75, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 ALLDAY PROJECT / I DON’T BARGAIN / 2026-03-09 / song",
-        "[build_release_details_musicbrainz] 10/25 ARTMS / <Pre2 : Flower Rhythm> / 2024-04-11 / song",
-        "[build_release_details_musicbrainz] 20/25 ATEEZ / GOLDEN HOUR : Part.1 / 2024-05-31 / album",
-        "[build_release_details_musicbrainz] 25/25 ATEEZ / WORK Pt.4 / 2024-08-09 / song"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=75, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 ALLDAY PROJECT / ALLDAY PROJECT / 2025-12-08 / album",
+        "[build_release_details_musicbrainz] 10/25 ARTMS / <Pre1 : Birth> / 2024-03-29 / song",
+        "[build_release_details_musicbrainz] 20/25 ATEEZ / THE WORLD EP.FIN : WILL / 2023-12-01 / album",
+        "[build_release_details_musicbrainz] 25/25 ATEEZ / Hush‐Hush / 2024-07-01 / song"
       ]
     },
     {
@@ -123,19 +123,19 @@
       "row_offset": 100,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 20,
-      "rows_with_title_track_after": 20,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 21,
+      "rows_with_title_track_after": 21,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 5,
+      "title_track_review_queue_rows": 4,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=100, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 ATEEZ / Royal / 2024-09-03 / song",
-        "[build_release_details_musicbrainz] 10/25 ATEEZ / GOLDEN HOUR : Part.5 / 2026-06-26 / album",
-        "[build_release_details_musicbrainz] 20/25 BABYMONSTER / DRIP / 2024-11-01 / album",
-        "[build_release_details_musicbrainz] 25/25 BABYMONSTER / SUGAR HONEY ICE TEA / 2026-06-08 / song"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=100, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 ATEEZ / Hush-Hush (Inst.) / 2024-07-06 / song",
+        "[build_release_details_musicbrainz] 10/25 ATEEZ / Choose / 2025-11-17 / song",
+        "[build_release_details_musicbrainz] 20/25 BABYMONSTER / BATTER UP / 2023-11-27 / song",
+        "[build_release_details_musicbrainz] 25/25 BABYMONSTER / Ghost / 2025-05-07 / song"
       ]
     },
     {
@@ -143,7 +143,7 @@
       "row_offset": 125,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 15,
       "rows_with_title_track_after": 15,
       "persisted_title_track_changes": 0,
@@ -151,11 +151,11 @@
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 10,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=125, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 BADVILLAIN / OVERSTEP / 2024-06-03 / song",
-        "[build_release_details_musicbrainz] 10/25 BLACKPINK / 뛰어 (JUMP) / 2025-07-11 / song",
-        "[build_release_details_musicbrainz] 20/25 BOYNEXTDOOR / No Genre / 2025-05-13 / album",
-        "[build_release_details_musicbrainz] 25/25 BOYNEXTDOOR / HOME / 2026-06-08 / album"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=125, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 BABYMONSTER / HOT SAUCE / 2025-07-01 / song",
+        "[build_release_details_musicbrainz] 10/25 BAE173 / NEW CHAPTER : LUCEAT / 2024-03-13 / album",
+        "[build_release_details_musicbrainz] 20/25 BOYNEXTDOOR / 부모님 관람불가 / 2024-09-02 / song",
+        "[build_release_details_musicbrainz] 25/25 BOYNEXTDOOR / BOYLIFE / 2025-08-17 / song"
       ]
     },
     {
@@ -163,19 +163,19 @@
       "row_offset": 150,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 14,
-      "rows_with_title_track_after": 14,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 17,
+      "rows_with_title_track_after": 17,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 11,
+      "title_track_review_queue_rows": 7,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=150, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 BTOB / Be Alright / 2024-11-25 / song",
-        "[build_release_details_musicbrainz] 10/25 cignature / 그해 여름의 우리 (Us in the Summer) / 2023-08-29 / album",
-        "[build_release_details_musicbrainz] 20/25 CRAVITY / Jelly Bean / 2025-03-26 / album",
-        "[build_release_details_musicbrainz] 25/25 DAY6 / Psycho, Loveholic [THE SEASONS: Red Carpet with Lee Hyo Ri] / 2024-03-31 / album"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=150, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 BOYNEXTDOOR / The Action / 2025-10-20 / album",
+        "[build_release_details_musicbrainz] 10/25 BTS / ARIRANG / 2026-03-20 / album",
+        "[build_release_details_musicbrainz] 20/25 CRAVITY / Cheese / 2023-09-01 / song",
+        "[build_release_details_musicbrainz] 25/25 CRAVITY / Jelly Bean / 2025-03-26 / album"
       ]
     },
     {
@@ -183,19 +183,19 @@
       "row_offset": 175,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 10,
-      "rows_with_title_track_after": 10,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 8,
+      "rows_with_title_track_after": 8,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 15,
+      "title_track_review_queue_rows": 17,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=175, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 DAY6 / Band Aid / 2024-09-02 / album",
-        "[build_release_details_musicbrainz] 10/25 Dreamcatcher / [My Christmas Sweet Love] / 2024-12-20 / song",
-        "[build_release_details_musicbrainz] 20/25 ENHYPEN / 結 -YOU- / 2023-08-02 / song",
-        "[build_release_details_musicbrainz] 25/25 ENHYPEN / ROMANCE : UNTOLD / 2024-07-12 / album"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=175, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 CRAVITY / Dare to Crave / 2025-06-23 / album",
+        "[build_release_details_musicbrainz] 10/25 DKB / Urban Ride / 2024-07-17 / album",
+        "[build_release_details_musicbrainz] 20/25 DXMON / Youth Never DIE / 2024-10-21 / song",
+        "[build_release_details_musicbrainz] 25/25 ENHYPEN / I NEED U / 2024-02-16 / song"
       ]
     },
     {
@@ -203,19 +203,19 @@
       "row_offset": 200,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 18,
-      "rows_with_title_track_after": 18,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 17,
+      "rows_with_title_track_after": 17,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 7,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=200, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 ENHYPEN / Brought The Heat Back / 2024-08-09 / song",
-        "[build_release_details_musicbrainz] 10/25 EPEX / Graduation Day / 2024-02-05 / song",
-        "[build_release_details_musicbrainz] 20/25 EVNNE / 景色 (KESHIKI) / 2024-11-05 / song",
-        "[build_release_details_musicbrainz] 25/25 EXO / REVERXE / 2026-01-19 / album"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=200, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 ENHYPEN / What Makes You Beautiful / 2024-02-23 / song",
+        "[build_release_details_musicbrainz] 10/25 ENHYPEN / THE SIN : VANISH / 2026-01-16 / album",
+        "[build_release_details_musicbrainz] 20/25 EPEX / Youth : Epilogue / 2026-06-09 / album",
+        "[build_release_details_musicbrainz] 25/25 EVNNE / HOT MESS / 2025-02-10 / album"
       ]
     },
     {
@@ -223,19 +223,19 @@
       "row_offset": 225,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 19,
       "rows_with_title_track_after": 19,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 5,
+      "title_track_review_queue_rows": 6,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=225, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 FIFTY FIFTY / Starry Night / 2024-08-30 / song",
-        "[build_release_details_musicbrainz] 10/25 FIFTY FIFTY / STARSTRUCK / 2026-05-15 / song",
-        "[build_release_details_musicbrainz] 20/25 H1-KEY / Time to Shine / 2023-08-23 / song",
-        "[build_release_details_musicbrainz] 25/25 H1-KEY / LOVE or HATE / 2024-06-19 / album"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=225, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 EVNNE / LOVE ANECDOTE(S) / 2025-08-04 / album",
+        "[build_release_details_musicbrainz] 10/25 FIFTY FIFTY / TAKE MY HAND / 2025-08-22 / song",
+        "[build_release_details_musicbrainz] 20/25 fromis_9 / Glow ME / 2026-07-21 / album",
+        "[build_release_details_musicbrainz] 25/25 H1-KEY / H1-KEYnote #1 [Thinkin’ About You] / 2024-01-19 / song"
       ]
     },
     {
@@ -243,187 +243,7 @@
       "row_offset": 250,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 17,
-      "rows_with_title_track_after": 17,
-      "persisted_title_track_changes": 0,
-      "title_track_auto_resolved_rows": 0,
-      "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 8,
-      "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=250, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 H1-KEY / Re: Thinkin' About You / 2024-11-20 / song",
-        "[build_release_details_musicbrainz] 10/25 Hearts2Hearts / RUDE! / 2026-02-20 / song",
-        "[build_release_details_musicbrainz] 20/25 ITZY / Sugar‐holic / 2023-10-11 / song",
-        "[build_release_details_musicbrainz] 25/25 ITZY / Algorhythm / 2024-05-15 / song"
-      ]
-    },
-    {
-      "batch_index": 12,
-      "row_offset": 275,
-      "batch_size": 25,
-      "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 22,
-      "rows_with_title_track_after": 22,
-      "persisted_title_track_changes": 0,
-      "title_track_auto_resolved_rows": 0,
-      "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 3,
-      "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=275, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 ITZY / GOLD / 2024-10-15 / album",
-        "[build_release_details_musicbrainz] 10/25 IVE / IVE SWITCH / 2024-04-29 / album",
-        "[build_release_details_musicbrainz] 20/25 IVE / IVE SECRET / 2025-08-25 / album",
-        "[build_release_details_musicbrainz] 25/25 IVE / LUCID DREAM / 2026-05-27 / album"
-      ]
-    },
-    {
-      "batch_index": 13,
-      "row_offset": 300,
-      "batch_size": 25,
-      "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 14,
-      "rows_with_title_track_after": 14,
-      "persisted_title_track_changes": 0,
-      "title_track_auto_resolved_rows": 0,
-      "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 11,
-      "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=300, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 izna / N/a / 2024-11-25 / album",
-        "[build_release_details_musicbrainz] 10/25 KARD / DRIFT / 2025-07-02 / album",
-        "[build_release_details_musicbrainz] 20/25 Kep1er / BUBBLE GUM / 2025-08-19 / album",
-        "[build_release_details_musicbrainz] 25/25 KickFlip / From KickFlip, To WeFlip / 2026-01-20 / song"
-      ]
-    },
-    {
-      "batch_index": 14,
-      "row_offset": 325,
-      "batch_size": 25,
-      "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 22,
-      "rows_with_title_track_after": 22,
-      "persisted_title_track_changes": 0,
-      "title_track_auto_resolved_rows": 0,
-      "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 3,
-      "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=325, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 KickFlip / Twenty / 2026-03-09 / song",
-        "[build_release_details_musicbrainz] 10/25 KISS OF LIFE / 송스틸러 - Sixth Sense / 2024-05-25 / song",
-        "[build_release_details_musicbrainz] 20/25 LE SSERAFIM / UNFORGIVEN / 2023-08-08 / song",
-        "[build_release_details_musicbrainz] 25/25 LE SSERAFIM / CRAZY / 2024-12-11 / song"
-      ]
-    },
-    {
-      "batch_index": 15,
-      "row_offset": 350,
-      "batch_size": 25,
-      "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 20,
-      "rows_with_title_track_after": 20,
-      "persisted_title_track_changes": 0,
-      "title_track_auto_resolved_rows": 0,
-      "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 5,
-      "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=350, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 LE SSERAFIM / HOT / 2025-03-14 / album",
-        "[build_release_details_musicbrainz] 10/25 LE SSERAFIM / ‘PUREFLOW’ pt.1 / 2026-05-22 / album",
-        "[build_release_details_musicbrainz] 20/25 LUN8 / My Tune / 2024-06-07 / song",
-        "[build_release_details_musicbrainz] 25/25 LUN8 / Weʼre Not Alone / 2024-12-11 / song"
-      ]
-    },
-    {
-      "batch_index": 16,
-      "row_offset": 375,
-      "batch_size": 25,
-      "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 19,
-      "rows_with_title_track_after": 19,
-      "persisted_title_track_changes": 0,
-      "title_track_auto_resolved_rows": 0,
-      "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 6,
-      "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=375, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 LUN8 / Butterfly / 2025-02-19 / song",
-        "[build_release_details_musicbrainz] 10/25 MEOVV / HANDS UP / 2025-04-28 / song",
-        "[build_release_details_musicbrainz] 20/25 NCT 127 / Fact Check / 2023-10-06 / album",
-        "[build_release_details_musicbrainz] 25/25 NCT DREAM / Rains in Heaven / 2024-08-23 / song"
-      ]
-    },
-    {
-      "batch_index": 17,
-      "row_offset": 400,
-      "batch_size": 25,
-      "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 23,
-      "rows_with_title_track_after": 23,
-      "persisted_title_track_changes": 0,
-      "title_track_auto_resolved_rows": 0,
-      "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 2,
-      "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=400, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 NCT DREAM / DREAMSCAPE / 2024-11-11 / album",
-        "[build_release_details_musicbrainz] 10/25 NCT WISH / WISHFUL / 2024-11-27 / album",
-        "[build_release_details_musicbrainz] 20/25 NCT WISH / YO-I-DON! / BOY MEETS GIRL / 2026-07-13 / song",
-        "[build_release_details_musicbrainz] 25/25 NEXZ / NALLINA / 2024-11-18 / album"
-      ]
-    },
-    {
-      "batch_index": 18,
-      "row_offset": 425,
-      "batch_size": 25,
-      "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 19,
-      "rows_with_title_track_after": 19,
-      "persisted_title_track_changes": 0,
-      "title_track_auto_resolved_rows": 0,
-      "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 6,
-      "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=425, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 NEXZ / O‐RLY? / 2025-04-28 / album",
-        "[build_release_details_musicbrainz] 10/25 NMIXX / Come On / 2024-09-27 / song",
-        "[build_release_details_musicbrainz] 20/25 ONEUS / La Dolce Vita / 2023-09-26 / album",
-        "[build_release_details_musicbrainz] 25/25 ONEUS / Dear.M / 2025-01-14 / album"
-      ]
-    },
-    {
-      "batch_index": 19,
-      "row_offset": 450,
-      "batch_size": 25,
-      "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 16,
-      "rows_with_title_track_after": 16,
-      "persisted_title_track_changes": 0,
-      "title_track_auto_resolved_rows": 0,
-      "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 9,
-      "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=450, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 ONEUS / TIME MACHINE / 2025-04-30 / song",
-        "[build_release_details_musicbrainz] 10/25 ONEWE / MAZE : AD ASTRA / 2025-10-07 / album",
-        "[build_release_details_musicbrainz] 20/25 P1Harmony / SAD SONG / 2024-09-20 / album",
-        "[build_release_details_musicbrainz] 25/25 PLAVE / Merry PLListmas / 2023-12-12 / song"
-      ]
-    },
-    {
-      "batch_index": 20,
-      "row_offset": 475,
-      "batch_size": 25,
-      "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 18,
       "rows_with_title_track_after": 18,
       "persisted_title_track_changes": 0,
@@ -431,19 +251,19 @@
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 7,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=475, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 PLAVE / ASTERUM : 134-1 / 2024-02-26 / album",
-        "[build_release_details_musicbrainz] 10/25 POW / Favorite / 2023-09-13 / song",
-        "[build_release_details_musicbrainz] 20/25 Purple Kiss / I Miss My… / 2025-07-16 / song",
-        "[build_release_details_musicbrainz] 25/25 QWER / FAKE IDOL / 2024-09-02 / song"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=250, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 H1-KEY / H1-KEYnote #2 [기뻐] (Deeper) / 2024-02-27 / song",
+        "[build_release_details_musicbrainz] 10/25 Hearts2Hearts / STYLE / 2025-06-18 / song",
+        "[build_release_details_musicbrainz] 20/25 INFINITE / LIKE INFINITE / 2025-03-06 / album",
+        "[build_release_details_musicbrainz] 25/25 ITZY / Like Magic / 2024-02-20 / song"
       ]
     },
     {
-      "batch_index": 21,
-      "row_offset": 500,
+      "batch_index": 12,
+      "row_offset": 275,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 22,
       "rows_with_title_track_after": 22,
       "persisted_title_track_changes": 0,
@@ -451,11 +271,191 @@
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 3,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=500, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 QWER / Algorithm’s Blossom / 2024-09-23 / album",
-        "[build_release_details_musicbrainz] 10/25 RESCENE / Re:Scene / 2024-03-26 / song",
-        "[build_release_details_musicbrainz] 20/25 RIIZE / Memories / 2023-08-21 / song",
-        "[build_release_details_musicbrainz] 25/25 RIIZE / Siren / 2024-04-03 / song"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=275, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 ITZY / No Biggie / 2024-05-01 / song",
+        "[build_release_details_musicbrainz] 10/25 IVE / I’VE MINE / 2023-10-13 / album",
+        "[build_release_details_musicbrainz] 20/25 IVE / Be Alright / 2025-07-16 / song",
+        "[build_release_details_musicbrainz] 25/25 IVE / Fashion / 2026-04-03 / song"
+      ]
+    },
+    {
+      "batch_index": 13,
+      "row_offset": 300,
+      "batch_size": 25,
+      "selected_rows": 25,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 16,
+      "rows_with_title_track_after": 16,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 9,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=300, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 IVE / LUCID DREAM / 2026-05-20 / song",
+        "[build_release_details_musicbrainz] 10/25 KARD / Where To Now? (Part 1 : Yellow Light) / 2024-08-13 / album",
+        "[build_release_details_musicbrainz] 20/25 Kep1er / TIPI‐TAP / 2024-11-01 / album",
+        "[build_release_details_musicbrainz] 25/25 KickFlip / Flip it, Kick it! / 2025-01-20 / album"
+      ]
+    },
+    {
+      "batch_index": 14,
+      "row_offset": 325,
+      "batch_size": 25,
+      "selected_rows": 25,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 18,
+      "rows_with_title_track_after": 18,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 7,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=325, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 KickFlip / Kick Out, Flip Now! / 2025-05-26 / album",
+        "[build_release_details_musicbrainz] 10/25 KiiiKiii / Delulu Pack / 2026-01-25 / album",
+        "[build_release_details_musicbrainz] 20/25 KISS OF LIFE / 224 / 2025-06-09 / album",
+        "[build_release_details_musicbrainz] 25/25 LE SSERAFIM / EASY / 2024-02-19 / album"
+      ]
+    },
+    {
+      "batch_index": 15,
+      "row_offset": 350,
+      "batch_size": 25,
+      "selected_rows": 25,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 21,
+      "rows_with_title_track_after": 21,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 4,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=350, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 LE SSERAFIM / CRAZY / 2024-08-30 / album",
+        "[build_release_details_musicbrainz] 10/25 LE SSERAFIM / the NOISE / 2025-09-26 / song",
+        "[build_release_details_musicbrainz] 20/25 Loossemble / Loossemble / 2023-09-15 / album",
+        "[build_release_details_musicbrainz] 25/25 LUN8 / Evergreen / 2024-06-19 / album"
+      ]
+    },
+    {
+      "batch_index": 16,
+      "row_offset": 375,
+      "batch_size": 25,
+      "selected_rows": 25,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 20,
+      "rows_with_title_track_after": 20,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 5,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=375, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 LUN8 / AWAKENING / 2024-08-14 / album",
+        "[build_release_details_musicbrainz] 10/25 MCND / X10 / 2024-05-21 / album",
+        "[build_release_details_musicbrainz] 20/25 MONSTA X / THE X / 2025-09-01 / album",
+        "[build_release_details_musicbrainz] 25/25 NCT 127 / Be There For Me - Winter Special Single / 2023-12-22 / song"
+      ]
+    },
+    {
+      "batch_index": 17,
+      "row_offset": 400,
+      "batch_size": 25,
+      "selected_rows": 25,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 21,
+      "rows_with_title_track_after": 21,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 4,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=400, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 NCT 127 / WALK / 2024-07-15 / album",
+        "[build_release_details_musicbrainz] 10/25 NCT WISH / Songbird / 2024-06-25 / song",
+        "[build_release_details_musicbrainz] 20/25 NCT WISH / WISHLIST / 2026-01-14 / album",
+        "[build_release_details_musicbrainz] 25/25 NewJeans / How Sweet & Bubble Gum / 2024-05-24 / song"
+      ]
+    },
+    {
+      "batch_index": 18,
+      "row_offset": 425,
+      "batch_size": 25,
+      "selected_rows": 25,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 22,
+      "rows_with_title_track_after": 22,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 3,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=425, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 NewJeans / Supernatural / 2024-06-21 / song",
+        "[build_release_details_musicbrainz] 10/25 NMIXX / Fe3O4: BREAK / 2024-01-15 / album",
+        "[build_release_details_musicbrainz] 20/25 NMIXX / Heavy Serenade / 2026-05-11 / album",
+        "[build_release_details_musicbrainz] 25/25 ONEUS / Now / 2024-05-22 / song"
+      ]
+    },
+    {
+      "batch_index": 19,
+      "row_offset": 450,
+      "batch_size": 25,
+      "selected_rows": 25,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 16,
+      "rows_with_title_track_after": 16,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 9,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=450, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 ONEUS / 로드 투 킹덤 : ACE OF ACE 〈VS〉, Pt. 2 / 2024-10-04 / album",
+        "[build_release_details_musicbrainz] 10/25 ONEWE / Planet Nine : ISOTROPY / 2024-04-17 / album",
+        "[build_release_details_musicbrainz] 20/25 P1Harmony / DUH! / 2025-05-08 / album",
+        "[build_release_details_musicbrainz] 25/25 PLAVE / ASTERUM : 134-1 / 2024-02-26 / album"
+      ]
+    },
+    {
+      "batch_index": 20,
+      "row_offset": 475,
+      "batch_size": 25,
+      "selected_rows": 25,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 18,
+      "rows_with_title_track_after": 18,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 7,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=475, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 PLAVE / Pump Up The Volume! / 2024-08-20 / song",
+        "[build_release_details_musicbrainz] 10/25 POW / Favorite / 2023-10-11 / album",
+        "[build_release_details_musicbrainz] 20/25 Purple Kiss / ON THE VIOLET / 2024-07-17 / album",
+        "[build_release_details_musicbrainz] 25/25 QWER / Harmony from Discord / 2023-10-18 / song"
+      ]
+    },
+    {
+      "batch_index": 21,
+      "row_offset": 500,
+      "batch_size": 25,
+      "selected_rows": 25,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 21,
+      "rows_with_title_track_after": 21,
+      "persisted_title_track_changes": 0,
+      "title_track_auto_resolved_rows": 0,
+      "title_track_auto_double_rows": 0,
+      "title_track_review_queue_rows": 4,
+      "stderr_lines": [
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=500, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 QWER / MANITO / 2024-04-01 / album",
+        "[build_release_details_musicbrainz] 10/25 Red Velvet / Chill Kill / 2023-11-13 / album",
+        "[build_release_details_musicbrainz] 20/25 RESCENE / ピンボール (Pinball) / 2026-01-21 / song",
+        "[build_release_details_musicbrainz] 25/25 RIIZE / Talk Saxy / 2023-10-27 / song"
       ]
     },
     {
@@ -463,7 +463,7 @@
       "row_offset": 525,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 19,
       "rows_with_title_track_after": 19,
       "persisted_title_track_changes": 0,
@@ -471,11 +471,11 @@
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 6,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=525, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 RIIZE / Impossible / 2024-04-18 / song",
-        "[build_release_details_musicbrainz] 10/25 RIIZE / Ⅱ / 2026-06-15 / album",
-        "[build_release_details_musicbrainz] 20/25 SEVENTEEN / SPILL THE FEELS / 2024-10-14 / album",
-        "[build_release_details_musicbrainz] 25/25 SEVENTEEN / Tiny Light / 2026-02-27 / song"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=525, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 RIIZE / Get a Guitar / 2023-11-09 / song",
+        "[build_release_details_musicbrainz] 10/25 RIIZE / Fame / 2025-11-24 / song",
+        "[build_release_details_musicbrainz] 20/25 SEVENTEEN / 경음악의 신 / 2023-12-25 / song",
+        "[build_release_details_musicbrainz] 25/25 SEVENTEEN / HAPPY BURSTDAY / 2025-05-26 / album"
       ]
     },
     {
@@ -483,19 +483,19 @@
       "row_offset": 550,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 16,
-      "rows_with_title_track_after": 16,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 17,
+      "rows_with_title_track_after": 17,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 9,
+      "title_track_review_queue_rows": 8,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=550, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 SHINee / Poet | Artist / 2025-05-25 / song",
-        "[build_release_details_musicbrainz] 10/25 STAYC / I WANT IT / 2025-07-23 / song",
-        "[build_release_details_musicbrainz] 20/25 Stray Kids / Falling Up / 2024-10-07 / song",
-        "[build_release_details_musicbrainz] 25/25 Stray Kids / Hollow / 2025-06-18 / album"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=550, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 SEVENTEEN / Where love passed / 2025-07-14 / song",
+        "[build_release_details_musicbrainz] 10/25 STAYC / S / 2025-03-18 / song",
+        "[build_release_details_musicbrainz] 20/25 Stray Kids / SLASH / 2024-07-23 / song",
+        "[build_release_details_musicbrainz] 25/25 Stray Kids / Hollow / 2025-06-11 / song"
       ]
     },
     {
@@ -503,19 +503,19 @@
       "row_offset": 575,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 16,
-      "rows_with_title_track_after": 16,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 17,
+      "rows_with_title_track_after": 17,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 9,
+      "title_track_review_queue_rows": 8,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=575, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 Stray Kids / KARMA / 2025-08-22 / album",
-        "[build_release_details_musicbrainz] 10/25 TEMPEST / BUBBLE GUM / 2024-12-11 / album",
-        "[build_release_details_musicbrainz] 20/25 THE BOYZ / 導火線 (TRIGGER) / 2024-10-28 / album",
-        "[build_release_details_musicbrainz] 25/25 THE BOYZ / Still Love You / 2025-12-06 / song"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=575, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 Stray Kids / Hollow / 2025-06-18 / album",
+        "[build_release_details_musicbrainz] 10/25 TEMPEST / TEMPEST Voyage / 2024-03-11 / album",
+        "[build_release_details_musicbrainz] 20/25 THE BOYZ / Gibberish / 2024-07-19 / album",
+        "[build_release_details_musicbrainz] 25/25 THE BOYZ / Tiger / 2025-11-11 / song"
       ]
     },
     {
@@ -523,16 +523,16 @@
       "row_offset": 600,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 16,
-      "rows_with_title_track_after": 16,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 17,
+      "rows_with_title_track_after": 17,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 9,
+      "title_track_review_queue_rows": 8,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=600, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 The KingDom / History Of Kingdom: Pt. VII. JAHAN / 2023-10-18 / album",
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=600, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 THE BOYZ / Still Love You / 2025-12-06 / song",
         "[build_release_details_musicbrainz] 10/25 TIOT / Run Run Barefoot / 2025-07-07 / song",
         "[build_release_details_musicbrainz] 20/25 TOMORROW X TOGETHER / Open Always Wins / 2024-07-17 / song",
         "[build_release_details_musicbrainz] 25/25 TOMORROW X TOGETHER / Love Language / 2025-05-02 / song"
@@ -543,7 +543,7 @@
       "row_offset": 625,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 20,
       "rows_with_title_track_after": 20,
       "persisted_title_track_changes": 0,
@@ -551,11 +551,11 @@
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 5,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=625, progress_every=10)",
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=625, progress_every=10)",
         "[build_release_details_musicbrainz] 1/25 TOMORROW X TOGETHER / Step by Step / 2025-05-25 / song",
-        "[build_release_details_musicbrainz] 10/25 TREASURE / REVERSE / 2024-07-27 / song",
-        "[build_release_details_musicbrainz] 20/25 TRENDZ / BAD ENOUGH / 2025-01-31 / song",
-        "[build_release_details_musicbrainz] 25/25 TRENDZ / まだあと0cm / 2026-05-27 / song"
+        "[build_release_details_musicbrainz] 10/25 TREASURE / REVERSE (drama edit) / 2024-07-10 / song",
+        "[build_release_details_musicbrainz] 20/25 TRENDZ / REBIRTH / 2024-07-31 / album",
+        "[build_release_details_musicbrainz] 25/25 TRENDZ / Kart Racer / 2026-02-13 / song"
       ]
     },
     {
@@ -563,19 +563,19 @@
       "row_offset": 650,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 14,
-      "rows_with_title_track_after": 14,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 15,
+      "rows_with_title_track_after": 15,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 11,
+      "title_track_review_queue_rows": 10,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=650, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 TRENDZ / On My Knees / 2026-07-08 / album",
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=650, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 TRENDZ / まだあと0cm / 2026-05-27 / song",
         "[build_release_details_musicbrainz] 10/25 tripleS / tripleS ∞! <アンタイトル> / 2024-11-17 / song",
-        "[build_release_details_musicbrainz] 20/25 TWICE / ONE SPARK / 2024-02-23 / song",
-        "[build_release_details_musicbrainz] 25/25 TWICE / The wish / 2024-12-16 / song"
+        "[build_release_details_musicbrainz] 20/25 TWICE / I GOT YOU / 2024-02-02 / song",
+        "[build_release_details_musicbrainz] 25/25 TWICE / Track by Track: TWICE / 2024-07-18 / album"
       ]
     },
     {
@@ -583,7 +583,7 @@
       "row_offset": 675,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 19,
       "rows_with_title_track_after": 19,
       "persisted_title_track_changes": 0,
@@ -591,11 +591,11 @@
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 6,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=675, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 TWICE / THIS IS FOR / 2025-07-11 / album",
-        "[build_release_details_musicbrainz] 10/25 TWS / SUMMER BEAT! / 2024-06-24 / album",
-        "[build_release_details_musicbrainz] 20/25 TWS / Dream With Us / 2026-06-11 / song",
-        "[build_release_details_musicbrainz] 25/25 UNIS / Shaking My Head / 2025-07-09 / song"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=675, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 TWICE / STRATEGY / 2024-12-06 / album",
+        "[build_release_details_musicbrainz] 10/25 TWS / Sparkling Blue / 2024-01-22 / album",
+        "[build_release_details_musicbrainz] 20/25 TWS / YOU LIKE IT I LOVE IT / 2026-03-23 / song",
+        "[build_release_details_musicbrainz] 25/25 UNIS / CURIOUS / 2024-08-06 / song"
       ]
     },
     {
@@ -603,7 +603,7 @@
       "row_offset": 700,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 16,
       "rows_with_title_track_after": 16,
       "persisted_title_track_changes": 0,
@@ -611,11 +611,11 @@
       "title_track_auto_double_rows": 0,
       "title_track_review_queue_rows": 9,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=700, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 UNIS / もしもし♡ / 2025-09-12 / song",
-        "[build_release_details_musicbrainz] 10/25 Weeekly / ColoRise / 2023-11-01 / album",
-        "[build_release_details_musicbrainz] 20/25 WHIB / BANG OUT / 2025-04-09 / song",
-        "[build_release_details_musicbrainz] 25/25 woo!ah! / UNFRAMED / 2024-06-17 / album"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=700, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 UNIS / SWICY / 2025-04-15 / album",
+        "[build_release_details_musicbrainz] 10/25 VIVIZ / VERSUS / 2023-11-02 / album",
+        "[build_release_details_musicbrainz] 20/25 WEi / Wonderland / 2025-10-29 / album",
+        "[build_release_details_musicbrainz] 25/25 WHIB / BANG OUT / 2025-04-09 / song"
       ]
     },
     {
@@ -623,19 +623,19 @@
       "row_offset": 725,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 13,
-      "rows_with_title_track_after": 13,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 16,
+      "rows_with_title_track_after": 16,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 12,
+      "title_track_review_queue_rows": 9,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=725, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 woo!ah! / Shining on you / 2024-07-16 / song",
-        "[build_release_details_musicbrainz] 10/25 Xdinary Heroes / Beautiful Mind / 2025-03-24 / album",
-        "[build_release_details_musicbrainz] 20/25 xikers / Up All Night / 2025-07-13 / album",
-        "[build_release_details_musicbrainz] 25/25 XLOV / I ONE / 2025-06-13 / song"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=725, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 WHIB / ROCK THE NATION / 2026-01-29 / album",
+        "[build_release_details_musicbrainz] 10/25 Xdinary Heroes / Livelock / 2023-10-12 / album",
+        "[build_release_details_musicbrainz] 20/25 Xdinary Heroes / DEAD AND / 2026-04-17 / album",
+        "[build_release_details_musicbrainz] 25/25 xikers / Up All Night / 2025-07-13 / album"
       ]
     },
     {
@@ -643,38 +643,38 @@
       "row_offset": 750,
       "batch_size": 25,
       "selected_rows": 25,
-      "scoped_rows_total": 787,
+      "scoped_rows_total": 795,
       "rows_with_title_track_before": 16,
       "rows_with_title_track_after": 16,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 8,
+      "title_track_review_queue_rows": 9,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 25/787 scoped rows (row_offset=750, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/25 XLOV / UXLXVE / 2025-11-05 / album",
-        "[build_release_details_musicbrainz] 10/25 YOUNG POSSE / COLD / 2025-03-02 / album",
-        "[build_release_details_musicbrainz] 20/25 YOUNITE / YOUNI‐T / 2025-04-23 / album",
-        "[build_release_details_musicbrainz] 25/25 ZEROBASEONE / You had me at HELLO / 2024-05-13 / album"
+        "[build_release_details_musicbrainz] processing 25/795 scoped rows (row_offset=750, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/25 xikers / ICONIC / 2025-08-01 / song",
+        "[build_release_details_musicbrainz] 10/25 YOUNG POSSE / XXL / 2024-03-20 / album",
+        "[build_release_details_musicbrainz] 20/25 YOUNG POSSE / young tape / 2026-07-13 / album",
+        "[build_release_details_musicbrainz] 25/25 YOUNITE / Y / 2024-12-11 / song"
       ]
     },
     {
       "batch_index": 32,
       "row_offset": 775,
       "batch_size": 25,
-      "selected_rows": 12,
-      "scoped_rows_total": 787,
-      "rows_with_title_track_before": 10,
-      "rows_with_title_track_after": 10,
+      "selected_rows": 20,
+      "scoped_rows_total": 795,
+      "rows_with_title_track_before": 15,
+      "rows_with_title_track_after": 15,
       "persisted_title_track_changes": 0,
       "title_track_auto_resolved_rows": 0,
       "title_track_auto_double_rows": 0,
-      "title_track_review_queue_rows": 2,
+      "title_track_review_queue_rows": 5,
       "stderr_lines": [
-        "[build_release_details_musicbrainz] processing 12/787 scoped rows (row_offset=775, progress_every=10)",
-        "[build_release_details_musicbrainz] 1/12 ZEROBASEONE / CINEMA PARADISE / 2024-08-26 / album",
-        "[build_release_details_musicbrainz] 10/12 ZEROBASEONE / ROSES / 2026-01-23 / song",
-        "[build_release_details_musicbrainz] 12/12 ZEROBASEONE / Ascend- / 2026-05-18 / album"
+        "[build_release_details_musicbrainz] processing 20/795 scoped rows (row_offset=775, progress_every=10)",
+        "[build_release_details_musicbrainz] 1/20 YOUNITE / YOUNI‐T / 2025-04-23 / album",
+        "[build_release_details_musicbrainz] 10/20 ZEROBASEONE / STAGE FIGHTER(STF) Original, Vol. 6 / 2024-11-26 / song",
+        "[build_release_details_musicbrainz] 20/20 ZEROBASEONE / Return to LOVE / 2026-08-19 / album"
       ]
     }
   ]

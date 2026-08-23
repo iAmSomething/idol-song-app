@@ -1,81 +1,5 @@
 [
   {
-    "key": "PLAVE:f3bf02b0770c:f3bf02b0770c:verified_release_detected",
-    "diff_key": "PLAVE:f3bf02b0770c:f3bf02b0770c",
-    "group": "PLAVE",
-    "change_type": "verified_release_detected",
-    "occurred_at": "2026-04-14",
-    "summary": "Verified release \"Caligo Pt.2\" landed on 2026-04-14.",
-    "source_url": "https://musicbrainz.org/release-group/2480bc99-8a2a-4559-9832-23ca576e8fc9",
-    "source_domain": "musicbrainz.org",
-    "previous_state_hash": "f3bf02b0770c",
-    "next_state_hash": "f3bf02b0770c",
-    "previous": {
-      "scheduled_date": "2026-04-07",
-      "date_status": "confirmed",
-      "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
-      "source_type": "news_rss",
-      "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPRXBEUU5pY3EtWkIyVGVoN3A1dVVyNGtuR2NxaTMtaFVZNmU4UXRQM3RqRWliMEk2SzAwbEllOEFSeHlTUVdIaXNtUzBfZ1plbVNId0NnbEdLX3l6dlJJOGY2aWRYc19lV1FkTEdkV25SM1ZZUlRlaWE4M19LcTVVMVlQVUFXQmQ5TkE0TzhnWnk5ZXVPc1BqY0FnLU5odGdEUXR1YkdjTHYzdVVwczVhaWVkUy3SAcIBQVVfeXFMT0htWFBPejdmaWNOcXRxS1o1VjlMWlVBYzlTTGlmMFRCR0ItSkdjY1U4QVNiSnlLSVprM0dmUE9YRE8xTnA1VXlfNDFhTTRTcGlUUWh2NS15a2VVSTdiYUpSeDZqS0ludXR1TlhKR3BhdHNFSUVpb1lmemgzTWUwcDExOEE0X01Ueml5TEVFeHNLSVhLZ3hHcEhwMjlfS2I2REFUbFduS3A4NHd0bDFrSTZlZkRfeXFIek9NM3l4Rm8tS2c?oc=5",
-      "published_at": "Mon, 02 Mar 2026 13:27:00 GMT"
-    },
-    "next": {
-      "scheduled_date": "2026-04-07",
-      "date_status": "confirmed",
-      "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
-      "source_type": "news_rss",
-      "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPRXBEUU5pY3EtWkIyVGVoN3A1dVVyNGtuR2NxaTMtaFVZNmU4UXRQM3RqRWliMEk2SzAwbEllOEFSeHlTUVdIaXNtUzBfZ1plbVNId0NnbEdLX3l6dlJJOGY2aWRYc19lV1FkTEdkV25SM1ZZUlRlaWE4M19LcTVVMVlQVUFXQmQ5TkE0TzhnWnk5ZXVPc1BqY0FnLU5odGdEUXR1YkdjTHYzdVVwczVhaWVkUy3SAcIBQVVfeXFMT0htWFBPejdmaWNOcXRxS1o1VjlMWlVBYzlTTGlmMFRCR0ItSkdjY1U4QVNiSnlLSVprM0dmUE9YRE8xTnA1VXlfNDFhTTRTcGlUUWh2NS15a2VVSTdiYUpSeDZqS0ludXR1TlhKR3BhdHNFSUVpb1lmemgzTWUwcDExOEE0X01Ueml5TEVFeHNLSVhLZ3hHcEhwMjlfS2I2REFUbFduS3A4NHd0bDFrSTZlZkRfeXFIek9NM3l4Rm8tS2c?oc=5",
-      "published_at": "Mon, 02 Mar 2026 13:27:00 GMT"
-    },
-    "verified_release": {
-      "title": "Caligo Pt.2",
-      "date": "2026-04-14",
-      "release_kind": "ep",
-      "source": "https://musicbrainz.org/release-group/2480bc99-8a2a-4559-9832-23ca576e8fc9"
-    },
-    "snapshot": {
-      "previous_ref": "fe41ebf",
-      "next_ref": "worktree"
-    }
-  },
-  {
-    "key": "TOMORROW X TOGETHER:3f5265bb8f47:3f5265bb8f47:verified_release_detected",
-    "diff_key": "TOMORROW X TOGETHER:3f5265bb8f47:3f5265bb8f47",
-    "group": "TOMORROW X TOGETHER",
-    "change_type": "verified_release_detected",
-    "occurred_at": "2026-04-13",
-    "summary": "Verified release \"7TH YEAR: 가시덤불에 잠시 바람이 멈췄을 때\" landed on 2026-04-13.",
-    "source_url": "https://musicbrainz.org/release-group/dc4cfe5f-d5b9-4d18-b281-0691e93d40c8",
-    "source_domain": "musicbrainz.org",
-    "previous_state_hash": "3f5265bb8f47",
-    "next_state_hash": "3f5265bb8f47",
-    "previous": {
-      "scheduled_date": "2026-04-13",
-      "date_status": "confirmed",
-      "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
-      "source_type": "weverse_notice",
-      "source_url": "https://weverse.io/txt/notice/34002",
-      "published_at": ""
-    },
-    "next": {
-      "scheduled_date": "2026-04-13",
-      "date_status": "confirmed",
-      "headline": "[NOTICE] Comeback Showcase to Celebrate the Release of TOMORROW X TOGETHER “7TH YEAR: A Moment of Stillness in the Thorns”",
-      "source_type": "weverse_notice",
-      "source_url": "https://weverse.io/txt/notice/34002",
-      "published_at": ""
-    },
-    "verified_release": {
-      "title": "7TH YEAR: 가시덤불에 잠시 바람이 멈췄을 때",
-      "date": "2026-04-13",
-      "release_kind": "ep",
-      "source": "https://musicbrainz.org/release-group/dc4cfe5f-d5b9-4d18-b281-0691e93d40c8"
-    },
-    "snapshot": {
-      "previous_ref": "fe41ebf",
-      "next_ref": "worktree"
-    }
-  },
-  {
     "key": "TOMORROW X TOGETHER:af0eca0adba7:3f5265bb8f47:headline_changed",
     "diff_key": "TOMORROW X TOGETHER:af0eca0adba7:3f5265bb8f47",
     "group": "TOMORROW X TOGETHER",
@@ -139,6 +63,44 @@
     "snapshot": {
       "previous_ref": "78d3b91",
       "next_ref": "95f5db3"
+    }
+  },
+  {
+    "key": "PLAVE:f3bf02b0770c:f3bf02b0770c:verified_release_detected",
+    "diff_key": "PLAVE:f3bf02b0770c:f3bf02b0770c",
+    "group": "PLAVE",
+    "change_type": "verified_release_detected",
+    "occurred_at": "2026-04-13",
+    "summary": "Verified release \"Caligo Pt.2\" landed on 2026-04-13.",
+    "source_url": "https://musicbrainz.org/release-group/2480bc99-8a2a-4559-9832-23ca576e8fc9",
+    "source_domain": "musicbrainz.org",
+    "previous_state_hash": "f3bf02b0770c",
+    "next_state_hash": "f3bf02b0770c",
+    "previous": {
+      "scheduled_date": "2026-04-07",
+      "date_status": "confirmed",
+      "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPRXBEUU5pY3EtWkIyVGVoN3A1dVVyNGtuR2NxaTMtaFVZNmU4UXRQM3RqRWliMEk2SzAwbEllOEFSeHlTUVdIaXNtUzBfZ1plbVNId0NnbEdLX3l6dlJJOGY2aWRYc19lV1FkTEdkV25SM1ZZUlRlaWE4M19LcTVVMVlQVUFXQmQ5TkE0TzhnWnk5ZXVPc1BqY0FnLU5odGdEUXR1YkdjTHYzdVVwczVhaWVkUy3SAcIBQVVfeXFMT0htWFBPejdmaWNOcXRxS1o1VjlMWlVBYzlTTGlmMFRCR0ItSkdjY1U4QVNiSnlLSVprM0dmUE9YRE8xTnA1VXlfNDFhTTRTcGlUUWh2NS15a2VVSTdiYUpSeDZqS0ludXR1TlhKR3BhdHNFSUVpb1lmemgzTWUwcDExOEE0X01Ueml5TEVFeHNLSVhLZ3hHcEhwMjlfS2I2REFUbFduS3A4NHd0bDFrSTZlZkRfeXFIek9NM3l4Rm8tS2c?oc=5",
+      "published_at": "Mon, 02 Mar 2026 13:27:00 GMT"
+    },
+    "next": {
+      "scheduled_date": "2026-04-07",
+      "date_status": "confirmed",
+      "headline": "PLAVE Sets April 7 Comeback After Million-Seller Run | Outlook Respawn - Outlook Respawn",
+      "source_type": "news_rss",
+      "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPRXBEUU5pY3EtWkIyVGVoN3A1dVVyNGtuR2NxaTMtaFVZNmU4UXRQM3RqRWliMEk2SzAwbEllOEFSeHlTUVdIaXNtUzBfZ1plbVNId0NnbEdLX3l6dlJJOGY2aWRYc19lV1FkTEdkV25SM1ZZUlRlaWE4M19LcTVVMVlQVUFXQmQ5TkE0TzhnWnk5ZXVPc1BqY0FnLU5odGdEUXR1YkdjTHYzdVVwczVhaWVkUy3SAcIBQVVfeXFMT0htWFBPejdmaWNOcXRxS1o1VjlMWlVBYzlTTGlmMFRCR0ItSkdjY1U4QVNiSnlLSVprM0dmUE9YRE8xTnA1VXlfNDFhTTRTcGlUUWh2NS15a2VVSTdiYUpSeDZqS0ludXR1TlhKR3BhdHNFSUVpb1lmemgzTWUwcDExOEE0X01Ueml5TEVFeHNLSVhLZ3hHcEhwMjlfS2I2REFUbFduS3A4NHd0bDFrSTZlZkRfeXFIek9NM3l4Rm8tS2c?oc=5",
+      "published_at": "Mon, 02 Mar 2026 13:27:00 GMT"
+    },
+    "verified_release": {
+      "title": "Caligo Pt.2",
+      "date": "2026-04-13",
+      "release_kind": "ep",
+      "source": "https://musicbrainz.org/release-group/2480bc99-8a2a-4559-9832-23ca576e8fc9"
+    },
+    "snapshot": {
+      "previous_ref": "fe41ebf",
+      "next_ref": "worktree"
     }
   },
   {

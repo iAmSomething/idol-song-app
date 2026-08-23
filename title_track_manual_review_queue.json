@@ -1,5 +1,43 @@
 [
   {
+    "group": "YOUNITE",
+    "release_title": "YOUNI‐T",
+    "release_date": "2025-04-23",
+    "stream": "album",
+    "release_kind": "ep",
+    "track_titles": [
+      "AMIE SONG",
+      "Rock Steady",
+      "GASOLINE",
+      "Who’s Next? (HYUNGSEOK, DEY, KYUNGMUN)",
+      "Twilight Rush (EUNHO, STEVE)",
+      "Miracle Day (EUNSANG, WOONO, SION)",
+      "GOOD TO GO"
+    ],
+    "candidate_titles": [],
+    "candidate_sources": [],
+    "review_reason": "No dependable title-track signal was found for this release detail row.",
+    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+  },
+  {
+    "group": "YOUNITE",
+    "release_title": "INYUN Part.1",
+    "release_date": "2026-05-12",
+    "stream": "album",
+    "release_kind": "ep",
+    "track_titles": [
+      "PARALLEL",
+      "POSE! (姿態)",
+      "Savior",
+      "Nothing",
+      "So Alive"
+    ],
+    "candidate_titles": [],
+    "candidate_sources": [],
+    "review_reason": "No dependable title-track signal was found for this release detail row.",
+    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+  },
+  {
     "group": "ZEROBASEONE",
     "release_title": "CINEMA PARADISE",
     "release_date": "2024-08-26",
@@ -33,6 +71,22 @@
       "Exotic",
       "Changes",
       "Zero to Hundred"
+    ],
+    "candidate_titles": [],
+    "candidate_sources": [],
+    "review_reason": "No dependable title-track signal was found for this release detail row.",
+    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "Return to LOVE",
+    "release_date": "2026-08-19",
+    "stream": "album",
+    "release_kind": "ep",
+    "track_titles": [
+      "Existence",
+      "Aphrodite",
+      "TOP 5 (Japanese ver.)"
     ],
     "candidate_titles": [],
     "candidate_sources": [],

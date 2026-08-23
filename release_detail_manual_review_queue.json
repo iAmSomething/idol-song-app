@@ -1,5 +1,474 @@
 [
   {
+    "group": "YOUNITE",
+    "release_title": "YOUNI‐T",
+    "release_date": "2025-04-23",
+    "stream": "album",
+    "release_kind": "ep",
+    "missing_fields": [
+      "youtube_music_url",
+      "youtube_video"
+    ],
+    "attempted_methods_count": 7,
+    "attempted_methods": [
+      "existing_exact_lookup",
+      "existing_relaxed_lookup",
+      "manual_override_lookup",
+      "external_acquisition_skipped",
+      "youtube_music_pipeline_lookup",
+      "youtube_mv_pipeline_lookup",
+      "placeholder_seed_fallback"
+    ],
+    "attempts": [
+      {
+        "method": "existing_exact_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "matched exact release key"
+      },
+      {
+        "method": "existing_relaxed_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no relaxed match"
+      },
+      {
+        "method": "manual_override_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no override"
+      },
+      {
+        "method": "external_acquisition_skipped",
+        "success": false,
+        "filled_fields": [],
+        "note": "external acquisition skipped by --skip-acquisition"
+      },
+      {
+        "method": "youtube_music_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no canonical YouTube Music URL after current pipeline pass"
+      },
+      {
+        "method": "youtube_mv_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "youtube_video_status=unresolved"
+      },
+      {
+        "method": "placeholder_seed_fallback",
+        "success": false,
+        "filled_fields": [],
+        "note": "placeholder not needed"
+      }
+    ],
+    "compliant_min_attempts": true,
+    "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+  },
+  {
+    "group": "YOUNITE",
+    "release_title": "INYUN Part.1",
+    "release_date": "2026-05-12",
+    "stream": "album",
+    "release_kind": "ep",
+    "missing_fields": [
+      "youtube_music_url",
+      "youtube_video"
+    ],
+    "attempted_methods_count": 7,
+    "attempted_methods": [
+      "existing_exact_lookup",
+      "existing_relaxed_lookup",
+      "manual_override_lookup",
+      "external_acquisition_skipped",
+      "youtube_music_pipeline_lookup",
+      "youtube_mv_pipeline_lookup",
+      "placeholder_seed_fallback"
+    ],
+    "attempts": [
+      {
+        "method": "existing_exact_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "matched exact release key"
+      },
+      {
+        "method": "existing_relaxed_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no relaxed match"
+      },
+      {
+        "method": "manual_override_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no override"
+      },
+      {
+        "method": "external_acquisition_skipped",
+        "success": false,
+        "filled_fields": [],
+        "note": "external acquisition skipped by --skip-acquisition"
+      },
+      {
+        "method": "youtube_music_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no canonical YouTube Music URL after current pipeline pass"
+      },
+      {
+        "method": "youtube_mv_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "youtube_video_status=unresolved"
+      },
+      {
+        "method": "placeholder_seed_fallback",
+        "success": false,
+        "filled_fields": [],
+        "note": "placeholder not needed"
+      }
+    ],
+    "compliant_min_attempts": true,
+    "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+  },
+  {
+    "group": "YOUNITE",
+    "release_title": "ACORDA PEDRINHO",
+    "release_date": "2026-08-07",
+    "stream": "song",
+    "release_kind": "single",
+    "missing_fields": [
+      "youtube_music_url",
+      "youtube_video"
+    ],
+    "attempted_methods_count": 7,
+    "attempted_methods": [
+      "existing_exact_lookup",
+      "existing_relaxed_lookup",
+      "manual_override_lookup",
+      "external_acquisition_skipped",
+      "youtube_music_pipeline_lookup",
+      "youtube_mv_pipeline_lookup",
+      "placeholder_seed_fallback"
+    ],
+    "attempts": [
+      {
+        "method": "existing_exact_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "matched exact release key"
+      },
+      {
+        "method": "existing_relaxed_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no relaxed match"
+      },
+      {
+        "method": "manual_override_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no override"
+      },
+      {
+        "method": "external_acquisition_skipped",
+        "success": false,
+        "filled_fields": [],
+        "note": "external acquisition skipped by --skip-acquisition"
+      },
+      {
+        "method": "youtube_music_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no canonical YouTube Music URL after current pipeline pass"
+      },
+      {
+        "method": "youtube_mv_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "youtube_video_status=unresolved"
+      },
+      {
+        "method": "placeholder_seed_fallback",
+        "success": false,
+        "filled_fields": [],
+        "note": "placeholder not needed"
+      }
+    ],
+    "compliant_min_attempts": true,
+    "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "MELTING POINT",
+    "release_date": "2023-11-06",
+    "stream": "album",
+    "release_kind": "ep",
+    "missing_fields": [
+      "spotify_url",
+      "youtube_music_url",
+      "youtube_video"
+    ],
+    "attempted_methods_count": 7,
+    "attempted_methods": [
+      "existing_exact_lookup",
+      "existing_relaxed_lookup",
+      "manual_override_lookup",
+      "external_acquisition_skipped",
+      "youtube_music_pipeline_lookup",
+      "youtube_mv_pipeline_lookup",
+      "placeholder_seed_fallback"
+    ],
+    "attempts": [
+      {
+        "method": "existing_exact_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "matched exact release key"
+      },
+      {
+        "method": "existing_relaxed_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no relaxed match"
+      },
+      {
+        "method": "manual_override_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no override"
+      },
+      {
+        "method": "external_acquisition_skipped",
+        "success": false,
+        "filled_fields": [],
+        "note": "external acquisition skipped by --skip-acquisition"
+      },
+      {
+        "method": "youtube_music_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no canonical YouTube Music URL after current pipeline pass"
+      },
+      {
+        "method": "youtube_mv_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "youtube_video_status=unresolved"
+      },
+      {
+        "method": "placeholder_seed_fallback",
+        "success": false,
+        "filled_fields": [],
+        "note": "placeholder not needed"
+      }
+    ],
+    "compliant_min_attempts": true,
+    "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "ゆらゆら -運命の花-",
+    "release_date": "2024-03-08",
+    "stream": "song",
+    "release_kind": "single",
+    "missing_fields": [
+      "youtube_video"
+    ],
+    "attempted_methods_count": 7,
+    "attempted_methods": [
+      "existing_exact_lookup",
+      "existing_relaxed_lookup",
+      "manual_override_lookup",
+      "external_acquisition_skipped",
+      "youtube_music_pipeline_lookup",
+      "youtube_mv_pipeline_lookup",
+      "placeholder_seed_fallback"
+    ],
+    "attempts": [
+      {
+        "method": "existing_exact_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "matched exact release key"
+      },
+      {
+        "method": "existing_relaxed_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no relaxed match"
+      },
+      {
+        "method": "manual_override_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no override"
+      },
+      {
+        "method": "external_acquisition_skipped",
+        "success": false,
+        "filled_fields": [],
+        "note": "external acquisition skipped by --skip-acquisition"
+      },
+      {
+        "method": "youtube_music_pipeline_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "canonical YouTube Music URL present"
+      },
+      {
+        "method": "youtube_mv_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "youtube_video_status=unresolved"
+      },
+      {
+        "method": "placeholder_seed_fallback",
+        "success": false,
+        "filled_fields": [],
+        "note": "placeholder not needed"
+      }
+    ],
+    "compliant_min_attempts": true,
+    "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "SWEAT",
+    "release_date": "2024-04-24",
+    "stream": "song",
+    "release_kind": "single",
+    "missing_fields": [
+      "spotify_url",
+      "youtube_music_url",
+      "youtube_video"
+    ],
+    "attempted_methods_count": 7,
+    "attempted_methods": [
+      "existing_exact_lookup",
+      "existing_relaxed_lookup",
+      "manual_override_lookup",
+      "external_acquisition_skipped",
+      "youtube_music_pipeline_lookup",
+      "youtube_mv_pipeline_lookup",
+      "placeholder_seed_fallback"
+    ],
+    "attempts": [
+      {
+        "method": "existing_exact_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "matched exact release key"
+      },
+      {
+        "method": "existing_relaxed_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no relaxed match"
+      },
+      {
+        "method": "manual_override_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no override"
+      },
+      {
+        "method": "external_acquisition_skipped",
+        "success": false,
+        "filled_fields": [],
+        "note": "external acquisition skipped by --skip-acquisition"
+      },
+      {
+        "method": "youtube_music_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no canonical YouTube Music URL after current pipeline pass"
+      },
+      {
+        "method": "youtube_mv_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "youtube_video_status=unresolved"
+      },
+      {
+        "method": "placeholder_seed_fallback",
+        "success": false,
+        "filled_fields": [],
+        "note": "placeholder not needed"
+      }
+    ],
+    "compliant_min_attempts": true,
+    "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "You had me at HELLO",
+    "release_date": "2024-05-13",
+    "stream": "album",
+    "release_kind": "ep",
+    "missing_fields": [
+      "youtube_video"
+    ],
+    "attempted_methods_count": 7,
+    "attempted_methods": [
+      "existing_exact_lookup",
+      "existing_relaxed_lookup",
+      "manual_override_lookup",
+      "external_acquisition_skipped",
+      "youtube_music_pipeline_lookup",
+      "youtube_mv_pipeline_lookup",
+      "placeholder_seed_fallback"
+    ],
+    "attempts": [
+      {
+        "method": "existing_exact_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "matched exact release key"
+      },
+      {
+        "method": "existing_relaxed_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no relaxed match"
+      },
+      {
+        "method": "manual_override_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no override"
+      },
+      {
+        "method": "external_acquisition_skipped",
+        "success": false,
+        "filled_fields": [],
+        "note": "external acquisition skipped by --skip-acquisition"
+      },
+      {
+        "method": "youtube_music_pipeline_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "canonical YouTube Music URL present"
+      },
+      {
+        "method": "youtube_mv_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "youtube_video_status=unresolved"
+      },
+      {
+        "method": "placeholder_seed_fallback",
+        "success": false,
+        "filled_fields": [],
+        "note": "placeholder not needed"
+      }
+    ],
+    "compliant_min_attempts": true,
+    "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+  },
+  {
     "group": "ZEROBASEONE",
     "release_title": "CINEMA PARADISE",
     "release_date": "2024-08-26",
@@ -742,6 +1211,74 @@
     "stream": "album",
     "release_kind": "ep",
     "missing_fields": [
+      "youtube_music_url",
+      "youtube_video"
+    ],
+    "attempted_methods_count": 7,
+    "attempted_methods": [
+      "existing_exact_lookup",
+      "existing_relaxed_lookup",
+      "manual_override_lookup",
+      "external_acquisition_skipped",
+      "youtube_music_pipeline_lookup",
+      "youtube_mv_pipeline_lookup",
+      "placeholder_seed_fallback"
+    ],
+    "attempts": [
+      {
+        "method": "existing_exact_lookup",
+        "success": true,
+        "filled_fields": [],
+        "note": "matched exact release key"
+      },
+      {
+        "method": "existing_relaxed_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no relaxed match"
+      },
+      {
+        "method": "manual_override_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no override"
+      },
+      {
+        "method": "external_acquisition_skipped",
+        "success": false,
+        "filled_fields": [],
+        "note": "external acquisition skipped by --skip-acquisition"
+      },
+      {
+        "method": "youtube_music_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "no canonical YouTube Music URL after current pipeline pass"
+      },
+      {
+        "method": "youtube_mv_pipeline_lookup",
+        "success": false,
+        "filled_fields": [],
+        "note": "youtube_video_status=unresolved"
+      },
+      {
+        "method": "placeholder_seed_fallback",
+        "success": false,
+        "filled_fields": [],
+        "note": "placeholder not needed"
+      }
+    ],
+    "compliant_min_attempts": true,
+    "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+  },
+  {
+    "group": "ZEROBASEONE",
+    "release_title": "Return to LOVE",
+    "release_date": "2026-08-19",
+    "stream": "album",
+    "release_kind": "ep",
+    "missing_fields": [
+      "spotify_url",
       "youtube_music_url",
       "youtube_video"
     ],
