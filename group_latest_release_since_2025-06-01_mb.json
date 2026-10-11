@@ -12,9 +12,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "We on Fire",
-      "date": "2026-04-12",
-      "source": "https://musicbrainz.org/release-group/9179dab5-170d-41e1-9aeb-83764aad6660",
+      "title": "Mark on Me",
+      "date": "2026-09-08",
+      "source": "https://musicbrainz.org/release-group/44be7762-64aa-4471-a04f-b98cfeef404d",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -49,9 +49,9 @@
     "artist_mbid": "1cb80c2a-3f2e-4fdd-ab0f-9ae886dee032",
     "latest_song": null,
     "latest_album": {
-      "title": "FEELM",
-      "date": "2026-04-28",
-      "source": "https://musicbrainz.org/release-group/75f9f49a-c499-4ffa-8eb5-be0329459b20",
+      "title": "HEAT",
+      "date": "2026-09-01",
+      "source": "https://musicbrainz.org/release-group/d46b3c5e-e741-4de9-82eb-57b9050a69e4",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -100,9 +100,9 @@
     "artist_name_mb": "aespa",
     "artist_mbid": "b51c672b-85e0-48fe-8648-470a2422229f",
     "latest_song": {
-      "title": "SYNK : aeXIS LINE",
-      "date": "2026-08-09",
-      "source": "https://musicbrainz.org/release-group/1a32a863-1d88-4b1e-9987-945160eba8d3",
+      "title": "SYNK : COMPLaeXITY",
+      "date": "2026-09-14",
+      "source": "https://musicbrainz.org/release-group/1fe95f81-dc72-4534-aa2e-c898406f08ef",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -123,9 +123,9 @@
     "artist_mbid": "ce06dad7-098e-467c-a875-1e6525b29c02",
     "latest_song": null,
     "latest_album": {
-      "title": "NO DOUBT",
-      "date": "2026-03-16",
-      "source": "https://musicbrainz.org/release-group/fd9318cb-3549-401c-9db0-06d97db0104f",
+      "title": "UNBOUND",
+      "date": "2026-09-10",
+      "source": "https://musicbrainz.org/release-group/c5a987eb-72f0-4524-a612-5b09799d03da",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -145,14 +145,12 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "ALLDAY PROJECT",
-      "date": "2025-12-08",
-      "source": "https://musicbrainz.org/release-group/409c9bff-06ce-46db-8614-265e56e767b8",
+      "title": "CRASH",
+      "date": "2026-09-28",
+      "source": "https://musicbrainz.org/release-group/07235db0-b842-47cd-bf72-2a69f4ce686d",
       "release_kind": "ep",
       "release_format": "ep",
-      "context_tags": [
-        "special_project"
-      ]
+      "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40"
   },
@@ -400,9 +398,9 @@
     "artist_mbid": "035e63b4-a34d-4f8e-a61f-6c2527eed16e",
     "latest_song": null,
     "latest_album": {
-      "title": "ReDeFINE",
-      "date": "2026-04-29",
-      "source": "https://musicbrainz.org/release-group/a5f932b5-3448-4526-875b-9e2d0e49722b",
+      "title": "sonorous",
+      "date": "2026-09-30",
+      "source": "https://musicbrainz.org/release-group/81426b45-5e06-4635-aa8f-3abd78d49a58",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -584,9 +582,9 @@
     "artist_name_mb": "H1-KEY",
     "artist_mbid": "6d9dc445-463c-4c98-a554-429afe985f2b",
     "latest_song": {
-      "title": "세상은 영화 같지 않더라",
-      "date": "2026-01-05",
-      "source": "https://musicbrainz.org/release-group/4e4e27fa-97fe-42ac-9c4d-801d31d7de6a",
+      "title": "We’re Happy",
+      "date": "2026-08-22",
+      "source": "https://musicbrainz.org/release-group/7201e827-162f-48d6-867f-48aa95184d7f",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -606,9 +604,9 @@
     "artist_name_mb": "Hearts2Hearts",
     "artist_mbid": "066080a4-84c7-46c6-91d3-dc10d572749b",
     "latest_song": {
-      "title": "ICONIC HEART",
-      "date": "2026-08-09",
-      "source": "https://musicbrainz.org/release-group/cd3129e3-4c5c-41be-94c4-0f655fe284ff",
+      "title": "Moonride",
+      "date": "2026-09-09",
+      "source": "https://musicbrainz.org/release-group/a18557d0-3b56-4d2f-bbf9-834776fb66c9",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -637,6 +635,21 @@
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/2fa469c4-a186-48d6-9d9f-d1d4bb716071"
+  },
+  {
+    "group": "INFINITE",
+    "artist_name_mb": "INFINITE",
+    "artist_mbid": "c175f8b3-47f8-46d4-a4cf-cb92fe7a37ae",
+    "latest_song": {
+      "title": "우리의 계절",
+      "date": "2026-08-31",
+      "source": "https://musicbrainz.org/release-group/a64a739d-3b46-4f2b-aee5-cf0b6a0c6094",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": null,
+    "artist_source": "https://musicbrainz.org/artist/c175f8b3-47f8-46d4-a4cf-cb92fe7a37ae"
   },
   {
     "group": "ITZY",
@@ -688,9 +701,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "SET THE TEMPO",
-      "date": "2026-06-08",
-      "source": "https://musicbrainz.org/release-group/c7f50c09-18d1-4d6a-b416-c909d29c3cc3",
+      "title": "HANDLE WITH CARE",
+      "date": "2026-09-02",
+      "source": "https://musicbrainz.org/release-group/6f904572-4140-40a3-a77b-657d79a35069",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -740,9 +753,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "My First Kick",
-      "date": "2026-04-06",
-      "source": "https://musicbrainz.org/release-group/4ac45c64-5fa8-4690-ad08-c3a0351161f0",
+      "title": "KICK OFF THE WALL Pt. 1",
+      "date": "2026-10-06",
+      "source": "https://musicbrainz.org/release-group/efcd3317-bdf3-4d7f-94b1-0186a38f3fca",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -784,12 +797,14 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "TOKYO MISSION START",
-      "date": "2025-11-05",
-      "source": "https://musicbrainz.org/release-group/78752bd0-8be7-4be8-9973-9ed52f054743",
+      "title": "SWEAT -JAPANESE EP-",
+      "date": "2026-09-16",
+      "source": "https://musicbrainz.org/release-group/5ceeafc1-7d03-4a0d-adf3-bb4c413847dc",
       "release_kind": "ep",
       "release_format": "ep",
-      "context_tags": []
+      "context_tags": [
+        "japanese_release"
+      ]
     },
     "artist_source": "https://musicbrainz.org/artist/cbe629e3-fbbd-4071-9e12-4c5074c2231b"
   },
@@ -798,9 +813,9 @@
     "artist_name_mb": "LE SSERAFIM",
     "artist_mbid": "1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "latest_song": {
-      "title": "ICONIC BY MISTAKE",
-      "date": "2026-06-10",
-      "source": "https://musicbrainz.org/release-group/c20f68e8-125e-4cf9-8edd-f27e1bc8d2bf",
+      "title": "Made My Night",
+      "date": "2026-09-10",
+      "source": "https://musicbrainz.org/release-group/ca96d745-a810-460b-bda2-893566c2ea27",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -820,16 +835,23 @@
     "artist_name_mb": "LIGHTSUM",
     "artist_mbid": "6bfa076d-881b-442f-adc9-c8c17c6c87d3",
     "latest_song": {
-      "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
-      "date": "2026-01-15",
-      "source": "https://musicbrainz.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
+      "title": "どうして",
+      "date": "2026-09-16",
+      "source": "https://musicbrainz.org/release-group/a98d4e9c-2c8a-4734-a831-8ec2db3ee35c",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": [
-        "special_project"
+        "japanese_release"
       ]
     },
-    "latest_album": null,
+    "latest_album": {
+      "title": "Re:idol",
+      "date": "2026-09-22",
+      "source": "https://musicbrainz.org/release-group/64407246-f534-4f1a-8df3-4d988406510c",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
     "artist_source": "https://musicbrainz.org/artist/6bfa076d-881b-442f-adc9-c8c17c6c87d3"
   },
   {
@@ -870,6 +892,21 @@
     "artist_source": "https://musicbrainz.org/artist/fb588f59-af1a-493a-9508-ed487caa2a11"
   },
   {
+    "group": "MCND",
+    "artist_name_mb": "MCND",
+    "artist_mbid": "f2eb078b-acb6-4dc5-8224-ab180b207ad2",
+    "latest_song": null,
+    "latest_album": {
+      "title": "Devil Youth Club",
+      "date": "2026-09-10",
+      "source": "https://musicbrainz.org/release-group/a709514c-a41a-4cf0-8f0b-31f26487f9d2",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/f2eb078b-acb6-4dc5-8224-ab180b207ad2"
+  },
+  {
     "group": "MEOVV",
     "artist_name_mb": "MEOVV",
     "artist_mbid": "f2435d8b-8a29-453d-9d7e-03c61c4b6fc4",
@@ -904,14 +941,31 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "Unfold",
-      "date": "2026-04-03",
-      "source": "https://musicbrainz.org/release-group/a173c578-1eba-4a08-8666-3ba009c338f6",
+      "title": "NOW PROJECT vol.2",
+      "date": "2026-09-26",
+      "source": "https://musicbrainz.org/release-group/8083497d-fbc7-49b2-bf9c-06a36e59dbc7",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": [
+        "special_project"
+      ]
+    },
+    "artist_source": "https://musicbrainz.org/artist/b6b21b0c-a706-4b46-a929-bd4d21b06cad"
+  },
+  {
+    "group": "NCT 127",
+    "artist_name_mb": "NCT 127",
+    "artist_mbid": "9d17d14a-e81c-410e-a90b-b02b0a9de6f8",
+    "latest_song": null,
+    "latest_album": {
+      "title": "BLINGY",
+      "date": "2026-08-24",
+      "source": "https://musicbrainz.org/release-group/c99eaa05-8517-459d-9921-c8c37bcef50e",
       "release_kind": "album",
       "release_format": "album",
       "context_tags": []
     },
-    "artist_source": "https://musicbrainz.org/artist/b6b21b0c-a706-4b46-a929-bd4d21b06cad"
+    "artist_source": "https://musicbrainz.org/artist/9d17d14a-e81c-410e-a90b-b02b0a9de6f8"
   },
   {
     "group": "NCT DREAM",
@@ -956,9 +1010,9 @@
     "artist_mbid": "c870eef2-a1f9-407c-95f2-1448ad56474a",
     "latest_song": null,
     "latest_album": {
-      "title": "Mmchk",
-      "date": "2026-04-27",
-      "source": "https://musicbrainz.org/release-group/ed83bc37-256a-4c12-91df-30ef9be5e4c6",
+      "title": "SAUCIN'",
+      "date": "2026-08-24",
+      "source": "https://musicbrainz.org/release-group/55c0bf94-7324-404c-84d8-dc981cef868b",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -1000,9 +1054,9 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "5x",
-      "date": "2025-06-30",
-      "source": "https://musicbrainz.org/release-group/bf41a2c3-75ef-4c6b-aab6-0c8874163e8a",
+      "title": "FIRST LIGHT : 井",
+      "date": "2026-09-23",
+      "source": "https://musicbrainz.org/release-group/583b5602-354d-405d-a84f-76a4724aaf93",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -1022,14 +1076,36 @@
       "context_tags": []
     },
     "latest_album": {
-      "title": "Studio We : Recording #4",
-      "date": "2026-01-14",
-      "source": "https://musicbrainz.org/release-group/39a2bca6-065d-4f1f-a285-ac9bc4458d9f",
+      "title": "面 : Unknown Atlas",
+      "date": "2026-08-19",
+      "source": "https://musicbrainz.org/release-group/86508fe4-9ab3-4719-8dd0-3a6bc2c4f1e5",
       "release_kind": "album",
       "release_format": "album",
       "context_tags": []
     },
     "artist_source": "https://musicbrainz.org/artist/720f9030-9b10-4cfa-9a1b-16f80c774cc9"
+  },
+  {
+    "group": "ONF",
+    "artist_name_mb": "ONF",
+    "artist_mbid": "407edcfa-cc74-40ca-bece-8e98f8fb0deb",
+    "latest_song": {
+      "title": "Summer Light",
+      "date": "2025-08-03",
+      "source": "https://musicbrainz.org/release-group/017dac05-b448-4199-93a0-0d4415f90936",
+      "release_kind": "single",
+      "release_format": "single",
+      "context_tags": []
+    },
+    "latest_album": {
+      "title": "ONF:MY SELF",
+      "date": "2026-06-17",
+      "source": "https://musicbrainz.org/release-group/599aad9a-25be-4c51-9d5a-c4400f91da9b",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
+    "artist_source": "https://musicbrainz.org/artist/407edcfa-cc74-40ca-bece-8e98f8fb0deb"
   },
   {
     "group": "P1Harmony",
@@ -1051,9 +1127,9 @@
     "artist_name_mb": "PLAVE",
     "artist_mbid": "aab90af9-fde7-4988-b26b-b2c3c8e2d8e6",
     "latest_song": {
-      "title": "흥흥흥",
-      "date": "2026-04-03",
-      "source": "https://musicbrainz.org/release-group/0690446b-3c49-44b1-9396-b68bd9111b14",
+      "title": "Flame",
+      "date": "2026-09-03",
+      "source": "https://musicbrainz.org/release-group/9eeadaf0-d4d0-4d68-8843-ccd4477cde04",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1110,9 +1186,9 @@
     "artist_name_mb": "QWER",
     "artist_mbid": "86bfda70-ad8c-4db4-9041-e4843d918269",
     "latest_song": {
-      "title": "SHOW DOWN",
-      "date": "2026-07-08",
-      "source": "https://musicbrainz.org/release-group/7227ec39-4c16-4421-b514-2ebafd883ecd",
+      "title": "소년만화 & 피카레스크",
+      "date": "2026-09-21",
+      "source": "https://musicbrainz.org/release-group/781175cf-0120-477f-ae98-96d74cfce669",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1169,9 +1245,9 @@
     "artist_name_mb": "RIIZE",
     "artist_mbid": "f3eaa943-71b3-44b6-8b66-74c787742aae",
     "latest_song": {
-      "title": "KILL SHOT",
-      "date": "2026-04-18",
-      "source": "https://musicbrainz.org/release-group/07ffcd81-f4a2-4a25-9618-5a5b4b4e7990",
+      "title": "Sunburst",
+      "date": "2026-08-25",
+      "source": "https://musicbrainz.org/release-group/1777dc35-5df7-444d-abae-f4227709c74b",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1267,9 +1343,9 @@
     "artist_name_mb": "Stray Kids",
     "artist_mbid": "142b343d-bf5a-428c-a64f-6d1a7566bbe9",
     "latest_song": {
-      "title": "RUN IT",
-      "date": "2026-06-24",
-      "source": "https://musicbrainz.org/release-group/ad30176e-c9f0-4fbd-b473-3858f81f403a",
+      "title": "November 11th",
+      "date": "2026-09-10",
+      "source": "https://musicbrainz.org/release-group/824ec724-a9d4-4a1f-9bd6-ded8ff9647be",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1370,9 +1446,9 @@
     "artist_name_mb": "TNX",
     "artist_mbid": "136c0dc4-4690-4fb4-bc79-3968700f4eaf",
     "latest_song": {
-      "title": "CALL ME BACK",
-      "date": "2026-01-22",
-      "source": "https://musicbrainz.org/release-group/284125ec-d04c-4023-9977-666ca826b284",
+      "title": "Die Another Day",
+      "date": "2026-08-27",
+      "source": "https://musicbrainz.org/release-group/c27984da-406d-4397-8947-8cadc7cb64a9",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1432,9 +1508,9 @@
       ]
     },
     "latest_album": {
-      "title": "On My Knees",
-      "date": "2026-07-08",
-      "source": "https://musicbrainz.org/release-group/27c00ca8-c575-4ffb-a108-62a5441e466a",
+      "title": "Which Way is Love?",
+      "date": "2026-08-26",
+      "source": "https://musicbrainz.org/release-group/2c2b0901-6d6a-4035-a34b-c04f04813791",
       "release_kind": "ep",
       "release_format": "ep",
       "context_tags": []
@@ -1446,9 +1522,9 @@
     "artist_name_mb": "tripleS",
     "artist_mbid": "40017bd7-139b-4998-8688-9b2478ad3325",
     "latest_song": {
-      "title": "<World Wild Women>",
-      "date": "2026-08-17",
-      "source": "https://musicbrainz.org/release-group/0f77b52f-4e98-488d-8140-c2494988c779",
+      "title": "Welcome to Heaven",
+      "date": "2026-10-01",
+      "source": "https://musicbrainz.org/release-group/98888945-9628-422b-8541-e229746f29b7",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1512,9 +1588,9 @@
     "artist_name_mb": "UNIS",
     "artist_mbid": "ddea2b8e-f772-4c39-ab90-e1983b74a149",
     "latest_song": {
-      "title": "UNI☆Sparkle!",
-      "date": "2026-07-31",
-      "source": "https://musicbrainz.org/release-group/0137df50-aefb-4cd7-9891-85600902a102",
+      "title": "Milky Way",
+      "date": "2026-09-23",
+      "source": "https://musicbrainz.org/release-group/d3931d1d-a677-41e9-a679-a64ecd0fae9f",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1534,7 +1610,14 @@
       "release_format": "single",
       "context_tags": []
     },
-    "latest_album": null,
+    "latest_album": {
+      "title": "CONFETTI",
+      "date": "2026-09-07",
+      "source": "https://musicbrainz.org/release-group/5a719cf5-debb-4b5d-8006-316e1f2aa4ed",
+      "release_kind": "ep",
+      "release_format": "ep",
+      "context_tags": []
+    },
     "artist_source": "https://musicbrainz.org/artist/497ad8ff-0d35-4570-8a46-3f6b344b30b4"
   },
   {
@@ -1609,9 +1692,9 @@
     "artist_name_mb": "WOOAH",
     "artist_mbid": "1e8da137-9aa8-4e62-9699-4f66d290b643",
     "latest_song": {
-      "title": "Wish With W : Vol.3",
-      "date": "2026-07-13",
-      "source": "https://musicbrainz.org/release-group/458bdb5d-e4fa-4d4e-818d-841652aade07",
+      "title": "VOODOO DOLL",
+      "date": "2026-09-29",
+      "source": "https://musicbrainz.org/release-group/f74286bb-c6c5-46f6-b0a8-5ff7a3335ce1",
       "release_kind": "single",
       "release_format": "single",
       "context_tags": []
@@ -1690,14 +1773,12 @@
     "artist_name_mb": "YOUNG POSSE",
     "artist_mbid": "427150d2-674f-47b2-a1a1-7bb4a9e0d070",
     "latest_song": {
-      "title": "Illustration Music Collaboration with Keykney",
-      "date": "2026-08-18",
-      "source": "https://musicbrainz.org/release-group/88c1e045-cbe0-4612-b16e-9233eba37527",
+      "title": "GO AHEAD",
+      "date": "2026-10-07",
+      "source": "https://musicbrainz.org/release-group/6129f853-ebc7-471d-84e6-6b117acd961d",
       "release_kind": "single",
       "release_format": "single",
-      "context_tags": [
-        "collab"
-      ]
+      "context_tags": []
     },
     "latest_album": {
       "title": "young tape",

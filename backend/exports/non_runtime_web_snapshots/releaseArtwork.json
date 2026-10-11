@@ -216,6 +216,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "&TEAM",
+    "release_title": "Mark on Me",
+    "release_date": "2026-09-08",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/44be7762-64aa-4471-a04f-b98cfeef404d/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/44be7762-64aa-4471-a04f-b98cfeef404d/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/44be7762-64aa-4471-a04f-b98cfeef404d",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "(G)I-DLE",
     "release_title": "I am",
     "release_date": "2018-05-02",
@@ -668,6 +680,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/75f9f49a-c499-4ffa-8eb5-be0329459b20/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/75f9f49a-c499-4ffa-8eb5-be0329459b20",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "82MAJOR",
+    "release_title": "HEAT",
+    "release_date": "2026-09-01",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/d46b3c5e-e741-4de9-82eb-57b9050a69e4/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/d46b3c5e-e741-4de9-82eb-57b9050a69e4/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/d46b3c5e-e741-4de9-82eb-57b9050a69e4",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -1416,6 +1440,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "aespa",
+    "release_title": "SYNK : COMPLaeXITY",
+    "release_date": "2026-09-14",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/1fe95f81-dc72-4534-aa2e-c898406f08ef/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/1fe95f81-dc72-4534-aa2e-c898406f08ef/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/1fe95f81-dc72-4534-aa2e-c898406f08ef",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "ALL(H)OURS",
     "release_title": "ALL OURS",
     "release_date": "2024-01-10",
@@ -1488,6 +1524,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "ALL(H)OURS",
+    "release_title": "UNBOUND",
+    "release_date": "2026-09-10",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/c5a987eb-72f0-4524-a612-5b09799d03da/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/c5a987eb-72f0-4524-a612-5b09799d03da/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/c5a987eb-72f0-4524-a612-5b09799d03da",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "ALLDAY PROJECT",
     "release_title": "FAMOUS",
     "release_date": "2025-06-23",
@@ -1532,6 +1580,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/b14990f4-8a42-495f-bec5-a59cbace31b8/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/b14990f4-8a42-495f-bec5-a59cbace31b8",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ALLDAY PROJECT",
+    "release_title": "CRASH",
+    "release_date": "2026-09-28",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/07235db0-b842-47cd-bf72-2a69f4ce686d/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/07235db0-b842-47cd-bf72-2a69f4ce686d/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/07235db0-b842-47cd-bf72-2a69f4ce686d",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -4668,6 +4728,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "CRAVITY",
+    "release_title": "sonorous",
+    "release_date": "2026-09-30",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/81426b45-5e06-4635-aa8f-3abd78d49a58/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/81426b45-5e06-4635-aa8f-3abd78d49a58/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/81426b45-5e06-4635-aa8f-3abd78d49a58",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "DAY6",
     "release_title": "The Day",
     "release_date": "2015-09-07",
@@ -6493,6 +6565,18 @@
   },
   {
     "group": "EXO",
+    "release_title": "LOVE SHOT – The 5th Album Repackage",
+    "release_date": "2018-12-13",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/951708a9-0162-4eb5-8f8e-479581e00e4b/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/951708a9-0162-4eb5-8f8e-479581e00e4b/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/951708a9-0162-4eb5-8f8e-479581e00e4b",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "EXO",
     "release_title": "BIRD",
     "release_date": "2019-10-10",
     "stream": "song",
@@ -7248,6 +7332,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "H1-KEY",
+    "release_title": "We’re Happy",
+    "release_date": "2026-08-22",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/7201e827-162f-48d6-867f-48aa95184d7f/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/7201e827-162f-48d6-867f-48aa95184d7f/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/7201e827-162f-48d6-867f-48aa95184d7f",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "Hearts2Hearts",
     "release_title": "The Chase",
     "release_date": "2025-02-24",
@@ -7328,6 +7424,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/cd3129e3-4c5c-41be-94c4-0f655fe284ff/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/cd3129e3-4c5c-41be-94c4-0f655fe284ff",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "Hearts2Hearts",
+    "release_title": "Moonride",
+    "release_date": "2026-09-09",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/a18557d0-3b56-4d2f-bbf9-834776fb66c9/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/a18557d0-3b56-4d2f-bbf9-834776fb66c9/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/a18557d0-3b56-4d2f-bbf9-834776fb66c9",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -7736,6 +7844,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/abd99573-9ee2-43fe-9322-1ce6bd575f4e",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "INFINITE",
+    "release_title": "우리의 계절",
+    "release_date": "2026-08-31",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/a64a739d-3b46-4f2b-aee5-cf0b6a0c6094/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/a64a739d-3b46-4f2b-aee5-cf0b6a0c6094/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/a64a739d-3b46-4f2b-aee5-cf0b6a0c6094",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -8460,6 +8580,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "izna",
+    "release_title": "HANDLE WITH CARE",
+    "release_date": "2026-09-02",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/6f904572-4140-40a3-a77b-657d79a35069/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/6f904572-4140-40a3-a77b-657d79a35069/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/6f904572-4140-40a3-a77b-657d79a35069",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "JUST B",
     "release_title": "Configurations 12",
     "release_date": "2020-12-28",
@@ -8744,6 +8876,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/2844f93d-11b2-4f5c-8296-59119d87a714/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/2844f93d-11b2-4f5c-8296-59119d87a714",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "Kep1er",
+    "release_title": "<Queendom2> Epilogue",
+    "release_date": "2022-06-03",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -9072,6 +9216,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "KickFlip",
+    "release_title": "KICK OFF THE WALL Pt. 1",
+    "release_date": "2026-10-06",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/efcd3317-bdf3-4d7f-94b1-0186a38f3fca/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/efcd3317-bdf3-4d7f-94b1-0186a38f3fca/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/efcd3317-bdf3-4d7f-94b1-0186a38f3fca",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "KiiiKiii",
     "release_title": "I DO ME",
     "release_date": "2025-02-24",
@@ -9308,6 +9464,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/fdff3379-c0c9-4881-8568-b7d99d7413b3/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/fdff3379-c0c9-4881-8568-b7d99d7413b3",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "KISS OF LIFE",
+    "release_title": "SWEAT -JAPANESE EP-",
+    "release_date": "2026-09-16",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/5ceeafc1-7d03-4a0d-adf3-bb4c413847dc/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/5ceeafc1-7d03-4a0d-adf3-bb4c413847dc/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/5ceeafc1-7d03-4a0d-adf3-bb4c413847dc",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -9612,6 +9780,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "LE SSERAFIM",
+    "release_title": "Made My Night",
+    "release_date": "2026-09-10",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/ca96d745-a810-460b-bda2-893566c2ea27/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/ca96d745-a810-460b-bda2-893566c2ea27/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/ca96d745-a810-460b-bda2-893566c2ea27",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "LIGHTSUM",
     "release_title": "Vanilla",
     "release_date": "2021-06-10",
@@ -9680,6 +9860,30 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/265982aa-d04b-44ef-8aee-06d69061e215",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "どうして",
+    "release_date": "2026-09-16",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/a98d4e9c-2c8a-4734-a831-8ec2db3ee35c/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/a98d4e9c-2c8a-4734-a831-8ec2db3ee35c/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/a98d4e9c-2c8a-4734-a831-8ec2db3ee35c",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "Re:idol",
+    "release_date": "2026-09-22",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/64407246-f534-4f1a-8df3-4d988406510c/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/64407246-f534-4f1a-8df3-4d988406510c/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/64407246-f534-4f1a-8df3-4d988406510c",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -10340,6 +10544,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/187b34ac-9131-41b9-9e5a-db43bacb6f46/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/187b34ac-9131-41b9-9e5a-db43bacb6f46",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "MCND",
+    "release_title": "Devil Youth Club",
+    "release_date": "2026-09-10",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/a709514c-a41a-4cf0-8f0b-31f26487f9d2/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/a709514c-a41a-4cf0-8f0b-31f26487f9d2/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/a709514c-a41a-4cf0-8f0b-31f26487f9d2",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -11160,6 +11376,30 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "MONSTA X",
+    "release_title": "The Phase",
+    "release_date": "2026-09-04",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/39c3b3b5-1bd5-4049-b6a0-a8409a33e7e6/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/39c3b3b5-1bd5-4049-b6a0-a8409a33e7e6/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/39c3b3b5-1bd5-4049-b6a0-a8409a33e7e6",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "MONSTA X",
+    "release_title": "NOW PROJECT vol.2",
+    "release_date": "2026-09-26",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/8083497d-fbc7-49b2-bf9c-06a36e59dbc7/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/8083497d-fbc7-49b2-bf9c-06a36e59dbc7/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/8083497d-fbc7-49b2-bf9c-06a36e59dbc7",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "NCT 127",
     "release_title": "NCT #127",
     "release_date": "2016-05-10",
@@ -11396,6 +11636,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/d5a9b3f1-95a2-4cd6-8a68-1801edd1116b",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "NCT 127",
+    "release_title": "BLINGY",
+    "release_date": "2026-08-24",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/c99eaa05-8517-459d-9921-c8c37bcef50e/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/c99eaa05-8517-459d-9921-c8c37bcef50e/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/c99eaa05-8517-459d-9921-c8c37bcef50e",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -12072,6 +12324,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "NEXZ",
+    "release_title": "SAUCIN'",
+    "release_date": "2026-08-24",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/55c0bf94-7324-404c-84d8-dc981cef868b/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/55c0bf94-7324-404c-84d8-dc981cef868b/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/55c0bf94-7324-404c-84d8-dc981cef868b",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "NMIXX",
     "release_title": "Now is the time! : We Are NMIXX",
     "release_date": "2022-02-04",
@@ -12721,6 +12985,18 @@
   },
   {
     "group": "ONEUS",
+    "release_title": "바람을 타고 날아간 곳에 네가 있을까 (Fly to you)",
+    "release_date": "2025-10-17",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/26c08107-ed97-40a2-85b4-28ab712a1a03/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/26c08107-ed97-40a2-85b4-28ab712a1a03/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/26c08107-ed97-40a2-85b4-28ab712a1a03",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONEUS",
     "release_title": "原",
     "release_date": "2026-01-20",
     "stream": "song",
@@ -12740,6 +13016,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/a667d824-1049-4880-bdeb-83920c96f186/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/a667d824-1049-4880-bdeb-83920c96f186",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONEUS",
+    "release_title": "FIRST LIGHT : 井",
+    "release_date": "2026-09-23",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/583b5602-354d-405d-a84f-76a4724aaf93/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/583b5602-354d-405d-a84f-76a4724aaf93/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/583b5602-354d-405d-a84f-76a4724aaf93",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -12860,6 +13148,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/873aa529-d931-4dcf-b149-4ce5acaa66a4/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/873aa529-d931-4dcf-b149-4ce5acaa66a4",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONEWE",
+    "release_title": "소행성 (Parting)",
+    "release_date": "2020-09-24",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/348a3d64-0207-4bc4-a23a-610faf559a6a/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/348a3d64-0207-4bc4-a23a-610faf559a6a/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/348a3d64-0207-4bc4-a23a-610faf559a6a",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -13069,6 +13369,18 @@
   },
   {
     "group": "ONEWE",
+    "release_title": "관람차 (Ferris wheel)",
+    "release_date": "2026-01-14",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/de91aed0-67ed-4325-9388-2b558f2567c0/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/de91aed0-67ed-4325-9388-2b558f2567c0/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/de91aed0-67ed-4325-9388-2b558f2567c0",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONEWE",
     "release_title": "點 : The Quiver",
     "release_date": "2026-05-29",
     "stream": "song",
@@ -13076,6 +13388,198 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONEWE",
+    "release_title": "面 : Unknown Atlas",
+    "release_date": "2026-08-19",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/86508fe4-9ab3-4719-8dd0-3a6bc2c4f1e5/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/86508fe4-9ab3-4719-8dd0-3a6bc2c4f1e5/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/86508fe4-9ab3-4719-8dd0-3a6bc2c4f1e5",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "ON/OFF",
+    "release_date": "2017-08-02",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/8bc61315-58c8-4e91-af9b-766dc4af4319/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/8bc61315-58c8-4e91-af9b-766dc4af4319/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/8bc61315-58c8-4e91-af9b-766dc4af4319",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "YOU COMPLETE ME",
+    "release_date": "2018-06-07",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/1719e60c-ab1d-42c7-a460-5b0c04ec02f8/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/1719e60c-ab1d-42c7-a460-5b0c04ec02f8/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/1719e60c-ab1d-42c7-a460-5b0c04ec02f8",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "HELLO! WM",
+    "release_date": "2018-12-10",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/3ac2f06e-70df-438d-ae57-e32b83009b69/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/3ac2f06e-70df-438d-ae57-e32b83009b69/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/3ac2f06e-70df-438d-ae57-e32b83009b69",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "WE MUST LOVE",
+    "release_date": "2019-02-07",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/0a10cd68-8b87-4163-ae2e-20a9d99fc042/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/0a10cd68-8b87-4163-ae2e-20a9d99fc042/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/0a10cd68-8b87-4163-ae2e-20a9d99fc042",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "SPIN OFF",
+    "release_date": "2020-08-10",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/fe5ece49-389f-48dd-a25f-fb2530dbf0af/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/fe5ece49-389f-48dd-a25f-fb2530dbf0af/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/fe5ece49-389f-48dd-a25f-fb2530dbf0af",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "HELLO! WM",
+    "release_date": "2020-09-04",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/6561939b-9756-4fcb-9348-7116137f0b74/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/6561939b-9756-4fcb-9348-7116137f0b74/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/6561939b-9756-4fcb-9348-7116137f0b74",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "ONF:MY NAME",
+    "release_date": "2021-02-24",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/4d3e65dc-2f87-4999-8da2-0606d48dba6f/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/4d3e65dc-2f87-4999-8da2-0606d48dba6f/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/4d3e65dc-2f87-4999-8da2-0606d48dba6f",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "POPPING",
+    "release_date": "2021-08-09",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/639ec520-cfa0-489a-942e-12844167333c/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/639ec520-cfa0-489a-942e-12844167333c/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/639ec520-cfa0-489a-942e-12844167333c",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "Goosebumps",
+    "release_date": "2021-12-03",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/55df2a68-eede-4ade-ada4-549b17b50e4c/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/55df2a68-eede-4ade-ada4-549b17b50e4c/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/55df2a68-eede-4ade-ada4-549b17b50e4c",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "Storage of ONF",
+    "release_date": "2022-08-16",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/99695e75-26bb-4ad5-bb8e-a86698b24dc8/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/99695e75-26bb-4ad5-bb8e-a86698b24dc8/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/99695e75-26bb-4ad5-bb8e-a86698b24dc8",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "LOVE EFFECT",
+    "release_date": "2023-10-04",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/a7d7baa0-7b7d-45d5-b7d8-1818af790540/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/a7d7baa0-7b7d-45d5-b7d8-1818af790540/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/a7d7baa0-7b7d-45d5-b7d8-1818af790540",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "Beautiful Shadow",
+    "release_date": "2024-04-08",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/deafc545-01e8-4917-a0f5-be22ff23fddc/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/deafc545-01e8-4917-a0f5-be22ff23fddc/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/deafc545-01e8-4917-a0f5-be22ff23fddc",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "ONF:My Identity",
+    "release_date": "2025-02-18",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/09e18ade-da71-4b18-8953-27da8a5283ee/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/09e18ade-da71-4b18-8953-27da8a5283ee/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/09e18ade-da71-4b18-8953-27da8a5283ee",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "Summer Light",
+    "release_date": "2025-08-03",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/017dac05-b448-4199-93a0-0d4415f90936/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/017dac05-b448-4199-93a0-0d4415f90936/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/017dac05-b448-4199-93a0-0d4415f90936",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONF",
+    "release_title": "ONF:MY SELF",
+    "release_date": "2026-06-17",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/599aad9a-25be-4c51-9d5a-c4400f91da9b/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/599aad9a-25be-4c51-9d5a-c4400f91da9b/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/599aad9a-25be-4c51-9d5a-c4400f91da9b",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -13400,6 +13904,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/2480bc99-8a2a-4559-9832-23ca576e8fc9/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/2480bc99-8a2a-4559-9832-23ca576e8fc9",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "PLAVE",
+    "release_title": "Flame",
+    "release_date": "2026-09-03",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/9eeadaf0-d4d0-4d68-8843-ccd4477cde04/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/9eeadaf0-d4d0-4d68-8843-ccd4477cde04/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/9eeadaf0-d4d0-4d68-8843-ccd4477cde04",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -13832,6 +14348,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/b109cfc3-0ce7-4800-96d0-4fc61bbc940c/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/b109cfc3-0ce7-4800-96d0-4fc61bbc940c",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "QWER",
+    "release_title": "소년만화 & 피카레스크",
+    "release_date": "2026-09-21",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/781175cf-0120-477f-ae98-96d74cfce669/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/781175cf-0120-477f-ae98-96d74cfce669/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/781175cf-0120-477f-ae98-96d74cfce669",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -14544,6 +15072,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "RIIZE",
+    "release_title": "Sunburst",
+    "release_date": "2026-08-25",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/1777dc35-5df7-444d-abae-f4227709c74b/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/1777dc35-5df7-444d-abae-f4227709c74b/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/1777dc35-5df7-444d-abae-f4227709c74b",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "SAY MY NAME",
     "release_title": "SAY MY NAME",
     "release_date": "2024-10-16",
@@ -14797,6 +15337,18 @@
   },
   {
     "group": "SEVENTEEN",
+    "release_title": "Fallin' Flower",
+    "release_date": "2020-04-01",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/7332f032-d1ea-4389-a003-4b768a7d9cfa/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/7332f032-d1ea-4389-a003-4b768a7d9cfa/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/7332f032-d1ea-4389-a003-4b768a7d9cfa",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "SEVENTEEN",
     "release_title": "우리, 다시 (Us, Again)",
     "release_date": "2020-06-07",
     "stream": "song",
@@ -14924,18 +15476,6 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/9f2de70d-3b12-4eeb-8532-e5cf047dd6f4/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/9f2de70d-3b12-4eeb-8532-e5cf047dd6f4",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "SEVENTEEN",
-    "release_title": "Fallin' Flower",
-    "release_date": "2023-03-23",
-    "stream": "song",
-    "cover_image_url": "https://coverartarchive.org/release-group/7332f032-d1ea-4389-a003-4b768a7d9cfa/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/7332f032-d1ea-4389-a003-4b768a7d9cfa/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/7332f032-d1ea-4389-a003-4b768a7d9cfa",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -16416,6 +16956,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "Stray Kids",
+    "release_title": "November 11th",
+    "release_date": "2026-09-10",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/824ec724-a9d4-4a1f-9bd6-ded8ff9647be/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/824ec724-a9d4-4a1f-9bd6-ded8ff9647be/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/824ec724-a9d4-4a1f-9bd6-ded8ff9647be",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "TEMPEST",
     "release_title": "It's me, It's We",
     "release_date": "2022-03-02",
@@ -17316,6 +17868,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "TNX",
+    "release_title": "Die Another Day",
+    "release_date": "2026-08-27",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/c27984da-406d-4397-8947-8cadc7cb64a9/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/c27984da-406d-4397-8947-8cadc7cb64a9/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/c27984da-406d-4397-8947-8cadc7cb64a9",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "TOMORROW X TOGETHER",
     "release_title": "The Dream Chapter: STAR",
     "release_date": "2019-03-04",
@@ -18204,6 +18768,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "TRENDZ",
+    "release_title": "Which Way is Love?",
+    "release_date": "2026-08-26",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/2c2b0901-6d6a-4035-a34b-c04f04813791/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/2c2b0901-6d6a-4035-a34b-c04f04813791/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/2c2b0901-6d6a-4035-a34b-c04f04813791",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "tripleS",
     "release_title": "Acid Angel from Asia <ACCESS>",
     "release_date": "2022-10-28",
@@ -18468,6 +19044,30 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "tripleS",
+    "release_title": "<DNA>",
+    "release_date": "2026-09-01",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/94170a08-e408-4ee3-9f69-392df3538de6/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/94170a08-e408-4ee3-9f69-392df3538de6/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/94170a08-e408-4ee3-9f69-392df3538de6",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "tripleS",
+    "release_title": "Welcome to Heaven",
+    "release_date": "2026-10-01",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/98888945-9628-422b-8541-e229746f29b7/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/98888945-9628-422b-8541-e229746f29b7/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/98888945-9628-422b-8541-e229746f29b7",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "TWICE",
     "release_title": "THE STORY BEGINS",
     "release_date": "2015-10-20",
@@ -18572,6 +19172,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/f77a0683-1623-476a-97f7-b3df0fb6bc56/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/f77a0683-1623-476a-97f7-b3df0fb6bc56",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "TWICE",
+    "release_title": "I WANT YOU BACK",
+    "release_date": "2018-06-15",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/c4c90f2e-bb87-4369-836e-9c01eb9e22f6/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/c4c90f2e-bb87-4369-836e-9c01eb9e22f6/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/c4c90f2e-bb87-4369-836e-9c01eb9e22f6",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -19009,18 +19621,6 @@
   },
   {
     "group": "TWICE",
-    "release_title": "Track by Track: TWICE",
-    "release_date": "2024-07-18",
-    "stream": "album",
-    "cover_image_url": "https://coverartarchive.org/release-group/31cdcf55-f2b2-4521-84a5-eecb94578f5e/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/31cdcf55-f2b2-4521-84a5-eecb94578f5e/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/31cdcf55-f2b2-4521-84a5-eecb94578f5e",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "TWICE",
     "release_title": "STRATEGY",
     "release_date": "2024-12-06",
     "stream": "album",
@@ -19416,6 +20016,30 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "UNIS",
+    "release_title": "하늘땅 별땅",
+    "release_date": "2026-09-08",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/ce791015-a18e-48c6-ae53-a29dadd1ed61/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/ce791015-a18e-48c6-ae53-a29dadd1ed61/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/ce791015-a18e-48c6-ae53-a29dadd1ed61",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "UNIS",
+    "release_title": "Milky Way",
+    "release_date": "2026-09-23",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/d3931d1d-a677-41e9-a679-a64ecd0fae9f/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/d3931d1d-a677-41e9-a679-a64ecd0fae9f/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/d3931d1d-a677-41e9-a679-a64ecd0fae9f",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "VERIVERY",
     "release_title": "VERI-US",
     "release_date": "2019-01-09",
@@ -19584,6 +20208,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "VERIVERY",
+    "release_title": "CONFETTI",
+    "release_date": "2026-09-07",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/5a719cf5-debb-4b5d-8006-316e1f2aa4ed/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/5a719cf5-debb-4b5d-8006-316e1f2aa4ed/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/5a719cf5-debb-4b5d-8006-316e1f2aa4ed",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "VIVIZ",
     "release_title": "Beam of Prism",
     "release_date": "2022-02-09",
@@ -19592,6 +20228,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/db181905-01d6-452a-8705-f0181a3412fb/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/db181905-01d6-452a-8705-f0181a3412fb",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "VIVIZ",
+    "release_title": "<Queendom2> Epilogue",
+    "release_date": "2022-06-03",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -20257,6 +20905,18 @@
   },
   {
     "group": "WJSN",
+    "release_title": "<Queendom2> Epilogue",
+    "release_date": "2022-06-03",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "WJSN",
     "release_title": "Sequence",
     "release_date": "2022-07-05",
     "stream": "song",
@@ -20420,6 +21080,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/458bdb5d-e4fa-4d4e-818d-841652aade07/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/458bdb5d-e4fa-4d4e-818d-841652aade07",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "woo!ah!",
+    "release_title": "VOODOO DOLL",
+    "release_date": "2026-09-29",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/f74286bb-c6c5-46f6-b0a8-5ff7a3335ce1/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/f74286bb-c6c5-46f6-b0a8-5ff7a3335ce1/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/f74286bb-c6c5-46f6-b0a8-5ff7a3335ce1",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -20948,6 +21620,30 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/88c1e045-cbe0-4612-b16e-9233eba37527/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/88c1e045-cbe0-4612-b16e-9233eba37527",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "YOUNG POSSE",
+    "release_title": "Haze",
+    "release_date": "2026-09-22",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/364ef2e2-b417-4fb3-b43c-a27d8b0d159d/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/364ef2e2-b417-4fb3-b43c-a27d8b0d159d/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/364ef2e2-b417-4fb3-b43c-a27d8b0d159d",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "YOUNG POSSE",
+    "release_title": "GO AHEAD",
+    "release_date": "2026-10-07",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/6129f853-ebc7-471d-84e6-6b117acd961d/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/6129f853-ebc7-471d-84e6-6b117acd961d/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/6129f853-ebc7-471d-84e6-6b117acd961d",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },

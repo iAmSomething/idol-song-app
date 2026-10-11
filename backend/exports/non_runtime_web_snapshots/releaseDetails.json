@@ -767,6 +767,56 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "&TEAM",
+    "release_title": "Mark on Me",
+    "release_date": "2026-09-08",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Mark on Me",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Good Boy",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Love Jang",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Accelerate",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Empty",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Night to howl!",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/6QtmQ4jeXLLLZnLitg5gUj",
+    "youtube_music_url": null,
+    "youtube_video_url": "https://www.youtube.com/watch?v=F-NcvXY8_vU",
+    "youtube_video_id": "F-NcvXY8_vU",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "(G)I-DLE",
     "release_title": "I am",
     "release_date": "2018-05-02",
@@ -1843,8 +1893,8 @@
     ],
     "spotify_url": "https://open.spotify.com/prerelease/6dwb5r26FV8QM1q2VNfin6",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_kAyRRZgPd8_-z3-o-FoAVuoTe4zq0OfBU",
-    "youtube_video_url": "https://www.youtube.com/watch?v=DcxiggTs_q4",
-    "youtube_video_id": "DcxiggTs_q4",
+    "youtube_video_url": "https://www.youtube.com/watch?v=7HDeem-JaSY",
+    "youtube_video_id": "7HDeem-JaSY",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Representative MusicBrainz EP seed with 5 tracks. Canonical links: Spotify. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). Canonical YouTube MV preserved from release_detail_overrides.json (youtube search auto-accepted via allowlist/title/date/view scoring)."
@@ -2216,6 +2266,42 @@
     "youtube_music_url": null,
     "youtube_video_url": "https://www.youtube.com/watch?v=cp77ALn_JgY",
     "youtube_video_id": "cp77ALn_JgY",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "82MAJOR",
+    "release_title": "HEAT",
+    "release_date": "2026-09-01",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Like Fire"
+      },
+      {
+        "order": 2,
+        "title": "wyd?"
+      },
+      {
+        "order": 3,
+        "title": "TROPHY (Spanish Ver.)"
+      },
+      {
+        "order": 4,
+        "title": "Sign (Viann Remix)"
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/2XRfS9sTg9ncblI4SsJosi",
+    "youtube_music_url": null,
+    "youtube_video_url": "https://www.youtube.com/watch?v=L7HhTKJx0gU",
+    "youtube_video_id": "L7HhTKJx0gU",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
@@ -3858,8 +3944,8 @@
     "release_kind": "ep",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "inferred",
-    "title_track_provenance": "release_title_substring",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
     "tracks": [
       {
         "order": 1,
@@ -4886,6 +4972,42 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "aespa",
+    "release_title": "SYNK : COMPLaeXITY",
+    "release_date": "2026-09-14",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "16 Bit"
+      },
+      {
+        "order": 2,
+        "title": "Saddle Up"
+      },
+      {
+        "order": 3,
+        "title": "BYEB4HELLO"
+      },
+      {
+        "order": 4,
+        "title": "I Love You but I Gotta Let You Go"
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/6IKPRi6kQgW1HoI8yzEuTQ",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "ALL(H)OURS",
     "release_title": "ALL OURS",
     "release_date": "2024-01-10",
@@ -5141,6 +5263,50 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
+    "group": "ALL(H)OURS",
+    "release_title": "UNBOUND",
+    "release_date": "2026-09-10",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "HOP"
+      },
+      {
+        "order": 2,
+        "title": "DANG DANG"
+      },
+      {
+        "order": 3,
+        "title": "Only Me"
+      },
+      {
+        "order": 4,
+        "title": "S!REN"
+      },
+      {
+        "order": 5,
+        "title": "Slow Motion"
+      },
+      {
+        "order": 6,
+        "title": "VIVA"
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/40riOYM5nWwz5NEKeVzSMs",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "ALLDAY PROJECT",
     "release_title": "FAMOUS",
     "release_date": "2025-06-23",
@@ -5294,6 +5460,51 @@
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "ALLDAY PROJECT",
+    "release_title": "CRASH",
+    "release_date": "2026-09-28",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "TALK",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "CRASH",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "DO IT LIKE THIS",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "NO 한도",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "UP ALL NIGHT",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": "https://www.youtube.com/watch?v=lQ-w9M447w0",
+    "youtube_video_id": "lQ-w9M447w0",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
     "group": "AMPERS&ONE",
@@ -8438,11 +8649,11 @@
     ],
     "spotify_url": "https://open.spotify.com/album/2KiMyHuf4NDqnM7GhGysBC",
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "youtube_video_url": "https://www.youtube.com/watch?v=J3-oRJ606Jw",
+    "youtube_video_id": "J3-oRJ606Jw",
+    "youtube_video_status": "relation_match",
+    "youtube_video_provenance": "musicbrainz.release_group_release.url_relation",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). MusicBrainz acquisition enriched: youtube_video (musicbrainz.release_group_release)."
   },
   {
     "group": "BADVILLAIN",
@@ -10039,13 +10250,13 @@
         "is_title_track": false
       }
     ],
-    "spotify_url": null,
+    "spotify_url": "https://open.spotify.com/album/4AvNQasUXJ4uHHmtypy6BF",
     "youtube_music_url": null,
     "youtube_video_url": "https://www.youtube.com/watch?v=YkCXVgcsGTU",
     "youtube_video_id": "YkCXVgcsGTU",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "BOYNEXTDOOR",
@@ -10398,18 +10609,24 @@
     "release_date": "2026-08-17",
     "stream": "song",
     "release_kind": "single",
-    "detail_status": "inferred",
-    "detail_provenance": "releaseHistory.placeholder_seed",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_tracklist",
-    "tracks": [],
-    "spotify_url": null,
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Boom Boom Boom",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/02kjR76VrVOyF4yrFEe5mw",
     "youtube_music_url": null,
     "youtube_video_url": "https://www.youtube.com/watch?v=ntLoF0LnAwY",
     "youtube_video_id": "ntLoF0LnAwY",
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "BTOB",
@@ -14406,10 +14623,10 @@
     ],
     "spotify_url": null,
     "youtube_music_url": null,
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "youtube_video_url": "https://www.youtube.com/watch?v=z_uqieM8VGM",
+    "youtube_video_id": "z_uqieM8VGM",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
@@ -18107,6 +18324,54 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "CRAVITY",
+    "release_title": "sonorous",
+    "release_date": "2026-09-30",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Pulse"
+      },
+      {
+        "order": 2,
+        "title": "LOUDER"
+      },
+      {
+        "order": 3,
+        "title": "Lucky Charm"
+      },
+      {
+        "order": 4,
+        "title": "LOVE ME"
+      },
+      {
+        "order": 5,
+        "title": "Seize The Night"
+      },
+      {
+        "order": 6,
+        "title": "Fantasy"
+      },
+      {
+        "order": 7,
+        "title": "Odd One Out"
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
     "group": "DAY6",
@@ -24531,6 +24796,46 @@
   },
   {
     "group": "EXO",
+    "release_title": "LOVE SHOT – The 5th Album Repackage",
+    "release_date": "2018-12-13",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_search_release",
+    "title_track_status": "inferred",
+    "title_track_provenance": "release_title_substring",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Love Shot",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Trauma",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Wait",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Love Shot (Chinese version)",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_search_release)."
+  },
+  {
+    "group": "EXO",
     "release_title": "BIRD",
     "release_date": "2019-10-10",
     "stream": "song",
@@ -26862,6 +27167,36 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "H1-KEY",
+    "release_title": "We’re Happy",
+    "release_date": "2026-08-22",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "We’re Happy",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "We’re Happy (Inst.)",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/7yLqt3w4NTXuVom87lJtKf",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "Hearts2Hearts",
     "release_title": "The Chase",
     "release_date": "2025-02-24",
@@ -27095,6 +27430,25 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "Hearts2Hearts",
+    "release_title": "Moonride",
+    "release_date": "2026-09-09",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
     "group": "ifeye",
@@ -28629,6 +28983,25 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "INFINITE",
+    "release_title": "우리의 계절",
+    "release_date": "2026-08-31",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
     "group": "ITZY",
@@ -30653,10 +31026,10 @@
     ],
     "spotify_url": null,
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_nO8Pcb0tAIwvqIb6on8b1QXJ1VhnHHgdE",
-    "youtube_video_url": null,
-    "youtube_video_id": null,
-    "youtube_video_status": "unresolved",
-    "youtube_video_provenance": "releaseDetails.no_mv_signal",
+    "youtube_video_url": "https://www.youtube.com/watch?v=rNGPgQB4Be8",
+    "youtube_video_id": "rNGPgQB4Be8",
+    "youtube_video_status": "manual_override",
+    "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Representative MusicBrainz ALBUM seed with 12 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
   },
   {
@@ -30958,6 +31331,46 @@
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "izna",
+    "release_title": "HANDLE WITH CARE",
+    "release_date": "2026-09-02",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_search_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "DUMB HOT!"
+      },
+      {
+        "order": 2,
+        "title": "HEADACHE"
+      },
+      {
+        "order": 3,
+        "title": "IZNA (Japanese Ver.)"
+      },
+      {
+        "order": 4,
+        "title": "SIGN (Japanese Ver.)"
+      },
+      {
+        "order": 5,
+        "title": "Mamma Mia (Japanese Ver.)"
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_search_release)."
   },
   {
     "group": "JEON SOMI",
@@ -32214,12 +32627,12 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/5gfNUlvzZB0T5Qj4v5cNiz",
-    "youtube_music_url": null,
+    "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_laabjoXAW649gR7rdGVGxRVq-MHyTb2TU",
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release). MusicBrainz acquisition enriched: youtube_music_url (musicbrainz.release_group_release)."
   },
   {
     "group": "Kep1er",
@@ -32255,6 +32668,31 @@
       {
         "order": 6,
         "title": "O.O.O (Over&Over&Over) (Kep1er ver.)"
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "Kep1er",
+    "release_title": "<Queendom2> Epilogue",
+    "release_date": "2022-06-03",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "inferred",
+    "title_track_provenance": "single_track_release | release_title_exact | song_variant_collapse | release_title_substring | nearby_song_release:2022-06-03",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "<Queendom2> Epilogue",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -33359,6 +33797,66 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
+    "group": "KickFlip",
+    "release_title": "KICK OFF THE WALL Pt. 1",
+    "release_date": "2026-10-06",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Puzzle Piece",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "Kick Off The Wall",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "0 (Young)",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Rockin'",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "hate blueberry",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Drop In",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Waste It All With You",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "Kick Off The Wall",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/6D1GOWHUaPAJpbRuHnGiH9",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "KiiiKiii",
     "release_title": "I DO ME",
     "release_date": "2025-02-24",
@@ -34072,6 +34570,56 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4yEWhrGAxvMhNtL4TuO2rq",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "KISS OF LIFE",
+    "release_title": "SWEAT -JAPANESE EP-",
+    "release_date": "2026-09-16",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "SWEAT - Japanese Ver.",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Was It You",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "BREAK IT",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Who is she - Japanese Ver.",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Igloo - Remix",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "BREAK IT - English Ver.",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/6ODzgKDARFob5VD1Jiu49R",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
@@ -35392,6 +35940,31 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "LE SSERAFIM",
+    "release_title": "Made My Night",
+    "release_date": "2026-09-10",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Made My Night",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
     "group": "LIGHTSUM",
     "release_title": "Vanilla",
     "release_date": "2021-06-10",
@@ -35587,6 +36160,71 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseDetails.no_mv_signal",
     "notes": "Representative MusicBrainz SINGLE seed with 1 track. Canonical links: Spotify."
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "どうして",
+    "release_date": "2026-09-16",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "どうして",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/5MGidnxMOlKn4IhJh0E4M2",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "LIGHTSUM",
+    "release_title": "Re:idol",
+    "release_date": "2026-09-22",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Doshite"
+      },
+      {
+        "order": 2,
+        "title": "Fallin' World"
+      },
+      {
+        "order": 3,
+        "title": "Stop and Go"
+      },
+      {
+        "order": 4,
+        "title": "POSE! (Kawaii ver.)"
+      },
+      {
+        "order": 5,
+        "title": "Yoru Wo Aruku Kimi He"
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/2OYtyR1MaRaUSKXJnHJN9l",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "Loossemble",
@@ -37807,6 +38445,51 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Release detail metadata was supplied explicitly from release_detail_overrides.json (manual review single-track verification via Apple Music release listing)."
   },
   {
+    "group": "MCND",
+    "release_title": "Devil Youth Club",
+    "release_date": "2026-09-10",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Devil Youth Club",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Beat Don’t Stop",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Hot Stuff",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "She Got That",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "Devil Youth Club (inst.)",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/3EFsELCo7nVKdQj1SInCBM",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "MEOVV",
     "release_title": "MEOW",
     "release_date": "2024-09-06",
@@ -38192,13 +38875,13 @@
         "title": "Broken Heart"
       }
     ],
-    "spotify_url": null,
+    "spotify_url": "https://open.spotify.com/album/0ESTAnvX2zjMBxzesNAiR7",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "MONSTA X",
@@ -40341,6 +41024,102 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_search_release). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "MONSTA X",
+    "release_title": "The Phase",
+    "release_date": "2026-09-04",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "MAGIC"
+      },
+      {
+        "order": 2,
+        "title": "Type X"
+      },
+      {
+        "order": 3,
+        "title": "SURVIVOR"
+      },
+      {
+        "order": 4,
+        "title": "Electric Heart"
+      },
+      {
+        "order": 5,
+        "title": "That’s My Girl"
+      },
+      {
+        "order": 6,
+        "title": "Sweet Night, Sweet Morning"
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "MONSTA X",
+    "release_title": "NOW PROJECT vol.2",
+    "release_date": "2026-09-26",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Trespass (Rerecorded)"
+      },
+      {
+        "order": 2,
+        "title": "HERO (Broadcasting Ver.) [Rerecorded]"
+      },
+      {
+        "order": 3,
+        "title": "Beautiful (Rerecorded)"
+      },
+      {
+        "order": 4,
+        "title": "DRAMARAMA (Rerecorded)"
+      },
+      {
+        "order": 5,
+        "title": "Jealousy (Rerecorded)"
+      },
+      {
+        "order": 6,
+        "title": "Shoot Out (Rerecorded)"
+      },
+      {
+        "order": 7,
+        "title": "Alligator (Rerecorded)"
+      },
+      {
+        "order": 8,
+        "title": "Follow (Rerecorded)"
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
     "group": "NCT 127",
     "release_title": "NCT #127",
     "release_date": "2016-05-10",
@@ -41227,13 +42006,13 @@
         "is_title_track": false
       }
     ],
-    "spotify_url": null,
+    "spotify_url": "https://open.spotify.com/album/0BJU07UQiBbB2bLLJg2ktr",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "NCT 127",
@@ -41333,6 +42112,71 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "NCT 127",
+    "release_title": "BLINGY",
+    "release_date": "2026-08-24",
+    "stream": "album",
+    "release_kind": "album",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Blingy",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Legacy",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Piñata",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "Step Up",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "IKR",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "Getaway",
+        "is_title_track": false
+      },
+      {
+        "order": 7,
+        "title": "Day After Day",
+        "is_title_track": false
+      },
+      {
+        "order": 8,
+        "title": "127 Million Miles",
+        "is_title_track": false
+      },
+      {
+        "order": 9,
+        "title": "I mean, It’s about time",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/15F7TMmAOkR9fK74bf0sUu",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "NCT DREAM",
@@ -43624,6 +44468,56 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "NEXZ",
+    "release_title": "SAUCIN'",
+    "release_date": "2026-08-24",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "LOCO",
+        "is_title_track": false
+      },
+      {
+        "order": 2,
+        "title": "SAUCIN′",
+        "is_title_track": true
+      },
+      {
+        "order": 3,
+        "title": "APPETITE",
+        "is_title_track": false
+      },
+      {
+        "order": 4,
+        "title": "UPGRADE",
+        "is_title_track": false
+      },
+      {
+        "order": 5,
+        "title": "20 NOW",
+        "is_title_track": false
+      },
+      {
+        "order": 6,
+        "title": "ALIENS",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/7fp9ee62cxM8XtgQ7LQiwa",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "NMIXX",
     "release_title": "Now is the time! : We Are NMIXX",
     "release_date": "2022-02-04",
@@ -45775,6 +46669,25 @@
   },
   {
     "group": "ONEUS",
+    "release_title": "바람을 타고 날아간 곳에 네가 있을까 (Fly to you)",
+    "release_date": "2025-10-17",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  },
+  {
+    "group": "ONEUS",
     "release_title": "原",
     "release_date": "2026-01-20",
     "stream": "song",
@@ -45836,6 +46749,46 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4YYhFdcpXwp8Wkk9jZgzUg",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "ONEUS",
+    "release_title": "FIRST LIGHT : 井",
+    "release_date": "2026-09-23",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Runaway"
+      },
+      {
+        "order": 2,
+        "title": "Say Yes!"
+      },
+      {
+        "order": 3,
+        "title": "By chance"
+      },
+      {
+        "order": 4,
+        "title": "Never Ending Us"
+      },
+      {
+        "order": 5,
+        "title": "We run for youth"
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/1XH7OxwQ8Pa2epsw0hVcrr",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
@@ -46206,16 +47159,18 @@
     "release_kind": "album",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "inferred",
+    "title_track_provenance": "nearby_song_release:2020-09-24",
     "tracks": [
       {
         "order": 1,
-        "title": "소행성 (Parting)"
+        "title": "소행성 (Parting)",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "소행성 (Parting) (inst.)"
+        "title": "소행성 (Parting) (inst.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": "https://open.spotify.com/album/49M2LTtZI2Fl2M7w1isqAV",
@@ -46225,6 +47180,25 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "ONEWE",
+    "release_title": "소행성 (Parting)",
+    "release_date": "2020-09-24",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
     "group": "ONEWE",
@@ -46873,68 +47847,83 @@
     "release_kind": "album",
     "detail_status": "verified",
     "detail_provenance": "musicbrainz.release_group_release",
-    "title_track_status": "unresolved",
-    "title_track_provenance": "no_dependable_title_track_signal",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
     "tracks": [
       {
         "order": 1,
-        "title": "관람차 (Ferris wheel)"
+        "title": "관람차 (Ferris wheel)",
+        "is_title_track": true
       },
       {
         "order": 2,
-        "title": "관람차 (Ferris wheel) (Inst.)"
+        "title": "관람차 (Ferris wheel) (Inst.)",
+        "is_title_track": false
       },
       {
         "order": 3,
-        "title": "한여름 밤 유성우 (7.29)"
+        "title": "한여름 밤 유성우 (7.29)",
+        "is_title_track": false
       },
       {
         "order": 4,
-        "title": "유일한 사랑이니까 (0번째니까 Ver.)"
+        "title": "유일한 사랑이니까 (0번째니까 Ver.)",
+        "is_title_track": false
       },
       {
         "order": 5,
-        "title": "순애 (Draft Guide)"
+        "title": "순애 (Draft Guide)",
+        "is_title_track": false
       },
       {
         "order": 6,
-        "title": "Kiss in the Rain (lofi Ver.)"
+        "title": "Kiss in the Rain (lofi Ver.)",
+        "is_title_track": false
       },
       {
         "order": 7,
-        "title": "추억의 소각장 (Guide Ver. 2)"
+        "title": "추억의 소각장 (Guide Ver. 2)",
+        "is_title_track": false
       },
       {
         "order": 8,
-        "title": "청천을 (2021)"
+        "title": "청천을 (2021)",
+        "is_title_track": false
       },
       {
         "order": 9,
-        "title": "별 헤는 밤 (The Starry Night Sketch)"
+        "title": "별 헤는 밤 (The Starry Night Sketch)",
+        "is_title_track": false
       },
       {
         "order": 10,
-        "title": "눈이 부시게 (Bossa Nova Ver.)"
+        "title": "눈이 부시게 (Bossa Nova Ver.)",
+        "is_title_track": false
       },
       {
         "order": 11,
-        "title": "다시 만나서 반가워 (Original Structure)"
+        "title": "다시 만나서 반가워 (Original Structure)",
+        "is_title_track": false
       },
       {
         "order": 12,
-        "title": "Shoot It Out (양자역학)"
+        "title": "Shoot It Out (양자역학)",
+        "is_title_track": false
       },
       {
         "order": 13,
-        "title": "오래된 음악가의 추억 (Nostalgia Demo Ver.)"
+        "title": "오래된 음악가의 추억 (Nostalgia Demo Ver.)",
+        "is_title_track": false
       },
       {
         "order": 14,
-        "title": "별 세는 너 (Guitar Rough)"
+        "title": "별 세는 너 (Guitar Rough)",
+        "is_title_track": false
       },
       {
         "order": 15,
-        "title": "바다에 적신 햇무리 반지 (Wedding Ver.)"
+        "title": "바다에 적신 햇무리 반지 (Wedding Ver.)",
+        "is_title_track": false
       }
     ],
     "spotify_url": null,
@@ -46944,6 +47933,36 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "ONEWE",
+    "release_title": "관람차 (Ferris wheel)",
+    "release_date": "2026-01-14",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_search_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "관람차 (Ferris wheel)",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "관람차 (Ferris wheel) (Inst.)",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_search_release)."
   },
   {
     "group": "ONEWE",
@@ -46980,6 +47999,94 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "ONEWE",
+    "release_title": "面 : Unknown Atlas",
+    "release_date": "2026-08-19",
+    "stream": "album",
+    "release_kind": "album",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Scenario"
+      },
+      {
+        "order": 2,
+        "title": "Coordinates"
+      },
+      {
+        "order": 3,
+        "title": "Compass"
+      },
+      {
+        "order": 4,
+        "title": "ICARUS"
+      },
+      {
+        "order": 5,
+        "title": "FLY"
+      },
+      {
+        "order": 6,
+        "title": "Neverland"
+      },
+      {
+        "order": 7,
+        "title": "Tinker Bell"
+      },
+      {
+        "order": 8,
+        "title": "Fairy Tale"
+      },
+      {
+        "order": 9,
+        "title": "Lilliput"
+      },
+      {
+        "order": 10,
+        "title": "Laputa"
+      },
+      {
+        "order": 11,
+        "title": "Pinocchio"
+      },
+      {
+        "order": 12,
+        "title": "Imposter"
+      },
+      {
+        "order": 13,
+        "title": "STAND UP"
+      },
+      {
+        "order": 14,
+        "title": "Beautiful Runaway"
+      },
+      {
+        "order": 15,
+        "title": "Just You"
+      },
+      {
+        "order": 16,
+        "title": "Beyond the Night"
+      },
+      {
+        "order": 17,
+        "title": "The End."
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/07KPt6uHFqEJ4x5U7C3rX4",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "ONF",
@@ -48723,6 +49830,31 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
+    "group": "PLAVE",
+    "release_title": "Flame",
+    "release_date": "2026-09-03",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Flame",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
     "group": "POW",
     "release_title": "Favorite",
     "release_date": "2023-09-13",
@@ -48869,7 +50001,7 @@
     "stream": "song",
     "release_kind": "single",
     "detail_status": "verified",
-    "detail_provenance": "releaseDetails.existing_row",
+    "detail_provenance": "musicbrainz.release_group_release",
     "title_track_status": "verified",
     "title_track_provenance": "releaseDetails.existing_title_flags",
     "tracks": [
@@ -48879,13 +50011,13 @@
         "is_title_track": true
       }
     ],
-    "spotify_url": null,
+    "spotify_url": "https://open.spotify.com/album/6JNlu1MYZPrJTU7KC3wJj8",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseDetails.no_mv_signal",
-    "notes": "Representative MusicBrainz SINGLE seed with 1 track."
+    "notes": "Representative MusicBrainz SINGLE seed with 1 track. MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "POW",
@@ -50047,6 +51179,34 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "QWER",
+    "release_title": "소년만화 & 피카레스크",
+    "release_date": "2026-09-21",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "소년만화"
+      },
+      {
+        "order": 2,
+        "title": "피카레스크"
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
     "group": "Red Velvet",
@@ -52339,6 +53499,41 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "RIIZE",
+    "release_title": "Sunburst",
+    "release_date": "2026-08-25",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Sunburst",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Rise Over",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "KILL SHOT",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/0Yj7RAYDsGCcb06sm7sb3m",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "SAY MY NAME",
     "release_title": "SAY MY NAME",
     "release_date": "2024-10-16",
@@ -53199,6 +54394,41 @@
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "SEVENTEEN",
+    "release_title": "Fallin' Flower",
+    "release_date": "2020-04-01",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "inferred",
+    "title_track_provenance": "release_title_exact | release_title_substring | nearby_song_release:2020-04-01",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Fallin' Flower",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Good to Me (Japanese ver.)",
+        "is_title_track": false
+      },
+      {
+        "order": 3,
+        "title": "Smile Flower (Japanese ver.)",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
   },
   {
     "group": "SEVENTEEN",
@@ -59322,6 +60552,31 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "Stray Kids",
+    "release_title": "November 11th",
+    "release_date": "2026-09-10",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "November 11th",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/3iFOSc0upPZ5vf90vQziw6",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "TEMPEST",
     "release_title": "It's me, It's We",
     "release_date": "2022-03-02",
@@ -61722,7 +62977,7 @@
     "stream": "album",
     "release_kind": "ep",
     "detail_status": "verified",
-    "detail_provenance": "releaseDetails.existing_row",
+    "detail_provenance": "musicbrainz.release_search_release",
     "title_track_status": "unresolved",
     "title_track_provenance": "no_dependable_title_track_signal",
     "tracks": [
@@ -61743,13 +62998,13 @@
         "title": "Last Flower (Instrumental)"
       }
     ],
-    "spotify_url": null,
+    "spotify_url": "https://open.spotify.com/album/1soH5sKInn64RSzYQaRWRG",
     "youtube_music_url": "https://music.youtube.com/playlist?list=OLAK5uy_lmAdIKzD4R2257L9YPwCZtXYSR3NGJa7s",
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseDetails.no_mv_signal",
-    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match)."
+    "notes": "Representative MusicBrainz EP seed with 4 tracks. Canonical YouTube Music URL preserved from release_detail_overrides.json (ytmusicapi exact album search match). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_search_release)."
   },
   {
     "group": "TIOT",
@@ -62274,6 +63529,31 @@
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review: user-provided official YouTube MV URL",
     "notes": "Representative MusicBrainz SINGLE seed with 2 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
+  },
+  {
+    "group": "TNX",
+    "release_title": "Die Another Day",
+    "release_date": "2026-08-27",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Die Another Day",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/1FvtY5v0GJX10OwNrLIHba",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "TOMORROW X TOGETHER",
@@ -63759,13 +65039,13 @@
         "is_title_track": false
       }
     ],
-    "spotify_url": null,
+    "spotify_url": "https://open.spotify.com/album/1qa6PpCZqOV4Fge1QL3OoY",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
     "youtube_video_status": "unresolved",
     "youtube_video_provenance": "releaseHistory.placeholder_seed",
-    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
   },
   {
     "group": "TREASURE",
@@ -65072,6 +66352,25 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "TRENDZ",
+    "release_title": "Which Way is Love?",
+    "release_date": "2026-08-26",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  },
+  {
     "group": "tripleS",
     "release_title": "Acid Angel from Asia <ACCESS>",
     "release_date": "2022-10-28",
@@ -65925,6 +67224,56 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
   },
   {
+    "group": "tripleS",
+    "release_title": "<DNA>",
+    "release_date": "2026-09-01",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "DNA (Dream N Access)",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/5d44WAOesbqz4FWEzHxQOD",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "tripleS",
+    "release_title": "Welcome to Heaven",
+    "release_date": "2026-10-01",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Welcome to Heaven",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/41VWV8nhKhj0vD9Lt3pyxB",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "TUNEXX",
     "release_title": "SET BY US ONLY",
     "release_date": "2026-03-03",
@@ -66378,6 +67727,25 @@
     "youtube_video_status": "manual_override",
     "youtube_video_provenance": "manual review priority slice: official TWICE JAPAN Music Video",
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. Release detail metadata was supplied explicitly from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN single release). Canonical YouTube MV preserved from release_detail_overrides.json (manual review priority slice: official TWICE JAPAN Music Video). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "TWICE",
+    "release_title": "I WANT YOU BACK",
+    "release_date": "2018-06-15",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
   },
   {
     "group": "TWICE",
@@ -69116,6 +70484,44 @@
     "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release). MusicBrainz acquisition enriched: spotify_url (musicbrainz.release_search_release)."
   },
   {
+    "group": "UNIS",
+    "release_title": "하늘땅 별땅",
+    "release_date": "2026-09-08",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  },
+  {
+    "group": "UNIS",
+    "release_title": "Milky Way",
+    "release_date": "2026-09-23",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "inferred",
+    "detail_provenance": "releaseHistory.placeholder_seed",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_tracklist",
+    "tracks": [],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved."
+  },
+  {
     "group": "VERIVERY",
     "release_title": "VERI-US",
     "release_date": "2019-01-09",
@@ -69641,6 +71047,46 @@
     "notes": "Representative MusicBrainz SINGLE seed with 3 tracks. Canonical links: Spotify. Canonical YouTube MV preserved from release_detail_overrides.json (manual review: user-provided official YouTube MV URL)."
   },
   {
+    "group": "VERIVERY",
+    "release_title": "CONFETTI",
+    "release_date": "2026-09-07",
+    "stream": "album",
+    "release_kind": "ep",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "unresolved",
+    "title_track_provenance": "no_dependable_title_track_signal",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Way to Zero"
+      },
+      {
+        "order": 2,
+        "title": "Don’t Panic!"
+      },
+      {
+        "order": 3,
+        "title": "DRAMA"
+      },
+      {
+        "order": 4,
+        "title": "Touch (Y2K Unit)"
+      },
+      {
+        "order": 5,
+        "title": "Eye Contact (DYG Unit)"
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/2fAzHTQSUcSWy6kE8jgJ9r",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
     "group": "VIVIZ",
     "release_title": "Beam of Prism",
     "release_date": "2022-02-09",
@@ -69678,6 +71124,31 @@
       {
         "order": 7,
         "title": "거울아"
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "VIVIZ",
+    "release_title": "<Queendom2> Epilogue",
+    "release_date": "2022-06-03",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "inferred",
+    "title_track_provenance": "single_track_release | release_title_exact | song_variant_collapse | release_title_substring | nearby_song_release:2022-06-03",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "<Queendom2> Epilogue",
+        "is_title_track": true
       }
     ],
     "spotify_url": null,
@@ -71778,6 +73249,31 @@
   },
   {
     "group": "WJSN",
+    "release_title": "<Queendom2> Epilogue",
+    "release_date": "2022-06-03",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "inferred",
+    "title_track_provenance": "single_track_release | release_title_exact | song_variant_collapse | release_title_substring | nearby_song_release:2022-06-03",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "<Queendom2> Epilogue",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "WJSN",
     "release_title": "Sequence",
     "release_date": "2022-07-05",
     "stream": "song",
@@ -72237,6 +73733,31 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/4iHtzmB65LzS88mAtbckKG",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "woo!ah!",
+    "release_title": "VOODOO DOLL",
+    "release_date": "2026-09-29",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "VOODOO DOLL",
+        "is_title_track": true
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/1VX9QyM1VF5Bfh7wP2ZjiG",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,
@@ -74369,6 +75890,66 @@
       }
     ],
     "spotify_url": "https://open.spotify.com/album/0FU3HiuegqkFqH5xHPl0sm",
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks, spotify_url (musicbrainz.release_group_release)."
+  },
+  {
+    "group": "YOUNG POSSE",
+    "release_title": "Haze",
+    "release_date": "2026-09-22",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_search_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "Haze",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "Daybreak",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": null,
+    "youtube_music_url": null,
+    "youtube_video_url": null,
+    "youtube_video_id": null,
+    "youtube_video_status": "unresolved",
+    "youtube_video_provenance": "releaseHistory.placeholder_seed",
+    "notes": "Historical release-detail seed generated from releaseHistory.json. Detailed track and service metadata remain unresolved. MusicBrainz acquisition enriched: tracks (musicbrainz.release_search_release)."
+  },
+  {
+    "group": "YOUNG POSSE",
+    "release_title": "GO AHEAD",
+    "release_date": "2026-10-07",
+    "stream": "song",
+    "release_kind": "single",
+    "detail_status": "verified",
+    "detail_provenance": "musicbrainz.release_group_release",
+    "title_track_status": "verified",
+    "title_track_provenance": "releaseDetails.existing_title_flags",
+    "tracks": [
+      {
+        "order": 1,
+        "title": "GO AHEAD",
+        "is_title_track": true
+      },
+      {
+        "order": 2,
+        "title": "GO AHEAD (inst.)",
+        "is_title_track": false
+      }
+    ],
+    "spotify_url": "https://open.spotify.com/album/7kRz62nT3c0UzU1elTvzIu",
     "youtube_music_url": null,
     "youtube_video_url": null,
     "youtube_video_id": null,

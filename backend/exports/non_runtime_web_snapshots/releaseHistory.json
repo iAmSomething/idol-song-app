@@ -6,6 +6,15 @@
     "artist_source": "https://musicbrainz.org/artist/bba737dc-7ec8-482d-b79f-68d949ef2c7f",
     "releases": [
       {
+        "title": "Mark on Me",
+        "date": "2026-09-08",
+        "source": "https://musicbrainz.org/release-group/44be7762-64aa-4471-a04f-b98cfeef404d",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "We on Fire",
         "date": "2026-04-12",
         "source": "https://musicbrainz.org/release-group/9179dab5-170d-41e1-9aeb-83764aad6660",
@@ -473,6 +482,15 @@
     "artist_source": "https://musicbrainz.org/artist/1cb80c2a-3f2e-4fdd-ab0f-9ae886dee032",
     "releases": [
       {
+        "title": "HEAT",
+        "date": "2026-09-01",
+        "source": "https://musicbrainz.org/release-group/d46b3c5e-e741-4de9-82eb-57b9050a69e4",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "FEELM",
         "date": "2026-04-28",
         "source": "https://musicbrainz.org/release-group/75f9f49a-c499-4ffa-8eb5-be0329459b20",
@@ -848,6 +866,15 @@
     "artist_source": "https://musicbrainz.org/artist/b51c672b-85e0-48fe-8648-470a2422229f",
     "releases": [
       {
+        "title": "SYNK : COMPLaeXITY",
+        "date": "2026-09-14",
+        "source": "https://musicbrainz.org/release-group/1fe95f81-dc72-4534-aa2e-c898406f08ef",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "SYNK : aeXIS LINE",
         "date": "2026-08-09",
         "source": "https://musicbrainz.org/release-group/1a32a863-1d88-4b1e-9987-945160eba8d3",
@@ -1126,6 +1153,15 @@
     "artist_source": "https://musicbrainz.org/artist/ce06dad7-098e-467c-a875-1e6525b29c02",
     "releases": [
       {
+        "title": "UNBOUND",
+        "date": "2026-09-10",
+        "source": "https://musicbrainz.org/release-group/c5a987eb-72f0-4524-a612-5b09799d03da",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "NO DOUBT",
         "date": "2026-03-16",
         "source": "https://musicbrainz.org/release-group/fd9318cb-3549-401c-9db0-06d97db0104f",
@@ -1187,6 +1223,15 @@
     "artist_mbid": "ce5c564c-0fbe-429c-b93b-5d7e3109cf40",
     "artist_source": "https://musicbrainz.org/artist/ce5c564c-0fbe-429c-b93b-5d7e3109cf40",
     "releases": [
+      {
+        "title": "CRASH",
+        "date": "2026-09-28",
+        "source": "https://musicbrainz.org/release-group/07235db0-b842-47cd-bf72-2a69f4ce686d",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "I DON’T BARGAIN",
         "date": "2026-03-09",
@@ -3560,6 +3605,15 @@
     "artist_source": "https://musicbrainz.org/artist/035e63b4-a34d-4f8e-a61f-6c2527eed16e",
     "releases": [
       {
+        "title": "sonorous",
+        "date": "2026-09-30",
+        "source": "https://musicbrainz.org/release-group/81426b45-5e06-4635-aa8f-3abd78d49a58",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "ReDeFINE",
         "date": "2026-04-29",
         "source": "https://musicbrainz.org/release-group/a5f932b5-3448-4526-875b-9e2d0e49722b",
@@ -5102,6 +5156,15 @@
         "stream": "song"
       },
       {
+        "title": "LOVE SHOT – The 5th Album Repackage",
+        "date": "2018-12-13",
+        "source": "https://musicbrainz.org/release-group/951708a9-0162-4eb5-8f8e-479581e00e4b",
+        "release_kind": "ep",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "DON’T MESS UP MY TEMPO",
         "date": "2018-11-02",
         "source": "https://musicbrainz.org/release-group/7f266820-472e-41c7-b77c-a4671d9d2bdd",
@@ -5638,6 +5701,15 @@
     "artist_source": "https://musicbrainz.org/artist/6d9dc445-463c-4c98-a554-429afe985f2b",
     "releases": [
       {
+        "title": "We’re Happy",
+        "date": "2026-08-22",
+        "source": "https://musicbrainz.org/release-group/7201e827-162f-48d6-867f-48aa95184d7f",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "LOVECHAPTER",
         "date": "2026-03-05",
         "source": "https://musicbrainz.org/release-group/164415eb-5787-4f44-80c0-2b5fac390d98",
@@ -5774,6 +5846,15 @@
     "artist_source": "https://musicbrainz.org/artist/066080a4-84c7-46c6-91d3-dc10d572749b",
     "releases": [
       {
+        "title": "Moonride",
+        "date": "2026-09-09",
+        "source": "https://musicbrainz.org/release-group/a18557d0-3b56-4d2f-bbf9-834776fb66c9",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "ICONIC HEART",
         "date": "2026-08-09",
         "source": "https://musicbrainz.org/release-group/cd3129e3-4c5c-41be-94c4-0f655fe284ff",
@@ -5879,6 +5960,15 @@
     "artist_mbid": "c175f8b3-47f8-46d4-a4cf-cb92fe7a37ae",
     "artist_source": "https://musicbrainz.org/artist/c175f8b3-47f8-46d4-a4cf-cb92fe7a37ae",
     "releases": [
+      {
+        "title": "우리의 계절",
+        "date": "2026-08-31",
+        "source": "https://musicbrainz.org/release-group/a64a739d-3b46-4f2b-aee5-cf0b6a0c6094",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "LIKE INFINITE",
         "date": "2025-03-06",
@@ -6673,6 +6763,15 @@
     "artist_source": "https://musicbrainz.org/artist/c3d9b981-0420-45ae-93ca-21d78f0fb14f",
     "releases": [
       {
+        "title": "HANDLE WITH CARE",
+        "date": "2026-09-02",
+        "source": "https://musicbrainz.org/release-group/6f904572-4140-40a3-a77b-657d79a35069",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "SET THE TEMPO",
         "date": "2026-06-08",
         "source": "https://musicbrainz.org/release-group/c7f50c09-18d1-4d6a-b416-c909d29c3cc3",
@@ -7147,6 +7246,15 @@
         "stream": "album"
       },
       {
+        "title": "<Queendom2> Epilogue",
+        "date": "2022-06-03",
+        "source": "https://musicbrainz.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "FIRST IMPACT",
         "date": "2022-01-03",
         "source": "https://musicbrainz.org/release-group/2844f93d-11b2-4f5c-8296-59119d87a714",
@@ -7163,6 +7271,15 @@
     "artist_mbid": "fa8afe53-9f95-4523-b064-004990c2d7c5",
     "artist_source": "https://musicbrainz.org/artist/fa8afe53-9f95-4523-b064-004990c2d7c5",
     "releases": [
+      {
+        "title": "KICK OFF THE WALL Pt. 1",
+        "date": "2026-10-06",
+        "source": "https://musicbrainz.org/release-group/efcd3317-bdf3-4d7f-94b1-0186a38f3fca",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "My First Kick",
         "date": "2026-04-06",
@@ -7287,6 +7404,17 @@
     "artist_mbid": "cbe629e3-fbbd-4071-9e12-4c5074c2231b",
     "artist_source": "https://musicbrainz.org/artist/cbe629e3-fbbd-4071-9e12-4c5074c2231b",
     "releases": [
+      {
+        "title": "SWEAT -JAPANESE EP-",
+        "date": "2026-09-16",
+        "source": "https://musicbrainz.org/release-group/5ceeafc1-7d03-4a0d-adf3-bb4c413847dc",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [
+          "japanese_release"
+        ],
+        "stream": "album"
+      },
       {
         "title": "SWEAT",
         "date": "2026-08-04",
@@ -7421,6 +7549,15 @@
     "artist_mbid": "1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "artist_source": "https://musicbrainz.org/artist/1ee37742-1e3d-4e61-84d2-bc85f4c1459a",
     "releases": [
+      {
+        "title": "Made My Night",
+        "date": "2026-09-10",
+        "source": "https://musicbrainz.org/release-group/ca96d745-a810-460b-bda2-893566c2ea27",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "ICONIC BY MISTAKE",
         "date": "2026-06-10",
@@ -7656,6 +7793,26 @@
     "artist_mbid": "6bfa076d-881b-442f-adc9-c8c17c6c87d3",
     "artist_source": "https://musicbrainz.org/artist/6bfa076d-881b-442f-adc9-c8c17c6c87d3",
     "releases": [
+      {
+        "title": "Re:idol",
+        "date": "2026-09-22",
+        "source": "https://musicbrainz.org/release-group/64407246-f534-4f1a-8df3-4d988406510c",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "どうして",
+        "date": "2026-09-16",
+        "source": "https://musicbrainz.org/release-group/a98d4e9c-2c8a-4734-a831-8ec2db3ee35c",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [
+          "japanese_release"
+        ],
+        "stream": "song"
+      },
       {
         "title": "Beautiful Pain (SANGAH, CHOWON, JUHYEON)",
         "date": "2026-01-15",
@@ -8159,6 +8316,15 @@
     "artist_source": "https://musicbrainz.org/artist/f2eb078b-acb6-4dc5-8224-ab180b207ad2",
     "releases": [
       {
+        "title": "Devil Youth Club",
+        "date": "2026-09-10",
+        "source": "https://musicbrainz.org/release-group/a709514c-a41a-4cf0-8f0b-31f26487f9d2",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "아뜨뜨뜨",
         "date": "2024-08-08",
         "source": "https://musicbrainz.org/release-group/187b34ac-9131-41b9-9e5a-db43bacb6f46",
@@ -8318,6 +8484,26 @@
     "artist_mbid": "b6b21b0c-a706-4b46-a929-bd4d21b06cad",
     "artist_source": "https://musicbrainz.org/artist/b6b21b0c-a706-4b46-a929-bd4d21b06cad",
     "releases": [
+      {
+        "title": "NOW PROJECT vol.2",
+        "date": "2026-09-26",
+        "source": "https://musicbrainz.org/release-group/8083497d-fbc7-49b2-bf9c-06a36e59dbc7",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [
+          "special_project"
+        ],
+        "stream": "album"
+      },
+      {
+        "title": "The Phase",
+        "date": "2026-09-04",
+        "source": "https://musicbrainz.org/release-group/39c3b3b5-1bd5-4049-b6a0-a8409a33e7e6",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "Unfold",
         "date": "2026-04-03",
@@ -8877,6 +9063,15 @@
     "artist_mbid": "9d17d14a-e81c-410e-a90b-b02b0a9de6f8",
     "artist_source": "https://musicbrainz.org/artist/9d17d14a-e81c-410e-a90b-b02b0a9de6f8",
     "releases": [
+      {
+        "title": "BLINGY",
+        "date": "2026-08-24",
+        "source": "https://musicbrainz.org/release-group/c99eaa05-8517-459d-9921-c8c37bcef50e",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "WALK",
         "date": "2024-07-15",
@@ -9533,6 +9728,15 @@
     "artist_source": "https://musicbrainz.org/artist/c870eef2-a1f9-407c-95f2-1448ad56474a",
     "releases": [
       {
+        "title": "SAUCIN'",
+        "date": "2026-08-24",
+        "source": "https://musicbrainz.org/release-group/55c0bf94-7324-404c-84d8-dc981cef868b",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "Mmchk",
         "date": "2026-04-27",
         "source": "https://musicbrainz.org/release-group/ed83bc37-256a-4c12-91df-30ef9be5e4c6",
@@ -9845,6 +10049,15 @@
     "artist_source": "https://musicbrainz.org/artist/c010eb84-2de1-40b2-b267-40de6002daab",
     "releases": [
       {
+        "title": "FIRST LIGHT : 井",
+        "date": "2026-09-23",
+        "source": "https://musicbrainz.org/release-group/583b5602-354d-405d-a84f-76a4724aaf93",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "Under",
         "date": "2026-07-01",
         "source": "https://musicbrainz.org/release-group/a667d824-1049-4880-bdeb-83920c96f186",
@@ -9857,6 +10070,15 @@
         "title": "原",
         "date": "2026-01-20",
         "source": "https://musicbrainz.org/release-group/7ec53d25-cf70-4e7e-a0e7-3ce79bf619f7",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "바람을 타고 날아간 곳에 네가 있을까 (Fly to you)",
+        "date": "2025-10-17",
+        "source": "https://musicbrainz.org/release-group/26c08107-ed97-40a2-85b4-28ab712a1a03",
         "release_kind": "single",
         "release_format": "single",
         "context_tags": [],
@@ -10132,6 +10354,15 @@
     "artist_source": "https://musicbrainz.org/artist/720f9030-9b10-4cfa-9a1b-16f80c774cc9",
     "releases": [
       {
+        "title": "面 : Unknown Atlas",
+        "date": "2026-08-19",
+        "source": "https://musicbrainz.org/release-group/86508fe4-9ab3-4719-8dd0-3a6bc2c4f1e5",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "點 : The Quiver",
         "date": "2026-05-29",
         "source": "https://musicbrainz.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17",
@@ -10148,6 +10379,15 @@
         "release_format": "album",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "관람차 (Ferris wheel)",
+        "date": "2026-01-14",
+        "source": "https://musicbrainz.org/release-group/de91aed0-67ed-4325-9388-2b558f2567c0",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "MAZE : AD ASTRA",
@@ -10303,6 +10543,15 @@
         "stream": "album"
       },
       {
+        "title": "소행성 (Parting)",
+        "date": "2020-09-24",
+        "source": "https://musicbrainz.org/release-group/348a3d64-0207-4bc4-a23a-610faf559a6a",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "ONE",
         "date": "2020-05-26",
         "source": "https://musicbrainz.org/release-group/72880263-994f-496c-92c3-9bed8a86d37f",
@@ -10382,6 +10631,149 @@
         "release_format": "single",
         "context_tags": [],
         "stream": "song"
+      }
+    ]
+  },
+  {
+    "group": "ONF",
+    "artist_name_mb": "ONF",
+    "artist_mbid": "407edcfa-cc74-40ca-bece-8e98f8fb0deb",
+    "artist_source": "https://musicbrainz.org/artist/407edcfa-cc74-40ca-bece-8e98f8fb0deb",
+    "releases": [
+      {
+        "title": "ONF:MY SELF",
+        "date": "2026-06-17",
+        "source": "https://musicbrainz.org/release-group/599aad9a-25be-4c51-9d5a-c4400f91da9b",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "Summer Light",
+        "date": "2025-08-03",
+        "source": "https://musicbrainz.org/release-group/017dac05-b448-4199-93a0-0d4415f90936",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "ONF:My Identity",
+        "date": "2025-02-18",
+        "source": "https://musicbrainz.org/release-group/09e18ade-da71-4b18-8953-27da8a5283ee",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "Beautiful Shadow",
+        "date": "2024-04-08",
+        "source": "https://musicbrainz.org/release-group/deafc545-01e8-4917-a0f5-be22ff23fddc",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "LOVE EFFECT",
+        "date": "2023-10-04",
+        "source": "https://musicbrainz.org/release-group/a7d7baa0-7b7d-45d5-b7d8-1818af790540",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "Storage of ONF",
+        "date": "2022-08-16",
+        "source": "https://musicbrainz.org/release-group/99695e75-26bb-4ad5-bb8e-a86698b24dc8",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "Goosebumps",
+        "date": "2021-12-03",
+        "source": "https://musicbrainz.org/release-group/55df2a68-eede-4ade-ada4-549b17b50e4c",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "POPPING",
+        "date": "2021-08-09",
+        "source": "https://musicbrainz.org/release-group/639ec520-cfa0-489a-942e-12844167333c",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "ONF:MY NAME",
+        "date": "2021-02-24",
+        "source": "https://musicbrainz.org/release-group/4d3e65dc-2f87-4999-8da2-0606d48dba6f",
+        "release_kind": "album",
+        "release_format": "album",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "HELLO! WM",
+        "date": "2020-09-04",
+        "source": "https://musicbrainz.org/release-group/6561939b-9756-4fcb-9348-7116137f0b74",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "SPIN OFF",
+        "date": "2020-08-10",
+        "source": "https://musicbrainz.org/release-group/fe5ece49-389f-48dd-a25f-fb2530dbf0af",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "WE MUST LOVE",
+        "date": "2019-02-07",
+        "source": "https://musicbrainz.org/release-group/0a10cd68-8b87-4163-ae2e-20a9d99fc042",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "HELLO! WM",
+        "date": "2018-12-10",
+        "source": "https://musicbrainz.org/release-group/3ac2f06e-70df-438d-ae57-e32b83009b69",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "YOU COMPLETE ME",
+        "date": "2018-06-07",
+        "source": "https://musicbrainz.org/release-group/1719e60c-ab1d-42c7-a460-5b0c04ec02f8",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
+        "title": "ON/OFF",
+        "date": "2017-08-02",
+        "source": "https://musicbrainz.org/release-group/8bc61315-58c8-4e91-af9b-766dc4af4319",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
       }
     ]
   },
@@ -10525,6 +10917,15 @@
     "artist_mbid": "aab90af9-fde7-4988-b26b-b2c3c8e2d8e6",
     "artist_source": "https://musicbrainz.org/artist/aab90af9-fde7-4988-b26b-b2c3c8e2d8e6",
     "releases": [
+      {
+        "title": "Flame",
+        "date": "2026-09-03",
+        "source": "https://musicbrainz.org/release-group/9eeadaf0-d4d0-4d68-8843-ccd4477cde04",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Caligo Pt.2",
         "date": "2026-04-13",
@@ -10904,6 +11305,15 @@
     "artist_mbid": "86bfda70-ad8c-4db4-9041-e4843d918269",
     "artist_source": "https://musicbrainz.org/artist/86bfda70-ad8c-4db4-9041-e4843d918269",
     "releases": [
+      {
+        "title": "소년만화 & 피카레스크",
+        "date": "2026-09-21",
+        "source": "https://musicbrainz.org/release-group/781175cf-0120-477f-ae98-96d74cfce669",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "To Be Continued",
         "date": "2026-07-28",
@@ -11410,6 +11820,15 @@
     "artist_source": "https://musicbrainz.org/artist/f3eaa943-71b3-44b6-8b66-74c787742aae",
     "releases": [
       {
+        "title": "Sunburst",
+        "date": "2026-08-25",
+        "source": "https://musicbrainz.org/release-group/1777dc35-5df7-444d-abae-f4227709c74b",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "Ⅱ",
         "date": "2026-06-15",
         "source": "https://musicbrainz.org/release-group/86f39630-d9ca-41e8-98ba-afdf9ada7e88",
@@ -11716,15 +12135,6 @@
         "stream": "album"
       },
       {
-        "title": "Fallin' Flower",
-        "date": "2023-03-23",
-        "source": "https://musicbrainz.org/release-group/7332f032-d1ea-4389-a003-4b768a7d9cfa",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
         "title": "DREAM",
         "date": "2022-11-09",
         "source": "https://musicbrainz.org/release-group/9f2de70d-3b12-4eeb-8532-e5cf047dd6f4",
@@ -11818,6 +12228,15 @@
         "title": "우리, 다시 (Us, Again)",
         "date": "2020-06-07",
         "source": "https://musicbrainz.org/release-group/f7e4af71-00d7-4ca0-b81f-571acab4c04b",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "Fallin' Flower",
+        "date": "2020-04-01",
+        "source": "https://musicbrainz.org/release-group/7332f032-d1ea-4389-a003-4b768a7d9cfa",
         "release_kind": "single",
         "release_format": "single",
         "context_tags": [],
@@ -12591,6 +13010,15 @@
     "artist_mbid": "142b343d-bf5a-428c-a64f-6d1a7566bbe9",
     "artist_source": "https://musicbrainz.org/artist/142b343d-bf5a-428c-a64f-6d1a7566bbe9",
     "releases": [
+      {
+        "title": "November 11th",
+        "date": "2026-09-10",
+        "source": "https://musicbrainz.org/release-group/824ec724-a9d4-4a1f-9bd6-ded8ff9647be",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "THIS & THAT",
         "date": "2026-08-07",
@@ -13667,6 +14095,15 @@
     "artist_source": "https://musicbrainz.org/artist/136c0dc4-4690-4fb4-bc79-3968700f4eaf",
     "releases": [
       {
+        "title": "Die Another Day",
+        "date": "2026-08-27",
+        "source": "https://musicbrainz.org/release-group/c27984da-406d-4397-8947-8cadc7cb64a9",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "CALL ME BACK",
         "date": "2026-01-22",
         "source": "https://musicbrainz.org/release-group/284125ec-d04c-4023-9977-666ca826b284",
@@ -14280,6 +14717,15 @@
     "artist_source": "https://musicbrainz.org/artist/3d612dbf-32fc-4198-a2d0-2d04a99a6adf",
     "releases": [
       {
+        "title": "Which Way is Love?",
+        "date": "2026-08-26",
+        "source": "https://musicbrainz.org/release-group/2c2b0901-6d6a-4035-a34b-c04f04813791",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "On My Knees",
         "date": "2026-07-08",
         "source": "https://musicbrainz.org/release-group/27c00ca8-c575-4ffb-a108-62a5441e466a",
@@ -14424,6 +14870,24 @@
     "artist_mbid": "40017bd7-139b-4998-8688-9b2478ad3325",
     "artist_source": "https://musicbrainz.org/artist/40017bd7-139b-4998-8688-9b2478ad3325",
     "releases": [
+      {
+        "title": "Welcome to Heaven",
+        "date": "2026-10-01",
+        "source": "https://musicbrainz.org/release-group/98888945-9628-422b-8541-e229746f29b7",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "<DNA>",
+        "date": "2026-09-01",
+        "source": "https://musicbrainz.org/release-group/94170a08-e408-4ee3-9f69-392df3538de6",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "<World Wild Women>",
         "date": "2026-08-17",
@@ -14703,15 +15167,6 @@
         "source": "https://musicbrainz.org/release-group/4ec7c2ea-04bf-46a5-9376-ab228ad07706",
         "release_kind": "ep",
         "release_format": "ep",
-        "context_tags": [],
-        "stream": "album"
-      },
-      {
-        "title": "Track by Track: TWICE",
-        "date": "2024-07-18",
-        "source": "https://musicbrainz.org/release-group/31cdcf55-f2b2-4521-84a5-eecb94578f5e",
-        "release_kind": "ep",
-        "release_format": "single",
         "context_tags": [],
         "stream": "album"
       },
@@ -15040,6 +15495,15 @@
         "stream": "song"
       },
       {
+        "title": "I WANT YOU BACK",
+        "date": "2018-06-15",
+        "source": "https://musicbrainz.org/release-group/c4c90f2e-bb87-4369-836e-9c01eb9e22f6",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "Wake Me Up",
         "date": "2018-04-25",
         "source": "https://musicbrainz.org/release-group/f77a0683-1623-476a-97f7-b3df0fb6bc56",
@@ -15274,6 +15738,24 @@
     "artist_source": "https://musicbrainz.org/artist/ddea2b8e-f772-4c39-ab90-e1983b74a149",
     "releases": [
       {
+        "title": "Milky Way",
+        "date": "2026-09-23",
+        "source": "https://musicbrainz.org/release-group/d3931d1d-a677-41e9-a679-a64ecd0fae9f",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "하늘땅 별땅",
+        "date": "2026-09-08",
+        "source": "https://musicbrainz.org/release-group/ce791015-a18e-48c6-ae53-a29dadd1ed61",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "UNI☆Sparkle!",
         "date": "2026-07-31",
         "source": "https://musicbrainz.org/release-group/0137df50-aefb-4cd7-9891-85600902a102",
@@ -15377,6 +15859,15 @@
     "artist_mbid": "497ad8ff-0d35-4570-8a46-3f6b344b30b4",
     "artist_source": "https://musicbrainz.org/artist/497ad8ff-0d35-4570-8a46-3f6b344b30b4",
     "releases": [
+      {
+        "title": "CONFETTI",
+        "date": "2026-09-07",
+        "source": "https://musicbrainz.org/release-group/5a719cf5-debb-4b5d-8006-316e1f2aa4ed",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "Lost and Found",
         "date": "2025-12-01",
@@ -15575,6 +16066,15 @@
         "release_format": "ep",
         "context_tags": [],
         "stream": "album"
+      },
+      {
+        "title": "<Queendom2> Epilogue",
+        "date": "2022-06-03",
+        "source": "https://musicbrainz.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
       },
       {
         "title": "Beam of Prism",
@@ -15943,6 +16443,15 @@
         "stream": "song"
       },
       {
+        "title": "<Queendom2> Epilogue",
+        "date": "2022-06-03",
+        "source": "https://musicbrainz.org/release-group/dc57b678-3e2c-4376-ba39-5729e0df1fb8",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "너의 세계로 (Let Me In)",
         "date": "2021-09-23",
         "source": "https://musicbrainz.org/release-group/100f56ad-74c6-4751-bafb-7743309b5553",
@@ -16085,6 +16594,15 @@
     "artist_mbid": "1e8da137-9aa8-4e62-9699-4f66d290b643",
     "artist_source": "https://musicbrainz.org/artist/1e8da137-9aa8-4e62-9699-4f66d290b643",
     "releases": [
+      {
+        "title": "VOODOO DOLL",
+        "date": "2026-09-29",
+        "source": "https://musicbrainz.org/release-group/f74286bb-c6c5-46f6-b0a8-5ff7a3335ce1",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Wish With W : Vol.3",
         "date": "2026-07-13",
@@ -16495,6 +17013,24 @@
     "artist_mbid": "427150d2-674f-47b2-a1a1-7bb4a9e0d070",
     "artist_source": "https://musicbrainz.org/artist/427150d2-674f-47b2-a1a1-7bb4a9e0d070",
     "releases": [
+      {
+        "title": "GO AHEAD",
+        "date": "2026-10-07",
+        "source": "https://musicbrainz.org/release-group/6129f853-ebc7-471d-84e6-6b117acd961d",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "Haze",
+        "date": "2026-09-22",
+        "source": "https://musicbrainz.org/release-group/364ef2e2-b417-4fb3-b43c-a27d8b0d159d",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Illustration Music Collaboration with Keykney",
         "date": "2026-08-18",
