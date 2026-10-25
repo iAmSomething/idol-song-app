@@ -1,6 +1,26 @@
 [
   {
     "group": "ZEROBASEONE",
+    "release_title": "Ascend-",
+    "release_date": "2026-05-18",
+    "stream": "album",
+    "release_kind": "ep",
+    "track_titles": [
+      "Intro.",
+      "TOP 5",
+      "V for Vision",
+      "Customize",
+      "Exotic",
+      "Changes",
+      "Zero to Hundred"
+    ],
+    "candidate_titles": [],
+    "candidate_sources": [],
+    "review_reason": "No dependable title-track signal was found for this release detail row.",
+    "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
+  },
+  {
+    "group": "ZEROBASEONE",
     "release_title": "Return to LOVE",
     "release_date": "2026-08-19",
     "stream": "album",

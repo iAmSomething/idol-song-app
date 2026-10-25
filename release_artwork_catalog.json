@@ -1513,6 +1513,18 @@
   },
   {
     "group": "ALL(H)OURS",
+    "release_title": "White Christmas",
+    "release_date": "2025-12-05",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/f0d58585-e108-41b8-9064-e8c2e1640282/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/f0d58585-e108-41b8-9064-e8c2e1640282/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/f0d58585-e108-41b8-9064-e8c2e1640282",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ALL(H)OURS",
     "release_title": "NO DOUBT",
     "release_date": "2026-03-16",
     "stream": "album",
@@ -2364,6 +2376,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "ATEEZ",
+    "release_title": "Drip",
+    "release_date": "2026-10-23",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/bef3d9b9-2fa4-4264-b752-99c73767aa8e/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/bef3d9b9-2fa4-4264-b752-99c73767aa8e/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/bef3d9b9-2fa4-4264-b752-99c73767aa8e",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "AtHeart",
     "release_title": "Good Girl (AtHeart)",
     "release_date": "2025-05-29",
@@ -2564,6 +2588,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/9dc57d19-2cfe-4c2a-8322-4011d00172a7/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/9dc57d19-2cfe-4c2a-8322-4011d00172a7",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "BABYMONSTER",
+    "release_title": "DESERVE",
+    "release_date": "2026-10-23",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/45f91d2b-67ce-4433-88d4-9bf373fb46a0/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/45f91d2b-67ce-4433-88d4-9bf373fb46a0/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/45f91d2b-67ce-4433-88d4-9bf373fb46a0",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -6372,6 +6408,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "EVNNE",
+    "release_title": "on: our noise",
+    "release_date": "2026-10-19",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/d873f83c-a2bc-4549-92b1-4eaaffa90c26/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/d873f83c-a2bc-4549-92b1-4eaaffa90c26/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/d873f83c-a2bc-4549-92b1-4eaaffa90c26",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "EXO",
     "release_title": "Mama",
     "release_date": "2012-04-09",
@@ -7440,6 +7488,30 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "Hearts2Hearts",
+    "release_title": "Candy Box Lover",
+    "release_date": "2026-10-10",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/02669662-5952-4fcc-9d6d-5dc0fe728369/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/02669662-5952-4fcc-9d6d-5dc0fe728369/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/02669662-5952-4fcc-9d6d-5dc0fe728369",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "Hearts2Hearts",
+    "release_title": "Next Chapter",
+    "release_date": "2026-10-16",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/7189edb3-07e3-48c9-8185-60e1db6a06dc/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/7189edb3-07e3-48c9-8185-60e1db6a06dc/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/7189edb3-07e3-48c9-8185-60e1db6a06dc",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "ifeye",
     "release_title": "ERLU BLUE",
     "release_date": "2025-04-08",
@@ -8504,6 +8576,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/6e3cc97c-db4b-4ede-9766-4974ea9696fe/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/6e3cc97c-db4b-4ede-9766-4974ea9696fe",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "IVE",
+    "release_title": "Looks Can Kill",
+    "release_date": "2026-10-19",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/f96c5e2d-17d2-4498-b969-6892dbb11232/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/f96c5e2d-17d2-4498-b969-6892dbb11232/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/f96c5e2d-17d2-4498-b969-6892dbb11232",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -10644,6 +10728,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "MEOVV",
+    "release_title": "GO HARD",
+    "release_date": "2026-10-12",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/58a85ae9-1a01-4546-9df7-bd05ec689f34/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/58a85ae9-1a01-4546-9df7-bd05ec689f34/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/58a85ae9-1a01-4546-9df7-bd05ec689f34",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "MONSTA X",
     "release_title": "NO.MERCY (노머시) Part. 3",
     "release_date": "2015-02-05",
@@ -12132,6 +12228,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "NCT WISH",
+    "release_title": "I SPY",
+    "release_date": "2026-10-12",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/e0a37356-3d58-4fc7-a035-9594c447c828/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/e0a37356-3d58-4fc7-a035-9594c447c828/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/e0a37356-3d58-4fc7-a035-9594c447c828",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "NewJeans",
     "release_title": "New Jeans",
     "release_date": "2022-08-01",
@@ -12596,6 +12704,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/98dd9011-5507-46f7-8308-0cb352b1cf64/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/98dd9011-5507-46f7-8308-0cb352b1cf64",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "NMIXX",
+    "release_title": "Strange Muse",
+    "release_date": "2026-10-19",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/66aa4c51-797c-405d-bbb2-b116f4c91c93/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/66aa4c51-797c-405d-bbb2-b116f4c91c93/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/66aa4c51-797c-405d-bbb2-b116f4c91c93",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -13916,6 +14036,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/9eeadaf0-d4d0-4d68-8843-ccd4477cde04/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/9eeadaf0-d4d0-4d68-8843-ccd4477cde04",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "PLAVE",
+    "release_title": "HYPERDRIVE",
+    "release_date": "2026-10-12",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/87c3f02c-0891-4a68-81a4-dd45a35bc676/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/87c3f02c-0891-4a68-81a4-dd45a35bc676/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/87c3f02c-0891-4a68-81a4-dd45a35bc676",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -19068,6 +19200,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "tripleS",
+    "release_title": "<LOVE&POP> pt.2",
+    "release_date": "2026-10-16",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/9098b1d5-adf4-4a46-9d66-3425840c0ebb/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/9098b1d5-adf4-4a46-9d66-3425840c0ebb/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/9098b1d5-adf4-4a46-9d66-3425840c0ebb",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "TWICE",
     "release_title": "THE STORY BEGINS",
     "release_date": "2015-10-20",
@@ -21272,6 +21416,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/11b5e506-e259-4f93-8b68-b930fb513d2f/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/11b5e506-e259-4f93-8b68-b930fb513d2f",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "Xdinary Heroes",
+    "release_title": "IMPULSE",
+    "release_date": "2026-10-12",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/189c518d-21bf-4ba5-841c-6d4a6131c1b4/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/189c518d-21bf-4ba5-841c-6d4a6131c1b4/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/189c518d-21bf-4ba5-841c-6d4a6131c1b4",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },

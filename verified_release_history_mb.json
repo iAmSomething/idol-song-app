@@ -1171,6 +1171,15 @@
         "stream": "album"
       },
       {
+        "title": "White Christmas",
+        "date": "2025-12-05",
+        "source": "https://musicbrainz.org/release-group/f0d58585-e108-41b8-9064-e8c2e1640282",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "VCF",
         "date": "2025-09-09",
         "source": "https://musicbrainz.org/release-group/140ca1e8-718c-47a6-9f34-22179a66ed3e",
@@ -1491,6 +1500,15 @@
     "artist_mbid": "cf0dbc16-4e24-4957-b5b4-955c8978f690",
     "artist_source": "https://musicbrainz.org/artist/cf0dbc16-4e24-4957-b5b4-955c8978f690",
     "releases": [
+      {
+        "title": "Drip",
+        "date": "2026-10-23",
+        "source": "https://musicbrainz.org/release-group/bef3d9b9-2fa4-4264-b752-99c73767aa8e",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "GOLDEN HOUR : Part.5",
         "date": "2026-06-26",
@@ -1957,6 +1975,15 @@
     "artist_mbid": "5829cd4f-e693-4b03-abe5-1226243c23d6",
     "artist_source": "https://musicbrainz.org/artist/5829cd4f-e693-4b03-abe5-1226243c23d6",
     "releases": [
+      {
+        "title": "DESERVE",
+        "date": "2026-10-23",
+        "source": "https://musicbrainz.org/release-group/45f91d2b-67ce-4433-88d4-9bf373fb46a0",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "SUGAR HONEY ICE TEA",
         "date": "2026-06-08",
@@ -5002,6 +5029,15 @@
     "artist_source": "https://musicbrainz.org/artist/bf081017-e5ec-44b8-a5e6-d0401d0b6828",
     "releases": [
       {
+        "title": "on: our noise",
+        "date": "2026-10-19",
+        "source": "https://musicbrainz.org/release-group/d873f83c-a2bc-4549-92b1-4eaaffa90c26",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "Backtalk",
         "date": "2026-04-20",
         "source": "https://musicbrainz.org/release-group/ecbb5875-8432-4c54-859b-052e0333acc5",
@@ -5846,6 +5882,24 @@
     "artist_source": "https://musicbrainz.org/artist/066080a4-84c7-46c6-91d3-dc10d572749b",
     "releases": [
       {
+        "title": "Next Chapter",
+        "date": "2026-10-16",
+        "source": "https://musicbrainz.org/release-group/7189edb3-07e3-48c9-8185-60e1db6a06dc",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
+        "title": "Candy Box Lover",
+        "date": "2026-10-10",
+        "source": "https://musicbrainz.org/release-group/02669662-5952-4fcc-9d6d-5dc0fe728369",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "Moonride",
         "date": "2026-09-09",
         "source": "https://musicbrainz.org/release-group/a18557d0-3b56-4d2f-bbf9-834776fb66c9",
@@ -6502,6 +6556,15 @@
     "artist_mbid": "b2f2216a-d7a9-4ce0-8b8f-f494d9a8c196",
     "artist_source": "https://musicbrainz.org/artist/b2f2216a-d7a9-4ce0-8b8f-f494d9a8c196",
     "releases": [
+      {
+        "title": "Looks Can Kill",
+        "date": "2026-10-19",
+        "source": "https://musicbrainz.org/release-group/f96c5e2d-17d2-4498-b969-6892dbb11232",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "LUCID DREAM",
         "date": "2026-05-27",
@@ -8414,6 +8477,15 @@
     "artist_source": "https://musicbrainz.org/artist/f2435d8b-8a29-453d-9d7e-03c61c4b6fc4",
     "releases": [
       {
+        "title": "GO HARD",
+        "date": "2026-10-12",
+        "source": "https://musicbrainz.org/release-group/58a85ae9-1a01-4546-9df7-bd05ec689f34",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "BITE NOW",
         "date": "2026-06-01",
         "source": "https://musicbrainz.org/release-group/45bb6c4e-a707-49af-888b-0764a7aa6e41",
@@ -9478,6 +9550,15 @@
     "artist_source": "https://musicbrainz.org/artist/fb175979-152f-4f32-bf8b-08aa86c24fe3",
     "releases": [
       {
+        "title": "I SPY",
+        "date": "2026-10-12",
+        "source": "https://musicbrainz.org/release-group/e0a37356-3d58-4fc7-a035-9594c447c828",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
+      {
         "title": "YO-I-DON! / BOY MEETS GIRL",
         "date": "2026-07-13",
         "source": "https://musicbrainz.org/release-group/80ffb057-bc75-4449-8756-b9593a80dcdf",
@@ -9807,6 +9888,15 @@
     "artist_mbid": "2d623e82-73e2-4179-9c44-e963980f2d58",
     "artist_source": "https://musicbrainz.org/artist/2d623e82-73e2-4179-9c44-e963980f2d58",
     "releases": [
+      {
+        "title": "Strange Muse",
+        "date": "2026-10-19",
+        "source": "https://musicbrainz.org/release-group/66aa4c51-797c-405d-bbb2-b116f4c91c93",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "Heavy Serenade",
         "date": "2026-05-11",
@@ -10917,6 +11007,15 @@
     "artist_mbid": "aab90af9-fde7-4988-b26b-b2c3c8e2d8e6",
     "artist_source": "https://musicbrainz.org/artist/aab90af9-fde7-4988-b26b-b2c3c8e2d8e6",
     "releases": [
+      {
+        "title": "HYPERDRIVE",
+        "date": "2026-10-12",
+        "source": "https://musicbrainz.org/release-group/87c3f02c-0891-4a68-81a4-dd45a35bc676",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "Flame",
         "date": "2026-09-03",
@@ -14871,6 +14970,15 @@
     "artist_source": "https://musicbrainz.org/artist/40017bd7-139b-4998-8688-9b2478ad3325",
     "releases": [
       {
+        "title": "<LOVE&POP> pt.2",
+        "date": "2026-10-16",
+        "source": "https://musicbrainz.org/release-group/9098b1d5-adf4-4a46-9d66-3425840c0ebb",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "Welcome to Heaven",
         "date": "2026-10-01",
         "source": "https://musicbrainz.org/release-group/98888945-9628-422b-8541-e229746f29b7",
@@ -16719,6 +16827,15 @@
     "artist_mbid": "d95a463f-e7d3-4c97-98ba-57f75cb4fda2",
     "artist_source": "https://musicbrainz.org/artist/d95a463f-e7d3-4c97-98ba-57f75cb4fda2",
     "releases": [
+      {
+        "title": "IMPULSE",
+        "date": "2026-10-12",
+        "source": "https://musicbrainz.org/release-group/189c518d-21bf-4ba5-841c-6d4a6131c1b4",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "DEAD AND",
         "date": "2026-04-17",
