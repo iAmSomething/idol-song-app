@@ -1,65 +1,65 @@
 {
-  "generated_at": "2026-10-25",
+  "generated_at": "2026-11-01",
   "execution_scope": {
     "targeted_rebuild": true,
     "cohorts": [
       "latest",
       "recent"
     ],
-    "scoped_rows_total": 804,
-    "selected_rows": 4,
+    "scoped_rows_total": 807,
+    "selected_rows": 7,
     "max_rows": 25,
     "progress_every": 10,
     "row_offset": 800
   },
   "summary_lines": [
-    "detail payload coverage: 4/4 (100.0%), pre-2024 0/0 (0.0%)",
-    "detail trusted coverage: 4/4 (100.0%), pre-2024 0/0 (0.0%)",
-    "title-track resolved coverage: 2/4 (50.0%), pre-2024 0/0 (0.0%), review queue 2",
-    "canonical MV coverage: 2/4 (50.0%), pre-2024 0/0 (0.0%), mv review 0",
+    "detail payload coverage: 7/7 (100.0%), pre-2024 0/0 (0.0%)",
+    "detail trusted coverage: 7/7 (100.0%), pre-2024 0/0 (0.0%)",
+    "title-track resolved coverage: 5/7 (71.4%), pre-2024 0/0 (0.0%), review queue 2",
+    "canonical MV coverage: 4/7 (57.1%), pre-2024 0/0 (0.0%), mv review 0",
     "external acquisition pass: YTM attempted 0, resolved 0; MV attempted 0, resolved 0, review 0",
     "youtube MV search pass: attempted 10, resolved 6, review 4, unresolved 1592, coverage lift +0",
     "migration-critical first slice: title-track 0/18 (0.0%), canonical MV 0/18 (0.0%), gate fail",
     "worst title-track cohort: 2024+ ep 33.3% / target 82.0%",
-    "worst canonical MV cohort: 2024+ ep 33.3% / target 55.0%",
-    "release-detail null review queue: 4 rows",
+    "worst canonical MV cohort: 2024+ album 0.0% / target 40.0%",
+    "release-detail null review queue: 7 rows",
     "historical catalog cutover gate: fail"
   ],
   "latest_snapshot_input_rows": 2,
   "latest_snapshot_unique_keys": 2,
-  "full_catalog_input_rows": 4,
-  "full_catalog_unique_keys": 4,
-  "historical_input_gain_rows": 2,
+  "full_catalog_input_rows": 7,
+  "full_catalog_unique_keys": 7,
+  "historical_input_gain_rows": 5,
   "entities_with_multiple_releases_in_input": 1,
   "sample_multi_release_entities": [
     {
       "group": "ZEROBASEONE",
-      "release_rows": 4
+      "release_rows": 7
     }
   ],
-  "history_flattened_rows": 4,
-  "detail_rows_before": 4,
-  "detail_rows_after": 4,
-  "history_keys": 4,
+  "history_flattened_rows": 7,
+  "detail_rows_before": 7,
+  "detail_rows_after": 7,
+  "history_keys": 7,
   "missing_detail_rows_before": 0,
   "missing_detail_rows_after": 0,
   "pre_2024_history_rows": 0,
   "pre_2024_missing_before": 0,
   "pre_2024_missing_after": 0,
-  "preserved_exact_key_rows": 4,
+  "preserved_exact_key_rows": 7,
   "seeded_placeholder_rows": 0,
-  "rows_with_tracks_before": 4,
-  "rows_with_tracks_after": 4,
-  "rows_with_title_track_before": 2,
-  "rows_with_title_track_after": 2,
+  "rows_with_tracks_before": 7,
+  "rows_with_tracks_after": 7,
+  "rows_with_title_track_before": 5,
+  "rows_with_title_track_after": 5,
   "rows_without_title_track_before": 2,
   "rows_without_title_track_after": 2,
   "completeness": {
     "overall_before": {
-      "total_rows": 4,
-      "detail_payload_rows": 4,
+      "total_rows": 7,
+      "detail_payload_rows": 7,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 4,
+      "detail_trusted_rows": 7,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -67,26 +67,26 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 2,
-      "title_track_resolved_ratio": 0.5,
+      "title_track_resolved_rows": 5,
+      "title_track_resolved_ratio": 0.7143,
       "title_track_review_rows": 0,
       "title_track_review_ratio": 0.0,
       "title_track_unresolved_rows": 2,
-      "title_track_unresolved_ratio": 0.5,
-      "canonical_mv_rows": 2,
-      "canonical_mv_ratio": 0.5,
+      "title_track_unresolved_ratio": 0.2857,
+      "canonical_mv_rows": 4,
+      "canonical_mv_ratio": 0.5714,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
-      "mv_unresolved_rows": 2,
-      "mv_unresolved_ratio": 0.5,
+      "mv_unresolved_rows": 3,
+      "mv_unresolved_ratio": 0.4286,
       "mv_no_mv_rows": 0,
       "mv_no_mv_ratio": 0.0
     },
     "overall": {
-      "total_rows": 4,
-      "detail_payload_rows": 4,
+      "total_rows": 7,
+      "detail_payload_rows": 7,
       "detail_payload_ratio": 1.0,
-      "detail_trusted_rows": 4,
+      "detail_trusted_rows": 7,
       "detail_trusted_ratio": 1.0,
       "detail_inferred_rows": 0,
       "detail_inferred_ratio": 0.0,
@@ -94,18 +94,18 @@
       "detail_review_ratio": 0.0,
       "detail_unresolved_rows": 0,
       "detail_unresolved_ratio": 0.0,
-      "title_track_resolved_rows": 2,
-      "title_track_resolved_ratio": 0.5,
+      "title_track_resolved_rows": 5,
+      "title_track_resolved_ratio": 0.7143,
       "title_track_review_rows": 0,
       "title_track_review_ratio": 0.0,
       "title_track_unresolved_rows": 2,
-      "title_track_unresolved_ratio": 0.5,
-      "canonical_mv_rows": 2,
-      "canonical_mv_ratio": 0.5,
+      "title_track_unresolved_ratio": 0.2857,
+      "canonical_mv_rows": 4,
+      "canonical_mv_ratio": 0.5714,
       "mv_review_rows": 0,
       "mv_review_ratio": 0.0,
-      "mv_unresolved_rows": 2,
-      "mv_unresolved_ratio": 0.5,
+      "mv_unresolved_rows": 3,
+      "mv_unresolved_ratio": 0.4286,
       "mv_no_mv_rows": 0,
       "mv_no_mv_ratio": 0.0
     },
@@ -139,11 +139,11 @@
   },
   "breakdowns": {
     "by_year": {
-      "2026": {
-        "total_rows": 4,
-        "detail_payload_rows": 4,
+      "2025": {
+        "total_rows": 2,
+        "detail_payload_rows": 2,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 4,
+        "detail_trusted_rows": 2,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -152,22 +152,76 @@
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
         "title_track_resolved_rows": 2,
-        "title_track_resolved_ratio": 0.5,
+        "title_track_resolved_ratio": 1.0,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
-        "title_track_unresolved_rows": 2,
-        "title_track_unresolved_ratio": 0.5,
-        "canonical_mv_rows": 2,
+        "title_track_unresolved_rows": 0,
+        "title_track_unresolved_ratio": 0.0,
+        "canonical_mv_rows": 1,
         "canonical_mv_ratio": 0.5,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
-        "mv_unresolved_rows": 2,
+        "mv_unresolved_rows": 1,
         "mv_unresolved_ratio": 0.5,
+        "mv_no_mv_rows": 0,
+        "mv_no_mv_ratio": 0.0
+      },
+      "2026": {
+        "total_rows": 5,
+        "detail_payload_rows": 5,
+        "detail_payload_ratio": 1.0,
+        "detail_trusted_rows": 5,
+        "detail_trusted_ratio": 1.0,
+        "detail_inferred_rows": 0,
+        "detail_inferred_ratio": 0.0,
+        "detail_review_rows": 0,
+        "detail_review_ratio": 0.0,
+        "detail_unresolved_rows": 0,
+        "detail_unresolved_ratio": 0.0,
+        "title_track_resolved_rows": 3,
+        "title_track_resolved_ratio": 0.6,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
+        "title_track_unresolved_rows": 2,
+        "title_track_unresolved_ratio": 0.4,
+        "canonical_mv_rows": 3,
+        "canonical_mv_ratio": 0.6,
+        "mv_review_rows": 0,
+        "mv_review_ratio": 0.0,
+        "mv_unresolved_rows": 2,
+        "mv_unresolved_ratio": 0.4,
         "mv_no_mv_rows": 0,
         "mv_no_mv_ratio": 0.0
       }
     },
     "by_release_kind": {
+      "album": {
+        "total_rows": 1,
+        "detail_payload_rows": 1,
+        "detail_payload_ratio": 1.0,
+        "detail_trusted_rows": 1,
+        "detail_trusted_ratio": 1.0,
+        "detail_inferred_rows": 0,
+        "detail_inferred_ratio": 0.0,
+        "detail_review_rows": 0,
+        "detail_review_ratio": 0.0,
+        "detail_unresolved_rows": 0,
+        "detail_unresolved_ratio": 0.0,
+        "title_track_resolved_rows": 1,
+        "title_track_resolved_ratio": 1.0,
+        "title_track_review_rows": 0,
+        "title_track_review_ratio": 0.0,
+        "title_track_unresolved_rows": 0,
+        "title_track_unresolved_ratio": 0.0,
+        "canonical_mv_rows": 0,
+        "canonical_mv_ratio": 0.0,
+        "mv_review_rows": 0,
+        "mv_review_ratio": 0.0,
+        "mv_unresolved_rows": 1,
+        "mv_unresolved_ratio": 1.0,
+        "mv_no_mv_rows": 0,
+        "mv_no_mv_ratio": 0.0
+      },
       "ep": {
         "total_rows": 3,
         "detail_payload_rows": 3,
@@ -196,10 +250,10 @@
         "mv_no_mv_ratio": 0.0
       },
       "single": {
-        "total_rows": 1,
-        "detail_payload_rows": 1,
+        "total_rows": 3,
+        "detail_payload_rows": 3,
         "detail_payload_ratio": 1.0,
-        "detail_trusted_rows": 1,
+        "detail_trusted_rows": 3,
         "detail_trusted_ratio": 1.0,
         "detail_inferred_rows": 0,
         "detail_inferred_ratio": 0.0,
@@ -207,13 +261,13 @@
         "detail_review_ratio": 0.0,
         "detail_unresolved_rows": 0,
         "detail_unresolved_ratio": 0.0,
-        "title_track_resolved_rows": 1,
+        "title_track_resolved_rows": 3,
         "title_track_resolved_ratio": 1.0,
         "title_track_review_rows": 0,
         "title_track_review_ratio": 0.0,
         "title_track_unresolved_rows": 0,
         "title_track_unresolved_ratio": 0.0,
-        "canonical_mv_rows": 1,
+        "canonical_mv_rows": 3,
         "canonical_mv_ratio": 1.0,
         "mv_review_rows": 0,
         "mv_review_ratio": 0.0,
@@ -242,9 +296,23 @@
       },
       {
         "year_band": "2024+",
-        "release_kind": "single",
+        "release_kind": "album",
         "total_rows": 1,
         "resolved_rows": 1,
+        "resolved_ratio": 1.0,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 0,
+        "unresolved_ratio": 0.0,
+        "threshold": 0.76,
+        "gap_to_target": 0.0,
+        "status": "pass"
+      },
+      {
+        "year_band": "2024+",
+        "release_kind": "single",
+        "total_rows": 3,
+        "resolved_rows": 3,
         "resolved_ratio": 1.0,
         "review_rows": 0,
         "review_ratio": 0.0,
@@ -256,6 +324,20 @@
       }
     ],
     "canonical_mv": [
+      {
+        "year_band": "2024+",
+        "release_kind": "album",
+        "total_rows": 1,
+        "resolved_rows": 0,
+        "resolved_ratio": 0.0,
+        "review_rows": 0,
+        "review_ratio": 0.0,
+        "unresolved_rows": 1,
+        "unresolved_ratio": 1.0,
+        "threshold": 0.4,
+        "gap_to_target": 0.4,
+        "status": "fail"
+      },
       {
         "year_band": "2024+",
         "release_kind": "ep",
@@ -273,8 +355,8 @@
       {
         "year_band": "2024+",
         "release_kind": "single",
-        "total_rows": 1,
-        "resolved_rows": 1,
+        "total_rows": 3,
+        "resolved_rows": 3,
         "resolved_ratio": 1.0,
         "review_rows": 0,
         "review_ratio": 0.0,
@@ -292,21 +374,21 @@
       "title_track": [
         {
           "group": "ZEROBASEONE",
-          "total_rows": 4,
+          "total_rows": 7,
           "detail_gap_rows": 0,
           "title_track_gap_rows": 2,
-          "mv_gap_rows": 2,
-          "title_track_gap_ratio": 0.5
+          "mv_gap_rows": 3,
+          "title_track_gap_ratio": 0.2857
         }
       ],
       "mv": [
         {
           "group": "ZEROBASEONE",
-          "total_rows": 4,
+          "total_rows": 7,
           "detail_gap_rows": 0,
           "title_track_gap_rows": 2,
-          "mv_gap_rows": 2,
-          "mv_gap_ratio": 0.5
+          "mv_gap_rows": 3,
+          "mv_gap_ratio": 0.4286
         }
       ]
     },
@@ -351,6 +433,23 @@
       }
     ],
     "mv_gap_rows": [
+      {
+        "group": "ZEROBASEONE",
+        "release_title": "NEVER SAY NEVER",
+        "release_date": "2025-09-01",
+        "stream": "album",
+        "release_kind": "album",
+        "detail_status": "verified",
+        "detail_provenance": "musicbrainz.release_group_release",
+        "title_track_status": "verified",
+        "title_track_provenance": "releaseDetails.existing_title_flags",
+        "youtube_video_status": "unresolved",
+        "youtube_video_provenance": "releaseHistory.placeholder_seed",
+        "title_tracks": [
+          "SLAM DUNK"
+        ],
+        "track_count": 10
+      },
       {
         "group": "ZEROBASEONE",
         "release_title": "Ascend-",
@@ -411,14 +510,14 @@
       },
       "title_track_resolved": {
         "status": "fail",
-        "observed_total": 0.5,
+        "observed_total": 0.7143,
         "observed_pre_2024": 0.0,
         "threshold_total": 0.8,
         "threshold_pre_2024": 0.6
       },
       "canonical_mv": {
         "status": "fail",
-        "observed_total": 0.5,
+        "observed_total": 0.5714,
         "observed_pre_2024": 0.0,
         "threshold_total": 0.65,
         "threshold_pre_2024": 0.35
@@ -426,12 +525,12 @@
     },
     "cutover_ready": false,
     "cutover_status": "fail",
-    "generated_at": "2026-10-25",
+    "generated_at": "2026-11-01",
     "summary_lines": [
       "detail payload gate: fail (total 100.0%, pre-2024 0.0%)",
       "detail trusted gate: fail (total 100.0%, pre-2024 0.0%)",
-      "title-track resolved gate: fail (total 50.0%, pre-2024 0.0%)",
-      "canonical MV gate: fail (total 50.0%, pre-2024 0.0%)"
+      "title-track resolved gate: fail (total 71.4%, pre-2024 0.0%)",
+      "canonical MV gate: fail (total 57.1%, pre-2024 0.0%)"
     ]
   },
   "migration_priority_slice": {
@@ -931,7 +1030,7 @@
       },
       "cutover_ready": false,
       "cutover_status": "fail",
-      "generated_at": "2026-10-25",
+      "generated_at": "2026-11-01",
       "summary_lines": [
         "detail_payload gate: fail (0.0% vs 100.0%)",
         "detail_trusted gate: fail (0.0% vs 100.0%)",
@@ -1141,12 +1240,12 @@
     ]
   },
   "external_acquisition": {
-    "candidate_rows": 4,
+    "candidate_rows": 7,
     "youtube_music": {
       "attempted": 0,
       "resolved": 0,
       "out_of_scope": 0,
-      "unresolved": 4
+      "unresolved": 7
     },
     "youtube_mv": {
       "attempted": 0,
@@ -1154,7 +1253,7 @@
       "review_needed": 0,
       "no_mv": 0,
       "out_of_scope": 0,
-      "unresolved": 2
+      "unresolved": 3
     },
     "youtube_mv_search": {
       "attempted": 10,
@@ -1165,19 +1264,19 @@
     }
   },
   "detail_status_counts": {
-    "verified": 4
+    "verified": 7
   },
   "title_track_status_counts": {
-    "preserved_existing": 2,
+    "preserved_existing": 5,
     "unresolved": 2
   },
   "release_level_title_track_status_counts": {
-    "verified": 2,
+    "verified": 5,
     "unresolved": 2
   },
   "youtube_video_status_counts": {
-    "manual_override": 2,
-    "unresolved": 2
+    "manual_override": 4,
+    "unresolved": 3
   },
   "title_track_auto_resolved_rows": 0,
   "title_track_auto_double_rows": 0,
@@ -1220,8 +1319,209 @@
       "recommended_action": "Confirm the promoted track(s) from a dependable source, then add explicit title_tracks to release_detail_overrides.json."
     }
   ],
-  "release_detail_review_queue_rows": 4,
+  "release_detail_review_queue_rows": 7,
   "release_detail_review_queue_sample": [
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "SLAM DUNK",
+      "release_date": "2025-07-23",
+      "stream": "song",
+      "release_kind": "single",
+      "missing_fields": [
+        "spotify_url",
+        "youtube_music_url"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "override exists"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "youtube_video_status=manual_override"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "NEVER SAY NEVER",
+      "release_date": "2025-09-01",
+      "stream": "album",
+      "release_kind": "album",
+      "missing_fields": [
+        "spotify_url",
+        "youtube_music_url",
+        "youtube_video"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no override"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "youtube_video_status=unresolved"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "Running to Future",
+      "release_date": "2026-01-09",
+      "stream": "song",
+      "release_kind": "single",
+      "missing_fields": [
+        "youtube_music_url"
+      ],
+      "attempted_methods_count": 7,
+      "attempted_methods": [
+        "existing_exact_lookup",
+        "existing_relaxed_lookup",
+        "manual_override_lookup",
+        "external_acquisition_skipped",
+        "youtube_music_pipeline_lookup",
+        "youtube_mv_pipeline_lookup",
+        "placeholder_seed_fallback"
+      ],
+      "attempts": [
+        {
+          "method": "existing_exact_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "matched exact release key"
+        },
+        {
+          "method": "existing_relaxed_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no relaxed match"
+        },
+        {
+          "method": "manual_override_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "override exists"
+        },
+        {
+          "method": "external_acquisition_skipped",
+          "success": false,
+          "filled_fields": [],
+          "note": "external acquisition skipped by --skip-acquisition"
+        },
+        {
+          "method": "youtube_music_pipeline_lookup",
+          "success": false,
+          "filled_fields": [],
+          "note": "no canonical YouTube Music URL after current pipeline pass"
+        },
+        {
+          "method": "youtube_mv_pipeline_lookup",
+          "success": true,
+          "filled_fields": [],
+          "note": "youtube_video_status=manual_override"
+        },
+        {
+          "method": "placeholder_seed_fallback",
+          "success": false,
+          "filled_fields": [],
+          "note": "placeholder not needed"
+        }
+      ],
+      "compliant_min_attempts": true,
+      "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
+    },
     {
       "group": "ZEROBASEONE",
       "release_title": "ROSES",
@@ -1490,16 +1790,16 @@
       "recommended_action": "Escalate to manual verification only after checking dependable official or platform sources for the remaining null fields."
     }
   ],
-  "rows_with_min_acquisition_attempts": 4,
+  "rows_with_min_acquisition_attempts": 7,
   "rows_missing_min_acquisition_attempts": 0,
   "acquisition_method_counts": {
-    "existing_exact_lookup": 4,
-    "existing_relaxed_lookup": 4,
-    "manual_override_lookup": 4,
-    "external_acquisition_skipped": 4,
-    "youtube_music_pipeline_lookup": 4,
-    "youtube_mv_pipeline_lookup": 4,
-    "placeholder_seed_fallback": 4
+    "existing_exact_lookup": 7,
+    "existing_relaxed_lookup": 7,
+    "manual_override_lookup": 7,
+    "external_acquisition_skipped": 7,
+    "youtube_music_pipeline_lookup": 7,
+    "youtube_mv_pipeline_lookup": 7,
+    "placeholder_seed_fallback": 7
   },
   "title_track_spot_checks": [
     {
@@ -1520,6 +1820,42 @@
       "release_kind": "ep",
       "status": "unresolved",
       "title_tracks": [],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "SLAM DUNK",
+      "release_date": "2025-07-23",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "SLAM DUNK"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "NEVER SAY NEVER",
+      "release_date": "2025-09-01",
+      "stream": "album",
+      "release_kind": "album",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "SLAM DUNK"
+      ],
+      "candidate_titles": []
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "Running to Future",
+      "release_date": "2026-01-09",
+      "stream": "song",
+      "release_kind": "single",
+      "status": "preserved_existing",
+      "title_tracks": [
+        "Running to Future"
+      ],
       "candidate_titles": []
     },
     {
@@ -1551,36 +1887,36 @@
   "verification_state_samples": {
     "verified": {
       "group": "ZEROBASEONE",
-      "release_title": "ROSES",
-      "release_date": "2026-01-23",
+      "release_title": "SLAM DUNK",
+      "release_date": "2025-07-23",
       "stream": "song",
       "release_kind": "single",
       "detail_status": "verified",
-      "detail_provenance": "releaseDetails.existing_row",
+      "detail_provenance": "musicbrainz.release_group_release",
       "title_track_status": "verified",
       "title_track_provenance": "releaseDetails.existing_title_flags",
       "youtube_video_status": "manual_override",
       "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
       "title_tracks": [
-        "ROSES"
+        "SLAM DUNK"
       ],
       "track_count": 1
     },
     "inferred": null,
     "manual_override": {
       "group": "ZEROBASEONE",
-      "release_title": "ROSES",
-      "release_date": "2026-01-23",
+      "release_title": "SLAM DUNK",
+      "release_date": "2025-07-23",
       "stream": "song",
       "release_kind": "single",
       "detail_status": "verified",
-      "detail_provenance": "releaseDetails.existing_row",
+      "detail_provenance": "musicbrainz.release_group_release",
       "title_track_status": "verified",
       "title_track_provenance": "releaseDetails.existing_title_flags",
       "youtube_video_status": "manual_override",
       "youtube_video_provenance": "youtube search auto-accepted via allowlist/title/date/view scoring",
       "title_tracks": [
-        "ROSES"
+        "SLAM DUNK"
       ],
       "track_count": 1
     },
@@ -1588,25 +1924,39 @@
     "review_needed": null,
     "unresolved": {
       "group": "ZEROBASEONE",
-      "release_title": "Ascend-",
-      "release_date": "2026-05-18",
+      "release_title": "NEVER SAY NEVER",
+      "release_date": "2025-09-01",
       "stream": "album",
-      "release_kind": "ep",
+      "release_kind": "album",
       "detail_status": "verified",
       "detail_provenance": "musicbrainz.release_group_release",
-      "title_track_status": "unresolved",
-      "title_track_provenance": "no_dependable_title_track_signal",
+      "title_track_status": "verified",
+      "title_track_provenance": "releaseDetails.existing_title_flags",
       "youtube_video_status": "unresolved",
       "youtube_video_provenance": "releaseHistory.placeholder_seed",
-      "title_tracks": [],
-      "track_count": 7
+      "title_tracks": [
+        "SLAM DUNK"
+      ],
+      "track_count": 10
     }
   },
   "rows_with_youtube_music_after": 0,
-  "rows_with_youtube_mv_after": 2,
+  "rows_with_youtube_mv_after": 4,
   "override_rows_total": 193,
-  "applied_overrides": 2,
+  "applied_overrides": 4,
   "override_sample_matches": [
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "SLAM DUNK",
+      "release_date": "2025-07-23",
+      "stream": "song"
+    },
+    {
+      "group": "ZEROBASEONE",
+      "release_title": "Running to Future",
+      "release_date": "2026-01-09",
+      "stream": "song"
+    },
     {
       "group": "ZEROBASEONE",
       "release_title": "ROSES",
@@ -1667,5 +2017,5 @@
     }
   ],
   "relaxed_existing_matches": 0,
-  "preserved_existing_detail_rows_total": 4
+  "preserved_existing_detail_rows_total": 7
 }

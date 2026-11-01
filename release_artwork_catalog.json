@@ -361,18 +361,6 @@
   },
   {
     "group": "(G)I-DLE",
-    "release_title": "MORE",
-    "release_date": "2020-10-28",
-    "stream": "song",
-    "cover_image_url": "https://coverartarchive.org/release-group/42c02272-d1ae-46c7-8ccf-f7efeeffaef0/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/42c02272-d1ae-46c7-8ccf-f7efeeffaef0/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/42c02272-d1ae-46c7-8ccf-f7efeeffaef0",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "(G)I-DLE",
     "release_title": "I burn",
     "release_date": "2021-01-11",
     "stream": "album",
@@ -2936,18 +2924,6 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/8240b45e-5e5c-4c47-a96c-0a0d2c556c08/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/8240b45e-5e5c-4c47-a96c-0a0d2c556c08",
-    "artwork_status": "verified",
-    "artwork_provenance": "releaseHistory.releases.source"
-  },
-  {
-    "group": "BLACKPINK",
-    "release_title": "Ready for Love",
-    "release_date": "2022-07-29",
-    "stream": "song",
-    "cover_image_url": "https://coverartarchive.org/release-group/0ca468cd-3737-42c7-8a1a-c3c982864c4f/front",
-    "thumbnail_image_url": "https://coverartarchive.org/release-group/0ca468cd-3737-42c7-8a1a-c3c982864c4f/front-250",
-    "artwork_source_type": "cover_art_archive",
-    "artwork_source_url": "https://coverartarchive.org/release-group/0ca468cd-3737-42c7-8a1a-c3c982864c4f",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -5820,6 +5796,18 @@
     "artwork_provenance": "releaseHistory.releases.source"
   },
   {
+    "group": "DXMON",
+    "release_title": "HYPER LINK : Vol.4",
+    "release_date": "2026-10-29",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/96c9075c-4a6c-4b1d-808e-6ecb34cbe14c/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/96c9075c-4a6c-4b1d-808e-6ecb34cbe14c/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/96c9075c-4a6c-4b1d-808e-6ecb34cbe14c",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
     "group": "ENHYPEN",
     "release_title": "BORDER : DAY ONE",
     "release_date": "2020-11-30",
@@ -8588,6 +8576,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/f96c5e2d-17d2-4498-b969-6892dbb11232/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/f96c5e2d-17d2-4498-b969-6892dbb11232",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "IVE",
+    "release_title": "Looks Can Kill",
+    "release_date": "2026-10-26",
+    "stream": "album",
+    "cover_image_url": "https://coverartarchive.org/release-group/01ac39b1-0fd9-4878-9fdf-f5949bf11e2c/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/01ac39b1-0fd9-4878-9fdf-f5949bf11e2c/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/01ac39b1-0fd9-4878-9fdf-f5949bf11e2c",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -13502,12 +13502,24 @@
   {
     "group": "ONEWE",
     "release_title": "點 : The Quiver",
-    "release_date": "2026-05-29",
+    "release_date": "2026-05-28",
     "stream": "song",
     "cover_image_url": "https://coverartarchive.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17/front",
     "thumbnail_image_url": "https://coverartarchive.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "ONEWE",
+    "release_title": "線 : The Wake",
+    "release_date": "2026-07-27",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/cc6d2545-fa0a-4992-8a49-b1e01eaaba53/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/cc6d2545-fa0a-4992-8a49-b1e01eaaba53/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/cc6d2545-fa0a-4992-8a49-b1e01eaaba53",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -15212,6 +15224,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/1777dc35-5df7-444d-abae-f4227709c74b/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/1777dc35-5df7-444d-abae-f4227709c74b",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "RIIZE",
+    "release_title": "Insomnia",
+    "release_date": "2026-10-25",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/a53a1b79-37f4-4d74-ae64-f0d91a8deeec/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/a53a1b79-37f4-4d74-ae64-f0d91a8deeec/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/a53a1b79-37f4-4d74-ae64-f0d91a8deeec",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },
@@ -21608,6 +21632,18 @@
     "thumbnail_image_url": "https://coverartarchive.org/release-group/10a64bed-1941-4cc4-bbb6-ce158573d173/front-250",
     "artwork_source_type": "cover_art_archive",
     "artwork_source_url": "https://coverartarchive.org/release-group/10a64bed-1941-4cc4-bbb6-ce158573d173",
+    "artwork_status": "verified",
+    "artwork_provenance": "releaseHistory.releases.source"
+  },
+  {
+    "group": "XLOV",
+    "release_title": "i=!",
+    "release_date": "2026-10-28",
+    "stream": "song",
+    "cover_image_url": "https://coverartarchive.org/release-group/474aa5a7-b207-468c-9354-32c42f4ea209/front",
+    "thumbnail_image_url": "https://coverartarchive.org/release-group/474aa5a7-b207-468c-9354-32c42f4ea209/front-250",
+    "artwork_source_type": "cover_art_archive",
+    "artwork_source_url": "https://coverartarchive.org/release-group/474aa5a7-b207-468c-9354-32c42f4ea209",
     "artwork_status": "verified",
     "artwork_provenance": "releaseHistory.releases.source"
   },

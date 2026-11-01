@@ -366,15 +366,6 @@
         "stream": "album"
       },
       {
-        "title": "MORE",
-        "date": "2020-10-28",
-        "source": "https://musicbrainz.org/release-group/42c02272-d1ae-46c7-8ccf-f7efeeffaef0",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
         "title": "Oh my god",
         "date": "2020-08-26",
         "source": "https://musicbrainz.org/release-group/db3455a5-c761-4cef-9d05-2ba7f5010c98",
@@ -2259,15 +2250,6 @@
         "title": "Pink Venom",
         "date": "2022-08-19",
         "source": "https://musicbrainz.org/release-group/0bdb926e-e5ea-4e04-beb9-6d589fd2fbec",
-        "release_kind": "single",
-        "release_format": "single",
-        "context_tags": [],
-        "stream": "song"
-      },
-      {
-        "title": "Ready for Love",
-        "date": "2022-07-29",
-        "source": "https://musicbrainz.org/release-group/0ca468cd-3737-42c7-8a1a-c3c982864c4f",
         "release_kind": "single",
         "release_format": "single",
         "context_tags": [],
@@ -4558,6 +4540,15 @@
     "artist_source": "https://musicbrainz.org/artist/0d12abec-f7d1-437e-9d82-395ded77262e",
     "releases": [
       {
+        "title": "HYPER LINK : Vol.4",
+        "date": "2026-10-29",
+        "source": "https://musicbrainz.org/release-group/96c9075c-4a6c-4b1d-808e-6ecb34cbe14c",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "HYPER LINK : Vol.3",
         "date": "2026-07-06",
         "source": "https://musicbrainz.org/release-group/4a24b9d8-a27d-4550-9bb0-baa901aa60bf",
@@ -6556,6 +6547,15 @@
     "artist_mbid": "b2f2216a-d7a9-4ce0-8b8f-f494d9a8c196",
     "artist_source": "https://musicbrainz.org/artist/b2f2216a-d7a9-4ce0-8b8f-f494d9a8c196",
     "releases": [
+      {
+        "title": "Looks Can Kill",
+        "date": "2026-10-26",
+        "source": "https://musicbrainz.org/release-group/01ac39b1-0fd9-4878-9fdf-f5949bf11e2c",
+        "release_kind": "ep",
+        "release_format": "ep",
+        "context_tags": [],
+        "stream": "album"
+      },
       {
         "title": "Looks Can Kill",
         "date": "2026-10-19",
@@ -10453,8 +10453,17 @@
         "stream": "album"
       },
       {
+        "title": "線 : The Wake",
+        "date": "2026-07-27",
+        "source": "https://musicbrainz.org/release-group/cc6d2545-fa0a-4992-8a49-b1e01eaaba53",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
+      {
         "title": "點 : The Quiver",
-        "date": "2026-05-29",
+        "date": "2026-05-28",
         "source": "https://musicbrainz.org/release-group/7bc18a15-ba9a-455f-ae18-bbe399e9ec17",
         "release_kind": "single",
         "release_format": "single",
@@ -11918,6 +11927,15 @@
     "artist_mbid": "f3eaa943-71b3-44b6-8b66-74c787742aae",
     "artist_source": "https://musicbrainz.org/artist/f3eaa943-71b3-44b6-8b66-74c787742aae",
     "releases": [
+      {
+        "title": "Insomnia",
+        "date": "2026-10-25",
+        "source": "https://musicbrainz.org/release-group/a53a1b79-37f4-4d74-ae64-f0d91a8deeec",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "Sunburst",
         "date": "2026-08-25",
@@ -17086,6 +17104,15 @@
     "artist_mbid": "92449998-96fa-45b5-8a67-abb5ff975aa1",
     "artist_source": "https://musicbrainz.org/artist/92449998-96fa-45b5-8a67-abb5ff975aa1",
     "releases": [
+      {
+        "title": "i=!",
+        "date": "2026-10-28",
+        "source": "https://musicbrainz.org/release-group/474aa5a7-b207-468c-9354-32c42f4ea209",
+        "release_kind": "single",
+        "release_format": "single",
+        "context_tags": [],
+        "stream": "song"
+      },
       {
         "title": "I,God",
         "date": "2026-05-27",
